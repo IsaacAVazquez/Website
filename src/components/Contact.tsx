@@ -46,27 +46,6 @@ const Contact: React.FC = () => {
             </h3>
 
             <div className="space-y-6">
-              <div className="flex space-x-4 mb-8">
-                <a 
-                  href="https://www.linkedin.com/in/isaac-vazquez/" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={20} />
-                </a>
-                <a 
-                  href="https://github.com/IsaacAVazquez" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
-                  aria-label="GitHub"
-                >
-                  <Github size={20} />
-                </a>
-              </div>
-
               <div className="flex items-start">
                 <Mail className="text-teal-600 mt-1" size={20} />
                 <div className="ml-4">
@@ -85,6 +64,27 @@ const Contact: React.FC = () => {
                     United States of America
                   </p>
                 </div>
+              </div>
+
+              <div className="flex space-x-4 mt-8">
+                <a 
+                  href="https://www.linkedin.com/in/isaac-vazquez/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={20} />
+                </a>
+                <a 
+                  href="https://github.com/IsaacAVazquez" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
+                  aria-label="GitHub"
+                >
+                  <Github size={20} />
+                </a>
               </div>
             </div>
           </div>
