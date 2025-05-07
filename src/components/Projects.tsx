@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { BarChart } from 'lucide-react';
 import {
@@ -38,49 +39,31 @@ const wrData = [
   { name: "Drake London", points: 230.8, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/bqbqvmxhrgvqt5ywkrrq" }
 ];
 
-const defaultChartOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false
-    }
-  },
-  scales: {
-    y: {
-      beginAtZero: false,
-      min: 250,
-      title: {
-        display: true,
-        text: 'Fantasy Points'
-      }
-    }
-  }
-};
-
 const Projects = () => {
   const [activePosition, setActivePosition] = useState('RB');
-
   const currentData = activePosition === 'RB' ? rbData : wrData;
-  const chartData = {
-    labels: currentData.map(p => p.name.split(' ')[0]),
-    datasets: [
-      {
-        data: currentData.map(p => p.points),
-        borderColor: activePosition === 'RB' ? 'rgb(56, 178, 172)' : 'rgb(139, 92, 246)',
-        backgroundColor: activePosition === 'RB' ? 'rgba(56, 178, 172, 0.5)' : 'rgba(139, 92, 246, 0.5)',
-      }
-    ]
-  };
 
   const chartOptions = {
-    ...defaultChartOptions,
+    responsive: true,
     plugins: {
-      ...defaultChartOptions.plugins,
+      legend: {
+        display: false
+      },
       title: {
         display: true,
         text: `Top 5 ${activePosition}s - 2024 Fantasy Points (0.5 PPR)`,
         font: {
           size: 16
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: false,
+        min: 200,
+        title: {
+          display: true,
+          text: 'Fantasy Points'
         }
       }
     },
@@ -99,6 +82,17 @@ const Projects = () => {
         tension: 0.4
       }
     }
+  };
+
+  const chartData = {
+    labels: currentData.map(p => p.name.split(' ')[0]),
+    datasets: [
+      {
+        data: currentData.map(p => p.points),
+        borderColor: activePosition === 'RB' ? 'rgb(56, 178, 172)' : 'rgb(139, 92, 246)',
+        backgroundColor: activePosition === 'RB' ? 'rgba(56, 178, 172, 0.5)' : 'rgba(139, 92, 246, 0.5)',
+      }
+    ]
   };
 
   return (
