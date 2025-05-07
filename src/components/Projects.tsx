@@ -85,8 +85,13 @@ const Projects = () => {
           if (!context || typeof context.dataIndex === 'undefined') return;
           const index = context.dataIndex;
           const image = new Image();
+          image.crossOrigin = "anonymous";
           image.src = currentData[index].image;
-          return image;
+          return {
+            pointStyle: 'circle',
+            radius: 8,
+            backgroundColor: activePosition === 'RB' ? 'rgb(56, 178, 172)' : 'rgb(139, 92, 246)'
+          };
         }
       },
       line: {
