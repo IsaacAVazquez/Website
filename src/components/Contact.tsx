@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
                   href="https://www.linkedin.com/in/isaac-vazquez/" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors"
+                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
                   aria-label="LinkedIn"
                 >
                   <Linkedin size={20} />
@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
                   href="https://github.com/IsaacAVazquez" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors"
+                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
                   aria-label="GitHub"
                 >
                   <Github size={20} />
