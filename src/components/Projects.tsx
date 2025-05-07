@@ -43,17 +43,6 @@ const Projects = () => {
   const [activePosition, setActivePosition] = useState('RB');
   const currentData = activePosition === 'RB' ? rbData : wrData;
 
-  const getChartData = () => ({
-    labels: currentData.map(p => p.name.split(' ')[0]),
-    datasets: [
-      {
-        data: currentData.map(p => p.points),
-        borderColor: activePosition === 'RB' ? 'rgb(56, 178, 172)' : 'rgb(139, 92, 246)',
-        backgroundColor: activePosition === 'RB' ? 'rgba(56, 178, 172, 0.5)' : 'rgba(139, 92, 246, 0.5)',
-      }
-    ]
-  });
-
   const getChartOptions = () => ({
     responsive: true,
     plugins: {
@@ -186,22 +175,21 @@ const Projects = () => {
           </div>
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-5 gap-4">
-              {currentData.map((player, index) => (
-                <div key={index} className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <img 
-                    src={player.image} 
-                    alt={player.name}
-                    className="w-16 h-16 rounded-full mb-2 object-cover"
-                  />
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
-                    {player.name}
-                  </span>
-                  <span className="text-sm font-bold text-teal-600">
-                    {player.points} pts
-                  </span>
-                </div>
-              ))}
-            </div>
+            {currentData.map((player, index) => (
+              <div key={index} className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <img 
+                  src={player.image} 
+                  alt={player.name}
+                  className="w-16 h-16 rounded-full mb-2 object-cover"
+                />
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
+                  {player.name}
+                </span>
+                <span className="text-sm font-bold text-teal-600">
+                  {player.points} pts
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
