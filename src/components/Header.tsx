@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from "motion/react";
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -84,19 +85,66 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="container mx-auto px-4">
-          <nav className="flex flex-col space-y-4">
-            <MobileNavLink href="#home" onClick={() => setIsOpen(false)}>
-              Home
-            </MobileNavLink>
-            <MobileNavLink href="#about" onClick={() => setIsOpen(false)}>
-              About
-            </MobileNavLink>
-            <MobileNavLink href="#projects" onClick={() => setIsOpen(false)}>
-              Projects
-            </MobileNavLink>
-            <MobileNavLink href="#contact" onClick={() => setIsOpen(false)}>
-              Contact
-            </MobileNavLink>
+          <nav className="flex flex-col space-y-4 p-4">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
+              onClick={() => {
+                setIsOpen(false);
+                window.location.href = '#home';
+              }}
+            >
+              <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
+                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
+                  Home
+                </h3>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
+              onClick={() => {
+                setIsOpen(false);
+                window.location.href = '#about';
+              }}
+            >
+              <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
+                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
+                  About
+                </h3>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
+              onClick={() => {
+                setIsOpen(false);
+                window.location.href = '#projects';
+              }}
+            >
+              <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
+                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
+                  Projects
+                </h3>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
+              onClick={() => {
+                setIsOpen(false);
+                window.location.href = '#contact';
+              }}
+            >
+              <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
+                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
+                  Contact
+                </h3>
+              </div>
+            </motion.div>
           </nav>
         </div>
       </div>
