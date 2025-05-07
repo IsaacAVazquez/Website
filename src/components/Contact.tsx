@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     setSubmitted(true);
-    
+
     setTimeout(() => {
       setFormData({ name: '', email: '', message: '' });
       setSubmitted(false);
@@ -37,13 +37,13 @@ const Contact: React.FC = () => {
             Have a question or interested in collaborating? Reach out and let's discuss.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg p-8">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Contact Information
             </h3>
-            
+
             <div className="space-y-4">
               <div className="flex items-start">
                 <Mail className="text-teal-600 mt-1" size={20} />
@@ -54,7 +54,7 @@ const Contact: React.FC = () => {
                   </a>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <MapPin className="text-teal-600 mt-1" size={20} />
                 <div className="ml-4">
@@ -65,8 +65,12 @@ const Contact: React.FC = () => {
                 </div>
               </div>
             </div>
+
             
-            <div className="mt-10">
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-100 dark:border-gray-700">
+            <div className="mb-8">
               <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
                 Connect on Social Media
               </h4>
@@ -91,13 +95,10 @@ const Contact: React.FC = () => {
                 </a>
               </div>
             </div>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-100 dark:border-gray-700">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Send a Message
             </h3>
-            
+
             {submitted ? (
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-center">
                 <h4 className="text-lg font-medium text-green-800 dark:text-green-400 mb-2">
@@ -123,7 +124,7 @@ const Contact: React.FC = () => {
                     required
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Your Email
@@ -138,7 +139,7 @@ const Contact: React.FC = () => {
                     required
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Your Message
@@ -153,7 +154,7 @@ const Contact: React.FC = () => {
                     required
                   ></textarea>
                 </div>
-                
+
                 <button
                   type="submit"
                   className="w-full px-6 py-3 bg-teal-600 text-white font-medium rounded-lg shadow hover:bg-teal-700 transition-colors duration-300 transform hover:scale-105"
