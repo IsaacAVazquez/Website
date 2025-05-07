@@ -38,18 +38,11 @@ const wrData = [
   { name: "Drake London", points: 230.8, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/bqbqvmxhrgvqt5ywkrrq" }
 ];
 
-const chartOptions = {
+const defaultChartOptions = {
   responsive: true,
   plugins: {
     legend: {
       display: false
-    },
-    title: {
-      display: true,
-      text: 'Top 5 RBs - 2024 Fantasy Points (0.5 PPR)',
-      font: {
-        size: 16
-      }
     }
   },
   scales: {
@@ -61,32 +54,7 @@ const chartOptions = {
         text: 'Fantasy Points'
       }
     }
-  },
-  elements: {
-    point: {
-      radius: 20,
-      pointStyle: function(context) {
-        const index = context.dataIndex;
-        const image = new Image();
-        image.src = playerData[index].image;
-        return image;
-      }
-    },
-    line: {
-      tension: 0.4
-    }
   }
-};
-
-const chartData = {
-  labels: playerData.map(p => p.name.split(' ')[0]),
-  datasets: [
-    {
-      data: playerData.map(p => p.points),
-      borderColor: 'rgb(56, 178, 172)',
-      backgroundColor: 'rgba(56, 178, 172, 0.5)',
-    }
-  ]
 };
 
 const Projects = () => {
