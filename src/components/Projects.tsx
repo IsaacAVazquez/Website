@@ -43,7 +43,18 @@ const Projects = () => {
   const [activePosition, setActivePosition] = useState('RB');
   const currentData = activePosition === 'RB' ? rbData : wrData;
 
-  const chartOptions = {
+  const getChartData = () => ({
+    labels: currentData.map(p => p.name.split(' ')[0]),
+    datasets: [
+      {
+        data: currentData.map(p => p.points),
+        borderColor: activePosition === 'RB' ? 'rgb(56, 178, 172)' : 'rgb(139, 92, 246)',
+        backgroundColor: activePosition === 'RB' ? 'rgba(56, 178, 172, 0.5)' : 'rgba(139, 92, 246, 0.5)',
+      }
+    ]
+  });
+
+  const getChartOptions = () => ({
     responsive: true,
     plugins: {
       legend: {
@@ -82,18 +93,7 @@ const Projects = () => {
         tension: 0.4
       }
     }
-  };
-
-  const chartData = {
-    labels: currentData.map(p => p.name.split(' ')[0]),
-    datasets: [
-      {
-        data: currentData.map(p => p.points),
-        borderColor: activePosition === 'RB' ? 'rgb(56, 178, 172)' : 'rgb(139, 92, 246)',
-        backgroundColor: activePosition === 'RB' ? 'rgba(56, 178, 172, 0.5)' : 'rgba(139, 92, 246, 0.5)',
-      }
-    ]
-  };
+  });
 
   return (
     <section id="projects" className="py-24 bg-gray-50 dark:bg-gray-900">
@@ -132,7 +132,7 @@ const Projects = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg p-6">
-            <Line options={chartOptions} data={chartData} />
+            <Line options={getChartOptions()} data={getChartData()} />
 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-5 gap-4">
               {currentData.map((player, index) => (
