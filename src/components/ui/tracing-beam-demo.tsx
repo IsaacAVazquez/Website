@@ -114,3 +114,31 @@ const dummyContent = [
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
+"use client";
+import React from "react";
+import { TracingBeam } from "./tracing-beam";
+
+export function TracingBeamDemo() {
+  return (
+    <TracingBeam className="px-6">
+      <div className="max-w-2xl mx-auto antialiased pt-4 relative">
+        {[...Array(3)].map((_, i) => (
+          <div key={`content-${i}`} className="mb-10">
+            <h2 className="bg-black text-white rounded-full text-sm w-fit px-4 py-1 mb-4">
+              Section {i + 1}
+            </h2>
+            <p className="text-xl mb-4">
+              Lorem ipsum dolor sit amet
+            </p>
+            <div className="text-sm prose prose-sm dark:prose-invert">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </TracingBeam>
+  );
+}

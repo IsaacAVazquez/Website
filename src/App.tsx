@@ -7,6 +7,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ThemeProvider from './context/ThemeContext';
 import FloatingDockDemo from './components/ui/floating-dock-demo'; // Import the new component
+import { TracingBeamDemo } from "./components/ui/tracing-beam-demo"; //Import TracingBeamDemo
 
 function App() {
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
@@ -62,6 +63,7 @@ function App() {
         <About />
         <Projects />
         <FloatingDockDemo /> {/* Added FloatingDockDemo here */}
+        <TracingBeamDemo/> {/* Added TracingBeamDemo here */}
         <Contact />
         <Footer />
       </div>
