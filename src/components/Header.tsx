@@ -79,8 +79,8 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-white dark:bg-gray-900 shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? 'max-h-60 py-4' : 'max-h-0'
+        className={`md:hidden bg-white dark:bg-gray-900 shadow-lg transition-all duration-300 ease-in-out overflow-hidden touch-manipulation ${
+          isOpen ? 'max-h-screen py-4' : 'max-h-0'
         }`}
       >
         <div className="container mx-auto px-4">

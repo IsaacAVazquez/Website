@@ -32,7 +32,7 @@ const About: React.FC = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 gap-4 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center mb-3">
                   <BookOpen className="text-primary-600" size={24} />

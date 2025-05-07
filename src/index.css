@@ -5,7 +5,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    @apply antialiased;
+    -webkit-tap-highlight-color: transparent;
+    @apply antialiased touch-manipulation;
+  }
+  
+  input, button, a {
+    @apply touch-manipulation;
   }
   
   body {

@@ -30,8 +30,8 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="inline-block py-1 px-3 rounded-full text-sm font-medium bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-100 mb-6 transform hover:scale-105 transition-transform">
+        <div className="max-w-4xl mx-auto text-center p-4 sm:p-0">
+          <span className="inline-block py-1 px-3 rounded-full text-xs sm:text-sm font-medium bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-100 mb-4 sm:mb-6 transform hover:scale-105 transition-transform">
             Welcome to my personal site
           </span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-600">
