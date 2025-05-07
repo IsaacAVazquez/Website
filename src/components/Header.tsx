@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { Menu, X, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { Menu, X, Moon, Sun } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,9 +21,9 @@ const Header: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -31,14 +31,13 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white dark:bg-gray-900 shadow-md py-3'
-          : 'bg-transparent py-6'
+          ? "bg-white dark:bg-gray-900 shadow-md py-3"
+          : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center">
-          </div>
+          <div className="flex items-center"></div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-10">
@@ -78,7 +77,7 @@ const Header: React.FC = () => {
       {/* Mobile Menu */}
       <div
         className={`md:hidden bg-white dark:bg-gray-900 shadow-lg transition-all duration-300 ease-in-out overflow-hidden touch-manipulation ${
-          isOpen ? 'max-h-screen py-4' : 'max-h-0'
+          isOpen ? "max-h-screen py-4" : "max-h-0"
         }`}
       >
         <div className="container mx-auto px-4">
@@ -88,7 +87,7 @@ const Header: React.FC = () => {
               className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
               onClick={() => {
                 setIsOpen(false);
-                window.location.href = '#home';
+                window.location.href = "#home";
               }}
             >
               <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
@@ -103,7 +102,7 @@ const Header: React.FC = () => {
               className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
               onClick={() => {
                 setIsOpen(false);
-                window.location.href = '#about';
+                window.location.href = "#about";
               }}
             >
               <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
@@ -118,7 +117,7 @@ const Header: React.FC = () => {
               className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
               onClick={() => {
                 setIsOpen(false);
-                window.location.href = '#projects';
+                window.location.href = "#projects";
               }}
             >
               <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
@@ -133,7 +132,7 @@ const Header: React.FC = () => {
               className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
               onClick={() => {
                 setIsOpen(false);
-                window.location.href = '#contact';
+                window.location.href = "#contact";
               }}
             >
               <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
