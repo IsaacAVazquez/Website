@@ -1,9 +1,8 @@
-
 "use client";
 import { animate, motion } from "motion/react";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { GoCopilot } from "react-icons/go";
+import { Home, User, Code, Mail, Linkedin, Github } from 'lucide-react';
 
 export function CardDemo() {
   return (
@@ -11,10 +10,9 @@ export function CardDemo() {
       <CardSkeletonContainer>
         <Skeleton />
       </CardSkeletonContainer>
-      <CardTitle>Damn good card</CardTitle>
+      <CardTitle>Navigation Links</CardTitle>
       <CardDescription>
-        A card that showcases a set of tools that you use to create your
-        product.
+        Quick access to all important sections and social profiles
       </CardDescription>
     </Card>
   );
@@ -64,6 +62,14 @@ const Skeleton = () => {
       },
       { duration: 0.8 },
     ],
+    [
+      ".circle-6",
+      {
+        scale,
+        transform,
+      },
+      { duration: 0.8 },
+    ],
   ];
 
   useEffect(() => {
@@ -77,19 +83,34 @@ const Skeleton = () => {
     <div className="p-8 overflow-hidden h-full relative flex items-center justify-center">
       <div className="flex flex-row shrink-0 justify-center items-center gap-2">
         <Container className="h-8 w-8 circle-1">
-          <ClaudeLogo className="h-4 w-4 " />
+          <a href="#home" className="text-gray-800 dark:text-white hover:text-teal-600">
+            <Home className="h-4 w-4" />
+          </a>
         </Container>
         <Container className="h-12 w-12 circle-2">
-          <GoCopilot className="h-6 w-6 dark:text-white" />
+          <a href="#about" className="text-gray-800 dark:text-white hover:text-teal-600">
+            <User className="h-6 w-6" />
+          </a>
         </Container>
         <Container className="circle-3">
-          <OpenAILogo className="h-8 w-8 dark:text-white" />
+          <a href="#projects" className="text-gray-800 dark:text-white hover:text-teal-600">
+            <Code className="h-8 w-8" />
+          </a>
         </Container>
         <Container className="h-12 w-12 circle-4">
-          <MetaIconOutline className="h-6 w-6 " />
+          <a href="#contact" className="text-gray-800 dark:text-white hover:text-teal-600">
+            <Mail className="h-6 w-6" />
+          </a>
         </Container>
         <Container className="h-8 w-8 circle-5">
-          <GeminiLogo className="h-4 w-4 " />
+          <a href="https://linkedin.com/in/isaac-vazquez" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-white hover:text-teal-600">
+            <Linkedin className="h-4 w-4" />
+          </a>
+        </Container>
+        <Container className="h-8 w-8 circle-6">
+          <a href="https://github.com/IsaacAVazquez" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-white hover:text-teal-600">
+            <Github className="h-4 w-4" />
+          </a>
         </Container>
       </div>
 
