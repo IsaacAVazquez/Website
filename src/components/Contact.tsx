@@ -42,10 +42,31 @@ const Contact: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg p-8">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Contact Information
+              Connect on Social Media
             </h3>
 
             <div className="space-y-6">
+              <div className="flex space-x-4 mb-8">
+                <a 
+                  href="https://www.linkedin.com/in/isaac-vazquez/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={20} />
+                </a>
+                <a 
+                  href="https://github.com/IsaacAVazquez" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
+                  aria-label="GitHub"
+                >
+                  <Github size={20} />
+                </a>
+              </div>
+
               <div className="flex items-start">
                 <Mail className="text-teal-600 mt-1" size={20} />
                 <div className="ml-4">
@@ -63,32 +84,6 @@ const Contact: React.FC = () => {
                   <p className="text-gray-600 dark:text-gray-300">
                     United States of America
                   </p>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-                  Connect on Social Media
-                </h4>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://www.linkedin.com/in/isaac-vazquez/" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a 
-                    href="https://github.com/IsaacAVazquez" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-gray-100 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-600 transition-colors animate-move"
-                    aria-label="GitHub"
-                  >
-                    <Github size={20} />
-                  </a>
                 </div>
               </div>
             </div>
