@@ -88,6 +88,7 @@ const Projects = () => {
       point: {
         radius: 20,
         pointStyle: function(context) {
+          if (!context || typeof context.dataIndex === 'undefined') return;
           const index = context.dataIndex;
           const image = new Image();
           image.src = currentData[index].image;
