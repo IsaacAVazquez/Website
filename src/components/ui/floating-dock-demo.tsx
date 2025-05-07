@@ -5,7 +5,8 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconHome,
-  IconNewSection,
+  IconAddressBook,
+  IconAward,
   IconTerminal2,
 } from "@tabler/icons-react";
 
