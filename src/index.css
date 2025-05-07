@@ -11,6 +11,14 @@
   body {
     @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300;
   }
+
+  section {
+    @apply opacity-0 transform translate-y-8 transition-all duration-1000;
+  }
+
+  section.visible {
+    @apply opacity-100 translate-y-0;
+  }
 }
 
 @layer components {

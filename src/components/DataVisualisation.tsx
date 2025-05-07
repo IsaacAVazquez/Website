@@ -155,7 +155,7 @@ const DataVisualization: React.FC = () => {
           
           <div className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-4">
             {sampleData.map((item, index) => (
-              <div key={index} className="flex flex-col items-center">
+              <div key={index} className="flex flex-col items-center transform hover:scale-110 transition-transform duration-300">
                 <div 
                   className="w-4 h-4 rounded-full mb-2" 
                   style={{ backgroundColor: item.color }}

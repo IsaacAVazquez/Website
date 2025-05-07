@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
           <span className="inline-block py-1 px-3 rounded-full text-sm font-medium bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-100 mb-6 transform hover:scale-105 transition-transform">
             Welcome to my personal site
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-blue-600">
             Sharing <span className="text-teal-600">insights</span> and <span className="text-teal-600">discoveries</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-10 leading-relaxed">
