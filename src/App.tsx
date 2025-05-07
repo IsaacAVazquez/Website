@@ -3,10 +3,10 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
-
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ThemeProvider from './context/ThemeContext';
+import FloatingDockDemo from './components/ui/floating-dock-demo'; // Import the new component
 
 function App() {
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
@@ -58,12 +58,11 @@ function App() {
     <ThemeProvider>
       <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
         <Header />
-        <main>
-          <Hero />
-          <About />
-          <Projects />
-          <Contact />
-        </main>
+        <Hero />
+        <About />
+        <Projects />
+        <FloatingDockDemo /> {/* Added FloatingDockDemo here */}
+        <Contact />
         <Footer />
       </div>
     </ThemeProvider>
