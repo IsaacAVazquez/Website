@@ -6,8 +6,9 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ThemeProvider from './context/ThemeContext';
-import FloatingDockDemo from './components/ui/floating-dock-demo'; // Import the new component
-import { TracingBeamDemo } from "./components/ui/tracing-beam-demo"; //Import TracingBeamDemo
+import FloatingDockDemo from './components/ui/floating-dock-demo';
+import { TracingBeamDemo } from "./components/ui/tracing-beam-demo";
+import { TracingBeam } from "./components/ui/tracing-beam";
 
 function App() {
   const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
