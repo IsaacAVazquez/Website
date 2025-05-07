@@ -52,7 +52,20 @@
   }
 }
 
+@keyframes move {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(200px);
+  }
+}
+
 /* Canvas animation for background elements */
 .grid > div {
   animation: float 4s ease-in-out infinite;
+}
+
+.animate-move {
+  animation: move 5s linear infinite;
 }
