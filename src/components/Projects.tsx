@@ -24,11 +24,11 @@ ChartJS.register(
 );
 
 const rbData = [
-  { name: "Saquon Barkley", points: 338.8, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/qb87h2nypebduowkii7c" },
-  { name: "Jahmyr Gibbs", points: 336.9, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/aqcxqr4umc7zswfyayci" },
-  { name: "Derrick Henry", points: 326.9, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/qe5qlxyyebvszgqob9zn" },
-  { name: "Bijan Robinson", points: 311.2, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/sj9qlmqwvbbylpvxdhle" },
-  { name: "Josh Jacobs", points: 275.1, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/lhkynhxpzuhvqzrjxvgr" }
+  { name: "Saquon Barkley", points: 338.8, image: "https://images.fantasypros.com/images/players/nfl/17240/bust/250x250.png" },
+  { name: "Jahmyr Gibbs", points: 336.9, image: "https://images.fantasypros.com/images/players/nfl/22968/bust/250x250.png" },
+  { name: "Derrick Henry", points: 326.9, image: "https://images.fantasypros.com/images/players/nfl/15514/bust/250x250.png" },
+  { name: "Bijan Robinson", points: 311.2, image: "https://images.fantasypros.com/images/players/nfl/23133/bust/250x250.png" },
+  { name: "Josh Jacobs", points: 275.1, image: "https://images.fantasypros.com/images/players/nfl/18269/bust/250x250.png" }
 ];
 
 const wrData = [
