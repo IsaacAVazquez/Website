@@ -32,11 +32,11 @@ const rbData = [
 ];
 
 const wrData = [
-  { name: "Ja'Marr Chase", points: 339.5, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/i6co6v7qxfopbgmwu0qy" },
-  { name: "Justin Jefferson", points: 266.0, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/mzdsotquu0qhmkxferdn" },
-  { name: "Amon-Ra St. Brown", points: 258.7, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/kvncwl52ax9dpjlzxqwk" },
-  { name: "Brian Thomas", points: 240.5, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/urcozrdlghryzxw2bwpc" },
-  { name: "Drake London", points: 230.8, image: "https://static.www.nfl.com/image/private/t_player_profile_landscape/f_auto/league/bqbqvmxhrgvqt5ywkrrq" }
+  { name: "Ja'Marr Chase", points: 339.5, image: "https://images.fantasypros.com/images/players/nfl/19788/bust/250x250.png" },
+  { name: "Justin Jefferson", points: 266.0, image: "https://images.fantasypros.com/images/players/nfl/19236/bust/250x250.png" },
+  { name: "Amon-Ra St. Brown", points: 258.7, image: "https://images.fantasypros.com/images/players/nfl/19799/bust/250x250.png" },
+  { name: "Brian Thomas", points: 240.5, image: "https://images.fantasypros.com/images/players/nfl/23000/bust/250x250.png" },
+  { name: "Drake London", points: 230.8, image: "https://images.fantasypros.com/images/players/nfl/23163/bust/250x250.png" }
 ];
 
 const Projects = () => {
