@@ -135,11 +135,57 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg p-6">
-            <Line options={getChartOptions()} data={getChartData()} />
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg p-6">
+              <Line 
+                options={{
+                  ...getChartOptions(),
+                  plugins: {
+                    ...getChartOptions().plugins,
+                    title: {
+                      display: true,
+                      text: 'Top 5 RBs - 2024 Fantasy Points (0.5 PPR)',
+                      font: { size: 16 }
+                    }
+                  }
+                }} 
+                data={{
+                  labels: rbData.map(p => p.name.split(' ')[0]),
+                  datasets: [{
+                    data: rbData.map(p => p.points),
+                    borderColor: 'rgb(56, 178, 172)',
+                    backgroundColor: 'rgba(56, 178, 172, 0.5)',
+                  }]
+                }} 
+              />
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg p-6">
+              <Line 
+                options={{
+                  ...getChartOptions(),
+                  plugins: {
+                    ...getChartOptions().plugins,
+                    title: {
+                      display: true,
+                      text: 'Top 5 WRs - 2024 Fantasy Points (0.5 PPR)',
+                      font: { size: 16 }
+                    }
+                  }
+                }} 
+                data={{
+                  labels: wrData.map(p => p.name.split(' ')[0]),
+                  datasets: [{
+                    data: wrData.map(p => p.points),
+                    borderColor: 'rgb(139, 92, 246)',
+                    backgroundColor: 'rgba(139, 92, 246, 0.5)',
+                  }]
+                }} 
+              />
+            </div>
+          </div>
 
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-5 gap-4">
               {currentData.map((player, index) => (
                 <div key={index} className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
                   <img 
