@@ -60,11 +60,12 @@ function App() {
       <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
         <Header />
         <Hero />
-        <About />
-        <Projects />
-        <FloatingDockDemo /> {/* Added FloatingDockDemo here */}
-        <TracingBeamDemo/> {/* Added TracingBeamDemo here */}
-        <Contact />
+        <TracingBeam className="px-6">
+          <About />
+          <Projects />
+          <FloatingDockDemo />
+          <Contact />
+        </TracingBeam>
         <Footer />
       </div>
     </ThemeProvider>
