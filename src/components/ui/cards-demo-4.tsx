@@ -72,13 +72,8 @@ const Skeleton = () => {
     ],
   ];
 
-  useEffect(() => {
-    animate(sequence, {
-      // @ts-ignore
-      repeat: Infinity,
-      repeatDelay: 1,
-    });
-  }, []);
+  // Remove animation effect
+  useEffect(() => {}, []);
   return (
     <div className="p-8 overflow-hidden h-full relative flex items-center justify-center">
       <div className="flex flex-row shrink-0 justify-center items-center gap-2">
