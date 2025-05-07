@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 sm:gap-6">
+          <div className="grid grid-cols-1 gap-8">
             <div>
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Navigation</h3>
               <ul className="space-y-2">
@@ -25,15 +25,6 @@ const Footer: React.FC = () => {
                 <li><a href="#about" className="text-gray-300 hover:text-white transition-colors">About</a></li>
                 <li><a href="#projects" className="text-gray-300 hover:text-white transition-colors">Projects</a></li>
                 <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Terms of Use</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</a></li>
               </ul>
             </div>
           </div>
