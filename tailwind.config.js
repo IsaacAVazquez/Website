@@ -2,8 +2,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx,html}",
-    "index.html"
+    './src/**/*.{js,ts,jsx,tsx,html}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    // if you have a ui/ or app/ dir:
+    './app/**/*.{js,ts,jsx,tsx}',
+    './components/ui/**/*.{js,ts,jsx,tsx}'
   ],
   darkMode: 'class',
   theme: {
