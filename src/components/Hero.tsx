@@ -50,13 +50,13 @@ const Hero: React.FC = () => {
             </a>
             <a
               href="#contact"
-              className="inline-block px-8 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-medium rounded-lg shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 transform hover:scale-105"
+              className="btn btn-primary"
             >
               Get in Touch
             </a>
           </div>
         </div>
-        
+
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <button 
             onClick={scrollToNextSection}
