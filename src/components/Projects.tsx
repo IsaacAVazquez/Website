@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BarChart } from 'lucide-react';
 import {
   Chart as ChartJS,
