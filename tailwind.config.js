@@ -1,5 +1,10 @@
-module.exports = {
-  content: ['./src/**/*.{html,js,css}'], // Adjust paths to match your project structure
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -75,4 +80,4 @@ module.exports = {
     },
   },
   plugins: [require('daisyui')],
-};
+}
