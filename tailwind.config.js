@@ -1,13 +1,5 @@
-
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,html}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    // if you have a ui/ or app/ dir:
-    './app/**/*.{js,ts,jsx,tsx}',
-    './components/ui/**/*.{js,ts,jsx,tsx}'
-  ],
+module.exports = {
+  content: ['./src/**/*.{html,js,css}'], // Adjust paths to match your project structure
   darkMode: 'class',
   theme: {
     extend: {
@@ -82,5 +74,5 @@ export default {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require('daisyui')],
 };
