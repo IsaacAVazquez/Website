@@ -1,7 +1,6 @@
-@import "tailwindcss/base" layer(base);
-@import "tailwindcss/components" layer(components);
-@import "tailwindcss/theme" layer(theme);
-@import "tailwindcss/utilities" layer(utilities);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   html {
@@ -9,11 +8,11 @@
     -webkit-tap-highlight-color: transparent;
     @apply antialiased touch-manipulation;
   }
-  
+
   input, button, a {
     @apply touch-manipulation;
   }
-  
+
   body {
     @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300;
   }
@@ -30,11 +29,11 @@
   .text-gray-600 {
     @apply dark:text-gray-300;
   }
-  
+
   .text-gray-700 {
     @apply dark:text-gray-200;
   }
-  
+
   .text-gray-800 {
     @apply dark:text-gray-100;
   }
@@ -44,12 +43,12 @@
   .animate-fadeIn {
     animation: fadeIn 1s ease-in-out forwards;
   }
-  
+
   /* Custom button styles */
   .btn-primary {
     @apply bg-teal-600 hover:bg-teal-700 text-white font-medium px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105;
   }
-  
+
   .btn-secondary {
     @apply bg-transparent border border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-900 font-medium px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105;
   }
