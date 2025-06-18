@@ -16,14 +16,14 @@ const Hero: React.FC = () => {
     { text: "uncovering" },
     { text: "patterns," },
     { text: "and" },
-    { text: "visualizing", className: "text-teal-600 dark:text-teal-500" },
-    { text: "findings.", className: "text-teal-600 dark:text-teal-500" },
+    { text: "visualizing", className: "text-teal-600 dark:text-teal-400" },
+    { text: "findings.", className: "text-teal-600 dark:text-teal-400" },
   ];
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800"
+      className="relative min-h-screen flex items-center bg-gradient-to-br from-gray-50 via-white to-teal-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
     >
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="grid grid-cols-5 grid-rows-5 gap-4 h-full w-full opacity-5 dark:opacity-10">
@@ -46,13 +46,13 @@ const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
           <a
             href="#projects"
-            className="inline-block px-8 py-3 bg-teal-600 text-white font-medium rounded-lg shadow-lg hover:bg-teal-700 transition-colors duration-300 transform hover:scale-105"
+            className="btn-primary"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="inline-block px-8 py-3 bg-transparent border border-teal-600 text-teal-600 rounded-lg hover:bg-teal-100 dark:hover:bg-teal-900 transition-colors duration-300 transform hover:scale-105"
+            className="btn-secondary"
           >
             Get in Touch
           </a>
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <button
             onClick={scrollToNextSection}
-            className="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+            className="text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
             aria-label="Scroll to next section"
           >
             <ArrowDownCircle size={36} />

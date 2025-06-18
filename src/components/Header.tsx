@@ -31,23 +31,27 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white dark:bg-gray-900 shadow-md py-3"
+          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg py-3"
           : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center"></div>
+          <div className="flex items-center">
+            <span className="text-2xl font-bold text-gray-900 dark:text-white">
+              Isaac<span className="text-teal-600">.</span>
+            </span>
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-10">
+          <nav className="hidden md:flex items-center space-x-8">
             <NavLink href="#home">Home</NavLink>
             <NavLink href="#about">About</NavLink>
             <NavLink href="#projects">Projects</NavLink>
             <NavLink href="#contact">Contact</NavLink>
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-600 dark:text-gray-300"
               aria-label="Toggle theme"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -58,7 +62,7 @@ const Header: React.FC = () => {
           <div className="flex items-center md:hidden">
             <button
               onClick={toggleTheme}
-              className="p-2 mr-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className="p-2 mr-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-gray-600 dark:text-gray-300"
               aria-label="Toggle theme"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -76,71 +80,24 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-white dark:bg-gray-900 shadow-lg transition-all duration-300 ease-in-out overflow-hidden touch-manipulation ${
+        className={`md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
           isOpen ? "max-h-screen py-4" : "max-h-0"
         }`}
       >
         <div className="container mx-auto px-4">
           <nav className="flex flex-col space-y-4 p-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
-              onClick={() => {
-                setIsOpen(false);
-                window.location.href = "#home";
-              }}
-            >
-              <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
-                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-                  Home
-                </h3>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
-              onClick={() => {
-                setIsOpen(false);
-                window.location.href = "#about";
-              }}
-            >
-              <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
-                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-                  About
-                </h3>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
-              onClick={() => {
-                setIsOpen(false);
-                window.location.href = "#projects";
-              }}
-            >
-              <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
-                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-                  Projects
-                </h3>
-              </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-1"
-              onClick={() => {
-                setIsOpen(false);
-                window.location.href = "#contact";
-              }}
-            >
-              <div className="bg-white dark:bg-gray-900 rounded-lg p-4">
-                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-                  Contact
-                </h3>
-              </div>
-            </motion.div>
+            <MobileNavLink href="#home" onClick={() => setIsOpen(false)}>
+              Home
+            </MobileNavLink>
+            <MobileNavLink href="#about" onClick={() => setIsOpen(false)}>
+              About
+            </MobileNavLink>
+            <MobileNavLink href="#projects" onClick={() => setIsOpen(false)}>
+              Projects
+            </MobileNavLink>
+            <MobileNavLink href="#contact" onClick={() => setIsOpen(false)}>
+              Contact
+            </MobileNavLink>
           </nav>
         </div>
       </div>
@@ -155,7 +112,7 @@ const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({
   return (
     <a
       href={href}
-      className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+      className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
     >
       {children}
     </a>
@@ -171,7 +128,7 @@ const MobileNavLink: React.FC<{
     <a
       href={href}
       onClick={onClick}
-      className="text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-2 py-1 transition-colors"
+      className="text-base font-medium text-gray-600 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 px-2 py-1 transition-colors block"
     >
       {children}
     </a>

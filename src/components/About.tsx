@@ -6,14 +6,14 @@ const About: React.FC = () => {
   return (
     <section
       id="about"
-      className="py-24 bg-gradient-to-b from-white to-primary-50 dark:from-gray-900 dark:to-gray-800"
+      className="py-24 bg-gradient-to-b from-white to-teal-50 dark:from-gray-900 dark:to-gray-800"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             About Me
           </h2>
-          <div className="w-16 h-1 bg-primary-600 mx-auto mb-6"></div>
+          <div className="w-16 h-1 bg-teal-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 dark:text-gray-300">
             QA Engineer, data enthusiast, and passionate advocate for civic
             engagement through technology.
@@ -47,9 +47,9 @@ const About: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
                 <div className="flex items-center mb-3">
-                  <BookOpen className="text-primary-600" size={24} />
+                  <BookOpen className="text-teal-600" size={24} />
                   <h3 className="ml-3 text-lg font-semibold text-gray-900 dark:text-white">
                     Education
                   </h3>
@@ -60,9 +60,9 @@ const About: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
                 <div className="flex items-center mb-3">
-                  <Code className="text-primary-600" size={24} />
+                  <Code className="text-teal-600" size={24} />
                   <h3 className="ml-3 text-lg font-semibold text-gray-900 dark:text-white">
                     Skills
                   </h3>
@@ -72,9 +72,9 @@ const About: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
                 <div className="flex items-center mb-3">
-                  <Award className="text-primary-600" size={24} />
+                  <Award className="text-teal-600" size={24} />
                   <h3 className="ml-3 text-lg font-semibold text-gray-900 dark:text-white">
                     Experience
                   </h3>
@@ -84,9 +84,9 @@ const About: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
                 <div className="flex items-center mb-3">
-                  <Star className="text-primary-600" size={24} />
+                  <Star className="text-teal-600" size={24} />
                   <h3 className="ml-3 text-lg font-semibold text-gray-900 dark:text-white">
                     Focus Areas
                   </h3>
