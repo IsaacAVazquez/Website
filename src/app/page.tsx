@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
 import { Highlight } from "@/components/Highlight";
@@ -5,8 +7,6 @@ import { Paragraph } from "@/components/Paragraph";
 import { Circles } from "@/components/Circles";
 // Update the import path below to the correct location of TextGenerateEffect, or remove if not available
 // import { TextGenerateEffect } from "../ui/text-generate-effect";
-
-"use client";
 
 // If you have the correct path for TextGenerateEffect, update and uncomment the imports and usage below.
 // Otherwise, remove the TextGenerateEffectDemo and its usage to avoid errors.
