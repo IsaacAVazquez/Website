@@ -3,7 +3,7 @@ import { navlinks } from "@/constants/navlinks";
 import { Navlink } from "@/types/navlink";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Heading } from "./Heading";
@@ -112,8 +112,11 @@ const SidebarHeader = () => {
         height={40}
         width={40}
         sizes="40px"
-        className="object-cover object-top rounded-full flex-shrink-0"
+        className="object-cover object-top rounded-full flex-shrink-0 bg-neutral-300"
         priority
+        onError={(e) => {
+          (e.target as HTMLImageElement).src = "/default-avatar.png";
+        }}
       />
       <div className="flex text-sm flex-col">
         <p className="font-bold text-primary">Isaac Vazquez</p>
