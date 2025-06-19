@@ -27,3 +27,9 @@ To run the project locally:
    ```
 
 This starts the application on `http://localhost:3000` by default.
+
+## Update everything
+
+npm i -g npm-check-updates
+ncu -u
+npm install

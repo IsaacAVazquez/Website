@@ -1,0 +1,9 @@
+{
+  "/page": "app/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/projects/page": "app/projects/page.js",
+  "/about/page": "app/about/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/blog/tailwindcss-tips-and-tricks/page": "app/blog/tailwindcss-tips-and-tricks/page.js"
+}
