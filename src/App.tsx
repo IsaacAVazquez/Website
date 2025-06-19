@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,7 +7,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ThemeProvider from './context/ThemeContext';
 import FloatingDockDemo from './components/ui/floating-dock-demo';
-import { TracingBeamDemo } from "./components/ui/tracing-beam-demo";
 import { TracingBeam } from "./components/ui/tracing-beam";
 
 function App() {
@@ -41,7 +40,7 @@ function App() {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
 
-        const href = this.getAttribute('href');
+        const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
         if (!href) return;
 
         const targetElement = document.querySelector(href);

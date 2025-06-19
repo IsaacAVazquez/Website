@@ -44,4 +44,4 @@ export default {
     require('@tailwindcss/typography'),
     require('daisyui'),
   ],
-} satisfies Config;
+};
