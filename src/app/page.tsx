@@ -39,4 +39,7 @@ export default function Home() {
         {/* TextGenerateEffectDemo removed due to missing implementation */}
       </div>
       <div className="mt-20" />
-    </Container>);
+    </Container>
+  );
+}
+
