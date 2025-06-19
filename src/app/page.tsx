@@ -2,8 +2,14 @@ import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
 import { Highlight } from "@/components/Highlight";
 import { Paragraph } from "@/components/Paragraph";
-import Image from "next/image";
 import { Circles } from "@/components/Circles";
+// Update the import path below to the correct location of TextGenerateEffect, or remove if not available
+// import { TextGenerateEffect } from "../ui/text-generate-effect";
+
+"use client";
+
+// If you have the correct path for TextGenerateEffect, update and uncomment the imports and usage below.
+// Otherwise, remove the TextGenerateEffectDemo and its usage to avoid errors.
 
 export default function Home() {
   return (
@@ -18,10 +24,19 @@ export default function Home() {
         on building reliable software.
       </Paragraph>
       <Paragraph className="max-w-xl mt-4">
-        With over <Highlight>6 years of experience</Highlight>, I help teams
-        deliver quality products through thoughtful testing and analysis.
+        {/* You can add more content here if needed */}
       </Paragraph>
+      <div className="mt-8">
+        {/* TextGenerateEffectDemo removed due to missing implementation */}
+      </div>
       <div className="mt-20" />
-    </Container>
-  );
-}
+      <Paragraph className="max-w-xl mt-4">
+        {/* You can add more content here if needed */}
+        {/* Example content: */}
+        Welcome to my website!
+      </Paragraph>
+      <div className="mt-8">
+        {/* TextGenerateEffectDemo removed due to missing implementation */}
+      </div>
+      <div className="mt-20" />
+    </Container>);
