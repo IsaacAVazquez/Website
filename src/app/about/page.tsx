@@ -12,7 +12,7 @@ import About from "@/components/About";
 export const metadata: Metadata = {
   title: "About | Isaac Vazquez",
   description:
-    "Isaac Vazquez is a developer, writer and speaker. He is a digital nomad and travels around the world while working remotely.",
+    "Learn more about Isaac Vazquez, a QA engineer and civic tech enthusiast.",
 };
 
 export default function AboutPage() {

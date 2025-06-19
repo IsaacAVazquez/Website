@@ -8,8 +8,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Projects | Isaac Vazquez",
-  description:
-    "Isaac Vazquez is a developer, writer and speaker. He is a digital nomad and travels around the world while working remotely.",
+  description: "Personal projects and experiments",
 };
 
 export default function Projects() {
