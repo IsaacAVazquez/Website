@@ -1,14 +1,6 @@
-## Sidefolio - Portfolio website template
+## Personal Website
 
-As seen on [Aceternity UI](https://ui.aceternity.com/templtes/sidefolio)
-
-## Built with
-- Next.js
-- Tailwindcss
-- Framer motion
-- MDX
-
-Checkout all the templates at [Aceternity UI](https://ui.aceternity.com/templates)
+This is my personal site built with Next.js and Tailwind CSS.
 
 ## Development
 
@@ -27,9 +19,3 @@ To run the project locally:
    ```
 
 This starts the application on `http://localhost:3000` by default.
-
-## Update everything
-
-npm i -g npm-check-updates
-ncu -u
-npm install

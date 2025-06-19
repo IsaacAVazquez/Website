@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Isaac Vazquez - Developer",
+  title: "Isaac Vazquez - QA Engineer",
   description:
-    "Isaac Vazquez is a developer, writer and speaker. He is a digital nomad and travels around the world while working remotely.",
+    "Isaac Vazquez is a QA engineer and data enthusiast focused on civic technology.",
 };
 
 export default function RootLayout({
