@@ -1,7 +1,7 @@
-import { TablerIconsProps } from "@tabler/icons-react";
+import React from "react";
 
 export type Navlink = {
   href: string;
   label: string;
-  icon?: React.ReactNode | TablerIconsProps;
+  icon?: React.ReactNode | React.ComponentType<any>;
 };

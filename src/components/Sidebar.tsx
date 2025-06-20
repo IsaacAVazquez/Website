@@ -79,12 +79,14 @@ export const Navigation = ({
               isActive(link.href) && "opacity-100"
             )}
           />
-          <link.icon
-            className={twMerge(
-              "h-5 w-5 flex-shrink-0 group-hover:scale-110 transition-transform",
-              isActive(link.href) && "text-sky-500 dark:text-cyan-300"
-            )}
-          />
+          {typeof link.icon === "function" ? (
+            <link.icon
+              className={twMerge(
+                "h-5 w-5 flex-shrink-0 group-hover:scale-110 transition-transform",
+                isActive(link.href) && "text-sky-500 dark:text-cyan-300"
+              )}
+            />
+          ) : null}
           <span className="z-10">{link.label}</span>
         </Link>
       ))}
@@ -101,7 +103,9 @@ export const Navigation = ({
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm rounded-full bg-blue-50 dark:bg-neutral-700/40 px-3 py-1 shadow hover:shadow-lg hover:bg-blue-100 dark:hover:bg-cyan-900/50 transition"
           >
-            <link.icon className="h-4 w-4" />
+            {typeof link.icon === "function" ? (
+              <link.icon className="h-4 w-4" />
+            ) : null}
             <span>{link.label}</span>
           </Link>
         ))}
