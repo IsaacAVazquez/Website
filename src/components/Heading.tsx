@@ -1,5 +1,5 @@
 import React from "react";
-
+import type { JSX } from "react";
 import localFont from "next/font/local";
 import { twMerge } from "tailwind-merge";
 
