@@ -149,9 +149,6 @@ export default function Resume() {
           ))}
         </div>
       </section>
-      <div className="mt-12 text-center text-xs text-gray-500 dark:text-gray-600">
-        2025 — Built by Isaac Vazquez
-      </div>
       <style jsx global>{`
         @keyframes wiggle {
           0%, 100% { transform: rotate(-7deg) scale(1);}

@@ -60,13 +60,13 @@ export default function RootLayout({
         <Sidebar />
         <div className="lg:pl-2 lg:pt-2 flex-1 overflow-y-auto relative">
           <BackgroundEffects /> {/* Only use the component here */}
-          <div className="relative z-10 flex-1 min-h-screen lg:rounded-tl-2xl border border-transparent lg:border-neutral-700/40 overflow-y-auto bg-white/90 dark:bg-neutral-950/85 backdrop-blur-xl shadow-2xl transition-colors duration-500">
+          <div className="relative z-10 flex flex-col min-h-screen lg:rounded-tl-2xl border border-transparent lg:border-neutral-700/40 overflow-y-auto bg-white/90 dark:bg-neutral-950/85 backdrop-blur-xl shadow-2xl transition-colors duration-500">
             <div className="p-4 flex justify-end">
               <div className="hover:scale-110 transition-transform duration-200">
                 <DarkModeToggle />
               </div>
             </div>
-            <main className="px-4 pb-8 animate-fadeIn">{children}</main>
+            <main className="flex-1 px-4 pb-8 animate-fadeIn">{children}</main>
             <Footer />
           </div>
         </div>
