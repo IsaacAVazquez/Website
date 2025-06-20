@@ -2,10 +2,8 @@
 
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
-import { Highlight } from "@/components/Highlight";
 import { Paragraph } from "@/components/Paragraph";
 import { Circles } from "@/components/Circles";
-import Link from "next/link";
 
 const funFacts = [
   "I am an avid chef and foodie.",
