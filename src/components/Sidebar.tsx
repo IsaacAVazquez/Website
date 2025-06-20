@@ -65,7 +65,7 @@ export const Navigation = ({
           href={link.href}
           onClick={() => isMobile() && setOpen(false)}
           className={twMerge(
-            "group relative text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-[1rem] font-medium dark:hover:bg-neutral-700/30 overflow-hidden focus:outline-none focus:ring-2 focus:ring-sky-400",
+            "group relative text-secondary dark:text-gray-300 hover:text-primary dark:hover:text-cyan-200 transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-[1rem] font-medium dark:hover:bg-neutral-700/30 overflow-hidden focus:outline-none focus:ring-2 focus:ring-sky-400",
             isActive(link.href) &&
               "bg-white/90 dark:bg-neutral-700/70 shadow-lg text-sky-600 dark:text-cyan-300"
           )}
@@ -83,7 +83,9 @@ export const Navigation = ({
             <link.icon
               className={twMerge(
                 "h-5 w-5 flex-shrink-0 group-hover:scale-110 transition-transform",
-                isActive(link.href) && "text-sky-500 dark:text-cyan-300"
+                isActive(link.href)
+                  ? "text-sky-500 dark:text-cyan-300"
+                  : "dark:text-gray-300"
               )}
             />
           ) : null}
@@ -91,7 +93,7 @@ export const Navigation = ({
         </Link>
       ))}
 
-      <Heading as="p" className="text-sm pt-10 px-2 text-secondary font-semibold tracking-wider opacity-70">
+      <Heading as="p" className="text-sm pt-10 px-2 text-secondary dark:text-gray-400 font-semibold tracking-wider opacity-70">
         Socials
       </Heading>
       <div className="flex flex-wrap gap-2 mt-1 px-2">
