@@ -2,15 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export const Badge = ({
-  text,
-  href,
-  ...props
-}: {
+type BadgeProps = {
   text: string;
   href: string;
-  props?: React.ComponentProps<typeof Link>;
-}) => {
+} & React.ComponentProps<typeof Link>;
+
+export const Badge = ({ text, href, ...props }: BadgeProps) => {
   return (
     <Link
       href={href}
@@ -31,9 +28,9 @@ export const Badge = ({
         >
           <motion.path
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
             d="M10.75 8.75L14.25 12L10.75 15.25"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
@@ -41,7 +38,6 @@ export const Badge = ({
           ></motion.path>
         </svg>
       </div>
-      <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
     </Link>
   );
 };
