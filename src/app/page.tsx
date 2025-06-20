@@ -5,44 +5,70 @@ import { Heading } from "@/components/Heading";
 import { Highlight } from "@/components/Highlight";
 import { Paragraph } from "@/components/Paragraph";
 import { Circles } from "@/components/Circles";
-// Update the import path below to the correct location of TextGenerateEffect, or remove if not available
-// import { TextGenerateEffect } from "../ui/text-generate-effect";
+import Link from "next/link";
 
-// If you have the correct path for TextGenerateEffect, update and uncomment the imports and usage below.
-// Otherwise, remove the TextGenerateEffectDemo and its usage to avoid errors.
+const funFacts = [
+  "I am an avid chef and foodie.",
+  "I am a really big policy nerd.",
+  "I love working with data and analytics.",
+  "I break things so you don’t have to.",
+  "Fantasy football champion (at least once).",
+];
+
+function FunFacts() {
+  return (
+    <ul className="list-disc pl-6 space-y-1 text-gray-700 dark:text-teal-200">
+      {funFacts.map((fact, i) => (
+        <li key={i} className="transition-all hover:scale-105 hover:text-blue-500 dark:hover:text-yellow-300">{fact}</li>
+      ))}
+    </ul>
+  );
+}
 
 export default function Home() {
   return (
     <Container>
-      <div className="relative h-40 mb-8 sm:h-60">
+      {/* Hero section with animated gradient and emoji */}
+      <div className="relative h-40 mb-12 sm:h-60 flex items-center justify-center">
         <Circles />
+        <span className="absolute z-10 text-7xl animate-wiggle select-none pointer-events-none drop-shadow-xl">
+          👋
+        </span>
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-300/30 via-transparent to-purple-400/20 dark:from-indigo-900/50 dark:to-fuchsia-900/30 blur-3xl" />
       </div>
-      <span className="text-4xl">👋</span>
-      <Heading className="font-black">Hello there! I&apos;m Isaac</Heading>
-      <Paragraph className="max-w-xl mt-4">
-        I&apos;m a <Highlight>QA engineer</Highlight> and data enthusiast focused
-        on building reliable software.
+
+      <Heading className="font-black text-5xl mb-4 tracking-tight bg-gradient-to-r from-blue-600 via-teal-400 to-purple-600 bg-clip-text text-transparent dark:from-cyan-300 dark:via-indigo-200 dark:to-purple-400">
+        Hey, I&apos;m Isaac
+      </Heading>
+      <Paragraph className="max-w-xl mt-3 text-lg text-gray-800 dark:text-teal-200">
+        I'm a QA engineer by day but I love building things. Data whisperer. Builder of things that don’t break (well, at least not twice).  
+        My mission? <span className="font-semibold text-blue-600 dark:text-teal-300">Build things that real people use and enjoy.</span>
       </Paragraph>
-      <Paragraph className="max-w-xl mt-4">
-        {/* You can add more content here if needed */}
-        {/* Example placeholder text */}
-        {/* Remove or replace this text as needed */}
-        &nbsp;
+      <Paragraph className="max-w-xl mt-3 text-gray-700 dark:text-gray-300">
+        I thrive where on the cutting edge, catching bugs before they bite, and shipping software you can trust.
       </Paragraph>
-      <div className="mt-8">
-        {/* TextGenerateEffectDemo removed due to missing implementation */}
+      <div className="mt-10">
+        <Heading as="h2" className="text-2xl font-bold mb-2 text-gray-900 dark:text-yellow-200">
+          Fun Facts About Me
+        </Heading>
+        <FunFacts />
       </div>
-      <div className="mt-20" />
-      <Paragraph className="max-w-xl mt-4">
-        {/* You can add more content here if needed */}
-        {/* Example content: */}
-        Welcome to my website!
-      </Paragraph>
-      <div className="mt-8">
-        {/* TextGenerateEffectDemo removed due to missing implementation */}
-      </div>
-      <div className="mt-20" />
+      
+      {/* You can uncomment the following for a text animation intro! */}
+      {/* <div className="max-w-xl mt-4 text-center text-xl mx-auto">
+        <TextGenerateEffect words={words} />
+      </div> */}
+      <style jsx global>{`
+        @keyframes wiggle {
+          0%, 100% { transform: rotate(-12deg) scale(1);}
+          25% { transform: rotate(6deg) scale(1.1);}
+          50% { transform: rotate(-4deg) scale(1);}
+          75% { transform: rotate(8deg) scale(1.05);}
+        }
+        .animate-wiggle {
+          animation: wiggle 2s infinite;
+        }
+      `}</style>
     </Container>
   );
 }
-
