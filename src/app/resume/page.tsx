@@ -1,9 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
 import { Paragraph } from "@/components/Paragraph";
-import Image from "next/image";
 
 const skills = [
   "A/B Testing", "Agile/Scrum", "Charting & Data Visualization", "Cypress", "Data Analysis",
@@ -11,7 +11,17 @@ const skills = [
   "Product Roadmapping", "SQL", "Stakeholder Management", "Tableau", "User Research"
 ];
 
+// Set your reveal date (YYYY, MM-1, DD)
+const mbaRevealDate = new Date(2025, 7, 1); // August 1, 2025
+
 export default function Resume() {
+  const [showMBA, setShowMBA] = useState(false);
+
+  useEffect(() => {
+    const now = new Date();
+    setShowMBA(now >= mbaRevealDate);
+  }, []);
+
   return (
     <Container className="max-w-2xl mx-auto px-6 py-12 bg-white/80 dark:bg-neutral-900/80 rounded-2xl shadow-2xl backdrop-blur-md transition-colors">
       <div className="relative flex items-center mb-10">
@@ -41,9 +51,11 @@ export default function Resume() {
       </div>
 
       <Paragraph className="mb-10 text-gray-800 dark:text-teal-100 text-lg">
-        <span className="block font-semibold text-gray-900 dark:text-white text-xl">
-        MBA Candidate at University of California, Berkeley, Haas School of Business
-        </span>
+        {showMBA ? (
+          <span className="block font-semibold text-gray-900 dark:text-white text-xl">
+            MBA Candidate at University of California, Berkeley, Haas School of Business
+          </span>
+        ) : null}
         <span className="block">
           QA Engineer with a record of advancing product quality, release velocity, and cross-functional team collaboration in high-growth tech and civic engagement organizations.
         </span>
@@ -54,11 +66,13 @@ export default function Resume() {
           Education
         </Heading>
         <div className="space-y-2">
-          <Paragraph className="mb-0">
-            <span className="font-bold text-gray-900 dark:text-white">University of California, Berkeley – Haas School of Business</span>
-            <br />
-            <span className="text-gray-700 dark:text-gray-300">Master of Business Administration, Consortium Fellow (May 2027)</span>
-          </Paragraph>
+          {showMBA ? (
+            <Paragraph className="mb-0">
+              <span className="font-bold text-gray-900 dark:text-white">University of California, Berkeley – Haas School of Business</span>
+              <br />
+              <span className="text-gray-700 dark:text-gray-300">Master of Business Administration, Consortium Fellow (May 2027)</span>
+            </Paragraph>
+          ) : null}
           <Paragraph className="mb-0">
             <span className="font-bold text-gray-900 dark:text-white">Florida State University</span>
             <br />
@@ -119,9 +133,10 @@ export default function Resume() {
         <Heading level={2} className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
           Additional
         </Heading>
-        <Paragraph className="mb-2 text-gray-700 dark:text-gray-300">
-          MLT MBA Professional Development Fellow, Consortium Fellow, MBA Prep Ambassador.
-        </Paragraph>
+        {showMBA && (
+          <Paragraph className="mb-2 text-gray-700 dark:text-gray-300">
+          </Paragraph>
+        )}
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
             <span
@@ -136,7 +151,6 @@ export default function Resume() {
       <div className="mt-12 text-center text-xs text-gray-500 dark:text-gray-600">
         2025 — Built by Isaac Vazquez
       </div>
-      {/* Emoji wiggle animation */}
       <style jsx global>{`
         @keyframes wiggle {
           0%, 100% { transform: rotate(-7deg) scale(1);}
