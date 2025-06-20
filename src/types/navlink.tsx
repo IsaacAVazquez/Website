@@ -1,7 +1,8 @@
-import React from "react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
+import { IconProps, Icon } from "@tabler/icons-react";
 
 export type Navlink = {
   href: string;
   label: string;
-  icon?: React.ReactNode | React.ComponentType<any>;
+  icon: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
 };
