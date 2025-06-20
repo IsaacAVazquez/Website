@@ -5,30 +5,20 @@ export const DarkModeToggle = () => {
   const [dark, setDark] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // On mount, check localStorage or system preference
     const stored = localStorage.getItem("theme");
-    if (stored === "dark") {
-      setDark(true);
-    } else if (stored === "light") {
-      setDark(false);
-    } else {
-      // Fallback to system preference
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setDark(prefersDark);
-    }
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = stored === "dark" || (!stored && prefersDark);
+    setDark(isDark);
+    document.documentElement.classList.toggle("dark", isDark);
   }, []);
 
-  useEffect(() => {
+  const toggleTheme = () => {
     if (dark === null) return;
-    const root = document.documentElement;
-    if (dark) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [dark]);
+    const newDark = !dark;
+    setDark(newDark);
+    document.documentElement.classList.toggle("dark", newDark);
+    localStorage.setItem("theme", newDark ? "dark" : "light");
+  };
 
   if (dark === null) return null; // Prevent hydration mismatch
 
@@ -36,7 +26,7 @@ export const DarkModeToggle = () => {
     <button
       aria-label="Toggle dark mode"
       className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-700 transition"
-      onClick={() => setDark(!dark)}
+      onClick={toggleTheme}
     >
       {dark ? "🌙" : "☀️"}
     </button>
