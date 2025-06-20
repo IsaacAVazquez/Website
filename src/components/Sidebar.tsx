@@ -21,18 +21,24 @@ export const Sidebar = () => {
     <>
       <AnimatePresence>
         {open && (
-          <motion.div
+          <motion.aside // changed from div to aside for semantics
             initial={{ x: -64, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
             exit={{ x: -64, opacity: 0 }}
-            className="px-6 z-[100] py-10 bg-neutral-100/80 dark:bg-neutral-800/85 max-w-[15rem] lg:w-fit fixed lg:relative h-screen left-0 flex flex-col justify-between shadow-xl border-r border-neutral-200 dark:border-neutral-700/40 backdrop-blur-xl"
+            // Key changes are below:
+            className="flex flex-col h-screen justify-between
+              px-6 z-[100] py-10 bg-neutral-100/80 dark:bg-neutral-800/85
+              max-w-[15rem] w-full lg:w-fit fixed lg:relative left-0 top-0
+              shadow-xl border-r border-neutral-200 dark:border-neutral-700/40
+              backdrop-blur-xl"
           >
-            <div className="flex-1 overflow-auto">
+            <div className="flex-1 flex flex-col overflow-auto">
               <SidebarHeader />
               <Navigation setOpen={setOpen} />
             </div>
-          </motion.div>
+            {/* You can put any sticky-bottom elements here if needed */}
+          </motion.aside>
         )}
       </AnimatePresence>
       <motion.button
@@ -47,6 +53,7 @@ export const Sidebar = () => {
     </>
   );
 };
+
 
 export const Navigation = ({
   setOpen,
@@ -65,7 +72,7 @@ export const Navigation = ({
           href={link.href}
           onClick={() => isMobile() && setOpen(false)}
           className={twMerge(
-            "group relative text-secondary dark:text-gray-300 hover:text-primary dark:hover:text-cyan-200 transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-[1rem] font-medium dark:hover:bg-neutral-700/30 overflow-hidden focus:outline-none focus:ring-2 focus:ring-sky-400",
+            "group relative text-secondary dark:text-gray-300 hover:text-primary dark:hover:text-cyan-200 transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-[1rem] font-medium dark:hover:bg-neutral-700/30 focus:outline-none focus:ring-2 focus:ring-sky-400",
             isActive(link.href) &&
               "bg-white/90 dark:bg-neutral-700/70 shadow-lg text-sky-600 dark:text-cyan-300"
           )}
@@ -133,7 +140,7 @@ const SidebarHeader = () => {
           }}
         />
         {/* Animated online dot */}
-        <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald-400 ring-2 ring-white dark:ring-neutral-800 animate-pulse" />
+       <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald-400 ring-2 ring-white dark:ring-neutral-800 animate-pulse" />
       </div>
       <div className="flex flex-col">
         <span className="font-extrabold text-primary dark:text-cyan-200 text-base leading-tight">Isaac Vazquez</span>

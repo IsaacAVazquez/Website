@@ -68,26 +68,23 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={twMerge(
-          inter.className,
-          "flex antialiased min-h-screen overflow-hidden bg-gradient-to-br from-teal-100 via-white to-violet-200 dark:from-[#101924] dark:via-[#121317] dark:to-[#27273d] text-neutral-900 dark:text-neutral-200"
-        )}
-      >
-        <Sidebar />
-        <div className="lg:pl-2 lg:pt-2 flex-1 overflow-y-auto relative">
-          <BackgroundEffects /> {/* Only use the component here */}
-          <div className="relative z-10 flex flex-col min-h-screen lg:rounded-tl-2xl border border-transparent lg:border-neutral-700/40 overflow-y-auto bg-white/90 dark:bg-neutral-950/85 backdrop-blur-xl shadow-2xl transition-colors duration-500">
-            <div className="p-4 flex justify-end">
-              <div className="hover:scale-110 transition-transform duration-200">
-                <DarkModeToggle />
-              </div>
-            </div>
-            <main className="flex-1 px-4 pb-8 animate-fadeIn">{children}</main>
-            <Footer />
-          </div>
-        </div>
-      </body>
+<body
+  className={twMerge(
+    inter.className,
+    "flex min-h-screen antialiased overflow-hidden bg-gradient-to-br from-teal-100 via-white to-violet-200 dark:from-[#101924] dark:via-[#121317] dark:to-[#27273d] text-neutral-900 dark:text-neutral-200"
+  )}
+>
+  <Sidebar />
+  <div className="flex-1 flex flex-col h-screen min-h-screen">
+    <BackgroundEffects />
+    <div className="relative z-10 flex flex-col flex-1 lg:rounded-tl-2xl border border-transparent lg:border-neutral-700/40 overflow-y-auto bg-white/90 dark:bg-neutral-950/85 backdrop-blur-xl shadow-2xl transition-colors duration-500">
+      {/* ... your content ... */}
+      <main className="flex-1 px-4 pb-8 animate-fadeIn">{children}</main>
+      <Footer />
+    </div>
+  </div>
+</body>
+
     </html>
   );
 }

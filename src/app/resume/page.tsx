@@ -32,10 +32,10 @@ export default function Resume() {
           </Heading>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-700 dark:text-gray-200 text-sm">
             <a
-              href="mailto:isaacvazquez@mba.berkeley.edu"
+              href="mailto:isaacavazquez95gmail.com"
               className="underline hover:text-blue-500 dark:hover:text-teal-300 transition"
             >
-              isaacvazquez@mba.berkeley.edu
+              isaacavazquez95gmail.com
             </a>
             <span className="hidden sm:inline">&bull;</span>
             <a
