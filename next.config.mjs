@@ -14,7 +14,7 @@ const nextConfig = {
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
-  options: {
+  mdxOptions: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypePrism],
   },

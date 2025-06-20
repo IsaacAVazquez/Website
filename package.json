@@ -26,6 +26,7 @@
     "eslint-config-next": "15.3.4",
     "framer-motion": "^12.18.1",
     "motion": "^12.18.1",
+    "type": "module",
     "next": "15.3.4",
     "prismjs": "^1.30.0",
     "react": "19.1.0",
@@ -35,10 +36,11 @@
     "typescript": "5.8.3"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.10",
+    "@vitejs/plugin-react": "^4.5.2",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.10",
-    "vite": "^5.2.0",
-    "@vitejs/plugin-react": "^4.2.1"
+    "vite": "^6.3.5"
   }
 }

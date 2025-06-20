@@ -25,6 +25,9 @@ export default function Home() {
       </Paragraph>
       <Paragraph className="max-w-xl mt-4">
         {/* You can add more content here if needed */}
+        {/* Example placeholder text */}
+        {/* Remove or replace this text as needed */}
+        &nbsp;
       </Paragraph>
       <div className="mt-8">
         {/* TextGenerateEffectDemo removed due to missing implementation */}

@@ -1,7 +1,15 @@
-import type { Config } from "tailwindcss";
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+import type { Config } from "tailwindcss" with { "resolution-mode": "import" };
+// flattenColorPalette is not exported publicly by Tailwind, so we define it here
+function flattenColorPalette(colors: Record<string, any>, target: Record<string, any> = {}, prefix = ""): Record<string, any> {
+  for (const [key, value] of Object.entries(colors)) {
+    if (typeof value === "object" && value !== null) {
+      flattenColorPalette(value, target, prefix ? `${prefix}-${key}` : key);
+    } else {
+      target[prefix ? `${prefix}-${key}` : key] = value;
+    }
+  }
+  return target;
+}
 
 const config: Config = {
   darkMode: "class",
