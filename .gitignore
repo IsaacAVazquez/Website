@@ -37,3 +37,4 @@ yarn-error.log*
 # Bolt specific
 .bolt/
 .next/
+.next/
