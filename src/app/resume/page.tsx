@@ -62,7 +62,7 @@ export default function Resume() {
       </Paragraph>
 
       <section className="mb-10">
-        <Heading level={2} className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
+        <Heading as="h2" className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
           Education
         </Heading>
         <div className="space-y-2">
@@ -82,12 +82,12 @@ export default function Resume() {
       </section>
 
       <section className="mb-10">
-        <Heading level={2} className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
+        <Heading as="h2" className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
           Experience
         </Heading>
         <div className="space-y-6">
           <div>
-            <Heading level={3} className="font-bold text-gray-800 dark:text-white">
+            <Heading as="h3" className="font-bold text-gray-800 dark:text-white">
               Civitech, Austin, TX
             </Heading>
             <Paragraph className="mb-1">
@@ -104,7 +104,7 @@ export default function Resume() {
             </Paragraph>
           </div>
           <div>
-            <Heading level={3} className="font-bold text-gray-800 dark:text-white">
+            <Heading as="h3" className="font-bold text-gray-800 dark:text-white">
               Open Progress, Los Angeles, CA
             </Heading>
             <Paragraph className="mb-1">
@@ -130,11 +130,13 @@ export default function Resume() {
       </section>
 
       <section>
-        <Heading level={2} className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
+        <Heading as="h2" className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
           Additional
         </Heading>
         {showMBA && (
           <Paragraph className="mb-2 text-gray-700 dark:text-gray-300">
+            {/* Add content here if needed */}
+            {/* No additional content for now */}
           </Paragraph>
         )}
         <div className="flex flex-wrap gap-2">
