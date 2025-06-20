@@ -135,8 +135,7 @@ export default function Resume() {
         </Heading>
         {showMBA && (
           <Paragraph className="mb-2 text-gray-700 dark:text-gray-300">
-            {/* Add content here if needed */}
-            {/* No additional content for now */}
+            Coming soon: MBA-related achievements and fellowships.
           </Paragraph>
         )}
         <div className="flex flex-wrap gap-2">
