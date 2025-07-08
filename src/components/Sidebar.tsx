@@ -28,9 +28,9 @@ export const Sidebar = () => {
             exit={{ x: -64, opacity: 0 }}
             // Key changes are below:
             className="flex flex-col h-screen justify-between
-              px-6 z-[100] py-10 bg-neutral-100/80 dark:bg-neutral-800/85
+              px-6 z-[100] py-10 bg-terminal-bg/90 dark:bg-terminal-bg/95
               max-w-[15rem] w-full lg:w-fit fixed lg:relative left-0 top-0
-              shadow-xl border-r border-neutral-200 dark:border-neutral-700/40
+              shadow-xl border-r border-electric-blue/20 dark:border-electric-blue/30
               backdrop-blur-xl"
           >
             <div className="flex-1 flex flex-col overflow-auto">
@@ -44,11 +44,11 @@ export const Sidebar = () => {
       <motion.button
         whileTap={{ scale: 0.85 }}
         whileHover={{ scale: 1.07 }}
-        className="fixed lg:hidden bottom-4 right-4 h-10 w-10 border border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-800/60 rounded-full backdrop-blur-md flex items-center justify-center z-50 shadow-lg transition-all"
+        className="fixed lg:hidden bottom-4 right-4 h-10 w-10 border border-electric-blue/30 bg-terminal-bg/80 rounded-full backdrop-blur-md flex items-center justify-center z-50 shadow-lg transition-all glow-effect"
         onClick={() => setOpen(!open)}
         aria-label="Toggle sidebar"
       >
-        <IconLayoutSidebarRightCollapse className="h-5 w-5 text-secondary dark:text-gray-300" />
+        <IconLayoutSidebarRightCollapse className="h-5 w-5 text-electric-blue" />
       </motion.button>
     </>
   );
@@ -72,9 +72,9 @@ export const Navigation = ({
           href={link.href}
           onClick={() => isMobile() && setOpen(false)}
           className={twMerge(
-            "group relative text-secondary dark:text-gray-300 hover:text-primary dark:hover:text-cyan-200 transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-[1rem] font-medium dark:hover:bg-neutral-700/30 focus:outline-none focus:ring-2 focus:ring-sky-400",
+            "group relative text-slate-400 hover:text-electric-blue transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-[1rem] font-medium hover:bg-electric-blue/10 focus:outline-none focus:ring-2 focus:ring-electric-blue font-terminal",
             isActive(link.href) &&
-              "bg-white/90 dark:bg-neutral-700/70 shadow-lg text-sky-600 dark:text-cyan-300"
+              "bg-electric-blue/20 shadow-lg text-electric-blue border border-electric-blue/30"
           )}
         >
           {/* Animated active underline */}
@@ -82,8 +82,8 @@ export const Navigation = ({
             layoutId="activeLink"
             transition={{ type: "spring", stiffness: 350, damping: 30 }}
             className={twMerge(
-              "absolute left-0 top-0 h-full w-[5px] rounded bg-sky-400 dark:bg-cyan-400 opacity-0 group-hover:opacity-40",
-              isActive(link.href) && "opacity-100"
+              "absolute left-0 top-0 h-full w-[3px] rounded bg-electric-blue opacity-0 group-hover:opacity-60",
+              isActive(link.href) && "opacity-100 shadow-electric"
             )}
           />
           {typeof link.icon === "function" ? (
@@ -91,8 +91,8 @@ export const Navigation = ({
               className={twMerge(
                 "h-5 w-5 flex-shrink-0 group-hover:scale-110 transition-transform",
                 isActive(link.href)
-                  ? "text-sky-500 dark:text-cyan-300"
-                  : "dark:text-gray-300"
+                  ? "text-electric-blue"
+                  : "text-slate-400"
               )}
             />
           ) : null}
@@ -100,8 +100,8 @@ export const Navigation = ({
         </Link>
       ))}
 
-      <Heading as="p" className="text-sm pt-10 px-2 text-secondary dark:text-gray-400 font-semibold tracking-wider opacity-70">
-        Socials
+      <Heading as="p" className="text-sm pt-10 px-2 text-slate-500 font-terminal font-semibold tracking-wider opacity-70 uppercase">
+        Social_Links
       </Heading>
       <div className="flex flex-wrap gap-2 mt-1 px-2">
         {socials.map((link: Navlink) => (
@@ -110,7 +110,7 @@ export const Navigation = ({
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm rounded-full bg-blue-50 dark:bg-neutral-700/40 px-3 py-1 shadow hover:shadow-lg hover:bg-blue-100 dark:hover:bg-cyan-900/50 transition"
+            className="flex items-center gap-2 text-sm rounded-full bg-terminal-bg/50 border border-matrix-green/30 text-matrix-green px-3 py-1 shadow hover:shadow-lg hover:bg-matrix-green/10 hover:border-matrix-green transition font-terminal"
           >
             {typeof link.icon === "function" ? (
               <link.icon className="h-4 w-4" />
@@ -129,33 +129,35 @@ const SidebarHeader = () => {
       <div className="relative">
         <Image
           src="/favicon.png"
-          alt="Avatar"
+          alt="Isaac Vazquez Avatar"
           height={48}
           width={48}
           sizes="48px"
-          className="object-cover object-top rounded-full bg-neutral-300 dark:bg-neutral-700 shadow border-2 border-white dark:border-neutral-800"
+          className="object-cover object-top rounded-full bg-terminal-bg shadow border-2 border-electric-blue/50"
           priority
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = "/default-avatar.png";
-          }}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAADAAQDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAbEAADAAMBAQAAAAAAAAAAAAABAgMABAURUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAECEf/aAAwDAQACEQMRAD8Amo1owkKnothG7HzGnx"
         />
         {/* Animated online dot */}
-       <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald-400 ring-2 ring-white dark:ring-neutral-800 animate-pulse" />
+       <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-matrix-green ring-2 ring-terminal-bg animate-pulse" />
       </div>
       <div className="flex flex-col">
-        <span className="font-extrabold text-primary dark:text-cyan-200 text-base leading-tight">Isaac Vazquez</span>
+        <span className="font-extrabold text-electric-blue text-base leading-tight font-heading">ISAAC VAZQUEZ</span>
         <span className="inline-flex items-center gap-1 mt-1">
           <Badge text="QA Engineer" href="/about" />
         </span>
       </div>
       <style jsx global>{`
         @keyframes glow {
-          0% { box-shadow: 0 0 6px 2px #38bdf8aa, 0 0 0px 0 #38bdf855; }
-          50% { box-shadow: 0 0 24px 6px #38bdf8cc, 0 0 4px 1px #06b6d4bb; }
-          100% { box-shadow: 0 0 6px 2px #38bdf8aa, 0 0 0px 0 #38bdf855; }
+          0% { box-shadow: 0 0 6px 2px rgba(0, 245, 255, 0.4), 0 0 0px 0 rgba(0, 245, 255, 0.2); }
+          50% { box-shadow: 0 0 24px 6px rgba(0, 245, 255, 0.6), 0 0 4px 1px rgba(57, 255, 20, 0.4); }
+          100% { box-shadow: 0 0 6px 2px rgba(0, 245, 255, 0.4), 0 0 0px 0 rgba(0, 245, 255, 0.2); }
         }
         .animate-glow {
           animation: glow 2.5s infinite;
+        }
+        .shadow-electric {
+          box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
         }
       `}</style>
     </div>

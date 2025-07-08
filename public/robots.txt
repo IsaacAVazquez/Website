@@ -1,0 +1,14 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://isaacvazquez.com/sitemap.xml
+
+# Crawl-delay for politeness (optional)
+Crawl-delay: 1
+
+# Disallow crawling of development/admin areas if any
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/

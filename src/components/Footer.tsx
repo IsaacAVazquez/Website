@@ -4,16 +4,16 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <footer className="relative z-20 flex flex-col items-center justify-center p-5 pb-2 min-h-[72px] bg-gradient-to-t from-neutral-200/70 dark:from-neutral-900/80 to-transparent backdrop-blur rounded-t-xl border-t border-neutral-200 dark:border-neutral-800">
-      <div className="flex items-center gap-2 text-base font-semibold text-neutral-700 dark:text-neutral-300 mb-1 animate-footerIn">
-        <span className="text-lg animate-wave select-none">🛠️</span>
+    <footer className="relative z-20 flex flex-col items-center justify-center p-5 pb-2 min-h-[72px] bg-gradient-to-t from-terminal-bg/70 to-transparent backdrop-blur rounded-t-xl border-t border-electric-blue/20">
+      <div className="flex items-center gap-2 text-base font-semibold text-slate-400 mb-1 animate-footerIn font-terminal">
+        <span className="text-lg animate-wave select-none">⚡</span>
         <span>{new Date().getFullYear()}</span>
-        <span>&#8212; Built by</span>
+        <span>&#8212; BUILT BY</span>
         <a
           href="https://isaacvazquez.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-teal-400 to-purple-600 dark:from-cyan-300 dark:via-indigo-200 dark:to-purple-400 hover:drop-shadow-glow transition"
+          className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-electric-blue via-matrix-green to-neon-purple hover:drop-shadow-glow transition uppercase"
         >
           Isaac Vazquez
         </a>
@@ -24,7 +24,7 @@ export const Footer = () => {
           aria-label="LinkedIn"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-600 dark:hover:text-teal-300 transition"
+          className="text-slate-500 hover:text-electric-blue transition"
         >
           <FaLinkedin size={18} />
         </a>
@@ -33,7 +33,7 @@ export const Footer = () => {
           aria-label="GitHub"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-gray-800 dark:hover:text-gray-200 transition"
+          className="text-slate-500 hover:text-matrix-green transition"
         >
           <FaGithub size={18} />
         </a>
@@ -58,7 +58,7 @@ export const Footer = () => {
           display: inline-block;
         }
         .drop-shadow-glow {
-          filter: drop-shadow(0 0 4px #38bdf8bb);
+          filter: drop-shadow(0 0 4px rgba(0, 245, 255, 0.6));
         }
       `}</style>
     </footer>

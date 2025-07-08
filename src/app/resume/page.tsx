@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
 import { Paragraph } from "@/components/Paragraph";
 
@@ -23,24 +22,25 @@ export default function Resume() {
   }, []);
 
   return (
-    <Container className="max-w-2xl mx-auto px-6 py-12 bg-white/80 dark:bg-neutral-900/80 rounded-2xl shadow-2xl backdrop-blur-md transition-colors">
-      <div className="relative flex items-center mb-10">
-        <span className="text-6xl mr-6 animate-wiggle drop-shadow-lg select-none">💼</span>
-        <div>
-          <Heading className="font-extrabold text-3xl mb-1 tracking-tight bg-gradient-to-r from-blue-600 via-teal-400 to-purple-600 bg-clip-text text-transparent dark:from-cyan-300 dark:via-indigo-200 dark:to-purple-400">
-            Isaac Vazquez
-          </Heading>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-700 dark:text-gray-200 text-sm">
+    <div className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto p-8 bg-terminal-bg/50 rounded-2xl shadow-2xl backdrop-blur-md border border-electric-blue/20">
+        <div className="relative flex items-center mb-10">
+          <span className="text-6xl mr-6 animate-wiggle drop-shadow-lg select-none">⚡</span>
+          <div>
+            <Heading className="font-extrabold text-3xl mb-1 tracking-tight gradient-text font-heading">
+              ISAAC VAZQUEZ
+            </Heading>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-400 font-terminal text-sm">
             <a
               href="mailto:isaacavazquez95gmail.com"
-              className="underline hover:text-blue-500 dark:hover:text-teal-300 transition"
+              className="underline hover:text-electric-blue transition"
             >
               isaacavazquez95gmail.com
             </a>
-            <span className="hidden sm:inline">&bull;</span>
+            <span className="hidden sm:inline text-matrix-green">&bull;</span>
             <a
               href="https://linkedin.com/in/isaac-vazquez"
-              className="underline hover:text-blue-500 dark:hover:text-teal-300 transition"
+              className="underline hover:text-electric-blue transition"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -50,9 +50,9 @@ export default function Resume() {
         </div>
       </div>
 
-      <Paragraph className="mb-10 text-gray-800 dark:text-teal-100 text-lg">
+      <Paragraph className="mb-10 text-slate-300 font-terminal text-lg">
         {showMBA ? (
-          <span className="block font-semibold text-gray-900 dark:text-white text-xl">
+          <span className="block font-semibold text-electric-blue text-xl">
             MBA Candidate at University of California, Berkeley, Haas School of Business
           </span>
         ) : null}
@@ -62,37 +62,37 @@ export default function Resume() {
       </Paragraph>
 
       <section className="mb-10">
-        <Heading as="h2" className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
-          Education
+        <Heading as="h2" className="text-xl font-semibold mb-3 text-electric-blue font-heading">
+          EDUCATION
         </Heading>
         <div className="space-y-2">
           {showMBA ? (
-            <Paragraph className="mb-0">
-              <span className="font-bold text-gray-900 dark:text-white">University of California, Berkeley – Haas School of Business</span>
+            <Paragraph className="mb-0 font-terminal">
+              <span className="font-bold text-matrix-green">University of California, Berkeley – Haas School of Business</span>
               <br />
-              <span className="text-gray-700 dark:text-gray-300">Master of Business Administration, Consortium Fellow (May 2027)</span>
+              <span className="text-slate-400">Master of Business Administration, Consortium Fellow (May 2027)</span>
             </Paragraph>
           ) : null}
-          <Paragraph className="mb-0">
-            <span className="font-bold text-gray-900 dark:text-white">Florida State University</span>
+          <Paragraph className="mb-0 font-terminal">
+            <span className="font-bold text-matrix-green">Florida State University</span>
             <br />
-            <span className="text-gray-700 dark:text-gray-300">B.A., Political Science and International Affairs, magna cum laude (Dec 2018)</span>
+            <span className="text-slate-400">B.A., Political Science and International Affairs, magna cum laude (Dec 2018)</span>
           </Paragraph>
         </div>
       </section>
 
       <section className="mb-10">
-        <Heading as="h2" className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
-          Experience
+        <Heading as="h2" className="text-xl font-semibold mb-3 text-electric-blue font-heading">
+          EXPERIENCE
         </Heading>
         <div className="space-y-6">
           <div>
-            <Heading as="h3" className="font-bold text-gray-800 dark:text-white">
-              Civitech, Austin, TX
+            <Heading as="h3" className="font-bold text-matrix-green font-heading">
+              CIVITECH, AUSTIN, TX
             </Heading>
-            <Paragraph className="mb-1">
-              <span className="font-semibold text-gray-900 dark:text-teal-100">Quality Assurance Engineer</span>
-              <span className="text-gray-500 dark:text-gray-400"> (Feb 2025–Present)</span>
+            <Paragraph className="mb-1 font-terminal">
+              <span className="font-semibold text-electric-blue">Quality Assurance Engineer</span>
+              <span className="text-slate-500"> (Feb 2025–Present)</span>
               <br />
               Orchestrated release-governance framework integrating QA, DevOps, and Security workflows—cutting critical production defects by 50% quarter over quarter. Designed unified automation framework, enabling same-day validation of releases and faster stakeholder sign-off. Represented QA in sprint reviews and backlog refinement, driving quality criteria and on-time launches.
             </Paragraph>
@@ -130,11 +130,11 @@ export default function Resume() {
       </section>
 
       <section>
-        <Heading as="h2" className="text-xl font-semibold mb-3 text-blue-900 dark:text-teal-200">
-          Additional
+        <Heading as="h2" className="text-xl font-semibold mb-3 text-electric-blue font-heading">
+          SKILLS
         </Heading>
         {showMBA && (
-          <Paragraph className="mb-2 text-gray-700 dark:text-gray-300">
+          <Paragraph className="mb-2 text-slate-400 font-terminal">
             Coming soon: MBA-related achievements and fellowships.
           </Paragraph>
         )}
@@ -142,7 +142,7 @@ export default function Resume() {
           {skills.map((skill) => (
             <span
               key={skill}
-              className="px-3 py-1 mb-1 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-200 text-xs font-semibold shadow transition hover:scale-105 hover:bg-blue-200 dark:hover:bg-teal-800"
+              className="px-3 py-1 mb-1 rounded-full bg-terminal-bg/70 border border-matrix-green/30 text-matrix-green text-xs font-semibold shadow transition hover:scale-105 hover:border-matrix-green hover:bg-matrix-green/10 font-terminal"
             >
               {skill}
             </span>
@@ -160,6 +160,7 @@ export default function Resume() {
           animation: wiggle 2s infinite;
         }
       `}</style>
-    </Container>
+      </div>
+    </div>
   );
 }

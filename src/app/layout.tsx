@@ -1,48 +1,47 @@
-import { Sidebar } from "@/components/Sidebar";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Syne, DM_Sans, JetBrains_Mono, Orbitron } from "next/font/google";
 import { twMerge } from "tailwind-merge";
-import { Footer } from "@/components/Footer";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
-import { BackgroundEffects } from "@/components/BackgroundEffects"; // import your client component
+import { constructMetadata } from "@/lib/seo";
+import { StructuredData } from "@/components/StructuredData";
+import { ConditionalLayout } from "@/components/ConditionalLayout";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: [
-    "100",
-    "200",
-    "300",
-    "400",
-    "500",
-    "600",
-    "700",
-    "800",
-    "900",
-  ],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Isaac Vazquez – QA Engineer & Builder",
-  description:
-    "QA engineer, civic tech advocate, and data enthusiast. Isaac Vazquez crafts reliable, user-centered products for a better democracy.",
-  icons: {
-    icon: "/favicon.png",
-  },
-  openGraph: {
-    title: "Isaac Vazquez – QA Engineer & Builder",
-    description:
-      "QA engineer, civic tech advocate, and data enthusiast. Isaac Vazquez crafts reliable, user-centered products for a better democracy.",
-    images: ["/og-image.png"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Isaac Vazquez – QA Engineer & Builder",
-    description:
-      "QA engineer, civic tech advocate, and data enthusiast. Isaac Vazquez crafts reliable, user-centered products for a better democracy.",
-    images: ["/og-image.png"],
-  },
-};
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-orbitron",
+  display: "swap",
+});
+
+export const metadata = constructMetadata();
 
 export default function RootLayout({
   children,
@@ -52,6 +51,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth-dark">
       <head>
+        <StructuredData type="Person" />
+        <StructuredData type="WebSite" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(() => {
@@ -68,23 +69,24 @@ export default function RootLayout({
           }}
         />
       </head>
-<body
-  className={twMerge(
-    inter.className,
-    "flex min-h-screen antialiased overflow-hidden bg-gradient-to-br from-teal-100 via-white to-violet-200 dark:from-[#101924] dark:via-[#121317] dark:to-[#27273d] text-neutral-900 dark:text-neutral-200"
-  )}
->
-  <Sidebar />
-  <div className="flex-1 flex flex-col h-screen min-h-screen">
-    <BackgroundEffects />
-    <div className="relative z-10 flex flex-col flex-1 lg:rounded-tl-2xl border border-transparent lg:border-neutral-700/40 overflow-y-auto bg-white/90 dark:bg-neutral-950/85 backdrop-blur-xl shadow-2xl transition-colors duration-500">
-      {/* ... your content ... */}
-      <main className="flex-1 px-4 pb-8 animate-fadeIn">{children}</main>
-      <Footer />
-    </div>
-  </div>
-</body>
-
+      <body
+        className={twMerge(
+          inter.className,
+          inter.variable,
+          syne.variable,
+          dmSans.variable,
+          jetbrainsMono.variable,
+          orbitron.variable,
+          "min-h-screen antialiased bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B] text-slate-900 dark:text-slate-50"
+        )}
+      >
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <ConditionalLayout>
+          {children}
+        </ConditionalLayout>
+      </body>
     </html>
   );
 }

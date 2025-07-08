@@ -1,23 +1,32 @@
 "use client";
 
-import { Container } from "@/components/Container";
+import { TerminalHero } from "@/components/TerminalHero";
 import { Heading } from "@/components/Heading";
-import { Paragraph } from "@/components/Paragraph";
-import { Circles } from "@/components/Circles";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { motion } from "framer-motion";
 
 const funFacts = [
   "I am an avid chef and foodie.",
-  "I am a really big policy nerd.",
+  "I am a really big policy nerd.", 
   "I love working with data and analytics.",
-  "I break things so you don’t have to.",
+  "I break things so you don't have to.",
   "Fantasy football champion (at least once).",
 ];
 
 function FunFacts() {
   return (
-    <ul className="list-disc pl-6 space-y-1 text-gray-700 dark:text-teal-200">
+    <ul className="list-none space-y-3 text-slate-300">
       {funFacts.map((fact, i) => (
-        <li key={i} className="transition-all hover:scale-105 hover:text-blue-500 dark:hover:text-yellow-300">{fact}</li>
+        <motion.li 
+          key={i} 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: i * 0.1 }}
+          className="transition-all hover:scale-105 hover:text-electric-blue flex items-center space-x-3 font-mono"
+        >
+          <span className="text-matrix-green">&gt;</span>
+          <span>{fact}</span>
+        </motion.li>
       ))}
     </ul>
   );
@@ -25,48 +34,67 @@ function FunFacts() {
 
 export default function Home() {
   return (
-    <Container>
-      {/* Hero section with animated gradient and emoji */}
-      <div className="relative h-40 mb-12 sm:h-60 flex items-center justify-center">
-        <Circles />
-        <span className="absolute z-10 text-7xl animate-wiggle select-none pointer-events-none drop-shadow-xl">
-          👋
-        </span>
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-300/30 via-transparent to-purple-400/20 dark:from-indigo-900/50 dark:to-fuchsia-900/30 blur-3xl" />
-      </div>
-
-      <Heading className="font-black text-5xl mb-4 tracking-tight bg-gradient-to-r from-blue-600 via-teal-400 to-purple-600 bg-clip-text text-transparent dark:from-cyan-300 dark:via-indigo-200 dark:to-purple-400">
-        Hey, I&apos;m Isaac
-      </Heading>
-      <Paragraph className="max-w-xl mt-3 text-lg text-gray-800 dark:text-teal-200">
-        I'm a QA engineer by day but I love building things. Data whisperer. Builder of things that don’t break (well, at least not twice).  
-        My mission? <span className="font-semibold text-blue-600 dark:text-teal-300">Build things that real people use and enjoy.</span>
-      </Paragraph>
-      <Paragraph className="max-w-xl mt-3 text-gray-700 dark:text-gray-300">
-        I thrive where on the cutting edge, catching bugs before they bite, and shipping software you can trust.
-      </Paragraph>
-      <div className="mt-10">
-        <Heading as="h2" className="text-2xl font-bold mb-2 text-gray-900 dark:text-yellow-200">
-          Fun Facts About Me
-        </Heading>
-        <FunFacts />
-      </div>
+    <div className="min-h-screen w-full">
+      {/* Terminal Hero Section */}
+      <TerminalHero />
       
-      {/* You can uncomment the following for a text animation intro! */}
-      {/* <div className="max-w-xl mt-4 text-center text-xl mx-auto">
-        <TextGenerateEffect words={words} />
-      </div> */}
-      <style jsx global>{`
-        @keyframes wiggle {
-          0%, 100% { transform: rotate(-12deg) scale(1);}
-          25% { transform: rotate(6deg) scale(1.1);}
-          50% { transform: rotate(-4deg) scale(1);}
-          75% { transform: rotate(8deg) scale(1.05);}
-        }
-        .animate-wiggle {
-          animation: wiggle 2s infinite;
-        }
-      `}</style>
-    </Container>
+      {/* Secondary Content */}
+      <div className="py-20 px-4 sm:px-6 lg:px-8">
+        {/* Enhanced Fun Facts Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto"
+        >
+          <GlassCard
+            elevation={3}
+            interactive={true}
+            cursorGlow={true}
+            noiseTexture={true}
+            className="p-8 bg-terminal-bg/50 border-terminal-border"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/5 to-matrix-green/5 rounded-xl breathing-gradient" />
+            
+            <div className="relative z-10 space-y-6">
+              <Heading as="h2" className="text-cyber text-electric-blue text-2xl mb-6">
+                System.getPersonalInfo()
+              </Heading>
+              <FunFacts />
+            </div>
+          </GlassCard>
+        </motion.div>
+
+        {/* Call to Action Grid */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-20 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+        >
+          <GlassCard className="p-6 bg-terminal-bg/30 border-electric-blue/30 hover:border-electric-blue transition-all duration-300">
+            <div className="space-y-4">
+              <div className="text-electric-blue font-mono text-sm uppercase tracking-wider">RECENT_PROJECTS</div>
+              <h3 className="text-cyber text-white text-xl">View My Work</h3>
+              <p className="text-slate-400 font-mono text-sm">Browse through my latest projects and contributions</p>
+              <button className="morph-button w-full">EXPLORE PROJECTS</button>
+            </div>
+          </GlassCard>
+
+          <GlassCard className="p-6 bg-terminal-bg/30 border-matrix-green/30 hover:border-matrix-green transition-all duration-300">
+            <div className="space-y-4">
+              <div className="text-matrix-green font-mono text-sm uppercase tracking-wider">CONTACT_INIT</div>
+              <h3 className="text-cyber text-white text-xl">Get In Touch</h3>
+              <p className="text-slate-400 font-mono text-sm">Let's build something amazing together</p>
+              <button className="px-6 py-3 border border-matrix-green text-matrix-green hover:bg-matrix-green/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider w-full">
+                START CONVERSATION
+              </button>
+            </div>
+          </GlassCard>
+        </motion.div>
+      </div>
+    </div>
   );
 }
