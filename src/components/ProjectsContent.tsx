@@ -2,10 +2,11 @@
 
 import { Heading } from "@/components/Heading";
 import { motion } from "framer-motion";
-import { IconBrandGithub, IconExternalLink, IconCode, IconDatabase, IconTestPipe, IconChartBar } from "@tabler/icons-react";
+import { IconBrandGithub, IconExternalLink, IconCode, IconDatabase, IconTestPipe, IconChartBar, IconTrendingUp } from "@tabler/icons-react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { MorphButton } from "@/components/ui/MorphButton";
 import { QADashboard } from "@/components/ui/QADashboard";
+import Link from "next/link";
 
 interface Project {
   id: number;
@@ -14,7 +15,7 @@ interface Project {
   tech: string[];
   type: "featured" | "normal" | "small";
   color: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
   metrics?: string;
   github?: string | null;
   link?: string | null;
@@ -30,8 +31,8 @@ const projects: Project[] = [
     color: "from-vivid-blue to-vivid-teal",
     icon: IconChartBar,
     metrics: "30% faster releases, 100% uptime",
-    github: null, // Private repo
-    link: null,
+    github: "https://github.com/isaacvazquez", // Portfolio
+    link: "https://civitech.io",
   },
   {
     id: 2,
@@ -42,6 +43,8 @@ const projects: Project[] = [
     color: "from-vivid-purple to-vivid-pink",
     icon: IconTestPipe,
     metrics: "50% reduction in defects",
+    github: "https://github.com/isaacvazquez",
+    link: null,
   },
   {
     id: 3,
@@ -52,6 +55,8 @@ const projects: Project[] = [
     color: "from-vivid-teal to-vivid-blue",
     icon: IconDatabase,
     metrics: "40% faster decisions",
+    github: "https://github.com/isaacvazquez",
+    link: null,
   },
   {
     id: 4,
@@ -61,6 +66,8 @@ const projects: Project[] = [
     type: "small",
     color: "from-vivid-yellow to-vivid-pink",
     icon: IconCode,
+    github: "https://github.com/isaacvazquez",
+    link: null,
   },
   {
     id: 5,
@@ -70,6 +77,20 @@ const projects: Project[] = [
     type: "small",
     color: "from-vivid-pink to-vivid-purple",
     icon: IconChartBar,
+    github: null,
+    link: null,
+  },
+  {
+    id: 6,
+    title: "Fantasy Football Tiers",
+    description: "Interactive tier visualization using clustering algorithms to analyze player rankings",
+    tech: ["D3.js", "TypeScript", "K-Means", "Framer Motion"],
+    type: "normal",
+    color: "from-vivid-blue to-vivid-green",
+    icon: IconTrendingUp,
+    metrics: "6-tier clustering, real-time updates",
+    github: "https://github.com/isaacvazquez",
+    link: "/fantasy-football",
   },
 ];
 
@@ -83,17 +104,6 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring" as const,
-      stiffness: 100,
-    },
-  },
-};
 
 export function ProjectsContent() {
   return (
@@ -115,7 +125,7 @@ export function ProjectsContent() {
         initial="hidden"
         animate="visible"
       >
-        {projects.map((project, index) => {
+        {projects.map((project) => {
           const Icon = project.icon;
           const gridClass = 
             project.type === "featured" 
@@ -180,20 +190,32 @@ export function ProjectsContent() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-white/50 dark:bg-neutral-800/50 backdrop-blur-sm hover:bg-white dark:hover:bg-neutral-800 transition-colors"
+                      className="p-2 rounded-lg bg-terminal-bg/50 backdrop-blur-sm hover:bg-electric-blue/10 border border-electric-blue/20 hover:border-electric-blue/50 transition-all group"
+                      aria-label="View project"
                     >
-                      <IconBrandGithub className="h-4 w-4" />
+                      <IconBrandGithub className="h-4 w-4 text-electric-blue group-hover:text-matrix-green transition-colors" />
                     </a>
                   )}
                   {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-white/50 dark:bg-neutral-800/50 backdrop-blur-sm hover:bg-white dark:hover:bg-neutral-800 transition-colors"
-                    >
-                      <IconExternalLink className="h-4 w-4" />
-                    </a>
+                    project.link.startsWith('/') ? (
+                      <Link
+                        href={project.link}
+                        className="p-2 rounded-lg bg-terminal-bg/50 backdrop-blur-sm hover:bg-electric-blue/10 border border-electric-blue/20 hover:border-electric-blue/50 transition-all group"
+                        aria-label="View project"
+                      >
+                        <IconExternalLink className="h-4 w-4 text-electric-blue group-hover:text-matrix-green transition-colors" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-terminal-bg/50 backdrop-blur-sm hover:bg-electric-blue/10 border border-electric-blue/20 hover:border-electric-blue/50 transition-all group"
+                        aria-label="View project"
+                      >
+                        <IconExternalLink className="h-4 w-4 text-electric-blue group-hover:text-matrix-green transition-colors" />
+                      </a>
+                    )
                   )}
                 </div>
               </div>
@@ -212,15 +234,16 @@ export function ProjectsContent() {
         <p className="text-lg text-secondary mb-6">
           Interested in working together? Let's build something great.
         </p>
-        <MorphButton
-          variant="primary"
-          size="lg"
-          icon={<IconExternalLink className="h-4 w-4" />}
-          iconPosition="right"
-          onClick={() => window.location.href = '/contact'}
-        >
-          Get In Touch
-        </MorphButton>
+        <Link href="/contact">
+          <MorphButton
+            variant="primary"
+            size="lg"
+            icon={<IconExternalLink className="h-4 w-4" />}
+            iconPosition="right"
+          >
+            Get In Touch
+          </MorphButton>
+        </Link>
       </motion.div>
 
       {/* QA Dashboard Section */}

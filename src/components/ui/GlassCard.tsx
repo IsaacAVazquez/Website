@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, HTMLMotionProps } from "framer-motion";
-import { forwardRef, useRef, useState, useEffect } from "react";
+import { forwardRef, useRef, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface GlassCardProps extends Omit<HTMLMotionProps<"div">, "ref"> {
@@ -29,7 +29,6 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
     ref
   ) => {
     const cardRef = useRef<HTMLDivElement>(null);
-    const [cursorPosition, setCursorPosition] = useState({ x: 50, y: 50 });
 
     useEffect(() => {
       const handleMouseMove = (e: MouseEvent) => {
@@ -37,7 +36,6 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
           const rect = cardRef.current.getBoundingClientRect();
           const x = ((e.clientX - rect.left) / rect.width) * 100;
           const y = ((e.clientY - rect.top) / rect.height) * 100;
-          setCursorPosition({ x, y });
 
           // Set CSS custom properties for cursor position
           cardRef.current.style.setProperty('--cursor-x', `${x}%`);
@@ -63,7 +61,7 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
 
     return (
       <motion.div
-        ref={cardRef}
+        ref={ref || cardRef}
         className={twMerge(
           baseClasses,
           elevationClass,
@@ -98,11 +96,8 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
             ? (e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  // Trigger click if it's interactive
-                  const clickHandler = props.onClick;
-                  if (clickHandler) {
-                    clickHandler(e as any);
-                  }
+                  // Trigger a click on the element itself
+                  e.currentTarget.click();
                 }
               }
             : undefined

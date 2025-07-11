@@ -25,25 +25,27 @@ export function ContactContent() {
         </Paragraph>
         
         <div className="flex flex-wrap gap-4 justify-center mb-6">
-          <MorphButton
-            variant="primary"
-            size="md"
-            icon={<FaEnvelope className="text-lg" />}
-            iconPosition="left"
-            onClick={() => window.location.href = 'mailto:isaacavazquez95@gmail.com'}
-          >
-            Email Me
-          </MorphButton>
+          <a href="mailto:isaacavazquez95@gmail.com">
+            <MorphButton
+              variant="primary"
+              size="md"
+              icon={<FaEnvelope className="text-lg" />}
+              iconPosition="left"
+            >
+              Email Me
+            </MorphButton>
+          </a>
           
-          <MorphButton
-            variant="secondary"
-            size="md"
-            icon={<FaLinkedin className="text-lg" />}
-            iconPosition="left"
-            onClick={() => window.open('https://www.linkedin.com/in/isaac-vazquez', '_blank')}
-          >
-            LinkedIn
-          </MorphButton>
+          <a href="https://www.linkedin.com/in/isaac-vazquez" target="_blank" rel="noopener noreferrer">
+            <MorphButton
+              variant="secondary"
+              size="md"
+              icon={<FaLinkedin className="text-lg" />}
+              iconPosition="left"
+            >
+              LinkedIn
+            </MorphButton>
+          </a>
         </div>
         
         <Paragraph className="text-sm text-secondary">

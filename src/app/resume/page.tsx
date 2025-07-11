@@ -32,10 +32,10 @@ export default function Resume() {
             </Heading>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-400 font-terminal text-sm">
             <a
-              href="mailto:isaacavazquez95gmail.com"
+              href="mailto:isaacavazquez95@gmail.com"
               className="underline hover:text-electric-blue transition"
             >
-              isaacavazquez95gmail.com
+              isaacavazquez95@gmail.com
             </a>
             <span className="hidden sm:inline text-matrix-green">&bull;</span>
             <a
@@ -92,13 +92,13 @@ export default function Resume() {
             </Heading>
             <Paragraph className="mb-1 font-terminal">
               <span className="font-semibold text-electric-blue">Quality Assurance Engineer</span>
-              <span className="text-slate-500"> (Feb 2025–Present)</span>
+              <span className="text-slate-600"> (Feb 2025–Present)</span>
               <br />
               Orchestrated release-governance framework integrating QA, DevOps, and Security workflows—cutting critical production defects by 50% quarter over quarter. Designed unified automation framework, enabling same-day validation of releases and faster stakeholder sign-off. Represented QA in sprint reviews and backlog refinement, driving quality criteria and on-time launches.
             </Paragraph>
             <Paragraph>
               <span className="font-semibold text-gray-900 dark:text-teal-100">Quality Assurance Analyst</span>
-              <span className="text-gray-500 dark:text-gray-400"> (Jan 2022–Jan 2025)</span>
+              <span className="text-gray-600 dark:text-gray-400"> (Jan 2022–Jan 2025)</span>
               <br />
               Directed scalable QA strategies for multiple products, increasing release efficiency by 30% and achieving near 100% uptime. Executed 400+ manual and automated tests with JMeter, Postman, and Cypress, and used data insights to boost user engagement for outreach to 60M+ voters.
             </Paragraph>
@@ -109,19 +109,19 @@ export default function Resume() {
             </Heading>
             <Paragraph className="mb-1">
               <span className="font-semibold text-gray-900 dark:text-teal-100">Client Services Manager</span>
-              <span className="text-gray-500 dark:text-gray-400"> (Jan 2021–Dec 2021)</span>
+              <span className="text-gray-600 dark:text-gray-400"> (Jan 2021–Dec 2021)</span>
               <br />
               Led digital voter engagement campaigns for 80+ programs, achieving 100% on-time delivery and driving 40M+ voter conversations.
             </Paragraph>
             <Paragraph className="mb-1">
               <span className="font-semibold text-gray-900 dark:text-teal-100">Digital & Data Associate</span>
-              <span className="text-gray-500 dark:text-gray-400"> (Sep 2019–Dec 2020)</span>
+              <span className="text-gray-600 dark:text-gray-400"> (Sep 2019–Dec 2020)</span>
               <br />
               Developed campaign dashboards and analytics for 20+ clients, improving decision speed by 40% and optimizing engagement strategy.
             </Paragraph>
             <Paragraph>
               <span className="font-semibold text-gray-900 dark:text-teal-100">Digital & Communications Intern</span>
-              <span className="text-gray-500 dark:text-gray-400"> (Jun 2019–Aug 2019)</span>
+              <span className="text-gray-600 dark:text-gray-400"> (Jun 2019–Aug 2019)</span>
               <br />
               Enhanced email targeting and performance monitoring, boosting client fundraising list growth by 500%.
             </Paragraph>

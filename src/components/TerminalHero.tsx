@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconMenu2 } from "@tabler/icons-react";
 import Link from "next/link";
+import { personalMetrics } from "@/constants/personal";
 
 interface TerminalCommand {
   command: string;
@@ -14,35 +15,64 @@ interface TerminalCommand {
 const commands: TerminalCommand[] = [
   {
     command: "whoami",
-    output: "isaac_vazquez",
+    output: `isaac_vazquez // QA_ENGINEER
+uid=1001(isaac) gid=1001(qa_team) groups=1001(qa_team),1002(civic_tech),1003(coffee_addicts)
+home=/Users/isaac status=debugging_life since=2018`,
     delay: 1000,
   },
   {
-    command: "cat skills.txt",
-    output: `QA Engineering
-Software Testing
-Automation
-Data Analytics
-Web Development`,
+    command: "cat /proc/career/stats",
+    output: `Years in QA: ${personalMetrics.experience.yearsInQA}
+Bugs Squashed: ${personalMetrics.experience.bugsSquashed}
+Tests Written: ${personalMetrics.experience.testsWritten.toLocaleString()}
+Releases Shipped: ${personalMetrics.experience.releasesShipped}
+Coffee Consumed: ${personalMetrics.experience.coffeeConsumed} cups
+Uptime Achieved: ${personalMetrics.experience.uptimeAchieved}%
+Late Night Deploys: ${personalMetrics.experience.lateNightDeployments}`,
     delay: 2000,
   },
   {
-    command: "ls achievements/",
-    output: `fantasy_football_champion.txt
-bug_hunter_supreme.exe
-data_whisperer.py
-quality_guardian.sh`,
+    command: "systemctl status isaac.service",
+    output: `● isaac.service - Quality Assurance Engineer
+   Loaded: loaded (/etc/systemd/system/isaac.service; enabled)
+   Active: active (running) since 2018-12-01
+   Process: ${personalMetrics.experience.votersReached.toLocaleString()} voters served
+   Memory: ${personalMetrics.experience.yearsInQA}+ years experience loaded
+   CGroup: /system.slice/isaac.service
+           ├─ problem-solving.exe
+           ├─ bug-detection.daemon
+           └─ quality-assurance.worker`,
     delay: 3000,
   },
   {
-    command: "echo $MISSION",
-    output: "Build things that real people use and enjoy",
+    command: "curl -s isaac.local/api/personality | jq",
+    output: `{
+  "traits": ["perfectionist", "problem_solver", "empathetic"],
+  "debug_mode": "always_on",
+  "coffee_dependency": "high",
+  "bug_detection": "enhanced",
+  "user_empathy": "maximum",
+  "status": "optimistically_debugging_life"
+}`,
     delay: 4000,
   },
   {
-    command: "status",
-    output: "■ SYSTEM READY ■ BUILDING THE FUTURE ■",
-    delay: 5000,
+    command: "grep -r 'passion' ~/.isaac/",
+    output: `~/.isaac/values.conf: passion="building_trust_through_quality"
+~/.isaac/hobbies.txt: passion="hiking_texas_trails"
+~/.isaac/career.log: passion="civic_tech_impact"
+~/.isaac/daily.sh: passion="learning_new_testing_frameworks"
+~/.isaac/dreams.txt: passion="democratizing_quality_assurance"`,
+    delay: 5500,
+  },
+  {
+    command: "tail -f /var/log/isaac/impact.log",
+    output: `[${new Date().toISOString()}] INFO: ${personalMetrics.experience.votersReached.toLocaleString()}+ voters reached
+[${new Date().toISOString()}] SUCCESS: 0 critical bugs in production
+[${new Date().toISOString()}] WARNING: Perfectionist mode may cause overtime
+[${new Date().toISOString()}] INFO: Quality assurance protocols engaged
+[${new Date().toISOString()}] STATUS: Building the future, one test at a time...`,
+    delay: 6500,
   },
 ];
 
@@ -234,13 +264,13 @@ export function TerminalHero() {
               transition={{ delay: 1.2 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button className="morph-button glow-effect">
-                <span className="relative z-10">VIEW PROJECTS</span>
-              </button>
+              <Link href="/projects" className="morph-button glow-effect inline-block">
+                <span className="relative z-10">VIEW MY QA PORTFOLIO</span>
+              </Link>
               
-              <button className="px-6 py-3 border border-electric-blue text-electric-blue hover:bg-electric-blue/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider">
-                DOWNLOAD CV
-              </button>
+              <Link href="/resume" className="px-6 py-3 border border-electric-blue text-electric-blue hover:bg-electric-blue/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
+                DOWNLOAD MY RESUME
+              </Link>
             </motion.div>
 
             {/* Status Indicators */}

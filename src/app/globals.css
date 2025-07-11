@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+/* Focus Indicators for Accessibility */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--electric-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--electric-blue);
+  outline-offset: 3px;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--matrix-green);
+  outline-offset: 0;
+  border-color: var(--matrix-green);
+}
+
 /* Cyberpunk Typography System */
 :root {
   --font-body: var(--font-inter);

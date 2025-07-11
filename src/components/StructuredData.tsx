@@ -2,7 +2,7 @@ import { siteConfig } from "@/lib/seo";
 
 interface StructuredDataProps {
   type?: "Person" | "WebSite" | "WebPage";
-  data?: Record<string, any>;
+  data?: Record<string, string | number | boolean | object>;
 }
 
 export function StructuredData({ type = "Person", data = {} }: StructuredDataProps) {

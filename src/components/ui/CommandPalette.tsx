@@ -12,7 +12,7 @@ interface CommandItem {
   id: string;
   title: string;
   subtitle?: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
   action: () => void;
   category: "navigation" | "social" | "action";
 }
@@ -199,7 +199,7 @@ export function CommandPalette() {
                             <span>{categoryIcons[category as keyof typeof categoryIcons]}</span>
                             {category}
                           </div>
-                          {items.map((command, index) => {
+                          {items.map((command) => {
                             const globalIndex = filteredCommands.indexOf(command);
                             const Icon = command.icon;
                             

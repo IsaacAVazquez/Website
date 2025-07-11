@@ -19,7 +19,7 @@ interface MetricProps {
   value: string | number;
   change: string;
   trend: "up" | "down" | "stable";
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
   color: string;
 }
 
