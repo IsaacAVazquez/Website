@@ -15,6 +15,7 @@ interface TierChartEnhancedProps {
   scoringFormat?: string;
   hiddenTiers?: Set<number>;
   onTierCountChange?: (tierCount: number) => void;
+  onTierGroupsChange?: (tierGroups: TierGroup[]) => void;
 }
 
 export default function TierChartEnhanced({ 
@@ -24,7 +25,8 @@ export default function TierChartEnhanced({
   numberOfTiers = 6,
   scoringFormat = 'PPR',
   hiddenTiers = new Set<number>(),
-  onTierCountChange
+  onTierCountChange,
+  onTierGroupsChange
 }: TierChartEnhancedProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [hoveredPlayer, setHoveredPlayer] = useState<Player | null>(null);
@@ -51,9 +53,12 @@ export default function TierChartEnhanced({
     const tiers = clusterPlayersIntoTiers(players, numberOfTiers);
     setTierGroups(tiers);
     
-    // Notify parent about tier count
+    // Notify parent about tier count and groups
     if (onTierCountChange) {
       onTierCountChange(tiers.length);
+    }
+    if (onTierGroupsChange) {
+      onTierGroupsChange(tiers);
     }
   }, [players, numberOfTiers, onTierCountChange]);
 
@@ -95,14 +100,21 @@ export default function TierChartEnhanced({
     // Calculate total players in visible tiers
     const visibleTotalPlayers = visibleTiers.reduce((sum, tier) => sum + tier.players.length, 0);
 
-    // Create scales - handle string and number averageRank values
-    const maxRank = d3.max(players, d => {
-      const rank = typeof d.averageRank === 'string' ? parseFloat(d.averageRank) : d.averageRank;
-      return rank;
-    }) || 30;
+    // Get all visible players
+    const visiblePlayers = visibleTiers.flatMap(tier => tier.players);
     
+    // Calculate X-axis domain based on visible players only
+    const visibleRanks = visiblePlayers.map(p => {
+      return typeof p.averageRank === 'string' ? parseFloat(p.averageRank) : p.averageRank;
+    });
+    
+    const minRank = visibleRanks.length > 0 ? Math.min(...visibleRanks) : 0;
+    const maxRank = visibleRanks.length > 0 ? Math.max(...visibleRanks) : 30;
+    
+    // Add some padding to the domain
+    const rankPadding = (maxRank - minRank) * 0.1;
     const xScale = d3.scaleLinear()
-      .domain([0, maxRank])
+      .domain([Math.max(0, minRank - rankPadding), maxRank + rankPadding])
       .range([0, innerWidth]);
 
     const yScale = d3.scaleLinear()

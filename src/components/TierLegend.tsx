@@ -118,16 +118,16 @@ export default function TierLegend({
 
             {/* Tier List */}
             <div className="p-3 space-y-2 max-h-96 overflow-y-auto">
-              {tiers.map((tierInfo, index) => {
+              {tiers.map((tierInfo) => {
                 const isHidden = hiddenTiers.has(tierInfo.tier);
-                const color = tierColors[index % tierColors.length];
+                const color = tierInfo.color || tierColors[(tierInfo.tier - 1) % tierColors.length];
 
                 return (
                   <motion.div
                     key={tierInfo.tier}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    transition={{ delay: (tierInfo.tier - 1) * 0.05 }}
                     className={cn(
                       'flex items-center justify-between p-2 rounded',
                       'hover:bg-gray-800/50 transition-colors cursor-pointer',
@@ -203,7 +203,8 @@ export function useTierVisibility(position: string, scoringFormat: string) {
       console.warn('Failed to load tier visibility preferences:', error);
     }
     
-    return new Set();
+    // Default to showing only tiers 1-6 (hide tier 7+)
+    return new Set([7, 8, 9, 10, 11, 12]);
   });
 
   // Save preferences when they change
@@ -227,14 +228,12 @@ export function useTierVisibility(position: string, scoringFormat: string) {
     });
   };
 
-  const setAllVisible = (visible: boolean) => {
+  const setAllVisible = (visible: boolean, tierCount?: number) => {
     if (visible) {
       setHiddenTiers(new Set());
-    } else {
-      // This will be called with actual tier count from parent
-      return (tierCount: number) => {
-        setHiddenTiers(new Set(Array.from({ length: tierCount }, (_, i) => i + 1)));
-      };
+    } else if (tierCount !== undefined) {
+      // Hide all tiers
+      setHiddenTiers(new Set(Array.from({ length: tierCount }, (_, i) => i + 1)));
     }
   };
 

@@ -17,6 +17,7 @@ export default function FantasyFootballPage() {
   const [selectedFormat, setSelectedFormat] = useState<ScoringFormat>('PPR');
   const [showComparison, setShowComparison] = useState<boolean>(false);
   const [tierCount, setTierCount] = useState<number>(6);
+  const [tierGroups, setTierGroups] = useState<any[]>([]);
 
   // Use the new fantasy data hook with caching
   const {
@@ -44,26 +45,13 @@ export default function FantasyFootballPage() {
     selectedFormat
   );
 
-  // Prepare tier info for the legend
-  const tierInfo = Array.from({ length: tierCount }, (_, i) => {
-    const tierNumber = i + 1;
-    const tierPlayers = players.filter(p => {
-      // This is a simplified version - in production, you'd get this from the clustering result
-      const playerIndex = players.indexOf(p);
-      const playersPerTier = Math.ceil(players.length / tierCount);
-      const playerTier = Math.floor(playerIndex / playersPerTier) + 1;
-      return playerTier === tierNumber;
-    });
-    
-    const tierColors = [
-      '#FF073A', '#FFB800', '#39FF14', '#00F5FF', '#BF00FF', '#00FFBF', '#FF1493', '#FFD700'
-    ];
-    
+  // Prepare tier info for the legend using real tier groups
+  const tierInfo = tierGroups.map((tierGroup) => {
     return {
-      tier: tierNumber,
-      color: tierColors[i % tierColors.length],
-      label: `Tier ${tierNumber}`,
-      playerCount: tierPlayers.length
+      tier: tierGroup.tier,
+      color: tierGroup.color,
+      label: `Tier ${tierGroup.tier}`,
+      playerCount: tierGroup.players.length
     };
   });
 
@@ -161,6 +149,7 @@ export default function FantasyFootballPage() {
                 scoringFormat={getScoringFormatDisplay(selectedFormat)}
                 hiddenTiers={hiddenTiers}
                 onTierCountChange={setTierCount}
+                onTierGroupsChange={setTierGroups}
               />
             </div>
           )}
@@ -172,7 +161,7 @@ export default function FantasyFootballPage() {
               tiers={tierInfo}
               hiddenTiers={hiddenTiers}
               onToggleTier={toggleTier}
-              onToggleAll={setAllVisible}
+              onToggleAll={(visible) => setAllVisible(visible, tierGroups.length)}
               className="sticky top-20"
             />
           )}
