@@ -4,6 +4,7 @@ import { constructMetadata } from "@/lib/seo";
 export const metadata = constructMetadata({
   title: "About",
   description: "Learn more about Isaac Vazquez - QA engineer, civic tech advocate, and data enthusiast. Discover my journey, skills, and passion for building reliable software.",
+  canonicalUrl: "/about",
 });
 
 export default function AboutPage() {

@@ -267,7 +267,7 @@ export function TerminalHero() {
                 transition={{ delay: 0.8 }}
                 className="text-cyber text-matrix-green text-xl"
               >
-                QA ENGINEER // DATA WHISPERER // BUILDER
+                QA ENGINEER // QUALITY ADVOCATE // PROBLEM SOLVER
               </motion.div>
             </div>
 
@@ -277,9 +277,9 @@ export function TerminalHero() {
               transition={{ delay: 1.0 }}
               className="text-lg text-slate-300 leading-relaxed max-w-lg"
             >
-              Specializing in breaking things so you don't have to. 
-              I thrive on the cutting edge, catching bugs before they bite, 
-              and shipping software you can trust.
+              Ensuring 99.9% uptime for 60M+ users through strategic testing and automation. 
+              I transform complex problems into reliable solutions, preventing critical bugs 
+              before they impact your business.
             </motion.p>
 
             <motion.div
@@ -288,16 +288,16 @@ export function TerminalHero() {
               transition={{ delay: 1.2 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Link href="/about" className="morph-button glow-effect inline-block">
-                <span className="relative z-10">ABOUT ME</span>
+              <Link href="/projects" className="morph-button glow-effect inline-block">
+                <span className="relative z-10">VIEW MY WORK</span>
               </Link>
               
-              <Link href="/projects" className="px-6 py-3 border border-electric-blue text-electric-blue hover:bg-electric-blue/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
-                VIEW MY PROJECTS
+              <Link href="/contact" className="px-6 py-3 border border-electric-blue text-electric-blue hover:bg-electric-blue/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
+                LET'S CONNECT
               </Link>
               
               <Link href="/resume" className="px-6 py-3 border border-matrix-green text-matrix-green hover:bg-matrix-green/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
-                VIEW MY RESUME
+                DOWNLOAD RESUME
               </Link>
             </motion.div>
 

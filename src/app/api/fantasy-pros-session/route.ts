@@ -2,8 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { fantasyProsSession } from '@/lib/fantasyProsSession';
 import { dataManager } from '@/lib/dataManager';
 import { Position } from '@/types';
+import { fantasyRateLimiter, getClientIdentifier, rateLimitResponse } from '@/lib/rateLimit';
 
 export async function POST(request: NextRequest) {
+  // Apply rate limiting
+  const clientId = getClientIdentifier(request);
+  const rateLimitResult = fantasyRateLimiter.check(clientId);
+  
+  if (!rateLimitResult.success) {
+    return rateLimitResponse(rateLimitResult);
+  }
+
   try {
     const body = await request.json();
     const { username, password, position, week, scoringFormat = 'ppr' } = body;

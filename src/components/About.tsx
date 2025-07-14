@@ -90,7 +90,7 @@ export default function About() {
             About Isaac Vazquez
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
-            QA Engineer • Data Whisperer • Civic Tech Advocate
+            Quality Assurance Engineer • Test Automation Expert • Civic Tech Leader
           </p>
         </motion.div>
 
@@ -160,19 +160,19 @@ const OverviewContent = ({ displayedText, startTyping }: OverviewContentProps) =
           
           <div className="relative z-10 space-y-6">
             <Paragraph className="text-lg md:text-xl text-slate-300 leading-relaxed">
-              Hi, I'm Isaac. I build reliable, impactful software at the intersection of tech and democracy.
+              Hi, I'm Isaac. I ensure software quality at scale, protecting 60M+ users from critical failures.
             </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-              My journey started in political organizing and grew into a passion for civic technology. As a QA Engineer and product builder, I obsess over every detail—because building trustworthy tools isn't just about code, it's about empowering real people.
+              With 6+ years in quality assurance, I've transformed testing from a bottleneck into a competitive advantage. My expertise spans test automation (Cypress, Selenium), performance testing (JMeter), and data validation—achieving 99.9% uptime while reducing defect rates by 50%.
             </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-              Whether I'm leading cross-functional QA efforts at a political tech startup or collaborating on data-driven product launches, I focus on clarity, accessibility, and creative problem-solving. My career is defined by my commitment to making complex systems understandable and impactful for the communities they serve.
+              At Civitech, I architect QA frameworks that scale across complex civic engagement platforms. I lead cross-functional teams, implement continuous testing pipelines, and turn quality metrics into actionable insights. My approach: proactive testing that prevents issues before they reach production.
             </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-              Outside of work, you'll find me cooking up new recipes, hiking Texas trails, or volunteering to help organize local elections. I believe in technology's power to build stronger, more representative communities—and I'm just getting started.
+              Beyond code, I'm passionate about mentoring emerging QA professionals and contributing to open-source testing tools. When I'm not debugging, you'll find me hiking Texas trails or volunteering for local tech education initiatives. I believe quality isn't just about finding bugs—it's about building trust.
             </Paragraph>
           </div>
         </GlassCard>

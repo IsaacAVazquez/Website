@@ -1,7 +1,7 @@
 import { siteConfig } from "@/lib/seo";
 
 interface StructuredDataProps {
-  type?: "Person" | "WebSite" | "WebPage";
+  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList";
   data?: Record<string, string | number | boolean | object>;
 }
 
@@ -85,6 +85,41 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           },
           "datePublished": data.datePublished || new Date().toISOString(),
           "dateModified": data.dateModified || new Date().toISOString(),
+          ...data,
+        };
+
+      case "SoftwareApplication":
+        return {
+          ...baseData,
+          "@type": "SoftwareApplication",
+          "name": data.name || "Project",
+          "description": data.description || "",
+          "image": data.image,
+          "dateCreated": data.dateCreated,
+          "dateModified": data.dateModified || new Date().toISOString(),
+          "author": {
+            "@type": "Person",
+            "name": siteConfig.name,
+            "url": siteConfig.url,
+          },
+          "keywords": data.keywords,
+          "programmingLanguage": data.programmingLanguage,
+          "applicationCategory": data.applicationCategory || "WebApplication",
+          "operatingSystem": "Any",
+          "url": data.url || siteConfig.url,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          ...data,
+        };
+
+      case "BreadcrumbList":
+        return {
+          ...baseData,
+          "@type": "BreadcrumbList",
+          "itemListElement": data.items || [],
           ...data,
         };
 

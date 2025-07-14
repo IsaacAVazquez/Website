@@ -1,5 +1,17 @@
 import { Metadata } from "next";
 
+export interface ProjectStructuredData {
+  name: string;
+  description: string;
+  image?: string;
+  dateCreated?: string;
+  dateModified?: string;
+  author: string;
+  keywords?: string[];
+  programmingLanguage?: string[];
+  applicationCategory?: string;
+}
+
 export const siteConfig = {
   name: "Isaac Vazquez",
   title: "QA Engineer & Builder",
@@ -43,12 +55,14 @@ export function constructMetadata({
   image = siteConfig.ogImage,
   icons = "/favicon.png",
   noIndex = false,
+  canonicalUrl,
 }: {
   title?: string;
   description?: string;
   image?: string;
   icons?: string;
   noIndex?: boolean;
+  canonicalUrl?: string;
 } = {}): Metadata {
   return {
     title: {
@@ -84,11 +98,56 @@ export function constructMetadata({
     },
     icons,
     metadataBase: new URL(siteConfig.url),
+    ...(canonicalUrl && {
+      alternates: {
+        canonical: canonicalUrl,
+      },
+    }),
     ...(noIndex && {
       robots: {
         index: false,
         follow: false,
       },
     }),
+  };
+}
+
+export function generateProjectStructuredData(project: ProjectStructuredData): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": project.name,
+    "description": project.description,
+    "image": project.image,
+    "dateCreated": project.dateCreated,
+    "dateModified": project.dateModified || new Date().toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": project.author,
+      "url": siteConfig.url,
+    },
+    "keywords": project.keywords?.join(", "),
+    "programmingLanguage": project.programmingLanguage,
+    "applicationCategory": project.applicationCategory || "WebApplication",
+    "operatingSystem": "Any",
+    "url": siteConfig.url,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+}
+
+export function generateBreadcrumbStructuredData(items: { name: string; url: string }[]): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url.startsWith('http') ? item.url : `${siteConfig.url}${item.url}`
+    }))
   };
 }

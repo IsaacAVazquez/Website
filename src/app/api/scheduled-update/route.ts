@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { fantasyProsSession } from '@/lib/fantasyProsSession';
 import { dataManager } from '@/lib/dataManager';
 import { Position } from '@/types';
+import { apiRateLimiter, getClientIdentifier, rateLimitResponse } from '@/lib/rateLimit';
 
 // Verify the request is from a legitimate cron job
 function verifyCronSecret(request: NextRequest): boolean {
@@ -17,6 +18,14 @@ function verifyCronSecret(request: NextRequest): boolean {
 }
 
 export async function POST(request: NextRequest) {
+  // Apply rate limiting
+  const clientId = getClientIdentifier(request);
+  const rateLimitResult = apiRateLimiter.check(clientId);
+  
+  if (!rateLimitResult.success) {
+    return rateLimitResponse(rateLimitResult);
+  }
+
   // Verify cron secret
   if (!verifyCronSecret(request)) {
     return NextResponse.json(

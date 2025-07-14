@@ -4,6 +4,7 @@ import { constructMetadata } from "@/lib/seo";
 export const metadata = constructMetadata({
   title: "Contact",
   description: "Get in touch with Isaac Vazquez. Let's discuss QA engineering, test automation, civic tech, or your next project. I'm always open to new opportunities and collaborations.",
+  canonicalUrl: "/contact",
 });
 
 export default function Contact() {

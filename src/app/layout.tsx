@@ -4,6 +4,7 @@ import { twMerge } from "tailwind-merge";
 import { constructMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
+import { Providers } from "@/components/Providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -79,12 +80,14 @@ export default function RootLayout({
           "min-h-screen antialiased bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B] text-slate-900 dark:text-slate-50"
         )}
       >
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-electric-blue focus:text-slate-900 focus:rounded-md focus:shadow-lg">
-          Skip to main content
-        </a>
-        <ConditionalLayout>
-          {children}
-        </ConditionalLayout>
+        <Providers>
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-electric-blue focus:text-slate-900 focus:rounded-md focus:shadow-lg">
+            Skip to main content
+          </a>
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
+        </Providers>
       </body>
     </html>
   );

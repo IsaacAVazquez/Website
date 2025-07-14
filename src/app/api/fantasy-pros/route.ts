@@ -2,8 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { fantasyProsAPI } from '@/lib/fantasyProsAPI';
 import { dataManager } from '@/lib/dataManager';
 import { Position } from '@/types';
+import { fantasyRateLimiter, getClientIdentifier, rateLimitResponse } from '@/lib/rateLimit';
 
 export async function GET(request: NextRequest) {
+  // Apply rate limiting
+  const clientId = getClientIdentifier(request);
+  const rateLimitResult = fantasyRateLimiter.check(clientId);
+  
+  if (!rateLimitResult.success) {
+    return rateLimitResponse(rateLimitResult);
+  }
   const searchParams = request.nextUrl.searchParams;
   const position = searchParams.get('position') as Position;
   const year = parseInt(searchParams.get('year') || new Date().getFullYear().toString());

@@ -4,8 +4,22 @@ import React, { useState } from 'react';
 import { Position } from '@/types';
 import { dataManager } from '@/lib/dataManager';
 import { motion } from 'framer-motion';
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { MorphButton } from '@/components/ui/MorphButton';
+import { IconLogout } from "@tabler/icons-react";
 
 export default function AdminPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  // Redirect if not authenticated
+  React.useEffect(() => {
+    if (status === "loading") return;
+    if (!session) {
+      router.push("/auth/signin?callbackUrl=/admin");
+    }
+  }, [session, status, router]);
   const [selectedPosition, setSelectedPosition] = useState<Position>('QB');
   const [selectedScoringFormat, setSelectedScoringFormat] = useState<'standard' | 'ppr' | 'half-ppr'>('ppr');
   const [importType, setImportType] = useState<'csv' | 'url' | 'text' | 'scrape' | 'api' | 'session' | 'free'>('csv');
@@ -291,16 +305,45 @@ export default function AdminPage() {
     setIsLoading(false);
   };
 
+  // Show loading state
+  if (status === "loading") {
+    return (
+      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-electric-blue mx-auto mb-4"></div>
+          <p className="text-slate-400">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Only render if authenticated
+  if (!session) {
+    return null;
+  }
+
   return (
     <div className="min-h-screen bg-gray-950 text-white p-8">
       <div className="max-w-4xl mx-auto">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text"
-        >
-          Fantasy Football Data Manager
-        </motion.h1>
+        {/* Header with sign out */}
+        <div className="flex justify-between items-center mb-8">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl font-bold text-center bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text"
+          >
+            Fantasy Football Data Manager
+          </motion.h1>
+          <MorphButton
+            onClick={() => signOut({ callbackUrl: "/" })}
+            variant="secondary"
+            size="sm"
+            className="flex items-center gap-2"
+          >
+            <IconLogout className="w-4 h-4" />
+            Sign Out
+          </MorphButton>
+        </div>
 
         {/* Position Selector */}
         <div className="mb-6">

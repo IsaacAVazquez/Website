@@ -2,5 +2,16 @@
   command = "npm run build"
   publish = ".next"
 
+[functions]
+  directory = "netlify/functions"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Environment variables hint (set these in Netlify dashboard)
+# CRON_SECRET = "your-secure-cron-secret"
+# FANTASYPROS_USERNAME = "your-username"
+# FANTASYPROS_PASSWORD = "your-password"
+# NEXTAUTH_SECRET = "your-nextauth-secret"
+# ADMIN_USERNAME = "admin"
+# ADMIN_PASSWORD = "your-admin-password"
