@@ -16,7 +16,11 @@ export class FantasyProsSession {
   private loginUrl = 'https://secure.fantasypros.com/accounts/login/';
   
   constructor(credentials?: FantasyProsCredentials) {
-    this.credentials = credentials || null;
+    // Use environment variables if no credentials provided
+    this.credentials = credentials || {
+      username: process.env.FANTASYPROS_USERNAME || '',
+      password: process.env.FANTASYPROS_PASSWORD || ''
+    };
   }
 
   setCredentials(username: string, password: string) {
@@ -139,7 +143,7 @@ export class FantasyProsSession {
     }
   }
 
-  // Download XLS file for a specific position
+  // Download XLS file for a specific position (Note: FLEX is handled separately in getRankings)
   async downloadRankingsXLS(
     position: string,
     week: number = 0,
@@ -168,7 +172,6 @@ export class FantasyProsSession {
           'rb': 'https://www.fantasypros.com/nfl/rankings/rb-cheatsheets.php',
           'wr': 'https://www.fantasypros.com/nfl/rankings/wr-cheatsheets.php',
           'te': 'https://www.fantasypros.com/nfl/rankings/te-cheatsheets.php',
-          'flex': 'https://www.fantasypros.com/nfl/rankings/flex-cheatsheets.php',
           'k': 'https://www.fantasypros.com/nfl/rankings/k-cheatsheets.php',
           'dst': 'https://www.fantasypros.com/nfl/rankings/dst-cheatsheets.php'
         };
@@ -180,7 +183,6 @@ export class FantasyProsSession {
           'rb': 'https://www.fantasypros.com/nfl/rankings/half-point-ppr-rb-cheatsheets.php',
           'wr': 'https://www.fantasypros.com/nfl/rankings/half-point-ppr-wr-cheatsheets.php',
           'te': 'https://www.fantasypros.com/nfl/rankings/half-point-ppr-te-cheatsheets.php',
-          'flex': 'https://www.fantasypros.com/nfl/rankings/half-point-ppr-flex-cheatsheets.php',
           'k': 'https://www.fantasypros.com/nfl/rankings/k-cheatsheets.php',
           'dst': 'https://www.fantasypros.com/nfl/rankings/dst-cheatsheets.php'
         };
@@ -192,7 +194,6 @@ export class FantasyProsSession {
           'rb': 'https://www.fantasypros.com/nfl/rankings/ppr-rb-cheatsheets.php',
           'wr': 'https://www.fantasypros.com/nfl/rankings/ppr-wr-cheatsheets.php',
           'te': 'https://www.fantasypros.com/nfl/rankings/ppr-te-cheatsheets.php',
-          'flex': 'https://www.fantasypros.com/nfl/rankings/ppr-flex-cheatsheets.php',
           'k': 'https://www.fantasypros.com/nfl/rankings/k-cheatsheets.php',
           'dst': 'https://www.fantasypros.com/nfl/rankings/dst-cheatsheets.php'
         };
@@ -201,11 +202,20 @@ export class FantasyProsSession {
     } else {
       // Weekly URLs with scoring format support
       // Note: Weekly rankings might use different URL patterns than cheatsheets
-      if (position.toLowerCase() === 'qb' || position.toLowerCase() === 'k' || position.toLowerCase() === 'dst') {
+      if (position.toLowerCase() === 'overall') {
+        // Overall consensus rankings for weekly
+        if (scoringFormat === 'standard') {
+          url = `https://www.fantasypros.com/nfl/rankings/consensus-cheatsheets.php?week=${week}`;
+        } else if (scoringFormat === 'half-ppr') {
+          url = `https://www.fantasypros.com/nfl/rankings/half-point-ppr-cheatsheets.php?week=${week}`;
+        } else {
+          url = `https://www.fantasypros.com/nfl/rankings/ppr-cheatsheets.php?week=${week}`;
+        }
+      } else if (position.toLowerCase() === 'qb' || position.toLowerCase() === 'k' || position.toLowerCase() === 'dst') {
         // QB, K and DST don't have scoring format variations
         url = `https://www.fantasypros.com/nfl/rankings/${position.toLowerCase()}.php`;
       } else {
-        // RB, WR, TE, and FLEX use scoring format for weekly
+        // RB, WR, TE use scoring format for weekly
         if (scoringFormat === 'standard') {
           url = `https://www.fantasypros.com/nfl/rankings/${position.toLowerCase()}.php`;
         } else if (scoringFormat === 'half-ppr') {
@@ -226,18 +236,19 @@ export class FantasyProsSession {
       });
 
       if (!response.ok) {
+        console.error(`[FantasyPros] Failed to download from ${url}: ${response.status}`);
         throw new Error(`Failed to download XLS: ${response.status}`);
       }
 
       return await response.text();
     } catch (error) {
-      console.error('Download error:', error);
+      console.error('[FantasyPros] Download error for', position, scoringFormat, ':', error);
       throw error;
     }
   }
 
   // Parse HTML data to extract player rankings from embedded JSON
-  async parseHTMLData(htmlContent: string, position: Position): Promise<Player[]> {
+  async parseHTMLData(htmlContent: string, position: Position, scoringFormat?: string): Promise<Player[]> {
     try {
       // Look for the ecrData JSON variable in the HTML
       const ecrDataMatch = htmlContent.match(/var\s+ecrData\s*=\s*(\{.*?\});/);
@@ -251,13 +262,19 @@ export class FantasyProsSession {
             const avgRank = player.rank_ave || player.rank_ecr || rank;
             const stdDev = player.rank_std || Math.max(0.5, rank * 0.1);
             
+            // For OVERALL rankings, extract the actual position from the player data
+            let playerPosition: Position = position;
+            if (position === 'OVERALL' && player.player_position_id) {
+              playerPosition = this.mapPositionId(player.player_position_id);
+            }
+            
             return {
               id: `fp-${position}-${rank}`,
               name: player.player_name || player.name,
               team: player.player_team_id || player.team || 'FA',
-              position: position,
+              position: playerPosition,
               averageRank: avgRank,
-              projectedPoints: this.estimateProjectedPoints(position, avgRank),
+              projectedPoints: this.estimateProjectedPoints(playerPosition, avgRank),
               standardDeviation: stdDev,
               tier: player.tier,
               minRank: player.rank_min,
@@ -269,17 +286,17 @@ export class FantasyProsSession {
       }
 
       // Fallback: try to parse as tab-separated data (original XLS format)
-      return this.parseTabSeparatedData(htmlContent, position);
+      return this.parseTabSeparatedData(htmlContent, position, scoringFormat);
       
     } catch (error) {
-      console.error('Error parsing HTML data:', error);
+      console.error('[FantasyPros] Error parsing HTML data:', error);
       // Fallback to tab-separated parsing
-      return this.parseTabSeparatedData(htmlContent, position);
+      return this.parseTabSeparatedData(htmlContent, position, scoringFormat);
     }
   }
 
   // Fallback method for tab-separated data
-  private parseTabSeparatedData(text: string, position: Position): Player[] {
+  private parseTabSeparatedData(text: string, position: Position, scoringFormat?: string): Player[] {
     const lines = text.split('\n').filter(line => line.trim());
     
     // Skip header lines (first 5 lines according to Python script)
@@ -293,19 +310,24 @@ export class FantasyProsSession {
         const rank = parseInt(columns[0]) || index + 1;
         const name = columns[1]?.trim() || '';
         
-        // For overall rankings, position is in column 2
+        // Determine player position and column structure
         let playerPosition: Position;
         let avgRank: number;
         let stdDev: number;
+        let tier: number | undefined;
         
-        if (position === 'FLEX' || columns[2]?.match(/^(QB|RB|WR|TE|K|DST)$/)) {
+        if (position === 'OVERALL' || columns[2]?.match(/^(QB|RB|WR|TE|K|DST)$/)) {
+          // Overall format: Rank | Name | Position | Team | ... | Avg | Std | Tier
           playerPosition = (columns[2] as Position) || position;
           avgRank = parseFloat(columns[7]) || rank;
           stdDev = parseFloat(columns[8]) || 1.0;
+          tier = columns[9] ? parseInt(columns[9]) : undefined;
         } else {
+          // Position-specific format: Rank | Name | Team | ... | Avg | Std | Tier
           playerPosition = position;
           avgRank = parseFloat(columns[6]) || rank;
           stdDev = parseFloat(columns[7]) || 1.0;
+          tier = columns[8] ? parseInt(columns[8]) : undefined;
         }
 
         // Extract team from name (e.g., "Patrick Mahomes KC" -> team: "KC")
@@ -322,6 +344,7 @@ export class FantasyProsSession {
             averageRank: avgRank,
             projectedPoints: this.estimateProjectedPoints(playerPosition, avgRank),
             standardDeviation: stdDev,
+            tier: tier,
             expertRanks: this.generateExpertRanks(avgRank, stdDev)
           });
         }
@@ -339,11 +362,27 @@ export class FantasyProsSession {
       'TE': 180,
       'K': 130,
       'DST': 135,
-      'FLEX': 260
+      'FLEX': 260,
+      'OVERALL': 260
     };
 
     const base = basePoints[position] || 200;
     return Math.round(base * Math.exp(-rank * 0.03));
+  }
+
+  private mapPositionId(positionId: string): Position {
+    const upperPos = positionId.toUpperCase();
+    switch (upperPos) {
+      case 'QB': return 'QB';
+      case 'RB': return 'RB';
+      case 'WR': return 'WR';
+      case 'TE': return 'TE';
+      case 'K': return 'K';
+      case 'DST':
+      case 'DEF':
+      case 'D/ST': return 'DST';
+      default: return 'FLEX';
+    }
   }
 
   private generateExpertRanks(avgRank: number, stdDev: number): number[] {
@@ -401,9 +440,42 @@ export class FantasyProsSession {
   async getRankings(position: Position, week?: number, scoringFormat: string = 'ppr'): Promise<Player[]> {
     const currentWeek = week !== undefined ? week : this.getCurrentWeek();
     
+    // Special handling for FLEX: Get OVERALL rankings and filter to RB/WR/TE only
+    // This is more reliable than using FantasyPros' FLEX-specific endpoints
+    if (position === 'FLEX') {
+      console.log('[FantasyPros] FLEX requested - fetching OVERALL rankings and filtering to RB/WR/TE');
+      try {
+        // Fetch OVERALL rankings
+        const htmlContent = await this.downloadRankingsXLS('overall', currentWeek, scoringFormat);
+        const allPlayers = await this.parseHTMLData(htmlContent, 'OVERALL', scoringFormat);
+        
+        // Filter to only FLEX-eligible positions (RB, WR, TE)
+        const flexPlayers = allPlayers.filter(player => {
+          const pos = player.position.toUpperCase();
+          return pos === 'RB' || pos === 'WR' || pos === 'TE';
+        });
+        
+        console.log(`[FantasyPros] Filtered ${allPlayers.length} OVERALL players to ${flexPlayers.length} FLEX-eligible (RB/WR/TE)`);
+        
+        // Re-rank the filtered players
+        flexPlayers.sort((a, b) => a.averageRank - b.averageRank);
+        
+        // Update IDs and return as FLEX
+        return flexPlayers.map((player, index) => ({
+          ...player,
+          id: `fp-FLEX-${index + 1}`,
+          position: player.position // Keep original position (RB/WR/TE)
+        }));
+      } catch (error) {
+        console.error('[FantasyPros] Error getting FLEX rankings via OVERALL:', error);
+        throw error;
+      }
+    }
+    
+    // Normal flow for non-FLEX positions
     try {
       const htmlContent = await this.downloadRankingsXLS(position.toLowerCase(), currentWeek, scoringFormat);
-      return await this.parseHTMLData(htmlContent, position);
+      return await this.parseHTMLData(htmlContent, position, scoringFormat);
     } catch (error) {
       console.error(`Error getting rankings for ${position}:`, error);
       throw error;
@@ -412,7 +484,7 @@ export class FantasyProsSession {
 
   // Get all positions rankings
   async getAllRankings(week?: number, scoringFormat: string = 'ppr'): Promise<Record<Position, Player[]>> {
-    const positions: Position[] = ['QB', 'RB', 'WR', 'TE', 'K', 'DST', 'FLEX'];
+    const positions: Position[] = ['QB', 'RB', 'WR', 'TE', 'K', 'DST', 'FLEX', 'OVERALL'];
     const allRankings: Partial<Record<Position, Player[]>> = {};
     
     for (const position of positions) {

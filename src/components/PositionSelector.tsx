@@ -11,7 +11,7 @@ interface PositionSelectorProps {
   onFormatChange: (format: ScoringFormat) => void;
 }
 
-const POSITIONS: Position[] = ['QB', 'RB', 'WR', 'TE', 'FLEX', 'K', 'DST'];
+const POSITIONS: Position[] = ['OVERALL', 'QB', 'RB', 'WR', 'TE', 'FLEX', 'K', 'DST'];
 const SCORING_FORMATS: { value: ScoringFormat; label: string }[] = [
   { value: 'STANDARD', label: 'Standard' },
   { value: 'PPR', label: 'PPR' },

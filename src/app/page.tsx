@@ -4,13 +4,14 @@ import { TerminalHero } from "@/components/TerminalHero";
 import { Heading } from "@/components/Heading";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const funFacts = [
-  "I am an avid chef and foodie.",
-  "I am a really big policy nerd.", 
-  "I love working with data and analytics.",
-  "I break things so you don't have to.",
-  "Fantasy football champion (at least once).",
+  "Full-stack QA Engineer with 6+ years breaking software (professionally)",
+  "Civic tech enthusiast who helped 100K+ voters access democracy", 
+  "Data-driven tester who's written 25,000+ test cases",
+  "Bug hunter with 150,000+ issues caught before production",
+  "99.7% uptime achieved across critical production systems",
 ];
 
 function FunFacts() {
@@ -59,7 +60,7 @@ export default function Home() {
             
             <div className="relative z-10 space-y-6">
               <Heading as="h2" className="text-cyber text-electric-blue text-2xl mb-6">
-                System.getPersonalInfo()
+                isaac.getCurrentStatus()
               </Heading>
               <FunFacts />
             </div>
@@ -76,10 +77,12 @@ export default function Home() {
         >
           <GlassCard className="p-6 bg-terminal-bg/30 border-electric-blue/30 hover:border-electric-blue transition-all duration-300">
             <div className="space-y-4">
-              <div className="text-electric-blue font-mono text-sm uppercase tracking-wider">RECENT_PROJECTS</div>
-              <h3 className="text-cyber text-white text-xl">View My Work</h3>
-              <p className="text-slate-400 font-mono text-sm">Browse through my latest projects and contributions</p>
-              <button className="morph-button w-full">EXPLORE PROJECTS</button>
+              <div className="text-electric-blue font-mono text-sm uppercase tracking-wider">RESUME_VIEWER</div>
+              <h3 className="text-cyber text-white text-xl">View My Resume</h3>
+              <p className="text-slate-400 font-mono text-sm">Explore my professional experience and qualifications</p>
+              <Link href="/resume" className="morph-button w-full inline-block text-center">
+                VIEW RESUME
+              </Link>
             </div>
           </GlassCard>
 
@@ -88,9 +91,9 @@ export default function Home() {
               <div className="text-matrix-green font-mono text-sm uppercase tracking-wider">CONTACT_INIT</div>
               <h3 className="text-cyber text-white text-xl">Get In Touch</h3>
               <p className="text-slate-400 font-mono text-sm">Let's build something amazing together</p>
-              <button className="px-6 py-3 border border-matrix-green text-matrix-green hover:bg-matrix-green/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider w-full">
+              <Link href="/contact" className="px-6 py-3 border border-matrix-green text-matrix-green hover:bg-matrix-green/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider w-full inline-block text-center">
                 START CONVERSATION
-              </button>
+              </Link>
             </div>
           </GlassCard>
         </motion.div>

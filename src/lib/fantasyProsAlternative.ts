@@ -18,7 +18,8 @@ export class FantasyProsFreeAccess {
           'TE': `${this.baseUrl}/te.php`,
           'K': `${this.baseUrl}/k.php`,
           'DST': `${this.baseUrl}/dst.php`,
-          'FLEX': `${this.baseUrl}/flex.php`
+          'FLEX': `${this.baseUrl}/flex.php`,
+          'OVERALL': `${this.baseUrl}/consensus-cheatsheets.php`
         };
       } else if (scoringFormat === 'half-ppr') {
         urls = {
@@ -28,7 +29,8 @@ export class FantasyProsFreeAccess {
           'TE': `${this.baseUrl}/half-point-ppr-te.php`,
           'K': `${this.baseUrl}/k.php`,
           'DST': `${this.baseUrl}/dst.php`,
-          'FLEX': `${this.baseUrl}/half-point-ppr-flex.php`
+          'FLEX': `${this.baseUrl}/half-point-ppr-flex.php`,
+          'OVERALL': `${this.baseUrl}/half-point-ppr-cheatsheets.php`
         };
       } else {
         // PPR (default)
@@ -39,7 +41,8 @@ export class FantasyProsFreeAccess {
           'TE': `${this.baseUrl}/ppr-te.php`,
           'K': `${this.baseUrl}/k.php`,
           'DST': `${this.baseUrl}/dst.php`,
-          'FLEX': `${this.baseUrl}/ppr-flex.php`
+          'FLEX': `${this.baseUrl}/ppr-flex.php`,
+          'OVERALL': `${this.baseUrl}/ppr-cheatsheets.php`
         };
       }
 
@@ -148,6 +151,28 @@ export class FantasyProsFreeAccess {
         }
       }
 
+      // For OVERALL rankings, extract the actual position
+      let actualPosition: Position = position;
+      if (position === 'OVERALL') {
+        const positionPatterns = [
+          /data-position="([A-Z]+)"/,
+          /class="[^"]*position[^"]*"[^>]*>([A-Z]+)</,
+          />\s*(QB|RB|WR|TE|K|DST)\s*</,
+          /\b(QB|RB|WR|TE|K|DST)\b/
+        ];
+        
+        for (const pattern of positionPatterns) {
+          const match = rowHtml.match(pattern);
+          if (match) {
+            const foundPos = match[1].toUpperCase();
+            if (['QB', 'RB', 'WR', 'TE', 'K', 'DST'].includes(foundPos)) {
+              actualPosition = foundPos as Position;
+              break;
+            }
+          }
+        }
+      }
+
       // Extract rank if available
       const rankPatterns = [
         /rank[^>]*>(\d+)/i,
@@ -169,9 +194,9 @@ export class FantasyProsFreeAccess {
           id: `fp-free-${position}-${actualRank}`,
           name: playerName,
           team,
-          position,
+          position: actualPosition,
           averageRank: actualRank,
-          projectedPoints: this.estimateProjectedPoints(position, actualRank),
+          projectedPoints: this.estimateProjectedPoints(actualPosition, actualRank),
           standardDeviation: Math.max(0.5, actualRank * 0.1),
           expertRanks: this.generateExpertRanks(actualRank)
         };
@@ -203,14 +228,24 @@ export class FantasyProsFreeAccess {
           if (Array.isArray(data) && data.length > 0) {
             data.forEach((playerData, index) => {
               if (playerData.name || playerData.player_name) {
+                // For OVERALL rankings, use player's actual position if available
+                let playerPosition: Position = position;
+                if (position === 'OVERALL' && (playerData.position || playerData.player_position_id)) {
+                  const posStr = (playerData.position || playerData.player_position_id).toUpperCase();
+                  if (['QB', 'RB', 'WR', 'TE', 'K', 'DST'].includes(posStr)) {
+                    playerPosition = posStr as Position;
+                  }
+                }
+                
                 players.push({
                   id: `fp-json-${position}-${index + 1}`,
                   name: playerData.name || playerData.player_name,
                   team: playerData.team || playerData.team_abbr || 'FA',
-                  position,
+                  position: playerPosition,
                   averageRank: playerData.rank || index + 1,
-                  projectedPoints: this.estimateProjectedPoints(position, playerData.rank || index + 1),
+                  projectedPoints: this.estimateProjectedPoints(playerPosition, playerData.rank || index + 1),
                   standardDeviation: playerData.std_dev || 1.0,
+                  tier: playerData.tier,
                   expertRanks: this.generateExpertRanks(playerData.rank || index + 1)
                 });
               }
@@ -234,7 +269,8 @@ export class FantasyProsFreeAccess {
       'TE': 180,
       'K': 130,
       'DST': 135,
-      'FLEX': 260
+      'FLEX': 260,
+      'OVERALL': 260
     };
 
     const base = basePoints[position] || 200;

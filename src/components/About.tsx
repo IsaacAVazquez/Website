@@ -3,24 +3,16 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Paragraph } from "@/components/Paragraph";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { PersonalMetrics } from "@/components/ui/PersonalMetrics";
-import { SkillsRadarDashboard } from "@/components/ui/SkillsRadar";
 import { JourneyTimeline } from "@/components/ui/JourneyTimeline";
-import { SystemInfo } from "@/components/ui/SystemInfo";
 import { useTypingAnimation } from "@/hooks/useTypingAnimation";
 import { personalMetrics } from "@/constants/personal";
 import { 
   IconUser, 
-  IconChartRadar, 
-  IconTimeline, 
-  IconTerminal,
-  IconCode,
-  IconHeart,
-  IconBolt,
-  IconShield
+  IconTimeline,
+  IconHeart
 } from "@tabler/icons-react";
 
-type TabType = "overview" | "metrics" | "skills" | "journey" | "system";
+type TabType = "overview" | "journey";
 
 export default function About() {
   const [activeTab, setActiveTab] = useState<TabType>("overview");
@@ -33,24 +25,15 @@ export default function About() {
 
   const tabs = [
     { id: "overview", label: "Overview", icon: IconUser },
-    { id: "metrics", label: "Metrics", icon: IconChartRadar },
-    { id: "skills", label: "Skills", icon: IconCode },
-    { id: "journey", label: "Journey", icon: IconTimeline },
-    { id: "system", label: "System", icon: IconTerminal }
+    { id: "journey", label: "Journey", icon: IconTimeline }
   ];
 
   const renderTabContent = () => {
     switch (activeTab) {
       case "overview":
         return <OverviewContent displayedText={displayedText} startTyping={startTyping} />;
-      case "metrics":
-        return <PersonalMetrics />;
-      case "skills":
-        return <SkillsRadarDashboard />;
       case "journey":
         return <JourneyTimeline />;
-      case "system":
-        return <SystemInfo />;
       default:
         return <OverviewContent displayedText={displayedText} startTyping={startTyping} />;
     }
@@ -79,17 +62,17 @@ export default function About() {
             key={i}
             className="absolute w-1 h-1 bg-electric-blue rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${(i * 7) % 100}%`,
+              top: `${(i * 11) % 100}%`,
             }}
             animate={{
               y: [-10, 10],
               opacity: [0.2, 0.8, 0.2],
             }}
             transition={{
-              duration: 4 + Math.random() * 2,
+              duration: 4 + (i % 3),
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: i * 0.3,
             }}
           />
         ))}
@@ -123,14 +106,14 @@ export default function About() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as TabType)}
-                className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                   activeTab === tab.id
                     ? 'bg-electric-blue/20 text-electric-blue shadow-lg border border-electric-blue/40'
                     : 'text-slate-400 hover:text-electric-blue hover:bg-electric-blue/5'
                 }`}
               >
                 <tab.icon className="w-5 h-5" />
-                <span className="hidden sm:inline">{tab.label}</span>
+                <span>{tab.label}</span>
               </button>
             ))}
           </div>
@@ -236,117 +219,7 @@ const OverviewContent = ({ displayedText, startTyping }: OverviewContentProps) =
           </div>
         </GlassCard>
       </motion.div>
-
-      {/* Quick Stats */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-      >
-        <QuickStat
-          icon={IconBolt}
-          label="Years in QA"
-          value={personalMetrics.experience.yearsInQA}
-          color="from-yellow-400 to-orange-500"
-        />
-        <QuickStat
-          icon={IconShield}
-          label="Bugs Squashed"
-          value={personalMetrics.experience.bugsSquashed}
-          color="from-red-400 to-red-600"
-        />
-        <QuickStat
-          icon={IconCode}
-          label="Tests Written"
-          value={personalMetrics.experience.testsWritten}
-          suffix="+"
-          color="from-blue-400 to-blue-600"
-        />
-        <QuickStat
-          icon={IconHeart}
-          label="Voters Reached"
-          value={personalMetrics.experience.votersReached / 1000000}
-          suffix="M"
-          decimals={1}
-          color="from-green-400 to-green-600"
-        />
-      </motion.div>
-
-      {/* Fun Facts */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="max-w-4xl mx-auto"
-      >
-        <GlassCard
-          elevation={3}
-          interactive={true}
-          cursorGlow={true}
-          noiseTexture={true}
-          className="p-8 relative overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-teal-400/10 to-cyan-500/10 breathing-gradient" />
-          
-          <div className="relative z-10">
-            <h3 className="text-2xl font-bold text-primary mb-6 text-center">
-              Fun Facts About Me
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {personalMetrics.funFacts.map((fact, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-3 p-3 rounded-lg bg-terminal-bg/30 border border-electric-blue/20"
-                >
-                  <div className="w-2 h-2 bg-electric-blue rounded-full mt-2 flex-shrink-0" />
-                  <span className="text-sm text-slate-300">{fact}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </GlassCard>
-      </motion.div>
     </div>
   );
 };
 
-interface QuickStatProps {
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-  value: number;
-  suffix?: string;
-  decimals?: number;
-  color: string;
-}
-
-const QuickStat = ({ icon: Icon, label, value, suffix = "", decimals = 0, color }: QuickStatProps) => {
-  return (
-    <GlassCard
-      elevation={3}
-      interactive={true}
-      cursorGlow={true}
-      className="p-6 relative overflow-hidden group"
-    >
-      <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`} />
-      
-      <div className="relative z-10 text-center">
-        <div className={`p-3 rounded-xl bg-gradient-to-br ${color} bg-opacity-20 w-fit mx-auto mb-3`}>
-          <Icon className="w-6 h-6 text-electric-blue" />
-        </div>
-        
-        <div className="text-2xl font-bold text-electric-blue mb-1 font-terminal">
-          {value.toFixed(decimals)}{suffix}
-        </div>
-        
-        <div className="text-sm text-secondary">
-          {label}
-        </div>
-      </div>
-    </GlassCard>
-  );
-};

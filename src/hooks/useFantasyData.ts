@@ -41,7 +41,7 @@ export function useFantasyData({
   const [lastUpdated, setLastUpdated] = useState<string>('');
   
   // Refs to prevent unnecessary re-renders
-  const refreshTimeoutRef = useRef<NodeJS.Timeout>();
+  const refreshTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isRefreshingRef = useRef<boolean>(false);
 
   const scoringFormatParam = convertScoringFormat(scoringFormat);

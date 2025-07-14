@@ -6,6 +6,8 @@ import { Player, TierGroup, ChartDimensions } from '@/types';
 import { clusterPlayersIntoTiers } from '@/lib/clustering';
 import { motion } from 'framer-motion';
 import { ZoomIn, ZoomOut, Maximize2, Move } from 'lucide-react';
+import { DataFreshnessIndicator } from './DataFreshnessIndicator';
+import PlayerImageService from '@/lib/playerImageService';
 
 interface TierChartEnhancedProps {
   players: Player[];
@@ -33,6 +35,7 @@ export default function TierChartEnhanced({
   const [tierGroups, setTierGroups] = useState<TierGroup[]>([]);
   const [currentZoom, setCurrentZoom] = useState<number>(1);
   const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
+  const [playerImages, setPlayerImages] = useState<Map<string, string>>(new Map());
 
   const dimensions: ChartDimensions = {
     width,
@@ -53,6 +56,9 @@ export default function TierChartEnhanced({
     const tiers = clusterPlayersIntoTiers(players, numberOfTiers);
     setTierGroups(tiers);
     
+    // Load player images
+    loadPlayerImages(players);
+    
     // Notify parent about tier count and groups
     if (onTierCountChange) {
       onTierCountChange(tiers.length);
@@ -61,6 +67,19 @@ export default function TierChartEnhanced({
       onTierGroupsChange(tiers);
     }
   }, [players, numberOfTiers, onTierCountChange]);
+
+  const loadPlayerImages = async (playersToLoad: Player[]) => {
+    const imageMap = new Map<string, string>();
+    
+    for (const player of playersToLoad) {
+      const imageUrl = await PlayerImageService.getPlayerImageUrl(player);
+      if (imageUrl) {
+        imageMap.set(`${player.name}-${player.team}`, imageUrl);
+      }
+    }
+    
+    setPlayerImages(imageMap);
+  };
 
   useEffect(() => {
     if (tierGroups.length === 0 || !svgRef.current) {
@@ -111,10 +130,27 @@ export default function TierChartEnhanced({
     const minRank = visibleRanks.length > 0 ? Math.min(...visibleRanks) : 0;
     const maxRank = visibleRanks.length > 0 ? Math.max(...visibleRanks) : 30;
     
-    // Add some padding to the domain
-    const rankPadding = (maxRank - minRank) * 0.1;
+    // Implement minimum range for better readability
+    const dataRange = maxRank - minRank;
+    const MIN_RANGE = 30; // Minimum range to ensure readability
+    
+    let domainMin: number;
+    let domainMax: number;
+    
+    if (dataRange < MIN_RANGE) {
+      // Center the data within the minimum range
+      const center = (minRank + maxRank) / 2;
+      domainMin = Math.max(0, center - MIN_RANGE / 2);
+      domainMax = center + MIN_RANGE / 2;
+    } else {
+      // Use smart padding: 10% of range or minimum 3 ranks
+      const rankPadding = Math.max(dataRange * 0.1, 3);
+      domainMin = Math.max(0, minRank - rankPadding);
+      domainMax = maxRank + rankPadding;
+    }
+    
     const xScale = d3.scaleLinear()
-      .domain([Math.max(0, minRank - rankPadding), maxRank + rankPadding])
+      .domain([domainMin, domainMax])
       .range([0, innerWidth]);
 
     const yScale = d3.scaleLinear()
@@ -130,10 +166,14 @@ export default function TierChartEnhanced({
       .attr('fill', '#0A0A0B')
       .attr('opacity', 0.95);
 
-    // Add X axis
+    // Add X axis with smart tick generation
+    const tickCount = Math.max(6, Math.min(10, (domainMax - domainMin) / 5)); // 6-10 ticks based on range
     const xAxis = g.append('g')
       .attr('transform', `translate(0,${innerHeight})`)
-      .call(d3.axisBottom(xScale).tickFormat(d => d.toString()))
+      .call(d3.axisBottom(xScale)
+        .ticks(tickCount)
+        .tickFormat(d => Math.round(d).toString())
+      )
       .style('color', 'white');
     
     // Style the X axis
@@ -153,11 +193,12 @@ export default function TierChartEnhanced({
       .style('font-size', '14px')
       .text('Average Expert Rank');
 
-    // Add grid lines
+    // Add grid lines matching the axis ticks
     const grid = g.append('g')
       .attr('class', 'grid')
       .attr('transform', `translate(0,${innerHeight})`)
       .call(d3.axisBottom(xScale)
+        .ticks(tickCount)
         .tickSize(-innerHeight)
         .tickFormat(() => '')
       );
@@ -199,37 +240,18 @@ export default function TierChartEnhanced({
         .style('text-shadow', '1px 1px 2px rgba(0,0,0,0.8)')
         .text(`Tier ${tier.tier}`);
 
-      // Draw players in tier
+      // Draw players in tier with size based on data density
+      const totalVisiblePlayers = visiblePlayers.length;
+      const baseRadius = totalVisiblePlayers < 20 ? 8 : totalVisiblePlayers < 50 ? 6 : 5;
+      const hoverRadius = baseRadius + 3;
+      const strokeWidth = totalVisiblePlayers < 20 ? 3 : 2;
+      
       tier.players.forEach((player, playerIndex) => {
         const playerY = yPosition + (playerIndex + 0.5) * (tierHeight / tier.players.length);
         const playerRank = typeof player.averageRank === 'string' ? parseFloat(player.averageRank) : player.averageRank;
         const playerStdDev = typeof player.standardDeviation === 'string' ? parseFloat(player.standardDeviation) : player.standardDeviation;
         
-        // Player dot
-        g.append('circle')
-          .attr('cx', xScale(playerRank))
-          .attr('cy', playerY)
-          .attr('r', 6)
-          .attr('fill', tier.color)
-          .attr('stroke', 'white')
-          .attr('stroke-width', 2)
-          .style('cursor', 'pointer')
-          .on('mouseenter', function() {
-            d3.select(this)
-              .transition()
-              .duration(200)
-              .attr('r', 9);
-            setHoveredPlayer(player);
-          })
-          .on('mouseleave', function() {
-            d3.select(this)
-              .transition()
-              .duration(200)
-              .attr('r', 6);
-            setHoveredPlayer(null);
-          });
-
-        // Error bars (standard deviation)
+        // Draw error bars FIRST (so they appear behind player images)
         const errorBarWidth = xScale(playerRank + playerStdDev) - xScale(playerRank - playerStdDev);
         
         g.append('line')
@@ -253,7 +275,102 @@ export default function TierChartEnhanced({
             .attr('opacity', 0.6);
         });
 
+        // Player image or fallback circle (drawn AFTER error bars)
+        const imageUrl = playerImages.get(`${player.name}-${player.team}`);
+        const imageSize = baseRadius * 2;
+        
+        if (imageUrl) {
+          // Create player image
+          const imageElement = g.append('image')
+            .attr('href', imageUrl)
+            .attr('x', xScale(playerRank) - baseRadius)
+            .attr('y', playerY - baseRadius)
+            .attr('width', imageSize)
+            .attr('height', imageSize)
+            .attr('clip-path', `circle(${baseRadius}px at 50% 50%)`)
+            .style('cursor', 'pointer')
+            .on('mouseenter', function() {
+              d3.select(this)
+                .transition()
+                .duration(200)
+                .attr('x', xScale(playerRank) - hoverRadius)
+                .attr('y', playerY - hoverRadius)
+                .attr('width', hoverRadius * 2)
+                .attr('height', hoverRadius * 2)
+                .attr('clip-path', `circle(${hoverRadius}px at 50% 50%)`);
+              setHoveredPlayer(player);
+            })
+            .on('mouseleave', function() {
+              d3.select(this)
+                .transition()
+                .duration(200)
+                .attr('x', xScale(playerRank) - baseRadius)
+                .attr('y', playerY - baseRadius)
+                .attr('width', imageSize)
+                .attr('height', imageSize)
+                .attr('clip-path', `circle(${baseRadius}px at 50% 50%)`);
+              setHoveredPlayer(null);
+            })
+            .on('error', function() {
+              // Fallback to circle if image fails to load
+              d3.select(this).remove();
+              g.append('circle')
+                .attr('cx', xScale(playerRank))
+                .attr('cy', playerY)
+                .attr('r', baseRadius)
+                .attr('fill', tier.color)
+                .attr('stroke', 'white')
+                .attr('stroke-width', strokeWidth)
+                .attr('opacity', 0.95)
+                .style('cursor', 'pointer');
+            });
+            
+          // Add border around image
+          g.append('circle')
+            .attr('cx', xScale(playerRank))
+            .attr('cy', playerY)
+            .attr('r', baseRadius)
+            .attr('fill', 'none')
+            .attr('stroke', tier.color)
+            .attr('stroke-width', strokeWidth + 1)
+            .attr('opacity', 0.8)
+            .style('pointer-events', 'none');
+        } else {
+          // Fallback circle for players without images
+          g.append('circle')
+            .attr('cx', xScale(playerRank))
+            .attr('cy', playerY)
+            .attr('r', baseRadius)
+            .attr('fill', tier.color)
+            .attr('stroke', 'white')
+            .attr('stroke-width', strokeWidth)
+            .attr('opacity', 0.95)
+            .style('cursor', 'pointer')
+            .on('mouseenter', function() {
+              d3.select(this)
+                .transition()
+                .duration(200)
+                .attr('r', hoverRadius)
+                .attr('stroke-width', strokeWidth + 1)
+                .attr('opacity', 1);
+              setHoveredPlayer(player);
+            })
+            .on('mouseleave', function() {
+              d3.select(this)
+                .transition()
+                .duration(200)
+                .attr('r', baseRadius)
+                .attr('stroke-width', strokeWidth)
+                .attr('opacity', 0.95);
+              setHoveredPlayer(null);
+            });
+        }
+
         // Player name on the left side with better spacing
+        // Check if we're in overall view (mixed positions)
+        const positions = new Set(visiblePlayers.map(p => p.position));
+        const isOverallView = positions.size > 1;
+        
         g.append('text')
           .attr('x', -10)
           .attr('y', playerY)
@@ -262,7 +379,7 @@ export default function TierChartEnhanced({
           .attr('fill', 'white')
           .style('font-size', '11px')
           .style('font-weight', '500')
-          .text(`${player.name} (${player.team})`);
+          .text(`${player.name} (${player.team})${isOverallView ? ` - ${player.position}` : ''}`);
       });
 
       yPosition += tierHeight;
@@ -301,6 +418,11 @@ export default function TierChartEnhanced({
 
   return (
     <div className="relative w-full h-full">
+      {/* Data Freshness Indicator */}
+      <div className="absolute top-2 left-2 z-20">
+        <DataFreshnessIndicator />
+      </div>
+      
       {/* Zoom Controls */}
       <div className="absolute top-4 right-4 flex flex-col gap-2 z-20">
         <motion.button

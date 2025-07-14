@@ -192,7 +192,9 @@ function estimateProjectedPoints(position: string | undefined, rank: number): nu
     'WR': 260,
     'TE': 180,
     'K': 130,
-    'DST': 135
+    'DST': 135,
+    'FLEX': 260,
+    'OVERALL': 260
   };
   
   const base = basePoints[position || 'QB'] || 200;

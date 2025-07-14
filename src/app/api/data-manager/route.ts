@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Player, Position } from '@/types';
+import { DataFileWriter, DataFileMetadata } from '@/lib/dataFileWriter';
 
 // In-memory storage for development (in production, this would be a database)
 // Support multiple datasets for comparison, including scoring format variations
@@ -11,7 +12,8 @@ const dataStore: Record<string, Record<Position, Player[]>> = {
     'TE': [],
     'K': [],
     'DST': [],
-    'FLEX': []
+    'FLEX': [],
+    'OVERALL': []
   },
   // Free rankings by scoring format
   'free-ranking-standard': {
@@ -21,7 +23,8 @@ const dataStore: Record<string, Record<Position, Player[]>> = {
     'TE': [],
     'K': [],
     'DST': [],
-    'FLEX': []
+    'FLEX': [],
+    'OVERALL': []
   },
   'free-ranking-ppr': {
     'QB': [],
@@ -30,7 +33,8 @@ const dataStore: Record<string, Record<Position, Player[]>> = {
     'TE': [],
     'K': [],
     'DST': [],
-    'FLEX': []
+    'FLEX': [],
+    'OVERALL': []
   },
   'free-ranking-half-ppr': {
     'QB': [],
@@ -39,7 +43,8 @@ const dataStore: Record<string, Record<Position, Player[]>> = {
     'TE': [],
     'K': [],
     'DST': [],
-    'FLEX': []
+    'FLEX': [],
+    'OVERALL': []
   },
   // Session rankings by scoring format
   'fantasypros-session-standard': {
@@ -49,7 +54,8 @@ const dataStore: Record<string, Record<Position, Player[]>> = {
     'TE': [],
     'K': [],
     'DST': [],
-    'FLEX': []
+    'FLEX': [],
+    'OVERALL': []
   },
   'fantasypros-session-ppr': {
     'QB': [],
@@ -58,7 +64,8 @@ const dataStore: Record<string, Record<Position, Player[]>> = {
     'TE': [],
     'K': [],
     'DST': [],
-    'FLEX': []
+    'FLEX': [],
+    'OVERALL': []
   },
   'fantasypros-session-half-ppr': {
     'QB': [],
@@ -67,7 +74,8 @@ const dataStore: Record<string, Record<Position, Player[]>> = {
     'TE': [],
     'K': [],
     'DST': [],
-    'FLEX': []
+    'FLEX': [],
+    'OVERALL': []
   }
 };
 
@@ -182,7 +190,7 @@ export async function POST(request: NextRequest) {
     // Ensure dataset exists
     if (!dataStore[targetDataset]) {
       dataStore[targetDataset] = {
-        'QB': [], 'RB': [], 'WR': [], 'TE': [], 'K': [], 'DST': [], 'FLEX': []
+        'QB': [], 'RB': [], 'WR': [], 'TE': [], 'K': [], 'DST': [], 'FLEX': [], 'OVERALL': []
       };
     }
 
@@ -191,6 +199,24 @@ export async function POST(request: NextRequest) {
       dataStore[targetDataset][position as Position] = players;
       // Also update 'current' dataset to maintain backward compatibility
       dataStore['current'][position as Position] = players;
+      
+      // Persist to file system if source is from fantasypros
+      if (source === 'fantasypros-session' || source === 'fantasypros-free') {
+        try {
+          const metadata: DataFileMetadata = {
+            lastUpdated: new Date().toISOString(),
+            source: source === 'fantasypros-session' ? 'fantasypros' : 'manual',
+            format: (scoringFormat || 'ppr') as 'ppr' | 'half' | 'standard',
+            version: '1.0.0'
+          };
+          
+          await DataFileWriter.writePlayerData(position, players, metadata);
+          console.log(`Persisted ${players.length} ${position} players to file`);
+        } catch (error) {
+          console.error('Failed to persist data to file:', error);
+          // Don't fail the request if file write fails
+        }
+      }
     } else if (action === 'append') {
       // Add players to existing data
       if (!dataStore[targetDataset][position as Position]) {

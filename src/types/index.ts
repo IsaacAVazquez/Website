@@ -17,7 +17,7 @@ export interface Player {
   lastUpdated?: string;
 }
 
-export type Position = 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST' | 'FLEX';
+export type Position = 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST' | 'FLEX' | 'OVERALL';
 export type ScoringFormat = 'STANDARD' | 'PPR' | 'HALF_PPR';
 
 export interface TierGroup {

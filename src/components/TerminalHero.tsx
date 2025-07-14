@@ -6,6 +6,30 @@ import { IconMenu2 } from "@tabler/icons-react";
 import Link from "next/link";
 import { personalMetrics } from "@/constants/personal";
 
+// Pre-calculated particle positions to avoid hydration mismatch
+const PARTICLE_POSITIONS = [
+  { left: 15.3, top: 25.7 },
+  { left: 72.1, top: 8.4 },
+  { left: 5.8, top: 67.2 },
+  { left: 88.9, top: 42.1 },
+  { left: 33.4, top: 13.6 },
+  { left: 61.7, top: 78.9 },
+  { left: 9.2, top: 91.3 },
+  { left: 76.5, top: 6.7 },
+  { left: 45.8, top: 55.4 },
+  { left: 91.1, top: 29.8 },
+  { left: 23.6, top: 84.2 },
+  { left: 58.3, top: 18.5 },
+  { left: 81.7, top: 63.9 },
+  { left: 12.4, top: 47.1 },
+  { left: 67.9, top: 92.6 },
+  { left: 39.2, top: 11.8 },
+  { left: 84.5, top: 73.4 },
+  { left: 7.8, top: 36.7 },
+  { left: 52.1, top: 89.3 },
+  { left: 94.6, top: 21.5 }
+];
+
 interface TerminalCommand {
   command: string;
   output: string;
@@ -125,22 +149,22 @@ export function TerminalHero() {
 
       {/* Floating Particles */}
       <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
+        {PARTICLE_POSITIONS.map((position, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-electric-blue rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${position.left}%`,
+              top: `${position.top}%`,
             }}
             animate={{
               y: [-20, 20],
               opacity: [0.2, 1, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 3 + (i % 3),
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: i * 0.1,
             }}
           />
         ))}
@@ -264,12 +288,16 @@ export function TerminalHero() {
               transition={{ delay: 1.2 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Link href="/projects" className="morph-button glow-effect inline-block">
-                <span className="relative z-10">VIEW MY QA PORTFOLIO</span>
+              <Link href="/about" className="morph-button glow-effect inline-block">
+                <span className="relative z-10">ABOUT ME</span>
               </Link>
               
-              <Link href="/resume" className="px-6 py-3 border border-electric-blue text-electric-blue hover:bg-electric-blue/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
-                DOWNLOAD MY RESUME
+              <Link href="/projects" className="px-6 py-3 border border-electric-blue text-electric-blue hover:bg-electric-blue/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
+                VIEW MY PROJECTS
+              </Link>
+              
+              <Link href="/resume" className="px-6 py-3 border border-matrix-green text-matrix-green hover:bg-matrix-green/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
+                VIEW MY RESUME
               </Link>
             </motion.div>
 

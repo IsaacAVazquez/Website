@@ -204,7 +204,7 @@ export class DataManager {
   // Helper methods
   private estimateProjectedPoints(position: Position, rank: number): number {
     const basePoints: Record<Position, number> = {
-      'QB': 380, 'RB': 300, 'WR': 260, 'TE': 180, 'K': 130, 'DST': 135, 'FLEX': 260
+      'QB': 380, 'RB': 300, 'WR': 260, 'TE': 180, 'K': 130, 'DST': 135, 'FLEX': 260, 'OVERALL': 260
     };
     
     const base = basePoints[position] || 200;

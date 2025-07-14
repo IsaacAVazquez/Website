@@ -8,15 +8,21 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { username, password, position, week, scoringFormat = 'ppr' } = body;
 
-    if (!username || !password) {
+    // Use provided credentials or fall back to environment variables
+    const finalUsername = username || process.env.FANTASYPROS_USERNAME;
+    const finalPassword = password || process.env.FANTASYPROS_PASSWORD;
+
+    if (!finalUsername || !finalPassword) {
       return NextResponse.json(
-        { error: 'Username and password are required' },
+        { error: 'Credentials not provided and not found in environment' },
         { status: 400 }
       );
     }
 
-    // Set credentials
-    fantasyProsSession.setCredentials(username, password);
+    // Set credentials if provided, otherwise use the ones from constructor
+    if (username && password) {
+      fantasyProsSession.setCredentials(username, password);
+    }
 
     // If position is specified, get rankings for that position
     if (position) {
@@ -135,7 +141,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: 'FantasyPros session endpoint is ready',
-      supportedPositions: ['QB', 'RB', 'WR', 'TE', 'K', 'DST'],
+      supportedPositions: ['QB', 'RB', 'WR', 'TE', 'K', 'DST', 'FLEX', 'OVERALL'],
       currentWeek: fantasyProsSession.getCurrentWeek(),
       note: 'Use POST with username and password to fetch rankings'
     });

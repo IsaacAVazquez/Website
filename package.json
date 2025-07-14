@@ -10,7 +10,9 @@
     "lint": "next lint",
     "vite:dev": "vite dev",
     "vite:build": "vite build",
-    "vite:preview": "vite preview"
+    "vite:preview": "vite preview",
+    "update-data": "node scripts/update-data.js",
+    "scrape-player-images": "node scripts/scrape-player-images.js"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.9.0",

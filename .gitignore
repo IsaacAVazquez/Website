@@ -38,3 +38,6 @@ yarn-error.log*
 .bolt/
 .next/
 .next/
+
+# Data backups
+src/data/backup/

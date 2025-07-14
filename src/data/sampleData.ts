@@ -874,6 +874,81 @@ export const sampleDSTData: Player[] = [
   }
 ];
 
+// Sample Overall data with pre-defined tiers for draft board
+export const sampleOverallData: Player[] = [
+  // Tier 1 - Elite (picks 1-5)
+  { ...sampleRBData[0], averageRank: 1, tier: 1 }, // Christian McCaffrey
+  { ...sampleWRData[0], averageRank: 2, tier: 1 }, // CeeDee Lamb
+  { ...sampleWRData[1], averageRank: 3, tier: 1 }, // Tyreek Hill
+  { ...sampleRBData[1], averageRank: 4, tier: 1 }, // Austin Ekeler
+  { ...sampleWRData[2], averageRank: 5, tier: 1 }, // Ja'Marr Chase
+  
+  // Tier 2 - Round 1 (picks 6-12)
+  { ...sampleRBData[2], averageRank: 6, tier: 2 }, // Bijan Robinson
+  { ...sampleWRData[3], averageRank: 7, tier: 2 }, // Amon-Ra St. Brown
+  { ...sampleRBData[3], averageRank: 8, tier: 2 }, // Nick Chubb
+  { ...sampleWRData[4], averageRank: 9, tier: 2 }, // A.J. Brown
+  { ...sampleQBData[0], averageRank: 10, tier: 2 }, // Josh Allen
+  { ...sampleRBData[4], averageRank: 11, tier: 2 }, // Saquon Barkley
+  { ...sampleTEData[0], averageRank: 12, tier: 2 }, // Travis Kelce
+  
+  // Tier 3 - Round 2 (picks 13-24)
+  { ...sampleWRData[5], averageRank: 13, tier: 3 }, // Stefon Diggs
+  { ...sampleRBData[5], averageRank: 14, tier: 3 }, // Tony Pollard
+  { ...sampleQBData[1], averageRank: 15, tier: 3 }, // Jalen Hurts
+  { ...sampleWRData[6], averageRank: 16, tier: 3 }, // Davante Adams
+  { ...sampleRBData[6], averageRank: 17, tier: 3 }, // Jonathan Taylor
+  { ...sampleWRData[7], averageRank: 18, tier: 3 }, // Puka Nacua
+  { ...sampleQBData[2], averageRank: 19, tier: 3 }, // Patrick Mahomes
+  { ...sampleTEData[1], averageRank: 20, tier: 3 }, // Mark Andrews
+  { ...sampleWRData[8], averageRank: 21, tier: 3 }, // Chris Olave
+  { ...sampleRBData[7], averageRank: 22, tier: 3 }, // Josh Jacobs
+  { ...sampleWRData[9], averageRank: 23, tier: 3 }, // DK Metcalf
+  { ...sampleQBData[3], averageRank: 24, tier: 3 }, // Lamar Jackson
+  
+  // Tier 4 - Round 3 (picks 25-36)
+  { ...sampleTEData[2], averageRank: 25, tier: 4 }, // Sam LaPorta
+  { ...sampleWRData[10], averageRank: 26, tier: 4 }, // Garrett Wilson
+  { ...sampleRBData[8], averageRank: 27, tier: 4 }, // Derrick Henry
+  { ...sampleWRData[11], averageRank: 28, tier: 4 }, // DeVonta Smith
+  { ...sampleQBData[4], averageRank: 29, tier: 4 }, // Dak Prescott
+  { ...sampleWRData[12], averageRank: 30, tier: 4 }, // DJ Moore
+  { ...sampleTEData[3], averageRank: 31, tier: 4 }, // Trey McBride
+  { ...sampleRBData[9], averageRank: 32, tier: 4 }, // Aaron Jones
+  { ...sampleQBData[5], averageRank: 33, tier: 4 }, // Joe Burrow
+  { ...sampleWRData[13], averageRank: 34, tier: 4 }, // Mike Evans
+  { ...sampleTEData[4], averageRank: 35, tier: 4 }, // George Kittle
+  { ...sampleQBData[6], averageRank: 36, tier: 4 }, // Justin Herbert
+  
+  // Tier 5 - Round 4-5 (picks 37-60)
+  { ...sampleWRData[14], averageRank: 37, tier: 5 }, // Amari Cooper
+  { ...sampleQBData[7], averageRank: 38, tier: 5 }, // Tua Tagovailoa
+  { ...sampleWRData[15], averageRank: 39, tier: 5 }, // Keenan Allen
+  { ...sampleTEData[5], averageRank: 40, tier: 5 }, // Evan Engram
+  { ...sampleWRData[16], averageRank: 41, tier: 5 }, // Tee Higgins
+  { ...sampleQBData[8], averageRank: 42, tier: 5 }, // Trevor Lawrence
+  { ...sampleWRData[17], averageRank: 43, tier: 5 }, // Calvin Ridley
+  { ...sampleTEData[6], averageRank: 44, tier: 5 }, // Kyle Pitts
+  { ...sampleWRData[18], averageRank: 45, tier: 5 }, // Cooper Kupp
+  { ...sampleQBData[9], averageRank: 46, tier: 5 }, // CJ Stroud
+  { ...sampleWRData[19], averageRank: 47, tier: 5 }, // Terry McLaurin
+  { ...sampleTEData[7], averageRank: 48, tier: 5 }, // Dalton Kincaid
+  
+  // Tier 6 - Mid rounds (picks 61-84)
+  { ...sampleWRData[20], averageRank: 49, tier: 6 }, // Malik Nabers
+  { ...sampleQBData[10], averageRank: 50, tier: 6 }, // Jordan Love
+  { ...sampleTEData[8], averageRank: 51, tier: 6 }, // T.J. Hockenson
+  { ...sampleWRData[21], averageRank: 52, tier: 6 }, // Brandon Aiyuk
+  { ...sampleQBData[11], averageRank: 53, tier: 6 }, // Jared Goff
+  { ...sampleTEData[9], averageRank: 54, tier: 6 }, // David Njoku
+  { ...sampleWRData[22], averageRank: 55, tier: 6 }, // Jayden Reed
+  { ...sampleQBData[12], averageRank: 56, tier: 6 }, // Kirk Cousins
+  { ...sampleWRData[23], averageRank: 57, tier: 6 }, // George Pickens
+  { ...sampleTEData[10], averageRank: 58, tier: 6 }, // Dallas Goedert
+  { ...sampleDSTData[0], averageRank: 59, tier: 6 }, // San Francisco 49ers
+  { ...sampleWRData[24], averageRank: 60, tier: 6 }, // Marvin Harrison Jr.
+];
+
 // Function to get sample data by position
 export function getSampleDataByPosition(position: Position): Player[] {
   switch (position) {
@@ -891,6 +966,8 @@ export function getSampleDataByPosition(position: Position): Player[] {
       return sampleDSTData;
     case 'FLEX':
       return [...sampleRBData, ...sampleWRData, ...sampleTEData]; // Combined skill positions
+    case 'OVERALL':
+      return sampleOverallData; // Return pre-tiered overall data
     default:
       return sampleQBData;
   }

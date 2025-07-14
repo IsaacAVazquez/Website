@@ -172,7 +172,8 @@ function estimateProjectedPoints(position: Position, rank: number): number {
     'TE': 200,
     'K': 135,
     'DST': 140,
-    'FLEX': 285
+    'FLEX': 285,
+    'OVERALL': 285
   };
   
   const positionBase = basePoints[position] || 200;

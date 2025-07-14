@@ -148,7 +148,8 @@ export class FantasyProsAPI {
       'TE': 180,
       'K': 130,
       'DST': 135,
-      'DEF': 135
+      'DEF': 135,
+      'OVERALL': 260
     };
 
     const base = basePoints[position.toUpperCase()] || 200;
