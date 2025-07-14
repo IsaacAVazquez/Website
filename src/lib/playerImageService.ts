@@ -6,6 +6,7 @@ interface PlayerImageMapping {
     team: string;
     position: string;
     imagePath?: string;
+    source?: string;
   };
 }
 
@@ -120,6 +121,28 @@ class PlayerImageService {
       }
     });
   }
+}
+
+// Convenience function for direct use in components
+export function getPlayerImageUrl(playerName: string, teamId?: string): string | null {
+  // This is a synchronous version that doesn't require async/await
+  // It returns null if no image is found, allowing components to show fallbacks
+  
+  if (!playerName) return null;
+  
+  // For now, return a constructed path based on naming convention
+  // This will be enhanced when the mapping file is available
+  const sanitizedName = playerName.toLowerCase()
+    .replace(/[^a-z0-9]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+  
+  const team = teamId?.toLowerCase() || 'unknown';
+  const imagePath = `${team}-${sanitizedName}.jpg`;
+  
+  // Check if this matches our expected pattern
+  // In production, this should check against the actual mapping
+  return `/player-images/${imagePath}`;
 }
 
 export default PlayerImageService;

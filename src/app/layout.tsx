@@ -68,6 +68,22 @@ export default function RootLayout({
             })();`,
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Performance monitoring initialization
+              (function() {
+                if (typeof window !== 'undefined' && '${process.env.NODE_ENV}' === 'development') {
+                  const startTime = performance.now();
+                  window.addEventListener('load', function() {
+                    const loadTime = performance.now() - startTime;
+                    console.log('🚀 Page loaded in ' + loadTime.toFixed(2) + 'ms');
+                  });
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       <body
         className={twMerge(

@@ -5,7 +5,7 @@ import { TierGroup } from '@/lib/tierImageGenerator';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Heading } from '@/components/ui/Heading';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { ThumbnailImage } from '@/components/ui/OptimizedImage';
 import { getPlayerImageUrl } from '@/lib/playerImageService';
 
 interface TierDisplayProps {
@@ -69,11 +69,13 @@ export function TierDisplay({ tierGroups, position, showImages = true }: TierDis
                       <div className="flex-shrink-0">
                         <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-terminal-border">
                           {getPlayerImageUrl(player.player_name, player.player_team_id) ? (
-                            <Image
+                            <ThumbnailImage
                               src={getPlayerImageUrl(player.player_name, player.player_team_id) || ''}
                               alt={player.player_name}
-                              fill
-                              className="object-cover"
+                              width={48}
+                              height={48}
+                              className="rounded-full"
+                              objectFit="cover"
                             />
                           ) : (
                             <div 
