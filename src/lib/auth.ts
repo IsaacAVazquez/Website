@@ -26,10 +26,7 @@ export const authOptions: NextAuthOptions = {
       }
     })
   ],
-  pages: {
-    signIn: "/auth/signin",
-    error: "/auth/error",
-  },
+  // No custom pages - auth is handled internally by admin page
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days

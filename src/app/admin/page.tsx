@@ -4,22 +4,16 @@ import React, { useState } from 'react';
 import { Position } from '@/types';
 import { dataManager } from '@/lib/dataManager';
 import { motion } from 'framer-motion';
-import { useSession, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useSession, signOut, signIn } from "next-auth/react";
 import { MorphButton } from '@/components/ui/MorphButton';
-import { IconLogout } from "@tabler/icons-react";
+import { IconLogout, IconLock } from "@tabler/icons-react";
+import { GlassCard } from '@/components/ui/GlassCard';
 
 export default function AdminPage() {
   const { data: session, status } = useSession();
-  const router = useRouter();
-
-  // Redirect if not authenticated
-  React.useEffect(() => {
-    if (status === "loading") return;
-    if (!session) {
-      router.push("/auth/signin?callbackUrl=/admin");
-    }
-  }, [session, status, router]);
+  
+  // Login form state
+  const [loginForm, setLoginForm] = useState({ username: '', password: '', error: '', isLoading: false });
   const [selectedPosition, setSelectedPosition] = useState<Position>('QB');
   const [selectedScoringFormat, setSelectedScoringFormat] = useState<'standard' | 'ppr' | 'half-ppr'>('ppr');
   const [importType, setImportType] = useState<'csv' | 'url' | 'text' | 'scrape' | 'api' | 'session' | 'free'>('csv');
@@ -32,6 +26,29 @@ export default function AdminPage() {
   const [message, setMessage] = useState('');
 
   const positions: Position[] = ['QB', 'RB', 'WR', 'TE', 'FLEX', 'K', 'DST'];
+
+  // Handle login form submission
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginForm(prev => ({ ...prev, error: '', isLoading: true }));
+
+    try {
+      const result = await signIn("credentials", {
+        username: loginForm.username,
+        password: loginForm.password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setLoginForm(prev => ({ ...prev, error: 'Invalid credentials', isLoading: false }));
+      } else {
+        // Success - component will re-render with session
+        setLoginForm(prev => ({ ...prev, isLoading: false }));
+      }
+    } catch (error) {
+      setLoginForm(prev => ({ ...prev, error: 'An error occurred. Please try again.', isLoading: false }));
+    }
+  };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -317,9 +334,75 @@ export default function AdminPage() {
     );
   }
 
-  // Only render if authenticated
+  // Show login form if not authenticated
   if (!session) {
-    return null;
+    return (
+      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
+          <GlassCard elevation={3} className="p-8">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-electric-blue/10 mb-4">
+                <IconLock className="w-8 h-8 text-electric-blue" />
+              </div>
+              <h2 className="text-2xl font-bold text-electric-blue mb-2">
+                Admin Access
+              </h2>
+              <p className="text-slate-400">
+                Fantasy Football Data Manager
+              </p>
+            </div>
+
+            <form onSubmit={handleLogin} className="space-y-6">
+              <div>
+                <label htmlFor="username" className="block text-sm font-medium text-slate-300 mb-2">
+                  Username
+                </label>
+                <input
+                  id="username"
+                  type="text"
+                  value={loginForm.username}
+                  onChange={(e) => setLoginForm(prev => ({ ...prev, username: e.target.value }))}
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-electric-blue focus:ring-1 focus:ring-electric-blue transition-colors"
+                  placeholder="Enter username"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  value={loginForm.password}
+                  onChange={(e) => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-electric-blue focus:ring-1 focus:ring-electric-blue transition-colors"
+                  placeholder="Enter password"
+                  required
+                />
+              </div>
+
+              {loginForm.error && (
+                <div className="p-3 bg-red-900/50 border border-red-700 rounded-lg">
+                  <p className="text-red-300 text-sm">{loginForm.error}</p>
+                </div>
+              )}
+
+              <MorphButton
+                type="submit"
+                variant="primary"
+                size="lg"
+                className="w-full"
+                disabled={loginForm.isLoading}
+              >
+                {loginForm.isLoading ? "Signing in..." : "Sign In"}
+              </MorphButton>
+            </form>
+          </GlassCard>
+        </div>
+      </div>
+    );
   }
 
   return (
