@@ -1088,9 +1088,11 @@
     "name": "C.J. Stroud",
     "team": "HOU",
     "position": "QB",
-    "status": "needs_image",
-    "placeholderType": "placeholder",
-    "addedBy": "comprehensive-collector"
+    "imagePath": "hou-c-j-stroud.jpg",
+    "source": "alternative-method",
+    "verified": true,
+    "addedBy": "difficult-player-handler",
+    "alternativeMethod": true
   },
   "j-j-mccarthy-min": {
     "name": "J.J. McCarthy",
@@ -2359,6 +2361,1004 @@
   "ollie-gordon-ii-mia": {
     "name": "Ollie Gordon II",
     "team": "MIA",
+    "position": "RB",
+    "status": "needs_image",
+    "placeholderType": "placeholder",
+    "addedBy": "comprehensive-collector"
+  },
+  "chase-brown-cin": {
+    "name": "Chase Brown",
+    "team": "CIN",
+    "position": "RB",
+    "imagePath": "cin-chase-brown.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 14,
+    "addedBy": "fantasypros-integration"
+  },
+  "chuba-hubbard-car": {
+    "name": "Chuba Hubbard",
+    "team": "CAR",
+    "position": "RB",
+    "imagePath": "car-chuba-hubbard.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 16,
+    "addedBy": "fantasypros-integration"
+  },
+  "james-conner-ari": {
+    "name": "James Conner",
+    "team": "ARI",
+    "position": "RB",
+    "imagePath": "ari-james-conner.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 18,
+    "addedBy": "fantasypros-integration"
+  },
+  "david-montgomery-det": {
+    "name": "David Montgomery",
+    "team": "DET",
+    "position": "RB",
+    "imagePath": "det-david-montgomery.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 20,
+    "addedBy": "fantasypros-integration"
+  },
+  "puka-nacua-lar": {
+    "name": "Puka Nacua",
+    "team": "LAR",
+    "position": "WR",
+    "imagePath": "lar-puka-nacua.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 4,
+    "addedBy": "fantasypros-integration"
+  },
+  "brian-thomas-jr-jac": {
+    "name": "Brian Thomas Jr.",
+    "team": "JAC",
+    "position": "WR",
+    "imagePath": "jac-brian-thomas-jr.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 5,
+    "addedBy": "fantasypros-integration"
+  },
+  "brian-thomas-jr.-jac": {
+    "name": "Brian Thomas Jr.",
+    "team": "JAC",
+    "position": "WR",
+    "imagePath": "jac-brian-thomas-jr.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 5,
+    "aliasFor": "brian-thomas-jr-jac"
+  },
+  "nico-collins-hou": {
+    "name": "Nico Collins",
+    "team": "HOU",
+    "position": "WR",
+    "imagePath": "hou-nico-collins.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 7,
+    "addedBy": "fantasypros-integration"
+  },
+  "malik-nabers-nyg": {
+    "name": "Malik Nabers",
+    "team": "NYG",
+    "position": "WR",
+    "imagePath": "nyg-malik-nabers.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 8,
+    "addedBy": "fantasypros-integration"
+  },
+  "terry-mclaurin-was": {
+    "name": "Terry McLaurin",
+    "team": "WAS",
+    "position": "WR",
+    "imagePath": "was-terry-mclaurin.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 12,
+    "addedBy": "fantasypros-integration"
+  },
+  "ladd-mcconkey-lac": {
+    "name": "Ladd McConkey",
+    "team": "LAC",
+    "position": "WR",
+    "imagePath": "lac-ladd-mcconkey.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 13,
+    "addedBy": "fantasypros-integration"
+  },
+  "davante-adams-lar": {
+    "name": "Davante Adams",
+    "team": "LAR",
+    "position": "WR",
+    "imagePath": "lar-davante-adams.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 14,
+    "addedBy": "fantasypros-integration"
+  },
+  "tee-higgins-cin": {
+    "name": "Tee Higgins",
+    "team": "CIN",
+    "position": "WR",
+    "imagePath": "cin-tee-higgins.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 15,
+    "addedBy": "fantasypros-integration"
+  },
+  "marvin-harrison-jr-ari": {
+    "name": "Marvin Harrison Jr.",
+    "team": "ARI",
+    "position": "WR",
+    "imagePath": "ari-marvin-harrison-jr.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 17,
+    "addedBy": "fantasypros-integration"
+  },
+  "marvin-harrison-jr.-ari": {
+    "name": "Marvin Harrison Jr.",
+    "team": "ARI",
+    "position": "WR",
+    "imagePath": "ari-marvin-harrison-jr.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 17,
+    "aliasFor": "marvin-harrison-jr-ari"
+  },
+  "jaxon-smith-njigba-sea": {
+    "name": "Jaxon Smith-Njigba",
+    "team": "SEA",
+    "position": "WR",
+    "imagePath": "sea-jaxon-smith-njigba.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 18,
+    "addedBy": "fantasypros-integration"
+  },
+  "xavier-worthy-kc": {
+    "name": "Xavier Worthy",
+    "team": "KC",
+    "position": "WR",
+    "imagePath": "kc-xavier-worthy.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 19,
+    "addedBy": "fantasypros-integration"
+  },
+  "garrett-wilson-nyj": {
+    "name": "Garrett Wilson",
+    "team": "NYJ",
+    "position": "WR",
+    "imagePath": "nyj-garrett-wilson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 20,
+    "addedBy": "fantasypros-integration"
+  },
+  "brock-bowers-lv": {
+    "name": "Brock Bowers",
+    "team": "LV",
+    "position": "TE",
+    "imagePath": "lv-brock-bowers.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 2,
+    "addedBy": "fantasypros-integration"
+  },
+  "sam-laporta-det": {
+    "name": "Sam LaPorta",
+    "team": "DET",
+    "position": "TE",
+    "imagePath": "det-sam-laporta.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 4,
+    "addedBy": "fantasypros-integration"
+  },
+  "mark-andrews-bal": {
+    "name": "Mark Andrews",
+    "team": "BAL",
+    "position": "TE",
+    "imagePath": "bal-mark-andrews.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 5,
+    "addedBy": "fantasypros-integration"
+  },
+  "evan-engram-den": {
+    "name": "Evan Engram",
+    "team": "DEN",
+    "position": "TE",
+    "imagePath": "den-evan-engram.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 8,
+    "addedBy": "fantasypros-integration"
+  },
+  "tucker-kraft-gb": {
+    "name": "Tucker Kraft",
+    "team": "GB",
+    "position": "TE",
+    "imagePath": "gb-tucker-kraft.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 10,
+    "addedBy": "fantasypros-integration"
+  },
+  "dallas-goedert-phi": {
+    "name": "Dallas Goedert",
+    "team": "PHI",
+    "position": "TE",
+    "imagePath": "phi-dallas-goedert.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 11,
+    "addedBy": "fantasypros-integration"
+  },
+  "jonnu-smith-pit": {
+    "name": "Jonnu Smith",
+    "team": "PIT",
+    "position": "TE",
+    "imagePath": "pit-jonnu-smith.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 12,
+    "addedBy": "fantasypros-integration"
+  },
+  "dalton-kincaid-buf": {
+    "name": "Dalton Kincaid",
+    "team": "BUF",
+    "position": "TE",
+    "imagePath": "buf-dalton-kincaid.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 13,
+    "addedBy": "fantasypros-integration"
+  },
+  "tyler-warren-ind": {
+    "name": "Tyler Warren",
+    "team": "IND",
+    "position": "TE",
+    "imagePath": "ind-tyler-warren.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 15,
+    "addedBy": "fantasypros-integration"
+  },
+  "jake-ferguson-dal": {
+    "name": "Jake Ferguson",
+    "team": "DAL",
+    "position": "TE",
+    "imagePath": "dal-jake-ferguson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 16,
+    "addedBy": "fantasypros-integration"
+  },
+  "zach-ertz-was": {
+    "name": "Zach Ertz",
+    "team": "WAS",
+    "position": "TE",
+    "imagePath": "was-zach-ertz.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 17,
+    "addedBy": "fantasypros-integration"
+  },
+  "hunter-henry-ne": {
+    "name": "Hunter Henry",
+    "team": "NE",
+    "position": "TE",
+    "imagePath": "ne-hunter-henry.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 18,
+    "addedBy": "fantasypros-integration"
+  },
+  "isaiah-likely-bal": {
+    "name": "Isaiah Likely",
+    "team": "BAL",
+    "position": "TE",
+    "imagePath": "bal-isaiah-likely.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 19,
+    "addedBy": "fantasypros-integration"
+  },
+  "colston-loveland-chi": {
+    "name": "Colston Loveland",
+    "team": "CHI",
+    "position": "TE",
+    "imagePath": "chi-colston-loveland.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "rank": 20,
+    "addedBy": "fantasypros-integration"
+  },
+  "brashard-smith-kc": {
+    "name": "Brashard Smith",
+    "team": "KC",
+    "position": "RB",
+    "imagePath": "kc-brashard-smith.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "brashard smith-kc": {
+    "name": "Brashard Smith",
+    "team": "KC",
+    "position": "RB",
+    "imagePath": "kc-brashard-smith.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "brashard-smith-kc"
+  },
+  "alexander-mattison-mia": {
+    "name": "Alexander Mattison",
+    "team": "MIA",
+    "position": "RB",
+    "imagePath": "mia-alexander-mattison.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "alexander mattison-mia": {
+    "name": "Alexander Mattison",
+    "team": "MIA",
+    "position": "RB",
+    "imagePath": "mia-alexander-mattison.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "alexander-mattison-mia"
+  },
+  "isaiah-davis-nyj": {
+    "name": "Isaiah Davis",
+    "team": "NYJ",
+    "position": "RB",
+    "imagePath": "nyj-isaiah-davis.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "isaiah davis-nyj": {
+    "name": "Isaiah Davis",
+    "team": "NYJ",
+    "position": "RB",
+    "imagePath": "nyj-isaiah-davis.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "isaiah-davis-nyj"
+  },
+  "ty-johnson-buf": {
+    "name": "Ty Johnson",
+    "team": "BUF",
+    "position": "RB",
+    "imagePath": "buf-ty-johnson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "ty johnson-buf": {
+    "name": "Ty Johnson",
+    "team": "BUF",
+    "position": "RB",
+    "imagePath": "buf-ty-johnson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "ty-johnson-buf"
+  },
+  "jordan-james-sf": {
+    "name": "Jordan James",
+    "team": "SF",
+    "position": "RB",
+    "imagePath": "sf-jordan-james.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "jordan james-sf": {
+    "name": "Jordan James",
+    "team": "SF",
+    "position": "RB",
+    "imagePath": "sf-jordan-james.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "jordan-james-sf"
+  },
+  "zack-moss-cin": {
+    "name": "Zack Moss",
+    "team": "CIN",
+    "position": "RB",
+    "imagePath": "cin-zack-moss.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "zack moss-cin": {
+    "name": "Zack Moss",
+    "team": "CIN",
+    "position": "RB",
+    "imagePath": "cin-zack-moss.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "zack-moss-cin"
+  },
+  "dameon-pierce-hou": {
+    "name": "Dameon Pierce",
+    "team": "HOU",
+    "position": "RB",
+    "imagePath": "hou-dameon-pierce.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "dameon pierce-hou": {
+    "name": "Dameon Pierce",
+    "team": "HOU",
+    "position": "RB",
+    "imagePath": "hou-dameon-pierce.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "dameon-pierce-hou"
+  },
+  "woody-marks-hou": {
+    "name": "Woody Marks",
+    "team": "HOU",
+    "position": "RB",
+    "imagePath": "hou-woody-marks.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "woody marks-hou": {
+    "name": "Woody Marks",
+    "team": "HOU",
+    "position": "RB",
+    "imagePath": "hou-woody-marks.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "woody-marks-hou"
+  },
+  "kimani-vidal-lac": {
+    "name": "Kimani Vidal",
+    "team": "LAC",
+    "position": "RB",
+    "imagePath": "lac-kimani-vidal.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "kimani vidal-lac": {
+    "name": "Kimani Vidal",
+    "team": "LAC",
+    "position": "RB",
+    "imagePath": "lac-kimani-vidal.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "kimani-vidal-lac"
+  },
+  "sincere-mccormick-lv": {
+    "name": "Sincere McCormick",
+    "team": "LV",
+    "position": "RB",
+    "imagePath": "lv-sincere-mccormick.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "sincere mccormick-lv": {
+    "name": "Sincere McCormick",
+    "team": "LV",
+    "position": "RB",
+    "imagePath": "lv-sincere-mccormick.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "sincere-mccormick-lv"
+  },
+  "sincere mccormick-las": {
+    "name": "Sincere McCormick",
+    "team": "LV",
+    "position": "RB",
+    "imagePath": "lv-sincere-mccormick.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "sincere-mccormick-lv"
+  },
+  "sincere-mccormick-las": {
+    "name": "Sincere McCormick",
+    "team": "LV",
+    "position": "RB",
+    "imagePath": "lv-sincere-mccormick.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "sincere-mccormick-lv"
+  },
+  "damien-martinez-sea": {
+    "name": "Damien Martinez",
+    "team": "SEA",
+    "position": "RB",
+    "imagePath": "sea-damien-martinez.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "damien martinez-sea": {
+    "name": "Damien Martinez",
+    "team": "SEA",
+    "position": "RB",
+    "imagePath": "sea-damien-martinez.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "damien-martinez-sea"
+  },
+  "emanuel-wilson-gb": {
+    "name": "Emanuel Wilson",
+    "team": "GB",
+    "position": "RB",
+    "imagePath": "gb-emanuel-wilson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "emanuel wilson-gb": {
+    "name": "Emanuel Wilson",
+    "team": "GB",
+    "position": "RB",
+    "imagePath": "gb-emanuel-wilson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "emanuel-wilson-gb"
+  },
+  "ty-chandler-min": {
+    "name": "Ty Chandler",
+    "team": "MIN",
+    "position": "RB",
+    "imagePath": "min-ty-chandler.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "ty chandler-min": {
+    "name": "Ty Chandler",
+    "team": "MIN",
+    "position": "RB",
+    "imagePath": "min-ty-chandler.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "ty-chandler-min"
+  },
+  "chris-brooks-gb": {
+    "name": "Chris Brooks",
+    "team": "GB",
+    "position": "RB",
+    "imagePath": "gb-chris-brooks.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "chris brooks-gb": {
+    "name": "Chris Brooks",
+    "team": "GB",
+    "position": "RB",
+    "imagePath": "gb-chris-brooks.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "chris-brooks-gb"
+  },
+  "phil-mafah-dal": {
+    "name": "Phil Mafah",
+    "team": "DAL",
+    "position": "RB",
+    "imagePath": "dal-phil-mafah.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "phil mafah-dal": {
+    "name": "Phil Mafah",
+    "team": "DAL",
+    "position": "RB",
+    "imagePath": "dal-phil-mafah.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "phil-mafah-dal"
+  },
+  "raheim-sanders-lac": {
+    "name": "Raheim Sanders",
+    "team": "LAC",
+    "position": "RB",
+    "imagePath": "lac-raheim-sanders.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "raheim sanders-lac": {
+    "name": "Raheim Sanders",
+    "team": "LAC",
+    "position": "RB",
+    "imagePath": "lac-raheim-sanders.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "raheim-sanders-lac"
+  },
+  "zamir-white-lv": {
+    "name": "Zamir White",
+    "team": "LV",
+    "position": "RB",
+    "imagePath": "lv-zamir-white.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "zamir white-lv": {
+    "name": "Zamir White",
+    "team": "LV",
+    "position": "RB",
+    "imagePath": "lv-zamir-white.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "zamir-white-lv"
+  },
+  "zamir white-las": {
+    "name": "Zamir White",
+    "team": "LV",
+    "position": "RB",
+    "imagePath": "lv-zamir-white.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "zamir-white-lv"
+  },
+  "zamir-white-las": {
+    "name": "Zamir White",
+    "team": "LV",
+    "position": "RB",
+    "imagePath": "lv-zamir-white.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "zamir-white-lv"
+  },
+  "gus-edwards-fa": {
+    "name": "Gus Edwards",
+    "team": "FA",
+    "position": "RB",
+    "imagePath": "fa-gus-edwards.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "gus edwards-fa": {
+    "name": "Gus Edwards",
+    "team": "FA",
+    "position": "RB",
+    "imagePath": "fa-gus-edwards.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "gus-edwards-fa"
+  },
+  "cam-akers-no": {
+    "name": "Cam Akers",
+    "team": "NO",
+    "position": "RB",
+    "imagePath": "no-cam-akers.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "cam akers-no": {
+    "name": "Cam Akers",
+    "team": "NO",
+    "position": "RB",
+    "imagePath": "no-cam-akers.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "cam-akers-no"
+  },
+  "samaje-perine-cin": {
+    "name": "Samaje Perine",
+    "team": "CIN",
+    "position": "RB",
+    "imagePath": "cin-samaje-perine.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "samaje perine-cin": {
+    "name": "Samaje Perine",
+    "team": "CIN",
+    "position": "RB",
+    "imagePath": "cin-samaje-perine.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "samaje-perine-cin"
+  },
+  "donovan-edwards-nyj": {
+    "name": "Donovan Edwards",
+    "team": "NYJ",
+    "position": "RB",
+    "imagePath": "nyj-donovan-edwards.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "donovan edwards-nyj": {
+    "name": "Donovan Edwards",
+    "team": "NYJ",
+    "position": "RB",
+    "imagePath": "nyj-donovan-edwards.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "donovan-edwards-nyj"
+  },
+  "trey-sermon-pit": {
+    "name": "Trey Sermon",
+    "team": "PIT",
+    "position": "RB",
+    "imagePath": "pit-trey-sermon.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "trey sermon-pit": {
+    "name": "Trey Sermon",
+    "team": "PIT",
+    "position": "RB",
+    "imagePath": "pit-trey-sermon.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "trey-sermon-pit"
+  },
+  "ameer-abdullah-fa": {
+    "name": "Ameer Abdullah",
+    "team": "FA",
+    "position": "RB",
+    "imagePath": "fa-ameer-abdullah.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "ameer abdullah-fa": {
+    "name": "Ameer Abdullah",
+    "team": "FA",
+    "position": "RB",
+    "imagePath": "fa-ameer-abdullah.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "ameer-abdullah-fa"
+  },
+  "emari-demercado-ari": {
+    "name": "Emari Demercado",
+    "team": "ARI",
+    "position": "RB",
+    "imagePath": "ari-emari-demercado.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "emari demercado-ari": {
+    "name": "Emari Demercado",
+    "team": "ARI",
+    "position": "RB",
+    "imagePath": "ari-emari-demercado.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "emari-demercado-ari"
+  },
+  "chris-rodriguez-jr-was": {
+    "name": "Chris Rodriguez Jr.",
+    "team": "WAS",
+    "position": "RB",
+    "status": "needs_image",
+    "placeholderType": "placeholder",
+    "addedBy": "comprehensive-collector"
+  },
+  "jacory-croskey-merritt-was": {
+    "name": "Jacory Croskey-Merritt",
+    "team": "WAS",
+    "position": "RB",
+    "status": "needs_image",
+    "placeholderType": "placeholder",
+    "addedBy": "comprehensive-collector"
+  },
+  "a-j-dillon-phi": {
+    "name": "A.J. Dillon",
+    "team": "PHI",
+    "position": "RB",
+    "status": "needs_image",
+    "placeholderType": "placeholder",
+    "addedBy": "comprehensive-collector"
+  },
+  "lequint-allen-jr-jac": {
+    "name": "LeQuint Allen Jr.",
+    "team": "JAC",
+    "position": "RB",
+    "status": "needs_image",
+    "placeholderType": "placeholder",
+    "addedBy": "comprehensive-collector"
+  },
+  "jonathon-brooks-car": {
+    "name": "Jonathon Brooks",
+    "team": "CAR",
+    "position": "RB",
+    "imagePath": "car-jonathon-brooks.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "jonathon brooks-car": {
+    "name": "Jonathon Brooks",
+    "team": "CAR",
+    "position": "RB",
+    "imagePath": "car-jonathon-brooks.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "jonathon-brooks-car"
+  },
+  "jeremy-mcnichols-was": {
+    "name": "Jeremy McNichols",
+    "team": "WAS",
+    "position": "RB",
+    "imagePath": "was-jeremy-mcnichols.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "jeremy mcnichols-was": {
+    "name": "Jeremy McNichols",
+    "team": "WAS",
+    "position": "RB",
+    "imagePath": "was-jeremy-mcnichols.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "jeremy-mcnichols-was"
+  },
+  "jeremy mcnichols-wsh": {
+    "name": "Jeremy McNichols",
+    "team": "WAS",
+    "position": "RB",
+    "imagePath": "was-jeremy-mcnichols.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "jeremy-mcnichols-was"
+  },
+  "jeremy-mcnichols-wsh": {
+    "name": "Jeremy McNichols",
+    "team": "WAS",
+    "position": "RB",
+    "imagePath": "was-jeremy-mcnichols.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "jeremy-mcnichols-was"
+  },
+  "kalel-mullings-ten": {
+    "name": "Kalel Mullings",
+    "team": "TEN",
+    "position": "RB",
+    "imagePath": "ten-kalel-mullings.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "kalel mullings-ten": {
+    "name": "Kalel Mullings",
+    "team": "TEN",
+    "position": "RB",
+    "imagePath": "ten-kalel-mullings.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "kalel-mullings-ten"
+  },
+  "craig-reynolds-det": {
+    "name": "Craig Reynolds",
+    "team": "DET",
+    "position": "RB",
+    "imagePath": "det-craig-reynolds.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "craig reynolds-det": {
+    "name": "Craig Reynolds",
+    "team": "DET",
+    "position": "RB",
+    "imagePath": "det-craig-reynolds.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "craig-reynolds-det"
+  },
+  "clyde-edwards-helaire-no": {
+    "name": "Clyde Edwards-Helaire",
+    "team": "NO",
+    "position": "RB",
+    "imagePath": "no-clyde-edwards-helaire.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "clyde edwards-helaire-no": {
+    "name": "Clyde Edwards-Helaire",
+    "team": "NO",
+    "position": "RB",
+    "imagePath": "no-clyde-edwards-helaire.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "clyde-edwards-helaire-no"
+  },
+  "kenny-mcintosh-sea": {
+    "name": "Kenny McIntosh",
+    "team": "SEA",
+    "position": "RB",
+    "imagePath": "sea-kenny-mcintosh.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "kenny mcintosh-sea": {
+    "name": "Kenny McIntosh",
+    "team": "SEA",
+    "position": "RB",
+    "imagePath": "sea-kenny-mcintosh.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "kenny-mcintosh-sea"
+  },
+  "tyler-goodson-ind": {
+    "name": "Tyler Goodson",
+    "team": "IND",
+    "position": "RB",
+    "imagePath": "ind-tyler-goodson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "tyler goodson-ind": {
+    "name": "Tyler Goodson",
+    "team": "IND",
+    "position": "RB",
+    "imagePath": "ind-tyler-goodson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "tyler-goodson-ind"
+  },
+  "cordarrelle-patterson-pit": {
+    "name": "Cordarrelle Patterson",
+    "team": "PIT",
+    "position": "RB",
+    "imagePath": "pit-cordarrelle-patterson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "addedBy": "comprehensive-collector"
+  },
+  "cordarrelle patterson-pit": {
+    "name": "Cordarrelle Patterson",
+    "team": "PIT",
+    "position": "RB",
+    "imagePath": "pit-cordarrelle-patterson.jpg",
+    "source": "fantasypros",
+    "verified": true,
+    "aliasFor": "cordarrelle-patterson-pit"
+  },
+  "ja-jac": {
+    "name": "Ja",
+    "team": "JAC",
+    "position": "RB",
+    "status": "needs_image",
+    "placeholderType": "placeholder",
+    "addedBy": "comprehensive-collector"
+  },
+  "d-fa": {
+    "name": "D",
+    "team": "FA",
     "position": "RB",
     "status": "needs_image",
     "placeholderType": "placeholder",

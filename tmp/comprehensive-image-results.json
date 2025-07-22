@@ -3,170 +3,98 @@
     {
       "success": true,
       "player": {
-        "name": "Miles Sanders",
-        "team": "DAL",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/18283/headshot/70x70.png",
-      "filename": "dal-miles-sanders.jpg",
-      "source": "fantasypros",
-      "size": 11380
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Keaton Mitchell",
-        "team": "BAL",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25360/headshot/70x70.png",
-      "filename": "bal-keaton-mitchell.jpg",
-      "source": "fantasypros",
-      "size": 13270
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Elijah Mitchell",
-        "team": "KC",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/17219/headshot/70x70.png",
-      "filename": "kc-elijah-mitchell.jpg",
-      "source": "fantasypros",
-      "size": 2322
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Audric Estime",
-        "team": "DEN",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23054/headshot/70x70.png",
-      "filename": "den-audric-estime.jpg",
-      "source": "fantasypros",
-      "size": 10112
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Jaleel McLaughlin",
-        "team": "DEN",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25876/headshot/70x70.png",
-      "filename": "den-jaleel-mclaughlin.jpg",
-      "source": "fantasypros",
-      "size": 10322
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Raheem Mostert",
-        "team": "LV",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/14338/headshot/70x70.png",
-      "filename": "lv-raheem-mostert.jpg",
-      "source": "fantasypros",
-      "size": 8838
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Trevor Etienne",
+        "name": "Jonathon Brooks",
         "team": "CAR",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25393/headshot/70x70.png",
-      "filename": "car-trevor-etienne.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/26148/headshot/70x70.png",
+      "filename": "car-jonathon-brooks.jpg",
       "source": "fantasypros",
-      "size": 11149
+      "size": 12172
     },
     {
       "success": true,
       "player": {
-        "name": "Devin Singletary",
-        "team": "NYG",
+        "name": "Jeremy McNichols",
+        "team": "WAS",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/18280/headshot/70x70.png",
-      "filename": "nyg-devin-singletary.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/16445/headshot/70x70.png",
+      "filename": "was-jeremy-mcnichols.jpg",
       "source": "fantasypros",
-      "size": 9874
+      "size": 9385
     },
     {
       "success": true,
       "player": {
-        "name": "Antonio Gibson",
-        "team": "NE",
+        "name": "Kalel Mullings",
+        "team": "TEN",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/19624/headshot/70x70.png",
-      "filename": "ne-antonio-gibson.jpg",
-      "source": "fantasypros",
-      "size": 10508
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Kenneth Gainwell",
-        "team": "PIT",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23310/headshot/70x70.png",
-      "filename": "pit-kenneth-gainwell.jpg",
-      "source": "fantasypros",
-      "size": 10900
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Tahj Brooks",
-        "team": "CIN",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/26212/headshot/70x70.png",
-      "filename": "cin-tahj-brooks.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/27045/headshot/70x70.png",
+      "filename": "ten-kalel-mullings.jpg",
       "source": "fantasypros",
       "size": 2322
     },
     {
       "success": true,
       "player": {
-        "name": "Jarquez Hunter",
-        "team": "LAR",
+        "name": "Craig Reynolds",
+        "team": "DET",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/24335/headshot/70x70.png",
-      "filename": "lar-jarquez-hunter.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/19074/headshot/70x70.png",
+      "filename": "det-craig-reynolds.jpg",
       "source": "fantasypros",
-      "size": 2322
+      "size": 10178
     },
     {
       "success": true,
       "player": {
-        "name": "Sean Tucker",
-        "team": "TB",
+        "name": "Clyde Edwards-Helaire",
+        "team": "NO",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23679/headshot/70x70.png",
-      "filename": "tb-sean-tucker.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/19325/headshot/70x70.png",
+      "filename": "no-clyde-edwards-helaire.jpg",
       "source": "fantasypros",
-      "size": 9621
+      "size": 9895
     },
     {
       "success": true,
       "player": {
-        "name": "Khalil Herbert",
+        "name": "Kenny McIntosh",
+        "team": "SEA",
+        "position": "RB"
+      },
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25329/headshot/70x70.png",
+      "filename": "sea-kenny-mcintosh.jpg",
+      "source": "fantasypros",
+      "size": 12193
+    },
+    {
+      "success": true,
+      "player": {
+        "name": "Tyler Goodson",
         "team": "IND",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/22763/headshot/70x70.png",
-      "filename": "ind-khalil-herbert.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/22976/headshot/70x70.png",
+      "filename": "ind-tyler-goodson.jpg",
       "source": "fantasypros",
-      "size": 10273
+      "size": 12244
+    },
+    {
+      "success": true,
+      "player": {
+        "name": "Cordarrelle Patterson",
+        "team": "PIT",
+        "position": "RB"
+      },
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/11613/headshot/70x70.png",
+      "filename": "pit-cordarrelle-patterson.jpg",
+      "source": "fantasypros",
+      "size": 11619
     }
   ],
   "failed": [],
@@ -329,6 +257,66 @@
       },
       "success": true,
       "filename": "mia-ollie-gordon-ii.jpg",
+      "type": "placeholder"
+    },
+    {
+      "player": {
+        "name": "Chris Rodriguez Jr.",
+        "team": "WAS",
+        "position": "RB"
+      },
+      "success": true,
+      "filename": "was-chris-rodriguez-jr.jpg",
+      "type": "placeholder"
+    },
+    {
+      "player": {
+        "name": "Jacory Croskey-Merritt",
+        "team": "WAS",
+        "position": "RB"
+      },
+      "success": true,
+      "filename": "was-jacory-croskey-merritt.jpg",
+      "type": "placeholder"
+    },
+    {
+      "player": {
+        "name": "A.J. Dillon",
+        "team": "PHI",
+        "position": "RB"
+      },
+      "success": true,
+      "filename": "phi-a-j-dillon.jpg",
+      "type": "placeholder"
+    },
+    {
+      "player": {
+        "name": "LeQuint Allen Jr.",
+        "team": "JAC",
+        "position": "RB"
+      },
+      "success": true,
+      "filename": "jac-lequint-allen-jr.jpg",
+      "type": "placeholder"
+    },
+    {
+      "player": {
+        "name": "Ja",
+        "team": "JAC",
+        "position": "RB"
+      },
+      "success": true,
+      "filename": "jac-ja.jpg",
+      "type": "placeholder"
+    },
+    {
+      "player": {
+        "name": "D",
+        "team": "FA",
+        "position": "RB"
+      },
+      "success": true,
+      "filename": "fa-d.jpg",
       "type": "placeholder"
     }
   ],
