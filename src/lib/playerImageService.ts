@@ -51,8 +51,8 @@ class PlayerImageService {
     
     // Debug logging for development
     if (process.env.NODE_ENV === 'development') {
-      console.log(`Looking for image for: ${player.name} (${player.team})`);
-      console.log(`Trying variations:`, variations.slice(0, 5)); // Show first 5 variations
+      console.log(`🔍 Looking for image for: ${player.name} (${player.team})`);
+      console.log(`📝 Trying variations:`, variations.slice(0, 5)); // Show first 5 variations
     }
     
     for (const variation of variations) {
@@ -83,6 +83,12 @@ class PlayerImageService {
       cleanName.replace(/'/g, ''), // Remove smart quotes
       cleanName.replace(/Jr\.?|Sr\.?|III|IV|V/gi, '').trim(), // Remove suffixes
       cleanName.replace(/\./g, '').replace(/'/g, '').replace(/'/g, ''), // Remove periods and apostrophes
+      // Handle common name formatting differences
+      cleanName.replace(/\s+/g, ' '), // Normalize spaces
+      cleanName.replace(/\./g, '').replace(/'/g, '').replace(/'/g, '').replace(/\s+/g, ' ').trim(),
+      // Handle middle initials and names
+      cleanName.replace(/\s[A-Z]\.\s/g, ' '), // Remove middle initial like "J. "
+      cleanName.replace(/\s[A-Z][a-z]*\s/g, ' '), // Remove middle names
     ];
     
     // Team abbreviation variations (handle common mismatches)
@@ -91,6 +97,10 @@ class PlayerImageService {
     if (teamUpper === 'WSH') teamVariations.push('WAS');
     if (teamUpper === 'JAX') teamVariations.push('JAC');
     if (teamUpper === 'JAC') teamVariations.push('JAX');
+    if (teamUpper === 'LV') teamVariations.push('LAS', 'OAK');
+    if (teamUpper === 'LAS') teamVariations.push('LV');
+    if (teamUpper === 'LAC') teamVariations.push('SD');
+    if (teamUpper === 'LAR') teamVariations.push('LA');
     
     // Create all combinations
     const allVariations: string[] = [];

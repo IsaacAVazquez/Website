@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "scrapedAt": "2025-07-22T04:07:35.980Z",
+    "totalPlayers": 0,
+    "totalTeams": 32,
+    "successfulTeams": 0,
+    "failedTeams": 3
+  },
+  "players": [],
+  "scrapingResults": {
+    "successful": [],
+    "failed": [
+      {
+        "team": "ARI",
+        "reason": "No players found"
+      },
+      {
+        "team": "ATL",
+        "reason": "No players found"
+      },
+      {
+        "team": "BAL",
+        "reason": "No players found"
+      }
+    ],
+    "totalPlayers": 0,
+    "teamsProcessed": 3
+  }
+}

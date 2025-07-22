@@ -1,6 +1,6 @@
 "use client";
-import { Heading } from "@/components/Heading";
-import { Paragraph } from "@/components/Paragraph";
+import { Heading } from "@/components/ui/Heading";
+import { Paragraph } from "@/components/ui/Paragraph";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { MorphButton } from "@/components/ui/MorphButton";

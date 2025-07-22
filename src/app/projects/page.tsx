@@ -44,7 +44,7 @@ export default function ProjectsPage() {
       {/* Breadcrumb Structured Data */}
       <StructuredData 
         type="BreadcrumbList" 
-        data={{ items: generateBreadcrumbStructuredData(breadcrumbs).itemListElement }}
+        data={{ items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement }}
       />
       
       {/* Project Structured Data */}

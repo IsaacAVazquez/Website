@@ -25,8 +25,8 @@ export async function GET(request: NextRequest) {
       }
       
       // Find the most recent update
-      let mostRecentUpdate = null;
-      let oldestUpdate = null;
+      let mostRecentUpdate: string | null = null;
+      let oldestUpdate: string | null = null;
       
       Object.values(allMetadata).forEach((metadata: any) => {
         if (metadata?.lastUpdated) {

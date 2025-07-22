@@ -36,6 +36,7 @@ export default function TierChartEnhanced({
   const [currentZoom, setCurrentZoom] = useState<number>(1);
   const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const [playerImages, setPlayerImages] = useState<Map<string, string>>(new Map());
+  const [isLoadingImages, setIsLoadingImages] = useState(false);
 
   const dimensions: ChartDimensions = {
     width,
@@ -69,16 +70,45 @@ export default function TierChartEnhanced({
   }, [players, numberOfTiers, onTierCountChange]);
 
   const loadPlayerImages = async (playersToLoad: Player[]) => {
+    setIsLoadingImages(true);
     const imageMap = new Map<string, string>();
     
-    for (const player of playersToLoad) {
-      const imageUrl = await PlayerImageService.getPlayerImageUrl(player);
-      if (imageUrl) {
-        imageMap.set(`${player.name}-${player.team}`, imageUrl);
+    // Preload images with error handling and validation
+    const imagePromises = playersToLoad.map(async (player) => {
+      try {
+        let imageUrl = await PlayerImageService.getPlayerImageUrl(player);
+        
+        // Fallback to synchronous method if async fails
+        if (!imageUrl) {
+          const { getPlayerImageUrl } = await import('@/lib/playerImageService');
+          imageUrl = getPlayerImageUrl(player.name, player.team);
+        }
+        
+        if (imageUrl) {
+          // Validate image exists and is loadable
+          return new Promise<void>((resolve) => {
+            const img = new Image();
+            img.onload = () => {
+              imageMap.set(`${player.name}-${player.team}`, imageUrl);
+              resolve();
+            };
+            img.onerror = () => {
+              // Image failed to load, skip it
+              console.warn(`Failed to load image for ${player.name}`);
+              resolve();
+            };
+            img.src = imageUrl;
+          });
+        }
+      } catch (error) {
+        console.warn(`Error loading image for ${player.name}:`, error);
       }
-    }
-    
+    });
+
+    // Wait for all images to load (or fail)
+    await Promise.all(imagePromises.filter(Boolean));
     setPlayerImages(imageMap);
+    setIsLoadingImages(false);
   };
 
   useEffect(() => {
@@ -287,7 +317,6 @@ export default function TierChartEnhanced({
             .attr('y', playerY - baseRadius)
             .attr('width', imageSize)
             .attr('height', imageSize)
-            .attr('clip-path', `circle(${baseRadius}px at 50% 50%)`)
             .style('cursor', 'pointer')
             .on('mouseenter', function() {
               d3.select(this)
@@ -296,8 +325,7 @@ export default function TierChartEnhanced({
                 .attr('x', xScale(playerRank) - hoverRadius)
                 .attr('y', playerY - hoverRadius)
                 .attr('width', hoverRadius * 2)
-                .attr('height', hoverRadius * 2)
-                .attr('clip-path', `circle(${hoverRadius}px at 50% 50%)`);
+                .attr('height', hoverRadius * 2);
               setHoveredPlayer(player);
             })
             .on('mouseleave', function() {
@@ -307,8 +335,7 @@ export default function TierChartEnhanced({
                 .attr('x', xScale(playerRank) - baseRadius)
                 .attr('y', playerY - baseRadius)
                 .attr('width', imageSize)
-                .attr('height', imageSize)
-                .attr('clip-path', `circle(${baseRadius}px at 50% 50%)`);
+                .attr('height', imageSize);
               setHoveredPlayer(null);
             })
             .on('error', function() {
@@ -324,17 +351,6 @@ export default function TierChartEnhanced({
                 .attr('opacity', 0.95)
                 .style('cursor', 'pointer');
             });
-            
-          // Add border around image
-          g.append('circle')
-            .attr('cx', xScale(playerRank))
-            .attr('cy', playerY)
-            .attr('r', baseRadius)
-            .attr('fill', 'none')
-            .attr('stroke', tier.color)
-            .attr('stroke-width', strokeWidth + 1)
-            .attr('opacity', 0.8)
-            .style('pointer-events', 'none');
         } else {
           // Fallback circle for players without images
           g.append('circle')
@@ -395,7 +411,7 @@ export default function TierChartEnhanced({
       .style('font-weight', 'bold')
       .text(`Fantasy Football Tier Rankings (${scoringFormat})`);
 
-  }, [tierGroups, players, numberOfTiers, width, height, scoringFormat, hiddenTiers]);
+  }, [tierGroups, players, numberOfTiers, width, height, scoringFormat, hiddenTiers, playerImages]);
 
   // Zoom control functions
   const handleZoomIn = () => {
@@ -453,6 +469,16 @@ export default function TierChartEnhanced({
           <Maximize2 className="w-4 h-4 text-white" />
         </motion.button>
       </div>
+
+      {/* Image Loading Indicator */}
+      {isLoadingImages && (
+        <div className="absolute bottom-16 right-4 bg-cyan-900/80 backdrop-blur-sm px-3 py-2 rounded-lg border border-cyan-600">
+          <div className="flex items-center gap-2 text-sm text-cyan-300">
+            <div className="w-3 h-3 border-2 border-cyan-300 border-t-transparent rounded-full animate-spin"></div>
+            <span>Loading player images...</span>
+          </div>
+        </div>
+      )}
 
       {/* Zoom Indicator */}
       <div className="absolute bottom-4 right-4 bg-gray-800/80 backdrop-blur-sm px-3 py-1 rounded-lg border border-gray-700">

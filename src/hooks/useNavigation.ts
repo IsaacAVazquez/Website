@@ -60,8 +60,10 @@ export function useNavigation() {
   };
   
   // Determine which navigation should be shown
-  const showSidebar = pathname !== '/'; // Show sidebar on all pages except home
-  const showFloatingNav = pathname === '/' || isMobile; // Show floating nav on home or mobile
+  // Exclude home page and fantasy football pages (need full width for charts)
+  const isFantasyFootballPage = pathname.startsWith('/fantasy-football');
+  const showSidebar = pathname !== '/' && !isFantasyFootballPage;
+  const showFloatingNav = pathname === '/' || isMobile || isFantasyFootballPage;
   
   return {
     isMobile,

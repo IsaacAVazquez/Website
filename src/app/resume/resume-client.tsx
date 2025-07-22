@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Heading } from "@/components/Heading";
-import { Paragraph } from "@/components/Paragraph";
+import { Heading } from "@/components/ui/Heading";
+import { Paragraph } from "@/components/ui/Paragraph";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { motion } from "framer-motion";
 import { IconDownload, IconMail, IconBrandLinkedin } from "@tabler/icons-react";

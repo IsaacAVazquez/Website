@@ -30,9 +30,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { position: string } }): Promise<Metadata> {
-  const position = params.position.toUpperCase() as Position;
-  const positionName = positionNames[position] || params.position;
+export async function generateMetadata({ params }: { params: Promise<{ position: string }> }): Promise<Metadata> {
+  const { position: positionParam } = await params;
+  const position = positionParam.toUpperCase() as Position;
+  const positionName = positionNames[position] || positionParam;
   
   return {
     title: `${positionName} Tiers - Fantasy Football Rankings`,
@@ -40,8 +41,9 @@ export async function generateMetadata({ params }: { params: { position: string 
   };
 }
 
-export default function TierPage({ params }: { params: { position: string } }) {
-  const position = params.position.toUpperCase() as Position;
+export default async function TierPage({ params }: { params: Promise<{ position: string }> }) {
+  const { position: positionParam } = await params;
+  const position = positionParam.toUpperCase() as Position;
   
   if (!validPositions.includes(position)) {
     notFound();
@@ -56,7 +58,7 @@ export default function TierPage({ params }: { params: { position: string } }) {
         <div className="max-w-7xl mx-auto">
           <GlassCard elevation={2} className="p-8 text-center">
             <IconChartBar className="w-16 h-16 text-electric-blue mx-auto mb-4" />
-            <Heading size="h2" className="mb-4">No Data Available</Heading>
+            <Heading as="h2" className="mb-4">No Data Available</Heading>
             <Paragraph className="text-slate-400 mb-6">
               No tier data is currently available for {positionNames[position]}.
             </Paragraph>
@@ -94,7 +96,7 @@ export default function TierPage({ params }: { params: { position: string } }) {
           
           <div className="flex items-center justify-between">
             <div>
-              <Heading size="h1" className="text-electric-blue mb-2">
+              <Heading as="h1" className="text-electric-blue mb-2">
                 {positionNames[position]} Tiers
               </Heading>
               <Paragraph className="text-slate-400">

@@ -1,6 +1,6 @@
 "use client";
 
-import { Heading } from "@/components/Heading";
+import { Heading } from "@/components/ui/Heading";
 import { motion } from "framer-motion";
 import { IconBrandGithub, IconExternalLink, IconCode, IconDatabase, IconTestPipe, IconChartBar, IconTrendingUp, IconEye } from "@tabler/icons-react";
 import { GlassCard } from "@/components/ui/GlassCard";

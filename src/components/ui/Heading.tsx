@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 // Font files can be colocated inside of `app`
 const CalSans = localFont({
-  src: [{ path: "../../fonts/CalSans-SemiBold.woff2" }],
+  src: [{ path: "../../../fonts/CalSans-SemiBold.woff2" }],
   display: "swap",
 });
 

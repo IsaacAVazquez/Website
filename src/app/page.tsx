@@ -1,7 +1,7 @@
 "use client";
 
 import { TerminalHero } from "@/components/TerminalHero";
-import { Heading } from "@/components/Heading";
+import { Heading } from "@/components/ui/Heading";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { motion } from "framer-motion";
 import Link from "next/link";

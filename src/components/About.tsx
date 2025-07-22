@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Paragraph } from "@/components/Paragraph";
+import { Paragraph } from "@/components/ui/Paragraph";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { JourneyTimeline } from "@/components/ui/JourneyTimeline";
 import { useTypingAnimation } from "@/hooks/useTypingAnimation";
