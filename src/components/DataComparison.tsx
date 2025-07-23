@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Player, Position } from '@/types';
 import { motion } from 'framer-motion';
 import { BarChart2, Users, TrendingUp, Eye, EyeOff } from 'lucide-react';
@@ -23,7 +23,7 @@ export default function DataComparison({ position, isVisible, onToggle }: DataCo
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>('');
 
-  const fetchComparisonData = async () => {
+  const fetchComparisonData = useCallback(async () => {
     setLoading(true);
     setError('');
 
@@ -42,13 +42,13 @@ export default function DataComparison({ position, isVisible, onToggle }: DataCo
     } finally {
       setLoading(false);
     }
-  };
+  }, [position]);
 
   useEffect(() => {
     if (isVisible) {
       fetchComparisonData();
     }
-  }, [position, isVisible]);
+  }, [position, isVisible, fetchComparisonData]);
 
   const getDatasetLabel = (dataset: string) => {
     switch (dataset) {

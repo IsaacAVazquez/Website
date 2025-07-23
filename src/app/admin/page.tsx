@@ -1,13 +1,26 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Position } from '@/types';
-import { dataManager } from '@/lib/dataManager';
 import { motion } from 'framer-motion';
 import { useSession, signOut, signIn } from "next-auth/react";
+import { Position, Player } from '@/types';
+import { dataManager } from '@/lib/dataManager';
 import { MorphButton } from '@/components/ui/MorphButton';
 import { IconLogout, IconLock } from "@tabler/icons-react";
 import { GlassCard } from '@/components/ui/GlassCard';
+
+// Admin page specific interfaces
+interface CSRFResult {
+  pattern: string;
+  found: boolean;
+  token?: string;
+}
+
+interface SamplePlayer {
+  rank: number;
+  name: string;
+  team: string;
+}
 
 export default function AdminPage() {
   const { data: session, status } = useSession();
@@ -175,7 +188,7 @@ export default function AdminPage() {
       const result = await response.json();
 
       if (result.success) {
-        setMessage(`✅ Successfully fetched ${result.players.length} ${selectedPosition} players from FantasyPros API\n\nTop 5:\n${result.players.slice(0, 5).map((p: any) => `${p.averageRank}. ${p.name} (${p.team})`).join('\n')}`);
+        setMessage(`✅ Successfully fetched ${result.players.length} ${selectedPosition} players from FantasyPros API\n\nTop 5:\n${result.players.slice(0, 5).map((p: Player) => `${p.averageRank}. ${p.name} (${p.team})`).join('\n')}`);
       } else {
         setMessage(`⚠️ ${result.error}\n\nUsing ${result.players.length} cached players instead.`);
       }
@@ -210,7 +223,7 @@ export default function AdminPage() {
       const result = await response.json();
 
       if (result.success) {
-        setMessage(`✅ Successfully fetched ${result.players.length} ${selectedPosition} players from FantasyPros (${selectedScoringFormat.toUpperCase()})\n\nWeek: ${result.week}\nTop 5:\n${result.players.slice(0, 5).map((p: any) => `${p.averageRank}. ${p.name} (${p.team})`).join('\n')}`);
+        setMessage(`✅ Successfully fetched ${result.players.length} ${selectedPosition} players from FantasyPros (${selectedScoringFormat.toUpperCase()})\n\nWeek: ${result.week}\nTop 5:\n${result.players.slice(0, 5).map((p: Player) => `${p.averageRank}. ${p.name} (${p.team})`).join('\n')}`);
       } else {
         setMessage(`❌ ${result.error}\n\n${result.note || ''}`);
       }
@@ -267,7 +280,7 @@ export default function AdminPage() {
       const result = await response.json();
 
       if (result.success) {
-        setMessage(`✅ ${result.message}\n\nTop 5:\n${result.players.slice(0, 5).map((p: any) => `${p.averageRank}. ${p.name} (${p.team})`).join('\n')}`);
+        setMessage(`✅ ${result.message}\n\nTop 5:\n${result.players.slice(0, 5).map((p: Player) => `${p.averageRank}. ${p.name} (${p.team})`).join('\n')}`);
       } else {
         setMessage(`⚠️ ${result.error}\n\n${result.note || ''}`);
       }
@@ -309,7 +322,7 @@ export default function AdminPage() {
 
       if (result.success) {
         const csrfResults = result.csrfPatternResults
-          .map((r: any) => `${r.pattern}: ${r.found ? '✅ ' + r.token : '❌'}`)
+          .map((r: CSRFResult) => `${r.pattern}: ${r.found ? '✅ ' + r.token : '❌'}`)
           .join('\n');
         
         setMessage(`🔍 FantasyPros Debug Results:\n\nLogin page length: ${result.loginPageLength}\nHas cookies: ${result.hasCookies}\n\nCSRF Token Patterns:\n${csrfResults}\n\nToken-like strings found: ${result.tokenLikeStrings.length}\nInput fields with 'csrf': ${result.inputFields.length}\nForms found: ${result.forms.length}`);
@@ -600,7 +613,7 @@ export default function AdminPage() {
                     try {
                       const response = await fetch('/api/test-scrape');
                       const result = await response.json();
-                      setMessage(`🔍 Test Results:\n\nURL: ${result.url}\nHTML Length: ${result.htmlLength}\nHas Content: ${result.hasContent}\nHas JS: ${result.hasJavaScript}\nHas Table: ${result.hasTable}\n\nSample Players Found: ${result.samplePlayers?.length || 0}\n${result.samplePlayers?.map((p: any) => `${p.rank}. ${p.name} (${p.team})`).join('\n') || 'None'}`);
+                      setMessage(`🔍 Test Results:\n\nURL: ${result.url}\nHTML Length: ${result.htmlLength}\nHas Content: ${result.hasContent}\nHas JS: ${result.hasJavaScript}\nHas Table: ${result.hasTable}\n\nSample Players Found: ${result.samplePlayers?.length || 0}\n${result.samplePlayers?.map((p: SamplePlayer) => `${p.rank}. ${p.name} (${p.team})`).join('\n') || 'None'}`);
                     } catch (error) {
                       setMessage(`❌ Test failed: ${error}`);
                     }

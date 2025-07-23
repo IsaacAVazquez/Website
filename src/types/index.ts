@@ -27,6 +27,7 @@ export interface TierGroup {
   minRank: number;
   maxRank: number;
   avgRank: number;
+  label?: string; // Optional tier label
 }
 
 export interface ChartDimensions {

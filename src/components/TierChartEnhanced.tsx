@@ -3,8 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import { Player, TierGroup, ChartDimensions } from '@/types';
-import { clusterPlayersIntoTiers } from '@/lib/clustering';
-import { calculateUnifiedTiers, UnifiedTier, convertToUnifiedTier } from '@/lib/unifiedTierCalculator';
+import { calculateUnifiedTiers, UnifiedTier } from '@/lib/unifiedTierCalculator';
 import { motion } from 'framer-motion';
 import { ZoomIn, ZoomOut, Maximize2, Move } from 'lucide-react';
 import { DataFreshnessIndicator } from './DataFreshnessIndicator';
@@ -152,10 +151,6 @@ export default function TierChartEnhanced({
       .domain([domainMin, domainMax])
       .range([0, innerWidth]);
 
-    const yScale = d3.scaleLinear()
-      .domain([0, visibleTotalPlayers])
-      .range([0, innerHeight]);
-
     // Add background for better contrast
     g.append('rect')
       .attr('x', -dimensions.margin.left)
@@ -213,7 +208,7 @@ export default function TierChartEnhanced({
     // Draw tiers
     let yPosition = 0;
     
-    visibleTiers.forEach((tier, tierIndex) => {
+    visibleTiers.forEach((tier, _tierIndex) => {
       const tierHeight = (tier.players.length / visibleTotalPlayers) * innerHeight;
       
       // Draw tier background
@@ -251,7 +246,6 @@ export default function TierChartEnhanced({
         const playerStdDev = typeof player.standardDeviation === 'string' ? parseFloat(player.standardDeviation) : player.standardDeviation;
         
         // Draw error bars FIRST (so they appear behind player images)
-        const errorBarWidth = xScale(playerRank + playerStdDev) - xScale(playerRank - playerStdDev);
         
         g.append('line')
           .attr('x1', xScale(playerRank - playerStdDev))
@@ -280,7 +274,7 @@ export default function TierChartEnhanced({
         
         if (imageUrl) {
           // Create player image
-          const imageElement = g.append('image')
+          g.append('image')
             .attr('href', imageUrl)
             .attr('x', xScale(playerRank) - baseRadius)
             .attr('y', playerY - baseRadius)
@@ -380,7 +374,7 @@ export default function TierChartEnhanced({
       .style('font-weight', 'bold')
       .text(`Fantasy Football Tier Rankings (${scoringFormat})`);
 
-  }, [tierGroups, players, numberOfTiers, width, height, scoringFormat, hiddenTiers, getCachedImage]);
+  }, [tierGroups, players, numberOfTiers, width, height, scoringFormat, hiddenTiers, getCachedImage, dimensions.margin.left, dimensions.margin.top, innerWidth, innerHeight]);
 
   // Zoom control functions
   const handleZoomIn = () => {

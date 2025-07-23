@@ -5,7 +5,7 @@ import TierChartEnhanced from '@/components/TierChartEnhanced';
 import PositionSelector from '@/components/PositionSelector';
 import DataComparison from '@/components/DataComparison';
 import TierLegend, { useTierVisibility } from '@/components/TierLegend';
-import { Position, ScoringFormat } from '@/types';
+import { Position, ScoringFormat, TierGroup } from '@/types';
 import { getScoringFormatDisplay } from '@/lib/scoringFormatUtils';
 import { useFantasyData } from '@/hooks/useFantasyData';
 import { useAllFantasyData } from '@/hooks/useAllFantasyData';
@@ -20,7 +20,7 @@ export default function FantasyFootballPage() {
   const [selectedFormat, setSelectedFormat] = useState<ScoringFormat>('PPR');
   const [showComparison, setShowComparison] = useState<boolean>(false);
   const [tierCount, setTierCount] = useState<number>(6);
-  const [tierGroups, setTierGroups] = useState<any[]>([]);
+  const [tierGroups, setTierGroups] = useState<TierGroup[]>([]);
 
   // Use single position data hook for specific positions
   const singlePositionData = useFantasyData({

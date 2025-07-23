@@ -229,7 +229,7 @@ export default function TierChart({
       .style('font-weight', 'bold')
       .text(`Fantasy Football Tier Rankings (${scoringFormat})`);
 
-  }, [tierGroups, players, numberOfTiers, width, height, scoringFormat]);
+  }, [tierGroups, players, numberOfTiers, width, height, scoringFormat, dimensions.margin.left, dimensions.margin.top, innerWidth, innerHeight]);
 
   return (
     <div className="relative w-full h-full">

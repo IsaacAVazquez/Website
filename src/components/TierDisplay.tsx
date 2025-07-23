@@ -14,7 +14,7 @@ interface TierDisplayProps {
   showImages?: boolean;
 }
 
-export function TierDisplay({ tierGroups, position, showImages = true }: TierDisplayProps) {
+export function TierDisplay({ tierGroups, position: _position, showImages = true }: TierDisplayProps) {
   // Use the cached image service
   const { preloadImages, getCachedImage, isLoading } = usePlayerImageCache();
 

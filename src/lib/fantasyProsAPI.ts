@@ -62,7 +62,7 @@ export class FantasyProsAPI {
     scoringType: 'STD' | 'PPR' | 'HALF' = 'PPR',
     position?: Position
   ): Promise<Player[]> {
-    let endpoint = `${this.baseUrl}/${year}/consensus-rankings`;
+    const endpoint = `${this.baseUrl}/${year}/consensus-rankings`;
     
     // Build query parameters
     const params = new URLSearchParams();

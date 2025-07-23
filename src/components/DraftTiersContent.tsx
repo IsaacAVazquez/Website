@@ -2,10 +2,10 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { IconChevronRight, IconFilter, IconAdjustments, IconRefresh, IconDatabase } from "@tabler/icons-react";
+import { IconFilter, IconAdjustments, IconRefresh, IconDatabase } from "@tabler/icons-react";
 import { Heading } from "@/components/ui/Heading";
 import DraftTierChart from "@/components/DraftTierChart";
-import { Player, ScoringFormat as ScoringFormatType } from "@/types";
+import { ScoringFormat as ScoringFormatType } from "@/types";
 import { useAllFantasyData } from "@/hooks/useAllFantasyData";
 import { useOverallFantasyData } from "@/hooks/useOverallFantasyData";
 
@@ -15,7 +15,6 @@ type PositionFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "FLEX" | "K" | "DST";
 export default function DraftTiersContent() {
   const [scoringFormat, setScoringFormat] = useState<ScoringFormat>("halfPPR");
   const [positionFilter, setPositionFilter] = useState<PositionFilter>("ALL");
-  const [showSettings, setShowSettings] = useState(false);
 
   // Convert local scoring format to the type expected by the hook
   const apiScoringFormat: ScoringFormatType = scoringFormat === 'halfPPR' ? 'HALF_PPR' : scoringFormat.toUpperCase() as ScoringFormatType;
@@ -42,14 +41,13 @@ export default function DraftTiersContent() {
     isLoading,
     error,
     dataSource,
-    cacheStatus,
     lastUpdated,
     refresh,
-    clearCache,
     getCacheInfo
   } = rawData;
 
-  const cacheInfo = getCacheInfo();
+  // Optional: Cache info could be used for debugging
+  // const cacheInfo = getCacheInfo();
 
   // Filter players based on position
   const filteredPlayers = useMemo(() => {
@@ -62,6 +60,7 @@ export default function DraftTiersContent() {
     }
 
     // Apply position filter for non-overall data
+    // @ts-ignore - Type assertion issue with union types
     if (positionFilter !== "ALL") {
       if (positionFilter === "FLEX") {
         players = players.filter(p => ["RB", "WR", "TE"].includes(p.position));
@@ -79,7 +78,7 @@ export default function DraftTiersContent() {
     });
 
     return players;
-  }, [allPlayers, positionFilter, scoringFormat, useOverallData]);
+  }, [allPlayers, positionFilter, useOverallData]);
 
   const positionOptions: { value: PositionFilter; label: string }[] = [
     { value: "ALL", label: "All Positions" },

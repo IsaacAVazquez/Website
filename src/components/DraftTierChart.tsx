@@ -3,9 +3,9 @@
 import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { IconUser, IconStar, IconTrendingUp } from "@tabler/icons-react";
+import { IconUser, IconTrendingUp } from "@tabler/icons-react";
 import { Player } from "@/types";
-import { calculateUnifiedTiers, getUnifiedTierColor, getUnifiedTierLabel } from "@/lib/unifiedTierCalculator";
+import { calculateUnifiedTiers } from "@/lib/unifiedTierCalculator";
 import { usePlayerImageCache } from "@/hooks/usePlayerImageCache";
 
 interface DraftTierChartProps {

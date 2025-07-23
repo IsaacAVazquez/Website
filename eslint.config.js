@@ -14,8 +14,6 @@ export default tseslint.config(
       globals: {
         ...globals.browser,
         ...globals.node,
-        // Add Next.js specific globals
-        'AudioWorkletGlobalScope': false,
       },
     },
     plugins: {
