@@ -1,8 +1,8 @@
 /**
  * DST Player Data
- * Last Updated: 2025-07-23T17:37:09.126Z
+ * Last Updated: 2025-07-23T21:08:24.080Z
  * Source: fantasypros
- * Format: half-ppr
+ * Format: ppr
  * Version: 1.0.0
  */
 
@@ -21,16 +21,16 @@ export const dstPlayers: Player[] = [
     minRank: '1',
     maxRank: '7',
     expertRanks: [
-      3,
+      2,
+      2,
+      2,
+      2,
       1,
       1,
       1,
       1,
-      3,
       1,
-      1,
-      1,
-      1
+      2
     ]
   },
   {
@@ -45,15 +45,15 @@ export const dstPlayers: Player[] = [
     minRank: '1',
     maxRank: '6',
     expertRanks: [
-      3,
-      4,
-      4,
-      1,
-      3,
-      1,
-      5,
-      4,
       2,
+      3,
+      4,
+      3,
+      4,
+      3,
+      2,
+      4,
+      3,
       2
     ]
   },
@@ -69,16 +69,16 @@ export const dstPlayers: Player[] = [
     minRank: '2',
     maxRank: '12',
     expertRanks: [
+      5,
+      3,
+      7,
       6,
       5,
-      4,
-      4,
-      4,
       3,
-      5,
       3,
-      4,
-      6
+      3,
+      3,
+      2
     ]
   },
   {
@@ -93,16 +93,16 @@ export const dstPlayers: Player[] = [
     minRank: '2',
     maxRank: '11',
     expertRanks: [
-      4,
-      1,
       7,
-      6,
-      8,
-      5,
-      5,
+      1,
+      2,
       4,
-      8,
-      7
+      4,
+      7,
+      4,
+      4,
+      6,
+      2
     ]
   },
   {
@@ -117,16 +117,16 @@ export const dstPlayers: Player[] = [
     minRank: '2',
     maxRank: '7',
     expertRanks: [
-      6,
-      3,
       5,
-      6,
       5,
       4,
       5,
       5,
+      4,
       6,
-      5
+      2,
+      4,
+      4
     ]
   },
   {
@@ -141,16 +141,16 @@ export const dstPlayers: Player[] = [
     minRank: '3',
     maxRank: '11',
     expertRanks: [
-      10,
-      7,
-      5,
-      7,
-      4,
-      7,
-      9,
+      8,
+      6,
+      6,
       8,
       4,
-      10
+      6,
+      7,
+      7,
+      5,
+      6
     ]
   },
   {
@@ -165,16 +165,16 @@ export const dstPlayers: Player[] = [
     minRank: '3',
     maxRank: '14',
     expertRanks: [
-      7,
-      5,
-      8,
-      7,
-      9,
+      6,
+      13,
       11,
-      9,
-      4,
+      12,
       11,
-      17
+      12,
+      6,
+      12,
+      11,
+      5
     ]
   },
   {
@@ -189,15 +189,15 @@ export const dstPlayers: Player[] = [
     minRank: '3',
     maxRank: '20',
     expertRanks: [
-      11,
-      15,
-      4,
+      6,
+      6,
+      13,
       5,
-      7,
       8,
-      10,
       12,
-      12,
+      3,
+      8,
+      7,
       8
     ]
   },
@@ -213,16 +213,16 @@ export const dstPlayers: Player[] = [
     minRank: '7',
     maxRank: '15',
     expertRanks: [
-      14,
+      8,
+      8,
       10,
-      12,
       8,
-      12,
-      8,
-      8,
-      11,
       9,
-      6
+      9,
+      9,
+      11,
+      8,
+      12
     ]
   },
   {
@@ -237,16 +237,16 @@ export const dstPlayers: Player[] = [
     minRank: '9',
     maxRank: '18',
     expertRanks: [
-      9,
       11,
-      10,
       14,
-      16,
-      10,
+      7,
+      12,
+      13,
+      14,
       11,
-      12,
-      12,
-      14
+      11,
+      8,
+      12
     ]
   },
   {
@@ -261,16 +261,16 @@ export const dstPlayers: Player[] = [
     minRank: '7',
     maxRank: '18',
     expertRanks: [
-      14,
-      11,
-      8,
+      15,
+      13,
       12,
-      17,
-      14,
-      18,
-      10,
+      8,
       11,
-      10
+      11,
+      11,
+      9,
+      15,
+      18
     ]
   },
   {
@@ -285,16 +285,16 @@ export const dstPlayers: Player[] = [
     minRank: '8',
     maxRank: '20',
     expertRanks: [
-      14,
-      11,
-      14,
-      14,
-      14,
-      12,
-      19,
+      16,
       8,
-      17,
-      14
+      10,
+      10,
+      11,
+      13,
+      14,
+      18,
+      13,
+      18
     ]
   },
   {
@@ -309,16 +309,16 @@ export const dstPlayers: Player[] = [
     minRank: '8',
     maxRank: '23',
     expertRanks: [
+      18,
       12,
+      9,
       16,
-      12,
-      14,
       8,
-      10,
-      10,
       11,
-      11,
-      18
+      16,
+      9,
+      17,
+      9
     ]
   },
   {
@@ -334,15 +334,15 @@ export const dstPlayers: Player[] = [
     maxRank: '24',
     expertRanks: [
       9,
-      21,
-      10,
-      20,
       14,
-      10,
-      21,
+      19,
       15,
-      27,
-      12
+      18,
+      19,
+      20,
+      16,
+      22,
+      16
     ]
   },
   {
@@ -357,16 +357,16 @@ export const dstPlayers: Player[] = [
     minRank: '11',
     maxRank: '26',
     expertRanks: [
-      20,
+      15,
+      18,
+      22,
+      18,
+      15,
+      15,
       13,
-      13,
-      20,
-      24,
+      14,
       16,
-      18,
-      18,
-      19,
-      24
+      10
     ]
   },
   {
@@ -381,16 +381,16 @@ export const dstPlayers: Player[] = [
     minRank: '7',
     maxRank: '24',
     expertRanks: [
-      12,
+      13,
+      22,
+      11,
+      23,
+      15,
+      28,
+      19,
       24,
-      18,
-      19,
-      18,
-      21,
-      18,
-      19,
-      18,
-      13
+      24,
+      5
     ]
   },
   {
@@ -405,16 +405,16 @@ export const dstPlayers: Player[] = [
     minRank: '8',
     maxRank: '29',
     expertRanks: [
-      17,
+      20,
+      27,
+      15,
       14,
+      23,
+      19,
       20,
-      20,
-      18,
-      17,
-      20,
-      25,
-      20,
-      16
+      24,
+      16,
+      21
     ]
   },
   {
@@ -429,16 +429,16 @@ export const dstPlayers: Player[] = [
     minRank: '10',
     maxRank: '22',
     expertRanks: [
-      17,
-      18,
       19,
+      14,
+      23,
+      23,
       15,
-      16,
       18,
-      24,
-      17,
-      21,
-      17
+      20,
+      19,
+      22,
+      19
     ]
   },
   {
@@ -453,16 +453,16 @@ export const dstPlayers: Player[] = [
     minRank: '6',
     maxRank: '23',
     expertRanks: [
-      22,
-      21,
-      20,
-      14,
-      16,
-      27,
-      17,
+      19,
       12,
+      16,
       21,
-      16
+      15,
+      23,
+      25,
+      17,
+      14,
+      28
     ]
   },
   {
@@ -478,15 +478,15 @@ export const dstPlayers: Player[] = [
     maxRank: '22',
     expertRanks: [
       18,
-      21,
+      20,
+      20,
       16,
-      21,
-      20,
-      20,
-      20,
       17,
+      18,
+      16,
       22,
-      21
+      21,
+      17
     ]
   },
   {
@@ -501,16 +501,16 @@ export const dstPlayers: Player[] = [
     minRank: '12',
     maxRank: '29',
     expertRanks: [
-      20,
       19,
-      18,
       22,
       16,
-      21,
+      22,
+      20,
+      10,
+      13,
       24,
-      16,
-      27,
-      21
+      18,
+      14
     ]
   },
   {
@@ -525,16 +525,16 @@ export const dstPlayers: Player[] = [
     minRank: '12',
     maxRank: '27',
     expertRanks: [
-      24,
-      23,
-      28,
       21,
-      15,
-      19,
+      20,
+      22,
+      23,
+      16,
       18,
-      29,
-      19,
-      25
+      26,
+      17,
+      24,
+      16
     ]
   },
   {
@@ -549,16 +549,16 @@ export const dstPlayers: Player[] = [
     minRank: '10',
     maxRank: '27',
     expertRanks: [
-      16,
-      24,
-      26,
-      22,
-      22,
-      21,
-      21,
-      32,
       20,
-      25
+      21,
+      20,
+      27,
+      19,
+      22,
+      25,
+      19,
+      24,
+      22
     ]
   },
   {
@@ -573,16 +573,16 @@ export const dstPlayers: Player[] = [
     minRank: '16',
     maxRank: '26',
     expertRanks: [
-      18,
       24,
-      29,
-      19,
-      19,
-      21,
-      25,
+      27,
+      24,
       20,
+      25,
       24,
-      22
+      26,
+      22,
+      27,
+      25
     ]
   },
   {
@@ -597,16 +597,16 @@ export const dstPlayers: Player[] = [
     minRank: '19',
     maxRank: '28',
     expertRanks: [
-      23,
       22,
+      25,
       22,
-      28,
-      27,
-      23,
+      25,
+      21,
       26,
-      22,
-      23,
-      24
+      26,
+      25,
+      25,
+      23
     ]
   },
   {
@@ -622,14 +622,14 @@ export const dstPlayers: Player[] = [
     maxRank: '28',
     expertRanks: [
       27,
-      31,
-      27,
-      26,
-      26,
+      24,
       21,
-      21,
-      25,
-      28,
+      24,
+      26,
+      22,
+      22,
+      22,
+      22,
       25
     ]
   },
@@ -645,16 +645,16 @@ export const dstPlayers: Player[] = [
     minRank: '19',
     maxRank: '31',
     expertRanks: [
-      23,
+      19,
+      28,
+      25,
+      25,
+      28,
       29,
       24,
-      21,
       27,
-      31,
-      24,
-      29,
-      26,
-      26
+      25,
+      24
     ]
   },
   {
@@ -669,16 +669,16 @@ export const dstPlayers: Player[] = [
     minRank: '23',
     maxRank: '32',
     expertRanks: [
-      29,
+      31,
+      34,
+      31,
+      28,
       26,
-      26,
+      33,
       28,
       30,
-      29,
-      25,
-      30,
       28,
-      33
+      31
     ]
   },
   {
@@ -693,16 +693,16 @@ export const dstPlayers: Player[] = [
     minRank: '23',
     maxRank: '30',
     expertRanks: [
-      28,
-      23,
       29,
-      28,
-      26,
+      25,
       31,
+      29,
+      30,
       28,
       28,
       27,
-      26
+      30,
+      30
     ]
   },
   {
@@ -717,16 +717,16 @@ export const dstPlayers: Player[] = [
     minRank: '20',
     maxRank: '32',
     expertRanks: [
-      20,
-      20,
-      25,
+      30,
+      24,
+      23,
+      33,
+      34,
       30,
       30,
       27,
-      34,
       29,
-      25,
-      25
+      21
     ]
   },
   {
@@ -741,16 +741,16 @@ export const dstPlayers: Player[] = [
     minRank: '28',
     maxRank: '32',
     expertRanks: [
-      31,
+      32,
+      29,
+      30,
       31,
       30,
       29,
-      32,
-      32,
       31,
-      32,
-      30,
-      29
+      29,
+      29,
+      31
     ]
   },
   {
@@ -765,16 +765,16 @@ export const dstPlayers: Player[] = [
     minRank: '28',
     maxRank: '32',
     expertRanks: [
-      31,
-      31,
       30,
       31,
-      32,
-      32,
       29,
       31,
-      30,
-      29
+      33,
+      33,
+      31,
+      33,
+      32,
+      30
     ]
   }
 ];

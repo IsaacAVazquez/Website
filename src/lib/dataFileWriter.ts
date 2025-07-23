@@ -127,7 +127,8 @@ export class DataFileWriter {
     
     const playersJson = JSON.stringify(players, null, 2)
       .replace(/"([^"]+)":/g, '$1:') // Remove quotes from property names
-      .replace(/"/g, "'"); // Replace double quotes with single quotes
+      .replace(/"/g, "'") // Replace double quotes with single quotes
+      .replace(/'/g, "\\'"); // Escape single quotes (apostrophes) in content
     
     const exportStatement = `export const ${position.toLowerCase()}Players: Player[] = ${playersJson};\n`;
     

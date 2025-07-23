@@ -5,17 +5,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { IconUser, IconStar, IconTrendingUp } from "@tabler/icons-react";
 import { Player } from "@/types";
-import { calculateTiers, getTierColor, getTierLabel } from "@/lib/tierCalculator";
+import { calculateUnifiedTiers, getUnifiedTierColor, getUnifiedTierLabel } from "@/lib/unifiedTierCalculator";
 import PlayerImageService from "@/lib/playerImageService";
 
 interface DraftTierChartProps {
   players: Player[];
+  allPlayers: Player[];
   scoringFormat: "standard" | "halfPPR" | "ppr";
   positionFilter: string;
 }
 
 export default function DraftTierChart({
   players,
+  allPlayers,
   scoringFormat,
   positionFilter
 }: DraftTierChartProps) {
@@ -24,10 +26,11 @@ export default function DraftTierChart({
   const [playerImages, setPlayerImages] = useState<Map<string, string>>(new Map());
   const [isLoadingImages, setIsLoadingImages] = useState(false);
 
-  // Calculate tiers
+  // Calculate tiers using unified system
   const tiers = useMemo(() => {
     const maxTiers = positionFilter === "ALL" ? 12 : 8;
-    return calculateTiers(players, scoringFormat, maxTiers);
+    const scoringFormatStr = scoringFormat === "halfPPR" ? "HALF_PPR" : scoringFormat.toUpperCase();
+    return calculateUnifiedTiers(players, maxTiers, scoringFormatStr);
   }, [players, scoringFormat, positionFilter]);
 
   // Load player images when players change
@@ -85,7 +88,7 @@ export default function DraftTierChart({
   return (
     <div className="space-y-6">
       {tiers.map((tier, tierIndex) => {
-        const tierColor = getTierColor(tier.tier);
+        const tierColor = tier.color;
         const isSelected = selectedTier === tier.tier;
         const isOtherSelected = selectedTier !== null && selectedTier !== tier.tier;
 
@@ -127,7 +130,7 @@ export default function DraftTierChart({
                   className="text-lg font-bold transition-all duration-300"
                   style={{ color: isSelected ? tierColor : '#CBD5E1' }}
                 >
-                  {getTierLabel(tier.tier, tiers.length)}
+                  {tier.label}
                 </h3>
                 <span className="text-sm text-slate-500">
                   Ranks {tier.minRank}-{tier.maxRank}
@@ -156,7 +159,8 @@ export default function DraftTierChart({
                 {tier.players.map((player, playerIndex) => {
                   const imageUrl = playerImages.get(`${player.name}-${player.team}`);
                   const isHovered = hoveredPlayer === player.id;
-                  const overallRank = tier.minRank + playerIndex;
+                  // Calculate integer rank based on position in allPlayers list
+                  const overallRank = allPlayers.findIndex(p => p.id === player.id) + 1;
 
                   return (
                     <motion.div

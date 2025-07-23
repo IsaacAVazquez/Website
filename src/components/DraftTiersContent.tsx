@@ -7,6 +7,7 @@ import { Heading } from "@/components/ui/Heading";
 import DraftTierChart from "@/components/DraftTierChart";
 import { Player, ScoringFormat as ScoringFormatType } from "@/types";
 import { useAllFantasyData } from "@/hooks/useAllFantasyData";
+import { useOverallFantasyData } from "@/hooks/useOverallFantasyData";
 
 type ScoringFormat = "standard" | "halfPPR" | "ppr";
 type PositionFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "FLEX" | "K" | "DST";
@@ -19,7 +20,23 @@ export default function DraftTiersContent() {
   // Convert local scoring format to the type expected by the hook
   const apiScoringFormat: ScoringFormatType = scoringFormat === 'halfPPR' ? 'HALF_PPR' : scoringFormat.toUpperCase() as ScoringFormatType;
 
-  // Load all players using real data
+  // Load players using appropriate data source
+  const allPositionsData = useAllFantasyData({
+    scoringFormat: apiScoringFormat,
+    autoRefresh: true,
+    refreshInterval: 10 * 60 * 1000 // 10 minutes
+  });
+
+  const overallData = useOverallFantasyData({
+    scoringFormat: apiScoringFormat,
+    autoRefresh: true,
+    refreshInterval: 10 * 60 * 1000 // 10 minutes
+  });
+
+  // Choose data source based on position filter
+  const useOverallData = positionFilter === "ALL";
+  const rawData = useOverallData ? overallData : allPositionsData;
+  
   const {
     players: allPlayers,
     isLoading,
@@ -30,11 +47,7 @@ export default function DraftTiersContent() {
     refresh,
     clearCache,
     getCacheInfo
-  } = useAllFantasyData({
-    scoringFormat: apiScoringFormat,
-    autoRefresh: true,
-    refreshInterval: 10 * 60 * 1000 // 10 minutes
-  });
+  } = rawData;
 
   const cacheInfo = getCacheInfo();
 
@@ -42,7 +55,13 @@ export default function DraftTiersContent() {
   const filteredPlayers = useMemo(() => {
     let players = [...allPlayers];
 
-    // Apply position filter
+    // If we're using overall data (ALL), no additional filtering needed
+    if (useOverallData) {
+      // Overall data is already sorted by true overall rank
+      return players;
+    }
+
+    // Apply position filter for non-overall data
     if (positionFilter !== "ALL") {
       if (positionFilter === "FLEX") {
         players = players.filter(p => ["RB", "WR", "TE"].includes(p.position));
@@ -51,7 +70,7 @@ export default function DraftTiersContent() {
       }
     }
 
-    // Sort by averageRank
+    // Sort by averageRank for position-specific data
     players.sort((a, b) => {
       const aRank = parseFloat(a.averageRank?.toString() || "999");
       const bRank = parseFloat(b.averageRank?.toString() || "999");
@@ -59,7 +78,7 @@ export default function DraftTiersContent() {
     });
 
     return players;
-  }, [allPlayers, positionFilter, scoringFormat]);
+  }, [allPlayers, positionFilter, scoringFormat, useOverallData]);
 
   const positionOptions: { value: PositionFilter; label: string }[] = [
     { value: "ALL", label: "All Positions" },
@@ -157,21 +176,24 @@ export default function DraftTiersContent() {
           transition={{ delay: 0.1 }}
           className="mb-8"
         >
-          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-lg p-4">
-            <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
+          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-lg p-6">
+            <div className="space-y-6">
               {/* Position Filter */}
-              <div className="flex items-center gap-4 flex-wrap justify-center lg:justify-start">
-                <span className="text-slate-400 text-sm font-medium">Position:</span>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <IconFilter className="text-electric-blue" size={18} />
+                  <span className="text-slate-300 font-medium">Position Filter</span>
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {positionOptions.map((option) => (
                     <button
                       key={option.value}
                       onClick={() => setPositionFilter(option.value)}
                       className={`
-                        px-4 py-2 rounded-md text-sm font-medium transition-all
+                        px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
                         ${positionFilter === option.value
-                          ? "bg-electric-blue text-slate-900 shadow-lg shadow-electric-blue/25"
-                          : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                          ? "bg-electric-blue text-slate-900 shadow-lg shadow-electric-blue/25 transform scale-105"
+                          : "bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
                         }
                       `}
                     >
@@ -182,24 +204,51 @@ export default function DraftTiersContent() {
               </div>
 
               {/* Scoring Format */}
-              <div className="flex items-center gap-4">
-                <span className="text-slate-400 text-sm font-medium">Scoring:</span>
-                <div className="flex gap-2">
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <IconAdjustments className="text-matrix-green" size={18} />
+                  <span className="text-slate-300 font-medium">Scoring Format</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
                   {scoringOptions.map((option) => (
                     <button
                       key={option.value}
                       onClick={() => setScoringFormat(option.value)}
                       className={`
-                        px-4 py-2 rounded-md text-sm font-medium transition-all
+                        px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200
                         ${scoringFormat === option.value
-                          ? "bg-matrix-green text-slate-900 shadow-lg shadow-matrix-green/25"
-                          : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                          ? "bg-matrix-green text-slate-900 shadow-lg shadow-matrix-green/25 transform scale-105"
+                          : "bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
                         }
                       `}
                     >
                       {option.label}
                     </button>
                   ))}
+                </div>
+              </div>
+
+              {/* Current Selection Summary */}
+              <div className="flex items-center justify-center gap-4 pt-2 border-t border-slate-800">
+                <div className="text-center">
+                  <div className="text-xs text-slate-500 uppercase tracking-wide">Showing</div>
+                  <div className="text-sm text-slate-300 font-medium">
+                    {positionOptions.find(o => o.value === positionFilter)?.label}
+                  </div>
+                </div>
+                <div className="w-px h-8 bg-slate-700"></div>
+                <div className="text-center">
+                  <div className="text-xs text-slate-500 uppercase tracking-wide">Format</div>
+                  <div className="text-sm text-slate-300 font-medium">
+                    {scoringOptions.find(o => o.value === scoringFormat)?.label}
+                  </div>
+                </div>
+                <div className="w-px h-8 bg-slate-700"></div>
+                <div className="text-center">
+                  <div className="text-xs text-slate-500 uppercase tracking-wide">Players</div>
+                  <div className="text-sm text-electric-blue font-medium">
+                    {filteredPlayers.length}
+                  </div>
                 </div>
               </div>
             </div>
@@ -249,27 +298,20 @@ export default function DraftTiersContent() {
           ) : (
             <DraftTierChart 
               players={filteredPlayers} 
+              allPlayers={allPlayers}
               scoringFormat={scoringFormat}
               positionFilter={positionFilter}
             />
           )}
         </motion.div>
 
-        {/* Stats & Data Info */}
+        {/* Data Source Info */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
           className="mt-8"
         >
-          {/* Player Count Stats */}
-          <div className="text-center text-sm text-slate-500 mb-6">
-            Showing {filteredPlayers.length} players
-            {positionFilter !== "ALL" && ` • ${positionOptions.find(o => o.value === positionFilter)?.label}`}
-            {` • ${scoringOptions.find(o => o.value === scoringFormat)?.label} Scoring`}
-          </div>
-          
-          {/* Data Source Info */}
           <div className="bg-slate-900/30 backdrop-blur-sm border border-slate-800 rounded-lg p-4">
             <div className="flex items-start gap-3">
               <IconDatabase className="text-electric-blue mt-1" size={20} />

@@ -8,6 +8,8 @@ import TierLegend, { useTierVisibility } from '@/components/TierLegend';
 import { Position, ScoringFormat } from '@/types';
 import { getScoringFormatDisplay } from '@/lib/scoringFormatUtils';
 import { useFantasyData } from '@/hooks/useFantasyData';
+import { useAllFantasyData } from '@/hooks/useAllFantasyData';
+import { useOverallFantasyData } from '@/hooks/useOverallFantasyData';
 import { ArrowLeft, Database, RefreshCw, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -20,9 +22,49 @@ export default function FantasyFootballPage() {
   const [tierCount, setTierCount] = useState<number>(6);
   const [tierGroups, setTierGroups] = useState<any[]>([]);
 
-  // Use the new fantasy data hook with caching
+  // Use single position data hook for specific positions
+  const singlePositionData = useFantasyData({
+    position: selectedPosition === 'FLEX' ? 'RB' : selectedPosition, // FLEX uses RB as base, filtered later
+    scoringFormat: selectedFormat,
+    autoRefresh: true,
+    refreshInterval: 10 * 60 * 1000 // 10 minutes for production
+  });
+
+  // Use all positions data hook for FLEX views
+  const allPositionsData = useAllFantasyData({
+    scoringFormat: selectedFormat,
+    autoRefresh: true,
+    refreshInterval: 10 * 60 * 1000 // 10 minutes for production
+  });
+
+  // Use overall data hook for OVERALL view (true overall rankings from FantasyPros)
+  const overallData = useOverallFantasyData({
+    scoringFormat: selectedFormat,
+    autoRefresh: true,
+    refreshInterval: 10 * 60 * 1000 // 10 minutes for production
+  });
+
+  // Choose which data to use based on selected position
+  const isOverallView = selectedPosition === 'OVERALL';
+  const isFlexView = selectedPosition === 'FLEX';
+  
+  let rawData, players;
+  
+  if (isOverallView) {
+    // Use true overall rankings from FantasyPros
+    rawData = overallData;
+    players = rawData.players;
+  } else if (isFlexView) {
+    // Use all positions data filtered for FLEX (RB/WR/TE only)
+    rawData = allPositionsData;
+    players = rawData.players.filter(p => ['RB', 'WR', 'TE'].includes(p.position));
+  } else {
+    // Use single position data
+    rawData = singlePositionData;
+    players = rawData.players;
+  }
+  
   const {
-    players,
     isLoading,
     error,
     dataSource,
@@ -31,12 +73,7 @@ export default function FantasyFootballPage() {
     refresh,
     clearCache,
     getCacheInfo
-  } = useFantasyData({
-    position: selectedPosition,
-    scoringFormat: selectedFormat,
-    autoRefresh: true,
-    refreshInterval: 10 * 60 * 1000 // 10 minutes for production
-  });
+  } = rawData;
 
   const cacheInfo = getCacheInfo();
 
@@ -51,7 +88,7 @@ export default function FantasyFootballPage() {
     return {
       tier: tierGroup.tier,
       color: tierGroup.color,
-      label: `Tier ${tierGroup.tier}`,
+      label: tierGroup.label || `Tier ${tierGroup.tier}`, // Use the unified label
       playerCount: tierGroup.players.length
     };
   });

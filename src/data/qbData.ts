@@ -1,8 +1,8 @@
 /**
  * QB Player Data
- * Last Updated: 2025-07-23T17:37:07.376Z
+ * Last Updated: 2025-07-23T21:08:23.286Z
  * Source: fantasypros
- * Format: half-ppr
+ * Format: ppr
  * Version: 1.0.0
  */
 
@@ -21,13 +21,13 @@ export const qbPlayers: Player[] = [
     minRank: '1',
     maxRank: '3',
     expertRanks: [
-      3,
-      1,
+      2,
       2,
       1,
       1,
       1,
       2,
+      1,
       1,
       1,
       2
@@ -47,12 +47,12 @@ export const qbPlayers: Player[] = [
     expertRanks: [
       1,
       1,
-      3,
+      2,
       1,
       2,
+      3,
       2,
-      2,
-      2,
+      1,
       2,
       2
     ]
@@ -69,15 +69,15 @@ export const qbPlayers: Player[] = [
     minRank: '2',
     maxRank: '5',
     expertRanks: [
-      3,
-      3,
-      3,
-      3,
-      3,
+      4,
+      4,
       4,
       3,
+      4,
+      4,
+      4,
       3,
-      3,
+      4,
       3
     ]
   },
@@ -94,14 +94,14 @@ export const qbPlayers: Player[] = [
     maxRank: '5',
     expertRanks: [
       5,
-      3,
-      4,
-      3,
-      3,
-      3,
       4,
       5,
+      3,
       4,
+      4,
+      3,
+      4,
+      3,
       3
     ]
   },
@@ -118,14 +118,14 @@ export const qbPlayers: Player[] = [
     maxRank: '5',
     expertRanks: [
       5,
+      4,
+      4,
+      4,
       5,
-      5,
+      4,
+      4,
       5,
       6,
-      5,
-      5,
-      4,
-      4,
       5
     ]
   },
@@ -141,15 +141,15 @@ export const qbPlayers: Player[] = [
     minRank: '6',
     maxRank: '13',
     expertRanks: [
-      7,
+      8,
+      8,
       6,
       7,
-      10,
-      4,
-      5,
-      5,
-      8,
-      8,
+      7,
+      7,
+      6,
+      6,
+      7,
       7
     ]
   },
@@ -165,14 +165,14 @@ export const qbPlayers: Player[] = [
     minRank: '6',
     maxRank: '16',
     expertRanks: [
-      10,
-      11,
-      10,
-      6,
-      6,
-      11,
-      6,
       7,
+      12,
+      5,
+      10,
+      11,
+      7,
+      8,
+      5,
       8,
       8
     ]
@@ -189,16 +189,16 @@ export const qbPlayers: Player[] = [
     minRank: '6',
     maxRank: '15',
     expertRanks: [
-      12,
+      5,
+      8,
       7,
-      12,
-      13,
-      9,
+      6,
       7,
-      7,
-      13,
-      9,
-      10
+      10,
+      6,
+      10,
+      10,
+      11
     ]
   },
   {
@@ -213,16 +213,16 @@ export const qbPlayers: Player[] = [
     minRank: '6',
     maxRank: '17',
     expertRanks: [
+      9,
+      9,
       7,
-      11,
-      11,
-      11,
-      10,
-      13,
+      8,
       9,
       10,
-      11,
-      4
+      12,
+      10,
+      8,
+      13
     ]
   },
   {
@@ -237,16 +237,16 @@ export const qbPlayers: Player[] = [
     minRank: '6',
     maxRank: '29',
     expertRanks: [
-      5,
-      9,
-      14,
-      9,
-      13,
       12,
+      20,
       11,
+      7,
+      22,
       8,
-      4,
-      6
+      10,
+      11,
+      17,
+      17
     ]
   },
   {
@@ -261,16 +261,16 @@ export const qbPlayers: Player[] = [
     minRank: '8',
     maxRank: '19',
     expertRanks: [
-      13,
-      13,
-      8,
+      14,
+      17,
       11,
+      14,
       13,
-      15,
-      15,
       11,
-      12,
-      9
+      11,
+      14,
+      10,
+      8
     ]
   },
   {
@@ -285,16 +285,16 @@ export const qbPlayers: Player[] = [
     minRank: '7',
     maxRank: '21',
     expertRanks: [
+      15,
+      15,
+      10,
+      9,
+      14,
       12,
-      13,
-      12,
+      4,
       14,
-      14,
-      14,
-      16,
-      11,
-      19,
-      18
+      9,
+      15
     ]
   },
   {
@@ -309,16 +309,16 @@ export const qbPlayers: Player[] = [
     minRank: '6',
     maxRank: '18',
     expertRanks: [
-      10,
-      14,
-      14,
+      12,
       16,
-      9,
+      14,
       15,
+      15,
+      12,
       13,
-      10,
+      16,
       13,
-      13
+      9
     ]
   },
   {
@@ -333,16 +333,16 @@ export const qbPlayers: Player[] = [
     minRank: '7',
     maxRank: '20',
     expertRanks: [
+      13,
+      10,
       15,
-      12,
-      14,
-      11,
+      15,
+      17,
       12,
       10,
-      14,
       10,
-      11,
-      11
+      14,
+      13
     ]
   },
   {
@@ -357,16 +357,16 @@ export const qbPlayers: Player[] = [
     minRank: '7',
     maxRank: '21',
     expertRanks: [
-      14,
-      18,
       17,
-      17,
-      18,
+      15,
+      15,
       15,
       11,
-      21,
+      18,
       15,
-      17
+      16,
+      19,
+      10
     ]
   },
   {
@@ -381,16 +381,16 @@ export const qbPlayers: Player[] = [
     minRank: '8',
     maxRank: '21',
     expertRanks: [
+      15,
+      18,
       19,
-      11,
-      19,
+      12,
       14,
-      19,
-      17,
-      16,
+      15,
+      14,
       13,
-      17,
-      15
+      18,
+      13
     ]
   },
   {
@@ -405,15 +405,15 @@ export const qbPlayers: Player[] = [
     minRank: '10',
     maxRank: '22',
     expertRanks: [
-      18,
+      21,
       19,
-      20,
-      19,
-      12,
-      17,
       15,
-      18,
-      11,
+      14,
+      15,
+      14,
+      13,
+      20,
+      16,
       17
     ]
   },
@@ -430,15 +430,15 @@ export const qbPlayers: Player[] = [
     maxRank: '21',
     expertRanks: [
       18,
-      19,
-      15,
-      19,
-      13,
-      15,
-      19,
+      18,
       18,
       17,
-      17
+      15,
+      15,
+      18,
+      20,
+      17,
+      18
     ]
   },
   {
@@ -453,16 +453,16 @@ export const qbPlayers: Player[] = [
     minRank: '9',
     maxRank: '23',
     expertRanks: [
-      24,
-      18,
-      17,
       15,
+      21,
       18,
+      26,
+      18,
+      20,
       17,
-      17,
-      17,
-      17,
-      22
+      23,
+      18,
+      18
     ]
   },
   {
@@ -478,15 +478,15 @@ export const qbPlayers: Player[] = [
     maxRank: '27',
     expertRanks: [
       20,
-      19,
-      22,
-      25,
-      24,
-      21,
-      18,
       16,
       23,
-      16
+      18,
+      15,
+      13,
+      22,
+      21,
+      19,
+      20
     ]
   },
   {
@@ -501,16 +501,16 @@ export const qbPlayers: Player[] = [
     minRank: '16',
     maxRank: '25',
     expertRanks: [
-      18,
-      22,
-      19,
-      26,
-      22,
-      19,
-      23,
-      19,
       21,
-      21
+      21,
+      22,
+      24,
+      21,
+      20,
+      20,
+      21,
+      22,
+      20
     ]
   },
   {
@@ -525,16 +525,16 @@ export const qbPlayers: Player[] = [
     minRank: '16',
     maxRank: '25',
     expertRanks: [
+      19,
+      22,
+      18,
+      23,
       22,
       21,
+      21,
+      20,
       22,
-      20,
-      20,
-      19,
-      23,
-      23,
-      23,
-      24
+      23
     ]
   },
   {
@@ -549,16 +549,16 @@ export const qbPlayers: Player[] = [
     minRank: '19',
     maxRank: '28',
     expertRanks: [
-      28,
+      21,
+      24,
       25,
-      18,
+      22,
+      22,
       26,
       23,
-      25,
+      22,
       24,
-      24,
-      23,
-      27
+      23
     ]
   },
   {
@@ -573,15 +573,15 @@ export const qbPlayers: Player[] = [
     minRank: '19',
     maxRank: '27',
     expertRanks: [
-      23,
+      26,
+      25,
+      25,
+      26,
       21,
-      21,
-      22,
       23,
       24,
-      24,
-      24,
-      23,
+      25,
+      20,
       24
     ]
   },
@@ -597,16 +597,16 @@ export const qbPlayers: Player[] = [
     minRank: '17',
     maxRank: '29',
     expertRanks: [
-      26,
-      27,
-      21,
+      20,
       24,
-      25,
-      22,
       23,
-      27,
+      23,
+      23,
+      24,
+      23,
+      24,
       22,
-      29
+      22
     ]
   },
   {
@@ -621,16 +621,16 @@ export const qbPlayers: Player[] = [
     minRank: '19',
     maxRank: '30',
     expertRanks: [
-      30,
       26,
-      28,
-      30,
       28,
       24,
       26,
-      26,
+      29,
       27,
-      29
+      28,
+      26,
+      25,
+      25
     ]
   },
   {
@@ -645,16 +645,16 @@ export const qbPlayers: Player[] = [
     minRank: '21',
     maxRank: '30',
     expertRanks: [
+      26,
+      24,
+      25,
+      28,
       25,
       27,
       27,
-      24,
-      28,
-      26,
       29,
-      27,
-      24,
-      28
+      28,
+      24
     ]
   },
   {
@@ -669,16 +669,16 @@ export const qbPlayers: Player[] = [
     minRank: '21',
     maxRank: '33',
     expertRanks: [
-      26,
       27,
-      27,
-      29,
-      27,
-      30,
-      27,
-      26,
+      25,
+      32,
       28,
-      27
+      31,
+      28,
+      29,
+      22,
+      27,
+      29
     ]
   },
   {
@@ -693,16 +693,16 @@ export const qbPlayers: Player[] = [
     minRank: '23',
     maxRank: '35',
     expertRanks: [
+      32,
+      28,
+      32,
+      27,
       29,
-      29,
-      30,
-      29,
-      30,
-      30,
       32,
       30,
-      28,
-      31
+      29,
+      29,
+      27
     ]
   },
   {
@@ -717,16 +717,16 @@ export const qbPlayers: Player[] = [
     minRank: '22',
     maxRank: '35',
     expertRanks: [
-      29,
-      33,
-      26,
-      28,
-      33,
+      31,
+      31,
+      25,
+      27,
+      27,
+      30,
       32,
       31,
-      27,
-      26,
-      36
+      28,
+      30
     ]
   },
   {
@@ -741,16 +741,16 @@ export const qbPlayers: Player[] = [
     minRank: '24',
     maxRank: '35',
     expertRanks: [
+      33,
+      32,
+      27,
+      31,
+      33,
       30,
-      29,
+      32,
       28,
-      29,
-      34,
-      32,
-      29,
-      32,
-      34,
-      30
+      30,
+      27
     ]
   },
   {
@@ -765,16 +765,16 @@ export const qbPlayers: Player[] = [
     minRank: '30',
     maxRank: '42',
     expertRanks: [
+      35,
+      30,
+      30,
+      28,
+      35,
       33,
-      27,
       31,
       33,
-      32,
-      34,
-      29,
-      32,
-      35,
-      34
+      36,
+      30
     ]
   },
   {
@@ -789,15 +789,15 @@ export const qbPlayers: Player[] = [
     minRank: '27',
     maxRank: '37',
     expertRanks: [
-      31,
+      32,
+      34,
+      30,
+      30,
+      30,
+      35,
       30,
       32,
       31,
-      33,
-      31,
-      31,
-      31,
-      32,
       32
     ]
   },
@@ -813,16 +813,16 @@ export const qbPlayers: Player[] = [
     minRank: '30',
     maxRank: '38',
     expertRanks: [
-      33,
-      34,
-      34,
-      32,
-      34,
-      32,
       35,
-      31,
+      34,
+      35,
+      34,
+      34,
+      36,
       32,
-      33
+      31,
+      34,
+      32
     ]
   },
   {
@@ -837,15 +837,15 @@ export const qbPlayers: Player[] = [
     minRank: '31',
     maxRank: '45',
     expertRanks: [
-      41,
-      35,
-      36,
       34,
       37,
-      34,
-      34,
+      37,
+      37,
+      37,
+      33,
+      35,
       38,
-      38,
+      37,
       34
     ]
   },
@@ -861,16 +861,16 @@ export const qbPlayers: Player[] = [
     minRank: '34',
     maxRank: '66',
     expertRanks: [
-      40,
-      31,
-      36,
-      38,
-      24,
       39,
+      35,
+      30,
+      38,
+      35,
+      35,
       37,
-      46,
-      42,
-      30
+      37,
+      36,
+      31
     ]
   },
   {
@@ -885,16 +885,16 @@ export const qbPlayers: Player[] = [
     minRank: '35',
     maxRank: '61',
     expertRanks: [
-      46,
-      34,
-      34,
-      45,
-      51,
-      38,
-      32,
+      35,
+      43,
+      35,
+      47,
       39,
-      37,
-      37
+      40,
+      33,
+      40,
+      41,
+      40
     ]
   },
   {
@@ -909,16 +909,16 @@ export const qbPlayers: Player[] = [
     minRank: '33',
     maxRank: '69',
     expertRanks: [
-      34,
-      37,
-      43,
-      37,
+      47,
+      19,
       38,
+      38,
+      28,
       35,
-      35,
-      31,
-      32,
-      41
+      36,
+      34,
+      43,
+      61
     ]
   },
   {
@@ -933,16 +933,16 @@ export const qbPlayers: Player[] = [
     minRank: '34',
     maxRank: '47',
     expertRanks: [
-      42,
-      36,
+      37,
       40,
       39,
-      36,
-      37,
-      43,
-      41,
       33,
-      35
+      36,
+      42,
+      37,
+      35,
+      39,
+      42
     ]
   },
   {
@@ -957,16 +957,16 @@ export const qbPlayers: Player[] = [
     minRank: '33',
     maxRank: '57',
     expertRanks: [
+      35,
+      37,
       44,
-      38,
-      41,
-      39,
+      33,
+      43,
+      43,
       36,
-      41,
-      44,
-      38,
-      38,
-      45
+      39,
+      43,
+      38
     ]
   },
   {
@@ -981,16 +981,16 @@ export const qbPlayers: Player[] = [
     minRank: '35',
     maxRank: '67',
     expertRanks: [
-      30,
-      37,
-      48,
+      35,
       47,
-      44,
-      34,
-      46,
-      39,
       40,
-      40
+      45,
+      33,
+      49,
+      49,
+      62,
+      36,
+      49
     ]
   },
   {
@@ -1005,15 +1005,15 @@ export const qbPlayers: Player[] = [
     minRank: '37',
     maxRank: '67',
     expertRanks: [
-      39,
-      40,
-      43,
+      36,
+      41,
       53,
-      26,
-      46,
-      40,
-      44,
+      39,
+      47,
       45,
+      38,
+      37,
+      33,
       47
     ]
   },
@@ -1029,21 +1029,21 @@ export const qbPlayers: Player[] = [
     minRank: '37',
     maxRank: '59',
     expertRanks: [
-      40,
-      47,
-      48,
-      46,
-      45,
-      44,
-      45,
-      47,
+      42,
+      53,
+      42,
+      42,
       43,
-      42
+      49,
+      44,
+      41,
+      37,
+      43
     ]
   },
   {
     id: 'fp-QB-44',
-    name: 'Aidan O'Connell',
+    name: 'Aidan O\'Connell',
     team: 'LV',
     position: 'QB',
     averageRank: '45.13',
@@ -1053,16 +1053,16 @@ export const qbPlayers: Player[] = [
     minRank: '34',
     maxRank: '65',
     expertRanks: [
-      43,
+      50,
+      55,
+      49,
+      56,
       52,
+      40,
       39,
-      33,
-      44,
-      59,
-      38,
       42,
-      36,
-      30
+      55,
+      43
     ]
   },
   {
@@ -1077,16 +1077,16 @@ export const qbPlayers: Player[] = [
     minRank: '39',
     maxRank: '49',
     expertRanks: [
-      46,
-      39,
       47,
-      46,
-      39,
+      43,
+      45,
+      45,
+      49,
       42,
       44,
-      37,
+      42,
       46,
-      45
+      46
     ]
   },
   {
@@ -1101,16 +1101,16 @@ export const qbPlayers: Player[] = [
     minRank: '38',
     maxRank: '78',
     expertRanks: [
-      40,
-      18,
-      51,
-      62,
-      35,
-      55,
-      54,
+      52,
+      63,
+      43,
+      70,
+      29,
+      52,
+      37,
+      53,
       36,
-      54,
-      48
+      53
     ]
   },
   {
@@ -1125,16 +1125,16 @@ export const qbPlayers: Player[] = [
     minRank: '39',
     maxRank: '57',
     expertRanks: [
-      52,
-      39,
-      41,
-      50,
-      47,
-      46,
+      51,
+      42,
+      51,
+      33,
+      37,
       45,
       46,
-      52,
-      48
+      47,
+      54,
+      46
     ]
   },
   {
@@ -1149,16 +1149,16 @@ export const qbPlayers: Player[] = [
     minRank: '39',
     maxRank: '60',
     expertRanks: [
-      53,
-      50,
+      51,
+      52,
       44,
-      42,
       55,
-      46,
-      49,
-      56,
-      45,
-      45
+      53,
+      47,
+      48,
+      48,
+      37,
+      46
     ]
   },
   {
@@ -1173,16 +1173,16 @@ export const qbPlayers: Player[] = [
     minRank: '40',
     maxRank: '56',
     expertRanks: [
-      40,
-      52,
-      49,
-      55,
-      41,
-      45,
-      53,
-      57,
+      38,
       46,
-      47
+      55,
+      55,
+      48,
+      39,
+      48,
+      44,
+      54,
+      48
     ]
   },
   {
@@ -1199,14 +1199,14 @@ export const qbPlayers: Player[] = [
     expertRanks: [
       46,
       43,
-      50,
-      41,
-      57,
-      56,
-      51,
-      52,
-      41,
-      50
+      45,
+      47,
+      49,
+      43,
+      43,
+      43,
+      46,
+      46
     ]
   },
   {
@@ -1221,16 +1221,16 @@ export const qbPlayers: Player[] = [
     minRank: '42',
     maxRank: '52',
     expertRanks: [
-      39,
-      42,
       48,
-      49,
+      47,
       50,
       48,
-      41,
       45,
+      48,
       47,
-      44
+      53,
+      48,
+      51
     ]
   },
   {
@@ -1245,16 +1245,16 @@ export const qbPlayers: Player[] = [
     minRank: '40',
     maxRank: '54',
     expertRanks: [
-      43,
-      46,
-      40,
-      54,
-      49,
-      46,
+      51,
+      41,
+      48,
       42,
-      49,
+      43,
+      38,
       52,
-      47
+      56,
+      37,
+      54
     ]
   },
   {
@@ -1269,16 +1269,16 @@ export const qbPlayers: Player[] = [
     minRank: '46',
     maxRank: '57',
     expertRanks: [
-      51,
-      41,
+      56,
+      53,
+      57,
       47,
-      58,
-      52,
-      51,
-      51,
-      43,
+      55,
+      48,
+      49,
       54,
-      54
+      51,
+      52
     ]
   },
   {
@@ -1293,15 +1293,15 @@ export const qbPlayers: Player[] = [
     minRank: '47',
     maxRank: '55',
     expertRanks: [
-      46,
-      51,
-      51,
-      53,
-      51,
-      57,
-      56,
+      50,
+      48,
+      52,
       49,
+      51,
+      50,
       53,
+      51,
+      58,
       52
     ]
   },
@@ -1317,16 +1317,16 @@ export const qbPlayers: Player[] = [
     minRank: '42',
     maxRank: '62',
     expertRanks: [
-      56,
-      51,
-      46,
+      52,
+      48,
       50,
-      54,
-      66,
+      60,
       59,
+      58,
+      51,
       49,
-      50,
-      49
+      42,
+      61
     ]
   },
   {
@@ -1341,16 +1341,16 @@ export const qbPlayers: Player[] = [
     minRank: '38',
     maxRank: '69',
     expertRanks: [
-      44,
-      38,
-      44,
-      38,
       43,
+      72,
+      78,
+      52,
       45,
-      62,
-      42,
-      58,
-      47
+      76,
+      76,
+      52,
+      40,
+      70
     ]
   },
   {
@@ -1365,16 +1365,16 @@ export const qbPlayers: Player[] = [
     minRank: '42',
     maxRank: '76',
     expertRanks: [
+      58,
+      54,
+      30,
+      84,
+      58,
+      65,
       60,
-      70,
-      53,
-      46,
-      63,
-      57,
-      60,
-      68,
-      24,
-      51
+      50,
+      62,
+      72
     ]
   },
   {
@@ -1389,16 +1389,16 @@ export const qbPlayers: Player[] = [
     minRank: '41',
     maxRank: '89',
     expertRanks: [
-      60,
-      52,
-      59,
-      51,
-      23,
-      63,
-      79,
-      54,
-      66,
-      45
+      68,
+      64,
+      44,
+      82,
+      71,
+      68,
+      85,
+      42,
+      20,
+      97
     ]
   },
   {
@@ -1413,16 +1413,16 @@ export const qbPlayers: Player[] = [
     minRank: '42',
     maxRank: '62',
     expertRanks: [
-      62,
-      45,
-      57,
-      49,
-      58,
       61,
-      40,
-      50,
       63,
-      57
+      59,
+      58,
+      43,
+      62,
+      53,
+      48,
+      54,
+      56
     ]
   },
   {
@@ -1437,16 +1437,16 @@ export const qbPlayers: Player[] = [
     minRank: '44',
     maxRank: '65',
     expertRanks: [
-      58,
-      57,
-      55,
-      52,
-      60,
-      36,
+      69,
       63,
-      70,
-      55,
-      76
+      66,
+      50,
+      41,
+      45,
+      38,
+      51,
+      62,
+      56
     ]
   },
   {
@@ -1461,16 +1461,16 @@ export const qbPlayers: Player[] = [
     minRank: '52',
     maxRank: '60',
     expertRanks: [
-      55,
       57,
-      58,
+      56,
+      54,
       52,
       53,
+      53,
       57,
-      58,
-      60,
-      57,
-      55
+      52,
+      55,
+      56
     ]
   },
   {
@@ -1485,16 +1485,16 @@ export const qbPlayers: Player[] = [
     minRank: '52',
     maxRank: '60',
     expertRanks: [
-      53,
       56,
-      53,
+      56,
+      51,
+      60,
+      57,
+      57,
+      60,
       58,
-      63,
-      59,
-      54,
-      59,
-      53,
-      58
+      55,
+      64
     ]
   },
   {
@@ -1509,16 +1509,16 @@ export const qbPlayers: Player[] = [
     minRank: '49',
     maxRank: '67',
     expertRanks: [
-      49,
       56,
+      56,
+      44,
+      61,
       64,
-      58,
-      60,
-      63,
-      48,
-      69,
-      72,
-      53
+      56,
+      55,
+      68,
+      52,
+      66
     ]
   },
   {
@@ -1533,16 +1533,16 @@ export const qbPlayers: Player[] = [
     minRank: '48',
     maxRank: '66',
     expertRanks: [
-      52,
-      63,
+      68,
+      54,
+      54,
       61,
-      67,
-      70,
-      57,
-      61,
-      61,
-      52,
-      58
+      56,
+      50,
+      69,
+      66,
+      58,
+      61
     ]
   },
   {
@@ -1557,16 +1557,16 @@ export const qbPlayers: Player[] = [
     minRank: '51',
     maxRank: '63',
     expertRanks: [
-      50,
-      60,
-      59,
-      54,
-      64,
+      63,
+      56,
+      58,
       62,
-      64,
-      59,
-      60,
-      60
+      48,
+      63,
+      61,
+      49,
+      63,
+      56
     ]
   },
   {
@@ -1581,16 +1581,16 @@ export const qbPlayers: Player[] = [
     minRank: '46',
     maxRank: '71',
     expertRanks: [
-      69,
+      49,
+      50,
+      70,
+      77,
+      51,
       66,
+      56,
       69,
       65,
-      52,
-      68,
-      56,
-      49,
-      38,
-      67
+      61
     ]
   },
   {
@@ -1605,16 +1605,16 @@ export const qbPlayers: Player[] = [
     minRank: '53',
     maxRank: '64',
     expertRanks: [
-      60,
-      62,
-      63,
-      66,
-      57,
+      61,
+      61,
       67,
-      51,
-      66,
-      63,
-      62
+      67,
+      62,
+      59,
+      62,
+      60,
+      61,
+      56
     ]
   },
   {
@@ -1629,16 +1629,16 @@ export const qbPlayers: Player[] = [
     minRank: '54',
     maxRank: '60',
     expertRanks: [
-      56,
-      57,
+      53,
+      54,
       55,
-      58,
-      52,
-      59,
-      59,
-      60,
-      52,
-      56
+      57,
+      51,
+      61,
+      56,
+      62,
+      55,
+      58
     ]
   },
   {
@@ -1653,16 +1653,16 @@ export const qbPlayers: Player[] = [
     minRank: '43',
     maxRank: '80',
     expertRanks: [
-      40,
-      40,
-      82,
-      91,
-      52,
-      63,
+      101,
+      57,
+      53,
+      87,
+      92,
       58,
-      58,
-      80,
-      65
+      75,
+      41,
+      61,
+      87
     ]
   },
   {
@@ -1677,16 +1677,16 @@ export const qbPlayers: Player[] = [
     minRank: '58',
     maxRank: '72',
     expertRanks: [
-      60,
-      52,
-      70,
-      64,
-      62,
-      75,
-      66,
+      59,
+      67,
       61,
-      66,
-      68
+      56,
+      69,
+      69,
+      65,
+      65,
+      64,
+      62
     ]
   },
   {
@@ -1701,16 +1701,16 @@ export const qbPlayers: Player[] = [
     minRank: '56',
     maxRank: '77',
     expertRanks: [
+      49,
+      66,
       83,
-      70,
-      57,
-      84,
-      58,
-      76,
-      68,
-      63,
+      89,
       78,
-      68
+      58,
+      68,
+      85,
+      71,
+      76
     ]
   },
   {
@@ -1726,15 +1726,15 @@ export const qbPlayers: Player[] = [
     maxRank: '68',
     expertRanks: [
       67,
-      65,
-      68,
-      68,
+      66,
       63,
       65,
-      67,
+      64,
+      65,
       68,
-      66,
-      65
+      67,
+      69,
+      63
     ]
   },
   {
@@ -1749,15 +1749,15 @@ export const qbPlayers: Player[] = [
     minRank: '54',
     maxRank: '81',
     expertRanks: [
-      80,
-      44,
-      71,
-      75,
-      87,
-      46,
-      57,
-      61,
+      54,
+      48,
+      36,
+      67,
       63,
+      77,
+      66,
+      53,
+      57,
       66
     ]
   },
@@ -1773,14 +1773,14 @@ export const qbPlayers: Player[] = [
     minRank: '64',
     maxRank: '71',
     expertRanks: [
-      69,
-      70,
-      69,
-      68,
-      67,
-      66,
+      72,
       65,
-      70,
+      69,
+      63,
+      64,
+      74,
+      68,
+      65,
       75,
       70
     ]
@@ -1798,15 +1798,15 @@ export const qbPlayers: Player[] = [
     maxRank: '74',
     expertRanks: [
       72,
-      71,
-      70,
-      73,
-      72,
-      70,
       74,
       72,
-      70,
-      72
+      72,
+      74,
+      71,
+      73,
+      71,
+      72,
+      73
     ]
   },
   {
@@ -1821,16 +1821,16 @@ export const qbPlayers: Player[] = [
     minRank: '72',
     maxRank: '92',
     expertRanks: [
-      74,
+      62,
+      79,
+      93,
       71,
+      78,
+      84,
       88,
-      72,
-      76,
-      60,
-      72,
-      80,
-      95,
-      85
+      69,
+      73,
+      75
     ]
   },
   {
@@ -1845,16 +1845,16 @@ export const qbPlayers: Player[] = [
     minRank: '66',
     maxRank: '82',
     expertRanks: [
-      69,
-      83,
-      74,
-      65,
-      68,
-      75,
-      74,
       76,
-      72,
-      76
+      76,
+      78,
+      73,
+      63,
+      64,
+      76,
+      66,
+      73,
+      71
     ]
   },
   {
@@ -1869,15 +1869,15 @@ export const qbPlayers: Player[] = [
     minRank: '74',
     maxRank: '79',
     expertRanks: [
+      76,
       78,
+      76,
+      73,
       78,
-      79,
+      76,
+      75,
       77,
       78,
-      75,
-      75,
-      76,
-      79,
       75
     ]
   },
@@ -1893,16 +1893,16 @@ export const qbPlayers: Player[] = [
     minRank: '73',
     maxRank: '98',
     expertRanks: [
-      84,
-      96,
-      54,
-      75,
-      104,
-      92,
-      77,
       80,
-      97,
-      70
+      64,
+      69,
+      87,
+      74,
+      71,
+      71,
+      83,
+      81,
+      93
     ]
   },
   {
@@ -1917,15 +1917,15 @@ export const qbPlayers: Player[] = [
     minRank: '78',
     maxRank: '99',
     expertRanks: [
-      90,
-      83,
-      78,
-      91,
-      68,
-      85,
-      82,
-      95,
       87,
+      81,
+      78,
+      72,
+      88,
+      86,
+      76,
+      87,
+      83,
       77
     ]
   },
@@ -1941,16 +1941,16 @@ export const qbPlayers: Player[] = [
     minRank: '78',
     maxRank: '96',
     expertRanks: [
+      84,
       92,
-      65,
-      90,
+      87,
+      83,
+      75,
+      98,
+      81,
+      93,
       82,
-      77,
-      97,
-      100,
-      86,
-      89,
-      71
+      93
     ]
   },
   {
@@ -1965,16 +1965,16 @@ export const qbPlayers: Player[] = [
     minRank: '79',
     maxRank: '93',
     expertRanks: [
-      88,
-      79,
-      95,
-      76,
-      86,
+      78,
+      94,
       85,
-      74,
+      69,
       89,
-      83,
-      78
+      88,
+      81,
+      104,
+      91,
+      83
     ]
   }
 ];

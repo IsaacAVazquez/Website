@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import { Player, TierGroup, ChartDimensions } from '@/types';
 import { clusterPlayersIntoTiers } from '@/lib/clustering';
+import { calculateUnifiedTiers, UnifiedTier, convertToUnifiedTier } from '@/lib/unifiedTierCalculator';
 import { motion } from 'framer-motion';
 import { ZoomIn, ZoomOut, Maximize2, Move } from 'lucide-react';
 import { DataFreshnessIndicator } from './DataFreshnessIndicator';
@@ -32,7 +33,7 @@ export default function TierChartEnhanced({
 }: TierChartEnhancedProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [hoveredPlayer, setHoveredPlayer] = useState<Player | null>(null);
-  const [tierGroups, setTierGroups] = useState<TierGroup[]>([]);
+  const [tierGroups, setTierGroups] = useState<UnifiedTier[]>([]);
   const [currentZoom, setCurrentZoom] = useState<number>(1);
   const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const [playerImages, setPlayerImages] = useState<Map<string, string>>(new Map());
@@ -53,21 +54,30 @@ export default function TierChartEnhanced({
       return;
     }
 
-    // Cluster players into tiers
-    const tiers = clusterPlayersIntoTiers(players, numberOfTiers);
-    setTierGroups(tiers);
+    // Use unified tier calculation system
+    const unifiedTiers = calculateUnifiedTiers(players, numberOfTiers, scoringFormat);
+    setTierGroups(unifiedTiers);
     
     // Load player images
     loadPlayerImages(players);
     
-    // Notify parent about tier count and groups
+    // Notify parent about tier count and groups (convert to old format for compatibility)
     if (onTierCountChange) {
-      onTierCountChange(tiers.length);
+      onTierCountChange(unifiedTiers.length);
     }
     if (onTierGroupsChange) {
-      onTierGroupsChange(tiers);
+      // Convert UnifiedTier back to TierGroup for parent component compatibility
+      const legacyTiers: TierGroup[] = unifiedTiers.map(tier => ({
+        tier: tier.tier,
+        players: tier.players,
+        color: tier.color,
+        minRank: tier.minRank,
+        maxRank: tier.maxRank,
+        avgRank: tier.avgRank
+      }));
+      onTierGroupsChange(legacyTiers);
     }
-  }, [players, numberOfTiers, onTierCountChange]);
+  }, [players, numberOfTiers, scoringFormat, onTierCountChange, onTierGroupsChange]);
 
   const loadPlayerImages = async (playersToLoad: Player[]) => {
     setIsLoadingImages(true);
@@ -262,7 +272,7 @@ export default function TierChartEnhanced({
         .style('font-weight', 'bold')
         .style('font-size', '18px')
         .style('text-shadow', '1px 1px 2px rgba(0,0,0,0.8)')
-        .text(`Tier ${tier.tier}`);
+        .text(tier.label || `Tier ${tier.tier}`);
 
       // Draw players in tier with size based on data density
       const totalVisiblePlayers = visiblePlayers.length;

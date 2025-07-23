@@ -1,8 +1,8 @@
 /**
  * K Player Data
- * Last Updated: 2025-07-23T17:37:08.830Z
+ * Last Updated: 2025-07-23T21:08:23.810Z
  * Source: fantasypros
- * Format: half-ppr
+ * Format: ppr
  * Version: 1.0.0
  */
 
@@ -21,14 +21,14 @@ export const kPlayers: Player[] = [
     minRank: '1',
     maxRank: '3',
     expertRanks: [
-      1,
-      1,
-      1,
-      1,
+      2,
       1,
       1,
       2,
       2,
+      1,
+      1,
+      1,
       2,
       1
     ]
@@ -45,16 +45,16 @@ export const kPlayers: Player[] = [
     minRank: '1',
     maxRank: '10',
     expertRanks: [
-      2,
-      3,
-      2,
+      5,
+      1,
+      1,
       5,
       1,
       4,
+      1,
       5,
-      4,
-      3,
-      3
+      1,
+      2
     ]
   },
   {
@@ -69,16 +69,16 @@ export const kPlayers: Player[] = [
     minRank: '2',
     maxRank: '14',
     expertRanks: [
-      1,
-      1,
       5,
       1,
       1,
+      3,
+      4,
+      6,
+      4,
       2,
       4,
-      3,
-      3,
-      2
+      4
     ]
   },
   {
@@ -93,16 +93,16 @@ export const kPlayers: Player[] = [
     minRank: '2',
     maxRank: '13',
     expertRanks: [
-      9,
-      1,
-      3,
-      8,
+      2,
+      10,
+      4,
+      5,
       8,
       7,
-      8,
-      8,
-      6,
-      6
+      9,
+      7,
+      9,
+      9
     ]
   },
   {
@@ -117,16 +117,16 @@ export const kPlayers: Player[] = [
     minRank: '3',
     maxRank: '10',
     expertRanks: [
-      6,
-      9,
-      2,
       7,
-      8,
-      9,
-      6,
-      6,
+      3,
+      4,
+      10,
       7,
-      8
+      5,
+      6,
+      6,
+      6,
+      6
     ]
   },
   {
@@ -141,21 +141,21 @@ export const kPlayers: Player[] = [
     minRank: '2',
     maxRank: '15',
     expertRanks: [
-      7,
-      4,
+      11,
+      17,
       5,
       8,
+      11,
+      11,
+      6,
       5,
-      7,
-      9,
-      8,
-      5,
-      10
+      10,
+      3
     ]
   },
   {
     id: 'fp-K-7',
-    name: 'Ka'imi Fairbairn',
+    name: 'Ka\'imi Fairbairn',
     team: 'HOU',
     position: 'K',
     averageRank: '7.77',
@@ -165,16 +165,16 @@ export const kPlayers: Player[] = [
     minRank: '3',
     maxRank: '16',
     expertRanks: [
-      8,
-      3,
+      5,
       7,
       4,
-      12,
+      1,
+      4,
       9,
-      6,
-      9,
-      9,
-      4
+      10,
+      15,
+      11,
+      10
     ]
   },
   {
@@ -189,16 +189,16 @@ export const kPlayers: Player[] = [
     minRank: '4',
     maxRank: '15',
     expertRanks: [
-      5,
-      6,
+      7,
       8,
-      15,
-      11,
       9,
-      9,
-      6,
-      9,
-      10
+      12,
+      8,
+      10,
+      4,
+      5,
+      7,
+      5
     ]
   },
   {
@@ -213,16 +213,16 @@ export const kPlayers: Player[] = [
     minRank: '4',
     maxRank: '19',
     expertRanks: [
-      1,
+      8,
+      13,
+      12,
       6,
-      11,
-      20,
+      9,
+      15,
       10,
-      7,
       8,
       9,
-      10,
-      11
+      6
     ]
   },
   {
@@ -237,16 +237,16 @@ export const kPlayers: Player[] = [
     minRank: '5',
     maxRank: '17',
     expertRanks: [
-      9,
-      6,
-      11,
+      12,
+      12,
       10,
       13,
-      14,
-      8,
       10,
+      18,
       6,
-      4
+      11,
+      8,
+      12
     ]
   },
   {
@@ -261,16 +261,16 @@ export const kPlayers: Player[] = [
     minRank: '6',
     maxRank: '19',
     expertRanks: [
-      12,
-      12,
-      12,
+      16,
       11,
-      13,
-      12,
-      8,
+      15,
       11,
-      14,
-      14
+      15,
+      5,
+      10,
+      11,
+      15,
+      12
     ]
   },
   {
@@ -285,16 +285,16 @@ export const kPlayers: Player[] = [
     minRank: '7',
     maxRank: '21',
     expertRanks: [
-      12,
-      16,
       18,
-      15,
-      5,
-      18,
-      12,
-      11,
-      12,
-      4
+      10,
+      13,
+      19,
+      13,
+      13,
+      19,
+      10,
+      17,
+      11
     ]
   },
   {
@@ -309,16 +309,16 @@ export const kPlayers: Player[] = [
     minRank: '3',
     maxRank: '19',
     expertRanks: [
+      4,
+      20,
+      12,
       16,
-      19,
       14,
-      16,
-      15,
-      11,
-      15,
-      21,
-      13,
-      10
+      9,
+      12,
+      8,
+      12,
+      14
     ]
   },
   {
@@ -333,16 +333,16 @@ export const kPlayers: Player[] = [
     minRank: '9',
     maxRank: '23',
     expertRanks: [
-      10,
       14,
+      14,
+      8,
       16,
-      14,
-      22,
+      11,
+      11,
       18,
-      9,
-      13,
       14,
-      25
+      20,
+      9
     ]
   },
   {
@@ -357,16 +357,16 @@ export const kPlayers: Player[] = [
     minRank: '11',
     maxRank: '20',
     expertRanks: [
-      18,
-      18,
-      15,
+      17,
       20,
       15,
-      12,
       15,
+      9,
+      14,
       12,
       16,
-      18
+      17,
+      14
     ]
   },
   {
@@ -381,16 +381,16 @@ export const kPlayers: Player[] = [
     minRank: '9',
     maxRank: '27',
     expertRanks: [
-      10,
-      17,
-      17,
       15,
-      21,
-      19,
-      19,
-      13,
+      10,
+      6,
       16,
-      22
+      15,
+      13,
+      18,
+      12,
+      13,
+      14
     ]
   },
   {
@@ -405,16 +405,16 @@ export const kPlayers: Player[] = [
     minRank: '6',
     maxRank: '25',
     expertRanks: [
-      21,
-      11,
+      22,
+      18,
+      22,
+      16,
+      8,
+      12,
       15,
-      13,
-      13,
-      19,
-      25,
-      15,
-      14,
-      17
+      18,
+      18,
+      14
     ]
   },
   {
@@ -429,16 +429,16 @@ export const kPlayers: Player[] = [
     minRank: '12',
     maxRank: '23',
     expertRanks: [
-      20,
+      24,
+      17,
+      18,
+      19,
+      9,
+      24,
+      16,
       19,
       20,
-      17,
-      25,
-      16,
-      13,
-      15,
-      22,
-      16
+      17
     ]
   },
   {
@@ -453,16 +453,16 @@ export const kPlayers: Player[] = [
     minRank: '10',
     maxRank: '27',
     expertRanks: [
+      10,
+      12,
       16,
       20,
+      22,
+      11,
       18,
-      24,
       20,
-      20,
-      20,
-      17,
-      23,
-      23
+      19,
+      18
     ]
   },
   {
@@ -477,16 +477,16 @@ export const kPlayers: Player[] = [
     minRank: '8',
     maxRank: '25',
     expertRanks: [
-      16,
-      20,
-      22,
-      23,
-      16,
-      9,
-      10,
-      15,
+      21,
       17,
-      15
+      13,
+      15,
+      19,
+      19,
+      14,
+      16,
+      18,
+      11
     ]
   },
   {
@@ -501,16 +501,16 @@ export const kPlayers: Player[] = [
     minRank: '14',
     maxRank: '31',
     expertRanks: [
+      21,
       19,
+      18,
+      24,
       23,
-      22,
-      22,
-      22,
-      27,
-      25,
-      23,
+      18,
+      17,
       19,
-      22
+      20,
+      15
     ]
   },
   {
@@ -526,15 +526,15 @@ export const kPlayers: Player[] = [
     maxRank: '27',
     expertRanks: [
       19,
-      21,
-      21,
-      17,
-      21,
+      22,
+      24,
       19,
-      16,
+      21,
+      22,
+      24,
+      21,
       17,
-      23,
-      21
+      24
     ]
   },
   {
@@ -549,16 +549,16 @@ export const kPlayers: Player[] = [
     minRank: '11',
     maxRank: '28',
     expertRanks: [
+      23,
+      31,
+      18,
+      20,
+      17,
+      25,
+      19,
       20,
       23,
-      30,
-      21,
-      12,
-      21,
-      24,
-      22,
-      28,
-      22
+      25
     ]
   },
   {
@@ -573,16 +573,16 @@ export const kPlayers: Player[] = [
     minRank: '19',
     maxRank: '30',
     expertRanks: [
-      24,
+      25,
       28,
+      28,
+      24,
       23,
+      24,
+      21,
       26,
-      26,
-      23,
-      22,
-      30,
-      22,
-      23
+      27,
+      24
     ]
   },
   {
@@ -597,16 +597,16 @@ export const kPlayers: Player[] = [
     minRank: '20',
     maxRank: '32',
     expertRanks: [
-      29,
-      24,
-      23,
-      22,
-      25,
-      29,
-      25,
-      24,
+      31,
       27,
-      27
+      21,
+      26,
+      27,
+      22,
+      26,
+      25,
+      25,
+      23
     ]
   },
   {
@@ -621,16 +621,16 @@ export const kPlayers: Player[] = [
     minRank: '15',
     maxRank: '28',
     expertRanks: [
+      18,
+      23,
       25,
-      24,
-      25,
-      25,
-      22,
       26,
-      21,
-      22,
-      28,
-      27
+      20,
+      26,
+      18,
+      20,
+      26,
+      21
     ]
   },
   {
@@ -645,16 +645,16 @@ export const kPlayers: Player[] = [
     minRank: '22',
     maxRank: '31',
     expertRanks: [
-      28,
-      28,
-      27,
-      29,
-      27,
-      28,
       26,
       26,
-      30,
-      27
+      28,
+      28,
+      25,
+      23,
+      27,
+      31,
+      26,
+      26
     ]
   },
   {
@@ -669,16 +669,16 @@ export const kPlayers: Player[] = [
     minRank: '21',
     maxRank: '30',
     expertRanks: [
-      21,
-      27,
-      28,
-      22,
-      34,
-      21,
+      29,
       26,
-      30,
-      25,
-      25
+      18,
+      26,
+      23,
+      31,
+      27,
+      22,
+      24,
+      31
     ]
   },
   {
@@ -693,15 +693,15 @@ export const kPlayers: Player[] = [
     minRank: '26',
     maxRank: '32',
     expertRanks: [
-      30,
-      30,
-      30,
+      29,
+      28,
+      27,
+      34,
       33,
-      29,
-      31,
-      29,
+      28,
       30,
       29,
+      30,
       30
     ]
   },
@@ -718,14 +718,14 @@ export const kPlayers: Player[] = [
     maxRank: '28',
     expertRanks: [
       23,
-      20,
-      27,
-      22,
-      24,
-      23,
-      28,
-      16,
       19,
+      22,
+      22,
+      21,
+      18,
+      18,
+      26,
+      22,
       20
     ]
   },
@@ -742,14 +742,14 @@ export const kPlayers: Player[] = [
     maxRank: '36',
     expertRanks: [
       31,
-      35,
-      33,
-      26,
-      31,
-      31,
-      26,
-      33,
+      25,
+      24,
       29,
+      28,
+      32,
+      29,
+      30,
+      31,
       26
     ]
   },
@@ -765,16 +765,16 @@ export const kPlayers: Player[] = [
     minRank: '26',
     maxRank: '33',
     expertRanks: [
-      30,
-      30,
-      32,
+      26,
       29,
-      28,
-      30,
-      33,
+      32,
+      31,
+      31,
+      29,
+      29,
       27,
-      28,
-      30
+      29,
+      31
     ]
   },
   {
@@ -789,16 +789,16 @@ export const kPlayers: Player[] = [
     minRank: '19',
     maxRank: '32',
     expertRanks: [
-      18,
-      26,
-      23,
-      22,
-      24,
-      23,
-      23,
-      32,
+      13,
       25,
-      25
+      23,
+      27,
+      21,
+      24,
+      21,
+      28,
+      15,
+      28
     ]
   },
   {
@@ -813,16 +813,16 @@ export const kPlayers: Player[] = [
     minRank: '8',
     maxRank: '39',
     expertRanks: [
-      31,
-      6,
-      21,
-      40,
-      26,
-      30,
-      15,
+      23,
+      39,
+      19,
+      29,
       17,
-      22,
-      19
+      19,
+      35,
+      17,
+      29,
+      21
     ]
   },
   {
@@ -837,16 +837,16 @@ export const kPlayers: Player[] = [
     minRank: '23',
     maxRank: '38',
     expertRanks: [
-      21,
-      27,
-      36,
-      22,
-      31,
+      32,
+      33,
+      26,
+      20,
+      23,
+      24,
+      32,
       30,
-      31,
-      17,
-      36,
-      35
+      15,
+      25
     ]
   },
   {
@@ -861,12 +861,12 @@ export const kPlayers: Player[] = [
     minRank: '29',
     maxRank: '33',
     expertRanks: [
-      32,
+      30,
+      33,
       31,
-      34,
       31,
+      30,
       32,
-      28,
       31,
       31,
       30,
@@ -886,15 +886,15 @@ export const kPlayers: Player[] = [
     maxRank: '35',
     expertRanks: [
       33,
-      33,
-      33,
-      29,
-      27,
-      39,
-      33,
-      33,
-      27,
-      27
+      25,
+      36,
+      35,
+      34,
+      31,
+      32,
+      30,
+      30,
+      29
     ]
   },
   {
@@ -909,16 +909,16 @@ export const kPlayers: Player[] = [
     minRank: '30',
     maxRank: '37',
     expertRanks: [
-      34,
-      34,
       35,
-      29,
-      34,
+      30,
+      31,
+      36,
+      32,
+      36,
       31,
       31,
-      33,
-      37,
-      33
+      31,
+      34
     ]
   },
   {
@@ -933,15 +933,15 @@ export const kPlayers: Player[] = [
     minRank: '30',
     maxRank: '36',
     expertRanks: [
-      33,
-      32,
-      34,
+      35,
       30,
-      32,
       33,
+      27,
       36,
       35,
-      35,
+      32,
+      36,
+      34,
       36
     ]
   },
@@ -957,16 +957,16 @@ export const kPlayers: Player[] = [
     minRank: '35',
     maxRank: '38',
     expertRanks: [
+      36,
+      36,
+      37,
       35,
-      34,
-      36,
-      37,
-      36,
-      37,
-      37,
+      39,
       38,
+      37,
       35,
-      37
+      35,
+      36
     ]
   },
   {
@@ -981,15 +981,15 @@ export const kPlayers: Player[] = [
     minRank: '35',
     maxRank: '36',
     expertRanks: [
-      36,
-      36,
       35,
       35,
       36,
-      36,
+      35,
+      35,
+      35,
       35,
       36,
-      36,
+      35,
       35
     ]
   },
@@ -1005,15 +1005,15 @@ export const kPlayers: Player[] = [
     minRank: '36',
     maxRank: '38',
     expertRanks: [
-      37,
+      38,
       36,
-      36,
-      37,
       36,
       38,
       36,
       37,
-      37,
+      38,
+      38,
+      38,
       37
     ]
   }

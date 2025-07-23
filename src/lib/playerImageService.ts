@@ -58,6 +58,9 @@ class PlayerImageService {
       if (mapped) {
         if (process.env.NODE_ENV === 'development') {
           console.log(`✅ MATCH FOUND: "${variation}" -> "${mapped}"`);
+          
+          // Validate image is actually accessible in browser
+          this.validateImageAccessibility(mapped, player.name);
           console.groupEnd();
         }
         return mapped; // Our mapping already includes the full path
@@ -72,9 +75,55 @@ class PlayerImageService {
     return null;
   }
 
+  // Browser-level validation to check if image is actually accessible
+  private static validateImageAccessibility(imagePath: string, playerName: string): void {
+    if (typeof window === 'undefined') return; // Skip on server-side
+    
+    const img = new Image();
+    const startTime = performance.now();
+    
+    img.onload = () => {
+      const loadTime = performance.now() - startTime;
+      console.log(`🖼️ IMAGE LOADED: ${playerName} (${loadTime.toFixed(0)}ms) - ${imagePath}`);
+    };
+    
+    img.onerror = (error) => {
+      const loadTime = performance.now() - startTime;
+      console.error(`🚨 IMAGE FAILED: ${playerName} (${loadTime.toFixed(0)}ms) - ${imagePath}`);
+      console.error('Error details:', error);
+      
+      // Try fetching the image directly to see server response
+      fetch(imagePath)
+        .then(response => {
+          console.log(`🌐 FETCH STATUS: ${imagePath} -> ${response.status} ${response.statusText}`);
+          if (!response.ok) {
+            console.log(`📁 File not found or server error for ${playerName}`);
+          }
+        })
+        .catch(fetchError => {
+          console.error(`🔗 FETCH ERROR: ${imagePath}`, fetchError);
+        });
+    };
+    
+    img.src = imagePath;
+  }
+
   private static generateNameVariations(name: string, team: string): string[] {
     const cleanName = name.trim();
     const teamUpper = team.toUpperCase();
+    
+    // Enhanced normalization function
+    const normalizePlayerName = (playerName: string): string => {
+      return playerName
+        .toLowerCase()
+        .replace(/\./g, '') // Remove periods
+        .replace(/'/g, '') // Remove apostrophes
+        .replace(/'/g, '') // Remove smart quotes
+        .replace(/jr\.?|sr\.?|iii|iv|v$/gi, '') // Remove suffixes
+        .replace(/\s+/g, '') // Remove all spaces
+        .replace(/[^a-z0-9]/g, '') // Remove non-alphanumeric
+        .trim();
+    };
     
     // Generate base name variations
     const baseVariations = [
@@ -90,6 +139,8 @@ class PlayerImageService {
       // Handle middle initials and names
       cleanName.replace(/\s[A-Z]\.\s/g, ' '), // Remove middle initial like "J. "
       cleanName.replace(/\s[A-Z][a-z]*\s/g, ' '), // Remove middle names
+      // Add normalized version for better matching
+      normalizePlayerName(cleanName),
     ];
     
     // Team abbreviation variations (handle common mismatches)
@@ -108,12 +159,18 @@ class PlayerImageService {
     
     for (const nameVar of baseVariations) {
       for (const teamVar of teamVariations) {
-        // Sanitize name to match the mapping format
+        // Improved sanitization to match our cleaned mapping format
+        const normalizedName = normalizePlayerName(nameVar);
+        const sanitizedTeam = teamVar.toLowerCase();
+        
+        // Primary format: normalizedname-team (matches our cleaned files)
+        allVariations.push(`${normalizedName}-${sanitizedTeam}`);
+        
+        // Legacy formats for backward compatibility
         const sanitizedName = nameVar.toLowerCase()
           .replace(/[^a-z0-9]/g, '-')
           .replace(/-+/g, '-')
           .replace(/^-|-$/g, '');
-        const sanitizedTeam = teamVar.toLowerCase();
         
         allVariations.push(`${sanitizedName}-${sanitizedTeam}`);
         allVariations.push(`${nameVar}-${teamVar}`.toLowerCase());
@@ -121,6 +178,7 @@ class PlayerImageService {
       }
       // Also try name-only variations
       allVariations.push(nameVar.toLowerCase());
+      allVariations.push(normalizePlayerName(nameVar));
     }
     
     // Add original exact match first (highest priority)
