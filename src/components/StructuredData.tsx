@@ -1,7 +1,7 @@
 import { siteConfig } from "@/lib/seo";
 
 interface StructuredDataProps {
-  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList";
+  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage";
   data?: Record<string, string | number | boolean | object>;
 }
 
@@ -17,7 +17,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...baseData,
           "@type": "Person",
           "name": siteConfig.name,
-          "jobTitle": "QA Engineer",
+          "jobTitle": "Fantasy Football Analytics Developer & QA Engineer",
           "description": siteConfig.description,
           "url": siteConfig.url,
           "image": `${siteConfig.url}/og-image.png`,
@@ -30,18 +30,39 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
             "name": "Civitech"
           },
           "knowsAbout": [
+            "Fantasy Football Analytics",
+            "Fantasy Sports Data Visualization",
+            "NFL Player Analytics",
+            "Fantasy Football Tools",
+            "D3.js Visualization",
+            "K-Means Clustering",
+            "Real-time Data Processing",
             "Quality Assurance",
             "Test Automation",
-            "Selenium",
-            "Cypress",
-            "JavaScript",
-            "Python",
-            "Civic Technology",
-            "Data Analysis"
+            "TypeScript",
+            "React",
+            "Next.js",
+            "Data Analysis",
+            "Software Quality"
           ],
           "alumniOf": {
             "@type": "EducationalOrganization",
             "name": "Florida State University"
+          },
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Fantasy Football Analytics Developer",
+            "occupationLocation": {
+              "@type": "City",
+              "name": "Austin, TX"
+            },
+            "skills": [
+              "Fantasy Football Data Analysis",
+              "Sports Analytics",
+              "Data Visualization",
+              "Web Development",
+              "Quality Assurance"
+            ]
           },
           ...data,
         };
@@ -120,6 +141,53 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...baseData,
           "@type": "BreadcrumbList",
           "itemListElement": data.items || [],
+          ...data,
+        };
+
+      case "SportsApplication":
+        return {
+          ...baseData,
+          "@type": "SoftwareApplication",
+          "name": data.name || "Fantasy Football Analytics Tools",
+          "description": data.description || "Advanced fantasy football analytics and visualization platform",
+          "applicationCategory": "SportsApplication",
+          "operatingSystem": "Any",
+          "url": siteConfig.url,
+          "author": {
+            "@type": "Person",
+            "name": siteConfig.name,
+            "url": siteConfig.url,
+          },
+          "about": {
+            "@type": "Thing",
+            "name": "Fantasy Football",
+            "description": "Strategic game based on NFL player performance statistics"
+          },
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Fantasy Football Players"
+          },
+          "featureList": [
+            "Interactive tier visualizations",
+            "Real-time player data",
+            "Clustering algorithms",
+            "Mobile-optimized interface",
+            "Draft assistance tools"
+          ],
+          "screenshot": `${siteConfig.url}/og-image.png`,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          ...data,
+        };
+
+      case "FAQPage":
+        return {
+          ...baseData,
+          "@type": "FAQPage",
+          "mainEntity": data.questions || [],
           ...data,
         };
 

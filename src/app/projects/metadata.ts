@@ -1,7 +1,7 @@
 import { constructMetadata } from "@/lib/seo";
 
 export const metadata = constructMetadata({
-  title: "Projects",
-  description: "Explore Isaac Vazquez's portfolio of QA and software engineering projects. From test automation frameworks to civic tech solutions, see how I build reliable, user-centered products.",
+  title: "Fantasy Football Tools",
+  description: "Advanced fantasy football analytics and visualization tools by Isaac Vazquez. Interactive tier visualizations, clustering algorithms, real-time data processing, and mobile-optimized draft tools for competitive fantasy football.",
   canonicalUrl: "/projects",
 });

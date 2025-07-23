@@ -44,6 +44,17 @@ const config: Config = {
         "vivid-purple": "var(--vivid-purple)",
         "vivid-pink": "var(--vivid-pink)",
         "vivid-yellow": "var(--vivid-yellow)",
+        // Cyberpunk Professional Colors
+        "electric-blue": "var(--electric-blue)",
+        "matrix-green": "var(--matrix-green)",
+        "warning-amber": "var(--warning-amber)",
+        "error-red": "var(--error-red)",
+        "neon-purple": "var(--neon-purple)",
+        "cyber-teal": "var(--cyber-teal)",
+        "terminal-bg": "var(--terminal-bg)",
+        "terminal-border": "var(--terminal-border)",
+        "terminal-text": "var(--terminal-text)",
+        "terminal-cursor": "var(--terminal-cursor)",
       },
       boxShadow: {
         'glow-blue': 'var(--glow-blue)',

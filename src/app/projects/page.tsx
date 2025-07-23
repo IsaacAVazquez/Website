@@ -1,42 +1,42 @@
-import { ProjectsContent } from "@/components/ProjectsContent";
+import { FantasyFootballLandingContent } from "@/components/FantasyFootballLandingContent";
 import { metadata } from "./metadata";
 import { StructuredData } from "@/components/StructuredData";
 import { generateBreadcrumbStructuredData } from "@/lib/seo";
 
 export { metadata };
 
-// Project data for structured data
-const projectsStructuredData = [
+// Fantasy Football data for structured data
+const fantasyFootballStructuredData = [
   {
-    name: "Civic Engagement Platform QA Framework",
-    description: "Scalable QA framework for voter outreach tools reaching 60M+ voters",
-    programmingLanguage: ["JavaScript", "TypeScript"],
-    keywords: ["Cypress", "Jest", "React Testing", "Node.js Testing"],
-  },
-  {
-    name: "Test Automation Suite",
-    description: "Unified automation framework enabling same-day validation",
-    programmingLanguage: ["Python", "JavaScript"],
-    keywords: ["Selenium", "Docker", "CI/CD", "Test Automation"],
-  },
-  {
-    name: "Data Analytics Dashboard",
-    description: "Interactive dashboards for campaign performance monitoring",
-    programmingLanguage: ["Python", "SQL"],
-    keywords: ["SQL", "Tableau", "Python", "APIs", "Data Analytics"],
-  },
-  {
-    name: "Fantasy Football Tier Visualization",
-    description: "Interactive tier visualization using clustering algorithms",
+    name: "Interactive Fantasy Football Tier Visualizations",
+    description: "Advanced clustering algorithms analyze 300+ players with real-time data visualization",
     programmingLanguage: ["TypeScript", "JavaScript"],
-    keywords: ["D3.js", "K-Means", "Data Visualization", "Fantasy Sports"],
+    keywords: ["D3.js", "K-Means", "Data Visualization", "Fantasy Sports", "React"],
+  },
+  {
+    name: "Fantasy Football Draft Command Center",
+    description: "Comprehensive draft interface with tier visualization and real-time player tracking",
+    programmingLanguage: ["TypeScript", "JavaScript"],
+    keywords: ["React", "Next.js", "Fantasy Sports", "Real-time Data"],
+  },
+  {
+    name: "Fantasy Football Analytics Pipeline",
+    description: "Automated data collection and processing with smart caching and performance optimization",
+    programmingLanguage: ["TypeScript", "JavaScript"],
+    keywords: ["API Integration", "Data Processing", "Caching", "Performance"],
+  },
+  {
+    name: "Fantasy Football Mobile Experience",
+    description: "Responsive design with touch interactions and offline capabilities",
+    programmingLanguage: ["TypeScript", "JavaScript"],
+    keywords: ["Mobile Optimization", "Responsive Design", "PWA", "Touch UI"],
   },
 ];
 
 export default function ProjectsPage() {
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "Projects", url: "/projects" }
+    { name: "Fantasy Football", url: "/projects" }
   ];
 
   return (
@@ -47,14 +47,14 @@ export default function ProjectsPage() {
         data={{ items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement }}
       />
       
-      {/* Project Structured Data */}
-      {projectsStructuredData.map((project, index) => (
+      {/* Fantasy Football Structured Data */}
+      {fantasyFootballStructuredData.map((project, index) => (
         <StructuredData
           key={index}
           type="SoftwareApplication"
           data={{
             ...project,
-            dateCreated: "2023-01-01",
+            dateCreated: "2024-01-01",
             applicationCategory: "WebApplication",
           }}
         />
@@ -62,7 +62,7 @@ export default function ProjectsPage() {
 
       <div className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <ProjectsContent />
+          <FantasyFootballLandingContent />
         </div>
       </div>
     </>

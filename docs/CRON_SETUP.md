@@ -17,7 +17,7 @@ FANTASYPROS_USERNAME="your-username"
 FANTASYPROS_PASSWORD="your-password"
 
 # Optional: Override default site URL
-URL="https://isaacvazquez.com"
+URL="https://isaacavazquez.com"
 ```
 
 ### 2. Generate CRON_SECRET

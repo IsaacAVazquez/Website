@@ -13,18 +13,13 @@ export const navlinks = [
   },
   {
     href: "/projects",
-    label: "Projects",
-    icon: IconBriefcase,
+    label: "Fantasy Football",
+    icon: IconTrophy,
   },
   {
     href: "/resume",
     label: "Resume",
     icon: IconFileText,
-  },
-  {
-    href: "/fantasy-football",
-    label: "Fantasy Football",
-    icon: IconTrophy,
   },
   {
     href: "/contact",

@@ -20,7 +20,7 @@ This guide covers deployment strategies, configuration, and best practices for t
 The site is deployed on Netlify with automatic builds from the main branch.
 
 **Live URLs:**
-- **Production:** [isaacvazquez.com](https://isaacvazquez.com)
+- **Production:** [isaacavazquez.com](https://isaacavazquez.com)
 - **Deploy Previews:** Auto-generated for pull requests
 - **Branch Deploys:** Available for feature branches
 
@@ -108,7 +108,7 @@ const nextConfig = {
   // Image optimization
   images: {
     unoptimized: true, // Required for static export
-    domains: ['isaacvazquez.com'],
+    domains: ['isaacavazquez.com'],
     formats: ['image/webp', 'image/avif'],
   },
   
@@ -123,7 +123,7 @@ const nextConfig = {
   
   // Environment variables
   env: {
-    SITE_URL: process.env.SITE_URL || 'https://isaacvazquez.com',
+    SITE_URL: process.env.SITE_URL || 'https://isaacavazquez.com',
   },
   
   // Webpack configuration
@@ -164,7 +164,7 @@ export default nextConfig;
 // next-sitemap.config.js
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://isaacvazquez.com',
+  siteUrl: process.env.SITE_URL || 'https://isaacavazquez.com',
   generateRobotsTxt: true,
   exclude: ['/admin/*', '/api/*'],
   robotsTxtOptions: {
@@ -176,7 +176,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://isaacvazquez.com/sitemap.xml',
+      'https://isaacavazquez.com/sitemap.xml',
     ],
   },
   transform: async (config, path) => {
@@ -206,8 +206,8 @@ module.exports = {
 
 ```bash
 # Required for production
-SITE_URL=https://isaacvazquez.com
-NEXTAUTH_URL=https://isaacvazquez.com
+SITE_URL=https://isaacavazquez.com
+NEXTAUTH_URL=https://isaacavazquez.com
 
 # Optional: FantasyPros integration
 FANTASYPROS_API_KEY=your_api_key_here
@@ -225,14 +225,14 @@ VERCEL_ANALYTICS_ID=your_vercel_id
 
 2. **Via Netlify CLI:**
    ```bash
-   netlify env:set SITE_URL "https://isaacvazquez.com"
-   netlify env:set NEXTAUTH_URL "https://isaacvazquez.com"
+   netlify env:set SITE_URL "https://isaacavazquez.com"
+   netlify env:set NEXTAUTH_URL "https://isaacavazquez.com"
    ```
 
 3. **Via netlify.toml:**
    ```toml
    [context.production.environment]
-     SITE_URL = "https://isaacvazquez.com"
+     SITE_URL = "https://isaacavazquez.com"
      NODE_ENV = "production"
    
    [context.deploy-preview.environment]
@@ -454,7 +454,7 @@ export function setupErrorTracking() {
 
 ### DNS Configuration
 
-**DNS Records for isaacvazquez.com:**
+**DNS Records for isaacavazquez.com:**
 ```
 Type    Name    Value                           TTL
 A       @       104.198.14.52                   300
@@ -467,7 +467,7 @@ Netlify automatically provisions and renews SSL certificates for custom domains:
 
 1. **Add Custom Domain:**
    ```bash
-   netlify domains:add isaacvazquez.com
+   netlify domains:add isaacavazquez.com
    ```
 
 2. **Verify DNS Configuration:**
@@ -483,11 +483,11 @@ Netlify automatically provisions and renews SSL certificates for custom domains:
 
 ```bash
 # Check domain propagation
-dig isaacvazquez.com
-nslookup isaacvazquez.com
+dig isaacavazquez.com
+nslookup isaacavazquez.com
 
 # Test SSL certificate
-curl -I https://isaacvazquez.com
+curl -I https://isaacavazquez.com
 ```
 
 ## 🔄 CI/CD Pipeline
@@ -596,8 +596,8 @@ netlify dev
 **3. DNS Propagation Issues**
 ```bash
 # Check DNS propagation
-dig +trace isaacvazquez.com
-nslookup isaacvazquez.com 8.8.8.8
+dig +trace isaacavazquez.com
+nslookup isaacavazquez.com 8.8.8.8
 
 # Clear DNS cache (macOS)
 sudo dscacheutil -flushcache
@@ -606,10 +606,10 @@ sudo dscacheutil -flushcache
 **4. SSL Certificate Issues**
 ```bash
 # Check SSL certificate details
-openssl s_client -connect isaacvazquez.com:443 -servername isaacvazquez.com
+openssl s_client -connect isaacavazquez.com:443 -servername isaacavazquez.com
 
 # Test SSL configuration
-curl -vI https://isaacvazquez.com
+curl -vI https://isaacavazquez.com
 ```
 
 ### Performance Issues
@@ -637,14 +637,14 @@ npm ls --depth=0
 
 ```bash
 # Check site status
-curl -I https://isaacvazquez.com
+curl -I https://isaacavazquez.com
 
 # Performance audit
 npm install -g lighthouse
-lighthouse https://isaacvazquez.com --output=json --output-path=./lighthouse-report.json
+lighthouse https://isaacavazquez.com --output=json --output-path=./lighthouse-report.json
 
 # Security headers check
-curl -I https://isaacvazquez.com | grep -E "X-|Strict|Content-Security"
+curl -I https://isaacavazquez.com | grep -E "X-|Strict|Content-Security"
 ```
 
 ## 📚 Additional Resources

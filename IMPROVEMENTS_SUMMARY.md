@@ -148,7 +148,7 @@ To deploy these changes, add these environment variables in Netlify:
 
 ```bash
 # Authentication
-NEXTAUTH_URL=https://isaacvazquez.com
+NEXTAUTH_URL=https://isaacavazquez.com
 NEXTAUTH_SECRET=[generate with: openssl rand -base64 32]
 
 # Admin Access

@@ -2,9 +2,9 @@
 
 A cyberpunk-themed professional portfolio website showcasing QA Engineering expertise, built with cutting-edge web technologies and featuring an interactive fantasy football tier visualization system.
 
-**🚀 Live Site:** [isaacvazquez.com](https://isaacvazquez.com)
+**🚀 Live Site:** [isaacavazquez.com](https://isaacavazquez.com)
 
-![Portfolio Preview](https://isaacvazquez.com/images/about.webp)
+![Portfolio Preview](https://isaacavazquez.com/images/about.webp)
 
 ## ✨ Features
 
@@ -218,7 +218,7 @@ This project is private and proprietary. All rights reserved.
 **Isaac Vazquez**  
 QA Engineer & Full-Stack Developer
 
-- **Website:** [isaacvazquez.com](https://isaacvazquez.com)
+- **Website:** [isaacavazquez.com](https://isaacavazquez.com)
 - **LinkedIn:** [isaac-vazquez](https://linkedin.com/in/isaac-vazquez)
 - **Email:** isaacavazquez95@gmail.com
 - **GitHub:** [IsaacAVazquez](https://github.com/IsaacAVazquez)

@@ -17,7 +17,7 @@ This document provides comprehensive documentation for all API endpoints in the 
 
 The API is built using Next.js App Router API routes with TypeScript. All endpoints return JSON responses and follow RESTful conventions where applicable.
 
-**Base URL:** `https://isaacvazquez.com/api` (Production)  
+**Base URL:** `https://isaacavazquez.com/api` (Production)  
 **Development:** `http://localhost:3000/api`
 
 ### Response Format

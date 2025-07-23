@@ -15,7 +15,7 @@ const handler = schedule('0 2 * * *', async (event) => {
 
   try {
     // Call our API endpoint with the cron secret
-    const response = await fetch(`${process.env.URL || 'https://isaacvazquez.com'}/api/scheduled-update`, {
+    const response = await fetch(`${process.env.URL || 'https://isaacavazquez.com'}/api/scheduled-update`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${cronSecret}`,

@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://isaacvazquez.com/sitemap.xml
+Sitemap: https://isaacavazquez.com/sitemap.xml
 
 # Crawl-delay for politeness (optional)
 Crawl-delay: 1

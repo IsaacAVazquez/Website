@@ -10,7 +10,7 @@ import { GlassCard } from "./GlassCard";
 const navigationLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
+  { href: "/projects", label: "Fantasy Football" },
   { href: "/resume", label: "Resume" },
   { href: "/contact", label: "Contact" },
 ];

@@ -3,7 +3,7 @@
 ## Project Summary
 This is Isaac Vazquez's personal portfolio website - a cyberpunk professional themed showcase featuring a QA Engineer's work, experience, and projects. The site emphasizes a "Digital Command Center" aesthetic with terminal interfaces, glassmorphism effects, and immersive full-screen experiences.
 
-**Live Site:** https://isaacvazquez.com  
+**Live Site:** https://isaacavazquez.com  
 **Owner:** Isaac Vazquez (QA Engineer & Builder)  
 **Tech Stack:** Next.js 15, TypeScript, Tailwind CSS v4, Framer Motion
 
@@ -274,6 +274,6 @@ src/
 QA Engineer & Builder  
 Email: isaacavazquez95@gmail.com  
 LinkedIn: https://linkedin.com/in/isaac-vazquez  
-Website: https://isaacvazquez.com
+Website: https://isaacavazquez.com
 
 **Development Context:** This application showcases Isaac's technical skills as a QA Engineer while maintaining a professional cyberpunk aesthetic. The design emphasizes reliability, attention to detail, and modern web development practices - reflecting his professional expertise in quality assurance and software engineering.
