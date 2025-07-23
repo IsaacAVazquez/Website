@@ -35,29 +35,39 @@ class PlayerImageService {
   static async getPlayerImageUrl(player: Player): Promise<string | null> {
     await this.loadMapping();
     
-    if (!this.mapping) return null;
+    if (!this.mapping) {
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('🚨 PlayerImageService: No mapping loaded');
+      }
+      return null;
+    }
 
     // Try different name variations
     const variations = this.generateNameVariations(player.name, player.team);
     
-    // Debug logging for development
+    // Enhanced debug logging for development
     if (process.env.NODE_ENV === 'development') {
-      console.log(`🔍 Looking for image for: ${player.name} (${player.team})`);
-      console.log(`📝 Trying variations:`, variations.slice(0, 5)); // Show first 5 variations
+      console.group(`🔍 PlayerImageService: Looking for ${player.name} (${player.team})`);
+      console.log(`📊 Total mapping entries: ${Object.keys(this.mapping).length}`);
+      console.log(`🔄 Generated ${variations.length} name variations`);
+      console.log(`📝 First 5 variations:`, variations.slice(0, 5));
     }
     
     for (const variation of variations) {
       const mapped = this.mapping[variation];
       if (mapped) {
         if (process.env.NODE_ENV === 'development') {
-          console.log(`✅ Found match: ${variation} -> ${mapped}`);
+          console.log(`✅ MATCH FOUND: "${variation}" -> "${mapped}"`);
+          console.groupEnd();
         }
         return mapped; // Our mapping already includes the full path
       }
     }
 
     if (process.env.NODE_ENV === 'development') {
-      console.log(`❌ No image found for: ${player.name} (${player.team})`);
+      console.warn(`❌ NO MATCH: ${player.name} (${player.team})`);
+      console.log(`🔍 Sample mapping keys:`, Object.keys(this.mapping).slice(0, 10));
+      console.groupEnd();
     }
     return null;
   }
@@ -220,8 +230,11 @@ function generateNameVariationsSync(name: string, team: string): string[] {
   return Array.from(new Set(allVariations)).filter(Boolean);
 }
 
-// Convenience function for direct use in components
+// Legacy sync function - DEPRECATED
+// Use PlayerImageService.getPlayerImageUrl() instead for better error handling and consistency
 export function getPlayerImageUrl(playerName: string, teamId?: string): string | null {
+  console.warn('DEPRECATED: getPlayerImageUrl() is deprecated. Use PlayerImageService.getPlayerImageUrl() instead.');
+  
   if (!playerName || !teamId) return null;
   
   // Get potential teams to try (handles team changes)

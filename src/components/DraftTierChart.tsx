@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { IconUser, IconStar, IconTrendingUp } from "@tabler/icons-react";
 import { Player } from "@/types";
 import { calculateTiers, getTierColor, getTierLabel } from "@/lib/tierCalculator";
-import { getPlayerImageUrl } from "@/lib/playerImageService";
+import PlayerImageService from "@/lib/playerImageService";
 
 interface DraftTierChartProps {
   players: Player[];
@@ -21,12 +21,45 @@ export default function DraftTierChart({
 }: DraftTierChartProps) {
   const [hoveredPlayer, setHoveredPlayer] = useState<string | null>(null);
   const [selectedTier, setSelectedTier] = useState<number | null>(null);
+  const [playerImages, setPlayerImages] = useState<Map<string, string>>(new Map());
+  const [isLoadingImages, setIsLoadingImages] = useState(false);
 
   // Calculate tiers
   const tiers = useMemo(() => {
     const maxTiers = positionFilter === "ALL" ? 12 : 8;
     return calculateTiers(players, scoringFormat, maxTiers);
   }, [players, scoringFormat, positionFilter]);
+
+  // Load player images when players change
+  useEffect(() => {
+    if (players.length === 0) {
+      setPlayerImages(new Map());
+      return;
+    }
+
+    const loadPlayerImages = async () => {
+      setIsLoadingImages(true);
+      const imageMap = new Map<string, string>();
+      
+      // Load images with error handling
+      const imagePromises = players.map(async (player) => {
+        try {
+          const imageUrl = await PlayerImageService.getPlayerImageUrl(player);
+          if (imageUrl) {
+            imageMap.set(`${player.name}-${player.team}`, imageUrl);
+          }
+        } catch (error) {
+          console.warn(`Error loading image for ${player.name}:`, error);
+        }
+      });
+
+      await Promise.all(imagePromises);
+      setPlayerImages(imageMap);
+      setIsLoadingImages(false);
+    };
+
+    loadPlayerImages();
+  }, [players]);
 
   // Position colors
   const getPositionColor = (position: string) => {
@@ -121,7 +154,7 @@ export default function DraftTierChart({
             }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                 {tier.players.map((player, playerIndex) => {
-                  const imageUrl = getPlayerImageUrl(player.name, player.team);
+                  const imageUrl = playerImages.get(`${player.name}-${player.team}`);
                   const isHovered = hoveredPlayer === player.id;
                   const overallRank = tier.minRank + playerIndex;
 
@@ -175,7 +208,11 @@ export default function DraftTierChart({
                             />
                           ) : null}
                           <div className={`${imageUrl ? 'hidden' : ''} absolute inset-0 bg-slate-700 rounded-full flex items-center justify-center`}>
-                            <IconUser size={24} className="text-slate-500" />
+                            {isLoadingImages ? (
+                              <div className="w-4 h-4 border border-slate-400 border-t-transparent rounded-full animate-spin"></div>
+                            ) : (
+                              <IconUser size={24} className="text-slate-500" />
+                            )}
                           </div>
                         </div>
 
