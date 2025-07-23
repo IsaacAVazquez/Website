@@ -64,7 +64,7 @@ positionFiles.forEach(file => {
         let foundImage = false;
         
         for (const variation of variations) {
-          if (playerImagesMapping[variation] && playerImagesMapping[variation].imagePath) {
+          if (playerImagesMapping[variation]) {
             foundImage = true;
             totalPlayersWithImages++;
             positionPlayersWithImages++;
@@ -131,10 +131,15 @@ function generateNameVariations(name, team) {
   
   for (const nameVar of baseVariations) {
     for (const teamVar of teamVariations) {
+      // Try the format used in player-images.json: "TEAM Name"
+      allVariations.push(`${teamVar} ${nameVar}`);
+      // Also try lowercase hyphenated format
       allVariations.push(`${nameVar}-${teamVar}`.toLowerCase());
     }
   }
   
+  // Add primary variation
+  allVariations.unshift(`${teamUpper} ${cleanName}`);
   allVariations.unshift(`${cleanName}-${teamUpper}`.toLowerCase());
   
   return [...new Set(allVariations)].filter(Boolean);

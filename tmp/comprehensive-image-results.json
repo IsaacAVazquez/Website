@@ -3,112 +3,78 @@
     {
       "success": true,
       "player": {
-        "name": "Jonathon Brooks",
-        "team": "CAR",
+        "name": "Alec Ingold",
+        "team": "MIA",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/26148/headshot/70x70.png",
-      "filename": "car-jonathon-brooks.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/18571/headshot/70x70.png",
+      "filename": "mia-alec-ingold.jpg",
       "source": "fantasypros",
-      "size": 12172
+      "size": 10647
     },
     {
       "success": true,
       "player": {
-        "name": "Jeremy McNichols",
-        "team": "WAS",
+        "name": "Dylan Laube",
+        "team": "LV",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/16445/headshot/70x70.png",
-      "filename": "was-jeremy-mcnichols.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/26194/headshot/70x70.png",
+      "filename": "lv-dylan-laube.jpg",
       "source": "fantasypros",
-      "size": 9385
+      "size": 10947
     },
     {
       "success": true,
       "player": {
-        "name": "Kalel Mullings",
-        "team": "TEN",
+        "name": "Rasheen Ali",
+        "team": "BAL",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/27045/headshot/70x70.png",
-      "filename": "ten-kalel-mullings.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25983/headshot/70x70.png",
+      "filename": "bal-rasheen-ali.jpg",
       "source": "fantasypros",
-      "size": 2322
+      "size": 10385
     },
     {
       "success": true,
       "player": {
-        "name": "Craig Reynolds",
-        "team": "DET",
+        "name": "Tyler Badie",
+        "team": "DEN",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/19074/headshot/70x70.png",
-      "filename": "det-craig-reynolds.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23812/headshot/70x70.png",
+      "filename": "den-tyler-badie.jpg",
       "source": "fantasypros",
-      "size": 10178
+      "size": 8904
     },
     {
       "success": true,
       "player": {
-        "name": "Clyde Edwards-Helaire",
-        "team": "NO",
+        "name": "Ezekiel Elliott",
+        "team": "FA",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/19325/headshot/70x70.png",
-      "filename": "no-clyde-edwards-helaire.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/15498/headshot/70x70.png",
+      "filename": "fa-ezekiel-elliott.jpg",
       "source": "fantasypros",
-      "size": 9895
+      "size": 11202
     },
     {
       "success": true,
       "player": {
-        "name": "Kenny McIntosh",
-        "team": "SEA",
+        "name": "Carson Steele",
+        "team": "KC",
         "position": "RB"
       },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25329/headshot/70x70.png",
-      "filename": "sea-kenny-mcintosh.jpg",
+      "imageUrl": "https://images.fantasypros.com/images/players/nfl/26372/headshot/70x70.png",
+      "filename": "kc-carson-steele.jpg",
       "source": "fantasypros",
-      "size": 12193
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Tyler Goodson",
-        "team": "IND",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/22976/headshot/70x70.png",
-      "filename": "ind-tyler-goodson.jpg",
-      "source": "fantasypros",
-      "size": 12244
-    },
-    {
-      "success": true,
-      "player": {
-        "name": "Cordarrelle Patterson",
-        "team": "PIT",
-        "position": "RB"
-      },
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/11613/headshot/70x70.png",
-      "filename": "pit-cordarrelle-patterson.jpg",
-      "source": "fantasypros",
-      "size": 11619
+      "size": 15117
     }
   ],
   "failed": [],
   "placeholders": [
-    {
-      "player": {
-        "name": "C.J. Stroud",
-        "team": "HOU",
-        "position": "QB"
-      },
-      "success": true,
-      "filename": "hou-c-j-stroud.jpg",
-      "type": "placeholder"
-    },
     {
       "player": {
         "name": "J.J. McCarthy",
@@ -317,6 +283,36 @@
       },
       "success": true,
       "filename": "fa-d.jpg",
+      "type": "placeholder"
+    },
+    {
+      "player": {
+        "name": "Pierre Strong Jr.",
+        "team": "CLE",
+        "position": "RB"
+      },
+      "success": true,
+      "filename": "cle-pierre-strong-jr.jpg",
+      "type": "placeholder"
+    },
+    {
+      "player": {
+        "name": "Patrick Taylor Jr.",
+        "team": "SF",
+        "position": "RB"
+      },
+      "success": true,
+      "filename": "sf-patrick-taylor-jr.jpg",
+      "type": "placeholder"
+    },
+    {
+      "player": {
+        "name": "C.J. Ham",
+        "team": "MIN",
+        "position": "RB"
+      },
+      "success": true,
+      "filename": "min-c-j-ham.jpg",
       "type": "placeholder"
     }
   ],

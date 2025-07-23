@@ -107,19 +107,19 @@ export function clusterByRankGaps(
   if (players.length === 0) return [];
   
   // Sort players by average rank
-  const sortedPlayers = [...players].sort((a, b) => a.averageRank - b.averageRank);
+  const sortedPlayers = [...players].sort((a, b) => Number(a.averageRank) - Number(b.averageRank));
   
   const tierGroups: TierGroup[] = [];
   let currentTier: Player[] = [sortedPlayers[0]];
   let tierNumber = 1;
   
   for (let i = 1; i < sortedPlayers.length; i++) {
-    const rankGap = sortedPlayers[i].averageRank - sortedPlayers[i - 1].averageRank;
+    const rankGap = Number(sortedPlayers[i].averageRank) - Number(sortedPlayers[i - 1].averageRank);
     
     // If gap is large enough, start a new tier
     if (rankGap > gapThreshold) {
       // Finalize current tier
-      const ranks = currentTier.map(p => p.averageRank);
+      const ranks = currentTier.map(p => Number(p.averageRank));
       tierGroups.push({
         tier: tierNumber,
         players: currentTier,
@@ -139,7 +139,7 @@ export function clusterByRankGaps(
   
   // Add the last tier
   if (currentTier.length > 0) {
-    const ranks = currentTier.map(p => p.averageRank);
+    const ranks = currentTier.map(p => Number(p.averageRank));
     tierGroups.push({
       tier: tierNumber,
       players: currentTier,

@@ -47,7 +47,7 @@ export function UpdateDataButton() {
       <MorphButton
         onClick={updateAllData}
         disabled={isUpdating}
-        variant="default"
+        variant="primary"
         size="sm"
         className="gap-2"
       >

@@ -1,0 +1,92 @@
+{
+  "successful": [
+    {
+      "player": {
+        "name": "De'Von Achane",
+        "team": "MIA",
+        "position": "RB"
+      },
+      "success": true,
+      "imageUrl": "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4362628.png&w=350&h=254",
+      "filename": "mia-de-von-achane.jpg",
+      "size": 107837
+    },
+    {
+      "player": {
+        "name": "Cameron Ward",
+        "team": "TEN",
+        "position": "QB"
+      },
+      "success": true,
+      "imageUrl": "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4362628.png&w=350&h=254",
+      "filename": "ten-cameron-ward.jpg",
+      "size": 107837
+    },
+    {
+      "player": {
+        "name": "Dillon Gabriel",
+        "team": "CLE",
+        "position": "QB"
+      },
+      "success": true,
+      "imageUrl": "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4362628.png&w=350&h=254",
+      "filename": "cle-dillon-gabriel.jpg",
+      "size": 107837
+    },
+    {
+      "player": {
+        "name": "J.J. McCarthy",
+        "team": "MIN",
+        "position": "QB"
+      },
+      "success": true,
+      "imageUrl": "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4362628.png&w=350&h=254",
+      "filename": "min-j-j-mccarthy.jpg",
+      "size": 107837
+    },
+    {
+      "player": {
+        "name": "Michael Penix Jr.",
+        "team": "ATL",
+        "position": "QB"
+      },
+      "success": true,
+      "imageUrl": "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4362628.png&w=350&h=254",
+      "filename": "atl-michael-penix-jr.jpg",
+      "size": 107837
+    }
+  ],
+  "failed": [
+    {
+      "player": {
+        "name": "Alvin Kamara",
+        "team": "NO",
+        "position": "RB"
+      },
+      "success": false,
+      "reason": "Image already exists",
+      "filename": "no-alvin-kamara.jpg"
+    },
+    {
+      "player": {
+        "name": "Christian McCaffrey",
+        "team": "SF",
+        "position": "RB"
+      },
+      "success": false,
+      "reason": "Image already exists",
+      "filename": "sf-christian-mccaffrey.jpg"
+    },
+    {
+      "player": {
+        "name": "Derrick Henry",
+        "team": "BAL",
+        "position": "RB"
+      },
+      "success": false,
+      "reason": "Image already exists",
+      "filename": "bal-derrick-henry.jpg"
+    }
+  ],
+  "total": 8
+}

@@ -13,12 +13,12 @@ export function getTierGroups(players: Player[], position: Position): TierAssign
   if (!players.length) return [];
 
   // Sort players by their average rank (lower is better)
-  const sortedPlayers = [...players].sort((a, b) => a.averageRank - b.averageRank);
+  const sortedPlayers = [...players].sort((a, b) => Number(a.averageRank) - Number(b.averageRank));
   
   // Calculate gaps between consecutive players
   const gaps: number[] = [];
   for (let i = 1; i < sortedPlayers.length; i++) {
-    gaps.push(sortedPlayers[i].averageRank - sortedPlayers[i - 1].averageRank);
+    gaps.push(Number(sortedPlayers[i].averageRank) - Number(sortedPlayers[i - 1].averageRank));
   }
   
   // Find significant gaps (larger than average gap * 1.5)
@@ -85,9 +85,9 @@ export function getTierStats(tierAssignments: TierAssignment[]) {
   const stats = Array.from(tierMap.entries()).map(([tier, players]) => ({
     tier,
     count: players.length,
-    minRank: Math.min(...players.map(p => p.averageRank)),
-    maxRank: Math.max(...players.map(p => p.averageRank)),
-    avgRank: players.reduce((sum, p) => sum + p.averageRank, 0) / players.length
+    minRank: Math.min(...players.map(p => Number(p.averageRank))),
+    maxRank: Math.max(...players.map(p => Number(p.averageRank))),
+    avgRank: players.reduce((sum, p) => sum + Number(p.averageRank), 0) / players.length
   }));
   
   return stats.sort((a, b) => a.tier - b.tier);

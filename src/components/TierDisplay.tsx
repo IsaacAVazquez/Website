@@ -36,7 +36,7 @@ export function TierDisplay({ tierGroups, position, showImages = true }: TierDis
                     className="w-4 h-4 rounded-full"
                     style={{ backgroundColor: tierGroup.color }}
                   />
-                  <Heading size="h3" className="text-slate-100">
+                  <Heading as="h3" className="text-slate-100">
                     Tier {tierGroup.tierNumber}
                   </Heading>
                 </div>
@@ -51,7 +51,7 @@ export function TierDisplay({ tierGroups, position, showImages = true }: TierDis
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {tierGroup.players.map((player, playerIndex) => (
                   <motion.div
-                    key={`${player.player_name}-${playerIndex}`}
+                    key={`${player.name}-${playerIndex}`}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: groupIndex * 0.1 + playerIndex * 0.02 }}
@@ -60,7 +60,7 @@ export function TierDisplay({ tierGroups, position, showImages = true }: TierDis
                     {/* Rank */}
                     <div className="flex-shrink-0 w-12 text-center">
                       <span className="text-2xl font-bold text-electric-blue">
-                        {Math.round(player.rank_ecr)}
+                        {Math.round(Number(player.averageRank))}
                       </span>
                     </div>
 
@@ -68,10 +68,10 @@ export function TierDisplay({ tierGroups, position, showImages = true }: TierDis
                     {showImages && (
                       <div className="flex-shrink-0">
                         <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-terminal-border">
-                          {getPlayerImageUrl(player.player_name, player.player_team_id) ? (
+                          {getPlayerImageUrl(player.name || '', player.team) ? (
                             <ThumbnailImage
-                              src={getPlayerImageUrl(player.player_name, player.player_team_id) || ''}
-                              alt={player.player_name}
+                              src={getPlayerImageUrl(player.name || '', player.team) || ''}
+                              alt={player.name || 'Player'}
                               width={48}
                               height={48}
                               className="rounded-full"
@@ -82,7 +82,7 @@ export function TierDisplay({ tierGroups, position, showImages = true }: TierDis
                               className="w-full h-full flex items-center justify-center text-xs font-bold"
                               style={{ backgroundColor: tierGroup.color }}
                             >
-                              {player.player_name.split(' ').map(n => n[0]).join('')}
+                              {(player.name || 'XX').split(' ').map((n: string) => n[0]).join('')}
                             </div>
                           )}
                         </div>
@@ -92,17 +92,17 @@ export function TierDisplay({ tierGroups, position, showImages = true }: TierDis
                     {/* Player Info */}
                     <div className="flex-1 min-w-0">
                       <div className="font-medium text-slate-100 truncate">
-                        {player.player_name}
+                        {player.name || 'Unknown Player'}
                       </div>
                       <div className="text-sm text-slate-400">
-                        {player.player_team_id || 'FA'} • {player.player_position_id}
+                        {player.team || 'FA'} • {player.position}
                       </div>
                     </div>
 
                     {/* Stats */}
-                    {player.rank_std && (
+                    {player.standardDeviation && (
                       <div className="flex-shrink-0 text-right">
-                        <div className="text-xs text-slate-500">±{player.rank_std.toFixed(1)}</div>
+                        <div className="text-xs text-slate-500">±{Number(player.standardDeviation).toFixed(1)}</div>
                       </div>
                     )}
                   </motion.div>

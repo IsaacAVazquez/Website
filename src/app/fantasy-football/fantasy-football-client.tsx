@@ -79,6 +79,13 @@ export default function FantasyFootballPage() {
               Fantasy Football Tier Rankings
             </h1>
             <div className="flex items-center gap-4">
+              {/* Draft Tiers Link */}
+              <Link href="/draft-tiers">
+                <MorphButton variant="secondary" size="sm" className="flex items-center gap-2">
+                  <FileText className="w-4 h-4" />
+                  Draft Tiers
+                </MorphButton>
+              </Link>
               {/* Static Tier Pages Link */}
               <Link href={`/fantasy-football/tiers/${selectedPosition.toLowerCase()}`}>
                 <MorphButton variant="secondary" size="sm" className="flex items-center gap-2">

@@ -1,0 +1,627 @@
+{
+  "successful": [
+    {
+      "name": "Jayden Daniels",
+      "team": "WAS",
+      "position": "QB",
+      "rank": 3,
+      "primaryKey": "jayden daniels-was",
+      "variations": [
+        "jayden daniels-was",
+        "jayden daniels-wsh"
+      ],
+      "imagePath": "was-jayden-daniels.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Baker Mayfield",
+      "team": "TB",
+      "position": "QB",
+      "rank": 6,
+      "primaryKey": "baker mayfield-tb",
+      "variations": [
+        "baker mayfield-tb"
+      ],
+      "imagePath": "tb-baker-mayfield.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Patrick Mahomes II",
+      "team": "KC",
+      "position": "QB",
+      "rank": 7,
+      "primaryKey": "patrick mahomes ii-kc",
+      "variations": [
+        "patrick mahomes ii-kc"
+      ],
+      "imagePath": "kc-patrick-mahomes-ii.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Justin Fields",
+      "team": "NYJ",
+      "position": "QB",
+      "rank": 9,
+      "primaryKey": "justin fields-nyj",
+      "variations": [
+        "justin fields-nyj"
+      ],
+      "imagePath": "nyj-justin-fields.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Bo Nix",
+      "team": "DEN",
+      "position": "QB",
+      "rank": 10,
+      "primaryKey": "bo nix-den",
+      "variations": [
+        "bo nix-den"
+      ],
+      "imagePath": "den-bo-nix.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Drake Maye",
+      "team": "NE",
+      "position": "QB",
+      "rank": 12,
+      "primaryKey": "drake maye-ne",
+      "variations": [
+        "drake maye-ne"
+      ],
+      "imagePath": "ne-drake-maye.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Jared Goff",
+      "team": "DET",
+      "position": "QB",
+      "rank": 13,
+      "primaryKey": "jared goff-det",
+      "variations": [
+        "jared goff-det"
+      ],
+      "imagePath": "det-jared-goff.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "C.J. Stroud",
+      "team": "HOU",
+      "position": "QB",
+      "rank": 14,
+      "primaryKey": "c.j. stroud-hou",
+      "variations": [
+        "c.j. stroud-hou",
+        "cj stroud-hou"
+      ],
+      "imagePath": "hou-c-j-stroud.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Matthew Stafford",
+      "team": "LAR",
+      "position": "QB",
+      "rank": 16,
+      "primaryKey": "matthew stafford-lar",
+      "variations": [
+        "matthew stafford-lar"
+      ],
+      "imagePath": "lar-matthew-stafford.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Trevor Lawrence",
+      "team": "JAC",
+      "position": "QB",
+      "rank": 17,
+      "primaryKey": "trevor lawrence-jac",
+      "variations": [
+        "trevor lawrence-jac",
+        "trevor lawrence-jax",
+        "treor lawrence-jac"
+      ],
+      "imagePath": "jac-trevor-lawrence.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Caleb Williams",
+      "team": "CHI",
+      "position": "QB",
+      "rank": 18,
+      "primaryKey": "caleb williams-chi",
+      "variations": [
+        "caleb williams-chi"
+      ],
+      "imagePath": "chi-caleb-williams.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Jordan Love",
+      "team": "GB",
+      "position": "QB",
+      "rank": 19,
+      "primaryKey": "jordan love-gb",
+      "variations": [
+        "jordan love-gb",
+        "jordan loe-gb"
+      ],
+      "imagePath": "gb-jordan-love.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Anthony Richardson Sr.",
+      "team": "IND",
+      "position": "QB",
+      "rank": 20,
+      "primaryKey": "anthony richardson sr.-ind",
+      "variations": [
+        "anthony richardson sr.-ind",
+        "anthony richardson sr-ind",
+        "anthony richardson-ind"
+      ],
+      "imagePath": "ind-anthony-richardson-sr.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Bijan Robinson",
+      "team": "ATL",
+      "position": "RB",
+      "rank": 3,
+      "primaryKey": "bijan robinson-atl",
+      "variations": [
+        "bijan robinson-atl"
+      ],
+      "imagePath": "atl-bijan-robinson.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Jahmyr Gibbs",
+      "team": "DET",
+      "position": "RB",
+      "rank": 4,
+      "primaryKey": "jahmyr gibbs-det",
+      "variations": [
+        "jahmyr gibbs-det"
+      ],
+      "imagePath": "det-jahmyr-gibbs.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Ashton Jeanty",
+      "team": "LV",
+      "position": "RB",
+      "rank": 6,
+      "primaryKey": "ashton jeanty-lv",
+      "variations": [
+        "ashton jeanty-lv"
+      ],
+      "imagePath": "lv-ashton-jeanty.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Bucky Irving",
+      "team": "TB",
+      "position": "RB",
+      "rank": 8,
+      "primaryKey": "bucky irving-tb",
+      "variations": [
+        "bucky irving-tb",
+        "bucky iring-tb"
+      ],
+      "imagePath": "tb-bucky-irving.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Kyren Williams",
+      "team": "LAR",
+      "position": "RB",
+      "rank": 10,
+      "primaryKey": "kyren williams-lar",
+      "variations": [
+        "kyren williams-lar"
+      ],
+      "imagePath": "lar-kyren-williams.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "James Cook",
+      "team": "BUF",
+      "position": "RB",
+      "rank": 12,
+      "primaryKey": "james cook-buf",
+      "variations": [
+        "james cook-buf"
+      ],
+      "imagePath": "buf-james-cook.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Chase Brown",
+      "team": "CIN",
+      "position": "RB",
+      "rank": 14,
+      "primaryKey": "chase brown-cin",
+      "variations": [
+        "chase brown-cin"
+      ],
+      "imagePath": "cin-chase-brown.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Chuba Hubbard",
+      "team": "CAR",
+      "position": "RB",
+      "rank": 16,
+      "primaryKey": "chuba hubbard-car",
+      "variations": [
+        "chuba hubbard-car"
+      ],
+      "imagePath": "car-chuba-hubbard.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "James Conner",
+      "team": "ARI",
+      "position": "RB",
+      "rank": 18,
+      "primaryKey": "james conner-ari",
+      "variations": [
+        "james conner-ari"
+      ],
+      "imagePath": "ari-james-conner.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "David Montgomery",
+      "team": "DET",
+      "position": "RB",
+      "rank": 20,
+      "primaryKey": "david montgomery-det",
+      "variations": [
+        "david montgomery-det",
+        "daid montgomery-det"
+      ],
+      "imagePath": "det-david-montgomery.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Puka Nacua",
+      "team": "LAR",
+      "position": "WR",
+      "rank": 4,
+      "primaryKey": "puka nacua-lar",
+      "variations": [
+        "puka nacua-lar"
+      ],
+      "imagePath": "lar-puka-nacua.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Brian Thomas Jr.",
+      "team": "JAC",
+      "position": "WR",
+      "rank": 5,
+      "primaryKey": "brian thomas jr.-jac",
+      "variations": [
+        "brian thomas jr.-jac",
+        "brian thomas jr.-jax",
+        "brian thomas jr-jac"
+      ],
+      "imagePath": "jac-brian-thomas-jr.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Nico Collins",
+      "team": "HOU",
+      "position": "WR",
+      "rank": 7,
+      "primaryKey": "nico collins-hou",
+      "variations": [
+        "nico collins-hou"
+      ],
+      "imagePath": "hou-nico-collins.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Malik Nabers",
+      "team": "NYG",
+      "position": "WR",
+      "rank": 8,
+      "primaryKey": "malik nabers-nyg",
+      "variations": [
+        "malik nabers-nyg"
+      ],
+      "imagePath": "nyg-malik-nabers.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Terry McLaurin",
+      "team": "WAS",
+      "position": "WR",
+      "rank": 12,
+      "primaryKey": "terry mclaurin-was",
+      "variations": [
+        "terry mclaurin-was",
+        "terry mclaurin-wsh"
+      ],
+      "imagePath": "was-terry-mclaurin.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Ladd McConkey",
+      "team": "LAC",
+      "position": "WR",
+      "rank": 13,
+      "primaryKey": "ladd mcconkey-lac",
+      "variations": [
+        "ladd mcconkey-lac"
+      ],
+      "imagePath": "lac-ladd-mcconkey.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Davante Adams",
+      "team": "LAR",
+      "position": "WR",
+      "rank": 14,
+      "primaryKey": "davante adams-lar",
+      "variations": [
+        "davante adams-lar",
+        "daante adams-lar"
+      ],
+      "imagePath": "lar-davante-adams.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Tee Higgins",
+      "team": "CIN",
+      "position": "WR",
+      "rank": 15,
+      "primaryKey": "tee higgins-cin",
+      "variations": [
+        "tee higgins-cin"
+      ],
+      "imagePath": "cin-tee-higgins.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Marvin Harrison Jr.",
+      "team": "ARI",
+      "position": "WR",
+      "rank": 17,
+      "primaryKey": "marvin harrison jr.-ari",
+      "variations": [
+        "marvin harrison jr.-ari",
+        "marvin harrison jr-ari",
+        "marin harrison-ari"
+      ],
+      "imagePath": "ari-marvin-harrison-jr.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Jaxon Smith-Njigba",
+      "team": "SEA",
+      "position": "WR",
+      "rank": 18,
+      "primaryKey": "jaxon smith-njigba-sea",
+      "variations": [
+        "jaxon smith-njigba-sea"
+      ],
+      "imagePath": "sea-jaxon-smith-njigba.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Xavier Worthy",
+      "team": "KC",
+      "position": "WR",
+      "rank": 19,
+      "primaryKey": "xavier worthy-kc",
+      "variations": [
+        "xavier worthy-kc",
+        "xaier worthy-kc"
+      ],
+      "imagePath": "kc-xavier-worthy.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Garrett Wilson",
+      "team": "NYJ",
+      "position": "WR",
+      "rank": 20,
+      "primaryKey": "garrett wilson-nyj",
+      "variations": [
+        "garrett wilson-nyj"
+      ],
+      "imagePath": "nyj-garrett-wilson.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Brock Bowers",
+      "team": "LV",
+      "position": "TE",
+      "rank": 2,
+      "primaryKey": "brock bowers-lv",
+      "variations": [
+        "brock bowers-lv"
+      ],
+      "imagePath": "lv-brock-bowers.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Sam LaPorta",
+      "team": "DET",
+      "position": "TE",
+      "rank": 4,
+      "primaryKey": "sam laporta-det",
+      "variations": [
+        "sam laporta-det"
+      ],
+      "imagePath": "det-sam-laporta.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Mark Andrews",
+      "team": "BAL",
+      "position": "TE",
+      "rank": 5,
+      "primaryKey": "mark andrews-bal",
+      "variations": [
+        "mark andrews-bal"
+      ],
+      "imagePath": "bal-mark-andrews.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Evan Engram",
+      "team": "DEN",
+      "position": "TE",
+      "rank": 8,
+      "primaryKey": "evan engram-den",
+      "variations": [
+        "evan engram-den",
+        "ean engram-den"
+      ],
+      "imagePath": "den-evan-engram.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Tucker Kraft",
+      "team": "GB",
+      "position": "TE",
+      "rank": 10,
+      "primaryKey": "tucker kraft-gb",
+      "variations": [
+        "tucker kraft-gb"
+      ],
+      "imagePath": "gb-tucker-kraft.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Dallas Goedert",
+      "team": "PHI",
+      "position": "TE",
+      "rank": 11,
+      "primaryKey": "dallas goedert-phi",
+      "variations": [
+        "dallas goedert-phi"
+      ],
+      "imagePath": "phi-dallas-goedert.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Jonnu Smith",
+      "team": "PIT",
+      "position": "TE",
+      "rank": 12,
+      "primaryKey": "jonnu smith-pit",
+      "variations": [
+        "jonnu smith-pit"
+      ],
+      "imagePath": "pit-jonnu-smith.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Dalton Kincaid",
+      "team": "BUF",
+      "position": "TE",
+      "rank": 13,
+      "primaryKey": "dalton kincaid-buf",
+      "variations": [
+        "dalton kincaid-buf"
+      ],
+      "imagePath": "buf-dalton-kincaid.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Tyler Warren",
+      "team": "IND",
+      "position": "TE",
+      "rank": 15,
+      "primaryKey": "tyler warren-ind",
+      "variations": [
+        "tyler warren-ind"
+      ],
+      "imagePath": "ind-tyler-warren.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Jake Ferguson",
+      "team": "DAL",
+      "position": "TE",
+      "rank": 16,
+      "primaryKey": "jake ferguson-dal",
+      "variations": [
+        "jake ferguson-dal"
+      ],
+      "imagePath": "dal-jake-ferguson.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Zach Ertz",
+      "team": "WAS",
+      "position": "TE",
+      "rank": 17,
+      "primaryKey": "zach ertz-was",
+      "variations": [
+        "zach ertz-was",
+        "zach ertz-wsh"
+      ],
+      "imagePath": "was-zach-ertz.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Hunter Henry",
+      "team": "NE",
+      "position": "TE",
+      "rank": 18,
+      "primaryKey": "hunter henry-ne",
+      "variations": [
+        "hunter henry-ne"
+      ],
+      "imagePath": "ne-hunter-henry.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Isaiah Likely",
+      "team": "BAL",
+      "position": "TE",
+      "rank": 19,
+      "primaryKey": "isaiah likely-bal",
+      "variations": [
+        "isaiah likely-bal"
+      ],
+      "imagePath": "bal-isaiah-likely.jpg",
+      "imageUrl": "already_exists"
+    },
+    {
+      "name": "Colston Loveland",
+      "team": "CHI",
+      "position": "TE",
+      "rank": 20,
+      "primaryKey": "colston loveland-chi",
+      "variations": [
+        "colston loveland-chi",
+        "colston loeland-chi"
+      ],
+      "imagePath": "chi-colston-loveland.jpg",
+      "imageUrl": "already_exists"
+    }
+  ],
+  "failed": [
+    {
+      "name": "De'Von Achane",
+      "team": "MIA",
+      "position": "RB",
+      "rank": 11,
+      "primaryKey": "de'von achane-mia",
+      "variations": [
+        "de'von achane-mia",
+        "devon achane-mia",
+        "de'on achane-mia"
+      ],
+      "reason": "No valid image found in ESPN patterns"
+    }
+  ],
+  "total": 50
+}

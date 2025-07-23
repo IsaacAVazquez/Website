@@ -42,10 +42,10 @@ export function generateTierGroups(players: Player[], position: Position): TierG
   ];
 
   tierMap.forEach((tierPlayers, tierNumber) => {
-    const ranks = tierPlayers.map(p => p.rank_ecr);
+    const ranks = tierPlayers.map(p => Number(p.averageRank));
     tierGroups.push({
       tierNumber,
-      players: tierPlayers.sort((a, b) => a.rank_ecr - b.rank_ecr),
+      players: tierPlayers.sort((a, b) => Number(a.averageRank) - Number(b.averageRank)),
       color: tierColors[tierNumber - 1] || '#666666',
       minRank: Math.min(...ranks),
       maxRank: Math.max(...ranks),
@@ -58,9 +58,9 @@ export function generateTierGroups(players: Player[], position: Position): TierG
 
 export function formatTierGroupForDisplay(tierGroup: TierGroup, includeTeam: boolean = true): string[] {
   return tierGroup.players.map(player => {
-    const name = player.player_name;
-    const team = includeTeam && player.player_team_id ? ` (${player.player_team_id})` : '';
-    const rank = `#${Math.round(player.rank_ecr)}`;
+    const name = player.name;
+    const team = includeTeam && player.team ? ` (${player.team})` : '';
+    const rank = `#${Math.round(Number(player.averageRank))}`;
     return `${rank} ${name}${team}`;
   });
 }

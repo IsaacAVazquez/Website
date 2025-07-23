@@ -61,7 +61,7 @@ export function TestFlexImplementation() {
       <MorphButton
         onClick={testFlex}
         disabled={isLoading}
-        variant="default"
+        variant="primary"
         size="sm"
         className="gap-2"
       >
@@ -78,7 +78,7 @@ export function TestFlexImplementation() {
                 <p>Total Players: {results.totalPlayers}</p>
                 <p className="mt-2">Position Breakdown:</p>
                 <ul className="ml-4 text-xs">
-                  {Object.entries(results.positionBreakdown).map(([pos, count]) => (
+                  {Object.entries(results.positionBreakdown as Record<string, number>).map(([pos, count]) => (
                     <li key={pos}>• {pos}: {count} players</li>
                   ))}
                 </ul>

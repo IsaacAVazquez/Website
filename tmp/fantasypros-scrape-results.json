@@ -1,420 +1,6 @@
 {
-  "successful": [
-    {
-      "name": "Chase Brown",
-      "team": "CIN",
-      "position": "RB",
-      "rank": 14,
-      "primaryKey": "chase brown-cin",
-      "variations": [
-        "chase brown-cin"
-      ],
-      "imagePath": "cin-chase-brown.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25324/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Chuba Hubbard",
-      "team": "CAR",
-      "position": "RB",
-      "rank": 16,
-      "primaryKey": "chuba hubbard-car",
-      "variations": [
-        "chuba hubbard-car"
-      ],
-      "imagePath": "car-chuba-hubbard.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/19792/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "James Conner",
-      "team": "ARI",
-      "position": "RB",
-      "rank": 18,
-      "primaryKey": "james conner-ari",
-      "variations": [
-        "james conner-ari"
-      ],
-      "imagePath": "ari-james-conner.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/16447/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "David Montgomery",
-      "team": "DET",
-      "position": "RB",
-      "rank": 20,
-      "primaryKey": "david montgomery-det",
-      "variations": [
-        "david montgomery-det",
-        "daid montgomery-det"
-      ],
-      "imagePath": "det-david-montgomery.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/18239/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Puka Nacua",
-      "team": "LAR",
-      "position": "WR",
-      "rank": 4,
-      "primaryKey": "puka nacua-lar",
-      "variations": [
-        "puka nacua-lar"
-      ],
-      "imagePath": "lar-puka-nacua.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23180/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Brian Thomas Jr.",
-      "team": "JAC",
-      "position": "WR",
-      "rank": 5,
-      "primaryKey": "brian thomas jr.-jac",
-      "variations": [
-        "brian thomas jr.-jac",
-        "brian thomas jr.-jax",
-        "brian thomas jr-jac"
-      ],
-      "imagePath": "jac-brian-thomas-jr.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23000/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Nico Collins",
-      "team": "HOU",
-      "position": "WR",
-      "rank": 7,
-      "primaryKey": "nico collins-hou",
-      "variations": [
-        "nico collins-hou"
-      ],
-      "imagePath": "hou-nico-collins.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/20130/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Malik Nabers",
-      "team": "NYG",
-      "position": "WR",
-      "rank": 8,
-      "primaryKey": "malik nabers-nyg",
-      "variations": [
-        "malik nabers-nyg"
-      ],
-      "imagePath": "nyg-malik-nabers.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25409/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Terry McLaurin",
-      "team": "WAS",
-      "position": "WR",
-      "rank": 12,
-      "primaryKey": "terry mclaurin-was",
-      "variations": [
-        "terry mclaurin-was",
-        "terry mclaurin-wsh"
-      ],
-      "imagePath": "was-terry-mclaurin.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/18466/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Ladd McConkey",
-      "team": "LAC",
-      "position": "WR",
-      "rank": 13,
-      "primaryKey": "ladd mcconkey-lac",
-      "variations": [
-        "ladd mcconkey-lac"
-      ],
-      "imagePath": "lac-ladd-mcconkey.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/26122/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Davante Adams",
-      "team": "LAR",
-      "position": "WR",
-      "rank": 14,
-      "primaryKey": "davante adams-lar",
-      "variations": [
-        "davante adams-lar",
-        "daante adams-lar"
-      ],
-      "imagePath": "lar-davante-adams.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/12123/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Tee Higgins",
-      "team": "CIN",
-      "position": "WR",
-      "rank": 15,
-      "primaryKey": "tee higgins-cin",
-      "variations": [
-        "tee higgins-cin"
-      ],
-      "imagePath": "cin-tee-higgins.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/19211/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Marvin Harrison Jr.",
-      "team": "ARI",
-      "position": "WR",
-      "rank": 17,
-      "primaryKey": "marvin harrison jr.-ari",
-      "variations": [
-        "marvin harrison jr.-ari",
-        "marvin harrison jr-ari",
-        "marin harrison-ari"
-      ],
-      "imagePath": "ari-marvin-harrison-jr.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23064/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Jaxon Smith-Njigba",
-      "team": "SEA",
-      "position": "WR",
-      "rank": 18,
-      "primaryKey": "jaxon smith-njigba-sea",
-      "variations": [
-        "jaxon smith-njigba-sea"
-      ],
-      "imagePath": "sea-jaxon-smith-njigba.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23070/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Xavier Worthy",
-      "team": "KC",
-      "position": "WR",
-      "rank": 19,
-      "primaryKey": "xavier worthy-kc",
-      "variations": [
-        "xavier worthy-kc",
-        "xaier worthy-kc"
-      ],
-      "imagePath": "kc-xavier-worthy.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23019/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Garrett Wilson",
-      "team": "NYJ",
-      "position": "WR",
-      "rank": 20,
-      "primaryKey": "garrett wilson-nyj",
-      "variations": [
-        "garrett wilson-nyj"
-      ],
-      "imagePath": "nyj-garrett-wilson.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23072/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Brock Bowers",
-      "team": "LV",
-      "position": "TE",
-      "rank": 2,
-      "primaryKey": "brock bowers-lv",
-      "variations": [
-        "brock bowers-lv"
-      ],
-      "imagePath": "lv-brock-bowers.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/22955/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Sam LaPorta",
-      "team": "DET",
-      "position": "TE",
-      "rank": 4,
-      "primaryKey": "sam laporta-det",
-      "variations": [
-        "sam laporta-det"
-      ],
-      "imagePath": "det-sam-laporta.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/22978/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Mark Andrews",
-      "team": "BAL",
-      "position": "TE",
-      "rank": 5,
-      "primaryKey": "mark andrews-bal",
-      "variations": [
-        "mark andrews-bal"
-      ],
-      "imagePath": "bal-mark-andrews.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/17269/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Evan Engram",
-      "team": "DEN",
-      "position": "TE",
-      "rank": 8,
-      "primaryKey": "evan engram-den",
-      "variations": [
-        "evan engram-den",
-        "ean engram-den"
-      ],
-      "imagePath": "den-evan-engram.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/16411/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Tucker Kraft",
-      "team": "GB",
-      "position": "TE",
-      "rank": 10,
-      "primaryKey": "tucker kraft-gb",
-      "variations": [
-        "tucker kraft-gb"
-      ],
-      "imagePath": "gb-tucker-kraft.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25298/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Dallas Goedert",
-      "team": "PHI",
-      "position": "TE",
-      "rank": 11,
-      "primaryKey": "dallas goedert-phi",
-      "variations": [
-        "dallas goedert-phi"
-      ],
-      "imagePath": "phi-dallas-goedert.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/17270/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Jonnu Smith",
-      "team": "PIT",
-      "position": "TE",
-      "rank": 12,
-      "primaryKey": "jonnu smith-pit",
-      "variations": [
-        "jonnu smith-pit"
-      ],
-      "imagePath": "pit-jonnu-smith.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/16460/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Dalton Kincaid",
-      "team": "BUF",
-      "position": "TE",
-      "rank": 13,
-      "primaryKey": "dalton kincaid-buf",
-      "variations": [
-        "dalton kincaid-buf"
-      ],
-      "imagePath": "buf-dalton-kincaid.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/25247/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Tyler Warren",
-      "team": "IND",
-      "position": "TE",
-      "rank": 15,
-      "primaryKey": "tyler warren-ind",
-      "variations": [
-        "tyler warren-ind"
-      ],
-      "imagePath": "ind-tyler-warren.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/26434/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Jake Ferguson",
-      "team": "DAL",
-      "position": "TE",
-      "rank": 16,
-      "primaryKey": "jake ferguson-dal",
-      "variations": [
-        "jake ferguson-dal"
-      ],
-      "imagePath": "dal-jake-ferguson.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/22718/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Zach Ertz",
-      "team": "WAS",
-      "position": "TE",
-      "rank": 17,
-      "primaryKey": "zach ertz-was",
-      "variations": [
-        "zach ertz-was",
-        "zach ertz-wsh"
-      ],
-      "imagePath": "was-zach-ertz.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/11689/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Hunter Henry",
-      "team": "NE",
-      "position": "TE",
-      "rank": 18,
-      "primaryKey": "hunter henry-ne",
-      "variations": [
-        "hunter henry-ne"
-      ],
-      "imagePath": "ne-hunter-henry.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/15561/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Isaiah Likely",
-      "team": "BAL",
-      "position": "TE",
-      "rank": 19,
-      "primaryKey": "isaiah likely-bal",
-      "variations": [
-        "isaiah likely-bal"
-      ],
-      "imagePath": "bal-isaiah-likely.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/23781/headshot/70x70.png",
-      "source": "fantasypros"
-    },
-    {
-      "name": "Colston Loveland",
-      "team": "CHI",
-      "position": "TE",
-      "rank": 20,
-      "primaryKey": "colston loveland-chi",
-      "variations": [
-        "colston loveland-chi",
-        "colston loeland-chi"
-      ],
-      "imagePath": "chi-colston-loveland.jpg",
-      "imageUrl": "https://images.fantasypros.com/images/players/nfl/26006/headshot/70x70.png",
-      "source": "fantasypros"
-    }
-  ],
+  "successful": [],
   "failed": [
-    {
-      "name": "C.J. Stroud",
-      "team": "HOU",
-      "position": "QB",
-      "rank": 14,
-      "primaryKey": "c.j. stroud-hou",
-      "variations": [
-        "c.j. stroud-hou",
-        "cj stroud-hou"
-      ],
-      "reason": "No valid image found on FantasyPros"
-    },
     {
       "name": "De'Von Achane",
       "team": "MIA",
@@ -513,6 +99,19 @@
         "jared goff-det"
       ],
       "imagePath": "det-jared-goff.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "C.J. Stroud",
+      "team": "HOU",
+      "position": "QB",
+      "rank": 14,
+      "primaryKey": "c.j. stroud-hou",
+      "variations": [
+        "c.j. stroud-hou",
+        "cj stroud-hou"
+      ],
+      "imagePath": "hou-c-j-stroud.jpg",
       "reason": "Already exists"
     },
     {
@@ -651,6 +250,377 @@
         "james cook-buf"
       ],
       "imagePath": "buf-james-cook.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Chase Brown",
+      "team": "CIN",
+      "position": "RB",
+      "rank": 14,
+      "primaryKey": "chase brown-cin",
+      "variations": [
+        "chase brown-cin"
+      ],
+      "imagePath": "cin-chase-brown.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Chuba Hubbard",
+      "team": "CAR",
+      "position": "RB",
+      "rank": 16,
+      "primaryKey": "chuba hubbard-car",
+      "variations": [
+        "chuba hubbard-car"
+      ],
+      "imagePath": "car-chuba-hubbard.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "James Conner",
+      "team": "ARI",
+      "position": "RB",
+      "rank": 18,
+      "primaryKey": "james conner-ari",
+      "variations": [
+        "james conner-ari"
+      ],
+      "imagePath": "ari-james-conner.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "David Montgomery",
+      "team": "DET",
+      "position": "RB",
+      "rank": 20,
+      "primaryKey": "david montgomery-det",
+      "variations": [
+        "david montgomery-det",
+        "daid montgomery-det"
+      ],
+      "imagePath": "det-david-montgomery.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Puka Nacua",
+      "team": "LAR",
+      "position": "WR",
+      "rank": 4,
+      "primaryKey": "puka nacua-lar",
+      "variations": [
+        "puka nacua-lar"
+      ],
+      "imagePath": "lar-puka-nacua.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Brian Thomas Jr.",
+      "team": "JAC",
+      "position": "WR",
+      "rank": 5,
+      "primaryKey": "brian thomas jr.-jac",
+      "variations": [
+        "brian thomas jr.-jac",
+        "brian thomas jr.-jax",
+        "brian thomas jr-jac"
+      ],
+      "imagePath": "jac-brian-thomas-jr.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Nico Collins",
+      "team": "HOU",
+      "position": "WR",
+      "rank": 7,
+      "primaryKey": "nico collins-hou",
+      "variations": [
+        "nico collins-hou"
+      ],
+      "imagePath": "hou-nico-collins.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Malik Nabers",
+      "team": "NYG",
+      "position": "WR",
+      "rank": 8,
+      "primaryKey": "malik nabers-nyg",
+      "variations": [
+        "malik nabers-nyg"
+      ],
+      "imagePath": "nyg-malik-nabers.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Terry McLaurin",
+      "team": "WAS",
+      "position": "WR",
+      "rank": 12,
+      "primaryKey": "terry mclaurin-was",
+      "variations": [
+        "terry mclaurin-was",
+        "terry mclaurin-wsh"
+      ],
+      "imagePath": "was-terry-mclaurin.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Ladd McConkey",
+      "team": "LAC",
+      "position": "WR",
+      "rank": 13,
+      "primaryKey": "ladd mcconkey-lac",
+      "variations": [
+        "ladd mcconkey-lac"
+      ],
+      "imagePath": "lac-ladd-mcconkey.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Davante Adams",
+      "team": "LAR",
+      "position": "WR",
+      "rank": 14,
+      "primaryKey": "davante adams-lar",
+      "variations": [
+        "davante adams-lar",
+        "daante adams-lar"
+      ],
+      "imagePath": "lar-davante-adams.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Tee Higgins",
+      "team": "CIN",
+      "position": "WR",
+      "rank": 15,
+      "primaryKey": "tee higgins-cin",
+      "variations": [
+        "tee higgins-cin"
+      ],
+      "imagePath": "cin-tee-higgins.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Marvin Harrison Jr.",
+      "team": "ARI",
+      "position": "WR",
+      "rank": 17,
+      "primaryKey": "marvin harrison jr.-ari",
+      "variations": [
+        "marvin harrison jr.-ari",
+        "marvin harrison jr-ari",
+        "marin harrison-ari"
+      ],
+      "imagePath": "ari-marvin-harrison-jr.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Jaxon Smith-Njigba",
+      "team": "SEA",
+      "position": "WR",
+      "rank": 18,
+      "primaryKey": "jaxon smith-njigba-sea",
+      "variations": [
+        "jaxon smith-njigba-sea"
+      ],
+      "imagePath": "sea-jaxon-smith-njigba.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Xavier Worthy",
+      "team": "KC",
+      "position": "WR",
+      "rank": 19,
+      "primaryKey": "xavier worthy-kc",
+      "variations": [
+        "xavier worthy-kc",
+        "xaier worthy-kc"
+      ],
+      "imagePath": "kc-xavier-worthy.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Garrett Wilson",
+      "team": "NYJ",
+      "position": "WR",
+      "rank": 20,
+      "primaryKey": "garrett wilson-nyj",
+      "variations": [
+        "garrett wilson-nyj"
+      ],
+      "imagePath": "nyj-garrett-wilson.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Brock Bowers",
+      "team": "LV",
+      "position": "TE",
+      "rank": 2,
+      "primaryKey": "brock bowers-lv",
+      "variations": [
+        "brock bowers-lv"
+      ],
+      "imagePath": "lv-brock-bowers.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Sam LaPorta",
+      "team": "DET",
+      "position": "TE",
+      "rank": 4,
+      "primaryKey": "sam laporta-det",
+      "variations": [
+        "sam laporta-det"
+      ],
+      "imagePath": "det-sam-laporta.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Mark Andrews",
+      "team": "BAL",
+      "position": "TE",
+      "rank": 5,
+      "primaryKey": "mark andrews-bal",
+      "variations": [
+        "mark andrews-bal"
+      ],
+      "imagePath": "bal-mark-andrews.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Evan Engram",
+      "team": "DEN",
+      "position": "TE",
+      "rank": 8,
+      "primaryKey": "evan engram-den",
+      "variations": [
+        "evan engram-den",
+        "ean engram-den"
+      ],
+      "imagePath": "den-evan-engram.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Tucker Kraft",
+      "team": "GB",
+      "position": "TE",
+      "rank": 10,
+      "primaryKey": "tucker kraft-gb",
+      "variations": [
+        "tucker kraft-gb"
+      ],
+      "imagePath": "gb-tucker-kraft.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Dallas Goedert",
+      "team": "PHI",
+      "position": "TE",
+      "rank": 11,
+      "primaryKey": "dallas goedert-phi",
+      "variations": [
+        "dallas goedert-phi"
+      ],
+      "imagePath": "phi-dallas-goedert.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Jonnu Smith",
+      "team": "PIT",
+      "position": "TE",
+      "rank": 12,
+      "primaryKey": "jonnu smith-pit",
+      "variations": [
+        "jonnu smith-pit"
+      ],
+      "imagePath": "pit-jonnu-smith.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Dalton Kincaid",
+      "team": "BUF",
+      "position": "TE",
+      "rank": 13,
+      "primaryKey": "dalton kincaid-buf",
+      "variations": [
+        "dalton kincaid-buf"
+      ],
+      "imagePath": "buf-dalton-kincaid.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Tyler Warren",
+      "team": "IND",
+      "position": "TE",
+      "rank": 15,
+      "primaryKey": "tyler warren-ind",
+      "variations": [
+        "tyler warren-ind"
+      ],
+      "imagePath": "ind-tyler-warren.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Jake Ferguson",
+      "team": "DAL",
+      "position": "TE",
+      "rank": 16,
+      "primaryKey": "jake ferguson-dal",
+      "variations": [
+        "jake ferguson-dal"
+      ],
+      "imagePath": "dal-jake-ferguson.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Zach Ertz",
+      "team": "WAS",
+      "position": "TE",
+      "rank": 17,
+      "primaryKey": "zach ertz-was",
+      "variations": [
+        "zach ertz-was",
+        "zach ertz-wsh"
+      ],
+      "imagePath": "was-zach-ertz.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Hunter Henry",
+      "team": "NE",
+      "position": "TE",
+      "rank": 18,
+      "primaryKey": "hunter henry-ne",
+      "variations": [
+        "hunter henry-ne"
+      ],
+      "imagePath": "ne-hunter-henry.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Isaiah Likely",
+      "team": "BAL",
+      "position": "TE",
+      "rank": 19,
+      "primaryKey": "isaiah likely-bal",
+      "variations": [
+        "isaiah likely-bal"
+      ],
+      "imagePath": "bal-isaiah-likely.jpg",
+      "reason": "Already exists"
+    },
+    {
+      "name": "Colston Loveland",
+      "team": "CHI",
+      "position": "TE",
+      "rank": 20,
+      "primaryKey": "colston loveland-chi",
+      "variations": [
+        "colston loveland-chi",
+        "colston loeland-chi"
+      ],
+      "imagePath": "chi-colston-loveland.jpg",
       "reason": "Already exists"
     }
   ],

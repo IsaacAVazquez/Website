@@ -76,13 +76,7 @@ export default function TierChartEnhanced({
     // Preload images with error handling and validation
     const imagePromises = playersToLoad.map(async (player) => {
       try {
-        let imageUrl = await PlayerImageService.getPlayerImageUrl(player);
-        
-        // Fallback to synchronous method if async fails
-        if (!imageUrl) {
-          const { getPlayerImageUrl } = await import('@/lib/playerImageService');
-          imageUrl = getPlayerImageUrl(player.name, player.team);
-        }
+        const imageUrl = await PlayerImageService.getPlayerImageUrl(player);
         
         if (imageUrl) {
           // Validate image exists and is loadable
@@ -202,7 +196,7 @@ export default function TierChartEnhanced({
       .attr('transform', `translate(0,${innerHeight})`)
       .call(d3.axisBottom(xScale)
         .ticks(tickCount)
-        .tickFormat(d => Math.round(d).toString())
+        .tickFormat(d => Math.round(Number(d)).toString())
       )
       .style('color', 'white');
     

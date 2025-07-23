@@ -97,8 +97,8 @@ export class PerformanceMonitor {
         console.log(`  Connection: ${nav.connectEnd - nav.connectStart}ms`);
         console.log(`  Request: ${nav.responseStart - nav.requestStart}ms`);
         console.log(`  Response: ${nav.responseEnd - nav.responseStart}ms`);
-        console.log(`  DOM Load: ${nav.domContentLoadedEventEnd - nav.navigationStart}ms`);
-        console.log(`  Page Load: ${nav.loadEventEnd - nav.navigationStart}ms`);
+        console.log(`  DOM Load: ${nav.domContentLoadedEventEnd - nav.startTime}ms`);
+        console.log(`  Page Load: ${nav.loadEventEnd - nav.startTime}ms`);
       }
 
       console.log('⚡ Web Vitals:');

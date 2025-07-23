@@ -57,7 +57,7 @@ export default function TierChart({
 
     // Create scales
     const xScale = d3.scaleLinear()
-      .domain([0, d3.max(players, d => d.averageRank) || 30])
+      .domain([0, d3.max(players, d => Number(d.averageRank)) || 30])
       .range([0, innerWidth]);
 
     const yScale = d3.scaleLinear()
@@ -120,7 +120,7 @@ export default function TierChart({
         
         // Player dot
         g.append('circle')
-          .attr('cx', xScale(player.averageRank))
+          .attr('cx', xScale(Number(player.averageRank)))
           .attr('cy', playerY)
           .attr('r', 6)
           .attr('fill', tier.color)
@@ -143,11 +143,11 @@ export default function TierChart({
           });
 
         // Error bars (standard deviation)
-        const errorBarWidth = xScale(player.averageRank + player.standardDeviation) - xScale(player.averageRank - player.standardDeviation);
+        const errorBarWidth = xScale(Number(player.averageRank) + Number(player.standardDeviation)) - xScale(Number(player.averageRank) - Number(player.standardDeviation));
         
         g.append('line')
-          .attr('x1', xScale(player.averageRank - player.standardDeviation))
-          .attr('x2', xScale(player.averageRank + player.standardDeviation))
+          .attr('x1', xScale(Number(player.averageRank) - Number(player.standardDeviation)))
+          .attr('x2', xScale(Number(player.averageRank) + Number(player.standardDeviation)))
           .attr('y1', playerY)
           .attr('y2', playerY)
           .attr('stroke', tier.color)
@@ -157,8 +157,8 @@ export default function TierChart({
         // Error bar caps
         [-1, 1].forEach(direction => {
           g.append('line')
-            .attr('x1', xScale(player.averageRank + direction * player.standardDeviation))
-            .attr('x2', xScale(player.averageRank + direction * player.standardDeviation))
+            .attr('x1', xScale(Number(player.averageRank) + direction * Number(player.standardDeviation)))
+            .attr('x2', xScale(Number(player.averageRank) + direction * Number(player.standardDeviation)))
             .attr('y1', playerY - 4)
             .attr('y2', playerY + 4)
             .attr('stroke', tier.color)
@@ -212,9 +212,9 @@ export default function TierChart({
           <div className="font-bold text-white">{hoveredPlayer.name}</div>
           <div className="text-gray-400">{hoveredPlayer.team} - {hoveredPlayer.position}</div>
           <div className="mt-2 space-y-1">
-            <div>Avg Rank: <span className="text-cyan-400">{hoveredPlayer.averageRank.toFixed(1)}</span></div>
+            <div>Avg Rank: <span className="text-cyan-400">{Number(hoveredPlayer.averageRank).toFixed(1)}</span></div>
             <div>Proj Points: <span className="text-green-400">{hoveredPlayer.projectedPoints}</span></div>
-            <div>Std Dev: <span className="text-yellow-400">±{hoveredPlayer.standardDeviation.toFixed(1)}</span></div>
+            <div>Std Dev: <span className="text-yellow-400">±{Number(hoveredPlayer.standardDeviation).toFixed(1)}</span></div>
           </div>
         </motion.div>
       )}

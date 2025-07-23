@@ -458,7 +458,7 @@ export class FantasyProsSession {
         console.log(`[FantasyPros] Filtered ${allPlayers.length} OVERALL players to ${flexPlayers.length} FLEX-eligible (RB/WR/TE)`);
         
         // Re-rank the filtered players
-        flexPlayers.sort((a, b) => a.averageRank - b.averageRank);
+        flexPlayers.sort((a, b) => Number(a.averageRank) - Number(b.averageRank));
         
         // Update IDs and return as FLEX
         return flexPlayers.map((player, index) => ({

@@ -3,15 +3,15 @@ export interface Player {
   name: string;
   team: string;
   position: Position;
-  averageRank: number;
+  averageRank: number | string;
   projectedPoints: number;
-  standardDeviation: number;
+  standardDeviation: number | string;
   tier?: number;
   expertRanks: number[];
   // Additional FantasyPros fields
   positionRank?: number;
-  minRank?: number;
-  maxRank?: number;
+  minRank?: number | string;
+  maxRank?: number | string;
   byeWeek?: number;
   adp?: number; // Average Draft Position
   lastUpdated?: string;

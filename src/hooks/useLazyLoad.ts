@@ -117,7 +117,7 @@ export function usePreloadImages(imageUrls: string[]) {
         .filter((result): result is PromiseFulfilledResult<string> => result.status === 'fulfilled')
         .map(result => result.value);
 
-      setLoadedImages(prev => new Set([...prev, ...successfulUrls]));
+      setLoadedImages(prev => new Set([...Array.from(prev), ...successfulUrls]));
     });
   }, [isIntersecting, imageUrls, loadedImages]);
 

@@ -23,7 +23,7 @@ export class GaussianMixtureModel {
 
   // Fit the GMM to the player ranks
   fit(players: Player[]): void {
-    const ranks = players.map(p => p.averageRank);
+    const ranks = players.map(p => Number(p.averageRank));
     
     // Initialize components with k-means++ style initialization
     this.initializeComponents(ranks);
@@ -48,7 +48,7 @@ export class GaussianMixtureModel {
 
   // Predict tier assignments for players
   predict(players: Player[]): TierGroup[] {
-    const ranks = players.map(p => p.averageRank);
+    const ranks = players.map(p => Number(p.averageRank));
     const responsibilities = this.expectationStep(ranks);
     
     // Assign each player to the component with highest responsibility
@@ -95,10 +95,10 @@ export class GaussianMixtureModel {
     Array.from(tierGroups.entries())
       .sort(([a], [b]) => a - b)
       .forEach(([tier, players]) => {
-        const ranks = players.map(p => p.averageRank);
+        const ranks = players.map(p => Number(p.averageRank));
         tiers.push({
           tier,
-          players: players.sort((a, b) => a.averageRank - b.averageRank),
+          players: players.sort((a, b) => Number(a.averageRank) - Number(b.averageRank)),
           color: colors[tier - 1] || '#6B7280',
           minRank: Math.min(...ranks),
           maxRank: Math.max(...ranks),
