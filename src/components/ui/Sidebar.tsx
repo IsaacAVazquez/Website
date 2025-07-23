@@ -113,7 +113,7 @@ export function Sidebar({ isOpen = true, onToggle }: SidebarProps) {
                 </div>
 
                 {/* Navigation */}
-                <nav className="flex-1">
+                <nav className="flex-1 min-h-0">
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -148,53 +148,56 @@ export function Sidebar({ isOpen = true, onToggle }: SidebarProps) {
                   </motion.div>
                 </nav>
 
-                {/* Social Links */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="border-t border-slate-700 pt-6"
-                >
-                  <h3 className="text-slate-500 text-xs uppercase tracking-wider font-mono mb-4">
-                    Connect
-                  </h3>
-                  <div className="space-y-2">
-                    {socialLinks.map((link, index) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        target={link.external ? "_blank" : undefined}
-                        rel={link.external ? "noopener noreferrer" : undefined}
-                        className="flex items-center text-slate-400 hover:text-electric-blue transition-colors text-sm font-mono"
-                      >
-                        <motion.div
-                          whileHover={{ x: 2 }}
-                          className="flex items-center gap-2"
+                {/* Bottom Section - Social Links + Footer */}
+                <div className="flex-shrink-0 mt-auto">
+                  {/* Social Links */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="border-t border-slate-700 pt-6"
+                  >
+                    <h3 className="text-slate-500 text-xs uppercase tracking-wider font-mono mb-4">
+                      Connect
+                    </h3>
+                    <div className="space-y-2">
+                      {socialLinks.map((link, index) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          target={link.external ? "_blank" : undefined}
+                          rel={link.external ? "noopener noreferrer" : undefined}
+                          className="flex items-center text-slate-400 hover:text-electric-blue transition-colors text-sm font-mono"
                         >
-                          {link.label}
-                          {link.external && (
-                            <IconExternalLink className="w-3 h-3" />
-                          )}
-                        </motion.div>
-                      </Link>
-                    ))}
-                  </div>
-                </motion.div>
+                          <motion.div
+                            whileHover={{ x: 2 }}
+                            className="flex items-center gap-2"
+                          >
+                            {link.label}
+                            {link.external && (
+                              <IconExternalLink className="w-3 h-3" />
+                            )}
+                          </motion.div>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
 
-                {/* Footer */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="border-t border-slate-700 pt-4 mt-4"
-                >
-                  <p className="text-slate-500 text-xs font-mono">
-                    © 2025 Isaac Vazquez
-                  </p>
-                  <p className="text-slate-600 text-xs font-mono mt-1">
-                    Built with Next.js & TypeScript
-                  </p>
-                </motion.div>
+                  {/* Footer */}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="border-t border-slate-700 pt-4 mt-4"
+                  >
+                    <p className="text-slate-500 text-xs font-mono">
+                      © 2025 Isaac Vazquez
+                    </p>
+                    <p className="text-slate-600 text-xs font-mono mt-1">
+                      Built with Next.js & TypeScript
+                    </p>
+                  </motion.div>
+                </div>
               </div>
             </motion.aside>
           </>

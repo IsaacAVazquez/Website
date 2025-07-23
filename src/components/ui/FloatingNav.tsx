@@ -6,11 +6,13 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { navlinks } from "@/constants/navlinks";
 import { twMerge } from "tailwind-merge";
+import { useNavigation } from "@/hooks/useNavigation";
 
 export function FloatingNav() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
+  const { isMobile } = useNavigation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,20 +33,55 @@ export function FloatingNav() {
   }, [lastScrollY]);
 
   const isActive = (href: string) => pathname === href;
+  const isHomePage = pathname === '/';
+
+  // Responsive positioning based on screen size and page
+  const getNavClasses = () => {
+    if (isHomePage) {
+      // Home page: bottom center on mobile, top-right on desktop
+      return isMobile 
+        ? "fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50"
+        : "fixed top-6 right-6 z-50";
+    } else {
+      // Other pages: bottom center on mobile only
+      return "fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50";
+    }
+  };
+
+  const getInitialAnimation = () => {
+    if (isHomePage && !isMobile) {
+      return { x: 100, opacity: 0 }; // Slide in from right on desktop
+    }
+    return { y: 100, opacity: 0 }; // Slide in from bottom on mobile
+  };
+
+  const getAnimateAnimation = () => {
+    if (isHomePage && !isMobile) {
+      return { x: 0, opacity: 1 }; // Slide to position from right
+    }
+    return { y: 0, opacity: 1 }; // Slide to position from bottom
+  };
+
+  const getExitAnimation = () => {
+    if (isHomePage && !isMobile) {
+      return { x: 100, opacity: 0 }; // Slide out to right
+    }
+    return { y: 100, opacity: 0 }; // Slide out to bottom
+  };
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.nav
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
+          initial={getInitialAnimation()}
+          animate={getAnimateAnimation()}
+          exit={getExitAnimation()}
           transition={{
             type: "spring",
             stiffness: 300,
             damping: 30,
           }}
-          className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
+          className={getNavClasses()}
         >
           <div className="glass-card elevation-4 px-4 py-3 flex items-center gap-2 cursor-glow noise-texture">
             {navlinks.map((link, index) => {
@@ -117,6 +154,25 @@ export function FloatingNav() {
 export function GestureNavigation({ children }: { children: React.ReactNode }) {
   const [isDragging, setIsDragging] = useState(false);
   const [dragDirection, setDragDirection] = useState<"left" | "right" | null>(null);
+  const pathname = usePathname();
+
+  const handleNavigation = (direction: "left" | "right") => {
+    // Simple navigation logic - cycle through main pages
+    const pages = ["/", "/about", "/projects", "/resume", "/contact"];
+    const currentIndex = pages.indexOf(pathname);
+    
+    if (currentIndex === -1) return; // Not on a main page
+    
+    let nextIndex;
+    if (direction === "right") {
+      nextIndex = (currentIndex + 1) % pages.length;
+    } else {
+      nextIndex = (currentIndex - 1 + pages.length) % pages.length;
+    }
+    
+    // Use window.location for navigation to avoid import issues
+    window.location.href = pages[nextIndex];
+  };
 
   return (
     <motion.div
@@ -134,8 +190,9 @@ export function GestureNavigation({ children }: { children: React.ReactNode }) {
           const direction = info.offset.x > 0 ? "right" : "left";
           setDragDirection(direction);
           
-          // Here you could implement actual navigation logic
-          // For example, navigate to next/previous page
+          // Implement actual navigation logic
+          handleNavigation(direction);
+          
           setTimeout(() => setDragDirection(null), 300);
         }
       }}
@@ -156,7 +213,7 @@ export function GestureNavigation({ children }: { children: React.ReactNode }) {
             )}
           >
             <motion.div
-              className="text-vivid-blue"
+              className="text-electric-blue"
               animate={{ x: dragDirection === "left" ? -5 : 5 }}
               transition={{ repeat: Infinity, repeatType: "reverse", duration: 0.5 }}
             >

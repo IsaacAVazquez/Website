@@ -60,9 +60,13 @@ export function useNavigation() {
   };
   
   // Determine which navigation should be shown
-  // Exclude home page and fantasy football pages (need full width for charts)
   const isFantasyFootballPage = pathname.startsWith('/fantasy-football');
-  const showSidebar = pathname !== '/' && !isFantasyFootballPage;
+  
+  // Navigation strategy:
+  // - Home page: Always use FloatingNav (all screen sizes for immersive experience)
+  // - Fantasy pages: FloatingNav (need full width for charts)
+  // - Other pages: Sidebar on desktop, FloatingNav on mobile
+  const showSidebar = !isMobile && pathname !== '/' && !isFantasyFootballPage;
   const showFloatingNav = pathname === '/' || isMobile || isFantasyFootballPage;
   
   return {
