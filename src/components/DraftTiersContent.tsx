@@ -66,7 +66,8 @@ export default function DraftTiersContent() {
       if (positionFilter === "FLEX") {
         players = players.filter(p => ["RB", "WR", "TE"].includes(p.position));
       } else {
-        players = players.filter(p => p.position === positionFilter);
+        // Type assertion since we know positionFilter is not "ALL" or "FLEX" here
+        players = players.filter(p => p.position === (positionFilter as Exclude<PositionFilter, "ALL" | "FLEX">));
       }
     }
 

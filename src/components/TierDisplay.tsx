@@ -6,7 +6,7 @@ import { GlassCard } from '@/components/ui/GlassCard';
 import { Heading } from '@/components/ui/Heading';
 import { motion } from 'framer-motion';
 import { ThumbnailImage } from '@/components/ui/OptimizedImage';
-import PlayerImageService from '@/lib/playerImageService';
+import { usePlayerImageCache } from '@/hooks/usePlayerImageCache';
 
 interface TierDisplayProps {
   tierGroups: TierGroup[];
@@ -15,42 +15,19 @@ interface TierDisplayProps {
 }
 
 export function TierDisplay({ tierGroups, position, showImages = true }: TierDisplayProps) {
-  const [playerImages, setPlayerImages] = useState<Map<string, string>>(new Map());
-  const [isLoadingImages, setIsLoadingImages] = useState(false);
+  // Use the cached image service
+  const { preloadImages, getCachedImage, isLoading } = usePlayerImageCache();
 
-  // Load player images when tierGroups change
+  // Preload images for all players in tier groups
   useEffect(() => {
-    if (!showImages || tierGroups.length === 0) {
-      setPlayerImages(new Map());
-      return;
-    }
+    if (!showImages || tierGroups.length === 0) return;
 
-    const loadPlayerImages = async () => {
-      setIsLoadingImages(true);
-      const imageMap = new Map<string, string>();
-      
-      // Get all players from all tier groups
-      const allPlayers = tierGroups.flatMap(tierGroup => tierGroup.players);
-      
-      // Load images with error handling
-      const imagePromises = allPlayers.map(async (player) => {
-        try {
-          const imageUrl = await PlayerImageService.getPlayerImageUrl(player);
-          if (imageUrl) {
-            imageMap.set(`${player.name}-${player.team}`, imageUrl);
-          }
-        } catch (error) {
-          console.warn(`Error loading image for ${player.name}:`, error);
-        }
-      });
-
-      await Promise.all(imagePromises);
-      setPlayerImages(imageMap);
-      setIsLoadingImages(false);
-    };
-
-    loadPlayerImages();
-  }, [tierGroups, showImages]);
+    // Get all players from all tier groups
+    const allPlayers = tierGroups.flatMap(tierGroup => tierGroup.players);
+    
+    // Preload images using the cache
+    preloadImages(allPlayers);
+  }, [tierGroups, showImages, preloadImages]);
 
   return (
     <div className="space-y-8">
@@ -105,9 +82,9 @@ export function TierDisplay({ tierGroups, position, showImages = true }: TierDis
                     {showImages && (
                       <div className="flex-shrink-0">
                         <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-terminal-border">
-                          {playerImages.get(`${player.name}-${player.team}`) ? (
+                          {getCachedImage(`${player.name}-${player.team}`) ? (
                             <ThumbnailImage
-                              src={playerImages.get(`${player.name}-${player.team}`) || ''}
+                              src={getCachedImage(`${player.name}-${player.team}`) || ''}
                               alt={player.name || 'Player'}
                               width={48}
                               height={48}
@@ -119,7 +96,7 @@ export function TierDisplay({ tierGroups, position, showImages = true }: TierDis
                               className="w-full h-full flex items-center justify-center text-xs font-bold"
                               style={{ backgroundColor: tierGroup.color }}
                             >
-                              {isLoadingImages ? (
+                              {isLoading(`${player.name}-${player.team}`) ? (
                                 <div className="w-4 h-4 border border-white border-t-transparent rounded-full animate-spin"></div>
                               ) : (
                                 (player.name || 'XX').split(' ').map((n: string) => n[0]).join('')

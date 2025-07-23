@@ -6,7 +6,7 @@ import Image from "next/image";
 import { IconUser, IconStar, IconTrendingUp } from "@tabler/icons-react";
 import { Player } from "@/types";
 import { calculateUnifiedTiers, getUnifiedTierColor, getUnifiedTierLabel } from "@/lib/unifiedTierCalculator";
-import PlayerImageService from "@/lib/playerImageService";
+import { usePlayerImageCache } from "@/hooks/usePlayerImageCache";
 
 interface DraftTierChartProps {
   players: Player[];
@@ -23,8 +23,9 @@ export default function DraftTierChart({
 }: DraftTierChartProps) {
   const [hoveredPlayer, setHoveredPlayer] = useState<string | null>(null);
   const [selectedTier, setSelectedTier] = useState<number | null>(null);
-  const [playerImages, setPlayerImages] = useState<Map<string, string>>(new Map());
-  const [isLoadingImages, setIsLoadingImages] = useState(false);
+  
+  // Use the cached image service
+  const { preloadImages, getCachedImage, isLoading } = usePlayerImageCache();
 
   // Calculate tiers using unified system
   const tiers = useMemo(() => {
@@ -33,36 +34,37 @@ export default function DraftTierChart({
     return calculateUnifiedTiers(players, maxTiers, scoringFormatStr);
   }, [players, scoringFormat, positionFilter]);
 
-  // Load player images when players change
+  // Smart preloading of images with position-based priority
   useEffect(() => {
-    if (players.length === 0) {
-      setPlayerImages(new Map());
-      return;
-    }
+    if (players.length === 0) return;
 
-    const loadPlayerImages = async () => {
-      setIsLoadingImages(true);
-      const imageMap = new Map<string, string>();
+    // Preload images for visible players immediately
+    preloadImages(players);
+
+    // Smart preloading: if looking at specific position, preload likely next positions
+    if (positionFilter !== "ALL") {
+      const nextPositions = getNextLikelyPositions(positionFilter);
+      const nextPositionPlayers = allPlayers.filter(p => 
+        nextPositions.includes(p.position) && !players.includes(p)
+      ).slice(0, 20); // Limit to top 20 players per position
       
-      // Load images with error handling
-      const imagePromises = players.map(async (player) => {
-        try {
-          const imageUrl = await PlayerImageService.getPlayerImageUrl(player);
-          if (imageUrl) {
-            imageMap.set(`${player.name}-${player.team}`, imageUrl);
-          }
-        } catch (error) {
-          console.warn(`Error loading image for ${player.name}:`, error);
-        }
-      });
+      // Preload in background with slight delay
+      setTimeout(() => preloadImages(nextPositionPlayers), 500);
+    }
+  }, [players, allPlayers, positionFilter, preloadImages]);
 
-      await Promise.all(imagePromises);
-      setPlayerImages(imageMap);
-      setIsLoadingImages(false);
+  // Helper function to determine likely next positions user might view
+  const getNextLikelyPositions = (currentPosition: string): string[] => {
+    const positionSequences: Record<string, string[]> = {
+      'QB': ['RB', 'WR'],
+      'RB': ['WR', 'QB', 'TE'],
+      'WR': ['RB', 'TE', 'QB'],
+      'TE': ['RB', 'WR', 'QB'],
+      'K': ['DST'],
+      'DST': ['K'],
     };
-
-    loadPlayerImages();
-  }, [players]);
+    return positionSequences[currentPosition] || [];
+  };
 
   // Position colors
   const getPositionColor = (position: string) => {
@@ -157,7 +159,7 @@ export default function DraftTierChart({
             }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                 {tier.players.map((player, playerIndex) => {
-                  const imageUrl = playerImages.get(`${player.name}-${player.team}`);
+                  const imageUrl = getCachedImage(`${player.name}-${player.team}`);
                   const isHovered = hoveredPlayer === player.id;
                   // Calculate integer rank based on position in allPlayers list
                   const overallRank = allPlayers.findIndex(p => p.id === player.id) + 1;
@@ -212,7 +214,7 @@ export default function DraftTierChart({
                             />
                           ) : null}
                           <div className={`${imageUrl ? 'hidden' : ''} absolute inset-0 bg-slate-700 rounded-full flex items-center justify-center`}>
-                            {isLoadingImages ? (
+                            {isLoading(`${player.name}-${player.team}`) ? (
                               <div className="w-4 h-4 border border-slate-400 border-t-transparent rounded-full animate-spin"></div>
                             ) : (
                               <IconUser size={24} className="text-slate-500" />

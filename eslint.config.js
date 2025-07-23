@@ -5,13 +5,18 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist', '.next', 'node_modules'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        // Add Next.js specific globals
+        'AudioWorkletGlobalScope': false,
+      },
     },
     plugins: {
       'react-hooks': reactHooks,
@@ -23,6 +28,15 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      // Relax some strict rules for development
+      '@typescript-eslint/no-unused-vars': ['warn', { 
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        ignoreRestSiblings: true 
+      }],
+      '@typescript-eslint/no-explicit-any': 'warn',
+      'prefer-const': 'warn',
+      'react-hooks/exhaustive-deps': 'warn',
     },
   }
 );

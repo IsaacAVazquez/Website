@@ -8,7 +8,7 @@ import { calculateUnifiedTiers, UnifiedTier, convertToUnifiedTier } from '@/lib/
 import { motion } from 'framer-motion';
 import { ZoomIn, ZoomOut, Maximize2, Move } from 'lucide-react';
 import { DataFreshnessIndicator } from './DataFreshnessIndicator';
-import PlayerImageService from '@/lib/playerImageService';
+import { usePlayerImageCache } from '@/hooks/usePlayerImageCache';
 
 interface TierChartEnhancedProps {
   players: Player[];
@@ -36,8 +36,9 @@ export default function TierChartEnhanced({
   const [tierGroups, setTierGroups] = useState<UnifiedTier[]>([]);
   const [currentZoom, setCurrentZoom] = useState<number>(1);
   const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
-  const [playerImages, setPlayerImages] = useState<Map<string, string>>(new Map());
-  const [isLoadingImages, setIsLoadingImages] = useState(false);
+  
+  // Use the cached image service
+  const { preloadImages, getCachedImage } = usePlayerImageCache();
 
   const dimensions: ChartDimensions = {
     width,
@@ -58,8 +59,8 @@ export default function TierChartEnhanced({
     const unifiedTiers = calculateUnifiedTiers(players, numberOfTiers, scoringFormat);
     setTierGroups(unifiedTiers);
     
-    // Load player images
-    loadPlayerImages(players);
+    // Preload player images using cache
+    preloadImages(players);
     
     // Notify parent about tier count and groups (convert to old format for compatibility)
     if (onTierCountChange) {
@@ -77,43 +78,7 @@ export default function TierChartEnhanced({
       }));
       onTierGroupsChange(legacyTiers);
     }
-  }, [players, numberOfTiers, scoringFormat, onTierCountChange, onTierGroupsChange]);
-
-  const loadPlayerImages = async (playersToLoad: Player[]) => {
-    setIsLoadingImages(true);
-    const imageMap = new Map<string, string>();
-    
-    // Preload images with error handling and validation
-    const imagePromises = playersToLoad.map(async (player) => {
-      try {
-        const imageUrl = await PlayerImageService.getPlayerImageUrl(player);
-        
-        if (imageUrl) {
-          // Validate image exists and is loadable
-          return new Promise<void>((resolve) => {
-            const img = new Image();
-            img.onload = () => {
-              imageMap.set(`${player.name}-${player.team}`, imageUrl);
-              resolve();
-            };
-            img.onerror = () => {
-              // Image failed to load, skip it
-              console.warn(`Failed to load image for ${player.name}`);
-              resolve();
-            };
-            img.src = imageUrl;
-          });
-        }
-      } catch (error) {
-        console.warn(`Error loading image for ${player.name}:`, error);
-      }
-    });
-
-    // Wait for all images to load (or fail)
-    await Promise.all(imagePromises.filter(Boolean));
-    setPlayerImages(imageMap);
-    setIsLoadingImages(false);
-  };
+  }, [players, numberOfTiers, scoringFormat, onTierCountChange, onTierGroupsChange, preloadImages]);
 
   useEffect(() => {
     if (tierGroups.length === 0 || !svgRef.current) {
@@ -310,7 +275,7 @@ export default function TierChartEnhanced({
         });
 
         // Player image or fallback circle (drawn AFTER error bars)
-        const imageUrl = playerImages.get(`${player.name}-${player.team}`);
+        const imageUrl = getCachedImage(`${player.name}-${player.team}`);
         const imageSize = baseRadius * 2;
         
         if (imageUrl) {
@@ -415,7 +380,7 @@ export default function TierChartEnhanced({
       .style('font-weight', 'bold')
       .text(`Fantasy Football Tier Rankings (${scoringFormat})`);
 
-  }, [tierGroups, players, numberOfTiers, width, height, scoringFormat, hiddenTiers, playerImages]);
+  }, [tierGroups, players, numberOfTiers, width, height, scoringFormat, hiddenTiers, getCachedImage]);
 
   // Zoom control functions
   const handleZoomIn = () => {
@@ -474,15 +439,6 @@ export default function TierChartEnhanced({
         </motion.button>
       </div>
 
-      {/* Image Loading Indicator */}
-      {isLoadingImages && (
-        <div className="absolute bottom-16 right-4 bg-cyan-900/80 backdrop-blur-sm px-3 py-2 rounded-lg border border-cyan-600">
-          <div className="flex items-center gap-2 text-sm text-cyan-300">
-            <div className="w-3 h-3 border-2 border-cyan-300 border-t-transparent rounded-full animate-spin"></div>
-            <span>Loading player images...</span>
-          </div>
-        </div>
-      )}
 
       {/* Zoom Indicator */}
       <div className="absolute bottom-4 right-4 bg-gray-800/80 backdrop-blur-sm px-3 py-1 rounded-lg border border-gray-700">
