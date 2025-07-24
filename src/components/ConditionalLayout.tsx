@@ -4,6 +4,7 @@ import { useNavigation } from "@/hooks/useNavigation";
 import { Footer } from "@/components/Footer";
 import { FloatingNav, GestureNavigation } from "@/components/ui/FloatingNav";
 import { CommandPalette } from "@/components/ui/CommandPalette";
+import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
 
 interface ConditionalLayoutProps {
   children: React.ReactNode;
@@ -42,6 +43,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
             children
           ) : (
             <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
+              <Breadcrumbs className="mb-8" />
               {children}
             </div>
           )}

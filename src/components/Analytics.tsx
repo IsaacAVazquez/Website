@@ -3,6 +3,7 @@
 import Script from 'next/script';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import { initWebVitals, PerformanceMonitor } from '@/lib/analytics';
 
 // Google Analytics 4 Configuration
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -64,6 +65,68 @@ export function Analytics({ children }: AnalyticsProps) {
     if (pathname) {
       trackPageView(window.location.href, document.title);
     }
+  }, [pathname]);
+
+  // Initialize Web Vitals monitoring
+  useEffect(() => {
+    initWebVitals();
+    PerformanceMonitor.mark('analytics_initialized');
+    
+    // Track engagement metrics
+    let engagementTimer: NodeJS.Timeout;
+    const trackEngagement = () => {
+      PerformanceMonitor.trackInteraction('user', 'engaged');
+    };
+
+    // Track scroll depth milestones
+    let maxScrollDepth = 0;
+    const trackScrollDepth = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+      
+      if (scrollPercent > maxScrollDepth) {
+        maxScrollDepth = scrollPercent;
+        if ([25, 50, 75, 90].includes(scrollPercent)) {
+          trackInteraction(`scroll_${scrollPercent}`, 'engagement', pathname);
+        }
+      }
+    };
+
+    // Track form submissions and button clicks
+    const handleInteraction = (event: Event) => {
+      const target = event.target as HTMLElement;
+      
+      if (event.type === 'submit') {
+        const form = target as HTMLFormElement;
+        trackInteraction('form_submit', 'conversion', form.id || form.className);
+      } else if (target.tagName === 'BUTTON') {
+        const button = target as HTMLButtonElement;
+        const buttonText = button.textContent?.trim().toLowerCase().replace(/\s+/g, '_') || 'unknown';
+        trackInteraction(`button_click_${buttonText}`, 'interaction', pathname);
+      }
+    };
+
+    // Add event listeners
+    const events = ['mousedown', 'keypress', 'touchstart'];
+    events.forEach(event => {
+      document.addEventListener(event, trackEngagement, { passive: true, once: true });
+    });
+    
+    window.addEventListener('scroll', trackScrollDepth, { passive: true });
+    document.addEventListener('submit', handleInteraction);
+    document.addEventListener('click', handleInteraction);
+
+    // Cleanup
+    return () => {
+      events.forEach(event => {
+        document.removeEventListener(event, trackEngagement);
+      });
+      window.removeEventListener('scroll', trackScrollDepth);
+      document.removeEventListener('submit', handleInteraction);
+      document.removeEventListener('click', handleInteraction);
+      clearTimeout(engagementTimer);
+    };
   }, [pathname]);
 
   // Don't load analytics in development or if no measurement ID

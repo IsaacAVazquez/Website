@@ -17,7 +17,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...baseData,
           "@type": "Person",
           "name": siteConfig.name,
-          "jobTitle": "Fantasy Football Analytics Developer & QA Engineer",
+          "jobTitle": "QA Engineer & Fantasy Football Analytics Developer",
           "description": siteConfig.description,
           "url": siteConfig.url,
           "image": `${siteConfig.url}/og-image.png`,
@@ -25,9 +25,31 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
             siteConfig.links.linkedin,
             siteConfig.links.github,
           ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          },
+          "homeLocation": {
+            "@type": "Place",
+            "name": "Austin, Texas",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "Texas",
+              "addressCountry": "United States"
+            }
+          },
           "worksFor": {
             "@type": "Organization",
-            "name": "Civitech"
+            "name": "Civitech",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            }
           },
           "knowsAbout": [
             "Fantasy Football Analytics",
@@ -43,26 +65,63 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
             "React",
             "Next.js",
             "Data Analysis",
-            "Software Quality"
+            "Software Quality",
+            "Austin Tech Community",
+            "Texas Software Development"
           ],
           "alumniOf": {
             "@type": "EducationalOrganization",
-            "name": "Florida State University"
+            "name": "Florida State University",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Tallahassee",
+              "addressRegion": "FL",
+              "addressCountry": "US"
+            }
           },
-          "hasOccupation": {
-            "@type": "Occupation",
-            "name": "Fantasy Football Analytics Developer",
-            "occupationLocation": {
-              "@type": "City",
-              "name": "Austin, TX"
+          "hasOccupation": [
+            {
+              "@type": "Occupation",
+              "name": "QA Engineer",
+              "occupationLocation": {
+                "@type": "City",
+                "name": "Austin",
+                "containedInPlace": {
+                  "@type": "State",
+                  "name": "Texas"
+                }
+              },
+              "skills": [
+                "Quality Assurance",
+                "Test Automation",
+                "Software Testing",
+                "Bug Detection",
+                "Performance Testing"
+              ]
             },
-            "skills": [
-              "Fantasy Football Data Analysis",
-              "Sports Analytics",
-              "Data Visualization",
-              "Web Development",
-              "Quality Assurance"
-            ]
+            {
+              "@type": "Occupation",
+              "name": "Fantasy Football Analytics Developer",
+              "occupationLocation": {
+                "@type": "City",
+                "name": "Austin",
+                "containedInPlace": {
+                  "@type": "State",
+                  "name": "Texas"
+                }
+              },
+              "skills": [
+                "Fantasy Football Data Analysis",
+                "Sports Analytics",
+                "Data Visualization",
+                "Web Development",
+                "Machine Learning"
+              ]
+            }
+          ],
+          "memberOf": {
+            "@type": "Organization",
+            "name": "Austin Tech Community"
           },
           ...data,
         };

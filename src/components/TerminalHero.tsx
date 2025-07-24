@@ -265,7 +265,7 @@ export function TerminalHero() {
                 transition={{ delay: 0.8 }}
                 className="text-cyber text-matrix-green text-xl"
               >
-                TECH-BACKED PROBLEM SOLVER // SYSTEMS THINKER // FUTURE BUILDER
+                PRODUCT STRATEGIST // BUSINESS LEADER // UC BERKELEY MBA CANDIDATE
               </motion.div>
             </div>
 
@@ -275,10 +275,9 @@ export function TerminalHero() {
               transition={{ delay: 1.0 }}
               className="text-lg text-slate-300 leading-relaxed max-w-lg"
             >
-              I design and scale systems that work — whether it's powering tools for 60M+ voters 
-              or leading cross-functional releases across engineering, product, and security. 
-              Currently expanding my toolkit at Berkeley Haas, I'm focused on solving complex, 
-              high-impact problems at the intersection of technology, strategy, and people.
+              I'm passionate about the intersection of technology and strategy — from civic minded tech in Austin to Silicon Valley innovation ecosystems. As a UC Berkeley Haas MBA 
+              student and business leader, I explore how technical expertise and strategic thinking can 
+              solve meaningful problems and create lasting impact across communities and markets.
             </motion.p>
 
             <motion.div
@@ -287,16 +286,16 @@ export function TerminalHero() {
               transition={{ delay: 1.2 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Link href="/projects" className="morph-button glow-effect inline-block">
-                <span className="relative z-10">VIEW MY WORK</span>
+              <Link href="/about" className="morph-button glow-effect inline-block">
+                <span className="relative z-10">ABOUT ME</span>
               </Link>
               
-              <Link href="/contact" className="px-6 py-3 border border-electric-blue text-electric-blue hover:bg-electric-blue/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
-                LET'S CONNECT
+              <Link href="/projects" className="px-6 py-3 border border-electric-blue text-electric-blue hover:bg-electric-blue/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
+                PROJECTS
               </Link>
               
-              <Link href="/resume" className="px-6 py-3 border border-matrix-green text-matrix-green hover:bg-matrix-green/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
-                DOWNLOAD RESUME
+              <Link href="/blog" className="px-6 py-3 border border-matrix-green text-matrix-green hover:bg-matrix-green/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-block text-center">
+                BLOG
               </Link>
             </motion.div>
 
@@ -309,15 +308,15 @@ export function TerminalHero() {
             >
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-matrix-green rounded-full animate-pulse"></div>
-                <span className="text-sm font-mono text-slate-400">ONLINE</span>
+                <span className="text-sm font-mono text-slate-400">CONNECTING</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-electric-blue rounded-full animate-pulse"></div>
-                <span className="text-sm font-mono text-slate-400">BUILDING</span>
+                <span className="text-sm font-mono text-slate-400">STUDYING</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-warning-amber rounded-full animate-pulse"></div>
-                <span className="text-sm font-mono text-slate-400">LEARNING</span>
+                <span className="text-sm font-mono text-slate-400">EXPLORING</span>
               </div>
             </motion.div>
           </motion.div>

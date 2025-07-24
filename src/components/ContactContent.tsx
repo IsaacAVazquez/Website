@@ -16,12 +16,12 @@ export function ContactContent() {
         noiseTexture={true}
         className="text-center p-8 mb-8"
       >
-        <span className="text-5xl mb-4 block animate-wiggle">🚀</span>
+        <span className="text-5xl mb-4 block animate-wiggle">🤝</span>
         <Heading className="font-heading font-black mb-4 text-3xl gradient-text">
-          Ready to Build Something Reliable?
+          Let's Connect & Share Ideas
         </Heading>
         <Paragraph className="mb-6 max-w-xl text-lg text-secondary">
-          Looking for a QA engineer who delivers 99.9% uptime? Let's discuss how I can strengthen your team's quality assurance strategy and prevent critical bugs before they impact your users.
+          I love connecting with fellow professionals, sharing insights on tech and business strategy, and exploring how technology can solve meaningful problems. Whether you're in NYC, Austin, San Fransisco and the Bay Area, or anywhere in between, I'd enjoy hearing your perspective.
         </Paragraph>
         
         <div className="flex flex-wrap gap-4 justify-center mb-6">
@@ -32,7 +32,7 @@ export function ContactContent() {
               icon={<FaEnvelope className="text-lg" />}
               iconPosition="left"
             >
-              Schedule a Discussion
+              Start a Conversation
             </MorphButton>
           </a>
           
@@ -49,7 +49,7 @@ export function ContactContent() {
         </div>
         
         <Paragraph className="text-sm text-secondary">
-          Available for full-time opportunities and consulting engagements
+          Always open to meaningful conversations about technology, strategy, and building impactful solutions
         </Paragraph>
       </GlassCard>
       <style jsx global>{`

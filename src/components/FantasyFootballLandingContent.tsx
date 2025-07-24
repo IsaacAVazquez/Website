@@ -122,7 +122,7 @@ export function FantasyFootballLandingContent() {
 
       {/* Offerings Grid */}
       <motion.div
-        className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-[280px] mb-16"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -139,7 +139,8 @@ export function FantasyFootballLandingContent() {
                   cursorGlow={true}
                   noiseTexture={true}
                   floating={offering.type === "featured"}
-                  className="overflow-hidden h-full cursor-pointer"
+                  className="h-full flex flex-col justify-between"
+
                 >
                 {/* Background Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${offering.color} opacity-10 group-hover:opacity-20 transition-opacity breathing-gradient`} />

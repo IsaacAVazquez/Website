@@ -4,24 +4,15 @@ import { motion } from "framer-motion";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { JourneyTimeline } from "@/components/ui/JourneyTimeline";
-import { useTypingAnimation } from "@/hooks/useTypingAnimation";
-import { personalMetrics } from "@/constants/personal";
 import { 
   IconUser, 
-  IconTimeline,
-  IconHeart
+  IconTimeline
 } from "@tabler/icons-react";
 
 type TabType = "overview" | "journey";
 
 export default function About() {
   const [activeTab, setActiveTab] = useState<TabType>("overview");
-  
-  const { displayedText, startTyping } = useTypingAnimation({
-    text: personalMetrics.philosophy.qa,
-    speed: 30,
-    delay: 1000
-  });
 
   const tabs = [
     { id: "overview", label: "Overview", icon: IconUser },
@@ -31,11 +22,11 @@ export default function About() {
   const renderTabContent = () => {
     switch (activeTab) {
       case "overview":
-        return <OverviewContent displayedText={displayedText} startTyping={startTyping} />;
+        return <OverviewContent />;
       case "journey":
         return <JourneyTimeline />;
       default:
-        return <OverviewContent displayedText={displayedText} startTyping={startTyping} />;
+        return <OverviewContent />;
     }
   };
 
@@ -90,7 +81,7 @@ export default function About() {
             About Isaac Vazquez
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
-            Haas MBA Candidate • Tech-Driven Problem Solver • System Thinker • Product Leader
+            Product Strategist • Business Leader • UC Berkeley Haas MBA • Technical Executive • Austin ↔ Bay Area
           </p>
         </motion.div>
 
@@ -134,12 +125,8 @@ export default function About() {
   );
 }
 
-interface OverviewContentProps {
-  displayedText: string;
-  startTyping: () => void;
-}
 
-const OverviewContent = ({ displayedText, startTyping }: OverviewContentProps) => {
+const OverviewContent = () => {
   return (
     <div className="space-y-12">
       {/* Personal Introduction */}
@@ -160,19 +147,19 @@ const OverviewContent = ({ displayedText, startTyping }: OverviewContentProps) =
           
           <div className="relative z-10 space-y-6">
             <Paragraph className="text-lg md:text-xl text-slate-300 leading-relaxed">
-              Hi, I'm Isaac — I solve complex problems at the intersection of technology, strategy, and impact. With 3+ years of experience ensuring software quality at scale, I've helped safeguard systems by transforming testing into a strategic advantage.            </Paragraph>
-
-            <Paragraph className="text-slate-300 leading-relaxed">
-              I've led cross-functional teams, architected automated frameworks, and shipped reliable civic tech platforms under pressure. My toolkit includes everything from Cypress and Selenium to JMeter and SQL — but I'm just as comfortable facilitating product reviews, aligning stakeholders, or turning metrics into strategic insights.
-
+              Hi, I'm Isaac — a product strategist and business leader who solves complex problems at the intersection of technology, strategy, and impact. With 6+ years of experience building and leading teams that deliver quality at scale across Austin and California markets, I've helped safeguard systems serving 60M+ users while driving product innovation and business growth.
             </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-Now as an MBA candidate at UC Berkeley's Haas School of Business, I'm focused on broadening that impact — exploring how innovation, product thinking, and consulting frameworks can solve mission-critical challenges across industries.            </Paragraph>
+              From Austin-based civic tech to Silicon Valley-style innovation, I've led cross-functional product teams, developed strategic business frameworks, and shipped reliable platforms under pressure. My expertise spans technical product management, business strategy development, and organizational leadership — combining deep technical knowledge with strategic business thinking to drive measurable results across Texas and California markets.
+            </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-Beyond code, I'm passionate about mentorship, open-source collaboration, and tech that empowers communities. Whether it's on the trail or in a terminal window, I bring curiosity, clarity, and a drive to build what matters.
+              Currently pursuing my MBA at UC Berkeley's Haas School of Business, I'm developing advanced capabilities in product strategy, business leadership, and innovation management. As a Consortium Fellow, I'm exploring how strategic business thinking, product management excellence, and leadership development can solve mission-critical challenges from Silicon Valley to emerging global markets.
+            </Paragraph>
 
+            <Paragraph className="text-slate-300 leading-relaxed">
+              Beyond technology, I'm passionate about developing future business leaders, building strategic partnerships, and creating products that empower communities. Whether I'm hiking trails or networking in California's innovation ecosystem, I bring strategic thinking, leadership excellence, and a drive to build businesses that create lasting impact across both coasts.
             </Paragraph>
           </div>
         </GlassCard>

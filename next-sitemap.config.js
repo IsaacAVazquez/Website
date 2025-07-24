@@ -6,7 +6,7 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 5000,
-  exclude: ['/api/*', '/_next/*', '/404'],
+  exclude: ['/api/*', '/_next/*', '/404', '/newsletter', '/testimonials'],
   
   // Additional paths configuration  
   additionalPaths: async (config) => {
@@ -17,6 +17,14 @@ module.exports = {
       loc: '/',
       changefreq: 'daily',
       priority: 1.0,
+      lastmod: new Date().toISOString(),
+    })
+    
+    // Blog landing page (High priority for SEO)
+    result.push({
+      loc: '/blog',
+      changefreq: 'weekly',
+      priority: 0.9,
       lastmod: new Date().toISOString(),
     })
     
@@ -53,6 +61,35 @@ module.exports = {
         lastmod: new Date().toISOString(),
       })
     })
+    
+    // Dynamic blog posts
+    try {
+      // Import blog utilities
+      const path = await import('path')
+      const fs = await import('fs')
+      
+      const postsDirectory = path.default.join(process.cwd(), 'content/blog')
+      
+      // Check if blog directory exists
+      if (fs.default.existsSync(postsDirectory)) {
+        const files = fs.default.readdirSync(postsDirectory)
+        const blogFiles = files.filter(file => file.endsWith('.mdx') || file.endsWith('.md'))
+        
+        // Add blog posts to sitemap
+        blogFiles.forEach(file => {
+          const slug = file.replace(/\.(mdx|md)$/, '')
+          
+          result.push({
+            loc: `/blog/${slug}`,
+            changefreq: 'weekly',
+            priority: 0.7,
+            lastmod: new Date().toISOString(),
+          })
+        })
+      }
+    } catch (error) {
+      console.warn('Could not load blog posts for sitemap:', error.message)
+    }
     
     // Professional pages (Lower priority but still important)
     result.push({
