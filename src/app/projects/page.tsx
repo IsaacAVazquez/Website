@@ -8,28 +8,22 @@ export { metadata };
 // Fantasy Football data for structured data
 const fantasyFootballStructuredData = [
   {
-    name: "Interactive Fantasy Football Tier Visualizations",
-    description: "Advanced clustering algorithms analyze 300+ players with real-time data visualization",
+    name: "Interactive Fantasy Football Tier Graph",
+    description: "Advanced clustering algorithms analyze 300+ players with real-time D3.js visualization",
     programmingLanguage: ["TypeScript", "JavaScript"],
     keywords: ["D3.js", "K-Means", "Data Visualization", "Fantasy Sports", "React"],
   },
   {
-    name: "Fantasy Football Draft Command Center",
+    name: "Fantasy Football Draft Tier Cards",
     description: "Comprehensive draft interface with tier visualization and real-time player tracking",
     programmingLanguage: ["TypeScript", "JavaScript"],
     keywords: ["React", "Next.js", "Fantasy Sports", "Real-time Data"],
   },
   {
-    name: "Fantasy Football Analytics Pipeline",
-    description: "Automated data collection and processing with smart caching and performance optimization",
+    name: "Fantasy Football Data Management",
+    description: "Administrative interface for real-time data collection, processing, and performance monitoring",
     programmingLanguage: ["TypeScript", "JavaScript"],
     keywords: ["API Integration", "Data Processing", "Caching", "Performance"],
-  },
-  {
-    name: "Fantasy Football Mobile Experience",
-    description: "Responsive design with touch interactions and offline capabilities",
-    programmingLanguage: ["TypeScript", "JavaScript"],
-    keywords: ["Mobile Optimization", "Responsive Design", "PWA", "Touch UI"],
   },
 ];
 

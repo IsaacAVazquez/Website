@@ -28,6 +28,13 @@ export interface UseAllFantasyDataResult {
 
 const ALL_POSITIONS: Position[] = ['QB', 'RB', 'WR', 'TE', 'K', 'DST'];
 
+// Request deduplication to prevent multiple simultaneous API calls
+const activeRequests = new Map<string, Promise<Player[] | null>>();
+
+function getRequestKey(position: Position, scoringFormat: string): string {
+  return `${position}:${scoringFormat}`;
+}
+
 export function useAllFantasyData({
   scoringFormat,
   autoRefresh = true,
@@ -43,36 +50,60 @@ export function useAllFantasyData({
   // Refs to prevent unnecessary re-renders
   const refreshTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isRefreshingRef = useRef<boolean>(false);
+  const scoringFormatRef = useRef<string>('');
 
   const scoringFormatParam = convertScoringFormat(scoringFormat);
+  
+  // Update ref when scoring format changes
+  useEffect(() => {
+    scoringFormatRef.current = scoringFormatParam;
+  }, [scoringFormatParam]);
 
   /**
-   * Fetch data from API for a specific position
+   * Fetch data from API for a specific position with request deduplication
    */
   const fetchPositionFromAPI = useCallback(async (position: Position): Promise<Player[] | null> => {
-    try {
-      const response = await fetch(
-        `/api/data-manager?position=${position}&dataset=fantasypros-session&scoringFormat=${scoringFormatParam}`
-      );
-      
-      if (!response.ok) {
-        throw new Error(`API request failed for ${position}: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      if (data.success && data.players && data.players.length > 0) {
-        // Cache the fresh data for this position
-        dataCache.set(position, scoringFormatParam, data.players, 'api');
-        return data.players;
-      }
-      
-      return null;
-    } catch (apiError) {
-      console.warn(`API fetch failed for ${position}:`, apiError);
-      return null;
+    const requestKey = getRequestKey(position, scoringFormatRef.current);
+    
+    // If there's already an active request for this data, return it
+    if (activeRequests.has(requestKey)) {
+      return activeRequests.get(requestKey)!;
     }
-  }, [scoringFormatParam]);
+    
+    // Create new request
+    const requestPromise = (async () => {
+      try {
+        const response = await fetch(
+          `/api/data-manager?position=${position}&dataset=fantasypros-session&scoringFormat=${scoringFormatRef.current}`
+        );
+        
+        if (!response.ok) {
+          throw new Error(`API request failed for ${position}: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.success && data.players && data.players.length > 0) {
+          // Cache the fresh data for this position
+          dataCache.set(position, scoringFormatRef.current, data.players, 'api');
+          return data.players;
+        }
+        
+        return null;
+      } catch (apiError) {
+        console.warn(`API fetch failed for ${position}:`, apiError);
+        return null;
+      } finally {
+        // Clean up the active request
+        activeRequests.delete(requestKey);
+      }
+    })();
+    
+    // Store the active request
+    activeRequests.set(requestKey, requestPromise);
+    
+    return requestPromise;
+  }, []); // Now stable since using ref
 
   /**
    * Load data for all positions with cache-first strategy
@@ -94,7 +125,7 @@ export function useAllFantasyData({
 
       // Process each position
       for (const position of ALL_POSITIONS) {
-        const currentCacheStatus = dataCache.getStatus(position, scoringFormatParam);
+        const currentCacheStatus = dataCache.getStatus(position, scoringFormatRef.current);
         
         // Update overall cache status (use the worst status)
         if (currentCacheStatus === 'missing') {
@@ -104,9 +135,9 @@ export function useAllFantasyData({
         }
 
         // Try to get cached data first
-        const cachedData = dataCache.get(position, scoringFormatParam);
+        const cachedData = dataCache.get(position, scoringFormatRef.current);
         
-        if (cachedData && !forceRefresh && dataCache.isFresh(position, scoringFormatParam)) {
+        if (cachedData && !forceRefresh && dataCache.isFresh(position, scoringFormatRef.current)) {
           // Use fresh cached data
           allPlayers.push(...cachedData.data);
           hasCacheData = true;
@@ -140,7 +171,7 @@ export function useAllFantasyData({
         setCacheStatus(overallCacheStatus);
         // Use the most recent cache timestamp
         const cacheTimestamps = ALL_POSITIONS
-          .map(pos => dataCache.get(pos, scoringFormatParam)?.timestamp)
+          .map(pos => dataCache.get(pos, scoringFormatRef.current)?.timestamp)
           .filter(Boolean) as number[];
         
         if (cacheTimestamps.length > 0) {
@@ -172,7 +203,7 @@ export function useAllFantasyData({
       let hasAnyCachedData = false;
 
       for (const position of ALL_POSITIONS) {
-        const cachedData = dataCache.get(position, scoringFormatParam);
+        const cachedData = dataCache.get(position, scoringFormatRef.current);
         if (cachedData) {
           allCachedPlayers.push(...cachedData.data);
           hasAnyCachedData = true;
@@ -215,7 +246,7 @@ export function useAllFantasyData({
       setIsLoading(false);
       isRefreshingRef.current = false;
     }
-  }, [scoringFormatParam, fetchPositionFromAPI]);
+  }, [scoringFormatParam]); // Removed fetchPositionFromAPI to prevent infinite loops
 
   /**
    * Manual refresh function
@@ -229,19 +260,19 @@ export function useAllFantasyData({
    */
   const clearCache = useCallback(() => {
     ALL_POSITIONS.forEach(position => {
-      dataCache.remove(position, scoringFormatParam);
+      dataCache.remove(position, scoringFormatRef.current);
     });
     setCacheStatus('missing');
     // Reload data after clearing cache
     loadAllData(true);
-  }, [scoringFormatParam, loadAllData]);
+  }, [loadAllData]);
 
   /**
    * Get cache information for UI display (aggregate across all positions)
    */
   const getCacheInfo = useCallback(() => {
     // Check cache status across all positions
-    const statuses = ALL_POSITIONS.map(pos => dataCache.getStatus(pos, scoringFormatParam));
+    const statuses = ALL_POSITIONS.map(pos => dataCache.getStatus(pos, scoringFormatRef.current));
     
     if (statuses.every(status => status === 'fresh')) {
       return { status: 'fresh' as CacheStatus, message: 'Data is fresh', color: 'green' };
@@ -252,7 +283,7 @@ export function useAllFantasyData({
     } else {
       return { status: 'missing' as CacheStatus, message: 'No cached data', color: 'red' };
     }
-  }, [scoringFormatParam]);
+  }, []);
 
   /**
    * Setup auto-refresh interval
@@ -268,7 +299,7 @@ export function useAllFantasyData({
       refreshTimeoutRef.current = setTimeout(() => {
         // Check if any position needs refreshing
         const needsRefresh = ALL_POSITIONS.some(pos => 
-          dataCache.needsRefresh(pos, scoringFormatParam)
+          dataCache.needsRefresh(pos, scoringFormatRef.current)
         );
 
         if (needsRefresh) {
@@ -285,7 +316,7 @@ export function useAllFantasyData({
         clearTimeout(refreshTimeoutRef.current);
       }
     };
-  }, [scoringFormatParam, autoRefresh, refreshInterval, loadAllData]);
+  }, [autoRefresh, refreshInterval, loadAllData]);
 
   /**
    * Load data when scoring format changes

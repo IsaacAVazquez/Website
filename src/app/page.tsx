@@ -7,11 +7,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const funFacts = [
-  "Full-stack QA Engineer with 6+ years breaking software (professionally)",
-  "Civic tech enthusiast who helped 100K+ voters access democracy", 
-  "Data-driven tester who's written 25,000+ test cases",
-  "Bug hunter with 150,000+ issues caught before production",
-  "99.7% uptime achieved across critical production systems",
+  "Engineer with 6+ years optimizing systems and driving cross-functional execution",
+  "Led platform quality for tools used by 60M+ voters during critical election cycles",
+  "Known for translating technical complexity into actionable strategy",
+  "Excited by hard problems — especially when the stakes are real",
+  "Currently pursuing an MBA at Berkeley Haas to scale my impact across tech and business",
 ];
 
 function FunFacts() {
@@ -63,6 +63,42 @@ export default function Home() {
                 isaac.getCurrentStatus()
               </Heading>
               <FunFacts />
+            </div>
+          </GlassCard>
+        </motion.div>
+
+        {/* What I'm Focused On - Now Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-20 max-w-4xl mx-auto"
+        >
+          <GlassCard
+            elevation={3}
+            interactive={true}
+            cursorGlow={true}
+            noiseTexture={true}
+            className="p-8 bg-terminal-bg/50 border-terminal-border"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-electric-blue/5 rounded-xl breathing-gradient" />
+            
+            <div className="relative z-10 space-y-6">
+              <Heading as="h2" className="text-cyber text-electric-blue text-2xl mb-6">
+                whatImFocusedOn()
+              </Heading>
+              <div className="text-slate-300 leading-relaxed">
+                <p className="mb-4">
+                  As an MBA candidate at UC Berkeley Haas, I'm focused on honing the tools to drive innovation, 
+                  solve critical business problems, and deliver scalable impact — whether through consulting, 
+                  product leadership, or a hybrid of both.
+                </p>
+                <div className="flex items-start">
+                  <span className="text-matrix-green mr-2">▸</span>
+                  <span>Building the bridge between technical execution and strategic vision</span>
+                </div>
+              </div>
             </div>
           </GlassCard>
         </motion.div>

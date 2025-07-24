@@ -1,5 +1,15 @@
 import { Player, TierGroup } from '@/types';
 
+// Cache for GMM results to avoid expensive re-computation
+const gmmCache = new Map<string, { tiers: TierGroup[], timestamp: number }>();
+const CACHE_EXPIRY_MS = 10 * 60 * 1000; // 10 minutes
+
+// Generate cache key based on player ranks and clustering parameters
+function generateGMMCacheKey(players: Player[], k: number): string {
+  const ranks = players.map(p => Number(p.averageRank)).sort((a, b) => a - b);
+  return `${ranks.join(',')}:${k}`;
+}
+
 interface GaussianComponent {
   mean: number;
   variance: number;
@@ -214,8 +224,24 @@ export function clusterPlayersWithGMM(
   numberOfTiers: number = 6
 ): TierGroup[] {
   if (players.length === 0) return [];
+
+  // Check cache first
+  const cacheKey = generateGMMCacheKey(players, numberOfTiers);
+  const cached = gmmCache.get(cacheKey);
+  
+  if (cached && (Date.now() - cached.timestamp) < CACHE_EXPIRY_MS) {
+    return cached.tiers;
+  }
   
   const gmm = new GaussianMixtureModel(numberOfTiers);
   gmm.fit(players);
-  return gmm.predict(players);
+  const result = gmm.predict(players);
+  
+  // Cache the result
+  gmmCache.set(cacheKey, {
+    tiers: result,
+    timestamp: Date.now()
+  });
+  
+  return result;
 }

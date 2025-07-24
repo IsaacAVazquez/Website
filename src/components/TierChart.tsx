@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, memo, useMemo } from 'react';
 import * as d3 from 'd3';
 import { Player, TierGroup, ChartDimensions } from '@/types';
 import { clusterPlayersIntoTiers } from '@/lib/clustering';
@@ -14,7 +14,7 @@ interface TierChartProps {
   scoringFormat?: string;
 }
 
-export default function TierChart({ 
+const TierChart = memo(function TierChart({ 
   players, 
   width = 900, 
   height = 600,
@@ -23,27 +23,21 @@ export default function TierChart({
 }: TierChartProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [hoveredPlayer, setHoveredPlayer] = useState<Player | null>(null);
-  const [tierGroups, setTierGroups] = useState<TierGroup[]>([]);
   const [currentZoom, setCurrentZoom] = useState<d3.ZoomTransform | null>(null);
 
-  const dimensions: ChartDimensions = {
+  const dimensions: ChartDimensions = useMemo(() => ({
     width,
     height,
     margin: { top: 60, right: 120, bottom: 80, left: 220 }
-  };
+  }), [width, height]);
 
   const innerWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right;
   const innerHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom;
 
-  useEffect(() => {
-    if (players.length === 0) {
-      setTierGroups([]);
-      return;
-    }
-
-    // Cluster players into tiers
-    const tiers = clusterPlayersIntoTiers(players, numberOfTiers);
-    setTierGroups(tiers);
+  // Memoize expensive tier calculations
+  const tierGroups = useMemo(() => {
+    if (players.length === 0) return [];
+    return clusterPlayersIntoTiers(players, numberOfTiers);
   }, [players, numberOfTiers]);
 
   useEffect(() => {
@@ -273,4 +267,6 @@ export default function TierChart({
       )}
     </div>
   );
-}
+});
+
+export default TierChart;

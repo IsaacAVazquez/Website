@@ -203,8 +203,8 @@ export function useTierVisibility(position: string, scoringFormat: string) {
       console.warn('Failed to load tier visibility preferences:', error);
     }
     
-    // Default to showing only tiers 1-6 (hide tier 7+)
-    return new Set([7, 8, 9, 10, 11, 12]);
+    // Default to showing only tiers 1-4 (hide tier 5+)
+    return new Set([5, 6, 7, 8, 9, 10, 11, 12]);
   });
 
   // Save preferences when they change

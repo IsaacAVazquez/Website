@@ -253,7 +253,7 @@ export function JourneyTimeline() {
       <div className="text-center">
         <h2 className="text-3xl font-bold gradient-text mb-2">Career Journey</h2>
         <p className="text-secondary mb-8">
-          From political science graduate to QA engineering leader
+          From Political Science graduate to QA engineer, and now an MBA candidate at UC Berkeley, my career has been a journey of continuous learning and impact. Here’s a snapshot of my professional timeline.
         </p>
       </div>
 

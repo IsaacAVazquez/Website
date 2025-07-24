@@ -1,6 +1,44 @@
 import { Player, TierGroup } from '@/types';
 import { clusterPlayersWithGMM } from './gaussianMixture';
 
+// Cache for tier calculations to avoid re-computation
+const tierCalculationCache = new Map<string, CachedResult>();
+const CACHE_EXPIRY_MS = 5 * 60 * 1000; // 5 minutes
+const MAX_CACHE_SIZE = 50; // Limit cache size
+
+interface CachedResult {
+  tiers: UnifiedTier[];
+  timestamp: number;
+}
+
+// Generate cache key from players and parameters
+function generateCacheKey(players: Player[], numberOfTiers: number, scoringFormat?: string): string {
+  // Create a simpler cache key based on player count, first/last player, and parameters
+  if (players.length === 0) return `empty:${numberOfTiers}:${scoringFormat || 'default'}`;
+  
+  const sortedPlayers = [...players].sort((a, b) => {
+    const aRank = typeof a.averageRank === 'string' ? parseFloat(a.averageRank) : a.averageRank;
+    const bRank = typeof b.averageRank === 'string' ? parseFloat(b.averageRank) : b.averageRank;
+    return aRank - bRank;
+  });
+  
+  const firstPlayer = sortedPlayers[0];
+  const lastPlayer = sortedPlayers[sortedPlayers.length - 1];
+  
+  // Use a combination of player count, first/last player IDs, and parameters
+  return `${players.length}:${firstPlayer.id}:${lastPlayer.id}:${numberOfTiers}:${scoringFormat || 'default'}`;
+}
+
+// Clear expired cache entries
+function clearExpiredCache(): void {
+  const now = Date.now();
+  for (const [key, cached] of tierCalculationCache.entries()) {
+    if (now - cached.timestamp > CACHE_EXPIRY_MS) {
+      tierCalculationCache.delete(key);
+    }
+  }
+}
+
 // Unified tier colors (cyberpunk theme)
 export const UNIFIED_TIER_COLORS = [
   '#FF073A', // Red (Tier 1 - Elite) 
@@ -51,6 +89,19 @@ export function calculateUnifiedTiers(
 ): UnifiedTier[] {
   if (players.length === 0) return [];
 
+  // Check cache first
+  const cacheKey = generateCacheKey(players, numberOfTiers, scoringFormat);
+  const cached = tierCalculationCache.get(cacheKey);
+  
+  if (cached && (Date.now() - cached.timestamp) < CACHE_EXPIRY_MS) {
+    return cached.tiers;
+  }
+
+  // Clear expired entries periodically
+  if (tierCalculationCache.size > 50) {
+    clearExpiredCache();
+  }
+
   // Sort players by average rank first
   const sortedPlayers = [...players].sort((a, b) => {
     const aRank = typeof a.averageRank === 'string' ? parseFloat(a.averageRank) : a.averageRank;
@@ -58,35 +109,45 @@ export function calculateUnifiedTiers(
     return aRank - bRank;
   });
 
+  let result: UnifiedTier[];
+
   // Check if players already have tier assignments from FantasyPros
   const hasExistingTiers = sortedPlayers.some(p => p.tier && p.tier > 0);
   
   if (hasExistingTiers) {
     console.log('Using existing FantasyPros tier assignments');
-    return groupPlayersByExistingTiers(sortedPlayers);
-  }
-
-  // Try GMM clustering first (most sophisticated approach)
-  try {
-    const gmmTiers = clusterPlayersWithGMM(sortedPlayers, numberOfTiers);
-    return gmmTiers.map(tier => ({
-      ...tier,
-      color: UNIFIED_TIER_COLORS[tier.tier - 1] || UNIFIED_TIER_COLORS[UNIFIED_TIER_COLORS.length - 1],
-      label: UNIFIED_TIER_LABELS[tier.tier - 1] || `Tier ${tier.tier}`
-    }));
-  } catch (gmmError) {
-    console.warn('GMM clustering failed, trying value-drop method:', gmmError);
-    
-    // Fallback to value-drop method
+    result = groupPlayersByExistingTiers(sortedPlayers);
+  } else {
+    // Try GMM clustering first (most sophisticated approach)
     try {
-      return calculateTiersByValueDrops(sortedPlayers, numberOfTiers, scoringFormat);
-    } catch (valueError) {
-      console.warn('Value-drop method failed, using rank gap method:', valueError);
+      const gmmTiers = clusterPlayersWithGMM(sortedPlayers, numberOfTiers);
+      result = gmmTiers.map(tier => ({
+        ...tier,
+        color: UNIFIED_TIER_COLORS[tier.tier - 1] || UNIFIED_TIER_COLORS[UNIFIED_TIER_COLORS.length - 1],
+        label: UNIFIED_TIER_LABELS[tier.tier - 1] || `Tier ${tier.tier}`
+      }));
+    } catch (gmmError) {
+      console.warn('GMM clustering failed, trying value-drop method:', gmmError);
       
-      // Final fallback to simple rank gap method
-      return calculateTiersByRankGaps(sortedPlayers, numberOfTiers);
+      // Fallback to value-drop method
+      try {
+        result = calculateTiersByValueDrops(sortedPlayers, numberOfTiers, scoringFormat);
+      } catch (valueError) {
+        console.warn('Value-drop method failed, using rank gap method:', valueError);
+        
+        // Final fallback to simple rank gap method
+        result = calculateTiersByRankGaps(sortedPlayers, numberOfTiers);
+      }
     }
   }
+
+  // Cache the result
+  tierCalculationCache.set(cacheKey, {
+    tiers: result,
+    timestamp: Date.now()
+  });
+
+  return result;
 }
 
 /**

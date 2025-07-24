@@ -8,7 +8,7 @@ export const Footer = () => {
       <div className="flex items-center gap-2 text-base font-semibold text-slate-400 mb-1 animate-footerIn font-terminal">
         <span className="text-lg animate-wave select-none">⚡</span>
         <span>{new Date().getFullYear()}</span>
-        <span>&#8212; BUILT BY</span>
+        <span>&#8212; BUILT BY Isaac Vazquez</span>
         <a
           href="https://isaacvazquez.netlify.app/"
           target="_blank"
@@ -29,7 +29,7 @@ export const Footer = () => {
           <FaLinkedin size={18} />
         </a>
         <a
-          href="https://github.com/isaacvazquez"
+          href="https://github.com/IsaacAVazquez"
           aria-label="GitHub"
           target="_blank"
           rel="noopener noreferrer"

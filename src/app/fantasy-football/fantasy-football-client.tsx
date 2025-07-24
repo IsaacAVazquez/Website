@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TierChartEnhanced from '@/components/TierChartEnhanced';
 import PositionSelector from '@/components/PositionSelector';
 import DataComparison from '@/components/DataComparison';
@@ -21,45 +21,43 @@ export default function FantasyFootballPage() {
   const [showComparison, setShowComparison] = useState<boolean>(false);
   const [tierCount, setTierCount] = useState<number>(6);
   const [tierGroups, setTierGroups] = useState<TierGroup[]>([]);
-
-  // Use single position data hook for specific positions
-  const singlePositionData = useFantasyData({
-    position: selectedPosition === 'FLEX' ? 'RB' : selectedPosition, // FLEX uses RB as base, filtered later
-    scoringFormat: selectedFormat,
-    autoRefresh: true,
-    refreshInterval: 10 * 60 * 1000 // 10 minutes for production
-  });
-
-  // Use all positions data hook for FLEX views
-  const allPositionsData = useAllFantasyData({
-    scoringFormat: selectedFormat,
-    autoRefresh: true,
-    refreshInterval: 10 * 60 * 1000 // 10 minutes for production
-  });
-
-  // Use overall data hook for OVERALL view (true overall rankings from FantasyPros)
-  const overallData = useOverallFantasyData({
-    scoringFormat: selectedFormat,
-    autoRefresh: true,
-    refreshInterval: 10 * 60 * 1000 // 10 minutes for production
-  });
+  const [isClient, setIsClient] = useState(false);
 
   // Choose which data to use based on selected position
   const isOverallView = selectedPosition === 'OVERALL';
   const isFlexView = selectedPosition === 'FLEX';
   
+  // Use single position data hook for specific positions
+  const singlePositionData = useFantasyData({
+    position: selectedPosition === 'FLEX' ? 'RB' : selectedPosition,
+    scoringFormat: selectedFormat,
+    autoRefresh: !isOverallView && !isFlexView,
+    refreshInterval: 10 * 60 * 1000
+  });
+
+  // Use all positions data hook for FLEX views
+  const allPositionsData = useAllFantasyData({
+    scoringFormat: selectedFormat,
+    autoRefresh: isFlexView, // Only auto-refresh when in FLEX view
+    refreshInterval: 10 * 60 * 1000
+  });
+
+  // Use overall data hook for OVERALL view
+  const overallData = useOverallFantasyData({
+    scoringFormat: selectedFormat,
+    autoRefresh: isOverallView, // Only auto-refresh when in OVERALL view
+    refreshInterval: 10 * 60 * 1000
+  });
+  
   let rawData, players;
   
   if (isOverallView) {
-    // Use true overall rankings from FantasyPros
     rawData = overallData;
     players = rawData.players;
   } else if (isFlexView) {
-    // Use all positions data filtered for FLEX (RB/WR/TE only)
     rawData = allPositionsData;
     players = rawData.players.filter(p => ['RB', 'WR', 'TE'].includes(p.position));
   } else {
-    // Use single position data
     rawData = singlePositionData;
     players = rawData.players;
   }
@@ -77,6 +75,20 @@ export default function FantasyFootballPage() {
 
   const cacheInfo = getCacheInfo();
 
+  // Client-side hydration check
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Trigger data refresh when switching views
+  useEffect(() => {
+    if (isOverallView && overallData.players.length === 0 && !overallData.isLoading) {
+      overallData.refresh();
+    } else if (isFlexView && allPositionsData.players.length === 0 && !allPositionsData.isLoading) {
+      allPositionsData.refresh();
+    }
+  }, [selectedPosition]);
+
   // Tier visibility management
   const { hiddenTiers, toggleTier, setAllVisible } = useTierVisibility(
     selectedPosition,
@@ -92,6 +104,15 @@ export default function FantasyFootballPage() {
       playerCount: tierGroup.players.length
     };
   });
+
+  // Calculate dynamic chart height based on visible players
+  const visiblePlayers = tierGroups
+    .filter(tier => !hiddenTiers.has(tier.tier))
+    .reduce((total, tier) => total + tier.players.length, 0);
+  const PLAYER_HEIGHT = 35;
+  const TIER_PADDING = 10;
+  const visibleTierCount = tierGroups.filter(tier => !hiddenTiers.has(tier.tier)).length;
+  const dynamicHeight = Math.max(400, visiblePlayers * PLAYER_HEIGHT + (visibleTierCount - 1) * TIER_PADDING + 200); // 200px for margins/labels
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -123,22 +144,17 @@ export default function FantasyFootballPage() {
                   Draft Tiers
                 </MorphButton>
               </Link>
-              {/* Static Tier Pages Link */}
-              <Link href={`/fantasy-football/tiers/${selectedPosition.toLowerCase()}`}>
-                <MorphButton variant="secondary" size="sm" className="flex items-center gap-2">
-                  <FileText className="w-4 h-4" />
-                  View Static Tiers
-                </MorphButton>
-              </Link>
               {/* Subtle Status Indicator */}
-              <div className="flex items-center gap-2 text-xs text-gray-500">
-                <div className={`w-1.5 h-1.5 rounded-full ${
-                  dataSource === 'api' ? 'bg-matrix-green' : 
-                  dataSource === 'cache' ? 'bg-electric-blue' : 
-                  'bg-warning-amber'
-                }`}></div>
-                <span>{cacheInfo.message}</span>
-              </div>
+              {isClient && (
+                <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <div className={`w-1.5 h-1.5 rounded-full ${
+                    dataSource === 'api' ? 'bg-matrix-green' : 
+                    dataSource === 'cache' ? 'bg-electric-blue' : 
+                    'bg-warning-amber'
+                  }`}></div>
+                  <span>{cacheInfo.message}</span>
+                </div>
+              )}
             </div>
           </div>
           
@@ -198,7 +214,7 @@ export default function FantasyFootballPage() {
               <TierChartEnhanced 
                 players={players}
                 width={Math.max(1400, players.length * 15 + 600)}
-                height={Math.max(700, players.length * 9 + 300)}
+                height={dynamicHeight}
                 numberOfTiers={6}
                 scoringFormat={getScoringFormatDisplay(selectedFormat)}
                 hiddenTiers={hiddenTiers}

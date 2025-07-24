@@ -90,7 +90,7 @@ export default function About() {
             About Isaac Vazquez
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
-            Quality Assurance Engineer • Test Automation Expert • Civic Tech Leader
+            Haas MBA Candidate • Tech-Driven Problem Solver • System Thinker • Product Leader
           </p>
         </motion.div>
 
@@ -160,65 +160,24 @@ const OverviewContent = ({ displayedText, startTyping }: OverviewContentProps) =
           
           <div className="relative z-10 space-y-6">
             <Paragraph className="text-lg md:text-xl text-slate-300 leading-relaxed">
-              Hi, I'm Isaac. I ensure software quality at scale, protecting 60M+ users from critical failures.
+              Hi, I'm Isaac — I solve complex problems at the intersection of technology, strategy, and impact. With 3+ years of experience ensuring software quality at scale, I've helped safeguard systems by transforming testing into a strategic advantage.            </Paragraph>
+
+            <Paragraph className="text-slate-300 leading-relaxed">
+              I've led cross-functional teams, architected automated frameworks, and shipped reliable civic tech platforms under pressure. My toolkit includes everything from Cypress and Selenium to JMeter and SQL — but I'm just as comfortable facilitating product reviews, aligning stakeholders, or turning metrics into strategic insights.
+
             </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-              With 6+ years in quality assurance, I've transformed testing from a bottleneck into a competitive advantage. My expertise spans test automation (Cypress, Selenium), performance testing (JMeter), and data validation—achieving 99.9% uptime while reducing defect rates by 50%.
-            </Paragraph>
+Now as an MBA candidate at UC Berkeley's Haas School of Business, I'm focused on broadening that impact — exploring how innovation, product thinking, and consulting frameworks can solve mission-critical challenges across industries.            </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-              At Civitech, I architect QA frameworks that scale across complex civic engagement platforms. I lead cross-functional teams, implement continuous testing pipelines, and turn quality metrics into actionable insights. My approach: proactive testing that prevents issues before they reach production.
-            </Paragraph>
+Beyond code, I'm passionate about mentorship, open-source collaboration, and tech that empowers communities. Whether it's on the trail or in a terminal window, I bring curiosity, clarity, and a drive to build what matters.
 
-            <Paragraph className="text-slate-300 leading-relaxed">
-              Beyond code, I'm passionate about mentoring emerging QA professionals and contributing to open-source testing tools. When I'm not debugging, you'll find me hiking Texas trails or volunteering for local tech education initiatives. I believe quality isn't just about finding bugs—it's about building trust.
             </Paragraph>
           </div>
         </GlassCard>
       </motion.div>
 
-      {/* Philosophy Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="max-w-4xl mx-auto"
-      >
-        <GlassCard
-          elevation={4}
-          interactive={true}
-          cursorGlow={true}
-          noiseTexture={true}
-          className="p-8 relative overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-500/10 breathing-gradient" />
-          
-          <div className="relative z-10">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-purple-400/20 to-pink-500/20">
-                <IconHeart className="w-6 h-6 text-neon-purple" />
-              </div>
-              <h3 className="text-2xl font-bold text-primary">My QA Philosophy</h3>
-              <button
-                onClick={startTyping}
-                className="ml-auto px-4 py-2 rounded-lg bg-neon-purple/20 text-neon-purple text-xs font-terminal hover:bg-neon-purple/30 transition-colors"
-              >
-                RETYPE
-              </button>
-            </div>
-            
-            <div className="text-lg text-slate-300 leading-relaxed font-terminal">
-              {displayedText}
-              <motion.span
-                className="inline-block w-3 h-6 bg-electric-blue ml-1"
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.5, repeat: Infinity }}
-              />
-            </div>
-          </div>
-        </GlassCard>
-      </motion.div>
     </div>
   );
 };

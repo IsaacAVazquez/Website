@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, memo, useMemo, useCallback } from 'react';
 import * as d3 from 'd3';
 import { Player, TierGroup, ChartDimensions } from '@/types';
 import { calculateUnifiedTiers, UnifiedTier } from '@/lib/unifiedTierCalculator';
@@ -20,7 +20,7 @@ interface TierChartEnhancedProps {
   onTierGroupsChange?: (tierGroups: TierGroup[]) => void;
 }
 
-export default function TierChartEnhanced({ 
+const TierChartEnhanced = memo(function TierChartEnhanced({ 
   players, 
   width = 900, 
   height = 600,
@@ -32,42 +32,103 @@ export default function TierChartEnhanced({
 }: TierChartEnhancedProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [hoveredPlayer, setHoveredPlayer] = useState<Player | null>(null);
-  const [tierGroups, setTierGroups] = useState<UnifiedTier[]>([]);
   const [currentZoom, setCurrentZoom] = useState<number>(1);
   const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
+  const loadingQueueRef = useRef<Set<string>>(new Set());
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const [, forceUpdate] = useState({});
   
   // Use the cached image service
-  const { preloadImages, getCachedImage } = usePlayerImageCache();
+  const { preloadImages, getCachedImage, getPlayerImage, isLoading } = usePlayerImageCache();
 
-  const dimensions: ChartDimensions = {
+  const dimensions: ChartDimensions = useMemo(() => ({
     width,
     height,
     margin: { top: 60, right: 120, bottom: 80, left: 220 }
-  };
+  }), [width, height]);
 
   const innerWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right;
   const innerHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom;
 
-  useEffect(() => {
-    if (players.length === 0) {
-      setTierGroups([]);
+  // Memoize expensive tier calculations
+  const tierGroups = useMemo(() => {
+    if (players.length === 0) return [];
+    return calculateUnifiedTiers(players, numberOfTiers, scoringFormat);
+  }, [players, numberOfTiers, scoringFormat]);
+
+  // Progressive loading function
+  const loadImageProgressively = useCallback(async (player: Player, delay: number = 0) => {
+    const playerKey = `${player.name}-${player.team}`;
+    
+    // Skip if already in loading queue or cached
+    if (loadingQueueRef.current.has(playerKey) || getCachedImage(playerKey)) {
       return;
     }
-
-    // Use unified tier calculation system
-    const unifiedTiers = calculateUnifiedTiers(players, numberOfTiers, scoringFormat);
-    setTierGroups(unifiedTiers);
     
-    // Preload player images using cache
-    preloadImages(players);
+    // Add to loading queue
+    loadingQueueRef.current.add(playerKey);
+    
+    // Add delay to spread out requests
+    if (delay > 0) {
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    
+    try {
+      await getPlayerImage(player);
+      // Force a re-render to update the chart
+      forceUpdate({});
+    } catch (error) {
+      console.warn(`Failed to load image for ${player.name}:`, error);
+    } finally {
+      loadingQueueRef.current.delete(playerKey);
+    }
+  }, [getPlayerImage, getCachedImage]);
+
+  // Setup intersection observer for viewport-based lazy loading
+  useEffect(() => {
+    if (!svgRef.current) return;
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const playerId = entry.target.getAttribute('data-player-id');
+            const player = players.find(p => p.id === playerId);
+            if (player) {
+              loadImageProgressively(player, 0); // No delay for visible players
+            }
+          }
+        });
+      },
+      {
+        root: svgRef.current,
+        rootMargin: '50px', // Start loading 50px before coming into view
+        threshold: 0.1
+      }
+    );
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [players, loadImageProgressively]);
+
+  // Preload only top tier images and notify parent of changes
+  useEffect(() => {
+    if (tierGroups.length === 0) return;
+    
+    // Only preload images for visible players (first 10, reduced from 20)
+    const topPlayers = players.slice(0, 10);
+    preloadImages(topPlayers);
     
     // Notify parent about tier count and groups (convert to old format for compatibility)
     if (onTierCountChange) {
-      onTierCountChange(unifiedTiers.length);
+      onTierCountChange(tierGroups.length);
     }
     if (onTierGroupsChange) {
       // Convert UnifiedTier back to TierGroup for parent component compatibility
-      const legacyTiers: TierGroup[] = unifiedTiers.map(tier => ({
+      const legacyTiers: TierGroup[] = tierGroups.map(tier => ({
         tier: tier.tier,
         players: tier.players,
         color: tier.color,
@@ -77,15 +138,40 @@ export default function TierChartEnhanced({
       }));
       onTierGroupsChange(legacyTiers);
     }
-  }, [players, numberOfTiers, scoringFormat, onTierCountChange, onTierGroupsChange, preloadImages]);
+  }, [tierGroups]); // Reduced dependencies to prevent excessive re-renders
 
   useEffect(() => {
     if (tierGroups.length === 0 || !svgRef.current) {
       return;
     }
 
-    // Clear previous chart
-    d3.select(svgRef.current).selectAll('*').remove();
+    // Debounce rendering to avoid excessive updates
+    const renderTimeout = setTimeout(() => {
+      // Clear previous chart and disconnect observer from old elements
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+      d3.select(svgRef.current).selectAll('*').remove();
+
+      // Recreate intersection observer for new render
+      observerRef.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const playerId = entry.target.getAttribute('data-player-id');
+              const player = players.find(p => p.id === playerId);
+              if (player) {
+                loadImageProgressively(player, 0); // No delay for visible players
+              }
+            }
+          });
+        },
+        {
+          root: svgRef.current,
+          rootMargin: '50px', // Start loading 50px before coming into view
+          threshold: 0.1
+        }
+      );
 
     const svg = d3.select(svgRef.current)
       .attr('width', dimensions.width)
@@ -128,24 +214,9 @@ export default function TierChartEnhanced({
     const minRank = visibleRanks.length > 0 ? Math.min(...visibleRanks) : 0;
     const maxRank = visibleRanks.length > 0 ? Math.max(...visibleRanks) : 30;
     
-    // Implement minimum range for better readability
-    const dataRange = maxRank - minRank;
-    const MIN_RANGE = 30; // Minimum range to ensure readability
-    
-    let domainMin: number;
-    let domainMax: number;
-    
-    if (dataRange < MIN_RANGE) {
-      // Center the data within the minimum range
-      const center = (minRank + maxRank) / 2;
-      domainMin = Math.max(0, center - MIN_RANGE / 2);
-      domainMax = center + MIN_RANGE / 2;
-    } else {
-      // Use smart padding: 10% of range or minimum 3 ranks
-      const rankPadding = Math.max(dataRange * 0.1, 3);
-      domainMin = Math.max(0, minRank - rankPadding);
-      domainMax = maxRank + rankPadding;
-    }
+    // Set domain to exactly match the data range with minimal padding
+    const domainMin = Math.max(0, minRank - 1); // Small left padding
+    const domainMax = maxRank + 1; // Small right padding to ensure rightmost player is visible
     
     const xScale = d3.scaleLinear()
       .domain([domainMin, domainMax])
@@ -205,11 +276,13 @@ export default function TierChartEnhanced({
     
     grid.select('.domain').remove(); // Remove the main axis line for grid
 
-    // Draw tiers
+    // Draw tiers with fixed height per player
+    const PLAYER_HEIGHT = 35; // Fixed height per player in pixels
+    const TIER_PADDING = 10; // Padding between tiers
     let yPosition = 0;
     
-    visibleTiers.forEach((tier, _tierIndex) => {
-      const tierHeight = (tier.players.length / visibleTotalPlayers) * innerHeight;
+    visibleTiers.forEach((tier, tierIndex) => {
+      const tierHeight = tier.players.length * PLAYER_HEIGHT;
       
       // Draw tier background
       g.append('rect')
@@ -241,7 +314,7 @@ export default function TierChartEnhanced({
       const strokeWidth = totalVisiblePlayers < 20 ? 3 : 2;
       
       tier.players.forEach((player, playerIndex) => {
-        const playerY = yPosition + (playerIndex + 0.5) * (tierHeight / tier.players.length);
+        const playerY = yPosition + (playerIndex + 0.5) * PLAYER_HEIGHT;
         const playerRank = typeof player.averageRank === 'string' ? parseFloat(player.averageRank) : player.averageRank;
         const playerStdDev = typeof player.standardDeviation === 'string' ? parseFloat(player.standardDeviation) : player.standardDeviation;
         
@@ -268,19 +341,26 @@ export default function TierChartEnhanced({
             .attr('opacity', 0.6);
         });
 
-        // Player image or fallback circle (drawn AFTER error bars)
-        const imageUrl = getCachedImage(`${player.name}-${player.team}`);
+        // Player image with lazy loading support
+        const playerKey = `${player.name}-${player.team}`;
+        const cachedImageUrl = getCachedImage(playerKey);
+        const imageIsLoading = isLoading(playerKey);
         const imageSize = baseRadius * 2;
         
-        if (imageUrl) {
-          // Create player image
-          g.append('image')
-            .attr('href', imageUrl)
+        // Create a group for this player to manage image and fallback
+        const playerGroup = g.append('g')
+          .attr('class', 'player-group')
+          .attr('data-player-id', player.id)
+          .style('cursor', 'pointer');
+
+        if (cachedImageUrl) {
+          // Show cached image immediately
+          playerGroup.append('image')
+            .attr('href', cachedImageUrl)
             .attr('x', xScale(playerRank) - baseRadius)
             .attr('y', playerY - baseRadius)
             .attr('width', imageSize)
             .attr('height', imageSize)
-            .style('cursor', 'pointer')
             .on('mouseenter', function() {
               d3.select(this)
                 .transition()
@@ -302,29 +382,76 @@ export default function TierChartEnhanced({
               setHoveredPlayer(null);
             })
             .on('error', function() {
-              // Fallback to circle if image fails to load
+              // Replace with fallback circle on error
               d3.select(this).remove();
-              g.append('circle')
-                .attr('cx', xScale(playerRank))
-                .attr('cy', playerY)
-                .attr('r', baseRadius)
-                .attr('fill', tier.color)
-                .attr('stroke', 'white')
-                .attr('stroke-width', strokeWidth)
-                .attr('opacity', 0.95)
-                .style('cursor', 'pointer');
+              createFallbackCircle(playerGroup, xScale(playerRank), playerY, baseRadius, tier.color, strokeWidth);
             });
+        } else if (imageIsLoading) {
+          // Show loading spinner
+          createLoadingSpinner(playerGroup, xScale(playerRank), playerY, baseRadius);
+          
+          // Try to get the image and update when loaded
+          getPlayerImage(player).then((imageUrl) => {
+            if (imageUrl) {
+              // Replace loading spinner with image
+              playerGroup.selectAll('*').remove();
+              playerGroup.append('image')
+                .attr('href', imageUrl)
+                .attr('x', xScale(playerRank) - baseRadius)
+                .attr('y', playerY - baseRadius)
+                .attr('width', imageSize)
+                .attr('height', imageSize)
+                .on('mouseenter', function() {
+                  d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr('x', xScale(playerRank) - hoverRadius)
+                    .attr('y', playerY - hoverRadius)
+                    .attr('width', hoverRadius * 2)
+                    .attr('height', hoverRadius * 2);
+                  setHoveredPlayer(player);
+                })
+                .on('mouseleave', function() {
+                  d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .attr('x', xScale(playerRank) - baseRadius)
+                    .attr('y', playerY - baseRadius)
+                    .attr('width', imageSize)
+                    .attr('height', imageSize);
+                  setHoveredPlayer(null);
+                })
+                .on('error', function() {
+                  d3.select(this).remove();
+                  createFallbackCircle(playerGroup, xScale(playerRank), playerY, baseRadius, tier.color, strokeWidth);
+                });
+            } else {
+              // Replace loading spinner with fallback circle
+              playerGroup.selectAll('*').remove();
+              createFallbackCircle(playerGroup, xScale(playerRank), playerY, baseRadius, tier.color, strokeWidth);
+            }
+          });
         } else {
-          // Fallback circle for players without images
-          g.append('circle')
-            .attr('cx', xScale(playerRank))
-            .attr('cy', playerY)
-            .attr('r', baseRadius)
-            .attr('fill', tier.color)
+          // No cached image and not loading - show fallback circle
+          // Progressive loading will handle loading this image in the background
+          createFallbackCircle(playerGroup, xScale(playerRank), playerY, baseRadius, tier.color, strokeWidth);
+        }
+
+        // Attach intersection observer to enable lazy loading
+        if (observerRef.current && playerGroup.node()) {
+          observerRef.current.observe(playerGroup.node());
+        }
+
+        // Helper function to create fallback circle
+        function createFallbackCircle(group: any, x: number, y: number, radius: number, color: string, strokeWidth: number) {
+          group.append('circle')
+            .attr('cx', x)
+            .attr('cy', y)
+            .attr('r', radius)
+            .attr('fill', color)
             .attr('stroke', 'white')
             .attr('stroke-width', strokeWidth)
             .attr('opacity', 0.95)
-            .style('cursor', 'pointer')
             .on('mouseenter', function() {
               d3.select(this)
                 .transition()
@@ -338,11 +465,35 @@ export default function TierChartEnhanced({
               d3.select(this)
                 .transition()
                 .duration(200)
-                .attr('r', baseRadius)
+                .attr('r', radius)
                 .attr('stroke-width', strokeWidth)
                 .attr('opacity', 0.95);
               setHoveredPlayer(null);
             });
+        }
+
+        // Helper function to create loading spinner
+        function createLoadingSpinner(group: any, x: number, y: number, radius: number) {
+          // Background circle
+          group.append('circle')
+            .attr('cx', x)
+            .attr('cy', y)
+            .attr('r', radius)
+            .attr('fill', '#374151')
+            .attr('stroke', 'white')
+            .attr('stroke-width', 2)
+            .attr('opacity', 0.8);
+          
+          // Spinning indicator
+          group.append('circle')
+            .attr('cx', x)
+            .attr('cy', y)
+            .attr('r', radius * 0.6)
+            .attr('fill', 'none')
+            .attr('stroke', '#00F5FF')
+            .attr('stroke-width', 2)
+            .attr('stroke-dasharray', '3,3')
+            .attr('opacity', 0.8);
         }
 
         // Player name on the left side with better spacing
@@ -361,7 +512,7 @@ export default function TierChartEnhanced({
           .text(`${player.name} (${player.team})${isOverallView ? ` - ${player.position}` : ''}`);
       });
 
-      yPosition += tierHeight;
+      yPosition += tierHeight + (tierIndex < visibleTiers.length - 1 ? TIER_PADDING : 0);
     });
 
     // Add title
@@ -373,8 +524,12 @@ export default function TierChartEnhanced({
       .style('font-size', '20px')
       .style('font-weight', 'bold')
       .text(`Fantasy Football Tier Rankings (${scoringFormat})`);
+    }, 100); // 100ms debounce
 
-  }, [tierGroups, players, numberOfTiers, width, height, scoringFormat, hiddenTiers, getCachedImage, dimensions.margin.left, dimensions.margin.top, innerWidth, innerHeight]);
+    return () => {
+      clearTimeout(renderTimeout);
+    };
+  }, [tierGroups, hiddenTiers, dimensions, scoringFormat]); // Reduced dependencies
 
   // Zoom control functions
   const handleZoomIn = () => {
@@ -487,4 +642,6 @@ export default function TierChartEnhanced({
       )}
     </div>
   );
-}
+});
+
+export default TierChartEnhanced;

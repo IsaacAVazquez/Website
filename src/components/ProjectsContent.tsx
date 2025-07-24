@@ -42,7 +42,7 @@ const projects: Project[] = [
     color: "from-vivid-blue to-vivid-teal",
     icon: IconChartBar,
     metrics: "30% faster releases, 100% uptime",
-    github: "https://github.com/isaacvazquez",
+    github: "https://github.com/IsaacAVazquez",
     link: "https://civitech.io",
     detailedMetrics: [
       { label: "Users Reached", value: "60M+", improvement: "200% increase" },
@@ -69,7 +69,7 @@ const projects: Project[] = [
     color: "from-vivid-purple to-vivid-pink",
     icon: IconTestPipe,
     metrics: "50% reduction in defects",
-    github: "https://github.com/isaacvazquez",
+    github: "https://github.com/IsaacAVazquez",
     link: null,
     detailedMetrics: [
       { label: "Defect Reduction", value: "50%", improvement: "From 23 to 11 bugs/release" },
@@ -96,7 +96,7 @@ const projects: Project[] = [
     color: "from-vivid-teal to-vivid-blue",
     icon: IconDatabase,
     metrics: "40% faster decisions",
-    github: "https://github.com/isaacvazquez",
+    github: "https://github.com/IsaacAVazquez",
     link: null,
   },
   {
@@ -107,7 +107,7 @@ const projects: Project[] = [
     type: "small",
     color: "from-vivid-yellow to-vivid-pink",
     icon: IconCode,
-    github: "https://github.com/isaacvazquez",
+    github: "https://github.com/IsaacAVazquez",
     link: null,
   },
   {
@@ -130,7 +130,7 @@ const projects: Project[] = [
     color: "from-vivid-blue to-vivid-green",
     icon: IconTrendingUp,
     metrics: "6-tier clustering, real-time updates",
-    github: "https://github.com/isaacvazquez",
+    github: "https://github.com/IsaacAVazquez",
     link: "/fantasy-football",
     detailedMetrics: [
       { label: "Data Points", value: "300+ players", improvement: "All positions" },

@@ -50,24 +50,25 @@ export function CommandPalette() {
       category: "social" as const,
     })),
     // Actions
-    {
-      id: "theme-toggle",
-      title: "Toggle Theme",
-      subtitle: "Switch between light and dark mode",
-      icon: IconCommand,
-      action: () => {
-        const isDark = document.documentElement.classList.contains("dark");
-        if (isDark) {
-          document.documentElement.classList.remove("dark");
-          localStorage.setItem("theme", "light");
-        } else {
-          document.documentElement.classList.add("dark");
-          localStorage.setItem("theme", "dark");
-        }
-        setIsOpen(false);
-      },
-      category: "action" as const,
-    },
+    // Theme toggle temporarily hidden
+    // {
+    //   id: "theme-toggle",
+    //   title: "Toggle Theme",
+    //   subtitle: "Switch between light and dark mode",
+    //   icon: IconCommand,
+    //   action: () => {
+    //     const isDark = document.documentElement.classList.contains("dark");
+    //     if (isDark) {
+    //       document.documentElement.classList.remove("dark");
+    //       localStorage.setItem("theme", "light");
+    //     } else {
+    //       document.documentElement.classList.add("dark");
+    //       localStorage.setItem("theme", "dark");
+    //     }
+    //     setIsOpen(false);
+    //   },
+    //   category: "action" as const,
+    // },
   ];
 
   // Filter commands based on search

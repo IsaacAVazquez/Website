@@ -3,6 +3,7 @@ import { Player, ScoringFormat } from '@/types';
 import { dataCache, CacheStatus } from '@/lib/dataCache';
 import { convertScoringFormat } from '@/lib/scoringFormatUtils';
 import { overallPlayers } from '@/data/overallData';
+import { logger } from '@/lib/logger';
 
 export interface UseOverallFantasyDataOptions {
   scoringFormat: ScoringFormat;
@@ -41,8 +42,14 @@ export function useOverallFantasyData({
   // Refs to prevent unnecessary re-renders
   const refreshTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isRefreshingRef = useRef<boolean>(false);
+  const scoringFormatRef = useRef<string>('');
 
   const scoringFormatParam = convertScoringFormat(scoringFormat);
+  
+  // Update ref when scoring format changes
+  useEffect(() => {
+    scoringFormatRef.current = scoringFormatParam;
+  }, [scoringFormatParam]);
 
   /**
    * Fetch overall data from API
@@ -50,7 +57,7 @@ export function useOverallFantasyData({
   const fetchOverallFromAPI = useCallback(async (): Promise<Player[] | null> => {
     try {
       const response = await fetch(
-        `/api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=${scoringFormatParam}`
+        `/api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=${scoringFormatRef.current}`
       );
       
       if (!response.ok) {
@@ -61,16 +68,16 @@ export function useOverallFantasyData({
       
       if (data.success && data.players && data.players.length > 0) {
         // Cache the fresh data for overall position
-        dataCache.set('OVERALL' as any, scoringFormatParam, data.players, 'api');
+        dataCache.set('OVERALL' as any, scoringFormatRef.current, data.players, 'api');
         return data.players;
       }
       
       return null;
     } catch (apiError) {
-      console.warn('API fetch failed for OVERALL:', apiError);
+      logger.warn('API fetch failed for OVERALL:', apiError);
       return null;
     }
-  }, [scoringFormatParam]);
+  }, []);
 
   /**
    * Load overall data with cache-first strategy
@@ -85,13 +92,13 @@ export function useOverallFantasyData({
     isRefreshingRef.current = true;
 
     try {
-      const currentCacheStatus = dataCache.getStatus('OVERALL' as any, scoringFormatParam);
+      const currentCacheStatus = dataCache.getStatus('OVERALL' as any, scoringFormatRef.current);
       setCacheStatus(currentCacheStatus);
 
       // Try to get cached data first
-      const cachedData = dataCache.get('OVERALL' as any, scoringFormatParam);
+      const cachedData = dataCache.get('OVERALL' as any, scoringFormatRef.current);
       
-      if (cachedData && !forceRefresh && dataCache.isFresh('OVERALL' as any, scoringFormatParam)) {
+      if (cachedData && !forceRefresh && dataCache.isFresh('OVERALL' as any, scoringFormatRef.current)) {
         // Use fresh cached data
         setPlayers(cachedData.data);
         setDataSource('cache');
@@ -124,10 +131,10 @@ export function useOverallFantasyData({
       }
       
     } catch (loadError) {
-      console.error('Failed to load overall fantasy data:', loadError);
+      logger.error('Failed to load overall fantasy data:', loadError);
       
       // Try cached data as fallback
-      const cachedData = dataCache.get('OVERALL' as any, scoringFormatParam);
+      const cachedData = dataCache.get('OVERALL' as any, scoringFormatRef.current);
       if (cachedData) {
         setPlayers(cachedData.data);
         setDataSource('cache');
@@ -157,18 +164,18 @@ export function useOverallFantasyData({
    * Clear cache for overall data
    */
   const clearCache = useCallback(() => {
-    dataCache.remove('OVERALL' as any, scoringFormatParam);
+    dataCache.remove('OVERALL' as any, scoringFormatRef.current);
     setCacheStatus('missing');
     // Reload data after clearing cache
     loadOverallData(true);
-  }, [scoringFormatParam, loadOverallData]);
+  }, [loadOverallData]);
 
   /**
    * Get cache information for UI display
    */
   const getCacheInfo = useCallback(() => {
-    return dataCache.getStatusDisplay('OVERALL' as any, scoringFormatParam);
-  }, [scoringFormatParam]);
+    return dataCache.getStatusDisplay('OVERALL' as any, scoringFormatRef.current);
+  }, []);
 
   /**
    * Setup auto-refresh interval
@@ -183,7 +190,7 @@ export function useOverallFantasyData({
 
       refreshTimeoutRef.current = setTimeout(() => {
         // Check if overall data needs refreshing
-        if (dataCache.needsRefresh('OVERALL' as any, scoringFormatParam)) {
+        if (dataCache.needsRefresh('OVERALL' as any, scoringFormatRef.current)) {
           loadOverallData(false); // Background refresh, don't force
         }
         setupAutoRefresh(); // Setup next refresh
@@ -197,7 +204,7 @@ export function useOverallFantasyData({
         clearTimeout(refreshTimeoutRef.current);
       }
     };
-  }, [scoringFormatParam, autoRefresh, refreshInterval, loadOverallData]);
+  }, [autoRefresh, refreshInterval, loadOverallData]);
 
   /**
    * Load data when scoring format changes

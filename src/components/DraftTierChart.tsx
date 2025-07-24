@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useMemo, useEffect, memo } from "react";
 import Image from "next/image";
 import { IconUser, IconTrendingUp } from "@tabler/icons-react";
 import { Player } from "@/types";
@@ -15,7 +14,7 @@ interface DraftTierChartProps {
   positionFilter: string;
 }
 
-export default function DraftTierChart({
+const DraftTierChart = memo(function DraftTierChart({
   players,
   allPlayers,
   scoringFormat,
@@ -23,35 +22,54 @@ export default function DraftTierChart({
 }: DraftTierChartProps) {
   const [hoveredPlayer, setHoveredPlayer] = useState<string | null>(null);
   const [selectedTier, setSelectedTier] = useState<number | null>(null);
+  const [visibleTierCount, setVisibleTierCount] = useState<number>(3); // Initially show only 3 tiers
+  
+  // Reset visible tier count when position or players change
+  useEffect(() => {
+    setVisibleTierCount(3);
+  }, [positionFilter, players.length]);
   
   // Use the cached image service
   const { preloadImages, getCachedImage, isLoading } = usePlayerImageCache();
 
+  // Pre-calculate player ranks to avoid O(n²) complexity
+  const playerRankMap = useMemo(() => {
+    const rankMap = new Map<string, number>();
+    if (allPlayers && Array.isArray(allPlayers)) {
+      allPlayers.forEach((player, index) => {
+        if (player && player.id) {
+          rankMap.set(player.id, index + 1);
+        }
+      });
+    }
+    return rankMap;
+  }, [allPlayers]);
+
   // Calculate tiers using unified system
   const tiers = useMemo(() => {
-    const maxTiers = positionFilter === "ALL" ? 12 : 8;
-    const scoringFormatStr = scoringFormat === "halfPPR" ? "HALF_PPR" : scoringFormat.toUpperCase();
-    return calculateUnifiedTiers(players, maxTiers, scoringFormatStr);
+    try {
+      if (!players || players.length === 0) {
+        return [];
+      }
+      const maxTiers = positionFilter === "ALL" ? 12 : 8;
+      const scoringFormatStr = scoringFormat === "halfPPR" ? "HALF_PPR" : scoringFormat.toUpperCase();
+      return calculateUnifiedTiers(players, maxTiers, scoringFormatStr);
+    } catch (error) {
+      console.error('Error calculating tiers:', error);
+      return [];
+    }
   }, [players, scoringFormat, positionFilter]);
 
-  // Smart preloading of images with position-based priority
+  // Only preload top tier images to avoid overwhelming the browser
   useEffect(() => {
-    if (players.length === 0) return;
+    if (players.length === 0 || tiers.length === 0) return;
 
-    // Preload images for visible players immediately
-    preloadImages(players);
-
-    // Smart preloading: if looking at specific position, preload likely next positions
-    if (positionFilter !== "ALL") {
-      const nextPositions = getNextLikelyPositions(positionFilter);
-      const nextPositionPlayers = allPlayers.filter(p => 
-        nextPositions.includes(p.position) && !players.includes(p)
-      ).slice(0, 20); // Limit to top 20 players per position
-      
-      // Preload in background with slight delay
-      setTimeout(() => preloadImages(nextPositionPlayers), 500);
+    // Only preload images for the first tier (elite players)
+    const firstTierPlayers = tiers[0]?.players || [];
+    if (firstTierPlayers.length > 0) {
+      preloadImages(firstTierPlayers.slice(0, 10)); // Limit to top 10 players
     }
-  }, [players, allPlayers, positionFilter, preloadImages]);
+  }, [tiers, preloadImages]);
 
   // Helper function to determine likely next positions user might view
   const getNextLikelyPositions = (currentPosition: string): string[] => {
@@ -66,8 +84,8 @@ export default function DraftTierChart({
     return positionSequences[currentPosition] || [];
   };
 
-  // Position colors
-  const getPositionColor = (position: string) => {
+  // Position colors - memoized to avoid recreating on every render
+  const getPositionColor = useMemo(() => {
     const colors: Record<string, string> = {
       QB: "bg-red-500/20 text-red-400 border-red-500/30",
       RB: "bg-green-500/20 text-green-400 border-green-500/30",
@@ -76,8 +94,8 @@ export default function DraftTierChart({
       K: "bg-purple-500/20 text-purple-400 border-purple-500/30",
       DST: "bg-orange-500/20 text-orange-400 border-orange-500/30",
     };
-    return colors[position] || "bg-slate-700/20 text-slate-400 border-slate-500/30";
-  };
+    return (position: string) => colors[position] || "bg-slate-700/20 text-slate-400 border-slate-500/30";
+  }, []);
 
   if (players.length === 0) {
     return (
@@ -87,27 +105,21 @@ export default function DraftTierChart({
     );
   }
 
+  // Only show visible tiers
+  const visibleTiers = tiers.slice(0, visibleTierCount);
+  const hasMoreTiers = tiers.length > visibleTierCount;
+
   return (
     <div className="space-y-6">
-      {tiers.map((tier, tierIndex) => {
+      {visibleTiers.map((tier, tierIndex) => {
         const tierColor = tier.color;
         const isSelected = selectedTier === tier.tier;
         const isOtherSelected = selectedTier !== null && selectedTier !== tier.tier;
 
         return (
-          <motion.div
+          <div
             key={tier.tier}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ 
-              opacity: isOtherSelected ? 0.5 : 1, 
-              y: 0,
-              scale: isSelected ? 1.02 : 1
-            }}
-            transition={{ 
-              delay: tierIndex * 0.05,
-              scale: { type: "spring", stiffness: 300 }
-            }}
-            className="relative"
+            className={`relative transition-all duration-300 ${isOtherSelected ? 'opacity-50' : 'opacity-100'} ${isSelected ? 'scale-[1.02]' : 'scale-100'}`}
             onMouseEnter={() => setSelectedTier(tier.tier)}
             onMouseLeave={() => setSelectedTier(null)}
           >
@@ -120,12 +132,11 @@ export default function DraftTierChart({
                   boxShadow: isSelected ? `0 0 20px ${tierColor}` : 'none'
                 }}
               />
-              <motion.div 
-                className="flex items-center gap-3"
-                animate={{ scale: isSelected ? 1.1 : 1 }}
+              <div 
+                className={`flex items-center gap-3 transition-transform duration-300 ${isSelected ? 'scale-110' : 'scale-100'}`}
               >
                 <div 
-                  className="w-3 h-3 rounded-full animate-pulse"
+                  className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: tierColor }}
                 />
                 <h3 
@@ -137,7 +148,7 @@ export default function DraftTierChart({
                 <span className="text-sm text-slate-500">
                   Ranks {tier.minRank}-{tier.maxRank}
                 </span>
-              </motion.div>
+              </div>
               <div 
                 className="h-px flex-1 transition-all duration-300"
                 style={{ 
@@ -161,28 +172,18 @@ export default function DraftTierChart({
                 {tier.players.map((player, playerIndex) => {
                   const imageUrl = getCachedImage(`${player.name}-${player.team}`);
                   const isHovered = hoveredPlayer === player.id;
-                  // Calculate integer rank based on position in allPlayers list
-                  const overallRank = allPlayers.findIndex(p => p.id === player.id) + 1;
+                  // Get pre-calculated rank (O(1) lookup instead of O(n) search)
+                  const overallRank = playerRankMap.get(player.id) || 999;
 
                   return (
-                    <motion.div
+                    <div
                       key={player.id}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ 
-                        opacity: 1, 
-                        scale: isHovered ? 1.05 : 1,
-                        y: isHovered ? -4 : 0
-                      }}
-                      transition={{ 
-                        delay: tierIndex * 0.05 + playerIndex * 0.01,
-                        scale: { type: "spring", stiffness: 400 }
-                      }}
                       onMouseEnter={() => setHoveredPlayer(player.id)}
                       onMouseLeave={() => setHoveredPlayer(null)}
                       className={`
                         relative bg-slate-800/50 border rounded-lg p-3
-                        transition-all duration-200 cursor-pointer
-                        ${isHovered ? 'border-electric-blue shadow-lg shadow-electric-blue/20' : 'border-slate-700'}
+                        transition-colors duration-200 cursor-pointer
+                        ${isHovered ? 'border-electric-blue' : 'border-slate-700'}
                       `}
                     >
                       {/* Rank Badge */}
@@ -207,6 +208,7 @@ export default function DraftTierChart({
                               fill
                               className="rounded-full object-cover border-2 border-slate-700"
                               sizes="64px"
+                              loading="lazy"
                               onError={(e) => {
                                 e.currentTarget.style.display = 'none';
                                 e.currentTarget.nextElementSibling?.classList.remove('hidden');
@@ -249,28 +251,28 @@ export default function DraftTierChart({
                         )}
                       </div>
 
-                      {/* Hover Effect Glow */}
-                      <AnimatePresence>
-                        {isHovered && (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="absolute inset-0 rounded-lg pointer-events-none"
-                            style={{
-                              background: `radial-gradient(circle at center, ${tierColor}10 0%, transparent 100%)`,
-                            }}
-                          />
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
+                    </div>
                   );
                 })}
               </div>
             </div>
-          </motion.div>
+          </div>
         );
       })}
+      
+      {/* Show More Button */}
+      {hasMoreTiers && (
+        <div className="text-center mt-8">
+          <button
+            onClick={() => setVisibleTierCount(prev => Math.min(prev + 3, tiers.length))}
+            className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg border border-slate-700 hover:border-electric-blue transition-all duration-200"
+          >
+            Show More Tiers ({tiers.length - visibleTierCount} remaining)
+          </button>
+        </div>
+      )}
     </div>
   );
-}
+});
+
+export default DraftTierChart;

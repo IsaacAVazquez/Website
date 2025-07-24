@@ -2,9 +2,8 @@
 
 import { Heading } from "@/components/ui/Heading";
 import { motion } from "framer-motion";
-import { IconTrendingUp, IconTarget, IconChartBar, IconDatabase, IconEye, IconBolt, IconBrain, IconDeviceMobile } from "@tabler/icons-react";
+import { IconTrendingUp, IconChartBar, IconDatabase, IconDeviceMobile } from "@tabler/icons-react";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { MorphButton } from "@/components/ui/MorphButton";
 import Link from "next/link";
 
 interface FantasyOffering {
@@ -23,8 +22,8 @@ interface FantasyOffering {
 const fantasyOfferings: FantasyOffering[] = [
   {
     id: 1,
-    title: "Interactive Tier Visualizations",
-    description: "Advanced clustering algorithms analyze 300+ players across all positions with real-time data visualization",
+    title: "Interactive Tier Graph",
+    description: "Advanced clustering algorithms analyze 300+ players across all positions with real-time D3.js visualization",
     features: ["K-Means clustering", "D3.js visualizations", "Real-time data sync", "Position-specific analysis"],
     type: "featured",
     color: "from-electric-blue to-matrix-green",
@@ -35,20 +34,8 @@ const fantasyOfferings: FantasyOffering[] = [
   },
   {
     id: 2,
-    title: "Static Tier Pages",
-    description: "Clean, fast-loading tier lists optimized for quick reference during drafts",
-    features: ["Instant loading", "Mobile optimized", "Printable format", "Position filters"],
-    type: "normal",
-    color: "from-matrix-green to-cyber-teal",
-    icon: IconTarget,
-    link: "/fantasy-football/tiers/overall",
-    metrics: "Sub-100ms load times",
-    status: "live"
-  },
-  {
-    id: 3,
-    title: "Draft Command Center",
-    description: "Comprehensive draft interface with tier visualization and real-time player tracking",
+    title: "Draft Tier Cards",
+    description: "Comprehensive draft interface with tier visualization and real-time player tracking for optimal draft strategy",
     features: ["Live tier updates", "Draft position tracking", "Player comparison", "Strategic insights"],
     type: "normal", 
     color: "from-neon-purple to-electric-blue",
@@ -58,39 +45,15 @@ const fantasyOfferings: FantasyOffering[] = [
     status: "live"
   },
   {
-    id: 4,
-    title: "Real-time Data Pipeline",
-    description: "Automated data collection and processing from FantasyPros with smart caching",
-    features: ["API integration", "Intelligent caching", "Error handling", "Performance optimization"],
-    type: "small",
+    id: 3,
+    title: "Data Management",
+    description: "Administrative interface for real-time data collection, processing, and performance monitoring with smart caching",
+    features: ["API integration", "Data pipeline", "Cache management", "Performance monitoring"],
+    type: "normal",
     color: "from-cyber-teal to-matrix-green",
     icon: IconDatabase,
-    link: "/fantasy-football",
-    metrics: "Daily updates",
-    status: "live"
-  },
-  {
-    id: 5,
-    title: "Player Analytics",
-    description: "Advanced clustering algorithms reveal hidden patterns in player performance data",
-    features: ["Machine learning", "Statistical analysis", "Pattern recognition", "Predictive modeling"],
-    type: "small",
-    color: "from-warning-amber to-error-red",
-    icon: IconBrain,
-    link: "/fantasy-football",
-    metrics: "ML-powered insights",
-    status: "live"
-  },
-  {
-    id: 6,
-    title: "Mobile-Optimized Experience",
-    description: "Responsive design ensures optimal performance across all devices and screen sizes",
-    features: ["Touch interactions", "Responsive layouts", "Fast loading", "Offline capable"],
-    type: "small",
-    color: "from-electric-blue to-neon-purple",
-    icon: IconDeviceMobile,
-    link: "/fantasy-football",
-    metrics: "100% mobile responsive",
+    link: "/admin",
+    metrics: "Live data updates",
     status: "live"
   }
 ];
@@ -159,30 +122,25 @@ export function FantasyFootballLandingContent() {
 
       {/* Offerings Grid */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px] mb-16"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-[280px] mb-16"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {fantasyOfferings.map((offering) => {
           const Icon = offering.icon;
-          const gridClass = 
-            offering.type === "featured" 
-              ? "md:col-span-2 md:row-span-2" 
-              : offering.type === "normal"
-              ? "md:row-span-2"
-              : "md:row-span-1";
 
           return (
             <motion.div key={offering.id} variants={itemVariants}>
-              <GlassCard
-                elevation={offering.type === "featured" ? 4 : 3}
-                interactive={true}
-                cursorGlow={true}
-                noiseTexture={true}
-                floating={offering.type === "featured"}
-                className={`${gridClass} overflow-hidden h-full`}
-              >
+              <Link href={offering.link} className="block h-full">
+                <GlassCard
+                  elevation={offering.type === "featured" ? 4 : 3}
+                  interactive={true}
+                  cursorGlow={true}
+                  noiseTexture={true}
+                  floating={offering.type === "featured"}
+                  className="overflow-hidden h-full cursor-pointer"
+                >
                 {/* Background Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${offering.color} opacity-10 group-hover:opacity-20 transition-opacity breathing-gradient`} />
                 
@@ -242,21 +200,9 @@ export function FantasyFootballLandingContent() {
                     </div>
                   )}
 
-                  {/* Action Button */}
-                  <div className="mt-auto">
-                    <Link href={offering.link}>
-                      <MorphButton
-                        variant="outline"
-                        size="sm"
-                        className="w-full justify-center group"
-                      >
-                        <span>Explore Tool</span>
-                        <IconBolt className="h-4 w-4 ml-2 group-hover:text-matrix-green transition-colors" />
-                      </MorphButton>
-                    </Link>
-                  </div>
                 </div>
-              </GlassCard>
+                </GlassCard>
+              </Link>
             </motion.div>
           );
         })}
@@ -308,39 +254,6 @@ export function FantasyFootballLandingContent() {
         </GlassCard>
       </motion.div>
 
-      {/* Call to Action */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
-        className="text-center"
-      >
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/fantasy-football">
-            <MorphButton
-              variant="primary"
-              size="lg"
-              icon={<IconTrendingUp className="h-5 w-5" />}
-              iconPosition="right"
-            >
-              Explore Interactive Tiers
-            </MorphButton>
-          </Link>
-          <Link href="/draft-tiers">
-            <MorphButton
-              variant="outline"
-              size="lg"
-              icon={<IconTarget className="h-5 w-5" />}
-              iconPosition="right"
-            >
-              View Draft Tiers
-            </MorphButton>
-          </Link>
-        </div>
-        <p className="mt-6 text-sm text-secondary">
-          Experience advanced fantasy football analytics with machine learning and real-time data processing
-        </p>
-      </motion.div>
     </>
   );
 }

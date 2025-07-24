@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { navlinks } from "@/constants/navlinks";
 import { twMerge } from "tailwind-merge";
@@ -15,21 +15,28 @@ export function FloatingNav() {
   const { isMobile } = useNavigation();
 
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Show nav when scrolling up, hide when scrolling down
-      if (currentScrollY < lastScrollY || currentScrollY < 100) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-      
-      setLastScrollY(currentScrollY);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const currentScrollY = window.scrollY;
+        
+        // Show nav when scrolling up, hide when scrolling down
+        if (currentScrollY < lastScrollY || currentScrollY < 100) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+        
+        setLastScrollY(currentScrollY);
+      }, 16); // Throttle to ~60fps
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, [lastScrollY]);
 
   const isActive = (href: string) => pathname === href;
@@ -155,8 +162,11 @@ export function GestureNavigation({ children }: { children: React.ReactNode }) {
   const [isDragging, setIsDragging] = useState(false);
   const [dragDirection, setDragDirection] = useState<"left" | "right" | null>(null);
   const pathname = usePathname();
+  const { isMobile } = useNavigation();
 
-  const handleNavigation = (direction: "left" | "right") => {
+  const router = useRouter();
+  
+  const handleNavigation = useCallback((direction: "left" | "right") => {
     // Simple navigation logic - cycle through main pages
     const pages = ["/", "/about", "/projects", "/resume", "/contact"];
     const currentIndex = pages.indexOf(pathname);
@@ -170,34 +180,39 @@ export function GestureNavigation({ children }: { children: React.ReactNode }) {
       nextIndex = (currentIndex - 1 + pages.length) % pages.length;
     }
     
-    // Use window.location for navigation to avoid import issues
-    window.location.href = pages[nextIndex];
-  };
+    // Use Next.js router for better performance
+    router.push(pages[nextIndex]);
+  }, [pathname, router]);
 
+  // Only enable drag on mobile to reduce performance overhead
+  const dragProps = isMobile ? {
+    drag: "x" as const,
+    dragConstraints: { left: 0, right: 0 },
+    dragElastic: 0.2,
+    onDragStart: () => setIsDragging(true),
+    onDragEnd: (_: any, info: any) => {
+      setIsDragging(false);
+      
+      // Trigger navigation based on swipe direction
+      const threshold = 100;
+      if (Math.abs(info.offset.x) > threshold) {
+        const direction = info.offset.x > 0 ? "right" : "left";
+        setDragDirection(direction);
+        
+        // Implement actual navigation logic
+        handleNavigation(direction);
+        
+        setTimeout(() => setDragDirection(null), 300);
+      }
+    }
+  } : {};
+  
   return (
     <motion.div
       className="relative min-h-screen"
-      drag="x"
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.2}
-      onDragStart={() => setIsDragging(true)}
-      onDragEnd={(_, info) => {
-        setIsDragging(false);
-        
-        // Trigger navigation based on swipe direction
-        const threshold = 100;
-        if (Math.abs(info.offset.x) > threshold) {
-          const direction = info.offset.x > 0 ? "right" : "left";
-          setDragDirection(direction);
-          
-          // Implement actual navigation logic
-          handleNavigation(direction);
-          
-          setTimeout(() => setDragDirection(null), 300);
-        }
-      }}
+      {...dragProps}
       style={{
-        cursor: isDragging ? "grabbing" : "grab",
+        cursor: isMobile && isDragging ? "grabbing" : isMobile ? "grab" : "default",
       }}
     >
       {/* Swipe indicators */}

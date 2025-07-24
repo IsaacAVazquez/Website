@@ -14,13 +14,13 @@ export interface ProjectStructuredData {
 
 export const siteConfig = {
   name: "Isaac Vazquez",
-  title: "Fantasy Football Analytics & QA Engineer",
+  title: "Tech Enthusiast & Fantasy Football Analytics",
   description: "Advanced fantasy football analytics and visualization tools by QA Engineer Isaac Vazquez. Interactive tier charts, clustering algorithms, real-time data processing, and mobile-optimized draft tools for competitive fantasy football. Built with expertise in data analytics and software quality.",
   url: "https://isaacavazquez.com",
   ogImage: "/og-image.png",
   links: {
     twitter: "https://twitter.com/isaacvazquez",
-    github: "https://github.com/isaacvazquez",
+    github: "https://github.com/IsaacAVazquez",
     linkedin: "https://linkedin.com/in/isaac-vazquez",
   },
   keywords: [

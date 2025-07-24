@@ -39,33 +39,31 @@ interface TerminalCommand {
 const commands: TerminalCommand[] = [
   {
     command: "whoami",
-    output: `isaac_vazquez // QA_ENGINEER
-uid=1001(isaac) gid=1001(qa_team) groups=1001(qa_team),1002(civic_tech),1003(coffee_addicts)
-home=/Users/isaac status=debugging_life since=2018`,
+    output: `isaacvazquez // QA ENGINEER | STRATEGIC THINKER | FUTURE BUILDER
+uid=1001(isaac) gid=1001(systems_thinking) groups=1001(cross_functional),1002(civic_tech),1003(coffee_addicts)
+home=/Users/isaac status=building_at_intersection_of_tech_strategy_impact since=2018`,
     delay: 1000,
   },
   {
-    command: "cat /proc/career/stats",
-    output: `Years in QA: ${personalMetrics.experience.yearsInQA}
-Bugs Squashed: ${personalMetrics.experience.bugsSquashed}
-Tests Written: ${personalMetrics.experience.testsWritten.toLocaleString()}
-Releases Shipped: ${personalMetrics.experience.releasesShipped}
-Coffee Consumed: ${personalMetrics.experience.coffeeConsumed} cups
-Uptime Achieved: ${personalMetrics.experience.uptimeAchieved}%
-Late Night Deploys: ${personalMetrics.experience.lateNightDeployments}`,
+    command: "curl /career/status",
+    output: `Systems Delivered: 12+
+Users Impacted: ${personalMetrics.experience.votersReached.toLocaleString()}+
+Critical Issues Prevented: ${personalMetrics.experience.bugsSquashed.toLocaleString()}+
+Cross-functional Meetings Survived: 287
+Cups of Coffee: ${personalMetrics.experience.coffeeConsumed}`,
     delay: 2000,
   },
   {
     command: "systemctl status isaac.service",
-    output: `● isaac.service - Quality Assurance Engineer
+    output: `● isaac.service - Tech-Backed Problem Solver
    Loaded: loaded (/etc/systemd/system/isaac.service; enabled)
-   Active: active (running) since 2018-12-01
+   Active: ACTIVE - building at the intersection of tech, strategy, and user impact
    Process: ${personalMetrics.experience.votersReached.toLocaleString()} voters served
    Memory: ${personalMetrics.experience.yearsInQA}+ years experience loaded
    CGroup: /system.slice/isaac.service
-           ├─ problem-solving.exe
-           ├─ bug-detection.daemon
-           └─ quality-assurance.worker`,
+           ├─ systems-thinking.exe
+           ├─ cross-functional-collaboration.daemon
+           └─ strategic-problem-solving.worker`,
     delay: 3000,
   },
   {
@@ -267,7 +265,7 @@ export function TerminalHero() {
                 transition={{ delay: 0.8 }}
                 className="text-cyber text-matrix-green text-xl"
               >
-                QA ENGINEER // QUALITY ADVOCATE // PROBLEM SOLVER
+                TECH-BACKED PROBLEM SOLVER // SYSTEMS THINKER // FUTURE BUILDER
               </motion.div>
             </div>
 
@@ -277,9 +275,10 @@ export function TerminalHero() {
               transition={{ delay: 1.0 }}
               className="text-lg text-slate-300 leading-relaxed max-w-lg"
             >
-              Ensuring 99.9% uptime for 60M+ users through strategic testing and automation. 
-              I transform complex problems into reliable solutions, preventing critical bugs 
-              before they impact your business.
+              I design and scale systems that work — whether it's powering tools for 60M+ voters 
+              or leading cross-functional releases across engineering, product, and security. 
+              Currently expanding my toolkit at Berkeley Haas, I'm focused on solving complex, 
+              high-impact problems at the intersection of technology, strategy, and people.
             </motion.p>
 
             <motion.div

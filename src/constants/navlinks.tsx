@@ -12,7 +12,7 @@ export const navlinks = [
     icon: IconMessage2,
   },
   {
-    href: "/projects",
+    href: "/fantasy-football",
     label: "Fantasy Football",
     icon: IconTrophy,
   },

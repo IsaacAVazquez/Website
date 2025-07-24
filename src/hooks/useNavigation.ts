@@ -9,7 +9,7 @@ export function useNavigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   
-  // Mobile detection with proper SSR handling
+  // Mobile detection with proper SSR handling and throttling
   useEffect(() => {
     const checkMobile = () => {
       // Use same breakpoint as Tailwind's md: (768px)
@@ -25,23 +25,35 @@ export function useNavigation() {
     // Initial check
     checkMobile();
     
-    // Listen for resize events
+    // Throttled resize handler for better performance
+    let resizeTimeout: NodeJS.Timeout;
     const handleResize = () => {
-      checkMobile();
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(checkMobile, 100); // Throttle to 100ms
     };
     
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimeout);
+    };
   }, []);
   
-  // Scroll detection for FloatingNav
+  // Scroll detection for FloatingNav with throttling
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolled(window.scrollY > 100);
+      }, 16); // Throttle to ~60fps
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
   
   // Auto-close sidebar on route change (mobile)
@@ -63,11 +75,11 @@ export function useNavigation() {
   const isFantasyFootballPage = pathname.startsWith('/fantasy-football');
   
   // Navigation strategy:
-  // - Home page: Always use FloatingNav (all screen sizes for immersive experience)
+  // - Home page: Sidebar on desktop, no FloatingNav (clean experience with command palette)
   // - Fantasy pages: FloatingNav (need full width for charts)
   // - Other pages: Sidebar on desktop, FloatingNav on mobile
-  const showSidebar = !isMobile && pathname !== '/' && !isFantasyFootballPage;
-  const showFloatingNav = pathname === '/' || isMobile || isFantasyFootballPage;
+  const showSidebar = !isMobile && !isFantasyFootballPage;
+  const showFloatingNav = isMobile && !isFantasyFootballPage;
   
   return {
     isMobile,

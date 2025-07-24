@@ -11,8 +11,11 @@ interface DataFreshnessIndicatorProps {
 export function DataFreshnessIndicator({ position, className = '' }: DataFreshnessIndicatorProps) {
   const [metadata, setMetadata] = useState<DataFileMetadata | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+    
     async function fetchMetadata() {
       try {
         const response = await fetch(`/api/data-metadata${position ? `?position=${position}` : ''}`);
@@ -30,7 +33,7 @@ export function DataFreshnessIndicator({ position, className = '' }: DataFreshne
     fetchMetadata();
   }, [position]);
 
-  if (loading || !metadata) {
+  if (loading || !metadata || !isClient) {
     return null;
   }
 

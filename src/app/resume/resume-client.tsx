@@ -5,7 +5,7 @@ import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { motion } from "framer-motion";
-import { IconDownload, IconMail, IconBrandLinkedin } from "@tabler/icons-react";
+import { IconDownload, IconMail, IconBrandLinkedin, IconPhone } from "@tabler/icons-react";
 import Link from "next/link";
 
 const skills = [
@@ -38,9 +38,9 @@ export default function Resume() {
   return (
     <div className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900/50 via-slate-800/30 to-slate-700/20">
       {/* Background Grid Effect */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage: `
               linear-gradient(rgba(0, 245, 255, 0.1) 1px, transparent 1px),
@@ -81,11 +81,19 @@ export default function Resume() {
                   </Heading>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-300">
                     <a
-                      href="mailto:isaacavazquez95@gmail.com"
+                      href="tel:(850)591-0159"
+                      className="flex items-center gap-2 hover:text-electric-blue transition font-terminal text-sm"
+                    >
+                      <IconPhone className="w-4 h-4" />
+                      (850) 591-0159
+                    </a>
+                    <span className="hidden sm:inline text-matrix-green/50">•</span>
+                    <a
+                      href="mailto:isaacvazquez@mba.berkeley.edu"
                       className="flex items-center gap-2 hover:text-electric-blue transition font-terminal text-sm"
                     >
                       <IconMail className="w-4 h-4" />
-                      isaacavazquez95@gmail.com
+                      isaacvazquez@mba.berkeley.edu
                     </a>
                     <span className="hidden sm:inline text-matrix-green/50">•</span>
                     <a
@@ -111,6 +119,9 @@ export default function Resume() {
             </div>
 
             <div className="space-y-2 text-slate-300">
+              <div className="text-matrix-green font-terminal text-sm uppercase tracking-wider">
+                TECH-BACKED PROBLEM SOLVER // SYSTEMS THINKER // FUTURE BUILDER
+              </div>
               {showMBA && (
                 <motion.p 
                   initial={{ opacity: 0, y: -10 }}
@@ -121,7 +132,7 @@ export default function Resume() {
                 </motion.p>
               )}
               <p className="text-base leading-relaxed">
-                QA Engineer with a record of advancing product quality, release velocity, and cross-functional team collaboration in high-growth tech and civic engagement organizations.
+                I design and scale systems that work — whether it's powering tools for 60M+ voters or leading cross-functional releases across engineering, product, and security. Currently expanding my toolkit at Berkeley Haas, I'm focused on solving complex, high-impact problems at the intersection of technology, strategy, and people.
               </p>
             </div>
           </div>
@@ -153,7 +164,8 @@ export default function Resume() {
               )}
               <div className="border-l-2 border-matrix-green/30 pl-4">
                 <h3 className="font-bold text-matrix-green text-lg">Florida State University</h3>
-                <p className="text-slate-400">B.A., Political Science and International Affairs, magna cum laude</p>
+                <p className="text-slate-400">Bachelor of Arts, Political Science and International Affairs, magna cum laude</p>
+                <p className="text-sm text-slate-500 font-terminal">Phi Beta Kappa, President's List, Dean's List</p>
                 <p className="text-sm text-slate-500 font-terminal">December 2018</p>
               </div>
             </div>
@@ -176,7 +188,7 @@ export default function Resume() {
             <div className="space-y-6">
               {/* CiviTech */}
               <div className="border-l-2 border-electric-blue/30 pl-4">
-                <h3 className="font-bold text-matrix-green text-xl mb-3">CIVITECH, AUSTIN, TX</h3>
+                <h3 className="font-bold text-matrix-green text-xl mb-3">CIVITECH, Austin, TX</h3>
                 
                 <div className="space-y-4">
                   <div>
@@ -187,15 +199,15 @@ export default function Resume() {
                     <ul className="space-y-1 text-slate-300">
                       <li className="flex items-start">
                         <span className="text-matrix-green mr-2">▸</span>
-                        <span>Orchestrated release-governance framework integrating QA, DevOps, and Security workflows—cutting critical production defects by 50% quarter over quarter.</span>
+                        <span>Orchestrate organization-wide release-governance framework integrating QA, DevOps, and Security workflows, reducing critical production defects by 50% quarter over quarter</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-matrix-green mr-2">▸</span>
-                        <span>Designed unified automation framework, enabling same-day validation of releases and faster stakeholder sign-off.</span>
+                        <span>Design a unified automation framework across applications, cutting end-to-end regression time by two days, enabling same-day validation of critical releases and strengthening stakeholder confidence in deployments</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-matrix-green mr-2">▸</span>
-                        <span>Represented QA in sprint reviews and backlog refinement, driving quality criteria and on-time launches.</span>
+                        <span>Represent team in bi-weekly sprint reviews and backlog refinements with leadership, translating feedback into actionable user stories, and securing quality acceptance criteria up-front, resulting in release of RunningMate</span>
                       </li>
                     </ul>
                   </div>
@@ -208,15 +220,15 @@ export default function Resume() {
                     <ul className="space-y-1 text-slate-300">
                       <li className="flex items-start">
                         <span className="text-matrix-green mr-2">▸</span>
-                        <span>Directed scalable QA strategies for multiple products, increasing release efficiency by 30% and achieving near 100% uptime.</span>
+                        <span>Directed scalable QA strategies and executed QA processes across multiple development phases and products, collaborating with cross-functional teams, resulting in a 30% increase in release efficiency and near 100% uptime</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-matrix-green mr-2">▸</span>
-                        <span>Executed 400+ manual and automated tests with JMeter, Postman, and Cypress.</span>
+                        <span>Increased application performance and user satisfaction by executing 400+ manual and automated tests using JMeter, Postman, and Cypress</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-matrix-green mr-2">▸</span>
-                        <span>Used data insights to boost user engagement for outreach to 60M+ voters.</span>
+                        <span>Served as a primary driver for identifying product opportunities by analyzing user behavior and feedback, shaping vision and feature set of TextOut, leading to a 20% increase in user engagement and outreach to 60M+ unique voters in 2024</span>
                       </li>
                     </ul>
                   </div>
@@ -225,37 +237,58 @@ export default function Resume() {
 
               {/* Open Progress */}
               <div className="border-l-2 border-electric-blue/30 pl-4">
-                <h3 className="font-bold text-matrix-green text-xl mb-3">Open Progress, Los Angeles, CA</h3>
+                <h3 className="font-bold text-matrix-green text-xl mb-3">OPEN PROGRESS, Los Angeles, CA</h3>
                 
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between items-start mb-2">
                       <h4 className="font-semibold text-electric-blue text-lg">Client Services Manager</h4>
-                      <span className="text-sm text-slate-500 font-terminal">Jan 2021–Dec 2021</span>
+                      <span className="text-sm text-slate-500 font-terminal">January 2021–December 2021</span>
                     </div>
-                    <p className="text-slate-300">
-                      Led digital voter engagement campaigns for 80+ programs, achieving 100% on-time delivery and driving 40M+ voter conversations.
-                    </p>
+                    <ul className="space-y-1 text-slate-300">
+                      <li className="flex items-start">
+                        <span className="text-matrix-green mr-2">▸</span>
+                        <span>Led multi-channel voter engagement campaigns, facilitating milestone alignment and maintaining 100% on-time delivery of campaign messaging across 80+ digital programs</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-matrix-green mr-2">▸</span>
+                        <span>Leveraged data analytics to refine campaign strategies and messaging, surfacing key voter issues, leading to a 25% increase in voter engagement and campaign participation across key initiatives</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-matrix-green mr-2">▸</span>
+                        <span>Spearheaded strategic alignment of client programs with broader organizational goals, driving over 40 million actionable voter conversations</span>
+                      </li>
+                    </ul>
                   </div>
 
                   <div>
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-electric-blue text-lg">Digital & Data Associate</h4>
-                      <span className="text-sm text-slate-500 font-terminal">Sep 2019–Dec 2020</span>
+                      <h4 className="font-semibold text-electric-blue text-lg">Digital and Data Associate</h4>
+                      <span className="text-sm text-slate-500 font-terminal">September 2019–December 2020</span>
                     </div>
-                    <p className="text-slate-300">
-                      Developed campaign dashboards and analytics for 20+ clients, improving decision speed by 40% and optimizing engagement strategy.
-                    </p>
+                    <ul className="space-y-1 text-slate-300">
+                      <li className="flex items-start">
+                        <span className="text-matrix-green mr-2">▸</span>
+                        <span>Improved campaign decision-making speed by 40% and enhanced strategy formulation by designing and maintaining intuitive data dashboards, enabling real-time insights</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-matrix-green mr-2">▸</span>
+                        <span>Conducted in-depth analysis of campaign metrics across 20+ client programs, uncovering trends in time-of-day engagement and audience segmentation, shaping targeting decisions and enhanced voter contact efficiency</span>
+                      </li>
+                    </ul>
                   </div>
 
                   <div>
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-electric-blue text-lg">Digital & Communications Intern</h4>
-                      <span className="text-sm text-slate-500 font-terminal">Jun 2019–Aug 2019</span>
+                      <h4 className="font-semibold text-electric-blue text-lg">Digital and Communications Intern</h4>
+                      <span className="text-sm text-slate-500 font-terminal">June 2019–August 2019</span>
                     </div>
-                    <p className="text-slate-300">
-                      Enhanced email targeting and performance monitoring, boosting client fundraising list growth by 500%.
-                    </p>
+                    <ul className="space-y-1 text-slate-300">
+                      <li className="flex items-start">
+                        <span className="text-matrix-green mr-2">▸</span>
+                        <span>Optimized email targeting, segmentation, and performance monitoring, contributing to improved fundraising outcomes for clients, growing client email fundraising lists by over 500%</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -297,6 +330,40 @@ export default function Resume() {
                   {skill}
                 </motion.span>
               ))}
+            </div>
+          </GlassCard>
+        </motion.section>
+
+        {/* Additional Section */}
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-8"
+        >
+          <GlassCard elevation={3} className="p-6">
+            <Heading as="h2" className="text-2xl font-bold mb-4 text-electric-blue font-heading flex items-center gap-2">
+              <div className="w-1 h-6 bg-electric-blue" />
+              ADDITIONAL
+            </Heading>
+            
+            <div className="space-y-3 text-slate-300">
+              <div className="flex items-start">
+                <span className="text-matrix-green mr-2">▸</span>
+                <span>Management Leadership for Tomorrow (MLT), MBA Professional Development Fellow (2025 - Present)</span>
+              </div>
+              <div className="flex items-start">
+                <span className="text-matrix-green mr-2">▸</span>
+                <span>Consortium for Graduate Study in Management, Fellow (2025 - Present)</span>
+              </div>
+              <div className="flex items-start">
+                <span className="text-matrix-green mr-2">▸</span>
+                <span>Management Leadership for Tomorrow (MLT), MBA Prep Fellow & Ambassador (2024 - 2025)</span>
+              </div>
+              <div className="flex items-start">
+                <span className="text-matrix-green mr-2">▸</span>
+                <span>Tallahassee Southern Model United Nations, Head of Home Government (2016), GA Director (2017), CND Director (2019)</span>
+              </div>
             </div>
           </GlassCard>
         </motion.section>

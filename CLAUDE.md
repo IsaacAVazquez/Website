@@ -225,7 +225,7 @@ src/
 
 ### Social Links
 - LinkedIn: https://linkedin.com/in/isaac-vazquez
-- GitHub: https://github.com/isaacvazquez
+- GitHub: https://github.com/isaacavazquez
 - Contact: isaacavazquez95@gmail.com
 
 ---

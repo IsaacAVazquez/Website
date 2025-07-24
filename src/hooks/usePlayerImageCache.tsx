@@ -7,7 +7,7 @@ import { Player } from '@/types';
 interface CachedImage {
   url: string;
   timestamp: number;
-  dimensions?: { width: number; height: number };
+  // Removed dimensions to reduce memory usage
 }
 
 interface ImageCacheContextValue {
@@ -27,11 +27,11 @@ const ImageCacheContext = createContext<ImageCacheContextValue | null>(null);
 
 // Cache configuration
 const CACHE_CONFIG = {
-  maxSize: 500, // Maximum number of images to cache
+  maxSize: 200, // Reduced maximum number of images to cache
   maxAge: 24 * 60 * 60 * 1000, // 24 hours in milliseconds
   storageKey: 'player-image-cache',
-  preloadBatchSize: 10, // Number of images to preload simultaneously
-  memoryLimit: 50 * 1024 * 1024, // 50MB memory limit
+  preloadBatchSize: 3, // Reduced to prevent overwhelming the browser
+  memoryLimit: 25 * 1024 * 1024, // Reduced to 25MB memory limit
 };
 
 // Position priority for smart preloading
@@ -103,10 +103,8 @@ export function PlayerImageCacheProvider({ children }: { children: ReactNode }) 
       cache.forEach((cachedImage) => {
         // Estimate memory usage based on URL length (rough approximation)
         totalSize += cachedImage.url.length * 2; // 2 bytes per character
-        if (cachedImage.dimensions) {
-          // Rough estimate for image data in memory
-          totalSize += cachedImage.dimensions.width * cachedImage.dimensions.height * 4; // 4 bytes per pixel
-        }
+        // Estimate 50KB per image URL (conservative estimate)
+        totalSize += 50 * 1024;
       });
       
       setStats(prev => ({ ...prev, memoryUsage: totalSize }));
@@ -156,13 +154,12 @@ export function PlayerImageCacheProvider({ children }: { children: ReactNode }) 
     return null;
   }, [cache]);
 
-  const cacheImage = useCallback((playerKey: string, url: string, dimensions?: { width: number; height: number }) => {
+  const cacheImage = useCallback((playerKey: string, url: string) => {
     setCache(prev => {
       const newCache = new Map(prev);
       newCache.set(playerKey, {
         url,
         timestamp: Date.now(),
-        dimensions,
       });
 
       // Enforce cache size limit
@@ -213,9 +210,7 @@ export function PlayerImageCacheProvider({ children }: { children: ReactNode }) 
     try {
       const imageUrl = await PlayerImageService.getPlayerImageUrl(player);
       if (imageUrl) {
-        // Get image dimensions for better caching
-        const dimensions = await getImageDimensions(imageUrl);
-        cacheImage(playerKey, imageUrl, dimensions);
+        cacheImage(playerKey, imageUrl);
         
         console.log(`📸 Cached image for ${player.name}: ${imageUrl}`);
         return imageUrl;
@@ -233,14 +228,6 @@ export function PlayerImageCacheProvider({ children }: { children: ReactNode }) 
     return null;
   }, [getPlayerKey, getCachedImage, cacheImage, loadingSet]);
 
-  const getImageDimensions = useCallback((url: string): Promise<{ width: number; height: number } | undefined> => {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => resolve({ width: img.width, height: img.height });
-      img.onerror = () => resolve(undefined);
-      img.src = url;
-    });
-  }, []);
 
   const preloadImages = useCallback(async (players: Player[]): Promise<void> => {
     // Sort players by position priority for smart preloading

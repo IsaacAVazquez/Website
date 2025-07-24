@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { useState, useMemo, useEffect } from "react";
 import { IconFilter, IconAdjustments, IconRefresh, IconDatabase } from "@tabler/icons-react";
 import { Heading } from "@/components/ui/Heading";
 import DraftTierChart from "@/components/DraftTierChart";
 import { ScoringFormat as ScoringFormatType } from "@/types";
 import { useAllFantasyData } from "@/hooks/useAllFantasyData";
 import { useOverallFantasyData } from "@/hooks/useOverallFantasyData";
+import { logger } from '@/lib/logger';
 
 type ScoringFormat = "standard" | "halfPPR" | "ppr";
 type PositionFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "FLEX" | "K" | "DST";
@@ -19,21 +19,22 @@ export default function DraftTiersContent() {
   // Convert local scoring format to the type expected by the hook
   const apiScoringFormat: ScoringFormatType = scoringFormat === 'halfPPR' ? 'HALF_PPR' : scoringFormat.toUpperCase() as ScoringFormatType;
 
-  // Load players using appropriate data source
+  // Choose data source based on position filter
+  const useOverallData = positionFilter === "ALL";
+
+  // Load players using appropriate data source - only one at a time
   const allPositionsData = useAllFantasyData({
     scoringFormat: apiScoringFormat,
-    autoRefresh: true,
+    autoRefresh: !useOverallData, // Only refresh when active
     refreshInterval: 10 * 60 * 1000 // 10 minutes
   });
 
   const overallData = useOverallFantasyData({
     scoringFormat: apiScoringFormat,
-    autoRefresh: true,
+    autoRefresh: useOverallData, // Only refresh when active
     refreshInterval: 10 * 60 * 1000 // 10 minutes
   });
 
-  // Choose data source based on position filter
-  const useOverallData = positionFilter === "ALL";
   const rawData = useOverallData ? overallData : allPositionsData;
   
   const {
@@ -49,36 +50,71 @@ export default function DraftTiersContent() {
   // Optional: Cache info could be used for debugging
   // const cacheInfo = getCacheInfo();
 
+  // Debounced position filter to prevent excessive API calls
+  const [debouncedPositionFilter, setDebouncedPositionFilter] = useState(positionFilter);
+  const [isFilterChanging, setIsFilterChanging] = useState(false);
+  
+  useEffect(() => {
+    if (positionFilter !== debouncedPositionFilter) {
+      setIsFilterChanging(true);
+    }
+    
+    const timer = setTimeout(() => {
+      setDebouncedPositionFilter(positionFilter);
+      setIsFilterChanging(false);
+    }, 300); // 300ms debounce
+    
+    return () => clearTimeout(timer);
+  }, [positionFilter, debouncedPositionFilter]);
+
+  // Trigger data refresh when switching between ALL and other positions (simplified dependencies)
+  useEffect(() => {
+    if (useOverallData && overallData.players.length === 0 && !overallData.isLoading) {
+      overallData.refresh();
+    } else if (!useOverallData && allPositionsData.players.length === 0 && !allPositionsData.isLoading) {
+      allPositionsData.refresh();
+    }
+  }, [debouncedPositionFilter, useOverallData]); // Removed unstable function references
+
   // Filter players based on position
   const filteredPlayers = useMemo(() => {
-    let players = [...allPlayers];
-
-    // If we're using overall data (ALL), no additional filtering needed
-    if (useOverallData) {
-      // Overall data is already sorted by true overall rank
-      return players;
-    }
-
-    // Apply position filter for non-overall data
-    // @ts-ignore - Type assertion issue with union types
-    if (positionFilter !== "ALL") {
-      if (positionFilter === "FLEX") {
-        players = players.filter(p => ["RB", "WR", "TE"].includes(p.position));
-      } else {
-        // Type assertion since we know positionFilter is not "ALL" or "FLEX" here
-        players = players.filter(p => p.position === (positionFilter as Exclude<PositionFilter, "ALL" | "FLEX">));
+    try {
+      if (!allPlayers || allPlayers.length === 0) {
+        return [];
       }
+
+      let players = [...allPlayers];
+
+      // If we're using overall data (ALL), no additional filtering needed
+      if (useOverallData) {
+        // Overall data is already sorted by true overall rank
+        return players;
+      }
+
+      // Apply position filter for non-overall data
+      if (debouncedPositionFilter !== "ALL") {
+        if (debouncedPositionFilter === "FLEX") {
+          players = players.filter(p => p && p.position && ["RB", "WR", "TE"].includes(p.position));
+        } else {
+          // Type assertion since we know debouncedPositionFilter is not "ALL" or "FLEX" here
+          players = players.filter(p => p && p.position === (debouncedPositionFilter as Exclude<PositionFilter, "ALL" | "FLEX">));
+        }
+      }
+
+      // Sort by averageRank for position-specific data
+      players.sort((a, b) => {
+        if (!a || !b) return 0;
+        const aRank = parseFloat(a.averageRank?.toString() || "999");
+        const bRank = parseFloat(b.averageRank?.toString() || "999");
+        return aRank - bRank;
+      });
+
+      return players;
+    } catch (error) {
+      logger.error('Error filtering players:', error);
+      return [];
     }
-
-    // Sort by averageRank for position-specific data
-    players.sort((a, b) => {
-      const aRank = parseFloat(a.averageRank?.toString() || "999");
-      const bRank = parseFloat(b.averageRank?.toString() || "999");
-      return aRank - bRank;
-    });
-
-    return players;
-  }, [allPlayers, positionFilter, useOverallData]);
+  }, [allPlayers, debouncedPositionFilter, useOverallData]);
 
   const positionOptions: { value: PositionFilter; label: string }[] = [
     { value: "ALL", label: "All Positions" },
@@ -99,19 +135,10 @@ export default function DraftTiersContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
-      {/* Animated background effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 -left-4 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-matrix-green/20 rounded-full blur-3xl animate-pulse delay-700" />
-      </div>
 
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <Heading as="h1" className="text-center mb-4 text-4xl font-bold bg-gradient-to-r from-electric-blue to-matrix-green text-transparent bg-clip-text">
             Fantasy Draft Tiers
           </Heading>
@@ -119,15 +146,10 @@ export default function DraftTiersContent() {
             Interactive tier-based rankings to optimize your fantasy football draft strategy.
             Players are grouped by similar value to help you make the best picks.
           </p>
-        </motion.div>
+        </div>
 
         {/* Data Source Status */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05 }}
-          className="mb-6"
-        >
+        <div className="mb-6">
           <div className="flex items-center justify-center gap-4 text-sm">
             {/* Data Source Indicator */}
             <div className="flex items-center gap-2">
@@ -167,15 +189,10 @@ export default function DraftTiersContent() {
               ⚠️ {error}
             </div>
           )}
-        </motion.div>
+        </div>
 
         {/* Controls */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-lg p-6">
             <div className="space-y-6">
               {/* Position Filter */}
@@ -253,15 +270,10 @@ export default function DraftTiersContent() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Info Box */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <div className="bg-slate-900/30 backdrop-blur-sm border border-slate-800 rounded-lg p-4">
             <div className="flex items-start gap-3">
               <IconAdjustments className="text-electric-blue mt-1" size={20} />
@@ -277,15 +289,11 @@ export default function DraftTiersContent() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Tier Chart */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          {isLoading ? (
+        <div>
+          {isLoading || isFilterChanging ? (
             <div className="flex items-center justify-center h-96 bg-slate-900/30 backdrop-blur-sm border border-slate-800 rounded-lg">
               <div className="text-center">
                 <IconRefresh className="w-8 h-8 animate-spin text-electric-blue mx-auto mb-4" />
@@ -300,18 +308,13 @@ export default function DraftTiersContent() {
               players={filteredPlayers} 
               allPlayers={allPlayers}
               scoringFormat={scoringFormat}
-              positionFilter={positionFilter}
+              positionFilter={debouncedPositionFilter}
             />
           )}
-        </motion.div>
+        </div>
 
         {/* Data Source Info */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-8"
-        >
+        <div className="mt-8">
           <div className="bg-slate-900/30 backdrop-blur-sm border border-slate-800 rounded-lg p-4">
             <div className="flex items-start gap-3">
               <IconDatabase className="text-electric-blue mt-1" size={20} />
@@ -333,7 +336,7 @@ export default function DraftTiersContent() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

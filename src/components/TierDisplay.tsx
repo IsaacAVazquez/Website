@@ -18,15 +18,17 @@ export function TierDisplay({ tierGroups, position: _position, showImages = true
   // Use the cached image service
   const { preloadImages, getCachedImage, isLoading } = usePlayerImageCache();
 
-  // Preload images for all players in tier groups
+  // Preload images for only visible players to avoid performance issues
   useEffect(() => {
     if (!showImages || tierGroups.length === 0) return;
 
-    // Get all players from all tier groups
-    const allPlayers = tierGroups.flatMap(tierGroup => tierGroup.players);
+    // Only preload images for first 30 players to avoid overwhelming the browser
+    const playersToPreload = tierGroups
+      .flatMap(tierGroup => tierGroup.players)
+      .slice(0, 30);
     
     // Preload images using the cache
-    preloadImages(allPlayers);
+    preloadImages(playersToPreload);
   }, [tierGroups, showImages, preloadImages]);
 
   return (
