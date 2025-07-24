@@ -73,11 +73,12 @@ select:focus-visible {
   --terminal-text: #00FF00;
   --terminal-cursor: #00F5FF;
   
-  /* Glow Effects */
-  --glow-electric: 0 0 30px rgba(0, 245, 255, 0.6);
-  --glow-matrix: 0 0 30px rgba(57, 255, 20, 0.6);
-  --glow-purple: 0 0 30px rgba(191, 0, 255, 0.6);
-  --glow-amber: 0 0 30px rgba(255, 184, 0, 0.6);
+  /* Refined Glow Effects */
+  --glow-electric: 0 0 20px rgba(0, 245, 255, 0.3);
+  --glow-matrix: 0 0 20px rgba(57, 255, 20, 0.3);
+  --glow-purple: 0 0 20px rgba(191, 0, 255, 0.3);
+  --glow-amber: 0 0 20px rgba(255, 184, 0, 0.3);
+  --glow-subtle: 0 0 15px rgba(0, 245, 255, 0.2);
   
   /* Light Mode Professional */
   --bg-primary: rgba(248, 250, 252, 0.95);
@@ -243,14 +244,14 @@ body {
   border: 1px solid var(--electric-blue);
 }
 
-/* Cyberpunk Glow Effects */
+/* Refined Glow Effects */
 .glow-effect {
-  transition: all 0.3s ease;
+  transition: all var(--transition-standard);
 }
 
 .glow-effect:hover {
-  box-shadow: var(--glow-electric);
-  transform: translateY(-2px);
+  box-shadow: var(--glow-subtle);
+  transform: translateY(-1px);
 }
 
 .glow-matrix:hover {
@@ -261,9 +262,17 @@ body {
   box-shadow: var(--glow-purple);
 }
 
-/* Smooth Transitions */
+/* Standardized Smooth Transitions */
+:root {
+  --transition-fast: 150ms ease;
+  --transition-standard: 300ms ease;
+  --transition-slow: 600ms ease;
+  --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 * {
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition: color var(--transition-standard), background-color var(--transition-standard), border-color var(--transition-standard);
 }
 
 /* Advanced Glassmorphism System */
@@ -524,7 +533,7 @@ body {
   top: 6px;
 }
 
-/* Reduced motion preferences */
+/* Enhanced Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -535,10 +544,25 @@ body {
     scroll-behavior: auto !important;
   }
   
+  /* Disable specific animations */
   .floating,
   .breathing-gradient,
-  .animate-wiggle {
+  .animate-wiggle,
+  .morph-button,
+  .glass-interactive {
     animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Reduce motion for particles and background effects */
+  [class*="animate-"],
+  [class*="pulse"] {
+    animation: none !important;
+  }
+  
+  /* Maintain visual structure without motion */
+  .morph-button:hover {
+    transform: none !important;
   }
 }
 
@@ -581,4 +605,59 @@ a:focus-visible {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Custom Terminal Scrollbar */
+.terminal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--electric-blue) var(--terminal-bg);
+}
+
+.terminal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-scroll::-webkit-scrollbar-track {
+  background: var(--terminal-bg);
+  border-radius: 3px;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: var(--electric-blue);
+  border-radius: 3px;
+  border: 1px solid var(--terminal-border);
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--matrix-green);
+  box-shadow: 0 0 8px rgba(0, 245, 255, 0.3);
+}
+
+/* Terminal Scroll Fade Effects */
+.terminal-content {
+  position: relative;
+}
+
+.terminal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(to bottom, var(--terminal-bg), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.terminal-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(to top, var(--terminal-bg), transparent);
+  pointer-events: none;
+  z-index: 1;
 }

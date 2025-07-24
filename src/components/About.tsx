@@ -31,39 +31,40 @@ export default function About() {
   };
 
   return (
-    <section className="relative z-10 min-h-screen py-20 px-6 md:px-8 bg-gradient-to-br from-slate-900/50 via-slate-800/30 to-slate-700/20">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-10">
+    <section className="relative z-10 min-h-screen py-20 px-6 md:px-8 bg-gradient-to-br from-slate-900/40 via-slate-800/20 to-slate-700/10">
+      {/* Simplified Background Effects */}
+      <div className="absolute inset-0 opacity-5">
         <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(0, 245, 255, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 245, 255, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(0, 245, 255, 0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 245, 255, 0.05) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px'
+            backgroundSize: '60px 60px'
           }}
         />
       </div>
       
-      {/* Floating Particles */}
+      {/* Subtle Particles */}
       <div className="absolute inset-0">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-electric-blue rounded-full"
+            className="absolute w-1 h-1 bg-electric-blue/60 rounded-full"
             style={{
-              left: `${(i * 7) % 100}%`,
-              top: `${(i * 11) % 100}%`,
+              left: `${(i * 15 + 10) % 90}%`,
+              top: `${(i * 20 + 15) % 80}%`,
             }}
             animate={{
               y: [-10, 10],
-              opacity: [0.2, 0.8, 0.2],
+              opacity: [0.3, 0.7, 0.3],
             }}
             transition={{
-              duration: 4 + (i % 3),
+              duration: 4,
               repeat: Infinity,
-              delay: i * 0.3,
+              delay: i * 0.5,
+              ease: "easeInOut",
             }}
           />
         ))}

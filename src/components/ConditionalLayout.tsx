@@ -22,6 +22,8 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
 
   return (
     <GestureNavigation>
+      {/* Skip Link for Accessibility */}
+
       {/* Layout Container */}
       <div className={isFullWidthPage 
         ? "min-h-screen w-full" 
