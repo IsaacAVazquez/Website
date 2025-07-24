@@ -1,7 +1,6 @@
 "use client";
 
 import { useNavigation } from "@/hooks/useNavigation";
-import { Sidebar } from "@/components/ui/Sidebar";
 import { Footer } from "@/components/Footer";
 import { FloatingNav, GestureNavigation } from "@/components/ui/FloatingNav";
 import { CommandPalette } from "@/components/ui/CommandPalette";
@@ -12,9 +11,6 @@ interface ConditionalLayoutProps {
 
 export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const { 
-    sidebarOpen, 
-    toggleSidebar, 
-    showSidebar, 
     showFloatingNav, 
     pathname 
   } = useNavigation();
@@ -30,10 +26,6 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
         ? "min-h-screen w-full" 
         : "min-h-screen flex bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B]"
       }>
-        {/* Sidebar - show on pages that need it */}
-        {showSidebar && (
-          <Sidebar isOpen={sidebarOpen} onToggle={toggleSidebar} />
-        )}
         
         {/* Main Content */}
         <main 

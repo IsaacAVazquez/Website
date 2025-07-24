@@ -13,6 +13,8 @@
     "scrape-player-images-enhanced": "node scripts/enhanced-player-scraper.js"
   },
   "dependencies": {
+    "@mapbox/rehype-prism": "^0.9.0",
+    "@next/mdx": "^15.4.3",
     "@tabler/icons-react": "^3.34.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/d3": "^7.4.3",
