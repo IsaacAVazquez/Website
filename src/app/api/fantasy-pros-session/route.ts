@@ -14,24 +14,25 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const body = await request.json();
+    const body = await request.json().catch(() => ({}));
     const { username, password, position, week, scoringFormat = 'ppr' } = body;
 
-    // Use provided credentials or fall back to environment variables
+    // Use environment variables by default, allow override with provided credentials
     const finalUsername = username || process.env.FANTASYPROS_USERNAME;
     const finalPassword = password || process.env.FANTASYPROS_PASSWORD;
 
     if (!finalUsername || !finalPassword) {
       return NextResponse.json(
-        { error: 'Credentials not provided and not found in environment' },
+        { 
+          error: 'FantasyPros credentials not configured',
+          note: 'Environment variables FANTASYPROS_USERNAME and FANTASYPROS_PASSWORD must be set'
+        },
         { status: 400 }
       );
     }
 
-    // Set credentials if provided, otherwise use the ones from constructor
-    if (username && password) {
-      fantasyProsSession.setCredentials(username, password);
-    }
+    // Set credentials (either from env or provided)
+    fantasyProsSession.setCredentials(finalUsername, finalPassword);
 
     // If position is specified, get rankings for that position
     if (position) {

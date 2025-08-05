@@ -26,7 +26,10 @@ export const authOptions: NextAuthOptions = {
       }
     })
   ],
-  // No custom pages - auth is handled internally by admin page
+  pages: {
+    signIn: '/admin', // Custom sign-in page
+    error: '/admin', // Error code passed in query string as ?error=
+  },
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
@@ -44,6 +47,13 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // Always redirect to admin page after successful authentication
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      else if (new URL(url).origin === baseUrl) return url;
+      return `${baseUrl}/admin`;
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
+  debug: process.env.NODE_ENV === "development",
 };

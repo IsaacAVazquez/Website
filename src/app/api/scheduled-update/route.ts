@@ -148,17 +148,17 @@ export async function GET(request: NextRequest) {
   });
 }
 
-// Helper function to calculate next update time (12am EST)
+// Helper function to calculate next update time (midnight PST)
 function getNextUpdateTime(): string {
   const now = new Date();
-  const est = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+  const pst = new Date(now.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}));
   
-  // Set to midnight EST
-  const nextUpdate = new Date(est);
+  // Set to midnight PST
+  const nextUpdate = new Date(pst);
   nextUpdate.setHours(0, 0, 0, 0);
   
   // If it's already past midnight, set to tomorrow
-  if (est >= nextUpdate) {
+  if (pst >= nextUpdate) {
     nextUpdate.setDate(nextUpdate.getDate() + 1);
   }
   

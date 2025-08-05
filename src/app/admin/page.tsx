@@ -27,6 +27,36 @@ export default function AdminPage() {
   
   // Login form state
   const [loginForm, setLoginForm] = useState({ username: '', password: '', error: '', isLoading: false });
+  
+  // Check for NextAuth error parameter
+  React.useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+    if (error) {
+      let errorMessage = 'Authentication failed';
+      switch (error) {
+        case 'CredentialsSignin':
+          errorMessage = 'Invalid username or password';
+          break;
+        case 'Configuration':
+          errorMessage = 'Server configuration error';
+          break;
+        case 'AccessDenied':
+          errorMessage = 'Access denied';
+          break;
+        case 'Verification':
+          errorMessage = 'Verification failed';
+          break;
+        default:
+          errorMessage = `Authentication error: ${error}`;
+      }
+      setLoginForm(prev => ({ ...prev, error: errorMessage }));
+      
+      // Clear error from URL without reloading
+      const newUrl = window.location.pathname;
+      window.history.replaceState({}, document.title, newUrl);
+    }
+  }, []);
   const [selectedPosition, setSelectedPosition] = useState<Position>('QB');
   const [selectedScoringFormat, setSelectedScoringFormat] = useState<'standard' | 'ppr' | 'half-ppr'>('ppr');
   const [importType, setImportType] = useState<'csv' | 'url' | 'text' | 'scrape' | 'api' | 'session' | 'free'>('csv');
@@ -399,6 +429,17 @@ export default function AdminPage() {
               {loginForm.error && (
                 <div className="p-3 bg-red-900/50 border border-red-700 rounded-lg">
                   <p className="text-red-300 text-sm">{loginForm.error}</p>
+                  {process.env.NODE_ENV === 'development' && (
+                    <p className="text-red-400 text-xs mt-1">
+                      Debug: Check environment variables ADMIN_USERNAME and ADMIN_PASSWORD
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {status === "loading" && (
+                <div className="p-3 bg-blue-900/50 border border-blue-700 rounded-lg">
+                  <p className="text-blue-300 text-sm">Checking authentication...</p>
                 </div>
               )}
 
