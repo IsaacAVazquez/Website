@@ -7,13 +7,12 @@ import DataComparison from '@/components/DataComparison';
 import TierLegend, { useTierVisibility } from '@/components/TierLegend';
 import { Position, ScoringFormat, TierGroup } from '@/types';
 import { getScoringFormatDisplay } from '@/lib/scoringFormatUtils';
-import { useFantasyData } from '@/hooks/useFantasyData';
-import { useAllFantasyData } from '@/hooks/useAllFantasyData';
-import { useOverallFantasyData } from '@/hooks/useOverallFantasyData';
-import { ArrowLeft, Database, RefreshCw, FileText } from 'lucide-react';
+import { useUnifiedFantasyData } from '@/hooks/useUnifiedFantasyData';
+import { ArrowLeft, Database, RefreshCw, FileText, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MorphButton } from '@/components/ui/MorphButton';
+import { EnhancedPlayerCard } from '@/components/EnhancedPlayerCard';
 
 export default function FantasyFootballPage() {
   const [selectedPosition, setSelectedPosition] = useState<Position>('QB');
@@ -23,71 +22,48 @@ export default function FantasyFootballPage() {
   const [tierGroups, setTierGroups] = useState<TierGroup[]>([]);
   const [isClient, setIsClient] = useState(false);
 
-  // Choose which data to use based on selected position
-  const isOverallView = selectedPosition === 'OVERALL';
-  const isFlexView = selectedPosition === 'FLEX';
+  // Convert Position to the type expected by unified hook (undefined for all positions)
+  const apiPosition = selectedPosition === 'OVERALL' ? undefined : selectedPosition;
   
-  // Use single position data hook for specific positions
-  const singlePositionData = useFantasyData({
-    position: selectedPosition === 'FLEX' ? 'RB' : selectedPosition,
-    scoringFormat: selectedFormat,
-    autoRefresh: !isOverallView && !isFlexView,
-    refreshInterval: 10 * 60 * 1000
-  });
-
-  // Use all positions data hook for FLEX views
-  const allPositionsData = useAllFantasyData({
-    scoringFormat: selectedFormat,
-    autoRefresh: isFlexView, // Only auto-refresh when in FLEX view
-    refreshInterval: 10 * 60 * 1000
-  });
-
-  // Use overall data hook for OVERALL view
-  const overallData = useOverallFantasyData({
-    scoringFormat: selectedFormat,
-    autoRefresh: isOverallView, // Only auto-refresh when in OVERALL view
-    refreshInterval: 10 * 60 * 1000
-  });
-  
-  let rawData, players;
-  
-  if (isOverallView) {
-    rawData = overallData;
-    players = rawData.players;
-  } else if (isFlexView) {
-    rawData = allPositionsData;
-    players = rawData.players.filter(p => ['RB', 'WR', 'TE'].includes(p.position));
-  } else {
-    rawData = singlePositionData;
-    players = rawData.players;
-  }
-  
+  // Use unified fantasy data hook with enhanced data
   const {
+    players: allPlayers,
+    tierData,
     isLoading,
     error,
     dataSource,
-    cacheStatus,
     lastUpdated,
+    executionTime,
+    cacheHit,
     refresh,
-    clearCache,
-    getCacheInfo
-  } = rawData;
+    getDataStatus
+  } = useUnifiedFantasyData({
+    position: apiPosition,
+    scoringFormat: selectedFormat,
+    autoRefresh: false, // Manual refresh only
+    withTiers: selectedPosition !== 'OVERALL' && selectedPosition !== 'FLEX',
+    preferredMethod: 'auto',
+    enhancedData: true // Enable enhanced player data with projections
+  });
 
-  const cacheInfo = getCacheInfo();
+  // Filter players for FLEX position if needed
+  const players = selectedPosition === 'FLEX' && !apiPosition 
+    ? allPlayers.filter(p => ['RB', 'WR', 'TE'].includes(p.position))
+    : allPlayers;
+
+  // Create legacy compatibility object for existing code
+  const cacheInfo = {
+    status: cacheHit ? 'fresh' : 'stale',
+    message: cacheHit ? 'Data is fresh' : 'Data needs refresh',
+    color: cacheHit ? 'green' : 'yellow'
+  };
 
   // Client-side hydration check
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Trigger data refresh when switching views
-  useEffect(() => {
-    if (isOverallView && overallData.players.length === 0 && !overallData.isLoading) {
-      overallData.refresh();
-    } else if (isFlexView && allPositionsData.players.length === 0 && !allPositionsData.isLoading) {
-      allPositionsData.refresh();
-    }
-  }, [selectedPosition]);
+  // Data refresh is automatically handled by the unified hook
 
   // Tier visibility management
   const { hiddenTiers, toggleTier, setAllVisible } = useTierVisibility(
@@ -285,6 +261,42 @@ export default function FantasyFootballPage() {
             )}
           </div>
         </motion.div>
+
+        {/* Enhanced Player Preview */}
+        {!isLoading && players.length > 0 && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="mb-8"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <Sparkles className="w-6 h-6 text-electric-blue" />
+              <h3 className="text-2xl font-bold text-white">Enhanced Player Cards</h3>
+              <span className="px-3 py-1 bg-matrix-green/20 text-matrix-green text-sm rounded-full border border-matrix-green/30">
+                NEW
+              </span>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {players.slice(0, 4).map((player) => (
+                <EnhancedPlayerCard
+                  key={player.id}
+                  player={player}
+                  compact={false}
+                />
+              ))}
+            </div>
+            
+            <div className="mt-4 p-4 bg-electric-blue/10 border border-electric-blue/20 rounded-lg">
+              <p className="text-sm text-slate-300 text-center">
+                <span className="text-electric-blue font-semibold">Enhanced Data:</span> 
+                {' '}Now featuring expert consensus analysis, auction values, detailed projections, 
+                and advanced player insights inspired by The Ringer's approach.
+              </p>
+            </div>
+          </motion.div>
+        )}
 
         {/* Tech Stack */}
         <motion.div 

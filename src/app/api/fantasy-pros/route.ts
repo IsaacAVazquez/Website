@@ -4,6 +4,10 @@ import { dataManager } from '@/lib/dataManager';
 import { Position } from '@/types';
 import { fantasyRateLimiter, getClientIdentifier, rateLimitResponse } from '@/lib/rateLimit';
 
+/**
+ * @deprecated This endpoint is deprecated. Use /api/fantasy-data instead.
+ * This endpoint will be removed in a future version.
+ */
 export async function GET(request: NextRequest) {
   // Apply rate limiting
   const clientId = getClientIdentifier(request);

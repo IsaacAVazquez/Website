@@ -191,8 +191,8 @@ function groupPlayersByExistingTiers(players: Player[]): UnifiedTier[] {
       players: tierPlayers,
       color: UNIFIED_TIER_COLORS[tierNumber - 1] || UNIFIED_TIER_COLORS[UNIFIED_TIER_COLORS.length - 1],
       label: UNIFIED_TIER_LABELS[tierNumber - 1] || `Tier ${tierNumber}`,
-      minRank: Math.min(...ranks),
-      maxRank: Math.max(...ranks),
+      minRank: Math.round(Math.min(...ranks)),
+      maxRank: Math.round(Math.max(...ranks)),
       avgRank: ranks.reduce((sum, rank) => sum + rank, 0) / ranks.length
     });
   });
@@ -313,8 +313,8 @@ function calculateTiersByRankGaps(
       players: currentTier,
       color: UNIFIED_TIER_COLORS[tierNumber - 1] || UNIFIED_TIER_COLORS[UNIFIED_TIER_COLORS.length - 1],
       label: UNIFIED_TIER_LABELS[tierNumber - 1] || `Tier ${tierNumber}`,
-      minRank: Math.min(...ranks),
-      maxRank: Math.max(...ranks),
+      minRank: Math.round(Math.min(...ranks)),
+      maxRank: Math.round(Math.max(...ranks)),
       avgRank: ranks.reduce((sum, rank) => sum + rank, 0) / ranks.length
     });
   }

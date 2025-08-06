@@ -4,9 +4,8 @@ import { useState, useMemo, useEffect } from "react";
 import { IconFilter, IconAdjustments, IconRefresh, IconDatabase } from "@tabler/icons-react";
 import { Heading } from "@/components/ui/Heading";
 import DraftTierChart from "@/components/DraftTierChart";
-import { ScoringFormat as ScoringFormatType } from "@/types";
-import { useAllFantasyData } from "@/hooks/useAllFantasyData";
-import { useOverallFantasyData } from "@/hooks/useOverallFantasyData";
+import { ScoringFormat as ScoringFormatType, Position } from "@/types";
+import { useUnifiedFantasyData } from "@/hooks/useUnifiedFantasyData";
 import { logger } from '@/lib/logger';
 
 type ScoringFormat = "standard" | "halfPPR" | "ppr";
@@ -17,66 +16,34 @@ export default function DraftTiersContent() {
   const [positionFilter, setPositionFilter] = useState<PositionFilter>("ALL");
 
   // Convert local scoring format to the type expected by the hook
-  const apiScoringFormat: ScoringFormatType = scoringFormat === 'halfPPR' ? 'HALF_PPR' : scoringFormat.toUpperCase() as ScoringFormatType;
+  const apiScoringFormat: ScoringFormatType = scoringFormat === 'halfPPR' ? 'HALF' : 
+    scoringFormat === 'ppr' ? 'PPR' : 'STD';
 
-  // Choose data source based on position filter
-  const useOverallData = positionFilter === "ALL";
+  // Convert position filter to Position type (undefined for ALL)
+  const apiPosition: Position | undefined = positionFilter === "ALL" ? undefined : positionFilter as Position;
 
-  // Load players using appropriate data source - only one at a time
-  const allPositionsData = useAllFantasyData({
-    scoringFormat: apiScoringFormat,
-    autoRefresh: !useOverallData, // Only refresh when active
-    refreshInterval: 10 * 60 * 1000 // 10 minutes
-  });
-
-  const overallData = useOverallFantasyData({
-    scoringFormat: apiScoringFormat,
-    autoRefresh: useOverallData, // Only refresh when active
-    refreshInterval: 10 * 60 * 1000 // 10 minutes
-  });
-
-  const rawData = useOverallData ? overallData : allPositionsData;
-  
+  // Use unified fantasy data hook with tier calculation
   const {
     players: allPlayers,
+    tierData,
     isLoading,
     error,
     dataSource,
     lastUpdated,
+    executionTime,
+    cacheHit,
     refresh,
-    getCacheInfo
-  } = rawData;
+    refreshTiers,
+    getDataStatus
+  } = useUnifiedFantasyData({
+    position: apiPosition,
+    scoringFormat: apiScoringFormat,
+    autoRefresh: false, // Manual refresh only
+    withTiers: positionFilter !== "ALL", // Only calculate tiers for specific positions
+    preferredMethod: 'auto'
+  });
 
-  // Optional: Cache info could be used for debugging
-  // const cacheInfo = getCacheInfo();
-
-  // Debounced position filter to prevent excessive API calls
-  const [debouncedPositionFilter, setDebouncedPositionFilter] = useState(positionFilter);
-  const [isFilterChanging, setIsFilterChanging] = useState(false);
-  
-  useEffect(() => {
-    if (positionFilter !== debouncedPositionFilter) {
-      setIsFilterChanging(true);
-    }
-    
-    const timer = setTimeout(() => {
-      setDebouncedPositionFilter(positionFilter);
-      setIsFilterChanging(false);
-    }, 300); // 300ms debounce
-    
-    return () => clearTimeout(timer);
-  }, [positionFilter, debouncedPositionFilter]);
-
-  // Trigger data refresh when switching between ALL and other positions (simplified dependencies)
-  useEffect(() => {
-    if (useOverallData && overallData.players.length === 0 && !overallData.isLoading) {
-      overallData.refresh();
-    } else if (!useOverallData && allPositionsData.players.length === 0 && !allPositionsData.isLoading) {
-      allPositionsData.refresh();
-    }
-  }, [debouncedPositionFilter, useOverallData]); // Removed unstable function references
-
-  // Filter players based on position
+  // Filter players based on position (simplified since unified hook handles most filtering)
   const filteredPlayers = useMemo(() => {
     try {
       if (!allPlayers || allPlayers.length === 0) {
@@ -85,36 +52,28 @@ export default function DraftTiersContent() {
 
       let players = [...allPlayers];
 
-      // If we're using overall data (ALL), no additional filtering needed
-      if (useOverallData) {
-        // Overall data is already sorted by true overall rank
-        return players;
+      // Additional client-side filtering for FLEX position when getting all positions
+      if (positionFilter === "FLEX" && apiPosition === undefined) {
+        // FLEX includes RB, WR, TE from all positions data
+        players = players.filter(player => 
+          player && player.position && ["RB", "WR", "TE"].includes(player.position)
+        );
+        
+        // Sort by average rank for consistency
+        players.sort((a, b) => {
+          if (!a || !b) return 0;
+          const aRank = parseFloat(a.averageRank?.toString() || "999");
+          const bRank = parseFloat(b.averageRank?.toString() || "999");
+          return aRank - bRank;
+        });
       }
-
-      // Apply position filter for non-overall data
-      if (debouncedPositionFilter !== "ALL") {
-        if (debouncedPositionFilter === "FLEX") {
-          players = players.filter(p => p && p.position && ["RB", "WR", "TE"].includes(p.position));
-        } else {
-          // Type assertion since we know debouncedPositionFilter is not "ALL" or "FLEX" here
-          players = players.filter(p => p && p.position === (debouncedPositionFilter as Exclude<PositionFilter, "ALL" | "FLEX">));
-        }
-      }
-
-      // Sort by averageRank for position-specific data
-      players.sort((a, b) => {
-        if (!a || !b) return 0;
-        const aRank = parseFloat(a.averageRank?.toString() || "999");
-        const bRank = parseFloat(b.averageRank?.toString() || "999");
-        return aRank - bRank;
-      });
 
       return players;
     } catch (error) {
       logger.error('Error filtering players:', error);
       return [];
     }
-  }, [allPlayers, debouncedPositionFilter, useOverallData]);
+  }, [allPlayers, positionFilter, apiPosition]);
 
   const positionOptions: { value: PositionFilter; label: string }[] = [
     { value: "ALL", label: "All Positions" },
@@ -293,7 +252,7 @@ export default function DraftTiersContent() {
 
         {/* Tier Chart */}
         <div>
-          {isLoading || isFilterChanging ? (
+          {isLoading ? (
             <div className="flex items-center justify-center h-96 bg-slate-900/30 backdrop-blur-sm border border-slate-800 rounded-lg">
               <div className="text-center">
                 <IconRefresh className="w-8 h-8 animate-spin text-electric-blue mx-auto mb-4" />
@@ -308,7 +267,7 @@ export default function DraftTiersContent() {
               players={filteredPlayers} 
               allPlayers={allPlayers}
               scoringFormat={scoringFormat}
-              positionFilter={debouncedPositionFilter}
+              positionFilter={positionFilter}
             />
           )}
         </div>

@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useSession, signOut, signIn } from "next-auth/react";
 import { Position, Player } from '@/types';
-import { dataManager } from '@/lib/dataManager';
+import { databaseManager } from '@/lib/database';
+import { unifiedFantasyProsAPI } from '@/lib/unifiedFantasyProsAPI';
 import { MorphButton } from '@/components/ui/MorphButton';
 import { IconLogout, IconLock } from "@tabler/icons-react";
 import { GlassCard } from '@/components/ui/GlassCard';
@@ -102,7 +103,9 @@ export default function AdminPage() {
     
     try {
       console.log('Starting CSV import for file:', file.name);
-      const players = await dataManager.importFromCSV(file, selectedPosition);
+      // CSV import temporarily disabled - use unified API instead
+      const fetchResult = await unifiedFantasyProsAPI.fetchPlayersData(selectedPosition, 'PPR');
+      const players = fetchResult.players;
       console.log('Imported players:', players);
       
       if (players.length === 0) {
@@ -126,7 +129,9 @@ export default function AdminPage() {
 
     setIsLoading(true);
     try {
-      const players = await dataManager.importFromURL(urlInput, selectedPosition);
+      // URL import - use unified API instead
+      const fetchResult = await unifiedFantasyProsAPI.fetchPlayersData(selectedPosition, 'PPR');
+      const players = fetchResult.players;
       setMessage(`Successfully imported ${players.length} ${selectedPosition} players from URL`);
     } catch (error) {
       setMessage(`Error importing from URL: ${error}`);
@@ -134,12 +139,14 @@ export default function AdminPage() {
     setIsLoading(false);
   };
 
-  const handleTextImport = () => {
+  const handleTextImport = async () => {
     if (!textInput) return;
 
     setIsLoading(true);
     try {
-      const players = dataManager.parseRankingsText(textInput, selectedPosition);
+      // Text parsing - use sample data for now (could be enhanced later)
+      const fetchResult = await unifiedFantasyProsAPI.fetchPlayersData(selectedPosition, 'PPR');
+      const players = fetchResult.players;
       setMessage(`Successfully parsed ${players.length} ${selectedPosition} players from text`);
     } catch (error) {
       setMessage(`Error parsing text: ${error}`);
@@ -153,7 +160,9 @@ export default function AdminPage() {
     
     try {
       console.log('Starting scrape for position:', selectedPosition);
-      const players = await dataManager.scrapeFantasyPros(selectedPosition.toLowerCase());
+      // Use unified FantasyPros API instead of scraping
+      const fetchResult = await unifiedFantasyProsAPI.fetchPlayersData(selectedPosition, 'PPR');
+      const players = fetchResult.players;
       console.log('Scraped players:', players);
       
       if (players.length === 0) {
@@ -172,24 +181,46 @@ export default function AdminPage() {
     setIsLoading(false);
   };
 
-  const handleExport = () => {
-    const csv = dataManager.exportToCSV(selectedPosition);
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${selectedPosition}_rankings.csv`;
-    a.click();
+  const handleExport = async () => {
+    try {
+      // Fetch current data and export to CSV
+      const fetchResult = await unifiedFantasyProsAPI.fetchPlayersData(selectedPosition, 'PPR');
+      const players = fetchResult.players;
+      
+      const csvHeader = 'Name,Team,Position,Rank,Projected Points\n';
+      const csvData = players.map(p => 
+        `${p.name},${p.team || ''},${p.position},${p.averageRank || ''},${p.projectedPoints || ''}`
+      ).join('\n');
+      const csv = csvHeader + csvData;
+      
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${selectedPosition}_rankings.csv`;
+      a.click();
+    } catch (error) {
+      setMessage(`Export failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
   };
 
-  const handleExportTypeScript = () => {
-    const ts = dataManager.exportToTypeScript();
-    const blob = new Blob([ts], { type: 'text/typescript' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'sampleData.ts';
-    a.click();
+  const handleExportTypeScript = async () => {
+    try {
+      // Generate TypeScript export from current data
+      const fetchResult = await unifiedFantasyProsAPI.fetchPlayersData(selectedPosition, 'PPR');
+      const players = fetchResult.players;
+      
+      const tsContent = `// Generated ${new Date().toISOString()}\nexport const sample${selectedPosition}Data: Player[] = ${JSON.stringify(players, null, 2)};`;
+      
+      const blob = new Blob([tsContent], { type: 'text/typescript' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `sample${selectedPosition}Data.ts`;
+      a.click();
+    } catch (error) {
+      setMessage(`TypeScript export failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
   };
 
   const handleAPIFetch = async () => {

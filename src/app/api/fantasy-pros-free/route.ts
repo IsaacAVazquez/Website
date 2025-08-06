@@ -3,6 +3,10 @@ import { fantasyProsFreeAccess } from '@/lib/fantasyProsAlternative';
 import { dataManager } from '@/lib/dataManager';
 import { Position } from '@/types';
 
+/**
+ * @deprecated This endpoint is deprecated. Use /api/fantasy-data instead.
+ * This endpoint will be removed in a future version.
+ */
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const position = searchParams.get('position') as Position;

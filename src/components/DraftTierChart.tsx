@@ -146,7 +146,7 @@ const DraftTierChart = memo(function DraftTierChart({
                   {tier.label}
                 </h3>
                 <span className="text-sm text-slate-500">
-                  Ranks {tier.minRank}-{tier.maxRank}
+                  Ranks {Math.round(tier.minRank)}-{Math.round(tier.maxRank)}
                 </span>
               </div>
               <div 
