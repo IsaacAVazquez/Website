@@ -152,7 +152,7 @@ NEXTAUTH_URL=https://isaacavazquez.com
 NEXTAUTH_SECRET=[generate with: openssl rand -base64 32]
 
 # Admin Access
-ADMIN_USERNAME=admin
+ADMIN_USERNAME=your-admin-username
 ADMIN_PASSWORD=[secure password]
 
 # Fantasy Football API

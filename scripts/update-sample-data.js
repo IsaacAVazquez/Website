@@ -12,10 +12,10 @@ const path = require('path');
 const ALL_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DST'];
 const ALL_SCORING_FORMATS = ['STANDARD', 'HALF_PPR', 'PPR'];
 
-// FantasyPros credentials
+// FantasyPros credentials - use environment variables in production
 const CREDENTIALS = {
-  username: 'Votedonut@yahoo.com',
-  password: 'n5WRvVzc^KyDi2k^'
+  username: process.env.FANTASYPROS_USERNAME || 'your-username-here',
+  password: process.env.FANTASYPROS_PASSWORD || 'your-password-here'
 };
 
 async function authenticateSession() {

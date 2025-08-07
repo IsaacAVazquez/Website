@@ -8,11 +8,11 @@ Your application requires the following environment variables to be configured i
 ```bash
 # Required for NextAuth.js to function properly
 NEXTAUTH_URL=https://isaacavazquez.com
-NEXTAUTH_SECRET=kr1TsL7jO3hm21vnJSze8tCWMLVBPxA6VQCbFK4ywqw=
+NEXTAUTH_SECRET=your-nextauth-secret-generate-with-openssl-rand-base64-32
 
 # Admin panel credentials
-ADMIN_USERNAME=admin
-ADMIN_PASSWORD=admin123
+ADMIN_USERNAME=your-admin-username
+ADMIN_PASSWORD=your-secure-password
 ```
 
 ### Fantasy Pros Integration
@@ -41,12 +41,12 @@ CRON_SECRET=6442c98c509eb7c8b62852d6efb084e8699e46b6f66955f66784cae784c64176
 If you have Netlify CLI installed:
 ```bash
 netlify env:set NEXTAUTH_URL "https://isaacavazquez.com"
-netlify env:set NEXTAUTH_SECRET "kr1TsL7jO3hm21vnJSze8tCWMLVBPxA6VQCbFK4ywqw="
-netlify env:set ADMIN_USERNAME "admin"
-netlify env:set ADMIN_PASSWORD "admin123"
-netlify env:set FANTASYPROS_USERNAME "Votedonut@yahoo.com"
-netlify env:set FANTASYPROS_PASSWORD "n5WRvVzc^KyDi2k^"
-netlify env:set CRON_SECRET "6442c98c509eb7c8b62852d6efb084e8699e46b6f66955f66784cae784c64176"
+netlify env:set NEXTAUTH_SECRET "your-nextauth-secret-here"
+netlify env:set ADMIN_USERNAME "your-admin-username"
+netlify env:set ADMIN_PASSWORD "your-secure-password"
+netlify env:set FANTASYPROS_USERNAME "your-fantasypros-username"
+netlify env:set FANTASYPROS_PASSWORD "your-fantasypros-password"
+netlify env:set CRON_SECRET "your-cron-secret-here"
 ```
 
 ## Verification Steps
@@ -83,7 +83,7 @@ After setting the environment variables:
 
 ### Issue: Admin login doesn't work
 **Solution**: 
-- Verify `ADMIN_USERNAME=admin` and `ADMIN_PASSWORD=admin123`
+- Verify `ADMIN_USERNAME=your-username` and `ADMIN_PASSWORD=your-password`
 - Case sensitive - must match exactly
 - Clear browser cache and try again
 

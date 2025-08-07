@@ -7,9 +7,9 @@ This application now includes automatic nightly updates from FantasyPros using y
 The following environment variables need to be set in your deployment platform (Vercel/Netlify):
 
 ```bash
-FANTASYPROS_USERNAME=Votedonut@yahoo.com
-FANTASYPROS_PASSWORD=n5WRvVzc^KyDi2k^
-CRON_SECRET=6442c98c509eb7c8b62852d6efb084e8699e46b6f66955f66784cae784c64176
+FANTASYPROS_USERNAME=your-fantasypros-username
+FANTASYPROS_PASSWORD=your-fantasypros-password
+CRON_SECRET=your-cron-secret-here
 ```
 
 ## Automatic Updates
