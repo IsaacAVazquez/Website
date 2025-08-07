@@ -9,6 +9,9 @@ export const metadata: Metadata = constructMetadata({
   canonicalUrl: "https://isaacavazquez.com/fantasy-football/draft-tracker",
 });
 
+// Ensure this page is dynamically rendered to prevent build-time issues
+export const dynamic = 'force-dynamic';
+
 export default function DraftTrackerPage() {
   return (
     <>

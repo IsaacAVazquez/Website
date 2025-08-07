@@ -43,6 +43,11 @@ export function DraftBoard({
     const availablePlayers = players.filter(p => !draftedPlayerIds.has(p.id));
     if (availablePlayers.length === 0) return [];
 
+    // Skip tier calculation during build/SSR to prevent initialization errors
+    if (typeof window === 'undefined') {
+      return availablePlayers;
+    }
+
     try {
       // Calculate tiers for all available players
       const tiers = calculateUnifiedTiers(availablePlayers, 8, scoringFormat);
