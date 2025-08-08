@@ -1,6 +1,9 @@
 [build]
   command = "npm run build"
   publish = ".next"
+  
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = ".netlify/deploy/v1/blobs/**,.netlify/edge-functions/**,.netlify/functions-internal/**,.next/**"
 
 [functions]
   directory = "netlify/functions"
