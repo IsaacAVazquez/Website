@@ -13,8 +13,6 @@
     "scrape-player-images-enhanced": "node scripts/enhanced-player-scraper.js"
   },
   "dependencies": {
-    "@mapbox/rehype-prism": "^0.9.0",
-    "@next/mdx": "^15.4.3",
     "@tabler/icons-react": "^3.34.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/better-sqlite3": "^7.6.13",
@@ -29,7 +27,6 @@
     "framer-motion": "^12.18.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.525.0",
-    "motion": "^12.18.1",
     "next": "15.3.4",
     "next-auth": "^4.24.11",
     "react": "19.1.0",

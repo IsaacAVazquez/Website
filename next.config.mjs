@@ -1,7 +1,4 @@
 /** @type {import('next').NextConfig} */
-import nextMDX from "@next/mdx";
-import remarkGfm from "remark-gfm";
-import rehypePrism from "@mapbox/rehype-prism";
 
 const nextConfig = {
   // Temporarily disable strict linting until remaining type issues are resolved
@@ -41,21 +38,27 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  experimental: {
-    mdxRs: true,
-  },
-  // Optimize CSS
+  // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+  // Enable experimental features for better performance
+  experimental: {
+    optimizePackageImports: ['@tabler/icons-react', 'lucide-react'],
+  },
+  // Bundle analyzer (uncomment to analyze bundle size)
+  // webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+  //   if (!dev && !isServer) {
+  //     const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+  //     config.plugins.push(
+  //       new BundleAnalyzerPlugin({
+  //         analyzerMode: 'static',
+  //         openAnalyzer: false,
+  //       })
+  //     );
+  //   }
+  //   return config;
+  // },
 };
 
-const withMDX = nextMDX({
-  extension: /\.mdx?$/,
-  mdxOptions: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypePrism],
-  },
-});
-
-export default withMDX(nextConfig);
+export default nextConfig;
