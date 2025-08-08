@@ -24,10 +24,10 @@ const DraftTierChart = memo(function DraftTierChart({
   const [selectedTier, setSelectedTier] = useState<number | null>(null);
   const [visibleTierCount, setVisibleTierCount] = useState<number>(3); // Initially show only 3 tiers
   
-  // Reset visible tier count when position or players change
+  // Reset visible tier count only when position changes (not when players count changes)
   useEffect(() => {
     setVisibleTierCount(3);
-  }, [positionFilter, players.length]);
+  }, [positionFilter]);
   
   // Use the cached image service
   const { preloadImages, getCachedImage, isLoading } = usePlayerImageCache();

@@ -98,21 +98,31 @@ export class GaussianMixtureModel {
       tierGroups.get(tier)!.push(player);
     });
 
-    // Convert to TierGroup array
+    // Convert to TierGroup array with positional ranks
     const tiers: TierGroup[] = [];
     const colors = ['#10B981', '#3B82F6', '#8B5CF6', '#F59E0B', '#EF4444', '#6B7280'];
+    
+    // Sort all players by averageRank to get positional indices
+    const allPlayersSorted = [...players].sort((a, b) => Number(a.averageRank) - Number(b.averageRank));
+    const playerPositionMap = new Map<string, number>();
+    allPlayersSorted.forEach((player, index) => {
+      playerPositionMap.set(player.id, index + 1); // 1-based position
+    });
     
     Array.from(tierGroups.entries())
       .sort(([a], [b]) => a - b)
       .forEach(([tier, players]) => {
-        const ranks = players.map(p => Number(p.averageRank));
+        const sortedPlayers = players.sort((a, b) => Number(a.averageRank) - Number(b.averageRank));
+        const fantasyProsRanks = players.map(p => Number(p.averageRank));
+        const positionalRanks = sortedPlayers.map(p => playerPositionMap.get(p.id) || 999);
+        
         tiers.push({
           tier,
-          players: players.sort((a, b) => Number(a.averageRank) - Number(b.averageRank)),
+          players: sortedPlayers,
           color: colors[tier - 1] || '#6B7280',
-          minRank: Math.min(...ranks),
-          maxRank: Math.max(...ranks),
-          avgRank: ranks.reduce((a, b) => a + b, 0) / ranks.length
+          minRank: Math.min(...positionalRanks), // Use positional ranks
+          maxRank: Math.max(...positionalRanks), // Use positional ranks
+          avgRank: fantasyProsRanks.reduce((a, b) => a + b, 0) / fantasyProsRanks.length // Keep FantasyPros average for reference
         });
       });
 

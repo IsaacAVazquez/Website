@@ -170,6 +170,7 @@ function groupPlayersByExistingTiers(players: Player[]): UnifiedTier[] {
   // Convert to UnifiedTier array and sort by tier number
   const tierGroups: UnifiedTier[] = [];
   const sortedTiers = Array.from(tierMap.keys()).sort((a, b) => a - b);
+  let currentRankIndex = 1; // Start positional ranking from 1
   
   sortedTiers.forEach(tierNumber => {
     const tierPlayers = tierMap.get(tierNumber)!;
@@ -181,20 +182,29 @@ function groupPlayersByExistingTiers(players: Player[]): UnifiedTier[] {
       return rankA - rankB;
     });
     
-    const ranks = tierPlayers.map(p => {
+    // Calculate positional ranks for this tier
+    const minRank = currentRankIndex;
+    const maxRank = currentRankIndex + tierPlayers.length - 1;
+    
+    // Calculate average FantasyPros rank for reference
+    const fantasyProsRanks = tierPlayers.map(p => {
       const rank = typeof p.averageRank === 'string' ? parseFloat(p.averageRank) : p.averageRank;
       return rank;
     });
+    const avgRank = fantasyProsRanks.reduce((sum, rank) => sum + rank, 0) / fantasyProsRanks.length;
     
     tierGroups.push({
       tier: tierNumber,
       players: tierPlayers,
       color: UNIFIED_TIER_COLORS[tierNumber - 1] || UNIFIED_TIER_COLORS[UNIFIED_TIER_COLORS.length - 1],
       label: UNIFIED_TIER_LABELS[tierNumber - 1] || `Tier ${tierNumber}`,
-      minRank: Math.round(Math.min(...ranks)),
-      maxRank: Math.round(Math.max(...ranks)),
-      avgRank: ranks.reduce((sum, rank) => sum + rank, 0) / ranks.length
+      minRank: minRank,
+      maxRank: maxRank,
+      avgRank: avgRank
     });
+    
+    // Move to the next position index for the next tier
+    currentRankIndex = maxRank + 1;
   });
   
   return tierGroups;
@@ -269,6 +279,7 @@ function calculateTiersByRankGaps(
   const tierGroups: UnifiedTier[] = [];
   let currentTier: Player[] = [players[0]];
   let tierNumber = 1;
+  let tierStartIdx = 0;
   
   for (let i = 1; i < players.length; i++) {
     const currentRank = typeof players[i].averageRank === 'string' ? parseFloat(players[i].averageRank) : players[i].averageRank;
@@ -277,8 +288,8 @@ function calculateTiersByRankGaps(
     
     // If gap is large enough or we've hit max tiers, start a new tier
     if (rankGap > gapThreshold && tierNumber < maxTiers) {
-      // Finalize current tier
-      const ranks = currentTier.map(p => {
+      // Finalize current tier with positional ranks
+      const fantasyProsRanks = currentTier.map(p => {
         const rank = typeof p.averageRank === 'string' ? parseFloat(p.averageRank) : p.averageRank;
         return rank;
       });
@@ -288,14 +299,15 @@ function calculateTiersByRankGaps(
         players: currentTier,
         color: UNIFIED_TIER_COLORS[tierNumber - 1] || UNIFIED_TIER_COLORS[UNIFIED_TIER_COLORS.length - 1],
         label: UNIFIED_TIER_LABELS[tierNumber - 1] || `Tier ${tierNumber}`,
-        minRank: Math.min(...ranks),
-        maxRank: Math.max(...ranks),
-        avgRank: ranks.reduce((sum, rank) => sum + rank, 0) / ranks.length
+        minRank: tierStartIdx + 1, // Positional rank starts from 1
+        maxRank: i, // Current position (i is already 1-based for this tier's end)
+        avgRank: fantasyProsRanks.reduce((sum, rank) => sum + rank, 0) / fantasyProsRanks.length
       });
       
       // Start new tier
       currentTier = [players[i]];
       tierNumber++;
+      tierStartIdx = i;
     } else {
       currentTier.push(players[i]);
     }
@@ -303,7 +315,7 @@ function calculateTiersByRankGaps(
   
   // Add the last tier
   if (currentTier.length > 0) {
-    const ranks = currentTier.map(p => {
+    const fantasyProsRanks = currentTier.map(p => {
       const rank = typeof p.averageRank === 'string' ? parseFloat(p.averageRank) : p.averageRank;
       return rank;
     });
@@ -313,9 +325,9 @@ function calculateTiersByRankGaps(
       players: currentTier,
       color: UNIFIED_TIER_COLORS[tierNumber - 1] || UNIFIED_TIER_COLORS[UNIFIED_TIER_COLORS.length - 1],
       label: UNIFIED_TIER_LABELS[tierNumber - 1] || `Tier ${tierNumber}`,
-      minRank: Math.round(Math.min(...ranks)),
-      maxRank: Math.round(Math.max(...ranks)),
-      avgRank: ranks.reduce((sum, rank) => sum + rank, 0) / ranks.length
+      minRank: tierStartIdx + 1, // Positional rank starts from 1
+      maxRank: players.length, // Last position in the list
+      avgRank: fantasyProsRanks.reduce((sum, rank) => sum + rank, 0) / fantasyProsRanks.length
     });
   }
   
