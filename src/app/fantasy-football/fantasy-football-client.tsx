@@ -8,6 +8,8 @@ import TierLegend, { useTierVisibility } from '@/components/TierLegend';
 import { Position, ScoringFormat, TierGroup } from '@/types';
 import { getScoringFormatDisplay } from '@/lib/scoringFormatUtils';
 import { useUnifiedFantasyData } from '@/hooks/useUnifiedFantasyData';
+import { useOverallFantasyData } from '@/hooks/useOverallFantasyData';
+import { useAllFantasyData } from '@/hooks/useAllFantasyData';
 import { ArrowLeft, Database, RefreshCw, FileText, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -22,37 +24,54 @@ export default function FantasyFootballPage() {
   const [tierGroups, setTierGroups] = useState<TierGroup[]>([]);
   const [isClient, setIsClient] = useState(false);
 
-  // Convert Position to the type expected by unified hook (undefined for all positions)
-  const apiPosition = selectedPosition === 'OVERALL' ? undefined : selectedPosition;
+  // Conditional hook usage based on selected position
+  const overallData = useOverallFantasyData({
+    scoringFormat: selectedFormat,
+    autoRefresh: false
+  });
   
-  // Use unified fantasy data hook with enhanced data
+  const allData = useAllFantasyData({
+    scoringFormat: selectedFormat,
+    autoRefresh: false
+  });
+  
+  const apiPosition = selectedPosition === 'OVERALL' || selectedPosition === 'ALL' ? undefined : selectedPosition;
+  const regularData = useUnifiedFantasyData({
+    position: apiPosition,
+    scoringFormat: selectedFormat,
+    autoRefresh: false,
+    withTiers: selectedPosition !== 'OVERALL' && selectedPosition !== 'ALL' && selectedPosition !== 'FLEX',
+    preferredMethod: 'auto',
+    enhancedData: true
+  });
+
+  // Select appropriate data source based on position
+  const currentData = selectedPosition === 'OVERALL' ? overallData : 
+                     selectedPosition === 'ALL' ? allData : 
+                     regularData;
+  
   const {
     players: allPlayers,
-    tierData,
     isLoading,
     error,
     dataSource,
     lastUpdated,
-    executionTime,
-    cacheHit,
-    refresh,
-    getDataStatus
-  } = useUnifiedFantasyData({
-    position: apiPosition,
-    scoringFormat: selectedFormat,
-    autoRefresh: false, // Manual refresh only
-    withTiers: selectedPosition !== 'OVERALL' && selectedPosition !== 'FLEX',
-    preferredMethod: 'auto',
-    enhancedData: true // Enable enhanced player data with projections
-  });
+    refresh
+  } = currentData;
+  
+  // Get additional data from regular hook when available
+  const tierData = selectedPosition !== 'OVERALL' && selectedPosition !== 'ALL' ? regularData.tierData : null;
+  const executionTime = selectedPosition !== 'OVERALL' && selectedPosition !== 'ALL' ? regularData.executionTime : 0;
+  const cacheHit = selectedPosition !== 'OVERALL' && selectedPosition !== 'ALL' ? regularData.cacheHit : currentData.cacheStatus === 'fresh';
+  const getDataStatus = selectedPosition !== 'OVERALL' && selectedPosition !== 'ALL' ? regularData.getDataStatus : () => ({ status: 'success' as const, message: 'Data loaded', color: 'green' });
 
   // Filter players for FLEX position if needed
-  const players = selectedPosition === 'FLEX' && !apiPosition 
+  const players = selectedPosition === 'FLEX' && apiPosition === undefined 
     ? allPlayers.filter(p => ['RB', 'WR', 'TE'].includes(p.position))
     : allPlayers;
 
   // Create legacy compatibility object for existing code
-  const cacheInfo = {
+  const cacheInfo = currentData.getCacheInfo ? currentData.getCacheInfo() : {
     status: cacheHit ? 'fresh' : 'stale',
     message: cacheHit ? 'Data is fresh' : 'Data needs refresh',
     color: cacheHit ? 'green' : 'yellow'

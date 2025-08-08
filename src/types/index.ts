@@ -67,7 +67,7 @@ export interface Player {
   }>;
 }
 
-export type Position = 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST' | 'FLEX' | 'OVERALL';
+export type Position = 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST' | 'FLEX' | 'OVERALL' | 'ALL';
 export type ScoringFormat = 'STANDARD' | 'PPR' | 'HALF_PPR';
 
 export interface TierGroup {
