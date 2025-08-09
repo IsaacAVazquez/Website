@@ -5,6 +5,7 @@ import { Heading } from "@/components/ui/Heading";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const funFacts = [
   "Engineer with 6+ years optimizing systems and driving cross-functional execution",
@@ -98,10 +99,14 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-electric-blue/5 to-cyber-teal/10 rounded-xl breathing-gradient" />
               <div className="relative z-10 flex justify-center">
                 <div className="relative">
-                  <img
+                  <Image
                     src="/images/headshot.jpg"
                     alt="Isaac Vazquez - UC Berkeley MBA Student and Product Strategist"
+                    width={320}
+                    height={320}
+                    priority
                     className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl object-cover shadow-lg"
+                    sizes="(max-width: 768px) 256px, (max-width: 1024px) 288px, 320px"
                   />
                   <div className="absolute -inset-1 bg-gradient-to-br from-neon-purple/30 to-electric-blue/30 rounded-xl blur-sm opacity-50"></div>
                 </div>
