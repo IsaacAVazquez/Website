@@ -44,3 +44,24 @@ src/data/backup/
 
 # Large image directories (served from external sources)
 public/player-images/
+
+# Large image files (serve optimized versions instead)
+public/images/about-original.webp
+
+# Build artifacts and caches
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+bundle-analyzer-report.html
+
+# Temporary files
+tmp/
+temp/
+
+# Backup files
+*backup*
+*.backup
+src/data/*backup*.json
+scripts/*backup*
+
+# Large data files (script-only usage)
+scripts/player-matching-results.json

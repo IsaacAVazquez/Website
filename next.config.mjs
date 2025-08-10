@@ -102,14 +102,17 @@ const nextConfig = {
         },
       };
 
-      // Bundle analyzer (uncomment to analyze bundle size)
-      // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-      // config.plugins.push(
-      //   new BundleAnalyzerPlugin({
-      //     analyzerMode: 'static',
-      //     openAnalyzer: false,
-      //   })
-      // );
+      // Bundle analyzer (enabled for production analysis)
+      if (process.env.ANALYZE === 'true') {
+        const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+        config.plugins.push(
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: false,
+            reportFilename: '../bundle-analyzer-report.html',
+          })
+        );
+      }
     }
 
     // Module resolution optimizations (removed problematic framer-motion alias)
