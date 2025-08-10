@@ -1,0 +1,42 @@
+[
+  {
+    "filename": "atl-kyle-pitts.jpg",
+    "playerName": "Kyle Pitts",
+    "team": "ATL"
+  },
+  {
+    "filename": "hou-stefon-diggs.jpg",
+    "playerName": "Stefon Diggs",
+    "team": "HOU"
+  },
+  {
+    "filename": "cle-amari-cooper.jpg",
+    "playerName": "Amari Cooper",
+    "team": "CLE"
+  },
+  {
+    "filename": "cle-david-njoku.jpg",
+    "playerName": "David Njoku",
+    "team": "CLE"
+  },
+  {
+    "filename": "dal-ceedee-lamb.jpg",
+    "playerName": "Ceedee Lamb",
+    "team": "DAL"
+  },
+  {
+    "filename": "sea-dk-metcalf.jpg",
+    "playerName": "Dk Metcalf",
+    "team": "SEA"
+  },
+  {
+    "filename": "kc-travis-kelce.jpg",
+    "playerName": "Travis Kelce",
+    "team": "KC"
+  },
+  {
+    "filename": "ten-calvin-ridley.jpg",
+    "playerName": "Calvin Ridley",
+    "team": "TEN"
+  }
+]

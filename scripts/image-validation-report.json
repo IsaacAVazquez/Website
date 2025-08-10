@@ -1,0 +1,1033 @@
+{
+  "summary": {
+    "totalImages": 237,
+    "totalMappings": 237,
+    "duplicateGroups": 0,
+    "suspiciousPatterns": 28,
+    "mappingIssues": 0
+  },
+  "duplicates": [],
+  "suspicious": [
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "11200-11300 bytes",
+      "files": [
+        {
+          "filename": "ari-clayton-tune.jpg",
+          "hash": "bb0951ccda9aa9d04d901833e0743167",
+          "size": 11205,
+          "modified": "2025-07-22T04:16:34.727Z"
+        },
+        {
+          "filename": "fa-ezekiel-elliott.jpg",
+          "hash": "66f9ca3beefb4a6e092e089a68a224f3",
+          "size": 11202,
+          "modified": "2025-07-23T04:48:10.665Z"
+        },
+        {
+          "filename": "gb-jordan-love.jpg",
+          "hash": "abc582e294487814eeb75ba8309004cc",
+          "size": 11222,
+          "modified": "2025-07-21T19:21:34.881Z"
+        },
+        {
+          "filename": "was-marcus-mariota.jpg",
+          "hash": "cef802bc16f83fa1cfdda3f2553ec89a",
+          "size": 11220,
+          "modified": "2025-07-22T04:12:37.023Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10000-10100 bytes",
+      "files": [
+        {
+          "filename": "ari-emari-demercado.jpg",
+          "hash": "0dd3c6276dd4643be3a31915f24b2376",
+          "size": 10022,
+          "modified": "2025-07-22T04:36:17.399Z"
+        },
+        {
+          "filename": "ari-marvin-harrison-jr.jpg",
+          "hash": "2a90a6affb514d0961e5bdcd0d4cc281",
+          "size": 10065,
+          "modified": "2025-07-21T19:22:23.358Z"
+        },
+        {
+          "filename": "chi-caleb-williams.jpg",
+          "hash": "f3494fb7902e040c2bc3b102f594e956",
+          "size": 10055,
+          "modified": "2025-07-21T19:21:33.574Z"
+        },
+        {
+          "filename": "kc-patrick-mahomes-ii.jpg",
+          "hash": "db53fbc94cbd043d918fc02a36959973",
+          "size": 10020,
+          "modified": "2025-07-21T19:21:22.303Z"
+        },
+        {
+          "filename": "lac-taylor-heinicke.jpg",
+          "hash": "21409ab713f6ad7cd38f483c7a70b465",
+          "size": 10080,
+          "modified": "2025-07-22T04:15:33.751Z"
+        },
+        {
+          "filename": "no-spencer-rattler.jpg",
+          "hash": "aa35f736c4341df7616829d9ad0d8420",
+          "size": 10024,
+          "modified": "2025-07-22T04:12:25.670Z"
+        },
+        {
+          "filename": "sea-drew-lock.jpg",
+          "hash": "f3705071c496173a91089b21da560c11",
+          "size": 10010,
+          "modified": "2025-07-22T04:15:53.668Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "9400-9500 bytes",
+      "files": [
+        {
+          "filename": "ari-jacoby-brissett.jpg",
+          "hash": "73a197d0137b1a729005052ca371223a",
+          "size": 9465,
+          "modified": "2025-07-22T04:15:35.756Z"
+        },
+        {
+          "filename": "chi-case-keenum.jpg",
+          "hash": "d30fc71791f404f588def7f71c4deaa4",
+          "size": 9461,
+          "modified": "2025-07-22T04:16:29.597Z"
+        },
+        {
+          "filename": "det-jared-goff.jpg",
+          "hash": "9d9ee52ceb497b475eb33a03b5d97400",
+          "size": 9427,
+          "modified": "2025-07-21T19:21:28.306Z"
+        },
+        {
+          "filename": "det-sam-laporta.jpg",
+          "hash": "4e7a8f087a30c21e21ea5982eb604b33",
+          "size": 9402,
+          "modified": "2025-07-21T19:22:33.802Z"
+        },
+        {
+          "filename": "fa-ameer-abdullah.jpg",
+          "hash": "3ea43b172a4699a383fdb115d78fdcf9",
+          "size": 9487,
+          "modified": "2025-07-22T04:36:15.608Z"
+        },
+        {
+          "filename": "pit-kaleb-johnson.jpg",
+          "hash": "9f89c9320e2ccb5f4c91fed67383ffbf",
+          "size": 9422,
+          "modified": "2025-07-22T04:16:50.424Z"
+        },
+        {
+          "filename": "was-zach-ertz.jpg",
+          "hash": "f6474950d2882ce6d25b9d02df343f56",
+          "size": 9461,
+          "modified": "2025-07-21T19:22:47.941Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10500-10600 bytes",
+      "files": [
+        {
+          "filename": "ari-james-conner.jpg",
+          "hash": "fb0e1782cf6fb72a5801fe032779b77e",
+          "size": 10515,
+          "modified": "2025-07-21T19:22:10.096Z"
+        },
+        {
+          "filename": "cin-tee-higgins.jpg",
+          "hash": "ee29434a0d6f39eb9554dc4523f6b87e",
+          "size": 10503,
+          "modified": "2025-07-21T19:22:21.991Z"
+        },
+        {
+          "filename": "lac-trey-lance.jpg",
+          "hash": "c7bb88806bb0bccbed5b0a54cd84aed1",
+          "size": 10539,
+          "modified": "2025-07-22T04:15:58.982Z"
+        },
+        {
+          "filename": "lar-matthew-stafford.jpg",
+          "hash": "88993ce81533647a8c524d37c5cdba42",
+          "size": 10548,
+          "modified": "2025-07-21T19:21:32.287Z"
+        },
+        {
+          "filename": "ne-antonio-gibson.jpg",
+          "hash": "4360836f0b2354613fe73e612e09a82b",
+          "size": 10508,
+          "modified": "2025-07-22T04:20:59.726Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10300-10400 bytes",
+      "files": [
+        {
+          "filename": "ari-trey-benson.jpg",
+          "hash": "3e58ad50cd4f85e509842141109ffe14",
+          "size": 10323,
+          "modified": "2025-07-22T04:18:38.832Z"
+        },
+        {
+          "filename": "bal-rasheen-ali.jpg",
+          "hash": "3777cfc84e79fc059b1f14734f2f0093",
+          "size": 10385,
+          "modified": "2025-07-23T04:48:05.672Z"
+        },
+        {
+          "filename": "den-jaleel-mclaughlin.jpg",
+          "hash": "1d97cc90ffcd39a8c74698d0a7001a85",
+          "size": 10322,
+          "modified": "2025-07-22T04:20:51.959Z"
+        },
+        {
+          "filename": "hou-nico-collins.jpg",
+          "hash": "3b58588ea3eec0a4be68c1f7f6d6861a",
+          "size": 10371,
+          "modified": "2025-07-21T19:22:15.672Z"
+        },
+        {
+          "filename": "lar-stetson-bennett.jpg",
+          "hash": "0bdbde5958f3b55d206530ac3a970d90",
+          "size": 10362,
+          "modified": "2025-07-22T04:16:36.376Z"
+        },
+        {
+          "filename": "ne-hunter-henry.jpg",
+          "hash": "e25fd29e2c2aada9538f8a63575950c3",
+          "size": 10302,
+          "modified": "2025-07-21T19:22:49.500Z"
+        },
+        {
+          "filename": "was-jayden-daniels.jpg",
+          "hash": "70bf8650839b7aee6545e62654460df3",
+          "size": 10311,
+          "modified": "2025-07-22T04:11:39.680Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "9000-9100 bytes",
+      "files": [
+        {
+          "filename": "atl-bijan-robinson.jpg",
+          "hash": "91bc98cb310256d5e7bad061b4e4fe0e",
+          "size": 9077,
+          "modified": "2025-07-21T19:21:39.842Z"
+        },
+        {
+          "filename": "dal-javonte-williams.jpg",
+          "hash": "eea8be21ea320fdbceb1329e8069c063",
+          "size": 9073,
+          "modified": "2025-07-22T04:17:52.998Z"
+        },
+        {
+          "filename": "nyj-garrett-wilson.jpg",
+          "hash": "664ba9d8f9cb1eb05b0d3e639539f2fa",
+          "size": 9009,
+          "modified": "2025-07-21T19:22:31.334Z"
+        },
+        {
+          "filename": "sea-zach-charbonnet.jpg",
+          "hash": "afa89295e73a1371d33cf25638d091bc",
+          "size": 9099,
+          "modified": "2025-07-22T04:18:15.802Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "11300-11400 bytes",
+      "files": [
+        {
+          "filename": "atl-tyler-allgeier.jpg",
+          "hash": "9353e247f2607f14cec2c2eabb211aef",
+          "size": 11364,
+          "modified": "2025-07-22T04:18:49.102Z"
+        },
+        {
+          "filename": "dal-miles-sanders.jpg",
+          "hash": "489464287714967d524f2c8122306c73",
+          "size": 11380,
+          "modified": "2025-07-22T04:20:43.596Z"
+        },
+        {
+          "filename": "lar-jimmy-garoppolo.jpg",
+          "hash": "8dcd0f2dc6ada4d554d5c09c11363071",
+          "size": 11300,
+          "modified": "2025-07-22T04:15:37.995Z"
+        },
+        {
+          "filename": "lv-ashton-jeanty.jpg",
+          "hash": "30faf900447cff513cbeebf24bb2cd40",
+          "size": 11365,
+          "modified": "2025-07-21T19:21:42.218Z"
+        },
+        {
+          "filename": "no-tyler-shough.jpg",
+          "hash": "f139d013cec5ac2da59e7de053de5623",
+          "size": 11386,
+          "modified": "2025-07-22T04:12:15.628Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "9500-9600 bytes",
+      "files": [
+        {
+          "filename": "bal-cooper-rush.jpg",
+          "hash": "af8136f3f47f933a0aa7cfa521e1cab6",
+          "size": 9556,
+          "modified": "2025-07-22T04:15:25.035Z"
+        },
+        {
+          "filename": "cin-zack-moss.jpg",
+          "hash": "ad80beeeef868fb24a1e3da803296b2e",
+          "size": 9514,
+          "modified": "2025-07-22T04:35:07.952Z"
+        },
+        {
+          "filename": "lac-kimani-vidal.jpg",
+          "hash": "3e5ed2b3963281047f6a84dbd9ab6ff3",
+          "size": 9596,
+          "modified": "2025-07-22T04:35:12.647Z"
+        },
+        {
+          "filename": "lv-zamir-white.jpg",
+          "hash": "3754c78c7dd8824d3bba6fca59596c8d",
+          "size": 9553,
+          "modified": "2025-07-22T04:35:58.533Z"
+        },
+        {
+          "filename": "tb-bucky-irving.jpg",
+          "hash": "b0e0e0814e9274129412bb87c98b9243",
+          "size": 9595,
+          "modified": "2025-07-21T19:21:43.657Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10800-10900 bytes",
+      "files": [
+        {
+          "filename": "bal-isaiah-likely.jpg",
+          "hash": "9cc3fea6cd7fc1028b8ae3bbb68eebc3",
+          "size": 10877,
+          "modified": "2025-07-21T19:22:51.032Z"
+        },
+        {
+          "filename": "car-andy-dalton.jpg",
+          "hash": "fe38dc068c06c59490b55619adc1a4cf",
+          "size": 10831,
+          "modified": "2025-07-22T04:15:31.843Z"
+        },
+        {
+          "filename": "cin-chase-brown.jpg",
+          "hash": "c24fa06f6de111501aeac25ec8d5e42c",
+          "size": 10882,
+          "modified": "2025-07-21T19:22:06.993Z"
+        },
+        {
+          "filename": "cle-deshaun-watson.jpg",
+          "hash": "fd9ceb42c2b4960cd56227f778404bf5",
+          "size": 10860,
+          "modified": "2025-07-22T04:15:27.360Z"
+        },
+        {
+          "filename": "nyj-justin-fields.jpg",
+          "hash": "4e373d86ed56b17add56fff62aa606f5",
+          "size": 10818,
+          "modified": "2025-07-22T04:11:52.319Z"
+        },
+        {
+          "filename": "phi-tanner-mckee.jpg",
+          "hash": "5bfc551f52f6a9f219ad0b2892f902eb",
+          "size": 10864,
+          "modified": "2025-07-22T04:15:57.169Z"
+        },
+        {
+          "filename": "sea-sam-darnold.jpg",
+          "hash": "e0830ec8e1ca65912084f550742e8445",
+          "size": 10848,
+          "modified": "2025-07-22T04:12:08.068Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "9900-10000 bytes",
+      "files": [
+        {
+          "filename": "bal-justice-hill.jpg",
+          "hash": "d7c68bf2e22e159324ce94045e71c050",
+          "size": 9967,
+          "modified": "2025-07-22T04:19:59.989Z"
+        },
+        {
+          "filename": "chi-roschon-johnson.jpg",
+          "hash": "ba7eb36db26ce88dd3d2770bc3ed4732",
+          "size": 9963,
+          "modified": "2025-07-22T04:19:48.827Z"
+        },
+        {
+          "filename": "cle-quinshon-judkins.jpg",
+          "hash": "02f76eecf11fad2b998e267ff985834b",
+          "size": 9926,
+          "modified": "2025-07-22T04:16:57.027Z"
+        },
+        {
+          "filename": "gb-marshawn-lloyd.jpg",
+          "hash": "1a56dc1c2ee0be207838131d0ab6eda4",
+          "size": 9952,
+          "modified": "2025-07-22T04:19:50.135Z"
+        },
+        {
+          "filename": "ind-daniel-jones.jpg",
+          "hash": "d37d25707aba9bd16687e40cd12dc288",
+          "size": 9913,
+          "modified": "2025-07-22T04:12:14.323Z"
+        },
+        {
+          "filename": "mia-alexander-mattison.jpg",
+          "hash": "b8c0613574c9c5c8ca77570c5e7c64a7",
+          "size": 9958,
+          "modified": "2025-07-22T04:34:53.084Z"
+        },
+        {
+          "filename": "sea-jalen-milroe.jpg",
+          "hash": "a7e87d58fd635b9e0f76dd16a3e2106a",
+          "size": 9964,
+          "modified": "2025-07-22T04:12:22.294Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10400-10500 bytes",
+      "files": [
+        {
+          "filename": "bal-mark-andrews.jpg",
+          "hash": "a949475606cd7506bc5f55816e26997e",
+          "size": 10418,
+          "modified": "2025-07-21T19:22:36.068Z"
+        },
+        {
+          "filename": "buf-ray-davis.jpg",
+          "hash": "9638fd4eb02f11ae3c2bda81b41ce026",
+          "size": 10410,
+          "modified": "2025-07-22T04:18:33.290Z"
+        },
+        {
+          "filename": "cle-kenny-pickett.jpg",
+          "hash": "d462889495bbb1ba86b09d83a0b536eb",
+          "size": 10415,
+          "modified": "2025-07-22T04:12:27.473Z"
+        },
+        {
+          "filename": "gb-tucker-kraft.jpg",
+          "hash": "69e66a8349e00fcedca89881999f626c",
+          "size": 10401,
+          "modified": "2025-07-21T19:22:38.934Z"
+        },
+        {
+          "filename": "kc-isiah-pacheco.jpg",
+          "hash": "6c99384d3d342fd941c3a9495420d20d",
+          "size": 10479,
+          "modified": "2025-07-22T04:16:54.452Z"
+        },
+        {
+          "filename": "lv-geno-smith.jpg",
+          "hash": "f05fb9afbfb5d1d485fc3d53d48c4c40",
+          "size": 10477,
+          "modified": "2025-07-22T04:12:03.744Z"
+        },
+        {
+          "filename": "pit-aaron-rodgers.jpg",
+          "hash": "2cca27bc52430d9e93337263d60fdca7",
+          "size": 10400,
+          "modified": "2025-07-22T04:12:11.040Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "9700-9800 bytes",
+      "files": [
+        {
+          "filename": "buf-dalton-kincaid.jpg",
+          "hash": "6951607af03c386c720ac6794a99ba10",
+          "size": 9786,
+          "modified": "2025-07-21T19:22:43.352Z"
+        },
+        {
+          "filename": "chi-colston-loveland.jpg",
+          "hash": "7184da8412eb344ee5a859ef2d47e3d3",
+          "size": 9730,
+          "modified": "2025-07-21T19:22:52.499Z"
+        },
+        {
+          "filename": "cin-jake-browning.jpg",
+          "hash": "a680901c28002a942d602f0a702bc2c0",
+          "size": 9759,
+          "modified": "2025-07-22T04:15:16.402Z"
+        },
+        {
+          "filename": "ne-treveyon-henderson.jpg",
+          "hash": "5a077108cfcea1e81fee1da2ed3ee46b",
+          "size": 9715,
+          "modified": "2025-07-22T04:16:51.745Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "11400-11500 bytes",
+      "files": [
+        {
+          "filename": "buf-james-cook.jpg",
+          "hash": "f5e8ff7627de89eb8b1c34c232579d64",
+          "size": 11467,
+          "modified": "2025-07-21T19:21:48.760Z"
+        },
+        {
+          "filename": "ind-tyler-warren.jpg",
+          "hash": "8bcb18e4ad666ce8b5d091f57833d5c7",
+          "size": 11450,
+          "modified": "2025-07-21T19:22:44.717Z"
+        },
+        {
+          "filename": "lar-kyren-williams.jpg",
+          "hash": "c6d5b03c284b72136f53fa3e96481800",
+          "size": 11482,
+          "modified": "2025-07-21T19:21:45.069Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "12100-12200 bytes",
+      "files": [
+        {
+          "filename": "car-jonathon-brooks.jpg",
+          "hash": "9b6a255260faa90ce3b6bb4dcd16237c",
+          "size": 12172,
+          "modified": "2025-07-22T04:36:52.714Z"
+        },
+        {
+          "filename": "kc-xavier-worthy.jpg",
+          "hash": "2b9ed38da43ce083f293bb61a0753ee2",
+          "size": 12181,
+          "modified": "2025-07-21T19:22:29.805Z"
+        },
+        {
+          "filename": "no-kendre-miller.jpg",
+          "hash": "7dde58d9faecb210bee1b8dd39b30e05",
+          "size": 12143,
+          "modified": "2025-07-22T04:19:55.016Z"
+        },
+        {
+          "filename": "phi-dallas-goedert.jpg",
+          "hash": "edb144eda3539c14449b523cafc0ceae",
+          "size": 12132,
+          "modified": "2025-07-21T19:22:40.041Z"
+        },
+        {
+          "filename": "sea-kenny-mcintosh.jpg",
+          "hash": "27bab8bf07640f9fc0c748c2a0626678",
+          "size": 12193,
+          "modified": "2025-07-22T04:37:04.493Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "11100-11200 bytes",
+      "files": [
+        {
+          "filename": "car-trevor-etienne.jpg",
+          "hash": "c89dc9e5347a6f609007360e8e6d50c1",
+          "size": 11149,
+          "modified": "2025-07-22T04:20:55.557Z"
+        },
+        {
+          "filename": "cle-joe-flacco.jpg",
+          "hash": "8748bd7406710ea37c8c4c587803b6b6",
+          "size": 11107,
+          "modified": "2025-07-22T04:12:17.289Z"
+        },
+        {
+          "filename": "jac-nick-mullens.jpg",
+          "hash": "fc2dc7cbcdc3f82984f510f83d165a77",
+          "size": 11136,
+          "modified": "2025-07-22T04:15:44.232Z"
+        },
+        {
+          "filename": "lac-ladd-mcconkey.jpg",
+          "hash": "05cc0d43999298c3bacda2ca4e5ae205",
+          "size": 11193,
+          "modified": "2025-07-21T19:22:19.560Z"
+        },
+        {
+          "filename": "no-cam-akers.jpg",
+          "hash": "6e37c2be42df30f0e4d7b6f16b3d2972",
+          "size": 11100,
+          "modified": "2025-07-22T04:36:05.368Z"
+        },
+        {
+          "filename": "sf-mac-jones.jpg",
+          "hash": "4c41efaecfe9510598b64bf15761e68a",
+          "size": 11171,
+          "modified": "2025-07-22T04:12:41.072Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "8800-8900 bytes",
+      "files": [
+        {
+          "filename": "cle-jerome-ford.jpg",
+          "hash": "8cea916bffe27793581d3070a5035422",
+          "size": 8873,
+          "modified": "2025-07-22T04:19:44.990Z"
+        },
+        {
+          "filename": "det-hendon-hooker.jpg",
+          "hash": "cec842bc4ed0e8df0852a44a78affcb1",
+          "size": 8867,
+          "modified": "2025-07-22T04:15:46.244Z"
+        },
+        {
+          "filename": "lv-raheem-mostert.jpg",
+          "hash": "b29de7d8e1b4efc41fd28493685ab540",
+          "size": 8838,
+          "modified": "2025-07-22T04:20:53.579Z"
+        },
+        {
+          "filename": "ten-brandon-allen.jpg",
+          "hash": "99f7715c0350a30bc9c48622c2a5d736",
+          "size": 8855,
+          "modified": "2025-07-22T04:16:39.065Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10600-10700 bytes",
+      "files": [
+        {
+          "filename": "cle-shedeur-sanders.jpg",
+          "hash": "96b9904c46ac08870c810366df646c0d",
+          "size": 10685,
+          "modified": "2025-07-22T04:12:20.633Z"
+        },
+        {
+          "filename": "den-evan-engram.jpg",
+          "hash": "d2e1d2d95ca1e664e43c23698c5e7025",
+          "size": 10608,
+          "modified": "2025-07-21T19:22:37.477Z"
+        },
+        {
+          "filename": "mia-alec-ingold.jpg",
+          "hash": "8743a00832bc5f1b4451ec67488d7c0b",
+          "size": 10647,
+          "modified": "2025-07-23T04:48:02.025Z"
+        },
+        {
+          "filename": "ten-tyjae-spears.jpg",
+          "hash": "52eaad2e53caf55485035f4399df7e1b",
+          "size": 10612,
+          "modified": "2025-07-22T04:18:29.913Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10200-10300 bytes",
+      "files": [
+        {
+          "filename": "dal-hunter-luepke.jpg",
+          "hash": "de526a81cf029effc2c9269a628f7139",
+          "size": 10271,
+          "modified": "2025-07-23T04:47:10.541Z"
+        },
+        {
+          "filename": "gb-emanuel-wilson.jpg",
+          "hash": "ef9fada283a7895c86f017a8d4b2920c",
+          "size": 10286,
+          "modified": "2025-07-22T04:35:17.526Z"
+        },
+        {
+          "filename": "ind-khalil-herbert.jpg",
+          "hash": "6b0f63dfad06d5d039c5380edee6a42d",
+          "size": 10273,
+          "modified": "2025-07-22T04:21:09.950Z"
+        },
+        {
+          "filename": "lv-brock-bowers.jpg",
+          "hash": "0ac816118047b61752f3013c6707dd90",
+          "size": 10247,
+          "modified": "2025-07-21T19:22:32.418Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "8900-9000 bytes",
+      "files": [
+        {
+          "filename": "dal-jake-ferguson.jpg",
+          "hash": "827361cc290fd640889ee090c064787b",
+          "size": 8992,
+          "modified": "2025-07-21T19:22:46.105Z"
+        },
+        {
+          "filename": "den-tyler-badie.jpg",
+          "hash": "71d0596e33f81f51b296ee995b8ce880",
+          "size": 8904,
+          "modified": "2025-07-23T04:48:08.514Z"
+        },
+        {
+          "filename": "gb-malik-willis.jpg",
+          "hash": "977a9e9b988c2651121de43f451a71a2",
+          "size": 8929,
+          "modified": "2025-07-22T04:12:38.835Z"
+        },
+        {
+          "filename": "pit-jonnu-smith.jpg",
+          "hash": "885465bb0627eac72b1e34c8cc2c7e46",
+          "size": 8912,
+          "modified": "2025-07-21T19:22:41.894Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10100-10200 bytes",
+      "files": [
+        {
+          "filename": "den-audric-estime.jpg",
+          "hash": "5c5084e717c7b6f22734d3991ab97bd2",
+          "size": 10112,
+          "modified": "2025-07-22T04:20:48.881Z"
+        },
+        {
+          "filename": "den-rj-harvey.jpg",
+          "hash": "49dbe26ba211b3ffc3bf9f6285298521",
+          "size": 10172,
+          "modified": "2025-07-22T04:16:48.286Z"
+        },
+        {
+          "filename": "det-craig-reynolds.jpg",
+          "hash": "6ab119114603a462ea70fc0e2c98e790",
+          "size": 10178,
+          "modified": "2025-07-22T04:36:59.279Z"
+        },
+        {
+          "filename": "det-jahmyr-gibbs.jpg",
+          "hash": "d19ce0dfb2a8b96e814574784bce0fc8",
+          "size": 10144,
+          "modified": "2025-07-21T19:21:40.930Z"
+        },
+        {
+          "filename": "hou-davis-mills.jpg",
+          "hash": "0b9a284cacb93681d007857d9d32c5ef",
+          "size": 10115,
+          "modified": "2025-07-22T04:15:42.915Z"
+        },
+        {
+          "filename": "kc-bailey-zappe.jpg",
+          "hash": "0a62afa8057f906a987ec639066bbcba",
+          "size": 10193,
+          "modified": "2025-07-22T04:16:33.015Z"
+        },
+        {
+          "filename": "nyg-russell-wilson.jpg",
+          "hash": "261e773a58944546b2ccf7cc956ddd25",
+          "size": 10126,
+          "modified": "2025-07-22T04:12:12.711Z"
+        },
+        {
+          "filename": "ten-julius-chestnut.jpg",
+          "hash": "2bfee3c9e3f504c44c5d09b0e4c7d573",
+          "size": 10178,
+          "modified": "2025-07-23T04:47:16.134Z"
+        },
+        {
+          "filename": "was-terry-mclaurin.jpg",
+          "hash": "8e75f70f9acd8a7cce433bb84d90c054",
+          "size": 10115,
+          "modified": "2025-07-21T19:22:17.841Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10900-11000 bytes",
+      "files": [
+        {
+          "filename": "fa-gus-edwards.jpg",
+          "hash": "bd026334fe0965c23c1900ddb4669e8f",
+          "size": 10969,
+          "modified": "2025-07-22T04:36:00.627Z"
+        },
+        {
+          "filename": "hou-nick-chubb.jpg",
+          "hash": "de23d751f0cf54cdeedfce975a49ad6b",
+          "size": 10982,
+          "modified": "2025-07-22T04:19:38.357Z"
+        },
+        {
+          "filename": "lac-omarion-hampton.jpg",
+          "hash": "55025c6f725f509392490b91707251fe",
+          "size": 10958,
+          "modified": "2025-07-22T04:16:45.398Z"
+        },
+        {
+          "filename": "lv-dylan-laube.jpg",
+          "hash": "c15f07dddd6aa60ffaceee102c32ca4e",
+          "size": 10947,
+          "modified": "2025-07-23T04:48:03.716Z"
+        },
+        {
+          "filename": "mia-zach-wilson.jpg",
+          "hash": "6e1511a61777909188fe15428bfdb13b",
+          "size": 10914,
+          "modified": "2025-07-22T04:15:18.068Z"
+        },
+        {
+          "filename": "min-sam-howell.jpg",
+          "hash": "ba99fad39ad7d3da1b5f986a25728bbc",
+          "size": 10982,
+          "modified": "2025-07-22T04:15:21.961Z"
+        },
+        {
+          "filename": "pit-jaylen-warren.jpg",
+          "hash": "4d5e3d6e02cd6937eb0321651d08338c",
+          "size": 10992,
+          "modified": "2025-07-22T04:17:26.440Z"
+        },
+        {
+          "filename": "pit-kenneth-gainwell.jpg",
+          "hash": "f82b70ce66bc9b5805d1ebe5e5fcd23a",
+          "size": 10900,
+          "modified": "2025-07-22T04:21:01.361Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "10700-10800 bytes",
+      "files": [
+        {
+          "filename": "jac-brian-thomas-jr.jpg",
+          "hash": "ba0fca7ae7725979c203ad2938db825e",
+          "size": 10776,
+          "modified": "2025-07-21T19:22:14.053Z"
+        },
+        {
+          "filename": "lar-blake-corum.jpg",
+          "hash": "a8ad0a0820bb3c0735ac4d1884707711",
+          "size": 10746,
+          "modified": "2025-07-22T04:19:41.563Z"
+        },
+        {
+          "filename": "lar-davante-adams.jpg",
+          "hash": "e09bb94342b30642a98ec948cf42b03b",
+          "size": 10788,
+          "modified": "2025-07-21T19:22:20.617Z"
+        },
+        {
+          "filename": "mia-jaylen-wright.jpg",
+          "hash": "c3f1988a7e4b7287b06734a97caf4cf0",
+          "size": 10790,
+          "modified": "2025-07-22T04:18:53.566Z"
+        },
+        {
+          "filename": "nyj-isaiah-davis.jpg",
+          "hash": "fa2d97c19e641effcd84db78805330e9",
+          "size": 10779,
+          "modified": "2025-07-22T04:34:54.742Z"
+        },
+        {
+          "filename": "phi-will-shipley.jpg",
+          "hash": "a4099aaa4904345f1f54b0bc837ef58e",
+          "size": 10714,
+          "modified": "2025-07-22T04:20:02.993Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "11600-11700 bytes",
+      "files": [
+        {
+          "filename": "lar-puka-nacua.jpg",
+          "hash": "28111d1e1c50621a1b317fb3f2074227",
+          "size": 11638,
+          "modified": "2025-07-21T19:22:12.695Z"
+        },
+        {
+          "filename": "nyj-braelon-allen.jpg",
+          "hash": "c2a18a37d926cba7fd6ad5b03a6ed1bd",
+          "size": 11693,
+          "modified": "2025-07-22T04:19:36.699Z"
+        },
+        {
+          "filename": "pit-cordarrelle-patterson.jpg",
+          "hash": "23baf690ee40adb8819fb09152c5a676",
+          "size": 11619,
+          "modified": "2025-07-22T04:37:08.999Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "11800-11900 bytes",
+      "files": [
+        {
+          "filename": "lv-sincere-mccormick.jpg",
+          "hash": "6bcd8b4ffaa97ba525bfe57d6bea2c20",
+          "size": 11894,
+          "modified": "2025-07-22T04:35:14.363Z"
+        },
+        {
+          "filename": "ne-drake-maye.jpg",
+          "hash": "c89bcfc7af71c819ac26a3a09acaecb9",
+          "size": 11806,
+          "modified": "2025-07-21T19:21:26.263Z"
+        },
+        {
+          "filename": "pit-mason-rudolph.jpg",
+          "hash": "40401cc81931e89b2bc4d74f146b8f03",
+          "size": 11836,
+          "modified": "2025-07-22T04:12:29.092Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "9300-9400 bytes",
+      "files": [
+        {
+          "filename": "mia-quinn-ewers.jpg",
+          "hash": "ff0df9998a5043864cb5331f1c42fa91",
+          "size": 9381,
+          "modified": "2025-07-22T04:16:00.823Z"
+        },
+        {
+          "filename": "no-jake-haener.jpg",
+          "hash": "735499569b94ac09f0e20e9954cca3e2",
+          "size": 9314,
+          "modified": "2025-07-22T04:15:51.095Z"
+        },
+        {
+          "filename": "tb-kyle-trask.jpg",
+          "hash": "3d45dd4b66b98674230efed0c9385d68",
+          "size": 9370,
+          "modified": "2025-07-22T04:15:39.970Z"
+        },
+        {
+          "filename": "was-jeremy-mcnichols.jpg",
+          "hash": "b817330f7b5399a70593cd6f0156d74e",
+          "size": 9385,
+          "modified": "2025-07-22T04:36:55.207Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "9800-9900 bytes",
+      "files": [
+        {
+          "filename": "no-clyde-edwards-helaire.jpg",
+          "hash": "f5bf71c129178425b09efc6fe4395cfa",
+          "size": 9895,
+          "modified": "2025-07-22T04:37:02.700Z"
+        },
+        {
+          "filename": "no-devin-neal.jpg",
+          "hash": "6ab434bcfc5975c3e28aedfdf49c6567",
+          "size": 9866,
+          "modified": "2025-07-22T04:19:58.361Z"
+        },
+        {
+          "filename": "nyg-devin-singletary.jpg",
+          "hash": "d25aeeb1daa9d981868b85e88febc5be",
+          "size": 9874,
+          "modified": "2025-07-22T04:20:58.101Z"
+        },
+        {
+          "filename": "pit-skylar-thompson.jpg",
+          "hash": "c8dc889cea6eac297ad00959f9d98891",
+          "size": 9824,
+          "modified": "2025-07-22T04:16:42.595Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "12300-12400 bytes",
+      "files": [
+        {
+          "filename": "nyg-cam-skattebo.jpg",
+          "hash": "f39ab438794a06e2f7be6cc180101967",
+          "size": 12367,
+          "modified": "2025-07-22T04:18:17.444Z"
+        },
+        {
+          "filename": "nyg-jaxson-dart.jpg",
+          "hash": "27d19e236f3f1a2c91a4598f8264de32",
+          "size": 12318,
+          "modified": "2025-07-22T04:12:18.946Z"
+        },
+        {
+          "filename": "nyg-malik-nabers.jpg",
+          "hash": "689878023478e43a5695782d54a09df2",
+          "size": 12399,
+          "modified": "2025-07-21T19:22:16.751Z"
+        }
+      ]
+    },
+    {
+      "type": "small_similar_sizes",
+      "sizeRange": "9600-9700 bytes",
+      "files": [
+        {
+          "filename": "phi-dorian-thompson-robinson.jpg",
+          "hash": "8c633ad59563b6505aa82810d0684ef3",
+          "size": 9627,
+          "modified": "2025-07-22T04:16:27.801Z"
+        },
+        {
+          "filename": "tb-baker-mayfield.jpg",
+          "hash": "f54596580ffb04a0526670487db97153",
+          "size": 9692,
+          "modified": "2025-07-22T04:11:45.094Z"
+        },
+        {
+          "filename": "tb-sean-tucker.jpg",
+          "hash": "304404c607fe3216674b3d4f47e09e57",
+          "size": 9621,
+          "modified": "2025-07-22T04:21:07.711Z"
+        }
+      ]
+    }
+  ],
+  "mappingIssues": []
+}

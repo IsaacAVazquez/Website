@@ -1,0 +1,1687 @@
+
+> isaac-vazquez-portfolio@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.3.4
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.139:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1918ms
+ ✓ Compiled /middleware in 94ms
+ ✓ Compiled (108 modules)
+ ○ Compiling /fantasy-football ...
+ ✓ Compiled /fantasy-football in 6.1s (2934 modules)
+ ○ Compiling /draft-tiers ...
+ GET /fantasy-football 200 in 6803ms
+ ✓ Compiled /api/data-metadata in 6.7s (3259 modules)
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=ppr 200 in 4639ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 4642ms
+ GET /api/auth/session 200 in 5365ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=ppr 200 in 16ms
+ GET /admin 200 in 6884ms
+ GET /api/data-metadata 200 in 5185ms
+ GET /draft-tiers 200 in 7642ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 18ms
+ GET /api/auth/session 200 in 61ms
+ GET /fantasy-football 200 in 90ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 16ms
+ GET /api/data-metadata 200 in 97ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=ppr 200 in 30ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 110ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=ppr 200 in 154ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=ppr 200 in 37ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=ppr 200 in 33ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=ppr 200 in 37ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=ppr 200 in 17ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=ppr 200 in 28ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=ppr 200 in 17ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=ppr 200 in 32ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=ppr 200 in 17ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=ppr 200 in 122ms
+ GET /api/auth/session 200 in 92ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 104ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 104ms
+ GET /api/auth/session 200 in 24ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 33ms
+ GET /api/auth/session 200 in 43ms
+ GET /api/auth/session 200 in 46ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 61ms
+ GET /api/auth/session 200 in 43ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 36ms
+ GET /api/auth/session 200 in 28ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 42ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 27ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=ppr 200 in 21ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 80ms
+ GET /api/auth/session 200 in 41ms
+ GET /api/auth/session 200 in 101ms
+ GET /api/auth/session 200 in 23ms
+ GET /fantasy-football 200 in 630ms
+ GET /draft-tiers 200 in 186ms
+ GET /api/auth/session 200 in 54ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 6ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 36ms
+ GET /api/auth/session 200 in 10ms
+ GET /api/auth/session 200 in 6ms
+ GET /draft-tiers 200 in 98ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 10ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 84ms
+ GET /api/auth/session 200 in 86ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 8ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 24ms
+ GET /api/auth/session 200 in 265ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 24ms
+ GET /api/auth/session 200 in 53ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 25ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 72ms
+ GET /api/auth/session 200 in 39ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 8ms
+ GET /api/auth/session 200 in 16ms
+ GET /api/auth/session 200 in 5ms
+ GET /api/auth/session 200 in 26ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 7ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 9ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 11ms
+ GET /api/auth/session 200 in 5ms
+ GET /api/auth/session 200 in 4ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1547ms (3258 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 2659ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 35ms
+ GET /api/auth/session 200 in 120ms
+ GET /api/auth/session 200 in 12ms
+ GET /api/auth/session 200 in 24ms
+ GET /api/auth/session 200 in 98ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=ppr 200 in 25ms
+ GET /api/auth/session 200 in 39ms
+ GET /api/auth/session 200 in 123ms
+ GET /api/auth/session 200 in 83ms
+ GET /api/auth/session 200 in 24ms
+ GET /api/auth/session 200 in 16ms
+ GET /api/auth/session 200 in 16ms
+ GET /api/auth/session 200 in 121ms
+ GET /api/auth/session 200 in 118ms
+ GET /api/auth/session 200 in 183ms
+ GET /api/auth/session 200 in 29ms
+ GET /api/auth/session 200 in 34ms
+ GET /api/auth/session 200 in 20ms
+ GET /api/auth/session 200 in 15ms
+ GET /api/auth/session 200 in 54ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 12ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 6ms
+ GET /api/auth/session 200 in 22ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 5ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 20ms
+ GET /api/auth/session 200 in 14ms
+ GET /api/auth/session 200 in 14ms
+ GET /api/auth/session 200 in 5ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 16ms
+ GET /api/auth/session 200 in 64ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 9ms
+ GET /api/auth/session 200 in 12ms
+ GET /api/auth/session 200 in 8ms
+ GET /api/auth/session 200 in 9ms
+ GET /api/auth/session 200 in 13ms
+ GET /api/auth/session 200 in 42ms
+ GET /api/auth/session 200 in 8ms
+ GET /api/auth/session 200 in 5ms
+ GET /api/auth/session 200 in 10ms
+ GET /api/auth/session 200 in 24ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 23ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=ppr 200 in 35ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=ppr 200 in 19ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=ppr 200 in 2ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=ppr 200 in 2ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=ppr 200 in 2ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=ppr 200 in 3ms
+ GET /api/auth/session 200 in 89ms
+ GET /api/auth/session 200 in 7ms
+ GET /api/auth/session 200 in 5ms
+ GET /api/auth/session 200 in 10ms
+ GET /api/auth/session 200 in 14ms
+ GET /api/auth/session 200 in 16ms
+ GET /api/auth/session 200 in 16ms
+ GET /api/auth/session 200 in 6ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 859ms
+ GET /api/auth/session 200 in 58ms
+ GET /api/auth/session 200 in 6ms
+ GET /api/auth/session 200 in 5ms
+ ✓ Compiled in 1724ms (3272 modules)
+ GET /fantasy-football 200 in 371ms
+ GET /admin 200 in 374ms
+ GET /draft-tiers 200 in 164ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 72ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 69ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 5ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 22ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 11ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 30ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 8ms
+ ✓ Compiled in 1081ms (3272 modules)
+ GET /fantasy-football 200 in 441ms
+ GET /api/auth/session 200 in 179ms
+ GET /draft-tiers 200 in 381ms
+ GET /api/auth/session 200 in 272ms
+ GET /admin 200 in 387ms
+ GET /api/auth/session 200 in 178ms
+ GET /api/auth/session 200 in 464ms
+ GET /api/auth/session 200 in 34ms
+ GET /api/auth/session 200 in 194ms
+ GET /api/auth/session 200 in 93ms
+ GET /api/auth/session 200 in 50ms
+ GET /api/auth/session 200 in 19ms
+ GET /api/auth/session 200 in 15ms
+ GET /api/auth/session 200 in 209ms
+ GET /api/auth/session 200 in 53ms
+ GET /api/auth/session 200 in 108ms
+ GET /api/auth/session 200 in 35ms
+ GET /api/auth/session 200 in 17ms
+ ✓ Compiled in 2.6s (3272 modules)
+ GET /api/auth/session 200 in 2651ms
+ GET /api/auth/session 200 in 202ms
+ GET /fantasy-football 200 in 321ms
+ GET /admin 200 in 253ms
+ GET /api/auth/session 200 in 111ms
+ GET /api/auth/session 200 in 179ms
+ GET /api/auth/session 200 in 110ms
+ GET /api/auth/session 200 in 435ms
+ GET /api/auth/session 200 in 33ms
+ GET /api/auth/session 200 in 41ms
+ GET /api/auth/session 200 in 35ms
+ GET /api/auth/session 200 in 81ms
+ GET /api/auth/session 200 in 82ms
+ GET /api/auth/session 200 in 19ms
+ GET /api/auth/session 200 in 21ms
+ GET /api/auth/session 200 in 33ms
+ GET /api/auth/session 200 in 16ms
+ GET /api/auth/session 200 in 154ms
+ GET /api/auth/session 200 in 74ms
+ GET /api/auth/session 200 in 17ms
+ GET /api/auth/session 200 in 37ms
+ GET /api/auth/session 200 in 80ms
+ GET /api/auth/session 200 in 114ms
+ ✓ Compiled in 2.6s (3272 modules)
+ GET /api/auth/session 200 in 2386ms
+ GET /admin 200 in 192ms
+ GET /fantasy-football 200 in 198ms
+ GET /api/auth/session 200 in 79ms
+ GET /api/auth/session 200 in 266ms
+ GET /api/auth/session 200 in 83ms
+ GET /api/auth/session 200 in 30ms
+ GET /api/auth/session 200 in 36ms
+ GET /api/auth/session 200 in 217ms
+ GET /api/auth/session 200 in 98ms
+ GET /api/auth/session 200 in 31ms
+ GET /api/auth/session 200 in 41ms
+ GET /api/auth/session 200 in 10ms
+ GET /api/auth/session 200 in 5ms
+ GET /api/auth/session 200 in 10ms
+ GET /draft-tiers 200 in 482ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 30ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 30ms
+ GET /api/auth/session 200 in 71ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 5ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 100ms
+ GET /api/auth/session 200 in 111ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 22ms
+ GET /api/auth/session 200 in 25ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 19ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 16ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 30ms
+ GET /api/auth/session 200 in 22ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 2ms
+ GET /api/auth/session 200 in 20ms
+ GET /api/auth/session 200 in 4ms
+ GET /api/auth/session 200 in 3ms
+ GET /api/auth/session 200 in 17ms
+ GET /api/auth/session 200 in 11ms
+ GET /api/auth/session 200 in 6ms
+ GET /api/auth/session 200 in 6ms
+ ○ Compiling /api/fantasy-pros-session ...
+ ✓ Compiled /api/fantasy-pros-session in 1213ms (3264 modules)
+[FantasyPros] FLEX requested - fetching OVERALL rankings and filtering to RB/WR/TE
+[FantasyPros] Filtered 476 OVERALL players to 362 FLEX-eligible (RB/WR/TE)
+Successfully wrote 82 players to qbData.ts
+Persisted 82 QB players to file
+ POST /api/data-manager 200 in 19ms
+Successfully wrote 151 players to rbData.ts
+Persisted 151 RB players to file
+ POST /api/data-manager 200 in 35ms
+Successfully wrote 189 players to wrData.ts
+Persisted 189 WR players to file
+ POST /api/data-manager 200 in 179ms
+ ✓ Compiled in 225ms (1451 modules)
+Successfully wrote 103 players to teData.ts
+Persisted 103 TE players to file
+ POST /api/data-manager 200 in 33ms
+Successfully wrote 42 players to kData.ts
+Persisted 42 K players to file
+ POST /api/data-manager 200 in 444ms
+ GET /fantasy-football 200 in 467ms
+ GET /admin 200 in 483ms
+ GET /draft-tiers 200 in 483ms
+ ✓ Compiled in 517ms (1451 modules)
+Successfully wrote 32 players to dstData.ts
+Persisted 32 DST players to file
+ POST /api/data-manager 200 in 102ms
+Successfully wrote 362 players to flexData.ts
+Persisted 362 FLEX players to file
+ POST /api/data-manager 200 in 145ms
+ GET /fantasy-football 200 in 295ms
+ ✓ Compiled in 349ms (1451 modules)
+ GET /admin 200 in 277ms
+ GET /draft-tiers 200 in 158ms
+Successfully wrote 476 players to overallData.ts
+Persisted 476 OVERALL players to file
+ POST /api/data-manager 200 in 150ms
+ POST /api/fantasy-pros-session 200 in 3743ms
+ GET /fantasy-football 200 in 274ms
+ GET /admin 200 in 286ms
+ GET /draft-tiers 200 in 188ms
+ ⨯ ./src/data/overallData.ts
+Error:   [31mx[0m Expected ',', got 'Marr'
+    ,-[[36;1;4m/Users/isaacvazquez/Website/src/data/overallData.ts[0m:14:1]
+ [2m11[0m | export const overallPlayers: Player[] = [
+ [2m12[0m |   {
+ [2m13[0m |     id: 'fp-OVERALL-1',
+ [2m14[0m |     name: 'Ja'Marr Chase',
+    : [35;1m              ^^^^[0m
+ [2m15[0m |     team: 'CIN',
+ [2m16[0m |     position: 'WR',
+ [2m17[0m |     averageRank: '1.06',
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/data/overallData.ts
+./src/hooks/useOverallFantasyData.ts
+./src/app/fantasy-football/fantasy-football-client.tsx
+ ⨯ ./src/data/overallData.ts
+Error:   [31mx[0m Expected ',', got 'Marr'
+    ,-[[36;1;4m/Users/isaacvazquez/Website/src/data/overallData.ts[0m:14:1]
+ [2m11[0m | export const overallPlayers: Player[] = [
+ [2m12[0m |   {
+ [2m13[0m |     id: 'fp-OVERALL-1',
+ [2m14[0m |     name: 'Ja'Marr Chase',
+    : [35;1m              ^^^^[0m
+ [2m15[0m |     team: 'CIN',
+ [2m16[0m |     position: 'WR',
+ [2m17[0m |     averageRank: '1.06',
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/data/overallData.ts
+./src/hooks/useOverallFantasyData.ts
+./src/app/fantasy-football/fantasy-football-client.tsx
+ ○ Compiling /_not-found ...
+ ⨯ ./src/data/overallData.ts
+Error:   [31mx[0m Expected ',', got 'Marr'
+    ,-[[36;1;4m/Users/isaacvazquez/Website/src/data/overallData.ts[0m:14:1]
+ [2m11[0m | export const overallPlayers: Player[] = [
+ [2m12[0m |   {
+ [2m13[0m |     id: 'fp-OVERALL-1',
+ [2m14[0m |     name: 'Ja'Marr Chase',
+    : [35;1m              ^^^^[0m
+ [2m15[0m |     team: 'CIN',
+ [2m16[0m |     position: 'WR',
+ [2m17[0m |     averageRank: '1.06',
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/data/overallData.ts
+./src/hooks/useOverallFantasyData.ts
+./src/components/DraftTiersContent.tsx
+ ⨯ ./src/data/overallData.ts
+Error:   [31mx[0m Expected ',', got 'Marr'
+    ,-[[36;1;4m/Users/isaacvazquez/Website/src/data/overallData.ts[0m:14:1]
+ [2m11[0m | export const overallPlayers: Player[] = [
+ [2m12[0m |   {
+ [2m13[0m |     id: 'fp-OVERALL-1',
+ [2m14[0m |     name: 'Ja'Marr Chase',
+    : [35;1m              ^^^^[0m
+ [2m15[0m |     team: 'CIN',
+ [2m16[0m |     position: 'WR',
+ [2m17[0m |     averageRank: '1.06',
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/data/overallData.ts
+./src/hooks/useOverallFantasyData.ts
+./src/app/fantasy-football/fantasy-football-client.tsx
+ GET /_next/static/webpack/fbe60f0c5a00eedc.webpack.hot-update.json 500 in 4352ms
+ GET /admin 500 in 4221ms
+ GET /fantasy-football 500 in 4223ms
+ GET /admin 500 in 1440ms
+ GET /draft-tiers 500 in 4221ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /draft-tiers 500 in 43ms
+ GET /draft-tiers 200 in 88ms
+ GET /fantasy-football 500 in 135ms
+ GET /fantasy-football 500 in 17ms
+ GET /fantasy-football 500 in 29ms
+ GET /draft-tiers 500 in 33ms
+ GET /fantasy-football 500 in 16ms
+ GET /draft-tiers 500 in 59ms
+ GET /admin 500 in 30ms
+ ⨯ ./src/data/overallData.ts
+Error:   [31mx[0m Expected ',', got 'Von'
+     ,-[[36;1;4m/Users/isaacvazquez/Website/src/data/overallData.ts[0m:350:1]
+ [2m347[0m |   },
+ [2m348[0m |   {
+ [2m349[0m |     id: 'fp-OVERALL-15',
+ [2m350[0m |     name: 'De'Von Achane',
+     : [35;1m              ^^^[0m
+ [2m351[0m |     team: 'MIA',
+ [2m352[0m |     position: 'RB',
+ [2m353[0m |     averageRank: '15.98',
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/data/overallData.ts
+./src/hooks/useOverallFantasyData.ts
+./src/app/fantasy-football/fantasy-football-client.tsx
+ ✓ Compiled /_error in 1384ms (3351 modules)
+ ✓ Compiled /_not-found in 407ms (1657 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /fantasy-football 200 in 1638ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/3622f862ce19cca1.webpack.hot-update.json 404 in 2313ms
+ GET /admin 200 in 2155ms
+ GET /draft-tiers 200 in 2168ms
+ GET /fantasy-football 200 in 176ms
+ ○ Compiling /api/data-metadata ...
+ ✓ Compiled /api/data-metadata in 547ms (1675 modules)
+ ✓ Compiled (1910 modules)
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 1113ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=ppr 200 in 1113ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 897ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 896ms
+ GET /api/auth/session 200 in 1617ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 176ms
+ GET /api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=ppr 200 in 236ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 205ms
+ GET /api/data-metadata 200 in 1659ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 109ms
+ GET /api/auth/session 200 in 132ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=ppr 200 in 64ms
+ GET /api/data-manager?position=QB&dataset=fantasypros-session&scoringFormat=ppr 200 in 17ms
+ GET /api/auth/session 200 in 257ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=ppr 200 in 258ms
+ GET /api/data-metadata 200 in 314ms
+ GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=ppr 200 in 44ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=ppr 200 in 43ms
+ GET /api/auth/session 200 in 63ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=ppr 200 in 39ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=ppr 200 in 34ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=ppr 200 in 15ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=ppr 200 in 16ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=ppr 200 in 32ms
+ GET /api/auth/session 200 in 39ms
+ GET /api/data-manager?position=WR&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 32ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=ppr 200 in 28ms
+ GET /api/auth/session 200 in 43ms
+ GET /api/data-manager?position=TE&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 52ms
+ GET /api/auth/session 200 in 26ms
+ GET /api/data-manager?position=K&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 27ms
+ GET /api/data-manager?position=DST&dataset=fantasypros-session&scoringFormat=half-ppr 200 in 42ms
+ GET /api/auth/session 200 in 56ms
+ ✓ Compiled in 635ms (1697 modules)
+ GET /admin 200 in 272ms
+ GET /fantasy-football 200 in 271ms
+ GET /draft-tiers 200 in 272ms
+ ✓ Compiled in 299ms (1697 modules)
+ GET /fantasy-football 200 in 302ms
+ ✓ Compiled in 357ms (1697 modules)
+ GET /admin 200 in 327ms
+ GET /draft-tiers 200 in 328ms
+ GET /fantasy-football 200 in 101ms
+ GET /admin 200 in 109ms
+ GET /draft-tiers 200 in 107ms
+ ✓ Compiled in 998ms (1697 modules)
+ GET /fantasy-football 200 in 129ms
+ GET /admin 200 in 130ms
+ GET /draft-tiers 200 in 122ms
+ ✓ Compiled in 429ms (1697 modules)
+ GET /admin 200 in 84ms
+ GET /fantasy-football 200 in 84ms
+ GET /draft-tiers 200 in 85ms
+ ✓ Compiled in 384ms (1697 modules)
+ GET /admin 200 in 55ms
+ GET /fantasy-football 200 in 56ms
+ GET /draft-tiers 200 in 57ms
+ ✓ Compiled in 318ms (1697 modules)
+ GET /fantasy-football 200 in 58ms
+ GET /admin 200 in 62ms
+ GET /draft-tiers 200 in 54ms
+ GET /api/auth/session 200 in 786ms
+ GET /api/auth/session 200 in 222ms
+ GET /api/auth/session 200 in 212ms
+ ⨯ Failed to generate static paths for /api/auth/[...nextauth]:
+[Error: ENOENT: no such file or directory, open '/Users/isaacvazquez/Website/.next/build-manifest.json'] {
+  type: 'Error',
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/isaacvazquez/Website/.next/build-manifest.json'
+}
+ ⨯ Failed to generate static paths for /api/auth/[...nextauth]:
+[Error: ENOENT: no such file or directory, open '/Users/isaacvazquez/Website/.next/build-manifest.json'] {
+  type: 'Error',
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/isaacvazquez/Website/.next/build-manifest.json'
+}
+ ⨯ Failed to generate static paths for /api/auth/[...nextauth]:
+[Error: ENOENT: no such file or directory, open '/Users/isaacvazquez/Website/.next/build-manifest.json'] {
+  type: 'Error',
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/isaacvazquez/Website/.next/build-manifest.json'
+}
+ GET /api/auth/session 200 in 672ms
+ GET /api/auth/session 200 in 12ms
+ GET /api/auth/session 200 in 16ms
+ GET /api/auth/session 200 in 5ms
+ ✓ Compiled in 2.9s (3588 modules)
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/admin/page.js:64:8404)
+    at Object.<anonymous> (.next/server/app/admin/page.js:64:8454) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/admin'
+}
+ ⨯ Error: Cannot find module './548.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:339)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/draft-tiers/page.js:22:6442)
+    at Object.<anonymous> (.next/server/app/draft-tiers/page.js:22:6504) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/draft-tiers'
+}
+ GET /admin 500 in 195ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/fantasy-football/page.js:4:23176)
+    at Object.<anonymous> (.next/server/app/fantasy-football/page.js:4:23234) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/fantasy-football'
+}
+ ⨯ Error: Cannot find module './548.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:339)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './548.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:339)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /draft-tiers 500 in 254ms
+ GET /fantasy-football 500 in 254ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/admin/page.js:64:8404)
+    at Object.<anonymous> (.next/server/app/admin/page.js:64:8454) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/admin'
+}
+ ⨯ Error: Cannot find module './548.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:339)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/fantasy-football/page.js:4:23176)
+    at Object.<anonymous> (.next/server/app/fantasy-football/page.js:4:23234) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/fantasy-football'
+}
+ ⨯ Error: Cannot find module './548.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:339)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /admin 500 in 122ms
+ GET /fantasy-football 500 in 121ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/draft-tiers/page.js:22:6442)
+    at Object.<anonymous> (.next/server/app/draft-tiers/page.js:22:6504) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/draft-tiers'
+}
+ ⨯ Error: Cannot find module './548.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/admin/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:339)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /draft-tiers 500 in 112ms
+ ✓ Compiled /_not-found in 366ms (1892 modules)
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 541ms
+ GET /_next/static/chunks/fallback/main.js 500 in 364ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 359ms
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 360ms
+ GET /_next/static/chunks/fallback/webpack.js 500 in 373ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 89ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 88ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 88ms
+ GET /_next/static/chunks/fallback/webpack.js 500 in 88ms
+ GET /_next/static/chunks/fallback/main.js 500 in 88ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 85ms
+ GET /_next/static/chunks/fallback/webpack.js 500 in 86ms
+ GET /_next/static/chunks/fallback/main.js 500 in 86ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 93ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 91ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/draft-tiers/page.js:22:6442)
+    at Object.<anonymous> (.next/server/app/draft-tiers/page.js:22:6504) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/draft-tiers'
+}
+ ⨯ Error: Cannot find module './548.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:339)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /draft-tiers 500 in 77ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 112ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 111ms
+ GET /_next/static/chunks/fallback/main.js 500 in 112ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 111ms
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 113ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/fantasy-football/page.js:4:23176)
+    at Object.<anonymous> (.next/server/app/fantasy-football/page.js:4:23234) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/fantasy-football'
+}
+ ⨯ Error: Cannot find module './548.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/pages/_document.js:1:339)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /fantasy-football 500 in 61ms
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ⨯ Error: Cannot find module './243.js'
+Require stack:
+- /Users/isaacvazquez/Website/.next/server/webpack-runtime.js
+- /Users/isaacvazquez/Website/.next/server/app/_not-found/page.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/require.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/load-components.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/utils.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/options.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/swc/index.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/parse-module.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/router-server.js
+- /Users/isaacvazquez/Website/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:198:28)
+    at <unknown> (.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:162:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:2077)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:2127) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 105ms
+ GET /_next/static/chunks/fallback/main.js 500 in 106ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 105ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 105ms
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 105ms
+ GET /fantasy-football 404 in 55ms
+ GET /fantasy-football 404 in 21ms
+ GET /fantasy-football 404 in 27ms
+ GET /fantasy-football 404 in 108ms
+ GET /fantasy-football 404 in 185ms
+ GET /draft-tiers 404 in 30ms
+ GET /draft-tiers 404 in 11ms
+ GET /fantasy-football 404 in 35ms
+ GET /draft-tiers 404 in 3ms
+ GET /fantasy-football 404 in 6ms
+ GET /draft-tiers 404 in 6ms
+ GET /draft-tiers 404 in 22ms
+ GET /fantasy-football 404 in 22ms
+ GET /fantasy-football 404 in 18ms
+ GET /draft-tiers 404 in 19ms
+ GET /fantasy-football 404 in 28ms
+ GET /draft-tiers 404 in 29ms
+ GET /fantasy-football 404 in 23ms
+ GET /draft-tiers 404 in 22ms
+ GET /draft-tiers 404 in 25ms
+ GET /fantasy-football 404 in 13ms
+ GET /draft-tiers 404 in 25ms
+ GET /fantasy-football 404 in 24ms
+ GET /draft-tiers 404 in 37ms
+ GET /fantasy-football 404 in 37ms
+ GET /draft-tiers 404 in 33ms
+ GET /fantasy-football 404 in 22ms
+ GET /draft-tiers 404 in 28ms
+ GET /fantasy-football 404 in 16ms
+ GET /draft-tiers 404 in 66ms
+ GET /fantasy-football 404 in 62ms
+ GET /fantasy-football 404 in 11ms
+ GET /draft-tiers 404 in 15ms
+ GET /fantasy-football 404 in 17ms
+ GET /draft-tiers 404 in 54ms
+ GET /fantasy-football 404 in 22ms
+ GET /draft-tiers 404 in 22ms
+ GET /draft-tiers 404 in 26ms
+ GET /fantasy-football 200 in 2740ms
+ ⨯ TypeError: Cannot read properties of undefined (reading 'call')
+    at __webpack_require__ (.next/server/webpack-runtime.js:33:43)
+    at eval (webpack-internal:///(ssr)/./src/components/ui/Heading.tsx:9:209)
+    at (ssr)/./src/components/ui/Heading.tsx (.next/server/app/draft-tiers/page.js:379:1)
+    at __webpack_require__ (.next/server/webpack-runtime.js:33:43)
+    at eval (webpack-internal:///(ssr)/./src/components/DraftTiersContent.tsx:14:80)
+    at (ssr)/./src/components/DraftTiersContent.tsx (.next/server/app/draft-tiers/page.js:313:1)
+    at Object.__webpack_require__ [as require] (.next/server/webpack-runtime.js:33:43) {
+  digest: '1585569027'
+}
+ GET /draft-tiers 500 in 1582ms
+ ✓ Compiled in 5s (1697 modules)
+ ✓ Compiled in 6s (3353 modules)
+ ✓ Compiled in 4.2s (3353 modules)
+ ✓ Compiled in 5.8s (3353 modules)
+ ✓ Compiled in 2.3s (3353 modules)
+ ✓ Compiled in 1735ms (3353 modules)
+ ✓ Compiled in 2.1s (3353 modules)
+ ✓ Compiled in 2.1s (1698 modules)
+ ✓ Compiled in 1072ms (1698 modules)
+ ✓ Compiled in 1734ms (1698 modules)
+ ✓ Compiled in 916ms (1698 modules)
+ ✓ Compiled in 797ms (1698 modules)
+ ✓ Compiled in 9.6s (3353 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Restoring pack failed from /Users/isaacvazquez/Website/.next/cache/webpack/client-development.pack.gz: Error: unexpected end of file
+ ✓ Compiled in 19.6s (3353 modules)
+ ✓ Compiled in 5.7s (3353 modules)
+ ✓ Compiled in 3.5s (3353 modules)
+ ✓ Compiled in 1859ms (3353 modules)
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.4
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.139:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.1s
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.4
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.139:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1953ms
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.4
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.139:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.5s
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.4
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.139:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.3s
+[?25h

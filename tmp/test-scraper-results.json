@@ -1,0 +1,33 @@
+{
+  "successful": [],
+  "failed": [
+    {
+      "player": {
+        "name": "Cameron Ward",
+        "team": "TEN",
+        "position": "QB"
+      },
+      "success": false,
+      "reason": "scrapePlayer is not a function"
+    },
+    {
+      "player": {
+        "name": "De'Von Achane",
+        "team": "MIA",
+        "position": "RB"
+      },
+      "success": false,
+      "reason": "scrapePlayer is not a function"
+    },
+    {
+      "player": {
+        "name": "Dillon Gabriel",
+        "team": "CLE",
+        "position": "QB"
+      },
+      "success": false,
+      "reason": "scrapePlayer is not a function"
+    }
+  ],
+  "total": 3
+}

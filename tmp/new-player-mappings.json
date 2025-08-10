@@ -1,0 +1,722 @@
+{
+  "jayden daniels-was": {
+    "name": "Jayden Daniels",
+    "team": "WAS",
+    "position": "QB",
+    "imagePath": "was-jayden-daniels.jpg",
+    "rank": 3,
+    "status": "needs_image"
+  },
+  "baker mayfield-tb": {
+    "name": "Baker Mayfield",
+    "team": "TB",
+    "position": "QB",
+    "imagePath": "tb-baker-mayfield.jpg",
+    "rank": 6,
+    "status": "needs_image"
+  },
+  "patrick mahomes ii-kc": {
+    "name": "Patrick Mahomes II",
+    "team": "KC",
+    "position": "QB",
+    "imagePath": "kc-patrick-mahomes-ii.jpg",
+    "rank": 7,
+    "status": "needs_image"
+  },
+  "justin fields-nyj": {
+    "name": "Justin Fields",
+    "team": "NYJ",
+    "position": "QB",
+    "imagePath": "nyj-justin-fields.jpg",
+    "rank": 9,
+    "status": "needs_image"
+  },
+  "bo nix-den": {
+    "name": "Bo Nix",
+    "team": "DEN",
+    "position": "QB",
+    "imagePath": "den-bo-nix.jpg",
+    "rank": 10,
+    "status": "needs_image"
+  },
+  "drake maye-ne": {
+    "name": "Drake Maye",
+    "team": "NE",
+    "position": "QB",
+    "imagePath": "ne-drake-maye.jpg",
+    "rank": 12,
+    "status": "needs_image"
+  },
+  "jared goff-det": {
+    "name": "Jared Goff",
+    "team": "DET",
+    "position": "QB",
+    "imagePath": "det-jared-goff.jpg",
+    "rank": 13,
+    "status": "needs_image"
+  },
+  "c.j. stroud-hou": {
+    "name": "C.J. Stroud",
+    "team": "HOU",
+    "position": "QB",
+    "imagePath": "hou-c-j-stroud.jpg",
+    "rank": 14,
+    "status": "needs_image"
+  },
+  "matthew stafford-lar": {
+    "name": "Matthew Stafford",
+    "team": "LAR",
+    "position": "QB",
+    "imagePath": "lar-matthew-stafford.jpg",
+    "rank": 16,
+    "status": "needs_image"
+  },
+  "trevor lawrence-jac": {
+    "name": "Trevor Lawrence",
+    "team": "JAC",
+    "position": "QB",
+    "imagePath": "jac-trevor-lawrence.jpg",
+    "rank": 17,
+    "status": "needs_image"
+  },
+  "caleb williams-chi": {
+    "name": "Caleb Williams",
+    "team": "CHI",
+    "position": "QB",
+    "imagePath": "chi-caleb-williams.jpg",
+    "rank": 18,
+    "status": "needs_image"
+  },
+  "jordan love-gb": {
+    "name": "Jordan Love",
+    "team": "GB",
+    "position": "QB",
+    "imagePath": "gb-jordan-love.jpg",
+    "rank": 19,
+    "status": "needs_image"
+  },
+  "anthony richardson sr.-ind": {
+    "name": "Anthony Richardson Sr.",
+    "team": "IND",
+    "position": "QB",
+    "imagePath": "ind-anthony-richardson-sr.jpg",
+    "rank": 20,
+    "status": "needs_image"
+  },
+  "bijan robinson-atl": {
+    "name": "Bijan Robinson",
+    "team": "ATL",
+    "position": "RB",
+    "imagePath": "atl-bijan-robinson.jpg",
+    "rank": 3,
+    "status": "needs_image"
+  },
+  "jahmyr gibbs-det": {
+    "name": "Jahmyr Gibbs",
+    "team": "DET",
+    "position": "RB",
+    "imagePath": "det-jahmyr-gibbs.jpg",
+    "rank": 4,
+    "status": "needs_image"
+  },
+  "ashton jeanty-lv": {
+    "name": "Ashton Jeanty",
+    "team": "LV",
+    "position": "RB",
+    "imagePath": "lv-ashton-jeanty.jpg",
+    "rank": 6,
+    "status": "needs_image"
+  },
+  "bucky irving-tb": {
+    "name": "Bucky Irving",
+    "team": "TB",
+    "position": "RB",
+    "imagePath": "tb-bucky-irving.jpg",
+    "rank": 8,
+    "status": "needs_image"
+  },
+  "kyren williams-lar": {
+    "name": "Kyren Williams",
+    "team": "LAR",
+    "position": "RB",
+    "imagePath": "lar-kyren-williams.jpg",
+    "rank": 10,
+    "status": "needs_image"
+  },
+  "de'von achane-mia": {
+    "name": "De'Von Achane",
+    "team": "MIA",
+    "position": "RB",
+    "imagePath": "mia-de-von-achane.jpg",
+    "rank": 11,
+    "status": "needs_image"
+  },
+  "james cook-buf": {
+    "name": "James Cook",
+    "team": "BUF",
+    "position": "RB",
+    "imagePath": "buf-james-cook.jpg",
+    "rank": 12,
+    "status": "needs_image"
+  },
+  "chase brown-cin": {
+    "name": "Chase Brown",
+    "team": "CIN",
+    "position": "RB",
+    "imagePath": "cin-chase-brown.jpg",
+    "rank": 14,
+    "status": "needs_image"
+  },
+  "chuba hubbard-car": {
+    "name": "Chuba Hubbard",
+    "team": "CAR",
+    "position": "RB",
+    "imagePath": "car-chuba-hubbard.jpg",
+    "rank": 16,
+    "status": "needs_image"
+  },
+  "james conner-ari": {
+    "name": "James Conner",
+    "team": "ARI",
+    "position": "RB",
+    "imagePath": "ari-james-conner.jpg",
+    "rank": 18,
+    "status": "needs_image"
+  },
+  "david montgomery-det": {
+    "name": "David Montgomery",
+    "team": "DET",
+    "position": "RB",
+    "imagePath": "det-david-montgomery.jpg",
+    "rank": 20,
+    "status": "needs_image"
+  },
+  "puka nacua-lar": {
+    "name": "Puka Nacua",
+    "team": "LAR",
+    "position": "WR",
+    "imagePath": "lar-puka-nacua.jpg",
+    "rank": 4,
+    "status": "needs_image"
+  },
+  "brian thomas jr.-jac": {
+    "name": "Brian Thomas Jr.",
+    "team": "JAC",
+    "position": "WR",
+    "imagePath": "jac-brian-thomas-jr.jpg",
+    "rank": 5,
+    "status": "needs_image"
+  },
+  "nico collins-hou": {
+    "name": "Nico Collins",
+    "team": "HOU",
+    "position": "WR",
+    "imagePath": "hou-nico-collins.jpg",
+    "rank": 7,
+    "status": "needs_image"
+  },
+  "malik nabers-nyg": {
+    "name": "Malik Nabers",
+    "team": "NYG",
+    "position": "WR",
+    "imagePath": "nyg-malik-nabers.jpg",
+    "rank": 8,
+    "status": "needs_image"
+  },
+  "terry mclaurin-was": {
+    "name": "Terry McLaurin",
+    "team": "WAS",
+    "position": "WR",
+    "imagePath": "was-terry-mclaurin.jpg",
+    "rank": 12,
+    "status": "needs_image"
+  },
+  "ladd mcconkey-lac": {
+    "name": "Ladd McConkey",
+    "team": "LAC",
+    "position": "WR",
+    "imagePath": "lac-ladd-mcconkey.jpg",
+    "rank": 13,
+    "status": "needs_image"
+  },
+  "davante adams-lar": {
+    "name": "Davante Adams",
+    "team": "LAR",
+    "position": "WR",
+    "imagePath": "lar-davante-adams.jpg",
+    "rank": 14,
+    "status": "needs_image"
+  },
+  "tee higgins-cin": {
+    "name": "Tee Higgins",
+    "team": "CIN",
+    "position": "WR",
+    "imagePath": "cin-tee-higgins.jpg",
+    "rank": 15,
+    "status": "needs_image"
+  },
+  "marvin harrison jr.-ari": {
+    "name": "Marvin Harrison Jr.",
+    "team": "ARI",
+    "position": "WR",
+    "imagePath": "ari-marvin-harrison-jr.jpg",
+    "rank": 17,
+    "status": "needs_image"
+  },
+  "jaxon smith-njigba-sea": {
+    "name": "Jaxon Smith-Njigba",
+    "team": "SEA",
+    "position": "WR",
+    "imagePath": "sea-jaxon-smith-njigba.jpg",
+    "rank": 18,
+    "status": "needs_image"
+  },
+  "xavier worthy-kc": {
+    "name": "Xavier Worthy",
+    "team": "KC",
+    "position": "WR",
+    "imagePath": "kc-xavier-worthy.jpg",
+    "rank": 19,
+    "status": "needs_image"
+  },
+  "garrett wilson-nyj": {
+    "name": "Garrett Wilson",
+    "team": "NYJ",
+    "position": "WR",
+    "imagePath": "nyj-garrett-wilson.jpg",
+    "rank": 20,
+    "status": "needs_image"
+  },
+  "brock bowers-lv": {
+    "name": "Brock Bowers",
+    "team": "LV",
+    "position": "TE",
+    "imagePath": "lv-brock-bowers.jpg",
+    "rank": 2,
+    "status": "needs_image"
+  },
+  "sam laporta-det": {
+    "name": "Sam LaPorta",
+    "team": "DET",
+    "position": "TE",
+    "imagePath": "det-sam-laporta.jpg",
+    "rank": 4,
+    "status": "needs_image"
+  },
+  "mark andrews-bal": {
+    "name": "Mark Andrews",
+    "team": "BAL",
+    "position": "TE",
+    "imagePath": "bal-mark-andrews.jpg",
+    "rank": 5,
+    "status": "needs_image"
+  },
+  "evan engram-den": {
+    "name": "Evan Engram",
+    "team": "DEN",
+    "position": "TE",
+    "imagePath": "den-evan-engram.jpg",
+    "rank": 8,
+    "status": "needs_image"
+  },
+  "tucker kraft-gb": {
+    "name": "Tucker Kraft",
+    "team": "GB",
+    "position": "TE",
+    "imagePath": "gb-tucker-kraft.jpg",
+    "rank": 10,
+    "status": "needs_image"
+  },
+  "dallas goedert-phi": {
+    "name": "Dallas Goedert",
+    "team": "PHI",
+    "position": "TE",
+    "imagePath": "phi-dallas-goedert.jpg",
+    "rank": 11,
+    "status": "needs_image"
+  },
+  "jonnu smith-pit": {
+    "name": "Jonnu Smith",
+    "team": "PIT",
+    "position": "TE",
+    "imagePath": "pit-jonnu-smith.jpg",
+    "rank": 12,
+    "status": "needs_image"
+  },
+  "dalton kincaid-buf": {
+    "name": "Dalton Kincaid",
+    "team": "BUF",
+    "position": "TE",
+    "imagePath": "buf-dalton-kincaid.jpg",
+    "rank": 13,
+    "status": "needs_image"
+  },
+  "tyler warren-ind": {
+    "name": "Tyler Warren",
+    "team": "IND",
+    "position": "TE",
+    "imagePath": "ind-tyler-warren.jpg",
+    "rank": 15,
+    "status": "needs_image"
+  },
+  "jake ferguson-dal": {
+    "name": "Jake Ferguson",
+    "team": "DAL",
+    "position": "TE",
+    "imagePath": "dal-jake-ferguson.jpg",
+    "rank": 16,
+    "status": "needs_image"
+  },
+  "zach ertz-was": {
+    "name": "Zach Ertz",
+    "team": "WAS",
+    "position": "TE",
+    "imagePath": "was-zach-ertz.jpg",
+    "rank": 17,
+    "status": "needs_image"
+  },
+  "hunter henry-ne": {
+    "name": "Hunter Henry",
+    "team": "NE",
+    "position": "TE",
+    "imagePath": "ne-hunter-henry.jpg",
+    "rank": 18,
+    "status": "needs_image"
+  },
+  "isaiah likely-bal": {
+    "name": "Isaiah Likely",
+    "team": "BAL",
+    "position": "TE",
+    "imagePath": "bal-isaiah-likely.jpg",
+    "rank": 19,
+    "status": "needs_image"
+  },
+  "colston loveland-chi": {
+    "name": "Colston Loveland",
+    "team": "CHI",
+    "position": "TE",
+    "imagePath": "chi-colston-loveland.jpg",
+    "rank": 20,
+    "status": "needs_image"
+  },
+  "brandon aubrey-dal": {
+    "name": "Brandon Aubrey",
+    "team": "DAL",
+    "position": "K",
+    "imagePath": "dal-brandon-aubrey.jpg",
+    "rank": 1,
+    "status": "needs_image"
+  },
+  "evan mcpherson-cin": {
+    "name": "Evan McPherson",
+    "team": "CIN",
+    "position": "K",
+    "imagePath": "cin-evan-mcpherson.jpg",
+    "rank": 2,
+    "status": "needs_image"
+  },
+  "cameron dicker-lac": {
+    "name": "Cameron Dicker",
+    "team": "LAC",
+    "position": "K",
+    "imagePath": "lac-cameron-dicker.jpg",
+    "rank": 3,
+    "status": "needs_image"
+  },
+  "jake elliott-phi": {
+    "name": "Jake Elliott",
+    "team": "PHI",
+    "position": "K",
+    "imagePath": "phi-jake-elliott.jpg",
+    "rank": 4,
+    "status": "needs_image"
+  },
+  "ka'imi fairbairn-hou": {
+    "name": "Ka'imi Fairbairn",
+    "team": "HOU",
+    "position": "K",
+    "imagePath": "hou-ka-imi-fairbairn.jpg",
+    "rank": 5,
+    "status": "needs_image"
+  },
+  "harrison butker-kc": {
+    "name": "Harrison Butker",
+    "team": "KC",
+    "position": "K",
+    "imagePath": "kc-harrison-butker.jpg",
+    "rank": 6,
+    "status": "needs_image"
+  },
+  "matt gay-was": {
+    "name": "Matt Gay",
+    "team": "WAS",
+    "position": "K",
+    "imagePath": "was-matt-gay.jpg",
+    "rank": 7,
+    "status": "needs_image"
+  },
+  "wil lutz-den": {
+    "name": "Wil Lutz",
+    "team": "DEN",
+    "position": "K",
+    "imagePath": "den-wil-lutz.jpg",
+    "rank": 8,
+    "status": "needs_image"
+  },
+  "tyler loop-bal": {
+    "name": "Tyler Loop",
+    "team": "BAL",
+    "position": "K",
+    "imagePath": "bal-tyler-loop.jpg",
+    "rank": 9,
+    "status": "needs_image"
+  },
+  "jake bates-det": {
+    "name": "Jake Bates",
+    "team": "DET",
+    "position": "K",
+    "imagePath": "det-jake-bates.jpg",
+    "rank": 10,
+    "status": "needs_image"
+  },
+  "tyler bass-buf": {
+    "name": "Tyler Bass",
+    "team": "BUF",
+    "position": "K",
+    "imagePath": "buf-tyler-bass.jpg",
+    "rank": 11,
+    "status": "needs_image"
+  },
+  "younghoe koo-atl": {
+    "name": "Younghoe Koo",
+    "team": "ATL",
+    "position": "K",
+    "imagePath": "atl-younghoe-koo.jpg",
+    "rank": 12,
+    "status": "needs_image"
+  },
+  "chase mclaughlin-tb": {
+    "name": "Chase McLaughlin",
+    "team": "TB",
+    "position": "K",
+    "imagePath": "tb-chase-mclaughlin.jpg",
+    "rank": 13,
+    "status": "needs_image"
+  },
+  "brandon mcmanus-gb": {
+    "name": "Brandon McManus",
+    "team": "GB",
+    "position": "K",
+    "imagePath": "gb-brandon-mcmanus.jpg",
+    "rank": 14,
+    "status": "needs_image"
+  },
+  "chad ryland-ari": {
+    "name": "Chad Ryland",
+    "team": "ARI",
+    "position": "K",
+    "imagePath": "ari-chad-ryland.jpg",
+    "rank": 15,
+    "status": "needs_image"
+  },
+  "daniel carlson-lv": {
+    "name": "Daniel Carlson",
+    "team": "LV",
+    "position": "K",
+    "imagePath": "lv-daniel-carlson.jpg",
+    "rank": 16,
+    "status": "needs_image"
+  },
+  "joshua karty-lar": {
+    "name": "Joshua Karty",
+    "team": "LAR",
+    "position": "K",
+    "imagePath": "lar-joshua-karty.jpg",
+    "rank": 17,
+    "status": "needs_image"
+  },
+  "jake moody-sf": {
+    "name": "Jake Moody",
+    "team": "SF",
+    "position": "K",
+    "imagePath": "sf-jake-moody.jpg",
+    "rank": 18,
+    "status": "needs_image"
+  },
+  "cam little-jac": {
+    "name": "Cam Little",
+    "team": "JAC",
+    "position": "K",
+    "imagePath": "jac-cam-little.jpg",
+    "rank": 19,
+    "status": "needs_image"
+  },
+  "jason myers-sea": {
+    "name": "Jason Myers",
+    "team": "SEA",
+    "position": "K",
+    "imagePath": "sea-jason-myers.jpg",
+    "rank": 20,
+    "status": "needs_image"
+  },
+  "denver broncos-den": {
+    "name": "Denver Broncos",
+    "team": "DEN",
+    "position": "DST",
+    "imagePath": "den-denver-broncos.jpg",
+    "rank": 1,
+    "status": "needs_image"
+  },
+  "pittsburgh steelers-pit": {
+    "name": "Pittsburgh Steelers",
+    "team": "PIT",
+    "position": "DST",
+    "imagePath": "pit-pittsburgh-steelers.jpg",
+    "rank": 2,
+    "status": "needs_image"
+  },
+  "philadelphia eagles-phi": {
+    "name": "Philadelphia Eagles",
+    "team": "PHI",
+    "position": "DST",
+    "imagePath": "phi-philadelphia-eagles.jpg",
+    "rank": 3,
+    "status": "needs_image"
+  },
+  "minnesota vikings-min": {
+    "name": "Minnesota Vikings",
+    "team": "MIN",
+    "position": "DST",
+    "imagePath": "min-minnesota-vikings.jpg",
+    "rank": 4,
+    "status": "needs_image"
+  },
+  "new york jets-nyj": {
+    "name": "New York Jets",
+    "team": "NYJ",
+    "position": "DST",
+    "imagePath": "nyj-new-york-jets.jpg",
+    "rank": 5,
+    "status": "needs_image"
+  },
+  "arizona cardinals-ari": {
+    "name": "Arizona Cardinals",
+    "team": "ARI",
+    "position": "DST",
+    "imagePath": "ari-arizona-cardinals.jpg",
+    "rank": 6,
+    "status": "needs_image"
+  },
+  "cincinnati bengals-cin": {
+    "name": "Cincinnati Bengals",
+    "team": "CIN",
+    "position": "DST",
+    "imagePath": "cin-cincinnati-bengals.jpg",
+    "rank": 7,
+    "status": "needs_image"
+  },
+  "san francisco 49ers-sf": {
+    "name": "San Francisco 49ers",
+    "team": "SF",
+    "position": "DST",
+    "imagePath": "sf-san-francisco-49ers.jpg",
+    "rank": 8,
+    "status": "needs_image"
+  },
+  "los angeles rams-lar": {
+    "name": "Los Angeles Rams",
+    "team": "LAR",
+    "position": "DST",
+    "imagePath": "lar-los-angeles-rams.jpg",
+    "rank": 9,
+    "status": "needs_image"
+  },
+  "washington commanders-was": {
+    "name": "Washington Commanders",
+    "team": "WAS",
+    "position": "DST",
+    "imagePath": "was-washington-commanders.jpg",
+    "rank": 10,
+    "status": "needs_image"
+  },
+  "tampa bay buccaneers-tb": {
+    "name": "Tampa Bay Buccaneers",
+    "team": "TB",
+    "position": "DST",
+    "imagePath": "tb-tampa-bay-buccaneers.jpg",
+    "rank": 11,
+    "status": "needs_image"
+  },
+  "detroit lions-det": {
+    "name": "Detroit Lions",
+    "team": "DET",
+    "position": "DST",
+    "imagePath": "det-detroit-lions.jpg",
+    "rank": 12,
+    "status": "needs_image"
+  },
+  "kansas city chiefs-kc": {
+    "name": "Kansas City Chiefs",
+    "team": "KC",
+    "position": "DST",
+    "imagePath": "kc-kansas-city-chiefs.jpg",
+    "rank": 13,
+    "status": "needs_image"
+  },
+  "houston texans-hou": {
+    "name": "Houston Texans",
+    "team": "HOU",
+    "position": "DST",
+    "imagePath": "hou-houston-texans.jpg",
+    "rank": 14,
+    "status": "needs_image"
+  },
+  "chicago bears-chi": {
+    "name": "Chicago Bears",
+    "team": "CHI",
+    "position": "DST",
+    "imagePath": "chi-chicago-bears.jpg",
+    "rank": 15,
+    "status": "needs_image"
+  },
+  "los angeles chargers-lac": {
+    "name": "Los Angeles Chargers",
+    "team": "LAC",
+    "position": "DST",
+    "imagePath": "lac-los-angeles-chargers.jpg",
+    "rank": 16,
+    "status": "needs_image"
+  },
+  "miami dolphins-mia": {
+    "name": "Miami Dolphins",
+    "team": "MIA",
+    "position": "DST",
+    "imagePath": "mia-miami-dolphins.jpg",
+    "rank": 17,
+    "status": "needs_image"
+  },
+  "green bay packers-gb": {
+    "name": "Green Bay Packers",
+    "team": "GB",
+    "position": "DST",
+    "imagePath": "gb-green-bay-packers.jpg",
+    "rank": 18,
+    "status": "needs_image"
+  },
+  "seattle seahawks-sea": {
+    "name": "Seattle Seahawks",
+    "team": "SEA",
+    "position": "DST",
+    "imagePath": "sea-seattle-seahawks.jpg",
+    "rank": 19,
+    "status": "needs_image"
+  },
+  "indianapolis colts-ind": {
+    "name": "Indianapolis Colts",
+    "team": "IND",
+    "position": "DST",
+    "imagePath": "ind-indianapolis-colts.jpg",
+    "rank": 20,
+    "status": "needs_image"
+  }
+}

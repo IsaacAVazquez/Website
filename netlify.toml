@@ -1,0 +1,22 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+  
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = ".netlify/deploy/v1/blobs/**,.netlify/edge-functions/**,.netlify/functions-internal/**,.next/**"
+  SECRETS_SCAN_OMIT_KEYS = "ADMIN_USERNAME,ADMIN_PASSWORD,NEXTAUTH_SECRET,CRON_SECRET,FANTASYPROS_USERNAME,FANTASYPROS_PASSWORD"
+
+[functions]
+  directory = "netlify/functions"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Environment variables - set these in Netlify dashboard:
+# NEXTAUTH_URL = "https://your-domain.com"
+# NEXTAUTH_SECRET = "your-nextauth-secret-here"
+# ADMIN_USERNAME = "your-admin-username"
+# ADMIN_PASSWORD = "your-admin-password"
+# FANTASYPROS_USERNAME = "your-fantasypros-username"
+# FANTASYPROS_PASSWORD = "your-fantasypros-password"
+# CRON_SECRET = "your-cron-secret-here"
