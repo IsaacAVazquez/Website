@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { fantasyProsSession } from '@/lib/fantasyProsSession';
 import { dataManager } from '@/lib/dataManager';
-import { Position } from '@/types';
+import { Position, ScoringFormat } from '@/types';
 import { apiRateLimiter, getClientIdentifier, rateLimitResponse } from '@/lib/rateLimit';
+import { generateAllScoringFormats, preparePositionDataFromAPI } from '@/lib/overallDataGenerator';
+import { DataFileWriter } from '@/lib/dataFileWriter';
 
 // Verify the request is from a legitimate cron job
 function verifyCronSecret(request: NextRequest): boolean {
@@ -49,6 +51,9 @@ export async function POST(request: NextRequest) {
     // Positions to update
     const positions: Position[] = ['QB', 'RB', 'WR', 'TE', 'K', 'DST', 'FLEX', 'OVERALL'];
     
+    // Store position data for overall ranking generation
+    const positionData: Record<Position, any[]> = {} as any;
+    
     // Update each position
     for (const position of positions) {
       try {
@@ -65,6 +70,11 @@ export async function POST(request: NextRequest) {
             if (rankings.length > 0) {
               // Store in data manager
               dataManager.setPlayersByPosition(position, rankings);
+              
+              // Store position data for overall rankings (use half-ppr as base)
+              if (format === 'half-ppr' && position !== 'FLEX' && position !== 'OVERALL') {
+                positionData[position as Position] = rankings;
+              }
               
               // Store in persistent storage
               await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/data-manager`, {
@@ -102,6 +112,63 @@ export async function POST(request: NextRequest) {
           error: positionError instanceof Error ? positionError.message : 'Unknown error'
         });
       }
+    }
+    
+    // Generate overall rankings for all scoring formats
+    try {
+      console.log('Generating overall rankings for all scoring formats...');
+      
+      // Prepare position data
+      const processedPositionData = preparePositionDataFromAPI(positionData);
+      
+      if (Object.keys(processedPositionData).length > 0) {
+        // Generate all three scoring format files
+        const overallResults = generateAllScoringFormats(processedPositionData);
+        
+        // Write the files
+        const overallFiles: Record<'PPR' | 'HALF' | 'STD', string> = {
+          PPR: overallResults.PPR.content,
+          HALF: overallResults.HALF.content,
+          STD: overallResults.STD.content
+        };
+        
+        await DataFileWriter.writeAllOverallData(overallFiles);
+        
+        // Add overall results to response
+        results.overallRankings = {
+          generated: true,
+          formats: {
+            PPR: {
+              playerCount: overallResults.PPR.playerCount,
+              validation: overallResults.PPR.validation,
+              fileName: overallResults.PPR.fileName
+            },
+            HALF: {
+              playerCount: overallResults.HALF.playerCount,
+              validation: overallResults.HALF.validation,
+              fileName: overallResults.HALF.fileName
+            },
+            STD: {
+              playerCount: overallResults.STD.playerCount,
+              validation: overallResults.STD.validation,
+              fileName: overallResults.STD.fileName
+            }
+          }
+        };
+        
+        console.log('Successfully generated and wrote overall rankings for all formats');
+      } else {
+        results.errors.push({
+          position: 'OVERALL',
+          error: 'No position data available for overall ranking generation'
+        });
+      }
+    } catch (overallError) {
+      console.error('Error generating overall rankings:', overallError);
+      results.errors.push({
+        position: 'OVERALL',
+        error: overallError instanceof Error ? overallError.message : 'Unknown error generating overall rankings'
+      });
     }
     
     // Calculate execution time

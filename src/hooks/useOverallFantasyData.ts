@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Player, ScoringFormat } from '@/types';
 import { dataCache, CacheStatus } from '@/lib/dataCache';
 import { convertScoringFormat } from '@/lib/scoringFormatUtils';
-import { overallPlayers } from '@/data/overallData';
 import { logger } from '@/lib/logger';
 
 export interface UseOverallFantasyDataOptions {
@@ -25,6 +24,45 @@ export interface UseOverallFantasyDataResult {
     message: string;
     color: string;
   };
+}
+
+/**
+ * Dynamically load overall data based on scoring format
+ */
+async function loadOverallDataForFormat(scoringFormat: ScoringFormat): Promise<Player[]> {
+  try {
+    let overallPlayers: Player[] = [];
+    
+    // Dynamic import based on scoring format
+    switch (scoringFormat) {
+      case 'PPR':
+        const pprData = await import('@/data/overallDataPPR');
+        overallPlayers = pprData.overallPlayers;
+        break;
+      case 'STD':
+        const stdData = await import('@/data/overallDataStandard');
+        overallPlayers = stdData.overallPlayers;
+        break;
+      case 'HALF':
+      default:
+        const halfData = await import('@/data/overallData');
+        overallPlayers = halfData.overallPlayers;
+        break;
+    }
+    
+    return overallPlayers;
+  } catch (error) {
+    logger.error(`Failed to load overall data for ${scoringFormat}:`, error);
+    
+    // Fallback to default Half-PPR data
+    try {
+      const fallbackData = await import('@/data/overallData');
+      return fallbackData.overallPlayers;
+    } catch (fallbackError) {
+      logger.error('Failed to load fallback overall data:', fallbackError);
+      return [];
+    }
+  }
 }
 
 export function useOverallFantasyData({
@@ -123,11 +161,19 @@ export function useOverallFantasyData({
         setLastUpdated(new Date(cachedData.timestamp).toLocaleTimeString());
         setError('Using cached data - refresh failed');
       } else {
-        // Fall back to sample overall data
-        setPlayers(overallPlayers);
-        setDataSource('sample');
-        setLastUpdated('Sample data');
-        setError('Using sample data - API unavailable');
+        // Fall back to scoring format specific local data
+        try {
+          const localData = await loadOverallDataForFormat(scoringFormat);
+          setPlayers(localData);
+          setDataSource('sample');
+          setLastUpdated('Local data');
+          setError(localData.length > 0 ? null : 'No data available');
+          logger.info(`Using local overall data for ${scoringFormat}: ${localData.length} players`);
+        } catch (localError) {
+          logger.error('Failed to load local data:', localError);
+          setPlayers([]);
+          setError('Failed to load data - check files');
+        }
       }
       
     } catch (loadError) {
@@ -141,17 +187,25 @@ export function useOverallFantasyData({
         setLastUpdated(new Date(cachedData.timestamp).toLocaleTimeString());
         setError('Using cached data - refresh failed');
       } else {
-        // Final fallback to sample data
-        setPlayers(overallPlayers);
-        setDataSource('sample');
-        setLastUpdated('Sample data');
-        setError('Using sample data - all sources failed');
+        // Final fallback to scoring format specific local data
+        try {
+          const localData = await loadOverallDataForFormat(scoringFormat);
+          setPlayers(localData);
+          setDataSource('sample');
+          setLastUpdated('Fallback data');
+          setError('Using local data - all sources failed');
+          logger.info(`Using fallback local data for ${scoringFormat}: ${localData.length} players`);
+        } catch (finalError) {
+          logger.error('Final fallback failed:', finalError);
+          setPlayers([]);
+          setError('All data sources failed');
+        }
       }
     } finally {
       setIsLoading(false);
       isRefreshingRef.current = false;
     }
-  }, [scoringFormatParam, fetchOverallFromAPI]);
+  }, [scoringFormatParam, fetchOverallFromAPI, scoringFormat]);
 
   /**
    * Manual refresh function

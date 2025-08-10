@@ -109,6 +109,19 @@ export class DataFileWriter {
     
     return positionMap[position] || `${position.toLowerCase()}Data.ts`;
   }
+
+  /**
+   * Get overall data filename based on scoring format
+   */
+  static getOverallFileName(scoringFormat: 'PPR' | 'HALF' | 'STD'): string {
+    const formatMap: Record<string, string> = {
+      'PPR': 'overallDataPPR.ts',
+      'HALF': 'overallData.ts',
+      'STD': 'overallDataStandard.ts'
+    };
+    
+    return formatMap[scoringFormat] || 'overallData.ts';
+  }
   
   private static generateTypeScriptContent(
     position: string,
@@ -177,5 +190,93 @@ ${positions.map(pos => `  ${pos.toLowerCase()}Players`).join(',\n')}
     }
     
     return null;
+  }
+
+  /**
+   * Write overall data file for a specific scoring format
+   */
+  static async writeOverallData(
+    scoringFormat: 'PPR' | 'HALF' | 'STD',
+    content: string
+  ): Promise<void> {
+    try {
+      await this.ensureDirectories();
+      
+      const fileName = this.getOverallFileName(scoringFormat);
+      const filePath = path.join(this.DATA_DIR, fileName);
+      
+      // Create backup of existing file
+      await this.backupOverallData(fileName);
+      
+      // Write the new content
+      await fs.writeFile(filePath, content, 'utf-8');
+      
+      console.log(`Successfully wrote overall data for ${scoringFormat} format to ${fileName}`);
+    } catch (error) {
+      console.error(`Error writing overall data for ${scoringFormat}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Write all three overall data files
+   */
+  static async writeAllOverallData(
+    overallDataFiles: Record<'PPR' | 'HALF' | 'STD', string>
+  ): Promise<void> {
+    const formats: ('PPR' | 'HALF' | 'STD')[] = ['PPR', 'HALF', 'STD'];
+    
+    for (const format of formats) {
+      if (overallDataFiles[format]) {
+        await this.writeOverallData(format, overallDataFiles[format]);
+      }
+    }
+    
+    console.log('Successfully wrote all overall data files');
+  }
+
+  /**
+   * Backup existing overall data file
+   */
+  private static async backupOverallData(fileName: string): Promise<void> {
+    try {
+      const sourcePath = path.join(this.DATA_DIR, fileName);
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const backupPath = path.join(this.BACKUP_DIR, `${fileName}.backup-${timestamp}`);
+      
+      // Check if source file exists
+      await fs.access(sourcePath);
+      
+      // Copy to backup
+      await fs.copyFile(sourcePath, backupPath);
+      
+      // Clean up old backups for this file
+      await this.cleanupOverallBackups(fileName);
+    } catch (error) {
+      // File doesn't exist, no need to backup
+      if ((error as any).code !== 'ENOENT') {
+        console.error(`Error backing up ${fileName}:`, error);
+      }
+    }
+  }
+
+  /**
+   * Clean up old backup files for overall data
+   */
+  private static async cleanupOverallBackups(fileName: string): Promise<void> {
+    try {
+      const files = await fs.readdir(this.BACKUP_DIR);
+      const backups = files
+        .filter(f => f.startsWith(`${fileName}.backup-`) && f.endsWith(fileName))
+        .sort()
+        .reverse();
+      
+      // Delete old backups, keep only 3 most recent for overall files
+      for (let i = 3; i < backups.length; i++) {
+        await fs.unlink(path.join(this.BACKUP_DIR, backups[i]));
+      }
+    } catch (error) {
+      console.error(`Error cleaning up backups for ${fileName}:`, error);
+    }
   }
 }
