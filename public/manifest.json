@@ -1,7 +1,7 @@
 {
-  "name": "Isaac Vazquez Fantasy Football Analytics",
-  "short_name": "FF Analytics",
-  "description": "Advanced fantasy football analytics and visualization tools by Isaac Vazquez. Interactive tier charts, real-time data, and mobile-optimized draft tools.",
+  "name": "Isaac Vazquez - QA Engineer & Portfolio",
+  "short_name": "Isaac Vazquez",
+  "description": "Professional portfolio of Isaac Vazquez, QA Engineer and systems thinker. Showcasing experience in quality assurance, test automation, and software reliability.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0A0A0B",
@@ -9,21 +9,21 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en-US",
-  "categories": ["sports", "productivity", "entertainment"],
+  "categories": ["business", "productivity", "portfolio"],
   "screenshots": [
     {
-      "src": "/screenshots/desktop-tiers.png",
+      "src": "/screenshots/desktop-portfolio.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Fantasy Football Tier Visualizations"
+      "label": "Professional Portfolio Dashboard"
     },
     {
-      "src": "/screenshots/mobile-tiers.png",
+      "src": "/screenshots/mobile-portfolio.png",
       "sizes": "375x812",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Mobile Fantasy Tiers"
+      "label": "Mobile Portfolio"
     }
   ],
   "icons": [
@@ -78,49 +78,49 @@
   ],
   "shortcuts": [
     {
-      "name": "Interactive Tiers",
-      "short_name": "Tiers",
-      "description": "View interactive fantasy football tier visualizations",
-      "url": "/fantasy-football",
+      "name": "About Me",
+      "short_name": "About",
+      "description": "Learn about Isaac's background and experience",
+      "url": "/about",
       "icons": [
         {
-          "src": "/icons/shortcut-tiers.png",
+          "src": "/icons/shortcut-about.png",
           "sizes": "96x96"
         }
       ]
     },
     {
-      "name": "Draft Helper",
-      "short_name": "Draft",
-      "description": "Fantasy football draft assistance tools",
-      "url": "/draft-tiers",
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "View Isaac's professional project portfolio",
+      "url": "/projects",
       "icons": [
         {
-          "src": "/icons/shortcut-draft.png",
+          "src": "/icons/shortcut-projects.png",
           "sizes": "96x96"
         }
       ]
     },
     {
-      "name": "QB Tiers",
-      "short_name": "QB",
-      "description": "Quarterback fantasy football rankings",
-      "url": "/fantasy-football/tiers/qb",
+      "name": "Resume",
+      "short_name": "Resume",
+      "description": "Isaac's professional resume and experience",
+      "url": "/resume",
       "icons": [
         {
-          "src": "/icons/shortcut-qb.png",
+          "src": "/icons/shortcut-resume.png",
           "sizes": "96x96"
         }
       ]
     },
     {
-      "name": "RB Tiers", 
-      "short_name": "RB",
-      "description": "Running back fantasy football rankings",
-      "url": "/fantasy-football/tiers/rb",
+      "name": "Blog", 
+      "short_name": "Blog",
+      "description": "Technical articles and insights on QA and software development",
+      "url": "/blog",
       "icons": [
         {
-          "src": "/icons/shortcut-rb.png",
+          "src": "/icons/shortcut-blog.png",
           "sizes": "96x96"
         }
       ]
@@ -130,11 +130,5 @@
   "prefer_related_applications": false,
   "edge_side_panel": {
     "preferred_width": 480
-  },
-  "protocol_handlers": [
-    {
-      "protocol": "web+fantasy",
-      "url": "/fantasy-football?player=%s"
-    }
-  ]
+  }
 }

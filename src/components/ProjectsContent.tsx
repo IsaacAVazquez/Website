@@ -5,10 +5,12 @@ import { motion } from "framer-motion";
 import { IconBrandGithub, IconExternalLink, IconCode, IconDatabase, IconTestPipe, IconChartBar, IconTrendingUp, IconEye } from "@tabler/icons-react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { MorphButton } from "@/components/ui/MorphButton";
-import { LazyQADashboard } from "@/components/LazyQADashboard";
-import { ProjectDetailModal } from "@/components/ProjectDetailModal";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
+
+// Lazy load heavy components
+const ProjectDetailModal = lazy(() => import("@/components/ProjectDetailModal").then(mod => ({ default: mod.ProjectDetailModal })));
+const LazyQADashboard = lazy(() => import("@/components/LazyQADashboard").then(mod => ({ default: mod.LazyQADashboard })));
 
 interface Project {
   id: number;
@@ -332,15 +334,23 @@ export function ProjectsContent() {
         transition={{ delay: 0.8, duration: 0.8 }}
         className="mt-20"
       >
-        <LazyQADashboard />
+        <Suspense fallback={
+          <div className="flex items-center justify-center h-64">
+            <div className="animate-pulse text-slate-400">Loading dashboard...</div>
+          </div>
+        }>
+          <LazyQADashboard />
+        </Suspense>
       </motion.div>
 
       {/* Project Detail Modal */}
-      <ProjectDetailModal
-        project={selectedProject}
-        isOpen={isModalOpen}
-        onClose={closeProjectDetail}
-      />
+      <Suspense fallback={null}>
+        <ProjectDetailModal
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={closeProjectDetail}
+        />
+      </Suspense>
     </>
   );
 }
