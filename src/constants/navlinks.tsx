@@ -1,4 +1,4 @@
-import { IconBolt, IconMail, IconMessage2, IconFileText, IconBriefcase, IconTrophy, IconArticle } from "@tabler/icons-react";
+import { IconBolt, IconMail, IconMessage2, IconFileText, IconBriefcase, IconArticle } from "@tabler/icons-react";
 
 export const navlinks = [
   {
@@ -12,9 +12,9 @@ export const navlinks = [
     icon: IconMessage2,
   },
   {
-    href: "/fantasy-football",
-    label: "Fantasy Football",
-    icon: IconTrophy,
+    href: "/projects",
+    label: "Projects",
+    icon: IconBriefcase,
   },
   {
     href: "/blog",

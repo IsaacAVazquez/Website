@@ -3448,6 +3448,13 @@ get-tsconfig@^4.10.0:
   dependencies:
     resolve-pkg-maps "^1.0.0"
 
+git@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.npmjs.org/git/-/git-0.1.5.tgz"
+  integrity sha512-N+bfOrXyKMU/fQtCj6D/U9MQOEN0DAA8TLHSLdUQRSWBOkeRvsjJHdrdkvcq05xO7GSDKWc3nDEGoTZ4DfCCSg==
+  dependencies:
+    mime "1.2.9"
+
 github-from-package@0.0.0:
   version "0.0.0"
   resolved "https://registry.npmjs.org/github-from-package/-/github-from-package-0.0.0.tgz"
@@ -4746,6 +4753,11 @@ micromatch@^4.0.4, micromatch@^4.0.8:
     braces "^3.0.3"
     picomatch "^2.3.1"
 
+mime@1.2.9:
+  version "1.2.9"
+  resolved "https://registry.npmjs.org/mime/-/mime-1.2.9.tgz"
+  integrity sha512-WiLgbHTIq5AYUvU/Luli4mZ1bUcHpGNHyCsbl+KPMg4zt+XUDpQehWjuBjdLaEvDTinvKj/FgfQt3fPoT7j08g==
+
 mimic-fn@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/mimic-fn/-/mimic-fn-4.0.0.tgz"
@@ -4916,6 +4928,11 @@ node-abi@^3.3.0:
   dependencies:
     semver "^7.3.5"
 
+node-bin-setup@^1.0.0:
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.1.4.tgz"
+  integrity sha512-vWNHOne0ZUavArqPP5LJta50+S8R261Fr5SvGul37HbEDcowvLjwdvd0ZeSr0r2lTSrPxl6okq9QUw8BFGiAxA==
+
 node-fetch@^2.6.7:
   version "2.7.0"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.7.0.tgz"
@@ -4939,6 +4956,13 @@ node-source-walk@^7.0.1:
   integrity sha512-3VW/8JpPqPvnJvseXowjZcirPisssnBuDikk6JIZ8jQzF7KJQX52iPFX4RYYxLycYH7IbMRSPUOga/esVjy5Yg==
   dependencies:
     "@babel/parser" "^7.26.7"
+
+node@^22.18.0:
+  version "22.18.0"
+  resolved "https://registry.npmjs.org/node/-/node-22.18.0.tgz"
+  integrity sha512-3njku3qUgOVps16gg1+y1L9AseQoZFUZmd2ASA3+K/pryQLoiEoHkjQ6UmVSysW2EkvdILBKsUYM9RpBKJ47+w==
+  dependencies:
+    node-bin-setup "^1.0.0"
 
 nopt@^8.0.0:
   version "8.1.0"

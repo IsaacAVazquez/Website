@@ -1,36 +1,36 @@
-import { FantasyFootballLandingContent } from "@/components/FantasyFootballLandingContent";
+import { ProjectsContent } from "@/components/ProjectsContent";
 import { metadata } from "./metadata";
 import { StructuredData } from "@/components/StructuredData";
 import { generateBreadcrumbStructuredData } from "@/lib/seo";
 
 export { metadata };
 
-// Fantasy Football data for structured data
-const fantasyFootballStructuredData = [
+// Projects data for structured data
+const projectsStructuredData = [
   {
-    name: "Interactive Fantasy Football Tier Graph",
-    description: "Advanced clustering algorithms analyze 300+ players with real-time D3.js visualization",
+    name: "Civic Engagement Platform QA Framework",
+    description: "Scalable QA framework for voter outreach tools reaching 60M+ voters with 30% faster releases",
     programmingLanguage: ["TypeScript", "JavaScript"],
-    keywords: ["D3.js", "K-Means", "Data Visualization", "Fantasy Sports", "React"],
+    keywords: ["Cypress", "Jest", "React", "Node.js", "Quality Assurance"],
   },
   {
-    name: "Fantasy Football Draft Tier Cards",
-    description: "Comprehensive draft interface with tier visualization and real-time player tracking",
-    programmingLanguage: ["TypeScript", "JavaScript"],
-    keywords: ["React", "Next.js", "Fantasy Sports", "Real-time Data"],
+    name: "Test Automation Suite",
+    description: "Unified automation framework enabling same-day validation with 50% defect reduction",
+    programmingLanguage: ["Python", "JavaScript"],
+    keywords: ["Selenium", "Docker", "CI/CD", "Test Automation"],
   },
   {
-    name: "Fantasy Football Data Management",
-    description: "Administrative interface for real-time data collection, processing, and performance monitoring",
+    name: "Portfolio Platform",
+    description: "Modern portfolio website built with Next.js 15 featuring cyberpunk design and 99% Lighthouse score",
     programmingLanguage: ["TypeScript", "JavaScript"],
-    keywords: ["API Integration", "Data Processing", "Caching", "Performance"],
+    keywords: ["Next.js", "Tailwind CSS", "Framer Motion", "Performance Optimization"],
   },
 ];
 
 export default function ProjectsPage() {
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "Fantasy Football", url: "/projects" }
+    { name: "Projects", url: "/projects" }
   ];
 
   return (
@@ -41,8 +41,8 @@ export default function ProjectsPage() {
         data={{ items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement }}
       />
       
-      {/* Fantasy Football Structured Data */}
-      {fantasyFootballStructuredData.map((project, index) => (
+      {/* Projects Structured Data */}
+      {projectsStructuredData.map((project, index) => (
         <StructuredData
           key={index}
           type="SoftwareApplication"
@@ -56,7 +56,7 @@ export default function ProjectsPage() {
 
       <div className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <FantasyFootballLandingContent />
+          <ProjectsContent />
         </div>
       </div>
     </>

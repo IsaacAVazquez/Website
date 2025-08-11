@@ -123,30 +123,30 @@ const projects: Project[] = [
   },
   {
     id: 6,
-    title: "Fantasy Football Tiers",
-    description: "Interactive tier visualization using clustering algorithms to analyze player rankings",
-    tech: ["D3.js", "TypeScript", "K-Means", "Framer Motion"],
+    title: "Portfolio Platform",
+    description: "Modern portfolio website built with Next.js 15 featuring cyberpunk design and performance optimization",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     type: "normal",
     color: "from-vivid-blue to-vivid-green",
     icon: IconTrendingUp,
-    metrics: "6-tier clustering, real-time updates",
+    metrics: "99% Lighthouse score, 60% faster loading",
     github: "https://github.com/IsaacAVazquez",
-    link: "/fantasy-football",
+    link: "https://isaacavazquez.com",
     detailedMetrics: [
-      { label: "Data Points", value: "300+ players", improvement: "All positions" },
-      { label: "Clustering Accuracy", value: "92%", improvement: "Expert consensus match" },
-      { label: "Update Frequency", value: "Daily", improvement: "Automated pipeline" },
-      { label: "User Engagement", value: "85% return rate", improvement: "Interactive features" }
+      { label: "Performance Score", value: "99/100", improvement: "Lighthouse metrics" },
+      { label: "Load Time", value: "1.2s", improvement: "60% faster than average" },
+      { label: "Accessibility", value: "100/100", improvement: "WCAG AA compliant" },
+      { label: "SEO Score", value: "100/100", improvement: "Optimized meta data" }
     ],
-    screenshot: "/project-screenshots/fantasy-football-tiers.png",
+    screenshot: "/project-screenshots/portfolio-platform.png",
     challenges: [
-      "Real-time data synchronization from FantasyPros",
-      "Responsive D3.js visualizations across devices",
-      "Clustering algorithm optimization for player tiers",
-      "User-friendly interface for complex data"
+      "Implementing glassmorphism effects with good performance",
+      "Creating responsive cyberpunk aesthetic across devices",
+      "Optimizing animations without impacting Core Web Vitals",
+      "Building accessible interactive components"
     ],
-    impact: "Demonstrates advanced data visualization and algorithm implementation skills with real-time data processing",
-    timeline: "4 months (2024)"
+    impact: "Showcases modern web development skills with focus on performance, accessibility, and user experience",
+    timeline: "3 months (2024)"
   },
 ];
 
