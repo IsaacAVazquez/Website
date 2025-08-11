@@ -18,21 +18,9 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
-      {
-        protocol: 'https',
-        hostname: 'a.espncdn.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'static.nfl.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'media.pro-football-reference.com',
-      },
     ],
     formats: ["image/avif", "image/webp"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
     dangerouslyAllowSVG: true,
@@ -44,7 +32,7 @@ const nextConfig = {
   },
   // Enable experimental features for better performance
   experimental: {
-    optimizePackageImports: ['@tabler/icons-react', 'lucide-react', 'react-icons', 'framer-motion'],
+    optimizePackageImports: ['@tabler/icons-react', 'lucide-react', 'framer-motion'],
     scrollRestoration: true,
   },
   // Enhanced webpack configuration for performance
@@ -55,25 +43,17 @@ const nextConfig = {
         ...config.optimization.splitChunks,
         cacheGroups: {
           ...config.optimization.splitChunks.cacheGroups,
-          // Separate chunk for fantasy football features
-          fantasy: {
-            test: /[\\/](components[\\/](fantasy|Fantasy|Draft|Tier)|hooks[\\/]use.*Fantasy|lib[\\/].*fantasy|lib[\\/]tier|lib[\\/]clustering|lib[\\/]gaussian).*\.tsx?$/,
-            name: 'fantasy-features',
+          // Separate chunk for heavy UI components (portfolio-specific)
+          uiComponents: {
+            test: /[\\/](components[\\/](ui|ProjectDetailModal|LazyQADashboard)|hooks[\\/](useDebounce|useTypingAnimation)).*\.tsx?$/,
+            name: 'ui-components',
             chunks: 'all',
             priority: 20,
             reuseExistingChunk: true,
           },
-          // Separate chunk for D3.js and visualization libraries
-          visualization: {
-            test: /[\\/]node_modules[\\/](d3|d3-.*|vis|chart\.js)[\\/]/,
-            name: 'visualization-libs',
-            chunks: 'all',
-            priority: 25,
-            reuseExistingChunk: true,
-          },
-          // Enhanced icons chunk
+          // Enhanced icons chunk - optimize for portfolio usage
           icons: {
-            test: /[\\/]node_modules[\\/](@tabler[\\/]icons-react|lucide-react|react-icons)[\\/]/,
+            test: /[\\/]node_modules[\\/](@tabler[\\/]icons-react|lucide-react)[\\/]/,
             name: 'icons',
             chunks: 'all',
             priority: 15,
@@ -85,6 +65,14 @@ const nextConfig = {
             name: 'framer-motion',
             chunks: 'all',
             priority: 15,
+            reuseExistingChunk: true,
+          },
+          // Blog and content chunk
+          content: {
+            test: /[\\/](components[\\/](blog|newsletter)|lib[\\/](blog|seo)).*\.tsx?$/,
+            name: 'content-features',
+            chunks: 'all',
+            priority: 12,
             reuseExistingChunk: true,
           },
           // Default vendor chunk for everything else
@@ -104,14 +92,18 @@ const nextConfig = {
 
       // Bundle analyzer (enabled for production analysis)
       if (process.env.ANALYZE === 'true') {
-        const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-        config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            openAnalyzer: false,
-            reportFilename: '../bundle-analyzer-report.html',
-          })
-        );
+        try {
+          const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+          config.plugins.push(
+            new BundleAnalyzerPlugin({
+              analyzerMode: 'static',
+              openAnalyzer: false,
+              reportFilename: '../bundle-analyzer-report.html',
+            })
+          );
+        } catch (error) {
+          console.warn('Bundle analyzer not available, skipping...');
+        }
       }
     }
 

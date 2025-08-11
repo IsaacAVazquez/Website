@@ -9,24 +9,26 @@ import { Analytics } from "@/components/Analytics";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
-
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500"],
   variable: "--font-jetbrains-mono",
   display: "swap",
+  preload: false, // Only load when needed for terminal/code
 });
 
 const orbitron = Orbitron({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["600", "700", "800"],
   variable: "--font-orbitron",
   display: "swap",
+  preload: false, // Only load when needed for headings
 });
 
 export const metadata = constructMetadata();
@@ -46,8 +48,8 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="FF Analytics" />
-        <meta name="application-name" content="Fantasy Football Analytics" />
+        <meta name="apple-mobile-web-app-title" content="Isaac Vazquez" />
+        <meta name="application-name" content="Isaac Vazquez Portfolio" />
         <meta name="msapplication-TileColor" content="#0A0A0B" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         
