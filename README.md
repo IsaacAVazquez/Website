@@ -1,6 +1,6 @@
 # Isaac Vazquez Portfolio
 
-A cyberpunk-themed professional portfolio website showcasing QA Engineering expertise, built with cutting-edge web technologies and featuring an interactive fantasy football tier visualization system.
+A cyberpunk-themed professional portfolio website showcasing QA Engineering expertise and technical projects, built with cutting-edge web technologies and optimized for performance.
 
 **🚀 Live Site:** [isaacavazquez.com](https://isaacavazquez.com)
 
@@ -11,22 +11,16 @@ A cyberpunk-themed professional portfolio website showcasing QA Engineering expe
 ### 🎯 Core Portfolio
 - **Cyberpunk Design System** - Electric blue and matrix green color palette with glassmorphism effects
 - **Terminal Interface** - Interactive command-line hero section with realistic typing animations
-- **Full-Screen Experience** - Immersive layout without traditional sidebars
+- **Full-Screen Experience** - Immersive layout optimized for content presentation
 - **Responsive Design** - Mobile-first approach with touch-friendly interactions
-- **Dark Theme** - Professional cyberpunk aesthetic throughout
-
-### 📊 Fantasy Football Tier Charts
-- **Boris Chen-Style Visualizations** - Expert consensus rankings with tier clustering
-- **Multiple Data Sources** - FantasyPros integration, CSV import, manual entry
-- **Scoring Format Support** - Standard, PPR, and Half-PPR variations
-- **Real-time Data** - Live updates from FantasyPros expert consensus
-- **Interactive Charts** - D3.js visualizations with zoom and pan controls
+- **Performance Optimized** - Advanced optimization techniques for fast loading
 
 ### 🛠️ Technical Features
 - **Modern Stack** - Next.js 15, React 19, TypeScript, Tailwind CSS v4
 - **Performance Optimized** - Server-side rendering, image optimization, code splitting
 - **SEO Enhanced** - Structured data, sitemaps, OpenGraph meta tags
 - **Accessibility First** - ARIA labels, keyboard navigation, screen reader support
+- **PWA Ready** - Progressive Web App capabilities with offline support
 
 ## 🏗️ Tech Stack
 
@@ -37,23 +31,12 @@ A cyberpunk-themed professional portfolio website showcasing QA Engineering expe
 - **Animations:** Framer Motion for physics-based interactions
 - **Typography:** Orbitron (headings), Inter (body), JetBrains Mono (code)
 
-### Data Visualization
-- **Charts:** D3.js for interactive tier visualizations
-- **Clustering:** K-means and Gaussian Mixture Models
-- **Data Processing:** TypeScript implementations of statistical algorithms
-
-### Backend & APIs
-- **Runtime:** Node.js with Next.js API routes
-- **Data Sources:** FantasyPros integration, CSV parsing
-- **Authentication:** Session-based FantasyPros login
-- **Storage:** In-memory data management with persistent API
-
 ### Development & Deployment
 - **Language:** TypeScript with strict mode
 - **Linting:** ESLint with Next.js configuration
-- **Build:** Next.js production optimization
+- **Build:** Next.js production optimization with advanced chunking
 - **Deployment:** Netlify with automatic builds
-- **Analytics:** Built-in performance monitoring
+- **Performance:** Bundle size optimization and lazy loading
 
 ## 🚀 Quick Start
 
@@ -66,8 +49,8 @@ A cyberpunk-themed professional portfolio website showcasing QA Engineering expe
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/IsaacAVazquez/Website.git
-   cd Website
+   git clone https://github.com/IsaacAVazquez/isaacvazquez-portfolio.git
+   cd isaacvazquez-portfolio
    ```
 
 2. **Install dependencies**
@@ -89,31 +72,20 @@ A cyberpunk-themed professional portfolio website showcasing QA Engineering expe
    http://localhost:3000
    ```
 
-### Environment Variables (Optional)
-```env
-FANTASYPROS_API_KEY=your_api_key_here
-NEXTAUTH_URL=http://localhost:3000
-```
+## 📱 Portfolio Sections
 
-## 📱 Usage
-
-### Portfolio Navigation
+### Navigation
 - **Home** - Terminal hero interface with animated commands
-- **About** - Personal story and technical background
-- **Projects** - Showcase of development work
+- **About** - Personal story and technical background  
+- **Projects** - Interactive showcase of development work
 - **Resume** - Professional experience and skills
 - **Contact** - Get in touch form and social links
 
-### Fantasy Football Features
-1. **Access the admin panel** at `/admin`
-2. **Import data** using one of several methods:
-   - FantasyPros login (recommended)
-   - Free rankings (no authentication)
-   - CSV upload
-   - Manual text entry
-3. **View visualizations** at `/fantasy-football`
-4. **Switch between** positions and scoring formats
-5. **Interact with charts** using zoom and pan controls
+### Interactive Features
+- **Command Palette** - Quick navigation with ⌘K
+- **Terminal Animations** - Realistic typing effects and cursor movement
+- **Project Modals** - Detailed project information with live demos
+- **QA Dashboard** - Interactive metrics and testing visualizations
 
 ## 🎨 Design System
 
@@ -150,19 +122,18 @@ NEXTAUTH_URL=http://localhost:3000
 src/
 ├── app/                 # Next.js App Router pages
 │   ├── about/          # About page
-│   ├── admin/          # Fantasy football data management
-│   ├── api/            # Backend API endpoints
 │   ├── contact/        # Contact form and information
-│   ├── fantasy-football/ # Tier chart visualization
 │   ├── projects/       # Project showcase
-│   └── resume/         # Professional resume
+│   ├── resume/         # Professional resume
+│   └── api/            # Backend API endpoints
 ├── components/         # Reusable React components
 │   ├── ui/            # UI component library
+│   ├── TerminalHero/  # Terminal interface component
 │   └── ...            # Feature-specific components
 ├── constants/         # Static data and configuration
 ├── lib/              # Utility functions and helpers
 ├── types/            # TypeScript type definitions
-└── data/             # Sample data and test fixtures
+└── hooks/            # Custom React hooks
 ```
 
 ## 🧪 Development
@@ -176,38 +147,31 @@ npm run lint         # Run ESLint
 npm run postbuild    # Generate sitemap after build
 ```
 
-### Key Development Tools
-- **Hot Reload:** Instant updates during development
-- **TypeScript:** Strict type checking and IntelliSense
-- **ESLint:** Code quality and consistency
-- **Prettier:** Automatic code formatting (via ESLint)
+### Performance Optimizations
+- **Bundle Splitting:** Portfolio-specific chunk optimization
+- **Lazy Loading:** Heavy components loaded on demand
+- **Font Optimization:** Strategic preloading and reduced weights
+- **Image Optimization:** Next.js Image component with placeholders
 
 ## 🌐 Deployment
 
-The site is deployed on Netlify with automatic builds from the main branch.
+The site is optimized for deployment on Netlify with automatic builds.
 
 ### Build Configuration
 - **Build Command:** `npm run build`
-- **Publish Directory:** `.next`
+- **Publish Directory:** `out` (static export)
 - **Node Version:** 18+
 - **Environment:** Production optimizations enabled
 
 ### Performance Features
 - **Static Generation:** Pre-rendered pages for fast loading
 - **Image Optimization:** Automatic WebP conversion and sizing
-- **Code Splitting:** Automatic bundle optimization
-- **CDN:** Global content delivery network
+- **Code Splitting:** Optimized bundle chunks for portfolio content
+- **PWA:** Service worker for offline capability
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our contributing guidelines and submit pull requests for any improvements.
-
-### Development Workflow
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+This is a personal portfolio project. If you're interested in collaborating or have suggestions, feel free to reach out!
 
 ## 📄 License
 
@@ -216,13 +180,13 @@ This project is private and proprietary. All rights reserved.
 ## 📞 Contact
 
 **Isaac Vazquez**  
-QA Engineer & Full-Stack Developer
+QA Engineer & Developer
 
 - **Website:** [isaacavazquez.com](https://isaacavazquez.com)
-- **LinkedIn:** [isaac-vazquez](https://linkedin.com/in/isaac-vazquez)
+- **LinkedIn:** [isaac-vazquez](https://linkedin.com/in/isaac-vazquez)  
 - **Email:** isaacavazquez95@gmail.com
 - **GitHub:** [IsaacAVazquez](https://github.com/IsaacAVazquez)
 
 ---
 
-*Built with ⚡ by Isaac Vazquez - Showcasing the intersection of QA expertise and full-stack development*
+*Built with ⚡ by Isaac Vazquez - A showcase of modern web development and QA engineering excellence*
