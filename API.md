@@ -5,17 +5,15 @@ This document provides comprehensive documentation for all API endpoints in the 
 ## 📋 Table of Contents
 
 - [Overview](#overview)
-- [Authentication](#authentication)
-- [Data Manager API](#data-manager-api)
-- [FantasyPros Integration APIs](#fantasypros-integration-apis)
-- [Utility APIs](#utility-apis)
+- [Contact Form API](#contact-form-api)
+- [Analytics API](#analytics-api)
+- [Content API](#content-api)
 - [Error Handling](#error-handling)
-- [Rate Limiting](#rate-limiting)
 - [Examples](#examples)
 
 ## 🌐 Overview
 
-The API is built using Next.js App Router API routes with TypeScript. All endpoints return JSON responses and follow RESTful conventions where applicable.
+The Portfolio API is built using Next.js App Router API routes with TypeScript. All endpoints return JSON responses and follow RESTful conventions.
 
 **Base URL:** `https://isaacavazquez.com/api` (Production)  
 **Development:** `http://localhost:3000/api`
@@ -30,7 +28,6 @@ interface APIResponse<T = any> {
   data?: T;
   error?: string;
   message?: string;
-  note?: string;
 }
 ```
 
@@ -38,118 +35,37 @@ interface APIResponse<T = any> {
 
 - `200` - Success
 - `400` - Bad Request (validation errors)
-- `401` - Unauthorized (authentication required)
 - `404` - Not Found
 - `429` - Too Many Requests (rate limited)
 - `500` - Internal Server Error
 
-## 🔐 Authentication
+## 📧 Contact Form API
 
-### Session-Based Authentication
+### Submit Contact Form
 
-For FantasyPros integration, the API uses session-based authentication with CSRF token management.
-
-**Headers:**
-```http
-Content-Type: application/json
-User-Agent: Mozilla/5.0 (compatible; Portfolio-Bot)
-```
-
-**Credentials:**
-```typescript
-interface FantasyProsCredentials {
-  username: string;
-  password: string;
-}
-```
-
-## 📊 Data Manager API
-
-### Overview
-
-The Data Manager API handles persistent storage and retrieval of fantasy football player data across different scoring formats.
-
-**Base Path:** `/api/data-manager`
-
-### Get Player Data
-
-Retrieve stored player data for a specific position and scoring format.
+Handle contact form submissions from the portfolio website.
 
 ```http
-GET /api/data-manager
-```
-
-**Query Parameters:**
-- `position` (optional): Position to filter (`QB`, `RB`, `WR`, `TE`, `FLEX`, `K`, `DST`)
-- `dataset` (optional): Dataset to query (`current`, `fantasypros-session`, `free-ranking`)
-- `scoringFormat` (optional): Scoring format (`standard`, `ppr`, `half-ppr`)
-- `compare` (optional): Return comparison data (`true` for all datasets)
-
-**Example Request:**
-```http
-GET /api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=ppr
-```
-
-**Example Response:**
-```json
-{
-  "success": true,
-  "position": "RB",
-  "dataset": "fantasypros-session-ppr",
-  "scoringFormat": "ppr",
-  "players": [
-    {
-      "id": "1",
-      "name": "Christian McCaffrey",
-      "team": "SF",
-      "position": "RB",
-      "averageRank": 1.2,
-      "standardDeviation": 0.8,
-      "tier": 1,
-      "projectedPoints": 285.5
-    }
-  ],
-  "count": 45
-}
-```
-
-### Store Player Data
-
-Store player rankings data for a specific position and scoring format.
-
-```http
-POST /api/data-manager
+POST /api/contact
 ```
 
 **Request Body:**
 ```typescript
-interface StoreDataRequest {
-  position: string;
-  players: Player[];
-  action?: 'set' | 'append' | 'clear';
-  dataset?: string;
-  source?: string;
-  scoringFormat?: string;
+interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
 }
 ```
 
 **Example Request:**
 ```json
 {
-  "position": "RB",
-  "players": [
-    {
-      "name": "Christian McCaffrey",
-      "team": "SF",
-      "position": "RB",
-      "averageRank": 1.2,
-      "standardDeviation": 0.8,
-      "projectedPoints": 285.5
-    }
-  ],
-  "action": "set",
-  "source": "fantasypros-session",
-  "scoringFormat": "ppr"
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "subject": "Project Collaboration",
+  "message": "I'd like to discuss a potential project collaboration..."
 }
 ```
 
@@ -157,245 +73,273 @@ interface StoreDataRequest {
 ```json
 {
   "success": true,
-  "position": "RB",
-  "action": "set",
-  "dataset": "fantasypros-session-ppr",
-  "scoringFormat": "ppr",
-  "source": "fantasypros-session",
-  "playersStored": 45,
-  "message": "Successfully set 45 players for RB in fantasypros-session-ppr dataset"
+  "message": "Message sent successfully",
+  "data": {
+    "id": "msg_123456",
+    "timestamp": "2025-01-16T10:30:00Z"
+  }
 }
 ```
 
-### Clear Data
+**Validation Rules:**
+- `name`: Required, 2-100 characters
+- `email`: Required, valid email format
+- `subject`: Required, 5-200 characters
+- `message`: Required, 10-2000 characters
 
-Remove stored data for a specific position or entire dataset.
+### Get Contact Status
+
+Check the status of a contact form submission.
 
 ```http
-DELETE /api/data-manager
+GET /api/contact/status?id={messageId}
 ```
 
 **Query Parameters:**
-- `position` (optional): Position to clear
-- `dataset` (optional): Dataset to clear (`all` for all datasets)
-
-**Example Request:**
-```http
-DELETE /api/data-manager?position=RB&dataset=fantasypros-session-ppr
-```
+- `id`: Message ID returned from form submission
 
 **Example Response:**
 ```json
 {
   "success": true,
-  "message": "Cleared data for RB in fantasypros-session-ppr dataset",
-  "position": "RB",
-  "dataset": "fantasypros-session-ppr"
+  "data": {
+    "id": "msg_123456",
+    "status": "delivered",
+    "timestamp": "2025-01-16T10:30:00Z"
+  }
 }
 ```
 
-## 🏈 FantasyPros Integration APIs
+## 📊 Analytics API
 
-### Session-Based Authentication
+### Track Events
 
-Authenticate with FantasyPros using username/password and fetch rankings data.
+Track user interactions and portfolio engagement.
 
 ```http
-POST /api/fantasy-pros-session
+POST /api/analytics/events
 ```
 
 **Request Body:**
 ```typescript
-interface SessionRequest {
-  username: string;
-  password: string;
-  position?: string;
-  week?: number;
-  scoringFormat?: 'standard' | 'ppr' | 'half-ppr';
+interface AnalyticsEvent {
+  event: string;
+  category: string;
+  label?: string;
+  value?: number;
+  userId?: string;
+  metadata?: Record<string, any>;
 }
 ```
 
 **Example Request:**
 ```json
 {
-  "username": "your_username",
-  "password": "your_password",
-  "position": "RB",
-  "scoringFormat": "ppr"
+  "event": "project_view",
+  "category": "portfolio",
+  "label": "cyberpunk-dashboard",
+  "metadata": {
+    "source": "projects_page",
+    "device": "desktop"
+  }
 }
 ```
 
-**Example Response (Single Position):**
+**Example Response:**
 ```json
 {
   "success": true,
-  "players": [
-    {
-      "name": "Christian McCaffrey",
-      "team": "SF",
-      "position": "RB",
-      "averageRank": 1.2,
-      "standardDeviation": 0.8,
-      "projectedPoints": 285.5
-    }
-  ],
-  "position": "RB",
-  "week": 1,
-  "source": "fantasypros-session"
+  "message": "Event tracked successfully",
+  "data": {
+    "eventId": "evt_789012",
+    "timestamp": "2025-01-16T10:35:00Z"
+  }
 }
 ```
 
-**Example Response (All Positions):**
-```json
-{
-  "success": true,
-  "allRankings": {
-    "QB": [...],
-    "RB": [...],
-    "WR": [...],
-    "TE": [...],
-    "K": [...],
-    "DST": [...]
-  },
-  "totalPlayers": 450,
-  "week": 1,
-  "source": "fantasypros-session"
-}
-```
+### Web Vitals Tracking
 
-### Free Rankings Access
-
-Attempt to access public FantasyPros rankings without authentication.
+Track Core Web Vitals and performance metrics.
 
 ```http
-GET /api/fantasy-pros-free
+POST /api/analytics/web-vitals
 ```
 
-**Query Parameters:**
-- `position` (optional): Position to fetch
-- `scoringFormat` (optional): Scoring format (`standard`, `ppr`, `half-ppr`)
+**Request Body:**
+```typescript
+interface WebVitalMetric {
+  name: 'CLS' | 'FCP' | 'LCP' | 'FID' | 'TTFB';
+  value: number;
+  id: string;
+  delta: number;
+  url: string;
+  userAgent?: string;
+}
+```
 
 **Example Request:**
-```http
-GET /api/fantasy-pros-free?position=RB&scoringFormat=ppr
-```
-
-**Example Response:**
 ```json
 {
-  "success": true,
-  "players": [...],
-  "position": "RB",
-  "source": "fantasypros-free",
-  "message": "Found 45 RB players from public rankings"
+  "name": "LCP",
+  "value": 1250,
+  "id": "v2-1642123456789-1234567890",
+  "delta": 1250,
+  "url": "https://isaacavazquez.com/",
+  "userAgent": "Mozilla/5.0..."
 }
 ```
 
-### API Key Authentication
+### Get Analytics Dashboard
 
-Use FantasyPros API key for official API access (when available).
+Retrieve analytics data for the portfolio dashboard.
 
 ```http
-GET /api/fantasy-pros
+GET /api/analytics/dashboard
 ```
 
 **Query Parameters:**
-- `position`: Position to fetch
-- `scoring`: Scoring format
-
-**Request Headers:**
-```http
-Authorization: Bearer your_api_key
-```
+- `period`: Time period (`7d`, `30d`, `90d`, `1y`)
+- `metrics`: Comma-separated list of metrics to include
 
 **Example Response:**
 ```json
 {
   "success": true,
-  "players": [...],
-  "source": "fantasypros-api"
-}
-```
-
-## 🛠️ Utility APIs
-
-### Debug FantasyPros Structure
-
-Analyze FantasyPros website structure for debugging authentication issues.
-
-```http
-GET /api/debug-fantasypros
-```
-
-**Example Response:**
-```json
-{
-  "success": true,
-  "loginPageLength": 45230,
-  "hasCookies": true,
-  "csrfPatternResults": [
-    {
-      "pattern": "csrf_token.*?value=[\"'](.*?)[\"']",
-      "found": true,
-      "token": "abc123token"
+  "data": {
+    "pageViews": {
+      "total": 1247,
+      "change": 12.5
+    },
+    "uniqueVisitors": {
+      "total": 892,
+      "change": 8.3
+    },
+    "topPages": [
+      { "path": "/", "views": 456 },
+      { "path": "/projects", "views": 321 },
+      { "path": "/about", "views": 234 }
+    ],
+    "webVitals": {
+      "LCP": { "value": 1.2, "grade": "good" },
+      "FID": { "value": 85, "grade": "good" },
+      "CLS": { "value": 0.08, "grade": "good" }
     }
-  ],
-  "tokenLikeStrings": ["csrf_token", "authenticity_token"],
-  "inputFields": 2,
-  "forms": 1
+  }
 }
 ```
 
-### Test Scraping
+## 📄 Content API
 
-Test web scraping capabilities for a specific URL.
+### Get Projects
+
+Retrieve portfolio project data.
 
 ```http
-GET /api/test-scrape
+GET /api/projects
 ```
+
+**Query Parameters:**
+- `featured`: Return only featured projects (`true`/`false`)
+- `technology`: Filter by technology (e.g., `React`, `TypeScript`)
+- `limit`: Number of projects to return
 
 **Example Response:**
 ```json
 {
   "success": true,
-  "url": "https://www.fantasypros.com/nfl/rankings/rb-cheatsheets.php",
-  "htmlLength": 125000,
-  "hasContent": true,
-  "hasJavaScript": true,
-  "hasTable": true,
-  "samplePlayers": [
+  "data": [
     {
-      "rank": 1,
-      "name": "Christian McCaffrey",
-      "team": "SF"
+      "id": "cyberpunk-dashboard",
+      "title": "Cyberpunk Portfolio Dashboard",
+      "description": "A modern portfolio website with cyberpunk aesthetics",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+      "featured": true,
+      "image": "/images/projects/dashboard.webp",
+      "liveUrl": "https://isaacavazquez.com",
+      "githubUrl": "https://github.com/IsaacAVazquez/portfolio"
     }
   ]
 }
 ```
 
-### Data Format Testing
+### Get Resume Data
 
-Test data parsing and format validation.
+Retrieve structured resume information.
 
 ```http
-POST /api/test-data-format
-```
-
-**Request Body:**
-```json
-{
-  "data": "raw_data_string",
-  "format": "csv|json|text"
-}
+GET /api/resume
 ```
 
 **Example Response:**
 ```json
 {
   "success": true,
-  "parsedPlayers": [...],
-  "validationErrors": [],
-  "format": "csv"
+  "data": {
+    "experience": [
+      {
+        "company": "Tech Company",
+        "position": "Senior QA Engineer",
+        "startDate": "2022-01",
+        "endDate": "present",
+        "description": "Lead QA initiatives and automation strategies..."
+      }
+    ],
+    "skills": [
+      {
+        "category": "Testing",
+        "items": ["Selenium", "Jest", "Cypress", "Playwright"]
+      },
+      {
+        "category": "Development",
+        "items": ["JavaScript", "TypeScript", "React", "Node.js"]
+      }
+    ],
+    "education": [
+      {
+        "institution": "University Name",
+        "degree": "Bachelor of Computer Science",
+        "year": "2020"
+      }
+    ]
+  }
+}
+```
+
+### Search Content
+
+Search across portfolio content (projects, blog posts, etc.).
+
+```http
+GET /api/search
+```
+
+**Query Parameters:**
+- `q`: Search query
+- `type`: Content type filter (`projects`, `blog`, `all`)
+- `limit`: Number of results to return
+
+**Example Request:**
+```http
+GET /api/search?q=react&type=projects&limit=5
+```
+
+**Example Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "results": [
+      {
+        "type": "project",
+        "title": "React Dashboard",
+        "description": "Modern React-based dashboard...",
+        "url": "/projects/react-dashboard",
+        "relevance": 0.95
+      }
+    ],
+    "total": 3,
+    "query": "react"
+  }
 }
 ```
 
@@ -407,7 +351,6 @@ POST /api/test-data-format
 interface ErrorResponse {
   success: false;
   error: string;
-  note?: string;
   details?: any;
 }
 ```
@@ -418,26 +361,37 @@ interface ErrorResponse {
 ```json
 {
   "success": false,
-  "error": "Position parameter is required",
-  "note": "Valid positions are: QB, RB, WR, TE, FLEX, K, DST"
+  "error": "Validation failed",
+  "details": {
+    "name": "Name is required",
+    "email": "Invalid email format"
+  }
 }
 ```
 
-**2. Authentication Errors (401)**
+**2. Not Found (404)**
 ```json
 {
   "success": false,
-  "error": "Invalid FantasyPros credentials",
-  "note": "Check your username and password"
+  "error": "Resource not found"
 }
 ```
 
-**3. Server Errors (500)**
+**3. Rate Limit (429)**
 ```json
 {
   "success": false,
-  "error": "Failed to fetch data from FantasyPros",
-  "note": "FantasyPros may be temporarily unavailable"
+  "error": "Rate limit exceeded",
+  "message": "Please wait before making more requests"
+}
+```
+
+**4. Server Errors (500)**
+```json
+{
+  "success": false,
+  "error": "Internal server error",
+  "message": "An unexpected error occurred"
 }
 ```
 
@@ -445,16 +399,21 @@ interface ErrorResponse {
 
 **Client-Side Error Handling:**
 ```typescript
-async function fetchPlayerData(position: string) {
+async function submitContactForm(formData: ContactFormData) {
   try {
-    const response = await fetch(`/api/data-manager?position=${position}`);
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    
     const data = await response.json();
     
     if (!data.success) {
       throw new Error(data.error || 'Unknown error');
     }
     
-    return data.players;
+    return data;
   } catch (error) {
     console.error('API Error:', error);
     throw error;
@@ -462,153 +421,208 @@ async function fetchPlayerData(position: string) {
 }
 ```
 
-## 🚦 Rate Limiting
+## 📝 Examples
 
-### Current Limits
+### Contact Form Integration
 
-- **Development:** No rate limiting
-- **Production:** 100 requests per minute per IP
-- **FantasyPros APIs:** Respectful delays between requests
-
-### Rate Limit Headers
-
-```http
-X-RateLimit-Limit: 100
-X-RateLimit-Remaining: 95
-X-RateLimit-Reset: 1640995200
-```
-
-### Rate Limit Exceeded
-
-```json
-{
-  "success": false,
-  "error": "Rate limit exceeded",
-  "note": "Please wait before making more requests"
+```typescript
+// Contact form submission with validation
+async function handleContactSubmit(formData: ContactFormData) {
+  // Client-side validation
+  const errors = validateContactForm(formData);
+  if (Object.keys(errors).length > 0) {
+    throw new Error('Please fix form errors');
+  }
+  
+  // Submit to API
+  const response = await fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  });
+  
+  const result = await response.json();
+  
+  if (!result.success) {
+    throw new Error(result.error);
+  }
+  
+  return result.data;
 }
 ```
 
-## 📝 Examples
-
-### Complete Data Import Workflow
+### Analytics Event Tracking
 
 ```typescript
-// 1. Authenticate with FantasyPros
-const authResponse = await fetch('/api/fantasy-pros-session', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    username: 'your_username',
-    password: 'your_password',
-    scoringFormat: 'ppr'
-  })
-});
+// Track user interactions
+class AnalyticsService {
+  static async trackEvent(event: string, category: string, label?: string) {
+    try {
+      await fetch('/api/analytics/events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event,
+          category,
+          label,
+          timestamp: new Date().toISOString()
+        })
+      });
+    } catch (error) {
+      console.warn('Analytics tracking failed:', error);
+    }
+  }
+  
+  static async trackPageView(path: string) {
+    await this.trackEvent('page_view', 'navigation', path);
+  }
+  
+  static async trackProjectView(projectId: string) {
+    await this.trackEvent('project_view', 'portfolio', projectId);
+  }
+}
 
-// 2. Fetch all positions
-const allDataResponse = await fetch('/api/fantasy-pros-session', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    username: 'your_username',
-    password: 'your_password',
-    scoringFormat: 'ppr'
-    // No position = all positions
-  })
-});
-
-// 3. Retrieve stored data
-const storedDataResponse = await fetch(
-  '/api/data-manager?dataset=fantasypros-session&scoringFormat=ppr'
-);
-
-// 4. Get specific position data
-const rbDataResponse = await fetch(
-  '/api/data-manager?position=RB&dataset=fantasypros-session&scoringFormat=ppr'
-);
+// Usage in components
+AnalyticsService.trackProjectView('cyberpunk-dashboard');
 ```
 
-### CSV Data Import
+### Content Fetching
 
 ```typescript
-// Parse CSV and store
-const csvData = `name,team,position,rank,projected_points
-Christian McCaffrey,SF,RB,1,285.5
-Derrick Henry,TEN,RB,2,275.0`;
-
-const storeResponse = await fetch('/api/data-manager', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    position: 'RB',
-    players: parsedCsvData,
-    action: 'set',
-    source: 'csv-import'
-  })
-});
+// Fetch and cache project data
+class ContentService {
+  private static cache = new Map();
+  
+  static async getProjects(featured = false) {
+    const cacheKey = `projects-${featured}`;
+    
+    if (this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey);
+    }
+    
+    const response = await fetch(`/api/projects?featured=${featured}`);
+    const data = await response.json();
+    
+    if (data.success) {
+      this.cache.set(cacheKey, data.data);
+      return data.data;
+    }
+    
+    throw new Error(data.error);
+  }
+  
+  static async searchContent(query: string, type = 'all') {
+    const response = await fetch(
+      `/api/search?q=${encodeURIComponent(query)}&type=${type}`
+    );
+    
+    const data = await response.json();
+    return data.success ? data.data : null;
+  }
+}
 ```
 
-### Data Comparison
+### Web Vitals Monitoring
 
 ```typescript
-// Compare data across all datasets
-const comparisonResponse = await fetch(
-  '/api/data-manager?position=RB&compare=true'
-);
+// Track Core Web Vitals
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
 
-const comparison = await comparisonResponse.json();
-console.log(comparison.comparison);
-// {
-//   "current": { "players": [...], "count": 45 },
-//   "fantasypros-session-ppr": { "players": [...], "count": 45 },
-//   "free-ranking-ppr": { "players": [...], "count": 30 }
-// }
+function sendToAnalytics(metric: any) {
+  fetch('/api/analytics/web-vitals', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: metric.name,
+      value: metric.value,
+      id: metric.id,
+      delta: metric.delta,
+      url: window.location.href
+    })
+  }).catch(console.warn);
+}
+
+// Track all Core Web Vitals
+getCLS(sendToAnalytics);
+getFID(sendToAnalytics);
+getFCP(sendToAnalytics);
+getLCP(sendToAnalytics);
+getTTFB(sendToAnalytics);
 ```
 
-## 🔧 SDK Usage
+## 🔧 TypeScript SDK
 
-### TypeScript Client
+### API Client
 
 ```typescript
 // lib/api-client.ts
-class FantasyFootballAPI {
+export class PortfolioAPI {
   private baseURL: string;
   
   constructor(baseURL = '/api') {
     this.baseURL = baseURL;
   }
   
-  async getPlayerData(position: string, scoringFormat = 'ppr') {
-    const response = await fetch(
-      `${this.baseURL}/data-manager?position=${position}&dataset=fantasypros-session&scoringFormat=${scoringFormat}`
-    );
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    return response.json();
+  // Contact form methods
+  async submitContact(data: ContactFormData) {
+    return this.post('/contact', data);
   }
   
-  async storePlayerData(position: string, players: Player[], scoringFormat = 'ppr') {
-    const response = await fetch(`${this.baseURL}/data-manager`, {
+  async getContactStatus(id: string) {
+    return this.get(`/contact/status?id=${id}`);
+  }
+  
+  // Analytics methods
+  async trackEvent(event: AnalyticsEvent) {
+    return this.post('/analytics/events', event);
+  }
+  
+  async getAnalytics(period = '30d') {
+    return this.get(`/analytics/dashboard?period=${period}`);
+  }
+  
+  // Content methods
+  async getProjects(featured?: boolean) {
+    const params = featured ? '?featured=true' : '';
+    return this.get(`/projects${params}`);
+  }
+  
+  async getResume() {
+    return this.get('/resume');
+  }
+  
+  async search(query: string, type = 'all') {
+    return this.get(`/search?q=${encodeURIComponent(query)}&type=${type}`);
+  }
+  
+  // Private helper methods
+  private async get(endpoint: string) {
+    return this.request(endpoint, { method: 'GET' });
+  }
+  
+  private async post(endpoint: string, data: any) {
+    return this.request(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        position,
-        players,
-        action: 'set',
-        source: 'manual',
-        scoringFormat
-      })
+      body: JSON.stringify(data)
     });
+  }
+  
+  private async request(endpoint: string, options: RequestInit) {
+    const response = await fetch(`${this.baseURL}${endpoint}`, options);
+    const data = await response.json();
     
-    return response.json();
+    if (!data.success) {
+      throw new Error(data.error || 'API request failed');
+    }
+    
+    return data;
   }
 }
 
 // Usage
-const api = new FantasyFootballAPI();
-const rbData = await api.getPlayerData('RB', 'ppr');
+const api = new PortfolioAPI();
+const projects = await api.getProjects(true); // Get featured projects
 ```
 
 ## 📚 Additional Resources
@@ -616,12 +630,13 @@ const rbData = await api.getPlayerData('RB', 'ppr');
 ### Related Documentation
 - [DEVELOPMENT.md](./DEVELOPMENT.md) - Development environment setup
 - [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Common API issues
-- [FANTASY_FOOTBALL_SETUP.md](./FANTASY_FOOTBALL_SETUP.md) - Feature-specific setup
+- [PERFORMANCE.md](./PERFORMANCE.md) - API performance optimization
 
-### External APIs
-- [FantasyPros API Documentation](https://www.fantasypros.com/api/)
-- [Next.js API Routes](https://nextjs.org/docs/api-routes/introduction)
+### External References
+- [Next.js API Routes](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
+- [Web Vitals Library](https://github.com/GoogleChrome/web-vitals)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 
 ---
 
-*This API documentation is automatically updated with each release. For the latest changes, see [CHANGELOG.md](./CHANGELOG.md).*
+*This API documentation reflects the portfolio-focused architecture of v2.0. For the latest changes, see [CHANGELOG.md](./CHANGELOG.md).*

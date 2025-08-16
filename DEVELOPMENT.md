@@ -42,8 +42,8 @@ This guide provides detailed information for developers working on the Isaac Vaz
 2. **Environment Configuration**
    Create `.env.local` for development:
    ```env
-   # Optional: FantasyPros API integration
-   FANTASYPROS_API_KEY=your_key_here
+   # Optional: Analytics integration
+   NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=your_ga_id_here
    
    # Development URLs
    NEXTAUTH_URL=http://localhost:3000
@@ -67,12 +67,12 @@ This guide provides detailed information for developers working on the Isaac Vaz
 
 **Commit Convention:**
 ```
-feat: add new fantasy football tier visualization
+feat: add new portfolio project showcase
 fix: resolve mobile navigation overlay issue
 docs: update API documentation
 style: improve cyberpunk theme colors
-refactor: optimize data clustering algorithm
-test: add unit tests for data manager
+refactor: optimize component rendering performance
+test: add unit tests for contact form validation
 ```
 
 ## 🏗️ Code Architecture
@@ -247,23 +247,21 @@ export async function GET(request: NextRequest) {
 }
 ```
 
-### Fantasy Football API Integration
+### Portfolio API Integration
 
-**Data Manager API:**
-- `GET /api/data-manager` - Retrieve stored player data
-- `POST /api/data-manager` - Store player rankings
-- `DELETE /api/data-manager` - Clear stored data
+**Contact Form API:**
+- `POST /api/contact` - Handle contact form submissions
+- `GET /api/contact/status` - Check form submission status
 
-**FantasyPros Integration:**
-- `POST /api/fantasy-pros-session` - Session-based authentication
-- `GET /api/fantasy-pros-free` - Public rankings access
-- `POST /api/fantasy-pros` - API key authentication
+**Analytics API:**
+- `POST /api/analytics/events` - Track user interactions
+- `GET /api/analytics/metrics` - Retrieve performance metrics
 
 **Data Flow:**
-1. Admin page initiates data fetch
-2. API routes handle FantasyPros authentication
-3. Player data is processed and stored
-4. Frontend components retrieve and visualize data
+1. User interactions trigger analytics events
+2. Contact form submissions processed through API
+3. Performance metrics collected and stored
+4. Dashboard displays analytics and user engagement data
 
 ## 🎨 Styling and Design
 
@@ -367,7 +365,7 @@ const staggerContainer = {
 
 **E2E Testing:**
 - Critical user journeys
-- Fantasy football data import/visualization
+- Portfolio project showcase functionality
 - Navigation and accessibility
 
 ### Testing Tools Setup
@@ -478,26 +476,27 @@ export function usePlayerData(position: string) {
 
 ### Common Issues and Solutions
 
-**1. FantasyPros Authentication Failures**
+**1. Contact Form Submission Failures**
 ```typescript
-// Debug CSRF token detection
-console.log('Available patterns:', csrfPatternResults);
-console.log('Found tokens:', tokenLikeStrings);
+// Debug form validation
+console.log('Form data:', formData);
+console.log('Validation errors:', validationErrors);
 
-// Check cookie management
-console.log('Cookies:', response.headers['set-cookie']);
+// Check API response
+console.log('Submission response:', response.data);
 ```
 
-**2. D3.js Chart Rendering Issues**
+**2. Animation Performance Issues**
 ```typescript
-// Ensure proper SVG dimensions
+// Debug Framer Motion animations
 useEffect(() => {
-  if (!svgRef.current) return;
+  const controls = animation.start({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 }
+  });
   
-  const svg = d3.select(svgRef.current);
-  const { width, height } = svg.node().getBoundingClientRect();
-  
-  console.log('SVG dimensions:', { width, height });
+  console.log('Animation controls:', controls);
 }, []);
 ```
 
@@ -561,7 +560,6 @@ const log = {
 - [React 19 Documentation](https://react.dev)
 - [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs)
 - [Framer Motion Documentation](https://www.framer.com/motion/)
-- [D3.js Documentation](https://d3js.org/)
 
 ### Project-Specific Resources
 - [CLAUDE.md](./CLAUDE.md) - Comprehensive application overview

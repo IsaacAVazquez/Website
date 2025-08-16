@@ -207,10 +207,10 @@ module.exports = {
 ```bash
 # Required for production
 SITE_URL=https://isaacavazquez.com
-NEXTAUTH_URL=https://isaacavazquez.com
+NEXT_PUBLIC_SITE_URL=https://isaacavazquez.com
 
-# Optional: FantasyPros integration
-FANTASYPROS_API_KEY=your_api_key_here
+# Optional: Additional configurations
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=your_ga_id_here
 
 # Analytics (if using)
 GOOGLE_ANALYTICS_ID=GA_TRACKING_ID
@@ -226,7 +226,7 @@ VERCEL_ANALYTICS_ID=your_vercel_id
 2. **Via Netlify CLI:**
    ```bash
    netlify env:set SITE_URL "https://isaacavazquez.com"
-   netlify env:set NEXTAUTH_URL "https://isaacavazquez.com"
+   netlify env:set NEXT_PUBLIC_SITE_URL "https://isaacavazquez.com"
    ```
 
 3. **Via netlify.toml:**
@@ -248,8 +248,8 @@ declare global {
     interface ProcessEnv {
       NODE_ENV: 'development' | 'production' | 'test';
       SITE_URL: string;
-      NEXTAUTH_URL: string;
-      FANTASYPROS_API_KEY?: string;
+      NEXT_PUBLIC_SITE_URL: string;
+      NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?: string;
       GOOGLE_ANALYTICS_ID?: string;
     }
   }

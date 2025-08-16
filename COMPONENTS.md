@@ -8,7 +8,7 @@ This document provides comprehensive documentation for the UI component library 
 - [Base Components](#base-components)
 - [Layout Components](#layout-components)
 - [Navigation Components](#navigation-components)
-- [Data Visualization Components](#data-visualization-components)
+- [Portfolio Components](#portfolio-components)
 - [Form Components](#form-components)
 - [Animation Components](#animation-components)
 - [Usage Guidelines](#usage-guidelines)
@@ -456,9 +456,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ className }) => 
     { id: 'home', label: 'Go to Home', action: () => router.push('/') },
     { id: 'about', label: 'Go to About', action: () => router.push('/about') },
     { id: 'projects', label: 'Go to Projects', action: () => router.push('/projects') },
-    { id: 'fantasy', label: 'Fantasy Football', action: () => router.push('/fantasy-football') },
     { id: 'resume', label: 'View Resume', action: () => router.push('/resume') },
     { id: 'contact', label: 'Contact Me', action: () => router.push('/contact') },
+    { id: 'github', label: 'Open GitHub', action: () => window.open('https://github.com/IsaacAVazquez', '_blank') },
   ];
 
   const filteredCommands = commands.filter(cmd =>
@@ -522,247 +522,237 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ className }) => 
 };
 ```
 
-## 📊 Data Visualization Components
+## 💼 Portfolio Components
 
-### TierChartEnhanced
+### ProjectDetailModal
 
-Interactive D3.js chart component for fantasy football tier visualization.
+Interactive modal component for displaying detailed project information.
 
 ```typescript
-interface TierChartEnhancedProps {
-  players: Player[];
-  width?: number;
-  height?: number;
-  numberOfTiers?: number;
-  scoringFormat?: string;
+interface ProjectDetailModalProps {
+  project: Project;
+  isOpen: boolean;
+  onClose: () => void;
   className?: string;
 }
 
-export const TierChartEnhanced: React.FC<TierChartEnhancedProps> = ({
-  players,
-  width = 1200,
-  height = 600,
-  numberOfTiers = 6,
-  scoringFormat = 'PPR',
+export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
+  project,
+  isOpen,
+  onClose,
   className = ''
 }) => {
-  const svgRef = useRef<SVGSVGElement>(null);
-  const [zoomLevel, setZoomLevel] = useState(1);
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            className={cn(
+              'relative max-w-4xl w-full max-h-[90vh] overflow-auto',
+              'glass-4 rounded-lg border border-white/20',
+              className
+            )}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-gray-900/90 backdrop-blur-sm p-6 border-b border-white/10">
+              <div className="flex items-start justify-between">
+                <div>
+                  <Heading level={2} variant="gradient">
+                    {project.title}
+                  </Heading>
+                  <p className="text-gray-400 mt-2">{project.description}</p>
+                </div>
+                <MorphButton
+                  variant="ghost"
+                  size="sm"
+                  onClick={onClose}
+                  className="ml-4"
+                >
+                  ✕
+                </MorphButton>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 space-y-6">
+              {/* Project Screenshot */}
+              {project.image && (
+                <div className="rounded-lg overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={800}
+                    height={400}
+                    className="w-full h-auto"
+                    priority
+                  />
+                </div>
+              )}
+
+              {/* Technologies */}
+              <div>
+                <Heading level={3} className="mb-3">Technologies Used</Heading>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <Badge key={tech} variant="info" size="sm">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              {/* Key Features */}
+              <div>
+                <Heading level={3} className="mb-3">Key Features</Heading>
+                <ul className="space-y-2">
+                  {project.features.map((feature, index) => (
+                    <li key={index} className="flex items-start space-x-2">
+                      <span className="text-electric-blue mt-1">•</span>
+                      <span className="text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Links */}
+              <div className="flex space-x-4">
+                {project.liveUrl && (
+                  <MorphButton
+                    variant="primary"
+                    onClick={() => window.open(project.liveUrl, '_blank')}
+                  >
+                    View Live Site
+                  </MorphButton>
+                )}
+                {project.githubUrl && (
+                  <MorphButton
+                    variant="ghost"
+                    onClick={() => window.open(project.githubUrl, '_blank')}
+                  >
+                    View Code
+                  </MorphButton>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+```
+
+### LazyQADashboard
+
+Performance-optimized QA metrics dashboard with lazy loading.
+
+```typescript
+interface QAMetric {
+  label: string;
+  value: number;
+  unit: string;
+  change: number;
+  color: string;
+}
+
+export const LazyQADashboard: React.FC = () => {
+  const [metrics, setMetrics] = useState<QAMetric[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const mockMetrics: QAMetric[] = [
+    { label: 'Tests Executed', value: 1247, unit: '', change: 12, color: 'electric-blue' },
+    { label: 'Bug Detection Rate', value: 94.2, unit: '%', change: 3.1, color: 'matrix-green' },
+    { label: 'Automation Coverage', value: 87.5, unit: '%', change: 5.2, color: 'neon-purple' },
+    { label: 'Performance Score', value: 98.1, unit: '', change: 2.8, color: 'warning-amber' }
+  ];
 
   useEffect(() => {
-    if (!svgRef.current || players.length === 0) return;
+    // Simulate loading delay for demonstration
+    const timer = setTimeout(() => {
+      setMetrics(mockMetrics);
+      setIsLoading(false);
+    }, 800);
 
-    const svg = d3.select(svgRef.current);
-    svg.selectAll('*').remove();
+    return () => clearTimeout(timer);
+  }, []);
 
-    // Cluster players into tiers
-    const clusteredPlayers = clusterPlayersIntoTiers(players, numberOfTiers);
-    
-    // Set up chart dimensions
-    const margin = { top: 40, right: 40, bottom: 60, left: 120 };
-    const chartWidth = width - margin.left - margin.right;
-    const chartHeight = height - margin.top - margin.bottom;
-
-    // Create scales
-    const xScale = d3.scaleLinear()
-      .domain(d3.extent(players, d => d.averageRank) as [number, number])
-      .range([0, chartWidth]);
-
-    const yScale = d3.scaleBand()
-      .domain(clusteredPlayers.map((_, i) => `Tier ${i + 1}`))
-      .range([0, chartHeight])
-      .paddingInner(0.1);
-
-    // Color scale for tiers
-    const colorScale = d3.scaleOrdinal<string>()
-      .domain(clusteredPlayers.map((_, i) => `Tier ${i + 1}`))
-      .range([
-        '#FF073A', // Tier 1 - Red (elite)
-        '#FFB800', // Tier 2 - Amber
-        '#39FF14', // Tier 3 - Matrix Green
-        '#00F5FF', // Tier 4 - Electric Blue
-        '#BF00FF', // Tier 5 - Neon Purple
-        '#00FFBF'  // Tier 6 - Cyber Teal
-      ]);
-
-    // Create chart group
-    const chartGroup = svg.append('g')
-      .attr('transform', `translate(${margin.left},${margin.top})`);
-
-    // Add zoom behavior
-    const zoom = d3.zoom<SVGSVGElement, unknown>()
-      .scaleExtent([0.5, 4])
-      .on('zoom', (event) => {
-        chartGroup.attr('transform', `translate(${margin.left},${margin.top}) ${event.transform}`);
-        setZoomLevel(event.transform.k);
-      });
-
-    svg.call(zoom);
-
-    // Render tiers and players
-    clusteredPlayers.forEach((tierPlayers, tierIndex) => {
-      const tierName = `Tier ${tierIndex + 1}`;
-      const tierY = yScale(tierName) || 0;
-      const tierHeight = yScale.bandwidth();
-
-      // Tier background
-      chartGroup.append('rect')
-        .attr('x', 0)
-        .attr('y', tierY)
-        .attr('width', chartWidth)
-        .attr('height', tierHeight)
-        .attr('fill', colorScale(tierName))
-        .attr('opacity', 0.1)
-        .attr('rx', 4);
-
-      // Tier label
-      chartGroup.append('text')
-        .attr('x', -10)
-        .attr('y', tierY + tierHeight / 2)
-        .attr('dy', '0.35em')
-        .attr('text-anchor', 'end')
-        .attr('fill', colorScale(tierName))
-        .attr('font-family', 'Orbitron, monospace')
-        .attr('font-weight', 'bold')
-        .text(tierName);
-
-      // Player dots and error bars
-      tierPlayers.forEach((player) => {
-        const x = xScale(player.averageRank);
-        const y = tierY + tierHeight / 2;
-
-        // Error bar (standard deviation)
-        const errorBarLength = xScale(player.standardDeviation || 0) - xScale(0);
-        
-        chartGroup.append('line')
-          .attr('x1', x - errorBarLength / 2)
-          .attr('x2', x + errorBarLength / 2)
-          .attr('y1', y)
-          .attr('y2', y)
-          .attr('stroke', colorScale(tierName))
-          .attr('stroke-width', 2)
-          .attr('opacity', 0.7);
-
-        // Player dot
-        const playerDot = chartGroup.append('circle')
-          .attr('cx', x)
-          .attr('cy', y)
-          .attr('r', 4)
-          .attr('fill', colorScale(tierName))
-          .attr('stroke', '#fff')
-          .attr('stroke-width', 1)
-          .style('cursor', 'pointer');
-
-        // Hover effects
-        playerDot
-          .on('mouseenter', function() {
-            d3.select(this)
-              .attr('r', 6)
-              .attr('filter', 'drop-shadow(0 0 8px currentColor)');
-            
-            // Tooltip
-            const tooltip = chartGroup.append('g')
-              .attr('class', 'tooltip')
-              .attr('transform', `translate(${x}, ${y - 20})`);
-
-            const tooltipBg = tooltip.append('rect')
-              .attr('x', -50)
-              .attr('y', -30)
-              .attr('width', 100)
-              .attr('height', 50)
-              .attr('fill', 'rgba(0, 0, 0, 0.9)')
-              .attr('rx', 4)
-              .attr('stroke', colorScale(tierName))
-              .attr('stroke-width', 1);
-
-            tooltip.append('text')
-              .attr('text-anchor', 'middle')
-              .attr('y', -15)
-              .attr('fill', '#fff')
-              .attr('font-size', '12px')
-              .text(player.name);
-
-            tooltip.append('text')
-              .attr('text-anchor', 'middle')
-              .attr('y', 0)
-              .attr('fill', colorScale(tierName))
-              .attr('font-size', '10px')
-              .text(`${player.team} - Rank: ${player.averageRank.toFixed(1)}`);
-          })
-          .on('mouseleave', function() {
-            d3.select(this)
-              .attr('r', 4)
-              .attr('filter', 'none');
-            
-            chartGroup.select('.tooltip').remove();
-          });
-      });
-    });
-
-    // X-axis
-    const xAxis = d3.axisBottom(xScale)
-      .tickFormat(d => `#${d}`)
-      .ticks(10);
-
-    chartGroup.append('g')
-      .attr('transform', `translate(0, ${chartHeight})`)
-      .call(xAxis)
-      .selectAll('text')
-      .attr('fill', '#9CA3AF');
-
-    // Chart title
-    svg.append('text')
-      .attr('x', width / 2)
-      .attr('y', 20)
-      .attr('text-anchor', 'middle')
-      .attr('fill', '#00F5FF')
-      .attr('font-family', 'Orbitron, monospace')
-      .attr('font-size', '16px')
-      .attr('font-weight', 'bold')
-      .text(`${players[0]?.position || ''} Rankings - ${scoringFormat} Scoring`);
-
-  }, [players, width, height, numberOfTiers, scoringFormat]);
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="h-32 bg-gray-800 rounded-lg animate-pulse" />
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div className={cn('relative', className)}>
-      <svg
-        ref={svgRef}
-        width={width}
-        height={height}
-        className="border border-gray-700 rounded-lg bg-gray-900"
-      />
+    <div className="space-y-6">
+      <Heading level={2} variant="gradient">
+        QA Engineering Metrics
+      </Heading>
       
-      {/* Zoom Controls */}
-      <div className="absolute top-4 right-4 flex flex-col space-y-2">
-        <MorphButton
-          size="sm"
-          variant="ghost"
-          onClick={() => {
-            const svg = d3.select(svgRef.current);
-            svg.transition().call(
-              zoom.scaleBy as any,
-              1.5
-            );
-          }}
-        >
-          +
-        </MorphButton>
-        <MorphButton
-          size="sm"
-          variant="ghost"
-          onClick={() => {
-            const svg = d3.select(svgRef.current);
-            svg.transition().call(
-              zoom.scaleBy as any,
-              1 / 1.5
-            );
-          }}
-        >
-          -
-        </MorphButton>
-        <div className="text-xs text-gray-400 text-center">
-          {Math.round(zoomLevel * 100)}%
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {metrics.map((metric, index) => (
+          <motion.div
+            key={metric.label}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <GlassCard elevation={2} hover className="p-4 h-32">
+              <div className="flex flex-col justify-between h-full">
+                <div>
+                  <h4 className="text-sm text-gray-400 font-medium">
+                    {metric.label}
+                  </h4>
+                  <div className="flex items-baseline space-x-1 mt-2">
+                    <span className={`text-2xl font-bold text-${metric.color}`}>
+                      {metric.value.toLocaleString()}
+                    </span>
+                    {metric.unit && (
+                      <span className="text-sm text-gray-500">{metric.unit}</span>
+                    )}
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-1">
+                  <span className={`text-xs ${metric.change > 0 ? 'text-matrix-green' : 'text-error-red'}`}>
+                    {metric.change > 0 ? '↗' : '↘'} {Math.abs(metric.change)}%
+                  </span>
+                  <span className="text-xs text-gray-500">vs last month</span>
+                </div>
+              </div>
+            </GlassCard>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Mini Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+        <GlassCard elevation={3} className="p-6">
+          <Heading level={3} className="mb-4">Testing Automation Trends</Heading>
+          <div className="h-32 bg-gray-800 rounded flex items-center justify-center">
+            <span className="text-gray-500">Interactive Chart Placeholder</span>
+          </div>
+        </GlassCard>
+        
+        <GlassCard elevation={3} className="p-6">
+          <Heading level={3} className="mb-4">Bug Resolution Timeline</Heading>
+          <div className="h-32 bg-gray-800 rounded flex items-center justify-center">
+            <span className="text-gray-500">Timeline Chart Placeholder</span>
+          </div>
+        </GlassCard>
       </div>
     </div>
   );
@@ -771,70 +761,298 @@ export const TierChartEnhanced: React.FC<TierChartEnhancedProps> = ({
 
 ## 📋 Form Components
 
-### PositionSelector
+### ContactForm
 
-Multi-select component for fantasy football positions with scoring format options.
+Professional contact form component with validation and cyberpunk styling.
 
 ```typescript
-interface PositionSelectorProps {
-  selectedPosition: Position;
-  selectedFormat: ScoringFormat;
-  onPositionChange: (position: Position) => void;
-  onFormatChange: (format: ScoringFormat) => void;
+interface ContactFormProps {
+  onSubmit: (data: ContactFormData) => void;
+  isLoading?: boolean;
   className?: string;
 }
 
-export const PositionSelector: React.FC<PositionSelectorProps> = ({
-  selectedPosition,
-  selectedFormat,
-  onPositionChange,
-  onFormatChange,
+interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export const ContactForm: React.FC<ContactFormProps> = ({
+  onSubmit,
+  isLoading = false,
   className = ''
 }) => {
-  const positions: Position[] = ['QB', 'RB', 'WR', 'TE', 'FLEX', 'K', 'DST'];
-  const formats: ScoringFormat[] = ['STANDARD', 'PPR', 'HALF_PPR'];
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState<Partial<ContactFormData>>({});
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<ContactFormData> = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validateForm()) {
+      onSubmit(formData);
+    }
+  };
+
+  const handleChange = (field: keyof ContactFormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+    }
+  };
 
   return (
-    <div className={cn('space-y-6', className)}>
-      {/* Position Selection */}
-      <div>
-        <label className="block text-sm font-medium text-gray-400 mb-3">
-          Select Position
-        </label>
-        <div className="flex flex-wrap gap-2">
-          {positions.map((position) => (
-            <MorphButton
-              key={position}
-              variant={selectedPosition === position ? 'primary' : 'ghost'}
-              size="sm"
-              onClick={() => onPositionChange(position)}
-              className="min-w-[60px]"
-            >
-              {position}
-            </MorphButton>
-          ))}
+    <GlassCard elevation={3} className={cn('p-6', className)}>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <Heading level={2} variant="gradient" className="mb-6">
+          Get In Touch
+        </Heading>
+
+        {/* Name Field */}
+        <div>
+          <label className="block text-sm font-medium text-gray-400 mb-2">
+            Name *
+          </label>
+          <input
+            type="text"
+            value={formData.name}
+            onChange={(e) => handleChange('name', e.target.value)}
+            className={cn(
+              'w-full px-4 py-3 rounded-lg bg-gray-900/50 border',
+              'text-white placeholder-gray-500',
+              'focus:outline-none focus:ring-2 focus:ring-electric-blue/50',
+              'transition-all duration-200',
+              errors.name 
+                ? 'border-error-red' 
+                : 'border-gray-700 hover:border-gray-600'
+            )}
+            placeholder="Your name"
+          />
+          {errors.name && (
+            <p className="mt-1 text-sm text-error-red">{errors.name}</p>
+          )}
         </div>
+
+        {/* Email Field */}
+        <div>
+          <label className="block text-sm font-medium text-gray-400 mb-2">
+            Email *
+          </label>
+          <input
+            type="email"
+            value={formData.email}
+            onChange={(e) => handleChange('email', e.target.value)}
+            className={cn(
+              'w-full px-4 py-3 rounded-lg bg-gray-900/50 border',
+              'text-white placeholder-gray-500',
+              'focus:outline-none focus:ring-2 focus:ring-electric-blue/50',
+              'transition-all duration-200',
+              errors.email 
+                ? 'border-error-red' 
+                : 'border-gray-700 hover:border-gray-600'
+            )}
+            placeholder="your.email@example.com"
+          />
+          {errors.email && (
+            <p className="mt-1 text-sm text-error-red">{errors.email}</p>
+          )}
+        </div>
+
+        {/* Subject Field */}
+        <div>
+          <label className="block text-sm font-medium text-gray-400 mb-2">
+            Subject *
+          </label>
+          <input
+            type="text"
+            value={formData.subject}
+            onChange={(e) => handleChange('subject', e.target.value)}
+            className={cn(
+              'w-full px-4 py-3 rounded-lg bg-gray-900/50 border',
+              'text-white placeholder-gray-500',
+              'focus:outline-none focus:ring-2 focus:ring-electric-blue/50',
+              'transition-all duration-200',
+              errors.subject 
+                ? 'border-error-red' 
+                : 'border-gray-700 hover:border-gray-600'
+            )}
+            placeholder="Project inquiry, collaboration, etc."
+          />
+          {errors.subject && (
+            <p className="mt-1 text-sm text-error-red">{errors.subject}</p>
+          )}
+        </div>
+
+        {/* Message Field */}
+        <div>
+          <label className="block text-sm font-medium text-gray-400 mb-2">
+            Message *
+          </label>
+          <textarea
+            value={formData.message}
+            onChange={(e) => handleChange('message', e.target.value)}
+            rows={5}
+            className={cn(
+              'w-full px-4 py-3 rounded-lg bg-gray-900/50 border',
+              'text-white placeholder-gray-500 resize-none',
+              'focus:outline-none focus:ring-2 focus:ring-electric-blue/50',
+              'transition-all duration-200',
+              errors.message 
+                ? 'border-error-red' 
+                : 'border-gray-700 hover:border-gray-600'
+            )}
+            placeholder="Tell me about your project or how we can work together..."
+          />
+          {errors.message && (
+            <p className="mt-1 text-sm text-error-red">{errors.message}</p>
+          )}
+        </div>
+
+        {/* Submit Button */}
+        <MorphButton
+          type="submit"
+          variant="primary"
+          size="lg"
+          disabled={isLoading}
+          className="w-full"
+          glow
+        >
+          {isLoading ? (
+            <div className="flex items-center space-x-2">
+              <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+              <span>Sending...</span>
+            </div>
+          ) : (
+            'Send Message'
+          )}
+        </MorphButton>
+      </form>
+    </GlassCard>
+  );
+};
+```
+
+### SearchInput
+
+Advanced search input component with filtering capabilities.
+
+```typescript
+interface SearchInputProps {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+  suggestions?: string[];
+  onSuggestionSelect?: (suggestion: string) => void;
+  className?: string;
+}
+
+export const SearchInput: React.FC<SearchInputProps> = ({
+  value,
+  onChange,
+  placeholder = 'Search...',
+  suggestions = [],
+  onSuggestionSelect,
+  className = ''
+}) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const filteredSuggestions = suggestions.filter(suggestion =>
+    suggestion.toLowerCase().includes(value.toLowerCase())
+  );
+
+  useEffect(() => {
+    setShowSuggestions(isFocused && value.length > 0 && filteredSuggestions.length > 0);
+  }, [isFocused, value, filteredSuggestions.length]);
+
+  return (
+    <div className={cn('relative', className)}>
+      <div className="relative">
+        <input
+          ref={inputRef}
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setTimeout(() => setIsFocused(false), 150)}
+          className={cn(
+            'w-full pl-10 pr-4 py-3 rounded-lg',
+            'bg-gray-900/50 border border-gray-700',
+            'text-white placeholder-gray-500',
+            'focus:outline-none focus:ring-2 focus:ring-electric-blue/50',
+            'focus:border-electric-blue/50',
+            'transition-all duration-200'
+          )}
+          placeholder={placeholder}
+        />
+        
+        {/* Search Icon */}
+        <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+          <SearchIcon className="w-5 h-5 text-gray-500" />
+        </div>
+
+        {/* Clear Button */}
+        {value && (
+          <button
+            type="button"
+            onClick={() => onChange('')}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
+          >
+            <XIcon className="w-4 h-4" />
+          </button>
+        )}
       </div>
 
-      {/* Scoring Format Selection */}
-      <div>
-        <label className="block text-sm font-medium text-gray-400 mb-3">
-          Scoring Format
-        </label>
-        <div className="flex gap-2">
-          {formats.map((format) => (
-            <MorphButton
-              key={format}
-              variant={selectedFormat === format ? 'secondary' : 'ghost'}
-              size="sm"
-              onClick={() => onFormatChange(format)}
-              className="flex-1"
+      {/* Suggestions Dropdown */}
+      {showSuggestions && (
+        <div className="absolute top-full left-0 right-0 mt-2 glass-3 rounded-lg border border-white/10 max-h-60 overflow-y-auto z-10">
+          {filteredSuggestions.map((suggestion, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => {
+                onChange(suggestion);
+                onSuggestionSelect?.(suggestion);
+                setIsFocused(false);
+              }}
+              className="w-full px-4 py-3 text-left text-white hover:bg-white/10 transition-colors first:rounded-t-lg last:rounded-b-lg"
             >
-              {format.replace('_', ' ')}
-            </MorphButton>
+              {suggestion}
+            </button>
           ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };
@@ -1022,22 +1240,23 @@ export const TerminalHero: React.FC<TerminalHeroProps> = ({ className }) => {
 // ✅ Good - Composable and flexible
 <GlassCard elevation={3} glow>
   <Heading level={2} variant="gradient">
-    Fantasy Football Tiers
+    Project Showcase
   </Heading>
   <div className="space-y-4">
-    <PositionSelector 
-      selectedPosition={position}
-      onPositionChange={setPosition}
+    <SearchInput 
+      value={searchTerm}
+      onChange={setSearchTerm}
+      placeholder="Search projects..."
     />
-    <TierChartEnhanced 
-      players={players}
-      scoringFormat={format}
+    <ProjectGrid 
+      projects={filteredProjects}
+      onProjectSelect={setSelectedProject}
     />
   </div>
 </GlassCard>
 
 // ❌ Avoid - Monolithic components
-<FantasyFootballWidget players={players} position={position} format={format} />
+<ProjectWidget projects={projects} searchTerm={searchTerm} selectedProject={selectedProject} />
 ```
 
 ### Styling Conventions
@@ -1139,7 +1358,7 @@ All color combinations meet WCAG 2.1 AA standards:
 ### Related Documentation
 - [DEVELOPMENT.md](./DEVELOPMENT.md) - Development environment setup
 - [CLAUDE.md](./CLAUDE.md) - Comprehensive application overview
-- [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Common component issues
+- [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Common issues and solutions
 
 ### External References
 - [Framer Motion Documentation](https://www.framer.com/motion/)
