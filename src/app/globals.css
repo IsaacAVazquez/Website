@@ -67,6 +67,13 @@ select:focus-visible {
   --slate-200: #E2E8F0;
   --slate-50: #F8FAFC;
   
+  /* Light Mode Accessible Colors */
+  --electric-blue-light: #0066CC;  /* WCAG AA compliant for light backgrounds */
+  --matrix-green-light: #228B22;   /* WCAG AA compliant for light backgrounds */
+  --cyber-teal-light: #20B2AA;     /* WCAG AA compliant for light backgrounds */
+  --neon-purple-light: #8B008B;    /* WCAG AA compliant for light backgrounds */
+  --error-red-light: #D62D20;      /* Improved contrast for light mode */
+  
   /* Terminal Interface Colors */
   --terminal-bg: #0A0A0B;
   --terminal-border: #1A1A1B;
@@ -86,8 +93,8 @@ select:focus-visible {
   --text-primary: #0F172A;
   --text-secondary: #475569;
   --border-color: rgba(148, 163, 184, 0.3);
-  --accent-primary: var(--electric-blue);
-  --accent-secondary: var(--matrix-green);
+  --accent-primary: var(--electric-blue-light);
+  --accent-secondary: var(--matrix-green-light);
 }
 
 .dark {
@@ -112,8 +119,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: 0.05em;
-  line-height: 1.1;
+  line-height: 1.2;  /* Improved from 1.1 for better readability */
   text-transform: uppercase;
+  margin-bottom: 0.5em;  /* Add consistent bottom margin */
 }
 
 .heading-hero {
@@ -134,7 +142,52 @@ h1, h2, h3, h4, h5, h6 {
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
+  line-height: 1.7;  /* Improved from 1.6 for better readability */
+}
+
+/* Improved paragraph spacing for readability */
+p {
+  margin-bottom: 1em;
+  line-height: 1.7;
+}
+
+p + p {
+  margin-top: 0.5em;
+}
+
+/* Dyslexia-friendly typography improvements */
+.dyslexia-friendly {
+  font-weight: 500;  /* Medium weight is easier to read than thin or bold */
+  letter-spacing: 0.05em;  /* Slight letter spacing improves readability */
+  word-spacing: 0.16em;  /* Increased word spacing */
+  line-height: 1.8;  /* Higher line height for better scanning */
+}
+
+/* Apply dyslexia-friendly improvements to body text by default */
+body {
+  font-weight: 400;
+  letter-spacing: 0.01em;  /* Subtle letter spacing for all text */
+  text-align: left;  /* Always left-align text for consistency */
+}
+
+/* Ensure sufficient spacing for lists */
+ul, ol {
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: 0.25em;
   line-height: 1.6;
+}
+
+/* Improve readability for long-form content */
+.content-text {
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  word-spacing: 0.1em;
+  max-width: 75ch;  /* Optimal reading width */
 }
 
 .font-accent {
@@ -447,7 +500,7 @@ body {
   border: 1px solid var(--electric-blue);
   border-radius: 12px;
   padding: 12px 24px;
-  color: var(--slate-900);
+  color: var(--terminal-bg);  /* Dark text for better contrast on bright backgrounds */
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: perspective(1000px) rotateX(0deg);
@@ -478,6 +531,31 @@ body {
 
 .morph-button:active {
   transform: perspective(1000px) rotateX(2deg) translateY(1px);
+}
+
+/* Alternative button style for dark backgrounds */
+.morph-button-dark {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--terminal-bg), var(--slate-800));
+  border: 1px solid var(--electric-blue);
+  border-radius: 12px;
+  padding: 12px 24px;
+  color: var(--electric-blue);  /* Light text for dark backgrounds */
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: perspective(1000px) rotateX(0deg);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.morph-button-dark:hover {
+  background: linear-gradient(135deg, var(--electric-blue), var(--matrix-green));
+  color: var(--terminal-bg);
+  transform: perspective(1000px) rotateX(-5deg) translateY(-2px);
+  box-shadow: 
+    0 12px 24px rgba(0, 245, 255, 0.4),
+    0 0 30px rgba(57, 255, 20, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 /* Physics-based Spring Animation */
@@ -566,8 +644,58 @@ body {
   }
 }
 
+/* Reading-focused mode for better text accessibility */
+@media (prefers-reduced-motion: reduce), (prefers-contrast: high) {
+  .content-text,
+  .about-text,
+  .resume-text {
+    font-size: 1.125rem;  /* Larger base font size */
+    line-height: 2;  /* Extra generous line height */
+    letter-spacing: 0.05em;  /* More letter spacing */
+    word-spacing: 0.2em;  /* More word spacing */
+    font-weight: 500;  /* Medium weight for clarity */
+  }
+}
+
+/* Focus indicators for cognitive accessibility */
+.focus-enhanced:focus-visible {
+  outline: 3px solid var(--electric-blue);
+  outline-offset: 4px;
+  background-color: rgba(0, 245, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+/* Text selection styling for better reading experience */
+::selection {
+  background: rgba(0, 245, 255, 0.3);
+  color: var(--slate-900);
+}
+
+::-moz-selection {
+  background: rgba(0, 245, 255, 0.3);
+  color: var(--slate-900);
+}
+
+/* Light mode color overrides for better contrast */
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) {
+    --electric-blue: var(--electric-blue-light);
+    --matrix-green: var(--matrix-green-light);
+    --cyber-teal: var(--cyber-teal-light);
+    --neon-purple: var(--neon-purple-light);
+    --error-red: var(--error-red-light);
+  }
+}
+
 /* High contrast mode support */
 @media (prefers-contrast: high) {
+  :root {
+    --electric-blue: #0052A3;  /* Even darker blue for high contrast */
+    --matrix-green: #1A5D1A;   /* Even darker green for high contrast */
+    --cyber-teal: #1A7F7F;     /* Even darker teal for high contrast */
+    --neon-purple: #5C005C;    /* Even darker purple for high contrast */
+  }
+  
   .glass-card {
     background: rgba(255, 255, 255, 0.95);
     border: 2px solid currentColor;

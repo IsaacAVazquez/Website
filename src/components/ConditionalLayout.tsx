@@ -22,7 +22,23 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
 
   return (
     <GestureNavigation>
-      {/* Skip Link for Accessibility */}
+      {/* Skip Navigation Links for Accessibility */}
+      <div className="sr-only">
+        <a
+          href="#main-content"
+          className="fixed top-4 left-4 z-[100] px-4 py-2 bg-electric-blue text-terminal-bg rounded-md focus:not-sr-only focus:absolute transition-all"
+        >
+          Skip to main content
+        </a>
+        {showFloatingNav && (
+          <a
+            href="#navigation"
+            className="fixed top-4 left-36 z-[100] px-4 py-2 bg-electric-blue text-terminal-bg rounded-md focus:not-sr-only focus:absolute transition-all"
+          >
+            Skip to navigation
+          </a>
+        )}
+      </div>
 
       {/* Layout Container */}
       <div className={isFullWidthPage 
@@ -33,6 +49,10 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
         {/* Main Content */}
         <main 
           id="main-content" 
+          role="main"
+          aria-label={isHomePage ? "Isaac Vazquez Portfolio Homepage" : 
+                     isFantasyFootballPage ? "Fantasy Football Analytics Platform" : 
+                     "Portfolio Content"}
           className={isFullWidthPage 
             ? "min-h-screen w-full focus-ring" 
             : "flex-1 min-h-screen focus-ring md:ml-0"

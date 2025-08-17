@@ -137,7 +137,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 to-neon-purple/5 rounded-xl breathing-gradient" />
               <div className="relative z-10 space-y-6">
                 <Heading 
-                  as="h2" 
+                  level={2}
                   className="text-cyber text-electric-blue mb-6 lg:mb-8"
                   style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}
                 >
@@ -200,7 +200,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-br from-matrix-green/5 via-cyber-teal/5 to-electric-blue/5 rounded-xl breathing-gradient" />
             
             <div className="relative z-10 space-y-6">
-              <Heading as="h2" className="text-cyber text-electric-blue text-xl lg:text-2xl mb-4">
+              <Heading level={2} className="text-cyber text-electric-blue text-xl lg:text-2xl mb-4">
                 isaac.getCurrentStatus()
               </Heading>
               <FunFacts />

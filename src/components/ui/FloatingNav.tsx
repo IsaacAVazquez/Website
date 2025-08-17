@@ -80,6 +80,9 @@ export function FloatingNav() {
     <AnimatePresence>
       {isVisible && (
         <motion.nav
+          id="navigation"
+          role="navigation"
+          aria-label="Main site navigation"
           initial={getInitialAnimation()}
           animate={getAnimateAnimation()}
           exit={getExitAnimation()}
@@ -100,6 +103,7 @@ export function FloatingNav() {
                   key={link.href}
                   href={link.href}
                   className="relative"
+                  aria-label={`Navigate to ${link.label}`}
                 >
                   <motion.div
                     className={twMerge(

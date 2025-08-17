@@ -31,7 +31,27 @@ export default function About() {
   };
 
   return (
-    <section className="relative z-10 min-h-screen py-20 px-6 md:px-8 bg-gradient-to-br from-slate-900/40 via-slate-800/20 to-slate-700/10">
+    <>
+      {/* Page Header Banner */}
+      <header role="banner" className="relative z-20 bg-gradient-to-r from-terminal-bg via-slate-900 to-terminal-bg border-b border-electric-blue/20">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-3xl md:text-5xl font-bold gradient-text mb-2 font-heading">
+              About Isaac Vazquez
+            </h1>
+            <p className="text-slate-300 text-lg">
+              Product Strategist • Business Leader • UC Berkeley Haas MBA
+            </p>
+          </motion.div>
+        </div>
+      </header>
+
+      <section className="relative z-10 min-h-screen py-20 px-6 md:px-8 bg-gradient-to-br from-slate-900/40 via-slate-800/20 to-slate-700/10">
       {/* Simplified Background Effects */}
       <div className="absolute inset-0 opacity-5">
         <div 
@@ -71,20 +91,6 @@ export default function About() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-4 font-heading">
-            About Isaac Vazquez
-          </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
-            Product Strategist • Business Leader • UC Berkeley Haas MBA • Technical Executive • Austin ↔ Bay Area
-          </p>
-        </motion.div>
 
         {/* Tab Navigation */}
         <motion.div
@@ -123,6 +129,7 @@ export default function About() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }
 

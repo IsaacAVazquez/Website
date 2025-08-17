@@ -76,7 +76,7 @@ export default function Resume() {
                   ⚡
                 </motion.span>
                 <div>
-                  <Heading className="font-extrabold text-4xl mb-2 tracking-tight gradient-text font-heading">
+                  <Heading level={1} className="font-extrabold text-4xl mb-2 tracking-tight gradient-text font-heading">
                     ISAAC VAZQUEZ
                   </Heading>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-300">
@@ -146,7 +146,7 @@ export default function Resume() {
           className="mb-8"
         >
           <GlassCard elevation={3} className="p-6">
-            <Heading as="h2" className="text-2xl font-bold mb-4 text-electric-blue font-heading flex items-center gap-2">
+            <Heading level={2} className="text-2xl font-bold mb-4 text-electric-blue font-heading flex items-center gap-2">
               <div className="w-1 h-6 bg-electric-blue" />
               EDUCATION
             </Heading>
@@ -157,13 +157,13 @@ export default function Resume() {
                   animate={{ opacity: 1, x: 0 }}
                   className="border-l-2 border-matrix-green/30 pl-4"
                 >
-                  <h3 className="font-bold text-matrix-green text-lg">University of California, Berkeley – Haas School of Business</h3>
+                  <Heading level={3} className="font-bold text-matrix-green text-lg">University of California, Berkeley – Haas School of Business</Heading>
                   <p className="text-slate-400">Master of Business Administration, Consortium Fellow</p>
                   <p className="text-sm text-slate-500 font-terminal">Expected: May 2027</p>
                 </motion.div>
               )}
               <div className="border-l-2 border-matrix-green/30 pl-4">
-                <h3 className="font-bold text-matrix-green text-lg">Florida State University</h3>
+                <Heading level={3} className="font-bold text-matrix-green text-lg">Florida State University</Heading>
                 <p className="text-slate-400">Bachelor of Arts, Political Science and International Affairs, magna cum laude</p>
                 <p className="text-sm text-slate-500 font-terminal">Phi Beta Kappa, President's List, Dean's List</p>
                 <p className="text-sm text-slate-500 font-terminal">December 2018</p>
@@ -180,7 +180,7 @@ export default function Resume() {
           className="mb-8"
         >
           <GlassCard elevation={3} className="p-6">
-            <Heading as="h2" className="text-2xl font-bold mb-4 text-electric-blue font-heading flex items-center gap-2">
+            <Heading level={2} className="text-2xl font-bold mb-4 text-electric-blue font-heading flex items-center gap-2">
               <div className="w-1 h-6 bg-electric-blue" />
               EXPERIENCE
             </Heading>
@@ -188,12 +188,12 @@ export default function Resume() {
             <div className="space-y-6">
               {/* CiviTech */}
               <div className="border-l-2 border-electric-blue/30 pl-4">
-                <h3 className="font-bold text-matrix-green text-xl mb-3">CIVITECH, Austin, TX</h3>
+                <Heading level={3} className="font-bold text-matrix-green text-xl mb-3">CIVITECH, Austin, TX</Heading>
                 
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-electric-blue text-lg">Quality Assurance Engineer</h4>
+                      <Heading level={4} className="font-semibold text-electric-blue text-lg">Quality Assurance Engineer</Heading>
                       <span className="text-sm text-slate-500 font-terminal">Feb 2025–Present</span>
                     </div>
                     <ul className="space-y-1 text-slate-300">
@@ -214,7 +214,7 @@ export default function Resume() {
 
                   <div>
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-electric-blue text-lg">Quality Assurance Analyst</h4>
+                      <Heading level={4} className="font-semibold text-electric-blue text-lg">Quality Assurance Analyst</Heading>
                       <span className="text-sm text-slate-500 font-terminal">Jan 2022–Jan 2025</span>
                     </div>
                     <ul className="space-y-1 text-slate-300">
@@ -237,12 +237,12 @@ export default function Resume() {
 
               {/* Open Progress */}
               <div className="border-l-2 border-electric-blue/30 pl-4">
-                <h3 className="font-bold text-matrix-green text-xl mb-3">OPEN PROGRESS, Los Angeles, CA</h3>
+                <Heading level={3} className="font-bold text-matrix-green text-xl mb-3">OPEN PROGRESS, Los Angeles, CA</Heading>
                 
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-electric-blue text-lg">Client Services Manager</h4>
+                      <Heading level={4} className="font-semibold text-electric-blue text-lg">Client Services Manager</Heading>
                       <span className="text-sm text-slate-500 font-terminal">January 2021–December 2021</span>
                     </div>
                     <ul className="space-y-1 text-slate-300">
@@ -263,7 +263,7 @@ export default function Resume() {
 
                   <div>
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-electric-blue text-lg">Digital and Data Associate</h4>
+                      <Heading level={4} className="font-semibold text-electric-blue text-lg">Digital and Data Associate</Heading>
                       <span className="text-sm text-slate-500 font-terminal">September 2019–December 2020</span>
                     </div>
                     <ul className="space-y-1 text-slate-300">
@@ -280,7 +280,7 @@ export default function Resume() {
 
                   <div>
                     <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-semibold text-electric-blue text-lg">Digital and Communications Intern</h4>
+                      <Heading level={4} className="font-semibold text-electric-blue text-lg">Digital and Communications Intern</Heading>
                       <span className="text-sm text-slate-500 font-terminal">June 2019–August 2019</span>
                     </div>
                     <ul className="space-y-1 text-slate-300">
@@ -303,7 +303,7 @@ export default function Resume() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <GlassCard elevation={3} className="p-6">
-            <Heading as="h2" className="text-2xl font-bold mb-4 text-electric-blue font-heading flex items-center gap-2">
+            <Heading level={2} className="text-2xl font-bold mb-4 text-electric-blue font-heading flex items-center gap-2">
               <div className="w-1 h-6 bg-electric-blue" />
               SKILLS & EXPERTISE
             </Heading>

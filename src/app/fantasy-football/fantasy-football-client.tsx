@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MorphButton } from '@/components/ui/MorphButton';
 import { EnhancedPlayerCard } from '@/components/EnhancedPlayerCard';
+import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 
 export default function FantasyFootballPage() {
   const [selectedPosition, setSelectedPosition] = useState<Position>('QB');
@@ -109,9 +110,19 @@ export default function FantasyFootballPage() {
   const visibleTierCount = tierGroups.filter(tier => !hiddenTiers.has(tier.tier)).length;
   const dynamicHeight = Math.max(400, visiblePlayers * PLAYER_HEIGHT + (visibleTierCount - 1) * TIER_PADDING + 200); // 200px for margins/labels
 
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Fantasy Football", href: "/fantasy-football" }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       <div className="max-w-[1920px] mx-auto p-4 sm:p-6 lg:p-8 xl:p-10">
+        {/* Breadcrumbs */}
+        <div className="mb-6">
+          <Breadcrumbs customItems={breadcrumbs} className="text-cyan-400" />
+        </div>
+
         {/* Back Button */}
         <Link 
           href="/projects"

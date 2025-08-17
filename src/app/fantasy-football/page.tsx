@@ -1,4 +1,4 @@
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import FantasyFootballClient from "./fantasy-football-client";
 
@@ -9,8 +9,19 @@ export const metadata = constructMetadata({
 });
 
 export default function FantasyFootballPage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Fantasy Football", url: "/fantasy-football" }
+  ];
+
   return (
     <>
+      {/* Breadcrumb Structured Data */}
+      <StructuredData 
+        type="BreadcrumbList" 
+        data={{ items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement }}
+      />
+
       {/* Fantasy Sports Application Schema */}
       <StructuredData 
         type="SportsApplication"

@@ -7,7 +7,22 @@ import { MorphButton } from "@/components/ui/MorphButton";
 
 export function ContactContent() {
   return (
-    <div className="flex flex-col items-center mt-4 max-w-4xl mx-auto">
+    <>
+      {/* Page Header Banner */}
+      <header role="banner" className="relative z-20 bg-gradient-to-r from-terminal-bg via-slate-900 to-terminal-bg border-b border-electric-blue/20 mb-8">
+        <div className="max-w-4xl mx-auto px-6 py-8">
+          <div className="text-center">
+            <h1 className="text-3xl md:text-5xl font-bold gradient-text mb-2 font-heading">
+              Contact Isaac
+            </h1>
+            <p className="text-slate-300 text-lg">
+              Let's connect and explore opportunities together
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <div className="flex flex-col items-center mt-4 max-w-4xl mx-auto">
       <GlassCard 
         elevation={3}
         interactive={false}
@@ -64,5 +79,6 @@ export function ContactContent() {
         }
       `}</style>
     </div>
+    </>
   );
 }

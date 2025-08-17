@@ -4,7 +4,11 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <footer className="relative z-20 flex flex-col items-center justify-center p-5 pb-2 min-h-[72px] bg-gradient-to-t from-terminal-bg/70 to-transparent backdrop-blur rounded-t-xl border-t border-electric-blue/20">
+    <footer 
+      role="contentinfo"
+      aria-label="Site footer with copyright and social links"
+      className="relative z-20 flex flex-col items-center justify-center p-5 pb-2 min-h-[72px] bg-gradient-to-t from-terminal-bg/70 to-transparent backdrop-blur rounded-t-xl border-t border-electric-blue/20"
+    >
       <div className="flex items-center gap-2 text-base font-semibold text-slate-400 mb-1 animate-footerIn font-terminal">
         <span className="text-lg animate-wave select-none">⚡</span>
         <span>{new Date().getFullYear()}</span>
@@ -18,26 +22,26 @@ export const Footer = () => {
           Isaac Vazquez
         </a>
       </div>
-      <div className="flex gap-4 mt-1 opacity-75">
+      <nav aria-label="Social media links" className="flex gap-4 mt-1 opacity-75">
         <a
           href="https://linkedin.com/in/isaac-vazquez"
-          aria-label="LinkedIn"
+          aria-label="Visit Isaac Vazquez's LinkedIn profile"
           target="_blank"
           rel="noopener noreferrer"
           className="text-slate-500 hover:text-electric-blue transition"
         >
-          <FaLinkedin size={18} />
+          <FaLinkedin size={18} aria-hidden="true" />
         </a>
         <a
           href="https://github.com/IsaacAVazquez"
-          aria-label="GitHub"
+          aria-label="Visit Isaac Vazquez's GitHub profile"
           target="_blank"
           rel="noopener noreferrer"
           className="text-slate-500 hover:text-matrix-green transition"
         >
-          <FaGithub size={18} />
+          <FaGithub size={18} aria-hidden="true" />
         </a>
-      </div>
+      </nav>
       <style jsx global>{`
         @keyframes footerIn {
           0% { opacity: 0; transform: translateY(24px);}

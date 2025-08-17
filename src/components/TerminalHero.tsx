@@ -223,29 +223,64 @@ export function TerminalHero() {
                 BLOG
               </Link>
             </motion.nav>
+
+            {/* Quick Access Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1 }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto mt-8"
+            >
+              <Link href="/fantasy-football" className="group p-4 bg-terminal-bg/30 border border-electric-blue/20 rounded-lg hover:border-electric-blue/50 transition-all duration-300 focus-ring">
+                <div className="flex items-center space-x-2 mb-2">
+                  <div className="w-2 h-2 bg-electric-blue rounded-full group-hover:animate-pulse"></div>
+                  <span className="text-xs font-mono text-electric-blue uppercase tracking-wider">FEATURED</span>
+                </div>
+                <h3 className="text-sm font-semibold text-white mb-1">Fantasy Analytics</h3>
+                <p className="text-xs text-slate-400">ML-powered rankings & tiers</p>
+              </Link>
+
+              <Link href="/resume" className="group p-4 bg-terminal-bg/30 border border-matrix-green/20 rounded-lg hover:border-matrix-green/50 transition-all duration-300 focus-ring">
+                <div className="flex items-center space-x-2 mb-2">
+                  <div className="w-2 h-2 bg-matrix-green rounded-full group-hover:animate-pulse"></div>
+                  <span className="text-xs font-mono text-matrix-green uppercase tracking-wider">CAREER</span>
+                </div>
+                <h3 className="text-sm font-semibold text-white mb-1">Professional Experience</h3>
+                <p className="text-xs text-slate-400">6+ years building systems</p>
+              </Link>
+
+              <Link href="/blog/mastering-fantasy-football-analytics" className="group p-4 bg-terminal-bg/30 border border-cyber-teal/20 rounded-lg hover:border-cyber-teal/50 transition-all duration-300 focus-ring">
+                <div className="flex items-center space-x-2 mb-2">
+                  <div className="w-2 h-2 bg-cyber-teal rounded-full group-hover:animate-pulse"></div>
+                  <span className="text-xs font-mono text-cyber-teal uppercase tracking-wider">LATEST</span>
+                </div>
+                <h3 className="text-sm font-semibold text-white mb-1">Analytics Insights</h3>
+                <p className="text-xs text-slate-400">Deep dive into data science</p>
+              </Link>
+            </motion.div>
           </header>
 
-          {/* Status Indicators - moved between nav and terminal */}
+          {/* Status Indicators - now interactive with internal links */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="flex items-center justify-center space-x-6"
+            transition={{ delay: 1.3 }}
+            className="flex flex-wrap items-center justify-center gap-4 sm:gap-6"
             role="status"
-            aria-label="Current activities"
+            aria-label="Current activities and quick access"
           >
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-matrix-green rounded-full animate-pulse" aria-hidden="true"></div>
-              <span className="text-sm font-mono text-slate-400">CONNECTING</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-electric-blue rounded-full animate-pulse" aria-hidden="true"></div>
-              <span className="text-sm font-mono text-slate-400">STUDYING</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-warning-amber rounded-full animate-pulse" aria-hidden="true"></div>
-              <span className="text-sm font-mono text-slate-400">EXPLORING</span>
-            </div>
+            <Link href="/contact" className="group flex items-center space-x-2 hover:bg-terminal-bg/20 px-3 py-2 rounded-lg transition-all duration-300 focus-ring">
+              <div className="w-2 h-2 bg-matrix-green rounded-full animate-pulse group-hover:scale-125 transition-transform" aria-hidden="true"></div>
+              <span className="text-sm font-mono text-slate-400 group-hover:text-matrix-green transition-colors">CONNECTING</span>
+            </Link>
+            <Link href="/blog" className="group flex items-center space-x-2 hover:bg-terminal-bg/20 px-3 py-2 rounded-lg transition-all duration-300 focus-ring">
+              <div className="w-2 h-2 bg-electric-blue rounded-full animate-pulse group-hover:scale-125 transition-transform" aria-hidden="true"></div>
+              <span className="text-sm font-mono text-slate-400 group-hover:text-electric-blue transition-colors">STUDYING</span>
+            </Link>
+            <Link href="/fantasy-football/draft-tracker" className="group flex items-center space-x-2 hover:bg-terminal-bg/20 px-3 py-2 rounded-lg transition-all duration-300 focus-ring">
+              <div className="w-2 h-2 bg-warning-amber rounded-full animate-pulse group-hover:scale-125 transition-transform" aria-hidden="true"></div>
+              <span className="text-sm font-mono text-slate-400 group-hover:text-warning-amber transition-colors">EXPLORING</span>
+            </Link>
           </motion.div>
 
           {/* Secondary - Compact Terminal */}

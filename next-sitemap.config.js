@@ -28,11 +28,11 @@ module.exports = {
       lastmod: new Date().toISOString(),
     })
     
-    // Fantasy Football Landing Page (Main attraction)
+    // Projects Landing Page (Portfolio showcase)
     result.push({
       loc: '/projects',
-      changefreq: 'daily',
-      priority: 0.95,
+      changefreq: 'weekly',
+      priority: 0.85,
       lastmod: new Date().toISOString(),
     })
     
@@ -47,17 +47,35 @@ module.exports = {
     result.push({
       loc: '/draft-tiers',
       changefreq: 'daily',
-      priority: 0.85,
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    })
+    
+    // Draft tracker tool (Interactive feature)
+    result.push({
+      loc: '/fantasy-football/draft-tracker',
+      changefreq: 'weekly',
+      priority: 0.75,
       lastmod: new Date().toISOString(),
     })
     
     // Position-specific tier pages (Fantasy football content)
-    const positions = ['overall', 'qb', 'rb', 'wr', 'te', 'flex', 'k', 'dst']
-    positions.forEach(position => {
+    const positions = [
+      { position: 'overall', priority: 0.8 },
+      { position: 'qb', priority: 0.75 },
+      { position: 'rb', priority: 0.75 },
+      { position: 'wr', priority: 0.75 },
+      { position: 'te', priority: 0.7 },
+      { position: 'flex', priority: 0.7 },
+      { position: 'k', priority: 0.6 },
+      { position: 'dst', priority: 0.65 }
+    ]
+    
+    positions.forEach(({ position, priority }) => {
       result.push({
         loc: `/fantasy-football/tiers/${position}`,
         changefreq: 'daily',
-        priority: position === 'overall' ? 0.8 : 0.7,
+        priority,
         lastmod: new Date().toISOString(),
       })
     })
@@ -75,14 +93,22 @@ module.exports = {
         const files = fs.default.readdirSync(postsDirectory)
         const blogFiles = files.filter(file => file.endsWith('.mdx') || file.endsWith('.md'))
         
-        // Add blog posts to sitemap
+        // Add blog posts to sitemap with category-based priorities
         blogFiles.forEach(file => {
           const slug = file.replace(/\.(mdx|md)$/, '')
+          
+          // Higher priority for fantasy football and QA engineering content
+          let priority = 0.65
+          if (slug.includes('fantasy-football') || slug.includes('analytics')) {
+            priority = 0.75
+          } else if (slug.includes('qa-engineering') || slug.includes('testing')) {
+            priority = 0.7
+          }
           
           result.push({
             loc: `/blog/${slug}`,
             changefreq: 'weekly',
-            priority: 0.7,
+            priority,
             lastmod: new Date().toISOString(),
           })
         })

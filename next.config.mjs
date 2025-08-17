@@ -1,6 +1,120 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  // URL redirects for better SEO and user experience
+  async redirects() {
+    return [
+      // Portfolio redirects - common variations
+      {
+        source: '/portfolio',
+        destination: '/projects',
+        permanent: true,
+      },
+      {
+        source: '/work',
+        destination: '/projects',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/:path*',
+        destination: '/projects/:path*',
+        permanent: true,
+      },
+      
+      // Fantasy football aliases for easier sharing
+      {
+        source: '/ff',
+        destination: '/fantasy-football',
+        permanent: false,
+      },
+      {
+        source: '/rankings',
+        destination: '/fantasy-football',
+        permanent: false,
+      },
+      {
+        source: '/tiers',
+        destination: '/draft-tiers',
+        permanent: false,
+      },
+      
+      // Fantasy football position redirects for better URLs
+      {
+        source: '/qb',
+        destination: '/fantasy-football/tiers/qb',
+        permanent: false,
+      },
+      {
+        source: '/rb',
+        destination: '/fantasy-football/tiers/rb',
+        permanent: false,
+      },
+      {
+        source: '/wr',
+        destination: '/fantasy-football/tiers/wr',
+        permanent: false,
+      },
+      {
+        source: '/te',
+        destination: '/fantasy-football/tiers/te',
+        permanent: false,
+      },
+      
+      // Common misspellings
+      {
+        source: '/fantsy-football/:path*',
+        destination: '/fantasy-football/:path*',
+        permanent: false,
+      },
+      {
+        source: '/fantasy-footbal/:path*',
+        destination: '/fantasy-football/:path*',
+        permanent: false,
+      },
+      {
+        source: '/quatrerback',
+        destination: '/fantasy-football/tiers/qb',
+        permanent: false,
+      },
+      
+      // Legacy URL support
+      {
+        source: '/blog/posts/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+      {
+        source: '/articles/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+      
+      // Contact page variations
+      {
+        source: '/get-in-touch',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/hire-me',
+        destination: '/contact',
+        permanent: true,
+      },
+      
+      // Resume variations
+      {
+        source: '/cv',
+        destination: '/resume',
+        permanent: true,
+      },
+      {
+        source: '/resume.pdf',
+        destination: '/Isaac_Vazquez_Resume.pdf',
+        permanent: true,
+      },
+    ];
+  },
+
   // Temporarily disable strict linting until remaining type issues are resolved
   eslint: {
     ignoreDuringBuilds: true,
