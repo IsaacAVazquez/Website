@@ -4,7 +4,7 @@ import { StructuredData } from "@/components/StructuredData";
 
 export const metadata = constructMetadata({
   title: "About",
-  description: "Learn more about Isaac Vazquez - QA engineer, civic tech advocate, and data enthusiast. Discover my journey, skills, and passion for building reliable software.",
+  description: "Product Manager with technical foundation and UC Berkeley MBA education. Bridging engineering excellence with strategic product vision across Austin and Bay Area markets.",
   canonicalUrl: "/about",
 });
 
@@ -27,8 +27,8 @@ export default function AboutPage() {
         type="Person"
         data={{
           name: "Isaac Vazquez",
-          jobTitle: "Product Strategist & Business Leader",
-          description: "UC Berkeley Haas MBA student and business leader exploring technology, strategy, and impact",
+          jobTitle: "Product Manager & UC Berkeley MBA Student",
+          description: "Product Manager with technical foundation developing world-class product management skills at UC Berkeley Haas",
           url: "https://isaacavazquez.com",
           sameAs: [
             "https://linkedin.com/in/isaac-vazquez",
@@ -39,12 +39,13 @@ export default function AboutPage() {
             "name": "UC Berkeley Haas School of Business"
           },
           knowsAbout: [
+            "Product Management",
             "Product Strategy",
-            "Business Leadership", 
-            "Quality Assurance Engineering",
+            "Technical Product Management", 
+            "Cross-functional Leadership",
             "Data Analytics",
-            "Fantasy Football Analytics",
-            "Software Testing"
+            "User Experience Design",
+            "Business Strategy"
           ]
         }}
       />

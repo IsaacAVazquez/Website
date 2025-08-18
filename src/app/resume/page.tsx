@@ -4,7 +4,7 @@ import ResumeClient from "./resume-client";
 
 export const metadata = constructMetadata({
   title: "Resume",
-  description: "View Isaac Vazquez's professional resume. QA Engineer with 6+ years of experience in test automation, performance testing, and ensuring software quality for millions of users.",
+  description: "Isaac Vazquez resume: QA Engineer with 6+ years experience in test automation, performance testing, and software quality for 60M+ users.",
   canonicalUrl: "/resume",
 });
 
@@ -53,8 +53,8 @@ export default function ResumePage() {
           ],
           hasOccupation: {
             "@type": "Occupation",
-            "name": "Quality Assurance Engineer",
-            "description": "6+ years experience in test automation, performance testing, and system reliability"
+            "name": "Product Manager",
+            "description": "Technical Product Manager with 6+ years experience in product development, cross-functional leadership, and system reliability"
           }
         }}
       />

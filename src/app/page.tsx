@@ -8,11 +8,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 const funFacts = [
-  "Engineer with 6+ years optimizing systems and driving cross-functional execution",
-  "Led platform quality for tools used by 60M+ voters during critical election cycles",
-  "Known for translating technical complexity into actionable strategy",
-  "Excited by hard problems — especially when the stakes are real",
-  "Currently pursuing an MBA at Berkeley Haas to scale my impact across tech and business",
+  "Engineer with 6+ years experience. I optimize systems and drive cross-functional execution.",
+  "Led platform quality for tools serving 60M+ voters. Delivered reliability during critical election cycles.",
+  "I translate technical complexity into actionable strategy.",
+  "I thrive on hard problems — especially when the stakes are real.",
+  "Currently pursuing an MBA at Berkeley Haas. My goal: scale impact across tech and business.",
 ];
 
 function FunFacts() {
@@ -141,20 +141,20 @@ export default function Home() {
                   className="text-cyber text-electric-blue mb-6 lg:mb-8"
                   style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}
                 >
-                  whatImFocusedOn()
+                  productVision()
                 </Heading>
                 <div 
                   className="text-slate-300 leading-relaxed"
                   style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}
                 >
                   <p className="mb-6">
-                    As an MBA candidate at UC Berkeley Haas, I'm focused on honing the tools to drive innovation, 
-                    solve critical business problems, and deliver scalable impact — whether through consulting, 
-                    product leadership, or a hybrid of both.
+                    I'm an MBA candidate at UC Berkeley Haas. My focus: honing tools that drive innovation 
+                    and solve critical business problems. I deliver scalable impact through consulting, 
+                    product leadership, or hybrid approaches.
                   </p>
                   <div className="flex items-start">
                     <span className="text-matrix-green mr-3 text-lg">▸</span>
-                    <span>Building the bridge between technical execution and strategic vision</span>
+                    <span>I build bridges between technical execution and strategic vision</span>
                   </div>
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default function Home() {
             
             <div className="relative z-10 space-y-6">
               <Heading level={2} className="text-cyber text-electric-blue text-xl lg:text-2xl mb-4">
-                isaac.getCurrentStatus()
+                isaac.getProductJourney()
               </Heading>
               <FunFacts />
             </div>

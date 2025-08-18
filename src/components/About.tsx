@@ -45,7 +45,7 @@ export default function About() {
               About Isaac Vazquez
             </h1>
             <p className="text-slate-300 text-lg">
-              Product Strategist • Business Leader • UC Berkeley Haas MBA
+              Product Manager • UC Berkeley MBA • Technical Foundation
             </p>
           </motion.div>
         </div>
@@ -155,19 +155,46 @@ const OverviewContent = () => {
           
           <div className="relative z-10 space-y-6">
             <Paragraph className="text-lg md:text-xl text-slate-300 leading-relaxed">
-              Hi, I'm Isaac — a product strategist and business leader who solves complex problems at the intersection of technology, strategy, and impact. With 6+ years of experience building and leading teams that deliver quality at scale across Austin and California markets, I've helped safeguard systems serving 60M+ users while driving product innovation and business growth.
+              Hi, I'm Isaac — a product manager with a unique technical foundation. I'm passionate about building products that users love and businesses value, bridging the gap between engineering excellence and strategic vision.
+            </Paragraph>
+            
+            <Paragraph className="text-slate-300 leading-relaxed">
+              Currently pursuing my MBA at UC Berkeley Haas, I'm developing world-class product management skills while leveraging 6+ years of technical experience. I've contributed to products serving 60M+ users across Austin and California markets, giving me deep insight into both user needs and technical constraints.
             </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-              From Austin-based civic tech to Silicon Valley-style innovation, I've led cross-functional product teams, developed strategic business frameworks, and shipped reliable platforms under pressure. My expertise spans technical product management, business strategy development, and organizational leadership — combining deep technical knowledge with strategic business thinking to drive measurable results across Texas and California markets.
+              My product journey spans Austin civic tech to Silicon Valley innovation. I've collaborated closely with engineering teams while developing business strategy frameworks. I understand what it takes to ship products that perform under pressure.
+            </Paragraph>
+            
+            <Paragraph className="text-slate-300 leading-relaxed">
+              <strong>My unique product management foundation:</strong>
+            </Paragraph>
+            <ul className="list-disc ml-6 space-y-2 text-slate-300">
+              <li>Technical product management with engineering credibility</li>
+              <li>Cross-functional team leadership and stakeholder management</li>
+              <li>Data-driven decision making and product analytics</li>
+              <li>User-centered design thinking and problem solving</li>
+              <li>Strategic business planning and market analysis</li>
+            </ul>
+            
+            <Paragraph className="text-slate-300 leading-relaxed">
+              This technical foundation gives me a competitive edge in product management — I can speak engineering languages while thinking strategically about user value and business outcomes.
             </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-              Currently pursuing my MBA at UC Berkeley's Haas School of Business, I'm developing advanced capabilities in product strategy, business leadership, and innovation management. As a Consortium Fellow, I'm exploring how strategic business thinking, product management excellence, and leadership development can solve mission-critical challenges from Silicon Valley to emerging global markets.
+              At UC Berkeley's Haas School of Business, I'm developing advanced product management and strategic leadership capabilities. My MBA coursework in product strategy, innovation management, and business analytics directly complements my technical background.
+            </Paragraph>
+            
+            <Paragraph className="text-slate-300 leading-relaxed">
+              As a Consortium Fellow, I'm exploring how technical product managers can drive innovation at scale. I'm particularly interested in how data-driven product decisions and user research can create breakthrough products from Silicon Valley to emerging global markets.
             </Paragraph>
 
             <Paragraph className="text-slate-300 leading-relaxed">
-              Beyond technology, I'm passionate about developing future business leaders, building strategic partnerships, and creating products that empower communities. Whether I'm hiking trails or networking in California's innovation ecosystem, I bring strategic thinking, leadership excellence, and a drive to build businesses that create lasting impact across both coasts.
+              Beyond product management, I'm passionate about mentoring aspiring technical PMs and contributing to the product community. I believe the best products come from teams that understand both user needs and technical possibilities.
+            </Paragraph>
+            
+            <Paragraph className="text-slate-300 leading-relaxed">
+              Whether hiking Austin trails or networking in California's innovation ecosystem, I'm constantly learning about product strategy and user behavior. My goal: become a product leader who builds experiences that genuinely improve people's lives while driving sustainable business growth.
             </Paragraph>
           </div>
         </GlassCard>

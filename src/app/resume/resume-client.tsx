@@ -9,9 +9,9 @@ import { IconDownload, IconMail, IconBrandLinkedin, IconPhone } from "@tabler/ic
 import Link from "next/link";
 
 const skills = [
-  "A/B Testing", "Agile/Scrum", "Charting & Data Visualization", "Cypress", "Data Analysis",
-  "Figma", "JavaScript", "Jira", "JMeter", "Postman", "Product Analytics",
-  "Product Roadmapping", "SQL", "Stakeholder Management", "Tableau", "User Research"
+  "Product Strategy", "A/B Testing", "Agile/Scrum", "Data Analysis", "User Research",
+  "Product Roadmapping", "Cross-functional Leadership", "Figma", "Product Analytics",
+  "Stakeholder Management", "SQL", "Tableau", "Jira", "User Experience Design", "Go-to-Market Strategy", "Competitive Analysis"
 ];
 
 // Set your reveal date (YYYY, MM-1, DD)

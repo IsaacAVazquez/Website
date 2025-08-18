@@ -13,7 +13,7 @@ import { BlogFilter } from "@/components/blog/BlogFilter";
 
 export const metadata: Metadata = constructMetadata({
   title: "Blog - QA Engineering & Fantasy Football Analytics",
-  description: "Technical insights, tutorials, and deep-dives into QA engineering, fantasy football analytics, and software development by Isaac Vazquez. Learn from real-world experience in testing, automation, and data visualization.",
+  description: "Product management insights, fantasy football analytics, and technical leadership content by Isaac Vazquez. Real-world product development and strategy experience.",
   canonicalUrl: "https://isaacavazquez.com/blog",
 });
 
@@ -74,8 +74,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               </span>
             </Heading>
             <Paragraph size="lg" className="max-w-2xl mx-auto text-slate-600 dark:text-slate-400">
-              Explore QA engineering best practices, fantasy football analytics, and software development insights. 
-              Learn from real-world experience in testing, automation, and data visualization.
+              Explore product management best practices, fantasy football analytics, and technical leadership insights.
+            </Paragraph>
+            <Paragraph className="max-w-2xl mx-auto text-slate-600 dark:text-slate-400 mt-4">
+              Learn from real-world experience in product development, user research, and data-driven decision making.
             </Paragraph>
             
             {/* Filter Status */}
@@ -124,8 +126,16 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   Coming Soon
                 </Heading>
                 <Paragraph className="text-slate-600 dark:text-slate-400 mb-6">
-                  I'm working on some exciting content covering QA engineering, fantasy football analytics, 
-                  and software development best practices. Check back soon!
+                  I'm working on exciting content covering:
+                </Paragraph>
+                <ul className="list-disc ml-6 space-y-2 text-slate-600 dark:text-slate-400 mb-6">
+                  <li>Product management frameworks and strategies</li>
+                  <li>Technical product leadership insights</li>
+                  <li>Fantasy football analytics and data science</li>
+                  <li>MBA learnings applied to product development</li>
+                </ul>
+                <Paragraph className="text-slate-600 dark:text-slate-400 mb-6">
+                  Check back soon for updates!
                 </Paragraph>
                 <MorphButton href="/about" variant="primary">
                   Learn More About Me
@@ -147,20 +157,20 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             </Heading>
             <div className="grid gap-6 md:grid-cols-3">
               <CategoryCard
-                title="QA Engineering"
-                description="Testing strategies, automation frameworks, and quality assurance best practices"
-                badge="Technical"
-                href="/blog?category=qa-engineering"
+                title="Product Management"
+                description="Product strategy, user research, and technical PM frameworks"
+                badge="Strategy"
+                href="/blog?category=product-management"
               />
               <CategoryCard
                 title="Fantasy Football Analytics"
-                description="Data visualization, player analysis, and algorithmic approaches to fantasy sports"
+                description="Data visualization, player analysis, and fantasy sports algorithms"
                 badge="Analytics"
                 href="/blog?category=fantasy-football"
               />
               <CategoryCard
                 title="Software Development"
-                description="TypeScript, React, Next.js, and building performant web applications"
+                description="TypeScript, React, Next.js, and performant web applications"
                 badge="Development"
                 href="/blog?category=software-development"
               />

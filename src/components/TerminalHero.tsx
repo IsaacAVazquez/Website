@@ -25,61 +25,61 @@ interface TerminalCommand {
 const commands: TerminalCommand[] = [
   {
     command: "whoami",
-    output: `isaacvazquez // QA ENGINEER | STRATEGIC THINKER | FUTURE BUILDER
-uid=1001(isaac) gid=1001(systems_thinking) groups=1001(cross_functional),1002(civic_tech),1003(coffee_addicts)
-home=/Users/isaac status=building_at_intersection_of_tech_strategy_impact since=2018`,
+    output: `isaacvazquez // PRODUCT MANAGER | UC BERKELEY MBA | TECHNICAL LEADER
+uid=1001(isaac) gid=1001(product_strategy) groups=1001(cross_functional),1002(mba_student),1003(tech_foundation)
+home=/Users/isaac status=building_scalable_products since=2018`,
     delay: 1000,
   },
   {
     command: "curl /career/status",
-    output: `Systems Delivered: 12+
+    output: `Products Delivered: 12+
 Users Impacted: ${personalMetrics.experience.votersReached.toLocaleString()}+
-Critical Issues Prevented: ${personalMetrics.experience.bugsSquashed.toLocaleString()}+
-Cross-functional Meetings Survived: 287
+Product Issues Prevented: ${personalMetrics.experience.bugsSquashed.toLocaleString()}+
+Cross-functional Teams Led: 287
 Cups of Coffee: ${personalMetrics.experience.coffeeConsumed}`,
     delay: 2000,
   },
   {
     command: "systemctl status isaac.service",
-    output: `● isaac.service - Tech-Backed Problem Solver
+    output: `● isaac.service - Technical Product Manager
    Loaded: loaded (/etc/systemd/system/isaac.service; enabled)
-   Active: ACTIVE - building at the intersection of tech, strategy, and user impact
-   Process: ${personalMetrics.experience.votersReached.toLocaleString()} voters served
-   Memory: ${personalMetrics.experience.yearsInQA}+ years experience loaded
+   Active: ACTIVE - I build products that scale and create impact
+   Process: I delivered products serving ${personalMetrics.experience.votersReached.toLocaleString()} users
+   Memory: I loaded ${personalMetrics.experience.yearsInQA}+ years technical experience + MBA strategy
    CGroup: /system.slice/isaac.service
-           ├─ systems-thinking.exe
-           ├─ cross-functional-collaboration.daemon
-           └─ strategic-problem-solving.worker`,
+           ├─ product-strategy.exe
+           ├─ cross-functional-leadership.daemon
+           └─ technical-product-management.worker`,
     delay: 3000,
   },
   {
     command: "curl -s isaac.local/api/personality | jq",
     output: `{
-  "traits": ["perfectionist", "problem_solver", "empathetic"],
-  "debug_mode": "always_on",
+  "traits": ["user_focused", "data_driven", "empathetic"],
+  "product_sense": "always_on",
   "coffee_dependency": "high",
-  "bug_detection": "enhanced",
-  "user_empathy": "maximum",
-  "status": "optimistically_debugging_life"
+  "user_research": "enhanced",
+  "cross_functional": "maximum",
+  "status": "optimistically_building_products"
 }`,
     delay: 4000,
   },
   {
     command: "grep -r 'passion' ~/.isaac/",
-    output: `~/.isaac/values.conf: passion="building_trust_through_quality"
+    output: `~/.isaac/values.conf: passion="building_products_users_love"
 ~/.isaac/hobbies.txt: passion="hiking_texas_trails"
 ~/.isaac/career.log: passion="civic_tech_impact"
-~/.isaac/daily.sh: passion="learning_new_testing_frameworks"
-~/.isaac/dreams.txt: passion="democratizing_quality_assurance"`,
+~/.isaac/daily.sh: passion="learning_product_frameworks"
+~/.isaac/dreams.txt: passion="becoming_world_class_product_leader"`,
     delay: 5500,
   },
   {
     command: "tail -f /var/log/isaac/impact.log",
-    output: `[${new Date().toISOString()}] INFO: ${personalMetrics.experience.votersReached.toLocaleString()}+ voters reached
-[${new Date().toISOString()}] SUCCESS: 0 critical bugs in production
-[${new Date().toISOString()}] WARNING: Perfectionist mode may cause overtime
-[${new Date().toISOString()}] INFO: Quality assurance protocols engaged
-[${new Date().toISOString()}] STATUS: Building the future, one test at a time...`,
+    output: `[${new Date().toISOString()}] INFO: ${personalMetrics.experience.votersReached.toLocaleString()}+ users served through product development
+[${new Date().toISOString()}] SUCCESS: 0 critical product issues in production
+[${new Date().toISOString()}] WARNING: Product perfectionist mode may cause overtime
+[${new Date().toISOString()}] INFO: User-centered design protocols engaged
+[${new Date().toISOString()}] STATUS: Building the future, one product at a time...`,
     delay: 6500,
   },
 ];
@@ -189,7 +189,7 @@ export function TerminalHero() {
               role="text"
               aria-describedby="main-heading"
             >
-              PRODUCT STRATEGIST // BUSINESS LEADER // UC BERKELEY MBA CANDIDATE
+              PRODUCT MANAGER // UC BERKELEY MBA // TECHNICAL FOUNDATION
             </motion.div>
 
             <motion.p
@@ -198,9 +198,7 @@ export function TerminalHero() {
               transition={{ delay: 0.8 }}
               className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto"
             >
-              I'm passionate about the intersection of technology and strategy — from civic minded tech in Austin to Silicon Valley innovation ecosystems. As a UC Berkeley Haas MBA 
-              student and business leader, I explore how technical expertise and strategic thinking can 
-              solve meaningful problems and create lasting impact across communities and markets.
+              I bridge technical excellence with strategic product vision. As a UC Berkeley MBA student with an engineering foundation, I'm passionate about building products that scale and create meaningful impact. My unique background allows me to speak both technical and business languages fluently.
             </motion.p>
 
             <motion.nav
@@ -237,7 +235,7 @@ export function TerminalHero() {
                   <span className="text-xs font-mono text-electric-blue uppercase tracking-wider">FEATURED</span>
                 </div>
                 <h3 className="text-sm font-semibold text-white mb-1">Fantasy Analytics</h3>
-                <p className="text-xs text-slate-400">ML-powered rankings & tiers</p>
+                <p className="text-xs text-slate-400">Machine learning rankings & tiers</p>
               </Link>
 
               <Link href="/resume" className="group p-4 bg-terminal-bg/30 border border-matrix-green/20 rounded-lg hover:border-matrix-green/50 transition-all duration-300 focus-ring">
@@ -245,8 +243,8 @@ export function TerminalHero() {
                   <div className="w-2 h-2 bg-matrix-green rounded-full group-hover:animate-pulse"></div>
                   <span className="text-xs font-mono text-matrix-green uppercase tracking-wider">CAREER</span>
                 </div>
-                <h3 className="text-sm font-semibold text-white mb-1">Professional Experience</h3>
-                <p className="text-xs text-slate-400">6+ years building systems</p>
+                <h3 className="text-sm font-semibold text-white mb-1">Product Experience</h3>
+                <p className="text-xs text-slate-400">6+ years building products</p>
               </Link>
 
               <Link href="/blog/mastering-fantasy-football-analytics" className="group p-4 bg-terminal-bg/30 border border-cyber-teal/20 rounded-lg hover:border-cyber-teal/50 transition-all duration-300 focus-ring">
@@ -254,8 +252,8 @@ export function TerminalHero() {
                   <div className="w-2 h-2 bg-cyber-teal rounded-full group-hover:animate-pulse"></div>
                   <span className="text-xs font-mono text-cyber-teal uppercase tracking-wider">LATEST</span>
                 </div>
-                <h3 className="text-sm font-semibold text-white mb-1">Analytics Insights</h3>
-                <p className="text-xs text-slate-400">Deep dive into data science</p>
+                <h3 className="text-sm font-semibold text-white mb-1">MBA Insights</h3>
+                <p className="text-xs text-slate-400">UC Berkeley strategy & frameworks</p>
               </Link>
             </motion.div>
           </header>
