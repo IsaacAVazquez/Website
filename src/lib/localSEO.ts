@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 // Business location configuration
 export interface BusinessLocation {

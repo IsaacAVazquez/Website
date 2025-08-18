@@ -4,7 +4,16 @@
  * Provides centralized data storage replacing file-based system
  */
 
-import Database from 'better-sqlite3';
+// Conditional import for server-side only
+let Database: any;
+if (typeof window === 'undefined') {
+  try {
+    Database = require('better-sqlite3');
+  } catch (error) {
+    console.warn('better-sqlite3 not available in this environment');
+    Database = null;
+  }
+}
 import path from 'path';
 import fs from 'fs';
 import { Player, Position, ScoringFormat } from '@/types';
@@ -67,6 +76,9 @@ class DatabaseManager {
       }
 
       // Create database connection
+      if (!Database) {
+        throw new Error('Database not available in this environment');
+      }
       this.db = new Database(dbPath);
       
       // Enable WAL mode for better concurrency (if not in memory)

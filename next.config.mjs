@@ -151,6 +151,14 @@ const nextConfig = {
   },
   // Enhanced webpack configuration for performance
   webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+    // Exclude server-only packages from client bundle
+    if (!isServer) {
+      config.externals = config.externals || [];
+      config.externals.push({
+        'better-sqlite3': 'commonjs better-sqlite3',
+      });
+    }
+
     if (!dev && !isServer) {
       // Bundle splitting for better caching
       config.optimization.splitChunks = {
