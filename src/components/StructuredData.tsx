@@ -1,7 +1,7 @@
 import { siteConfig } from "@/lib/seo";
 
 interface StructuredDataProps {
-  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage";
+  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage" | "CreativeWork";
   data?: Record<string, string | number | boolean | object>;
 }
 
@@ -247,6 +247,35 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...baseData,
           "@type": "FAQPage",
           "mainEntity": data.questions || [],
+          ...data,
+        };
+
+      case "CreativeWork":
+        return {
+          ...baseData,
+          "@type": "CreativeWork",
+          "name": data.name || "Portfolio Project",
+          "description": data.description || "",
+          "author": {
+            "@type": "Person",
+            "name": siteConfig.name,
+            "url": siteConfig.url,
+          },
+          "creator": {
+            "@type": "Person",
+            "name": siteConfig.name,
+            "url": siteConfig.url,
+          },
+          "dateCreated": data.dateCreated,
+          "dateModified": data.dateModified || new Date().toISOString(),
+          "keywords": data.keywords,
+          "about": data.about,
+          "image": data.image,
+          "url": data.url || siteConfig.url,
+          "inLanguage": "en-US",
+          "isAccessibleForFree": true,
+          "learningResourceType": data.learningResourceType || "Project",
+          "workExample": data.workExample,
           ...data,
         };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { IconMenu2 } from "@tabler/icons-react";
 import Link from "next/link";
 import { personalMetrics } from "@/constants/personal";
@@ -88,8 +88,16 @@ export function TerminalHero() {
   const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
   const [displayedCommands, setDisplayedCommands] = useState<TerminalCommand[]>([]);
   const [isTyping, setIsTyping] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
+    // If reduced motion is preferred, show all commands immediately
+    if (shouldReduceMotion) {
+      setDisplayedCommands(commands);
+      setCurrentCommandIndex(commands.length);
+      return;
+    }
+
     if (currentCommandIndex < commands.length) {
       const timer = setTimeout(() => {
         setIsTyping(true);
@@ -102,7 +110,7 @@ export function TerminalHero() {
 
       return () => clearTimeout(timer);
     }
-  }, [currentCommandIndex]);
+  }, [currentCommandIndex, shouldReduceMotion]);
 
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden" role="main" aria-label="Isaac Vazquez - Product Strategist and UC Berkeley MBA">
@@ -131,8 +139,8 @@ export function TerminalHero() {
         />
       </div>
 
-      {/* Subtle Floating Particles */}
-      <div className="absolute inset-0">
+      {/* Subtle Floating Particles - Respects reduced motion */}
+      <div className="absolute inset-0" aria-hidden="true">
         {PARTICLE_POSITIONS.map((position, i) => (
           <motion.div
             key={i}
@@ -141,11 +149,11 @@ export function TerminalHero() {
               left: `${position.left}%`,
               top: `${position.top}%`,
             }}
-            animate={{
+            animate={shouldReduceMotion ? {} : {
               y: [-10, 10],
               opacity: [0.3, 0.7, 0.3],
             }}
-            transition={{
+            transition={shouldReduceMotion ? { duration: 0 } : {
               duration: 4,
               repeat: Infinity,
               delay: i * 0.5,
@@ -162,9 +170,9 @@ export function TerminalHero() {
           {/* Primary Hero Content */}
           <header className="max-w-4xl space-y-6" role="banner">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.2 }}
               className="text-sm font-mono text-electric-blue uppercase tracking-widest"
               aria-hidden="true"
             >
@@ -172,9 +180,9 @@ export function TerminalHero() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.4 }}
               className="heading-hero gradient-text"
               id="main-heading"
             >
@@ -182,9 +190,9 @@ export function TerminalHero() {
             </motion.h1>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.6 }}
               className="text-cyber text-matrix-green text-xl md:text-2xl"
               role="text"
               aria-describedby="main-heading"
@@ -193,18 +201,18 @@ export function TerminalHero() {
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.8 }}
               className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto"
             >
               I bridge technical excellence with strategic product vision. As a UC Berkeley MBA student with an engineering foundation, I'm passionate about building products that scale and create meaningful impact. My unique background allows me to speak both technical and business languages fluently.
             </motion.p>
 
             <motion.nav
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { delay: 1.0 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
               role="navigation"
               aria-label="Main navigation"
@@ -357,21 +365,22 @@ export function TerminalHero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Respects reduced motion */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 0.8 }}
+        transition={shouldReduceMotion ? { duration: 0 } : { delay: 2, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        aria-hidden="true"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          animate={shouldReduceMotion ? {} : { y: [0, 10, 0] }}
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 2, repeat: Infinity }}
           className="w-6 h-10 border-2 border-electric-blue rounded-full p-1"
         >
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            animate={shouldReduceMotion ? {} : { y: [0, 12, 0] }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 2, repeat: Infinity }}
             className="w-1 h-3 bg-electric-blue rounded-full mx-auto"
           />
         </motion.div>
