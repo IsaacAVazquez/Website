@@ -38,14 +38,38 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: "var(--text-primary)",
-        secondary: "var(--text-secondary)",
-        "vivid-blue": "var(--vivid-blue)",
-        "vivid-teal": "var(--vivid-teal)",
-        "vivid-purple": "var(--vivid-purple)",
-        "vivid-pink": "var(--vivid-pink)",
-        "vivid-yellow": "var(--vivid-yellow)",
-        // Cyberpunk Professional Colors
+        // 2025: Semantic color system with contextual naming
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        accent: "var(--color-accent)",
+        tertiary: "var(--color-tertiary)",
+        warning: "var(--color-warning)",
+        error: "var(--color-error)",
+
+        // Neutral scale
+        neutral: {
+          50: "var(--neutral-50)",
+          100: "var(--neutral-100)",
+          200: "var(--neutral-200)",
+          300: "var(--neutral-300)",
+          400: "var(--neutral-400)",
+          500: "var(--neutral-500)",
+          600: "var(--neutral-600)",
+          700: "var(--neutral-700)",
+          800: "var(--neutral-800)",
+          900: "var(--neutral-900)",
+          950: "var(--neutral-950)",
+        },
+
+        // Semantic surfaces
+        surface: {
+          primary: "var(--surface-primary)",
+          secondary: "var(--surface-secondary)",
+          elevated: "var(--surface-elevated)",
+          overlay: "var(--surface-overlay)",
+        },
+
+        // Legacy support - backwards compatible
         "electric-blue": "var(--electric-blue)",
         "matrix-green": "var(--matrix-green)",
         "warning-amber": "var(--warning-amber)",
@@ -56,6 +80,16 @@ const config: Config = {
         "terminal-border": "var(--terminal-border)",
         "terminal-text": "var(--terminal-text)",
         "terminal-cursor": "var(--terminal-cursor)",
+      },
+      spacing: {
+        xs: "var(--space-xs)",
+        sm: "var(--space-sm)",
+        md: "var(--space-md)",
+        lg: "var(--space-lg)",
+        xl: "var(--space-xl)",
+        "2xl": "var(--space-2xl)",
+        "3xl": "var(--space-3xl)",
+        "4xl": "var(--space-4xl)",
       },
       boxShadow: {
         'glow-blue': 'var(--glow-blue)',

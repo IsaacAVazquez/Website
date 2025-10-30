@@ -4,10 +4,11 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { GlassCard } from "./GlassCard";
 import { personalMetrics } from "@/constants/personal";
-import { 
-  IconBriefcase, 
-  IconSchool, 
-  IconTrendingUp, 
+import Image from "next/image";
+import {
+  IconBriefcase,
+  IconSchool,
+  IconTrendingUp,
   IconStar,
   IconCode,
   IconUsers,
@@ -27,19 +28,23 @@ const TimelineItem = ({ item, index, isLast }: TimelineItemProps) => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const getIcon = () => {
-    if (item.year <= 2018) return IconSchool;
-    if (item.year <= 2021) return IconTrendingUp;
-    if (item.year <= 2023) return IconBriefcase;
-    return IconRocket;
+    const company = item.company.toLowerCase();
+    if (company.includes('florida state')) return IconSchool;
+    if (company.includes('open progress')) return IconTrendingUp;
+    if (company.includes('civitech')) return IconBriefcase;
+    if (company.includes('berkeley') || company.includes('haas')) return IconRocket;
+    return IconBriefcase;
   };
 
   const Icon = getIcon();
 
   const getYearColor = () => {
-    if (item.year <= 2018) return "from-blue-400 to-blue-600";
-    if (item.year <= 2021) return "from-green-400 to-green-600";
-    if (item.year <= 2023) return "from-purple-400 to-purple-600";
-    return "from-pink-400 to-pink-600";
+    const company = item.company.toLowerCase();
+    if (company.includes('florida state')) return "from-red-900 to-amber-700"; // FSU Garnet & Gold
+    if (company.includes('open progress')) return "from-cyan-400 via-purple-400 to-teal-400"; // Open Progress gradient
+    if (company.includes('civitech')) return "from-blue-500 to-blue-700"; // Civitech blue
+    if (company.includes('berkeley') || company.includes('haas')) return "from-blue-900 to-yellow-600"; // UC Berkeley Blue & Gold
+    return "from-electric-blue to-matrix-green";
   };
 
   return (
@@ -54,16 +59,30 @@ const TimelineItem = ({ item, index, isLast }: TimelineItemProps) => {
     >
       {/* Timeline line */}
       <div className="relative flex flex-col items-center">
-        {/* Year badge */}
+        {/* Year badge with logo */}
         <motion.div
-          className={`relative z-10 w-16 h-16 rounded-full bg-gradient-to-br ${getYearColor()} p-3 mb-4 shadow-lg`}
+          className={`relative z-10 w-16 h-16 rounded-full bg-white p-2 mb-4 shadow-lg border-2 ${
+            isHovered ? 'border-electric-blue' : 'border-slate-300'
+          }`}
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <div className="w-full h-full rounded-full bg-terminal-bg/20 flex items-center justify-center">
-            <Icon className="w-6 h-6 text-white" />
-          </div>
-          
+          {item.logo ? (
+            <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden bg-white">
+              <Image
+                src={item.logo}
+                alt={`${item.company} logo`}
+                width={48}
+                height={48}
+                className="object-contain"
+              />
+            </div>
+          ) : (
+            <div className={`w-full h-full rounded-full bg-gradient-to-br ${getYearColor()} flex items-center justify-center`}>
+              <Icon className="w-6 h-6 text-white" />
+            </div>
+          )}
+
           {/* Glow effect */}
           {isHovered && (
             <motion.div

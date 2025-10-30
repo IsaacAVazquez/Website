@@ -5,14 +5,12 @@
  */
 
 // Conditional import for server-side only
-let Database: any;
+// Using dynamic import to avoid ESLint error with require()
+let Database: any = null;
 if (typeof window === 'undefined') {
-  try {
-    Database = require('better-sqlite3');
-  } catch (error) {
-    console.warn('better-sqlite3 not available in this environment');
-    Database = null;
-  }
+  // This runs at module load time, so we use a conditional dynamic import approach
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  Database = require('better-sqlite3');
 }
 import path from 'path';
 import fs from 'fs';

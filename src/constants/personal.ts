@@ -189,82 +189,91 @@ export const personalMetrics = {
       year: 2018,
       role: "Bachelor of Arts Graduate",
       company: "Florida State University",
-      description: "Graduated magna cum laude with degrees in Political Science and International Affairs",
-      achievement: "Phi Beta Kappa, President's List, Dean's List honors",
-      techStack: ["Research", "Analysis", "Writing", "International Relations"],
-      milestone: "Foundation for strategic thinking and analysis"
+      logo: "/images/logos/fsu-logo.png",
+      description: "Graduated with degrees in Political Science and International Affairs, building foundation for strategic thinking",
+      achievement: "Developed analytical and research skills that inform data-driven decision making",
+      techStack: ["Research", "Policy Analysis", "International Relations", "Strategic Thinking"],
+      milestone: "Foundation for career bridging technology and social impact"
     },
     {
       year: 2019,
       role: "Digital and Communications Intern",
       company: "Open Progress",
-      description: "Launched career in civic tech with focus on digital voter engagement",
-      achievement: "Grew client email fundraising lists by over 500%",
-      techStack: ["Email Marketing", "Campaign Analytics", "Digital Strategy"],
-      milestone: "Discovered passion for data-driven civic impact"
+      logo: "/images/logos/open-progress-logo.png",
+      description: "Launched career in civic tech, developing data-driven user acquisition strategies for progressive campaigns",
+      achievement: "5x growth in user base through personalized email campaigns and A/B testing frameworks",
+      techStack: ["Email Marketing", "A/B Testing", "User Acquisition", "Analytics"],
+      milestone: "Discovered passion for data-driven civic impact and digital strategy"
     },
     {
       year: 2020,
       role: "Digital and Data Associate",
       company: "Open Progress",
-      description: "Designed and maintained intuitive data dashboards for real-time campaign insights",
-      achievement: "Improved campaign decision-making speed by 40%",
-      techStack: ["SQL", "Tableau", "Data Analysis", "Campaign Metrics"],
-      milestone: "Became a data and digital communications strategist for political campaigns"
+      logo: "/images/logos/open-progress-logo.png",
+      description: "Transformed client analytics from manual reporting to automated ETL pipelines with interactive dashboards",
+      achievement: "Reduced decision-making time by 40%, optimized user segmentation improving conversion by 25%",
+      techStack: ["SQL", "Sisense", "Tableau", "ETL Pipelines", "Data Analytics"],
+      milestone: "Became data and digital communications strategist for political campaigns"
     },
     {
       year: 2021,
       role: "Client Services Manager",
       company: "Open Progress",
-      description: "Led multi-channel voter engagement campaigns across 80+ digital programs",
-      achievement: "Maintained 100% on-time delivery, drove 40M+ actionable voter conversations",
-      techStack: ["Project Management", "Data Analytics", "Client Relations", "Scale Operations"],
-      milestone: "Mastered scaling operations and stakeholder management"
+      logo: "/images/logos/open-progress-logo.png",
+      description: "Orchestrated delivery of 80+ digital programs, establishing milestones and aligning cross-functional teams",
+      achievement: "100% on-time delivery, 25% higher engagement through data-driven messaging strategy",
+      techStack: ["Project Management", "Data Analytics", "Stakeholder Management", "Campaign Strategy"],
+      milestone: "Mastered cross-functional collaboration and strategic program management"
     },
     {
       year: 2022,
       role: "Quality Assurance Analyst",
       company: "CIVITECH",
-      description: "Transitioned to QA with mission to secure democratic technology platforms",
-      achievement: "Achieved near 100% uptime and 30% increase in release efficiency",
-      techStack: ["Manual Testing", "Test Planning", "Bug Tracking", "Jira"],
-      milestone: "Found calling in quality assurance and civic technology"
+      logo: "/images/logos/civitech-logo.png",
+      description: "Transitioned into QA, championing product reliability initiatives across civic tech platforms",
+      achievement: "Achieved 99.999% uptime, improved release efficiency by 30% through comprehensive testing",
+      techStack: ["Manual Testing", "Automated Testing", "Jira", "Quality Strategy"],
+      milestone: "Found calling in quality assurance and product-focused technology"
     },
     {
       year: 2023,
       role: "Quality Assurance Analyst",
       company: "CIVITECH",
-      description: "Scaled QA processes across multiple development phases and products",
-      achievement: "Executed 400+ tests, identified product opportunities leading to 20% engagement increase",
-      techStack: ["JMeter", "Postman", "Cypress", "Performance Testing", "User Research"],
-      milestone: "Became product-focused QA strategist"
+      logo: "/images/logos/civitech-logo.png",
+      description: "Led cross-functional pricing strategy initiative, aligning engineering, sales, and finance teams around product value",
+      achievement: "Generated $4M additional revenue through market analysis, financial modeling, and strategic dashboards",
+      techStack: ["Product Strategy", "Financial Modeling", "Market Analysis", "Cross-functional Leadership"],
+      milestone: "Evolved into product-focused strategist with business impact"
     },
     {
       year: 2024,
       role: "Quality Assurance Analyst",
       company: "CIVITECH",
-      description: "Served as primary driver for product vision through user behavior analysis",
-      achievement: "Shaped TextOut feature set, reaching 60M+ unique voters in 2024",
-      techStack: ["User Analytics", "Product Strategy", "Cross-functional Collaboration"],
-      milestone: "Released two major applications with zero critical bugs",
+      logo: "/images/logos/civitech-logo.png",
+      description: "Owned end-to-end product vision for TextOut platform through user research, requirements definition, and feature prioritization",
+      achievement: "Drove 35% engagement increase, transformed client data accessibility with GCP automation reducing onboarding by 90%",
+      techStack: ["User Research", "Product Vision", "GCP", "Feature Prioritization", "Analytics"],
+      milestone: "Demonstrated product management capabilities at scale"
     },
     {
       year: 2025,
       role: "Quality Assurance Engineer",
       company: "CIVITECH",
-      description: "Leading organization-wide release governance and automation framework design",
-      achievement: "Reduced critical production defects by 50% QoQ, cut regression time by 2 days",
-      techStack: ["DevOps Integration", "Security Workflows", "Release Management", "Automation"],
-      milestone: "Architecting quality at organizational scale"
+      logo: "/images/logos/civitech-logo.png",
+      description: "Drove successful launch of RunningMate platform, translating cross-functional feedback into user stories and quality acceptance criteria",
+      achievement: "Reduced critical defects by 90%, increased NPS from 23 to 36, accelerated releases from monthly to biweekly",
+      techStack: ["Product Development", "DevOps Integration", "AI/LLM Tools", "Release Management"],
+      milestone: "Architected quality strategy at organizational scale with AI-powered workflows"
     },
     {
       year: 2025,
       role: "MBA Candidate",
       company: "UC Berkeley Haas",
-      description: "Pursuing MBA to bridge technology expertise with strategic business thinking",
-      achievement: "Consortium Fellow, expanding impact beyond technology",
-      techStack: ["Strategy", "Product Management", "Consulting", "Leadership"],
-      milestone: "Broadening impact through business education"
+      logo: "/images/logos/berkeley-logo.png",
+      description: "Pursuing MBA to deepen product management expertise and explore venture capital opportunities in civic tech and SaaS",
+      achievement: "Consortium Fellow, MLT Professional Development Fellow, serving as MLT Ambassador",
+      techStack: ["Product Management", "Strategy", "Venture Capital", "Leadership", "Fintech"],
+      milestone: "Transitioning from product-focused technologist to product management leader"
     }
   ],
 

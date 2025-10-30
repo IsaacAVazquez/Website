@@ -4,7 +4,7 @@ import ResumeClient from "./resume-client";
 
 export const metadata = constructMetadata({
   title: "Resume",
-  description: "Isaac Vazquez resume: QA Engineer with 6+ years experience in test automation, performance testing, and software quality for 60M+ users.",
+  description: "Isaac Vazquez resume: Berkeley Haas MBA Candidate '27, Consortium Fellow. Product-focused technologist with 6+ years in QA, data analytics, and technology.",
   canonicalUrl: "/resume",
 });
 
@@ -27,8 +27,8 @@ export default function ResumePage() {
         type="Person"
         data={{
           name: "Isaac Vazquez",
-          jobTitle: "Product Strategist & Business Leader",
-          description: "UC Berkeley Haas MBA student with 6+ years experience in QA engineering and product strategy",
+          jobTitle: "MBA Candidate & Product-Focused Technologist",
+          description: "UC Berkeley Haas MBA Candidate '27 with 6+ years experience in quality assurance, data analytics, and technology",
           url: "https://isaacavazquez.com",
           email: "isaacavazquez95@gmail.com",
           sameAs: [

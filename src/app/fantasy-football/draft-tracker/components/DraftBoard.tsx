@@ -105,10 +105,11 @@ export function DraftBoard({
     // Sort players
     filtered.sort((a, b) => {
       switch (sortBy) {
-        case 'rank':
+        case 'rank': {
           const rankA = typeof a.averageRank === 'number' ? a.averageRank : parseFloat(a.averageRank as string) || 999;
           const rankB = typeof b.averageRank === 'number' ? b.averageRank : parseFloat(b.averageRank as string) || 999;
           return rankA - rankB;
+        }
         case 'tier':
           return (a.tier || 999) - (b.tier || 999);
         case 'points':

@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const funFacts = [
-  "Engineer with 6+ years experience. I optimize systems and drive cross-functional execution.",
+  "QA Engineer with 6+ years experience. I optimize systems and drive cross-functional execution.",
   "Led platform quality for tools serving 60M+ voters. Delivered reliability during critical election cycles.",
   "I translate technical complexity into actionable strategy.",
   "I thrive on hard problems — especially when the stakes are real.",
@@ -97,21 +97,16 @@ export default function Home() {
               className="p-3 sm:p-4 bg-terminal-bg/50 border-terminal-border flex items-center justify-center h-full relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-electric-blue/5 to-cyber-teal/10 rounded-xl breathing-gradient" />
-              <div className="relative z-10 flex justify-center">
-                <div className="relative">
-                  <Image
-                    src="/images/headshot-320-cropped.jpg"
-                    alt="Isaac Vazquez - UC Berkeley MBA Student and Product Strategist"
-                    width={320}
-                    height={320}
-                    priority
-                    className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-xl object-cover shadow-lg"
-                    sizes="(max-width: 768px) 256px, (max-width: 1024px) 288px, 320px"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAQABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                  />
-                  <div className="absolute -inset-1 bg-gradient-to-br from-neon-purple/30 to-electric-blue/30 rounded-xl blur-sm opacity-50"></div>
-                </div>
+              <div className="relative z-10 w-full h-full min-h-[400px]">
+                <Image
+                  src="/images/headshot-640-cropped.png"
+                  alt="Isaac Vazquez - UC Berkeley MBA Student and Product Strategist"
+                  fill
+                  priority
+                  className="rounded-xl object-cover shadow-lg"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                />
+                <div className="absolute -inset-1 bg-gradient-to-br from-neon-purple/30 to-electric-blue/30 rounded-xl blur-sm opacity-50 pointer-events-none"></div>
               </div>
             </GlassCard>
           </motion.div>
@@ -141,7 +136,7 @@ export default function Home() {
                   className="text-cyber text-electric-blue mb-6 lg:mb-8"
                   style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}
                 >
-                  productVision()
+                  productVision
                 </Heading>
                 <div 
                   className="text-slate-300 leading-relaxed"
@@ -201,7 +196,7 @@ export default function Home() {
             
             <div className="relative z-10 space-y-6">
               <Heading level={2} className="text-cyber text-electric-blue text-xl lg:text-2xl mb-4">
-                isaac.getProductJourney()
+                isaac.getJourney()
               </Heading>
               <FunFacts />
             </div>

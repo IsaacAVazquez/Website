@@ -238,14 +238,15 @@ export async function POST(request: NextRequest) {
           });
         }
 
-      case 'cache-stats':
+      case 'cache-stats': {
         const stats = unifiedFantasyProsAPI.getCacheStats();
         return NextResponse.json({
           success: true,
           cacheStats: stats
         });
+      }
 
-      case 'test-config':
+      case 'test-config': {
         // Test configuration without storing sensitive data
         const testResult = {
           hasApiKey: !!process.env.FANTASYPROS_API_KEY,
@@ -259,6 +260,7 @@ export async function POST(request: NextRequest) {
           config: testResult,
           message: 'Configuration check completed'
         });
+      }
 
       default:
         return NextResponse.json({

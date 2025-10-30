@@ -35,19 +35,22 @@ async function loadOverallDataForFormat(scoringFormat: ScoringFormat): Promise<P
     
     // Dynamic import based on scoring format
     switch (scoringFormat) {
-      case 'PPR':
+      case 'PPR': {
         const pprData = await import('@/data/overallDataPPR');
         overallPlayers = pprData.overallPlayers;
         break;
-      case 'STD':
+      }
+      case 'STD': {
         const stdData = await import('@/data/overallDataStandard');
         overallPlayers = stdData.overallPlayers;
         break;
+      }
       case 'HALF':
-      default:
+      default: {
         const halfData = await import('@/data/overallData');
         overallPlayers = halfData.overallPlayers;
         break;
+      }
     }
     
     return overallPlayers;

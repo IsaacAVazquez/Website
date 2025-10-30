@@ -204,11 +204,11 @@ export async function POST(request: NextRequest) {
           });
         }
 
-      case 'cache-stats':
+      case 'cache-stats': {
         const now = Date.now();
         const validEntries = Array.from(tierCache.values()).filter(entry => entry.expires > now);
         const expiredEntries = tierCache.size - validEntries.length;
-        
+
         return NextResponse.json({
           success: true,
           cacheStats: {
@@ -220,13 +220,14 @@ export async function POST(request: NextRequest) {
               : null
           }
         });
+      }
 
-      case 'warm-cache':
+      case 'warm-cache': {
         // Pre-calculate tiers for common combinations
         const positions: Position[] = ['QB', 'RB', 'WR', 'TE'];
         const formats: ScoringFormat[] = ['PPR', 'HALF', 'STD'];
         const warmupOptions = validateTierOptions(body.options || {});
-        
+
         let warmedCount = 0;
         for (const pos of positions) {
           for (const format of formats) {
@@ -243,6 +244,7 @@ export async function POST(request: NextRequest) {
           success: true,
           message: `Cache warmed for ${warmedCount} position/format combinations`
         });
+      }
 
       default:
         return NextResponse.json({

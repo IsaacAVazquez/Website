@@ -13,7 +13,7 @@ export function useBlogPost() {
 
   useEffect(() => {
     // Check if we're on a blog post page
-    const blogPostMatch = pathname.match(/^\/blog\/([^\/]+)$/);
+    const blogPostMatch = pathname.match(/^\/blog\/([^/]+)$/);
     
     if (blogPostMatch) {
       const slug = blogPostMatch[1];

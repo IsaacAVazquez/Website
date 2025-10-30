@@ -326,19 +326,20 @@ class UnifiedFantasyProsAPI {
     const currentYear = new Date().getFullYear();
     
     switch (method) {
-      case 'api':
+      case 'api': {
         if (!process.env.FANTASYPROS_API_KEY) {
           throw new Error('FANTASYPROS_API_KEY not configured');
         }
         const apiPlayers = await fantasyProsAPI.getConsensusRankings(
-          currentYear, 
-          0, 
-          scoringFormat as 'STD' | 'PPR' | 'HALF', 
+          currentYear,
+          0,
+          scoringFormat as 'STD' | 'PPR' | 'HALF',
           position
         );
         return { players: apiPlayers };
+      }
 
-      case 'session':
+      case 'session': {
         if (!process.env.FANTASYPROS_USERNAME || !process.env.FANTASYPROS_PASSWORD) {
           throw new Error('FantasyPros credentials not configured');
         }
@@ -348,10 +349,12 @@ class UnifiedFantasyProsAPI {
         );
         const sessionPlayers = await fantasyProsSession.getRankings(position, 0, scoringFormat);
         return { players: sessionPlayers };
+      }
 
-      case 'free':
+      case 'free': {
         const freePlayers = await fantasyProsFreeAccess.getPublicRankings(position, scoringFormat);
         return { players: freePlayers };
+      }
 
       default:
         throw new Error(`Unknown fetch method: ${method}`);
@@ -605,9 +608,10 @@ class UnifiedFantasyProsAPI {
   private getSampleData(position: Position, scoringFormat: string = 'HALF'): Player[] {
     // Import sample data dynamically to avoid circular dependencies
     try {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { getSampleDataByPosition } = require('@/data/sampleData');
       // Convert scoring format to match sample data format
-      const sampleFormat = scoringFormat === 'HALF' ? 'HALF_PPR' : 
+      const sampleFormat = scoringFormat === 'HALF' ? 'HALF_PPR' :
                           scoringFormat === 'PPR' ? 'PPR' : 'STD';
       return getSampleDataByPosition(position, sampleFormat as ScoringFormat);
     } catch (error) {

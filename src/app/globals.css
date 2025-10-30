@@ -1,29 +1,42 @@
 @import "tailwindcss";
 
-/* Focus Indicators for Accessibility */
-*:focus {
-  outline: none;
+/* ============================================
+   CSS LAYERS - 2025 Best Practice
+   Organize styles by specificity and purpose
+   ============================================ */
+@layer base, components, utilities, overrides;
+
+/* ============================================
+   BASE LAYER - Reset and Foundations
+   ============================================ */
+@layer base {
+  /* Focus Indicators for Accessibility */
+  *:focus {
+    outline: none;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--electric-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 }
 
-*:focus-visible {
-  outline: 2px solid var(--electric-blue);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
+@layer base {
+  button:focus-visible,
+  a:focus-visible {
+    outline: 3px solid var(--electric-blue);
+    outline-offset: 3px;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+  }
 
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid var(--electric-blue);
-  outline-offset: 3px;
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
-}
-
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--matrix-green);
-  outline-offset: 0;
-  border-color: var(--matrix-green);
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--matrix-green);
+    outline-offset: 0;
+    border-color: var(--matrix-green);
+  }
 }
 
 /* Cyberpunk Typography System */
@@ -48,80 +61,150 @@ select:focus-visible {
   --text-7xl: clamp(4.5rem, 3rem + 7.5vw, 6rem);
 }
 
-/* Cyberpunk Professional Color Palette */
+/* ============================================
+   DESIGN TOKENS - 2025 Best Practice
+   Semantic naming with contextual purpose
+   ============================================ */
 :root {
-  /* Primary Cyberpunk Colors */
-  --electric-blue: #00F5FF;
-  --matrix-green: #39FF14;
-  --warning-amber: #FFB800;
-  --error-red: #FF073A;
-  --neon-purple: #BF00FF;
-  --cyber-teal: #00FFBF;
-  
-  /* Professional Neutrals */
-  --slate-900: #0F172A;
-  --slate-800: #1E293B;
-  --slate-700: #334155;
-  --slate-600: #475569;
-  --slate-400: #94A3B8;
-  --slate-200: #E2E8F0;
-  --slate-50: #F8FAFC;
-  
-  /* Light Mode Accessible Colors */
-  --electric-blue-light: #0066CC;  /* WCAG AA compliant for light backgrounds */
-  --matrix-green-light: #228B22;   /* WCAG AA compliant for light backgrounds */
-  --cyber-teal-light: #20B2AA;     /* WCAG AA compliant for light backgrounds */
-  --neon-purple-light: #8B008B;    /* WCAG AA compliant for light backgrounds */
-  --error-red-light: #D62D20;      /* Improved contrast for light mode */
-  
+  /* Semantic Color System - Contextual Names */
+  --color-primary: #00F5FF;          /* Electric Blue - Primary actions */
+  --color-secondary: #39FF14;        /* Matrix Green - Success, highlights */
+  --color-accent: #BF00FF;           /* Neon Purple - Tertiary accent */
+  --color-tertiary: #00FFBF;         /* Cyber Teal - Additional accent */
+  --color-warning: #FFB800;          /* Warning Amber - Warnings */
+  --color-error: #FF073A;            /* Error Red - Errors */
+
+  /* Legacy support - can be deprecated later */
+  --electric-blue: var(--color-primary);
+  --matrix-green: var(--color-secondary);
+  --neon-purple: var(--color-accent);
+  --cyber-teal: var(--color-tertiary);
+  --warning-amber: var(--color-warning);
+  --error-red: var(--color-error);
+
+  /* Neutral Scale - Professional grays */
+  --neutral-50: #F8FAFC;
+  --neutral-100: #F1F5F9;
+  --neutral-200: #E2E8F0;
+  --neutral-300: #CBD5E1;
+  --neutral-400: #94A3B8;
+  --neutral-500: #64748B;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1E293B;
+  --neutral-900: #0F172A;
+  --neutral-950: #020617;
+
+  /* Legacy support */
+  --slate-50: var(--neutral-50);
+  --slate-200: var(--neutral-200);
+  --slate-400: var(--neutral-400);
+  --slate-600: var(--neutral-600);
+  --slate-700: var(--neutral-700);
+  --slate-800: var(--neutral-800);
+  --slate-900: var(--neutral-900);
+
+  /* Accessible Light Mode Colors - WCAG AA */
+  --color-primary-accessible: #0066CC;
+  --color-secondary-accessible: #228B22;
+  --color-accent-accessible: #8B008B;
+  --color-tertiary-accessible: #20B2AA;
+  --color-error-accessible: #D62D20;
+
   /* Terminal Interface Colors */
   --terminal-bg: #0A0A0B;
   --terminal-border: #1A1A1B;
   --terminal-text: #00FF00;
-  --terminal-cursor: #00F5FF;
-  
+  --terminal-cursor: var(--color-primary);
+
+  /* Semantic Surface Colors */
+  --surface-primary: rgba(248, 250, 252, 0.95);
+  --surface-secondary: rgba(241, 245, 249, 0.9);
+  --surface-elevated: rgba(255, 255, 255, 0.1);
+  --surface-overlay: rgba(15, 23, 42, 0.95);
+
+  /* Semantic Text Colors */
+  --text-primary: var(--neutral-900);
+  --text-secondary: var(--neutral-600);
+  --text-tertiary: var(--neutral-400);
+  --text-inverse: var(--neutral-50);
+
+  /* Semantic Border Colors */
+  --border-primary: rgba(148, 163, 184, 0.3);
+  --border-secondary: rgba(203, 213, 225, 0.2);
+  --border-accent: var(--color-primary);
+
   /* Refined Glow Effects */
-  --glow-electric: 0 0 20px rgba(0, 245, 255, 0.3);
-  --glow-matrix: 0 0 20px rgba(57, 255, 20, 0.3);
-  --glow-purple: 0 0 20px rgba(191, 0, 255, 0.3);
-  --glow-amber: 0 0 20px rgba(255, 184, 0, 0.3);
+  --glow-primary: 0 0 20px rgba(0, 245, 255, 0.3);
+  --glow-secondary: 0 0 20px rgba(57, 255, 20, 0.3);
+  --glow-accent: 0 0 20px rgba(191, 0, 255, 0.3);
+  --glow-warning: 0 0 20px rgba(255, 184, 0, 0.3);
   --glow-subtle: 0 0 15px rgba(0, 245, 255, 0.2);
-  
-  /* Light Mode Professional */
-  --bg-primary: rgba(248, 250, 252, 0.95);
-  --bg-secondary: rgba(241, 245, 249, 0.9);
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --border-color: rgba(148, 163, 184, 0.3);
-  --accent-primary: var(--electric-blue-light);
-  --accent-secondary: var(--matrix-green-light);
+
+  /* Legacy support */
+  --glow-electric: var(--glow-primary);
+  --glow-matrix: var(--glow-secondary);
+  --glow-purple: var(--glow-accent);
+  --glow-amber: var(--glow-warning);
+
+  /* Spacing System - 8px base with semantic names */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4rem;     /* 64px */
+  --space-4xl: 6rem;     /* 96px */
 }
 
+/* ============================================
+   DARK MODE - Enhanced tokens
+   ============================================ */
 .dark {
-  /* Dark Mode Cyberpunk */
-  --bg-primary: rgba(10, 10, 11, 0.95);
-  --bg-secondary: rgba(15, 23, 42, 0.9);
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --border-color: rgba(51, 65, 85, 0.4);
-  --accent-primary: var(--electric-blue);
-  --accent-secondary: var(--matrix-green);
-  
-  /* Dark mode cyberpunk adjustments */
-  --electric-blue: #00D4FF;
-  --matrix-green: #00FF41;
-  --cyber-teal: #00E6CC;
-  --neon-purple: #DD00FF;
+  /* Surface Colors */
+  --surface-primary: rgba(10, 10, 11, 0.95);
+  --surface-secondary: rgba(15, 23, 42, 0.9);
+  --surface-elevated: rgba(30, 41, 59, 0.5);
+  --surface-overlay: rgba(10, 10, 11, 0.98);
+
+  /* Text Colors */
+  --text-primary: var(--neutral-50);
+  --text-secondary: var(--neutral-400);
+  --text-tertiary: var(--neutral-500);
+  --text-inverse: var(--neutral-900);
+
+  /* Border Colors */
+  --border-primary: rgba(51, 65, 85, 0.4);
+  --border-secondary: rgba(30, 41, 59, 0.3);
+  --border-accent: var(--color-primary);
+
+  /* Enhanced Cyberpunk Colors for Dark Mode */
+  --color-primary: #00D4FF;
+  --color-secondary: #00FF41;
+  --color-accent: #DD00FF;
+  --color-tertiary: #00E6CC;
+
+  /* Legacy support */
+  --electric-blue: var(--color-primary);
+  --matrix-green: var(--color-secondary);
+  --neon-purple: var(--color-accent);
+  --cyber-teal: var(--color-tertiary);
 }
 
-/* Cyberpunk Typography Classes */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  line-height: 1.2;  /* Improved from 1.1 for better readability */
-  text-transform: uppercase;
-  margin-bottom: 0.5em;  /* Add consistent bottom margin */
+/* ============================================
+   TYPOGRAPHY - 2025 Best Practices
+   ============================================ */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+    text-wrap: balance;  /* 2025: Better heading text wrapping */
+  }
 }
 
 .heading-hero {
@@ -139,20 +222,27 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em;
 }
 
-body {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  line-height: 1.7;  /* Improved from 1.6 for better readability */
-}
+@layer base {
+  body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.7;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-align: left;
+  }
 
-/* Improved paragraph spacing for readability */
-p {
-  margin-bottom: 1em;
-  line-height: 1.7;
-}
+  /* Improved paragraph spacing with modern text-wrap */
+  p {
+    margin-bottom: 1em;
+    line-height: 1.7;
+    text-wrap: pretty;  /* 2025: Better paragraph text wrapping */
+    max-inline-size: 75ch;  /* Logical property for optimal reading width */
+  }
 
-p + p {
-  margin-top: 0.5em;
+  p + p {
+    margin-top: 0.5em;
+  }
 }
 
 /* Dyslexia-friendly typography improvements */
@@ -328,24 +418,47 @@ li {
   transition: color var(--transition-standard), background-color var(--transition-standard), border-color var(--transition-standard);
 }
 
-/* Advanced Glassmorphism System */
-.glass-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
+/* ============================================
+   ADVANCED GLASSMORPHISM - 2025 Enhanced
+   ============================================ */
+@layer components {
+  .glass-card {
+    background: var(--surface-elevated);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-secondary);
+    border-radius: 1rem;  /* Using rem for better scalability */
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    /* Performance optimization */
+    will-change: transform;
+    transform: translateZ(0);
+  }
 
-.dark .glass-card {
-  background: rgba(17, 17, 17, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  .dark .glass-card {
+    background: rgba(17, 17, 17, 0.3);
+    border: 1px solid var(--border-secondary);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* 2025: Parent state styling with :has() */
+  .glass-card:has(> .featured) {
+    border-color: var(--color-primary);
+    box-shadow:
+      0 12px 40px rgba(0, 245, 255, 0.2),
+      inset 0 1px 0 rgba(0, 245, 255, 0.3);
+  }
+
+  .glass-card:has(> .error) {
+    border-color: var(--color-error);
+  }
+
+  .glass-card:has(> .success) {
+    border-color: var(--color-secondary);
+  }
 }
 
 /* 5-Tier Elevation System */
@@ -735,10 +848,50 @@ a:focus-visible {
   border: 0;
 }
 
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS - 2025 Best Practices
+   ============================================ */
+
+/* Offscreen content optimization - 50-70% faster rendering */
+.offscreen-content {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* Performance hints for complex sections */
+.complex-section {
+  content-visibility: auto;
+  contain: layout style paint;
+}
+
+/* Container Query Support - 2025 Feature */
+.container {
+  container-type: inline-size;
+  container-name: card;
+}
+
+.container-normal {
+  container-type: normal;
+}
+
+/* Container Query Utilities */
+@container card (min-width: 400px) {
+  .container-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+@container card (min-width: 600px) {
+  .container-content {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 /* Custom Terminal Scrollbar */
 .terminal-scroll {
   scrollbar-width: thin;
-  scrollbar-color: var(--electric-blue) var(--terminal-bg);
+  scrollbar-color: var(--color-primary) var(--terminal-bg);
 }
 
 .terminal-scroll::-webkit-scrollbar {

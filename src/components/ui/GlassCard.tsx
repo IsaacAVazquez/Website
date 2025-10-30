@@ -10,6 +10,10 @@ interface GlassCardProps extends Omit<HTMLMotionProps<"div">, "ref"> {
   floating?: boolean;
   cursorGlow?: boolean;
   noiseTexture?: boolean;
+  /** 2025: Performance optimization for offscreen content */
+  offscreen?: boolean;
+  /** 2025: Container query support */
+  containerQuery?: boolean;
   children: React.ReactNode;
   className?: string;
 }
@@ -22,6 +26,8 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
       floating = false,
       cursorGlow = false,
       noiseTexture = false,
+      offscreen = false,
+      containerQuery = false,
       children,
       className,
       ...props
@@ -56,7 +62,9 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
       interactive && "glass-interactive",
       floating && "floating",
       cursorGlow && "cursor-glow",
-      noiseTexture && "noise-texture"
+      noiseTexture && "noise-texture",
+      offscreen && "offscreen-content",  // 2025: Performance
+      containerQuery && "container"       // 2025: Container queries
     );
 
     return (
