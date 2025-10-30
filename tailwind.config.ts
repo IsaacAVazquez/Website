@@ -108,6 +108,10 @@ const config: Config = {
         'float': 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 3s ease-in-out infinite',
         'gradient-shift': 'gradient-shift 8s ease infinite',
+        'skeleton-loading': 'skeleton-loading 1.5s ease-in-out infinite',
+        'slide-in-up': 'slide-in-up 0.3s ease',
+        'shake': 'shake 0.3s cubic-bezier(.36,.07,.19,.97)',
+        'spinner-rotate': 'spinner-rotate 0.75s linear infinite',
       },
       keyframes: {
         float: {
@@ -118,6 +122,42 @@ const config: Config = {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
         },
+        'skeleton-loading': {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
+        },
+        'slide-in-up': {
+          'from': {
+            opacity: '0',
+            transform: 'translateY(10px)',
+          },
+          'to': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        'shake': {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '25%': { transform: 'translateX(-5px)' },
+          '75%': { transform: 'translateX(5px)' },
+        },
+        'spinner-rotate': {
+          'to': { transform: 'rotate(360deg)' },
+        },
+      },
+      transitionDuration: {
+        '0': '0ms',
+        '400': '400ms',
+      },
+      transitionTimingFunction: {
+        'spring': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'smooth': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+      },
+      minHeight: {
+        'touch': '44px',
+      },
+      minWidth: {
+        'touch': '44px',
       },
     },
   },

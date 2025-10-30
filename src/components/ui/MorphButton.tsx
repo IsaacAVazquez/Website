@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion, HTMLMotionProps, useReducedMotion } from "framer-motion";
 import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -12,6 +12,8 @@ interface MorphButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
   iconPosition?: "left" | "right";
   children: React.ReactNode;
   className?: string;
+  /** Accessible label for the button action */
+  ariaLabel?: string;
 }
 
 export const MorphButton = forwardRef<HTMLButtonElement, MorphButtonProps>(
@@ -25,23 +27,27 @@ export const MorphButton = forwardRef<HTMLButtonElement, MorphButtonProps>(
       children,
       className,
       disabled,
+      ariaLabel,
       ...props
     },
     ref
   ) => {
-    const baseClasses = "morph-button relative overflow-hidden font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+    // 2025: Respect user's motion preferences
+    const shouldReduceMotion = useReducedMotion();
+
+    const baseClasses = "morph-button tap-target relative overflow-hidden font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300";
 
     const variants = {
-      primary: "bg-gradient-to-r from-electric-blue to-cyber-teal text-white focus:ring-electric-blue",
-      secondary: "bg-gradient-to-r from-neon-purple to-vivid-pink text-white focus:ring-neon-purple",
+      primary: "bg-gradient-to-r from-electric-blue to-cyber-teal text-white focus:ring-electric-blue hover:shadow-glow-blue",
+      secondary: "bg-gradient-to-r from-neon-purple to-vivid-pink text-white focus:ring-neon-purple hover:shadow-glow-purple",
       outline: "bg-transparent border-2 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-white focus:ring-electric-blue",
       ghost: "bg-transparent text-electric-blue hover:bg-electric-blue/10 focus:ring-electric-blue",
     };
 
     const sizes = {
-      sm: "px-3 py-1.5 text-sm rounded-lg",
-      md: "px-6 py-3 text-base rounded-xl",
-      lg: "px-8 py-4 text-lg rounded-2xl",
+      sm: "px-3 py-1.5 text-sm rounded-lg min-h-[36px]",
+      md: "px-6 py-3 text-base rounded-xl min-h-[44px]",
+      lg: "px-8 py-4 text-lg rounded-2xl min-h-[52px]",
     };
 
     return (
@@ -56,13 +62,14 @@ export const MorphButton = forwardRef<HTMLButtonElement, MorphButtonProps>(
         disabled={disabled || loading}
         aria-disabled={disabled || loading}
         aria-busy={loading}
-        aria-label={loading ? "Loading..." : undefined}
-        whileHover={!disabled ? { scale: 1.02, y: -2 } : undefined}
-        whileTap={!disabled ? { scale: 0.98, y: 1 } : undefined}
-        initial={{ opacity: 0, scale: 0.9 }}
+        aria-label={ariaLabel || (loading ? "Loading..." : undefined)}
+        aria-live={loading ? "polite" : undefined}
+        whileHover={!disabled && !shouldReduceMotion ? { scale: 1.03, y: -2 } : undefined}
+        whileTap={!disabled && !shouldReduceMotion ? { scale: 0.98, y: 1 } : undefined}
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{
-          duration: 0.3,
+          duration: shouldReduceMotion ? 0 : 0.3,
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
         {...props}

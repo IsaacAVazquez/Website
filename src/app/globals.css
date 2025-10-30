@@ -236,16 +236,18 @@
     font-size: var(--text-base);
     line-height: 1.7;
     font-weight: 400;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;  /* Increased for better readability */
+    word-spacing: 0.05em;  /* Added for better scanning */
     text-align: left;
   }
 
   /* Improved paragraph spacing with modern text-wrap */
   p {
     margin-bottom: 1em;
-    line-height: 1.7;
+    line-height: 1.8;  /* Increased from 1.7 for better readability */
     text-wrap: pretty;  /* 2025: Better paragraph text wrapping */
     max-inline-size: 75ch;  /* Logical property for optimal reading width */
+    letter-spacing: 0.02em;  /* Added for consistency */
   }
 
   p + p {
@@ -286,6 +288,26 @@ li {
   letter-spacing: 0.02em;
   word-spacing: 0.1em;
   max-width: 75ch;  /* Optimal reading width */
+  text-align: left;  /* Ensure consistent left alignment */
+}
+
+/* Optimized reading experience for blog and articles */
+.article-text {
+  font-size: clamp(1.0625rem, 2.5vw, 1.125rem);
+  line-height: 1.9;  /* Extra generous for long-form reading */
+  letter-spacing: 0.025em;
+  word-spacing: 0.12em;
+  max-width: 70ch;  /* Slightly narrower for optimal reading */
+  text-align: left;
+}
+
+/* Touch-friendly tap targets for mobile */
+.tap-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .font-accent {
@@ -872,6 +894,83 @@ a:focus-visible {
   contain: layout style paint;
 }
 
+/* Image loading optimization */
+.optimized-image {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Lazy loading skeleton */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--neutral-200) 0%,
+    var(--neutral-300) 50%,
+    var(--neutral-200) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--neutral-800) 0%,
+    var(--neutral-700) 50%,
+    var(--neutral-800) 100%
+  );
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Loading states */
+.loading-spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-rotate 0.75s linear infinite;
+}
+
+@keyframes spinner-rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* Progress indicators */
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: var(--neutral-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.dark .progress-bar {
+  background: var(--neutral-800);
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--progress, 0%);
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
 /* Container Query Support - 2025 Feature */
 .container {
   container-type: inline-size;
@@ -950,3 +1049,195 @@ a:focus-visible {
   pointer-events: none;
   z-index: 1;
 }
+
+/* ============================================
+   FORM VALIDATION & FEEDBACK - 2025 Best Practices
+   ============================================ */
+
+/* Input field states */
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  transition: all var(--transition-standard);
+}
+
+input:invalid:not(:focus):not(:placeholder-shown),
+textarea:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--color-error);
+  background-color: rgba(255, 7, 58, 0.05);
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+  border-color: var(--color-secondary);
+}
+
+/* Visual feedback for form validation */
+.form-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-error);
+  font-size: var(--text-sm);
+  margin-top: 0.25rem;
+  animation: shake 0.3s cubic-bezier(.36,.07,.19,.97);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.form-success {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-secondary);
+  font-size: var(--text-sm);
+  margin-top: 0.25rem;
+  animation: slide-in-up 0.3s ease;
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Visual checkmark for valid inputs */
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input:valid:not(:placeholder-shown) ~ .validation-icon::after {
+  content: '✓';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+/* ============================================
+   INTERACTIVE MICROINTERACTIONS - 2025 Best Practices
+   ============================================ */
+
+/* Button ripple effect */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s, opacity 0.6s;
+  opacity: 0;
+}
+
+.ripple-effect:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+/* Scale on hover */
+.hover-scale {
+  transition: transform var(--transition-standard);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Smooth color transitions */
+.smooth-color {
+  transition: color var(--transition-standard), background-color var(--transition-standard);
+}
+
+/* ============================================
+   SCROLL-TRIGGERED ANIMATIONS - 2025 Best Practices
+   ============================================ */
+
+/* Fade in on scroll */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide in from left */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide in from right */
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger animation utility */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add delay classes for stagger effect */
+.stagger-delay-1 { transition-delay: 100ms; }
+.stagger-delay-2 { transition-delay: 200ms; }
+.stagger-delay-3 { transition-delay: 300ms; }
+.stagger-delay-4 { transition-delay: 400ms; }
+.stagger-delay-5 { transition-delay: 500ms; }

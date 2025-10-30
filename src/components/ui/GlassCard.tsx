@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion, HTMLMotionProps, useReducedMotion } from "framer-motion";
 import { forwardRef, useRef, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -14,6 +14,10 @@ interface GlassCardProps extends Omit<HTMLMotionProps<"div">, "ref"> {
   offscreen?: boolean;
   /** 2025: Container query support */
   containerQuery?: boolean;
+  /** Accessible label for interactive cards */
+  ariaLabel?: string;
+  /** Accessible description for the card content */
+  ariaDescription?: string;
   children: React.ReactNode;
   className?: string;
 }
@@ -28,6 +32,8 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
       noiseTexture = false,
       offscreen = false,
       containerQuery = false,
+      ariaLabel,
+      ariaDescription,
       children,
       className,
       ...props
@@ -35,6 +41,7 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
     ref
   ) => {
     const cardRef = useRef<HTMLDivElement>(null);
+    const shouldReduceMotion = useReducedMotion();
 
     useEffect(() => {
       const handleMouseMove = (e: MouseEvent) => {
@@ -59,8 +66,8 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
     const baseClasses = "glass-card";
     const elevationClass = `elevation-${elevation}`;
     const conditionalClasses = twMerge(
-      interactive && "glass-interactive",
-      floating && "floating",
+      interactive && "glass-interactive tap-target",
+      floating && !shouldReduceMotion && "floating",
       cursorGlow && "cursor-glow",
       noiseTexture && "noise-texture",
       offscreen && "offscreen-content",  // 2025: Performance
@@ -76,17 +83,18 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
           conditionalClasses,
           className
         )}
-        role={interactive ? "button" : "region"}
+        role={interactive ? "button" : "article"}
         tabIndex={interactive ? 0 : undefined}
-        aria-label={interactive ? "Interactive card" : undefined}
-        initial={{ opacity: 0, y: 20 }}
+        aria-label={ariaLabel || (interactive ? "Interactive card" : undefined)}
+        aria-description={ariaDescription}
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
-          duration: 0.6,
+          duration: shouldReduceMotion ? 0 : 0.6,
           ease: [0.34, 1.56, 0.64, 1],
         }}
         whileHover={
-          interactive
+          interactive && !shouldReduceMotion
             ? {
                 scale: 1.02,
                 y: -4,
@@ -95,7 +103,7 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
             : undefined
         }
         whileTap={
-          interactive
+          interactive && !shouldReduceMotion
             ? { scale: 0.98, y: 2 }
             : undefined
         }
@@ -110,6 +118,10 @@ export const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
               }
             : undefined
         }
+        // Performance optimization
+        style={{
+          willChange: interactive ? 'transform' : undefined,
+        }}
         {...props}
       >
         {children}
