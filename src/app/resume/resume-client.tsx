@@ -5,7 +5,7 @@ import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { motion, useInView } from "framer-motion";
-import { IconDownload, IconMail, IconBrandLinkedin, IconPhone, IconTrendingUp, IconUsers, IconStar, IconChartBar, IconCode, IconCloud, IconBrush, IconDatabase } from "@tabler/icons-react";
+import { IconDownload, IconMail, IconBrandLinkedin, IconTrendingUp, IconUsers, IconStar, IconChartBar, IconCode, IconCloud, IconBrush, IconDatabase } from "@tabler/icons-react";
 import Link from "next/link";
 
 const skillCategories = [
@@ -161,14 +161,6 @@ export default function Resume() {
             {/* Contact Info - Centered */}
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-slate-300 text-sm mb-8">
               <a
-                href="tel:(850)591-0159"
-                className="flex items-center gap-2 hover:text-electric-blue transition-colors font-terminal"
-              >
-                <IconPhone className="w-4 h-4" />
-                (850) 591-0159
-              </a>
-              <span className="text-matrix-green/50">•</span>
-              <a
                 href="mailto:isaacvazquez@berkeley.edu"
                 className="flex items-center gap-2 hover:text-electric-blue transition-colors font-terminal"
               >
@@ -231,9 +223,9 @@ export default function Resume() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="bg-gradient-to-br from-matrix-green/10 to-matrix-green/5 rounded-xl p-4 sm:p-5 border border-matrix-green/30 hover:border-matrix-green/60 transition-all hover:scale-105 flex flex-col items-center text-center"
+                  className="bg-gradient-to-br from-matrix-green/10 to-matrix-green/5 rounded-xl p-4 sm:p-6 border border-matrix-green/30 hover:border-matrix-green/60 transition-all hover:scale-105 flex flex-col items-center text-center"
                 >
-                  <div className="p-2 bg-matrix-green/20 rounded-lg mb-3">
+                  <div className="p-2 bg-matrix-green/20 rounded-lg mb-4">
                     <IconTrendingUp className="w-5 h-5 text-matrix-green" />
                   </div>
                   <span className="text-xs sm:text-sm text-slate-400 font-terminal mb-2">Revenue Generated</span>
@@ -247,9 +239,9 @@ export default function Resume() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="bg-gradient-to-br from-electric-blue/10 to-electric-blue/5 rounded-xl p-4 sm:p-5 border border-electric-blue/30 hover:border-electric-blue/60 transition-all hover:scale-105 flex flex-col items-center text-center"
+                  className="bg-gradient-to-br from-electric-blue/10 to-electric-blue/5 rounded-xl p-4 sm:p-6 border border-electric-blue/30 hover:border-electric-blue/60 transition-all hover:scale-105 flex flex-col items-center text-center"
                 >
-                  <div className="p-2 bg-electric-blue/20 rounded-lg mb-3">
+                  <div className="p-2 bg-electric-blue/20 rounded-lg mb-4">
                     <IconUsers className="w-5 h-5 text-electric-blue" />
                   </div>
                   <span className="text-xs sm:text-sm text-slate-400 font-terminal mb-2">Users Served</span>
@@ -263,9 +255,9 @@ export default function Resume() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="bg-gradient-to-br from-neon-purple/10 to-neon-purple/5 rounded-xl p-4 sm:p-5 border border-neon-purple/30 hover:border-neon-purple/60 transition-all hover:scale-105 flex flex-col items-center text-center"
+                  className="bg-gradient-to-br from-neon-purple/10 to-neon-purple/5 rounded-xl p-4 sm:p-6 border border-neon-purple/30 hover:border-neon-purple/60 transition-all hover:scale-105 flex flex-col items-center text-center"
                 >
-                  <div className="p-2 bg-neon-purple/20 rounded-lg mb-3">
+                  <div className="p-2 bg-neon-purple/20 rounded-lg mb-4">
                     <IconStar className="w-5 h-5 text-neon-purple" />
                   </div>
                   <span className="text-xs sm:text-sm text-slate-400 font-terminal mb-2">NPS Increase</span>
@@ -280,9 +272,9 @@ export default function Resume() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="bg-gradient-to-br from-cyber-teal/10 to-cyber-teal/5 rounded-xl p-4 sm:p-5 border border-cyber-teal/30 hover:border-cyber-teal/60 transition-all hover:scale-105 flex flex-col items-center text-center"
+                  className="bg-gradient-to-br from-cyber-teal/10 to-cyber-teal/5 rounded-xl p-4 sm:p-6 border border-cyber-teal/30 hover:border-cyber-teal/60 transition-all hover:scale-105 flex flex-col items-center text-center"
                 >
-                  <div className="p-2 bg-cyber-teal/20 rounded-lg mb-3">
+                  <div className="p-2 bg-cyber-teal/20 rounded-lg mb-4">
                     <IconChartBar className="w-5 h-5 text-cyber-teal" />
                   </div>
                   <span className="text-xs sm:text-sm text-slate-400 font-terminal mb-2">Defect Reduction</span>
@@ -303,7 +295,7 @@ export default function Resume() {
           className="mb-6 sm:mb-8 md:mb-10"
         >
           <GlassCard elevation={3} className="p-6 sm:p-8 md:p-10">
-            <Heading level={2} className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-electric-blue font-heading flex items-center gap-3">
+            <Heading level={2} className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-electric-blue font-heading flex items-center gap-4">
               <div className="w-1.5 h-7 sm:h-8 bg-electric-blue rounded-full" />
               EXPERIENCE
             </Heading>
@@ -323,10 +315,10 @@ export default function Resume() {
                 <p className="text-slate-400 text-xs sm:text-sm mb-4 sm:mb-5 md:mb-6 italic leading-relaxed">Civitech is a SaaS tech company that builds software and tools for political candidates to improve voter engagement</p>
 
                 <div className="space-y-4 sm:space-y-5 md:space-y-6">
-                  <div className="relative bg-slate-900/40 rounded-lg p-3 sm:p-4 md:p-5 border border-slate-800/50 hover:border-electric-blue/30 transition-all overflow-hidden group">
+                  <div className="relative bg-slate-900/40 rounded-lg p-4 sm:p-6 border border-slate-800/50 hover:border-electric-blue/30 transition-all overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-r from-electric-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="relative z-10">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 sm:mb-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                         <Heading level={4} className="font-bold text-electric-blue text-base sm:text-lg mb-1 sm:mb-0">Quality Assurance Engineer</Heading>
                         <span className="text-xs sm:text-sm text-slate-400 font-terminal">Feb 2025–Aug 2025</span>
                       </div>
@@ -367,10 +359,10 @@ export default function Resume() {
                     </div>
                   </div>
 
-                  <div className="relative bg-slate-900/40 rounded-lg p-3 sm:p-4 md:p-5 border border-slate-800/50 hover:border-electric-blue/30 transition-all overflow-hidden group">
+                  <div className="relative bg-slate-900/40 rounded-lg p-4 sm:p-6 border border-slate-800/50 hover:border-electric-blue/30 transition-all overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-r from-electric-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="relative z-10">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 sm:mb-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                         <Heading level={4} className="font-bold text-electric-blue text-base sm:text-lg mb-1 sm:mb-0">Quality Assurance Analyst</Heading>
                         <span className="text-xs sm:text-sm text-slate-400 font-terminal">Jan 2022–Jan 2025</span>
                       </div>
@@ -423,10 +415,10 @@ export default function Resume() {
                 <p className="text-slate-400 text-xs sm:text-sm mb-4 sm:mb-5 md:mb-6 italic leading-relaxed">Consultancy that crafted conversational and grassroots digital engagement strategies (acquired by Civitech)</p>
 
                 <div className="space-y-4 sm:space-y-5 md:space-y-6">
-                  <div className="relative bg-slate-900/40 rounded-lg p-3 sm:p-4 md:p-5 border border-slate-800/50 hover:border-matrix-green/30 transition-all overflow-hidden group">
+                  <div className="relative bg-slate-900/40 rounded-lg p-4 sm:p-6 border border-slate-800/50 hover:border-matrix-green/30 transition-all overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-r from-matrix-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="relative z-10">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 sm:mb-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                         <Heading level={4} className="font-bold text-electric-blue text-base sm:text-lg mb-1 sm:mb-0">Client Services Manager</Heading>
                       <span className="text-xs sm:text-sm text-slate-400 font-terminal">Jan 2021–Dec 2021</span>
                     </div>
@@ -447,10 +439,10 @@ export default function Resume() {
                     </div>
                   </div>
 
-                  <div className="relative bg-slate-900/40 rounded-lg p-3 sm:p-4 md:p-5 border border-slate-800/50 hover:border-matrix-green/30 transition-all overflow-hidden group">
+                  <div className="relative bg-slate-900/40 rounded-lg p-4 sm:p-6 border border-slate-800/50 hover:border-matrix-green/30 transition-all overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-r from-matrix-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="relative z-10">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 sm:mb-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                         <Heading level={4} className="font-bold text-electric-blue text-base sm:text-lg mb-1 sm:mb-0">Digital and Data Associate</Heading>
                       <span className="text-xs sm:text-sm text-slate-400 font-terminal">Sep 2019–Dec 2020</span>
                     </div>
@@ -467,10 +459,10 @@ export default function Resume() {
                     </div>
                   </div>
 
-                  <div className="relative bg-slate-900/40 rounded-lg p-3 sm:p-4 md:p-5 border border-slate-800/50 hover:border-matrix-green/30 transition-all overflow-hidden group">
+                  <div className="relative bg-slate-900/40 rounded-lg p-4 sm:p-6 border border-slate-800/50 hover:border-matrix-green/30 transition-all overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-r from-matrix-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="relative z-10">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 sm:mb-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                         <Heading level={4} className="font-bold text-electric-blue text-base sm:text-lg mb-1 sm:mb-0">Digital and Communications Intern</Heading>
                       <span className="text-xs sm:text-sm text-slate-400 font-terminal">Jun 2019–Aug 2019</span>
                     </div>
@@ -496,7 +488,7 @@ export default function Resume() {
           className="mb-6 sm:mb-8 md:mb-10"
         >
           <GlassCard elevation={3} className="p-6 sm:p-8 md:p-10">
-            <Heading level={2} className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-electric-blue font-heading flex items-center gap-3">
+            <Heading level={2} className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-electric-blue font-heading flex items-center gap-4">
               <div className="w-1.5 h-7 sm:h-8 bg-electric-blue rounded-full" />
               EDUCATION
             </Heading>
@@ -505,13 +497,13 @@ export default function Resume() {
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="border-l-2 sm:border-l-3 md:border-l-4 border-matrix-green/50 pl-3 sm:pl-4 md:pl-6 bg-slate-900/40 rounded-lg p-3 sm:p-4 md:p-5 border border-slate-800/50 hover:border-matrix-green/30 transition-colors"
+                  className="border-l-2 sm:border-l-4 border-matrix-green/50 pl-4 sm:pl-6 bg-slate-900/40 rounded-lg p-4 sm:p-6 border border-slate-800/50 hover:border-matrix-green/30 transition-colors"
                 >
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
                     <Heading level={3} className="font-bold text-white text-lg sm:text-xl mb-1 sm:mb-0">University of California, Berkeley – Haas School of Business</Heading>
                     <span className="text-xs sm:text-sm text-slate-400 font-terminal mt-1 sm:mt-0">May 2027</span>
                   </div>
-                  <p className="text-electric-blue font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Master of Business Administration</p>
+                  <p className="text-electric-blue font-semibold mb-2 sm:mb-4 text-sm sm:text-base">Master of Business Administration</p>
                   <ul className="space-y-1.5 sm:space-y-2 text-slate-300 text-xs sm:text-sm">
                     <li className="flex items-start">
                       <span className="text-matrix-green mr-2 sm:mr-3 mt-0.5">▸</span>
@@ -524,7 +516,7 @@ export default function Resume() {
                   </ul>
                 </motion.div>
               )}
-              <div className="relative border-l-2 border-slate-600/50 pl-6 sm:pl-8 md:pl-10 bg-slate-900/40 rounded-lg p-3 sm:p-4 md:p-5 border border-slate-800/50 hover:border-slate-600 transition-all overflow-hidden group">
+              <div className="relative border-l-2 border-slate-600/50 pl-6 sm:pl-8 md:pl-10 bg-slate-900/40 rounded-lg p-4 sm:p-6 border border-slate-800/50 hover:border-slate-600 transition-all overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-700/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute left-0 -translate-x-1/2 top-8 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-slate-600 shadow-md shadow-slate-600/30 border-2 border-terminal-bg" />
                 <div className="relative z-10">
@@ -546,7 +538,7 @@ export default function Resume() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <GlassCard elevation={3} className="p-6 sm:p-8 md:p-10">
-            <Heading level={2} className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-electric-blue font-heading flex items-center gap-3">
+            <Heading level={2} className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-electric-blue font-heading flex items-center gap-4">
               <div className="w-1.5 h-7 sm:h-8 bg-electric-blue rounded-full" />
               SKILLS & EXPERTISE
             </Heading>
@@ -555,35 +547,24 @@ export default function Resume() {
               {skillCategories.map((category, catIndex) => {
                 const IconComponent = category.icon;
                 return (
-                  <div key={category.category} className="bg-slate-900/40 rounded-lg p-3 sm:p-4 md:p-5 border border-slate-800/50 hover:border-electric-blue/30 transition-all">
-                    <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                  <div key={category.category} className="bg-slate-900/40 rounded-lg p-4 sm:p-6 border border-slate-800/50 hover:border-electric-blue/30 transition-all">
+                    <div className="flex items-center gap-2 mb-4">
                       <div className="p-2 bg-electric-blue/10 rounded-lg">
                         <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-electric-blue" />
                       </div>
                       <h3 className="text-xs sm:text-sm font-bold text-electric-blue font-terminal uppercase tracking-wider">{category.category}</h3>
                     </div>
-                    <div className="space-y-3">
+                    <div className="flex flex-wrap gap-2">
                       {category.skills.map((skill, skillIndex) => (
-                        <motion.div
+                        <motion.span
                           key={skill.name}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: (catIndex * 0.1) + (skillIndex * 0.05) }}
-                          className="group"
+                          className="px-4 py-2 bg-slate-800/50 border border-slate-700/50 rounded-lg text-xs sm:text-sm text-slate-300 font-terminal hover:border-matrix-green/50 hover:text-matrix-green transition-all"
                         >
-                          <div className="flex items-center justify-between mb-1.5">
-                            <span className="text-xs sm:text-sm text-slate-300 font-terminal group-hover:text-matrix-green transition-colors">{skill.name}</span>
-                            <span className="text-xs text-slate-500 font-terminal">{skill.level}%</span>
-                          </div>
-                          <div className="relative h-1.5 sm:h-2 bg-slate-800/50 rounded-full overflow-hidden">
-                            <motion.div
-                              initial={{ width: 0 }}
-                              animate={{ width: `${skill.level}%` }}
-                              transition={{ duration: 1, delay: (catIndex * 0.1) + (skillIndex * 0.05) + 0.3, ease: "easeOut" }}
-                              className="absolute top-0 left-0 h-full bg-gradient-to-r from-matrix-green to-electric-blue rounded-full shadow-sm shadow-matrix-green/50 group-hover:shadow-md group-hover:shadow-matrix-green/70 transition-shadow"
-                            />
-                          </div>
-                        </motion.div>
+                          {skill.name}
+                        </motion.span>
                       ))}
                     </div>
                   </div>
@@ -603,12 +584,12 @@ export default function Resume() {
             <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-transparent" />
 
             <div className="relative z-10">
-              <Heading level={2} className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-electric-blue font-heading flex items-center gap-3">
+              <Heading level={2} className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-electric-blue font-heading flex items-center gap-4">
                 <div className="w-1.5 h-7 sm:h-8 bg-gradient-to-b from-electric-blue to-neon-purple rounded-full" />
                 INTERESTS
               </Heading>
 
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 {["FC Barcelona", "Ferrari (F1)", "Big Foodie", "Film & TV Buff", "Travel & Cultural Immersion", "Digital Photography"].map((interest, index) => (
                   <motion.span
                     key={interest}

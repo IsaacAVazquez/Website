@@ -188,7 +188,7 @@ interface FeaturedPostCardProps {
 
 function FeaturedPostCard({ post }: FeaturedPostCardProps) {
   return (
-    <GlassCard className="overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+    <GlassCard interactive className="overflow-hidden">
       <div className="p-6">
         <div className="flex items-center gap-2 mb-3">
           <Badge variant="electric">{post.category}</Badge>
@@ -226,7 +226,7 @@ interface BlogPostCardProps {
 
 function BlogPostCard({ post }: BlogPostCardProps) {
   return (
-    <GlassCard className="overflow-hidden hover:translate-x-1 transition-transform duration-200">
+    <GlassCard interactive className="overflow-hidden">
       <div className="p-6">
         <div className="flex items-center gap-3 mb-3">
           <Badge variant={post.category === 'QA Engineering' ? 'matrix' : 'electric'}>
@@ -264,7 +264,7 @@ interface CategoryCardProps {
 
 function CategoryCard({ title, description, badge, href }: CategoryCardProps) {
   return (
-    <GlassCard className="text-center p-6 hover:scale-[1.02] transition-transform duration-300">
+    <GlassCard interactive className="text-center p-6">
       <Badge variant="outline" className="mb-4">
         {badge}
       </Badge>

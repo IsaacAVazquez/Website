@@ -108,25 +108,25 @@ export function FloatingNav() {
                   <motion.div
                     className={twMerge(
                       "relative p-3 rounded-xl transition-all duration-300",
-                      active 
-                        ? "text-vivid-blue" 
-                        : "text-secondary hover:text-primary"
+                      active
+                        ? "text-electric-blue"
+                        : "text-slate-400 hover:text-electric-blue"
                     )}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ 
+                    transition={{
                       delay: index * 0.1,
                       type: "spring",
-                      stiffness: 300 
+                      stiffness: 300
                     }}
                   >
                     {/* Active indicator */}
                     {active && (
                       <motion.div
                         layoutId="activeIndicator"
-                        className="absolute inset-0 bg-vivid-blue/20 rounded-xl"
+                        className="absolute inset-0 bg-electric-blue/20 rounded-xl"
                         initial={false}
                         transition={{
                           type: "spring",
@@ -146,7 +146,7 @@ export function FloatingNav() {
                     
                     {/* Glow effect */}
                     <motion.div
-                      className="absolute inset-0 rounded-xl bg-vivid-blue/20 blur-md opacity-0"
+                      className="absolute inset-0 rounded-xl bg-electric-blue/20 blur-md opacity-0"
                       whileHover={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
                     />

@@ -23,14 +23,14 @@ export const Heading = ({
   // Determine the semantic heading tag based on level prop
   const HeadingTag = Tag || (`h${level}` as keyof JSX.IntrinsicElements);
   
-  // Responsive sizing based on heading level for better hierarchy
+  // Fluid typography using CSS custom properties from globals.css
   const levelStyles = {
-    1: "text-2xl md:text-4xl lg:text-6xl font-bold", // h1 - largest
-    2: "text-xl md:text-3xl lg:text-5xl font-bold",  // h2 - large  
-    3: "text-lg md:text-2xl lg:text-4xl font-semibold", // h3 - medium
-    4: "text-base md:text-xl lg:text-3xl font-semibold", // h4 - smaller
-    5: "text-sm md:text-lg lg:text-2xl font-medium", // h5 - small
-    6: "text-xs md:text-base lg:text-xl font-medium", // h6 - smallest
+    1: "text-6xl font-bold", // h1 - largest, uses --text-6xl clamp()
+    2: "text-5xl font-bold",  // h2 - large, uses --text-5xl clamp()
+    3: "text-4xl font-semibold", // h3 - medium, uses --text-4xl clamp()
+    4: "text-3xl font-semibold", // h4 - smaller, uses --text-3xl clamp()
+    5: "text-2xl font-medium", // h5 - small, uses --text-2xl clamp()
+    6: "text-xl font-medium", // h6 - smallest, uses --text-xl clamp()
   };
 
   return (

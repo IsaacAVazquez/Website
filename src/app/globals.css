@@ -82,6 +82,14 @@
   --warning-amber: var(--color-warning);
   --error-red: var(--color-error);
 
+  /* Vivid color aliases for components */
+  --vivid-blue: var(--color-primary);
+  --vivid-teal: var(--color-tertiary);
+  --vivid-purple: var(--color-accent);
+  --vivid-pink: #FF1493;
+  --vivid-yellow: var(--color-warning);
+  --vivid-green: var(--color-secondary);
+
   /* Neutral Scale - Professional grays */
   --neutral-50: #F8FAFC;
   --neutral-100: #F1F5F9;

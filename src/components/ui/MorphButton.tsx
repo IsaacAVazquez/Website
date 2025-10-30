@@ -32,10 +32,10 @@ export const MorphButton = forwardRef<HTMLButtonElement, MorphButtonProps>(
     const baseClasses = "morph-button relative overflow-hidden font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
     const variants = {
-      primary: "bg-gradient-to-r from-vivid-blue to-vivid-teal text-white focus:ring-vivid-blue",
-      secondary: "bg-gradient-to-r from-vivid-purple to-vivid-pink text-white focus:ring-vivid-purple",
-      outline: "bg-transparent border-2 border-vivid-blue text-vivid-blue hover:bg-vivid-blue hover:text-white focus:ring-vivid-blue",
-      ghost: "bg-transparent text-vivid-blue hover:bg-vivid-blue/10 focus:ring-vivid-blue",
+      primary: "bg-gradient-to-r from-electric-blue to-cyber-teal text-white focus:ring-electric-blue",
+      secondary: "bg-gradient-to-r from-neon-purple to-vivid-pink text-white focus:ring-neon-purple",
+      outline: "bg-transparent border-2 border-electric-blue text-electric-blue hover:bg-electric-blue hover:text-white focus:ring-electric-blue",
+      ghost: "bg-transparent text-electric-blue hover:bg-electric-blue/10 focus:ring-electric-blue",
     };
 
     const sizes = {
@@ -69,7 +69,7 @@ export const MorphButton = forwardRef<HTMLButtonElement, MorphButtonProps>(
       >
         {/* Background overlay for hover effect */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-vivid-teal to-vivid-purple opacity-0 transition-opacity duration-300"
+          className="absolute inset-0 bg-gradient-to-r from-cyber-teal to-neon-purple opacity-0 transition-opacity duration-300"
           whileHover={{ opacity: variant === "primary" ? 1 : 0 }}
         />
 

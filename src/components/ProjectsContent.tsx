@@ -41,7 +41,7 @@ const projects: Project[] = [
     description: "Built a scalable QA framework for voter outreach tools reaching 60M+ voters",
     tech: ["Cypress", "Jest", "React", "Node.js"],
     type: "featured",
-    color: "from-vivid-blue to-vivid-teal",
+    color: "from-electric-blue to-cyber-teal",
     icon: IconChartBar,
     metrics: "30% faster releases, 100% uptime",
     github: "https://github.com/IsaacAVazquez",
@@ -68,7 +68,7 @@ const projects: Project[] = [
     description: "Designed unified automation framework enabling same-day validation",
     tech: ["Selenium", "Python", "Docker", "CI/CD"],
     type: "normal",
-    color: "from-vivid-purple to-vivid-pink",
+    color: "from-neon-purple to-vivid-pink",
     icon: IconTestPipe,
     metrics: "50% reduction in defects",
     github: "https://github.com/IsaacAVazquez",
@@ -95,7 +95,7 @@ const projects: Project[] = [
     description: "Created interactive dashboards for campaign performance monitoring",
     tech: ["SQL", "Tableau", "Python", "APIs"],
     type: "normal",
-    color: "from-vivid-teal to-vivid-blue",
+    color: "from-cyber-teal to-electric-blue",
     icon: IconDatabase,
     metrics: "40% faster decisions",
     github: "https://github.com/IsaacAVazquez",
@@ -222,7 +222,7 @@ export function ProjectsContent() {
               <div className="relative h-full p-6 flex flex-col">
                 {/* Icon */}
                 <div className="mb-4">
-                  <Icon className="h-8 w-8 text-vivid-blue dark:text-vivid-teal" />
+                  <Icon className="h-8 w-8 text-electric-blue dark:text-cyber-teal" />
                 </div>
 
                 {/* Title & Description */}
@@ -236,7 +236,7 @@ export function ProjectsContent() {
                 {/* Metrics */}
                 {project.metrics && (
                   <div className="mb-4">
-                    <span className="text-xs font-accent font-semibold text-vivid-blue dark:text-vivid-teal">
+                    <span className="text-xs font-accent font-semibold text-electric-blue dark:text-cyber-teal">
                       {project.metrics}
                     </span>
                   </div>

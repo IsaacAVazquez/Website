@@ -80,6 +80,14 @@ const config: Config = {
         "terminal-border": "var(--terminal-border)",
         "terminal-text": "var(--terminal-text)",
         "terminal-cursor": "var(--terminal-cursor)",
+
+        // Vivid color aliases for components
+        "vivid-blue": "var(--vivid-blue)",
+        "vivid-teal": "var(--vivid-teal)",
+        "vivid-purple": "var(--vivid-purple)",
+        "vivid-pink": "var(--vivid-pink)",
+        "vivid-yellow": "var(--vivid-yellow)",
+        "vivid-green": "var(--vivid-green)",
       },
       spacing: {
         xs: "var(--space-xs)",
