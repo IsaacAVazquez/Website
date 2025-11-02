@@ -64,28 +64,28 @@ export function ModernHero() {
 <motion.div
   variants={itemVariants}
   className="
-    grid grid-cols-1 md:grid-cols-[1fr_1fr]
-    items-center gap-6 md:gap-8
+    grid grid-cols-1 md:grid-cols-[1fr_auto]
+    items-center gap-12 md:gap-16
     mb-12 md:mb-20 max-w-6xl
   "
 >
   {/* Left: text */}
   <div className="max-w-[600px]">
     <p className="text-base sm:text-lg md:text-xl text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-      Austin-based and usually splitting time with the Bay Area, I build mission-driven products that
+      Bay Area-based and pursuing my MBA full-time at UC Berkeley Haas, I build mission-driven products that
       balance user insight, data, and disciplined execution. I move comfortably between product discovery,
       analytics, and release quality—then pull the right stakeholders along for the ride. Haas is sharpening
       that toolkit, and I'm applying it to every roadmap, experiment, and delivery sprint I touch.
     </p>
   </div>
 
-  {/* Right: larger headshot */}
+  {/* Right: optimized headshot */}
   <motion.div
     variants={itemVariants}
     className="
       relative justify-self-center md:justify-self-end
-      w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96
-      rounded-2xl overflow-hidden border-[6px] border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-xl
+      w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72
+      rounded-2xl overflow-hidden border-[3px] border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-xl
       shrink-0
     "
   >
@@ -94,7 +94,7 @@ export function ModernHero() {
       alt="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
       fill
       priority
-      sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 14rem"
+      sizes="(min-width: 768px) 18rem, (min-width: 640px) 16rem, 14rem"
       className="object-cover object-top rounded-2xl"
     />
   </motion.div>

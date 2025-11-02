@@ -3,12 +3,9 @@
 import { ModernHero } from "@/components/ModernHero";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
-import { ModernButton } from "@/components/ui/ModernButton";
-import { StructuredData } from "@/components/StructuredData";
 import { motion, AnimatePresence } from "framer-motion";
 import { personalMetrics } from "@/constants/personal";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import {
   IconBriefcase,
@@ -66,7 +63,7 @@ const TimelineItem = ({ item, isLast }: { item: typeof personalMetrics.careerTim
       </div>
 
       {/* Content */}
-      <div className="flex-1 pb-12">
+      <div className="flex-1 pb-8">
         <WarmCard hover={true} padding="lg">
             <div>
               {/* Header */}
@@ -127,69 +124,23 @@ export default function Home() {
     { id: "journey" as TabType, label: "Journey", icon: IconTimeline }
   ];
 
-  const productHighlights = [
-    {
-      title: "Discovery & Positioning",
-      description: "Translate user research and market signals into a focused roadmap for civic tech and SaaS teams.",
-      bullets: [
-        "Lead customer interviews and synthesize insights into opportunity briefs",
-        "Define product positioning and narrative for stakeholders",
-        "Frame hypotheses that guide experiments and prioritization"
-      ]
-    },
-    {
-      title: "Data & Experimentation",
-      description: "Run data-informed bets that keep learning loops tight and measurable.",
-      bullets: [
-        "Develop dashboards that connect activation, retention, and revenue metrics",
-        "Shape experimentation backlogs and partner with analysts on instrumentation",
-        "Model impact scenarios for executive decision-making"
-      ]
-    },
-    {
-      title: "Delivery & Quality",
-      description: "Keep cross-functional teams aligned from opportunity sizing through launch.",
-      bullets: [
-        "Facilitate sprint rituals that keep design, engineering, and GTM in sync",
-        "Pair release planning with QA strategies to protect reliability",
-        "Close the loop with learnings that feed the next discovery cycle"
-      ]
-    }
-  ];
-
-  const professionalServiceData = {
-    name: "Isaac Vazquez Product Management Consulting",
-    description: "Technical product manager and UC Berkeley Haas MBA helping civic tech and SaaS teams ship user-loved products.",
-    serviceType: [
-      "Product Strategy",
-      "Product Discovery",
-      "Experimentation & Analytics",
-      "Product Operations",
-      "Quality Engineering Advisory"
-    ],
-    areaServed: ["Austin, TX", "San Francisco Bay Area, CA", "Remote"],
-    url: "https://isaacavazquez.com",
-  };
-
   return (
-    <>
-      <StructuredData type="ProfessionalService" data={professionalServiceData} />
-      <div className="min-h-screen w-full bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
-        {/* Modern Editorial Hero Section */}
-        <ModernHero />
+    <div className="min-h-screen w-full bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+      {/* Modern Editorial Hero Section */}
+      <ModernHero />
 
-        {/* Secondary Content */}
-        <div className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-          {/* About Section with Tabs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-5xl mx-auto"
-          >
-            {/* Tab Navigation */}
-            <div className="flex justify-center mb-8 relative z-20">
+      {/* Secondary Content */}
+      <div className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+        {/* About Section with Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-5xl mx-auto"
+        >
+          {/* Tab Navigation */}
+          <div className="flex justify-center mb-8 relative z-20">
             <div className="flex flex-wrap justify-center bg-white/80 dark:bg-[#2D1B12]/90 p-2 rounded-2xl border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg backdrop-blur-sm">
               {tabs.map((tab) => (
                 <button
@@ -209,7 +160,7 @@ export default function Home() {
           </div>
 
           {/* Tab Content Container with Min Height */}
-          <div className="min-h-[600px]">
+          <div className="min-h-[400px] md:min-h-[600px]">
             <AnimatePresence mode="wait">
               {activeTab === "overview" && (
                 <motion.div
@@ -229,31 +180,31 @@ export default function Home() {
               </Heading>
 
               <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-                I'm a technical product manager with a QA and analytics foundation. At Civitech I lead testing for voter engagement platforms that reach millions of people, turning what we uncover in quality work into smarter product bets.
+                Product-focused technologist transitioning into product management, bringing 6+ years of experience in quality assurance, data analytics, and technology. At Civitech, I've led testing initiatives for voter engagement platforms, bridging technical execution with strategic product outcomes.
               </p>
 
               <div>
                 <p className="text-[#2D1B12] dark:text-[#FFE4D6] font-semibold mb-3 text-base md:text-lg">
-                  What I bring to the table:
+                  Core Competencies:
                 </p>
                 <ul className="list-disc ml-6 space-y-3 text-[#4A3426] dark:text-[#D4A88E] text-base md:text-lg">
-                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Product & Strategy:</strong> Pair user research with prioritization, keep cross-functional teams aligned, and ship what actually moves metrics</li>
-                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Technical:</strong> Build Cypress suites, dig through SQL, break APIs, and run Agile rituals that keep velocity healthy</li>
-                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Analytics:</strong> Define the metrics, run the experiments, and translate the findings into product decisions</li>
-                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Leadership:</strong> Mentor teammates, manage complex projects, and champion inclusive, mission-driven teams</li>
+                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Product & Strategy:</strong> User experience optimization, feature prioritization, cross-functional collaboration, stakeholder management</li>
+                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Technical:</strong> Test automation (Cypress), SQL, data analysis, API testing, Agile/Scrum methodologies</li>
+                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Analytics:</strong> Data-driven decision making, metrics definition, A/B testing, performance optimization</li>
+                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Leadership:</strong> Team mentorship, project management, diverse community advocacy</li>
                 </ul>
               </div>
 
               <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-                Before Civitech, I combed through statewide datasets for the State of Florida to support policy decisions, and I ran client services at Open Progress—translating campaign goals into digital programs that actually resonated.
+                At the State of Florida, I analyzed large datasets to inform policy decisions, developing dashboards and reports that improved operational efficiency. As Client Services Manager at Open Progress, I managed digital campaigns for progressive causes, translating client needs into actionable strategies.
               </p>
 
               <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-                These days I'm earning my MBA at UC Berkeley Haas to pair hands-on execution with sharper product strategy and explore how I can support civic tech, SaaS, and other mission-driven founders as an operator or investor.
+                Currently pursuing an MBA at UC Berkeley Haas to deepen my product management expertise and explore venture capital opportunities in civic tech, SaaS, and mission-driven startups. Passionate about leveraging technology to create social impact and democratize access to essential services.
               </p>
 
               <p className="text-base md:text-lg text-[#2D1B12] dark:text-[#FFE4D6] leading-relaxed font-medium">
-                If any of this sparks ideas, let's connect—I'm always up for swapping notes on product, strategy, or social impact.
+                Let's connect if you're interested in technology, product strategy, or social impact.
               </p>
             </div>
           </WarmCard>
@@ -300,56 +251,7 @@ export default function Home() {
             </AnimatePresence>
           </div>
         </motion.div>
-
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-20 space-y-8 max-w-6xl mx-auto"
-        >
-          <div className="max-w-4xl mx-auto text-center space-y-4">
-            <Heading level={2} className="text-[#FF6B35] text-2xl lg:text-3xl">
-              Product Management Focus Areas
-            </Heading>
-            <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-              I'm recruiting for product management roles where a technical foundation, MBA training, and a civic tech lens are advantages. These are the muscles I lean on most often.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {productHighlights.map((highlight) => (
-              <WarmCard key={highlight.title} hover padding="lg" className="h-full flex flex-col">
-                <Heading level={3} className="text-lg font-semibold mb-3 text-[#FF6B35]">
-                  {highlight.title}
-                </Heading>
-                <p className="text-sm md:text-base text-[#4A3426] dark:text-[#D4A88E] mb-4">
-                  {highlight.description}
-                </p>
-                <ul className="list-disc ml-4 space-y-2 text-sm md:text-base text-[#4A3426] dark:text-[#D4A88E] flex-1">
-                  {highlight.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </WarmCard>
-            ))}
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/resume">
-              <ModernButton variant="primary" size="md">
-                Review My Resume
-              </ModernButton>
-            </Link>
-            <Link href="/contact">
-              <ModernButton variant="outline" size="md">
-                Start a Conversation
-              </ModernButton>
-            </Link>
-          </div>
-        </motion.section>
       </div>
     </div>
-  </>
   );
 }

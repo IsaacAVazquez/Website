@@ -94,7 +94,7 @@ export default function About() {
 
 const OverviewContent = () => {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-5xl mx-auto">
       <WarmCard hover={true} padding="xl">
         <div className="space-y-6">
           <Heading level={2} className="text-[#FF6B35] text-2xl lg:text-3xl mb-6">

@@ -1,110 +1,146 @@
 # Development Guide
 
-This guide provides detailed information for developers working on the Isaac Vazquez Portfolio project.
+Complete development guide for the Isaac Vazquez Digital Platform - a modern warm-themed portfolio website built with Next.js 15.
+
+---
 
 ## 📋 Table of Contents
 
-- [Development Environment Setup](#development-environment-setup)
-- [Code Architecture](#code-architecture)
-- [Component System](#component-system)
-- [API Development](#api-development)
-- [Styling and Design](#styling-and-design)
-- [Testing Guidelines](#testing-guidelines)
-- [Performance Optimization](#performance-optimization)
-- [Debugging Tips](#debugging-tips)
+- [Quick Start](#quick-start)
+- [Development Environment](#development-environment)
+- [Project Architecture](#project-architecture)
+- [Development Workflow](#development-workflow)
+- [Styling & Design](#styling--design)
+- [Testing & Debugging](#testing--debugging)
+- [Troubleshooting](#troubleshooting)
+- [Environment Configuration](#environment-configuration)
 
-## 🛠️ Development Environment Setup
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
+- **Node.js 18+** - [Download](https://nodejs.org/)
+- **npm 8+** or yarn 1.22+
+- **Git** for version control
+- **VS Code** recommended (see extensions below)
 
-**Required:**
-- Node.js 18.0.0 or higher
-- npm 8.0.0 or higher (or yarn 1.22.0+)
-- Git 2.30.0 or higher
+### One-Minute Setup
+```bash
+# Clone repository
+git clone https://github.com/IsaacAVazquez/isaacvazquez-portfolio.git
+cd isaacvazquez-portfolio
 
-**Recommended:**
-- VS Code with extensions:
-  - TypeScript and JavaScript Language Features
-  - ES7+ React/Redux/React-Native snippets
-  - Tailwind CSS IntelliSense
-  - Prettier - Code formatter
-  - ESLint
+# Install dependencies
+npm install
 
-### Local Development Setup
-
-1. **Clone and Install**
-   ```bash
-   git clone https://github.com/IsaacAVazquez/Website.git
-   cd Website
-   npm install
-   ```
-
-2. **Environment Configuration**
-   Create `.env.local` for development:
-   ```env
-   # Optional: Analytics integration
-   NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=your_ga_id_here
-   
-   # Development URLs
-   NEXTAUTH_URL=http://localhost:3000
-   NEXT_PUBLIC_SITE_URL=http://localhost:3000
-   ```
-
-3. **Start Development Server**
-   ```bash
-   npm run dev
-   ```
-   
-   Server will start at `http://localhost:3000` with hot reload enabled.
-
-### Development Workflow
-
-**Branch Strategy:**
-- `main` - Production branch (auto-deploys to Netlify)
-- `develop` - Development integration branch
-- `feature/*` - Feature development branches
-- `hotfix/*` - Critical production fixes
-
-**Commit Convention:**
-```
-feat: add new portfolio project showcase
-fix: resolve mobile navigation overlay issue
-docs: update API documentation
-style: improve cyberpunk theme colors
-refactor: optimize component rendering performance
-test: add unit tests for contact form validation
+# Start development server
+npm run dev
 ```
 
-## 🏗️ Code Architecture
+Open [http://localhost:3000](http://localhost:3000) 🎉
 
-### Project Structure
+### Available Commands
+```bash
+# Development
+npm run dev          # Start dev server (hot reload)
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npx tsc --noEmit     # Type check without building
 
+# Utilities
+npm run postbuild    # Generate sitemap (auto-runs after build)
+```
+
+---
+
+## 🛠️ Development Environment
+
+### VS Code Setup
+
+**Essential Extensions:**
+```json
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next"
+  ]
+}
+```
+
+**VS Code Settings** (`.vscode/settings.json`):
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html"
+  }
+}
+```
+
+### Environment Variables
+
+Create `.env.local` for development:
+```env
+# Site Configuration
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NODE_ENV=development
+
+# Optional: Analytics
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=your_ga_id
+```
+
+**Production Environment** (Netlify):
+```env
+# Required
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+
+# Optional
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=your_production_ga_id
+```
+
+**Security Notes:**
+- Never commit `.env.local` to Git
+- Use strong secrets for production
+- Environment variables are visible only to site owners
+- Consider rotating credentials periodically
+
+---
+
+## 🏗️ Project Architecture
+
+### File Structure
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── (routes)/          # Route groups
-│   ├── api/               # API route handlers
-│   ├── globals.css        # Global styles and CSS variables
-│   └── layout.tsx         # Root layout component
-├── components/            # React components
-│   ├── ui/               # Reusable UI components
-│   ├── forms/            # Form components
-│   └── charts/           # Data visualization components
-├── lib/                   # Utility functions and services
-│   ├── api/              # API client functions
-│   ├── data/             # Data processing utilities
-│   └── utils/            # General utility functions
-├── types/                 # TypeScript type definitions
-├── constants/             # Application constants
-├── hooks/                 # Custom React hooks
-└── data/                  # Static data and fixtures
+├── app/                 # Next.js App Router pages & API routes
+│   ├── about/          # About page
+│   ├── contact/        # Contact page
+│   ├── projects/       # Projects showcase
+│   ├── resume/         # Resume page
+│   └── api/            # Backend API endpoints
+├── components/         # React components
+│   ├── ui/            # Core UI library (WarmCard, ModernButton, etc.)
+│   ├── ModernHero/    # Hero section component
+│   └── ...            # Feature-specific components
+├── constants/         # Static data and configuration
+├── lib/              # Utility functions and helpers
+├── types/            # TypeScript type definitions
+└── hooks/            # Custom React hooks
 ```
 
 ### Design Patterns
 
-**Component Patterns:**
+**Component Structure:**
 ```typescript
-// Use consistent prop interfaces
+// Consistent prop interfaces
 interface ComponentProps {
   className?: string;
   children?: React.ReactNode;
@@ -112,7 +148,7 @@ interface ComponentProps {
 }
 
 // Export typed components
-export const Component: React.FC<ComponentProps> = ({ 
+export const Component: React.FC<ComponentProps> = ({
   className,
   children,
   variant = 'primary'
@@ -126,10 +162,10 @@ export const Component: React.FC<ComponentProps> = ({
 ```
 
 **State Management:**
-- Local state: `useState` for component-level state
-- Server state: Built-in Next.js data fetching
-- Global state: Context API for theme and user preferences
-- Form state: Controlled components with validation
+- **Local state**: `useState` for component-level state
+- **Server state**: Next.js data fetching
+- **Global state**: Context API for theme/preferences
+- **Form state**: Controlled components with validation
 
 **Error Handling:**
 ```typescript
@@ -146,398 +182,152 @@ try {
 
 // Components
 const [error, setError] = useState<string>('');
-
 useEffect(() => {
   fetchData().catch(err => {
     setError(err.message);
-    console.error('Data fetch failed:', err);
+    console.error('Fetch failed:', err);
   });
 }, []);
 ```
 
-## 🧩 Component System
+---
 
-### UI Component Library
+## 🔄 Development Workflow
 
-**Base Components:**
-- `GlassCard` - Glassmorphism container with elevation
-- `MorphButton` - Animated button with cyberpunk styling
-- `Heading` - Typography component with consistent styling
-- `Badge` - Cyberpunk-styled labels and tags
+### Branch Strategy
+- `main` - Production (auto-deploys to Netlify)
+- `develop` - Development integration
+- `feature/*` - Feature branches
+- `hotfix/*` - Critical production fixes
 
-**Composite Components:**
-- `TerminalHero` - Home page terminal interface
-- `TierChartEnhanced` - Interactive D3.js chart component
-- `FloatingNav` - Persistent navigation overlay
-- `CommandPalette` - Spotlight-style command interface
-
-### Component Development Guidelines
-
-**File Structure:**
-```typescript
-// Component file: Button.tsx
-import { cn } from '@/lib/utils';
-
-interface ButtonProps {
-  // Props interface
-}
-
-export const Button: React.FC<ButtonProps> = (props) => {
-  // Component implementation
-};
-
-// Export for use in other components
-export default Button;
+### Commit Convention
+```bash
+feat: add new project showcase
+fix: resolve mobile navigation overlay
+docs: update API documentation
+style: improve warm theme colors
+refactor: optimize component rendering
+test: add unit tests for contact form
 ```
 
-**Styling Conventions:**
-```typescript
-// Use Tailwind with conditional classes
-const buttonStyles = cn(
-  'base-button-styles',
-  {
-    'primary-styles': variant === 'primary',
-    'secondary-styles': variant === 'secondary',
-  },
-  className
-);
+### Code Quality Checks
+```bash
+# Run all checks before committing
+npm run lint                # ESLint
+npx tsc --noEmit           # Type checking
+npm run build --dry-run    # Test build
+
+# Fix auto-fixable issues
+npm run lint -- --fix
 ```
 
-**Accessibility Requirements:**
-- Include ARIA labels for interactive elements
-- Ensure keyboard navigation support
-- Use semantic HTML elements
-- Provide focus indicators
-- Support screen readers
+---
 
-## 🔌 API Development
+## 🎨 Styling & Design
 
-### API Route Structure
+### Warm Modern Theme
 
-```typescript
-// app/api/example/route.ts
-import { NextRequest, NextResponse } from 'next/server';
-
-export async function GET(request: NextRequest) {
-  try {
-    const searchParams = request.nextUrl.searchParams;
-    const param = searchParams.get('param');
-    
-    // Validation
-    if (!param) {
-      return NextResponse.json(
-        { error: 'Parameter required' },
-        { status: 400 }
-      );
-    }
-    
-    // Business logic
-    const result = await processData(param);
-    
-    return NextResponse.json({
-      success: true,
-      data: result
-    });
-  } catch (error) {
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
-  }
-}
-```
-
-### Portfolio API Integration
-
-**Contact Form API:**
-- `POST /api/contact` - Handle contact form submissions
-- `GET /api/contact/status` - Check form submission status
-
-**Analytics API:**
-- `POST /api/analytics/events` - Track user interactions
-- `GET /api/analytics/metrics` - Retrieve performance metrics
-
-**Data Flow:**
-1. User interactions trigger analytics events
-2. Contact form submissions processed through API
-3. Performance metrics collected and stored
-4. Dashboard displays analytics and user engagement data
-
-## 🎨 Styling and Design
-
-### Cyberpunk Theme Implementation
-
-**CSS Custom Properties:**
+**Color System** (`src/app/globals.css`):
 ```css
-/* globals.css */
 :root {
-  /* Cyberpunk color palette */
-  --electric-blue: #00F5FF;
-  --matrix-green: #39FF14;
-  --neon-purple: #BF00FF;
-  
-  /* Glassmorphism values */
-  --glass-blur: blur(20px);
-  --glass-opacity: 0.1;
-  --glass-border: rgba(255, 255, 255, 0.2);
+  /* Golden Hour Warmth */
+  --color-primary: #FF6B35;      /* Sunset Orange */
+  --color-secondary: #F7B32B;    /* Golden Yellow */
+  --color-accent: #FF8E53;       /* Coral */
+  --color-success: #6BCF7F;      /* Fresh Green */
+
+  /* Warm Neutrals */
+  --warm-cream: #FFFCF7;         /* Light background */
+  --warm-brown-dark: #4A3426;    /* Text primary */
+  --warm-brown-medium: #6B4F3D;  /* Text secondary */
 }
 ```
 
-**Tailwind Configuration:**
-```typescript
-// tailwind.config.ts
-export default {
-  theme: {
-    extend: {
-      colors: {
-        'electric-blue': 'var(--electric-blue)',
-        'matrix-green': 'var(--matrix-green)',
-        'neon-purple': 'var(--neon-purple)',
-      },
-      fontFamily: {
-        'orbitron': ['Orbitron', 'monospace'],
-        'jetbrains': ['JetBrains Mono', 'monospace'],
-      },
-      animation: {
-        'terminal-blink': 'blink 1s infinite',
-        'glow-pulse': 'glow 2s ease-in-out infinite alternate',
-      }
-    }
+### Component Patterns
+
+**WarmCard** - Main container component:
+```tsx
+<WarmCard hover={true} padding="xl">
+  <h2 className="text-[#FF6B35]">Your Content</h2>
+</WarmCard>
+```
+
+**ModernButton** - Button component:
+```tsx
+<ModernButton variant="primary" size="lg">
+  Click Me
+</ModernButton>
+```
+
+**Heading** - Typography:
+```tsx
+<Heading level={2} className="gradient-text-warm">
+  Your Heading
+</Heading>
+```
+
+### Responsive Design
+```css
+/* Mobile-first approach */
+.component {
+  @apply flex flex-col gap-4;      /* Mobile */
+}
+
+@media (min-width: 768px) {
+  .component {
+    @apply flex-row gap-8;          /* Tablet+ */
   }
 }
 ```
-
-**Animation Patterns:**
-```typescript
-// Framer Motion configurations
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: 'easeOut' }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-```
-
-### Responsive Design Guidelines
 
 **Breakpoints:**
 - `sm`: 640px (mobile landscape)
 - `md`: 768px (tablet)
 - `lg`: 1024px (desktop)
 - `xl`: 1280px (large desktop)
-- `2xl`: 1536px (ultra-wide)
 
-**Mobile-First Approach:**
-```css
-/* Default: mobile styles */
-.component {
-  @apply flex flex-col gap-4;
-}
+---
 
-/* Tablet and up */
-@media (min-width: 768px) {
-  .component {
-    @apply flex-row gap-8;
-  }
-}
-```
+## 🧪 Testing & Debugging
 
-## 🧪 Testing Guidelines
-
-### Testing Strategy
-
-**Unit Testing:**
-- Component logic and utility functions
-- API route handlers
-- Data processing algorithms
-
-**Integration Testing:**
-- API endpoint functionality
-- Component interaction workflows
-- Data flow between services
-
-**E2E Testing:**
-- Critical user journeys
-- Portfolio project showcase functionality
-- Navigation and accessibility
-
-### Testing Tools Setup
-
-```bash
-# Install testing dependencies
-npm install --save-dev jest @testing-library/react @testing-library/jest-dom
-
-# TypeScript support
-npm install --save-dev @types/jest ts-jest
-```
-
-**Test Structure:**
-```typescript
-// __tests__/components/Button.test.tsx
-import { render, screen, fireEvent } from '@testing-library/react';
-import Button from '@/components/ui/Button';
-
-describe('Button Component', () => {
-  test('renders with correct text', () => {
-    render(<Button>Click me</Button>);
-    expect(screen.getByText('Click me')).toBeInTheDocument();
-  });
-  
-  test('handles click events', () => {
-    const handleClick = jest.fn();
-    render(<Button onClick={handleClick}>Click me</Button>);
-    
-    fireEvent.click(screen.getByText('Click me'));
-    expect(handleClick).toHaveBeenCalledTimes(1);
-  });
-});
-```
-
-## ⚡ Performance Optimization
-
-### Next.js Optimizations
+### Performance Optimization
 
 **Image Optimization:**
 ```tsx
 import Image from 'next/image';
 
-// Optimized images with proper sizing
 <Image
-  src="/images/hero.webp"
+  src="/images/hero.jpg"
   alt="Portfolio hero"
   width={1200}
   height={800}
-  priority // For above-the-fold images
+  priority              // Above-the-fold images
   placeholder="blur"
-  blurDataURL="data:image/jpeg;base64,..."
 />
 ```
 
 **Code Splitting:**
 ```typescript
 // Dynamic imports for heavy components
-const TierChartEnhanced = dynamic(
-  () => import('@/components/TierChartEnhanced'),
-  { 
-    loading: () => <ChartSkeleton />,
-    ssr: false // Client-side only for D3.js
+const HeavyComponent = dynamic(
+  () => import('@/components/HeavyComponent'),
+  {
+    loading: () => <Skeleton />,
+    ssr: false  // Client-side only
   }
 );
 ```
 
 **Bundle Analysis:**
 ```bash
-# Analyze bundle size
 npm run build
 npx @next/bundle-analyzer
 ```
 
-### Data Fetching Optimization
+### Debugging Tools
 
-**Server Components:**
+**Logging Strategy:**
 ```typescript
-// app/page.tsx - Server Component
-export default async function HomePage() {
-  const data = await fetchStaticData(); // Runs on server
-  
-  return (
-    <div>
-      <StaticContent data={data} />
-      <DynamicComponent /> {/* Client component */}
-    </div>
-  );
-}
-```
-
-**Client-Side Caching:**
-```typescript
-// Custom hook with caching
-export function usePlayerData(position: string) {
-  return useSWR(
-    `/api/data-manager?position=${position}`,
-    fetcher,
-    {
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-      refreshInterval: 0
-    }
-  );
-}
-```
-
-## 🐛 Debugging Tips
-
-### Common Issues and Solutions
-
-**1. Contact Form Submission Failures**
-```typescript
-// Debug form validation
-console.log('Form data:', formData);
-console.log('Validation errors:', validationErrors);
-
-// Check API response
-console.log('Submission response:', response.data);
-```
-
-**2. Animation Performance Issues**
-```typescript
-// Debug Framer Motion animations
-useEffect(() => {
-  const controls = animation.start({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 }
-  });
-  
-  console.log('Animation controls:', controls);
-}, []);
-```
-
-**3. Tailwind Styles Not Applying**
-```bash
-# Clear Next.js cache
-rm -rf .next
-npm run dev
-
-# Verify Tailwind config
-npx tailwindcss --init --dry-run
-```
-
-### Development Tools
-
-**VS Code Configuration:**
-```json
-// .vscode/settings.json
-{
-  "typescript.preferences.includePackageJsonAutoImports": "auto",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "emmet.includeLanguages": {
-    "typescript": "html",
-    "typescriptreact": "html"
-  }
-}
-```
-
-**Browser DevTools:**
-- React Developer Tools
-- Performance tab for optimization
-- Network tab for API debugging
-- Lighthouse for performance audits
-
-### Logging Strategy
-
-```typescript
-// Development logging
 const isDev = process.env.NODE_ENV === 'development';
 
 const log = {
@@ -553,20 +343,200 @@ const log = {
 };
 ```
 
+**Browser DevTools:**
+- React Developer Tools
+- Performance tab for optimization
+- Network tab for API debugging
+- Lighthouse for performance audits
+
+---
+
+## 🐛 Troubleshooting
+
+### Development Issues
+
+**Server Won't Start:**
+```bash
+# Clear Next.js cache
+rm -rf .next
+npm run dev
+
+# Check Node.js version (requires 18+)
+node --version
+
+# Reinstall dependencies
+rm -rf node_modules package-lock.json
+npm install
+
+# Check for port conflicts
+lsof -ti:3000 | xargs kill -9
+```
+
+**Module Resolution Errors:**
+```bash
+# Verify tsconfig.json paths
+cat tsconfig.json | grep -A 10 "paths"
+
+# Restart TypeScript server (VS Code)
+# Cmd/Ctrl + Shift + P → "TypeScript: Restart TS Server"
+
+# Clear TypeScript cache
+rm -rf .next/cache
+```
+
+**Hot Reload Not Working:**
+```bash
+# Clear browser cache (Chrome: Cmd/Ctrl + Shift + R)
+
+# Check file watchers limit (Linux/macOS)
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+
+# Restart dev server
+npm run dev
+```
+
+### Build Problems
+
+**TypeScript Build Errors:**
+```bash
+# Run type checking separately
+npx tsc --noEmit
+
+# Check for missing type definitions
+npm install --save-dev @types/node @types/react @types/react-dom
+```
+
+**Bundle Size Too Large:**
+```bash
+# Analyze bundle
+npm run build
+npx @next/bundle-analyzer
+
+# Check for duplicates
+npx duplicate-package-checker-webpack-plugin
+
+# Remove unused dependencies
+npx depcheck
+```
+
+### Styling Issues
+
+**Tailwind Styles Not Applied:**
+```bash
+# Verify Tailwind config
+npx tailwindcss --init --dry-run
+
+# Check content paths in tailwind.config.ts
+# Rebuild CSS
+rm -rf .next
+npm run dev
+```
+
+**Custom CSS Variables Not Working:**
+```css
+/* globals.css - Ensure variables are defined */
+:root {
+  --color-primary: #FF6B35;
+  --color-secondary: #F7B32B;
+}
+
+/* Usage */
+.button {
+  background-color: var(--color-primary);
+}
+```
+
+### Common Error Messages
+
+**"Module not found":**
+```bash
+# Check path aliases in tsconfig.json
+# Restart TypeScript server
+# Verify file exists
+```
+
+**"Hydration mismatch":**
+```bash
+# Ensure server and client render same content
+# Check for browser-only APIs in server components
+# Use useEffect for client-only code
+```
+
+### Getting Help
+
+**Debug Information to Collect:**
+```bash
+# System info
+node --version
+npm --version
+next --version
+
+# Package info
+npm list next react react-dom
+
+# Build output
+npm run build 2>&1 | tee build.log
+```
+
+**Useful Debugging Commands:**
+```bash
+# Clear all caches
+rm -rf .next node_modules package-lock.json
+npm install
+
+# Verbose build
+npm run build --verbose
+
+# Check dependency tree
+npm list --depth=0
+
+# Security audit
+npm audit
+
+# Check for outdated packages
+npm outdated
+```
+
+---
+
+## 📝 Environment Configuration
+
+### Local Development
+Create `.env.local`:
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NODE_ENV=development
+```
+
+### Production (Netlify)
+Set in Netlify Dashboard → Site Settings → Environment Variables:
+```env
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+```
+
+### Verification
+After setting environment variables:
+1. Redeploy site (Netlify auto-redeploys on changes)
+2. Test functionality
+3. Check console for errors
+4. Verify all features work
+
+---
+
 ## 📚 Additional Resources
 
-### External Documentation
+### Documentation
+- **[README.md](./README.md)** - Project overview
+- **[CLAUDE.md](./CLAUDE.md)** - Comprehensive architecture
+- **[COMPONENTS.md](./COMPONENTS.md)** - Component library
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Deployment guide
+
+### External Resources
 - [Next.js 15 Documentation](https://nextjs.org/docs)
 - [React 19 Documentation](https://react.dev)
 - [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs)
 - [Framer Motion Documentation](https://www.framer.com/motion/)
 
-### Project-Specific Resources
-- [CLAUDE.md](./CLAUDE.md) - Comprehensive application overview
-- [API.md](./API.md) - API endpoint documentation
-- [COMPONENTS.md](./COMPONENTS.md) - Component library guide
-- [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Common issues and solutions
-
 ---
 
-*This development guide is maintained alongside the project. For questions or suggestions, please open an issue or submit a pull request.*
+*Last Updated: January 2025 - Warm Modern Theme*

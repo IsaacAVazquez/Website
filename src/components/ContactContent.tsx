@@ -7,18 +7,18 @@ import { motion } from "framer-motion";
 
 export function ContactContent() {
   return (
-    <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+    <div>
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-12 max-w-4xl mx-auto"
+        className="text-center mb-16 max-w-4xl mx-auto"
       >
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text-warm mb-4 display-heading">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text-warm mb-8 display-heading">
           Let's Work Together
         </h1>
-        <p className="text-lg md:text-xl text-[#4A3426] dark:text-[#D4A88E]">
+        <p className="text-lg md:text-xl text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
           Open to product roles, advisory projects, and honest conversations about building meaningful products
         </p>
       </motion.div>
@@ -86,7 +86,7 @@ export function ContactContent() {
               Proven Results
             </Heading>
             <p className="text-sm text-[#4A3426] dark:text-[#D4A88E]">
-              
+              Product-focused execution
             </p>
           </WarmCard>
 
@@ -105,10 +105,10 @@ export function ContactContent() {
         <WarmCard hover={false} padding="lg" className="w-full">
           <div className="text-center">
             <Heading level={3} className="text-xl font-bold mb-4 text-[#FF6B35]">
-              📍 Based in Berkeley, CA • Open to Cool Opportunities
+              📍 Berkeley, CA 
             </Heading>
             <p className="text-base text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto leading-relaxed">
-              I'm based in the East Bay during my MBA at UC Berkeley Haas (graduating May 2027).
+              Currently pursuing my MBA at UC Berkeley Haas (graduating May 2027).
               I love working on products that push boundaries and solving real problems through creativity, data, and technology.
             </p>
           </div>
