@@ -16,7 +16,7 @@
   }
 
   *:focus-visible {
-    outline: 2px solid var(--electric-blue);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -25,40 +25,56 @@
 @layer base {
   button:focus-visible,
   a:focus-visible {
-    outline: 3px solid var(--electric-blue);
+    outline: 3px solid var(--color-primary);
     outline-offset: 3px;
-    box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
   }
 
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    outline: 2px solid var(--matrix-green);
+    outline: 2px solid var(--color-primary);
     outline-offset: 0;
-    border-color: var(--matrix-green);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 }
 
-/* Cyberpunk Typography System */
+/* Editorial Typography System - Bold & Inviting */
 :root {
   --font-body: var(--font-inter);
-  --font-heading: var(--font-orbitron);
+  --font-heading: var(--font-inter);           /* Use Inter for everything - clean & modern */
   --font-accent: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
   --font-terminal: var(--font-jetbrains-mono);
-  
-  /* Fluid Typography Scale */
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
-  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
-  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
-  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
-  --text-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
-  --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
-  --text-5xl: clamp(3rem, 2rem + 5vw, 4rem);
-  --text-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem);
-  --text-7xl: clamp(4.5rem, 3rem + 7.5vw, 6rem);
+
+  /* Fluid Typography Scale - Extended with Oversized Display */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);        /* 12-14px */
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);          /* 14-16px */
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);          /* 16-18px */
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.375rem);        /* 18-22px */
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);        /* 20-26px */
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2.125rem);       /* 24-34px */
+  --text-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.75rem);      /* 30-44px */
+  --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);         /* 36-56px */
+  --text-5xl: clamp(3rem, 2rem + 5vw, 5rem);                   /* 48-80px */
+  --text-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 6.5rem);         /* 60-104px */
+  --text-7xl: clamp(4.5rem, 3rem + 7.5vw, 8rem);               /* 72-128px */
+
+  /* NEW: Oversized Editorial Display Scale */
+  --text-display-sm: clamp(4rem, 6vw, 6rem);                   /* 64-96px */
+  --text-display-md: clamp(5rem, 8vw, 8rem);                   /* 80-128px */
+  --text-display-lg: clamp(6rem, 10vw, 10rem);                 /* 96-160px */
+  --text-display-xl: clamp(7rem, 12vw, 12rem);                 /* 112-192px */
+  --text-display-xxl: clamp(8rem, 15vw, 15rem);                /* 128-240px */
+
+  /* Font Weights for Impact */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
 }
 
 /* ============================================
@@ -66,17 +82,19 @@
    Semantic naming with contextual purpose
    ============================================ */
 :root {
-  /* Semantic Color System - Contextual Names */
-  --color-primary: #00F5FF;          /* Electric Blue - Primary actions */
-  --color-secondary: #39FF14;        /* Matrix Green - Success, highlights */
-  --color-accent: #BF00FF;           /* Neon Purple - Tertiary accent */
-  --color-tertiary: #00FFBF;         /* Cyber Teal - Additional accent */
-  --color-warning: #FFB800;          /* Warning Amber - Warnings */
-  --color-error: #FF073A;            /* Error Red - Errors */
+  /* Golden Hour Warmth - Inviting & Energetic Palette */
+  --color-primary: #FF6B35;          /* Sunset Orange - energetic, friendly, welcoming */
+  --color-secondary: #F7B32B;        /* Golden Yellow - optimistic, warm, cheerful */
+  --color-accent: #FF8E53;           /* Coral - creative, inviting, playful */
+  --color-tertiary: #FFC857;         /* Honey Gold - highlight accent, vibrant */
+  --color-success: #6BCF7F;          /* Fresh Green - positive, growth, success */
+  --color-warning: #FFB020;          /* Warm Amber - attention without alarm */
+  --color-error: #FF5757;            /* Warm Red - friendly error state */
+  --color-info: #FF9A56;             /* Peachy Orange - informational, soft */
 
-  /* Legacy support - can be deprecated later */
+  /* Legacy support - backwards compatible (points to modern colors) */
   --electric-blue: var(--color-primary);
-  --matrix-green: var(--color-secondary);
+  --matrix-green: var(--color-success);
   --neon-purple: var(--color-accent);
   --cyber-teal: var(--color-tertiary);
   --warning-amber: var(--color-warning);
@@ -86,22 +104,22 @@
   --vivid-blue: var(--color-primary);
   --vivid-teal: var(--color-tertiary);
   --vivid-purple: var(--color-accent);
-  --vivid-pink: #FF1493;
+  --vivid-pink: #EC4899;             /* Modern pink */
   --vivid-yellow: var(--color-warning);
-  --vivid-green: var(--color-secondary);
+  --vivid-green: var(--color-success);
 
-  /* Neutral Scale - Professional grays */
-  --neutral-50: #F8FAFC;
-  --neutral-100: #F1F5F9;
-  --neutral-200: #E2E8F0;
-  --neutral-300: #CBD5E1;
-  --neutral-400: #94A3B8;
-  --neutral-500: #64748B;
-  --neutral-600: #475569;
-  --neutral-700: #334155;
-  --neutral-800: #1E293B;
-  --neutral-900: #0F172A;
-  --neutral-950: #020617;
+  /* Warm Neutral Scale - Inviting browns and creams */
+  --neutral-50: #FFFCF7;            /* Warm cream - lightest background */
+  --neutral-100: #FFF8F0;           /* Soft peach cream */
+  --neutral-200: #FFE4D6;           /* Peachy tint */
+  --neutral-300: #FFD4B8;           /* Light warm tan */
+  --neutral-400: #D4A88E;           /* Medium warm tan */
+  --neutral-500: #9C7A5F;           /* Light warm brown */
+  --neutral-600: #6B4F3D;           /* Medium warm brown */
+  --neutral-700: #4A3426;           /* Dark warm brown */
+  --neutral-800: #2D1B12;           /* Very dark warm brown */
+  --neutral-900: #1C1410;           /* Almost black warm brown */
+  --neutral-950: #0F0A08;           /* Deepest warm brown */
 
   /* Legacy support */
   --slate-50: var(--neutral-50);
@@ -112,12 +130,13 @@
   --slate-800: var(--neutral-800);
   --slate-900: var(--neutral-900);
 
-  /* Accessible Light Mode Colors - WCAG AA */
-  --color-primary-accessible: #0066CC;
-  --color-secondary-accessible: #228B22;
-  --color-accent-accessible: #8B008B;
-  --color-tertiary-accessible: #20B2AA;
-  --color-error-accessible: #D62D20;
+  /* Accessible Light Mode Colors - WCAG AA for warm palette */
+  --color-primary-accessible: #D84315;    /* Darker orange for better contrast */
+  --color-secondary-accessible: #E68900;  /* Darker golden for contrast */
+  --color-accent-accessible: #E8663A;     /* Darker coral */
+  --color-tertiary-accessible: #F7B32B;   /* Golden yellow */
+  --color-error-accessible: #E53935;      /* Darker warm red */
+  --color-success-accessible: #43A047;    /* Darker green */
 
   /* Terminal Interface Colors */
   --terminal-bg: #0A0A0B;
@@ -125,35 +144,43 @@
   --terminal-text: #00FF00;
   --terminal-cursor: var(--color-primary);
 
-  /* Semantic Surface Colors */
-  --surface-primary: rgba(248, 250, 252, 0.95);
-  --surface-secondary: rgba(241, 245, 249, 0.9);
-  --surface-elevated: rgba(255, 255, 255, 0.1);
-  --surface-overlay: rgba(15, 23, 42, 0.95);
+  /* Semantic Surface Colors - Warm & Inviting */
+  --surface-primary: rgba(255, 252, 247, 0.95);     /* Warm cream base */
+  --surface-secondary: rgba(255, 248, 240, 0.9);    /* Soft peach */
+  --surface-elevated: rgba(255, 255, 255, 0.95);    /* Pure white elevated */
+  --surface-overlay: rgba(28, 20, 16, 0.92);        /* Warm dark overlay */
 
-  /* Semantic Text Colors */
-  --text-primary: var(--neutral-900);
-  --text-secondary: var(--neutral-600);
-  --text-tertiary: var(--neutral-400);
-  --text-inverse: var(--neutral-50);
+  /* Semantic Text Colors - Warm Browns (WCAG AA Compliant) */
+  --text-primary: var(--neutral-700);               /* Dark warm brown - 7.5:1 contrast */
+  --text-secondary: var(--neutral-700);             /* Dark warm brown - accessible */
+  --text-tertiary: var(--neutral-600);              /* Medium warm brown - for subtle elements */
+  --text-inverse: var(--neutral-50);                /* Warm cream */
 
-  /* Semantic Border Colors */
-  --border-primary: rgba(148, 163, 184, 0.3);
-  --border-secondary: rgba(203, 213, 225, 0.2);
-  --border-accent: var(--color-primary);
+  /* Semantic Border Colors - Soft & Warm */
+  --border-primary: rgba(255, 228, 214, 0.5);       /* Peachy border */
+  --border-secondary: rgba(255, 212, 184, 0.3);     /* Light warm tan */
+  --border-accent: var(--color-primary);            /* Sunset orange */
 
-  /* Refined Glow Effects */
-  --glow-primary: 0 0 20px rgba(0, 245, 255, 0.3);
-  --glow-secondary: 0 0 20px rgba(57, 255, 20, 0.3);
-  --glow-accent: 0 0 20px rgba(191, 0, 255, 0.3);
-  --glow-warning: 0 0 20px rgba(255, 184, 0, 0.3);
-  --glow-subtle: 0 0 15px rgba(0, 245, 255, 0.2);
+  /* Warm Soft Shadows - Inviting & Gentle */
+  --shadow-primary: 0 4px 16px rgba(255, 107, 53, 0.18);     /* Warm orange glow */
+  --shadow-secondary: 0 4px 16px rgba(247, 179, 43, 0.16);   /* Golden glow */
+  --shadow-accent: 0 4px 16px rgba(255, 142, 83, 0.18);      /* Coral glow */
+  --shadow-warning: 0 4px 16px rgba(255, 176, 32, 0.16);     /* Amber glow */
+  --shadow-subtle: 0 2px 8px rgba(107, 79, 61, 0.08);        /* Warm brown subtle */
+  --shadow-elevated: 0 8px 24px rgba(107, 79, 61, 0.12);     /* Warm brown elevated */
+  --shadow-warm-lg: 0 10px 30px rgba(255, 142, 83, 0.15);    /* Large warm shadow */
+  --shadow-warm-xl: 0 20px 40px rgba(255, 107, 53, 0.2);     /* Extra large warm */
 
-  /* Legacy support */
-  --glow-electric: var(--glow-primary);
-  --glow-matrix: var(--glow-secondary);
-  --glow-purple: var(--glow-accent);
-  --glow-amber: var(--glow-warning);
+  /* Legacy glow support (now subtle shadows for backwards compatibility) */
+  --glow-primary: var(--shadow-primary);
+  --glow-secondary: var(--shadow-secondary);
+  --glow-accent: var(--shadow-accent);
+  --glow-warning: var(--shadow-warning);
+  --glow-subtle: var(--shadow-subtle);
+  --glow-electric: var(--shadow-primary);
+  --glow-matrix: var(--shadow-secondary);
+  --glow-purple: var(--shadow-accent);
+  --glow-amber: var(--shadow-warning);
 
   /* Spacing System - 8px base with semantic names */
   --space-xs: 0.5rem;    /* 8px */
@@ -170,11 +197,11 @@
    DARK MODE - Enhanced tokens
    ============================================ */
 .dark {
-  /* Surface Colors */
-  --surface-primary: rgba(10, 10, 11, 0.95);
-  --surface-secondary: rgba(15, 23, 42, 0.9);
-  --surface-elevated: rgba(30, 41, 59, 0.5);
-  --surface-overlay: rgba(10, 10, 11, 0.98);
+  /* Surface Colors - Warm dark tones */
+  --surface-primary: rgba(28, 20, 16, 0.95);      /* Warm dark brown */
+  --surface-secondary: rgba(45, 27, 18, 0.9);     /* Medium warm brown */
+  --surface-elevated: rgba(74, 52, 38, 0.5);      /* Light warm brown */
+  --surface-overlay: rgba(28, 20, 16, 0.98);      /* Dark warm overlay */
 
   /* Text Colors */
   --text-primary: var(--neutral-50);
@@ -182,36 +209,89 @@
   --text-tertiary: var(--neutral-500);
   --text-inverse: var(--neutral-900);
 
-  /* Border Colors */
-  --border-primary: rgba(51, 65, 85, 0.4);
-  --border-secondary: rgba(30, 41, 59, 0.3);
+  /* Border Colors - Warm */
+  --border-primary: rgba(255, 142, 83, 0.3);       /* Warm coral border */
+  --border-secondary: rgba(212, 168, 142, 0.2);    /* Light warm tan border */
   --border-accent: var(--color-primary);
 
-  /* Enhanced Cyberpunk Colors for Dark Mode */
-  --color-primary: #00D4FF;
-  --color-secondary: #00FF41;
-  --color-accent: #DD00FF;
-  --color-tertiary: #00E6CC;
+  /* Warm Colors for Dark Mode (softer, glowing warmth) */
+  --color-primary: #FF8E53;          /* Coral orange for dark mode */
+  --color-secondary: #FFD666;        /* Soft golden yellow */
+  --color-accent: #FFA876;           /* Soft coral */
+  --color-tertiary: #FFD98E;         /* Soft honey */
+  --color-success: #8FE39E;          /* Soft mint green */
+  --color-warning: #FFC966;          /* Soft warm amber */
+  --color-error: #FF8585;            /* Soft warm red */
+  --color-info: #FFAD7A;             /* Soft peachy info */
 
   /* Legacy support */
   --electric-blue: var(--color-primary);
-  --matrix-green: var(--color-secondary);
+  --matrix-green: var(--color-success);
   --neon-purple: var(--color-accent);
   --cyber-teal: var(--color-tertiary);
 }
 
 /* ============================================
-   TYPOGRAPHY - 2025 Best Practices
+   TYPOGRAPHY - 2025 Editorial Best Practices
    ============================================ */
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 700;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-    text-transform: uppercase;
+    letter-spacing: -0.02em;       /* Tighter for modern look */
+    line-height: 1.1;              /* Tighter for impact */
+    text-transform: none;          /* Natural case for readability */
     margin-bottom: 0.5em;
-    text-wrap: balance;  /* 2025: Better heading text wrapping */
+    text-wrap: balance;            /* 2025: Better heading text wrapping */
+  }
+
+  /* Oversized display headings */
+  .display-heading {
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+}
+
+/* ============================================
+   WARM GRADIENT UTILITIES
+   ============================================ */
+@layer utilities {
+  .gradient-warm {
+    background: linear-gradient(135deg, #FFE5D9 0%, #FFF8F0 25%, #FFF4E6 50%, #FFE5D9 75%, #FFDDC1 100%);
+  }
+
+  .gradient-text-warm {
+    background: linear-gradient(135deg, #FF6B35, #F7B32B, #FF8E53);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-mesh-warm {
+    background:
+      radial-gradient(at 27% 37%, rgba(255, 107, 53, 0.2) 0px, transparent 50%),
+      radial-gradient(at 97% 21%, rgba(247, 179, 43, 0.2) 0px, transparent 50%),
+      radial-gradient(at 52% 99%, rgba(255, 142, 83, 0.2) 0px, transparent 50%),
+      radial-gradient(at 10% 29%, rgba(255, 200, 87, 0.2) 0px, transparent 50%),
+      radial-gradient(at 97% 96%, rgba(255, 229, 217, 0.3) 0px, transparent 50%),
+      #FFFCF7;
+  }
+
+  /* Warm decorative blobs */
+  .warm-blob-orange {
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, transparent 70%);
+    filter: blur(60px);
+  }
+
+  .warm-blob-yellow {
+    background: radial-gradient(circle, rgba(247, 179, 43, 0.25) 0%, transparent 70%);
+    filter: blur(60px);
+  }
+
+  .warm-blob-coral {
+    background: radial-gradient(circle, rgba(255, 142, 83, 0.28) 0%, transparent 70%);
+    filter: blur(60px);
   }
 }
 
@@ -1241,3 +1321,145 @@ textarea:valid:not(:placeholder-shown) {
 .stagger-delay-3 { transition-delay: 300ms; }
 .stagger-delay-4 { transition-delay: 400ms; }
 .stagger-delay-5 { transition-delay: 500ms; }
+
+/* ===================================
+   MODERN PORTFOLIO UTILITIES (2025)
+   ================================== */
+
+/* Container System - Responsive max-widths with centered layout */
+.container-narrow {
+  max-width: 64rem;  /* 1024px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-narrow {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-narrow {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.container {
+  max-width: 80rem;  /* 1280px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.container-wide {
+  max-width: 96rem;  /* 1536px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-wide {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-wide {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Section Spacing - Consistent vertical rhythm */
+.section {
+  padding-top: 3rem;    /* 48px */
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding-top: 4rem;  /* 64px */
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 5rem;  /* 80px */
+    padding-bottom: 5rem;
+  }
+}
+
+.section-sm {
+  padding-top: 2rem;    /* 32px */
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .section-sm {
+    padding-top: 2.5rem;  /* 40px */
+    padding-bottom: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-sm {
+    padding-top: 3rem;  /* 48px */
+    padding-bottom: 3rem;
+  }
+}
+
+.section-lg {
+  padding-top: 4rem;    /* 64px */
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+  .section-lg {
+    padding-top: 5rem;  /* 80px */
+    padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-lg {
+    padding-top: 6rem;  /* 96px */
+    padding-bottom: 6rem;
+  }
+}
+
+/* Content Width Constraints - For readable text */
+.content-narrow {
+  max-width: 42rem;  /* 672px - optimal for reading */
+}
+
+.content {
+  max-width: 56rem;  /* 896px */
+}
+
+.content-wide {
+  max-width: 72rem;  /* 1152px */
+}

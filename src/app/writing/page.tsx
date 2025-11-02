@@ -65,7 +65,7 @@ export default async function WritingPage() {
         />
       ))}
 
-      <div className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B]">
         <div className="max-w-7xl mx-auto">
           {displayPosts.length > 0 ? (
             <FantasyContentGrid posts={displayPosts} />

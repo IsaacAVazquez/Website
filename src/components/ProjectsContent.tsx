@@ -3,8 +3,8 @@
 import { Heading } from "@/components/ui/Heading";
 import { motion } from "framer-motion";
 import { IconBrandGithub, IconExternalLink, IconCode, IconDatabase, IconTestPipe, IconChartBar, IconTrendingUp, IconEye } from "@tabler/icons-react";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
 import Link from "next/link";
 import { useState, lazy, Suspense } from "react";
 
@@ -62,7 +62,7 @@ const projects: Project[] = [
     description: "Built a scalable QA framework for voter outreach tools reaching 60M+ voters",
     tech: ["Cypress", "Jest", "React", "Node.js"],
     type: "featured",
-    color: "from-electric-blue to-cyber-teal",
+    color: "from-[#FF6B35] to-[#F7B32B]",
     icon: IconChartBar,
     metrics: "30% faster releases, 100% uptime",
     github: "https://github.com/IsaacAVazquez",
@@ -134,7 +134,7 @@ const projects: Project[] = [
     description: "Designed unified automation framework enabling same-day validation",
     tech: ["Selenium", "Python", "Docker", "CI/CD"],
     type: "normal",
-    color: "from-neon-purple to-vivid-pink",
+    color: "from-[#FF8E53] to-[#FFC857]",
     icon: IconTestPipe,
     metrics: "50% reduction in defects",
     github: "https://github.com/IsaacAVazquez",
@@ -161,7 +161,7 @@ const projects: Project[] = [
     description: "Created interactive dashboards for campaign performance monitoring",
     tech: ["SQL", "Tableau", "Python", "APIs"],
     type: "normal",
-    color: "from-cyber-teal to-electric-blue",
+    color: "from-[#F7B32B] to-[#FF6B35]",
     icon: IconDatabase,
     metrics: "40% faster decisions",
     github: "https://github.com/IsaacAVazquez",
@@ -173,7 +173,7 @@ const projects: Project[] = [
     description: "Developed comprehensive API testing suite with Postman and JMeter",
     tech: ["Postman", "JMeter", "JavaScript", "CI/CD"],
     type: "small",
-    color: "from-vivid-yellow to-vivid-pink",
+    color: "from-[#FFC857] to-[#FF8E53]",
     icon: IconCode,
     github: "https://github.com/IsaacAVazquez",
     link: null,
@@ -184,7 +184,7 @@ const projects: Project[] = [
     description: "Implemented end-to-end performance monitoring system",
     tech: ["New Relic", "Grafana", "JMeter"],
     type: "small",
-    color: "from-vivid-pink to-vivid-purple",
+    color: "from-[#FF6B35] to-[#FF8E53]",
     icon: IconChartBar,
     github: null,
     link: null,
@@ -195,7 +195,7 @@ const projects: Project[] = [
     description: "Interactive tier visualization using clustering algorithms to analyze player rankings",
     tech: ["D3.js", "TypeScript", "K-Means", "Framer Motion"],
     type: "normal",
-    color: "from-vivid-blue to-vivid-green",
+    color: "from-[#F7B32B] to-[#FFC857]",
     icon: IconTrendingUp,
     metrics: "6-tier clustering, real-time updates",
     github: "https://github.com/IsaacAVazquez",
@@ -276,37 +276,34 @@ export function ProjectsContent() {
               : "md:row-span-1";
 
           return (
-            <GlassCard
+            <WarmCard
               key={project.id}
-              elevation={project.type === "featured" ? 4 : 3}
-              interactive={true}
-              cursorGlow={true}
-              noiseTexture={true}
-              floating={project.type === "featured"}
-              className={`${gridClass} overflow-hidden`}
+              hover={true}
+              padding="none"
+              className={`${gridClass} overflow-hidden relative`}
             >
               {/* Background Gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10 group-hover:opacity-20 transition-opacity breathing-gradient`} />
-              
+              <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10 hover:opacity-20 transition-opacity`} />
+
               {/* Content */}
               <div className="relative h-full p-6 flex flex-col">
                 {/* Icon */}
                 <div className="mb-4">
-                  <Icon className="h-8 w-8 text-electric-blue dark:text-cyber-teal" />
+                  <Icon className="h-8 w-8 text-[#FF6B35]" />
                 </div>
 
                 {/* Title & Description */}
-                <h3 className="font-heading font-bold text-xl mb-2 text-primary">
+                <h3 className="font-heading font-bold text-xl mb-2 text-[#2D1B12]">
                   {project.title}
                 </h3>
-                <p className="text-sm text-secondary mb-4 flex-grow">
+                <p className="text-sm text-[#6B4F3D] mb-4 flex-grow">
                   {project.description}
                 </p>
 
                 {/* Metrics */}
                 {project.metrics && (
                   <div className="mb-4">
-                    <span className="text-xs font-accent font-semibold text-electric-blue dark:text-cyber-teal">
+                    <span className="text-xs font-accent font-semibold text-[#FF6B35]">
                       {project.metrics}
                     </span>
                   </div>
@@ -317,7 +314,7 @@ export function ProjectsContent() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 text-xs font-medium rounded-full bg-neutral-100 dark:bg-neutral-800 text-secondary"
+                      className="px-2 py-1 text-xs font-medium rounded-full bg-[#FFF8F0] text-[#6B4F3D]"
                     >
                       {tech}
                     </span>
@@ -330,10 +327,10 @@ export function ProjectsContent() {
                   {(project.detailedMetrics || project.challenges || project.impact) && (
                     <button
                       onClick={() => openProjectDetail(project)}
-                      className="p-2 rounded-lg bg-terminal-bg/50 backdrop-blur-sm hover:bg-matrix-green/10 border border-matrix-green/20 hover:border-matrix-green/50 transition-all group"
+                      className="p-2 rounded-lg bg-white/80 backdrop-blur-sm hover:bg-[#FF6B35]/10 border border-[#FFE4D6] hover:border-[#FF6B35]/50 transition-all group"
                       aria-label="View project details"
                     >
-                      <IconEye className="h-4 w-4 text-matrix-green group-hover:text-electric-blue transition-colors" />
+                      <IconEye className="h-4 w-4 text-[#FF6B35] group-hover:text-[#F7B32B] transition-colors" />
                     </button>
                   )}
                   {project.github && (
@@ -341,36 +338,36 @@ export function ProjectsContent() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-terminal-bg/50 backdrop-blur-sm hover:bg-electric-blue/10 border border-electric-blue/20 hover:border-electric-blue/50 transition-all group"
+                      className="p-2 rounded-lg bg-white/80 backdrop-blur-sm hover:bg-[#FF6B35]/10 border border-[#FFE4D6] hover:border-[#FF6B35]/50 transition-all group"
                       aria-label="View source code"
                     >
-                      <IconBrandGithub className="h-4 w-4 text-electric-blue group-hover:text-matrix-green transition-colors" />
+                      <IconBrandGithub className="h-4 w-4 text-[#FF6B35] group-hover:text-[#F7B32B] transition-colors" />
                     </a>
                   )}
                   {project.link && (
                     project.link.startsWith('/') ? (
                       <Link
                         href={project.link}
-                        className="p-2 rounded-lg bg-terminal-bg/50 backdrop-blur-sm hover:bg-electric-blue/10 border border-electric-blue/20 hover:border-electric-blue/50 transition-all group"
+                        className="p-2 rounded-lg bg-white/80 backdrop-blur-sm hover:bg-[#FF6B35]/10 border border-[#FFE4D6] hover:border-[#FF6B35]/50 transition-all group"
                         aria-label="View live project"
                       >
-                        <IconExternalLink className="h-4 w-4 text-electric-blue group-hover:text-matrix-green transition-colors" />
+                        <IconExternalLink className="h-4 w-4 text-[#FF6B35] group-hover:text-[#F7B32B] transition-colors" />
                       </Link>
                     ) : (
                       <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-lg bg-terminal-bg/50 backdrop-blur-sm hover:bg-electric-blue/10 border border-electric-blue/20 hover:border-electric-blue/50 transition-all group"
+                        className="p-2 rounded-lg bg-white/80 backdrop-blur-sm hover:bg-[#FF6B35]/10 border border-[#FFE4D6] hover:border-[#FF6B35]/50 transition-all group"
                         aria-label="View live project"
                       >
-                        <IconExternalLink className="h-4 w-4 text-electric-blue group-hover:text-matrix-green transition-colors" />
+                        <IconExternalLink className="h-4 w-4 text-[#FF6B35] group-hover:text-[#F7B32B] transition-colors" />
                       </a>
                     )
                   )}
                 </div>
               </div>
-            </GlassCard>
+            </WarmCard>
           );
         })}
       </motion.div>
@@ -382,18 +379,13 @@ export function ProjectsContent() {
         transition={{ delay: 0.5 }}
         className="mt-16 text-center"
       >
-        <p className="text-lg text-secondary mb-6">
+        <p className="text-lg text-[#6B4F3D] mb-6">
           Interested in working together? Let's build something great.
         </p>
         <Link href="/contact">
-          <MorphButton
-            variant="primary"
-            size="lg"
-            icon={<IconExternalLink className="h-4 w-4" />}
-            iconPosition="right"
-          >
-            Get In Touch
-          </MorphButton>
+          <ModernButton variant="primary" size="lg">
+            Get In Touch →
+          </ModernButton>
         </Link>
       </motion.div>
 

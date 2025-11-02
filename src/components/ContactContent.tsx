@@ -1,162 +1,119 @@
 "use client";
 import { Heading } from "@/components/ui/Heading";
-import { Paragraph } from "@/components/ui/Paragraph";
-import { FaLinkedin, FaEnvelope, FaCalendar, FaRocket } from "react-icons/fa";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
+import { motion } from "framer-motion";
 
 export function ContactContent() {
   return (
-    <>
-      {/* Page Header Banner */}
-      <header role="banner" className="relative z-20 bg-gradient-to-r from-terminal-bg via-slate-900 to-terminal-bg border-b border-electric-blue/20 mb-8">
-        <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="text-center">
-            <h1 className="text-3xl md:text-5xl font-bold gradient-text mb-2 font-heading">
-              Let's Build Something Great Together
-            </h1>
-            <p className="text-slate-300 text-lg content-text">
-              Available for product management opportunities, consulting projects, and strategic conversations
-            </p>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+      {/* Page Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12 max-w-4xl mx-auto"
+      >
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text-warm mb-4 display-heading">
+          Let's Work Together
+        </h1>
+        <p className="text-lg md:text-xl text-[#4A3426] dark:text-[#D4A88E]">
+          Open to product roles, advisory projects, and honest conversations about building meaningful products
+        </p>
+      </motion.div>
 
-      <div className="flex flex-col items-center mt-4 max-w-6xl mx-auto space-y-8">
+      <div className="flex flex-col items-center max-w-5xl mx-auto space-y-8">
         {/* Primary CTA Card */}
-        <GlassCard
-          elevation={4}
-          interactive={false}
-          floating={true}
-          cursorGlow={true}
-          noiseTexture={true}
-          className="text-center p-8 w-full"
-          ariaLabel="Primary contact options"
-        >
-          <span className="text-5xl mb-4 block animate-wiggle" aria-hidden="true">🚀</span>
-          <Heading className="font-heading font-black mb-4 text-3xl gradient-text">
+        <WarmCard hover={false} padding="xl" className="text-center w-full">
+          <span className="text-5xl mb-4 block" aria-hidden="true">🚀</span>
+          <Heading level={2} className="font-bold mb-4 text-3xl text-[#FF6B35]">
             Ready to Connect?
           </Heading>
-          <Paragraph className="mb-6 max-w-2xl mx-auto text-lg text-secondary content-text">
-            I'm actively seeking product management roles where I can leverage my technical foundation and UC Berkeley MBA education to drive product strategy and execution. I'm also open to consulting opportunities and always happy to chat about technology, business strategy, and building impactful products.
-          </Paragraph>
+          <p className="mb-6 max-w-2xl mx-auto text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+            I'm looking for product management roles where I can pair my QA roots with the strategy work I'm doing at Haas. I also take on consulting projects and I'm always up for trading notes on technology, business strategy, or shipping products that actually help people.
+          </p>
 
-          {/* Strategic CTA Placement - 2025 Best Practices */}
+          {/* Strategic CTA Placement */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            {/* Primary CTA - Most important action */}
+            {/* Primary CTA */}
             <a href="mailto:isaacavazquez95@gmail.com" className="group">
-              <MorphButton
+              <ModernButton
                 variant="primary"
                 size="lg"
-                icon={<FaEnvelope className="text-lg" />}
-                iconPosition="left"
-                ariaLabel="Send me an email"
-                className="hover-lift"
+                className="w-full sm:w-auto"
               >
-                Email Me — I Reply Within 24 Hours
-              </MorphButton>
+                <FaEnvelope className="inline mr-2 text-lg" />
+                Email me — I usually reply within a day
+              </ModernButton>
             </a>
 
             {/* Secondary CTA */}
             <a href="https://www.linkedin.com/in/isaac-vazquez" target="_blank" rel="noopener noreferrer" className="group">
-              <MorphButton
-                variant="secondary"
+              <ModernButton
+                variant="outline"
                 size="lg"
-                icon={<FaLinkedin className="text-lg" />}
-                iconPosition="left"
-                ariaLabel="Connect with me on LinkedIn"
-                className="hover-lift"
+                className="w-full sm:w-auto"
               >
+                <FaLinkedin className="inline mr-2 text-lg" />
                 Connect on LinkedIn
-              </MorphButton>
+              </ModernButton>
             </a>
           </div>
 
-          {/* Trust Badge / Friction Reducer */}
-          <div className="flex items-center justify-center gap-2 text-sm text-matrix-green">
-            <div className="w-2 h-2 bg-matrix-green rounded-full animate-pulse" aria-hidden="true"></div>
-            <span>Quick response guaranteed • No commitment required • Open to all opportunities</span>
+          {/* Trust Badge */}
+          <div className="flex items-center justify-center gap-2 text-sm text-[#6BCF7F] dark:text-[#8FE39E]">
+            <div className="w-2 h-2 bg-[#6BCF7F] dark:bg-[#8FE39E] rounded-full animate-pulse" aria-hidden="true"></div>
+            <span>Friendly replies, no pressure conversations, and plenty of follow-through</span>
           </div>
-        </GlassCard>
+        </WarmCard>
 
-        {/* Value Proposition Cards - Social Proof */}
+        {/* Value Proposition Cards */}
         <div className="grid md:grid-cols-3 gap-6 w-full">
-          <GlassCard
-            elevation={2}
-            interactive={true}
-            className="p-6 text-center hover-lift"
-            ariaLabel="Product management expertise"
-          >
+          <WarmCard hover={true} padding="lg" className="text-center">
             <div className="text-3xl mb-3" aria-hidden="true">💼</div>
-            <Heading className="text-lg font-bold mb-2 text-electric-blue">
+            <Heading level={3} className="text-lg font-bold mb-2 text-[#FF6B35]">
               Product Leadership
             </Heading>
-            <Paragraph className="text-sm text-secondary">
-              Technical foundation + MBA strategy + 6+ years building products at scale
-            </Paragraph>
-          </GlassCard>
+            <p className="text-sm text-[#4A3426] dark:text-[#D4A88E]">
+              Blend technical depth with MBA strategy and six years of building products that scale
+            </p>
+          </WarmCard>
 
-          <GlassCard
-            elevation={2}
-            interactive={true}
-            className="p-6 text-center hover-lift"
-            ariaLabel="Proven track record"
-          >
+          <WarmCard hover={true} padding="lg" className="text-center">
             <div className="text-3xl mb-3" aria-hidden="true">📊</div>
-            <Heading className="text-lg font-bold mb-2 text-matrix-green">
+            <Heading level={3} className="text-lg font-bold mb-2 text-[#FF6B35]">
               Proven Results
             </Heading>
-            <Paragraph className="text-sm text-secondary">
-              60M+ users served • 99.9% uptime • 50% defect reduction across multiple products
-            </Paragraph>
-          </GlassCard>
+            <p className="text-sm text-[#4A3426] dark:text-[#D4A88E]">
+              
+            </p>
+          </WarmCard>
 
-          <GlassCard
-            elevation={2}
-            interactive={true}
-            className="p-6 text-center hover-lift"
-            ariaLabel="Fast response time"
-          >
+          <WarmCard hover={true} padding="lg" className="text-center">
             <div className="text-3xl mb-3" aria-hidden="true">⚡</div>
-            <Heading className="text-lg font-bold mb-2 text-cyber-teal">
+            <Heading level={3} className="text-lg font-bold mb-2 text-[#FF6B35]">
               Quick Responder
             </Heading>
-            <Paragraph className="text-sm text-secondary">
-              I reply to all messages within 24 hours and am open to calls, coffee chats, or video meetings
-            </Paragraph>
-          </GlassCard>
+            <p className="text-sm text-[#4A3426] dark:text-[#D4A88E]">
+              I make time for thoughtful replies, whether it's a call, coffee chat, or quick video sync
+            </p>
+          </WarmCard>
         </div>
 
         {/* Locations & Availability */}
-        <GlassCard
-          elevation={2}
-          className="p-6 w-full"
-          ariaLabel="Location and availability information"
-        >
+        <WarmCard hover={false} padding="lg" className="w-full">
           <div className="text-center">
-            <Heading className="text-xl font-bold mb-4 text-gradient">
-              📍 Based in Austin, TX • Open to Remote & Relocation
+            <Heading level={3} className="text-xl font-bold mb-4 text-[#FF6B35]">
+              📍 Based in Berkeley, CA • Open to Cool Opportunities
             </Heading>
-            <Paragraph className="text-secondary content-text max-w-2xl mx-auto">
-              Currently completing my MBA at UC Berkeley Haas (expected graduation May 2025).
-              Available for immediate start for the right opportunity. Open to roles in San Francisco,
-              Austin, NYC, or remote positions with mission-driven companies.
-            </Paragraph>
+            <p className="text-base text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto leading-relaxed">
+              I'm based in the East Bay during my MBA at UC Berkeley Haas (graduating May 2027).
+              I love working on products that push boundaries and solving real problems through creativity, data, and technology.
+            </p>
           </div>
-        </GlassCard>
+        </WarmCard>
       </div>
-      <style jsx global>{`
-        @keyframes wiggle {
-          0%, 100% { transform: rotate(-10deg) scale(1);}
-          25% { transform: rotate(8deg) scale(1.08);}
-          50% { transform: rotate(-4deg) scale(1);}
-          75% { transform: rotate(10deg) scale(1.05);}
-        }
-        .animate-wiggle {
-          animation: wiggle 2.5s infinite;
-        }
-      `}</style>
     </div>
-    </>
   );
 }

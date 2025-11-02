@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllBlogPosts } from '@/lib/blog';
 
 interface SearchableContent {
   id: string;
@@ -7,7 +6,7 @@ interface SearchableContent {
   excerpt: string;
   content: string;
   url: string;
-  type: 'blog' | 'project' | 'page';
+  type: 'project' | 'page';
   category?: string;
   tags?: string[];
   publishedAt?: string;
@@ -17,36 +16,8 @@ interface SearchableContent {
 async function getAllSearchableContent(): Promise<SearchableContent[]> {
   const content: SearchableContent[] = [];
 
-  // Get blog posts
-  try {
-    const blogPosts = await getAllBlogPosts();
-    const blogContent = blogPosts.map(post => ({
-      id: `blog-${post.slug}`,
-      title: post.title,
-      excerpt: post.excerpt,
-      content: post.content,
-      url: `/blog/${post.slug}`,
-      type: 'blog' as const,
-      category: post.category,
-      tags: post.tags,
-      publishedAt: post.publishedAt
-    }));
-    content.push(...blogContent);
-  } catch (error) {
-    console.error('Error fetching blog posts for search:', error);
-  }
-
   // Add static pages
   const staticPages = [
-    {
-      id: 'page-about',
-      title: 'About Isaac Vazquez',
-      excerpt: 'QA Engineer and Fantasy Football Analytics Developer based in Austin, TX. Learn about my experience in software testing, automation, and data visualization.',
-      content: 'About page content including QA engineering experience, fantasy football analytics, software development, Austin Texas, quality assurance, test automation',
-      url: '/about',
-      type: 'page' as const,
-      category: 'About'
-    },
     {
       id: 'page-projects',
       title: 'Projects & Portfolio',
@@ -55,6 +26,15 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       url: '/projects',
       type: 'page' as const,
       category: 'Projects'
+    },
+    {
+      id: 'page-consulting',
+      title: 'Product Management Consulting & Advisory',
+      excerpt: 'Product management consulting and advisory support for civic tech and SaaS teams that need strategy, experimentation, and delivery leadership.',
+      content: 'Product management consulting product strategy discovery experimentation analytics civic tech SaaS quality engineering advisory',
+      url: '/consulting',
+      type: 'page' as const,
+      category: 'Product Management'
     },
     {
       id: 'page-resume',

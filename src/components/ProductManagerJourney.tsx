@@ -82,7 +82,7 @@ export function ProductManagerJourney() {
     {
       icon: IconTarget,
       title: "User-Centered Mindset",
-      description: "Experience with systems serving millions of users has taught me the importance of user research and data-driven decisions."
+      description: "Experience with technical systems has taught me the importance of user research and data-driven decisions."
     }
   ];
 

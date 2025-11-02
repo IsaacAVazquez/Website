@@ -1,106 +1,173 @@
-import { Metadata } from 'next';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { StructuredData } from "@/components/StructuredData";
+import { Heading } from "@/components/ui/Heading";
+import { Paragraph } from "@/components/ui/Paragraph";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
 
-export const metadata: Metadata = {
-  title: 'Consulting - Isaac Vazquez',
-  description: 'Product management consulting and advisory services. Strategic product leadership combining technical expertise with business strategy.',
-};
+export const metadata = constructMetadata({
+  title: "Consulting",
+  description:
+    "Product strategy and technical advisory that blends QA depth, product leadership, and Berkeley Haas insight.",
+  canonicalUrl: "/consulting",
+});
+
+const services = [
+  {
+    title: "Product Strategy & Roadmaps",
+    description:
+      "Clarify who you're serving, align on the bets that matter, and turn strategy into a roadmap the whole org can rally behind.",
+    icon: "🧭",
+  },
+  {
+    title: "Technical Product Management",
+    description:
+      "Translate technical constraints into clear tradeoffs, keep stakeholders aligned, and make sure we're shipping what users actually need.",
+    icon: "🔌",
+  },
+  {
+    title: "Quality & Process Optimization",
+    description:
+      "Bring quality upstream with testing strategies, automation, and rituals that bake reliability into the build—not bolted on later.",
+    icon: "🛠️",
+  },
+];
 
 export default function ConsultingPage() {
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Consulting", url: "/consulting" },
+  ];
+
   return (
     <>
-      <h1>Consulting</h1>
-      
-      <section>
-        <p>
-          I help organizations build better products through strategic product management 
-          and technical excellence. My approach combines 6+ years of technical experience 
-          with world-class business strategy frameworks from UC Berkeley Haas.
-        </p>
-        
-        <p>
-          Whether you're a startup scaling from prototype to product-market fit or an 
-          established company optimizing your product development process, I bring a 
-          unique perspective that bridges engineering excellence with strategic vision.
-        </p>
-      </section>
+      {/* Breadcrumb Structured Data */}
+      <StructuredData
+        type="BreadcrumbList"
+        data={{
+          items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement,
+        }}
+      />
 
-      <section>
-        <h2>Services</h2>
-        
-        <div className="service-item">
-          <h3>Product Strategy & Roadmap</h3>
-          <p>
-            Strategic product planning that aligns technical capabilities with business 
-            objectives. I help define product vision, prioritize features, and create 
-            actionable roadmaps that teams can execute.
-          </p>
-        </div>
-        
-        <div className="service-item">
-          <h3>Technical Product Management</h3>
-          <p>
-            Bridging the gap between engineering teams and business stakeholders. I 
-            translate complex technical constraints into business language and ensure 
-            product decisions are informed by both user needs and technical realities.
-          </p>
-        </div>
-        
-        <div className="service-item">
-          <h3>Quality & Process Optimization</h3>
-          <p>
-            Drawing from extensive QA engineering experience, I help teams build quality 
-            into their development process. This includes testing strategy, automation 
-            frameworks, and quality metrics that drive better outcomes.
-          </p>
-        </div>
-      </section>
+      {/* Service Schema */}
+      <StructuredData
+        type="ProfessionalService"
+        data={{
+          name: "Isaac Vazquez Consulting",
+          description:
+            "Product strategy and technical advisory services blending QA expertise with MBA-level business strategy.",
+          areaServed: ["Austin, TX", "San Francisco, CA", "New York, NY", "Remote"],
+          serviceType: services.map((service) => service.title),
+          provider: {
+            "@type": "Person",
+            name: "Isaac Vazquez",
+            jobTitle: "Product Strategist & MBA Candidate",
+            email: "isaacavazquez95@gmail.com",
+            url: "https://isaacavazquez.com",
+          },
+        }}
+      />
 
-      <section id="advisory">
-        <h2>Advisory & Mentoring</h2>
-        
-        <p>
-          I work with technical professionals transitioning into product management roles 
-          and early-stage founders building their first products. My mentoring focuses 
-          on practical frameworks and real-world experience from both Austin civic tech 
-          and Silicon Valley innovation environments.
-        </p>
-        
-        <p>
-          Areas I commonly advise on include product-market fit validation, technical 
-          architecture decisions, team building, and strategic planning for technical products.
-        </p>
-      </section>
+      <div className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-5xl mx-auto space-y-12"
+        >
+          <WarmCard padding="xl" className="text-center">
+            <Heading level={1} className="mb-4 text-[#FF6B35]">
+              Product Management Consulting & Advisory
+            </Heading>
+            <Paragraph className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] mx-auto max-w-3xl">
+              I partner with teams to build products people believe in. The work blends QA discipline, product strategy, and the toolkit I'm sharpening at Berkeley Haas—grounded in six-plus years of shipping alongside engineers, analysts, and stakeholders.
+            </Paragraph>
+            <Paragraph className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] mx-auto max-w-3xl">
+              Whether you're moving from prototype to product-market fit or leveling up a mature delivery process, I help translate vision into experiments, rituals, and roadmaps your team can execute.
+            </Paragraph>
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+              <Link href="/contact">
+                <ModernButton variant="primary" size="lg">
+                  Start a Conversation
+                </ModernButton>
+              </Link>
+              <a href="mailto:isaacavazquez95@gmail.com">
+                <ModernButton variant="outline" size="lg">
+                  Email Isaac
+                </ModernButton>
+              </a>
+            </div>
+          </WarmCard>
 
-      <section>
-        <h2>Background</h2>
-        
-        <p>
-          Currently pursuing MBA at UC Berkeley Haas while maintaining hands-on technical 
-          work. I've contributed to products serving 60M+ users across Austin and California 
-          markets, giving me deep insight into both user needs and technical constraints.
-        </p>
-        
-        <p>
-          My technical foundation in QA engineering and software development provides unique 
-          credibility when working with engineering teams, while my business education at 
-          Haas ensures strategic thinking about market positioning and competitive advantage.
-        </p>
-      </section>
+          <section>
+            <Heading level={2} className="mb-6 text-center text-[#FF6B35]">
+              How I Can Help
+            </Heading>
+            <div className="grid gap-6 md:grid-cols-3">
+              {services.map((service) => (
+                <WarmCard key={service.title} hover padding="lg" className="text-center h-full">
+                  <span className="text-4xl mb-3 block" aria-hidden="true">
+                    {service.icon}
+                  </span>
+                  <Heading level={3} className="text-lg font-semibold mb-3 text-[#FF6B35]">
+                    {service.title}
+                  </Heading>
+                  <Paragraph className="text-sm md:text-base text-[#4A3426] dark:text-[#D4A88E]">
+                    {service.description}
+                  </Paragraph>
+                </WarmCard>
+              ))}
+            </div>
+          </section>
 
-      <section>
-        <h2>Let's work together</h2>
-        
-        <p>
-          I work with a select number of clients to ensure I can provide the focused 
-          attention and strategic depth your project deserves.
-        </p>
-        
-        <p>
-          <a href="mailto:isaacavazquez95@gmail.com">
-            Email me
-          </a> to discuss your product challenges and how I might help.
-        </p>
-      </section>
+          <WarmCard padding="xl" className="space-y-4">
+            <Heading level={2} className="text-[#FF6B35]">
+              Advisory & Mentoring
+            </Heading>
+            <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
+              I coach technical builders stepping into product roles and early founders shaping their first offering. Sessions are candid and tactical, drawing on lessons from Austin civic tech and Bay Area startups alike.
+            </Paragraph>
+            <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
+              We often work through validating product-market fit, making pragmatic architecture decisions, building healthy teams, and setting up product rhythms that scale with growth.
+            </Paragraph>
+          </WarmCard>
+
+          <WarmCard padding="xl" className="space-y-4">
+            <Heading level={2} className="text-[#FF6B35]">
+              Background & Approach
+            </Heading>
+            <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
+              I'm completing my MBA at UC Berkeley Haas while staying hands-on in product and QA work. I've contributed to platforms supporting more than 60 million voters across Austin and California, giving me a clear view of both user needs and technical constraints.
+            </Paragraph>
+            <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
+              The QA and software roots bring credibility with engineering teams; Haas sharpens the strategic layer across market positioning, financial outcomes, and competitive advantage.
+            </Paragraph>
+          </WarmCard>
+
+          <WarmCard padding="lg" className="text-center">
+            <Heading level={3} className="text-xl text-[#FF6B35] mb-3">
+              Let's Build Together
+            </Heading>
+            <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto">
+              I keep engagements intentionally small so every client gets focus and follow-through. Reach out and we'll explore how I can support what you're building.
+            </Paragraph>
+            <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+              <Link href="/contact">
+                <ModernButton variant="primary" size="md">
+                  Share Your Project
+                </ModernButton>
+              </Link>
+              <a href="mailto:isaacavazquez95@gmail.com">
+                <ModernButton variant="outline" size="md">
+                  Email Isaac
+                </ModernButton>
+              </a>
+            </div>
+          </WarmCard>
+        </motion.div>
+      </div>
     </>
   );
 }

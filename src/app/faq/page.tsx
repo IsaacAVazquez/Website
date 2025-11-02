@@ -43,6 +43,24 @@ const faqCategories = [
     ]
   },
   {
+    category: "Product Management & Strategy",
+    badge: "Product",
+    questions: [
+      {
+        question: "How do you approach product discovery and validation?",
+        answer: "I start by framing the opportunity with real user input—interviews, support signals, and product analytics—and distill that into a clear hypothesis. From there I partner with design and engineering to shape discovery experiments, instrument the right metrics, and run lean tests that tell us whether to double down or pivot. Every learning cycles back into the roadmap and ensures we're shipping what customers actually need."
+      },
+      {
+        question: "What product management experience do you bring from Civitech and your MBA work?",
+        answer: "At Civitech I translate civic engagement needs into product bets serving more than 60 million voters, blending delivery leadership with my QA background to keep launches reliable. At Berkeley Haas I'm sharpening that muscle with coursework in strategy, go-to-market, and venture operations, plus hands-on projects that pair me with Bay Area startups. The combination keeps me grounded in both execution and business outcomes."
+      },
+      {
+        question: "What kinds of product roles are you exploring during recruiting?",
+        answer: "I'm focused on PM roles where a technical foundation and mission-driven mindset matter—think civic tech, SaaS, or platforms that benefit from strong experimentation and quality practices. I'm especially excited about teams that value product discovery, data-informed decision making, and cross-functional storytelling."
+      }
+    ]
+  },
+  {
     category: "Fantasy Football Analytics",
     badge: "Analytics",
     questions: [
@@ -182,7 +200,7 @@ export default function FAQPage() {
         }}
       />
       
-      <div className="min-h-screen py-12 md:py-20">
+      <div className="min-h-screen py-12 md:py-20 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B]">
         <div className="max-w-4xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-12">

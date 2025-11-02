@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { Badge } from "@/components/ui/Badge";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { Heading } from "@/components/ui/Heading";
 import { IconSearch, IconX } from "@tabler/icons-react";
 
@@ -16,12 +15,12 @@ interface BlogFilterProps {
   currentQuery?: string;
 }
 
-export function BlogFilter({ 
-  categories, 
-  tags, 
-  currentCategory, 
-  currentTag, 
-  currentQuery 
+export function BlogFilter({
+  categories,
+  tags,
+  currentCategory,
+  currentTag,
+  currentQuery
 }: BlogFilterProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -34,25 +33,25 @@ export function BlogFilter({
 
   const updateFilter = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
-    
+
     if (value) {
       params.set(key, value);
     } else {
       params.delete(key);
     }
-    
+
     // Clear search when selecting category/tag filters
     if (key !== 'q') {
       params.delete('q');
       setSearchQuery("");
     }
-    
+
     // Clear category/tag when searching
     if (key === 'q') {
       params.delete('category');
       params.delete('tag');
     }
-    
+
     const queryString = params.toString();
     const url = queryString ? `/blog?${queryString}` : '/blog';
     router.push(url);
@@ -75,12 +74,12 @@ export function BlogFilter({
   return (
     <div className="mb-12 space-y-6">
       {/* Search Bar */}
-      <GlassCard className="p-6">
+      <WarmCard hover={false} padding="lg">
         <form onSubmit={handleSearch} className="relative">
           <div className={`relative transition-all duration-300 ${
             isSearchFocused ? 'scale-[1.02]' : ''
           }`}>
-            <IconSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+            <IconSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#9C7A5F] dark:text-[#D4A88E] w-5 h-5" />
             <input
               type="text"
               value={searchQuery}
@@ -88,51 +87,57 @@ export function BlogFilter({
               onFocus={() => setIsSearchFocused(true)}
               onBlur={() => setIsSearchFocused(false)}
               placeholder="Search articles..."
-              className="w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all duration-200 text-slate-900 dark:text-slate-100"
+              className="w-full pl-12 pr-12 py-4 bg-[#FFF8F0] dark:bg-[#4A3426]/30 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg focus:ring-2 focus:ring-[#FF6B35] focus:border-[#FF6B35] transition-all duration-200 text-[#2D1B12] dark:text-[#FFE4D6]"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={clearSearch}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#9C7A5F] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] transition-colors"
               >
                 <IconX className="w-5 h-5" />
               </button>
             )}
           </div>
           <div className="mt-4 flex justify-center">
-            <MorphButton type="submit" variant="primary" size="sm">
+            <ModernButton type="submit" variant="primary" size="md">
               Search Articles
-            </MorphButton>
+            </ModernButton>
           </div>
         </form>
-      </GlassCard>
+      </WarmCard>
 
       {/* Category and Tag Filters */}
-      <GlassCard className="p-6">
+      <WarmCard hover={false} padding="lg">
         <div className="space-y-6">
           {/* Categories */}
           <div>
-            <Heading level={3} className="mb-4 text-lg">
+            <Heading level={3} className="mb-4 text-lg text-[#FF6B35]">
               Categories
             </Heading>
             <div className="flex flex-wrap gap-2">
-              <Badge
-                variant={!currentCategory ? "electric" : "outline"}
-                className="cursor-pointer hover:scale-105 transition-transform"
+              <button
                 onClick={() => updateFilter('category', null)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  !currentCategory
+                    ? 'bg-[#FF6B35] text-white shadow-warm-lg'
+                    : 'bg-[#FFF8F0] dark:bg-[#4A3426]/30 text-[#4A3426] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30 hover:border-[#FF6B35] hover:text-[#FF6B35]'
+                }`}
               >
                 All Categories
-              </Badge>
+              </button>
               {categories.map((category) => (
-                <Badge
+                <button
                   key={category}
-                  variant={currentCategory === category ? "matrix" : "outline"}
-                  className="cursor-pointer hover:scale-105 transition-transform"
                   onClick={() => updateFilter('category', category)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    currentCategory === category
+                      ? 'bg-[#F7B32B] text-[#2D1B12] shadow-warm-lg'
+                      : 'bg-[#FFF8F0] dark:bg-[#4A3426]/30 text-[#4A3426] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30 hover:border-[#F7B32B] hover:text-[#F7B32B]'
+                  }`}
                 >
                   {category}
-                </Badge>
+                </button>
               ))}
             </div>
           </div>
@@ -140,72 +145,76 @@ export function BlogFilter({
           {/* Tags */}
           {tags.length > 0 && (
             <div>
-              <Heading level={3} className="mb-4 text-lg">
+              <Heading level={3} className="mb-4 text-lg text-[#FF6B35]">
                 Tags
               </Heading>
               <div className="flex flex-wrap gap-2">
-                <Badge
-                  variant={!currentTag ? "electric" : "outline"}
-                  size="sm"
-                  className="cursor-pointer hover:scale-105 transition-transform"
+                <button
                   onClick={() => updateFilter('tag', null)}
+                  className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-all ${
+                    !currentTag
+                      ? 'bg-[#FF6B35] text-white shadow-warm-lg'
+                      : 'bg-[#FFF8F0] dark:bg-[#4A3426]/30 text-[#4A3426] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30 hover:border-[#FF6B35] hover:text-[#FF6B35]'
+                  }`}
                 >
                   All Tags
-                </Badge>
+                </button>
                 {tags.slice(0, 10).map((tag) => (
-                  <Badge
+                  <button
                     key={tag}
-                    variant={currentTag === tag ? "matrix" : "outline"}
-                    size="sm"
-                    className="cursor-pointer hover:scale-105 transition-transform"
                     onClick={() => updateFilter('tag', tag)}
+                    className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-all ${
+                      currentTag === tag
+                        ? 'bg-[#F7B32B] text-[#2D1B12] shadow-warm-lg'
+                        : 'bg-[#FFF8F0] dark:bg-[#4A3426]/30 text-[#4A3426] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30 hover:border-[#F7B32B] hover:text-[#F7B32B]'
+                    }`}
                   >
                     {tag}
-                  </Badge>
+                  </button>
                 ))}
                 {tags.length > 10 && (
-                  <Badge variant="ghost" size="sm" className="opacity-60">
+                  <span className="px-3 py-1.5 text-sm text-[#9C7A5F] dark:text-[#D4A88E] opacity-60">
                     +{tags.length - 10} more
-                  </Badge>
+                  </span>
                 )}
               </div>
             </div>
           )}
         </div>
-      </GlassCard>
+      </WarmCard>
 
       {/* Quick Filter Shortcuts */}
-      <GlassCard className="p-4">
+      <WarmCard hover={false} padding="md">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm text-slate-600 dark:text-slate-400 font-medium">
+          <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] font-medium">
             Quick filters:
           </span>
           <button
             onClick={() => updateFilter('category', 'QA Engineering')}
-            className="text-sm text-electric-blue hover:underline transition-colors"
+            className="text-sm text-[#FF6B35] hover:underline transition-colors"
           >
             QA Engineering
           </button>
           <button
             onClick={() => updateFilter('category', 'Fantasy Football Analytics')}
-            className="text-sm text-matrix-green hover:underline transition-colors"
+            className="text-sm text-[#F7B32B] hover:underline transition-colors"
           >
             Fantasy Football
           </button>
           <button
             onClick={() => updateFilter('tag', 'Testing')}
-            className="text-sm text-cyber-teal hover:underline transition-colors"
+            className="text-sm text-[#FF8E53] hover:underline transition-colors"
           >
             Testing
           </button>
           <button
             onClick={() => updateFilter('tag', 'Automation')}
-            className="text-sm text-neon-purple hover:underline transition-colors"
+            className="text-sm text-[#6BCF7F] hover:underline transition-colors"
           >
             Automation
           </button>
         </div>
-      </GlassCard>
+      </WarmCard>
     </div>
   );
 }

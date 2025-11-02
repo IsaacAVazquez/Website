@@ -1,7 +1,7 @@
 import { siteConfig } from "@/lib/seo";
 
 interface StructuredDataProps {
-  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage" | "CreativeWork";
+  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage" | "CreativeWork" | "ProfessionalService";
   data?: Record<string, string | number | boolean | object>;
 }
 
@@ -17,7 +17,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...baseData,
           "@type": "Person",
           "name": siteConfig.name,
-          "jobTitle": "QA Engineer & Fantasy Football Analytics Developer",
+          "jobTitle": "Technical Product Manager & UC Berkeley MBA Candidate",
           "description": siteConfig.description,
           "url": siteConfig.url,
           "image": `${siteConfig.url}/og-image.png`,
@@ -31,16 +31,6 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
             "addressRegion": "TX",
             "addressCountry": "US"
           },
-          "homeLocation": {
-            "@type": "Place",
-            "name": "Austin, Texas",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Austin",
-              "addressRegion": "Texas",
-              "addressCountry": "United States"
-            }
-          },
           "worksFor": {
             "@type": "Organization",
             "name": "Civitech",
@@ -52,37 +42,66 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
             }
           },
           "knowsAbout": [
-            "Fantasy Football Analytics",
-            "Fantasy Sports Data Visualization",
-            "NFL Player Analytics",
-            "Fantasy Football Tools",
-            "D3.js Visualization",
-            "K-Means Clustering",
-            "Real-time Data Processing",
+            "Product Management",
+            "Product Strategy",
+            "Go-To-Market Planning",
+            "Cross-functional Leadership",
+            "Experimentation and Analytics",
             "Quality Assurance",
             "Test Automation",
-            "TypeScript",
-            "React",
-            "Next.js",
-            "Data Analysis",
-            "Software Quality",
-            "Austin Tech Community",
-            "Texas Software Development"
+            "Civic Technology",
+            "SaaS Platforms",
+            "Data-informed Product Decisions",
+            "Technical Discovery",
+            "User Research"
           ],
-          "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Florida State University",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Tallahassee",
-              "addressRegion": "FL",
-              "addressCountry": "US"
+          "alumniOf": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "UC Berkeley Haas School of Business",
+              "description": "MBA Candidate",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Berkeley",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            },
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "Florida State University",
+              "description": "Bachelor of Arts, Political Science and International Affairs",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Tallahassee",
+                "addressRegion": "FL",
+                "addressCountry": "US"
+              }
             }
-          },
+          ],
           "hasOccupation": [
             {
               "@type": "Occupation",
-              "name": "QA Engineer",
+              "name": "Technical Product Manager",
+              "occupationLocation": {
+                "@type": "City",
+                "name": "Austin",
+                "containedInPlace": {
+                  "@type": "State",
+                  "name": "Texas"
+                }
+              },
+              "skills": [
+                "Product Strategy",
+                "Roadmapping",
+                "User Research",
+                "Stakeholder Management",
+                "Experimentation"
+              ]
+            },
+            {
+              "@type": "Occupation",
+              "name": "Quality Engineering Leader",
               "occupationLocation": {
                 "@type": "City",
                 "name": "Austin",
@@ -93,29 +112,9 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
               },
               "skills": [
                 "Quality Assurance",
-                "Test Automation",
-                "Software Testing",
-                "Bug Detection",
-                "Performance Testing"
-              ]
-            },
-            {
-              "@type": "Occupation",
-              "name": "Fantasy Football Analytics Developer",
-              "occupationLocation": {
-                "@type": "City",
-                "name": "Austin",
-                "containedInPlace": {
-                  "@type": "State",
-                  "name": "Texas"
-                }
-              },
-              "skills": [
-                "Fantasy Football Data Analysis",
-                "Sports Analytics",
-                "Data Visualization",
-                "Web Development",
-                "Machine Learning"
+                "Automation Strategy",
+                "Release Management",
+                "Continuous Improvement"
               ]
             }
           ],
@@ -276,6 +275,33 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "isAccessibleForFree": true,
           "learningResourceType": data.learningResourceType || "Project",
           "workExample": data.workExample,
+          ...data,
+        };
+
+      case "ProfessionalService":
+        return {
+          ...baseData,
+          "@type": "ProfessionalService",
+          "name": data.name || `${siteConfig.name} Product Management Consulting`,
+          "description": data.description || siteConfig.description,
+          "url": data.url || siteConfig.url,
+          "areaServed": data.areaServed || ["Austin, TX", "San Francisco Bay Area, CA", "Remote"],
+          "serviceType": data.serviceType || [
+            "Product Strategy",
+            "Product Discovery",
+            "Product Operations",
+            "Quality Engineering Advisory"
+          ],
+          "provider": {
+            "@type": "Person",
+            "name": siteConfig.name,
+            "jobTitle": "Technical Product Manager",
+            "url": siteConfig.url,
+            "sameAs": [
+              siteConfig.links.linkedin,
+              siteConfig.links.github
+            ]
+          },
           ...data,
         };
 

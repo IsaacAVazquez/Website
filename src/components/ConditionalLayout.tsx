@@ -26,14 +26,14 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
       <div className="sr-only">
         <a
           href="#main-content"
-          className="fixed top-4 left-4 z-[100] px-4 py-2 bg-electric-blue text-terminal-bg rounded-md focus:not-sr-only focus:absolute transition-all"
+          className="fixed top-4 left-4 z-[100] px-4 py-2 bg-[#FF6B35] text-white rounded-md focus:not-sr-only focus:absolute transition-all"
         >
           Skip to main content
         </a>
         {showFloatingNav && (
           <a
             href="#navigation"
-            className="fixed top-4 left-36 z-[100] px-4 py-2 bg-electric-blue text-terminal-bg rounded-md focus:not-sr-only focus:absolute transition-all"
+            className="fixed top-4 left-36 z-[100] px-4 py-2 bg-[#FF6B35] text-white rounded-md focus:not-sr-only focus:absolute transition-all"
           >
             Skip to navigation
           </a>
@@ -41,9 +41,9 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
       </div>
 
       {/* Layout Container */}
-      <div className={isFullWidthPage 
-        ? "min-h-screen w-full" 
-        : "min-h-screen flex bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B]"
+      <div className={isFullWidthPage
+        ? "min-h-screen w-full"
+        : "min-h-screen flex bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]"
       }>
         
         {/* Main Content */}

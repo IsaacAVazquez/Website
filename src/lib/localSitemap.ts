@@ -18,11 +18,9 @@ export function generateLocalSitemapEntries(): LocalSitemapEntry[] {
   // Core pages with location variants
   const corePages = [
     { path: '', priority: 1.0, changeFreq: 'weekly' as const },
-    { path: '/about', priority: 0.9, changeFreq: 'monthly' as const },
     { path: '/services', priority: 0.9, changeFreq: 'weekly' as const },
     { path: '/contact', priority: 0.8, changeFreq: 'monthly' as const },
     { path: '/resume', priority: 0.7, changeFreq: 'monthly' as const },
-    { path: '/blog', priority: 0.8, changeFreq: 'daily' as const },
     { path: '/fantasy-football', priority: 0.8, changeFreq: 'daily' as const }
   ];
 
@@ -66,15 +64,6 @@ export function generateLocalSitemapEntries(): LocalSitemapEntry[] {
         priority: 0.6,
         location
       });
-    });
-
-    // Location-specific blog content
-    entries.push({
-      url: `${baseUrl}/blog/${location.address.addressLocality.toLowerCase()}-insights`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-      location
     });
 
     // Location testimonials/reviews page
@@ -160,7 +149,6 @@ export function generateLocalBusinessIndex(): LocalBusinessIndex {
       categories: location.categories,
       urls: {
         main: `https://isaacavazquez.com?location=${location.id}`,
-        about: `https://isaacavazquez.com/about?location=${location.id}`,
         contact: `https://isaacavazquez.com/contact?location=${location.id}`,
         services: location.categories.map(service => ({
           name: service,
@@ -190,7 +178,6 @@ export interface LocalBusinessIndex {
     categories: string[];
     urls: {
       main: string;
-      about: string;
       contact: string;
       services: Array<{ name: string; url: string }>;
     };

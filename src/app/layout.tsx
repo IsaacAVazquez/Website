@@ -42,7 +42,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth-dark">
       <head>
         {/* PWA and Theme Meta Tags */}
-        <meta name="theme-color" content="#00F5FF" />
+        <meta name="theme-color" content="#FF6B35" />
         <meta name="color-scheme" content="dark light" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -103,12 +103,12 @@ export default function RootLayout({
           inter.variable,
           jetbrainsMono.variable,
           orbitron.variable,
-          "min-h-screen antialiased bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B] text-slate-900 dark:text-slate-50"
+          "min-h-screen antialiased bg-gradient-to-br from-[#FFFCF7] via-[#FFF8F0] to-[#FFE5D9] dark:from-[#1C1410] dark:via-[#2A1F18] dark:to-[#4A3426] text-[#2D1B12] dark:text-[#FFFCF7]"
         )}
       >
         <Analytics>
           <Providers>
-            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-electric-blue focus:text-slate-900 focus:rounded-md focus:shadow-lg">
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#FF6B35] focus:text-white focus:rounded-md focus:shadow-lg">
               Skip to main content
             </a>
             <ConditionalLayout>

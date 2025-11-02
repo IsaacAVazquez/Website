@@ -1,303 +1,355 @@
 "use client";
 
-import { TerminalHero } from "@/components/TerminalHero";
+import { ModernHero } from "@/components/ModernHero";
 import { Heading } from "@/components/ui/Heading";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
+import { StructuredData } from "@/components/StructuredData";
+import { motion, AnimatePresence } from "framer-motion";
+import { personalMetrics } from "@/constants/personal";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import {
+  IconBriefcase,
+  IconSchool,
+  IconTrendingUp,
+  IconCode,
+  IconRocket,
+  IconUser,
+  IconTimeline
+} from "@tabler/icons-react";
 
-const funFacts = [
-  "QA Engineer with 6+ years experience. I optimize systems and drive cross-functional execution.",
-  "Led platform quality for tools serving 60M+ voters. Delivered reliability during critical election cycles.",
-  "I translate technical complexity into actionable strategy.",
-  "I thrive on hard problems — especially when the stakes are real.",
-  "Currently pursuing an MBA at Berkeley Haas. My goal: scale impact across tech and business.",
-];
+type TabType = "overview" | "journey";
 
-function FunFacts() {
+// Timeline Item Component
+const TimelineItem = ({ item, isLast }: { item: typeof personalMetrics.careerTimeline[0]; isLast: boolean }) => {
+  const getIcon = () => {
+    const company = item.company.toLowerCase();
+    if (company.includes('florida state')) return IconSchool;
+    if (company.includes('open progress')) return IconTrendingUp;
+    if (company.includes('civitech')) return IconBriefcase;
+    if (company.includes('berkeley') || company.includes('haas')) return IconRocket;
+    return IconBriefcase;
+  };
+
+  const Icon = getIcon();
+
   return (
-    <motion.ul 
-      className="list-none space-y-3 text-slate-300"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={{
-        visible: {
-          transition: {
-            staggerChildren: 0.1
-          }
-        }
-      }}
-    >
-      {funFacts.map((fact, i) => (
-        <motion.li 
-          key={i}
-          variants={{
-            hidden: { opacity: 0, x: -30, scale: 0.95 },
-            visible: { 
-              opacity: 1, 
-              x: 0, 
-              scale: 1,
-              transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 15
-              }
-            }
-          }}
-          className="transition-all hover:scale-105 hover:text-electric-blue flex items-center space-x-3 font-mono group"
-          whileHover={{ x: 10 }}
-        >
-          <motion.span 
-            className="text-matrix-green"
-            whileHover={{ rotate: 90 }}
-            transition={{ duration: 0.2 }}
-          >&gt;</motion.span>
-          <span className="group-hover:text-glow">{fact}</span>
-        </motion.li>
-      ))}
-    </motion.ul>
-  );
-}
+    <div className="relative flex items-start gap-6 group">
 
-export default function Home() {
-  return (
-    <div className="min-h-screen w-full">
-      {/* Terminal Hero Section */}
-      <TerminalHero />
-      
-      {/* Secondary Content */}
-      <div className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-        {/* What I'm Focused On - Now Section */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-5xl mx-auto grid md:grid-cols-5 gap-4 md:gap-6 lg:gap-8 items-stretch"
-        >
-          {/* Headshot Card */}
-          <motion.div 
-            className="md:col-span-2"
-            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ 
-              duration: 0.8,
-              delay: 0.2,
-              type: "spring",
-              stiffness: 100
-            }}>
-            <GlassCard
-              elevation={3}
-              interactive={true}
-              cursorGlow={true}
-              noiseTexture={true}
-              className="p-3 sm:p-4 bg-terminal-bg/50 border-terminal-border flex items-center justify-center h-full relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-electric-blue/5 to-cyber-teal/10 rounded-xl breathing-gradient" />
-              <div className="relative z-10 w-full h-full min-h-[400px]">
-                <Image
-                  src="/images/headshot-640-cropped.png"
-                  alt="Isaac Vazquez - UC Berkeley MBA Student and Product Strategist"
-                  fill
-                  priority
-                  className="rounded-xl object-cover shadow-lg"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
-                />
-                <div className="absolute -inset-1 bg-gradient-to-br from-neon-purple/30 to-electric-blue/30 rounded-xl blur-sm opacity-50 pointer-events-none"></div>
-              </div>
-            </GlassCard>
-          </motion.div>
-          
-          {/* Content Card */}
-          <motion.div 
-            className="md:col-span-3"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ 
-              duration: 0.8,
-              delay: 0.4,
-              ease: "easeOut"
-            }}>
-            <GlassCard
-              elevation={3}
-              interactive={true}
-              cursorGlow={true}
-              noiseTexture={true}
-              className="p-6 sm:p-8 bg-terminal-bg/50 border-terminal-border flex flex-col justify-center h-full relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 to-neon-purple/5 rounded-xl breathing-gradient" />
-              <div className="relative z-10 space-y-6">
-                <Heading 
-                  level={2}
-                  className="text-cyber text-electric-blue mb-6 lg:mb-8"
-                  style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}
-                >
-                  productVision
-                </Heading>
-                <div 
-                  className="text-slate-300 leading-relaxed"
-                  style={{ fontSize: 'clamp(1rem, 1.5vw, 1.25rem)' }}
-                >
-                  <p className="mb-6">
-                    I'm an MBA candidate at UC Berkeley Haas. My focus: honing tools that drive innovation 
-                    and solve critical business problems. I deliver scalable impact through consulting, 
-                    product leadership, or hybrid approaches.
-                  </p>
-                  <div className="flex items-start">
-                    <span className="text-matrix-green mr-3 text-lg">▸</span>
-                    <span>I build bridges between technical execution and strategic vision</span>
+      {/* Timeline line */}
+      <div className="relative flex flex-col items-center">
+        {/* Year badge with logo */}
+        <div className="relative z-10 w-16 h-16 rounded-full bg-white dark:bg-[#2D1B12] p-2 mb-4 shadow-warm-lg border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
+          {item.logo ? (
+            <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden bg-white dark:bg-[#2D1B12]">
+              <Image
+                src={item.logo}
+                alt={`${item.company} logo`}
+                width={48}
+                height={48}
+                className="object-contain"
+              />
+            </div>
+          ) : (
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-[#FF6B35] to-[#F7B32B] flex items-center justify-center">
+              <Icon className="w-6 h-6 text-white" />
+            </div>
+          )}
+        </div>
+
+        {/* Vertical line */}
+        {!isLast && (
+          <div className="w-0.5 h-32 bg-gradient-to-b from-[#FF6B35]/50 to-transparent" />
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 pb-12">
+        <WarmCard hover={true} padding="lg">
+            <div>
+              {/* Header */}
+              <div className="flex items-start mb-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-xl font-bold text-[#FF6B35]">
+                      {item.role}
+                    </h3>
+                    <div className="text-sm text-[#F7B32B] font-mono">
+                      {item.year}
+                    </div>
+                  </div>
+                  <div className="text-lg font-semibold text-[#2D1B12] dark:text-[#FFE4D6] mb-2">
+                    {item.company}
                   </div>
                 </div>
               </div>
-            </GlassCard>
-          </motion.div>
-        </motion.div>
 
-        {/* Visual Separator */}
-        <motion.div 
-          className="relative max-w-4xl mx-auto my-8 sm:my-12 lg:my-16"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-neon-purple/30 to-transparent"></div>
-          </div>
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-electric-blue/20 to-transparent blur-sm"></div>
-          </div>
-        </motion.div>
+              {/* Description */}
+              <p className="text-[#4A3426] dark:text-[#D4A88E] mb-4 leading-relaxed">
+                {item.description}
+              </p>
 
-        {/* Enhanced Fun Facts Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ 
-            duration: 0.6,
-            delay: 0.1,
-            ease: [0.25, 0.46, 0.45, 0.94]
-          }}
-          className="max-w-4xl mx-auto"
-        >
-          <GlassCard
-            elevation={3}
-            interactive={true}
-            cursorGlow={true}
-            noiseTexture={true}
-            className="p-8 bg-terminal-bg/50 border-terminal-border"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-matrix-green/5 via-cyber-teal/5 to-electric-blue/5 rounded-xl breathing-gradient" />
-            
-            <div className="relative z-10 space-y-6">
-              <Heading level={2} className="text-cyber text-electric-blue text-xl lg:text-2xl mb-4">
-                isaac.getJourney()
-              </Heading>
-              <FunFacts />
-            </div>
-          </GlassCard>
-        </motion.div>
+              {/* Tech Stack */}
+              <div className="mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <IconCode className="w-4 h-4 text-[#FF6B35]" />
+                  <span className="text-sm font-semibold text-[#FF6B35]">
+                    Tech Stack
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {item.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 text-xs rounded-full bg-[#FFF8F0] border border-[#FF6B35]/30 text-[#FF6B35] font-mono"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-        {/* Call to Action Grid */}
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.2
-              }
-            }
-          }}
-          className="mt-12 sm:mt-16 lg:mt-20 grid md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto items-stretch"
-        >
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 20, rotateX: -30 },
-              visible: { 
-                opacity: 1, 
-                y: 0, 
-                rotateX: 0,
-                transition: {
-                  duration: 0.6,
-                  ease: "easeOut"
-                }
-              }
-            }}
-            whileHover={{ y: -5, transition: { duration: 0.2 } }}
-            style={{ perspective: 1000 }}
-          >
-            <GlassCard className="p-6 bg-terminal-bg/30 border-electric-blue/30 hover:border-electric-blue hover:bg-electric-blue/5 transition-all duration-300 flex flex-col h-full">
-            <div className="flex-1 space-y-3">
-              <motion.div 
-                className="text-electric-blue font-mono text-xs uppercase tracking-wider opacity-70"
-                whileHover={{ opacity: 1 }}
-              >RESUME_VIEWER</motion.div>
-              <h3 className="text-cyber text-white text-lg">View My Resume</h3>
-              <p className="text-slate-400 font-mono text-xs opacity-80">Explore my professional experience</p>
             </div>
-            <div className="mt-6">
-              <Link href="/resume" className="morph-button w-full inline-block text-center group">
-                <span className="flex items-center justify-center space-x-2">
-                  <span>VIEW RESUME</span>
-                  <motion.span
-                    className="inline-block"
-                    animate={{ x: [0, 3, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >→</motion.span>
-                </span>
-              </Link>
-            </div>
-          </GlassCard>
-          </motion.div>
-
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 20, rotateX: -30 },
-              visible: { 
-                opacity: 1, 
-                y: 0, 
-                rotateX: 0,
-                transition: {
-                  duration: 0.6,
-                  ease: "easeOut"
-                }
-              }
-            }}
-            whileHover={{ y: -5, transition: { duration: 0.2 } }}
-            style={{ perspective: 1000 }}
-          >
-            <GlassCard className="p-6 bg-terminal-bg/30 border-matrix-green/30 hover:border-matrix-green hover:bg-matrix-green/5 transition-all duration-300 flex flex-col h-full">
-            <div className="flex-1 space-y-3">
-              <motion.div 
-                className="text-matrix-green font-mono text-xs uppercase tracking-wider opacity-70"
-                whileHover={{ opacity: 1 }}
-              >CONTACT_INIT</motion.div>
-              <h3 className="text-cyber text-white text-lg">Get In Touch</h3>
-              <p className="text-slate-400 font-mono text-xs opacity-80">Let's connect!</p>
-            </div>
-            <div className="mt-6">
-              <Link href="/contact" className="morph-button w-full inline-block text-center group">
-                <span className="flex items-center justify-center space-x-2">
-                  <span>START CONVERSATION</span>
-                  <motion.span
-                    className="inline-block"
-                    animate={{ x: [0, 3, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >→</motion.span>
-                </span>
-              </Link>
-            </div>
-          </GlassCard>
-          </motion.div>
-        </motion.div>
+          </WarmCard>
       </div>
     </div>
+  );
+};
+
+
+export default function Home() {
+  const [activeTab, setActiveTab] = useState<TabType>("overview");
+
+  const tabs = [
+    { id: "overview" as TabType, label: "Overview", icon: IconUser },
+    { id: "journey" as TabType, label: "Journey", icon: IconTimeline }
+  ];
+
+  const productHighlights = [
+    {
+      title: "Discovery & Positioning",
+      description: "Translate user research and market signals into a focused roadmap for civic tech and SaaS teams.",
+      bullets: [
+        "Lead customer interviews and synthesize insights into opportunity briefs",
+        "Define product positioning and narrative for stakeholders",
+        "Frame hypotheses that guide experiments and prioritization"
+      ]
+    },
+    {
+      title: "Data & Experimentation",
+      description: "Run data-informed bets that keep learning loops tight and measurable.",
+      bullets: [
+        "Develop dashboards that connect activation, retention, and revenue metrics",
+        "Shape experimentation backlogs and partner with analysts on instrumentation",
+        "Model impact scenarios for executive decision-making"
+      ]
+    },
+    {
+      title: "Delivery & Quality",
+      description: "Keep cross-functional teams aligned from opportunity sizing through launch.",
+      bullets: [
+        "Facilitate sprint rituals that keep design, engineering, and GTM in sync",
+        "Pair release planning with QA strategies to protect reliability",
+        "Close the loop with learnings that feed the next discovery cycle"
+      ]
+    }
+  ];
+
+  const professionalServiceData = {
+    name: "Isaac Vazquez Product Management Consulting",
+    description: "Technical product manager and UC Berkeley Haas MBA helping civic tech and SaaS teams ship user-loved products.",
+    serviceType: [
+      "Product Strategy",
+      "Product Discovery",
+      "Experimentation & Analytics",
+      "Product Operations",
+      "Quality Engineering Advisory"
+    ],
+    areaServed: ["Austin, TX", "San Francisco Bay Area, CA", "Remote"],
+    url: "https://isaacavazquez.com",
+  };
+
+  return (
+    <>
+      <StructuredData type="ProfessionalService" data={professionalServiceData} />
+      <div className="min-h-screen w-full bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+        {/* Modern Editorial Hero Section */}
+        <ModernHero />
+
+        {/* Secondary Content */}
+        <div className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+          {/* About Section with Tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-5xl mx-auto"
+          >
+            {/* Tab Navigation */}
+            <div className="flex justify-center mb-8 relative z-20">
+            <div className="flex flex-wrap justify-center bg-white/80 dark:bg-[#2D1B12]/90 p-2 rounded-2xl border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg backdrop-blur-sm">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                    activeTab === tab.id
+                      ? 'bg-[#FF6B35] dark:bg-[#FF8E53] text-white shadow-warm-lg'
+                      : 'text-[#6B4F3D] dark:text-[#FFE4D6] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/50'
+                  }`}
+                >
+                  <tab.icon className="w-5 h-5" />
+                  <span>{tab.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Tab Content Container with Min Height */}
+          <div className="min-h-[600px]">
+            <AnimatePresence mode="wait">
+              {activeTab === "overview" && (
+                <motion.div
+                  key="overview"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+          <WarmCard
+            hover={true}
+            padding="xl"
+          >
+            <div className="space-y-8">
+              <Heading level={2} className="text-[#FF6B35] text-2xl lg:text-3xl mb-6">
+                Overview
+              </Heading>
+
+              <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                I'm a technical product manager with a QA and analytics foundation. At Civitech I lead testing for voter engagement platforms that reach millions of people, turning what we uncover in quality work into smarter product bets.
+              </p>
+
+              <div>
+                <p className="text-[#2D1B12] dark:text-[#FFE4D6] font-semibold mb-3 text-base md:text-lg">
+                  What I bring to the table:
+                </p>
+                <ul className="list-disc ml-6 space-y-3 text-[#4A3426] dark:text-[#D4A88E] text-base md:text-lg">
+                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Product & Strategy:</strong> Pair user research with prioritization, keep cross-functional teams aligned, and ship what actually moves metrics</li>
+                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Technical:</strong> Build Cypress suites, dig through SQL, break APIs, and run Agile rituals that keep velocity healthy</li>
+                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Analytics:</strong> Define the metrics, run the experiments, and translate the findings into product decisions</li>
+                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Leadership:</strong> Mentor teammates, manage complex projects, and champion inclusive, mission-driven teams</li>
+                </ul>
+              </div>
+
+              <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                Before Civitech, I combed through statewide datasets for the State of Florida to support policy decisions, and I ran client services at Open Progress—translating campaign goals into digital programs that actually resonated.
+              </p>
+
+              <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                These days I'm earning my MBA at UC Berkeley Haas to pair hands-on execution with sharper product strategy and explore how I can support civic tech, SaaS, and other mission-driven founders as an operator or investor.
+              </p>
+
+              <p className="text-base md:text-lg text-[#2D1B12] dark:text-[#FFE4D6] leading-relaxed font-medium">
+                If any of this sparks ideas, let's connect—I'm always up for swapping notes on product, strategy, or social impact.
+              </p>
+            </div>
+          </WarmCard>
+                </motion.div>
+              )}
+
+              {activeTab === "journey" && (
+                <motion.div
+                  key="journey"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <WarmCard hover={true} padding="xl">
+                    <div className="space-y-10">
+          {/* Header */}
+          <div className="text-center">
+            <Heading level={2} className="text-[#FF6B35] text-2xl lg:text-3xl mb-6">
+              Career Journey
+            </Heading>
+            <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed max-w-3xl mx-auto">
+              From Political Science graduate to QA engineer, and now an MBA candidate at UC Berkeley, my career has been a journey of continuous learning and impact. Here's a snapshot of my professional timeline.
+            </p>
+          </div>
+
+          {/* Timeline */}
+          <div className="relative">
+            {/* Timeline items */}
+            <div className="relative space-y-4">
+              {personalMetrics.careerTimeline.map((item, index) => (
+                <TimelineItem
+                  key={`${item.year}-${item.role}`}
+                  item={item}
+                  isLast={index === personalMetrics.careerTimeline.length - 1}
+                />
+              ))}
+            </div>
+          </div>
+                    </div>
+                  </WarmCard>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
+
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-20 space-y-8 max-w-6xl mx-auto"
+        >
+          <div className="max-w-4xl mx-auto text-center space-y-4">
+            <Heading level={2} className="text-[#FF6B35] text-2xl lg:text-3xl">
+              Product Management Focus Areas
+            </Heading>
+            <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+              I'm recruiting for product management roles where a technical foundation, MBA training, and a civic tech lens are advantages. These are the muscles I lean on most often.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {productHighlights.map((highlight) => (
+              <WarmCard key={highlight.title} hover padding="lg" className="h-full flex flex-col">
+                <Heading level={3} className="text-lg font-semibold mb-3 text-[#FF6B35]">
+                  {highlight.title}
+                </Heading>
+                <p className="text-sm md:text-base text-[#4A3426] dark:text-[#D4A88E] mb-4">
+                  {highlight.description}
+                </p>
+                <ul className="list-disc ml-4 space-y-2 text-sm md:text-base text-[#4A3426] dark:text-[#D4A88E] flex-1">
+                  {highlight.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </WarmCard>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/resume">
+              <ModernButton variant="primary" size="md">
+                Review My Resume
+              </ModernButton>
+            </Link>
+            <Link href="/contact">
+              <ModernButton variant="outline" size="md">
+                Start a Conversation
+              </ModernButton>
+            </Link>
+          </div>
+        </motion.section>
+      </div>
+    </div>
+  </>
   );
 }

@@ -31,6 +31,14 @@ const config: Config = {
         '3xl': 'var(--text-3xl)',
         '4xl': 'var(--text-4xl)',
         '5xl': 'var(--text-5xl)',
+        '6xl': 'var(--text-6xl)',
+        '7xl': 'var(--text-7xl)',
+        // Editorial oversized display fonts
+        'display-sm': 'var(--text-display-sm)',
+        'display-md': 'var(--text-display-md)',
+        'display-lg': 'var(--text-display-lg)',
+        'display-xl': 'var(--text-display-xl)',
+        'display-xxl': 'var(--text-display-xxl)',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -100,9 +108,17 @@ const config: Config = {
         "4xl": "var(--space-4xl)",
       },
       boxShadow: {
-        'glow-blue': 'var(--glow-blue)',
-        'glow-teal': 'var(--glow-teal)',
-        'glow-purple': 'var(--glow-purple)',
+        'subtle': 'var(--shadow-subtle)',
+        'elevated': 'var(--shadow-elevated)',
+        'primary': 'var(--shadow-primary)',
+        'secondary': 'var(--shadow-secondary)',
+        'accent': 'var(--shadow-accent)',
+        'warm-lg': 'var(--shadow-warm-lg)',
+        'warm-xl': 'var(--shadow-warm-xl)',
+        // Legacy glow support (now maps to warm shadows)
+        'glow-blue': 'var(--glow-primary)',
+        'glow-teal': 'var(--glow-secondary)',
+        'glow-purple': 'var(--glow-accent)',
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
