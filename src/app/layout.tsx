@@ -65,6 +65,51 @@ export default function RootLayout({
         {/* Structured Data */}
         <StructuredData type="Person" />
         <StructuredData type="WebSite" />
+
+        {/* FAQ Structured Data for better SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What is Isaac Vazquez's product management experience?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Isaac Vazquez has 6+ years of experience in product-adjacent roles including quality assurance leadership at Civitech (civic tech), data analytics at Florida State University, and client services at Open Progress. Currently pursuing MBA at UC Berkeley Haas to deepen product management expertise."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What kind of product management roles is Isaac Vazquez looking for?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Isaac is seeking Associate Product Manager (APM) or Product Manager roles in Austin TX or San Francisco Bay Area, particularly in civic tech, SaaS, or mission-driven startups. Interested in opportunities leveraging technical background and data analytics skills."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is Isaac Vazquez's technical background?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Isaac has extensive technical experience including quality assurance leadership, test automation (Cypress), SQL and data analysis, API testing, and Agile/Scrum methodologies. Led QA initiatives for voter engagement platforms at Civitech."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Where is Isaac Vazquez located?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Isaac is based in the Bay Area while attending UC Berkeley Haas and has strong ties to Austin, TX. Open to opportunities in both locations and remote positions with mission-driven organizations."
+                  }
+                }
+              ]
+            })
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `(() => {

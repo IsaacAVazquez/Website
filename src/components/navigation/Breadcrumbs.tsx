@@ -141,19 +141,19 @@ export function Breadcrumbs({
         aria-label="Breadcrumb"
         className={`py-4 ${className}`}
       >
-        <ol className="flex items-center space-x-2 text-sm">
+        <ol className="flex flex-wrap items-center gap-2 p-3 bg-white/60 dark:bg-[#2D1B12]/60 rounded-xl border border-[#FFE4D6] dark:border-[#FF8E53]/20 backdrop-blur-sm shadow-sm">
           {breadcrumbs.map((item, index) => (
             <li key={item.href} className="flex items-center">
               {index > 0 && (
-                <IconChevronRight className="w-4 h-4 text-slate-400 mx-2" />
+                <IconChevronRight className="w-4 h-4 text-[#F7B32B] mx-1.5" aria-hidden="true" />
               )}
-              
+
               {item.isActive ? (
-                <span className="text-slate-900 dark:text-slate-100 font-medium">
+                <span className="text-[#FF6B35] dark:text-[#FF8E53] font-semibold text-sm px-2 py-1 rounded-lg bg-[#FF6B35]/10 dark:bg-[#FF8E53]/10">
                   {item.label === "Home" && showHome ? (
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center gap-1.5">
                       <IconHome className="w-4 h-4" />
-                      Home
+                      <span>Home</span>
                     </span>
                   ) : (
                     item.label
@@ -162,12 +162,12 @@ export function Breadcrumbs({
               ) : (
                 <Link
                   href={item.href}
-                  className="text-slate-600 dark:text-slate-400 hover:text-electric-blue dark:hover:text-electric-blue transition-colors"
+                  className="text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] transition-all duration-200 text-sm px-2 py-1 rounded-lg hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/50 font-medium"
                 >
                   {item.label === "Home" && showHome ? (
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center gap-1.5">
                       <IconHome className="w-4 h-4" />
-                      Home
+                      <span>Home</span>
                     </span>
                   ) : (
                     item.label

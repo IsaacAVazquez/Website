@@ -3,9 +3,9 @@ import { constructMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Badge } from "@/components/ui/Badge";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { FAQSection } from "@/components/FAQ/FAQSection";
 
 export const metadata: Metadata = constructMetadata({
@@ -200,18 +200,18 @@ export default function FAQPage() {
         }}
       />
       
-      <div className="min-h-screen py-12 md:py-20 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B]">
-        <div className="max-w-4xl mx-auto px-6">
+      <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+        <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <Heading level={1} className="mb-4">
+            <Heading level={1} className="mb-4 text-4xl md:text-5xl lg:text-6xl">
               Frequently Asked{" "}
-              <span className="bg-gradient-to-r from-electric-blue via-matrix-green to-cyber-teal bg-clip-text text-transparent">
+              <span className="gradient-text-warm">
                 Questions
               </span>
             </Heading>
-            <Paragraph size="lg" className="max-w-2xl mx-auto text-slate-600 dark:text-slate-400">
-              Get insights into QA engineering, business strategy, MBA experiences, 
+            <Paragraph size="lg" className="max-w-2xl mx-auto text-[#4A3426] dark:text-[#D4A88E]">
+              Get insights into QA engineering, business strategy, MBA experiences,
               and how to connect for meaningful conversations about technology and impact.
             </Paragraph>
           </div>
@@ -221,10 +221,10 @@ export default function FAQPage() {
             {faqCategories.map((category, categoryIndex) => (
               <section key={categoryIndex} className="space-y-6">
                 <div className="flex items-center gap-3 mb-8">
-                  <Badge variant="electric">
+                  <Badge variant="default">
                     {category.badge}
                   </Badge>
-                  <Heading level={2} className="text-2xl">
+                  <Heading level={2} className="text-2xl text-[#FF6B35]">
                     {category.category}
                   </Heading>
                 </div>
@@ -245,23 +245,23 @@ export default function FAQPage() {
 
           {/* Call to Action */}
           <div className="mt-16">
-            <GlassCard className="text-center p-8 md:p-12">
-              <Heading level={2} className="mb-4">
+            <WarmCard padding="xl" className="text-center">
+              <Heading level={2} className="mb-4 text-[#FF6B35]">
                 Have More Questions?
               </Heading>
-              <Paragraph className="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">
-                Didn't find what you're looking for? I'd love to connect and share perspectives on QA engineering, 
+              <Paragraph className="text-[#4A3426] dark:text-[#D4A88E] mb-6 max-w-2xl mx-auto">
+                Didn't find what you're looking for? I'd love to connect and share perspectives on QA engineering,
                 business strategy, or how technology can create meaningful impact. Always open to thoughtful conversations.
               </Paragraph>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <MorphButton href="/contact" variant="primary">
-                  Start a Conversation
-                </MorphButton>
-                <MorphButton href="/blog" variant="outline">
-                  Read My Insights
-                </MorphButton>
+                <ModernButton variant="primary">
+                  <a href="/contact">Start a Conversation</a>
+                </ModernButton>
+                <ModernButton variant="outline">
+                  <a href="/blog">Read My Insights</a>
+                </ModernButton>
               </div>
-            </GlassCard>
+            </WarmCard>
           </div>
         </div>
       </div>

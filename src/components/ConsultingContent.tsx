@@ -117,3 +117,4 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
     </motion.div>
   );
 }
+

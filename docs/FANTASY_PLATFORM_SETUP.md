@@ -76,7 +76,7 @@ NODE_ENV=production
 #### Netlify Deployment
 1. Add environment variables in Netlify site settings
 2. Configure build command: `npm run build`
-3. Set up external cron service for updates
+3. Enable the built-in scheduled function (`scheduled-fantasy-update`) under **Functions → Scheduled functions**
 
 ## 📊 Data Import Methods
 
@@ -204,10 +204,24 @@ Each data file includes comprehensive metadata:
 ## 🔄 Automated Updates
 
 ### Scheduled Updates
-- **Frequency:** Nightly at 12:00 AM EST (5:00 AM UTC)
-- **Trigger:** Automated cron jobs via deployment platform
+- **Frequency:** Every Wednesday at 8:00 UTC (midnight Pacific)
+- **Trigger:** Netlify Scheduled Function (`scheduled-fantasy-update`)
 - **Scope:** All positions and scoring formats
-- **Backup:** Automatic data backups before updates
+- **Backup:** Automatic data backups before updates (see `/src/lib/dataFileWriter.ts`)
+
+#### Configuration Checklist
+1. **Environment variables** (Netlify → Site settings → Build & deploy → Environment):
+   - `FANTASYPROS_USERNAME`
+   - `FANTASYPROS_PASSWORD`
+   - `CRON_SECRET`
+2. **Redeploy** after adding secrets so the scheduled function picks them up.
+3. **Verify the schedule** in **Functions → Scheduled functions** (`scheduled-fantasy-update` should show “Every Wednesday at 8:00 UTC”).
+4. **Optional manual test**:
+   ```bash
+   curl -X POST https://<your-site>/api/scheduled-update \
+     -H "Authorization: Bearer $CRON_SECRET"
+   ```
+   Inspect Netlify function logs if anything fails.
 
 ### Manual Updates
 You can trigger manual updates via:

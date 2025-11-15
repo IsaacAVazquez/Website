@@ -52,8 +52,8 @@ export default function TestimonialsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
-      <main className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B]">
-        <div className="container mx-auto px-4 py-12">
+      <main className="min-h-screen bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <TestimonialsSection
             title="Client Testimonials & Reviews"
             subtitle="Hear from clients, colleagues, and collaborators about working with Isaac on QA engineering, fantasy football analytics, and software development projects"

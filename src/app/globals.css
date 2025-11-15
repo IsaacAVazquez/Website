@@ -809,29 +809,33 @@ li {
 }
 
 .focus-ring:focus-visible {
-  outline-color: var(--electric-blue);
+  outline-color: #FF6B35;
   outline-offset: 4px;
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
 }
 
-/* Skip to content link */
+/* Skip to content link - Warm Modern Theme */
 .skip-link {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: var(--electric-blue);
-  color: var(--slate-900);
+  background: #FF6B35;
+  color: white;
   padding: 8px 16px;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 8px;
   z-index: 1000;
   font-weight: 600;
   transition: top 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);
+  border: 2px solid #FFE4D6;
 }
 
 .skip-link:focus {
   top: 6px;
+  box-shadow: 0 6px 24px rgba(255, 107, 53, 0.5);
+  outline: 3px solid #F7B32B;
+  outline-offset: 2px;
 }
 
 /* Enhanced Reduced Motion Support */
@@ -880,23 +884,23 @@ li {
   }
 }
 
-/* Focus indicators for cognitive accessibility */
+/* Focus indicators for cognitive accessibility - Warm Modern */
 .focus-enhanced:focus-visible {
-  outline: 3px solid var(--electric-blue);
+  outline: 3px solid #FF6B35;
   outline-offset: 4px;
-  background-color: rgba(0, 245, 255, 0.1);
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  background-color: rgba(255, 107, 53, 0.1);
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
 }
 
-/* Text selection styling for better reading experience */
+/* Text selection styling for better reading experience - Warm Modern */
 ::selection {
-  background: rgba(0, 245, 255, 0.3);
-  color: var(--slate-900);
+  background: rgba(255, 107, 53, 0.25);
+  color: #2D1B12;
 }
 
 ::-moz-selection {
-  background: rgba(0, 245, 255, 0.3);
-  color: var(--slate-900);
+  background: rgba(255, 107, 53, 0.25);
+  color: #2D1B12;
 }
 
 /* Light mode color overrides for better contrast */

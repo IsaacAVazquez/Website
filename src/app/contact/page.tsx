@@ -3,8 +3,8 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 
 export const metadata = constructMetadata({
-  title: "Contact",
-  description: "Get in touch with Isaac Vazquez to talk product management roles, product strategy projects, or mission-driven tech collaborations across Austin and the Bay Area.",
+  title: "Contact Isaac Vazquez | Product Manager - Austin & Bay Area",
+  description: "Connect with Isaac Vazquez for product management opportunities, consulting engagements, or civic tech collaborations. UC Berkeley MBA candidate available for PM roles in Austin TX and San Francisco Bay Area. Let's discuss product strategy, roadmapping, and cross-functional leadership.",
   canonicalUrl: "/contact",
 });
 

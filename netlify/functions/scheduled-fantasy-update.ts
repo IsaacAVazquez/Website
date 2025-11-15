@@ -1,7 +1,7 @@
 import { schedule } from '@netlify/functions';
 
-const handler = schedule('0 8 * * *', async (event) => {
-  // This runs every day at 8 AM UTC (midnight PST)
+const handler = schedule('0 8 * * 3', async (event) => {
+  // Runs every Wednesday at 8 AM UTC (midnight PST)
   console.log('Running scheduled fantasy football update...');
   
   const cronSecret = process.env.CRON_SECRET;

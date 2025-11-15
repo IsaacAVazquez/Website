@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { NewsletterSignup } from '@/components/newsletter/NewsletterSignup';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { GlassCard } from '@/components/ui/GlassCard';
+import { WarmCard } from '@/components/ui/WarmCard';
 import { Badge } from '@/components/ui/Badge';
 import { constructMetadata } from '@/lib/seo';
 import { 
@@ -105,25 +105,25 @@ export default function NewsletterPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
-      <main className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B]">
-        <div className="container mx-auto px-4 py-12">
+      <main className="min-h-screen bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <div className="max-w-4xl mx-auto space-y-12">
             
             {/* Header */}
             <div className="text-center">
               <div className="flex justify-center mb-6">
-                <div className="p-4 bg-electric-blue/10 rounded-full">
-                  <IconMail className="w-12 h-12 text-electric-blue" />
+                <div className="p-4 bg-[#FF6B35]/10 rounded-full">
+                  <IconMail className="w-12 h-12 text-[#FF6B35]" />
                 </div>
               </div>
-              <Heading level={1} className="mb-4">
+              <Heading level={1} className="mb-4 text-4xl md:text-5xl lg:text-6xl">
                 Join the{" "}
-                <span className="bg-gradient-to-r from-electric-blue via-matrix-green to-cyber-teal bg-clip-text text-transparent">
+                <span className="gradient-text-warm">
                   Newsletter
                 </span>
               </Heading>
-              <Paragraph size="lg" className="max-w-2xl mx-auto text-slate-600 dark:text-slate-400">
-                Get expert insights on QA engineering, fantasy football analytics, and software development 
+              <Paragraph size="lg" className="max-w-2xl mx-auto text-[#4A3426] dark:text-[#D4A88E]">
+                Get expert insights on QA engineering, fantasy football analytics, and software development
                 delivered to your inbox. Join 500+ professionals who stay ahead of the curve.
               </Paragraph>
             </div>
@@ -146,8 +146,8 @@ export default function NewsletterPage() {
             {/* Content Types */}
             <div className="space-y-8">
               <div className="text-center">
-                <Heading level={2} className="mb-4">What You'll Get</Heading>
-                <Paragraph className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                <Heading level={2} className="mb-4 text-[#FF6B35]">What You'll Get</Heading>
+                <Paragraph className="text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto">
                   Deep-dive content covering the latest in quality assurance, analytics, and software development
                 </Paragraph>
               </div>
@@ -156,28 +156,28 @@ export default function NewsletterPage() {
                 {contentTypes.map((content) => {
                   const Icon = content.icon;
                   return (
-                    <GlassCard key={content.title} className="p-6">
+                    <WarmCard key={content.title} padding="lg">
                       <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                          <div className="p-2 bg-electric-blue/10 rounded-lg">
-                            <Icon className="w-6 h-6 text-electric-blue" />
+                          <div className="p-2 bg-[#FF6B35]/10 rounded-lg">
+                            <Icon className="w-6 h-6 text-[#FF6B35]" />
                           </div>
-                          <Heading level={3} className="text-lg">{content.title}</Heading>
+                          <Heading level={3} className="text-lg text-[#FF6B35]">{content.title}</Heading>
                         </div>
-                        
-                        <Paragraph size="sm" className="text-slate-600 dark:text-slate-400">
+
+                        <Paragraph size="sm" className="text-[#4A3426] dark:text-[#D4A88E]">
                           {content.description}
                         </Paragraph>
-                        
+
                         <div className="flex flex-wrap gap-1">
                           {content.topics.map((topic) => (
-                            <Badge key={topic} variant="outline" size="sm">
+                            <Badge key={topic} variant="default" size="sm">
                               {topic}
                             </Badge>
                           ))}
                         </div>
                       </div>
-                    </GlassCard>
+                    </WarmCard>
                   );
                 })}
               </div>
@@ -186,47 +186,47 @@ export default function NewsletterPage() {
             {/* Recent Content */}
             <div className="space-y-6">
               <div className="text-center">
-                <Heading level={2} className="mb-4">Recent Content</Heading>
-                <Paragraph className="text-slate-600 dark:text-slate-400">
+                <Heading level={2} className="mb-4 text-[#FF6B35]">Recent Content</Heading>
+                <Paragraph className="text-[#4A3426] dark:text-[#D4A88E]">
                   Here's what subscribers have been reading lately
                 </Paragraph>
               </div>
 
               <div className="space-y-4">
                 {recentContent.map((item, index) => (
-                  <GlassCard key={index} className="p-4">
+                  <WarmCard key={index} padding="md">
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <Badge variant="electric" size="sm">{item.type}</Badge>
-                          <span className="text-sm text-slate-500 dark:text-slate-400">
+                          <Badge variant="default" size="sm">{item.type}</Badge>
+                          <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">
                             {new Date(item.date).toLocaleDateString()}
                           </span>
                         </div>
-                        <Heading level={4} className="text-lg">{item.title}</Heading>
+                        <Heading level={4} className="text-lg text-[#FF6B35]">{item.title}</Heading>
                       </div>
-                      <div className="text-right text-sm text-slate-500 dark:text-slate-400">
+                      <div className="text-right text-sm text-[#6B4F3D] dark:text-[#D4A88E]">
                         <div className="flex items-center gap-1">
                           <IconCalendar className="w-4 h-4" />
                           {item.readTime}
                         </div>
                       </div>
                     </div>
-                  </GlassCard>
+                  </WarmCard>
                 ))}
               </div>
             </div>
 
             {/* Social Proof */}
-            <GlassCard className="p-8 text-center">
+            <WarmCard padding="xl" className="text-center">
               <div className="max-w-2xl mx-auto">
-                <Heading level={3} className="mb-4">
+                <Heading level={3} className="mb-4 text-[#FF6B35]">
                   Join 500+ Professionals
                 </Heading>
-                <Paragraph className="text-slate-600 dark:text-slate-400 mb-6">
+                <Paragraph className="text-[#4A3426] dark:text-[#D4A88E] mb-6">
                   QA engineers, fantasy football enthusiasts, and software developers from companies like:
                 </Paragraph>
-                <div className="flex items-center justify-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+                <div className="flex items-center justify-center gap-6 text-sm text-[#6B4F3D] dark:text-[#D4A88E]">
                   <div className="flex items-center gap-2">
                     <IconUsers className="w-4 h-4" />
                     <span>500+ Subscribers</span>
@@ -241,7 +241,7 @@ export default function NewsletterPage() {
                   </div>
                 </div>
               </div>
-            </GlassCard>
+            </WarmCard>
 
           </div>
         </div>

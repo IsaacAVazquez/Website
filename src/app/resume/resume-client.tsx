@@ -177,8 +177,8 @@ export default function Resume() {
           </div>
         </WarmCard>
 
-        {/* Key Achievements Section */}
-        <motion.section
+        {/* Key Achievements Section - Hidden */}
+        {/* <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -191,7 +191,6 @@ export default function Resume() {
             </Heading>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Revenue Generated */}
               <div className="bg-gradient-to-br from-[#FF6B35]/10 to-[#F7B32B]/5 rounded-xl p-6 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 text-center">
                 <div className="p-2 bg-[#FF6B35]/20 rounded-lg mb-4 inline-block">
                   <IconTrendingUp className="w-5 h-5 text-[#FF6B35]" />
@@ -202,7 +201,6 @@ export default function Resume() {
                 </div>
               </div>
 
-              {/* Users Served */}
               <div className="bg-gradient-to-br from-[#F7B32B]/10 to-[#F7B32B]/5 rounded-xl p-6 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 text-center">
                 <div className="p-2 bg-[#F7B32B]/20 rounded-lg mb-4 inline-block">
                   <IconUsers className="w-5 h-5 text-[#F7B32B]" />
@@ -213,7 +211,6 @@ export default function Resume() {
                 </div>
               </div>
 
-              {/* NPS Improvement */}
               <div className="bg-gradient-to-br from-[#FF8E53]/10 to-[#FF8E53]/5 rounded-xl p-6 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 text-center">
                 <div className="p-2 bg-[#FF8E53]/20 rounded-lg mb-4 inline-block">
                   <IconStar className="w-5 h-5 text-[#FF8E53]" />
@@ -225,7 +222,6 @@ export default function Resume() {
                 <div className="text-xs text-[#9C7A5F] mt-1">23 → 36</div>
               </div>
 
-              {/* Defect Reduction */}
               <div className="bg-gradient-to-br from-[#6BCF7F]/10 to-[#6BCF7F]/5 rounded-xl p-6 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 text-center">
                 <div className="p-2 bg-[#6BCF7F]/20 rounded-lg mb-4 inline-block">
                   <IconChartBar className="w-5 h-5 text-[#6BCF7F]" />
@@ -237,7 +233,7 @@ export default function Resume() {
               </div>
             </div>
           </WarmCard>
-        </motion.section>
+        </motion.section> */}
 
         {/* Experience Section */}
         <motion.section

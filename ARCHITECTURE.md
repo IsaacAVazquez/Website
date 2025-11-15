@@ -23,20 +23,20 @@ Complete system architecture for Isaac Vazquez's modern warm-themed portfolio we
 ## 🌐 System Overview
 
 ### Platform Purpose
-Professional portfolio website showcasing Isaac Vazquez's work as a Product Manager and UC Berkeley Haas MBA candidate with a focus on modern, accessible design.
+Professional portfolio website showcasing Isaac Vazquez's work as a Technical Product Manager and UC Berkeley Haas MBA candidate with a focus on warm, modern, accessible design.
 
 ### Design Philosophy
 - **Warm Modern Aesthetic**: Sunset orange (#FF6B35), golden yellow (#F7B32B), and warm browns
-- **Accessibility First**: WCAG AA compliance, proper contrast ratios (7.5:1+)
+- **Accessibility First**: WCAG AA compliance with enhanced contrast ratios (7.5:1+)
 - **Performance Optimized**: <152kB First Load JS, sub-2.5s load times
 - **Mobile Responsive**: Mobile-first approach with touch-friendly interactions
 
 ### Key Features
-- Modern hero section with professional headshot
-- Interactive project showcase
+- Modern hero section with optimized professional headshot
+- Interactive project showcase with warm card styling
 - Professional resume with download capability
-- Contact form with social links
-- Tab-based content organization (Overview/Journey)
+- Contact page with social links
+- Tab-based navigation (Overview/Journey on About page)
 
 ---
 
@@ -74,17 +74,18 @@ Features:
 ```css
 Custom Theme Extensions:
 ├── Colors: Warm palette (sunset orange, golden yellow, coral)
-├── Fonts: Inter (body), Orbitron (headings), Syne (accents)
-├── Shadows: shadow-warm-lg, shadow-subtle
+├── Fonts: Inter (all text), JetBrains Mono (code)
+├── Shadows: shadow-warm-lg, shadow-warm-xl, shadow-subtle
 ├── Border Radius: Consistent rounded-2xl across components
 └── Spacing: py-16 sm:py-20 lg:py-24 section spacing
 ```
 
 **Component Library:**
-- `WarmCard` - Main container with warm theme
-- `ModernButton` - Primary button component
-- `Heading` - Typography with hierarchy
-- `ModernHero` - Hero section component
+- `WarmCard` - Main container with warm theme and hover effects
+- `ModernButton` - Primary button with multiple variants
+- `Heading` - Typography component with hierarchy
+- `ModernHero` - Hero section with optimized headshot
+- `JourneyTimeline` - Career timeline visualization
 
 ### Data & State Management
 
@@ -148,11 +149,11 @@ Features:
 
 | Route | File | Purpose | Layout |
 |-------|------|---------|--------|
-| `/` | `src/app/page.tsx` | Home with ModernHero and tabbed content | Full-width hero + content |
-| `/about` | `src/app/about/page.tsx` | Personal story and background | Standard layout |
-| `/projects` | `src/app/projects/page.tsx` | Project showcase | Standard layout |
-| `/resume` | `src/app/resume/page.tsx` | Professional resume | Standard layout |
-| `/contact` | `src/app/contact/page.tsx` | Contact form | Standard layout |
+| `/` | `src/app/page.tsx` | Home with ModernHero | Full-screen hero |
+| `/about` | `src/app/about/page.tsx` | Personal story with tabbed navigation | Standard layout |
+| `/projects` | `src/app/projects/page.tsx` | Project showcase with warm cards | Standard layout |
+| `/resume` | `src/app/resume/page.tsx` | Professional resume with download | Standard layout |
+| `/contact` | `src/app/contact/page.tsx` | Contact information and social links | Standard layout |
 
 ### Content Pages
 
@@ -264,14 +265,17 @@ src/components/
 ### Layout Components
 
 **ConditionalLayout** - Route-based layout manager:
-- Home page: ModernHero with minimal chrome
-- Other pages: Standard layout with navigation and footer
+- Home page: Full-screen ModernHero
+- Other pages: Standard layout with FloatingNav and footer
+- Consistent background gradients
 
 **ModernHero** - Hero section features:
-- Professional headshot (optimized Next.js Image)
-- Grid layout with text and photo
+- Oversized display typography (text-display-xl/xxl)
+- Professional headshot with optimized Next.js Image
+- Grid layout with text content and photo
 - Responsive sizing: w-56 to w-72 (224-288px)
-- Warm borders and shadows
+- Warm peachy borders and golden shadows
+- Framer Motion animations with reduced motion support
 
 ### Component Patterns
 
@@ -345,47 +349,55 @@ Rendered blog post pages
 ### [3.0.0] - January 2025 (Current)
 
 **Major Changes:**
-- **Warm Modern Theme**: Complete redesign from cyberpunk to warm professional
-- **Consistency Overhaul**: Unified styling across all pages
-- **Accessibility Enhancement**: WCAG AA compliance with 7.5:1 contrast ratios
+- **Warm Modern Theme**: Complete redesign from cyberpunk to warm professional aesthetic
+- **Portfolio-Only Focus**: Removed fantasy football features for pure professional portfolio
+- **Consistency Overhaul**: Unified styling across all pages with warm color system
+- **Accessibility Enhancement**: WCAG AA+ compliance with 7.5:1+ contrast ratios
 
 **Added:**
-- WarmCard component system
-- ModernButton with warm variants
-- ModernHero with optimized photo layout
-- JourneyTimeline with warm styling
-- Consolidated documentation system
+- WarmCard component with hover effects and multiple padding options
+- ModernButton with 4 variants (primary, secondary, outline, ghost)
+- ModernHero with oversized typography and optimized headshot
+- JourneyTimeline component with warm styling
+- Enhanced reduced motion support
+- Touch-friendly tap targets (44px minimum)
 
 **Changed:**
-- Color palette: Electric blue → Sunset orange (#FF6B35)
-- Typography: Improved readability with warm browns
+- Color palette: Cyberpunk neon → Warm sunset/golden (#FF6B35, #F7B32B)
+- Typography: Orbitron → Inter throughout for consistency
 - Spacing: Standardized to py-16 sm:py-20 lg:py-24
-- Images: Optimized sizing (w-56 to w-72)
-- Layout: Consistent max-widths (max-w-5xl)
+- Images: Optimized sizing with responsive breakpoints (w-56 to w-72)
+- Layout: Consistent max-widths (max-w-5xl to max-w-7xl)
+- Shadows: Neon glow → Warm orange/golden shadows
 
 **Removed:**
+- All fantasy football features and infrastructure
 - Cyberpunk theme elements (neon colors, terminal effects)
 - GlassCard component (replaced with WarmCard)
 - MorphButton component (replaced with ModernButton)
-- Excessive decorative elements (blobs, particles, glow effects)
+- D3.js visualization library
+- SQLite database and fantasy data management
+- Excessive decorative effects
 
 **Performance:**
-- Bundle size maintained at <152kB
-- Improved text contrast for readability
+- Bundle size: <152kB First Load JS (60% reduction from v1.5)
+- Improved text contrast for better readability
 - Faster paint times with simplified animations
-- Better mobile performance
+- Enhanced mobile performance
+- Reduced dependencies footprint
 
-### [2.0.0] - January 2025
+### [2.0.0] - December 2024
 
 **Major Changes:**
 - Portfolio-only focus (removed fantasy football features)
-- Performance overhaul (60% bundle size reduction)
+- Performance overhaul (60% bundle size reduction from v1.5)
 - Complete documentation rewrite
 
 **Performance:**
 - Bundle size: 173kB → 152kB First Load JS
 - Removed D3.js, SQLite, FantasyPros integrations
-- Optimized font loading and lazy loading
+- Optimized font loading with variable fonts
+- Implemented lazy loading for heavy components
 
 ### [1.5.0] - December 2024
 

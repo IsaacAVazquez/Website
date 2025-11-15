@@ -1,6 +1,6 @@
 # Isaac Vazquez Portfolio
 
-A cyberpunk-themed professional portfolio website showcasing QA Engineering expertise and technical projects, built with cutting-edge web technologies and optimized for performance.
+A warm, modern professional portfolio website showcasing Technical Product Management expertise and UC Berkeley Haas MBA candidacy, built with cutting-edge web technologies and optimized for performance and accessibility.
 
 **🚀 Live Site:** [isaacavazquez.com](https://isaacavazquez.com)
 
@@ -9,8 +9,8 @@ A cyberpunk-themed professional portfolio website showcasing QA Engineering expe
 ## ✨ Features
 
 ### 🎯 Core Portfolio
-- **Cyberpunk Design System** - Electric blue and matrix green color palette with glassmorphism effects
-- **Terminal Interface** - Interactive command-line hero section with realistic typing animations
+- **Warm Modern Design System** - Sunset orange and golden yellow color palette with inviting aesthetics
+- **Modern Hero Interface** - Clean, professional hero section with optimized headshot
 - **Full-Screen Experience** - Immersive layout optimized for content presentation
 - **Responsive Design** - Mobile-first approach with touch-friendly interactions
 - **Performance Optimized** - Advanced optimization techniques for fast loading
@@ -83,38 +83,40 @@ A cyberpunk-themed professional portfolio website showcasing QA Engineering expe
 
 ### Interactive Features
 - **Command Palette** - Quick navigation with ⌘K
-- **Terminal Animations** - Realistic typing effects and cursor movement
-- **Project Modals** - Detailed project information with live demos
-- **QA Dashboard** - Interactive metrics and testing visualizations
+- **Modern Hero** - Professional headshot with optimized layout
+- **Project Showcase** - Interactive project cards with warm styling
+- **Tabbed Navigation** - Overview/Journey tabs on About page
 
 ## 🎨 Design System
 
 ### Color Palette
 ```css
-/* Primary Cyberpunk Colors */
---electric-blue: #00F5FF    /* Primary accent, headings, links */
---matrix-green: #39FF14     /* Secondary accent, highlights */
---warning-amber: #FFB800    /* Warnings, attention items */
---error-red: #FF073A        /* Errors, critical states */
---neon-purple: #BF00FF      /* Tertiary accent, effects */
+/* Warm Modern Colors */
+--color-primary: #FF6B35    /* Sunset Orange - primary actions, headings */
+--color-secondary: #F7B32B  /* Golden Yellow - secondary actions, accents */
+--color-accent: #FF8E53     /* Coral - hover states, highlights */
+--color-success: #6BCF7F    /* Fresh Green - success states */
+--color-warning: #FFB020    /* Warm Amber - attention items */
+--color-error: #FF5757      /* Warm Red - error states */
 
-/* Terminal Interface */
---terminal-bg: #0A0A0B      /* Dark backgrounds, cards */
---terminal-text: #00FF00    /* Terminal-style text */
---terminal-cursor: #00F5FF  /* Cursor and active states */
+/* Warm Neutrals */
+--neutral-50: #FFFCF7       /* Warm cream - backgrounds */
+--neutral-700: #4A3426      /* Dark warm brown - text */
+--neutral-800: #2D1B12      /* Very dark warm brown */
 ```
 
 ### Typography Hierarchy
-- **Display:** Orbitron (futuristic, cyberpunk headings)
+- **Display:** Inter (clean, modern headings)
 - **Body:** Inter (readable, professional content)
-- **Accent:** Syne (modern, stylish highlights)
-- **Code:** JetBrains Mono (technical, terminal text)
+- **Accent:** Inter (consistent throughout)
+- **Code:** JetBrains Mono (technical text)
 
 ### Animation Patterns
-- **Glassmorphism:** Backdrop blur with transparency
-- **Glow Effects:** Electric accents on hover states
-- **Terminal Animations:** Realistic typing and cursor effects
+- **Warm Shadows:** Subtle orange/golden glow effects
+- **Hover Lift:** Gentle elevation on interactive elements
+- **Fade In:** Smooth entrance animations
 - **Physics-based:** Spring animations for natural movement
+- **Reduced Motion:** Full support for accessibility
 
 ## 📁 Project Structure
 
@@ -127,8 +129,8 @@ src/
 │   ├── resume/         # Professional resume
 │   └── api/            # Backend API endpoints
 ├── components/         # Reusable React components
-│   ├── ui/            # UI component library
-│   ├── TerminalHero/  # Terminal interface component
+│   ├── ui/            # UI component library (WarmCard, ModernButton, etc.)
+│   ├── ModernHero.tsx # Modern hero section component
 │   └── ...            # Feature-specific components
 ├── constants/         # Static data and configuration
 ├── lib/              # Utility functions and helpers
@@ -192,14 +194,14 @@ This project is private and proprietary. All rights reserved.
 
 ## 📞 Contact
 
-**Isaac Vazquez**  
-QA Engineer & Developer
+**Isaac Vazquez**
+Technical Product Manager & UC Berkeley Haas MBA Candidate
 
 - **Website:** [isaacavazquez.com](https://isaacavazquez.com)
-- **LinkedIn:** [isaac-vazquez](https://linkedin.com/in/isaac-vazquez)  
+- **LinkedIn:** [isaac-vazquez](https://linkedin.com/in/isaac-vazquez)
 - **Email:** isaacavazquez95@gmail.com
 - **GitHub:** [IsaacAVazquez](https://github.com/IsaacAVazquez)
 
 ---
 
-*Built with ⚡ by Isaac Vazquez - A showcase of modern web development and QA engineering excellence*
+*Built with care by Isaac Vazquez - A showcase of modern web development and product management excellence*

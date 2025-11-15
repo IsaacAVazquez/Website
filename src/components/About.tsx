@@ -44,18 +44,35 @@ export default function About() {
         className="max-w-5xl mx-auto"
       >
         <div className="flex justify-center mb-8">
-          <div className="flex flex-wrap justify-center bg-white/80 dark:bg-[#2D1B12]/90 p-2 rounded-2xl border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg backdrop-blur-sm">
-            {tabs.map((tab) => (
+          <div
+            role="tablist"
+            aria-label="About sections"
+            className="flex flex-wrap justify-center bg-white/80 dark:bg-[#2D1B12]/90 p-2 rounded-2xl border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg backdrop-blur-sm"
+          >
+            {tabs.map((tab, index) => (
               <button
                 key={tab.id}
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                aria-controls={`${tab.id}-panel`}
+                tabIndex={activeTab === tab.id ? 0 : -1}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                onKeyDown={(e) => {
+                  if (e.key === 'ArrowRight') {
+                    const nextIndex = (index + 1) % tabs.length;
+                    setActiveTab(tabs[nextIndex].id);
+                  } else if (e.key === 'ArrowLeft') {
+                    const prevIndex = (index - 1 + tabs.length) % tabs.length;
+                    setActiveTab(tabs[prevIndex].id);
+                  }
+                }}
+                className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 min-h-[48px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F7B32B] ${
                   activeTab === tab.id
-                    ? 'bg-[#FF6B35] dark:bg-[#FF8E53] text-white shadow-warm-lg'
-                    : 'text-[#6B4F3D] dark:text-[#FFE4D6] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/50'
+                    ? 'bg-[#FF6B35] dark:bg-[#FF8E53] text-white shadow-warm-lg scale-105'
+                    : 'text-[#6B4F3D] dark:text-[#FFE4D6] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/50 hover:scale-102'
                 }`}
               >
-                <tab.icon className="w-5 h-5" />
+                <tab.icon className="w-5 h-5" aria-hidden="true" />
                 <span>{tab.label}</span>
               </button>
             ))}
@@ -67,6 +84,9 @@ export default function About() {
           {activeTab === "overview" && (
             <motion.div
               key="overview"
+              id="overview-panel"
+              role="tabpanel"
+              aria-labelledby="overview-tab"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -78,6 +98,9 @@ export default function About() {
           {activeTab === "journey" && (
             <motion.div
               key="journey"
+              id="journey-panel"
+              role="tabpanel"
+              aria-labelledby="journey-tab"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}

@@ -3,8 +3,8 @@ import { StructuredData } from "@/components/StructuredData";
 import ResumeClient from "./resume-client";
 
 export const metadata = constructMetadata({
-  title: "Resume",
-  description: "Isaac Vazquez resume: Berkeley Haas MBA Candidate '27, Consortium Fellow. Product-focused technologist with 6+ years in QA, data analytics, and technology.",
+  title: "Resume - Isaac Vazquez | Product Manager & UC Berkeley MBA Candidate",
+  description: "Isaac Vazquez resume: UC Berkeley Haas MBA Candidate '27, Consortium Fellow. Technical Product Manager with 6+ years leading quality engineering, data analytics, and civic tech initiatives at Civitech, Open Progress, and Florida State University. Skills in product strategy, cross-functional leadership, stakeholder management, SQL, test automation, and Agile methodologies.",
   canonicalUrl: "/resume",
 });
 

@@ -65,14 +65,14 @@ export default async function WritingPage() {
         />
       ))}
 
-      <div className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-[#0A0A0B] dark:via-[#0F172A] dark:to-[#1E293B]">
+      <div className="min-h-screen w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
         <div className="max-w-7xl mx-auto">
           {displayPosts.length > 0 ? (
             <FantasyContentGrid posts={displayPosts} />
           ) : (
             <div className="text-center py-20">
-              <h1 className="text-4xl font-bold text-white mb-4">Writing</h1>
-              <p className="text-lg text-slate-400">
+              <h1 className="text-4xl font-bold text-[#FF6B35] mb-4">Writing</h1>
+              <p className="text-lg text-[#4A3426] dark:text-[#D4A88E]">
                 Articles coming soon! Check back for fantasy football insights and analytics.
               </p>
             </div>

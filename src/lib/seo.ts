@@ -14,8 +14,8 @@ export interface ProjectStructuredData {
 
 export const siteConfig = {
   name: "Isaac Vazquez",
-  title: "Product Manager | UC Berkeley MBA | Technical Background - Austin & Bay Area",
-  description: "Product Manager with technical foundation and UC Berkeley MBA education. Bridging engineering excellence with strategic product vision across Austin and Bay Area markets.",
+  title: "Technical Product Manager | UC Berkeley MBA Candidate | Austin & Bay Area",
+  description: "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in civic tech and SaaS. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration across Austin and San Francisco Bay Area.",
   url: "https://isaacavazquez.com",
   ogImage: "/og-image.png",
   links: {
@@ -24,26 +24,78 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/in/isaac-vazquez",
   },
   keywords: [
+    // Name & Primary Identity
     "Isaac Vazquez",
+    "Isaac Vazquez Product Manager",
+    "Isaac Vazquez UC Berkeley",
+    "Isaac Vazquez Haas MBA",
+
+    // Core Product Management Keywords
     "Technical Product Manager",
-    "Product Manager Austin",
-    "Product Manager Bay Area",
-    "MBA Product Manager",
-    "UC Berkeley Haas MBA",
+    "Product Manager",
     "Product Strategy",
     "Product Discovery",
-    "Cross-functional Leadership",
-    "Go-to-market Planning",
-    "Data-informed Product Decisions",
-    "Experimentation Strategy",
-    "SaaS Product Manager",
+    "Product Operations",
+    "Product-Led Growth",
+    "Product Roadmapping",
+
+    // Location-based Keywords
+    "Product Manager Austin TX",
+    "Product Manager Austin Texas",
+    "Product Manager Bay Area",
+    "Product Manager San Francisco",
+    "Product Manager Berkeley CA",
+    "Austin Product Leader",
+    "Bay Area Product Manager",
+
+    // Education & Credentials
+    "UC Berkeley MBA",
+    "UC Berkeley Haas MBA",
+    "Berkeley Haas MBA Candidate",
+    "MBA Product Manager",
+    "MBA Candidate Product Management",
+    "Consortium Fellow",
+
+    // Industry & Domain Expertise
     "Civic Tech Product Manager",
-    "Mission-driven Product Management",
-    "Product Management Portfolio",
+    "SaaS Product Manager",
+    "Mission-Driven Product Manager",
+    "Voter Engagement Technology",
+    "Political Technology Product Manager",
+
+    // Core Competencies
+    "Cross-Functional Leadership",
+    "Stakeholder Management",
+    "Go-to-Market Strategy",
+    "Data-Driven Product Decisions",
     "Product Analytics",
-    "Quality Engineering Leadership",
+    "Experimentation Strategy",
+    "A/B Testing Product Manager",
+    "User Research",
+    "Product Discovery Methods",
+
+    // Technical Background
+    "Quality Engineering",
+    "QA Engineer to Product Manager",
+    "Technical Product Leadership",
+    "Test Automation Strategy",
+    "Quality Assurance Leadership",
+    "Technical Product Manager Background",
+
+    // Career Development
+    "Product Manager Portfolio",
+    "Product Management Case Studies",
     "Product Management Consulting",
-    "Austin Product Leader"
+    "Product Manager Career Transition",
+    "From QA to Product Management",
+
+    // Specific Skills
+    "SQL for Product Managers",
+    "Data Analysis Product Manager",
+    "Agile Product Management",
+    "Scrum Product Owner",
+    "Product Metrics",
+    "KPI Definition",
   ],
 };
 
