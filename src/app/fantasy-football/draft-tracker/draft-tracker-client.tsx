@@ -7,8 +7,8 @@ import { Player, ScoringFormat } from "@/types";
 import { useAllFantasyData } from "@/hooks/useAllFantasyData";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { Badge } from "@/components/ui/Badge";
 import { IconSettings, IconPlayerPlay, IconRefresh, IconDownload } from "@tabler/icons-react";
 import { DraftSetup } from "./components/DraftSetup";
@@ -59,19 +59,19 @@ export function DraftTrackerClient() {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-12 h-12 border-4 border-electric-blue border-t-transparent rounded-full"
+          className="w-12 h-12 border-4 border-[#FF6B35] dark:border-[#FF8E53] border-t-transparent rounded-full"
         />
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Cyberpunk Background Effects */}
+    <div className="relative min-h-screen bg-gradient-to-br from-[#FFF8F0] via-[#FFFCF7] to-[#FFF8F0] dark:from-[#2D1B12] dark:via-[#1C1410] dark:to-[#2D1B12]">
+      {/* Warm Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--electric-blue)_0%,_transparent_50%)] opacity-5" />
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-matrix-green rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" />
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-electric-blue rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse animation-delay-2000" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#FF6B35_0%,_transparent_50%)] opacity-5" />
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-[#F7B32B] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" />
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-[#FF6B35] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse animation-delay-2000" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-8">
@@ -88,12 +88,12 @@ export function DraftTrackerClient() {
                 <div className="text-center mb-8">
                   <Heading level={1} className="mb-4">
                     Fantasy Football{" "}
-                    <span className="bg-gradient-to-r from-electric-blue via-matrix-green to-cyber-teal bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-[#FF6B35] via-[#F7B32B] to-[#FF8E53] bg-clip-text text-transparent">
                       Draft Tracker
                     </span>
                   </Heading>
-                  <Paragraph size="lg" className="text-slate-400 max-w-2xl mx-auto">
-                    Track your fantasy football draft with real-time analytics, tier-based player rankings, 
+                  <Paragraph size="lg" className="text-[#6B4F3D] dark:text-[#D4A88E] max-w-2xl mx-auto">
+                    Track your fantasy football draft with real-time analytics, tier-based player rankings,
                     and intelligent draft insights. Perfect for both mock drafts and live draft day.
                   </Paragraph>
                 </div>
@@ -126,19 +126,19 @@ export function DraftTrackerClient() {
                       </Badge>
                     )}
                   </div>
-                  <div className="flex items-center gap-4 text-slate-400">
+                  <div className="flex items-center gap-4 text-[#6B4F3D] dark:text-[#D4A88E]">
                     <span>Pick #{draftState.currentPick}</span>
                     <span>•</span>
                     <span>Round {draftState.currentRound}</span>
                     <span>•</span>
-                    <span className={isUserPick ? "text-matrix-green font-medium" : ""}>
+                    <span className={isUserPick ? "text-[#6BCF7F] dark:text-[#8FE39E] font-medium" : ""}>
                       {currentTeamName}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <MorphButton
+                  <ModernButton
                     onClick={handleNewDraft}
                     variant="outline"
                     size="sm"
@@ -146,9 +146,9 @@ export function DraftTrackerClient() {
                   >
                     <IconRefresh size={16} />
                     New Draft
-                  </MorphButton>
-                  
-                  <MorphButton
+                  </ModernButton>
+
+                  <ModernButton
                     onClick={() => exportDraftResults('csv')}
                     variant="outline"
                     size="sm"
@@ -156,9 +156,9 @@ export function DraftTrackerClient() {
                   >
                     <IconDownload size={16} />
                     Export
-                  </MorphButton>
+                  </ModernButton>
 
-                  <MorphButton
+                  <ModernButton
                     onClick={() => setShowSetup(true)}
                     variant="ghost"
                     size="sm"
@@ -166,7 +166,7 @@ export function DraftTrackerClient() {
                   >
                     <IconSettings size={16} />
                     Settings
-                  </MorphButton>
+                  </ModernButton>
                 </div>
               </div>
 
@@ -179,26 +179,26 @@ export function DraftTrackerClient() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     className="text-center"
                   >
-                    <GlassCard className="border-matrix-green bg-matrix-green/5 max-w-md mx-auto">
+                    <WarmCard hover={false} padding="md" className="border-[#6BCF7F] dark:border-[#8FE39E] bg-[#6BCF7F]/5 dark:bg-[#6BCF7F]/10 max-w-md mx-auto">
                       <motion.div
-                        animate={{ 
+                        animate={{
                           boxShadow: [
-                            "0 0 20px rgba(57, 255, 20, 0.5)",
-                            "0 0 40px rgba(57, 255, 20, 0.7)", 
-                            "0 0 20px rgba(57, 255, 20, 0.5)"
+                            "0 0 20px rgba(107, 207, 127, 0.5)",
+                            "0 0 40px rgba(107, 207, 127, 0.7)",
+                            "0 0 20px rgba(107, 207, 127, 0.5)"
                           ]
                         }}
                         transition={{ duration: 2, repeat: Infinity }}
                         className="p-4 text-center"
                       >
-                        <Heading level={3} className="text-matrix-green mb-2">
+                        <Heading level={3} className="text-[#6BCF7F] dark:text-[#8FE39E] mb-2">
                           🎯 Your Pick!
                         </Heading>
-                        <Paragraph className="text-slate-300">
+                        <Paragraph className="text-[#4A3426] dark:text-[#FFE4D6]">
                           Choose your next player from the board below
                         </Paragraph>
                       </motion.div>
-                    </GlassCard>
+                    </WarmCard>
                   </motion.div>
                 )}
               </AnimatePresence>

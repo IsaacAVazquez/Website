@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { GlassCard } from "./GlassCard";
+import { WarmCard } from "./WarmCard";
 import { 
   IconTestPipe, 
   IconBug, 
@@ -41,7 +41,7 @@ const QAMetric = ({ label, value, change, trend, icon: Icon, color }: MetricProp
   };
 
   return (
-    <GlassCard
+    <WarmCard hover={false} padding="md"
       elevation={2}
       interactive={true}
       cursorGlow={true}
@@ -73,7 +73,7 @@ const QAMetric = ({ label, value, change, trend, icon: Icon, color }: MetricProp
           </div>
         </div>
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 };
 
@@ -86,7 +86,7 @@ const TestCoverage = () => {
   }, []);
 
   return (
-    <GlassCard
+    <WarmCard hover={false} padding="md"
       elevation={3}
       interactive={true}
       cursorGlow={true}
@@ -131,7 +131,7 @@ const TestCoverage = () => {
           </div>
         </div>
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 };
 
@@ -236,7 +236,7 @@ export function QADashboard() {
       <TestCoverage />
 
       {/* Recent Activity */}
-      <GlassCard
+      <WarmCard hover={false} padding="md"
         elevation={3}
         cursorGlow={true}
         noiseTexture={true}
@@ -277,7 +277,7 @@ export function QADashboard() {
             ))}
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     </motion.div>
   );
 }

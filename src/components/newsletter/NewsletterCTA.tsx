@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { NewsletterSignup } from "./NewsletterSignup";
 import { IconMail, IconArrowRight, IconStar } from "@tabler/icons-react";
 
@@ -48,12 +48,12 @@ export function NewsletterCTA({
                 <span>500+ subscribers</span>
               </div>
               <Link href="/newsletter">
-                <MorphButton variant="electric" size="md">
+                <ModernButton variant="electric" size="md">
                   <span className="flex items-center gap-2">
                     Subscribe Now
                     <IconArrowRight className="w-4 h-4" />
                   </span>
-                </MorphButton>
+                </ModernButton>
               </Link>
             </div>
           </div>
@@ -106,7 +106,7 @@ export function NewsletterCTA({
   }
 
   return (
-    <GlassCard className={`p-6 md:p-8 text-center ${className}`}>
+    <WarmCard hover={false} padding="md" className={`p-6 md:p-8 text-center ${className}`}>
       <div className="max-w-md mx-auto space-y-4">
         <div className="flex justify-center">
           <div className="p-3 bg-electric-blue/10 rounded-full">
@@ -123,12 +123,12 @@ export function NewsletterCTA({
 
         <div className="space-y-3">
           <Link href="/newsletter">
-            <MorphButton variant="electric" size="lg" className="w-full">
+            <ModernButton variant="electric" size="lg" className="w-full">
               <span className="flex items-center gap-2">
                 <IconMail className="w-5 h-5" />
                 Subscribe to Newsletter
               </span>
-            </MorphButton>
+            </ModernButton>
           </Link>
           
           <div className="flex items-center justify-center gap-4 text-sm text-slate-500 dark:text-slate-400">
@@ -143,7 +143,7 @@ export function NewsletterCTA({
           </div>
         </div>
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 }
 

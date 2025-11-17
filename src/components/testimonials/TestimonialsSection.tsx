@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { Badge } from "@/components/ui/Badge";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { TestimonialCard } from "./TestimonialCard";
 import { testimonials, getFeaturedTestimonials, getTestimonialsByCategory } from "@/constants/testimonials";
 import type { Testimonial } from "@/constants/testimonials";
@@ -161,7 +161,7 @@ export function TestimonialsSection({
       {/* Show More/Less Button */}
       {filteredTestimonials.length > maxItems && (
         <div className="text-center">
-          <MorphButton
+          <ModernButton
             onClick={() => setShowAll(!showAll)}
             variant="outline"
             size="md"
@@ -170,7 +170,7 @@ export function TestimonialsSection({
               ? `Show Less` 
               : `Show All ${filteredTestimonials.length} Testimonials`
             }
-          </MorphButton>
+          </ModernButton>
         </div>
       )}
 

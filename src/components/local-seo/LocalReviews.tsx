@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { BusinessLocation, googleBusinessProfile } from "@/lib/localSEO";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { Badge } from "@/components/ui/Badge";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
@@ -130,7 +130,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
 
   if (variant === 'summary') {
     return (
-      <GlassCard className={`p-6 ${className}`}>
+      <WarmCard hover={false} padding="md" className={`p-6 ${className}`}>
         <div className="flex items-start justify-between mb-4">
           <div>
             <h3 className="font-semibold text-white mb-2">Client Reviews</h3>
@@ -155,7 +155,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
         </p>
         
         <div className="flex space-x-2">
-          <MorphButton 
+          <ModernButton 
             href={googleBusinessProfile.generateBusinessProfileUrl(location)}
             target="_blank"
             rel="noopener noreferrer"
@@ -164,16 +164,16 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
           >
             <IconExternalLink className="w-4 h-4 mr-2" />
             View All Reviews
-          </MorphButton>
-          <MorphButton 
+          </ModernButton>
+          <ModernButton 
             href="/contact"
             size="sm"
             variant="primary"
           >
             Get Started
-          </MorphButton>
+          </ModernButton>
         </div>
-      </GlassCard>
+      </WarmCard>
     );
   }
 
@@ -197,7 +197,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <GlassCard className="p-6 h-full flex flex-col">
+              <WarmCard hover={false} padding="md" className="p-6 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (
@@ -239,13 +239,13 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
                     <span className="text-xs text-slate-400">{review.helpful} found helpful</span>
                   </div>
                 )}
-              </GlassCard>
+              </WarmCard>
             </motion.div>
           ))}
         </div>
 
         <div className="text-center">
-          <MorphButton 
+          <ModernButton 
             href={googleBusinessProfile.generateBusinessProfileUrl(location)}
             target="_blank"
             rel="noopener noreferrer"
@@ -253,7 +253,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
           >
             <IconExternalLink className="w-4 h-4 mr-2" />
             Read All Reviews
-          </MorphButton>
+          </ModernButton>
         </div>
       </div>
     );
@@ -263,7 +263,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
   return (
     <div className={`space-y-8 ${className}`}>
       {/* Reviews Overview */}
-      <GlassCard className="p-8">
+      <WarmCard hover={false} padding="md" className="p-8">
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h2 className="text-2xl font-semibold text-white mb-4">
@@ -315,7 +315,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
             </div>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
 
       {/* Platform Filter */}
       <div className="flex flex-wrap gap-2">
@@ -358,7 +358,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <GlassCard className="p-6">
+            <WarmCard hover={false} padding="md" className="p-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-electric-blue/20 rounded-full flex items-center justify-center">
@@ -414,9 +414,9 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
                 )}
                 
                 <div className="flex space-x-2">
-                  <MorphButton size="sm" variant="ghost">
+                  <ModernButton size="sm" variant="ghost">
                     Helpful
-                  </MorphButton>
+                  </ModernButton>
                 </div>
               </div>
 
@@ -436,13 +436,13 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
                   </div>
                 </div>
               )}
-            </GlassCard>
+            </WarmCard>
           </motion.div>
         ))}
       </div>
 
       {/* Call to Action */}
-      <GlassCard className="p-8 text-center bg-matrix-green/5 border-matrix-green/20">
+      <WarmCard hover={false} padding="md" className="p-8 text-center bg-matrix-green/5 border-matrix-green/20">
         <IconStar className="w-12 h-12 text-matrix-green mx-auto mb-4" />
         <h3 className="text-xl font-semibold text-white mb-2">
           Ready to Join Our Happy Clients?
@@ -452,10 +452,10 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
           Get started with a free consultation today.
         </p>
         <div className="flex justify-center space-x-4">
-          <MorphButton href="/contact" variant="primary">
+          <ModernButton href="/contact" variant="primary">
             Get Free Consultation
-          </MorphButton>
-          <MorphButton 
+          </ModernButton>
+          <ModernButton 
             href={googleBusinessProfile.generateReviewsUrl('PLACE_ID_HERE')}
             target="_blank"
             rel="noopener noreferrer"
@@ -463,9 +463,9 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
           >
             <IconExternalLink className="w-4 h-4 mr-2" />
             Leave a Review
-          </MorphButton>
+          </ModernButton>
         </div>
-      </GlassCard>
+      </WarmCard>
     </div>
   );
 }

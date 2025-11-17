@@ -1,6 +1,6 @@
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
-import { About } from "@/components/About";
+import About from "@/components/About";
 
 export const metadata = constructMetadata({
   title: "About Isaac Vazquez | Product Manager & UC Berkeley MBA Candidate",

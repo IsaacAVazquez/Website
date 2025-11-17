@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { IconArrowRight, IconStar, IconTrendingUp } from "@tabler/icons-react";
-import { GlassCard } from "./GlassCard";
+import { WarmCard } from "./WarmCard";
 
 interface RelatedItem {
   title: string;
@@ -89,7 +89,7 @@ export function RelatedContent({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.4 }}
             >
-              <GlassCard
+              <WarmCard hover={false} padding="md"
                 elevation={2}
                 interactive={true}
                 className={`p-4 h-full border ${config.borderColor} transition-all duration-300 group hover:${config.bgColor}`}
@@ -141,7 +141,7 @@ export function RelatedContent({
                     </div>
                   </div>
                 </Link>
-              </GlassCard>
+              </WarmCard>
             </motion.div>
           );
         })}

@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Player, ScoringFormat } from "@/types";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Badge } from "@/components/ui/Badge";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { IconTrendingUp, IconTarget, IconBolt, IconShield } from "@tabler/icons-react";
 import { UNIFIED_TIER_COLORS } from "@/lib/unifiedTierCalculator";
@@ -84,7 +84,9 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringForma
       whileTap={{ scale: 0.98 }}
       className="h-full"
     >
-      <GlassCard 
+      <WarmCard
+        hover={false}
+        padding="none"
         className="h-full relative overflow-hidden group"
         style={{
           borderColor: `${tierColor}40`,
@@ -92,8 +94,8 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringForma
       >
         {/* Tier Indicator */}
         {player.tier && (
-          <div 
-            className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white z-10"
+          <div
+            className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-[#4A3426] dark:text-[#FFE4D6] z-10"
             style={{ backgroundColor: tierColor }}
           >
             {player.tier}
@@ -101,7 +103,7 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringForma
         )}
 
         {/* Player Image */}
-        <div className="relative h-24 bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden">
+        <div className="relative h-24 bg-gradient-to-br from-[#FFF8F0] to-[#FFE4D6] dark:from-[#4A3426] dark:to-[#2D1B12] overflow-hidden">
           <OptimizedImage
             src={getPlayerImagePath(player)}
             alt={player.name}
@@ -110,14 +112,14 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringForma
           />
           
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#4A3426]/80 via-transparent to-transparent" />
           
           {/* Position badge */}
           <div className="absolute bottom-2 right-2">
-            <Badge 
+            <Badge
               variant="solid"
               size="sm"
-              className="text-white font-bold"
+              className="text-[#4A3426] dark:text-[#FFE4D6] font-bold"
               style={{ backgroundColor: positionColor }}
             >
               {player.position}
@@ -129,26 +131,26 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringForma
         <div className="p-3 space-y-3">
           {/* Name and Team */}
           <div>
-            <h4 className="font-semibold text-white text-sm truncate group-hover:text-electric-blue transition-colors">
+            <h4 className="font-semibold text-[#4A3426] dark:text-[#FFE4D6] text-sm truncate group-hover:text-[#FF6B35] dark:group-hover:text-[#FF8E53] transition-colors">
               {player.name}
             </h4>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">
               {player.team} • #{formatRank(player.averageRank)}
             </p>
           </div>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="text-center p-2 bg-slate-800/50 rounded">
-              <div className="text-slate-400">Proj</div>
-              <div className="font-medium text-white">
+            <div className="text-center p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/50 rounded">
+              <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Proj</div>
+              <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">
                 {Math.round(player.projectedPoints)}
               </div>
             </div>
-            
-            <div className="text-center p-2 bg-slate-800/50 rounded">
-              <div className="text-slate-400">ADP</div>
-              <div className="font-medium text-white">
+
+            <div className="text-center p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/50 rounded">
+              <div className="text-[#6B4F3D] dark:text-[#D4A88E]">ADP</div>
+              <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">
                 {player.adp ? Math.round(player.adp) : '--'}
               </div>
             </div>
@@ -157,8 +159,8 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringForma
           {/* Additional Stats Row */}
           {player.auctionValue && (
             <div className="flex justify-between items-center text-xs">
-              <span className="text-slate-400">Value:</span>
-              <span className="font-medium text-matrix-green">${player.auctionValue}</span>
+              <span className="text-[#6B4F3D] dark:text-[#D4A88E]">Value:</span>
+              <span className="font-medium text-[#6BCF7F] dark:text-[#8FE39E]">${player.auctionValue}</span>
             </div>
           )}
 
@@ -167,14 +169,14 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringForma
             <div className="space-y-1">
               {player.upside && (
                 <div className="flex items-center gap-1 text-xs">
-                  <IconTrendingUp size={12} className="text-matrix-green" />
-                  <span className="text-matrix-green truncate">{player.upside.slice(0, 30)}...</span>
+                  <IconTrendingUp size={12} className="text-[#6BCF7F] dark:text-[#8FE39E]" />
+                  <span className="text-[#6BCF7F] dark:text-[#8FE39E] truncate">{player.upside.slice(0, 30)}...</span>
                 </div>
               )}
               {player.downside && (
                 <div className="flex items-center gap-1 text-xs">
-                  <IconTarget size={12} className="text-warning-amber" />
-                  <span className="text-warning-amber truncate">{player.downside.slice(0, 30)}...</span>
+                  <IconTarget size={12} className="text-[#FFB020] dark:text-[#FFC857]" />
+                  <span className="text-[#FFB020] dark:text-[#FFC857] truncate">{player.downside.slice(0, 30)}...</span>
                 </div>
               )}
             </div>
@@ -187,14 +189,14 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringForma
               animate={{ opacity: 1, y: 0 }}
               className="pt-2"
             >
-              <MorphButton
+              <ModernButton
                 onClick={onDraft}
                 variant="primary"
                 size="sm"
                 className="w-full text-xs font-medium"
               >
                 Draft Player
-              </MorphButton>
+              </ModernButton>
             </motion.div>
           )}
 
@@ -206,7 +208,7 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringForma
             }}
           />
         </div>
-      </GlassCard>
+      </WarmCard>
     </motion.div>
   );
 }

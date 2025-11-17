@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { navlinks } from "@/constants/navlinks";
 import { socials } from "@/constants/socials";
 import { IconSearch, IconCommand } from "@tabler/icons-react";
-import { GlassCard } from "./GlassCard";
+import { WarmCard } from "./WarmCard";
 
 interface CommandItem {
   id: string;
@@ -157,10 +157,11 @@ export function CommandPalette() {
             className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center pt-20"
             onClick={() => setIsOpen(false)}
           >
-            <GlassCard
-              elevation={5}
+            <WarmCard
+              hover={false}
+              padding="none"
               className="w-full max-w-2xl mx-4 overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               <motion.div
                 initial={{ scale: 0.9, y: -20 }}
@@ -169,17 +170,17 @@ export function CommandPalette() {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 {/* Search Input */}
-                <div className="flex items-center gap-3 p-4 border-b border-neutral-200/20 dark:border-neutral-700/20">
-                  <IconSearch className="h-5 w-5 text-secondary" />
+                <div className="flex items-center gap-3 p-4 border-b-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
+                  <IconSearch className="h-5 w-5 text-[#FF6B35] dark:text-[#FF8E53]" />
                   <input
                     type="text"
                     placeholder="Search commands..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="flex-1 bg-transparent border-none outline-none text-primary placeholder-secondary"
+                    className="flex-1 bg-transparent border-none outline-none text-[#4A3426] dark:text-[#FFE4D6] placeholder-[#6B4F3D] dark:placeholder-[#D4A88E]"
                     autoFocus
                   />
-                  <kbd className="px-2 py-1 text-xs bg-neutral-200/20 dark:bg-neutral-700/20 rounded text-secondary">
+                  <kbd className="px-2 py-1 text-xs bg-[#FFF8F0] dark:bg-[#4A3426]/50 rounded text-[#6B4F3D] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30">
                     ESC
                   </kbd>
                 </div>
@@ -261,7 +262,7 @@ export function CommandPalette() {
                   </div>
                 </div>
               </motion.div>
-            </GlassCard>
+            </WarmCard>
           </motion.div>
         )}
       </AnimatePresence>

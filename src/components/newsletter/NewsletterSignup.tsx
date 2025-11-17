@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { Badge } from "@/components/ui/Badge";
 import { 
   IconMail, 
@@ -140,7 +140,7 @@ export function NewsletterSignup({
                 />
               </div>
               
-              <MorphButton
+              <ModernButton
                 type="submit"
                 variant="electric"
                 size="sm"
@@ -158,7 +158,7 @@ export function NewsletterSignup({
                     Subscribe
                   </span>
                 )}
-              </MorphButton>
+              </ModernButton>
               
               {status === 'error' && (
                 <p className="text-sm text-error-red flex items-center gap-1">
@@ -174,7 +174,7 @@ export function NewsletterSignup({
   }
 
   return (
-    <GlassCard className={`p-6 md:p-8 ${className}`}>
+    <WarmCard hover={false} padding="md" className={`p-6 md:p-8 ${className}`}>
       <div className="space-y-6">
         {/* Header */}
         <div className="text-center">
@@ -270,7 +270,7 @@ export function NewsletterSignup({
             )}
 
             {/* Submit Button */}
-            <MorphButton
+            <ModernButton
               type="submit"
               variant="electric"
               size="lg"
@@ -288,7 +288,7 @@ export function NewsletterSignup({
                   Subscribe to Newsletter
                 </span>
               )}
-            </MorphButton>
+            </ModernButton>
 
             {/* Error Message */}
             {status === 'error' && (
@@ -307,6 +307,6 @@ export function NewsletterSignup({
           </form>
         )}
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 }

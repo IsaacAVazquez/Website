@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/Badge";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 
 interface SearchFiltersProps {
   type: string;
@@ -99,14 +99,14 @@ export function SearchFilters({
       {/* Clear Filters */}
       {hasActiveFilters && (
         <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-          <MorphButton
+          <ModernButton
             onClick={onClearFilters}
             variant="ghost"
             size="sm"
             className="text-sm"
           >
             Clear all filters
-          </MorphButton>
+          </ModernButton>
         </div>
       )}
     </div>

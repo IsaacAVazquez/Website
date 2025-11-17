@@ -4,9 +4,9 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Badge } from "@/components/ui/Badge";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { SearchResults } from "./SearchResults";
 import { SearchFilters } from "./SearchFilters";
 import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
@@ -187,7 +187,7 @@ export function SearchInterface({
       </div>
 
       {/* Search Bar */}
-      <GlassCard className="p-6">
+      <WarmCard hover={false} padding="md" className="p-6">
         <div className="space-y-4">
           {/* Main Search Input */}
           <div className="relative">
@@ -258,7 +258,7 @@ export function SearchInterface({
             </div>
           )}
         </div>
-      </GlassCard>
+      </WarmCard>
 
       {/* Search Results */}
       <SearchResults
@@ -272,7 +272,7 @@ export function SearchInterface({
 
       {/* Search Tips */}
       {!searchState.hasSearched && !searchState.query && (
-        <GlassCard className="p-6">
+        <WarmCard hover={false} padding="md" className="p-6">
           <Heading level={3} className="mb-4">
             Search Tips
           </Heading>
@@ -315,7 +315,7 @@ export function SearchInterface({
               </div>
             </div>
           </div>
-        </GlassCard>
+        </WarmCard>
       )}
     </div>
   );

@@ -93,11 +93,11 @@ export function FloatingNav() {
           }}
           className={getNavClasses()}
         >
-          <div className="glass-card elevation-4 px-4 py-3 flex items-center gap-2 cursor-glow noise-texture">
+          <div className="bg-white/80 dark:bg-[#2D1B12]/90 backdrop-blur-sm border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg rounded-2xl px-4 py-3 flex items-center gap-2">
             {navlinks.map((link, index) => {
               const Icon = link.icon;
               const active = isActive(link.href);
-              
+
               return (
                 <Link
                   key={link.href}
@@ -107,10 +107,10 @@ export function FloatingNav() {
                 >
                   <motion.div
                     className={twMerge(
-                      "relative p-3 rounded-xl transition-all duration-300",
+                      "relative p-3 rounded-xl transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center",
                       active
-                        ? "text-electric-blue"
-                        : "text-slate-400 hover:text-electric-blue"
+                        ? "text-white"
+                        : "text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#FF6B35] dark:hover:text-[#FF8E53]"
                     )}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -126,7 +126,7 @@ export function FloatingNav() {
                     {active && (
                       <motion.div
                         layoutId="activeIndicator"
-                        className="absolute inset-0 bg-electric-blue/20 rounded-xl"
+                        className="absolute inset-0 bg-gradient-to-br from-[#FF6B35] to-[#F7B32B] dark:from-[#FF8E53] dark:to-[#FFC857] rounded-xl shadow-warm-lg"
                         initial={false}
                         transition={{
                           type: "spring",
@@ -135,18 +135,19 @@ export function FloatingNav() {
                         }}
                       />
                     )}
-                    
+
                     {/* Icon */}
-                    <Icon 
+                    <Icon
                       className={twMerge(
                         "relative z-10 h-5 w-5 transition-transform duration-300",
                         active && "scale-110"
-                      )} 
+                      )}
+                      aria-hidden="true"
                     />
-                    
-                    {/* Glow effect */}
+
+                    {/* Warm glow effect on hover */}
                     <motion.div
-                      className="absolute inset-0 rounded-xl bg-electric-blue/20 blur-md opacity-0"
+                      className="absolute inset-0 rounded-xl bg-[#FF6B35]/10 dark:bg-[#FF8E53]/20 blur-md opacity-0"
                       whileHover={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
                     />
@@ -227,12 +228,12 @@ export function GestureNavigation({ children }: { children: React.ReactNode }) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             className={twMerge(
-              "fixed top-1/2 transform -translate-y-1/2 z-40 p-4 glass-card elevation-3 rounded-full",
+              "fixed top-1/2 transform -translate-y-1/2 z-40 p-4 bg-white/90 dark:bg-[#2D1B12]/90 backdrop-blur-sm border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-xl rounded-full",
               dragDirection === "left" ? "left-4" : "right-4"
             )}
           >
             <motion.div
-              className="text-electric-blue"
+              className="text-[#FF6B35] dark:text-[#FF8E53] text-2xl"
               animate={{ x: dragDirection === "left" ? -5 : 5 }}
               transition={{ repeat: Infinity, repeatType: "reverse", duration: 0.5 }}
             >

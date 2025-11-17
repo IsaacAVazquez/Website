@@ -1,7 +1,7 @@
 "use client";
 
 import { BusinessLocation } from "@/lib/localSEO";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { Badge } from "@/components/ui/Badge";
@@ -73,7 +73,7 @@ export function LocationSpecificContent({
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {location.categories.map((service, index) => (
-            <GlassCard key={index} className="p-6 hover:scale-105 transition-transform">
+            <WarmCard hover={false} padding="md" key={index} className="p-6 hover:scale-105 transition-transform">
               <div className="flex items-start space-x-3">
                 <IconBriefcase className="w-6 h-6 text-electric-blue mt-1 flex-shrink-0" />
                 <div>
@@ -83,12 +83,12 @@ export function LocationSpecificContent({
                   </p>
                 </div>
               </div>
-            </GlassCard>
+            </WarmCard>
           ))}
         </div>
 
         {/* Local Market Insights */}
-        <GlassCard className="p-8 bg-electric-blue/5 border-electric-blue/20">
+        <WarmCard hover={false} padding="md" className="p-8 bg-electric-blue/5 border-electric-blue/20">
           <div className="flex items-start space-x-4">
             <IconMapPin className="w-8 h-8 text-electric-blue mt-1 flex-shrink-0" />
             <div>
@@ -105,7 +105,7 @@ export function LocationSpecificContent({
               </div>
             </div>
           </div>
-        </GlassCard>
+        </WarmCard>
       </div>
     );
   }
@@ -113,7 +113,7 @@ export function LocationSpecificContent({
   if (contentType === 'about') {
     return (
       <div className={`space-y-6 ${className}`}>
-        <GlassCard className="p-8">
+        <WarmCard hover={false} padding="md" className="p-8">
           <div className="flex items-start space-x-4 mb-6">
             <IconUsers className="w-8 h-8 text-electric-blue mt-1 flex-shrink-0" />
             <div>
@@ -132,10 +132,10 @@ export function LocationSpecificContent({
               {getCommunityImpact(location)}
             </Paragraph>
           </div>
-        </GlassCard>
+        </WarmCard>
 
         {/* Local Network & Partnerships */}
-        <GlassCard className="p-6">
+        <WarmCard hover={false} padding="md" className="p-6">
           <h4 className="font-semibold text-white mb-4">
             {location.address.addressLocality} Professional Network
           </h4>
@@ -149,7 +149,7 @@ export function LocationSpecificContent({
               </div>
             ))}
           </div>
-        </GlassCard>
+        </WarmCard>
       </div>
     );
   }
@@ -168,7 +168,7 @@ export function LocationSpecificContent({
 
         <div className="grid md:grid-cols-2 gap-6">
           {getLocalTestimonials(location).map((testimonial, index) => (
-            <GlassCard key={index} className="p-6">
+            <WarmCard hover={false} padding="md" key={index} className="p-6">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-electric-blue/20 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-electric-blue font-bold">{testimonial.initials}</span>
@@ -184,7 +184,7 @@ export function LocationSpecificContent({
                   </footer>
                 </div>
               </div>
-            </GlassCard>
+            </WarmCard>
           ))}
         </div>
 

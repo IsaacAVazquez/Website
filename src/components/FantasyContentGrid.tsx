@@ -15,9 +15,9 @@ import {
   IconFilter,
   IconX
 } from "@tabler/icons-react";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Badge } from "@/components/ui/Badge";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog";
 import { useState, useMemo } from "react";
@@ -132,24 +132,24 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
         {/* Filter Toggle and Controls */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-4">
-            <MorphButton 
+            <ModernButton 
               variant="secondary"
               size="sm"
               onClick={() => setShowFilters(!showFilters)}
             >
               <IconFilter className="h-4 w-4 mr-2" />
               {showFilters ? 'Hide' : 'Show'} Filters
-            </MorphButton>
+            </ModernButton>
             
             {(selectedCategory !== 'All' || selectedTag !== 'All') && (
-              <MorphButton 
+              <ModernButton 
                 variant="ghost"
                 size="sm"
                 onClick={clearFilters}
               >
                 <IconX className="h-4 w-4 mr-2" />
                 Clear Filters
-              </MorphButton>
+              </ModernButton>
             )}
           </div>
           
@@ -166,7 +166,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
             exit={{ opacity: 0, height: 0 }}
             className="mb-8"
           >
-            <GlassCard elevation={2} className="p-6">
+            <WarmCard hover={false} padding="md" elevation={2} className="p-6">
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Category Filter */}
                 <div>
@@ -213,7 +213,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
                   </div>
                 </div>
               </div>
-            </GlassCard>
+            </WarmCard>
           </motion.div>
         )}
       </div>
@@ -240,7 +240,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
           return (
             <motion.div key={post.slug} variants={itemVariants}>
               <Link href={`/writing/${post.slug}`} className="block h-full">
-                <GlassCard
+                <WarmCard hover={false} padding="md"
                   elevation={layoutType === "featured" ? 4 : 3}
                   interactive={true}
                   cursorGlow={true}
@@ -323,7 +323,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
 
                   {/* Hover Effect Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-electric-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </GlassCard>
+                </WarmCard>
               </Link>
             </motion.div>
           );
@@ -337,7 +337,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
         transition={{ delay: 0.5 }}
         className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
       >
-        <GlassCard elevation={2} className="text-center p-6">
+        <WarmCard hover={false} padding="md" elevation={2} className="text-center p-6">
           <IconBookmark className="h-8 w-8 text-electric-blue mx-auto mb-2" />
           <div className="text-2xl font-bold text-white mb-1">
             {filteredPosts.length}
@@ -345,9 +345,9 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
           <div className="text-sm text-slate-400">
             {(selectedCategory !== 'All' || selectedTag !== 'All') ? 'Filtered Articles' : 'Total Articles'}
           </div>
-        </GlassCard>
+        </WarmCard>
 
-        <GlassCard elevation={2} className="text-center p-6">
+        <WarmCard hover={false} padding="md" elevation={2} className="text-center p-6">
           <IconChartBar className="h-8 w-8 text-matrix-green mx-auto mb-2" />
           <div className="text-2xl font-bold text-white mb-1">
             {filteredPosts.filter(p => p.category?.includes('Analytics')).length}
@@ -355,9 +355,9 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
           <div className="text-sm text-slate-400">
             Analytics Articles
           </div>
-        </GlassCard>
+        </WarmCard>
 
-        <GlassCard elevation={2} className="text-center p-6">
+        <WarmCard hover={false} padding="md" elevation={2} className="text-center p-6">
           <IconTarget className="h-8 w-8 text-neon-purple mx-auto mb-2" />
           <div className="text-2xl font-bold text-white mb-1">
             {filteredPosts.filter(p => p.tags && p.tags.includes('Draft Strategy')).length}
@@ -365,7 +365,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
           <div className="text-sm text-slate-400">
             Strategy Guides
           </div>
-        </GlassCard>
+        </WarmCard>
       </motion.div>
 
       {/* Call to Action */}
@@ -375,7 +375,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
         transition={{ delay: 0.7 }}
         className="mt-16 text-center"
       >
-        <GlassCard elevation={3} className="p-8 bg-gradient-to-br from-electric-blue/10 to-matrix-green/10 border-electric-blue/30">
+        <WarmCard hover={false} padding="md" elevation={3} className="p-8 bg-gradient-to-br from-electric-blue/10 to-matrix-green/10 border-electric-blue/30">
           <IconUsers className="h-12 w-12 text-electric-blue mx-auto mb-4" />
           <h3 className="text-2xl font-bold text-white mb-4">
             Ready to Dominate Your League?
@@ -392,7 +392,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
               View Player Tiers
             </Badge>
           </div>
-        </GlassCard>
+        </WarmCard>
       </motion.div>
     </>
   );

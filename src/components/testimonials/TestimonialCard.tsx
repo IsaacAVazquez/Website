@@ -1,6 +1,6 @@
 "use client";
 
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Badge } from "@/components/ui/Badge";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
@@ -63,7 +63,7 @@ export function TestimonialCard({
 
   if (variant === 'compact') {
     return (
-      <GlassCard className="p-4">
+      <WarmCard hover={false} padding="md" className="p-4">
         <div className="space-y-3">
           <div className="flex items-start justify-between">
             <div className="flex-1">
@@ -90,13 +90,13 @@ export function TestimonialCard({
             </Badge>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     );
   }
 
   if (variant === 'featured') {
     return (
-      <GlassCard className="p-8 relative overflow-hidden">
+      <WarmCard hover={false} padding="md" className="p-8 relative overflow-hidden">
         {/* Featured Badge */}
         <div className="absolute top-4 right-4">
           <Badge variant="electric" size="sm">
@@ -161,13 +161,13 @@ export function TestimonialCard({
             </div>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     );
   }
 
   // Default variant
   return (
-    <GlassCard className="p-6">
+    <WarmCard hover={false} padding="md" className="p-6">
       <div className="space-y-4">
         {/* Header */}
         <div className="flex items-start justify-between">
@@ -212,6 +212,6 @@ export function TestimonialCard({
           </div>
         </div>
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 }

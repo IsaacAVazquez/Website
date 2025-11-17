@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { GlassCard } from "./GlassCard";
+import { WarmCard } from "./WarmCard";
 import { personalMetrics } from "@/constants/personal";
 import { 
   IconCpu, 
@@ -37,7 +37,7 @@ const SystemSpecCard = ({ title, icon: Icon, specs, color, delay = 0 }: SystemSp
       transition={{ duration: 0.6, delay }}
       className="group"
     >
-      <GlassCard
+      <WarmCard hover={false} padding="md"
         elevation={3}
         interactive={true}
         cursorGlow={true}
@@ -97,7 +97,7 @@ const SystemSpecCard = ({ title, icon: Icon, specs, color, delay = 0 }: SystemSp
             </div>
           )}
         </div>
-      </GlassCard>
+      </WarmCard>
     </motion.div>
   );
 };
@@ -111,7 +111,7 @@ const PersonalityDebugger = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.5 }}
     >
-      <GlassCard
+      <WarmCard hover={false} padding="md"
         elevation={4}
         interactive={true}
         cursorGlow={true}
@@ -175,7 +175,7 @@ const PersonalityDebugger = () => {
             ))}
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     </motion.div>
   );
 };
@@ -189,7 +189,7 @@ const PersonalAPIs = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.6 }}
     >
-      <GlassCard
+      <WarmCard hover={false} padding="md"
         elevation={4}
         interactive={true}
         cursorGlow={true}
@@ -251,7 +251,7 @@ const PersonalAPIs = () => {
             ))}
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     </motion.div>
   );
 };
@@ -280,7 +280,7 @@ const LiveMetrics = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.7 }}
     >
-      <GlassCard
+      <WarmCard hover={false} padding="md"
         elevation={4}
         interactive={true}
         cursorGlow={true}
@@ -368,7 +368,7 @@ const LiveMetrics = () => {
             </div>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     </motion.div>
   );
 };

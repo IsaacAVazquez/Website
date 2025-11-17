@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { BusinessLocation, businessLocations, locationDetection } from "@/lib/localSEO";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { Badge } from "@/components/ui/Badge";
 import { IconMapPin, IconTarget, IconLocation, IconGps } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -67,7 +67,7 @@ export function GeoTargeting({ onLocationDetected, className = '' }: GeoTargetin
             exit={{ opacity: 0, y: -20 }}
             className="mb-6"
           >
-            <GlassCard className="p-6 bg-electric-blue/5 border-electric-blue/20">
+            <WarmCard hover={false} padding="md" className="p-6 bg-electric-blue/5 border-electric-blue/20">
               <div className="flex items-start space-x-4">
                 <IconTarget className="w-8 h-8 text-electric-blue mt-1 flex-shrink-0" />
                 <div className="flex-1">
@@ -78,7 +78,7 @@ export function GeoTargeting({ onLocationDetected, className = '' }: GeoTargetin
                     Allow location access to see content tailored to your area, including local service options and relevant information.
                   </p>
                   <div className="flex space-x-3">
-                    <MorphButton 
+                    <ModernButton 
                       onClick={detectLocation}
                       disabled={isDetecting}
                       size="sm"
@@ -95,18 +95,18 @@ export function GeoTargeting({ onLocationDetected, className = '' }: GeoTargetin
                           Use My Location
                         </>
                       )}
-                    </MorphButton>
-                    <MorphButton 
+                    </ModernButton>
+                    <ModernButton 
                       onClick={dismissPrompt}
                       size="sm"
                       variant="ghost"
                     >
                       Skip
-                    </MorphButton>
+                    </ModernButton>
                   </div>
                 </div>
               </div>
-            </GlassCard>
+            </WarmCard>
           </motion.div>
         )}
       </AnimatePresence>
@@ -119,7 +119,7 @@ export function GeoTargeting({ onLocationDetected, className = '' }: GeoTargetin
             animate={{ opacity: 1, scale: 1 }}
             className="mb-6"
           >
-            <GlassCard className="p-4">
+            <WarmCard hover={false} padding="md" className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <IconMapPin className="w-5 h-5 text-matrix-green" />
@@ -136,7 +136,7 @@ export function GeoTargeting({ onLocationDetected, className = '' }: GeoTargetin
                   {hasPermission ? 'Auto-detected' : 'Default'}
                 </Badge>
               </div>
-            </GlassCard>
+            </WarmCard>
           </motion.div>
         )}
       </AnimatePresence>
@@ -173,7 +173,7 @@ export function GeoServiceCoverage({ location, userCoords }: GeoServiceCoverageP
   }, [userCoords, location]);
 
   return (
-    <GlassCard className="p-6">
+    <WarmCard hover={false} padding="md" className="p-6">
       <div className="flex items-start space-x-4">
         <IconTarget className="w-6 h-6 text-electric-blue mt-1 flex-shrink-0" />
         <div className="flex-1">
@@ -240,7 +240,7 @@ export function GeoServiceCoverage({ location, userCoords }: GeoServiceCoverageP
           </div>
         </div>
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 }
 
@@ -289,7 +289,7 @@ export function GeoContentRecommendations({ location }: { location: BusinessLoca
   const recommendations = getLocalRecommendations();
 
   return (
-    <GlassCard className="p-6">
+    <WarmCard hover={false} padding="md" className="p-6">
       <h3 className="font-semibold text-white mb-4">
         Local {location.address.addressLocality} Content
       </h3>
@@ -301,13 +301,13 @@ export function GeoContentRecommendations({ location }: { location: BusinessLoca
           >
             <h4 className="font-medium text-white text-sm mb-1">{item.title}</h4>
             <p className="text-xs text-slate-400 mb-2">{item.description}</p>
-            <MorphButton href={item.href} size="sm" variant="ghost">
+            <ModernButton href={item.href} size="sm" variant="ghost">
               Learn More
-            </MorphButton>
+            </ModernButton>
           </div>
         ))}
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 }
 

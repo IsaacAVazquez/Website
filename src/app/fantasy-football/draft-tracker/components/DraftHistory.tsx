@@ -2,9 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { DraftPick, TeamRoster } from "@/types";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Heading } from "@/components/ui/Heading";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { Badge } from "@/components/ui/Badge";
 import { IconArrowBack, IconUser, IconCrown } from "@tabler/icons-react";
 import { useState } from "react";
@@ -50,12 +50,12 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
   };
 
   return (
-    <GlassCard className="h-fit">
-      <div className="p-4 border-b border-slate-700/50">
+    <WarmCard hover={false} padding="md" className="h-fit">
+      <div className="p-4 border-b border-[#FFE4D6] dark:border-[#FF8E53]/30">
         <div className="flex items-center justify-between mb-4">
           <Heading level={4}>Draft Activity</Heading>
           {picks.length > 0 && (
-            <MorphButton
+            <ModernButton
               onClick={onUndo}
               variant="outline"
               size="xs"
@@ -63,19 +63,19 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
             >
               <IconArrowBack size={14} />
               Undo
-            </MorphButton>
+            </ModernButton>
           )}
         </div>
 
         {/* View Mode Toggle */}
-        <div className="flex bg-slate-800/50 p-1 rounded-lg">
+        <div className="flex bg-[#FFF8F0] dark:bg-[#4A3426]/50 p-1 rounded-lg">
           <button
             onClick={() => setViewMode('recent')}
             className={`
               flex-1 px-3 py-2 text-xs font-medium rounded-md transition-all
-              ${viewMode === 'recent' 
-                ? 'bg-electric-blue text-slate-900' 
-                : 'text-slate-400 hover:text-slate-300'
+              ${viewMode === 'recent'
+                ? 'bg-[#FF6B35] dark:bg-[#FF8E53] text-[#4A3426] dark:text-[#FFE4D6]'
+                : 'text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#4A3426] dark:hover:text-[#FFE4D6]'
               }
             `}
           >
@@ -85,9 +85,9 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
             onClick={() => setViewMode('teams')}
             className={`
               flex-1 px-3 py-2 text-xs font-medium rounded-md transition-all
-              ${viewMode === 'teams' 
-                ? 'bg-electric-blue text-slate-900' 
-                : 'text-slate-400 hover:text-slate-300'
+              ${viewMode === 'teams'
+                ? 'bg-[#FF6B35] dark:bg-[#FF8E53] text-[#4A3426] dark:text-[#FFE4D6]'
+                : 'text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#4A3426] dark:hover:text-[#FFE4D6]'
               }
             `}
           >
@@ -121,8 +121,8 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                     className={`
                       p-3 rounded-lg border transition-all
                       ${pick.teamNumber === userTeam
-                        ? 'border-matrix-green/30 bg-matrix-green/5'
-                        : 'border-slate-700/50 bg-slate-800/30'
+                        ? 'border-[#6BCF7F] dark:border-[#8FE39E] bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20'
+                        : 'border-[#FFE4D6] dark:border-[#FF8E53]/30 bg-[#FFF8F0] dark:bg-[#4A3426]/50'
                       }
                     `}
                   >
@@ -132,17 +132,17 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                           #{pick.pickNumber}
                         </Badge>
                         {pick.teamNumber === userTeam && (
-                          <IconCrown size={14} className="text-matrix-green" />
+                          <IconCrown size={14} className="text-[#6BCF7F] dark:text-[#8FE39E]" />
                         )}
                       </div>
-                      <span className="text-xs text-slate-400">
+                      <span className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">
                         {formatPickTime(pick.timestamp)}
                       </span>
                     </div>
                     
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="font-medium text-white text-sm truncate">
+                        <p className="font-medium text-[#4A3426] dark:text-[#FFE4D6] text-sm truncate">
                           {pick.player.name}
                         </p>
                         <div className="flex items-center gap-2 text-xs">
@@ -150,12 +150,12 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                             {pick.player.position}
                           </span>
                           <span className="text-slate-500">•</span>
-                          <span className="text-slate-400">{pick.player.team}</span>
+                          <span className="text-[#6B4F3D] dark:text-[#D4A88E]">{pick.player.team}</span>
                         </div>
                       </div>
-                      
+
                       <div className="text-right">
-                        <p className="text-xs text-slate-400">Team {pick.teamNumber}</p>
+                        <p className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">Team {pick.teamNumber}</p>
                         <p className="text-xs text-slate-500">R{pick.round}</p>
                       </div>
                     </div>
@@ -180,28 +180,28 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
               ) : (
                 <>
                   {/* Your Team Stats */}
-                  <div className="p-3 bg-matrix-green/5 border border-matrix-green/20 rounded-lg mb-4">
+                  <div className="p-3 bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 border border-[#6BCF7F] dark:border-[#8FE39E] rounded-lg mb-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <IconUser size={16} className="text-matrix-green" />
-                      <span className="font-medium text-matrix-green">Your Team</span>
+                      <IconUser size={16} className="text-[#6BCF7F] dark:text-[#8FE39E]" />
+                      <span className="font-medium text-[#6BCF7F] dark:text-[#8FE39E]">Your Team</span>
                     </div>
-                    
+
                     <div className="grid grid-cols-3 gap-2 text-xs">
                       <div className="text-center">
-                        <div className="text-white font-medium">{userPicks.length}</div>
-                        <div className="text-slate-400">Players</div>
+                        <div className="text-[#4A3426] dark:text-[#FFE4D6] font-medium">{userPicks.length}</div>
+                        <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Players</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-white font-medium">
+                        <div className="text-[#4A3426] dark:text-[#FFE4D6] font-medium">
                           {Math.round(userPicks.reduce((sum, pick) => sum + pick.player.projectedPoints, 0))}
                         </div>
-                        <div className="text-slate-400">Proj Pts</div>
+                        <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Proj Pts</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-white font-medium">
+                        <div className="text-[#4A3426] dark:text-[#FFE4D6] font-medium">
                           ${userPicks.reduce((sum, pick) => sum + (pick.player.auctionValue || 0), 0)}
                         </div>
-                        <div className="text-slate-400">Value</div>
+                        <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Value</div>
                       </div>
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                   {/* Position Breakdown */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     {Object.entries(teams.find(t => t.teamNumber === userTeam)?.positionCounts || {}).map(([pos, count]) => (
-                      <div key={pos} className="flex items-center justify-between p-2 bg-slate-800/30 rounded">
+                      <div key={pos} className="flex items-center justify-between p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/50 rounded">
                         <span className={`text-xs font-medium ${getPositionColor(pos)}`}>{pos}</span>
                         <Badge variant="outline" size="xs">{count}</Badge>
                       </div>
@@ -223,17 +223,17 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="p-3 border border-matrix-green/30 bg-matrix-green/5 rounded-lg"
+                      className="p-3 border border-[#6BCF7F] dark:border-[#8FE39E] bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 rounded-lg"
                     >
                       <div className="flex items-center justify-between mb-1">
                         <Badge variant="matrix" size="xs">
                           Pick #{pick.pickNumber}
                         </Badge>
-                        <span className="text-xs text-slate-400">Round {pick.round}</span>
+                        <span className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">Round {pick.round}</span>
                       </div>
-                      
+
                       <div>
-                        <p className="font-medium text-white text-sm">
+                        <p className="font-medium text-[#4A3426] dark:text-[#FFE4D6] text-sm">
                           {pick.player.name}
                         </p>
                         <div className="flex items-center justify-between mt-1">
@@ -242,9 +242,9 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                               {pick.player.position}
                             </span>
                             <span className="text-slate-500">•</span>
-                            <span className="text-slate-400">{pick.player.team}</span>
+                            <span className="text-[#6B4F3D] dark:text-[#D4A88E]">{pick.player.team}</span>
                           </div>
-                          <span className="text-xs text-matrix-green">
+                          <span className="text-xs text-[#6BCF7F] dark:text-[#8FE39E]">
                             {Math.round(pick.player.projectedPoints)} pts
                           </span>
                         </div>
@@ -257,6 +257,6 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
           )}
         </AnimatePresence>
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 }

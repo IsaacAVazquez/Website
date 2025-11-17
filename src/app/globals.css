@@ -27,7 +27,7 @@
   a:focus-visible {
     outline: 3px solid var(--color-primary);
     outline-offset: 3px;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);  /* Warm orange glow */
   }
 
   input:focus-visible,
@@ -36,7 +36,7 @@
     outline: 2px solid var(--color-primary);
     outline-offset: 0;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);  /* Warm orange glow */
   }
 }
 
@@ -138,11 +138,11 @@
   --color-error-accessible: #E53935;      /* Darker warm red */
   --color-success-accessible: #43A047;    /* Darker green */
 
-  /* Terminal Interface Colors */
-  --terminal-bg: #0A0A0B;
-  --terminal-border: #1A1A1B;
-  --terminal-text: #00FF00;
-  --terminal-cursor: var(--color-primary);
+  /* Legacy Terminal Interface Colors - Deprecated, use warm equivalents */
+  --terminal-bg: var(--neutral-900);           /* Dark warm brown instead */
+  --terminal-border: var(--neutral-800);       /* Warm brown border */
+  --terminal-text: var(--color-success);       /* Green remains for code */
+  --terminal-cursor: var(--color-primary);     /* Warm orange cursor */
 
   /* Semantic Surface Colors - Warm & Inviting */
   --surface-primary: rgba(255, 252, 247, 0.95);     /* Warm cream base */

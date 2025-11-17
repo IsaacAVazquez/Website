@@ -6,12 +6,12 @@ import { generateTierGroups } from '@/lib/tierImageGenerator';
 import { TierDisplay } from '@/components/TierDisplay';
 import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
-import { GlassCard } from '@/components/ui/GlassCard';
+import { WarmCard } from '@/components/ui/WarmCard';
 import { StructuredData } from '@/components/StructuredData';
 import { generateBreadcrumbStructuredData } from '@/lib/seo';
 import Link from 'next/link';
 import { IconArrowLeft, IconChartBar } from '@tabler/icons-react';
-import { MorphButton } from '@/components/ui/MorphButton';
+import { ModernButton } from '@/components/ui/ModernButton';
 
 const validPositions: Position[] = ['OVERALL', 'QB', 'RB', 'WR', 'TE', 'FLEX', 'K', 'DST'];
 
@@ -106,7 +106,7 @@ export default async function TierPage({ params }: { params: Promise<{ position:
     return (
       <div className="min-h-screen bg-terminal-bg px-6 py-12">
         <div className="max-w-7xl mx-auto">
-          <GlassCard elevation={2} className="p-8 text-center">
+          <WarmCard hover={false} padding="md" elevation={2} className="p-8 text-center">
             <IconChartBar className="w-16 h-16 text-electric-blue mx-auto mb-4" />
             <Heading as="h2" className="mb-4">No Data Available</Heading>
             <Paragraph className="text-slate-400 mb-6">
@@ -114,17 +114,17 @@ export default async function TierPage({ params }: { params: Promise<{ position:
             </Paragraph>
             <div className="flex gap-4 justify-center">
               <Link href="/fantasy-football">
-                <MorphButton variant="primary">
+                <ModernButton variant="primary">
                   Go to Interactive Tiers
-                </MorphButton>
+                </ModernButton>
               </Link>
               <Link href="/admin">
-                <MorphButton variant="secondary">
+                <ModernButton variant="secondary">
                   Import Data
-                </MorphButton>
+                </ModernButton>
               </Link>
             </div>
-          </GlassCard>
+          </WarmCard>
         </div>
       </div>
     );
@@ -190,10 +190,10 @@ export default async function TierPage({ params }: { params: Promise<{ position:
             </div>
             
             <div className="hidden md:block">
-              <GlassCard elevation={1} className="px-4 py-2">
+              <WarmCard hover={false} padding="md" elevation={1} className="px-4 py-2">
                 <div className="text-sm text-slate-400">Total Players</div>
                 <div className="text-2xl font-bold text-electric-blue">{players.length}</div>
-              </GlassCard>
+              </WarmCard>
             </div>
           </div>
         </div>

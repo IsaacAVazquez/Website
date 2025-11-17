@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MorphButton } from '@/components/ui/MorphButton';
+import { ModernButton } from '@/components/ui/ModernButton';
 import { IconRefresh } from '@tabler/icons-react';
 
 export function TestFlexImplementation() {
@@ -58,7 +58,7 @@ export function TestFlexImplementation() {
 
   return (
     <div className="space-y-4">
-      <MorphButton
+      <ModernButton
         onClick={testFlex}
         disabled={isLoading}
         variant="primary"
@@ -67,7 +67,7 @@ export function TestFlexImplementation() {
       >
         <IconRefresh className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
         Test New FLEX Implementation
-      </MorphButton>
+      </ModernButton>
 
       {results && (
         <div className="border border-terminal-border rounded p-4 space-y-3">

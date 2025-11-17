@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import { GlassCard } from "./GlassCard";
+import { WarmCard } from "./WarmCard";
 import { personalMetrics } from "@/constants/personal";
 
 interface SkillPoint {
@@ -264,7 +264,7 @@ const SkillsRadar = ({ skills, size = 300, type }: SkillsRadarProps) => {
           exit={{ opacity: 0, y: 10 }}
           className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 z-10"
         >
-          <GlassCard
+          <WarmCard hover={false} padding="md"
             elevation={3}
             cursorGlow={true}
             className="p-3 min-w-[200px] text-center"
@@ -275,7 +275,7 @@ const SkillsRadar = ({ skills, size = 300, type }: SkillsRadarProps) => {
             <div className="text-xs text-secondary">
               {skills.find(s => s.name === hoveredSkill)?.level}% proficiency
             </div>
-          </GlassCard>
+          </WarmCard>
         </motion.div>
       )}
     </div>
@@ -323,7 +323,7 @@ export function SkillsRadarDashboard() {
 
       {/* Radar Chart */}
       <div className="flex justify-center">
-        <GlassCard
+        <WarmCard hover={false} padding="md"
           elevation={4}
           interactive={true}
           cursorGlow={true}
@@ -339,7 +339,7 @@ export function SkillsRadarDashboard() {
               type={activeTab}
             />
           </div>
-        </GlassCard>
+        </WarmCard>
       </div>
 
       {/* Skills Legend */}
@@ -351,7 +351,7 @@ export function SkillsRadarDashboard() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.3 }}
           >
-            <GlassCard
+            <WarmCard hover={false} padding="md"
               elevation={2}
               interactive={true}
               className="p-4 text-center"
@@ -374,7 +374,7 @@ export function SkillsRadarDashboard() {
                   transition={{ delay: index * 0.1 + 0.5, duration: 0.8 }}
                 />
               </div>
-            </GlassCard>
+            </WarmCard>
           </motion.div>
         ))}
       </div>

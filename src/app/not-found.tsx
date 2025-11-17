@@ -3,26 +3,26 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { IconHome, IconArrowLeft } from "@tabler/icons-react";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-800/30 to-slate-700/20">
-        <div 
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FFF8F0]/50 via-[#FFFCF7]/30 to-[#FFE4D6]/20 dark:from-[#2D1B12]/50 dark:via-[#1C1410]/30 dark:to-[#4A3426]/20">
+        <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(0, 245, 255, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 245, 255, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 107, 53, 0.1) 1px, transparent 1px)
             `,
             backgroundSize: '50px 50px'
           }}
         />
       </div>
 
-      {/* Glitch Effect Background */}
+      {/* Warm Effect Background */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{
@@ -39,25 +39,25 @@ export default function NotFound() {
               45deg,
               transparent,
               transparent 10px,
-              rgba(0, 245, 255, 0.1) 10px,
-              rgba(0, 245, 255, 0.1) 20px
+              rgba(255, 107, 53, 0.1) 10px,
+              rgba(255, 107, 53, 0.1) 20px
             )`,
           }}
         />
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-2xl">
-        {/* 404 Text with Glitch Effect */}
+        {/* 404 Text with Warm Effect */}
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="relative mb-8"
         >
-          <h1 className="text-9xl font-heading font-black text-electric-blue relative">
+          <h1 className="text-9xl font-heading font-black text-[#FF6B35] dark:text-[#FF8E53] relative">
             404
             <motion.span
-              className="absolute inset-0 text-error-red"
+              className="absolute inset-0 text-[#FF5757]"
               animate={{
                 opacity: [0, 1, 0],
                 x: [-2, 2, -2],
@@ -71,7 +71,7 @@ export default function NotFound() {
               404
             </motion.span>
             <motion.span
-              className="absolute inset-0 text-matrix-green"
+              className="absolute inset-0 text-[#F7B32B]"
               animate={{
                 opacity: [0, 1, 0],
                 x: [2, -2, 2],
@@ -93,12 +93,12 @@ export default function NotFound() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mb-8 font-terminal text-matrix-green"
+          className="mb-8 font-terminal text-[#6BCF7F] dark:text-[#8FE39E]"
         >
           <p className="text-xl mb-2">
-            <span className="text-electric-blue">$</span> cat /page/not/found
+            <span className="text-[#FF6B35] dark:text-[#FF8E53]">$</span> cat /page/not/found
           </p>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">
             Error: The requested resource could not be located in the system.
           </p>
         </motion.div>
@@ -108,9 +108,9 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="text-lg text-slate-300 mb-8"
+          className="text-lg text-[#4A3426] dark:text-[#FFE4D6] mb-8"
         >
-          Looks like you've ventured into uncharted territory. 
+          Looks like you've ventured into uncharted territory.
           This page doesn't exist in our system... yet.
         </motion.p>
 
@@ -122,19 +122,19 @@ export default function NotFound() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link href="/">
-            <MorphButton
+            <ModernButton
               variant="primary"
               size="lg"
               icon={<IconHome className="h-5 w-5" />}
               iconPosition="left"
             >
               Return Home
-            </MorphButton>
+            </ModernButton>
           </Link>
-          
+
           <button
             onClick={() => window.history.back()}
-            className="px-6 py-3 border border-electric-blue text-electric-blue hover:bg-electric-blue/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-flex items-center gap-2"
+            className="px-6 py-3 border border-[#FF6B35] dark:border-[#FF8E53] text-[#FF6B35] dark:text-[#FF8E53] hover:bg-[#FF6B35]/10 dark:hover:bg-[#FF8E53]/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-flex items-center gap-2"
           >
             <IconArrowLeft className="h-5 w-5" />
             Go Back
@@ -146,7 +146,7 @@ export default function NotFound() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="mt-16 font-terminal text-sm text-slate-500"
+          className="mt-16 font-terminal text-sm text-[#6B4F3D] dark:text-[#D4A88E]"
         >
           <motion.span
             animate={{ opacity: [0.3, 1, 0.3] }}

@@ -3,7 +3,7 @@
 import { Heading } from "@/components/ui/Heading";
 import { motion } from "framer-motion";
 import { IconTrendingUp, IconChartBar, IconDatabase, IconDeviceMobile } from "@tabler/icons-react";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import Link from "next/link";
 
 interface FantasyOffering {
@@ -26,7 +26,7 @@ const fantasyOfferings: FantasyOffering[] = [
     description: "Advanced clustering algorithms analyze 300+ players across all positions with real-time D3.js visualization",
     features: ["K-Means clustering", "D3.js visualizations", "Real-time data sync", "Position-specific analysis"],
     type: "featured",
-    color: "from-electric-blue to-matrix-green",
+    color: "from-[#FF6B35] to-[#F7B32B]",
     icon: IconTrendingUp,
     link: "/fantasy-football",
     metrics: "6-tier system, 92% expert consensus",
@@ -38,7 +38,7 @@ const fantasyOfferings: FantasyOffering[] = [
     description: "Comprehensive draft interface with tier visualization and real-time player tracking for optimal draft strategy",
     features: ["Live tier updates", "Draft position tracking", "Player comparison", "Strategic insights"],
     type: "normal", 
-    color: "from-neon-purple to-electric-blue",
+    color: "from-[#FF8E53] to-[#FFC857]",
     icon: IconChartBar,
     link: "/draft-tiers",
     metrics: "Full draft simulation",
@@ -50,7 +50,7 @@ const fantasyOfferings: FantasyOffering[] = [
     description: "Administrative interface for real-time data collection, processing, and performance monitoring with smart caching",
     features: ["API integration", "Data pipeline", "Cache management", "Performance monitoring"],
     type: "normal",
-    color: "from-cyber-teal to-matrix-green",
+    color: "from-[#FFC857] to-[#6BCF7F]",
     icon: IconDatabase,
     link: "/admin",
     metrics: "Live data updates",
@@ -92,11 +92,11 @@ export function FantasyFootballLandingContent() {
           transition={{ duration: 0.6 }}
         >
           <Heading className="font-heading font-black text-5xl lg:text-6xl mb-6 tracking-tight">
-            <span className="gradient-text">Fantasy Football</span>
+            <span className="gradient-text-warm">Fantasy Football</span>
             <br />
-            <span className="text-primary">Command Center</span>
+            <span className="text-[#FF6B35] dark:text-[#FF8E53]">Command Center</span>
           </Heading>
-          <p className="text-xl text-secondary max-w-3xl mb-8">
+          <p className="text-xl text-[#4A3426] dark:text-[#D4A88E] max-w-3xl mb-8">
             Advanced data visualization and analytics tools built with cutting-edge technology. 
             Featuring machine learning algorithms, real-time data processing, and interactive visualizations 
             to give you the competitive edge in fantasy football.
@@ -133,34 +133,30 @@ export function FantasyFootballLandingContent() {
           return (
             <motion.div key={offering.id} variants={itemVariants}>
               <Link href={offering.link} className="block h-full">
-                <GlassCard
-                  elevation={offering.type === "featured" ? 4 : 3}
-                  interactive={true}
-                  cursorGlow={true}
-                  noiseTexture={true}
-                  floating={offering.type === "featured"}
-                  className="h-full flex flex-col justify-between"
-
+                <WarmCard
+                  hover={true}
+                  padding="none"
+                  className="h-full flex flex-col justify-between group"
                 >
                 {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${offering.color} opacity-10 group-hover:opacity-20 transition-opacity breathing-gradient`} />
-                
+                <div className={`absolute inset-0 bg-gradient-to-br ${offering.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
+
                 {/* Content */}
                 <div className="relative h-full p-6 flex flex-col">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <Icon className="h-8 w-8 text-electric-blue" />
+                      <Icon className="h-8 w-8 text-[#FF6B35] dark:text-[#FF8E53]" />
                       <div className="flex items-center gap-2">
                         <div className={`w-2 h-2 rounded-full ${
-                          offering.status === 'live' ? 'bg-matrix-green' :
-                          offering.status === 'beta' ? 'bg-warning-amber' :
-                          'bg-slate-400'
+                          offering.status === 'live' ? 'bg-[#6BCF7F]' :
+                          offering.status === 'beta' ? 'bg-[#FFB020]' :
+                          'bg-[#6B4F3D]'
                         } animate-pulse`}></div>
                         <span className={`text-xs font-mono uppercase tracking-wider ${
-                          offering.status === 'live' ? 'text-matrix-green' :
-                          offering.status === 'beta' ? 'text-warning-amber' :
-                          'text-slate-400'
+                          offering.status === 'live' ? 'text-[#6BCF7F] dark:text-[#8FE39E]' :
+                          offering.status === 'beta' ? 'text-[#FFB020] dark:text-[#FFC857]' :
+                          'text-[#6B4F3D] dark:text-[#D4A88E]'
                         }`}>
                           {offering.status.replace('-', ' ')}
                         </span>
@@ -169,17 +165,17 @@ export function FantasyFootballLandingContent() {
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="font-heading font-bold text-xl mb-3 text-primary">
+                  <h3 className="font-heading font-bold text-xl mb-3 text-[#FF6B35] dark:text-[#FF8E53]">
                     {offering.title}
                   </h3>
-                  <p className="text-sm text-secondary mb-4 flex-grow">
+                  <p className="text-sm text-[#4A3426] dark:text-[#D4A88E] mb-4 flex-grow">
                     {offering.description}
                   </p>
 
                   {/* Metrics */}
                   {offering.metrics && (
                     <div className="mb-4">
-                      <span className="text-xs font-accent font-semibold text-electric-blue">
+                      <span className="text-xs font-semibold text-[#FF6B35] dark:text-[#FF8E53]">
                         {offering.metrics}
                       </span>
                     </div>
@@ -192,7 +188,7 @@ export function FantasyFootballLandingContent() {
                         {offering.features.slice(0, offering.type === "featured" ? 4 : 2).map((feature) => (
                           <span
                             key={feature}
-                            className="px-2 py-1 text-xs font-medium rounded-full bg-terminal-bg/50 border border-electric-blue/20 text-electric-blue"
+                            className="px-2 py-1 text-xs font-medium rounded-full bg-[#FFF8F0] dark:bg-[#4A3426]/50 border border-[#FFE4D6] dark:border-[#FF8E53]/30 text-[#FF6B35] dark:text-[#FF8E53]"
                           >
                             {feature}
                           </span>
@@ -202,7 +198,7 @@ export function FantasyFootballLandingContent() {
                   )}
 
                 </div>
-                </GlassCard>
+                </WarmCard>
               </Link>
             </motion.div>
           );
@@ -216,12 +212,12 @@ export function FantasyFootballLandingContent() {
         transition={{ delay: 0.6, duration: 0.8 }}
         className="mb-16"
       >
-        <GlassCard elevation={3} className="p-8">
+        <WarmCard hover={false} padding="xl">
           <div className="text-center mb-8">
-            <h2 className="font-heading font-bold text-3xl mb-4 gradient-text">
+            <h2 className="font-heading font-bold text-3xl mb-4 gradient-text-warm">
               Technical Excellence
             </h2>
-            <p className="text-lg text-secondary max-w-2xl mx-auto">
+            <p className="text-lg text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto">
               Built with modern web technologies and advanced algorithms to deliver 
               professional-grade fantasy football analytics.
             </p>
@@ -252,7 +248,7 @@ export function FantasyFootballLandingContent() {
               <p className="text-sm text-secondary">Responsive design with touch interactions and offline capabilities for any device</p>
             </div>
           </div>
-        </GlassCard>
+        </WarmCard>
       </motion.div>
 
     </>

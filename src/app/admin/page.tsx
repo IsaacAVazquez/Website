@@ -6,9 +6,9 @@ import { useSession, signOut, signIn } from "next-auth/react";
 import { Position, Player } from '@/types';
 import { databaseManager } from '@/lib/database';
 import { unifiedFantasyProsAPI } from '@/lib/unifiedFantasyProsAPI';
-import { MorphButton } from '@/components/ui/MorphButton';
+import { ModernButton } from '@/components/ui/ModernButton';
 import { IconLogout, IconLock } from "@tabler/icons-react";
-import { GlassCard } from '@/components/ui/GlassCard';
+import { WarmCard } from '@/components/ui/WarmCard';
 
 // Admin page specific interfaces
 interface CSRFResult {
@@ -411,24 +411,24 @@ export default function AdminPage() {
   // Show login form if not authenticated
   if (!session) {
     return (
-      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410] flex items-center justify-center p-4">
         <div className="w-full max-w-md">
-          <GlassCard elevation={3} className="p-8">
+          <WarmCard hover={false} padding="xl">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-electric-blue/10 mb-4">
-                <IconLock className="w-8 h-8 text-electric-blue" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#FF6B35]/10 dark:bg-[#FF8E53]/20 mb-4">
+                <IconLock className="w-8 h-8 text-[#FF6B35] dark:text-[#FF8E53]" />
               </div>
-              <h2 className="text-2xl font-bold text-electric-blue mb-2">
+              <h2 className="text-2xl font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
                 Admin Access
               </h2>
-              <p className="text-slate-400">
+              <p className="text-[#6B4F3D] dark:text-[#D4A88E]">
                 Fantasy Football Data Manager
               </p>
             </div>
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div>
-                <label htmlFor="username" className="block text-sm font-medium text-slate-300 mb-2">
+                <label htmlFor="username" className="block text-sm font-medium text-[#4A3426] dark:text-[#D4A88E] mb-2">
                   Username
                 </label>
                 <input
@@ -436,14 +436,14 @@ export default function AdminPage() {
                   type="text"
                   value={loginForm.username}
                   onChange={(e) => setLoginForm(prev => ({ ...prev, username: e.target.value }))}
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-electric-blue focus:ring-1 focus:ring-electric-blue transition-colors"
+                  className="w-full px-4 py-3 bg-white dark:bg-[#2D1B12] border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] placeholder-[#6B4F3D] dark:placeholder-[#D4A88E] focus:outline-none focus:border-[#FF6B35] dark:focus:border-[#FF8E53] focus:ring-2 focus:ring-[#FF6B35]/20 transition-colors"
                   placeholder="Enter username"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
+                <label htmlFor="password" className="block text-sm font-medium text-[#4A3426] dark:text-[#D4A88E] mb-2">
                   Password
                 </label>
                 <input
@@ -451,7 +451,7 @@ export default function AdminPage() {
                   type="password"
                   value={loginForm.password}
                   onChange={(e) => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-electric-blue focus:ring-1 focus:ring-electric-blue transition-colors"
+                  className="w-full px-4 py-3 bg-white dark:bg-[#2D1B12] border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] placeholder-[#6B4F3D] dark:placeholder-[#D4A88E] focus:outline-none focus:border-[#FF6B35] dark:focus:border-[#FF8E53] focus:ring-2 focus:ring-[#FF6B35]/20 transition-colors"
                   placeholder="Enter password"
                   required
                 />
@@ -474,17 +474,17 @@ export default function AdminPage() {
                 </div>
               )}
 
-              <MorphButton
+              <ModernButton
                 type="submit"
                 variant="primary"
                 size="lg"
-                className="w-full"
+                fullWidth
                 disabled={loginForm.isLoading}
               >
                 {loginForm.isLoading ? "Signing in..." : "Sign In"}
-              </MorphButton>
+              </ModernButton>
             </form>
-          </GlassCard>
+          </WarmCard>
         </div>
       </div>
     );
@@ -502,15 +502,14 @@ export default function AdminPage() {
           >
             Fantasy Football Data Manager
           </motion.h1>
-          <MorphButton
+          <ModernButton
             onClick={() => signOut({ callbackUrl: "/" })}
             variant="secondary"
             size="sm"
-            className="flex items-center gap-2"
           >
             <IconLogout className="w-4 h-4" />
             Sign Out
-          </MorphButton>
+          </ModernButton>
         </div>
 
         {/* Position Selector */}

@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Player, Position, ScoringFormat } from "@/types";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Heading } from "@/components/ui/Heading";
 import { Badge } from "@/components/ui/Badge";
 import { IconSearch, IconFilter, IconSortDescending } from "@tabler/icons-react";
@@ -142,13 +142,13 @@ export function DraftBoard({
   ];
 
   return (
-    <GlassCard className="h-full">
-      <div className="p-6 border-b border-slate-700/50">
+    <WarmCard hover={false} padding="none" className="h-full">
+      <div className="p-6 border-b-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
           <div>
             <Heading level={3} className="mb-2">Available Players</Heading>
-            <div className="flex items-center gap-2 text-sm text-slate-400">
+            <div className="flex items-center gap-2 text-sm text-[#6B4F3D] dark:text-[#D4A88E]">
               <span>{filteredPlayers.length} players available</span>
               {selectedPosition !== 'ALL' && (
                 <>
@@ -162,7 +162,7 @@ export function DraftBoard({
           <div className="flex items-center gap-3">
             <motion.button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 border border-slate-700 rounded-lg text-slate-300 hover:border-electric-blue transition-colors"
+              className="flex items-center gap-2 px-3 py-2 bg-[#FFF8F0] dark:bg-[#4A3426]/50 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] hover:border-[#FF6B35] dark:hover:border-[#FF8E53] transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -174,13 +174,13 @@ export function DraftBoard({
 
         {/* Search Bar */}
         <div className="relative mb-4">
-          <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
+          <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#6B4F3D] dark:text-[#D4A88E]" size={20} />
           <input
             type="text"
             placeholder="Search players..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:border-electric-blue focus:ring-1 focus:ring-electric-blue transition-colors"
+            className="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#2D1B12] border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] placeholder-[#6B4F3D] dark:placeholder-[#D4A88E] focus:border-[#FF6B35] focus:ring-1 focus:ring-[#FF6B35] transition-colors"
           />
         </div>
 
@@ -195,7 +195,7 @@ export function DraftBoard({
             >
               {/* Position Filter */}
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Position</label>
+                <label className="block text-sm font-medium text-[#4A3426] dark:text-[#FFE4D6] mb-2">Position</label>
                 <div className="flex flex-wrap gap-2">
                   {positions.map(position => (
                     <motion.button
@@ -204,8 +204,8 @@ export function DraftBoard({
                       className={`
                         flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all
                         ${selectedPosition === position.value
-                          ? 'bg-electric-blue text-slate-900'
-                          : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+                          ? 'bg-[#FF6B35] dark:bg-[#FF8E53] text-white'
+                          : 'bg-[#FFF8F0] dark:bg-[#4A3426]/50 text-[#4A3426] dark:text-[#FFE4D6] hover:bg-[#FFE4D6] dark:hover:bg-[#4A3426]'
                         }
                       `}
                       whileHover={{ scale: 1.05 }}
@@ -223,7 +223,7 @@ export function DraftBoard({
 
               {/* Sort Options */}
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Sort By</label>
+                <label className="block text-sm font-medium text-[#4A3426] dark:text-[#FFE4D6] mb-2">Sort By</label>
                 <div className="flex flex-wrap gap-2">
                   {sortOptions.map(option => (
                     <motion.button
@@ -232,8 +232,8 @@ export function DraftBoard({
                       className={`
                         flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all
                         ${sortBy === option.value
-                          ? 'bg-matrix-green text-slate-900'
-                          : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+                          ? 'bg-[#6BCF7F] dark:bg-[#8FE39E] text-white'
+                          : 'bg-[#FFF8F0] dark:bg-[#4A3426]/50 text-[#4A3426] dark:text-[#FFE4D6] hover:bg-[#FFE4D6] dark:hover:bg-[#4A3426]'
                         }
                       `}
                       whileHover={{ scale: 1.05 }}
@@ -254,9 +254,9 @@ export function DraftBoard({
       <div className="p-6">
         {filteredPlayers.length === 0 ? (
           <div className="text-center py-12">
-            <div className="text-slate-400 mb-4 text-lg">🔍</div>
-            <Heading level={4} className="text-slate-400 mb-2">No players found</Heading>
-            <p className="text-slate-500">
+            <div className="text-[#6B4F3D] dark:text-[#D4A88E] mb-4 text-lg">🔍</div>
+            <Heading level={4} className="text-[#6B4F3D] dark:text-[#D4A88E] mb-2">No players found</Heading>
+            <p className="text-[#6B4F3D]/70 dark:text-[#D4A88E]/70">
               {debouncedSearchQuery ? "Try adjusting your search terms" : "Try changing your filters"}
             </p>
           </div>
@@ -295,6 +295,6 @@ export function DraftBoard({
           </div>
         )}
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 }

@@ -8,7 +8,7 @@ export const Footer = () => {
     <motion.footer
       role="contentinfo"
       aria-label="Site footer with copyright and social links"
-      className="relative z-20 flex flex-col items-center justify-center p-5 pb-2 min-h-[72px] bg-gradient-to-t from-terminal-bg/70 to-transparent backdrop-blur rounded-t-xl border-t border-electric-blue/20"
+      className="relative z-20 flex flex-col items-center justify-center p-5 pb-2 min-h-[72px] bg-gradient-to-t from-[#FFFCF7] to-transparent dark:from-[#1C1410] dark:to-transparent backdrop-blur-sm rounded-t-xl border-t-2 border-[#FFE4D6] dark:border-[#FF8E53]/30"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
@@ -17,7 +17,7 @@ export const Footer = () => {
         delay: 0.2
       }}
     >
-      <div className="flex items-center gap-2 text-base font-semibold text-slate-400 mb-1 font-terminal">
+      <div className="flex items-center gap-2 text-base font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-1">
         <motion.span
           className="text-lg select-none inline-block"
           animate={{
@@ -32,14 +32,14 @@ export const Footer = () => {
           ⚡
         </motion.span>
         <span>{new Date().getFullYear()}</span>
-        <span>&#8212; BUILT BY Isaac Vazquez</span>
+        <span>&#8212; Built by</span>
         <motion.a
-          href="https://isaacvazquez.netlify.app/"
+          href="https://isaacavazquez.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-electric-blue via-matrix-green to-neon-purple uppercase"
+          className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B35] via-[#F7B32B] to-[#FF8E53]"
           whileHover={{
-            filter: "drop-shadow(0 0 4px rgba(0, 245, 255, 0.6))",
+            filter: "drop-shadow(0 0 4px rgba(255, 107, 53, 0.6))",
           }}
           transition={{ duration: 0.3 }}
         >
@@ -58,22 +58,22 @@ export const Footer = () => {
           aria-label="Visit Isaac Vazquez's LinkedIn profile"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-slate-500"
-          whileHover={{ scale: 1.1, color: "var(--electric-blue)" }}
+          className="text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+          whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 400 }}
         >
-          <FaLinkedin size={18} aria-hidden="true" />
+          <FaLinkedin size={20} aria-hidden="true" />
         </motion.a>
         <motion.a
           href="https://github.com/IsaacAVazquez"
           aria-label="Visit Isaac Vazquez's GitHub profile"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-slate-500"
-          whileHover={{ scale: 1.1, color: "var(--matrix-green)" }}
+          className="text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+          whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 400 }}
         >
-          <FaGithub size={18} aria-hidden="true" />
+          <FaGithub size={20} aria-hidden="true" />
         </motion.a>
       </motion.nav>
     </motion.footer>

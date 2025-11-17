@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
@@ -21,7 +21,7 @@ export function FAQSection({ question, answer, defaultOpen = false }: FAQSection
   };
 
   return (
-    <GlassCard className="overflow-hidden">
+    <WarmCard hover={false} padding="md" className="overflow-hidden">
       <button
         onClick={toggleOpen}
         className="w-full p-6 text-left hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors duration-200 focus:ring-2 focus:ring-electric-blue focus:ring-inset focus:outline-none"
@@ -66,6 +66,6 @@ export function FAQSection({ question, answer, defaultOpen = false }: FAQSection
           </motion.div>
         )}
       </AnimatePresence>
-    </GlassCard>
+    </WarmCard>
   );
 }

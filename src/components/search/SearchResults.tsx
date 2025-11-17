@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Badge } from "@/components/ui/Badge";
 import { IconClock, IconSearch, IconFileText, IconBriefcase, IconHome } from "@tabler/icons-react";
 import type { SearchResult } from "./SearchInterface";
@@ -45,7 +45,7 @@ export function SearchResults({
 
   if (hasSearched && results.length === 0) {
     return (
-      <GlassCard className="text-center py-12">
+      <WarmCard hover={false} padding="md" className="text-center py-12">
         <div className="max-w-md mx-auto">
           <IconSearch className="w-16 h-16 text-slate-400 mx-auto mb-4" />
           <Heading level={3} className="mb-2">
@@ -68,7 +68,7 @@ export function SearchResults({
             </ul>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     );
   }
 
@@ -147,7 +147,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
   };
 
   return (
-    <GlassCard className="p-6 hover:translate-x-1 transition-transform duration-200">
+    <WarmCard hover={false} padding="md" className="p-6 hover:translate-x-1 transition-transform duration-200">
       <Link href={result.url} className="block">
         <div className="space-y-3">
           {/* Header */}
@@ -222,6 +222,6 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
           </div>
         </div>
       </Link>
-    </GlassCard>
+    </WarmCard>
   );
 }

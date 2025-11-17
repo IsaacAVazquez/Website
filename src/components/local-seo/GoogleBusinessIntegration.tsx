@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { BusinessLocation, googleBusinessProfile } from "@/lib/localSEO";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { IconMapPin, IconStar, IconExternalLink, IconNavigation, IconPhone, IconMail } from "@tabler/icons-react";
 import Link from "next/link";
 
@@ -52,7 +52,7 @@ export function GoogleBusinessIntegration({
 
   if (variant === 'compact') {
     return (
-      <GlassCard className={`p-4 ${className}`}>
+      <WarmCard hover={false} padding="md" className={`p-4 ${className}`}>
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-semibold text-white">Find Us on Google</h3>
           <IconMapPin className="w-5 h-5 text-electric-blue" />
@@ -64,7 +64,7 @@ export function GoogleBusinessIntegration({
           </p>
           
           <div className="flex space-x-2">
-            <MorphButton 
+            <ModernButton 
               href={businessProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -74,9 +74,9 @@ export function GoogleBusinessIntegration({
             >
               <IconExternalLink className="w-4 h-4 mr-2" />
               View Profile
-            </MorphButton>
+            </ModernButton>
             
-            <MorphButton 
+            <ModernButton 
               href={directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -86,10 +86,10 @@ export function GoogleBusinessIntegration({
             >
               <IconNavigation className="w-4 h-4 mr-2" />
               Directions
-            </MorphButton>
+            </ModernButton>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     );
   }
 
@@ -97,7 +97,7 @@ export function GoogleBusinessIntegration({
   return (
     <div className={`space-y-6 ${className}`}>
       {/* Google Business Profile Card */}
-      <GlassCard className="p-6">
+      <WarmCard hover={false} padding="md" className="p-6">
         <div className="flex items-start justify-between mb-6">
           <div>
             <h2 className="text-xl font-semibold text-white mb-2">
@@ -150,7 +150,7 @@ export function GoogleBusinessIntegration({
           </div>
 
           <div className="space-y-4">
-            <MorphButton 
+            <ModernButton 
               href={businessProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -159,9 +159,9 @@ export function GoogleBusinessIntegration({
             >
               <IconExternalLink className="w-4 h-4 mr-2" />
               View Google Business Profile
-            </MorphButton>
+            </ModernButton>
             
-            <MorphButton 
+            <ModernButton 
               href={directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -170,7 +170,7 @@ export function GoogleBusinessIntegration({
             >
               <IconNavigation className="w-4 h-4 mr-2" />
               Get Directions
-            </MorphButton>
+            </ModernButton>
 
             {/* Review CTA */}
             <div className="text-center p-3 bg-matrix-green/10 border border-matrix-green/20 rounded-lg">
@@ -180,7 +180,7 @@ export function GoogleBusinessIntegration({
                 ))}
               </div>
               <p className="text-xs text-slate-300 mb-2">Love our service?</p>
-              <MorphButton 
+              <ModernButton 
                 href={`${businessProfileUrl}#reviews`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -189,14 +189,14 @@ export function GoogleBusinessIntegration({
                 className="text-matrix-green"
               >
                 Leave a Review
-              </MorphButton>
+              </ModernButton>
             </div>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
 
       {/* Interactive Map */}
-      <GlassCard className="p-6">
+      <WarmCard hover={false} padding="md" className="p-6">
         <h3 className="font-semibold text-white mb-4">Service Area Map</h3>
         <div className="aspect-video rounded-lg overflow-hidden border border-electric-blue/20 mb-4">
           <iframe
@@ -232,7 +232,7 @@ export function GoogleBusinessIntegration({
             )}
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     </div>
   );
 }
@@ -267,7 +267,7 @@ export function GoogleBusinessSetup({ location }: { location: BusinessLocation }
   ];
 
   return (
-    <GlassCard className="p-6">
+    <WarmCard hover={false} padding="md" className="p-6">
       <h3 className="text-xl font-semibold text-white mb-4">
         Google Business Profile Setup Guide
       </h3>
@@ -284,9 +284,9 @@ export function GoogleBusinessSetup({ location }: { location: BusinessLocation }
             <div className="flex-1">
               <h4 className="font-medium text-white mb-1">{step.title}</h4>
               <p className="text-sm text-slate-400 mb-2">{step.description}</p>
-              <MorphButton size="sm" variant="outline">
+              <ModernButton size="sm" variant="outline">
                 {step.action}
-              </MorphButton>
+              </ModernButton>
             </div>
           </div>
         ))}
@@ -299,6 +299,6 @@ export function GoogleBusinessSetup({ location }: { location: BusinessLocation }
           to improve local search rankings and customer trust.
         </p>
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 }

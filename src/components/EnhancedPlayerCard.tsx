@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { Player } from '@/types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
-import { GlassCard } from '@/components/ui/GlassCard';
-import { MorphButton } from '@/components/ui/MorphButton';
+import { WarmCard } from '@/components/ui/WarmCard';
+import { ModernButton } from '@/components/ui/ModernButton';
 import { ExpertConsensusIndicator } from '@/components/ExpertConsensusIndicator';
 import { 
   ChevronDown, 
@@ -66,13 +66,13 @@ function EnhancedPlayerCardComponent({
         <div className="flex items-center justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h4 className="font-semibold text-white text-sm">{player.name}</h4>
+              <h4 className="font-semibold text-[#4A3426] dark:text-[#FFE4D6] text-sm">{player.name}</h4>
               <Badge variant="secondary" size="sm">
                 {player.team} {player.position}
               </Badge>
               <ExpertConsensusIndicator player={player} showDetails={false} />
             </div>
-            <div className="flex items-center gap-3 mt-1 text-xs text-slate-300">
+            <div className="flex items-center gap-3 mt-1 text-xs text-[#4A3426] dark:text-[#FFE4D6]">
               <span>#{rank}</span>
               {player.auctionValue && (
                 <span className="flex items-center gap-1">
@@ -88,15 +88,15 @@ function EnhancedPlayerCardComponent({
               )}
             </div>
           </div>
-          
+
           {showDraftButton && !isDrafted && (
-            <MorphButton
+            <ModernButton
               onClick={() => onDraft?.(player)}
               variant="primary"
               size="sm"
             >
               Draft
-            </MorphButton>
+            </ModernButton>
           )}
         </div>
       </motion.div>
@@ -104,62 +104,62 @@ function EnhancedPlayerCardComponent({
   }
 
   return (
-    <GlassCard className={`p-6 ${isDrafted ? 'opacity-50' : ''} ${className}`}>
+    <WarmCard hover={false} padding="lg" className={`${isDrafted ? 'opacity-50' : ''} ${className}`}>
       <div className="space-y-4">
         {/* Header */}
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <h3 className="text-xl font-bold text-white">{player.name}</h3>
+              <h3 className="text-xl font-bold text-[#4A3426] dark:text-[#FFE4D6]">{player.name}</h3>
               <Badge variant="primary">
                 {player.team} {player.position}
               </Badge>
-              <span className="text-sm text-slate-400">#{rank}</span>
+              <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">#{rank}</span>
             </div>
-            
-            <div className="flex items-center gap-4 text-sm text-slate-300">
+
+            <div className="flex items-center gap-4 text-sm text-[#4A3426] dark:text-[#FFE4D6]">
               {player.auctionValue && (
                 <div className="flex items-center gap-1">
-                  <DollarSign className="w-4 h-4 text-electric-blue" />
+                  <DollarSign className="w-4 h-4 text-[#FF6B35] dark:text-[#FF8E53]" />
                   <span className="font-semibold">${player.auctionValue}</span>
                 </div>
               )}
-              
+
               {player.byeWeek && (
                 <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4 text-warning-amber" />
+                  <Calendar className="w-4 h-4 text-[#FFB020]" />
                   <span>Bye Week {player.byeWeek}</span>
                 </div>
               )}
-              
+
               <div className="flex items-center gap-1">
-                <Target className="w-4 h-4 text-matrix-green" />
+                <Target className="w-4 h-4 text-[#6BCF7F] dark:text-[#8FE39E]" />
                 <span>{player.projectedPoints.toFixed(1)} pts</span>
               </div>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-2">
             {showDraftButton && !isDrafted && (
-              <MorphButton
+              <ModernButton
                 onClick={() => onDraft?.(player)}
                 variant="primary"
               >
                 Draft Player
-              </MorphButton>
+              </ModernButton>
             )}
-            
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsExpanded(!isExpanded)}
-              className="p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 
-                       transition-colors border border-slate-600/30"
+              className="p-2 rounded-lg bg-[#FFF8F0] dark:bg-[#4A3426]/50 hover:bg-[#FFE4D6] dark:hover:bg-[#6B4F3D]/50
+                       transition-colors border border-[#FFE4D6] dark:border-[#FF8E53]/30"
             >
               {isExpanded ? (
-                <ChevronUp className="w-5 h-5 text-slate-400" />
+                <ChevronUp className="w-5 h-5 text-[#6B4F3D] dark:text-[#D4A88E]" />
               ) : (
-                <ChevronDown className="w-5 h-5 text-slate-400" />
+                <ChevronDown className="w-5 h-5 text-[#6B4F3D] dark:text-[#D4A88E]" />
               )}
             </motion.button>
           </div>
@@ -172,29 +172,29 @@ function EnhancedPlayerCardComponent({
         {(player.upside || player.downside || player.bottomLine) && (
           <div className="space-y-3">
             {player.bottomLine && (
-              <div className="p-3 rounded-lg bg-electric-blue/10 border border-electric-blue/20">
-                <h5 className="text-electric-blue font-semibold text-sm mb-1">Bottom Line</h5>
-                <p className="text-sm text-slate-300">{player.bottomLine}</p>
+              <div className="p-3 rounded-lg bg-[#FF6B35]/10 dark:bg-[#FF6B35]/20 border border-[#FF6B35]/20 dark:border-[#FF6B35]/30">
+                <h5 className="text-[#FF6B35] dark:text-[#FF8E53] font-semibold text-sm mb-1">Bottom Line</h5>
+                <p className="text-sm text-[#4A3426] dark:text-[#FFE4D6]">{player.bottomLine}</p>
               </div>
             )}
-            
+
             {player.upside && (
-              <div className="p-3 rounded-lg bg-matrix-green/10 border border-matrix-green/20">
+              <div className="p-3 rounded-lg bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 border border-[#6BCF7F]/20 dark:border-[#6BCF7F]/30">
                 <div className="flex items-center gap-2 mb-1">
-                  <TrendingUp className="w-4 h-4 text-matrix-green" />
-                  <h5 className="text-matrix-green font-semibold text-sm">Upside</h5>
+                  <TrendingUp className="w-4 h-4 text-[#6BCF7F] dark:text-[#8FE39E]" />
+                  <h5 className="text-[#6BCF7F] dark:text-[#8FE39E] font-semibold text-sm">Upside</h5>
                 </div>
-                <p className="text-sm text-slate-300">{player.upside}</p>
+                <p className="text-sm text-[#4A3426] dark:text-[#FFE4D6]">{player.upside}</p>
               </div>
             )}
-            
+
             {player.downside && (
-              <div className="p-3 rounded-lg bg-warning-amber/10 border border-warning-amber/20">
+              <div className="p-3 rounded-lg bg-[#FFB020]/10 dark:bg-[#FFB020]/20 border border-[#FFB020]/20 dark:border-[#FFB020]/30">
                 <div className="flex items-center gap-2 mb-1">
-                  <TrendingDown className="w-4 h-4 text-warning-amber" />
-                  <h5 className="text-warning-amber font-semibold text-sm">Risk Factors</h5>
+                  <TrendingDown className="w-4 h-4 text-[#FFB020]" />
+                  <h5 className="text-[#FFB020] font-semibold text-sm">Risk Factors</h5>
                 </div>
-                <p className="text-sm text-slate-300">{player.downside}</p>
+                <p className="text-sm text-[#4A3426] dark:text-[#FFE4D6]">{player.downside}</p>
               </div>
             )}
           </div>
@@ -212,10 +212,10 @@ function EnhancedPlayerCardComponent({
               {/* Projection toggle */}
               {player.projections && Object.keys(player.projections).length > 0 && (
                 <div className="flex items-center justify-between">
-                  <h5 className="text-slate-300 font-semibold">Season Projections</h5>
+                  <h5 className="text-[#4A3426] dark:text-[#FFE4D6] font-semibold">Season Projections</h5>
                   <button
                     onClick={() => setShowProjections(!showProjections)}
-                    className="flex items-center gap-1 text-sm text-electric-blue hover:text-white transition-colors"
+                    className="flex items-center gap-1 text-sm text-[#FF6B35] dark:text-[#FF8E53] hover:text-[#4A3426] dark:hover:text-[#FFE4D6] transition-colors"
                   >
                     {showProjections ? (
                       <>
@@ -238,19 +238,19 @@ function EnhancedPlayerCardComponent({
                   {Object.entries(player.projections)
                     .filter(([_, value]) => value !== undefined && value !== null)
                     .map(([key, value]) => (
-                      <div 
+                      <div
                         key={key}
-                        className="p-3 rounded-lg bg-slate-800/30 border border-slate-700/30"
+                        className="p-3 rounded-lg bg-[#FFF8F0] dark:bg-[#4A3426]/30 border border-[#FFE4D6] dark:border-[#FF8E53]/30"
                       >
-                        <div className="text-xs text-slate-500 uppercase tracking-wide">
+                        <div className="text-xs text-[#6B4F3D] dark:text-[#D4A88E] uppercase tracking-wide">
                           {key.replace(/([A-Z])/g, ' $1').trim()}
                         </div>
-                        <div className="text-lg font-bold text-white">
-                          {typeof value === 'number' ? 
-                            (key.includes('Percentage') || key.includes('Share') ? 
-                              `${(value * 100).toFixed(1)}%` : 
+                        <div className="text-lg font-bold text-[#4A3426] dark:text-[#FFE4D6]">
+                          {typeof value === 'number' ?
+                            (key.includes('Percentage') || key.includes('Share') ?
+                              `${(value * 100).toFixed(1)}%` :
                               value.toLocaleString()
-                            ) : 
+                            ) :
                             value
                           }
                         </div>
@@ -262,22 +262,22 @@ function EnhancedPlayerCardComponent({
               {/* Weekly projections preview */}
               {player.weeklyProjections && player.weeklyProjections.length > 0 && (
                 <div>
-                  <h5 className="text-slate-300 font-semibold mb-3">Upcoming Weeks</h5>
+                  <h5 className="text-[#4A3426] dark:text-[#FFE4D6] font-semibold mb-3">Upcoming Weeks</h5>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                     {player.weeklyProjections.slice(0, 4).map((week) => (
-                      <div 
+                      <div
                         key={week.week}
                         className={`p-2 rounded border text-center ${
-                          week.difficulty === 'easy' ? 'bg-matrix-green/10 border-matrix-green/20' :
-                          week.difficulty === 'hard' ? 'bg-error-red/10 border-error-red/20' :
-                          'bg-slate-700/20 border-slate-600/20'
+                          week.difficulty === 'easy' ? 'bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 border-[#6BCF7F]/20 dark:border-[#6BCF7F]/30' :
+                          week.difficulty === 'hard' ? 'bg-[#FF5757]/10 dark:bg-[#FF5757]/20 border-[#FF5757]/20 dark:border-[#FF5757]/30' :
+                          'bg-[#FFE4D6]/20 dark:bg-[#6B4F3D]/20 border-[#FFE4D6] dark:border-[#6B4F3D]/20'
                         }`}
                       >
-                        <div className="text-xs text-slate-400">Week {week.week}</div>
-                        <div className="text-sm font-semibold text-white">
+                        <div className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">Week {week.week}</div>
+                        <div className="text-sm font-semibold text-[#4A3426] dark:text-[#FFE4D6]">
                           {week.projectedPoints.toFixed(1)}
                         </div>
-                        <div className="text-xs text-slate-500">vs {week.opponent}</div>
+                        <div className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">vs {week.opponent}</div>
                       </div>
                     ))}
                   </div>
@@ -287,7 +287,7 @@ function EnhancedPlayerCardComponent({
           )}
         </AnimatePresence>
       </div>
-    </GlassCard>
+    </WarmCard>
   );
 }
 

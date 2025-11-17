@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { Badge } from "@/components/ui/Badge";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { 
   IconGraduationCap, 
   IconRocket, 
@@ -109,7 +109,7 @@ export function ProductManagerJourney() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
           >
-            <GlassCard className={`p-8 ${
+            <WarmCard hover={false} padding="md" className={`p-8 ${
               step.status === 'current' 
                 ? 'border-electric-blue/50 bg-electric-blue/5' 
                 : step.status === 'target'
@@ -174,7 +174,7 @@ export function ProductManagerJourney() {
                   </div>
                 </div>
               </div>
-            </GlassCard>
+            </WarmCard>
           </motion.div>
         ))}
       </div>
@@ -200,7 +200,7 @@ export function ProductManagerJourney() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <GlassCard className="p-6 h-full hover:scale-105 transition-transform">
+              <WarmCard hover={false} padding="md" className="p-6 h-full hover:scale-105 transition-transform">
                 <div className="flex items-start space-x-4">
                   <value.icon className="w-8 h-8 text-electric-blue mt-1 flex-shrink-0" />
                   <div>
@@ -208,14 +208,14 @@ export function ProductManagerJourney() {
                     <p className="text-sm text-slate-300">{value.description}</p>
                   </div>
                 </div>
-              </GlassCard>
+              </WarmCard>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Call to Action */}
-      <GlassCard className="p-8 text-center bg-matrix-green/5 border-matrix-green/20">
+      <WarmCard hover={false} padding="md" className="p-8 text-center bg-matrix-green/5 border-matrix-green/20">
         <IconLightbulb className="w-12 h-12 text-matrix-green mx-auto mb-4" />
         <Heading level={3} className="mb-4">
           Ready to Build Products Together?
@@ -225,14 +225,14 @@ export function ProductManagerJourney() {
           foundation and business education to create products that users love and drive business growth.
         </Paragraph>
         <div className="flex justify-center space-x-4">
-          <MorphButton href="/contact" variant="primary">
+          <ModernButton href="/contact" variant="primary">
             Let's Connect
-          </MorphButton>
-          <MorphButton href="/resume" variant="outline">
+          </ModernButton>
+          <ModernButton href="/resume" variant="outline">
             View My Background
-          </MorphButton>
+          </ModernButton>
         </div>
-      </GlassCard>
+      </WarmCard>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { TierGroup } from '@/lib/tierImageGenerator';
-import { GlassCard } from '@/components/ui/GlassCard';
+import { WarmCard } from '@/components/ui/WarmCard';
 import { Heading } from '@/components/ui/Heading';
 import { motion } from 'framer-motion';
 import { ThumbnailImage } from '@/components/ui/OptimizedImage';
@@ -40,7 +40,7 @@ export function TierDisplay({ tierGroups, position: _position, showImages = true
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: groupIndex * 0.1 }}
         >
-          <GlassCard elevation={2} className="overflow-hidden">
+          <WarmCard hover={false} padding="md" elevation={2} className="overflow-hidden">
             {/* Tier Header */}
             <div 
               className="px-6 py-4 border-b border-terminal-border"
@@ -129,7 +129,7 @@ export function TierDisplay({ tierGroups, position: _position, showImages = true
                 ))}
               </div>
             </div>
-          </GlassCard>
+          </WarmCard>
         </motion.div>
       ))}
     </div>

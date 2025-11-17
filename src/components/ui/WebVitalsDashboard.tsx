@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GlassCard } from "./GlassCard";
+import { WarmCard } from "./WarmCard";
 import { IconActivity, IconClock, IconEye, IconZoomCode } from "@tabler/icons-react";
 
 interface WebVital {
@@ -184,18 +184,18 @@ export function WebVitalsDashboard() {
         {Object.entries(vitals).map(([key, vital]) => {
           if (!vital) {
             return (
-              <GlassCard key={key} className="p-6 animate-pulse">
+              <WarmCard hover={false} padding="md" key={key} className="p-6 animate-pulse">
                 <div className="h-24 flex items-center justify-center">
                   <span className="text-slate-500 text-sm">Measuring {key}...</span>
                 </div>
-              </GlassCard>
+              </WarmCard>
             );
           }
 
           const Icon = getMetricIcon(vital.name);
 
           return (
-            <GlassCard
+            <WarmCard hover={false} padding="md"
               key={key}
               className={`p-6 border-2 ${getRatingBg(vital.rating)}`}
               ariaLabel={`${vital.name} metric: ${formatValue(vital.value, vital.unit)}, ${vital.rating}`}
@@ -267,13 +267,13 @@ export function WebVitalsDashboard() {
                   </span>
                 </div>
               </div>
-            </GlassCard>
+            </WarmCard>
           );
         })}
       </div>
 
       {/* Performance Summary */}
-      <GlassCard className="p-6">
+      <WarmCard hover={false} padding="md" className="p-6">
         <h3 className="text-lg font-bold text-white mb-4">Performance Summary</h3>
         <div className="space-y-3 text-sm text-slate-300">
           {Object.values(vitals).filter(Boolean).length === 5 ? (
@@ -299,7 +299,7 @@ export function WebVitalsDashboard() {
             <p className="text-slate-400">Collecting metrics...</p>
           )}
         </div>
-      </GlassCard>
+      </WarmCard>
     </div>
   );
 }

@@ -13,7 +13,7 @@ import { useAllFantasyData } from '@/hooks/useAllFantasyData';
 import { ArrowLeft, Database, RefreshCw, FileText, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { MorphButton } from '@/components/ui/MorphButton';
+import { ModernButton } from '@/components/ui/ModernButton';
 import { EnhancedPlayerCard } from '@/components/EnhancedPlayerCard';
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 
@@ -145,18 +145,18 @@ export default function FantasyFootballPage() {
             <div className="flex items-center gap-4">
               {/* Draft Tiers Link */}
               <Link href="/draft-tiers">
-                <MorphButton variant="secondary" size="sm" className="flex items-center gap-2">
+                <ModernButton variant="secondary" size="sm" className="flex items-center gap-2">
                   <FileText className="w-4 h-4" />
                   Draft Tiers
-                </MorphButton>
+                </ModernButton>
               </Link>
               {/* Subtle Status Indicator */}
               {isClient && (
                 <div className="flex items-center gap-2 text-xs text-gray-500">
                   <div className={`w-1.5 h-1.5 rounded-full ${
-                    dataSource === 'api' ? 'bg-matrix-green' : 
-                    dataSource === 'cache' ? 'bg-electric-blue' : 
-                    'bg-warning-amber'
+                    dataSource === 'api' ? 'bg-[#6BCF7F] dark:bg-[#8FE39E]' :
+                    dataSource === 'cache' ? 'bg-[#FF6B35] dark:bg-[#FF8E53]' :
+                    'bg-[#FFB020]'
                   }`}></div>
                   <span>{cacheInfo.message}</span>
                 </div>
@@ -283,8 +283,8 @@ export default function FantasyFootballPage() {
             </p>
             {(dataSource === 'cache' || dataSource === 'api') && (
               <div className="mt-2 flex items-center gap-2">
-                <Database className="w-4 h-4 text-electric-blue" />
-                <span className="text-xs text-electric-blue">
+                <Database className="w-4 h-4 text-[#FF6B35] dark:text-[#FF8E53]" />
+                <span className="text-xs text-[#FF6B35] dark:text-[#FF8E53]">
                   Data cached for offline access
                 </span>
               </div>
@@ -301,9 +301,9 @@ export default function FantasyFootballPage() {
             className="mb-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Sparkles className="w-6 h-6 text-electric-blue" />
+              <Sparkles className="w-6 h-6 text-[#FF6B35] dark:text-[#FF8E53]" />
               <h3 className="text-2xl font-bold text-white">Enhanced Player Cards</h3>
-              <span className="px-3 py-1 bg-matrix-green/20 text-matrix-green text-sm rounded-full border border-matrix-green/30">
+              <span className="px-3 py-1 bg-[#6BCF7F]/20 dark:bg-[#6BCF7F]/30 text-[#6BCF7F] dark:text-[#8FE39E] text-sm rounded-full border border-[#6BCF7F]/30 dark:border-[#6BCF7F]/40">
                 NEW
               </span>
             </div>
@@ -318,10 +318,10 @@ export default function FantasyFootballPage() {
               ))}
             </div>
             
-            <div className="mt-4 p-4 bg-electric-blue/10 border border-electric-blue/20 rounded-lg">
-              <p className="text-sm text-slate-300 text-center">
-                <span className="text-electric-blue font-semibold">Enhanced Data:</span> 
-                {' '}Now featuring expert consensus analysis, auction values, detailed projections, 
+            <div className="mt-4 p-4 bg-[#FF6B35]/10 dark:bg-[#FF6B35]/20 border border-[#FF6B35]/20 dark:border-[#FF6B35]/30 rounded-lg">
+              <p className="text-sm text-[#4A3426] dark:text-[#FFE4D6] text-center">
+                <span className="text-[#FF6B35] dark:text-[#FF8E53] font-semibold">Enhanced Data:</span>
+                {' '}Now featuring expert consensus analysis, auction values, detailed projections,
                 and advanced player insights inspired by The Ringer's approach.
               </p>
             </div>

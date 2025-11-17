@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MorphButton } from '@/components/ui/MorphButton';
+import { ModernButton } from '@/components/ui/ModernButton';
 import { IconRefresh, IconCheck, IconX } from '@tabler/icons-react';
 
 export function UpdateDataButton() {
@@ -44,7 +44,7 @@ export function UpdateDataButton() {
 
   return (
     <div className="flex flex-col gap-2">
-      <MorphButton
+      <ModernButton
         onClick={updateAllData}
         disabled={isUpdating}
         variant="primary"
@@ -61,7 +61,7 @@ export function UpdateDataButton() {
           <IconRefresh className="h-4 w-4" />
         )}
         {isUpdating ? 'Updating...' : 'Update All Data'}
-      </MorphButton>
+      </ModernButton>
       
       {message && (
         <p className={`text-xs ${

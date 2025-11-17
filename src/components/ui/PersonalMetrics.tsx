@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
-import { GlassCard } from "./GlassCard";
+import { WarmCard } from "./WarmCard";
 import { personalMetrics } from "@/constants/personal";
 import { 
   IconCode, 
@@ -80,7 +80,7 @@ const MetricCard = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
     >
-      <GlassCard
+      <WarmCard hover={false} padding="md"
         elevation={3}
         interactive={true}
         cursorGlow={true}
@@ -109,7 +109,7 @@ const MetricCard = ({
           
           <p className="text-sm text-secondary leading-relaxed">{description}</p>
         </div>
-      </GlassCard>
+      </WarmCard>
     </motion.div>
   );
 };
@@ -131,7 +131,7 @@ const AchievementBadge = ({ achievement, delay = 0 }: AchievementBadgeProps) => 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <GlassCard
+      <WarmCard hover={false} padding="md"
         elevation={2}
         interactive={true}
         cursorGlow={true}
@@ -157,7 +157,7 @@ const AchievementBadge = ({ achievement, delay = 0 }: AchievementBadgeProps) => 
             <p className="text-xs text-matrix-green">{achievement.impact}</p>
           </motion.div>
         </div>
-      </GlassCard>
+      </WarmCard>
     </motion.div>
   );
 };
@@ -206,7 +206,7 @@ const SystemStatus = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.8 }}
     >
-      <GlassCard
+      <WarmCard hover={false} padding="md"
         elevation={4}
         interactive={true}
         cursorGlow={true}
@@ -241,7 +241,7 @@ const SystemStatus = () => {
             </div>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     </motion.div>
   );
 };

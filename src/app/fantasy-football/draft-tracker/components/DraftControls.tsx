@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { DraftState } from "@/types";
-import { GlassCard } from "@/components/ui/GlassCard";
+import { WarmCard } from "@/components/ui/WarmCard";
 import { Heading } from "@/components/ui/Heading";
-import { MorphButton } from "@/components/ui/MorphButton";
+import { ModernButton } from "@/components/ui/ModernButton";
 import { Badge } from "@/components/ui/Badge";
 import { 
   IconDownload, 
@@ -63,21 +63,21 @@ export function DraftControls({ draftState, onExport, onReset }: DraftControlsPr
   return (
     <div className="space-y-4">
       {/* Draft Progress */}
-      <GlassCard className="p-4">
+      <WarmCard hover={false} padding="md">
         <div className="flex items-center gap-2 mb-4">
-          <IconTrendingUp className="text-electric-blue" size={20} />
+          <IconTrendingUp className="text-[#FF6B35] dark:text-[#FF8E53]" size={20} />
           <Heading level={5}>Draft Progress</Heading>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-4">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-slate-400">Completion</span>
-            <span className="text-sm font-medium text-white">{completionPercentage}%</span>
+            <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">Completion</span>
+            <span className="text-sm font-medium text-[#4A3426] dark:text-[#FFE4D6]">{completionPercentage}%</span>
           </div>
-          <div className="w-full bg-slate-700 rounded-full h-2">
+          <div className="w-full bg-[#FFE4D6] dark:bg-[#4A3426] rounded-full h-2">
             <motion.div
-              className="bg-gradient-to-r from-electric-blue to-matrix-green h-2 rounded-full"
+              className="bg-gradient-to-r from-[#FF6B35] to-[#6BCF7F] h-2 rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${completionPercentage}%` }}
               transition={{ duration: 0.5 }}
@@ -87,37 +87,37 @@ export function DraftControls({ draftState, onExport, onReset }: DraftControlsPr
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-3 text-xs">
-          <div className="text-center p-2 bg-slate-800/30 rounded">
-            <div className="text-slate-400">Picks Made</div>
-            <div className="font-medium text-white">
+          <div className="text-center p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/30 rounded">
+            <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Picks Made</div>
+            <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">
               {draftState.picks.length}/{totalPicks}
             </div>
           </div>
-          
-          <div className="text-center p-2 bg-slate-800/30 rounded">
-            <div className="text-slate-400">Duration</div>
-            <div className="font-medium text-white">{getDraftDuration()}</div>
+
+          <div className="text-center p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/30 rounded">
+            <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Duration</div>
+            <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">{getDraftDuration()}</div>
           </div>
-          
-          <div className="text-center p-2 bg-slate-800/30 rounded">
-            <div className="text-slate-400">Round</div>
-            <div className="font-medium text-white">
+
+          <div className="text-center p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/30 rounded">
+            <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Round</div>
+            <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">
               {draftState.currentRound}/{draftState.settings.rounds}
             </div>
           </div>
-          
-          <div className="text-center p-2 bg-slate-800/30 rounded">
-            <div className="text-slate-400">Format</div>
-            <div className="font-medium text-white">{draftState.settings.scoringFormat}</div>
+
+          <div className="text-center p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/30 rounded">
+            <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Format</div>
+            <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">{draftState.settings.scoringFormat}</div>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
 
       {/* Draft Analysis */}
       {draftState.picks.length > 5 && (
-        <GlassCard className="p-4">
+        <WarmCard hover={false} padding="md">
           <div className="flex items-center gap-2 mb-4">
-            <IconTarget className="text-matrix-green" size={20} />
+            <IconTarget className="text-[#6BCF7F] dark:text-[#8FE39E]" size={20} />
             <Heading level={5}>Draft Analysis</Heading>
           </div>
 
@@ -125,21 +125,21 @@ export function DraftControls({ draftState, onExport, onReset }: DraftControlsPr
           {bestValues.length > 0 && (
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-2">
-                <Badge variant="matrix" size="xs">Best Values</Badge>
+                <Badge variant="secondary" size="xs">Best Values</Badge>
               </div>
               <div className="space-y-2">
                 {bestValues.map(pick => (
-                  <div 
-                    key={pick.pickNumber} 
-                    className="flex items-center justify-between p-2 bg-matrix-green/10 rounded text-xs"
+                  <div
+                    key={pick.pickNumber}
+                    className="flex items-center justify-between p-2 bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 rounded text-xs"
                   >
                     <div>
-                      <div className="font-medium text-white">{pick.player.name}</div>
-                      <div className="text-matrix-green">{pick.player.position} • {pick.player.team}</div>
+                      <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">{pick.player.name}</div>
+                      <div className="text-[#6BCF7F] dark:text-[#8FE39E]">{pick.player.position} • {pick.player.team}</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-slate-400">Pick {pick.pickNumber}</div>
-                      <div className="text-matrix-green">ADP {pick.player.adp}</div>
+                      <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Pick {pick.pickNumber}</div>
+                      <div className="text-[#6BCF7F] dark:text-[#8FE39E]">ADP {pick.player.adp}</div>
                     </div>
                   </div>
                 ))}
@@ -155,17 +155,17 @@ export function DraftControls({ draftState, onExport, onReset }: DraftControlsPr
               </div>
               <div className="space-y-2">
                 {reaches.map(pick => (
-                  <div 
-                    key={pick.pickNumber} 
-                    className="flex items-center justify-between p-2 bg-warning-amber/10 rounded text-xs"
+                  <div
+                    key={pick.pickNumber}
+                    className="flex items-center justify-between p-2 bg-[#FFB020]/10 dark:bg-[#FFC857]/20 rounded text-xs"
                   >
                     <div>
-                      <div className="font-medium text-white">{pick.player.name}</div>
-                      <div className="text-warning-amber">{pick.player.position} • {pick.player.team}</div>
+                      <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">{pick.player.name}</div>
+                      <div className="text-[#FFB020] dark:text-[#FFC857]">{pick.player.position} • {pick.player.team}</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-slate-400">Pick {pick.pickNumber}</div>
-                      <div className="text-warning-amber">ADP {pick.player.adp}</div>
+                      <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Pick {pick.pickNumber}</div>
+                      <div className="text-[#FFB020] dark:text-[#FFC857]">ADP {pick.player.adp}</div>
                     </div>
                   </div>
                 ))}
@@ -175,95 +175,96 @@ export function DraftControls({ draftState, onExport, onReset }: DraftControlsPr
 
           {bestValues.length === 0 && reaches.length === 0 && (
             <div className="text-center py-4">
-              <p className="text-slate-500 text-sm">More data after 10+ picks</p>
+              <p className="text-[#6B4F3D]/70 dark:text-[#D4A88E]/70 text-sm">More data after 10+ picks</p>
             </div>
           )}
-        </GlassCard>
+        </WarmCard>
       )}
 
       {/* League Settings Summary */}
-      <GlassCard className="p-4">
+      <WarmCard hover={false} padding="md">
         <div className="flex items-center gap-2 mb-4">
-          <IconUsers className="text-electric-blue" size={20} />
+          <IconUsers className="text-[#FF6B35] dark:text-[#FF8E53]" size={20} />
           <Heading level={5}>League Info</Heading>
         </div>
 
         <div className="space-y-2 text-xs">
           <div className="flex justify-between">
-            <span className="text-slate-400">League:</span>
-            <span className="text-white font-medium">{draftState.settings.leagueName}</span>
+            <span className="text-[#6B4F3D] dark:text-[#D4A88E]">League:</span>
+            <span className="text-[#4A3426] dark:text-[#FFE4D6] font-medium">{draftState.settings.leagueName}</span>
           </div>
-          
+
           <div className="flex justify-between">
-            <span className="text-slate-400">Teams:</span>
-            <span className="text-white">{draftState.settings.totalTeams}</span>
+            <span className="text-[#6B4F3D] dark:text-[#D4A88E]">Teams:</span>
+            <span className="text-[#4A3426] dark:text-[#FFE4D6]">{draftState.settings.totalTeams}</span>
           </div>
-          
+
           <div className="flex justify-between">
-            <span className="text-slate-400">Your Position:</span>
-            <span className="text-matrix-green font-medium">{draftState.settings.userTeam}</span>
+            <span className="text-[#6B4F3D] dark:text-[#D4A88E]">Your Position:</span>
+            <span className="text-[#6BCF7F] dark:text-[#8FE39E] font-medium">{draftState.settings.userTeam}</span>
           </div>
-          
+
           <div className="flex justify-between">
-            <span className="text-slate-400">Draft Type:</span>
-            <span className="text-white capitalize">{draftState.settings.draftType}</span>
+            <span className="text-[#6B4F3D] dark:text-[#D4A88E]">Draft Type:</span>
+            <span className="text-[#4A3426] dark:text-[#FFE4D6] capitalize">{draftState.settings.draftType}</span>
           </div>
-          
+
           <div className="flex justify-between">
-            <span className="text-slate-400">Rounds:</span>
-            <span className="text-white">{draftState.settings.rounds}</span>
+            <span className="text-[#6B4F3D] dark:text-[#D4A88E]">Rounds:</span>
+            <span className="text-[#4A3426] dark:text-[#FFE4D6]">{draftState.settings.rounds}</span>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
 
       {/* Action Buttons */}
-      <GlassCard className="p-4">
+      <WarmCard hover={false} padding="md">
         <div className="flex items-center gap-2 mb-4">
-          <IconTrophy className="text-electric-blue" size={20} />
+          <IconTrophy className="text-[#FF6B35] dark:text-[#FF8E53]" size={20} />
           <Heading level={5}>Actions</Heading>
         </div>
 
         <div className="space-y-3">
           {/* Export Buttons */}
           <div className="space-y-2">
-            <p className="text-xs text-slate-400">Export Draft Results</p>
+            <p className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">Export Draft Results</p>
             <div className="grid grid-cols-2 gap-2">
-              <MorphButton
+              <ModernButton
                 onClick={() => onExport('csv')}
                 variant="outline"
-                size="xs"
+                size="sm"
                 className="flex items-center gap-1 justify-center"
               >
                 <IconDownload size={12} />
                 CSV
-              </MorphButton>
-              
-              <MorphButton
+              </ModernButton>
+
+              <ModernButton
                 onClick={() => onExport('json')}
                 variant="outline"
-                size="xs"
+                size="sm"
                 className="flex items-center gap-1 justify-center"
               >
                 <IconDownload size={12} />
                 JSON
-              </MorphButton>
+              </ModernButton>
             </div>
           </div>
 
           {/* Reset Button */}
-          <div className="pt-2 border-t border-slate-700/50">
-            <MorphButton
+          <div className="pt-2 border-t-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
+            <ModernButton
               onClick={onReset}
               variant="ghost"
-              size="xs"
-              className="w-full flex items-center gap-2 justify-center text-slate-400 hover:text-white"
+              size="sm"
+              fullWidth
+              className="flex items-center gap-2 justify-center"
             >
               <IconRefresh size={12} />
               New Draft
-            </MorphButton>
+            </ModernButton>
           </div>
         </div>
-      </GlassCard>
+      </WarmCard>
     </div>
   );
 }
