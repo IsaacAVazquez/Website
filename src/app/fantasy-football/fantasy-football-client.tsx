@@ -10,7 +10,7 @@ import { getScoringFormatDisplay } from '@/lib/scoringFormatUtils';
 import { useUnifiedFantasyData } from '@/hooks/useUnifiedFantasyData';
 import { useOverallFantasyData } from '@/hooks/useOverallFantasyData';
 import { useAllFantasyData } from '@/hooks/useAllFantasyData';
-import { ArrowLeft, Database, RefreshCw, FileText, Sparkles } from 'lucide-react';
+import { ArrowLeft, Database, RefreshCw, FileText, Sparkles, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ModernButton } from '@/components/ui/ModernButton';
@@ -143,6 +143,13 @@ export default function FantasyFootballPage() {
               Fantasy Football Tier Rankings
             </h1>
             <div className="flex items-center gap-4">
+              {/* RB Tiers Scatter Plot Link */}
+              <Link href="/fantasy-football/rb-tiers">
+                <ModernButton variant="primary" size="sm" className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4" />
+                  RB Scatter Plot
+                </ModernButton>
+              </Link>
               {/* Draft Tiers Link */}
               <Link href="/draft-tiers">
                 <ModernButton variant="secondary" size="sm" className="flex items-center gap-2">
@@ -184,11 +191,48 @@ export default function FantasyFootballPage() {
           )}
         </motion.header>
 
-        {/* Controls */}
-        <motion.div 
+        {/* Featured: RB Scatter Plot */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
+          className="mb-8"
+        >
+          <Link href="/fantasy-football/rb-tiers">
+            <div className="bg-gradient-to-r from-[#FF6B35]/20 to-[#F7B32B]/20 border border-[#FF6B35]/30 rounded-lg p-6 hover:border-[#FF6B35]/50 transition-all cursor-pointer">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Sparkles className="w-5 h-5 text-[#FF6B35]" />
+                    <span className="text-xs font-semibold text-[#FF6B35] uppercase tracking-wide">New Feature</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    RB Tier Rankings Scatter Plot
+                  </h3>
+                  <p className="text-gray-400 text-sm mb-3">
+                    Visualize running back tiers with an interactive scatter plot showing average expert rank vs consensus rank.
+                    Updated weekly with color-coded tier groupings.
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-[#FF8E53]">
+                    <span>View RB Scatter Plot</span>
+                    <ArrowLeft className="w-4 h-4 rotate-180" />
+                  </div>
+                </div>
+                <div className="hidden sm:block">
+                  <div className="w-20 h-20 bg-[#FF6B35]/10 rounded-lg flex items-center justify-center">
+                    <TrendingUp className="w-10 h-10 text-[#FF6B35]" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+
+        {/* Controls */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
           className="mb-8"
         >
           <PositionSelector

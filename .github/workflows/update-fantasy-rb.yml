@@ -1,0 +1,145 @@
+name: Update Fantasy Football RB Tiers
+
+# Schedule: Run every Wednesday at 9:00 AM PST (17:00 UTC)
+# Adjust the cron schedule as needed for your timezone
+on:
+  schedule:
+    # Runs at 17:00 UTC (9:00 AM PST) every Wednesday
+    # Format: minute hour day-of-month month day-of-week
+    # Cron: "0 17 * * 3" = 0 minutes, 17 hours (5 PM UTC), every day, every month, on Wednesday (3)
+    - cron: '0 17 * * 3'
+
+  # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
+
+  # Optionally trigger on push to main (remove if you don't want this)
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'scripts/updateFantasyRBTiers.ts'
+
+jobs:
+  update-rb-tiers:
+    name: Update RB Tier Rankings
+    runs-on: ubuntu-latest
+
+    # Set permissions for the workflow
+    permissions:
+      contents: write  # Needed to commit and push changes
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Use a deploy key or personal access token if needed
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0  # Fetch all history for proper git operations
+
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Use Node 20 LTS (adjust if needed)
+          cache: 'npm'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Step 4: Run the update script
+      - name: Run fantasy RB tiers update script
+        run: npm run update:fantasy-rb
+        env:
+          # Add any required environment variables here
+          # FANTASY_API_KEY: ${{ secrets.FANTASY_API_KEY }}
+          NODE_ENV: production
+
+      # Step 5: Check if there are changes to commit
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet public/fantasy/rb_current.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes detected in rb_current.json"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected in rb_current.json"
+          fi
+
+      # Step 6: Commit and push changes (only if there are changes)
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add public/fantasy/rb_current.json
+          git commit -m "chore: update RB tier rankings for week $(date +%U) [automated]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 7: Create a summary
+      - name: Create job summary
+        if: always()
+        run: |
+          echo "## Fantasy Football RB Tiers Update" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
+            echo "✅ **Changes Detected:** RB tier data was updated and committed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **No Changes:** RB tier data is already up to date" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "- Your hosting provider (Netlify) should automatically redeploy with the new data" >> $GITHUB_STEP_SUMMARY
+          echo "- Check the live site in a few minutes to verify the update" >> $GITHUB_STEP_SUMMARY
+
+      # Optional: Send notification on failure
+      # - name: Notify on failure
+      #   if: failure()
+      #   uses: actions/github-script@v7
+      #   with:
+      #     script: |
+      #       github.rest.issues.create({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         title: 'Fantasy RB Tiers Update Failed',
+      #         body: 'The automated fantasy RB tiers update workflow failed. Please check the logs.'
+      #       })
+
+# USAGE INSTRUCTIONS:
+#
+# 1. ADJUST THE SCHEDULE:
+#    - Edit the cron expression above to match your preferred update time
+#    - Use https://crontab.guru/ to help build cron schedules
+#    - Remember to account for timezone differences (GitHub Actions uses UTC)
+#
+# 2. MANUAL TRIGGER:
+#    - Go to Actions tab in GitHub → Select this workflow → Click "Run workflow"
+#    - Useful for testing or updating outside the regular schedule
+#
+# 3. ENVIRONMENT VARIABLES / SECRETS:
+#    - If your fantasy data API requires an API key:
+#      a. Go to Settings → Secrets and variables → Actions
+#      b. Add a new repository secret (e.g., FANTASY_API_KEY)
+#      c. Uncomment the env section in Step 4 above
+#
+# 4. CUSTOMIZE THE BRANCH:
+#    - This workflow commits to the default branch
+#    - To use a different branch, modify the checkout step
+#
+# 5. TIMEZONE EXAMPLES:
+#    - 9:00 AM PST (Pacific) = 17:00 UTC = cron: '0 17 * * 3'
+#    - 9:00 AM EST (Eastern) = 14:00 UTC = cron: '0 14 * * 3'
+#    - 9:00 AM CST (Central) = 15:00 UTC = cron: '0 15 * * 3'
+#    - 9:00 AM MST (Mountain) = 16:00 UTC = cron: '0 16 * * 3'
+#
+# 6. DEBUGGING:
+#    - Check the Actions tab for run logs
+#    - Verify the commit was pushed to your repository
+#    - Confirm Netlify deployment triggered automatically
