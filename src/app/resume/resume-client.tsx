@@ -1,16 +1,12 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Heading } from "@/components/ui/Heading";
-import { WarmCard } from "@/components/ui/WarmCard";
-import { ModernButton } from "@/components/ui/ModernButton";
 import { motion, useInView } from "framer-motion";
-import { IconDownload, IconMail, IconBrandLinkedin, IconTrendingUp, IconUsers, IconStar, IconChartBar, IconCode, IconCloud, IconBrush, IconDatabase } from "@tabler/icons-react";
+import { IconDownload, IconMail, IconBrandLinkedin } from "@tabler/icons-react";
 
 const skillCategories = [
   {
     category: "Product & Analytics",
-    icon: IconChartBar,
     skills: [
       { name: "Product Analytics", level: 90 },
       { name: "Google Analytics", level: 85 },
@@ -20,7 +16,6 @@ const skillCategories = [
   },
   {
     category: "Data & Development",
-    icon: IconDatabase,
     skills: [
       { name: "SQL", level: 90 },
       { name: "PostgreSQL", level: 85 },
@@ -29,7 +24,6 @@ const skillCategories = [
   },
   {
     category: "Cloud & AI",
-    icon: IconCloud,
     skills: [
       { name: "Azure", level: 85 },
       { name: "GCP", level: 85 },
@@ -40,7 +34,6 @@ const skillCategories = [
   },
   {
     category: "Design & Collaboration",
-    icon: IconBrush,
     skills: [
       { name: "Figma", level: 85 },
       { name: "Miro", level: 80 },
@@ -107,427 +100,407 @@ export default function Resume() {
   };
 
   return (
-    <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-6xl mx-auto"
-      >
-        {/* Header Section */}
-        <WarmCard hover={false} padding="xl" className="mb-8">
-          {/* Name and Download Button Row */}
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
-            <div className="text-center sm:text-left mb-4 sm:mb-0 flex-1">
-              <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl mb-2 tracking-tight gradient-text-warm display-heading">
-                ISAAC VAZQUEZ
-              </h1>
+    <div className="min-h-screen bg-white dark:bg-[#1C1410]">
+      {/* Editorial Container - Centered, generous margins */}
+      <div className="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 py-20 sm:py-24 lg:py-32">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Header - Bold Editorial Style */}
+          <header className="mb-20 sm:mb-24 lg:mb-28">
+            {/* Name - Oversized, Bold */}
+            <h1 className="font-bold text-6xl sm:text-7xl lg:text-8xl mb-8 tracking-tighter text-[#2D1B12] dark:text-[#FFFCF7] leading-[0.9]">
+              ISAAC<br />VAZQUEZ
+            </h1>
+
+            {/* Download Button - Minimal, Top Right or Below Name */}
+            <div className="mb-10">
+              <button
+                onClick={handleDownloadPDF}
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#2D1B12] dark:border-[#FFFCF7] text-[#2D1B12] dark:text-[#FFFCF7] text-sm font-semibold tracking-wider uppercase transition-all hover:bg-[#2D1B12] hover:text-white dark:hover:bg-[#FFFCF7] dark:hover:text-[#2D1B12]"
+              >
+                <IconDownload className="w-4 h-4" />
+                Download PDF
+              </button>
             </div>
 
-            <ModernButton
-              onClick={handleDownloadPDF}
-              variant="primary"
-              size="md"
-              className="flex-shrink-0 w-full sm:w-auto"
-            >
-              <IconDownload className="inline mr-2 w-4 h-4" />
-              DOWNLOAD PDF
-            </ModernButton>
-          </div>
+            {/* Contact Info - Clean, Minimal */}
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-10 text-[#4A3426] dark:text-[#D4A88E] text-sm">
+              <a
+                href="mailto:isaacvazquez@berkeley.edu"
+                className="flex items-center gap-2 hover:text-[#FF6B35] transition-colors"
+              >
+                <IconMail className="w-4 h-4" />
+                isaacvazquez@berkeley.edu
+              </a>
+              <a
+                href="https://linkedin.com/in/isaac-vazquez"
+                className="flex items-center gap-2 hover:text-[#FF6B35] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconBrandLinkedin className="w-4 h-4" />
+                LinkedIn
+              </a>
+            </div>
 
-          {/* Contact Info */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[#4A3426] dark:text-[#D4A88E] text-sm mb-8">
-            <a
-              href="mailto:isaacvazquez@berkeley.edu"
-              className="flex items-center gap-2 hover:text-[#FF6B35] transition-colors"
-            >
-              <IconMail className="w-4 h-4" />
-              isaacvazquez@berkeley.edu
-            </a>
-            <span className="text-[#F7B32B]">•</span>
-            <a
-              href="https://linkedin.com/in/isaac-vazquez"
-              className="flex items-center gap-2 hover:text-[#FF6B35] transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IconBrandLinkedin className="w-4 h-4" />
-              LinkedIn
-            </a>
-          </div>
-
-          {/* MBA Badge and Summary */}
-          <div className="space-y-4">
+            {/* MBA Badge - Clean, Editorial */}
             {showMBA && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex justify-center"
+                className="mb-10"
               >
-                <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF6B35]/20 to-[#F7B32B]/20 border-2 border-[#FF6B35]/40">
-                  <span className="text-[#FF6B35] dark:text-[#FF8E53] font-semibold text-sm sm:text-base">
-                    Berkeley Haas MBA '27 • Consortium Fellow • MLT Fellow
-                  </span>
+                <div className="inline-block px-6 py-2 border-2 border-[#FF6B35] text-[#FF6B35] dark:text-[#FF8E53] dark:border-[#FF8E53] text-sm font-semibold tracking-wide">
+                  Berkeley Haas MBA '27 • Consortium Fellow • MLT Fellow
                 </div>
               </motion.div>
             )}
-            <p className="text-base sm:text-lg leading-relaxed text-center max-w-4xl mx-auto text-[#4A3426] dark:text-[#D4A88E]">
-              Technical product manager and UC Berkeley Haas MBA candidate with a proven track record: generated <span className="text-[#FF6B35] font-semibold">$4M+ in revenue</span>, served <span className="text-[#FF6B35] font-semibold">60M+ users</span>, and increased <span className="text-[#FF6B35] font-semibold">NPS from 23 to 36</span>. I pair a QA and data analytics foundation with product strategy, experimentation, and cross-functional leadership to deliver measurable business impact.
+
+            {/* Summary - Editorial Typography */}
+            <p className="text-lg sm:text-xl leading-relaxed max-w-4xl text-[#2D1B12] dark:text-[#D4A88E] font-light">
+              Technical product manager and UC Berkeley Haas MBA candidate with a proven track record: generated <span className="font-semibold text-[#FF6B35]">$4M+ in revenue</span>, served <span className="font-semibold text-[#FF6B35]">60M+ users</span>, and increased <span className="font-semibold text-[#FF6B35]">NPS from 23 to 36</span>. I pair a QA and data analytics foundation with product strategy, experimentation, and cross-functional leadership to deliver measurable business impact.
             </p>
-          </div>
-        </WarmCard>
+          </header>
 
-        {/* Key Achievements Section - Hidden */}
-        {/* <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-8"
-        >
-          <WarmCard hover={false} padding="xl">
-            <Heading level={2} className="text-2xl md:text-3xl font-bold mb-8 text-[#FF6B35] flex items-center justify-center gap-3">
-              <IconTrendingUp className="w-7 h-7" />
-              KEY IMPACT METRICS
-            </Heading>
+          {/* Thin Separator Line */}
+          <div className="h-px bg-[#2D1B12]/10 dark:bg-[#FFFCF7]/10 mb-20" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-gradient-to-br from-[#FF6B35]/10 to-[#F7B32B]/5 rounded-xl p-6 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 text-center">
-                <div className="p-2 bg-[#FF6B35]/20 rounded-lg mb-4 inline-block">
-                  <IconTrendingUp className="w-5 h-5 text-[#FF6B35]" />
-                </div>
-                <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mb-2 block">Revenue Generated</span>
-                <div className="text-3xl font-bold text-[#FF6B35]">
-                  $<AnimatedCounter value={4} />M+
-                </div>
-              </div>
+          {/* Experience Section */}
+          <section className="mb-24">
+            {/* Section Header - Bold, Editorial */}
+            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-[#2D1B12] dark:text-[#FFFCF7] tracking-tight">
+              Experience
+            </h2>
 
-              <div className="bg-gradient-to-br from-[#F7B32B]/10 to-[#F7B32B]/5 rounded-xl p-6 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 text-center">
-                <div className="p-2 bg-[#F7B32B]/20 rounded-lg mb-4 inline-block">
-                  <IconUsers className="w-5 h-5 text-[#F7B32B]" />
-                </div>
-                <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mb-2 block">Users Served</span>
-                <div className="text-3xl font-bold text-[#F7B32B]">
-                  <AnimatedCounter value={60} />M+
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#FF8E53]/10 to-[#FF8E53]/5 rounded-xl p-6 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 text-center">
-                <div className="p-2 bg-[#FF8E53]/20 rounded-lg mb-4 inline-block">
-                  <IconStar className="w-5 h-5 text-[#FF8E53]" />
-                </div>
-                <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mb-2 block">NPS Increase</span>
-                <div className="text-3xl font-bold text-[#FF8E53]">
-                  +<AnimatedCounter value={13} /> pts
-                </div>
-                <div className="text-xs text-[#9C7A5F] mt-1">23 → 36</div>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#6BCF7F]/10 to-[#6BCF7F]/5 rounded-xl p-6 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 text-center">
-                <div className="p-2 bg-[#6BCF7F]/20 rounded-lg mb-4 inline-block">
-                  <IconChartBar className="w-5 h-5 text-[#6BCF7F]" />
-                </div>
-                <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mb-2 block">Defect Reduction</span>
-                <div className="text-3xl font-bold text-[#6BCF7F]">
-                  <AnimatedCounter value={90} />%
-                </div>
-              </div>
-            </div>
-          </WarmCard>
-        </motion.section> */}
-
-        {/* Experience Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8"
-        >
-          <WarmCard hover={false} padding="xl">
-            <Heading level={2} className="text-2xl md:text-3xl font-bold mb-8 text-[#FF6B35] flex items-center gap-3">
-              <div className="w-1.5 h-8 bg-[#FF6B35] rounded-full" />
-              EXPERIENCE
-            </Heading>
-
-            <div className="space-y-8">
+            <div className="space-y-20">
               {/* CiviTech */}
-              <div className="relative border-l-2 border-[#FF6B35]/40 pl-8">
-                <div className="absolute left-0 -translate-x-1/2 top-0 w-4 h-4 rounded-full bg-[#FF6B35] shadow-lg border-2 border-white dark:border-[#2D1B12]" />
-
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                  <div>
-                    <Heading level={3} className="font-bold text-[#2D1B12] dark:text-[#FFE4D6] text-xl md:text-2xl mb-1">CIVITECH</Heading>
-                    <p className="text-[#6B4F3D] dark:text-[#D4A88E] text-sm">Austin, TX • January 2022–August 2025</p>
+              <div>
+                {/* Company Header */}
+                <div className="mb-8">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
+                    <h3 className="text-3xl sm:text-4xl font-bold text-[#2D1B12] dark:text-[#FFFCF7] tracking-tight">
+                      CIVITECH
+                    </h3>
+                    <div className="text-base text-[#6B4F3D] dark:text-[#D4A88E] mt-2 sm:mt-0">
+                      January 2022–August 2025
+                    </div>
                   </div>
+                  <p className="text-[#6B4F3D] dark:text-[#D4A88E] text-sm italic max-w-3xl">
+                    Austin, TX • Civitech is a SaaS tech company that builds software and tools for political candidates to improve voter engagement
+                  </p>
                 </div>
-                <p className="text-[#6B4F3D] dark:text-[#D4A88E] text-sm mb-6 italic leading-relaxed">Civitech is a SaaS tech company that builds software and tools for political candidates to improve voter engagement</p>
 
-                <div className="space-y-6">
-                  <WarmCard hover={true} padding="lg">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                      <Heading level={4} className="font-bold text-[#FF6B35] text-lg mb-1 sm:mb-0">Quality Assurance Engineer</Heading>
-                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">Feb 2025–Aug 2025</span>
+                {/* Roles */}
+                <div className="space-y-12 ml-0 sm:ml-8">
+                  {/* Role 1 */}
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                      <h4 className="text-xl font-bold text-[#2D1B12] dark:text-[#FFFCF7]">
+                        Quality Assurance Engineer
+                      </h4>
+                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mt-1 sm:mt-0">
+                        Feb 2025–Aug 2025
+                      </span>
                     </div>
-                    <ul className="space-y-2.5 text-[#4A3426] dark:text-[#D4A88E] text-sm sm:text-base">
+                    <ul className="space-y-3 text-[#4A3426] dark:text-[#D4A88E] text-base leading-relaxed">
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Partnered with engineering and DevOps to create deployment rules, reducing critical production defects by <span className="text-[#FF6B35] font-semibold">90%</span></span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Partnered with engineering and DevOps to create deployment rules, reducing critical production defects by <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">90%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Increased NPS from <span className="text-[#FF6B35] font-semibold">23 to 36</span> by preventing customer-facing issues through improved release workflows</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Increased NPS from <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">23 to 36</span> by preventing customer-facing issues through improved release workflows</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Drove successful launch of RunningMate platform by translating cross-functional feedback into user stories aligned with business goals</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Drove successful launch of RunningMate platform by translating cross-functional feedback into user stories aligned with business goals</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Synthesized prototype testing insights and stakeholder feedback into intuitive features, enhancing product usability</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Synthesized prototype testing insights and stakeholder feedback into intuitive features, enhancing product usability</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Transformed technical challenges into cohesive customer journeys, driving <span className="text-[#FF6B35] font-semibold">30%</span> product adoption</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Transformed technical challenges into cohesive customer journeys, driving <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">30%</span> product adoption</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Pioneered AI-powered workflow automation with LLM-assisted QA processes, reducing bug triage time by <span className="text-[#FF6B35] font-semibold">40%</span></span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Pioneered AI-powered workflow automation with LLM-assisted QA processes, reducing bug triage time by <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">40%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Trained cross-functional teams on AI tools, improving collaboration across engineering, product, and client services</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Trained cross-functional teams on AI tools, improving collaboration across engineering, product, and client services</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Accelerated product delivery from monthly to biweekly releases through unified testing frameworks, reducing validation time by <span className="text-[#FF6B35] font-semibold">30%</span></span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Accelerated product delivery from monthly to biweekly releases through unified testing frameworks, reducing validation time by <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">30%</span></span>
                       </li>
                     </ul>
-                  </WarmCard>
+                  </div>
 
-                  <WarmCard hover={true} padding="lg">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                      <Heading level={4} className="font-bold text-[#FF6B35] text-lg mb-1 sm:mb-0">Quality Assurance Analyst</Heading>
-                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">Jan 2022–Jan 2025</span>
+                  {/* Subtle Divider Between Roles */}
+                  <div className="h-px bg-[#2D1B12]/5 dark:bg-[#FFFCF7]/5" />
+
+                  {/* Role 2 */}
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                      <h4 className="text-xl font-bold text-[#2D1B12] dark:text-[#FFFCF7]">
+                        Quality Assurance Analyst
+                      </h4>
+                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mt-1 sm:mt-0">
+                        Jan 2022–Jan 2025
+                      </span>
                     </div>
-                    <ul className="space-y-2.5 text-[#4A3426] dark:text-[#D4A88E] text-sm sm:text-base">
+                    <ul className="space-y-3 text-[#4A3426] dark:text-[#D4A88E] text-base leading-relaxed">
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Owned end-to-end product vision and feature roadmap for TextOut platform through user research and requirements definition</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Owned end-to-end product vision and feature roadmap for TextOut platform through user research and requirements definition</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Prioritized features based on impact and technical feasibility, driving <span className="text-[#FF6B35] font-semibold">35%</span> increase in user engagement</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Prioritized features based on impact and technical feasibility, driving <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">35%</span> increase in user engagement</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Championed product reliability initiatives achieving <span className="text-[#FF6B35] font-semibold">99.999%</span> uptime through 400+ manual and automated tests</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Championed product reliability initiatives achieving <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">99.999%</span> uptime through 400+ manual and automated tests</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Improved release efficiency by <span className="text-[#FF6B35] font-semibold">30%</span> and enhanced user digital experience across two products</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Improved release efficiency by <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">30%</span> and enhanced user digital experience across two products</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Led cross-functional pricing strategy, aligning engineering, sales, and finance teams around product value</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Led cross-functional pricing strategy, aligning engineering, sales, and finance teams around product value</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Conducted market analysis and built financial models, generating <span className="text-[#FF6B35] font-semibold">$4M</span> in additional revenue</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Conducted market analysis and built financial models, generating <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">$4M</span> in additional revenue</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#FF6B35] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Transformed client data accessibility to self-service model through GCP automation, reducing onboarding time by <span className="text-[#FF6B35] font-semibold">90%</span></span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Transformed client data accessibility to self-service model through GCP automation, reducing onboarding time by <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">90%</span></span>
                       </li>
                     </ul>
-                  </WarmCard>
+                  </div>
                 </div>
               </div>
 
               {/* Open Progress */}
-              <div className="relative border-l-2 border-[#F7B32B]/40 pl-8">
-                <div className="absolute left-0 -translate-x-1/2 top-0 w-4 h-4 rounded-full bg-[#F7B32B] shadow-lg border-2 border-white dark:border-[#2D1B12]" />
-
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                  <div>
-                    <Heading level={3} className="font-bold text-[#2D1B12] dark:text-[#FFE4D6] text-xl md:text-2xl mb-1">OPEN PROGRESS</Heading>
-                    <p className="text-[#6B4F3D] dark:text-[#D4A88E] text-sm">Los Angeles, CA • June 2019–December 2021</p>
+              <div>
+                {/* Company Header */}
+                <div className="mb-8">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
+                    <h3 className="text-3xl sm:text-4xl font-bold text-[#2D1B12] dark:text-[#FFFCF7] tracking-tight">
+                      OPEN PROGRESS
+                    </h3>
+                    <div className="text-base text-[#6B4F3D] dark:text-[#D4A88E] mt-2 sm:mt-0">
+                      June 2019–December 2021
+                    </div>
                   </div>
+                  <p className="text-[#6B4F3D] dark:text-[#D4A88E] text-sm italic max-w-3xl">
+                    Los Angeles, CA • Consultancy that crafted conversational and grassroots digital engagement strategies (acquired by Civitech)
+                  </p>
                 </div>
-                <p className="text-[#6B4F3D] dark:text-[#D4A88E] text-sm mb-6 italic leading-relaxed">Consultancy that crafted conversational and grassroots digital engagement strategies (acquired by Civitech)</p>
 
-                <div className="space-y-6">
-                  <WarmCard hover={true} padding="lg">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                      <Heading level={4} className="font-bold text-[#FF6B35] text-lg mb-1 sm:mb-0">Client Services Manager</Heading>
-                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">Jan 2021–Dec 2021</span>
+                {/* Roles */}
+                <div className="space-y-12 ml-0 sm:ml-8">
+                  {/* Role 1 */}
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                      <h4 className="text-xl font-bold text-[#2D1B12] dark:text-[#FFFCF7]">
+                        Client Services Manager
+                      </h4>
+                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mt-1 sm:mt-0">
+                        Jan 2021–Dec 2021
+                      </span>
                     </div>
-                    <ul className="space-y-2.5 text-[#4A3426] dark:text-[#D4A88E] text-sm sm:text-base">
+                    <ul className="space-y-3 text-[#4A3426] dark:text-[#D4A88E] text-base leading-relaxed">
                       <li className="flex items-start">
-                        <span className="text-[#F7B32B] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Orchestrated delivery of 80+ digital programs, achieving <span className="text-[#F7B32B] font-semibold">100%</span> on-time delivery across multiple channels</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Orchestrated delivery of 80+ digital programs, achieving <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">100%</span> on-time delivery across multiple channels</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#F7B32B] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Developed campaign messaging strategy through data analytics, resulting in <span className="text-[#F7B32B] font-semibold">25%</span> higher engagement</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Developed campaign messaging strategy through data analytics, resulting in <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">25%</span> higher engagement</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#F7B32B] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Scaled platform to reach <span className="text-[#F7B32B] font-semibold">50+ million</span> voters while increasing response rates by <span className="text-[#F7B32B] font-semibold">20%</span></span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Scaled platform to reach <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">50+ million</span> voters while increasing response rates by <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">20%</span></span>
                       </li>
                     </ul>
-                  </WarmCard>
+                  </div>
 
-                  <WarmCard hover={true} padding="lg">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                      <Heading level={4} className="font-bold text-[#FF6B35] text-lg mb-1 sm:mb-0">Digital and Data Associate</Heading>
-                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">Sep 2019–Dec 2020</span>
+                  {/* Subtle Divider Between Roles */}
+                  <div className="h-px bg-[#2D1B12]/5 dark:bg-[#FFFCF7]/5" />
+
+                  {/* Role 2 */}
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                      <h4 className="text-xl font-bold text-[#2D1B12] dark:text-[#FFFCF7]">
+                        Digital and Data Associate
+                      </h4>
+                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mt-1 sm:mt-0">
+                        Sep 2019–Dec 2020
+                      </span>
                     </div>
-                    <ul className="space-y-2.5 text-[#4A3426] dark:text-[#D4A88E] text-sm sm:text-base">
+                    <ul className="space-y-3 text-[#4A3426] dark:text-[#D4A88E] text-base leading-relaxed">
                       <li className="flex items-start">
-                        <span className="text-[#F7B32B] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Built automated ETL data pipelines with interactive dashboards (Sisense, Tableau), reducing decision-making time by <span className="text-[#F7B32B] font-semibold">40%</span></span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Built automated ETL data pipelines with interactive dashboards (Sisense, Tableau), reducing decision-making time by <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">40%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#F7B32B] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Optimized targeting strategies across 20+ campaigns, improving conversion rate by <span className="text-[#F7B32B] font-semibold">25%</span> and user acquisition by <span className="text-[#F7B32B] font-semibold">20%</span></span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Optimized targeting strategies across 20+ campaigns, improving conversion rate by <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">25%</span> and user acquisition by <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">20%</span></span>
                       </li>
                     </ul>
-                  </WarmCard>
+                  </div>
 
-                  <WarmCard hover={true} padding="lg">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                      <Heading level={4} className="font-bold text-[#FF6B35] text-lg mb-1 sm:mb-0">Digital and Communications Intern</Heading>
-                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">Jun 2019–Aug 2019</span>
+                  {/* Subtle Divider Between Roles */}
+                  <div className="h-px bg-[#2D1B12]/5 dark:bg-[#FFFCF7]/5" />
+
+                  {/* Role 3 */}
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                      <h4 className="text-xl font-bold text-[#2D1B12] dark:text-[#FFFCF7]">
+                        Digital and Communications Intern
+                      </h4>
+                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mt-1 sm:mt-0">
+                        Jun 2019–Aug 2019
+                      </span>
                     </div>
-                    <ul className="space-y-2.5 text-[#4A3426] dark:text-[#D4A88E] text-sm sm:text-base">
+                    <ul className="space-y-3 text-[#4A3426] dark:text-[#D4A88E] text-base leading-relaxed">
                       <li className="flex items-start">
-                        <span className="text-[#F7B32B] mr-3 mt-1 flex-shrink-0">▸</span>
-                        <span className="leading-relaxed">Implemented personalized email campaigns and A/B testing, achieving <span className="text-[#F7B32B] font-semibold">5x</span> growth in user base and <span className="text-[#F7B32B] font-semibold">50%</span> conversion increase</span>
+                        <span className="mr-4 mt-1.5 text-[#FF6B35] flex-shrink-0">—</span>
+                        <span>Implemented personalized email campaigns and A/B testing, achieving <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">5x</span> growth in user base and <span className="font-semibold text-[#2D1B12] dark:text-[#FFFCF7]">50%</span> conversion increase</span>
                       </li>
                     </ul>
-                  </WarmCard>
+                  </div>
                 </div>
               </div>
             </div>
-          </WarmCard>
-        </motion.section>
+          </section>
 
-        {/* Education Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-8"
-        >
-          <WarmCard hover={false} padding="xl">
-            <Heading level={2} className="text-2xl md:text-3xl font-bold mb-8 text-[#FF6B35] flex items-center gap-3">
-              <div className="w-1.5 h-8 bg-[#FF6B35] rounded-full" />
-              EDUCATION
-            </Heading>
-            <div className="space-y-6">
+          {/* Thin Separator Line */}
+          <div className="h-px bg-[#2D1B12]/10 dark:bg-[#FFFCF7]/10 mb-20" />
+
+          {/* Education Section */}
+          <section className="mb-24">
+            {/* Section Header - Bold, Editorial */}
+            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-[#2D1B12] dark:text-[#FFFCF7] tracking-tight">
+              Education
+            </h2>
+
+            <div className="space-y-12 ml-0 sm:ml-8">
               {showMBA && (
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="border-l-4 border-[#F7B32B] pl-6"
                 >
-                  <WarmCard hover={true} padding="lg">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                      <Heading level={3} className="font-bold text-[#2D1B12] dark:text-[#FFE4D6] text-lg sm:text-xl mb-1 sm:mb-0">University of California, Berkeley – Haas School of Business</Heading>
-                      <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mt-1 sm:mt-0">May 2027</span>
+                  <div className="mb-10">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
+                      <h3 className="text-2xl sm:text-3xl font-bold text-[#2D1B12] dark:text-[#FFFCF7] tracking-tight">
+                        University of California, Berkeley
+                      </h3>
+                      <div className="text-base text-[#6B4F3D] dark:text-[#D4A88E] mt-2 sm:mt-0">
+                        May 2027
+                      </div>
                     </div>
-                    <p className="text-[#FF6B35] font-semibold mb-4 text-sm sm:text-base">Master of Business Administration</p>
-                    <ul className="space-y-2 text-[#4A3426] dark:text-[#D4A88E] text-sm">
+                    <p className="text-lg font-semibold text-[#FF6B35] mb-4">
+                      Master of Business Administration
+                    </p>
+                    <p className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mb-3">
+                      Haas School of Business
+                    </p>
+                    <ul className="space-y-2 text-[#4A3426] dark:text-[#D4A88E] text-sm leading-relaxed">
                       <li className="flex items-start">
-                        <span className="text-[#F7B32B] mr-3 mt-0.5">▸</span>
+                        <span className="mr-3 mt-1 text-[#FF6B35] flex-shrink-0">—</span>
                         <span>Consortium Fellow, Management Leadership for Tomorrow (MLT) Professional Development Fellow, MLT Ambassador</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="text-[#F7B32B] mr-3 mt-0.5">▸</span>
+                        <span className="mr-3 mt-1 text-[#FF6B35] flex-shrink-0">—</span>
                         <span>Haas Tech Club (Marketing Manager), Product Management Club, Artificial Intelligence Club, Fintech Club</span>
                       </li>
                     </ul>
-                  </WarmCard>
+                  </div>
+
+                  {/* Subtle Divider */}
+                  <div className="h-px bg-[#2D1B12]/5 dark:bg-[#FFFCF7]/5 mb-10" />
                 </motion.div>
               )}
-              <div className="border-l-4 border-[#9C7A5F] pl-6">
-                <WarmCard hover={true} padding="lg">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                    <Heading level={3} className="font-bold text-[#2D1B12] dark:text-[#FFE4D6] text-lg sm:text-xl mb-1 sm:mb-0">Florida State University</Heading>
-                    <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mt-1 sm:mt-0">December 2018</span>
+
+              <div>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#2D1B12] dark:text-[#FFFCF7] tracking-tight">
+                    Florida State University
+                  </h3>
+                  <div className="text-base text-[#6B4F3D] dark:text-[#D4A88E] mt-2 sm:mt-0">
+                    December 2018
                   </div>
-                  <p className="text-[#6B4F3D] dark:text-[#D4A88E] text-sm">Bachelor of Arts, Political Science and International Affairs</p>
-                </WarmCard>
+                </div>
+                <p className="text-base text-[#6B4F3D] dark:text-[#D4A88E]">
+                  Bachelor of Arts, Political Science and International Affairs
+                </p>
               </div>
             </div>
-          </WarmCard>
-        </motion.section>
+          </section>
 
-        {/* Skills Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-8"
-        >
-          <WarmCard hover={false} padding="xl">
-            <Heading level={2} className="text-2xl md:text-3xl font-bold mb-8 text-[#FF6B35] flex items-center gap-3">
-              <div className="w-1.5 h-8 bg-[#FF6B35] rounded-full" />
-              SKILLS & EXPERTISE
-            </Heading>
+          {/* Thin Separator Line */}
+          <div className="h-px bg-[#2D1B12]/10 dark:bg-[#FFFCF7]/10 mb-20" />
 
-            <div className="space-y-6">
-              {skillCategories.map((category) => {
-                const IconComponent = category.icon;
-                return (
-                  <WarmCard key={category.category} hover={true} padding="lg">
-                    <div className="flex items-center gap-2 mb-4">
-                      <div className="p-2 bg-[#FF6B35]/10 rounded-lg">
-                        <IconComponent className="w-5 h-5 text-[#FF6B35]" />
-                      </div>
-                      <h3 className="text-sm font-bold text-[#FF6B35] uppercase tracking-wider">{category.category}</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {category.skills.map((skill) => (
-                        <span
-                          key={skill.name}
-                          className="px-4 py-2 bg-[#FFF8F0] dark:bg-[#4A3426]/30 border border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-sm text-[#4A3426] dark:text-[#D4A88E] hover:border-[#FF6B35] hover:text-[#FF6B35] transition-all"
-                        >
-                          {skill.name}
-                        </span>
-                      ))}
-                    </div>
-                  </WarmCard>
-                );
-              })}
+          {/* Skills Section */}
+          <section className="mb-24">
+            {/* Section Header - Bold, Editorial */}
+            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-[#2D1B12] dark:text-[#FFFCF7] tracking-tight">
+              Skills & Expertise
+            </h2>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ml-0 sm:ml-8">
+              {skillCategories.map((category) => (
+                <div key={category.category}>
+                  <h3 className="text-sm font-bold text-[#FF6B35] uppercase tracking-wider mb-4">
+                    {category.category}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill.name}
+                        className="px-4 py-2 border border-[#2D1B12]/10 dark:border-[#FFFCF7]/10 text-sm text-[#4A3426] dark:text-[#D4A88E] hover:border-[#FF6B35] hover:text-[#FF6B35] transition-all"
+                      >
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          </WarmCard>
-        </motion.section>
+          </section>
 
-        {/* Interests Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <WarmCard hover={false} padding="xl">
-            <Heading level={2} className="text-2xl md:text-3xl font-bold mb-8 text-[#FF6B35] flex items-center gap-3">
-              <div className="w-1.5 h-8 bg-gradient-to-b from-[#FF6B35] to-[#F7B32B] rounded-full" />
-              INTERESTS
-            </Heading>
+          {/* Thin Separator Line */}
+          <div className="h-px bg-[#2D1B12]/10 dark:bg-[#FFFCF7]/10 mb-20" />
 
-            <div className="flex flex-wrap justify-center gap-4">
+          {/* Interests Section */}
+          <section>
+            {/* Section Header - Bold, Editorial */}
+            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-[#2D1B12] dark:text-[#FFFCF7] tracking-tight">
+              Interests
+            </h2>
+
+            <div className="flex flex-wrap gap-4 ml-0 sm:ml-8">
               {["FC Barcelona", "Ferrari (F1)", "Big Foodie", "Film & TV Buff", "Travel & Cultural Immersion", "Digital Photography"].map((interest) => (
                 <span
                   key={interest}
-                  className="px-6 py-3 rounded-full bg-gradient-to-br from-[#FF8E53]/20 to-[#F7B32B]/10 border-2 border-[#FF8E53]/40 text-[#FF6B35] dark:text-[#FF8E53] text-sm sm:text-base font-semibold shadow-sm transition-all hover:scale-105 hover:border-[#FF6B35] hover:bg-[#FF6B35]/20 hover:shadow-lg cursor-default"
+                  className="px-5 py-2.5 border-2 border-[#2D1B12]/10 dark:border-[#FFFCF7]/10 text-[#4A3426] dark:text-[#D4A88E] text-sm font-medium hover:border-[#FF6B35] hover:text-[#FF6B35] transition-all cursor-default"
                 >
                   {interest}
                 </span>
               ))}
             </div>
-          </WarmCard>
-        </motion.section>
-      </motion.div>
+          </section>
+        </motion.div>
+      </div>
     </div>
   );
 }
