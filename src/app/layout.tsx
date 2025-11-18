@@ -1,5 +1,4 @@
 import "./globals.css";
-import { Inter, JetBrains_Mono, Orbitron } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import { constructMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
@@ -7,29 +6,22 @@ import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
 import { Analytics } from "@/components/Analytics";
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: true,
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-  preload: false, // Only load when needed for terminal/code
-});
-
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-orbitron",
-  display: "swap",
-  preload: false, // Only load when needed for headings
-});
+// Use system fonts as fallback when Google Fonts are unavailable
+// This ensures the build succeeds in restricted network environments
+const fontConfig = {
+  inter: {
+    variable: "--font-inter",
+    className: "font-sans",
+  },
+  jetbrainsMono: {
+    variable: "--font-jetbrains-mono",
+    className: "font-mono",
+  },
+  orbitron: {
+    variable: "--font-orbitron",
+    className: "font-display",
+  },
+};
 
 export const metadata = constructMetadata();
 
@@ -144,12 +136,14 @@ export default function RootLayout({
       </head>
       <body
         className={twMerge(
-          inter.className,
-          inter.variable,
-          jetbrainsMono.variable,
-          orbitron.variable,
+          fontConfig.inter.className,
           "min-h-screen antialiased bg-gradient-to-br from-[#FFFCF7] via-[#FFF8F0] to-[#FFE5D9] dark:from-[#1C1410] dark:via-[#2A1F18] dark:to-[#4A3426] text-[#2D1B12] dark:text-[#FFFCF7]"
         )}
+        style={{
+          [fontConfig.inter.variable as string]: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+          [fontConfig.jetbrainsMono.variable as string]: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+          [fontConfig.orbitron.variable as string]: 'Orbitron, "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif',
+        } as React.CSSProperties}
       >
         <Analytics>
           <Providers>
