@@ -29,8 +29,8 @@ const customJestConfig = {
     '!src/middleware.ts',
   ],
 
-  // Coverage thresholds
-  coverageThresholds: {
+  // Coverage thresholds (fixed typo: coverageThreshold not coverageThresholds)
+  coverageThreshold: {
     global: {
       branches: 70,
       functions: 70,
@@ -39,10 +39,17 @@ const customJestConfig = {
     },
   },
 
-  // Test match patterns
+  // Test match patterns (exclude e2e tests)
   testMatch: [
     '**/__tests__/**/*.[jt]s?(x)',
     '**/?(*.)+(spec|test).[jt]s?(x)',
+  ],
+
+  // Exclude e2e tests from Jest
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/e2e/',
+    '/.next/',
   ],
 
   // Transform ignore patterns for node_modules

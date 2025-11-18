@@ -255,10 +255,10 @@ test.describe('Homepage', () => {
 
 ### API Mocking with MSW
 
-MSW (Mock Service Worker) is configured to intercept API calls during tests:
+MSW (Mock Service Worker) is available for API mocking when needed:
 
 ```typescript
-// src/__tests__/mocks/handlers.ts
+// src/test-utils/mocks/handlers.ts
 import { http, HttpResponse } from 'msw'
 
 export const handlers = [
@@ -271,7 +271,15 @@ export const handlers = [
 ]
 ```
 
-The MSW server is automatically started before all tests and stopped after in `jest.setup.js`.
+MSW is opt-in to avoid polyfill complexity. Import manually in tests that need API mocking:
+
+```typescript
+import { server } from '@/test-utils/mocks/server'
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
+```
 
 ### Component Mocking
 

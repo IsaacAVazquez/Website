@@ -1,16 +1,14 @@
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
-import { server } from './src/__tests__/mocks/server'
 
-// Establish API mocking before all tests
-beforeAll(() => server.listen({ onUnhandledRequest: 'warn' }))
+// Polyfill for TextEncoder/TextDecoder
+import { TextEncoder, TextDecoder } from 'util'
+global.TextEncoder = TextEncoder
+global.TextDecoder = TextDecoder
 
-// Reset any request handlers that we may add during the tests,
-// so they don't affect other tests
-afterEach(() => server.resetHandlers())
-
-// Clean up after the tests are finished
-afterAll(() => server.close())
+// Note: MSW is available but not auto-loaded to avoid polyfill issues
+// Import manually in tests that need API mocking:
+// import { server } from '@/test-utils/mocks/server'
 
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
