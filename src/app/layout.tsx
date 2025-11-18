@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Inter, JetBrains_Mono, Orbitron } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import { constructMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
@@ -21,14 +21,6 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   display: "swap",
   preload: false, // Only load when needed for terminal/code
-});
-
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-orbitron",
-  display: "swap",
-  preload: false, // Only load when needed for headings
 });
 
 export const metadata = constructMetadata();
@@ -147,7 +139,6 @@ export default function RootLayout({
           inter.className,
           inter.variable,
           jetbrainsMono.variable,
-          orbitron.variable,
           "min-h-screen antialiased bg-gradient-to-br from-[#FFFCF7] via-[#FFF8F0] to-[#FFE5D9] dark:from-[#1C1410] dark:via-[#2A1F18] dark:to-[#4A3426] text-[#2D1B12] dark:text-[#FFFCF7]"
         )}
       >

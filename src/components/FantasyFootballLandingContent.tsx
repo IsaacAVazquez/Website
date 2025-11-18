@@ -105,16 +105,16 @@ export function FantasyFootballLandingContent() {
           {/* Quick Stats */}
           <div className="flex flex-wrap gap-6 mb-8">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-matrix-green rounded-full animate-pulse"></div>
-              <span className="text-sm font-mono text-matrix-green">300+ Players Analyzed</span>
+              <div className="w-2 h-2 bg-[#6BCF7F] rounded-full animate-pulse"></div>
+              <span className="text-sm font-mono text-[#6BCF7F] dark:text-[#8FE39E]">300+ Players Analyzed</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-electric-blue rounded-full animate-pulse"></div>
-              <span className="text-sm font-mono text-electric-blue">6-Tier Clustering System</span>
+              <div className="w-2 h-2 bg-[#FF6B35] rounded-full animate-pulse"></div>
+              <span className="text-sm font-mono text-[#FF6B35] dark:text-[#FF8E53]">6-Tier Clustering System</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-cyber-teal rounded-full animate-pulse"></div>
-              <span className="text-sm font-mono text-cyber-teal">Real-time Data Sync</span>
+              <div className="w-2 h-2 bg-[#F7B32B] rounded-full animate-pulse"></div>
+              <span className="text-sm font-mono text-[#F7B32B] dark:text-[#FFC857]">Real-time Data Sync</span>
             </div>
           </div>
         </motion.div>
@@ -225,27 +225,27 @@ export function FantasyFootballLandingContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-electric-blue to-matrix-green rounded-2xl mx-auto mb-4 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#FF6B35] to-[#6BCF7F] rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <IconChartBar className="h-8 w-8 text-white" />
               </div>
-              <h3 className="font-heading font-bold text-lg mb-2 text-primary">Data Visualization</h3>
-              <p className="text-sm text-secondary">D3.js powered interactive charts with clustering algorithms and real-time updates</p>
+              <h3 className="font-heading font-bold text-lg mb-2 text-[#FF6B35] dark:text-[#FF8E53]">Data Visualization</h3>
+              <p className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">D3.js powered interactive charts with clustering algorithms and real-time updates</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-matrix-green to-cyber-teal rounded-2xl mx-auto mb-4 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#6BCF7F] to-[#F7B32B] rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <IconDatabase className="h-8 w-8 text-white" />
               </div>
-              <h3 className="font-heading font-bold text-lg mb-2 text-primary">Real-time Processing</h3>
-              <p className="text-sm text-secondary">Automated data pipeline with smart caching and error handling for optimal performance</p>
+              <h3 className="font-heading font-bold text-lg mb-2 text-[#FF6B35] dark:text-[#FF8E53]">Real-time Processing</h3>
+              <p className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">Automated data pipeline with smart caching and error handling for optimal performance</p>
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-neon-purple to-electric-blue rounded-2xl mx-auto mb-4 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#FF8E53] to-[#FF6B35] rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <IconDeviceMobile className="h-8 w-8 text-white" />
               </div>
-              <h3 className="font-heading font-bold text-lg mb-2 text-primary">Mobile Optimization</h3>
-              <p className="text-sm text-secondary">Responsive design with touch interactions and offline capabilities for any device</p>
+              <h3 className="font-heading font-bold text-lg mb-2 text-[#FF6B35] dark:text-[#FF8E53]">Mobile Optimization</h3>
+              <p className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">Responsive design with touch interactions and offline capabilities for any device</p>
             </div>
           </div>
         </WarmCard>

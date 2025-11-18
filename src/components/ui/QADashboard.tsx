@@ -42,24 +42,21 @@ const QAMetric = ({ label, value, change, trend, icon: Icon, color }: MetricProp
 
   return (
     <WarmCard hover={false} padding="md"
-      elevation={2}
-      interactive={true}
-      cursorGlow={true}
       className="p-6 relative overflow-hidden"
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-5 breathing-gradient`} />
-      
+      <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-5`} />
+
       <div className="relative z-10 flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-3">
             <div className={`p-2 rounded-lg bg-gradient-to-br ${color} bg-opacity-20`}>
-              <Icon className="h-5 w-5 text-vivid-blue" />
+              <Icon className="h-5 w-5 text-[#FF6B35] dark:text-[#FF8E53]" />
             </div>
-            <h3 className="font-semibold text-sm text-secondary">{label}</h3>
+            <h3 className="font-semibold text-sm text-[#6B4F3D] dark:text-[#D4A88E]">{label}</h3>
           </div>
-          
+
           <motion.div
-            className="text-2xl font-bold text-primary mb-1"
+            className="text-2xl font-bold text-[#2D1B12] dark:text-[#FFE4D6] mb-1"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
@@ -87,27 +84,24 @@ const TestCoverage = () => {
 
   return (
     <WarmCard hover={false} padding="md"
-      elevation={3}
-      interactive={true}
-      cursorGlow={true}
       className="p-6 col-span-full"
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-blue-500/10 breathing-gradient" />
-      
+      <div className="absolute inset-0 bg-gradient-to-r from-[#6BCF7F]/10 to-[#FF6B35]/10" />
+
       <div className="relative z-10">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-primary">Test Coverage</h3>
-          <span className="text-2xl font-bold text-vivid-blue">{progress}%</span>
+          <h3 className="font-semibold text-[#2D1B12] dark:text-[#FFE4D6]">Test Coverage</h3>
+          <span className="text-2xl font-bold text-[#FF6B35] dark:text-[#FF8E53]">{progress}%</span>
         </div>
-        
-        <div className="relative h-3 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+
+        <div className="relative h-3 bg-[#FFE4D6] dark:bg-[#4A3426] rounded-full overflow-hidden">
           <motion.div
-            className="absolute inset-y-0 left-0 bg-gradient-to-r from-vivid-blue to-vivid-teal rounded-full"
+            className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#FF6B35] to-[#F7B32B] rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
           />
-          
+
           {/* Shimmer effect */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
@@ -115,19 +109,19 @@ const TestCoverage = () => {
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           />
         </div>
-        
+
         <div className="grid grid-cols-3 gap-4 mt-4 text-sm">
           <div className="text-center">
-            <div className="font-semibold text-green-500">Unit</div>
-            <div className="text-secondary">98%</div>
+            <div className="font-semibold text-[#6BCF7F]">Unit</div>
+            <div className="text-[#6B4F3D] dark:text-[#D4A88E]">98%</div>
           </div>
           <div className="text-center">
-            <div className="font-semibold text-blue-500">Integration</div>
-            <div className="text-secondary">92%</div>
+            <div className="font-semibold text-[#FF6B35]">Integration</div>
+            <div className="text-[#6B4F3D] dark:text-[#D4A88E]">92%</div>
           </div>
           <div className="text-center">
-            <div className="font-semibold text-purple-500">E2E</div>
-            <div className="text-secondary">89%</div>
+            <div className="font-semibold text-[#F7B32B]">E2E</div>
+            <div className="text-[#6B4F3D] dark:text-[#D4A88E]">89%</div>
           </div>
         </div>
       </div>
@@ -195,11 +189,11 @@ export function QADashboard() {
       className="space-y-6"
     >
       <div className="flex items-center gap-3 mb-6">
-        <IconServer className="h-6 w-6 text-vivid-blue" />
-        <h2 className="text-2xl font-bold gradient-text">QA Dashboard</h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-vivid-blue/50 to-transparent" />
+        <IconServer className="h-6 w-6 text-[#FF6B35] dark:text-[#FF8E53]" />
+        <h2 className="text-2xl font-bold gradient-text-warm">QA Dashboard</h2>
+        <div className="flex-1 h-px bg-gradient-to-r from-[#FF6B35]/50 to-transparent" />
         <motion.div
-          className="px-3 py-1 glass-card text-xs font-semibold text-vivid-blue"
+          className="px-3 py-1 bg-white/80 dark:bg-[#2D1B12]/90 backdrop-blur-sm border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg rounded-xl text-xs font-semibold text-[#FF6B35] dark:text-[#FF8E53]"
           animate={{ opacity: [0.7, 1, 0.7] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -237,19 +231,16 @@ export function QADashboard() {
 
       {/* Recent Activity */}
       <WarmCard hover={false} padding="md"
-        elevation={3}
-        cursorGlow={true}
-        noiseTexture={true}
         className="p-6"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/10 to-cyan-500/10 breathing-gradient" />
-        
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FF8E53]/10 to-[#F7B32B]/10" />
+
         <div className="relative z-10">
-          <h3 className="font-semibold text-primary mb-4 flex items-center gap-2">
+          <h3 className="font-semibold text-[#2D1B12] dark:text-[#FFE4D6] mb-4 flex items-center gap-2">
             <IconUsers className="h-5 w-5" />
             Recent QA Activities
           </h3>
-          
+
           <div className="space-y-3">
             {[
               { action: "Completed regression testing", time: "2 hours ago", status: "success" },
@@ -262,16 +253,16 @@ export function QADashboard() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1 + index * 0.1 }}
-                className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50/50 dark:bg-neutral-800/50"
+                className="flex items-center gap-3 p-3 rounded-lg bg-[#FFF8F0]/50 dark:bg-[#4A3426]/50"
               >
                 <div className={`w-2 h-2 rounded-full ${
-                  activity.status === "success" ? "bg-green-500" :
-                  activity.status === "warning" ? "bg-yellow-500" :
-                  "bg-blue-500"
+                  activity.status === "success" ? "bg-[#6BCF7F]" :
+                  activity.status === "warning" ? "bg-[#FFB020]" :
+                  "bg-[#FF6B35]"
                 }`} />
                 <div className="flex-1">
-                  <div className="font-medium text-sm text-primary">{activity.action}</div>
-                  <div className="text-xs text-secondary">{activity.time}</div>
+                  <div className="font-medium text-sm text-[#2D1B12] dark:text-[#FFE4D6]">{activity.action}</div>
+                  <div className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">{activity.time}</div>
                 </div>
               </motion.div>
             ))}

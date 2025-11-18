@@ -137,12 +137,12 @@ export function CommandPalette() {
       {/* Trigger Button */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed top-4 right-4 z-40 p-3 glass-card elevation-2 hover:elevation-3 transition-all duration-300 group"
+        className="fixed top-4 right-4 z-40 p-3 bg-white/80 dark:bg-[#2D1B12]/90 backdrop-blur-sm border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg hover:shadow-warm-xl rounded-xl transition-all duration-300 group"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <IconSearch className="h-5 w-5 text-secondary group-hover:text-primary transition-colors" />
-        <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
+        <IconSearch className="h-5 w-5 text-[#FF6B35] dark:text-[#FF8E53] group-hover:text-[#E85A28] dark:group-hover:text-[#FFA876] transition-colors" />
+        <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-[#6B4F3D] dark:text-[#D4A88E] opacity-0 group-hover:opacity-100 transition-opacity">
           ⌘K
         </span>
       </motion.button>
@@ -197,7 +197,7 @@ export function CommandPalette() {
                         }, {} as Record<string, CommandItem[]>)
                       ).map(([category, items]) => (
                         <div key={category} className="mb-4">
-                          <div className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-secondary uppercase tracking-wider">
+                          <div className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-[#6B4F3D] dark:text-[#D4A88E] uppercase tracking-wider">
                             <span>{categoryIcons[category as keyof typeof categoryIcons]}</span>
                             {category}
                           </div>
@@ -211,8 +211,8 @@ export function CommandPalette() {
                                 onClick={command.action}
                                 className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-left transition-all duration-200 ${
                                   selectedIndex === globalIndex
-                                    ? "bg-vivid-blue/20 text-vivid-blue"
-                                    : "hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 text-primary"
+                                    ? "bg-[#FF6B35]/20 dark:bg-[#FF8E53]/20 text-[#FF6B35] dark:text-[#FF8E53]"
+                                    : "hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/50 text-[#2D1B12] dark:text-[#FFE4D6]"
                                 }`}
                                 whileHover={{ x: 4 }}
                                 transition={{ duration: 0.2 }}
@@ -223,13 +223,13 @@ export function CommandPalette() {
                                     {command.title}
                                   </div>
                                   {command.subtitle && (
-                                    <div className="text-sm text-secondary truncate">
+                                    <div className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] truncate">
                                       {command.subtitle}
                                     </div>
                                   )}
                                 </div>
                                 {selectedIndex === globalIndex && (
-                                  <kbd className="px-2 py-1 text-xs bg-vivid-blue/20 rounded text-vivid-blue">
+                                  <kbd className="px-2 py-1 text-xs bg-[#FF6B35]/20 dark:bg-[#FF8E53]/20 rounded text-[#FF6B35] dark:text-[#FF8E53]">
                                     ↵
                                   </kbd>
                                 )}
@@ -240,7 +240,7 @@ export function CommandPalette() {
                       ))}
                     </div>
                   ) : (
-                    <div className="p-8 text-center text-secondary">
+                    <div className="p-8 text-center text-[#6B4F3D] dark:text-[#D4A88E]">
                       <IconSearch className="h-8 w-8 mx-auto mb-3 opacity-50" />
                       <p>No commands found</p>
                       <p className="text-sm mt-1">Try a different search term</p>
@@ -249,14 +249,14 @@ export function CommandPalette() {
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between p-3 border-t border-neutral-200/20 dark:border-neutral-700/20 text-xs text-secondary">
+                <div className="flex items-center justify-between p-3 border-t border-[#FFE4D6] dark:border-[#FF8E53]/30 text-xs text-[#6B4F3D] dark:text-[#D4A88E]">
                   <div className="flex items-center gap-4">
                     <span>Navigate with ↑↓</span>
                     <span>Select with ↵</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span>Powered by</span>
-                    <kbd className="px-1 py-0.5 bg-neutral-200/20 dark:bg-neutral-700/20 rounded">
+                    <kbd className="px-1 py-0.5 bg-[#FFF8F0] dark:bg-[#4A3426]/50 border border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded">
                       ⌘K
                     </kbd>
                   </div>

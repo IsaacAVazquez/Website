@@ -30,7 +30,7 @@ const fantasyFootballStructuredData = [
 export default function ProjectsPage() {
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "Fantasy Football", url: "/projects" }
+    { name: "Projects", url: "/projects" }
   ];
 
   return (
