@@ -33,16 +33,16 @@ export function ModernHero() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-[#111111]"
+      className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-black"
       role="main"
       aria-label="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
     >
-      {/* Subtle editorial accent - very minimal */}
+      {/* Ultra-subtle monochrome accent - Mouthwash style */}
       <div
-        className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]"
         aria-hidden="true"
         style={{
-          background: 'radial-gradient(at 20% 30%, rgba(255, 59, 48, 0.1) 0px, transparent 50%), radial-gradient(at 80% 70%, rgba(0, 0, 0, 0.03) 0px, transparent 50%)'
+          background: 'radial-gradient(at 20% 30%, rgba(0, 0, 0, 0.03) 0px, transparent 50%), radial-gradient(at 80% 70%, rgba(0, 0, 0, 0.02) 0px, transparent 50%)'
         }}
       />
 
@@ -52,32 +52,32 @@ export function ModernHero() {
         initial="hidden"
         animate="visible"
       >
-        {/* Left-anchored bold editorial layout */}
-        <div className="max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-start">
+        {/* Mouthwash Studio layout - generous whitespace */}
+        <div className="max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
 
-          {/* Left Column - Bold Typography */}
-          <div className="space-y-10 lg:space-y-12">
-            {/* Oversized Editorial Heading */}
+          {/* Left Column - Bold Monochrome Typography */}
+          <div className="space-y-12 lg:space-y-16">
+            {/* Oversized Grotesk Heading - Pure Black */}
             <motion.div variants={itemVariants}>
-              <h1 className="editorial-heading text-[#111111] dark:text-[#FAFAFA]">
+              <h1 className="editorial-heading text-black dark:text-white">
                 Isaac Vazquez
               </h1>
-              <p className="editorial-subheading text-[#FF3B30] dark:text-[#FF5247] mt-4">
+              <p className="editorial-subheading text-neutral-500 dark:text-neutral-400 mt-6">
                 Technical Product Manager & UC Berkeley Haas MBA Candidate
               </p>
             </motion.div>
 
-            {/* Divider */}
+            {/* Thin Monochrome Divider */}
             <motion.div
               variants={itemVariants}
-              className="w-20 h-[2px] bg-[#FF3B30] dark:bg-[#FF5247]"
+              className="w-16 h-px bg-neutral-900 dark:bg-neutral-50"
               aria-hidden="true"
             />
 
-            {/* Editorial Body Copy */}
+            {/* Editorial Body Copy - Monochrome */}
             <motion.p
               variants={itemVariants}
-              className="editorial-body text-[#525252] dark:text-[#A3A3A3]"
+              className="editorial-body text-neutral-600 dark:text-neutral-300"
             >
               Bay Area-based and pursuing my MBA full-time at UC Berkeley Haas, I build mission-driven products that
               balance user insight, data, and disciplined execution. I move comfortably between product discovery,
@@ -86,15 +86,15 @@ export function ModernHero() {
 
             <motion.p
               variants={itemVariants}
-              className="editorial-body text-[#525252] dark:text-[#A3A3A3]"
+              className="editorial-body text-neutral-600 dark:text-neutral-300"
             >
               Haas is sharpening that toolkit, and I'm applying it to every roadmap, experiment, and delivery sprint I touch.
             </motion.p>
 
-            {/* Clean CTAs */}
+            {/* Minimal Monochrome CTAs */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-wrap gap-4 pt-6"
             >
               <Link href="/resume">
                 <ModernButton variant="primary" size="lg">
@@ -109,13 +109,13 @@ export function ModernHero() {
             </motion.div>
           </div>
 
-          {/* Right Column - High-impact Image */}
+          {/* Right Column - Clean Image Block */}
           <motion.div
             variants={itemVariants}
             className="relative order-first lg:order-last"
           >
-            {/* Premium Image Block */}
-            <div className="pentagram-image-wrapper pentagram-aspect-portrait lg:pentagram-aspect-square rounded-sm overflow-hidden border border-black/[0.08] dark:border-white/[0.1]">
+            {/* Mouthwash Studio Image Block - thin border */}
+            <div className="pentagram-image-wrapper pentagram-aspect-portrait lg:pentagram-aspect-square overflow-hidden border border-neutral-200 dark:border-neutral-600">
               <Image
                 src="/images/headshot-new.jpg"
                 alt="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
@@ -126,8 +126,8 @@ export function ModernHero() {
               />
             </div>
 
-            {/* Editorial Caption */}
-            <p className="editorial-caption mt-4 text-[#737373] dark:text-[#737373]">
+            {/* Minimal Caption - Mid Grey */}
+            <p className="editorial-caption mt-6 text-neutral-500 dark:text-neutral-400">
               Isaac Vazquez, MBA Candidate at UC Berkeley Haas School of Business
             </p>
           </motion.div>

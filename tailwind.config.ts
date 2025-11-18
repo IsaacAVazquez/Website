@@ -46,27 +46,27 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        // 2025: Semantic color system with contextual naming
-        primary: "var(--color-primary)",
-        secondary: "var(--color-secondary)",
-        accent: "var(--color-accent)",
-        tertiary: "var(--color-tertiary)",
-        warning: "var(--color-warning)",
-        error: "var(--color-error)",
+        // Mouthwash Studio Monochrome Color System
+        primary: "var(--color-primary)",      // Pure black (#000000)
+        secondary: "var(--color-secondary)",  // Pure white (#FFFFFF)
+        accent: "var(--color-accent)",        // Mid grey (#9C9C9C)
+        tertiary: "var(--color-tertiary)",    // Dark grey (#5B5B5B)
+        warning: "var(--color-warning)",      // Very dark grey (#181818)
+        error: "var(--color-error)",          // Pure black (#000000)
 
-        // Neutral scale
+        // Mouthwash Monochrome Neutral Scale
         neutral: {
-          50: "var(--neutral-50)",
-          100: "var(--neutral-100)",
-          200: "var(--neutral-200)",
-          300: "var(--neutral-300)",
-          400: "var(--neutral-400)",
-          500: "var(--neutral-500)",
-          600: "var(--neutral-600)",
-          700: "var(--neutral-700)",
-          800: "var(--neutral-800)",
-          900: "var(--neutral-900)",
-          950: "var(--neutral-950)",
+          50: "var(--neutral-50)",    // Pure white (#FFFFFF)
+          100: "var(--neutral-100)",  // Near white (#FAFAFA)
+          200: "var(--neutral-200)",  // Light grey (#D0D0D0)
+          300: "var(--neutral-300)",  // Medium light grey (#A1A1A1)
+          400: "var(--neutral-400)",  // Mid grey (#9C9C9C)
+          500: "var(--neutral-500)",  // Dark grey (#5B5B5B)
+          600: "var(--neutral-600)",  // Very dark grey (#181818)
+          700: "var(--neutral-700)",  // Near black (#111111)
+          800: "var(--neutral-800)",  // Darker black (#0A0A0A)
+          900: "var(--neutral-900)",  // Pure black (#000000)
+          950: "var(--neutral-950)",  // Pure black (#000000)
         },
 
         // Semantic surfaces
@@ -77,7 +77,7 @@ const config: Config = {
           overlay: "var(--surface-overlay)",
         },
 
-        // Legacy support - backwards compatible
+        // Legacy support - backwards compatible (now monochrome)
         "electric-blue": "var(--electric-blue)",
         "matrix-green": "var(--matrix-green)",
         "warning-amber": "var(--warning-amber)",
@@ -89,7 +89,7 @@ const config: Config = {
         "terminal-text": "var(--terminal-text)",
         "terminal-cursor": "var(--terminal-cursor)",
 
-        // Vivid color aliases for components
+        // Vivid color aliases (now monochrome)
         "vivid-blue": "var(--vivid-blue)",
         "vivid-teal": "var(--vivid-teal)",
         "vivid-purple": "var(--vivid-purple)",
@@ -108,14 +108,15 @@ const config: Config = {
         "4xl": "var(--space-4xl)",
       },
       boxShadow: {
-        'subtle': 'var(--shadow-subtle)',
-        'elevated': 'var(--shadow-elevated)',
-        'primary': 'var(--shadow-primary)',
-        'secondary': 'var(--shadow-secondary)',
-        'accent': 'var(--shadow-accent)',
-        'warm-lg': 'var(--shadow-warm-lg)',
-        'warm-xl': 'var(--shadow-warm-xl)',
-        // Legacy glow support (now maps to warm shadows)
+        // Mouthwash Studio Ultra Subtle Shadows
+        'subtle': 'var(--shadow-subtle)',         // 0 1px 2px rgba(0,0,0,0.03)
+        'elevated': 'var(--shadow-elevated)',     // 0 4px 8px rgba(0,0,0,0.06)
+        'primary': 'var(--shadow-primary)',       // 0 1px 2px rgba(0,0,0,0.04)
+        'secondary': 'var(--shadow-secondary)',   // 0 2px 4px rgba(0,0,0,0.04)
+        'accent': 'var(--shadow-accent)',         // 0 1px 2px rgba(0,0,0,0.06)
+        'warm-lg': 'var(--shadow-warm-lg)',       // 0 4px 8px rgba(0,0,0,0.05)
+        'warm-xl': 'var(--shadow-warm-xl)',       // 0 8px 16px rgba(0,0,0,0.06)
+        // Legacy glow support (now maps to monochrome shadows)
         'glow-blue': 'var(--glow-primary)',
         'glow-teal': 'var(--glow-secondary)',
         'glow-purple': 'var(--glow-accent)',

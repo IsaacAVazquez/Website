@@ -11,14 +11,14 @@ interface WarmCardProps {
 }
 
 /**
- * WarmCard (now EditorialCard) - Clean, minimal card component with editorial styling
- * Modern Pentagram-inspired design for portfolio
+ * WarmCard - Mouthwash Studio Minimal Card Component
+ * Clean, monochrome design with generous whitespace
  *
  * Features:
- * - Pure white/light gray backgrounds
- * - Subtle minimal borders
- * - Clean gray shadows
- * - Subtle hover lift effect
+ * - Pure white backgrounds with subtle borders
+ * - Ultra-subtle grey shadows
+ * - Minimal hover lift effect
+ * - Border-based design (not filled)
  * - Touch-friendly and accessible
  */
 export function WarmCard({
@@ -31,20 +31,22 @@ export function WarmCard({
 }: WarmCardProps) {
   const paddingClasses = {
     none: "",
-    sm: "p-4",
-    md: "p-6",
-    lg: "p-8",
-    xl: "p-10",
+    sm: "p-6",           // More generous minimum padding
+    md: "p-8",           // Default: generous padding
+    lg: "p-12",          // Large: very generous
+    xl: "p-16",          // XL: maximum whitespace
   };
 
   return (
     <div
       className={cn(
-        // Base styling - clean, minimal, editorial
-        "bg-white dark:bg-[#171717] border border-[rgba(0,0,0,0.08)] dark:border-[rgba(255,255,255,0.1)]",
+        // Mouthwash Studio Base - pure white with thin border
+        "bg-white dark:bg-black",
+        "border border-neutral-200 dark:border-neutral-600",
+        // Ultra-subtle shadow
         "shadow-subtle",
-        // Hover effects - subtle lift and shadow
-        hover && "transition-all duration-400 hover:shadow-elevated hover:-translate-y-0.5 hover:border-[rgba(0,0,0,0.12)] dark:hover:border-[rgba(255,255,255,0.15)] cursor-pointer",
+        // Hover effects - very subtle
+        hover && "transition-all duration-300 ease-out hover:shadow-primary hover:-translate-y-px hover:border-neutral-900 dark:hover:border-neutral-50 cursor-pointer",
         // Padding
         paddingClasses[padding],
         // Custom classes
