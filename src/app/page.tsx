@@ -1,280 +1,205 @@
 "use client";
 
 import { ModernHero } from "@/components/ModernHero";
-import { Heading } from "@/components/ui/Heading";
-import { WarmCard } from "@/components/ui/WarmCard";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { personalMetrics } from "@/constants/personal";
 import Image from "next/image";
-import { useState } from "react";
-import {
-  IconBriefcase,
-  IconSchool,
-  IconTrendingUp,
-  IconCode,
-  IconRocket,
-  IconUser,
-  IconTimeline
-} from "@tabler/icons-react";
+import { IconCode } from "@tabler/icons-react";
 
-type TabType = "overview" | "journey";
-
-// Timeline Item Component
-const TimelineItem = ({ item, isLast }: { item: typeof personalMetrics.careerTimeline[0]; isLast: boolean }) => {
-  const getIcon = () => {
-    const company = item.company.toLowerCase();
-    if (company.includes('florida state')) return IconSchool;
-    if (company.includes('open progress')) return IconTrendingUp;
-    if (company.includes('civitech')) return IconBriefcase;
-    if (company.includes('berkeley') || company.includes('haas')) return IconRocket;
-    return IconBriefcase;
-  };
-
-  const Icon = getIcon();
-
+// Clean Timeline Item Component - Pentagram Style
+const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTimeline[0]; index: number }) => {
   return (
-    <div className="relative flex items-start gap-6 group">
-
-      {/* Timeline line */}
-      <div className="relative flex flex-col items-center">
-        {/* Year badge with logo */}
-        <div className="relative z-10 w-16 h-16 rounded-full bg-white dark:bg-[#2D1B12] p-2 mb-4 shadow-warm-lg border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
-          {item.logo ? (
-            <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden bg-white dark:bg-[#2D1B12]">
-              <Image
-                src={item.logo}
-                alt={`${item.company} logo`}
-                width={48}
-                height={48}
-                className="object-contain"
-              />
-            </div>
-          ) : (
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-[#FF6B35] to-[#F7B32B] flex items-center justify-center">
-              <Icon className="w-6 h-6 text-white" />
-            </div>
-          )}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="pentagram-card pentagram-card-hover group"
+    >
+      {/* Header Section */}
+      <div className="flex items-start justify-between gap-6 mb-6">
+        <div className="flex-1">
+          <h3 className="text-2xl md:text-3xl font-bold text-[#2D1B12] dark:text-[#FFFCF7] mb-2 leading-tight">
+            {item.role}
+          </h3>
+          <p className="text-lg md:text-xl text-[#FF6B35] dark:text-[#FF8E53] font-semibold">
+            {item.company}
+          </p>
         </div>
-
-        {/* Vertical line */}
-        {!isLast && (
-          <div className="w-0.5 h-32 bg-gradient-to-b from-[#FF6B35]/50 to-transparent" />
+        {item.logo && (
+          <div className="w-16 h-16 rounded-sm overflow-hidden border border-black/[0.08] dark:border-white/[0.1] flex-shrink-0">
+            <Image
+              src={item.logo}
+              alt={`${item.company} logo`}
+              width={64}
+              height={64}
+              className="object-contain w-full h-full"
+            />
+          </div>
         )}
       </div>
 
-      {/* Content */}
-      <div className="flex-1 pb-8">
-        <WarmCard hover={true} padding="lg">
-            <div>
-              {/* Header */}
-              <div className="flex items-start mb-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-xl font-bold text-[#FF6B35]">
-                      {item.role}
-                    </h3>
-                    <div className="text-sm text-[#F7B32B] font-mono">
-                      {item.year}
-                    </div>
-                  </div>
-                  <div className="text-lg font-semibold text-[#2D1B12] dark:text-[#FFE4D6] mb-2">
-                    {item.company}
-                  </div>
-                </div>
-              </div>
+      {/* Year */}
+      <p className="editorial-caption mb-4 text-[#6B4F3D] dark:text-[#9C7A5F] font-mono">
+        {item.year}
+      </p>
 
-              {/* Description */}
-              <p className="text-[#4A3426] dark:text-[#D4A88E] mb-4 leading-relaxed">
-                {item.description}
-              </p>
+      {/* Description */}
+      <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E] mb-6">
+        {item.description}
+      </p>
 
-              {/* Tech Stack */}
-              <div className="mb-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <IconCode className="w-4 h-4 text-[#FF6B35]" />
-                  <span className="text-sm font-semibold text-[#FF6B35]">
-                    Tech Stack
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {item.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 text-xs rounded-full bg-[#FFF8F0] border border-[#FF6B35]/30 text-[#FF6B35] font-mono"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          </WarmCard>
-      </div>
-    </div>
+      {/* Tech Stack */}
+      {item.techStack && item.techStack.length > 0 && (
+        <div>
+          <div className="flex items-center gap-2 mb-3">
+            <IconCode className="w-4 h-4 text-[#FF6B35] dark:text-[#FF8E53]" aria-hidden="true" />
+            <span className="text-sm font-semibold text-[#FF6B35] dark:text-[#FF8E53] uppercase tracking-wider">
+              Technologies
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {item.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="px-3 py-1.5 text-sm bg-[#FFFCF7] dark:bg-[#2D1B12] border border-black/[0.08] dark:border-white/[0.1] text-[#4A3426] dark:text-[#D4A88E] font-mono rounded-sm"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+    </motion.div>
   );
 };
 
-
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<TabType>("overview");
-
-  const tabs = [
-    { id: "overview" as TabType, label: "Overview", icon: IconUser },
-    { id: "journey" as TabType, label: "Journey", icon: IconTimeline }
-  ];
-
   return (
-    <div className="min-h-screen w-full bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
-      {/* Modern Editorial Hero Section */}
+    <div className="min-h-screen w-full bg-white dark:bg-[#1C1410]">
+      {/* Editorial Hero Section */}
       <ModernHero />
 
-      {/* Secondary Content */}
-      <div className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-        {/* About Section with Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-5xl mx-auto"
-        >
-          {/* Tab Navigation */}
-          <div className="flex justify-center mb-8 relative z-20">
-            <div
-              role="tablist"
-              aria-label="Home sections"
-              className="flex flex-wrap justify-center bg-white/80 dark:bg-[#2D1B12]/90 p-2 rounded-2xl border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg backdrop-blur-sm"
-            >
-              {tabs.map((tab, index) => (
-                <button
-                  key={tab.id}
-                  role="tab"
-                  aria-selected={activeTab === tab.id}
-                  aria-controls={`${tab.id}-panel`}
-                  tabIndex={activeTab === tab.id ? 0 : -1}
-                  onClick={() => setActiveTab(tab.id)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'ArrowRight') {
-                      const nextIndex = (index + 1) % tabs.length;
-                      setActiveTab(tabs[nextIndex].id);
-                    } else if (e.key === 'ArrowLeft') {
-                      const prevIndex = (index - 1 + tabs.length) % tabs.length;
-                      setActiveTab(tabs[prevIndex].id);
-                    }
-                  }}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 min-h-[48px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F7B32B] ${
-                    activeTab === tab.id
-                      ? 'bg-[#FF6B35] dark:bg-[#FF8E53] text-white shadow-warm-lg scale-105'
-                      : 'text-[#6B4F3D] dark:text-[#FFE4D6] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/50 hover:scale-102'
-                  }`}
-                >
-                  <tab.icon className="w-5 h-5" aria-hidden="true" />
-                  <span>{tab.label}</span>
-                </button>
-              ))}
-            </div>
-          </div>
+      {/* Visual Divider */}
+      <div className="pentagram-divider" aria-hidden="true" />
 
-          {/* Tab Content Container with Min Height */}
-          <div className="min-h-[400px] md:min-h-[600px]">
-            <AnimatePresence mode="wait">
-              {activeTab === "overview" && (
-                <motion.div
-                  key="overview"
-                  id="overview-panel"
-                  role="tabpanel"
-                  aria-labelledby="overview-tab"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-          <WarmCard
-            hover={true}
-            padding="xl"
+      {/* Overview Section - Clean Editorial Layout */}
+      <section className="pentagram-section bg-white dark:bg-[#1C1410]">
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-6xl mx-auto"
           >
-            <div className="space-y-8">
-              <Heading level={2} className="text-[#FF6B35] text-2xl lg:text-3xl mb-6">
-                Overview
-              </Heading>
+            {/* Section Header */}
+            <h2 className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-12">
+              Overview
+            </h2>
 
-              <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+            {/* Content Grid */}
+            <div className="space-y-8">
+              <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
                 Product-focused technologist transitioning into product management, bringing 6+ years of experience in quality assurance, data analytics, and technology. At Civitech, I've led testing initiatives for voter engagement platforms, bridging technical execution with strategic product outcomes.
               </p>
 
-              <div>
-                <p className="text-[#2D1B12] dark:text-[#FFE4D6] font-semibold mb-3 text-base md:text-lg">
-                  Core Competencies:
-                </p>
-                <ul className="list-disc ml-6 space-y-3 text-[#4A3426] dark:text-[#D4A88E] text-base md:text-lg">
-                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Product & Strategy:</strong> User experience optimization, feature prioritization, cross-functional collaboration, stakeholder management</li>
-                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Technical:</strong> Test automation (Cypress), SQL, data analysis, API testing, Agile/Scrum methodologies</li>
-                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Analytics:</strong> Data-driven decision making, metrics definition, A/B testing, performance optimization</li>
-                  <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Leadership:</strong> Team mentorship, project management, diverse community advocacy</li>
-                </ul>
+              {/* Core Competencies */}
+              <div className="pentagram-card">
+                <h3 className="editorial-subheading text-[#2D1B12] dark:text-[#FFFCF7] mb-6">
+                  Core Competencies
+                </h3>
+                <div className="pentagram-grid pentagram-grid-2">
+                  <div>
+                    <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-3">
+                      Product & Strategy
+                    </h4>
+                    <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                      User experience optimization, feature prioritization, cross-functional collaboration, stakeholder management
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-3">
+                      Technical
+                    </h4>
+                    <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                      Test automation (Cypress), SQL, data analysis, API testing, Agile/Scrum methodologies
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-3">
+                      Analytics
+                    </h4>
+                    <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                      Data-driven decision making, metrics definition, A/B testing, performance optimization
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-3">
+                      Leadership
+                    </h4>
+                    <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                      Team mentorship, project management, diverse community advocacy
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+              <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
                 At the State of Florida, I analyzed large datasets to inform policy decisions, developing dashboards and reports that improved operational efficiency. As Client Services Manager at Open Progress, I managed digital campaigns for progressive causes, translating client needs into actionable strategies.
               </p>
 
-              <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+              <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
                 Currently pursuing an MBA at UC Berkeley Haas to deepen my product management expertise and explore venture capital opportunities in civic tech, SaaS, and mission-driven startups. Passionate about leveraging technology to create social impact and democratize access to essential services.
               </p>
 
-              <p className="text-base md:text-lg text-[#2D1B12] dark:text-[#FFE4D6] leading-relaxed font-medium">
+              <p className="text-xl md:text-2xl text-[#2D1B12] dark:text-[#FFFCF7] font-semibold mt-12">
                 Let's connect if you're interested in technology, product strategy, or social impact.
               </p>
             </div>
-          </WarmCard>
-                </motion.div>
-              )}
+          </motion.div>
+        </div>
+      </section>
 
-              {activeTab === "journey" && (
-                <motion.div
-                  key="journey"
-                  id="journey-panel"
-                  role="tabpanel"
-                  aria-labelledby="journey-tab"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  <WarmCard hover={true} padding="xl">
-                    <div className="space-y-10">
-          {/* Header */}
-          <div className="text-center">
-            <Heading level={2} className="text-[#FF6B35] text-2xl lg:text-3xl mb-6">
-              Career Journey
-            </Heading>
-            <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed max-w-3xl mx-auto">
-              From Political Science graduate to QA engineer, and now an MBA candidate at UC Berkeley, my career has been a journey of continuous learning and impact. Here's a snapshot of my professional timeline.
-            </p>
-          </div>
+      {/* Visual Divider */}
+      <div className="pentagram-divider" aria-hidden="true" />
 
-          {/* Timeline */}
-          <div className="relative">
-            {/* Timeline items */}
-            <div className="relative space-y-4">
+      {/* Career Journey Section - Structured Grid */}
+      <section className="pentagram-section bg-white dark:bg-[#1C1410]">
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-6xl mx-auto"
+          >
+            {/* Section Header */}
+            <div className="mb-16">
+              <h2 className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-6">
+                Career Journey
+              </h2>
+              <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E] max-w-4xl">
+                From Political Science graduate to QA engineer, and now an MBA candidate at UC Berkeley, my career has been a journey of continuous learning and impact. Here's a snapshot of my professional timeline.
+              </p>
+            </div>
+
+            {/* Timeline Grid */}
+            <div className="pentagram-grid">
               {personalMetrics.careerTimeline.map((item, index) => (
                 <TimelineItem
                   key={`${item.year}-${item.role}`}
                   item={item}
-                  isLast={index === personalMetrics.careerTimeline.length - 1}
+                  index={index}
                 />
               ))}
             </div>
-          </div>
-                    </div>
-                  </WarmCard>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Bottom Spacing */}
+      <div className="h-20" aria-hidden="true" />
     </div>
   );
 }

@@ -1467,3 +1467,272 @@ textarea:valid:not(:placeholder-shown) {
 .content-wide {
   max-width: 72rem;  /* 1152px */
 }
+
+/* ===================================
+   PENTAGRAM-INSPIRED EDITORIAL DESIGN (2025)
+   Clean, bold, premium aesthetic
+   ================================== */
+
+/* Premium Spacing System - Generous whitespace for editorial feel */
+.pentagram-section {
+  padding-top: 5rem;    /* 80px */
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .pentagram-section {
+    padding-top: 7rem;  /* 112px */
+    padding-bottom: 7rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pentagram-section {
+    padding-top: 10rem;  /* 160px */
+    padding-bottom: 10rem;
+  }
+}
+
+/* Editorial Typography - Bold, impactful headings */
+.editorial-heading {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.editorial-subheading {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.editorial-body {
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  max-width: 65ch;
+}
+
+.editorial-caption {
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--neutral-600);
+}
+
+.dark .editorial-caption {
+  color: var(--neutral-400);
+}
+
+/* Structured Grid System - Clean, modular layouts */
+.pentagram-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .pentagram-grid {
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pentagram-grid {
+    gap: 4rem;
+  }
+}
+
+.pentagram-grid-2 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .pentagram-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pentagram-grid-3 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .pentagram-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pentagram-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Premium Card - Minimal, elegant container */
+.pentagram-card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.dark .pentagram-card {
+  background: rgba(45, 27, 18, 0.4);
+  border: 1px solid rgba(255, 142, 83, 0.15);
+}
+
+.pentagram-card-hover:hover {
+  border-color: rgba(255, 107, 53, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.dark .pentagram-card-hover:hover {
+  border-color: rgba(255, 142, 83, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  .pentagram-card {
+    padding: 3.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pentagram-card {
+    padding: 4rem;
+  }
+}
+
+/* Visual Dividers - Subtle section separation */
+.pentagram-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+  margin: 4rem 0;
+}
+
+.dark .pentagram-divider {
+  background: linear-gradient(to right, transparent, rgba(255, 142, 83, 0.2), transparent);
+}
+
+@media (min-width: 768px) {
+  .pentagram-divider {
+    margin: 6rem 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pentagram-divider {
+    margin: 8rem 0;
+  }
+}
+
+/* Image Blocks - High-impact, standardized */
+.pentagram-image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--neutral-100);
+}
+
+.dark .pentagram-image-wrapper {
+  background: var(--neutral-800);
+}
+
+.pentagram-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.pentagram-image-wrapper:hover img {
+  transform: scale(1.03);
+}
+
+/* Aspect Ratios */
+.pentagram-aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.pentagram-aspect-landscape {
+  aspect-ratio: 16 / 9;
+}
+
+.pentagram-aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.pentagram-aspect-golden {
+  aspect-ratio: 1.618 / 1;
+}
+
+/* Minimal Navigation Bar - Thin, elegant */
+.pentagram-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.85);
+  transition: all 0.3s ease;
+}
+
+.dark .pentagram-nav {
+  background: rgba(28, 20, 16, 0.85);
+  border-bottom: 1px solid rgba(255, 142, 83, 0.1);
+}
+
+.pentagram-nav-inner {
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Premium Animations - Refined, purposeful */
+.pentagram-fade-in {
+  opacity: 0;
+  animation: pentagramFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes pentagramFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pentagram-stagger-1 { animation-delay: 0.1s; }
+.pentagram-stagger-2 { animation-delay: 0.2s; }
+.pentagram-stagger-3 { animation-delay: 0.3s; }
+.pentagram-stagger-4 { animation-delay: 0.4s; }
+.pentagram-stagger-5 { animation-delay: 0.5s; }
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .pentagram-fade-in {
+    animation: none;
+    opacity: 1;
+  }
+
+  .pentagram-card-hover:hover,
+  .pentagram-image-wrapper:hover img {
+    transform: none;
+  }
+}
