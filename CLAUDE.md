@@ -248,6 +248,22 @@ The fantasy football features use a sophisticated data pipeline:
 4. **File System:** JSON data files for static player mappings and images
 5. **Validation:** Comprehensive data validation with error handling
 6. **Updates:** Scheduled and on-demand data refresh capabilities
+/api/fantasy-data           - Fantasy football data from NFLverse/DynastyProcess (active)
+/api/analytics/events       - Event tracking and user analytics (planned)
+/api/analytics/web-vitals   - Performance monitoring and Core Web Vitals
+/api/newsletter/subscribe   - Newsletter subscription (planned)
+/api/search                 - Global search functionality (planned)
+```
+
+**Fantasy Football Data API:**
+- **Source:** NFLverse/DynastyProcess GitHub repositories (open-source, no API keys required)
+- **Data:** Expert consensus rankings, weekly projections, player statistics
+- **Caching:** 15-minute in-memory cache for optimal performance
+- **Formats:** PPR, Half-PPR, Standard scoring
+- **Positions:** QB, RB, WR, TE, K, DST, OVERALL
+- **Documentation:** See `NFLVERSE_INTEGRATION.md` for details
+
+**Note:** Most content is static and pre-rendered for optimal performance. Fantasy data is fetched on-demand from public GitHub repositories.
 
 ---
 
@@ -701,6 +717,10 @@ Website/
   - Build commands and settings
   - Environment variables
   - Redirect rules
+- **`netlify.toml`** - Netlify deployment configuration (primary)
+- **Environment Variables:** Minimal environment configuration
+  - **No API keys required** for fantasy football data (uses open-source NFLverse data)
+  - Optional analytics and monitoring services
 
 ### Environment & Build
 - **Development:** `npm run dev` (http://localhost:3000)
@@ -850,6 +870,20 @@ Multiple tier calculation methods:
 - **Dependencies Retained:** D3.js (v7.9.0), SQLite (better-sqlite3 v12.2.0), NextAuth (v4.24.11)
 - **Simplified Architecture:** Static-first for portfolio, dynamic for fantasy features
 - **Enhanced Animations:** Full Framer Motion integration (v12.23.12)
+### Warm Modern Redesign (January 2025)
+- **Complete Theme Overhaul:** Cyberpunk → Warm modern professional aesthetic
+- **Fantasy Football Data Migration:** Transitioned from FantasyPros API to NFLverse/DynastyProcess open-source data
+- **Component Modernization:** GlassCard → WarmCard, MorphButton → ModernButton
+- **Typography Simplification:** Orbitron → Inter throughout for consistency
+- **Color System:** Neon cyberpunk → Warm sunset/golden palette
+- **Accessibility Enhancement:** WCAG AA+ compliance with 7.5:1+ contrast ratios
+- **Performance Optimization:** 60% bundle size reduction
+
+### Technical Infrastructure (v3.0.0)
+- **Fantasy Football Data Source:** Now uses NFLverse/DynastyProcess open-source data (no API keys required)
+- **Removed Dependencies:** FantasyPros API integration, D3.js (replaced with lighter charting), SQLite, NextAuth
+- **Simplified Architecture:** Static-first approach with minimal APIs
+- **Enhanced Animations:** Full Framer Motion integration with reduced motion support
 - **Touch Optimization:** 44px minimum tap targets throughout
 - **Image Optimization:** AVIF/WebP with responsive sizing, lazy loading
 

@@ -60,48 +60,57 @@ export function useAllFantasyData({
   }, [scoringFormatParam]);
 
   /**
-   * Fetch data from API for a specific position with request deduplication
+   * Fetch data from NFLverse API for a specific position with request deduplication
+   * Updated to use modern /api/fantasy-data endpoint
    */
   const fetchPositionFromAPI = useCallback(async (position: Position): Promise<Player[] | null> => {
     const requestKey = getRequestKey(position, scoringFormatRef.current);
-    
+
     // If there's already an active request for this data, return it
     if (activeRequests.has(requestKey)) {
       return activeRequests.get(requestKey)!;
     }
-    
+
     // Create new request
     const requestPromise = (async () => {
       try {
+        // Convert scoring format to API format
+        const apiScoringFormat = scoringFormatRef.current
+          .replace('half-ppr', 'HALF_PPR')
+          .replace('ppr', 'PPR')
+          .replace('standard', 'STANDARD')
+          .toUpperCase();
+
         const response = await fetch(
-          `/api/data-manager?position=${position}&dataset=fantasypros-session&scoringFormat=${scoringFormatRef.current}`
+          `/api/fantasy-data?position=${position}&scoring=${apiScoringFormat}`
         );
-        
+
         if (!response.ok) {
-          throw new Error(`API request failed for ${position}: ${response.status}`);
+          throw new Error(`NFLverse API request failed for ${position}: ${response.status}`);
         }
-        
+
         const data = await response.json();
-        
+
+        // NFLverse API returns data in { success, players, metadata } format
         if (data.success && data.players && data.players.length > 0) {
           // Cache the fresh data for this position
-          dataCache.set(position, scoringFormatRef.current, data.players, 'api');
+          dataCache.set(position, scoringFormatRef.current, data.players, 'nflverse');
           return data.players;
         }
-        
+
         return null;
       } catch (apiError) {
-        console.warn(`API fetch failed for ${position}:`, apiError);
+        console.warn(`NFLverse API fetch failed for ${position}:`, apiError);
         return null;
       } finally {
         // Clean up the active request
         activeRequests.delete(requestKey);
       }
     })();
-    
+
     // Store the active request
     activeRequests.set(requestKey, requestPromise);
-    
+
     return requestPromise;
   }, []); // Now stable since using ref
 
