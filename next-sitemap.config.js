@@ -13,7 +13,6 @@ module.exports = {
     '/newsletter',
     '/testimonials',
     '/fantasy-football/*',
-    '/draft-tiers',
     '/admin/*',
     '/notes',
     '/faq'

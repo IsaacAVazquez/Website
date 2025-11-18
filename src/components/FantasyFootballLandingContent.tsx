@@ -34,18 +34,6 @@ const fantasyOfferings: FantasyOffering[] = [
   },
   {
     id: 2,
-    title: "Draft Tier Cards",
-    description: "Comprehensive draft interface with tier visualization and real-time player tracking for optimal draft strategy",
-    features: ["Live tier updates", "Draft position tracking", "Player comparison", "Strategic insights"],
-    type: "normal", 
-    color: "from-[#FF8E53] to-[#FFC857]",
-    icon: IconChartBar,
-    link: "/draft-tiers",
-    metrics: "Full draft simulation",
-    status: "live"
-  },
-  {
-    id: 3,
     title: "Data Management",
     description: "Administrative interface for real-time data collection, processing, and performance monitoring with smart caching",
     features: ["API integration", "Data pipeline", "Cache management", "Performance monitoring"],

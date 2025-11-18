@@ -158,7 +158,6 @@ This is a hybrid application serving two distinct purposes:
 /fantasy-football           - Fantasy football landing page and overview
 /fantasy-football/tiers/[position] - Position-specific tier rankings (qb, rb, wr, te, k, dst, flex)
 /fantasy-football/draft-tracker - Live draft tracking and analytics
-/draft-tiers                - Draft tiers overview and comparison
 ```
 
 #### **Content & Community Pages**
@@ -199,7 +198,6 @@ This is a hybrid application serving two distinct purposes:
 The application includes comprehensive URL redirects for SEO and user experience:
 - `/portfolio`, `/work` → `/projects`
 - `/ff`, `/rankings` → `/fantasy-football`
-- `/tiers` → `/draft-tiers`
 - `/qb`, `/rb`, `/wr`, `/te` → Position-specific tier pages
 - `/cv` → `/resume`
 - `/get-in-touch`, `/hire-me` → `/contact`
@@ -223,7 +221,6 @@ The application includes comprehensive URL redirects for SEO and user experience
 ├── fantasy-pros            - FantasyPros API integration
 ├── fantasy-pros-free       - Free tier FantasyPros data
 ├── fantasy-pros-session    - Session-based FantasyPros scraping
-├── draft-tiers             - Draft tier calculations
 └── player-images-mapping   - Player image database
 
 /api/data-management/
@@ -584,7 +581,6 @@ Website/
 │   │   ├── writing/            # Writing portfolio
 │   │   ├── notes/              # Notes section
 │   │   ├── fantasy-football/   # Fantasy football landing
-│   │   ├── draft-tiers/        # Draft tiers page
 │   │   ├── admin/              # Admin dashboard (authenticated)
 │   │   ├── newsletter/         # Newsletter subscription
 │   │   ├── testimonials/       # Testimonials page
@@ -754,7 +750,6 @@ Website/
 - /fantasy-football/tiers/dst (defense/ST)
 - /fantasy-football/tiers/flex (flex position)
 - /fantasy-football/draft-tracker (draft tool)
-- /draft-tiers (overview)
 ```
 
 ### Social Links & Professional Presence

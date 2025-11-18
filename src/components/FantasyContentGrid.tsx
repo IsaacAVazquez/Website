@@ -384,12 +384,9 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
             Dive deeper into fantasy football analytics with our interactive tools and real-time player data.
             Combine these insights with advanced tier calculations and draft tracking.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="flex justify-center">
             <Badge href="/fantasy-football" variant="electric" glow>
               Explore Analytics Tools
-            </Badge>
-            <Badge href="/draft-tiers" variant="matrix" glow>
-              View Player Tiers
             </Badge>
           </div>
         </WarmCard>

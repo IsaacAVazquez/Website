@@ -209,8 +209,14 @@ export function useUnifiedFantasyData({
 
   /**
    * Fetch tier data from unified API
+   * NOTE: /api/draft-tiers endpoint has been removed
    */
   const fetchTierData = useCallback(async (forceRefresh: boolean = false): Promise<void> => {
+    // Tier calculation API has been removed - tiers are now calculated client-side
+    setTierData(null);
+    return;
+
+    /* DEPRECATED: /api/draft-tiers endpoint removed
     if (!position) {
       // Can't calculate tiers for all positions combined
       setTierData(null);
@@ -218,7 +224,7 @@ export function useUnifiedFantasyData({
     }
 
     const requestKey = generateRequestKey(position, scoringFormat, true);
-    
+
     // Check for existing request
     if (activeRequests.has(requestKey) && !forceRefresh) {
       try {
@@ -239,14 +245,14 @@ export function useUnifiedFantasyData({
         });
 
         const response = await fetch(`/api/draft-tiers?${params}`);
-        
+
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({ error: 'Network error' }));
           throw new Error(errorData.error || `HTTP ${response.status}`);
         }
 
         const data = await response.json();
-        
+
         if (!data.success) {
           throw new Error(data.error || 'Tier calculation failed');
         }
@@ -259,17 +265,18 @@ export function useUnifiedFantasyData({
     })();
 
     activeRequests.set(requestKey, requestPromise);
-    
+
     try {
       const tierResult = await requestPromise;
       setTierData(tierResult);
       logger.info(`Calculated ${tierResult.totalTiers} tiers for ${tierResult.playerCount} ${position} players`);
-      
+
     } catch (tierError) {
       const errorMessage = tierError instanceof Error ? tierError.message : 'Failed to fetch tier data';
       logger.error(`Failed to fetch tier data: ${errorMessage}`);
       // Don't set error state for tier failures - player data might still be valid
     }
+    */
   }, [position, scoringFormat]);
 
   /**

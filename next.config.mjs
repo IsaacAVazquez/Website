@@ -32,12 +32,7 @@ const nextConfig = {
         destination: '/fantasy-football',
         permanent: false,
       },
-      {
-        source: '/tiers',
-        destination: '/draft-tiers',
-        permanent: false,
-      },
-      
+
       // Fantasy football position redirects for better URLs
       {
         source: '/qb',

@@ -211,9 +211,9 @@ export const relatedContentSets = {
       category: "blog" as const
     },
     {
-      title: "Interactive Tier Visualizations",
-      description: "D3.js powered charts with real-time data updates and clustering algorithms.",
-      href: "/draft-tiers",
+      title: "Interactive Fantasy Football Tools",
+      description: "Real-time player rankings with advanced clustering algorithms and data visualization.",
+      href: "/fantasy-football",
       category: "fantasy" as const
     }
   ]

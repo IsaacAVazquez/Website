@@ -36,13 +36,6 @@ test.describe('Fantasy Football Features', () => {
     }
   })
 
-  test('should load draft tiers page', async ({ page }) => {
-    await page.goto('/draft-tiers')
-
-    // Check page loaded
-    await expect(page).toHaveURL(/.*draft-tiers/)
-  })
-
   test('should be responsive on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 })
     await page.goto('/fantasy-football')
