@@ -47,29 +47,38 @@ export function useFantasyData({
   const scoringFormatParam = convertScoringFormat(scoringFormat);
 
   /**
-   * Fetch data from API
+   * Fetch data from NFLverse API
+   * Updated to use the modern /api/fantasy-data endpoint with NFLverse data
    */
   const fetchFromAPI = useCallback(async (): Promise<Player[] | null> => {
     try {
+      // Convert scoring format from 'half-ppr' to 'HALF_PPR' format expected by API
+      const apiScoringFormat = scoringFormatParam
+        .replace('half-ppr', 'HALF_PPR')
+        .replace('ppr', 'PPR')
+        .replace('standard', 'STANDARD')
+        .toUpperCase();
+
       const response = await fetch(
-        `/api/data-manager?position=${position}&dataset=fantasypros-session&scoringFormat=${scoringFormatParam}`
+        `/api/fantasy-data?position=${position}&scoring=${apiScoringFormat}`
       );
-      
+
       if (!response.ok) {
         throw new Error(`API request failed: ${response.status}`);
       }
-      
+
       const data = await response.json();
-      
+
+      // NFLverse API returns data in { success, players, metadata } format
       if (data.success && data.players && data.players.length > 0) {
         // Cache the fresh data
-        dataCache.set(position, scoringFormatParam, data.players, 'api');
+        dataCache.set(position, scoringFormatParam, data.players, 'nflverse');
         return data.players;
       }
-      
+
       return null;
     } catch (apiError) {
-      console.warn('API fetch failed:', apiError);
+      console.warn('NFLverse API fetch failed:', apiError);
       return null;
     }
   }, [position, scoringFormatParam]);

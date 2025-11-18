@@ -15,6 +15,10 @@ export interface Player {
   byeWeek?: number;
   adp?: number; // Average Draft Position
   lastUpdated?: string;
+
+  // Enhanced NFLverse metadata
+  headshotUrl?: string; // Player headshot from ESPN/NFLverse
+  teamLogoUrl?: string; // Team logo URL
   
   // Enhanced player data for improved rankings
   auctionValue?: number; // Auction draft value
