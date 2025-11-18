@@ -1,11 +1,11 @@
 /**
  * Unified Fantasy Data API Endpoint
- * Replaces fantasy-pros, fantasy-pros-free, and fantasy-pros-session
- * Inspired by fftiers repository's unified approach
+ * Uses NFLverse/DynastyProcess open-source data
+ * Replaces FantasyPros with free, open-source NFL data
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { unifiedFantasyProsAPI, UnifiedAPIOptions } from '@/lib/unifiedFantasyProsAPI';
+import { nflverseAPI } from '@/lib/nflverseAPI';
 import { Position, ScoringFormat } from '@/types';
 import { fantasyRateLimiter, getClientIdentifier, rateLimitResponse } from '@/lib/rateLimit';
 import { logger } from '@/lib/logger';
@@ -20,8 +20,18 @@ function validatePosition(position: string | null): position is Position {
 // Validate scoring format parameter
 function validateScoringFormat(format: string | null): format is ScoringFormat {
   if (!format) return false;
-  const validFormats: ScoringFormat[] = ['PPR', 'HALF', 'STD'];
-  return validFormats.includes(format.toUpperCase() as ScoringFormat);
+  const validFormats: ScoringFormat[] = ['PPR', 'HALF_PPR', 'STANDARD'];
+  const normalizedFormat = format.toUpperCase().replace('HALF', 'HALF_PPR').replace('STD', 'STANDARD');
+  return validFormats.includes(normalizedFormat as ScoringFormat);
+}
+
+// Normalize scoring format to match ScoringFormat type
+function normalizeScoringFormat(format: string): ScoringFormat {
+  const upper = format.toUpperCase();
+  if (upper === 'HALF' || upper === 'HALF-PPR') return 'HALF_PPR';
+  if (upper === 'STD' || upper === 'STANDARD') return 'STANDARD';
+  if (upper === 'PPR') return 'PPR';
+  return 'HALF_PPR'; // default
 }
 
 export async function GET(request: NextRequest) {
@@ -38,81 +48,35 @@ export async function GET(request: NextRequest) {
   
   // Parse parameters
   const position = searchParams.get('position');
-  const scoringFormat = (searchParams.get('scoring') || 'PPR').toUpperCase();
+  const scoringFormatParam = searchParams.get('scoring') || 'PPR';
   const forceRefresh = searchParams.get('refresh') === 'true';
-  const preferredMethod = searchParams.get('method') as 'api' | 'free' | 'session' | 'auto' | null;
-  const timeoutMs = parseInt(searchParams.get('timeout') || '10000');
   const getAllPositions = searchParams.get('all') === 'true';
-  const enhancedData = searchParams.get('enhanced') === 'true';
 
-  // Validate scoring format
-  if (!validateScoringFormat(scoringFormat)) {
+  // Validate and normalize scoring format
+  if (!validateScoringFormat(scoringFormatParam)) {
     return NextResponse.json({
       success: false,
-      error: 'Invalid scoring format. Must be one of: PPR, HALF, STD'
+      error: 'Invalid scoring format. Must be one of: PPR, HALF_PPR, HALF, STANDARD, STD'
     }, { status: 400 });
   }
 
-  const options: UnifiedAPIOptions = {
-    forceRefresh,
-    timeoutMs: Math.min(timeoutMs, 30000), // Cap at 30 seconds
-    preferredMethod: preferredMethod || 'auto'
-  };
+  const scoringFormat = normalizeScoringFormat(scoringFormatParam);
 
   try {
     if (getAllPositions) {
-      // Check if this is specifically for OVERALL rankings (needs proper weighting)
-      // This happens when position is undefined but we want overall rankings
-      const isOverallRequest = !position; // No specific position means overall rankings
-      
-      if (isOverallRequest) {
-        logger.info(`Fetching OVERALL rankings with proper position weighting for ${scoringFormat} scoring`);
-        
-        const overallResult = await unifiedFantasyProsAPI.fetchOverallRankings(
-          scoringFormat as ScoringFormat,
-          options
-        );
-        
-        const response = {
-          success: overallResult.success,
-          players: overallResult.players,
-          source: overallResult.source,
-          metadata: overallResult.metadata,
-          error: overallResult.error,
-          options: {
-            forceRefresh,
-            preferredMethod: options.preferredMethod,
-            timeoutMs: timeoutMs,
-            enhancedData
-          },
-          executionTimeMs: Date.now() - startTime
-        };
-        
-        logger.info(`OVERALL rankings completed: ${overallResult.players.length} players, source: ${overallResult.source}`);
-        return NextResponse.json(response);
-        
-      } else {
-        // Fetch all positions separately (for position-specific analysis)
-        logger.info(`Fetching all positions separately for ${scoringFormat} scoring`);
-        
-        const allResults = enhancedData ? 
-          await unifiedFantasyProsAPI.fetchAllPositionsEnhanced(
-            scoringFormat as ScoringFormat,
-            options
-          ) :
-          await unifiedFantasyProsAPI.fetchAllPositions(
-            scoringFormat as ScoringFormat,
-            options
-          );
-      
-        // Calculate total players and success rate
+      // Fetch all positions separately
+      logger.info(`Fetching all positions for ${scoringFormat} scoring from nflverse`);
+
+      const allResults = await nflverseAPI.fetchAllPositions(scoringFormat);
+
+      // Calculate total players and success rate
       const positions = Object.keys(allResults);
       const totalPlayers = Object.values(allResults).reduce(
         (sum, result) => sum + result.players.length,
         0
       );
       const successfulFetches = Object.values(allResults).filter(r => r.success).length;
-      
+
       // Determine overall success
       const overallSuccess = successfulFetches > 0;
       const primarySource = Object.values(allResults).find(r => r.success)?.source || 'sample';
@@ -130,15 +94,12 @@ export async function GET(request: NextRequest) {
           executionTimeMs: Date.now() - startTime
         },
         options: {
-          forceRefresh,
-          preferredMethod: options.preferredMethod,
-          timeoutMs: timeoutMs
+          forceRefresh
         }
       };
 
-        logger.info(`All positions fetch completed: ${totalPlayers} players, ${successfulFetches}/${positions.length} successful`);
-        return NextResponse.json(response);
-      }
+      logger.info(`All positions fetch completed: ${totalPlayers} players, ${successfulFetches}/${positions.length} successful`);
+      return NextResponse.json(response);
 
     } else {
       // Single position fetch
@@ -149,30 +110,13 @@ export async function GET(request: NextRequest) {
         }, { status: 400 });
       }
 
-      logger.info(`Fetching ${position} for ${scoringFormat} scoring`);
+      logger.info(`Fetching ${position} for ${scoringFormat} scoring from nflverse`);
 
-      let result;
-      
-      if (position === 'OVERALL') {
-        // Handle OVERALL position with proper weighting
-        result = await unifiedFantasyProsAPI.fetchOverallRankings(
-          scoringFormat as ScoringFormat,
-          options
-        );
-      } else {
-        // Handle specific position
-        result = enhancedData ? 
-          await unifiedFantasyProsAPI.fetchEnhancedPlayerData(
-            position as Position,
-            scoringFormat as ScoringFormat,
-            options
-          ) : 
-          await unifiedFantasyProsAPI.fetchPlayersData(
-            position as Position,
-            scoringFormat as ScoringFormat,
-            options
-          );
-      }
+      // Fetch data from nflverse
+      const result = await nflverseAPI.fetchPlayersData(
+        position as Position,
+        scoringFormat
+      );
 
       const response = {
         success: result.success,
@@ -184,14 +128,12 @@ export async function GET(request: NextRequest) {
           error: result.error
         },
         options: {
-          forceRefresh,
-          preferredMethod: options.preferredMethod,
-          timeoutMs: timeoutMs
+          forceRefresh
         }
       };
 
       if (result.success) {
-        logger.info(`Successfully fetched ${result.players.length} ${position} players via ${result.source}`);
+        logger.info(`Successfully fetched ${result.players.length} ${position} players from nflverse`);
       } else {
         logger.warn(`Failed to fetch ${position} data: ${result.error}`);
       }
@@ -216,22 +158,23 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST endpoint for cache management and testing
+// POST endpoint for cache management
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { action, position, scoringFormat, testConfig } = body;
+    const { action, position, scoringFormat } = body;
 
     switch (action) {
       case 'clear-cache':
         if (position && scoringFormat) {
-          unifiedFantasyProsAPI.clearCache(position, scoringFormat);
+          const normalizedFormat = normalizeScoringFormat(scoringFormat);
+          nflverseAPI.clearCache(position, normalizedFormat);
           return NextResponse.json({
             success: true,
-            message: `Cache cleared for ${position} ${scoringFormat}`
+            message: `Cache cleared for ${position} ${normalizedFormat}`
           });
         } else {
-          unifiedFantasyProsAPI.clearCache();
+          nflverseAPI.clearCache();
           return NextResponse.json({
             success: true,
             message: 'All cache cleared'
@@ -239,7 +182,7 @@ export async function POST(request: NextRequest) {
         }
 
       case 'cache-stats': {
-        const stats = unifiedFantasyProsAPI.getCacheStats();
+        const stats = nflverseAPI.getCacheStats();
         return NextResponse.json({
           success: true,
           cacheStats: stats
@@ -247,10 +190,10 @@ export async function POST(request: NextRequest) {
       }
 
       case 'test-config': {
-        // Test configuration without storing sensitive data
+        // Test configuration - no API keys needed for nflverse
         const testResult = {
-          hasApiKey: !!process.env.FANTASYPROS_API_KEY,
-          hasCredentials: !!(process.env.FANTASYPROS_USERNAME && process.env.FANTASYPROS_PASSWORD),
+          dataSource: 'nflverse/DynastyProcess',
+          requiresApiKey: false,
           environment: process.env.NODE_ENV,
           timestamp: new Date().toISOString()
         };
@@ -258,7 +201,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
           success: true,
           config: testResult,
-          message: 'Configuration check completed'
+          message: 'NFLverse data source configured - no API keys required'
         });
       }
 
@@ -281,16 +224,17 @@ export async function POST(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const position = searchParams.get('position');
-  const scoringFormat = searchParams.get('scoring');
+  const scoringFormatParam = searchParams.get('scoring');
 
-  if (position && scoringFormat && validatePosition(position) && validateScoringFormat(scoringFormat)) {
-    unifiedFantasyProsAPI.clearCache(position as Position, scoringFormat as ScoringFormat);
+  if (position && scoringFormatParam && validatePosition(position) && validateScoringFormat(scoringFormatParam)) {
+    const scoringFormat = normalizeScoringFormat(scoringFormatParam);
+    nflverseAPI.clearCache(position as Position, scoringFormat);
     return NextResponse.json({
       success: true,
       message: `Cache cleared for ${position} ${scoringFormat}`
     });
   } else {
-    unifiedFantasyProsAPI.clearCache();
+    nflverseAPI.clearCache();
     return NextResponse.json({
       success: true,
       message: 'All fantasy data cache cleared'
