@@ -16,12 +16,12 @@ interface ModernButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
 }
 
 /**
- * ModernButton - Clean, warm button component for 2025 portfolio
- * Replaces MorphButton with purposeful animations and warm styling
+ * ModernButton (now EditorialButton) - Clean, minimal button for editorial portfolio
+ * Pentagram-inspired design with bold red accents
  *
  * Features:
- * - Warm color variants (orange, yellow, coral)
- * - Subtle hover lift effect
+ * - Editorial red color variants
+ * - Subtle hover effects
  * - Touch-friendly (44px minimum)
  * - Accessible with proper ARIA
  * - Respects reduced motion preferences
@@ -39,29 +39,29 @@ export function ModernButton({
   const shouldReduceMotion = useReducedMotion();
 
   const baseStyles = cn(
-    "inline-flex items-center justify-center rounded-xl font-semibold",
+    "inline-flex items-center justify-center font-semibold",
     "transition-all duration-300",
     "disabled:opacity-50 disabled:cursor-not-allowed",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-500",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#FF3B30]",
     !shouldReduceMotion && !disabled && "hover:-translate-y-0.5",
     fullWidth && "w-full"
   );
 
   const variants = {
     primary: cn(
-      "bg-[#FF6B35] hover:bg-[#E85A28] dark:bg-[#FF8E53] dark:hover:bg-[#FFA876] text-white",
-      "shadow-warm-lg hover:shadow-warm-xl"
+      "bg-[#FF3B30] hover:bg-[#D32F2F] dark:bg-[#FF5247] dark:hover:bg-[#FF6B61] text-white",
+      "shadow-primary hover:shadow-elevated"
     ),
     secondary: cn(
-      "bg-[#F7B32B] hover:bg-[#E0A220] dark:bg-[#FFD666] dark:hover:bg-[#FFD98E] text-[#4A3426] dark:text-[#2D1B12]",
-      "shadow-warm-lg hover:shadow-warm-xl"
+      "bg-[#111111] hover:bg-[#000000] dark:bg-[#FAFAFA] dark:hover:bg-[#FFFFFF] text-white dark:text-[#111111]",
+      "shadow-primary hover:shadow-elevated"
     ),
     outline: cn(
-      "border-2 border-[#FF6B35] dark:border-[#FF8E53] text-[#FF6B35] dark:text-[#FF8E53]",
-      "hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/30 hover:border-[#E85A28] dark:hover:border-[#FFA876]"
+      "border-2 border-[#FF3B30] dark:border-[#FF5247] text-[#FF3B30] dark:text-[#FF5247]",
+      "hover:bg-[#FAFAFA] dark:hover:bg-[#171717] hover:border-[#D32F2F] dark:hover:border-[#FF6B61]"
     ),
     ghost: cn(
-      "text-[#6B4F3D] dark:text-[#D4A88E] hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/30"
+      "text-[#525252] dark:text-[#A3A3A3] hover:bg-[#FAFAFA] dark:hover:bg-[#171717]"
     ),
   };
 

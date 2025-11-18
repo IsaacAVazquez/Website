@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth-dark">
       <head>
         {/* PWA and Theme Meta Tags */}
-        <meta name="theme-color" content="#FF6B35" />
+        <meta name="theme-color" content="#FF3B30" />
         <meta name="color-scheme" content="dark light" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -137,7 +137,7 @@ export default function RootLayout({
       <body
         className={twMerge(
           fontConfig.inter.className,
-          "min-h-screen antialiased bg-gradient-to-br from-[#FFFCF7] via-[#FFF8F0] to-[#FFE5D9] dark:from-[#1C1410] dark:via-[#2A1F18] dark:to-[#4A3426] text-[#2D1B12] dark:text-[#FFFCF7]"
+          "min-h-screen antialiased bg-white dark:bg-[#111111] text-[#111111] dark:text-[#FAFAFA]"
         )}
         style={{
           [fontConfig.inter.variable as string]: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -147,7 +147,7 @@ export default function RootLayout({
       >
         <Analytics>
           <Providers>
-            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#FF6B35] focus:text-white focus:rounded-md focus:shadow-lg">
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#FF3B30] focus:text-white focus:rounded focus:shadow-lg">
               Skip to main content
             </a>
             <ConditionalLayout>
