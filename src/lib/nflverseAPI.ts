@@ -52,13 +52,113 @@ class NFLverseAPI {
   private readonly WEEKLY_DATA_URL = `${this.BASE_URL}/fp_latest_weekly.csv`;
   private readonly ECR_DATA_URL = `${this.BASE_URL}/db_fpecr_latest.csv`;
   private readonly PLAYER_IDS_URL = `${this.BASE_URL}/db_playerids.csv`;
+
+  // NFLverse headshots and team data
+  private readonly HEADSHOTS_BASE_URL = 'https://a.espncdn.com/i/headshots/nfl/players/full';
+  private readonly TEAM_LOGOS_BASE_URL = 'https://a.espncdn.com/i/teamlogos/nfl/500';
+
   private readonly CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
 
-  // In-memory cache
+  // In-memory cache for player data
   private readonly cache = new Map<string, {
     data: NFLverseFetchResult;
     timestamp: number;
   }>();
+
+  // Cache for player ID mappings (ESPN IDs for headshots)
+  private playerIdsCache: Map<string, {
+    espn_id?: string;
+    yahoo_id?: string;
+    sleeper_id?: string;
+  }> | null = null;
+  private playerIdsCacheTimestamp: number = 0;
+
+  /**
+   * Fetch and cache player ID mappings for headshots
+   * @returns Promise that resolves when player IDs are loaded
+   */
+  private async loadPlayerIds(): Promise<void> {
+    const now = Date.now();
+
+    // Use cached data if available and fresh (1 hour cache)
+    if (this.playerIdsCache && (now - this.playerIdsCacheTimestamp) < 60 * 60 * 1000) {
+      return;
+    }
+
+    try {
+      logger.info('Fetching player ID mappings from NFLverse');
+      const response = await fetch(this.PLAYER_IDS_URL, {
+        headers: { 'Accept': 'text/csv' }
+      });
+
+      if (!response.ok) {
+        logger.warn('Failed to fetch player IDs, using without headshots');
+        return;
+      }
+
+      const csvText = await response.text();
+      const lines = csvText.split('\n').filter(line => line.trim());
+
+      if (lines.length === 0) return;
+
+      const headers = this.parseCSVLine(lines[0]);
+      const playerIds = new Map<string, { espn_id?: string; yahoo_id?: string; sleeper_id?: string }>();
+
+      for (let i = 1; i < lines.length; i++) {
+        const values = this.parseCSVLine(lines[i]);
+        if (values.length < headers.length) continue;
+
+        const row: Record<string, string> = {};
+        headers.forEach((header, index) => {
+          row[header] = values[index] || '';
+        });
+
+        const playerName = row.name || row.player_name || '';
+        if (playerName) {
+          playerIds.set(playerName.toLowerCase().trim(), {
+            espn_id: row.espn_id || row.espnId,
+            yahoo_id: row.yahoo_id || row.yahooId,
+            sleeper_id: row.sleeper_id || row.sleeperId
+          });
+        }
+      }
+
+      this.playerIdsCache = playerIds;
+      this.playerIdsCacheTimestamp = now;
+      logger.info(`Loaded ${playerIds.size} player ID mappings`);
+
+    } catch (error) {
+      logger.warn('Failed to load player IDs:', error);
+    }
+  }
+
+  /**
+   * Get player headshot URL from ESPN
+   */
+  private getPlayerHeadshot(playerName: string, espnId?: string): string | undefined {
+    if (espnId) {
+      return `${this.HEADSHOTS_BASE_URL}/${espnId}.png`;
+    }
+
+    // Try to get ESPN ID from cache
+    const ids = this.playerIdsCache?.get(playerName.toLowerCase().trim());
+    if (ids?.espn_id) {
+      return `${this.HEADSHOTS_BASE_URL}/${ids.espn_id}.png`;
+    }
+
+    return undefined;
+  }
+
+  /**
+   * Get team logo URL
+   */
+  private getTeamLogo(teamAbbr: string): string {
+    if (!teamAbbr || teamAbbr === 'FA') {
+      return '';
+    }
+    // Convert team abbreviation to uppercase for consistency
+    return `${this.TEAM_LOGOS_BASE_URL}/${teamAbbr.toUpperCase()}.png`;
+  }
 
   /**
    * Fetch fantasy football rankings for a specific position
@@ -79,6 +179,9 @@ class NFLverseAPI {
 
     try {
       logger.info(`Fetching nflverse data for ${position} ${scoringFormat}`);
+
+      // Load player IDs for headshots (async, non-blocking)
+      await this.loadPlayerIds();
 
       // Fetch data from DynastyProcess weekly rankings
       const response = await fetch(this.WEEKLY_DATA_URL, {
@@ -250,6 +353,7 @@ class NFLverseAPI {
 
   /**
    * Transform raw NFLverse data to Player interface
+   * Now includes player headshots and team logos from NFLverse ecosystem
    */
   private transformToPlayer(row: Record<string, string>, scoringFormat: ScoringFormat): Player {
     const id = row.fantasypros_id || row.id || `player-${row.player_name?.replace(/\s+/g, '-').toLowerCase()}`;
@@ -269,6 +373,10 @@ class NFLverseAPI {
     // Calculate expert ranks array (simulate expert variation)
     const expertRanks = this.generateExpertRanks(ecr, sd, best, worst);
 
+    // Get player headshot and team logo URLs
+    const headshotUrl = this.getPlayerHeadshot(name, row.espn_id);
+    const teamLogoUrl = this.getTeamLogo(team);
+
     const player: Player = {
       id,
       name,
@@ -283,6 +391,9 @@ class NFLverseAPI {
       maxRank: worst,
       byeWeek: byeWeek || undefined,
       lastUpdated: row.scrape_date || new Date().toISOString(),
+      // Enhanced metadata from NFLverse
+      headshotUrl,
+      teamLogoUrl,
     };
 
     return player;

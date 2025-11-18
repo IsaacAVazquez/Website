@@ -93,29 +93,49 @@ export function useOverallFantasyData({
   }, [scoringFormatParam]);
 
   /**
-   * Fetch overall data from API
+   * Fetch overall data from NFLverse API
+   * Updated to use modern /api/fantasy-data endpoint with all positions aggregated
    */
   const fetchOverallFromAPI = useCallback(async (): Promise<Player[] | null> => {
     try {
+      // Convert scoring format to API format
+      const apiScoringFormat = scoringFormatRef.current
+        .replace('half-ppr', 'HALF_PPR')
+        .replace('ppr', 'PPR')
+        .replace('standard', 'STANDARD')
+        .toUpperCase();
+
+      // Fetch all positions aggregated
       const response = await fetch(
-        `/api/data-manager?position=OVERALL&dataset=fantasypros-session&scoringFormat=${scoringFormatRef.current}`
+        `/api/fantasy-data?scoring=${apiScoringFormat}&all=true`
       );
-      
+
       if (!response.ok) {
-        throw new Error(`API request failed for OVERALL: ${response.status}`);
+        throw new Error(`NFLverse API request failed for OVERALL: ${response.status}`);
       }
-      
+
       const data = await response.json();
-      
-      if (data.success && data.players && data.players.length > 0) {
-        // Cache the fresh data for overall position
-        dataCache.set('OVERALL' as any, scoringFormatRef.current, data.players, 'api');
-        return data.players;
+
+      // NFLverse API returns all positions when 'all=true'
+      if (data.success && data.data) {
+        // Aggregate all players from all positions
+        const allPlayers: Player[] = [];
+        Object.values(data.data).forEach((positionData: any) => {
+          if (positionData.players && Array.isArray(positionData.players)) {
+            allPlayers.push(...positionData.players);
+          }
+        });
+
+        if (allPlayers.length > 0) {
+          // Cache the fresh data for overall position
+          dataCache.set('OVERALL' as any, scoringFormatRef.current, allPlayers, 'nflverse');
+          return allPlayers;
+        }
       }
-      
+
       return null;
     } catch (apiError) {
-      logger.warn('API fetch failed for OVERALL:', apiError);
+      logger.warn('NFLverse API fetch failed for OVERALL:', apiError);
       return null;
     }
   }, []);
