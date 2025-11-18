@@ -11,13 +11,13 @@ interface WarmCardProps {
 }
 
 /**
- * WarmCard - Modern card component with warm, inviting styling
- * Replaces the cyberpunk GlassCard with clean, professional design
+ * WarmCard (now EditorialCard) - Clean, minimal card component with editorial styling
+ * Modern Pentagram-inspired design for portfolio
  *
  * Features:
- * - Warm cream/white backgrounds instead of glass transparency
- * - Soft peachy borders instead of neon
- * - Warm shadows with orange/golden glow
+ * - Pure white/light gray backgrounds
+ * - Subtle minimal borders
+ * - Clean gray shadows
  * - Subtle hover lift effect
  * - Touch-friendly and accessible
  */
@@ -40,12 +40,11 @@ export function WarmCard({
   return (
     <div
       className={cn(
-        // Base styling - warm, clean, modern
-        "bg-white dark:bg-[#2D1B12]/80 rounded-2xl border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30",
-        "shadow-subtle dark:shadow-warm-lg",
-        "backdrop-blur-sm",
-        // Hover effects - subtle lift and warm glow
-        hover && "transition-all duration-300 hover:shadow-warm-lg dark:hover:shadow-warm-xl hover:-translate-y-1 cursor-pointer",
+        // Base styling - clean, minimal, editorial
+        "bg-white dark:bg-[#171717] border border-[rgba(0,0,0,0.08)] dark:border-[rgba(255,255,255,0.1)]",
+        "shadow-subtle",
+        // Hover effects - subtle lift and shadow
+        hover && "transition-all duration-400 hover:shadow-elevated hover:-translate-y-0.5 hover:border-[rgba(0,0,0,0.12)] dark:hover:border-[rgba(255,255,255,0.15)] cursor-pointer",
         // Padding
         paddingClasses[padding],
         // Custom classes

@@ -27,7 +27,7 @@
   a:focus-visible {
     outline: 3px solid var(--color-primary);
     outline-offset: 3px;
-    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);  /* Warm orange glow */
+    box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.15);  /* Red glow */
   }
 
   input:focus-visible,
@@ -36,7 +36,7 @@
     outline: 2px solid var(--color-primary);
     outline-offset: 0;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);  /* Warm orange glow */
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);  /* Red glow */
   }
 }
 
@@ -82,15 +82,15 @@
    Semantic naming with contextual purpose
    ============================================ */
 :root {
-  /* Golden Hour Warmth - Inviting & Energetic Palette */
-  --color-primary: #FF6B35;          /* Sunset Orange - energetic, friendly, welcoming */
-  --color-secondary: #F7B32B;        /* Golden Yellow - optimistic, warm, cheerful */
-  --color-accent: #FF8E53;           /* Coral - creative, inviting, playful */
-  --color-tertiary: #FFC857;         /* Honey Gold - highlight accent, vibrant */
-  --color-success: #6BCF7F;          /* Fresh Green - positive, growth, success */
-  --color-warning: #FFB020;          /* Warm Amber - attention without alarm */
-  --color-error: #FF5757;            /* Warm Red - friendly error state */
-  --color-info: #FF9A56;             /* Peachy Orange - informational, soft */
+  /* Modern Editorial Palette - Inspired by Pentagram */
+  --color-primary: #FF3B30;          /* Bold Editorial Red - primary accent and actions */
+  --color-secondary: #1A1A1A;        /* Deep Black - headings and emphasis */
+  --color-accent: #FF5247;           /* Lighter Red - hover states and highlights */
+  --color-tertiary: #666666;         /* Medium Gray - secondary text */
+  --color-success: #34C759;          /* Clean Green - positive, success */
+  --color-warning: #FF9500;          /* Amber - attention without alarm */
+  --color-error: #FF3B30;            /* Editorial Red - error state */
+  --color-info: #007AFF;             /* Clean Blue - informational */
 
   /* Legacy support - backwards compatible (points to modern colors) */
   --electric-blue: var(--color-primary);
@@ -108,18 +108,18 @@
   --vivid-yellow: var(--color-warning);
   --vivid-green: var(--color-success);
 
-  /* Warm Neutral Scale - Inviting browns and creams */
-  --neutral-50: #FFFCF7;            /* Warm cream - lightest background */
-  --neutral-100: #FFF8F0;           /* Soft peach cream */
-  --neutral-200: #FFE4D6;           /* Peachy tint */
-  --neutral-300: #FFD4B8;           /* Light warm tan */
-  --neutral-400: #D4A88E;           /* Medium warm tan */
-  --neutral-500: #9C7A5F;           /* Light warm brown */
-  --neutral-600: #6B4F3D;           /* Medium warm brown */
-  --neutral-700: #4A3426;           /* Dark warm brown */
-  --neutral-800: #2D1B12;           /* Very dark warm brown */
-  --neutral-900: #1C1410;           /* Almost black warm brown */
-  --neutral-950: #0F0A08;           /* Deepest warm brown */
+  /* Cool Neutral Scale - Editorial grays */
+  --neutral-50: #FAFAFA;            /* Almost white - lightest background */
+  --neutral-100: #F5F5F5;           /* Very light gray */
+  --neutral-200: #E5E5E5;           /* Light gray - borders */
+  --neutral-300: #D4D4D4;           /* Medium light gray */
+  --neutral-400: #A3A3A3;           /* Medium gray */
+  --neutral-500: #737373;           /* Medium dark gray */
+  --neutral-600: #525252;           /* Dark gray */
+  --neutral-700: #404040;           /* Very dark gray */
+  --neutral-800: #262626;           /* Near black */
+  --neutral-900: #171717;           /* Almost black */
+  --neutral-950: #0A0A0A;           /* Deepest black */
 
   /* Legacy support */
   --slate-50: var(--neutral-50);
@@ -130,13 +130,13 @@
   --slate-800: var(--neutral-800);
   --slate-900: var(--neutral-900);
 
-  /* Accessible Light Mode Colors - WCAG AA for warm palette */
-  --color-primary-accessible: #D84315;    /* Darker orange for better contrast */
-  --color-secondary-accessible: #E68900;  /* Darker golden for contrast */
-  --color-accent-accessible: #E8663A;     /* Darker coral */
-  --color-tertiary-accessible: #F7B32B;   /* Golden yellow */
-  --color-error-accessible: #E53935;      /* Darker warm red */
-  --color-success-accessible: #43A047;    /* Darker green */
+  /* Accessible Light Mode Colors - WCAG AA+ */
+  --color-primary-accessible: #D32F2F;    /* Darker red for better contrast */
+  --color-secondary-accessible: #111111;  /* Near black for maximum contrast */
+  --color-accent-accessible: #C62828;     /* Darker red accent */
+  --color-tertiary-accessible: #424242;   /* Dark gray */
+  --color-error-accessible: #D32F2F;      /* Darker red */
+  --color-success-accessible: #2E7D32;    /* Darker green */
 
   /* Legacy Terminal Interface Colors - Deprecated, use warm equivalents */
   --terminal-bg: var(--neutral-900);           /* Dark warm brown instead */
@@ -144,32 +144,32 @@
   --terminal-text: var(--color-success);       /* Green remains for code */
   --terminal-cursor: var(--color-primary);     /* Warm orange cursor */
 
-  /* Semantic Surface Colors - Warm & Inviting */
-  --surface-primary: rgba(255, 252, 247, 0.95);     /* Warm cream base */
-  --surface-secondary: rgba(255, 248, 240, 0.9);    /* Soft peach */
-  --surface-elevated: rgba(255, 255, 255, 0.95);    /* Pure white elevated */
-  --surface-overlay: rgba(28, 20, 16, 0.92);        /* Warm dark overlay */
+  /* Semantic Surface Colors - Clean & Minimal */
+  --surface-primary: rgba(255, 255, 255, 1);        /* Pure white base */
+  --surface-secondary: rgba(250, 250, 250, 1);      /* Very light gray */
+  --surface-elevated: rgba(255, 255, 255, 1);       /* Pure white elevated */
+  --surface-overlay: rgba(0, 0, 0, 0.5);            /* Black overlay */
 
-  /* Semantic Text Colors - Warm Browns (WCAG AA Compliant) */
-  --text-primary: var(--neutral-700);               /* Dark warm brown - 7.5:1 contrast */
-  --text-secondary: var(--neutral-700);             /* Dark warm brown - accessible */
-  --text-tertiary: var(--neutral-600);              /* Medium warm brown - for subtle elements */
-  --text-inverse: var(--neutral-50);                /* Warm cream */
+  /* Semantic Text Colors - High Contrast (WCAG AAA Compliant) */
+  --text-primary: #111111;                          /* Near black - primary text */
+  --text-secondary: #525252;                        /* Dark gray - secondary text */
+  --text-tertiary: #737373;                         /* Medium gray - subtle elements */
+  --text-inverse: #FFFFFF;                          /* Pure white for dark backgrounds */
 
-  /* Semantic Border Colors - Soft & Warm */
-  --border-primary: rgba(255, 228, 214, 0.5);       /* Peachy border */
-  --border-secondary: rgba(255, 212, 184, 0.3);     /* Light warm tan */
-  --border-accent: var(--color-primary);            /* Sunset orange */
+  /* Semantic Border Colors - Minimal & Clean */
+  --border-primary: rgba(0, 0, 0, 0.08);            /* Subtle gray border */
+  --border-secondary: rgba(0, 0, 0, 0.05);          /* Very subtle gray */
+  --border-accent: var(--color-primary);            /* Editorial red */
 
-  /* Warm Soft Shadows - Inviting & Gentle */
-  --shadow-primary: 0 4px 16px rgba(255, 107, 53, 0.18);     /* Warm orange glow */
-  --shadow-secondary: 0 4px 16px rgba(247, 179, 43, 0.16);   /* Golden glow */
-  --shadow-accent: 0 4px 16px rgba(255, 142, 83, 0.18);      /* Coral glow */
-  --shadow-warning: 0 4px 16px rgba(255, 176, 32, 0.16);     /* Amber glow */
-  --shadow-subtle: 0 2px 8px rgba(107, 79, 61, 0.08);        /* Warm brown subtle */
-  --shadow-elevated: 0 8px 24px rgba(107, 79, 61, 0.12);     /* Warm brown elevated */
-  --shadow-warm-lg: 0 10px 30px rgba(255, 142, 83, 0.15);    /* Large warm shadow */
-  --shadow-warm-xl: 0 20px 40px rgba(255, 107, 53, 0.2);     /* Extra large warm */
+  /* Clean Minimal Shadows - Editorial aesthetic */
+  --shadow-primary: 0 2px 8px rgba(0, 0, 0, 0.08);           /* Subtle gray shadow */
+  --shadow-secondary: 0 4px 12px rgba(0, 0, 0, 0.06);        /* Light gray shadow */
+  --shadow-accent: 0 1px 3px rgba(255, 59, 48, 0.12);        /* Subtle red tint */
+  --shadow-warning: 0 4px 16px rgba(255, 149, 0, 0.12);      /* Amber glow */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);            /* Very subtle */
+  --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.1);          /* Elevated cards */
+  --shadow-warm-lg: 0 8px 24px rgba(0, 0, 0, 0.06);          /* Medium shadow */
+  --shadow-warm-xl: 0 16px 40px rgba(0, 0, 0, 0.08);         /* Large shadow */
 
   /* Legacy glow support (now subtle shadows for backwards compatibility) */
   --glow-primary: var(--shadow-primary);
@@ -197,32 +197,32 @@
    DARK MODE - Enhanced tokens
    ============================================ */
 .dark {
-  /* Surface Colors - Warm dark tones */
-  --surface-primary: rgba(28, 20, 16, 0.95);      /* Warm dark brown */
-  --surface-secondary: rgba(45, 27, 18, 0.9);     /* Medium warm brown */
-  --surface-elevated: rgba(74, 52, 38, 0.5);      /* Light warm brown */
-  --surface-overlay: rgba(28, 20, 16, 0.98);      /* Dark warm overlay */
+  /* Surface Colors - Clean dark tones */
+  --surface-primary: rgba(17, 17, 17, 1);         /* Near black */
+  --surface-secondary: rgba(23, 23, 23, 1);       /* Slightly lighter black */
+  --surface-elevated: rgba(38, 38, 38, 1);        /* Elevated surface */
+  --surface-overlay: rgba(0, 0, 0, 0.8);          /* Black overlay */
 
   /* Text Colors */
-  --text-primary: var(--neutral-50);
-  --text-secondary: var(--neutral-400);
-  --text-tertiary: var(--neutral-500);
-  --text-inverse: var(--neutral-900);
+  --text-primary: #FAFAFA;
+  --text-secondary: #A3A3A3;
+  --text-tertiary: #737373;
+  --text-inverse: #111111;
 
-  /* Border Colors - Warm */
-  --border-primary: rgba(255, 142, 83, 0.3);       /* Warm coral border */
-  --border-secondary: rgba(212, 168, 142, 0.2);    /* Light warm tan border */
+  /* Border Colors - Cool */
+  --border-primary: rgba(255, 255, 255, 0.1);     /* Subtle white border */
+  --border-secondary: rgba(255, 255, 255, 0.05);  /* Very subtle white border */
   --border-accent: var(--color-primary);
 
-  /* Warm Colors for Dark Mode (softer, glowing warmth) */
-  --color-primary: #FF8E53;          /* Coral orange for dark mode */
-  --color-secondary: #FFD666;        /* Soft golden yellow */
-  --color-accent: #FFA876;           /* Soft coral */
-  --color-tertiary: #FFD98E;         /* Soft honey */
-  --color-success: #8FE39E;          /* Soft mint green */
-  --color-warning: #FFC966;          /* Soft warm amber */
-  --color-error: #FF8585;            /* Soft warm red */
-  --color-info: #FFAD7A;             /* Soft peachy info */
+  /* Editorial Colors for Dark Mode (slightly softer) */
+  --color-primary: #FF5247;          /* Slightly brighter red for dark mode */
+  --color-secondary: #FAFAFA;        /* Light gray for headings */
+  --color-accent: #FF6B61;           /* Lighter red */
+  --color-tertiary: #A3A3A3;         /* Medium gray */
+  --color-success: #5AD865;          /* Brighter green */
+  --color-warning: #FFB340;          /* Brighter amber */
+  --color-error: #FF5247;            /* Brighter red */
+  --color-info: #40A7FF;             /* Brighter blue */
 
   /* Legacy support */
   --electric-blue: var(--color-primary);
@@ -254,43 +254,35 @@
 }
 
 /* ============================================
-   WARM GRADIENT UTILITIES
+   EDITORIAL GRADIENT UTILITIES
    ============================================ */
 @layer utilities {
-  .gradient-warm {
-    background: linear-gradient(135deg, #FFE5D9 0%, #FFF8F0 25%, #FFF4E6 50%, #FFE5D9 75%, #FFDDC1 100%);
+  .gradient-editorial {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%);
   }
 
-  .gradient-text-warm {
-    background: linear-gradient(135deg, #FF6B35, #F7B32B, #FF8E53);
+  .gradient-text-editorial {
+    background: linear-gradient(135deg, #FF3B30, #FF5247);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
   }
 
-  .gradient-mesh-warm {
+  .gradient-mesh-editorial {
     background:
-      radial-gradient(at 27% 37%, rgba(255, 107, 53, 0.2) 0px, transparent 50%),
-      radial-gradient(at 97% 21%, rgba(247, 179, 43, 0.2) 0px, transparent 50%),
-      radial-gradient(at 52% 99%, rgba(255, 142, 83, 0.2) 0px, transparent 50%),
-      radial-gradient(at 10% 29%, rgba(255, 200, 87, 0.2) 0px, transparent 50%),
-      radial-gradient(at 97% 96%, rgba(255, 229, 217, 0.3) 0px, transparent 50%),
-      #FFFCF7;
+      radial-gradient(at 20% 30%, rgba(255, 59, 48, 0.03) 0px, transparent 50%),
+      radial-gradient(at 80% 70%, rgba(0, 0, 0, 0.02) 0px, transparent 50%),
+      #FFFFFF;
   }
 
-  /* Warm decorative blobs */
-  .warm-blob-orange {
-    background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, transparent 70%);
-    filter: blur(60px);
+  /* Minimal decorative elements */
+  .editorial-accent-blur {
+    background: radial-gradient(circle, rgba(255, 59, 48, 0.08) 0%, transparent 70%);
+    filter: blur(80px);
   }
 
-  .warm-blob-yellow {
-    background: radial-gradient(circle, rgba(247, 179, 43, 0.25) 0%, transparent 70%);
-    filter: blur(60px);
-  }
-
-  .warm-blob-coral {
-    background: radial-gradient(circle, rgba(255, 142, 83, 0.28) 0%, transparent 70%);
+  .editorial-shadow-blur {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
     filter: blur(60px);
   }
 }
@@ -809,32 +801,32 @@ li {
 }
 
 .focus-ring:focus-visible {
-  outline-color: #FF6B35;
+  outline-color: #FF3B30;
   outline-offset: 4px;
-  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 0 16px rgba(255, 59, 48, 0.2);
 }
 
-/* Skip to content link - Warm Modern Theme */
+/* Skip to content link - Editorial Theme */
 .skip-link {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: #FF6B35;
+  background: #FF3B30;
   color: white;
   padding: 8px 16px;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 4px;
   z-index: 1000;
   font-weight: 600;
   transition: top 0.3s ease;
-  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);
-  border: 2px solid #FFE4D6;
+  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+  border: 2px solid rgba(255, 59, 48, 0.2);
 }
 
 .skip-link:focus {
   top: 6px;
-  box-shadow: 0 6px 24px rgba(255, 107, 53, 0.5);
-  outline: 3px solid #F7B32B;
+  box-shadow: 0 4px 16px rgba(255, 59, 48, 0.4);
+  outline: 3px solid #FF3B30;
   outline-offset: 2px;
 }
 
@@ -884,23 +876,23 @@ li {
   }
 }
 
-/* Focus indicators for cognitive accessibility - Warm Modern */
+/* Focus indicators for cognitive accessibility - Editorial */
 .focus-enhanced:focus-visible {
-  outline: 3px solid #FF6B35;
+  outline: 3px solid #FF3B30;
   outline-offset: 4px;
-  background-color: rgba(255, 107, 53, 0.1);
-  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+  background-color: rgba(255, 59, 48, 0.05);
+  box-shadow: 0 0 16px rgba(255, 59, 48, 0.2);
 }
 
-/* Text selection styling for better reading experience - Warm Modern */
+/* Text selection styling for better reading experience - Editorial */
 ::selection {
-  background: rgba(255, 107, 53, 0.25);
-  color: #2D1B12;
+  background: rgba(255, 59, 48, 0.2);
+  color: #111111;
 }
 
 ::-moz-selection {
-  background: rgba(255, 107, 53, 0.25);
-  color: #2D1B12;
+  background: rgba(255, 59, 48, 0.2);
+  color: #111111;
 }
 
 /* Light mode color overrides for better contrast */

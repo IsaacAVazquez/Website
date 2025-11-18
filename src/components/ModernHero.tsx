@@ -33,16 +33,16 @@ export function ModernHero() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-[#1C1410]"
+      className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-[#111111]"
       role="main"
       aria-label="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
     >
-      {/* Subtle warm gradient background - very minimal */}
+      {/* Subtle editorial accent - very minimal */}
       <div
-        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]"
         aria-hidden="true"
         style={{
-          background: 'radial-gradient(at 20% 30%, rgba(255, 107, 53, 0.15) 0px, transparent 50%), radial-gradient(at 80% 70%, rgba(247, 179, 43, 0.1) 0px, transparent 50%)'
+          background: 'radial-gradient(at 20% 30%, rgba(255, 59, 48, 0.1) 0px, transparent 50%), radial-gradient(at 80% 70%, rgba(0, 0, 0, 0.03) 0px, transparent 50%)'
         }}
       />
 
@@ -59,10 +59,10 @@ export function ModernHero() {
           <div className="space-y-10 lg:space-y-12">
             {/* Oversized Editorial Heading */}
             <motion.div variants={itemVariants}>
-              <h1 className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7]">
+              <h1 className="editorial-heading text-[#111111] dark:text-[#FAFAFA]">
                 Isaac Vazquez
               </h1>
-              <p className="editorial-subheading text-[#FF6B35] dark:text-[#FF8E53] mt-4">
+              <p className="editorial-subheading text-[#FF3B30] dark:text-[#FF5247] mt-4">
                 Technical Product Manager & UC Berkeley Haas MBA Candidate
               </p>
             </motion.div>
@@ -70,14 +70,14 @@ export function ModernHero() {
             {/* Divider */}
             <motion.div
               variants={itemVariants}
-              className="w-20 h-[2px] bg-[#FF6B35] dark:bg-[#FF8E53]"
+              className="w-20 h-[2px] bg-[#FF3B30] dark:bg-[#FF5247]"
               aria-hidden="true"
             />
 
             {/* Editorial Body Copy */}
             <motion.p
               variants={itemVariants}
-              className="editorial-body text-[#4A3426] dark:text-[#D4A88E]"
+              className="editorial-body text-[#525252] dark:text-[#A3A3A3]"
             >
               Bay Area-based and pursuing my MBA full-time at UC Berkeley Haas, I build mission-driven products that
               balance user insight, data, and disciplined execution. I move comfortably between product discovery,
@@ -86,7 +86,7 @@ export function ModernHero() {
 
             <motion.p
               variants={itemVariants}
-              className="editorial-body text-[#4A3426] dark:text-[#D4A88E]"
+              className="editorial-body text-[#525252] dark:text-[#A3A3A3]"
             >
               Haas is sharpening that toolkit, and I'm applying it to every roadmap, experiment, and delivery sprint I touch.
             </motion.p>
@@ -127,7 +127,7 @@ export function ModernHero() {
             </div>
 
             {/* Editorial Caption */}
-            <p className="editorial-caption mt-4 text-[#6B4F3D] dark:text-[#9C7A5F]">
+            <p className="editorial-caption mt-4 text-[#737373] dark:text-[#737373]">
               Isaac Vazquez, MBA Candidate at UC Berkeley Haas School of Business
             </p>
           </motion.div>
