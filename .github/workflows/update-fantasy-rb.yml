@@ -1,4 +1,4 @@
-name: Update Fantasy Football RB Tiers
+name: Update Fantasy Football All Position Tiers
 
 # Schedule: Run every Wednesday at 9:00 AM PST (17:00 UTC)
 # Adjust the cron schedule as needed for your timezone
@@ -17,11 +17,11 @@ on:
   #   branches:
   #     - main
   #   paths:
-  #     - 'scripts/updateFantasyRBTiers.ts'
+  #     - 'scripts/updateAllFantasyTiers.ts'
 
 jobs:
-  update-rb-tiers:
-    name: Update RB Tier Rankings
+  update-all-tiers:
+    name: Update All Position Tier Rankings
     runs-on: ubuntu-latest
 
     # Set permissions for the workflow
@@ -49,8 +49,8 @@ jobs:
         run: npm ci
 
       # Step 4: Run the update script
-      - name: Run fantasy RB tiers update script
-        run: npm run update:fantasy-rb
+      - name: Run fantasy all positions tiers update script
+        run: npm run update:fantasy-all
         env:
           # Add any required environment variables here
           # FANTASY_API_KEY: ${{ secrets.FANTASY_API_KEY }}
@@ -60,12 +60,12 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet public/fantasy/rb_current.json; then
+          if git diff --quiet public/fantasy/*.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in rb_current.json"
+            echo "No changes detected in fantasy tier data"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in rb_current.json"
+            echo "Changes detected in fantasy tier data"
           fi
 
       # Step 6: Commit and push changes (only if there are changes)
@@ -74,8 +74,8 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add public/fantasy/rb_current.json
-          git commit -m "chore: update RB tier rankings for week $(date +%U) [automated]"
+          git add public/fantasy/*.json
+          git commit -m "chore: update all position tier rankings for week $(date +%U) [automated]"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -84,20 +84,23 @@ jobs:
       - name: Create job summary
         if: always()
         run: |
-          echo "## Fantasy Football RB Tiers Update" >> $GITHUB_STEP_SUMMARY
+          echo "## Fantasy Football All Position Tiers Update" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
-            echo "✅ **Changes Detected:** RB tier data was updated and committed" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **Changes Detected:** All position tier data was updated and committed" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Positions Updated:** QB, RB, WR, TE, K, DST" >> $GITHUB_STEP_SUMMARY
           else
-            echo "ℹ️ **No Changes:** RB tier data is already up to date" >> $GITHUB_STEP_SUMMARY
+            echo "ℹ️ **No Changes:** All position tier data is already up to date" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
           echo "- Your hosting provider (Netlify) should automatically redeploy with the new data" >> $GITHUB_STEP_SUMMARY
-          echo "- Check the live site in a few minutes to verify the update" >> $GITHUB_STEP_SUMMARY
+          echo "- Check the live site at /fantasy-football/all-tiers to verify the update" >> $GITHUB_STEP_SUMMARY
+          echo "- Data freshness indicators will show the updated timestamp" >> $GITHUB_STEP_SUMMARY
 
       # Optional: Send notification on failure
       # - name: Notify on failure

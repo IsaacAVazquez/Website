@@ -1,0 +1,20 @@
+{
+  "week": 11,
+  "generatedAt": "2025-11-16T09:36:00-08:00",
+  "season": "2025",
+  "scoringFormat": "STANDARD",
+  "players": [
+    {"name": "San Francisco 49ers", "team": "SF", "avgRank": 1.1, "consensusRank": 1.0, "tier": 1, "stdDev": 0.4},
+    {"name": "Dallas Cowboys", "team": "DAL", "avgRank": 2.3, "consensusRank": 2.0, "tier": 1, "stdDev": 0.6},
+    {"name": "Baltimore Ravens", "team": "BAL", "avgRank": 3.2, "consensusRank": 3.0, "tier": 1, "stdDev": 0.7},
+    {"name": "Buffalo Bills", "team": "BUF", "avgRank": 4.4, "consensusRank": 4.0, "tier": 2, "stdDev": 1.1},
+    {"name": "Pittsburgh Steelers", "team": "PIT", "avgRank": 5.1, "consensusRank": 5.0, "tier": 2, "stdDev": 1.3},
+    {"name": "Cleveland Browns", "team": "CLE", "avgRank": 6.3, "consensusRank": 6.0, "tier": 2, "stdDev": 1.5},
+    {"name": "Philadelphia Eagles", "team": "PHI", "avgRank": 7.2, "consensusRank": 7.0, "tier": 2, "stdDev": 1.6},
+    {"name": "New York Jets", "team": "NYJ", "avgRank": 8.5, "consensusRank": 8.0, "tier": 3, "stdDev": 2.0},
+    {"name": "Kansas City Chiefs", "team": "KC", "avgRank": 9.1, "consensusRank": 9.0, "tier": 3, "stdDev": 2.2},
+    {"name": "Miami Dolphins", "team": "MIA", "avgRank": 10.4, "consensusRank": 10.0, "tier": 3, "stdDev": 2.4},
+    {"name": "New Orleans Saints", "team": "NO", "avgRank": 11.2, "consensusRank": 11.0, "tier": 3, "stdDev": 2.6},
+    {"name": "Cincinnati Bengals", "team": "CIN", "avgRank": 12.3, "consensusRank": 12.0, "tier": 4, "stdDev": 2.8}
+  ]
+}

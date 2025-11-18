@@ -142,17 +142,24 @@ export default function FantasyFootballPage() {
             <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
               Fantasy Football Tier Rankings
             </h1>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 flex-wrap">
+              {/* All Position Tiers Link - Featured */}
+              <Link href="/fantasy-football/all-tiers">
+                <ModernButton variant="primary" size="sm" className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4" />
+                  All Positions
+                </ModernButton>
+              </Link>
               {/* RB Tiers Scatter Plot Link */}
               <Link href="/fantasy-football/rb-tiers">
-                <ModernButton variant="primary" size="sm" className="flex items-center gap-2">
+                <ModernButton variant="secondary" size="sm" className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4" />
-                  RB Scatter Plot
+                  RB Chart
                 </ModernButton>
               </Link>
               {/* Draft Tiers Link */}
               <Link href="/draft-tiers">
-                <ModernButton variant="secondary" size="sm" className="flex items-center gap-2">
+                <ModernButton variant="outline" size="sm" className="flex items-center gap-2">
                   <FileText className="w-4 h-4" />
                   Draft Tiers
                 </ModernButton>
@@ -191,36 +198,47 @@ export default function FantasyFootballPage() {
           )}
         </motion.header>
 
-        {/* Featured: RB Scatter Plot */}
+        {/* Featured: All Position Tiers with Live Data */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className="mb-8"
         >
-          <Link href="/fantasy-football/rb-tiers">
-            <div className="bg-gradient-to-r from-[#FF6B35]/20 to-[#F7B32B]/20 border border-[#FF6B35]/30 rounded-lg p-6 hover:border-[#FF6B35]/50 transition-all cursor-pointer">
+          <Link href="/fantasy-football/all-tiers">
+            <div className="bg-gradient-to-r from-[#6BCF7F]/20 to-[#00D9FF]/20 border border-[#6BCF7F]/30 rounded-lg p-6 hover:border-[#6BCF7F]/50 transition-all cursor-pointer">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <Sparkles className="w-5 h-5 text-[#FF6B35]" />
-                    <span className="text-xs font-semibold text-[#FF6B35] uppercase tracking-wide">New Feature</span>
+                    <div className="w-2 h-2 bg-[#6BCF7F] rounded-full animate-pulse"></div>
+                    <span className="text-xs font-semibold text-[#6BCF7F] uppercase tracking-wide">Live Data • All Positions</span>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">
-                    RB Tier Rankings Scatter Plot
+                    Complete Position Tier Rankings
                   </h3>
                   <p className="text-gray-400 text-sm mb-3">
-                    Visualize running back tiers with an interactive scatter plot showing average expert rank vs consensus rank.
-                    Updated weekly with color-coded tier groupings.
+                    View interactive tier rankings for ALL positions (QB, RB, WR, TE, K, DST) with live data freshness indicators.
+                    Expert consensus rankings updated weekly via automated pipeline.
                   </p>
-                  <div className="flex items-center gap-2 text-sm text-[#FF8E53]">
-                    <span>View RB Scatter Plot</span>
-                    <ArrowLeft className="w-4 h-4 rotate-180" />
+                  <div className="flex items-center gap-4 flex-wrap">
+                    <div className="flex items-center gap-2 text-sm text-[#6BCF7F] font-semibold">
+                      <span>View All Positions</span>
+                      <ArrowLeft className="w-4 h-4 rotate-180" />
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <span className="px-2 py-0.5 bg-gray-800 rounded">QB</span>
+                      <span className="px-2 py-0.5 bg-gray-800 rounded">RB</span>
+                      <span className="px-2 py-0.5 bg-gray-800 rounded">WR</span>
+                      <span className="px-2 py-0.5 bg-gray-800 rounded">TE</span>
+                      <span className="px-2 py-0.5 bg-gray-800 rounded">K</span>
+                      <span className="px-2 py-0.5 bg-gray-800 rounded">DST</span>
+                    </div>
                   </div>
                 </div>
                 <div className="hidden sm:block">
-                  <div className="w-20 h-20 bg-[#FF6B35]/10 rounded-lg flex items-center justify-center">
-                    <TrendingUp className="w-10 h-10 text-[#FF6B35]" />
+                  <div className="w-20 h-20 bg-[#6BCF7F]/10 rounded-lg flex items-center justify-center relative">
+                    <TrendingUp className="w-10 h-10 text-[#6BCF7F]" />
+                    <div className="absolute top-1 right-1 w-2 h-2 bg-[#6BCF7F] rounded-full animate-pulse"></div>
                   </div>
                 </div>
               </div>

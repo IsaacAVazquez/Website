@@ -1,0 +1,28 @@
+{
+  "week": 11,
+  "generatedAt": "2025-11-16T09:36:00-08:00",
+  "season": "2025",
+  "scoringFormat": "PPR",
+  "players": [
+    {"name": "Patrick Mahomes", "team": "KC", "avgRank": 1.1, "consensusRank": 1.0, "tier": 1, "stdDev": 0.3},
+    {"name": "Josh Allen", "team": "BUF", "avgRank": 2.2, "consensusRank": 2.0, "tier": 1, "stdDev": 0.5},
+    {"name": "Jalen Hurts", "team": "PHI", "avgRank": 3.4, "consensusRank": 3.0, "tier": 1, "stdDev": 0.7},
+    {"name": "Lamar Jackson", "team": "BAL", "avgRank": 4.1, "consensusRank": 4.0, "tier": 1, "stdDev": 0.6},
+    {"name": "Joe Burrow", "team": "CIN", "avgRank": 5.3, "consensusRank": 5.0, "tier": 2, "stdDev": 1.1},
+    {"name": "Justin Herbert", "team": "LAC", "avgRank": 6.5, "consensusRank": 6.0, "tier": 2, "stdDev": 1.2},
+    {"name": "Dak Prescott", "team": "DAL", "avgRank": 7.2, "consensusRank": 7.0, "tier": 2, "stdDev": 1.4},
+    {"name": "CJ Stroud", "team": "HOU", "avgRank": 8.1, "consensusRank": 8.0, "tier": 2, "stdDev": 1.5},
+    {"name": "Tua Tagovailoa", "team": "MIA", "avgRank": 9.3, "consensusRank": 9.0, "tier": 3, "stdDev": 1.8},
+    {"name": "Trevor Lawrence", "team": "JAX", "avgRank": 10.2, "consensusRank": 10.0, "tier": 3, "stdDev": 1.9},
+    {"name": "Brock Purdy", "team": "SF", "avgRank": 11.5, "consensusRank": 11.0, "tier": 3, "stdDev": 2.1},
+    {"name": "Jordan Love", "team": "GB", "avgRank": 12.3, "consensusRank": 12.0, "tier": 3, "stdDev": 2.3},
+    {"name": "Jared Goff", "team": "DET", "avgRank": 13.1, "consensusRank": 13.0, "tier": 4, "stdDev": 2.5},
+    {"name": "Geno Smith", "team": "SEA", "avgRank": 14.4, "consensusRank": 14.0, "tier": 4, "stdDev": 2.7},
+    {"name": "Kirk Cousins", "team": "ATL", "avgRank": 15.2, "consensusRank": 15.0, "tier": 4, "stdDev": 2.9},
+    {"name": "Matthew Stafford", "team": "LAR", "avgRank": 16.1, "consensusRank": 16.0, "tier": 4, "stdDev": 3.1},
+    {"name": "Baker Mayfield", "team": "TB", "avgRank": 17.3, "consensusRank": 17.0, "tier": 5, "stdDev": 3.4},
+    {"name": "Caleb Williams", "team": "CHI", "avgRank": 18.2, "consensusRank": 18.0, "tier": 5, "stdDev": 3.6},
+    {"name": "Anthony Richardson", "team": "IND", "avgRank": 19.1, "consensusRank": 19.0, "tier": 5, "stdDev": 3.8},
+    {"name": "Kyler Murray", "team": "ARI", "avgRank": 20.4, "consensusRank": 20.0, "tier": 5, "stdDev": 4.0}
+  ]
+}
