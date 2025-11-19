@@ -46,20 +46,6 @@ export const handlers = [
     })
   }),
 
-  // Draft tiers endpoint
-  http.get('/api/fantasy-football/draft-tiers', () => {
-    return HttpResponse.json({
-      success: true,
-      tiers: [
-        {
-          tier: 1,
-          label: 'Elite',
-          players: mockPlayerData,
-        },
-      ],
-    })
-  }),
-
   // Analytics endpoints
   http.post('/api/analytics/events', () => {
     return HttpResponse.json({ success: true })

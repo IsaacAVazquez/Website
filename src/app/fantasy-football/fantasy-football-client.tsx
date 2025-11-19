@@ -149,13 +149,6 @@ export default function FantasyFootballPage() {
                   RB Scatter Plot
                 </ModernButton>
               </Link>
-              {/* Draft Tiers Link */}
-              <Link href="/draft-tiers">
-                <ModernButton variant="secondary" size="sm" className="flex items-center gap-2">
-                  <FileText className="w-4 h-4" />
-                  Draft Tiers
-                </ModernButton>
-              </Link>
               {/* Subtle Status Indicator */}
               {isClient && (
                 <div className="flex items-center gap-2 text-xs text-gray-500">
