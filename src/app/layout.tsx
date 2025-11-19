@@ -1,6 +1,6 @@
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generatePersonStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
@@ -277,6 +277,17 @@ export default function RootLayout({
         />
 
         {/* Website Schema */}
+        {/* Enhanced Person Structured Data for AI Discovery */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generatePersonStructuredData({
+              includeCredentials: true,
+              includeSocials: true,
+              includeOrganizations: true,
+            })),
+          }}
+        />
         <StructuredData type="WebSite" />
 
         {/* FAQ Structured Data - AI Optimized */}

@@ -1,10 +1,15 @@
-import { IconBolt, IconMail, IconFileText, IconTrophy } from "@tabler/icons-react";
+import { IconBolt, IconMail, IconFileText, IconTrophy, IconChartLine } from "@tabler/icons-react";
 
 export const navlinks = [
   {
     href: "/",
     label: "Home",
     icon: IconBolt,
+  },
+  {
+    href: "/investments",
+    label: "Investments",
+    icon: IconChartLine,
   },
   {
     href: "/fantasy-football",
