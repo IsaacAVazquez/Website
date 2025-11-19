@@ -10,6 +10,8 @@ import { personalMetrics } from "@/constants/personal";
 import Image from "next/image";
 import { IconCode } from "@tabler/icons-react";
 
+// Note: Metadata is defined in metadata.ts and imported by Next.js automatically
+
 // Clean Timeline Item Component - Pentagram Style
 const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTimeline[0]; index: number }) => {
   return (
@@ -80,9 +82,15 @@ const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTime
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-[#1C1410]">
+    <main
+      className="min-h-screen w-full bg-white dark:bg-[#1C1410]"
+      id="main-content"
+      aria-label="Isaac Vazquez - Technical Product Manager Portfolio"
+    >
       {/* Editorial Hero Section */}
-      <ModernHero />
+      <header>
+        <ModernHero />
+      </header>
 
       {/* Visual Divider */}
       <div className="pentagram-divider" aria-hidden="true" />
@@ -144,6 +152,10 @@ export default function Home() {
       <div className="pentagram-divider" aria-hidden="true" />
 
       {/* Overview Section - Clean Editorial Layout */}
+      <section
+        className="pentagram-section bg-white dark:bg-[#1C1410]"
+        aria-labelledby="overview-heading"
+      >
       <section className="pentagram-section bg-white dark:bg-[#1C1410]" aria-labelledby="overview-heading">
         <div className="container-wide">
           <motion.div
@@ -154,6 +166,10 @@ export default function Home() {
             className="max-w-6xl mx-auto"
           >
             {/* Section Header */}
+            <h2
+              id="overview-heading"
+              className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-6"
+            >
             <h2 id="overview-heading" className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-6">
               Overview
             </h2>
@@ -165,11 +181,21 @@ export default function Home() {
               </p>
 
               {/* Core Competencies */}
-              <div className="pentagram-card">
-                <h3 className="editorial-subheading text-[#2D1B12] dark:text-[#FFFCF7] mb-4">
+              <aside
+                className="pentagram-card"
+                aria-labelledby="core-competencies-heading"
+              >
+                <h3
+                  id="core-competencies-heading"
+                  className="editorial-subheading text-[#2D1B12] dark:text-[#FFFCF7] mb-4"
+                >
                   Core Competencies
                 </h3>
-                <div className="pentagram-grid pentagram-grid-2">
+                <div
+                  className="pentagram-grid pentagram-grid-2"
+                  role="list"
+                  aria-label="List of core competencies"
+                >
                   <div>
                     <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
                       Product & Strategy
@@ -203,7 +229,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </aside>
 
               <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
                 At the State of Florida, I analyzed large datasets to inform policy decisions, developing dashboards and reports that improved operational efficiency. As Client Services Manager at Open Progress, I managed digital campaigns for progressive causes, translating client needs into actionable strategies.
@@ -269,6 +295,9 @@ export default function Home() {
       {/* ProfilePage Structured Data for Homepage */}
       <StructuredData type="ProfilePage" />
 
+      {/* Bottom Spacing */}
+      <div className="h-8" aria-hidden="true" />
+    </main>
       <HomeContent />
     </>
   );

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { generateAIMetaTags } from "./ai-seo";
 
 export interface ProjectStructuredData {
   name: string;
@@ -149,6 +150,7 @@ export function constructMetadata({
   icons = "/favicon.png",
   noIndex = false,
   canonicalUrl,
+  aiMetadata,
 }: {
   title?: string;
   description?: string;
@@ -156,7 +158,21 @@ export function constructMetadata({
   icons?: string;
   noIndex?: boolean;
   canonicalUrl?: string;
+  aiMetadata?: {
+    expertise?: string[];
+    specialty?: string;
+    profession?: string;
+    industry?: string[];
+    topics?: string[];
+    contentType?: string;
+    context?: string;
+    summary?: string;
+    primaryFocus?: string;
+  };
 } = {}): Metadata {
+  // Generate AI-specific meta tags
+  const aiTags = aiMetadata ? generateAIMetaTags(aiMetadata) : {};
+
   return {
     title: {
       default: `${siteConfig.name} – ${siteConfig.title}`,
@@ -218,6 +234,10 @@ export function constructMetadata({
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
+    }),
+    // Add AI-specific meta tags
+    other: {
+      ...aiTags,
     },
     verification: {
       // Add Google Search Console verification if available
