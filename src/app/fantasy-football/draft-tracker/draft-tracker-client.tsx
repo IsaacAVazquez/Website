@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react";
 import "./styles.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { Player, ScoringFormat } from "@/types";
+import { ScoringFormat } from "@/types";
 import { useAllFantasyData } from "@/hooks/useAllFantasyData";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
 import { Badge } from "@/components/ui/Badge";
-import { IconSettings, IconPlayerPlay, IconRefresh, IconDownload } from "@tabler/icons-react";
+import { IconSettings, IconRefresh, IconDownload } from "@tabler/icons-react";
 import { DraftSetup } from "./components/DraftSetup";
 import { DraftBoard } from "./components/DraftBoard";
 import { DraftHistory } from "./components/DraftHistory";

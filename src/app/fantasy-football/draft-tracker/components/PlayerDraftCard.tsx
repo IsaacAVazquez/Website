@@ -61,10 +61,9 @@ const getPositionColor = (position: string): string => {
   }
 };
 
-export function PlayerDraftCard({ player, onDraft, showDraftButton, scoringFormat }: PlayerDraftCardProps) {
+export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<PlayerDraftCardProps, 'scoringFormat'>) {
   const tierColor = getTierColor(player.tier, (player as any).tierColor);
   const positionColor = getPositionColor(player.position);
-  const PositionIcon = getPositionIcon(player.position);
   
   // Generate player image path (using the existing image naming convention)
   const getPlayerImagePath = (player: Player): string => {

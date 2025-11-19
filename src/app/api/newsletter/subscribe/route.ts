@@ -19,7 +19,7 @@ const subscribers = new Map<string, {
 export async function POST(request: NextRequest) {
   try {
     const body: SubscriptionRequest = await request.json();
-    const { email, interests = [], source = 'website', name } = body;
+    const { email, interests = [], source = 'website' } = body;
 
     // Validate email
     if (!email || !email.includes('@') || email.length < 5) {

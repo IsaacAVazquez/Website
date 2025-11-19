@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { fantasyProsSession } from '@/lib/fantasyProsSession';
 import { dataManager } from '@/lib/dataManager';
-import { Position, ScoringFormat } from '@/types';
+import { Position } from '@/types';
 import { apiRateLimiter, getClientIdentifier, rateLimitResponse } from '@/lib/rateLimit';
 import { generateAllScoringFormats, preparePositionDataFromAPI } from '@/lib/overallDataGenerator';
 import { DataFileWriter } from '@/lib/dataFileWriter';
