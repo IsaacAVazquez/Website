@@ -14,7 +14,6 @@ import { ArrowLeft, Database, RefreshCw, FileText, Sparkles, TrendingUp } from '
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ModernButton } from '@/components/ui/ModernButton';
-import { EnhancedPlayerCard } from '@/components/EnhancedPlayerCard';
 import { Breadcrumbs } from '@/components/navigation/Breadcrumbs';
 
 export default function FantasyFootballPage() {
@@ -335,42 +334,6 @@ export default function FantasyFootballPage() {
             )}
           </div>
         </motion.div>
-
-        {/* Enhanced Player Preview */}
-        {!isLoading && players.length > 0 && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="mb-8"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <Sparkles className="w-6 h-6 text-[#FF6B35] dark:text-[#FF8E53]" />
-              <h3 className="text-2xl font-bold text-white">Enhanced Player Cards</h3>
-              <span className="px-3 py-1 bg-[#6BCF7F]/20 dark:bg-[#6BCF7F]/30 text-[#6BCF7F] dark:text-[#8FE39E] text-sm rounded-full border border-[#6BCF7F]/30 dark:border-[#6BCF7F]/40">
-                NEW
-              </span>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {players.slice(0, 4).map((player) => (
-                <EnhancedPlayerCard
-                  key={player.id}
-                  player={player}
-                  compact={false}
-                />
-              ))}
-            </div>
-            
-            <div className="mt-4 p-4 bg-[#FF6B35]/10 dark:bg-[#FF6B35]/20 border border-[#FF6B35]/20 dark:border-[#FF6B35]/30 rounded-lg">
-              <p className="text-sm text-[#4A3426] dark:text-[#FFE4D6] text-center">
-                <span className="text-[#FF6B35] dark:text-[#FF8E53] font-semibold">Enhanced Data:</span>
-                {' '}Now featuring expert consensus analysis, auction values, detailed projections,
-                and advanced player insights inspired by The Ringer's approach.
-              </p>
-            </div>
-          </motion.div>
-        )}
 
         {/* Tech Stack */}
         <motion.div 
