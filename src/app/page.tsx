@@ -1,6 +1,8 @@
 "use client";
 
 import { ModernHero } from "@/components/ModernHero";
+import { PageSummary } from "@/components/ui/PageSummary";
+import { ExpertSignalGroup } from "@/components/ui/ExpertSignal";
 import { motion } from "framer-motion";
 import { personalMetrics } from "@/constants/personal";
 import Image from "next/image";
@@ -83,8 +85,64 @@ export default function Home() {
       {/* Visual Divider */}
       <div className="pentagram-divider" aria-hidden="true" />
 
+      {/* AI-Optimized Page Summary */}
+      <section className="pentagram-section bg-white dark:bg-black" aria-labelledby="page-summary">
+        <div className="container-wide">
+          <PageSummary
+            variant="featured"
+            tldr="Technical Product Manager and UC Berkeley Haas MBA Candidate with 6+ years experience in civic tech and SaaS. Proven track record in product strategy, quality engineering, and cross-functional leadership."
+            summary={
+              <>
+                <p>
+                  <strong>Isaac Vazquez</strong> is a product-focused technologist pursuing an MBA at UC Berkeley Haas School of Business. With 6+ years of experience at Civitech, Florida State University, and Open Progress, Isaac brings a unique blend of technical expertise and strategic product thinking.
+                </p>
+                <p>
+                  As a <strong>Quality Assurance Engineer</strong> at Civitech, Isaac led initiatives that reached 60M+ users, improved NPS scores by 56%, and reduced critical defects by 90%. Now at Haas, Isaac is developing deep product management expertise to lead mission-driven products in civic tech and SaaS.
+                </p>
+              </>
+            }
+            context="Based in the Bay Area • Open to Product Manager and APM roles • Interested in civic tech, SaaS, and mission-driven startups"
+          />
+
+          {/* Expert Credentials */}
+          <div className="mt-8">
+            <ExpertSignalGroup
+              title="Credentials & Expertise"
+              variant="compact"
+              columns={2}
+              signals={[
+                {
+                  type: "education",
+                  label: "UC Berkeley Haas MBA Candidate",
+                  value: "Expected 2027 • Consortium Fellow • MLT Professional Development Fellow",
+                  verified: true,
+                },
+                {
+                  type: "experience",
+                  label: "6+ Years in Civic Tech & SaaS",
+                  value: "Quality Engineering • Product Strategy • Data Analytics",
+                },
+                {
+                  type: "achievement",
+                  label: "60M+ Users Reached",
+                  value: "Led voter engagement platform initiatives at Civitech",
+                },
+                {
+                  type: "expertise",
+                  label: "Product Management Skills",
+                  value: "User Research • Roadmapping • Cross-functional Leadership • Experimentation",
+                },
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Visual Divider */}
+      <div className="pentagram-divider" aria-hidden="true" />
+
       {/* Overview Section - Clean Editorial Layout */}
-      <section className="pentagram-section bg-white dark:bg-[#1C1410]">
+      <section className="pentagram-section bg-white dark:bg-[#1C1410]" aria-labelledby="overview-heading">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -94,7 +152,7 @@ export default function Home() {
             className="max-w-6xl mx-auto"
           >
             {/* Section Header */}
-            <h2 className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-6">
+            <h2 id="overview-heading" className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-6">
               Overview
             </h2>
 
@@ -165,7 +223,7 @@ export default function Home() {
       <div className="pentagram-divider" aria-hidden="true" />
 
       {/* Career Journey Section - Structured Grid */}
-      <section className="pentagram-section bg-white dark:bg-[#1C1410]">
+      <section className="pentagram-section bg-white dark:bg-[#1C1410]" aria-labelledby="career-journey-heading">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -176,7 +234,7 @@ export default function Home() {
           >
             {/* Section Header */}
             <div className="mb-8">
-              <h2 className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-4">
+              <h2 id="career-journey-heading" className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-4">
                 Career Journey
               </h2>
               <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E] max-w-4xl">
