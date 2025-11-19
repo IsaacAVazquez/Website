@@ -286,15 +286,15 @@ export const useDraftState = () => {
   }, [draftState]);
 
   // Computed values
-  const isUserPick = useMemo(() => {
-    const currentTeam = calculateDraftOrder(draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType);
-    return currentTeam === draftState.settings.userTeam && !isDraftComplete;
-  }, [draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType, draftState.settings.userTeam]);
-
   const isDraftComplete = useMemo(() => {
     const totalPicks = draftState.settings.totalTeams * draftState.settings.rounds;
     return draftState.currentPick > totalPicks;
   }, [draftState.currentPick, draftState.settings.totalTeams, draftState.settings.rounds]);
+
+  const isUserPick = useMemo(() => {
+    const currentTeam = calculateDraftOrder(draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType);
+    return currentTeam === draftState.settings.userTeam && !isDraftComplete;
+  }, [draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType, draftState.settings.userTeam, isDraftComplete]);
 
   const currentTeamName = useMemo(() => {
     const currentTeam = calculateDraftOrder(draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType);

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useSession, signOut, signIn } from "next-auth/react";
 import { Position, Player } from '@/types';
-import { databaseManager } from '@/lib/database';
 import { unifiedFantasyProsAPI } from '@/lib/unifiedFantasyProsAPI';
 import { ModernButton } from '@/components/ui/ModernButton';
 import { IconLogout, IconLock } from "@tabler/icons-react";

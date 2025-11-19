@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function HEAD(request: NextRequest) {
+export async function HEAD(_request: NextRequest) {
   // Return just headers for cache validation
   return new NextResponse(null, {
     headers: {

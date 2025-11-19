@@ -10,7 +10,7 @@ import { getScoringFormatDisplay } from '@/lib/scoringFormatUtils';
 import { useUnifiedFantasyData } from '@/hooks/useUnifiedFantasyData';
 import { useOverallFantasyData } from '@/hooks/useOverallFantasyData';
 import { useAllFantasyData } from '@/hooks/useAllFantasyData';
-import { ArrowLeft, Database, RefreshCw, FileText, Sparkles, TrendingUp } from 'lucide-react';
+import { ArrowLeft, Database, RefreshCw, Sparkles, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ModernButton } from '@/components/ui/ModernButton';
@@ -55,8 +55,7 @@ export default function FantasyFootballPage() {
     isLoading,
     error,
     dataSource,
-    lastUpdated,
-    refresh
+    lastUpdated
   } = currentData;
   
   // Get additional data from regular hook when available

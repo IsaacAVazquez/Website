@@ -23,11 +23,11 @@ interface DraftBoardProps {
 type FilterPosition = Position | 'ALL';
 type SortOption = 'rank' | 'tier' | 'points' | 'adp';
 
-export function DraftBoard({ 
-  players, 
-  draftedPlayerIds, 
-  onDraftPlayer, 
-  currentPick, 
+export function DraftBoard({
+  players,
+  draftedPlayerIds,
+  onDraftPlayer,
+  currentPick: _currentPick,
   isUserPick,
   scoringFormat
 }: DraftBoardProps) {

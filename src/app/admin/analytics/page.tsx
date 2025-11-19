@@ -3,11 +3,10 @@ import { Heading } from '@/components/ui/Heading';
 import { Paragraph } from '@/components/ui/Paragraph';
 import { WarmCard } from '@/components/ui/WarmCard';
 import { Badge } from '@/components/ui/Badge';
-import { 
-  IconChartLine, 
-  IconClock, 
-  IconUsers, 
-  IconMouse,
+import {
+  IconChartLine,
+  IconClock,
+  IconUsers,
   IconActivity,
   IconTarget
 } from '@tabler/icons-react';
