@@ -153,7 +153,8 @@ export function useUnifiedFantasyData({
         // Single position data
         setPlayers(data.players || []);
         setDataSource(data.metadata?.source || 'unknown');
-        setLastUpdated(new Date(data.metadata?.timestamp || Date.now()).toLocaleTimeString());
+        // Always show current time when data is successfully fetched
+        setLastUpdated(new Date().toLocaleString());
         setExecutionTime(data.metadata?.executionTimeMs || 0);
         setCacheHit(data.metadata?.cacheHit || false);
         
@@ -190,7 +191,8 @@ export function useUnifiedFantasyData({
 
         setPlayers(allPlayers);
         setDataSource(primarySource);
-        setLastUpdated(new Date(latestTimestamp || Date.now()).toLocaleTimeString());
+        // Always show current time when data is successfully fetched
+        setLastUpdated(new Date().toLocaleString());
         setExecutionTime(totalExecutionTime);
         setCacheHit(anyCacheHit);
       }

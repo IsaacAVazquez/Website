@@ -174,24 +174,19 @@ export function useAllFantasyData({
       if (hasApiData) {
         setDataSource('api');
         setCacheStatus('fresh');
-        setLastUpdated(new Date().toLocaleTimeString());
+        // Show current time when fresh data is fetched
+        setLastUpdated(new Date().toLocaleString());
       } else if (hasCacheData) {
         setDataSource('cache');
         setCacheStatus(overallCacheStatus);
-        // Use the most recent cache timestamp
-        const cacheTimestamps = ALL_POSITIONS
-          .map(pos => dataCache.get(pos, scoringFormatRef.current)?.timestamp)
-          .filter(Boolean) as number[];
-        
-        if (cacheTimestamps.length > 0) {
-          const mostRecent = Math.max(...cacheTimestamps);
-          setLastUpdated(new Date(mostRecent).toLocaleTimeString());
-        }
+        // Show current time to indicate when data was loaded
+        setLastUpdated(new Date().toLocaleString());
       } else {
         // All sample data
         setDataSource('sample');
         setCacheStatus('missing');
-        setLastUpdated('Sample data');
+        // Show current time when using static data
+        setLastUpdated(new Date().toLocaleString() + ' (static data)');
         setError('Using sample data - API unavailable');
       }
 
@@ -248,7 +243,8 @@ export function useAllFantasyData({
         
         setPlayers(allSampleData);
         setDataSource('sample');
-        setLastUpdated('Sample data');
+        // Show current time when using static data
+        setLastUpdated(new Date().toLocaleString() + ' (static data)');
         setError('Using sample data - all sources failed');
       }
     } finally {

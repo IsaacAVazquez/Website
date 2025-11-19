@@ -163,7 +163,8 @@ export function useOverallFantasyData({
         // Use fresh cached data
         setPlayers(cachedData.data);
         setDataSource('cache');
-        setLastUpdated(new Date(cachedData.timestamp).toLocaleTimeString());
+        // Show current time to indicate data is available now
+        setLastUpdated(new Date().toLocaleString());
         setIsLoading(false);
         isRefreshingRef.current = false;
         return;
@@ -175,13 +176,15 @@ export function useOverallFantasyData({
       if (apiData) {
         setPlayers(apiData);
         setDataSource('api');
-        setLastUpdated(new Date().toLocaleTimeString());
+        // Show current time when fresh data is fetched
+        setLastUpdated(new Date().toLocaleString());
         setCacheStatus('fresh');
       } else if (cachedData) {
         // Fall back to stale cached data
         setPlayers(cachedData.data);
         setDataSource('cache');
-        setLastUpdated(new Date(cachedData.timestamp).toLocaleTimeString());
+        // Show current time to indicate when data was loaded
+        setLastUpdated(new Date().toLocaleString());
         setError('Using cached data - refresh failed');
       } else {
         // Fall back to scoring format specific local data
@@ -189,7 +192,8 @@ export function useOverallFantasyData({
           const localData = await loadOverallDataForFormat(scoringFormat);
           setPlayers(localData);
           setDataSource('sample');
-          setLastUpdated('Local data');
+          // Show current time when using local/static data
+          setLastUpdated(new Date().toLocaleString() + ' (static data)');
           setError(localData.length > 0 ? null : 'No data available');
           logger.info(`Using local overall data for ${scoringFormat}: ${localData.length} players`);
         } catch (localError) {
@@ -207,7 +211,8 @@ export function useOverallFantasyData({
       if (cachedData) {
         setPlayers(cachedData.data);
         setDataSource('cache');
-        setLastUpdated(new Date(cachedData.timestamp).toLocaleTimeString());
+        // Show current time to indicate when data was loaded
+        setLastUpdated(new Date().toLocaleString());
         setError('Using cached data - refresh failed');
       } else {
         // Final fallback to scoring format specific local data
@@ -215,7 +220,8 @@ export function useOverallFantasyData({
           const localData = await loadOverallDataForFormat(scoringFormat);
           setPlayers(localData);
           setDataSource('sample');
-          setLastUpdated('Fallback data');
+          // Show current time when using fallback data
+          setLastUpdated(new Date().toLocaleString() + ' (static data)');
           setError('Using local data - all sources failed');
           logger.info(`Using fallback local data for ${scoringFormat}: ${localData.length} players`);
         } catch (finalError) {
