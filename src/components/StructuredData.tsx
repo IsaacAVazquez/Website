@@ -1,7 +1,7 @@
 import { siteConfig } from "@/lib/seo";
 
 interface StructuredDataProps {
-  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage" | "CreativeWork" | "ProfessionalService";
+  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage" | "CreativeWork" | "ProfessionalService" | "ContactPage" | "ProfilePage" | "Organization" | "Article" | "BlogPosting" | "JobPosting";
   data?: Record<string, string | number | boolean | object>;
 }
 
@@ -301,6 +301,162 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
               siteConfig.links.linkedin,
               siteConfig.links.github
             ]
+          },
+          ...data,
+        };
+
+      case "ContactPage":
+        return {
+          ...baseData,
+          "@type": "ContactPage",
+          "name": data.name || `Contact ${siteConfig.name}`,
+          "description": data.description || `Get in touch with ${siteConfig.name} for product management opportunities and consulting engagements.`,
+          "url": data.url || `${siteConfig.url}/contact`,
+          "mainEntity": data.mainEntity || {
+            "@type": "Person",
+            "name": siteConfig.name,
+            "email": "isaacavazquez95@gmail.com",
+            "url": siteConfig.url,
+          },
+          ...data,
+        };
+
+      case "ProfilePage":
+        return {
+          ...baseData,
+          "@type": "ProfilePage",
+          "name": data.name || `${siteConfig.name} - Professional Profile`,
+          "description": data.description || siteConfig.description,
+          "url": data.url || siteConfig.url,
+          "mainEntity": {
+            "@type": "Person",
+            "name": siteConfig.name,
+            "jobTitle": "Technical Product Manager & UC Berkeley MBA Candidate",
+            "description": siteConfig.description,
+            "url": siteConfig.url,
+            "image": `${siteConfig.url}${siteConfig.ogImage}`,
+            "sameAs": [
+              siteConfig.links.linkedin,
+              siteConfig.links.github,
+            ],
+          },
+          ...data,
+        };
+
+      case "Organization":
+        return {
+          ...baseData,
+          "@type": "Organization",
+          "name": data.name || "Civitech",
+          "description": data.description || "Civic technology company building voter engagement platforms",
+          "url": data.url,
+          "logo": data.logo,
+          "address": data.address,
+          "employee": data.employee,
+          "foundingDate": data.foundingDate,
+          "sameAs": data.sameAs,
+          ...data,
+        };
+
+      case "Article":
+      case "BlogPosting":
+        return {
+          ...baseData,
+          "@type": type === "BlogPosting" ? "BlogPosting" : "Article",
+          "headline": data.headline || data.title,
+          "description": data.description,
+          "image": data.image,
+          "datePublished": data.datePublished,
+          "dateModified": data.dateModified || data.datePublished,
+          "author": {
+            "@type": "Person",
+            "name": data.authorName || siteConfig.name,
+            "url": siteConfig.url,
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": siteConfig.name,
+            "url": siteConfig.url,
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": data.url || siteConfig.url,
+          },
+          "keywords": data.keywords,
+          "articleSection": data.articleSection,
+          "wordCount": data.wordCount,
+          "inLanguage": "en-US",
+          ...data,
+        };
+
+      case "JobPosting":
+        return {
+          ...baseData,
+          "@type": "JobPosting",
+          "title": data.title || "Associate Product Manager / Product Manager",
+          "description": data.description || "Seeking Product Manager or Associate Product Manager roles where I can leverage my technical background, data analytics expertise, and cross-functional leadership to build mission-driven products.",
+          "datePosted": data.datePosted || "2024-08-15",
+          "validThrough": data.validThrough || "2027-05-31",
+          "employmentType": data.employmentType || ["FULL_TIME"],
+          "hiringOrganization": {
+            "@type": "Person",
+            "name": siteConfig.name,
+            "sameAs": siteConfig.url,
+          },
+          "jobLocation": data.jobLocation || [
+            {
+              "@type": "Place",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Austin",
+                "addressRegion": "TX",
+                "addressCountry": "US"
+              }
+            },
+            {
+              "@type": "Place",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Francisco",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            },
+            {
+              "@type": "Place",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Berkeley",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            }
+          ],
+          "applicantLocationRequirements": data.applicantLocationRequirements || {
+            "@type": "Country",
+            "name": "US"
+          },
+          "jobLocationType": data.jobLocationType || "TELECOMMUTE",
+          "baseSalary": data.baseSalary || {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@type": "QuantitativeValue",
+              "minValue": 100000,
+              "maxValue": 180000,
+              "unitText": "YEAR"
+            }
+          },
+          "qualifications": data.qualifications || "MBA from UC Berkeley Haas, 6+ years experience in quality assurance and data analytics, technical product management background",
+          "skills": data.skills || "Product Strategy, Roadmapping, Cross-functional Leadership, Data Analytics, SQL, Agile/Scrum, User Research, Stakeholder Management",
+          "educationRequirements": data.educationRequirements || {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "educationalLevel": "Master's degree"
+          },
+          "experienceRequirements": data.experienceRequirements || {
+            "@type": "OccupationalExperienceRequirements",
+            "monthsOfExperience": 72
           },
           ...data,
         };

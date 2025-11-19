@@ -1,14 +1,42 @@
 # https://www.robotstxt.org/robotstxt.html
+# Isaac Vazquez Portfolio & Fantasy Football Platform
+
 User-agent: *
 Allow: /
+
+# Allow important pages for SEO
+Allow: /about
+Allow: /projects
+Allow: /resume
+Allow: /contact
+Allow: /consulting
+Allow: /blog/
+Allow: /writing/
+Allow: /fantasy-football/
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /node_modules/
 
 # Sitemap location
 Sitemap: https://isaacavazquez.com/sitemap.xml
 
-# Crawl-delay for politeness (optional)
+# Crawl-delay for politeness
 Crawl-delay: 1
 
-# Disallow crawling of development/admin areas if any
-Disallow: /api/
-Disallow: /_next/
-Disallow: /node_modules/
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: LinkedInBot
+Allow: /
+Allow: /resume
+Allow: /about
+Allow: /contact

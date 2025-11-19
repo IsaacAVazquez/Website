@@ -17,7 +17,7 @@ export const siteConfig = {
   title: "Technical Product Manager | UC Berkeley MBA Candidate | Austin & Bay Area",
   description: "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in civic tech and SaaS. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration across Austin and San Francisco Bay Area.",
   url: "https://isaacavazquez.com",
-  ogImage: "/og-image.png",
+  ogImage: "/favicon.png", // TODO: Create proper 1200x630 OG image for optimal social media sharing
   links: {
     twitter: "https://twitter.com/isaacvazquez",
     github: "https://github.com/IsaacAVazquez",
@@ -29,15 +29,19 @@ export const siteConfig = {
     "Isaac Vazquez Product Manager",
     "Isaac Vazquez UC Berkeley",
     "Isaac Vazquez Haas MBA",
+    "Isaac A Vazquez",
 
     // Core Product Management Keywords
     "Technical Product Manager",
     "Product Manager",
+    "Associate Product Manager",
+    "APM",
     "Product Strategy",
     "Product Discovery",
     "Product Operations",
     "Product-Led Growth",
     "Product Roadmapping",
+    "Product Leadership",
 
     // Location-based Keywords
     "Product Manager Austin TX",
@@ -47,6 +51,8 @@ export const siteConfig = {
     "Product Manager Berkeley CA",
     "Austin Product Leader",
     "Bay Area Product Manager",
+    "Product Manager California",
+    "Remote Product Manager",
 
     // Education & Credentials
     "UC Berkeley MBA",
@@ -55,6 +61,7 @@ export const siteConfig = {
     "MBA Product Manager",
     "MBA Candidate Product Management",
     "Consortium Fellow",
+    "Haas School of Business",
 
     // Industry & Domain Expertise
     "Civic Tech Product Manager",
@@ -62,17 +69,25 @@ export const siteConfig = {
     "Mission-Driven Product Manager",
     "Voter Engagement Technology",
     "Political Technology Product Manager",
+    "Social Impact Product Manager",
+    "B2B SaaS Product Manager",
+    "GovTech Product Manager",
 
     // Core Competencies
     "Cross-Functional Leadership",
     "Stakeholder Management",
     "Go-to-Market Strategy",
+    "GTM Strategy",
     "Data-Driven Product Decisions",
     "Product Analytics",
     "Experimentation Strategy",
     "A/B Testing Product Manager",
     "User Research",
     "Product Discovery Methods",
+    "Product Market Fit",
+    "Customer Discovery",
+    "Product Prioritization",
+    "Feature Prioritization",
 
     // Technical Background
     "Quality Engineering",
@@ -81,6 +96,7 @@ export const siteConfig = {
     "Test Automation Strategy",
     "Quality Assurance Leadership",
     "Technical Product Manager Background",
+    "Engineering Background Product Manager",
 
     // Career Development
     "Product Manager Portfolio",
@@ -88,6 +104,7 @@ export const siteConfig = {
     "Product Management Consulting",
     "Product Manager Career Transition",
     "From QA to Product Management",
+    "Career Pivot to Product Management",
 
     // Specific Skills
     "SQL for Product Managers",
@@ -96,6 +113,16 @@ export const siteConfig = {
     "Scrum Product Owner",
     "Product Metrics",
     "KPI Definition",
+    "OKR Product Management",
+    "Cypress Automation",
+    "SQL Product Manager",
+    "API Product Management",
+
+    // Job Search Keywords
+    "Product Manager Jobs Austin",
+    "Product Manager Jobs Bay Area",
+    "Product Manager Jobs San Francisco",
+    "APM Jobs",
   ],
 };
 
@@ -121,8 +148,14 @@ export function constructMetadata({
     },
     description,
     keywords: siteConfig.keywords,
-    authors: [{ name: siteConfig.name }],
+    authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,
+    publisher: siteConfig.name,
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
     openGraph: {
       type: "website",
       locale: "en_US",
@@ -145,20 +178,35 @@ export function constructMetadata({
       description,
       images: [siteConfig.url + image],
       creator: "@isaacvazquez",
+      site: "@isaacvazquez",
     },
     icons,
     metadataBase: new URL(siteConfig.url),
-    ...(canonicalUrl && {
-      alternates: {
-        canonical: canonicalUrl,
+    alternates: {
+      canonical: canonicalUrl || siteConfig.url,
+      languages: {
+        'en-US': canonicalUrl || siteConfig.url,
       },
-    }),
-    ...(noIndex && {
-      robots: {
-        index: false,
-        follow: false,
+    },
+    robots: noIndex ? {
+      index: false,
+      follow: false,
+      nocache: true,
+    } : {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
-    }),
+    },
+    verification: {
+      // Add Google Search Console verification if available
+      // google: 'your-google-site-verification-code',
+    },
   };
 }
 
