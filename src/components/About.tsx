@@ -3,6 +3,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
+import { PageSummary } from "@/components/ui/PageSummary";
+import { ExpertSignalGroup } from "@/components/ui/ExpertSignal";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { JourneyTimeline } from "@/components/ui/JourneyTimeline";
 import {
   IconUser,
@@ -21,6 +24,14 @@ export default function About() {
 
   return (
     <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+      {/* Breadcrumb Navigation */}
+      <div className="max-w-5xl mx-auto mb-8">
+        <Breadcrumb items={[
+          { label: "Home", href: "/" },
+          { label: "About", href: "/about" }
+        ]} />
+      </div>
+
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -34,6 +45,72 @@ export default function About() {
         <p className="text-lg md:text-xl text-[#4A3426] dark:text-[#D4A88E]">
           Berkeley Haas MBA Candidate '27 | Consortium Fellow | MLT Professional Development Fellow
         </p>
+      </motion.div>
+
+      {/* AI-Optimized Summary */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="max-w-5xl mx-auto mb-12"
+      >
+        <PageSummary
+          variant="featured"
+          tldr="Product-focused technologist with 6+ years in civic tech and SaaS, now pursuing MBA at UC Berkeley Haas to deepen product management expertise."
+          summary={
+            <>
+              <p>
+                <strong>Isaac Vazquez</strong> is a technical product manager bridging quality engineering, data analytics, and strategic product work. Currently at UC Berkeley Haas as an MBA Candidate (Class of '27), Isaac brings hands-on experience from Civitech (voter engagement platforms), Florida State University (policy analytics), and Open Progress (digital campaigns).
+              </p>
+              <p>
+                Recognized as a <strong>Consortium Fellow</strong> and <strong>MLT Professional Development Fellow</strong>, Isaac combines technical depth with strategic business thinking to lead mission-driven products in civic tech and SaaS.
+              </p>
+            </>
+          }
+          context="Based in Bay Area • Seeking Product Manager and APM roles • Open to civic tech, SaaS, and mission-driven startups"
+        />
+
+        {/* Expert Credentials */}
+        <div className="mt-8">
+          <ExpertSignalGroup
+            title="Credentials & Expertise"
+            variant="compact"
+            columns={2}
+            signals={[
+              {
+                type: "education",
+                label: "UC Berkeley Haas School of Business",
+                value: "MBA Candidate, Class of 2027 • Consortium Fellow • MLT Professional Development Fellow",
+                verified: true,
+              },
+              {
+                type: "education",
+                label: "Florida State University",
+                value: "Bachelor of Arts: Political Science & International Affairs",
+              },
+              {
+                type: "experience",
+                label: "Civitech - Quality Assurance Engineer",
+                value: "Leading testing for voter engagement platforms reaching 60M+ users",
+              },
+              {
+                type: "expertise",
+                label: "Product Management & Strategy",
+                value: "User Research • Roadmapping • Cross-functional Leadership • Experimentation • Go-to-Market",
+              },
+              {
+                type: "expertise",
+                label: "Technical Skills",
+                value: "Test Automation (Cypress) • SQL • API Testing • Data Analytics • Agile/Scrum",
+              },
+              {
+                type: "achievement",
+                label: "Impact & Results",
+                value: "99.999% platform uptime • 56% NPS improvement • 90% reduction in critical defects",
+              },
+            ]}
+          />
+        </div>
       </motion.div>
 
       {/* Tab Navigation */}

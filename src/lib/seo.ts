@@ -12,6 +12,22 @@ export interface ProjectStructuredData {
   applicationCategory?: string;
 }
 
+export interface AIOptimizedMetadata {
+  title: string;
+  description: string;
+  summary?: string; // Concise TL;DR for AI systems
+  expertise?: string[]; // Areas of expertise for this page
+  context?: string; // Additional context for AI understanding
+  author?: {
+    name: string;
+    title: string;
+    credentials: string[];
+  };
+  datePublished?: string;
+  dateModified?: string;
+  readingTime?: number; // Estimated reading time in minutes
+}
+
 export const siteConfig = {
   name: "Isaac Vazquez",
   title: "Technical Product Manager | UC Berkeley MBA Candidate | Austin & Bay Area",
@@ -248,4 +264,254 @@ export function generateBreadcrumbStructuredData(items: { name: string; url: str
       "item": item.url.startsWith('http') ? item.url : `${siteConfig.url}${item.url}`
     }))
   };
+}
+
+/**
+ * Generate AI-optimized metadata for pages
+ * Includes clear summaries, expertise markers, and context for AI systems
+ */
+export function generateAIOptimizedMetadata(
+  pageData: AIOptimizedMetadata
+): Metadata {
+  const {
+    title,
+    description,
+    summary,
+    expertise,
+    context,
+    author,
+    datePublished,
+    dateModified,
+    readingTime,
+  } = pageData;
+
+  // Construct enhanced description with AI-friendly structure
+  let enhancedDescription = description;
+  if (summary) {
+    enhancedDescription = `${summary} | ${description}`;
+  }
+  if (expertise && expertise.length > 0) {
+    enhancedDescription += ` | Expertise: ${expertise.join(", ")}`;
+  }
+
+  // Build metadata
+  const metadata: Metadata = {
+    title: `${title} | ${siteConfig.name}`,
+    description: enhancedDescription,
+    keywords: [
+      ...siteConfig.keywords,
+      ...(expertise || []),
+    ],
+    authors: author
+      ? [{ name: author.name, url: siteConfig.url }]
+      : [{ name: siteConfig.name, url: siteConfig.url }],
+    creator: siteConfig.name,
+    publisher: siteConfig.name,
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      url: siteConfig.url,
+      title: `${title} | ${siteConfig.name}`,
+      description: enhancedDescription,
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: `${siteConfig.url}${siteConfig.ogImage}`,
+          width: 1200,
+          height: 630,
+          alt: `${title} | ${siteConfig.name}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | ${siteConfig.name}`,
+      description: enhancedDescription,
+      images: [`${siteConfig.url}${siteConfig.ogImage}`],
+      creator: "@isaacvazquez",
+    },
+    other: {
+      // AI-specific metadata for better understanding
+      "ai:summary": summary || description,
+      "ai:expertise": expertise?.join(", ") || "",
+      "ai:context": context || "",
+      "ai:readingTime": readingTime ? `${readingTime} minutes` : "",
+      ...(datePublished && { "article:published_time": datePublished }),
+      ...(dateModified && { "article:modified_time": dateModified }),
+    },
+  };
+
+  return metadata;
+}
+
+/**
+ * Generate Person structured data with enhanced credentials
+ */
+export function generatePersonStructuredData(options?: {
+  includeCredentials?: boolean;
+  includeSocials?: boolean;
+  includeOrganizations?: boolean;
+}): object {
+  const {
+    includeCredentials = true,
+    includeSocials = true,
+    includeOrganizations = true,
+  } = options || {};
+
+  const personData: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": siteConfig.name,
+    "jobTitle": "Technical Product Manager",
+    "description": siteConfig.description,
+    "url": siteConfig.url,
+    "image": `${siteConfig.url}/og-image.png`,
+  };
+
+  if (includeSocials) {
+    personData["sameAs"] = [
+      siteConfig.links.linkedin,
+      siteConfig.links.github,
+    ];
+  }
+
+  if (includeCredentials) {
+    personData["knowsAbout"] = [
+      "Product Management",
+      "Product Strategy",
+      "Technical Product Leadership",
+      "Quality Assurance",
+      "Test Automation",
+      "Civic Technology",
+      "SaaS Platforms",
+      "Data Analytics",
+      "Cross-functional Leadership",
+      "User Research",
+      "Experimentation Strategy",
+    ];
+
+    personData["hasCredential"] = [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "degree",
+        "name": "MBA Candidate",
+        "educationalLevel": "Master's Degree",
+        "recognizedBy": {
+          "@type": "CollegeOrUniversity",
+          "name": "UC Berkeley Haas School of Business",
+        },
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "award",
+        "name": "Consortium Fellow",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "award",
+        "name": "MLT Professional Development Fellow",
+      },
+    ];
+  }
+
+  if (includeOrganizations) {
+    personData["worksFor"] = {
+      "@type": "Organization",
+      "name": "Civitech",
+      "description": "Civic technology company specializing in voter engagement platforms",
+    };
+
+    personData["alumniOf"] = [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "UC Berkeley Haas School of Business",
+        "sameAs": "https://haas.berkeley.edu",
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Florida State University",
+        "sameAs": "https://www.fsu.edu",
+      },
+    ];
+  }
+
+  return personData;
+}
+
+/**
+ * Generate Article structured data for blog posts and case studies
+ */
+export function generateArticleStructuredData(article: {
+  title: string;
+  description: string;
+  author?: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  keywords?: string[];
+  url: string;
+}): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "description": article.description,
+    "image": article.image || `${siteConfig.url}${siteConfig.ogImage}`,
+    "datePublished": article.datePublished,
+    "dateModified": article.dateModified || article.datePublished,
+    "author": {
+      "@type": "Person",
+      "name": article.author || siteConfig.name,
+      "url": siteConfig.url,
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": siteConfig.name,
+      "url": siteConfig.url,
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": article.url,
+    },
+    "keywords": article.keywords?.join(", "),
+    "inLanguage": "en-US",
+    "isAccessibleForFree": true,
+  };
+}
+
+/**
+ * Generate Organization structured data
+ */
+export function generateOrganizationStructuredData(org: {
+  name: string;
+  description: string;
+  url?: string;
+  logo?: string;
+  location?: string;
+  foundingDate?: string;
+}): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": org.name,
+    "description": org.description,
+    "url": org.url,
+    "logo": org.logo,
+    "foundingDate": org.foundingDate,
+    ...(org.location && {
+      "location": {
+        "@type": "Place",
+        "name": org.location,
+      },
+    }),
+  };
+}
+
+/**
+ * Calculate estimated reading time from text content
+ */
+export function calculateReadingTime(text: string): number {
+  const wordsPerMinute = 200;
+  const words = text.trim().split(/\s+/).length;
+  return Math.ceil(words / wordsPerMinute);
 }

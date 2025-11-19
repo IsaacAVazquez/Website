@@ -1,6 +1,6 @@
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, generatePersonStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
@@ -54,8 +54,17 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
         <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#00F5FF" />
         
-        {/* Structured Data */}
-        <StructuredData type="Person" />
+        {/* Enhanced Person Structured Data for AI Discovery */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generatePersonStructuredData({
+              includeCredentials: true,
+              includeSocials: true,
+              includeOrganizations: true,
+            })),
+          }}
+        />
         <StructuredData type="WebSite" />
 
         {/* FAQ Structured Data for better SEO */}
