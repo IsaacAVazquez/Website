@@ -1,6 +1,6 @@
 {
   "week": 11,
-  "generatedAt": "2025-11-16T09:36:00-08:00",
+  "generatedAt": "2025-11-19T17:11:29.465Z",
   "season": "2025",
   "scoringFormat": "PPR",
   "players": [
@@ -8,7 +8,7 @@
       "name": "Christian McCaffrey",
       "team": "SF",
       "avgRank": 1.2,
-      "consensusRank": 1.0,
+      "consensusRank": 1,
       "tier": 1,
       "stdDev": 0.4
     },
@@ -16,7 +16,7 @@
       "name": "Saquon Barkley",
       "team": "PHI",
       "avgRank": 2.1,
-      "consensusRank": 2.0,
+      "consensusRank": 2,
       "tier": 1,
       "stdDev": 0.5
     },
@@ -24,7 +24,7 @@
       "name": "Breece Hall",
       "team": "NYJ",
       "avgRank": 3.3,
-      "consensusRank": 3.0,
+      "consensusRank": 3,
       "tier": 1,
       "stdDev": 0.8
     },
@@ -32,297 +32,9 @@
       "name": "Bijan Robinson",
       "team": "ATL",
       "avgRank": 4.1,
-      "consensusRank": 4.0,
+      "consensusRank": 4,
       "tier": 1,
       "stdDev": 0.6
-    },
-    {
-      "name": "Jahmyr Gibbs",
-      "team": "DET",
-      "avgRank": 5.5,
-      "consensusRank": 5.0,
-      "tier": 2,
-      "stdDev": 1.2
-    },
-    {
-      "name": "Jonathan Taylor",
-      "team": "IND",
-      "avgRank": 6.2,
-      "consensusRank": 6.0,
-      "tier": 2,
-      "stdDev": 1.1
-    },
-    {
-      "name": "Derrick Henry",
-      "team": "BAL",
-      "avgRank": 7.8,
-      "consensusRank": 7.0,
-      "tier": 2,
-      "stdDev": 1.5
-    },
-    {
-      "name": "Kyren Williams",
-      "team": "LAR",
-      "avgRank": 8.4,
-      "consensusRank": 8.0,
-      "tier": 2,
-      "stdDev": 1.3
-    },
-    {
-      "name": "De'Von Achane",
-      "team": "MIA",
-      "avgRank": 9.6,
-      "consensusRank": 9.0,
-      "tier": 2,
-      "stdDev": 2.1
-    },
-    {
-      "name": "Travis Etienne",
-      "team": "JAX",
-      "avgRank": 10.3,
-      "consensusRank": 10.0,
-      "tier": 3,
-      "stdDev": 1.8
-    },
-    {
-      "name": "Kenneth Walker III",
-      "team": "SEA",
-      "avgRank": 11.7,
-      "consensusRank": 11.0,
-      "tier": 3,
-      "stdDev": 2.2
-    },
-    {
-      "name": "Rachaad White",
-      "team": "TB",
-      "avgRank": 12.9,
-      "consensusRank": 12.0,
-      "tier": 3,
-      "stdDev": 2.5
-    },
-    {
-      "name": "Josh Jacobs",
-      "team": "GB",
-      "avgRank": 13.2,
-      "consensusRank": 13.0,
-      "tier": 3,
-      "stdDev": 2.0
-    },
-    {
-      "name": "Isiah Pacheco",
-      "team": "KC",
-      "avgRank": 14.8,
-      "consensusRank": 14.0,
-      "tier": 3,
-      "stdDev": 2.7
-    },
-    {
-      "name": "Najee Harris",
-      "team": "PIT",
-      "avgRank": 15.5,
-      "consensusRank": 15.0,
-      "tier": 4,
-      "stdDev": 2.3
-    },
-    {
-      "name": "Aaron Jones",
-      "team": "MIN",
-      "avgRank": 16.1,
-      "consensusRank": 16.0,
-      "tier": 4,
-      "stdDev": 2.9
-    },
-    {
-      "name": "James Cook",
-      "team": "BUF",
-      "avgRank": 17.4,
-      "consensusRank": 17.0,
-      "tier": 4,
-      "stdDev": 3.1
-    },
-    {
-      "name": "Rhamondre Stevenson",
-      "team": "NE",
-      "avgRank": 18.6,
-      "consensusRank": 18.0,
-      "tier": 4,
-      "stdDev": 3.5
-    },
-    {
-      "name": "D'Andre Swift",
-      "team": "CHI",
-      "avgRank": 19.8,
-      "consensusRank": 19.0,
-      "tier": 4,
-      "stdDev": 3.2
-    },
-    {
-      "name": "Joe Mixon",
-      "team": "HOU",
-      "avgRank": 20.2,
-      "consensusRank": 20.0,
-      "tier": 5,
-      "stdDev": 3.8
-    },
-    {
-      "name": "David Montgomery",
-      "team": "DET",
-      "avgRank": 21.5,
-      "consensusRank": 21.0,
-      "tier": 5,
-      "stdDev": 4.1
-    },
-    {
-      "name": "Alvin Kamara",
-      "team": "NO",
-      "avgRank": 22.3,
-      "consensusRank": 22.0,
-      "tier": 5,
-      "stdDev": 4.3
-    },
-    {
-      "name": "Tony Pollard",
-      "team": "TEN",
-      "avgRank": 23.7,
-      "consensusRank": 23.0,
-      "tier": 5,
-      "stdDev": 4.6
-    },
-    {
-      "name": "James Conner",
-      "team": "ARI",
-      "avgRank": 24.1,
-      "consensusRank": 24.0,
-      "tier": 5,
-      "stdDev": 4.2
-    },
-    {
-      "name": "Zach Charbonnet",
-      "team": "SEA",
-      "avgRank": 25.4,
-      "consensusRank": 25.0,
-      "tier": 6,
-      "stdDev": 5.1
-    },
-    {
-      "name": "Javonte Williams",
-      "team": "DEN",
-      "avgRank": 26.8,
-      "consensusRank": 26.0,
-      "tier": 6,
-      "stdDev": 5.3
-    },
-    {
-      "name": "Brian Robinson Jr.",
-      "team": "WAS",
-      "avgRank": 27.2,
-      "consensusRank": 27.0,
-      "tier": 6,
-      "stdDev": 5.5
-    },
-    {
-      "name": "Tyjae Spears",
-      "team": "TEN",
-      "avgRank": 28.9,
-      "consensusRank": 28.0,
-      "tier": 6,
-      "stdDev": 5.8
-    },
-    {
-      "name": "Zack Moss",
-      "team": "CIN",
-      "avgRank": 29.5,
-      "consensusRank": 29.0,
-      "tier": 6,
-      "stdDev": 6.0
-    },
-    {
-      "name": "Alexander Mattison",
-      "team": "LV",
-      "avgRank": 30.3,
-      "consensusRank": 30.0,
-      "tier": 7,
-      "stdDev": 6.2
-    },
-    {
-      "name": "Jerome Ford",
-      "team": "CLE",
-      "avgRank": 31.7,
-      "consensusRank": 31.0,
-      "tier": 7,
-      "stdDev": 6.5
-    },
-    {
-      "name": "Gus Edwards",
-      "team": "LAC",
-      "avgRank": 32.1,
-      "consensusRank": 32.0,
-      "tier": 7,
-      "stdDev": 6.8
-    },
-    {
-      "name": "Raheem Mostert",
-      "team": "MIA",
-      "avgRank": 33.4,
-      "consensusRank": 33.0,
-      "tier": 7,
-      "stdDev": 7.1
-    },
-    {
-      "name": "Dameon Pierce",
-      "team": "HOU",
-      "avgRank": 34.8,
-      "consensusRank": 34.0,
-      "tier": 7,
-      "stdDev": 7.4
-    },
-    {
-      "name": "Chuba Hubbard",
-      "team": "CAR",
-      "avgRank": 35.2,
-      "consensusRank": 35.0,
-      "tier": 8,
-      "stdDev": 7.6
-    },
-    {
-      "name": "Miles Sanders",
-      "team": "CAR",
-      "avgRank": 36.5,
-      "consensusRank": 36.0,
-      "tier": 8,
-      "stdDev": 7.9
-    },
-    {
-      "name": "Tyler Allgeier",
-      "team": "ATL",
-      "avgRank": 37.1,
-      "consensusRank": 37.0,
-      "tier": 8,
-      "stdDev": 8.2
-    },
-    {
-      "name": "Roschon Johnson",
-      "team": "CHI",
-      "avgRank": 38.6,
-      "consensusRank": 38.0,
-      "tier": 8,
-      "stdDev": 8.5
-    },
-    {
-      "name": "AJ Dillon",
-      "team": "GB",
-      "avgRank": 39.3,
-      "consensusRank": 39.0,
-      "tier": 8,
-      "stdDev": 8.7
-    },
-    {
-      "name": "Ezekiel Elliott",
-      "team": "NE",
-      "avgRank": 40.1,
-      "consensusRank": 40.0,
-      "tier": 8,
-      "stdDev": 9.0
     }
   ]
 }
