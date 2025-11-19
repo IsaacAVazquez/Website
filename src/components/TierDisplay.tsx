@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TierGroup } from '@/lib/tierImageGenerator';
 import { WarmCard } from '@/components/ui/WarmCard';
 import { Heading } from '@/components/ui/Heading';
 import { motion } from 'framer-motion';
 import { ThumbnailImage } from '@/components/ui/OptimizedImage';
-import { usePlayerImageCache } from '@/hooks/usePlayerImageCache';
 
 interface TierDisplayProps {
   tierGroups: TierGroup[];
@@ -15,21 +14,6 @@ interface TierDisplayProps {
 }
 
 export function TierDisplay({ tierGroups, position: _position, showImages = true }: TierDisplayProps) {
-  // Use the cached image service
-  const { preloadImages, getCachedImage, isLoading } = usePlayerImageCache();
-
-  // Preload images for only visible players to avoid performance issues
-  useEffect(() => {
-    if (!showImages || tierGroups.length === 0) return;
-
-    // Only preload images for first 30 players to avoid overwhelming the browser
-    const playersToPreload = tierGroups
-      .flatMap(tierGroup => tierGroup.players)
-      .slice(0, 30);
-    
-    // Preload images using the cache
-    preloadImages(playersToPreload);
-  }, [tierGroups, showImages, preloadImages]);
 
   return (
     <div className="space-y-8">
@@ -84,9 +68,9 @@ export function TierDisplay({ tierGroups, position: _position, showImages = true
                     {showImages && (
                       <div className="flex-shrink-0">
                         <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-terminal-border">
-                          {getCachedImage(`${player.name}-${player.team}`) ? (
+                          {player.headshotUrl ? (
                             <ThumbnailImage
-                              src={getCachedImage(`${player.name}-${player.team}`) || ''}
+                              src={player.headshotUrl}
                               alt={player.name || 'Player'}
                               width={48}
                               height={48}
@@ -94,15 +78,11 @@ export function TierDisplay({ tierGroups, position: _position, showImages = true
                               objectFit="cover"
                             />
                           ) : (
-                            <div 
-                              className="w-full h-full flex items-center justify-center text-xs font-bold"
+                            <div
+                              className="w-full h-full flex items-center justify-center text-xs font-bold text-white"
                               style={{ backgroundColor: tierGroup.color }}
                             >
-                              {isLoading(`${player.name}-${player.team}`) ? (
-                                <div className="w-4 h-4 border border-white border-t-transparent rounded-full animate-spin"></div>
-                              ) : (
-                                (player.name || 'XX').split(' ').map((n: string) => n[0]).join('')
-                              )}
+                              {(player.name || 'XX').split(' ').map((n: string) => n[0]).join('')}
                             </div>
                           )}
                         </div>
