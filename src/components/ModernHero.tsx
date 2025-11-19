@@ -33,7 +33,7 @@ export function ModernHero() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-black"
+      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden bg-white dark:bg-black py-16 md:py-20"
       role="main"
       aria-label="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
     >
@@ -47,22 +47,22 @@ export function ModernHero() {
       />
 
       <motion.div
-        className="relative z-10 w-full container-wide pentagram-section"
+        className="relative z-10 w-full container-wide"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Mouthwash Studio layout - generous whitespace */}
-        <div className="max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-start">
+        <div className="max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-start">
 
           {/* Left Column - Bold Monochrome Typography */}
-          <div className="space-y-12 lg:space-y-16">
+          <div className="space-y-6 lg:space-y-8">
             {/* Oversized Grotesk Heading - Pure Black */}
             <motion.div variants={itemVariants}>
               <h1 className="editorial-heading text-black dark:text-white">
                 Isaac Vazquez
               </h1>
-              <p className="editorial-subheading text-neutral-500 dark:text-neutral-400 mt-6">
+              <p className="editorial-subheading text-neutral-500 dark:text-neutral-400 mt-3">
                 Technical Product Manager & UC Berkeley Haas MBA Candidate
               </p>
             </motion.div>
@@ -94,7 +94,7 @@ export function ModernHero() {
             {/* Minimal Monochrome CTAs */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap gap-4 pt-6"
+              className="flex flex-wrap gap-4 pt-2"
             >
               <Link href="/resume">
                 <ModernButton variant="primary" size="lg">
@@ -127,7 +127,7 @@ export function ModernHero() {
             </div>
 
             {/* Minimal Caption - Mid Grey */}
-            <p className="editorial-caption mt-6 text-neutral-500 dark:text-neutral-400">
+            <p className="editorial-caption mt-3 text-neutral-500 dark:text-neutral-400">
               Isaac Vazquez, MBA Candidate at UC Berkeley Haas School of Business
             </p>
           </motion.div>

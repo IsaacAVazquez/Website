@@ -1468,21 +1468,21 @@ textarea:valid:not(:placeholder-shown) {
 
 /* Premium Spacing System - Generous whitespace for editorial feel */
 .pentagram-section {
-  padding-top: 5rem;    /* 80px */
-  padding-bottom: 5rem;
+  padding-top: 3rem;    /* 48px */
+  padding-bottom: 3rem;
 }
 
 @media (min-width: 768px) {
   .pentagram-section {
-    padding-top: 7rem;  /* 112px */
-    padding-bottom: 7rem;
+    padding-top: 4rem;  /* 64px */
+    padding-bottom: 4rem;
   }
 }
 
 @media (min-width: 1280px) {
   .pentagram-section {
-    padding-top: 10rem;  /* 160px */
-    padding-bottom: 10rem;
+    padding-top: 5rem;  /* 80px */
+    padding-bottom: 5rem;
   }
 }
 
@@ -1492,7 +1492,7 @@ textarea:valid:not(:placeholder-shown) {
   font-weight: 700;              /* Bold, not black */
   line-height: 1;                /* Very tight */
   letter-spacing: -0.04em;       /* Tight grotesk tracking */
-  margin-bottom: 2rem;           /* Generous spacing */
+  margin-bottom: 1rem;           /* Generous spacing */
 }
 
 .editorial-subheading {
@@ -1500,7 +1500,7 @@ textarea:valid:not(:placeholder-shown) {
   font-weight: 600;              /* Semibold */
   line-height: 1.2;              /* Tight but readable */
   letter-spacing: -0.03em;       /* Tight tracking */
-  margin-bottom: 1.5rem;         /* Generous spacing */
+  margin-bottom: 1rem;           /* Generous spacing */
 }
 
 .editorial-body {
@@ -1524,18 +1524,18 @@ textarea:valid:not(:placeholder-shown) {
 /* Structured Grid System - Clean, modular layouts */
 .pentagram-grid {
   display: grid;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .pentagram-grid {
-    gap: 3rem;
+    gap: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .pentagram-grid {
-    gap: 4rem;
+    gap: 2.5rem;
   }
 }
 
@@ -1569,7 +1569,7 @@ textarea:valid:not(:placeholder-shown) {
 .pentagram-card {
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 2.5rem;
+  padding: 1.5rem;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -1591,13 +1591,13 @@ textarea:valid:not(:placeholder-shown) {
 
 @media (min-width: 768px) {
   .pentagram-card {
-    padding: 3.5rem;
+    padding: 2rem;
   }
 }
 
 @media (min-width: 1280px) {
   .pentagram-card {
-    padding: 4rem;
+    padding: 2.5rem;
   }
 }
 
@@ -1606,7 +1606,7 @@ textarea:valid:not(:placeholder-shown) {
   width: 100%;
   height: 1px;
   background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
-  margin: 4rem 0;
+  margin: 2rem 0;
 }
 
 .dark .pentagram-divider {
@@ -1615,13 +1615,13 @@ textarea:valid:not(:placeholder-shown) {
 
 @media (min-width: 768px) {
   .pentagram-divider {
-    margin: 6rem 0;
+    margin: 3rem 0;
   }
 }
 
 @media (min-width: 1280px) {
   .pentagram-divider {
-    margin: 8rem 0;
+    margin: 4rem 0;
   }
 }
 
