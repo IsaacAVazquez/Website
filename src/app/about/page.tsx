@@ -44,6 +44,16 @@ export default function AboutPage() {
         data={{ items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement }}
       />
 
+      {/* ProfilePage Schema for About Page */}
+      <StructuredData
+        type="ProfilePage"
+        data={{
+          name: "About Isaac Vazquez - Product Manager Profile",
+          description: "Learn about Isaac Vazquez's journey from quality engineering to product management, including his experience at Civitech, Florida State University, and UC Berkeley Haas MBA program.",
+          url: "https://isaacavazquez.com/about",
+        }}
+      />
+
       {/* Person Schema with detailed background */}
       <StructuredData
         type="Person"

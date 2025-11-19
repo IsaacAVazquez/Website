@@ -10,12 +10,7 @@ module.exports = {
     '/api/*',
     '/_next/*',
     '/404',
-    '/newsletter',
-    '/testimonials',
-    '/fantasy-football/*',
     '/admin/*',
-    '/notes',
-    '/faq'
   ],
   
   // Additional paths configuration
@@ -79,6 +74,61 @@ module.exports = {
       loc: '/blog',
       changefreq: 'weekly',
       priority: 0.85,
+      lastmod: new Date().toISOString(),
+    })
+
+    // Fantasy Football pages - Lower priority but valuable content
+    result.push({
+      loc: '/fantasy-football',
+      changefreq: 'weekly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    })
+
+    // Fantasy Football tier pages
+    const positions = ['qb', 'rb', 'wr', 'te', 'k', 'dst', 'flex']
+    positions.forEach(position => {
+      result.push({
+        loc: `/fantasy-football/tiers/${position}`,
+        changefreq: 'weekly',
+        priority: 0.5,
+        lastmod: new Date().toISOString(),
+      })
+    })
+
+    result.push({
+      loc: '/fantasy-football/draft-tracker',
+      changefreq: 'monthly',
+      priority: 0.5,
+      lastmod: new Date().toISOString(),
+    })
+
+    // Content pages
+    result.push({
+      loc: '/newsletter',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    })
+
+    result.push({
+      loc: '/testimonials',
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date().toISOString(),
+    })
+
+    result.push({
+      loc: '/faq',
+      changefreq: 'monthly',
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
+    })
+
+    result.push({
+      loc: '/notes',
+      changefreq: 'weekly',
+      priority: 0.5,
       lastmod: new Date().toISOString(),
     })
 

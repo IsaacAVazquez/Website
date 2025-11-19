@@ -23,7 +23,7 @@ export default function ResumePage() {
       />
       
       {/* Resume/Professional Profile Schema */}
-      <StructuredData 
+      <StructuredData
         type="Person"
         data={{
           name: "Isaac Vazquez",
@@ -46,7 +46,7 @@ export default function ResumePage() {
               "description": "MBA candidate, expected May 2027"
             },
             {
-              "@type": "CollegeOrUniversity", 
+              "@type": "CollegeOrUniversity",
               "name": "Florida State University",
               "description": "Bachelor of Arts, Political Science and International Affairs, magna cum laude"
             }
@@ -56,6 +56,19 @@ export default function ResumePage() {
             "name": "Product Manager",
             "description": "Technical Product Manager with 6+ years experience in product development, cross-functional leadership, and system reliability"
           }
+        }}
+      />
+
+      {/* JobPosting Schema - Seeking PM/APM Roles */}
+      <StructuredData
+        type="JobPosting"
+        data={{
+          title: "Seeking: Associate Product Manager / Product Manager",
+          description: "UC Berkeley Haas MBA Candidate '27 seeking Product Manager or Associate Product Manager roles in Austin TX or San Francisco Bay Area. 6+ years experience in quality assurance leadership, data analytics, and civic tech. Technical background with expertise in product strategy, cross-functional collaboration, SQL, test automation (Cypress), and Agile methodologies. Passionate about building mission-driven products in civic tech, SaaS, and social impact sectors.",
+          datePosted: "2024-08-15",
+          validThrough: "2027-05-31",
+          employmentType: ["FULL_TIME"],
+          jobLocationType: "TELECOMMUTE",
         }}
       />
 
