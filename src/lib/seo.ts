@@ -234,7 +234,7 @@ export function constructMetadata({
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
-    }),
+    },
     // Add AI-specific meta tags
     other: {
       ...aiTags,

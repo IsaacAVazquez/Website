@@ -117,7 +117,7 @@ export function ModernHero() {
             {/* Mouthwash Studio Image Block - thin border */}
             <div className="pentagram-image-wrapper pentagram-aspect-portrait lg:pentagram-aspect-square overflow-hidden border border-neutral-200 dark:border-neutral-600">
               <Image
-                src="/images/headshot-new.jpg"
+                src="/images/headshot-new.png"
                 alt="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
                 fill
                 priority

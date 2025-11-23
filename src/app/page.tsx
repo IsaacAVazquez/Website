@@ -1,3 +1,5 @@
+"use client";
+
 import { constructMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import HomeContent from "@/components/HomeContent";
@@ -9,8 +11,6 @@ import { motion } from "framer-motion";
 import { personalMetrics } from "@/constants/personal";
 import Image from "next/image";
 import { IconCode } from "@tabler/icons-react";
-
-// Note: Metadata is defined in metadata.ts and imported by Next.js automatically
 
 // Clean Timeline Item Component - Pentagram Style
 const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTimeline[0]; index: number }) => {
@@ -152,10 +152,6 @@ export default function Home() {
       <div className="pentagram-divider" aria-hidden="true" />
 
       {/* Overview Section - Clean Editorial Layout */}
-      <section
-        className="pentagram-section bg-white dark:bg-[#1C1410]"
-        aria-labelledby="overview-heading"
-      >
       <section className="pentagram-section bg-white dark:bg-[#1C1410]" aria-labelledby="overview-heading">
         <div className="container-wide">
           <motion.div
@@ -166,10 +162,6 @@ export default function Home() {
             className="max-w-6xl mx-auto"
           >
             {/* Section Header */}
-            <h2
-              id="overview-heading"
-              className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-6"
-            >
             <h2 id="overview-heading" className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-6">
               Overview
             </h2>
@@ -283,22 +275,12 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-export const metadata = constructMetadata({
-  title: "Isaac Vazquez - Technical Product Manager | UC Berkeley MBA Candidate",
-  description: "Product Manager & UC Berkeley Haas MBA Candidate '27 seeking APM/PM roles in Austin TX and San Francisco Bay Area. 6+ years experience in civic tech, SaaS, quality assurance leadership, and data analytics. Technical background with expertise in product strategy, cross-functional collaboration, and data-driven decision making.",
-  canonicalUrl: "/",
-});
 
-export default function Home() {
-  return (
-    <>
       {/* ProfilePage Structured Data for Homepage */}
       <StructuredData type="ProfilePage" />
 
       {/* Bottom Spacing */}
       <div className="h-8" aria-hidden="true" />
     </main>
-      <HomeContent />
-    </>
   );
 }
