@@ -9,9 +9,27 @@ import { ModernButton } from "@/components/ui/ModernButton";
 import { FAQSection } from "@/components/FAQ/FAQSection";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Frequently Asked Questions - QA Engineering, Business Strategy & MBA Insights",
-  description: "Get insights into QA engineering, business strategy, UC Berkeley MBA experiences, and connecting for meaningful conversations about technology, strategy, and impact with Isaac Vazquez.",
+  title: "FAQ - Product Management, Strategy & UC Berkeley MBA | Isaac Vazquez",
+  description: "Frequently asked questions about product management, product strategy, cross-functional leadership, and UC Berkeley Haas MBA experiences. Learn about Isaac Vazquez's approach to data-driven product decisions, user research, go-to-market strategy, and transitioning from engineering to product management.",
   canonicalUrl: "https://isaacavazquez.com/faq",
+  aiMetadata: {
+    expertise: [
+      "Product Management",
+      "Product Strategy",
+      "Product Discovery",
+      "Cross-functional Leadership",
+      "Data-Driven Decisions",
+      "User Research",
+      "Go-to-Market Strategy",
+    ],
+    specialty: "Technical Product Management",
+    profession: "Product Manager",
+    industry: ["Technology", "SaaS", "Civic Tech"],
+    topics: ["Product Management", "MBA", "Career Transition", "Technical PM"],
+    contentType: "FAQ",
+    context: "UC Berkeley Haas MBA Candidate with 6+ years in product and quality engineering",
+    primaryFocus: "Product Management Career and Strategy Insights",
+  },
 });
 
 // FAQ Data with structured format
