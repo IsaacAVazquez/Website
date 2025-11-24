@@ -27,6 +27,27 @@ interface ProjectDetailModalProps {
     challenges?: string[];
     impact?: string;
     timeline?: string;
+    // Problem-Process-Result Framework
+    problem?: {
+      context: string;
+      painPoints: string[];
+      stakes: string;
+    };
+    process?: {
+      approach: string;
+      methodology: string[];
+      decisions: string[];
+      collaboration?: string;
+    };
+    result?: {
+      outcomes: string[];
+      testimonial?: {
+        quote: string;
+        author: string;
+        role: string;
+      };
+      lessonsLearned?: string[];
+    };
   } | null;
   isOpen: boolean;
   onClose: () => void;
@@ -161,6 +182,138 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                     </h3>
                     <div className="p-4 bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 border-2 border-[#6BCF7F]/20 dark:border-[#6BCF7F]/30 rounded-lg">
                       <p className="text-[#4A3426] dark:text-[#D4A88E]">{project.impact}</p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Problem-Process-Result Framework */}
+                {project.problem && (
+                  <div className="space-y-6">
+                    <div className="border-t-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 pt-6">
+                      <h3 className="text-xl font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-6">📋 Full Case Study</h3>
+
+                      {/* Problem Section */}
+                      <div className="mb-8">
+                        <h4 className="text-lg font-semibold text-[#4A3426] dark:text-[#FFE4D6] mb-3 flex items-center gap-2">
+                          <span className="text-2xl">🎯</span>
+                          The Problem
+                        </h4>
+                        <div className="space-y-4">
+                          <div className="p-4 bg-[#FFF8F0] dark:bg-[#4A3426]/30 rounded-lg border-l-4 border-[#FF6B35]">
+                            <p className="text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">{project.problem.context}</p>
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Key Pain Points:</p>
+                            <ul className="space-y-2">
+                              {project.problem.painPoints.map((point, index) => (
+                                <li key={index} className="flex items-start gap-3">
+                                  <div className="w-2 h-2 rounded-full bg-[#FF6B35] mt-2 flex-shrink-0" />
+                                  <span className="text-[#4A3426] dark:text-[#D4A88E]">{point}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div className="p-4 bg-[#FFB020]/10 dark:bg-[#FFB020]/20 rounded-lg border-l-4 border-[#FFB020]">
+                            <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-1">Stakes:</p>
+                            <p className="text-[#4A3426] dark:text-[#D4A88E] italic">{project.problem.stakes}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Process Section */}
+                      {project.process && (
+                        <div className="mb-8">
+                          <h4 className="text-lg font-semibold text-[#4A3426] dark:text-[#FFE4D6] mb-3 flex items-center gap-2">
+                            <span className="text-2xl">⚙️</span>
+                            The Process
+                          </h4>
+                          <div className="space-y-4">
+                            <div className="p-4 bg-[#FFF8F0] dark:bg-[#4A3426]/30 rounded-lg border-l-4 border-[#F7B32B]">
+                              <p className="text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">{project.process.approach}</p>
+                            </div>
+                            <div>
+                              <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Methodology:</p>
+                              <ul className="space-y-2">
+                                {project.process.methodology.map((method, index) => (
+                                  <li key={index} className="flex items-start gap-3">
+                                    <div className="w-6 h-6 rounded-full bg-[#F7B32B] text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                                      {index + 1}
+                                    </div>
+                                    <span className="text-[#4A3426] dark:text-[#D4A88E]">{method}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Key Decisions:</p>
+                              <ul className="space-y-2">
+                                {project.process.decisions.map((decision, index) => (
+                                  <li key={index} className="flex items-start gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-[#FF8E53] mt-2 flex-shrink-0" />
+                                    <span className="text-[#4A3426] dark:text-[#D4A88E]">{decision}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            {project.process.collaboration && (
+                              <div className="p-4 bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 rounded-lg border-l-4 border-[#6BCF7F]">
+                                <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-1">Collaboration:</p>
+                                <p className="text-[#4A3426] dark:text-[#D4A88E]">{project.process.collaboration}</p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Result Section */}
+                      {project.result && (
+                        <div>
+                          <h4 className="text-lg font-semibold text-[#4A3426] dark:text-[#FFE4D6] mb-3 flex items-center gap-2">
+                            <span className="text-2xl">🎉</span>
+                            The Results
+                          </h4>
+                          <div className="space-y-4">
+                            <div>
+                              <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Outcomes Achieved:</p>
+                              <ul className="space-y-2">
+                                {project.result.outcomes.map((outcome, index) => (
+                                  <li key={index} className="flex items-start gap-3">
+                                    <div className="w-6 h-6 rounded-full bg-[#6BCF7F] text-white flex items-center justify-center text-lg flex-shrink-0">
+                                      ✓
+                                    </div>
+                                    <span className="text-[#4A3426] dark:text-[#D4A88E] font-medium">{outcome}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            {project.result.testimonial && (
+                              <div className="p-6 bg-gradient-to-br from-[#FF6B35]/5 to-[#F7B32B]/5 dark:from-[#FF8E53]/10 dark:to-[#FFC857]/10 rounded-lg border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
+                                <p className="text-lg text-[#4A3426] dark:text-[#D4A88E] italic mb-4">"{project.result.testimonial.quote}"</p>
+                                <div className="flex items-center gap-3">
+                                  <div className="w-1 h-12 bg-gradient-to-b from-[#FF6B35] to-[#F7B32B]" />
+                                  <div>
+                                    <p className="font-semibold text-[#4A3426] dark:text-[#FFE4D6]">{project.result.testimonial.author}</p>
+                                    <p className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">{project.result.testimonial.role}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            {project.result.lessonsLearned && (
+                              <div>
+                                <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Lessons Learned:</p>
+                                <ul className="space-y-2">
+                                  {project.result.lessonsLearned.map((lesson, index) => (
+                                    <li key={index} className="flex items-start gap-3">
+                                      <div className="w-2 h-2 rounded-full bg-[#FFB020] mt-2 flex-shrink-0" />
+                                      <span className="text-[#4A3426] dark:text-[#D4A88E]">{lesson}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}

@@ -155,6 +155,29 @@ export function FloatingNav() {
                 </Link>
               );
             })}
+
+            {/* CTA Button - Let's Talk */}
+            <div className="relative ml-2 pl-2 border-l-2 border-[#FFE4D6]/50 dark:border-[#FF8E53]/20">
+              <Link
+                href="/contact"
+                aria-label="Contact Isaac Vazquez"
+              >
+                <motion.button
+                  className="relative px-5 py-2 bg-gradient-to-br from-[#FF6B35] to-[#F7B32B] dark:from-[#FF8E53] dark:to-[#FFC857] text-white font-semibold rounded-xl shadow-warm-lg min-h-[44px] whitespace-nowrap text-sm"
+                  whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(255, 107, 53, 0.3)" }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    delay: navlinks.length * 0.1,
+                    type: "spring",
+                    stiffness: 300
+                  }}
+                >
+                  Let&apos;s Talk
+                </motion.button>
+              </Link>
+            </div>
           </div>
         </motion.nav>
       )}
