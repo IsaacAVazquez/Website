@@ -120,6 +120,16 @@ export const Footer = () => {
           <FaGithub size={20} aria-hidden="true" />
         </motion.a>
       </motion.nav>
+
+      {/* Accessibility Statement Link */}
+      <div className="mt-3 text-center">
+        <Link
+          href="/accessibility"
+          className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors underline"
+        >
+          Accessibility Statement
+        </Link>
+      </div>
       </div>
     </motion.footer>
   );

@@ -126,6 +126,13 @@ module.exports = {
     })
 
     result.push({
+      loc: '/accessibility',
+      changefreq: 'yearly',
+      priority: 0.5,
+      lastmod: new Date().toISOString(),
+    })
+
+    result.push({
       loc: '/notes',
       changefreq: 'weekly',
       priority: 0.5,
