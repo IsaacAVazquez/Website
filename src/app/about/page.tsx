@@ -1,40 +1,10 @@
-import { constructMetadata } from "@/lib/seo";
 import { AIStructuredData } from "@/components/AIStructuredData";
-import { generateAIOptimizedMetadata, generatePersonStructuredData } from "@/lib/seo";
+import { generateAIOptimizedMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import About from "@/components/About";
 
 export const metadata = generateAIOptimizedMetadata({
   title: "About Isaac Vazquez | Product Manager & UC Berkeley MBA Candidate",
-  description:
-    "Bay Area-based product manager pursuing MBA at UC Berkeley Haas. Building mission-driven products that balance user insight, data, and disciplined execution. Former QA engineer with 6+ years experience in civic tech and SaaS.",
-  canonicalUrl: "/about",
-  aiMetadata: {
-    profession: "Technical Product Manager",
-    specialty: "Product Management, Quality Engineering, MBA Education",
-    expertise: [
-      "Product Strategy",
-      "Product Discovery",
-      "User Research",
-      "Quality Assurance Leadership",
-      "Data Analysis",
-      "Cross-functional Collaboration",
-    ],
-    industry: ["Civic Technology", "SaaS", "Education Technology"],
-    topics: [
-      "Product Management Career",
-      "Quality Engineering Background",
-      "UC Berkeley Haas MBA",
-      "Civic Tech Experience",
-      "Career Transition Story",
-    ],
-    contentType: "Professional Profile Page",
-    context:
-      "Detailed professional profile of Isaac Vazquez, showcasing his career journey from Political Science graduate to QA engineer to product manager, now pursuing MBA at UC Berkeley Haas.",
-    summary:
-      "Comprehensive professional background including education at UC Berkeley Haas and Florida State University, professional experience at Civitech and Open Progress, expertise in product management and quality engineering, and career trajectory in civic technology.",
-    primaryFocus:
-      "Professional background, career journey, education, and product management expertise",
   description: "Bay Area-based product manager pursuing MBA at UC Berkeley Haas. Building mission-driven products that balance user insight, data, and disciplined execution. Former QA engineer with 6+ years experience in civic tech and SaaS.",
   summary: "Technical Product Manager with 6+ years in civic tech and SaaS, currently pursuing MBA at UC Berkeley Haas",
   expertise: [
@@ -133,6 +103,9 @@ export default function AboutPage() {
               ],
             },
           },
+        }}
+      />
+
       {/* ProfilePage Schema for About Page */}
       <StructuredData
         type="ProfilePage"
