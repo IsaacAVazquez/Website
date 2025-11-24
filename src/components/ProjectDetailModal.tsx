@@ -7,6 +7,7 @@ import { WarmCard } from '@/components/ui/WarmCard';
 import { ModernButton } from '@/components/ui/ModernButton';
 import { Badge } from '@/components/ui/Badge';
 import { ProjectImage } from '@/components/ui/OptimizedImage';
+import { MetricCallout, MetricGrid } from '@/components/ui/MetricCallout';
 
 interface ProjectDetailModalProps {
   project: {
@@ -140,21 +141,23 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                   </div>
                 </div>
 
-                {/* Metrics */}
+                {/* Metrics - Enhanced with MetricCallout */}
                 {project.detailedMetrics && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[#FF6B35] dark:text-[#FF8E53] mb-4">Key Metrics</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <h3 className="text-lg font-semibold text-[#FF6B35] dark:text-[#FF8E53] mb-4">Key Metrics & Impact</h3>
+                    <MetricGrid columns={2}>
                       {project.detailedMetrics.map((metric, index) => (
-                        <div key={index} className="p-4 bg-[#FFF8F0] dark:bg-[#4A3426]/50 rounded-lg border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
-                          <div className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mb-1">{metric.label}</div>
-                          <div className="text-2xl font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-1">{metric.value}</div>
-                          {metric.improvement && (
-                            <div className="text-sm text-[#6BCF7F] dark:text-[#8FE39E]">{metric.improvement}</div>
-                          )}
-                        </div>
+                        <MetricCallout
+                          key={index}
+                          value={metric.value}
+                          label={metric.label}
+                          improvement={metric.improvement}
+                          variant={index === 0 ? 'primary' : 'default'}
+                          size="md"
+                          animateValue={true}
+                        />
                       ))}
-                    </div>
+                    </MetricGrid>
                   </div>
                 )}
 
