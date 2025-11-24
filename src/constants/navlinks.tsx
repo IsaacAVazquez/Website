@@ -7,7 +7,6 @@ import {
   IconPencil,
   IconQuestionMark,
   IconTrophy,
-  IconBriefcase2
 } from "@tabler/icons-react";
 
 // Full navigation: all major sections accessible
@@ -36,11 +35,6 @@ export const navlinks = [
     href: "/fantasy-football",
     label: "Fantasy Football",
     icon: IconTrophy,
-  },
-  {
-    href: "/consulting",
-    label: "Consulting",
-    icon: IconBriefcase2,
   },
   {
     href: "/faq",
