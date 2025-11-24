@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import WarmCard from '@/components/ui/WarmCard';
-import ModernButton from '@/components/ui/ModernButton';
-import Heading from '@/components/ui/Heading';
-import Paragraph from '@/components/ui/Paragraph';
+import { WarmCard } from '@/components/ui/WarmCard';
+import { ModernButton } from '@/components/ui/ModernButton';
+import { Heading } from '@/components/ui/Heading';
+import { Paragraph } from '@/components/ui/Paragraph';
 import {
   IconPlus,
   IconWallet,
@@ -255,7 +255,7 @@ export default function BudgetingContent() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
         >
-          <WarmCard padding="lg" hoverLift>
+          <WarmCard padding="lg" hover>
             <div className="flex items-center justify-between">
               <div>
                 <Paragraph className="text-[var(--text-secondary)] text-sm mb-1">
@@ -269,7 +269,7 @@ export default function BudgetingContent() {
             </div>
           </WarmCard>
 
-          <WarmCard padding="lg" hoverLift>
+          <WarmCard padding="lg" hover>
             <div className="flex items-center justify-between">
               <div>
                 <Paragraph className="text-[var(--text-secondary)] text-sm mb-1">
@@ -283,7 +283,7 @@ export default function BudgetingContent() {
             </div>
           </WarmCard>
 
-          <WarmCard padding="lg" hoverLift>
+          <WarmCard padding="lg" hover>
             <div className="flex items-center justify-between">
               <div>
                 <Paragraph className="text-[var(--text-secondary)] text-sm mb-1">
@@ -332,15 +332,13 @@ export default function BudgetingContent() {
             <IconDownload className="w-5 h-5" />
             Export Data
           </ModernButton>
-          <label>
-            <ModernButton
-              variant="outline"
-              as="span"
-              className="flex items-center gap-2 cursor-pointer"
+          <label className="inline-flex">
+            <span
+              className="inline-flex items-center justify-center font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-offset-2 focus-visible:ring-black dark:focus-visible:ring-white border border-black dark:border-white text-black dark:text-white hover:bg-neutral-50 dark:hover:bg-neutral-900 px-7 py-3 text-base min-h-[44px] flex items-center gap-2 cursor-pointer"
             >
               <IconUpload className="w-5 h-5" />
               Import Data
-            </ModernButton>
+            </span>
             <input
               type="file"
               accept=".json"
@@ -543,7 +541,7 @@ export default function BudgetingContent() {
               const isOverBudget = spent > category.budgetAmount && category.budgetAmount > 0;
 
               return (
-                <WarmCard key={category.id} padding="lg" hoverLift>
+                <WarmCard key={category.id} padding="lg" hover>
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">{category.icon}</span>
