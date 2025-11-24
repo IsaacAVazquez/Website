@@ -385,12 +385,13 @@ export function ProjectsContent() {
     <>
       <div className="mb-12">
         <Heading className="font-heading font-black text-5xl mb-4 tracking-tight gradient-text-warm">
-          Projects & Work
+          Case Studies
         </Heading>
         <p className="text-lg text-[#4A3426] dark:text-[#D4A88E] max-w-3xl leading-relaxed">
-          A curated selection of 3-5 impactful projects demonstrating my expertise in quality assurance,
-          automation, and building reliable software systems. Each project follows the Problem-Process-Result
-          framework to showcase strategic thinking, technical execution, and measurable outcomes.
+          A curated selection of impactful projects demonstrating product management expertise through
+          strategic thinking, cross-functional leadership, and measurable business outcomes. Each case study
+          follows the Problem-Process-Result framework showcasing how I identify challenges, drive solutions,
+          and deliver results.
         </p>
         <p className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] mt-4 max-w-3xl">
           💡 Click any project to view the full case study with detailed metrics, methodology, and lessons learned.

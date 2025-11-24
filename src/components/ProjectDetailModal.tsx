@@ -114,7 +114,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                   <div className="relative rounded-lg overflow-hidden border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
                     <ProjectImage
                       src={project.screenshot}
-                      alt={`${project.title} screenshot`}
+                      alt={`${project.title} case study: ${project.description}`}
                       width={800}
                       height={533}
                       className="w-full h-auto"

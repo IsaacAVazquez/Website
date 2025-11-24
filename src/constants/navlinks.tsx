@@ -1,5 +1,6 @@
-import { IconBolt, IconMail, IconFileText, IconTrophy, IconChartLine } from "@tabler/icons-react";
+import { IconBolt, IconMail, IconFileText, IconUser, IconBriefcase } from "@tabler/icons-react";
 
+// PM-focused navigation: prioritizes portfolio and professional content
 export const navlinks = [
   {
     href: "/",
@@ -7,14 +8,14 @@ export const navlinks = [
     icon: IconBolt,
   },
   {
-    href: "/investments",
-    label: "Investments",
-    icon: IconChartLine,
+    href: "/about",
+    label: "About",
+    icon: IconUser,
   },
   {
-    href: "/fantasy-football",
-    label: "Fantasy Football",
-    icon: IconTrophy,
+    href: "/projects",
+    label: "Case Studies", // Renamed from "Projects" for PM positioning
+    icon: IconBriefcase,
   },
   {
     href: "/resume",
