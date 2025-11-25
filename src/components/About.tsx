@@ -7,6 +7,7 @@ import { PageSummary } from "@/components/ui/PageSummary";
 import { ExpertSignalGroup } from "@/components/ui/ExpertSignal";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { JourneyTimeline } from "@/components/ui/JourneyTimeline";
+import { QASection } from "@/components/ui/QASection";
 import {
   IconUser,
   IconTimeline
@@ -194,7 +195,7 @@ export default function About() {
 
 const OverviewContent = () => {
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl mx-auto space-y-8">
       <WarmCard hover={true} padding="xl">
         <div className="space-y-6">
           <Heading level={2} className="text-[#FF6B35] text-2xl lg:text-3xl mb-6">
@@ -230,6 +231,50 @@ const OverviewContent = () => {
           </p>
         </div>
       </WarmCard>
+
+      {/* AI-Optimized Q&A Section */}
+      <QASection
+        title="Common Questions About Isaac"
+        description="Quick answers about my background, experience, and what I'm looking for—optimized for AI search engines and human readers alike."
+        variant="default"
+        items={[
+          {
+            question: "What is Isaac Vazquez's current role and career focus?",
+            answer: "Isaac is currently a Quality Assurance Engineer at Civitech while pursuing an MBA at UC Berkeley Haas School of Business (Class of 2027). He is transitioning into product management roles, seeking Associate Product Manager or Product Manager positions in Austin TX or the San Francisco Bay Area, particularly in civic tech, SaaS, or mission-driven startups.",
+            category: "Career & Current Status"
+          },
+          {
+            question: "What product management experience does Isaac have?",
+            answer: "Isaac has 3+ years of product-adjacent experience leading product initiatives at Civitech. Key achievements include: owning end-to-end product vision for TextOut platform (35% engagement increase), driving RunningMate platform launch (90% defect reduction, NPS improvement from 23 to 36), leading cross-functional pricing strategy that generated $4M additional revenue, and transforming client data accessibility with GCP automation (90% reduction in onboarding time).",
+            category: "Product Management"
+          },
+          {
+            question: "What is Isaac's educational background?",
+            answer: "Isaac is pursuing an MBA at UC Berkeley Haas School of Business (Class of 2027), focusing on Product Management, Strategy, and Venture Capital. He is a Consortium Fellow and MLT Professional Development Fellow. He holds a Bachelor of Arts from Florida State University (2018) with majors in Political Science and International Affairs.",
+            category: "Education"
+          },
+          {
+            question: "What technical skills does Isaac bring to product management?",
+            answer: "Isaac has extensive technical skills including: SQL and data analysis (6+ years experience), test automation with Cypress (expert level), API testing, Agile/Scrum methodologies, data visualization with Sisense and Tableau, ETL pipeline development, A/B testing and experimentation frameworks, quality assurance methodologies, DevOps integration, cloud platforms (GCP), and AI/LLM tool integration. He combines technical execution with strategic product thinking.",
+            category: "Technical Skills"
+          },
+          {
+            question: "Where is Isaac Vazquez located and what industries does he focus on?",
+            answer: "Isaac is based in the San Francisco Bay Area while attending UC Berkeley Haas and maintains strong ties to Austin, Texas. He focuses on three industries: (1) Civic Technology - voter engagement platforms, democracy tech, government services; (2) SaaS Platforms - enterprise software, B2B tools, product-led growth; (3) Mission-Driven Startups - social impact ventures, fintech for underserved communities, education technology, sustainability tech.",
+            category: "Location & Industries"
+          },
+          {
+            question: "What makes Isaac qualified for product management roles?",
+            answer: "Isaac brings a unique combination of technical depth (6+ years in QA and test automation), analytical skills (SQL, data analysis, experimentation), strategic thinking (UC Berkeley MBA), and proven impact (60M+ users reached, 56% NPS improvement, 90% defect reduction, $4M revenue generation). His background bridges engineering, analytics, and strategy—enabling him to understand technical constraints while driving business outcomes. As a Consortium Fellow and MLT Fellow, he also brings leadership development and diverse perspectives.",
+            category: "Qualifications"
+          },
+          {
+            question: "How can I contact Isaac Vazquez?",
+            answer: "You can contact Isaac through: Email at isaacavazquez95@gmail.com (primary contact), LinkedIn at linkedin.com/in/isaac-vazquez (professional networking), GitHub at github.com/IsaacAVazquez (technical projects), or through his website contact form at isaacavazquez.com/contact. He is responsive to professional inquiries about product management opportunities, consulting engagements, speaking opportunities, mentorship requests, and collaboration on civic tech or mission-driven initiatives.",
+            category: "Contact"
+          },
+        ]}
+      />
     </div>
   );
 };

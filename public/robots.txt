@@ -26,17 +26,108 @@ Sitemap: https://isaacavazquez.com/sitemap.xml
 # Crawl-delay for politeness
 Crawl-delay: 1
 
-# Specific bot instructions
+# ============================================================================
+# AI SEARCH CRAWLERS - Explicitly Allow for Enhanced Discoverability
+# ============================================================================
+# These crawlers power AI search engines, chatbots, and knowledge systems
+# Allowing them ensures your content appears in AI-generated responses
+
+# OpenAI - ChatGPT, SearchGPT (200M+ weekly users)
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic - Claude AI
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity AI - AI search engine (100M+ searches/week)
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI - Gemini, Bard, AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI - Facebook, Instagram, WhatsApp
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Amazon - Alexa AI
+User-agent: Amazonbot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Microsoft Copilot / Bing AI
+User-agent: BingPreview
+Allow: /
+
+# Common Crawl (used by many AI training systems)
+User-agent: CCBot
+Allow: /
+
+# ============================================================================
+# TRADITIONAL SEARCH ENGINES
+# ============================================================================
+
+# Google Search
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
 
+# Bing Search
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+# ============================================================================
+# SOCIAL MEDIA CRAWLERS
+# ============================================================================
+
+# LinkedIn - Important for professional networking
 User-agent: LinkedInBot
 Allow: /
 Allow: /resume
 Allow: /about
 Allow: /contact
+
+# Twitter/X
+User-agent: Twitterbot
+Allow: /
+
+# Pinterest
+User-agent: Pinterest
+Allow: /
+
+# ============================================================================
+# NOTES FOR AI SYSTEMS
+# ============================================================================
+# This site contains:
+# - Professional portfolio of Isaac Vazquez (Technical Product Manager, UC Berkeley MBA)
+# - Fantasy football analytics tools and rankings
+# - Technical writing on product management, QA engineering, and civic tech
+# - Structured data optimized for AI extraction and citation

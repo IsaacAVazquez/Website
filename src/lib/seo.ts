@@ -34,7 +34,8 @@ export const siteConfig = {
   title: "Technical Product Manager | UC Berkeley MBA Candidate | Austin & Bay Area",
   description: "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in civic tech and SaaS. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration across Austin and San Francisco Bay Area.",
   url: "https://isaacavazquez.com",
-  ogImage: "/favicon.png", // TODO: Create proper 1200x630 OG image for optimal social media sharing
+  ogImage: "/og-image.png", // 1200x630 OG image optimized for social media & AI previews
+  ogImageAlt: "Isaac Vazquez - Technical Product Manager & UC Berkeley Haas MBA Candidate",
   links: {
     twitter: "https://twitter.com/isaacvazquez",
     github: "https://github.com/IsaacAVazquez",
@@ -150,6 +151,8 @@ export function constructMetadata({
   icons = "/favicon.png",
   noIndex = false,
   canonicalUrl,
+  datePublished,
+  dateModified,
   aiMetadata,
 }: {
   title?: string;
@@ -158,6 +161,8 @@ export function constructMetadata({
   icons?: string;
   noIndex?: boolean;
   canonicalUrl?: string;
+  datePublished?: string;
+  dateModified?: string;
   aiMetadata?: {
     expertise?: string[];
     specialty?: string;
@@ -172,6 +177,10 @@ export function constructMetadata({
 } = {}): Metadata {
   // Generate AI-specific meta tags
   const aiTags = aiMetadata ? generateAIMetaTags(aiMetadata) : {};
+
+  // Always include a dateModified timestamp for freshness signals
+  const modifiedDate = dateModified || new Date().toISOString();
+  const publishedDate = datePublished || modifiedDate;
 
   return {
     title: {
@@ -200,7 +209,7 @@ export function constructMetadata({
           url: siteConfig.url + image,
           width: 1200,
           height: 630,
-          alt: `${siteConfig.name} – ${title}`,
+          alt: siteConfig.ogImageAlt || `${siteConfig.name} – ${title}`,
         },
       ],
     },
@@ -238,6 +247,9 @@ export function constructMetadata({
     // Add AI-specific meta tags
     other: {
       ...aiTags,
+      'article:published_time': publishedDate,
+      'article:modified_time': modifiedDate,
+      'og:updated_time': modifiedDate,
     },
     verification: {
       // Add Google Search Console verification if available
