@@ -99,7 +99,7 @@ export function Breadcrumb({
       {/* Visual Breadcrumb */}
       <nav
         aria-label="Breadcrumb"
-        className={`mb-6 ${className}`}
+        className={`mb-6 relative z-20 ${className}`}
         itemScope
         itemType="https://schema.org/BreadcrumbList"
       >

@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { WarmCard } from "@/components/ui/WarmCard";
-import { Heading } from "@/components/ui/Heading";
-import { Paragraph } from "@/components/ui/Paragraph";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 
 interface FAQSectionProps {
