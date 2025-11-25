@@ -21,35 +21,35 @@ export function FAQSection({ question, answer, defaultOpen = false }: FAQSection
   };
 
   return (
-    <WarmCard hover={false} padding="md" className="overflow-hidden">
+    <WarmCard hover={false} padding="none" className="overflow-hidden">
       <button
         onClick={toggleOpen}
-        className="w-full p-6 text-left hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors duration-200 focus:ring-2 focus:ring-electric-blue focus:ring-inset focus:outline-none"
+        className="w-full p-6 text-left hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/20 transition-colors duration-200 focus:ring-2 focus:ring-[#FF6B35] focus:ring-inset focus:outline-none rounded-lg"
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${question.replace(/\s+/g, '-').toLowerCase()}`}
       >
         <div className="flex items-center justify-between gap-4">
-          <Heading level={3} className="text-lg font-semibold pr-4 flex-1">
+          <h3 className="text-lg md:text-xl font-semibold text-[#2D1B12] dark:text-[#FFE4D6] pr-4 flex-1">
             {question}
-          </Heading>
+          </h3>
           <div className="flex-shrink-0">
             {isOpen ? (
-              <IconChevronUp className="w-5 h-5 text-electric-blue transition-transform duration-200" />
+              <IconChevronUp className="w-5 h-5 text-[#FF6B35] dark:text-[#FF8E53] transition-transform duration-200" />
             ) : (
-              <IconChevronDown className="w-5 h-5 text-slate-400 group-hover:text-electric-blue transition-colors duration-200" />
+              <IconChevronDown className="w-5 h-5 text-[#6B4F3D] dark:text-[#D4A88E] group-hover:text-[#FF6B35] dark:group-hover:text-[#FF8E53] transition-colors duration-200" />
             )}
           </div>
         </div>
       </button>
-      
+
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ 
-              duration: 0.3, 
+            transition={{
+              duration: 0.3,
               ease: "easeInOut",
               opacity: { duration: 0.2 }
             }}
@@ -57,10 +57,10 @@ export function FAQSection({ question, answer, defaultOpen = false }: FAQSection
             id={`faq-answer-${question.replace(/\s+/g, '-').toLowerCase()}`}
           >
             <div className="px-6 pb-6 pt-0">
-              <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
-                <Paragraph className="text-slate-700 dark:text-slate-300 leading-relaxed">
+              <div className="border-t border-[#FFE4D6] dark:border-[#6B4F3D] pt-4">
+                <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
                   {answer}
-                </Paragraph>
+                </p>
               </div>
             </div>
           </motion.div>

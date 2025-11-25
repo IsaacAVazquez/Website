@@ -35,29 +35,25 @@ export const metadata: Metadata = constructMetadata({
 // FAQ Data with structured format
 const faqCategories = [
   {
-    category: "QA Engineering & Software Testing",
-    badge: "Technical",
+    category: "Career & Current Focus",
+    badge: "Career",
     questions: [
       {
-        question: "What testing services do you provide as a QA Engineer?",
-        answer: "As a QA Engineer, I provide comprehensive testing services including automated test development, manual testing strategies, performance testing, API testing, and test framework setup. I specialize in creating robust test suites using modern tools like Jest, Playwright, Cypress, and custom testing frameworks. My approach focuses on building maintainable, scalable testing solutions that integrate seamlessly with CI/CD pipelines."
+        question: "What is Isaac Vazquez's current role and career focus?",
+        answer: "I'm currently a Quality Assurance Engineer at Civitech while pursuing an MBA at UC Berkeley Haas School of Business (Class of 2027). I'm transitioning into product management roles, seeking Associate Product Manager or Product Manager positions in Austin TX or the San Francisco Bay Area. My focus is on civic tech, SaaS, or mission-driven startups where I can leverage my technical background and strategic thinking."
       },
       {
-        question: "How do you approach test automation for web applications?",
-        answer: "My test automation approach follows the testing pyramid principle: extensive unit tests (70%), focused integration tests (20%), and strategic end-to-end tests (10%). I use tools like Jest for unit testing, Testing Library for component testing, and Playwright or Cypress for E2E testing. I emphasize writing maintainable tests with clear assertions, proper test data management, and reliable selectors that don't break with UI changes."
+        question: "What kind of product management roles is Isaac seeking?",
+        answer: "I'm seeking Associate Product Manager (APM) or Product Manager roles where technical depth and mission-driven mindset matter. Ideal opportunities are in civic tech, SaaS platforms, or mission-driven startups that value product discovery, data-informed decision making, and cross-functional collaboration. I'm particularly excited about teams that balance user insight with analytical rigor and ship products that create meaningful impact."
       },
       {
-        question: "What's your experience with different testing frameworks?",
-        answer: "I have extensive experience with multiple testing frameworks across different tech stacks. For JavaScript/TypeScript projects, I work with Jest, Vitest, Mocha, and Jasmine. For E2E testing, I use Playwright, Cypress, and Selenium. I'm also experienced with API testing tools like Supertest, Postman/Newman, and have worked with mobile testing frameworks. My choice of framework depends on project requirements, team preferences, and technical constraints."
+        question: "What makes Isaac qualified for product management roles?",
+        answer: "I bring a unique combination of technical depth (6+ years in QA and test automation), analytical skills (SQL, data analysis, experimentation), strategic thinking (UC Berkeley MBA), and proven impact (60M+ users reached, 56% NPS improvement, 90% defect reduction, $4M revenue generation). My background bridges engineering, analytics, and strategy—enabling me to understand technical constraints while driving business outcomes. As a Consortium Fellow and MLT Fellow, I also bring leadership development and diverse perspectives."
       },
       {
-        question: "How do you handle flaky tests and test maintenance?",
-        answer: "Flaky tests are a common challenge I address through several strategies: implementing proper waits and timeouts, using deterministic test data, avoiding dependencies on external services, and writing tests that focus on behavior rather than implementation. I also advocate for regular test suite maintenance, performance monitoring, and using tools like test retries judiciously. The key is building tests that are reliable, fast, and provide clear feedback when they fail."
+        question: "Where is Isaac located and open to working?",
+        answer: "I'm based in the San Francisco Bay Area while attending UC Berkeley Haas and maintain strong ties to Austin, Texas. I'm open to opportunities in both locations (Austin TX and San Francisco Bay Area) and remote positions with mission-driven organizations. My dual-location presence provides flexibility and allows me to leverage networks in both tech hubs."
       },
-      {
-        question: "What quality assurance processes do you recommend for teams?",
-        answer: "I recommend a comprehensive QA process that includes: establishing clear testing standards and documentation, implementing code review processes with testing considerations, setting up automated testing in CI/CD pipelines, conducting regular retrospectives on testing effectiveness, and fostering a culture where quality is everyone's responsibility. I also emphasize the importance of metrics tracking, such as test coverage, defect detection rates, and test execution times."
-      }
     ]
   },
   {
@@ -79,114 +75,102 @@ const faqCategories = [
     ]
   },
   {
-    category: "Fantasy Football Analytics",
-    badge: "Analytics",
-    questions: [
-      {
-        question: "How do your fantasy football analytics tools work?",
-        answer: "My fantasy football analytics tools combine real-time NFL data with advanced algorithms to provide actionable insights. I use machine learning techniques like K-means clustering to group players by performance patterns, D3.js for interactive visualizations, and custom algorithms for tier generation. The tools process player statistics, injury reports, matchup data, and historical performance to create comprehensive analysis dashboards that help with draft strategy and weekly lineup decisions."
-      },
-      {
-        question: "What makes your fantasy football tools different from others?",
-        answer: "My tools focus on data visualization and algorithmic analysis rather than just displaying raw statistics. I implement clustering algorithms to identify player tiers, create interactive tier charts that update in real-time, and provide mobile-optimized interfaces for draft day usage. The emphasis is on presenting complex data in intuitive, actionable formats that help users make better decisions quickly. Plus, as a software engineer, I prioritize performance, reliability, and user experience."
-      },
-      {
-        question: "What data sources do you use for fantasy football analytics?",
-        answer: "I integrate multiple reliable data sources including official NFL statistics, injury reports, weather data, and expert rankings from reputable fantasy football analysts. The system is designed to handle real-time data updates and provides data quality validation to ensure accuracy. I also incorporate advanced metrics like target share, red zone usage, and strength of schedule adjustments to provide more nuanced analysis than basic statistics alone."
-      },
-      {
-        question: "Can you customize fantasy football tools for specific leagues?",
-        answer: "Yes, I can customize tools for specific league formats including different scoring systems (PPR, standard, half-PPR), league sizes, roster configurations, and custom rules. The analytics can be adjusted for auction drafts, dynasty leagues, superflex formats, and other variations. I also provide consultation on draft strategy and can create custom dashboards that align with your league's specific needs and competitive landscape."
-      },
-      {
-        question: "How accurate are your fantasy football projections?",
-        answer: "Fantasy football projections are inherently challenging due to the unpredictable nature of sports, but my approach focuses on providing relative rankings and tier-based analysis rather than exact point predictions. The value comes from identifying trends, player groupings, and relative value propositions. I continuously refine the algorithms based on performance feedback and emphasize that projections should be one tool among many in your decision-making process."
-      }
-    ]
-  },
-  {
-    category: "Technical Expertise & Services",
-    badge: "Development",
-    questions: [
-      {
-        question: "What technologies do you specialize in?",
-        answer: "I specialize in modern web development with expertise in TypeScript, React, Next.js, and Node.js. For data visualization, I work extensively with D3.js and custom charting libraries. My testing expertise covers Jest, Playwright, Cypress, and various API testing tools. I'm also experienced with cloud platforms, CI/CD pipelines, database technologies, and performance optimization techniques. I stay current with industry trends and continuously expand my technical skill set."
-      },
-      {
-        question: "Do you offer consulting services for software quality?",
-        answer: "Yes, I provide consulting services for organizations looking to improve their software quality processes. This includes test strategy development, quality assurance process implementation, test automation framework setup, team training on testing best practices, and code review processes. I can work with teams to establish quality metrics, implement CI/CD testing pipelines, and create sustainable testing practices that scale with team growth."
-      },
-      {
-        question: "How do you stay current with testing and development trends?",
-        answer: "I maintain current expertise through continuous learning: following industry blogs and publications, participating in tech communities and conferences, contributing to open-source projects, experimenting with new tools and frameworks, and engaging with the Austin tech community. I also maintain this blog where I share insights and experiences, which helps me crystallize learning and connect with other professionals in the field."
-      },
-      {
-        question: "What's your approach to working with remote teams?",
-        answer: "Having worked in both remote and hybrid environments, I emphasize clear communication, comprehensive documentation, and reliable testing practices that enable distributed teams to work effectively. I use collaborative tools for code review, maintain detailed test documentation, and advocate for automated testing that provides confidence for remote deployments. I'm comfortable with asynchronous communication and understand the importance of building trust through consistent, high-quality work."
-      },
-      {
-        question: "Can you help with legacy system testing and modernization?",
-        answer: "Absolutely. Legacy system testing requires a careful, strategic approach. I start by understanding the existing system architecture and identifying critical business functions. Then I develop a comprehensive testing strategy that includes characterization tests, gradual test coverage expansion, and risk-based testing approaches. For modernization efforts, I can help establish testing foundations that enable safe refactoring and incremental improvements while maintaining system reliability."
-      }
-    ]
-  },
-  {
-    category: "Location & Education",
+    category: "Education & MBA Experience",
     badge: "MBA",
     questions: [
       {
-        question: "Do you provide QA services in the Bay Area and California?",
-        answer: "Yes! While I'm originally based in Austin, TX, I'm currently pursuing my MBA at UC Berkeley's Haas School of Business, which gives me strong connections and availability in the San Francisco Bay Area. I provide remote QA consulting services across both Texas and California markets, and can work on-site for Bay Area clients when needed. My dual-location presence allows me to serve both Austin's emerging tech scene and Silicon Valley's innovation ecosystem."
+        question: "What is Isaac studying at UC Berkeley Haas?",
+        answer: "I'm pursuing an MBA at UC Berkeley Haas School of Business (Class of 2027), focusing on Product Management, Strategy, and Venture Capital. As a Consortium Fellow and MLT Professional Development Fellow, I'm deepening my strategic thinking, financial analysis, and leadership capabilities. My coursework includes product strategy, go-to-market execution, data-driven decision making, and organizational behavior—all directly applicable to product management roles."
       },
       {
-        question: "How does your MBA experience enhance your QA consulting?",
-        answer: "My MBA at UC Berkeley Haas adds strategic business thinking to my technical QA expertise. I can now approach quality assurance from both technical and business perspectives, helping clients understand the ROI of quality investments, align QA strategy with business objectives, and communicate technical concepts to stakeholders effectively. The Consortium Fellowship program also connects me with diverse business leaders, expanding my understanding of how quality assurance impacts different industries and markets."
+        question: "How does the MBA enhance Isaac's product management capabilities?",
+        answer: "Business school has fundamentally transformed how I approach product development and team leadership. At UC Berkeley Haas, I've learned advanced frameworks for strategic thinking, financial analysis, market sizing, and competitive positioning that complement my technical background. I can now evaluate product opportunities through multiple lenses—market analysis, unit economics, operational feasibility, and organizational impact—while building and leading diverse teams to execute complex product initiatives. The combination of technical execution skills and strategic business thinking is rare and valuable."
       },
       {
-        question: "What's your perspective on Silicon Valley testing practices vs other markets?",
-        answer: "Having worked in Austin's civic tech scene and now studying in the Bay Area, I've observed that Silicon Valley companies often emphasize rapid iteration and fail-fast mentalities, which requires different QA approaches than traditional markets. Bay Area companies typically invest heavily in automation and have sophisticated CI/CD pipelines, while other markets may prioritize comprehensive manual testing. My experience across both ecosystems helps me recommend the right balance of speed and thoroughness based on company culture, risk tolerance, and market demands."
+        question: "What is the Consortium Fellowship and MLT Fellowship?",
+        answer: "The Consortium Fellowship is a prestigious graduate business fellowship for underrepresented minorities, providing leadership development, corporate partnerships, and a strong alumni network. MLT (Management Leadership for Tomorrow) is a professional development program that accelerates career advancement through coaching, skills training, and executive mentorship. Both fellowships demonstrate my commitment to leadership, diversity & inclusion, and continuous professional growth. They've connected me with diverse business leaders and expanded my understanding of how product management impacts different industries and markets."
       },
       {
-        question: "Are you available for UC Berkeley alumni network projects?",
-        answer: "Absolutely! As a current UC Berkeley Haas MBA student and Consortium Fellow, I'm actively engaged with the alumni network and happy to work on projects that benefit the Berkeley community. Whether it's helping fellow alumni with QA challenges, contributing to Berkeley-affiliated startups, or supporting academic research that requires software testing expertise, I welcome opportunities to give back to the university and leverage our shared network for mutual benefit."
+        question: "What unique value does Isaac bring from UC Berkeley Haas?",
+        answer: "UC Berkeley Haas emphasizes the 'Defining Leadership Principles'—including Question the Status Quo, Confidence Without Attitude, Students Always, and Beyond Yourself. These principles align perfectly with product management: challenging assumptions, collaborating humbly, learning continuously, and building products that serve broader missions. The Bay Area location also provides access to cutting-edge companies, product leaders, and innovation ecosystems. I bring both the Haas culture and network to every product role."
+      },
+    ]
+  },
+  {
+    category: "Technical Skills & Background",
+    badge: "Technical",
+    questions: [
+      {
+        question: "What technical skills does Isaac bring to product management?",
+        answer: "I have extensive technical skills including: SQL and data analysis (6+ years experience), test automation with Cypress (expert level), API testing, Agile/Scrum methodologies, data visualization with Sisense and Tableau, ETL pipeline development, A/B testing and experimentation frameworks, quality assurance methodologies, DevOps integration, cloud platforms (GCP), and AI/LLM tool integration. This technical depth allows me to understand engineering constraints, make informed trade-off decisions, and speak the language of technical teams while maintaining focus on business outcomes."
       },
       {
-        question: "How do you balance Austin roots with Bay Area innovation?",
-        answer: "I see this dual-location experience as a unique advantage. Austin's tech scene emphasizes community, sustainable growth, and civic impact, while the Bay Area pushes the boundaries of technological innovation and scale. I bring Austin's collaborative culture and focus on meaningful impact to Bay Area projects, while incorporating Silicon Valley's cutting-edge practices and ambitious thinking into Austin work. This cross-pollination of ideas allows me to offer clients the best of both innovation ecosystems."
+        question: "How does Isaac's QA background benefit product management?",
+        answer: "My QA background provides unique advantages in product management: (1) Deep empathy for users—I'm trained to think about edge cases and user journeys, (2) Data-driven mindset—I naturally instrument, measure, and validate assumptions, (3) Risk assessment—I can evaluate technical feasibility and identify potential failure modes early, (4) Quality culture—I build products with reliability and scalability in mind from day one, (5) Cross-functional fluency—I can bridge conversations between engineering, design, and business stakeholders with technical credibility."
       },
       {
-        question: "Do you provide product management and business strategy consulting?",
-        answer: "Yes! My UC Berkeley MBA education, combined with hands-on experience leading cross-functional teams, positions me to provide strategic product management and business consulting services. I help companies develop product strategies, optimize go-to-market approaches, and build high-performing teams. My unique background allows me to bridge technical execution with business strategy, ensuring that product decisions are both technically feasible and strategically sound for sustainable business growth."
+        question: "What product management tools and methodologies does Isaac use?",
+        answer: "I'm proficient with modern product management tools and frameworks including: Agile/Scrum methodologies, user story mapping, Jobs-to-be-Done framework, Lean product development, A/B testing and experimentation platforms, SQL for data analysis and user behavior insights, analytics tools (Google Analytics, Mixpanel, Amplitude), roadmapping tools (ProductBoard, Jira, Asana), prototyping tools (Figma), and data visualization (Tableau, Sisense). I adapt my toolset based on team needs and product stage."
       },
       {
-        question: "How does your business school experience enhance your product leadership?",
-        answer: "Business school has fundamentally transformed how I approach product development and team leadership. At UC Berkeley Haas, I've learned advanced frameworks for strategic thinking, financial analysis, and organizational behavior that directly apply to product management. I can now evaluate product opportunities through multiple lenses — market analysis, competitive positioning, financial modeling, and operational feasibility — while building and leading diverse teams to execute complex product initiatives."
+        question: "How does Isaac approach data-driven product decisions?",
+        answer: "I approach data-driven decision making through a structured framework: (1) Define clear metrics aligned with business goals, (2) Instrument tracking early (don't wait for perfect data), (3) Use both quantitative data (usage metrics, conversion funnels) and qualitative insights (user interviews, support tickets), (4) Run disciplined experiments with proper statistical rigor, (5) Balance data with user empathy and strategic context—data informs, but doesn't dictate, product decisions. My SQL and analytics background allows me to dig deep into user behavior independently."
+      },
+      {
+        question: "What is Isaac's approach to working with engineering teams?",
+        answer: "My technical background allows me to work effectively with engineering teams through: (1) Speaking their language—I understand technical constraints, architecture decisions, and testing strategies, (2) Writing clear technical specifications and user stories, (3) Balancing business requirements with technical feasibility, (4) Respecting engineering time and contributing to technical discussions, (5) Advocating for quality, maintainability, and technical debt management. Engineers appreciate PMs who understand the technical complexity and don't oversimplify implementation challenges."
       }
     ]
   },
   {
-    category: "Connecting & Collaborating",
+    category: "Industry Focus & Experience",
+    badge: "Experience",
+    questions: [
+      {
+        question: "What industries and company types interest Isaac?",
+        answer: "I'm focused on three main areas: (1) Civic Technology—voter engagement platforms, democracy tech, government services digitization; (2) SaaS Platforms—enterprise software, B2B tools, product-led growth companies; (3) Mission-Driven Startups—social impact ventures, fintech for underserved communities, education technology, sustainability tech. I'm drawn to companies where product decisions have meaningful impact on users' lives and where I can leverage both technical skills and strategic thinking."
+      },
+      {
+        question: "What is Isaac's experience at Civitech?",
+        answer: "At Civitech, I work on voter engagement platforms serving 60M+ voters across campaigns and advocacy organizations. I've led product initiatives including: owning end-to-end product vision for TextOut platform (35% engagement increase), driving RunningMate platform launch (90% defect reduction, NPS improvement from 23 to 36), leading cross-functional pricing strategy ($4M additional revenue), and transforming client data accessibility with GCP automation (90% reduction in onboarding time). This experience taught me how to ship reliable products at scale while balancing multiple stakeholder needs."
+      },
+      {
+        question: "How does Isaac balance Austin roots with Bay Area innovation?",
+        answer: "I see this dual-location experience as a unique advantage. Austin's tech scene emphasizes community, sustainable growth, and civic impact, while the Bay Area pushes the boundaries of technological innovation and scale. I bring Austin's collaborative culture and focus on meaningful impact to Bay Area opportunities, while incorporating Silicon Valley's cutting-edge practices and ambitious thinking. This cross-pollination of ideas allows me to bridge different innovation ecosystems and bring diverse perspectives to product challenges."
+      },
+      {
+        question: "What is Isaac's experience with cross-functional leadership?",
+        answer: "I've led cross-functional product initiatives coordinating engineers, designers, data analysts, customer success, and executives. Key examples include: leading 8-person engineering team on RunningMate platform launch, partnering with legal and product teams on compliance features, driving pricing strategy across finance, sales, and engineering, and transforming client onboarding processes across multiple departments. I excel at building alignment, managing stakeholder expectations, and keeping teams focused on shared goals while navigating competing priorities."
+      },
+      {
+        question: "How does Isaac approach building mission-driven products?",
+        answer: "Mission-driven product management requires balancing impact metrics with business sustainability. At Civitech, I learned to measure success through both traditional product metrics (engagement, retention, NPS) and mission metrics (voter turnout impact, accessibility improvements, campaign reach). I believe the best mission-driven products are those that create sustainable business models—impact scales when the product is financially viable. My approach combines user empathy, data discipline, and strategic thinking to build products that do well by doing good."
+      }
+    ]
+  },
+  {
+    category: "Contact & Networking",
     badge: "Network",
     questions: [
       {
-        question: "What kinds of conversations and collaborations interest you most?",
-        answer: "I'm most energized by discussions that explore the intersection of technology and business strategy. I love connecting with fellow professionals working on civic tech, product innovation, quality engineering at scale, or business transformation. Whether it's sharing insights on building reliable systems, discussing MBA learnings from UC Berkeley, or exploring how Austin and Bay Area tech cultures can learn from each other, I'm always up for meaningful conversations."
+        question: "How can I contact Isaac Vazquez?",
+        answer: "You can reach me through: Email at isaacavazquez95@gmail.com (primary contact), LinkedIn at linkedin.com/in/isaac-vazquez (professional networking), GitHub at github.com/IsaacAVazquez (technical projects), or through my website contact form at isaacavazquez.com/contact. I'm responsive to professional inquiries about product management opportunities, consulting engagements, speaking opportunities, mentorship requests, and collaboration on civic tech or mission-driven initiatives."
       },
       {
-        question: "How do you approach networking and professional relationships?",
-        answer: "I believe the best professional relationships start with genuine curiosity and shared interests. I prefer conversations that focus on learning from each other's experiences rather than transactional networking. Whether we connect at a tech meetup in Austin, a business school event in Berkeley, or through shared connections, I'm most interested in building relationships based on mutual respect, shared values, and opportunities to make meaningful impact together."
+        question: "What kinds of conversations and collaborations interest Isaac?",
+        answer: "I'm most energized by discussions about product strategy, data-driven decision making, civic tech innovation, and mission-driven product development. I love connecting with fellow PMs, founders building impactful products, engineers interested in product careers, and anyone working at the intersection of technology and social good. Whether discussing product discovery frameworks, MBA learnings from UC Berkeley, or exploring how to build products that scale impact, I'm always up for meaningful conversations."
       },
       {
-        question: "What's your current focus as you transition to full-time MBA studies?",
-        answer: "I'm focused on bridging my technical background with strategic business thinking through my MBA at UC Berkeley Haas. This means exploring how quality engineering principles apply to broader business challenges, learning from diverse classmates and faculty, and staying connected with both Austin's collaborative tech scene and the Bay Area's innovation ecosystem. I'm particularly interested in how technology can solve meaningful societal problems at scale."
+        question: "Is Isaac open to mentorship or coffee chats?",
+        answer: "Absolutely! I'm happy to share what I've learned about transitioning from engineering to product management, navigating MBA applications (especially for underrepresented candidates), building products in civic tech, and balancing technical execution with strategic thinking. Whether you're considering a product career, exploring MBA programs, or building mission-driven products, I'm happy to share perspectives and learn from your experiences too."
       },
       {
-        question: "Are you open to mentoring or knowledge sharing?",
-        answer: "Absolutely! I love sharing what I've learned about QA engineering, transitioning from technical roles to business strategy, and navigating the Austin-to-Bay Area professional landscape. Whether you're an aspiring QA engineer, someone considering an MBA, or a fellow professional exploring the intersection of tech and strategy, I'm happy to share perspectives and learn from your experiences too."
+        question: "Is Isaac available for speaking engagements or panels?",
+        answer: "Yes! I'm interested in speaking opportunities related to: product management for civic tech, transitioning from engineering to product roles, data-driven product decisions, quality-minded product development, diverse leadership in tech, and MBA experiences as a Consortium and MLT Fellow. I'm available for company talks, conference panels, university events (especially UC Berkeley and FSU), and community tech meetups in Austin or the Bay Area."
       },
       {
-        question: "How can we start a meaningful conversation?",
-        answer: "The best way to connect is through my contact page or LinkedIn. I respond thoughtfully to messages that show genuine interest in shared topics or collaboration opportunities. Whether you want to discuss quality engineering challenges, share MBA experiences, explore Austin or Bay Area tech communities, or just exchange ideas about building impactful products, I'm always open to conversations that can benefit both of us."
+        question: "What is the best way to get Isaac's attention for opportunities?",
+        answer: "The most effective approach is a thoughtful message explaining: (1) The specific role or opportunity, (2) Why you think it's a good fit for my background, (3) What problem the product solves or mission it serves. I prioritize opportunities in civic tech, mission-driven startups, or SaaS products where technical depth and strategic thinking both matter. Clear, specific messages with mutual value propositions get the fastest responses."
       }
     ]
   }
@@ -229,8 +213,8 @@ export default function FAQPage() {
               </span>
             </Heading>
             <Paragraph size="lg" className="max-w-2xl mx-auto text-[#4A3426] dark:text-[#D4A88E]">
-              Get insights into QA engineering, business strategy, MBA experiences,
-              and how to connect for meaningful conversations about technology and impact.
+              Learn about product management, transitioning from engineering to product roles,
+              UC Berkeley MBA experiences, and connecting for opportunities in civic tech and mission-driven products.
             </Paragraph>
           </div>
 
@@ -268,15 +252,15 @@ export default function FAQPage() {
                 Have More Questions?
               </Heading>
               <Paragraph className="text-[#4A3426] dark:text-[#D4A88E] mb-6 max-w-2xl mx-auto">
-                Didn't find what you're looking for? I'd love to connect and share perspectives on QA engineering,
-                business strategy, or how technology can create meaningful impact. Always open to thoughtful conversations.
+                Didn't find what you're looking for? I'd love to connect about product management opportunities,
+                share perspectives on building mission-driven products, or discuss transitioning into product roles. Always open to thoughtful conversations.
               </Paragraph>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <ModernButton variant="primary">
-                  <a href="/contact">Start a Conversation</a>
+                  <a href="/contact">Get in Touch</a>
                 </ModernButton>
                 <ModernButton variant="outline">
-                  <a href="/blog">Read My Insights</a>
+                  <a href="/projects">View My Work</a>
                 </ModernButton>
               </div>
             </WarmCard>
