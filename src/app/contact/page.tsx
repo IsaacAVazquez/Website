@@ -6,6 +6,7 @@ export const metadata = constructMetadata({
   title: "Contact Isaac Vazquez | Product Manager - Austin & Bay Area",
   description: "Connect with Isaac Vazquez for product management opportunities, consulting engagements, or civic tech collaborations. UC Berkeley MBA candidate available for PM roles in Austin TX and San Francisco Bay Area. Let's discuss product strategy, roadmapping, and cross-functional leadership.",
   canonicalUrl: "/contact",
+  dateModified: "2025-02-05",
 });
 
 export default function Contact() {

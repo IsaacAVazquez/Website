@@ -2,9 +2,16 @@
 # Isaac Vazquez Portfolio & Fantasy Football Platform
 
 User-agent: *
-Allow: /
+# Block non-public surfaces and build assets
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /node_modules/
+Disallow: /budgeting
+Disallow: /investments
 
 # Allow important pages for SEO
+Allow: /
 Allow: /about
 Allow: /projects
 Allow: /resume
@@ -13,12 +20,6 @@ Allow: /consulting
 Allow: /blog/
 Allow: /writing/
 Allow: /fantasy-football/
-
-# Disallow admin and API routes
-Disallow: /api/
-Disallow: /admin/
-Disallow: /_next/
-Disallow: /node_modules/
 
 # Sitemap location
 Sitemap: https://isaacavazquez.com/sitemap.xml

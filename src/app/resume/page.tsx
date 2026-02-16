@@ -6,6 +6,7 @@ export const metadata = constructMetadata({
   title: "Resume - Isaac Vazquez | Product Manager & UC Berkeley MBA Candidate",
   description: "Isaac Vazquez resume: UC Berkeley Haas MBA Candidate '27, Consortium Fellow. Technical Product Manager with 6+ years leading quality engineering, data analytics, and civic tech initiatives at Civitech, Open Progress, and Florida State University. Skills in product strategy, cross-functional leadership, stakeholder management, SQL, test automation, and Agile methodologies.",
   canonicalUrl: "/resume",
+  dateModified: "2025-02-05",
 });
 
 export default function ResumePage() {

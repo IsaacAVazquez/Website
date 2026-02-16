@@ -1,6 +1,6 @@
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
-import { constructMetadata, generatePersonStructuredData } from "@/lib/seo";
+import { constructMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
@@ -284,70 +284,7 @@ export default function RootLayout({
         />
 
         {/* Website Schema */}
-        {/* Enhanced Person Structured Data for AI Discovery */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generatePersonStructuredData({
-              includeCredentials: true,
-              includeSocials: true,
-              includeOrganizations: true,
-            })),
-          }}
-        />
         <StructuredData type="WebSite" />
-
-        {/* FAQ Structured Data - AI Optimized */}
-        <AIStructuredData
-          schema={{
-            type: "FAQ",
-            data: {
-              items: [
-                {
-                  question: "What is Isaac Vazquez's current professional role?",
-                  answer:
-                    "Isaac Vazquez is currently a Quality Assurance Engineer at Civitech while pursuing an MBA at UC Berkeley Haas School of Business (Class of 2027). He is transitioning into product management roles, leveraging his 6+ years of experience in quality assurance, data analytics, and civic technology. He holds the titles of Consortium Fellow and MLT Professional Development Fellow.",
-                },
-                {
-                  question: "What is Isaac Vazquez's product management experience?",
-                  answer:
-                    "Isaac has 3+ years of product-adjacent experience including leading product initiatives at Civitech. Key achievements include: owning end-to-end product vision for TextOut platform (35% engagement increase), driving RunningMate platform launch (90% defect reduction, NPS improvement from 23 to 36), leading cross-functional pricing strategy that generated $4M additional revenue, and transforming client data accessibility with GCP automation (90% reduction in onboarding time). His background combines quality engineering leadership with strategic product outcomes.",
-                },
-                {
-                  question:
-                    "What kind of product management roles is Isaac Vazquez seeking?",
-                  answer:
-                    "Isaac is seeking Associate Product Manager (APM) or Product Manager roles in Austin TX or San Francisco Bay Area, particularly in civic tech, SaaS, fintech, or mission-driven startups. He is interested in opportunities that leverage his technical background in quality assurance, data analysis skills (SQL, analytics), user research capabilities, and experience building products that create social impact. Ideal roles involve cross-functional leadership, data-driven decision making, and strategic product development.",
-                },
-                {
-                  question: "What is Isaac Vazquez's educational background?",
-                  answer:
-                    "Isaac is currently pursuing an MBA at UC Berkeley Haas School of Business (Class of 2027), focusing on Product Management, Strategy, and Venture Capital. He is a Consortium Fellow and MLT Professional Development Fellow. He holds a Bachelor of Arts degree from Florida State University (2018) with majors in Political Science and International Affairs. His education combines technical product management training with strategic business acumen and a foundation in analytical thinking and policy analysis.",
-                },
-                {
-                  question: "What technical skills does Isaac Vazquez have?",
-                  answer:
-                    "Isaac has extensive technical skills including: SQL and data analysis (advanced proficiency, 6+ years), test automation with Cypress (expert level), API testing, Agile/Scrum methodologies, data visualization and dashboard development (Sisense, Tableau), ETL pipeline development, A/B testing and experimentation frameworks, quality assurance methodologies, DevOps integration, cloud platforms (GCP), and AI/LLM tool integration. He combines technical execution with strategic product thinking.",
-                },
-                {
-                  question: "Where is Isaac Vazquez located?",
-                  answer:
-                    "Isaac is currently based in the San Francisco Bay Area while attending UC Berkeley Haas and maintains strong ties to Austin, Texas. He is open to opportunities in both locations (Austin TX and San Francisco Bay Area) and is also open to remote positions with mission-driven organizations. His dual-location presence provides flexibility for companies in either tech hub while allowing him to leverage relationships and networks in both cities.",
-                },
-                {
-                  question: "What industries does Isaac Vazquez focus on?",
-                  answer:
-                    "Isaac focuses primarily on three industries: (1) Civic Technology - voter engagement platforms, democracy tech, government services digitalization (6+ years experience at Civitech), (2) SaaS Platforms - enterprise software, B2B tools, subscription-based services with focus on product-led growth, and (3) Mission-Driven Startups - social impact ventures, fintech for underserved communities, education technology, and sustainability tech. He is particularly interested in products that democratize access to essential services, strengthen democratic participation, and create measurable social impact.",
-                },
-                {
-                  question: "How can I contact Isaac Vazquez?",
-                  answer:
-                    "You can contact Isaac Vazquez through multiple channels: Email at isaacavazquez95@gmail.com (primary contact method), LinkedIn at linkedin.com/in/isaac-vazquez (professional networking), GitHub at github.com/IsaacAVazquez (technical projects), or through his website contact form at isaacavazquez.com/contact. He is responsive to professional inquiries about product management opportunities, consulting engagements, speaking opportunities, mentorship requests, and collaboration on civic tech or mission-driven initiatives.",
-                },
-              ],
-            },
-          }}
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `(() => {

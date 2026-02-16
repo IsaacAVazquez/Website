@@ -12,6 +12,7 @@ export const metadata: Metadata = constructMetadata({
   title: "FAQ - Product Management, Strategy & UC Berkeley MBA | Isaac Vazquez",
   description: "Frequently asked questions about product management, product strategy, cross-functional leadership, and UC Berkeley Haas MBA experiences. Learn about Isaac Vazquez's approach to data-driven product decisions, user research, go-to-market strategy, and transitioning from engineering to product management.",
   canonicalUrl: "https://isaacavazquez.com/faq",
+  dateModified: "2025-02-05",
   aiMetadata: {
     expertise: [
       "Product Management",

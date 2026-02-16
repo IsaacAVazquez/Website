@@ -11,6 +11,7 @@ export const metadata = constructMetadata({
   title: 'Writing - Product Management Insights & Technical Articles | Isaac Vazquez',
   description: 'Articles on product management, product strategy, transitioning from engineering to product roles, data-driven decision making, and building mission-driven products. Written by Isaac Vazquez, Technical Product Manager and UC Berkeley Haas MBA Candidate.',
   canonicalUrl: 'https://isaacavazquez.com/writing',
+  dateModified: '2025-02-05',
   aiMetadata: {
     expertise: [
       'Product Management',

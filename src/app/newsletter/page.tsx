@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   ...constructMetadata({
     title: 'Newsletter - Isaac Vazquez',
     description: 'Subscribe to Isaac Vazquez\'s newsletter for expert insights on QA engineering, fantasy football analytics, software development, and testing strategies.',
-    canonicalUrl: 'https://isaacavazquez.com/newsletter'
+    canonicalUrl: 'https://isaacavazquez.com/newsletter',
+    dateModified: '2025-02-05',
   }),
   robots: {
     index: false,

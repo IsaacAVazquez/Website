@@ -7,6 +7,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Fantasy Football Draft Tracker - Live Draft Analytics & Tools",
   description: "Track your fantasy football draft live with tier-based analytics, player rankings, and real-time decision support. Create, manage, and analyze your draft picks with advanced data insights.",
   canonicalUrl: "https://isaacavazquez.com/fantasy-football/draft-tracker",
+  dateModified: "2025-02-05",
 });
 
 // Ensure this page is dynamically rendered to prevent build-time issues

@@ -29,6 +29,7 @@ export const metadata = generateAIOptimizedMetadata({
     ],
   },
   canonicalUrl: "https://isaacavazquez.com/about",
+  dateModified: "2025-02-05",
 });
 
 export default function AboutPage() {

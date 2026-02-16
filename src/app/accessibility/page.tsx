@@ -9,6 +9,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Accessibility Statement | Isaac Vazquez",
   description: "Isaac Vazquez is committed to ensuring digital accessibility for people with disabilities. Learn about our WCAG 2.1 AA+ compliance, keyboard navigation, screen reader support, and accessibility features.",
   canonicalUrl: "https://isaacavazquez.com/accessibility",
+  dateModified: "2025-02-05",
 });
 
 export default function AccessibilityPage() {

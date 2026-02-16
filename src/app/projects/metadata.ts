@@ -35,4 +35,5 @@ export const metadata = generateAIOptimizedMetadata({
     ],
   },
   canonicalUrl: "https://isaacavazquez.com/projects",
+  dateModified: "2025-02-05",
 });

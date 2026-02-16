@@ -9,6 +9,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Search - Find Content Across the Site",
   description: "Search through blog posts, projects, and documentation. Find QA engineering insights, fantasy football analytics, and software development resources.",
   canonicalUrl: "https://isaacavazquez.com/search",
+  dateModified: "2025-02-05",
 });
 
 interface SearchPageProps {

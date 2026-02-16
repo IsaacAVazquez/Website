@@ -6,6 +6,7 @@ export const metadata = constructMetadata({
   title: "Fantasy Football Tier Rankings",
   description: "Interactive fantasy football tier rankings. I use data visualization and clustering algorithms to help you make informed draft decisions.",
   canonicalUrl: "/fantasy-football",
+  dateModified: "2025-02-05",
 });
 
 export default function FantasyFootballPage() {

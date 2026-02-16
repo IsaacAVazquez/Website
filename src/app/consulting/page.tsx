@@ -8,6 +8,7 @@ export const metadata = constructMetadata({
   description:
     "Product strategy and technical advisory that blends QA depth, product leadership, and Berkeley Haas insight.",
   canonicalUrl: "/consulting",
+  dateModified: "2025-02-05",
 });
 
 const services: ConsultingService[] = [

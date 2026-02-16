@@ -6,7 +6,8 @@ export const metadata: Metadata = {
   ...constructMetadata({
     title: 'Client Testimonials - Isaac Vazquez',
     description: 'Read testimonials from clients and colleagues about Isaac Vazquez\'s QA engineering expertise, fantasy football analytics, and software development work in Austin, TX.',
-    canonicalUrl: 'https://isaacavazquez.com/testimonials'
+    canonicalUrl: 'https://isaacavazquez.com/testimonials',
+    dateModified: '2025-02-05',
   }),
   robots: {
     index: false,
