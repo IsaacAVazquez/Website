@@ -27,6 +27,9 @@ export interface AIOptimizedMetadata {
   datePublished?: string;
   dateModified?: string;
   readingTime?: number; // Estimated reading time in minutes
+  canonicalUrl?: string;
+  noIndex?: boolean;
+  image?: string;
 }
 
 export const siteConfig = {
@@ -144,6 +147,16 @@ export const siteConfig = {
   ],
 };
 
+const absoluteUrl = (path?: string) => {
+  if (!path) return siteConfig.url;
+  if (path.startsWith("http")) return path;
+  const base = siteConfig.url.endsWith("/")
+    ? siteConfig.url.slice(0, -1)
+    : siteConfig.url;
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${normalizedPath}`;
+};
+
 export function constructMetadata({
   title = siteConfig.title,
   description = siteConfig.description,
@@ -178,9 +191,18 @@ export function constructMetadata({
   // Generate AI-specific meta tags
   const aiTags = aiMetadata ? generateAIMetaTags(aiMetadata) : {};
 
-  // Always include a dateModified timestamp for freshness signals
-  const modifiedDate = dateModified || new Date().toISOString();
-  const publishedDate = datePublished || modifiedDate;
+  const canonicalPath = canonicalUrl || siteConfig.url;
+  const metadataBase = new URL(siteConfig.url);
+  const absoluteCanonical = absoluteUrl(canonicalPath);
+  const absoluteImage = absoluteUrl(image);
+  const otherMeta: Record<string, string> = { ...aiTags };
+  if (datePublished) {
+    otherMeta["article:published_time"] = datePublished;
+  }
+  if (dateModified) {
+    otherMeta["article:modified_time"] = dateModified;
+    otherMeta["og:updated_time"] = dateModified;
+  }
 
   return {
     title: {
@@ -188,7 +210,6 @@ export function constructMetadata({
       template: `%s | ${siteConfig.name}`,
     },
     description,
-    keywords: siteConfig.keywords,
     authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,
     publisher: siteConfig.name,
@@ -200,13 +221,13 @@ export function constructMetadata({
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: siteConfig.url,
+      url: absoluteCanonical,
       title: `${siteConfig.name} – ${title}`,
       description,
       siteName: siteConfig.name,
       images: [
         {
-          url: siteConfig.url + image,
+          url: absoluteImage,
           width: 1200,
           height: 630,
           alt: siteConfig.ogImageAlt || `${siteConfig.name} – ${title}`,
@@ -217,16 +238,16 @@ export function constructMetadata({
       card: "summary_large_image",
       title: `${siteConfig.name} – ${title}`,
       description,
-      images: [siteConfig.url + image],
+      images: [absoluteImage],
       creator: "@isaacvazquez",
       site: "@isaacvazquez",
     },
     icons,
-    metadataBase: new URL(siteConfig.url),
+    metadataBase,
     alternates: {
-      canonical: canonicalUrl || siteConfig.url,
+      canonical: canonicalPath,
       languages: {
-        'en-US': canonicalUrl || siteConfig.url,
+        'en-US': canonicalPath,
       },
     },
     robots: noIndex ? {
@@ -245,12 +266,7 @@ export function constructMetadata({
       },
     },
     // Add AI-specific meta tags
-    other: {
-      ...aiTags,
-      'article:published_time': publishedDate,
-      'article:modified_time': modifiedDate,
-      'og:updated_time': modifiedDate,
-    },
+    other: otherMeta,
     verification: {
       // Google Search Console verification
       // To add: Go to Google Search Console → Add Property → HTML tag method
@@ -317,6 +333,9 @@ export function generateAIOptimizedMetadata(
     datePublished,
     dateModified,
     readingTime,
+    canonicalUrl,
+    noIndex,
+    image,
   } = pageData;
 
   // Construct enhanced description with AI-friendly structure
@@ -328,14 +347,40 @@ export function generateAIOptimizedMetadata(
     enhancedDescription += ` | Expertise: ${expertise.join(", ")}`;
   }
 
+  const canonicalPath = canonicalUrl || siteConfig.url;
+  const absoluteCanonical = absoluteUrl(canonicalPath);
+  const absoluteImage = absoluteUrl(image || siteConfig.ogImage);
+  const metadataBase = new URL(siteConfig.url);
+  const robots = noIndex
+    ? {
+        index: false,
+        follow: false,
+        nocache: true,
+      }
+    : {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      };
+
   // Build metadata
   const metadata: Metadata = {
     title: `${title} | ${siteConfig.name}`,
     description: enhancedDescription,
-    keywords: [
-      ...siteConfig.keywords,
-      ...(expertise || []),
-    ],
+    metadataBase,
+    alternates: {
+      canonical: canonicalPath,
+      languages: {
+        "en-US": canonicalPath,
+      },
+    },
+    robots,
     authors: author
       ? [{ name: author.name, url: siteConfig.url }]
       : [{ name: siteConfig.name, url: siteConfig.url }],
@@ -344,13 +389,13 @@ export function generateAIOptimizedMetadata(
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: siteConfig.url,
+      url: absoluteCanonical,
       title: `${title} | ${siteConfig.name}`,
       description: enhancedDescription,
       siteName: siteConfig.name,
       images: [
         {
-          url: `${siteConfig.url}${siteConfig.ogImage}`,
+          url: absoluteImage,
           width: 1200,
           height: 630,
           alt: `${title} | ${siteConfig.name}`,
@@ -361,7 +406,7 @@ export function generateAIOptimizedMetadata(
       card: "summary_large_image",
       title: `${title} | ${siteConfig.name}`,
       description: enhancedDescription,
-      images: [`${siteConfig.url}${siteConfig.ogImage}`],
+      images: [absoluteImage],
       creator: "@isaacvazquez",
     },
     other: {
@@ -370,10 +415,19 @@ export function generateAIOptimizedMetadata(
       "ai:expertise": expertise?.join(", ") || "",
       "ai:context": context || "",
       "ai:readingTime": readingTime ? `${readingTime} minutes` : "",
-      ...(datePublished && { "article:published_time": datePublished }),
-      ...(dateModified && { "article:modified_time": dateModified }),
     },
   };
+
+  if (datePublished) {
+    (metadata.other as Record<string, string>)["article:published_time"] =
+      datePublished;
+  }
+
+  if (dateModified) {
+    const other = metadata.other as Record<string, string>;
+    other["article:modified_time"] = dateModified;
+    other["og:updated_time"] = dateModified;
+  }
 
   return metadata;
 }

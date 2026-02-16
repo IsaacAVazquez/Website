@@ -107,13 +107,6 @@ module.exports = {
 
     // Content pages
     result.push({
-      loc: '/newsletter',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    })
-
-    result.push({
       loc: '/testimonials',
       changefreq: 'monthly',
       priority: 0.7,

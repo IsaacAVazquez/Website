@@ -34,4 +34,5 @@ export const metadata = generateAIOptimizedMetadata({
       "Proven track record: 50% defect reduction, 300% ROI, 40% faster decisions",
     ],
   },
+  canonicalUrl: "https://isaacavazquez.com/projects",
 });
