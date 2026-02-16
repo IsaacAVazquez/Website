@@ -1,6 +1,11 @@
 import { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo";
-import { SearchInterface } from "@/components/search/SearchInterface";
+import dynamic from "next/dynamic";
+
+const SearchInterface = dynamic(
+  () => import("@/components/search/SearchInterface").then(mod => mod.SearchInterface),
+  { ssr: false }
+);
 
 export const metadata: Metadata = constructMetadata({
   title: "Search - Find Content Across the Site",
