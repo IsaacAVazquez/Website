@@ -207,7 +207,7 @@ export default function FAQPage() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <Heading level={1} className="mb-4 text-4xl md:text-5xl lg:text-6xl">
+            <Heading level={1} className="mb-4 text-4xl md:text-5xl lg:text-6xl text-[#2D1B12] dark:text-white">
               Frequently Asked{" "}
               <span className="gradient-text-warm">
                 Questions
