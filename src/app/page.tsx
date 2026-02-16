@@ -12,15 +12,23 @@ import { personalMetrics } from "@/constants/personal";
 import Image from "next/image";
 import { IconCode } from "@tabler/icons-react";
 
-// Clean Timeline Item Component - Pentagram Style
+// Clean Timeline Item Component - Pentagram Style with Enhanced Animations
 const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTimeline[0]; index: number }) => {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="pentagram-card pentagram-card-hover group"
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
+      whileHover={{
+        y: -4,
+        transition: { duration: 0.3 }
+      }}
+      className="pentagram-card pentagram-card-hover group cursor-pointer"
       aria-labelledby={`role-${index}`}
     >
       {/* Header Section */}
@@ -67,13 +75,26 @@ const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTime
             </span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {item.techStack.map((tech) => (
-              <span
+            {item.techStack.map((tech, techIndex) => (
+              <motion.span
                 key={tech}
-                className="px-3 py-1.5 text-sm bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-600 text-neutral-700 dark:text-neutral-300 font-mono rounded-sm"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.1 + techIndex * 0.05,
+                  ease: "easeOut"
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "rgba(0, 0, 0, 0.05)",
+                  transition: { duration: 0.2 }
+                }}
+                className="px-3 py-1.5 text-sm bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-600 text-neutral-700 dark:text-neutral-300 font-mono rounded-sm cursor-default"
               >
                 {tech}
-              </span>
+              </motion.span>
             ))}
           </div>
         </div>
@@ -171,9 +192,15 @@ export default function Home() {
 
             {/* Content Grid */}
             <div className="space-y-5">
-              <p className="editorial-body text-neutral-700 dark:text-neutral-300">
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="editorial-body text-neutral-700 dark:text-neutral-300"
+              >
                 Product-focused technologist transitioning into product management, bringing 6+ years of experience in quality assurance, data analytics, and technology. At Civitech, I've led testing initiatives for voter engagement platforms, bridging technical execution with strategic product outcomes.
-              </p>
+              </motion.p>
 
               {/* Core Competencies */}
               <aside
@@ -191,52 +218,79 @@ export default function Home() {
                   role="list"
                   aria-label="List of core competencies"
                 >
-                  <div>
-                    <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
-                      Product & Strategy
-                    </h4>
-                    <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                      User experience optimization, feature prioritization, cross-functional collaboration, stakeholder management
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
-                      Technical
-                    </h4>
-                    <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                      Test automation (Cypress), SQL, data analysis, API testing, Agile/Scrum methodologies
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
-                      Analytics
-                    </h4>
-                    <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                      Data-driven decision making, metrics definition, A/B testing, performance optimization
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
-                      Leadership
-                    </h4>
-                    <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                      Team mentorship, project management, diverse community advocacy
-                    </p>
-                  </div>
+                  {[
+                    {
+                      title: "Product & Strategy",
+                      description: "User experience optimization, feature prioritization, cross-functional collaboration, stakeholder management"
+                    },
+                    {
+                      title: "Technical",
+                      description: "Test automation (Cypress), SQL, data analysis, API testing, Agile/Scrum methodologies"
+                    },
+                    {
+                      title: "Analytics",
+                      description: "Data-driven decision making, metrics definition, A/B testing, performance optimization"
+                    },
+                    {
+                      title: "Leadership",
+                      description: "Team mentorship, project management, diverse community advocacy"
+                    }
+                  ].map((competency, idx) => (
+                    <motion.div
+                      key={competency.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.5,
+                        delay: idx * 0.1,
+                        ease: "easeOut"
+                      }}
+                      whileHover={{
+                        scale: 1.02,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
+                        {competency.title}
+                      </h4>
+                      <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                        {competency.description}
+                      </p>
+                    </motion.div>
+                  ))}
                 </div>
               </aside>
 
-              <p className="editorial-body text-neutral-700 dark:text-neutral-300">
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="editorial-body text-neutral-700 dark:text-neutral-300"
+              >
                 At the State of Florida, I analyzed large datasets to inform policy decisions, developing dashboards and reports that improved operational efficiency. As Client Services Manager at Open Progress, I managed digital campaigns for progressive causes, translating client needs into actionable strategies.
-              </p>
+              </motion.p>
 
-              <p className="editorial-body text-neutral-700 dark:text-neutral-300">
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="editorial-body text-neutral-700 dark:text-neutral-300"
+              >
                 Currently pursuing an MBA at UC Berkeley Haas to deepen my product management expertise and explore venture capital opportunities in civic tech, SaaS, and mission-driven startups. Passionate about leveraging technology to create social impact and democratize access to essential services.
-              </p>
+              </motion.p>
 
-              <p className="text-xl md:text-2xl text-neutral-900 dark:text-neutral-100 font-semibold mt-6">
+              <motion.p
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="text-xl md:text-2xl text-neutral-900 dark:text-neutral-100 font-semibold mt-6"
+              >
                 Let's connect if you're interested in technology, product strategy, or social impact.
-              </p>
+              </motion.p>
             </div>
           </motion.div>
         </div>

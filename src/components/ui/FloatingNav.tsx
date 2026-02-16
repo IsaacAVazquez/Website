@@ -7,6 +7,7 @@ import Link from "next/link";
 import { navlinks } from "@/constants/navlinks";
 import { twMerge } from "tailwind-merge";
 import { useNavigation } from "@/hooks/useNavigation";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function FloatingNav() {
   const [isVisible, setIsVisible] = useState(true);
@@ -193,6 +194,11 @@ export function FloatingNav() {
                 </Link>
               );
             })}
+
+            {/* Theme Toggle */}
+            <div className="relative ml-2 pl-2 border-l-2 border-[#FFE4D6]/50 dark:border-[#FF8E53]/20">
+              <ThemeToggle />
+            </div>
 
             {/* CTA Button - Let's Talk */}
             <div className="relative ml-2 pl-2 border-l-2 border-[#FFE4D6]/50 dark:border-[#FF8E53]/20">
