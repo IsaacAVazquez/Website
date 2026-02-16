@@ -30,10 +30,10 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
           Product Management Consulting & Advisory
         </Heading>
         <Paragraph className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] mx-auto max-w-3xl">
-          I partner with teams to build products people believe in. The work blends QA discipline, product strategy, and the toolkit I'm sharpening at Berkeley Haas—grounded in six-plus years of shipping alongside engineers, analysts, and stakeholders.
+          I partner with founders and product leads who want a pragmatic voice in the room. Engagements blend QA discipline, product strategy, and the Berkeley Haas toolkit I’m sharpening—grounded in six-plus years of shipping alongside engineers, analysts, and policy experts.
         </Paragraph>
         <Paragraph className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] mx-auto max-w-3xl">
-          Whether you're moving from prototype to product-market fit or leveling up a mature delivery process, I help translate vision into experiments, rituals, and roadmaps your team can execute.
+          Whether you’re proving product-market fit or scaling a late-stage roadmap, I help translate vision into experiments, rituals, and decision frameworks your team can execute.
         </Paragraph>
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
           <Link href="/contact">
@@ -75,10 +75,10 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
           Advisory & Mentoring
         </Heading>
         <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
-          I coach technical builders stepping into product roles and early founders shaping their first offering. Sessions are candid and tactical, drawing on lessons from Austin civic tech and Bay Area startups alike.
+          I coach technical builders stepping into product roles and early founders shaping their first offer. Sessions are candid and tactical, drawing on lessons from Austin civic tech and Bay Area startups alike.
         </Paragraph>
         <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
-          We often work through validating product-market fit, making pragmatic architecture decisions, building healthy teams, and setting up product rhythms that scale with growth.
+          Together we pressure-test product-market fit, make pragmatic technical choices, build healthy teams, and install product rhythms that scale with growth.
         </Paragraph>
       </WarmCard>
 
@@ -87,7 +87,7 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
           Background & Approach
         </Heading>
         <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
-          I'm completing my MBA at UC Berkeley Haas while staying hands-on in product and QA work. I've contributed to platforms supporting more than 60 million voters across Austin and California, giving me a clear view of both user needs and technical constraints.
+          I’m completing my MBA at UC Berkeley Haas while staying hands-on in product and QA work. I’ve contributed to platforms supporting more than 60 million voters across Austin and California, giving me a clear view of both user needs and technical constraints.
         </Paragraph>
         <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
           The QA and software roots bring credibility with engineering teams; Haas sharpens the strategic layer across market positioning, financial outcomes, and competitive advantage.
@@ -117,4 +117,3 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
     </motion.div>
   );
 }
-

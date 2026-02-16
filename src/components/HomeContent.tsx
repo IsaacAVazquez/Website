@@ -101,7 +101,7 @@ export default function HomeContent() {
             {/* Content Grid */}
             <div className="space-y-5">
               <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
-                Product-focused technologist transitioning into product management, bringing 6+ years of experience in quality assurance, data analytics, and technology. At Civitech, I've led testing initiatives for voter engagement platforms, bridging technical execution with strategic product outcomes.
+                I’m a product-focused technologist who translates QA rigor and analytics into clearer roadmaps. Over the last six years at Civitech I’ve led testing initiatives for voter engagement platforms that reach millions of voters, pairing technical execution with accountable product outcomes.
               </p>
 
               {/* Core Competencies */}
@@ -115,7 +115,7 @@ export default function HomeContent() {
                       Product & Strategy
                     </h4>
                     <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-                      User experience optimization, feature prioritization, cross-functional collaboration, stakeholder management
+                      Run discovery, prioritize features, and keep cross-functional teams locked on the same bet.
                     </p>
                   </div>
                   <div>
@@ -123,7 +123,7 @@ export default function HomeContent() {
                       Technical
                     </h4>
                     <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-                      Test automation (Cypress), SQL, data analysis, API testing, Agile/Scrum methodologies
+                      Build Cypress suites, dive into SQL, validate APIs, and anchor delivery rituals in Agile best practices.
                     </p>
                   </div>
                   <div>
@@ -131,7 +131,7 @@ export default function HomeContent() {
                       Analytics
                     </h4>
                     <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-                      Data-driven decision making, metrics definition, A/B testing, performance optimization
+                      Define the metrics that matter, wire up experimentation, and translate insights into roadmap changes.
                     </p>
                   </div>
                   <div>
@@ -139,22 +139,22 @@ export default function HomeContent() {
                       Leadership
                     </h4>
                     <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-                      Team mentorship, project management, diverse community advocacy
+                      Coach teams, remove project friction, and advocate for inclusive, mission-driven work.
                     </p>
                   </div>
                 </div>
               </div>
 
               <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
-                At the State of Florida, I analyzed large datasets to inform policy decisions, developing dashboards and reports that improved operational efficiency. As Client Services Manager at Open Progress, I managed digital campaigns for progressive causes, translating client needs into actionable strategies.
+                Before Civitech I analyzed statewide datasets for the State of Florida, packaging dashboards that made policy decisions faster. At Open Progress I converted campaign goals into digital programs that actually resonated with voters and volunteers.
               </p>
 
               <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
-                Currently pursuing an MBA at UC Berkeley Haas to deepen my product management expertise and explore venture capital opportunities in civic tech, SaaS, and mission-driven startups. Passionate about leveraging technology to create social impact and democratize access to essential services.
+                I’m now pursuing an MBA at UC Berkeley Haas to sharpen product strategy and explore how to support civic tech, SaaS, and mission-driven founders as an operator or investor.
               </p>
 
               <p className="text-xl md:text-2xl text-[#2D1B12] dark:text-[#FFFCF7] font-semibold mt-6">
-                Let's connect if you're interested in technology, product strategy, or social impact.
+                Let’s connect if you’re shipping meaningful tech or want to jam on product, QA, or social impact.
               </p>
             </div>
           </motion.div>

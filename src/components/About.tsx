@@ -5,7 +5,6 @@ import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { PageSummary } from "@/components/ui/PageSummary";
 import { ExpertSignalGroup } from "@/components/ui/ExpertSignal";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { JourneyTimeline } from "@/components/ui/JourneyTimeline";
 import { QASection } from "@/components/ui/QASection";
 import {
@@ -25,14 +24,6 @@ export default function About() {
 
   return (
     <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-      {/* Breadcrumb Navigation */}
-      <div className="max-w-5xl mx-auto mb-8">
-        <Breadcrumb items={[
-          { label: "Home", href: "/" },
-          { label: "About", href: "/about" }
-        ]} />
-      </div>
-
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -57,18 +48,18 @@ export default function About() {
       >
         <PageSummary
           variant="featured"
-          tldr="Product-focused technologist with 6+ years in civic tech and SaaS, now pursuing MBA at UC Berkeley Haas to deepen product management expertise."
+          tldr="Technical product manager who pairs QA rigor with product strategy. Now at Berkeley Haas sharpening how I scale mission-driven products."
           summary={
             <>
               <p>
-                <strong>Isaac Vazquez</strong> is a technical product manager bridging quality engineering, data analytics, and strategic product work. Currently at UC Berkeley Haas as an MBA Candidate (Class of '27), Isaac brings hands-on experience from Civitech (voter engagement platforms), Florida State University (policy analytics), and Open Progress (digital campaigns).
+                I bridge quality engineering, data storytelling, and strategic product work. At Civitech I owned testing for voter engagement platforms across 60M+ users; before that I built policy analytics at Florida State University and managed digital programs at Open Progress.
               </p>
               <p>
-                Recognized as a <strong>Consortium Fellow</strong> and <strong>MLT Professional Development Fellow</strong>, Isaac combines technical depth with strategic business thinking to lead mission-driven products in civic tech and SaaS.
+                As a <strong>Consortium Fellow</strong> and <strong>MLT Professional Development Fellow</strong>, I’m now at UC Berkeley Haas (MBA ’27) expanding the product toolkit I bring to civic tech, SaaS, and impact-minded teams.
               </p>
             </>
           }
-          context="Based in Bay Area • Seeking Product Manager and APM roles • Open to civic tech, SaaS, and mission-driven startups"
+          context="Based in the Bay • Open to PM/APM roles in civic tech, SaaS, and other mission-driven companies"
         />
 
         {/* Expert Credentials */}
@@ -203,7 +194,7 @@ const OverviewContent = () => {
           </Heading>
 
           <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-            I'm a technical product manager with a QA and analytics foundation. At Civitech I lead testing for voter engagement platforms that reach millions of people, turning what we uncover in quality work into smarter product bets.
+            I’m a technical product manager who treats QA and analytics as inputs to better bets. At Civitech I lead testing for voter engagement platforms that serve millions, translating what we learn in quality work into concrete roadmap shifts.
           </p>
 
           <div>
@@ -211,23 +202,23 @@ const OverviewContent = () => {
               What I bring to the table:
             </p>
             <ul className="list-disc ml-6 space-y-3 text-[#4A3426] dark:text-[#D4A88E] text-base md:text-lg">
-              <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Product & Strategy:</strong> Pair user research with prioritization, keep cross-functional teams aligned, and ship what actually moves metrics</li>
-              <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Technical:</strong> Build Cypress suites, dig through SQL, break APIs, and run Agile rituals that keep velocity healthy</li>
-              <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Analytics:</strong> Define the metrics, run the experiments, and translate the findings into product decisions</li>
-              <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Leadership:</strong> Mentor teammates, manage complex projects, and champion inclusive, mission-driven teams</li>
+              <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Product & Strategy:</strong> Ground bets in user research, stack-rank ruthlessly, and keep cross-functional partners pointed at the same outcome.</li>
+              <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Technical:</strong> Build and maintain automation, dive into SQL or APIs myself, and facilitate Agile rituals that actually unblock shipping.</li>
+              <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Analytics:</strong> Define the metric that proves success, run experiments, and convert signal into decisions the business can feel.</li>
+              <li><strong className="text-[#2D1B12] dark:text-[#FFE4D6]">Leadership:</strong> Mentor teammates, de-risk complex launches, and advocate for inclusive, mission-led teams.</li>
             </ul>
           </div>
 
           <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-            Before Civitech, I combed through statewide datasets for the State of Florida to support policy decisions, and I ran client services at Open Progress—translating campaign goals into digital programs that actually resonated.
+            Before Civitech I combed through statewide datasets for the State of Florida to inform policy, and I ran client services at Open Progress where I translated campaign goals into digital programs that actually resonated with the people we served.
           </p>
 
           <p className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-            These days I'm earning my MBA at UC Berkeley Haas to pair hands-on execution with sharper product strategy and explore how I can support civic tech, SaaS, and other mission-driven founders as an operator or investor.
+            I’m earning my MBA at UC Berkeley Haas to pair hands-on execution with sharper product strategy and explore how I can support civic tech, SaaS, and other mission-driven founders as an operator or investor.
           </p>
 
           <p className="text-base md:text-lg text-[#2D1B12] dark:text-[#FFE4D6] leading-relaxed font-medium">
-            If any of this sparks ideas, let's connect—I'm always up for swapping notes on product, strategy, or social impact.
+            If this sparks ideas, let’s connect—I’m always up for swapping notes on product, strategy, or social impact.
           </p>
         </div>
       </WarmCard>

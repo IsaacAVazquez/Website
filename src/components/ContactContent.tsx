@@ -19,7 +19,7 @@ export function ContactContent() {
           Let's Work Together
         </h1>
         <p className="text-lg md:text-xl text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-          Open to product roles, advisory projects, and honest conversations about building meaningful products
+          Open to full-time product roles, advisory projects, and honest conversations about building meaningful products.
         </p>
       </motion.div>
 
@@ -31,7 +31,7 @@ export function ContactContent() {
             Ready to Connect?
           </Heading>
           <p className="mb-6 max-w-2xl mx-auto text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
-            I'm looking for product management roles where I can pair my QA roots with the strategy work I'm doing at Haas. I also take on consulting projects and I'm always up for trading notes on technology, business strategy, or shipping products that actually help people.
+            I’m pursuing product management roles where I can pair QA roots with the strategy work I’m doing at Haas. I also take on consulting projects and I’m always up for trading notes on technology, business strategy, or shipping products that actually help people.
           </p>
 
           {/* Strategic CTA Placement */}
@@ -76,7 +76,7 @@ export function ContactContent() {
               Product Leadership
             </Heading>
             <p className="text-sm text-[#4A3426] dark:text-[#D4A88E]">
-              Blend technical depth with MBA strategy and six years of building products that scale
+              Blend technical depth with MBA strategy work and six years of building products that scale.
             </p>
           </WarmCard>
 
@@ -86,7 +86,7 @@ export function ContactContent() {
               Proven Results
             </Heading>
             <p className="text-sm text-[#4A3426] dark:text-[#D4A88E]">
-              Product-focused execution
+              Shipped platforms with 60M+ voters reached, 99.999% uptime, and measurable jumps in NPS and defect rates.
             </p>
           </WarmCard>
 
@@ -96,7 +96,7 @@ export function ContactContent() {
               Quick Responder
             </Heading>
             <p className="text-sm text-[#4A3426] dark:text-[#D4A88E]">
-              I make time for thoughtful replies, whether it's a call, coffee chat, or quick video sync
+              I make time for thoughtful replies—whether it’s a call, a coffee chat, or a quick video sync.
             </p>
           </WarmCard>
         </div>
@@ -108,8 +108,7 @@ export function ContactContent() {
               📍 Berkeley, CA 
             </Heading>
             <p className="text-base text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto leading-relaxed">
-              Currently pursuing my MBA at UC Berkeley Haas (graduating May 2027).
-              I love working on products that push boundaries and solving real problems through creativity, data, and technology.
+              Based in Berkeley while finishing my UC Berkeley Haas MBA (May 2027). I split time between the Bay Area and Austin and love digging into products that mix creativity, data, and civic-minded impact.
             </p>
           </div>
         </WarmCard>
