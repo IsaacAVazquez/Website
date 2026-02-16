@@ -1,11 +1,6 @@
 import { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo";
-import dynamic from "next/dynamic";
-
-const SearchInterface = dynamic(
-  () => import("@/components/search/SearchInterface").then(mod => mod.SearchInterface),
-  { ssr: false }
-);
+import { SearchInterfaceClient } from "@/components/search/SearchInterface.client";
 
 export const metadata: Metadata = constructMetadata({
   title: "Search - Find Content Across the Site",
@@ -27,7 +22,7 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
       <div className="max-w-4xl mx-auto">
-        <SearchInterface 
+        <SearchInterfaceClient 
           initialQuery={q}
           initialType={type}
           initialCategory={category}

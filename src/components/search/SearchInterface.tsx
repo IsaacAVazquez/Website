@@ -12,7 +12,7 @@ import { SearchFilters } from "./SearchFilters";
 import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
 
-interface SearchInterfaceProps {
+export interface SearchInterfaceProps {
   initialQuery?: string;
   initialType?: string;
   initialCategory?: string;
