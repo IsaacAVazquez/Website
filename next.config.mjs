@@ -1,3 +1,8 @@
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -110,10 +115,6 @@ const nextConfig = {
     ];
   },
 
-  // Temporarily disable strict linting until remaining type issues are resolved
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -143,6 +144,10 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@tabler/icons-react', 'lucide-react', 'framer-motion'],
     scrollRestoration: true,
+  },
+  // Explicitly configure Turbopack to avoid Next.js 16+ autobuild issues
+  turbopack: {
+    root: __dirname,
   },
   // Enhanced webpack configuration for performance
   webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
