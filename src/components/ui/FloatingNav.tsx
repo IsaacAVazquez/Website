@@ -11,8 +11,28 @@ import { useNavigation } from "@/hooks/useNavigation";
 export function FloatingNav() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [showHint, setShowHint] = useState(false);
   const pathname = usePathname();
   const { isMobile } = useNavigation();
+
+  // Auto-show hint for first-time mobile visitors
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const hasSeenHint = localStorage.getItem('nav-hint-seen');
+    if (!hasSeenHint) {
+      const hintTimer = setTimeout(() => {
+        setShowHint(true);
+        // Hide hint after 3 seconds
+        setTimeout(() => {
+          setShowHint(false);
+          localStorage.setItem('nav-hint-seen', 'true');
+        }, 3000);
+      }, 2000);
+
+      return () => clearTimeout(hintTimer);
+    }
+  }, [isMobile]);
 
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout;
@@ -20,14 +40,14 @@ export function FloatingNav() {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         const currentScrollY = window.scrollY;
-        
+
         // Show nav when scrolling up, hide when scrolling down
         if (currentScrollY < lastScrollY || currentScrollY < 100) {
           setIsVisible(true);
         } else {
           setIsVisible(false);
         }
-        
+
         setLastScrollY(currentScrollY);
       }, 16); // Throttle to ~60fps
     };
@@ -77,23 +97,41 @@ export function FloatingNav() {
   };
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.nav
-          id="navigation"
-          role="navigation"
-          aria-label="Main site navigation"
-          initial={getInitialAnimation()}
-          animate={getAnimateAnimation()}
-          exit={getExitAnimation()}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 30,
-          }}
-          className={getNavClasses()}
-        >
-          <div className="bg-white/80 dark:bg-[#2D1B12]/90 backdrop-blur-sm border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg rounded-2xl px-4 py-3 flex items-center gap-2">
+    <>
+      {/* Mobile navigation hint */}
+      <AnimatePresence>
+        {showHint && isMobile && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-24 left-1/2 transform -translate-x-1/2 z-40 px-4 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black text-sm font-medium rounded-lg shadow-lg pointer-events-none"
+          >
+            <div className="flex items-center gap-2">
+              <span>👇</span>
+              <span>Navigation menu below</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isVisible && (
+          <motion.nav
+            id="navigation"
+            role="navigation"
+            aria-label="Main site navigation"
+            initial={getInitialAnimation()}
+            animate={getAnimateAnimation()}
+            exit={getExitAnimation()}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+            }}
+            className={getNavClasses()}
+          >
+            <div className="bg-white/80 dark:bg-[#2D1B12]/90 backdrop-blur-sm border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg rounded-2xl px-4 py-3 flex items-center gap-2">
             {navlinks.map((link, index) => {
               const Icon = link.icon;
               const active = isActive(link.href);
@@ -182,6 +220,7 @@ export function FloatingNav() {
         </motion.nav>
       )}
     </AnimatePresence>
+    </>
   );
 }
 

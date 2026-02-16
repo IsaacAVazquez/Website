@@ -252,7 +252,9 @@ export function constructMetadata({
       'og:updated_time': modifiedDate,
     },
     verification: {
-      // Add Google Search Console verification if available
+      // Google Search Console verification
+      // To add: Go to Google Search Console → Add Property → HTML tag method
+      // Copy the content value from the meta tag and uncomment the line below
       // google: 'your-google-site-verification-code',
     },
   };

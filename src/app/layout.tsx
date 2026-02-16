@@ -6,6 +6,8 @@ import { AIStructuredData } from "@/components/AIStructuredData";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
 import { Analytics } from "@/components/Analytics";
+import { TopLoadingBar } from "@/components/ui/TopLoadingBar";
+import { GestureTutorial } from "@/components/ui/GestureTutorial";
 
 // Use system fonts as fallback when Google Fonts are unavailable
 // This ensures the build succeeds in restricted network environments
@@ -34,16 +36,21 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth-dark">
       <head>
-        {/* PWA and Theme Meta Tags - Mouthwash Monochrome */}
-        <meta name="theme-color" content="#000000" />
-        <meta name="color-scheme" content="dark light" />
+        {/* PWA and Theme Meta Tags - Warm Modern Design */}
+        <meta name="theme-color" content="#FF6B35" />
+        <meta name="color-scheme" content="light dark" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+        {/* Mobile Optimization */}
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Isaac Vazquez" />
         <meta name="application-name" content="Isaac Vazquez Portfolio" />
-        <meta name="msapplication-TileColor" content="#0A0A0B" />
+        <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+
+        {/* Windows Tiles */}
+        <meta name="msapplication-TileColor" content="#FF6B35" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         
         {/* PWA Manifest */}
@@ -386,6 +393,8 @@ export default function RootLayout({
       >
         <Analytics>
           <Providers>
+            <TopLoadingBar />
+            <GestureTutorial />
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-black focus:text-white dark:focus:bg-white dark:focus:text-black focus:shadow-lg">
               Skip to main content
             </a>

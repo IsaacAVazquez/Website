@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { FloatingNav, GestureNavigation } from "@/components/ui/FloatingNav";
 import { CommandPalette } from "@/components/ui/CommandPalette";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
+import { PageTransition } from "@/components/ui/PageTransition";
 
 interface ConditionalLayoutProps {
   children: React.ReactNode;
@@ -47,28 +48,30 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
       }>
         
         {/* Main Content */}
-        <main 
-          id="main-content" 
+        <main
+          id="main-content"
           role="main"
-          aria-label={isHomePage ? "Isaac Vazquez Portfolio Homepage" : 
-                     isFantasyFootballPage ? "Fantasy Football Analytics Platform" : 
+          aria-label={isHomePage ? "Isaac Vazquez Portfolio Homepage" :
+                     isFantasyFootballPage ? "Fantasy Football Analytics Platform" :
                      "Portfolio Content"}
-          className={isFullWidthPage 
-            ? "min-h-screen w-full focus-ring" 
+          className={isFullWidthPage
+            ? "min-h-screen w-full focus-ring"
             : "flex-1 min-h-screen focus-ring md:ml-0"
           }
           tabIndex={-1}
         >
-          {isFullWidthPage ? (
-            children
-          ) : isHomePage ? (
-            children
-          ) : (
-            <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
-              <Breadcrumbs className="mb-8" />
-              {children}
-            </div>
-          )}
+          <PageTransition>
+            {isFullWidthPage ? (
+              children
+            ) : isHomePage ? (
+              children
+            ) : (
+              <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
+                <Breadcrumbs className="mb-8" />
+                {children}
+              </div>
+            )}
+          </PageTransition>
         </main>
       </div>
 

@@ -2,7 +2,8 @@ import { getBlogPostBySlug, getAllBlogPosts } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { AuthorBio } from '@/components/ui/AuthorBio';
-import { constructMetadata } from '@/lib/seo';
+import { constructMetadata, calculateReadingTime } from '@/lib/seo';
+import { AIStructuredData } from '@/components/AIStructuredData';
 
 interface PageProps {
   params: {
@@ -48,9 +49,55 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  // Calculate reading time if not provided
+  const readingTime = post.readingTime || `${calculateReadingTime(post.content)} min read`;
+  const wordCount = post.content.split(/\s+/).length;
+
+  // Breadcrumbs
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Writing", url: "/writing" },
+    { name: post.title, url: `/writing/${params.slug}` }
+  ];
+
   return (
-    <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-      <article className="max-w-4xl mx-auto">
+    <>
+      {/* Breadcrumb Structured Data */}
+      <AIStructuredData
+        schema={{
+          type: "Breadcrumb",
+          data: { items: breadcrumbs },
+        }}
+      />
+
+      {/* Enhanced Article Structured Data */}
+      <AIStructuredData
+        schema={{
+          type: "Article",
+          data: {
+            headline: post.title,
+            description: post.excerpt || post.title,
+            author: {
+              name: "Isaac Vazquez",
+              jobTitle: "Technical Product Manager & UC Berkeley MBA Candidate",
+              url: "https://isaacavazquez.com"
+            },
+            datePublished: post.publishedAt,
+            dateModified: post.updatedAt || post.publishedAt,
+            url: `https://isaacavazquez.com/writing/${params.slug}`,
+            keywords: Array.isArray(post.tags) ? post.tags.join(", ") : (post.tags || ""),
+            wordCount: wordCount,
+            readingTime: readingTime,
+            image: "https://isaacavazquez.com/og-image.png",
+            inLanguage: "en-US",
+            isAccessibleForFree: true,
+            articleSection: Array.isArray(post.tags) && post.tags[0] ? post.tags[0] : "Product Management",
+          },
+        }}
+      />
+
+      <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+        <article className="max-w-4xl mx-auto">
         <header className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
             {post.title}
@@ -63,12 +110,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                 day: 'numeric',
               })}
             </time>
-            {post.readingTime && (
-              <>
-                <span>•</span>
-                <span>{post.readingTime}</span>
-              </>
-            )}
+            <>
+              <span>•</span>
+              <span>{readingTime}</span>
+              <span>•</span>
+              <span>{wordCount} words</span>
+            </>
           </div>
 
           {/* Tags */}
@@ -113,5 +160,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         </footer>
       </article>
     </div>
+    </>
   );
 }

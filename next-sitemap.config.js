@@ -11,6 +11,8 @@ module.exports = {
     '/_next/*',
     '/404',
     '/admin/*',
+    '/budgeting',
+    '/investments',
   ],
   
   // Additional paths configuration

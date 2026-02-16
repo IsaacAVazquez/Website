@@ -1,4 +1,4 @@
-import ProjectsContent from "@/components/ProjectsContent";
+import { ProjectsContent } from "@/components/ProjectsContent";
 import { metadata } from "./metadata";
 import { StructuredData } from "@/components/StructuredData";
 import { generateBreadcrumbStructuredData } from "@/lib/seo";

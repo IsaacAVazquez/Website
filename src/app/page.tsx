@@ -15,17 +15,18 @@ import { IconCode } from "@tabler/icons-react";
 // Clean Timeline Item Component - Pentagram Style
 const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTimeline[0]; index: number }) => {
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="pentagram-card pentagram-card-hover group"
+      aria-labelledby={`role-${index}`}
     >
       {/* Header Section */}
       <div className="flex items-start justify-between gap-6 mb-4">
         <div className="flex-1">
-          <h3 className="text-2xl md:text-3xl font-bold text-[#2D1B12] dark:text-[#FFFCF7] mb-2 leading-tight">
+          <h3 id={`role-${index}`} className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-2 leading-tight">
             {item.role}
           </h3>
           <p className="text-lg md:text-xl text-[#FF6B35] dark:text-[#FF8E53] font-semibold">
@@ -39,6 +40,7 @@ const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTime
               alt={`${item.company} logo`}
               width={64}
               height={64}
+              loading="lazy"
               className="object-contain w-full h-full"
             />
           </div>
@@ -46,12 +48,12 @@ const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTime
       </div>
 
       {/* Year */}
-      <p className="editorial-caption mb-3 text-[#6B4F3D] dark:text-[#9C7A5F] font-mono">
+      <p className="editorial-caption mb-3 text-neutral-600 dark:text-neutral-400 font-mono">
         {item.year}
       </p>
 
       {/* Description */}
-      <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E] mb-4">
+      <p className="editorial-body text-neutral-700 dark:text-neutral-300 mb-4">
         {item.description}
       </p>
 
@@ -68,7 +70,7 @@ const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTime
             {item.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1.5 text-sm bg-[#FFFCF7] dark:bg-[#2D1B12] border border-black/[0.08] dark:border-white/[0.1] text-[#4A3426] dark:text-[#D4A88E] font-mono rounded-sm"
+                className="px-3 py-1.5 text-sm bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-600 text-neutral-700 dark:text-neutral-300 font-mono rounded-sm"
               >
                 {tech}
               </span>
@@ -76,7 +78,7 @@ const TimelineItem = ({ item, index }: { item: typeof personalMetrics.careerTime
           </div>
         </div>
       )}
-    </motion.div>
+    </motion.article>
   );
 };
 
@@ -85,6 +87,7 @@ export default function Home() {
     <main
       className="min-h-screen w-full bg-white dark:bg-[#1C1410]"
       id="main-content"
+      role="main"
       aria-label="Isaac Vazquez - Technical Product Manager Portfolio"
     >
       {/* Editorial Hero Section */}
@@ -162,13 +165,13 @@ export default function Home() {
             className="max-w-6xl mx-auto"
           >
             {/* Section Header */}
-            <h2 id="overview-heading" className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-6">
+            <h2 id="overview-heading" className="editorial-heading text-neutral-900 dark:text-neutral-100 mb-6">
               Overview
             </h2>
 
             {/* Content Grid */}
             <div className="space-y-5">
-              <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
+              <p className="editorial-body text-neutral-700 dark:text-neutral-300">
                 Product-focused technologist transitioning into product management, bringing 6+ years of experience in quality assurance, data analytics, and technology. At Civitech, I've led testing initiatives for voter engagement platforms, bridging technical execution with strategic product outcomes.
               </p>
 
@@ -179,7 +182,7 @@ export default function Home() {
               >
                 <h3
                   id="core-competencies-heading"
-                  className="editorial-subheading text-[#2D1B12] dark:text-[#FFFCF7] mb-4"
+                  className="editorial-subheading text-neutral-900 dark:text-neutral-100 mb-4"
                 >
                   Core Competencies
                 </h3>
@@ -192,7 +195,7 @@ export default function Home() {
                     <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
                       Product & Strategy
                     </h4>
-                    <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                    <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
                       User experience optimization, feature prioritization, cross-functional collaboration, stakeholder management
                     </p>
                   </div>
@@ -200,7 +203,7 @@ export default function Home() {
                     <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
                       Technical
                     </h4>
-                    <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                    <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
                       Test automation (Cypress), SQL, data analysis, API testing, Agile/Scrum methodologies
                     </p>
                   </div>
@@ -208,7 +211,7 @@ export default function Home() {
                     <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
                       Analytics
                     </h4>
-                    <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                    <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
                       Data-driven decision making, metrics definition, A/B testing, performance optimization
                     </p>
                   </div>
@@ -216,22 +219,22 @@ export default function Home() {
                     <h4 className="text-lg font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-2">
                       Leadership
                     </h4>
-                    <p className="text-base text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">
+                    <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
                       Team mentorship, project management, diverse community advocacy
                     </p>
                   </div>
                 </div>
               </aside>
 
-              <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
+              <p className="editorial-body text-neutral-700 dark:text-neutral-300">
                 At the State of Florida, I analyzed large datasets to inform policy decisions, developing dashboards and reports that improved operational efficiency. As Client Services Manager at Open Progress, I managed digital campaigns for progressive causes, translating client needs into actionable strategies.
               </p>
 
-              <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E]">
+              <p className="editorial-body text-neutral-700 dark:text-neutral-300">
                 Currently pursuing an MBA at UC Berkeley Haas to deepen my product management expertise and explore venture capital opportunities in civic tech, SaaS, and mission-driven startups. Passionate about leveraging technology to create social impact and democratize access to essential services.
               </p>
 
-              <p className="text-xl md:text-2xl text-[#2D1B12] dark:text-[#FFFCF7] font-semibold mt-6">
+              <p className="text-xl md:text-2xl text-neutral-900 dark:text-neutral-100 font-semibold mt-6">
                 Let's connect if you're interested in technology, product strategy, or social impact.
               </p>
             </div>
@@ -254,16 +257,16 @@ export default function Home() {
           >
             {/* Section Header */}
             <div className="mb-8">
-              <h2 id="career-journey-heading" className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7] mb-4">
+              <h2 id="career-journey-heading" className="editorial-heading text-neutral-900 dark:text-neutral-100 mb-4">
                 Career Journey
               </h2>
-              <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E] max-w-4xl">
+              <p className="editorial-body text-neutral-700 dark:text-neutral-300 max-inline-size-wide">
                 From Political Science graduate to QA engineer, and now an MBA candidate at UC Berkeley, my career has been a journey of continuous learning and impact. Here's a snapshot of my professional timeline.
               </p>
             </div>
 
             {/* Timeline Grid */}
-            <div className="pentagram-grid">
+            <div className="pentagram-grid" role="list" aria-label="Career timeline">
               {personalMetrics.careerTimeline.map((item, index) => (
                 <TimelineItem
                   key={`${item.year}-${item.role}`}

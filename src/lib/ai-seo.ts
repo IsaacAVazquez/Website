@@ -489,8 +489,8 @@ export function generateArticleSchema(data: ArticleSchemaData) {
   }
 
   // Keywords
-  if (data.keywords && data.keywords.length > 0) {
-    schema.keywords = data.keywords.join(", ");
+  if (data.keywords) {
+    schema.keywords = Array.isArray(data.keywords) ? data.keywords.join(", ") : data.keywords;
   }
 
   // Topics the article is about
@@ -559,8 +559,8 @@ export function generateProjectSchema(data: ProjectSchemaData) {
   }
 
   // Keywords
-  if (data.keywords && data.keywords.length > 0) {
-    schema.keywords = data.keywords.join(", ");
+  if (data.keywords) {
+    schema.keywords = Array.isArray(data.keywords) ? data.keywords.join(", ") : data.keywords;
   }
 
   // Programming languages used
