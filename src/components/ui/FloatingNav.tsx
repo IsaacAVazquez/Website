@@ -241,7 +241,7 @@ export function GestureNavigation({ children }: { children: React.ReactNode }) {
   
   const handleNavigation = useCallback((direction: "left" | "right") => {
     // Simple navigation logic - cycle through main pages
-    const pages = ["/", "/about", "/projects", "/resume", "/contact"];
+    const pages = ["/", "/about", "/resume", "/faq", "/contact"];
     const currentIndex = pages.indexOf(pathname);
     
     if (currentIndex === -1) return; // Not on a main page

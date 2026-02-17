@@ -261,7 +261,7 @@ export default function FAQPage() {
                   <a href="/contact">Get in Touch</a>
                 </ModernButton>
                 <ModernButton variant="outline">
-                  <a href="/projects">View My Work</a>
+                  <a href="/resume">View My Work</a>
                 </ModernButton>
               </div>
             </WarmCard>

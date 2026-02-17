@@ -7,9 +7,9 @@ export default function Header() {
   const pathname = usePathname();
 
   const navigation = [
-    { href: '/fantasy-football', label: 'Fantasy Football' },
-    { href: '/writing', label: 'Writing' },
+    { href: '/about', label: 'About' },
     { href: '/resume', label: 'Resume' },
+    { href: '/faq', label: 'FAQ' },
     { href: '/contact', label: 'Contact' },
   ];
 

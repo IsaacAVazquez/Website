@@ -123,11 +123,11 @@ export default function FantasyFootballPage() {
 
         {/* Back Button */}
         <Link 
-          href="/projects"
+          href="/"
           className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Projects
+          Back to Home
         </Link>
 
         {/* Header */}
