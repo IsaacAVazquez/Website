@@ -4,6 +4,7 @@ import { SearchInterfaceClient } from "@/components/search/SearchInterface.clien
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { Badge } from "@/components/ui/Badge";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export const metadata: Metadata = constructMetadata({
   title: "Search - Find Content Across the Site",

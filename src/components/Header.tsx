@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 export default function Header() {
   const pathname = usePathname();
@@ -19,20 +20,23 @@ export default function Header() {
         <Link href="/" className="site-name">
           Isaac Vazquez
         </Link>
-        <nav className="header-nav">
-          <ul>
-            {navigation.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={pathname === item.href ? 'active' : ''}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="header-actions flex items-center gap-3">
+          <nav className="header-nav">
+            <ul>
+              {navigation.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={pathname === item.href ? 'active' : ''}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

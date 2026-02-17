@@ -133,6 +133,7 @@ export function FloatingNav() {
             className={getNavClasses()}
           >
             <div className="bg-white/80 dark:bg-[#2D1B12]/90 backdrop-blur-sm border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg rounded-2xl px-4 py-3 flex items-center gap-2">
+              <ThemeToggle />
             {navlinks.map((link, index) => {
               const Icon = link.icon;
               const active = isActive(link.href);
@@ -194,11 +195,6 @@ export function FloatingNav() {
                 </Link>
               );
             })}
-
-            {/* Theme Toggle */}
-            <div className="relative ml-2 pl-2 border-l-2 border-[#FFE4D6]/50 dark:border-[#FF8E53]/20">
-              <ThemeToggle />
-            </div>
 
             {/* CTA Button - Let's Talk */}
             <div className="relative ml-2 pl-2 border-l-2 border-[#FFE4D6]/50 dark:border-[#FF8E53]/20">

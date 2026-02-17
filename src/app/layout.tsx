@@ -8,6 +8,7 @@ import { Providers } from "@/components/Providers";
 import { Analytics } from "@/components/Analytics";
 import { TopLoadingBar } from "@/components/ui/TopLoadingBar";
 import { GestureTutorial } from "@/components/ui/GestureTutorial";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 // Use system fonts as fallback when Google Fonts are unavailable
 // This ensures the build succeeds in restricted network environments
@@ -287,21 +288,6 @@ export default function RootLayout({
         <StructuredData type="WebSite" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(() => {
-              try {
-                const theme = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (theme === 'dark' || (!theme && prefersDark)) {
-                  document.documentElement.classList.add('dark');
-                } else {
-                  document.documentElement.classList.remove('dark');
-                }
-              } catch (_) {}
-            })();`,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
             __html: `
               // Performance monitoring initialization
               (function() {
@@ -314,6 +300,20 @@ export default function RootLayout({
                 }
               })();
             `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+              try {
+                const storedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = storedTheme || 'system';
+                document.documentElement.dataset.theme = theme;
+                const useDark = theme === 'dark' || (theme === 'system' && prefersDark);
+                document.documentElement.classList.toggle('dark', useDark);
+              } catch (_) {}
+            })();`,
           }}
         />
       </head>
