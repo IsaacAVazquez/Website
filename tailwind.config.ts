@@ -46,27 +46,34 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        // Mouthwash Studio Monochrome Color System
-        primary: "var(--color-primary)",      // Pure black (#000000)
-        secondary: "var(--color-secondary)",  // Pure white (#FFFFFF)
-        accent: "var(--color-accent)",        // Mid grey (#9C9C9C)
-        tertiary: "var(--color-tertiary)",    // Dark grey (#5B5B5B)
-        warning: "var(--color-warning)",      // Very dark grey (#181818)
-        error: "var(--color-error)",          // Pure black (#000000)
+        // Modern Professional Color System
+        primary: "var(--color-primary)",      // Slate 900 - Deep professional
+        secondary: "var(--color-secondary)",  // Blue 500 - Trustworthy blue
+        accent: "var(--color-accent)",        // Cyan 500 - Fresh cyan
+        tertiary: "var(--color-tertiary)",    // Emerald 500 - Vibrant green
+        warning: "var(--color-warning)",      // Amber 500 - Attention
+        error: "var(--color-error)",          // Red 500 - Error
+        success: "var(--color-success)",      // Emerald 500 - Success
+        info: "var(--color-info)",            // Blue 500 - Info
 
-        // Mouthwash Monochrome Neutral Scale
+        // Additional modern accents
+        purple: "var(--color-purple)",        // Violet 500
+        pink: "var(--color-pink)",            // Pink 500
+        indigo: "var(--color-indigo)",        // Indigo 500
+
+        // Modern Slate Gray Scale
         neutral: {
-          50: "var(--neutral-50)",    // Pure white (#FFFFFF)
-          100: "var(--neutral-100)",  // Near white (#FAFAFA)
-          200: "var(--neutral-200)",  // Light grey (#D0D0D0)
-          300: "var(--neutral-300)",  // Medium light grey (#A1A1A1)
-          400: "var(--neutral-400)",  // Mid grey (#9C9C9C)
-          500: "var(--neutral-500)",  // Dark grey (#5B5B5B)
-          600: "var(--neutral-600)",  // Very dark grey (#181818)
-          700: "var(--neutral-700)",  // Near black (#111111)
-          800: "var(--neutral-800)",  // Darker black (#0A0A0A)
-          900: "var(--neutral-900)",  // Pure black (#000000)
-          950: "var(--neutral-950)",  // Pure black (#000000)
+          50: "var(--neutral-50)",    // Slate 50 - Lightest
+          100: "var(--neutral-100)",  // Slate 100 - Light surface
+          200: "var(--neutral-200)",  // Slate 200 - Subtle borders
+          300: "var(--neutral-300)",  // Slate 300 - Light borders
+          400: "var(--neutral-400)",  // Slate 400 - Disabled
+          500: "var(--neutral-500)",  // Slate 500 - Secondary text
+          600: "var(--neutral-600)",  // Slate 600 - Tertiary text
+          700: "var(--neutral-700)",  // Slate 700 - Dark text
+          800: "var(--neutral-800)",  // Slate 800 - Darker elements
+          900: "var(--neutral-900)",  // Slate 900 - Primary dark
+          950: "var(--neutral-950)",  // Slate 950 - Deepest dark
         },
 
         // Semantic surfaces
@@ -108,15 +115,15 @@ const config: Config = {
         "4xl": "var(--space-4xl)",
       },
       boxShadow: {
-        // Mouthwash Studio Ultra Subtle Shadows
-        'subtle': 'var(--shadow-subtle)',         // 0 1px 2px rgba(0,0,0,0.03)
-        'elevated': 'var(--shadow-elevated)',     // 0 4px 8px rgba(0,0,0,0.06)
-        'primary': 'var(--shadow-primary)',       // 0 1px 2px rgba(0,0,0,0.04)
-        'secondary': 'var(--shadow-secondary)',   // 0 2px 4px rgba(0,0,0,0.04)
-        'accent': 'var(--shadow-accent)',         // 0 1px 2px rgba(0,0,0,0.06)
-        'warm-lg': 'var(--shadow-warm-lg)',       // 0 4px 8px rgba(0,0,0,0.05)
-        'warm-xl': 'var(--shadow-warm-xl)',       // 0 8px 16px rgba(0,0,0,0.06)
-        // Legacy glow support (now maps to monochrome shadows)
+        // Modern Professional Shadows
+        'subtle': 'var(--shadow-subtle)',         // Minimal depth
+        'elevated': 'var(--shadow-elevated)',     // Floating elements
+        'primary': 'var(--shadow-primary)',       // Standard elevation
+        'secondary': 'var(--shadow-secondary)',   // Moderate elevation
+        'accent': 'var(--shadow-accent)',         // Accent with color
+        'warm-lg': 'var(--shadow-warm-lg)',       // Large elevation
+        'warm-xl': 'var(--shadow-warm-xl)',       // Extra large elevation
+        // Legacy glow support
         'glow-blue': 'var(--glow-primary)',
         'glow-teal': 'var(--glow-secondary)',
         'glow-purple': 'var(--glow-accent)',
