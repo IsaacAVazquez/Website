@@ -28,7 +28,7 @@ export const Footer = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Let's Build Something Great Together
+            Need a PM who can own the roadmap end to end?
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Looking for a product manager who combines technical expertise with strategic thinking?

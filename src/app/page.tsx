@@ -135,7 +135,7 @@ export default function Home() {
                 </p>
               </>
             }
-            context="Based in the Bay Area • Open to Product Manager and APM roles • Interested in civic tech, SaaS, and mission-driven startups"
+            context="Based in the Bay Area • Open to Product Manager roles • Interested in civic tech, SaaS, and mission-driven startups"
           />
 
           {/* Expert Credentials */}

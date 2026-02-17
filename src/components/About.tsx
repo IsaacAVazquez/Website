@@ -48,7 +48,7 @@ export default function About() {
       >
         <PageSummary
           variant="featured"
-          tldr="Technical product manager who pairs QA rigor with product strategy. Now at Berkeley Haas sharpening how I scale mission-driven products."
+          tldr="Technical product manager who pairs QA rigor with product strategy. Currently at Berkeley Haas sharpening how I scale data-heavy, user-facing products."
           summary={
             <>
               <p>
@@ -59,7 +59,7 @@ export default function About() {
               </p>
             </>
           }
-          context="Based in the Bay • Open to PM/APM roles in civic tech, SaaS, and other mission-driven companies"
+          context="Based in the Bay • Open to PM/APM roles"
         />
 
         {/* Expert Credentials */}

@@ -96,7 +96,7 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
 
       <WarmCard padding="lg" className="text-center">
         <Heading level={3} className="text-xl text-[#FF6B35] mb-3">
-          Let's Build Together
+          Ready to work together?
         </Heading>
         <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto">
           I keep engagements intentionally small so every client gets focus and follow-through. Reach out and we'll explore how I can support what you're building.

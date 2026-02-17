@@ -25,7 +25,7 @@ export const metadata: Metadata = constructMetadata({
     ],
     specialty: "Technical Product Management",
     profession: "Product Manager",
-    industry: ["Technology", "SaaS", "Civic Tech"],
+    industry: ["Technology", "SaaS"],
     topics: ["Product Management", "MBA", "Career Transition", "Technical PM"],
     contentType: "FAQ",
     context: "UC Berkeley Haas MBA Candidate with 6+ years in product and quality engineering",
@@ -45,7 +45,7 @@ const faqCategories = [
       },
       {
         question: "What kind of product management roles is Isaac seeking?",
-        answer: "I'm targeting PM and APM roles that value technical fluency, user empathy, and cross-functional leadership. I do my best work when I can partner closely with engineering, design, and analytics to turn interviews, telemetry, and experiments into prioritized plans for web apps, workflow tools, or other data-heavy platforms."
+        answer: "I'm targeting PM and APM roles that value technical fluency, user empathy, and cross-functional leadership. I do my best work when I can partner closely with engineering, design, and analytics to turn interviews, telemetry, and experiments into prioritized plans for workflow or data-heavy platforms."
       },
       {
         question: "What makes Isaac qualified for product management roles?",

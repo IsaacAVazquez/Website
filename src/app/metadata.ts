@@ -7,7 +7,7 @@ import { constructMetadata } from "@/lib/seo";
 export const metadata = constructMetadata({
   title: "Isaac Vazquez - Technical Product Manager | UC Berkeley MBA Candidate",
   description:
-    "Product Manager & UC Berkeley Haas MBA Candidate '27 seeking APM/PM roles in Austin TX and San Francisco Bay Area. 6+ years experience in civic tech, SaaS, quality assurance leadership, and data analytics. Technical background with expertise in product strategy, cross-functional collaboration, and data-driven decision making.",
+    "Product Manager & UC Berkeley Haas MBA Candidate '27 seeking PM roles. 6+ years experience in civic tech, SaaS, quality assurance leadership, and data analytics. Technical background with expertise in product strategy, cross-functional collaboration, and data-driven decision making.",
   canonicalUrl: "/",
   dateModified: "2025-02-05",
   aiMetadata: {

@@ -253,7 +253,7 @@ Clear indication of knowledge areas:
 Additional context for AI understanding:
 - Location: Bay Area, CA
 - Current Status: MBA Candidate
-- Career Stage: Seeking Product Manager/APM roles
+- Career Stage: Seeking Product Manager roles
 - Industry Focus: Civic tech, SaaS, mission-driven startups
 
 ---
