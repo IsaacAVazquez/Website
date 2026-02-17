@@ -1,8 +1,3 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -145,10 +140,9 @@ const nextConfig = {
     optimizePackageImports: ['@tabler/icons-react', 'lucide-react', 'framer-motion'],
     scrollRestoration: true,
   },
-  // Explicitly configure Turbopack to avoid Next.js 16+ autobuild issues
-  turbopack: {
-    root: __dirname,
-  },
+  // Empty turbopack config to acknowledge Next.js 16 default Turbopack usage
+  // Webpack config below is used for backward compatibility
+  turbopack: {},
   // Enhanced webpack configuration for performance
   webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
     // Exclude server-only packages from client bundle
