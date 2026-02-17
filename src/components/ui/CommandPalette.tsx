@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { navlinks } from "@/constants/navlinks";
 import { socials } from "@/constants/socials";
-import { IconSearch, IconCommand } from "@tabler/icons-react";
+import { IconCommand } from "@tabler/icons-react";
 import { WarmCard } from "./WarmCard";
 
 interface CommandItem {
@@ -134,20 +134,7 @@ export function CommandPalette() {
 
   return (
     <>
-      {/* Trigger Button */}
-      <motion.button
-        onClick={() => setIsOpen(true)}
-        className="fixed top-4 right-4 z-40 p-3 glass-card elevation-2 hover:elevation-3 transition-all duration-300 group"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <IconSearch className="h-5 w-5 text-secondary group-hover:text-primary transition-colors" />
-        <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
-          ⌘K
-        </span>
-      </motion.button>
-
-      {/* Command Palette Modal */}
+      {/* Command Palette Modal - Keyboard shortcut only (⌘K) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -170,17 +157,16 @@ export function CommandPalette() {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 {/* Search Input */}
-                <div className="flex items-center gap-3 p-4 border-b-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
-                  <IconSearch className="h-5 w-5 text-[#FF6B35] dark:text-[#FF8E53]" />
+                <div className="flex items-center gap-3 p-4 border-b-2 border-gray-200 dark:border-gray-700">
                   <input
                     type="text"
                     placeholder="Search commands..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="flex-1 bg-transparent border-none outline-none text-[#4A3426] dark:text-[#FFE4D6] placeholder-[#6B4F3D] dark:placeholder-[#D4A88E]"
+                    className="flex-1 bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                     autoFocus
                   />
-                  <kbd className="px-2 py-1 text-xs bg-[#FFF8F0] dark:bg-[#4A3426]/50 rounded text-[#6B4F3D] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30">
+                  <kbd className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 rounded text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700">
                     ESC
                   </kbd>
                 </div>

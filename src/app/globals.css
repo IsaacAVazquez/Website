@@ -102,44 +102,44 @@
    Semantic naming with contextual purpose
    ============================================ */
 :root {
-  /* Mouthwash Studio Monochrome Palette - Pure Black & White */
-  --color-primary: #000000;          /* Pure Black - primary accent and actions */
-  --color-secondary: #FFFFFF;        /* Pure White - secondary actions */
-  --color-accent: #5B5B5B;           /* Dark Grey - WCAG AA compliant (4.6:1 ratio) */
-  --color-tertiary: #3D3D3D;         /* Darker Grey - enhanced contrast (9.5:1 ratio) */
-  --color-success: #000000;          /* Black - positive, success */
-  --color-warning: #181818;          /* Very Dark Grey - attention */
-  --color-error: #000000;            /* Black - error state */
-  --color-info: #757575;             /* Mid-Dark Grey - improved contrast (4.5:1 ratio) */
+  /* Modern Light Palette - Clean & Bright */
+  --color-primary: #3B82F6;          /* Clean Blue - primary accent (matches modern portfolios) */
+  --color-secondary: #06B6D4;        /* Cyan - secondary actions */
+  --color-accent: #8B5CF6;           /* Purple - highlights */
+  --color-tertiary: #10B981;         /* Green - success/positive */
+  --color-success: #10B981;          /* Green - positive, success */
+  --color-warning: #F59E0B;          /* Amber - attention */
+  --color-error: #EF4444;            /* Red - error state */
+  --color-info: #3B82F6;             /* Blue - informational */
 
   /* Legacy support - backwards compatible (points to modern colors) */
   --electric-blue: var(--color-primary);
   --matrix-green: var(--color-success);
   --neon-purple: var(--color-accent);
-  --cyber-teal: var(--color-tertiary);
+  --cyber-teal: var(--color-secondary);
   --warning-amber: var(--color-warning);
   --error-red: var(--color-error);
 
   /* Vivid color aliases for components */
   --vivid-blue: var(--color-primary);
-  --vivid-teal: var(--color-tertiary);
+  --vivid-teal: var(--color-secondary);
   --vivid-purple: var(--color-accent);
   --vivid-pink: #EC4899;             /* Modern pink */
   --vivid-yellow: var(--color-warning);
   --vivid-green: var(--color-success);
 
-  /* Mouthwash Studio Monochrome Scale - Pure Greys */
-  --neutral-50: #FFFFFF;            /* Pure white - lightest background */
-  --neutral-100: #FAFAFA;           /* Near white */
-  --neutral-200: #D0D0D0;           /* Light gray - borders (Mouthwash spec) */
-  --neutral-300: #A1A1A1;           /* Medium light gray (Mouthwash spec) */
-  --neutral-400: #9C9C9C;           /* Mid grey (Mouthwash spec) */
-  --neutral-500: #5B5B5B;           /* Dark grey (Mouthwash spec) */
-  --neutral-600: #181818;           /* Very dark grey (Mouthwash spec) */
-  --neutral-700: #111111;           /* Near black */
-  --neutral-800: #0A0A0A;           /* Darker black */
-  --neutral-900: #000000;           /* Pure black */
-  --neutral-950: #000000;           /* Pure black */
+  /* Modern Light Grey Scale - Bright & Airy */
+  --neutral-50: #F9FAFB;            /* Very light gray - lightest background */
+  --neutral-100: #F3F4F6;           /* Light gray - secondary backgrounds */
+  --neutral-200: #E5E7EB;           /* Light gray - subtle borders */
+  --neutral-300: #D1D5DB;           /* Medium light gray - borders */
+  --neutral-400: #9CA3AF;           /* Medium gray - disabled states */
+  --neutral-500: #6B7280;           /* Mid gray - secondary text */
+  --neutral-600: #4B5563;           /* Dark gray - tertiary text */
+  --neutral-700: #374151;           /* Darker gray - secondary text */
+  --neutral-800: #1F2937;           /* Very dark gray - primary text (dark mode bg) */
+  --neutral-900: #111827;           /* Near black - primary text */
+  --neutral-950: #030712;           /* Pure dark - darkest elements */
 
   /* Legacy support */
   --slate-50: var(--neutral-50);
@@ -150,46 +150,46 @@
   --slate-800: var(--neutral-800);
   --slate-900: var(--neutral-900);
 
-  /* Accessible Light Mode Colors - WCAG AA+ Monochrome */
-  --color-primary-accessible: #000000;    /* Pure black for maximum contrast */
-  --color-secondary-accessible: #FFFFFF;  /* Pure white for maximum contrast */
-  --color-accent-accessible: #5B5B5B;     /* Dark grey accent (4.6:1 ratio) */
-  --color-tertiary-accessible: #3D3D3D;   /* Darker grey (9.5:1 ratio) */
-  --color-error-accessible: #000000;      /* Pure black */
-  --color-success-accessible: #000000;    /* Pure black */
+  /* Accessible Light Mode Colors - WCAG AA+ */
+  --color-primary-accessible: #2563EB;    /* Darker blue for better contrast */
+  --color-secondary-accessible: #0891B2;  /* Darker cyan */
+  --color-accent-accessible: #7C3AED;     /* Darker purple */
+  --color-tertiary-accessible: #059669;   /* Darker green */
+  --color-error-accessible: #DC2626;      /* Darker red */
+  --color-success-accessible: #059669;    /* Darker green */
 
-  /* Legacy Terminal Interface Colors - Deprecated, use warm equivalents */
-  --terminal-bg: var(--neutral-900);           /* Dark warm brown instead */
-  --terminal-border: var(--neutral-800);       /* Warm brown border */
-  --terminal-text: var(--color-success);       /* Green remains for code */
-  --terminal-cursor: var(--color-primary);     /* Warm orange cursor */
+  /* Legacy Terminal Interface Colors - Deprecated */
+  --terminal-bg: var(--neutral-900);
+  --terminal-border: var(--neutral-700);
+  --terminal-text: var(--color-success);
+  --terminal-cursor: var(--color-primary);
 
-  /* Mouthwash Studio Surface Colors - Monochrome & Minimal */
+  /* Modern Surface Colors - Clean & Bright */
   --surface-primary: rgba(255, 255, 255, 1);        /* Pure white base */
-  --surface-secondary: rgba(250, 250, 250, 1);      /* Near white */
+  --surface-secondary: rgba(249, 250, 251, 1);      /* Very light gray (#F9FAFB) */
   --surface-elevated: rgba(255, 255, 255, 1);       /* Pure white elevated */
   --surface-overlay: rgba(0, 0, 0, 0.5);            /* Black overlay */
 
-  /* Mouthwash Studio Text Colors - High Contrast Monochrome */
-  --text-primary: #000000;                          /* Pure black - primary text */
-  --text-secondary: #3D3D3D;                        /* Darker grey - enhanced contrast (9.5:1) */
-  --text-tertiary: #5B5B5B;                         /* Dark grey - WCAG AA compliant (4.6:1) */
+  /* Modern Text Colors - Light & Readable */
+  --text-primary: #111827;                          /* Near black - primary text */
+  --text-secondary: #6B7280;                        /* Mid gray - secondary text */
+  --text-tertiary: #9CA3AF;                         /* Light gray - tertiary text */
   --text-inverse: #FFFFFF;                          /* Pure white for dark backgrounds */
 
-  /* Mouthwash Studio Border Colors - Minimal & Clean */
-  --border-primary: rgba(208, 208, 208, 0.5);       /* Light grey border (#D0D0D0) */
-  --border-secondary: rgba(208, 208, 208, 0.3);     /* Very subtle light grey */
-  --border-accent: rgba(0, 0, 0, 1);                /* Pure black accent */
+  /* Modern Border Colors - Subtle & Clean */
+  --border-primary: rgba(229, 231, 235, 1);         /* Light gray border (#E5E7EB) */
+  --border-secondary: rgba(243, 244, 246, 1);       /* Very subtle light gray (#F3F4F6) */
+  --border-accent: rgba(59, 130, 246, 0.5);         /* Blue accent with opacity */
 
-  /* Mouthwash Studio Shadows - Ultra Subtle Monochrome */
-  --shadow-primary: 0 1px 2px rgba(0, 0, 0, 0.04);           /* Very subtle grey shadow */
-  --shadow-secondary: 0 2px 4px rgba(0, 0, 0, 0.04);         /* Light grey shadow */
-  --shadow-accent: 0 1px 2px rgba(0, 0, 0, 0.06);            /* Subtle black tint */
-  --shadow-warning: 0 2px 4px rgba(0, 0, 0, 0.04);           /* Subtle grey */
-  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.03);            /* Ultra subtle */
-  --shadow-elevated: 0 4px 8px rgba(0, 0, 0, 0.06);          /* Elevated cards */
-  --shadow-warm-lg: 0 4px 8px rgba(0, 0, 0, 0.05);           /* Medium shadow */
-  --shadow-warm-xl: 0 8px 16px rgba(0, 0, 0, 0.06);          /* Large shadow */
+  /* Modern Shadows - Subtle & Soft */
+  --shadow-primary: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-secondary: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-accent: 0 1px 3px 0 rgba(59, 130, 246, 0.1), 0 1px 2px 0 rgba(59, 130, 246, 0.06);
+  --shadow-warning: 0 1px 3px 0 rgba(245, 158, 11, 0.1), 0 1px 2px 0 rgba(245, 158, 11, 0.06);
+  --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-warm-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-warm-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   /* Legacy glow support (now subtle shadows for backwards compatibility) */
   --glow-primary: var(--shadow-primary);

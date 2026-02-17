@@ -9,20 +9,20 @@ const nextConfig = {
   // URL redirects for better SEO and user experience
   async redirects() {
     return [
-      // Portfolio redirects - common variations
+      // Portfolio redirects - redirect old /projects to new /portfolio
       {
-        source: '/portfolio',
-        destination: '/projects',
+        source: '/projects',
+        destination: '/portfolio',
         permanent: true,
       },
       {
         source: '/work',
-        destination: '/projects',
+        destination: '/portfolio',
         permanent: true,
       },
       {
-        source: '/portfolio/:path*',
-        destination: '/projects/:path*',
+        source: '/projects/:path*',
+        destination: '/portfolio/:path*',
         permanent: true,
       },
       

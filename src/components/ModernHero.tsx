@@ -63,7 +63,10 @@ export function ModernHero() {
                 Isaac Vazquez
               </h1>
               <p className="editorial-subheading text-neutral-500 dark:text-neutral-400 mt-3">
-                Technical Product Manager & UC Berkeley Haas MBA Candidate
+                Product Manager | MBA Candidate | Builder
+              </p>
+              <p className="text-sm text-neutral-400 dark:text-neutral-500 mt-2 font-mono">
+                Bay Area • 5+ years in Product & QA
               </p>
             </motion.div>
 
@@ -74,21 +77,14 @@ export function ModernHero() {
               aria-hidden="true"
             />
 
-            {/* Editorial Body Copy - Monochrome */}
+            {/* Editorial Body Copy - Monochrome - Simplified to 2 sentences */}
             <motion.p
               variants={itemVariants}
               className="editorial-body text-neutral-600 dark:text-neutral-300"
             >
-              Bay Area-based and pursuing my MBA full-time at UC Berkeley Haas, I build mission-driven products that
-              balance user insight, data, and disciplined execution. I move comfortably between product discovery,
-              analytics, and release quality—then pull the right stakeholders along for the ride.
-            </motion.p>
-
-            <motion.p
-              variants={itemVariants}
-              className="editorial-body text-neutral-600 dark:text-neutral-300"
-            >
-              Haas is sharpening that toolkit, and I'm applying it to every roadmap, experiment, and delivery sprint I touch.
+              I build mission-driven products that balance user insight, data, and disciplined execution—moving
+              comfortably between discovery, analytics, and delivery. Currently sharpening my strategic toolkit
+              at UC Berkeley Haas while applying it to every roadmap and sprint I touch.
             </motion.p>
 
             {/* Minimal Monochrome CTAs */}
@@ -96,12 +92,12 @@ export function ModernHero() {
               variants={itemVariants}
               className="flex flex-wrap gap-4 pt-2"
             >
-              <Link href="/resume">
+              <Link href="/portfolio">
                 <ModernButton variant="primary" size="lg">
-                  View Resume
+                  View My Work
                 </ModernButton>
               </Link>
-              <Link href="/contact">
+              <Link href="/#contact">
                 <ModernButton variant="outline" size="lg">
                   Get In Touch
                 </ModernButton>

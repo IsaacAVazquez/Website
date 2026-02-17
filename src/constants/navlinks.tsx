@@ -1,35 +1,29 @@
 import {
-  IconBolt,
+  IconHome,
   IconMail,
-  IconFileText,
+  IconBriefcase,
   IconUser,
-  IconQuestionMark,
 } from "@tabler/icons-react";
 
-// Full navigation: all major sections accessible
+// Simplified navigation: 4 core sections for product-focused portfolio
 export const navlinks = [
   {
     href: "/",
     label: "Home",
-    icon: IconBolt,
+    icon: IconHome,
   },
   {
-    href: "/about",
+    href: "/#about",
     label: "About",
     icon: IconUser,
   },
   {
-    href: "/faq",
-    label: "FAQ",
-    icon: IconQuestionMark,
+    href: "/portfolio",
+    label: "Portfolio",
+    icon: IconBriefcase,
   },
   {
-    href: "/resume",
-    label: "Resume",
-    icon: IconFileText,
-  },
-  {
-    href: "/contact",
+    href: "/#contact",
     label: "Contact",
     icon: IconMail,
   },
