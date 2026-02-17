@@ -1,22 +1,21 @@
-# Isaac Vazquez Portfolio & Fantasy Football Platform - Comprehensive Application Overview
+# Isaac Vazquez Portfolio - Comprehensive Application Overview
 
 ## Project Summary
-Isaac Vazquez's professional portfolio website with integrated **Fantasy Football Draft Tools**. The platform combines professional portfolio features with advanced fantasy football ranking and draft analysis tools, featuring a warm, modern aesthetic with sunset and golden colors, clean typography, and accessible design optimized for both desktop and mobile experiences.
+Isaac Vazquez's professional portfolio website featuring a warm, modern aesthetic with sunset and golden colors, clean typography, and accessible design optimized for both desktop and mobile experiences.
 
 **Live Site:** https://isaacavazquez.com
 **Owner:** Isaac Vazquez (Technical Product Manager & UC Berkeley Haas MBA Candidate)
-**Primary Purpose:** Professional Portfolio + Fantasy Football Tools
-**Tech Stack:** Next.js 15, TypeScript, Tailwind CSS v4, Framer Motion, D3.js, SQLite
+**Primary Purpose:** Professional Portfolio
+**Tech Stack:** Next.js 15, TypeScript, Tailwind CSS v4, Framer Motion
 
 ---
 
 ## Application Architecture Overview
 
-### **Dual-Purpose Platform**
+### **Professional Portfolio Platform**
 
-This is a hybrid application serving two distinct purposes:
+This is a modern portfolio application showcasing:
 
-#### **1. Professional Portfolio**
 - Modern hero section with professional headshot
 - Project showcase with warm card styling
 - Professional resume with download capability
@@ -24,15 +23,6 @@ This is a hybrid application serving two distinct purposes:
 - About page with tabbed navigation (Overview/Journey)
 - Blog system with MDX support
 - Consulting services page
-
-#### **2. Fantasy Football Tools**
-- Position-specific tier rankings (QB, RB, WR, TE, K, DST, FLEX)
-- Draft tiers visualization with D3.js charts
-- Player comparison and consensus analytics
-- Draft tracker with real-time analytics
-- Data integration from FantasyPros
-- Automated data pipeline with caching system
-- Player image database and optimization
 
 ---
 
@@ -44,8 +34,6 @@ This is a hybrid application serving two distinct purposes:
 - **Tailwind CSS v4** for styling with custom warm modern theme
 - **Framer Motion** for animations and micro-interactions
 - **React 19** with modern hooks and patterns
-- **D3.js** for data visualization (fantasy football charts)
-- **SQLite (better-sqlite3)** for local data persistence
 
 ### Key Dependencies
 #### Core UI & Animation
@@ -57,11 +45,6 @@ This is a hybrid application serving two distinct purposes:
 - `@tailwindcss/typography` (v0.5.16) - Rich text styling
 - `clsx` (v2.1.1) - Conditional class names
 
-#### Data Visualization & Analytics
-- `d3` (v7.9.0) - Fantasy football tier charts and visualizations
-- `better-sqlite3` (v12.2.0) - Local database for player data
-- `@types/d3` (v7.4.3) - TypeScript definitions for D3
-
 #### Content & SEO
 - `next-sitemap` (v4.2.3) - SEO sitemap generation
 - `gray-matter` (v2.0.1) - MDX/Markdown processing
@@ -69,8 +52,7 @@ This is a hybrid application serving two distinct purposes:
 - `remark-gfm` (v4.0.1) - GitHub-flavored markdown
 - `remark-html` (v16.0.1) - HTML rendering
 
-#### Authentication & Performance
-- `next-auth` (v4.24.11) - Authentication system (admin features)
+#### Performance
 - `web-vitals` (v5.1.0) - Performance monitoring and analytics
 
 ### Build & Deployment
@@ -110,22 +92,15 @@ This is a hybrid application serving two distinct purposes:
 --surface-elevated: rgba(255, 255, 255, 0.98)
 --surface-overlay: rgba(0, 0, 0, 0.5)
 --border-primary: rgba(255, 228, 214, 0.5)
-
-/* Legacy Cyberpunk Colors (backward compatibility) */
---electric-blue: #00D9FF
---matrix-green: #00FF41
---neon-purple: #B026FF
---cyber-teal: #00F5FF
 ```
 
 ### Typography Hierarchy
-- **Headings:** Inter (clean, modern, professional) + Orbitron (legacy accent font)
+- **Headings:** Inter (clean, modern, professional)
 - **Body Text:** Inter (optimal readability)
 - **Display Text:** Oversized Inter for hero sections (text-display-xl/xxl)
 - **Code:** JetBrains Mono (monospace, technical)
 - **Font Variables:**
   - `--font-inter` - Primary sans-serif
-  - `--font-orbitron` - Accent/heading font (legacy)
   - `--font-jetbrains-mono` - Monospace
 
 ### Animation Patterns
@@ -151,13 +126,6 @@ This is a hybrid application serving two distinct purposes:
 /resume                     - Professional resume with download capability
 /contact                    - Contact information and social links
 /consulting                 - Consulting services and offerings
-```
-
-#### **Fantasy Football Pages**
-```
-/fantasy-football           - Fantasy football landing page and overview
-/fantasy-football/tiers/[position] - Position-specific tier rankings (qb, rb, wr, te, k, dst, flex)
-/fantasy-football/draft-tracker - Live draft tracking and analytics
 ```
 
 #### **Content & Community Pages**
@@ -197,8 +165,6 @@ This is a hybrid application serving two distinct purposes:
 ### URL Redirects & Aliases
 The application includes comprehensive URL redirects for SEO and user experience:
 - `/portfolio`, `/work` → `/projects`
-- `/ff`, `/rankings` → `/fantasy-football`
-- `/qb`, `/rb`, `/wr`, `/te` → Position-specific tier pages
 - `/cv` → `/resume`
 - `/get-in-touch`, `/hire-me` → `/contact`
 - `/blog/posts/:slug`, `/articles/:slug` → `/blog/:slug`
@@ -213,23 +179,6 @@ The application includes comprehensive URL redirects for SEO and user experience
 ├── events                  - Event tracking and user analytics
 └── web-vitals              - Performance monitoring and Core Web Vitals
 
-/api/auth/
-└── [...nextauth]           - NextAuth authentication endpoints
-
-/api/fantasy-football/
-├── fantasy-data            - Fantasy football player data
-├── fantasy-pros            - FantasyPros API integration
-├── fantasy-pros-free       - Free tier FantasyPros data
-├── fantasy-pros-session    - Session-based FantasyPros scraping
-└── player-images-mapping   - Player image database
-
-/api/data-management/
-├── data-manager            - Data CRUD operations
-├── data-metadata           - Data freshness and metadata
-├── data-pipeline           - Automated data sync pipeline
-├── sample-data             - Sample/mock data for development
-└── scheduled-update        - Scheduled data refresh
-
 /api/content/
 ├── newsletter/subscribe    - Newsletter subscription
 ├── search                  - Global search functionality
@@ -237,30 +186,7 @@ The application includes comprehensive URL redirects for SEO and user experience
 └── scrape                  - Web scraping utilities
 ```
 
-### Data Pipeline Architecture
-The fantasy football features use a sophisticated data pipeline:
-1. **Data Sources:** FantasyPros API, web scraping, manual data entry
-2. **Caching Layer:** Unified cache system with TTL and freshness tracking
-3. **Database:** SQLite for player data, rankings, and historical analysis
-4. **File System:** JSON data files for static player mappings and images
-5. **Validation:** Comprehensive data validation with error handling
-6. **Updates:** Scheduled and on-demand data refresh capabilities
-/api/fantasy-data           - Fantasy football data from NFLverse/DynastyProcess (active)
-/api/analytics/events       - Event tracking and user analytics (planned)
-/api/analytics/web-vitals   - Performance monitoring and Core Web Vitals
-/api/newsletter/subscribe   - Newsletter subscription (planned)
-/api/search                 - Global search functionality (planned)
-```
-
-**Fantasy Football Data API:**
-- **Source:** NFLverse/DynastyProcess GitHub repositories (open-source, no API keys required)
-- **Data:** Expert consensus rankings, weekly projections, player statistics
-- **Caching:** 15-minute in-memory cache for optimal performance
-- **Formats:** PPR, Half-PPR, Standard scoring
-- **Positions:** QB, RB, WR, TE, K, DST, OVERALL
-- **Documentation:** See `NFLVERSE_INTEGRATION.md` for details
-
-**Note:** Most content is static and pre-rendered for optimal performance. Fantasy data is fetched on-demand from public GitHub repositories.
+**Note:** Most content is static and pre-rendered for optimal performance.
 
 ---
 
@@ -294,32 +220,13 @@ The fantasy football features use a sophisticated data pipeline:
 - **`ContactContent`** (`src/components/ContactContent.tsx`) - Contact page layout
 - **`ConsultingContent`** (`src/components/ConsultingContent.tsx`) - Consulting services display
 
-### Fantasy Football Components
-- **`FantasyFootballLandingContent`** - Fantasy football homepage
-- **`FantasyContentGrid`** - Grid layout for fantasy content
-- **`DraftTiersContent`** - Draft tiers overview and comparison
-- **`DraftTierChart`** - D3-based tier visualization
-- **`TierChart`** - Legacy tier chart component
-- **`TierChartEnhanced`** - Enhanced tier visualization with animations
-- **`LightweightTierChart`** - Optimized tier chart for performance
-- **`TierDisplay`** - Tier grouping display component
-- **`TierLegend`** - Tier color legend and explanation
-- **`EnhancedPlayerCard`** - Detailed player information card
-- **`DataComparison`** - Side-by-side data comparison
-- **`DataFreshnessIndicator`** - Shows data update status
-- **`ExpertConsensusIndicator`** - Expert agreement visualization
-- **`PositionSelector`** - Position filter dropdown
-- **`UpdateDataButton`** - Manual data refresh trigger
-
 ### Advanced UI Components
-- **`SkillsRadar`** (`src/components/ui/SkillsRadar.tsx`) - D3 radar chart for skills visualization
+- **`SkillsRadar`** (`src/components/ui/SkillsRadar.tsx`) - Radar chart for skills visualization
 - **`PersonalMetrics`** (`src/components/ui/PersonalMetrics.tsx`) - Animated metrics display
 - **`QADashboard`** (`src/components/ui/QADashboard.tsx`) - Quality assurance dashboard
 - **`LazyQADashboard`** - Lazy-loaded QA dashboard
 - **`WebVitalsDashboard`** (`src/components/ui/WebVitalsDashboard.tsx`) - Performance metrics
 - **`SystemInfo`** (`src/components/ui/SystemInfo.tsx`) - System information display
-- **`VirtualizedPlayerList`** (`src/components/ui/VirtualizedPlayerList.tsx`) - Virtualized player list for performance
-- **`LazyPlayerImage`** (`src/components/ui/LazyPlayerImage.tsx`) - Optimized player image loading
 - **`RelatedContent`** (`src/components/ui/RelatedContent.tsx`) - Related content suggestions
 
 ### Content Components
@@ -351,78 +258,23 @@ src/constants/
 └── testimonials.ts         - Client testimonials data
 ```
 
-### Fantasy Football Data Files (`src/data/`)
-```
-src/data/
-├── player-database.json           - Complete player database (1.6MB)
-├── player-images.json             - Player headshot URLs
-├── fantasy-player-mappings.json   - Player name normalization (1.4MB)
-├── player-matching-results.json   - Player matching algorithms (5.6MB)
-├── player-team-updates.json       - Team roster changes
-
-Position-Specific Data:
-├── qbData.ts                      - Quarterback rankings (34KB)
-├── rbData.ts                      - Running back rankings (69KB)
-├── wrData.ts                      - Wide receiver rankings (101KB)
-├── teData.ts                      - Tight end rankings (54KB)
-├── kData.ts                       - Kicker rankings (17KB)
-├── dstData.ts                     - Defense/special teams (12KB)
-├── flexData.ts                    - FLEX position rankings (181KB)
-├── overallData.ts                 - Overall rankings (197KB)
-├── overallDataPPR.ts              - PPR scoring rankings (141KB)
-└── overallDataStandard.ts         - Standard scoring rankings (141KB)
-```
-
 ### Utility Libraries (`src/lib/`)
 ```
 Core Utilities:
-├── utils.ts                       - General utility functions
-├── seo.ts                         - SEO metadata generation
-├── performance.ts                 - Performance monitoring
-├── analytics.ts                   - Analytics tracking
-├── auth.ts                        - Authentication utilities
-├── logger.ts                      - Logging system
-└── rateLimit.ts                   - API rate limiting
-
-Fantasy Football Libraries:
-├── fantasyProsAPI.ts              - FantasyPros API client
-├── fantasyProsAlternative.ts      - Alternative data sources
-├── fantasyProsSession.ts          - Session-based scraping
-├── unifiedFantasyProsAPI.ts       - Unified API interface
-├── database.ts                    - SQLite database interface
-├── dataCache.ts                   - Caching layer
-├── unifiedCache.ts                - Unified caching system
-├── dataManager.ts                 - Data CRUD operations
-├── dataValidator.ts               - Data validation
-├── dataImport.ts                  - Data import utilities
-├── dataLoader.ts                  - Data loading
-├── dataFileWriter.ts              - File system operations
-├── playerImageService.ts          - Player image management
-├── playerImageScraper.ts          - Image scraping
-
-Tier Calculation & Analytics:
-├── tierCalculator.ts              - Basic tier calculations
-├── optimizedTierCalculator.ts     - Performance-optimized tiers
-├── unifiedTierCalculator.ts       - Unified tier system
-├── tierGrouping.ts                - Tier grouping logic
-├── tierImageGenerator.ts          - Tier visualization images
-├── clustering.ts                  - K-means clustering
-├── gaussianMixture.ts             - Gaussian mixture models
-├── overallValueCalculator.ts      - Overall player value
-├── overallDataGenerator.ts        - Overall rankings generation
-├── scoringFormatUtils.ts          - PPR/Standard/Half-PPR utilities
+├── utils.ts                - General utility functions
+├── seo.ts                  - SEO metadata generation
+├── performance.ts          - Performance monitoring
+├── analytics.ts            - Analytics tracking
+├── auth.ts                 - Authentication utilities
+├── logger.ts               - Logging system
+└── rateLimit.ts            - API rate limiting
 
 Content & SEO:
-├── blog.ts                        - Blog post processing
-├── faqData.ts                     - FAQ data management
-├── localSEO.ts                    - Local business SEO
-├── localSitemap.ts                - Local sitemap generation
-└── webScraper.ts                  - Web scraping utilities
-
-Performance Optimization:
-├── lazyD3.ts                      - Lazy D3 loading
-├── lazySampleData.ts              - Lazy sample data loading
-└── sampleDataService.ts           - Sample data management
+├── blog.ts                 - Blog post processing
+├── faqData.ts              - FAQ data management
+├── localSEO.ts             - Local business SEO
+├── localSitemap.ts         - Local sitemap generation
+└── webScraper.ts           - Web scraping utilities
 ```
 
 ### Custom Hooks (`src/hooks/`)
@@ -434,13 +286,6 @@ src/hooks/
 ├── useScrollAnimation.ts          - Scroll-based animations
 ├── useTypingAnimation.ts          - Typing effect animations
 
-Fantasy Football Hooks:
-├── useFantasyData.ts              - Fantasy data fetching
-├── useAllFantasyData.ts           - All positions data
-├── useOverallFantasyData.ts       - Overall rankings
-├── useUnifiedFantasyData.ts       - Unified data interface
-└── usePlayerImageCache.tsx        - Player image caching
-
 Content Hooks:
 └── useBlogPost.ts                 - Blog post data fetching
 ```
@@ -449,17 +294,6 @@ Content Hooks:
 ```
 src/types/
 ├── index.ts                       - Core type definitions
-│   ├── Player                     - Player data structure
-│   ├── Position                   - Position enum
-│   ├── ScoringFormat              - PPR/Standard/Half-PPR
-│   ├── TierGroup                  - Tier grouping
-│   ├── ChartDimensions            - D3 chart dimensions
-│   ├── ClusteringOptions          - K-means options
-│   ├── DraftSettings              - Draft configuration
-│   ├── DraftPick                  - Draft pick data
-│   ├── TeamRoster                 - Team composition
-│   ├── DraftState                 - Draft tracker state
-│   └── DraftAnalytics             - Draft analysis metrics
 └── navlink.tsx                    - Navigation link types
 ```
 
@@ -475,41 +309,6 @@ src/types/
 - Framer Motion animations with reduced motion support
 - Warm mesh gradient background
 - Call-to-action buttons (Resume, Get In Touch)
-
-### Fantasy Football Features
-
-#### **Tier Rankings System**
-- Position-specific tier visualizations using D3.js
-- Automatic tier calculation using statistical clustering (K-means, Gaussian Mixture Models)
-- Expert consensus indicators showing agreement levels
-- Standard deviation analysis for player volatility
-- Color-coded tier groupings for quick visual scanning
-- Interactive charts with hover states and player details
-
-#### **Draft Analysis Tools**
-- Real-time draft tracker with pick-by-pick analytics
-- Team roster composition tracking
-- Value-based drafting recommendations
-- Reach/steal identification (ADP comparison)
-- Position run analysis
-- Team strength/weakness assessment
-- Draft grades and analytics
-
-#### **Data Management**
-- Automated data refresh pipeline
-- Data freshness indicators with last-update timestamps
-- Manual refresh capability for on-demand updates
-- Multi-source data integration (FantasyPros, custom sources)
-- Data validation and error handling
-- Caching with TTL for performance
-
-#### **Player Information**
-- Comprehensive player cards with projections
-- Detailed statistics and expert rankings
-- Player images with lazy loading optimization
-- Team affiliations and bye weeks
-- Upside/downside analysis
-- Expert consensus levels
 
 ### Component Features
 
@@ -580,7 +379,6 @@ Website/
 │   │   ├── blog/               # Blog with MDX support
 │   │   ├── writing/            # Writing portfolio
 │   │   ├── notes/              # Notes section
-│   │   ├── fantasy-football/   # Fantasy football landing
 │   │   ├── admin/              # Admin dashboard (authenticated)
 │   │   ├── newsletter/         # Newsletter subscription
 │   │   ├── testimonials/       # Testimonials page
@@ -598,7 +396,6 @@ Website/
 │   │   ├── local-seo/          # SEO components
 │   │   └── lazy/               # Lazy-loaded components
 │   ├── constants/              # Static data and configuration
-│   ├── data/                   # Fantasy football data files
 │   ├── hooks/                  # Custom React hooks
 │   ├── lib/                    # Utility functions and helpers
 │   ├── types/                  # TypeScript type definitions
@@ -626,7 +423,7 @@ Website/
 - **Accessibility First:** ARIA labels, focus management, keyboard navigation
 - **Responsive Design:** Mobile-first approach with breakpoint consistency
 - **Theme Integration:** All components use CSS custom properties from globals.css
-- **Performance Optimization:** Lazy loading, code splitting, virtualization, memoization
+- **Performance Optimization:** Lazy loading, code splitting, memoization
 - **Error Boundaries:** Graceful error handling in components
 - **Server/Client Components:** Clear separation with 'use client' directives
 
@@ -649,16 +446,13 @@ Website/
   - Image sizes: [16, 32, 48, 64, 96, 128, 256, 384]
   - 30-day cache TTL
   - Lazy loading with blur placeholders
-- **Font Loading:** Variable fonts (Inter, Orbitron, JetBrains Mono) with swap strategy
+- **Font Loading:** Variable fonts (Inter, JetBrains Mono) with swap strategy
 - **Code Splitting:**
   - Route-based splitting with App Router
   - Component-level splitting with React.lazy()
   - Advanced webpack chunk optimization
 - **Bundle Optimization:** Tree shaking, dead code elimination, minification
 - **Static Generation:** Pre-rendering for portfolio pages
-- **Data Caching:** Multi-layer caching with unified cache system
-- **Virtualization:** VirtualizedPlayerList for large datasets
-- **Lazy Loading:** lazyD3, LazyQADashboard, LazyPlayerImage components
 
 ### TypeScript Guidelines
 - **Strict Mode Enabled:** Full TypeScript strict mode (currently with build errors ignored)
@@ -673,7 +467,7 @@ Website/
 
 ### Core Configuration
 - **`next.config.mjs`** - Next.js configuration
-  - URL redirects (portfolio, fantasy football, legacy URLs)
+  - URL redirects (portfolio, legacy URLs)
   - Image optimization (AVIF, WebP, remote patterns)
   - Webpack customization (bundle splitting, externals)
   - Experimental features (package import optimization, scroll restoration)
@@ -713,10 +507,6 @@ Website/
   - Build commands and settings
   - Environment variables
   - Redirect rules
-- **`netlify.toml`** - Netlify deployment configuration (primary)
-- **Environment Variables:** Minimal environment configuration
-  - **No API keys required** for fantasy football data (uses open-source NFLverse data)
-  - Optional analytics and monitoring services
 
 ### Environment & Build
 - **Development:** `npm run dev` (http://localhost:3000)
@@ -739,17 +529,6 @@ Website/
   { href: "/resume", label: "Resume", icon: IconFileText },
   { href: "/contact", label: "Contact", icon: IconMail }
 ]
-
-// Fantasy football navigation
-- /fantasy-football (landing)
-- /fantasy-football/tiers/qb (quarterback)
-- /fantasy-football/tiers/rb (running back)
-- /fantasy-football/tiers/wr (wide receiver)
-- /fantasy-football/tiers/te (tight end)
-- /fantasy-football/tiers/k (kicker)
-- /fantasy-football/tiers/dst (defense/ST)
-- /fantasy-football/tiers/flex (flex position)
-- /fantasy-football/draft-tracker (draft tool)
 ```
 
 ### Social Links & Professional Presence
@@ -763,131 +542,28 @@ Website/
 
 ---
 
-## Database Schema & Data Models
-
-### SQLite Database (better-sqlite3)
-**File:** `src/lib/database.ts`
-
-The application uses SQLite for local data persistence:
-- **Player Data:** Core player information, teams, positions
-- **Rankings:** Expert rankings and consensus data
-- **Projections:** Statistical projections by position
-- **Historical Data:** Past performance and trends
-- **Cache Metadata:** Data freshness and update tracking
-
-### Data Validation
-**File:** `src/lib/dataValidator.ts`
-- Player data structure validation
-- Required field checking
-- Type validation
-- Range validation for numerical data
-- Duplicate detection
-- Data integrity checks
-
----
-
-## Fantasy Football Data Pipeline
-
-### Data Sources
-1. **FantasyPros API** (primary)
-   - Expert consensus rankings
-   - ADP (Average Draft Position)
-   - Projections and analysis
-
-2. **Web Scraping** (fallback)
-   - Session-based scraping
-   - Rate-limited requests
-   - Alternative data sources
-
-3. **Static Data Files**
-   - Player mappings and normalization
-   - Team rosters and updates
-   - Player images and headshots
-
-### Caching Strategy
-**Files:** `src/lib/dataCache.ts`, `src/lib/unifiedCache.ts`
-- **Multi-layer Cache:** Memory → File System → Database
-- **TTL Management:** Configurable time-to-live per data type
-- **Freshness Tracking:** Last update timestamps
-- **Invalidation:** Manual and automatic cache clearing
-- **Performance:** Sub-millisecond cache hits
-
-### Tier Calculation Algorithms
-**Files:** `src/lib/tierCalculator.ts`, `src/lib/optimizedTierCalculator.ts`, `src/lib/unifiedTierCalculator.ts`
-
-Multiple tier calculation methods:
-1. **K-Means Clustering** (`clustering.ts`)
-   - Configurable number of clusters
-   - Iterative centroid optimization
-   - Convergence tolerance settings
-
-2. **Gaussian Mixture Models** (`gaussianMixture.ts`)
-   - Probabilistic tier assignments
-   - Standard deviation analysis
-   - Statistical significance testing
-
-3. **Manual Tier Grouping** (`tierGrouping.ts`)
-   - Expert-defined breakpoints
-   - Position-specific logic
-   - Custom tier labels
-
----
-
-## Authentication & Authorization
-
-### NextAuth Integration
-**File:** `src/lib/auth.ts`
-- Admin authentication for dashboard access
-- Protected API routes
-- Session management
-- Authorization middleware
-
-**Protected Routes:**
-- `/admin` - Admin dashboard
-- `/admin/analytics` - Analytics overview
-- `/api/data-manager` - Data management endpoints
-- `/api/scheduled-update` - Automated update triggers
-
----
-
 ## Recent Major Changes & Evolution
 
-### Current State (November 2025)
-- **Hybrid Platform:** Dual-purpose portfolio + fantasy football tools
+### Current State (February 2026)
+- **Professional Portfolio:** Clean, focused portfolio platform
 - **Warm Modern Design:** Sunset/golden color palette with professional aesthetic
-- **Advanced Fantasy Features:** Tier rankings, draft tracker, player analytics
-- **Data Infrastructure:** SQLite database, caching layer, automated pipelines
 - **Component Library:** Extensive UI component system with WarmCard/ModernButton
-- **Performance Optimization:** Advanced code splitting, lazy loading, virtualization
+- **Performance Optimization:** Advanced code splitting, lazy loading
 - **SEO Enhancement:** Comprehensive metadata, structured data, sitemap generation
 
-### Technical Infrastructure
-- **Dependencies Retained:** D3.js (v7.9.0), SQLite (better-sqlite3 v12.2.0), NextAuth (v4.24.11)
-- **Simplified Architecture:** Static-first for portfolio, dynamic for fantasy features
-- **Enhanced Animations:** Full Framer Motion integration (v12.23.12)
 ### Warm Modern Redesign (January 2025)
 - **Complete Theme Overhaul:** Cyberpunk → Warm modern professional aesthetic
-- **Fantasy Football Data Migration:** Transitioned from FantasyPros API to NFLverse/DynastyProcess open-source data
 - **Component Modernization:** GlassCard → WarmCard, MorphButton → ModernButton
 - **Typography Simplification:** Orbitron → Inter throughout for consistency
 - **Color System:** Neon cyberpunk → Warm sunset/golden palette
 - **Accessibility Enhancement:** WCAG AA+ compliance with 7.5:1+ contrast ratios
 - **Performance Optimization:** 60% bundle size reduction
 
-### Technical Infrastructure (v3.0.0)
-- **Fantasy Football Data Source:** Now uses NFLverse/DynastyProcess open-source data (no API keys required)
-- **Removed Dependencies:** FantasyPros API integration, D3.js (replaced with lighter charting), SQLite, NextAuth
-- **Simplified Architecture:** Static-first approach with minimal APIs
-- **Enhanced Animations:** Full Framer Motion integration with reduced motion support
-- **Touch Optimization:** 44px minimum tap targets throughout
-- **Image Optimization:** AVIF/WebP with responsive sizing, lazy loading
-
 ### Component Architecture
 - **ModernHero:** Oversized typography with professional headshot
 - **WarmCard:** Warm-themed container with hover effects
 - **ModernButton:** 4 variants optimized for warm palette
 - **JourneyTimeline:** Career visualization component
-- **Fantasy Components:** 15+ specialized fantasy football components
 - **Responsive Layout:** Mobile-first with consistent spacing
 
 ---
@@ -905,9 +581,7 @@ Multiple tier calculation methods:
 
 ### Performance Optimizations Needed
 - Bundle size reduction opportunities
-- Further code splitting for fantasy features
 - Image optimization improvements
-- Cache invalidation refinement
 
 ### Accessibility Improvements
 - WCAG AAA compliance audit needed
@@ -924,14 +598,6 @@ Multiple tier calculation methods:
 - **Case Studies:** Deep dives into major projects and product work
 - **Video Content:** Project demos and product walkthroughs
 - **Interactive Prototypes:** Embedded product prototypes
-
-### Fantasy Football Features
-- **Live Scoring:** Real-time game day scoring
-- **Weekly Projections:** Week-by-week player projections
-- **Trade Analyzer:** Trade evaluation tools
-- **Waiver Wire Assistant:** Waiver wire recommendations
-- **Playoff Projections:** Playoff probability calculator
-- **Mock Draft Simulator:** Practice draft tool
 
 ### Interactive Features
 - **Skills Visualization:** Interactive skills radar (SkillsRadar component exists)
@@ -950,7 +616,6 @@ Multiple tier calculation methods:
 - **Bundle Size:** Target <100kB First Load JS
 - **Lighthouse Score:** Achieve 95+ across all metrics
 - **Core Web Vitals:** Optimize LCP, FID, CLS
-- **Database Optimization:** Query performance, indexing
 
 ---
 
@@ -989,13 +654,6 @@ npm run analyze
 4. Add responsive design (mobile-first)
 5. Test with reduced motion preferences
 6. Document usage and props
-
-#### Working with Fantasy Data
-1. **Data Refresh:** Use `/api/data-manager` endpoints
-2. **Cache Management:** Leverage unified cache system in `src/lib/unifiedCache.ts`
-3. **Player Images:** Update mappings in `src/data/player-images.json`
-4. **Tier Calculations:** Modify algorithms in `src/lib/tierCalculator.ts`
-5. **Validation:** Update schemas in `src/lib/dataValidator.ts`
 
 #### Styling Guidelines
 1. Use Tailwind utility classes first
@@ -1037,20 +695,12 @@ npm run analyze
 
 ### Environment Variables
 ```env
-# NextAuth
-NEXTAUTH_URL=https://isaacavazquez.com
-NEXTAUTH_SECRET=<secret>
-
-# FantasyPros API (if using paid tier)
-FANTASYPROS_API_KEY=<api_key>
-
 # Analytics (optional)
 NEXT_PUBLIC_GA_ID=<google_analytics_id>
 ```
 
 ### Build Optimization
 - **Static Generation:** Portfolio pages pre-rendered
-- **ISR (Incremental Static Regeneration):** Fantasy data pages with revalidation
 - **Edge Functions:** Potential use for API routes (Netlify Edge Functions)
 
 ---
@@ -1087,9 +737,9 @@ Technical Product Manager & UC Berkeley Haas MBA Candidate
 - **Website:** https://isaacavazquez.com
 - **GitHub:** https://github.com/isaacavazquez
 
-**Development Context:** This platform showcases Isaac's professional journey as a Technical Product Manager while demonstrating technical capabilities through the fantasy football tools. The warm, modern design reflects his approach to product development: user-friendly, accessible, and data-driven. The clean architecture and attention to detail demonstrate his technical background and commitment to quality.
+**Development Context:** This platform showcases Isaac's professional journey as a Technical Product Manager. The warm, modern design reflects his approach to product development: user-friendly, accessible, and data-driven. The clean architecture and attention to detail demonstrate his technical background and commitment to quality.
 
-**Platform Mission:** A professional portfolio that effectively communicates Isaac's product management expertise, technical capabilities, and business acumen to potential employers, collaborators, and clients—while providing valuable fantasy football tools to the community. Built with modern web technologies and optimized for performance, accessibility, and user experience.
+**Platform Mission:** A professional portfolio that effectively communicates Isaac's product management expertise, technical capabilities, and business acumen to potential employers, collaborators, and clients. Built with modern web technologies and optimized for performance, accessibility, and user experience.
 
 ---
 
@@ -1097,11 +747,10 @@ Technical Product Manager & UC Berkeley Haas MBA Candidate
 
 ### When Working on This Codebase
 
-#### **Understanding the Dual Purpose**
-- This is BOTH a portfolio AND a fantasy football platform
-- Changes should consider impact on both use cases
-- Maintain professional aesthetic for portfolio features
-- Ensure data accuracy and performance for fantasy features
+#### **Understanding the Purpose**
+- This is a professional portfolio platform
+- Changes should maintain professional aesthetic
+- Focus on showcasing skills, projects, and experience
 
 #### **Code Quality Standards**
 - Follow existing TypeScript patterns and interfaces
@@ -1120,20 +769,10 @@ Technical Product Manager & UC Berkeley Haas MBA Candidate
 - Use Tailwind utility classes consistently
 
 #### **Performance Considerations**
-- Lazy load heavy components (D3 charts, large datasets)
-- Implement virtualization for long lists
+- Lazy load heavy components
 - Optimize images with Next.js Image component
 - Use React.memo for expensive renders
-- Leverage the unified caching system
 - Monitor bundle size impact
-
-#### **Data Management**
-- Use unified cache system for fantasy data
-- Validate all data with dataValidator.ts
-- Update player mappings when adding new players
-- Refresh tier calculations after data updates
-- Handle API rate limits and errors gracefully
-- Maintain data freshness indicators
 
 #### **Testing Checklist**
 - Test on mobile and desktop viewports
@@ -1148,7 +787,6 @@ Technical Product Manager & UC Berkeley Haas MBA Candidate
 - Don't add heavy dependencies without justification
 - Don't skip accessibility features
 - Don't hardcode values that should be configurable
-- Don't ignore caching opportunities
 - Don't forget to update TypeScript types
 
 #### **Commit Message Format**
@@ -1157,11 +795,11 @@ Technical Product Manager & UC Berkeley Haas MBA Candidate
 
 Types: feat, fix, refactor, style, docs, test, chore, perf
 Examples:
-- feat: add weekly projections to player cards
-- fix: resolve tier calculation clustering edge case
-- refactor: optimize player image loading performance
+- feat: add project filtering to projects page
+- fix: resolve navigation active state bug
+- refactor: optimize image loading performance
 - style: update button hover states for warm theme
-- docs: update CLAUDE.md with new fantasy features
+- docs: update CLAUDE.md with new components
 ```
 
 ---
@@ -1169,10 +807,17 @@ Examples:
 ## Version History
 
 **Current Version:** 0.1.0
-**Last Updated:** November 2025
-**Documentation Version:** 2.0
+**Last Updated:** February 2026
+**Documentation Version:** 3.0
 
 ### Changelog
+- **v3.0 (February 2026):** Portfolio-focused documentation
+  - Removed all fantasy football references
+  - Streamlined component architecture
+  - Updated API architecture for portfolio-only focus
+  - Simplified data management documentation
+  - Updated AI assistant guidelines
+
 - **v2.0 (November 2025):** Comprehensive rewrite reflecting actual codebase state
   - Documented dual portfolio + fantasy football purpose
   - Added complete API architecture
@@ -1188,4 +833,4 @@ Examples:
 
 ---
 
-**Note:** This documentation reflects the actual state of the codebase as of November 2025. The platform successfully combines professional portfolio features with advanced fantasy football tools, demonstrating both technical expertise and practical utility.
+**Note:** This documentation reflects the current state of the codebase as of February 2026. The platform is a professional portfolio showcasing technical expertise and product management experience.
