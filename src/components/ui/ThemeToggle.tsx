@@ -60,7 +60,7 @@ export function ThemeToggle() {
     <div className="relative">
       <motion.button
         onClick={() => setMenuOpen((prev) => !prev)}
-        className="relative p-3 rounded-xl transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]"
+        className="relative p-3 rounded-xl transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center text-neutral-600 dark:text-neutral-300 hover:text-primary dark:hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         aria-label={`Select theme (current: ${theme})`}
@@ -84,7 +84,7 @@ export function ThemeToggle() {
           </motion.div>
         </AnimatePresence>
         <motion.div
-          className="absolute inset-0 rounded-xl bg-[#FF6B35]/10 dark:bg-[#FF8E53]/20 blur-md opacity-0"
+          className="absolute inset-0 rounded-xl bg-primary/10 dark:bg-primary/20 blur-md opacity-0"
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         />
@@ -98,7 +98,7 @@ export function ThemeToggle() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-36 rounded-lg bg-white dark:bg-[#2D1B12] border border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-xl z-20 overflow-hidden"
+            className="absolute right-0 mt-2 w-36 rounded-lg bg-white dark:bg-neutral-900 border border-tertiary dark:border-primary/30 shadow-xl z-20 overflow-hidden"
             role="menu"
           >
             {themes.map((option) => (
@@ -107,8 +107,8 @@ export function ThemeToggle() {
                   onClick={() => updateTheme(option)}
                   className={`w-full text-left px-4 py-2 text-sm transition-colors ${
                     theme === option
-                      ? "text-[#FF6B35] dark:text-[#FF8E53] bg-[#FFF5EF] dark:bg-[#4A3426]"
-                      : "text-[#4A3426] dark:text-[#D4A88E] hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/60"
+                      ? "text-primary dark:text-primary bg-tertiary/20 dark:bg-neutral-700"
+                      : "text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-700/60"
                   }`}
                 >
                   {option === "system" ? "System Default" : `Use ${option} mode`}

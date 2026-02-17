@@ -98,21 +98,21 @@
 }
 
 /* ============================================
-   DESIGN TOKENS - 2025 Modern Professional
-   Contemporary color system with excellent contrast
+   DESIGN TOKENS - Claude-Inspired Palette
+   Warm, sophisticated color system
    ============================================ */
 :root {
-  /* Modern Professional Color Palette */
-  --color-primary: #0F172A;          /* Slate 900 - Deep professional blue-gray */
-  --color-secondary: #3B82F6;        /* Blue 500 - Bright, trustworthy blue */
-  --color-accent: #06B6D4;           /* Cyan 500 - Fresh, modern cyan */
-  --color-tertiary: #10B981;         /* Emerald 500 - Vibrant green */
+  /* Claude-Inspired Primary Palette */
+  --color-primary: #D97756;          /* Claude orange - primary brand color */
+  --color-secondary: #AD6047;        /* Secondary shade - darker orange-brown */
+  --color-accent: #764534;           /* Accent tone - deep brown */
+  --color-tertiary: #EBC5B4;         /* Light accent - soft peachy highlight */
   --color-success: #10B981;          /* Emerald 500 - Success states */
   --color-warning: #F59E0B;          /* Amber 500 - Attention-grabbing */
   --color-error: #EF4444;            /* Red 500 - Clear error indication */
-  --color-info: #3B82F6;             /* Blue 500 - Informational */
+  --color-info: #D97756;             /* Claude orange - Informational */
 
-  /* Additional modern accent colors */
+  /* Additional accent colors */
   --color-purple: #8B5CF6;           /* Violet 500 - Creative accent */
   --color-pink: #EC4899;             /* Pink 500 - Modern highlight */
   --color-indigo: #6366F1;           /* Indigo 500 - Tech-forward */
@@ -133,18 +133,18 @@
   --vivid-yellow: var(--color-warning);
   --vivid-green: var(--color-success);
 
-  /* Modern Slate Gray Scale - Professional & Clean */
-  --neutral-50: #F8FAFC;            /* Slate 50 - Lightest background */
-  --neutral-100: #F1F5F9;           /* Slate 100 - Light surface */
-  --neutral-200: #E2E8F0;           /* Slate 200 - Subtle borders */
-  --neutral-300: #CBD5E1;           /* Slate 300 - Light borders */
-  --neutral-400: #94A3B8;           /* Slate 400 - Disabled states */
-  --neutral-500: #64748B;           /* Slate 500 - Secondary text */
-  --neutral-600: #475569;           /* Slate 600 - Tertiary text */
-  --neutral-700: #334155;           /* Slate 700 - Dark text */
-  --neutral-800: #1E293B;           /* Slate 800 - Darker elements */
-  --neutral-900: #0F172A;           /* Slate 900 - Primary dark */
-  --neutral-950: #020617;           /* Slate 950 - Deepest dark */
+  /* Warm Neutral Scale - Sophisticated Browns */
+  --neutral-50: #FBF8F6;            /* Warm cream - Lightest background */
+  --neutral-100: #F5EDE8;           /* Light warm surface */
+  --neutral-200: #EBD9D0;           /* Subtle warm borders */
+  --neutral-300: #D4BFB3;           /* Light warm borders */
+  --neutral-400: #B39B8D;           /* Warm disabled states */
+  --neutral-500: #8E7166;           /* Warm secondary text */
+  --neutral-600: #6B4F43;           /* Warm tertiary text */
+  --neutral-700: #4A352B;           /* Dark warm text */
+  --neutral-800: #3D2821;           /* Text/foreground - Claude text color */
+  --neutral-900: #2B1A14;           /* Primary dark warm */
+  --neutral-950: #1A0F0C;           /* Deepest warm dark */
 
   /* Legacy support */
   --slate-50: var(--neutral-50);
@@ -156,10 +156,10 @@
   --slate-900: var(--neutral-900);
 
   /* Accessible Colors - WCAG AA+ Compliant */
-  --color-primary-accessible: #0F172A;    /* Slate 900 - Excellent contrast */
-  --color-secondary-accessible: #1E40AF;  /* Blue 800 - Darker blue */
-  --color-accent-accessible: #0891B2;     /* Cyan 600 - Deeper cyan */
-  --color-tertiary-accessible: #059669;   /* Emerald 600 - Darker green */
+  --color-primary-accessible: #AD6047;    /* Secondary shade - good contrast */
+  --color-secondary-accessible: #764534;  /* Accent tone - deep brown */
+  --color-accent-accessible: #6B4F43;     /* Warm tertiary - darker */
+  --color-tertiary-accessible: #EBC5B4;   /* Light peachy */
   --color-error-accessible: #DC2626;      /* Red 600 - Strong red */
   --color-success-accessible: #059669;    /* Emerald 600 - Clear green */
 
@@ -167,34 +167,34 @@
   --terminal-bg: var(--neutral-900);
   --terminal-border: var(--neutral-700);
   --terminal-text: var(--color-success);
-  --terminal-cursor: var(--color-secondary);
+  --terminal-cursor: var(--color-primary);
 
-  /* Modern Surface Colors - Clean & Professional */
+  /* Warm Surface Colors - Sophisticated & Inviting */
   --surface-primary: rgba(255, 255, 255, 1);        /* Pure white */
-  --surface-secondary: rgba(248, 250, 252, 1);      /* Slate 50 */
+  --surface-secondary: rgba(251, 248, 246, 1);      /* Warm cream (neutral-50) */
   --surface-elevated: rgba(255, 255, 255, 1);       /* Pure white elevated */
-  --surface-overlay: rgba(15, 23, 42, 0.5);         /* Slate 900 overlay */
+  --surface-overlay: rgba(61, 40, 33, 0.5);         /* Warm dark overlay */
 
-  /* Modern Text Colors - Crisp & Clear */
-  --text-primary: #0F172A;                          /* Slate 900 - Primary text */
-  --text-secondary: #475569;                        /* Slate 600 - Secondary text */
-  --text-tertiary: #94A3B8;                         /* Slate 400 - Tertiary text */
+  /* Warm Text Colors - Clear & Inviting */
+  --text-primary: #3D2821;                          /* Claude text color - dark warm brown */
+  --text-secondary: #6B4F43;                        /* Warm tertiary text */
+  --text-tertiary: #8E7166;                         /* Warm secondary text */
   --text-inverse: #FFFFFF;                          /* White for dark backgrounds */
 
-  /* Modern Border Colors - Clean Lines */
-  --border-primary: rgba(226, 232, 240, 1);         /* Slate 200 border */
-  --border-secondary: rgba(241, 245, 249, 1);       /* Slate 100 border */
-  --border-accent: rgba(59, 130, 246, 0.5);         /* Blue accent with opacity */
+  /* Warm Border Colors - Soft & Sophisticated */
+  --border-primary: rgba(235, 197, 180, 0.5);       /* Light accent with opacity */
+  --border-secondary: rgba(245, 237, 232, 1);       /* Warm light surface */
+  --border-accent: rgba(217, 119, 86, 0.5);         /* Claude orange with opacity */
 
-  /* Modern Shadows - Depth & Elegance */
-  --shadow-primary: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-secondary: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-accent: 0 1px 3px 0 rgba(59, 130, 246, 0.15), 0 1px 2px -1px rgba(59, 130, 246, 0.1);
+  /* Warm Shadows - Sophisticated Depth */
+  --shadow-primary: 0 1px 3px 0 rgba(61, 40, 33, 0.1), 0 1px 2px -1px rgba(61, 40, 33, 0.1);
+  --shadow-secondary: 0 4px 6px -1px rgba(61, 40, 33, 0.1), 0 2px 4px -2px rgba(61, 40, 33, 0.1);
+  --shadow-accent: 0 1px 3px 0 rgba(217, 119, 86, 0.15), 0 1px 2px -1px rgba(217, 119, 86, 0.1);
   --shadow-warning: 0 1px 3px 0 rgba(245, 158, 11, 0.15), 0 1px 2px -1px rgba(245, 158, 11, 0.1);
-  --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-warm-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-warm-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-subtle: 0 1px 2px 0 rgba(61, 40, 33, 0.05);
+  --shadow-elevated: 0 10px 15px -3px rgba(61, 40, 33, 0.1), 0 4px 6px -4px rgba(61, 40, 33, 0.1);
+  --shadow-warm-lg: 0 10px 15px -3px rgba(217, 119, 86, 0.15), 0 4px 6px -4px rgba(217, 119, 86, 0.1);
+  --shadow-warm-xl: 0 20px 25px -5px rgba(217, 119, 86, 0.15), 0 8px 10px -6px rgba(217, 119, 86, 0.1);
 
   /* Legacy glow support (now subtle shadows for backwards compatibility) */
   --glow-primary: var(--shadow-primary);
@@ -219,35 +219,35 @@
 }
 
 /* ============================================
-   DARK MODE - Modern Professional Dark Theme
+   DARK MODE - Warm Sophisticated Dark Theme
    ============================================ */
 .dark {
-  /* Dark Mode Surface Colors - Deep & Rich */
-  --surface-primary: rgba(15, 23, 42, 1);         /* Slate 900 - Professional dark */
-  --surface-secondary: rgba(30, 41, 59, 1);       /* Slate 800 - Elevated dark */
-  --surface-elevated: rgba(51, 65, 85, 0.5);      /* Slate 700 with opacity */
-  --surface-overlay: rgba(2, 6, 23, 0.9);         /* Slate 950 overlay */
+  /* Dark Mode Surface Colors - Deep Warm Tones */
+  --surface-primary: rgba(43, 26, 20, 1);         /* Warm dark brown (neutral-900) */
+  --surface-secondary: rgba(61, 40, 33, 1);       /* Claude text color as surface (neutral-800) */
+  --surface-elevated: rgba(74, 53, 43, 0.5);      /* Dark warm text with opacity (neutral-700) */
+  --surface-overlay: rgba(26, 15, 12, 0.9);       /* Deepest warm dark overlay (neutral-950) */
 
-  /* Dark Mode Text Colors - Clear & Readable */
-  --text-primary: #F1F5F9;            /* Slate 100 - Primary text */
-  --text-secondary: #CBD5E1;          /* Slate 300 - Secondary text */
-  --text-tertiary: #94A3B8;           /* Slate 400 - Tertiary text */
-  --text-inverse: #0F172A;            /* Slate 900 - Inverse text */
+  /* Dark Mode Text Colors - Warm & Clear */
+  --text-primary: #F5EDE8;            /* Light warm surface (neutral-100) */
+  --text-secondary: #D4BFB3;          /* Light warm borders (neutral-300) */
+  --text-tertiary: #B39B8D;           /* Warm disabled (neutral-400) */
+  --text-inverse: #3D2821;            /* Claude text color */
 
-  /* Dark Mode Border Colors - Subtle Separation */
-  --border-primary: rgba(71, 85, 105, 0.5);       /* Slate 600 with opacity */
-  --border-secondary: rgba(51, 65, 85, 0.5);      /* Slate 700 with opacity */
-  --border-accent: rgba(59, 130, 246, 0.5);       /* Blue accent */
+  /* Dark Mode Border Colors - Subtle Warm Separation */
+  --border-primary: rgba(107, 79, 67, 0.5);       /* Warm tertiary with opacity */
+  --border-secondary: rgba(74, 53, 43, 0.5);      /* Dark warm text with opacity */
+  --border-accent: rgba(217, 119, 86, 0.5);       /* Claude orange with opacity */
 
-  /* Dark Mode Color Adjustments - Vibrant but Eye-Friendly */
-  --color-primary: #F1F5F9;          /* Slate 100 - Light text on dark */
-  --color-secondary: #60A5FA;        /* Blue 400 - Brighter blue for dark mode */
-  --color-accent: #22D3EE;           /* Cyan 400 - Bright cyan */
-  --color-tertiary: #34D399;         /* Emerald 400 - Vibrant green */
+  /* Dark Mode Color Adjustments - Vibrant Warm Accents */
+  --color-primary: #F5A582;          /* Lighter Claude orange for dark mode */
+  --color-secondary: #C97D60;        /* Lighter secondary shade */
+  --color-accent: #9A5E4D;           /* Lighter accent tone */
+  --color-tertiary: #F2D9CE;         /* Lighter peachy highlight */
   --color-success: #34D399;          /* Emerald 400 - Success */
   --color-warning: #FBBF24;          /* Amber 400 - Warning */
   --color-error: #F87171;            /* Red 400 - Error */
-  --color-info: #60A5FA;             /* Blue 400 - Info */
+  --color-info: #F5A582;             /* Lighter Claude orange */
   --color-purple: #A78BFA;           /* Violet 400 - Purple accent */
   --color-pink: #F472B6;             /* Pink 400 - Pink accent */
   --color-indigo: #818CF8;           /* Indigo 400 - Indigo accent */

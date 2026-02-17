@@ -46,34 +46,34 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        // Modern Professional Color System
-        primary: "var(--color-primary)",      // Slate 900 - Deep professional
-        secondary: "var(--color-secondary)",  // Blue 500 - Trustworthy blue
-        accent: "var(--color-accent)",        // Cyan 500 - Fresh cyan
-        tertiary: "var(--color-tertiary)",    // Emerald 500 - Vibrant green
-        warning: "var(--color-warning)",      // Amber 500 - Attention
-        error: "var(--color-error)",          // Red 500 - Error
-        success: "var(--color-success)",      // Emerald 500 - Success
-        info: "var(--color-info)",            // Blue 500 - Info
+        // Claude-Inspired Color System
+        primary: "var(--color-primary)",      // Claude orange - primary brand
+        secondary: "var(--color-secondary)",  // Darker orange-brown shade
+        accent: "var(--color-accent)",        // Deep brown accent
+        tertiary: "var(--color-tertiary)",    // Light peachy highlight
+        warning: "var(--color-warning)",      // Amber - Attention
+        error: "var(--color-error)",          // Red - Error
+        success: "var(--color-success)",      // Emerald - Success
+        info: "var(--color-info)",            // Claude orange - Info
 
-        // Additional modern accents
-        purple: "var(--color-purple)",        // Violet 500
-        pink: "var(--color-pink)",            // Pink 500
-        indigo: "var(--color-indigo)",        // Indigo 500
+        // Additional accents
+        purple: "var(--color-purple)",        // Violet
+        pink: "var(--color-pink)",            // Pink
+        indigo: "var(--color-indigo)",        // Indigo
 
-        // Modern Slate Gray Scale
+        // Warm Neutral Scale
         neutral: {
-          50: "var(--neutral-50)",    // Slate 50 - Lightest
-          100: "var(--neutral-100)",  // Slate 100 - Light surface
-          200: "var(--neutral-200)",  // Slate 200 - Subtle borders
-          300: "var(--neutral-300)",  // Slate 300 - Light borders
-          400: "var(--neutral-400)",  // Slate 400 - Disabled
-          500: "var(--neutral-500)",  // Slate 500 - Secondary text
-          600: "var(--neutral-600)",  // Slate 600 - Tertiary text
-          700: "var(--neutral-700)",  // Slate 700 - Dark text
-          800: "var(--neutral-800)",  // Slate 800 - Darker elements
-          900: "var(--neutral-900)",  // Slate 900 - Primary dark
-          950: "var(--neutral-950)",  // Slate 950 - Deepest dark
+          50: "var(--neutral-50)",    // Warm cream - Lightest
+          100: "var(--neutral-100)",  // Light warm surface
+          200: "var(--neutral-200)",  // Subtle warm borders
+          300: "var(--neutral-300)",  // Light warm borders
+          400: "var(--neutral-400)",  // Warm disabled
+          500: "var(--neutral-500)",  // Warm secondary text
+          600: "var(--neutral-600)",  // Warm tertiary text
+          700: "var(--neutral-700)",  // Dark warm text
+          800: "var(--neutral-800)",  // Claude text color
+          900: "var(--neutral-900)",  // Primary dark warm
+          950: "var(--neutral-950)",  // Deepest warm dark
         },
 
         // Semantic surfaces
