@@ -22,7 +22,11 @@ export const Footer = () => {
       {/* CTA Section */}
       <div className="max-w-6xl mx-auto px-6 py-12">
         <motion.div
-          className="bg-neutral-900 dark:bg-neutral-800 rounded-2xl p-8 md:p-12 text-center border border-neutral-700 dark:border-neutral-600"
+          className="rounded-2xl p-8 md:p-12 text-center border"
+          style={{
+            backgroundColor: 'var(--neutral-900)',
+            borderColor: 'var(--neutral-700)'
+          }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -35,7 +39,7 @@ export const Footer = () => {
             Let&apos;s discuss how I can help drive your product vision forward.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/contact">
+            <Link href="/#contact">
               <motion.button
                 className="px-8 py-4 bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all min-h-[52px] flex items-center gap-2 text-lg"
                 whileHover={{ scale: 1.03, boxShadow: "0 12px 32px rgba(0, 0, 0, 0.3)" }}
@@ -48,7 +52,7 @@ export const Footer = () => {
             </Link>
             <Link href="/resume">
               <motion.button
-                className="px-8 py-4 bg-transparent text-neutral-100 border-2 border-neutral-500 hover:border-neutral-300 font-semibold rounded-xl transition-all min-h-[52px] flex items-center gap-2 text-lg"
+                className="px-8 py-4 bg-transparent text-neutral-100 border-2 border-[var(--neutral-500)] hover:border-[var(--neutral-300)] dark:border-[var(--neutral-400)] dark:hover:border-[var(--neutral-100)] font-semibold rounded-xl transition-all min-h-[52px] flex items-center gap-2 text-lg"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >

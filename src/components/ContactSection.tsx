@@ -35,7 +35,8 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-32 bg-white dark:bg-black"
+      className="py-24 md:py-32"
+      style={{ backgroundColor: 'var(--surface-primary)' }}
     >
       <div className="container-wide max-w-4xl mx-auto text-center">
         <motion.div
@@ -66,13 +67,13 @@ export function ContactSection() {
               padding="lg"
               className="border border-neutral-200 dark:border-neutral-700 text-center"
             >
-              <IconMail className="h-10 w-10 text-[#FF6B35] mx-auto mb-4" />
+              <IconMail className="h-10 w-10 text-[var(--color-primary)] mx-auto mb-4" />
               <h3 className="font-bold text-lg mb-2 text-neutral-900 dark:text-neutral-100">
                 Email
               </h3>
               <a
                 href="mailto:isaacavazquez95@gmail.com"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-[#FF6B35] transition-colors text-sm"
+                className="text-neutral-600 dark:text-neutral-400 hover:text-[var(--color-primary)] transition-colors text-sm"
               >
                 isaacavazquez95@gmail.com
               </a>
@@ -83,7 +84,7 @@ export function ContactSection() {
               padding="lg"
               className="border border-neutral-200 dark:border-neutral-700 text-center"
             >
-              <IconBrandLinkedin className="h-10 w-10 text-[#FF6B35] mx-auto mb-4" />
+              <IconBrandLinkedin className="h-10 w-10 text-[var(--color-primary)] mx-auto mb-4" />
               <h3 className="font-bold text-lg mb-2 text-neutral-900 dark:text-neutral-100">
                 LinkedIn
               </h3>
@@ -91,7 +92,7 @@ export function ContactSection() {
                 href="https://linkedin.com/in/isaac-vazquez"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-[#FF6B35] transition-colors text-sm"
+                className="text-neutral-600 dark:text-neutral-400 hover:text-[var(--color-primary)] transition-colors text-sm"
               >
                 /in/isaac-vazquez
               </a>
@@ -102,7 +103,7 @@ export function ContactSection() {
               padding="lg"
               className="border border-neutral-200 dark:border-neutral-700 text-center"
             >
-              <IconBrandGithub className="h-10 w-10 text-[#FF6B35] mx-auto mb-4" />
+              <IconBrandGithub className="h-10 w-10 text-[var(--color-primary)] mx-auto mb-4" />
               <h3 className="font-bold text-lg mb-2 text-neutral-900 dark:text-neutral-100">
                 GitHub
               </h3>
@@ -110,7 +111,7 @@ export function ContactSection() {
                 href="https://github.com/isaacavazquez"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-[#FF6B35] transition-colors text-sm"
+                className="text-neutral-600 dark:text-neutral-400 hover:text-[var(--color-primary)] transition-colors text-sm"
               >
                 @isaacavazquez
               </a>
