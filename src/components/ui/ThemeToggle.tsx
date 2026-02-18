@@ -98,17 +98,17 @@ export function ThemeToggle() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-36 rounded-lg bg-white dark:bg-neutral-900 border border-tertiary dark:border-primary/30 shadow-xl z-20 overflow-hidden"
+            className="absolute right-0 mt-2 w-40 rounded-lg bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-elevated z-20 overflow-hidden"
             role="menu"
           >
             {themes.map((option) => (
               <li key={option} role="menuitem">
                 <button
                   onClick={() => updateTheme(option)}
-                  className={`w-full text-left px-4 py-2 text-sm transition-colors ${
+                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
                     theme === option
-                      ? "text-primary dark:text-primary bg-tertiary/20 dark:bg-neutral-700"
-                      : "text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-700/60"
+                      ? "text-[var(--color-primary)] font-medium bg-neutral-100 dark:bg-neutral-800"
+                      : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800/70"
                   }`}
                 >
                   {option === "system" ? "System Default" : `Use ${option} mode`}

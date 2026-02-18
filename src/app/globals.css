@@ -112,6 +112,12 @@
   --color-error: #EF4444;            /* Red 500 - Clear error indication */
   --color-info: #D97756;             /* Claude orange - Informational */
 
+  /* CTA Gradient - warm brand colors, consistent */
+  --color-cta-start: #D97756;        /* Primary brand orange */
+  --color-cta-end: #AD6047;          /* Secondary darker orange */
+  --color-cta-start-dark: #F5A582;   /* Lighter in dark mode */
+  --color-cta-end-dark: #C97D60;     /* Lighter secondary in dark mode */
+
   /* Additional accent colors */
   --color-purple: #8B5CF6;           /* Violet 500 - Creative accent */
   --color-pink: #EC4899;             /* Pink 500 - Modern highlight */

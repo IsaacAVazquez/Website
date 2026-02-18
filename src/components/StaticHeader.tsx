@@ -35,7 +35,7 @@ export function StaticHeader() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm"
+          ? "bg-neutral-50/95 dark:bg-[#1A0F0C]/95 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -44,7 +44,7 @@ export function StaticHeader() {
           {/* Logo / Name */}
           <Link
             href="/"
-            className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
           >
             Isaac Vazquez
           </Link>
@@ -60,8 +60,8 @@ export function StaticHeader() {
                       href={link.href}
                       className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                         active
-                          ? "text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800"
-                          : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                          ? "text-neutral-900 dark:text-neutral-50 bg-neutral-100 dark:bg-neutral-800"
+                          : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800/60"
                       }`}
                     >
                       {link.label}
@@ -78,7 +78,7 @@ export function StaticHeader() {
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="p-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -93,7 +93,7 @@ export function StaticHeader() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 border-t border-gray-200 dark:border-gray-800 mt-2">
+          <div className="md:hidden pb-4 border-t border-neutral-200 dark:border-neutral-700 mt-2">
             <ul className="space-y-1 pt-4">
               {navlinks.map((link) => {
                 const active = isActive(link.href);
@@ -104,8 +104,8 @@ export function StaticHeader() {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                         active
-                          ? "text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800"
-                          : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                          ? "text-neutral-900 dark:text-neutral-50 bg-neutral-100 dark:bg-neutral-800"
+                          : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800/60"
                       }`}
                     >
                       <link.icon className="h-5 w-5" />

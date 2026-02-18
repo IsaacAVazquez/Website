@@ -39,7 +39,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         {/* PWA and Theme Meta Tags - Warm Modern Design */}
-        <meta name="theme-color" content="#FF6B35" />
+        <meta name="theme-color" content="#D97756" />
         <meta name="color-scheme" content="light dark" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
@@ -52,7 +52,7 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
 
         {/* Windows Tiles */}
-        <meta name="msapplication-TileColor" content="#FF6B35" />
+        <meta name="msapplication-TileColor" content="#D97756" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         
         {/* PWA Manifest */}
@@ -321,7 +321,7 @@ export default function RootLayout({
       <body
         className={twMerge(
           fontConfig.inter.className,
-          "min-h-screen antialiased bg-white dark:bg-black text-black dark:text-white"
+          "min-h-screen antialiased bg-neutral-50 dark:bg-[#1A0F0C] text-neutral-900 dark:text-neutral-100"
         )}
         style={{
           [fontConfig.inter.variable as string]: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',

@@ -33,7 +33,7 @@ export function ModernHero() {
 
   return (
     <section
-      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden bg-white dark:bg-black py-16 md:py-20"
+      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden bg-neutral-50 dark:bg-[#1A0F0C] py-16 md:py-20"
       role="main"
       aria-label="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
     >
@@ -59,7 +59,7 @@ export function ModernHero() {
           <div className="space-y-6 lg:space-y-8">
             {/* Oversized Grotesk Heading - Pure Black */}
             <motion.div variants={itemVariants}>
-              <h1 className="editorial-heading text-black dark:text-white">
+              <h1 className="editorial-heading text-neutral-900 dark:text-neutral-50">
                 Isaac Vazquez
               </h1>
               <p className="editorial-subheading text-neutral-500 dark:text-neutral-400 mt-3">

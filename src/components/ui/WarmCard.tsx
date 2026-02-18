@@ -41,7 +41,7 @@ export function WarmCard({
     <div
       className={cn(
         // Mouthwash Studio Base - pure white with thin border
-        "bg-white dark:bg-black",
+        "bg-white dark:bg-neutral-900",
         "border border-neutral-200 dark:border-neutral-600",
         // Ultra-subtle shadow
         "shadow-subtle",

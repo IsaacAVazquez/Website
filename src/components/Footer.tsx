@@ -10,7 +10,7 @@ export const Footer = () => {
     <motion.footer
       role="contentinfo"
       aria-label="Site footer with copyright and social links"
-      className="relative z-20 bg-gradient-to-t from-neutral-50 to-transparent dark:from-black dark:to-transparent backdrop-blur-sm border-t border-neutral-200 dark:border-neutral-600"
+      className="relative z-20 bg-gradient-to-t from-neutral-100 to-transparent dark:from-[#1A0F0C] dark:to-transparent backdrop-blur-sm border-t border-neutral-200 dark:border-neutral-700"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
@@ -22,24 +22,24 @@ export const Footer = () => {
       {/* CTA Section */}
       <div className="max-w-6xl mx-auto px-6 py-12">
         <motion.div
-          className="bg-gradient-to-br from-[#FF6B35] to-[#F7B32B] dark:from-[#FF8E53] dark:to-[#FFC857] rounded-2xl p-8 md:p-12 text-center shadow-warm-xl"
+          className="bg-neutral-900 dark:bg-neutral-800 rounded-2xl p-8 md:p-12 text-center border border-neutral-700 dark:border-neutral-600"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-50 mb-4">
             Need a PM who can own the roadmap end to end?
           </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
             Looking for a product manager who combines technical expertise with strategic thinking?
-            Let's discuss how I can help drive your product vision forward.
+            Let&apos;s discuss how I can help drive your product vision forward.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/contact">
               <motion.button
-                className="px-8 py-4 bg-white text-[#FF6B35] font-bold rounded-xl shadow-lg hover:shadow-xl transition-all min-h-[52px] flex items-center gap-2 text-lg"
-                whileHover={{ scale: 1.05, boxShadow: "0 12px 40px rgba(0, 0, 0, 0.2)" }}
-                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all min-h-[52px] flex items-center gap-2 text-lg"
+                whileHover={{ scale: 1.03, boxShadow: "0 12px 32px rgba(0, 0, 0, 0.3)" }}
+                whileTap={{ scale: 0.97 }}
               >
                 <IconMail className="w-5 h-5" />
                 Get In Touch
@@ -48,9 +48,9 @@ export const Footer = () => {
             </Link>
             <Link href="/resume">
               <motion.button
-                className="px-8 py-4 bg-white/10 text-white border-2 border-white font-semibold rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all min-h-[52px] flex items-center gap-2 text-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-transparent text-neutral-100 border-2 border-neutral-500 hover:border-neutral-300 font-semibold rounded-xl transition-all min-h-[52px] flex items-center gap-2 text-lg"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
                 View Resume
               </motion.button>
@@ -81,7 +81,7 @@ export const Footer = () => {
           href="https://isaacavazquez.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-bold text-black dark:text-white"
+          className="font-bold text-neutral-900 dark:text-neutral-100"
           whileHover={{
             filter: "drop-shadow(0 0 2px rgba(0, 0, 0, 0.3))",
           }}
@@ -102,7 +102,7 @@ export const Footer = () => {
           aria-label="Visit Isaac Vazquez's LinkedIn profile"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+          className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400 }}
         >
@@ -113,7 +113,7 @@ export const Footer = () => {
           aria-label="Visit Isaac Vazquez's GitHub profile"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+          className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400 }}
         >
@@ -125,7 +125,7 @@ export const Footer = () => {
       <div className="mt-3 text-center">
         <Link
           href="/accessibility"
-          className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors underline"
+          className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors underline"
         >
           Accessibility Statement
         </Link>

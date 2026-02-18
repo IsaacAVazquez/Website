@@ -43,7 +43,7 @@ export function ModernButton({
     "inline-flex items-center justify-center font-semibold",
     "transition-all duration-200",
     "disabled:opacity-40 disabled:cursor-not-allowed",
-    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-offset-2 focus-visible:ring-black dark:focus-visible:ring-white",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)]",
     !shouldReduceMotion && !disabled && "hover:-translate-y-px",
     fullWidth && "w-full"
   );
@@ -51,28 +51,28 @@ export function ModernButton({
   const variants = {
     // Primary: Black background, white text
     primary: cn(
-      "bg-black hover:bg-neutral-600 dark:bg-white dark:hover:bg-neutral-100",
-      "text-white dark:text-black",
+      "bg-neutral-900 hover:bg-neutral-700 dark:bg-neutral-100 dark:hover:bg-neutral-200",
+      "text-white dark:text-neutral-900",
       "shadow-subtle hover:shadow-primary"
     ),
-    // Secondary: White background, black text
+    // Secondary: White background, dark text
     secondary: cn(
-      "bg-white hover:bg-neutral-100 dark:bg-black dark:hover:bg-neutral-600",
-      "text-black dark:text-white",
+      "bg-white hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700",
+      "text-neutral-900 dark:text-neutral-100",
       "border border-neutral-200 dark:border-neutral-600",
       "shadow-subtle hover:shadow-primary"
     ),
-    // Outline: Thin black border, no fill
+    // Outline: Thin border, no fill
     outline: cn(
-      "border border-black dark:border-white",
-      "text-black dark:text-white",
-      "hover:bg-neutral-50 dark:hover:bg-neutral-900"
+      "border border-neutral-900 dark:border-neutral-200",
+      "text-neutral-900 dark:text-neutral-100",
+      "hover:bg-neutral-100 dark:hover:bg-neutral-800"
     ),
     // Ghost: No border, text only
     ghost: cn(
       "text-neutral-500 dark:text-neutral-400",
-      "hover:text-black dark:hover:text-white",
-      "hover:bg-neutral-50 dark:hover:bg-neutral-900"
+      "hover:text-neutral-900 dark:hover:text-neutral-100",
+      "hover:bg-neutral-100 dark:hover:bg-neutral-800"
     ),
   };
 
