@@ -44,7 +44,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
       {/* Layout Container */}
       <div className={isFullWidthPage
         ? "min-h-screen w-full"
-        : "min-h-screen flex bg-neutral-50 dark:bg-[#1A0F0C]"
+        : "min-h-screen flex bg-neutral-50 dark:bg-neutral-50"
       }>
         
         {/* Main Content */}

@@ -139,18 +139,18 @@
   --vivid-yellow: var(--color-warning);
   --vivid-green: var(--color-success);
 
-  /* Warm Neutral Scale - Sophisticated Browns */
-  --neutral-50: #FBF8F6;            /* Warm cream - Lightest background */
-  --neutral-100: #F5EDE8;           /* Light warm surface */
-  --neutral-200: #EBD9D0;           /* Subtle warm borders */
-  --neutral-300: #D4BFB3;           /* Light warm borders */
-  --neutral-400: #B39B8D;           /* Warm disabled states */
-  --neutral-500: #8E7166;           /* Warm secondary text */
-  --neutral-600: #6B4F43;           /* Warm tertiary text */
-  --neutral-700: #4A352B;           /* Dark warm text */
-  --neutral-800: #3D2821;           /* Text/foreground - Claude text color */
-  --neutral-900: #2B1A14;           /* Primary dark warm */
-  --neutral-950: #1A0F0C;           /* Deepest warm dark */
+  /* Warm Neutral Scale - Sophisticated Browns, light base #f6f3ea */
+  --neutral-50: #f6f3ea;            /* Warm parchment - primary light background */
+  --neutral-100: #ede9de;           /* Light warm surface */
+  --neutral-200: #e0d9cc;           /* Subtle warm borders */
+  --neutral-300: #c8bfaf;           /* Light warm borders */
+  --neutral-400: #a89b8a;           /* Warm disabled states */
+  --neutral-500: #8a7868;           /* Warm secondary text */
+  --neutral-600: #6b5444;           /* Warm tertiary text */
+  --neutral-700: #4a352b;           /* Dark warm text */
+  --neutral-800: #3d2821;           /* Text/foreground - Claude text color */
+  --neutral-900: #2b1a14;           /* Primary dark warm */
+  --neutral-950: #1a0f0c;           /* Deepest warm dark */
 
   /* Legacy support */
   --slate-50: var(--neutral-50);
@@ -176,9 +176,9 @@
   --terminal-cursor: var(--color-primary);
 
   /* Warm Surface Colors - Sophisticated & Inviting */
-  --surface-primary: rgba(255, 255, 255, 1);        /* Pure white */
-  --surface-secondary: rgba(251, 248, 246, 1);      /* Warm cream (neutral-50) */
-  --surface-elevated: rgba(255, 255, 255, 1);       /* Pure white elevated */
+  --surface-primary: #f6f3ea;                       /* Warm parchment base */
+  --surface-secondary: #ede9de;                     /* Slightly deeper warm surface */
+  --surface-elevated: #ffffff;                      /* Pure white elevated cards */
   --surface-overlay: rgba(61, 40, 33, 0.5);         /* Warm dark overlay */
 
   /* Warm Text Colors - Clear & Inviting */
@@ -228,11 +228,24 @@
    DARK MODE - Warm Sophisticated Dark Theme
    ============================================ */
 .dark {
+  /* Dark Mode Neutral Scale - inverted warm browns */
+  --neutral-50: #1a0f0c;
+  --neutral-100: #2b1a14;
+  --neutral-200: #3d2821;
+  --neutral-300: #4a352b;
+  --neutral-400: #6b5444;
+  --neutral-500: #8a7868;
+  --neutral-600: #a89b8a;
+  --neutral-700: #c8bfaf;
+  --neutral-800: #e0d9cc;
+  --neutral-900: #ede9de;
+  --neutral-950: #f6f3ea;
+
   /* Dark Mode Surface Colors - Deep Warm Tones */
-  --surface-primary: rgba(43, 26, 20, 1);         /* Warm dark brown (neutral-900) */
-  --surface-secondary: rgba(61, 40, 33, 1);       /* Claude text color as surface (neutral-800) */
-  --surface-elevated: rgba(74, 53, 43, 0.5);      /* Dark warm text with opacity (neutral-700) */
-  --surface-overlay: rgba(26, 15, 12, 0.9);       /* Deepest warm dark overlay (neutral-950) */
+  --surface-primary: #1a0f0c;                     /* Deepest warm dark background */
+  --surface-secondary: #2b1a14;                   /* Slightly lighter dark surface */
+  --surface-elevated: #3d2821;                    /* Elevated dark cards */
+  --surface-overlay: rgba(26, 15, 12, 0.9);       /* Deepest warm dark overlay */
 
   /* Dark Mode Text Colors - Warm & Clear */
   --text-primary: #F5EDE8;            /* Light warm surface (neutral-100) */

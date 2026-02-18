@@ -321,7 +321,7 @@ export default function RootLayout({
       <body
         className={twMerge(
           fontConfig.inter.className,
-          "min-h-screen antialiased bg-neutral-50 dark:bg-[#1A0F0C] text-neutral-900 dark:text-neutral-100"
+          "min-h-screen antialiased bg-neutral-50 dark:bg-neutral-50 text-neutral-800 dark:text-neutral-800"
         )}
         style={{
           [fontConfig.inter.variable as string]: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
