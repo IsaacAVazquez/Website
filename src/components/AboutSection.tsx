@@ -33,7 +33,8 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 bg-neutral-50 dark:bg-neutral-900"
+      className="py-24 md:py-32"
+      style={{ backgroundColor: 'var(--surface-secondary)' }}
     >
       <div className="container-wide max-w-6xl mx-auto">
         <motion.div
@@ -124,7 +125,8 @@ export function AboutSection() {
               {["Civic Tech", "SaaS", "Analytics", "Political Campaigns", "EdTech"].map((industry) => (
                 <span
                   key={industry}
-                  className="px-4 py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-full text-sm font-medium text-neutral-700 dark:text-neutral-300"
+                  className="px-4 py-2 border border-neutral-200 dark:border-neutral-700 rounded-full text-sm font-medium text-neutral-700 dark:text-neutral-300"
+                  style={{ backgroundColor: 'var(--surface-elevated)' }}
                 >
                   {industry}
                 </span>
@@ -136,36 +138,23 @@ export function AboutSection() {
               Experience
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {/* UC Berkeley Haas */}
-              <div className="flex items-center justify-center p-6 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg">
-                <div className="text-center">
-                  <p className="font-bold text-sm text-neutral-900 dark:text-neutral-100">UC Berkeley</p>
-                  <p className="text-xs text-neutral-500">Haas MBA</p>
+              {[
+                { name: "UC Berkeley", sub: "Haas MBA" },
+                { name: "Florida State", sub: "B.S. Biology" },
+                { name: "Civic Tech", sub: "Product & QA" },
+                { name: "Political Campaigns", sub: "Analytics" },
+              ].map((item) => (
+                <div
+                  key={item.name}
+                  className="flex items-center justify-center p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg"
+                  style={{ backgroundColor: 'var(--surface-elevated)' }}
+                >
+                  <div className="text-center">
+                    <p className="font-bold text-sm text-neutral-900 dark:text-neutral-100">{item.name}</p>
+                    <p className="text-xs text-neutral-500">{item.sub}</p>
+                  </div>
                 </div>
-              </div>
-
-              {/* Florida State University */}
-              <div className="flex items-center justify-center p-6 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg">
-                <div className="text-center">
-                  <p className="font-bold text-sm text-neutral-900 dark:text-neutral-100">Florida State</p>
-                  <p className="text-xs text-neutral-500">B.S. Biology</p>
-                </div>
-              </div>
-
-              {/* Previous Companies - Placeholder */}
-              <div className="flex items-center justify-center p-6 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg">
-                <div className="text-center">
-                  <p className="font-bold text-sm text-neutral-900 dark:text-neutral-100">Civic Tech</p>
-                  <p className="text-xs text-neutral-500">Product & QA</p>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center p-6 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg">
-                <div className="text-center">
-                  <p className="font-bold text-sm text-neutral-900 dark:text-neutral-100">Political Campaigns</p>
-                  <p className="text-xs text-neutral-500">Analytics</p>
-                </div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </motion.div>

@@ -321,9 +321,10 @@ export default function RootLayout({
       <body
         className={twMerge(
           fontConfig.inter.className,
-          "min-h-screen antialiased bg-neutral-50 dark:bg-neutral-50 text-neutral-800 dark:text-neutral-800"
+          "min-h-screen antialiased text-neutral-800 dark:text-neutral-200"
         )}
         style={{
+          backgroundColor: 'var(--surface-primary)',
           [fontConfig.inter.variable as string]: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
           [fontConfig.jetbrainsMono.variable as string]: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
           [fontConfig.orbitron.variable as string]: 'Orbitron, "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif',

@@ -33,7 +33,8 @@ export function ModernHero() {
 
   return (
     <section
-      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden bg-neutral-50 dark:bg-[#1A0F0C] py-16 md:py-20"
+      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden py-16 md:py-20"
+      style={{ backgroundColor: 'var(--surface-primary)' }}
       role="main"
       aria-label="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
     >
@@ -92,14 +93,14 @@ export function ModernHero() {
               variants={itemVariants}
               className="flex flex-wrap gap-4 pt-2"
             >
-              <Link href="/portfolio">
+              <Link href="/#contact">
                 <ModernButton variant="primary" size="lg">
-                  View My Work
+                  Get In Touch
                 </ModernButton>
               </Link>
-              <Link href="/#contact">
+              <Link href="/#about">
                 <ModernButton variant="outline" size="lg">
-                  Get In Touch
+                  Learn More
                 </ModernButton>
               </Link>
             </motion.div>

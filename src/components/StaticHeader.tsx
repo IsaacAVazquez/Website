@@ -35,9 +35,10 @@ export function StaticHeader() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? "bg-neutral-50/95 dark:bg-[#1A0F0C]/95 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700 shadow-sm"
+          ? "backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700 shadow-sm"
           : "bg-transparent"
       }`}
+      style={isScrolled ? { backgroundColor: 'var(--surface-primary)', opacity: 0.97 } : undefined}
     >
       <nav className="container-wide mx-auto" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16 md:h-20">
