@@ -33,9 +33,8 @@ export function ModernHero() {
 
   return (
     <section
-      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden py-16 md:py-20"
+      className="relative flex items-center overflow-hidden py-20 md:py-28"
       style={{ backgroundColor: 'var(--surface-primary)' }}
-      role="main"
       aria-label="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
     >
       <motion.div
@@ -44,7 +43,7 @@ export function ModernHero() {
         initial="hidden"
         animate="visible"
       >
-        <div className="max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-start">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-16 items-center">
 
           {/* Left Column */}
           <div className="space-y-6 lg:space-y-8">

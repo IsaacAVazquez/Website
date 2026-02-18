@@ -33,7 +33,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32"
+      className="py-20 md:py-28"
       style={{ backgroundColor: "var(--surface-secondary)" }}
     >
       <div className="container-wide max-w-6xl mx-auto">
@@ -44,7 +44,7 @@ export function AboutSection() {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="mb-16">
+          <motion.div variants={itemVariants} className="mb-12">
             <Heading level={2} className="mb-6">
               About Me
             </Heading>
@@ -65,14 +65,14 @@ export function AboutSection() {
           </motion.div>
 
           {/* What I Do - Grid */}
-          <motion.div variants={itemVariants} className="mb-16">
+          <motion.div variants={itemVariants} className="mb-12">
             <h3
-              className="text-2xl font-bold mb-8"
+              className="text-2xl font-bold mb-6"
               style={{ color: "var(--text-primary)" }}
             >
               What I Do
             </h3>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <WarmCard padding="lg">
                 <IconTargetArrow className="h-8 w-8 mb-4" style={{ color: "var(--color-primary)" }} />
                 <h4
@@ -139,7 +139,7 @@ export function AboutSection() {
             >
               Industries & Domains
             </h3>
-            <div className="flex flex-wrap gap-3 mb-12">
+            <div className="flex flex-wrap gap-3 mb-10">
               {["Civic Tech", "SaaS", "Analytics", "Political Campaigns", "EdTech"].map((industry) => (
                 <span
                   key={industry}
@@ -161,7 +161,7 @@ export function AboutSection() {
             >
               Experience
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 { name: "UC Berkeley", sub: "Haas MBA" },
                 { name: "Florida State", sub: "B.A. Poli Sci" },

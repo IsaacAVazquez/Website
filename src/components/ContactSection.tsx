@@ -35,10 +35,10 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-32"
+      className="py-20 md:py-28"
       style={{ backgroundColor: "var(--surface-primary)" }}
     >
-      <div className="container-wide max-w-4xl mx-auto text-center">
+      <div className="container-wide max-w-5xl mx-auto text-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -51,7 +51,7 @@ export function ContactSection() {
               Let's Work Together
             </Heading>
             <p
-              className="text-xl max-w-2xl mx-auto"
+              className="text-xl max-w-3xl mx-auto"
               style={{ color: "var(--text-secondary)" }}
             >
               I'm currently pursuing my MBA at UC Berkeley Haas and exploring
@@ -63,7 +63,7 @@ export function ContactSection() {
           {/* Contact Methods */}
           <motion.div
             variants={itemVariants}
-            className="grid md:grid-cols-3 gap-6 mb-12"
+            className="grid md:grid-cols-3 gap-8 mb-12"
           >
             <WarmCard padding="lg" className="text-center">
               <IconMail
