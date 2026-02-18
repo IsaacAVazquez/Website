@@ -225,7 +225,7 @@ export function ProductManagerJourney() {
           foundation and business education to create products that users love and drive business growth.
         </Paragraph>
         <div className="flex justify-center space-x-4">
-          <ModernButton href="/contact" variant="primary">
+          <ModernButton href="/#contact" variant="primary">
             Let's Connect
           </ModernButton>
           <ModernButton href="/resume" variant="outline">

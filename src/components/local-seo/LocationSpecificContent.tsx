@@ -190,7 +190,7 @@ export function LocationSpecificContent({
 
         <div className="text-center">
           <Link 
-            href="/contact" 
+            href="/#contact"
             className="inline-flex items-center space-x-2 text-electric-blue hover:text-matrix-green transition-colors"
           >
             <span>Start Your Success Story</span>

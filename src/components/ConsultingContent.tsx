@@ -36,7 +36,7 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
           Whether you’re proving product-market fit or scaling a late-stage roadmap, I help translate vision into experiments, rituals, and decision frameworks your team can execute.
         </Paragraph>
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-          <Link href="/contact">
+          <Link href="/#contact">
             <ModernButton variant="primary" size="lg">
               Start a Conversation
             </ModernButton>
@@ -102,7 +102,7 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
           I keep engagements intentionally small so every client gets focus and follow-through. Reach out and we'll explore how I can support what you're building.
         </Paragraph>
         <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
-          <Link href="/contact">
+          <Link href="/#contact">
             <ModernButton variant="primary" size="md">
               Share Your Project
             </ModernButton>

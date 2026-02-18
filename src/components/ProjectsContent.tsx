@@ -521,7 +521,7 @@ export function ProjectsContent() {
         <p className="text-lg text-[#6B4F3D] mb-6">
           Interested in working together? Let's build something great.
         </p>
-        <Link href="/contact">
+        <Link href="/#contact">
           <ModernButton variant="primary" size="lg">
             Get In Touch →
           </ModernButton>

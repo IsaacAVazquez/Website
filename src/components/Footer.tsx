@@ -36,7 +36,7 @@ export const Footer = () => {
             Let&apos;s discuss how I can help drive your product vision forward.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/contact">
+            <Link href="/#contact">
               <motion.button
                 className="px-8 py-4 bg-white text-neutral-900 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all min-h-[52px] flex items-center gap-2 text-lg"
                 whileHover={{ scale: 1.03, boxShadow: "0 12px 32px rgba(0, 0, 0, 0.3)" }}
