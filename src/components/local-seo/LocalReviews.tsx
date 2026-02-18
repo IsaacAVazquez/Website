@@ -166,7 +166,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
             View All Reviews
           </ModernButton>
           <ModernButton 
-            href="/#contact"
+            href="/contact"
             size="sm"
             variant="primary"
           >
@@ -452,7 +452,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
           Get started with a free consultation today.
         </p>
         <div className="flex justify-center space-x-4">
-          <ModernButton href="/#contact" variant="primary">
+          <ModernButton href="/contact" variant="primary">
             Get Free Consultation
           </ModernButton>
           <ModernButton 

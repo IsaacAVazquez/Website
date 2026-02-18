@@ -258,7 +258,7 @@ export default function FAQPage() {
               </Paragraph>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <ModernButton variant="primary">
-                  <a href="/#contact">Get in Touch</a>
+                  <a href="/contact">Get in Touch</a>
                 </ModernButton>
                 <ModernButton variant="outline">
                   <a href="/resume">View My Work</a>

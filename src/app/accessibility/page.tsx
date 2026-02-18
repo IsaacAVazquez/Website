@@ -225,10 +225,10 @@ export default function AccessibilityPage() {
               <Paragraph className="text-neutral-700 dark:text-neutral-300">
                 <strong>Website:</strong>{" "}
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="text-black dark:text-white underline hover:text-neutral-600 dark:hover:text-neutral-300"
                 >
-                  Contact
+                  Contact Page
                 </Link>
               </Paragraph>
             </div>

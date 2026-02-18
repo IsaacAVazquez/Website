@@ -15,6 +15,18 @@ interface ModernButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
   fullWidth?: boolean;
 }
 
+/**
+ * ModernButton - Mouthwash Studio Minimal Button
+ * Pure monochrome design with simple, clean interactions
+ *
+ * Features:
+ * - Pure black/white monochrome variants
+ * - Text-only or outlined button styles
+ * - Very subtle hover effects
+ * - Touch-friendly (44px minimum)
+ * - Accessible with proper ARIA
+ * - Respects reduced motion preferences
+ */
 export function ModernButton({
   variant = "primary",
   size = "md",
@@ -23,7 +35,6 @@ export function ModernButton({
   ariaLabel,
   fullWidth = false,
   disabled = false,
-  style,
   ...props
 }: ModernButtonProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -37,60 +48,45 @@ export function ModernButton({
     fullWidth && "w-full"
   );
 
+  const variants = {
+    // Primary: Black background, white text
+    primary: cn(
+      "bg-neutral-900 hover:bg-neutral-700 dark:bg-neutral-100 dark:hover:bg-neutral-200",
+      "text-white dark:text-neutral-900",
+      "shadow-subtle hover:shadow-primary"
+    ),
+    // Secondary: White background, dark text
+    secondary: cn(
+      "bg-white hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700",
+      "text-neutral-900 dark:text-neutral-100",
+      "border border-neutral-200 dark:border-neutral-600",
+      "shadow-subtle hover:shadow-primary"
+    ),
+    // Outline: Thin border, no fill
+    outline: cn(
+      "border border-neutral-900 dark:border-neutral-200",
+      "text-neutral-900 dark:text-neutral-100",
+      "hover:bg-neutral-100 dark:hover:bg-neutral-800"
+    ),
+    // Ghost: No border, text only
+    ghost: cn(
+      "text-neutral-500 dark:text-neutral-400",
+      "hover:text-neutral-900 dark:hover:text-neutral-100",
+      "hover:bg-neutral-100 dark:hover:bg-neutral-800"
+    ),
+  };
+
   const sizes = {
     sm: "px-5 py-2 text-sm min-h-[40px]",
     md: "px-7 py-3 text-base min-h-[44px]",
     lg: "px-9 py-4 text-lg min-h-[52px]",
   };
 
-  const variantStyles: Record<ButtonVariant, React.CSSProperties> = {
-    primary: {
-      backgroundColor: "var(--text-primary)",
-      color: "var(--surface-primary)",
-    },
-    secondary: {
-      backgroundColor: "var(--surface-elevated)",
-      color: "var(--text-primary)",
-      border: "1px solid var(--border-primary)",
-    },
-    outline: {
-      backgroundColor: "transparent",
-      color: "var(--text-primary)",
-      border: "1px solid var(--text-primary)",
-    },
-    ghost: {
-      backgroundColor: "transparent",
-      color: "var(--text-secondary)",
-    },
-  };
-
   return (
     <button
-      className={cn(baseStyles, sizes[size], "shadow-subtle hover:shadow-primary", className)}
+      className={cn(baseStyles, variants[variant], sizes[size], className)}
       aria-label={ariaLabel}
       disabled={disabled}
-      style={{ ...variantStyles[variant], ...style }}
-      onMouseEnter={(e) => {
-        if (disabled) return;
-        const el = e.currentTarget;
-        if (variant === "primary") {
-          el.style.backgroundColor = "var(--text-secondary)";
-        } else if (variant === "secondary") {
-          el.style.backgroundColor = "var(--surface-secondary)";
-        } else if (variant === "outline") {
-          el.style.backgroundColor = "var(--surface-secondary)";
-        } else if (variant === "ghost") {
-          el.style.color = "var(--text-primary)";
-          el.style.backgroundColor = "var(--surface-secondary)";
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (disabled) return;
-        const el = e.currentTarget;
-        const base = variantStyles[variant];
-        el.style.backgroundColor = base.backgroundColor as string;
-        el.style.color = base.color as string;
-      }}
       {...props}
     >
       {children}

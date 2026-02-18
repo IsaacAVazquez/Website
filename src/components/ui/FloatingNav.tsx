@@ -199,7 +199,7 @@ export function FloatingNav() {
             {/* CTA Button - Let's Talk */}
             <div className="relative ml-2 pl-2 border-l-2 border-[#FFE4D6]/50 dark:border-[#FF8E53]/20">
               <Link
-                href="/#contact"
+                href="/contact"
                 aria-label="Contact Isaac Vazquez"
               >
                 <motion.button
@@ -237,7 +237,7 @@ export function GestureNavigation({ children }: { children: React.ReactNode }) {
   
   const handleNavigation = useCallback((direction: "left" | "right") => {
     // Simple navigation logic - cycle through main pages
-    const pages = ["/", "/about", "/resume"];
+    const pages = ["/", "/about", "/resume", "/faq", "/contact"];
     const currentIndex = pages.indexOf(pathname);
     
     if (currentIndex === -1) return; // Not on a main page

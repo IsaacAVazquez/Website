@@ -34,27 +34,18 @@ export function StaticHeader() {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "shadow-sm" : "bg-transparent"
-      }`}
-      style={
         isScrolled
-          ? {
-              backgroundColor: "var(--surface-primary)",
-              borderBottom: "1px solid var(--border-primary)",
-              opacity: 0.97,
-            }
-          : undefined
-      }
+          ? "backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700 shadow-sm"
+          : "bg-transparent"
+      }`}
+      style={isScrolled ? { backgroundColor: 'var(--surface-primary)', opacity: 0.97 } : undefined}
     >
       <nav className="container-wide mx-auto" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo / Name */}
           <Link
             href="/"
-            className="text-xl md:text-2xl font-bold tracking-tight transition-colors"
-            style={{ color: "var(--text-primary)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
+            className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
           >
             Isaac Vazquez
           </Link>
@@ -68,23 +59,11 @@ export function StaticHeader() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="px-4 py-2 text-sm font-medium rounded-lg transition-colors"
-                      style={{
-                        color: active ? "var(--text-primary)" : "var(--text-secondary)",
-                        backgroundColor: active ? "var(--surface-secondary)" : "transparent",
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!active) {
-                          e.currentTarget.style.color = "var(--text-primary)";
-                          e.currentTarget.style.backgroundColor = "var(--surface-secondary)";
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!active) {
-                          e.currentTarget.style.color = "var(--text-secondary)";
-                          e.currentTarget.style.backgroundColor = "transparent";
-                        }
-                      }}
+                      className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                        active
+                          ? "text-neutral-900 dark:text-neutral-50 bg-neutral-100 dark:bg-neutral-800"
+                          : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800/60"
+                      }`}
                     >
                       {link.label}
                     </Link>
@@ -100,10 +79,7 @@ export function StaticHeader() {
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 transition-colors"
-              style={{ color: "var(--text-secondary)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
+              className="p-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -118,10 +94,7 @@ export function StaticHeader() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div
-            className="md:hidden pb-4 mt-2"
-            style={{ borderTop: "1px solid var(--border-primary)" }}
-          >
+          <div className="md:hidden pb-4 border-t border-neutral-200 dark:border-neutral-700 mt-2">
             <ul className="space-y-1 pt-4">
               {navlinks.map((link) => {
                 const active = isActive(link.href);
@@ -130,11 +103,11 @@ export function StaticHeader() {
                     <Link
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg transition-colors"
-                      style={{
-                        color: active ? "var(--text-primary)" : "var(--text-secondary)",
-                        backgroundColor: active ? "var(--surface-secondary)" : "transparent",
-                      }}
+                      className={`flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                        active
+                          ? "text-neutral-900 dark:text-neutral-50 bg-neutral-100 dark:bg-neutral-800"
+                          : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800/60"
+                      }`}
                     >
                       <link.icon className="h-5 w-5" />
                       {link.label}
