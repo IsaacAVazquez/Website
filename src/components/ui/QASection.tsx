@@ -19,20 +19,6 @@ export interface QASectionProps {
   className?: string;
 }
 
-/**
- * QASection - AI-optimized Q&A component
- *
- * Displays questions and answers in a format that's easy for AI systems
- * to parse and extract for citations. Follows Google's People Also Ask
- * format and includes proper schema.org microdata.
- *
- * Features:
- * - Semantic HTML with microdata
- * - Clear question/answer structure
- * - AI-friendly formatting
- * - Multiple display variants
- * - Category grouping support
- */
 export function QASection({
   title = "Frequently Asked Questions",
   description,
@@ -41,7 +27,6 @@ export function QASection({
   showIcons = true,
   className = "",
 }: QASectionProps) {
-  // Group items by category if provided
   const groupedItems = items.reduce((acc, item) => {
     const category = item.category || "General";
     if (!acc[category]) {
@@ -94,7 +79,7 @@ export function QASection({
                   transition={{ duration: 0.4, delay: (categoryIndex * 3 + index) * 0.05 }}
                   className={`
                     ${variant === "compact" ? "p-4" : "p-5 md:p-6"}
-                    ${variant === "featured" ? "pentagram-card bg-neutral-50 dark:bg-neutral-900" : "pentagram-card"}
+                    ${variant === "featured" ? "card bg-neutral-50 dark:bg-neutral-900" : "card"}
                   `}
                   itemScope
                   itemProp="mainEntity"
@@ -166,10 +151,6 @@ export function QASection({
   );
 }
 
-/**
- * Compact Q&A Item Component
- * For inline or sidebar use
- */
 export function QAItem({ question, answer, showIcon = true }: QAItem & { showIcon?: boolean }) {
   return (
     <div

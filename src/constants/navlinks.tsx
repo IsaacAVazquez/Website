@@ -1,10 +1,11 @@
 import {
   IconHome,
-  IconMail,
   IconUser,
+  IconBriefcase,
+  IconFileText,
+  IconMail,
 } from "@tabler/icons-react";
 
-// Simplified navigation: 4 core sections for product-focused portfolio
 export const navlinks = [
   {
     href: "/",
@@ -12,12 +13,22 @@ export const navlinks = [
     icon: IconHome,
   },
   {
-    href: "/#about",
+    href: "/about",
     label: "About",
     icon: IconUser,
   },
   {
-    href: "/#contact",
+    href: "/projects",
+    label: "Projects",
+    icon: IconBriefcase,
+  },
+  {
+    href: "/resume",
+    label: "Resume",
+    icon: IconFileText,
+  },
+  {
+    href: "/contact",
     label: "Contact",
     icon: IconMail,
   },

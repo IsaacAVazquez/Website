@@ -24,32 +24,32 @@ interface RelatedContentProps {
 
 const categoryConfig = {
   blog: {
-    color: "text-electric-blue",
-    borderColor: "border-electric-blue/20 hover:border-electric-blue/50",
-    bgColor: "bg-electric-blue/5",
+    color: "text-blue-500",
+    borderColor: "border-blue-500/20 hover:border-blue-500/50",
+    bgColor: "bg-blue-500/5",
     icon: "📄"
   },
   project: {
-    color: "text-matrix-green", 
-    borderColor: "border-matrix-green/20 hover:border-matrix-green/50",
-    bgColor: "bg-matrix-green/5",
+    color: "text-emerald-500",
+    borderColor: "border-emerald-500/20 hover:border-emerald-500/50",
+    bgColor: "bg-emerald-500/5",
     icon: "🛠️"
   },
   fantasy: {
-    color: "text-neon-purple",
-    borderColor: "border-neon-purple/20 hover:border-neon-purple/50", 
-    bgColor: "bg-neon-purple/5",
+    color: "text-violet-500",
+    borderColor: "border-violet-500/20 hover:border-violet-500/50",
+    bgColor: "bg-violet-500/5",
     icon: "🏈"
   },
   portfolio: {
-    color: "text-cyber-teal",
-    borderColor: "border-cyber-teal/20 hover:border-cyber-teal/50",
-    bgColor: "bg-cyber-teal/5", 
+    color: "text-cyan-500",
+    borderColor: "border-cyan-500/20 hover:border-cyan-500/50",
+    bgColor: "bg-cyan-500/5",
     icon: "👤"
   }
 };
 
-export function RelatedContent({ 
+export function RelatedContent({
   title = "Related Content",
   items,
   className = "",
@@ -67,21 +67,21 @@ export function RelatedContent({
     >
       {/* Section Header */}
       <div className="flex items-center space-x-3">
-        <h2 className="text-xl font-bold text-electric-blue font-heading uppercase tracking-wider">
+        <h2 className="text-xl font-bold text-[var(--color-secondary)] uppercase tracking-wider">
           {title}
         </h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-electric-blue/30 to-transparent"></div>
+        <div className="flex-1 h-px bg-gradient-to-r from-[var(--color-secondary)]/30 to-transparent"></div>
       </div>
 
       {/* Content Grid/List */}
       <div className={
-        layout === "grid" 
-          ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-3" 
+        layout === "grid"
+          ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
           : "space-y-3"
       }>
         {items.map((item, index) => {
           const config = categoryConfig[item.category];
-          
+
           return (
             <motion.div
               key={item.href}
@@ -94,12 +94,12 @@ export function RelatedContent({
                 interactive={true}
                 className={`p-4 h-full border ${config.borderColor} transition-all duration-300 group hover:${config.bgColor}`}
               >
-                <Link 
+                <Link
                   href={item.href}
                   className="block h-full focus-ring rounded-lg"
-                  {...(item.external && { 
-                    target: "_blank", 
-                    rel: "noopener noreferrer" 
+                  {...(item.external && {
+                    target: "_blank",
+                    rel: "noopener noreferrer"
                   })}
                 >
                   <div className="flex flex-col h-full">
@@ -113,31 +113,31 @@ export function RelatedContent({
                           </span>
                         </div>
                       )}
-                      
+
                       {item.featured && (
                         <div className="flex items-center space-x-1">
-                          <IconStar className="w-4 h-4 text-warning-amber" />
-                          <span className="text-xs font-mono text-warning-amber uppercase">Featured</span>
+                          <IconStar className="w-4 h-4 text-[var(--color-warning)]" />
+                          <span className="text-xs font-mono text-[var(--color-warning)] uppercase">Featured</span>
                         </div>
                       )}
                     </div>
 
                     {/* Content */}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-white mb-2 group-hover:text-electric-blue transition-colors line-clamp-2">
+                      <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2 group-hover:text-[var(--color-secondary)] transition-colors line-clamp-2">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-slate-400 leading-relaxed line-clamp-3">
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed line-clamp-3">
                         {item.description}
                       </p>
                     </div>
 
                     {/* Action indicator */}
-                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-slate-700/30">
-                      <span className="text-xs font-mono text-slate-500 group-hover:text-slate-400 transition-colors">
+                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-neutral-200/30 dark:border-neutral-700/30">
+                      <span className="text-xs font-mono text-neutral-500 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">
                         {item.external ? 'External Link' : 'Continue Reading'}
                       </span>
-                      <IconArrowRight className="w-4 h-4 text-slate-500 group-hover:text-electric-blue transform group-hover:translate-x-1 transition-all duration-300" />
+                      <IconArrowRight className="w-4 h-4 text-neutral-500 dark:text-neutral-500 group-hover:text-[var(--color-secondary)] transform group-hover:translate-x-1 transition-all duration-300" />
                     </div>
                   </div>
                 </Link>
@@ -149,7 +149,7 @@ export function RelatedContent({
 
       {/* Optional trending indicator for dynamic content */}
       {items.some(item => item.featured) && (
-        <div className="flex items-center justify-center space-x-2 text-xs font-mono text-slate-500 mt-6">
+        <div className="flex items-center justify-center space-x-2 text-xs font-mono text-neutral-500 dark:text-neutral-500 mt-6">
           <IconTrendingUp className="w-4 h-4" />
           <span>Trending content updated weekly</span>
         </div>
@@ -158,7 +158,6 @@ export function RelatedContent({
   );
 }
 
-// Predefined content collections for easy reuse
 export const relatedContentSets = {
   qaEngineering: [
     {
@@ -170,7 +169,7 @@ export const relatedContentSets = {
     {
       title: "Building Reliable Software Systems",
       description: "Learn how to architect and test systems that can handle millions of users with confidence.",
-      href: "/blog/building-reliable-software-systems", 
+      href: "/blog/building-reliable-software-systems",
       category: "blog" as const
     },
     {

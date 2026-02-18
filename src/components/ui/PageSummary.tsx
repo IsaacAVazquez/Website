@@ -14,18 +14,6 @@ export interface PageSummaryProps {
   className?: string;
 }
 
-/**
- * PageSummary - AI-optimized component for page introductions
- *
- * Provides clear, scannable summaries at the top of pages to help
- * AI systems (ChatGPT, Claude, Perplexity, etc.) understand page content.
- *
- * Features:
- * - Clear TL;DR sections
- * - Structured content hierarchy
- * - Semantic HTML for AI parsing
- * - Multiple variants for different contexts
- */
 export function PageSummary({
   title,
   summary,
@@ -36,7 +24,6 @@ export function PageSummary({
   className = "",
 }: PageSummaryProps) {
 
-  // Compact variant - minimal styling
   if (variant === "compact") {
     return (
       <div className={`mb-8 ${className}`}>
@@ -52,14 +39,13 @@ export function PageSummary({
     );
   }
 
-  // Featured variant - prominent display
   if (variant === "featured") {
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`pentagram-card bg-neutral-50 dark:bg-neutral-900 border-l-4 border-neutral-900 dark:border-neutral-100 ${className}`}
+        className={`card bg-neutral-50 dark:bg-neutral-900 border-l-4 border-neutral-900 dark:border-neutral-100 ${className}`}
       >
         {title && (
           <div className="flex items-center gap-3 mb-4">
@@ -102,13 +88,12 @@ export function PageSummary({
     );
   }
 
-  // Default variant - standard card
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`pentagram-card ${className}`}
+      className={`card ${className}`}
       role="region"
       aria-label={title || "Page Summary"}
     >

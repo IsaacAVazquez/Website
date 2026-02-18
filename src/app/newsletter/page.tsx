@@ -5,10 +5,10 @@ import { Paragraph } from '@/components/ui/Paragraph';
 import { WarmCard } from '@/components/ui/WarmCard';
 import { Badge } from '@/components/ui/Badge';
 import { constructMetadata } from '@/lib/seo';
-import { 
-  IconBrain, 
-  IconTrophy, 
-  IconCode, 
+import {
+  IconBrain,
+  IconTrophy,
+  IconCode,
   IconCalendar,
   IconUsers,
   IconMail
@@ -105,25 +105,25 @@ export default function NewsletterPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
-      <main className="min-h-screen bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+
+      <main className="min-h-screen bg-[var(--surface-secondary)]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <div className="max-w-4xl mx-auto space-y-12">
-            
+
             {/* Header */}
             <div className="text-center">
               <div className="flex justify-center mb-6">
-                <div className="p-4 bg-[#FF6B35]/10 rounded-full">
-                  <IconMail className="w-12 h-12 text-[#FF6B35]" />
+                <div className="p-4 bg-[var(--color-primary)]/10 rounded-full">
+                  <IconMail className="w-12 h-12 text-[var(--color-primary)]" />
                 </div>
               </div>
               <Heading level={1} className="mb-4 text-4xl md:text-5xl lg:text-6xl">
                 Join the{" "}
-                <span className="gradient-text-warm">
+                <span className="text-[var(--color-secondary)]">
                   Newsletter
                 </span>
               </Heading>
-              <Paragraph size="lg" className="max-w-2xl mx-auto text-[#4A3426] dark:text-[#D4A88E]">
+              <Paragraph size="lg" className="max-w-2xl mx-auto text-[var(--text-secondary)]">
                 Get expert insights on QA engineering, fantasy football analytics, and software development
                 delivered to your inbox. Join 500+ professionals who stay ahead of the curve.
               </Paragraph>
@@ -135,7 +135,7 @@ export default function NewsletterPage() {
               subtitle="Join a community of QA engineers, fantasy football enthusiasts, and software developers"
               interests={[
                 'QA Engineering',
-                'Fantasy Football Analytics', 
+                'Fantasy Football Analytics',
                 'Software Development',
                 'Testing Strategies',
                 'Data Analysis',
@@ -147,8 +147,8 @@ export default function NewsletterPage() {
             {/* Content Types */}
             <div className="space-y-8">
               <div className="text-center">
-                <Heading level={2} className="mb-4 text-[#FF6B35]">What You'll Get</Heading>
-                <Paragraph className="text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto">
+                <Heading level={2} className="mb-4 text-[var(--color-primary)]">What You'll Get</Heading>
+                <Paragraph className="text-[var(--text-secondary)] max-w-2xl mx-auto">
                   Deep-dive content covering the latest in quality assurance, analytics, and software development
                 </Paragraph>
               </div>
@@ -160,13 +160,13 @@ export default function NewsletterPage() {
                     <WarmCard key={content.title} padding="lg">
                       <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                          <div className="p-2 bg-[#FF6B35]/10 rounded-lg">
-                            <Icon className="w-6 h-6 text-[#FF6B35]" />
+                          <div className="p-2 bg-[var(--color-primary)]/10 rounded-lg">
+                            <Icon className="w-6 h-6 text-[var(--color-primary)]" />
                           </div>
-                          <Heading level={3} className="text-lg text-[#FF6B35]">{content.title}</Heading>
+                          <Heading level={3} className="text-lg text-[var(--color-primary)]">{content.title}</Heading>
                         </div>
 
-                        <Paragraph size="sm" className="text-[#4A3426] dark:text-[#D4A88E]">
+                        <Paragraph size="sm" className="text-[var(--text-secondary)]">
                           {content.description}
                         </Paragraph>
 
@@ -187,8 +187,8 @@ export default function NewsletterPage() {
             {/* Recent Content */}
             <div className="space-y-6">
               <div className="text-center">
-                <Heading level={2} className="mb-4 text-[#FF6B35]">Recent Content</Heading>
-                <Paragraph className="text-[#4A3426] dark:text-[#D4A88E]">
+                <Heading level={2} className="mb-4 text-[var(--color-primary)]">Recent Content</Heading>
+                <Paragraph className="text-[var(--text-secondary)]">
                   Here's what subscribers have been reading lately
                 </Paragraph>
               </div>
@@ -200,13 +200,13 @@ export default function NewsletterPage() {
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <Badge variant="default" size="sm">{item.type}</Badge>
-                          <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">
+                          <span className="text-sm text-[var(--text-secondary)]">
                             {new Date(item.date).toLocaleDateString()}
                           </span>
                         </div>
-                        <Heading level={4} className="text-lg text-[#FF6B35]">{item.title}</Heading>
+                        <Heading level={4} className="text-lg text-[var(--color-primary)]">{item.title}</Heading>
                       </div>
-                      <div className="text-right text-sm text-[#6B4F3D] dark:text-[#D4A88E]">
+                      <div className="text-right text-sm text-[var(--text-secondary)]">
                         <div className="flex items-center gap-1">
                           <IconCalendar className="w-4 h-4" />
                           {item.readTime}
@@ -221,13 +221,13 @@ export default function NewsletterPage() {
             {/* Social Proof */}
             <WarmCard padding="xl" className="text-center">
               <div className="max-w-2xl mx-auto">
-                <Heading level={3} className="mb-4 text-[#FF6B35]">
+                <Heading level={3} className="mb-4 text-[var(--color-primary)]">
                   Join 500+ Professionals
                 </Heading>
-                <Paragraph className="text-[#4A3426] dark:text-[#D4A88E] mb-6">
+                <Paragraph className="text-[var(--text-secondary)] mb-6">
                   QA engineers, fantasy football enthusiasts, and software developers from companies like:
                 </Paragraph>
-                <div className="flex items-center justify-center gap-6 text-sm text-[#6B4F3D] dark:text-[#D4A88E]">
+                <div className="flex items-center justify-center gap-6 text-sm text-[var(--text-secondary)]">
                   <div className="flex items-center gap-2">
                     <IconUsers className="w-4 h-4" />
                     <span>500+ Subscribers</span>

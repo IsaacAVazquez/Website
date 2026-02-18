@@ -16,10 +16,10 @@ interface BreadcrumbsProps {
   className?: string;
 }
 
-export function Breadcrumbs({ 
-  customItems, 
-  showHome = true, 
-  className = "" 
+export function Breadcrumbs({
+  customItems,
+  showHome = true,
+  className = ""
 }: BreadcrumbsProps) {
   const pathname = usePathname();
 
@@ -39,15 +39,13 @@ export function Breadcrumbs({
       });
     }
 
-    // Generate breadcrumbs from path segments
     let currentPath = "";
     pathSegments.forEach((segment, index) => {
       currentPath += `/${segment}`;
       const isLast = index === pathSegments.length - 1;
-      
-      // Create human-readable labels
+
       const label = generateLabel(segment, currentPath);
-      
+
       breadcrumbs.push({
         label,
         href: currentPath,
@@ -59,7 +57,6 @@ export function Breadcrumbs({
   };
 
   const generateLabel = (segment: string, fullPath: string): string => {
-    // Handle special cases
     const labelMap: Record<string, string> = {
       'about': 'About',
       'projects': 'Projects',
@@ -76,27 +73,23 @@ export function Breadcrumbs({
       return labelMap[segment];
     }
 
-    // For blog posts, create readable titles from slugs
     if (fullPath.includes('/blog/') && segment !== 'blog') {
-      // Handle specific blog post slugs with better formatting
       const blogTitleMap: Record<string, string> = {
         'complete-guide-qa-engineering': 'Complete Guide to QA Engineering',
         'mastering-fantasy-football-analytics': 'Mastering Fantasy Football Analytics',
         'building-reliable-software-systems': 'Building Reliable Software Systems'
       };
-      
+
       if (blogTitleMap[segment]) {
         return blogTitleMap[segment];
       }
-      
-      // Convert slug to title format for other posts
+
       return segment
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
     }
 
-    // Default: capitalize and replace hyphens
     return segment
       .split('-')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -105,7 +98,6 @@ export function Breadcrumbs({
 
   const breadcrumbs = generateBreadcrumbs();
 
-  // Generate structured data for breadcrumbs
   const generateStructuredData = () => {
     const itemList = breadcrumbs.map((item, index) => ({
       "@type": "ListItem",
@@ -121,35 +113,32 @@ export function Breadcrumbs({
     };
   };
 
-  // Don't show breadcrumbs on home page unless custom items are provided
   if (pathname === "/" && !customItems) {
     return null;
   }
 
   return (
     <>
-      {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateStructuredData())
         }}
       />
-      
-      {/* Breadcrumb Navigation */}
+
       <nav
         aria-label="Breadcrumb"
         className={`py-4 ${className}`}
       >
-        <ol className="flex flex-wrap items-center gap-2 p-3 bg-white/60 dark:bg-[#2D1B12]/60 rounded-xl border border-[#FFE4D6] dark:border-[#FF8E53]/20 backdrop-blur-sm shadow-sm">
+        <ol className="flex flex-wrap items-center gap-2 p-3 bg-white/60 dark:bg-[var(--neutral-900)]/60 rounded-xl border border-[var(--border-primary)] backdrop-blur-sm shadow-sm">
           {breadcrumbs.map((item, index) => (
             <li key={item.href} className="flex items-center">
               {index > 0 && (
-                <IconChevronRight className="w-4 h-4 text-[#F7B32B] mx-1.5" aria-hidden="true" />
+                <IconChevronRight className="w-4 h-4 text-[var(--color-warning)] mx-1.5" aria-hidden="true" />
               )}
 
               {item.isActive ? (
-                <span className="text-[#FF6B35] dark:text-[#FF8E53] font-semibold text-sm px-2 py-1 rounded-lg bg-[#FF6B35]/10 dark:bg-[#FF8E53]/10">
+                <span className="text-[var(--color-primary)] font-semibold text-sm px-2 py-1 rounded-lg bg-[var(--color-primary)]/10">
                   {item.label === "Home" && showHome ? (
                     <span className="flex items-center gap-1.5">
                       <IconHome className="w-4 h-4" />
@@ -162,7 +151,7 @@ export function Breadcrumbs({
               ) : (
                 <Link
                   href={item.href}
-                  className="text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] transition-all duration-200 text-sm px-2 py-1 rounded-lg hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/50 font-medium"
+                  className="text-[var(--text-secondary)] hover:text-[var(--color-primary)] transition-all duration-200 text-sm px-2 py-1 rounded-lg hover:bg-[var(--surface-secondary)] font-medium"
                 >
                   {item.label === "Home" && showHome ? (
                     <span className="flex items-center gap-1.5">
@@ -182,7 +171,6 @@ export function Breadcrumbs({
   );
 }
 
-// Utility function to create custom breadcrumb items
 export function createBreadcrumbItems(items: Array<{ label: string; href: string }>): BreadcrumbItem[] {
   return items.map((item, index, array) => ({
     ...item,

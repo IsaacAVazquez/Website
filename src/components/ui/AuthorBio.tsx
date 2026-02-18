@@ -24,20 +24,6 @@ export interface AuthorBioProps {
   className?: string;
 }
 
-/**
- * AuthorBio - AI-optimized author component
- *
- * Displays author information with E-E-A-T signals (Expertise, Experience,
- * Authoritativeness, Trustworthiness) for AI search engines. Includes
- * schema.org Person microdata for better AI parsing and citation.
- *
- * Features:
- * - Schema.org Person microdata
- * - E-E-A-T credibility signals
- * - Multiple display variants
- * - Social proof links
- * - Citation-friendly formatting
- */
 export function AuthorBio({
   name = "Isaac Vazquez",
   title = "Technical Product Manager & UC Berkeley Haas MBA Candidate",
@@ -68,7 +54,6 @@ export function AuthorBio({
   showSocial = true,
   className = "",
 }: AuthorBioProps) {
-  // Inline variant - minimal, for article bylines
   if (variant === "inline") {
     return (
       <div
@@ -98,11 +83,10 @@ export function AuthorBio({
     );
   }
 
-  // Compact variant - for sidebars or smaller spaces
   if (variant === "compact") {
     return (
       <div
-        className={`pentagram-card p-6 ${className}`}
+        className={`card p-6 ${className}`}
         itemScope
         itemType="https://schema.org/Person"
         itemProp="author"
@@ -203,13 +187,12 @@ export function AuthorBio({
     );
   }
 
-  // Full variant - comprehensive author information
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`pentagram-card p-8 ${className}`}
+      className={`card p-8 ${className}`}
       itemScope
       itemType="https://schema.org/Person"
       itemProp="author"

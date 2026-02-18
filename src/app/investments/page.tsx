@@ -22,10 +22,10 @@ export default function InvestmentsPage() {
   } = useInvestments();
 
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-[#1C1410]">
+    <div className="min-h-screen w-full bg-white dark:bg-[var(--neutral-900)]">
       {/* Header Section */}
-      <section className="pentagram-section bg-white dark:bg-[#1C1410]">
-        <div className="container-wide">
+      <section className="bg-white dark:bg-[var(--neutral-900)]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -36,11 +36,11 @@ export default function InvestmentsPage() {
             <div className="mb-12">
               <div className="flex items-center gap-4 mb-4">
                 <IconChartLine className="w-12 h-12 text-black dark:text-white" />
-                <h1 className="editorial-heading text-[#2D1B12] dark:text-[#FFFCF7]">
+                <h1 className="editorial-heading text-[var(--text-primary)]">
                   Investment Portfolio
                 </h1>
               </div>
-              <p className="editorial-body text-[#4A3426] dark:text-[#D4A88E] max-w-3xl">
+              <p className="editorial-body text-[var(--text-secondary)] max-w-3xl">
                 Track your investments in real-time with live stock market data. Monitor your portfolio performance, gains, losses, and daily market changes all in one place.
               </p>
             </div>

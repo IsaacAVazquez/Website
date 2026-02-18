@@ -40,13 +40,11 @@ export function BlogFilter({
       params.delete(key);
     }
 
-    // Clear search when selecting category/tag filters
     if (key !== 'q') {
       params.delete('q');
       setSearchQuery("");
     }
 
-    // Clear category/tag when searching
     if (key === 'q') {
       params.delete('category');
       params.delete('tag');
@@ -73,13 +71,12 @@ export function BlogFilter({
 
   return (
     <div className="mb-12 space-y-6">
-      {/* Search Bar */}
       <WarmCard hover={false} padding="lg">
         <form onSubmit={handleSearch} className="relative">
           <div className={`relative transition-all duration-300 ${
             isSearchFocused ? 'scale-[1.02]' : ''
           }`}>
-            <IconSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#9C7A5F] dark:text-[#D4A88E] w-5 h-5" />
+            <IconSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--text-secondary)] w-5 h-5" />
             <input
               type="text"
               value={searchQuery}
@@ -87,13 +84,13 @@ export function BlogFilter({
               onFocus={() => setIsSearchFocused(true)}
               onBlur={() => setIsSearchFocused(false)}
               placeholder="Search articles..."
-              className="w-full pl-12 pr-12 py-4 bg-[#FFF8F0] dark:bg-[#4A3426]/30 border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg focus:ring-2 focus:ring-[#FF6B35] focus:border-[#FF6B35] transition-all duration-200 text-[#2D1B12] dark:text-[#FFE4D6]"
+              className="w-full pl-12 pr-12 py-4 bg-[var(--surface-secondary)] border-2 border-[var(--border-primary)] rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] transition-all duration-200 text-[var(--text-primary)]"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={clearSearch}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#9C7A5F] hover:text-[#FF6B35] dark:hover:text-[#FF8E53] transition-colors"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[var(--text-secondary)] hover:text-[var(--color-primary)] transition-colors"
               >
                 <IconX className="w-5 h-5" />
               </button>
@@ -107,12 +104,10 @@ export function BlogFilter({
         </form>
       </WarmCard>
 
-      {/* Category and Tag Filters */}
       <WarmCard hover={false} padding="lg">
         <div className="space-y-6">
-          {/* Categories */}
           <div>
-            <Heading level={3} className="mb-4 text-lg text-[#FF6B35]">
+            <Heading level={3} className="mb-4 text-lg text-[var(--color-primary)]">
               Categories
             </Heading>
             <div className="flex flex-wrap gap-2">
@@ -120,8 +115,8 @@ export function BlogFilter({
                 onClick={() => updateFilter('category', null)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
                   !currentCategory
-                    ? 'bg-[#FF6B35] text-white shadow-warm-lg'
-                    : 'bg-[#FFF8F0] dark:bg-[#4A3426]/30 text-[#4A3426] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30 hover:border-[#FF6B35] hover:text-[#FF6B35]'
+                    ? 'bg-[var(--color-primary)] text-white shadow-lg'
+                    : 'bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-primary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
                 }`}
               >
                 All Categories
@@ -132,8 +127,8 @@ export function BlogFilter({
                   onClick={() => updateFilter('category', category)}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${
                     currentCategory === category
-                      ? 'bg-[#F7B32B] text-[#2D1B12] shadow-warm-lg'
-                      : 'bg-[#FFF8F0] dark:bg-[#4A3426]/30 text-[#4A3426] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30 hover:border-[#F7B32B] hover:text-[#F7B32B]'
+                      ? 'bg-[var(--color-warning)] text-[var(--text-primary)] shadow-lg'
+                      : 'bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-primary)] hover:border-[var(--color-warning)] hover:text-[var(--color-warning)]'
                   }`}
                 >
                   {category}
@@ -142,10 +137,9 @@ export function BlogFilter({
             </div>
           </div>
 
-          {/* Tags */}
           {tags.length > 0 && (
             <div>
-              <Heading level={3} className="mb-4 text-lg text-[#FF6B35]">
+              <Heading level={3} className="mb-4 text-lg text-[var(--color-primary)]">
                 Tags
               </Heading>
               <div className="flex flex-wrap gap-2">
@@ -153,8 +147,8 @@ export function BlogFilter({
                   onClick={() => updateFilter('tag', null)}
                   className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-all ${
                     !currentTag
-                      ? 'bg-[#FF6B35] text-white shadow-warm-lg'
-                      : 'bg-[#FFF8F0] dark:bg-[#4A3426]/30 text-[#4A3426] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30 hover:border-[#FF6B35] hover:text-[#FF6B35]'
+                      ? 'bg-[var(--color-primary)] text-white shadow-lg'
+                      : 'bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-primary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
                   }`}
                 >
                   All Tags
@@ -165,15 +159,15 @@ export function BlogFilter({
                     onClick={() => updateFilter('tag', tag)}
                     className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-all ${
                       currentTag === tag
-                        ? 'bg-[#F7B32B] text-[#2D1B12] shadow-warm-lg'
-                        : 'bg-[#FFF8F0] dark:bg-[#4A3426]/30 text-[#4A3426] dark:text-[#D4A88E] border border-[#FFE4D6] dark:border-[#FF8E53]/30 hover:border-[#F7B32B] hover:text-[#F7B32B]'
+                        ? 'bg-[var(--color-warning)] text-[var(--text-primary)] shadow-lg'
+                        : 'bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-primary)] hover:border-[var(--color-warning)] hover:text-[var(--color-warning)]'
                     }`}
                   >
                     {tag}
                   </button>
                 ))}
                 {tags.length > 10 && (
-                  <span className="px-3 py-1.5 text-sm text-[#9C7A5F] dark:text-[#D4A88E] opacity-60">
+                  <span className="px-3 py-1.5 text-sm text-[var(--text-secondary)] opacity-60">
                     +{tags.length - 10} more
                   </span>
                 )}
@@ -183,33 +177,32 @@ export function BlogFilter({
         </div>
       </WarmCard>
 
-      {/* Quick Filter Shortcuts */}
       <WarmCard hover={false} padding="md">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm text-[#6B4F3D] dark:text-[#D4A88E] font-medium">
+          <span className="text-sm text-[var(--text-secondary)] font-medium">
             Quick filters:
           </span>
           <button
             onClick={() => updateFilter('category', 'QA Engineering')}
-            className="text-sm text-[#FF6B35] hover:underline transition-colors"
+            className="text-sm text-[var(--color-primary)] hover:underline transition-colors"
           >
             QA Engineering
           </button>
           <button
             onClick={() => updateFilter('category', 'Fantasy Football Analytics')}
-            className="text-sm text-[#F7B32B] hover:underline transition-colors"
+            className="text-sm text-[var(--color-warning)] hover:underline transition-colors"
           >
             Fantasy Football
           </button>
           <button
             onClick={() => updateFilter('tag', 'Testing')}
-            className="text-sm text-[#FF8E53] hover:underline transition-colors"
+            className="text-sm text-[var(--color-primary)] hover:underline transition-colors"
           >
             Testing
           </button>
           <button
             onClick={() => updateFilter('tag', 'Automation')}
-            className="text-sm text-[#6BCF7F] hover:underline transition-colors"
+            className="text-sm text-[var(--color-success)] hover:underline transition-colors"
           >
             Automation
           </button>

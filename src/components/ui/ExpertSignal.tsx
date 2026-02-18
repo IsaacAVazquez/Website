@@ -13,18 +13,6 @@ export interface ExpertSignalProps {
   className?: string;
 }
 
-/**
- * ExpertSignal - Component for displaying credentials and expertise markers
- *
- * Helps AI systems identify and understand expert credentials, achievements,
- * and qualifications. Improves discoverability in AI-driven search.
- *
- * Features:
- * - Multiple signal types (credentials, achievements, expertise)
- * - Verification indicators
- * - Schema.org microdata support
- * - Flexible display variants
- */
 export function ExpertSignal({
   type = "credential",
   label,
@@ -34,7 +22,6 @@ export function ExpertSignal({
   variant = "default",
   className = "",
 }: ExpertSignalProps) {
-  // Get default icon based on type
   const getDefaultIcon = () => {
     switch (type) {
       case "credential":
@@ -56,7 +43,6 @@ export function ExpertSignal({
 
   const displayIcon = icon || getDefaultIcon();
 
-  // Badge variant - minimal pill display
   if (variant === "badge") {
     return (
       <span
@@ -72,7 +58,6 @@ export function ExpertSignal({
     );
   }
 
-  // Inline variant - text-based with icon
   if (variant === "inline") {
     return (
       <span className={`inline-flex items-center gap-2 text-sm ${className}`}>
@@ -90,7 +75,6 @@ export function ExpertSignal({
     );
   }
 
-  // Compact variant - small card
   if (variant === "compact") {
     return (
       <div
@@ -117,10 +101,9 @@ export function ExpertSignal({
     );
   }
 
-  // Default variant - full card
   return (
     <div
-      className={`pentagram-card ${className}`}
+      className={`card ${className}`}
       itemProp={type === "education" ? "alumniOf" : type === "credential" ? "hasCredential" : undefined}
     >
       <div className="flex items-start gap-4">
@@ -157,9 +140,6 @@ export function ExpertSignal({
   );
 }
 
-/**
- * ExpertSignalGroup - Container for multiple expert signals
- */
 export interface ExpertSignalGroupProps {
   title?: string;
   signals: Omit<ExpertSignalProps, "variant">[];
@@ -175,7 +155,7 @@ export function ExpertSignalGroup({
   columns = 2,
   className = "",
 }: ExpertSignalGroupProps) {
-  const gridClass = columns === 1 ? "grid-cols-1" : columns === 3 ? "pentagram-grid-3" : "pentagram-grid-2";
+  const gridClass = columns === 1 ? "grid-cols-1" : columns === 3 ? "grid md:grid-cols-3" : "grid md:grid-cols-2";
 
   return (
     <div className={className}>

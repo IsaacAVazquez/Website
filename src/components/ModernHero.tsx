@@ -20,85 +20,68 @@ export function ModernHero() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 24 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: shouldReduceMotion ? 0 : 0.7,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        duration: shouldReduceMotion ? 0 : 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
 
   return (
     <section
-      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden py-16 md:py-20"
-      style={{ backgroundColor: 'var(--surface-primary)' }}
-      role="main"
+      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden py-16 md:py-24 bg-[var(--surface-primary)]"
       aria-label="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
     >
-      {/* Ultra-subtle monochrome accent - Mouthwash style */}
-      <div
-        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]"
-        aria-hidden="true"
-        style={{
-          background: 'radial-gradient(at 20% 30%, rgba(0, 0, 0, 0.03) 0px, transparent 50%), radial-gradient(at 80% 70%, rgba(0, 0, 0, 0.02) 0px, transparent 50%)'
-        }}
-      />
-
       <motion.div
-        className="relative z-10 w-full container-wide"
+        className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Mouthwash Studio layout - generous whitespace */}
-        <div className="max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-start">
-
-          {/* Left Column - Bold Monochrome Typography */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-center">
           <div className="space-y-6 lg:space-y-8">
-            {/* Oversized Grotesk Heading - Pure Black */}
             <motion.div variants={itemVariants}>
-              <h1 className="editorial-heading text-neutral-900 dark:text-neutral-50">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.05]">
                 Isaac Vazquez
               </h1>
-              <p className="editorial-subheading text-neutral-500 dark:text-neutral-400 mt-3">
+              <p className="text-xl sm:text-2xl text-[var(--text-secondary)] mt-4 font-medium">
                 Product Manager | MBA Candidate | Builder
               </p>
-              <p className="text-sm text-neutral-400 dark:text-neutral-500 mt-2 font-mono">
-                Bay Area • 5+ years in Product & QA
+              <p className="text-sm text-[var(--text-tertiary)] mt-2 font-mono tracking-wide">
+                Bay Area &middot; 5+ years in Product & QA
               </p>
             </motion.div>
 
-            {/* Thin Monochrome Divider */}
             <motion.div
               variants={itemVariants}
-              className="w-16 h-px bg-neutral-900 dark:bg-neutral-50"
+              className="w-12 h-px bg-[var(--border-primary)]"
               aria-hidden="true"
             />
 
-            {/* Editorial Body Copy - Monochrome - Simplified to 2 sentences */}
             <motion.p
               variants={itemVariants}
-              className="editorial-body text-neutral-600 dark:text-neutral-300"
+              className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl"
             >
-              I build mission-driven products that balance user insight, data, and disciplined execution—moving
-              comfortably between discovery, analytics, and delivery. Currently sharpening my strategic toolkit
-              at UC Berkeley Haas while applying it to every roadmap and sprint I touch.
+              I build mission-driven products that balance user insight, data, and disciplined
+              execution — moving comfortably between discovery, analytics, and delivery. Currently
+              sharpening my strategic toolkit at UC Berkeley Haas while applying it to every roadmap
+              and sprint I touch.
             </motion.p>
 
-            {/* Minimal Monochrome CTAs */}
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-4 pt-2"
             >
-              <Link href="/#contact">
-                <ModernButton variant="primary" size="lg">
+              <Link href="/contact">
+                <ModernButton variant="accent" size="lg">
                   Get In Touch
                 </ModernButton>
               </Link>
-              <Link href="/#about">
+              <Link href="/about">
                 <ModernButton variant="outline" size="lg">
                   Learn More
                 </ModernButton>
@@ -106,13 +89,11 @@ export function ModernHero() {
             </motion.div>
           </div>
 
-          {/* Right Column - Clean Image Block */}
           <motion.div
             variants={itemVariants}
             className="relative order-first lg:order-last"
           >
-            {/* Mouthwash Studio Image Block - thin border */}
-            <div className="pentagram-image-wrapper pentagram-aspect-portrait lg:pentagram-aspect-square overflow-hidden border border-neutral-200 dark:border-neutral-600">
+            <div className="relative aspect-[4/5] lg:aspect-square overflow-hidden rounded-2xl border border-[var(--border-primary)] shadow-lg">
               <Image
                 src="/images/headshot-new.png"
                 alt="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
@@ -122,13 +103,10 @@ export function ModernHero() {
                 className="object-cover object-top"
               />
             </div>
-
-            {/* Minimal Caption - Mid Grey */}
-            <p className="editorial-caption mt-3 text-neutral-500 dark:text-neutral-400">
+            <p className="text-sm text-[var(--text-tertiary)] mt-3">
               Isaac Vazquez, MBA Candidate at UC Berkeley Haas School of Business
             </p>
           </motion.div>
-
         </div>
       </motion.div>
     </section>

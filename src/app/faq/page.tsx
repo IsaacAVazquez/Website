@@ -33,7 +33,6 @@ export const metadata: Metadata = constructMetadata({
   },
 });
 
-// FAQ Data with structured format
 const faqCategories = [
   {
     category: "Career & Current Focus",
@@ -41,7 +40,7 @@ const faqCategories = [
     questions: [
       {
         question: "What is Isaac Vazquez's current role and career focus?",
-        answer: "I'm a full-time MBA candidate at UC Berkeley Haas (Class of 2027) after six years in QA, data, and digital strategy. I’m focused on product management roles where I can bring structure to ambiguous problems, translate customer needs into clear stories, and ship reliable web and data applications."
+        answer: "I'm a full-time MBA candidate at UC Berkeley Haas (Class of 2027) after six years in QA, data, and digital strategy. I'm focused on product management roles where I can bring structure to ambiguous problems, translate customer needs into clear stories, and ship reliable web and data applications."
       },
       {
         question: "What kind of product management roles is Isaac seeking?",
@@ -129,7 +128,7 @@ const faqCategories = [
     questions: [
       {
         question: "What industries and company types interest Isaac?",
-        answer: "I’m excited by B2B SaaS, workflow automation, developer productivity, and other modern web applications that depend on clean data flows and thoughtful UX. I look for companies where quality signals, analytics, and stakeholder management all influence the roadmap."
+        answer: "I'm excited by B2B SaaS, workflow automation, developer productivity, and other modern web applications that depend on clean data flows and thoughtful UX. I look for companies where quality signals, analytics, and stakeholder management all influence the roadmap."
       },
       {
         question: "What is Isaac's experience at Civitech?",
@@ -155,19 +154,19 @@ const faqCategories = [
     questions: [
       {
         question: "How can I contact Isaac Vazquez?",
-        answer: "You can reach me via email at isaacavazquez95@gmail.com, on LinkedIn at linkedin.com/in/isaac-vazquez, on GitHub at github.com/IsaacAVazquez, or through the contact form at isaacavazquez.com/contact. I’m responsive to product management roles, consulting or QA advisory work, speaking invites, and mentorship conversations."
+        answer: "You can reach me via email at isaacavazquez95@gmail.com, on LinkedIn at linkedin.com/in/isaac-vazquez, on GitHub at github.com/IsaacAVazquez, or through the contact form at isaacavazquez.com/contact. I'm responsive to product management roles, consulting or QA advisory work, speaking invites, and mentorship conversations."
       },
       {
         question: "What kinds of conversations and collaborations interest Isaac?",
-        answer: "I’m most energized by discussions about product strategy, user journey mapping, data instrumentation, quality practices, and stakeholder management. I love connecting with PMs, engineers moving into product roles, and founders building web or data-intensive apps."
+        answer: "I'm most energized by discussions about product strategy, user journey mapping, data instrumentation, quality practices, and stakeholder management. I love connecting with PMs, engineers moving into product roles, and founders building web or data-intensive apps."
       },
       {
         question: "Is Isaac open to mentorship or coffee chats?",
-        answer: "Absolutely. I’m happy to share what I’ve learned about moving from QA and data roles into product management, navigating MBA applications, or building high-quality web applications. Whether you’re considering a product career or refining process on your team, I’m glad to compare notes."
+        answer: "Absolutely. I'm happy to share what I've learned about moving from QA and data roles into product management, navigating MBA applications, or building high-quality web applications. Whether you're considering a product career or refining process on your team, I'm glad to compare notes."
       },
       {
         question: "Is Isaac available for speaking engagements or panels?",
-        answer: "Yes. I’m interested in speaking about moving from QA to product, designing data-informed product processes, building reliable web apps, or MBA lessons for technical operators. I’m available for company talks, conference panels, university events, and meetups in Austin or the Bay Area."
+        answer: "Yes. I'm interested in speaking about moving from QA to product, designing data-informed product processes, building reliable web apps, or MBA lessons for technical operators. I'm available for company talks, conference panels, university events, and meetups in Austin or the Bay Area."
       },
       {
         question: "What is the best way to get Isaac's attention for opportunities?",
@@ -177,11 +176,10 @@ const faqCategories = [
   }
 ];
 
-// Generate structured data for FAQ
 const faqStructuredData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqCategories.flatMap(category => 
+  "mainEntity": faqCategories.flatMap(category =>
     category.questions.map(qa => ({
       "@type": "Question",
       "name": qa.question,
@@ -202,18 +200,18 @@ export default function FAQPage() {
           __html: JSON.stringify(faqStructuredData),
         }}
       />
-      
-      <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+
+      <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--surface-secondary)]">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <Heading level={1} className="mb-4 text-4xl md:text-5xl lg:text-6xl text-[#2D1B12] dark:text-white">
+            <Heading level={1} className="mb-4 text-4xl md:text-5xl lg:text-6xl text-[var(--text-primary)]">
               Frequently Asked{" "}
-              <span className="gradient-text-warm">
+              <span className="text-[var(--color-secondary)]">
                 Questions
               </span>
             </Heading>
-            <Paragraph size="lg" className="max-w-2xl mx-auto text-[#4A3426] dark:text-[#D4A88E]">
+            <Paragraph size="lg" className="max-w-2xl mx-auto text-[var(--text-secondary)]">
               Learn about product management, transitioning from engineering to product roles,
               UC Berkeley MBA experiences, and connecting for opportunities on web, workflow, and data-intensive products.
             </Paragraph>
@@ -227,11 +225,11 @@ export default function FAQPage() {
                   <Badge variant="default">
                     {category.badge}
                   </Badge>
-                  <Heading level={2} className="text-2xl text-[#FF6B35]">
+                  <Heading level={2} className="text-2xl text-[var(--color-primary)]">
                     {category.category}
                   </Heading>
                 </div>
-                
+
                 <div className="space-y-4">
                   {category.questions.map((qa, qaIndex) => (
                     <FAQSection
@@ -249,10 +247,10 @@ export default function FAQPage() {
           {/* Call to Action */}
           <div className="mt-16">
             <WarmCard padding="xl" className="text-center">
-              <Heading level={2} className="mb-4 text-[#FF6B35]">
+              <Heading level={2} className="mb-4 text-[var(--color-primary)]">
                 Have More Questions?
               </Heading>
-              <Paragraph className="text-[#4A3426] dark:text-[#D4A88E] mb-6 max-w-2xl mx-auto">
+              <Paragraph className="text-[var(--text-secondary)] mb-6 max-w-2xl mx-auto">
                 Didn't find what you're looking for? I'd love to connect about product management opportunities,
                 share perspectives on building web and data-intensive products, or discuss transitioning into product roles. Always open to thoughtful conversations.
               </Paragraph>

@@ -18,13 +18,13 @@ export default function Contact() {
   return (
     <>
       {/* Breadcrumb Structured Data */}
-      <StructuredData 
-        type="BreadcrumbList" 
+      <StructuredData
+        type="BreadcrumbList"
         data={{ items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement }}
       />
-      
+
       {/* Contact Page Schema */}
-      <StructuredData 
+      <StructuredData
         type="ContactPage"
         data={{
           name: "Contact Isaac Vazquez",
@@ -38,7 +38,7 @@ export default function Contact() {
         }}
       />
 
-      <div className="min-h-screen w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+      <div className="min-h-screen w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--surface-secondary)]">
         <div className="max-w-5xl mx-auto">
           <ContactContent />
         </div>

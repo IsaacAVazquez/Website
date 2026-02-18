@@ -52,8 +52,8 @@ export default function TestimonialsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
-      <main className="min-h-screen bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+
+      <main className="min-h-screen bg-[var(--surface-secondary)]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <TestimonialsSection
             title="Client Testimonials & Reviews"

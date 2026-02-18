@@ -26,18 +26,23 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
       className="max-w-5xl mx-auto space-y-12"
     >
       <WarmCard padding="xl" className="text-center">
-        <Heading level={1} className="mb-4 text-[#FF6B35]">
+        <Heading level={1} className="mb-4">
           Product Management Consulting & Advisory
         </Heading>
-        <Paragraph className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] mx-auto max-w-3xl">
-          I partner with founders and product leads who want a pragmatic voice in the room. Engagements blend QA discipline, product strategy, and the Berkeley Haas toolkit I’m sharpening—grounded in six-plus years of shipping alongside engineers, analysts, and policy experts.
+        <Paragraph className="text-base md:text-lg text-[var(--text-secondary)] mx-auto max-w-3xl">
+          I partner with founders and product leads who want a pragmatic voice
+          in the room. Engagements blend QA discipline, product strategy, and
+          the Berkeley Haas toolkit I'm sharpening -- grounded in six-plus
+          years of shipping alongside engineers, analysts, and policy experts.
         </Paragraph>
-        <Paragraph className="text-base md:text-lg text-[#4A3426] dark:text-[#D4A88E] mx-auto max-w-3xl">
-          Whether you’re proving product-market fit or scaling a late-stage roadmap, I help translate vision into experiments, rituals, and decision frameworks your team can execute.
+        <Paragraph className="text-base md:text-lg text-[var(--text-secondary)] mx-auto max-w-3xl">
+          Whether you're proving product-market fit or scaling a late-stage
+          roadmap, I help translate vision into experiments, rituals, and
+          decision frameworks your team can execute.
         </Paragraph>
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
           <Link href="/contact">
-            <ModernButton variant="primary" size="lg">
+            <ModernButton variant="accent" size="lg">
               Start a Conversation
             </ModernButton>
           </Link>
@@ -50,19 +55,24 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
       </WarmCard>
 
       <section>
-        <Heading level={2} className="mb-6 text-center text-[#FF6B35]">
+        <Heading level={2} className="mb-6 text-center">
           How I Can Help
         </Heading>
         <div className="grid gap-6 md:grid-cols-3">
           {services.map((service) => (
-            <WarmCard key={service.title} hover padding="lg" className="text-center h-full">
+            <WarmCard
+              key={service.title}
+              hover
+              padding="lg"
+              className="text-center h-full"
+            >
               <span className="text-4xl mb-3 block" aria-hidden="true">
                 {service.icon}
               </span>
-              <Heading level={3} className="text-lg font-semibold mb-3 text-[#FF6B35]">
+              <Heading level={3} className="text-lg font-semibold mb-3">
                 {service.title}
               </Heading>
-              <Paragraph className="text-sm md:text-base text-[#4A3426] dark:text-[#D4A88E]">
+              <Paragraph className="text-sm md:text-base text-[var(--text-secondary)]">
                 {service.description}
               </Paragraph>
             </WarmCard>
@@ -71,39 +81,46 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
       </section>
 
       <WarmCard padding="xl" className="space-y-4">
-        <Heading level={2} className="text-[#FF6B35]">
-          Advisory & Mentoring
-        </Heading>
-        <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
-          I coach technical builders stepping into product roles and early founders shaping their first offer. Sessions are candid and tactical, drawing on lessons from Austin civic tech and Bay Area startups alike.
+        <Heading level={2}>Advisory & Mentoring</Heading>
+        <Paragraph className="text-base text-[var(--text-secondary)]">
+          I coach technical builders stepping into product roles and early
+          founders shaping their first offer. Sessions are candid and tactical,
+          drawing on lessons from Austin civic tech and Bay Area startups alike.
         </Paragraph>
-        <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
-          Together we pressure-test product-market fit, make pragmatic technical choices, build healthy teams, and install product rhythms that scale with growth.
+        <Paragraph className="text-base text-[var(--text-secondary)]">
+          Together we pressure-test product-market fit, make pragmatic technical
+          choices, build healthy teams, and install product rhythms that scale
+          with growth.
         </Paragraph>
       </WarmCard>
 
       <WarmCard padding="xl" className="space-y-4">
-        <Heading level={2} className="text-[#FF6B35]">
-          Background & Approach
-        </Heading>
-        <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
-          I’m completing my MBA at UC Berkeley Haas while staying hands-on in product and QA work. I’ve contributed to platforms supporting more than 60 million voters across Austin and California, giving me a clear view of both user needs and technical constraints.
+        <Heading level={2}>Background & Approach</Heading>
+        <Paragraph className="text-base text-[var(--text-secondary)]">
+          I'm completing my MBA at UC Berkeley Haas while staying hands-on in
+          product and QA work. I've contributed to platforms supporting more than
+          60 million voters across Austin and California, giving me a clear view
+          of both user needs and technical constraints.
         </Paragraph>
-        <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E]">
-          The QA and software roots bring credibility with engineering teams; Haas sharpens the strategic layer across market positioning, financial outcomes, and competitive advantage.
+        <Paragraph className="text-base text-[var(--text-secondary)]">
+          The QA and software roots bring credibility with engineering teams;
+          Haas sharpens the strategic layer across market positioning, financial
+          outcomes, and competitive advantage.
         </Paragraph>
       </WarmCard>
 
       <WarmCard padding="lg" className="text-center">
-        <Heading level={3} className="text-xl text-[#FF6B35] mb-3">
+        <Heading level={3} className="text-xl mb-3">
           Ready to work together?
         </Heading>
-        <Paragraph className="text-base text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto">
-          I keep engagements intentionally small so every client gets focus and follow-through. Reach out and we'll explore how I can support what you're building.
+        <Paragraph className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto">
+          I keep engagements intentionally small so every client gets focus and
+          follow-through. Reach out and we'll explore how I can support what
+          you're building.
         </Paragraph>
         <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
           <Link href="/contact">
-            <ModernButton variant="primary" size="md">
+            <ModernButton variant="accent" size="md">
               Share Your Project
             </ModernButton>
           </Link>

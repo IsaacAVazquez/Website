@@ -1,4 +1,5 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
 interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default" | "success" | "warning" | "outline";
@@ -13,25 +14,23 @@ export function Badge({
   children,
   ...props
 }: BadgeProps) {
-  const baseClasses = "inline-flex items-center rounded-lg font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF6B35]";
+  const baseClasses = "inline-flex items-center rounded-md font-medium transition-colors";
 
   const variantClasses = {
-    default: "bg-[#FF6B35]/20 text-[#FF6B35] dark:text-[#FF8E53] border border-[#FF6B35]/40 dark:border-[#FF8E53]/40",
-    success: "bg-[#6BCF7F]/20 text-[#6BCF7F] border border-[#6BCF7F]/40",
-    warning: "bg-[#F7B32B]/20 text-[#F7B32B] border border-[#F7B32B]/40",
-    outline: "border border-[#FFE4D6] dark:border-[#FF8E53]/30 text-[#4A3426] dark:text-[#D4A88E]",
+    default: "bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20",
+    success: "bg-[var(--color-success)]/10 text-[var(--color-success)] border border-[var(--color-success)]/20",
+    warning: "bg-[var(--color-warning)]/10 text-[var(--color-warning)] border border-[var(--color-warning)]/20",
+    outline: "border border-[var(--border-primary)] text-[var(--text-secondary)]",
   };
 
   const sizeClasses = {
-    sm: "px-2.5 py-0.5 text-xs",
-    md: "px-3 py-1 text-sm",
-    lg: "px-4 py-1.5 text-base",
+    sm: "px-2 py-0.5 text-xs",
+    md: "px-2.5 py-1 text-sm",
+    lg: "px-3 py-1.5 text-base",
   };
 
-  const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
-
   return (
-    <div className={classes} tabIndex={0} {...props}>
+    <div className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)} {...props}>
       {children}
     </div>
   );

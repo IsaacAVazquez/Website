@@ -16,7 +16,6 @@ interface CaseStudyData {
   github?: string | null;
   link?: string | null;
 
-  // Problem-Process-Result Framework
   overview: {
     summary: string;
     impact: string;
@@ -48,7 +47,6 @@ interface CaseStudyData {
   }[];
 }
 
-// Case study database (in a real app, this would come from MDX files or a CMS)
 const caseStudiesData: { [key: string]: CaseStudyData } = {
   "civic-engagement-platform": {
     slug: "civic-engagement-platform",
@@ -266,7 +264,6 @@ const caseStudiesData: { [key: string]: CaseStudyData } = {
     ]
   },
 
-  // Placeholder for other case studies - you can expand these later
   "api-testing-framework": {
     slug: "api-testing-framework",
     title: "API Testing Framework",
@@ -403,17 +400,15 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
   return (
     <main className="min-h-screen bg-white dark:bg-black py-24 md:py-32">
-      <article className="container-wide max-w-4xl mx-auto">
-        {/* Back Button */}
+      <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <Link
           href="/portfolio"
-          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-[#FF6B35] transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-[var(--color-primary)] transition-colors mb-8"
         >
           <IconArrowLeft className="h-4 w-4" />
           Back to Portfolio
         </Link>
 
-        {/* Header */}
         <header className="mb-12">
           <Heading level={1} className="mb-4">
             {caseStudy.title}
@@ -442,7 +437,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 href={caseStudy.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[#FF6B35] hover:text-[#FF6B35] transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
               >
                 <IconBrandGithub className="h-4 w-4" />
                 View Code
@@ -453,7 +448,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 href={caseStudy.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[#FF6B35] hover:text-[#FF6B35] transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
               >
                 <IconExternalLink className="h-4 w-4" />
                 Live Project
@@ -462,7 +457,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
         </header>
 
-        {/* Overview */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
             Overview
@@ -476,7 +470,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             </p>
           </WarmCard>
 
-          {/* Detailed Metrics */}
           {caseStudy.detailedMetrics && (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {caseStudy.detailedMetrics.map((metric, index) => (
@@ -484,7 +477,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-1">
                     {metric.label}
                   </p>
-                  <p className="text-2xl font-bold text-[#FF6B35] mb-1">
+                  <p className="text-2xl font-bold text-[var(--color-primary)] mb-1">
                     {metric.value}
                   </p>
                   {metric.improvement && (
@@ -498,7 +491,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           )}
         </section>
 
-        {/* Problem */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
             Problem
@@ -525,7 +517,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               </ul>
             </div>
 
-            <WarmCard padding="lg" className="bg-[#FFF8F0] dark:bg-neutral-800/50 border border-[#FFE4D6] dark:border-neutral-700">
+            <WarmCard padding="lg" className="bg-[var(--surface-secondary)] border border-[var(--border-primary)]">
               <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
                 Stakes
               </h3>
@@ -536,7 +528,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
         </section>
 
-        {/* Process */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
             Process
@@ -589,7 +580,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
         </section>
 
-        {/* Results */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
             Results
@@ -608,7 +598,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             </div>
 
             {caseStudy.result.testimonial && (
-              <WarmCard padding="lg" className="bg-[#FFF8F0] dark:bg-neutral-800/50 border-l-4 border-[#FF6B35]">
+              <WarmCard padding="lg" className="bg-[var(--surface-secondary)] border-l-4 border-[var(--color-primary)]">
                 <blockquote className="text-lg italic text-neutral-700 dark:text-neutral-300 mb-4">
                   "{caseStudy.result.testimonial.quote}"
                 </blockquote>
@@ -633,7 +623,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
         </section>
 
-        {/* Next Case Study */}
         {nextCaseStudy && (
           <footer className="pt-12 border-t border-neutral-200 dark:border-neutral-800">
             <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-500 mb-4">
@@ -647,17 +636,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="text-xl font-bold mb-2 text-neutral-900 dark:text-neutral-100 group-hover:text-[#FF6B35] transition-colors">
+                    <h4 className="text-xl font-bold mb-2 text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-primary)] transition-colors">
                       {nextCaseStudy.title}
                     </h4>
                     <p className="text-neutral-600 dark:text-neutral-400 mb-2">
                       {nextCaseStudy.description}
                     </p>
-                    <p className="text-sm text-[#FF6B35] font-medium">
+                    <p className="text-sm text-[var(--color-primary)] font-medium">
                       {nextCaseStudy.metrics}
                     </p>
                   </div>
-                  <IconArrowRight className="h-6 w-6 text-neutral-400 group-hover:text-[#FF6B35] group-hover:translate-x-1 transition-all flex-shrink-0 ml-4" />
+                  <IconArrowRight className="h-6 w-6 text-neutral-400 group-hover:text-[var(--color-primary)] group-hover:translate-x-1 transition-all flex-shrink-0 ml-4" />
                 </div>
               </WarmCard>
             </Link>

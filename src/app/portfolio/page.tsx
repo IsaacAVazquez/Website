@@ -78,8 +78,7 @@ export default function PortfolioPage() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-black py-24 md:py-32">
-      <div className="container-wide max-w-6xl mx-auto">
-        {/* Page Header */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
           <Heading level={1} className="mb-6">
             Portfolio
@@ -91,7 +90,6 @@ export default function PortfolioPage() {
           </p>
         </div>
 
-        {/* Featured Case Studies */}
         {featuredCaseStudies.length > 0 && (
           <div className="mb-20">
             <h2 className="text-2xl font-bold mb-8 text-neutral-900 dark:text-neutral-100">
@@ -105,24 +103,19 @@ export default function PortfolioPage() {
                     hover={true}
                     className="h-full border border-neutral-200 dark:border-neutral-700 overflow-hidden group"
                   >
-                    {/* Thumbnail */}
                     {study.thumbnail && (
                       <div className="aspect-video bg-neutral-100 dark:bg-neutral-800" />
                     )}
 
-                    {/* Content */}
                     <div className="p-6 space-y-4">
-                      {/* Title */}
-                      <h3 className="font-bold text-xl text-neutral-900 dark:text-neutral-100 group-hover:text-[#FF6B35] transition-colors">
+                      <h3 className="font-bold text-xl text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-primary)] transition-colors">
                         {study.title}
                       </h3>
 
-                      {/* Description */}
                       <p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3">
                         {study.description}
                       </p>
 
-                      {/* Role & Timeline */}
                       <div className="space-y-1">
                         <p className="text-xs font-medium text-neutral-500 dark:text-neutral-500">
                           Role: {study.role}
@@ -132,7 +125,6 @@ export default function PortfolioPage() {
                         </p>
                       </div>
 
-                      {/* Tools */}
                       <div className="flex flex-wrap gap-2">
                         {study.tools.slice(0, 3).map((tool) => (
                           <span
@@ -149,13 +141,11 @@ export default function PortfolioPage() {
                         )}
                       </div>
 
-                      {/* Metrics */}
-                      <p className="text-xs font-semibold text-[#FF6B35]">
+                      <p className="text-xs font-semibold text-[var(--color-primary)]">
                         {study.metrics}
                       </p>
 
-                      {/* CTA */}
-                      <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[#FF6B35] transition-colors pt-2">
+                      <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-primary)] transition-colors pt-2">
                         View Case Study
                         <IconArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>
@@ -167,7 +157,6 @@ export default function PortfolioPage() {
           </div>
         )}
 
-        {/* Other Case Studies */}
         {otherCaseStudies.length > 0 && (
           <div>
             <h2 className="text-2xl font-bold mb-8 text-neutral-900 dark:text-neutral-100">
@@ -182,28 +171,23 @@ export default function PortfolioPage() {
                     className="h-full border border-neutral-200 dark:border-neutral-700 group"
                   >
                     <div className="space-y-4">
-                      {/* Title */}
-                      <h3 className="font-bold text-lg text-neutral-900 dark:text-neutral-100 group-hover:text-[#FF6B35] transition-colors">
+                      <h3 className="font-bold text-lg text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-primary)] transition-colors">
                         {study.title}
                       </h3>
 
-                      {/* Description */}
                       <p className="text-sm text-neutral-600 dark:text-neutral-400">
                         {study.description}
                       </p>
 
-                      {/* Role */}
                       <p className="text-xs font-medium text-neutral-500 dark:text-neutral-500">
                         {study.role} • {study.timeline}
                       </p>
 
-                      {/* Metrics */}
-                      <p className="text-xs font-semibold text-[#FF6B35]">
+                      <p className="text-xs font-semibold text-[var(--color-primary)]">
                         {study.metrics}
                       </p>
 
-                      {/* CTA */}
-                      <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[#FF6B35] transition-colors pt-2">
+                      <div className="flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-primary)] transition-colors pt-2">
                         View Case Study
                         <IconArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>
@@ -215,14 +199,13 @@ export default function PortfolioPage() {
           </div>
         )}
 
-        {/* CTA */}
         <div className="mt-20 text-center">
           <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-6">
             Interested in working together?
           </p>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF6B35] text-white font-medium rounded-lg hover:bg-[#F7B32B] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-white font-medium rounded-lg hover:bg-[var(--color-warning)] transition-colors"
           >
             Get In Touch
             <IconExternalLink className="h-4 w-4" />

@@ -38,7 +38,6 @@ export function AuthorCard({
   className = "",
 }: AuthorCardProps) {
 
-  // Inline variant - minimal display
   if (variant === "inline") {
     return (
       <div className={`inline-flex items-center gap-3 ${className}`}>
@@ -63,10 +62,9 @@ export function AuthorCard({
     );
   }
 
-  // Compact variant - minimal card
   if (variant === "compact") {
     return (
-      <div className={`pentagram-card ${className}`}>
+      <div className={`card ${className}`}>
         <div className="flex gap-4">
           <div className="relative w-16 h-16 rounded-sm overflow-hidden border border-neutral-200 dark:border-neutral-700 flex-shrink-0">
             <Image
@@ -96,13 +94,12 @@ export function AuthorCard({
     );
   }
 
-  // Full variant - comprehensive card with all details
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`pentagram-card ${className}`}
+      className={`card ${className}`}
       itemScope
       itemType="https://schema.org/Person"
     >

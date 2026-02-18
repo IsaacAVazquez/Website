@@ -40,7 +40,6 @@ export default async function WritingPage() {
     { name: "Writing", url: "/writing" }
   ];
 
-  // Create structured data for the articles
   const articlesStructuredData = posts.slice(0, 10).map(post => ({
     headline: post.title,
     description: post.excerpt,
@@ -52,7 +51,7 @@ export default async function WritingPage() {
     dateModified: post.updatedAt || post.publishedAt,
     keywords: post.tags,
     articleSection: post.category,
-    wordCount: Math.ceil(post.content.length / 6), // Rough word count estimate
+    wordCount: Math.ceil(post.content.length / 6),
     url: `https://isaacavazquez.com/writing/${post.slug}`
   }));
 
@@ -78,9 +77,9 @@ export default async function WritingPage() {
           {/* Header */}
           <div className="mb-12">
             <Heading level={1} className="text-4xl md:text-5xl lg:text-6xl mb-4">
-              <span className="gradient-text-warm">Writing</span>
+              <span className="text-[var(--color-secondary)]">Writing</span>
             </Heading>
-            <Paragraph size="lg" className="text-[#4A3426] dark:text-[#D4A88E] max-w-3xl">
+            <Paragraph size="lg" className="text-[var(--text-secondary)] max-w-3xl">
               Insights on product management, technical leadership, and building mission-driven products.
               Perspectives from a Technical PM at UC Berkeley Haas.
             </Paragraph>
@@ -99,14 +98,14 @@ export default async function WritingPage() {
                     {/* Category Badge */}
                     {post.category && (
                       <div className="mb-3">
-                        <span className="inline-block px-3 py-1 text-xs font-medium bg-[#FF6B35]/10 text-[#FF6B35] dark:bg-[#FF8E53]/20 dark:text-[#FF8E53] rounded-full">
+                        <span className="inline-block px-3 py-1 text-xs font-medium bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">
                           {post.category}
                         </span>
                       </div>
                     )}
 
                     {/* Title */}
-                    <h2 className="text-xl md:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3 group-hover:text-[#FF6B35] dark:group-hover:text-[#FF8E53] transition-colors">
+                    <h2 className="text-xl md:text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-3 group-hover:text-[var(--color-primary)] transition-colors">
                       {post.title}
                     </h2>
 
@@ -159,7 +158,7 @@ export default async function WritingPage() {
             </div>
           ) : (
             <WarmCard padding="xl" className="text-center">
-              <Heading level={2} className="text-[#FF6B35] mb-4">
+              <Heading level={2} className="text-[var(--color-primary)] mb-4">
                 Articles Coming Soon
               </Heading>
               <Paragraph>

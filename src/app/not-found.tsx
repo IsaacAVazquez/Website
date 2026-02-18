@@ -9,13 +9,13 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FFF8F0]/50 via-[#FFFCF7]/30 to-[#FFE4D6]/20 dark:from-[#2D1B12]/50 dark:via-[#1C1410]/30 dark:to-[#4A3426]/20">
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--surface-secondary)]/50 via-[var(--surface-secondary)]/30 to-[var(--border-primary)]/20">
         <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255, 107, 53, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255, 107, 53, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(15, 23, 42, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(15, 23, 42, 0.1) 1px, transparent 1px)
             `,
             backgroundSize: '50px 50px'
           }}
@@ -39,8 +39,8 @@ export default function NotFound() {
               45deg,
               transparent,
               transparent 10px,
-              rgba(255, 107, 53, 0.1) 10px,
-              rgba(255, 107, 53, 0.1) 20px
+              rgba(15, 23, 42, 0.1) 10px,
+              rgba(15, 23, 42, 0.1) 20px
             )`,
           }}
         />
@@ -54,10 +54,10 @@ export default function NotFound() {
           transition={{ duration: 0.8 }}
           className="relative mb-8"
         >
-          <h1 className="text-9xl font-heading font-black text-[#FF6B35] dark:text-[#FF8E53] relative">
+          <h1 className="text-9xl font-black text-[var(--color-primary)] relative">
             404
             <motion.span
-              className="absolute inset-0 text-[#FF5757]"
+              className="absolute inset-0 text-[var(--color-error)]"
               animate={{
                 opacity: [0, 1, 0],
                 x: [-2, 2, -2],
@@ -71,7 +71,7 @@ export default function NotFound() {
               404
             </motion.span>
             <motion.span
-              className="absolute inset-0 text-[#F7B32B]"
+              className="absolute inset-0 text-[var(--color-warning)]"
               animate={{
                 opacity: [0, 1, 0],
                 x: [2, -2, 2],
@@ -93,12 +93,12 @@ export default function NotFound() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mb-8 font-terminal text-[#6BCF7F] dark:text-[#8FE39E]"
+          className="mb-8 font-mono text-[var(--color-success)]"
         >
           <p className="text-xl mb-2">
-            <span className="text-[#FF6B35] dark:text-[#FF8E53]">$</span> cat /page/not/found
+            <span className="text-[var(--color-primary)]">$</span> cat /page/not/found
           </p>
-          <p className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">
+          <p className="text-sm text-[var(--text-secondary)]">
             Error: The requested resource could not be located in the system.
           </p>
         </motion.div>
@@ -108,7 +108,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="text-lg text-[#4A3426] dark:text-[#FFE4D6] mb-8"
+          className="text-lg text-[var(--text-primary)] mb-8"
         >
           Looks like you've ventured into uncharted territory.
           This page doesn't exist in our system... yet.
@@ -134,7 +134,7 @@ export default function NotFound() {
 
           <button
             onClick={() => window.history.back()}
-            className="px-6 py-3 border border-[#FF6B35] dark:border-[#FF8E53] text-[#FF6B35] dark:text-[#FF8E53] hover:bg-[#FF6B35]/10 dark:hover:bg-[#FF8E53]/10 rounded-lg transition-all duration-300 font-terminal uppercase tracking-wider inline-flex items-center gap-2"
+            className="px-6 py-3 border border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 rounded-lg transition-all duration-300 font-mono uppercase tracking-wider inline-flex items-center gap-2"
           >
             <IconArrowLeft className="h-5 w-5" />
             Go Back
@@ -146,7 +146,7 @@ export default function NotFound() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="mt-16 font-terminal text-sm text-[#6B4F3D] dark:text-[#D4A88E]"
+          className="mt-16 font-mono text-sm text-[var(--text-secondary)]"
         >
           <motion.span
             animate={{ opacity: [0.3, 1, 0.3] }}

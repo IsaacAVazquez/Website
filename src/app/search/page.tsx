@@ -25,14 +25,14 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
   const { q, type, category } = searchParams;
 
   return (
-    <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#FFFCF7] dark:bg-gradient-to-br dark:from-[#1C1410] dark:via-[#2D1B12] dark:to-[#1C1410]">
+    <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--surface-secondary)]">
       <div className="max-w-4xl mx-auto">
         <section className="mb-12 space-y-6 text-center">
           <Heading level={1} className="text-4xl md:text-5xl">
             Search my portfolio, writing, and tools
           </Heading>
           <Paragraph size="lg" className="text-slate-700 dark:text-slate-300">
-            This search covers every public case study, blog post, and fantasy football tool. 
+            This search covers every public case study, blog post, and fantasy football tool.
             Use it to surface product management experience, QA engineering playbooks, or data-driven content in seconds.
           </Paragraph>
           <div className="flex flex-wrap justify-center gap-3">
@@ -61,7 +61,7 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
             </div>
           </div>
         </section>
-        <SearchInterfaceClient 
+        <SearchInterfaceClient
           initialQuery={q}
           initialType={type}
           initialCategory={category}

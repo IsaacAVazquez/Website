@@ -28,7 +28,6 @@ interface ProjectDetailModalProps {
     challenges?: string[];
     impact?: string;
     timeline?: string;
-    // Problem-Process-Result Framework
     problem?: {
       context: string;
       painPoints: string[];
@@ -85,15 +84,15 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
               className="w-full max-w-4xl max-h-[90vh] overflow-y-auto"
             >
               {/* Header */}
-              <div className="sticky top-0 bg-white/95 dark:bg-[#2D1B12]/95 backdrop-blur-sm border-b-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 p-6 flex items-center justify-between">
+              <div className="sticky top-0 bg-white/95 dark:bg-[var(--neutral-900)]/95 backdrop-blur-sm border-b-2 border-[var(--border-primary)] p-6 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className={`p-3 rounded-lg bg-gradient-to-br ${project.color}`}>
                     <IconComponent className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-[#4A3426] dark:text-[#FFE4D6]">{project.title}</h2>
+                    <h2 className="text-2xl font-bold text-[var(--text-primary)]">{project.title}</h2>
                     {project.timeline && (
-                      <div className="flex items-center gap-2 text-[#6B4F3D] dark:text-[#D4A88E]">
+                      <div className="flex items-center gap-2 text-[var(--text-secondary)]">
                         <IconClock className="w-4 h-4" />
                         <span className="text-sm">{project.timeline}</span>
                       </div>
@@ -102,17 +101,17 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/50 rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  className="p-2 hover:bg-[var(--surface-secondary)] rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
                   aria-label="Close modal"
                 >
-                  <IconX className="w-6 h-6 text-[#6B4F3D] dark:text-[#D4A88E]" />
+                  <IconX className="w-6 h-6 text-[var(--text-secondary)]" />
                 </button>
               </div>
 
               <div className="p-6 space-y-8">
                 {/* Screenshot */}
                 {project.screenshot && (
-                  <div className="relative rounded-lg overflow-hidden border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
+                  <div className="relative rounded-lg overflow-hidden border-2 border-[var(--border-primary)]">
                     <ProjectImage
                       src={project.screenshot}
                       alt={`${project.title} case study: ${project.description}`}
@@ -126,12 +125,12 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
 
                 {/* Description */}
                 <div>
-                  <p className="text-lg text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">{project.description}</p>
+                  <p className="text-lg text-[var(--text-secondary)] leading-relaxed">{project.description}</p>
                 </div>
 
                 {/* Tech Stack */}
                 <div>
-                  <h3 className="text-lg font-semibold text-[#FF6B35] dark:text-[#FF8E53] mb-3">Technology Stack</h3>
+                  <h3 className="text-lg font-semibold text-[var(--color-primary)] mb-3">Technology Stack</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <Badge key={tech} variant="secondary">
@@ -144,7 +143,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 {/* Metrics - Enhanced with MetricCallout */}
                 {project.detailedMetrics && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[#FF6B35] dark:text-[#FF8E53] mb-4">Key Metrics & Impact</h3>
+                    <h3 className="text-lg font-semibold text-[var(--color-primary)] mb-4">Key Metrics & Impact</h3>
                     <MetricGrid columns={2}>
                       {project.detailedMetrics.map((metric, index) => (
                         <MetricCallout
@@ -164,12 +163,12 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 {/* Challenges */}
                 {project.challenges && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[#FF6B35] dark:text-[#FF8E53] mb-4">Technical Challenges</h3>
+                    <h3 className="text-lg font-semibold text-[var(--color-primary)] mb-4">Technical Challenges</h3>
                     <ul className="space-y-2">
                       {project.challenges.map((challenge, index) => (
                         <li key={index} className="flex items-start gap-3">
-                          <div className="w-2 h-2 rounded-full bg-[#FFB020] dark:bg-[#FFC857] mt-2 flex-shrink-0" />
-                          <span className="text-[#4A3426] dark:text-[#D4A88E]">{challenge}</span>
+                          <div className="w-2 h-2 rounded-full bg-[var(--color-warning)] mt-2 flex-shrink-0" />
+                          <span className="text-[var(--text-secondary)]">{challenge}</span>
                         </li>
                       ))}
                     </ul>
@@ -179,12 +178,12 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 {/* Impact */}
                 {project.impact && (
                   <div>
-                    <h3 className="text-lg font-semibold text-[#FF6B35] dark:text-[#FF8E53] mb-3 flex items-center gap-2">
-                      <IconTargetArrow className="w-5 h-5 text-[#6BCF7F] dark:text-[#8FE39E]" />
+                    <h3 className="text-lg font-semibold text-[var(--color-primary)] mb-3 flex items-center gap-2">
+                      <IconTargetArrow className="w-5 h-5 text-[var(--color-success)]" />
                       Business Impact
                     </h3>
-                    <div className="p-4 bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 border-2 border-[#6BCF7F]/20 dark:border-[#6BCF7F]/30 rounded-lg">
-                      <p className="text-[#4A3426] dark:text-[#D4A88E]">{project.impact}</p>
+                    <div className="p-4 bg-[var(--color-success)]/10 border-2 border-[var(--color-success)]/20 rounded-lg">
+                      <p className="text-[var(--text-secondary)]">{project.impact}</p>
                     </div>
                   </div>
                 )}
@@ -192,33 +191,33 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 {/* Problem-Process-Result Framework */}
                 {project.problem && (
                   <div className="space-y-6">
-                    <div className="border-t-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 pt-6">
-                      <h3 className="text-xl font-bold text-[#FF6B35] dark:text-[#FF8E53] mb-6">📋 Full Case Study</h3>
+                    <div className="border-t-2 border-[var(--border-primary)] pt-6">
+                      <h3 className="text-xl font-bold text-[var(--color-primary)] mb-6">Full Case Study</h3>
 
                       {/* Problem Section */}
                       <div className="mb-8">
-                        <h4 className="text-lg font-semibold text-[#4A3426] dark:text-[#FFE4D6] mb-3 flex items-center gap-2">
+                        <h4 className="text-lg font-semibold text-[var(--text-primary)] mb-3 flex items-center gap-2">
                           <span className="text-2xl">🎯</span>
                           The Problem
                         </h4>
                         <div className="space-y-4">
-                          <div className="p-4 bg-[#FFF8F0] dark:bg-[#4A3426]/30 rounded-lg border-l-4 border-[#FF6B35]">
-                            <p className="text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">{project.problem.context}</p>
+                          <div className="p-4 bg-[var(--surface-secondary)] rounded-lg border-l-4 border-[var(--color-primary)]">
+                            <p className="text-[var(--text-secondary)] leading-relaxed">{project.problem.context}</p>
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Key Pain Points:</p>
+                            <p className="text-sm font-semibold text-[var(--text-secondary)] mb-2">Key Pain Points:</p>
                             <ul className="space-y-2">
                               {project.problem.painPoints.map((point, index) => (
                                 <li key={index} className="flex items-start gap-3">
-                                  <div className="w-2 h-2 rounded-full bg-[#FF6B35] mt-2 flex-shrink-0" />
-                                  <span className="text-[#4A3426] dark:text-[#D4A88E]">{point}</span>
+                                  <div className="w-2 h-2 rounded-full bg-[var(--color-primary)] mt-2 flex-shrink-0" />
+                                  <span className="text-[var(--text-secondary)]">{point}</span>
                                 </li>
                               ))}
                             </ul>
                           </div>
-                          <div className="p-4 bg-[#FFB020]/10 dark:bg-[#FFB020]/20 rounded-lg border-l-4 border-[#FFB020]">
-                            <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-1">Stakes:</p>
-                            <p className="text-[#4A3426] dark:text-[#D4A88E] italic">{project.problem.stakes}</p>
+                          <div className="p-4 bg-[var(--color-warning)]/10 rounded-lg border-l-4 border-[var(--color-warning)]">
+                            <p className="text-sm font-semibold text-[var(--text-secondary)] mb-1">Stakes:</p>
+                            <p className="text-[var(--text-secondary)] italic">{project.problem.stakes}</p>
                           </div>
                         </div>
                       </div>
@@ -226,42 +225,42 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                       {/* Process Section */}
                       {project.process && (
                         <div className="mb-8">
-                          <h4 className="text-lg font-semibold text-[#4A3426] dark:text-[#FFE4D6] mb-3 flex items-center gap-2">
+                          <h4 className="text-lg font-semibold text-[var(--text-primary)] mb-3 flex items-center gap-2">
                             <span className="text-2xl">⚙️</span>
                             The Process
                           </h4>
                           <div className="space-y-4">
-                            <div className="p-4 bg-[#FFF8F0] dark:bg-[#4A3426]/30 rounded-lg border-l-4 border-[#F7B32B]">
-                              <p className="text-[#4A3426] dark:text-[#D4A88E] leading-relaxed">{project.process.approach}</p>
+                            <div className="p-4 bg-[var(--surface-secondary)] rounded-lg border-l-4 border-[var(--color-warning)]">
+                              <p className="text-[var(--text-secondary)] leading-relaxed">{project.process.approach}</p>
                             </div>
                             <div>
-                              <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Methodology:</p>
+                              <p className="text-sm font-semibold text-[var(--text-secondary)] mb-2">Methodology:</p>
                               <ul className="space-y-2">
                                 {project.process.methodology.map((method, index) => (
                                   <li key={index} className="flex items-start gap-3">
-                                    <div className="w-6 h-6 rounded-full bg-[#F7B32B] text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                                    <div className="w-6 h-6 rounded-full bg-[var(--color-warning)] text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                                       {index + 1}
                                     </div>
-                                    <span className="text-[#4A3426] dark:text-[#D4A88E]">{method}</span>
+                                    <span className="text-[var(--text-secondary)]">{method}</span>
                                   </li>
                                 ))}
                               </ul>
                             </div>
                             <div>
-                              <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Key Decisions:</p>
+                              <p className="text-sm font-semibold text-[var(--text-secondary)] mb-2">Key Decisions:</p>
                               <ul className="space-y-2">
                                 {project.process.decisions.map((decision, index) => (
                                   <li key={index} className="flex items-start gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-[#FF8E53] mt-2 flex-shrink-0" />
-                                    <span className="text-[#4A3426] dark:text-[#D4A88E]">{decision}</span>
+                                    <div className="w-2 h-2 rounded-full bg-[var(--color-primary)] mt-2 flex-shrink-0" />
+                                    <span className="text-[var(--text-secondary)]">{decision}</span>
                                   </li>
                                 ))}
                               </ul>
                             </div>
                             {project.process.collaboration && (
-                              <div className="p-4 bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 rounded-lg border-l-4 border-[#6BCF7F]">
-                                <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-1">Collaboration:</p>
-                                <p className="text-[#4A3426] dark:text-[#D4A88E]">{project.process.collaboration}</p>
+                              <div className="p-4 bg-[var(--color-success)]/10 rounded-lg border-l-4 border-[var(--color-success)]">
+                                <p className="text-sm font-semibold text-[var(--text-secondary)] mb-1">Collaboration:</p>
+                                <p className="text-[var(--text-secondary)]">{project.process.collaboration}</p>
                               </div>
                             )}
                           </div>
@@ -271,44 +270,44 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                       {/* Result Section */}
                       {project.result && (
                         <div>
-                          <h4 className="text-lg font-semibold text-[#4A3426] dark:text-[#FFE4D6] mb-3 flex items-center gap-2">
+                          <h4 className="text-lg font-semibold text-[var(--text-primary)] mb-3 flex items-center gap-2">
                             <span className="text-2xl">🎉</span>
                             The Results
                           </h4>
                           <div className="space-y-4">
                             <div>
-                              <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Outcomes Achieved:</p>
+                              <p className="text-sm font-semibold text-[var(--text-secondary)] mb-2">Outcomes Achieved:</p>
                               <ul className="space-y-2">
                                 {project.result.outcomes.map((outcome, index) => (
                                   <li key={index} className="flex items-start gap-3">
-                                    <div className="w-6 h-6 rounded-full bg-[#6BCF7F] text-white flex items-center justify-center text-lg flex-shrink-0">
+                                    <div className="w-6 h-6 rounded-full bg-[var(--color-success)] text-white flex items-center justify-center text-lg flex-shrink-0">
                                       ✓
                                     </div>
-                                    <span className="text-[#4A3426] dark:text-[#D4A88E] font-medium">{outcome}</span>
+                                    <span className="text-[var(--text-secondary)] font-medium">{outcome}</span>
                                   </li>
                                 ))}
                               </ul>
                             </div>
                             {project.result.testimonial && (
-                              <div className="p-6 bg-gradient-to-br from-[#FF6B35]/5 to-[#F7B32B]/5 dark:from-[#FF8E53]/10 dark:to-[#FFC857]/10 rounded-lg border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
-                                <p className="text-lg text-[#4A3426] dark:text-[#D4A88E] italic mb-4">"{project.result.testimonial.quote}"</p>
+                              <div className="p-6 bg-[var(--color-primary)]/5 rounded-lg border-2 border-[var(--border-primary)]">
+                                <p className="text-lg text-[var(--text-secondary)] italic mb-4">"{project.result.testimonial.quote}"</p>
                                 <div className="flex items-center gap-3">
-                                  <div className="w-1 h-12 bg-gradient-to-b from-[#FF6B35] to-[#F7B32B]" />
+                                  <div className="w-1 h-12 bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-warning)]" />
                                   <div>
-                                    <p className="font-semibold text-[#4A3426] dark:text-[#FFE4D6]">{project.result.testimonial.author}</p>
-                                    <p className="text-sm text-[#6B4F3D] dark:text-[#D4A88E]">{project.result.testimonial.role}</p>
+                                    <p className="font-semibold text-[var(--text-primary)]">{project.result.testimonial.author}</p>
+                                    <p className="text-sm text-[var(--text-secondary)]">{project.result.testimonial.role}</p>
                                   </div>
                                 </div>
                               </div>
                             )}
                             {project.result.lessonsLearned && (
                               <div>
-                                <p className="text-sm font-semibold text-[#6B4F3D] dark:text-[#D4A88E] mb-2">Lessons Learned:</p>
+                                <p className="text-sm font-semibold text-[var(--text-secondary)] mb-2">Lessons Learned:</p>
                                 <ul className="space-y-2">
                                   {project.result.lessonsLearned.map((lesson, index) => (
                                     <li key={index} className="flex items-start gap-3">
-                                      <div className="w-2 h-2 rounded-full bg-[#FFB020] mt-2 flex-shrink-0" />
-                                      <span className="text-[#4A3426] dark:text-[#D4A88E]">{lesson}</span>
+                                      <div className="w-2 h-2 rounded-full bg-[var(--color-warning)] mt-2 flex-shrink-0" />
+                                      <span className="text-[var(--text-secondary)]">{lesson}</span>
                                     </li>
                                   ))}
                                 </ul>
@@ -322,7 +321,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 )}
 
                 {/* Action Buttons */}
-                <div className="flex gap-4 pt-4 border-t-2 border-[#FFE4D6] dark:border-[#FF8E53]/30">
+                <div className="flex gap-4 pt-4 border-t-2 border-[var(--border-primary)]">
                   {project.link && (
                     <a href={project.link} target="_blank" rel="noopener noreferrer">
                       <ModernButton variant="primary" size="md">

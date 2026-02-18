@@ -10,10 +10,8 @@ export const metadata: Metadata = constructMetadata();
 export default function Home() {
   return (
     <main
-      className="min-h-screen w-full scroll-smooth"
-      style={{ backgroundColor: 'var(--surface-primary)' }}
+      className="min-h-screen w-full scroll-smooth bg-[var(--surface-primary)]"
       id="main-content"
-      role="main"
       aria-label="Isaac Vazquez - Product Manager Portfolio"
     >
       {/* Hero Section */}

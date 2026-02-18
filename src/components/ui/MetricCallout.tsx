@@ -40,7 +40,6 @@ export function MetricCallout({
   const shouldReduceMotion = useReducedMotion();
   const [displayValue, setDisplayValue] = useState<string | number>(animateValue ? 0 : value);
 
-  // Extract numeric value for animation
   const numericValue = typeof value === 'string'
     ? parseFloat(value.replace(/[^0-9.-]/g, ''))
     : value;
@@ -49,14 +48,13 @@ export function MetricCallout({
   const prefix = typeof value === 'string' ? value.match(/^[^0-9]*/)?.[0] || '' : '';
   const suffix = typeof value === 'string' ? value.match(/[^0-9]*$/)?.[0] || '' : '';
 
-  // Count-up animation
   useEffect(() => {
     if (!animateValue || !hasNumericValue || !isInView || shouldReduceMotion) {
       setDisplayValue(value);
       return;
     }
 
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const steps = 60;
     const increment = numericValue / steps;
     const stepDuration = duration / steps;
@@ -78,28 +76,28 @@ export function MetricCallout({
 
   const variants = {
     default: {
-      gradient: 'from-[#6B4F3D] to-[#4A3426]',
-      bg: 'bg-[#FFF8F0] dark:bg-[#4A3426]/50',
-      border: 'border-[#FFE4D6] dark:border-[#FF8E53]/30',
-      text: 'text-[#FF6B35] dark:text-[#FF8E53]',
+      gradient: 'from-[var(--text-secondary)] to-[var(--text-secondary)]',
+      bg: 'bg-[var(--surface-secondary)]',
+      border: 'border-[var(--border-primary)]',
+      text: 'text-[var(--color-primary)]',
     },
     success: {
-      gradient: 'from-[#6BCF7F] to-[#4CAF50]',
-      bg: 'bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20',
-      border: 'border-[#6BCF7F]/30 dark:border-[#6BCF7F]/40',
-      text: 'text-[#6BCF7F] dark:text-[#8FE39E]',
+      gradient: 'from-[var(--color-success)] to-[var(--color-success)]',
+      bg: 'bg-[var(--color-success)]/10',
+      border: 'border-[var(--color-success)]/30',
+      text: 'text-[var(--color-success)]',
     },
     primary: {
-      gradient: 'from-[#FF6B35] to-[#F7B32B]',
-      bg: 'bg-gradient-to-br from-[#FF6B35]/10 to-[#F7B32B]/10 dark:from-[#FF8E53]/20 dark:to-[#FFC857]/20',
-      border: 'border-[#FF6B35]/30 dark:border-[#FF8E53]/40',
-      text: 'text-[#FF6B35] dark:text-[#FF8E53]',
+      gradient: 'from-[var(--color-primary)] to-[var(--color-warning)]',
+      bg: 'bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-warning)]/10',
+      border: 'border-[var(--color-primary)]/30',
+      text: 'text-[var(--color-primary)]',
     },
     warning: {
-      gradient: 'from-[#FFB020] to-[#FF8E53]',
-      bg: 'bg-[#FFB020]/10 dark:bg-[#FFB020]/20',
-      border: 'border-[#FFB020]/30 dark:border-[#FFB020]/40',
-      text: 'text-[#FFB020] dark:text-[#FFC857]',
+      gradient: 'from-[var(--color-warning)] to-[var(--color-primary)]',
+      bg: 'bg-[var(--color-warning)]/10',
+      border: 'border-[var(--color-warning)]/30',
+      text: 'text-[var(--color-warning)]',
     },
   };
 
@@ -138,17 +136,15 @@ export function MetricCallout({
         variantStyles.bg,
         variantStyles.border,
         sizeStyles.padding,
-        "hover:shadow-warm-lg hover:-translate-y-1",
+        "hover:shadow-lg hover:-translate-y-1",
         className
       )}
     >
-      {/* Gradient overlay */}
       <div className={cn(
         "absolute inset-0 bg-gradient-to-br opacity-5",
         variantStyles.gradient
       )} />
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-start">
         {icon && (
           <div className={cn("mb-2", variantStyles.text)}>
@@ -175,7 +171,7 @@ export function MetricCallout({
         </motion.div>
 
         <div className={cn(
-          "font-medium text-[#6B4F3D] dark:text-[#D4A88E] mb-1",
+          "font-medium text-[var(--text-secondary)] mb-1",
           sizeStyles.label
         )}>
           {label}
@@ -183,7 +179,7 @@ export function MetricCallout({
 
         {improvement && (
           <motion.div
-            className="text-xs text-[#6BCF7F] dark:text-[#8FE39E] font-medium mt-1 flex items-center gap-1"
+            className="text-xs text-[var(--color-success)] font-medium mt-1 flex items-center gap-1"
             initial={{ opacity: 0, x: -10 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
             transition={{ delay: 0.3, duration: 0.4 }}
@@ -194,7 +190,6 @@ export function MetricCallout({
         )}
       </div>
 
-      {/* Shine effect on hover */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
         initial={{ x: '-100%' }}
