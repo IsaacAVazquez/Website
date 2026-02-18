@@ -1789,3 +1789,48 @@ textarea:valid:not(:placeholder-shown) {
     transform: none;
   }
 }
+
+/* ============================================
+   SEMANTIC TOKEN UTILITIES
+   Use CSS variables so dark mode works correctly.
+   Tailwind dark: classes compile to static hex,
+   these classes always reflect the current theme.
+   ============================================ */
+@layer utilities {
+  .text-token-primary {
+    color: var(--text-primary);
+  }
+  .text-token-secondary {
+    color: var(--text-secondary);
+  }
+  .text-token-tertiary {
+    color: var(--text-tertiary);
+  }
+  .text-token-brand {
+    color: var(--color-primary);
+  }
+  .bg-token-surface {
+    background-color: var(--surface-primary);
+  }
+  .bg-token-surface-2 {
+    background-color: var(--surface-secondary);
+  }
+  .bg-token-elevated {
+    background-color: var(--surface-elevated);
+  }
+  .border-token {
+    border-color: var(--border-primary);
+  }
+  .border-token-secondary {
+    border-color: var(--border-secondary);
+  }
+  .hover\:text-token-primary:hover {
+    color: var(--text-primary);
+  }
+  .hover\:text-token-brand:hover {
+    color: var(--color-primary);
+  }
+  .hover\:bg-token-surface-2:hover {
+    background-color: var(--surface-secondary);
+  }
+}

@@ -10,17 +10,6 @@ interface WarmCardProps {
   ariaDescription?: string;
 }
 
-/**
- * WarmCard - Mouthwash Studio Minimal Card Component
- * Clean, monochrome design with generous whitespace
- *
- * Features:
- * - Pure white backgrounds with subtle borders
- * - Ultra-subtle grey shadows
- * - Minimal hover lift effect
- * - Border-based design (not filled)
- * - Touch-friendly and accessible
- */
 export function WarmCard({
   children,
   className,
@@ -31,27 +20,24 @@ export function WarmCard({
 }: WarmCardProps) {
   const paddingClasses = {
     none: "",
-    sm: "p-6",           // More generous minimum padding
-    md: "p-8",           // Default: generous padding
-    lg: "p-12",          // Large: very generous
-    xl: "p-16",          // XL: maximum whitespace
+    sm: "p-6",
+    md: "p-8",
+    lg: "p-12",
+    xl: "p-16",
   };
 
   return (
     <div
       className={cn(
-        // Mouthwash Studio Base - pure white with thin border
-        "bg-white dark:bg-neutral-900",
-        "border border-neutral-200 dark:border-neutral-600",
-        // Ultra-subtle shadow
-        "shadow-subtle",
-        // Hover effects - very subtle
-        hover && "transition-all duration-300 ease-out hover:shadow-primary hover:-translate-y-px hover:border-neutral-900 dark:hover:border-neutral-50 cursor-pointer",
-        // Padding
+        "border shadow-subtle",
+        hover && "transition-all duration-300 ease-out hover:shadow-primary hover:-translate-y-px cursor-pointer",
         paddingClasses[padding],
-        // Custom classes
         className
       )}
+      style={{
+        backgroundColor: "var(--surface-elevated)",
+        borderColor: "var(--border-primary)",
+      }}
       role="article"
       aria-label={ariaLabel}
       aria-description={ariaDescription}

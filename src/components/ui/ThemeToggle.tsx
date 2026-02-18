@@ -98,18 +98,20 @@ export function ThemeToggle() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-40 rounded-lg bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-elevated z-20 overflow-hidden"
+            className="absolute right-0 mt-2 w-40 rounded-lg border shadow-elevated z-20 overflow-hidden"
+            style={{ backgroundColor: "var(--surface-elevated)", borderColor: "var(--border-primary)" }}
             role="menu"
           >
             {themes.map((option) => (
               <li key={option} role="menuitem">
                 <button
                   onClick={() => updateTheme(option)}
-                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                    theme === option
-                      ? "text-[var(--color-primary)] font-medium bg-neutral-100 dark:bg-neutral-800"
-                      : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800/70"
-                  }`}
+                  className="w-full text-left px-4 py-2.5 text-sm transition-colors"
+                  style={{
+                    color: theme === option ? "var(--color-primary)" : "var(--text-secondary)",
+                    fontWeight: theme === option ? 500 : 400,
+                    backgroundColor: theme === option ? "var(--surface-secondary)" : "transparent",
+                  }}
                 >
                   {option === "system" ? "System Default" : `Use ${option} mode`}
                 </button>

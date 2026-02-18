@@ -38,57 +38,54 @@ export function ModernHero() {
       role="main"
       aria-label="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
     >
-      {/* Ultra-subtle monochrome accent - Mouthwash style */}
-      <div
-        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.02]"
-        aria-hidden="true"
-        style={{
-          background: 'radial-gradient(at 20% 30%, rgba(0, 0, 0, 0.03) 0px, transparent 50%), radial-gradient(at 80% 70%, rgba(0, 0, 0, 0.02) 0px, transparent 50%)'
-        }}
-      />
-
       <motion.div
         className="relative z-10 w-full container-wide"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Mouthwash Studio layout - generous whitespace */}
         <div className="max-w-[90rem] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-start">
 
-          {/* Left Column - Bold Monochrome Typography */}
+          {/* Left Column */}
           <div className="space-y-6 lg:space-y-8">
-            {/* Oversized Grotesk Heading - Pure Black */}
             <motion.div variants={itemVariants}>
-              <h1 className="editorial-heading text-neutral-900 dark:text-neutral-50">
+              <h1
+                className="editorial-heading"
+                style={{ color: "var(--text-primary)" }}
+              >
                 Isaac Vazquez
               </h1>
-              <p className="editorial-subheading text-neutral-500 dark:text-neutral-400 mt-3">
+              <p
+                className="editorial-subheading mt-3"
+                style={{ color: "var(--text-tertiary)" }}
+              >
                 Product Manager | MBA Candidate | Builder
               </p>
-              <p className="text-sm text-neutral-400 dark:text-neutral-500 mt-2 font-mono">
+              <p
+                className="text-sm mt-2 font-mono"
+                style={{ color: "var(--text-tertiary)" }}
+              >
                 Bay Area • 5+ years in Product & QA
               </p>
             </motion.div>
 
-            {/* Thin Monochrome Divider */}
             <motion.div
               variants={itemVariants}
-              className="w-16 h-px bg-neutral-900 dark:bg-neutral-50"
+              className="w-16 h-px"
+              style={{ backgroundColor: "var(--text-primary)" }}
               aria-hidden="true"
             />
 
-            {/* Editorial Body Copy - Monochrome - Simplified to 2 sentences */}
             <motion.p
               variants={itemVariants}
-              className="editorial-body text-neutral-600 dark:text-neutral-300"
+              className="editorial-body"
+              style={{ color: "var(--text-secondary)" }}
             >
               I build mission-driven products that balance user insight, data, and disciplined execution—moving
               comfortably between discovery, analytics, and delivery. Currently sharpening my strategic toolkit
               at UC Berkeley Haas while applying it to every roadmap and sprint I touch.
             </motion.p>
 
-            {/* Minimal Monochrome CTAs */}
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-4 pt-2"
@@ -106,13 +103,15 @@ export function ModernHero() {
             </motion.div>
           </div>
 
-          {/* Right Column - Clean Image Block */}
+          {/* Right Column - Image */}
           <motion.div
             variants={itemVariants}
             className="relative order-first lg:order-last"
           >
-            {/* Mouthwash Studio Image Block - thin border */}
-            <div className="pentagram-image-wrapper pentagram-aspect-portrait lg:pentagram-aspect-square overflow-hidden border border-neutral-200 dark:border-neutral-600">
+            <div
+              className="pentagram-image-wrapper pentagram-aspect-portrait lg:pentagram-aspect-square overflow-hidden border"
+              style={{ borderColor: "var(--border-primary)" }}
+            >
               <Image
                 src="/images/headshot-new.png"
                 alt="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
@@ -123,8 +122,10 @@ export function ModernHero() {
               />
             </div>
 
-            {/* Minimal Caption - Mid Grey */}
-            <p className="editorial-caption mt-3 text-neutral-500 dark:text-neutral-400">
+            <p
+              className="editorial-caption mt-3"
+              style={{ color: "var(--text-tertiary)" }}
+            >
               Isaac Vazquez, MBA Candidate at UC Berkeley Haas School of Business
             </p>
           </motion.div>
