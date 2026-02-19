@@ -46,7 +46,7 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
               Start a Conversation
             </ModernButton>
           </Link>
-          <a href="mailto:isaacavazquez95@gmail.com">
+          <a href="mailto:IsaacVazquez@berkeley.edu">
             <ModernButton variant="outline" size="lg">
               Email Isaac
             </ModernButton>
@@ -124,7 +124,7 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
               Share Your Project
             </ModernButton>
           </Link>
-          <a href="mailto:isaacavazquez95@gmail.com">
+          <a href="mailto:IsaacVazquez@berkeley.edu">
             <ModernButton variant="outline" size="md">
               Email Isaac
             </ModernButton>

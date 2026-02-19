@@ -50,7 +50,7 @@ export const businessLocations: BusinessLocation[] = [
       longitude: -97.7431
     },
     phone: "+1-512-XXX-XXXX", // Replace with actual phone
-    email: "isaacavazquez95@gmail.com",
+    email: "IsaacVazquez@berkeley.edu",
     website: "https://isaacavazquez.com",
     timezone: "America/Chicago",
     serviceAreas: [
@@ -91,7 +91,7 @@ export const businessLocations: BusinessLocation[] = [
       longitude: -122.2585
     },
     phone: "+1-510-XXX-XXXX", // Replace with actual phone
-    email: "isaacavazquez95@gmail.com", 
+    email: "IsaacVazquez@berkeley.edu", 
     website: "https://isaacavazquez.com",
     timezone: "America/Los_Angeles",
     serviceAreas: [
@@ -132,7 +132,7 @@ export const napData = {
     formatted: "(512) XXX-XXXX"
   },
   email: {
-    primary: "isaacavazquez95@gmail.com",
+    primary: "IsaacVazquez@berkeley.edu",
     business: "contact@isaacavazquez.com",
     support: "support@isaacavazquez.com"
   },

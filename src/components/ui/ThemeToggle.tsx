@@ -60,7 +60,7 @@ export function ThemeToggle() {
     <div className="relative">
       <motion.button
         onClick={() => setMenuOpen((prev) => !prev)}
-        className="relative p-3 rounded-xl transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center text-neutral-600 dark:text-neutral-300 hover:text-primary dark:hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="relative p-3 rounded-xl transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--color-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         aria-label={`Select theme (current: ${theme})`}
@@ -84,7 +84,7 @@ export function ThemeToggle() {
           </motion.div>
         </AnimatePresence>
         <motion.div
-          className="absolute inset-0 rounded-xl bg-primary/10 dark:bg-primary/20 blur-md opacity-0"
+          className="absolute inset-0 rounded-xl bg-[var(--color-primary)]/10 blur-md opacity-0"
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         />
@@ -98,7 +98,7 @@ export function ThemeToggle() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-40 rounded-lg bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-elevated z-20 overflow-hidden"
+            className="absolute right-0 mt-2 w-40 rounded-lg bg-[var(--surface-elevated)] border border-[var(--border-primary)] shadow-lg z-20 overflow-hidden"
             role="menu"
           >
             {themes.map((option) => (
@@ -107,8 +107,8 @@ export function ThemeToggle() {
                   onClick={() => updateTheme(option)}
                   className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
                     theme === option
-                      ? "text-[var(--color-primary)] font-medium bg-neutral-100 dark:bg-neutral-800"
-                      : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800/70"
+                      ? "text-[var(--color-primary)] font-medium bg-[var(--surface-secondary)]"
+                      : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)]"
                   }`}
                 >
                   {option === "system" ? "System Default" : `Use ${option} mode`}

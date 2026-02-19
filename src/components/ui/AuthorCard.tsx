@@ -41,7 +41,7 @@ export function AuthorCard({
   if (variant === "inline") {
     return (
       <div className={`inline-flex items-center gap-3 ${className}`}>
-        <div className="relative w-10 h-10 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-700 flex-shrink-0">
+        <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[var(--border-primary)] flex-shrink-0">
           <Image
             src={image}
             alt={name}
@@ -51,10 +51,10 @@ export function AuthorCard({
           />
         </div>
         <div>
-          <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+          <p className="text-sm font-semibold text-[var(--text-primary)]">
             {name}
           </p>
-          <p className="text-xs text-neutral-600 dark:text-neutral-400">
+          <p className="text-xs text-[var(--text-tertiary)]">
             {title}
           </p>
         </div>
@@ -66,7 +66,7 @@ export function AuthorCard({
     return (
       <div className={`card ${className}`}>
         <div className="flex gap-4">
-          <div className="relative w-16 h-16 rounded-sm overflow-hidden border border-neutral-200 dark:border-neutral-700 flex-shrink-0">
+          <div className="relative w-16 h-16 rounded-sm overflow-hidden border border-[var(--border-primary)] flex-shrink-0">
             <Image
               src={image}
               alt={name}
@@ -76,14 +76,14 @@ export function AuthorCard({
             />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-1">
+            <h3 className="text-lg font-bold text-[var(--text-primary)] mb-1">
               {name}
             </h3>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
+            <p className="text-sm text-[var(--text-tertiary)] mb-2">
               {title}
             </p>
             {location && (
-              <div className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-500">
+              <div className="flex items-center gap-1.5 text-xs text-[var(--text-tertiary)]">
                 <IconMapPin className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{location}</span>
               </div>
@@ -106,7 +106,7 @@ export function AuthorCard({
       {/* Header with Image and Basic Info */}
       <div className="flex flex-col md:flex-row gap-6 mb-6">
         {/* Author Image */}
-        <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-sm overflow-hidden border border-neutral-200 dark:border-neutral-700 flex-shrink-0">
+        <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-sm overflow-hidden border border-[var(--border-primary)] flex-shrink-0">
           <Image
             src={image}
             alt={name}
@@ -119,15 +119,15 @@ export function AuthorCard({
 
         {/* Basic Info */}
         <div className="flex-1">
-          <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-2" itemProp="name">
+          <h3 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-2" itemProp="name">
             {name}
           </h3>
-          <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-3" itemProp="jobTitle">
+          <p className="text-base md:text-lg text-[var(--text-tertiary)] mb-3" itemProp="jobTitle">
             {title}
           </p>
 
           {/* Location, Experience, Education */}
-          <div className="flex flex-wrap gap-4 text-sm text-neutral-600 dark:text-neutral-400">
+          <div className="flex flex-wrap gap-4 text-sm text-[var(--text-tertiary)]">
             {location && (
               <div className="flex items-center gap-1.5" itemProp="workLocation">
                 <IconMapPin className="w-4 h-4" aria-hidden="true" />
@@ -152,7 +152,7 @@ export function AuthorCard({
 
       {/* Bio */}
       {bio && (
-        <p className="editorial-body text-neutral-700 dark:text-neutral-300 mb-6" itemProp="description">
+        <p className="editorial-body text-[var(--text-secondary)] mb-6" itemProp="description">
           {bio}
         </p>
       )}
@@ -160,13 +160,13 @@ export function AuthorCard({
       {/* Credentials and Expertise */}
       {credentials && credentials.length > 0 && (
         <div className="mb-6">
-          <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 uppercase tracking-wider mb-3">
+          <h4 className="text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-3">
             Credentials & Expertise
           </h4>
           <ul className="space-y-2">
             {credentials.map((credential, index) => (
-              <li key={index} className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-300">
-                <IconCheck className="w-4 h-4 mt-0.5 text-neutral-400 dark:text-neutral-500 flex-shrink-0" aria-hidden="true" />
+              <li key={index} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
+                <IconCheck className="w-4 h-4 mt-0.5 text-[var(--text-tertiary)] flex-shrink-0" aria-hidden="true" />
                 <span>{credential}</span>
               </li>
             ))}
@@ -176,16 +176,16 @@ export function AuthorCard({
 
       {/* CTA */}
       {showCTA && (
-        <div className="flex flex-wrap gap-3 pt-4 border-t border-neutral-200 dark:border-neutral-700">
+        <div className="flex flex-wrap gap-3 pt-4 border-t border-[var(--border-primary)]">
           <Link
             href="/about"
-            className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors"
+            className="text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors"
           >
             View Full Profile →
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors"
+            className="text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors"
           >
             Get In Touch →
           </Link>

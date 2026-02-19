@@ -46,7 +46,7 @@ export function AuthorBio({
   social = {
     linkedin: "https://linkedin.com/in/isaac-vazquez",
     github: "https://github.com/IsaacAVazquez",
-    email: "mailto:isaacavazquez95@gmail.com",
+    email: "mailto:IsaacVazquez@berkeley.edu",
     website: "https://isaacavazquez.com",
   },
   variant = "full",
@@ -72,10 +72,10 @@ export function AuthorBio({
           />
         )}
         <div>
-          <p className="font-semibold text-neutral-900 dark:text-neutral-100" itemProp="name">
+          <p className="font-semibold text-[var(--text-primary)]" itemProp="name">
             {name}
           </p>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400" itemProp="jobTitle">
+          <p className="text-sm text-[var(--text-tertiary)]" itemProp="jobTitle">
             {title}
           </p>
         </div>
@@ -103,29 +103,29 @@ export function AuthorBio({
             />
           )}
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-1" itemProp="name">
+            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-1" itemProp="name">
               {name}
             </h3>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2" itemProp="jobTitle">
+            <p className="text-sm text-[var(--text-tertiary)] mb-2" itemProp="jobTitle">
               {title}
             </p>
           </div>
         </div>
 
         {bio && (
-          <p className="text-sm text-neutral-700 dark:text-neutral-300 mb-3 leading-relaxed" itemProp="description">
+          <p className="text-sm text-[var(--text-secondary)] mb-3 leading-relaxed" itemProp="description">
             {bio}
           </p>
         )}
 
         {credentials && credentials.length > 0 && (
           <div className="mb-3">
-            <p className="text-xs font-semibold text-neutral-900 dark:text-neutral-100 uppercase tracking-wider mb-2">
+            <p className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-2">
               Credentials
             </p>
             <div className="space-y-1">
               {credentials.map((cred, index) => (
-                <p key={index} className="text-xs text-neutral-600 dark:text-neutral-400">
+                <p key={index} className="text-xs text-[var(--text-tertiary)]">
                   • {cred}
                 </p>
               ))}
@@ -134,13 +134,13 @@ export function AuthorBio({
         )}
 
         {showSocial && social && (
-          <div className="flex items-center gap-3 pt-3 border-t border-neutral-200 dark:border-neutral-700">
+          <div className="flex items-center gap-3 pt-3 border-t border-[var(--border-primary)]">
             {social.linkedin && (
               <Link
                 href={social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                 aria-label="LinkedIn Profile"
                 itemProp="sameAs"
               >
@@ -152,7 +152,7 @@ export function AuthorBio({
                 href={social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                 aria-label="GitHub Profile"
                 itemProp="sameAs"
               >
@@ -162,7 +162,7 @@ export function AuthorBio({
             {social.email && (
               <Link
                 href={social.email}
-                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                 aria-label="Email"
                 itemProp="email"
               >
@@ -174,7 +174,7 @@ export function AuthorBio({
                 href={social.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                 aria-label="Website"
                 itemProp="url"
               >
@@ -215,19 +215,19 @@ export function AuthorBio({
         {/* Author Info */}
         <div className="flex-1">
           <div className="mb-4">
-            <h3 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-2" itemProp="name">
+            <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2" itemProp="name">
               About the Author
             </h3>
-            <h4 className="text-xl font-semibold text-neutral-800 dark:text-neutral-200 mb-1">
+            <h4 className="text-xl font-semibold text-[var(--text-primary)] mb-1">
               {name}
             </h4>
-            <p className="text-base text-neutral-600 dark:text-neutral-400" itemProp="jobTitle">
+            <p className="text-base text-[var(--text-tertiary)]" itemProp="jobTitle">
               {title}
             </p>
           </div>
 
           {bio && (
-            <p className="text-base text-neutral-700 dark:text-neutral-300 mb-4 leading-relaxed" itemProp="description">
+            <p className="text-base text-[var(--text-secondary)] mb-4 leading-relaxed" itemProp="description">
               {bio}
             </p>
           )}
@@ -235,7 +235,7 @@ export function AuthorBio({
           {/* Credentials Section */}
           {credentials && credentials.length > 0 && (
             <div className="mb-4">
-              <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 uppercase tracking-wider mb-2">
+              <p className="text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-2">
                 Credentials & Experience
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -247,8 +247,8 @@ export function AuthorBio({
                     itemScope
                     itemType="https://schema.org/EducationalOccupationalCredential"
                   >
-                    <span className="text-neutral-900 dark:text-neutral-100">•</span>
-                    <span className="text-sm text-neutral-700 dark:text-neutral-300" itemProp="name">
+                    <span className="text-[var(--text-primary)]">•</span>
+                    <span className="text-sm text-[var(--text-secondary)]" itemProp="name">
                       {cred}
                     </span>
                   </div>
@@ -260,14 +260,14 @@ export function AuthorBio({
           {/* Expertise Section */}
           {expertise && expertise.length > 0 && (
             <div className="mb-4">
-              <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 uppercase tracking-wider mb-2">
+              <p className="text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-2">
                 Areas of Expertise
               </p>
               <div className="flex flex-wrap gap-2">
                 {expertise.map((skill, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full"
+                    className="px-3 py-1 text-xs font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] rounded-full"
                     itemProp="knowsAbout"
                   >
                     {skill}
@@ -279,8 +279,8 @@ export function AuthorBio({
 
           {/* Social Links */}
           {showSocial && social && (
-            <div className="flex items-center gap-4 pt-4 border-t border-neutral-200 dark:border-neutral-700">
-              <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+            <div className="flex items-center gap-4 pt-4 border-t border-[var(--border-primary)]">
+              <p className="text-sm font-semibold text-[var(--text-primary)]">
                 Connect:
               </p>
               {social.linkedin && (
@@ -288,7 +288,7 @@ export function AuthorBio({
                   href={social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                  className="flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                   aria-label="LinkedIn Profile"
                   itemProp="sameAs"
                 >
@@ -301,7 +301,7 @@ export function AuthorBio({
                   href={social.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                  className="flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                   aria-label="GitHub Profile"
                   itemProp="sameAs"
                 >
@@ -312,7 +312,7 @@ export function AuthorBio({
               {social.email && (
                 <Link
                   href={social.email}
-                  className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                  className="flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                   aria-label="Email"
                   itemProp="email"
                 >
@@ -325,7 +325,7 @@ export function AuthorBio({
                   href={social.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+                  className="flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
                   aria-label="Website"
                   itemProp="url"
                 >

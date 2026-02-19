@@ -34,9 +34,9 @@ const TimelineItem = ({ item, isLast }: TimelineItemProps) => {
       {/* Timeline line */}
       <div className="relative flex flex-col items-center">
         {/* Year badge with logo */}
-        <div className="relative z-10 w-16 h-16 rounded-full bg-white dark:bg-[var(--neutral-900)] p-2 mb-4 shadow-lg border-2 border-[var(--border-primary)]">
+        <div className="relative z-10 w-16 h-16 rounded-full bg-[var(--surface-elevated)] p-2 mb-4 border-2 border-[var(--border-primary)]">
           {item.logo ? (
-            <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden bg-white dark:bg-[var(--neutral-900)]">
+            <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden bg-[var(--surface-elevated)]">
               <Image
                 src={item.logo}
                 alt={`${item.company} logo`}
@@ -46,7 +46,7 @@ const TimelineItem = ({ item, isLast }: TimelineItemProps) => {
               />
             </div>
           ) : (
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-warning)] flex items-center justify-center">
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center">
               <Icon className="w-6 h-6 text-white" />
             </div>
           )}
@@ -69,7 +69,7 @@ const TimelineItem = ({ item, isLast }: TimelineItemProps) => {
                   <h3 className="text-xl font-bold text-[var(--color-primary)]">
                     {item.role}
                   </h3>
-                  <div className="text-sm text-[var(--color-warning)] font-mono">
+                  <div className="text-sm text-[var(--text-tertiary)] font-mono">
                     {item.year}
                   </div>
                 </div>

@@ -12,7 +12,7 @@ export const Highlight = ({
   return (
     <span
       className={twMerge(
-        "bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 px-1 py-0.5",
+        "bg-[var(--surface-secondary)] text-[var(--text-primary)] px-1 py-0.5",
         className
       )}
     >

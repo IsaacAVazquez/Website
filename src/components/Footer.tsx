@@ -29,11 +29,11 @@ export const Footer = () => {
       className="relative z-20 border-t border-[var(--border-primary)] bg-[var(--surface-primary)]"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="rounded-2xl p-8 md:p-12 text-center bg-[var(--neutral-900)] border border-[var(--neutral-700)]">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--neutral-50)] mb-4">
+        <div className="rounded-2xl p-8 md:p-12 text-center bg-slate-900 dark:bg-slate-800 border border-slate-700 dark:border-slate-600">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
             Need a PM who can own the roadmap end to end?
           </h2>
-          <p className="text-lg text-[var(--neutral-400)] mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
             Looking for a product manager who combines technical expertise with
             strategic thinking? Let&apos;s discuss how I can help drive your
             product vision forward.
@@ -49,7 +49,7 @@ export const Footer = () => {
             </Link>
             <Link
               href="/resume"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-[var(--neutral-300)] border-2 border-[var(--neutral-600)] hover:border-[var(--neutral-400)] font-semibold rounded-xl transition-all min-h-[52px] text-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-slate-300 border-2 border-slate-600 hover:border-slate-400 font-semibold rounded-xl transition-all min-h-[52px] text-lg"
             >
               View Resume
             </Link>

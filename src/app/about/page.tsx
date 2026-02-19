@@ -62,7 +62,7 @@ export default function AboutPage() {
               description:
                 "Product manager with technical background building mission-driven products in civic tech and SaaS. Expertise in product strategy, user research, quality assurance, and data-driven decision making.",
               url: "https://isaacavazquez.com",
-              email: "isaacavazquez95@gmail.com",
+              email: "IsaacVazquez@berkeley.edu",
               sameAs: [
                 "https://linkedin.com/in/isaac-vazquez",
                 "https://github.com/IsaacAVazquez",

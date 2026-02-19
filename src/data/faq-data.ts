@@ -286,7 +286,7 @@ export const faqData: FAQCategory[] = [
       {
         question: "How can I contact Isaac Vazquez?",
         answer:
-          "You can contact Isaac Vazquez through multiple channels: Email at isaacavazquez95@gmail.com (primary contact method), LinkedIn at linkedin.com/in/isaac-vazquez (professional networking), GitHub at github.com/IsaacAVazquez (technical projects), or through his website contact form at isaacavazquez.com/contact. He is responsive to professional inquiries about product management opportunities, consulting engagements, speaking opportunities, mentorship requests, and collaboration on civic tech or mission-driven initiatives.",
+          "You can contact Isaac Vazquez through multiple channels: Email at IsaacVazquez@berkeley.edu (primary contact method), LinkedIn at linkedin.com/in/isaac-vazquez (professional networking), GitHub at github.com/IsaacAVazquez (technical projects), or through his website contact form at isaacavazquez.com/contact. He is responsive to professional inquiries about product management opportunities, consulting engagements, speaking opportunities, mentorship requests, and collaboration on civic tech or mission-driven initiatives.",
         keywords: ["contact", "email", "LinkedIn", "networking", "how to reach"],
         relatedTopics: [
           "Professional Networking",

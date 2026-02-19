@@ -31,7 +31,7 @@ export default function ResumePage() {
           jobTitle: "MBA Candidate & Product-Focused Technologist",
           description: "UC Berkeley Haas MBA Candidate '27 with 6+ years experience in quality assurance, data analytics, and technology",
           url: "https://isaacavazquez.com",
-          email: "isaacavazquez95@gmail.com",
+          email: "IsaacVazquez@berkeley.edu",
           sameAs: [
             "https://linkedin.com/in/isaac-vazquez",
             "https://github.com/IsaacAVazquez"

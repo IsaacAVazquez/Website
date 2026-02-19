@@ -40,7 +40,7 @@ export function ModernButton({
       "shadow-sm hover:shadow-md"
     ),
     secondary: cn(
-      "bg-[var(--surface-elevated)] hover:bg-[var(--neutral-100)]",
+      "bg-[var(--surface-elevated)] hover:bg-[var(--neutral-200)] dark:hover:bg-[var(--neutral-300)]",
       "text-[var(--text-primary)]",
       "border border-[var(--border-primary)]",
       "shadow-sm hover:shadow-md"
@@ -48,12 +48,12 @@ export function ModernButton({
     outline: cn(
       "border border-[var(--neutral-300)]",
       "text-[var(--text-primary)]",
-      "hover:bg-[var(--neutral-100)] hover:border-[var(--neutral-400)]"
+      "hover:bg-[var(--neutral-200)] dark:hover:bg-[var(--neutral-300)] hover:border-[var(--neutral-400)]"
     ),
     ghost: cn(
       "text-[var(--text-secondary)]",
       "hover:text-[var(--text-primary)]",
-      "hover:bg-[var(--neutral-100)]"
+      "hover:bg-[var(--neutral-200)] dark:hover:bg-[var(--neutral-300)]"
     ),
     accent: cn(
       "bg-[var(--color-primary)] hover:bg-[var(--color-secondary)]",

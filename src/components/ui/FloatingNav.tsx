@@ -106,7 +106,7 @@ export function FloatingNav() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-24 left-1/2 transform -translate-x-1/2 z-40 px-4 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black text-sm font-medium rounded-lg shadow-lg pointer-events-none"
+            className="fixed bottom-24 left-1/2 transform -translate-x-1/2 z-40 px-4 py-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm font-medium rounded-lg shadow-lg pointer-events-none"
           >
             <div className="flex items-center gap-2">
               <span>👇</span>
@@ -132,7 +132,7 @@ export function FloatingNav() {
             }}
             className={getNavClasses()}
           >
-            <div className="bg-white/80 dark:bg-[#2D1B12]/90 backdrop-blur-sm border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-lg rounded-2xl px-4 py-3 flex items-center gap-2">
+            <div className="bg-[var(--surface-primary)]/80 dark:bg-[var(--surface-secondary)]/90 backdrop-blur-sm border-2 border-[var(--border-primary)] shadow-lg rounded-2xl px-4 py-3 flex items-center gap-2">
               <ThemeToggle />
             {navlinks.map((link, index) => {
               const Icon = link.icon;
@@ -150,7 +150,7 @@ export function FloatingNav() {
                       "relative p-3 rounded-xl transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center",
                       active
                         ? "text-white"
-                        : "text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#FF6B35] dark:hover:text-[#FF8E53]"
+                        : "text-[var(--text-secondary)] hover:text-[var(--color-primary)]"
                     )}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -166,7 +166,7 @@ export function FloatingNav() {
                     {active && (
                       <motion.div
                         layoutId="activeIndicator"
-                        className="absolute inset-0 bg-gradient-to-br from-[#FF6B35] to-[#F7B32B] dark:from-[#FF8E53] dark:to-[#FFC857] rounded-xl shadow-warm-lg"
+                        className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent)] rounded-xl shadow-md"
                         initial={false}
                         transition={{
                           type: "spring",
@@ -187,7 +187,7 @@ export function FloatingNav() {
 
                     {/* Warm glow effect on hover */}
                     <motion.div
-                      className="absolute inset-0 rounded-xl bg-[#FF6B35]/10 dark:bg-[#FF8E53]/20 blur-md opacity-0"
+                      className="absolute inset-0 rounded-xl bg-[var(--color-primary)]/10 blur-md opacity-0"
                       whileHover={{ opacity: 1 }}
                       transition={{ duration: 0.3 }}
                     />
@@ -197,14 +197,14 @@ export function FloatingNav() {
             })}
 
             {/* CTA Button - Let's Talk */}
-            <div className="relative ml-2 pl-2 border-l-2 border-[#FFE4D6]/50 dark:border-[#FF8E53]/20">
+            <div className="relative ml-2 pl-2 border-l-2 border-[var(--border-primary)]/50">
               <Link
                 href="/contact"
                 aria-label="Contact Isaac Vazquez"
               >
                 <motion.button
-                  className="relative px-5 py-2 bg-gradient-to-br from-[#FF6B35] to-[#F7B32B] dark:from-[#FF8E53] dark:to-[#FFC857] text-white font-semibold rounded-xl shadow-warm-lg min-h-[44px] whitespace-nowrap text-sm"
-                  whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(255, 107, 53, 0.3)" }}
+                  className="relative px-5 py-2 bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] text-white font-semibold rounded-xl shadow-md min-h-[44px] whitespace-nowrap text-sm"
+                  whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(37, 99, 235, 0.3)" }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -292,12 +292,12 @@ export function GestureNavigation({ children }: { children: React.ReactNode }) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             className={twMerge(
-              "fixed top-1/2 transform -translate-y-1/2 z-40 p-4 bg-white/90 dark:bg-[#2D1B12]/90 backdrop-blur-sm border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30 shadow-warm-xl rounded-full",
+              "fixed top-1/2 transform -translate-y-1/2 z-40 p-4 bg-[var(--surface-primary)]/90 dark:bg-[var(--surface-secondary)]/90 backdrop-blur-sm border-2 border-[var(--border-primary)] shadow-xl rounded-full",
               dragDirection === "left" ? "left-4" : "right-4"
             )}
           >
             <motion.div
-              className="text-[#FF6B35] dark:text-[#FF8E53] text-2xl"
+              className="text-[var(--color-primary)] text-2xl"
               animate={{ x: dragDirection === "left" ? -5 : 5 }}
               transition={{ repeat: Infinity, repeatType: "reverse", duration: 0.5 }}
             >

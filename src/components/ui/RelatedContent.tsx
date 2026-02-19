@@ -124,20 +124,20 @@ export function RelatedContent({
 
                     {/* Content */}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-2 group-hover:text-[var(--color-secondary)] transition-colors line-clamp-2">
+                      <h3 className="font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--color-secondary)] transition-colors line-clamp-2">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed line-clamp-3">
+                      <p className="text-sm text-[var(--text-tertiary)] leading-relaxed line-clamp-3">
                         {item.description}
                       </p>
                     </div>
 
                     {/* Action indicator */}
-                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-neutral-200/30 dark:border-neutral-700/30">
-                      <span className="text-xs font-mono text-neutral-500 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors">
+                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-[var(--border-primary)]/30">
+                      <span className="text-xs font-mono text-[var(--text-tertiary)] group-hover:text-[var(--text-secondary)] transition-colors">
                         {item.external ? 'External Link' : 'Continue Reading'}
                       </span>
-                      <IconArrowRight className="w-4 h-4 text-neutral-500 dark:text-neutral-500 group-hover:text-[var(--color-secondary)] transform group-hover:translate-x-1 transition-all duration-300" />
+                      <IconArrowRight className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--color-secondary)] transform group-hover:translate-x-1 transition-all duration-300" />
                     </div>
                   </div>
                 </Link>
@@ -149,7 +149,7 @@ export function RelatedContent({
 
       {/* Optional trending indicator for dynamic content */}
       {items.some(item => item.featured) && (
-        <div className="flex items-center justify-center space-x-2 text-xs font-mono text-neutral-500 dark:text-neutral-500 mt-6">
+        <div className="flex items-center justify-center space-x-2 text-xs font-mono text-[var(--text-tertiary)] mt-6">
           <IconTrendingUp className="w-4 h-4" />
           <span>Trending content updated weekly</span>
         </div>

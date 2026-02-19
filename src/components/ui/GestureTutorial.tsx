@@ -44,13 +44,13 @@ export function GestureTutorial() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="relative mx-4 max-w-sm rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-2xl"
+            className="relative mx-4 max-w-sm rounded-2xl bg-[var(--surface-elevated)] p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
             <button
               onClick={handleDismiss}
-              className="absolute top-4 right-4 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors"
+              className="absolute top-4 right-4 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
               aria-label="Close tutorial"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,16 +60,16 @@ export function GestureTutorial() {
 
             {/* Tutorial content */}
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">
+              <h2 className="text-2xl font-bold text-[var(--text-primary)]">
                 Navigate with Gestures
               </h2>
 
-              <p className="text-neutral-600 dark:text-neutral-300">
+              <p className="text-[var(--text-secondary)]">
                 Swipe left or right to navigate between pages quickly!
               </p>
 
               {/* Visual gesture demo */}
-              <div className="relative h-24 bg-neutral-100 dark:bg-neutral-800 rounded-xl overflow-hidden">
+              <div className="relative h-24 bg-[var(--surface-secondary)] rounded-xl overflow-hidden">
                 <motion.div
                   className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-4"
                   animate={{
@@ -87,7 +87,7 @@ export function GestureTutorial() {
               </div>
 
               {/* Additional tips */}
-              <div className="space-y-2 text-sm text-neutral-500 dark:text-neutral-400">
+              <div className="space-y-2 text-sm text-[var(--text-tertiary)]">
                 <div className="flex items-start gap-2">
                   <span className="text-lg">📱</span>
                   <span>Use the navigation menu at the bottom for quick access</span>
@@ -101,7 +101,7 @@ export function GestureTutorial() {
               {/* Dismiss button */}
               <button
                 onClick={handleDismiss}
-                className="w-full py-3 bg-neutral-900 dark:bg-white text-white dark:text-black font-semibold rounded-xl hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors"
+                className="w-full py-3 bg-[var(--text-primary)] text-[var(--text-inverse)] font-semibold rounded-xl hover:opacity-90 transition-colors"
               >
                 Got it!
               </button>

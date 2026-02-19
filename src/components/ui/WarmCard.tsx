@@ -32,8 +32,7 @@ export function WarmCard({
         "rounded-xl",
         "bg-[var(--surface-elevated)]",
         "border border-[var(--border-primary)]",
-        "shadow-sm",
-        hover && "transition-all duration-250 ease-out hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--border-accent)] cursor-pointer",
+        hover && "transition-all duration-250 ease-out hover:-translate-y-0.5 hover:border-[var(--border-accent)] cursor-pointer",
         paddingClasses[padding],
         className
       )}

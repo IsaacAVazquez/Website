@@ -564,7 +564,7 @@ export function ProjectsContent() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 text-xs font-medium rounded-full bg-[var(--neutral-100)] text-[var(--text-secondary)]"
+                      className="px-2 py-1 text-xs font-medium rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20"
                     >
                       {tech}
                     </span>

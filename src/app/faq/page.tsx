@@ -154,7 +154,7 @@ const faqCategories = [
     questions: [
       {
         question: "How can I contact Isaac Vazquez?",
-        answer: "You can reach me via email at isaacavazquez95@gmail.com, on LinkedIn at linkedin.com/in/isaac-vazquez, on GitHub at github.com/IsaacAVazquez, or through the contact form at isaacavazquez.com/contact. I'm responsive to product management roles, consulting or QA advisory work, speaking invites, and mentorship conversations."
+        answer: "You can reach me via email at IsaacVazquez@berkeley.edu, on LinkedIn at linkedin.com/in/isaac-vazquez, on GitHub at github.com/IsaacAVazquez, or through the contact form at isaacavazquez.com/contact. I'm responsive to product management roles, consulting or QA advisory work, speaking invites, and mentorship conversations."
       },
       {
         question: "What kinds of conversations and collaborations interest Isaac?",

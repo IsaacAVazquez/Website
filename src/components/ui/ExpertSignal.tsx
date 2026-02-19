@@ -46,7 +46,7 @@ export function ExpertSignal({
   if (variant === "badge") {
     return (
       <span
-        className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700 rounded-full ${className}`}
+        className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[var(--surface-secondary)] text-[var(--text-primary)] border border-[var(--border-primary)] rounded-full ${className}`}
         itemProp={type === "education" ? "alumniOf" : type === "credential" ? "hasCredential" : undefined}
       >
         {displayIcon}
@@ -61,12 +61,12 @@ export function ExpertSignal({
   if (variant === "inline") {
     return (
       <span className={`inline-flex items-center gap-2 text-sm ${className}`}>
-        <span className="text-neutral-500 dark:text-neutral-400">
+        <span className="text-[var(--text-tertiary)]">
           {displayIcon}
         </span>
-        <span className="text-neutral-900 dark:text-neutral-100">
+        <span className="text-[var(--text-primary)]">
           {label}
-          {value && <span className="text-neutral-600 dark:text-neutral-400 ml-1">· {value}</span>}
+          {value && <span className="text-[var(--text-tertiary)] ml-1">· {value}</span>}
         </span>
         {verified && (
           <IconCheck className="w-3.5 h-3.5 text-green-600 dark:text-green-400" aria-label="Verified" />
@@ -78,18 +78,18 @@ export function ExpertSignal({
   if (variant === "compact") {
     return (
       <div
-        className={`flex items-center gap-3 p-3 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-sm ${className}`}
+        className={`flex items-center gap-3 p-3 bg-[var(--surface-secondary)] border border-[var(--border-primary)] rounded-sm ${className}`}
         itemProp={type === "education" ? "alumniOf" : type === "credential" ? "hasCredential" : undefined}
       >
-        <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-700 rounded-sm text-neutral-900 dark:text-neutral-100">
+        <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-[var(--surface-elevated)] border border-[var(--border-primary)] rounded-sm text-[var(--text-primary)]">
           {displayIcon}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+          <p className="text-sm font-semibold text-[var(--text-primary)]">
             {label}
           </p>
           {value && (
-            <p className="text-xs text-neutral-600 dark:text-neutral-400">
+            <p className="text-xs text-[var(--text-tertiary)]">
               {value}
             </p>
           )}
@@ -108,7 +108,7 @@ export function ExpertSignal({
     >
       <div className="flex items-start gap-4">
         {/* Icon */}
-        <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-sm text-neutral-900 dark:text-neutral-100">
+        <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[var(--surface-secondary)] border border-[var(--border-primary)] rounded-sm text-[var(--text-primary)]">
           {displayIcon}
         </div>
 
@@ -116,11 +116,11 @@ export function ExpertSignal({
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <div className="flex-1">
-              <h3 className="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
+              <h3 className="text-base font-semibold text-[var(--text-primary)] mb-1">
                 {label}
               </h3>
               {value && (
-                <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                <p className="text-sm text-[var(--text-tertiary)]">
                   {value}
                 </p>
               )}
@@ -160,7 +160,7 @@ export function ExpertSignalGroup({
   return (
     <div className={className}>
       {title && (
-        <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
+        <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
           {title}
         </h3>
       )}

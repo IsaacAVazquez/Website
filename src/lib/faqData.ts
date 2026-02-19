@@ -9,12 +9,12 @@ export interface FAQItem {
 export const productManagementFAQs: FAQItem[] = [
   {
     question: "What is your product management experience?",
-    answer: "I have 6+ years of experience in product-adjacent roles including quality assurance, data analytics, and technology at organizations like Civitech (civic tech), Open Progress (political campaigns), and Florida State University. I'm currently pursuing my MBA at UC Berkeley Haas to deepen my product management expertise.",
+    answer: "I have 6+ years of experience in product-adjacent roles including quality assurance, data analytics, and technology. I'm currently pursuing my MBA at UC Berkeley Haas to deepen my product management expertise.",
     category: "Experience"
   },
   {
     question: "What kind of product management roles are you looking for?",
-    answer: "I'm seeking Associate Product Manager (APM) or Product Manager roles in Austin TX or the San Francisco Bay Area, particularly in civic tech, SaaS, or mission-driven startups. I'm interested in opportunities that leverage my technical background, data analytics skills, and passion for social impact.",
+    answer: "I'm seeking Product Manager roles in Austin TX or the San Francisco Bay Area, particularly in civic tech, SaaS, or mission-driven startups. I'm interested in opportunities that leverage my technical background, data analytics skills, and passion for social impact.",
     category: "Career"
   },
   {

@@ -61,7 +61,7 @@ export default function ConsultingPage() {
             "@type": "Person",
             name: "Isaac Vazquez",
             jobTitle: "Product Strategist & MBA Candidate",
-            email: "isaacavazquez95@gmail.com",
+            email: "IsaacVazquez@berkeley.edu",
             url: "https://isaacavazquez.com",
           },
         }}

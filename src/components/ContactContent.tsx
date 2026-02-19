@@ -16,7 +16,7 @@ export function ContactContent() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16 max-w-4xl mx-auto"
+        className="text-center mb-12 max-w-4xl mx-auto"
       >
         <Heading level={1} className="mb-8">
           Let's Work Together
@@ -27,7 +27,7 @@ export function ContactContent() {
         </p>
       </motion.div>
 
-      <div className="flex flex-col items-center max-w-5xl mx-auto space-y-8">
+      <div className="space-y-6">
         <WarmCard hover={false} padding="xl" className="text-center w-full">
           <Heading level={2} className="font-bold mb-4 text-3xl">
             Ready to Connect?
@@ -41,10 +41,10 @@ export function ContactContent() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            <a href="mailto:isaacavazquez95@gmail.com">
+            <a href="mailto:IsaacVazquez@berkeley.edu">
               <ModernButton variant="accent" size="lg" className="w-full sm:w-auto">
                 <IconMail className="h-5 w-5" />
-                Email me -- I usually reply within a day
+                Email me — I reply within a day
               </ModernButton>
             </a>
             <a
@@ -64,47 +64,11 @@ export function ContactContent() {
               className="w-2 h-2 bg-[var(--color-success)] rounded-full animate-pulse"
               aria-hidden="true"
             />
-            <span>
-              Friendly replies, no pressure conversations, and plenty of
-              follow-through
-            </span>
+            <span>Open to conversations — friendly, no pressure</span>
           </div>
         </WarmCard>
 
-        <div className="grid md:grid-cols-3 gap-6 w-full">
-          {[
-            {
-              title: "Product Leadership",
-              description:
-                "Blend technical depth with MBA strategy work and six years of building products that scale.",
-            },
-            {
-              title: "Proven Results",
-              description:
-                "Shipped platforms with 60M+ voters reached, 99.999% uptime, and measurable jumps in NPS and defect rates.",
-            },
-            {
-              title: "Quick Responder",
-              description:
-                "I make time for thoughtful replies -- whether it's a call, a coffee chat, or a quick video sync.",
-            },
-          ].map((card) => (
-            <WarmCard
-              key={card.title}
-              hover={true}
-              padding="lg"
-              className="text-center"
-            >
-              <Heading level={3} className="text-lg font-bold mb-2">
-                {card.title}
-              </Heading>
-              <p className="text-sm text-[var(--text-secondary)]">
-                {card.description}
-              </p>
-            </WarmCard>
-          ))}
-        </div>
-
+     
         <WarmCard hover={false} padding="lg" className="w-full">
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -114,10 +78,8 @@ export function ContactContent() {
               </Heading>
             </div>
             <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
-              Based in Berkeley while finishing my UC Berkeley Haas MBA (May
-              2027). I split time between the Bay Area and Austin and love
-              digging into products that mix creativity, data, and
-              civic-minded impact.
+              Based in the Bay Area while attending UC Berkeley Haas (May
+              2027). I love digging into products that mix creativity, data, and broad user impact.
             </p>
           </div>
         </WarmCard>

@@ -16,8 +16,8 @@ const contactMethods = [
   {
     icon: IconMail,
     label: "Email",
-    value: "isaacavazquez95@gmail.com",
-    href: "mailto:isaacavazquez95@gmail.com",
+    value: "IsaacVazquez@berkeley.edu",
+    href: "mailto:IsaacVazquez@berkeley.edu",
   },
   {
     icon: IconBrandLinkedin,

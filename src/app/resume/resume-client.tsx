@@ -99,7 +99,7 @@ export default function Resume() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[var(--neutral-900)]">
+    <div className="min-h-screen bg-[var(--surface-primary)]">
       <div className="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 py-20 sm:py-24 lg:py-32">
         <motion.div
           initial={{ opacity: 0 }}
@@ -114,7 +114,7 @@ export default function Resume() {
             <div className="mb-10">
               <button
                 onClick={handleDownloadPDF}
-                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--text-primary)] text-[var(--text-primary)] text-sm font-semibold tracking-wider uppercase transition-all hover:bg-[var(--text-primary)] hover:text-white dark:hover:text-[var(--text-primary)]"
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--text-primary)] text-[var(--text-primary)] text-sm font-semibold tracking-wider uppercase transition-all hover:bg-[var(--text-primary)] hover:text-[var(--text-inverse)]"
               >
                 <IconDownload className="w-4 h-4" />
                 Download PDF
@@ -151,13 +151,7 @@ export default function Resume() {
                 </div>
               </motion.div>
             )}
-
-            <p className="text-lg sm:text-xl leading-relaxed max-w-4xl text-[var(--text-secondary)] font-light">
-              Technical product manager and UC Berkeley Haas MBA candidate with a proven track record: generated <span className="font-semibold text-[var(--color-primary)]">$4M+ in revenue</span>, served <span className="font-semibold text-[var(--color-primary)]">60M+ users</span>, and increased <span className="font-semibold text-[var(--color-primary)]">NPS from 23 to 36</span>. I pair a QA and data analytics foundation with product strategy, experimentation, and cross-functional leadership to deliver measurable business impact.
-            </p>
           </header>
-
-          <div className="h-px bg-[var(--text-primary)]/10 mb-20" />
 
           <section className="mb-24">
             <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-[var(--text-primary)] tracking-tight">
@@ -435,7 +429,7 @@ export default function Resume() {
                     {category.skills.map((skill) => (
                       <span
                         key={skill.name}
-                        className="px-4 py-2 border border-[var(--text-primary)]/10 text-sm text-[var(--text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all"
+                        className="px-4 py-2 border border-[var(--border-primary)] text-sm text-[var(--text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all"
                       >
                         {skill.name}
                       </span>
@@ -457,7 +451,7 @@ export default function Resume() {
               {["FC Barcelona", "Ferrari (F1)", "Big Foodie", "Film & TV Buff", "Travel & Cultural Immersion", "Digital Photography"].map((interest) => (
                 <span
                   key={interest}
-                  className="px-5 py-2.5 border-2 border-[var(--text-primary)]/10 text-[var(--text-secondary)] text-sm font-medium hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all cursor-default"
+                  className="px-5 py-2.5 border-2 border-[var(--border-primary)] text-[var(--text-secondary)] text-sm font-medium hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all cursor-default"
                 >
                   {interest}
                 </span>

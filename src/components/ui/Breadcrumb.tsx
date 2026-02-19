@@ -119,7 +119,7 @@ export function Breadcrumb({
                 {/* Link or current page */}
                 {isLast ? (
                   <span
-                    className="text-neutral-900 dark:text-neutral-100 font-medium"
+                    className="text-[var(--text-primary)] font-medium"
                     itemProp="name"
                     aria-current="page"
                   >
@@ -128,7 +128,7 @@ export function Breadcrumb({
                 ) : (
                   <Link
                     href={crumb.href}
-                    className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors flex items-center gap-1.5"
+                    className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-1.5"
                     itemProp="item"
                   >
                     {isHome && (
@@ -144,7 +144,7 @@ export function Breadcrumb({
                 {/* Separator */}
                 {!isLast && (
                   <IconChevronRight
-                    className="w-4 h-4 text-neutral-400 dark:text-neutral-600"
+                    className="w-4 h-4 text-[var(--text-tertiary)]"
                     aria-hidden="true"
                   />
                 )}
@@ -180,12 +180,13 @@ export function PageHeader({
     <header className={`mb-8 ${className}`}>
       {showBreadcrumb && <Breadcrumb items={breadcrumbs} />}
 
-      <h1 className="editorial-heading text-neutral-900 dark:text-neutral-100 mb-4">
+      <h1 className="editorial-heading text-[var(--text-primary)] mb-4">
+
         {title}
       </h1>
 
       {description && (
-        <p className="editorial-body text-neutral-700 dark:text-neutral-300 max-w-4xl">
+        <p className="editorial-body text-[var(--text-secondary)] max-w-4xl">
           {description}
         </p>
       )}

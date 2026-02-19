@@ -55,7 +55,7 @@ export default function RootLayout({
                 "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in civic tech and SaaS. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration.",
               url: "https://isaacavazquez.com",
               image: "https://isaacavazquez.com/og-image.png",
-              email: "isaacavazquez95@gmail.com",
+              email: "IsaacVazquez@berkeley.edu",
               sameAs: [
                 "https://linkedin.com/in/isaac-vazquez",
                 "https://github.com/IsaacAVazquez",

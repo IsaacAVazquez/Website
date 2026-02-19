@@ -38,16 +38,16 @@ const skills = [
 ];
 
 const industries = [
-  "Civic Tech",
+  "Consumer Tech",
   "SaaS",
   "Analytics",
   "Political Campaigns",
-  "EdTech",
+  "Data Intensive Applications",
 ];
 
 const experience = [
   { name: "UC Berkeley", sub: "Haas MBA" },
-  { name: "Florida State", sub: "B.S. Biology" },
+  { name: "Florida State", sub: "B.A. Political Science and International Affairs" },
   { name: "Civic Tech", sub: "Product & QA" },
   { name: "Political Campaigns", sub: "Analytics" },
 ];

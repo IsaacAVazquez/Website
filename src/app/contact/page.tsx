@@ -32,7 +32,7 @@ export default function Contact() {
           mainEntity: {
             "@type": "Person",
             "name": "Isaac Vazquez",
-            "email": "isaacavazquez95@gmail.com",
+            "email": "IsaacVazquez@berkeley.edu",
             "url": "https://isaacavazquez.com"
           }
         }}

@@ -216,10 +216,10 @@ export default function AccessibilityPage() {
               <Paragraph className="text-neutral-700 dark:text-neutral-300">
                 <strong>Email:</strong>{" "}
                 <a
-                  href="mailto:isaacavazquez95@gmail.com"
+                  href="mailto:IsaacVazquez@berkeley.edu"
                   className="text-black dark:text-white underline hover:text-neutral-600 dark:hover:text-neutral-300"
                 >
-                  isaacavazquez95@gmail.com
+                  IsaacVazquez@berkeley.edu
                 </a>
               </Paragraph>
               <Paragraph className="text-neutral-700 dark:text-neutral-300">

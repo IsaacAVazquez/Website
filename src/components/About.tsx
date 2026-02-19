@@ -38,83 +38,7 @@ export default function About() {
         </p>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="max-w-5xl mx-auto mb-12"
-      >
-        <PageSummary
-          variant="featured"
-          tldr="Technical product manager who pairs QA rigor with product strategy. Currently at Berkeley Haas sharpening how I scale data-heavy, user-facing products."
-          summary={
-            <>
-              <p>
-                I bridge quality engineering, data storytelling, and strategic
-                product work. At Civitech I owned testing for voter engagement
-                platforms across 60M+ users; before that I built policy
-                analytics at Florida State University and managed digital
-                programs at Open Progress.
-              </p>
-              <p>
-                As a <strong>Consortium Fellow</strong> and{" "}
-                <strong>MLT Professional Development Fellow</strong>, I'm now
-                at UC Berkeley Haas (MBA '27) expanding the product toolkit I
-                bring to civic tech, SaaS, and impact-minded teams.
-              </p>
-            </>
-          }
-          context="Based in the Bay - Open to PM/APM roles"
-        />
-
-        <div className="mt-8">
-          <ExpertSignalGroup
-            title="Credentials & Expertise"
-            variant="compact"
-            columns={2}
-            signals={[
-              {
-                type: "education",
-                label: "UC Berkeley Haas School of Business",
-                value:
-                  "MBA Candidate, Class of 2027 - Consortium Fellow - MLT Professional Development Fellow",
-                verified: true,
-              },
-              {
-                type: "education",
-                label: "Florida State University",
-                value:
-                  "Bachelor of Arts: Political Science & International Affairs",
-              },
-              {
-                type: "experience",
-                label: "Civitech - Quality Assurance Engineer",
-                value:
-                  "Leading testing for voter engagement platforms reaching 60M+ users",
-              },
-              {
-                type: "expertise",
-                label: "Product Management & Strategy",
-                value:
-                  "User Research - Roadmapping - Cross-functional Leadership - Experimentation - Go-to-Market",
-              },
-              {
-                type: "expertise",
-                label: "Technical Skills",
-                value:
-                  "Test Automation (Cypress) - SQL - API Testing - Data Analytics - Agile/Scrum",
-              },
-              {
-                type: "achievement",
-                label: "Impact & Results",
-                value:
-                  "99.999% platform uptime - 56% NPS improvement - 90% reduction in critical defects",
-              },
-            ]}
-          />
-        </div>
-      </motion.div>
-
+   
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -125,7 +49,7 @@ export default function About() {
           <div
             role="tablist"
             aria-label="About sections"
-            className="flex flex-wrap justify-center bg-[var(--surface-elevated)] p-2 rounded-2xl border border-[var(--border-primary)] shadow-sm"
+            className="flex flex-wrap justify-center bg-[var(--surface-elevated)] p-2 rounded-2xl border border-[var(--border-primary)]"
           >
             {tabs.map((tab, index) => (
               <button
@@ -147,8 +71,8 @@ export default function About() {
                 }}
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-200 min-h-[48px] ${
                   activeTab === tab.id
-                    ? "bg-[var(--color-primary)] text-white shadow-md"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--neutral-100)]"
+                    ? "bg-[var(--color-primary)] text-white"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]"
                 }`}
               >
                 <tab.icon className="w-5 h-5" aria-hidden="true" />

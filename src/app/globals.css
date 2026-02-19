@@ -35,7 +35,7 @@
   a:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 3px var(--border-accent);
   }
 
   input:focus-visible,
@@ -44,7 +44,7 @@
     outline: 2px solid var(--color-primary);
     outline-offset: 0;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 3px var(--border-accent);
   }
 }
 
@@ -274,12 +274,10 @@
     background: var(--surface-elevated);
     border: 1px solid var(--border-primary);
     border-radius: 12px;
-    box-shadow: var(--shadow-sm);
     transition: all 0.25s ease;
   }
 
   .card-hover:hover {
-    box-shadow: var(--shadow-md);
     border-color: var(--border-accent);
     transform: translateY(-1px);
   }

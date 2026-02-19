@@ -315,7 +315,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "mainEntity": data.mainEntity || {
             "@type": "Person",
             "name": siteConfig.name,
-            "email": "isaacavazquez95@gmail.com",
+            "email": "IsaacVazquez@berkeley.edu",
             "url": siteConfig.url,
           },
           ...data,

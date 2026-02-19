@@ -49,12 +49,12 @@ export function QASection({
       <div className="mb-8">
         <h2
           id="qa-section-title"
-          className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-3"
+          className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-3"
         >
           {title}
         </h2>
         {description && (
-          <p className="text-base text-neutral-600 dark:text-neutral-400 max-w-3xl">
+          <p className="text-base text-[var(--text-tertiary)] max-w-3xl">
             {description}
           </p>
         )}
@@ -65,7 +65,7 @@ export function QASection({
         {categories.map((category, categoryIndex) => (
           <div key={category}>
             {categories.length > 1 && (
-              <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-4">
                 {category}
               </h3>
             )}
@@ -79,7 +79,7 @@ export function QASection({
                   transition={{ duration: 0.4, delay: (categoryIndex * 3 + index) * 0.05 }}
                   className={`
                     ${variant === "compact" ? "p-4" : "p-5 md:p-6"}
-                    ${variant === "featured" ? "card bg-neutral-50 dark:bg-neutral-900" : "card"}
+                    ${variant === "featured" ? "card bg-[var(--surface-secondary)]" : "card"}
                   `}
                   itemScope
                   itemProp="mainEntity"
@@ -89,7 +89,7 @@ export function QASection({
                   <div className="flex items-start gap-3 mb-3">
                     {showIcons && (
                       <div className="flex-shrink-0 mt-1">
-                        <div className="w-6 h-6 rounded-full bg-neutral-900 dark:bg-neutral-100 flex items-center justify-center">
+                        <div className="w-6 h-6 rounded-full bg-[var(--text-primary)] flex items-center justify-center">
                           <IconQuestionMark
                             className="w-4 h-4 text-white dark:text-black"
                             aria-hidden="true"
@@ -98,7 +98,7 @@ export function QASection({
                       </div>
                     )}
                     <h3
-                      className="text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100"
+                      className="text-lg md:text-xl font-semibold text-[var(--text-primary)]"
                       itemProp="name"
                     >
                       {item.question}
@@ -113,7 +113,7 @@ export function QASection({
                     itemType="https://schema.org/Answer"
                   >
                     <div
-                      className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed editorial-body"
+                      className="text-base text-[var(--text-secondary)] leading-relaxed editorial-body"
                       itemProp="text"
                     >
                       {typeof item.answer === "string" ? (
@@ -161,17 +161,17 @@ export function QAItem({ question, answer, showIcon = true }: QAItem & { showIco
     >
       <div className="flex items-start gap-2 mb-2">
         {showIcon && (
-          <IconCheck className="w-5 h-5 text-neutral-900 dark:text-neutral-100 flex-shrink-0 mt-0.5" aria-hidden="true" />
+          <IconCheck className="w-5 h-5 text-[var(--text-primary)] flex-shrink-0 mt-0.5" aria-hidden="true" />
         )}
         <h4
-          className="text-base font-semibold text-neutral-900 dark:text-neutral-100"
+          className="text-base font-semibold text-[var(--text-primary)]"
           itemProp="name"
         >
           {question}
         </h4>
       </div>
       <div
-        className={`${showIcon ? "ml-7" : ""} text-sm text-neutral-700 dark:text-neutral-300`}
+        className={`${showIcon ? "ml-7" : ""} text-sm text-[var(--text-secondary)]`}
         itemScope
         itemProp="acceptedAnswer"
         itemType="https://schema.org/Answer"
