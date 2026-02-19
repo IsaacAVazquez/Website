@@ -56,9 +56,9 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-32 bg-[var(--surface-primary)]"
+      className="py-16 md:py-24 bg-[var(--surface-primary)]"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -81,26 +81,24 @@ export function ContactSection() {
             className="grid md:grid-cols-3 gap-6 mb-12"
           >
             {contactMethods.map((method) => (
-              <WarmCard
+              <a
                 key={method.label}
-                padding="lg"
-                hover
-                className="text-center"
+                href={method.href}
+                {...(method.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="block"
               >
-                <method.icon className="h-10 w-10 text-[var(--color-primary)] mx-auto mb-4" />
-                <h3 className="font-bold text-lg mb-2 text-[var(--text-primary)]">
-                  {method.label}
-                </h3>
-                <a
-                  href={method.href}
-                  {...(method.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className="text-[var(--text-secondary)] hover:text-[var(--color-primary)] transition-colors text-sm"
-                >
-                  {method.value}
-                </a>
-              </WarmCard>
+                <WarmCard padding="md" hover className="text-center h-full">
+                  <method.icon className="h-10 w-10 text-[var(--color-primary)] mx-auto mb-4" />
+                  <h3 className="font-bold text-lg mb-2 text-[var(--text-primary)]">
+                    {method.label}
+                  </h3>
+                  <span className="text-[var(--text-secondary)] text-sm">
+                    {method.value}
+                  </span>
+                </WarmCard>
+              </a>
             ))}
           </motion.div>
 

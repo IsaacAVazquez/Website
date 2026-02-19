@@ -103,9 +103,6 @@ export function ModernHero() {
                 className="object-cover object-top"
               />
             </div>
-            <p className="text-sm text-[var(--text-tertiary)] mt-3">
-              Isaac Vazquez, MBA Candidate at UC Berkeley Haas School of Business
-            </p>
           </motion.div>
         </div>
       </motion.div>

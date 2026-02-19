@@ -47,7 +47,7 @@ const industries = [
 
 const experience = [
   { name: "UC Berkeley", sub: "Haas MBA" },
-  { name: "Florida State", sub: "B.A. Political Science and International Affairs" },
+  { name: "Florida State", sub: "Political Science & Int'l Affairs" },
   { name: "Civic Tech", sub: "Product & QA" },
   { name: "Political Campaigns", sub: "Analytics" },
 ];
@@ -73,7 +73,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 bg-[var(--surface-secondary)]"
+      className="py-16 md:py-24 bg-[var(--surface-secondary)]"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -82,7 +82,7 @@ export function AboutSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div variants={itemVariants} className="mb-16">
+          <motion.div variants={itemVariants} className="mb-12">
             <Heading level={2} className="mb-6">
               About Me
             </Heading>
@@ -110,13 +110,13 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="mb-16">
+          <motion.div variants={itemVariants} className="mb-12">
             <h3 className="text-2xl font-bold mb-8 text-[var(--text-primary)]">
               What I Do
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               {skills.map((skill) => (
-                <WarmCard key={skill.title} padding="lg" hover>
+                <WarmCard key={skill.title} padding="md" hover>
                   <skill.icon className="h-8 w-8 text-[var(--color-primary)] mb-4" />
                   <h4 className="font-bold text-lg mb-2 text-[var(--text-primary)]">
                     {skill.title}
@@ -147,7 +147,7 @@ export function AboutSection() {
             <h3 className="text-2xl font-bold mb-6 text-[var(--text-primary)]">
               Experience
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {experience.map((item) => (
                 <div
                   key={item.name}
