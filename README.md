@@ -174,15 +174,16 @@ The site is optimized for deployment on Netlify with automatic builds.
 ## 📚 Documentation
 
 ### Development Guides
-- **[GETTING-STARTED.md](./GETTING-STARTED.md)** - Quick start guide for developers
+- **[GETTING-STARTED.md](./GETTING-STARTED.md)** - Quick start checklist
 - **[DEVELOPMENT.md](./DEVELOPMENT.md)** - Comprehensive development setup
 - **[COMPONENTS.md](./COMPONENTS.md)** - UI component library documentation
-- **[PERFORMANCE.md](./PERFORMANCE.md)** - Performance optimization details
+- **[PERFORMANCE.md](./PERFORMANCE.md)** - Performance strategy overview
+- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** - Common fixes and diagnostics
 
-### Project Management
+### Project Management & Ops
 - **[CHANGELOG.md](./CHANGELOG.md)** - Version history and updates
-- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** - Common issues and solutions
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Deployment configuration guide
+- **[IMPLEMENTATION_PROGRESS.md](./IMPLEMENTATION_PROGRESS.md)** - Roadmap + milestone tracking
+- **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** - Netlify deployment configuration
 
 ## 🤝 Contributing
 

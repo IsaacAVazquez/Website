@@ -446,9 +446,9 @@ PRAGMA index_info('idx_players_position');
 ## 📚 Related Documentation
 
 - **[FANTASY_PLATFORM_SETUP.md](./FANTASY_PLATFORM_SETUP.md)** - Platform setup and configuration
-- **[API.md](./API.md)** - API endpoints for database operations
-- **[PERFORMANCE.md](./PERFORMANCE.md)** - Performance optimization strategies
-- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** - Common database issues and solutions
+- **[../API.md](../API.md)** - API endpoints for database operations
+- **[../PERFORMANCE.md](../PERFORMANCE.md)** - Performance optimization strategies
+- **[../TROUBLESHOOTING.md](../TROUBLESHOOTING.md)** - Common database issues and solutions
 
 ---
 

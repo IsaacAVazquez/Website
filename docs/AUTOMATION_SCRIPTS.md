@@ -524,7 +524,7 @@ node scripts/create-master-player-database.js --rebuild --optimize
 - **[FANTASY_PLATFORM_SETUP.md](./FANTASY_PLATFORM_SETUP.md)** - Platform configuration and setup
 - **[DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md)** - Database structure and relationships
 - **[ENVIRONMENT_CONFIGURATION.md](./ENVIRONMENT_CONFIGURATION.md)** - Environment variables and security
-- **[PERFORMANCE.md](./PERFORMANCE.md)** - Performance optimization strategies
+- **[../PERFORMANCE.md](../PERFORMANCE.md)** - Performance optimization strategies
 - **[../API.md](../API.md)** - API endpoints and data flow
 - **[../TROUBLESHOOTING.md](../TROUBLESHOOTING.md)** - General troubleshooting guide
 

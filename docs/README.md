@@ -15,28 +15,33 @@ This directory contains comprehensive technical documentation for the Isaac Vazq
 - **[FANTASY_PLATFORM_SETUP.md](./FANTASY_PLATFORM_SETUP.md)** - Complete platform setup and configuration
 - **[DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md)** - SQLite database schema and data models
 - **[PLAYER_IMAGES_SETUP.md](./PLAYER_IMAGES_SETUP.md)** - Player image system configuration
-- **[performance-optimizations.md](./performance-optimizations.md)** - Fantasy platform performance tuning
+- **[AUTOMATION_SCRIPTS.md](./AUTOMATION_SCRIPTS.md)** - Automation and ingestion jobs
+- **[CRON_SETUP.md](./CRON_SETUP.md)** - Scheduled tasks and background jobs
 
 ### 🛠️ Technical Architecture
-- **[../API.md](../API.md)** - Complete API endpoint documentation
-- **[COMPONENT_LIBRARY.md](./COMPONENT_LIBRARY.md)** - UI component library documentation
-- **[PERFORMANCE.md](./PERFORMANCE.md)** - Performance optimization strategies
-- **[AUTOMATION_SCRIPTS.md](./AUTOMATION_SCRIPTS.md)** - Complete automation and data processing scripts
-- **[project-analysis.md](./project-analysis.md)** - Technical architecture analysis
+- **[../ARCHITECTURE.md](../ARCHITECTURE.md)** - Full stack diagram and module map
+- **[../API.md](../API.md)** - API endpoint reference
+- **[../COMPONENTS.md](../COMPONENTS.md)** - UI component library documentation
+- **[../PERFORMANCE.md](../PERFORMANCE.md)** - Performance playbook
+- **[DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md)** - Data relationships and schema tuning
 
 ### 🎨 User Experience & SEO
-- **[SEO_IMPROVEMENTS.md](./SEO_IMPROVEMENTS.md)** - SEO strategy and implementation
-- **[draft-tracker-spec.md](./draft-tracker-spec.md)** - Draft tracker feature specification
-- **[quick-wins.md](./quick-wins.md)** - UX/UI improvement recommendations
+- **[README_SEO.md](../README_SEO.md)** - SEO audits and benchmarks
+- **[SEO_IMPROVEMENTS_SUMMARY.md](../SEO_IMPROVEMENTS_SUMMARY.md)** - Search wins + roadmap
+- **[SEO_QUICK_WINS.md](../SEO_QUICK_WINS.md)** - Fast fixes and monitoring list
+- **[UI_UX_RESEARCH.md](../UI_UX_RESEARCH.md)** - Research insights and personas
+- **[HOMEPAGE_IMPROVEMENTS.md](../HOMEPAGE_IMPROVEMENTS.md)** - UX initiatives and experiments
 
 ### 🚀 Deployment & Operations
-- **[../DEPLOYMENT.md](../DEPLOYMENT.md)** - Production deployment guide
+- **[../DEPLOYMENT.md](../DEPLOYMENT.md)** - Production deployment overview
+- **[../DEPLOYMENT_GUIDE.md](../DEPLOYMENT_GUIDE.md)** - Netlify configuration screenshots
 - **[../TROUBLESHOOTING.md](../TROUBLESHOOTING.md)** - Common issues and solutions
-- **[CRON_SETUP.md](./CRON_SETUP.md)** - Automated task configuration
-- **[implementation-plan.md](./implementation-plan.md)** - Development roadmap
+- **[ENVIRONMENT_CONFIGURATION.md](./ENVIRONMENT_CONFIGURATION.md)** - Secrets + env setup
+- **[../IMPLEMENTATION_PROGRESS.md](../IMPLEMENTATION_PROGRESS.md)** - Delivery roadmap
 
 ### 📊 Project Management
 - **[../CHANGELOG.md](../CHANGELOG.md)** - Version history and updates
+- **[../IMPLEMENTATION_PROGRESS.md](../IMPLEMENTATION_PROGRESS.md)** - Feature delivery tracking
 - **[../CLAUDE.md](../CLAUDE.md)** - Comprehensive platform architecture overview
 
 ## 🔗 Quick Navigation
@@ -50,13 +55,13 @@ This directory contains comprehensive technical documentation for the Isaac Vazq
 ### For System Administrators
 1. Review **[DATABASE_SCHEMA.md](./DATABASE_SCHEMA.md)** for data architecture
 2. Configure deployment with **[../DEPLOYMENT.md](../DEPLOYMENT.md)**
-3. Set up monitoring with **[PERFORMANCE.md](./PERFORMANCE.md)**
+3. Set up monitoring with **[PERFORMANCE.md](../PERFORMANCE.md)**
 4. Configure automation with **[CRON_SETUP.md](./CRON_SETUP.md)**
 
 ### For UI/UX Work
-1. Study **[COMPONENT_LIBRARY.md](./COMPONENT_LIBRARY.md)** for design system
-2. Review **[SEO_IMPROVEMENTS.md](./SEO_IMPROVEMENTS.md)** for optimization
-3. Check **[draft-tracker-spec.md](./draft-tracker-spec.md)** for feature specs
+1. Study **[COMPONENTS.md](../COMPONENTS.md)** for the design system
+2. Review **[UI_UX_RESEARCH.md](../UI_UX_RESEARCH.md)** for qualitative insights
+3. Check **[SEO_IMPROVEMENTS_SUMMARY.md](../SEO_IMPROVEMENTS_SUMMARY.md)** for optimization priorities
 
 ### For Fantasy Football Features
 1. **[FANTASY_PLATFORM_SETUP.md](./FANTASY_PLATFORM_SETUP.md)** - Complete setup guide
@@ -88,17 +93,14 @@ All documentation follows this structure:
 ## 🔄 Recent Updates
 
 ### Latest Documentation Changes
-- **Consolidated** overlapping fantasy football setup guides
-- **Enhanced** component library documentation with new Badge component
-- **Organized** file structure with docs directory
-- **Updated** README.md to reflect dual-purpose platform
-- **Added** comprehensive database schema documentation
+- **Synced** all internal markdown links to live files (API, performance, troubleshooting, onboarding).
+- **Expanded** SEO/UX references to use `SEO_IMPROVEMENTS_SUMMARY.md`, `SEO_QUICK_WINS.md`, and `UI_UX_RESEARCH.md`.
+- **Documented** automation/cron flows via `AUTOMATION_SCRIPTS.md` and `CRON_SETUP.md`.
+- **Updated** the root README, changelog, and getting-started guide to match the current stack.
 
 ### Removed/Deprecated Files
-- `FANTASY_SETUP.md`, `FANTASY_FOOTBALL_SETUP.md`, `FANTASY_DATA_PERSISTENCE.md` (consolidated into `FANTASY_PLATFORM_SETUP.md`)
-- `COMPONENTS.md` (replaced with enhanced `COMPONENT_LIBRARY.md`)
-- `ENVIRONMENT_SETUP.md` (replaced with secure `ENVIRONMENT_CONFIGURATION.md`)
-- Various obsolete admin and improvement summary files
+- Legacy fantasy docs (`FANTASY_SETUP.md`, `FANTASY_FOOTBALL_SETUP.md`, `FANTASY_DATA_PERSISTENCE.md`) remain consolidated into `FANTASY_PLATFORM_SETUP.md`.
+- `ENVIRONMENT_SETUP.md` is retired in favor of the hardened `ENVIRONMENT_CONFIGURATION.md`.
 
 ## 🤝 Contributing to Documentation
 
@@ -125,4 +127,4 @@ For questions about documentation or platform setup:
 
 ---
 
-*This documentation index is maintained as part of the Isaac Vazquez Digital Platform project. Last updated: January 2025*
+*This documentation index is maintained as part of the Isaac Vazquez Digital Platform project. Last updated: February 2026*

@@ -293,8 +293,8 @@ console.log('Environment Check:', {
 ## 📚 Related Documentation
 
 - **[FANTASY_PLATFORM_SETUP.md](./FANTASY_PLATFORM_SETUP.md)** - Complete platform setup guide
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Production deployment instructions  
-- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** - Common issues and solutions
+- **[DEPLOYMENT.md](../DEPLOYMENT.md)** - Production deployment instructions  
+- **[TROUBLESHOOTING.md](../TROUBLESHOOTING.md)** - Common issues and solutions
 - **[SECURITY.md](./SECURITY.md)** - Security best practices and hardening
 
 ---

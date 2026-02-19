@@ -381,10 +381,10 @@ npm run health:check
 
 ## 📚 Additional Resources
 
-- **[API.md](./API.md)** - Complete API documentation
-- **[PERFORMANCE.md](./PERFORMANCE.md)** - Performance optimization guide
-- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** - Common issues and solutions
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Production deployment guide
+- **[API.md](../API.md)** - Complete API documentation
+- **[PERFORMANCE.md](../PERFORMANCE.md)** - Performance optimization guide
+- **[TROUBLESHOOTING.md](../TROUBLESHOOTING.md)** - Common issues and solutions
+- **[DEPLOYMENT.md](../DEPLOYMENT.md)** - Production deployment guide
 - **[scripts/](./scripts/)** - Data collection and processing scripts
 
 ---
