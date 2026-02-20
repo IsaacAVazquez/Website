@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { IconDownload, IconMail, IconBrandLinkedin } from "@tabler/icons-react";
+import { IconDownload, IconMail, IconBrandLinkedin, IconPhone } from "@tabler/icons-react";
 
 const skillCategories = [
   {
@@ -23,26 +23,40 @@ const skillCategories = [
     ]
   },
   {
-    category: "Cloud & AI",
+    category: "Cloud Platforms",
     skills: [
       { name: "Azure", level: 85 },
-      { name: "GCP", level: 85 },
-      { name: "ChatGPT", level: 95 },
-      { name: "Claude Code", level: 95 },
-      { name: "Copilot", level: 90 }
+      { name: "GCP", level: 85 }
     ]
   },
   {
-    category: "Design & Collaboration",
+    category: "AI & Automation",
     skills: [
-      { name: "Figma", level: 85 },
-      { name: "Miro", level: 80 },
-      { name: "Canva", level: 85 },
-      { name: "Photoshop", level: 75 },
-      { name: "Lightroom", level: 75 },
+      { name: "ChatGPT Codex", level: 95 },
+      { name: "Claude Code", level: 95 },
+      { name: "Copilot", level: 90 },
+      { name: "Bolt", level: 85 },
+      { name: "Lovable", level: 85 },
+      { name: "n8n", level: 80 },
+      { name: "Zapier", level: 85 }
+    ]
+  },
+  {
+    category: "Product & Workflow",
+    skills: [
+      { name: "Agile", level: 90 },
       { name: "Jira", level: 90 },
       { name: "Asana", level: 85 },
-      { name: "Agile", level: 90 }
+      { name: "Miro", level: 80 },
+      { name: "Figma", level: 85 },
+      { name: "Canva", level: 85 }
+    ]
+  },
+  {
+    category: "Creative Tools",
+    skills: [
+      { name: "Photoshop", level: 75 },
+      { name: "Lightroom", level: 75 }
     ]
   }
 ];
@@ -100,18 +114,18 @@ export default function Resume() {
 
   return (
     <div className="min-h-screen bg-[var(--surface-primary)]">
-      <div className="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 py-20 sm:py-24 lg:py-32">
+      <div className="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 py-16 sm:py-20">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <header className="mb-20 sm:mb-24 lg:mb-28">
+          <header className="mb-12 sm:mb-16">
             <h1 className="font-bold text-6xl sm:text-7xl lg:text-8xl mb-8 tracking-tighter text-[var(--text-primary)] leading-[0.9]">
               ISAAC<br />VAZQUEZ
             </h1>
 
-            <div className="mb-10">
+            <div className="mb-6">
               <button
                 onClick={handleDownloadPDF}
                 className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--text-primary)] text-[var(--text-primary)] text-sm font-semibold tracking-wider uppercase transition-all hover:bg-[var(--text-primary)] hover:text-[var(--text-inverse)]"
@@ -121,7 +135,11 @@ export default function Resume() {
               </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-10 text-[var(--text-secondary)] text-sm">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-6 text-[var(--text-secondary)] text-sm">
+              <span className="flex items-center gap-2">
+                <IconPhone className="w-4 h-4" />
+                (850) 591-0159
+              </span>
               <a
                 href="mailto:isaacvazquez@berkeley.edu"
                 className="flex items-center gap-2 hover:text-[var(--color-primary)] transition-colors"
@@ -144,23 +162,23 @@ export default function Resume() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-10"
+                className="mb-6"
               >
                 <div className="inline-block px-6 py-2 border-2 border-[var(--color-primary)] text-[var(--color-primary)] text-sm font-semibold tracking-wide">
-                  Berkeley Haas MBA '27 • Consortium Fellow • MLT Fellow
+                  Berkeley Haas MBA &apos;27 • Consortium Fellow • MLT Fellow
                 </div>
               </motion.div>
             )}
           </header>
 
-          <section className="mb-24">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-[var(--text-primary)] tracking-tight">
+          <section className="mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-[var(--text-primary)] tracking-tight">
               Experience
             </h2>
 
-            <div className="space-y-20">
+            <div className="space-y-14">
               <div>
-                <div className="mb-8">
+                <div className="mb-5">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
                     <h3 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
                       CIVITECH
@@ -174,9 +192,9 @@ export default function Resume() {
                   </p>
                 </div>
 
-                <div className="space-y-12 ml-0 sm:ml-8">
+                <div className="space-y-8 ml-0 sm:ml-8">
                   <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
                       <h4 className="text-xl font-bold text-[var(--text-primary)]">
                         Quality Assurance Engineer
                       </h4>
@@ -187,35 +205,23 @@ export default function Resume() {
                     <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Partnered with engineering and DevOps to create deployment rules, reducing critical production defects by <span className="font-semibold text-[var(--text-primary)]">90%</span></span>
+                        <span>Translated leadership and user feedback into product requirements for RunningMate, driving cross-functional alignment between engineering and product teams</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Increased NPS from <span className="font-semibold text-[var(--text-primary)]">23 to 36</span> by preventing customer-facing issues through improved release workflows</span>
+                        <span>Conducted user interviews and analyzed user clickstream data to identify onboarding obstacles, implementing targeted improvements that increased activation rates by <span className="font-semibold text-[var(--text-primary)]">25%</span></span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Drove successful launch of RunningMate platform by translating cross-functional feedback into user stories aligned with business goals</span>
+                        <span>Built and deployed AI-powered QA and product workflow automation using LLM-assisted processes, reducing bug triage time by <span className="font-semibold text-[var(--text-primary)]">40%</span></span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Synthesized prototype testing insights and stakeholder feedback into intuitive features, enhancing product usability</span>
+                        <span>Designed and implemented structured manual and automated QA testing frameworks, accelerating delivery from monthly to biweekly releases and reducing validation time by <span className="font-semibold text-[var(--text-primary)]">30%</span></span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Transformed technical challenges into cohesive customer journeys, driving <span className="font-semibold text-[var(--text-primary)]">30%</span> product adoption</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Pioneered AI-powered workflow automation with LLM-assisted QA processes, reducing bug triage time by <span className="font-semibold text-[var(--text-primary)]">40%</span></span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Trained cross-functional teams on AI tools, improving collaboration across engineering, product, and client services</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Accelerated product delivery from monthly to biweekly releases through unified testing frameworks, reducing validation time by <span className="font-semibold text-[var(--text-primary)]">30%</span></span>
+                        <span>Built a real-time event-generation system in Google Cloud, transitioning clients to a self-service model and reducing onboarding time by <span className="font-semibold text-[var(--text-primary)]">60%</span></span>
                       </li>
                     </ul>
                   </div>
@@ -223,7 +229,7 @@ export default function Resume() {
                   <div className="h-px bg-[var(--text-primary)]/5" />
 
                   <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
                       <h4 className="text-xl font-bold text-[var(--text-primary)]">
                         Quality Assurance Analyst
                       </h4>
@@ -234,31 +240,15 @@ export default function Resume() {
                     <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Owned end-to-end product vision and feature roadmap for TextOut platform through user research and requirements definition</span>
+                        <span>Owned product vision for peer-to-peer texting platform, prioritizing features based on quantitative impact assessments that drove a <span className="font-semibold text-[var(--text-primary)]">35%</span> increase in engagement</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Prioritized features based on impact and technical feasibility, driving <span className="font-semibold text-[var(--text-primary)]">35%</span> increase in user engagement</span>
+                        <span>Generated <span className="font-semibold text-[var(--text-primary)]">$4M</span> in additional revenue by leading a cross-functional pricing strategy initiative through market analysis, competitor research, and financial modeling</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Championed product reliability initiatives achieving <span className="font-semibold text-[var(--text-primary)]">99.999%</span> uptime through 400+ manual and automated tests</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Improved release efficiency by <span className="font-semibold text-[var(--text-primary)]">30%</span> and enhanced user digital experience across two products</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Led cross-functional pricing strategy, aligning engineering, sales, and finance teams around product value</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Conducted market analysis and built financial models, generating <span className="font-semibold text-[var(--text-primary)]">$4M</span> in additional revenue</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Transformed client data accessibility to self-service model through GCP automation, reducing onboarding time by <span className="font-semibold text-[var(--text-primary)]">90%</span></span>
+                        <span>Championed product reliability and release standards, achieving <span className="font-semibold text-[var(--text-primary)]">99.999%</span> uptime, reducing critical defects by <span className="font-semibold text-[var(--text-primary)]">90%</span>, and improving release efficiency by <span className="font-semibold text-[var(--text-primary)]">50%</span></span>
                       </li>
                     </ul>
                   </div>
@@ -266,7 +256,7 @@ export default function Resume() {
               </div>
 
               <div>
-                <div className="mb-8">
+                <div className="mb-5">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
                     <h3 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
                       OPEN PROGRESS
@@ -276,13 +266,13 @@ export default function Resume() {
                     </div>
                   </div>
                   <p className="text-[var(--text-secondary)] text-sm italic max-w-3xl">
-                    Los Angeles, CA • Consultancy that crafted conversational and grassroots digital engagement strategies (acquired by Civitech)
+                    Los Angeles, CA • Consultancy that built digital engagement solutions through innovative peer-to-peer outreach (acquired by Civitech)
                   </p>
                 </div>
 
-                <div className="space-y-12 ml-0 sm:ml-8">
+                <div className="space-y-8 ml-0 sm:ml-8">
                   <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
                       <h4 className="text-xl font-bold text-[var(--text-primary)]">
                         Client Services Manager
                       </h4>
@@ -293,15 +283,15 @@ export default function Resume() {
                     <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Orchestrated delivery of 80+ digital programs, achieving <span className="font-semibold text-[var(--text-primary)]">100%</span> on-time delivery across multiple channels</span>
+                        <span>Led client digital and communication strategy by developing data-driven messaging validation frameworks, boosting response rates <span className="font-semibold text-[var(--text-primary)]">20%</span> while scaling outreach to <span className="font-semibold text-[var(--text-primary)]">50M+</span> voters</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Developed campaign messaging strategy through data analytics, resulting in <span className="font-semibold text-[var(--text-primary)]">25%</span> higher engagement</span>
+                        <span>Analyzed voter behavior and campaign performance to surface high-impact opportunities, presenting findings to senior leadership that shaped strategic program priorities</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Scaled platform to reach <span className="font-semibold text-[var(--text-primary)]">50+ million</span> voters while increasing response rates by <span className="font-semibold text-[var(--text-primary)]">20%</span></span>
+                        <span>Orchestrated successful delivery of <span className="font-semibold text-[var(--text-primary)]">80+</span> client campaigns, achieving <span className="font-semibold text-[var(--text-primary)]">100%</span> on-time delivery while maintaining consistency across multiple channels</span>
                       </li>
                     </ul>
                   </div>
@@ -309,7 +299,7 @@ export default function Resume() {
                   <div className="h-px bg-[var(--text-primary)]/5" />
 
                   <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
                       <h4 className="text-xl font-bold text-[var(--text-primary)]">
                         Digital and Data Associate
                       </h4>
@@ -320,11 +310,15 @@ export default function Resume() {
                     <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Built automated ETL data pipelines with interactive dashboards (Sisense, Tableau), reducing decision-making time by <span className="font-semibold text-[var(--text-primary)]">40%</span></span>
+                        <span>Automated ETL processes and reporting pipelines, replacing manual spreadsheet workflows with nightly data drops and interactive dashboards (Sisense, Tableau), reducing analysis time by <span className="font-semibold text-[var(--text-primary)]">40%</span></span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Optimized targeting strategies across 20+ campaigns, improving conversion rate by <span className="font-semibold text-[var(--text-primary)]">25%</span> and user acquisition by <span className="font-semibold text-[var(--text-primary)]">20%</span></span>
+                        <span>Leveraged user behavior analytics to optimize segmentation across 20+ campaigns, improving conversion rates by <span className="font-semibold text-[var(--text-primary)]">25%</span> and supporter conversion efficiency by <span className="font-semibold text-[var(--text-primary)]">15%</span></span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
+                        <span>Created compelling visual content for multichannel campaigns (email, SMS, events), driving engagement improvements that increased response rates by <span className="font-semibold text-[var(--text-primary)]">30%</span></span>
                       </li>
                     </ul>
                   </div>
@@ -332,7 +326,7 @@ export default function Resume() {
                   <div className="h-px bg-[var(--text-primary)]/5" />
 
                   <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-5">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
                       <h4 className="text-xl font-bold text-[var(--text-primary)]">
                         Digital and Communications Intern
                       </h4>
@@ -343,7 +337,7 @@ export default function Resume() {
                     <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
                       <li className="flex items-start">
                         <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Implemented personalized email campaigns and A/B testing, achieving <span className="font-semibold text-[var(--text-primary)]">5x</span> growth in user base and <span className="font-semibold text-[var(--text-primary)]">50%</span> conversion increase</span>
+                        <span>Developed data-driven user acquisition strategy by implementing personalized email campaigns and A/B testing frameworks, resulting in <span className="font-semibold text-[var(--text-primary)]">5x</span> growth in user base and <span className="font-semibold text-[var(--text-primary)]">50%</span> increase in conversion rates across client platforms</span>
                       </li>
                     </ul>
                   </div>
@@ -352,20 +346,20 @@ export default function Resume() {
             </div>
           </section>
 
-          <div className="h-px bg-[var(--text-primary)]/10 mb-20" />
+          <div className="h-px bg-[var(--text-primary)]/10 mb-14" />
 
-          <section className="mb-24">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-[var(--text-primary)] tracking-tight">
+          <section className="mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-[var(--text-primary)] tracking-tight">
               Education
             </h2>
 
-            <div className="space-y-12 ml-0 sm:ml-8">
+            <div className="space-y-8 ml-0 sm:ml-8">
               {showMBA && (
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                 >
-                  <div className="mb-10">
+                  <div className="mb-6">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
                       <h3 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
                         University of California, Berkeley
@@ -387,12 +381,12 @@ export default function Resume() {
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 mt-1 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Haas Tech Club (Marketing Manager), Product Management Club, Artificial Intelligence Club, Fintech Club</span>
+                        <span>VP of Marketing, Haas Tech Club; VP of Admissions, Consortium; Product Management Club, AI Club, Fintech Club</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="h-px bg-[var(--text-primary)]/5 mb-10" />
+                  <div className="h-px bg-[var(--text-primary)]/5 mb-6" />
                 </motion.div>
               )}
 
@@ -412,14 +406,14 @@ export default function Resume() {
             </div>
           </section>
 
-          <div className="h-px bg-[var(--text-primary)]/10 mb-20" />
+          <div className="h-px bg-[var(--text-primary)]/10 mb-14" />
 
-          <section className="mb-24">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-[var(--text-primary)] tracking-tight">
-              Skills & Expertise
+          <section className="mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-[var(--text-primary)] tracking-tight">
+              Skills &amp; Expertise
             </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ml-0 sm:ml-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ml-0 sm:ml-8">
               {skillCategories.map((category) => (
                 <div key={category.category}>
                   <h3 className="text-sm font-bold text-[var(--color-primary)] uppercase tracking-wider mb-4">
@@ -440,14 +434,14 @@ export default function Resume() {
             </div>
           </section>
 
-          <div className="h-px bg-[var(--text-primary)]/10 mb-20" />
+          <div className="h-px bg-[var(--text-primary)]/10 mb-14" />
 
           <section>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-[var(--text-primary)] tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-[var(--text-primary)] tracking-tight">
               Interests
             </h2>
 
-            <div className="flex flex-wrap gap-4 ml-0 sm:ml-8">
+            <div className="flex flex-wrap gap-3 ml-0 sm:ml-8">
               {["FC Barcelona", "Ferrari (F1)", "Big Foodie", "Film & TV Buff", "Travel & Cultural Immersion", "Digital Photography"].map((interest) => (
                 <span
                   key={interest}

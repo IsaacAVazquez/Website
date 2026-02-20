@@ -9,7 +9,6 @@ import {
   IconDatabase,
   IconTestPipe,
   IconChartBar,
-  IconTrendingUp,
   IconEye,
 } from "@tabler/icons-react";
 import { WarmCard } from "@/components/ui/WarmCard";
@@ -20,11 +19,6 @@ import { useState, lazy, Suspense } from "react";
 const ProjectDetailModal = lazy(() =>
   import("@/components/ProjectDetailModal").then((mod) => ({
     default: mod.ProjectDetailModal,
-  }))
-);
-const LazyQADashboard = lazy(() =>
-  import("@/components/LazyQADashboard").then((mod) => ({
-    default: mod.LazyQADashboard,
   }))
 );
 
@@ -432,50 +426,6 @@ const projects: Project[] = [
       "Proactively identified performance bottlenecks before user impact, improving user satisfaction and retention",
     timeline: "4 months (2022-2023)",
   },
-  {
-    id: 6,
-    title: "Fantasy Football Tiers",
-    description:
-      "Interactive tier visualization using clustering algorithms to analyze player rankings",
-    tech: ["D3.js", "TypeScript", "K-Means", "Framer Motion"],
-    type: "normal",
-    icon: IconTrendingUp,
-    metrics: "6-tier clustering, real-time updates",
-    github: "https://github.com/IsaacAVazquez",
-    link: "/fantasy-football",
-    detailedMetrics: [
-      {
-        label: "Data Points",
-        value: "300+ players",
-        improvement: "All positions",
-      },
-      {
-        label: "Clustering Accuracy",
-        value: "92%",
-        improvement: "Expert consensus match",
-      },
-      {
-        label: "Update Frequency",
-        value: "Daily",
-        improvement: "Automated pipeline",
-      },
-      {
-        label: "User Engagement",
-        value: "85% return rate",
-        improvement: "Interactive features",
-      },
-    ],
-    screenshot: "/project-screenshots/fantasy-football-tiers.png",
-    challenges: [
-      "Real-time data synchronization from FantasyPros",
-      "Responsive D3.js visualizations across devices",
-      "Clustering algorithm optimization for player tiers",
-      "User-friendly interface for complex data",
-    ],
-    impact:
-      "Demonstrates advanced data visualization and algorithm implementation skills with real-time data processing",
-    timeline: "4 months (2024)",
-  },
 ];
 
 const containerVariants = {
@@ -507,14 +457,12 @@ export function ProjectsContent() {
           Case Studies
         </Heading>
         <p className="text-lg text-[var(--text-secondary)] max-w-3xl leading-relaxed">
-          A curated selection of impactful projects demonstrating product
-          management expertise through strategic thinking, cross-functional
-          leadership, and measurable business outcomes. Each case study follows
-          the Problem-Process-Result framework.
+          A curated selection of projects demonstrating product management
+          expertise through strategic thinking, cross-functional leadership,
+          and measurable business outcomes.
         </p>
         <p className="text-sm text-[var(--text-tertiary)] mt-4 max-w-3xl">
-          Click any project to view the full case study with detailed metrics,
-          methodology, and lessons learned.
+          Click any project to view metrics, challenges, and outcomes.
         </p>
       </div>
 
@@ -635,25 +583,6 @@ export function ProjectsContent() {
             Get In Touch
           </ModernButton>
         </Link>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.8 }}
-        className="mt-20"
-      >
-        <Suspense
-          fallback={
-            <div className="flex items-center justify-center h-64">
-              <div className="text-[var(--text-tertiary)]">
-                Loading dashboard...
-              </div>
-            </div>
-          }
-        >
-          <LazyQADashboard />
-        </Suspense>
       </motion.div>
 
       <Suspense fallback={null}>

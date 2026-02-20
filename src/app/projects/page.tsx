@@ -31,14 +31,6 @@ const projectsStructuredData = [
     dateCreated: "2020-01-01",
     applicationCategory: "WebApplication",
   },
-  {
-    name: "Fantasy Football Tier Rankings",
-    description: "Interactive tier visualization using clustering algorithms to analyze 300+ player rankings",
-    programmingLanguage: ["TypeScript", "JavaScript"],
-    keywords: ["D3.js", "K-Means", "React", "Data Visualization", "Fantasy Sports"],
-    dateCreated: "2024-01-01",
-    applicationCategory: "WebApplication",
-  },
 ];
 
 export default function ProjectsPage() {
