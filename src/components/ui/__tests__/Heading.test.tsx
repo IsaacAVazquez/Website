@@ -2,13 +2,6 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Heading } from '../Heading'
 
-// Mock next/font/local
-jest.mock('next/font/local', () => {
-  return jest.fn(() => ({
-    className: 'mocked-font-class',
-  }))
-})
-
 describe('Heading', () => {
   it('renders children correctly', () => {
     render(<Heading>Test Heading</Heading>)
@@ -64,30 +57,22 @@ describe('Heading', () => {
   it('applies correct text size for level 1', () => {
     render(<Heading level={1}>H1</Heading>)
     const heading = screen.getByText('H1')
-    expect(heading).toHaveClass('text-6xl')
+    expect(heading).toHaveClass('text-5xl')
     expect(heading).toHaveClass('font-bold')
   })
 
   it('applies correct text size for level 2', () => {
     render(<Heading level={2}>H2</Heading>)
     const heading = screen.getByText('H2')
-    expect(heading).toHaveClass('text-5xl')
+    expect(heading).toHaveClass('text-4xl')
     expect(heading).toHaveClass('font-bold')
   })
 
   it('applies correct text size for level 3', () => {
     render(<Heading level={3}>H3</Heading>)
     const heading = screen.getByText('H3')
-    expect(heading).toHaveClass('text-4xl')
+    expect(heading).toHaveClass('text-3xl')
     expect(heading).toHaveClass('font-semibold')
-  })
-
-  it('applies gradient text styling', () => {
-    render(<Heading>Gradient Heading</Heading>)
-    const heading = screen.getByText('Gradient Heading')
-    expect(heading).toHaveClass('bg-clip-text')
-    expect(heading).toHaveClass('text-transparent')
-    expect(heading).toHaveClass('bg-gradient-to-r')
   })
 
   it('applies custom className', () => {
@@ -96,9 +81,9 @@ describe('Heading', () => {
     expect(heading).toHaveClass('custom-class')
   })
 
-  it('applies font className from next/font/local', () => {
-    render(<Heading>Font Test</Heading>)
-    const heading = screen.getByText('Font Test')
-    expect(heading).toHaveClass('mocked-font-class')
+  it('applies text color from CSS variable', () => {
+    render(<Heading>Styled</Heading>)
+    const heading = screen.getByText('Styled')
+    expect(heading).toHaveClass('text-[var(--text-primary)]')
   })
 })

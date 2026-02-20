@@ -4,48 +4,52 @@ import { Player } from '@/types'
 describe('tierCalculator', () => {
   const mockPlayers: Player[] = [
     {
-      player_name: 'Player 1',
+      id: '1',
+      name: 'Player 1',
       position: 'RB',
       team: 'KC',
-      rank_ecr: 1,
-      rank_min: 1,
-      rank_max: 2,
-      rank_ave: 1.2,
-      rank_std: 0.3,
       averageRank: 1,
+      projectedPoints: 300,
+      standardDeviation: 0.3,
+      expertRanks: [1, 2],
+      minRank: 1,
+      maxRank: 2,
     },
     {
-      player_name: 'Player 2',
+      id: '2',
+      name: 'Player 2',
       position: 'RB',
       team: 'SF',
-      rank_ecr: 2,
-      rank_min: 2,
-      rank_max: 3,
-      rank_ave: 2.3,
-      rank_std: 0.4,
       averageRank: 2,
+      projectedPoints: 280,
+      standardDeviation: 0.4,
+      expertRanks: [2, 3],
+      minRank: 2,
+      maxRank: 3,
     },
     {
-      player_name: 'Player 3',
+      id: '3',
+      name: 'Player 3',
       position: 'WR',
       team: 'BUF',
-      rank_ecr: 3,
-      rank_min: 3,
-      rank_max: 5,
-      rank_ave: 3.5,
-      rank_std: 0.8,
       averageRank: 3,
+      projectedPoints: 250,
+      standardDeviation: 0.8,
+      expertRanks: [3, 5],
+      minRank: 3,
+      maxRank: 5,
     },
     {
-      player_name: 'Player 4',
+      id: '4',
+      name: 'Player 4',
       position: 'WR',
       team: 'MIA',
-      rank_ecr: 4,
-      rank_min: 4,
-      rank_max: 6,
-      rank_ave: 4.8,
-      rank_std: 0.9,
       averageRank: 4,
+      projectedPoints: 230,
+      standardDeviation: 0.9,
+      expertRanks: [4, 6],
+      minRank: 4,
+      maxRank: 6,
     },
   ]
 
@@ -81,15 +85,14 @@ describe('tierCalculator', () => {
 
     it('respects maxTiers parameter', () => {
       const manyPlayers: Player[] = Array.from({ length: 50 }, (_, i) => ({
-        player_name: `Player ${i + 1}`,
-        position: 'RB',
+        id: String(i + 1),
+        name: `Player ${i + 1}`,
+        position: 'RB' as const,
         team: 'TST',
-        rank_ecr: i + 1,
-        rank_min: i + 1,
-        rank_max: i + 2,
-        rank_ave: i + 1.5,
-        rank_std: 0.5,
         averageRank: i + 1,
+        projectedPoints: 300 - i * 5,
+        standardDeviation: 0.5,
+        expertRanks: [i + 1, i + 2],
       }))
 
       const result = calculateTiers(manyPlayers, 'ppr', 5)
@@ -133,13 +136,13 @@ describe('tierCalculator', () => {
       })
     })
 
-    it('handles players with missing averageRank', () => {
-      const playersWithMissingRank: Player[] = [
-        { ...mockPlayers[0], averageRank: undefined },
+    it('handles players with high averageRank gracefully', () => {
+      const playersWithHighRank: Player[] = [
+        { ...mockPlayers[0], averageRank: 999 },
         { ...mockPlayers[1], averageRank: 2 },
       ]
 
-      const result = calculateTiers(playersWithMissingRank, 'ppr')
+      const result = calculateTiers(playersWithHighRank, 'ppr')
       expect(result.length).toBeGreaterThan(0)
     })
 

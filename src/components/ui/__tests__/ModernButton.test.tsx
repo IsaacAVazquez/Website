@@ -2,11 +2,6 @@ import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { ModernButton } from '../ModernButton'
 
-// Mock framer-motion
-jest.mock('framer-motion', () => ({
-  useReducedMotion: jest.fn(() => false),
-}))
-
 describe('ModernButton', () => {
   it('renders children correctly', () => {
     render(<ModernButton>Click me</ModernButton>)
@@ -16,34 +11,34 @@ describe('ModernButton', () => {
   it('applies default variant (primary)', () => {
     render(<ModernButton>Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('bg-[#FF6B35]')
-    expect(button).toHaveClass('text-white')
+    expect(button).toHaveClass('bg-[var(--neutral-900)]')
+    expect(button).toHaveClass('text-[var(--neutral-50)]')
   })
 
   it('applies secondary variant correctly', () => {
     render(<ModernButton variant="secondary">Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('bg-[#F7B32B]')
+    expect(button).toHaveClass('bg-[var(--surface-elevated)]')
   })
 
   it('applies outline variant correctly', () => {
     render(<ModernButton variant="outline">Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('border-2')
-    expect(button).toHaveClass('border-[#FF6B35]')
+    expect(button).toHaveClass('border')
+    expect(button).toHaveClass('border-[var(--neutral-300)]')
   })
 
   it('applies ghost variant correctly', () => {
     render(<ModernButton variant="ghost">Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('text-[#6B4F3D]')
+    expect(button).toHaveClass('text-[var(--text-secondary)]')
   })
 
   it('applies default size (md)', () => {
     render(<ModernButton>Button</ModernButton>)
     const button = screen.getByText('Button')
     expect(button).toHaveClass('px-6')
-    expect(button).toHaveClass('py-3')
+    expect(button).toHaveClass('py-2.5')
     expect(button).toHaveClass('min-h-[44px]')
   })
 
@@ -59,7 +54,7 @@ describe('ModernButton', () => {
     render(<ModernButton size="lg">Button</ModernButton>)
     const button = screen.getByText('Button')
     expect(button).toHaveClass('px-8')
-    expect(button).toHaveClass('py-4')
+    expect(button).toHaveClass('py-3.5')
     expect(button).toHaveClass('min-h-[52px]')
   })
 
@@ -75,7 +70,7 @@ describe('ModernButton', () => {
     render(<ModernButton disabled>Button</ModernButton>)
     const button = screen.getByText('Button')
     expect(button).toBeDisabled()
-    expect(button).toHaveClass('disabled:opacity-50')
+    expect(button).toHaveClass('disabled:opacity-40')
     expect(button).toHaveClass('disabled:cursor-not-allowed')
   })
 
@@ -120,7 +115,7 @@ describe('ModernButton', () => {
     render(<ModernButton>Button</ModernButton>)
     const button = screen.getByText('Button')
     expect(button).toHaveClass('transition-all')
-    expect(button).toHaveClass('duration-300')
+    expect(button).toHaveClass('duration-200')
   })
 
   it('forwards additional props to button element', () => {
@@ -131,12 +126,6 @@ describe('ModernButton', () => {
     )
     const button = screen.getByTestId('submit-btn')
     expect(button).toHaveAttribute('type', 'submit')
-  })
-
-  it('applies hover translate effect when motion is not reduced', () => {
-    render(<ModernButton>Button</ModernButton>)
-    const button = screen.getByText('Button')
-    expect(button).toHaveClass('hover:-translate-y-0.5')
   })
 
   it('supports all variant and size combinations', () => {

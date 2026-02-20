@@ -40,6 +40,7 @@ describe('WarmCard', () => {
     )
     const card = container.firstChild as HTMLElement
     expect(card).not.toHaveClass('p-4')
+    expect(card).not.toHaveClass('p-5')
     expect(card).not.toHaveClass('p-6')
     expect(card).not.toHaveClass('p-8')
     expect(card).not.toHaveClass('p-10')
@@ -52,8 +53,8 @@ describe('WarmCard', () => {
       </WarmCard>
     )
     const card = container.firstChild as HTMLElement
-    expect(card).toHaveClass('hover:shadow-warm-lg')
-    expect(card).toHaveClass('hover:-translate-y-1')
+    expect(card).toHaveClass('hover:-translate-y-0.5')
+    expect(card).toHaveClass('hover:border-[var(--border-accent)]')
     expect(card).toHaveClass('cursor-pointer')
   })
 
@@ -96,14 +97,14 @@ describe('WarmCard', () => {
       </WarmCard>
     )
     const card = container.firstChild as HTMLElement
-    expect(card).toHaveClass('bg-white')
-    expect(card).toHaveClass('rounded-2xl')
-    expect(card).toHaveClass('border-2')
+    expect(card).toHaveClass('bg-[var(--surface-elevated)]')
+    expect(card).toHaveClass('rounded-xl')
+    expect(card).toHaveClass('border')
   })
 
   it('supports all padding sizes', () => {
     const sizes: Array<'none' | 'sm' | 'md' | 'lg' | 'xl'> = ['none', 'sm', 'md', 'lg', 'xl']
-    const expectedClasses = ['', 'p-4', 'p-6', 'p-8', 'p-10']
+    const expectedClasses = ['', 'p-5', 'p-6', 'p-8', 'p-10']
 
     sizes.forEach((size, index) => {
       const { container } = render(

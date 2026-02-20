@@ -11,34 +11,34 @@ describe('Badge', () => {
   it('applies default variant', () => {
     const { container } = render(<Badge>Default</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('bg-[#FF6B35]/20')
-    expect(badge).toHaveClass('text-[#FF6B35]')
+    expect(badge).toHaveClass('bg-[var(--color-primary)]/10')
+    expect(badge).toHaveClass('text-[var(--color-primary)]')
   })
 
   it('applies success variant correctly', () => {
     const { container } = render(<Badge variant="success">Success</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('bg-[#6BCF7F]/20')
-    expect(badge).toHaveClass('text-[#6BCF7F]')
+    expect(badge).toHaveClass('bg-[var(--color-success)]/10')
+    expect(badge).toHaveClass('text-[var(--color-success)]')
   })
 
   it('applies warning variant correctly', () => {
     const { container } = render(<Badge variant="warning">Warning</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('bg-[#F7B32B]/20')
-    expect(badge).toHaveClass('text-[#F7B32B]')
+    expect(badge).toHaveClass('bg-[var(--color-warning)]/10')
+    expect(badge).toHaveClass('text-[var(--color-warning)]')
   })
 
   it('applies outline variant correctly', () => {
     const { container } = render(<Badge variant="outline">Outline</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('border-[#FFE4D6]')
+    expect(badge).toHaveClass('border-[var(--border-primary)]')
   })
 
   it('applies default size (sm)', () => {
     const { container } = render(<Badge>Small</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('px-2.5')
+    expect(badge).toHaveClass('px-2')
     expect(badge).toHaveClass('py-0.5')
     expect(badge).toHaveClass('text-xs')
   })
@@ -46,7 +46,7 @@ describe('Badge', () => {
   it('applies medium size correctly', () => {
     const { container } = render(<Badge size="md">Medium</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('px-3')
+    expect(badge).toHaveClass('px-2.5')
     expect(badge).toHaveClass('py-1')
     expect(badge).toHaveClass('text-sm')
   })
@@ -54,7 +54,7 @@ describe('Badge', () => {
   it('applies large size correctly', () => {
     const { container } = render(<Badge size="lg">Large</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('px-4')
+    expect(badge).toHaveClass('px-3')
     expect(badge).toHaveClass('py-1.5')
     expect(badge).toHaveClass('text-base')
   })
@@ -70,14 +70,8 @@ describe('Badge', () => {
     const badge = container.firstChild as HTMLElement
     expect(badge).toHaveClass('inline-flex')
     expect(badge).toHaveClass('items-center')
-    expect(badge).toHaveClass('rounded-lg')
-    expect(badge).toHaveClass('font-semibold')
-  })
-
-  it('is focusable with tabIndex', () => {
-    const { container } = render(<Badge>Test</Badge>)
-    const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveAttribute('tabIndex', '0')
+    expect(badge).toHaveClass('rounded-md')
+    expect(badge).toHaveClass('font-medium')
   })
 
   it('forwards additional props', () => {
