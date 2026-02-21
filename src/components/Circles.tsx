@@ -1,7 +1,13 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const Circles = () => {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return null;
+  }
+
   return (
     <>
       <motion.div

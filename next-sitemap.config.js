@@ -36,7 +36,7 @@ module.exports = {
     })
 
     result.push({
-      loc: '/projects',
+      loc: '/portfolio',
       changefreq: 'monthly',
       priority: 0.95,
       lastmod: new Date().toISOString(),

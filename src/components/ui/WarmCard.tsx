@@ -8,6 +8,7 @@ interface WarmCardProps {
   padding?: "none" | "sm" | "md" | "lg" | "xl";
   ariaLabel?: string;
   ariaDescription?: string;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 export function WarmCard({
@@ -17,6 +18,7 @@ export function WarmCard({
   padding = "md",
   ariaLabel,
   ariaDescription,
+  onClick,
 }: WarmCardProps) {
   const paddingClasses = {
     none: "",
@@ -32,13 +34,14 @@ export function WarmCard({
         "rounded-xl",
         "bg-[var(--surface-elevated)]",
         "border border-[var(--border-primary)]",
-        hover && "transition-all duration-250 ease-out hover:-translate-y-0.5 hover:border-[var(--border-accent)] cursor-pointer",
+        hover && "transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[var(--border-accent)] cursor-pointer",
         paddingClasses[padding],
         className
       )}
       role="article"
       aria-label={ariaLabel}
-      aria-description={ariaDescription}
+      {...(ariaDescription ? { title: ariaDescription } : {})}
+      onClick={onClick}
     >
       {children}
     </div>

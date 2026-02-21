@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { navlinks } from "@/constants/navlinks";
 import { socials } from "@/constants/socials";
-import { IconCommand } from "@tabler/icons-react";
+import { IconSearch } from "@tabler/icons-react";
 import { WarmCard } from "./WarmCard";
 
 interface CommandItem {
@@ -18,6 +18,7 @@ interface CommandItem {
 }
 
 export function CommandPalette() {
+  const shouldReduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -142,19 +143,23 @@ export function CommandPalette() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center pt-20"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Command palette"
             onClick={() => setIsOpen(false)}
           >
             <WarmCard
               hover={false}
               padding="none"
               className="w-full max-w-2xl mx-4 overflow-hidden"
+              ariaLabel="Command palette"
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               <motion.div
-                initial={{ scale: 0.9, y: -20 }}
+                initial={{ scale: shouldReduceMotion ? 1 : 0.9, y: shouldReduceMotion ? 0 : -20 }}
                 animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: -20 }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                exit={{ scale: shouldReduceMotion ? 1 : 0.9, y: shouldReduceMotion ? 0 : -20 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 30 }}
               >
                 {/* Search Input */}
                 <div className="flex items-center gap-3 p-4 border-b-2 border-gray-200 dark:border-gray-700">
@@ -183,7 +188,7 @@ export function CommandPalette() {
                         }, {} as Record<string, CommandItem[]>)
                       ).map(([category, items]) => (
                         <div key={category} className="mb-4">
-                          <div className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-secondary uppercase tracking-wider">
+                          <div className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
                             <span>{categoryIcons[category as keyof typeof categoryIcons]}</span>
                             {category}
                           </div>
@@ -197,10 +202,10 @@ export function CommandPalette() {
                                 onClick={command.action}
                                 className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-left transition-all duration-200 ${
                                   selectedIndex === globalIndex
-                                    ? "bg-vivid-blue/20 text-vivid-blue"
-                                    : "hover:bg-neutral-100/50 dark:hover:bg-neutral-800/50 text-primary"
+                                    ? "bg-primary/20 text-primary"
+                                    : "hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[var(--text-primary)]"
                                 }`}
-                                whileHover={{ x: 4 }}
+                                whileHover={shouldReduceMotion ? undefined : { x: 4 }}
                                 transition={{ duration: 0.2 }}
                               >
                                 <Icon className="h-5 w-5 flex-shrink-0" />
@@ -209,13 +214,13 @@ export function CommandPalette() {
                                     {command.title}
                                   </div>
                                   {command.subtitle && (
-                                    <div className="text-sm text-secondary truncate">
+                                    <div className="text-sm text-[var(--text-secondary)] truncate">
                                       {command.subtitle}
                                     </div>
                                   )}
                                 </div>
                                 {selectedIndex === globalIndex && (
-                                  <kbd className="px-2 py-1 text-xs bg-vivid-blue/20 rounded text-vivid-blue">
+                                  <kbd className="px-2 py-1 text-xs bg-primary/20 rounded text-primary">
                                     ↵
                                   </kbd>
                                 )}
@@ -226,7 +231,7 @@ export function CommandPalette() {
                       ))}
                     </div>
                   ) : (
-                    <div className="p-8 text-center text-secondary">
+                    <div className="p-8 text-center text-[var(--text-secondary)]">
                       <IconSearch className="h-8 w-8 mx-auto mb-3 opacity-50" />
                       <p>No commands found</p>
                       <p className="text-sm mt-1">Try a different search term</p>
@@ -235,7 +240,7 @@ export function CommandPalette() {
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between p-3 border-t border-neutral-200/20 dark:border-neutral-700/20 text-xs text-secondary">
+                <div className="flex items-center justify-between p-3 border-t border-neutral-200/20 dark:border-neutral-700/20 text-xs text-[var(--text-secondary)]">
                   <div className="flex items-center gap-4">
                     <span>Navigate with ↑↓</span>
                     <span>Select with ↵</span>

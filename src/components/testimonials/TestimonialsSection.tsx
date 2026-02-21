@@ -80,19 +80,19 @@ export function TestimonialsSection({
       {showStats && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center p-4 bg-slate-50/50 dark:bg-slate-800/25 rounded-lg border border-slate-200/50 dark:border-slate-700/50">
-            <div className="text-2xl font-bold text-electric-blue">{stats.total}</div>
+            <div className="text-2xl font-bold text-primary">{stats.total}</div>
             <div className="text-sm text-slate-600 dark:text-slate-400">Total Reviews</div>
           </div>
           <div className="text-center p-4 bg-slate-50/50 dark:bg-slate-800/25 rounded-lg border border-slate-200/50 dark:border-slate-700/50">
-            <div className="text-2xl font-bold text-matrix-green">{stats.averageRating.toFixed(1)}</div>
+            <div className="text-2xl font-bold text-success">{stats.averageRating.toFixed(1)}</div>
             <div className="text-sm text-slate-600 dark:text-slate-400">Average Rating</div>
           </div>
           <div className="text-center p-4 bg-slate-50/50 dark:bg-slate-800/25 rounded-lg border border-slate-200/50 dark:border-slate-700/50">
-            <div className="text-2xl font-bold text-cyber-teal">{stats.categories['qa-engineering']}</div>
+            <div className="text-2xl font-bold text-accent">{stats.categories['qa-engineering']}</div>
             <div className="text-sm text-slate-600 dark:text-slate-400">QA Projects</div>
           </div>
           <div className="text-center p-4 bg-slate-50/50 dark:bg-slate-800/25 rounded-lg border border-slate-200/50 dark:border-slate-700/50">
-            <div className="text-2xl font-bold text-warning-amber">{stats.categories['fantasy-football']}</div>
+            <div className="text-2xl font-bold text-warning">{stats.categories['fantasy-football']}</div>
             <div className="text-sm text-slate-600 dark:text-slate-400">Analytics Projects</div>
           </div>
         </div>
@@ -187,11 +187,11 @@ export function TestimonialsSection({
             </Paragraph>
             <div className="flex items-center justify-center gap-6 text-sm text-slate-600 dark:text-slate-400">
               <div className="flex items-center gap-2">
-                <IconStar className="w-4 h-4 text-warning-amber" />
+                <IconStar className="w-4 h-4 text-warning" />
                 <span>{stats.averageRating.toFixed(1)}/5.0 Average Rating</span>
               </div>
               <div className="flex items-center gap-2">
-                <IconUsers className="w-4 h-4 text-electric-blue" />
+                <IconUsers className="w-4 h-4 text-primary" />
                 <span>{stats.total}+ Happy Clients</span>
               </div>
             </div>

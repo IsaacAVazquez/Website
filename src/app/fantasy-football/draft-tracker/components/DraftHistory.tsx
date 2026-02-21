@@ -51,7 +51,7 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
 
   return (
     <WarmCard hover={false} padding="md" className="h-fit">
-      <div className="p-4 border-b border-[#FFE4D6] dark:border-[#FF8E53]/30">
+      <div className="p-4 border-b border-[var(--border-primary)]">
         <div className="flex items-center justify-between mb-4">
           <Heading level={4}>Draft Activity</Heading>
           {picks.length > 0 && (
@@ -68,14 +68,14 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
         </div>
 
         {/* View Mode Toggle */}
-        <div className="flex bg-[#FFF8F0] dark:bg-[#4A3426]/50 p-1 rounded-lg">
+        <div className="flex bg-[var(--surface-secondary)] p-1 rounded-lg">
           <button
             onClick={() => setViewMode('recent')}
             className={`
               flex-1 px-3 py-2 text-xs font-medium rounded-md transition-all
               ${viewMode === 'recent'
-                ? 'bg-[#FF6B35] dark:bg-[#FF8E53] text-[#4A3426] dark:text-[#FFE4D6]'
-                : 'text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#4A3426] dark:hover:text-[#FFE4D6]'
+                ? 'bg-[var(--color-primary)] text-white'
+                : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }
             `}
           >
@@ -86,8 +86,8 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
             className={`
               flex-1 px-3 py-2 text-xs font-medium rounded-md transition-all
               ${viewMode === 'teams'
-                ? 'bg-[#FF6B35] dark:bg-[#FF8E53] text-[#4A3426] dark:text-[#FFE4D6]'
-                : 'text-[#6B4F3D] dark:text-[#D4A88E] hover:text-[#4A3426] dark:hover:text-[#FFE4D6]'
+                ? 'bg-[var(--color-primary)] text-white'
+                : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }
             `}
           >
@@ -108,8 +108,8 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
             >
               {recentPicks.length === 0 ? (
                 <div className="text-center py-8">
-                  <div className="text-slate-500 mb-2">📋</div>
-                  <p className="text-slate-500 text-sm">No picks yet</p>
+                  <div className="text-[var(--text-tertiary)] mb-2">📋</div>
+                  <p className="text-[var(--text-tertiary)] text-sm">No picks yet</p>
                 </div>
               ) : (
                 recentPicks.map((pick, index) => (
@@ -121,8 +121,8 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                     className={`
                       p-3 rounded-lg border transition-all
                       ${pick.teamNumber === userTeam
-                        ? 'border-[#6BCF7F] dark:border-[#8FE39E] bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20'
-                        : 'border-[#FFE4D6] dark:border-[#FF8E53]/30 bg-[#FFF8F0] dark:bg-[#4A3426]/50'
+                        ? 'border-[var(--color-success)] bg-[var(--color-success)]/10'
+                        : 'border-[var(--border-primary)] bg-[var(--surface-primary)]'
                       }
                     `}
                   >
@@ -132,31 +132,31 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                           #{pick.pickNumber}
                         </Badge>
                         {pick.teamNumber === userTeam && (
-                          <IconCrown size={14} className="text-[#6BCF7F] dark:text-[#8FE39E]" />
+                          <IconCrown size={14} className="text-[var(--color-success)]" />
                         )}
                       </div>
-                      <span className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">
+                      <span className="text-xs text-[var(--text-secondary)]">
                         {formatPickTime(pick.timestamp)}
                       </span>
                     </div>
                     
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="font-medium text-[#4A3426] dark:text-[#FFE4D6] text-sm truncate">
+                        <p className="font-medium text-[var(--text-primary)] text-sm truncate">
                           {pick.player.name}
                         </p>
                         <div className="flex items-center gap-2 text-xs">
                           <span className={getPositionColor(pick.player.position)}>
                             {pick.player.position}
                           </span>
-                          <span className="text-slate-500">•</span>
-                          <span className="text-[#6B4F3D] dark:text-[#D4A88E]">{pick.player.team}</span>
+                          <span className="text-[var(--text-tertiary)]">•</span>
+                          <span className="text-[var(--text-secondary)]">{pick.player.team}</span>
                         </div>
                       </div>
 
                       <div className="text-right">
-                        <p className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">Team {pick.teamNumber}</p>
-                        <p className="text-xs text-slate-500">R{pick.round}</p>
+                        <p className="text-xs text-[var(--text-secondary)]">Team {pick.teamNumber}</p>
+                        <p className="text-xs text-[var(--text-tertiary)]">R{pick.round}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -173,35 +173,35 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
             >
               {userPicks.length === 0 ? (
                 <div className="text-center py-8">
-                  <div className="text-slate-500 mb-2">👤</div>
-                  <p className="text-slate-500 text-sm">No picks yet</p>
-                  <p className="text-slate-600 text-xs mt-1">Your drafted players will appear here</p>
+                  <div className="text-[var(--text-tertiary)] mb-2">👤</div>
+                  <p className="text-[var(--text-tertiary)] text-sm">No picks yet</p>
+                  <p className="text-[var(--text-tertiary)] text-xs mt-1">Your drafted players will appear here</p>
                 </div>
               ) : (
                 <>
                   {/* Your Team Stats */}
-                  <div className="p-3 bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 border border-[#6BCF7F] dark:border-[#8FE39E] rounded-lg mb-4">
+                  <div className="p-3 bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 border border-[var(--color-success)] rounded-lg mb-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <IconUser size={16} className="text-[#6BCF7F] dark:text-[#8FE39E]" />
-                      <span className="font-medium text-[#6BCF7F] dark:text-[#8FE39E]">Your Team</span>
+                      <IconUser size={16} className="text-[var(--color-success)]" />
+                      <span className="font-medium text-[var(--color-success)]">Your Team</span>
                     </div>
 
                     <div className="grid grid-cols-3 gap-2 text-xs">
                       <div className="text-center">
-                        <div className="text-[#4A3426] dark:text-[#FFE4D6] font-medium">{userPicks.length}</div>
-                        <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Players</div>
+                        <div className="text-[var(--text-primary)] font-medium">{userPicks.length}</div>
+                        <div className="text-[var(--text-secondary)]">Players</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-[#4A3426] dark:text-[#FFE4D6] font-medium">
+                        <div className="text-[var(--text-primary)] font-medium">
                           {Math.round(userPicks.reduce((sum, pick) => sum + pick.player.projectedPoints, 0))}
                         </div>
-                        <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Proj Pts</div>
+                        <div className="text-[var(--text-secondary)]">Proj Pts</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-[#4A3426] dark:text-[#FFE4D6] font-medium">
+                        <div className="text-[var(--text-primary)] font-medium">
                           ${userPicks.reduce((sum, pick) => sum + (pick.player.auctionValue || 0), 0)}
                         </div>
-                        <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Value</div>
+                        <div className="text-[var(--text-secondary)]">Value</div>
                       </div>
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                   {/* Position Breakdown */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     {Object.entries(teams.find(t => t.teamNumber === userTeam)?.positionCounts || {}).map(([pos, count]) => (
-                      <div key={pos} className="flex items-center justify-between p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/50 rounded">
+                      <div key={pos} className="flex items-center justify-between p-2 bg-[var(--surface-secondary)] rounded">
                         <span className={`text-xs font-medium ${getPositionColor(pos)}`}>{pos}</span>
                         <Badge variant="outline" size="xs">{count}</Badge>
                       </div>
@@ -223,17 +223,17 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="p-3 border border-[#6BCF7F] dark:border-[#8FE39E] bg-[#6BCF7F]/10 dark:bg-[#6BCF7F]/20 rounded-lg"
+                      className="p-3 border border-[var(--color-success)] bg-[var(--color-success)]/10 rounded-lg"
                     >
                       <div className="flex items-center justify-between mb-1">
                         <Badge variant="matrix" size="xs">
                           Pick #{pick.pickNumber}
                         </Badge>
-                        <span className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">Round {pick.round}</span>
+                        <span className="text-xs text-[var(--text-secondary)]">Round {pick.round}</span>
                       </div>
 
                       <div>
-                        <p className="font-medium text-[#4A3426] dark:text-[#FFE4D6] text-sm">
+                        <p className="font-medium text-[var(--text-primary)] text-sm">
                           {pick.player.name}
                         </p>
                         <div className="flex items-center justify-between mt-1">
@@ -241,10 +241,10 @@ export function DraftHistory({ picks, teams, userTeam, onUndo }: DraftHistoryPro
                             <span className={getPositionColor(pick.player.position)}>
                               {pick.player.position}
                             </span>
-                            <span className="text-slate-500">•</span>
-                            <span className="text-[#6B4F3D] dark:text-[#D4A88E]">{pick.player.team}</span>
+                            <span className="text-[var(--text-tertiary)]">•</span>
+                            <span className="text-[var(--text-secondary)]">{pick.player.team}</span>
                           </div>
-                          <span className="text-xs text-[#6BCF7F] dark:text-[#8FE39E]">
+                          <span className="text-xs text-[var(--color-success)]">
                             {Math.round(pick.player.projectedPoints)} pts
                           </span>
                         </div>

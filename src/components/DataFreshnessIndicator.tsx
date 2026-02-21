@@ -47,16 +47,16 @@ export function DataFreshnessIndicator({ position, className = '' }: DataFreshne
 
   if (hoursAgo < 1) {
     freshnessText = 'Just updated';
-    freshnessColor = 'text-matrix-green';
+    freshnessColor = 'text-success';
   } else if (hoursAgo < 24) {
     freshnessText = `Updated ${hoursAgo}h ago`;
-    freshnessColor = 'text-electric-blue';
+    freshnessColor = 'text-primary';
   } else if (daysAgo === 1) {
     freshnessText = 'Updated yesterday';
-    freshnessColor = 'text-warning-amber';
+    freshnessColor = 'text-warning';
   } else {
     freshnessText = `Updated ${daysAgo} days ago`;
-    freshnessColor = daysAgo > 3 ? 'text-error-red' : 'text-warning-amber';
+    freshnessColor = daysAgo > 3 ? 'text-error' : 'text-warning';
   }
 
   return (

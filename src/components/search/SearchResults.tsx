@@ -31,7 +31,7 @@ export function SearchResults({
       <div className="space-y-4">
         <div className="flex items-center justify-center py-12">
           <div className="flex items-center space-x-3">
-            <div className="animate-spin rounded-full h-6 w-6 border-2 border-electric-blue border-t-transparent"></div>
+            <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary border-t-transparent"></div>
             <span className="text-slate-600 dark:text-slate-400">Searching...</span>
           </div>
         </div>
@@ -102,7 +102,7 @@ export function SearchResults({
       {/* Load More (if needed) */}
       {results.length < totalResults && (
         <div className="text-center">
-          <button className="text-electric-blue hover:underline text-sm">
+          <button className="text-primary hover:underline text-sm">
             Load more results
           </button>
         </div>
@@ -169,7 +169,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
               
               <Heading 
                 level={3} 
-                className="text-lg text-electric-blue hover:text-matrix-green transition-colors line-clamp-2"
+                className="text-lg text-primary hover:text-success transition-colors line-clamp-2"
               >
                 <span 
                   dangerouslySetInnerHTML={{ 

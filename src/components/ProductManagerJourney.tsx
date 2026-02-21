@@ -93,7 +93,7 @@ export function ProductManagerJourney() {
         <Heading level={2} className="mb-4">
           My Product Management Journey
         </Heading>
-        <Paragraph className="text-slate-400 max-w-3xl mx-auto">
+        <Paragraph className="text-[var(--text-tertiary)] max-w-3xl mx-auto">
           Transitioning from technical execution to product strategy through deliberate skill development, 
           education, and hands-on experience building products that users love.
         </Paragraph>
@@ -111,18 +111,18 @@ export function ProductManagerJourney() {
           >
             <WarmCard hover={false} padding="md" className={`p-8 ${
               step.status === 'current' 
-                ? 'border-electric-blue/50 bg-electric-blue/5' 
+                ? 'border-primary/50 bg-primary/5' 
                 : step.status === 'target'
-                ? 'border-matrix-green/50 bg-matrix-green/5'
-                : 'border-cyber-teal/30'
+                ? 'border-success/50 bg-success/5'
+                : 'border-accent/30'
             }`}>
               <div className="flex items-start space-x-6">
                 <div className={`w-16 h-16 rounded-full flex items-center justify-center ${
                   step.status === 'current' 
-                    ? 'bg-electric-blue/20 text-electric-blue' 
+                    ? 'bg-primary/20 text-primary' 
                     : step.status === 'target'
-                    ? 'bg-matrix-green/20 text-matrix-green'
-                    : 'bg-cyber-teal/20 text-cyber-teal'
+                    ? 'bg-success/20 text-success'
+                    : 'bg-accent/20 text-accent'
                 }`}>
                   <step.icon className="w-8 h-8" />
                 </div>
@@ -144,7 +144,7 @@ export function ProductManagerJourney() {
                     )}
                   </div>
                   
-                  <Paragraph className="text-slate-300 mb-4">
+                  <Paragraph className="text-[var(--neutral-300)] mb-4">
                     {step.description}
                   </Paragraph>
                   
@@ -153,8 +153,8 @@ export function ProductManagerJourney() {
                       <h4 className="font-medium text-white mb-2">Key Achievements</h4>
                       <ul className="space-y-1">
                         {step.achievements.map((achievement, i) => (
-                          <li key={i} className="text-sm text-slate-400 flex items-start space-x-2">
-                            <span className="text-matrix-green mt-1">•</span>
+                          <li key={i} className="text-sm text-[var(--text-tertiary)] flex items-start space-x-2">
+                            <span className="text-success mt-1">•</span>
                             <span>{achievement}</span>
                           </li>
                         ))}
@@ -185,7 +185,7 @@ export function ProductManagerJourney() {
           <Heading level={3} className="mb-4">
             Why Technical Background + MBA = Better Product Manager
           </Heading>
-          <Paragraph className="text-slate-400 max-w-2xl mx-auto">
+          <Paragraph className="text-[var(--text-tertiary)] max-w-2xl mx-auto">
             My unique combination of technical depth and business strategy education creates 
             a competitive advantage in product management roles.
           </Paragraph>
@@ -202,10 +202,10 @@ export function ProductManagerJourney() {
             >
               <WarmCard hover={false} padding="md" className="p-6 h-full hover:scale-105 transition-transform">
                 <div className="flex items-start space-x-4">
-                  <value.icon className="w-8 h-8 text-electric-blue mt-1 flex-shrink-0" />
+                  <value.icon className="w-8 h-8 text-primary mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-white mb-2">{value.title}</h4>
-                    <p className="text-sm text-slate-300">{value.description}</p>
+                    <p className="text-sm text-[var(--neutral-300)]">{value.description}</p>
                   </div>
                 </div>
               </WarmCard>
@@ -215,12 +215,12 @@ export function ProductManagerJourney() {
       </div>
 
       {/* Call to Action */}
-      <WarmCard hover={false} padding="md" className="p-8 text-center bg-matrix-green/5 border-matrix-green/20">
-        <IconLightbulb className="w-12 h-12 text-matrix-green mx-auto mb-4" />
+      <WarmCard hover={false} padding="md" className="p-8 text-center bg-success/5 border-success/20">
+        <IconLightbulb className="w-12 h-12 text-success mx-auto mb-4" />
         <Heading level={3} className="mb-4">
           Ready to Build Products Together?
         </Heading>
-        <Paragraph className="text-slate-300 mb-6 max-w-2xl mx-auto">
+        <Paragraph className="text-[var(--neutral-300)] mb-6 max-w-2xl mx-auto">
           I'm actively seeking product management opportunities where I can leverage my technical 
           foundation and business education to create products that users love and drive business growth.
         </Paragraph>

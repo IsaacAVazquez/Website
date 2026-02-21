@@ -399,7 +399,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "validThrough": data.validThrough || "2027-05-31",
           "employmentType": data.employmentType || ["FULL_TIME"],
           "hiringOrganization": {
-            "@type": "Person",
+            "@type": "Organization",
             "name": siteConfig.name,
             "sameAs": siteConfig.url,
           },

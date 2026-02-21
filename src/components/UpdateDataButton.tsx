@@ -54,9 +54,9 @@ export function UpdateDataButton() {
         {isUpdating ? (
           <IconRefresh className="h-4 w-4 animate-spin" />
         ) : status === 'success' ? (
-          <IconCheck className="h-4 w-4 text-matrix-green" />
+          <IconCheck className="h-4 w-4 text-success" />
         ) : status === 'error' ? (
-          <IconX className="h-4 w-4 text-error-red" />
+          <IconX className="h-4 w-4 text-error" />
         ) : (
           <IconRefresh className="h-4 w-4" />
         )}
@@ -65,8 +65,8 @@ export function UpdateDataButton() {
       
       {message && (
         <p className={`text-xs ${
-          status === 'success' ? 'text-matrix-green' : 
-          status === 'error' ? 'text-error-red' : 
+          status === 'success' ? 'text-success' : 
+          status === 'error' ? 'text-error' : 
           'text-slate-400'
         }`}>
           {message}

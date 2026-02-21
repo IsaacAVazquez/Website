@@ -28,7 +28,7 @@ export function GoogleBusinessIntegration({
   if (variant === 'map-only') {
     return (
       <div className={`${className}`}>
-        <div className="aspect-video rounded-lg overflow-hidden border border-electric-blue/20">
+        <div className="aspect-video rounded-lg overflow-hidden border border-primary/20">
           <iframe
             src={mapsEmbedUrl}
             width="100%"
@@ -41,7 +41,7 @@ export function GoogleBusinessIntegration({
             title={`Map showing ${location.name} location`}
           />
           {!mapLoaded && (
-            <div className="flex items-center justify-center h-full bg-terminal-bg/50">
+            <div className="flex items-center justify-center h-full bg-slate-900/50">
               <div className="text-slate-400">Loading map...</div>
             </div>
           )}
@@ -55,7 +55,7 @@ export function GoogleBusinessIntegration({
       <WarmCard hover={false} padding="md" className={`p-4 ${className}`}>
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-semibold text-white">Find Us on Google</h3>
-          <IconMapPin className="w-5 h-5 text-electric-blue" />
+          <IconMapPin className="w-5 h-5 text-primary" />
         </div>
         
         <div className="space-y-3">
@@ -107,7 +107,7 @@ export function GoogleBusinessIntegration({
               Connect with us through Google's business platform for reviews, directions, and updates.
             </p>
           </div>
-          <IconMapPin className="w-8 h-8 text-electric-blue flex-shrink-0" />
+          <IconMapPin className="w-8 h-8 text-primary flex-shrink-0" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -116,18 +116,18 @@ export function GoogleBusinessIntegration({
               <h3 className="font-medium text-white mb-2">Business Information</h3>
               <div className="space-y-2 text-sm text-slate-300">
                 <div className="flex items-center space-x-2">
-                  <IconMapPin className="w-4 h-4 text-electric-blue" />
+                  <IconMapPin className="w-4 h-4 text-primary" />
                   <span>{location.address.addressLocality}, {location.address.addressRegion}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <IconPhone className="w-4 h-4 text-matrix-green" />
-                  <Link href={`tel:${location.phone}`} className="hover:text-electric-blue transition-colors">
+                  <IconPhone className="w-4 h-4 text-success" />
+                  <Link href={`tel:${location.phone}`} className="hover:text-primary transition-colors">
                     {location.phone}
                   </Link>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <IconMail className="w-4 h-4 text-cyber-teal" />
-                  <Link href={`mailto:${location.email}`} className="hover:text-electric-blue transition-colors">
+                  <IconMail className="w-4 h-4 text-accent" />
+                  <Link href={`mailto:${location.email}`} className="hover:text-primary transition-colors">
                     {location.email}
                   </Link>
                 </div>
@@ -140,7 +140,7 @@ export function GoogleBusinessIntegration({
                 {location.categories.slice(0, 3).map((category, index) => (
                   <span 
                     key={index}
-                    className="text-xs bg-electric-blue/10 text-electric-blue px-2 py-1 rounded"
+                    className="text-xs bg-primary/10 text-primary px-2 py-1 rounded"
                   >
                     {category}
                   </span>
@@ -173,10 +173,10 @@ export function GoogleBusinessIntegration({
             </ModernButton>
 
             {/* Review CTA */}
-            <div className="text-center p-3 bg-matrix-green/10 border border-matrix-green/20 rounded-lg">
+            <div className="text-center p-3 bg-success/10 border border-success/20 rounded-lg">
               <div className="flex items-center justify-center space-x-1 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <IconStar key={i} className="w-4 h-4 text-matrix-green" />
+                  <IconStar key={i} className="w-4 h-4 text-success" />
                 ))}
               </div>
               <p className="text-xs text-slate-300 mb-2">Love our service?</p>
@@ -186,7 +186,7 @@ export function GoogleBusinessIntegration({
                 rel="noopener noreferrer"
                 size="sm"
                 variant="ghost"
-                className="text-matrix-green"
+                className="text-success"
               >
                 Leave a Review
               </ModernButton>
@@ -198,7 +198,7 @@ export function GoogleBusinessIntegration({
       {/* Interactive Map */}
       <WarmCard hover={false} padding="md" className="p-6">
         <h3 className="font-semibold text-white mb-4">Service Area Map</h3>
-        <div className="aspect-video rounded-lg overflow-hidden border border-electric-blue/20 mb-4">
+        <div className="aspect-video rounded-lg overflow-hidden border border-primary/20 mb-4">
           <iframe
             src={mapsEmbedUrl}
             width="100%"
@@ -220,7 +220,7 @@ export function GoogleBusinessIntegration({
             {location.serviceAreas.slice(0, 8).map((area, index) => (
               <span 
                 key={index}
-                className="text-xs bg-terminal-bg/50 border border-electric-blue/10 px-2 py-1 rounded"
+                className="text-xs bg-slate-900/50 border border-primary/10 px-2 py-1 rounded"
               >
                 {area}
               </span>
@@ -277,8 +277,8 @@ export function GoogleBusinessSetup({ location }: { location: BusinessLocation }
 
       <div className="space-y-4">
         {setupSteps.map((step) => (
-          <div key={step.step} className="flex items-start space-x-4 p-4 bg-terminal-bg/30 rounded-lg">
-            <div className="w-8 h-8 bg-electric-blue/20 text-electric-blue rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+          <div key={step.step} className="flex items-start space-x-4 p-4 bg-slate-900/30 rounded-lg">
+            <div className="w-8 h-8 bg-primary/20 text-primary rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
               {step.step}
             </div>
             <div className="flex-1">
@@ -292,8 +292,8 @@ export function GoogleBusinessSetup({ location }: { location: BusinessLocation }
         ))}
       </div>
 
-      <div className="mt-6 p-4 bg-matrix-green/10 border border-matrix-green/20 rounded-lg">
-        <h4 className="font-medium text-matrix-green mb-2">Pro Tip</h4>
+      <div className="mt-6 p-4 bg-success/10 border border-success/20 rounded-lg">
+        <h4 className="font-medium text-success mb-2">Pro Tip</h4>
         <p className="text-sm text-slate-300">
           Keep your NAP (Name, Address, Phone) information consistent across all online platforms 
           to improve local search rankings and customer trust.

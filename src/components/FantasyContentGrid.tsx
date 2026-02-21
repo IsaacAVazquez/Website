@@ -33,24 +33,24 @@ const categoryThemes: Record<string, {
   bgGradient: string;
 }> = {
   "Fantasy Football Analytics": {
-    color: "from-electric-blue to-cyber-teal",
+    color: "from-primary to-accent",
     icon: IconChartBar,
-    bgGradient: "from-electric-blue/20 to-cyber-teal/20"
+    bgGradient: "from-primary/20 to-accent/20"
   },
   "Fantasy Football Strategy": {
-    color: "from-matrix-green to-electric-blue",
+    color: "from-success to-primary",
     icon: IconTarget,
-    bgGradient: "from-matrix-green/20 to-electric-blue/20"
+    bgGradient: "from-success/20 to-primary/20"
   },
   "Draft Strategy": {
-    color: "from-neon-purple to-matrix-green",
+    color: "from-secondary to-success",
     icon: IconTrendingUp,
-    bgGradient: "from-neon-purple/20 to-matrix-green/20"
+    bgGradient: "from-secondary/20 to-success/20"
   },
   "Data Science": {
-    color: "from-warning-amber to-electric-blue",
+    color: "from-warning to-primary",
     icon: IconBrain,
-    bgGradient: "from-warning-amber/20 to-electric-blue/20"
+    bgGradient: "from-warning/20 to-primary/20"
   },
   "default": {
     color: "from-slate-600 to-slate-800",
@@ -178,8 +178,8 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
                         onClick={() => setSelectedCategory(category)}
                         className={`px-3 py-1 text-xs font-medium rounded-full border transition-all ${
                           selectedCategory === category
-                            ? 'bg-electric-blue/20 text-electric-blue border-electric-blue/50'
-                            : 'bg-terminal-bg/50 text-slate-400 border-terminal-border hover:border-electric-blue/30 hover:text-electric-blue'
+                            ? 'bg-primary/20 text-primary border-primary/50'
+                            : 'bg-neutral-900/50 text-slate-400 border-neutral-700 hover:border-primary/30 hover:text-primary'
                         }`}
                       >
                         {category}
@@ -198,8 +198,8 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
                         onClick={() => setSelectedTag(tag)}
                         className={`px-3 py-1 text-xs font-medium rounded-full border transition-all ${
                           selectedTag === tag
-                            ? 'bg-matrix-green/20 text-matrix-green border-matrix-green/50'
-                            : 'bg-terminal-bg/50 text-slate-400 border-terminal-border hover:border-matrix-green/30 hover:text-matrix-green'
+                            ? 'bg-success/20 text-success border-success/50'
+                            : 'bg-neutral-900/50 text-slate-400 border-neutral-700 hover:border-success/30 hover:text-success'
                         }`}
                       >
                         {tag}
@@ -256,7 +256,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
                     {/* Header with Icon and Badges */}
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center space-x-3">
-                        <Icon className="h-8 w-8 text-electric-blue" />
+                        <Icon className="h-8 w-8 text-primary" />
                         {post.featured && (
                           <Badge variant="electric" size="sm" glow>
                             <IconStar className="h-3 w-3 mr-1" />
@@ -271,7 +271,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
                     </div>
 
                     {/* Title & Description */}
-                    <h3 className="font-heading font-bold text-xl mb-3 text-primary line-clamp-2 group-hover:text-electric-blue transition-colors">
+                    <h3 className="font-heading font-bold text-xl mb-3 text-primary line-clamp-2 group-hover:text-primary transition-colors">
                       {post.title}
                     </h3>
                     
@@ -292,13 +292,13 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
                         {post.tags.slice(0, layoutType === "featured" ? 4 : 3).map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-1 text-xs font-medium rounded-full bg-terminal-bg/80 text-matrix-green border border-matrix-green/20"
+                            className="px-2 py-1 text-xs font-medium rounded-full bg-neutral-900/80 text-success border border-success/20"
                           >
                             {tag}
                           </span>
                         ))}
                         {post.tags && post.tags.length > (layoutType === "featured" ? 4 : 3) && (
-                          <span className="px-2 py-1 text-xs font-medium rounded-full bg-terminal-bg/80 text-slate-400">
+                          <span className="px-2 py-1 text-xs font-medium rounded-full bg-neutral-900/80 text-slate-400">
                             +{post.tags.length - (layoutType === "featured" ? 4 : 3)}
                           </span>
                         )}
@@ -306,7 +306,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
                     )}
 
                     {/* Footer with date and read link */}
-                    <div className="flex items-center justify-between mt-auto pt-2 border-t border-terminal-border">
+                    <div className="flex items-center justify-between mt-auto pt-2 border-t border-neutral-700">
                       <span className="text-xs text-slate-400">
                         {new Date(post.publishedAt).toLocaleDateString('en-US', {
                           month: 'short',
@@ -314,7 +314,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
                           year: 'numeric'
                         })}
                       </span>
-                      <div className="flex items-center text-xs text-electric-blue font-medium group-hover:text-matrix-green transition-colors">
+                      <div className="flex items-center text-xs text-primary font-medium group-hover:text-success transition-colors">
                         Read Article
                         <IconExternalLink className="h-3 w-3 ml-1" />
                       </div>
@@ -322,7 +322,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
                   </div>
 
                   {/* Hover Effect Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-electric-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </WarmCard>
               </Link>
             </motion.div>
@@ -338,7 +338,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
         className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
       >
         <WarmCard hover={false} padding="md" elevation={2} className="text-center p-6">
-          <IconBookmark className="h-8 w-8 text-electric-blue mx-auto mb-2" />
+          <IconBookmark className="h-8 w-8 text-primary mx-auto mb-2" />
           <div className="text-2xl font-bold text-white mb-1">
             {filteredPosts.length}
           </div>
@@ -348,7 +348,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
         </WarmCard>
 
         <WarmCard hover={false} padding="md" elevation={2} className="text-center p-6">
-          <IconChartBar className="h-8 w-8 text-matrix-green mx-auto mb-2" />
+          <IconChartBar className="h-8 w-8 text-success mx-auto mb-2" />
           <div className="text-2xl font-bold text-white mb-1">
             {filteredPosts.filter(p => p.category?.includes('Analytics')).length}
           </div>
@@ -358,7 +358,7 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
         </WarmCard>
 
         <WarmCard hover={false} padding="md" elevation={2} className="text-center p-6">
-          <IconTarget className="h-8 w-8 text-neon-purple mx-auto mb-2" />
+          <IconTarget className="h-8 w-8 text-secondary mx-auto mb-2" />
           <div className="text-2xl font-bold text-white mb-1">
             {filteredPosts.filter(p => p.tags && p.tags.includes('Draft Strategy')).length}
           </div>
@@ -375,8 +375,8 @@ export function FantasyContentGrid({ posts }: FantasyContentGridProps) {
         transition={{ delay: 0.7 }}
         className="mt-16 text-center"
       >
-        <WarmCard hover={false} padding="md" elevation={3} className="p-8 bg-gradient-to-br from-electric-blue/10 to-matrix-green/10 border-electric-blue/30">
-          <IconUsers className="h-12 w-12 text-electric-blue mx-auto mb-4" />
+        <WarmCard hover={false} padding="md" elevation={3} className="p-8 bg-gradient-to-br from-primary/10 to-success/10 border-primary/30">
+          <IconUsers className="h-12 w-12 text-primary mx-auto mb-4" />
           <h3 className="text-2xl font-bold text-white mb-4">
             Ready to Dominate Your League?
           </h3>

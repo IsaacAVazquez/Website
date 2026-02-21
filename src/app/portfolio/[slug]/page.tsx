@@ -399,7 +399,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const nextCaseStudy = nextSlug ? caseStudiesData[nextSlug] : null;
 
   return (
-    <main className="min-h-screen bg-white dark:bg-black py-24 md:py-32">
+    <main className="min-h-screen bg-[var(--surface-primary)] dark:bg-[var(--neutral-950)] py-24 md:py-32">
       <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <Link
           href="/portfolio"

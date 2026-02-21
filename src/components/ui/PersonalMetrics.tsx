@@ -92,12 +92,12 @@ const MetricCard = ({
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-3">
             <div className={`p-3 rounded-xl bg-gradient-to-br ${color} bg-opacity-20`}>
-              <Icon className="h-6 w-6 text-electric-blue" />
+              <Icon className="h-6 w-6 text-primary" />
             </div>
             <h3 className="font-semibold text-lg text-primary">{label}</h3>
           </div>
           
-          <div className="text-3xl font-bold text-electric-blue mb-2 font-terminal">
+          <div className="text-3xl font-bold text-primary mb-2 font-mono">
             <AnimatedCounter 
               value={value} 
               suffix={suffix} 
@@ -154,7 +154,7 @@ const AchievementBadge = ({ achievement, delay = 0 }: AchievementBadgeProps) => 
             className="overflow-hidden"
           >
             <p className="text-xs text-secondary mb-1">{achievement.description}</p>
-            <p className="text-xs text-matrix-green">{achievement.impact}</p>
+            <p className="text-xs text-success">{achievement.impact}</p>
           </motion.div>
         </div>
       </WarmCard>
@@ -177,25 +177,25 @@ const SystemStatus = () => {
     { 
       label: "System Status", 
       value: personalMetrics.currentStatus.availability,
-      color: "bg-matrix-green",
+      color: "bg-success",
       pulse: true
     },
     { 
       label: "Learning", 
       value: personalMetrics.currentStatus.learning,
-      color: "bg-electric-blue",
+      color: "bg-primary",
       pulse: false
     },
     { 
       label: "Building", 
       value: personalMetrics.currentStatus.building,
-      color: "bg-warning-amber",
+      color: "bg-warning",
       pulse: false
     },
     { 
       label: "Mood", 
       value: personalMetrics.currentStatus.mood,
-      color: "bg-neon-purple",
+      color: "bg-secondary",
       pulse: false
     }
   ];
@@ -218,7 +218,7 @@ const SystemStatus = () => {
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-primary text-lg">System Status</h3>
-            <div className="text-sm text-secondary font-terminal">
+            <div className="text-sm text-secondary font-mono">
               {currentTime.toLocaleTimeString()} CST
             </div>
           </div>
@@ -237,7 +237,7 @@ const SystemStatus = () => {
           
           <div className="mt-4 pt-4 border-t border-slate-200/20">
             <div className="text-sm text-secondary">
-              <span className="text-matrix-green">$</span> uptime: {personalMetrics.experience.yearsInQA} years, {Math.floor(personalMetrics.experience.yearsInQA * 365)} days
+              <span className="text-success">$</span> uptime: {personalMetrics.experience.yearsInQA} years, {Math.floor(personalMetrics.experience.yearsInQA * 365)} days
             </div>
           </div>
         </div>

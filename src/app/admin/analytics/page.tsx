@@ -82,7 +82,7 @@ export default function AnalyticsDashboardPage() {
             </div>
             <Heading level={1} className="mb-4 text-4xl md:text-5xl lg:text-6xl">
               Analytics{" "}
-              <span className="gradient-text-warm">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Dashboard
               </span>
             </Heading>

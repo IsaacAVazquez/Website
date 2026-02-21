@@ -365,15 +365,15 @@ export class DataCache {
     const statusMap = {
       fresh: {
         message: cached ? `Updated ${this.getTimeAgo(cached.timestamp)}` : 'No data',
-        color: 'text-matrix-green'
+        color: 'text-success'
       },
       stale: {
         message: cached ? `Cached ${this.getTimeAgo(cached.timestamp)}` : 'No data',
-        color: 'text-warning-amber'
+        color: 'text-warning'
       },
       expired: {
         message: 'Data expired',
-        color: 'text-error-red'
+        color: 'text-error'
       },
       missing: {
         message: 'No cached data',

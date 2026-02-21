@@ -87,7 +87,7 @@ describe('WarmCard', () => {
     const card = container.firstChild as HTMLElement
     expect(card).toHaveAttribute('role', 'article')
     expect(card).toHaveAttribute('aria-label', 'Test Card')
-    expect(card).toHaveAttribute('aria-description', 'This is a test card')
+    expect(card).toHaveAttribute('title', 'This is a test card')
   })
 
   it('has base styling classes', () => {

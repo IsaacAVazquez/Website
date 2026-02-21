@@ -9,7 +9,7 @@ export const metadata = constructMetadata({
   description:
     "Product Manager & UC Berkeley Haas MBA Candidate '27 seeking PM roles. 6+ years experience in civic tech, SaaS, quality assurance leadership, and data analytics. Technical background with expertise in product strategy, cross-functional collaboration, and data-driven decision making.",
   canonicalUrl: "/",
-  dateModified: "2025-02-05",
+  dateModified: "2026-02-20",
   aiMetadata: {
     profession: "Technical Product Manager",
     specialty: "Product Management, Quality Engineering, Civic Technology",

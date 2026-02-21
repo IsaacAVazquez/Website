@@ -25,10 +25,10 @@ function PositionSelectorComponent({
   onFormatChange
 }: PositionSelectorProps) {
   return (
-    <div className="flex flex-col sm:flex-row gap-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-800">
+    <div className="flex flex-col sm:flex-row gap-4 p-4 bg-[var(--surface-secondary)] backdrop-blur-sm rounded-lg border border-[var(--border-primary)]">
       {/* Position Selector */}
       <div className="flex-1">
-        <label className="block text-sm font-medium text-gray-400 mb-2">
+        <label className="block text-sm font-medium text-[var(--text-tertiary)] mb-2">
           Position
         </label>
         <div className="flex flex-wrap gap-2">
@@ -41,8 +41,8 @@ function PositionSelectorComponent({
               className={`
                 px-4 py-2 rounded-md font-medium transition-all duration-200
                 ${selectedPosition === position
-                  ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/30'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
+                  ? 'bg-[var(--color-primary)] text-white shadow-lg shadow-[var(--color-primary)]/30'
+                  : 'bg-[var(--neutral-800)] text-[var(--neutral-300)] hover:bg-[var(--neutral-700)] border border-[var(--neutral-700)]'
                 }
               `}
             >
@@ -54,13 +54,13 @@ function PositionSelectorComponent({
 
       {/* Scoring Format Selector */}
       <div className="sm:w-48">
-        <label className="block text-sm font-medium text-gray-400 mb-2">
+        <label className="block text-sm font-medium text-[var(--text-tertiary)] mb-2">
           Scoring Format
         </label>
         <select
           value={selectedFormat}
           onChange={(e) => onFormatChange(e.target.value as ScoringFormat)}
-          className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+          className="w-full px-4 py-2 bg-[var(--neutral-800)] border border-[var(--neutral-700)] rounded-md text-[var(--text-primary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
         >
           {SCORING_FORMATS.map(format => (
             <option key={format.value} value={format.value}>

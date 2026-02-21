@@ -114,7 +114,7 @@ export default function Resume() {
 
   return (
     <div className="min-h-screen bg-[var(--surface-primary)]">
-      <div className="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 py-16 sm:py-20">
+      <div className="py-6 sm:py-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -141,11 +141,11 @@ export default function Resume() {
                 (850) 591-0159
               </span>
               <a
-                href="mailto:isaacvazquez@berkeley.edu"
+                href="mailto:IsaacVazquez@berkeley.edu"
                 className="flex items-center gap-2 hover:text-[var(--color-primary)] transition-colors"
               >
                 <IconMail className="w-4 h-4" />
-                isaacvazquez@berkeley.edu
+                IsaacVazquez@berkeley.edu
               </a>
               <a
                 href="https://linkedin.com/in/isaac-vazquez"

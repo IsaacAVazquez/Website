@@ -2,7 +2,7 @@
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   IconMail,
   IconBrandLinkedin,
@@ -10,12 +10,14 @@ import {
 } from "@tabler/icons-react";
 
 export function ContactContent() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <div>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         className="text-center mb-12 max-w-4xl mx-auto"
       >
         <Heading level={1} className="mb-8">
@@ -41,22 +43,14 @@ export function ContactContent() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            <a href="mailto:IsaacVazquez@berkeley.edu">
-              <ModernButton variant="accent" size="lg" className="w-full sm:w-auto">
-                <IconMail className="h-5 w-5" />
-                Email me — I reply within a day
-              </ModernButton>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/isaac-vazquez"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ModernButton variant="outline" size="lg" className="w-full sm:w-auto">
-                <IconBrandLinkedin className="h-5 w-5" />
-                Connect on LinkedIn
-              </ModernButton>
-            </a>
+            <ModernButton href="mailto:IsaacVazquez@berkeley.edu" variant="accent" size="lg" className="w-full sm:w-auto">
+              <IconMail className="h-5 w-5" />
+              Email me — I reply within a day
+            </ModernButton>
+            <ModernButton href="https://www.linkedin.com/in/isaac-vazquez" variant="outline" size="lg" className="w-full sm:w-auto">
+              <IconBrandLinkedin className="h-5 w-5" />
+              Connect on LinkedIn
+            </ModernButton>
           </div>
 
           <div className="flex items-center justify-center gap-2 text-sm text-[var(--color-success)]">

@@ -94,7 +94,7 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
         {/* Tier Indicator */}
         {player.tier && (
           <div
-            className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-[#4A3426] dark:text-[#FFE4D6] z-10"
+            className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-[var(--text-primary)] z-10"
             style={{ backgroundColor: tierColor }}
           >
             {player.tier}
@@ -102,7 +102,7 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
         )}
 
         {/* Player Image */}
-        <div className="relative h-24 bg-gradient-to-br from-[#FFF8F0] to-[#FFE4D6] dark:from-[#4A3426] dark:to-[#2D1B12] overflow-hidden">
+        <div className="relative h-24 bg-gradient-to-br from-[var(--surface-secondary)] to-[var(--neutral-200)] dark:from-[var(--neutral-800)] dark:to-[var(--neutral-900)] overflow-hidden">
           <OptimizedImage
             src={getPlayerImagePath(player)}
             alt={player.name}
@@ -111,14 +111,14 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
           />
           
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#4A3426]/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--neutral-900)]/80 via-transparent to-transparent" />
           
           {/* Position badge */}
           <div className="absolute bottom-2 right-2">
             <Badge
               variant="solid"
               size="sm"
-              className="text-[#4A3426] dark:text-[#FFE4D6] font-bold"
+              className="text-[var(--text-primary)] font-bold"
               style={{ backgroundColor: positionColor }}
             >
               {player.position}
@@ -130,26 +130,26 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
         <div className="p-3 space-y-3">
           {/* Name and Team */}
           <div>
-            <h4 className="font-semibold text-[#4A3426] dark:text-[#FFE4D6] text-sm truncate group-hover:text-[#FF6B35] dark:group-hover:text-[#FF8E53] transition-colors">
+            <h4 className="font-semibold text-[var(--text-primary)] text-sm truncate group-hover:text-[var(--color-primary)] transition-colors">
               {player.name}
             </h4>
-            <p className="text-xs text-[#6B4F3D] dark:text-[#D4A88E]">
+            <p className="text-xs text-[var(--text-secondary)]">
               {player.team} • #{formatRank(player.averageRank)}
             </p>
           </div>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="text-center p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/50 rounded">
-              <div className="text-[#6B4F3D] dark:text-[#D4A88E]">Proj</div>
-              <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">
+            <div className="text-center p-2 bg-[var(--surface-secondary)] rounded">
+              <div className="text-[var(--text-secondary)]">Proj</div>
+              <div className="font-medium text-[var(--text-primary)]">
                 {Math.round(player.projectedPoints)}
               </div>
             </div>
 
-            <div className="text-center p-2 bg-[#FFF8F0] dark:bg-[#4A3426]/50 rounded">
-              <div className="text-[#6B4F3D] dark:text-[#D4A88E]">ADP</div>
-              <div className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">
+            <div className="text-center p-2 bg-[var(--surface-secondary)] rounded">
+              <div className="text-[var(--text-secondary)]">ADP</div>
+              <div className="font-medium text-[var(--text-primary)]">
                 {player.adp ? Math.round(player.adp) : '--'}
               </div>
             </div>
@@ -158,8 +158,8 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
           {/* Additional Stats Row */}
           {player.auctionValue && (
             <div className="flex justify-between items-center text-xs">
-              <span className="text-[#6B4F3D] dark:text-[#D4A88E]">Value:</span>
-              <span className="font-medium text-[#6BCF7F] dark:text-[#8FE39E]">${player.auctionValue}</span>
+              <span className="text-[var(--text-secondary)]">Value:</span>
+              <span className="font-medium text-[var(--color-success)]">${player.auctionValue}</span>
             </div>
           )}
 
@@ -168,14 +168,14 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
             <div className="space-y-1">
               {player.upside && (
                 <div className="flex items-center gap-1 text-xs">
-                  <IconTrendingUp size={12} className="text-[#6BCF7F] dark:text-[#8FE39E]" />
-                  <span className="text-[#6BCF7F] dark:text-[#8FE39E] truncate">{player.upside.slice(0, 30)}...</span>
+                  <IconTrendingUp size={12} className="text-[var(--color-success)]" />
+                  <span className="text-[var(--color-success)] truncate">{player.upside.slice(0, 30)}...</span>
                 </div>
               )}
               {player.downside && (
                 <div className="flex items-center gap-1 text-xs">
-                  <IconTarget size={12} className="text-[#FFB020] dark:text-[#FFC857]" />
-                  <span className="text-[#FFB020] dark:text-[#FFC857] truncate">{player.downside.slice(0, 30)}...</span>
+                  <IconTarget size={12} className="text-[var(--color-warning)]" />
+                  <span className="text-[var(--color-warning)] truncate">{player.downside.slice(0, 30)}...</span>
                 </div>
               )}
             </div>

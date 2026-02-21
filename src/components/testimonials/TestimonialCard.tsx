@@ -54,7 +54,7 @@ export function TestimonialCard({
         key={i}
         className={`w-4 h-4 ${
           i < rating
-            ? 'text-warning-amber fill-warning-amber'
+            ? 'text-warning fill-warning'
             : 'text-slate-300 dark:text-slate-600'
         }`}
       />
@@ -68,7 +68,7 @@ export function TestimonialCard({
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <IconQuote className="w-4 h-4 text-electric-blue flex-shrink-0" />
+                <IconQuote className="w-4 h-4 text-primary flex-shrink-0" />
                 <div className="flex">{renderStars(testimonial.rating)}</div>
               </div>
               <Paragraph size="sm" className="text-slate-600 dark:text-slate-400 line-clamp-3">
@@ -107,7 +107,7 @@ export function TestimonialCard({
         <div className="space-y-6">
           {/* Quote */}
           <div className="relative">
-            <IconQuote className="absolute -top-2 -left-2 w-8 h-8 text-electric-blue/20" />
+            <IconQuote className="absolute -top-2 -left-2 w-8 h-8 text-primary/20" />
             <Paragraph size="lg" className="text-slate-700 dark:text-slate-300 italic pl-6">
               "{testimonial.content}"
             </Paragraph>
@@ -184,7 +184,7 @@ export function TestimonialCard({
 
         {/* Quote */}
         <div className="relative">
-          <IconQuote className="absolute -top-1 -left-1 w-6 h-6 text-electric-blue/30" />
+          <IconQuote className="absolute -top-1 -left-1 w-6 h-6 text-primary/30" />
           <Paragraph className="text-slate-700 dark:text-slate-300 pl-5">
             "{testimonial.content}"
           </Paragraph>

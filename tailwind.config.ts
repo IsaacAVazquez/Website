@@ -44,7 +44,19 @@ const config: Config = {
           primary: "var(--surface-primary)",
           secondary: "var(--surface-secondary)",
           elevated: "var(--surface-elevated)",
+          overlay: "var(--surface-overlay)",
         },
+      },
+      textColor: {
+        "theme-primary": "var(--text-primary)",
+        "theme-secondary": "var(--text-secondary)",
+        "theme-tertiary": "var(--text-tertiary)",
+        "theme-inverse": "var(--text-inverse)",
+      },
+      borderColor: {
+        "theme-primary": "var(--border-primary)",
+        "theme-secondary": "var(--border-secondary)",
+        "theme-accent": "var(--border-accent)",
       },
       spacing: {
         xs: "var(--space-xs)",

@@ -35,6 +35,8 @@ export function StaticHeader() {
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
+    // /projects redirects to /portfolio, so treat both as active
+    if (href === "/projects") return pathname.startsWith("/projects") || pathname.startsWith("/portfolio");
     return pathname.startsWith(href);
   };
 
@@ -63,6 +65,7 @@ export function StaticHeader() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
+                      aria-current={active ? "page" : undefined}
                       className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors ${
                         active
                           ? "text-[var(--color-primary)] bg-[var(--color-primary)]/8"
@@ -87,6 +90,7 @@ export function StaticHeader() {
               className="p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--neutral-100)] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? (
                 <IconX className="h-5 w-5" />
@@ -99,6 +103,7 @@ export function StaticHeader() {
       </nav>
 
       <div
+        id="mobile-menu"
         className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
           isMobileMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
         }`}
@@ -112,6 +117,7 @@ export function StaticHeader() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
+                    aria-current={active ? "page" : undefined}
                     className={`flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg transition-colors min-h-[48px] ${
                       active
                         ? "text-[var(--color-primary)] bg-[var(--color-primary)]/8"

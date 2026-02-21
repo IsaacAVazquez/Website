@@ -114,17 +114,17 @@ export default function FantasyFootballPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-[var(--surface-primary)] text-[var(--text-primary)]">
       <div className="max-w-[1920px] mx-auto p-4 sm:p-6 lg:p-8 xl:p-10">
         {/* Breadcrumbs */}
         <div className="mb-6">
-          <Breadcrumbs customItems={breadcrumbs} className="text-cyan-400" />
+          <Breadcrumbs customItems={breadcrumbs} className="text-[var(--color-primary)]" />
         </div>
 
         {/* Back Button */}
         <Link 
           href="/"
-          className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
+          className="inline-flex items-center gap-2 text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Home
@@ -137,7 +137,7 @@ export default function FantasyFootballPage() {
           className="mb-8"
         >
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] text-transparent bg-clip-text">
               Fantasy Football Tier Rankings
             </h1>
             <div className="flex items-center gap-4">
@@ -150,11 +150,11 @@ export default function FantasyFootballPage() {
               </Link>
               {/* Subtle Status Indicator */}
               {isClient && (
-                <div className="flex items-center gap-2 text-xs text-gray-500">
+                <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)]">
                   <div className={`w-1.5 h-1.5 rounded-full ${
-                    dataSource === 'api' ? 'bg-[#6BCF7F] dark:bg-[#8FE39E]' :
-                    dataSource === 'cache' ? 'bg-[#FF6B35] dark:bg-[#FF8E53]' :
-                    'bg-[#FFB020]'
+                    dataSource === 'api' ? 'bg-[var(--color-success)]' :
+                    dataSource === 'cache' ? 'bg-[var(--color-warning)]' :
+                    'bg-[var(--color-warning)]'
                   }`}></div>
                   <span>{cacheInfo.message}</span>
                 </div>
@@ -162,21 +162,21 @@ export default function FantasyFootballPage() {
             </div>
           </div>
           
-          <p className="text-center text-gray-400 max-w-2xl mx-auto">
+          <p className="text-center text-[var(--text-secondary)] max-w-2xl mx-auto">
             Visualizing player tiers using clustering algorithms. 
             Players are grouped based on expert consensus rankings and uncertainty analysis.
           </p>
           
           {/* Last Updated */}
           {lastUpdated && (
-            <p className="text-center text-gray-500 text-sm mt-2">
+            <p className="text-center text-[var(--text-tertiary)] text-sm mt-2">
               Last updated: {lastUpdated}
             </p>
           )}
           
           {/* Error Message */}
           {error && (
-            <p className="text-center text-red-400 text-sm mt-2">
+            <p className="text-center text-[var(--color-error)] text-sm mt-2">
               ⚠️ {error}
             </p>
           )}
@@ -190,28 +190,28 @@ export default function FantasyFootballPage() {
           className="mb-8"
         >
           <Link href="/fantasy-football/rb-tiers">
-            <div className="bg-gradient-to-r from-[#FF6B35]/20 to-[#F7B32B]/20 border border-[#FF6B35]/30 rounded-lg p-6 hover:border-[#FF6B35]/50 transition-all cursor-pointer">
+            <div className="bg-gradient-to-r from-[var(--color-warning)]/20 to-[var(--color-warning)]/20 border border-[var(--color-warning)]/30 rounded-lg p-6 hover:border-[var(--color-warning)]/50 transition-all cursor-pointer">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <Sparkles className="w-5 h-5 text-[#FF6B35]" />
-                    <span className="text-xs font-semibold text-[#FF6B35] uppercase tracking-wide">New Feature</span>
+                    <Sparkles className="w-5 h-5 text-[var(--color-warning)]" />
+                    <span className="text-xs font-semibold text-[var(--color-warning)] uppercase tracking-wide">New Feature</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">
                     RB Tier Rankings Scatter Plot
                   </h3>
-                  <p className="text-gray-400 text-sm mb-3">
+                  <p className="text-[var(--text-secondary)] text-sm mb-3">
                     Visualize running back tiers with an interactive scatter plot showing average expert rank vs consensus rank.
                     Updated weekly with color-coded tier groupings.
                   </p>
-                  <div className="flex items-center gap-2 text-sm text-[#FF8E53]">
+                  <div className="flex items-center gap-2 text-sm text-[var(--color-warning)]">
                     <span>View RB Scatter Plot</span>
                     <ArrowLeft className="w-4 h-4 rotate-180" />
                   </div>
                 </div>
                 <div className="hidden sm:block">
-                  <div className="w-20 h-20 bg-[#FF6B35]/10 rounded-lg flex items-center justify-center">
-                    <TrendingUp className="w-10 h-10 text-[#FF6B35]" />
+                  <div className="w-20 h-20 bg-[var(--color-warning)]/10 rounded-lg flex items-center justify-center">
+                    <TrendingUp className="w-10 h-10 text-[var(--color-warning)]" />
                   </div>
                 </div>
               </div>
@@ -242,12 +242,12 @@ export default function FantasyFootballPage() {
           className="flex gap-4 mb-8"
         >
           {/* Main Chart */}
-          <div className="flex-1 bg-gray-900 rounded-lg border border-gray-800 p-2 sm:p-4 overflow-x-auto">
+          <div className="flex-1 bg-[var(--surface-secondary)] rounded-lg border border-[var(--border-primary)] p-2 sm:p-4 overflow-x-auto">
           {isLoading ? (
             <div className="flex items-center justify-center h-96">
               <div className="text-center">
-                <RefreshCw className="w-8 h-8 animate-spin text-cyan-400 mx-auto mb-4" />
-                <p className="text-gray-400">Loading tier chart...</p>
+                <RefreshCw className="w-8 h-8 animate-spin text-[var(--color-primary)] mx-auto mb-4" />
+                <p className="text-[var(--text-secondary)]">Loading tier chart...</p>
               </div>
             </div>
           ) : (
@@ -285,30 +285,30 @@ export default function FantasyFootballPage() {
           transition={{ delay: 0.3 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
         >
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 border border-gray-800">
-            <h3 className="text-lg font-semibold mb-2 text-cyan-400">How to Read</h3>
-            <p className="text-sm text-gray-400">
+          <div className="bg-[var(--surface-secondary)]/50 backdrop-blur-sm rounded-lg p-4 border border-[var(--border-primary)]">
+            <h3 className="text-lg font-semibold mb-2 text-[var(--color-primary)]">How to Read</h3>
+            <p className="text-sm text-[var(--text-secondary)]">
               Players are grouped into color-coded tiers based on expert consensus rankings, not my own rankings.
               Horizontal bars show ranking uncertainty.
             </p>
           </div>
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 border border-gray-800">
-            <h3 className="text-lg font-semibold mb-2 text-green-400">Tier Colors</h3>
-            <p className="text-sm text-gray-400">
+          <div className="bg-[var(--surface-secondary)]/50 backdrop-blur-sm rounded-lg p-4 border border-[var(--border-primary)]">
+            <h3 className="text-lg font-semibold mb-2 text-[var(--color-success)]">Tier Colors</h3>
+            <p className="text-sm text-[var(--text-secondary)]">
               Red → Yellow → Green → Blue represents decreasing player value.
               Players in the same tier are considered similar options.
             </p>
           </div>
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 border border-gray-800">
-            <h3 className="text-lg font-semibold mb-2 text-yellow-400">Algorithm</h3>
-            <p className="text-sm text-gray-400">
+          <div className="bg-[var(--surface-secondary)]/50 backdrop-blur-sm rounded-lg p-4 border border-[var(--border-primary)]">
+            <h3 className="text-lg font-semibold mb-2 text-[var(--color-warning)]">Algorithm</h3>
+            <p className="text-sm text-[var(--text-secondary)]">
               Uses k-means clustering on expert rankings and standard deviations
               to identify natural player groupings.
             </p>
           </div>
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 border border-gray-800">
-            <h3 className="text-lg font-semibold mb-2 text-purple-400">Data Source</h3>
-            <p className="text-sm text-gray-400">
+          <div className="bg-[var(--surface-secondary)]/50 backdrop-blur-sm rounded-lg p-4 border border-[var(--border-primary)]">
+            <h3 className="text-lg font-semibold mb-2 text-[var(--color-accent)]">Data Source</h3>
+            <p className="text-sm text-[var(--text-secondary)]">
               {dataSource === 'api' 
                 ? 'Live data from FantasyPros expert consensus rankings via session-based authentication.'
                 : dataSource === 'cache'
@@ -318,8 +318,8 @@ export default function FantasyFootballPage() {
             </p>
             {(dataSource === 'cache' || dataSource === 'api') && (
               <div className="mt-2 flex items-center gap-2">
-                <Database className="w-4 h-4 text-[#FF6B35] dark:text-[#FF8E53]" />
-                <span className="text-xs text-[#FF6B35] dark:text-[#FF8E53]">
+                <Database className="w-4 h-4 text-[var(--color-warning)]" />
+                <span className="text-xs text-[var(--color-warning)]">
                   Data cached for offline access
                 </span>
               </div>
@@ -332,25 +332,25 @@ export default function FantasyFootballPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 border border-gray-800"
+          className="bg-[var(--surface-secondary)]/50 backdrop-blur-sm rounded-lg p-6 border border-[var(--border-primary)]"
         >
           <h3 className="text-xl font-semibold mb-4 text-center">Tech Stack</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
-              <div className="text-cyan-400 font-semibold">D3.js</div>
-              <div className="text-sm text-gray-400">Data Visualization</div>
+              <div className="text-[var(--color-primary)] font-semibold">D3.js</div>
+              <div className="text-sm text-[var(--text-secondary)]">Data Visualization</div>
             </div>
             <div>
-              <div className="text-green-400 font-semibold">K-Means</div>
-              <div className="text-sm text-gray-400">Machine Learning</div>
+              <div className="text-[var(--color-success)] font-semibold">K-Means</div>
+              <div className="text-sm text-[var(--text-secondary)]">Machine Learning</div>
             </div>
             <div>
-              <div className="text-yellow-400 font-semibold">TypeScript</div>
-              <div className="text-sm text-gray-400">Type Safety</div>
+              <div className="text-[var(--color-warning)] font-semibold">TypeScript</div>
+              <div className="text-sm text-[var(--text-secondary)]">Type Safety</div>
             </div>
             <div>
-              <div className="text-purple-400 font-semibold">Framer Motion</div>
-              <div className="text-sm text-gray-400">Animations</div>
+              <div className="text-[var(--color-accent)] font-semibold">Framer Motion</div>
+              <div className="text-sm text-[var(--text-secondary)]">Animations</div>
             </div>
           </div>
         </motion.div>

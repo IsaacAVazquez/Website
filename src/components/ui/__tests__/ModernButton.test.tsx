@@ -47,7 +47,7 @@ describe('ModernButton', () => {
     const button = screen.getByText('Button')
     expect(button).toHaveClass('px-4')
     expect(button).toHaveClass('py-2')
-    expect(button).toHaveClass('min-h-[40px]')
+    expect(button).toHaveClass('min-h-[44px]')
   })
 
   it('applies large size correctly', () => {

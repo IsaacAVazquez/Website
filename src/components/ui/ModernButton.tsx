@@ -1,18 +1,35 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "accent";
 type ButtonSize = "sm" | "md" | "lg";
 
-interface ModernButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ModernButtonBaseProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   children: React.ReactNode;
   ariaLabel?: string;
   fullWidth?: boolean;
+  className?: string;
 }
+
+interface ModernButtonAsButton
+  extends ModernButtonBaseProps,
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ModernButtonBaseProps> {
+  href?: undefined;
+}
+
+interface ModernButtonAsLink
+  extends ModernButtonBaseProps,
+    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ModernButtonBaseProps> {
+  href: string;
+  disabled?: boolean;
+}
+
+type ModernButtonProps = ModernButtonAsButton | ModernButtonAsLink;
 
 export function ModernButton({
   variant = "primary",
@@ -63,17 +80,52 @@ export function ModernButton({
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-sm min-h-[40px] gap-1.5",
+    sm: "px-4 py-2 text-sm min-h-[44px] gap-1.5",
     md: "px-6 py-2.5 text-base min-h-[44px] gap-2",
     lg: "px-8 py-3.5 text-lg min-h-[52px] gap-2.5",
   };
 
+  const combinedClassName = cn(baseStyles, variants[variant], sizes[size], className);
+
+  // Render as link when href is provided
+  if ("href" in props && props.href) {
+    const { href, ...linkProps } = props as ModernButtonAsLink;
+    const isExternal = href.startsWith("http") || href.startsWith("//");
+
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          className={combinedClassName}
+          aria-label={ariaLabel}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...linkProps}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    return (
+      <Link
+        href={href}
+        className={combinedClassName}
+        aria-label={ariaLabel}
+        {...linkProps}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  const buttonProps = props as ModernButtonAsButton;
   return (
     <button
-      className={cn(baseStyles, variants[variant], sizes[size], className)}
+      className={combinedClassName}
       aria-label={ariaLabel}
       disabled={disabled}
-      {...props}
+      {...buttonProps}
     >
       {children}
     </button>

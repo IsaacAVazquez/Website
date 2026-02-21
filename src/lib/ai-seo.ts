@@ -532,7 +532,7 @@ export function generateProjectSchema(data: ProjectSchemaData) {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "@id": `${data.url || siteConfig.url}/projects/${data.name
+    "@id": `${data.url || siteConfig.url}/portfolio/${data.name
       .toLowerCase()
       .replace(/\s+/g, "-")}#project`,
     name: data.name,

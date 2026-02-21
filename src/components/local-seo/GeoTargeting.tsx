@@ -67,9 +67,9 @@ export function GeoTargeting({ onLocationDetected, className = '' }: GeoTargetin
             exit={{ opacity: 0, y: -20 }}
             className="mb-6"
           >
-            <WarmCard hover={false} padding="md" className="p-6 bg-electric-blue/5 border-electric-blue/20">
+            <WarmCard hover={false} padding="md" className="p-6 bg-primary/5 border-primary/20">
               <div className="flex items-start space-x-4">
-                <IconTarget className="w-8 h-8 text-electric-blue mt-1 flex-shrink-0" />
+                <IconTarget className="w-8 h-8 text-primary mt-1 flex-shrink-0" />
                 <div className="flex-1">
                   <h3 className="font-semibold text-white mb-2">
                     Get Personalized Local Content
@@ -122,7 +122,7 @@ export function GeoTargeting({ onLocationDetected, className = '' }: GeoTargetin
             <WarmCard hover={false} padding="md" className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <IconMapPin className="w-5 h-5 text-matrix-green" />
+                  <IconMapPin className="w-5 h-5 text-success" />
                   <div>
                     <h4 className="font-medium text-white">
                       Showing content for {detectedLocation.address.addressLocality}
@@ -175,12 +175,12 @@ export function GeoServiceCoverage({ location, userCoords }: GeoServiceCoverageP
   return (
     <WarmCard hover={false} padding="md" className="p-6">
       <div className="flex items-start space-x-4">
-        <IconTarget className="w-6 h-6 text-electric-blue mt-1 flex-shrink-0" />
+        <IconTarget className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
         <div className="flex-1">
           <h3 className="font-semibold text-white mb-3">Service Area Coverage</h3>
           
           {userCoords && distance !== null && (
-            <div className="mb-4 p-3 bg-terminal-bg/30 rounded-lg">
+            <div className="mb-4 p-3 bg-slate-900/30 rounded-lg">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-300">
                   Distance from {location.address.addressLocality}:
@@ -207,7 +207,7 @@ export function GeoServiceCoverage({ location, userCoords }: GeoServiceCoverageP
                 {location.serviceAreas.slice(0, 6).map((area, index) => (
                   <div 
                     key={index}
-                    className="text-sm text-slate-300 bg-electric-blue/10 px-2 py-1 rounded"
+                    className="text-sm text-slate-300 bg-primary/10 px-2 py-1 rounded"
                   >
                     {area}
                   </div>
@@ -220,19 +220,19 @@ export function GeoServiceCoverage({ location, userCoords }: GeoServiceCoverageP
               )}
             </div>
 
-            <div className="border-t border-electric-blue/20 pt-3">
+            <div className="border-t border-primary/20 pt-3">
               <h4 className="font-medium text-white mb-2">Service Options</h4>
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-matrix-green rounded-full" />
+                  <div className="w-2 h-2 bg-success rounded-full" />
                   <span className="text-sm text-slate-300">On-site consultation</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-electric-blue rounded-full" />
+                  <div className="w-2 h-2 bg-primary rounded-full" />
                   <span className="text-sm text-slate-300">Remote collaboration</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-cyber-teal rounded-full" />
+                  <div className="w-2 h-2 bg-accent rounded-full" />
                   <span className="text-sm text-slate-300">Hybrid project management</span>
                 </div>
               </div>
@@ -297,7 +297,7 @@ export function GeoContentRecommendations({ location }: { location: BusinessLoca
         {recommendations.map((item, index) => (
           <div 
             key={index}
-            className="p-3 bg-terminal-bg/30 rounded-lg hover:bg-terminal-bg/50 transition-colors"
+            className="p-3 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colors"
           >
             <h4 className="font-medium text-white text-sm mb-1">{item.title}</h4>
             <p className="text-xs text-slate-400 mb-2">{item.description}</p>

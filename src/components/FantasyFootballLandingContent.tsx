@@ -80,7 +80,7 @@ export function FantasyFootballLandingContent() {
           transition={{ duration: 0.6 }}
         >
           <Heading className="font-heading font-black text-5xl lg:text-6xl mb-6 tracking-tight">
-            <span className="gradient-text-warm">Fantasy Football</span>
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Fantasy Football</span>
             <br />
             <span className="text-[#FF6B35] dark:text-[#FF8E53]">Command Center</span>
           </Heading>
@@ -93,16 +93,16 @@ export function FantasyFootballLandingContent() {
           {/* Quick Stats */}
           <div className="flex flex-wrap gap-6 mb-8">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-matrix-green rounded-full animate-pulse"></div>
-              <span className="text-sm font-mono text-matrix-green">300+ Players Analyzed</span>
+              <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+              <span className="text-sm font-mono text-success">300+ Players Analyzed</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-electric-blue rounded-full animate-pulse"></div>
-              <span className="text-sm font-mono text-electric-blue">6-Tier Clustering System</span>
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              <span className="text-sm font-mono text-primary">6-Tier Clustering System</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-cyber-teal rounded-full animate-pulse"></div>
-              <span className="text-sm font-mono text-cyber-teal">Real-time Data Sync</span>
+              <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+              <span className="text-sm font-mono text-accent">Real-time Data Sync</span>
             </div>
           </div>
         </motion.div>
@@ -202,7 +202,7 @@ export function FantasyFootballLandingContent() {
       >
         <WarmCard hover={false} padding="xl">
           <div className="text-center mb-8">
-            <h2 className="font-heading font-bold text-3xl mb-4 gradient-text-warm">
+            <h2 className="font-heading font-bold text-3xl mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Technical Excellence
             </h2>
             <p className="text-lg text-[#4A3426] dark:text-[#D4A88E] max-w-2xl mx-auto">
@@ -213,7 +213,7 @@ export function FantasyFootballLandingContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-electric-blue to-matrix-green rounded-2xl mx-auto mb-4 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-primary to-success rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <IconChartBar className="h-8 w-8 text-white" />
               </div>
               <h3 className="font-heading font-bold text-lg mb-2 text-primary">Data Visualization</h3>
@@ -221,7 +221,7 @@ export function FantasyFootballLandingContent() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-matrix-green to-cyber-teal rounded-2xl mx-auto mb-4 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-success to-accent rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <IconDatabase className="h-8 w-8 text-white" />
               </div>
               <h3 className="font-heading font-bold text-lg mb-2 text-primary">Real-time Processing</h3>
@@ -229,7 +229,7 @@ export function FantasyFootballLandingContent() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-neon-purple to-electric-blue rounded-2xl mx-auto mb-4 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl mx-auto mb-4 flex items-center justify-center">
                 <IconDeviceMobile className="h-8 w-8 text-white" />
               </div>
               <h3 className="font-heading font-bold text-lg mb-2 text-primary">Mobile Optimization</h3>

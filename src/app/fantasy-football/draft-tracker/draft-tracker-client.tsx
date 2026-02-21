@@ -59,19 +59,19 @@ export function DraftTrackerClient() {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-12 h-12 border-4 border-[#FF6B35] dark:border-[#FF8E53] border-t-transparent rounded-full"
+          className="w-12 h-12 border-4 border-[var(--color-primary)] border-t-transparent rounded-full"
         />
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#FFF8F0] via-[#FFFCF7] to-[#FFF8F0] dark:from-[#2D1B12] dark:via-[#1C1410] dark:to-[#2D1B12]">
+    <div className="relative min-h-screen bg-gradient-to-br from-[var(--surface-secondary)] via-[var(--surface-primary)] to-[var(--surface-secondary)]">
       {/* Warm Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#FF6B35_0%,_transparent_50%)] opacity-5" />
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-[#F7B32B] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" />
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-[#FF6B35] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse animation-delay-2000" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-primary)_0%,_transparent_50%)] opacity-5" />
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-[var(--color-accent)] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse" />
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-[var(--color-primary)] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse animation-delay-2000" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-8">
@@ -88,11 +88,11 @@ export function DraftTrackerClient() {
                 <div className="text-center mb-8">
                   <Heading level={1} className="mb-4">
                     Fantasy Football{" "}
-                    <span className="bg-gradient-to-r from-[#FF6B35] via-[#F7B32B] to-[#FF8E53] bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-accent)] to-[var(--color-primary)] bg-clip-text text-transparent">
                       Draft Tracker
                     </span>
                   </Heading>
-                  <Paragraph size="lg" className="text-[#6B4F3D] dark:text-[#D4A88E] max-w-2xl mx-auto">
+                  <Paragraph size="lg" className="text-[var(--text-secondary)] max-w-2xl mx-auto">
                     Track your fantasy football draft with real-time analytics, tier-based player rankings,
                     and intelligent draft insights. Perfect for both mock drafts and live draft day.
                   </Paragraph>
@@ -126,12 +126,12 @@ export function DraftTrackerClient() {
                       </Badge>
                     )}
                   </div>
-                  <div className="flex items-center gap-4 text-[#6B4F3D] dark:text-[#D4A88E]">
+                  <div className="flex items-center gap-4 text-[var(--text-secondary)]">
                     <span>Pick #{draftState.currentPick}</span>
                     <span>•</span>
                     <span>Round {draftState.currentRound}</span>
                     <span>•</span>
-                    <span className={isUserPick ? "text-[#6BCF7F] dark:text-[#8FE39E] font-medium" : ""}>
+                    <span className={isUserPick ? "text-[var(--color-success)] font-medium" : ""}>
                       {currentTeamName}
                     </span>
                   </div>
@@ -179,7 +179,7 @@ export function DraftTrackerClient() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     className="text-center"
                   >
-                    <WarmCard hover={false} padding="md" className="border-[#6BCF7F] dark:border-[#8FE39E] bg-[#6BCF7F]/5 dark:bg-[#6BCF7F]/10 max-w-md mx-auto">
+                    <WarmCard hover={false} padding="md" className="border-[var(--color-success)] bg-[var(--color-success)]/5 max-w-md mx-auto">
                       <motion.div
                         animate={{
                           boxShadow: [
@@ -191,10 +191,10 @@ export function DraftTrackerClient() {
                         transition={{ duration: 2, repeat: Infinity }}
                         className="p-4 text-center"
                       >
-                        <Heading level={3} className="text-[#6BCF7F] dark:text-[#8FE39E] mb-2">
+                        <Heading level={3} className="text-[var(--color-success)] mb-2">
                           🎯 Your Pick!
                         </Heading>
-                        <Paragraph className="text-[#4A3426] dark:text-[#FFE4D6]">
+                        <Paragraph className="text-[var(--text-primary)]">
                           Choose your next player from the board below
                         </Paragraph>
                       </motion.div>

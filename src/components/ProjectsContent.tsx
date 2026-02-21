@@ -1,7 +1,7 @@
 "use client";
 
 import { Heading } from "@/components/ui/Heading";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   IconBrandGithub,
   IconExternalLink,
@@ -437,6 +437,7 @@ const containerVariants = {
 };
 
 export function ProjectsContent() {
+  const shouldReduceMotion = useReducedMotion();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -467,7 +468,7 @@ export function ProjectsContent() {
       </div>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px]"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[200px]"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -570,19 +571,17 @@ export function ProjectsContent() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: shouldReduceMotion ? 0 : 0.5 }}
         className="mt-16 text-center"
       >
         <p className="text-lg text-[var(--text-secondary)] mb-6">
           Interested in working together? Let's build something great.
         </p>
-        <Link href="/contact">
-          <ModernButton variant="accent" size="lg">
-            Get In Touch
-          </ModernButton>
-        </Link>
+        <ModernButton href="/contact" variant="accent" size="lg">
+          Get In Touch
+        </ModernButton>
       </motion.div>
 
       <Suspense fallback={null}>

@@ -70,32 +70,32 @@ export function DraftSetup({ onStartDraft, scoringFormat, onScoringFormatChange 
       {/* League Setup */}
       <WarmCard hover={false} padding="lg" className="p-8">
         <div className="flex items-center gap-3 mb-6">
-          <IconTrophy className="text-[#FF6B35] dark:text-[#FF8E53]" size={24} />
+          <IconTrophy className="text-[var(--color-primary)]" size={24} />
           <Heading level={3}>League Settings</Heading>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-[#4A3426] dark:text-[#FFE4D6] mb-2">
+            <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
               League Name
             </label>
             <input
               type="text"
               value={leagueName}
               onChange={(e) => setLeagueName(e.target.value)}
-              className="w-full px-4 py-3 bg-white dark:bg-[#2D1B12] border border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] placeholder-slate-400 focus:border-[#FF6B35] focus:ring-1 focus:ring-[#FF6B35] transition-colors"
+              className="w-full px-4 py-3 bg-[var(--surface-primary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
               placeholder="Enter your league name"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#4A3426] dark:text-[#FFE4D6] mb-2">
+            <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
               Total Teams
             </label>
             <select
               value={totalTeams}
               onChange={(e) => setTotalTeams(Number(e.target.value))}
-              className="w-full px-4 py-3 bg-white dark:bg-[#2D1B12] border border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] focus:border-[#FF6B35] focus:ring-1 focus:ring-[#FF6B35] transition-colors"
+              className="w-full px-4 py-3 bg-[var(--surface-primary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
             >
               {[8, 10, 12, 14, 16].map(num => (
                 <option key={num} value={num}>{num} Teams</option>
@@ -104,13 +104,13 @@ export function DraftSetup({ onStartDraft, scoringFormat, onScoringFormatChange 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#4A3426] dark:text-[#FFE4D6] mb-2">
+            <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
               Your Draft Position
             </label>
             <select
               value={userTeam}
               onChange={(e) => setUserTeam(Number(e.target.value))}
-              className="w-full px-4 py-3 bg-white dark:bg-[#2D1B12] border border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] focus:border-[#FF6B35] focus:ring-1 focus:ring-[#FF6B35] transition-colors"
+              className="w-full px-4 py-3 bg-[var(--surface-primary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
             >
               {Array.from({ length: totalTeams }, (_, i) => i + 1).map(pos => (
                 <option key={pos} value={pos}>Position {pos}</option>
@@ -119,13 +119,13 @@ export function DraftSetup({ onStartDraft, scoringFormat, onScoringFormatChange 
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#4A3426] dark:text-[#FFE4D6] mb-2">
+            <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
               Total Rounds
             </label>
             <select
               value={rounds}
               onChange={(e) => setRounds(Number(e.target.value))}
-              className="w-full px-4 py-3 bg-white dark:bg-[#2D1B12] border border-[#FFE4D6] dark:border-[#FF8E53]/30 rounded-lg text-[#4A3426] dark:text-[#FFE4D6] focus:border-[#FF6B35] focus:ring-1 focus:ring-[#FF6B35] transition-colors"
+              className="w-full px-4 py-3 bg-[var(--surface-primary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
             >
               {[13, 14, 15, 16, 17, 18].map(num => (
                 <option key={num} value={num}>{num} Rounds</option>
@@ -138,7 +138,7 @@ export function DraftSetup({ onStartDraft, scoringFormat, onScoringFormatChange 
       {/* Draft Type */}
       <WarmCard hover={false} padding="lg" className="p-8">
         <div className="flex items-center gap-3 mb-6">
-          <IconSettings className="text-[#FF6B35] dark:text-[#FF8E53]" size={24} />
+          <IconSettings className="text-[var(--color-primary)]" size={24} />
           <Heading level={3}>Draft Format</Heading>
         </div>
 
@@ -173,17 +173,17 @@ export function DraftSetup({ onStartDraft, scoringFormat, onScoringFormatChange 
                 <div className={`
                   p-4 rounded-lg border-2 transition-all duration-200
                   ${draftType === type.value
-                    ? 'border-[#FF6B35] dark:border-[#FF8E53] bg-[#FF6B35]/10 dark:bg-[#FF8E53]/20'
-                    : 'border-[#FFE4D6] dark:border-[#FF8E53]/30 bg-white dark:bg-[#2D1B12] hover:border-slate-600'
+                    ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/10'
+                    : 'border-[var(--border-primary)] bg-[var(--surface-primary)] hover:border-[var(--neutral-600)]'
                   }
                 `}>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">{type.label}</span>
+                    <span className="font-medium text-[var(--text-primary)]">{type.label}</span>
                     {type.recommended && (
                       <Badge variant="matrix" size="sm">Recommended</Badge>
                     )}
                   </div>
-                  <Paragraph size="sm" className="text-slate-400">
+                  <Paragraph size="sm" className="text-[var(--text-tertiary)]">
                     {type.description}
                   </Paragraph>
                 </div>
@@ -196,7 +196,7 @@ export function DraftSetup({ onStartDraft, scoringFormat, onScoringFormatChange 
       {/* Scoring Format */}
       <WarmCard hover={false} padding="lg" className="p-8">
         <div className="flex items-center gap-3 mb-6">
-          <IconUsers className="text-[#FF6B35] dark:text-[#FF8E53]" size={24} />
+          <IconUsers className="text-[var(--color-primary)]" size={24} />
           <Heading level={3}>Scoring Format</Heading>
         </div>
 
@@ -219,15 +219,15 @@ export function DraftSetup({ onStartDraft, scoringFormat, onScoringFormatChange 
                 <div className={`
                   p-4 rounded-lg border-2 transition-all duration-200 h-full
                   ${scoringFormat === format.value
-                    ? 'border-[#FF6B35] dark:border-[#FF8E53] bg-[#FF6B35]/10 dark:bg-[#FF8E53]/20'
-                    : 'border-[#FFE4D6] dark:border-[#FF8E53]/30 bg-white dark:bg-[#2D1B12] hover:border-slate-600'
+                    ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/10'
+                    : 'border-[var(--border-primary)] bg-[var(--surface-primary)] hover:border-[var(--neutral-600)]'
                   }
                 `}>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-[#4A3426] dark:text-[#FFE4D6]">{format.label}</span>
+                    <span className="font-medium text-[var(--text-primary)]">{format.label}</span>
                     <Badge variant="outline" size="sm">{format.badge}</Badge>
                   </div>
-                  <Paragraph size="sm" className="text-slate-400">
+                  <Paragraph size="sm" className="text-[var(--text-tertiary)]">
                     {format.description}
                   </Paragraph>
                 </div>
@@ -254,7 +254,7 @@ export function DraftSetup({ onStartDraft, scoringFormat, onScoringFormatChange 
           </ModernButton>
         </motion.div>
 
-        <Paragraph className="text-slate-400 mt-4 max-w-md mx-auto">
+        <Paragraph className="text-[var(--text-tertiary)] mt-4 max-w-md mx-auto">
           Ready to track your draft? Click above to begin and start making picks with real-time analytics.
         </Paragraph>
       </div>

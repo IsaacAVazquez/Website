@@ -53,7 +53,7 @@ const QAMetric = ({ label, value, change, trend, icon: Icon, color }: MetricProp
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-3">
             <div className={`p-2 rounded-lg bg-gradient-to-br ${color} bg-opacity-20`}>
-              <Icon className="h-5 w-5 text-vivid-blue" />
+              <Icon className="h-5 w-5 text-primary" />
             </div>
             <h3 className="font-semibold text-sm text-secondary">{label}</h3>
           </div>
@@ -97,12 +97,12 @@ const TestCoverage = () => {
       <div className="relative z-10">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-semibold text-primary">Test Coverage</h3>
-          <span className="text-2xl font-bold text-vivid-blue">{progress}%</span>
+          <span className="text-2xl font-bold text-primary">{progress}%</span>
         </div>
         
         <div className="relative h-3 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
           <motion.div
-            className="absolute inset-y-0 left-0 bg-gradient-to-r from-vivid-blue to-vivid-teal rounded-full"
+            className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-accent rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
@@ -195,11 +195,11 @@ export function QADashboard() {
       className="space-y-6"
     >
       <div className="flex items-center gap-3 mb-6">
-        <IconServer className="h-6 w-6 text-vivid-blue" />
+        <IconServer className="h-6 w-6 text-primary" />
         <h2 className="text-2xl font-bold gradient-text">QA Dashboard</h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-vivid-blue/50 to-transparent" />
+        <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent" />
         <motion.div
-          className="px-3 py-1 glass-card text-xs font-semibold text-vivid-blue"
+          className="px-3 py-1 glass-card text-xs font-semibold text-primary"
           animate={{ opacity: [0.7, 1, 0.7] }}
           transition={{ duration: 2, repeat: Infinity }}
         >

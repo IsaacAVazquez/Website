@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { IconX, IconExternalLink, IconBrandGithub, IconClock, IconTargetArrow } from '@tabler/icons-react';
 import { WarmCard } from '@/components/ui/WarmCard';
 import { ModernButton } from '@/components/ui/ModernButton';
@@ -15,7 +15,6 @@ interface ProjectDetailModalProps {
     title: string;
     description: string;
     tech: string[];
-    color: string;
     icon: React.ComponentType<{ className?: string }>;
     github?: string | null;
     link?: string | null;
@@ -54,6 +53,8 @@ interface ProjectDetailModalProps {
 }
 
 export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailModalProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   if (!project) return null;
 
   const IconComponent = project.icon;
@@ -73,10 +74,13 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 50 }}
+            initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.9, y: shouldReduceMotion ? 0 : 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 50 }}
+            exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.9, y: shouldReduceMotion ? 0 : 50 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${project.title} project details`}
           >
             <WarmCard
               hover={false}
@@ -86,7 +90,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
               {/* Header */}
               <div className="sticky top-0 bg-white/95 dark:bg-[var(--neutral-900)]/95 backdrop-blur-sm border-b-2 border-[var(--border-primary)] p-6 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-lg bg-gradient-to-br ${project.color}`}>
+                  <div className="p-3 rounded-lg bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent)]">
                     <IconComponent className="w-6 h-6 text-white" />
                   </div>
                   <div>

@@ -28,27 +28,27 @@ export function ExpertConsensusIndicator({
     switch (level) {
       case 'high':
         return {
-          color: 'text-matrix-green',
-          bgColor: 'bg-matrix-green/20',
-          borderColor: 'border-matrix-green/30',
+          color: 'text-success',
+          bgColor: 'bg-success/20',
+          borderColor: 'border-success/30',
           icon: TrendingUp,
           label: 'Strong Consensus',
           description: 'Experts agree on this player\'s value'
         };
       case 'medium':
         return {
-          color: 'text-warning-amber',
-          bgColor: 'bg-warning-amber/20',
-          borderColor: 'border-warning-amber/30',
+          color: 'text-warning',
+          bgColor: 'bg-warning/20',
+          borderColor: 'border-warning/30',
           icon: Minus,
           label: 'Mixed Opinions',
           description: 'Some disagreement among experts'
         };
       case 'low':
         return {
-          color: 'text-error-red',
-          bgColor: 'bg-error-red/20',
-          borderColor: 'border-error-red/30',
+          color: 'text-error',
+          bgColor: 'bg-error/20',
+          borderColor: 'border-error/30',
           icon: TrendingDown,
           label: 'High Uncertainty',
           description: 'Significant expert disagreement'
@@ -116,9 +116,9 @@ export function ExpertConsensusIndicator({
             <span>Rank range: #{minRank} - #{maxRank}</span>
             {rankRange > 0 && (
               <span className={`ml-2 font-medium ${
-                rankRange <= 10 ? 'text-matrix-green' :
-                rankRange <= 25 ? 'text-warning-amber' :
-                'text-error-red'
+                rankRange <= 10 ? 'text-success' :
+                rankRange <= 25 ? 'text-warning' :
+                'text-error'
               }`}>
                 (±{Math.round(rankRange / 2)})
               </span>
@@ -135,8 +135,8 @@ export function ExpertConsensusIndicator({
                 <span
                   key={index}
                   className={`px-2 py-1 rounded text-xs font-mono ${
-                    rank === minRank ? 'bg-matrix-green/30 text-matrix-green' :
-                    rank === maxRank ? 'bg-error-red/30 text-error-red' :
+                    rank === minRank ? 'bg-success/30 text-success' :
+                    rank === maxRank ? 'bg-error/30 text-error' :
                     'bg-slate-700/50 text-slate-300'
                   }`}
                 >

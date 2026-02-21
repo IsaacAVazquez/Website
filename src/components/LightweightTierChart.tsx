@@ -76,18 +76,18 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
 
   if (!players.length) {
     return (
-      <div className={`flex items-center justify-center h-64 bg-slate-900/30 rounded-lg ${className}`}>
-        <p className="text-slate-400">No players available</p>
+      <div className={`flex items-center justify-center h-64 bg-[var(--neutral-900)]/30 rounded-lg ${className}`}>
+        <p className="text-[var(--text-tertiary)]">No players available</p>
       </div>
     );
   }
 
   if (!resolvedTiers.length) {
     return (
-      <div className={`flex items-center justify-center h-64 bg-slate-900/30 rounded-lg ${className}`}>
+      <div className={`flex items-center justify-center h-64 bg-[var(--neutral-900)]/30 rounded-lg ${className}`}>
         <div className="text-center">
-          <div className="w-8 h-8 border-2 border-electric-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-400">Calculating tiers...</p>
+          <div className="w-8 h-8 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[var(--text-tertiary)]">Calculating tiers...</p>
         </div>
       </div>
     );
@@ -98,16 +98,16 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
       {/* Chart Controls */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <h3 className="text-lg font-semibold text-slate-200">
+          <h3 className="text-lg font-semibold text-[var(--text-primary)]">
             Player Tiers ({players.length} players)
           </h3>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setViewMode('horizontal')}
               className={`px-3 py-1 rounded text-sm ${
-                viewMode === 'horizontal' 
-                  ? 'bg-electric-blue text-black' 
-                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                viewMode === 'horizontal'
+                  ? 'bg-[var(--color-primary)] text-white'
+                  : 'bg-[var(--neutral-700)] text-[var(--neutral-300)] hover:bg-[var(--neutral-600)]'
               }`}
             >
               Horizontal
@@ -115,9 +115,9 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
             <button
               onClick={() => setViewMode('vertical')}
               className={`px-3 py-1 rounded text-sm ${
-                viewMode === 'vertical' 
-                  ? 'bg-electric-blue text-black' 
-                  : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                viewMode === 'vertical'
+                  ? 'bg-[var(--color-primary)] text-white'
+                  : 'bg-[var(--neutral-700)] text-[var(--neutral-300)] hover:bg-[var(--neutral-600)]'
               }`}
             >
               Vertical
@@ -133,7 +133,7 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: tier.color }}
               />
-              <span className="text-slate-400">{tier.label}</span>
+              <span className="text-[var(--text-tertiary)]">{tier.label}</span>
             </div>
           ))}
         </div>
@@ -202,8 +202,8 @@ const TierRow = memo<TierRowProps>(({
       className={`
         relative border rounded-lg p-4 transition-all duration-300 cursor-pointer
         ${isSelected 
-          ? 'border-opacity-50 shadow-2xl scale-[1.02]' 
-          : 'border-slate-700 hover:border-slate-600'
+          ? 'border-opacity-50 shadow-2xl scale-[1.02]'
+          : 'border-[var(--neutral-700)] hover:border-[var(--neutral-600)]'
         }
       `}
       style={{
@@ -219,14 +219,14 @@ const TierRow = memo<TierRowProps>(({
             className="w-4 h-4 rounded-full"
             style={{ backgroundColor: tier.color }}
           />
-          <h4 className="text-lg font-bold text-slate-200">{tier.label}</h4>
-          <span className="text-sm text-slate-500">
+          <h4 className="text-lg font-bold text-[var(--text-primary)]">{tier.label}</h4>
+          <span className="text-sm text-[var(--text-tertiary)]">
             Ranks {tier.minRank}-{tier.maxRank} • {tier.playerCount} players
           </span>
         </div>
 
         {/* Visual bar */}
-        <div className="w-32 h-2 bg-slate-700 rounded-full overflow-hidden">
+        <div className="w-32 h-2 bg-[var(--neutral-700)] rounded-full overflow-hidden">
           <div
             className="h-full rounded-full transition-all duration-500"
             style={{
@@ -253,11 +253,11 @@ const TierRow = memo<TierRowProps>(({
       {/* Expand indicator */}
       <div className="absolute bottom-2 right-2">
         <div className={`
-          w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center
+          w-6 h-6 rounded-full bg-[var(--neutral-700)] flex items-center justify-center
           transition-transform duration-300
           ${isSelected ? 'rotate-180' : ''}
         `}>
-          <svg className="w-3 h-3 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-3 h-3 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </div>
@@ -287,8 +287,8 @@ const TierColumn = memo<TierColumnProps>(({
       className={`
         relative border rounded-lg p-4 transition-all duration-300
         ${isSelected 
-          ? 'border-opacity-50 shadow-xl' 
-          : 'border-slate-700 hover:border-slate-600'
+          ? 'border-opacity-50 shadow-xl'
+          : 'border-[var(--neutral-700)] hover:border-[var(--neutral-600)]'
         }
       `}
       style={{
@@ -298,7 +298,7 @@ const TierColumn = memo<TierColumnProps>(({
     >
       {/* Tier Header */}
       <div 
-        className="cursor-pointer pb-3 border-b border-slate-700"
+        className="cursor-pointer pb-3 border-b border-[var(--neutral-700)]"
         onClick={() => onSelect(tier.tier)}
       >
         <div className="flex items-center gap-2 mb-2">
@@ -306,9 +306,9 @@ const TierColumn = memo<TierColumnProps>(({
             className="w-3 h-3 rounded-full"
             style={{ backgroundColor: tier.color }}
           />
-          <h4 className="font-bold text-slate-200">{tier.label}</h4>
+          <h4 className="font-bold text-[var(--text-primary)]">{tier.label}</h4>
         </div>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-[var(--text-tertiary)]">
           {tier.playerCount} players • Ranks {tier.minRank}-{tier.maxRank}
         </p>
       </div>

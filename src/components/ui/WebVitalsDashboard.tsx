@@ -152,29 +152,29 @@ export function WebVitalsDashboard() {
   const getRatingColor = (rating: "good" | "needs-improvement" | "poor") => {
     switch (rating) {
       case "good":
-        return "text-matrix-green";
+        return "text-success";
       case "needs-improvement":
-        return "text-warning-amber";
+        return "text-warning";
       case "poor":
-        return "text-error-red";
+        return "text-error";
     }
   };
 
   const getRatingBg = (rating: "good" | "needs-improvement" | "poor") => {
     switch (rating) {
       case "good":
-        return "bg-matrix-green/10 border-matrix-green/20";
+        return "bg-success/10 border-success/20";
       case "needs-improvement":
-        return "bg-warning-amber/10 border-warning-amber/20";
+        return "bg-warning/10 border-warning/20";
       case "poor":
-        return "bg-error-red/10 border-error-red/20";
+        return "bg-error/10 border-error/20";
     }
   };
 
   return (
     <div className="w-full space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-electric-blue mb-2">Core Web Vitals</h2>
+        <h2 className="text-2xl font-bold text-primary mb-2">Core Web Vitals</h2>
         <p className="text-slate-400 text-sm">
           Real-time performance metrics for this page
         </p>
@@ -231,10 +231,10 @@ export function WebVitalsDashboard() {
                   <div
                     className={`h-full transition-all duration-500 ${
                       vital.rating === "good"
-                        ? "bg-matrix-green"
+                        ? "bg-success"
                         : vital.rating === "needs-improvement"
-                        ? "bg-warning-amber"
-                        : "bg-error-red"
+                        ? "bg-warning"
+                        : "bg-error"
                     }`}
                     style={{
                       width: `${Math.min(
@@ -255,12 +255,12 @@ export function WebVitalsDashboard() {
                 {/* Threshold indicators */}
                 <div className="flex justify-between text-xs text-slate-500 mt-1">
                   <span>0</span>
-                  <span className="text-matrix-green">
+                  <span className="text-success">
                     {vital.unit === "ms"
                       ? `${THRESHOLDS[vital.name as keyof typeof THRESHOLDS].good}ms`
                       : THRESHOLDS[vital.name as keyof typeof THRESHOLDS].good}
                   </span>
-                  <span className="text-error-red">
+                  <span className="text-error">
                     {vital.unit === "ms"
                       ? `${THRESHOLDS[vital.name as keyof typeof THRESHOLDS].poor}ms`
                       : THRESHOLDS[vital.name as keyof typeof THRESHOLDS].poor}
@@ -279,15 +279,15 @@ export function WebVitalsDashboard() {
           {Object.values(vitals).filter(Boolean).length === 5 ? (
             <>
               <p>
-                <strong className="text-electric-blue">Overall Status:</strong>{" "}
+                <strong className="text-primary">Overall Status:</strong>{" "}
                 {Object.values(vitals).every((v) => v?.rating === "good") ? (
-                  <span className="text-matrix-green font-semibold">Excellent Performance ✓</span>
+                  <span className="text-success font-semibold">Excellent Performance ✓</span>
                 ) : Object.values(vitals).some((v) => v?.rating === "poor") ? (
-                  <span className="text-error-red font-semibold">
+                  <span className="text-error font-semibold">
                     Performance Issues Detected
                   </span>
                 ) : (
-                  <span className="text-warning-amber font-semibold">Room for Improvement</span>
+                  <span className="text-warning font-semibold">Room for Improvement</span>
                 )}
               </p>
               <p className="text-slate-400 text-xs">

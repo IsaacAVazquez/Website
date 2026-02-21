@@ -230,7 +230,7 @@ export default function BudgetingContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[var(--neutral-50)] to-[var(--neutral-100)] py-20 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--surface-secondary)] to-[var(--neutral-100)] dark:from-[var(--neutral-950)] dark:to-[var(--neutral-900)] py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -334,7 +334,7 @@ export default function BudgetingContent() {
           </ModernButton>
           <label className="inline-flex">
             <span
-              className="inline-flex items-center justify-center font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-offset-2 focus-visible:ring-black dark:focus-visible:ring-white border border-black dark:border-white text-black dark:text-white hover:bg-neutral-50 dark:hover:bg-neutral-900 px-7 py-3 text-base min-h-[44px] flex items-center gap-2 cursor-pointer"
+              className="inline-flex items-center justify-center font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-offset-2 focus-visible:ring-[var(--text-primary)] border border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--neutral-50)] dark:hover:bg-[var(--neutral-900)] px-7 py-3 text-base min-h-[44px] flex items-center gap-2 cursor-pointer"
             >
               <IconUpload className="w-5 h-5" />
               Import Data
@@ -368,7 +368,7 @@ export default function BudgetingContent() {
                   <select
                     value={formType}
                     onChange={(e) => setFormType(e.target.value as 'income' | 'expense')}
-                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                   >
                     <option value="expense">Expense</option>
                     <option value="income">Income</option>
@@ -381,7 +381,7 @@ export default function BudgetingContent() {
                   <select
                     value={formCategory}
                     onChange={(e) => setFormCategory(e.target.value)}
-                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                   >
                     <option value="">Select category</option>
                     {formType === 'expense' ? (
@@ -410,7 +410,7 @@ export default function BudgetingContent() {
                     value={formAmount}
                     onChange={(e) => setFormAmount(e.target.value)}
                     placeholder="0.00"
-                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                   />
                 </div>
                 <div>
@@ -421,7 +421,7 @@ export default function BudgetingContent() {
                     type="date"
                     value={formDate}
                     onChange={(e) => setFormDate(e.target.value)}
-                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -433,7 +433,7 @@ export default function BudgetingContent() {
                     value={formDescription}
                     onChange={(e) => setFormDescription(e.target.value)}
                     placeholder="Enter description"
-                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                   />
                 </div>
               </div>
@@ -471,7 +471,7 @@ export default function BudgetingContent() {
                     value={categoryName}
                     onChange={(e) => setCategoryName(e.target.value)}
                     placeholder="e.g., Groceries"
-                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                   />
                 </div>
                 <div>
@@ -484,7 +484,7 @@ export default function BudgetingContent() {
                     value={categoryBudget}
                     onChange={(e) => setCategoryBudget(e.target.value)}
                     placeholder="0.00"
-                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                   />
                 </div>
                 <div>
@@ -497,7 +497,7 @@ export default function BudgetingContent() {
                     onChange={(e) => setCategoryIcon(e.target.value)}
                     placeholder="📦"
                     maxLength={2}
-                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                    className="w-full px-4 py-2 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                   />
                 </div>
                 <div>
@@ -508,7 +508,7 @@ export default function BudgetingContent() {
                     type="color"
                     value={categoryColor}
                     onChange={(e) => setCategoryColor(e.target.value)}
-                    className="w-full h-10 px-2 py-1 rounded-lg border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                    className="w-full h-10 px-2 py-1 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                   />
                 </div>
               </div>
@@ -584,7 +584,7 @@ export default function BudgetingContent() {
                         handleUpdateCategoryBudget(category.id, parseFloat(e.target.value) || 0)
                       }
                       placeholder="Set budget"
-                      className="w-full px-3 py-1 text-sm rounded border border-[var(--border-primary)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+                      className="w-full px-3 py-1 text-sm rounded border border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
                     />
                   </div>
                 </WarmCard>

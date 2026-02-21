@@ -27,7 +27,7 @@ export function TierDisplay({ tierGroups, position: _position, showImages = true
           <WarmCard hover={false} padding="md" elevation={2} className="overflow-hidden">
             {/* Tier Header */}
             <div 
-              className="px-6 py-4 border-b border-terminal-border"
+              className="px-6 py-4 border-b border-neutral-700"
               style={{ backgroundColor: `${tierGroup.color}20` }}
             >
               <div className="flex items-center justify-between">
@@ -55,11 +55,11 @@ export function TierDisplay({ tierGroups, position: _position, showImages = true
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: groupIndex * 0.1 + playerIndex * 0.02 }}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-terminal-bg/50 border border-terminal-border hover:border-electric-blue/50 transition-all"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-neutral-900/50 border border-neutral-700 hover:border-primary/50 transition-all"
                   >
                     {/* Rank */}
                     <div className="flex-shrink-0 w-12 text-center">
-                      <span className="text-2xl font-bold text-electric-blue">
+                      <span className="text-2xl font-bold text-primary">
                         {Math.round(Number(player.averageRank))}
                       </span>
                     </div>
@@ -67,7 +67,7 @@ export function TierDisplay({ tierGroups, position: _position, showImages = true
                     {/* Player Image */}
                     {showImages && (
                       <div className="flex-shrink-0">
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-terminal-border">
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-neutral-700">
                           {player.headshotUrl ? (
                             <ThumbnailImage
                               src={player.headshotUrl}

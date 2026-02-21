@@ -139,7 +139,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
                 {[...Array(5)].map((_, i) => (
                   <IconStarFilled 
                     key={i} 
-                    className={`w-4 h-4 ${i < Math.floor(averageRating) ? 'text-warning-amber' : 'text-slate-600'}`} 
+                    className={`w-4 h-4 ${i < Math.floor(averageRating) ? 'text-warning' : 'text-slate-600'}`} 
                   />
                 ))}
               </div>
@@ -147,7 +147,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
               <span className="text-slate-400 text-sm">({reviews.length} reviews)</span>
             </div>
           </div>
-          <IconMapPin className="w-5 h-5 text-electric-blue" />
+          <IconMapPin className="w-5 h-5 text-primary" />
         </div>
         
         <p className="text-slate-300 text-sm mb-4">
@@ -203,7 +203,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
                     {[...Array(5)].map((_, i) => (
                       <IconStarFilled 
                         key={i} 
-                        className={`w-4 h-4 ${i < review.rating ? 'text-warning-amber' : 'text-slate-600'}`} 
+                        className={`w-4 h-4 ${i < review.rating ? 'text-warning' : 'text-slate-600'}`} 
                       />
                     ))}
                   </div>
@@ -213,7 +213,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
                 </div>
                 
                 <blockquote className="flex-1 mb-4">
-                  <IconQuote className="w-5 h-5 text-electric-blue/50 mb-2" />
+                  <IconQuote className="w-5 h-5 text-primary/50 mb-2" />
                   <p className="text-slate-300 text-sm italic">"{review.content}"</p>
                 </blockquote>
                 
@@ -234,8 +234,8 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
                 </footer>
                 
                 {review.helpful && (
-                  <div className="flex items-center space-x-1 mt-2 pt-2 border-t border-electric-blue/10">
-                    <IconThumbUp className="w-3 h-3 text-matrix-green" />
+                  <div className="flex items-center space-x-1 mt-2 pt-2 border-t border-primary/10">
+                    <IconThumbUp className="w-3 h-3 text-success" />
                     <span className="text-xs text-slate-400">{review.helpful} found helpful</span>
                   </div>
                 )}
@@ -271,12 +271,12 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
             </h2>
             <div className="flex items-center space-x-4 mb-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-warning-amber">{averageRating.toFixed(1)}</div>
+                <div className="text-3xl font-bold text-warning">{averageRating.toFixed(1)}</div>
                 <div className="flex items-center justify-center mb-1">
                   {[...Array(5)].map((_, i) => (
                     <IconStarFilled 
                       key={i} 
-                      className={`w-5 h-5 ${i < Math.floor(averageRating) ? 'text-warning-amber' : 'text-slate-600'}`} 
+                      className={`w-5 h-5 ${i < Math.floor(averageRating) ? 'text-warning' : 'text-slate-600'}`} 
                     />
                   ))}
                 </div>
@@ -301,11 +301,11 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
                 <div key={rating} className="flex items-center space-x-3">
                   <div className="flex items-center space-x-1 w-16">
                     <span className="text-sm text-slate-300">{rating}</span>
-                    <IconStar className="w-4 h-4 text-warning-amber" />
+                    <IconStar className="w-4 h-4 text-warning" />
                   </div>
                   <div className="flex-1 bg-slate-700 rounded-full h-2">
                     <div 
-                      className="bg-warning-amber h-2 rounded-full transition-all duration-500"
+                      className="bg-warning h-2 rounded-full transition-all duration-500"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
@@ -323,8 +323,8 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
           onClick={() => setSelectedPlatform('all')}
           className={`px-4 py-2 rounded-lg text-sm transition-colors ${
             selectedPlatform === 'all' 
-              ? 'bg-electric-blue/20 text-electric-blue border border-electric-blue/40' 
-              : 'bg-terminal-bg/30 text-slate-400 hover:text-white'
+              ? 'bg-primary/20 text-primary border border-primary/40' 
+              : 'bg-slate-900/30 text-slate-400 hover:text-white'
           }`}
         >
           All Platforms ({reviews.length})
@@ -339,8 +339,8 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
               onClick={() => setSelectedPlatform(platform)}
               className={`px-4 py-2 rounded-lg text-sm transition-colors capitalize ${
                 selectedPlatform === platform 
-                  ? 'bg-electric-blue/20 text-electric-blue border border-electric-blue/40' 
-                  : 'bg-terminal-bg/30 text-slate-400 hover:text-white'
+                  ? 'bg-primary/20 text-primary border border-primary/40' 
+                  : 'bg-slate-900/30 text-slate-400 hover:text-white'
               }`}
             >
               {platform} ({count})
@@ -361,8 +361,8 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
             <WarmCard hover={false} padding="md" className="p-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-electric-blue/20 rounded-full flex items-center justify-center">
-                    <span className="text-electric-blue font-semibold">
+                  <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                    <span className="text-primary font-semibold">
                       {review.author.charAt(0)}
                     </span>
                   </div>
@@ -387,7 +387,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
                     {[...Array(5)].map((_, i) => (
                       <IconStarFilled 
                         key={i} 
-                        className={`w-4 h-4 ${i < review.rating ? 'text-warning-amber' : 'text-slate-600'}`} 
+                        className={`w-4 h-4 ${i < review.rating ? 'text-warning' : 'text-slate-600'}`} 
                       />
                     ))}
                   </div>
@@ -408,7 +408,7 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
               <div className="flex items-center justify-between">
                 {review.helpful && (
                   <div className="flex items-center space-x-2">
-                    <IconThumbUp className="w-4 h-4 text-matrix-green" />
+                    <IconThumbUp className="w-4 h-4 text-success" />
                     <span className="text-sm text-slate-400">{review.helpful} found helpful</span>
                   </div>
                 )}
@@ -421,10 +421,10 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
               </div>
 
               {review.response && (
-                <div className="mt-4 p-4 bg-terminal-bg/30 rounded-lg border-l-4 border-electric-blue">
+                <div className="mt-4 p-4 bg-slate-900/30 rounded-lg border-l-4 border-primary">
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-electric-blue/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-electric-blue font-semibold text-sm">IV</span>
+                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-semibold text-sm">IV</span>
                     </div>
                     <div>
                       <div className="flex items-center space-x-2 mb-2">
@@ -442,8 +442,8 @@ export function LocalReviews({ location, variant = 'full', className = '' }: Loc
       </div>
 
       {/* Call to Action */}
-      <WarmCard hover={false} padding="md" className="p-8 text-center bg-matrix-green/5 border-matrix-green/20">
-        <IconStar className="w-12 h-12 text-matrix-green mx-auto mb-4" />
+      <WarmCard hover={false} padding="md" className="p-8 text-center bg-success/5 border-success/20">
+        <IconStar className="w-12 h-12 text-success mx-auto mb-4" />
         <h3 className="text-xl font-semibold text-white mb-2">
           Ready to Join Our Happy Clients?
         </h3>

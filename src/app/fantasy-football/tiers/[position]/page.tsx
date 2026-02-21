@@ -27,14 +27,14 @@ const positionNames: Record<Position, string> = {
 };
 
 const positionDescriptions: Record<Position, string> = {
-  'OVERALL': '2024 Fantasy Football overall rankings with all positions combined. Expert consensus tiers for complete draft strategy across QB, RB, WR, TE positions.',
-  'QB': '2024 Fantasy Football quarterback rankings and tiers. Expert consensus QB rankings for optimal fantasy football draft strategy and weekly lineup decisions.',
-  'RB': '2024 Fantasy Football running back rankings and tiers. Expert consensus RB rankings for fantasy football drafts, including handcuffs and sleeper picks.',
-  'WR': '2024 Fantasy Football wide receiver rankings and tiers. Expert consensus WR rankings with tier-based draft strategy for fantasy football success.',
-  'TE': '2024 Fantasy Football tight end rankings and tiers. Expert consensus TE rankings for fantasy football drafts and weekly roster decisions.',
-  'FLEX': '2024 Fantasy Football flex position rankings (RB/WR/TE). Expert consensus rankings for optimal flex lineup decisions and draft strategy.',
-  'K': '2024 Fantasy Football kicker rankings and tiers. Expert consensus K rankings for fantasy football drafts and streaming decisions.',
-  'DST': '2024 Fantasy Football defense rankings and tiers. Expert consensus DST rankings for fantasy football drafts and weekly streaming strategy.'
+  'OVERALL': '2026 Fantasy Football overall rankings with all positions combined. Expert consensus tiers for complete draft strategy across QB, RB, WR, TE positions.',
+  'QB': '2026 Fantasy Football quarterback rankings and tiers. Expert consensus QB rankings for optimal fantasy football draft strategy and weekly lineup decisions.',
+  'RB': '2026 Fantasy Football running back rankings and tiers. Expert consensus RB rankings for fantasy football drafts, including handcuffs and sleeper picks.',
+  'WR': '2026 Fantasy Football wide receiver rankings and tiers. Expert consensus WR rankings with tier-based draft strategy for fantasy football success.',
+  'TE': '2026 Fantasy Football tight end rankings and tiers. Expert consensus TE rankings for fantasy football drafts and weekly roster decisions.',
+  'FLEX': '2026 Fantasy Football flex position rankings (RB/WR/TE). Expert consensus rankings for optimal flex lineup decisions and draft strategy.',
+  'K': '2026 Fantasy Football kicker rankings and tiers. Expert consensus K rankings for fantasy football drafts and streaming decisions.',
+  'DST': '2026 Fantasy Football defense rankings and tiers. Expert consensus DST rankings for fantasy football drafts and weekly streaming strategy.'
 };
 
 const positionKeywords: Record<Position, string[]> = {
@@ -58,31 +58,31 @@ export async function generateMetadata({ params }: { params: Promise<{ position:
   const { position: positionParam } = await params;
   const position = positionParam.toUpperCase() as Position;
   const positionName = positionNames[position] || positionParam;
-  const description = positionDescriptions[position] || `2024 Fantasy Football tier rankings for ${positionName}.`;
+  const description = positionDescriptions[position] || `2026 Fantasy Football tier rankings for ${positionName}.`;
   const keywords = positionKeywords[position] || [];
   
   return {
-    title: `${positionName} Tiers - Fantasy Football Rankings 2024`,
+    title: `${positionName} Tiers - Fantasy Football Rankings 2026`,
     description,
     keywords: [
       ...keywords,
       'fantasy football',
       'NFL fantasy',
-      '2024 fantasy football',
+      '2026 fantasy football',
       'expert consensus',
       'tier rankings',
       'draft strategy',
       'Isaac Vazquez'
     ],
     openGraph: {
-      title: `${positionName} Fantasy Football Tiers 2024`,
+      title: `${positionName} Fantasy Football Tiers 2026`,
       description,
       type: 'website',
       url: `https://isaacavazquez.com/fantasy-football/tiers/${positionParam}`,
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${positionName} Fantasy Football Tiers 2024`,
+      title: `${positionName} Fantasy Football Tiers 2026`,
       description,
     },
     alternates: {
@@ -104,10 +104,10 @@ export default async function TierPage({ params }: { params: Promise<{ position:
   
   if (!players || players.length === 0) {
     return (
-      <div className="min-h-screen bg-terminal-bg px-6 py-12">
+      <div className="min-h-screen bg-neutral-900 px-6 py-12">
         <div className="max-w-7xl mx-auto">
           <WarmCard hover={false} padding="md" elevation={2} className="p-8 text-center">
-            <IconChartBar className="w-16 h-16 text-electric-blue mx-auto mb-4" />
+            <IconChartBar className="w-16 h-16 text-primary mx-auto mb-4" />
             <Heading as="h2" className="mb-4">No Data Available</Heading>
             <Paragraph className="text-slate-400 mb-6">
               No tier data is currently available for {positionNames[position]}.
@@ -170,18 +170,18 @@ export default async function TierPage({ params }: { params: Promise<{ position:
         }}
       />
 
-      <div className="min-h-screen bg-terminal-bg">
+      <div className="min-h-screen bg-neutral-900">
         {/* Header */}
-        <div className="bg-gradient-to-b from-terminal-bg to-slate-900 border-b border-terminal-border">
+        <div className="bg-gradient-to-b from-neutral-900 to-slate-900 border-b border-neutral-700">
         <div className="max-w-7xl mx-auto px-6 py-12">
-          <Link href="/fantasy-football" className="inline-flex items-center gap-2 text-electric-blue hover:text-electric-blue/80 transition-colors mb-6">
+          <Link href="/fantasy-football" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-6">
             <IconArrowLeft className="w-4 h-4" />
             Back to Interactive Tiers
           </Link>
           
           <div className="flex items-center justify-between">
             <div>
-              <Heading as="h1" className="text-electric-blue mb-2">
+              <Heading as="h1" className="text-primary mb-2">
                 {positionNames[position]} Tiers
               </Heading>
               <Paragraph className="text-slate-400">
@@ -192,7 +192,7 @@ export default async function TierPage({ params }: { params: Promise<{ position:
             <div className="hidden md:block">
               <WarmCard hover={false} padding="md" elevation={1} className="px-4 py-2">
                 <div className="text-sm text-slate-400">Total Players</div>
-                <div className="text-2xl font-bold text-electric-blue">{players.length}</div>
+                <div className="text-2xl font-bold text-primary">{players.length}</div>
               </WarmCard>
             </div>
           </div>
@@ -209,7 +209,7 @@ export default async function TierPage({ params }: { params: Promise<{ position:
       </div>
 
         {/* Navigation */}
-        <div className="max-w-7xl mx-auto px-6 py-12 border-t border-terminal-border">
+        <div className="max-w-7xl mx-auto px-6 py-12 border-t border-neutral-700">
           <div className="flex flex-wrap gap-4 justify-center">
             {validPositions.map((pos) => (
               <Link
@@ -217,8 +217,8 @@ export default async function TierPage({ params }: { params: Promise<{ position:
                 href={`/fantasy-football/tiers/${pos.toLowerCase()}`}
                 className={`px-4 py-2 rounded-lg border transition-all ${
                   pos === position
-                    ? 'bg-electric-blue text-slate-900 border-electric-blue'
-                    : 'bg-terminal-bg border-terminal-border text-slate-300 hover:border-electric-blue/50'
+                    ? 'bg-primary text-slate-900 border-primary'
+                    : 'bg-neutral-900 border-neutral-700 text-slate-300 hover:border-primary/50'
                 }`}
               >
                 {positionNames[pos]}

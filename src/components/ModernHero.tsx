@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import { ModernButton } from "@/components/ui/ModernButton";
 
@@ -76,16 +75,12 @@ export function ModernHero() {
               variants={itemVariants}
               className="flex flex-wrap gap-4 pt-2"
             >
-              <Link href="/contact">
-                <ModernButton variant="accent" size="lg">
-                  Get In Touch
-                </ModernButton>
-              </Link>
-              <Link href="/about">
-                <ModernButton variant="outline" size="lg">
-                  Learn More
-                </ModernButton>
-              </Link>
+              <ModernButton href="/contact" variant="accent" size="lg">
+                Get In Touch
+              </ModernButton>
+              <ModernButton href="/about" variant="outline" size="lg">
+                Learn More
+              </ModernButton>
             </motion.div>
           </div>
 

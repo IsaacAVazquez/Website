@@ -28,12 +28,12 @@ export function NewsletterCTA({
 
   if (variant === 'banner') {
     return (
-      <div className={`bg-gradient-to-r from-electric-blue/10 via-matrix-green/10 to-cyber-teal/10 border-y border-electric-blue/20 ${className}`}>
+      <div className={`bg-gradient-to-r from-primary/10 via-success/10 to-accent/10 border-y border-primary/20 ${className}`}>
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="p-2 bg-electric-blue/20 rounded-full">
-                <IconMail className="w-6 h-6 text-electric-blue" />
+              <div className="p-2 bg-primary/20 rounded-full">
+                <IconMail className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <Heading level={4} className="text-lg mb-1">{title}</Heading>
@@ -44,7 +44,7 @@ export function NewsletterCTA({
             </div>
             <div className="flex items-center gap-3">
               <div className="hidden sm:flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
-                <IconStar className="w-4 h-4 text-warning-amber" />
+                <IconStar className="w-4 h-4 text-warning" />
                 <span>500+ subscribers</span>
               </div>
               <Link href="/newsletter">
@@ -109,8 +109,8 @@ export function NewsletterCTA({
     <WarmCard hover={false} padding="md" className={`p-6 md:p-8 text-center ${className}`}>
       <div className="max-w-md mx-auto space-y-4">
         <div className="flex justify-center">
-          <div className="p-3 bg-electric-blue/10 rounded-full">
-            <IconMail className="w-8 h-8 text-electric-blue" />
+          <div className="p-3 bg-primary/10 rounded-full">
+            <IconMail className="w-8 h-8 text-primary" />
           </div>
         </div>
         
@@ -133,7 +133,7 @@ export function NewsletterCTA({
           
           <div className="flex items-center justify-center gap-4 text-sm text-slate-500 dark:text-slate-400">
             <div className="flex items-center gap-1">
-              <IconStar className="w-4 h-4 text-warning-amber" />
+              <IconStar className="w-4 h-4 text-warning" />
               <span>500+ subscribers</span>
             </div>
             <span>•</span>

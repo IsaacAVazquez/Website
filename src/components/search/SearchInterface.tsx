@@ -177,7 +177,7 @@ export function SearchInterface({
       <div className="text-center">
         <Heading level={1} className="mb-4">
           Search{" "}
-          <span className="bg-gradient-to-r from-electric-blue via-matrix-green to-cyber-teal bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-primary via-success to-accent bg-clip-text text-transparent">
             Everything
           </span>
         </Heading>
@@ -199,7 +199,7 @@ export function SearchInterface({
                   value={searchState.query}
                   onChange={(e) => handleQueryChange(e.target.value)}
                   placeholder="Search for content..."
-                  className="w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all duration-200 text-slate-900 dark:text-slate-100"
+                  className="w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-slate-900 dark:text-slate-100"
                 />
                 {searchState.query && (
                   <button
@@ -215,7 +215,7 @@ export function SearchInterface({
                 onClick={() => setShowFilters(!showFilters)}
                 className={`ml-4 p-4 rounded-lg border transition-all duration-200 ${
                   showFilters || searchState.type !== 'all' || searchState.category !== 'all'
-                    ? 'bg-electric-blue text-white border-electric-blue' 
+                    ? 'bg-primary text-white border-primary' 
                     : 'bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
                 }`}
               >
@@ -251,7 +251,7 @@ export function SearchInterface({
               )}
               <button
                 onClick={clearFilters}
-                className="text-sm text-electric-blue hover:underline"
+                className="text-sm text-primary hover:underline"
               >
                 Clear filters
               </button>
@@ -296,19 +296,19 @@ export function SearchInterface({
               <div className="space-y-2">
                 <button
                   onClick={() => handleQueryChange("automated testing")}
-                  className="block text-sm text-electric-blue hover:underline text-left"
+                  className="block text-sm text-primary hover:underline text-left"
                 >
                   "automated testing"
                 </button>
                 <button
                   onClick={() => handleQueryChange("fantasy football analytics")}
-                  className="block text-sm text-electric-blue hover:underline text-left"
+                  className="block text-sm text-primary hover:underline text-left"
                 >
                   "fantasy football analytics"
                 </button>
                 <button
                   onClick={() => handleQueryChange("software quality")}
-                  className="block text-sm text-electric-blue hover:underline text-left"
+                  className="block text-sm text-primary hover:underline text-left"
                 >
                   "software quality"
                 </button>

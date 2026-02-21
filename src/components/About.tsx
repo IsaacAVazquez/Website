@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { PageSummary } from "@/components/ui/PageSummary";
@@ -14,6 +14,7 @@ import {
 type TabType = "overview" | "journey";
 
 export default function About() {
+  const shouldReduceMotion = useReducedMotion();
   const [activeTab, setActiveTab] = useState<TabType>("overview");
 
   const tabs = [
@@ -22,11 +23,11 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+    <div className="py-6 sm:py-10">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         className="text-center mb-12 max-w-4xl mx-auto"
       >
         <Heading level={1} className="mb-4">
@@ -40,9 +41,9 @@ export default function About() {
 
    
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         className="max-w-5xl mx-auto"
       >
         <div className="flex justify-center mb-8">
@@ -54,6 +55,7 @@ export default function About() {
             {tabs.map((tab, index) => (
               <button
                 key={tab.id}
+                id={`${tab.id}-tab`}
                 role="tab"
                 aria-selected={activeTab === tab.id}
                 aria-controls={`${tab.id}-panel`}
@@ -89,10 +91,10 @@ export default function About() {
               id="overview-panel"
               role="tabpanel"
               aria-labelledby="overview-tab"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -20 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
             >
               <OverviewContent />
             </motion.div>
@@ -103,10 +105,10 @@ export default function About() {
               id="journey-panel"
               role="tabpanel"
               aria-labelledby="journey-tab"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -20 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
             >
               <JourneyTimeline />
             </motion.div>
