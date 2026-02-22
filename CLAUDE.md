@@ -33,38 +33,38 @@ This is a **dual-purpose platform**:
 ### Key Dependencies
 
 #### Core UI & Animation
-- `@tabler/icons-react` (v3.34.1) – Primary icon system
-- `lucide-react` (v0.539.0) – Additional icon library
-- `react-icons` (v5.5.0) – Supplementary icons
-- `framer-motion` (v12.23.12) – Animations and transitions
-- `tailwind-merge` (v3.3.1) – Dynamic class merging
-- `@tailwindcss/typography` (v0.5.16) – Rich text styling
-- `clsx` (v2.1.1) – Conditional class names
+- `@tabler/icons-react` – Primary icon system
+- `lucide-react` – Additional icon library
+- `react-icons` – Supplementary icons
+- `framer-motion` – Animations and transitions
+- `tailwind-merge` – Dynamic class merging
+- `@tailwindcss/typography` – Rich text styling
+- `clsx` – Conditional class names
 
 #### Data & Fantasy Football
-- `d3` (v7.9.0) – Chart rendering for tier visualizations
-- `better-sqlite3` (v12.2.0) – Local SQLite database for fantasy data
-- `next-auth` (v4.24.11) – Admin authentication
+- `d3` – Chart rendering for tier visualizations
+- `better-sqlite3` – Local SQLite database for fantasy data (server-only)
+- `next-auth` – Admin authentication
 
 #### Content & SEO
-- `next-sitemap` (v4.2.3) – SEO sitemap generation
-- `gray-matter` (v2.0.1) – MDX/Markdown frontmatter parsing
-- `remark` (v15.0.1), `remark-gfm`, `remark-html` – Content processing pipeline
-- `web-vitals` (v5.1.0) – Performance monitoring
+- `next-sitemap` – SEO sitemap generation
+- `gray-matter` – MDX/Markdown frontmatter parsing
+- `remark`, `remark-gfm`, `remark-html` – Content processing pipeline
+- `web-vitals` – Performance monitoring
 
 #### Testing
-- `jest` (v30.2.0) + `jest-environment-jsdom` – Unit testing
-- `@testing-library/react` (v16.3.0) – Component testing
-- `@playwright/test` (v1.56.1) – End-to-end testing
-- `msw` (v2.12.2) – API mocking for tests
+- `jest` + `jest-environment-jsdom` – Unit testing
+- `@testing-library/react` – Component testing
+- `@playwright/test` – End-to-end testing
+- `msw` – API mocking for tests
 
 ### Build & Deployment
 - **Build Command:** `npm run build` (then `npm run postbuild` auto-runs sitemap)
-- **Dev Server:** `npm run dev --webpack` (note: Turbopack is default, `--webpack` forces webpack)
+- **Dev Server:** `npm run dev` (note: `--webpack` flag is baked into the dev script; Turbopack is the Next.js 16 default but webpack is forced here)
 - **Deployment:** Netlify with `@netlify/plugin-nextjs`
 - **Bundle Analysis:** `npm run analyze` or `ANALYZE=true npm run build`
 - **Test Commands:** `npm test`, `npm run test:coverage`, `npm run test:e2e`
-- **Fantasy Data Update:** `tsx scripts/updateFantasyRBTiers.ts`
+- **Fantasy Data Update:** `npm run update:fantasy-rb`
 
 ---
 
@@ -131,7 +131,8 @@ This is a **dual-purpose platform**:
 ```
 /                           - Home (ModernHero component)
 /about                      - About page with tabbed navigation (Overview/Journey)
-/portfolio                  - Project showcase with card styling
+/projects                   - Project showcase (real page at src/app/projects/page.tsx, NOT just a redirect)
+/portfolio                  - Also a real project showcase page at src/app/portfolio/
 /portfolio/[slug]           - Individual project detail
 /resume                     - Professional resume with download
 /contact                    - Contact page with social links
@@ -353,7 +354,6 @@ The fantasy football platform has a full data pipeline:
 Core:
 ├── utils.ts                - General utilities
 ├── seo.ts                  - SEO metadata generation
-├── performance.ts          - Performance monitoring
 ├── analytics.ts            - Analytics tracking
 ├── auth.ts                 - Authentication utilities (NextAuth)
 ├── logger.ts               - Logging system
@@ -386,6 +386,7 @@ Fantasy Football:
 ├── overallValueCalculator.ts - Value calculation
 ├── playerImageScraper.ts   - Player image scraping
 ├── playerImageService.ts   - Player image serving
+├── tierImageGenerator.ts   - Tier image generation
 ├── lazySampleData.ts       - Lazy-loaded sample data
 └── lazyD3.ts               - Lazy-loaded D3
 
@@ -401,7 +402,6 @@ Content & SEO:
 ```
 useDebounce.ts              - Input debouncing
 useLazyLoad.ts              - Lazy loading trigger
-useNavigation.ts            - Navigation state
 useScrollAnimation.ts       - Scroll-based animations
 useTypingAnimation.ts       - Typing effect
 
@@ -549,12 +549,13 @@ Website/
 ### Getting Started
 ```bash
 npm install
-npm run dev          # Dev server (Turbopack default in Next.js 16)
-npm run build        # Production build
-npm start            # Production server
-npm run analyze      # Bundle size analysis
-npm test             # Unit tests
-npm run test:e2e     # E2E tests with Playwright
+npm run dev              # Dev server (webpack mode, see note above)
+npm run build            # Production build
+npm start                # Production server
+npm run analyze          # Bundle size analysis
+npm test                 # Unit tests
+npm run test:e2e         # E2E tests with Playwright
+npm run update:fantasy-rb  # Update fantasy football RB tier data
 ```
 
 ### Environment Variables
@@ -713,7 +714,7 @@ This is BOTH a professional portfolio AND a fantasy football analytics platform.
 - **Dark mode:** `.dark` class on `<html>`, all components must work in both modes
 - **Touch targets:** Minimum 44px height/width (use `min-h-touch`, `min-w-touch` Tailwind classes)
 - **Images:** Always use `OptimizedImage` or Next.js `Image` component
-- **`/projects` route:** Redirects to `/portfolio` – nav still says "Projects" but the actual page is at `/portfolio`
+- **`/projects` route:** Both `/projects` and `/portfolio` are real pages rendering `ProjectsContent`. The nav links to `/projects`. The `next.config.mjs` also has a redirect from `/projects` to `/portfolio`, but `src/app/projects/page.tsx` exists as a standalone page.
 - **Fantasy data:** Never make FantasyPros requests without rate limiting; use the unified cache layer
 
 ### Common Pitfalls
@@ -735,9 +736,18 @@ This is BOTH a professional portfolio AND a fantasy football analytics platform.
 
 **Current Version:** 0.1.0
 **Last Updated:** February 2026
-**Documentation Version:** 4.0
+**Documentation Version:** 4.1
 
 ### Changelog
+- **v4.1 (February 2026):** Targeted accuracy fixes
+  - Fixed dev command (`npm run dev`, not `npm run dev --webpack`)
+  - Fixed fantasy data update command (`npm run update:fantasy-rb`)
+  - Removed non-existent `performance.ts` from lib inventory
+  - Removed non-existent `useNavigation.ts` from hooks inventory
+  - Added undocumented `tierImageGenerator.ts` to lib inventory
+  - Clarified `/projects` is a real page (not just a redirect)
+  - Stripped dependency version numbers (maintenance burden, not actionable)
+
 - **v4.0 (February 2026):** Comprehensive accuracy update
   - Documented fantasy football as a first-class feature (previously omitted)
   - Corrected Next.js version to 16 (was incorrectly listed as 15)
