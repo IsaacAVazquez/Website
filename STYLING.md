@@ -1,9 +1,9 @@
 # Styling System Documentation
 
-Complete design system and styling guide for Isaac Vazquez's warm modern portfolio.
+Complete design system and styling guide for Isaac Vazquez's modern professional portfolio.
 
-**Design Philosophy:** Warm Modern Professional
-**Last Updated:** January 2025
+**Design Philosophy:** Modern Professional
+**Last Updated:** February 2026
 **WCAG Compliance:** AAA (7.5:1+ contrast ratios)
 **Tech Stack:** Tailwind CSS v4, CSS Custom Properties, Framer Motion
 
@@ -29,14 +29,14 @@ Complete design system and styling guide for Isaac Vazquez's warm modern portfol
 ## 🎨 Design Philosophy
 
 ### Core Concept
-The warm modern aesthetic creates a professional, approachable portfolio that balances technical credibility with human warmth. Think "golden hour" - inviting, optimistic, and trustworthy.
+The modern professional aesthetic creates a clean, credible portfolio that balances technical precision with approachability. Think clarity, confidence, and trustworthiness — a blue-anchored palette that conveys expertise without coldness.
 
 ### Design Principles (2025)
 
-**1. Warm & Welcoming**
-- Sunset oranges and golden yellows from the "golden hour" palette
-- Warm browns instead of cool grays for natural, inviting feel
-- Soft shadows with warm glow (orange/coral tints)
+**1. Welcoming & Professional**
+- Blue-based primary palette (Blue 600 `#2563EB`) for trust and credibility
+- Slate neutrals for a clean, modern, professional feel
+- Subtle shadows using neutral rgba values
 - Rounded corners (8px-16px radius) for friendly approachability
 - Inviting, not intimidating - designed for human connection
 
@@ -70,7 +70,7 @@ The warm modern aesthetic creates a professional, approachable portfolio that ba
 - Container queries for component-level responsiveness
 - `text-wrap: balance` for beautiful heading breaks
 - Framer Motion for physics-based animations
-- Dark mode with warm tones (not just inverted colors)
+- Dark mode with slate tones (not just inverted colors)
 - Progressive enhancement principles
 
 ---
@@ -98,17 +98,17 @@ We use modern CSS `@layer` for optimal specificity management:
 ```css
 :root {
   /* Semantic color tokens */
-  --color-primary: #FF6B35;
-  --color-secondary: #F7B32B;
-  --color-accent: #FF8E53;
+  --color-primary: #2563EB;
+  --color-secondary: #1D4ED8;
+  --color-accent: #3B82F6;
 
   /* Surface colors */
-  --surface-primary: rgba(255, 252, 247, 0.95);
-  --surface-elevated: rgba(255, 255, 255, 0.95);
+  --surface-primary: #FFFFFF;
+  --surface-elevated: #FFFFFF;
 
   /* Text colors */
-  --text-primary: #4A3426;
-  --text-secondary: #6B4F3D;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
 
   /* Fluid typography */
   --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
@@ -157,91 +157,88 @@ We use modern CSS `@layer` for optimal specificity management:
 Our color system uses **semantic tokens** with CSS Custom Properties for runtime theming:
 
 ```css
-/* Golden Hour Warmth - Base Palette */
+/* Modern Professional — Base Palette */
 :root {
   /* Primary action colors */
-  --color-primary: #FF6B35;          /* Sunset Orange - CTAs, links */
-  --color-secondary: #F7B32B;        /* Golden Yellow - secondary actions */
-  --color-accent: #FF8E53;           /* Coral - hover, highlights */
-  --color-tertiary: #FFC857;         /* Honey Gold - vibrant accents */
+  --color-primary: #2563EB;          /* Blue 600 - CTAs, links */
+  --color-secondary: #1D4ED8;        /* Blue 700 - secondary actions */
+  --color-accent: #3B82F6;           /* Blue 500 - hover, highlights */
 
   /* Semantic state colors */
-  --color-success: #6BCF7F;          /* Fresh Green - success states */
-  --color-warning: #FFB020;          /* Warm Amber - warnings */
-  --color-error: #FF5757;            /* Warm Red - errors */
-  --color-info: #FF9A56;             /* Peachy Orange - info */
+  --color-success: #059669;          /* Emerald 600 - success states */
+  --color-warning: #D97706;          /* Amber 600 - warnings */
+  --color-error: #DC2626;            /* Red 600 - errors */
 }
 ```
 
 **Semantic Usage Guide:**
-- **Primary (#FF6B35)**: Main CTAs, primary links, active navigation, brand elements
-- **Secondary (#F7B32B)**: Secondary buttons, badges, tag highlights, year indicators
-- **Accent (#FF8E53)**: Hover states, focus rings, warm highlights, decorative elements
-- **Tertiary (#FFC857)**: Vibrant highlights, special callouts, attention grabbers
+- **Primary (#2563EB)**: Main CTAs, primary links, active navigation, brand elements
+- **Secondary (#1D4ED8)**: Secondary actions, darker blue accents, emphasis elements
+- **Accent (#3B82F6)**: Hover states, focus rings, highlights, decorative elements
 
-### Warm Neutral Scale
+### Slate Neutral Scale
 
 ```css
-/* Warm Browns & Creams - Natural & Inviting */
+/* Slate Scale — Clean & Professional */
 :root {
-  --neutral-50: #FFFCF7;    /* Warm cream - main background */
-  --neutral-100: #FFF8F0;   /* Soft peach cream - elevated surfaces */
-  --neutral-200: #FFE4D6;   /* Peachy tint - subtle accents */
-  --neutral-300: #FFD4B8;   /* Light warm tan - borders */
-  --neutral-400: #D4A88E;   /* Medium tan - disabled states */
-  --neutral-500: #9C7A5F;   /* Light brown - placeholders */
-  --neutral-600: #6B4F3D;   /* Medium brown - secondary text */
-  --neutral-700: #4A3426;   /* Dark brown - primary text (7.5:1) */
-  --neutral-800: #2D1B12;   /* Very dark - dark mode bg */
-  --neutral-900: #1C1410;   /* Almost black - darkest elements */
-  --neutral-950: #0F0A08;   /* Deepest brown - shadows */
+  --neutral-50: #F8FAFC;    /* Near-white — main background */
+  --neutral-100: #F1F5F9;   /* Light gray — elevated surfaces */
+  --neutral-200: #E2E8F0;   /* Soft gray — subtle accents */
+  --neutral-300: #CBD5E1;   /* Light slate — borders */
+  --neutral-400: #94A3B8;   /* Medium slate — disabled states */
+  --neutral-500: #64748B;   /* Slate — placeholders, tertiary text */
+  --neutral-600: #475569;   /* Dark slate — secondary text */
+  --neutral-700: #334155;   /* Darker slate — muted elements */
+  --neutral-800: #1E293B;   /* Very dark — dark mode surfaces */
+  --neutral-900: #0F172A;   /* Almost black — darkest elements */
+  --neutral-950: #020617;   /* Deepest — shadows */
 }
 ```
 
 ### Semantic Text Colors
 
 ```css
-/* Text Hierarchy - WCAG AAA Compliant */
+/* Text Hierarchy — WCAG AAA Compliant */
 :root {
   /* Light Mode */
-  --text-primary: var(--neutral-700);     /* 7.5:1 contrast - body text */
-  --text-secondary: var(--neutral-600);   /* 4.8:1 contrast - captions */
-  --text-tertiary: var(--neutral-500);    /* 3.5:1 contrast - labels */
-  --text-inverse: var(--neutral-50);      /* Dark bg text */
+  --text-primary: #0F172A;            /* Slate 900 — body text */
+  --text-secondary: #475569;          /* Slate 600 — captions */
+  --text-tertiary: #64748B;           /* Slate 500 — labels */
+  --text-inverse: #FFFFFF;            /* Dark bg text */
 
   /* Dark Mode (applied via .dark class) */
   .dark {
-    --text-primary: var(--neutral-50);    /* Cream - body text */
-    --text-secondary: var(--neutral-400); /* Tan - captions */
-    --text-tertiary: var(--neutral-500);  /* Brown - labels */
-    --text-inverse: var(--neutral-900);   /* Light bg text */
+    --text-primary: #F1F5F9;          /* Slate 100 — body text */
+    --text-secondary: #CBD5E1;        /* Slate 300 — captions */
+    --text-tertiary: #94A3B8;         /* Slate 400 — labels */
+    --text-inverse: #0F172A;          /* Light bg text */
   }
 }
 ```
 
-**Contrast Ratios (WCAG AAA):**
-- Primary text: **7.5:1** (exceeds AAA 7:1)
-- Secondary text: **4.8:1** (AA large text)
-- UI elements: **3.5:1** (AA minimum)
-- Links/buttons: **4.6:1** (AA)
+**Contrast Ratios (WCAG AA/AAA):**
+- Primary text (#0F172A on #FFFFFF): **21:1** (exceeds AAA 7:1)
+- Secondary text (#475569 on #FFFFFF): **7.0:1** (AA/AAA)
+- UI elements: **4.5:1+** (AA minimum)
+- Links/buttons (#2563EB on #FFFFFF): **4.5:1+** (AA)
 
 ### Surface & Background Colors
 
 ```css
-/* Semantic Surface System - Light & Dark Modes */
+/* Semantic Surface System — Light & Dark Modes */
 :root {
   /* Light Mode Surfaces */
-  --surface-primary: rgba(255, 252, 247, 0.95);    /* Main bg - warm cream */
-  --surface-secondary: rgba(255, 248, 240, 0.9);   /* Cards - soft peach */
-  --surface-elevated: rgba(255, 255, 255, 0.95);   /* Modals - pure white */
-  --surface-overlay: rgba(28, 20, 16, 0.92);       /* Overlays - dark warm */
+  --surface-primary: #FFFFFF;                    /* Main bg — pure white */
+  --surface-secondary: #F8FAFC;                  /* Cards — near-white */
+  --surface-elevated: #FFFFFF;                   /* Modals — pure white */
+  --surface-overlay: rgba(15, 23, 42, 0.5);      /* Overlays — dark slate */
 
   /* Dark Mode Surfaces (via .dark class) */
   .dark {
-    --surface-primary: rgba(28, 20, 16, 0.95);     /* Main bg - dark brown */
-    --surface-secondary: rgba(45, 27, 18, 0.9);    /* Cards - medium brown */
-    --surface-elevated: rgba(74, 52, 38, 0.5);     /* Modals - light brown */
-    --surface-overlay: rgba(28, 20, 16, 0.98);     /* Overlays - darkest */
+    --surface-primary: #0F172A;                  /* Main bg — Slate 900 */
+    --surface-secondary: #1E293B;                /* Cards — Slate 800 */
+    --surface-elevated: #1E293B;                 /* Modals — Slate 800 */
+    --surface-overlay: rgba(2, 6, 23, 0.8);      /* Overlays — darkest */
   }
 }
 ```
@@ -249,41 +246,41 @@ Our color system uses **semantic tokens** with CSS Custom Properties for runtime
 ### Border & Shadow System
 
 ```css
-/* Warm Borders & Shadows */
+/* Slate Borders & Shadows */
 :root {
   /* Border colors */
-  --border-primary: rgba(255, 228, 214, 0.5);      /* Peachy border */
-  --border-secondary: rgba(255, 212, 184, 0.3);    /* Subtle warm tan */
-  --border-accent: var(--color-primary);           /* Bright orange */
+  --border-primary: #E2E8F0;                    /* Slate 200 */
+  --border-secondary: #F1F5F9;                  /* Slate 100 */
+  --border-accent: rgba(37, 99, 235, 0.3);      /* Blue 600 at 30% */
 
-  /* Warm shadow system */
-  --shadow-subtle: 0 2px 8px rgba(107, 79, 61, 0.08);
-  --shadow-elevated: 0 8px 24px rgba(107, 79, 61, 0.12);
-  --shadow-primary: 0 4px 16px rgba(255, 107, 53, 0.18);
-  --shadow-warm-lg: 0 10px 30px rgba(255, 142, 83, 0.15);
-  --shadow-warm-xl: 0 20px 40px rgba(255, 107, 53, 0.2);
+  /* Neutral shadow system */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 }
 
 .dark {
-  /* Dark mode shadows - more prominent warm glow */
-  --shadow-primary: 0 4px 16px rgba(255, 142, 83, 0.25);
-  --shadow-warm-lg: 0 10px 30px rgba(255, 142, 83, 0.22);
-  --shadow-warm-xl: 0 20px 40px rgba(255, 107, 53, 0.28);
+  /* Dark mode shadows — more prominent */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
 }
 ```
 
 ### Dark Mode Strategy
 
-**Warm Dark Mode (Not Just Inverted):**
+**Slate-Based Dark Mode:**
 ```css
 .dark {
-  /* Softer, warmer colors for dark mode */
-  --color-primary: #FF8E53;    /* Coral (lighter than light mode) */
-  --color-secondary: #FFD666;  /* Soft golden */
-  --color-accent: #FFA876;     /* Lighter coral */
+  /* Blue palette brightens for dark mode legibility */
+  --color-primary: #3B82F6;    /* Blue 500 (lighter than light mode) */
+  --color-secondary: #60A5FA;  /* Blue 400 */
+  --color-accent: #93C5FD;     /* Blue 300 */
 
-  /* Warm brown backgrounds instead of black/gray */
-  --surface-primary: rgba(28, 20, 16, 0.95);  /* Deep brown, not gray */
+  /* Slate backgrounds instead of pure black */
+  --surface-primary: #0F172A;  /* Slate 900 */
 }
 ```
 
@@ -294,19 +291,19 @@ Our color system uses **semantic tokens** with CSS Custom Properties for runtime
 
 // Colors
 className="text-primary"                    // Uses --color-primary
-className="bg-neutral-50 dark:bg-neutral-800"
-className="border-[#FFE4D6] dark:border-[#FF8E53]/30"
+className="bg-neutral-50 dark:bg-neutral-900"
+className="border-neutral-200 dark:border-neutral-700"
 
 // Surfaces
 className="bg-surface-primary"              // Semantic surface
-className="shadow-warm-lg dark:shadow-warm-xl"
+className="shadow-lg dark:shadow-xl"
 
 // Text hierarchy
-className="text-neutral-700 dark:text-neutral-50"  // Primary text
-className="text-neutral-600 dark:text-neutral-400" // Secondary text
+className="text-neutral-900 dark:text-neutral-100"  // Primary text
+className="text-neutral-600 dark:text-neutral-300"  // Secondary text
 
 // Gradients
-className="bg-gradient-to-r from-[#FF6B35] to-[#F7B32B]"
+className="bg-gradient-to-r from-[#2563EB] to-[#3B82F6]"
 ```
 
 ### Color Utility Functions
@@ -421,18 +418,18 @@ h1, h2, h3, h4, h5, h6 {
 ### Advanced Text Styles
 
 ```css
-/* Warm gradient text */
-.gradient-text-warm {
-  background: linear-gradient(135deg, #FF6B35 0%, #F7B32B 100%);
+/* Blue gradient text */
+.gradient-text-primary {
+  background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent; /* Fallback */
 }
 
-/* Text shadows with warm glow */
-.text-shadow-warm {
-  text-shadow: 2px 2px 4px rgba(255, 107, 53, 0.3);
+/* Text shadows with subtle glow */
+.text-shadow-primary {
+  text-shadow: 2px 2px 4px rgba(37, 99, 235, 0.2);
 }
 
 /* Better text rendering */
@@ -605,16 +602,16 @@ interface WarmCardProps {
 
 // Base styling
 className={cn(
-  // Warm surface with soft borders
-  "bg-white dark:bg-[#2D1B12]/80",
+  // Clean surface with slate borders
+  "bg-white dark:bg-neutral-800/80",
   "rounded-2xl",                        // Friendly rounded corners
-  "border-2 border-[#FFE4D6] dark:border-[#FF8E53]/30",
-  "shadow-subtle dark:shadow-warm-lg",
+  "border border-neutral-200 dark:border-neutral-700",
+  "shadow-md dark:shadow-lg",
   "backdrop-blur-sm",                   // Glass effect
 
   // Optional hover lift
   hover && "transition-all duration-300",
-  hover && "hover:shadow-warm-lg dark:hover:shadow-warm-xl",
+  hover && "hover:shadow-lg dark:hover:shadow-xl",
   hover && "hover:-translate-y-1",      // Subtle lift
   hover && "cursor-pointer"
 )}
@@ -647,24 +644,24 @@ interface ModernButtonProps {
 // Variant styles
 const variants = {
   primary: cn(
-    "bg-[#FF6B35] hover:bg-[#E85A28]",
-    "dark:bg-[#FF8E53] dark:hover:bg-[#FFA876]",
-    "text-white shadow-warm-lg hover:shadow-warm-xl"
+    "bg-[#2563EB] hover:bg-[#1D4ED8]",
+    "dark:bg-[#3B82F6] dark:hover:bg-[#60A5FA]",
+    "text-white shadow-md hover:shadow-lg"
   ),
   secondary: cn(
-    "bg-[#F7B32B] hover:bg-[#E0A220]",
-    "dark:bg-[#FFD666] dark:hover:bg-[#FFD98E]",
-    "text-[#4A3426] dark:text-[#2D1B12]",
-    "shadow-warm-lg hover:shadow-warm-xl"
+    "bg-neutral-100 hover:bg-neutral-200",
+    "dark:bg-neutral-700 dark:hover:bg-neutral-600",
+    "text-neutral-900 dark:text-neutral-100",
+    "shadow-sm hover:shadow-md"
   ),
   outline: cn(
-    "border-2 border-[#FF6B35] dark:border-[#FF8E53]",
-    "text-[#FF6B35] dark:text-[#FF8E53]",
-    "hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/30"
+    "border-2 border-[#2563EB] dark:border-[#3B82F6]",
+    "text-[#2563EB] dark:text-[#3B82F6]",
+    "hover:bg-blue-50 dark:hover:bg-blue-950/30"
   ),
   ghost: cn(
-    "text-[#6B4F3D] dark:text-[#D4A88E]",
-    "hover:bg-[#FFF8F0] dark:hover:bg-[#4A3426]/30"
+    "text-neutral-600 dark:text-neutral-400",
+    "hover:bg-neutral-100 dark:hover:bg-neutral-800"
   )
 };
 
@@ -689,25 +686,23 @@ const sizes = {
 
 ### Shadow System
 
-**Warm Shadow Palette:**
+**Neutral Shadow Palette:**
 ```css
 /* Tailwind config extensions */
 :root {
-  --shadow-subtle: 0 2px 8px rgba(107, 79, 61, 0.08);
-  --shadow-elevated: 0 8px 24px rgba(107, 79, 61, 0.12);
-  --shadow-primary: 0 4px 16px rgba(255, 107, 53, 0.18);
-  --shadow-secondary: 0 4px 16px rgba(247, 179, 43, 0.16);
-  --shadow-warm-lg: 0 10px 30px rgba(255, 142, 83, 0.15);
-  --shadow-warm-xl: 0 20px 40px rgba(255, 107, 53, 0.2);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 }
 ```
 
 **Tailwind Usage:**
 ```tsx
-className="shadow-subtle"                // Light cards
-className="shadow-warm-lg"              // Interactive elements
-className="hover:shadow-warm-xl"        // Hover states
-className="shadow-primary"              // Primary CTAs
+className="shadow-sm"                   // Light cards
+className="shadow-md"                   // Default elevation
+className="shadow-lg"                   // Interactive elements
+className="hover:shadow-xl"             // Hover states
 ```
 
 ### Border Radius System
@@ -1037,10 +1032,10 @@ top: -10px;                    ❌
 ### WCAG 2.2 AAA Compliance
 
 **Enhanced Contrast Ratios:**
-- Primary text (#4A3426 on #FFFCF7): **7.5:1** (exceeds AAA 7:1)
-- Secondary text (#6B4F3D on #FFFCF7): **4.8:1** (AA large text)
-- Primary buttons (#FF6B35): **4.6:1** (AA)
-- UI components: **3.5:1+** (AA minimum)
+- Primary text (#0F172A on #FFFFFF): **21:1** (exceeds AAA 7:1)
+- Secondary text (#475569 on #FFFFFF): **7.0:1** (AA/AAA)
+- Primary buttons (#2563EB on #FFFFFF): **4.5:1+** (AA)
+- UI components: **4.5:1+** (AA minimum)
 
 **Testing Tools:**
 ```bash
@@ -1072,7 +1067,7 @@ Lighthouse > Accessibility audit
   a:focus-visible {
     outline: 3px solid var(--color-primary);
     outline-offset: 3px;
-    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);  /* Extra glow */
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);  /* Extra glow */
   }
 
   /* Form input focus */
@@ -1081,7 +1076,7 @@ Lighthouse > Accessibility audit
     outline: 2px solid var(--color-primary);
     outline-offset: 0;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 }
 ```
@@ -1223,8 +1218,8 @@ className="py-3 px-6"                     // Rectangular buttons
 <style dangerouslySetInnerHTML={{
   __html: `
     :root {
-      --color-primary: #FF6B35;
-      --neutral-50: #FFFCF7;
+      --color-primary: #2563EB;
+      --neutral-50: #F8FAFC;
     }
     body { background: var(--neutral-50); }
   `
@@ -1476,11 +1471,11 @@ npm run analyze
 // Use semantic color classes
 className="text-primary"              // Primary color
 className="bg-surface-primary"        // Surface background
-className="border-[#FFE4D6]"         // Warm border
+className="border-neutral-200 dark:border-neutral-700"  // Slate border
 
 // Use semantic text hierarchy
-className="text-neutral-700 dark:text-neutral-50"  // Primary text
-className="text-neutral-600 dark:text-neutral-400" // Secondary
+className="text-neutral-900 dark:text-neutral-100"  // Primary text
+className="text-neutral-600 dark:text-neutral-300"  // Secondary
 ```
 
 **3. Implement spacing system:**
@@ -1607,5 +1602,5 @@ className={cn(
 
 ---
 
-*Last Updated: January 2025 - Modern Warm Professional Theme*
-*Version: 2.0 - 2025 Best Practices Edition*
+*Last Updated: February 2026 - Modern Professional Theme*
+*Version: 3.0 - 2026 Best Practices Edition*

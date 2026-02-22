@@ -53,7 +53,7 @@ DATABASE_URL=./fantasy-data.db        # SQLite (default) or external DB URL
 ### Analytics & Monitoring (Optional)
 ```bash
 # Google Analytics
-NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=your-ga-measurement-id
+NEXT_PUBLIC_GA_ID=your-ga-measurement-id
 
 # Performance Monitoring
 VERCEL_ANALYTICS_ID=your-vercel-analytics-id
@@ -207,8 +207,8 @@ openssl rand -hex 32
 
 ### Environment Variables Check
 ```bash
-# Test if all required variables are set
-npm run test:env
+# Run unit tests (includes env-dependent checks)
+npm test
 
 # Manual verification in Node.js
 console.log('NEXTAUTH_SECRET set:', !!process.env.NEXTAUTH_SECRET);
@@ -265,16 +265,14 @@ curl -X POST https://yourdomain.com/api/scheduled-update \
 
 ### Debug Commands
 ```bash
-# Check environment in development
-npm run dev:env-check
+# Run unit tests
+npm test
 
-# Verify production environment
-npm run prod:health-check
+# Update fantasy football data (tests FantasyPros integration)
+npm run update:fantasy-rb
 
-# Test specific integrations
-npm run test:fantasypros
-npm run test:database
-npm run test:auth
+# Start dev server and inspect logs for environment issues
+npm run dev
 ```
 
 ### Logging Environment Issues

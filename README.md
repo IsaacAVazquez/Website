@@ -1,6 +1,6 @@
 # Isaac Vazquez Portfolio
 
-A warm, modern professional portfolio website showcasing Technical Product Management expertise and UC Berkeley Haas MBA candidacy, built with cutting-edge web technologies and optimized for performance and accessibility.
+A modern professional portfolio and fantasy football analytics platform showcasing Technical Product Management expertise and UC Berkeley Haas MBA candidacy, built with cutting-edge web technologies and optimized for performance and accessibility.
 
 **🚀 Live Site:** [isaacavazquez.com](https://isaacavazquez.com)
 
@@ -9,14 +9,21 @@ A warm, modern professional portfolio website showcasing Technical Product Manag
 ## ✨ Features
 
 ### 🎯 Core Portfolio
-- **Warm Modern Design System** - Sunset orange and golden yellow color palette with inviting aesthetics
-- **Modern Hero Interface** - Clean, professional hero section with optimized headshot
+- **Modern Professional Design System** - Blue-based palette (`#2563EB`) with slate neutrals
+- **Professional Hero Section** - ModernHero component with optimized headshot
 - **Full-Screen Experience** - Immersive layout optimized for content presentation
 - **Responsive Design** - Mobile-first approach with touch-friendly interactions
 - **Performance Optimized** - Advanced optimization techniques for fast loading
 
+### 🏈 Fantasy Football Platform
+- **Live Tier Rankings** - Position tiers (QB/RB/WR/TE/K/DST/Flex) with D3.js visualizations
+- **Draft Tracker** - Real-time draft tracking tool
+- **FantasyPros Integration** - Automated data pipeline with authenticated scraping
+- **Expert Consensus** - Gaussian mixture model tier calculations
+- **Player Images** - Automated NFL player headshot system
+
 ### 🛠️ Technical Features
-- **Modern Stack** - Next.js 15, React 19, TypeScript, Tailwind CSS v4
+- **Modern Stack** - Next.js 16, React 19, TypeScript, Tailwind CSS v4
 - **Performance Optimized** - Server-side rendering, image optimization, code splitting
 - **SEO Enhanced** - Structured data, sitemaps, OpenGraph meta tags
 - **Accessibility First** - ARIA labels, keyboard navigation, screen reader support
@@ -25,11 +32,16 @@ A warm, modern professional portfolio website showcasing Technical Product Manag
 ## 🏗️ Tech Stack
 
 ### Frontend
-- **Framework:** Next.js 15 with App Router
+- **Framework:** Next.js 16 with App Router
 - **UI Library:** React 19 with modern hooks
-- **Styling:** Tailwind CSS v4 with custom cyberpunk theme
+- **Styling:** Tailwind CSS v4 with modern professional design system
 - **Animations:** Framer Motion for physics-based interactions
-- **Typography:** Orbitron (headings), Inter (body), JetBrains Mono (code)
+- **Typography:** Inter (body), JetBrains Mono (code)
+
+### Data & Analytics
+- **Visualizations:** D3.js for fantasy football tier charts
+- **Database:** SQLite (better-sqlite3) for fantasy data persistence
+- **Authentication:** NextAuth.js for admin panel
 
 ### Development & Deployment
 - **Language:** TypeScript with strict mode
@@ -75,11 +87,12 @@ A warm, modern professional portfolio website showcasing Technical Product Manag
 ## 📱 Portfolio Sections
 
 ### Navigation
-- **Home** - Terminal hero interface with animated commands
-- **About** - Personal story and technical background  
+- **Home** - Professional hero section with ModernHero component
+- **About** - Personal story and technical background
 - **Projects** - Interactive showcase of development work
 - **Resume** - Professional experience and skills
 - **Contact** - Get in touch form and social links
+- **Fantasy Football** - Live tier rankings and draft tracker
 
 ### Interactive Features
 - **Command Palette** - Quick navigation with ⌘K
@@ -91,18 +104,18 @@ A warm, modern professional portfolio website showcasing Technical Product Manag
 
 ### Color Palette
 ```css
-/* Warm Modern Colors */
---color-primary: #FF6B35    /* Sunset Orange - primary actions, headings */
---color-secondary: #F7B32B  /* Golden Yellow - secondary actions, accents */
---color-accent: #FF8E53     /* Coral - hover states, highlights */
---color-success: #6BCF7F    /* Fresh Green - success states */
---color-warning: #FFB020    /* Warm Amber - attention items */
---color-error: #FF5757      /* Warm Red - error states */
+/* Modern Professional Colors */
+--color-primary: #2563EB    /* Blue 600 - primary actions, links */
+--color-secondary: #1D4ED8  /* Blue 700 - secondary actions */
+--color-accent: #3B82F6     /* Blue 500 - hover states, highlights */
+--color-success: #059669    /* Emerald 600 - success states */
+--color-warning: #D97706    /* Amber 600 - attention items */
+--color-error: #DC2626      /* Red 600 - error states */
 
-/* Warm Neutrals */
---neutral-50: #FFFCF7       /* Warm cream - backgrounds */
---neutral-700: #4A3426      /* Dark warm brown - text */
---neutral-800: #2D1B12      /* Very dark warm brown */
+/* Slate Neutrals */
+--neutral-50: #F8FAFC       /* Near-white - backgrounds */
+--neutral-700: #334155      /* Dark slate - muted elements */
+--neutral-900: #0F172A      /* Almost black - primary text */
 ```
 
 ### Typography Hierarchy
@@ -112,7 +125,7 @@ A warm, modern professional portfolio website showcasing Technical Product Manag
 - **Code:** JetBrains Mono (technical text)
 
 ### Animation Patterns
-- **Warm Shadows:** Subtle orange/golden glow effects
+- **Subtle Shadows:** Neutral elevation using slate-based shadows
 - **Hover Lift:** Gentle elevation on interactive elements
 - **Fade In:** Smooth entrance animations
 - **Physics-based:** Spring animations for natural movement
@@ -122,31 +135,39 @@ A warm, modern professional portfolio website showcasing Technical Product Manag
 
 ```
 src/
-├── app/                 # Next.js App Router pages
-│   ├── about/          # About page
-│   ├── contact/        # Contact form and information
-│   ├── projects/       # Project showcase
-│   ├── resume/         # Professional resume
-│   └── api/            # Backend API endpoints
-├── components/         # Reusable React components
-│   ├── ui/            # UI component library (WarmCard, ModernButton, etc.)
-│   ├── ModernHero.tsx # Modern hero section component
-│   └── ...            # Feature-specific components
-├── constants/         # Static data and configuration
-├── lib/              # Utility functions and helpers
-├── types/            # TypeScript type definitions
-└── hooks/            # Custom React hooks
+├── app/                    # Next.js App Router pages
+│   ├── about/              # About page
+│   ├── contact/            # Contact form and information
+│   ├── portfolio/          # Project showcase
+│   ├── resume/             # Professional resume
+│   ├── fantasy-football/   # Fantasy football platform
+│   │   ├── tiers/[position]/  # Position tier pages
+│   │   ├── rb-tiers/       # RB-specific tier page
+│   │   └── draft-tracker/  # Draft tracking tool
+│   └── api/                # Backend API endpoints
+├── components/             # Reusable React components
+│   ├── ui/                # UI component library (WarmCard, ModernButton, etc.)
+│   ├── ModernHero.tsx     # Modern hero section component
+│   └── ...                # Feature-specific components
+├── constants/             # Static data and configuration
+├── lib/                   # Utility functions and helpers
+├── types/                 # TypeScript type definitions
+└── hooks/                 # Custom React hooks
 ```
 
 ## 🧪 Development
 
 ### Available Scripts
 ```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run start        # Start production server
-npm run lint         # Run ESLint
-npm run postbuild    # Generate sitemap after build
+npm run dev                  # Start development server
+npm run build                # Build for production
+npm run start                # Start production server
+npm run lint                 # Run ESLint
+npm run postbuild            # Generate sitemap after build
+npm test                     # Run unit tests
+npm run test:e2e             # Run Playwright E2E tests
+npm run update:fantasy-rb    # Update fantasy football RB tier data
+npm run analyze              # Analyze bundle size
 ```
 
 ### Performance Optimizations
