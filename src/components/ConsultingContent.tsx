@@ -33,7 +33,7 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
           I partner with founders and product leads who want a pragmatic voice
           in the room. Engagements blend QA discipline, product strategy, and
           the Berkeley Haas toolkit I'm sharpening -- grounded in six-plus
-          years of shipping alongside engineers, analysts, and policy experts.
+          years of shipping alongside engineers, analysts, and domain experts.
         </Paragraph>
         <Paragraph className="text-base md:text-lg text-[var(--text-secondary)] mx-auto max-w-3xl">
           Whether you're proving product-market fit or scaling a late-stage
@@ -85,7 +85,7 @@ export function ConsultingContent({ services }: ConsultingContentProps) {
         <Paragraph className="text-base text-[var(--text-secondary)]">
           I coach technical builders stepping into product roles and early
           founders shaping their first offer. Sessions are candid and tactical,
-          drawing on lessons from Austin civic tech and Bay Area startups alike.
+          drawing on lessons from high-scale SaaS and Bay Area startups alike.
         </Paragraph>
         <Paragraph className="text-base text-[var(--text-secondary)]">
           Together we pressure-test product-market fit, make pragmatic technical

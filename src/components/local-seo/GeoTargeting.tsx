@@ -255,9 +255,9 @@ export function GeoContentRecommendations({ location }: { location: BusinessLoca
           href: "/blog/austin-tech-landscape"
         },
         {
-          title: "Civic Tech in Austin",
-          description: "How technology improves city services",
-          href: "/blog/civic-tech-austin"
+          title: "Tech in Austin",
+          description: "How technology improves how people work and live",
+          href: "/blog"
         },
         {
           title: "Austin QA Community",

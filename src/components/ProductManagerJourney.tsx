@@ -26,7 +26,7 @@ export function ProductManagerJourney() {
       status: "completed",
       description: "Built deep technical credibility working with engineering teams, understanding system constraints, and developing products for 60M+ users.",
       achievements: [
-        "Led product development for civic tech platforms",
+        "Led product development for high-scale SaaS platforms",
         "Collaborated with cross-functional teams on product decisions",
         "Developed user empathy through direct feedback cycles",
         "Mastered technical product constraints and possibilities"

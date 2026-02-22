@@ -2,8 +2,8 @@ import { generateAIOptimizedMetadata } from "@/lib/seo";
 
 export const metadata = generateAIOptimizedMetadata({
   title: "Product Management Case Studies | Isaac Vazquez - Technical PM Portfolio",
-  description: "Product management case studies by Isaac Vazquez, UC Berkeley Haas MBA Candidate. Real-world examples of strategic problem-solving, cross-functional leadership, and measurable business impact. Featured projects: 99.9% uptime civic tech platform (60M+ users), test automation framework (50% defect reduction, 300% ROI), data analytics dashboard (40% faster decisions, 25% conversion lift).",
-  summary: "PM case studies demonstrating strategic thinking, data-driven decisions, and measurable outcomes across civic tech and SaaS platforms",
+  description: "Product management case studies by Isaac Vazquez, UC Berkeley Haas MBA Candidate. Real-world examples of strategic problem-solving, cross-functional leadership, and measurable business impact. Featured projects: 99.9% uptime SaaS platform (60M+ users), test automation framework (50% defect reduction, 300% ROI), data analytics dashboard (40% faster decisions, 25% conversion lift).",
+  summary: "PM case studies demonstrating strategic thinking, data-driven decisions, and measurable outcomes across SaaS and high-scale consumer platforms",
   expertise: [
     "Product Strategy",
     "Product Management",
@@ -29,7 +29,7 @@ export const metadata = generateAIOptimizedMetadata({
       "UC Berkeley Haas MBA Candidate '27",
       "Consortium Fellow",
       "MLT Professional Development Fellow",
-      "6+ years in civic tech and SaaS product management",
+      "6+ years in SaaS and consumer tech product management",
       "Led products reaching 60M+ users",
       "Proven track record: 50% defect reduction, 300% ROI, 40% faster decisions",
     ],

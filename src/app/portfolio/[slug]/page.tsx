@@ -60,12 +60,12 @@ const caseStudiesData: { [key: string]: CaseStudyData } = {
     link: null,
 
     overview: {
-      summary: "Led the design and implementation of a comprehensive automated testing framework for a civic tech platform that reached 60M+ voters during the 2022 midterm elections.",
+      summary: "Led the design and implementation of a comprehensive automated testing framework for a high-scale SaaS platform that reached 60M+ users during the 2022 midterm elections.",
       impact: "Achieved 99.9% uptime during election day peak traffic while reducing release cycles by 30% and increasing pre-production bug detection from 70% to 95%."
     },
 
     problem: {
-      context: "A rapidly growing civic tech platform needed to scale from 5M to 60M+ voters while maintaining election-day reliability and compliance.",
+      context: "A rapidly growing SaaS platform needed to scale from 5M to 60M+ users while maintaining election-day reliability and compliance.",
       painPoints: [
         "Manual testing couldn't keep pace with rapid feature development",
         "Critical bugs were reaching production during high-stakes election periods",

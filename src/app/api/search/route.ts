@@ -30,8 +30,8 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     {
       id: 'page-consulting',
       title: 'Product Management Consulting & Advisory',
-      excerpt: 'Product management consulting and advisory support for civic tech and SaaS teams that need strategy, experimentation, and delivery leadership.',
-      content: 'Product management consulting product strategy discovery experimentation analytics civic tech SaaS quality engineering advisory',
+      excerpt: 'Product management consulting and advisory support for SaaS and consumer tech teams that need strategy, experimentation, and delivery leadership.',
+      content: 'Product management consulting product strategy discovery experimentation analytics SaaS consumer technology quality engineering advisory',
       url: '/consulting',
       type: 'page' as const,
       category: 'Product Management'

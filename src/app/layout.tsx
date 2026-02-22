@@ -52,7 +52,7 @@ export default function RootLayout({
               name: "Isaac Vazquez",
               jobTitle: "Technical Product Manager & UC Berkeley Haas MBA Candidate",
               description:
-                "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in civic tech and SaaS. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration.",
+                "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in SaaS and consumer products. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration.",
               url: "https://isaacavazquez.com",
               image: "https://isaacavazquez.com/og-image.png",
               email: "IsaacVazquez@berkeley.edu",
@@ -72,7 +72,7 @@ export default function RootLayout({
                 "Cross-functional Leadership",
                 "Quality Assurance",
                 "Test Automation",
-                "Civic Technology",
+                "Consumer Technology",
                 "SaaS Platforms",
                 "Data Analysis",
                 "Agile/Scrum",

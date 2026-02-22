@@ -22,13 +22,13 @@ export interface AuthorCardProps {
 export function AuthorCard({
   name = "Isaac Vazquez",
   title = "Technical Product Manager & UC Berkeley Haas MBA Candidate",
-  bio = "Product-focused technologist with 6+ years of experience in civic tech and SaaS, specializing in data-driven product strategy and cross-functional leadership.",
+  bio = "Product-focused technologist with 6+ years of experience in SaaS and consumer technology, specializing in data-driven product strategy and cross-functional leadership.",
   image = "/images/headshot-new.jpg",
   location = "Bay Area, CA",
   credentials = [
     "UC Berkeley Haas MBA Candidate '27",
     "Consortium Fellow & MLT Professional Development Fellow",
-    "6+ years in civic tech and SaaS",
+    "6+ years in SaaS and consumer technology",
     "Led initiatives reaching 60M+ users",
   ],
   experience = "6+ years",
@@ -194,7 +194,7 @@ export function AuthorCard({
 
       {/* Microdata for search engines */}
       <meta itemProp="url" content="https://isaacavazquez.com" />
-      <meta itemProp="knowsAbout" content="Product Management, Quality Assurance, Civic Tech, SaaS" />
+      <meta itemProp="knowsAbout" content="Product Management, Quality Assurance, SaaS, Consumer Technology" />
     </motion.div>
   );
 }

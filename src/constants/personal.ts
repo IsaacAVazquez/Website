@@ -170,7 +170,7 @@ export const personalMetrics = {
     "/api/availability": {
       method: "GET",
       description: "Current availability for opportunities",
-      response: "Open to QA leadership roles and civic tech projects"
+      response: "Open to product management roles at SaaS and consumer tech companies"
     },
     "/api/coffee": {
       method: "POST",
@@ -193,17 +193,17 @@ export const personalMetrics = {
       description: "Graduated with degrees in Political Science and International Affairs, building foundation for strategic thinking",
       achievement: "Developed analytical and research skills that inform data-driven decision making",
       techStack: ["Research", "Policy Analysis", "International Relations", "Strategic Thinking"],
-      milestone: "Foundation for career bridging technology and social impact"
+      milestone: "Foundation for analytical thinking and strategic communication"
     },
     {
       year: 2019,
       role: "Digital and Communications Intern",
       company: "Open Progress",
       logo: "/images/logos/open-progress-logo.png",
-      description: "Launched career in civic tech, developing data-driven user acquisition strategies for progressive campaigns",
+      description: "Launched career building data-driven user acquisition strategies for digital campaigns",
       achievement: "5x growth in user base through personalized email campaigns and A/B testing frameworks",
       techStack: ["Email Marketing", "A/B Testing", "User Acquisition", "Analytics"],
-      milestone: "Discovered passion for data-driven civic impact and digital strategy"
+      milestone: "Discovered passion for data-driven digital strategy and audience growth"
     },
     {
       year: 2020,
@@ -230,7 +230,7 @@ export const personalMetrics = {
       role: "Quality Assurance Analyst",
       company: "CIVITECH",
       logo: "/images/logos/civitech-logo.png",
-      description: "Transitioned into QA, championing product reliability initiatives across civic tech platforms",
+      description: "Transitioned into QA, championing product reliability for SaaS platforms serving millions of users",
       achievement: "Achieved 99.999% uptime, improved release efficiency by 30% through comprehensive testing",
       techStack: ["Manual Testing", "Automated Testing", "Jira", "Quality Strategy"],
       milestone: "Found calling in quality assurance and product-focused technology"
@@ -270,7 +270,7 @@ export const personalMetrics = {
       role: "MBA Candidate",
       company: "UC Berkeley Haas",
       logo: "/images/logos/berkeley-logo.png",
-      description: "Pursuing MBA to deepen product management expertise and explore venture capital opportunities in civic tech and SaaS",
+      description: "Pursuing MBA to deepen product management expertise and explore venture capital opportunities in SaaS and consumer technology",
       achievement: "Consortium Fellow, MLT Professional Development Fellow, serving as MLT Ambassador",
       techStack: ["Product Management", "Strategy", "Venture Capital", "Leadership", "Fintech"],
       milestone: "Transitioning from product-focused technologist to product management leader"

@@ -14,22 +14,22 @@ export const productManagementFAQs: FAQItem[] = [
   },
   {
     question: "What kind of product management roles are you looking for?",
-    answer: "I'm seeking Product Manager roles in Austin TX or the San Francisco Bay Area, particularly in civic tech, SaaS, or mission-driven startups. I'm interested in opportunities that leverage my technical background, data analytics skills, and passion for social impact.",
+    answer: "I'm seeking Product Manager roles in Austin TX or the San Francisco Bay Area, particularly in SaaS, fintech, or consumer tech startups. I'm interested in opportunities that leverage my technical background, data analytics skills, and passion for building things that matter.",
     category: "Career"
   },
   {
     question: "What is your technical background?",
-    answer: "I have extensive technical experience including quality assurance leadership, test automation (Cypress), SQL and data analysis, API testing, and Agile/Scrum methodologies. I led QA initiatives at Civitech for voter engagement platforms and built testing frameworks that improved product quality and release velocity.",
+    answer: "I have extensive technical experience including quality assurance leadership, test automation (Cypress), SQL and data analysis, API testing, and Agile/Scrum methodologies. I led QA initiatives at Civitech for platforms serving 60M+ users and built testing frameworks that improved product quality and release velocity.",
     category: "Skills"
   },
   {
     question: "Why are you pursuing an MBA at UC Berkeley Haas?",
-    answer: "I'm pursuing my MBA at UC Berkeley Haas (Class of '27, Consortium Fellow) to deepen my product management expertise, explore venture capital opportunities in civic tech and SaaS, and build a network in the Bay Area tech ecosystem. Haas is sharpening my skills in product strategy, go-to-market planning, and cross-functional leadership.",
+    answer: "I'm pursuing my MBA at UC Berkeley Haas (Class of '27, Consortium Fellow) to deepen my product management expertise, explore venture capital opportunities in SaaS and consumer technology, and build a network in the Bay Area tech ecosystem. Haas is sharpening my skills in product strategy, go-to-market planning, and cross-functional leadership.",
     category: "Education"
   },
   {
     question: "What types of products have you worked on?",
-    answer: "I've worked on voter engagement platforms at Civitech, digital campaign tools at Open Progress, and data analytics systems at Florida State University. My experience spans civic tech, political technology, SaaS platforms, and data visualization tools.",
+    answer: "I've worked on high-scale platforms at Civitech (serving 60M+ users), digital campaign tools at Open Progress, and data analytics systems at Florida State University. My experience spans SaaS platforms, digital programs, and data visualization tools.",
     category: "Experience"
   },
   {
@@ -44,12 +44,12 @@ export const productManagementFAQs: FAQItem[] = [
   },
   {
     question: "Are you available for product management consulting?",
-    answer: "Yes, I'm available for product management consulting engagements, particularly for civic tech organizations, mission-driven startups, or SaaS companies looking for help with product strategy, quality engineering advisory, or product operations. Contact me to discuss your needs.",
+    answer: "Yes, I'm available for product management consulting engagements, particularly for SaaS companies, consumer tech startups, or mission-driven organizations looking for help with product strategy, quality engineering advisory, or product operations. Contact me to discuss your needs.",
     category: "Consulting"
   },
   {
     question: "What makes you different as a product manager?",
-    answer: "My unique combination of technical quality engineering background, data analytics expertise, and passion for mission-driven products sets me apart. I understand the technical constraints that engineering teams face, can analyze data to inform product decisions, and am deeply committed to building products that create social impact.",
+    answer: "My unique combination of technical quality engineering background, data analytics expertise, and passion for mission-driven products sets me apart. I understand the technical constraints that engineering teams face, can analyze data to inform product decisions, and am deeply committed to building products that drive real user impact.",
     category: "Value Proposition"
   },
   {

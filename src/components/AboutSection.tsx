@@ -48,7 +48,7 @@ const industries = [
 const experience = [
   { name: "UC Berkeley", sub: "Haas MBA" },
   { name: "Florida State", sub: "Political Science & Int'l Affairs" },
-  { name: "Civic Tech", sub: "Product & QA" },
+  { name: "SaaS", sub: "Product & QA" },
   { name: "Political Campaigns", sub: "Analytics" },
 ];
 

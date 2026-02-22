@@ -130,9 +130,9 @@ const OverviewContent = () => {
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
             I'm a technical product manager who treats QA and analytics as
-            inputs to better bets. At Civitech I lead testing for voter
-            engagement platforms that serve millions, translating what we
-            learn in quality work into concrete roadmap shifts.
+            inputs to better bets. At Civitech I lead quality and product for
+            platforms that serve 60M+ users — translating what we learn in
+            quality work into concrete roadmap shifts.
           </p>
 
           <div>
@@ -166,28 +166,27 @@ const OverviewContent = () => {
                   Leadership:
                 </strong>{" "}
                 Mentor teammates, de-risk complex launches, and advocate for
-                inclusive, mission-led teams.
+                inclusive, high-impact teams.
               </li>
             </ul>
           </div>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Before Civitech I combed through statewide datasets for the State
-            of Florida to inform policy, and I ran client services at Open
-            Progress where I translated campaign goals into digital programs
-            that actually resonated with the people we served.
+            Before Civitech I ran client services at Open Progress —
+            orchestrating 80+ digital programs, building data pipelines, and
+            using audience analytics to make campaigns actually resonate with
+            the people on the other end.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
             I'm earning my MBA at UC Berkeley Haas to pair hands-on execution
-            with sharper product strategy and explore how I can support civic
-            tech, SaaS, and other mission-driven founders as an operator or
-            investor.
+            with sharper product strategy and explore how I can build and
+            invest in SaaS and consumer products that scale.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-primary)] leading-relaxed font-medium">
             If this sparks ideas, let's connect -- I'm always up for swapping
-            notes on product, strategy, or social impact.
+            notes on product, strategy, or building things that matter.
           </p>
         </div>
       </WarmCard>

@@ -28,12 +28,12 @@ export function AuthorBio({
   name = "Isaac Vazquez",
   title = "Technical Product Manager & UC Berkeley Haas MBA Candidate",
   image = "/images/isaac-headshot.jpg",
-  bio = "Product manager with 6+ years in civic tech and SaaS, currently pursuing MBA at UC Berkeley Haas. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration.",
+  bio = "Product manager with 6+ years across SaaS and high-scale consumer platforms, currently pursuing MBA at UC Berkeley Haas. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration.",
   credentials = [
     "UC Berkeley Haas MBA Candidate '27",
     "Consortium Fellow",
     "MLT Professional Development Fellow",
-    "6+ years in civic tech and SaaS",
+    "6+ years in SaaS and consumer technology",
   ],
   expertise = [
     "Product Management",

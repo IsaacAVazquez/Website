@@ -70,7 +70,7 @@ export const businessLocations: BusinessLocation[] = [
       "Product Strategist",
       "Software Testing Consultant",
       "Test Automation Specialist",
-      "Civic Tech Professional",
+      "SaaS Product Professional",
       "Fantasy Football Analytics Developer"
     ],
     description: "Professional QA Engineering and Product Strategy services in Austin, Texas. Specializing in test automation, software quality assurance, and strategic product management for startups and enterprise clients.",

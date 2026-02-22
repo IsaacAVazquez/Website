@@ -37,7 +37,7 @@ export function LocationSpecificContent({
           
           <Paragraph size="lg" className="max-w-3xl mx-auto text-slate-300">
             {location.id === 'austin-tx' 
-              ? "Bringing quality assurance excellence and strategic product leadership to Austin's thriving tech ecosystem. From civic tech innovations to startup growth, I help businesses build reliable software that scales."
+              ? "Bringing quality assurance excellence and strategic product leadership to Austin's thriving tech ecosystem. From SaaS platforms to startup growth, I help businesses build reliable software that scales."
               : "Combining technical expertise with UC Berkeley business insights to drive innovation in the Bay Area. Serving Silicon Valley startups to enterprise clients with strategic product management and quality assurance."
             }
           </Paragraph>
@@ -208,7 +208,7 @@ export function LocationSpecificContent({
 function getServiceDescription(service: string, location: BusinessLocation): string {
   const descriptions: Record<string, Record<string, string>> = {
     "Quality Assurance Engineer": {
-      "austin-tx": "Comprehensive QA services for Austin's growing tech sector, from startups to civic tech platforms.",
+      "austin-tx": "Comprehensive QA services for Austin's growing tech sector, from early-stage to high-scale platforms.",
       "bay-area-ca": "Enterprise-grade QA engineering for Silicon Valley companies and Bay Area innovation hubs."
     },
     "Product Strategist": {
@@ -228,7 +228,7 @@ function getLocalAdvantages(location: BusinessLocation): string[] {
   if (location.id === 'austin-tx') {
     return [
       "Deep understanding of Austin's unique tech ecosystem and startup culture",
-      "Experience with Austin civic tech requirements and regulations",
+      "Experience with Austin's startup ecosystem and scaling SaaS products",
       "Local network of Austin developers, entrepreneurs, and business leaders",
       "Knowledge of Texas business practices and market dynamics",
       "Familiarity with Austin's rapid growth challenges and opportunities"
@@ -246,7 +246,7 @@ function getLocalAdvantages(location: BusinessLocation): string[] {
 
 function getLocationStory(location: BusinessLocation): string {
   if (location.id === 'austin-tx') {
-    return "Based in Austin, Texas, I've been part of the city's incredible tech transformation. From working on civic tech platforms that serve millions of voters to collaborating with local startups, I understand the unique challenges and opportunities that Austin businesses face. My experience spans the full spectrum of Austin's tech ecosystem.";
+    return "Based in Austin, Texas, I've been part of the city's incredible tech transformation. From working on platforms that serve millions of users to collaborating with local startups, I understand the unique challenges and opportunities that Austin businesses face. My experience spans the full spectrum of Austin's tech ecosystem.";
   } else {
     return "Currently pursuing my MBA at UC Berkeley's prestigious Haas School of Business, I'm immersed in the Bay Area's innovation ecosystem. This unique position allows me to bring both academic rigor and practical Silicon Valley insights to every project, combining theoretical knowledge with real-world application.";
   }
@@ -254,7 +254,7 @@ function getLocationStory(location: BusinessLocation): string {
 
 function getCommunityImpact(location: BusinessLocation): string {
   if (location.id === 'austin-tx') {
-    return "Contributing to Austin's goal of becoming a leading tech hub through quality engineering practices, mentoring local developers, and supporting civic tech initiatives that improve city services for all residents.";
+    return "Contributing to Austin's goal of becoming a leading tech hub through quality engineering practices, mentoring local developers, and supporting tech initiatives that improve how people work and live.";
   } else {
     return "Engaging with the Bay Area's entrepreneurial community through UC Berkeley networks, contributing to innovative startups, and applying business school insights to drive technological advancement in the region.";
   }
@@ -298,7 +298,7 @@ function getLocalTestimonials(location: BusinessLocation): Array<{
       },
       {
         initials: "DL",
-        quote: "Working with Isaac on our civic tech platform gave us confidence that we could serve Austin residents reliably. His attention to detail is exceptional.",
+        quote: "Working with Isaac on our SaaS platform gave us confidence that we could serve Austin residents reliably. His attention to detail is exceptional.",
         name: "David Lee",
         title: "Product Manager",
         company: "City Innovation Lab",

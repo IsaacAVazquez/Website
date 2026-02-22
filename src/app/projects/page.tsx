@@ -11,7 +11,7 @@ const projectsStructuredData = [
     name: "Civic Engagement Platform - Voter Outreach Tools",
     description: "Built scalable QA framework for voter outreach tools reaching 60M+ voters with 99.9% uptime during 2022 midterm elections",
     programmingLanguage: ["TypeScript", "JavaScript"],
-    keywords: ["Cypress", "Jest", "React", "Node.js", "Civic Tech", "QA Automation"],
+    keywords: ["Cypress", "Jest", "React", "Node.js", "QA Automation", "High-Scale SaaS"],
     dateCreated: "2022-01-01",
     applicationCategory: "WebApplication",
   },

@@ -101,7 +101,7 @@ const projects: Project[] = [
     timeline: "8 months (2022)",
     problem: {
       context:
-        "A rapidly growing civic tech platform needed to scale from 5M to 60M+ voters while maintaining election-day reliability and compliance.",
+        "A rapidly growing SaaS platform needed to scale from 5M to 60M+ users while maintaining election-day reliability and compliance.",
       painPoints: [
         "Manual testing couldn't keep pace with rapid feature development",
         "Critical bugs were reaching production during high-stakes election periods",

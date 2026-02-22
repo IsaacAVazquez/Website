@@ -4,7 +4,7 @@ import { StructuredData } from "@/components/StructuredData";
 
 export const metadata = constructMetadata({
   title: "Contact Isaac Vazquez | Product Manager - Austin & Bay Area",
-  description: "Connect with Isaac Vazquez for product management opportunities, consulting engagements, or civic tech collaborations. UC Berkeley MBA candidate available for PM roles in Austin TX and San Francisco Bay Area. Let's discuss product strategy, roadmapping, and cross-functional leadership.",
+  description: "Connect with Isaac Vazquez for product management opportunities, consulting engagements, or SaaS collaborations. UC Berkeley MBA candidate available for PM roles in Austin TX and San Francisco Bay Area. Let's discuss product strategy, roadmapping, and cross-functional leadership.",
   canonicalUrl: "/contact",
   dateModified: "2025-02-05",
 });
@@ -28,7 +28,7 @@ export default function Contact() {
         type="ContactPage"
         data={{
           name: "Contact Isaac Vazquez",
-          description: "Reach out to discuss product management opportunities, product strategy engagements, or civic tech initiatives with Isaac Vazquez.",
+          description: "Reach out to discuss product management opportunities, product strategy engagements, or SaaS initiatives with Isaac Vazquez.",
           mainEntity: {
             "@type": "Person",
             "name": "Isaac Vazquez",

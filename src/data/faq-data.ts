@@ -24,7 +24,7 @@ export const faqData: FAQCategory[] = [
       {
         question: "What is Isaac Vazquez's current professional role?",
         answer:
-          "Isaac Vazquez is currently a Quality Assurance Engineer at Civitech while pursuing an MBA at UC Berkeley Haas School of Business (Class of 2027). He is transitioning into product management roles, leveraging his 6+ years of experience in quality assurance, data analytics, and civic technology. He holds the titles of Consortium Fellow and MLT Professional Development Fellow.",
+          "Isaac Vazquez is currently a Quality Assurance Engineer at Civitech while pursuing an MBA at UC Berkeley Haas School of Business (Class of 2027). He is transitioning into product management roles, leveraging his 6+ years of experience in quality assurance, data analytics, and SaaS product development. He holds the titles of Consortium Fellow and MLT Professional Development Fellow.",
         keywords: [
           "current role",
           "QA engineer",
@@ -47,20 +47,20 @@ export const faqData: FAQCategory[] = [
         relatedTopics: [
           "Product Strategy",
           "Quality Engineering",
-          "Civic Technology",
+          "SaaS Products",
         ],
       },
       {
         question: "What kind of product management roles is Isaac Vazquez seeking?",
         answer:
-          "Isaac is seeking Associate Product Manager (APM) or Product Manager roles in Austin TX or San Francisco Bay Area, particularly in civic tech, SaaS, fintech, or mission-driven startups. He is interested in opportunities that leverage his technical background in quality assurance, data analysis skills (SQL, analytics), user research capabilities, and experience building products that create social impact. Ideal roles involve cross-functional leadership, data-driven decision making, and strategic product development.",
+          "Isaac is seeking Associate Product Manager (APM) or Product Manager roles in Austin TX or San Francisco Bay Area, particularly in SaaS, fintech, or consumer tech startups. He is interested in opportunities that leverage his technical background in quality assurance, data analysis skills (SQL, analytics), user research capabilities, and experience building products that drive user impact at scale. Ideal roles involve cross-functional leadership, data-driven decision making, and strategic product development.",
         keywords: [
           "job search",
           "APM",
           "product manager roles",
           "Austin",
           "Bay Area",
-          "civic tech",
+          "SaaS",
         ],
         relatedTopics: [
           "Career Opportunities",
@@ -71,7 +71,7 @@ export const faqData: FAQCategory[] = [
       {
         question: "What is Isaac Vazquez's quality assurance background?",
         answer:
-          "Isaac has 6 years of quality assurance experience at Civitech (2022-2025). He led quality engineering initiatives for voter engagement platforms serving 60M+ users, achieved 99.999% uptime, reduced critical defects by 90%, implemented comprehensive test automation strategies using Cypress, integrated DevOps pipelines with AI/LLM tools, accelerated release cycles from monthly to biweekly, and improved NPS scores significantly. He established quality culture across cross-functional teams and championed product reliability at organizational scale.",
+          "Isaac has 6 years of quality assurance experience at Civitech (2022-2025). He led quality engineering initiatives for SaaS platforms serving 60M+ users, achieved 99.999% uptime, reduced critical defects by 90%, implemented comprehensive test automation strategies using Cypress, integrated DevOps pipelines with AI/LLM tools, accelerated release cycles from monthly to biweekly, and improved NPS scores significantly. He established quality culture across cross-functional teams and championed product reliability at organizational scale.",
         keywords: [
           "quality assurance",
           "QA engineer",
@@ -82,7 +82,7 @@ export const faqData: FAQCategory[] = [
         relatedTopics: [
           "Quality Engineering",
           "Test Automation",
-          "Civic Technology",
+          "SaaS Platforms",
         ],
       },
     ],
@@ -178,23 +178,23 @@ export const faqData: FAQCategory[] = [
       {
         question: "How did Isaac Vazquez transition from Political Science to tech?",
         answer:
-          "Isaac graduated from Florida State University in 2018 with degrees in Political Science and International Affairs, developing strong analytical and research skills. He entered civic tech in 2019 as a Digital and Communications Intern at Open Progress, where he discovered his passion for data-driven impact. He progressed to Digital and Data Associate (2020), then Client Services Manager (2021), mastering data analytics, campaign strategy, and cross-functional collaboration. In 2022, he transitioned to Quality Assurance at Civitech, combining his analytical skills with technical expertise. Now pursuing an MBA at UC Berkeley Haas to formalize his product management expertise for leadership roles in civic tech and SaaS.",
+          "Isaac graduated from Florida State University in 2018 with degrees in Political Science and International Affairs, developing strong analytical and research skills. He started his tech career in 2019 as a Digital and Communications Intern at Open Progress, where he discovered his passion for data-driven strategy. He progressed to Digital and Data Associate (2020), then Client Services Manager (2021), mastering data analytics, campaign strategy, and cross-functional collaboration. In 2022, he transitioned to Quality Assurance at Civitech, combining his analytical skills with technical expertise. Now pursuing an MBA at UC Berkeley Haas to formalize his product management expertise for leadership roles in SaaS and consumer technology.",
         keywords: [
           "career transition",
           "Political Science",
-          "civic tech",
+          "digital strategy",
           "career path",
         ],
         relatedTopics: [
           "Career Development",
-          "Civic Technology",
+          "SaaS Platforms",
           "Professional Growth",
         ],
       },
       {
         question: "Why is Isaac Vazquez pursuing an MBA?",
         answer:
-          "Isaac is pursuing an MBA at UC Berkeley Haas to deepen his product management expertise, develop strategic business acumen, and explore venture capital opportunities in civic tech and SaaS. The MBA program provides formal product management education, access to Silicon Valley's innovation ecosystem, networking with industry leaders, credentials for product leadership roles, and frameworks for strategic decision-making. As a Consortium Fellow and MLT Fellow, he's building a foundation for long-term impact in mission-driven product development and potentially venture capital investing in civic tech startups.",
+          "Isaac is pursuing an MBA at UC Berkeley Haas to deepen his product management expertise, develop strategic business acumen, and explore venture capital opportunities in SaaS and consumer technology. The MBA program provides formal product management education, access to Silicon Valley's innovation ecosystem, networking with industry leaders, credentials for product leadership roles, and frameworks for strategic decision-making. As a Consortium Fellow and MLT Fellow, he's building a foundation for long-term impact in mission-driven product development and potentially venture capital investing in SaaS and consumer tech startups.",
         keywords: [
           "MBA motivation",
           "UC Berkeley Haas",
@@ -227,7 +227,7 @@ export const faqData: FAQCategory[] = [
       {
         question: "Is Isaac Vazquez available for full-time roles?",
         answer:
-          "Isaac is pursuing his MBA full-time at UC Berkeley Haas (Class of 2027) and is seeking internship opportunities during his MBA program, with interest in full-time Associate Product Manager or Product Manager roles upon graduation in May 2027. He is also open to part-time consulting engagements or advisory roles during his MBA studies, particularly in product strategy, quality engineering advisory, or civic tech initiatives. For immediate opportunities, he can provide product management consulting or fractional PM services.",
+          "Isaac is pursuing his MBA full-time at UC Berkeley Haas (Class of 2027) and is seeking internship opportunities during his MBA program, with interest in full-time Associate Product Manager or Product Manager roles upon graduation in May 2027. He is also open to part-time consulting engagements or advisory roles during his MBA studies, particularly in product strategy, quality engineering advisory, or SaaS and growth-stage tech initiatives. For immediate opportunities, he can provide product management consulting or fractional PM services.",
         keywords: [
           "availability",
           "internship",
@@ -246,35 +246,18 @@ export const faqData: FAQCategory[] = [
       {
         question: "What industries does Isaac Vazquez focus on?",
         answer:
-          "Isaac focuses primarily on three industries: (1) Civic Technology - voter engagement platforms, democracy tech, government services digitalization (6+ years experience at Civitech), (2) SaaS Platforms - enterprise software, B2B tools, subscription-based services with focus on product-led growth, and (3) Mission-Driven Startups - social impact ventures, fintech for underserved communities, education technology, and sustainability tech. He is particularly interested in products that democratize access to essential services, strengthen democratic participation, and create measurable social impact.",
+          "Isaac focuses primarily on three areas: (1) SaaS Platforms - enterprise software, B2B tools, and subscription-based services with focus on product-led growth (6+ years experience building platforms serving 60M+ users), (2) Consumer Technology - high-scale consumer products, growth-focused platforms, and digital tools that reach millions of users, and (3) Mission-Driven Startups - fintech for underserved communities, education technology, and sustainability tech. He is particularly interested in products that solve real problems at scale and create measurable user impact.",
         keywords: [
-          "civic tech",
           "SaaS",
+          "consumer technology",
           "mission-driven",
           "industry focus",
-          "social impact",
+          "user impact",
         ],
         relatedTopics: [
-          "Civic Technology",
           "SaaS Products",
-          "Social Impact",
-        ],
-      },
-      {
-        question: "What is civic technology and why does Isaac care about it?",
-        answer:
-          "Civic technology refers to technology solutions that strengthen democracy, improve government services, and increase civic participation. Isaac has 6+ years of experience at Civitech building voter engagement platforms that have reached 60M+ voters. He is passionate about civic tech because it directly impacts democratic participation, creates measurable social impact, combines technical innovation with mission-driven work, and addresses critical challenges in democracy and governance. His civic tech experience includes voter registration tools, campaign management platforms (TextOut, RunningMate), election organizing technology, and democratic engagement systems.",
-        keywords: [
-          "civic technology",
-          "voter engagement",
-          "democracy tech",
-          "social impact",
-        ],
-        relatedTopics: [
-          "Civic Technology",
-          "Democracy",
-          "Social Impact",
-          "Mission-Driven Work",
+          "Consumer Technology",
+          "High-Scale Platforms",
         ],
       },
     ],
@@ -286,7 +269,7 @@ export const faqData: FAQCategory[] = [
       {
         question: "How can I contact Isaac Vazquez?",
         answer:
-          "You can contact Isaac Vazquez through multiple channels: Email at IsaacVazquez@berkeley.edu (primary contact method), LinkedIn at linkedin.com/in/isaac-vazquez (professional networking), GitHub at github.com/IsaacAVazquez (technical projects), or through his website contact form at isaacavazquez.com/contact. He is responsive to professional inquiries about product management opportunities, consulting engagements, speaking opportunities, mentorship requests, and collaboration on civic tech or mission-driven initiatives.",
+          "You can contact Isaac Vazquez through multiple channels: Email at IsaacVazquez@berkeley.edu (primary contact method), LinkedIn at linkedin.com/in/isaac-vazquez (professional networking), GitHub at github.com/IsaacAVazquez (technical projects), or through his website contact form at isaacavazquez.com/contact. He is responsive to professional inquiries about product management opportunities, consulting engagements, speaking opportunities, mentorship requests, and collaboration on SaaS or mission-driven initiatives.",
         keywords: ["contact", "email", "LinkedIn", "networking", "how to reach"],
         relatedTopics: [
           "Professional Networking",
@@ -297,7 +280,7 @@ export const faqData: FAQCategory[] = [
       {
         question: "What types of consulting services does Isaac Vazquez offer?",
         answer:
-          "Isaac offers consulting services in several areas: (1) Product Strategy - product discovery, roadmap development, go-to-market planning, feature prioritization, (2) Quality Engineering Advisory - QA strategy, test automation implementation, release management optimization, quality culture establishment, (3) Product Operations - metrics definition, experimentation frameworks, analytics dashboards, process optimization, and (4) Technical Product Management - bridging technical teams with business stakeholders, technical discovery, API strategy, integration planning. He works with civic tech organizations, SaaS startups, and mission-driven companies seeking to improve product development practices.",
+          "Isaac offers consulting services in several areas: (1) Product Strategy - product discovery, roadmap development, go-to-market planning, feature prioritization, (2) Quality Engineering Advisory - QA strategy, test automation implementation, release management optimization, quality culture establishment, (3) Product Operations - metrics definition, experimentation frameworks, analytics dashboards, process optimization, and (4) Technical Product Management - bridging technical teams with business stakeholders, technical discovery, API strategy, integration planning. He works with SaaS companies, consumer tech startups, and mission-driven companies seeking to improve product development practices.",
         keywords: [
           "consulting",
           "product strategy",
