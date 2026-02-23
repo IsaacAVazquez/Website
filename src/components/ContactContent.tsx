@@ -45,7 +45,7 @@ export function ContactContent() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <ModernButton href="mailto:IsaacVazquez@berkeley.edu" variant="accent" size="lg" className="w-full sm:w-auto">
               <IconMail className="h-5 w-5" />
-              Email me — I reply within a day
+              Email me
             </ModernButton>
             <ModernButton href="https://www.linkedin.com/in/isaac-vazquez" variant="outline" size="lg" className="w-full sm:w-auto">
               <IconBrandLinkedin className="h-5 w-5" />
@@ -72,7 +72,7 @@ export function ContactContent() {
               </Heading>
             </div>
             <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
-              Based in the Bay Area while attending UC Berkeley Haas (May
+              Based in the Bay Area while attending UC Berkeley Haas (Class of
               2027). I love digging into products that mix creativity, data, and broad user impact.
             </p>
           </div>

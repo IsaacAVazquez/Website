@@ -34,8 +34,8 @@ export interface AIOptimizedMetadata {
 
 export const siteConfig = {
   name: "Isaac Vazquez",
-  title: "Technical Product Manager | UC Berkeley MBA Candidate | Austin & Bay Area",
-  description: "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in SaaS and consumer products. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration across Austin and San Francisco Bay Area.",
+  title: "Product Manager | UC Berkeley Haas MBA | Portfolio & Case Studies",
+  description: "Product Manager and UC Berkeley Haas MBA Candidate with 5+ years building SaaS products reaching 60M+ users. Case studies, product thinking, and PM frameworks.",
   url: "https://isaacavazquez.com",
   ogImage: "/og-image.png", // 1200x630 OG image optimized for social media & AI previews
   ogImageAlt: "Isaac Vazquez - Technical Product Manager & UC Berkeley Haas MBA Candidate",

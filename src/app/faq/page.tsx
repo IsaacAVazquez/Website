@@ -9,6 +9,7 @@ import { ModernButton } from "@/components/ui/ModernButton";
 import { FAQSection } from "@/components/FAQ/FAQSection";
 
 export const metadata: Metadata = constructMetadata({
+  noIndex: true,
   title: "FAQ - Product Management, Strategy & UC Berkeley MBA | Isaac Vazquez",
   description: "Frequently asked questions about product management, product strategy, cross-functional leadership, and UC Berkeley Haas MBA experiences. Learn about Isaac Vazquez's approach to data-driven product decisions, user research, go-to-market strategy, and transitioning from engineering to product management.",
   canonicalUrl: "https://isaacavazquez.com/faq",

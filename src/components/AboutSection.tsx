@@ -4,44 +4,44 @@ import { motion } from "framer-motion";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import {
-  IconTargetArrow,
+  IconSearch,
+  IconTarget,
   IconChartBar,
   IconUsers,
-  IconBulb,
 } from "@tabler/icons-react";
 
 const skills = [
   {
-    icon: IconTargetArrow,
-    title: "Product Discovery",
+    icon: IconSearch,
+    title: "Discovery & Research",
     description:
-      "User research, problem framing, hypothesis testing, and continuous validation to ensure we're building the right thing.",
+      "User interviews, problem framing, hypothesis testing, and continuous validation to ensure we're solving the right problem.",
+  },
+  {
+    icon: IconTarget,
+    title: "Strategy & Prioritization",
+    description:
+      "RICE scoring, roadmap planning, and stakeholder alignment to stack-rank ruthlessly and focus on highest-impact bets.",
   },
   {
     icon: IconChartBar,
-    title: "Data-Driven Decisions",
+    title: "Execution & Measurement",
     description:
-      "SQL, analytics dashboards, A/B testing, and metrics frameworks that turn data into actionable product insights.",
+      "Ship, measure, learn. North star metrics, A/B testing, and feedback loops that turn launches into learning.",
   },
   {
     icon: IconUsers,
     title: "Cross-Functional Leadership",
     description:
-      "Sprint planning, stakeholder alignment, and delivery execution with engineering, design, and business teams.",
-  },
-  {
-    icon: IconBulb,
-    title: "Quality & Reliability",
-    description:
-      "Automated testing frameworks, performance monitoring, and systems thinking to ship with confidence.",
+      "Sprint planning, stakeholder alignment, and delivery execution across engineering, design, and business teams.",
   },
 ];
 
 const industries = [
-  "Consumer Tech",
   "SaaS",
+  "Consumer Tech",
   "Analytics",
-  "Political Campaigns",
+  "AI & Experimentation",
   "Data Intensive Applications",
 ];
 
@@ -49,7 +49,7 @@ const experience = [
   { name: "UC Berkeley", sub: "Haas MBA" },
   { name: "Florida State", sub: "Political Science & Int'l Affairs" },
   { name: "SaaS", sub: "Product & QA" },
-  { name: "Political Campaigns", sub: "Analytics" },
+  { name: "AI & Experimentation", sub: "Product Strategy" },
 ];
 
 export function AboutSection() {

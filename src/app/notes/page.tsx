@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Notes',
   description: 'My digital garden - quick thoughts, technical notes, and learning resources.',
+  robots: { index: false, follow: false },
 };
 
 // Temporary notes data

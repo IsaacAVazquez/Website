@@ -3,90 +3,31 @@ import Link from "next/link";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { IconArrowRight, IconExternalLink } from "@tabler/icons-react";
+import { caseStudiesData } from "@/constants/caseStudies";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Isaac Vazquez",
-  description: "Case studies showcasing product management expertise through strategic thinking, cross-functional leadership, and measurable business outcomes.",
+  title: "Work & Case Studies | Isaac Vazquez",
+  description:
+    "PM case studies: scaling platforms to 60M+ users, driving $4M revenue impact, transforming analytics. Problem-Process-Result framework.",
 };
 
-interface CaseStudy {
-  slug: string;
-  title: string;
-  description: string;
-  role: string;
-  timeline: string;
-  tools: string[];
-  metrics: string;
-  thumbnail?: string;
-  featured?: boolean;
-}
-
-const caseStudies: CaseStudy[] = [
-  {
-    slug: "civic-engagement-platform",
-    title: "Civic Engagement Platform",
-    description: "Built a scalable QA framework for voter outreach tools reaching 60M+ voters during the 2022 midterm elections.",
-    role: "QA Lead & Product Contributor",
-    timeline: "8 months (2022)",
-    tools: ["Cypress", "Jest", "React", "Node.js"],
-    metrics: "99.9% uptime • 30% faster releases",
-    featured: true,
-  },
-  {
-    slug: "test-automation-suite",
-    title: "Test Automation Suite",
-    description: "Led design and implementation of unified automation framework enabling same-day validation across 5 different tech stacks.",
-    role: "Automation Architect",
-    timeline: "6 months (2023)",
-    tools: ["Selenium", "Python", "Docker", "CI/CD"],
-    metrics: "50% defect reduction • 300% ROI",
-    featured: true,
-  },
-  {
-    slug: "data-analytics-dashboard",
-    title: "Data Analytics Dashboard",
-    description: "Designed and launched interactive performance dashboards transforming client reporting from manual Excel exports to automated, real-time insights.",
-    role: "Product Manager & Data Lead",
-    timeline: "4 months (2020-2021)",
-    tools: ["SQL", "Tableau", "Python", "APIs"],
-    metrics: "40% faster decisions • 25% conversion lift",
-    featured: true,
-  },
-  {
-    slug: "api-testing-framework",
-    title: "API Testing Framework",
-    description: "Architected comprehensive API testing suite catching 95% of integration issues pre-production.",
-    role: "QA Engineer",
-    timeline: "3 months (2023)",
-    tools: ["Postman", "JMeter", "JavaScript", "CI/CD"],
-    metrics: "95% defect detection • 45% faster releases",
-  },
-  {
-    slug: "performance-monitoring",
-    title: "Performance Monitoring",
-    description: "Launched real-time performance monitoring system reducing page load times by 60% and preventing outages.",
-    role: "Performance Engineer",
-    timeline: "4 months (2022-2023)",
-    tools: ["New Relic", "Grafana", "JMeter"],
-    metrics: "60% faster load times • 99.95% uptime",
-  },
-];
-
 export default function PortfolioPage() {
-  const featuredCaseStudies = caseStudies.filter((cs) => cs.featured);
-  const otherCaseStudies = caseStudies.filter((cs) => !cs.featured);
+  const allStudies = Object.values(caseStudiesData);
+  const featuredCaseStudies = allStudies.filter((cs) => cs.featured);
+  const otherCaseStudies = allStudies.filter((cs) => !cs.featured);
 
   return (
     <main className="min-h-screen bg-[var(--surface-primary)] py-16 sm:py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <Heading level={1} className="mb-6">
-            Portfolio
+            Work & Case Studies
           </Heading>
           <p className="text-lg text-[var(--text-secondary)] max-w-3xl">
-            Case studies showcasing product management expertise through strategic thinking,
-            cross-functional leadership, and measurable business outcomes. Each follows the
-            Problem-Process-Result framework.
+            Case studies showcasing product management expertise through
+            strategic thinking, cross-functional leadership, and measurable
+            business outcomes. Each follows the Problem-Process-Result
+            framework.
           </p>
         </div>
 
@@ -103,10 +44,6 @@ export default function PortfolioPage() {
                     hover={true}
                     className="h-full overflow-hidden group"
                   >
-                    {study.thumbnail && (
-                      <div className="aspect-video bg-neutral-100 dark:bg-neutral-800" />
-                    )}
-
                     <div className="p-6 space-y-4">
                       <h3 className="font-bold text-xl text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors">
                         {study.title}
@@ -180,7 +117,7 @@ export default function PortfolioPage() {
                       </p>
 
                       <p className="text-xs font-medium text-[var(--text-tertiary)]">
-                        {study.role} • {study.timeline}
+                        {study.role} · {study.timeline}
                       </p>
 
                       <p className="text-xs font-semibold text-[var(--color-primary)]">

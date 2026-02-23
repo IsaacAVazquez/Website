@@ -49,34 +49,26 @@ export function ModernHero() {
               </h1>
               <p className="text-xl sm:text-2xl text-[var(--text-secondary)] mt-4 font-medium">
                 Product Manager | MBA Candidate | Builder
-              </p>
-              <p className="text-sm text-[var(--text-tertiary)] mt-2 font-mono tracking-wide">
-                Bay Area &middot; 5+ years in Product & QA
-              </p>
-            </motion.div>
+              
+    </p>          </motion.div>
 
-            <motion.div
-              variants={itemVariants}
-              className="w-12 h-px bg-[var(--border-primary)]"
-              aria-hidden="true"
-            />
+
 
             <motion.p
               variants={itemVariants}
               className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl"
             >
               I build mission-driven products that balance user insight, data, and disciplined
-              execution — moving comfortably between discovery, analytics, and delivery. Currently
-              sharpening my strategic toolkit at UC Berkeley Haas while applying it to every roadmap
-              and sprint I touch.
+              execution. My path from QA engineering to product management gives me a rare ability
+              to own quality end-to-end — from discovery through delivery.
             </motion.p>
 
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-4 pt-2"
             >
-              <ModernButton href="/contact" variant="accent" size="lg">
-                Get In Touch
+              <ModernButton href="/portfolio" variant="accent" size="lg">
+                View My Work
               </ModernButton>
               <ModernButton href="/about" variant="outline" size="lg">
                 Learn More

@@ -72,15 +72,26 @@ const nextConfig = {
         permanent: false,
       },
       
+      // Blog → Writing redirects
+      {
+        source: '/blog',
+        destination: '/writing',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/writing/:slug',
+        permanent: true,
+      },
       // Legacy URL support
       {
         source: '/blog/posts/:slug',
-        destination: '/blog/:slug',
+        destination: '/writing/:slug',
         permanent: true,
       },
       {
         source: '/articles/:slug',
-        destination: '/blog/:slug',
+        destination: '/writing/:slug',
         permanent: true,
       },
       

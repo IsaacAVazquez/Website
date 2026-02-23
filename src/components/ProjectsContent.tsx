@@ -66,15 +66,15 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Civic Engagement Platform",
+    title: "Scaling a Platform to 60M+ Users",
     description:
-      "Built a scalable QA framework for voter outreach tools reaching 60M+ voters",
+      "Led product strategy and quality for a high-scale SaaS platform during the 2022 midterm elections, achieving 99.9% uptime while scaling from 5M to 60M+ users.",
     tech: ["Cypress", "Jest", "React", "Node.js"],
     type: "featured",
     icon: IconChartBar,
-    metrics: "30% faster releases, 100% uptime",
+    metrics: "99.9% uptime, 30% faster releases",
     github: "https://github.com/IsaacAVazquez",
-    link: "https://civitech.io",
+    link: null,
     detailedMetrics: [
       { label: "Users Reached", value: "60M+", improvement: "200% increase" },
       { label: "Uptime Achieved", value: "99.9%", improvement: "From 97.2%" },
@@ -151,13 +151,13 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Test Automation Suite",
+    title: "Unlocking Daily Deploys Through Process Automation",
     description:
-      "Led design and implementation of unified automation framework enabling same-day validation across 5 different tech stacks",
+      "Transformed QA from a release bottleneck into an enabler of daily deployments by designing a unified automation framework across 5 tech stacks.",
     tech: ["Selenium", "Python", "Docker", "CI/CD"],
     type: "normal",
     icon: IconTestPipe,
-    metrics: "50% reduction in defects, 300% ROI",
+    metrics: "50% defect reduction, 300% ROI",
     github: "https://github.com/IsaacAVazquez",
     link: null,
     detailedMetrics: [
@@ -245,9 +245,9 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Data Analytics Dashboard",
+    title: "Transforming Client Reporting into Self-Service Analytics",
     description:
-      "Designed and launched interactive performance dashboards transforming client reporting from manual Excel exports to automated, real-time insights",
+      "Led a product initiative replacing manual Excel reporting with automated real-time dashboards, enabling the company to scale from 15 to 45 clients without adding headcount.",
     tech: ["SQL", "Tableau", "Python", "APIs"],
     type: "normal",
     icon: IconDatabase,
@@ -340,9 +340,9 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "API Testing Framework",
+    title: "Ensuring Integration Reliability Across 120+ Endpoints",
     description:
-      "Architected comprehensive API testing suite catching 95% of integration issues pre-production",
+      "Identified system-level risk in a microservices architecture and built an API testing framework that caught 95% of integration issues before production.",
     tech: ["Postman", "JMeter", "JavaScript", "CI/CD"],
     type: "small",
     icon: IconCode,
@@ -384,9 +384,9 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Performance Monitoring",
+    title: "Preventing Outages Through Proactive Performance Intelligence",
     description:
-      "Launched real-time performance monitoring system reducing page load times by 60% and preventing outages",
+      "Shifted the team from reactive incident response to proactive performance monitoring, reducing page load times by 60% and achieving 99.95% uptime.",
     tech: ["New Relic", "Grafana", "JMeter"],
     type: "small",
     icon: IconChartBar,

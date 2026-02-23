@@ -70,9 +70,8 @@ export function ContactSection() {
               Let's Work Together
             </Heading>
             <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
-              I'm currently pursuing my MBA at UC Berkeley Haas and exploring
-              product management opportunities for Summer 2026 internships and
-              beyond.
+              Open to PM roles, advisory projects, and conversations about
+              building great products.
             </p>
           </motion.div>
 
