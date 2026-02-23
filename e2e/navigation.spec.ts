@@ -3,28 +3,31 @@ import { test, expect } from '@playwright/test'
 test.describe('Navigation', () => {
   test('should navigate to About page', async ({ page }) => {
     await page.goto('/')
+    await page.waitForLoadState('networkidle')
 
     // Click About link
     const aboutLink = page.getByRole('link', { name: /about/i }).first()
     await aboutLink.click()
 
-    // Verify URL changed
+    // Verify URL changed (allow time for on-demand page compilation in dev mode)
     await expect(page).toHaveURL(/.*about/)
   })
 
   test('should navigate to Projects page', async ({ page }) => {
     await page.goto('/')
+    await page.waitForLoadState('networkidle')
 
     // Click Projects link
     const projectsLink = page.getByRole('link', { name: /projects/i }).first()
     await projectsLink.click()
 
-    // Verify URL changed
-    await expect(page).toHaveURL(/.*projects/)
+    // /projects redirects to /portfolio per next.config.mjs
+    await expect(page).toHaveURL(/.*(?:projects|portfolio)/)
   })
 
   test('should navigate to Resume page', async ({ page }) => {
     await page.goto('/')
+    await page.waitForLoadState('networkidle')
 
     // Click Resume link
     const resumeLink = page.getByRole('link', { name: /resume/i }).first()
@@ -36,6 +39,7 @@ test.describe('Navigation', () => {
 
   test('should navigate to Contact page', async ({ page }) => {
     await page.goto('/')
+    await page.waitForLoadState('networkidle')
 
     // Click Contact link
     const contactLink = page.getByRole('link', { name: /contact/i }).first()
@@ -47,6 +51,7 @@ test.describe('Navigation', () => {
 
   test('should navigate using browser back button', async ({ page }) => {
     await page.goto('/')
+    await page.waitForLoadState('networkidle')
 
     // Navigate to About
     const aboutLink = page.getByRole('link', { name: /about/i }).first()
@@ -55,6 +60,6 @@ test.describe('Navigation', () => {
 
     // Go back
     await page.goBack()
-    await expect(page).toHaveURL('/')
+    await expect(page).toHaveURL('http://localhost:3000/')
   })
 })
