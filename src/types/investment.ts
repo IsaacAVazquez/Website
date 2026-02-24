@@ -128,4 +128,5 @@ export interface EnhancedHolding extends PortfolioHolding {
   gainLossPercent: number;
   dayChange: number;
   dayChangePercent: number;
+  hasError?: boolean;
 }

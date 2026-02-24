@@ -423,77 +423,118 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     pmFramework: "Jobs to Be Done",
   },
 
-  "api-testing-framework": {
-    slug: "api-testing-framework",
-    title: "Ensuring Integration Reliability Across 120+ Endpoints",
+  "investment-analytics-platform": {
+    slug: "investment-analytics-platform",
+    title: "Investment Analytics Platform",
     description:
-      "Identified system-level risk in a microservices architecture and built an API testing framework that caught 95% of integration issues before production.",
-    role: "Quality Lead & Systems Thinker",
-    timeline: "3 months (2023)",
-    tools: ["Postman", "JMeter", "JavaScript", "CI/CD"],
-    metrics: "95% defect detection · 45% faster releases",
+      "Built a full-stack investment platform with live Yahoo Finance data — portfolio tracking with gain/loss analytics, plus a side-by-side stock comparison tool with 30+ metrics and Wall Street analyst consensus ratings.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2025",
+    tools: ["Next.js", "TypeScript", "Yahoo Finance API", "React", "Tailwind CSS"],
+    metrics: "Live data · 30+ metrics per stock · Analyst consensus ratings",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/investments",
 
     overview: {
       summary:
-        "Built comprehensive API testing framework ensuring integration reliability across microservices architecture.",
+        "Full-stack investment platform with real-time portfolio tracking via Yahoo Finance and a multi-stock comparison tool surfacing 30+ financial metrics and Wall Street analyst consensus.",
       impact:
-        "Eliminated API integration bugs from reaching production, enabling confident microservices deployments.",
+        "Enables real-time portfolio tracking and Wall Street-level stock comparison — analyst consensus, price targets, PE ratios, margins, and growth metrics — for free.",
     },
 
     problem: {
       context:
-        "Microservices architecture created complex integration challenges with 120+ API endpoints.",
+        "Needed a lightweight investment platform that provides real-time stock data, portfolio tracking, and multi-stock comparison without paid API subscriptions or user accounts.",
       painPoints: [
-        "Integration bugs reaching production",
-        "Manual API testing was time-consuming",
-        "No performance testing under load",
+        "Yahoo Finance API changed to require authentication, breaking unauthenticated requests",
+        "No timeout handling meant API hangs caused infinite loading states",
+        "Stock comparison tools either cost money or provide limited metrics",
+        "Rate limiting from Yahoo could silently break the entire app",
       ],
       stakes:
-        "API failures were causing cascading system issues and poor user experience.",
+        "Without proper API handling, users would see perpetual loading spinners or stale zero-value data with no feedback. Without authenticated access, all valuation metrics return null.",
     },
 
     process: {
       approach:
-        "Designed modular API test suite with automated performance testing.",
+        "Built an authenticated Yahoo Finance client with automatic cookie/crumb management, then layered portfolio tracking and multi-stock comparison UIs on top.",
       methodology: [
-        "Created reusable Postman collections for 120 endpoints",
-        "Implemented automated token management",
-        "Built performance tests with JMeter",
+        "Reverse-engineered Yahoo Finance cookie + crumb authentication flow",
+        "Implemented in-memory auth caching with 30-minute TTL and exponential backoff on rate limits",
+        "Added AbortController-based timeouts at both server (10s) and client (15s) layers",
+        "Designed responsive comparison layout supporting 1-4 stocks with visual metric bars",
       ],
       decisions: [
-        "Chose Postman for developer-friendly interface",
-        "Integrated with CI/CD for continuous validation",
+        "Chose localStorage over a database for zero-friction user experience",
+        "Used Promise.allSettled to show chart data even when summary auth fails",
+        "Built safe accessor utilities (safeRaw, safeStr) to handle Yahoo's inconsistent response format",
+        "Chose visual metric bars over raw numbers for faster comparison scanning",
       ],
+      collaboration:
+        "Solo project — designed, built, and iterated on the platform end-to-end, from API reverse-engineering to UI/UX design.",
     },
 
     result: {
       outcomes: [
-        "Achieved 95% pre-production defect detection",
-        "Reduced production API issues by 90%",
-        "Enabled parallel development of microservices",
+        "Live stock prices, gain/loss, and daily changes load in under 2 seconds",
+        "Full analyst consensus with breakdown (Strong Buy/Buy/Hold/Sell/Strong Sell) and price targets",
+        "30+ financial metrics per stock including valuation, profitability, and growth",
+        "Timeout and rate limit handling ensures users always get feedback",
       ],
       lessonsLearned: [
-        "API contract testing prevents integration failures",
-        "Performance testing early catches scalability issues",
+        "External API dependencies require defensive coding — timeouts, retries, and fallbacks are essential",
+        "Promise.allSettled is essential for multi-source data fetching — always show what you can",
+        "Visual comparison (bars, color coding) is far more effective than tables of raw numbers",
       ],
     },
 
-    userSegments: [
-      "Backend engineers deploying microservices independently",
-      "Platform team maintaining API gateway reliability",
+    detailedMetrics: [
+      {
+        label: "Data Source",
+        value: "Yahoo Finance",
+        improvement: "Live market data",
+      },
+      {
+        label: "Data Points",
+        value: "30+ metrics",
+        improvement: "Per stock",
+      },
+      {
+        label: "Comparison",
+        value: "Up to 4 stocks",
+        improvement: "Side-by-side view",
+      },
+      {
+        label: "Analyst Data",
+        value: "Buy/Sell/Hold",
+        improvement: "With price targets",
+      },
     ],
-    northStarMetric: "Pre-production defect detection rate for API integrations",
+
+    userSegments: [
+      "Individual investors tracking personal portfolios",
+      "Stock researchers comparing investment opportunities",
+      "Anyone wanting free access to analyst consensus data",
+    ],
+    northStarMetric: "Time from adding a stock to seeing live data and analyst ratings",
     tradeoffs: [
       {
-        decision: "Testing tool selection",
-        optionChosen: "Postman + JMeter combination",
-        optionRejected: "Single unified tool (e.g., k6)",
+        decision: "Data persistence",
+        optionChosen: "localStorage (client-side)",
+        optionRejected: "Server-side database",
         reasoning:
-          "Postman's collaboration features and existing team familiarity reduced adoption friction; JMeter handled load testing needs that Postman couldn't.",
+          "Zero-friction UX with no account required; trade-off is data doesn't sync across devices, which is acceptable for a personal tool.",
+      },
+      {
+        decision: "API error handling",
+        optionChosen: "Promise.allSettled with graceful degradation",
+        optionRejected: "Promise.all with full-or-nothing approach",
+        reasoning:
+          "Showing partial data (e.g., price without analyst ratings) is far more useful than showing nothing when one API module fails.",
       },
     ],
     retrospective:
-      "I'd push for contract testing (Pact) from the start instead of relying solely on integration tests. Contract tests are faster and catch breaking changes at the source.",
+      "I'd add a WebSocket or polling layer for live price updates instead of relying on manual refresh. Also, caching Yahoo responses in a service worker would improve offline resilience.",
   },
 
   "performance-monitoring": {

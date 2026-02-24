@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   IconChartBar,
   IconRefresh,
@@ -16,6 +16,7 @@ import { MetricComparisonRow, METRIC_GROUPS } from "./MetricComparisonRow";
 const DEFAULT_SYMBOLS = ["AAPL", "MSFT"];
 
 export function StockComparisonTool() {
+  const shouldReduceMotion = useReducedMotion();
   const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
   const [stockData, setStockData] = useState<Record<string, StockDetail>>({});
   const [loading, setLoading] = useState<Record<string, boolean>>({});
@@ -139,9 +140,9 @@ export function StockComparisonTool() {
             Object.entries(errors).map(([sym, msg]) => (
               <motion.div
                 key={sym}
-                initial={{ opacity: 0, y: -8 }}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -8 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
+                exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -8 }}
                 className="flex items-center gap-2 text-sm text-[var(--color-error)] bg-red-50 dark:bg-red-950/30 px-4 py-3 rounded-xl border border-red-200 dark:border-red-900"
               >
                 <IconAlertCircle className="w-4 h-4 shrink-0" />
@@ -192,10 +193,10 @@ export function StockComparisonTool() {
         {loadedStocks.length >= 2 && (
           <motion.section
             key="metrics"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ delay: 0.2 }}
+            exit={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+            transition={{ delay: shouldReduceMotion ? 0 : 0.2 }}
             aria-label="Side-by-side metric comparison"
           >
             {/* Section header */}
@@ -308,10 +309,10 @@ export function StockComparisonTool() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeGroup}
-                  initial={{ opacity: 0, x: 12 }}
+                  initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -12 }}
-                  transition={{ duration: 0.2 }}
+                  exit={{ opacity: 0, x: shouldReduceMotion ? 0 : -12 }}
+                  transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
                   role="rowgroup"
                 >
                   {METRIC_GROUPS[activeGroup].metrics.map((metric, ri) => (

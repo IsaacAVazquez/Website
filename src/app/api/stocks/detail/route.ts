@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { yahooFetch, isValidSymbol } from "@/lib/yahooFinance";
 
 /**
  * Detailed Stock Data API Route
@@ -15,6 +16,13 @@ export async function GET(request: NextRequest) {
   if (!symbol) {
     return NextResponse.json(
       { error: "Symbol parameter is required" },
+      { status: 400 }
+    );
+  }
+
+  if (!isValidSymbol(symbol)) {
+    return NextResponse.json(
+      { error: `Invalid symbol format: ${symbol}` },
       { status: 400 }
     );
   }
@@ -52,10 +60,8 @@ export async function GET(request: NextRequest) {
 }
 
 async function fetchChartData(symbol: string) {
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}`;
-  const res = await fetch(url, {
-    headers: { "User-Agent": "Mozilla/5.0" },
-  });
+  const url = `https://query2.finance.yahoo.com/v8/finance/chart/${symbol}`;
+  const res = await yahooFetch(url);
   if (!res.ok) throw new Error(`Chart fetch failed: ${res.status}`);
   return res.json();
 }
@@ -69,10 +75,8 @@ async function fetchSummaryData(symbol: string) {
     "assetProfile",
   ].join(",");
 
-  const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=${modules}`;
-  const res = await fetch(url, {
-    headers: { "User-Agent": "Mozilla/5.0" },
-  });
+  const url = `https://query2.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=${modules}`;
+  const res = await yahooFetch(url);
   if (!res.ok) throw new Error(`Summary fetch failed: ${res.status}`);
   return res.json();
 }

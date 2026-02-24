@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { StockComparisonTool } from "@/components/investments/StockComparisonTool";
-import { IconScaleOutline, IconBuildingBank, IconTrendingUp } from "@tabler/icons-react";
+import { IconScaleOutline, IconBuildingBank, IconTrendingUp, IconArrowLeft } from "@tabler/icons-react";
 
 export const metadata: Metadata = {
   title: "Stock Comparison Tool | Isaac Vazquez",
@@ -65,6 +66,15 @@ export default function StockComparePage() {
         />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          {/* Back link */}
+          <Link
+            href="/investments"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mb-6"
+          >
+            <IconArrowLeft className="w-4 h-4" />
+            Back to Portfolio
+          </Link>
+
           {/* Badge */}
           <div className="flex items-center gap-2 mb-6">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[var(--color-primary)] text-white">

@@ -5,11 +5,11 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   IconBrandGithub,
   IconExternalLink,
-  IconCode,
   IconDatabase,
   IconTestPipe,
   IconChartBar,
   IconEye,
+  IconChartLine,
 } from "@tabler/icons-react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
@@ -340,50 +340,6 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Ensuring Integration Reliability Across 120+ Endpoints",
-    description:
-      "Identified system-level risk in a microservices architecture and built an API testing framework that caught 95% of integration issues before production.",
-    tech: ["Postman", "JMeter", "JavaScript", "CI/CD"],
-    type: "small",
-    icon: IconCode,
-    metrics: "95% defect detection, 45% faster releases",
-    github: "https://github.com/IsaacAVazquez",
-    link: null,
-    detailedMetrics: [
-      {
-        label: "Defect Detection",
-        value: "95% pre-prod",
-        improvement: "From 65%",
-      },
-      {
-        label: "API Coverage",
-        value: "120 endpoints",
-        improvement: "Full platform coverage",
-      },
-      {
-        label: "Release Speed",
-        value: "45% faster",
-        improvement: "Parallel testing",
-      },
-      {
-        label: "Production Issues",
-        value: "90% reduction",
-        improvement: "From 18 to 2/month",
-      },
-    ],
-    screenshot: "/project-screenshots/api-testing-framework.png",
-    challenges: [
-      "Test 120 interconnected API endpoints with complex dependencies",
-      "Handle authentication flows and token management",
-      "Validate data integrity across microservices",
-      "Performance testing under production-like load",
-    ],
-    impact:
-      "Eliminated API integration bugs from reaching production, enabling confident microservices deployments",
-    timeline: "3 months (2023)",
-  },
-  {
-    id: 5,
     title: "Preventing Outages Through Proactive Performance Intelligence",
     description:
       "Shifted the team from reactive incident response to proactive performance monitoring, reducing page load times by 60% and achieving 99.95% uptime.",
@@ -425,6 +381,92 @@ const projects: Project[] = [
     impact:
       "Proactively identified performance bottlenecks before user impact, improving user satisfaction and retention",
     timeline: "4 months (2022-2023)",
+  },
+  {
+    id: 5,
+    title: "Investment Analytics Platform",
+    description:
+      "Built a full-stack investment platform with live Yahoo Finance data — portfolio tracking with gain/loss analytics, plus a side-by-side stock comparison tool with 30+ metrics and Wall Street analyst consensus ratings.",
+    tech: ["Next.js", "TypeScript", "Yahoo Finance API", "React", "Tailwind CSS"],
+    type: "normal",
+    icon: IconChartLine,
+    metrics: "Live data, 30+ metrics per stock, analyst consensus ratings",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/investments",
+    detailedMetrics: [
+      {
+        label: "Data Source",
+        value: "Yahoo Finance",
+        improvement: "Live market data",
+      },
+      {
+        label: "Data Points",
+        value: "30+ metrics",
+        improvement: "Per stock",
+      },
+      {
+        label: "Comparison",
+        value: "Up to 4 stocks",
+        improvement: "Side-by-side view",
+      },
+      {
+        label: "Analyst Data",
+        value: "Buy/Sell/Hold",
+        improvement: "With price targets",
+      },
+    ],
+    challenges: [
+      "Yahoo Finance API requires cookie + crumb authentication for programmatic access",
+      "Handling API rate limits and 429 responses with exponential backoff",
+      "Displaying 30+ financial metrics in a clear, comparable format",
+      "Client-side state persistence without a backend database",
+    ],
+    impact:
+      "Enables real-time portfolio tracking with gain/loss analytics and Wall Street-level stock comparison — analyst consensus, price targets, PE ratios, margins, and growth metrics — for free",
+    timeline: "2025",
+    problem: {
+      context:
+        "Needed a lightweight investment platform that provides real-time stock data, portfolio tracking, and multi-stock comparison without paid API subscriptions or user accounts.",
+      painPoints: [
+        "Yahoo Finance API changed to require authentication, breaking unauthenticated requests",
+        "No timeout handling meant API hangs caused infinite loading states",
+        "Stock comparison tools either cost money or provide limited metrics",
+        "Rate limiting from Yahoo could silently break the entire app",
+      ],
+      stakes:
+        "Without proper API handling, users would see perpetual loading spinners or stale zero-value data with no feedback. Without authenticated access, all valuation metrics return null.",
+    },
+    process: {
+      approach:
+        "Built an authenticated Yahoo Finance client with automatic cookie/crumb management, then layered portfolio tracking and multi-stock comparison UIs on top.",
+      methodology: [
+        "Reverse-engineered Yahoo Finance cookie + crumb authentication flow",
+        "Implemented in-memory auth caching with 30-minute TTL and exponential backoff on rate limits",
+        "Added AbortController-based timeouts at both server (10s) and client (15s) layers",
+        "Designed responsive comparison layout supporting 1-4 stocks with visual metric bars",
+      ],
+      decisions: [
+        "Chose localStorage over a database for zero-friction user experience",
+        "Used Promise.allSettled to show chart data even when summary auth fails",
+        "Built safe accessor utilities (safeRaw, safeStr) to handle Yahoo's inconsistent response format",
+        "Chose visual metric bars over raw numbers for faster comparison scanning",
+      ],
+      collaboration:
+        "Solo project — designed, built, and iterated on the platform end-to-end, from API reverse-engineering to UI/UX design.",
+    },
+    result: {
+      outcomes: [
+        "Live stock prices, gain/loss, and daily changes load in under 2 seconds",
+        "Full analyst consensus with breakdown (Strong Buy/Buy/Hold/Sell/Strong Sell) and price targets",
+        "30+ financial metrics per stock including valuation, profitability, and growth",
+        "Timeout and rate limit handling ensures users always get feedback",
+      ],
+      lessonsLearned: [
+        "External API dependencies require defensive coding — timeouts, retries, and fallbacks are essential",
+        "Promise.allSettled is essential for multi-source data fetching — always show what you can",
+        "Visual comparison (bars, color coding) is far more effective than tables of raw numbers",
+      ],
+    },
   },
 ];
 

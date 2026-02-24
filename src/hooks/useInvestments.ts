@@ -12,19 +12,32 @@ const STORAGE_KEY = "portfolio_holdings";
 export function useInvestments() {
   const [holdings, setHoldings] = useState<PortfolioHolding[]>([]);
   const [quotes, setQuotes] = useState<StockQuote[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [initialized, setInitialized] = useState(false);
+  const [quotesReady, setQuotesReady] = useState(false);
 
   // Load holdings from localStorage
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        setHoldings(JSON.parse(stored));
+        const parsed = JSON.parse(stored);
+        setHoldings(parsed);
+        if (parsed.length === 0) {
+          setQuotesReady(true);
+          setLoading(false);
+        }
+      } else {
+        setQuotesReady(true);
+        setLoading(false);
       }
     } catch (err) {
       console.error("Failed to load holdings:", err);
+      setQuotesReady(true);
+      setLoading(false);
     }
+    setInitialized(true);
   }, []);
 
   // Save holdings to localStorage
@@ -42,39 +55,66 @@ export function useInvestments() {
   const fetchQuotes = useCallback(async () => {
     if (holdings.length === 0) {
       setQuotes([]);
+      setQuotesReady(true);
+      setLoading(false);
       return;
     }
 
     setLoading(true);
     setError(null);
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
       const symbols = holdings.map(h => h.symbol).join(",");
-      const response = await fetch(`/api/stocks?symbols=${symbols}`);
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch stock data");
-      }
+      const response = await fetch(`/api/stocks?symbols=${symbols}`, {
+        signal: controller.signal,
+      });
 
       const data = await response.json();
-      setQuotes(data.quotes || []);
+
+      if (response.status === 429 || data.allFailed) {
+        setError("Yahoo Finance rate limit reached — try again in a minute");
+        setQuotes(data.quotes || []);
+      } else if (!response.ok) {
+        throw new Error("Failed to fetch stock data");
+      } else {
+        if (data.rateLimited) {
+          setError("Some stock data may be incomplete due to rate limiting");
+        }
+        setQuotes(data.quotes || []);
+      }
     } catch (err) {
       console.error("Failed to fetch quotes:", err);
-      setError("Failed to fetch stock data");
+      if (err instanceof DOMException && err.name === "AbortError") {
+        setError("Request timed out — try refreshing");
+      } else {
+        setError("Failed to fetch stock data");
+      }
     } finally {
+      clearTimeout(timeoutId);
       setLoading(false);
+      setQuotesReady(true);
     }
   }, [holdings]);
 
   // Auto-fetch quotes when holdings change
   useEffect(() => {
-    fetchQuotes();
-  }, [fetchQuotes]);
+    if (initialized) {
+      fetchQuotes();
+    }
+  }, [initialized, fetchQuotes]);
 
-  // Add holding
-  const addHolding = useCallback((holding: PortfolioHolding) => {
+  // Add holding (rejects duplicates)
+  const addHolding = useCallback((holding: PortfolioHolding): boolean => {
+    if (holdings.some(h => h.symbol === holding.symbol)) {
+      setError(`${holding.symbol} is already in your portfolio`);
+      return false;
+    }
     const newHoldings = [...holdings, holding];
     saveHoldings(newHoldings);
+    return true;
   }, [holdings, saveHoldings]);
 
   // Update holding
@@ -94,13 +134,31 @@ export function useInvestments() {
   // Calculate enhanced holdings with current prices
   const enhancedHoldings: EnhancedHolding[] = holdings.map(holding => {
     const quote = quotes.find(q => q.symbol === holding.symbol);
-    const currentPrice = quote?.price || 0;
+    const hasValidQuote = quote != null && !quote.error && quote.price > 0;
+
+    if (!hasValidQuote) {
+      // Fall back to cost basis when no valid quote available
+      const totalCost = holding.averageCost * holding.shares;
+      return {
+        ...holding,
+        currentPrice: holding.averageCost,
+        currentValue: totalCost,
+        totalCost,
+        gainLoss: 0,
+        gainLossPercent: 0,
+        dayChange: 0,
+        dayChangePercent: 0,
+        hasError: quotesReady, // Only mark as error after quotes have been attempted
+      };
+    }
+
+    const currentPrice = quote.price;
     const currentValue = currentPrice * holding.shares;
     const totalCost = holding.averageCost * holding.shares;
     const gainLoss = currentValue - totalCost;
     const gainLossPercent = totalCost > 0 ? (gainLoss / totalCost) * 100 : 0;
-    const dayChange = (quote?.change || 0) * holding.shares;
-    const dayChangePercent = quote?.changePercent || 0;
+    const dayChange = (quote.change || 0) * holding.shares;
+    const dayChangePercent = quote.changePercent || 0;
 
     return {
       ...holding,
@@ -138,8 +196,9 @@ export function useInvestments() {
   if (summary.totalCost > 0) {
     summary.totalGainLossPercent = (summary.totalGainLoss / summary.totalCost) * 100;
   }
-  if (summary.totalValue > 0) {
-    summary.dayChangePercent = (summary.dayChange / (summary.totalValue - summary.dayChange)) * 100;
+  const previousTotalValue = summary.totalValue - summary.dayChange;
+  if (previousTotalValue > 0) {
+    summary.dayChangePercent = (summary.dayChange / previousTotalValue) * 100;
   }
 
   return {
@@ -149,6 +208,8 @@ export function useInvestments() {
     summary,
     loading,
     error,
+    initialized,
+    quotesReady,
     addHolding,
     updateHolding,
     removeHolding,

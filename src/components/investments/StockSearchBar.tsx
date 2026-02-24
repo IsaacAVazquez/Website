@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { IconSearch, IconPlus, IconX, IconLoader2 } from "@tabler/icons-react";
 
 interface StockSearchBarProps {
@@ -38,6 +38,7 @@ export function StockSearchBar({
   loading = {},
   maxStocks = 4,
 }: StockSearchBarProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [input, setInput] = useState("");
   const [focused, setFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -136,10 +137,10 @@ export function StockSearchBar({
           {focused && filtered.length > 0 && canAdd && (
             <motion.div
               key="suggestions"
-              initial={{ opacity: 0, y: -8, scaleY: 0.92 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -8, scaleY: shouldReduceMotion ? 1 : 0.92 }}
               animate={{ opacity: 1, y: 0, scaleY: 1 }}
-              exit={{ opacity: 0, y: -8, scaleY: 0.92 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
+              exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -8, scaleY: shouldReduceMotion ? 1 : 0.92 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.15, ease: "easeOut" }}
               style={{ transformOrigin: "top" }}
               className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] shadow-xl overflow-hidden"
             >
@@ -182,10 +183,10 @@ export function StockSearchBar({
                 key={sym}
                 role="listitem"
                 layout
-                initial={{ opacity: 0, scale: 0.75 }}
+                initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.75 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 25 }}
                 className="flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--surface-elevated)] text-sm font-semibold text-[var(--color-primary)]"
               >
                 {loading[sym] ? (
