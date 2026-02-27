@@ -67,8 +67,8 @@ export function AddStockForm({ onAdd, existingSymbols = [] }: AddStockFormProps)
 
   const isValid =
     formData.symbol &&
-    formData.shares &&
-    formData.averageCost &&
+    parseFloat(formData.shares) > 0 &&
+    parseFloat(formData.averageCost) > 0 &&
     !symbolError;
 
   return (
