@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { yahooFetch, isRateLimited, isValidSymbol } from "@/lib/yahooFinance";
+import { isValidSymbol } from "@/lib/yahooFinance";
 
 /**
  * Stock API Route
- * Fetches live stock data from Yahoo Finance v7/finance/quote
+ * Fetches live stock data from Yahoo Finance v8/finance/chart
  *
- * Uses a SINGLE batch request for all symbols instead of N parallel requests,
- * which dramatically reduces rate-limiting risk.
+ * Uses parallel per-symbol requests with browser-like Referer/Origin headers,
+ * which bypasses the crumb authentication requirement for v8 chart endpoints.
  *
  * Query Parameters:
  * - symbols: comma-separated list of stock symbols (e.g., "AAPL,GOOGL,MSFT")
@@ -27,41 +27,8 @@ interface StockQuote {
   error?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function mapQuoteResult(symbol: string, r: any): StockQuote {
-  if (!r) {
-    return {
-      symbol,
-      price: 0,
-      change: 0,
-      changePercent: 0,
-      dayHigh: 0,
-      dayLow: 0,
-      open: 0,
-      previousClose: 0,
-      volume: 0,
-      marketCap: 0,
-      name: symbol,
-      error: "Symbol not found",
-    };
-  }
-  return {
-    symbol,
-    price: r.regularMarketPrice ?? 0,
-    change: r.regularMarketChange ?? 0,
-    changePercent: r.regularMarketChangePercent ?? 0,
-    dayHigh: r.regularMarketDayHigh ?? 0,
-    dayLow: r.regularMarketDayLow ?? 0,
-    open: r.regularMarketOpen ?? 0,
-    previousClose: r.regularMarketPreviousClose ?? 0,
-    volume: r.regularMarketVolume ?? 0,
-    marketCap: r.marketCap ?? 0,
-    name: r.shortName ?? r.longName ?? symbol,
-  };
-}
-
-/** Fallback: fetch price data from Yahoo Finance v8 chart endpoint (no crumb needed) */
-async function fallbackToChartAPI(symbols: string[]): Promise<StockQuote[]> {
+/** Fetch price data from Yahoo Finance v8 chart endpoint (no crumb needed with browser headers) */
+async function fetchFromChartAPI(symbols: string[]): Promise<StockQuote[]> {
   const USER_AGENT =
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
 
@@ -70,7 +37,13 @@ async function fallbackToChartAPI(symbols: string[]): Promise<StockQuote[]> {
       const res = await fetch(
         `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`,
         {
-          headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
+          headers: {
+            "User-Agent": USER_AGENT,
+            Accept: "application/json",
+            Referer: "https://finance.yahoo.com/",
+            Origin: "https://finance.yahoo.com",
+            "Accept-Language": "en-US,en;q=0.5",
+          },
           cache: "no-store",
         }
       );
@@ -155,71 +128,15 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // Single batch request — far fewer API calls than fetching each symbol separately
-    const fields = [
-      "symbol",
-      "shortName",
-      "regularMarketPrice",
-      "regularMarketChange",
-      "regularMarketChangePercent",
-      "regularMarketDayHigh",
-      "regularMarketDayLow",
-      "regularMarketOpen",
-      "regularMarketPreviousClose",
-      "regularMarketVolume",
-      "marketCap",
-    ].join(",");
-
-    const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${validSymbols.join(",")}&fields=${fields}`;
-    const response = await yahooFetch(url);
-
-    // Rate limited — return error quotes for all valid symbols
-    if (response.status === 429) {
-      const rateLimitedQuotes = validSymbols.map((s) =>
-        errorQuote(s, "Rate limited — try again in a minute")
-      );
-      return NextResponse.json(
-        {
-          quotes: [...rateLimitedQuotes, ...invalidQuotes],
-          rateLimited: true,
-          allFailed: true,
-          timestamp: new Date().toISOString(),
-        },
-        { status: 429 }
-      );
-    }
-
-    let validQuotes: StockQuote[];
-
-    if (!response.ok) {
-      // v7 failed — fall back to individual v8 chart requests (no auth required)
-      console.warn(`Yahoo Finance v7 returned HTTP ${response.status}, falling back to v8 chart`);
-      validQuotes = await fallbackToChartAPI(validSymbols);
-    } else {
-      const data = await response.json();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const results: any[] = data?.quoteResponse?.result ?? [];
-
-      // Build a map for O(1) lookup
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const resultMap = new Map<string, any>(results.map((r) => [r.symbol, r]));
-      validQuotes = validSymbols.map((symbol) =>
-        mapQuoteResult(symbol, resultMap.get(symbol))
-      );
-
-      // If all failed via v7, fall back to v8 chart
-      if (validQuotes.length > 0 && validQuotes.every((q) => q.error)) {
-        console.warn("All v7 quotes failed, falling back to v8 chart");
-        validQuotes = await fallbackToChartAPI(validSymbols);
-      }
-    }
+    // Fetch all symbols in parallel via v8 chart (browser headers bypass crumb requirement)
+    const validQuotes = await fetchFromChartAPI(validSymbols);
 
     const allFailed =
       validQuotes.length > 0 && validQuotes.every((q) => q.error);
 
     return NextResponse.json({
       quotes: [...validQuotes, ...invalidQuotes],
-      rateLimited: isRateLimited(),
+      rateLimited: false,
       allFailed,
       timestamp: new Date().toISOString(),
     });
