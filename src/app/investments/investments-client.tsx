@@ -14,6 +14,7 @@ import {
   IconTrendingUp,
   IconChartBar,
   IconScaleOutline,
+  IconArrowRight,
 } from "@tabler/icons-react";
 
 const FEATURES = [
@@ -171,37 +172,31 @@ export default function InvestmentsClient() {
             changes all in one place.
           </p>
 
-          {/* Feature pills */}
-          <div className="flex flex-wrap gap-3">
-            {FEATURES.map(({ icon: Icon, label, desc, href }) => {
-              const content = (
-                <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] text-sm">
-                  <Icon className="w-4 h-4 text-[var(--color-primary)] shrink-0" />
-                  <div>
-                    <span className="font-semibold text-[var(--text-primary)]">
-                      {label}
-                    </span>
-                    <span className="text-[var(--text-tertiary)] ml-1.5 text-xs hidden sm:inline">
-                      {desc}
-                    </span>
-                  </div>
+          {/* Feature pills + Compare CTA */}
+          <div className="flex flex-wrap items-center gap-3">
+            {FEATURES.filter(f => !f.href).map(({ icon: Icon, label, desc }) => (
+              <div
+                key={label}
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] text-sm"
+              >
+                <Icon className="w-4 h-4 text-[var(--color-primary)] shrink-0" />
+                <div>
+                  <span className="font-semibold text-[var(--text-primary)]">{label}</span>
+                  <span className="text-[var(--text-tertiary)] ml-1.5 text-xs hidden sm:inline">{desc}</span>
                 </div>
-              );
+              </div>
+            ))}
 
-              if (href) {
-                return (
-                  <Link
-                    key={label}
-                    href={href}
-                    className="hover:border-[var(--color-primary)] transition-colors rounded-xl"
-                  >
-                    {content}
-                  </Link>
-                );
-              }
-
-              return <div key={label}>{content}</div>;
-            })}
+            {/* Compare Stocks — prominent CTA */}
+            <Link
+              href="/investments/compare"
+              className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all shadow-sm hover:shadow-md hover:brightness-110 active:scale-95"
+              style={{ background: "linear-gradient(135deg, var(--color-primary), #7c3aed)" }}
+            >
+              <IconScaleOutline className="w-4 h-4 shrink-0" />
+              <span>Compare Stocks</span>
+              <IconArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -251,9 +246,24 @@ export default function InvestmentsClient() {
 
             {/* Holdings Grid */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
-                Your Holdings
-              </h2>
+              <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+                <h2 className="text-2xl font-bold text-[var(--text-primary)]">
+                  Your Holdings
+                </h2>
+                <Link
+                  href="/investments/compare"
+                  className="group inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold border transition-all hover:shadow-sm active:scale-95"
+                  style={{
+                    background: "linear-gradient(135deg, var(--color-primary), #7c3aed)",
+                    borderColor: "transparent",
+                    color: "white",
+                  }}
+                >
+                  <IconScaleOutline className="w-4 h-4 shrink-0" />
+                  Compare Stocks
+                  <IconArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {enhancedHoldings.map((holding, index) => (
                   <motion.div

@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
 import { PortfolioHolding } from "@/types/investment";
-import { IconPlus, IconX } from "@tabler/icons-react";
+import { IconPlus, IconX, IconLoader2 } from "@tabler/icons-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const SYMBOL_REGEX = /^[A-Z]{1,5}(\.[A-Z]{1,2})?$/;
@@ -12,6 +12,11 @@ const SYMBOL_REGEX = /^[A-Z]{1,5}(\.[A-Z]{1,2})?$/;
 interface AddStockFormProps {
   onAdd: (holding: PortfolioHolding) => void;
   existingSymbols?: string[];
+}
+
+interface StockInfo {
+  name: string;
+  price: number;
 }
 
 export function AddStockForm({ onAdd, existingSymbols = [] }: AddStockFormProps) {
@@ -23,6 +28,9 @@ export function AddStockForm({ onAdd, existingSymbols = [] }: AddStockFormProps)
     averageCost: "",
   });
   const [symbolError, setSymbolError] = useState<string | null>(null);
+  const [stockInfo, setStockInfo] = useState<StockInfo | null>(null);
+  const [symbolLookupLoading, setSymbolLookupLoading] = useState(false);
+  const lookupTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const validateSymbol = (raw: string): string | null => {
     const sym = raw.trim().toUpperCase();
@@ -36,8 +44,41 @@ export function AddStockForm({ onAdd, existingSymbols = [] }: AddStockFormProps)
     return null;
   };
 
+  // Debounced symbol lookup: fetch company name + current price
+  useEffect(() => {
+    const sym = formData.symbol.trim().toUpperCase();
+    if (!SYMBOL_REGEX.test(sym)) {
+      setStockInfo(null);
+      setSymbolLookupLoading(false);
+      return;
+    }
+    if (lookupTimeout.current) clearTimeout(lookupTimeout.current);
+    setSymbolLookupLoading(true);
+    lookupTimeout.current = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/stocks?symbols=${sym}`);
+        const data = await res.json();
+        const quote = data?.quotes?.find((q: { symbol: string }) => q.symbol === sym);
+        if (quote && !quote.error && quote.price > 0) {
+          setStockInfo({ name: quote.name || sym, price: quote.price });
+        } else {
+          setStockInfo(null);
+        }
+      } catch {
+        setStockInfo(null);
+      } finally {
+        setSymbolLookupLoading(false);
+      }
+    }, 600);
+    return () => {
+      if (lookupTimeout.current) clearTimeout(lookupTimeout.current);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData.symbol]);
+
   const handleSymbolChange = (value: string) => {
     setFormData({ ...formData, symbol: value });
+    setStockInfo(null);
     if (symbolError) {
       setSymbolError(validateSymbol(value));
     }
@@ -62,6 +103,7 @@ export function AddStockForm({ onAdd, existingSymbols = [] }: AddStockFormProps)
     onAdd(holding);
     setFormData({ symbol: "", shares: "", averageCost: "" });
     setSymbolError(null);
+    setStockInfo(null);
     setIsOpen(false);
   };
 
@@ -114,22 +156,38 @@ export function AddStockForm({ onAdd, existingSymbols = [] }: AddStockFormProps)
                   >
                     Stock Symbol
                   </label>
-                  <input
-                    type="text"
-                    id="symbol"
-                    value={formData.symbol}
-                    onChange={(e) => handleSymbolChange(e.target.value)}
-                    onBlur={() => setSymbolError(validateSymbol(formData.symbol))}
-                    placeholder="e.g., AAPL"
-                    className="w-full px-4 py-3 min-h-[44px] rounded-xl bg-[var(--surface-elevated)] border border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
-                    aria-invalid={!!symbolError}
-                    aria-describedby={symbolError ? "symbol-error" : undefined}
-                    required
-                  />
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="symbol"
+                      value={formData.symbol}
+                      onChange={(e) => handleSymbolChange(e.target.value.toUpperCase())}
+                      onBlur={() => setSymbolError(validateSymbol(formData.symbol))}
+                      placeholder="e.g., AAPL"
+                      className="w-full px-4 py-3 min-h-[44px] rounded-xl bg-[var(--surface-elevated)] border border-[var(--border-primary)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors uppercase"
+                      aria-invalid={!!symbolError}
+                      aria-describedby={symbolError ? "symbol-error" : undefined}
+                      required
+                    />
+                    {symbolLookupLoading && (
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                        <IconLoader2 className="w-4 h-4 text-[var(--text-tertiary)] animate-spin" />
+                      </div>
+                    )}
+                  </div>
                   {symbolError && (
                     <p id="symbol-error" className="mt-1.5 text-sm text-[var(--color-error)]">
                       {symbolError}
                     </p>
+                  )}
+                  {stockInfo && !symbolError && (
+                    <div className="mt-2 flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/20">
+                      <span className="text-sm font-semibold text-[var(--color-primary)]">{stockInfo.name}</span>
+                      <span className="text-sm text-[var(--text-secondary)]">—</span>
+                      <span className="text-sm font-mono text-[var(--text-primary)]">
+                        ${stockInfo.price.toFixed(2)}
+                      </span>
+                    </div>
                   )}
                 </div>
 
@@ -158,12 +216,23 @@ export function AddStockForm({ onAdd, existingSymbols = [] }: AddStockFormProps)
 
                 {/* Average Cost per Share */}
                 <div>
-                  <label
-                    htmlFor="averageCost"
-                    className="block text-sm font-semibold text-[var(--text-primary)] mb-2"
-                  >
-                    Average Cost per Share
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label
+                      htmlFor="averageCost"
+                      className="block text-sm font-semibold text-[var(--text-primary)]"
+                    >
+                      Average Cost per Share
+                    </label>
+                    {stockInfo && (
+                      <button
+                        type="button"
+                        onClick={() => setFormData(prev => ({ ...prev, averageCost: stockInfo.price.toFixed(2) }))}
+                        className="text-xs font-medium text-[var(--color-primary)] hover:underline"
+                      >
+                        Use current price (${stockInfo.price.toFixed(2)})
+                      </button>
+                    )}
+                  </div>
                   <input
                     type="number"
                     id="averageCost"

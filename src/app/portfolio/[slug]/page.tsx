@@ -111,15 +111,25 @@ export default function CaseStudyPage({
               </a>
             )}
             {caseStudy.link && (
-              <a
-                href={caseStudy.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
-              >
-                <IconExternalLink className="h-4 w-4" />
-                Live Project
-              </a>
+              caseStudy.link.startsWith("/") ? (
+                <Link
+                  href={caseStudy.link}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
+                >
+                  <IconExternalLink className="h-4 w-4" />
+                  Live Project
+                </Link>
+              ) : (
+                <a
+                  href={caseStudy.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
+                >
+                  <IconExternalLink className="h-4 w-4" />
+                  Live Project
+                </a>
+              )
             )}
           </div>
         </header>

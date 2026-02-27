@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { IconX, IconExternalLink, IconBrandGithub, IconClock, IconTargetArrow } from '@tabler/icons-react';
 import { WarmCard } from '@/components/ui/WarmCard';
@@ -327,12 +328,21 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                 {/* Action Buttons */}
                 <div className="flex gap-4 pt-4 border-t-2 border-[var(--border-primary)]">
                   {project.link && (
-                    <a href={project.link} target="_blank" rel="noopener noreferrer">
-                      <ModernButton variant="primary" size="md">
-                        <IconExternalLink className="w-4 h-4 inline mr-2" />
-                        View Live Project
-                      </ModernButton>
-                    </a>
+                    project.link.startsWith("/") ? (
+                      <Link href={project.link}>
+                        <ModernButton variant="primary" size="md">
+                          <IconExternalLink className="w-4 h-4 inline mr-2" />
+                          View Live Project
+                        </ModernButton>
+                      </Link>
+                    ) : (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <ModernButton variant="primary" size="md">
+                          <IconExternalLink className="w-4 h-4 inline mr-2" />
+                          View Live Project
+                        </ModernButton>
+                      </a>
+                    )
                   )}
                   {project.github && (
                     <a href={project.github} target="_blank" rel="noopener noreferrer">

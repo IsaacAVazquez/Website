@@ -60,6 +60,50 @@ function mapQuoteResult(symbol: string, r: any): StockQuote {
   };
 }
 
+/** Fallback: fetch price data from Yahoo Finance v8 chart endpoint (no crumb needed) */
+async function fallbackToChartAPI(symbols: string[]): Promise<StockQuote[]> {
+  const USER_AGENT =
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
+
+  const results = await Promise.allSettled(
+    symbols.map(async (symbol) => {
+      const res = await fetch(
+        `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`,
+        {
+          headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
+          cache: "no-store",
+        }
+      );
+      if (!res.ok) return errorQuote(symbol, `HTTP ${res.status}`);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const data: any = await res.json();
+      const meta = data?.chart?.result?.[0]?.meta ?? {};
+      const price: number = meta.regularMarketPrice ?? 0;
+      const previousClose: number = meta.previousClose ?? meta.chartPreviousClose ?? 0;
+      const change = price - previousClose;
+      const changePercent = previousClose ? (change / previousClose) * 100 : 0;
+      if (!price) return errorQuote(symbol, "No price data");
+      return {
+        symbol,
+        price,
+        change,
+        changePercent,
+        dayHigh: meta.regularMarketDayHigh ?? 0,
+        dayLow: meta.regularMarketDayLow ?? 0,
+        open: meta.regularMarketOpen ?? 0,
+        previousClose,
+        volume: meta.regularMarketVolume ?? 0,
+        marketCap: 0,
+        name: meta.shortName ?? meta.longName ?? symbol,
+      } satisfies StockQuote;
+    })
+  );
+
+  return results.map((r, i) =>
+    r.status === "fulfilled" ? r.value : errorQuote(symbols[i], "Failed to fetch")
+  );
+}
+
 function errorQuote(symbol: string, message: string): StockQuote {
   return {
     symbol,
@@ -145,21 +189,30 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    let validQuotes: StockQuote[];
+
     if (!response.ok) {
-      throw new Error(`Yahoo Finance returned HTTP ${response.status}`);
+      // v7 failed — fall back to individual v8 chart requests (no auth required)
+      console.warn(`Yahoo Finance v7 returned HTTP ${response.status}, falling back to v8 chart`);
+      validQuotes = await fallbackToChartAPI(validSymbols);
+    } else {
+      const data = await response.json();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const results: any[] = data?.quoteResponse?.result ?? [];
+
+      // Build a map for O(1) lookup
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const resultMap = new Map<string, any>(results.map((r) => [r.symbol, r]));
+      validQuotes = validSymbols.map((symbol) =>
+        mapQuoteResult(symbol, resultMap.get(symbol))
+      );
+
+      // If all failed via v7, fall back to v8 chart
+      if (validQuotes.length > 0 && validQuotes.every((q) => q.error)) {
+        console.warn("All v7 quotes failed, falling back to v8 chart");
+        validQuotes = await fallbackToChartAPI(validSymbols);
+      }
     }
-
-    const data = await response.json();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const results: any[] = data?.quoteResponse?.result ?? [];
-
-    // Build a map for O(1) lookup
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const resultMap = new Map<string, any>(results.map((r) => [r.symbol, r]));
-
-    const validQuotes = validSymbols.map((symbol) =>
-      mapQuoteResult(symbol, resultMap.get(symbol))
-    );
 
     const allFailed =
       validQuotes.length > 0 && validQuotes.every((q) => q.error);
