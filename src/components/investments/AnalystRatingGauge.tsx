@@ -54,8 +54,10 @@ export function AnalystRatingGauge({ analyst, size = "md" }: AnalystRatingGaugeP
   const innerR = svgSize * 0.28;
   const needleR = outerR * 0.95;
 
-  // Needle tip
-  const needleTip = polarToCartesian(cx, cy, needleR, angle);
+  // Needle tip — always drawn at Strong Buy (left, -180°) so that Framer Motion
+  // can animate from rotate:0 → rotate:(angle+180), landing at the correct angle.
+  // Math: CSS CW rotation adds to polar angle, so: -180 + (angle+180) = angle ✓
+  const needleTip = polarToCartesian(cx, cy, needleR, -180);
 
   // Zone segments (5 zones across -180° to 0°)
   const zones = [
@@ -104,7 +106,7 @@ export function AnalystRatingGauge({ analyst, size = "md" }: AnalystRatingGaugeP
 
           {/* Needle */}
           <motion.g
-            initial={{ rotate: -180, originX: `${cx}px`, originY: `${cy}px` }}
+            initial={{ rotate: 0, originX: `${cx}px`, originY: `${cy}px` }}
             animate={{ rotate: angle + 180, originX: `${cx}px`, originY: `${cy}px` }}
             transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.3 }}
             style={{ transformOrigin: `${cx}px ${cy}px` }}
