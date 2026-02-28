@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#2563EB" />
         <meta name="color-scheme" content="light dark" />
@@ -114,20 +114,6 @@ export default function RootLayout({
         />
 
         <StructuredData type="WebSite" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(() => {
-              try {
-                const storedTheme = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const theme = storedTheme || 'system';
-                document.documentElement.dataset.theme = theme;
-                const useDark = theme === 'dark' || (theme === 'system' && prefersDark);
-                document.documentElement.classList.toggle('dark', useDark);
-              } catch (_) {}
-            })();`,
-          }}
-        />
       </head>
       <body
         className={twMerge(
