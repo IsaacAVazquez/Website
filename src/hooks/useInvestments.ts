@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { PortfolioHolding, StockQuote, EnhancedHolding, PortfolioSummary } from "@/types/investment";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import { PortfolioHolding, StockQuote, EnhancedHolding, PortfolioSummary, HoldingSortField, SortDirection } from "@/types/investment";
 
 const STORAGE_KEY = "portfolio_holdings";
 
@@ -16,6 +16,9 @@ export function useInvestments() {
   const [error, setError] = useState<string | null>(null);
   const [initialized, setInitialized] = useState(false);
   const [quotesReady, setQuotesReady] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [sortField, setSortField] = useState<HoldingSortField>('value');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
 
   // Load holdings from localStorage
   useEffect(() => {
@@ -96,6 +99,7 @@ export function useInvestments() {
       clearTimeout(timeoutId);
       setLoading(false);
       setQuotesReady(true);
+      setLastUpdated(new Date());
     }
   }, [holdings]);
 
@@ -132,12 +136,11 @@ export function useInvestments() {
   }, [holdings, saveHoldings]);
 
   // Calculate enhanced holdings with current prices
-  const enhancedHoldings: EnhancedHolding[] = holdings.map(holding => {
+  const baseEnhancedHoldings: EnhancedHolding[] = holdings.map(holding => {
     const quote = quotes.find(q => q.symbol === holding.symbol);
     const hasValidQuote = quote != null && !quote.error && quote.price > 0;
 
     if (!hasValidQuote) {
-      // Fall back to cost basis when no valid quote available
       const totalCost = holding.averageCost * holding.shares;
       return {
         ...holding,
@@ -148,7 +151,8 @@ export function useInvestments() {
         gainLossPercent: 0,
         dayChange: 0,
         dayChangePercent: 0,
-        hasError: quotesReady, // Only mark as error after quotes have been attempted
+        allocationPercent: 0,
+        hasError: quotesReady,
       };
     }
 
@@ -169,18 +173,19 @@ export function useInvestments() {
       gainLossPercent,
       dayChange,
       dayChangePercent,
+      allocationPercent: 0,
     };
   });
 
   // Calculate portfolio summary
-  const summary: PortfolioSummary = enhancedHoldings.reduce(
+  const summary: PortfolioSummary = baseEnhancedHoldings.reduce(
     (acc, holding) => ({
       totalValue: acc.totalValue + holding.currentValue,
       totalCost: acc.totalCost + holding.totalCost,
       totalGainLoss: acc.totalGainLoss + holding.gainLoss,
-      totalGainLossPercent: 0, // Will calculate after
+      totalGainLossPercent: 0,
       dayChange: acc.dayChange + holding.dayChange,
-      dayChangePercent: 0, // Will calculate after
+      dayChangePercent: 0,
     }),
     {
       totalValue: 0,
@@ -201,6 +206,33 @@ export function useInvestments() {
     summary.dayChangePercent = (summary.dayChange / previousTotalValue) * 100;
   }
 
+  // Compute allocation % and apply sorting
+  const enhancedHoldings = useMemo(() => {
+    const withAllocation = baseEnhancedHoldings.map(h => ({
+      ...h,
+      allocationPercent: summary.totalValue > 0 ? (h.currentValue / summary.totalValue) * 100 : 0,
+    }));
+
+    return withAllocation.sort((a, b) => {
+      let cmp = 0;
+      switch (sortField) {
+        case 'value':
+          cmp = a.currentValue - b.currentValue;
+          break;
+        case 'gainLoss':
+          cmp = a.gainLoss - b.gainLoss;
+          break;
+        case 'dayChange':
+          cmp = a.dayChange - b.dayChange;
+          break;
+        case 'symbol':
+          cmp = a.symbol.localeCompare(b.symbol);
+          break;
+      }
+      return sortDirection === 'asc' ? cmp : -cmp;
+    });
+  }, [baseEnhancedHoldings, summary.totalValue, sortField, sortDirection]);
+
   return {
     holdings,
     quotes,
@@ -210,6 +242,11 @@ export function useInvestments() {
     error,
     initialized,
     quotesReady,
+    lastUpdated,
+    sortField,
+    sortDirection,
+    setSortField,
+    setSortDirection,
     addHolding,
     updateHolding,
     removeHolding,

@@ -12,6 +12,8 @@ const SYMBOL_REGEX = /^[A-Z]{1,5}(\.[A-Z]{1,2})?$/;
 interface AddStockFormProps {
   onAdd: (holding: PortfolioHolding) => void;
   existingSymbols?: string[];
+  prefillSymbol?: string | null;
+  onPrefillUsed?: () => void;
 }
 
 interface StockInfo {
@@ -19,7 +21,7 @@ interface StockInfo {
   price: number;
 }
 
-export function AddStockForm({ onAdd, existingSymbols = [] }: AddStockFormProps) {
+export function AddStockForm({ onAdd, existingSymbols = [], prefillSymbol, onPrefillUsed }: AddStockFormProps) {
   const shouldReduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -31,6 +33,15 @@ export function AddStockForm({ onAdd, existingSymbols = [] }: AddStockFormProps)
   const [stockInfo, setStockInfo] = useState<StockInfo | null>(null);
   const [symbolLookupLoading, setSymbolLookupLoading] = useState(false);
   const lookupTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Prefill symbol from external trigger (e.g. quick-add chips)
+  useEffect(() => {
+    if (prefillSymbol) {
+      setIsOpen(true);
+      setFormData(prev => ({ ...prev, symbol: prefillSymbol }));
+      onPrefillUsed?.();
+    }
+  }, [prefillSymbol, onPrefillUsed]);
 
   const validateSymbol = (raw: string): string | null => {
     const sym = raw.trim().toUpperCase();

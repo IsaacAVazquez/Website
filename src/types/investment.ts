@@ -128,5 +128,9 @@ export interface EnhancedHolding extends PortfolioHolding {
   gainLossPercent: number;
   dayChange: number;
   dayChangePercent: number;
+  allocationPercent: number;
   hasError?: boolean;
 }
+
+export type HoldingSortField = 'value' | 'gainLoss' | 'dayChange' | 'symbol';
+export type SortDirection = 'asc' | 'desc';

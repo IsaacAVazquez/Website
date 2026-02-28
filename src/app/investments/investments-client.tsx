@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useInvestments } from "@/hooks/useInvestments";
@@ -8,6 +8,7 @@ import { PortfolioSummary } from "@/components/investments/PortfolioSummary";
 import { StockCard } from "@/components/investments/StockCard";
 import { AddStockForm } from "@/components/investments/AddStockForm";
 import { WarmCard } from "@/components/ui/WarmCard";
+import { HoldingSortField } from "@/types/investment";
 import {
   IconChartLine,
   IconAlertCircle,
@@ -15,7 +16,24 @@ import {
   IconChartBar,
   IconScaleOutline,
   IconArrowRight,
+  IconSortDescending,
+  IconSortAscending,
 } from "@tabler/icons-react";
+
+const SORT_OPTIONS: { field: HoldingSortField; label: string; defaultDir: 'asc' | 'desc' }[] = [
+  { field: 'value', label: 'Value', defaultDir: 'desc' },
+  { field: 'gainLoss', label: 'Gain/Loss', defaultDir: 'desc' },
+  { field: 'dayChange', label: 'Day Change', defaultDir: 'desc' },
+  { field: 'symbol', label: 'Name', defaultDir: 'asc' },
+];
+
+const QUICK_ADD_STOCKS = [
+  { symbol: "AAPL", name: "Apple" },
+  { symbol: "GOOGL", name: "Alphabet" },
+  { symbol: "MSFT", name: "Microsoft" },
+  { symbol: "TSLA", name: "Tesla" },
+  { symbol: "AMZN", name: "Amazon" },
+];
 
 const FEATURES = [
   {
@@ -107,12 +125,30 @@ export default function InvestmentsClient() {
     error,
     initialized,
     quotesReady,
+    lastUpdated,
+    sortField,
+    sortDirection,
+    setSortField,
+    setSortDirection,
     addHolding,
     removeHolding,
     refreshQuotes,
   } = useInvestments();
 
+  const [prefillSymbol, setPrefillSymbol] = useState<string | null>(null);
+  const clearPrefill = useCallback(() => setPrefillSymbol(null), []);
+
   const existingSymbols = holdings.map(h => h.symbol);
+
+  const handleSortClick = (field: HoldingSortField) => {
+    if (sortField === field) {
+      setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      const opt = SORT_OPTIONS.find(o => o.field === field);
+      setSortDirection(opt?.defaultDir ?? 'desc');
+    }
+  };
 
   // Full-page skeleton before localStorage has been read
   if (!initialized) {
@@ -236,17 +272,18 @@ export default function InvestmentsClient() {
                 summary={summary}
                 loading={loading}
                 onRefresh={refreshQuotes}
+                lastUpdated={lastUpdated}
               />
             </div>
 
             {/* Add Stock Form */}
             <div className="mb-12">
-              <AddStockForm onAdd={addHolding} existingSymbols={existingSymbols} />
+              <AddStockForm onAdd={addHolding} existingSymbols={existingSymbols} prefillSymbol={prefillSymbol} onPrefillUsed={clearPrefill} />
             </div>
 
             {/* Holdings Grid */}
             <div>
-              <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+              <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
                 <h2 className="text-2xl font-bold text-[var(--text-primary)]">
                   Your Holdings
                 </h2>
@@ -264,6 +301,35 @@ export default function InvestmentsClient() {
                   <IconArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
+
+              {/* Sorting Controls */}
+              {enhancedHoldings.length > 1 && (
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {SORT_OPTIONS.map(opt => {
+                    const isActive = sortField === opt.field;
+                    return (
+                      <button
+                        key={opt.field}
+                        onClick={() => handleSortClick(opt.field)}
+                        className={[
+                          "min-h-[44px] inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold transition-all",
+                          isActive
+                            ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/30"
+                            : "bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-primary)] hover:border-[var(--color-primary)]/30 hover:text-[var(--text-primary)]",
+                        ].join(" ")}
+                      >
+                        {opt.label}
+                        {isActive && (
+                          sortDirection === 'desc'
+                            ? <IconSortDescending className="w-4 h-4" />
+                            : <IconSortAscending className="w-4 h-4" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {enhancedHoldings.map((holding, index) => (
                   <motion.div
@@ -293,7 +359,7 @@ export default function InvestmentsClient() {
           >
             {/* Add Stock Form first */}
             <div className="mb-12">
-              <AddStockForm onAdd={addHolding} existingSymbols={existingSymbols} />
+              <AddStockForm onAdd={addHolding} existingSymbols={existingSymbols} prefillSymbol={prefillSymbol} onPrefillUsed={clearPrefill} />
             </div>
 
             <WarmCard padding="xl">
@@ -307,17 +373,19 @@ export default function InvestmentsClient() {
                   performance with real-time market data.
                 </p>
                 <div className="flex flex-col gap-3 max-w-sm mx-auto">
-                  <div className="text-sm text-[var(--text-secondary)] text-left">
-                    <p className="font-semibold mb-2">
-                      Popular stocks to track:
-                    </p>
-                    <ul className="space-y-1 font-mono">
-                      <li>• AAPL - Apple Inc.</li>
-                      <li>• GOOGL - Alphabet Inc.</li>
-                      <li>• MSFT - Microsoft Corporation</li>
-                      <li>• TSLA - Tesla, Inc.</li>
-                      <li>• AMZN - Amazon.com, Inc.</li>
-                    </ul>
+                  <p className="text-sm font-semibold text-[var(--text-secondary)]">
+                    Quick add a popular stock:
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {QUICK_ADD_STOCKS.map(stock => (
+                      <button
+                        key={stock.symbol}
+                        onClick={() => setPrefillSymbol(stock.symbol)}
+                        className="min-h-[44px] px-4 py-2 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-sm font-mono font-semibold text-[var(--text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:bg-[var(--surface-elevated)] transition-all"
+                      >
+                        {stock.symbol}
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>

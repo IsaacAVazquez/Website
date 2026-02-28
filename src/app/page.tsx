@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { ModernHero } from "@/components/ModernHero";
-import { SocialProofStrip } from "@/components/SocialProofStrip";
 import { FeaturedWorkSection } from "@/components/FeaturedWorkSection";
 import { ThinkingPreview } from "@/components/ThinkingPreview";
 import { WritingPreview } from "@/components/WritingPreview";
@@ -21,9 +20,6 @@ export default function Home() {
       <header>
         <ModernHero />
       </header>
-
-      {/* Social Proof - hidden for now */}
-      {/* <SocialProofStrip /> */}
 
       {/* Featured Work */}
       <FeaturedWorkSection />

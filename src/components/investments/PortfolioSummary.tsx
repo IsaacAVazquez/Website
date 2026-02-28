@@ -1,20 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { PortfolioSummary as PortfolioSummaryType } from "@/types/investment";
 import { IconTrendingUp, IconTrendingDown, IconRefresh } from "@tabler/icons-react";
 import { ModernButton } from "@/components/ui/ModernButton";
 import { motion, useReducedMotion } from "framer-motion";
 
+function formatRelativeTime(date: Date): string {
+  const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
+  if (seconds < 10) return "just now";
+  if (seconds < 60) return `${seconds}s ago`;
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  return `${hours}h ago`;
+}
+
 interface PortfolioSummaryProps {
   summary: PortfolioSummaryType;
   loading: boolean;
   onRefresh: () => void;
+  lastUpdated: Date | null;
 }
 
-export function PortfolioSummary({ summary, loading, onRefresh }: PortfolioSummaryProps) {
+export function PortfolioSummary({ summary, loading, onRefresh, lastUpdated }: PortfolioSummaryProps) {
   const shouldReduceMotion = useReducedMotion();
+  const [, setTick] = useState(0);
+
+  // Re-render every 15s to keep relative time fresh
+  useEffect(() => {
+    if (!lastUpdated) return;
+    const interval = setInterval(() => setTick(t => t + 1), 15000);
+    return () => clearInterval(interval);
+  }, [lastUpdated]);
   const isPositive = summary.totalGainLoss >= 0;
   const isDayPositive = summary.dayChange >= 0;
 
@@ -47,15 +66,22 @@ export function PortfolioSummary({ summary, loading, onRefresh }: PortfolioSumma
               {formatCurrency(summary.totalValue)}
             </p>
           </div>
-          <ModernButton
-            variant="ghost"
-            size="sm"
-            onClick={onRefresh}
-            disabled={loading}
-            ariaLabel="Refresh portfolio data"
-          >
-            <IconRefresh className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
-          </ModernButton>
+          <div className="flex items-center gap-2">
+            {lastUpdated && !loading && (
+              <span className="text-xs text-[var(--text-tertiary)]">
+                {formatRelativeTime(lastUpdated)}
+              </span>
+            )}
+            <ModernButton
+              variant="ghost"
+              size="sm"
+              onClick={onRefresh}
+              disabled={loading}
+              ariaLabel="Refresh portfolio data"
+            >
+              <IconRefresh className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
+            </ModernButton>
+          </div>
         </div>
 
         {/* Day Change */}

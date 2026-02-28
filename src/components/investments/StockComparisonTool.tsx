@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   IconChartBar,
   IconRefresh,
-  IconAlertCircle,
   IconInfoCircle,
 } from "@tabler/icons-react";
 import { StockDetail } from "@/types/investment";
@@ -14,6 +13,7 @@ import { ComparisonCard } from "./ComparisonCard";
 import { MetricComparisonRow, METRIC_GROUPS } from "./MetricComparisonRow";
 
 const DEFAULT_SYMBOLS = ["AAPL", "MSFT"];
+const PORTFOLIO_STORAGE_KEY = "portfolio_holdings";
 
 export function StockComparisonTool() {
   const shouldReduceMotion = useReducedMotion();
@@ -23,6 +23,7 @@ export function StockComparisonTool() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [initialized, setInitialized] = useState(false);
   const [activeGroup, setActiveGroup] = useState(0);
+  const [portfolioSymbols, setPortfolioSymbols] = useState<{ symbol: string; label: string }[]>([]);
 
   const fetchStock = useCallback(async (symbol: string) => {
     setLoading((prev) => ({ ...prev, [symbol]: true }));
@@ -44,8 +45,6 @@ export function StockComparisonTool() {
         ...prev,
         [symbol]: `Could not load data for ${symbol}`,
       }));
-      // Remove the symbol from selected if data fails
-      setSelectedSymbols((prev) => prev.filter((s) => s !== symbol));
     } finally {
       setLoading((prev) => ({ ...prev, [symbol]: false }));
     }
@@ -83,13 +82,37 @@ export function StockComparisonTool() {
     DEFAULT_SYMBOLS.forEach(addStock);
   }, [addStock]);
 
+  // Auto-load defaults on mount
+  useEffect(() => {
+    if (!initialized && selectedSymbols.length === 0) {
+      loadDefaults();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Read portfolio holdings from localStorage for suggestions
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(PORTFOLIO_STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setPortfolioSymbols(
+            parsed.map((h: { symbol: string }) => ({ symbol: h.symbol, label: h.symbol }))
+          );
+        }
+      }
+    } catch {
+      // Ignore parse errors
+    }
+  }, []);
+
   // Stocks that have loaded data
   const loadedStocks = selectedSymbols
     .filter((s) => stockData[s] != null)
     .map((s) => stockData[s]);
 
   const isAnyLoading = Object.values(loading).some(Boolean);
-  const hasErrors = Object.keys(errors).length > 0;
 
   return (
     <div className="space-y-10">
@@ -101,25 +124,18 @@ export function StockComparisonTool() {
           onRemove={removeStock}
           loading={loading}
           maxStocks={4}
+          errors={errors}
+          onRetry={fetchStock}
+          suggestedSymbols={portfolioSymbols}
         />
 
         {/* Actions row */}
         <div className="flex items-center justify-between flex-wrap gap-3">
-          {!initialized && selectedSymbols.length === 0 ? (
-            <button
-              onClick={loadDefaults}
-              className="flex items-center gap-2 text-sm text-[var(--color-primary)] hover:underline transition-colors"
-            >
-              <IconChartBar className="w-4 h-4" />
-              Try AAPL vs MSFT comparison
-            </button>
-          ) : (
-            <span className="text-sm text-[var(--text-tertiary)]">
-              {selectedSymbols.length === 0
-                ? "Search for stocks above to start comparing"
-                : `Comparing ${selectedSymbols.length} stock${selectedSymbols.length > 1 ? "s" : ""}`}
-            </span>
-          )}
+          <span className="text-sm text-[var(--text-tertiary)]">
+            {selectedSymbols.length === 0
+              ? "Search for stocks above to start comparing"
+              : `Comparing ${selectedSymbols.length} stock${selectedSymbols.length > 1 ? "s" : ""}`}
+          </span>
 
           {selectedSymbols.length > 0 && (
             <button
@@ -134,22 +150,6 @@ export function StockComparisonTool() {
           )}
         </div>
 
-        {/* Error messages */}
-        <AnimatePresence>
-          {hasErrors &&
-            Object.entries(errors).map(([sym, msg]) => (
-              <motion.div
-                key={sym}
-                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -8 }}
-                className="flex items-center gap-2 text-sm text-[var(--color-error)] bg-red-50 dark:bg-red-950/30 px-4 py-3 rounded-xl border border-red-200 dark:border-red-900"
-              >
-                <IconAlertCircle className="w-4 h-4 shrink-0" />
-                {msg}
-              </motion.div>
-            ))}
-        </AnimatePresence>
       </div>
 
       {/* Comparison cards grid */}
@@ -339,25 +339,6 @@ export function StockComparisonTool() {
         )}
       </AnimatePresence>
 
-      {/* Empty state */}
-      {selectedSymbols.length === 0 && !initialized && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="flex flex-col items-center justify-center py-20 text-center"
-        >
-          <div className="w-16 h-16 rounded-2xl bg-[var(--surface-secondary)] flex items-center justify-center mb-6">
-            <IconChartBar className="w-8 h-8 text-[var(--text-tertiary)]" />
-          </div>
-          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">
-            Compare stocks side by side
-          </h3>
-          <p className="text-[var(--text-secondary)] max-w-md text-sm leading-relaxed">
-            Search for up to 4 stocks to compare live prices, analyst ratings from major banks,
-            financial metrics, and more — all in one view.
-          </p>
-        </motion.div>
-      )}
     </div>
   );
 }

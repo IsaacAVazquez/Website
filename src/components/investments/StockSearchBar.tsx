@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { IconSearch, IconPlus, IconX, IconLoader2 } from "@tabler/icons-react";
+import { IconSearch, IconPlus, IconX, IconLoader2, IconAlertCircle, IconRefresh } from "@tabler/icons-react";
 
 interface StockSearchBarProps {
   selectedSymbols: string[];
@@ -10,6 +10,9 @@ interface StockSearchBarProps {
   onRemove: (symbol: string) => void;
   loading?: Record<string, boolean>;
   maxStocks?: number;
+  errors?: Record<string, string>;
+  onRetry?: (symbol: string) => void;
+  suggestedSymbols?: { symbol: string; label: string }[];
 }
 
 const POPULAR_STOCKS = [
@@ -37,6 +40,9 @@ export function StockSearchBar({
   onRemove,
   loading = {},
   maxStocks = 4,
+  errors = {},
+  onRetry,
+  suggestedSymbols = [],
 }: StockSearchBarProps) {
   const shouldReduceMotion = useReducedMotion();
   const [input, setInput] = useState("");
@@ -178,52 +184,93 @@ export function StockSearchBar({
       {selectedSymbols.length > 0 && (
         <div className="flex flex-wrap gap-2" role="list" aria-label="Selected stocks">
           <AnimatePresence>
-            {selectedSymbols.map((sym) => (
-              <motion.div
-                key={sym}
-                role="listitem"
-                layout
-                initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
-                transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 25 }}
-                className="flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--surface-elevated)] text-sm font-semibold text-[var(--color-primary)]"
-              >
-                {loading[sym] ? (
-                  <IconLoader2 className="w-3.5 h-3.5 animate-spin" />
-                ) : (
-                  <span className="w-2 h-2 rounded-full bg-[var(--color-primary)]" aria-hidden />
-                )}
-                <span className="font-mono tracking-wide">{sym}</span>
-                <button
-                  onClick={() => onRemove(sym)}
-                  aria-label={`Remove ${sym}`}
-                  className="w-5 h-5 rounded-full flex items-center justify-center hover:bg-[var(--border-primary)] transition-colors"
+            {selectedSymbols.map((sym) => {
+              const hasError = !!errors[sym];
+              return (
+                <motion.div
+                  key={sym}
+                  role="listitem"
+                  layout
+                  initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
+                  transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 25 }}
+                  className={[
+                    "flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full border text-sm font-semibold",
+                    hasError
+                      ? "border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-950/30 text-[var(--color-error)]"
+                      : "border-[var(--border-accent)] bg-[var(--surface-elevated)] text-[var(--color-primary)]",
+                  ].join(" ")}
                 >
-                  <IconX className="w-3 h-3 text-[var(--text-secondary)]" />
-                </button>
-              </motion.div>
-            ))}
+                  {loading[sym] ? (
+                    <IconLoader2 className="w-3.5 h-3.5 animate-spin" />
+                  ) : hasError ? (
+                    <IconAlertCircle className="w-3.5 h-3.5" />
+                  ) : (
+                    <span className="w-2 h-2 rounded-full bg-[var(--color-primary)]" aria-hidden />
+                  )}
+                  <span className="font-mono tracking-wide">{sym}</span>
+                  {hasError && onRetry && (
+                    <button
+                      onClick={() => onRetry(sym)}
+                      aria-label={`Retry ${sym}`}
+                      className="w-5 h-5 rounded-full flex items-center justify-center hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors"
+                    >
+                      <IconRefresh className="w-3 h-3" />
+                    </button>
+                  )}
+                  <button
+                    onClick={() => onRemove(sym)}
+                    aria-label={`Remove ${sym}`}
+                    className="w-5 h-5 rounded-full flex items-center justify-center hover:bg-[var(--border-primary)] transition-colors"
+                  >
+                    <IconX className="w-3 h-3 text-[var(--text-secondary)]" />
+                  </button>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </div>
       )}
 
-      {/* Quick-add chips when nothing selected */}
+      {/* Portfolio suggestions + Quick-add chips when nothing selected */}
       {selectedSymbols.length === 0 && (
-        <div className="flex flex-col gap-2">
-          <p className="text-xs text-[var(--text-tertiary)] uppercase tracking-widest font-semibold">
-            Quick add
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {POPULAR_STOCKS.slice(0, 8).map((stock) => (
-              <button
-                key={stock.symbol}
-                onClick={() => handleSuggestionClick(stock.symbol)}
-                className="px-3 py-1.5 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-xs font-mono font-semibold text-[var(--text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:bg-[var(--surface-elevated)] transition-all duration-150"
-              >
-                {stock.symbol}
-              </button>
-            ))}
+        <div className="flex flex-col gap-4">
+          {suggestedSymbols.length > 0 && (
+            <div className="flex flex-col gap-2">
+              <p className="text-xs text-[var(--text-tertiary)] uppercase tracking-widest font-semibold">
+                From your portfolio
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {suggestedSymbols
+                  .filter(s => !selectedSymbols.includes(s.symbol))
+                  .map((stock) => (
+                    <button
+                      key={stock.symbol}
+                      onClick={() => handleSuggestionClick(stock.symbol)}
+                      className="px-3 py-1.5 rounded-lg border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/5 text-xs font-mono font-semibold text-[var(--color-primary)] hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-all duration-150"
+                    >
+                      {stock.symbol}
+                    </button>
+                  ))}
+              </div>
+            </div>
+          )}
+          <div className="flex flex-col gap-2">
+            <p className="text-xs text-[var(--text-tertiary)] uppercase tracking-widest font-semibold">
+              Quick add
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {POPULAR_STOCKS.slice(0, 8).map((stock) => (
+                <button
+                  key={stock.symbol}
+                  onClick={() => handleSuggestionClick(stock.symbol)}
+                  className="px-3 py-1.5 rounded-lg border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-xs font-mono font-semibold text-[var(--text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:bg-[var(--surface-elevated)] transition-all duration-150"
+                >
+                  {stock.symbol}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
