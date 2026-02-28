@@ -54,8 +54,8 @@ export function useInvestments() {
     }
   }, []);
 
-  // Fetch stock quotes
-  const fetchQuotes = useCallback(async () => {
+  // Fetch stock quotes with a given AbortSignal for cancellation
+  const fetchQuotes = useCallback(async (signal?: AbortSignal) => {
     if (holdings.length === 0) {
       setQuotes([]);
       setQuotesReady(true);
@@ -69,11 +69,18 @@ export function useInvestments() {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 15000);
 
+    // If a parent signal aborts, propagate to our controller
+    const onParentAbort = () => controller.abort();
+    signal?.addEventListener("abort", onParentAbort);
+
     try {
       const symbols = holdings.map(h => h.symbol).join(",");
       const response = await fetch(`/api/stocks?symbols=${symbols}`, {
         signal: controller.signal,
       });
+
+      // If the caller cancelled, don't update state
+      if (signal?.aborted) return;
 
       const data = await response.json();
 
@@ -89,6 +96,9 @@ export function useInvestments() {
         setQuotes(data.quotes || []);
       }
     } catch (err) {
+      // If the caller cancelled, don't update state with stale errors
+      if (signal?.aborted) return;
+
       console.error("Failed to fetch quotes:", err);
       if (err instanceof DOMException && err.name === "AbortError") {
         setError("Request timed out — try refreshing");
@@ -97,17 +107,21 @@ export function useInvestments() {
       }
     } finally {
       clearTimeout(timeoutId);
-      setLoading(false);
-      setQuotesReady(true);
-      setLastUpdated(new Date());
+      signal?.removeEventListener("abort", onParentAbort);
+      if (!signal?.aborted) {
+        setLoading(false);
+        setQuotesReady(true);
+        setLastUpdated(new Date());
+      }
     }
   }, [holdings]);
 
-  // Auto-fetch quotes when holdings change
+  // Auto-fetch quotes when holdings change; abort stale requests on re-run
   useEffect(() => {
-    if (initialized) {
-      fetchQuotes();
-    }
+    if (!initialized) return;
+    const controller = new AbortController();
+    fetchQuotes(controller.signal);
+    return () => controller.abort();
   }, [initialized, fetchQuotes]);
 
   // Add holding (rejects duplicates)

@@ -3,7 +3,16 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { StockCard } from '../StockCard'
 import { EnhancedHolding } from '@/types/investment'
 
-// Framer Motion is not used in StockCard, but WarmCard/ModernButton are pure components
+// Mock Framer Motion to bypass AnimatePresence wait mode
+jest.mock('framer-motion', () => ({
+  motion: {
+    div: React.forwardRef(({ children, ...props }: React.HTMLAttributes<HTMLDivElement>, ref: React.Ref<HTMLDivElement>) => (
+      <div ref={ref} {...props}>{children}</div>
+    )),
+  },
+  AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  useReducedMotion: () => true,
+}))
 
 const baseHolding: EnhancedHolding = {
   symbol: 'AAPL',
@@ -16,6 +25,7 @@ const baseHolding: EnhancedHolding = {
   gainLossPercent: 20,
   dayChange: 50,
   dayChangePercent: 2.85,
+  allocationPercent: 45.5,
   hasError: false,
 }
 
@@ -75,10 +85,14 @@ describe('StockCard', () => {
     expect(screen.getByText('$150.00')).toBeInTheDocument()
   })
 
-  it('calls onRemove with correct symbol when trash icon clicked', () => {
+  it('calls onRemove after confirming deletion', () => {
     render(<StockCard holding={baseHolding} onRemove={mockOnRemove} />)
-    const removeBtn = screen.getByLabelText('Remove AAPL from portfolio')
-    fireEvent.click(removeBtn)
+    // Step 1: Click the trash icon to reveal confirm dialog
+    const trashBtn = screen.getByLabelText('Remove AAPL from portfolio')
+    fireEvent.click(trashBtn)
+    // Step 2: Click the "Remove" confirm button
+    const confirmBtn = screen.getByText('Remove')
+    fireEvent.click(confirmBtn)
     expect(mockOnRemove).toHaveBeenCalledWith('AAPL')
     expect(mockOnRemove).toHaveBeenCalledTimes(1)
   })

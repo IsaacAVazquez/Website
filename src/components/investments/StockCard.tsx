@@ -54,7 +54,7 @@ export function StockCard({ holding, onRemove, loading = false }: StockCardProps
             </h3>
             {!hasError && (
               <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
-                {holding.allocationPercent.toFixed(1)}%
+                {(holding.allocationPercent ?? 0).toFixed(1)}%
               </span>
             )}
             {hasError && (
