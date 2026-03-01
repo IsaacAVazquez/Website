@@ -66,14 +66,6 @@ export function generateLocalSitemapEntries(): LocalSitemapEntry[] {
       });
     });
 
-    // Location testimonials/reviews page
-    entries.push({
-      url: `${baseUrl}/testimonials/${location.id}`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-      location
-    });
   });
 
   return entries;
@@ -113,7 +105,6 @@ Allow: /
 # Local SEO pages
 Allow: /services/*
 Allow: /areas/*
-Allow: /testimonials/*
 
 # Sitemaps
 Sitemap: ${baseUrl}/sitemap.xml

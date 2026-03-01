@@ -7,17 +7,12 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /_next/
 Disallow: /node_modules/
-Disallow: /budgeting
-Disallow: /investments
-
 # Allow important pages for SEO
 Allow: /
 Allow: /about
-Allow: /projects
+Allow: /portfolio
 Allow: /resume
 Allow: /contact
-Allow: /consulting
-Allow: /blog/
 Allow: /writing/
 Allow: /fantasy-football/
 

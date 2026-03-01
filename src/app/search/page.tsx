@@ -56,7 +56,7 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
               <ul className="space-y-1 text-sm text-slate-600 dark:text-slate-300">
                 <li>• 20+ product & QA articles</li>
                 <li>• Live fantasy football tools</li>
-                <li>• Contact, resume, FAQs, and more</li>
+                <li>• Contact, resume, and more</li>
               </ul>
             </div>
           </div>

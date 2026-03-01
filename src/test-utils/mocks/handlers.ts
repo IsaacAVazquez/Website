@@ -55,12 +55,4 @@ export const handlers = [
     return HttpResponse.json({ success: true })
   }),
 
-  // Newsletter subscription
-  http.post('/api/newsletter/subscribe', async ({ request }) => {
-    const body = await request.json()
-    return HttpResponse.json({
-      success: true,
-      email: body.email,
-    })
-  }),
 ]

@@ -433,7 +433,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tools: ["Next.js", "TypeScript", "Yahoo Finance API", "React", "Tailwind CSS"],
     metrics: "Live data · 30+ metrics per stock · Analyst consensus ratings",
     github: "https://github.com/IsaacAVazquez",
-    link: "/investments",
+    link: null,
 
     overview: {
       summary:

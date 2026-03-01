@@ -11,8 +11,6 @@ module.exports = {
     '/_next/*',
     '/404',
     '/admin/*',
-    '/budgeting',
-    '/investments',
   ],
   
   // Additional paths configuration
@@ -56,24 +54,9 @@ module.exports = {
       lastmod: new Date().toISOString(),
     })
 
-    // Consulting/Services page if exists
-    result.push({
-      loc: '/consulting',
-      changefreq: 'monthly',
-      priority: 0.8,
-      lastmod: new Date().toISOString(),
-    })
-
-    // Writing/Blog landing page
+    // Writing landing page
     result.push({
       loc: '/writing',
-      changefreq: 'weekly',
-      priority: 0.85,
-      lastmod: new Date().toISOString(),
-    })
-
-    result.push({
-      loc: '/blog',
       changefreq: 'weekly',
       priority: 0.85,
       lastmod: new Date().toISOString(),
@@ -105,31 +88,9 @@ module.exports = {
       lastmod: new Date().toISOString(),
     })
 
-    // Content pages
-    result.push({
-      loc: '/testimonials',
-      changefreq: 'monthly',
-      priority: 0.7,
-      lastmod: new Date().toISOString(),
-    })
-
-    result.push({
-      loc: '/faq',
-      changefreq: 'monthly',
-      priority: 0.6,
-      lastmod: new Date().toISOString(),
-    })
-
     result.push({
       loc: '/accessibility',
       changefreq: 'yearly',
-      priority: 0.5,
-      lastmod: new Date().toISOString(),
-    })
-
-    result.push({
-      loc: '/notes',
-      changefreq: 'weekly',
       priority: 0.5,
       lastmod: new Date().toISOString(),
     })

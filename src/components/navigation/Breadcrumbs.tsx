@@ -59,13 +59,11 @@ export function Breadcrumbs({
   const generateLabel = (segment: string, fullPath: string): string => {
     const labelMap: Record<string, string> = {
       'about': 'About',
-      'projects': 'Projects',
-      'blog': 'Blog',
+      'portfolio': 'Portfolio',
+      'writing': 'Writing',
       'resume': 'Resume',
       'contact': 'Contact',
       'search': 'Search',
-      'faq': 'FAQ',
-      'testimonials': 'Testimonials',
       'fantasy-football': 'Fantasy Football'
     };
 

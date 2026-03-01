@@ -392,7 +392,7 @@ const projects: Project[] = [
     icon: IconChartLine,
     metrics: "Live data, 30+ metrics per stock, analyst consensus ratings",
     github: "https://github.com/IsaacAVazquez",
-    link: "/investments",
+    link: null,
     detailedMetrics: [
       {
         label: "Data Source",

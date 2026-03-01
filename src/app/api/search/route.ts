@@ -19,22 +19,13 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
   // Add static pages
   const staticPages = [
     {
-      id: 'page-projects',
-      title: 'Projects & Portfolio',
-      excerpt: 'Explore my portfolio of QA engineering projects, fantasy football analytics tools, and software development work.',
-      content: 'Projects portfolio QA engineering fantasy football analytics software development testing automation data visualization',
-      url: '/projects',
+      id: 'page-portfolio',
+      title: 'Portfolio & Case Studies',
+      excerpt: 'Explore my portfolio of product management case studies, fantasy football analytics tools, and software development work.',
+      content: 'Portfolio case studies product management QA engineering fantasy football analytics software development testing automation data visualization',
+      url: '/portfolio',
       type: 'page' as const,
       category: 'Projects'
-    },
-    {
-      id: 'page-consulting',
-      title: 'Product Management Consulting & Advisory',
-      excerpt: 'Product management consulting and advisory support for SaaS and consumer tech teams that need strategy, experimentation, and delivery leadership.',
-      content: 'Product management consulting product strategy discovery experimentation analytics SaaS consumer technology quality engineering advisory',
-      url: '/consulting',
-      type: 'page' as const,
-      category: 'Product Management'
     },
     {
       id: 'page-resume',
@@ -55,13 +46,13 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       category: 'Contact'
     },
     {
-      id: 'page-faq',
-      title: 'Frequently Asked Questions',
-      excerpt: 'Common questions about QA engineering services, software testing, fantasy football analytics, and working together.',
-      content: 'FAQ questions QA engineering software testing fantasy football analytics services consulting',
-      url: '/faq',
+      id: 'page-writing',
+      title: 'Writing',
+      excerpt: 'Articles and insights on product management, QA engineering, and technical leadership.',
+      content: 'Writing blog articles product management QA engineering technical leadership software development',
+      url: '/writing',
       type: 'page' as const,
-      category: 'FAQ'
+      category: 'Writing'
     },
     {
       id: 'project-fantasy-football',
