@@ -67,3 +67,6 @@ scripts/*backup*
 
 # Large data files (script-only usage)
 scripts/player-matching-results.json
+
+# Git worktrees
+.worktrees/
