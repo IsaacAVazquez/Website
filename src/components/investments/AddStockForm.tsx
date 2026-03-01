@@ -1,0 +1,155 @@
+"use client";
+
+import React, { useState } from "react";
+import { ModernButton } from "@/components/ui/ModernButton";
+import { WarmCard } from "@/components/ui/WarmCard";
+import { IconPlus, IconX } from "@tabler/icons-react";
+import type { PortfolioHolding } from "@/types/investment";
+
+interface Props {
+  onAdd: (holding: PortfolioHolding) => void;
+}
+
+const SYMBOL_RE = /^[A-Z0-9.\-]{1,10}$/;
+
+function Field({
+  label,
+  id,
+  ...props
+}: { label: string; id: string } & React.InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <label htmlFor={id} className="block">
+      <span className="block text-xs font-medium text-[var(--text-secondary)] mb-1">{label}</span>
+      <input
+        id={id}
+        className="w-full px-3 py-2 text-sm rounded-lg border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition"
+        {...props}
+      />
+    </label>
+  );
+}
+
+export function AddStockForm({ onAdd }: Props) {
+  const [open, setOpen] = useState(false);
+  const [symbol, setSymbol] = useState("");
+  const [shares, setShares] = useState("");
+  const [cost, setCost] = useState("");
+  const [date, setDate] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  function validate(): string | null {
+    const sym = symbol.trim().toUpperCase();
+    if (!sym) return "Symbol is required.";
+    if (!SYMBOL_RE.test(sym)) return "Invalid symbol format (e.g. AAPL, BRK-B).";
+    const sh = parseFloat(shares);
+    if (!shares || isNaN(sh) || sh <= 0) return "Shares must be a positive number.";
+    const c = parseFloat(cost);
+    if (!cost || isNaN(c) || c <= 0) return "Average cost must be a positive number.";
+    return null;
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const err = validate();
+    if (err) { setError(err); return; }
+
+    onAdd({
+      symbol: symbol.trim().toUpperCase(),
+      shares: parseFloat(shares),
+      averageCost: parseFloat(cost),
+      ...(date ? { purchaseDate: date } : {}),
+    });
+
+    setSymbol("");
+    setShares("");
+    setCost("");
+    setDate("");
+    setError(null);
+    setOpen(false);
+  }
+
+  if (!open) {
+    return (
+      <ModernButton variant="accent" size="sm" onClick={() => setOpen(true)} ariaLabel="Add stock">
+        <IconPlus size={16} /> Add Stock
+      </ModernButton>
+    );
+  }
+
+  return (
+    <WarmCard padding="sm" ariaLabel="Add stock form">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-sm font-semibold text-[var(--text-primary)]">Add Position</h3>
+        <button
+          onClick={() => { setOpen(false); setError(null); }}
+          className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
+          aria-label="Close add stock form"
+        >
+          <IconX size={18} />
+        </button>
+      </div>
+
+      <form onSubmit={handleSubmit} noValidate>
+        <div className="grid grid-cols-2 gap-3 mb-3">
+          <Field
+            label="Symbol"
+            id="add-symbol"
+            value={symbol}
+            onChange={(e) => { setSymbol(e.target.value.toUpperCase()); setError(null); }}
+            placeholder="AAPL"
+            autoFocus
+            autoComplete="off"
+          />
+          <Field
+            label="Shares"
+            id="add-shares"
+            type="number"
+            value={shares}
+            onChange={(e) => { setShares(e.target.value); setError(null); }}
+            placeholder="10"
+            min="0"
+            step="any"
+          />
+          <Field
+            label="Avg Cost ($)"
+            id="add-cost"
+            type="number"
+            value={cost}
+            onChange={(e) => { setCost(e.target.value); setError(null); }}
+            placeholder="150.00"
+            min="0"
+            step="any"
+          />
+          <Field
+            label="Purchase Date (optional)"
+            id="add-date"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </div>
+
+        {error && (
+          <p role="alert" className="text-xs text-[var(--color-error)] mb-3">
+            {error}
+          </p>
+        )}
+
+        <div className="flex gap-2">
+          <ModernButton type="submit" variant="accent" size="sm" ariaLabel="Add position">
+            <IconPlus size={14} /> Add Position
+          </ModernButton>
+          <ModernButton
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() => { setOpen(false); setError(null); }}
+            ariaLabel="Cancel"
+          >
+            Cancel
+          </ModernButton>
+        </div>
+      </form>
+    </WarmCard>
+  );
+}
