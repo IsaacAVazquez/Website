@@ -1,0 +1,1095 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "META",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 28822000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 31999000000.0,
+      "prev_year_revenue": 28822000000.0,
+      "yoy_growth": 0.1102
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 34146000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 40111000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 36455000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 39071000000.0,
+      "prev_year_revenue": 31999000000.0,
+      "yoy_growth": 0.221
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 40589000000.0,
+      "prev_year_revenue": 34146000000.0,
+      "yoy_growth": 0.1887
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 48385000000.0,
+      "prev_year_revenue": 40111000000.0,
+      "yoy_growth": 0.2063
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 42314000000.0,
+      "prev_year_revenue": 36455000000.0,
+      "yoy_growth": 0.1607
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 47516000000.0,
+      "prev_year_revenue": 39071000000.0,
+      "yoy_growth": 0.2161
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 51242000000.0,
+      "prev_year_revenue": 40589000000.0,
+      "yoy_growth": 0.2625
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 59893000000.0,
+      "prev_year_revenue": 48385000000.0,
+      "yoy_growth": 0.2378
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "META",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 85965000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 117929000000.0,
+      "prev_year_revenue": 85965000000.0,
+      "yoy_growth": 0.3718
+    },
+    {
+      "symbol": "META",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 116609000000.0,
+      "prev_year_revenue": 117929000000.0,
+      "yoy_growth": -0.0112
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 134902000000.0,
+      "prev_year_revenue": 116609000000.0,
+      "yoy_growth": 0.1569
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 164501000000.0,
+      "prev_year_revenue": 134902000000.0,
+      "yoy_growth": 0.2194
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 200966000000.0,
+      "prev_year_revenue": 164501000000.0,
+      "yoy_growth": 0.2217
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "META",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 8358000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 9392000000.0,
+      "prev_year_operating_income": 8358000000.0,
+      "yoy_growth": 0.1237
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 13748000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 16384000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 13818000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 14847000000.0,
+      "prev_year_operating_income": 9392000000.0,
+      "yoy_growth": 0.5808
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 17350000000.0,
+      "prev_year_operating_income": 13748000000.0,
+      "yoy_growth": 0.262
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 23364000000.0,
+      "prev_year_operating_income": 16384000000.0,
+      "yoy_growth": 0.426
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 17555000000.0,
+      "prev_year_operating_income": 13818000000.0,
+      "yoy_growth": 0.2704
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 20441000000.0,
+      "prev_year_operating_income": 14847000000.0,
+      "yoy_growth": 0.3768
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 20535000000.0,
+      "prev_year_operating_income": 17350000000.0,
+      "yoy_growth": 0.1836
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 24745000000.0,
+      "prev_year_operating_income": 23364000000.0,
+      "yoy_growth": 0.0591
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "META",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 32671000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 46753000000.0,
+      "prev_year_operating_income": 32671000000.0,
+      "yoy_growth": 0.431
+    },
+    {
+      "symbol": "META",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 28944000000.0,
+      "prev_year_operating_income": 46753000000.0,
+      "yoy_growth": -0.3809
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 46751000000.0,
+      "prev_year_operating_income": 28944000000.0,
+      "yoy_growth": 0.6152
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 69380000000.0,
+      "prev_year_operating_income": 46751000000.0,
+      "yoy_growth": 0.484
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 83276000000.0,
+      "prev_year_operating_income": 69380000000.0,
+      "yoy_growth": 0.2003
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "META",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 12032000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 17018000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 20115000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 17684000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 18871000000.0,
+      "prev_year_ebitda": 12032000000.0,
+      "yoy_growth": 0.5684
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 22057000000.0,
+      "prev_year_ebitda": 17018000000.0,
+      "yoy_growth": 0.2961
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 28263000000.0,
+      "prev_year_ebitda": 20115000000.0,
+      "yoy_growth": 0.4051
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 22522000000.0,
+      "prev_year_ebitda": 17684000000.0,
+      "yoy_growth": 0.2736
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 25117000000.0,
+      "prev_year_ebitda": 18871000000.0,
+      "yoy_growth": 0.331
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 26853000000.0,
+      "prev_year_ebitda": 22057000000.0,
+      "yoy_growth": 0.2174
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 31221000000.0,
+      "prev_year_ebitda": 28263000000.0,
+      "yoy_growth": 0.1047
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "META",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 39533000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 55274000000.0,
+      "prev_year_ebitda": 39533000000.0,
+      "yoy_growth": 0.3982
+    },
+    {
+      "symbol": "META",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 37690000000.0,
+      "prev_year_ebitda": 55274000000.0,
+      "yoy_growth": -0.3181
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 59052000000.0,
+      "prev_year_ebitda": 37690000000.0,
+      "yoy_growth": 0.5668
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 86876000000.0,
+      "prev_year_ebitda": 59052000000.0,
+      "yoy_growth": 0.4712
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 105713000000.0,
+      "prev_year_ebitda": 86876000000.0,
+      "yoy_growth": 0.2168
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "META",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 6687000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 7788000000.0,
+      "prev_year_net_income_common_stockholders": 6687000000.0,
+      "yoy_growth": 0.1646
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 11583000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 14017000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 12369000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 13465000000.0,
+      "prev_year_net_income_common_stockholders": 7788000000.0,
+      "yoy_growth": 0.7289
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 15688000000.0,
+      "prev_year_net_income_common_stockholders": 11583000000.0,
+      "yoy_growth": 0.3544
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 20838000000.0,
+      "prev_year_net_income_common_stockholders": 14017000000.0,
+      "yoy_growth": 0.4866
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 16644000000.0,
+      "prev_year_net_income_common_stockholders": 12369000000.0,
+      "yoy_growth": 0.3456
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 18337000000.0,
+      "prev_year_net_income_common_stockholders": 13465000000.0,
+      "yoy_growth": 0.3618
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2709000000.0,
+      "prev_year_net_income_common_stockholders": 15688000000.0,
+      "yoy_growth": -0.8273
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 22768000000.0,
+      "prev_year_net_income_common_stockholders": 20838000000.0,
+      "yoy_growth": 0.0926
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "META",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 29146000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 39370000000.0,
+      "prev_year_net_income_common_stockholders": 29146000000.0,
+      "yoy_growth": 0.3508
+    },
+    {
+      "symbol": "META",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 23200000000.0,
+      "prev_year_net_income_common_stockholders": 39370000000.0,
+      "yoy_growth": -0.4107
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 39098000000.0,
+      "prev_year_net_income_common_stockholders": 23200000000.0,
+      "yoy_growth": 0.6853
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 62360000000.0,
+      "prev_year_net_income_common_stockholders": 39098000000.0,
+      "yoy_growth": 0.595
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 60458000000.0,
+      "prev_year_net_income_common_stockholders": 62360000000.0,
+      "yoy_growth": -0.0305
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "META",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 4625000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 11074000000.0,
+      "prev_year_free_cash_flow": 4625000000.0,
+      "yoy_growth": 1.3944
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 13906000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 11739000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 12846000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 11197000000.0,
+      "prev_year_free_cash_flow": 11074000000.0,
+      "yoy_growth": 0.0111
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 16466000000.0,
+      "prev_year_free_cash_flow": 13906000000.0,
+      "yoy_growth": 0.1841
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 13563000000.0,
+      "prev_year_free_cash_flow": 11739000000.0,
+      "yoy_growth": 0.1554
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 11085000000.0,
+      "prev_year_free_cash_flow": 12846000000.0,
+      "yoy_growth": -0.1371
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 9023000000.0,
+      "prev_year_free_cash_flow": 11197000000.0,
+      "yoy_growth": -0.1942
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 11170000000.0,
+      "prev_year_free_cash_flow": 16466000000.0,
+      "yoy_growth": -0.3216
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 14831000000.0,
+      "prev_year_free_cash_flow": 13563000000.0,
+      "yoy_growth": 0.0935
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "META",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 23584000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 38993000000.0,
+      "prev_year_free_cash_flow": 23584000000.0,
+      "yoy_growth": 0.6534
+    },
+    {
+      "symbol": "META",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 19289000000.0,
+      "prev_year_free_cash_flow": 38993000000.0,
+      "yoy_growth": -0.5053
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 44068000000.0,
+      "prev_year_free_cash_flow": 19289000000.0,
+      "yoy_growth": 1.2846
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 54072000000.0,
+      "prev_year_free_cash_flow": 44068000000.0,
+      "yoy_growth": 0.227
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 46109000000.0,
+      "prev_year_free_cash_flow": 54072000000.0,
+      "yoy_growth": -0.1473
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "META",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.12,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "META",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.04,
+      "yoy_growth": 0.75
+    },
+    {
+      "symbol": "META",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.8333
+    },
+    {
+      "symbol": "META",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.8333
+    },
+    {
+      "symbol": "META",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.09,
+      "prev_year_eps": 0.12,
+      "yoy_growth": -0.25
+    },
+    {
+      "symbol": "META",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.07,
+      "yoy_growth": -0.1429
+    },
+    {
+      "symbol": "META",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": -0.08,
+      "prev_year_eps": 0.11,
+      "yoy_growth": -1.7273
+    },
+    {
+      "symbol": "META",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": -0.02,
+      "prev_year_eps": 0.11,
+      "yoy_growth": -1.1818
+    },
+    {
+      "symbol": "META",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.09,
+      "yoy_growth": -0.6667
+    },
+    {
+      "symbol": "META",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.09,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "META",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": -0.08,
+      "yoy_growth": 2.625
+    },
+    {
+      "symbol": "META",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.17,
+      "prev_year_eps": -0.02,
+      "yoy_growth": 9.5
+    },
+    {
+      "symbol": "META",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 5.6667
+    },
+    {
+      "symbol": "META",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.09,
+      "yoy_growth": 1.7778
+    },
+    {
+      "symbol": "META",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.13,
+      "yoy_growth": 1.3077
+    },
+    {
+      "symbol": "META",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.17,
+      "yoy_growth": 0.7647
+    },
+    {
+      "symbol": "META",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.2,
+      "yoy_growth": 0.25
+    },
+    {
+      "symbol": "META",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.18,
+      "prev_year_eps": 0.25,
+      "yoy_growth": -0.28
+    },
+    {
+      "symbol": "META",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.3,
+      "yoy_growth": -0.1667
+    },
+    {
+      "symbol": "META",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.31,
+      "prev_year_eps": 0.3,
+      "yoy_growth": 0.0333
+    },
+    {
+      "symbol": "META",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.54,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 1.16
+    },
+    {
+      "symbol": "META",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.6,
+      "prev_year_eps": 0.18,
+      "yoy_growth": 2.3333
+    },
+    {
+      "symbol": "META",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.78,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 2.12
+    },
+    {
+      "symbol": "META",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.9,
+      "prev_year_eps": 0.31,
+      "yoy_growth": 1.9032
+    },
+    {
+      "symbol": "META",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 1.21,
+      "prev_year_eps": 0.54,
+      "yoy_growth": 1.2407
+    },
+    {
+      "symbol": "META",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 1.04,
+      "prev_year_eps": 0.6,
+      "yoy_growth": 0.7333
+    },
+    {
+      "symbol": "META",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 1.32,
+      "prev_year_eps": 0.78,
+      "yoy_growth": 0.6923
+    },
+    {
+      "symbol": "META",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 1.59,
+      "prev_year_eps": 0.9,
+      "yoy_growth": 0.7667
+    },
+    {
+      "symbol": "META",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 1.45,
+      "prev_year_eps": 1.21,
+      "yoy_growth": 0.1983
+    },
+    {
+      "symbol": "META",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 1.69,
+      "prev_year_eps": 1.04,
+      "yoy_growth": 0.625
+    },
+    {
+      "symbol": "META",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 1.74,
+      "prev_year_eps": 1.32,
+      "yoy_growth": 0.3182
+    },
+    {
+      "symbol": "META",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 1.76,
+      "prev_year_eps": 1.59,
+      "yoy_growth": 0.1069
+    },
+    {
+      "symbol": "META",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 2.38,
+      "prev_year_eps": 1.45,
+      "yoy_growth": 0.6414
+    },
+    {
+      "symbol": "META",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.85,
+      "prev_year_eps": 1.69,
+      "yoy_growth": -0.497
+    },
+    {
+      "symbol": "META",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.91,
+      "prev_year_eps": 1.74,
+      "yoy_growth": -0.477
+    },
+    {
+      "symbol": "META",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 2.12,
+      "prev_year_eps": 1.76,
+      "yoy_growth": 0.2045
+    },
+    {
+      "symbol": "META",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 2.56,
+      "prev_year_eps": 2.38,
+      "yoy_growth": 0.0756
+    },
+    {
+      "symbol": "META",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 1.71,
+      "prev_year_eps": 0.85,
+      "yoy_growth": 1.0118
+    },
+    {
+      "symbol": "META",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 1.8,
+      "prev_year_eps": 0.91,
+      "yoy_growth": 0.978
+    },
+    {
+      "symbol": "META",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 2.71,
+      "prev_year_eps": 2.12,
+      "yoy_growth": 0.2783
+    },
+    {
+      "symbol": "META",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 3.88,
+      "prev_year_eps": 2.56,
+      "yoy_growth": 0.5156
+    },
+    {
+      "symbol": "META",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 3.3,
+      "prev_year_eps": 1.71,
+      "yoy_growth": 0.9298
+    },
+    {
+      "symbol": "META",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 3.61,
+      "prev_year_eps": 1.8,
+      "yoy_growth": 1.0056
+    },
+    {
+      "symbol": "META",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 3.22,
+      "prev_year_eps": 2.71,
+      "yoy_growth": 0.1882
+    },
+    {
+      "symbol": "META",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 3.67,
+      "prev_year_eps": 3.88,
+      "yoy_growth": -0.0541
+    },
+    {
+      "symbol": "META",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 2.72,
+      "prev_year_eps": 3.3,
+      "yoy_growth": -0.1758
+    },
+    {
+      "symbol": "META",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 2.46,
+      "prev_year_eps": 3.61,
+      "yoy_growth": -0.3186
+    },
+    {
+      "symbol": "META",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.64,
+      "prev_year_eps": 3.22,
+      "yoy_growth": -0.4907
+    },
+    {
+      "symbol": "META",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 1.76,
+      "prev_year_eps": 3.67,
+      "yoy_growth": -0.5204
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 2.2,
+      "prev_year_eps": 2.72,
+      "yoy_growth": -0.1912
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 2.98,
+      "prev_year_eps": 2.46,
+      "yoy_growth": 0.2114
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 4.39,
+      "prev_year_eps": 1.64,
+      "yoy_growth": 1.6768
+    },
+    {
+      "symbol": "META",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 5.33,
+      "prev_year_eps": 1.76,
+      "yoy_growth": 2.0284
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 4.71,
+      "prev_year_eps": 2.2,
+      "yoy_growth": 1.1409
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 5.16,
+      "prev_year_eps": 2.98,
+      "yoy_growth": 0.7315
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 6.03,
+      "prev_year_eps": 4.39,
+      "yoy_growth": 0.3736
+    },
+    {
+      "symbol": "META",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 8.02,
+      "prev_year_eps": 5.33,
+      "yoy_growth": 0.5047
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 6.43,
+      "prev_year_eps": 4.71,
+      "yoy_growth": 0.3652
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 7.14,
+      "prev_year_eps": 5.16,
+      "yoy_growth": 0.3837
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 1.05,
+      "prev_year_eps": 6.03,
+      "yoy_growth": -0.8259
+    },
+    {
+      "symbol": "META",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 8.88,
+      "prev_year_eps": 8.02,
+      "yoy_growth": 0.1072
+    }
+  ]
+}

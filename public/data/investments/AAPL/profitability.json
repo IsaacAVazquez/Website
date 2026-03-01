@@ -1,0 +1,453 @@
+{
+  "roe": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 22956000000.0,
+      "beginning_stockholders_equity": 60274000000.0,
+      "ending_stockholders_equity": 62146000000.0,
+      "avg_equity": 61210000000.0,
+      "roe": 0.375
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 33916000000.0,
+      "beginning_stockholders_equity": 62146000000.0,
+      "ending_stockholders_equity": 74100000000.0,
+      "avg_equity": 68123000000.0,
+      "roe": 0.4979
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 23636000000.0,
+      "beginning_stockholders_equity": 74100000000.0,
+      "ending_stockholders_equity": 74194000000.0,
+      "avg_equity": 74147000000.0,
+      "roe": 0.3188
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 21448000000.0,
+      "beginning_stockholders_equity": 74194000000.0,
+      "ending_stockholders_equity": 66708000000.0,
+      "avg_equity": 70451000000.0,
+      "roe": 0.3044
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 14736000000.0,
+      "beginning_stockholders_equity": 66708000000.0,
+      "ending_stockholders_equity": 56950000000.0,
+      "avg_equity": 61829000000.0,
+      "roe": 0.2383
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 36330000000.0,
+      "beginning_stockholders_equity": 56950000000.0,
+      "ending_stockholders_equity": 66758000000.0,
+      "avg_equity": 61854000000.0,
+      "roe": 0.5874
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 24780000000.0,
+      "beginning_stockholders_equity": 66758000000.0,
+      "ending_stockholders_equity": 66796000000.0,
+      "avg_equity": 66777000000.0,
+      "roe": 0.3711
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 23434000000.0,
+      "beginning_stockholders_equity": 66796000000.0,
+      "ending_stockholders_equity": 65830000000.0,
+      "avg_equity": 66313000000.0,
+      "roe": 0.3534
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 27466000000.0,
+      "beginning_stockholders_equity": 65830000000.0,
+      "ending_stockholders_equity": 73733000000.0,
+      "avg_equity": 69781500000.0,
+      "roe": 0.3936
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 42097000000.0,
+      "beginning_stockholders_equity": 73733000000.0,
+      "ending_stockholders_equity": 88190000000.0,
+      "avg_equity": 80961500000.0,
+      "roe": 0.52
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 22956000000.0,
+      "beginning_total_assets": 335038000000.0,
+      "ending_total_assets": 352583000000.0,
+      "avg_assets": 343810500000.0,
+      "roa": 0.0668
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 33916000000.0,
+      "beginning_total_assets": 352583000000.0,
+      "ending_total_assets": 353514000000.0,
+      "avg_assets": 353048500000.0,
+      "roa": 0.0961
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 23636000000.0,
+      "beginning_total_assets": 353514000000.0,
+      "ending_total_assets": 337411000000.0,
+      "avg_assets": 345462500000.0,
+      "roa": 0.0684
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 21448000000.0,
+      "beginning_total_assets": 337411000000.0,
+      "ending_total_assets": 331612000000.0,
+      "avg_assets": 334511500000.0,
+      "roa": 0.0641
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 14736000000.0,
+      "beginning_total_assets": 331612000000.0,
+      "ending_total_assets": 364980000000.0,
+      "avg_assets": 348296000000.0,
+      "roa": 0.0423
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 36330000000.0,
+      "beginning_total_assets": 364980000000.0,
+      "ending_total_assets": 344085000000.0,
+      "avg_assets": 354532500000.0,
+      "roa": 0.1025
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 24780000000.0,
+      "beginning_total_assets": 344085000000.0,
+      "ending_total_assets": 331233000000.0,
+      "avg_assets": 337659000000.0,
+      "roa": 0.0734
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 23434000000.0,
+      "beginning_total_assets": 331233000000.0,
+      "ending_total_assets": 331495000000.0,
+      "avg_assets": 331364000000.0,
+      "roa": 0.0707
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 27466000000.0,
+      "beginning_total_assets": 331495000000.0,
+      "ending_total_assets": 359241000000.0,
+      "avg_assets": 345368000000.0,
+      "roa": 0.0795
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 42097000000.0,
+      "beginning_total_assets": 359241000000.0,
+      "ending_total_assets": 379297000000.0,
+      "avg_assets": 369269000000.0,
+      "roa": 0.114
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "ebit": null,
+      "tax_rate_for_calcs": null,
+      "nopat": null,
+      "beginning_invested_capital": 177798000000.0,
+      "ending_invested_capital": null,
+      "avg_invested_capital": null,
+      "roic": null
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "ebit": 28000000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 23800000000.0,
+      "beginning_invested_capital": 169554000000.0,
+      "ending_invested_capital": 173234000000.0,
+      "avg_invested_capital": 171394000000.0,
+      "roic": 0.1389
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "ebit": 40373000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 31894670000.0,
+      "beginning_invested_capital": 173234000000.0,
+      "ending_invested_capital": 182140000000.0,
+      "avg_invested_capital": 177687000000.0,
+      "roic": 0.1795
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "ebit": 27900000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 23436000000.0,
+      "beginning_invested_capital": 182140000000.0,
+      "ending_invested_capital": 178784000000.0,
+      "avg_invested_capital": 180462000000.0,
+      "roic": 0.1299
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "ebit": 25352000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 21295680000.0,
+      "beginning_invested_capital": 178784000000.0,
+      "ending_invested_capital": 168012000000.0,
+      "avg_invested_capital": 173398000000.0,
+      "roic": 0.1228
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "ebit": 29591000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 23376890000.0,
+      "beginning_invested_capital": 168012000000.0,
+      "ending_invested_capital": 163579000000.0,
+      "avg_invested_capital": 165795500000.0,
+      "roic": 0.141
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "ebit": 42832000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 36407200000.0,
+      "beginning_invested_capital": 163579000000.0,
+      "ending_invested_capital": 163557000000.0,
+      "avg_invested_capital": 163568000000.0,
+      "roic": 0.2226
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "ebit": 29589000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 24854760000.0,
+      "beginning_invested_capital": 163557000000.0,
+      "ending_invested_capital": 164982000000.0,
+      "avg_invested_capital": 164269500000.0,
+      "roic": 0.1513
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "ebit": 28202000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 23689680000.0,
+      "beginning_invested_capital": 164982000000.0,
+      "ending_invested_capital": 167528000000.0,
+      "avg_invested_capital": 166255000000.0,
+      "roic": 0.1425
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "ebit": 32427000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 27238680000.0,
+      "beginning_invested_capital": 167528000000.0,
+      "ending_invested_capital": 172390000000.0,
+      "avg_invested_capital": 169959000000.0,
+      "roic": 0.1603
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "ebit": 50852000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 41698640000.0,
+      "beginning_invested_capital": 172390000000.0,
+      "ending_invested_capital": 178699000000.0,
+      "avg_invested_capital": 175544500000.0,
+      "roic": 0.2375
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.375,
+      "roa": 0.0668,
+      "equity_multiplier": 5.61
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.4979,
+      "roa": 0.0961,
+      "equity_multiplier": 5.18
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.3188,
+      "roa": 0.0684,
+      "equity_multiplier": 4.66
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.3044,
+      "roa": 0.0641,
+      "equity_multiplier": 4.75
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.2383,
+      "roa": 0.0423,
+      "equity_multiplier": 5.63
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.5874,
+      "roa": 0.1025,
+      "equity_multiplier": 5.73
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.3711,
+      "roa": 0.0734,
+      "equity_multiplier": 5.06
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.3534,
+      "roa": 0.0707,
+      "equity_multiplier": 5.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.3936,
+      "roa": 0.0795,
+      "equity_multiplier": 4.95
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.52,
+      "roa": 0.114,
+      "equity_multiplier": 4.56
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0668,
+      "net_margin": 0.2565,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0961,
+      "net_margin": 0.2836,
+      "asset_turnover": 0.34
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0684,
+      "net_margin": 0.2604,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0641,
+      "net_margin": 0.25,
+      "asset_turnover": 0.26
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0423,
+      "net_margin": 0.1552,
+      "asset_turnover": 0.27
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.1025,
+      "net_margin": 0.2923,
+      "asset_turnover": 0.35
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0734,
+      "net_margin": 0.2599,
+      "asset_turnover": 0.28
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0707,
+      "net_margin": 0.2492,
+      "asset_turnover": 0.28
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0795,
+      "net_margin": 0.268,
+      "asset_turnover": 0.3
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.114,
+      "net_margin": 0.2928,
+      "asset_turnover": 0.39
+    }
+  ]
+}

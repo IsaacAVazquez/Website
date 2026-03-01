@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "GOOGL",
+    "name": "Dr. Lawrence Edward Page II",
+    "title": "Co-Founder & Director",
+    "age": 52,
+    "born": 1973,
+    "pay": 1,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Mr. J. Kent Walker",
+    "title": "President of Global Affairs, Chief Legal Officer & Company Secretary",
+    "age": 64,
+    "born": 1961,
+    "pay": 3019696,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Mr. Philipp  Schindler",
+    "title": "Senior Vice President & Chief Business Officer of Google",
+    "age": 54,
+    "born": 1971,
+    "pay": 3051699,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Mr. Sergey  Brin",
+    "title": "Co-Founder & Director",
+    "age": 51,
+    "born": 1974,
+    "pay": 1,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Mr. Sundar  Pichai",
+    "title": "CEO & Director",
+    "age": 52,
+    "born": 1973,
+    "pay": 10319413,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Ms. Amie Thuener O'Toole",
+    "title": "Corporate Controller, Chief Accounting Officer & VP",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Ms. Anat  Ashkenazi",
+    "title": "Senior VP & CFO",
+    "age": 52,
+    "born": 1973,
+    "pay": 11455556,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Ms. Ellen  West",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Ms. Fiona Clare Cicconi",
+    "title": "Chief People Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Ms. Ruth M. Porat",
+    "title": "President & Chief Investment Officer",
+    "age": 67,
+    "born": 1958,
+    "pay": 3023363,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

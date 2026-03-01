@@ -1,0 +1,872 @@
+[
+  {
+    "paragraph_number": 1,
+    "speaker": "Executives",
+    "content": "Jeffrey K. Evanson \u2013 Vice President-Investor Relations Elon R. Musk \u2013 Chairman, Product Architect and CEO George Blankenship \u2013 Vice President-Sales & Ownership Service Deepak Ahuja \u2013 Chief Financial Officer"
+  },
+  {
+    "paragraph_number": 2,
+    "speaker": "Analyst",
+    "content": "Amir Rozwadowski \u2013 Barclays Capital Inc. Christopher M. Kovacs \u2013Robert W. Baird & Co. Equity Capital Markets Patrick K. Archambault \u2013 Goldman Sachs & Co. Colin W. Rusch \u2013 ThinkEquity LLC Adam Jonas \u2013 Morgan Stanley & Co. LLC Carter W. Driscoll \u2013 Capstone Investments Dan V. Galves \u2013 Deutsche Bank Securities, Inc. Ben Schuman \u2013 Pacific Crest Securities LLC Jesse W. Pichel \u2013 Jefferies & Co., Inc. Andrea Susan James \u2013 Dougherty & Co. LLC Michael Lew \u2013 Needham & Co. LLC Ben Z. Rose \u2013 Battle Road Research Ltd."
+  },
+  {
+    "paragraph_number": 3,
+    "speaker": "Operator",
+    "content": "Good day, ladies and gentlemen, and welcome to the Tesla Motors, First Quarter 2012 Financial Results. At this time, all participants are in a listen-only mode. Later, we will conduct a question-and-answer session, and instructions will follow at that time. (Operator instructions) As a reminder, this conference call is being recorded. I would now like to introduce your host for today\u2019s conference, Mr. Jeff Evanson. Please go ahead."
+  },
+  {
+    "paragraph_number": 4,
+    "speaker": "Jeffrey K. Evanson",
+    "content": "Thank you, Patrick and good afternoon, everyone. Welcome to the Tesla Motors, first quarter 2012 financial results question-and-answer conference call. I\u2019m joined today by Elon Musk, Tesla\u2019s Chairman, CEO and Chief Product Architect; as well as Deepak Ahuja, Tesla\u2019s Chief Financial Officer. We announced our financial results for the first quarter shortly after 1 p.m. Pacific Time today. The shareholder letter, financial results and webcast of this Q&A session are all available at the company\u2019s Investor Relations website at ir.teslamotors.com. Today\u2019s call will consist of questions and answers and we will conduct the Q&A session live. (Operator Instructions) During the course of this call, we may discuss our business outlook and make forward-looking statements. Such statements are only predictions based on management\u2019s current expectations, actual events or results, could differ materially due to a number of risks and uncertainties, including those mentioned in our most recent Form 10-K filed with the SEC. Such forward-looking statements represent our views only as of today, and should not be relied upon after today. We also disclaim any obligation to update these forward-looking statements. And now, let me pass the call to Elon."
+  },
+  {
+    "paragraph_number": 5,
+    "speaker": "Elon R. Musk",
+    "content": "All right, I think we can go right into questions. So, let\u2019s go ahead and start addressing the questions."
+  },
+  {
+    "paragraph_number": 6,
+    "speaker": "Operator",
+    "content": "(Operator Instructions) Our first question comes from Amir Rozwadowski from Barclays Capital. Your line is open."
+  },
+  {
+    "paragraph_number": 7,
+    "speaker": "Amir Rozwadowski \u2013 Barclays Capital Inc.",
+    "content": "Thank you very much, and good afternoon Elon, Deepak, and Jeff."
+  },
+  {
+    "paragraph_number": 8,
+    "speaker": "Elon R. Musk",
+    "content": "Hi."
+  },
+  {
+    "paragraph_number": 9,
+    "speaker": "Jeffrey K. Evanson",
+    "content": "Hi."
+  },
+  {
+    "paragraph_number": 10,
+    "speaker": "Amir Rozwadowski \u2013 Barclays Capital Inc.",
+    "content": "Hi. Yes, I was wondering if we could talk a bit about the ramping of your facility at the moment. It seems as though, based on your release, you do expect to now deliver the vehicles in the June timeframe. And I was wondering if you could provide us an update in terms of getting the factory up and running to the run rate at which you expect to be delivering vehicles and where you stand today?"
+  },
+  {
+    "paragraph_number": 11,
+    "speaker": "Elon R. Musk",
+    "content": "I mean the initial ramp of course would be sort of slow, and then will spool up rapidly. We\u2019re keeping exact ramp, sort of confidential and in part because we want to as we increase the production, we want to stabilize it at various plateaus, evaluate the quality if it looks good, then ramp up. And our goal is to be at a run rate, an annualized run rate of greater than 20,000 you\u2019d see at the end of the year. But it\u2019s a little difficult to predict that ramp, exactly in advance. It\u2019s going to dependent on how rapidly we can make costs add to exceptional quality."
+  },
+  {
+    "paragraph_number": 12,
+    "speaker": "Amir Rozwadowski \u2013 Barclays Capital Inc.",
+    "content": "Are there any major pieces that need to be done, shipped in or installed on, I mean, is there any sort of color you can give us as to where you stand today versus perhaps your last earnings call."
+  },
+  {
+    "paragraph_number": 13,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah, we have all of the factory machinery in place, we have the vast majority of the tooling in place. There are a few stamping dies (inaudible) due to late changes, and those are coming in next month. But really the machinery is in place, and it\u2019s just a question of ironing out any bugs with the overall manufacturing system. The factory is sort of like big machine with many subcomponents effectively. So it\u2019s getting that machine, so work effectively at the subsystem level and then in the transition for one subsystem to next and then being able to kind of spool it up, and go at a greater and greater speed. And we really want to be supersensitive to the quality of the product, and our aspiration is to deliver costs that have zero defects. So it will take sometime to be able to have the whole system move with equal cadence to achieve that goal."
+  },
+  {
+    "paragraph_number": 14,
+    "speaker": "Amir Rozwadowski \u2013 Barclays Capital Inc.",
+    "content": "Would you do feel comfortable that you can hit the 20,000 or greater by the end of the year?"
+  },
+  {
+    "paragraph_number": 15,
+    "speaker": "Elon R. Musk",
+    "content": "I\u2019m highly confident with that, yeah."
+  },
+  {
+    "paragraph_number": 16,
+    "speaker": "Amir Rozwadowski \u2013 Barclays Capital Inc.",
+    "content": "Great. Thank you very much for the incremental color."
+  },
+  {
+    "paragraph_number": 17,
+    "speaker": "Elon R. Musk",
+    "content": "You\u2019re welcome."
+  },
+  {
+    "paragraph_number": 18,
+    "speaker": "Operator",
+    "content": "Our next question comes from Chris Kovacs from Robert Baird. Your line is open."
+  },
+  {
+    "paragraph_number": 19,
+    "speaker": "Christopher M. Kovacs \u2013Robert W. Baird & Co. Equity Capital Markets",
+    "content": "Hi, guys, thanks for taking my question. Can you give us a sense of, it\u2019s going to be another record quarter with reservations, you have over 10,000 now. Can you give us a sense of, what percentage of those you started to lock-in, you take specs for cars. And then can you maybe comment on how the new stores have affected your reservation momentum and how you expect the momentum to increase or changes that you can allow customers to test drive cars in the summer?"
+  },
+  {
+    "paragraph_number": 20,
+    "speaker": "Elon R. Musk",
+    "content": "Sure. We\u2019ve begun to lock-in the cars that are as we queue up the parts for production. So we\u2019ve got the first 100 cars locked-in where we\u2019re really not seeing any significant follow-up from at least in the beginning from people, as far as the people said, I\u2019ve put down the deposit now, I\u2019m not I want the car. It\u2019s really been an extremely high rate of people wanting to put down the remainder of the money and complete their purchase of the vehicle. Regarding the new stores and how that\u2019s going, George would you?"
+  },
+  {
+    "paragraph_number": 21,
+    "speaker": "George Blankenship",
+    "content": "Sure."
+  },
+  {
+    "paragraph_number": 22,
+    "speaker": "Elon R. Musk",
+    "content": "I have George Blankenship here, and George probably would be the best person to provide some color and detail regarding these stores."
+  },
+  {
+    "paragraph_number": 23,
+    "speaker": "George Blankenship",
+    "content": "We had very, very good traffic in Q1 as the shareholder letter said, we had over 410,000 people go through the six new design stores that we have. We are now getting ready to start opening our new stores for this year. We plan to open about ten more new stores \u2013 of the new design stores in traffic locations similar to those that the six exists then. And the traffic has been very positive and has a positive effect on the reservation flow both from Model S and Model X. So it\u2019s been very, very positive, and we\u2019re looking to open at least 10 stores this year of the new design."
+  },
+  {
+    "paragraph_number": 24,
+    "speaker": "Christopher M. Kovacs \u2013Robert W. Baird & Co. Equity Capital Markets",
+    "content": "Yeah."
+  },
+  {
+    "paragraph_number": 25,
+    "speaker": "Elon R. Musk",
+    "content": "Well, and I should say with a particular focus in the greater New York area, where we think there is a substantial untapped market."
+  },
+  {
+    "paragraph_number": 26,
+    "speaker": "George Blankenship",
+    "content": "So if you combine the additional marketing cars that would be there in these stores and the customer rights and drives, definitely there would be a significantly higher level of marketing effort and presence that the customers who see starting in this quarter."
+  },
+  {
+    "paragraph_number": 27,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah, it\u2019s worth noting that, I mean the sign-ups that we\u2019ve \u2013 the 10,000 people have done reservation payment. They\u2019ve not test driven the cars. And I think so \u2013 to achieving these numbers we\u2019re now advertising with no test drives and in many cases with stores that only have cars part of the time. By the end of this month, I think we\u2019ll have, people have more or less cars in all the stores. But today since these cars have been reserved for testing, much of the time that there has been no Model S in the store, which offsets the sales challenge. So I think we should see some acceleration of reservations as a function of having cars people can actually drive. And, having more stores open and an increased word-of-mouth from people seeing cars actually on the road, and eliminate any question marks it will, that the car is, in the mind of consumer, if the cars brings production."
+  },
+  {
+    "paragraph_number": 28,
+    "speaker": "Christopher M. Kovacs \u2013 Robert W. Baird & Co. Equity Capital Markets",
+    "content": "Okay, thank you guys for that color. And just one follow-up, I think there was some news that came out with Toyota and RAV4 announcing this week and they mentioned 2,600 cars in the next three years or so. Can you talk about, is there more to that contract contemplated in that number in terms of the $100 million deal you guys have with them, besides 2,600 cars, and what\u2019s your indication on Toyota or what is the triggers for them to expand that numbers in future years beyond the next three?"
+  },
+  {
+    "paragraph_number": 29,
+    "speaker": "Elon R. Musk",
+    "content": "We\u2019ve had and continue to have extensive discussions with Toyota about scaling up the quantity significantly. And I think Toyota wants to wait until the space of the RAV4 program gets on the road before potentially signing anything that\u2019s at a larger scale. But I think, this is certainly good grounds to conclude that the scale up the odds of scaling up, I think, are good. I mean, I wish, I could characterize with any greater sense to you than that, but I think the reaction to the next RAV4 is going to quite positive. This car is amazing acceleration and handling and its one thing that wasn\u2019t clear in the announcement earlier this week it got 60% more range than Leaf in highway, city, or any scenario really. So it should be quite a compelling vehicle from its capabilities, resemblance and capabilities compared to say a Leaf. The prices are bit on the high side and, but the volume numbers initially are low, so hopefully that\u2019s not an issue."
+  },
+  {
+    "paragraph_number": 30,
+    "speaker": "Christopher M. Kovacs \u2013 Robert W. Baird & Co. Equity Capital Markets",
+    "content": "Thank you very much."
+  },
+  {
+    "paragraph_number": 31,
+    "speaker": "Operator",
+    "content": "Our next question comes from Patrick Archambault from Goldman Sachs. Your line is open."
+  },
+  {
+    "paragraph_number": 32,
+    "speaker": "Patrick K. Archambault \u2013 Goldman Sachs & Co.",
+    "content": "Great, thank you very much. I guess two questions from my end. Can you tell, obviously you have a pretty big events and well anticipated event in front of you. Can you tell us a little bit about what your strategy is to get some cars in the hands of the press clearly word-of-mouth, as you say, is important and that\u2019s going to be a key channel for getting the thing reviewed, and hopefully helping the reservation numbers. So how are you thinking about that in terms of your marketing strategy over the coming month or two?"
+  },
+  {
+    "paragraph_number": 33,
+    "speaker": "Elon R. Musk",
+    "content": "Sure, we\u2019ve had limited test rides for journalists, going back as far as September. But that the more, sort of exhausted reviews, I think, we want to wait until the car is as close to perfect as possible before we do that, so certainly past to start of production. If we give a car that may be have some bugs in it, and a journalist is free to write whatever they write, then they would presumably write about a few issues. And there\u2019s no point in doing that, if those expected to be cleared up within four, five weeks. So I think, we\u2019ll wait until probably end of June before doing any journalist reviews."
+  },
+  {
+    "paragraph_number": 34,
+    "speaker": "Patrick K. Archambault \u2013 Goldman Sachs & Co.",
+    "content": "Certainly, and I don\u2019t know may be one for Deepak, just on the modeling side. It sounds like with some of the tooling, coming in late and, I guess just, the characteristics of low volume production when you\u2019re ramping up, you\u2019re going to probably be using components manufactured with pre-production tooling, and if you do it right obviously doesn\u2019t impact the quality, but impacts the cost. Can you tell us a little bit about how you expect your material costs to trend as you ramp up and when you think they can sort of come down, once you have the volume behind you to that, to help you hit that 25% gross margin target."
+  },
+  {
+    "paragraph_number": 35,
+    "speaker": "Deepak Ahuja",
+    "content": "Sure, I mean as we have said the 25% target is when we achieved our annualized 20,000 units production since there is labor and overhead component as well to it. So that would be some time late this year and on a full quarter it\u2019s we\u2019ll get closer to that in Q1 of next year. Initially at this point primarily in Q2 as you said it could be a variety of reasons why initial pricing from suppliers could be low. It\u2019s just a mere fact that they have low volumes, prices would be high, sorry. Just a mere fact that they have low volumes in some cases and result in higher prices. So that\u2019s being factored in our financial assumptions, and most of Q2 expenses will be in R&D for those issues and that\u2019s why we have also provided the guidance of our increased R&D expense in Q2."
+  },
+  {
+    "paragraph_number": 36,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah, to be clear, we remain impacted arguably at this point, increasingly confident of achieving 25% gross margin for 2013."
+  },
+  {
+    "paragraph_number": 37,
+    "speaker": "Patrick K. Archambault \u2013 Goldman Sachs & Co.",
+    "content": "Okay, terrific very helpful. Thank you."
+  },
+  {
+    "paragraph_number": 38,
+    "speaker": "Operator",
+    "content": "Our next question comes from Colin Rusch from Thinkequity. Your line is open."
+  },
+  {
+    "paragraph_number": 39,
+    "speaker": "Colin W. Rusch \u2013 ThinkEquity LLC",
+    "content": "Thanks so much. Can you talk about the cycle time right now in terms of car production and how many more iterations of the manufacturing process you expect to go through before you start selling cars? I should say that more or less than specific?"
+  },
+  {
+    "paragraph_number": 40,
+    "speaker": "Deepak Ahuja",
+    "content": "I\u2019m not sure what you mean by cycle time on the reproducing cars at a very still base at this point perhaps you can clarify that?"
+  },
+  {
+    "paragraph_number": 41,
+    "speaker": "Elon R. Musk",
+    "content": "Well, you mean production?"
+  },
+  {
+    "paragraph_number": 42,
+    "speaker": "Colin W. Rusch \u2013 ThinkEquity LLC",
+    "content": "I\u2019m just asking how long is it taking it to, are you, you\u2019re running test cars through there assuming now, I mean is it taking two weeks or is it taking a four month. And how many iterations on those process refinements, do you think you go through before you really like them in?"
+  },
+  {
+    "paragraph_number": 43,
+    "speaker": "Elon R. Musk",
+    "content": "Well, I think we\u2019re going to keep iterating for the next four or five weeks and even have to restart production, I think there is going to be room for improvements on the car, as there is with any product. And so, I don\u2019t think we\u2019ll have a stop iterating on improvements of the vehicle. But I mean we\u2019re really down to very sort of small refinements at this point. I mean these are kind of nuance issues of fit and finish, and rattle, squeak, the final fine tuning of the stereo system and that kind of thing, it\u2019s not major stuff. But I want to be really attentive to the details, and I don\u2019t want to more or less to be right all way down to the smallest detail, but that\u2019s kind of what we\u2019re doing was right now are things can kept very timely reasonable level."
+  },
+  {
+    "paragraph_number": 44,
+    "speaker": "Colin W. Rusch \u2013 ThinkEquity LLC",
+    "content": " :"
+  },
+  {
+    "paragraph_number": 45,
+    "speaker": "Elon R. Musk",
+    "content": "It\u2019s increasing the dollars per kilowatt hour or the range. And I think, if we wanted to, right now, we could build the pack directly build the pack with 500 miles range, it doesn\u2019t seem to us that people would necessarily, most people wouldn\u2019t really have need or want for that and so it\u2019s better to use that space for cargo capacity or other things. The bigger focus overtime will be improving the cost per kilowatt hour battery pack. And improving both the non-sale cost and the sale cost, we\u2019re pretty comfortable with where we are, in terms of achieving the 25% gross margin next year. So we\u2019ve got a pretty good idea of how to get there. And at that time we\u2019ll continue to see what\u2019s the sale and non-sale pack cost decrease. Historically, it\u2019s been at roughly the 8% to 10% per year rate, not necessarily, it\u2019s not necessarily smooth, I think that it\u2019s about average over time. And it looks like things will continue to improve at around that rate in the future."
+  },
+  {
+    "paragraph_number": 46,
+    "speaker": "Colin W. Rusch \u2013 ThinkEquity LLC",
+    "content": "All right. Thank you so much."
+  },
+  {
+    "paragraph_number": 47,
+    "speaker": "Operator",
+    "content": "Our next question comes from Adam Jonas from Morgan Stanley. Your line is open."
+  },
+  {
+    "paragraph_number": 48,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "A couple of questions, first I appreciate that you won\u2019t disclose more reservations kind of on going on the Model X, I think that\u2019s a wise decision that focused the attention on the S? But will you continue to publish the balance sheet item of reservation payment and if you do will that balance, still include Model X reservation payments as well, that\u2019s the first question."
+  },
+  {
+    "paragraph_number": 49,
+    "speaker": "Elon R. Musk",
+    "content": "Adam, yes, it will, so we have to report that on our balance sheet, so, yeah."
+  },
+  {
+    "paragraph_number": 50,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Okay, all right."
+  },
+  {
+    "paragraph_number": 51,
+    "speaker": "Elon R. Musk",
+    "content": "I think yes, obviously, if we show Model S reservations, show the total balance sheet number, it\u2019s super hard to figure out what the Model X reservation number is. But we don\u2019t recall attention to something when our focus is very much on the S."
+  },
+  {
+    "paragraph_number": 52,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Understood, but it may raise some questions like the next one, which is if you look at the ratio of the cumulative reservation balance over the reservation number to get like a ratio, that ratio did decline kind of materially from 4Q from the end of December to the end of March, about 11,500, about 10,500 on a implying incremental reservation amount, on incremental reservation number decline a bit sharper than that. Is there anything to read into that, is that because the Model X reservation amounts are just a much lower per unit, or you seeing like the incremental now at the first that your VIPs and super high network folks that maybe were a higher up on the reservation list and getting the performance packages, is that reflecting kind of just more of the mass market buyer now, if you could call that for the Model S incremental reservation?"
+  },
+  {
+    "paragraph_number": 53,
+    "speaker": "Elon R. Musk",
+    "content": "That\u2019s a good question, Adam. The driver is that we received half year, or we received more general reservations not signature reservations. As you may recall, we basically, completed or sold out all of our signature series cars in early January and the cause of the reservation amount for signature series cars is $40,000 versus $5000 for general production. So clearly, in Q4, that\u2019s been a big chunk of the last of signature reservations came in and that resulted in that higher average reservations amount."
+  },
+  {
+    "paragraph_number": 54,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Great, next question is on your Model S delivery target moving it up into June, but you\u2019re still providing the revenue guidance of roughly stable at $30 million of the group level, that would imply, I mean, there is a very small number of deliveries that you\u2019re going to be making in 2Q, I mentioned that because I\u2019m presumably, most people on the call talk about models have roughly zero deliveries in the second quarter right now. So, I mean are we talking about a handful, kind of 10, 20, 30 that order of magnitude, it doesn\u2019t seem like give you much more than that, if you\u2019re going to be near to $30,000 million revenue mark?"
+  },
+  {
+    "paragraph_number": 55,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah, I mean it\u2019s on that order, yeah. It\u2019s not like, it\u2019s not one and it\u2019s not 100s."
+  },
+  {
+    "paragraph_number": 56,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Okay."
+  },
+  {
+    "paragraph_number": 57,
+    "speaker": "Elon R. Musk",
+    "content": "So sort of in the 10."
+  },
+  {
+    "paragraph_number": 58,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Okay, just want to confirm that, thanks, Elon. And then finally, given the pull forward of the good timeframe of the launch timing, a very positive reception of Model X. Your ability to kind of show and accelerate perhaps key developments for the Gen 3 a few years out, have you given any further thoughts potentially, using an opportunity to raise a bit more capital to help fund these projects that really deserve probably more resources or could it deserve more resources, given the great interest in your early execution on them? That\u2019s my last question. Thank you."
+  },
+  {
+    "paragraph_number": 59,
+    "speaker": "Operator",
+    "content": "Thank you. Our next question comes from Carter Driscoll from CapStone Investments. Your line is open."
+  },
+  {
+    "paragraph_number": 60,
+    "speaker": "Carter W. Driscoll \u2013 Capstone Investments",
+    "content": "Good afternoon, gentlemen, I guess I just want to follow-up on the reservation question, just a little differently, talk about some of the stores and some of the sales people and talk about maybe multiple orders, some individuals, and maybe some are actually exceeded multiple orders, and maybe that affected positive or negatives in terms of you are positioning the car, and then also maybe some people have been rumored to be potentially reselling the car, or flipping the car and whether that might has a minor impact or not at all, could you address that point first?"
+  },
+  {
+    "paragraph_number": 61,
+    "speaker": "Operator",
+    "content": "Participants please hold on for a moment we are having technical difficulties. Ladies and gentlemen thank you for holding, please standby. Thank you, please go ahead."
+  },
+  {
+    "paragraph_number": 62,
+    "speaker": "Elon R. Musk",
+    "content": "Sorry about that everyone. Why don\u2019t we pick it up again with Adam Jonas\u2019 last question please? Adam if you are on the line, can you repeat that please?"
+  },
+  {
+    "paragraph_number": 63,
+    "speaker": "Operator",
+    "content": "Pardon me Adam Jonas, can you please queue back up. We currently have Carter Driscoll\u2019s line open from Capstone."
+  },
+  {
+    "paragraph_number": 64,
+    "speaker": "Elon R. Musk",
+    "content": "All right, why don\u2019t we take Carter\u2019s question and then we\u2019ll come back to Adam."
+  },
+  {
+    "paragraph_number": 65,
+    "speaker": "Carter W. Driscoll \u2013 Capstone Investments",
+    "content": "Thanks for taking my question. I just wanted to follow-up on Model S reservation question, you're talking to some of the stores, we heard certain comments that maybe certain individuals had ordered multiple, or put down multiple reservations in the chances potentially, getting the cars, but all concerned if you heard similar things from some of your, some feedback from some of your sales people?"
+  },
+  {
+    "paragraph_number": 66,
+    "speaker": "Elon R. Musk",
+    "content": "There has been a few mentions of that, the quantity is so minimal that it is not an issue, there has been a couple issues, they did a couple inputs on our web form as well, on the subject, but it is so few and far between that it is not an issue."
+  },
+  {
+    "paragraph_number": 67,
+    "speaker": "Carter W. Driscoll \u2013 Capstone Investments",
+    "content": "Okay. And then just moving over quickly just a question on the Daimler agreement, in your prepared remarks you alluded to that potentially outpacing all the other development contracts that had before. Has the automobile move from the prototype into early stage production, maybe you could shed some color on where that\u2019s progressing right now?"
+  },
+  {
+    "paragraph_number": 68,
+    "speaker": "Elon R. Musk",
+    "content": "I guess it\u2019s effectively early phase production, although, in terms of cars that we\u2019re prepared to deliver to customers, but those will occur kind of next month."
+  },
+  {
+    "paragraph_number": 69,
+    "speaker": "Carter W. Driscoll \u2013 Capstone Investments",
+    "content": "Okay. Thank you for that. That\u2019 all I had."
+  },
+  {
+    "paragraph_number": 70,
+    "speaker": "Elon R. Musk",
+    "content": "So with respect to Daimler, I know and my apologies for any misinterpreting context there. We certainly delivered many electric smart battery packs and charges and Mercedes A Class, but we have not yet eliminating for the new program beyond the initial prototype level."
+  },
+  {
+    "paragraph_number": 71,
+    "speaker": "Carter W. Driscoll \u2013 Capstone Investments",
+    "content": "Therefore on the prepared comments about it, potentially, exceeding the other development contracts, is that based on their market division globally, or is it based on discussions you\u2019ve had before. I guess having seen that for hit essentially, be a push this week and you\u2019re getting a picture of that. We\u2019ll make you comfortable that it\u2019s going to exceed all your other development contracts if the vehicle is not out of prototype stage?"
+  },
+  {
+    "paragraph_number": 72,
+    "speaker": "Elon R. Musk",
+    "content": "Well, I mean the nature of the agreement is in excess of everything combined to date. So, that\u2019s the plan essentially, and that\u2019s what we\u2019re gearing up to do with Daimler."
+  },
+  {
+    "paragraph_number": 73,
+    "speaker": "Carter W. Driscoll \u2013 Capstone Investments",
+    "content": "Okay. It is just the last, not to push it too hard, but is that, do you expect something in the back half of this year, or is it really just all the focus on the Model S today?"
+  },
+  {
+    "paragraph_number": 74,
+    "speaker": "Elon R. Musk",
+    "content": "Our primary focus really is on the Model S, but we still expect to make material progress on the new electric Mercedes-Benz later this year. But production deliveries in terms of our customers would see is essentially on the early 2014 timeframe."
+  },
+  {
+    "paragraph_number": 75,
+    "speaker": "Carter W. Driscoll \u2013 Capstone Investments",
+    "content": "Okay, appreciate the color. Thank you."
+  },
+  {
+    "paragraph_number": 76,
+    "speaker": "Operator",
+    "content": "Thank you. We do have a question from Adam Jonas. Your line is open."
+  },
+  {
+    "paragraph_number": 77,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Hey, thanks for taking a follow-up here. So you mentioned that the Model S has now been fully certified by the U.S. Environmental Protection Agency and the State of California. But unless I missed it in the release, I didn\u2019t see the disclosure of what the mileage was going to be and presumably when this goes on sale and the initial deliveries in June unless I\u2019m mistaken or it have to have a sticker with the combined fuel economy?"
+  },
+  {
+    "paragraph_number": 78,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah, are you talking about the MPGe rating?"
+  },
+  {
+    "paragraph_number": 79,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Exactly"
+  },
+  {
+    "paragraph_number": 80,
+    "speaker": "Deepak Ahuja",
+    "content": "And the range I think it\u2019s what?"
+  },
+  {
+    "paragraph_number": 81,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Yeah, exactly the\u2026"
+  },
+  {
+    "paragraph_number": 82,
+    "speaker": "Elon R. Musk",
+    "content": "Right, right, so I\u2019m not sure if you had chance to see the range blog we published earlier today. As far as the EPA fuel economy rating, we\u2019re expecting it to be at least or in fact initially it will be 89 MPGe. Although, where we think we might be able to improve that with some efficiency improvements at the charter level because it\u2019s measuring the AC watt-hours and so we think that, we don\u2019t promise anything but we think there is a little room for improvement there. But the current sort of official rating is 89 MPGe. And then on the two-cycle test, we got 320 miles and on the five-cycle test, 265."
+  },
+  {
+    "paragraph_number": 83,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Sir, can you repeat those please."
+  },
+  {
+    "paragraph_number": 84,
+    "speaker": "Elon R. Musk",
+    "content": "On the two-cycle test, 320 miles, so it is actually 20 miles above our target. And on the five-cycle test, which is a much more intense test when the car sort of goes up to 80 miles an hour testing, that\u2019s 265 miles range."
+  },
+  {
+    "paragraph_number": 85,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Excellent. Thank you, sir. And the only release it for the largest battery size?"
+  },
+  {
+    "paragraph_number": 86,
+    "speaker": "Elon R. Musk",
+    "content": "Correct. All initial deliveries are for largest battery size."
+  },
+  {
+    "paragraph_number": 87,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Okay."
+  },
+  {
+    "paragraph_number": 88,
+    "speaker": "Deepak Ahuja",
+    "content": "And I just want to mention everyone should go and check out our website blog. You will see a very thorough letter from Elon and J. B. Straubel, our CTO that explains a lot of the details and some of the numbers behind that. It\u2019s quite interesting reading."
+  },
+  {
+    "paragraph_number": 89,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Thank you."
+  },
+  {
+    "paragraph_number": 90,
+    "speaker": "Elon R. Musk",
+    "content": "I think we\u2019re going to have an exciting thing announced later this year regarding long-distance travel with the Model S. Sometime, probably, in the July-ish timeframe and it\u2019s going to be pretty cool."
+  },
+  {
+    "paragraph_number": 91,
+    "speaker": "Adam Jonas \u2013 Morgan Stanley & Co. LLC",
+    "content": "Great, thanks, Elon."
+  },
+  {
+    "paragraph_number": 92,
+    "speaker": "Elon R. Musk",
+    "content": "All right."
+  },
+  {
+    "paragraph_number": 93,
+    "speaker": "Operator",
+    "content": "Our next question comes from Dan Galves from Deutsche Bank. Your line is open."
+  },
+  {
+    "paragraph_number": 94,
+    "speaker": "Dan V. Galves \u2013 Deutsche Bank Securities, Inc.",
+    "content": "Hey, good afternoon. You guys mentioned that there were still some stamping dies to be delivered in next month. Are you comfortable with all your suppliers in terms of them being able to supply production parts in time for the launch?"
+  },
+  {
+    "paragraph_number": 95,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah, we\u2019re highly confident of that."
+  },
+  {
+    "paragraph_number": 96,
+    "speaker": "Dan V. Galves \u2013 Deutsche Bank Securities, Inc.",
+    "content": "Okay, got it. And then in terms of the Tesla stores and service centers, can you give us an update on how many you feel like you need to support global sales of the Model S and the Model X? And clearly, by owning your own stores, you guys are capturing a lot of the margin that\u2019s usually taken by the franchise dealers but do you have an estimate for what percentage of sales kind of the Tesla stores and service center costs will represent as a percentage of your revenue, over time?"
+  },
+  {
+    "paragraph_number": 97,
+    "speaker": "Deepak Ahuja",
+    "content": "So, Dan, to answer your earlier question, we expect to have close to 30 stores by end of this year and as we look at next year and growth of Model X in 2014, we\u2019ll be somewhere north of 50 stores at that time and when we think globally that gives us enough capacity and throughput in these stores to sell our projected volumes of Model S and X as we\u2019ve shared externally so far. And we certainly have a sense of our percentage of revenue for these stores. It\u2019s part of our SG&A expenses and we don\u2019t necessarily split that out, but I can tell you that we\u2019re very efficient in our selling as compared to the typical dealership model and that\u2019s something we absolutely track."
+  },
+  {
+    "paragraph_number": 98,
+    "speaker": "Elon R. Musk",
+    "content": "And it\u2019s also; I think we don\u2019t have a national advertising spend, it\u2019s zero so maybe at some point I think we\u2019ll want to do that but probably not for the first few years at least. I mean right now demand outstrips supply, so we need to improve supply. That\u2019s our focus."
+  },
+  {
+    "paragraph_number": 99,
+    "speaker": "Dan V. Galves \u2013 Deutsche Bank Securities, Inc.",
+    "content": "Okay. Thanks very much for that and can you give us an update on when you expect to begin sales in Europe of the model S and if there is \u2013 I am not sure if you have announced pricing for the European vehicle but when would that be if you haven\u2019t already."
+  },
+  {
+    "paragraph_number": 100,
+    "speaker": "Elon R. Musk",
+    "content": "Sure. We expect to start delivering in Europe over next year and we\u2019ve not yet announced final pricing for Europe, but it\u2019s going to be sort of sensible pricing compared to what\u2019s in the U.S. It will be a little higher to account for exchange rate variations and logistics costs of bringing things to Europe and so there is some import duties and what not., but it will be otherwise quite similar to our U.S. pricing."
+  },
+  {
+    "paragraph_number": 101,
+    "speaker": "Dan V. Galves \u2013 Deutsche Bank Securities, Inc.",
+    "content": "Got you, there are certain countries in Europe that the tax regimes are very favorable to EV\u2019s."
+  },
+  {
+    "paragraph_number": 102,
+    "speaker": "Elon R. Musk",
+    "content": "True"
+  },
+  {
+    "paragraph_number": 103,
+    "speaker": "Dan V. Galves \u2013 Deutsche Bank Securities, Inc.",
+    "content": "Is there any opportunity to kind of take advantage of that a bit by selling the car higher or do you think that the pricing will be kind of consistent across Europe?"
+  },
+  {
+    "paragraph_number": 104,
+    "speaker": "Elon R. Musk",
+    "content": "I think it\u2019s important to kind of do the right thing for customers. So I think we are sort of really taking advantage of them to lower tax rate and I think that will be very bad. But we are going to have really great sales in a lot of those countries. I mean we are huge in Norway. There had been a [buzz] in Norway at some point, but we actually have just phenomenal customer base in Norway and in places like Switzerland and"
+  },
+  {
+    "paragraph_number": 105,
+    "speaker": "George Blankenship",
+    "content": "Netherlands"
+  },
+  {
+    "paragraph_number": 106,
+    "speaker": "Elon R. Musk",
+    "content": "The Netherlands"
+  },
+  {
+    "paragraph_number": 107,
+    "speaker": "George Blankenship",
+    "content": "Denmark"
+  },
+  {
+    "paragraph_number": 108,
+    "speaker": "Elon R. Musk",
+    "content": "Denmark, yeah."
+  },
+  {
+    "paragraph_number": 109,
+    "speaker": "George Blankenship",
+    "content": "The Scandinavian countries all really selling on the incentives and the customers have responded very positively both for Roadster and for Model X"
+  },
+  {
+    "paragraph_number": 110,
+    "speaker": "Elon R. Musk",
+    "content": "And then things like I think London is going to be a very strong market as well because we got, there is no congestion. You don\u2019t pay the congestion fee, if you have an electric car and the cities are taking a lot of steps to install access to electricity for electric vehicles for charging. From a pricing standpoint we probably see a slight premium in Europe but we don\u2019t want to kind of push to get a larger premium in Europe. I think that would be to send the wrong message to customers. Yeah that will be unfair."
+  },
+  {
+    "paragraph_number": 111,
+    "speaker": "Dan V. Galves \u2013 Deutsche Bank Securities, Inc.",
+    "content": "Make sense thanks very much."
+  },
+  {
+    "paragraph_number": 112,
+    "speaker": "Operator",
+    "content": "Our next question comes from Ben Schuman from Pacific Crest. Your line is open."
+  },
+  {
+    "paragraph_number": 113,
+    "speaker": "Ben Schuman \u2013 Pacific Crest Securities LLC",
+    "content": "Hi, guys, thanks for taking my call. May be Elon, can you discuss how you divide your timely days between Tesla, Space X and Solar City with all three companies approaching such critical events and milestones?"
+  },
+  {
+    "paragraph_number": 114,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah. It is kind of intense right now. To admit I\u2019m not getting a lot of sleep. My time is generally on average split roughly 50-50 between Tesla and Space X. And then Solar City is less than a day, a month. So that doesn\u2019t take much time at all. I mean credit for Solar City really goes to Lyndon and Peter Rive who has taken an [excellent] job running that company. I don\u2019t think it\u2019s going to have a just an outstanding IPO later this year. In fact I don\u2019t think most people realize how good it\u2019s going to be, really good. And yes, so I basically I want to email a lot. I think I\u2019m primarily an email processing device and that\u2019s really helpful to be able to run both companies simultaneously. And then I guess, when I'm with my kids, when they don't need my direct attention, then I want to email as well. That\u2019s kind of how it works."
+  },
+  {
+    "paragraph_number": 115,
+    "speaker": "Ben Schuman \u2013 Pacific Crest Securities LLC",
+    "content": "All right, great thanks. And then I guess with the Toyota announcement given the size of the production contract, we get to about 38,000 Tesla content per vehicle. You\u2019ve mentioned in the shareholder letter that the Mercedes powertrain costs can be sort of low enough on higher volumes to fit a higher volume vehicle. Can you sort of walk through the steps there. Did it all just appear to economy to scale or is there are some additional cost reductions that you can point to."
+  },
+  {
+    "paragraph_number": 116,
+    "speaker": "Deepak Ahuja",
+    "content": "Ben, I just want to clarify certain point, I think it\u2019s very tempting to take the approximations that you just said did of $100 million deal as the volumes announced to come up with $38,000. It\u2019s a simple math, but I have to say it\u2019s very imprecise and not very useful. There are many elements to our transaction with Toyota, in addition to volume. We have partnership with them on ongoing training and support and service and warranty and there are few other things. So the analysis of cost that you mentioned is not that straightforward on a per unit basis. And furthermore for confidentiality reasons, as you can imagine we can\u2019t share with you the price itself of the powertrain and the underlying cost to us. So, I want to just clarify that and also keep in mind that the volumes we are talking here on the Toyota program are far lower and there is an inherent design in efficiency when you are trying to develop a powertrain and make it fit in an internal combustion engine vehicle, it doesn't give us those cost savings that we get inherently from the Model S platform. When we look at the higher volumes for the Daimler program, the huge economies of scale and other design factors that help us out."
+  },
+  {
+    "paragraph_number": 117,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah, I mean just to be clear, the economies of scale is the single biggest driver of cost reduction, I think first it's an approximation, if you scale up production by a factor of 10, your costs would generate drop by half. And that\u2019s a good generalization I think. And so that\u2019s where most of the cost savings is coming from. And then there will also be continued design improvements as we figure out how to achieve the same end goal in a smarter way. Those are the two drivers of mass market, a technology gains mass market which is continued iteration on the design and economies of scale and that\u2019s generally true for any technology."
+  },
+  {
+    "paragraph_number": 118,
+    "speaker": "Ben Schuman \u2013 Pacific Crest Securities LLC",
+    "content": "Great, and thanks for the help on the math there. That\u2019s very helpful."
+  },
+  {
+    "paragraph_number": 119,
+    "speaker": "Operator",
+    "content": "Our next question comes from Jesse Pichel from Jefferies. Your line is open."
+  },
+  {
+    "paragraph_number": 120,
+    "speaker": "Jesse W. Pichel \u2013 Jefferies & Co., Inc.",
+    "content": "Yes, good evening gentlemen. I\u2019d like to ask you that the Daimler drivetrains. In your letter, you allude to tremendous volumes. Can these volumes be large enough to change the cost structure of the S drivetrains and was a contract of this magnitude factored into your 25% margin guide?"
+  },
+  {
+    "paragraph_number": 121,
+    "speaker": "Elon R. Musk",
+    "content": "So with respect to the margin that\u2019s not really, we are not talking about the 25% gross margin model, we are talking about the Model S, just by itself, so no that\u2019s been factored in. And I think economies of scale, does need to be some commonality to achieve those economies of scale. And there will be some amount of commonality, so I guess it would probably just some help to the Model S costs to add the Daimler volume in there. It's not directly additive, but I think it's at least partially added it to the economies of scale."
+  },
+  {
+    "paragraph_number": 122,
+    "speaker": "Jesse W. Pichel \u2013 Jefferies & Co., Inc.",
+    "content": "There has been a lot of chatter in the media about the Tesla battery pack showing up in solar projects and do you think that solar could be a driver of your significant driver of your battery cells in the future?"
+  },
+  {
+    "paragraph_number": 123,
+    "speaker": "Elon R. Musk",
+    "content": "I don\u2019t think we want to show all of our cards right now, but I think there is some interesting potential in that direction may be in partnership with the certain solar company."
+  },
+  {
+    "paragraph_number": 124,
+    "speaker": "Jesse W. Pichel \u2013 Jefferies & Co., Inc.",
+    "content": "When investors are thinking about what it takes for EVs to really penetrate the market, we always come back to the charging infrastructure build out and do you think you can give us some color on how you see this build out occurring? Along key corridors where are we in the build out? What are you do doing to accelerate the build out and what business models do you see emerging?"
+  },
+  {
+    "paragraph_number": 125,
+    "speaker": "Jeffrey K. Evanson",
+    "content": "So, I think we\u2019re going to have a very exciting announcement on the charging front in the July timeframe, sort of traveled to earlier. And I don\u2019t want to release details of that quite yet, but I think it\u2019s really going to \u2013 the light bulb is going to turn on when people see that. It\u2019s pretty awesome. And so, I think it\u2019s really going to put in the missing piece of the puzzle, but now is not quite the right time to talk about it."
+  },
+  {
+    "paragraph_number": 126,
+    "speaker": "Jesse W. Pichel \u2013 Jefferies & Co., Inc.",
+    "content": "That\u2019s what I was hoping to get. I have just one more question. You talk about Norway, but you missed the big, perhaps the biggest markets for you which is China. What kind of interest are you getting from China either for store or for a drive chain?"
+  },
+  {
+    "paragraph_number": 127,
+    "speaker": "Elon R. Musk",
+    "content": "We certainly see China as very important market and we\u2019re hoping to begin sales in China towards the end of next year, but there is a lot of variables in there with regard to approvals from the Chinese authorities went up today. Our aspiration would be to begin sales that are in the latter half of next year. It's an important market and we\u2019re not currently in discussion for any [Tootie Pie] deals two companies within China, but that\u2019s I suppose the possibility in the long-term. In the short-term, we\u2019re very focused on our partnerships with Daimler and Toyota."
+  },
+  {
+    "paragraph_number": 128,
+    "speaker": "Jesse W. Pichel \u2013 Jefferies & Co., Inc.",
+    "content": "Thank you, gentlemen."
+  },
+  {
+    "paragraph_number": 129,
+    "speaker": "Operator",
+    "content": "Our next question comes from Andrea James from Dougherty & Company. Your line is open."
+  },
+  {
+    "paragraph_number": 130,
+    "speaker": "Andrea James \u2013 Dougherty & Company LLC",
+    "content": "Hi, thanks for taking my questions. Trying to gauge the opportunity in the Daimler partnership, if we look at all the powertrain agreements signed in Tesla history is about $140 million in agreements is that about right? Are you talking about a Mercedes contract value that\u2019s an order of magnitude greater than that or just simply greater?"
+  },
+  {
+    "paragraph_number": 131,
+    "speaker": "Deepak Ahuja",
+    "content": "Yeah, the $140 million is probably what\u2019s partially in our financial statements, Andrea there is a little bit more to it, as well as our existing Toyota agreement, which is not in our financial system and will happen over the next few years. So the number is north of that roughly in the $280 so million range. In terms of the Daimler contract, its north of that, how much, I think probably best to just wait until we mature or get to that level and talk beyond, but we just wanted to still give you some sense of scale by providing that guidance."
+  },
+  {
+    "paragraph_number": 132,
+    "speaker": "Andrea James \u2013 Dougherty & Company LLC",
+    "content": "Okay. Thank you."
+  },
+  {
+    "paragraph_number": 133,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah, there is certainly, I mean there is a possibility for it to lead to something that\u2019s order of magnitude greater, but we need to get things, we reach one level after another. So the question is proving ourselves that at each successive level, which we\u2019ve been able to do thus far and but we need to keep doing that in order to progress to essentially the next level."
+  },
+  {
+    "paragraph_number": 134,
+    "speaker": "Andrea James \u2013 Dougherty & Company LLC",
+    "content": "Okay. And then R&D in Q3, do you look at that as roughly about half of Q2, because some of that shifts up into COGS?"
+  },
+  {
+    "paragraph_number": 135,
+    "speaker": "Deepak Ahuja",
+    "content": " : : : : : : : : : : : :"
+  },
+  {
+    "paragraph_number": 136,
+    "speaker": "Andrea James \u2013 Dougherty & Company LLC",
+    "content": "Okay. And then just raising your lower end of your guidance by the $10 million there on the earlier deliveries, can you just go over what exactly is in the guidance range again and sort of what about the early delivery helps you to feel more confident on the lower end?"
+  },
+  {
+    "paragraph_number": 137,
+    "speaker": "Deepak Ahuja",
+    "content": "I think it\u2019s a measure of the slightly higher confidence that we have in achieving our numbers that enabled us to narrow the range."
+  },
+  {
+    "paragraph_number": 138,
+    "speaker": "Andrea James \u2013 Dougherty & Company LLC",
+    "content": "Okay. Thank you."
+  },
+  {
+    "paragraph_number": 139,
+    "speaker": "Operator",
+    "content": "(Operator Instructions) Our next question comes from Michael Lew from Needham. Your line is open."
+  },
+  {
+    "paragraph_number": 140,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Thanks and good afternoon. On the last call, you mentioned that you were thinking about a mainstream offering for Gen 3 instead of an updated Roadster. Do you have any update on your thought process there, like what types of market times you are looking for?"
+  },
+  {
+    "paragraph_number": 141,
+    "speaker": "Elon R. Musk",
+    "content": "I mean, it\u2019s very aspirational at this point, because our intention is focused on the Model S and on our key powertrain partners, Toyota and Daimler. So, I mean, late 2015 would be the earliest."
+  },
+  {
+    "paragraph_number": 142,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Okay."
+  },
+  {
+    "paragraph_number": 143,
+    "speaker": "Elon R. Musk",
+    "content": "2016 is probably most likely, but something like that."
+  },
+  {
+    "paragraph_number": 144,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Got it. Okay. And also on the RAV4 electric, are you providing multiple versions of a battery pack as [true as it stayed] a 100-mile range and you\u2019ve highlighted in the shareholders letter that you are providing a range of 170 miles."
+  },
+  {
+    "paragraph_number": 145,
+    "speaker": "Elon R. Musk",
+    "content": "I think there was unfortunately the way that the information was communicated was a little confusing because there is actually only this one battery pack. And the range is actually, if you were comparing today to what the Leaf 100-mile range is, which is the city driving that compares to the 170-mile number for the RAV4 or sort of 165 miles to 170 miles. If you look at the Leaf, say five cycle test that range is in around the 70-mile to 75-mile number I believe, grant maybe 71-mile or something, 73-mile, very difficult. Okay, I think it remains positive at 73-mile. So when comparing to the five cycle range, the RAV4 range is around 105 miles. So in any given range scenario, the RAV4 is about 60% more range than a Leaf."
+  },
+  {
+    "paragraph_number": 146,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Okay."
+  },
+  {
+    "paragraph_number": 147,
+    "speaker": "Elon R. Musk",
+    "content": "I think we still got confused with comparing the Leafs city range to RAV4\u2019s five cycle range, but which is not apples-to-apples obviously."
+  },
+  {
+    "paragraph_number": 148,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Okay. Yeah. I was trying to reconcile the 100-mile from Toyota and your 170-mile. That\u2019s a little bit confused. That\u2019s a big 70-mile delta [unless] Toyota talked about 100 miles strictly highway driving, but still that\u2019s a nice 70-mile increment on the city side."
+  },
+  {
+    "paragraph_number": 149,
+    "speaker": "Elon R. Musk",
+    "content": "Sorry. Could you repeat the question?"
+  },
+  {
+    "paragraph_number": 150,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Toyota had stated 100 miles and you are at 170 miles for the RAV4 and there is 70-mile delta there, and I guess, or maybe Toyota was mentioning highway driving versus, I\u2019d say, city driving."
+  },
+  {
+    "paragraph_number": 151,
+    "speaker": "Elon R. Musk",
+    "content": "Toyota is referring to there is what\u2019s called the five cycle."
+  },
+  {
+    "paragraph_number": 152,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Okay."
+  },
+  {
+    "paragraph_number": 153,
+    "speaker": "Elon R. Musk",
+    "content": "It\u2019s extremely arduous range and it\u2019s at least 100 miles. Actually, depending on configuration it\u2019s actually at least 105 miles and it maybe as high as 120 miles."
+  },
+  {
+    "paragraph_number": 154,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "All right."
+  },
+  {
+    "paragraph_number": 155,
+    "speaker": "Elon R. Musk",
+    "content": "And if you were to compare that to the Leaf, you would compare it to the Leafs five cycle range which is 73-mile."
+  },
+  {
+    "paragraph_number": 156,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Right. Okay. I get that."
+  },
+  {
+    "paragraph_number": 157,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah."
+  },
+  {
+    "paragraph_number": 158,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Okay. And then, one more."
+  },
+  {
+    "paragraph_number": 159,
+    "speaker": "Elon R. Musk",
+    "content": "What happened in the media was people were looking at the Leafs city range of 100-mile and comparing that to the RAV4\u2019s five cycle range and those are not comparable numbers. That\u2019s where you want us, make more sense to compare it to the sort of 100-mile, almost 170-mile range for the RAV4."
+  },
+  {
+    "paragraph_number": 160,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Okay. I agree. And also one last question. Earlier you mentioned a high conversion rate for the model S sign ups to reservation. Have you seen any signs of, let\u2019s say, cannibalization for model X, since those that are on the wait list for the S may just choose to switch over if they get early on the [lane] the model X a little bit earlier?"
+  },
+  {
+    "paragraph_number": 161,
+    "speaker": "Elon R. Musk",
+    "content": "Well, the model X deliveries will be really, I mean, if you put out a deposit for model X you\u2019re going to get the car in almost two years, maybe 22 months, that kind of thing. So it\u2019s really, you\u2019re do getting a car in Q2 of 2014, if you put down a deposit for the model X, whereas you get a car in Q2 of next year if you put down a deposit for the model X. So there\u2019s about a year advantage there, and then we\u2019ll see how deposits track, but I think it will remain true that you will be able to get a model S a lot sooner than a Model X for quite some time."
+  },
+  {
+    "paragraph_number": 162,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Okay. I misunderstood. I thought they would be rolling out late in 2013, but thank you."
+  },
+  {
+    "paragraph_number": 163,
+    "speaker": "Elon R. Musk",
+    "content": "I mean, very tiny numbers that\u2019s possible, but, I mean if you put down a deposit now you\u2019re really going to get your car in about 22 months-ish. I mean, that\u2019s overly precise. Figure it at approximately two years."
+  },
+  {
+    "paragraph_number": 164,
+    "speaker": "Michael Lew \u2013 Needham & Co. LLC",
+    "content": "Okay. I appreciate it."
+  },
+  {
+    "paragraph_number": 165,
+    "speaker": "Jeffrey K. Evanson",
+    "content": "Hey, Patrick, we probably only have time for one more question."
+  },
+  {
+    "paragraph_number": 166,
+    "speaker": "Operator",
+    "content": "Our last question comes from Ben Rose from Battle Road Research. Your line is open."
+  },
+  {
+    "paragraph_number": 167,
+    "speaker": "Ben Z. Rose \u2013 Battle Road Research Ltd.",
+    "content": "Good afternoon, gentlemen. Just a question. From the shareholder letter, you say [quote] selected cars are independently purchased and crash tested by the NHTSA. Do you know whether the model S will be one of those cars, and if so, when?"
+  },
+  {
+    "paragraph_number": 168,
+    "speaker": "Elon R. Musk",
+    "content": "Yeah, it will definitely be one of those cars. I\u2019m not sure. In fact, I\u2019m not sure if they actually tell us exactly when they do it, but I don\u2019t know. I think they just buy the cars, I think, secretly and we don\u2019t actually know where they are in the queue."
+  },
+  {
+    "paragraph_number": 169,
+    "speaker": "Ben Z. Rose \u2013 Battle Road Research Ltd.",
+    "content": "But you would be surprised if they didn\u2019t issue a crash safety test rating by, say, August or September?"
+  },
+  {
+    "paragraph_number": 170,
+    "speaker": "Elon R. Musk",
+    "content": "Honestly don\u2019t know. But we do feel that we are confident that when they do test the car it will be a surprise to our safety rating level. In fact, I think the model S, in my opinion, will be the safest car on the road and we have certain architectural advantages that other cars don\u2019t have like a much longer crumple zone in the front, because we don\u2019t have a big engine block that we\u2019re going to deal with. A sidewall intrusion is, we think will probably be the lowest of any events and our rear crash performance is definitely going to be better than any stance because we are protecting for the third row occupants. In fact, for the rear impact, the car is deigned to not just take a highway speed impacting the rear, but be able to take a highway speed impact on half the car, which I think is an important threshold for safety for the third row seats. And has very good roll over protection. I really think this is going to be the safest car on the road."
+  },
+  {
+    "paragraph_number": 171,
+    "speaker": "Ben Z. Rose \u2013 Battle Road Research Ltd.",
+    "content": "Okay. Thanks very much. Appreciate it."
+  },
+  {
+    "paragraph_number": 172,
+    "speaker": "Elon R. Musk",
+    "content": "You\u2019re welcome."
+  },
+  {
+    "paragraph_number": 173,
+    "speaker": "Jeffrey K. Evanson",
+    "content": "All right, thank you every one for joining us today on the call. And we look forward to talking with you next quarter. And we\u2019ll also be attending a couple of conferences in the month of May, including the Deutsche Bank Clean Tech Conference next week. Thank you everyone. Have a great day."
+  },
+  {
+    "paragraph_number": 174,
+    "speaker": "Operator",
+    "content": "Ladies and Gentlemen, thank you for participating in today\u2019s program. This concludes the program. You may all disconnect."
+  }
+]

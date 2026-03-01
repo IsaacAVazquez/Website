@@ -1,0 +1,32 @@
+{
+  "ttm_pe": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  },
+  "ps_ratio": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  },
+  "pb_ratio": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  },
+  "roe": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  },
+  "roa": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  },
+  "equity_multiplier": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  },
+  "gross_margin": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  },
+  "ebitda_margin": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  },
+  "net_margin": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  },
+  "asset_turnover": {
+    "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
+  }
+}

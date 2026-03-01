@@ -1,0 +1,367 @@
+{
+  "roe": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -12767000000.0,
+      "beginning_stockholders_equity": 539883000000.0,
+      "ending_stockholders_equity": 525330000000.0,
+      "avg_equity": 532606500000.0,
+      "roe": -0.024
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 37574000000.0,
+      "beginning_stockholders_equity": 525330000000.0,
+      "ending_stockholders_equity": 561273000000.0,
+      "avg_equity": 543301500000.0,
+      "roe": 0.0692
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 12702000000.0,
+      "beginning_stockholders_equity": 561273000000.0,
+      "ending_stockholders_equity": 571490000000.0,
+      "avg_equity": 566381500000.0,
+      "roe": 0.0224
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 30348000000.0,
+      "beginning_stockholders_equity": 571490000000.0,
+      "ending_stockholders_equity": 601697000000.0,
+      "avg_equity": 586593500000.0,
+      "roe": 0.0517
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 26251000000.0,
+      "beginning_stockholders_equity": 601697000000.0,
+      "ending_stockholders_equity": 629069000000.0,
+      "avg_equity": 615383000000.0,
+      "roe": 0.0427
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 19694000000.0,
+      "beginning_stockholders_equity": 629069000000.0,
+      "ending_stockholders_equity": 649368000000.0,
+      "avg_equity": 639218500000.0,
+      "roe": 0.0308
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 4603000000.0,
+      "beginning_stockholders_equity": 649368000000.0,
+      "ending_stockholders_equity": 654471000000.0,
+      "avg_equity": 651919500000.0,
+      "roe": 0.0071
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 12370000000.0,
+      "beginning_stockholders_equity": 654471000000.0,
+      "ending_stockholders_equity": 667989000000.0,
+      "avg_equity": 661230000000.0,
+      "roe": 0.0187
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -12767000000.0,
+      "beginning_total_assets": 1041573000000.0,
+      "ending_total_assets": 1019933000000.0,
+      "avg_assets": 1030753000000.0,
+      "roa": -0.0124
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 37574000000.0,
+      "beginning_total_assets": 1019933000000.0,
+      "ending_total_assets": 1069978000000.0,
+      "avg_assets": 1044955500000.0,
+      "roa": 0.036
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 12702000000.0,
+      "beginning_total_assets": 1069978000000.0,
+      "ending_total_assets": 1070035000000.0,
+      "avg_assets": 1070006500000.0,
+      "roa": 0.0119
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 30348000000.0,
+      "beginning_total_assets": 1070035000000.0,
+      "ending_total_assets": 1108860000000.0,
+      "avg_assets": 1089447500000.0,
+      "roa": 0.0279
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 26251000000.0,
+      "beginning_total_assets": 1108860000000.0,
+      "ending_total_assets": 1147251000000.0,
+      "avg_assets": 1128055500000.0,
+      "roa": 0.0233
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 19694000000.0,
+      "beginning_total_assets": 1147251000000.0,
+      "ending_total_assets": 1153881000000.0,
+      "avg_assets": 1150566000000.0,
+      "roa": 0.0171
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 4603000000.0,
+      "beginning_total_assets": 1153881000000.0,
+      "ending_total_assets": 1164532000000.0,
+      "avg_assets": 1159206500000.0,
+      "roa": 0.004
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 12370000000.0,
+      "beginning_total_assets": 1164532000000.0,
+      "ending_total_assets": 1163968000000.0,
+      "avg_assets": 1164250000000.0,
+      "roa": 0.0106
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30",
+      "ebit": -15699000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": -11617260000.0,
+      "beginning_invested_capital": 665230000000.0,
+      "ending_invested_capital": 650111000000.0,
+      "avg_invested_capital": 657670500000.0,
+      "roic": -0.0177
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "ebit": 48214000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 38571200000.0,
+      "beginning_invested_capital": 650111000000.0,
+      "ending_invested_capital": 689544000000.0,
+      "avg_invested_capital": 669827500000.0,
+      "roic": 0.0576
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31",
+      "ebit": 17022000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 13958040000.0,
+      "beginning_invested_capital": 689544000000.0,
+      "ending_invested_capital": 694244000000.0,
+      "avg_invested_capital": 691894000000.0,
+      "roic": 0.0202
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30",
+      "ebit": 39367000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 31493600000.0,
+      "beginning_invested_capital": 694244000000.0,
+      "ending_invested_capital": 725325000000.0,
+      "avg_invested_capital": 709784500000.0,
+      "roic": 0.0444
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30",
+      "ebit": 33722000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 27314820000.0,
+      "beginning_invested_capital": 725325000000.0,
+      "ending_invested_capital": 753576000000.0,
+      "avg_invested_capital": 739450500000.0,
+      "roic": 0.0369
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "ebit": 25465000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 20881300000.0,
+      "beginning_invested_capital": 753576000000.0,
+      "ending_invested_capital": 774130000000.0,
+      "avg_invested_capital": 763853000000.0,
+      "roic": 0.0273
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31",
+      "ebit": 6405000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 5828550000.0,
+      "beginning_invested_capital": 774130000000.0,
+      "ending_invested_capital": 780398000000.0,
+      "avg_invested_capital": 777264000000.0,
+      "roic": 0.0075
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30",
+      "ebit": 16003000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 13442520000.0,
+      "beginning_invested_capital": 780398000000.0,
+      "ending_invested_capital": 795009000000.0,
+      "avg_invested_capital": 787703500000.0,
+      "roic": 0.0171
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-09-30",
+      "ebit": null,
+      "tax_rate_for_calcs": null,
+      "nopat": null,
+      "beginning_invested_capital": 795009000000.0,
+      "ending_invested_capital": null,
+      "avg_invested_capital": null,
+      "roic": null
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": -0.024,
+      "roa": -0.0124,
+      "equity_multiplier": 1.94
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0692,
+      "roa": 0.036,
+      "equity_multiplier": 1.92
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0224,
+      "roa": 0.0119,
+      "equity_multiplier": 1.88
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0517,
+      "roa": 0.0279,
+      "equity_multiplier": 1.85
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0427,
+      "roa": 0.0233,
+      "equity_multiplier": 1.83
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0308,
+      "roa": 0.0171,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0071,
+      "roa": 0.004,
+      "equity_multiplier": 1.78
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0187,
+      "roa": 0.0106,
+      "equity_multiplier": 1.76
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": -0.0124,
+      "net_margin": -0.2013,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.036,
+      "net_margin": 0.2886,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0119,
+      "net_margin": 0.1384,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0279,
+      "net_margin": 0.2583,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0233,
+      "net_margin": 0.2313,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0171,
+      "net_margin": 0.1941,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.004,
+      "net_margin": 0.0553,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0106,
+      "net_margin": 0.1251,
+      "asset_turnover": 0.08
+    }
+  ]
+}

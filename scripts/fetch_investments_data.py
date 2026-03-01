@@ -5,28 +5,29 @@ Reads symbols from scripts/investments_symbols.txt, fetches financial data,
 and writes per-ticker JSON files to public/data/investments/{SYMBOL}/.
 
 Usage:
-    python3 scripts/fetch_investments_data.py
+    .venv/bin/python3 scripts/fetch_investments_data.py
+    (or: npm run update:investments)
 
 Requirements:
-    pip install defeatbeta-api
+    .venv/bin/pip install defeatbeta-api
 """
 
 import json
-import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
-# Attempt to import defeatbeta-api; fail gracefully with clear instructions
+# Import
 # ---------------------------------------------------------------------------
 try:
-    from defeatbeta import Ticker  # type: ignore
+    from defeatbeta_api.data.ticker import Ticker  # type: ignore
 except ImportError:
     print("Error: defeatbeta-api is not installed.")
-    print("Install it with:  pip install defeatbeta-api")
+    print("Install it with:  .venv/bin/pip install defeatbeta-api")
     sys.exit(1)
 
+import pandas as pd  # type: ignore  # noqa: E402 — guaranteed by defeatbeta-api
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -41,7 +42,6 @@ OUTPUT_DIR = PROJECT_ROOT / "public" / "data" / "investments"
 # Helpers
 # ---------------------------------------------------------------------------
 def read_symbols() -> list[str]:
-    """Read symbols from the symbols file, one per line."""
     if not SYMBOLS_FILE.exists():
         print(f"Error: symbols file not found at {SYMBOLS_FILE}")
         sys.exit(1)
@@ -49,30 +49,26 @@ def read_symbols() -> list[str]:
     return [line.strip().upper() for line in lines if line.strip() and not line.startswith("#")]
 
 
-def safe_call(fn, *args, **kwargs):
-    """Call fn(*args, **kwargs), returning None and printing a warning on error."""
+def safe_call(fn):
+    """Call fn(), returning {"error": ...} on failure."""
     try:
-        return fn(*args, **kwargs)
+        return fn()
     except Exception as exc:
         return {"error": str(exc)}
 
 
-def serialize(obj):
-    """
-    JSON-serialize obj, handling DataFrames, Series, numpy types, and datetimes.
-    Returns a JSON-safe object (dict / list / scalar).
-    """
-    # pandas DataFrame → list of row dicts
-    try:
-        import pandas as pd  # type: ignore
-        if isinstance(obj, pd.DataFrame):
-            return json.loads(obj.to_json(orient="records", date_format="iso"))
-        if isinstance(obj, pd.Series):
-            return json.loads(obj.to_json(date_format="iso"))
-    except ImportError:
-        pass
-
-    # numpy scalars
+def df_to_json(obj) -> object:
+    """Convert DataFrames / Series / nested objects to JSON-safe values."""
+    if isinstance(obj, pd.DataFrame):
+        return json.loads(obj.to_json(orient="records", date_format="iso"))
+    if isinstance(obj, pd.Series):
+        return json.loads(obj.to_json(date_format="iso"))
+    if isinstance(obj, dict):
+        return {k: df_to_json(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [df_to_json(v) for v in obj]
+    if isinstance(obj, datetime):
+        return obj.isoformat()
     try:
         import numpy as np  # type: ignore
         if isinstance(obj, (np.integer,)):
@@ -83,111 +79,253 @@ def serialize(obj):
             return obj.tolist()
     except ImportError:
         pass
-
-    # datetime
-    if isinstance(obj, datetime):
-        return obj.isoformat()
-
-    # dict / list recursion
-    if isinstance(obj, dict):
-        return {k: serialize(v) for k, v in obj.items()}
-    if isinstance(obj, list):
-        return [serialize(v) for v in obj]
-
     return obj
 
 
 def write_json(path: Path, data) -> None:
-    """Write data to path as pretty-printed JSON."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, default=str)
 
 
 # ---------------------------------------------------------------------------
-# Per-section fetchers
+# Fetch helpers — map real API methods to output file names
 # ---------------------------------------------------------------------------
-def fetch_sections(ticker: "Ticker", symbol: str, out_dir: Path) -> None:
-    """Fetch all data sections for a single ticker and write JSON files."""
-    print(f"  Fetching price history...")
-    write_json(out_dir / "price.json", serialize(safe_call(ticker.price, period="2y", interval="1d")))
+def fetch_info(t: Ticker, out: Path) -> None:
+    print("  info...")
+    write_json(out / "info.json", df_to_json(safe_call(lambda: t.info())))
 
-    print(f"  Fetching fundamentals...")
-    write_json(out_dir / "fundamentals.json", serialize(safe_call(ticker.fundamentals)))
 
-    print(f"  Fetching profitability...")
-    write_json(out_dir / "profitability.json", serialize(safe_call(ticker.profitability)))
+def fetch_officers(t: Ticker, out: Path) -> None:
+    print("  officers...")
+    write_json(out / "officers.json", df_to_json(safe_call(lambda: t.officers())))
 
-    print(f"  Fetching margins...")
-    write_json(out_dir / "margins.json", serialize(safe_call(ticker.margins)))
 
-    print(f"  Fetching growth...")
-    write_json(out_dir / "growth.json", serialize(safe_call(ticker.growth)))
+def fetch_price(t: Ticker, out: Path) -> None:
+    print("  price...")
+    write_json(out / "price.json", df_to_json(safe_call(lambda: t.price())))
 
-    print(f"  Fetching income statement...")
-    write_json(out_dir / "income_statement.json", serialize(safe_call(ticker.income_statement)))
 
-    print(f"  Fetching balance sheet...")
-    write_json(out_dir / "balance_sheet.json", serialize(safe_call(ticker.balance_sheet)))
+def fetch_beta(t: Ticker, out: Path) -> None:
+    print("  beta...")
+    write_json(out / "beta.json", df_to_json(safe_call(lambda: t.beta())))
 
-    print(f"  Fetching cash flow...")
-    write_json(out_dir / "cash_flow.json", serialize(safe_call(ticker.cash_flow)))
 
-    print(f"  Fetching WACC...")
-    write_json(out_dir / "wacc.json", serialize(safe_call(ticker.wacc)))
+def fetch_fundamentals(t: Ticker, out: Path) -> None:
+    print("  fundamentals...")
+    data = {}
+    for key, fn in [
+        ("ttmEps",    lambda: t.ttm_eps()),
+        ("ttmPe",     lambda: t.ttm_pe()),
+        ("marketCap", lambda: t.market_capitalization()),
+        ("psRatio",   lambda: t.ps_ratio()),
+        ("pbRatio",   lambda: t.pb_ratio()),
+        ("pegRatio",  lambda: t.peg_ratio()),
+    ]:
+        result = safe_call(fn)
+        data[key] = df_to_json(result)
+    write_json(out / "fundamentals.json", data)
 
-    print(f"  Fetching industry comparisons...")
-    write_json(out_dir / "industry.json", serialize(safe_call(ticker.industry)))
 
-    print(f"  Fetching revenue segments...")
-    write_json(out_dir / "revenue_segments.json", serialize(safe_call(ticker.revenue_segments)))
+def fetch_profitability(t: Ticker, out: Path) -> None:
+    print("  profitability...")
+    data = {}
+    for key, fn in [
+        ("roe",              lambda: t.roe()),
+        ("roa",              lambda: t.roa()),
+        ("roic",             lambda: t.roic()),
+        ("equityMultiplier", lambda: t.equity_multiplier()),
+        ("assetTurnover",    lambda: t.asset_turnover()),
+    ]:
+        result = safe_call(fn)
+        data[key] = df_to_json(result)
+    write_json(out / "profitability.json", data)
 
-    print(f"  Fetching beta...")
-    write_json(out_dir / "beta.json", serialize(safe_call(ticker.beta)))
 
-    print(f"  Fetching transcripts list...")
-    transcripts_data = safe_call(ticker.transcripts)
-    write_json(out_dir / "transcripts.json", serialize(transcripts_data))
+def fetch_margins(t: Ticker, out: Path) -> None:
+    print("  margins...")
+    data = {}
+    for key, fn in [
+        ("quarterly_gross",     lambda: t.quarterly_gross_margin()),
+        ("annual_gross",        lambda: t.annual_gross_margin()),
+        ("quarterly_operating", lambda: t.quarterly_operating_margin()),
+        ("annual_operating",    lambda: t.annual_operating_margin()),
+        ("quarterly_net",       lambda: t.quarterly_net_margin()),
+        ("annual_net",          lambda: t.annual_net_margin()),
+        ("quarterly_ebitda",    lambda: t.quarterly_ebitda_margin()),
+        ("annual_ebitda",       lambda: t.annual_ebitda_margin()),
+        ("quarterly_fcf",       lambda: t.quarterly_fcf_margin()),
+        ("annual_fcf",          lambda: t.annual_fcf_margin()),
+    ]:
+        result = safe_call(fn)
+        data[key] = df_to_json(result)
+    write_json(out / "margins.json", data)
 
-    print(f"  Fetching news...")
-    write_json(out_dir / "news.json", serialize(safe_call(ticker.news)))
 
-    print(f"  Fetching DCF...")
-    write_json(out_dir / "dcf.json", serialize(safe_call(ticker.dcf)))
+def fetch_growth(t: Ticker, out: Path) -> None:
+    print("  growth...")
+    data = {}
+    for key, fn in [
+        ("quarterly_revenue",          lambda: t.quarterly_revenue_yoy_growth()),
+        ("annual_revenue",             lambda: t.annual_revenue_yoy_growth()),
+        ("quarterly_operating_income", lambda: t.quarterly_operating_income_yoy_growth()),
+        ("annual_operating_income",    lambda: t.annual_operating_income_yoy_growth()),
+        ("quarterly_ebitda",           lambda: t.quarterly_ebitda_yoy_growth()),
+        ("annual_ebitda",              lambda: t.annual_ebitda_yoy_growth()),
+        ("quarterly_net_income",       lambda: t.quarterly_net_income_yoy_growth()),
+        ("annual_net_income",          lambda: t.annual_net_income_yoy_growth()),
+        ("quarterly_fcf",              lambda: t.quarterly_fcf_yoy_growth()),
+        ("annual_fcf",                 lambda: t.annual_fcf_yoy_growth()),
+        ("quarterly_eps",              lambda: t.quarterly_eps_yoy_growth()),
+    ]:
+        result = safe_call(fn)
+        data[key] = df_to_json(result)
+    write_json(out / "growth.json", data)
 
-    print(f"  Fetching company info...")
-    write_json(out_dir / "info.json", serialize(safe_call(ticker.info)))
 
-    print(f"  Fetching officers...")
-    write_json(out_dir / "officers.json", serialize(safe_call(ticker.officers)))
+def statement_to_json(stmt) -> object:
+    if isinstance(stmt, dict):  # error case
+        return stmt
+    try:
+        return df_to_json(stmt.df())
+    except Exception as exc:
+        return {"error": str(exc)}
+
+
+def fetch_statements(t: Ticker, out: Path) -> None:
+    print("  income_statement...")
+    write_json(out / "income_statement.json", {
+        "quarterly": statement_to_json(safe_call(lambda: t.quarterly_income_statement())),
+        "annual":    statement_to_json(safe_call(lambda: t.annual_income_statement())),
+    })
+    print("  balance_sheet...")
+    write_json(out / "balance_sheet.json", {
+        "quarterly": statement_to_json(safe_call(lambda: t.quarterly_balance_sheet())),
+        "annual":    statement_to_json(safe_call(lambda: t.annual_balance_sheet())),
+    })
+    print("  cash_flow...")
+    write_json(out / "cash_flow.json", {
+        "quarterly": statement_to_json(safe_call(lambda: t.quarterly_cash_flow())),
+        "annual":    statement_to_json(safe_call(lambda: t.annual_cash_flow())),
+    })
+
+
+def fetch_wacc(t: Ticker, out: Path) -> None:
+    print("  wacc...")
+    write_json(out / "wacc.json", df_to_json(safe_call(lambda: t.wacc())))
+
+
+def fetch_dcf(t: Ticker, out: Path) -> None:
+    print("  dcf...")
+    write_json(out / "dcf.json", df_to_json(safe_call(lambda: t.dcf())))
+
+
+def fetch_industry(t: Ticker, out: Path) -> None:
+    print("  industry...")
+    data = {}
+    for key, fn in [
+        ("ttm_pe",            lambda: t.industry_ttm_pe()),
+        ("ps_ratio",          lambda: t.industry_ps_ratio()),
+        ("pb_ratio",          lambda: t.industry_pb_ratio()),
+        ("roe",               lambda: t.industry_roe()),
+        ("roa",               lambda: t.industry_roa()),
+        ("equity_multiplier", lambda: t.industry_equity_multiplier()),
+        ("gross_margin",      lambda: t.industry_quarterly_gross_margin()),
+        ("ebitda_margin",     lambda: t.industry_quarterly_ebitda_margin()),
+        ("net_margin",        lambda: t.industry_quarterly_net_margin()),
+        ("asset_turnover",    lambda: t.industry_asset_turnover()),
+    ]:
+        result = safe_call(fn)
+        data[key] = df_to_json(result)
+    write_json(out / "industry.json", data)
+
+
+def fetch_revenue_segments(t: Ticker, out: Path) -> None:
+    print("  revenue_segments...")
+    data = {}
+    for key, fn in [
+        ("by_segment",   lambda: t.revenue_by_segment()),
+        ("by_geography", lambda: t.revenue_by_geography()),
+        ("by_product",   lambda: t.revenue_by_product()),
+    ]:
+        result = safe_call(fn)
+        data[key] = df_to_json(result)
+    write_json(out / "revenue_segments.json", data)
+
+
+def fetch_news(t: Ticker, out: Path) -> None:
+    print("  news...")
+    result = safe_call(lambda: t.news())
+    if isinstance(result, dict):
+        write_json(out / "news.json", result)
+        return
+    news_list = safe_call(lambda: result.get_news_list())
+    write_json(out / "news.json", df_to_json(news_list))
+
+
+def fetch_transcripts(t: Ticker, out: Path) -> None:
+    print("  transcripts...")
+    result = safe_call(lambda: t.earning_call_transcripts())
+    if isinstance(result, dict):
+        write_json(out / "transcripts.json", result)
+        return
+
+    transcript_list = safe_call(lambda: result.get_transcripts_list())
+    write_json(out / "transcripts.json", df_to_json(transcript_list))
+
+    # Fetch individual transcripts (up to 4 most recent)
+    if isinstance(transcript_list, pd.DataFrame):
+        for _, row in transcript_list.head(4).iterrows():
+            fy = int(row.get("fiscal_year", row.get("fiscalYear", 0)))
+            fq = int(row.get("fiscal_quarter", row.get("fiscalQuarter", 0)))
+            if fy and fq:
+                print(f"    transcript {fy} Q{fq}...")
+                content = safe_call(lambda: result.get_transcript(fy, fq))
+                write_json(out / f"transcript_{fy}_{fq}.json", df_to_json(content))
 
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+def fetch_symbol(symbol: str, out_dir: Path) -> None:
+    t = Ticker(symbol)
+    fetch_info(t, out_dir)
+    fetch_officers(t, out_dir)
+    fetch_price(t, out_dir)
+    fetch_beta(t, out_dir)
+    fetch_fundamentals(t, out_dir)
+    fetch_profitability(t, out_dir)
+    fetch_margins(t, out_dir)
+    fetch_growth(t, out_dir)
+    fetch_statements(t, out_dir)
+    fetch_wacc(t, out_dir)
+    fetch_dcf(t, out_dir)
+    fetch_industry(t, out_dir)
+    fetch_revenue_segments(t, out_dir)
+    fetch_news(t, out_dir)
+    fetch_transcripts(t, out_dir)
+
+
 def main() -> None:
     symbols = read_symbols()
     print(f"Processing {len(symbols)} symbols: {', '.join(symbols)}")
-    print(f"Output directory: {OUTPUT_DIR}")
+    print(f"Output directory: {OUTPUT_DIR}\n")
 
     successful: list[str] = []
     failed: list[str] = []
 
     for symbol in symbols:
-        print(f"\n[{symbol}] Starting...")
+        print(f"[{symbol}] Starting...")
         out_dir = OUTPUT_DIR / symbol
         try:
-            ticker = Ticker(symbol)
-            fetch_sections(ticker, symbol, out_dir)
+            fetch_symbol(symbol, out_dir)
             successful.append(symbol)
-            print(f"[{symbol}] Done.")
+            print(f"[{symbol}] Done.\n")
         except Exception as exc:
             failed.append(symbol)
-            print(f"[{symbol}] FAILED: {exc}")
-            # Write an error marker so the UI knows this symbol had issues
+            print(f"[{symbol}] FAILED: {exc}\n")
             write_json(out_dir / "error.json", {"symbol": symbol, "error": str(exc)})
 
-    # Write index file
     index_data = {
         "symbols": successful,
         "failed": failed,
@@ -195,13 +333,12 @@ def main() -> None:
     }
     write_json(OUTPUT_DIR / "index.json", index_data)
 
-    print(f"\n{'='*60}")
+    print("=" * 60)
     print(f"Done. {len(successful)}/{len(symbols)} symbols processed.")
     if successful:
         print(f"  Success: {', '.join(successful)}")
     if failed:
         print(f"  Failed:  {', '.join(failed)}")
-    print(f"  Index written to {OUTPUT_DIR / 'index.json'}")
 
 
 if __name__ == "__main__":

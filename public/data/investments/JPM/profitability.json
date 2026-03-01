@@ -1,0 +1,464 @@
+{
+  "roe": [
+    {
+      "symbol": "JPM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 12685000000.0,
+      "beginning_stockholders_equity": 312516000000.0,
+      "ending_stockholders_equity": 317371000000.0,
+      "avg_equity": 314943500000.0,
+      "roe": 0.0403
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 8871000000.0,
+      "beginning_stockholders_equity": 317371000000.0,
+      "ending_stockholders_equity": 327878000000.0,
+      "avg_equity": 322624500000.0,
+      "roe": 0.0275
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 12942000000.0,
+      "beginning_stockholders_equity": 327878000000.0,
+      "ending_stockholders_equity": 336637000000.0,
+      "avg_equity": 332257500000.0,
+      "roe": 0.039
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 17718000000.0,
+      "beginning_stockholders_equity": 336637000000.0,
+      "ending_stockholders_equity": 340552000000.0,
+      "avg_equity": 338594500000.0,
+      "roe": 0.0523
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 12537000000.0,
+      "beginning_stockholders_equity": 340552000000.0,
+      "ending_stockholders_equity": 345836000000.0,
+      "avg_equity": 343194000000.0,
+      "roe": 0.0365
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 13669000000.0,
+      "beginning_stockholders_equity": 345836000000.0,
+      "ending_stockholders_equity": 344758000000.0,
+      "avg_equity": 345297000000.0,
+      "roe": 0.0396
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 14317000000.0,
+      "beginning_stockholders_equity": 344758000000.0,
+      "ending_stockholders_equity": 351420000000.0,
+      "avg_equity": 348089000000.0,
+      "roe": 0.0411
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 14630000000.0,
+      "beginning_stockholders_equity": 351420000000.0,
+      "ending_stockholders_equity": 356924000000.0,
+      "avg_equity": 354172000000.0,
+      "roe": 0.0413
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 14043000000.0,
+      "beginning_stockholders_equity": 356924000000.0,
+      "ending_stockholders_equity": 360212000000.0,
+      "avg_equity": 358568000000.0,
+      "roe": 0.0392
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 12690000000.0,
+      "beginning_stockholders_equity": 360212000000.0,
+      "ending_stockholders_equity": 362438000000.0,
+      "avg_equity": 361325000000.0,
+      "roe": 0.0351
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "JPM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 12685000000.0,
+      "beginning_total_assets": 3868240000000.0,
+      "ending_total_assets": 3898333000000.0,
+      "avg_assets": 3883286500000.0,
+      "roa": 0.0033
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 8871000000.0,
+      "beginning_total_assets": 3898333000000.0,
+      "ending_total_assets": 3875393000000.0,
+      "avg_assets": 3886863000000.0,
+      "roa": 0.0023
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 12942000000.0,
+      "beginning_total_assets": 3875393000000.0,
+      "ending_total_assets": 4090727000000.0,
+      "avg_assets": 3983060000000.0,
+      "roa": 0.0032
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 17718000000.0,
+      "beginning_total_assets": 4090727000000.0,
+      "ending_total_assets": 4143003000000.0,
+      "avg_assets": 4116865000000.0,
+      "roa": 0.0043
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 12537000000.0,
+      "beginning_total_assets": 4143003000000.0,
+      "ending_total_assets": 4210048000000.0,
+      "avg_assets": 4176525500000.0,
+      "roa": 0.003
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 13669000000.0,
+      "beginning_total_assets": 4210048000000.0,
+      "ending_total_assets": 4002814000000.0,
+      "avg_assets": 4106431000000.0,
+      "roa": 0.0033
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 14317000000.0,
+      "beginning_total_assets": 4002814000000.0,
+      "ending_total_assets": 4357856000000.0,
+      "avg_assets": 4180335000000.0,
+      "roa": 0.0034
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 14630000000.0,
+      "beginning_total_assets": 4357856000000.0,
+      "ending_total_assets": 4552482000000.0,
+      "avg_assets": 4455169000000.0,
+      "roa": 0.0033
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 14043000000.0,
+      "beginning_total_assets": 4552482000000.0,
+      "ending_total_assets": 4560205000000.0,
+      "avg_assets": 4556343500000.0,
+      "roa": 0.0031
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 12690000000.0,
+      "beginning_total_assets": 4560205000000.0,
+      "ending_total_assets": 4424900000000.0,
+      "avg_assets": 4492552500000.0,
+      "roa": 0.0028
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "JPM",
+      "report_date": "2022-09-30",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": null,
+      "beginning_invested_capital": 737830000000.0,
+      "ending_invested_capital": 723694000000.0,
+      "avg_invested_capital": 730762000000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2022-12-31",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": null,
+      "beginning_invested_capital": 723694000000.0,
+      "ending_invested_capital": null,
+      "avg_invested_capital": null,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2023-09-30",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": null,
+      "beginning_invested_capital": 690212000000.0,
+      "ending_invested_capital": 698230000000.0,
+      "avg_invested_capital": 694221000000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2023-12-31",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": null,
+      "beginning_invested_capital": 698230000000.0,
+      "ending_invested_capital": 737011000000.0,
+      "avg_invested_capital": 717620500000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-03-31",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": null,
+      "beginning_invested_capital": 737011000000.0,
+      "ending_invested_capital": 748877000000.0,
+      "avg_invested_capital": 742944000000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-06-30",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": null,
+      "beginning_invested_capital": 748877000000.0,
+      "ending_invested_capital": 757988000000.0,
+      "avg_invested_capital": 753432500000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-09-30",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": null,
+      "beginning_invested_capital": 757988000000.0,
+      "ending_invested_capital": 784981000000.0,
+      "avg_invested_capital": 771484500000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-12-31",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": null,
+      "beginning_invested_capital": 784981000000.0,
+      "ending_invested_capital": 779019000000.0,
+      "avg_invested_capital": 782000000000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-03-31",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": null,
+      "beginning_invested_capital": 779019000000.0,
+      "ending_invested_capital": 803579000000.0,
+      "avg_invested_capital": 791299000000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-06-30",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": null,
+      "beginning_invested_capital": 803579000000.0,
+      "ending_invested_capital": 821974000000.0,
+      "avg_invested_capital": 812776500000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-09-30",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": null,
+      "beginning_invested_capital": 821974000000.0,
+      "ending_invested_capital": 836725000000.0,
+      "avg_invested_capital": 829349500000.0,
+      "roic": null
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-12-31",
+      "ebit": null,
+      "tax_rate_for_calcs": 0.24,
+      "nopat": null,
+      "beginning_invested_capital": 836725000000.0,
+      "ending_invested_capital": 842375000000.0,
+      "avg_invested_capital": 839550000000.0,
+      "roic": null
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "JPM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0403,
+      "roa": 0.0033,
+      "equity_multiplier": 12.21
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0275,
+      "roa": 0.0023,
+      "equity_multiplier": 11.96
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.039,
+      "roa": 0.0032,
+      "equity_multiplier": 12.19
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0523,
+      "roa": 0.0043,
+      "equity_multiplier": 12.16
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0365,
+      "roa": 0.003,
+      "equity_multiplier": 12.17
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0396,
+      "roa": 0.0033,
+      "equity_multiplier": 12.0
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0411,
+      "roa": 0.0034,
+      "equity_multiplier": 12.09
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0413,
+      "roa": 0.0033,
+      "equity_multiplier": 12.52
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0392,
+      "roa": 0.0031,
+      "equity_multiplier": 12.65
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0351,
+      "roa": 0.0028,
+      "equity_multiplier": 12.54
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "JPM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0033,
+      "net_margin": 0.319,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0023,
+      "net_margin": 0.2298,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0032,
+      "net_margin": 0.3088,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0043,
+      "net_margin": 0.4212,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.003,
+      "net_margin": 0.2939,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0033,
+      "net_margin": 0.3194,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0034,
+      "net_margin": 0.3159,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0033,
+      "net_margin": 0.326,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0031,
+      "net_margin": 0.3025,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "JPM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0028,
+      "net_margin": 0.2771,
+      "asset_turnover": 0.01
+    }
+  ]
+}
