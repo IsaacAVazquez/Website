@@ -14,9 +14,10 @@ import {
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
 import Link from "next/link";
-import { useState, lazy, Suspense } from "react";
+import { useState, lazy, Suspense, ComponentType } from "react";
+import type { ProjectDetailModalProps } from "@/components/ProjectDetailModal";
 
-const ProjectDetailModal = lazy(() =>
+const ProjectDetailModal = lazy<ComponentType<ProjectDetailModalProps>>(() =>
   import("@/components/ProjectDetailModal").then((mod) => ({
     default: mod.ProjectDetailModal,
   }))

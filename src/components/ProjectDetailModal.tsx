@@ -10,7 +10,7 @@ import { Badge } from '@/components/ui/Badge';
 import { ProjectImage } from '@/components/ui/OptimizedImage';
 import { MetricCallout, MetricGrid } from '@/components/ui/MetricCallout';
 
-interface ProjectDetailModalProps {
+export interface ProjectDetailModalProps {
   project: {
     id: number;
     title: string;
