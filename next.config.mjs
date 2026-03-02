@@ -153,9 +153,6 @@ const nextConfig = {
     optimizePackageImports: ['@tabler/icons-react', 'lucide-react', 'framer-motion'],
     scrollRestoration: true,
   },
-  // Empty turbopack config to acknowledge Next.js 16 default Turbopack usage
-  // Webpack config below is used for backward compatibility
-  turbopack: {},
   // Enhanced webpack configuration for performance
   webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
     // Exclude server-only packages from client bundle
