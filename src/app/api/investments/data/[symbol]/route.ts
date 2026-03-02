@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFile } from "fs/promises";
-import { join } from "path";
 import type { InvestmentSection } from "@/types/investment";
-
-const DATA_DIR = join(process.cwd(), "public", "data", "investments");
 
 const VALID_SECTIONS: InvestmentSection[] = [
   "price",
@@ -57,18 +53,18 @@ export async function GET(
       return NextResponse.json({ error: "Invalid section" }, { status: 400 });
     }
 
+    const requestUrl = new URL(request.url);
+    const baseUrl = `${requestUrl.protocol}//${requestUrl.host}`;
+
     // Verify the symbol is in the pre-fetched index
-    const indexPath = join(DATA_DIR, "index.json");
-    let index: { symbols: string[] };
-    try {
-      const indexRaw = await readFile(indexPath, "utf-8");
-      index = JSON.parse(indexRaw);
-    } catch {
+    const indexRes = await fetch(`${baseUrl}/data/investments/index.json`);
+    if (!indexRes.ok) {
       return NextResponse.json(
         { error: "Investment data not available. Run: npm run update:investments" },
         { status: 503 }
       );
     }
+    const index: { symbols: string[] } = await indexRes.json();
 
     if (!index.symbols.includes(symbol)) {
       return NextResponse.json(
@@ -77,17 +73,14 @@ export async function GET(
       );
     }
 
-    const filePath = join(DATA_DIR, symbol, `${section}.json`);
-    let data: unknown;
-    try {
-      const raw = await readFile(filePath, "utf-8");
-      data = JSON.parse(raw);
-    } catch {
+    const dataRes = await fetch(`${baseUrl}/data/investments/${symbol}/${section}.json`);
+    if (!dataRes.ok) {
       return NextResponse.json(
         { error: `Section "${section}" not available for ${symbol}` },
         { status: 404 }
       );
     }
+    const data: unknown = await dataRes.json();
 
     return NextResponse.json(data, {
       headers: {
