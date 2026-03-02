@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  output: 'standalone',
   // URL redirects for better SEO and user experience
   async redirects() {
     return [
