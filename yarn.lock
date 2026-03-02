@@ -857,6 +857,11 @@
   dependencies:
     "@netlify/types" "2.2.0"
 
+"@netlify/plugin-nextjs@^5.15.8":
+  version "5.15.8"
+  resolved "https://registry.npmjs.org/@netlify/plugin-nextjs/-/plugin-nextjs-5.15.8.tgz"
+  integrity sha512-zxHVtYhNV1ixLX/4xX6PFTxpM5ltfQIMXUo0JbppUWvDaYeeZIqoEmlYdfIHx6BKyjLSMm8D/b3IRReK5VYuyA==
+
 "@netlify/types@2.2.0":
   version "2.2.0"
   resolved "https://registry.npmjs.org/@netlify/types/-/types-2.2.0.tgz"

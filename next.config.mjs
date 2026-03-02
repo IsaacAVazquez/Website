@@ -124,6 +124,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Prevent native binaries from being bundled into server functions
+  serverExternalPackages: ['better-sqlite3'],
   images: {
     remotePatterns: [
       {
