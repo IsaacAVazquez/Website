@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
-import { IconArrowRight, IconExternalLink } from "@tabler/icons-react";
+import { IconArrowRight, IconExternalLink, IconClock } from "@tabler/icons-react";
 import { caseStudiesData } from "@/constants/caseStudies";
 
 export const metadata: Metadata = {
@@ -100,17 +100,24 @@ export default function PortfolioPage() {
               More Work
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
-              {otherCaseStudies.map((study) => (
-                <Link key={study.slug} href={`/portfolio/${study.slug}`}>
+              {otherCaseStudies.map((study) =>
+                study.comingSoon ? (
                   <WarmCard
+                    key={study.slug}
                     padding="lg"
-                    hover={true}
-                    className="h-full group"
+                    hover={false}
+                    className="h-full"
                   >
                     <div className="space-y-4">
-                      <h3 className="font-bold text-lg text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors">
-                        {study.title}
-                      </h3>
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="font-bold text-lg text-[var(--text-primary)]">
+                          {study.title}
+                        </h3>
+                        <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-[var(--color-warning)]/15 text-[var(--color-warning)] border border-[var(--color-warning)]/30">
+                          <IconClock className="h-3 w-3" />
+                          Coming Soon
+                        </span>
+                      </div>
 
                       <p className="text-sm text-[var(--text-secondary)]">
                         {study.description}
@@ -124,14 +131,70 @@ export default function PortfolioPage() {
                         {study.metrics}
                       </p>
 
-                      <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors pt-2">
-                        View Case Study
-                        <IconArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <div className="flex flex-wrap gap-2">
+                        {study.tools.slice(0, 4).map((tool) => (
+                          <span
+                            key={tool}
+                            className="px-2 py-1 text-xs font-medium rounded-full bg-[var(--surface-secondary)] text-[var(--text-secondary)]"
+                          >
+                            {tool}
+                          </span>
+                        ))}
+                        {study.tools.length > 4 && (
+                          <span className="px-2 py-1 text-xs font-medium rounded-full bg-[var(--surface-secondary)] text-[var(--text-secondary)]">
+                            +{study.tools.length - 4}
+                          </span>
+                        )}
                       </div>
+
+                      <p className="text-xs text-[var(--text-tertiary)] italic">
+                        2026 NFL season updates coming soon — expanded analytics and user personalization in progress.
+                      </p>
+
+                      {study.link && (
+                        <Link
+                          href={study.link}
+                          className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:underline pt-1"
+                        >
+                          View Live Platform
+                          <IconArrowRight className="h-4 w-4" />
+                        </Link>
+                      )}
                     </div>
                   </WarmCard>
-                </Link>
-              ))}
+                ) : (
+                  <Link key={study.slug} href={`/portfolio/${study.slug}`}>
+                    <WarmCard
+                      padding="lg"
+                      hover={true}
+                      className="h-full group"
+                    >
+                      <div className="space-y-4">
+                        <h3 className="font-bold text-lg text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors">
+                          {study.title}
+                        </h3>
+
+                        <p className="text-sm text-[var(--text-secondary)]">
+                          {study.description}
+                        </p>
+
+                        <p className="text-xs font-medium text-[var(--text-tertiary)]">
+                          {study.role} · {study.timeline}
+                        </p>
+
+                        <p className="text-xs font-semibold text-[var(--color-primary)]">
+                          {study.metrics}
+                        </p>
+
+                        <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors pt-2">
+                          View Case Study
+                          <IconArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
+                    </WarmCard>
+                  </Link>
+                )
+              )}
             </div>
           </div>
         )}
