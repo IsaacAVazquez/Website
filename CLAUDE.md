@@ -38,8 +38,13 @@ This is a **dual-purpose platform**:
 - `react-icons` – Supplementary icons
 - `framer-motion` – Animations and transitions
 - `tailwind-merge` – Dynamic class merging
+- `tailwindcss-animate` – Tailwind animation utilities
 - `@tailwindcss/typography` – Rich text styling
 - `clsx` – Conditional class names
+- `class-variance-authority` – Component variant management
+- `next-themes` – Theme management (dark/light mode)
+- `@radix-ui/react-dropdown-menu` – Accessible dropdown primitives
+- `@radix-ui/react-slot` – Composable slot primitives
 
 #### Data & Fantasy Football
 - `d3` – Chart rendering for tier visualizations
@@ -65,6 +70,7 @@ This is a **dual-purpose platform**:
 - **Bundle Analysis:** `npm run analyze` or `ANALYZE=true npm run build`
 - **Test Commands:** `npm test`, `npm run test:coverage`, `npm run test:e2e`
 - **Fantasy Data Update:** `npm run update:fantasy-rb`
+- **Investments Update:** `npm run update:investments` (Python script via `.venv`)
 
 ---
 
@@ -131,12 +137,10 @@ This is a **dual-purpose platform**:
 ```
 /                           - Home (ModernHero component)
 /about                      - About page with tabbed navigation (Overview/Journey)
-/projects                   - Project showcase (real page at src/app/projects/page.tsx, NOT just a redirect)
-/portfolio                  - Also a real project showcase page at src/app/portfolio/
+/portfolio                  - Project showcase page at src/app/portfolio/
 /portfolio/[slug]           - Individual project detail
 /resume                     - Professional resume with download
 /contact                    - Contact page with social links
-/consulting                 - Consulting services page
 /accessibility              - Accessibility statement
 ```
 
@@ -150,21 +154,16 @@ This is a **dual-purpose platform**:
 
 #### **Content Pages**
 ```
-/blog                       - Blog listing (MDX)
-/blog/[slug]                - Individual blog posts
-/writing                    - Writing portfolio
+/blog                       - Redirects to /writing (next.config.mjs)
+/blog/[slug]                - Redirects to /writing/[slug]
+/writing                    - Writing portfolio (real page)
 /writing/[slug]             - Individual writing pieces
-/notes                      - Notes and quick thoughts
-/newsletter                 - Newsletter subscription
-/testimonials               - Client testimonials
-/faq                        - FAQ page
 /search                     - Global search
 ```
 
 #### **Financial Pages**
 ```
-/budgeting                  - Budget tracking (BudgetingContent)
-/investments                - Investment tracking
+/investments                - Investment tracking (stock research, portfolio)
 ```
 
 #### **Admin & Utility**
@@ -188,16 +187,21 @@ This is a **dual-purpose platform**:
 /projects/:path → /portfolio/:path (permanent)
 /ff             → /fantasy-football (temporary)
 /rankings       → /fantasy-football (temporary)
-/qb             → /fantasy-football/tiers/qb
-/rb             → /fantasy-football/tiers/rb
-/wr             → /fantasy-football/tiers/wr
-/te             → /fantasy-football/tiers/te
+/qb             → /fantasy-football/tiers/qb (temporary)
+/rb             → /fantasy-football/tiers/rb (temporary)
+/wr             → /fantasy-football/tiers/wr (temporary)
+/te             → /fantasy-football/tiers/te (temporary)
+/fantsy-football/:path → /fantasy-football/:path (typo redirect)
+/fantasy-footbal/:path → /fantasy-football/:path (typo redirect)
+/quatrerback    → /fantasy-football/tiers/qb (typo redirect)
+/blog           → /writing (permanent)
+/blog/:slug     → /writing/:slug (permanent)
+/blog/posts/:slug → /writing/:slug (permanent)
+/articles/:slug   → /writing/:slug (permanent)
 /cv             → /resume (permanent)
-/resume.pdf     → /Isaac_Vazquez_Resume.pdf
+/resume.pdf     → /Isaac_Vazquez_Resume.pdf (permanent)
 /get-in-touch   → /contact (permanent)
 /hire-me        → /contact (permanent)
-/blog/posts/:slug → /blog/:slug (permanent)
-/articles/:slug   → /blog/:slug (permanent)
 ```
 
 ### Navigation (from `src/constants/navlinks.tsx`)
@@ -223,21 +227,18 @@ This is a **dual-purpose platform**:
 /api/fantasy-pros-session/  - Session management for scraping
 /api/data-manager/          - Data management operations
 /api/data-metadata/         - Data freshness and metadata
-/api/data-pipeline/         - Data pipeline orchestration
 /api/sample-data/           - Sample/fallback data serving
 /api/scheduled-update/      - Cron-triggered data updates
-/api/player-images-mapping/ - Player image URL mappings
 ```
 
-### Portfolio APIs
+### Portfolio & Financial APIs
 ```
-/api/analytics/events       - Event tracking
-/api/analytics/web-vitals   - Core Web Vitals reporting
-/api/newsletter/subscribe   - Newsletter signup
+/api/analytics/             - Event tracking and web vitals
+/api/investments/           - Investment/stock data (investments page)
 /api/search/                - Full-text search
 /api/rss/                   - RSS feed
 /api/scrape/                - Web scraping utilities
-/api/stocks/                - Stock data (investments page)
+/api/stocks/                - Stock data
 /api/auth/                  - NextAuth endpoints
 ```
 
@@ -248,21 +249,21 @@ This is a **dual-purpose platform**:
 ### Core Layout Components
 - **`ConditionalLayout`** (`src/components/ConditionalLayout.tsx`) – Route-based layout switching
 - **`ModernHero`** (`src/components/ModernHero.tsx`) – Home page hero section
-- **`Header`** / **`StaticHeader`** – Page headers (`StaticHeader` is the current default in root layout)
+- **`StaticHeader`** – Page header (current default in root layout)
 - **`Footer`** – Footer with social links
-- **`BackgroundEffects`** – Animated background elements
-- **`Circles`** – Decorative circle animations
 - **`About`** – About page with tabbed navigation
-- **`AboutSection`** / **`ContactSection`** – Modular page sections
+- **`ContactSection`** – Modular contact section
 - **`AIStructuredData`** – AI-specific JSON-LD structured data (injected in root layout)
+- **`ThemeProvider`** – Theme context provider (dark/light)
+- **`Providers`** – React context providers wrapper
 
 ### Portfolio-Specific Components
-- **`ProductManagerJourney`** – Career timeline component
+- **`FeaturedWorkSection`** – Featured projects section on home
 - **`ProjectsContent`** – Project showcase grid
 - **`ProjectDetailModal`** – Project detail modal overlay
 - **`ContactContent`** – Contact page layout
-- **`ConsultingContent`** – Consulting services display
-- **`BudgetingContent`** – Budget tracking interface
+- **`WritingPreview`** – Writing/blog preview component
+- **`ThinkingPreview`** – Thinking/notes preview component
 
 ### Fantasy Football Components
 - **`FantasyFootballLandingContent`** – Main FF landing page
@@ -279,50 +280,42 @@ This is a **dual-purpose platform**:
 - **`ExpertConsensusIndicator`** – Expert consensus signal display
 - **`UpdateDataButton`** – Trigger data refresh
 - **`VirtualizedPlayerList`** – Virtualized list for large player datasets
-- **`TestFlexImplementation`** – Flex position test component
+
+### Investments Components (`src/components/investments/`)
+- **`PortfolioTracker`** – Portfolio overview and tracking
+- **`StockResearch`** – Multi-panel stock research interface
+- **`StockCard`** – Individual stock display card
+- **`StockSearch`** – Stock search interface
+- **`AddStockForm`** – Add stock to portfolio
+- **`PortfolioSummary`** – Portfolio summary stats
+- **`AllocationChart`** – Portfolio allocation chart
+- **`DCFPanel`**, **`FundamentalsPanel`**, **`GrowthPanel`**, **`ValuationRatiosPanel`** – Research panels
+- **`NewsPanel`**, **`TranscriptsPanel`**, **`IndustryPanel`**, **`ProfitabilityPanel`** – Research panels
 
 ### UI Component Library (`src/components/ui/`)
 - **`WarmCard`** – Main container with modern styling, hover effects, padding options
 - **`ModernButton`** – 4 variants: primary, secondary, outline, ghost
+- **`button.tsx`** – Radix/shadcn-style button primitive
+- **`dropdown-menu.tsx`** – Radix/shadcn-style dropdown primitive
 - **`Badge`** – Labels and tags
 - **`Heading`** / **`Paragraph`** – Typography components
-- **`CommandPalette`** – Keyboard-driven interface (⌘K)
-- **`SkipToContent`** – Accessibility skip link
 - **`OptimizedImage`** – Next.js Image wrapper
 - **`JourneyTimeline`** – Career timeline visualization
 - **`ThemeToggle`** – Dark/light mode toggle
-- **`Breadcrumb`** – Navigation breadcrumbs
-- **`TopLoadingBar`** – Page load progress bar
-- **`GestureTutorial`** – Mobile gesture guidance
-- **`SkillsRadar`** – Radar chart for skills visualization
-- **`PersonalMetrics`** – Animated metrics display
-- **`QADashboard`** / **`QASection`** – QA dashboard components
-- **`WebVitalsDashboard`** – Performance metrics display
-- **`SystemInfo`** – System information display
-- **`RelatedContent`** – Related content suggestions
 - **`MetricCallout`** – Highlighted metric display
 - **`PageSummary`** – Page summary component
-- **`ProcessVisualization`** – Process/workflow visualization
 - **`ExpertSignal`** – Expert signal indicator
-- **`AuthorBio`** / **`AuthorCard`** – Blog author display
+- **`AuthorBio`** – Blog author display
 - **`LazyPlayerImage`** – Lazy-loaded player headshots
+- **`QADashboard`** – QA dashboard component
 
-### Content Components
-- **Blog Components** (`src/components/blog/`)
-- **Newsletter** (`src/components/newsletter/`)
-- **Search** (`src/components/search/`)
-- **Testimonials** (`src/components/testimonials/`)
-- **FAQ** (`src/components/FAQ/`)
-- **Local SEO** (`src/components/local-seo/`)
-- **Navigation** (`src/components/navigation/`)
+### Navigation & Lazy Components
+- **Navigation** (`src/components/navigation/`) – `Breadcrumbs.tsx`, `LazyFantasyComponents.tsx`
 - **Lazy-loaded** (`src/components/lazy/`) – Heavy components wrapped in React.lazy()
+- **Search** (`src/components/search/`) – `SearchInterface`, `SearchResults`, `SearchFilters`
 
 ### Utility Components
 - **`Analytics`** – Analytics tracking wrapper
-- **`Providers`** – React context providers (wraps entire app)
-- **`Container`** – Layout container
-- **`Prose`** – Typography wrapper for MDX content
-- **`Highlight`** – Text highlighting
 - **`StructuredData`** – Standard JSON-LD structured data
 
 ---
@@ -334,7 +327,7 @@ This is a **dual-purpose platform**:
 personal.ts     - Career timeline, metrics, skills, achievements, philosophy
 navlinks.tsx    - Navigation configuration
 socials.tsx     - Social media links
-testimonials.ts - Client testimonials data
+caseStudies.ts  - Case study/project data
 ```
 
 ### Fantasy Football Data System
@@ -363,34 +356,29 @@ Fantasy Football:
 ├── fantasyProsAlternative.ts - Alternative data source
 ├── fantasyProsSession.ts   - Session management for scraping
 ├── unifiedFantasyProsAPI.ts - Unified API abstraction
-├── tierCalculator.ts       - Tier calculation logic
 ├── unifiedTierCalculator.ts - Unified tier calculator
 ├── optimizedTierCalculator.ts - Performance-optimized calculator
 ├── tierGrouping.ts         - Tier grouping algorithms
+├── tierImageGenerator.ts   - Tier image generation
 ├── clustering.ts           - K-means/clustering for tiers
 ├── gaussianMixture.ts      - Gaussian mixture model
 ├── scoringFormatUtils.ts   - PPR/Standard/Half-PPR scoring
-├── dataLoader.ts           - Data loading utilities
 ├── dataManager.ts          - Data management
 ├── dataCache.ts            - Caching layer
 ├── unifiedCache.ts         - Unified cache system
 ├── dataFileWriter.ts       - File-based data writing
 ├── dataImport.ts           - Data import utilities
-├── dataValidator.ts        - Data validation
 ├── database.ts             - SQLite database operations
 ├── nflverseAPI.ts          - NFLverse data source
-├── sampleDataService.ts    - Sample/fallback data
 ├── overallDataGenerator.ts - Overall rankings generation
 ├── overallValueCalculator.ts - Value calculation
-├── playerImageScraper.ts   - Player image scraping
-├── playerImageService.ts   - Player image serving
-├── tierImageGenerator.ts   - Tier image generation
-├── lazySampleData.ts       - Lazy-loaded sample data
-└── lazyD3.ts               - Lazy-loaded D3
+└── playerImageService.ts   - Player image serving
+
+Financial:
+└── yahooFinance.ts         - Yahoo Finance API integration (investments page)
 
 Content & SEO:
-├── blog.ts                 - Blog post processing
-├── faqData.ts              - FAQ data
+├── blog.ts                 - Writing/blog post processing
 ├── localSEO.ts             - Local business SEO
 ├── localSitemap.ts         - Local sitemap generation
 └── webScraper.ts           - Web scraping utilities
@@ -399,27 +387,25 @@ Content & SEO:
 ### Custom Hooks (`src/hooks/`)
 ```
 useDebounce.ts              - Input debouncing
-useLazyLoad.ts              - Lazy loading trigger
-useScrollAnimation.ts       - Scroll-based animations
-useTypingAnimation.ts       - Typing effect
 
 Fantasy Football:
-useFantasyData.ts           - Fantasy data fetching (single position)
 useAllFantasyData.ts        - All positions data fetching
 useOverallFantasyData.ts    - Overall rankings data
 useUnifiedFantasyData.ts    - Unified data hook
 
-Content:
-useBlogPost.ts              - Blog post data fetching
-useInvestments.ts           - Investment data
+Financial:
+useInvestments.ts           - Investment portfolio data
+useStockData.ts             - Individual stock data fetching
+
+Player Images:
 usePlayerImageCache.tsx     - Player image caching
 ```
 
 ### TypeScript Types (`src/types/`)
 ```
-index.ts        - Core type definitions
+index.ts        - Core type definitions (fantasy football, portfolio)
 navlink.tsx     - Navigation link types
-investment.ts   - Investment data types
+investment.ts   - Investment/stock data types
 ```
 
 ---
@@ -437,7 +423,6 @@ Website/
 │   │   ├── portfolio/[slug]/   # Project pages (NOTE: /projects redirects here)
 │   │   ├── resume/
 │   │   ├── contact/
-│   │   ├── consulting/
 │   │   ├── accessibility/
 │   │   ├── fantasy-football/
 │   │   │   ├── page.tsx
@@ -445,26 +430,23 @@ Website/
 │   │   │   ├── tiers/[position]/
 │   │   │   ├── rb-tiers/
 │   │   │   └── draft-tracker/
-│   │   ├── blog/[slug]/
-│   │   ├── writing/[slug]/
-│   │   ├── notes/
-│   │   ├── newsletter/
-│   │   ├── testimonials/
-│   │   ├── faq/
+│   │   ├── blog/               # Redirects to /writing (next.config.mjs)
+│   │   │   └── [slug]/         # Redirects to /writing/[slug]
+│   │   ├── writing/
+│   │   │   ├── page.tsx
+│   │   │   └── [slug]/
 │   │   ├── search/
-│   │   ├── budgeting/
 │   │   ├── investments/
 │   │   ├── admin/
+│   │   │   ├── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   └── analytics/
 │   │   └── api/                # API routes
 │   ├── components/
 │   │   ├── ui/                 # UI component library
-│   │   ├── blog/
-│   │   ├── newsletter/
-│   │   ├── search/
-│   │   ├── testimonials/
-│   │   ├── FAQ/
-│   │   ├── navigation/
-│   │   ├── local-seo/
+│   │   ├── investments/        # Investment page components
+│   │   ├── search/             # Search interface components
+│   │   ├── navigation/         # Breadcrumbs, lazy FF components
 │   │   └── lazy/               # Lazy-loaded wrappers
 │   ├── constants/              # Static data
 │   ├── hooks/                  # Custom React hooks
@@ -503,15 +485,16 @@ Website/
 ## Configuration Files
 
 ### `next.config.mjs`
-- URL redirects (portfolio, fantasy football, legacy URLs)
+- URL redirects (portfolio, fantasy football, blog→writing, legacy URLs, typo redirects)
 - `typescript.ignoreBuildErrors: true` (**temporary** – TypeScript errors are bypassed)
-- Image optimization (AVIF, WebP, remote patterns for unsplash + cloudinary)
+- `serverExternalPackages: ['better-sqlite3']` – excludes native module from server functions
+- Image optimization (AVIF, WebP, remote patterns for unsplash + cloudinary; SVG allowed)
 - `compiler.removeConsole` in production
 - `experimental.optimizePackageImports` for icons and framer-motion
 - `experimental.scrollRestoration: true`
 - `turbopack: {}` – acknowledges Turbopack default in Next.js 16
 - Webpack config for bundle splitting (ui-components, icons, framer-motion, content chunks)
-- `better-sqlite3` excluded from client bundle (server-only module)
+- `better-sqlite3` also excluded from client bundle via webpack externals
 
 ### `tailwind.config.ts`
 - `darkMode: "class"` – manual dark mode toggle
@@ -547,13 +530,14 @@ Website/
 ### Getting Started
 ```bash
 npm install
-npm run dev              # Dev server (webpack mode, see note above)
+npm run dev              # Dev server (webpack mode, --webpack baked into script)
 npm run build            # Production build
 npm start                # Production server
 npm run analyze          # Bundle size analysis
 npm test                 # Unit tests
 npm run test:e2e         # E2E tests with Playwright
-npm run update:fantasy-rb  # Update fantasy football RB tier data
+npm run update:fantasy-rb    # Update fantasy football RB tier data
+npm run update:investments   # Update investment data (Python script)
 ```
 
 ### Environment Variables
@@ -712,7 +696,8 @@ This is BOTH a professional portfolio AND a fantasy football analytics platform.
 - **Dark mode:** `.dark` class on `<html>`, all components must work in both modes
 - **Touch targets:** Minimum 44px height/width (use `min-h-touch`, `min-w-touch` Tailwind classes)
 - **Images:** Always use `OptimizedImage` or Next.js `Image` component
-- **`/projects` route:** Both `/projects` and `/portfolio` are real pages rendering `ProjectsContent`. The nav links to `/projects`. The `next.config.mjs` also has a redirect from `/projects` to `/portfolio`, but `src/app/projects/page.tsx` exists as a standalone page.
+- **`/projects` route:** `/projects` is **not** an actual app route – it redirects to `/portfolio` via `next.config.mjs`. The real project showcase page is `src/app/portfolio/`. Navigation links use `/projects` which redirects.
+- **`/blog` route:** `/blog` redirects to `/writing`. The canonical writing content lives at `/writing` and `/writing/[slug]`.
 - **Fantasy data:** Never make FantasyPros requests without rate limiting; use the unified cache layer
 
 ### Common Pitfalls
@@ -733,10 +718,29 @@ This is BOTH a professional portfolio AND a fantasy football analytics platform.
 ## Version History
 
 **Current Version:** 0.1.0
-**Last Updated:** February 2026
-**Documentation Version:** 4.1
+**Last Updated:** March 2026
+**Documentation Version:** 4.2
 
 ### Changelog
+- **v4.2 (March 2026):** Codebase audit and accuracy pass
+  - Removed non-existent app routes: `/consulting`, `/faq`, `/notes`, `/newsletter`, `/testimonials`, `/budgeting`
+  - Corrected `/blog` as redirect-only (canonical content at `/writing`)
+  - Fixed URL redirect table (blog→writing, added typo redirects)
+  - Fixed `/projects` – it is a redirect only, not a standalone page
+  - Removed ~15 non-existent lib files (`dataLoader`, `dataValidator`, `lazySampleData`, `lazyD3`, `tierCalculator`, `sampleDataService`, `playerImageScraper`, `faqData`, etc.)
+  - Added `yahooFinance.ts` to lib inventory
+  - Removed non-existent hooks (`useLazyLoad`, `useScrollAnimation`, `useTypingAnimation`, `useFantasyData`, `useBlogPost`)
+  - Added `useStockData.ts` hook
+  - Removed non-existent API routes (`data-pipeline`, `player-images-mapping`, `newsletter/subscribe`)
+  - Added `/api/investments/` API route
+  - Removed ~15 non-existent UI components (`CommandPalette`, `SkipToContent`, `TopLoadingBar`, etc.)
+  - Added real components: `FeaturedWorkSection`, `ThemeProvider`, `ThinkingPreview`, `WritingPreview`, investments component directory, `button.tsx`, `dropdown-menu.tsx`
+  - Added `class-variance-authority`, `next-themes`, `tailwindcss-animate`, `@radix-ui` packages
+  - Added `update:investments` script documentation
+  - Added `caseStudies.ts` to constants
+  - Removed non-existent component directories: `blog/`, `newsletter/`, `testimonials/`, `FAQ/`, `local-seo/`
+  - Updated `next.config.mjs` notes (`serverExternalPackages`)
+
 - **v4.1 (February 2026):** Targeted accuracy fixes
   - Fixed dev command (`npm run dev`, not `npm run dev --webpack`)
   - Fixed fantasy data update command (`npm run update:fantasy-rb`)
