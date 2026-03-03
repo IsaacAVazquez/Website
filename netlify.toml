@@ -20,3 +20,16 @@
 # FANTASYPROS_USERNAME = "your-fantasypros-username"
 # FANTASYPROS_PASSWORD = "your-fantasypros-password"
 # CRON_SECRET = "your-cron-secret-here"
+
+# HTML documents: never serve stale; always revalidate at the CDN edge.
+# This ensures every deploy takes effect immediately for page requests.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Hashed static assets: cache forever (they change filenames on every rebuild).
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
