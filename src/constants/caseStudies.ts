@@ -66,7 +66,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     metrics: "99.9% uptime · 30% faster releases",
     github: "https://github.com/IsaacAVazquez",
     link: null,
-    featured: true,
+    featured: false,
 
     overview: {
       summary:
@@ -188,7 +188,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     metrics: "50% defect reduction · 300% ROI",
     github: "https://github.com/IsaacAVazquez",
     link: null,
-    featured: true,
+    featured: false,
 
     overview: {
       summary:
@@ -311,7 +311,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     metrics: "40% faster decisions · 25% conversion lift",
     github: "https://github.com/IsaacAVazquez",
     link: null,
-    featured: true,
+    featured: false,
 
     overview: {
       summary:
@@ -534,8 +534,8 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     metrics: "Live platform · 2026 season coming soon",
     github: "https://github.com/IsaacAVazquez",
     link: "/fantasy-football",
-    featured: false,
-    comingSoon: true,
+    featured: true,
+    comingSoon: false,
 
     overview: { summary: "", impact: "" },
     problem: { context: "", painPoints: [], stakes: "" },

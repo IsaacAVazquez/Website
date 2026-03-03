@@ -4,7 +4,6 @@ import { StructuredData } from "@/components/StructuredData";
 import { ModernHero } from "@/components/ModernHero";
 import { FeaturedWorkSection } from "@/components/FeaturedWorkSection";
 import { ThinkingPreview } from "@/components/ThinkingPreview";
-import { WritingPreview } from "@/components/WritingPreview";
 import { ContactSection } from "@/components/ContactSection";
 
 export const metadata: Metadata = constructMetadata();
@@ -26,9 +25,6 @@ export default function Home() {
 
       {/* PM Thinking */}
       <ThinkingPreview />
-
-      {/* Writing Preview */}
-      <WritingPreview />
 
       {/* Contact Section */}
       <ContactSection />
