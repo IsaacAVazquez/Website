@@ -20,7 +20,13 @@ const nextConfig = {
         destination: '/portfolio/:path*',
         permanent: true,
       },
-      
+      // Redirect external-link portfolio slugs to their real destinations
+      {
+        source: '/portfolio/investment-analytics-platform',
+        destination: '/investments',
+        permanent: true,
+      },
+
       // Fantasy football aliases for easier sharing
       {
         source: '/ff',

@@ -59,7 +59,7 @@ export function FeaturedWorkSection() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"
           >
             {featured.map((study) => (
-              <Link key={study.slug} href={`/portfolio/${study.slug}`}>
+              <Link key={study.slug} href={study.link ?? `/portfolio/${study.slug}`}>
                 <WarmCard
                   padding="lg"
                   hover
