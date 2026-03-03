@@ -38,7 +38,7 @@ export default function PortfolioPage() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredCaseStudies.map((study) => (
-                <Link key={study.slug} href={`/portfolio/${study.slug}`}>
+                <Link key={study.slug} href={study.link ?? `/portfolio/${study.slug}`}>
                   <WarmCard
                     padding="none"
                     hover={true}
@@ -163,7 +163,7 @@ export default function PortfolioPage() {
                     </div>
                   </WarmCard>
                 ) : (
-                  <Link key={study.slug} href={`/portfolio/${study.slug}`}>
+                  <Link key={study.slug} href={study.link ?? `/portfolio/${study.slug}`}>
                     <WarmCard
                       padding="lg"
                       hover={true}
