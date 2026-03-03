@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import {
@@ -45,6 +45,10 @@ export default function CaseStudyPage({
 
   if (!caseStudy) {
     notFound();
+  }
+
+  if (caseStudy.link) {
+    redirect(caseStudy.link);
   }
 
   const allSlugs = Object.keys(caseStudiesData);
