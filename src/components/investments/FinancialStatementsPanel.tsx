@@ -26,24 +26,50 @@ function formatNum(val: unknown): string {
   return n.toLocaleString("en-US", { maximumFractionDigits: 2 });
 }
 
-// Raw data from defeatbeta-api can be a DataFrame serialized as array-of-records
-// or a nested object. We normalize to { columns, rows } for rendering.
-function normalize(raw: unknown): { columns: string[]; rows: Record<string, unknown>[] } | null {
+// API returns { quarterly: [...], annual: [...] } for financial statements.
+// Pick the selected period array and normalize to { columns, rows } for rendering.
+function normalize(
+  raw: unknown,
+  period: Period
+): { columns: string[]; rows: Record<string, unknown>[] } | null {
   if (!raw || typeof raw !== "object") return null;
+
+  let arr: unknown;
+
   if (Array.isArray(raw)) {
-    if (raw.length === 0) return null;
-    const columns = Object.keys(raw[0] as object);
-    return { columns, rows: raw as Record<string, unknown>[] };
+    arr = raw;
+  } else {
+    const obj = raw as Record<string, unknown>;
+    if (Array.isArray(obj[period])) {
+      arr = obj[period];
+    } else if (Array.isArray(obj.quarterly)) {
+      arr = obj.quarterly;
+    } else {
+      // Fallback: object of { rowLabel: { period: value } }
+      const rows = Object.entries(obj).map(([label, vals]) => ({
+        label,
+        ...(vals as Record<string, unknown>),
+      }));
+      if (rows.length === 0) return null;
+      const allCols = Array.from(new Set(rows.flatMap(Object.keys)));
+      return { columns: allCols, rows };
+    }
   }
-  // Object of { rowLabel: { period: value } }
-  const obj = raw as Record<string, Record<string, unknown>>;
-  const rows = Object.entries(obj).map(([label, vals]) => ({ label, ...vals }));
-  if (rows.length === 0) return null;
-  const allCols = Array.from(new Set(rows.flatMap(Object.keys)));
-  return { columns: allCols, rows };
+
+  if (!Array.isArray(arr) || arr.length === 0) return null;
+  const columns = Object.keys(arr[0] as object);
+  return { columns, rows: arr as Record<string, unknown>[] };
 }
 
-function StatementTable({ section, symbol }: { section: InvestmentSection; symbol: string }) {
+function StatementTable({
+  section,
+  symbol,
+  period,
+}: {
+  section: InvestmentSection;
+  symbol: string;
+  period: Period;
+}) {
   const { data, isLoading, error } = useStockData(symbol, section);
 
   if (isLoading) {
@@ -60,7 +86,7 @@ function StatementTable({ section, symbol }: { section: InvestmentSection; symbo
     return <p className="text-sm text-[var(--text-tertiary)] py-4">{error}</p>;
   }
 
-  const table = normalize(data);
+  const table = normalize(data, period);
   if (!table) {
     return <p className="text-sm text-[var(--text-tertiary)] py-4">No data available.</p>;
   }
@@ -105,7 +131,7 @@ function StatementTable({ section, symbol }: { section: InvestmentSection; symbo
                     key={col}
                     className={`py-2 px-2 text-right whitespace-nowrap ${isNeg ? "text-[var(--color-error)]" : "text-[var(--text-primary)]"}`}
                   >
-                    {val !== undefined && val !== null ? formatNum(val) : "—"}
+                    {val !== undefined && val !== null && val !== "*" ? formatNum(val) : "—"}
                   </td>
                 );
               })}
@@ -119,29 +145,49 @@ function StatementTable({ section, symbol }: { section: InvestmentSection; symbo
 
 export function FinancialStatementsPanel({ symbol }: Props) {
   const [activeTab, setActiveTab] = useState<StatementType>("income_statement");
+  const [period, setPeriod] = useState<Period>("quarterly");
 
   return (
     <WarmCard padding="sm">
-      {/* Tab navigation */}
-      <div className="flex gap-1 mb-4 overflow-x-auto pb-1" role="tablist" aria-label="Financial statements">
-        {TABS.map(({ key, label }) => (
-          <button
-            key={key}
-            role="tab"
-            aria-selected={activeTab === key}
-            onClick={() => setActiveTab(key)}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition whitespace-nowrap min-h-[36px] ${
-              activeTab === key
-                ? "bg-[var(--color-primary)] text-white"
-                : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)]"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
+      {/* Statement type tabs + period toggle */}
+      <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
+        <div className="flex gap-1 overflow-x-auto pb-1" role="tablist" aria-label="Financial statements">
+          {TABS.map(({ key, label }) => (
+            <button
+              key={key}
+              role="tab"
+              aria-selected={activeTab === key}
+              onClick={() => setActiveTab(key)}
+              className={`px-3 py-1.5 text-xs font-medium rounded-md transition whitespace-nowrap min-h-[36px] ${
+                activeTab === key
+                  ? "bg-[var(--color-primary)] text-white"
+                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)]"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {/* Period toggle */}
+        <div className="flex gap-1 shrink-0" role="group" aria-label="Period">
+          {(["quarterly", "annual"] as Period[]).map((p) => (
+            <button
+              key={p}
+              onClick={() => setPeriod(p)}
+              className={`px-3 py-1.5 text-xs font-medium rounded-md transition capitalize min-h-[36px] ${
+                period === p
+                  ? "bg-[var(--neutral-200)] text-[var(--text-primary)]"
+                  : "text-[var(--text-tertiary)] hover:bg-[var(--surface-secondary)]"
+              }`}
+            >
+              {p.charAt(0).toUpperCase() + p.slice(1)}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <StatementTable section={activeTab} symbol={symbol} />
+      <StatementTable section={activeTab} symbol={symbol} period={period} />
     </WarmCard>
   );
 }

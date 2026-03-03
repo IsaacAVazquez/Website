@@ -114,9 +114,7 @@ export function StockSearch({ value, onChange }: Props) {
         <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--color-warning)]">
           <IconAlertCircle size={13} />
           <span>
-            {upper} is not in pre-fetched data. Add it to{" "}
-            <code className="font-mono">scripts/investments_symbols.txt</code> and run{" "}
-            <code className="font-mono">npm run update:investments</code>.
+            {upper} isn&apos;t in the research database. Available stocks: AAPL, MSFT, GOOGL, AMZN, NVDA, META, TSLA, BRK-B, JPM, V
           </span>
         </p>
       )}

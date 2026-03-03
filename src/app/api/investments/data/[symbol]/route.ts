@@ -34,6 +34,214 @@ function isTranscriptSection(section: string): boolean {
   return /^transcript_\d{4}_\d{1,2}$/.test(section);
 }
 
+type RawRecord = Record<string, unknown>;
+
+/** Return the most recent non-null value for a field in a time-series array */
+function latest(arr: unknown, field: string): number | undefined {
+  if (!Array.isArray(arr)) return undefined;
+  const found = [...arr]
+    .reverse()
+    .find((r: RawRecord) => r[field] != null) as RawRecord | undefined;
+  return found ? Number(found[field]) : undefined;
+}
+
+function transformSection(section: string, raw: unknown): unknown {
+  // --- fundamentals ---
+  if (section === "fundamentals") {
+    const d = raw as Record<string, unknown[]>;
+    return {
+      ttmEps: latest(d.ttmEps, "tailing_eps"),
+      ttmPe: latest(d.ttmPe, "ttm_pe"),
+      marketCap: latest(d.marketCap, "market_capitalization"),
+      psRatio: latest(d.psRatio, "ps_ratio"),
+      pbRatio: latest(d.pbRatio, "pb_ratio"),
+      pegRatio: latest(d.pegRatio, "peg_ratio"),
+    };
+  }
+
+  // --- profitability ---
+  if (section === "profitability") {
+    const d = raw as Record<string, unknown[]>;
+    const roe = latest(d.roe, "roe");
+    const roa = latest(d.roa, "roa");
+    const roic = latest(d.roic, "roic");
+    const equityMultiplier = latest(d.equityMultiplier, "equity_multiplier");
+    const assetTurnover = latest(d.assetTurnover, "asset_turnover");
+    return {
+      roe: roe !== undefined ? roe * 100 : undefined,
+      roa: roa !== undefined ? roa * 100 : undefined,
+      roic: roic !== undefined ? roic * 100 : undefined,
+      equityMultiplier: equityMultiplier !== undefined ? equityMultiplier * 100 : undefined,
+      assetTurnover: assetTurnover !== undefined ? assetTurnover * 100 : undefined,
+    };
+  }
+
+  // --- margins ---
+  if (section === "margins") {
+    const d = raw as Record<string, unknown[]>;
+    const gm = latest(d.quarterly_gross, "gross_margin");
+    const om = latest(d.quarterly_operating, "operating_margin");
+    const nm = latest(d.quarterly_net, "net_margin");
+    const em = latest(d.quarterly_ebitda, "ebitda_margin");
+    const fm = latest(d.quarterly_fcf, "fcf_margin");
+    return [
+      {
+        grossMargin: gm !== undefined ? gm * 100 : undefined,
+        operatingMargin: om !== undefined ? om * 100 : undefined,
+        netMargin: nm !== undefined ? nm * 100 : undefined,
+        ebitdaMargin: em !== undefined ? em * 100 : undefined,
+        fcfMargin: fm !== undefined ? fm * 100 : undefined,
+      },
+    ];
+  }
+
+  // --- growth ---
+  if (section === "growth") {
+    const d = raw as Record<string, unknown[]>;
+
+    const latestGrowth = (arr: unknown[]): number | null => {
+      if (!Array.isArray(arr)) return null;
+      const rec = [...arr]
+        .reverse()
+        .find((r: unknown) => (r as RawRecord).yoy_growth != null) as RawRecord | undefined;
+      return rec ? Number(rec.yoy_growth) * 100 : null;
+    };
+
+    const rows = [
+      { metric: "Revenue YoY", yoyGrowth: latestGrowth(d.annual_revenue ?? []) },
+      { metric: "Operating Income YoY", yoyGrowth: latestGrowth(d.annual_operating_income ?? []) },
+      { metric: "Net Income YoY", yoyGrowth: latestGrowth(d.annual_net_income ?? []) },
+      { metric: "FCF YoY", yoyGrowth: latestGrowth(d.annual_fcf ?? []) },
+      { metric: "EPS YoY", yoyGrowth: latestGrowth(d.quarterly_eps ?? []) },
+    ].filter((r) => r.yoyGrowth !== null);
+    return rows;
+  }
+
+  // --- beta ---
+  if (section === "beta") {
+    const arr = raw as { beta: number; period: string }[];
+    const by = (p: string) => arr.find((r) => r.period === p)?.beta;
+    return { beta5y: by("5y"), beta3y: by("3y"), beta1y: by("1y") };
+  }
+
+  // --- wacc ---
+  if (section === "wacc") {
+    const arr = raw as RawRecord[];
+    const rec = arr[arr.length - 1];
+    return {
+      wacc: rec?.wacc != null ? Number(rec.wacc) * 100 : undefined,
+      costOfEquity: rec?.cost_of_equity != null ? Number(rec.cost_of_equity) * 100 : undefined,
+      costOfDebt: rec?.cost_of_debt != null ? Number(rec.cost_of_debt) * 100 : undefined,
+      taxRate: rec?.tax_rate_for_calcs != null ? Number(rec.tax_rate_for_calcs) * 100 : undefined,
+      beta: rec?.beta_5y,
+      marketCap: rec?.market_capitalization,
+    };
+  }
+
+  // --- info ---
+  if (section === "info") {
+    const arr = raw as RawRecord[];
+    const d = arr[0] ?? {};
+    return {
+      address: d.address,
+      city: d.city,
+      country: d.country,
+      industry: d.industry,
+      sector: d.sector,
+      longBusinessSummary: d.long_business_summary,
+      fullTimeEmployees: d.full_time_employees,
+      website: d.web_site,
+      shortName: d.symbol,
+      longName: d.symbol,
+    };
+  }
+
+  // --- financial statements (income_statement, balance_sheet, cash_flow) ---
+  if (
+    section === "income_statement" ||
+    section === "balance_sheet" ||
+    section === "cash_flow"
+  ) {
+    const d = raw as { quarterly?: RawRecord[]; annual?: RawRecord[] };
+    return { quarterly: d.quarterly ?? [], annual: d.annual ?? [] };
+  }
+
+  // --- transcripts list ---
+  if (section === "transcripts") {
+    const arr = raw as { fiscal_year: number; fiscal_quarter: number; report_date: string }[];
+    return arr.map((t) => ({
+      fiscalYear: t.fiscal_year,
+      fiscalQuarter: t.fiscal_quarter,
+      date: t.report_date,
+    }));
+  }
+
+  // --- individual transcript (transcript_YEAR_Q) ---
+  if (isTranscriptSection(section)) {
+    const arr = raw as { speaker: string; content: string }[];
+    return {
+      paragraphs: arr
+        .filter((p) => p.content?.trim())
+        .map((p) => ({ speaker: p.speaker, content: p.content })),
+    };
+  }
+
+  // --- news ---
+  if (section === "news") {
+    const arr = raw as {
+      uuid?: string;
+      title: string;
+      publisher?: string;
+      report_date?: string;
+      link?: string;
+      type?: string;
+    }[];
+    return arr.map((n) => ({
+      uuid: n.uuid,
+      title: n.title,
+      publisher: n.publisher,
+      reportDate: n.report_date,
+      link: n.link,
+      type: n.type,
+    }));
+  }
+
+  // --- industry ---
+  if (section === "industry") {
+    const d = raw as Record<string, RawRecord[]>;
+
+    // Field names for industry average value in each time-series
+    const fieldMap: Record<string, { label: string; valueField: string; isRatio?: boolean }> = {
+      ttm_pe: { label: "P/E (TTM)", valueField: "industry_pe" },
+      ps_ratio: { label: "P/S Ratio", valueField: "industry_ps_ratio" },
+      pb_ratio: { label: "P/B Ratio", valueField: "industry_pb_ratio" },
+      roe: { label: "ROE", valueField: "industry_roe", isRatio: true },
+      roa: { label: "ROA", valueField: "industry_roa", isRatio: true },
+      gross_margin: { label: "Gross Margin", valueField: "industry_gross_margin", isRatio: true },
+      ebitda_margin: { label: "EBITDA Margin", valueField: "industry_ebitda_margin", isRatio: true },
+      net_margin: { label: "Net Margin", valueField: "industry_net_margin", isRatio: true },
+    };
+
+    return Object.entries(fieldMap)
+      .map(([key, { label, valueField, isRatio }]) => {
+        const arr = d[key];
+        const val = latest(arr, valueField);
+        const industryAvg = val !== undefined && isRatio ? val * 100 : val;
+        return { metric: label, value: undefined, industryAvg };
+      })
+      .filter((r) => r.industryAvg !== undefined);
+  }
+
+  // --- dcf ---
+  if (section === "dcf") {
+    // Pre-built data only has file_path/description, no actual values
+    return null;
+  }
+
+  // Pass through all other sections unchanged (price, officers, revenue_segments)
+  return raw;
+}
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ symbol: string }> }
@@ -68,7 +276,15 @@ export async function GET(
 
     if (!index.symbols.includes(symbol)) {
       return NextResponse.json(
-        { error: `Symbol ${symbol} not in pre-fetched data. Add it to scripts/investments_symbols.txt and run: npm run update:investments` },
+        { error: `Symbol ${symbol} not in pre-fetched data` },
+        { status: 404 }
+      );
+    }
+
+    // DCF has no real data — return 404 so the component shows "DCF data unavailable."
+    if (section === "dcf") {
+      return NextResponse.json(
+        { error: "DCF valuation data not available for this symbol" },
         { status: 404 }
       );
     }
@@ -81,8 +297,9 @@ export async function GET(
       );
     }
     const data: unknown = await dataRes.json();
+    const transformed = transformSection(section, data);
 
-    return NextResponse.json(data, {
+    return NextResponse.json(transformed, {
       headers: {
         "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
       },
