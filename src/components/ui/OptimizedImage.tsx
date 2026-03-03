@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface OptimizedImageProps {
   src: string;
@@ -41,6 +41,7 @@ export function OptimizedImage({
   onLoad,
   onError,
 }: OptimizedImageProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(!lazy);
   const [hasError, setHasError] = useState(false);
@@ -83,6 +84,14 @@ export function OptimizedImage({
     onError?.();
   };
 
+  const objectFitClass: Record<string, string> = {
+    contain: 'object-contain',
+    cover: 'object-cover',
+    fill: 'object-fill',
+    none: 'object-none',
+    'scale-down': 'object-scale-down',
+  };
+
   // Generate responsive sizes if not provided
   const responsiveSizes = sizes || (fill ? '100vw' : '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw');
 
@@ -90,7 +99,7 @@ export function OptimizedImage({
   if (hasError) {
     return (
       <div 
-        className={`flex items-center justify-center bg-terminal-border text-slate-500 ${className}`}
+        className={`flex items-center justify-center bg-[var(--neutral-200)] text-slate-500 ${className}`}
         style={{ width, height }}
       >
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
@@ -105,7 +114,7 @@ export function OptimizedImage({
       {/* Loading placeholder */}
       {!isLoaded && (
         <div 
-          className="absolute inset-0 bg-terminal-border animate-pulse"
+          className="absolute inset-0 bg-[var(--neutral-200)] animate-pulse"
           style={{ 
             backgroundColor: 'rgba(30, 41, 59, 0.5)',
             ...(placeholder === 'blur' && {
@@ -121,9 +130,9 @@ export function OptimizedImage({
       {/* Image */}
       {isInView && (
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: shouldReduceMotion ? 1 : 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
           className="relative w-full h-full"
         >
           <Image
@@ -137,7 +146,7 @@ export function OptimizedImage({
             sizes={responsiveSizes}
             placeholder={placeholder}
             blurDataURL={blurDataURL || defaultBlurDataURL}
-            className={`transition-opacity duration-300 ${fill ? `object-${objectFit}` : ''}`}
+            className={`transition-opacity duration-300 ${fill ? (objectFitClass[objectFit] ?? 'object-cover') : ''}`}
             style={{
               objectPosition: fill ? objectPosition : undefined,
             }}
@@ -147,11 +156,6 @@ export function OptimizedImage({
         </motion.div>
       )}
 
-      {/* Overlay effects for cyberpunk aesthetic */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-50" />
-        <div className="absolute inset-0 bg-electric-blue/5 mix-blend-overlay" />
-      </div>
     </div>
   );
 }
