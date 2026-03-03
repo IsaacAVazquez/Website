@@ -435,6 +435,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     metrics: "Live data · 30+ metrics per stock · Analyst consensus ratings",
     github: "https://github.com/IsaacAVazquez",
     link: null,
+    featured: true,
 
     overview: {
       summary:
@@ -617,110 +618,24 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "fantasy-football-analytics",
     title: "Fantasy Football Analytics Platform",
     description:
-      "Built a full-stack fantasy football analytics platform with live positional tier rankings (QB/RB/WR/TE/K/DST/Flex), automated FantasyPros data integration, D3-powered tier visualizations, a draft tracker, and a statistically-grounded player clustering system.",
-    role: "Solo Product Builder & Engineer",
+      "Full-stack fantasy football platform with live tier rankings, D3 visualizations, and an automated data pipeline.",
+    role: "Solo Builder",
     timeline: "2024–2025",
-    tools: ["Next.js", "D3.js", "TypeScript", "SQLite", "FantasyPros API"],
+    tools: ["Next.js", "D3.js", "TypeScript", "SQLite"],
     metrics: "Live platform · 2026 season coming soon",
     github: "https://github.com/IsaacAVazquez",
     link: "/fantasy-football",
     featured: false,
     comingSoon: true,
 
-    overview: {
-      summary:
-        "Designed and built a fantasy football analytics platform from scratch — covering live positional tier rankings for all 7 NFL positions, an automated FantasyPros data pipeline, D3-powered visualizations, a draft tracker, and a Gaussian mixture model clustering system for statistically-grounded tier groupings.",
-      impact:
-        "Platform is live at isaacavazquez.com/fantasy-football. Full 2026 season tier updates and expanded analytics features are coming soon.",
-    },
-
-    problem: {
-      context:
-        "Existing fantasy football tools are paywalled, ad-heavy, or present tier data without statistical grounding — leaving players making draft decisions on poorly structured rankings.",
-      painPoints: [
-        "No clean, free visualization for all-position tier rankings in one place",
-        "FantasyPros tier data behind session-authenticated login walls with no public API",
-        "Player images served from inconsistent, third-party sources with poor coverage",
-        "Competitor tier groupings are arbitrary manual cutoffs, not statistically driven",
-      ],
-      stakes:
-        "Fantasy players make high-stakes draft decisions in seconds — poor data presentation and arbitrary tier boundaries directly lead to suboptimal picks.",
-    },
-
-    process: {
-      approach:
-        "Built an end-to-end data pipeline: FantasyPros session authentication → player data scraping → Gaussian mixture model clustering → SQLite persistence → D3 tier chart rendering.",
-      methodology: [
-        "Reverse-engineered FantasyPros session authentication to enable programmatic data access",
-        "Implemented Gaussian mixture model clustering for statistically-grounded, defensible tier boundaries",
-        "Built a unified cache layer and SQLite-backed pipeline for efficient data updates and build-time persistence",
-        "Scraped and served player headshots via a custom image pipeline covering all active NFL players",
-        "Shipped a draft tracker for in-draft player management with position filtering",
-      ],
-      decisions: [
-        "Chose D3.js over charting libraries for full control over tier chart layout and player positioning",
-        "Used SQLite (better-sqlite3) for zero-infrastructure persistence compatible with Netlify's static-first deployment",
-        "Chose Gaussian mixture models over k-means for more natural, data-driven tier boundaries",
-        "Built a unified cache abstraction to decouple data freshness logic from API and DB layers",
-      ],
-      collaboration:
-        "Solo project — product vision, data engineering, API design, and frontend built end-to-end.",
-    },
-
-    result: {
-      outcomes: [
-        "Live tier rankings for 7 positions (QB/RB/WR/TE/K/DST/Flex) at isaacavazquez.com/fantasy-football",
-        "Automated FantasyPros data pipeline with scheduled updates and freshness indicators",
-        "D3-powered tier visualizations with expert consensus signals and player headshots",
-        "Draft tracker tool for real-time in-draft player management",
-        "Full 2026 season data refresh and expanded analytics features coming soon",
-      ],
-      lessonsLearned: [
-        "A fantasy analytics product is 60% data pipeline and 40% UI — underestimating the pipeline is the #1 mistake",
-        "Gaussian mixture models require careful initialization; k-means++ seeding significantly improved cluster stability",
-        "Scraping fragility demands robust session management, fallback data strategies, and graceful degradation",
-      ],
-    },
-
-    detailedMetrics: [
-      { label: "Positions Covered", value: "7", improvement: "QB/RB/WR/TE/K/DST/Flex" },
-      { label: "Data Pipeline", value: "Automated", improvement: "Scheduled FantasyPros updates" },
-      { label: "Tier Algorithm", value: "GMM Clustering", improvement: "vs. manual cutoffs" },
-      { label: "2026 Season", value: "Coming Soon", improvement: "Expanded analytics" },
-    ],
-
-    userSegments: [
-      "Competitive fantasy players preparing for snake and auction drafts",
-      "Casual players wanting fast, clean all-position tier rankings",
-      "Analytics-minded players who want statistically grounded, defensible tiers",
-    ],
-    northStarMetric: "Active users during NFL draft season",
-    tradeoffs: [
-      {
-        decision: "Tier calculation algorithm",
-        optionChosen: "Gaussian mixture models",
-        optionRejected: "Manual tier breakpoints",
-        reasoning:
-          "Gaussian mixture models produce statistically defensible tier boundaries rather than arbitrary cutoffs, increasing user trust and reducing the need for manual maintenance each week.",
-      },
-      {
-        decision: "Data persistence layer",
-        optionChosen: "SQLite (better-sqlite3)",
-        optionRejected: "Hosted PostgreSQL",
-        reasoning:
-          "SQLite allows zero-infrastructure deployment with pre-built data at build time — perfectly suited for Netlify's static-first architecture without added operational overhead.",
-      },
-      {
-        decision: "Chart rendering",
-        optionChosen: "D3.js with custom layout",
-        optionRejected: "Recharts / Chart.js",
-        reasoning:
-          "The tier chart requires precise player positioning across a 2D projection space. Off-the-shelf charting libraries don't support this layout; D3 gives full control over element placement and interaction.",
-      },
-    ],
-    retrospective:
-      "The data pipeline proved significantly more complex than the UI. FantasyPros session scraping is fragile — for the 2026 season, I'd prioritize a more resilient data source and add user-level personalization (custom scoring, watchlists) to increase retention beyond draft day.",
-    pmFramework: "Jobs to Be Done",
+    overview: { summary: "", impact: "" },
+    problem: { context: "", painPoints: [], stakes: "" },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
   },
 };
 
