@@ -12,13 +12,14 @@ import { IndustryPanel } from "./IndustryPanel";
 import { DCFPanel } from "./DCFPanel";
 import { NewsPanel } from "./NewsPanel";
 import { ComparisonTab } from "./ComparisonTab";
+import { PriceChartPanel } from "./PriceChartPanel";
 
 interface Props {
   initialSymbol?: string;
   portfolioSymbols?: string[];
 }
 
-type ResearchTab = "overview" | "financials" | "growth" | "valuation" | "industry" | "transcripts" | "dcf" | "compare";
+type ResearchTab = "overview" | "financials" | "growth" | "valuation" | "industry" | "transcripts" | "dcf" | "chart" | "compare";
 
 const TABS: { key: ResearchTab; label: string }[] = [
   { key: "overview",     label: "Overview" },
@@ -28,6 +29,7 @@ const TABS: { key: ResearchTab; label: string }[] = [
   { key: "industry",     label: "Industry" },
   { key: "transcripts",  label: "Transcripts" },
   { key: "dcf",          label: "DCF" },
+  { key: "chart",        label: "Chart" },
   { key: "compare",      label: "Compare" },
 ];
 
@@ -105,6 +107,7 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
             {activeTab === "industry" && <IndustryPanel symbol={symbol} />}
             {activeTab === "transcripts" && <TranscriptsPanel symbol={symbol} />}
             {activeTab === "dcf" && <DCFPanel symbol={symbol} />}
+            {activeTab === "chart" && <PriceChartPanel symbol={symbol} />}
           </>
         )}
       </div>
