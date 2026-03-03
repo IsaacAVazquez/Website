@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { InvestmentSection } from "@/types/investment";
+import type { DcfData, InvestmentSection } from "@/types/investment";
 
 const VALID_SECTIONS: InvestmentSection[] = [
   "price",
@@ -232,14 +232,68 @@ function transformSection(section: string, raw: unknown): unknown {
       .filter((r) => r.industryAvg !== undefined);
   }
 
-  // --- dcf ---
-  if (section === "dcf") {
-    // Pre-built data only has file_path/description, no actual values
-    return null;
-  }
-
   // Pass through all other sections unchanged (price, officers, revenue_segments)
   return raw;
+}
+
+async function computeDcf(symbol: string, baseUrl: string): Promise<DcfData> {
+  const [waccRaw, fundRaw, growthRaw, priceRaw] = await Promise.all([
+    fetch(`${baseUrl}/data/investments/${symbol}/wacc.json`).then((r) => r.json()),
+    fetch(`${baseUrl}/data/investments/${symbol}/fundamentals.json`).then((r) => r.json()),
+    fetch(`${baseUrl}/data/investments/${symbol}/growth.json`).then((r) => r.json()),
+    fetch(`${baseUrl}/data/investments/${symbol}/price.json`).then((r) => r.json()),
+  ]);
+
+  const waccArr = waccRaw as RawRecord[];
+  const waccRec = waccArr[waccArr.length - 1];
+  const wacc = waccRec?.wacc != null ? Number(waccRec.wacc) : undefined;
+
+  const fundData = fundRaw as Record<string, unknown[]>;
+  const baseFCF = latest(fundData.ttmEps, "tailing_eps");
+
+  const growthData = growthRaw as Record<string, unknown[]>;
+  const epsArr = growthData.quarterly_eps ?? [];
+  const latestEpsGrowthRec = [...epsArr]
+    .reverse()
+    .find((r: unknown) => (r as RawRecord).yoy_growth != null) as RawRecord | undefined;
+  const rawGrowth = latestEpsGrowthRec ? Number(latestEpsGrowthRec.yoy_growth) : 0;
+  const gShort = Math.max(-0.3, Math.min(0.5, rawGrowth));
+
+  const priceArr = priceRaw as RawRecord[];
+  const currentPrice =
+    priceArr.length > 0 ? Number(priceArr[priceArr.length - 1].close) : undefined;
+
+  if (!wacc || !baseFCF || !currentPrice) {
+    return { error: "Insufficient data for DCF calculation" };
+  }
+
+  const gTerminal = 0.03;
+  const effectiveWacc = Math.max(wacc, gTerminal + 0.01);
+
+  let fcf = baseFCF;
+  let pvSum = 0;
+  for (let i = 1; i <= 5; i++) {
+    const g = gShort + (gTerminal - gShort) * (i / 5);
+    fcf = fcf * (1 + g);
+    pvSum += fcf / Math.pow(1 + effectiveWacc, i);
+  }
+  const terminalValue = (fcf * (1 + gTerminal)) / (effectiveWacc - gTerminal);
+  const pvTerminal = terminalValue / Math.pow(1 + effectiveWacc, 5);
+  const fairValue = pvSum + pvTerminal;
+  const upside = ((fairValue - currentPrice) / currentPrice) * 100;
+  const recommendation = upside > 20 ? "Buy" : upside < -10 ? "Sell" : "Hold";
+
+  return {
+    fairValue: Math.round(fairValue * 100) / 100,
+    currentPrice: Math.round(currentPrice * 100) / 100,
+    upside: Math.round(upside * 100) / 100,
+    wacc: Math.round(effectiveWacc * 10000) / 100,
+    growthEstimates: {
+      "Near-term growth (Yrs 1-3)": Math.round(gShort * 10000) / 100,
+      "Terminal growth": 3.0,
+    },
+    recommendation,
+  };
 }
 
 export async function GET(
@@ -281,12 +335,15 @@ export async function GET(
       );
     }
 
-    // DCF has no real data — return 404 so the component shows "DCF data unavailable."
     if (section === "dcf") {
-      return NextResponse.json(
-        { error: "DCF valuation data not available for this symbol" },
-        { status: 404 }
-      );
+      try {
+        const dcfData = await computeDcf(symbol, baseUrl);
+        return NextResponse.json(dcfData, {
+          headers: { "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400" },
+        });
+      } catch {
+        return NextResponse.json({ error: "DCF calculation failed" }, { status: 500 });
+      }
     }
 
     const dataRes = await fetch(`${baseUrl}/data/investments/${symbol}/${section}.json`);
