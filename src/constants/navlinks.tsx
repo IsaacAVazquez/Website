@@ -23,12 +23,16 @@ export const navlinks = [
     label: "Work",
     icon: IconBriefcase,
   },
-/*
+  {
+    href: "/writing",
+    label: "Writing",
+    icon: IconPencil,
+  },
   {
     href: "/resume",
     label: "Resume",
     icon: IconFileText,
-  },*/
+  },
   {
     href: "/contact",
     label: "Contact",
