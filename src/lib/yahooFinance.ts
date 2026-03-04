@@ -55,7 +55,7 @@ function fetchWithTimeout(
 /** Extract a cookie string from a Set-Cookie header value */
 function parseCookieHeader(setCookieHeader: string): string {
   return setCookieHeader
-    .split(/,(?=\s*[A-Za-z0-9_\-]+=)/)
+    .split(/,(?=\s*[A-Za-z0-9_-]+=)/)
     .map((c) => c.split(";")[0].trim())
     .filter(Boolean)
     .join("; ");

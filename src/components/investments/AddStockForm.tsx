@@ -10,7 +10,7 @@ interface Props {
   onAdd: (holding: PortfolioHolding) => void;
 }
 
-const SYMBOL_RE = /^[A-Z0-9.\-]{1,10}$/;
+const SYMBOL_RE = /^[A-Z0-9.-]{1,10}$/;
 
 function Field({
   label,

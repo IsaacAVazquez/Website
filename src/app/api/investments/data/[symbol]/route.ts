@@ -22,7 +22,7 @@ const VALID_SECTIONS: InvestmentSection[] = [
 ];
 
 function isValidSymbol(symbol: string): boolean {
-  return /^[A-Z0-9.\-]{1,10}$/.test(symbol);
+  return /^[A-Z0-9.-]{1,10}$/.test(symbol);
 }
 
 function isValidSection(section: string): section is InvestmentSection {
