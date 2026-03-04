@@ -22,13 +22,27 @@
 # CRON_SECRET = "your-cron-secret-here"
 
 # HTML documents: never serve stale; always revalidate at the CDN edge.
-# This ensures every deploy takes effect immediately for page requests.
+# no-cache is more universally respected by CDN edge nodes than must-revalidate.
 [[headers]]
   for = "/*"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "no-cache"
 
-# Hashed static assets: cache forever (they change filenames on every rebuild).
+# CSS files — explicit MIME type prevents text/plain serving on Netlify
+[[headers]]
+  for = "/_next/static/css/*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# JS chunk files — explicit MIME type
+[[headers]]
+  for = "/_next/static/chunks/*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# All other hashed static assets (fonts, images, media, etc.)
 [[headers]]
   for = "/_next/static/*"
   [headers.values]
