@@ -21,12 +21,20 @@
 # FANTASYPROS_PASSWORD = "your-fantasypros-password"
 # CRON_SECRET = "your-cron-secret-here"
 
+# Prevent Netlify Durable Cache from caching HTML page responses.
+# The @netlify/plugin-nextjs isn't reliably invalidating stale entries on deploy.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Netlify-CDN-Cache-Control = "no-store"
+
 # CSS files — explicit MIME type prevents text/plain serving on Netlify
 [[headers]]
   for = "/_next/static/css/*.css"
   [headers.values]
     Content-Type = "text/css; charset=utf-8"
     Cache-Control = "public, max-age=31536000, immutable"
+    Netlify-CDN-Cache-Control = "public, max-age=31536000, immutable"
 
 # JS chunk files — explicit MIME type
 [[headers]]
@@ -34,9 +42,11 @@
   [headers.values]
     Content-Type = "application/javascript; charset=utf-8"
     Cache-Control = "public, max-age=31536000, immutable"
+    Netlify-CDN-Cache-Control = "public, max-age=31536000, immutable"
 
 # All other hashed static assets (fonts, images, media, etc.)
 [[headers]]
   for = "/_next/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Netlify-CDN-Cache-Control = "public, max-age=31536000, immutable"

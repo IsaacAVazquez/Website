@@ -37,7 +37,11 @@ export default function middleware(req: NextRequest) {
   Object.entries(headers).forEach(([key, value]) => {
     response.headers.set(key, value);
   });
-  
+
+  // Prevent Netlify Durable Cache from storing HTML pages.
+  // Static assets (/_next/static/) are excluded by the middleware matcher.
+  response.headers.set("Netlify-CDN-Cache-Control", "no-store");
+
   return response;
 }
 
