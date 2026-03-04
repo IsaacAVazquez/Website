@@ -5,27 +5,11 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFCF7",
-  "theme_color": "#FF6B35",
+  "theme_color": "#2563EB",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en-US",
   "categories": ["business", "productivity", "portfolio"],
-  "screenshots": [
-    {
-      "src": "/screenshots/desktop-portfolio.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Professional Portfolio Dashboard"
-    },
-    {
-      "src": "/screenshots/mobile-portfolio.png",
-      "sizes": "375x812",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Mobile Portfolio"
-    }
-  ],
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
@@ -74,56 +58,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "About Me",
-      "short_name": "About",
-      "description": "Learn about Isaac's background and experience",
-      "url": "/about",
-      "icons": [
-        {
-          "src": "/icons/shortcut-about.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Projects",
-      "short_name": "Projects",
-      "description": "View Isaac's professional project portfolio",
-      "url": "/projects",
-      "icons": [
-        {
-          "src": "/icons/shortcut-projects.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Resume",
-      "short_name": "Resume",
-      "description": "Isaac's professional resume and experience",
-      "url": "/resume",
-      "icons": [
-        {
-          "src": "/icons/shortcut-resume.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Blog", 
-      "short_name": "Blog",
-      "description": "Technical articles and insights on QA and software development",
-      "url": "/blog",
-      "icons": [
-        {
-          "src": "/icons/shortcut-blog.png",
-          "sizes": "96x96"
-        }
-      ]
     }
   ],
   "related_applications": [],

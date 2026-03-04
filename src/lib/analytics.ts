@@ -66,11 +66,13 @@ async function sendToAnalytics(metric: Metric) {
       });
     }
 
-    console.log(`📊 Web Vital: ${metric.name}`, {
-      value: metric.value,
-      rating: getPerformanceRating(metric.name, metric.value),
-      id: metric.id
-    });
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`📊 Web Vital: ${metric.name}`, {
+        value: metric.value,
+        rating: getPerformanceRating(metric.name, metric.value),
+        id: metric.id
+      });
+    }
 
   } catch (error) {
     console.error('Failed to send analytics:', error);
@@ -112,10 +114,12 @@ export function trackEvent(eventName: string, properties?: Record<string, any>) 
           url: window.location.pathname,
           timestamp: Date.now()
         }),
-      }).catch(error => console.error('Failed to track event:', error));
+      }).catch(() => {});
     }
 
-    console.log('📈 Event tracked:', eventName, properties);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('📈 Event tracked:', eventName, properties);
+    }
   } catch (error) {
     console.error('Failed to track event:', error);
   }
