@@ -12,6 +12,9 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+[[plugins]]
+  package = "./netlify/plugins/purge-on-deploy"
+
 # Environment variables - set these in Netlify dashboard:
 # NEXTAUTH_URL = "https://your-domain.com"
 # NEXTAUTH_SECRET = "your-nextauth-secret-here"
