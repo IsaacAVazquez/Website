@@ -12,9 +12,6 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[[plugins]]
-  package = "./netlify/plugins/purge-on-deploy"
-
 # Environment variables - set these in Netlify dashboard:
 # NEXTAUTH_URL = "https://your-domain.com"
 # NEXTAUTH_SECRET = "your-nextauth-secret-here"
@@ -23,13 +20,6 @@
 # FANTASYPROS_USERNAME = "your-fantasypros-username"
 # FANTASYPROS_PASSWORD = "your-fantasypros-password"
 # CRON_SECRET = "your-cron-secret-here"
-
-# Prevent Netlify Durable Cache from caching HTML page responses.
-# The @netlify/plugin-nextjs isn't reliably invalidating stale entries on deploy.
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Netlify-CDN-Cache-Control = "no-store"
 
 # CSS files — explicit MIME type prevents text/plain serving on Netlify
 [[headers]]
