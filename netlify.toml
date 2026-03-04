@@ -21,13 +21,6 @@
 # FANTASYPROS_PASSWORD = "your-fantasypros-password"
 # CRON_SECRET = "your-cron-secret-here"
 
-# HTML documents: never serve stale; always revalidate at the CDN edge.
-# no-cache is more universally respected by CDN edge nodes than must-revalidate.
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "no-cache"
-
 # CSS files — explicit MIME type prevents text/plain serving on Netlify
 [[headers]]
   for = "/_next/static/css/*.css"

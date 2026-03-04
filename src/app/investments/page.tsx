@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { InvestmentsClient } from "./investments-client";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "Investments | Isaac Vazquez",
   description:

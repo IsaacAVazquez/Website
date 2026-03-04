@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { constructMetadata } from "@/lib/seo";
