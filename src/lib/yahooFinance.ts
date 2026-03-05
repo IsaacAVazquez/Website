@@ -36,7 +36,7 @@ export function isRateLimited(): boolean {
 
 /** Validate a stock ticker symbol format */
 export function isValidSymbol(symbol: string): boolean {
-  return /^[A-Z]{1,5}(\.[A-Z]{1,2})?$/.test(symbol);
+  return /^[A-Z]{1,5}(-[A-Z])?(\.[A-Z]{1,2})?$/.test(symbol);
 }
 
 /** Fetch with a timeout via AbortController */

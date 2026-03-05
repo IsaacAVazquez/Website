@@ -1,6 +1,6 @@
 # Project Roadmap
 
-Last updated: 2026-03-05 (updated same day)
+Last updated: 2026-03-05
 
 Prioritized list of improvements identified from the [codebase audit](./UNDERUTILIZED_FEATURES.md). Organized by priority tier — P0 items are high-impact quick wins, P3 items require a decision before work begins.
 
@@ -41,7 +41,7 @@ These items surface existing content that is currently invisible to visitors.
 
 ---
 
-## P1 — Cleanup (reduce maintenance burden)
+## P1 — Cleanup (reduce maintenance burden) ✅ Complete
 
 Dead code removal. No user-facing impact, but reduces confusion and bundle size.
 
@@ -65,8 +65,8 @@ Dead code removal. No user-facing impact, but reduces confusion and bundle size.
 - **Effort:** Small (verify nothing references them first)
 
 ### 10. Delete deprecated `/api/fantasy-pros/route.ts`
-- Marked `@deprecated` in source. Only referenced by admin validate function.
-- Also remove the admin reference to it.
+- Marked `@deprecated` in source. Used by admin's "FantasyPros API" import tab (API key validation + data fetch).
+- Also removed `handleAPIFetch` function, `apiKey` state, and the import tab button from `admin/page.tsx`.
 - **Effort:** Tiny
 
 ### 11. Delete `src/lib/webScraper.ts`
@@ -154,8 +154,8 @@ These require a product decision before any work begins.
 | 7 | Delete blog slug stub | Done |
 | 8 | Delete `content/writing/` duplicate | Done |
 | 9 | Delete orphaned scripts | Done |
-| 10 | Delete deprecated fantasy-pros route | Skipped — admin actively uses /api/fantasy-pros (multiple fetch calls); more work than Tiny |
-| 11 | Delete `webScraper.ts` | Skipped — webScraper.ts actively used by dataManager.ts |
+| 10 | Delete deprecated fantasy-pros route | Done — removed route + `handleAPIFetch` handler and "FantasyPros API" tab from admin UI |
+| 11 | Delete `webScraper.ts` | Done — removed file + import and dead methods from `dataManager.ts` |
 | 12 | Remove Cmd+K reference | Done |
 | 13 | Wire RSS to `blog.ts` | Not started |
 | 14 | Index blog posts in search API | Not started |

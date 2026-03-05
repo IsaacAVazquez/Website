@@ -14,7 +14,7 @@ const TABS: { key: Tab; label: string }[] = [
 
 export function InvestmentsClient() {
   const [activeTab, setActiveTab] = useState<Tab>("portfolio");
-  const [researchSymbol, setResearchSymbol] = useState("");
+  const [researchSymbol, setResearchSymbol] = useState("AAPL");
   const { holdings } = useInvestments();
   const portfolioSymbols = holdings.map((h) => h.symbol);
 
