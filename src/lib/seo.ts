@@ -37,7 +37,7 @@ export const siteConfig = {
   title: "Product Manager | UC Berkeley Haas MBA | Portfolio & Case Studies",
   description: "Product Manager and UC Berkeley Haas MBA Candidate with 5+ years building SaaS products reaching 60M+ users. Case studies, product thinking, and PM frameworks.",
   url: "https://isaacavazquez.com",
-  ogImage: "/og-image.png", // 1200x630 OG image optimized for social media & AI previews
+  ogImage: "/opengraph-image", // 1200x630 OG image optimized for social media & AI previews
   ogImageAlt: "Isaac Vazquez - Technical Product Manager & UC Berkeley Haas MBA Candidate",
   links: {
     twitter: "https://twitter.com/isaacvazquez",
@@ -352,7 +352,7 @@ export function generatePersonStructuredData(options?: {
     "jobTitle": "Technical Product Manager",
     "description": siteConfig.description,
     "url": siteConfig.url,
-    "image": `${siteConfig.url}/og-image.png`,
+    "image": `${siteConfig.url}${siteConfig.ogImage}`,
   };
 
   if (includeSocials) {

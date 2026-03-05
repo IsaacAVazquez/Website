@@ -128,32 +128,6 @@ module.exports = {
         })
       }
 
-      // Check for blog posts
-      const blogDirectory = path.default.join(process.cwd(), 'content/blog')
-
-      if (fs.default.existsSync(blogDirectory)) {
-        const files = fs.default.readdirSync(blogDirectory)
-        const blogFiles = files.filter(file => file.endsWith('.mdx') || file.endsWith('.md'))
-
-        blogFiles.forEach(file => {
-          const slug = file.replace(/\.(mdx|md)$/, '')
-
-          // Higher priority for product management content
-          let priority = 0.7
-          if (slug.includes('product') || slug.includes('mba') || slug.includes('berkeley')) {
-            priority = 0.85
-          } else if (slug.includes('qa') || slug.includes('testing')) {
-            priority = 0.75
-          }
-
-          result.push({
-            loc: `/blog/${slug}`,
-            changefreq: 'monthly',
-            priority,
-            lastmod: new Date().toISOString(),
-          })
-        })
-      }
     } catch (error) {
       console.warn('Could not load blog/writing posts for sitemap:', error.message)
     }

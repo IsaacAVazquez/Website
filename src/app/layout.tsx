@@ -43,9 +43,10 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#2563EB" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="72x72" href="/icons/icon-72x72.png" />
+        <link rel="alternate" type="application/rss+xml" title="Isaac Vazquez - Writing & Insights" href="/api/rss" />
 
         <AIStructuredData
           schema={{
@@ -56,7 +57,7 @@ export default function RootLayout({
               description:
                 "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in SaaS and consumer products. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration.",
               url: "https://isaacavazquez.com",
-              image: "https://isaacavazquez.com/og-image.png",
+              image: "https://isaacavazquez.com/opengraph-image",
               email: "IsaacVazquez@berkeley.edu",
               sameAs: [
                 "https://linkedin.com/in/isaac-vazquez",

@@ -10,6 +10,7 @@ import {
   IconBrandGithub,
 } from "@tabler/icons-react";
 import { caseStudiesData } from "@/constants/caseStudies";
+import { constructMetadata } from "@/lib/seo";
 
 export async function generateStaticParams() {
   return Object.keys(caseStudiesData).map((slug) => ({
@@ -30,10 +31,23 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return constructMetadata({
     title: `${caseStudy.title} | Isaac Vazquez`,
     description: caseStudy.description,
-  };
+    canonicalUrl: `/portfolio/${params.slug}`,
+    aiMetadata: {
+      profession: "Product Manager",
+      expertise: caseStudy.tools,
+      topics: [
+        "Product Management Case Study",
+        caseStudy.role,
+        ...caseStudy.tools.slice(0, 3),
+      ],
+      contentType: "Case Study",
+      context: `PM case study: ${caseStudy.role} — ${caseStudy.overview.summary}. Key metrics: ${caseStudy.metrics}.`,
+      summary: caseStudy.overview.summary,
+    },
+  });
 }
 
 export default function CaseStudyPage({

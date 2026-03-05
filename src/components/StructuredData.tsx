@@ -20,7 +20,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "jobTitle": "Technical Product Manager & UC Berkeley MBA Candidate",
           "description": siteConfig.description,
           "url": siteConfig.url,
-          "image": `${siteConfig.url}/og-image.png`,
+          "image": `${siteConfig.url}${siteConfig.ogImage}`,
           "sameAs": [
             siteConfig.links.linkedin,
             siteConfig.links.github,
@@ -232,7 +232,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
             "Mobile-optimized interface",
             "Draft assistance tools"
           ],
-          "screenshot": `${siteConfig.url}/og-image.png`,
+          "screenshot": `${siteConfig.url}${siteConfig.ogImage}`,
           "offers": {
             "@type": "Offer",
             "price": "0",

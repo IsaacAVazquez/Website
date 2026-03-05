@@ -259,7 +259,7 @@ export function generateEnhancedPersonSchema(data: PersonSchemaData) {
     alternateName: data.name || siteConfig.name,
     description: data.description || siteConfig.description,
     url: data.url || siteConfig.url,
-    image: data.image || `${siteConfig.url}/og-image.png`,
+    image: data.image || `${siteConfig.url}${siteConfig.ogImage}`,
     sameAs: data.sameAs || [
       siteConfig.links.linkedin,
       siteConfig.links.github,

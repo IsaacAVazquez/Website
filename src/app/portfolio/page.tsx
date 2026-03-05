@@ -1,15 +1,37 @@
-import { Metadata } from "next";
 import Link from "next/link";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { IconArrowRight, IconExternalLink } from "@tabler/icons-react";
 import { caseStudiesData } from "@/constants/caseStudies";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = constructMetadata({
   title: "Work & Case Studies | Isaac Vazquez",
   description:
     "PM case studies: scaling platforms to 60M+ users, driving $4M revenue impact, transforming analytics. Problem-Process-Result framework.",
-};
+  canonicalUrl: "/portfolio",
+  aiMetadata: {
+    profession: "Product Manager",
+    expertise: [
+      "Product Strategy",
+      "Platform Scaling",
+      "Data-Driven Decisions",
+      "Cross-Functional Leadership",
+      "Experimentation & A/B Testing",
+    ],
+    topics: [
+      "Product Management Case Studies",
+      "SaaS Product Strategy",
+      "Revenue Impact",
+      "User Growth",
+    ],
+    contentType: "Portfolio / Case Studies",
+    context:
+      "Portfolio of product management case studies by Isaac Vazquez, showcasing strategic thinking, cross-functional leadership, and measurable business outcomes across SaaS and consumer technology products.",
+    summary:
+      "Case studies demonstrating product management expertise: scaling platforms to 60M+ users, driving $4M revenue impact, and transforming analytics through the Problem-Process-Result framework.",
+  },
+});
 
 export default function PortfolioPage() {
   const allStudies = Object.values(caseStudiesData);

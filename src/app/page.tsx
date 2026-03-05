@@ -1,12 +1,10 @@
-import { Metadata } from "next";
-import { constructMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { ModernHero } from "@/components/ModernHero";
 import { FeaturedWorkSection } from "@/components/FeaturedWorkSection";
 import { ThinkingPreview } from "@/components/ThinkingPreview";
 import { ContactSection } from "@/components/ContactSection";
 
-export const metadata: Metadata = constructMetadata();
+export { metadata } from "./metadata";
 
 export default function Home() {
   return (

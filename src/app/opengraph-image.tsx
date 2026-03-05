@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
  
 export const runtime = 'edge'
  
-export const alt = 'Isaac Vazquez – QA Engineer & Builder'
+export const alt = 'Isaac Vazquez – Product Manager | UC Berkeley Haas MBA Candidate'
 export const size = {
   width: 1200,
   height: 630,
@@ -16,7 +16,7 @@ export default async function Image() {
       <div
         style={{
           fontSize: 128,
-          background: 'linear-gradient(135deg, #0EA5E9 0%, #14B8A6 50%, #A855F7 100%)',
+          background: 'linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #3B82F6 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -65,7 +65,7 @@ export default async function Image() {
               fontFamily: 'system-ui, -apple-system, sans-serif',
             }}
           >
-            QA Engineer & Builder
+            Product Manager | MBA Candidate | Builder
           </p>
           <p
             style={{
@@ -77,7 +77,7 @@ export default async function Image() {
               fontFamily: 'system-ui, -apple-system, sans-serif',
             }}
           >
-            Crafting reliable, user-centered products for a better democracy
+            Building mission-driven products through data, user insight, and disciplined execution
           </p>
         </div>
       </div>
