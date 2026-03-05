@@ -60,18 +60,22 @@ interface AnalyticsProps {
 
 export function Analytics({ children }: AnalyticsProps) {
   const pathname = usePathname();
+  const isEnabled = GA_MEASUREMENT_ID && process.env.NODE_ENV === 'production';
 
   useEffect(() => {
+    if (!isEnabled) return;
     if (pathname) {
       trackPageView(window.location.href, document.title);
     }
-  }, [pathname]);
+  }, [pathname, isEnabled]);
 
-  // Initialize Web Vitals monitoring
+  // Initialize Web Vitals monitoring and event listeners only in production
   useEffect(() => {
+    if (!isEnabled) return;
+
     initWebVitals();
     PerformanceMonitor.mark('analytics_initialized');
-    
+
     // Track engagement metrics
     let engagementTimer: NodeJS.Timeout;
     const trackEngagement = () => {
@@ -84,7 +88,7 @@ export function Analytics({ children }: AnalyticsProps) {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = Math.round((scrollTop / docHeight) * 100);
-      
+
       if (scrollPercent > maxScrollDepth) {
         maxScrollDepth = scrollPercent;
         if ([25, 50, 75, 90].includes(scrollPercent)) {
@@ -96,7 +100,7 @@ export function Analytics({ children }: AnalyticsProps) {
     // Track form submissions and button clicks
     const handleInteraction = (event: Event) => {
       const target = event.target as HTMLElement;
-      
+
       if (event.type === 'submit') {
         const form = target as HTMLFormElement;
         trackInteraction('form_submit', 'conversion', form.id || form.className);
@@ -112,7 +116,7 @@ export function Analytics({ children }: AnalyticsProps) {
     events.forEach(event => {
       document.addEventListener(event, trackEngagement, { passive: true, once: true });
     });
-    
+
     window.addEventListener('scroll', trackScrollDepth, { passive: true });
     document.addEventListener('submit', handleInteraction);
     document.addEventListener('click', handleInteraction);
@@ -127,10 +131,10 @@ export function Analytics({ children }: AnalyticsProps) {
       document.removeEventListener('click', handleInteraction);
       clearTimeout(engagementTimer);
     };
-  }, [pathname]);
+  }, [pathname, isEnabled]);
 
   // Don't load analytics in development or if no measurement ID
-  if (!GA_MEASUREMENT_ID || process.env.NODE_ENV !== 'production') {
+  if (!isEnabled) {
     return <>{children}</>;
   }
 

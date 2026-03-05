@@ -200,41 +200,6 @@ export const PerformanceMonitor = {
   }
 };
 
-// Initialize analytics when the module loads
-if (typeof window !== 'undefined') {
-  // Initialize Web Vitals monitoring
-  initWebVitals();
-  
-  // Track initial page view
-  if (document.readyState === 'complete') {
-    trackPageView();
-  } else {
-    window.addEventListener('load', () => trackPageView());
-  }
-
-  // Track navigation changes for SPA
-  let currentUrl = window.location.pathname;
-  const observer = new MutationObserver(() => {
-    if (window.location.pathname !== currentUrl) {
-      currentUrl = window.location.pathname;
-      trackPageView();
-    }
-  });
-  
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-
-  // Global error tracking
-  window.addEventListener('error', (event) => {
-    PerformanceMonitor.trackError(event.error, 'global_error_handler');
-  });
-
-  window.addEventListener('unhandledrejection', (event) => {
-    PerformanceMonitor.trackError(
-      new Error(event.reason), 
-      'unhandled_promise_rejection'
-    );
-  });
-}
+// Note: Analytics initialization is handled by the Analytics component
+// in src/components/Analytics.tsx to avoid duplicate listeners and
+// ensure it only runs in production with a valid measurement ID.
