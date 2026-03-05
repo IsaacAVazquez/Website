@@ -1,6 +1,6 @@
 # Project Roadmap
 
-Last updated: 2026-03-05
+Last updated: 2026-03-05 (updated same day)
 
 Prioritized list of improvements identified from the [codebase audit](./UNDERUTILIZED_FEATURES.md). Organized by priority tier — P0 items are high-impact quick wins, P3 items require a decision before work begins.
 
@@ -161,7 +161,7 @@ These require a product decision before any work begins.
 | 14 | Index blog posts in search API | Not started |
 | 15 | Link FF tier pages from UI | Not started |
 | 16 | Expand investments research | Not started |
-| 17 | Local SEO: finish or remove | Decision needed |
-| 18 | Analytics: GA4 or remove | Decision needed |
-| 19 | Admin analytics dashboard | Decision needed |
+| 17 | Local SEO: finish or remove | Done — removed |
+| 18 | Analytics: GA4 or remove | Done — removed |
+| 19 | Admin analytics dashboard | Done — removed |
 | 20 | Contact form | Decision needed |

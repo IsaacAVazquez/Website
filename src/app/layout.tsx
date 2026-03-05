@@ -7,7 +7,6 @@ import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
-import { Analytics } from "@/components/Analytics";
 import { StaticHeader } from "@/components/StaticHeader";
 
 const fontConfig = {
@@ -128,17 +127,15 @@ export default function RootLayout({
           [fontConfig.jetbrainsMono.variable as string]: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
         } as React.CSSProperties}
       >
-        <Analytics>
-          <Providers>
-            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--neutral-900)] focus:text-white focus:rounded-lg focus:shadow-lg">
-              Skip to main content
-            </a>
-            <StaticHeader />
-            <ConditionalLayout>
-              {children}
-            </ConditionalLayout>
-          </Providers>
-        </Analytics>
+        <Providers>
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--neutral-900)] focus:text-white focus:rounded-lg focus:shadow-lg">
+            Skip to main content
+          </a>
+          <StaticHeader />
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
+        </Providers>
       </body>
     </html>
   );
