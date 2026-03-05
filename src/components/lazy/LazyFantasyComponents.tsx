@@ -27,12 +27,6 @@ export const LazyTierChart = lazy(() =>
   }))
 );
 
-export const LazyDraftTierChart = lazy(() => 
-  import('../DraftTierChart').then(module => ({
-    default: module.default
-  }))
-);
-
 export const LazyTierChartEnhanced = lazy(() => 
   import('../TierChartEnhanced').then(module => ({
     default: module.default
@@ -60,19 +54,6 @@ interface LazyTierChartWrapperProps {
 export const LazyTierChartWrapper: React.FC<LazyTierChartWrapperProps> = (props) => (
   <Suspense fallback={<ComponentLoader name="Tier Chart" height="h-96" />}>
     <LazyTierChart {...props} />
-  </Suspense>
-);
-
-interface LazyDraftTierChartWrapperProps {
-  players: Player[];
-  allPlayers: Player[];
-  scoringFormat: "standard" | "halfPPR" | "ppr";
-  positionFilter: string;
-}
-
-export const LazyDraftTierChartWrapper: React.FC<LazyDraftTierChartWrapperProps> = (props) => (
-  <Suspense fallback={<ComponentLoader name="Draft Tiers" height="h-[600px]" />}>
-    <LazyDraftTierChart {...props} />
   </Suspense>
 );
 
@@ -237,7 +218,6 @@ if (typeof window !== 'undefined') {
 
 export default {
   LazyTierChartWrapper,
-  LazyDraftTierChartWrapper,
   LazyTierChartEnhancedWrapper,
   LazyVirtualizedPlayerListWrapper,
   LazyFantasyComponent,

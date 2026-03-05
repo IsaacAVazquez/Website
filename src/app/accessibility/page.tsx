@@ -170,14 +170,6 @@ export default function AccessibilityPage() {
             <div className="space-y-2">
               <div className="flex items-center justify-between py-2 border-b border-neutral-200 dark:border-neutral-700">
                 <Paragraph className="text-neutral-700 dark:text-neutral-300">
-                  Open command palette
-                </Paragraph>
-                <code className="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm font-mono text-black dark:text-white">
-                  ⌘K / Ctrl+K
-                </code>
-              </div>
-              <div className="flex items-center justify-between py-2 border-b border-neutral-200 dark:border-neutral-700">
-                <Paragraph className="text-neutral-700 dark:text-neutral-300">
                   Close modals and overlays
                 </Paragraph>
                 <code className="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm font-mono text-black dark:text-white">

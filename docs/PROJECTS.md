@@ -1,6 +1,6 @@
 # Project Roadmap
 
-Last updated: 2026-03-04
+Last updated: 2026-03-05
 
 Prioritized list of improvements identified from the [codebase audit](./UNDERUTILIZED_FEATURES.md). Organized by priority tier — P0 items are high-impact quick wins, P3 items require a decision before work begins.
 
@@ -150,13 +150,13 @@ These require a product decision before any work begins.
 | 3 | Link draft tracker from FF landing | Not started |
 | 4 | Show all 5 case studies on `/portfolio` | Not started |
 | 5 | Add writing CTA to `ThinkingPreview` | Not started |
-| 6 | Delete dead components | Not started |
-| 7 | Delete blog slug stub | Not started |
-| 8 | Delete `content/writing/` duplicate | Not started |
-| 9 | Delete orphaned scripts | Not started |
-| 10 | Delete deprecated fantasy-pros route | Not started |
-| 11 | Delete `webScraper.ts` | Not started |
-| 12 | Remove Cmd+K reference | Not started |
+| 6 | Delete dead components | Done |
+| 7 | Delete blog slug stub | Done |
+| 8 | Delete `content/writing/` duplicate | Done |
+| 9 | Delete orphaned scripts | Done |
+| 10 | Delete deprecated fantasy-pros route | Skipped — admin actively uses /api/fantasy-pros (multiple fetch calls); more work than Tiny |
+| 11 | Delete `webScraper.ts` | Skipped — webScraper.ts actively used by dataManager.ts |
+| 12 | Remove Cmd+K reference | Done |
 | 13 | Wire RSS to `blog.ts` | Not started |
 | 14 | Index blog posts in search API | Not started |
 | 15 | Link FF tier pages from UI | Not started |
