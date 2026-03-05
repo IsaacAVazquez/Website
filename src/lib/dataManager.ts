@@ -1,6 +1,5 @@
 import { Player, Position } from '@/types';
 import { parseCSV, csvToPlayers } from './dataImport';
-import { FantasyProsScraper, SleeperAPI } from './webScraper';
 
 export class DataManager {
   private currentData: { [position: string]: Player[] } = {};
@@ -49,35 +48,7 @@ export class DataManager {
     }
   }
   
-  // Method 3: Scrape FantasyPros
-  async scrapeFantasyPros(position: string, scoringFormat: string = 'ppr'): Promise<Player[]> {
-    const scraper = new FantasyProsScraper();
-    const players = await scraper.scrapePosition(position, scoringFormat);
-    
-    this.currentData[position.toUpperCase()] = players;
-    return players;
-  }
-  
-  // Method 4: Fetch from Sleeper API
-  async fetchFromSleeper(): Promise<{ [position: string]: Player[] }> {
-    const sleeper = new SleeperAPI();
-    const sleeperData = await sleeper.getSleeperPlayers();
-    const players = await sleeper.convertSleeperToPlayers(sleeperData);
-    
-    // Group by position
-    const groupedPlayers: { [position: string]: Player[] } = {};
-    players.forEach(player => {
-      if (!groupedPlayers[player.position]) {
-        groupedPlayers[player.position] = [];
-      }
-      groupedPlayers[player.position].push(player);
-    });
-    
-    this.currentData = { ...this.currentData, ...groupedPlayers };
-    return groupedPlayers;
-  }
-  
-  // Method 5: Paste rankings data directly
+  // Method 3: Paste rankings data directly
   parseRankingsText(text: string, position: Position): Player[] {
     const lines = text.trim().split('\n');
     const players: Player[] = [];
