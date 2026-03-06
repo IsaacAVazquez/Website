@@ -6,6 +6,7 @@ import { ModernButton } from "@/components/ui/ModernButton";
 import { useStockData } from "@/hooks/useStockData";
 import { IconChevronRight, IconMicrophone } from "@tabler/icons-react";
 import type { TranscriptsData, TranscriptContent } from "@/types/investment";
+import { ErrorState } from "./ErrorState";
 
 interface Props { symbol: string }
 
@@ -46,7 +47,7 @@ function TranscriptViewer({ symbol, year, quarter }: { symbol: string; year: num
 }
 
 export function TranscriptsPanel({ symbol }: Props) {
-  const { data: transcriptsRaw, isLoading, error } = useStockData<TranscriptsData>(symbol, "transcripts");
+  const { data: transcriptsRaw, isLoading, error, isNotFetched, refetch } = useStockData<TranscriptsData>(symbol, "transcripts");
   const [selected, setSelected] = useState<{ year: number; quarter: number } | null>(null);
 
   const transcripts = Array.isArray(transcriptsRaw) ? transcriptsRaw : [];
@@ -67,7 +68,7 @@ export function TranscriptsPanel({ symbol }: Props) {
       )}
 
       {!isLoading && (error || transcripts.length === 0) && (
-        <p className="text-sm text-[var(--text-tertiary)]">No transcripts available.</p>
+        <ErrorState message={error ?? "No transcripts available"} isNotFetched={isNotFetched} onRetry={refetch} />
       )}
 
       {!isLoading && transcripts.length > 0 && (

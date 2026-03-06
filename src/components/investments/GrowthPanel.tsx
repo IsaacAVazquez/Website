@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
+import { ErrorState } from "./ErrorState";
 
 interface Props { symbol: string }
 
@@ -123,7 +124,7 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
 }
 
 export function GrowthPanel({ symbol }: Props) {
-  const { data: raw, isLoading, error } = useStockData(symbol, "growth");
+  const { data: raw, isLoading, error, isNotFetched, refetch } = useStockData(symbol, "growth");
   const metrics = extractMetrics(raw);
 
   return (
@@ -135,7 +136,7 @@ export function GrowthPanel({ symbol }: Props) {
       )}
 
       {!isLoading && (error || metrics.length === 0) && (
-        <p className="text-sm text-[var(--text-tertiary)]">Growth data unavailable.</p>
+        <ErrorState message={error ?? "Growth data unavailable"} isNotFetched={isNotFetched} onRetry={refetch} />
       )}
 
       {!isLoading && metrics.length > 0 && (

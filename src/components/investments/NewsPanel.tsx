@@ -5,6 +5,7 @@ import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import { IconExternalLink } from "@tabler/icons-react";
 import type { NewsData, NewsItem } from "@/types/investment";
+import { ErrorState } from "./ErrorState";
 
 interface Props { symbol: string }
 
@@ -48,7 +49,7 @@ function NewsCard({ item }: { item: NewsItem }) {
 }
 
 export function NewsPanel({ symbol }: Props) {
-  const { data: raw, isLoading, error } = useStockData<NewsData>(symbol, "news");
+  const { data: raw, isLoading, error, isNotFetched, refetch } = useStockData<NewsData>(symbol, "news");
   const items = Array.isArray(raw) ? raw : [];
 
   return (
@@ -64,7 +65,7 @@ export function NewsPanel({ symbol }: Props) {
       )}
 
       {!isLoading && (error || items.length === 0) && (
-        <p className="text-sm text-[var(--text-tertiary)]">No news available.</p>
+        <ErrorState message={error ?? "No news available"} isNotFetched={isNotFetched} onRetry={refetch} />
       )}
 
       {!isLoading && items.length > 0 && (

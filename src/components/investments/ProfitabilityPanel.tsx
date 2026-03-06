@@ -4,6 +4,7 @@ import React from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import type { Profitability, MarginsData } from "@/types/investment";
+import { ErrorState } from "./ErrorState";
 
 interface Props { symbol: string }
 
@@ -47,9 +48,9 @@ function MetricRow({ label, value, max }: { label: string; value: number | undef
 }
 
 export function ProfitabilityPanel({ symbol }: Props) {
-  const { data: prof, isLoading: profLoading } = useStockData<Profitability>(symbol, "profitability");
+  const { data: prof, isLoading: profLoading, error: profError, isNotFetched: profNotFetched, refetch: refetchProf } = useStockData<Profitability>(symbol, "profitability");
   // Margins is an array; grab the most recent entry
-  const { data: marginsRaw, isLoading: marginsLoading } = useStockData<MarginsData>(symbol, "margins");
+  const { data: marginsRaw, isLoading: marginsLoading, error: marginsError, isNotFetched: marginsNotFetched, refetch: refetchMargins } = useStockData<MarginsData>(symbol, "margins");
 
   const margins = Array.isArray(marginsRaw) ? marginsRaw[marginsRaw.length - 1] : undefined;
   const isLoading = profLoading || marginsLoading;
@@ -89,7 +90,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
           )}
 
           {(!prof || prof.error) && (!margins || margins.error) && (
-            <p className="text-sm text-[var(--text-tertiary)]">Profitability data unavailable.</p>
+            <ErrorState message={profError ?? marginsError ?? "Profitability data unavailable"} isNotFetched={profNotFetched && marginsNotFetched} onRetry={() => { refetchProf(); refetchMargins(); }} />
           )}
         </>
       )}

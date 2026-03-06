@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { useStockData } from "@/hooks/useStockData";
 import { ComparisonRadarChart, type RadarDimension } from "./ComparisonRadarChart";
 import { ComparisonMetricTable, type MetricRow } from "./ComparisonMetricTable";
@@ -10,9 +10,23 @@ import type {
   MarginsData,
   BetaData,
   DcfData,
+  InvestmentsIndex,
 } from "@/types/investment";
 
-const SYMBOLS = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA", "BRK-B", "JPM", "V"];
+const FALLBACK_SYMBOLS = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA", "BRK-B", "JPM", "V"];
+
+function useIndexSymbols(): string[] {
+  const [symbols, setSymbols] = useState<string[]>(FALLBACK_SYMBOLS);
+  useEffect(() => {
+    fetch("/data/investments/index.json")
+      .then((r) => r.json())
+      .then((data: InvestmentsIndex) => {
+        if (data.symbols?.length > 0) setSymbols(data.symbols);
+      })
+      .catch(() => {});
+  }, []);
+  return symbols;
+}
 
 // ─── Formatting helpers ────────────────────────────────────────────────────
 
@@ -135,6 +149,7 @@ function Skeleton() {
 // ─── Main component ────────────────────────────────────────────────────────
 
 export function ComparisonTab() {
+  const SYMBOLS = useIndexSymbols();
   const [symbolA, setSymbolA] = React.useState("AAPL");
   const [symbolB, setSymbolB] = React.useState("MSFT");
 
@@ -277,8 +292,7 @@ export function ComparisonTab() {
           <select
             value={symbolB}
             onChange={(e) => setSymbolB(e.target.value)}
-            className="px-3 py-2 text-sm font-semibold rounded-lg border bg-[var(--surface-primary)] focus:outline-none focus:ring-2 min-h-[44px]"
-            style={{ borderColor: "#D97706", color: "#D97706" }}
+            className="px-3 py-2 text-sm font-semibold rounded-lg border border-[var(--color-warning)] text-[var(--color-warning)] bg-[var(--surface-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-warning)] min-h-[44px]"
             aria-label="Select second stock to compare"
           >
             {SYMBOLS.map((s) => (

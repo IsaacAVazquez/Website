@@ -4,6 +4,7 @@ import React from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import type { IndustryData } from "@/types/investment";
+import { ErrorState } from "./ErrorState";
 
 interface Props { symbol: string }
 
@@ -60,7 +61,7 @@ function extractRows(raw: unknown): IndustryRow[] {
 }
 
 export function ValuationRatiosPanel({ symbol }: Props) {
-  const { data: industryRaw, isLoading, error } = useStockData<IndustryData>(symbol, "industry");
+  const { data: industryRaw, isLoading, error, isNotFetched, refetch } = useStockData<IndustryData>(symbol, "industry");
   const rows = extractRows(industryRaw);
 
   return (
@@ -79,7 +80,7 @@ export function ValuationRatiosPanel({ symbol }: Props) {
       )}
 
       {!isLoading && (error || rows.length === 0) && (
-        <p className="text-sm text-[var(--text-tertiary)]">Industry comparison data unavailable.</p>
+        <ErrorState message={error ?? "Industry comparison data unavailable"} isNotFetched={isNotFetched} onRetry={refetch} />
       )}
 
       {!isLoading && rows.length > 0 && (

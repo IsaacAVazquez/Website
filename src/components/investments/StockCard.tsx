@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
+import { Sparkline } from "./Sparkline";
 import { IconPencil, IconTrash, IconCheck, IconX, IconSearch } from "@tabler/icons-react";
-import type { EnhancedHolding } from "@/types/investment";
+import { useStockData } from "@/hooks/useStockData";
+import type { EnhancedHolding, PriceData, StockPrice } from "@/types/investment";
 
 interface Props {
   holding: EnhancedHolding;
@@ -25,6 +27,13 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [editShares, setEditShares] = useState(String(holding.shares));
   const [editCost, setEditCost] = useState(String(holding.averageCost));
+
+  // Fetch sparkline data
+  const { data: priceData } = useStockData<PriceData>(holding.symbol, "price");
+  const sparklineData = React.useMemo(() => {
+    if (!priceData || !Array.isArray(priceData)) return [];
+    return (priceData as StockPrice[]).slice(-30).map((p) => p.close);
+  }, [priceData]);
 
   const gainPositive = holding.gainLoss >= 0;
   const dayPositive = holding.dayChange >= 0;
@@ -48,35 +57,47 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
 
   return (
     <WarmCard padding="sm" ariaLabel={`${holding.symbol} holding`}>
-      {/* Header row */}
-      <div className="flex items-start justify-between gap-2 mb-3">
+      {/* Top: Symbol + name left, sparkline right */}
+      <div className="flex items-start justify-between gap-2 mb-2">
         <div>
           <div className="flex items-center gap-2">
             <span className="text-base font-bold text-[var(--text-primary)]">{holding.symbol}</span>
             {holding.isLoading && (
-              <span className="text-xs text-[var(--text-tertiary)]">Loading…</span>
+              <span className="text-xs text-[var(--text-tertiary)]">Loading...</span>
             )}
           </div>
           <p className="text-xs text-[var(--text-secondary)] truncate max-w-[160px]">{holding.name}</p>
         </div>
-
-        <div className="text-right shrink-0">
-          {holding.isLoading ? (
-            <div className="h-5 w-16 rounded bg-[var(--neutral-200)] animate-pulse" />
+        <div className="shrink-0">
+          {sparklineData.length >= 2 ? (
+            <Sparkline data={sparklineData} width={80} height={30} />
           ) : (
-            <>
-              <p className="text-sm font-semibold text-[var(--text-primary)]">
-                {fmt(holding.currentPrice, "currency")}
-              </p>
-              <p className={`text-xs font-medium ${dayColor}`}>
-                {fmt(holding.dayChangePercent, "percent")}
-              </p>
-            </>
+            <div className="w-[80px] h-[30px]" />
           )}
         </div>
       </div>
 
-      {/* Metrics grid */}
+      {/* Middle: Current price + day change badge */}
+      <div className="flex items-baseline gap-2 mb-3">
+        {holding.isLoading ? (
+          <div className="h-6 w-20 rounded bg-[var(--neutral-200)] animate-pulse" />
+        ) : (
+          <>
+            <p className="text-lg font-bold text-[var(--text-primary)]">
+              {fmt(holding.currentPrice, "currency")}
+            </p>
+            <span className={`text-xs font-semibold px-1.5 py-0.5 rounded-full ${
+              dayPositive
+                ? "bg-[color-mix(in_srgb,var(--color-success)_15%,transparent)] text-[var(--color-success)]"
+                : "bg-[color-mix(in_srgb,var(--color-error)_15%,transparent)] text-[var(--color-error)]"
+            }`}>
+              {fmt(holding.dayChangePercent, "percent")}
+            </span>
+          </>
+        )}
+      </div>
+
+      {/* Bottom: Metrics / Edit form */}
       {editing ? (
         <div className="space-y-2 mb-3">
           <label className="block">
@@ -103,51 +124,45 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
           </label>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 mb-3 text-sm">
-          <div>
-            <span className="text-[var(--text-tertiary)] text-xs">Shares</span>
-            <p className="font-medium text-[var(--text-primary)]">{fmt(holding.shares)}</p>
+        <>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-1 mb-2 text-sm">
+            <div>
+              <span className="text-[var(--text-tertiary)] text-xs">Market Value</span>
+              <p className="font-medium text-[var(--text-primary)]">{fmt(holding.currentValue, "currency")}</p>
+            </div>
+            <div>
+              <span className="text-[var(--text-tertiary)] text-xs">Gain / Loss</span>
+              <p className={`font-medium ${valueColor}`}>
+                {fmt(holding.gainLoss, "currency")}
+              </p>
+            </div>
           </div>
-          <div>
-            <span className="text-[var(--text-tertiary)] text-xs">Avg Cost</span>
-            <p className="font-medium text-[var(--text-primary)]">{fmt(holding.averageCost, "currency")}</p>
-          </div>
-          <div>
-            <span className="text-[var(--text-tertiary)] text-xs">Market Value</span>
-            <p className="font-medium text-[var(--text-primary)]">{fmt(holding.currentValue, "currency")}</p>
-          </div>
-          <div>
-            <span className="text-[var(--text-tertiary)] text-xs">Gain / Loss</span>
-            <p className={`font-medium ${valueColor}`}>
-              {fmt(holding.gainLoss, "currency")} ({fmt(holding.gainLossPercent, "percent")})
-            </p>
-          </div>
-        </div>
-      )}
 
-      {/* Allocation bar */}
-      {holding.allocationPercent !== null && (
-        <div className="mb-3">
-          <div className="flex justify-between text-xs text-[var(--text-tertiary)] mb-1">
-            <span>Allocation</span>
-            <span>{holding.allocationPercent.toFixed(1)}%</span>
-          </div>
-          <div className="h-1.5 rounded-full bg-[var(--neutral-200)] overflow-hidden">
-            <div
-              className="h-full rounded-full bg-[var(--color-primary)] transition-all duration-500"
-              style={{ width: `${Math.min(holding.allocationPercent, 100)}%` }}
-              role="progressbar"
-              aria-valuenow={holding.allocationPercent}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label={`${holding.symbol} allocation ${holding.allocationPercent.toFixed(1)}%`}
-            />
-          </div>
-        </div>
+          {/* Allocation bar */}
+          {holding.allocationPercent !== null && (
+            <div className="mb-2">
+              <div className="flex justify-between text-xs text-[var(--text-tertiary)] mb-0.5">
+                <span>Allocation</span>
+                <span>{holding.allocationPercent.toFixed(1)}%</span>
+              </div>
+              <div className="h-1.5 rounded-full bg-[var(--neutral-200)] overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-[var(--color-primary)] transition-all duration-500"
+                  style={{ width: `${Math.min(holding.allocationPercent, 100)}%` }}
+                  role="progressbar"
+                  aria-valuenow={holding.allocationPercent}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-label={`${holding.symbol} allocation ${holding.allocationPercent.toFixed(1)}%`}
+                />
+              </div>
+            </div>
+          )}
+        </>
       )}
 
       {/* Action buttons */}
-      <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex items-center gap-1.5 pt-1.5 border-t border-[var(--border-primary)]">
         {editing ? (
           <>
             <ModernButton size="sm" variant="accent" onClick={handleSave} ariaLabel="Save changes">
@@ -181,7 +196,7 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
               onClick={() => onResearch(holding.symbol)}
               ariaLabel={`Research ${holding.symbol}`}
             >
-              <IconSearch size={14} /> Research
+              <IconSearch size={14} />
             </ModernButton>
             <ModernButton
               size="sm"

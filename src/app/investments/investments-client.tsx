@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useState, lazy, Suspense } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useInvestments } from "@/hooks/useInvestments";
+import {
+  containerVariants,
+  itemVariants,
+  fadeInVariants,
+  getReducedMotionVariants,
+} from "@/components/investments/animations";
 
 const PortfolioTracker = lazy(() =>
   import("@/components/investments/PortfolioTracker").then((m) => ({ default: m.PortfolioTracker }))
@@ -30,6 +37,9 @@ export function InvestmentsClient() {
   const [researchSymbol, setResearchSymbol] = useState("AAPL");
   const { holdings } = useInvestments();
   const portfolioSymbols = holdings.map((h) => h.symbol);
+  const shouldReduceMotion = useReducedMotion();
+
+  const variants = shouldReduceMotion ? getReducedMotionVariants() : { containerVariants, itemVariants, fadeInVariants };
 
   function handleResearch(symbol: string) {
     setResearchSymbol(symbol);
@@ -40,12 +50,17 @@ export function InvestmentsClient() {
     <div className="min-h-screen bg-[var(--surface-primary)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Page header */}
-        <div className="mb-8">
+        <motion.div
+          className="mb-8"
+          variants={variants.fadeInVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-1">Investments</h1>
           <p className="text-[var(--text-secondary)] text-sm">
             Track your portfolio and research stocks with fundamental data.
           </p>
-        </div>
+        </motion.div>
 
         {/* Top-level tabs */}
         <div
@@ -70,18 +85,28 @@ export function InvestmentsClient() {
           ))}
         </div>
 
-        {/* Tab panels */}
-        <div role="tabpanel" aria-label={`${activeTab} panel`}>
-          <Suspense fallback={<TabFallback />}>
-            {activeTab === "portfolio" && <PortfolioTracker onResearch={handleResearch} />}
-            {activeTab === "research" && (
-              <StockResearch
-                initialSymbol={researchSymbol}
-                portfolioSymbols={portfolioSymbols}
-              />
-            )}
-          </Suspense>
-        </div>
+        {/* Tab panels with crossfade */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            role="tabpanel"
+            aria-label={`${activeTab} panel`}
+            variants={variants.fadeInVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <Suspense fallback={<TabFallback />}>
+              {activeTab === "portfolio" && <PortfolioTracker onResearch={handleResearch} />}
+              {activeTab === "research" && (
+                <StockResearch
+                  initialSymbol={researchSymbol}
+                  portfolioSymbols={portfolioSymbols}
+                />
+              )}
+            </Suspense>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

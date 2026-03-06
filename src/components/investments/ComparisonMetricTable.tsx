@@ -50,7 +50,7 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
               <th className="text-right py-2 px-3 text-xs font-medium text-[var(--color-primary)] whitespace-nowrap">
                 {symbolA}
               </th>
-              <th className="text-right py-2 pl-3 text-xs font-medium whitespace-nowrap" style={{ color: "#D97706" }}>
+              <th className="text-right py-2 pl-3 text-xs font-medium text-[var(--color-warning)] whitespace-nowrap">
                 {symbolB}
               </th>
             </tr>

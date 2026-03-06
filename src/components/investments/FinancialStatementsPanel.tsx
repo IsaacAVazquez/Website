@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import type { InvestmentSection } from "@/types/investment";
+import { ErrorState } from "./ErrorState";
 
 interface Props { symbol: string }
 
@@ -70,7 +71,7 @@ function StatementTable({
   symbol: string;
   period: Period;
 }) {
-  const { data, isLoading, error } = useStockData(symbol, section);
+  const { data, isLoading, error, isNotFetched, refetch } = useStockData(symbol, section);
 
   if (isLoading) {
     return (
@@ -83,7 +84,7 @@ function StatementTable({
   }
 
   if (error) {
-    return <p className="text-sm text-[var(--text-tertiary)] py-4">{error}</p>;
+    return <ErrorState message={error} isNotFetched={isNotFetched} onRetry={refetch} />;
   }
 
   const table = normalize(data, period);

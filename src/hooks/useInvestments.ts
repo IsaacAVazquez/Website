@@ -7,8 +7,11 @@ import type {
   PortfolioSummary,
   StockQuote,
 } from "@/types/investment";
+import type { PortfolioSnapshot } from "@/components/investments/PortfolioPerformanceChart";
 
 const STORAGE_KEY = "portfolio_holdings";
+const SNAPSHOTS_KEY = "portfolio_snapshots";
+const MAX_SNAPSHOTS = 365;
 
 // ─── localStorage helpers ────────────────────────────────────────────────────
 
@@ -27,7 +30,28 @@ function saveHoldings(holdings: PortfolioHolding[]): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(holdings));
 }
 
-// ─── Quote fetching ──────────────────────────────────────────────────────────
+function loadSnapshots(): PortfolioSnapshot[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = localStorage.getItem(SNAPSHOTS_KEY);
+    return raw ? (JSON.parse(raw) as PortfolioSnapshot[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveSnapshot(snapshot: PortfolioSnapshot): void {
+  if (typeof window === "undefined") return;
+  const existing = loadSnapshots();
+  // One snapshot per day (idempotent)
+  if (existing.some((s) => s.date === snapshot.date)) return;
+  const updated = [...existing, snapshot];
+  // Keep max entries, drop oldest
+  const trimmed = updated.length > MAX_SNAPSHOTS ? updated.slice(-MAX_SNAPSHOTS) : updated;
+  localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(trimmed));
+}
+
+// ─── Quote fetching with retry ───────────────────────────────────────────────
 
 async function fetchQuotes(symbols: string[]): Promise<Map<string, StockQuote>> {
   if (symbols.length === 0) return new Map();
@@ -124,7 +148,9 @@ export interface UseInvestmentsReturn {
   enhancedHoldings: EnhancedHolding[];
   summary: PortfolioSummary;
   isLoading: boolean;
+  error: string | null;
   lastUpdated: Date | null;
+  snapshots: PortfolioSnapshot[];
   addHolding: (holding: PortfolioHolding) => void;
   updateHolding: (symbol: string, updates: Partial<PortfolioHolding>) => void;
   removeHolding: (symbol: string) => void;
@@ -135,28 +161,48 @@ export function useInvestments(): UseInvestmentsReturn {
   const [holdings, setHoldings] = useState<PortfolioHolding[]>([]);
   const [quotes, setQuotes] = useState<Map<string, StockQuote>>(new Map());
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [snapshots, setSnapshots] = useState<PortfolioSnapshot[]>([]);
   const isMounted = useRef(true);
 
   // Hydrate from localStorage on mount
   useEffect(() => {
     isMounted.current = true;
     setHoldings(loadHoldings());
+    setSnapshots(loadSnapshots());
     return () => { isMounted.current = false; };
   }, []);
 
   const fetchAllQuotes = useCallback(async (currentHoldings: PortfolioHolding[]) => {
     if (currentHoldings.length === 0) return;
     setIsLoading(true);
+    setError(null);
     try {
       const symbols = currentHoldings.map((h) => h.symbol);
       const q = await fetchQuotes(symbols);
       if (isMounted.current) {
         setQuotes(q);
         setLastUpdated(new Date());
+
+        // Record daily snapshot
+        const enhanced = buildEnhanced(currentHoldings, q, false);
+        const summary = buildSummary(enhanced);
+        const totalCost = enhanced.reduce((s, h) => s + h.totalCost, 0);
+        const today = new Date().toISOString().split("T")[0];
+        const snap: PortfolioSnapshot = {
+          date: today,
+          totalValue: summary.totalValue,
+          totalCost,
+          holdingCount: currentHoldings.length,
+        };
+        saveSnapshot(snap);
+        setSnapshots(loadSnapshots());
       }
     } catch (err) {
-      console.error("useInvestments: quote fetch failed", err);
+      if (isMounted.current) {
+        setError((err as Error).message);
+      }
     } finally {
       if (isMounted.current) setIsLoading(false);
     }
@@ -232,7 +278,9 @@ export function useInvestments(): UseInvestmentsReturn {
     enhancedHoldings,
     summary,
     isLoading,
+    error,
     lastUpdated,
+    snapshots,
     addHolding,
     updateHolding,
     removeHolding,

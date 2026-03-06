@@ -1,8 +1,14 @@
 "use client";
 
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { WarmCard } from "@/components/ui/WarmCard";
 import type { PortfolioSummary as PortfolioSummaryType } from "@/types/investment";
+import {
+  containerVariants,
+  itemVariants,
+  getReducedMotionVariants,
+} from "./animations";
 
 interface Props {
   summary: PortfolioSummaryType;
@@ -21,77 +27,69 @@ function formatPercent(n: number): string {
   return `${n >= 0 ? "+" : ""}${n.toFixed(2)}%`;
 }
 
-interface MetricCardProps {
-  label: string;
-  value: string;
-  sub?: string;
-  positive?: boolean | null;
-  isLoading: boolean;
-}
-
-function MetricCard({ label, value, sub, positive, isLoading }: MetricCardProps) {
-  const valueColor =
-    positive === null || positive === undefined
-      ? "text-[var(--text-primary)]"
-      : positive
-      ? "text-[var(--color-success)]"
-      : "text-[var(--color-error)]";
-
-  return (
-    <WarmCard padding="sm" ariaLabel={label}>
-      <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wide mb-1">
-        {label}
-      </p>
-      {isLoading ? (
-        <div className="h-7 w-28 rounded bg-[var(--neutral-200)] animate-pulse" />
-      ) : (
-        <>
-          <p className={`text-xl font-bold ${valueColor}`}>{value}</p>
-          {sub && (
-            <p className={`text-sm mt-0.5 ${positive !== null ? valueColor : "text-[var(--text-secondary)]"}`}>
-              {sub}
-            </p>
-          )}
-        </>
-      )}
-    </WarmCard>
-  );
-}
-
 export function PortfolioSummary({ summary, isLoading }: Props) {
   const gainPositive = summary.totalGainLoss >= 0;
   const dayPositive = summary.dayChange >= 0;
+  const gainColor = gainPositive ? "text-[var(--color-success)]" : "text-[var(--color-error)]";
+  const dayColor = dayPositive ? "text-[var(--color-success)]" : "text-[var(--color-error)]";
+
+  const shouldReduceMotion = useReducedMotion();
+  const v = shouldReduceMotion ? getReducedMotionVariants() : { containerVariants, itemVariants };
 
   return (
-    <div
-      className="grid grid-cols-2 gap-3 sm:grid-cols-4"
+    <motion.div
       role="region"
       aria-label="Portfolio summary"
+      variants={v.containerVariants}
+      initial="hidden"
+      animate="visible"
     >
-      <MetricCard
-        label="Total Value"
-        value={formatCurrency(summary.totalValue)}
-        isLoading={isLoading}
-      />
-      <MetricCard
-        label="Total Cost"
-        value={formatCurrency(summary.totalCost)}
-        isLoading={isLoading}
-      />
-      <MetricCard
-        label="Total Gain / Loss"
-        value={formatCurrency(summary.totalGainLoss)}
-        sub={formatPercent(summary.totalGainLossPercent)}
-        positive={gainPositive}
-        isLoading={isLoading}
-      />
-      <MetricCard
-        label="Today's Change"
-        value={formatCurrency(summary.dayChange)}
-        sub={formatPercent(summary.dayChangePercent)}
-        positive={dayPositive}
-        isLoading={isLoading}
-      />
-    </div>
+      <WarmCard padding="sm">
+        {isLoading ? (
+          <div className="space-y-3">
+            <div className="h-10 w-48 rounded bg-[var(--neutral-200)] animate-pulse" />
+            <div className="h-6 w-32 rounded bg-[var(--neutral-200)] animate-pulse" />
+          </div>
+        ) : (
+          <>
+            {/* Hero: Total value */}
+            <motion.div variants={v.itemVariants}>
+              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wide mb-1">
+                Total Portfolio Value
+              </p>
+              <p className="text-3xl font-bold text-[var(--text-primary)]">
+                {formatCurrency(summary.totalValue)}
+              </p>
+            </motion.div>
+
+            {/* Sub-line: Total gain/loss */}
+            <motion.div variants={v.itemVariants} className="mt-1">
+              <p className={`text-base font-semibold ${gainColor}`}>
+                {formatCurrency(summary.totalGainLoss)} ({formatPercent(summary.totalGainLossPercent)})
+              </p>
+            </motion.div>
+
+            {/* Secondary row */}
+            <motion.div
+              variants={v.itemVariants}
+              className="flex items-center gap-6 mt-3 pt-3 border-t border-[var(--border-primary)]"
+            >
+              <div>
+                <p className="text-xs text-[var(--text-tertiary)]">Today</p>
+                <p className={`text-sm font-semibold ${dayColor}`}>
+                  {formatCurrency(summary.dayChange)} ({formatPercent(summary.dayChangePercent)})
+                </p>
+              </div>
+              <div>
+                <p className="text-xs text-[var(--text-tertiary)]">Total Cost</p>
+                <p className="text-sm font-semibold text-[var(--text-primary)]">
+                  {formatCurrency(summary.totalCost)}
+                </p>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </WarmCard>
+    </motion.div>
   );
 }

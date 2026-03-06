@@ -4,6 +4,7 @@ import React from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import type { Fundamentals, CompanyInfo, BetaData, WaccData } from "@/types/investment";
+import { ErrorState } from "./ErrorState";
 
 interface Props { symbol: string }
 
@@ -35,8 +36,8 @@ function SectionSkeleton({ rows = 4 }: { rows?: number }) {
 }
 
 export function FundamentalsPanel({ symbol }: Props) {
-  const { data: info, isLoading: infoLoading } = useStockData<CompanyInfo>(symbol, "info");
-  const { data: fund, isLoading: fundLoading } = useStockData<Fundamentals>(symbol, "fundamentals");
+  const { data: info, isLoading: infoLoading, error: infoError, isNotFetched: infoNotFetched, refetch: refetchInfo } = useStockData<CompanyInfo>(symbol, "info");
+  const { data: fund, isLoading: fundLoading, error: fundError, isNotFetched: fundNotFetched, refetch: refetchFund } = useStockData<Fundamentals>(symbol, "fundamentals");
   const { data: wacc } = useStockData<WaccData>(symbol, "wacc");
   const { data: beta } = useStockData<BetaData>(symbol, "beta");
 
@@ -80,7 +81,7 @@ export function FundamentalsPanel({ symbol }: Props) {
             </div>
           </>
         ) : (
-          <p className="text-sm text-[var(--text-tertiary)]">Company info unavailable.</p>
+          <ErrorState message={infoError ?? "Company info unavailable"} isNotFetched={infoNotFetched} onRetry={refetchInfo} />
         )}
       </WarmCard>
 
@@ -101,7 +102,7 @@ export function FundamentalsPanel({ symbol }: Props) {
             {beta && !beta.error && <MetricRow label="Beta (5Y)" value={fmt(beta.beta5y)} />}
           </div>
         ) : (
-          <p className="text-sm text-[var(--text-tertiary)]">Fundamentals unavailable.</p>
+          <ErrorState message={fundError ?? "Fundamentals unavailable"} isNotFetched={fundNotFetched} onRetry={refetchFund} />
         )}
       </WarmCard>
     </div>

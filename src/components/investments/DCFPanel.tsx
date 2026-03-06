@@ -5,6 +5,7 @@ import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import { IconInfoCircle } from "@tabler/icons-react";
 import type { DcfData } from "@/types/investment";
+import { ErrorState } from "./ErrorState";
 
 interface Props { symbol: string }
 
@@ -17,7 +18,7 @@ function fmt(n: number | undefined, style: "currency" | "percent" | "decimal" = 
 }
 
 export function DCFPanel({ symbol }: Props) {
-  const { data, isLoading, error } = useStockData<DcfData>(symbol, "dcf");
+  const { data, isLoading, error, isNotFetched, refetch } = useStockData<DcfData>(symbol, "dcf");
 
   const upside = data?.upside ?? 0;
   const rec = data?.recommendation ?? "";
@@ -40,7 +41,7 @@ export function DCFPanel({ symbol }: Props) {
       )}
 
       {!isLoading && (error || !data) && (
-        <p className="text-sm text-[var(--text-tertiary)]">DCF data unavailable.</p>
+        <ErrorState message={error ?? "DCF data unavailable"} isNotFetched={isNotFetched} onRetry={refetch} />
       )}
 
       {!isLoading && data && !data.error && (

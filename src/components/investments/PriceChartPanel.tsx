@@ -5,6 +5,7 @@ import * as d3 from "d3";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import type { PriceData, StockPrice } from "@/types/investment";
+import { ErrorState } from "./ErrorState";
 
 interface Props {
   symbol: string;
@@ -33,7 +34,7 @@ function normalizeEntry(entry: StockPrice & { report_date?: string; symbol?: str
 }
 
 export function PriceChartPanel({ symbol }: Props) {
-  const { data: raw, isLoading, error } = useStockData<PriceData>(symbol, "price");
+  const { data: raw, isLoading, error, isNotFetched, refetch } = useStockData<PriceData>(symbol, "price");
   const [range, setRange] = useState<Range>("1Y");
 
   const priceRef = useRef<SVGSVGElement>(null);
@@ -285,9 +286,7 @@ export function PriceChartPanel({ symbol }: Props) {
       )}
 
       {(isError || isEmpty) && !isLoading && (
-        <div className="flex items-center justify-center h-40">
-          <p className="text-sm text-[var(--text-tertiary)]">Price data unavailable.</p>
-        </div>
+        <ErrorState message={error ?? "Price data unavailable"} isNotFetched={isNotFetched} onRetry={refetch} />
       )}
 
       {!isLoading && slicedData.length > 0 && (
