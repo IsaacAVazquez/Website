@@ -1,152 +1,137 @@
 # Component Library Documentation
 
-Complete component library reference for Isaac Vazquez's warm modern portfolio.
+Complete component library reference for Isaac Vazquez's portfolio and fantasy football analytics platform.
 
-**Design System:** Warm Modern Professional
-**Component Count:** 25+ components
-**Last Updated:** January 2025
+**Last Updated:** March 2026
+**Component Count:** 50+ components
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Component Overview](#component-overview)
-- [Core UI Components](#core-ui-components)
+- [UI Library (src/components/ui/)](#ui-library)
 - [Layout Components](#layout-components)
-- [Content Components](#content-components)
+- [Portfolio Components](#portfolio-components)
+- [Fantasy Football Components](#fantasy-football-components)
+- [Investments Components](#investments-components)
 - [Navigation Components](#navigation-components)
+- [Search Components](#search-components)
 - [Usage Guidelines](#usage-guidelines)
-- [Best Practices](#best-practices)
 
 ---
 
-## 🎨 Component Overview
+## Component Overview
 
-### Component Architecture
+### Directory Structure
 
 ```
 src/components/
-├── ui/                      # Core UI library (10+ components)
-│   ├── WarmCard.tsx        # Main container component
-│   ├── ModernButton.tsx    # Button component
-│   ├── Heading.tsx         # Typography
-│   ├── Paragraph.tsx       # Body text
-│   ├── Badge.tsx           # Labels and tags
-│   └── JourneyTimeline.tsx # Timeline component
+├── ui/                          # Design system primitives
+│   ├── WarmCard.tsx
+│   ├── ModernButton.tsx
+│   ├── button.tsx               # Radix/shadcn-style button primitive
+│   ├── dropdown-menu.tsx        # Radix/shadcn-style dropdown
+│   ├── Heading.tsx
+│   ├── Paragraph.tsx
+│   ├── Badge.tsx
+│   ├── JourneyTimeline.tsx
+│   ├── OptimizedImage.tsx
+│   ├── ThemeToggle.tsx
+│   ├── MetricCallout.tsx
+│   ├── PageSummary.tsx
+│   ├── ExpertSignal.tsx
+│   ├── AuthorBio.tsx
+│   ├── LazyPlayerImage.tsx
+│   └── QADashboard.tsx
 │
-├── ModernHero.tsx          # Hero section
-├── ContactContent.tsx      # Contact page content
-├── ProjectsContent.tsx     # Projects showcase
-├── About.tsx               # About page
+├── investments/                 # Investments page components
+│   ├── PortfolioTracker.tsx
+│   ├── StockResearch.tsx
+│   ├── StockCard.tsx
+│   ├── StockSearch.tsx
+│   ├── AddStockForm.tsx
+│   ├── PortfolioSummary.tsx
+│   ├── AllocationChart.tsx
+│   ├── DCFPanel.tsx
+│   ├── FundamentalsPanel.tsx
+│   ├── GrowthPanel.tsx
+│   ├── ValuationRatiosPanel.tsx
+│   ├── NewsPanel.tsx
+│   ├── TranscriptsPanel.tsx
+│   ├── IndustryPanel.tsx
+│   └── ProfitabilityPanel.tsx
 │
-├── blog/                   # Blog components
-├── newsletter/             # Newsletter components
-└── testimonials/           # Testimonial components
+├── navigation/                  # Navigation utilities
+│   ├── Breadcrumbs.tsx
+│   └── LazyFantasyComponents.tsx
+│
+├── search/                      # Search interface
+│   ├── SearchInterface.tsx
+│   ├── SearchResults.tsx
+│   └── SearchFilters.tsx
+│
+├── lazy/                        # Lazy-loaded wrappers
+│
+├── ConditionalLayout.tsx        # Route-based layout switcher
+├── ModernHero.tsx               # Home page hero
+├── About.tsx                    # About page component
+├── ContactContent.tsx           # Contact page content
+├── ProjectsContent.tsx          # Portfolio showcase
+├── FeaturedWorkSection.tsx      # Featured projects on home
+├── ProjectDetailModal.tsx       # Project detail overlay
+├── WritingPreview.tsx           # Writing/blog preview
+├── ThinkingPreview.tsx          # Thinking/notes preview
+├── Footer.tsx                   # Site footer
+├── Analytics.tsx                # Analytics tracking wrapper
+├── StructuredData.tsx           # Standard JSON-LD
+├── AIStructuredData.tsx         # AI-specific JSON-LD
+├── ThemeProvider.tsx            # Dark/light mode context
+└── Providers.tsx                # React context wrapper
 ```
-
-### Design Principles
-
-**Consistency:**
-- All components use warm color palette
-- Standardized spacing and sizing
-- Unified hover and focus states
-- Consistent shadow system
-
-**Accessibility:**
-- WCAG AA compliant
-- Keyboard navigation support
-- Screen reader optimized
-- Focus indicators on all interactive elements
-
-**Performance:**
-- Minimal re-renders
-- Optimized animations
-- Lazy loading where appropriate
-- Tree-shakeable exports
 
 ---
 
-## 🧱 Core UI Components
+## UI Library
 
 ### WarmCard
 
-Primary container component with warm theme styling.
+Primary container component.
 
 **Location:** `src/components/ui/WarmCard.tsx`
-
-#### Props Interface
 
 ```typescript
 interface WarmCardProps {
   children: React.ReactNode;
-  hover?: boolean;          // Hover scale effect (default: false)
-  padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';  // default: 'md'
+  hover?: boolean;
+  padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
 }
 ```
 
-#### Usage Examples
-
-**Basic Card:**
+**Usage:**
 ```tsx
-import { WarmCard } from '@/components/ui/WarmCard';
-
-<WarmCard padding="lg">
+<WarmCard padding="lg" hover={true}>
   <h2>Card Title</h2>
-  <p>Card content goes here</p>
+  <p>Card content</p>
 </WarmCard>
 ```
 
-**Interactive Card with Hover:**
-```tsx
-<WarmCard hover={true} padding="xl">
-  <h2 className="text-[#FF6B35]">Featured Content</h2>
-  <p className="text-[#4A3426] dark:text-[#D4A88E]">
-    This card scales slightly on hover
-  </p>
-</WarmCard>
-```
-
-#### Styling Details
-
-```css
-/* Base Styles */
-background: white / dark:#2D1B12 (80% opacity)
-border: 2px solid #FFE4D6 / dark:rgba(255, 142, 83, 0.3)
-border-radius: 1rem (rounded-2xl)
-box-shadow: subtle / dark:warm-lg
-backdrop-filter: blur(4px)
-
-/* Hover State */
-transform: scale(1.02)
-transition: 300ms ease
-shadow: warm-lg
-```
-
-#### Padding Scale
-
-```typescript
-xs: 0.75rem  (12px)
-sm: 1rem     (16px)
-md: 1.5rem   (24px)
-lg: 2rem     (32px)
-xl: 3rem     (48px)
-```
+**Padding scale:**
+- `xs` → 12px, `sm` → 16px, `md` → 24px, `lg` → 32px, `xl` → 48px
 
 ---
 
 ### ModernButton
 
-Warm-themed button component with multiple variants.
+Button component with 4 variants.
 
 **Location:** `src/components/ui/ModernButton.tsx`
-
-#### Props Interface
 
 ```typescript
 interface ModernButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   onClick?: () => void;
   disabled?: boolean;
@@ -154,72 +139,42 @@ interface ModernButtonProps {
 }
 ```
 
-#### Usage Examples
-
-**Primary Button:**
+**Usage:**
 ```tsx
-import { ModernButton } from '@/components/ui/ModernButton';
-
 <ModernButton variant="primary" size="lg">
   Get Started
 </ModernButton>
-```
 
-**Secondary Button:**
-```tsx
-<ModernButton variant="secondary" size="md">
+<ModernButton variant="outline" size="md">
   Learn More
 </ModernButton>
 ```
 
-**Outline Button:**
-```tsx
-<ModernButton variant="outline" size="sm">
-  View Details
-</ModernButton>
-```
+---
 
-#### Variant Styles
+### button.tsx
 
-**Primary:**
-```css
-Light: bg-#FF6B35 hover:bg-#E85A28
-Dark:  bg-#FF8E53 hover:bg-#FFA876
-Text:  white
-Shadow: warm-lg
-```
+Radix/shadcn-style button primitive using `class-variance-authority`.
 
-**Secondary:**
-```css
-Light: bg-#F7B32B hover:bg-#E0A220
-Dark:  bg-#FFD666
-Text:  #4A3426
-```
+**Location:** `src/components/ui/button.tsx`
 
-**Outline:**
-```css
-Border: 2px solid #FF6B35 / dark:#FF8E53
-Text:   #FF6B35 / dark:#FF8E53
-Hover:  bg-#FF6B35/10
-```
+Lower-level button primitive for composable use cases, separate from `ModernButton`.
 
-#### Size Scale
+---
 
-```typescript
-sm: px-3 py-1.5   text-sm
-md: px-4 py-2     text-base
-lg: px-6 py-3     text-lg
-```
+### dropdown-menu.tsx
+
+Radix/shadcn-style dropdown menu using `@radix-ui/react-dropdown-menu`.
+
+**Location:** `src/components/ui/dropdown-menu.tsx`
 
 ---
 
 ### Heading
 
-Typography component with hierarchy and styling options.
+Typography component for consistent heading hierarchy.
 
 **Location:** `src/components/ui/Heading.tsx`
-
-#### Props Interface
 
 ```typescript
 interface HeadingProps {
@@ -229,47 +184,18 @@ interface HeadingProps {
 }
 ```
 
-#### Usage Examples
-
 ```tsx
-import { Heading } from '@/components/ui/Heading';
-
-// H1 with gradient
-<Heading level={1} className="gradient-text-warm">
-  Main Page Title
-</Heading>
-
-// H2 with warm color
-<Heading level={2} className="text-[#FF6B35]">
-  Section Heading
-</Heading>
-
-// H3 standard
-<Heading level={3} className="text-[#2D1B12] dark:text-[#FFE4D6]">
-  Subsection Title
-</Heading>
-```
-
-#### Typography Scale
-
-```tsx
-H1: text-4xl md:text-5xl lg:text-6xl  font-bold
-H2: text-2xl lg:text-3xl              font-bold
-H3: text-xl                            font-bold
-H4: text-lg                            font-semibold
-H5: text-base                          font-semibold
-H6: text-sm                            font-semibold
+<Heading level={1}>Page Title</Heading>
+<Heading level={2} className="text-[var(--color-primary)]">Section</Heading>
 ```
 
 ---
 
 ### Badge
 
-Label and tag component for categories and status.
+Label and tag component.
 
 **Location:** `src/components/ui/Badge.tsx`
-
-#### Props Interface
 
 ```typescript
 interface BadgeProps {
@@ -280,355 +206,382 @@ interface BadgeProps {
 }
 ```
 
-#### Usage Examples
-
 ```tsx
-import { Badge } from '@/components/ui/Badge';
-
-<Badge variant="default" size="sm">
-  React
-</Badge>
-
-<Badge variant="success">
-  Completed
-</Badge>
-
-<Badge variant="warning">
-  In Progress
-</Badge>
+<Badge>TypeScript</Badge>
+<Badge variant="success">Completed</Badge>
 ```
 
 ---
 
 ### JourneyTimeline
 
-Timeline component for career journey display.
+Career timeline visualization.
 
 **Location:** `src/components/ui/JourneyTimeline.tsx`
 
-#### Features
-
-- Displays career timeline with logos
-- Tech stack tags for each position
-- Warm theme styling throughout
-- Responsive layout
-
-#### Usage
+Displays career history with company logos, roles, dates, and tech stack tags. Data sourced from `src/constants/personal.ts`.
 
 ```tsx
-import { JourneyTimeline } from '@/components/ui/JourneyTimeline';
-
-// Used in About page Journey tab
 <JourneyTimeline />
 ```
 
-**Data Source:** `src/constants/personal.ts` → `personalMetrics.careerTimeline`
+---
+
+### OptimizedImage
+
+Next.js `Image` wrapper with consistent defaults.
+
+**Location:** `src/components/ui/OptimizedImage.tsx`
+
+Always use this (or Next.js `Image` directly) instead of `<img>` tags.
 
 ---
 
-## 🏗️ Layout Components
+### ThemeToggle
 
-### ModernHero
+Dark/light mode toggle button.
 
-Hero section component for home page.
+**Location:** `src/components/ui/ThemeToggle.tsx`
 
-**Location:** `src/components/ModernHero.tsx`
-
-#### Features
-
-- Grid layout with text and professional photo
-- Responsive image sizing (w-56 to w-72)
-- Warm gradient backgrounds
-- Framer Motion animations
-- CTA buttons
-
-#### Usage
-
-```tsx
-import { ModernHero } from '@/components/ModernHero';
-
-// Used on home page
-export default function Home() {
-  return (
-    <div>
-      <ModernHero />
-      {/* Rest of page */}
-    </div>
-  );
-}
-```
-
-#### Key Styling
-
-```tsx
-// Photo sizing
-className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72"
-
-// Border
-className="border-[3px] border-[#FFE4D6] dark:border-[#FF8E53]/30"
-
-// Grid layout
-className="grid grid-cols-1 md:grid-cols-[1fr_auto]"
-```
+Integrates with `next-themes` and the `.dark` class on `<html>`.
 
 ---
+
+### LazyPlayerImage
+
+Lazy-loaded player headshot image for fantasy football components.
+
+**Location:** `src/components/ui/LazyPlayerImage.tsx`
+
+Handles fallback gracefully when player images are unavailable.
+
+---
+
+## Layout Components
 
 ### ConditionalLayout
 
-Dynamic layout wrapper that adapts based on route.
+Route-based layout switcher.
 
 **Location:** `src/components/ConditionalLayout.tsx`
 
-#### Features
+Applies different layout chrome based on current route. Currently uses `StaticHeader` as the default header in the root layout.
 
-- Route-based layout switching
-- Skip links for accessibility
-- Conditional navigation/footer display
-- Background gradients
+---
 
-#### Layout Rules
+### ModernHero
 
-```typescript
-Home page (/) → ModernHero with minimal chrome
-All other pages → Standard layout with navigation + footer
+Home page hero section.
+
+**Location:** `src/components/ModernHero.tsx`
+
+- Professional headshot with Next.js `Image`
+- Introduction text and CTAs
+- Framer Motion animations
+- `prefers-reduced-motion` support
+
+```tsx
+// Used directly in src/app/page.tsx
+<ModernHero />
 ```
 
 ---
 
 ### Footer
 
-Site-wide footer with social links.
+Site-wide footer.
 
 **Location:** `src/components/Footer.tsx`
 
-#### Features
-
-- Social media links
-- Copyright information
-- Warm theme styling
-- Responsive layout
+Social links (LinkedIn, GitHub, Email) and copyright.
 
 ---
 
-## 📝 Content Components
+### ThemeProvider
 
-### ContactContent
+Dark/light mode context provider.
 
-Contact page content with form and info cards.
+**Location:** `src/components/ThemeProvider.tsx`
 
-**Location:** `src/components/ContactContent.tsx`
+Wraps the app via `next-themes`. Dark mode uses `.dark` class on `<html>`.
 
-#### Features
+---
 
-- Contact heading and description
-- CTA cards with warm styling
-- Location information
-- Links to email and LinkedIn
+### Providers
 
-#### Usage
+Aggregated React context provider wrapper.
 
-```tsx
-import { ContactContent } from '@/components/ContactContent';
+**Location:** `src/components/Providers.tsx`
 
-// Used in /contact page
-export default function ContactPage() {
-  return (
-    <div className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <ContactContent />
-      </div>
-    </div>
-  );
-}
-```
+Used in root layout to wrap all context providers.
+
+---
+
+### AIStructuredData
+
+AI-specific JSON-LD structured data injected in the root layout.
+
+**Location:** `src/components/AIStructuredData.tsx`
+
+Helps AI systems (search, LLMs) better understand the site's content.
+
+---
+
+## Portfolio Components
+
+### About
+
+About page with tabbed navigation.
+
+**Location:** `src/components/About.tsx`
+
+Tabs: Overview (skills, background) and Journey (career timeline via `JourneyTimeline`).
+
+---
+
+### FeaturedWorkSection
+
+Featured projects section displayed on the home page.
+
+**Location:** `src/components/FeaturedWorkSection.tsx`
 
 ---
 
 ### ProjectsContent
 
-Project showcase with bento layout.
+Portfolio project showcase grid.
 
 **Location:** `src/components/ProjectsContent.tsx`
 
-#### Features
-
-- Project grid display
-- WarmCard containers
-- Project descriptions and tech stacks
-- Links to live demos and repositories
-
----
-
-### About
-
-About page component with tabbed content.
-
-**Location:** `src/components/About.tsx`
-
-#### Features
-
-- Tab navigation (Overview / Journey)
-- Overview with skills and experience
-- Journey with JourneyTimeline
-- Framer Motion page transitions
-
----
-
-## 🧭 Navigation Components
-
-### FloatingNav
-
-Persistent navigation overlay.
-
-**Location:** `src/components/navigation/FloatingNav.tsx`
-
-#### Features
-
-- Fixed position navigation
-- Mobile-responsive
-- Active route highlighting
-- Smooth transitions
-
----
-
-### CommandPalette
-
-Keyboard-driven command interface (⌘K).
-
-**Location:** `src/components/navigation/CommandPalette.tsx`
-
-#### Features
-
-- Quick page navigation
-- Search functionality
-- Keyboard shortcuts
-- Modal overlay
-
----
-
-## 📘 Usage Guidelines
-
-### When to Use Each Component
-
-**WarmCard:**
-- Section containers
-- Content grouping
-- Card-based layouts
-- Any boxed content
-
-**ModernButton:**
-- Primary actions (variant="primary")
-- Secondary actions (variant="secondary")
-- Links styled as buttons (variant="outline")
-
-**Heading:**
-- Page titles (level={1})
-- Section headers (level={2})
-- Subsections (level={3-6})
-
-**Badge:**
-- Tech stack tags
-- Category labels
-- Status indicators
-
-### Component Composition
-
 ```tsx
-// Good: Composing components
-<WarmCard hover={true} padding="xl">
-  <Heading level={2} className="text-[#FF6B35] mb-4">
-    Featured Project
-  </Heading>
-  <p className="text-[#4A3426] dark:text-[#D4A88E] mb-6">
-    Project description goes here
-  </p>
-  <div className="flex gap-2 mb-6">
-    <Badge>React</Badge>
-    <Badge>TypeScript</Badge>
-    <Badge>Tailwind</Badge>
-  </div>
-  <ModernButton variant="primary">
-    View Project
-  </ModernButton>
-</WarmCard>
+// Used in /portfolio page
+<ProjectsContent />
 ```
 
 ---
 
-## ✨ Best Practices
+### ProjectDetailModal
 
-### Accessibility
+Project detail modal overlay.
 
-**Always include:**
-- ARIA labels for interactive elements
-- Proper semantic HTML
-- Keyboard navigation support
-- Focus indicators
+**Location:** `src/components/ProjectDetailModal.tsx`
+
+---
+
+### ContactContent
+
+Contact page layout with CTAs and info cards.
+
+**Location:** `src/components/ContactContent.tsx`
+
+---
+
+### WritingPreview / ThinkingPreview
+
+Preview components for writing and notes content.
+
+**Locations:** `src/components/WritingPreview.tsx`, `src/components/ThinkingPreview.tsx`
+
+---
+
+## Fantasy Football Components
+
+### FantasyFootballLandingContent
+
+Main fantasy football landing page component.
+
+**Location:** Rendered from `src/app/fantasy-football/fantasy-football-client.tsx`
+
+---
+
+### TierChart / TierChartEnhanced
+
+D3-powered tier visualization charts.
+
+Both render SVG-based scatter plots grouping players by tier. `TierChartEnhanced` adds additional visual polish.
+
+---
+
+### LightweightTierChart
+
+Performance-optimized tier chart for lower-end devices.
+
+---
+
+### RBTiersChart
+
+RB-specific tier chart, used on `/fantasy-football/rb-tiers`.
+
+---
+
+### DraftTierChart
+
+Draft tracking visualization used in `/fantasy-football/draft-tracker`.
+
+---
+
+### EnhancedPlayerCard
+
+Player card displaying name, team, rank, projected points, and tier badge.
+
+---
+
+### PositionSelector
+
+Tab navigation for switching between QB, RB, WR, TE, K, DST, Flex positions.
+
+---
+
+### DataFreshnessIndicator
+
+Shows when fantasy data was last updated and its source.
+
+---
+
+### ExpertConsensusIndicator
+
+Displays expert consensus signals for player rankings.
+
+---
+
+### UpdateDataButton
+
+Triggers a data refresh from FantasyPros via `/api/scheduled-update`.
+
+---
+
+### VirtualizedPlayerList
+
+Virtualized list for rendering large player datasets without performance degradation.
+
+---
+
+## Investments Components
+
+All located in `src/components/investments/`.
+
+| Component | Purpose |
+|-----------|---------|
+| `PortfolioTracker` | Portfolio overview and holdings |
+| `StockResearch` | Multi-panel research interface |
+| `StockCard` | Individual stock display |
+| `StockSearch` | Search for stocks to add |
+| `AddStockForm` | Form to add a stock to the portfolio |
+| `PortfolioSummary` | Aggregated portfolio stats |
+| `AllocationChart` | Portfolio allocation visualization |
+| `DCFPanel` | Discounted cash flow analysis |
+| `FundamentalsPanel` | Company fundamentals |
+| `GrowthPanel` | Revenue/earnings growth metrics |
+| `ValuationRatiosPanel` | P/E, P/B, EV/EBITDA, etc. |
+| `NewsPanel` | Recent news for a stock |
+| `TranscriptsPanel` | Earnings call transcripts |
+| `IndustryPanel` | Industry comparison data |
+| `ProfitabilityPanel` | Margin and profitability metrics |
+
+---
+
+## Navigation Components
+
+### Breadcrumbs
+
+**Location:** `src/components/navigation/Breadcrumbs.tsx`
+
+Breadcrumb navigation for deep pages like `/portfolio/[slug]` and `/writing/[slug]`.
+
+---
+
+### LazyFantasyComponents
+
+**Location:** `src/components/navigation/LazyFantasyComponents.tsx`
+
+Lazy-loading wrappers for heavy fantasy football components using `React.lazy()`.
+
+---
+
+## Search Components
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| `SearchInterface` | `src/components/search/SearchInterface.tsx` | Main search UI |
+| `SearchResults` | `src/components/search/SearchResults.tsx` | Results list |
+| `SearchFilters` | `src/components/search/SearchFilters.tsx` | Filter controls |
+
+---
+
+## Usage Guidelines
+
+### Color Conventions
+
+Always use CSS custom properties — never hardcode hex values in components:
 
 ```tsx
-// Good
-<ModernButton
-  aria-label="Download resume PDF"
-  onClick={handleDownload}
->
-  Download Resume
-</ModernButton>
+// Correct
+<div className="text-[var(--text-primary)] bg-[var(--surface-primary)]">
 
-// Bad
-<div onClick={handleDownload}>
-  Download Resume
-</div>
+// Incorrect — hardcoded hex
+<div className="text-[#0F172A] bg-white">
+```
+
+Key CSS variables:
+- `--color-primary`: `#2563EB` (Blue 600, light mode)
+- `--text-primary`: `#0F172A` (Slate 900)
+- `--text-secondary`: `#475569` (Slate 600)
+- `--surface-primary`: `#FFFFFF`
+- `--border-primary`: `#E2E8F0`
+
+### Accessibility Requirements
+
+All interactive components must have:
+- ARIA labels on icon-only buttons
+- Minimum 44px touch targets (`min-h-touch`, `min-w-touch`)
+- Keyboard navigation support
+- Visible focus indicators
+
+```tsx
+// Correct
+<ModernButton aria-label="Download resume PDF" onClick={handleDownload}>
+  <IconDownload />
+</ModernButton>
+```
+
+### Dark Mode
+
+All components must work in both light and dark mode. Dark mode is activated via the `.dark` class on `<html>`. Use Tailwind's `dark:` prefix:
+
+```tsx
+<div className="bg-white dark:bg-[var(--surface-elevated)] text-[var(--text-primary)]">
 ```
 
 ### Performance
 
-**Optimize rendering:**
-```tsx
-// Use React.memo for expensive components
-export const ExpensiveComponent = React.memo(({ data }) => {
-  return <div>{/* render */}</div>;
-});
+- Wrap heavy components (D3 charts, player images) in `React.lazy()` — see `src/components/lazy/`
+- Use `React.memo` for expensive renders in fantasy football tier lists
+- Use `LazyPlayerImage` for all player headshots
 
-// Use callback refs for animations
-const ref = useCallback((node) => {
-  if (node) {
-    // Setup animation
-  }
-}, []);
+### Images
+
+Always use `OptimizedImage` or Next.js `Image`:
+
+```tsx
+import Image from "next/image";
+// or
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 ```
 
-### Styling
+Never use `<img>` tags directly.
 
-**Follow established patterns:**
-```tsx
-// Good: Using utility classes
-<div className="text-[#4A3426] dark:text-[#D4A88E]">
+### Check ui/ Before Creating New Primitives
 
-// Bad: Inline styles
-<div style={{ color: '#4A3426' }}>
-```
-
-### Consistency
-
-**Use standardized spacing:**
-```tsx
-// Good: Consistent spacing
-<div className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-  <div className="max-w-5xl mx-auto space-y-8">
-
-// Bad: Arbitrary spacing
-<div className="py-10 px-5">
-  <div className="max-w-[900px] mx-auto">
-```
+Before creating a new UI component, check `src/components/ui/` — the required primitive likely already exists.
 
 ---
 
-## 🔗 Related Documentation
+## Related Documentation
 
-- **[STYLING.md](./STYLING.md)** - Complete styling system
-- **[DEVELOPMENT.md](./DEVELOPMENT.md)** - Development guide
+- **[STYLING.md](./STYLING.md)** - Design system and CSS conventions
+- **[PAGES.md](./PAGES.md)** - Page routing and structure
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture
 
 ---
 
-*Last Updated: January 2025 - Warm Modern Theme*
+*Last Updated: March 2026*
