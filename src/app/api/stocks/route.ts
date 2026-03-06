@@ -32,43 +32,57 @@ async function fetchFromChartAPI(symbols: string[]): Promise<StockQuote[]> {
   const USER_AGENT =
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
 
+  const TIMEOUT_MS = 8000;
+
   const results = await Promise.allSettled(
     symbols.map(async (symbol) => {
-      const res = await fetch(
-        `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`,
-        {
-          headers: {
-            "User-Agent": USER_AGENT,
-            Accept: "application/json",
-            Referer: "https://finance.yahoo.com/",
-            Origin: "https://finance.yahoo.com",
-            "Accept-Language": "en-US,en;q=0.5",
-          },
-          cache: "no-store",
-        }
-      );
-      if (!res.ok) return errorQuote(symbol, `HTTP ${res.status}`);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const data: any = await res.json();
-      const meta = data?.chart?.result?.[0]?.meta ?? {};
-      const price: number = meta.regularMarketPrice ?? 0;
-      const previousClose: number = meta.previousClose ?? meta.chartPreviousClose ?? 0;
-      const change = price - previousClose;
-      const changePercent = previousClose ? (change / previousClose) * 100 : 0;
-      if (!price) return errorQuote(symbol, "No price data");
-      return {
-        symbol,
-        price,
-        change,
-        changePercent,
-        dayHigh: meta.regularMarketDayHigh ?? 0,
-        dayLow: meta.regularMarketDayLow ?? 0,
-        open: meta.regularMarketOpen ?? 0,
-        previousClose,
-        volume: meta.regularMarketVolume ?? 0,
-        marketCap: 0,
-        name: meta.shortName ?? meta.longName ?? symbol,
-      } satisfies StockQuote;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+      try {
+        const res = await fetch(
+          `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`,
+          {
+            headers: {
+              "User-Agent": USER_AGENT,
+              Accept: "application/json",
+              Referer: "https://finance.yahoo.com/",
+              Origin: "https://finance.yahoo.com",
+              "Accept-Language": "en-US,en;q=0.5",
+            },
+            cache: "no-store",
+            signal: controller.signal,
+          }
+        );
+        if (!res.ok) return errorQuote(symbol, `HTTP ${res.status}`);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const data: any = await res.json();
+        const meta = data?.chart?.result?.[0]?.meta ?? {};
+        const price: number = meta.regularMarketPrice ?? 0;
+        const previousClose: number = meta.previousClose ?? meta.chartPreviousClose ?? 0;
+        const change = price - previousClose;
+        const changePercent = previousClose ? (change / previousClose) * 100 : 0;
+        if (!price) return errorQuote(symbol, "No price data");
+        return {
+          symbol,
+          price,
+          change,
+          changePercent,
+          dayHigh: meta.regularMarketDayHigh ?? 0,
+          dayLow: meta.regularMarketDayLow ?? 0,
+          open: meta.regularMarketOpen ?? 0,
+          previousClose,
+          volume: meta.regularMarketVolume ?? 0,
+          marketCap: 0,
+          name: meta.shortName ?? meta.longName ?? symbol,
+        } satisfies StockQuote;
+      } catch (err) {
+        const message = err instanceof Error && err.name === "AbortError"
+          ? "Request timed out"
+          : "Failed to fetch";
+        return errorQuote(symbol, message);
+      } finally {
+        clearTimeout(timeout);
+      }
     })
   );
 
