@@ -30,13 +30,14 @@ const customJestConfig = {
     '!src/data/backup/**',
   ],
 
-  // Coverage thresholds (fixed typo: coverageThreshold not coverageThresholds)
+  // Coverage thresholds — enforced in CI (npm run test:ci)
+  // Start at achievable levels; ratchet upward as coverage improves.
   coverageThreshold: {
     global: {
-      branches: 0,
-      functions: 0,
-      lines: 0,
-      statements: 0,
+      branches: 20,
+      functions: 25,
+      lines: 25,
+      statements: 25,
     },
   },
 
