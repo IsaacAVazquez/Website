@@ -211,7 +211,7 @@ export async function GET(request: NextRequest) {
       total: results.length,
       query,
       filters: { type, category }
-    });
+    }, { headers: { 'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400' } });
     
   } catch (error) {
     console.error('Search API error:', error);

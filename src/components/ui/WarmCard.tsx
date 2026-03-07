@@ -11,7 +11,7 @@ interface WarmCardProps {
   onClick?: (e: React.MouseEvent) => void;
 }
 
-export function WarmCard({
+export const WarmCard = React.memo(function WarmCard({
   children,
   className,
   hover = false,
@@ -46,4 +46,4 @@ export function WarmCard({
       {children}
     </div>
   );
-}
+});

@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
         success: true,
         position,
         metadata
-      });
+      }, { headers: { 'Cache-Control': 'public, max-age=1800, stale-while-revalidate=86400' } });
     } else {
       // Get metadata for all positions
       const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DST', 'FLEX', 'OVERALL'];
@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
           version: '1.0.0'
         },
         positionMetadata: allMetadata
-      });
+      }, { headers: { 'Cache-Control': 'public, max-age=1800, stale-while-revalidate=86400' } });
     }
   } catch (error) {
     return NextResponse.json({
