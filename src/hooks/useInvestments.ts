@@ -31,14 +31,36 @@ function saveHoldings(holdings: PortfolioHolding[]): void {
 
 async function fetchQuotes(symbols: string[]): Promise<Map<string, StockQuote>> {
   if (symbols.length === 0) return new Map();
-  const res = await fetch(`/api/investments/quotes?symbols=${symbols.join(",")}`);
-  if (!res.ok) throw new Error("Failed to fetch quotes");
-  const data = await res.json();
-  const map = new Map<string, StockQuote>();
-  for (const q of data.quotes ?? []) {
-    map.set(q.symbol, q);
+
+  const MAX_RETRIES = 2;
+  let lastError: Error | null = null;
+
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      if (attempt > 0) {
+        await new Promise((r) => setTimeout(r, 1000 * attempt));
+      }
+      const res = await fetch(`/api/investments/quotes?symbols=${symbols.join(",")}`);
+      if (!res.ok) {
+        // Retry on server errors (502/503/504)
+        if (res.status >= 502 && res.status <= 504 && attempt < MAX_RETRIES) {
+          lastError = new Error(`Quote fetch failed: HTTP ${res.status}`);
+          continue;
+        }
+        throw new Error(`Failed to fetch quotes: HTTP ${res.status}`);
+      }
+      const data = await res.json();
+      const map = new Map<string, StockQuote>();
+      for (const q of data.quotes ?? []) {
+        map.set(q.symbol, q);
+      }
+      return map;
+    } catch (err) {
+      lastError = err as Error;
+      if (attempt >= MAX_RETRIES) throw lastError;
+    }
   }
-  return map;
+  throw lastError ?? new Error("Failed to fetch quotes");
 }
 
 // ─── Derived data ─────────────────────────────────────────────────────────────

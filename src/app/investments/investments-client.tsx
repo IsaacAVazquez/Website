@@ -1,9 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
-import { PortfolioTracker } from "@/components/investments/PortfolioTracker";
-import { StockResearch } from "@/components/investments/StockResearch";
+import React, { useState, lazy, Suspense } from "react";
 import { useInvestments } from "@/hooks/useInvestments";
+
+const PortfolioTracker = lazy(() =>
+  import("@/components/investments/PortfolioTracker").then((m) => ({ default: m.PortfolioTracker }))
+);
+const StockResearch = lazy(() =>
+  import("@/components/investments/StockResearch").then((m) => ({ default: m.StockResearch }))
+);
+
+function TabFallback() {
+  return (
+    <div className="flex items-center justify-center h-64">
+      <div className="w-8 h-8 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
 
 type Tab = "portfolio" | "research";
 
@@ -59,13 +72,15 @@ export function InvestmentsClient() {
 
         {/* Tab panels */}
         <div role="tabpanel" aria-label={`${activeTab} panel`}>
-          {activeTab === "portfolio" && <PortfolioTracker onResearch={handleResearch} />}
-          {activeTab === "research" && (
-            <StockResearch
-              initialSymbol={researchSymbol}
-              portfolioSymbols={portfolioSymbols}
-            />
-          )}
+          <Suspense fallback={<TabFallback />}>
+            {activeTab === "portfolio" && <PortfolioTracker onResearch={handleResearch} />}
+            {activeTab === "research" && (
+              <StockResearch
+                initialSymbol={researchSymbol}
+                portfolioSymbols={portfolioSymbols}
+              />
+            )}
+          </Suspense>
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef, useState, memo, useMemo, useCallback } from 'react';
-import * as d3 from 'd3';
+import { select, zoom, scaleLinear, axisBottom, zoomIdentity } from 'd3';
+import type { ZoomBehavior } from 'd3';
 import { Player, TierGroup, ChartDimensions } from '@/types';
 import { calculateUnifiedTiers, UnifiedTier } from '@/lib/unifiedTierCalculator';
 import { motion } from 'framer-motion';
@@ -33,10 +34,10 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
   const svgRef = useRef<SVGSVGElement>(null);
   const [hoveredPlayer, setHoveredPlayer] = useState<Player | null>(null);
   const [currentZoom, setCurrentZoom] = useState<number>(1);
-  const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
+  const zoomBehaviorRef = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null);
   const loadingQueueRef = useRef<Set<string>>(new Set());
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const [, forceUpdate] = useState({});
+  const [, setImageVersion] = useState(0);
   
   // Use the cached image service
   const { preloadImages, getCachedImage, getPlayerImage, isLoading } = usePlayerImageCache();
@@ -75,8 +76,8 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
     
     try {
       await getPlayerImage(player);
-      // Force a re-render to update the chart
-      forceUpdate({});
+      // Increment version to trigger a re-render and update chart images
+      setImageVersion(v => v + 1);
     } catch (error) {
       console.warn(`Failed to load image for ${player.name}:`, error);
     } finally {
@@ -151,7 +152,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
-      d3.select(svgRef.current).selectAll('*').remove();
+      select(svgRef.current).selectAll('*').remove();
 
       // Recreate intersection observer for new render
       observerRef.current = new IntersectionObserver(
@@ -173,7 +174,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
         }
       );
 
-    const svg = d3.select(svgRef.current)
+    const svg = select(svgRef.current)
       .attr('width', dimensions.width)
       .attr('height', dimensions.height);
 
@@ -182,7 +183,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
       .attr('class', 'zoom-container');
 
     // Create zoom behavior
-    const zoom = d3.zoom<SVGSVGElement, unknown>()
+    const zoom = zoom<SVGSVGElement, unknown>()
       .scaleExtent([0.5, 4])
       .on('zoom', (event) => {
         container.attr('transform', event.transform);
@@ -218,7 +219,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
     const domainMin = Math.max(0, minRank - 1); // Small left padding
     const domainMax = maxRank + 1; // Small right padding to ensure rightmost player is visible
     
-    const xScale = d3.scaleLinear()
+    const xScale = scaleLinear()
       .domain([domainMin, domainMax])
       .range([0, innerWidth]);
 
@@ -235,7 +236,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
     const tickCount = Math.max(6, Math.min(10, (domainMax - domainMin) / 5)); // 6-10 ticks based on range
     const xAxis = g.append('g')
       .attr('transform', `translate(0,${innerHeight})`)
-      .call(d3.axisBottom(xScale)
+      .call(axisBottom(xScale)
         .ticks(tickCount)
         .tickFormat(d => Math.round(Number(d)).toString())
       )
@@ -262,7 +263,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
     const grid = g.append('g')
       .attr('class', 'grid')
       .attr('transform', `translate(0,${innerHeight})`)
-      .call(d3.axisBottom(xScale)
+      .call(axisBottom(xScale)
         .ticks(tickCount)
         .tickSize(-innerHeight)
         .tickFormat(() => '')
@@ -362,7 +363,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
             .attr('width', imageSize)
             .attr('height', imageSize)
             .on('mouseenter', function() {
-              d3.select(this)
+              select(this)
                 .transition()
                 .duration(200)
                 .attr('x', xScale(playerRank) - hoverRadius)
@@ -372,7 +373,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
               setHoveredPlayer(player);
             })
             .on('mouseleave', function() {
-              d3.select(this)
+              select(this)
                 .transition()
                 .duration(200)
                 .attr('x', xScale(playerRank) - baseRadius)
@@ -383,7 +384,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
             })
             .on('error', function() {
               // Replace with fallback circle on error
-              d3.select(this).remove();
+              select(this).remove();
               createFallbackCircle(playerGroup, xScale(playerRank), playerY, baseRadius, tier.color, strokeWidth);
             });
         } else if (imageIsLoading) {
@@ -402,7 +403,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
                 .attr('width', imageSize)
                 .attr('height', imageSize)
                 .on('mouseenter', function() {
-                  d3.select(this)
+                  select(this)
                     .transition()
                     .duration(200)
                     .attr('x', xScale(playerRank) - hoverRadius)
@@ -412,7 +413,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
                   setHoveredPlayer(player);
                 })
                 .on('mouseleave', function() {
-                  d3.select(this)
+                  select(this)
                     .transition()
                     .duration(200)
                     .attr('x', xScale(playerRank) - baseRadius)
@@ -422,7 +423,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
                   setHoveredPlayer(null);
                 })
                 .on('error', function() {
-                  d3.select(this).remove();
+                  select(this).remove();
                   createFallbackCircle(playerGroup, xScale(playerRank), playerY, baseRadius, tier.color, strokeWidth);
                 });
             } else {
@@ -453,7 +454,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
             .attr('stroke-width', strokeWidth)
             .attr('opacity', 0.95)
             .on('mouseenter', function() {
-              d3.select(this)
+              select(this)
                 .transition()
                 .duration(200)
                 .attr('r', hoverRadius)
@@ -462,7 +463,7 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
               setHoveredPlayer(player);
             })
             .on('mouseleave', function() {
-              d3.select(this)
+              select(this)
                 .transition()
                 .duration(200)
                 .attr('r', radius)
@@ -534,20 +535,20 @@ const TierChartEnhanced = memo(function TierChartEnhanced({
   // Zoom control functions
   const handleZoomIn = () => {
     if (!svgRef.current || !zoomBehaviorRef.current) return;
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     svg.transition().call(zoomBehaviorRef.current.scaleBy, 1.3);
   };
 
   const handleZoomOut = () => {
     if (!svgRef.current || !zoomBehaviorRef.current) return;
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     svg.transition().call(zoomBehaviorRef.current.scaleBy, 0.7);
   };
 
   const handleResetZoom = () => {
     if (!svgRef.current || !zoomBehaviorRef.current) return;
-    const svg = d3.select(svgRef.current);
-    svg.transition().call(zoomBehaviorRef.current.transform, d3.zoomIdentity);
+    const svg = select(svgRef.current);
+    svg.transition().call(zoomBehaviorRef.current.transform, zoomIdentity);
   };
 
   return (

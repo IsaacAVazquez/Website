@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useCallback, useState, memo } from 'react';
+import React, { useMemo, useCallback, useState, useEffect, memo } from 'react';
 import { Player } from '@/types';
 import { LazyPlayerImage } from '@/components/ui/LazyPlayerImage';
 import { LazyVirtualizedPlayerListWrapper } from '@/components/lazy/LazyFantasyComponents';
@@ -43,20 +43,14 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
   const [viewMode, setViewMode] = useState<'horizontal' | 'vertical'>('horizontal');
 
   // Calculate tiers using optimized calculator
-  const tiers = useMemo(async () => {
-    return calculateOptimizedTiers(players, numberOfTiers, scoringFormat, true);
-  }, [players, numberOfTiers, scoringFormat]);
-
-  // Resolve tiers (handle async)
   const [resolvedTiers, setResolvedTiers] = useState<any[]>([]);
-  
-  React.useEffect(() => {
-    if (tiers instanceof Promise) {
-      tiers.then(setResolvedTiers);
-    } else {
-      setResolvedTiers(tiers);
-    }
-  }, [tiers]);
+
+  useEffect(() => {
+    let cancelled = false;
+    calculateOptimizedTiers(players, numberOfTiers, scoringFormat, true)
+      .then(result => { if (!cancelled) setResolvedTiers(result); });
+    return () => { cancelled = true; };
+  }, [players, numberOfTiers, scoringFormat]);
 
   // Transform tiers for visualization
   const tierVisualizations = useMemo((): TierVisualization[] => {

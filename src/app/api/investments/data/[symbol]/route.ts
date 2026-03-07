@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { DcfData, InvestmentSection } from "@/types/investment";
+import { promises as fsAsync, readFileSync } from "fs";
+import path from "path";
 
 const VALID_SECTIONS: InvestmentSection[] = [
   "price",
@@ -20,6 +22,30 @@ const VALID_SECTIONS: InvestmentSection[] = [
   "info",
   "officers",
 ];
+
+/**
+ * Resolve the base directory for pre-built investment JSON files.
+ *
+ * In Next.js, files in `public/` are served statically but are also available
+ * on the filesystem at build time. During local dev the working directory is
+ * the project root, so `public/data/investments` works directly. On Netlify
+ * (and other hosts) the working directory may differ, so we also try
+ * `process.cwd()` and a path relative to this source file.
+ */
+function getDataDir(): string {
+  // Next.js sets process.cwd() to the project root in both dev and prod
+  return path.join(process.cwd(), "public", "data", "investments");
+}
+
+/** Read and parse a JSON file from the investments data directory. Returns null if missing. */
+async function readJsonFile(filePath: string): Promise<unknown | null> {
+  try {
+    const content = await fsAsync.readFile(filePath, "utf-8");
+    return JSON.parse(content);
+  } catch {
+    return null;
+  }
+}
 
 function isValidSymbol(symbol: string): boolean {
   return /^[A-Z0-9.-]{1,10}$/.test(symbol);
@@ -210,26 +236,18 @@ function transformSection(section: string, raw: unknown): unknown {
   return raw;
 }
 
-async function transformIndustryWithStockValues(
+function transformIndustryWithStockValues(
   symbol: string,
   industryRaw: unknown,
-  baseUrl: string
-): Promise<unknown> {
-  const [fundRaw, profRaw, marginsRaw] = await Promise.all([
-    fetch(`${baseUrl}/data/investments/${symbol}/fundamentals.json`)
-      .then((r) => r.json())
-      .catch(() => ({})),
-    fetch(`${baseUrl}/data/investments/${symbol}/profitability.json`)
-      .then((r) => r.json())
-      .catch(() => ({})),
-    fetch(`${baseUrl}/data/investments/${symbol}/margins.json`)
-      .then((r) => r.json())
-      .catch(() => ({})),
-  ]);
+  dataDir: string
+): unknown {
+  const fundRaw = readJsonFileSync(path.join(dataDir, symbol, "fundamentals.json"));
+  const profRaw = readJsonFileSync(path.join(dataDir, symbol, "profitability.json"));
+  const marginsRaw = readJsonFileSync(path.join(dataDir, symbol, "margins.json"));
 
-  const fund = transformSection("fundamentals", fundRaw) as Record<string, number | undefined>;
-  const prof = transformSection("profitability", profRaw) as Record<string, number | undefined>;
-  const margins = transformSection("margins", marginsRaw) as Array<Record<string, number | undefined>>;
+  const fund = transformSection("fundamentals", fundRaw ?? {}) as Record<string, number | undefined>;
+  const prof = transformSection("profitability", profRaw ?? {}) as Record<string, number | undefined>;
+  const margins = transformSection("margins", marginsRaw ?? {}) as Array<Record<string, number | undefined>>;
   const marginRow = margins[0] ?? {};
 
   const d = industryRaw as Record<string, RawRecord[]>;
@@ -261,13 +279,25 @@ async function transformIndustryWithStockValues(
     .filter((r) => r.industryAvg !== undefined);
 }
 
-async function computeDcf(symbol: string, baseUrl: string): Promise<DcfData> {
-  const [waccRaw, fundRaw, growthRaw, priceRaw] = await Promise.all([
-    fetch(`${baseUrl}/data/investments/${symbol}/wacc.json`).then((r) => r.json()),
-    fetch(`${baseUrl}/data/investments/${symbol}/fundamentals.json`).then((r) => r.json()),
-    fetch(`${baseUrl}/data/investments/${symbol}/growth.json`).then((r) => r.json()),
-    fetch(`${baseUrl}/data/investments/${symbol}/price.json`).then((r) => r.json()),
-  ]);
+/** Synchronous JSON file read for use in non-async helpers */
+function readJsonFileSync(filePath: string): unknown | null {
+  try {
+    const content = readFileSync(filePath, "utf-8");
+    return JSON.parse(content);
+  } catch {
+    return null;
+  }
+}
+
+function computeDcf(symbol: string, dataDir: string): DcfData {
+  const waccRaw = readJsonFileSync(path.join(dataDir, symbol, "wacc.json"));
+  const fundRaw = readJsonFileSync(path.join(dataDir, symbol, "fundamentals.json"));
+  const growthRaw = readJsonFileSync(path.join(dataDir, symbol, "growth.json"));
+  const priceRaw = readJsonFileSync(path.join(dataDir, symbol, "price.json"));
+
+  if (!waccRaw || !fundRaw || !growthRaw || !priceRaw) {
+    return { error: "Insufficient data for DCF calculation" };
+  }
 
   const waccArr = waccRaw as RawRecord[];
   const waccRec = waccArr[waccArr.length - 1];
@@ -340,18 +370,17 @@ export async function GET(
       return NextResponse.json({ error: "Invalid section" }, { status: 400 });
     }
 
-    const requestUrl = new URL(request.url);
-    const baseUrl = `${requestUrl.protocol}//${requestUrl.host}`;
+    const dataDir = getDataDir();
 
     // Verify the symbol is in the pre-fetched index
-    const indexRes = await fetch(`${baseUrl}/data/investments/index.json`);
-    if (!indexRes.ok) {
+    const indexData = await readJsonFile(path.join(dataDir, "index.json"));
+    if (!indexData) {
       return NextResponse.json(
         { error: "Investment data not available. Run: npm run update:investments" },
         { status: 503 }
       );
     }
-    const index: { symbols: string[] } = await indexRes.json();
+    const index = indexData as { symbols: string[] };
 
     if (!index.symbols.includes(symbol)) {
       return NextResponse.json(
@@ -362,7 +391,7 @@ export async function GET(
 
     if (section === "dcf") {
       try {
-        const dcfData = await computeDcf(symbol, baseUrl);
+        const dcfData = computeDcf(symbol, dataDir);
         return NextResponse.json(dcfData, {
           headers: { "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400" },
         });
@@ -372,28 +401,26 @@ export async function GET(
     }
 
     if (section === "industry") {
-      const industryRes = await fetch(`${baseUrl}/data/investments/${symbol}/industry.json`);
-      if (!industryRes.ok) {
+      const industryData = await readJsonFile(path.join(dataDir, symbol, "industry.json"));
+      if (!industryData) {
         return NextResponse.json(
           { error: `Section "industry" not available for ${symbol}` },
           { status: 404 }
         );
       }
-      const industryData: unknown = await industryRes.json();
-      const transformed = await transformIndustryWithStockValues(symbol, industryData, baseUrl);
+      const transformed = transformIndustryWithStockValues(symbol, industryData, dataDir);
       return NextResponse.json(transformed, {
         headers: { "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400" },
       });
     }
 
-    const dataRes = await fetch(`${baseUrl}/data/investments/${symbol}/${section}.json`);
-    if (!dataRes.ok) {
+    const data = await readJsonFile(path.join(dataDir, symbol, `${section}.json`));
+    if (!data) {
       return NextResponse.json(
         { error: `Section "${section}" not available for ${symbol}` },
         { status: 404 }
       );
     }
-    const data: unknown = await dataRes.json();
     const transformed = transformSection(section, data);
 
     return NextResponse.json(transformed, {

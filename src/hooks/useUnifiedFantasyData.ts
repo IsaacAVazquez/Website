@@ -207,7 +207,7 @@ export function useUnifiedFantasyData({
       logger.error(`Failed to fetch player data: ${errorMessage}`);
       throw fetchError;
     }
-  }, [position, scoringFormat, preferredMethod]);
+  }, [position, scoringFormat, preferredMethod, enhancedData]);
 
   /**
    * Fetch tier data from unified API

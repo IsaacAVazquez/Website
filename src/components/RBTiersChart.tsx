@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import * as d3 from 'd3';
+import { select, extent, scaleLinear, axisBottom, axisLeft } from 'd3';
 import { motion } from 'framer-motion';
 
 /**
@@ -121,7 +121,7 @@ export function RBTiersChart({
     if (!data || !svgRef.current) return;
 
     // Clear previous chart
-    d3.select(svgRef.current).selectAll('*').remove();
+    select(svgRef.current).selectAll('*').remove();
 
     // Chart dimensions and margins
     const margin = { top: 60, right: 120, bottom: 70, left: 70 };
@@ -129,7 +129,7 @@ export function RBTiersChart({
     const chartHeight = height - margin.top - margin.bottom;
 
     // Create SVG
-    const svg = d3.select(svgRef.current)
+    const svg = select(svgRef.current)
       .attr('width', width)
       .attr('height', height);
 
@@ -138,21 +138,21 @@ export function RBTiersChart({
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
     // Scales
-    const xExtent = d3.extent(data.players, d => d.avgRank) as [number, number];
-    const yExtent = d3.extent(data.players, d => d.consensusRank) as [number, number];
+    const xExtent = extent(data.players, d => d.avgRank) as [number, number];
+    const yExtent = extent(data.players, d => d.consensusRank) as [number, number];
 
-    const xScale = d3.scaleLinear()
+    const xScale = scaleLinear()
       .domain([0, Math.max(xExtent[1] + 2, 45)])
       .range([0, chartWidth]);
 
-    const yScale = d3.scaleLinear()
+    const yScale = scaleLinear()
       .domain([0, Math.max(yExtent[1] + 2, 45)])
       .range([chartHeight, 0]);
 
     // X-axis
     g.append('g')
       .attr('transform', `translate(0,${chartHeight})`)
-      .call(d3.axisBottom(xScale).ticks(10))
+      .call(axisBottom(xScale).ticks(10))
       .style('color', '#9CA3AF')
       .selectAll('text')
       .style('font-size', '12px')
@@ -160,7 +160,7 @@ export function RBTiersChart({
 
     // Y-axis
     g.append('g')
-      .call(d3.axisLeft(yScale).ticks(10))
+      .call(axisLeft(yScale).ticks(10))
       .style('color', '#9CA3AF')
       .selectAll('text')
       .style('font-size', '12px')
@@ -197,7 +197,7 @@ export function RBTiersChart({
       .text(`Week ${data.week} – RB Tiers (${data.scoringFormat})`);
 
     // Tooltip
-    const tooltip = d3.select('body')
+    const tooltip = select('body')
       .append('div')
       .attr('class', 'rb-tier-tooltip')
       .style('position', 'absolute')
@@ -227,7 +227,7 @@ export function RBTiersChart({
       .style('opacity', 0.85)
       .style('cursor', 'pointer')
       .on('mouseover', function(event, d) {
-        d3.select(this)
+        select(this)
           .transition()
           .duration(200)
           .attr('r', 9)
@@ -260,7 +260,7 @@ export function RBTiersChart({
           .style('left', (event.pageX + 15) + 'px');
       })
       .on('mouseout', function() {
-        d3.select(this)
+        select(this)
           .transition()
           .duration(200)
           .attr('r', 6)
