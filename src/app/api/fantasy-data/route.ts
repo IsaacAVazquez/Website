@@ -99,7 +99,9 @@ export async function GET(request: NextRequest) {
       };
 
       logger.info(`All positions fetch completed: ${totalPlayers} players, ${successfulFetches}/${positions.length} successful`);
-      return NextResponse.json(response);
+      return NextResponse.json(response, {
+        headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=3600' }
+      });
 
     } else {
       // Single position fetch
@@ -138,7 +140,9 @@ export async function GET(request: NextRequest) {
         logger.warn(`Failed to fetch ${position} data: ${result.error}`);
       }
 
-      return NextResponse.json(response);
+      return NextResponse.json(response, {
+        headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=3600' }
+      });
     }
 
   } catch (error) {

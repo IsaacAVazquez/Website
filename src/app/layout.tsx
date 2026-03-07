@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import "./globals.css";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import { constructMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
@@ -9,16 +10,17 @@ import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
 import { StaticHeader } from "@/components/StaticHeader";
 
-const fontConfig = {
-  inter: {
-    variable: "--font-inter",
-    className: "font-sans",
-  },
-  jetbrainsMono: {
-    variable: "--font-jetbrains-mono",
-    className: "font-mono",
-  },
-};
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 export const metadata = constructMetadata();
 
@@ -119,13 +121,10 @@ export default function RootLayout({
       </head>
       <body
         className={twMerge(
-          fontConfig.inter.className,
-          "min-h-screen antialiased"
+          inter.variable,
+          jetbrainsMono.variable,
+          "font-sans min-h-screen antialiased"
         )}
-        style={{
-          [fontConfig.inter.variable as string]: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          [fontConfig.jetbrainsMono.variable as string]: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
-        } as React.CSSProperties}
       >
         <Providers>
           <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--neutral-900)] focus:text-white focus:rounded-lg focus:shadow-lg">

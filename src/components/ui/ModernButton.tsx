@@ -31,7 +31,7 @@ interface ModernButtonAsLink
 
 type ModernButtonProps = ModernButtonAsButton | ModernButtonAsLink;
 
-export function ModernButton({
+export const ModernButton = React.memo(function ModernButton({
   variant = "primary",
   size = "md",
   children,
@@ -130,4 +130,4 @@ export function ModernButton({
       {children}
     </button>
   );
-}
+});
