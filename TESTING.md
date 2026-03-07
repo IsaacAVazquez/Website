@@ -390,4 +390,4 @@ When adding new features:
 
 ---
 
-**Last Updated:** November 2025
+**Last Updated:** March 2026

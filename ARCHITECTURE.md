@@ -1,14 +1,14 @@
 # Architecture Documentation
 
-Complete system architecture for Isaac Vazquez's modern warm-themed portfolio website.
+Complete system architecture for Isaac Vazquez's portfolio and fantasy football analytics platform.
 
 **Live Site:** https://isaacavazquez.com
-**Framework:** Next.js 15 with App Router
-**Last Updated:** January 2025
+**Framework:** Next.js 16 (App Router)
+**Last Updated:** March 2026
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [System Overview](#system-overview)
 - [Technology Stack](#technology-stack)
@@ -16,180 +16,152 @@ Complete system architecture for Isaac Vazquez's modern warm-themed portfolio we
 - [API Endpoints](#api-endpoints)
 - [Component Architecture](#component-architecture)
 - [Data Flow](#data-flow)
+- [Fantasy Football Data Pipeline](#fantasy-football-data-pipeline)
 - [Version History](#version-history)
 
 ---
 
-## 🌐 System Overview
+## System Overview
 
-### Platform Purpose
-Professional portfolio website showcasing Isaac Vazquez's work as a Technical Product Manager and UC Berkeley Haas MBA candidate with a focus on warm, modern, accessible design.
+### Dual-Purpose Platform
+
+This is both a **professional portfolio** and a **fantasy football analytics platform**:
+
+1. **Professional Portfolio** – Career showcase, projects, resume, writing, contact
+2. **Fantasy Football Analytics** – Live tier rankings (QB/RB/WR/TE/K/DST/Flex), draft tracker, D3 visualizations, automated FantasyPros data pipeline
 
 ### Design Philosophy
-- **Warm Modern Aesthetic**: Sunset orange (#FF6B35), golden yellow (#F7B32B), and warm browns
-- **Accessibility First**: WCAG AA compliance with enhanced contrast ratios (7.5:1+)
-- **Performance Optimized**: <152kB First Load JS, sub-2.5s load times
-- **Mobile Responsive**: Mobile-first approach with touch-friendly interactions
 
-### Key Features
-- Modern hero section with optimized professional headshot
-- Interactive project showcase with warm card styling
-- Professional resume with download capability
-- Contact page with social links
-- Tab-based navigation (Overview/Journey on About page)
+- **Modern Professional**: Blue-anchored palette (`#2563EB` primary) — credibility without coldness
+- **Accessibility First**: WCAG AA minimum compliance
+- **Performance**: Lazy-loaded heavy components (D3, player images), bundle splitting
+- **Mobile-first**: Fluid type scale, `clamp()`-based responsive sizing
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
-### Core Framework & Runtime
+### Core Framework
 
-**Next.js 15 Configuration:**
 ```
-Framework: Next.js 15 (App Router)
-├── Runtime: React 19
-├── Language: TypeScript 5.9 (strict mode)
-├── Styling: Tailwind CSS v4
-├── Animation: Framer Motion 12
-└── Icons: Tabler Icons, Lucide React
-
-Features:
-├── React Server Components
-├── Server Actions
-├── Image Optimization (AVIF, WebP)
-├── Font Optimization (Variable fonts)
-├── Bundle Splitting
-└── Edge Runtime Support
+Next.js 16 (App Router)
+├── React 19
+├── TypeScript (strict mode; ignoreBuildErrors: true in next.config.mjs)
+├── Tailwind CSS v4 (PostCSS plugin: @tailwindcss/postcss)
+├── Framer Motion (v12)
+├── D3.js (v7) — tier chart visualizations
+├── SQLite (better-sqlite3) — server-only fantasy football data
+└── NextAuth (v4) — /admin authentication
 ```
 
-**Image Optimization:**
-- Formats: AVIF, WebP fallback
-- Device sizes: [640, 750, 828, 1080, 1200, 1920, 2048]
-- Cache TTL: 30 days
-- Priority loading for above-the-fold images
+### Key Dependencies
 
-### UI & Styling
+| Category | Packages |
+|----------|---------|
+| UI / Icons | `@tabler/icons-react`, `lucide-react`, `react-icons` |
+| Styling | `tailwind-merge`, `tailwindcss-animate`, `clsx`, `class-variance-authority` |
+| Components | `@radix-ui/react-dropdown-menu`, `@radix-ui/react-slot` |
+| Themes | `next-themes` |
+| Content | `gray-matter`, `remark`, `remark-gfm`, `remark-html` |
+| SEO | `next-sitemap`, `@tailwindcss/typography` |
+| Analytics | `web-vitals` |
+| Testing | `jest`, `jest-environment-jsdom`, `@testing-library/react`, `@playwright/test`, `msw` |
 
-**Tailwind CSS v4:**
-```css
-Custom Theme Extensions:
-├── Colors: Warm palette (sunset orange, golden yellow, coral)
-├── Fonts: Inter (all text), JetBrains Mono (code)
-├── Shadows: shadow-warm-lg, shadow-warm-xl, shadow-subtle
-├── Border Radius: Consistent rounded-2xl across components
-└── Spacing: py-16 sm:py-20 lg:py-24 section spacing
-```
+### Deployment
 
-**Component Library:**
-- `WarmCard` - Main container with warm theme and hover effects
-- `ModernButton` - Primary button with multiple variants
-- `Heading` - Typography component with hierarchy
-- `ModernHero` - Hero section with optimized headshot
-- `JourneyTimeline` - Career timeline visualization
-
-### Data & State Management
-
-**State Management:**
-- **Local State**: `useState` for component-level state
-- **Server State**: Next.js data fetching (Server Components)
-- **Global State**: Context API for theme preferences
-- **Form State**: Controlled components with validation
-
-**Data Storage:**
-- Static data in `/src/constants/`
-- Personal metrics in `personalMetrics` constant
-- No database required for current portfolio
-
-### Build & Development Tools
-
-**Development Stack:**
-```
-Package Manager: npm
-├── Linting: ESLint 9 + TypeScript ESLint
-├── Type Checking: TypeScript strict mode
-├── Build Tool: Next.js Compiler + Webpack
-└── Code Formatting: Prettier (via ESLint)
-
-Scripts:
-├── npm run dev     → Development server
-├── npm run build   → Production build
-├── npm run start   → Production server
-├── npm run lint    → Code linting
-└── npm run postbuild → Sitemap generation
-```
-
-### Deployment Configuration
-
-**Primary: Netlify**
-```toml
-Build Command: npm run build
-Publish Directory: .next
-Node Version: 18+
-Environment: Production optimizations enabled
-
-Features:
-├── Automatic deploys from main branch
-├── Edge CDN distribution
-├── HTTPS/SSL certificates
-└── Continuous deployment
-```
-
-**Build Optimization:**
-- Bundle size: <152kB First Load JS (60% reduction)
-- Tree shaking and dead code elimination
-- Code splitting for route-specific chunks
-- Font subsetting and preloading
-- Image optimization pipeline
+- **Platform:** Netlify + `@netlify/plugin-nextjs`
+- **Build:** `npm run build` (postbuild auto-generates sitemap)
+- **Dev:** `npm run dev` (webpack mode — `--webpack` baked into script)
+- **Serverless functions:** `netlify/functions/`
+- **Turbopack:** Acknowledged in config (`turbopack: {}`) but dev runs webpack
 
 ---
 
-## 📄 Page Routes
+## Page Routes
 
 ### Portfolio Pages
 
-| Route | File | Purpose | Layout |
-|-------|------|---------|--------|
-| `/` | `src/app/page.tsx` | Home with ModernHero | Full-screen hero |
-| `/about` | `src/app/about/page.tsx` | Personal story with tabbed navigation | Standard layout |
-| `/projects` | `src/app/projects/page.tsx` | Project showcase with warm cards | Standard layout |
-| `/resume` | `src/app/resume/page.tsx` | Professional resume with download | Standard layout |
-| `/contact` | `src/app/contact/page.tsx` | Contact information and social links | Standard layout |
+| Route | File | Purpose |
+|-------|------|---------|
+| `/` | `src/app/page.tsx` | Home (ModernHero) |
+| `/about` | `src/app/about/page.tsx` | About with tabbed navigation |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Project showcase |
+| `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Individual project |
+| `/resume` | `src/app/resume/page.tsx` | Resume with PDF download |
+| `/contact` | `src/app/contact/page.tsx` | Contact info |
+| `/accessibility` | `src/app/accessibility/page.tsx` | Accessibility statement |
 
-### Content Pages
-
-| Route | File | Purpose | Layout |
-|-------|------|---------|--------|
-| `/blog` | `src/app/blog/page.tsx` | Blog listing (currently disabled) | Standard layout |
-| `/blog/[slug]` | `src/app/blog/[slug]/page.tsx` | Blog posts (MDX) | Standard layout |
-| `/newsletter` | `src/app/newsletter/page.tsx` | Newsletter subscription | Standard layout |
-| `/testimonials` | `src/app/testimonials/page.tsx` | Client testimonials | Standard layout |
-| `/faq` | `src/app/faq/page.tsx` | FAQ section | Standard layout |
-
-### Utility Pages
+### Fantasy Football Pages
 
 | Route | File | Purpose |
 |-------|------|---------|
-| `/search` | `src/app/search/page.tsx` | Global search interface |
+| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | FF landing |
+| `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Position tiers (qb/rb/wr/te/k/dst/flex) |
+| `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | RB tier page |
+| `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Draft tracker |
+
+### Content Pages
+
+| Route | File | Purpose |
+|-------|------|---------|
 | `/writing` | `src/app/writing/page.tsx` | Writing portfolio |
+| `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Individual articles |
+| `/search` | `src/app/search/page.tsx` | Global search |
+
+> **Note:** `/blog` permanently redirects to `/writing` via `next.config.mjs`. There is no standalone `/blog` app route.
+
+### Financial & Admin Pages
+
+| Route | File | Purpose |
+|-------|------|---------|
+| `/investments` | `src/app/investments/page.tsx` | Stock research & portfolio |
+| `/admin` | `src/app/admin/page.tsx` | Admin dashboard (NextAuth protected) |
+| `/admin/analytics` | `src/app/admin/analytics/page.tsx` | Analytics dashboard |
+
+### SEO & PWA
+
+| Route | Purpose |
+|-------|---------|
+| `/sitemap.xml` | Auto-generated sitemap |
+| `/sitemap-local.xml` | Local business structured data |
+| `/robots.txt` | Custom (not auto-generated) |
+| `/manifest.json` | PWA manifest |
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
-### Core Application APIs
+All routes are Next.js App Router API routes in `src/app/api/`. They return JSON and are server-only.
 
-| Endpoint | File | Purpose | Method |
-|----------|------|---------|--------|
-| `/api/analytics/events` | `src/app/api/analytics/events/route.ts` | Event tracking | POST |
-| `/api/analytics/web-vitals` | `src/app/api/analytics/web-vitals/route.ts` | Performance metrics | POST |
-| `/api/newsletter/subscribe` | `src/app/api/newsletter/subscribe/route.ts` | Newsletter subscription | POST |
-| `/api/search` | `src/app/api/search/route.ts` | Global search | GET |
+### Fantasy Football APIs
+
+| Endpoint | Purpose |
+|----------|---------|
+| `/api/fantasy-data/` | Core fantasy player data (reads from SQLite or sample files) |
+| `/api/fantasy-pros/` | FantasyPros authenticated scraping proxy |
+| `/api/fantasy-pros-free/` | FantasyPros free tier data |
+| `/api/fantasy-pros-session/` | Session management for scraping |
+| `/api/data-manager/` | Data management operations |
+| `/api/data-metadata/` | Data freshness and metadata |
+| `/api/sample-data/` | Sample/fallback data |
+| `/api/scheduled-update/` | Cron-triggered data refresh |
+
+### Portfolio & Content APIs
+
+| Endpoint | Purpose |
+|----------|---------|
+| `/api/analytics/` | Event tracking and web vitals |
+| `/api/investments/` | Investment/stock data |
+| `/api/search/` | Full-text search |
+| `/api/rss/` | RSS feed |
+| `/api/scrape/` | Web scraping utilities |
+| `/api/stocks/` | Stock data |
+| `/api/auth/` | NextAuth endpoints |
 
 ### API Response Format
 
-All APIs follow consistent format:
 ```typescript
-interface APIResponse<T = any> {
+interface APIResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: string;
@@ -197,234 +169,186 @@ interface APIResponse<T = any> {
 }
 ```
 
-**HTTP Status Codes:**
-- `200` - Success
-- `400` - Bad Request (validation errors)
-- `404` - Not Found
-- `429` - Too Many Requests (rate limited)
-- `500` - Internal Server Error
+HTTP status codes: `200` Success, `400` Bad Request, `401` Unauthorized, `429` Rate Limited, `500` Server Error.
 
 ---
 
-## 🧩 Component Architecture
+## Component Architecture
 
-### Component Organization
+### Organization
 
 ```
 src/components/
-├── ui/                      # Core UI library
-│   ├── WarmCard.tsx        # Main container component
-│   ├── ModernButton.tsx    # Button component
-│   ├── Heading.tsx         # Typography
-│   └── JourneyTimeline.tsx # Timeline component
+├── ui/                    # Design system primitives
+│   ├── WarmCard.tsx       # Container with hover, padding options
+│   ├── ModernButton.tsx   # 4 variants: primary/secondary/outline/ghost
+│   ├── button.tsx         # Radix/shadcn-style button primitive
+│   ├── dropdown-menu.tsx  # Radix dropdown primitive
+│   ├── Heading.tsx        # Typography hierarchy
+│   ├── Badge.tsx          # Labels and tags
+│   ├── JourneyTimeline.tsx
+│   ├── OptimizedImage.tsx
+│   ├── ThemeToggle.tsx
+│   ├── LazyPlayerImage.tsx
+│   └── ...
 │
-├── ModernHero.tsx          # Hero section
-├── ContactContent.tsx      # Contact page content
-├── ProjectsContent.tsx     # Projects showcase
-├── About.tsx               # About page component
+├── investments/           # Investment page components (15 components)
+├── navigation/            # Breadcrumbs, LazyFantasyComponents
+├── search/                # SearchInterface, SearchResults, SearchFilters
+├── lazy/                  # React.lazy() wrappers for heavy components
 │
-├── blog/                   # Blog components
-│   └── BlogFilter.tsx      # Blog filtering
-│
-├── newsletter/             # Newsletter components
-└── testimonials/           # Testimonial components
-```
-
-### Core UI Components
-
-**WarmCard** - Main container:
-```tsx
-<WarmCard
-  hover={true}      // Hover effect
-  padding="xl"      // xs | sm | md | lg | xl
->
-  Content
-</WarmCard>
-```
-
-**ModernButton** - Primary button:
-```tsx
-<ModernButton
-  variant="primary"  // primary | secondary | outline
-  size="lg"         // sm | md | lg
->
-  Click Me
-</ModernButton>
-```
-
-**Heading** - Typography:
-```tsx
-<Heading
-  level={2}                    // 1-6
-  className="gradient-text-warm"
->
-  Your Heading
-</Heading>
-```
-
-### Layout Components
-
-**ConditionalLayout** - Route-based layout manager:
-- Home page: Full-screen ModernHero
-- Other pages: Standard layout with FloatingNav and footer
-- Consistent background gradients
-
-**ModernHero** - Hero section features:
-- Oversized display typography (text-display-xl/xxl)
-- Professional headshot with optimized Next.js Image
-- Grid layout with text content and photo
-- Responsive sizing: w-56 to w-72 (224-288px)
-- Warm peachy borders and golden shadows
-- Framer Motion animations with reduced motion support
-
-### Component Patterns
-
-**Consistent Prop Interfaces:**
-```typescript
-interface ComponentProps {
-  className?: string;
-  children?: React.ReactNode;
-  variant?: 'primary' | 'secondary';
-}
-
-export const Component: React.FC<ComponentProps> = ({
-  className,
-  children,
-  variant = 'primary'
-}) => {
-  return (
-    <div className={cn('base-styles', className)}>
-      {children}
-    </div>
-  );
-};
+├── ConditionalLayout.tsx  # Route-based layout switcher
+├── ModernHero.tsx         # Home hero
+├── About.tsx
+├── ContactContent.tsx
+├── ProjectsContent.tsx
+├── FeaturedWorkSection.tsx
+├── ThemeProvider.tsx      # next-themes context
+├── Providers.tsx          # Aggregated context wrapper
+├── AIStructuredData.tsx   # AI-specific JSON-LD (in root layout)
+└── ...fantasy football components (TierChart, EnhancedPlayerCard, etc.)
 ```
 
 ---
 
-## 📊 Data Flow
+## Data Flow
 
-### Application Data Flow
+### Static Content
 
 ```
-Static Data Sources
-├── src/constants/personal.ts (career timeline, metrics)
-├── src/constants/navlinks.tsx (navigation config)
-└── public/ (images, assets)
-        ↓
-Server Components (Default)
-├── Page-level data fetching
-├── Metadata generation
-└── Static content rendering
-        ↓
-Client Components (Interactive)
-├── Tab switching (Overview/Journey)
-├── Form handling (Contact)
-├── Animation states
-└── User interactions
-        ↓
-Browser Rendering
-└── Hydrated interactive application
+src/constants/
+├── personal.ts        → career timeline, metrics, skills
+├── navlinks.tsx       → navigation config
+├── socials.tsx        → social media links
+└── caseStudies.ts     → project data
+         ↓
+Server Components (data fetching + metadata)
+         ↓
+Client Components (interactive: tabs, forms, animations)
+         ↓
+Browser (hydrated React app)
 ```
 
-### Content Processing
+### Writing Content
 
-**MDX Blog Posts:**
 ```
 content/blog/*.mdx
-        ↓
-Gray Matter (frontmatter parsing)
-        ↓
-MDX Compilation
-        ↓
-Dynamic routes (/blog/[slug])
-        ↓
-Rendered blog post pages
+         ↓
+gray-matter (frontmatter parsing)
+         ↓
+remark + remark-gfm + remark-html
+         ↓
+/writing/[slug] dynamic routes
 ```
 
----
+### Fantasy Football Data
 
-## 📅 Version History
-
-### [3.0.0] - January 2025 (Current)
-
-**Major Changes:**
-- **Warm Modern Theme**: Complete redesign from cyberpunk to warm professional aesthetic
-- **Portfolio-Only Focus**: Removed fantasy football features for pure professional portfolio
-- **Consistency Overhaul**: Unified styling across all pages with warm color system
-- **Accessibility Enhancement**: WCAG AA+ compliance with 7.5:1+ contrast ratios
-
-**Added:**
-- WarmCard component with hover effects and multiple padding options
-- ModernButton with 4 variants (primary, secondary, outline, ghost)
-- ModernHero with oversized typography and optimized headshot
-- JourneyTimeline component with warm styling
-- Enhanced reduced motion support
-- Touch-friendly tap targets (44px minimum)
-
-**Changed:**
-- Color palette: Cyberpunk neon → Warm sunset/golden (#FF6B35, #F7B32B)
-- Typography: Orbitron → Inter throughout for consistency
-- Spacing: Standardized to py-16 sm:py-20 lg:py-24
-- Images: Optimized sizing with responsive breakpoints (w-56 to w-72)
-- Layout: Consistent max-widths (max-w-5xl to max-w-7xl)
-- Shadows: Neon glow → Warm orange/golden shadows
-
-**Removed:**
-- All fantasy football features and infrastructure
-- Cyberpunk theme elements (neon colors, terminal effects)
-- GlassCard component (replaced with WarmCard)
-- MorphButton component (replaced with ModernButton)
-- D3.js visualization library
-- SQLite database and fantasy data management
-- Excessive decorative effects
-
-**Performance:**
-- Bundle size: <152kB First Load JS (60% reduction from v1.5)
-- Improved text contrast for better readability
-- Faster paint times with simplified animations
-- Enhanced mobile performance
-- Reduced dependencies footprint
-
-### [2.0.0] - December 2024
-
-**Major Changes:**
-- Portfolio-only focus (removed fantasy football features)
-- Performance overhaul (60% bundle size reduction from v1.5)
-- Complete documentation rewrite
-
-**Performance:**
-- Bundle size: 173kB → 152kB First Load JS
-- Removed D3.js, SQLite, FantasyPros integrations
-- Optimized font loading with variable fonts
-- Implemented lazy loading for heavy components
-
-### [1.5.0] - December 2024
-
-**Added:**
-- Glassmorphism effect system
-- Command palette navigation (⌘K)
-- Terminal hero interface
-- Performance optimized images
-
-### [1.4.0] - November 2024
-
-**Added:**
-- Full-screen layout system
-- Interactive project showcase
-- Advanced SEO with structured data
-- Code splitting optimization
+See [Fantasy Football Data Pipeline](#fantasy-football-data-pipeline) below.
 
 ---
 
-## 🔗 Related Documentation
+## Fantasy Football Data Pipeline
 
-- **[README.md](./README.md)** - Project overview and quick start
-- **[DEVELOPMENT.md](./DEVELOPMENT.md)** - Development guide
-- **[COMPONENTS.md](./COMPONENTS.md)** - Component library
-- **[STYLING.md](./STYLING.md)** - Design system and styling
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Deployment configuration
+### Architecture
+
+```
+FantasyPros (external)
+         ↓
+Session auth (fantasyProsSession.ts)
+         ↓
+Scraping (fantasyProsAPI.ts / fantasyProsAlternative.ts)
+         ↓
+Unified API (unifiedFantasyProsAPI.ts)
+         ↓
+Caching (unifiedCache.ts / dataCache.ts)
+         ↓
+SQLite (fantasy-data.db via database.ts)
+         ↓
+/api/fantasy-data/ endpoint
+         ↓
+React hooks (useUnifiedFantasyData, useAllFantasyData)
+         ↓
+TierChart + TierChartEnhanced (D3 visualizations)
+```
+
+### Tier Calculation
+
+- **Clustering:** K-means via `src/lib/clustering.ts`
+- **Tier assignment:** Gaussian mixture models via `src/lib/gaussianMixture.ts`
+- **Unified calculator:** `src/lib/unifiedTierCalculator.ts`
+- **Scoring formats:** PPR / Standard / Half-PPR via `src/lib/scoringFormatUtils.ts`
+
+### Data Updates
+
+- **Manual:** `npm run update:fantasy-rb`
+- **Automated:** Netlify Scheduled Functions → `/api/scheduled-update/` (runs at 2 AM UTC)
+
+### SQLite Limitation
+
+SQLite (`better-sqlite3`) is a server-only native module. It is excluded from:
+- Client-side bundle (`webpack externals` in `next.config.mjs`)
+- Netlify serverless functions (listed in `serverExternalPackages`)
+
+Data is effectively read-only at runtime on Netlify — write operations happen during build/update scripts.
 
 ---
 
-*Last Updated: January 2025 - Warm Modern Portfolio*
+## Security
+
+### Middleware (`src/middleware.ts`)
+
+Applied to all routes. Adds security headers:
+- `Content-Security-Policy` (includes `connect-src https://api.fantasypros.com`)
+- `X-Frame-Options: DENY`
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy`
+- `Permissions-Policy`
+
+### Authentication
+
+NextAuth.js protects `/admin` routes with credentials-based auth (env vars: `ADMIN_USERNAME`, `ADMIN_PASSWORD`).
+
+---
+
+## Version History
+
+### Current (March 2026)
+
+- Next.js 16, React 19, Tailwind CSS v4
+- Dual-purpose platform: portfolio + fantasy football analytics
+- Modern professional blue/slate design system
+- Investments tracker with Yahoo Finance integration
+- Full test suite: Jest + Playwright
+
+### February 2026
+
+- Added investments page (`/investments`) with stock research panels
+- Shipped portfolio refresh: new `/portfolio`, `/resume`, `/writing` experiences
+- Fantasy football tooling (RB tiers, draft tracker, sample API responses)
+- Netlify build hook for scheduled fantasy data refreshes
+- Comprehensive documentation overhaul
+
+### January 2026
+
+- Migrated to Next.js 16 (App Router)
+- Re-introduced fantasy football platform with D3 tier visualizations
+- SQLite persistence for fantasy data
+- Implemented Lighthouse and Core Web Vitals monitoring
+- Added `next-sitemap` to build pipeline
+
+---
+
+## Related Documentation
+
+- **[README.md](./README.md)** – Project overview and quick start
+- **[DEVELOPMENT.md](./DEVELOPMENT.md)** – Development setup
+- **[COMPONENTS.md](./COMPONENTS.md)** – Component library
+- **[STYLING.md](./STYLING.md)** – Design system
+- **[API.md](./API.md)** – API endpoint reference
+- **[docs/DATABASE_SCHEMA.md](./docs/DATABASE_SCHEMA.md)** – SQLite schema
+- **[docs/FANTASY_PLATFORM_SETUP.md](./docs/FANTASY_PLATFORM_SETUP.md)** – Fantasy platform setup
+- **[docs/AUTOMATION_SCRIPTS.md](./docs/AUTOMATION_SCRIPTS.md)** – Data automation scripts
+
+---
+
+*Last Updated: March 2026*

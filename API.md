@@ -1,53 +1,98 @@
 # API Reference
 
-The site exposes several Next.js App Router API routes (located in `src/app/api`). They power internal dashboards, automation hooks, and public data endpoints. This document highlights the important ones and how to exercise them locally.
+All API routes are Next.js App Router handlers located in `src/app/api/`. They are server-only (no separate Express/Koa app), return JSON, and follow a consistent response format.
 
-## Base URL
+**Last Updated:** March 2026
 
-- **Local**: `http://localhost:3000/api/*`
-- **Production**: `https://isaacavazquez.com/api/*`
+## Base URLs
 
-All routes return JSON (unless otherwise noted) and are server-only; there is no separate Express/Koa app.
+- **Local:** `http://localhost:3000/api/*`
+- **Production:** `https://isaacavazquez.com/api/*`
 
-## Fantasy Data
+## Response Format
 
-| Route | Description | Notes |
-| --- | --- | --- |
-| `/api/fantasy-data` | Aggregated fantasy rankings used across `/fantasy-football/*`. | Reads from `fantasy-data.db` or sample files in `src/data/`. |
-| `/api/fantasy-pros` + `/fantasy-pros-free` | Proxy endpoints for FantasyPros data pulls. | Keys loaded from `.env.local`; used by automation scripts. |
-| `/api/data-pipeline`, `/api/scheduled-update`, `/api/scrape` | Hooks invoked by cron/Netlify background jobs. | Documented in `docs/AUTOMATION_SCRIPTS.md`. |
+```typescript
+interface APIResponse<T = unknown> {
+  success: boolean;
+  data?: T;
+  error?: string;
+  message?: string;
+}
+```
 
-## Portfolio + Content Utilities
+**HTTP status codes:** `200` Success · `400` Bad Request · `401` Unauthorized · `429` Rate Limited · `500` Server Error
 
-| Route | Description |
-| --- | --- |
-| `/api/search` | Content + project search index for the floating search UI. |
-| `/api/newsletter` | Newsletter signup proxy (handles spam protection + reCAPTCHA). |
-| `/api/rss` | Generates the RSS/Atom feed for writing updates. |
-| `/api/analytics` | Collects lightweight analytics events (page + CTA interactions). |
+---
 
-## Data/Metadata Helpers
+## Fantasy Football APIs
 
-| Route | Description |
-| --- | --- |
-| `/api/player-images-mapping` | Returns the canonical map of player IDs → image URLs. |
-| `/api/data-manager` / `/api/data-metadata` | Surfaces the current ingestion status, timestamps, and job IDs. |
-| `/api/sample-data` | Provides seed data for demos/tests when the database is unavailable. |
+| Route | Method | Description |
+|-------|--------|-------------|
+| `/api/fantasy-data/` | GET | Aggregated player rankings for all positions. Reads from `fantasy-data.db` (SQLite) or sample files in `src/data/`. |
+| `/api/fantasy-pros/` | GET/POST | Proxy for FantasyPros authenticated data pulls. Requires `FANTASYPROS_USERNAME` / `FANTASYPROS_PASSWORD` env vars. |
+| `/api/fantasy-pros-free/` | GET | FantasyPros free-tier data (no auth required). |
+| `/api/fantasy-pros-session/` | GET/POST | Manages FantasyPros login session state for scraping. |
+| `/api/data-manager/` | GET/POST | Data management operations (clear cache, force refresh). |
+| `/api/data-metadata/` | GET | Returns ingestion status, timestamps, and data freshness info. |
+| `/api/sample-data/` | GET | Seed data for demos/tests when the database is unavailable. |
+| `/api/scheduled-update/` | POST | Cron/Netlify trigger for automated daily data refresh. Requires `CRON_SECRET` header. |
 
-## Testing the APIs
+### Quick Examples
 
 ```bash
-# Example: fetch fantasy rankings locally
+# Fetch fantasy rankings
 curl http://localhost:3000/api/fantasy-data | jq '.players | length'
 
-# Trigger the scheduled update (in dev)
-curl -X POST http://localhost:3000/api/scheduled-update
+# Trigger a scheduled update manually
+curl -X POST http://localhost:3000/api/scheduled-update \
+  -H "x-cron-secret: $CRON_SECRET"
+
+# Check data freshness
+curl http://localhost:3000/api/data-metadata | jq '.lastUpdated'
 ```
+
+---
+
+## Portfolio & Content APIs
+
+| Route | Method | Description |
+|-------|--------|-------------|
+| `/api/search/` | GET | Full-text search across portfolio content, projects, and writing. |
+| `/api/rss/` | GET | RSS/Atom feed for writing updates. |
+| `/api/analytics/` | POST | Collects lightweight analytics events (page views, CTA clicks, web vitals). |
+| `/api/scrape/` | GET/POST | Web scraping utilities. |
+
+---
+
+## Financial APIs
+
+| Route | Method | Description |
+|-------|--------|-------------|
+| `/api/investments/` | GET | Investment/stock portfolio data. |
+| `/api/stocks/` | GET | Individual stock data (backed by Yahoo Finance via `src/lib/yahooFinance.ts`). |
+
+---
+
+## Authentication
+
+| Route | Description |
+|-------|-------------|
+| `/api/auth/` | NextAuth.js endpoints (`/api/auth/signin`, `/api/auth/session`, etc.). Protects `/admin` routes. |
+
+---
 
 ## Security
 
-- Sensitive API routes check for secrets (`X-API-KEY`, Service Tokens) before mutating data.
-- Store credentials in `.env.local` (see `GETTING-STARTED.md`). Production secrets live in Netlify environment variables.
-- See `docs/SECURITY.md` for broader hardening guidance.
+- Mutation routes (scheduled-update, data-manager) check for `x-cron-secret` or service tokens before executing.
+- Store credentials in `.env.local` for local development. Production secrets are in the Netlify dashboard.
+- All routes are rate-limited via `src/lib/rateLimit.ts`.
+- See [`docs/SECURITY.md`](./docs/SECURITY.md) for full hardening guidance.
 
-Need data model details? Review `docs/DATABASE_SCHEMA.md`. For cron + automation usage, open `docs/FANTASY_PLATFORM_SETUP.md` and `docs/AUTOMATION_SCRIPTS.md`.
+---
+
+## Related Documentation
+
+- **[docs/DATABASE_SCHEMA.md](./docs/DATABASE_SCHEMA.md)** – SQLite schema and data models
+- **[docs/FANTASY_PLATFORM_SETUP.md](./docs/FANTASY_PLATFORM_SETUP.md)** – Fantasy platform setup
+- **[docs/AUTOMATION_SCRIPTS.md](./docs/AUTOMATION_SCRIPTS.md)** – Cron and automation details
+- **[docs/ENVIRONMENT_CONFIGURATION.md](./docs/ENVIRONMENT_CONFIGURATION.md)** – All environment variables

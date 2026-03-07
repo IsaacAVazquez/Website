@@ -1,65 +1,84 @@
 # Development Guide
 
-Complete development guide for the Isaac Vazquez Digital Platform - a modern warm-themed portfolio website built with Next.js 15.
+Development guide for Isaac Vazquez's portfolio and fantasy football analytics platform — built with Next.js 16.
+
+**Last Updated:** March 2026
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Quick Start](#quick-start)
 - [Development Environment](#development-environment)
 - [Project Architecture](#project-architecture)
 - [Development Workflow](#development-workflow)
 - [Styling & Design](#styling--design)
+- [Fantasy Football Development](#fantasy-football-development)
 - [Testing & Debugging](#testing--debugging)
 - [Troubleshooting](#troubleshooting)
 - [Environment Configuration](#environment-configuration)
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
-- **Node.js 18+** - [Download](https://nodejs.org/)
-- **npm 8+** or yarn 1.22+
-- **Git** for version control
-- **VS Code** recommended (see extensions below)
 
-### One-Minute Setup
+- **Node.js 18+** — [Download](https://nodejs.org/)
+- **npm 8+**
+- **Git**
+- **Python 3** (only for `npm run update:investments`)
+- **VS Code** (recommended)
+
+### Setup
+
 ```bash
 # Clone repository
-git clone https://github.com/IsaacAVazquez/isaacvazquez-portfolio.git
-cd isaacvazquez-portfolio
+git clone https://github.com/IsaacAVazquez/Website.git
+cd Website
 
 # Install dependencies
 npm install
 
+# Copy environment template and fill in values
+cp .env.example .env.local  # or create .env.local manually
+
 # Start development server
 npm run dev
+# → http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) 🎉
+### Available Scripts
 
-### Available Commands
 ```bash
 # Development
-npm run dev          # Start dev server (hot reload)
-npm run build        # Build for production
-npm run start        # Start production server
-npm run lint         # Run ESLint
-npx tsc --noEmit     # Type check without building
+npm run dev                  # Dev server (webpack mode)
+npm run build                # Production build + sitemap
+npm start                    # Serve production build
+npm run lint                 # ESLint
+npm run analyze              # Bundle size analysis
 
-# Utilities
-npm run postbuild    # Generate sitemap (auto-runs after build)
+# Testing
+npm test                     # Unit tests (Jest)
+npm run test:watch           # Jest watch mode
+npm run test:coverage        # Coverage report
+npm run test:ci              # CI mode (parallel + coverage)
+npm run test:e2e             # Playwright E2E
+npm run test:e2e:ui          # Playwright UI mode
+npm run test:e2e:debug       # Playwright debug mode
+npm run test:all             # Coverage + E2E
+
+# Data
+npm run update:fantasy-rb    # Refresh fantasy football RB data
+npm run update:investments   # Refresh investment data (Python)
 ```
 
 ---
 
-## 🛠️ Development Environment
+## Development Environment
 
-### VS Code Setup
+### VS Code Extensions
 
-**Essential Extensions:**
 ```json
 {
   "recommendations": [
@@ -71,88 +90,98 @@ npm run postbuild    # Generate sitemap (auto-runs after build)
 }
 ```
 
-**VS Code Settings** (`.vscode/settings.json`):
+### Recommended VS Code Settings
+
 ```json
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "typescript.preferences.includePackageJsonAutoImports": "auto",
-  "emmet.includeLanguages": {
-    "typescript": "html",
-    "typescriptreact": "html"
-  }
+  "typescript.preferences.includePackageJsonAutoImports": "auto"
 }
 ```
-
-### Environment Variables
-
-Create `.env.local` for development:
-```env
-# Site Configuration
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NODE_ENV=development
-
-# Optional: Analytics
-NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=your_ga_id
-```
-
-**Production Environment** (Netlify):
-```env
-# Required
-NEXT_PUBLIC_SITE_URL=https://yourdomain.com
-
-# Optional
-NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=your_production_ga_id
-```
-
-**Security Notes:**
-- Never commit `.env.local` to Git
-- Use strong secrets for production
-- Environment variables are visible only to site owners
-- Consider rotating credentials periodically
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 
 ### File Structure
+
 ```
 src/
-├── app/                 # Next.js App Router pages & API routes
-│   ├── about/          # About page
-│   ├── contact/        # Contact page
-│   ├── projects/       # Projects showcase
-│   ├── resume/         # Resume page
-│   └── api/            # Backend API endpoints
-├── components/         # React components
-│   ├── ui/            # Core UI library (WarmCard, ModernButton, etc.)
-│   ├── ModernHero/    # Hero section component
-│   └── ...            # Feature-specific components
-├── constants/         # Static data and configuration
-├── lib/              # Utility functions and helpers
-├── types/            # TypeScript type definitions
-└── hooks/            # Custom React hooks
+├── app/                     # Next.js App Router
+│   ├── page.tsx             # Home (ModernHero)
+│   ├── layout.tsx           # Root layout
+│   ├── globals.css          # Global styles + CSS custom properties
+│   ├── metadata.ts          # SEO metadata config
+│   ├── about/
+│   ├── portfolio/[slug]/    # Project showcase (NOTE: /projects redirects here)
+│   ├── resume/
+│   ├── contact/
+│   ├── accessibility/
+│   ├── fantasy-football/    # FF landing + tiers + draft tracker
+│   │   ├── page.tsx
+│   │   ├── fantasy-football-client.tsx
+│   │   ├── tiers/[position]/
+│   │   ├── rb-tiers/
+│   │   └── draft-tracker/
+│   ├── writing/             # Blog/writing (NOTE: /blog redirects here)
+│   │   ├── page.tsx
+│   │   └── [slug]/
+│   ├── investments/
+│   ├── search/
+│   ├── admin/
+│   │   ├── page.tsx
+│   │   ├── layout.tsx
+│   │   └── analytics/
+│   └── api/                 # API routes
+│
+├── components/              # React components
+│   ├── ui/                  # Design system primitives
+│   ├── investments/         # Investment page components
+│   ├── navigation/          # Breadcrumbs, lazy FF components
+│   ├── search/              # Search interface components
+│   └── lazy/                # React.lazy() wrappers
+│
+├── constants/               # Static data (nav, projects, career timeline)
+│   ├── personal.ts
+│   ├── navlinks.tsx
+│   ├── socials.tsx
+│   └── caseStudies.ts
+│
+├── hooks/                   # Custom React hooks
+├── lib/                     # Utilities, data layer, FF logic
+└── types/                   # TypeScript types
+
+public/                      # Static assets
+├── images/
+│   └── logos/               # Company logos for career timeline
+├── project-screenshots/
+├── fantasy/
+└── Isaac_Vazquez_Resume.pdf
+
+scripts/                     # Data update scripts
+netlify/functions/           # Netlify serverless functions
+e2e/                         # Playwright E2E tests
+docs/                        # Extended documentation
+content/blog/                # MDX writing articles
 ```
+
+### Route Conventions
+
+> **Important:** Do not create `src/app/projects/` — `/projects` permanently redirects to `/portfolio` via `next.config.mjs`. Similarly, `/blog` redirects to `/writing`.
 
 ### Design Patterns
 
-**Component Structure:**
+**Component structure:**
 ```typescript
-// Consistent prop interfaces
 interface ComponentProps {
   className?: string;
   children?: React.ReactNode;
-  variant?: 'primary' | 'secondary';
 }
 
-// Export typed components
-export const Component: React.FC<ComponentProps> = ({
-  className,
-  children,
-  variant = 'primary'
-}) => {
+export const Component: React.FC<ComponentProps> = ({ className, children }) => {
   return (
     <div className={cn('base-styles', className)}>
       {children}
@@ -161,203 +190,230 @@ export const Component: React.FC<ComponentProps> = ({
 };
 ```
 
-**State Management:**
-- **Local state**: `useState` for component-level state
-- **Server state**: Next.js data fetching
-- **Global state**: Context API for theme/preferences
-- **Form state**: Controlled components with validation
-
-**Error Handling:**
+**Error handling in API routes:**
 ```typescript
-// API routes
 try {
   const result = await apiCall();
   return NextResponse.json({ success: true, data: result });
 } catch (error) {
   return NextResponse.json(
-    { success: false, error: error.message },
+    { success: false, error: (error as Error).message },
     { status: 500 }
   );
 }
-
-// Components
-const [error, setError] = useState<string>('');
-useEffect(() => {
-  fetchData().catch(err => {
-    setError(err.message);
-    console.error('Fetch failed:', err);
-  });
-}, []);
 ```
 
 ---
 
-## 🔄 Development Workflow
+## Development Workflow
 
 ### Branch Strategy
-- `main` - Production (auto-deploys to Netlify)
-- `develop` - Development integration
-- `feature/*` - Feature branches
-- `hotfix/*` - Critical production fixes
+
+- `main` — Production (auto-deploys to Netlify)
+- `feature/*` — Feature branches
+- `hotfix/*` — Critical production fixes
 
 ### Commit Convention
-```bash
-feat: add new project showcase
+
+```
+feat: add draft tracker page
 fix: resolve mobile navigation overlay
 docs: update API documentation
-style: improve warm theme colors
-refactor: optimize component rendering
-test: add unit tests for contact form
+style: fix dark mode contrast on tier chart
+refactor: optimize player list virtualization
+test: add E2E test for fantasy football tiers
+chore: bump framer-motion to v12
+perf: lazy load D3 tier charts
 ```
+
+### Adding a New Page
+
+1. Create `src/app/[page-name]/page.tsx`
+2. Export `metadata` for SEO
+3. Add to `src/constants/navlinks.tsx` if it belongs in navigation
+4. Update `next-sitemap.config.js` with priority and `changefreq`
+
+### Creating a New Component
+
+1. Check `src/components/ui/` first — the primitive may already exist
+2. Create the file with a typed `interface` for props
+3. Add ARIA labels and keyboard support for interactive elements
+4. Use CSS custom properties for colors — never hardcode hex values
+5. Ensure 44px minimum touch targets (`min-h-touch`, `min-w-touch`)
+6. Test with `prefers-reduced-motion`
+7. Verify dark mode (`.dark` class on `<html>`)
 
 ### Code Quality Checks
-```bash
-# Run all checks before committing
-npm run lint                # ESLint
-npx tsc --noEmit           # Type checking
-npm run build --dry-run    # Test build
 
-# Fix auto-fixable issues
-npm run lint -- --fix
+```bash
+# Before committing
+npm run lint                 # ESLint
+npx tsc --noEmit             # TypeScript check (note: build ignores errors)
+npm test                     # Unit tests
 ```
 
 ---
 
-## 🎨 Styling & Design
+## Styling & Design
 
-### Warm Modern Theme
+### Color System
 
-**Color System** (`src/app/globals.css`):
+All colors use CSS custom properties defined in `src/app/globals.css`. **Never hardcode hex values in components.**
+
 ```css
-:root {
-  /* Golden Hour Warmth */
-  --color-primary: #FF6B35;      /* Sunset Orange */
-  --color-secondary: #F7B32B;    /* Golden Yellow */
-  --color-accent: #FF8E53;       /* Coral */
-  --color-success: #6BCF7F;      /* Fresh Green */
+/* Light mode */
+--color-primary: #2563EB;    /* Blue 600 */
+--color-secondary: #1D4ED8;  /* Blue 700 */
+--color-accent: #3B82F6;     /* Blue 500 */
+--text-primary: #0F172A;     /* Slate 900 */
+--text-secondary: #475569;   /* Slate 600 */
+--surface-primary: #FFFFFF;
+--border-primary: #E2E8F0;
 
-  /* Warm Neutrals */
-  --warm-cream: #FFFCF7;         /* Light background */
-  --warm-brown-dark: #4A3426;    /* Text primary */
-  --warm-brown-medium: #6B4F3D;  /* Text secondary */
-}
+/* Dark mode (overrides on .dark class) */
+--color-primary: #3B82F6;    /* Blue 500 */
+--color-secondary: #60A5FA;  /* Blue 400 */
 ```
 
-### Component Patterns
+### Using Colors in Components
 
-**WarmCard** - Main container component:
 ```tsx
-<WarmCard hover={true} padding="xl">
-  <h2 className="text-[#FF6B35]">Your Content</h2>
-</WarmCard>
+// Correct — CSS variables
+<div className="text-[var(--text-primary)] bg-[var(--surface-primary)]">
+
+// Incorrect — hardcoded hex
+<div className="text-slate-900 bg-white">
 ```
 
-**ModernButton** - Button component:
-```tsx
-<ModernButton variant="primary" size="lg">
-  Click Me
-</ModernButton>
-```
+### Typography
 
-**Heading** - Typography:
-```tsx
-<Heading level={2} className="gradient-text-warm">
-  Your Heading
-</Heading>
-```
+- **Primary font:** Inter (CSS variable `--font-inter`)
+- **Monospace font:** JetBrains Mono (CSS variable `--font-jetbrains-mono`)
+- **Fluid scale:** All sizes use `clamp()` — e.g., `--text-base`, `--text-lg`
 
 ### Responsive Design
-```css
-/* Mobile-first approach */
-.component {
-  @apply flex flex-col gap-4;      /* Mobile */
-}
 
-@media (min-width: 768px) {
-  .component {
-    @apply flex-row gap-8;          /* Tablet+ */
-  }
-}
+Mobile-first with Tailwind breakpoints: `sm` (640px) → `md` (768px) → `lg` (1024px) → `xl` (1280px)
+
+```tsx
+className="text-4xl md:text-5xl lg:text-6xl"
+className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8"
 ```
 
-**Breakpoints:**
-- `sm`: 640px (mobile landscape)
-- `md`: 768px (tablet)
-- `lg`: 1024px (desktop)
-- `xl`: 1280px (large desktop)
+### Dark Mode
+
+Dark mode uses the `.dark` class on `<html>` (class-based, via `next-themes`). All components must work in both modes:
+
+```tsx
+<div className="bg-white dark:bg-neutral-900 text-[var(--text-primary)]">
+```
+
+### Animations
+
+- Framer Motion for page/component transitions
+- Spring physics: `cubic-bezier(0.34, 1.56, 0.64, 1)`
+- Always check `prefers-reduced-motion`:
+
+```tsx
+import { useReducedMotion } from 'framer-motion';
+
+const shouldReduce = useReducedMotion();
+const variants = shouldReduce ? {} : animationVariants;
+```
 
 ---
 
-## 🧪 Testing & Debugging
+## Fantasy Football Development
 
-### Performance Optimization
+### Data Layer
 
-**Image Optimization:**
+Fantasy football data flows through:
+1. `src/lib/fantasyProsAPI.ts` — FantasyPros scraping (requires auth)
+2. `src/lib/unifiedFantasyProsAPI.ts` — Unified API abstraction
+3. `src/lib/unifiedCache.ts` — Caching layer
+4. `src/lib/database.ts` — SQLite operations (server-only)
+5. `/api/fantasy-data/` — HTTP endpoint
+6. `src/hooks/useUnifiedFantasyData.ts` — React data hook
+
+### Important Constraints
+
+- **Never** import `better-sqlite3` in client components — it's server-only and excluded from the client bundle
+- **Always** use the unified cache layer before adding new data fetches — check `unifiedCache.ts`
+- **Rate-limit** all FantasyPros requests — never call their API directly without going through the API layer
+
+### Tier Calculation
+
+Tier charts use a two-step process:
+1. **Clustering:** K-means via `src/lib/clustering.ts`
+2. **Tier assignment:** Gaussian mixture models via `src/lib/gaussianMixture.ts`
+
+Unified entry point: `src/lib/unifiedTierCalculator.ts`
+
+### Updating Fantasy Data
+
+```bash
+# Manual RB data update
+npm run update:fantasy-rb
+
+# Trigger scheduled update (dev)
+curl -X POST http://localhost:3000/api/scheduled-update \
+  -H "x-cron-secret: your_secret"
+```
+
+---
+
+## Testing & Debugging
+
+### Performance
+
+**Image optimization:**
 ```tsx
-import Image from 'next/image';
+import Image from "next/image";
 
 <Image
   src="/images/hero.jpg"
   alt="Portfolio hero"
   width={1200}
   height={800}
-  priority              // Above-the-fold images
-  placeholder="blur"
+  priority
 />
 ```
 
-**Code Splitting:**
+**Lazy loading heavy components:**
 ```typescript
-// Dynamic imports for heavy components
-const HeavyComponent = dynamic(
-  () => import('@/components/HeavyComponent'),
-  {
-    loading: () => <Skeleton />,
-    ssr: false  // Client-side only
-  }
+const TierChart = dynamic(
+  () => import('@/components/TierChart'),
+  { loading: () => <Skeleton />, ssr: false }
 );
 ```
 
-**Bundle Analysis:**
+**Bundle analysis:**
 ```bash
-npm run build
-npx @next/bundle-analyzer
+npm run analyze
+# or
+ANALYZE=true npm run build
 ```
 
-### Debugging Tools
+### Debugging
 
-**Logging Strategy:**
-```typescript
-const isDev = process.env.NODE_ENV === 'development';
+**React DevTools** for component state inspection.
 
-const log = {
-  info: (message: string, data?: any) => {
-    if (isDev) console.log(`ℹ️ ${message}`, data);
-  },
-  error: (message: string, error?: Error) => {
-    console.error(`❌ ${message}`, error);
-  },
-  warn: (message: string, data?: any) => {
-    if (isDev) console.warn(`⚠️ ${message}`, data);
-  }
-};
+**API debugging:**
+```bash
+curl http://localhost:3000/api/fantasy-data | jq '.'
+curl http://localhost:3000/api/data-metadata | jq '.lastUpdated'
 ```
 
-**Browser DevTools:**
-- React Developer Tools
-- Performance tab for optimization
-- Network tab for API debugging
-- Lighthouse for performance audits
+**Logging:** `src/lib/logger.ts` — logs are suppressed in production via `compiler.removeConsole`.
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
-### Development Issues
+### Server Won't Start
 
-**Server Won't Start:**
 ```bash
-# Clear Next.js cache
 rm -rf .next
 npm run dev
 
@@ -365,178 +421,93 @@ npm run dev
 node --version
 
 # Reinstall dependencies
-rm -rf node_modules package-lock.json
-npm install
+rm -rf node_modules package-lock.json && npm install
 
-# Check for port conflicts
+# Kill port conflicts
 lsof -ti:3000 | xargs kill -9
 ```
 
-**Module Resolution Errors:**
+### TypeScript Errors
+
+Note: `typescript.ignoreBuildErrors: true` is set in `next.config.mjs`, so TypeScript errors won't block builds. But fix them anyway:
+
 ```bash
-# Verify tsconfig.json paths
-cat tsconfig.json | grep -A 10 "paths"
-
-# Restart TypeScript server (VS Code)
-# Cmd/Ctrl + Shift + P → "TypeScript: Restart TS Server"
-
-# Clear TypeScript cache
-rm -rf .next/cache
-```
-
-**Hot Reload Not Working:**
-```bash
-# Clear browser cache (Chrome: Cmd/Ctrl + Shift + R)
-
-# Check file watchers limit (Linux/macOS)
-echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
-
-# Restart dev server
-npm run dev
-```
-
-### Build Problems
-
-**TypeScript Build Errors:**
-```bash
-# Run type checking separately
 npx tsc --noEmit
-
-# Check for missing type definitions
-npm install --save-dev @types/node @types/react @types/react-dom
 ```
 
-**Bundle Size Too Large:**
+### Tailwind Styles Not Applied
+
 ```bash
-# Analyze bundle
-npm run build
-npx @next/bundle-analyzer
-
-# Check for duplicates
-npx duplicate-package-checker-webpack-plugin
-
-# Remove unused dependencies
-npx depcheck
-```
-
-### Styling Issues
-
-**Tailwind Styles Not Applied:**
-```bash
-# Verify Tailwind config
-npx tailwindcss --init --dry-run
-
-# Check content paths in tailwind.config.ts
-# Rebuild CSS
 rm -rf .next
 npm run dev
 ```
 
-**Custom CSS Variables Not Working:**
-```css
-/* globals.css - Ensure variables are defined */
-:root {
-  --color-primary: #FF6B35;
-  --color-secondary: #F7B32B;
-}
+### SQLite Errors
 
-/* Usage */
-.button {
-  background-color: var(--color-primary);
-}
-```
+`better-sqlite3` is server-only. If you see `Module not found: Can't resolve 'better-sqlite3'` on the client side, you've accidentally imported it in a client component. Move the import to a server component or API route.
 
 ### Common Error Messages
 
-**"Module not found":**
+**"Hydration mismatch":** Ensure server and client render the same content. Use `useEffect` for browser-only APIs.
+
+**"Module not found":** Check path aliases in `tsconfig.json`. Restart the TypeScript server in VS Code.
+
+**Hot reload not working:**
 ```bash
-# Check path aliases in tsconfig.json
-# Restart TypeScript server
-# Verify file exists
-```
-
-**"Hydration mismatch":**
-```bash
-# Ensure server and client render same content
-# Check for browser-only APIs in server components
-# Use useEffect for client-only code
-```
-
-### Getting Help
-
-**Debug Information to Collect:**
-```bash
-# System info
-node --version
-npm --version
-next --version
-
-# Package info
-npm list next react react-dom
-
-# Build output
-npm run build 2>&1 | tee build.log
-```
-
-**Useful Debugging Commands:**
-```bash
-# Clear all caches
-rm -rf .next node_modules package-lock.json
-npm install
-
-# Verbose build
-npm run build --verbose
-
-# Check dependency tree
-npm list --depth=0
-
-# Security audit
-npm audit
-
-# Check for outdated packages
-npm outdated
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 ```
 
 ---
 
-## 📝 Environment Configuration
+## Environment Configuration
 
-### Local Development
-Create `.env.local`:
+### Local Development (`.env.local`)
+
 ```env
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NODE_ENV=development
+# Required for /admin dashboard
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=<random-secret>
+ADMIN_USERNAME=<username>
+ADMIN_PASSWORD=<password>
+
+# Required for live fantasy football data
+FANTASYPROS_USERNAME=<email>
+FANTASYPROS_PASSWORD=<password>
+CRON_SECRET=<random-secret>
+
+# Optional
+NEXT_PUBLIC_GA_ID=<google-analytics-id>
+SITE_URL=https://isaacavazquez.com
 ```
 
-### Production (Netlify)
-Set in Netlify Dashboard → Site Settings → Environment Variables:
-```env
-NEXT_PUBLIC_SITE_URL=https://yourdomain.com
-```
+### Production (Netlify Dashboard)
 
-### Verification
-After setting environment variables:
-1. Redeploy site (Netlify auto-redeploys on changes)
-2. Test functionality
-3. Check console for errors
-4. Verify all features work
+Set all of the above in **Site Settings → Environment Variables**. Never commit `.env.local` to Git.
+
+See [`docs/ENVIRONMENT_CONFIGURATION.md`](./docs/ENVIRONMENT_CONFIGURATION.md) for the complete variable reference.
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 ### Documentation
-- **[README.md](./README.md)** - Project overview
-- **[CLAUDE.md](./CLAUDE.md)** - Comprehensive architecture
-- **[COMPONENTS.md](./COMPONENTS.md)** - Component library
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Deployment guide
+
+- **[README.md](./README.md)** — Quick start and overview
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** — System architecture
+- **[COMPONENTS.md](./COMPONENTS.md)** — Component library
+- **[API.md](./API.md)** — API endpoint reference
+- **[TESTING.md](./TESTING.md)** — Testing strategy
+- **[STYLING.md](./STYLING.md)** — Design system
+- **[docs/FANTASY_PLATFORM_SETUP.md](./docs/FANTASY_PLATFORM_SETUP.md)** — Fantasy platform setup
+- **[docs/ENVIRONMENT_CONFIGURATION.md](./docs/ENVIRONMENT_CONFIGURATION.md)** — Environment variables
 
 ### External Resources
-- [Next.js 15 Documentation](https://nextjs.org/docs)
-- [React 19 Documentation](https://react.dev)
+
+- [Next.js 16 Documentation](https://nextjs.org/docs)
 - [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs)
 - [Framer Motion Documentation](https://www.framer.com/motion/)
+- [D3.js Documentation](https://d3js.org/)
 
 ---
 
-*Last Updated: January 2025 - Warm Modern Theme*
+*Last Updated: March 2026*
