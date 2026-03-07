@@ -59,10 +59,9 @@ export default function AdminPage() {
   }, []);
   const [selectedPosition, setSelectedPosition] = useState<Position>('QB');
   const [selectedScoringFormat, setSelectedScoringFormat] = useState<'standard' | 'ppr' | 'half-ppr'>('ppr');
-  const [importType, setImportType] = useState<'csv' | 'url' | 'text' | 'scrape' | 'api' | 'session' | 'free'>('csv');
+  const [importType, setImportType] = useState<'csv' | 'url' | 'text' | 'scrape' | 'session' | 'free'>('csv');
   const [textInput, setTextInput] = useState('');
   const [urlInput, setUrlInput] = useState('');
-  const [apiKey, setApiKey] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -220,42 +219,6 @@ export default function AdminPage() {
     } catch (error) {
       setMessage(`TypeScript export failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
-  };
-
-  const handleAPIFetch = async () => {
-    setIsLoading(true);
-    setMessage('');
-
-    try {
-      // First validate API key if provided
-      if (apiKey) {
-        const validateResponse = await fetch('/api/fantasy-pros', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ apiKey })
-        });
-        
-        const validateResult = await validateResponse.json();
-        if (!validateResult.success) {
-          setMessage(`❌ ${validateResult.error}`);
-          setIsLoading(false);
-          return;
-        }
-      }
-
-      // Fetch rankings for selected position
-      const response = await fetch(`/api/fantasy-pros?position=${selectedPosition}`);
-      const result = await response.json();
-
-      if (result.success) {
-        setMessage(`✅ Successfully fetched ${result.players.length} ${selectedPosition} players from FantasyPros API\n\nTop 5:\n${result.players.slice(0, 5).map((p: Player) => `${p.averageRank}. ${p.name} (${p.team})`).join('\n')}`);
-      } else {
-        setMessage(`⚠️ ${result.error}\n\nUsing ${result.players.length} cached players instead.`);
-      }
-    } catch (error) {
-      setMessage(`❌ Error fetching from API: ${error instanceof Error ? error.message : 'Unknown error'}`);
-    }
-    setIsLoading(false);
   };
 
   const handleSessionFetch = async () => {
@@ -561,7 +524,6 @@ export default function AdminPage() {
               { value: 'text', label: 'Text Rankings' },
               { value: 'scrape', label: 'Scrape Web' },
               { value: 'free', label: 'Free Rankings' },
-              { value: 'api', label: 'FantasyPros API' },
               { value: 'session', label: 'FantasyPros Login' }
             ].map(type => (
               <button
@@ -701,41 +663,6 @@ export default function AdminPage() {
               <p className="text-sm text-blue-400 mt-1">
                 Target URL: https://www.fantasypros.com/nfl/rankings/half-point-ppr-rb-cheatsheets.php
               </p>
-            </div>
-          )}
-
-          {importType === 'api' && (
-            <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">
-                FantasyPros API
-              </label>
-              <div className="space-y-4">
-                <div>
-                  <input
-                    type="password"
-                    value={apiKey}
-                    onChange={(e) => setApiKey(e.target.value)}
-                    placeholder="Enter your FantasyPros API key (optional)"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-md text-white"
-                    disabled={isLoading}
-                  />
-                  <p className="text-sm text-gray-500 mt-1">
-                    API key will be used for this session only. Get your key from FantasyPros.
-                  </p>
-                </div>
-                <button
-                  onClick={handleAPIFetch}
-                  disabled={isLoading}
-                  className="w-full px-6 py-3 bg-emerald-500 hover:bg-emerald-600 disabled:bg-gray-600 rounded-md transition-colors font-medium"
-                >
-                  Fetch {selectedPosition} Rankings from API
-                </button>
-                <div className="text-sm text-blue-400 space-y-1">
-                  <p>✨ This uses the official FantasyPros API v2</p>
-                  <p>📊 Returns expert consensus rankings with tiers</p>
-                  <p>🔄 Updates automatically with latest data</p>
-                </div>
-              </div>
             </div>
           )}
 

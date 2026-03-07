@@ -33,8 +33,11 @@ export function PortfolioTracker({ onResearch }: Props) {
 
       {isEmpty ? (
         <div className="text-center py-16">
-          <p className="text-[var(--text-tertiary)] text-sm">
-            No positions yet. Add your first stock above.
+          <p className="text-[var(--text-secondary)] text-sm font-medium mb-2">
+            No positions yet
+          </p>
+          <p className="text-[var(--text-tertiary)] text-sm max-w-xs mx-auto">
+            Add your first stock using the form above. Holdings are saved in your browser and persist across visits.
           </p>
         </div>
       ) : (

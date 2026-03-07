@@ -1,6 +1,6 @@
 # Underutilized Features Audit
 
-Last updated: 2026-03-04
+Last updated: 2026-03-05
 
 A comprehensive audit of features that are built but hidden, half-finished, or completely dead. Organized by severity to guide cleanup and completion decisions.
 
@@ -53,8 +53,7 @@ These are hidden on purpose. Documented here for completeness.
 
 ### `/admin` — Fantasy Data Manager
 
-- **Status:** NextAuth-protected admin dashboard. Provides fantasy data management controls and an analytics sub-page.
-- **Note:** The data import handlers in the admin UI are stubs — they all redirect to the unified API endpoint. The analytics dashboard shows hardcoded fake data (see "Half-Built" section below).
+- **Status:** NextAuth-protected admin dashboard. Provides fantasy data management controls (CSV upload, URL import, text parsing, web scraping, FantasyPros login, and free rankings fetch).
 
 ---
 
@@ -62,22 +61,10 @@ These are hidden on purpose. Documented here for completeness.
 
 These features appear to work locally but break in production or serve fake data.
 
-### Analytics System — Ephemeral Storage
-
-- **What exists:** Client-side analytics collection works (`src/lib/analytics.ts`). Events are sent to `/api/analytics/` which stores them in in-memory arrays.
-- **The problem:** On Netlify (serverless), every cold start wipes the in-memory store. Analytics data is never persisted. The admin analytics dashboard at `/admin/analytics` doesn't even read from this API — it displays hardcoded fake data.
-- **What would fix it:** Either integrate with GA4 (the `NEXT_PUBLIC_GA_ID` env var path already exists in the codebase) or add a persistent store.
-
 ### RSS Feed (`/api/rss`) — Hardcoded Stale Content
 
 - **What exists:** An RSS endpoint at `/api/rss` that returns valid XML.
 - **The problem:** It serves 3 hardcoded posts from January 2025. It never calls `blog.ts` to get actual posts from the `content/blog/` directory. The RSS feed is also not linked from any page or included in `<head>` metadata.
-
-### Local SEO System — Placeholder Data
-
-- **What exists:** `src/lib/localSEO.ts`, `src/lib/localSitemap.ts`, structured data routes at `/sitemap-local.xml` and `/local-business.json`.
-- **The problem:** Contains fake phone numbers, a placeholder Google Maps API key, and a "QA consulting" business persona that doesn't match the site's current positioning as a product management portfolio.
-- **Impact:** If search engines index this, it could create confusing or incorrect business listings.
 
 ### Search API — Hardcoded Results
 
@@ -88,51 +75,7 @@ These features appear to work locally but break in production or serve fake data
 
 ## 4. Dead Code
 
-Code that is never executed, has been superseded, or serves no purpose.
-
-### Components
-
-| File | Lines | Status |
-|---|---|---|
-| `src/components/QADashboard.tsx` | ~282 | Never imported anywhere. References a QA consulting persona that doesn't exist on the site. |
-| `src/components/TierChart.tsx` | — | Original D3 tier chart. Superseded by `LightweightTierChart`. The lazy loader in `src/components/lazy/` already redirects to the lightweight version. |
-| `src/components/DraftTierChart.tsx` | — | Exported from the lazy loader but never consumed by any page or component. |
-
-### Routes
-
-| File | Status |
-|---|---|
-| `src/app/blog/[slug]/page.tsx` | Contains only a `notFound()` call. The redirect in `next.config.mjs` handles `/blog/[slug]` → `/writing/[slug]` before this route is ever hit. This file is a redundant safety net. |
-
-### API Routes
-
-| File | Status |
-|---|---|
-| `/api/fantasy-pros/route.ts` | Marked `@deprecated` in source. Only referenced by the admin validate function. Superseded by the unified FantasyPros API. |
-
-### Libraries
-
-| File | Status |
-|---|---|
-| `src/lib/webScraper.ts` | Original prototype web scraper. Superseded by `fantasyProsAPI.ts`. Still imported by `dataManager.ts` but the import path is likely unused at runtime. |
-
-### Content
-
-| Path | Status |
-|---|---|
-| `content/writing/` | Contains 16 markdown files that are exact duplicates of the 16 files in `content/blog/`. Nothing in the application reads from `content/writing/` — all blog processing in `src/lib/blog.ts` reads from `content/blog/`. |
-
-### Scripts
-
-| Path | Status |
-|---|---|
-| `scripts/*.js` (62 files) | One-off player image scraping utilities from a completed image acquisition campaign. Includes scrapers for ESPN, NFL, Yahoo, Sleeper, etc. The campaign is over and these are no longer needed. |
-| `scripts/image-validation-report.json` | Stale artifact from the image scraping campaign. |
-| `scripts/players-to-rescrape.json` | Stale artifact from the image scraping campaign. |
-
-### Documentation Inaccuracy
-
-- The **accessibility page** (`/accessibility`) documents a `Cmd+K` command palette for keyboard navigation. No such command palette exists in the codebase. The `CommandPalette` component was never built.
+All dead code has been removed. No items remain in this category.
 
 ---
 
@@ -142,11 +85,5 @@ Code that is never executed, has been superseded, or serves no purpose.
 |---|---|---|
 | Built but hidden | 5 features | Add navigation links |
 | Intentionally private | 2 features | None (working as designed) |
-| Half-built / broken in prod | 4 features | Fix or remove |
-| Dead components | 3 | Delete |
-| Dead routes | 1 | Delete |
-| Dead API routes | 1 | Delete |
-| Dead libraries | 1 | Delete |
-| Duplicate content | 1 directory | Delete |
-| Orphaned scripts | 62+ files | Delete |
-| Doc inaccuracies | 1 | Fix |
+| Half-built / broken in prod | 2 features | Fix or remove |
+| Dead code | 0 | ✅ All removed |

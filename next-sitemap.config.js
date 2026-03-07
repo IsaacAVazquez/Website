@@ -101,7 +101,7 @@ module.exports = {
       const fs = await import('fs')
 
       // Check for writing posts
-      const writingDirectory = path.default.join(process.cwd(), 'content/writing')
+      const writingDirectory = path.default.join(process.cwd(), 'content/blog')
 
       if (fs.default.existsSync(writingDirectory)) {
         const files = fs.default.readdirSync(writingDirectory)

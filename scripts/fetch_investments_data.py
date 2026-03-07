@@ -29,6 +29,20 @@ except ImportError:
 
 import pandas as pd  # type: ignore  # noqa: E402 — guaranteed by defeatbeta-api
 
+# Fix for pandas 2.x datetime64 precision mismatch (e.g. 'datetime64[us]' vs 'datetime64[s]')
+# AMZN has data back to 1997; different-vintage DataFrames get different datetime64 precisions.
+_orig_merge = pd.merge
+def _safe_merge(left, right, *args, **kwargs):
+    for obj in [left, right]:
+        if isinstance(obj, pd.DataFrame):
+            for col in obj.select_dtypes(include="datetime64").columns:
+                obj[col] = obj[col].astype("datetime64[s]")
+        if hasattr(obj, "index") and pd.api.types.is_datetime64_any_dtype(obj.index):
+            obj.index = obj.index.astype("datetime64[s]")
+    return _orig_merge(left, right, *args, **kwargs)
+pd.merge = _safe_merge
+pd.DataFrame.merge = lambda self, right, *args, **kwargs: _safe_merge(self, right, *args, **kwargs)
+
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
@@ -236,7 +250,10 @@ def fetch_industry(t: Ticker, out: Path) -> None:
         ("asset_turnover",    lambda: t.industry_asset_turnover()),
     ]:
         result = safe_call(fn)
-        data[key] = df_to_json(result)
+        if isinstance(result, dict) and "error" in result:
+            data[key] = []  # skip broken fields; don't write error objects to disk
+        else:
+            data[key] = df_to_json(result)
     write_json(out / "industry.json", data)
 
 

@@ -206,34 +206,59 @@ function transformSection(section: string, raw: unknown): unknown {
     }));
   }
 
-  // --- industry ---
-  if (section === "industry") {
-    const d = raw as Record<string, RawRecord[]>;
-
-    // Field names for industry average value in each time-series
-    const fieldMap: Record<string, { label: string; valueField: string; isRatio?: boolean }> = {
-      ttm_pe: { label: "P/E (TTM)", valueField: "industry_pe" },
-      ps_ratio: { label: "P/S Ratio", valueField: "industry_ps_ratio" },
-      pb_ratio: { label: "P/B Ratio", valueField: "industry_pb_ratio" },
-      roe: { label: "ROE", valueField: "industry_roe", isRatio: true },
-      roa: { label: "ROA", valueField: "industry_roa", isRatio: true },
-      gross_margin: { label: "Gross Margin", valueField: "industry_gross_margin", isRatio: true },
-      ebitda_margin: { label: "EBITDA Margin", valueField: "industry_ebitda_margin", isRatio: true },
-      net_margin: { label: "Net Margin", valueField: "industry_net_margin", isRatio: true },
-    };
-
-    return Object.entries(fieldMap)
-      .map(([key, { label, valueField, isRatio }]) => {
-        const arr = d[key];
-        const val = latest(arr, valueField);
-        const industryAvg = val !== undefined && isRatio ? val * 100 : val;
-        return { metric: label, value: undefined, industryAvg };
-      })
-      .filter((r) => r.industryAvg !== undefined);
-  }
-
   // Pass through all other sections unchanged (price, officers, revenue_segments)
   return raw;
+}
+
+async function transformIndustryWithStockValues(
+  symbol: string,
+  industryRaw: unknown,
+  baseUrl: string
+): Promise<unknown> {
+  const [fundRaw, profRaw, marginsRaw] = await Promise.all([
+    fetch(`${baseUrl}/data/investments/${symbol}/fundamentals.json`)
+      .then((r) => r.json())
+      .catch(() => ({})),
+    fetch(`${baseUrl}/data/investments/${symbol}/profitability.json`)
+      .then((r) => r.json())
+      .catch(() => ({})),
+    fetch(`${baseUrl}/data/investments/${symbol}/margins.json`)
+      .then((r) => r.json())
+      .catch(() => ({})),
+  ]);
+
+  const fund = transformSection("fundamentals", fundRaw) as Record<string, number | undefined>;
+  const prof = transformSection("profitability", profRaw) as Record<string, number | undefined>;
+  const margins = transformSection("margins", marginsRaw) as Array<Record<string, number | undefined>>;
+  const marginRow = margins[0] ?? {};
+
+  const d = industryRaw as Record<string, RawRecord[]>;
+
+  const fieldMap: {
+    key: string;
+    label: string;
+    valueField: string;
+    isRatio?: boolean;
+    stockValue: number | undefined;
+  }[] = [
+    { key: "ttm_pe",       label: "P/E (TTM)",      valueField: "industry_pe",            stockValue: fund.ttmPe },
+    { key: "ps_ratio",     label: "P/S Ratio",      valueField: "industry_ps_ratio",       stockValue: fund.psRatio },
+    { key: "pb_ratio",     label: "P/B Ratio",      valueField: "industry_pb_ratio",       stockValue: fund.pbRatio },
+    { key: "roe",          label: "ROE",             valueField: "industry_roe",    isRatio: true, stockValue: prof.roe },
+    { key: "roa",          label: "ROA",             valueField: "industry_roa",    isRatio: true, stockValue: prof.roa },
+    { key: "gross_margin", label: "Gross Margin",   valueField: "industry_gross_margin",   isRatio: true, stockValue: marginRow.grossMargin },
+    { key: "ebitda_margin",label: "EBITDA Margin",  valueField: "industry_ebitda_margin",  isRatio: true, stockValue: marginRow.ebitdaMargin },
+    { key: "net_margin",   label: "Net Margin",     valueField: "industry_net_margin",     isRatio: true, stockValue: marginRow.netMargin },
+  ];
+
+  return fieldMap
+    .map(({ key, label, valueField, isRatio, stockValue }) => {
+      const arr = d[key];
+      const val = latest(arr, valueField);
+      const industryAvg = val !== undefined && isRatio ? val * 100 : val;
+      return { metric: label, value: stockValue, industryAvg };
+    })
+    .filter((r) => r.industryAvg !== undefined);
 }
 
 async function computeDcf(symbol: string, baseUrl: string): Promise<DcfData> {
@@ -344,6 +369,21 @@ export async function GET(
       } catch {
         return NextResponse.json({ error: "DCF calculation failed" }, { status: 500 });
       }
+    }
+
+    if (section === "industry") {
+      const industryRes = await fetch(`${baseUrl}/data/investments/${symbol}/industry.json`);
+      if (!industryRes.ok) {
+        return NextResponse.json(
+          { error: `Section "industry" not available for ${symbol}` },
+          { status: 404 }
+        );
+      }
+      const industryData: unknown = await industryRes.json();
+      const transformed = await transformIndustryWithStockValues(symbol, industryData, baseUrl);
+      return NextResponse.json(transformed, {
+        headers: { "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400" },
+      });
     }
 
     const dataRes = await fetch(`${baseUrl}/data/investments/${symbol}/${section}.json`);
