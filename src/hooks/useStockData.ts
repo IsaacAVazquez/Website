@@ -21,14 +21,37 @@ async function fetchSection<T>(symbol: string, section: string): Promise<T> {
   if (cache.has(key)) return cache.get(key) as T;
 
   if (!inflight.has(key)) {
-    const promise = fetch(`/api/investments/data/${symbol}?section=${section}`)
-      .then(async (res) => {
-        const data = await res.json();
-        if (!res.ok) throw Object.assign(new Error(data.error ?? "Not found"), { status: res.status });
-        cache.set(key, data);
-        return data;
-      })
-      .finally(() => inflight.delete(key));
+    const promise = (async () => {
+      const MAX_RETRIES = 2;
+      let lastError: Error & { status?: number } = new Error("Failed to fetch");
+
+      for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+        try {
+          if (attempt > 0) {
+            await new Promise((r) => setTimeout(r, 1000 * attempt));
+          }
+          const res = await fetch(`/api/investments/data/${symbol}?section=${section}`);
+          const data = await res.json();
+          if (!res.ok) {
+            const err = Object.assign(new Error(data.error ?? "Not found"), { status: res.status });
+            // Only retry on 502/503/504 (server errors that may be transient)
+            if (res.status >= 502 && res.status <= 504 && attempt < MAX_RETRIES) {
+              lastError = err;
+              continue;
+            }
+            throw err;
+          }
+          cache.set(key, data);
+          return data;
+        } catch (err) {
+          lastError = err as Error & { status?: number };
+          if (attempt >= MAX_RETRIES || (lastError.status && lastError.status < 500)) {
+            throw lastError;
+          }
+        }
+      }
+      throw lastError;
+    })().finally(() => inflight.delete(key));
     inflight.set(key, promise);
   }
 
