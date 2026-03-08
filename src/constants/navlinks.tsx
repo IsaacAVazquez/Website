@@ -1,35 +1,35 @@
 import {
-  IconHome,
-  IconUser,
-  IconBriefcase,
-  IconFileText,
-  IconMail,
-} from "@tabler/icons-react";
+  Home,
+  User,
+  Briefcase,
+  FileText,
+  Mail,
+} from "@/components/ui/ServerIcons";
 
 export const navlinks = [
   {
     href: "/",
     label: "Home",
-    icon: IconHome,
+    icon: Home,
   },
   {
     href: "/about",
     label: "About",
-    icon: IconUser,
+    icon: User,
   },
   {
     href: "/portfolio",
     label: "Work",
-    icon: IconBriefcase,
+    icon: Briefcase,
   },
   {
     href: "/resume",
     label: "Resume",
-    icon: IconFileText,
+    icon: FileText,
   },
   {
     href: "/contact",
     label: "Contact",
-    icon: IconMail,
+    icon: Mail,
   },
 ];

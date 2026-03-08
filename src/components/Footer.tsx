@@ -2,22 +2,22 @@
 
 import Link from "next/link";
 import {
-  IconBrandLinkedin,
-  IconBrandGithub,
-  IconMail,
-  IconArrowRight,
-} from "@tabler/icons-react";
+  BrandLinkedin,
+  BrandGithub,
+  Mail,
+  ArrowRight,
+} from "@/components/ui/ServerIcons";
 
 const socialLinks = [
   {
     href: "https://linkedin.com/in/isaac-vazquez",
     label: "Visit Isaac Vazquez's LinkedIn profile",
-    icon: IconBrandLinkedin,
+    icon: BrandLinkedin,
   },
   {
     href: "https://github.com/IsaacAVazquez",
     label: "Visit Isaac Vazquez's GitHub profile",
-    icon: IconBrandGithub,
+    icon: BrandGithub,
   },
 ];
 
@@ -43,9 +43,9 @@ export const Footer = () => {
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all min-h-[52px] text-lg"
             >
-              <IconMail className="w-5 h-5" />
+              <Mail className="w-5 h-5" />
               Get In Touch
-              <IconArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/resume"

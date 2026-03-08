@@ -82,7 +82,7 @@ export function ModernHero() {
           >
             <div className="relative aspect-[4/5] lg:aspect-square overflow-hidden rounded-2xl border border-[var(--border-primary)] shadow-lg">
               <Image
-                src="/images/headshot-640-cropped.png"
+                src="/images/headshot-new.png"
                 alt="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
                 fill
                 priority

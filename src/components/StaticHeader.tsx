@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navlinks } from "@/constants/navlinks";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import { Menu2, X } from "@/components/ui/ServerIcons";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function StaticHeader() {
@@ -93,9 +93,9 @@ export function StaticHeader() {
               aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? (
-                <IconX className="h-5 w-5" />
+                <X className="h-5 w-5" />
               ) : (
-                <IconMenu2 className="h-5 w-5" />
+                <Menu2 className="h-5 w-5" />
               )}
             </button>
           </div>
