@@ -1,5 +1,23 @@
 # Isaac Vazquez Portfolio - Comprehensive Application Overview
 
+## Deep Reference Docs
+
+Detailed AI context documentation lives in `docs/ai-context/`. Consult these for in-depth coverage:
+
+| Doc | Path | Covers |
+|-----|------|--------|
+| Components | `docs/ai-context/COMPONENTS.md` | 64 components: props, server/client, composition patterns |
+| Styling | `docs/ai-context/STYLING.md` | CSS variables, dark mode, animations, Tailwind mapping |
+| API Routes | `docs/ai-context/API-ROUTES.md` | 14 endpoints: methods, params, auth, rate limiting |
+| Data Pipeline | `docs/ai-context/DATA-PIPELINE.md` | Fantasy & investment data flows, caching, SQLite schema |
+| Pages | `docs/ai-context/PAGES.md` | 17 pages + layouts: rendering, data deps, metadata |
+| Hooks & State | `docs/ai-context/HOOKS-AND-STATE.md` | 7 hooks + 3 context providers with full signatures |
+| Redirects & Nav | `docs/ai-context/REDIRECTS-AND-NAVIGATION.md` | 20+ redirects, breadcrumbs, URL conventions |
+| SEO & Metadata | `docs/ai-context/SEO-AND-METADATA.md` | Metadata generation, structured data, AI SEO, sitemap |
+| Config | `docs/ai-context/CONFIG.md` | 9 config files: settings, gotchas, interdependencies |
+
+---
+
 ## Project Summary
 Isaac Vazquez's professional website serving a **dual purpose**: a professional portfolio showcasing his product management career AND a fantasy football analytics platform with live tier rankings.
 

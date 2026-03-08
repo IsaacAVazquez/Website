@@ -130,10 +130,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Prevent large packages from being bundled into server functions.
-  // @tabler/icons-react and lucide-react are combined with optimizePackageImports
-  // so NFT traces only the specific icon files used (~KB) instead of the full packages (~71MB + ~10MB).
-  serverExternalPackages: ['better-sqlite3', '@tabler/icons-react', 'lucide-react'],
+  // Prevent native modules from being bundled into server functions.
+  serverExternalPackages: ['better-sqlite3'],
   images: {
     remotePatterns: [
       {
