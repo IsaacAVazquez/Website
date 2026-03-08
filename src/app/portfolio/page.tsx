@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
-import { IconArrowRight, IconExternalLink } from "@tabler/icons-react";
+import { ArrowRight, ExternalLink } from "@/components/ui/ServerIcons";
 import { caseStudiesData } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
 
@@ -105,7 +105,7 @@ export default function PortfolioPage() {
 
                       <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors pt-2">
                         View Case Study
-                        <IconArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
                   </WarmCard>
@@ -124,7 +124,7 @@ export default function PortfolioPage() {
             className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
           >
             Get In Touch
-            <IconExternalLink className="h-4 w-4" />
+            <ExternalLink className="h-4 w-4" />
           </Link>
         </div>
       </div>

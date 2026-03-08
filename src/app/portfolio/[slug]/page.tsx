@@ -3,12 +3,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
-import {
-  IconArrowLeft,
-  IconArrowRight,
-  IconExternalLink,
-  IconBrandGithub,
-} from "@tabler/icons-react";
+import { ArrowLeft, ArrowRight, ExternalLink, BrandGithub } from "@/components/ui/ServerIcons";
 import { caseStudiesData } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
 
@@ -78,7 +73,7 @@ export default function CaseStudyPage({
           href="/portfolio"
           className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-[var(--color-primary)] transition-colors mb-8"
         >
-          <IconArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-4 w-4" />
           Back to Portfolio
         </Link>
 
@@ -124,7 +119,7 @@ export default function CaseStudyPage({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
               >
-                <IconBrandGithub className="h-4 w-4" />
+                <BrandGithub className="h-4 w-4" />
                 View Code
               </a>
             )}
@@ -134,7 +129,7 @@ export default function CaseStudyPage({
                   href={caseStudy.link}
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
                 >
-                  <IconExternalLink className="h-4 w-4" />
+                  <ExternalLink className="h-4 w-4" />
                   Live Project
                 </Link>
               ) : (
@@ -144,7 +139,7 @@ export default function CaseStudyPage({
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
                 >
-                  <IconExternalLink className="h-4 w-4" />
+                  <ExternalLink className="h-4 w-4" />
                   Live Project
                 </a>
               )
@@ -462,7 +457,7 @@ export default function CaseStudyPage({
                       {nextCaseStudy.metrics}
                     </p>
                   </div>
-                  <IconArrowRight className="h-6 w-6 text-neutral-400 group-hover:text-[var(--color-primary)] group-hover:translate-x-1 transition-all flex-shrink-0 ml-4" />
+                  <ArrowRight className="h-6 w-6 text-neutral-400 group-hover:text-[var(--color-primary)] group-hover:translate-x-1 transition-all flex-shrink-0 ml-4" />
                 </div>
               </WarmCard>
             </Link>

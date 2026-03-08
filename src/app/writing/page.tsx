@@ -5,7 +5,7 @@ import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { WarmCard } from "@/components/ui/WarmCard";
 import Link from "next/link";
-import { IconCalendar, IconClock, IconArrowRight } from "@tabler/icons-react";
+import { Calendar, Clock, ArrowRight } from "@/components/ui/ServerIcons";
 
 export const metadata = constructMetadata({
   title: 'Writing - Product Management Insights & Technical Articles | Isaac Vazquez',
@@ -119,7 +119,7 @@ export default async function WritingPage() {
                     {/* Meta Info */}
                     <div className="flex items-center gap-4 text-sm text-neutral-600 dark:text-neutral-400 mt-auto pt-4 border-t border-neutral-200 dark:border-neutral-700">
                       <div className="flex items-center gap-1">
-                        <IconCalendar className="w-4 h-4" />
+                        <Calendar className="w-4 h-4" />
                         <time dateTime={post.publishedAt}>
                           {new Date(post.publishedAt).toLocaleDateString('en-US', {
                             year: 'numeric',
@@ -130,12 +130,12 @@ export default async function WritingPage() {
                       </div>
                       {post.readingTime && (
                         <div className="flex items-center gap-1">
-                          <IconClock className="w-4 h-4" />
+                          <Clock className="w-4 h-4" />
                           <span>{post.readingTime}</span>
                         </div>
                       )}
                       <div className="ml-auto">
-                        <IconArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
 

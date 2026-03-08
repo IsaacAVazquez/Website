@@ -10,7 +10,7 @@ import { WarmCard } from '@/components/ui/WarmCard';
 import { StructuredData } from '@/components/StructuredData';
 import { generateBreadcrumbStructuredData } from '@/lib/seo';
 import Link from 'next/link';
-import { IconArrowLeft, IconChartBar } from '@tabler/icons-react';
+import { ArrowLeft, ChartBar } from '@/components/ui/ServerIcons';
 import { ModernButton } from '@/components/ui/ModernButton';
 
 const validPositions: Position[] = ['OVERALL', 'QB', 'RB', 'WR', 'TE', 'FLEX', 'K', 'DST'];
@@ -107,7 +107,7 @@ export default async function TierPage({ params }: { params: Promise<{ position:
       <div className="min-h-screen bg-neutral-900 px-6 py-12">
         <div className="max-w-7xl mx-auto">
           <WarmCard hover={false} padding="md" elevation={2} className="p-8 text-center">
-            <IconChartBar className="w-16 h-16 text-primary mx-auto mb-4" />
+            <ChartBar className="w-16 h-16 text-primary mx-auto mb-4" />
             <Heading as="h2" className="mb-4">No Data Available</Heading>
             <Paragraph className="text-slate-400 mb-6">
               No tier data is currently available for {positionNames[position]}.
@@ -175,7 +175,7 @@ export default async function TierPage({ params }: { params: Promise<{ position:
         <div className="bg-gradient-to-b from-neutral-900 to-slate-900 border-b border-neutral-700">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <Link href="/fantasy-football" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-6">
-            <IconArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4" />
             Back to Interactive Tiers
           </Link>
           
