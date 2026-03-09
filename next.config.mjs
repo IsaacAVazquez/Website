@@ -139,8 +139,8 @@ const nextConfig = {
   // function bundle over Netlify's 250 MB limit.
   outputFileTracingExcludes: {
     '*': [
-      'node_modules/@img/**',
-      'node_modules/sharp/**',
+      '**/node_modules/@img/**',
+      '**/node_modules/sharp/**',
     ],
   },
   images: {

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && node scripts/patch-nft-sharp.mjs",
     "start": "next start",
     "lint": "eslint src",
     "analyze": "ANALYZE=true npm run build",
