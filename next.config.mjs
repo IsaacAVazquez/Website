@@ -131,7 +131,18 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   // Prevent native modules from being bundled into server functions.
-  serverExternalPackages: ['better-sqlite3'],
+  serverExternalPackages: ['better-sqlite3', 'sharp'],
+  // Exclude sharp and its platform-specific binaries from the NFT bundle.
+  // sharp is an optional dep of Next.js for image optimization, but Netlify's
+  // image CDN handles /_next/image so sharp is never needed at runtime.
+  // Without this, @img/sharp-libvips-linux-x64 (~150-200 MB) pushes the
+  // function bundle over Netlify's 250 MB limit.
+  outputFileTracingExcludes: {
+    '*': [
+      'node_modules/@img/**',
+      'node_modules/sharp/**',
+    ],
+  },
   images: {
     remotePatterns: [
       {

@@ -1,3 +1,4 @@
+// Requires sharp: npm install --no-save sharp
 import sharp from 'sharp';
 import { mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';

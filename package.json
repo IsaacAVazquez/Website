@@ -70,7 +70,6 @@
     "msw": "^2.12.10",
     "next-sitemap": "^4.2.3",
     "postcss": "^8.5.8",
-    "sharp": "^0.34.5",
     "tailwindcss": "^4.2.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
