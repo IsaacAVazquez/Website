@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm run build && rm -rf node_modules/@img node_modules/sharp"
   publish = ".next"
   
 [build.environment]
