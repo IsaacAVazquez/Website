@@ -106,117 +106,81 @@ export function ResearchOverview({ symbol }: Props) {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1.6fr_0.9fr]">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.95fr)]">
         <WarmCard
           padding="none"
           className="overflow-hidden border-[color-mix(in_srgb,var(--color-primary)_16%,var(--border-primary))]"
         >
-          <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="p-5 sm:p-6">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                Thesis Snapshot
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
-                What matters first
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
-                {info?.longBusinessSummary ??
-                  "Business summary is unavailable for this symbol, but the valuation, quality, and operating signals below are still loaded from the research dataset."}
-              </p>
+          <div className="min-w-0 p-5 sm:p-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              Thesis Snapshot
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
+              What matters first
+            </h3>
+            <p className="mt-3 max-w-[92ch] text-sm leading-7 text-[var(--text-secondary)]">
+              {info?.longBusinessSummary ??
+                "Business summary is unavailable for this symbol, but the valuation, quality, and operating signals below are still loaded from the research dataset."}
+            </p>
 
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                    Business Lens
-                  </p>
-                  <div className="mt-3 space-y-2 text-sm text-[var(--text-secondary)]">
-                    <div className="flex items-center justify-between gap-4">
-                      <span>Sector</span>
-                      <span className="font-medium text-[var(--text-primary)]">{info?.sector ?? "—"}</span>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <span>Industry</span>
-                      <span className="font-medium text-[var(--text-primary)]">{info?.industry ?? "—"}</span>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <span>Employees</span>
-                      <span className="font-medium text-[var(--text-primary)]">
-                        {info?.fullTimeEmployees?.toLocaleString("en-US") ?? "—"}
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <span>Country</span>
-                      <span className="font-medium text-[var(--text-primary)]">{info?.country ?? "—"}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                    Operating Read
-                  </p>
-                  <div className="mt-3 space-y-2 text-sm text-[var(--text-secondary)]">
-                    <div className="flex items-center justify-between gap-4">
-                      <span>ROIC</span>
-                      <span className="font-medium text-[var(--text-primary)]">{formatPercent(profitability?.roic)}</span>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <span>ROE</span>
-                      <span className="font-medium text-[var(--text-primary)]">{formatPercent(profitability?.roe)}</span>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <span>Net Margin</span>
-                      <span className="font-medium text-[var(--text-primary)]">{formatPercent(margins?.netMargin)}</span>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <span>FCF Margin</span>
-                      <span className="font-medium text-[var(--text-primary)]">{formatPercent(margins?.fcfMargin)}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-[var(--border-primary)] bg-[var(--surface-secondary)] p-5 sm:p-6 lg:border-l lg:border-t-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                Signals
-              </p>
-              <div className="mt-4 space-y-3">
-                {signals.length > 0 ? (
-                  signals.map((signal) => (
-                    <div
-                      key={signal.label}
-                      className={`rounded-2xl border px-4 py-3 ${toneClasses(signal.tone)}`}
-                    >
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
-                      <p className="mt-2 text-sm leading-6">{signal.body}</p>
-                    </div>
-                  ))
-                ) : (
-                  <div className="rounded-2xl border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-secondary)]">
-                    Research signals will appear once valuation and operating data are available.
-                  </div>
-                )}
-              </div>
-
-              <div className="mt-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
+            <div className="mt-5 grid gap-3 lg:grid-cols-2">
+              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                  Lead Narrative
+                  Business Lens
                 </p>
-                <p className="mt-3 text-sm font-medium text-[var(--text-primary)]">
-                  {leadHeadline?.title ?? "No recent headline in the research dataset."}
+                <div className="mt-3 space-y-2 text-sm text-[var(--text-secondary)]">
+                  <div className="flex items-center justify-between gap-4">
+                    <span>Sector</span>
+                    <span className="font-medium text-[var(--text-primary)]">{info?.sector ?? "—"}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span>Industry</span>
+                    <span className="font-medium text-[var(--text-primary)]">{info?.industry ?? "—"}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span>Employees</span>
+                    <span className="font-medium text-[var(--text-primary)]">
+                      {info?.fullTimeEmployees?.toLocaleString("en-US") ?? "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span>Country</span>
+                    <span className="font-medium text-[var(--text-primary)]">{info?.country ?? "—"}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Operating Read
                 </p>
-                {leadHeadline?.publisher ? (
-                  <p className="mt-2 text-xs text-[var(--text-secondary)]">
-                    {leadHeadline.publisher}
-                  </p>
-                ) : null}
+                <div className="mt-3 space-y-2 text-sm text-[var(--text-secondary)]">
+                  <div className="flex items-center justify-between gap-4">
+                    <span>ROIC</span>
+                    <span className="font-medium text-[var(--text-primary)]">{formatPercent(profitability?.roic)}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span>ROE</span>
+                    <span className="font-medium text-[var(--text-primary)]">{formatPercent(profitability?.roe)}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span>Net Margin</span>
+                    <span className="font-medium text-[var(--text-primary)]">{formatPercent(margins?.netMargin)}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span>FCF Margin</span>
+                    <span className="font-medium text-[var(--text-primary)]">{formatPercent(margins?.fcfMargin)}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </WarmCard>
 
-        <WarmCard padding="sm" className="border-[color-mix(in_srgb,var(--color-success)_18%,var(--border-primary))]">
+        <WarmCard
+          padding="sm"
+          className="border-[color-mix(in_srgb,var(--color-success)_18%,var(--border-primary))] xl:self-start"
+        >
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
             Valuation Call
           </p>
@@ -249,10 +213,47 @@ export function ResearchOverview({ symbol }: Props) {
               </p>
             </div>
           </div>
+
+          <div className="mt-6 border-t border-[var(--border-primary)] pt-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              Signals
+            </p>
+            <div className="mt-4 space-y-3">
+              {signals.length > 0 ? (
+                signals.map((signal) => (
+                  <div
+                    key={signal.label}
+                    className={`rounded-2xl border px-4 py-3 ${toneClasses(signal.tone)}`}
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
+                    <p className="mt-2 text-sm leading-6">{signal.body}</p>
+                  </div>
+                ))
+              ) : (
+                <div className="rounded-2xl border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-secondary)]">
+                  Research signals will appear once valuation and operating data are available.
+                </div>
+              )}
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                Lead Narrative
+              </p>
+              <p className="mt-3 line-clamp-4 text-sm font-medium leading-6 text-[var(--text-primary)]">
+                {leadHeadline?.title ?? "No recent headline in the research dataset."}
+              </p>
+              {leadHeadline?.publisher ? (
+                <p className="mt-2 text-xs text-[var(--text-secondary)]">
+                  {leadHeadline.publisher}
+                </p>
+              ) : null}
+            </div>
+          </div>
         </WarmCard>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1.1fr_0.9fr]">
+      <div className="grid grid-cols-1 gap-4 2xl:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.9fr)]">
         <FundamentalsPanel symbol={symbol} />
         <NewsPanel symbol={symbol} />
       </div>

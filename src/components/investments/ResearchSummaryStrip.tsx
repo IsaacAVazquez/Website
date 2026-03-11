@@ -78,11 +78,11 @@ function MetricTile({
         : "text-[var(--text-primary)]";
 
   return (
-    <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)]/70 px-4 py-3">
+    <div className="flex min-h-[112px] flex-col justify-between rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)]/70 px-4 py-3">
       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
         {label}
       </p>
-      <p className={`mt-2 text-xl font-semibold ${toneClass}`}>{value}</p>
+      <p className={`mt-3 text-lg font-semibold leading-tight xl:text-xl ${toneClass}`}>{value}</p>
       {detail ? <p className="mt-1 text-xs text-[var(--text-secondary)]">{detail}</p> : null}
     </div>
   );
@@ -128,8 +128,8 @@ export function ResearchSummaryStrip({ symbol }: Props) {
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--color-primary)_18%,transparent),transparent_34%)]" />
       <div className="relative p-5 sm:p-6">
-        <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
-          <div className="max-w-2xl">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,340px)] lg:items-start">
+          <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <span className="rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-secondary)]">
                 {symbol}
@@ -146,9 +146,9 @@ export function ResearchSummaryStrip({ symbol }: Props) {
               ) : null}
             </div>
 
-            <div className="mt-4 flex flex-wrap items-end gap-x-4 gap-y-2">
+            <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
               <div>
-                <h2 className="text-3xl font-semibold tracking-tight text-[var(--text-primary)]">
+                <h2 className="text-3xl font-semibold tracking-tight text-[var(--text-primary)] xl:text-[2.15rem]">
                   {displayName}
                 </h2>
                 <p className="mt-1 text-sm text-[var(--text-secondary)]">
@@ -176,13 +176,13 @@ export function ResearchSummaryStrip({ symbol }: Props) {
             </div>
 
             {info?.longBusinessSummary ? (
-              <p className="mt-4 max-w-3xl text-sm leading-6 text-[var(--text-secondary)] line-clamp-3">
+              <p className="mt-4 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] line-clamp-3">
                 {info.longBusinessSummary}
               </p>
             ) : null}
           </div>
 
-          <div className="min-w-[260px] rounded-3xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-sm">
+          <div className="h-full rounded-3xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-sm lg:p-5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
               Market Take
             </p>
@@ -218,7 +218,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-6">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
           <MetricTile
             label="52W Range"
             value={`${formatCurrency(trailingLow, 0)} - ${formatCurrency(trailingHigh, 0)}`}

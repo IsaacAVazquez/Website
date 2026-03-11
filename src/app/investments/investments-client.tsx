@@ -38,6 +38,10 @@ export function InvestmentsClient() {
   const { holdings } = useInvestments();
   const portfolioSymbols = holdings.map((h) => h.symbol);
   const shouldReduceMotion = useReducedMotion();
+  const shellClassName =
+    activeTab === "research"
+      ? "mx-auto w-full max-w-[1880px] px-4 py-10 sm:px-6 xl:px-8 2xl:px-10"
+      : "mx-auto w-full max-w-[1500px] px-4 py-10 sm:px-6 xl:px-8";
 
   const variants = shouldReduceMotion ? getReducedMotionVariants() : { containerVariants, itemVariants, fadeInVariants };
 
@@ -48,7 +52,7 @@ export function InvestmentsClient() {
 
   return (
     <div className="min-h-screen bg-[var(--surface-primary)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className={shellClassName}>
         {/* Page header */}
         <motion.div
           className="mb-8"
@@ -91,6 +95,7 @@ export function InvestmentsClient() {
             key={activeTab}
             role="tabpanel"
             aria-label={`${activeTab} panel`}
+            className="w-full"
             variants={variants.fadeInVariants}
             initial="hidden"
             animate="visible"
