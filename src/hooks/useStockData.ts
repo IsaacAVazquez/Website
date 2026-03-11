@@ -2,6 +2,12 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import type { InvestmentSection } from "@/types/investment";
+import {
+  transformSection,
+  transformIndustryWithStockValues,
+  computeDcf,
+  isTranscriptSection,
+} from "@/lib/investmentTransforms";
 
 interface UseStockDataState<T> {
   data: T | null;
@@ -22,37 +28,66 @@ const cache = new Map<string, { data: unknown; timestamp: number }>();
 // In-flight promise cache to deduplicate concurrent requests
 const inflight = new Map<string, Promise<unknown>>();
 
-async function fetchWithRetry<T>(url: string, retries = 2, delay = 1000): Promise<T> {
-  let lastError: Error & { status?: number } = new Error("Fetch failed");
+/** Fetch a single raw JSON file from the CDN. Returns null on 404. */
+async function fetchCdnJson<T>(url: string): Promise<T | null> {
+  const res = await fetch(url);
+  if (!res.ok) {
+    if (res.status === 404) return null;
+    throw Object.assign(new Error(`HTTP ${res.status}`), { status: res.status });
+  }
+  return res.json() as Promise<T>;
+}
 
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
+/** Fetch raw JSON, apply transforms, and handle composite sections (dcf, industry). */
+async function fetchAndTransform<T>(symbol: string, section: string): Promise<T> {
+  const base = `/data/investments/${symbol}`;
 
-      if (!res.ok) {
-        const err = Object.assign(new Error(data.error ?? "Not found"), { status: res.status });
-        // Only retry on 5xx, not 4xx
-        if (res.status >= 500 && attempt < retries) {
-          lastError = err;
-          await new Promise((r) => setTimeout(r, delay * (attempt + 1)));
-          continue;
-        }
-        throw err;
-      }
-
-      return data as T;
-    } catch (err) {
-      lastError = err as Error & { status?: number };
-      // Don't retry HTTP client errors
-      if (lastError.status && lastError.status < 500) throw lastError;
-      if (attempt < retries) {
-        await new Promise((r) => setTimeout(r, delay * (attempt + 1)));
-      }
-    }
+  // --- DCF: needs 4 files ---
+  if (section === "dcf") {
+    const [waccRaw, fundRaw, growthRaw, priceRaw] = await Promise.all([
+      fetchCdnJson(`${base}/wacc.json`),
+      fetchCdnJson(`${base}/fundamentals.json`),
+      fetchCdnJson(`${base}/growth.json`),
+      fetchCdnJson(`${base}/price.json`),
+    ]);
+    return computeDcf(waccRaw, fundRaw, growthRaw, priceRaw) as T;
   }
 
-  throw lastError;
+  // --- Industry: needs industry + fundamentals + profitability + margins ---
+  if (section === "industry") {
+    const [industryRaw, fundRaw, profRaw, marginsRaw] = await Promise.all([
+      fetchCdnJson(`${base}/industry.json`),
+      fetchCdnJson(`${base}/fundamentals.json`),
+      fetchCdnJson(`${base}/profitability.json`),
+      fetchCdnJson(`${base}/margins.json`),
+    ]);
+    if (!industryRaw) {
+      throw Object.assign(
+        new Error(`Section "industry" not available for ${symbol}`),
+        { status: 404 },
+      );
+    }
+    return transformIndustryWithStockValues(industryRaw, fundRaw, profRaw, marginsRaw) as T;
+  }
+
+  // --- Individual transcript ---
+  if (isTranscriptSection(section)) {
+    const raw = await fetchCdnJson(`${base}/transcripts.json`);
+    if (!raw) {
+      throw Object.assign(new Error(`Transcripts not available for ${symbol}`), { status: 404 });
+    }
+    return transformSection(section, raw) as T;
+  }
+
+  // --- Standard single-file sections ---
+  const raw = await fetchCdnJson(`${base}/${section}.json`);
+  if (!raw) {
+    throw Object.assign(
+      new Error(`Section "${section}" not available for ${symbol}`),
+      { status: 404 },
+    );
+  }
+  return transformSection(section, raw) as T;
 }
 
 async function fetchSection<T>(symbol: string, section: string): Promise<T> {
@@ -65,9 +100,7 @@ async function fetchSection<T>(symbol: string, section: string): Promise<T> {
   }
 
   if (!inflight.has(key)) {
-    const promise = fetchWithRetry<T>(
-      `/api/investments/data/${symbol}?section=${section}`
-    )
+    const promise = fetchAndTransform<T>(symbol, section)
       .then((data) => {
         cache.set(key, { data, timestamp: Date.now() });
         return data;
