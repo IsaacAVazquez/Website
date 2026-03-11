@@ -1,4 +1,10 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 /** @type {import('next').NextConfig} */
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const nextConfig = {
   // URL redirects for better SEO and user experience
@@ -130,6 +136,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  outputFileTracingRoot: __dirname,
   // Prevent native modules from being bundled into server functions.
   serverExternalPackages: ['better-sqlite3', 'sharp'],
   // Exclude sharp and its platform-specific binaries from the NFT bundle.
@@ -141,6 +148,7 @@ const nextConfig = {
     '*': [
       '**/node_modules/@img/**',
       '**/node_modules/sharp/**',
+      '**/public/data/investments/**',
     ],
   },
   images: {
