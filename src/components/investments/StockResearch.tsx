@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { StockSearch } from "./StockSearch";
-import { FundamentalsPanel } from "./FundamentalsPanel";
+import { ResearchSummaryStrip } from "./ResearchSummaryStrip";
+import { ResearchOverview } from "./ResearchOverview";
 import { FinancialStatementsPanel } from "./FinancialStatementsPanel";
 import { ValuationRatiosPanel } from "./ValuationRatiosPanel";
 import { ProfitabilityPanel } from "./ProfitabilityPanel";
@@ -11,7 +12,6 @@ import { GrowthPanel } from "./GrowthPanel";
 import { TranscriptsPanel } from "./TranscriptsPanel";
 import { IndustryPanel } from "./IndustryPanel";
 import { DCFPanel } from "./DCFPanel";
-import { NewsPanel } from "./NewsPanel";
 import { ComparisonTab } from "./ComparisonTab";
 import { PriceChartPanel } from "./PriceChartPanel";
 import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
@@ -100,6 +100,12 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
         ))}
       </div>
 
+      {activeTab !== "compare" && symbol ? (
+        <div className="mb-5">
+          <ResearchSummaryStrip symbol={symbol} />
+        </div>
+      ) : null}
+
       {/* Tab panels with crossfade */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -121,14 +127,7 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
             </div>
           ) : (
             <>
-              {activeTab === "overview" && (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                  <FundamentalsPanel symbol={symbol} />
-                  <div className="space-y-4">
-                    <NewsPanel symbol={symbol} />
-                  </div>
-                </div>
-              )}
+              {activeTab === "overview" && <ResearchOverview symbol={symbol} />}
               {activeTab === "financials" && <FinancialStatementsPanel symbol={symbol} />}
               {activeTab === "growth" && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

@@ -89,25 +89,30 @@ async function fetchQuotes(symbols: string[]): Promise<Map<string, StockQuote>> 
 
 // ─── Derived data ─────────────────────────────────────────────────────────────
 
-function buildEnhanced(
+function hasUsableQuote(quote?: StockQuote): quote is StockQuote {
+  return !!quote && !quote.error && Number.isFinite(quote.price) && quote.price > 0;
+}
+
+export function buildEnhanced(
   holdings: PortfolioHolding[],
   quotes: Map<string, StockQuote>,
   isLoading: boolean
 ): EnhancedHolding[] {
   const totalValue = holdings.reduce((sum, h) => {
     const q = quotes.get(h.symbol);
-    return sum + h.shares * (q?.price ?? h.averageCost);
+    const marketPrice = hasUsableQuote(q) ? q.price : h.averageCost;
+    return sum + h.shares * marketPrice;
   }, 0);
 
   return holdings.map((h) => {
     const q = quotes.get(h.symbol);
-    const currentPrice = q?.price ?? h.averageCost;
+    const currentPrice = hasUsableQuote(q) ? q.price : h.averageCost;
     const currentValue = h.shares * currentPrice;
     const totalCost = h.shares * h.averageCost;
     const gainLoss = currentValue - totalCost;
     const gainLossPercent = totalCost > 0 ? (gainLoss / totalCost) * 100 : 0;
-    const dayChange = h.shares * (q?.change ?? 0);
-    const dayChangePercent = q?.changePercent ?? 0;
+    const dayChange = hasUsableQuote(q) ? h.shares * q.change : 0;
+    const dayChangePercent = hasUsableQuote(q) ? q.changePercent : 0;
     const allocationPercent = totalValue > 0 ? (currentValue / totalValue) * 100 : null;
 
     return {
@@ -120,14 +125,14 @@ function buildEnhanced(
       dayChange,
       dayChangePercent,
       allocationPercent,
-      name: q?.name ?? h.symbol,
-      isLoading: isLoading && !q,
+      name: hasUsableQuote(q) ? q.name : h.symbol,
+      isLoading: isLoading && !hasUsableQuote(q),
       error: q?.error,
     };
   });
 }
 
-function buildSummary(enhanced: EnhancedHolding[]): PortfolioSummary {
+export function buildSummary(enhanced: EnhancedHolding[]): PortfolioSummary {
   return enhanced.reduce(
     (acc, h) => ({
       totalValue: acc.totalValue + h.currentValue,
@@ -267,10 +272,10 @@ export function useInvestments(): UseInvestmentsReturn {
       rawSummary.totalCost > 0
         ? (rawSummary.totalGainLoss / rawSummary.totalCost) * 100
         : 0,
-    dayChangePercent:
-      rawSummary.totalValue > 0
-        ? (rawSummary.dayChange / (rawSummary.totalValue - rawSummary.dayChange)) * 100
-        : 0,
+    dayChangePercent: (() => {
+      const previousValue = rawSummary.totalValue - rawSummary.dayChange;
+      return previousValue > 0 ? (rawSummary.dayChange / previousValue) * 100 : 0;
+    })(),
   };
 
   return {
