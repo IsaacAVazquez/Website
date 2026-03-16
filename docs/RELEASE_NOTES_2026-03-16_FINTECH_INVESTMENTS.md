@@ -33,6 +33,8 @@ This release turns `/investments` into a public-facing fintech product showcase 
   - chart history now flows through the same guarded Yahoo client as quote summary
   - stale on-demand snapshots are reused when Yahoo returns rate-limit or server errors
   - upstream Yahoo `429` responses are surfaced to the app as temporary `503` responses instead of raw vendor rate limits
+  - seeded research data now falls back to public asset URLs in serverless environments where `public/data/investments/*` is not present on the function filesystem
+  - portfolio quotes now fetch directly from Yahoo in the investments route instead of making an extra same-origin proxy request to `/api/stocks`
 - API responses now expose:
   - `source: "prefetched" | "on-demand"`
   - `capabilities` for research sections and seeded-only features

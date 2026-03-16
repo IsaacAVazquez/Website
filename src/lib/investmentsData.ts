@@ -181,12 +181,52 @@ async function readJsonFile<T>(filePath: string): Promise<T | null> {
   }
 }
 
+function getPublicAssetOrigin(): string | null {
+  const configuredOrigin =
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ??
+    process.env.SITE_URL ??
+    process.env.NEXT_PUBLIC_SITE_URL;
+
+  return configuredOrigin ? configuredOrigin.replace(/\/$/, "") : null;
+}
+
+async function fetchPublicJsonFile<T>(relativePath: string): Promise<T | null> {
+  const origin = getPublicAssetOrigin();
+  if (!origin) {
+    return null;
+  }
+
+  try {
+    const response = await fetch(
+      new URL(`/data/investments/${relativePath}`, origin).toString(),
+      { cache: "force-cache" }
+    );
+
+    if (!response.ok) {
+      return null;
+    }
+
+    return (await response.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
+async function readInvestmentJson<T>(relativePath: string): Promise<T | null> {
+  const localFile = await readJsonFile<T>(path.join(DATA_DIR, relativePath));
+  if (localFile !== null) {
+    return localFile;
+  }
+
+  return fetchPublicJsonFile<T>(relativePath);
+}
+
 async function loadInvestmentsIndex(): Promise<InvestmentsIndex> {
   if (indexCache && indexCache.expiresAt > Date.now()) {
     return indexCache.data;
   }
 
-  const data = await readJsonFile<InvestmentsIndex>(path.join(DATA_DIR, "index.json"));
+  const data = await readInvestmentJson<InvestmentsIndex>("index.json");
   const safeData: InvestmentsIndex = data ?? {
     symbols: [],
     failed: [],
@@ -209,14 +249,12 @@ async function readPrefetchedSection(
   symbol: string,
   section: InvestmentSection | string
 ): Promise<unknown | null> {
-  const symbolDir = path.join(DATA_DIR, symbol);
-
   if (section === "dcf") {
     const [waccRaw, fundRaw, growthRaw, priceRaw] = await Promise.all([
-      readJsonFile(path.join(symbolDir, "wacc.json")),
-      readJsonFile(path.join(symbolDir, "fundamentals.json")),
-      readJsonFile(path.join(symbolDir, "growth.json")),
-      readJsonFile(path.join(symbolDir, "price.json")),
+      readInvestmentJson(`${symbol}/wacc.json`),
+      readInvestmentJson(`${symbol}/fundamentals.json`),
+      readInvestmentJson(`${symbol}/growth.json`),
+      readInvestmentJson(`${symbol}/price.json`),
     ]);
     if (!waccRaw || !fundRaw || !growthRaw || !priceRaw) {
       return null;
@@ -226,10 +264,10 @@ async function readPrefetchedSection(
 
   if (section === "industry") {
     const [industryRaw, fundRaw, profRaw, marginsRaw] = await Promise.all([
-      readJsonFile(path.join(symbolDir, "industry.json")),
-      readJsonFile(path.join(symbolDir, "fundamentals.json")),
-      readJsonFile(path.join(symbolDir, "profitability.json")),
-      readJsonFile(path.join(symbolDir, "margins.json")),
+      readInvestmentJson(`${symbol}/industry.json`),
+      readInvestmentJson(`${symbol}/fundamentals.json`),
+      readInvestmentJson(`${symbol}/profitability.json`),
+      readInvestmentJson(`${symbol}/margins.json`),
     ]);
     if (!industryRaw) {
       return null;
@@ -238,7 +276,7 @@ async function readPrefetchedSection(
   }
 
   const fileName = `${section}.json`;
-  const raw = await readJsonFile(path.join(symbolDir, fileName));
+  const raw = await readInvestmentJson(`${symbol}/${fileName}`);
   if (!raw) {
     return null;
   }

@@ -11,6 +11,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Added a hybrid investments data layer with server-side prefetched-symbol reads, Yahoo-backed on-demand ticker snapshots, TTL caching, and shared `source`/`capabilities` metadata across the API and client hook.
 - Updated the research workspace to support arbitrary valid ticker entry, on-demand snapshot messaging, capability-aware tab visibility, source-aware freshness labels, and standalone valuation metrics for live snapshot symbols.
 - Hardened the on-demand data path for production by deduplicating concurrent snapshot builds per symbol, routing chart history through the shared Yahoo backoff client, falling back to stale snapshots on upstream rate-limit/server errors, and translating upstream `429` responses into temporary `503` API responses.
+- Added a serverless-safe fallback for seeded research data by loading prefetched JSON from public asset URLs when the server filesystem copy is unavailable, and removed the extra same-origin proxy hop from portfolio quote fetching.
 - Added route, hook, component, and Playwright coverage for seeded vs. on-demand ticker flows, `/investments` discoverability, and homepage featured-work ordering.
 
 ---
