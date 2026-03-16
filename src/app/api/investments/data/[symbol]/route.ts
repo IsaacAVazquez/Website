@@ -66,14 +66,17 @@ export async function GET(
       lastUpdated?: string | null;
     };
     console.error("Investments data API error:", error);
+    const isUpstreamRateLimit = err.status === 429;
     return NextResponse.json(
       {
-        error: err.message || "Internal server error",
+        error: isUpstreamRateLimit
+          ? "Live market data is temporarily rate-limited. Try again shortly."
+          : err.message || "Internal server error",
         source: err.source,
         capabilities: err.capabilities,
         lastUpdated: err.lastUpdated ?? null,
       },
-      { status: err.status ?? 500 }
+      { status: isUpstreamRateLimit ? 503 : err.status ?? 500 }
     );
   }
 }

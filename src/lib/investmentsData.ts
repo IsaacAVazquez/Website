@@ -49,8 +49,6 @@ interface ChartPriceRow {
 const DATA_DIR = path.join(process.cwd(), "public", "data", "investments");
 const INDEX_TTL_MS = 5 * 60 * 1000;
 const ON_DEMAND_TTL_MS = 5 * 60 * 1000;
-const USER_AGENT =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
 
 const PREFETCHED_CAPABILITIES: InvestmentCapabilities = {
   price: true,
@@ -87,6 +85,7 @@ const onDemandCache = new Map<
     expiresAt: number;
   }
 >();
+const onDemandInflight = new Map<string, Promise<OnDemandSnapshot>>();
 
 const INCOME_STATEMENT_METRICS = [
   ["totalRevenue", "Total Revenue"],
@@ -248,18 +247,9 @@ async function readPrefetchedSection(
 }
 
 async function fetchChartHistory(symbol: string): Promise<PriceData> {
-  const response = await fetch(
+  const response = await yahooFetch(
     `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1y&includePrePost=false&events=div%2Csplits`,
-    {
-      headers: {
-        "User-Agent": USER_AGENT,
-        Accept: "application/json",
-        Referer: "https://finance.yahoo.com/",
-        Origin: "https://finance.yahoo.com",
-        "Accept-Language": "en-US,en;q=0.5",
-      },
-      cache: "no-store",
-    }
+    10_000
   );
 
   if (!response.ok) {
@@ -592,177 +582,204 @@ async function buildOnDemandSnapshot(symbol: string): Promise<OnDemandSnapshot> 
     return cached.snapshot;
   }
 
-  const [summary, rawPriceHistory] = await Promise.all([
-    fetchQuoteSummary(symbol),
-    fetchChartHistory(symbol),
-  ]);
-  const priceHistory = rawPriceHistory as unknown as ChartPriceRow[];
+  const inflightSnapshot = onDemandInflight.get(symbol);
+  if (inflightSnapshot) {
+    return inflightSnapshot;
+  }
 
-  const price = (summary.price as JsonRecord | undefined) ?? {};
-  const summaryDetail = (summary.summaryDetail as JsonRecord | undefined) ?? {};
-  const financialData = (summary.financialData as JsonRecord | undefined) ?? {};
-  const defaultKeyStatistics =
-    (summary.defaultKeyStatistics as JsonRecord | undefined) ?? {};
-  const assetProfile = (summary.assetProfile as JsonRecord | undefined) ?? {};
-  const earnings = (summary.earnings as JsonRecord | undefined) ?? {};
-  const quarterlyIncomeStatements = getStatementEntries(
-    summary.incomeStatementHistoryQuarterly as JsonRecord | undefined,
-    "incomeStatementHistory"
-  );
-  const annualIncomeStatements = getStatementEntries(
-    summary.incomeStatementHistory as JsonRecord | undefined,
-    "incomeStatementHistory"
-  );
-  const quarterlyBalanceSheets = getStatementEntries(
-    summary.balanceSheetHistoryQuarterly as JsonRecord | undefined,
-    "balanceSheetStatements"
-  );
-  const annualBalanceSheets = getStatementEntries(
-    summary.balanceSheetHistory as JsonRecord | undefined,
-    "balanceSheetStatements"
-  );
-  const quarterlyCashFlows = getStatementEntries(
-    summary.cashflowStatementHistoryQuarterly as JsonRecord | undefined,
-    "cashflowStatements"
-  );
-  const annualCashFlows = getStatementEntries(
-    summary.cashflowStatementHistory as JsonRecord | undefined,
-    "cashflowStatements"
-  );
+  const staleSnapshot = cached?.snapshot;
+  const snapshotPromise = (async () => {
+    try {
+      const [summary, rawPriceHistory] = await Promise.all([
+        fetchQuoteSummary(symbol),
+        fetchChartHistory(symbol),
+      ]);
+      const priceHistory = rawPriceHistory as unknown as ChartPriceRow[];
 
-  const currentPrice =
-    getNumber(price.regularMarketPrice) ??
-    getNumber(summaryDetail.regularMarketPrice) ??
-    priceHistory.at(-1)?.close;
-  const marketCap =
-    getNumber(price.marketCap) ?? getNumber(defaultKeyStatistics.marketCap);
-  const betaValue = getNumber(defaultKeyStatistics.beta);
-  const totalRevenue =
-    getNumber(financialData.totalRevenue) ??
-    getNumber(quarterlyIncomeStatements[0]?.totalRevenue);
-  const freeCashFlow = getNumber(financialData.freeCashflow);
+      const price = (summary.price as JsonRecord | undefined) ?? {};
+      const summaryDetail = (summary.summaryDetail as JsonRecord | undefined) ?? {};
+      const financialData = (summary.financialData as JsonRecord | undefined) ?? {};
+      const defaultKeyStatistics =
+        (summary.defaultKeyStatistics as JsonRecord | undefined) ?? {};
+      const assetProfile = (summary.assetProfile as JsonRecord | undefined) ?? {};
+      const earnings = (summary.earnings as JsonRecord | undefined) ?? {};
+      const quarterlyIncomeStatements = getStatementEntries(
+        summary.incomeStatementHistoryQuarterly as JsonRecord | undefined,
+        "incomeStatementHistory"
+      );
+      const annualIncomeStatements = getStatementEntries(
+        summary.incomeStatementHistory as JsonRecord | undefined,
+        "incomeStatementHistory"
+      );
+      const quarterlyBalanceSheets = getStatementEntries(
+        summary.balanceSheetHistoryQuarterly as JsonRecord | undefined,
+        "balanceSheetStatements"
+      );
+      const annualBalanceSheets = getStatementEntries(
+        summary.balanceSheetHistory as JsonRecord | undefined,
+        "balanceSheetStatements"
+      );
+      const quarterlyCashFlows = getStatementEntries(
+        summary.cashflowStatementHistoryQuarterly as JsonRecord | undefined,
+        "cashflowStatements"
+      );
+      const annualCashFlows = getStatementEntries(
+        summary.cashflowStatementHistory as JsonRecord | undefined,
+        "cashflowStatements"
+      );
 
-  const info: CompanyInfo = {
-    address: getString(assetProfile.address1),
-    city: getString(assetProfile.city),
-    country: getString(assetProfile.country),
-    industry: getString(assetProfile.industry),
-    sector: getString(assetProfile.sector),
-    longBusinessSummary: getString(assetProfile.longBusinessSummary),
-    fullTimeEmployees: getNumber(assetProfile.fullTimeEmployees),
-    website: getString(assetProfile.website),
-    shortName: getString(price.shortName) ?? symbol,
-    longName: getString(price.longName) ?? getString(price.shortName) ?? symbol,
-  };
+      const currentPrice =
+        getNumber(price.regularMarketPrice) ??
+        getNumber(summaryDetail.regularMarketPrice) ??
+        priceHistory.at(-1)?.close;
+      const marketCap =
+        getNumber(price.marketCap) ?? getNumber(defaultKeyStatistics.marketCap);
+      const betaValue = getNumber(defaultKeyStatistics.beta);
+      const totalRevenue =
+        getNumber(financialData.totalRevenue) ??
+        getNumber(quarterlyIncomeStatements[0]?.totalRevenue);
+      const freeCashFlow = getNumber(financialData.freeCashflow);
 
-  const fundamentals: Fundamentals = {
-    ttmEps:
-      getNumber(defaultKeyStatistics.trailingEps) ??
-      getNumber(defaultKeyStatistics.epsTrailingTwelveMonths),
-    ttmPe:
-      getNumber(summaryDetail.trailingPE) ??
-      getNumber(defaultKeyStatistics.trailingPE),
-    marketCap,
-    psRatio: getNumber(defaultKeyStatistics.priceToSalesTrailing12Months),
-    pbRatio: getNumber(defaultKeyStatistics.priceToBook),
-    pegRatio: getNumber(defaultKeyStatistics.pegRatio),
-  };
+      const info: CompanyInfo = {
+        address: getString(assetProfile.address1),
+        city: getString(assetProfile.city),
+        country: getString(assetProfile.country),
+        industry: getString(assetProfile.industry),
+        sector: getString(assetProfile.sector),
+        longBusinessSummary: getString(assetProfile.longBusinessSummary),
+        fullTimeEmployees: getNumber(assetProfile.fullTimeEmployees),
+        website: getString(assetProfile.website),
+        shortName: getString(price.shortName) ?? symbol,
+        longName: getString(price.longName) ?? getString(price.shortName) ?? symbol,
+      };
 
-  const profitability: Profitability = {
-    roe: percentFromRatio(getNumber(financialData.returnOnEquity)),
-    roa: percentFromRatio(getNumber(financialData.returnOnAssets)),
-    roic: percentFromRatio(getNumber(financialData.returnOnCapital)),
-  };
+      const fundamentals: Fundamentals = {
+        ttmEps:
+          getNumber(defaultKeyStatistics.trailingEps) ??
+          getNumber(defaultKeyStatistics.epsTrailingTwelveMonths),
+        ttmPe:
+          getNumber(summaryDetail.trailingPE) ??
+          getNumber(defaultKeyStatistics.trailingPE),
+        marketCap,
+        psRatio: getNumber(defaultKeyStatistics.priceToSalesTrailing12Months),
+        pbRatio: getNumber(defaultKeyStatistics.priceToBook),
+        pegRatio: getNumber(defaultKeyStatistics.pegRatio),
+      };
 
-  const margins: MarginsData = [
-    {
-      grossMargin: percentFromRatio(getNumber(financialData.grossMargins)),
-      operatingMargin: percentFromRatio(getNumber(financialData.operatingMargins)),
-      netMargin: percentFromRatio(getNumber(financialData.profitMargins)),
-      ebitdaMargin: percentFromRatio(getNumber(financialData.ebitdaMargins)),
-      fcfMargin:
-        freeCashFlow !== undefined && totalRevenue
-          ? (freeCashFlow / totalRevenue) * 100
-          : undefined,
-    },
-  ];
+      const profitability: Profitability = {
+        roe: percentFromRatio(getNumber(financialData.returnOnEquity)),
+        roa: percentFromRatio(getNumber(financialData.returnOnAssets)),
+        roic: percentFromRatio(getNumber(financialData.returnOnCapital)),
+      };
 
-  const growth = buildGrowthData(
-    financialData,
-    quarterlyIncomeStatements,
-    quarterlyCashFlows,
-    earnings
-  );
+      const margins: MarginsData = [
+        {
+          grossMargin: percentFromRatio(getNumber(financialData.grossMargins)),
+          operatingMargin: percentFromRatio(getNumber(financialData.operatingMargins)),
+          netMargin: percentFromRatio(getNumber(financialData.profitMargins)),
+          ebitdaMargin: percentFromRatio(getNumber(financialData.ebitdaMargins)),
+          fcfMargin:
+            freeCashFlow !== undefined && totalRevenue
+              ? (freeCashFlow / totalRevenue) * 100
+              : undefined,
+        },
+      ];
 
-  const incomeStatement = {
-    quarterly: buildStatementTable(quarterlyIncomeStatements, INCOME_STATEMENT_METRICS),
-    annual: buildStatementTable(annualIncomeStatements, INCOME_STATEMENT_METRICS),
-  };
-  const balanceSheet = {
-    quarterly: buildStatementTable(quarterlyBalanceSheets, BALANCE_SHEET_METRICS),
-    annual: buildStatementTable(annualBalanceSheets, BALANCE_SHEET_METRICS),
-  };
-  const cashFlow = {
-    quarterly: buildStatementTable(quarterlyCashFlows, CASH_FLOW_METRICS),
-    annual: buildStatementTable(annualCashFlows, CASH_FLOW_METRICS),
-  };
+      const growth = buildGrowthData(
+        financialData,
+        quarterlyIncomeStatements,
+        quarterlyCashFlows,
+        earnings
+      );
 
-  const beta: BetaData = {
-    beta5y: betaValue,
-  };
+      const incomeStatement = {
+        quarterly: buildStatementTable(quarterlyIncomeStatements, INCOME_STATEMENT_METRICS),
+        annual: buildStatementTable(annualIncomeStatements, INCOME_STATEMENT_METRICS),
+      };
+      const balanceSheet = {
+        quarterly: buildStatementTable(quarterlyBalanceSheets, BALANCE_SHEET_METRICS),
+        annual: buildStatementTable(annualBalanceSheets, BALANCE_SHEET_METRICS),
+      };
+      const cashFlow = {
+        quarterly: buildStatementTable(quarterlyCashFlows, CASH_FLOW_METRICS),
+        annual: buildStatementTable(annualCashFlows, CASH_FLOW_METRICS),
+      };
 
-  const wacc = buildWaccData(
-    betaValue,
-    marketCap,
-    getNumber(financialData.totalDebt),
-    annualIncomeStatements
-  );
-  const dcf = buildDcfData(currentPrice, fundamentals, growth, wacc);
+      const beta: BetaData = {
+        beta5y: betaValue,
+      };
 
-  const capabilities: InvestmentCapabilities = {
-    price: priceHistory.length > 0,
-    fundamentals: true,
-    profitability: true,
-    margins: true,
-    growth: Array.isArray(growth) && growth.length > 0,
-    income_statement: incomeStatement.quarterly.length > 0 || incomeStatement.annual.length > 0,
-    balance_sheet: balanceSheet.quarterly.length > 0 || balanceSheet.annual.length > 0,
-    cash_flow: cashFlow.quarterly.length > 0 || cashFlow.annual.length > 0,
-    wacc: !!wacc,
-    beta: beta.beta5y !== undefined,
-    dcf: !!dcf,
-    info: true,
-    industry: false,
-    transcripts: false,
-    news: false,
-    compare: false,
-  };
+      const wacc = buildWaccData(
+        betaValue,
+        marketCap,
+        getNumber(financialData.totalDebt),
+        annualIncomeStatements
+      );
+      const dcf = buildDcfData(currentPrice, fundamentals, growth, wacc);
 
-  const snapshot: OnDemandSnapshot = {
-    fetchedAt: new Date().toISOString(),
-    capabilities,
-    sections: {
-      price: priceHistory,
-      fundamentals,
-      profitability,
-      margins,
-      growth,
-      income_statement: incomeStatement,
-      balance_sheet: balanceSheet,
-      cash_flow: cashFlow,
-      beta,
-      wacc: wacc ?? undefined,
-      dcf: dcf ?? undefined,
-      info,
-    },
-  };
+      const capabilities: InvestmentCapabilities = {
+        price: priceHistory.length > 0,
+        fundamentals: true,
+        profitability: true,
+        margins: true,
+        growth: Array.isArray(growth) && growth.length > 0,
+        income_statement:
+          incomeStatement.quarterly.length > 0 || incomeStatement.annual.length > 0,
+        balance_sheet:
+          balanceSheet.quarterly.length > 0 || balanceSheet.annual.length > 0,
+        cash_flow: cashFlow.quarterly.length > 0 || cashFlow.annual.length > 0,
+        wacc: !!wacc,
+        beta: beta.beta5y !== undefined,
+        dcf: !!dcf,
+        info: true,
+        industry: false,
+        transcripts: false,
+        news: false,
+        compare: false,
+      };
 
-  onDemandCache.set(symbol, {
-    snapshot,
-    expiresAt: Date.now() + ON_DEMAND_TTL_MS,
-  });
+      const snapshot: OnDemandSnapshot = {
+        fetchedAt: new Date().toISOString(),
+        capabilities,
+        sections: {
+          price: priceHistory,
+          fundamentals,
+          profitability,
+          margins,
+          growth,
+          income_statement: incomeStatement,
+          balance_sheet: balanceSheet,
+          cash_flow: cashFlow,
+          beta,
+          wacc: wacc ?? undefined,
+          dcf: dcf ?? undefined,
+          info,
+        },
+      };
 
-  return snapshot;
+      onDemandCache.set(symbol, {
+        snapshot,
+        expiresAt: Date.now() + ON_DEMAND_TTL_MS,
+      });
+
+      return snapshot;
+    } catch (error) {
+      const err = error as Error & { status?: number };
+      const isRetryableUpstreamError =
+        err.status === 429 || (err.status !== undefined && err.status >= 500);
+      if (staleSnapshot && isRetryableUpstreamError) {
+        return staleSnapshot;
+      }
+      throw error;
+    }
+  })();
+
+  onDemandInflight.set(symbol, snapshotPromise);
+  try {
+    return await snapshotPromise;
+  } finally {
+    onDemandInflight.delete(symbol);
+  }
 }
 
 export async function getInvestmentContext(symbol: string): Promise<InvestmentContext> {

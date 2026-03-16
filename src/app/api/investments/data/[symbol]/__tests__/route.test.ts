@@ -143,4 +143,43 @@ describe("GET /api/investments/data/[symbol]", () => {
     expect(body.capabilities.industry).toBe(false);
     expect(body.error).toMatch(/curated research symbols only/i);
   });
+
+  it("maps upstream Yahoo 429s to a temporary 503 response", async () => {
+    mockGetInvestmentContext.mockResolvedValue({
+      source: "on-demand",
+      capabilities: {
+        info: true,
+        fundamentals: true,
+        growth: true,
+        compare: false,
+      },
+      lastUpdated: "2026-03-16T08:05:00.000Z",
+      seeded: false,
+      snapshot: {
+        fetchedAt: "2026-03-16T08:05:00.000Z",
+        capabilities: { info: true },
+        sections: {},
+      },
+    });
+    mockGetInvestmentDataEnvelope.mockRejectedValue(
+      Object.assign(new Error("Rate limited"), {
+        status: 429,
+        source: "on-demand",
+        capabilities: {
+          info: true,
+          fundamentals: true,
+          growth: true,
+          compare: false,
+        },
+        lastUpdated: "2026-03-16T08:05:00.000Z",
+      })
+    );
+
+    const response = await makeRequest("SHOP");
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+    expect(body.source).toBe("on-demand");
+    expect(body.error).toMatch(/temporarily rate-limited/i);
+  });
 });

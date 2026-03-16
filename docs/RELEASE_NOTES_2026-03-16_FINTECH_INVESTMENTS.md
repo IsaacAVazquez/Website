@@ -28,6 +28,11 @@ This release turns `/investments` into a public-facing fintech product showcase 
 - Moved investments data loading behind a shared server-side layer and API envelope.
 - Seeded research symbols still load from the prefetched dataset first.
 - Valid unseeded symbols now fetch on demand from Yahoo-backed server utilities and are cached in memory with a TTL.
+- Production hardening update:
+  - concurrent on-demand section requests now share a single per-symbol snapshot build instead of stampeding Yahoo
+  - chart history now flows through the same guarded Yahoo client as quote summary
+  - stale on-demand snapshots are reused when Yahoo returns rate-limit or server errors
+  - upstream Yahoo `429` responses are surfaced to the app as temporary `503` responses instead of raw vendor rate limits
 - API responses now expose:
   - `source: "prefetched" | "on-demand"`
   - `capabilities` for research sections and seeded-only features
@@ -78,3 +83,4 @@ This release turns `/investments` into a public-facing fintech product showcase 
 - `npx jest src/hooks/__tests__/useStockData.test.tsx src/components/investments/__tests__/investments-ui.test.tsx --runInBand --modulePathIgnorePatterns='\\.worktrees'`
 - `npx playwright test e2e/investments.spec.ts --project=chromium`
 - `npx eslint src/app/investments/investments-client.tsx src/constants/caseStudies.ts`
+- `npx eslint src/lib/investmentsData.ts 'src/app/api/investments/data/[symbol]/route.ts' 'src/app/api/investments/data/[symbol]/__tests__/route.test.ts'`
