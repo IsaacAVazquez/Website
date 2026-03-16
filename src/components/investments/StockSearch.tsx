@@ -10,6 +10,8 @@ interface Props {
   onChange: (symbol: string) => void;
 }
 
+const VALID_SYMBOL_PATTERN = /^[A-Z0-9.-]{1,10}$/;
+
 export function StockSearch({ value, onChange }: Props) {
   const [input, setInput] = useState(value);
   const [index, setIndex] = useState<InvestmentsIndex | null>(null);
@@ -19,7 +21,7 @@ export function StockSearch({ value, onChange }: Props) {
 
   // Load pre-fetched index once (served directly from public/)
   useEffect(() => {
-    fetch("/data/investments/index.json")
+    fetch("/api/investments/index")
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => { if (data) setIndex(data); })
       .catch(() => null);
@@ -40,17 +42,20 @@ export function StockSearch({ value, onChange }: Props) {
   }, []);
 
   const upper = debouncedInput.trim().toUpperCase();
+  const hasInput = upper.length > 0;
+  const hasValidFormat = !hasInput || VALID_SYMBOL_PATTERN.test(upper);
   const suggestions =
     upper.length >= 1 && index
       ? index.symbols.filter((s) => s.startsWith(upper) && s !== upper).slice(0, 6)
       : [];
 
-  const isNotFetched =
-    upper.length > 0 && index !== null && !index.symbols.includes(upper);
+  const isSeededSymbol = index?.symbols.includes(upper) ?? false;
+  const shouldShowOnDemandHint =
+    hasInput && hasValidFormat && index !== null && !isSeededSymbol;
 
   function submit(sym: string) {
     const s = sym.trim().toUpperCase();
-    if (!s) return;
+    if (!s || !VALID_SYMBOL_PATTERN.test(s)) return;
     setInput(s);
     setShowDropdown(false);
     onChange(s);
@@ -109,12 +114,21 @@ export function StockSearch({ value, onChange }: Props) {
         </ul>
       )}
 
-      {/* Not pre-fetched warning */}
-      {isNotFetched && (
+      {!hasValidFormat && hasInput && (
+        <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--color-error)]">
+          <IconAlertCircle size={13} />
+          <span>
+            Enter a valid ticker symbol using letters, numbers, dots, or dashes.
+          </span>
+        </p>
+      )}
+
+      {shouldShowOnDemandHint && (
         <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--color-warning)]">
           <IconAlertCircle size={13} />
           <span>
-            {upper} isn&apos;t in the research database. Available stocks: AAPL, MSFT, GOOGL, AMZN, NVDA, META, TSLA, BRK-B, JPM, V
+            {upper} will load as a live on-demand snapshot. News, transcripts,
+            and peer comparison stay available for curated research symbols.
           </span>
         </p>
       )}

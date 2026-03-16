@@ -1,11 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { InvestmentSection } from "@/types/investment";
-import {
-  transformSection,
-  transformIndustryWithStockValues,
-  computeDcf,
-  isTranscriptSection,
-} from "@/lib/investmentTransforms";
+import { getInvestmentContext, getInvestmentDataEnvelope } from "@/lib/investmentsData";
+import { isTranscriptSection } from "@/lib/investmentTransforms";
 
 const VALID_SECTIONS: InvestmentSection[] = [
   "price",
@@ -26,37 +22,6 @@ const VALID_SECTIONS: InvestmentSection[] = [
   "info",
   "officers",
 ];
-
-async function fetchJsonFile(
-  request: NextRequest,
-  symbol: string | null,
-  fileName: string
-): Promise<unknown | null> {
-  const pathname = symbol
-    ? `/data/investments/${symbol}/${fileName}`
-    : `/data/investments/${fileName}`;
-
-  const fileUrl = new URL(pathname, request.nextUrl.origin);
-
-  try {
-    const response = await fetch(fileUrl, {
-      next: { revalidate: 3600 },
-    });
-
-    if (response.status === 404) {
-      return null;
-    }
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch ${pathname}: HTTP ${response.status}`);
-    }
-
-    return response.json();
-  } catch (error) {
-    console.error("Investments data file fetch error:", error);
-    return null;
-  }
-}
 
 function isValidSymbol(symbol: string): boolean {
   return /^[A-Z0-9.-]{1,10}$/.test(symbol);
@@ -85,75 +50,30 @@ export async function GET(
       return NextResponse.json({ error: "Invalid section" }, { status: 400 });
     }
 
-    // Verify the symbol is in the pre-fetched index
-    const indexData = await fetchJsonFile(request, null, "index.json");
-    if (!indexData) {
-      return NextResponse.json(
-        { error: "Investment data not available. Run: npm run update:investments" },
-        { status: 503 }
-      );
-    }
-    const index = indexData as { symbols: string[] };
+    const context = await getInvestmentContext(symbol);
+    const envelope = await getInvestmentDataEnvelope(symbol, section, context);
 
-    if (!index.symbols.includes(symbol)) {
-      return NextResponse.json(
-        { error: `Symbol ${symbol} not in pre-fetched data` },
-        { status: 404 }
-      );
-    }
-
-    if (section === "dcf") {
-      try {
-        const [waccRaw, fundRaw, growthRaw, priceRaw] = await Promise.all([
-          fetchJsonFile(request, symbol, "wacc.json"),
-          fetchJsonFile(request, symbol, "fundamentals.json"),
-          fetchJsonFile(request, symbol, "growth.json"),
-          fetchJsonFile(request, symbol, "price.json"),
-        ]);
-        const dcfData = computeDcf(waccRaw, fundRaw, growthRaw, priceRaw);
-        return NextResponse.json(dcfData, {
-          headers: { "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400" },
-        });
-      } catch {
-        return NextResponse.json({ error: "DCF calculation failed" }, { status: 500 });
-      }
-    }
-
-    if (section === "industry") {
-      const industryData = await fetchJsonFile(request, symbol, "industry.json");
-      if (!industryData) {
-        return NextResponse.json(
-          { error: `Section "industry" not available for ${symbol}` },
-          { status: 404 }
-        );
-      }
-      const [fundRaw, profRaw, marginsRaw] = await Promise.all([
-        fetchJsonFile(request, symbol, "fundamentals.json"),
-        fetchJsonFile(request, symbol, "profitability.json"),
-        fetchJsonFile(request, symbol, "margins.json"),
-      ]);
-      const transformed = transformIndustryWithStockValues(industryData, fundRaw, profRaw, marginsRaw);
-      return NextResponse.json(transformed, {
-        headers: { "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400" },
-      });
-    }
-
-    const data = await fetchJsonFile(request, symbol, `${section}.json`);
-    if (!data) {
-      return NextResponse.json(
-        { error: `Section "${section}" not available for ${symbol}` },
-        { status: 404 }
-      );
-    }
-    const transformed = transformSection(section, data);
-
-    return NextResponse.json(transformed, {
+    return NextResponse.json(envelope, {
       headers: {
         "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
       },
     });
   } catch (error) {
+    const err = error as Error & {
+      status?: number;
+      source?: string;
+      capabilities?: Record<string, boolean>;
+      lastUpdated?: string | null;
+    };
     console.error("Investments data API error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: err.message || "Internal server error",
+        source: err.source,
+        capabilities: err.capabilities,
+        lastUpdated: err.lastUpdated ?? null,
+      },
+      { status: err.status ?? 500 }
+    );
   }
 }

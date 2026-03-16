@@ -260,3 +260,18 @@ export type InvestmentSection =
   | "dcf"
   | "info"
   | "officers";
+
+export type InvestmentDataSource = "prefetched" | "on-demand";
+
+export type InvestmentCapabilityKey = InvestmentSection | "compare";
+
+export type InvestmentCapabilities = Partial<
+  Record<InvestmentCapabilityKey, boolean>
+>;
+
+export interface InvestmentDataEnvelope<T> {
+  data: T;
+  source: InvestmentDataSource;
+  capabilities: InvestmentCapabilities;
+  lastUpdated: string | null;
+}

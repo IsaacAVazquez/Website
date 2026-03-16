@@ -18,7 +18,7 @@ const FALLBACK_SYMBOLS = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA
 function useIndexSymbols(): string[] {
   const [symbols, setSymbols] = useState<string[]>(FALLBACK_SYMBOLS);
   useEffect(() => {
-    fetch("/data/investments/index.json")
+    fetch("/api/investments/index")
       .then((r) => r.json())
       .then((data: InvestmentsIndex) => {
         if (data.symbols?.length > 0) setSymbols(data.symbols);

@@ -30,7 +30,7 @@ export function ErrorState({ message, isNotFetched, onRetry }: ErrorStateProps) 
         className="text-sm max-w-xs"
         style={{ color: isNotFetched ? "var(--text-tertiary)" : "var(--color-error)" }}
       >
-        {isNotFetched ? "Not in research database" : message}
+        {message}
       </p>
 
       {onRetry && (

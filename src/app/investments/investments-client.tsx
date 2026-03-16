@@ -28,12 +28,12 @@ function TabFallback() {
 type Tab = "portfolio" | "research";
 
 const TABS: { key: Tab; label: string }[] = [
-  { key: "portfolio", label: "My Portfolio" },
   { key: "research",  label: "Research" },
+  { key: "portfolio", label: "My Portfolio" },
 ];
 
 export function InvestmentsClient() {
-  const [activeTab, setActiveTab] = useState<Tab>("portfolio");
+  const [activeTab, setActiveTab] = useState<Tab>("research");
   const [researchSymbol, setResearchSymbol] = useState("AAPL");
   const { holdings } = useInvestments();
   const portfolioSymbols = holdings.map((h) => h.symbol);
@@ -60,9 +60,12 @@ export function InvestmentsClient() {
           initial="hidden"
           animate="visible"
         >
-          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-1">Investments</h1>
+          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-1">
+            Investment Research Platform
+          </h1>
           <p className="text-[var(--text-secondary)] text-sm">
-            Track your portfolio and research stocks with fundamental data.
+            Public fintech product exploring portfolio analytics, valuation,
+            financial statements, and live ticker research.
           </p>
         </motion.div>
 

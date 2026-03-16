@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { startTransition, useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { StockSearch } from "./StockSearch";
 import { ResearchSummaryStrip } from "./ResearchSummaryStrip";
@@ -19,7 +19,12 @@ import {
   fadeInVariants,
   getReducedMotionVariants,
 } from "./animations";
-import type { InvestmentsIndex } from "@/types/investment";
+import { useStockData } from "@/hooks/useStockData";
+import type {
+  CompanyInfo,
+  InvestmentCapabilities,
+  InvestmentsIndex,
+} from "@/types/investment";
 
 interface Props {
   initialSymbol?: string;
@@ -40,42 +45,111 @@ const TABS: { key: ResearchTab; label: string }[] = [
   { key: "compare",      label: "Compare" },
 ];
 
+function isTabAvailable(
+  tab: ResearchTab,
+  capabilities: InvestmentCapabilities
+): boolean {
+  switch (tab) {
+    case "overview":
+      return capabilities.info !== false;
+    case "financials":
+      return (
+        capabilities.income_statement !== false &&
+        capabilities.balance_sheet !== false &&
+        capabilities.cash_flow !== false
+      );
+    case "growth":
+      return capabilities.growth !== false;
+    case "valuation":
+      return capabilities.fundamentals !== false;
+    case "industry":
+      return capabilities.industry === true;
+    case "transcripts":
+      return capabilities.transcripts === true;
+    case "dcf":
+      return capabilities.dcf === true;
+    case "chart":
+      return capabilities.price !== false;
+    case "compare":
+      return capabilities.compare === true;
+    default:
+      return true;
+  }
+}
+
 export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Props) {
   const [symbol, setSymbol] = useState(initialSymbol);
   const [activeTab, setActiveTab] = useState<ResearchTab>("overview");
-  const [indexLastUpdated, setIndexLastUpdated] = useState<string | null>(null);
+  const [datasetLastUpdated, setDatasetLastUpdated] = useState<string | null>(null);
   const shouldReduceMotion = useReducedMotion();
+  const {
+    source,
+    capabilities,
+    lastUpdated: symbolLastUpdated,
+  } = useStockData<CompanyInfo>(symbol || null, "info");
 
   const v = shouldReduceMotion ? getReducedMotionVariants() : { fadeInVariants };
 
-  // Load index.json to get the last-updated date for research data
+  // Load the curated dataset timestamp for prefetched research symbols.
   useEffect(() => {
-    fetch("/data/investments/index.json")
+    fetch("/api/investments/index")
       .then((r) => r.json())
       .then((data: InvestmentsIndex) => {
-        if (data.lastUpdated) setIndexLastUpdated(data.lastUpdated);
+        if (data.lastUpdated) setDatasetLastUpdated(data.lastUpdated);
       })
       .catch(() => {});
   }, []);
 
+  const visibleTabs = useMemo(
+    () =>
+      symbol ? TABS.filter((tab) => isTabAvailable(tab.key, capabilities)) : TABS,
+    [capabilities, symbol]
+  );
+
   const isInPortfolio = symbol && portfolioSymbols.includes(symbol);
+  const freshnessMode = symbol && source === "on-demand" ? "live" : "dataset";
+  const freshnessLastUpdated =
+    symbol && source === "on-demand" ? symbolLastUpdated : datasetLastUpdated;
+  const showNews = capabilities.news !== false;
+  const resolvedActiveTab = visibleTabs.some((tab) => tab.key === activeTab)
+    ? activeTab
+    : "overview";
+
+  function handleSymbolChange(nextSymbol: string) {
+    startTransition(() => {
+      setSymbol(nextSymbol);
+      setActiveTab("overview");
+    });
+  }
 
   return (
     <section aria-label="Stock research">
       {/* Search bar + portfolio badge + freshness (hidden when Compare tab is active) */}
-      {activeTab !== "compare" && (
+      {resolvedActiveTab !== "compare" && (
         <div className="flex items-start gap-3 flex-wrap mb-6">
-          <StockSearch value={symbol} onChange={(s) => { setSymbol(s); setActiveTab("overview"); }} />
+          <StockSearch value={symbol} onChange={handleSymbolChange} />
           {isInPortfolio && (
             <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium self-center" style={{ backgroundColor: "color-mix(in srgb, var(--color-success) 15%, transparent)", color: "var(--color-success)" }}>
               In portfolio
             </span>
           )}
           <div className="self-center ml-auto">
-            <DataFreshnessIndicator lastUpdated={indexLastUpdated} />
+            <DataFreshnessIndicator
+              lastUpdated={freshnessLastUpdated}
+              mode={freshnessMode}
+            />
           </div>
         </div>
       )}
+
+      {symbol && source === "on-demand" ? (
+        <div className="mb-5 rounded-2xl border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--surface-secondary))] px-4 py-3 text-sm text-[var(--text-secondary)]">
+          Live snapshot mode for <span className="font-semibold text-[var(--text-primary)]">{symbol}</span>.
+          This view supports core valuation, financials, growth, and charting.
+          News, transcripts, industry comparison, and the compare workflow stay
+          available for curated research symbols.
+        </div>
+      ) : null}
 
       {/* Inner tab bar */}
       <div
@@ -83,14 +157,14 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
         role="tablist"
         aria-label="Research sections"
       >
-        {TABS.map(({ key, label }) => (
+        {visibleTabs.map(({ key, label }) => (
           <button
             key={key}
             role="tab"
-            aria-selected={activeTab === key}
+            aria-selected={resolvedActiveTab === key}
             onClick={() => setActiveTab(key)}
             className={`px-3 py-2 text-sm font-medium rounded-t-md transition whitespace-nowrap min-h-[44px] border-b-2 -mb-px ${
-              activeTab === key
+              resolvedActiveTab === key
                 ? "border-[var(--color-primary)] text-[var(--color-primary)]"
                 : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             }`}
@@ -100,7 +174,7 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
         ))}
       </div>
 
-      {activeTab !== "compare" && symbol ? (
+      {resolvedActiveTab !== "compare" && symbol ? (
         <div className="mb-5">
           <ResearchSummaryStrip symbol={symbol} />
         </div>
@@ -109,15 +183,15 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
       {/* Tab panels with crossfade */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={activeTab}
+          key={resolvedActiveTab}
           role="tabpanel"
-          aria-label={`${activeTab} panel`}
+          aria-label={`${resolvedActiveTab} panel`}
           variants={v.fadeInVariants}
           initial="hidden"
           animate="visible"
           exit="hidden"
         >
-          {activeTab === "compare" ? (
+          {resolvedActiveTab === "compare" ? (
             <ComparisonTab />
           ) : !symbol ? (
             <div className="text-center py-20">
@@ -127,19 +201,26 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
             </div>
           ) : (
             <>
-              {activeTab === "overview" && <ResearchOverview symbol={symbol} />}
-              {activeTab === "financials" && <FinancialStatementsPanel symbol={symbol} />}
-              {activeTab === "growth" && (
+              {resolvedActiveTab === "overview" && (
+                <ResearchOverview symbol={symbol} showNews={showNews} />
+              )}
+              {resolvedActiveTab === "financials" && <FinancialStatementsPanel symbol={symbol} />}
+              {resolvedActiveTab === "growth" && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   <GrowthPanel symbol={symbol} />
                   <ProfitabilityPanel symbol={symbol} />
                 </div>
               )}
-              {activeTab === "valuation" && <ValuationRatiosPanel symbol={symbol} />}
-              {activeTab === "industry" && <IndustryPanel symbol={symbol} />}
-              {activeTab === "transcripts" && <TranscriptsPanel symbol={symbol} />}
-              {activeTab === "dcf" && <DCFPanel symbol={symbol} />}
-              {activeTab === "chart" && <PriceChartPanel symbol={symbol} />}
+              {resolvedActiveTab === "valuation" && (
+                <ValuationRatiosPanel
+                  symbol={symbol}
+                  showIndustryComparison={capabilities.industry === true}
+                />
+              )}
+              {resolvedActiveTab === "industry" && <IndustryPanel symbol={symbol} />}
+              {resolvedActiveTab === "transcripts" && <TranscriptsPanel symbol={symbol} />}
+              {resolvedActiveTab === "dcf" && <DCFPanel symbol={symbol} />}
+              {resolvedActiveTab === "chart" && <PriceChartPanel symbol={symbol} />}
             </>
           )}
         </motion.div>

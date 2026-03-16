@@ -548,9 +548,22 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
   },
 };
 
+const HOMEPAGE_FEATURED_SLUGS = [
+  "investment-analytics-platform",
+  "data-analytics-dashboard",
+  "civic-engagement-platform",
+] as const;
+
 /** Get featured case studies (for homepage) */
 export function getFeaturedCaseStudies(): CaseStudyData[] {
   return Object.values(caseStudiesData).filter((cs) => cs.featured);
+}
+
+export function getHomepageFeaturedCaseStudies(): CaseStudyData[] {
+  return HOMEPAGE_FEATURED_SLUGS.flatMap((slug) => {
+    const study = caseStudiesData[slug];
+    return study ? [study] : [];
+  });
 }
 
 /** Get all case studies as an array */

@@ -3,10 +3,13 @@
 import React from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
-import type { IndustryData } from "@/types/investment";
+import type { BetaData, DcfData, Fundamentals, IndustryData, WaccData } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
 
-interface Props { symbol: string }
+interface Props {
+  symbol: string;
+  showIndustryComparison?: boolean;
+}
 
 interface IndustryRow {
   metric?: string;
@@ -60,9 +63,119 @@ function extractRows(raw: unknown): IndustryRow[] {
   }));
 }
 
-export function ValuationRatiosPanel({ symbol }: Props) {
-  const { data: industryRaw, isLoading, error, isNotFetched, refetch } = useStockData<IndustryData>(symbol, "industry");
+function StandaloneMetric({
+  label,
+  value,
+  detail,
+}: {
+  label: string;
+  value: string;
+  detail?: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+        {label}
+      </p>
+      <p className="mt-2 text-lg font-semibold text-[var(--text-primary)]">{value}</p>
+      {detail ? (
+        <p className="mt-1 text-xs text-[var(--text-secondary)]">{detail}</p>
+      ) : null}
+    </div>
+  );
+}
+
+function formatValue(value: number | undefined, style: "decimal" | "percent" | "currency" = "decimal") {
+  if (value === undefined || Number.isNaN(value)) {
+    return "—";
+  }
+  if (style === "percent") {
+    return `${value.toFixed(2)}%`;
+  }
+  if (style === "currency") {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 2,
+    }).format(value);
+  }
+  return value.toFixed(2);
+}
+
+export function ValuationRatiosPanel({
+  symbol,
+  showIndustryComparison = true,
+}: Props) {
+  const { data: industryRaw, isLoading, error, isNotFetched, refetch } = useStockData<IndustryData>(
+    showIndustryComparison ? symbol : null,
+    "industry"
+  );
+  const { data: fundamentals } = useStockData<Fundamentals>(symbol, "fundamentals");
+  const { data: wacc } = useStockData<WaccData>(symbol, "wacc");
+  const { data: beta } = useStockData<BetaData>(symbol, "beta");
+  const { data: dcf } = useStockData<DcfData>(symbol, "dcf");
   const rows = extractRows(industryRaw);
+
+  if (!showIndustryComparison) {
+    return (
+      <WarmCard padding="sm">
+        <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1">
+          Valuation Snapshot
+        </h3>
+        <p className="text-xs text-[var(--text-tertiary)] mb-4">
+          Live on-demand view for core valuation metrics. Industry comparison is
+          reserved for curated research symbols.
+        </p>
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <StandaloneMetric
+            label="P/E (TTM)"
+            value={formatValue(fundamentals?.ttmPe)}
+          />
+          <StandaloneMetric
+            label="P/S Ratio"
+            value={formatValue(fundamentals?.psRatio)}
+          />
+          <StandaloneMetric
+            label="P/B Ratio"
+            value={formatValue(fundamentals?.pbRatio)}
+          />
+          <StandaloneMetric
+            label="PEG Ratio"
+            value={formatValue(fundamentals?.pegRatio)}
+          />
+          <StandaloneMetric
+            label="Beta (5Y)"
+            value={formatValue(beta?.beta5y)}
+          />
+          <StandaloneMetric
+            label="WACC"
+            value={formatValue(wacc?.wacc, "percent")}
+          />
+          <StandaloneMetric
+            label="DCF Fair Value"
+            value={formatValue(dcf?.fairValue, "currency")}
+            detail={
+              dcf?.upside !== undefined
+                ? `${formatValue(dcf.upside, "percent")} implied upside`
+                : undefined
+            }
+          />
+          <StandaloneMetric
+            label="Market Cap"
+            value={
+              fundamentals?.marketCap !== undefined
+                ? new Intl.NumberFormat("en-US", {
+                    notation: "compact",
+                    maximumFractionDigits: 2,
+                  }).format(fundamentals.marketCap)
+                : "—"
+            }
+          />
+        </div>
+      </WarmCard>
+    );
+  }
 
   return (
     <WarmCard padding="sm">

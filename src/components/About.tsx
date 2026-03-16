@@ -3,8 +3,6 @@ import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
-import { PageSummary } from "@/components/ui/PageSummary";
-import { ExpertSignalGroup } from "@/components/ui/ExpertSignal";
 import { JourneyTimeline } from "@/components/ui/JourneyTimeline";
 import {
   IconUser,
@@ -129,10 +127,10 @@ const OverviewContent = () => {
           </Heading>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            I'm a technical product manager who treats QA and analytics as
-            inputs to better bets. At Civitech I lead quality and product for
-            platforms that serve 60M+ users — translating what we learn in
-            quality work into concrete roadmap shifts.
+            I'm a technical product manager who treats QA, analytics, and
+            operating detail as inputs to better bets. At Civitech I lead
+            quality and product work for platforms that serve 60M+ users,
+            translating system signal into roadmap decisions teams can act on.
           </p>
 
           <div>
@@ -163,6 +161,14 @@ const OverviewContent = () => {
               </li>
               <li>
                 <strong className="text-[var(--text-primary)]">
+                  Fintech Curiosity:
+                </strong>{" "}
+                Build investment research tools and portfolio analytics to stay
+                close to how markets, models, and user trust intersect in
+                product design.
+              </li>
+              <li>
+                <strong className="text-[var(--text-primary)]">
                   Leadership:
                 </strong>{" "}
                 Mentor teammates, de-risk complex launches, and advocate for
@@ -181,12 +187,14 @@ const OverviewContent = () => {
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
             I'm earning my MBA at UC Berkeley Haas to pair hands-on execution
             with sharper product strategy and explore how I can build and
-            invest in SaaS and consumer products that scale.
+            contribute to SaaS and fintech products that help people make
+            better decisions.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-primary)] leading-relaxed font-medium">
-            If this sparks ideas, let's connect -- I'm always up for swapping
-            notes on product, strategy, or building things that matter.
+            If this sparks ideas, let's connect. I'm especially interested in
+            product conversations around analytics, fintech, and systems where
+            trust matters as much as speed.
           </p>
         </div>
       </WarmCard>

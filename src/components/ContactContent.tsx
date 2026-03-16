@@ -24,8 +24,8 @@ export function ContactContent() {
           Let's Work Together
         </Heading>
         <p className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
-          Open to full-time product roles, advisory projects, and honest
-          conversations about building meaningful products.
+          Open to product roles, fintech conversations, and advisory work on
+          products where analytics and trust both matter.
         </p>
       </motion.div>
 
@@ -35,11 +35,11 @@ export function ContactContent() {
             Ready to Connect?
           </Heading>
           <p className="mb-6 max-w-2xl mx-auto text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            I'm pursuing product management roles where I can pair QA roots
-            with the strategy work I'm doing at Haas. I also take on
-            consulting projects and I'm always up for trading notes on
-            technology, business strategy, or shipping products that actually
-            help people.
+            I'm pursuing product roles where I can pair QA roots with the
+            strategy work I'm doing at Haas. I'm especially interested in
+            teams building decision-support, analytics, fintech, and workflow
+            products that need both strong execution and clear product
+            judgment.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
@@ -58,7 +58,7 @@ export function ContactContent() {
               className="w-2 h-2 bg-[var(--color-success)] rounded-full animate-pulse"
               aria-hidden="true"
             />
-            <span>Open to conversations — friendly, no pressure</span>
+            <span>Open to conversations about product, fintech, and analytics</span>
           </div>
         </WarmCard>
 
@@ -73,7 +73,9 @@ export function ContactContent() {
             </div>
             <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
               Based in the Bay Area while attending UC Berkeley Haas (Class of
-              2027). I love digging into products that mix creativity, data, and broad user impact.
+              2027). I like working on products that turn messy data into
+              clearer decisions, whether the use case is civic engagement,
+              SaaS operations, or investment research.
             </p>
           </div>
         </WarmCard>

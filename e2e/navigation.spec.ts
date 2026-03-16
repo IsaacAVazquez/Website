@@ -13,13 +13,13 @@ test.describe('Navigation', () => {
     await expect(page).toHaveURL(/.*about/)
   })
 
-  test('should navigate to Projects page', async ({ page }) => {
+  test('should navigate to Work page', async ({ page }) => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    // Click Projects link
-    const projectsLink = page.getByRole('link', { name: /projects/i }).first()
-    await projectsLink.click()
+    // Click Work link
+    const workLink = page.getByRole('link', { name: /work/i }).first()
+    await workLink.click()
 
     // /projects redirects to /portfolio per next.config.mjs
     await expect(page).toHaveURL(/.*(?:projects|portfolio)/)

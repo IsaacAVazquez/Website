@@ -4,6 +4,16 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-03-16
+
+- Repositioned `/investments` as a public fintech proof point with recruiter-facing metadata, `SoftwareApplication` structured data, homepage/home/about/contact copy updates, sitemap exposure, and main navigation visibility.
+- Reworked homepage curation so `Selected Work` highlights `Investment Analytics Platform`, `Transforming Client Reporting into Self-Service Analytics`, and `Scaling a Platform to 60M+ Users`, while removing fantasy football from the homepage featured set.
+- Added a hybrid investments data layer with server-side prefetched-symbol reads, Yahoo-backed on-demand ticker snapshots, TTL caching, and shared `source`/`capabilities` metadata across the API and client hook.
+- Updated the research workspace to support arbitrary valid ticker entry, on-demand snapshot messaging, capability-aware tab visibility, source-aware freshness labels, and standalone valuation metrics for live snapshot symbols.
+- Added route, hook, component, and Playwright coverage for seeded vs. on-demand ticker flows, `/investments` discoverability, and homepage featured-work ordering.
+
+---
+
 ## 2026-03-06
 
 - Updated core documentation to reflect current state of the platform (Next.js 16, blue/slate design system, dual-purpose portfolio + fantasy football).

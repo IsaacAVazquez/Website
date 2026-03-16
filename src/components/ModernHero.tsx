@@ -33,7 +33,8 @@ export function ModernHero() {
   return (
     <section
       className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden py-16 md:py-24 bg-[var(--surface-primary)]"
-      aria-label="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
+      aria-label="Isaac Vazquez - Product Manager, builder, and Berkeley Haas MBA candidate"
+      data-testid="hero"
     >
       <motion.div
         className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -48,19 +49,18 @@ export function ModernHero() {
                 Isaac Vazquez
               </h1>
               <p className="text-xl sm:text-2xl text-[var(--text-secondary)] mt-4 font-medium">
-                Product Manager | MBA Candidate | Builder
-              
-    </p>          </motion.div>
-
-
+                Product Manager | MBA Candidate | Analytics Builder
+              </p>
+            </motion.div>
 
             <motion.p
               variants={itemVariants}
               className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl"
             >
-              I build mission-driven products that balance user insight, data, and disciplined
-              execution. My path from QA engineering to product management gives me a rare ability
-              to own quality end-to-end — from discovery through delivery.
+              I build products that turn messy signals into clear decisions. My
+              path from QA engineering to product management lets me pair user
+              insight, analytics, and disciplined execution across SaaS, civic
+              tech, and fintech-style research products.
             </motion.p>
 
             <motion.div

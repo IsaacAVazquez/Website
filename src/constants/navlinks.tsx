@@ -2,6 +2,7 @@ import {
   Home,
   User,
   Briefcase,
+  ChartBar,
   FileText,
   Mail,
 } from "@/components/ui/ServerIcons";
@@ -21,6 +22,11 @@ export const navlinks = [
     href: "/portfolio",
     label: "Work",
     icon: Briefcase,
+  },
+  {
+    href: "/investments",
+    label: "Investments",
+    icon: ChartBar,
   },
   {
     href: "/resume",

@@ -6,6 +6,7 @@ interface DataFreshnessIndicatorProps {
   lastUpdated: Date | string | null;
   onRefresh?: () => void;
   isRefreshing?: boolean;
+  mode?: "default" | "dataset" | "live";
 }
 
 function getRelativeTime(date: Date): { label: string; color: string } {
@@ -42,7 +43,15 @@ export function DataFreshnessIndicator({
   lastUpdated,
   onRefresh,
   isRefreshing,
+  mode = "default",
 }: DataFreshnessIndicatorProps) {
+  const labelPrefix =
+    mode === "dataset"
+      ? "Dataset updated"
+      : mode === "live"
+        ? "Live snapshot fetched"
+        : "Updated";
+
   if (lastUpdated === null) {
     return (
       <div className="inline-flex items-center gap-2">
@@ -50,7 +59,9 @@ export function DataFreshnessIndicator({
           className="w-2 h-2 rounded-full"
           style={{ backgroundColor: "var(--color-error)" }}
         />
-        <span className="text-xs text-[var(--text-tertiary)]">No data</span>
+        <span className="text-xs text-[var(--text-tertiary)]">
+          {mode === "dataset" ? "No dataset" : "No data"}
+        </span>
         {onRefresh && (
           <button
             onClick={onRefresh}
@@ -78,7 +89,7 @@ export function DataFreshnessIndicator({
         style={{ backgroundColor: color }}
       />
       <span className="text-xs text-[var(--text-tertiary)]">
-        Updated {label}
+        {labelPrefix} {label}
       </span>
       {onRefresh && (
         <button

@@ -14,7 +14,7 @@ module.exports = {
   ],
   
   // Additional paths configuration
-  additionalPaths: async (config) => {
+  additionalPaths: async (_config) => {
     const result = []
 
     // High priority homepage - Product Manager portfolio
@@ -44,6 +44,13 @@ module.exports = {
       loc: '/resume',
       changefreq: 'monthly',
       priority: 0.9,
+      lastmod: new Date().toISOString(),
+    })
+
+    result.push({
+      loc: '/investments',
+      changefreq: 'weekly',
+      priority: 0.85,
       lastmod: new Date().toISOString(),
     })
 

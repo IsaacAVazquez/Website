@@ -16,6 +16,7 @@ import type {
 
 interface Props {
   symbol: string;
+  showNews?: boolean;
 }
 
 function formatPercent(value: number | undefined, signed = false): string {
@@ -91,16 +92,16 @@ function toneClasses(tone: "positive" | "neutral" | "negative") {
   return "border-[var(--border-primary)] bg-[var(--surface-secondary)] text-[var(--text-secondary)]";
 }
 
-export function ResearchOverview({ symbol }: Props) {
+export function ResearchOverview({ symbol, showNews = true }: Props) {
   const { data: info } = useStockData<CompanyInfo>(symbol, "info");
   const { data: dcf } = useStockData<DcfData>(symbol, "dcf");
   const { data: profitability } = useStockData<Profitability>(symbol, "profitability");
   const { data: marginsRaw } = useStockData<MarginsData>(symbol, "margins");
   const { data: growth } = useStockData<GrowthData>(symbol, "growth");
-  const { data: newsRaw } = useStockData<NewsData>(symbol, "news");
+  const { data: newsRaw } = useStockData<NewsData>(showNews ? symbol : null, "news");
 
   const margins = Array.isArray(marginsRaw) ? marginsRaw[marginsRaw.length - 1] : undefined;
-  const newsItems = Array.isArray(newsRaw) ? newsRaw : [];
+  const newsItems = showNews && Array.isArray(newsRaw) ? newsRaw : [];
   const leadHeadline = newsItems[0];
   const signals = buildSignals({ dcf, profitability, margins, growth });
 
@@ -236,26 +237,45 @@ export function ResearchOverview({ symbol }: Props) {
               )}
             </div>
 
-            <div className="mt-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                Lead Narrative
-              </p>
-              <p className="mt-3 line-clamp-4 text-sm font-medium leading-6 text-[var(--text-primary)]">
-                {leadHeadline?.title ?? "No recent headline in the research dataset."}
-              </p>
-              {leadHeadline?.publisher ? (
-                <p className="mt-2 text-xs text-[var(--text-secondary)]">
-                  {leadHeadline.publisher}
+            {showNews ? (
+              <div className="mt-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Lead Narrative
                 </p>
-              ) : null}
-            </div>
+                <p className="mt-3 line-clamp-4 text-sm font-medium leading-6 text-[var(--text-primary)]">
+                  {leadHeadline?.title ?? "No recent headline in the research dataset."}
+                </p>
+                {leadHeadline?.publisher ? (
+                  <p className="mt-2 text-xs text-[var(--text-secondary)]">
+                    {leadHeadline.publisher}
+                  </p>
+                ) : null}
+              </div>
+            ) : (
+              <div className="mt-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Snapshot Mode
+                </p>
+                <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                  This ticker is loaded on demand, so the overview focuses on
+                  business context, valuation, and operating metrics instead of
+                  the curated news feed used for seeded research symbols.
+                </p>
+              </div>
+            )}
           </div>
         </WarmCard>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 2xl:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.9fr)]">
+      <div
+        className={`grid grid-cols-1 gap-4 ${
+          showNews
+            ? "2xl:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.9fr)]"
+            : ""
+        }`}
+      >
         <FundamentalsPanel symbol={symbol} />
-        <NewsPanel symbol={symbol} />
+        {showNews ? <NewsPanel symbol={symbol} /> : null}
       </div>
     </div>
   );

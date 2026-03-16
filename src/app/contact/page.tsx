@@ -3,10 +3,11 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 
 export const metadata = constructMetadata({
-  title: "Contact Isaac Vazquez | Product Manager - Austin & Bay Area",
-  description: "Connect with Isaac Vazquez for product management opportunities, consulting engagements, or SaaS collaborations. UC Berkeley MBA candidate available for PM roles in Austin TX and San Francisco Bay Area. Let's discuss product strategy, roadmapping, and cross-functional leadership.",
+  title: "Contact Isaac Vazquez | Product Manager & Fintech Builder",
+  description:
+    "Connect with Isaac Vazquez about product roles, fintech product conversations, or analytics-heavy platform work. UC Berkeley Haas MBA candidate open to PM opportunities and select advisory projects.",
   canonicalUrl: "/contact",
-  dateModified: "2025-02-05",
+  dateModified: "2026-03-16",
 });
 
 export default function Contact() {
@@ -20,7 +21,10 @@ export default function Contact() {
       {/* Breadcrumb Structured Data */}
       <StructuredData
         type="BreadcrumbList"
-        data={{ items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement }}
+        data={{
+          items: (generateBreadcrumbStructuredData(breadcrumbs) as { itemListElement: object[] })
+            .itemListElement,
+        }}
       />
 
       {/* Contact Page Schema */}
@@ -28,7 +32,8 @@ export default function Contact() {
         type="ContactPage"
         data={{
           name: "Contact Isaac Vazquez",
-          description: "Reach out to discuss product management opportunities, product strategy engagements, or SaaS initiatives with Isaac Vazquez.",
+          description:
+            "Reach out to discuss product management opportunities, fintech product work, or analytics-driven platform initiatives with Isaac Vazquez.",
           mainEntity: {
             "@type": "Person",
             "name": "Isaac Vazquez",

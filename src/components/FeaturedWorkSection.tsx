@@ -7,11 +7,11 @@ import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
 import { Badge } from "@/components/ui/Badge";
 import { IconArrowRight } from "@tabler/icons-react";
-import { getFeaturedCaseStudies } from "@/constants/caseStudies";
+import { getHomepageFeaturedCaseStudies } from "@/constants/caseStudies";
 
 export function FeaturedWorkSection() {
   const shouldReduceMotion = useReducedMotion();
-  const featured = getFeaturedCaseStudies();
+  const featured = getHomepageFeaturedCaseStudies();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -49,8 +49,9 @@ export function FeaturedWorkSection() {
               Selected Work
             </Heading>
             <p className="text-lg text-[var(--text-secondary)] max-w-2xl">
-              Case studies demonstrating product thinking, cross-functional
-              leadership, and measurable outcomes.
+              Product work across investment research, analytics platforms, and
+              high-scale systems, with clear operating decisions behind the
+              outcomes.
             </p>
           </motion.div>
 
