@@ -123,8 +123,8 @@ export function ValuationRatiosPanel({
           Valuation Snapshot
         </h3>
         <p className="text-xs text-[var(--text-tertiary)] mb-4">
-          Live on-demand view for core valuation metrics. Industry comparison is
-          reserved for curated research symbols.
+          Standalone valuation view when industry comparison data is unavailable
+          for this curated research symbol.
         </p>
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">

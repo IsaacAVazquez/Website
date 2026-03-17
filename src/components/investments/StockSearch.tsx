@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { IconSearch, IconAlertCircle } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
+import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type { InvestmentsIndex } from "@/types/investment";
 
 interface Props {
@@ -21,9 +22,8 @@ export function StockSearch({ value, onChange }: Props) {
 
   // Load pre-fetched index once (served directly from public/)
   useEffect(() => {
-    fetch("/api/investments/index")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => { if (data) setIndex(data); })
+    getClientInvestmentsIndex()
+      .then((data) => { setIndex(data); })
       .catch(() => null);
   }, []);
 
@@ -50,12 +50,17 @@ export function StockSearch({ value, onChange }: Props) {
       : [];
 
   const isSeededSymbol = index?.symbols.includes(upper) ?? false;
-  const shouldShowOnDemandHint =
+  const shouldShowCuratedOnlyHint =
     hasInput && hasValidFormat && index !== null && !isSeededSymbol;
 
   function submit(sym: string) {
     const s = sym.trim().toUpperCase();
     if (!s || !VALID_SYMBOL_PATTERN.test(s)) return;
+    if (index && !index.symbols.includes(s)) {
+      setInput(s);
+      setShowDropdown(false);
+      return;
+    }
     setInput(s);
     setShowDropdown(false);
     onChange(s);
@@ -123,12 +128,12 @@ export function StockSearch({ value, onChange }: Props) {
         </p>
       )}
 
-      {shouldShowOnDemandHint && (
+      {shouldShowCuratedOnlyHint && (
         <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--color-warning)]">
           <IconAlertCircle size={13} />
           <span>
-            {upper} will load as a live on-demand snapshot. Curated research
-            symbols still include news and peer comparison.
+            Research is currently available for curated symbols only. Try one
+            of the suggested tickers.
           </span>
         </p>
       )}

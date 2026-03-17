@@ -65,7 +65,7 @@ export function InvestmentsClient() {
           </h1>
           <p className="text-[var(--text-secondary)] text-sm">
             Public fintech product exploring portfolio analytics, valuation,
-            financial statements, and live ticker research.
+            financial statements, and curated equity research workflows.
           </p>
         </motion.div>
 

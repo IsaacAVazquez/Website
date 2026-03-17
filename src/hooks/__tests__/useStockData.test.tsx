@@ -1,7 +1,7 @@
 import React from "react";
 import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
-import { useStockData } from "../useStockData";
+import { __testUtils, useStockData } from "../useStockData";
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 const mockFetch = jest.fn();
@@ -24,6 +24,7 @@ describe("useStockData", () => {
     document.body.appendChild(container);
     root = createRoot(container);
     mockFetch.mockReset();
+    __testUtils.clearCaches();
   });
 
   afterEach(() => {
@@ -31,59 +32,63 @@ describe("useStockData", () => {
     container.remove();
   });
 
-  it("surfaces source and capabilities for prefetched and on-demand symbols", async () => {
+  it("fetches one curated snapshot and serves multiple sections from local cache", async () => {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
-      if (url.includes("/api/investments/data/AAPL")) {
+      if (url.includes("/data/investments/AAPL/snapshot.json")) {
         return Promise.resolve({
           ok: true,
           json: async () => ({
-            data: { shortName: "Apple" },
             source: "prefetched",
-            capabilities: { info: true, news: true, compare: true },
+            symbol: "AAPL",
+            capabilities: {
+              info: true,
+              fundamentals: true,
+              news: true,
+              price: true,
+              compare: true,
+            },
             lastUpdated: "2026-03-16T08:00:00.000Z",
+            sections: {
+              info: { shortName: "Apple" },
+              fundamentals: { ttmPe: 28.4 },
+            },
           }),
         });
       }
 
-      return Promise.resolve({
-        ok: true,
-        json: async () => ({
-          data: { shortName: "Shopify" },
-          source: "on-demand",
-          capabilities: { info: true, news: false, compare: false },
-          lastUpdated: "2026-03-16T08:05:00.000Z",
-        }),
-      });
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
     });
 
-    let latestState:
+    let infoState:
       | ReturnType<typeof useStockData<{ shortName: string }>>
       | undefined;
+    let fundamentalsState:
+      | ReturnType<typeof useStockData<{ ttmPe: number }>>
+      | undefined;
 
-    function Probe({ symbol }: { symbol: string | null }) {
-      latestState = useStockData<{ shortName: string }>(symbol, "info");
+    function Probe() {
+      const nextInfoState = useStockData<{ shortName: string }>("AAPL", "info");
+      const nextFundamentalsState = useStockData<{ ttmPe: number }>("AAPL", "fundamentals");
+
+      React.useEffect(() => {
+        infoState = nextInfoState;
+        fundamentalsState = nextFundamentalsState;
+      }, [nextFundamentalsState, nextInfoState]);
+
       return null;
     }
 
     await act(async () => {
-      root.render(<Probe symbol="AAPL" />);
+      root.render(<Probe />);
     });
     await flushPromises();
 
-    expect(latestState?.source).toBe("prefetched");
-    expect(latestState?.capabilities.compare).toBe(true);
-    expect(latestState?.data?.shortName).toBe("Apple");
-
-    await act(async () => {
-      root.render(<Probe symbol="SHOP" />);
-    });
-    await flushPromises();
-
-    expect(latestState?.source).toBe("on-demand");
-    expect(latestState?.capabilities.compare).toBe(false);
-    expect(latestState?.capabilities.news).toBe(false);
-    expect(latestState?.data?.shortName).toBe("Shopify");
+    expect(infoState?.source).toBe("prefetched");
+    expect(infoState?.capabilities.compare).toBe(true);
+    expect(infoState?.data?.shortName).toBe("Apple");
+    expect(fundamentalsState?.data?.ttmPe).toBe(28.4);
+    expect(mockFetch).toHaveBeenCalledTimes(1);
   });
 
   it("returns an empty state when no symbol is selected", async () => {
@@ -92,7 +97,12 @@ describe("useStockData", () => {
       | undefined;
 
     function Probe() {
-      latestState = useStockData<{ shortName: string }>(null, "info");
+      const nextState = useStockData<{ shortName: string }>(null, "info");
+
+      React.useEffect(() => {
+        latestState = nextState;
+      }, [nextState]);
+
       return null;
     }
 

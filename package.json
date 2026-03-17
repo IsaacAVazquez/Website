@@ -19,7 +19,7 @@
     "test:e2e:debug": "playwright test --debug",
     "test:all": "npm run test:coverage && npm run test:e2e",
     "update:fantasy-rb": "tsx scripts/updateFantasyRBTiers.ts",
-    "update:investments": ".venv/bin/python3 scripts/fetch_investments_data.py",
+    "update:investments": ".venv/bin/python3 scripts/fetch_investments_data.py && tsx scripts/buildInvestmentsSnapshots.ts",
     "generate:icons": "node scripts/generate-pwa-icons.mjs"
   },
   "dependencies": {

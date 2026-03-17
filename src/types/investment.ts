@@ -252,3 +252,11 @@ export interface InvestmentDataEnvelope<T> {
   capabilities: InvestmentCapabilities;
   lastUpdated: string | null;
 }
+
+export interface InvestmentSnapshot {
+  symbol: string;
+  lastUpdated: string | null;
+  source: "prefetched";
+  capabilities: InvestmentCapabilities;
+  sections: Partial<Record<InvestmentSection, unknown>>;
+}

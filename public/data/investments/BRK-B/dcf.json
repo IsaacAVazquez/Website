@@ -1,3 +1,0 @@
-{
-  "error": "incompatible merge keys [0] dtype('<M8[us]') and dtype('<M8[s]'), must be the same type"
-}

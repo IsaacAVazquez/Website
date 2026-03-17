@@ -5,8 +5,14 @@ import type {
   InvestmentCapabilities,
   InvestmentDataEnvelope,
   InvestmentDataSource,
+  InvestmentSnapshot,
   InvestmentSection,
 } from "@/types/investment";
+import {
+  clearClientInvestmentDataCaches,
+  clearClientInvestmentDataCachesForTests,
+  getClientInvestmentSnapshot,
+} from "@/lib/investmentsClientData";
 
 interface UseStockDataState<T> {
   data: T | null;
@@ -22,7 +28,6 @@ export interface UseStockDataReturn<T> extends UseStockDataState<T> {
   refetch: () => void;
 }
 
-const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 const EMPTY_CAPABILITIES: InvestmentCapabilities = {};
 const EMPTY_STATE = {
   data: null,
@@ -34,67 +39,38 @@ const EMPTY_STATE = {
   capabilities: EMPTY_CAPABILITIES,
 } as const;
 
-// In-memory cache: `${symbol}:${section}` → envelope + timestamp
-const cache = new Map<
-  string,
-  { envelope: InvestmentDataEnvelope<unknown>; timestamp: number }
->();
-// In-flight promise cache to deduplicate concurrent requests
-const inflight = new Map<string, Promise<InvestmentDataEnvelope<unknown>>>();
-
-async function fetchEnvelope<T>(
+function buildEnvelopeFromSnapshot<T>(
+  snapshot: InvestmentSnapshot,
   symbol: string,
   section: string
-): Promise<InvestmentDataEnvelope<T>> {
-  const response = await fetch(
-    `/api/investments/data/${encodeURIComponent(symbol)}?section=${encodeURIComponent(section)}`
-  );
-  const payload = (await response.json()) as
-    | InvestmentDataEnvelope<T>
-    | {
-        error?: string;
-        source?: InvestmentDataSource;
-        capabilities?: InvestmentCapabilities;
-        lastUpdated?: string | null;
-      };
-
-  if (!response.ok) {
-    const errorMessage =
-      "error" in payload ? payload.error ?? `HTTP ${response.status}` : `HTTP ${response.status}`;
-    throw Object.assign(new Error(errorMessage), {
-      status: response.status,
-      source: payload.source ?? null,
-      capabilities: payload.capabilities ?? {},
-      lastUpdated: payload.lastUpdated ?? null,
-    });
+): InvestmentDataEnvelope<T> {
+  const data = snapshot.sections[section as InvestmentSection];
+  if (data === undefined || data === null) {
+    throw Object.assign(
+      new Error(`Section "${section}" not available for ${symbol}`),
+      {
+        status: 404,
+        source: snapshot.source as InvestmentDataSource,
+        capabilities: snapshot.capabilities,
+        lastUpdated: snapshot.lastUpdated,
+      }
+    );
   }
 
-  return payload as InvestmentDataEnvelope<T>;
+  return {
+    data: data as T,
+    source: snapshot.source,
+    capabilities: snapshot.capabilities,
+    lastUpdated: snapshot.lastUpdated,
+  };
 }
 
 async function fetchSection<T>(
   symbol: string,
   section: string
 ): Promise<InvestmentDataEnvelope<T>> {
-  const key = `${symbol}:${section}`;
-
-  // Serve from cache if fresh
-  const cached = cache.get(key);
-  if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
-    return cached.envelope as InvestmentDataEnvelope<T>;
-  }
-
-  if (!inflight.has(key)) {
-    const promise = fetchEnvelope<T>(symbol, section)
-      .then((envelope) => {
-        cache.set(key, { envelope, timestamp: Date.now() });
-        return envelope;
-      })
-      .finally(() => inflight.delete(key));
-    inflight.set(key, promise);
-  }
-
-  return inflight.get(key) as Promise<InvestmentDataEnvelope<T>>;
+  const snapshot = await getClientInvestmentSnapshot(symbol);
+  return buildEnvelopeFromSnapshot<T>(snapshot, symbol, section);
 }
 
 export function useStockData<T>(
@@ -118,26 +94,6 @@ export function useStockData<T>(
     }
 
     const upperSymbol = symbol.toUpperCase();
-    const key = `${upperSymbol}:${section}`;
-
-    // Serve from cache immediately if fresh
-    const cached = cache.get(key);
-    if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
-      Promise.resolve(cached.envelope).then((envelope) => {
-        if (!isMounted.current) return;
-        setState({
-          data: envelope.data as T,
-          isLoading: false,
-          error: null,
-          isNotFetched: false,
-          lastUpdated: envelope.lastUpdated,
-          source: envelope.source,
-          capabilities: envelope.capabilities,
-        });
-      });
-      return;
-    }
-
     Promise.resolve().then(() => {
       if (!isMounted.current) return;
       setState((prev) => ({ ...prev, isLoading: true, error: null }));
@@ -182,10 +138,9 @@ export function useStockData<T>(
 
   const refetch = useCallback(() => {
     if (!symbol) return;
-    const key = `${symbol.toUpperCase()}:${section}`;
-    cache.delete(key);
+    clearClientInvestmentDataCaches();
     setFetchKey((k) => k + 1);
-  }, [symbol, section]);
+  }, [symbol]);
 
   if (!symbol) {
     return {
@@ -196,3 +151,7 @@ export function useStockData<T>(
 
   return { ...state, refetch };
 }
+
+export const __testUtils = {
+  clearCaches: clearClientInvestmentDataCachesForTests,
+};

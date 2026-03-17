@@ -19,6 +19,7 @@ import {
   getReducedMotionVariants,
 } from "./animations";
 import { useStockData } from "@/hooks/useStockData";
+import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type {
   CompanyInfo,
   InvestmentCapabilities,
@@ -79,6 +80,9 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
   const [datasetLastUpdated, setDatasetLastUpdated] = useState<string | null>(null);
   const shouldReduceMotion = useReducedMotion();
   const {
+    error: symbolError,
+    isLoading: symbolLoading,
+    isNotFetched: symbolNotFetched,
     source,
     capabilities,
     lastUpdated: symbolLastUpdated,
@@ -88,28 +92,35 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
 
   // Load the curated dataset timestamp for prefetched research symbols.
   useEffect(() => {
-    fetch("/api/investments/index")
-      .then((r) => r.json())
+    getClientInvestmentsIndex()
       .then((data: InvestmentsIndex) => {
         if (data.lastUpdated) setDatasetLastUpdated(data.lastUpdated);
       })
       .catch(() => {});
   }, []);
 
+  const hasResearchContext = source !== null || Object.keys(capabilities).length > 0;
   const visibleTabs = useMemo(
     () =>
-      symbol ? TABS.filter((tab) => isTabAvailable(tab.key, capabilities)) : TABS,
-    [capabilities, symbol]
+      symbol && hasResearchContext
+        ? TABS.filter((tab) => isTabAvailable(tab.key, capabilities))
+        : [],
+    [capabilities, hasResearchContext, symbol]
   );
 
   const isInPortfolio = symbol && portfolioSymbols.includes(symbol);
-  const freshnessMode = symbol && source === "on-demand" ? "live" : "dataset";
-  const freshnessLastUpdated =
-    symbol && source === "on-demand" ? symbolLastUpdated : datasetLastUpdated;
+  const freshnessMode = "dataset";
+  const freshnessLastUpdated = symbolLastUpdated ?? datasetLastUpdated;
   const showNews = capabilities.news !== false;
   const resolvedActiveTab = visibleTabs.some((tab) => tab.key === activeTab)
     ? activeTab
     : "overview";
+  const showCuratedOnlyState =
+    !!symbol && !symbolLoading && symbolNotFetched && !hasResearchContext;
+  const showResearchErrorState =
+    !!symbol && !symbolLoading && !!symbolError && !showCuratedOnlyState && !hasResearchContext;
+  const showLoadingState =
+    !!symbol && symbolLoading && !hasResearchContext;
 
   function handleSymbolChange(nextSymbol: string) {
     startTransition(() => {
@@ -138,39 +149,32 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
         </div>
       )}
 
-      {symbol && source === "on-demand" ? (
-        <div className="mb-5 rounded-2xl border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--surface-secondary))] px-4 py-3 text-sm text-[var(--text-secondary)]">
-          Live snapshot mode for <span className="font-semibold text-[var(--text-primary)]">{symbol}</span>.
-          This view supports core valuation, financials, growth, and charting.
-          News, industry comparison, and the compare workflow stay
-          available for curated research symbols.
+      {/* Inner tab bar */}
+      {visibleTabs.length > 0 ? (
+        <div
+          className="flex gap-1 mb-5 overflow-x-auto pb-1 border-b border-[var(--border-primary)]"
+          role="tablist"
+          aria-label="Research sections"
+        >
+          {visibleTabs.map(({ key, label }) => (
+            <button
+              key={key}
+              role="tab"
+              aria-selected={resolvedActiveTab === key}
+              onClick={() => setActiveTab(key)}
+              className={`px-3 py-2 text-sm font-medium rounded-t-md transition whitespace-nowrap min-h-[44px] border-b-2 -mb-px ${
+                resolvedActiveTab === key
+                  ? "border-[var(--color-primary)] text-[var(--color-primary)]"
+                  : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
         </div>
       ) : null}
 
-      {/* Inner tab bar */}
-      <div
-        className="flex gap-1 mb-5 overflow-x-auto pb-1 border-b border-[var(--border-primary)]"
-        role="tablist"
-        aria-label="Research sections"
-      >
-        {visibleTabs.map(({ key, label }) => (
-          <button
-            key={key}
-            role="tab"
-            aria-selected={resolvedActiveTab === key}
-            onClick={() => setActiveTab(key)}
-            className={`px-3 py-2 text-sm font-medium rounded-t-md transition whitespace-nowrap min-h-[44px] border-b-2 -mb-px ${
-              resolvedActiveTab === key
-                ? "border-[var(--color-primary)] text-[var(--color-primary)]"
-                : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      {resolvedActiveTab !== "compare" && symbol ? (
+      {resolvedActiveTab !== "compare" && symbol && !showCuratedOnlyState && hasResearchContext ? (
         <div className="mb-5">
           <ResearchSummaryStrip symbol={symbol} />
         </div>
@@ -193,6 +197,30 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
             <div className="text-center py-20">
               <p className="text-[var(--text-tertiary)] text-sm">
                 Enter a stock symbol above to start researching.
+              </p>
+            </div>
+          ) : showLoadingState ? (
+            <div className="text-center py-20">
+              <p className="text-[var(--text-tertiary)] text-sm">
+                Loading curated research data for {symbol}…
+              </p>
+            </div>
+          ) : showCuratedOnlyState ? (
+            <div className="rounded-2xl border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--surface-secondary))] px-5 py-6 text-center">
+              <p className="text-sm font-semibold text-[var(--text-primary)]">
+                Research is currently available for curated symbols only.
+              </p>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">
+                {symbolError ?? `Try a symbol from the curated research universe instead of ${symbol}.`}
+              </p>
+            </div>
+          ) : showResearchErrorState ? (
+            <div className="rounded-2xl border border-[color-mix(in_srgb,var(--color-error)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-error)_8%,var(--surface-secondary))] px-5 py-6 text-center">
+              <p className="text-sm font-semibold text-[var(--text-primary)]">
+                Research data could not be loaded.
+              </p>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">
+                {symbolError}
               </p>
             </div>
           ) : (

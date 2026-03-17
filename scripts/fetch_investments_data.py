@@ -2,11 +2,12 @@
 """
 Investment data pipeline using defeatbeta-api.
 Reads symbols from scripts/investments_symbols.txt, fetches financial data,
-and writes per-ticker JSON files to public/data/investments/{SYMBOL}/.
+and writes raw per-ticker JSON files to public/data/investments/{SYMBOL}/
+before the snapshot builder compacts them into snapshot.json artifacts.
 
 Usage:
     .venv/bin/python3 scripts/fetch_investments_data.py
-    (or: npm run update:investments)
+    (or: npm run update:investments, which also builds curated snapshots)
 
 Requirements:
     .venv/bin/pip install defeatbeta-api
@@ -117,7 +118,10 @@ def fetch_officers(t: Ticker, out: Path) -> None:
 
 def fetch_price(t: Ticker, out: Path) -> None:
     print("  price...")
-    write_json(out / "price.json", df_to_json(safe_call(lambda: t.price())))
+    result = df_to_json(safe_call(lambda: t.price()))
+    if isinstance(result, list):
+        result = result[-252:]
+    write_json(out / "price.json", result)
 
 
 def fetch_beta(t: Ticker, out: Path) -> None:
@@ -277,28 +281,10 @@ def fetch_news(t: Ticker, out: Path) -> None:
         write_json(out / "news.json", result)
         return
     news_list = safe_call(lambda: result.get_news_list())
-    write_json(out / "news.json", df_to_json(news_list))
-
-
-def fetch_transcripts(t: Ticker, out: Path) -> None:
-    print("  transcripts...")
-    result = safe_call(lambda: t.earning_call_transcripts())
-    if isinstance(result, dict):
-        write_json(out / "transcripts.json", result)
-        return
-
-    transcript_list = safe_call(lambda: result.get_transcripts_list())
-    write_json(out / "transcripts.json", df_to_json(transcript_list))
-
-    # Fetch individual transcripts (up to 4 most recent)
-    if isinstance(transcript_list, pd.DataFrame):
-        for _, row in transcript_list.head(4).iterrows():
-            fy = int(row.get("fiscal_year", row.get("fiscalYear", 0)))
-            fq = int(row.get("fiscal_quarter", row.get("fiscalQuarter", 0)))
-            if fy and fq:
-                print(f"    transcript {fy} Q{fq}...")
-                content = safe_call(lambda: result.get_transcript(fy, fq))
-                write_json(out / f"transcript_{fy}_{fq}.json", df_to_json(content))
+    serialized = df_to_json(news_list)
+    if isinstance(serialized, list):
+        serialized = serialized[:10]
+    write_json(out / "news.json", serialized)
 
 
 # ---------------------------------------------------------------------------
@@ -320,7 +306,6 @@ def fetch_symbol(symbol: str, out_dir: Path) -> None:
     fetch_industry(t, out_dir)
     fetch_revenue_segments(t, out_dir)
     fetch_news(t, out_dir)
-    fetch_transcripts(t, out_dir)
 
 
 def main() -> None:

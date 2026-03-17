@@ -8,13 +8,13 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Repositioned `/investments` as a public fintech proof point with recruiter-facing metadata, `SoftwareApplication` structured data, homepage/home/about/contact copy updates, sitemap exposure, and main navigation visibility.
 - Reworked homepage curation so `Selected Work` highlights `Investment Analytics Platform`, `Transforming Client Reporting into Self-Service Analytics`, and `Scaling a Platform to 60M+ Users`, while removing fantasy football from the homepage featured set.
-- Added a hybrid investments data layer with server-side prefetched-symbol reads, Yahoo-backed on-demand ticker snapshots, TTL caching, and shared `source`/`capabilities` metadata across the API and client hook.
-- Updated the research workspace to support arbitrary valid ticker entry, on-demand snapshot messaging, capability-aware tab visibility, source-aware freshness labels, and standalone valuation metrics for live snapshot symbols.
+- Replaced the investments research runtime path with static curated symbol snapshots served from `/data/investments/*`, so the research UI now loads one published snapshot per symbol instead of fanning out through server-side section APIs.
+- Slimmed the curated investments dataset from raw per-section dumps to precomputed UI-ready snapshots, capped price history to 1Y, capped news to 10 items, removed transcript artifacts, and reduced the published research dataset from roughly `240 MB` to roughly `2.2 MB`.
+- Updated the research workspace to support curated-symbol search only in production, show a clear curated-universe message for non-curated symbols, and keep portfolio quote lookups as the only live Yahoo dependency.
 - Removed transcript functionality from the investments research surface, route validation, and shared investment data types to simplify the app and reduce unsupported feature area.
-- Hardened the on-demand data path for production by deduplicating concurrent snapshot builds per symbol, routing chart history through the shared Yahoo backoff client, falling back to stale snapshots on upstream rate-limit/server errors, and translating upstream `429` responses into temporary `503` API responses.
-- Made the prefetched investments dataset loader request-origin aware for Netlify/serverless deployments, fail explicitly with a curated-dataset `503` when seeded data cannot be resolved, and fall back to public asset URLs instead of misclassifying curated symbols as on-demand.
+- Simplified the server-side investments compatibility routes so they now read static snapshots and index files only, while keeping request-origin-aware static asset fallback for Netlify/serverless environments.
 - Removed the extra same-origin proxy hop from portfolio quote fetching.
-- Added route, hook, component, and Playwright coverage for seeded vs. on-demand ticker flows, `/investments` discoverability, and homepage featured-work ordering.
+- Added route, hook, component, snapshot-builder, and Playwright coverage for curated static ticker flows, `/investments` discoverability, and homepage featured-work ordering.
 
 ---
 

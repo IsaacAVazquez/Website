@@ -1,5 +1,65 @@
 import { expect, test } from "@playwright/test";
 
+const curatedIndex = {
+  symbols: ["AAPL", "MSFT"],
+  failed: [],
+  lastUpdated: "2026-03-16T08:00:00.000Z",
+};
+
+const appleSnapshot = {
+  symbol: "AAPL",
+  source: "prefetched",
+  lastUpdated: "2026-03-16T08:00:00.000Z",
+  capabilities: {
+    info: true,
+    fundamentals: true,
+    profitability: true,
+    margins: true,
+    growth: true,
+    income_statement: true,
+    balance_sheet: true,
+    cash_flow: true,
+    price: true,
+    beta: true,
+    wacc: true,
+    dcf: true,
+    industry: true,
+    news: true,
+    compare: true,
+  },
+  sections: {
+    info: {
+      shortName: "Apple",
+      longName: "Apple Inc.",
+      sector: "Technology",
+      industry: "Consumer Electronics",
+      country: "United States",
+    },
+    fundamentals: {
+      ttmPe: 28.4,
+      psRatio: 7.9,
+      pbRatio: 41.2,
+      pegRatio: 2.1,
+      marketCap: 2900000000000,
+    },
+    profitability: { roe: 33.2, roic: 28.4, roa: 19.1 },
+    margins: [{ grossMargin: 46.1, netMargin: 24.4, fcfMargin: 25.7 }],
+    growth: [{ metric: "Revenue YoY", yoyGrowth: 8.5 }],
+    income_statement: { quarterly: [], annual: [] },
+    balance_sheet: { quarterly: [], annual: [] },
+    cash_flow: { quarterly: [], annual: [] },
+    beta: { beta5y: 1.12 },
+    wacc: { wacc: 8.4 },
+    dcf: { fairValue: 220, currentPrice: 198, upside: 11.1, recommendation: "Hold" },
+    industry: [{ metric: "P/E (TTM)", value: 28.4, industryAvg: 31.2 }],
+    news: [{ title: "Apple expands services push", publisher: "Reuters" }],
+    price: [
+      { date: "2026-03-14", open: 192, high: 197, low: 191, close: 195, volume: 1000 },
+      { date: "2026-03-15", open: 195, high: 199, low: 194, close: 198, volume: 1200 },
+    ],
+  },
+};
+
 test.describe("Investments", () => {
   test("is discoverable from main navigation", async ({ page }) => {
     await page.goto("/");
@@ -14,173 +74,65 @@ test.describe("Investments", () => {
     ).toBeVisible();
   });
 
-  test("supports mocked on-demand ticker research mode", async ({ page }) => {
-    await page.route("**/api/investments/index", async (route) => {
+  test("loads curated research from static assets and blocks non-curated symbols", async ({ page }) => {
+    const requests: string[] = [];
+    page.on("request", (request) => {
+      const url = request.url();
+      if (
+        url.includes("/data/investments/") ||
+        url.includes("/api/investments/data/")
+      ) {
+        requests.push(url);
+      }
+    });
+
+    await page.route("**/data/investments/index.json", async (route) => {
       await route.fulfill({
         status: 200,
         contentType: "application/json",
-        body: JSON.stringify({
-          symbols: ["AAPL", "MSFT"],
-          failed: [],
-          lastUpdated: "2026-03-16T08:00:00.000Z",
-        }),
+        body: JSON.stringify(curatedIndex),
       });
     });
 
-    await page.route("**/api/investments/data/SHOP?*", async (route) => {
-      const url = new URL(route.request().url());
-      const section = url.searchParams.get("section");
-      const capabilities = {
-        info: true,
-        fundamentals: true,
-        profitability: true,
-        margins: true,
-        growth: true,
-        income_statement: true,
-        balance_sheet: true,
-        cash_flow: true,
-        price: true,
-        beta: true,
-        wacc: true,
-        dcf: false,
-        industry: false,
-        news: false,
-        compare: false,
-      };
-
-      const payload = (() => {
-        switch (section) {
-          case "info":
-            return {
-              data: {
-                shortName: "SHOP",
-                longName: "Shopify",
-                sector: "Technology",
-                industry: "Software",
-                country: "Canada",
-              },
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          case "fundamentals":
-            return {
-              data: {
-                ttmPe: 45.3,
-                psRatio: 12.4,
-                pbRatio: 6.2,
-                pegRatio: 1.8,
-                marketCap: 105000000000,
-              },
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          case "profitability":
-            return {
-              data: { roe: 12.2, roic: 9.4 },
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          case "margins":
-            return {
-              data: [{ grossMargin: 52.1, netMargin: 11.4, fcfMargin: 14.2 }],
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          case "growth":
-            return {
-              data: [{ metric: "Revenue YoY", yoyGrowth: 18.5 }],
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          case "price":
-            return {
-              data: [
-                {
-                  report_date: "2026-03-14",
-                  date: "2026-03-14",
-                  open: 102,
-                  high: 108,
-                  low: 101,
-                  close: 106,
-                  volume: 1000,
-                },
-                {
-                  report_date: "2026-03-15",
-                  date: "2026-03-15",
-                  open: 106,
-                  high: 110,
-                  low: 104,
-                  close: 108,
-                  volume: 1200,
-                },
-              ],
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          case "beta":
-            return {
-              data: { beta5y: 1.12 },
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          case "wacc":
-            return {
-              data: { wacc: 9.1 },
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          case "dcf":
-            return {
-              error: "DCF data unavailable",
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          case "news":
-            return {
-              error: 'Section "news" is available for curated research symbols only.',
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-          default:
-            return {
-              data: { quarterly: [], annual: [] },
-              source: "on-demand",
-              capabilities,
-              lastUpdated: "2026-03-16T08:05:00.000Z",
-            };
-        }
-      })();
-
+    await page.route("**/data/investments/AAPL/snapshot.json", async (route) => {
       await route.fulfill({
-        status: section === "dcf" || section === "news" ? 404 : 200,
+        status: 200,
         contentType: "application/json",
-        body: JSON.stringify(payload),
+        body: JSON.stringify(appleSnapshot),
+      });
+    });
+
+    await page.route("**/data/investments/SHOP/snapshot.json", async (route) => {
+      await route.fulfill({
+        status: 404,
+        contentType: "text/plain",
+        body: "Not found",
       });
     });
 
     await page.goto("/investments");
-    await page.getByRole("textbox", { name: /search stock symbol/i }).fill("SHOP");
-    await page.getByRole("textbox", { name: /search stock symbol/i }).press("Enter");
+    await page.waitForLoadState("networkidle");
 
-    await expect(page.getByText(/Live snapshot mode for/i)).toBeVisible();
     await expect(page.getByRole("tab", { name: /overview/i })).toBeVisible();
     await expect(page.getByRole("tab", { name: /financials/i })).toBeVisible();
     await expect(page.getByRole("tab", { name: /growth/i })).toBeVisible();
     await expect(page.getByRole("tab", { name: /valuation/i })).toBeVisible();
+    await expect(page.getByRole("tab", { name: /industry/i })).toBeVisible();
+    await expect(page.getByRole("tab", { name: /^dcf$/i })).toBeVisible();
     await expect(page.getByRole("tab", { name: /chart/i })).toBeVisible();
-    await expect(page.getByRole("tab", { name: /^dcf$/i })).toHaveCount(0);
-    await expect(page.getByRole("tab", { name: /industry/i })).toHaveCount(0);
-    await expect(page.getByRole("tab", { name: /compare/i })).toHaveCount(0);
+    await expect(page.getByText(/live snapshot mode/i)).toHaveCount(0);
+
+    await page.getByRole("textbox", { name: /search stock symbol/i }).fill("SHOP");
+    await page.getByRole("textbox", { name: /search stock symbol/i }).press("Enter");
+
+    await expect(
+      page.getByText(/research is currently available for curated symbols only/i)
+    ).toBeVisible();
+
+    expect(requests.filter((url) => url.includes("/api/investments/data/"))).toHaveLength(0);
+    expect(requests.filter((url) => url.includes("/data/investments/index.json")).length).toBe(1);
+    expect(requests.filter((url) => url.includes("/data/investments/AAPL/snapshot.json")).length).toBe(1);
+    expect(requests.filter((url) => url.includes("/data/investments/SHOP/snapshot.json"))).toHaveLength(0);
   });
 
   test("homepage prioritizes the fintech project in selected work", async ({ page }) => {

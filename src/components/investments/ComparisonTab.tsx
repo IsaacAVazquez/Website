@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import { useStockData } from "@/hooks/useStockData";
+import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import { ComparisonRadarChart, type RadarDimension } from "./ComparisonRadarChart";
 import { ComparisonMetricTable, type MetricRow } from "./ComparisonMetricTable";
 import type {
@@ -18,8 +19,7 @@ const FALLBACK_SYMBOLS = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA
 function useIndexSymbols(): string[] {
   const [symbols, setSymbols] = useState<string[]>(FALLBACK_SYMBOLS);
   useEffect(() => {
-    fetch("/api/investments/index")
-      .then((r) => r.json())
+    getClientInvestmentsIndex()
       .then((data: InvestmentsIndex) => {
         if (data.symbols?.length > 0) setSymbols(data.symbols);
       })

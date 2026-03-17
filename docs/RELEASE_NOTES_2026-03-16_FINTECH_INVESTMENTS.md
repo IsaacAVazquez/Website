@@ -4,7 +4,7 @@ Date: 2026-03-16
 
 ## Summary
 
-This release turns `/investments` into a public-facing fintech product showcase instead of a personal portfolio diary. The page is now discoverable from the main navigation and sitemap, the homepage better signals investment and analytics work, and the research experience now supports arbitrary valid ticker symbols through a hybrid prefetched plus on-demand data path.
+This release turns `/investments` into a public-facing fintech product showcase instead of a personal portfolio diary. The page is now discoverable from the main navigation and sitemap, the homepage better signals investment and analytics work, and the research experience now ships as a curated static research product instead of a hybrid runtime Yahoo flow.
 
 ## Highlights
 
@@ -23,61 +23,42 @@ This release turns `/investments` into a public-facing fintech product showcase 
 - Removed fantasy football from the homepage featured set while keeping it available on `/portfolio`.
 - Hardened the homepage featured-work selector so an invalid featured slug cannot crash the section at runtime.
 
-### Hybrid ticker research
+### Curated static ticker research
 
-- Moved investments data loading behind a shared server-side layer and API envelope.
-- Seeded research symbols still load from the prefetched dataset first.
-- Valid unseeded symbols now fetch on demand from Yahoo-backed server utilities and are cached in memory with a TTL.
-- Production hardening update:
-  - concurrent on-demand section requests now share a single per-symbol snapshot build instead of stampeding Yahoo
-  - chart history now flows through the same guarded Yahoo client as quote summary
-  - stale on-demand snapshots are reused when Yahoo returns rate-limit or server errors
-  - upstream Yahoo `429` responses are surfaced to the app as temporary `503` responses instead of raw vendor rate limits
-  - prefetched dataset resolution now prefers the current request origin, then Netlify-safe environment URLs, when serverless functions do not have `public/data/investments/*` on disk
-  - curated symbols no longer fall through to the live Yahoo path when the prefetched index cannot be resolved; the API now returns an explicit curated-dataset `503` instead
-  - seeded research data still falls back to public asset URLs in serverless environments where `public/data/investments/*` is not present on the function filesystem
-  - portfolio quotes now fetch directly from Yahoo in the investments route instead of making an extra same-origin proxy request to `/api/stocks`
-- API responses now expose:
-  - `source: "prefetched" | "on-demand"`
-  - `capabilities` for research sections and seeded-only features
+- Replaced per-section runtime research fetching with one static `snapshot.json` per curated symbol under `/data/investments/{symbol}/`.
+- The client now loads static curated research assets directly instead of depending on `/api/investments/data/[symbol]` for normal rendering.
+- Production research is now curated-universe-only; non-curated symbols show a clear unavailable message instead of falling through to Yahoo.
+- Portfolio quotes remain the only live Yahoo dependency in the investments experience.
+- Static research artifacts now include shared metadata:
+  - `source: "prefetched"`
+  - `capabilities`
   - `lastUpdated`
 
-### On-demand research behavior
+### Dataset slimming
 
-- Guaranteed on-demand support:
-  - `Overview`
-  - `Financials`
-  - `Growth`
-  - `Valuation`
-  - `Chart`
-- Best-effort on-demand support:
-  - `DCF` when the required inputs are available
-- Seeded-universe-only features in this release:
-  - `Industry`
-  - embedded `News`
-  - `Compare`
-- On-demand valuation now renders a standalone valuation snapshot instead of industry-relative comparisons.
+- Replaced the large raw per-section JSON payloads with precomputed, UI-ready symbol snapshots.
+- Capped static `price` history to the most recent 252 trading days.
+- Capped static `news` to the most recent 10 items per symbol.
+- Removed transcript artifacts from the generated dataset and the pipeline.
+- Reduced `public/data/investments` from roughly `240 MB` to roughly `2.2 MB`.
 
 ### Research UX updates
 
-- `StockSearch` now accepts any valid ticker symbol, while still using the seeded index for autocomplete suggestions.
-- Unknown but valid symbols now show an on-demand snapshot hint instead of a hard database rejection.
-- `StockResearch` uses capability metadata to hide unsupported tabs for on-demand symbols.
-- Added a live snapshot banner and source-aware freshness labels so users can tell whether they are viewing curated dataset content or a live fetch.
-- Overview mode omits seeded-only news UI for on-demand symbols.
+- `StockSearch` now uses the curated static index directly for autocomplete and blocks non-curated symbols from entering research mode.
+- `useStockData` serves sections from a per-symbol static snapshot cache, so multiple panels no longer trigger many network requests for the same symbol.
+- `StockResearch` fails cleanly for non-curated symbols, including symbols opened from portfolio holdings.
+- Overview and summary components now render from the same static snapshot-backed hook contract as the rest of the research surface.
 
 ## Technical notes
 
-- Added a new shared investments data module for prefetched reads, on-demand fetches, transforms, and caching.
-- Refactored `useStockData` so the API is the single source of truth instead of client-side reads from `public/data/investments/*`.
-- Added an index API route for seeded symbol lookup and dataset freshness.
+- Added a snapshot builder that converts the raw investments dataset into normalized static symbol bundles and prunes legacy per-section files.
+- Refactored `useStockData` so the static snapshot is the client-side source of truth instead of the per-section API.
+- Kept the index/data API routes only as compatibility wrappers over static assets.
 - Added route, hook, component, and Playwright tests covering:
-  - seeded responses
-  - uncached valid on-demand symbols
-  - invalid symbols
-  - unsupported on-demand sections
-  - manual unknown-ticker submission
-  - capability-driven tab visibility
+  - curated static responses
+  - non-curated symbol blocking
+  - snapshot generation caps for price and news
+  - capability-driven tab visibility from a single symbol snapshot
   - nav/homepage discoverability
 - Removed the transcript research feature from the investments app, route validation, and shared investment data types to simplify the research surface area.
 
