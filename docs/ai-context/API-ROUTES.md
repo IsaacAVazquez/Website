@@ -151,13 +151,12 @@ Serves pre-built investment research data from `public/data/investments/{symbol}
 **Parameters:** `section` (required)
 
 **Valid sections:**
-`price`, `fundamentals`, `profitability`, `margins`, `growth`, `income_statement`, `balance_sheet`, `cash_flow`, `wacc`, `beta`, `industry`, `revenue_segments`, `officers`, `transcripts`, `news`, `dcf`, `info`, `transcript_YYYY_Q`
+`price`, `fundamentals`, `profitability`, `margins`, `growth`, `income_statement`, `balance_sheet`, `cash_flow`, `wacc`, `beta`, `industry`, `revenue_segments`, `officers`, `news`, `dcf`, `info`
 
 **Response varies by section.** Examples:
 - **fundamentals:** `{ ttmEps, ttmPe, marketCap, psRatio, pbRatio, pegRatio }`
 - **dcf:** `{ fairValue, currentPrice, upside, recommendation: "Buy"|"Hold"|"Sell" }`
 - **industry:** Comparison metrics (P/E, P/S, ROE, margins) stock vs industry avg
-- **transcripts:** `[{ fiscalYear, fiscalQuarter, date }]`
 - **news:** `[{ uuid, title, publisher, reportDate, link, type }]`
 
 **Cache:** `max-age=3600, stale-while-revalidate=86400`

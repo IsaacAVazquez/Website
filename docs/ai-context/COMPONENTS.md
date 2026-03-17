@@ -273,7 +273,7 @@ Main portfolio view. Composes: `useInvestments` hook → `PortfolioSummary` + `S
 
 ### StockResearch
 **File:** `src/components/investments/StockResearch.tsx` — Client component
-Multi-panel research interface with 9 tabs: Fundamentals, Financials, Valuation, Profitability, Growth, Industry, Transcripts, DCF, News, plus Comparison tab and Price Chart.
+Multi-panel research interface with overview, financials, valuation, profitability, growth, industry, DCF, comparison, and price-chart views.
 
 ### StockCard
 **File:** `src/components/investments/StockCard.tsx` — Client component
@@ -303,7 +303,7 @@ D3 line chart + volume chart with time-range selector (1W/1M/3M/6M/1Y/All). `Res
 **File:** `src/components/investments/Sparkline.tsx` — Client component
 D3 mini sparkline (line + area fill). Color-coded green/red based on trend.
 
-### Research Panels (9 panels)
+### Research Panels (8 panels)
 All follow the same pattern: `{ symbol: string }` props, use `useStockData<T>()` hook, render in `<WarmCard>`, show `<ErrorState>` on failure.
 
 | Component | File | Data Section | Visualization |
@@ -314,7 +314,6 @@ All follow the same pattern: `{ symbol: string }` props, use `useStockData<T>()`
 | `ProfitabilityPanel` | `investments/ProfitabilityPanel.tsx` | `profitability`, `margins` | Metric bars |
 | `GrowthPanel` | `investments/GrowthPanel.tsx` | `growth` | D3 bar chart |
 | `IndustryPanel` | `investments/IndustryPanel.tsx` | `industry` | Comparison table |
-| `TranscriptsPanel` | `investments/TranscriptsPanel.tsx` | `transcripts`, `transcript_YYYY_Q` | List + viewer |
 | `DCFPanel` | `investments/DCFPanel.tsx` | `dcf`, `wacc` | Fair value display |
 | `NewsPanel` | `investments/NewsPanel.tsx` | `news` | News feed |
 

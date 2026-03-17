@@ -130,28 +130,6 @@ export interface IndustryMetric {
 
 export type IndustryData = IndustryMetric[] | Record<string, unknown> | { error: string };
 
-export interface TranscriptSummary {
-  fiscalYear: number;
-  fiscalQuarter: number;
-  date?: string;
-  [key: string]: unknown;
-}
-
-export type TranscriptsData = TranscriptSummary[] | { error: string };
-
-export interface TranscriptParagraph {
-  speaker: string;
-  content: string;
-}
-
-export interface TranscriptContent {
-  paragraphs: TranscriptParagraph[];
-  fiscalYear?: number;
-  fiscalQuarter?: number;
-  date?: string;
-  error?: string;
-}
-
 export interface NewsItem {
   uuid?: string;
   title: string;
@@ -255,7 +233,6 @@ export type InvestmentSection =
   | "industry"
   | "revenue_segments"
   | "beta"
-  | "transcripts"
   | "news"
   | "dcf"
   | "info"

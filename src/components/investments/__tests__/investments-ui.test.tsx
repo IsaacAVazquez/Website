@@ -115,7 +115,6 @@ describe("investments UI", () => {
       wacc: true,
       dcf: false,
       industry: false,
-      transcripts: false,
       news: false,
       compare: false,
     };
@@ -244,7 +243,6 @@ describe("investments UI", () => {
       expect.arrayContaining(["Overview", "Financials", "Growth", "Valuation", "Chart"])
     );
     expect(tabs).not.toContain("Industry");
-    expect(tabs).not.toContain("Transcripts");
     expect(tabs).not.toContain("DCF");
     expect(tabs).not.toContain("Compare");
   });

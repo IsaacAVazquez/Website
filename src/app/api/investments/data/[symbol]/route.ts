@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { InvestmentSection } from "@/types/investment";
 import { getInvestmentContext, getInvestmentDataEnvelope } from "@/lib/investmentsData";
-import { isTranscriptSection } from "@/lib/investmentTransforms";
 
 const VALID_SECTIONS: InvestmentSection[] = [
   "price",
@@ -16,7 +15,6 @@ const VALID_SECTIONS: InvestmentSection[] = [
   "industry",
   "revenue_segments",
   "beta",
-  "transcripts",
   "news",
   "dcf",
   "info",
@@ -46,7 +44,7 @@ export async function GET(
     const searchParams = request.nextUrl.searchParams;
     const section = searchParams.get("section") ?? "fundamentals";
 
-    if (!isValidSection(section) && !isTranscriptSection(section)) {
+    if (!isValidSection(section)) {
       return NextResponse.json({ error: "Invalid section" }, { status: 400 });
     }
 

@@ -211,7 +211,7 @@ function useStockData<T>(
 
 **Retry:** Up to 2 retries with exponential backoff (1s, 2s). Only retries 5xx errors, not 4xx.
 
-**Consumers:** All `StockResearch` panels — `DCFPanel`, `FundamentalsPanel`, `GrowthPanel`, `ValuationRatiosPanel`, `ProfitabilityPanel`, `NewsPanel`, `TranscriptsPanel`, `IndustryPanel`, `FinancialStatementsPanel`, `PriceChartPanel`
+**Consumers:** All `StockResearch` panels — `DCFPanel`, `FundamentalsPanel`, `GrowthPanel`, `ValuationRatiosPanel`, `ProfitabilityPanel`, `NewsPanel`, `IndustryPanel`, `FinancialStatementsPanel`, `PriceChartPanel`
 
 ---
 

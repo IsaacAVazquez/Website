@@ -80,7 +80,6 @@ const PREFETCHED_CAPABILITIES: InvestmentCapabilities = {
   industry: true,
   revenue_segments: true,
   beta: true,
-  transcripts: true,
   news: true,
   dcf: true,
   info: true,
@@ -870,7 +869,6 @@ async function buildOnDemandSnapshot(symbol: string): Promise<OnDemandSnapshot> 
         dcf: !!dcf,
         info: true,
         industry: false,
-        transcripts: false,
         news: false,
         compare: false,
       };

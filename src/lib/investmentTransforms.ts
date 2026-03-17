@@ -17,11 +17,6 @@ export function latest(arr: unknown, field: string): number | undefined {
   return found ? Number(found[field]) : undefined;
 }
 
-/** Allow transcript_{YEAR}_{QUARTER} dynamic sections */
-export function isTranscriptSection(section: string): boolean {
-  return /^transcript_\d{4}_\d{1,2}$/.test(section);
-}
-
 export function transformSection(section: string, raw: unknown): unknown {
   // --- fundamentals ---
   if (section === "fundamentals") {
@@ -141,26 +136,6 @@ export function transformSection(section: string, raw: unknown): unknown {
   ) {
     const d = raw as { quarterly?: RawRecord[]; annual?: RawRecord[] };
     return { quarterly: d.quarterly ?? [], annual: d.annual ?? [] };
-  }
-
-  // --- transcripts list ---
-  if (section === "transcripts") {
-    const arr = raw as { fiscal_year: number; fiscal_quarter: number; report_date: string }[];
-    return arr.map((t) => ({
-      fiscalYear: t.fiscal_year,
-      fiscalQuarter: t.fiscal_quarter,
-      date: t.report_date,
-    }));
-  }
-
-  // --- individual transcript (transcript_YEAR_Q) ---
-  if (isTranscriptSection(section)) {
-    const arr = raw as { speaker: string; content: string }[];
-    return {
-      paragraphs: arr
-        .filter((p) => p.content?.trim())
-        .map((p) => ({ speaker: p.speaker, content: p.content })),
-    };
   }
 
   // --- news ---

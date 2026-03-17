@@ -110,6 +110,15 @@ describe("GET /api/investments/data/[symbol]", () => {
     expect(mockGetInvestmentContext).not.toHaveBeenCalled();
   });
 
+  it("rejects transcript sections now that the feature is removed", async () => {
+    const response = await makeRequest("AAPL", "transcripts");
+    const body = await response.json();
+
+    expect(response.status).toBe(400);
+    expect(body.error).toMatch(/invalid section/i);
+    expect(mockGetInvestmentContext).not.toHaveBeenCalled();
+  });
+
   it("returns a capability-aware 404 for unsupported on-demand sections", async () => {
     mockGetInvestmentContext.mockResolvedValue({
       source: "on-demand",

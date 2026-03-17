@@ -127,8 +127,8 @@ export function StockSearch({ value, onChange }: Props) {
         <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--color-warning)]">
           <IconAlertCircle size={13} />
           <span>
-            {upper} will load as a live on-demand snapshot. News, transcripts,
-            and peer comparison stay available for curated research symbols.
+            {upper} will load as a live on-demand snapshot. Curated research
+            symbols still include news and peer comparison.
           </span>
         </p>
       )}

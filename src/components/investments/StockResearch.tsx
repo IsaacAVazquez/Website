@@ -9,7 +9,6 @@ import { FinancialStatementsPanel } from "./FinancialStatementsPanel";
 import { ValuationRatiosPanel } from "./ValuationRatiosPanel";
 import { ProfitabilityPanel } from "./ProfitabilityPanel";
 import { GrowthPanel } from "./GrowthPanel";
-import { TranscriptsPanel } from "./TranscriptsPanel";
 import { IndustryPanel } from "./IndustryPanel";
 import { DCFPanel } from "./DCFPanel";
 import { ComparisonTab } from "./ComparisonTab";
@@ -31,7 +30,7 @@ interface Props {
   portfolioSymbols?: string[];
 }
 
-type ResearchTab = "overview" | "financials" | "growth" | "valuation" | "industry" | "transcripts" | "dcf" | "chart" | "compare";
+type ResearchTab = "overview" | "financials" | "growth" | "valuation" | "industry" | "dcf" | "chart" | "compare";
 
 const TABS: { key: ResearchTab; label: string }[] = [
   { key: "overview",     label: "Overview" },
@@ -39,7 +38,6 @@ const TABS: { key: ResearchTab; label: string }[] = [
   { key: "growth",       label: "Growth" },
   { key: "valuation",    label: "Valuation" },
   { key: "industry",     label: "Industry" },
-  { key: "transcripts",  label: "Transcripts" },
   { key: "dcf",          label: "DCF" },
   { key: "chart",        label: "Chart" },
   { key: "compare",      label: "Compare" },
@@ -64,8 +62,6 @@ function isTabAvailable(
       return capabilities.fundamentals !== false;
     case "industry":
       return capabilities.industry === true;
-    case "transcripts":
-      return capabilities.transcripts === true;
     case "dcf":
       return capabilities.dcf === true;
     case "chart":
@@ -146,7 +142,7 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
         <div className="mb-5 rounded-2xl border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--surface-secondary))] px-4 py-3 text-sm text-[var(--text-secondary)]">
           Live snapshot mode for <span className="font-semibold text-[var(--text-primary)]">{symbol}</span>.
           This view supports core valuation, financials, growth, and charting.
-          News, transcripts, industry comparison, and the compare workflow stay
+          News, industry comparison, and the compare workflow stay
           available for curated research symbols.
         </div>
       ) : null}
@@ -218,7 +214,6 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
                 />
               )}
               {resolvedActiveTab === "industry" && <IndustryPanel symbol={symbol} />}
-              {resolvedActiveTab === "transcripts" && <TranscriptsPanel symbol={symbol} />}
               {resolvedActiveTab === "dcf" && <DCFPanel symbol={symbol} />}
               {resolvedActiveTab === "chart" && <PriceChartPanel symbol={symbol} />}
             </>

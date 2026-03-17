@@ -44,7 +44,6 @@ test.describe("Investments", () => {
         wacc: true,
         dcf: false,
         industry: false,
-        transcripts: false,
         news: false,
         compare: false,
       };
@@ -181,7 +180,6 @@ test.describe("Investments", () => {
     await expect(page.getByRole("tab", { name: /chart/i })).toBeVisible();
     await expect(page.getByRole("tab", { name: /^dcf$/i })).toHaveCount(0);
     await expect(page.getByRole("tab", { name: /industry/i })).toHaveCount(0);
-    await expect(page.getByRole("tab", { name: /transcripts/i })).toHaveCount(0);
     await expect(page.getByRole("tab", { name: /compare/i })).toHaveCount(0);
   });
 

@@ -54,7 +54,6 @@ This release turns `/investments` into a public-facing fintech product showcase 
   - `DCF` when the required inputs are available
 - Seeded-universe-only features in this release:
   - `Industry`
-  - `Transcripts`
   - embedded `News`
   - `Compare`
 - On-demand valuation now renders a standalone valuation snapshot instead of industry-relative comparisons.
@@ -80,6 +79,7 @@ This release turns `/investments` into a public-facing fintech product showcase 
   - manual unknown-ticker submission
   - capability-driven tab visibility
   - nav/homepage discoverability
+- Removed the transcript research feature from the investments app, route validation, and shared investment data types to simplify the research surface area.
 
 ## Verification
 

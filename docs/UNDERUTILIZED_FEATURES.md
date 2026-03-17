@@ -46,7 +46,7 @@ These are hidden on purpose. Documented here for completeness.
 
 ### `/investments` — Stock Research & Portfolio Tracker
 
-- **Status:** Fully functional. Includes `PortfolioTracker`, `StockResearch` (multi-panel: DCF, Fundamentals, Growth, Valuation, News, Transcripts, Industry, Profitability), `AllocationChart`, and more.
+- **Status:** Fully functional. Includes `PortfolioTracker`, `StockResearch` (multi-panel: DCF, Fundamentals, Growth, Valuation, News, Industry, Profitability), `AllocationChart`, and more.
 - **Intentionally hidden:** Has `noindex` meta tag, excluded from sitemap, not in navigation. This is a personal tool.
 - **Limitation:** The research tab is limited to ~10 pre-fetched tickers stored as static JSON in `public/data/investments/`. Searching for arbitrary tickers fails unless data has been pre-fetched via `npm run update:investments`.
 - **Separate roadmap:** See `docs/FEATURE_ROADMAP.md` for planned investments enhancements.
