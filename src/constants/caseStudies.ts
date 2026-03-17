@@ -546,12 +546,34 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+
+  "march-madness-2026": {
+    slug: "march-madness-2026",
+    title: "March Madness 2026 Bracket Analysis",
+    description:
+      "Data-driven NCAA tournament bracket built on KenPom metrics, the Trapezoid of Excellence, S-curve seeding analysis, injury reports, and a custom time zone travel penalty model.",
+    role: "Data Analyst & Builder",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "React"],
+    metrics: "15 ranked teams · 20 picks · 4 regions",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/march-madness-2026",
+    featured: true,
+
+    overview: { summary: "", impact: "" },
+    problem: { context: "", painPoints: [], stakes: "" },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
+  "march-madness-2026",
   "investment-analytics-platform",
-  "data-analytics-dashboard",
-  "civic-engagement-platform",
 ] as const;
 
 /** Get featured case studies (for homepage) */
