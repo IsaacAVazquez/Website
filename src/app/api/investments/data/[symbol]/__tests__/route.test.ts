@@ -52,6 +52,15 @@ describe("GET /api/investments/data/[symbol]", () => {
     expect(body.source).toBe("prefetched");
     expect(body.capabilities.compare).toBe(true);
     expect(body.data.shortName).toBe("Apple");
+    expect(mockGetInvestmentContext).toHaveBeenCalledWith("AAPL", {
+      assetOrigin: "http://localhost:3000",
+    });
+    expect(mockGetInvestmentDataEnvelope).toHaveBeenCalledWith(
+      "AAPL",
+      "info",
+      expect.objectContaining({ source: "prefetched", seeded: true }),
+      { assetOrigin: "http://localhost:3000" }
+    );
   });
 
   it("returns on-demand envelopes for uncached valid symbols", async () => {
@@ -181,5 +190,31 @@ describe("GET /api/investments/data/[symbol]", () => {
     expect(response.status).toBe(503);
     expect(body.source).toBe("on-demand");
     expect(body.error).toMatch(/temporarily rate-limited/i);
+  });
+
+  it("returns a dataset-specific 503 when curated research data is unavailable", async () => {
+    mockGetInvestmentContext.mockRejectedValue(
+      Object.assign(new Error("Curated investments dataset is temporarily unavailable."), {
+        status: 503,
+        source: "prefetched",
+        capabilities: {
+          info: true,
+          fundamentals: true,
+          growth: true,
+          compare: true,
+        },
+        lastUpdated: null,
+      })
+    );
+
+    const response = await makeRequest("AAPL");
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+    expect(body.source).toBe("prefetched");
+    expect(body.error).toMatch(/curated investments dataset/i);
+    expect(mockGetInvestmentContext).toHaveBeenCalledWith("AAPL", {
+      assetOrigin: "http://localhost:3000",
+    });
   });
 });

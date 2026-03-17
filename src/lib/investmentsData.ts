@@ -21,6 +21,7 @@ import type {
 } from "@/types/investment";
 
 type JsonRecord = Record<string, unknown>;
+type PrefetchedReadStatus = "hit" | "missing" | "skipped";
 
 interface InvestmentContext {
   source: InvestmentDataSource;
@@ -28,6 +29,10 @@ interface InvestmentContext {
   lastUpdated: string | null;
   seeded: boolean;
   snapshot?: OnDemandSnapshot;
+}
+
+export interface InvestmentsDataOptions {
+  assetOrigin?: string | null;
 }
 
 interface OnDemandSnapshot {
@@ -44,6 +49,18 @@ interface ChartPriceRow {
   low: number;
   close: number;
   volume: number;
+}
+
+interface PrefetchedReadResult<T> {
+  data: T | null;
+  source: "filesystem" | "public" | null;
+  diagnostics: {
+    relativePath: string;
+    assetOrigin: string | null;
+    filesystem: PrefetchedReadStatus;
+    publicAsset: PrefetchedReadStatus;
+    publicStatus?: number;
+  };
 }
 
 const DATA_DIR = path.join(process.cwd(), "public", "data", "investments");
@@ -168,32 +185,54 @@ function percentFromRatio(value: number | undefined): number | undefined {
   return value === undefined ? undefined : value * 100;
 }
 
-async function readJsonFile<T>(filePath: string): Promise<T | null> {
+async function readJsonFile<T>(
+  filePath: string
+): Promise<{ data: T | null; status: PrefetchedReadStatus }> {
   try {
     const raw = await fs.readFile(filePath, "utf8");
-    return JSON.parse(raw) as T;
+    return {
+      data: JSON.parse(raw) as T,
+      status: "hit",
+    };
   } catch (error) {
     const err = error as NodeJS.ErrnoException;
     if (err.code === "ENOENT") {
-      return null;
+      return {
+        data: null,
+        status: "missing",
+      };
     }
     throw error;
   }
 }
 
-function getPublicAssetOrigin(): string | null {
+function getPublicAssetOrigin(options: InvestmentsDataOptions = {}): string | null {
   const configuredOrigin =
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ??
+    options.assetOrigin ??
+    process.env.URL ??
+    process.env.DEPLOY_PRIME_URL ??
+    process.env.DEPLOY_URL ??
     process.env.SITE_URL ??
-    process.env.NEXT_PUBLIC_SITE_URL;
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null);
 
   return configuredOrigin ? configuredOrigin.replace(/\/$/, "") : null;
 }
 
-async function fetchPublicJsonFile<T>(relativePath: string): Promise<T | null> {
-  const origin = getPublicAssetOrigin();
+async function fetchPublicJsonFile<T>(
+  relativePath: string,
+  options: InvestmentsDataOptions = {}
+): Promise<{
+  data: T | null;
+  status: PrefetchedReadStatus;
+  httpStatus?: number;
+}> {
+  const origin = getPublicAssetOrigin(options);
   if (!origin) {
-    return null;
+    return {
+      data: null,
+      status: "skipped",
+    };
   }
 
   try {
@@ -203,84 +242,144 @@ async function fetchPublicJsonFile<T>(relativePath: string): Promise<T | null> {
     );
 
     if (!response.ok) {
-      return null;
+      return {
+        data: null,
+        status: "missing",
+        httpStatus: response.status,
+      };
     }
 
-    return (await response.json()) as T;
+    return {
+      data: (await response.json()) as T,
+      status: "hit",
+      httpStatus: response.status,
+    };
   } catch {
-    return null;
+    return {
+      data: null,
+      status: "missing",
+    };
   }
 }
 
-async function readInvestmentJson<T>(relativePath: string): Promise<T | null> {
+async function readInvestmentJson<T>(
+  relativePath: string,
+  options: InvestmentsDataOptions = {}
+): Promise<PrefetchedReadResult<T>> {
   const localFile = await readJsonFile<T>(path.join(DATA_DIR, relativePath));
-  if (localFile !== null) {
-    return localFile;
+  if (localFile.data !== null) {
+    return {
+      data: localFile.data,
+      source: "filesystem",
+      diagnostics: {
+        relativePath,
+        assetOrigin: getPublicAssetOrigin(options),
+        filesystem: localFile.status,
+        publicAsset: "skipped",
+      },
+    };
   }
 
-  return fetchPublicJsonFile<T>(relativePath);
+  const publicFile = await fetchPublicJsonFile<T>(relativePath, options);
+  return {
+    data: publicFile.data,
+    source: publicFile.data !== null ? "public" : null,
+    diagnostics: {
+      relativePath,
+      assetOrigin: getPublicAssetOrigin(options),
+      filesystem: localFile.status,
+      publicAsset: publicFile.status,
+      publicStatus: publicFile.httpStatus,
+    },
+  };
 }
 
-async function loadInvestmentsIndex(): Promise<InvestmentsIndex> {
+function createCuratedDatasetUnavailableError() {
+  return Object.assign(
+    new Error("Curated investments dataset is temporarily unavailable."),
+    {
+      status: 503,
+      source: "prefetched" as InvestmentDataSource,
+      capabilities: PREFETCHED_CAPABILITIES,
+      lastUpdated: null,
+    }
+  );
+}
+
+function logPrefetchedDatasetResolutionFailure(
+  result: PrefetchedReadResult<unknown>
+): void {
+  console.error("Prefetched investments dataset resolution failed:", {
+    path: result.diagnostics.relativePath,
+    assetOrigin: result.diagnostics.assetOrigin,
+    filesystem: result.diagnostics.filesystem,
+    publicAsset: result.diagnostics.publicAsset,
+    publicStatus: result.diagnostics.publicStatus,
+  });
+}
+
+async function ensurePrefetchedJson<T>(
+  relativePath: string,
+  options: InvestmentsDataOptions = {}
+): Promise<T> {
+  const result = await readInvestmentJson<T>(relativePath, options);
+  if (result.data !== null) {
+    return result.data;
+  }
+
+  logPrefetchedDatasetResolutionFailure(result);
+  throw createCuratedDatasetUnavailableError();
+}
+
+async function loadInvestmentsIndex(
+  options: InvestmentsDataOptions = {}
+): Promise<InvestmentsIndex> {
   if (indexCache && indexCache.expiresAt > Date.now()) {
     return indexCache.data;
   }
 
-  const data = await readInvestmentJson<InvestmentsIndex>("index.json");
-  const safeData: InvestmentsIndex = data ?? {
-    symbols: [],
-    failed: [],
-    lastUpdated: "",
-  };
-
+  const data = await ensurePrefetchedJson<InvestmentsIndex>("index.json", options);
   indexCache = {
-    data: safeData,
+    data,
     expiresAt: Date.now() + INDEX_TTL_MS,
   };
 
-  return safeData;
+  return data;
 }
 
-export async function getInvestmentsIndex(): Promise<InvestmentsIndex> {
-  return loadInvestmentsIndex();
+export async function getInvestmentsIndex(
+  options: InvestmentsDataOptions = {}
+): Promise<InvestmentsIndex> {
+  return loadInvestmentsIndex(options);
 }
 
 async function readPrefetchedSection(
   symbol: string,
-  section: InvestmentSection | string
+  section: InvestmentSection | string,
+  options: InvestmentsDataOptions = {}
 ): Promise<unknown | null> {
   if (section === "dcf") {
     const [waccRaw, fundRaw, growthRaw, priceRaw] = await Promise.all([
-      readInvestmentJson(`${symbol}/wacc.json`),
-      readInvestmentJson(`${symbol}/fundamentals.json`),
-      readInvestmentJson(`${symbol}/growth.json`),
-      readInvestmentJson(`${symbol}/price.json`),
+      ensurePrefetchedJson(`${symbol}/wacc.json`, options),
+      ensurePrefetchedJson(`${symbol}/fundamentals.json`, options),
+      ensurePrefetchedJson(`${symbol}/growth.json`, options),
+      ensurePrefetchedJson(`${symbol}/price.json`, options),
     ]);
-    if (!waccRaw || !fundRaw || !growthRaw || !priceRaw) {
-      return null;
-    }
     return computeDcf(waccRaw, fundRaw, growthRaw, priceRaw);
   }
 
   if (section === "industry") {
     const [industryRaw, fundRaw, profRaw, marginsRaw] = await Promise.all([
-      readInvestmentJson(`${symbol}/industry.json`),
-      readInvestmentJson(`${symbol}/fundamentals.json`),
-      readInvestmentJson(`${symbol}/profitability.json`),
-      readInvestmentJson(`${symbol}/margins.json`),
+      ensurePrefetchedJson(`${symbol}/industry.json`, options),
+      ensurePrefetchedJson(`${symbol}/fundamentals.json`, options),
+      ensurePrefetchedJson(`${symbol}/profitability.json`, options),
+      ensurePrefetchedJson(`${symbol}/margins.json`, options),
     ]);
-    if (!industryRaw) {
-      return null;
-    }
     return transformIndustryWithStockValues(industryRaw, fundRaw, profRaw, marginsRaw);
   }
 
   const fileName = `${section}.json`;
-  const raw = await readInvestmentJson(`${symbol}/${fileName}`);
-  if (!raw) {
-    return null;
-  }
-
+  const raw = await ensurePrefetchedJson(`${symbol}/${fileName}`, options);
   return transformSection(section, raw);
 }
 
@@ -820,8 +919,11 @@ async function buildOnDemandSnapshot(symbol: string): Promise<OnDemandSnapshot> 
   }
 }
 
-export async function getInvestmentContext(symbol: string): Promise<InvestmentContext> {
-  const index = await loadInvestmentsIndex();
+export async function getInvestmentContext(
+  symbol: string,
+  options: InvestmentsDataOptions = {}
+): Promise<InvestmentContext> {
+  const index = await loadInvestmentsIndex(options);
   const seeded = index.symbols.includes(symbol);
 
   if (seeded) {
@@ -846,12 +948,13 @@ export async function getInvestmentContext(symbol: string): Promise<InvestmentCo
 export async function getInvestmentDataEnvelope<T = unknown>(
   symbol: string,
   section: InvestmentSection | string,
-  context?: InvestmentContext
+  context?: InvestmentContext,
+  options: InvestmentsDataOptions = {}
 ): Promise<InvestmentDataEnvelope<T>> {
-  const resolvedContext = context ?? (await getInvestmentContext(symbol));
+  const resolvedContext = context ?? (await getInvestmentContext(symbol, options));
 
   if (resolvedContext.seeded) {
-    const data = await readPrefetchedSection(symbol, section);
+    const data = await readPrefetchedSection(symbol, section, options);
     if (data === null) {
       throw Object.assign(
         new Error(`Section "${section}" not available for ${symbol}`),

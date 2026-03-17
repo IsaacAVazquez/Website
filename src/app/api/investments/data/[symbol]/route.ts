@@ -50,8 +50,9 @@ export async function GET(
       return NextResponse.json({ error: "Invalid section" }, { status: 400 });
     }
 
-    const context = await getInvestmentContext(symbol);
-    const envelope = await getInvestmentDataEnvelope(symbol, section, context);
+    const options = { assetOrigin: request.nextUrl.origin };
+    const context = await getInvestmentContext(symbol, options);
+    const envelope = await getInvestmentDataEnvelope(symbol, section, context, options);
 
     return NextResponse.json(envelope, {
       headers: {

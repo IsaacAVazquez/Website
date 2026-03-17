@@ -33,7 +33,9 @@ This release turns `/investments` into a public-facing fintech product showcase 
   - chart history now flows through the same guarded Yahoo client as quote summary
   - stale on-demand snapshots are reused when Yahoo returns rate-limit or server errors
   - upstream Yahoo `429` responses are surfaced to the app as temporary `503` responses instead of raw vendor rate limits
-  - seeded research data now falls back to public asset URLs in serverless environments where `public/data/investments/*` is not present on the function filesystem
+  - prefetched dataset resolution now prefers the current request origin, then Netlify-safe environment URLs, when serverless functions do not have `public/data/investments/*` on disk
+  - curated symbols no longer fall through to the live Yahoo path when the prefetched index cannot be resolved; the API now returns an explicit curated-dataset `503` instead
+  - seeded research data still falls back to public asset URLs in serverless environments where `public/data/investments/*` is not present on the function filesystem
   - portfolio quotes now fetch directly from Yahoo in the investments route instead of making an extra same-origin proxy request to `/api/stocks`
 - API responses now expose:
   - `source: "prefetched" | "on-demand"`
@@ -86,3 +88,5 @@ This release turns `/investments` into a public-facing fintech product showcase 
 - `npx playwright test e2e/investments.spec.ts --project=chromium`
 - `npx eslint src/app/investments/investments-client.tsx src/constants/caseStudies.ts`
 - `npx eslint src/lib/investmentsData.ts 'src/app/api/investments/data/[symbol]/route.ts' 'src/app/api/investments/data/[symbol]/__tests__/route.test.ts'`
+- `npx jest src/lib/__tests__/investmentsData.test.ts src/app/api/investments/index/__tests__/route.test.ts "src/app/api/investments/data/\\[symbol\\]/__tests__/route.test.ts" --runInBand --modulePathIgnorePatterns='\\.worktrees'`
+- `npx eslint src/lib/investmentsData.ts src/app/api/investments/index/route.ts 'src/app/api/investments/data/[symbol]/route.ts' 'src/app/api/investments/index/__tests__/route.test.ts' src/lib/__tests__/investmentsData.test.ts 'src/app/api/investments/data/[symbol]/__tests__/route.test.ts'`
