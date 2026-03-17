@@ -88,7 +88,7 @@ export function StockSearch({ value, onChange }: Props) {
           onKeyDown={handleKeyDown}
           placeholder="Search symbol… (e.g. AAPL)"
           autoComplete="off"
-          className="w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition"
+          className="w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] py-3 pl-9 pr-4 text-sm text-[var(--text-primary)] transition placeholder:text-[var(--text-tertiary)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           aria-label="Search stock symbol"
           aria-autocomplete="list"
           aria-controls="stock-search-listbox"
@@ -102,7 +102,7 @@ export function StockSearch({ value, onChange }: Props) {
           id="stock-search-listbox"
           role="listbox"
           aria-label="Symbol suggestions"
-          className="absolute z-20 mt-1 w-full rounded-lg border border-[var(--border-primary)] bg-[var(--surface-elevated)] shadow-lg overflow-hidden"
+          className="absolute z-20 mt-2 w-full overflow-hidden rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] shadow-lg"
         >
           {suggestions.map((sym) => (
             <li key={sym}>

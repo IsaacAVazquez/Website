@@ -121,6 +121,23 @@ describe("investments UI", () => {
     container.remove();
   });
 
+  it("shows the search control and empty state before a symbol is selected", async () => {
+    mockFetch.mockResolvedValue({
+      ok: true,
+      json: async () => curatedIndex,
+    });
+
+    await act(async () => {
+      root.render(<StockResearch />);
+    });
+    await flushPromises();
+
+    expect(
+      container.querySelector('input[aria-label="Search stock symbol"]')
+    ).not.toBeNull();
+    expect(container.textContent).toContain("Start with a ticker symbol");
+  });
+
   it("blocks non-curated symbols from entering research", async () => {
     mockFetch.mockResolvedValue({
       ok: true,
@@ -209,6 +226,10 @@ describe("investments UI", () => {
         "Compare",
       ])
     );
+    expect(
+      container.querySelector('input[aria-label="Search stock symbol"]')
+    ).not.toBeNull();
+    expect(container.textContent).toContain("Apple");
     expect(mockFetch).toHaveBeenCalledTimes(2);
   });
 });

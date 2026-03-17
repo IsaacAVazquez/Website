@@ -44,50 +44,53 @@ export function PortfolioSummary({ summary, isLoading }: Props) {
       initial="hidden"
       animate="visible"
     >
-      <WarmCard padding="sm">
+      <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
         {isLoading ? (
           <div className="space-y-3">
             <div className="h-10 w-48 rounded bg-[var(--neutral-200)] animate-pulse" />
             <div className="h-6 w-32 rounded bg-[var(--neutral-200)] animate-pulse" />
           </div>
         ) : (
-          <>
-            {/* Hero: Total value */}
-            <motion.div variants={v.itemVariants}>
-              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wide mb-1">
-                Total Portfolio Value
-              </p>
-              <p className="text-3xl font-bold text-[var(--text-primary)]">
-                {formatCurrency(summary.totalValue)}
-              </p>
-            </motion.div>
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.9fr)]">
+            <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-5">
+              <motion.div variants={v.itemVariants}>
+                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Total Portfolio Value
+                </p>
+                <p className="text-3xl font-bold text-[var(--text-primary)]">
+                  {formatCurrency(summary.totalValue)}
+                </p>
+              </motion.div>
 
-            {/* Sub-line: Total gain/loss */}
-            <motion.div variants={v.itemVariants} className="mt-1">
-              <p className={`text-base font-semibold ${gainColor}`}>
-                {formatCurrency(summary.totalGainLoss)} ({formatPercent(summary.totalGainLossPercent)})
-              </p>
-            </motion.div>
+              <motion.div variants={v.itemVariants} className="mt-2">
+                <p className={`text-base font-semibold ${gainColor}`}>
+                  {formatCurrency(summary.totalGainLoss)} ({formatPercent(summary.totalGainLossPercent)})
+                </p>
+              </motion.div>
+            </div>
 
-            {/* Secondary row */}
             <motion.div
               variants={v.itemVariants}
-              className="flex items-center gap-6 mt-3 pt-3 border-t border-[var(--border-primary)]"
+              className="grid gap-3 sm:grid-cols-2"
             >
-              <div>
-                <p className="text-xs text-[var(--text-tertiary)]">Today</p>
-                <p className={`text-sm font-semibold ${dayColor}`}>
+              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Today
+                </p>
+                <p className={`mt-2 text-sm font-semibold ${dayColor}`}>
                   {formatCurrency(summary.dayChange)} ({formatPercent(summary.dayChangePercent)})
                 </p>
               </div>
-              <div>
-                <p className="text-xs text-[var(--text-tertiary)]">Total Cost</p>
-                <p className="text-sm font-semibold text-[var(--text-primary)]">
+              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Total Cost
+                </p>
+                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
                   {formatCurrency(summary.totalCost)}
                 </p>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </WarmCard>
     </motion.div>

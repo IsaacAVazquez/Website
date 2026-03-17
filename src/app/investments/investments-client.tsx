@@ -39,9 +39,7 @@ export function InvestmentsClient() {
   const portfolioSymbols = holdings.map((h) => h.symbol);
   const shouldReduceMotion = useReducedMotion();
   const shellClassName =
-    activeTab === "research"
-      ? "mx-auto w-full max-w-[1880px] px-4 py-10 sm:px-6 xl:px-8 2xl:px-10"
-      : "mx-auto w-full max-w-[1500px] px-4 py-10 sm:px-6 xl:px-8";
+    "mx-auto w-full max-w-[1680px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12";
 
   const variants = shouldReduceMotion ? getReducedMotionVariants() : { containerVariants, itemVariants, fadeInVariants };
 
@@ -51,27 +49,63 @@ export function InvestmentsClient() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--surface-primary)]">
+    <section
+      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--color-primary)_10%,transparent),transparent_28%),linear-gradient(180deg,var(--surface-primary)_0%,color-mix(in_srgb,var(--surface-secondary)_65%,var(--surface-primary))_100%)]"
+      aria-label="Investment research workspace"
+      data-testid="investments-shell"
+    >
       <div className={shellClassName}>
-        {/* Page header */}
         <motion.div
-          className="mb-8"
+          className="mb-8 rounded-[30px] border border-[color-mix(in_srgb,var(--color-primary)_12%,var(--border-primary))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_7%,var(--surface-elevated))_0%,var(--surface-elevated)_55%,color-mix(in_srgb,var(--color-success)_7%,var(--surface-elevated))_100%)] p-6 shadow-[var(--shadow-sm)] sm:p-8"
           variants={variants.fadeInVariants}
           initial="hidden"
           animate="visible"
         >
-          <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-1">
-            Investment Research Platform
-          </h1>
-          <p className="text-[var(--text-secondary)] text-sm">
-            Public fintech product exploring portfolio analytics, valuation,
-            financial statements, and curated equity research workflows.
-          </p>
+          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_auto] xl:items-end">
+            <div className="min-w-0">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
+                Investment Analytics Platform
+              </p>
+              <h1 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">
+                Investment Research Platform
+              </h1>
+              <p className="mt-3 max-w-[68ch] text-sm leading-7 text-[var(--text-secondary)] sm:text-[0.95rem]">
+                Public fintech product for curated equity research, portfolio analytics,
+                valuation review, and structured decision support built around reusable data panels.
+              </p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-3 xl:min-w-[520px]">
+              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Workspace
+                </p>
+                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                  Research + portfolio
+                </p>
+              </div>
+              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Coverage
+                </p>
+                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                  Curated ticker universe
+                </p>
+              </div>
+              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Focus
+                </p>
+                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                  Fintech UX clarity
+                </p>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Top-level tabs */}
         <div
-          className="flex gap-1 mb-8 border-b border-[var(--border-primary)]"
+          className="mb-8 inline-flex flex-wrap gap-2 rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)]/90 p-2 shadow-[var(--shadow-sm)] backdrop-blur"
           role="tablist"
           aria-label="Investments tabs"
         >
@@ -81,10 +115,10 @@ export function InvestmentsClient() {
               role="tab"
               aria-selected={activeTab === key}
               onClick={() => setActiveTab(key)}
-              className={`px-5 py-3 text-sm font-semibold rounded-t-lg transition border-b-2 -mb-px min-h-[44px] ${
+              className={`min-h-[46px] rounded-2xl px-5 py-3 text-sm font-semibold transition ${
                 activeTab === key
-                  ? "border-[var(--color-primary)] text-[var(--color-primary)] bg-[var(--surface-secondary)]"
-                  : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  ? "bg-[var(--color-primary)] text-white shadow-[var(--shadow-sm)]"
+                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
               {label}
@@ -92,7 +126,6 @@ export function InvestmentsClient() {
           ))}
         </div>
 
-        {/* Tab panels with crossfade */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -116,6 +149,6 @@ export function InvestmentsClient() {
           </motion.div>
         </AnimatePresence>
       </div>
-    </div>
+    </section>
   );
 }

@@ -38,8 +38,8 @@ function compareValues(
 
 export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) {
   return (
-    <WarmCard padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">{title}</h3>
+    <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+      <h3 className="mb-4 text-sm font-semibold text-[var(--text-primary)]">{title}</h3>
       <div className="overflow-x-auto">
         <table className="w-full text-sm" aria-label={`${title} comparison`}>
           <thead>

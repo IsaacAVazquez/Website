@@ -10,6 +10,8 @@ interface ConditionalLayoutProps {
 export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const fullWidthRoutes = new Set(["/investments", "/march-madness-2026"]);
+  const isFullWidthRoute = fullWidthRoutes.has(pathname);
 
   return (
     <>
@@ -21,6 +23,8 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
           tabIndex={-1}
         >
           {isHomePage ? (
+            children
+          ) : isFullWidthRoute ? (
             children
           ) : (
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">

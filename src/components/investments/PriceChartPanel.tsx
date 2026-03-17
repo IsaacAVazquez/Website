@@ -258,18 +258,23 @@ export function PriceChartPanel({ symbol }: Props) {
   const isEmpty = !isLoading && !error && slicedData.length === 0;
 
   return (
-    <WarmCard padding="sm" ariaLabel="Price chart">
-      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-        <h3 className="text-sm font-semibold text-[var(--text-primary)]">Price History</h3>
-        <div className="flex gap-1" role="group" aria-label="Date range">
+    <WarmCard padding="sm" ariaLabel="Price chart" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Price History</h3>
+          <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+            Trend and volume view for the selected research window.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Date range">
           {RANGES.map((r) => (
             <button
               key={r}
               onClick={() => setRange(r)}
-              className={`px-3 py-1.5 text-xs font-medium rounded min-h-[44px] min-w-[44px] transition ${
+              className={`min-h-[44px] min-w-[44px] rounded-full px-3.5 py-2 text-xs font-semibold transition ${
                 range === r
-                  ? "bg-[var(--color-primary)] text-white"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-primary)]"
+                  ? "bg-[var(--color-primary)] text-white shadow-[var(--shadow-sm)]"
+                  : "border border-[var(--border-primary)] text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
               {r}
@@ -292,7 +297,7 @@ export function PriceChartPanel({ symbol }: Props) {
       {!isLoading && slicedData.length > 0 && (
         <div className="relative">
           <svg ref={priceRef} className="w-full" />
-          <svg ref={volumeRef} className="w-full mt-1" />
+          <svg ref={volumeRef} className="mt-2 w-full" />
           <div
             ref={tooltipRef}
             className="absolute pointer-events-none hidden z-10 bg-[var(--surface-elevated)] border border-[var(--border-primary)] rounded px-2 py-1 text-xs text-[var(--text-primary)] shadow-md whitespace-nowrap"

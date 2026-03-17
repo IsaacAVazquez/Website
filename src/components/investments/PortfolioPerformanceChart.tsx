@@ -279,7 +279,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
   if (snapshots.length < 2) {
     return (
-      <WarmCard padding="sm">
+      <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
         <h3
           className="text-base font-semibold mb-0"
           style={{ color: "var(--text-primary)" }}
@@ -297,27 +297,31 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
   }
 
   return (
-    <WarmCard padding="sm">
-      <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-        <h3
-          className="text-base font-semibold"
-          style={{ color: "var(--text-primary)" }}
-        >
-          Portfolio Performance
-        </h3>
+    <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+      <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h3
+            className="text-base font-semibold"
+            style={{ color: "var(--text-primary)" }}
+          >
+            Portfolio Performance
+          </h3>
+          <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+            Value versus cost basis across the saved snapshot history.
+          </p>
+        </div>
 
-        {/* Range selector */}
-        <div className="flex gap-1">
+        <div className="flex flex-wrap gap-2">
           {RANGES.map((r) => (
             <button
               key={r.label}
               onClick={() => setSelectedRange(r.label)}
-              className="px-2.5 py-1 rounded-md text-xs font-medium transition-colors min-h-[32px]"
+              className="min-h-[44px] rounded-full px-3.5 py-2 text-xs font-semibold transition-colors"
               style={{
                 backgroundColor:
                   selectedRange === r.label
                     ? "var(--color-primary)"
-                    : "transparent",
+                    : "var(--surface-secondary)",
                 color:
                   selectedRange === r.label
                     ? "#ffffff"
@@ -336,11 +340,11 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       <div ref={containerRef} className="relative w-full">
         <svg ref={svgRef} className="w-full" style={{ height: HEIGHT }} />
         <div
-          ref={tooltipRef}
-          className="absolute rounded-lg shadow-lg pointer-events-none transition-opacity duration-150"
-          style={{
-            opacity: 0,
-            padding: "8px 10px",
+        ref={tooltipRef}
+        className="absolute rounded-lg shadow-lg pointer-events-none transition-opacity duration-150"
+        style={{
+          opacity: 0,
+          padding: "8px 10px",
             backgroundColor: "var(--surface-elevated)",
             border: "1px solid var(--border-primary)",
             zIndex: 10,
@@ -350,9 +354,8 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
       {/* Legend */}
       <div
-        className="flex items-center gap-5 mt-2 pt-2 text-xs"
+        className="mt-3 flex flex-wrap items-center gap-5 border-t border-[var(--border-primary)] pt-3 text-xs text-[var(--text-tertiary)]"
         style={{
-          borderTop: "1px solid var(--border-primary)",
           color: "var(--text-tertiary)",
         }}
       >

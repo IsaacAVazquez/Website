@@ -124,11 +124,11 @@ export function ResearchSummaryStrip({ symbol }: Props) {
   return (
     <WarmCard
       padding="none"
-      className="relative overflow-hidden border-[color-mix(in_srgb,var(--color-primary)_18%,var(--border-primary))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_8%,var(--surface-elevated))_0%,var(--surface-elevated)_40%,color-mix(in_srgb,var(--color-success)_8%,var(--surface-elevated))_100%)]"
+      className="relative overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--color-primary)_18%,var(--border-primary))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_8%,var(--surface-elevated))_0%,var(--surface-elevated)_42%,color-mix(in_srgb,var(--color-success)_8%,var(--surface-elevated))_100%)] shadow-[var(--shadow-sm)]"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--color-primary)_18%,transparent),transparent_34%)]" />
-      <div className="relative p-5 sm:p-6">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,340px)] lg:items-start">
+      <div className="relative p-5 sm:p-6 lg:p-7">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(300px,360px)] xl:items-start">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <span className="rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-secondary)]">
@@ -146,7 +146,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
               ) : null}
             </div>
 
-            <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
               <div>
                 <h2 className="text-3xl font-semibold tracking-tight text-[var(--text-primary)] xl:text-[2.15rem]">
                   {displayName}
@@ -156,7 +156,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
+              <div className="rounded-3xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3.5 shadow-[var(--shadow-sm)]">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Price
                 </p>
@@ -182,7 +182,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
             ) : null}
           </div>
 
-          <div className="h-full rounded-3xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-sm lg:p-5">
+          <div className="h-full rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-sm)] lg:p-5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
               Market Take
             </p>
@@ -218,7 +218,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
           <MetricTile
             label="52W Range"
             value={`${formatCurrency(trailingLow, 0)} - ${formatCurrency(trailingHigh, 0)}`}

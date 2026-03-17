@@ -269,45 +269,54 @@ export function ComparisonTab() {
   // ── Render ─────────────────────────────────────────────────────────────
   return (
     <div className="space-y-6">
-      {/* Stock selectors */}
-      <div className="flex flex-wrap items-center gap-4">
-        <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-[var(--text-tertiary)]">Stock A</label>
-          <select
-            value={symbolA}
-            onChange={(e) => setSymbolA(e.target.value)}
-            className="px-3 py-2 text-sm font-semibold rounded-lg border border-[var(--color-primary)] bg-[var(--surface-primary)] text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] min-h-[44px]"
-            aria-label="Select first stock to compare"
-          >
-            {SYMBOLS.map((s) => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
-        </div>
+      <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-end">
+          <div className="flex flex-col gap-2">
+            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              Stock A
+            </label>
+            <select
+              value={symbolA}
+              onChange={(e) => setSymbolA(e.target.value)}
+              className="min-h-[46px] rounded-2xl border border-[var(--color-primary)] bg-[var(--surface-primary)] px-3 py-2 text-sm font-semibold text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+              aria-label="Select first stock to compare"
+            >
+              {SYMBOLS.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+          </div>
 
-        <div className="flex items-end pb-1 text-[var(--text-tertiary)] font-medium self-end mb-1">vs</div>
+          <div className="flex min-h-[46px] items-center justify-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+            vs
+          </div>
 
-        <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-[var(--text-tertiary)]">Stock B</label>
-          <select
-            value={symbolB}
-            onChange={(e) => setSymbolB(e.target.value)}
-            className="px-3 py-2 text-sm font-semibold rounded-lg border border-[var(--color-warning)] text-[var(--color-warning)] bg-[var(--surface-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-warning)] min-h-[44px]"
-            aria-label="Select second stock to compare"
-          >
-            {SYMBOLS.map((s) => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
+          <div className="flex flex-col gap-2">
+            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              Stock B
+            </label>
+            <select
+              value={symbolB}
+              onChange={(e) => setSymbolB(e.target.value)}
+              className="min-h-[46px] rounded-2xl border border-[var(--color-warning)] bg-[var(--surface-primary)] px-3 py-2 text-sm font-semibold text-[var(--color-warning)] focus:outline-none focus:ring-2 focus:ring-[var(--color-warning)]"
+              aria-label="Select second stock to compare"
+            >
+              {SYMBOLS.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+          </div>
         </div>
+        <p className="mt-4 text-sm leading-6 text-[var(--text-secondary)]">
+          Compare valuation, growth, profitability, risk, and DCF upside using the same curated data snapshot for both companies.
+        </p>
       </div>
 
       {isLoading ? (
         <Skeleton />
       ) : (
         <>
-          {/* Radar chart */}
-          <div className="flex justify-center rounded-xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-6">
+          <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-5 shadow-[var(--shadow-sm)] sm:p-6">
             <ComparisonRadarChart
               data={radarData}
               symbolA={symbolA}
@@ -315,8 +324,7 @@ export function ComparisonTab() {
             />
           </div>
 
-          {/* Metric tables */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <ComparisonMetricTable
               title="Valuation"
               rows={valuationRows}

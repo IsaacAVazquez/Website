@@ -106,13 +106,13 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
   const signals = buildSignals({ dcf, profitability, margins, growth });
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.95fr)]">
+    <div className="space-y-5">
+      <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1.35fr)_minmax(340px,0.95fr)]">
         <WarmCard
           padding="none"
-          className="overflow-hidden border-[color-mix(in_srgb,var(--color-primary)_16%,var(--border-primary))]"
+          className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--color-primary)_16%,var(--border-primary))] shadow-[var(--shadow-sm)]"
         >
-          <div className="min-w-0 p-5 sm:p-6">
+          <div className="min-w-0 p-5 sm:p-6 lg:p-7">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
               Thesis Snapshot
             </p>
@@ -124,8 +124,8 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                 "Business summary is unavailable for this symbol, but the valuation, quality, and operating signals below are still loaded from the research dataset."}
             </p>
 
-            <div className="mt-5 grid gap-3 lg:grid-cols-2">
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
+            <div className="mt-5 grid gap-4 lg:grid-cols-2">
+              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Business Lens
                 </p>
@@ -151,7 +151,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
+              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Operating Read
                 </p>
@@ -180,7 +180,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
 
         <WarmCard
           padding="sm"
-          className="border-[color-mix(in_srgb,var(--color-success)_18%,var(--border-primary))] xl:self-start"
+          className="rounded-[30px] border-[color-mix(in_srgb,var(--color-success)_18%,var(--border-primary))] shadow-[var(--shadow-sm)] xl:self-start"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
             Valuation Call
@@ -197,7 +197,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
+            <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                 Fair Value
               </p>
@@ -205,7 +205,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                 {dcf?.fairValue !== undefined ? `$${dcf.fairValue.toFixed(2)}` : "—"}
               </p>
             </div>
-            <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
+            <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                 WACC
               </p>
@@ -224,21 +224,21 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                 signals.map((signal) => (
                   <div
                     key={signal.label}
-                    className={`rounded-2xl border px-4 py-3 ${toneClasses(signal.tone)}`}
+                    className={`rounded-[24px] border px-4 py-3 ${toneClasses(signal.tone)}`}
                   >
                     <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
                     <p className="mt-2 text-sm leading-6">{signal.body}</p>
                   </div>
                 ))
               ) : (
-                <div className="rounded-2xl border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-secondary)]">
+                <div className="rounded-[24px] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-secondary)]">
                   Research signals will appear once valuation and operating data are available.
                 </div>
               )}
             </div>
 
             {showNews ? (
-              <div className="mt-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
+              <div className="mt-4 rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Lead Narrative
                 </p>
@@ -252,7 +252,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                 ) : null}
               </div>
             ) : (
-              <div className="mt-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
+              <div className="mt-4 rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Snapshot Mode
                 </p>
@@ -268,7 +268,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
       </div>
 
       <div
-        className={`grid grid-cols-1 gap-4 ${
+        className={`grid grid-cols-1 gap-5 ${
           showNews
             ? "2xl:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.9fr)]"
             : ""

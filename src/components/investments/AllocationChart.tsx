@@ -115,11 +115,15 @@ export function AllocationChart({ holdings }: Props) {
   if (data.length === 0) return null;
 
   return (
-    <WarmCard padding="sm" ariaLabel="Portfolio allocation chart">
-      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Allocation</h3>
-      <div className="flex flex-col sm:flex-row items-center gap-4">
-        {/* SVG donut */}
-        <div className="relative shrink-0">
+    <WarmCard padding="sm" ariaLabel="Portfolio allocation chart" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+      <div className="mb-4">
+        <h3 className="text-sm font-semibold text-[var(--text-primary)]">Allocation</h3>
+        <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+          Position weights based on current market value.
+        </p>
+      </div>
+      <div className="flex flex-col gap-5 xl:flex-row xl:items-start">
+        <div className="relative shrink-0 self-center rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-4">
           <svg ref={svgRef} />
           <div
             ref={tooltipRef}
@@ -128,10 +132,9 @@ export function AllocationChart({ holdings }: Props) {
           />
         </div>
 
-        {/* Legend */}
         <ol className="space-y-1.5 text-sm w-full">
           {data.map((h, i) => (
-            <li key={h.symbol} className="flex items-center gap-2">
+            <li key={h.symbol} className="flex items-center gap-2 rounded-[18px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2.5">
               <span
                 className="w-2.5 h-2.5 rounded-full shrink-0"
                 style={{ backgroundColor: PALETTE[i % PALETTE.length] }}

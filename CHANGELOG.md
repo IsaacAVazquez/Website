@@ -4,6 +4,15 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-03-17
+
+- Added full-width route handling for `/investments` and `/march-madness-2026`, so both app-like experiences can render outside the default `max-w-4xl` content wrapper while keeping the shared site header and footer.
+- Refreshed the investment analytics workspace with a stable page shell, cleaner tab hierarchy, tighter control-row spacing, and more consistent treatment across the core research and portfolio surfaces.
+- Restyled the March Madness bracket analysis page from inline/global styles to responsive route-local class-based UI, preserving the existing data model and interactions while improving mobile layout, tab accessibility, and overflow behavior.
+- Extended investments UI coverage, added a dedicated March Madness Playwright spec, and added route-level checks for stable shell width and no horizontal scrolling on Chromium and Mobile Chrome.
+
+---
+
 ## 2026-03-16
 
 - Repositioned `/investments` as a public fintech proof point with recruiter-facing metadata, `SoftwareApplication` structured data, homepage/home/about/contact copy updates, sitemap exposure, and main navigation visibility.

@@ -130,29 +130,43 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
   }
 
   return (
-    <section aria-label="Stock research">
-      {/* Search bar + portfolio badge + freshness (hidden when Compare tab is active) */}
+    <section aria-label="Stock research" className="space-y-6">
       {resolvedActiveTab !== "compare" && (
-        <div className="flex items-start gap-3 flex-wrap mb-6">
-          <StockSearch value={symbol} onChange={handleSymbolChange} />
-          {isInPortfolio && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium self-center" style={{ backgroundColor: "color-mix(in srgb, var(--color-success) 15%, transparent)", color: "var(--color-success)" }}>
-              In portfolio
-            </span>
-          )}
-          <div className="self-center ml-auto">
-            <DataFreshnessIndicator
-              lastUpdated={freshnessLastUpdated}
-              mode={freshnessMode}
-            />
+        <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center">
+            <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+              <div className="min-w-0">
+                <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Ticker Research
+                </p>
+                <StockSearch value={symbol} onChange={handleSymbolChange} />
+              </div>
+              {isInPortfolio ? (
+                <span
+                  className="inline-flex min-h-[40px] items-center justify-center rounded-full px-3 py-2 text-xs font-semibold"
+                  style={{
+                    backgroundColor: "color-mix(in srgb, var(--color-success) 15%, transparent)",
+                    color: "var(--color-success)",
+                  }}
+                >
+                  In portfolio
+                </span>
+              ) : null}
+            </div>
+
+            <div className="justify-self-start xl:justify-self-end">
+              <DataFreshnessIndicator
+                lastUpdated={freshnessLastUpdated}
+                mode={freshnessMode}
+              />
+            </div>
           </div>
         </div>
       )}
 
-      {/* Inner tab bar */}
       {visibleTabs.length > 0 ? (
         <div
-          className="flex gap-1 mb-5 overflow-x-auto pb-1 border-b border-[var(--border-primary)]"
+          className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-2 shadow-[var(--shadow-sm)]"
           role="tablist"
           aria-label="Research sections"
         >
@@ -162,10 +176,10 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
               role="tab"
               aria-selected={resolvedActiveTab === key}
               onClick={() => setActiveTab(key)}
-              className={`px-3 py-2 text-sm font-medium rounded-t-md transition whitespace-nowrap min-h-[44px] border-b-2 -mb-px ${
+              className={`min-h-[44px] whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
                 resolvedActiveTab === key
-                  ? "border-[var(--color-primary)] text-[var(--color-primary)]"
-                  : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  ? "bg-[var(--color-primary)] text-white"
+                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
               {label}
@@ -175,12 +189,11 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
       ) : null}
 
       {resolvedActiveTab !== "compare" && symbol && !showCuratedOnlyState && hasResearchContext ? (
-        <div className="mb-5">
+        <div>
           <ResearchSummaryStrip symbol={symbol} />
         </div>
       ) : null}
 
-      {/* Tab panels with crossfade */}
       <AnimatePresence mode="wait">
         <motion.div
           key={resolvedActiveTab}
@@ -194,19 +207,25 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
           {resolvedActiveTab === "compare" ? (
             <ComparisonTab />
           ) : !symbol ? (
-            <div className="text-center py-20">
-              <p className="text-[var(--text-tertiary)] text-sm">
+            <div className="rounded-[28px] border border-dashed border-[var(--border-primary)] bg-[var(--surface-elevated)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--text-primary)]">
+                Start with a ticker symbol
+              </p>
+              <p className="mt-2 text-sm text-[var(--text-tertiary)]">
                 Enter a stock symbol above to start researching.
               </p>
             </div>
           ) : showLoadingState ? (
-            <div className="text-center py-20">
-              <p className="text-[var(--text-tertiary)] text-sm">
+            <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--text-primary)]">
+                Loading research snapshot
+              </p>
+              <p className="mt-2 text-sm text-[var(--text-tertiary)]">
                 Loading curated research data for {symbol}…
               </p>
             </div>
           ) : showCuratedOnlyState ? (
-            <div className="rounded-2xl border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--surface-secondary))] px-5 py-6 text-center">
+            <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--surface-secondary))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
               <p className="text-sm font-semibold text-[var(--text-primary)]">
                 Research is currently available for curated symbols only.
               </p>
@@ -215,7 +234,7 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
               </p>
             </div>
           ) : showResearchErrorState ? (
-            <div className="rounded-2xl border border-[color-mix(in_srgb,var(--color-error)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-error)_8%,var(--surface-secondary))] px-5 py-6 text-center">
+            <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-error)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-error)_8%,var(--surface-secondary))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
               <p className="text-sm font-semibold text-[var(--text-primary)]">
                 Research data could not be loaded.
               </p>
@@ -230,7 +249,7 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
               )}
               {resolvedActiveTab === "financials" && <FinancialStatementsPanel symbol={symbol} />}
               {resolvedActiveTab === "growth" && (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                   <GrowthPanel symbol={symbol} />
                   <ProfitabilityPanel symbol={symbol} />
                 </div>

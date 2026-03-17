@@ -70,16 +70,21 @@ export function AddStockForm({ onAdd }: Props) {
 
   if (!open) {
     return (
-      <ModernButton variant="accent" size="sm" onClick={() => setOpen(true)} ariaLabel="Add stock">
+      <ModernButton variant="accent" size="md" onClick={() => setOpen(true)} ariaLabel="Add stock">
         <IconPlus size={16} /> Add Stock
       </ModernButton>
     );
   }
 
   return (
-    <WarmCard padding="sm" ariaLabel="Add stock form">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-semibold text-[var(--text-primary)]">Add Position</h3>
+    <WarmCard padding="sm" ariaLabel="Add stock form" className="rounded-[28px] shadow-[var(--shadow-sm)]">
+      <div className="mb-5 flex items-center justify-between">
+        <div>
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Add Position</h3>
+          <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+            Save a holding locally to include it in portfolio analytics.
+          </p>
+        </div>
         <button
           onClick={() => { setOpen(false); setError(null); }}
           className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
@@ -90,7 +95,7 @@ export function AddStockForm({ onAdd }: Props) {
       </div>
 
       <form onSubmit={handleSubmit} noValidate>
-        <div className="grid grid-cols-2 gap-3 mb-3">
+        <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Field
             label="Symbol"
             id="add-symbol"
@@ -130,12 +135,12 @@ export function AddStockForm({ onAdd }: Props) {
         </div>
 
         {error && (
-          <p role="alert" className="text-xs text-[var(--color-error)] mb-3">
+          <p role="alert" className="mb-4 text-xs text-[var(--color-error)]">
             {error}
           </p>
         )}
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <ModernButton type="submit" variant="accent" size="sm" ariaLabel="Add position">
             <IconPlus size={14} /> Add Position
           </ModernButton>

@@ -38,7 +38,6 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
   const gainPositive = holding.gainLoss >= 0;
   const dayPositive = holding.dayChange >= 0;
   const valueColor = gainPositive ? "text-[var(--color-success)]" : "text-[var(--color-error)]";
-  const dayColor = dayPositive ? "text-[var(--color-success)]" : "text-[var(--color-error)]";
 
   function handleSave() {
     const shares = parseFloat(editShares);
@@ -56,9 +55,8 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
   }
 
   return (
-    <WarmCard padding="sm" ariaLabel={`${holding.symbol} holding`}>
-      {/* Top: Symbol + name left, sparkline right */}
-      <div className="flex items-start justify-between gap-2 mb-2">
+    <WarmCard padding="sm" ariaLabel={`${holding.symbol} holding`} className="rounded-[28px] shadow-[var(--shadow-sm)]">
+      <div className="mb-4 flex items-start justify-between gap-3">
         <div>
           <div className="flex items-center gap-2">
             <span className="text-base font-bold text-[var(--text-primary)]">{holding.symbol}</span>
@@ -66,9 +64,9 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
               <span className="text-xs text-[var(--text-tertiary)]">Loading...</span>
             )}
           </div>
-          <p className="text-xs text-[var(--text-secondary)] truncate max-w-[160px]">{holding.name}</p>
+          <p className="max-w-[180px] truncate text-xs text-[var(--text-secondary)]">{holding.name}</p>
         </div>
-        <div className="shrink-0">
+        <div className="shrink-0 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-2 py-1.5">
           {sparklineData.length >= 2 ? (
             <Sparkline data={sparklineData} width={80} height={30} />
           ) : (
@@ -77,8 +75,7 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
         </div>
       </div>
 
-      {/* Middle: Current price + day change badge */}
-      <div className="flex items-baseline gap-2 mb-3">
+      <div className="mb-4 flex items-baseline gap-2">
         {holding.isLoading ? (
           <div className="h-6 w-20 rounded bg-[var(--neutral-200)] animate-pulse" />
         ) : (
@@ -97,9 +94,8 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
         )}
       </div>
 
-      {/* Bottom: Metrics / Edit form */}
       {editing ? (
-        <div className="space-y-2 mb-3">
+        <div className="mb-4 space-y-3">
           <label className="block">
             <span className="text-xs text-[var(--text-tertiary)]">Shares</span>
             <input
@@ -125,23 +121,22 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-1 mb-2 text-sm">
-            <div>
+          <div className="mb-4 grid grid-cols-2 gap-3 text-sm">
+            <div className="rounded-[20px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-3">
               <span className="text-[var(--text-tertiary)] text-xs">Market Value</span>
-              <p className="font-medium text-[var(--text-primary)]">{fmt(holding.currentValue, "currency")}</p>
+              <p className="mt-1 font-medium text-[var(--text-primary)]">{fmt(holding.currentValue, "currency")}</p>
             </div>
-            <div>
+            <div className="rounded-[20px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-3">
               <span className="text-[var(--text-tertiary)] text-xs">Gain / Loss</span>
-              <p className={`font-medium ${valueColor}`}>
+              <p className={`mt-1 font-medium ${valueColor}`}>
                 {fmt(holding.gainLoss, "currency")}
               </p>
             </div>
           </div>
 
-          {/* Allocation bar */}
           {holding.allocationPercent !== null && (
-            <div className="mb-2">
-              <div className="flex justify-between text-xs text-[var(--text-tertiary)] mb-0.5">
+            <div className="mb-4 rounded-[20px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-3">
+              <div className="mb-1 flex justify-between text-xs text-[var(--text-tertiary)]">
                 <span>Allocation</span>
                 <span>{holding.allocationPercent.toFixed(1)}%</span>
               </div>
@@ -161,8 +156,7 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
         </>
       )}
 
-      {/* Action buttons */}
-      <div className="flex items-center gap-1.5 pt-1.5 border-t border-[var(--border-primary)]">
+      <div className="flex flex-wrap items-center gap-2 border-t border-[var(--border-primary)] pt-3">
         {editing ? (
           <>
             <ModernButton size="sm" variant="accent" onClick={handleSave} ariaLabel="Save changes">
@@ -196,7 +190,7 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
               onClick={() => onResearch(holding.symbol)}
               ariaLabel={`Research ${holding.symbol}`}
             >
-              <IconSearch size={14} />
+              <IconSearch size={14} /> Research
             </ModernButton>
             <ModernButton
               size="sm"
@@ -204,7 +198,7 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
               onClick={() => setEditing(true)}
               ariaLabel={`Edit ${holding.symbol}`}
             >
-              <IconPencil size={14} />
+              <IconPencil size={14} /> Edit
             </ModernButton>
             <ModernButton
               size="sm"
@@ -213,7 +207,7 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
               ariaLabel={`Remove ${holding.symbol}`}
               className="text-[var(--color-error)] hover:bg-red-50 dark:hover:bg-red-950/20"
             >
-              <IconTrash size={14} />
+              <IconTrash size={14} /> Remove
             </ModernButton>
           </>
         )}

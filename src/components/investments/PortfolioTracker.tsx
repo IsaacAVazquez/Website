@@ -29,39 +29,43 @@ export function PortfolioTracker({ onResearch }: Props) {
   const isEmpty = enhancedHoldings.length === 0;
 
   return (
-    <section aria-label="Portfolio tracker">
-      {/* Summary metrics + freshness */}
+    <section aria-label="Portfolio tracker" className="space-y-6">
       {!isEmpty && (
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide">
-              Portfolio Overview
-            </h2>
-            <DataFreshnessIndicator
-              lastUpdated={lastUpdated}
-              onRefresh={refetch}
-              isRefreshing={isLoading}
-            />
+        <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
+          <div className="mb-4 grid gap-3 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                Portfolio Overview
+              </p>
+              <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                Track allocation, performance, and holding-level changes across your saved positions.
+              </p>
+            </div>
+            <div className="justify-self-start xl:justify-self-end">
+              <DataFreshnessIndicator
+                lastUpdated={lastUpdated}
+                onRefresh={refetch}
+                isRefreshing={isLoading}
+              />
+            </div>
           </div>
           <PortfolioSummary summary={summary} isLoading={isLoading} />
         </div>
       )}
 
-      {/* Performance chart */}
       {!isEmpty && snapshots.length >= 2 && (
-        <div className="mb-6">
+        <div>
           <PortfolioPerformanceChart snapshots={snapshots} />
         </div>
       )}
 
-      {/* Add form */}
-      <div className="mb-6">
+      <div>
         <AddStockForm onAdd={addHolding} />
       </div>
 
       {isEmpty ? (
-        <div className="text-center py-16">
-          <p className="text-[var(--text-secondary)] text-sm font-medium mb-2">
+        <div className="rounded-[28px] border border-dashed border-[var(--border-primary)] bg-[var(--surface-elevated)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+          <p className="mb-2 text-sm font-semibold text-[var(--text-primary)]">
             No positions yet
           </p>
           <p className="text-[var(--text-tertiary)] text-sm max-w-xs mx-auto">
@@ -69,14 +73,13 @@ export function PortfolioTracker({ onResearch }: Props) {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {/* Holdings list */}
-          <div className="lg:col-span-2">
-            <h2 className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-3">
+        <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1.6fr)_minmax(320px,0.8fr)]">
+          <div>
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--text-secondary)]">
               Holdings ({enhancedHoldings.length})
             </h2>
             <motion.ul
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+              className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-2"
               role="list"
               variants={v.containerVariants}
               initial="hidden"
@@ -95,7 +98,6 @@ export function PortfolioTracker({ onResearch }: Props) {
             </motion.ul>
           </div>
 
-          {/* Allocation chart */}
           <div>
             <AllocationChart holdings={enhancedHoldings} />
           </div>

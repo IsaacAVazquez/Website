@@ -135,6 +135,44 @@ test.describe("Investments", () => {
     expect(requests.filter((url) => url.includes("/data/investments/SHOP/snapshot.json"))).toHaveLength(0);
   });
 
+  test("keeps the shell stable across top-level tabs and avoids horizontal overflow", async ({ page }) => {
+    await page.route("**/data/investments/index.json", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify(curatedIndex),
+      });
+    });
+
+    await page.route("**/data/investments/AAPL/snapshot.json", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify(appleSnapshot),
+      });
+    });
+
+    await page.goto("/investments");
+    await page.waitForLoadState("networkidle");
+
+    const shell = page.locator('[data-testid="investments-shell"]');
+    const before = await shell.boundingBox();
+
+    await page.getByRole("tab", { name: /my portfolio/i }).click();
+    await page.waitForLoadState("networkidle");
+
+    const after = await shell.boundingBox();
+
+    expect(before).not.toBeNull();
+    expect(after).not.toBeNull();
+    expect(Math.abs((after?.width ?? 0) - (before?.width ?? 0))).toBeLessThan(2);
+
+    const hasHorizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth + 1
+    );
+    expect(hasHorizontalOverflow).toBeFalsy();
+  });
+
   test("homepage prioritizes the fintech project in selected work", async ({ page }) => {
     await page.goto("/");
     const section = page.locator('section[aria-label="Selected work"]');

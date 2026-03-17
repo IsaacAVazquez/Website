@@ -65,7 +65,7 @@ export function DataFreshnessIndicator({
         {onRefresh && (
           <button
             onClick={onRefresh}
-            className="inline-flex items-center justify-center"
+            className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[var(--text-tertiary)] transition hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
             aria-label="Refresh data"
           >
             <IconRefresh
@@ -94,7 +94,7 @@ export function DataFreshnessIndicator({
       {onRefresh && (
         <button
           onClick={onRefresh}
-          className="inline-flex items-center justify-center"
+          className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[var(--text-tertiary)] transition hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
           aria-label="Refresh data"
         >
           <IconRefresh

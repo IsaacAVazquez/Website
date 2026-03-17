@@ -301,57 +301,116 @@ const PICKS = [
 ];
 
 // ─── COMPONENTS ──────────────────────────────────────────────────────────────
+const SURFACE_CLASS =
+  'rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,16,24,0.96),rgba(8,12,18,0.88))] shadow-[0_24px_80px_rgba(0,0,0,0.32)] backdrop-blur';
+
+function SurfaceCard({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return <div className={`${SURFACE_CLASS} ${className}`}>{children}</div>;
+}
 
 function Tag({ children, color = 'gray' }: { children: React.ReactNode; color?: string }) {
-  const colors: Record<string, { bg: string; text: string }> = {
-    blue:   { bg: '#1a3a5c', text: '#7eb8f7' },
-    green:  { bg: '#1a3b26', text: '#6dd98c' },
-    red:    { bg: '#3b1a1a', text: '#f07070' },
-    amber:  { bg: '#3b2a10', text: '#f0b060' },
-    gray:   { bg: '#2a2a2a', text: '#888' },
+  const colorClasses: Record<string, string> = {
+    blue: 'border-sky-400/20 bg-sky-500/15 text-sky-200',
+    green: 'border-emerald-400/20 bg-emerald-500/15 text-emerald-200',
+    red: 'border-rose-400/20 bg-rose-500/15 text-rose-200',
+    amber: 'border-amber-400/20 bg-amber-500/15 text-amber-200',
+    gray: 'border-white/10 bg-white/[0.06] text-slate-400',
   };
-  const c = colors[color] || colors.gray;
+
   return (
-    <span style={{
-      display: 'inline-block', fontSize: 10, padding: '1px 6px',
-      borderRadius: 4, fontWeight: 600, letterSpacing: '.02em',
-      background: c.bg, color: c.text, marginLeft: 4,
-    }}>
+    <span
+      className={`inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${
+        colorClasses[color] ?? colorClasses.gray
+      }`}
+    >
       {children}
     </span>
   );
 }
 
-function TeamRow({ seed, name, win, tags = [] }: { seed?: number; name: string; win: boolean; tags?: string[] }) {
+function TeamRow({
+  seed,
+  name,
+  win,
+  tags = [],
+}: {
+  seed?: number;
+  name: string;
+  win: boolean;
+  tags?: string[];
+}) {
   return (
-    <div style={{
-      display: 'flex', alignItems: 'center', gap: 8, padding: '5px 10px',
-      background: win ? '#0f1f0f' : '#141414',
-      borderLeft: `2px solid ${win ? '#4ade80' : 'transparent'}`,
-      fontSize: 12,
-    }}>
-      <span style={{ minWidth: 16, fontSize: 10, color: '#555', textAlign: 'right' }}>{seed}</span>
-      <span style={{ flex: 1, color: win ? '#e8e8e8' : '#555', fontWeight: win ? 600 : 400 }}>{name}</span>
-      {tags.map((t, i) => <Tag key={i} color="amber">{t}</Tag>)}
+    <div
+      className={`flex flex-wrap items-center gap-2 px-3 py-3 sm:flex-nowrap ${
+        win
+          ? 'border-l-2 border-emerald-400 bg-emerald-500/[0.08]'
+          : 'border-l-2 border-transparent bg-white/[0.03]'
+      }`}
+    >
+      <span className="w-5 shrink-0 text-right text-[11px] font-medium text-slate-500">
+        {seed ?? ''}
+      </span>
+      <span className={`min-w-0 flex-1 text-sm font-semibold ${win ? 'text-white' : 'text-slate-400'}`}>
+        {name}
+      </span>
+      {tags.length > 0 ? (
+        <div className="flex flex-wrap justify-end gap-1.5">
+          {tags.map((tag, index) => (
+            <Tag key={`${tag}-${index}`} color="amber">
+              {tag}
+            </Tag>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
 
-function Matchup({ s1, t1, s2, t2, w, tags = [] }: { s1: number; t1: string; s2: number; t2: string; w: number; tags?: string[] }) {
+function Matchup({
+  s1,
+  t1,
+  s2,
+  t2,
+  w,
+  tags = [],
+}: {
+  s1: number;
+  t1: string;
+  s2: number;
+  t2: string;
+  w: number;
+  tags?: string[];
+}) {
   return (
-    <div style={{ marginBottom: 4, borderRadius: 5, overflow: 'hidden', border: '1px solid #222' }}>
+    <div className="mb-3 overflow-hidden rounded-[22px] border border-white/10 bg-black/20">
       <TeamRow seed={s1} name={t1} win={w === 1} tags={w === 1 ? tags : []} />
-      <div style={{ height: 1, background: '#222' }} />
+      <div className="h-px bg-white/10" />
       <TeamRow seed={s2} name={t2} win={w === 2} tags={w === 2 ? tags : []} />
     </div>
   );
 }
 
-function Matchup2({ t1, t2, w, tags = [] }: { t1: string; t2: string; w: number; tags?: string[] }) {
+function Matchup2({
+  t1,
+  t2,
+  w,
+  tags = [],
+}: {
+  t1: string;
+  t2: string;
+  w: number;
+  tags?: string[];
+}) {
   return (
-    <div style={{ marginBottom: 4, borderRadius: 5, overflow: 'hidden', border: '1px solid #222' }}>
+    <div className="mb-3 overflow-hidden rounded-[22px] border border-white/10 bg-black/20">
       <TeamRow name={t1} win={w === 1} tags={w === 1 ? tags : []} />
-      <div style={{ height: 1, background: '#222' }} />
+      <div className="h-px bg-white/10" />
       <TeamRow name={t2} win={w === 2} tags={w === 2 ? tags : []} />
     </div>
   );
@@ -359,118 +418,172 @@ function Matchup2({ t1, t2, w, tags = [] }: { t1: string; t2: string; w: number;
 
 function RoundLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{
-      fontSize: 9, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase',
-      color: '#f59e0b', marginBottom: 6, marginTop: 14, paddingBottom: 4,
-      borderBottom: '1px solid #2a2200',
-    }}>
+    <p className="mb-3 mt-5 border-b border-amber-400/10 pb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-300">
       {children}
-    </div>
+    </p>
   );
 }
 
 function SiteLabel({ children }: { children: React.ReactNode }) {
-  return <div style={{ fontSize: 10, color: '#555', fontStyle: 'italic', margin: '8px 0 4px' }}>{children}</div>;
+  return <p className="mb-2 mt-3 text-xs italic text-slate-500">{children}</p>;
 }
 
 function NoteBox({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{
-      background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 6,
-      padding: '10px 12px', fontSize: 12, color: '#888', lineHeight: 1.6, marginTop: 10,
-    }}>
+    <div className="mt-3 rounded-[22px] border border-white/10 bg-white/[0.04] px-4 py-4 text-sm leading-6 text-slate-300">
       {children}
     </div>
   );
 }
 
-function TabBar({ tabs, active, onChange }: { tabs: string[]; active: string; onChange: (tab: string) => void }) {
+function TabBar({
+  tabs,
+  active,
+  onChange,
+  label,
+}: {
+  tabs: string[];
+  active: string;
+  onChange: (tab: string) => void;
+  label: string;
+}) {
   return (
-    <div style={{ display: 'flex', gap: 4, marginBottom: 14, flexWrap: 'wrap' }}>
-      {tabs.map(t => (
-        <button key={t} onClick={() => onChange(t)} style={{
-          padding: '6px 14px', borderRadius: 6, fontSize: 12, cursor: 'pointer',
-          border: active === t ? '1px solid #f59e0b' : '1px solid #333',
-          background: active === t ? '#f59e0b11' : 'transparent',
-          color: active === t ? '#f59e0b' : '#666',
-          fontWeight: active === t ? 600 : 400, fontFamily: 'inherit',
-        }}>
-          {t}
+    <div className="flex flex-wrap gap-2" role="tablist" aria-label={label}>
+      {tabs.map((tab) => (
+        <button
+          key={tab}
+          type="button"
+          role="tab"
+          aria-selected={active === tab}
+          onClick={() => onChange(tab)}
+          className={`min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-semibold transition ${
+            active === tab
+              ? 'border-amber-400/30 bg-amber-400/15 text-amber-200'
+              : 'border-white/10 bg-white/[0.03] text-slate-400 hover:border-white/20 hover:bg-white/[0.06] hover:text-white'
+          }`}
+        >
+          {tab}
         </button>
       ))}
     </div>
   );
 }
 
-function StatCell({ val, isRank, highlight }: { val: number; isRank?: boolean; highlight?: boolean }) {
-  const color = highlight ? '#f59e0b' : isRank && val <= 5 ? '#4ade80' : '#888';
-  return <td style={{ textAlign: 'right', padding: '5px 6px', fontSize: 11, color, fontVariantNumeric: 'tabular-nums' }}>{val}</td>;
+function StatCell({
+  val,
+  isRank,
+  highlight,
+}: {
+  val: number;
+  isRank?: boolean;
+  highlight?: boolean;
+}) {
+  const textClass = highlight
+    ? 'text-amber-300'
+    : isRank && val <= 5
+      ? 'text-emerald-300'
+      : 'text-slate-300';
+
+  return <td className={`px-2 py-3 text-right text-xs font-medium tabular-nums ${textClass}`}>{val}</td>;
 }
 
 // ─── SECTIONS ────────────────────────────────────────────────────────────────
 
 function RankingsSection() {
   return (
-    <div style={{ overflowX: 'auto' }}>
-      <div style={{ fontSize: 11, color: '#555', marginBottom: 8 }}>
-        Blended avg across BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank, WAB (excl. min/max)
-      </div>
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, minWidth: 600 }}>
-        <thead>
-          <tr style={{ borderBottom: '1px solid #222' }}>
-            {['Rk','Team','Conf','Record','Avg','BPI','EM','KPI','NET','POM','SOR','TR','WAB','Trapezoid','Seed','Odds'].map(h => (
-              <th key={h} style={{ textAlign: h === 'Team' || h === 'Trapezoid' ? 'left' : 'right', padding: '6px 6px 8px', fontSize: 10, fontWeight: 600, letterSpacing: '.05em', color: '#555' }}>{h}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {RANKINGS.map((r, i) => (
-            <tr key={r.team} style={{ borderBottom: '1px solid #1a1a1a', background: i % 2 === 0 ? '#0d0d0d' : 'transparent' }}>
-              <td style={{ padding: '5px 6px', fontSize: 11, color: '#444' }}>{r.rank}</td>
-              <td style={{ padding: '5px 6px', fontSize: 12, fontWeight: 600, color: '#e0e0e0' }}>{r.team}</td>
-              <td style={{ padding: '5px 6px', fontSize: 11, color: '#555' }}>{r.conf}</td>
-              <td style={{ padding: '5px 6px', fontSize: 11, color: '#666' }}>{r.record}</td>
-              <StatCell val={r.avg} highlight={r.avg <= 3} />
-              {[r.bpi,r.em,r.kpi,r.net,r.pom,r.sor,r.tr,r.wab].map((v,j) => <StatCell key={j} val={v} isRank />)}
-              <td style={{ padding: '5px 6px', fontSize: 10 }}>
-                <span style={{
-                  background: r.trap === 'Trapezoid' ? '#1a3b26' : r.trap === '—' ? '#1a1a1a' : '#3b2a10',
-                  color: r.trap === 'Trapezoid' ? '#4ade80' : r.trap === '—' ? '#444' : '#f0b060',
-                  padding: '1px 6px', borderRadius: 4, whiteSpace: 'nowrap',
-                }}>{r.trap}</span>
-              </td>
-              <td style={{ textAlign: 'right', padding: '5px 6px', fontSize: 11, color: '#555' }}>{r.seed}</td>
-              <td style={{ textAlign: 'right', padding: '5px 6px', fontSize: 11, color: '#f59e0b', fontVariantNumeric: 'tabular-nums' }}>{r.odds}</td>
+    <div className="space-y-4">
+      <p className="max-w-[72ch] text-sm leading-6 text-slate-400">
+        Blended average across BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank, and WAB, excluding the minimum and maximum system values.
+      </p>
+      <div className="overflow-x-auto">
+        <table className="min-w-[920px] w-full border-collapse text-sm">
+          <thead>
+            <tr className="border-b border-white/10">
+              {['Rk', 'Team', 'Conf', 'Record', 'Avg', 'BPI', 'EM', 'KPI', 'NET', 'POM', 'SOR', 'TR', 'WAB', 'Trapezoid', 'Seed', 'Odds'].map((heading) => (
+                <th
+                  key={heading}
+                  className={`px-2 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500 ${
+                    heading === 'Team' || heading === 'Trapezoid' ? 'text-left' : 'text-right'
+                  }`}
+                >
+                  {heading}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {RANKINGS.map((ranking, index) => (
+              <tr
+                key={ranking.team}
+                className={`border-b border-white/5 ${index % 2 === 0 ? 'bg-white/[0.02]' : ''}`}
+              >
+                <td className="px-2 py-3 text-xs text-slate-500">{ranking.rank}</td>
+                <td className="px-2 py-3 text-sm font-semibold text-white">{ranking.team}</td>
+                <td className="px-2 py-3 text-xs text-slate-400">{ranking.conf}</td>
+                <td className="px-2 py-3 text-xs text-slate-400">{ranking.record}</td>
+                <StatCell val={ranking.avg} highlight={ranking.avg <= 3} />
+                {[ranking.bpi, ranking.em, ranking.kpi, ranking.net, ranking.pom, ranking.sor, ranking.tr, ranking.wab].map((value, statIndex) => (
+                  <StatCell key={`${ranking.team}-${statIndex}`} val={value} isRank />
+                ))}
+                <td className="px-2 py-3">
+                  <span
+                    className={`inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${
+                      ranking.trap === 'Trapezoid'
+                        ? 'border-emerald-400/20 bg-emerald-500/15 text-emerald-200'
+                        : ranking.trap === '—'
+                          ? 'border-white/10 bg-white/[0.04] text-slate-500'
+                          : 'border-amber-400/20 bg-amber-500/15 text-amber-200'
+                    }`}
+                  >
+                    {ranking.trap}
+                  </span>
+                </td>
+                <td className="px-2 py-3 text-right text-xs text-slate-400">{ranking.seed}</td>
+                <td className="px-2 py-3 text-right text-xs font-semibold tabular-nums text-amber-300">
+                  {ranking.odds}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
 
 function SCurveSection() {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+    <div className="grid gap-5 lg:grid-cols-2">
       {[
-        { label: 'Underseeded — got a raw deal', data: SCURVE.under, pos: true },
-        { label: 'Overseeded — got a gift',       data: SCURVE.over,  pos: false },
-      ].map(({ label, data, pos }) => (
-        <div key={label}>
-          <div style={{ fontSize: 11, fontWeight: 600, color: pos ? '#4ade80' : '#f07070', letterSpacing: '.04em', marginBottom: 10 }}>{label}</div>
-          {data.map(d => (
-            <div key={d.team} style={{
-              display: 'flex', alignItems: 'center', gap: 8, padding: '7px 0',
-              borderBottom: '1px solid #1a1a1a', fontSize: 12,
-            }}>
-              <span style={{ fontWeight: 600, color: '#d0d0d0', minWidth: 100 }}>{d.team}</span>
-              <span style={{ fontSize: 10, color: '#555', flex: 1 }}>{d.seed}-seed · {d.exp}→{d.act}</span>
-              <span style={{
-                padding: '2px 8px', borderRadius: 4, fontWeight: 700, fontSize: 12,
-                background: pos ? '#1a3b26' : '#3b1a1a', color: pos ? '#4ade80' : '#f07070',
-              }}>{d.diff}</span>
-            </div>
-          ))}
+        { label: 'Underseeded — got a raw deal', data: SCURVE.under, positive: true },
+        { label: 'Overseeded — got a gift', data: SCURVE.over, positive: false },
+      ].map(({ label, data, positive }) => (
+        <div key={label} className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
+          <p className={`mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] ${positive ? 'text-emerald-300' : 'text-rose-300'}`}>
+            {label}
+          </p>
+          <div className="space-y-3">
+            {data.map((item) => (
+              <div
+                key={item.team}
+                className="flex flex-wrap items-center gap-3 rounded-[18px] border border-white/8 bg-black/10 px-3 py-3"
+              >
+                <span className="min-w-[110px] text-sm font-semibold text-white">{item.team}</span>
+                <span className="flex-1 text-xs text-slate-400">
+                  {item.seed}-seed · {item.exp}→{item.act}
+                </span>
+                <span
+                  className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
+                    positive
+                      ? 'border-emerald-400/20 bg-emerald-500/15 text-emerald-200'
+                      : 'border-rose-400/20 bg-rose-500/15 text-rose-200'
+                  }`}
+                >
+                  {item.diff}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       ))}
     </div>
@@ -479,20 +592,21 @@ function SCurveSection() {
 
 function InjuriesSection() {
   return (
-    <div>
-      {INJURIES.map(inj => (
-        <div key={inj.player} style={{
-          display: 'flex', gap: 12, padding: '10px 0', borderBottom: '1px solid #1a1a1a', alignItems: 'flex-start',
-        }}>
-          <div style={{
-            minWidth: 26, height: 26, borderRadius: 4, background: '#1a1a1a',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 11, fontWeight: 700, color: '#f59e0b', flexShrink: 0,
-          }}>{inj.seed}</div>
-          <div>
-            <div style={{ fontWeight: 600, color: '#d0d0d0', fontSize: 13 }}>{inj.team} — {inj.player}</div>
-            <div style={{ color: '#888', fontSize: 12, marginTop: 2 }}>{inj.line}</div>
-            <div style={{ color: '#555', fontSize: 11, marginTop: 2 }}>{inj.note}</div>
+    <div className="space-y-3">
+      {INJURIES.map((injury) => (
+        <div
+          key={injury.player}
+          className="flex gap-4 rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4"
+        >
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-amber-400/20 bg-amber-500/12 text-sm font-semibold text-amber-200">
+            {injury.seed}
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-white">
+              {injury.team} — {injury.player}
+            </p>
+            <p className="mt-1 text-sm text-slate-300">{injury.line}</p>
+            <p className="mt-2 text-xs leading-6 text-slate-400">{injury.note}</p>
           </div>
         </div>
       ))}
@@ -501,50 +615,78 @@ function InjuriesSection() {
 }
 
 function TZSection() {
-  const flips = TZ_IMPACTS.filter(t => t.note.startsWith('FLIP'));
-  const others = TZ_IMPACTS.filter(t => !t.note.startsWith('FLIP'));
+  const flips = TZ_IMPACTS.filter((impact) => impact.note.startsWith('FLIP'));
+  const others = TZ_IMPACTS.filter((impact) => !impact.note.startsWith('FLIP'));
+
   return (
-    <div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10, marginBottom: 16 }}>
+    <div className="space-y-6">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {[
-          { val: '3',  label: 'Round 1 flips from TZ' },
-          { val: '−9%', label: "Arizona's Final Four penalty" },
-          { val: '0%', label: "Duke's total penalty" },
-        ].map(m => (
-          <div key={m.label} style={{ background: '#111', borderRadius: 8, padding: '12px 14px', border: '1px solid #222' }}>
-            <div style={{ fontSize: 22, fontWeight: 700, color: '#f59e0b', fontVariantNumeric: 'tabular-nums' }}>{m.val}</div>
-            <div style={{ fontSize: 11, color: '#555', marginTop: 3 }}>{m.label}</div>
+          { value: '3', label: 'Round 1 flips from TZ' },
+          { value: '−9%', label: "Arizona's Final Four penalty" },
+          { value: '0%', label: "Duke's total penalty" },
+        ].map((metric) => (
+          <div
+            key={metric.label}
+            className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4"
+          >
+            <p className="text-2xl font-semibold tabular-nums text-amber-300">{metric.value}</p>
+            <p className="mt-2 text-xs uppercase tracking-[0.14em] text-slate-500">{metric.label}</p>
           </div>
         ))}
       </div>
 
-      <div style={{ fontSize: 11, fontWeight: 600, color: '#f07070', letterSpacing: '.06em', marginBottom: 8 }}>BRACKET FLIPS</div>
-      {flips.map(t => (
-        <div key={t.team + t.site} style={{
-          background: '#1a0f0f', border: '1px solid #3b1a1a', borderRadius: 6,
-          padding: '8px 12px', marginBottom: 6, display: 'flex', alignItems: 'center', gap: 10,
-        }}>
-          <span style={{ minWidth: 100, fontWeight: 600, color: '#f07070', fontSize: 13 }}>{t.team}</span>
-          <span style={{ fontSize: 11, color: '#666', flex: 1 }}>{t.home} → {t.site} · {t.zones}z {t.direction}{t.final ? ' (final slot)' : ''}</span>
-          <span style={{ fontWeight: 700, color: '#f07070', fontSize: 14 }}>{t.pct}%</span>
+      <div>
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-rose-300">
+          Bracket Flips
+        </p>
+        <div className="space-y-3">
+          {flips.map((impact) => (
+            <div
+              key={`${impact.team}-${impact.site}`}
+              className="grid gap-2 rounded-[22px] border border-rose-400/15 bg-rose-500/[0.07] px-4 py-4 sm:grid-cols-[minmax(0,120px)_minmax(0,1fr)_auto]"
+            >
+              <span className="text-sm font-semibold text-rose-200">{impact.team}</span>
+              <span className="text-xs leading-6 text-slate-300">
+                {impact.home} → {impact.site} · {impact.zones} zone{impact.zones > 1 ? 's' : ''} {impact.direction}
+                {impact.final ? ' · final slot' : ''}
+              </span>
+              <span className="text-sm font-semibold tabular-nums text-rose-200">{impact.pct}%</span>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
 
-      <div style={{ fontSize: 11, fontWeight: 600, color: '#888', letterSpacing: '.06em', margin: '14px 0 8px' }}>OTHER IMPACTS</div>
-      {others.map(t => (
-        <div key={t.team + t.site} style={{
-          display: 'flex', alignItems: 'center', gap: 10, padding: '6px 0',
-          borderBottom: '1px solid #1a1a1a', fontSize: 12,
-        }}>
-          <span style={{ minWidth: 110, fontWeight: 500, color: '#aaa' }}>{t.team}</span>
-          <span style={{ fontSize: 11, color: '#555', flex: 1 }}>{t.home}→{t.site.split(' ')[0]}</span>
-          <span style={{ fontSize: 11, color: '#888', flex: 2 }}>{t.note}</span>
-          <span style={{
-            fontWeight: 700, fontSize: 13, minWidth: 36, textAlign: 'right',
-            color: t.pct <= -6 ? '#f07070' : t.pct <= -3 ? '#f0b060' : '#888',
-          }}>{t.pct}%</span>
+      <div>
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+          Other Impacts
+        </p>
+        <div className="space-y-3">
+          {others.map((impact) => (
+            <div
+              key={`${impact.team}-${impact.site}`}
+              className="grid gap-2 rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4 lg:grid-cols-[minmax(0,120px)_minmax(0,140px)_minmax(0,1fr)_auto]"
+            >
+              <span className="text-sm font-medium text-white">{impact.team}</span>
+              <span className="text-xs text-slate-400">
+                {impact.home} → {impact.site.split(' ')[0]}
+              </span>
+              <span className="text-xs leading-6 text-slate-400">{impact.note}</span>
+              <span
+                className={`text-sm font-semibold tabular-nums ${
+                  impact.pct <= -6
+                    ? 'text-rose-300'
+                    : impact.pct <= -3
+                      ? 'text-amber-300'
+                      : 'text-slate-300'
+                }`}
+              >
+                {impact.pct}%
+              </span>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }
@@ -561,43 +703,60 @@ interface RegionData {
 
 function RegionBracket({ data }: { data: RegionData }) {
   const siteMap: Record<string, { r1a: string; r1b: string; r1c: string; r1d: string }> = {
-    east:    { r1a: 'Greenville, SC (ET)', r1b: 'San Diego, CA (PT)', r1c: 'Buffalo, NY (ET)', r1d: 'Philadelphia, PA (ET)' },
-    west:    { r1a: 'San Diego, CA (PT)', r1b: 'Portland, OR (PT)', r1c: 'Portland, OR (PT)', r1d: 'St. Louis, MO (CT)' },
-    south:   { r1a: 'Tampa, FL (ET)', r1b: 'Oklahoma City, OK (CT)', r1c: 'Oklahoma City, OK (CT)', r1d: 'Greenville, SC (ET)' },
+    east: { r1a: 'Greenville, SC (ET)', r1b: 'San Diego, CA (PT)', r1c: 'Buffalo, NY (ET)', r1d: 'Philadelphia, PA (ET)' },
+    west: { r1a: 'San Diego, CA (PT)', r1b: 'Portland, OR (PT)', r1c: 'Portland, OR (PT)', r1d: 'St. Louis, MO (CT)' },
+    south: { r1a: 'Tampa, FL (ET)', r1b: 'Oklahoma City, OK (CT)', r1c: 'Oklahoma City, OK (CT)', r1d: 'Greenville, SC (ET)' },
     midwest: { r1a: 'Buffalo, NY (ET)', r1b: 'Tampa, FL (ET)', r1c: 'Philadelphia, PA (ET)', r1d: 'St. Louis, MO (CT)' },
   };
-  const key = data.region.toLowerCase();
-  const sites = siteMap[key] || { r1a: '', r1b: '', r1c: '', r1d: '' };
+
+  const sites = siteMap[data.region.toLowerCase()] ?? { r1a: '', r1b: '', r1c: '', r1d: '' };
 
   return (
-    <div>
-      <div style={{ fontSize: 11, color: '#555', marginBottom: 8 }}>
-        Regional site: <span style={{ color: '#f59e0b' }}>{data.site}</span> · Advancing: <strong style={{ color: '#4ade80' }}>{data.winner}</strong>
+    <div className="space-y-5">
+      <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
+        <Tag color="gray">{data.region}</Tag>
+        <span>Regional site:</span>
+        <span className="font-semibold text-amber-200">{data.site}</span>
+        <span className="text-slate-500">·</span>
+        <span>Advancing:</span>
+        <span className="font-semibold text-emerald-200">{data.winner}</span>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 0.8fr', gap: 16 }}>
-        <div>
+
+      <div className="grid gap-5 xl:grid-cols-[1.2fr_1fr_0.84fr]">
+        <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
           <RoundLabel>Round 1</RoundLabel>
           <SiteLabel>{sites.r1a}</SiteLabel>
-          {data.r1.slice(0,2).map((m,i) => <Matchup key={i} {...m} />)}
+          {data.r1.slice(0, 2).map((matchup, index) => (
+            <Matchup key={`r1a-${index}`} {...matchup} />
+          ))}
           <SiteLabel>{sites.r1b}</SiteLabel>
-          {data.r1.slice(2,4).map((m,i) => <Matchup key={i} {...m} />)}
+          {data.r1.slice(2, 4).map((matchup, index) => (
+            <Matchup key={`r1b-${index}`} {...matchup} />
+          ))}
           <SiteLabel>{sites.r1c}</SiteLabel>
-          {data.r1.slice(4,6).map((m,i) => <Matchup key={i} {...m} />)}
+          {data.r1.slice(4, 6).map((matchup, index) => (
+            <Matchup key={`r1c-${index}`} {...matchup} />
+          ))}
           <SiteLabel>{sites.r1d}</SiteLabel>
-          {data.r1.slice(6,8).map((m,i) => <Matchup key={i} {...m} />)}
+          {data.r1.slice(6, 8).map((matchup, index) => (
+            <Matchup key={`r1d-${index}`} {...matchup} />
+          ))}
         </div>
-        <div>
+
+        <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
           <RoundLabel>Round 2</RoundLabel>
-          {data.r2.map((m,i) => <Matchup2 key={i} {...m} />)}
+          {data.r2.map((matchup, index) => (
+            <Matchup2 key={`r2-${index}`} {...matchup} />
+          ))}
           <RoundLabel>Sweet 16 — {data.site}</RoundLabel>
-          {data.s16.map((m,i) => <Matchup2 key={i} {...m} />)}
+          {data.s16.map((matchup, index) => (
+            <Matchup2 key={`s16-${index}`} {...matchup} />
+          ))}
         </div>
-        <div>
+
+        <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
           <RoundLabel>Elite Eight</RoundLabel>
-          <Matchup2
-            t1={data.e8.t1} t2={data.e8.t2} w={1}
-            tags={['→ Final Four']}
-          />
+          <Matchup2 t1={data.e8.t1} t2={data.e8.t2} w={1} tags={['Final Four']} />
           <NoteBox>{data.e8.note}</NoteBox>
         </div>
       </div>
@@ -608,121 +767,134 @@ function RegionBracket({ data }: { data: RegionData }) {
 function PicksSection() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
-  const groupMeta: Record<string, { label: string; sublabel: string; color: string; bg: string; border: string }> = {
-    tz:       { label: 'TIME ZONE UPSETS', sublabel: 'Bracket reversals driven by travel penalty', color: '#f07070', bg: '#1a0f0f', border: '#3b1a1a' },
-    analytics:{ label: 'ANALYTICS UPSETS', sublabel: 'KenPom, S-curve & Trapezoid-driven calls',  color: '#7eb8f7', bg: '#0f1a2a', border: '#1a3a5c' },
-    confirm:  { label: 'FINAL FOUR PICKS', sublabel: 'Chalk calls the data firmly supports',        color: '#4ade80', bg: '#0f1f0f', border: '#2a4a2a' },
+  const groupMeta: Record<
+    string,
+    {
+      label: string;
+      sublabel: string;
+      headingClass: string;
+      openSurface: string;
+      openBorder: string;
+    }
+  > = {
+    tz: {
+      label: 'Time Zone Upsets',
+      sublabel: 'Bracket reversals driven by travel penalty.',
+      headingClass: 'text-rose-300',
+      openSurface: 'bg-rose-500/[0.07]',
+      openBorder: 'border-rose-400/15',
+    },
+    analytics: {
+      label: 'Analytics Upsets',
+      sublabel: 'KenPom, S-curve, and Trapezoid-driven calls.',
+      headingClass: 'text-sky-300',
+      openSurface: 'bg-sky-500/[0.06]',
+      openBorder: 'border-sky-400/15',
+    },
+    confirm: {
+      label: 'Final Four Picks',
+      sublabel: 'Chalk calls the model supports strongly.',
+      headingClass: 'text-emerald-300',
+      openSurface: 'bg-emerald-500/[0.06]',
+      openBorder: 'border-emerald-400/15',
+    },
   };
 
-  const badgeStyle: Record<string, { bg: string; color: string }> = {
-    FLIP:     { bg: '#3b1a1a', color: '#f07070' },
-    UPGRADE:  { bg: '#1a3b26', color: '#4ade80' },
-    DOWNGRADE:{ bg: '#3b1a1a', color: '#f07070' },
-    CONFIRM:  { bg: '#1a3b26', color: '#4ade80' },
-    LOCKED:   { bg: '#1a3b26', color: '#4ade80' },
-    WATCH:    { bg: '#3b2a10', color: '#f0b060' },
+  const badgeClasses: Record<string, string> = {
+    FLIP: 'border-rose-400/20 bg-rose-500/15 text-rose-200',
+    UPGRADE: 'border-emerald-400/20 bg-emerald-500/15 text-emerald-200',
+    DOWNGRADE: 'border-rose-400/20 bg-rose-500/15 text-rose-200',
+    CONFIRM: 'border-emerald-400/20 bg-emerald-500/15 text-emerald-200',
+    LOCKED: 'border-emerald-400/20 bg-emerald-500/15 text-emerald-200',
+    WATCH: 'border-amber-400/20 bg-amber-500/15 text-amber-200',
   };
-
-  const groups = ['tz', 'analytics', 'confirm'];
 
   return (
-    <div>
-      {/* Summary bar */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px,1fr))', gap: 8, marginBottom: 24 }}>
+    <div className="space-y-8">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {[
-          { val: '9',  sub: 'TZ-driven picks',         color: '#f07070' },
-          { val: '7',  sub: 'Analytics-driven picks',  color: '#7eb8f7' },
-          { val: '4',  sub: 'Final Four picks',         color: '#4ade80' },
-          { val: '0%', sub: "Duke's total TZ penalty",  color: '#f59e0b' },
-        ].map(m => (
-          <div key={m.sub} style={{ background: '#111', border: '1px solid #222', borderRadius: 8, padding: '12px 14px' }}>
-            <div style={{ fontSize: 24, fontWeight: 700, color: m.color, fontFamily: 'IBM Plex Mono, monospace' }}>{m.val}</div>
-            <div style={{ fontSize: 11, color: '#555', marginTop: 3 }}>{m.sub}</div>
+          { value: '9', sub: 'TZ-driven picks', tone: 'text-rose-300' },
+          { value: '7', sub: 'Analytics-driven picks', tone: 'text-sky-300' },
+          { value: '4', sub: 'Final Four picks', tone: 'text-emerald-300' },
+          { value: '0%', sub: "Duke's total TZ penalty", tone: 'text-amber-300' },
+        ].map((metric) => (
+          <div key={metric.sub} className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
+            <p className={`text-2xl font-semibold tabular-nums ${metric.tone}`}>{metric.value}</p>
+            <p className="mt-2 text-xs uppercase tracking-[0.14em] text-slate-500">{metric.sub}</p>
           </div>
         ))}
       </div>
 
-      {groups.map(group => {
+      {(['tz', 'analytics', 'confirm'] as const).map((group) => {
         const meta = groupMeta[group];
-        const items = PICKS.filter(p => p.group === group);
+        const items = PICKS.filter((pick) => pick.group === group);
+
         return (
-          <div key={group} style={{ marginBottom: 28 }}>
-            <div style={{ marginBottom: 10 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.08em', color: meta.color }}>{meta.label}</span>
-              <span style={{ fontSize: 11, color: '#444', marginLeft: 10 }}>{meta.sublabel}</span>
+          <div key={group} className="space-y-3">
+            <div>
+              <p className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${meta.headingClass}`}>
+                {meta.label}
+              </p>
+              <p className="mt-1 text-sm text-slate-400">{meta.sublabel}</p>
             </div>
-            {items.map((item, i) => {
-              const id = `${group}-${i}`;
+
+            {items.map((item, index) => {
+              const id = `${group}-${index}`;
               const isOpen = expanded === id;
-              const bs = badgeStyle[item.badge] || badgeStyle.CONFIRM;
+
               return (
-                <div
-                  key={i}
+                <button
+                  key={id}
+                  type="button"
                   onClick={() => setExpanded(isOpen ? null : id)}
-                  style={{
-                    background: isOpen ? meta.bg : '#111',
-                    border: `1px solid ${isOpen ? meta.border : '#1e1e1e'}`,
-                    borderRadius: 7, padding: '10px 14px', marginBottom: 5,
-                    cursor: 'pointer', transition: 'background .15s, border-color .15s',
-                  }}
+                  className={`w-full rounded-[24px] border px-4 py-4 text-left transition ${
+                    isOpen
+                      ? `${meta.openSurface} ${meta.openBorder}`
+                      : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]'
+                  }`}
+                  aria-expanded={isOpen}
                 >
-                  {/* Header row */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ background: bs.bg, color: bs.color, fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 3, letterSpacing: '.05em', flexShrink: 0 }}>
+                  <div className="flex flex-wrap items-start gap-2">
+                    <span className={`inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${badgeClasses[item.badge] ?? badgeClasses.CONFIRM}`}>
                       {item.badge}
                     </span>
-                    {item.round && (
-                      <span style={{ background: '#1e1e1e', color: '#555', fontSize: 9, fontWeight: 600, padding: '2px 5px', borderRadius: 3, flexShrink: 0 }}>
-                        {item.round}
-                      </span>
-                    )}
-                    {item.region && (
-                      <span style={{ background: '#1e1e1e', color: '#444', fontSize: 9, fontWeight: 600, padding: '2px 5px', borderRadius: 3, flexShrink: 0 }}>
-                        {item.region}
-                      </span>
-                    )}
-                    <span style={{ fontWeight: 600, color: '#d0d0d0', fontSize: 13, flex: 1 }}>{item.pick}</span>
-                    <span style={{ fontSize: 14, color: '#444', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'none', transition: 'transform .15s' }}>›</span>
+                    {item.round ? <Tag color="gray">{item.round}</Tag> : null}
+                    {item.region ? <Tag color="gray">{item.region}</Tag> : null}
+                    <span className="min-w-0 flex-1 text-sm font-semibold text-white">{item.pick}</span>
+                    <span className={`text-lg text-slate-500 transition ${isOpen ? 'rotate-90' : ''}`}>›</span>
                   </div>
 
-                  {/* Short reason — always visible */}
-                  <div style={{ fontSize: 11, color: '#555', marginTop: 5, marginLeft: 2, lineHeight: 1.5 }}>
-                    {item.reason}
-                  </div>
+                  <p className="mt-3 text-sm leading-6 text-slate-400">{item.reason}</p>
 
-                  {/* Full body — shown on expand */}
-                  {isOpen && (
-                    <div style={{
-                      marginTop: 12, paddingTop: 12, borderTop: `1px solid ${meta.border}`,
-                      fontSize: 12, color: '#888', lineHeight: 1.7,
-                    }}>
+                  {isOpen ? (
+                    <div className="mt-4 border-t border-white/10 pt-4 text-sm leading-7 text-slate-300">
                       {item.body}
                     </div>
-                  )}
-                </div>
+                  ) : null}
+                </button>
               );
             })}
           </div>
         );
       })}
 
-      {/* Legend */}
-      <div style={{ background: '#0d0d0d', border: '1px solid #1e1e1e', borderRadius: 8, padding: '12px 14px', marginTop: 4 }}>
-        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '.08em', color: '#333', marginBottom: 8 }}>LEGEND</div>
-        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+      <div className="rounded-[24px] border border-white/10 bg-white/[0.03] px-4 py-4">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">Legend</p>
+        <div className="mt-3 flex flex-wrap gap-3">
           {[
-            { label: 'FLIP',     bg: '#3b1a1a', color: '#f07070', desc: 'Time zone penalty reversal' },
-            { label: 'UPGRADE',  bg: '#1a3b26', color: '#4ade80', desc: 'Better than their seeding' },
-            { label: 'DOWNGRADE',bg: '#3b1a1a', color: '#f07070', desc: 'Worse than their seeding' },
-            { label: 'WATCH',    bg: '#3b2a10', color: '#f0b060', desc: 'Notable risk or edge' },
-            { label: 'LOCKED',   bg: '#1a3b26', color: '#4ade80', desc: 'High-conviction chalk' },
-          ].map(t => (
-            <div key={t.label} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-              <span style={{ background: t.bg, color: t.color, fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 3 }}>{t.label}</span>
-              <span style={{ fontSize: 11, color: '#444' }}>{t.desc}</span>
+            { label: 'FLIP', className: badgeClasses.FLIP, desc: 'Time zone penalty reversal' },
+            { label: 'UPGRADE', className: badgeClasses.UPGRADE, desc: 'Better than their seeding' },
+            { label: 'DOWNGRADE', className: badgeClasses.DOWNGRADE, desc: 'Worse than their seeding' },
+            { label: 'WATCH', className: badgeClasses.WATCH, desc: 'Notable risk or edge' },
+            { label: 'LOCKED', className: badgeClasses.LOCKED, desc: 'High-conviction chalk' },
+          ].map((legendItem) => (
+            <div key={legendItem.label} className="flex items-center gap-2 rounded-full border border-white/10 bg-black/10 px-3 py-2">
+              <span className={`inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] ${legendItem.className}`}>
+                {legendItem.label}
+              </span>
+              <span className="text-xs text-slate-400">{legendItem.desc}</span>
             </div>
           ))}
-          <div style={{ fontSize: 11, color: '#333', marginLeft: 'auto' }}>Click any pick to expand full reasoning</div>
         </div>
       </div>
     </div>
@@ -737,115 +909,151 @@ export default function MarchMadness2026() {
   const [analyticsTab, setAnalyticsTab] = useState('Rankings');
 
   const bracketData: Record<string, RegionData> = {
-    East: BRACKET.east, West: BRACKET.west,
-    South: BRACKET.south, Midwest: BRACKET.midwest,
+    East: BRACKET.east,
+    West: BRACKET.west,
+    South: BRACKET.south,
+    Midwest: BRACKET.midwest,
   };
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Syne:wght@400;600;700;800&display=swap');
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { background: #0a0a0a; color: #c0c0c0; font-family: 'Syne', sans-serif; }
-        button { font-family: 'Syne', sans-serif; }
-        ::-webkit-scrollbar { width: 6px; height: 6px; background: #111; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-      `}</style>
+    <section
+      className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(245,158,11,0.12),transparent_22%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.14),transparent_20%),linear-gradient(180deg,#06090f_0%,#0a0f17_45%,#070b12_100%)] text-slate-100"
+      aria-label="March Madness bracket analysis"
+      data-testid="march-madness-shell"
+    >
+      <div className="mx-auto w-full max-w-[1480px] px-4 pb-20 pt-8 sm:px-6 lg:px-8 xl:px-10">
+        <div className="space-y-8">
+          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_minmax(340px,0.8fr)]">
+            <SurfaceCard className="relative overflow-hidden p-6 sm:p-8">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.16),transparent_34%)]" />
+              <div className="relative">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300">
+                  2026 NCAA Tournament · Data Analysis
+                </p>
+                <h1 className="mt-4 text-[clamp(2.5rem,5vw,4.75rem)] font-bold leading-[0.95] tracking-tight text-white">
+                  March Madness
+                  <span className="block text-amber-300">Bracket Analysis</span>
+                </h1>
+                <p className="mt-4 max-w-[64ch] text-sm leading-7 text-slate-300 sm:text-base">
+                  A data-driven bracket built on KenPom metrics, the Trapezoid of Excellence, S-curve positioning, injury reports, and a time zone travel penalty model applied to every first-round game.
+                </p>
 
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 24px 80px' }}>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <Tag color="amber">KenPom</Tag>
+                  <Tag color="blue">S-Curve</Tag>
+                  <Tag color="green">Time Zones</Tag>
+                  <Tag color="gray">Injury Model</Tag>
+                </div>
+              </div>
+            </SurfaceCard>
 
-        {/* ── HERO ── */}
-        <div style={{ marginBottom: 48 }}>
-          <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.15em', color: '#f59e0b', marginBottom: 10, textTransform: 'uppercase' }}>
-            2026 NCAA Tournament · Data Analysis
+            <SurfaceCard className="bg-[linear-gradient(135deg,rgba(8,18,12,0.96),rgba(9,18,28,0.92))] p-6 sm:p-7">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+                National Champion Pick
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white">Duke Blue Devils</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-300">
+                #1 in all 8 metric systems, a Trapezoid of Excellence team, and the cleanest travel path in the field at 0% total penalty.
+              </p>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {[
+                  ['32-2', 'Record'],
+                  ['0%', 'TZ Penalty'],
+                  ['90.8', 'Adj. Def. Eff. (#1)'],
+                  ['+300', 'Title Odds'],
+                ].map(([value, label]) => (
+                  <div
+                    key={label}
+                    className="rounded-[20px] border border-white/10 bg-white/[0.05] px-4 py-3"
+                  >
+                    <p className="font-mono text-xl font-semibold text-amber-300">{value}</p>
+                    <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-slate-500">{label}</p>
+                  </div>
+                ))}
+              </div>
+            </SurfaceCard>
           </div>
-          <h1 style={{ fontSize: 'clamp(32px, 6vw, 60px)', fontWeight: 800, color: '#f0f0f0', lineHeight: 1.05, marginBottom: 16 }}>
-            March Madness<br />
-            <span style={{ color: '#f59e0b' }}>Bracket Analysis</span>
-          </h1>
-          <p style={{ fontSize: 15, color: '#666', maxWidth: 560, lineHeight: 1.6 }}>
-            A data-driven bracket built on KenPom metrics, the Trapezoid of Excellence, S-curve positioning, injury reports, and a time zone travel penalty model applied to every first-round game.
-          </p>
-        </div>
 
-        {/* ── CHAMPION CARD ── */}
-        <div style={{
-          background: 'linear-gradient(135deg, #111 0%, #0f1f0f 100%)',
-          border: '1px solid #2a4a2a', borderRadius: 12, padding: '24px 28px',
-          marginBottom: 40, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap',
-        }}>
-          <div>
-            <div style={{ fontSize: 11, letterSpacing: '.1em', color: '#4ade80', fontWeight: 600, marginBottom: 6 }}>NATIONAL CHAMPION PICK</div>
-            <div style={{ fontSize: 36, fontWeight: 800, color: '#f0f0f0' }}>Duke Blue Devils</div>
-            <div style={{ fontSize: 13, color: '#666', marginTop: 6 }}>
-              #1 in all 8 metric systems · Trapezoid of Excellence · 0% travel penalty throughout · def. Michigan in championship
+          <SurfaceCard className="p-5 sm:p-6">
+            <div className="mb-5 flex flex-wrap items-center gap-2">
+              <Tag color="amber">Final Four</Tag>
+              <span className="text-sm text-slate-400">Indianapolis, IN (ET)</span>
             </div>
+            <div className="grid gap-4 lg:grid-cols-3">
+              {[
+                { label: 'Semifinal 1', matchup: 'Duke vs Arizona', winner: 'Duke', note: 'Arizona −9% PT→ET' },
+                { label: 'Semifinal 2', matchup: 'Michigan vs Houston', winner: 'Michigan', note: 'Houston −3% CT→ET' },
+                { label: 'Championship', matchup: 'Duke vs Michigan', winner: 'Duke', note: 'Both ET, 0% penalty' },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4"
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    {item.label}
+                  </p>
+                  <p className="mt-2 text-sm text-slate-300">{item.matchup}</p>
+                  <p className="mt-2 text-lg font-semibold text-emerald-200">{item.winner}</p>
+                  <p className="mt-2 text-xs text-slate-500">{item.note}</p>
+                </div>
+              ))}
+            </div>
+          </SurfaceCard>
+
+          <div className="space-y-4">
+            <TabBar
+              tabs={['Bracket', 'Picks', 'Analytics', 'Time Zones']}
+              active={mainTab}
+              onChange={setMainTab}
+              label="March Madness primary sections"
+            />
+
+            {mainTab === 'Bracket' ? (
+              <SurfaceCard className="space-y-5 p-5 sm:p-6">
+                <TabBar
+                  tabs={['East', 'West', 'South', 'Midwest']}
+                  active={bracketTab}
+                  onChange={setBracketTab}
+                  label="March Madness regions"
+                />
+                <RegionBracket data={bracketData[bracketTab]} />
+              </SurfaceCard>
+            ) : null}
+
+            {mainTab === 'Picks' ? (
+              <SurfaceCard className="p-5 sm:p-6">
+                <PicksSection />
+              </SurfaceCard>
+            ) : null}
+
+            {mainTab === 'Analytics' ? (
+              <SurfaceCard className="space-y-5 p-5 sm:p-6">
+                <TabBar
+                  tabs={['Rankings', 'S-Curve', 'Injuries']}
+                  active={analyticsTab}
+                  onChange={setAnalyticsTab}
+                  label="March Madness analytics sections"
+                />
+                {analyticsTab === 'Rankings' ? <RankingsSection /> : null}
+                {analyticsTab === 'S-Curve' ? <SCurveSection /> : null}
+                {analyticsTab === 'Injuries' ? <InjuriesSection /> : null}
+              </SurfaceCard>
+            ) : null}
+
+            {mainTab === 'Time Zones' ? (
+              <SurfaceCard className="p-5 sm:p-6">
+                <TZSection />
+              </SurfaceCard>
+            ) : null}
           </div>
-          <div style={{ display: 'flex', gap: 20, marginLeft: 'auto', flexWrap: 'wrap' }}>
-            {[['32-2','Record'],['0%','TZ Penalty'],['90.8','Adj. Def. Eff. (#1)'],['$+300','Title Odds']].map(([v,l]) => (
-              <div key={l} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 22, fontWeight: 700, color: '#f59e0b', fontFamily: 'IBM Plex Mono, monospace' }}>{v}</div>
-                <div style={{ fontSize: 10, color: '#555', marginTop: 2 }}>{l}</div>
-              </div>
-            ))}
+
+          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-500">
+            <span>Sources: KenPom · ESPN BPI · T-Rank · NCAA NET · Evan Miya · SOR · WAB · VSIN Lines</span>
+            <span>2026 NCAA Tournament · Matt Eisenberg Guide</span>
           </div>
         </div>
-
-        {/* ── FINAL FOUR ── */}
-        <div style={{ background: '#0f0f0f', border: '1px solid #222', borderRadius: 10, padding: '20px 24px', marginBottom: 40 }}>
-          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '.12em', color: '#f59e0b', marginBottom: 14 }}>FINAL FOUR · INDIANAPOLIS, IN (ET)</div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
-            {[
-              { label: 'Semifinal 1', matchup: 'Duke vs Arizona', winner: 'Duke',    note: 'Arizona −9% PT→ET' },
-              { label: 'Semifinal 2', matchup: 'Michigan vs Houston', winner: 'Michigan', note: 'Houston −3% CT→ET' },
-              { label: 'Championship', matchup: 'Duke vs Michigan',  winner: 'Duke', note: 'Both ET, 0% penalty' },
-            ].map(f => (
-              <div key={f.label} style={{ background: '#141414', borderRadius: 8, padding: '14px 16px' }}>
-                <div style={{ fontSize: 10, color: '#555', marginBottom: 6, letterSpacing: '.05em' }}>{f.label}</div>
-                <div style={{ fontSize: 13, color: '#888', marginBottom: 4 }}>{f.matchup}</div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: '#4ade80' }}>{f.winner}</div>
-                <div style={{ fontSize: 11, color: '#555', marginTop: 3 }}>{f.note}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── MAIN TABS ── */}
-        <TabBar tabs={['Bracket','Picks','Analytics','Time Zones']} active={mainTab} onChange={setMainTab} />
-
-        {/* ── BRACKET ── */}
-        {mainTab === 'Bracket' && (
-          <div>
-            <TabBar tabs={['East','West','South','Midwest']} active={bracketTab} onChange={setBracketTab} />
-            <RegionBracket data={bracketData[bracketTab]} />
-          </div>
-        )}
-
-        {/* ── PICKS ── */}
-        {mainTab === 'Picks' && <PicksSection />}
-
-        {/* ── ANALYTICS ── */}
-        {mainTab === 'Analytics' && (
-          <div>
-            <TabBar tabs={['Rankings','S-Curve','Injuries']} active={analyticsTab} onChange={setAnalyticsTab} />
-            {analyticsTab === 'Rankings'  && <RankingsSection />}
-            {analyticsTab === 'S-Curve'   && <SCurveSection />}
-            {analyticsTab === 'Injuries'  && <InjuriesSection />}
-          </div>
-        )}
-
-        {/* ── TIME ZONES ── */}
-        {mainTab === 'Time Zones' && <TZSection />}
-
-        {/* ── FOOTER ── */}
-        <div style={{ marginTop: 60, paddingTop: 24, borderTop: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-          <div style={{ fontSize: 11, color: '#333' }}>
-            Sources: KenPom · ESPN BPI · T-Rank · NCAA NET · Evan Miya · SOR · WAB · VSIN Lines
-          </div>
-          <div style={{ fontSize: 11, color: '#333' }}>2026 NCAA Tournament · Matt Eisenberg Guide</div>
-        </div>
-
       </div>
-    </>
+    </section>
   );
 }
