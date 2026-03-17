@@ -55,6 +55,13 @@ module.exports = {
     })
 
     result.push({
+      loc: '/march-madness-2026',
+      changefreq: 'weekly',
+      priority: 0.75,
+      lastmod: new Date().toISOString(),
+    })
+
+    result.push({
       loc: '/contact',
       changefreq: 'monthly',
       priority: 0.7,

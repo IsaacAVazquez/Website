@@ -6,9 +6,9 @@ import { constructMetadata, calculateReadingTime } from '@/lib/seo';
 import { AIStructuredData } from '@/components/AIStructuredData';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -27,23 +28,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const metadataTitle = post.seo?.title || post.title;
+  const metadataDescription = post.seo?.description || post.excerpt || post.title;
+
   return constructMetadata({
-    title: post.title,
-    description: post.excerpt || post.title,
+    title: metadataTitle,
+    description: metadataDescription,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
-    canonicalUrl: `https://isaacavazquez.com/writing/${params.slug}`,
+    canonicalUrl: `https://isaacavazquez.com/writing/${slug}`,
     aiMetadata: {
-      expertise: post.tags || [],
+      expertise: post.seo?.keywords || post.tags || [],
       contentType: "Article",
       profession: "Technical Product Manager",
-      summary: post.excerpt,
+      summary: metadataDescription,
     },
   });
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -57,8 +62,11 @@ export default async function BlogPostPage({ params }: PageProps) {
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Writing", url: "/writing" },
-    { name: post.title, url: `/writing/${params.slug}` }
+    { name: post.title, url: `/writing/${slug}` }
   ];
+
+  const articleDescription = post.seo?.description || post.excerpt || post.title;
+  const articleKeywords = post.seo?.keywords || post.tags;
 
   return (
     <>
@@ -76,7 +84,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           type: "Article",
           data: {
             headline: post.title,
-            description: post.excerpt || post.title,
+            description: articleDescription,
             author: {
               name: "Isaac Vazquez",
               jobTitle: "Technical Product Manager & UC Berkeley MBA Candidate",
@@ -84,8 +92,8 @@ export default async function BlogPostPage({ params }: PageProps) {
             },
             datePublished: post.publishedAt,
             dateModified: post.updatedAt || post.publishedAt,
-            url: `https://isaacavazquez.com/writing/${params.slug}`,
-            keywords: Array.isArray(post.tags) ? post.tags.join(", ") : (post.tags || ""),
+            url: `https://isaacavazquez.com/writing/${slug}`,
+            keywords: Array.isArray(articleKeywords) ? articleKeywords.join(", ") : (articleKeywords || ""),
             wordCount: wordCount,
             readingTime: readingTime,
             image: "https://isaacavazquez.com/og-image.png",
