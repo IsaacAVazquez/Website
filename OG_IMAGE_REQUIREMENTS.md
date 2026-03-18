@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older OG image requirement note and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `docs/README.md`, and current route metadata files for current documentation.
+
 # OG Image Requirements for SEO
 
 ## Critical: Missing OG Image

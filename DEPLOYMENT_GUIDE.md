@@ -1,5 +1,8 @@
 # Deployment Guide - SEO Optimized Build
 
+> [!IMPORTANT]
+> Historical reference only. This was a one-off deployment checklist for an earlier SEO pass. For the current deployment workflow, use `DEPLOYMENT.md`, `docs/ENVIRONMENT_CONFIGURATION.md`, and `netlify.toml`.
+
 ## Pre-Deployment Checklist
 
 ### ✅ **Code Changes** (All Complete)

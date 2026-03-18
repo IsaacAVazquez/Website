@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older SEO improvement snapshot and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `API.md`, `ARCHITECTURE.md`, and `docs/README.md` for current documentation.
+
 # SEO Improvements for AI Age (2025)
 
 **Date:** January 2025

@@ -16,6 +16,9 @@ seo:
   keywords: ["keyword1", "keyword2", "keyword3", "keyword4"]
 ---
 
+> [!IMPORTANT]
+> Historical reference only. This markdown template belongs to an older content workflow and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, and `docs/README.md` for current documentation.
+
 # Article Title
 
 ![Article Hero Image](/blog-images/article-hero.png)
@@ -188,16 +191,16 @@ Summarize the most important points:
 ## Recommendations & Resources
 
 ### Tools & Platforms
-- **[Tool Name](URL):** Brief description of what it does and why it's useful
-- **[Another Tool](URL):** Description
+- **[Tool Name](https://example.com/tool-name):** Brief description of what it does and why it's useful
+- **[Another Tool](https://example.com/another-tool):** Description
 
 ### Further Reading
-- **[Article/Book Title](URL):** Why this resource is valuable
-- **[Another Resource](URL):** What you'll learn
+- **[Article/Book Title](https://example.com/article-or-book):** Why this resource is valuable
+- **[Another Resource](https://example.com/another-resource):** What you'll learn
 
 ### Related Posts
-- [Related Article 1](/blog/related-article-1)
-- [Related Article 2](/blog/related-article-2)
+- [Related Article 1](/writing/related-article-1)
+- [Related Article 2](/writing/related-article-2)
 
 ---
 
@@ -234,7 +237,7 @@ A memorable closing statement that encapsulates your message.
 
 **Isaac Vazquez** is an MBA Candidate at UC Berkeley Haas and a product-focused technologist with 6+ years of experience in quality engineering and civic tech. He's passionate about building products that bridge technology and social impact.
 
-[More about Isaac →](/about) • [Other Articles →](/blog) • [Get in Touch →](/contact)
+[More about Isaac →](/about) • [Other Articles →](/writing) • [Get in Touch →](/contact)
 
 ---
 
@@ -244,7 +247,7 @@ A memorable closing statement that encapsulates your message.
 **Last Updated:** January 15, 2025
 **Reading Time:** 10 min
 
-[← Back to Blog](/blog) • [Share on LinkedIn →](https://linkedin.com/shareArticle?url=URL) • [Share on Twitter →](https://twitter.com/intent/tweet?url=URL)
+[← Back to Writing](/writing) • [Share on LinkedIn →](https://linkedin.com/shareArticle?url=https://example.com/article) • [Share on Twitter →](https://twitter.com/intent/tweet?url=https://example.com/article)
 
 ---
 

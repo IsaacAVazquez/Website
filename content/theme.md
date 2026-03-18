@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file documents an older content-side theme system and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `STYLING.md`, and `docs/README.md` for current documentation.
+
 # Website Theme & Design System
 
 ## Overview

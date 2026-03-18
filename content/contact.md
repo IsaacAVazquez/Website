@@ -9,6 +9,9 @@ seo:
   keywords: ["contact Isaac Vazquez", "product manager contact", "civic tech collaboration", "MBA candidate Berkeley"]
 ---
 
+> [!IMPORTANT]
+> Historical reference only. This markdown file belongs to an older content/template system and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, and `docs/README.md` for current documentation.
+
 # Let's Connect
 
 ## Open to Conversations About Impact

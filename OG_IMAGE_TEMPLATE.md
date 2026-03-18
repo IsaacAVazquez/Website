@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older OG image template and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `docs/README.md`, and current route metadata files for current documentation.
+
 # OG Image Creation Guide
 
 ## Quick Start with Canva (Recommended - 10 minutes)

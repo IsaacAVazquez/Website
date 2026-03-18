@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older implementation status snapshot and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `ARCHITECTURE.md`, and `docs/README.md` for current documentation.
+
 # Implementation Progress Report
 **Date:** November 2025
 **Project:** Isaac Vazquez Portfolio - UI/UX Enhancement

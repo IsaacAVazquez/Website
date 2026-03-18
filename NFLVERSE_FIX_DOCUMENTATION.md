@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older fantasy data fix note and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `API.md`, `ARCHITECTURE.md`, and `docs/README.md` for current documentation.
+
 # Fantasy Football NFLverse Integration Fix - Complete Documentation
 
 ## Executive Summary

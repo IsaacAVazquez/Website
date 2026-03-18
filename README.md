@@ -1,148 +1,135 @@
-# Isaac Vazquez — Portfolio & Fantasy Football Analytics
+# Isaac Vazquez Website
 
-Personal website and fantasy football analytics platform for Isaac Vazquez,
-Technical Product Manager & UC Berkeley Haas MBA Candidate.
+Portfolio, writing, fantasy football analytics, investment research, and seasonal analysis experiments built on Next.js 16.
 
-**Live:** https://isaacavazquez.com
+**Live:** [isaacavazquez.com](https://isaacavazquez.com)
+**Last updated:** 2026-03-17
 
 ---
 
-## Tech Stack
+## Overview
+
+This repo powers a multi-surface personal site with four main product areas:
+
+- **Portfolio** — homepage, about, projects, resume, contact
+- **Writing** — MDX-backed long-form posts under `/writing`
+- **Fantasy football** — rankings, tier charts, and draft tooling
+- **Investments and seasonal analysis** — `/investments` and `/march-madness-2026`
+
+The site is portfolio-first. `Writing` is live, but it is not a promoted top-level nav item.
+
+---
+
+## Stack
 
 | Layer | Technology |
-|-------|-----------|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript |
-| Styling | Tailwind CSS v4 + CSS custom properties |
-| Animation | Framer Motion |
-| Charts | D3.js |
-| Database | SQLite (better-sqlite3, server-only) |
-| Auth | NextAuth.js |
-| Deployment | Netlify + @netlify/plugin-nextjs |
+|-------|------------|
+| Framework | Next.js 16 App Router |
+| UI | React 19, Tailwind CSS v4, Framer Motion |
+| Charts | D3 |
+| Theme | `next-themes` |
+| Content | `gray-matter`, `remark`, `remark-gfm`, `remark-html` |
+| Data | SQLite (`better-sqlite3`) for fantasy football, curated static snapshots for investments |
+| Auth | NextAuth v4 |
+| Tests | Jest, Playwright |
+| Deploy | Netlify + `@netlify/plugin-nextjs` |
+
+---
+
+## Main Routes
+
+| Route | Purpose |
+|------|---------|
+| `/` | Homepage |
+| `/about` | Background and journey |
+| `/portfolio` | Projects index |
+| `/portfolio/[slug]` | Project detail |
+| `/investments` | Investment research platform |
+| `/writing` | Writing index |
+| `/writing/[slug]` | Article page |
+| `/march-madness-2026` | Seasonal bracket analysis |
+| `/fantasy-football/*` | Fantasy football tools |
+| `/resume` | Resume |
+| `/contact` | Contact page |
+| `/search` | Site search UI |
+| `/admin` | Protected admin surface |
+
+Redirects:
+
+- `/projects` -> `/portfolio`
+- `/work` -> `/portfolio`
+- `/blog` -> `/writing`
 
 ---
 
 ## Getting Started
 
-### 1. Install dependencies
-
 ```bash
 npm install
+cp .env.example .env.local
+npm run dev
 ```
 
-### 2. Configure environment variables
+Open `http://localhost:3000`.
 
-Create a `.env.local` file at the project root (see [Environment Variables](#environment-variables) below).
-
-### 3. Start the dev server
+### Key scripts
 
 ```bash
 npm run dev
-# → http://localhost:3000
+npm run build
+npm run lint
+npm test
+npm run test:e2e
+npm run update:fantasy-rb
+npm run update:investments
 ```
 
 ---
 
-## Scripts
+## Environment Notes
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Dev server (webpack mode) |
-| `npm run build` | Production build + sitemap |
-| `npm start` | Serve production build |
-| `npm run lint` | ESLint |
-| `npm run analyze` | Bundle size analysis |
-| `npm test` | Unit tests (Jest) |
-| `npm run test:watch` | Jest watch mode |
-| `npm run test:coverage` | Coverage report |
-| `npm run test:ci` | CI mode (parallel, with coverage) |
-| `npm run test:e2e` | Playwright E2E tests |
-| `npm run test:e2e:ui` | Playwright UI mode |
-| `npm run test:e2e:debug` | Playwright debug mode |
-| `npm run test:all` | Coverage + E2E |
-| `npm run update:fantasy-rb` | Refresh fantasy football RB tier data |
-| `npm run update:investments` | Refresh investment data (Python) |
-
----
-
-## Project Structure
-
-```
-src/
-├── app/              # Next.js App Router pages & API routes
-│   ├── page.tsx      # Home
-│   ├── portfolio/    # Project showcase
-│   ├── fantasy-football/  # FF landing + tier pages + draft tracker
-│   ├── investments/  # Stock research & portfolio tracker
-│   ├── writing/      # Blog / writing
-│   ├── resume/
-│   ├── about/
-│   └── api/          # API routes
-├── components/       # React components
-│   ├── ui/           # Design system primitives
-│   └── investments/  # Investment page components
-├── constants/        # Static data (nav, projects, career timeline)
-├── hooks/            # Custom React hooks
-├── lib/              # Utilities, data layer, fantasy football logic
-└── types/            # TypeScript type definitions
-
-public/               # Static assets (images, resume PDF)
-scripts/              # Data update scripts
-netlify/functions/    # Netlify serverless functions
-e2e/                  # Playwright E2E tests
-docs/                 # Extended technical documentation
-```
-
----
-
-## Environment Variables
-
-Create a `.env.local` file with the following:
+Common local env vars:
 
 ```env
-# Required for /admin dashboard
 NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=<random secret>
-ADMIN_USERNAME=<username>
-ADMIN_PASSWORD=<password>
-
-# Required for live fantasy football data
-FANTASYPROS_USERNAME=<email>
-FANTASYPROS_PASSWORD=<password>
-CRON_SECRET=<random secret>
-
-# Optional
-NEXT_PUBLIC_GA_ID=<google analytics id>
+NEXTAUTH_SECRET=...
+ADMIN_USERNAME=...
+ADMIN_PASSWORD=...
+FANTASYPROS_USERNAME=...
+FANTASYPROS_PASSWORD=...
+CRON_SECRET=...
 SITE_URL=https://isaacavazquez.com
 ```
 
-Production secrets are configured in the Netlify dashboard, not committed to the repo.
+`update:investments` also expects the Python environment described in `DEVELOPMENT.md`.
 
 ---
 
-## Deployment
+## Important Repo Facts
 
-Deployed to **Netlify** via the `@netlify/plugin-nextjs` plugin.
-
-- Build command: `npm run build`
-- Publish directory: `.next`
-- The `postbuild` script auto-generates the sitemap after each build
+- Global nav is `Home / About / Projects / Investments / Resume / Contact`
+- `Writing` is live but intentionally not promoted in the header
+- `/portfolio` renders directly from `src/app/portfolio/page.tsx`
+- `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell
+- `/api/search` is limited and mostly hardcoded; do not treat it as comprehensive site search
+- `/investments` uses `InvestmentsClient` plus targeted routes under `/api/investments/index`, `/api/investments/quotes`, and `/api/investments/data/[symbol]`
 
 ---
 
-## Features
+## Documentation Map
 
-### Portfolio
-- Home, About, Resume, and Contact pages
-- Project showcase at `/portfolio`
-- Writing / blog at `/writing`
+Current source-of-truth docs:
 
-### Fantasy Football Analytics
-- Live tier rankings for QB, RB, WR, TE, K, DST, and Flex at `/fantasy-football`
-- D3-powered tier charts with clustering (Gaussian mixture models)
-- Draft tracker at `/fantasy-football/draft-tracker`
-- Automated FantasyPros data pipeline with SQLite persistence
+- `AGENT.md`
+- `CLAUDE.md`
+- `PAGES.md`
+- `COMPONENTS.md`
+- `ARCHITECTURE.md`
+- `API.md`
+- `DEVELOPMENT.md`
+- `TESTING.md`
+- `STYLING.md`
+- `docs/README.md`
+- `docs/ai-context/*`
 
-### Investments
-- Stock research interface at `/investments`
-- Fundamentals, growth, valuation, DCF, news, and transcripts panels
+Older plans, redesign specs, and summary docs are kept for history and are explicitly marked as historical where applicable.

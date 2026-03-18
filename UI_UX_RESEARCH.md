@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older UI/UX research document and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `STYLING.md`, and `docs/README.md` for current documentation.
+
 # UI/UX Best Practices for Portfolio Websites - Research Report
 
 **Date:** November 2025

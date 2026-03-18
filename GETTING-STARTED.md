@@ -1,63 +1,99 @@
 # Getting Started
 
-This project is a Next.js 15 (App Router) application with Tailwind CSS, TypeScript, and a sizeable data layer for fantasy-football tooling. Follow the steps below to run it locally.
+Quick local setup for the current Next.js site and its supporting data workflows.
 
-## 1. Prerequisites
+**Last updated:** 2026-03-17
 
-- **Node.js** v18 or later (the site runs on Node 18+ in production).
-- **npm** 10+ (comes with Node). Yarn/PNPM work too, but the repo is committed with `package-lock.json`.
-- Optional: **SQLite** if you plan to work with the fantasy data scripts (`fantasy-data.db`).
+---
 
-## 2. Install Dependencies
+## Prerequisites
+
+- Node.js 18+
+- npm 10+
+- Python 3 if you plan to run `npm run update:investments`
+
+The base site runs without optional third-party credentials. Advanced fantasy and admin workflows need environment variables.
+
+---
+
+## Local Setup
 
 ```bash
 npm install
+cp .env.example .env.local  # if present
+npm run dev
 ```
 
-This pulls the full Next.js stack, Tailwind, Playwright, Jest, and the data tooling packages listed in `package.json`.
+Open `http://localhost:3000`.
 
-## 3. Environment Variables
+---
 
-Copy `.env.example` (if present) to `.env.local` and fill in any API keys for optional integrations (FantasyPros, Supabase, etc.). The site runs without them, but some dynamic routes and API endpoints will fallback to sample data.
+## Core Scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the local Next.js dev server |
+| `npm run build` | Production build plus postbuild sitemap step |
+| `npm run start` | Serve the production build locally |
+| `npm run lint` | Run ESLint on `src` |
+| `npm test` | Run Jest |
+| `npm run test:e2e` | Run Playwright |
+| `npm run analyze` | Build with bundle analysis enabled |
+| `npm run update:fantasy-rb` | Refresh the RB tiers source data |
+| `npm run update:investments` | Fetch investment data and rebuild curated snapshots |
+| `npm run generate:icons` | Regenerate PWA icons |
+
+---
+
+## Environment Notes
+
+Most portfolio pages work without custom secrets.
+
+Add the following for broader local coverage:
+
+- `NEXT_PUBLIC_SITE_URL` and `SITE_URL` for canonical URLs and metadata
+- `NEXTAUTH_URL`, `NEXTAUTH_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD` for `/admin`
+- `CRON_SECRET` for `/api/scheduled-update`
+- `FANTASYPROS_USERNAME` and `FANTASYPROS_PASSWORD` for FantasyPros session-based refreshes
+
+See `docs/ENVIRONMENT_CONFIGURATION.md` for the full matrix.
+
+---
+
+## Data Workflows
+
+### Investments
+
+The public investments experience is built from curated snapshot files in `public/data/investments`.
+
+To rebuild them:
 
 ```bash
-cp .env.example .env.local
-# then edit .env.local
+npm run update:investments
 ```
 
-## 4. Available Scripts
+That script chain expects:
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Starts the local dev server with webpack HMR. |
-| `npm run build` | Creates a production build (runs `next build`). |
-| `npm run start` | Serves the production build locally. |
-| `npm run lint` | Runs `next lint`. |
-| `npm run test` | Executes the Jest unit tests. |
-| `npm run test:e2e` | Runs the Playwright smoke tests. |
+- Python available at `.venv/bin/python3`
+- working outbound network access
+- the snapshot builder in `scripts/buildInvestmentsSnapshots.ts`
 
-## 5. Project Structure
+### Fantasy football
 
-```text
-src/app/           # App Router pages (Next.js 15)
-src/components/    # Reusable UI (Tailwind + Framer Motion)
-src/data/          # Fantasy football datasets and transforms
-src/lib/           # Utilities (SEO helpers, FAQ data, etc.)
-content/           # MD/MDX content for the CMS-style sections
-docs/              # Deep-dive documentation (automation, schema, etc.)
-public/            # Static assets (icons, resume PDF, sitemap)
-```
+Fantasy routes mix static assets, API fetches, and SQLite-backed helpers.
 
-## 6. Working With Data + Scripts
+Useful references:
 
-- Scripts live in `scripts/` and can be run with `tsx`.
-- Key automation entry points: `scripts/updateFantasyRBTiers.ts`, `scripts/nfl-roster-scraper.js`, etc.
-- The automation docs under `docs/` explain scheduling, cron jobs, and clean up tasks.
+- `docs/FANTASY_PLATFORM_SETUP.md`
+- `docs/DATABASE_SCHEMA.md`
+- `docs/CRON_SETUP.md`
 
-## 7. Deployment Notes
+---
 
-- Production builds target **Netlify** (`npm run build` + `next start`).
-- `next-sitemap` runs in a post-build step to refresh sitemap/robots metadata.
-- Image optimization + ISR is handled automatically by Next.js in production.
+## Where To Look Next
 
-Need more depth? Check `DEVELOPMENT.md` for local environment details and `DEPLOYMENT_GUIDE.md` for the production pipeline.
+- `README.md` for the product and route overview
+- `DEVELOPMENT.md` for coding workflows
+- `API.md` for route inventory
+- `TESTING.md` for unit and E2E coverage
+- `TROUBLESHOOTING.md` for common failures

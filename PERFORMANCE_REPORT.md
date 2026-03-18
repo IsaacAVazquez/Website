@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older performance report and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `ARCHITECTURE.md`, and `docs/README.md` for current documentation.
+
 # Performance Optimization Report
 **Date:** November 2025
 **Target:** isaacavazquez.com Portfolio Website

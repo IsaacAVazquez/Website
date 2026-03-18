@@ -1,143 +1,118 @@
-# AGENT.md — Quick Reference
+# AGENT.md
 
-Next.js 16 portfolio + fantasy football analytics platform. See `CLAUDE.md` for full context.
+Short operational context for agents working in this repo. Use this first, then read `CLAUDE.md` for fuller context.
+
+**Last updated:** 2026-03-17
+
+---
+
+## Project Snapshot
+
+This repo is a Next.js 16 personal site that combines:
+
+- a portfolio and resume site
+- a fantasy football analytics product
+- a public investment research workspace
+- a seasonal March Madness analysis experience
+
+Primary live routes:
+
+- `/`
+- `/about`
+- `/portfolio` and `/portfolio/[slug]`
+- `/investments`
+- `/writing` and `/writing/[slug]`
+- `/resume`
+- `/contact`
+- `/fantasy-football/*`
+- `/march-madness-2026`
+- `/search`
+- `/admin`
+
+`/projects` redirects to `/portfolio`.
+`/blog` redirects to `/writing`.
+
+---
+
+## Current Navigation
+
+The promoted site nav is:
+
+1. `Home`
+2. `About`
+3. `Projects`
+4. `Investments`
+5. `Resume`
+6. `Contact`
+
+`Writing` is a live route but is not in the global header.
+
+---
+
+## Shell Behavior
+
+- `src/app/layout.tsx` is the root server layout.
+- `src/components/StaticHeader.tsx` is always rendered above page content.
+- `src/components/ConditionalLayout.tsx` controls route-level shell behavior and footer variant selection.
+- `src/components/Footer.tsx` supports:
+  - `full` footer for most pages
+  - `compact` footer on `/` and `/contact`
+
+Self-shell routes currently include:
+
+- `/about`
+- `/contact`
+- `/investments`
+- `/march-madness-2026`
+- `/portfolio`
+- `/writing`
+
+Those routes manage more of their own spacing instead of using the default constrained wrapper.
 
 ---
 
 ## Critical Rules
 
-- **Never hardcode hex colors** — use `var(--color-primary)`, `var(--text-primary)`, etc.
-- **Never import `@tabler/icons-react` in server components** — use `@/components/ui/ServerIcons` instead
-- **Never import `better-sqlite3` in client code** — server-only module
-- **Never create pages at `/projects` or `/blog`** — these are redirects; real pages are `/portfolio` and `/writing`
-- **Never skip `prefers-reduced-motion`** for Framer Motion animations
-- **Always use 44px min touch targets** — `min-h-touch min-w-touch` Tailwind classes
+- Never hardcode hex colors in components. Use CSS variables from `src/app/globals.css`.
+- Never import `@tabler/icons-react` in server components. Use `@/components/ui/ServerIcons`.
+- Never import `better-sqlite3` into client code.
+- Never create real pages at `/projects` or `/blog`.
+- Keep 44px minimum touch targets for interactive elements.
+- Respect `prefers-reduced-motion` for Framer Motion usage.
+- Use `apply_patch` for manual file edits.
+
+---
+
+## Live Source Of Truth Files
+
+- `README.md` — project overview and setup
+- `CLAUDE.md` — deeper repo context
+- `PAGES.md` — route inventory
+- `COMPONENTS.md` — component ownership and live usage
+- `ARCHITECTURE.md` — system overview
+- `API.md` — API routes
+- `DEVELOPMENT.md` — day-to-day setup and workflow
+- `TESTING.md` — Jest and Playwright expectations
+- `STYLING.md` — tokens, layout helpers, and styling rules
+- `docs/README.md` — documentation index and archive guidance
 
 ---
 
 ## Key Commands
 
 ```bash
-npm run dev          # dev server (webpack mode)
-npm run build        # prod build + auto-runs sitemap postbuild
-npm test             # Jest unit tests
-npm run test:e2e     # Playwright E2E tests
-npm run update:fantasy-rb   # update fantasy football tier data
+npm run dev
+npm run build
+npm test
+npm run test:e2e
+npm run update:fantasy-rb
+npm run update:investments
 ```
 
 ---
 
-## Server vs Client Boundary
+## Current Caveats
 
-```
-src/app/layout.tsx          (SERVER — root layout)
-└── Providers.tsx           (CLIENT ← first boundary)
-    └── ConditionalLayout.tsx (CLIENT)
-        ├── StaticHeader.tsx  (CLIENT)
-        └── {children}        (SERVER unless marked 'use client')
-    └── Footer.tsx            (CLIENT)
-```
-
-Server components = no hooks, no browser APIs, no `@tabler/icons-react`.
-
----
-
-## Icon Usage
-
-| Context | Import from |
-|---------|-------------|
-| Server components | `@/components/ui/ServerIcons` |
-| Client components | `@tabler/icons-react` or `lucide-react` |
-
-Available server icons (`src/components/ui/ServerIcons.tsx`):
-`ArrowRight`, `ArrowLeft`, `ExternalLink`, `Calendar`, `Clock`, `ChartBar`,
-`BrandGithub`, `Home`, `User`, `Briefcase`, `FileText`, `Mail`, `Menu2`, `X`, `BrandLinkedin`
-
-```tsx
-// Server component — correct
-import { ArrowRight } from "@/components/ui/ServerIcons";
-
-// Client component — correct
-import { IconArrowRight } from "@tabler/icons-react";
-```
-
----
-
-## Color System
-
-Always use CSS custom properties — never raw hex values in components.
-
-```css
-var(--color-primary)    /* Blue 600 light / Blue 500 dark */
-var(--color-secondary)  /* Blue 700 light / Blue 400 dark */
-var(--color-accent)     /* Blue 500 light / Blue 300 dark */
-var(--color-success)    /* Emerald 600 */
-var(--color-warning)    /* Amber 600 */
-var(--color-error)      /* Red 600 */
-
-var(--surface-primary)  /* #FFFFFF light */
-var(--text-primary)     /* Slate 900 light */
-var(--text-secondary)   /* Slate 600 light */
-var(--border-primary)   /* Slate 200 light */
-
-var(--neutral-50) … var(--neutral-950)   /* Slate scale */
-```
-
-Dark mode is class-based: `.dark` on `<html>`. All components must support both modes.
-
----
-
-## Critical File Paths
-
-| File | Purpose |
-|------|---------|
-| `src/app/layout.tsx` | Root layout (server) |
-| `src/app/globals.css` | CSS variables, design tokens |
-| `src/components/ui/ServerIcons.tsx` | SVG icons for server components |
-| `src/components/ConditionalLayout.tsx` | Route-based layout switching |
-| `src/constants/personal.ts` | Career timeline, skills, metrics |
-| `src/constants/navlinks.tsx` | Navigation config |
-| `src/lib/unifiedCache.ts` | Fantasy data cache layer |
-| `src/lib/database.ts` | SQLite operations (server-only) |
-| `src/types/index.ts` | Core TypeScript interfaces |
-| `next.config.mjs` | Redirects, webpack config, image domains |
-| `src/middleware.ts` | Security headers (applied to all routes) |
-
----
-
-## TypeScript Quick Reference
-
-```ts
-// src/types/index.ts
-type Position = 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST' | 'FLEX' | 'OVERALL' | 'ALL';
-type ScoringFormat = 'STANDARD' | 'PPR' | 'HALF_PPR';
-
-interface Player {
-  id: string; name: string; team: string; position: Position;
-  averageRank: number | string; projectedPoints: number;
-  standardDeviation: number | string; tier?: number;
-  expertRanks: number[]; adp?: number; byeWeek?: number;
-  headshotUrl?: string; consensusLevel?: 'high' | 'medium' | 'low';
-  // ...projections, weeklyProjections
-}
-
-interface TierGroup { tier: number; players: Player[]; color: string; }
-
-interface DraftState { /* draft tracker state — see src/types/index.ts */ }
-```
-
----
-
-## Key Packages & Constraints
-
-| Package | Constraint |
-|---------|-----------|
-| `better-sqlite3` | Server-only — excluded from client bundle via webpack |
-| `next-themes` | Class-based dark mode (`.dark` on `<html>`) |
-| `@tabler/icons-react` | Client components only — 116MB, excluded from server bundles |
-| `framer-motion` | Tree-shaken via `optimizePackageImports` in `next.config.mjs` |
-| TypeScript | `ignoreBuildErrors: true` — errors bypassed at build; fix root causes anyway |
-
----
-
-> For full documentation: routes, all components, API routes, data pipeline, SEO, see `CLAUDE.md`.
+- `/api/search` is still limited and mostly hardcoded; do not describe it as full-site search.
+- Some older docs, plans, and content templates are preserved for history only. Check `docs/README.md` before treating a markdown file as current.
+- `ProjectsContent.tsx` and `WritingPreview.tsx` still exist in the repo but are not the primary live path for the current homepage or `/portfolio`.

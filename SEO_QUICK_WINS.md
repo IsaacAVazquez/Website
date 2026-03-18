@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older SEO quick-wins list and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `API.md`, `ARCHITECTURE.md`, and `docs/README.md` for current documentation.
+
 # SEO Quick Wins & Action Items
 
 ## 🎯 Do These First (1-2 Hours Total)

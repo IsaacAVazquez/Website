@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older implementation plan and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, and `docs/README.md` for current documentation.
+
 # Portfolio Update Implementation Plan
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.

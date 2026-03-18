@@ -1,5 +1,8 @@
 # Dark Mode - Quick Reference Card
 
+> [!IMPORTANT]
+> Historical reference only. This file documents an older theme implementation. For the current styling system, start with `STYLING.md` and `src/app/globals.css`.
+
 ## 🎨 Color Variables Reference
 
 ### Most Common Variables

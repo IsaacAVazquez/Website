@@ -1,363 +1,112 @@
-# Page Architecture Documentation
+# Page Architecture
 
-Complete page structure and routing guide for Isaac Vazquez's portfolio website.
+Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last Updated:** March 2026
+**Last updated:** 2026-03-17
 
 ---
 
-## Table of Contents
+## Route Inventory
 
-- [Page Overview](#page-overview)
-- [Portfolio Pages](#portfolio-pages)
-- [Fantasy Football Pages](#fantasy-football-pages)
-- [Content Pages](#content-pages)
-- [Financial Pages](#financial-pages)
-- [Admin & Utility Pages](#admin--utility-pages)
-- [URL Redirects](#url-redirects)
-- [Page Structure Patterns](#page-structure-patterns)
-- [SEO & Metadata](#seo--metadata)
+### Core portfolio routes
 
----
+| Route | File | Notes |
+|------|------|-------|
+| `/` | `src/app/page.tsx` | Composes hero, featured projects, product-thinking preview, and homepage contact section |
+| `/about` | `src/app/about/page.tsx` | Renders `About` tabbed client UI |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Renders project cards directly from route code |
+| `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Project detail page |
+| `/resume` | `src/app/resume/page.tsx` | Resume route with client-rendered resume shell |
+| `/contact` | `src/app/contact/page.tsx` | Contact page using `ContactContent` |
+| `/accessibility` | `src/app/accessibility/page.tsx` | Accessibility statement |
 
-## Page Overview
+### Writing
 
-### Routing Structure
+| Route | File | Notes |
+|------|------|-------|
+| `/writing` | `src/app/writing/page.tsx` | Lists posts from `content/blog/` |
+| `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Server-rendered article page |
 
-```
-Portfolio Section
-├── Home (/)
-├── About (/about)
-├── Portfolio (/portfolio, /portfolio/[slug])
-├── Resume (/resume)
-├── Contact (/contact)
-└── Accessibility (/accessibility)
+### Investments and seasonal analysis
 
-Fantasy Football Platform (/fantasy-football)
-├── Landing (/fantasy-football)
-├── Position Tiers (/fantasy-football/tiers/[position])
-├── RB Tiers (/fantasy-football/rb-tiers)
-└── Draft Tracker (/fantasy-football/draft-tracker)
+| Route | File | Notes |
+|------|------|-------|
+| `/investments` | `src/app/investments/page.tsx` | Public investment research platform |
+| `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Metadata-driven bracket analysis with client UI |
 
-Content Pages
-├── Writing (/writing)
-└── Writing Post (/writing/[slug])
+### Fantasy football
 
-Financial
-└── Investments (/investments)
+| Route | File | Notes |
+|------|------|-------|
+| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Fantasy football landing page |
+| `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Position tier route |
+| `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | RB-specific page |
+| `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Draft tracker |
 
-Utility
-├── Search (/search)
-├── Admin (/admin)
-└── Admin Analytics (/admin/analytics)
-```
+### Utility/admin
+
+| Route | File | Notes |
+|------|------|-------|
+| `/search` | `src/app/search/page.tsx` | Search UI backed by limited `/api/search` |
+| `/admin` | `src/app/admin/page.tsx` | Credentials-based admin screen |
 
 ---
 
-## Portfolio Pages
+## Redirects And Canonical Paths
 
-### Home Page (/)
+Do not create these as real app routes:
 
-**File:** `src/app/page.tsx`
-**Component:** `ModernHero`
+- `/projects` -> `/portfolio`
+- `/work` -> `/portfolio`
+- `/blog` -> `/writing`
+- `/blog/:slug` -> `/writing/:slug`
 
-The home page renders the `ModernHero` component with a professional hero section, featured work, and key CTAs.
-
-#### Metadata
-```typescript
-title: "Isaac Vazquez - Technical Product Manager & UC Berkeley MBA"
-description: "Bay Area-based product manager pursuing MBA at UC Berkeley Haas..."
-```
+Fantasy shortcut and typo redirects also live in `next.config.mjs`.
 
 ---
 
-### About Page (/about)
+## Shell Behavior
 
-**File:** `src/app/about/page.tsx` → `src/components/About.tsx`
+### Global shell
 
-Tabbed interface with two views:
-- **Overview** – Skills, background, experience summary
-- **Journey** – Career timeline via `JourneyTimeline` component
+- `src/app/layout.tsx` renders the shared fonts, providers, skip link, and header
+- `src/components/ConditionalLayout.tsx` wraps all page content and chooses layout behavior
+- `src/components/Footer.tsx` is always rendered, but not always in the same variant
 
----
+### Self-shell routes
 
-### Portfolio Page (/portfolio)
+These routes manage more of their own spacing and width:
 
-**File:** `src/app/portfolio/page.tsx` → `src/components/ProjectsContent.tsx`
+- `/about`
+- `/contact`
+- `/investments`
+- `/march-madness-2026`
+- `/portfolio`
+- `/writing`
 
-> **Note:** `/projects` is not an app route — it redirects permanently to `/portfolio` via `next.config.mjs`. Do not create `src/app/projects/`.
+### Footer variants
 
-Project showcase with:
-- Grid of project cards via `WarmCard`
-- Tech stack badges
-- Links to live demos and repositories
-- Individual project detail pages at `/portfolio/[slug]`
-
----
-
-### Resume Page (/resume)
-
-**File:** `src/app/resume/page.tsx` → `src/app/resume/resume-client.tsx`
-
-Professional resume with:
-- PDF download (links to `/Isaac_Vazquez_Resume.pdf`)
-- Structured sections: Summary, Experience, Education, Skills
-- Wider `max-w-6xl` layout
+- `/` and `/contact` use the compact footer
+- most other routes use the full `Thanks for taking a look.` footer
 
 ---
 
-### Contact Page (/contact)
+## Important Page Notes
 
-**File:** `src/app/contact/page.tsx` → `src/components/ContactContent.tsx`
-
-Contact information with:
-- Email and LinkedIn CTAs
-- 3-column info grid (Experience / Results / Response)
-- Location card
-
----
-
-### Accessibility Page (/accessibility)
-
-**File:** `src/app/accessibility/page.tsx`
-
-Accessibility statement with WCAG AA compliance details.
+- `/portfolio` no longer relies on `ProjectsContent.tsx`; that component is legacy/unwired for the main route
+- `Writing` is a live route but not a top-level nav item
+- `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
+- `/search` exists, but its data quality is limited by the current hardcoded search API
+- there is no live `/admin/analytics` page in the current app tree
 
 ---
 
-## Fantasy Football Pages
+## Metadata Pattern
 
-### Landing Page (/fantasy-football)
+Most routes use helpers from `src/lib/seo.ts`:
 
-**File:** `src/app/fantasy-football/page.tsx` → `src/app/fantasy-football/fantasy-football-client.tsx`
-**Component:** `FantasyFootballLandingContent`
+- `constructMetadata(...)` for static pages
+- `generateMetadata(...)` for slug or query-driven routes
 
-Main fantasy football hub with:
-- Position navigation
-- Overview of available ranking tools
-- Links to position tiers
-
----
-
-### Position Tiers (/fantasy-football/tiers/[position])
-
-**File:** `src/app/fantasy-football/tiers/[position]/page.tsx`
-
-Dynamic route for each position: `qb`, `rb`, `wr`, `te`, `k`, `dst`, `flex`
-
-Features:
-- D3-powered `TierChart` / `TierChartEnhanced` visualizations
-- Gaussian mixture model clustering
-- `DataFreshnessIndicator` showing data age
-- `ExpertConsensusIndicator`
-- `PositionSelector` tab navigation
-
----
-
-### RB Tiers (/fantasy-football/rb-tiers)
-
-**File:** `src/app/fantasy-football/rb-tiers/page.tsx`
-
-RB-specific tier page with `RBTiersChart` visualization.
-
----
-
-### Draft Tracker (/fantasy-football/draft-tracker)
-
-**File:** `src/app/fantasy-football/draft-tracker/page.tsx`
-
-Draft tracking tool with:
-- `DraftTierChart` visualization
-- Player pick tracking
-
----
-
-## Content Pages
-
-### Writing (/writing)
-
-**File:** `src/app/writing/page.tsx`
-
-Writing portfolio listing all published articles from `content/blog/`.
-
-> **Note:** `/blog` permanently redirects to `/writing` via `next.config.mjs`. The canonical URL is `/writing`. Do not treat `/blog` as an active route.
-
----
-
-### Writing Post (/writing/[slug])
-
-**File:** `src/app/writing/[slug]/page.tsx`
-
-Individual writing pieces processed from `content/blog/*.mdx` files via `gray-matter` + `remark`.
-
-Content frontmatter fields:
-```yaml
-title: string
-excerpt: string
-publishedAt: string (ISO date)
-category: string
-tags: string[]
-featured: boolean
-author: string
-```
-
----
-
-## Financial Pages
-
-### Investments (/investments)
-
-**File:** `src/app/investments/page.tsx`
-
-Stock research and portfolio tracking with:
-- `PortfolioTracker` – portfolio overview
-- `StockResearch` – multi-panel research interface
-- Research panels: `DCFPanel`, `FundamentalsPanel`, `GrowthPanel`, `ValuationRatiosPanel`, `NewsPanel`, `TranscriptsPanel`
-- Data sourced from Yahoo Finance via `src/lib/yahooFinance.ts`
-
----
-
-## Admin & Utility Pages
-
-### Search (/search)
-
-**File:** `src/app/search/page.tsx`
-**Components:** `SearchInterface`, `SearchResults`, `SearchFilters`
-
-Global search across portfolio content and writing.
-
----
-
-### Admin (/admin)
-
-**File:** `src/app/admin/page.tsx`
-**Protected by:** NextAuth.js (`src/lib/auth.ts`)
-
-Admin dashboard for site management. Requires `ADMIN_USERNAME` / `ADMIN_PASSWORD` env vars.
-
----
-
-### Admin Analytics (/admin/analytics)
-
-**File:** `src/app/admin/analytics/page.tsx`
-
-Analytics dashboard showing tracked events and web vitals.
-
----
-
-## URL Redirects
-
-The following redirects are configured in `next.config.mjs`:
-
-| From | To | Type |
-|------|----|------|
-| `/projects` | `/portfolio` | Permanent |
-| `/work` | `/portfolio` | Permanent |
-| `/projects/:path` | `/portfolio/:path` | Permanent |
-| `/blog` | `/writing` | Permanent |
-| `/blog/:slug` | `/writing/:slug` | Permanent |
-| `/cv` | `/resume` | Permanent |
-| `/resume.pdf` | `/Isaac_Vazquez_Resume.pdf` | Permanent |
-| `/get-in-touch` | `/contact` | Permanent |
-| `/hire-me` | `/contact` | Permanent |
-| `/ff` | `/fantasy-football` | Temporary |
-| `/rankings` | `/fantasy-football` | Temporary |
-| `/qb` | `/fantasy-football/tiers/qb` | Temporary |
-| `/rb` | `/fantasy-football/tiers/rb` | Temporary |
-| `/wr` | `/fantasy-football/tiers/wr` | Temporary |
-| `/te` | `/fantasy-football/tiers/te` | Temporary |
-| `/fantsy-football/:path` | `/fantasy-football/:path` | Temporary (typo) |
-| `/fantasy-footbal/:path` | `/fantasy-football/:path` | Temporary (typo) |
-| `/quatrerback` | `/fantasy-football/tiers/qb` | Temporary (typo) |
-
----
-
-## Page Structure Patterns
-
-### Standard Page Pattern
-
-```tsx
-export const metadata: Metadata = {
-  title: "Page Title - Isaac Vazquez",
-  description: "Page description",
-};
-
-export default function PageName() {
-  return (
-    <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-[var(--text-primary)]">Page Title</h1>
-        <WarmCard padding="lg">
-          <ContentComponent />
-        </WarmCard>
-      </div>
-    </div>
-  );
-}
-```
-
-### Max Widths
-
-| Page Type | Max Width |
-|-----------|-----------|
-| Standard pages | `max-w-5xl` |
-| Resume | `max-w-6xl` |
-| Headers / centered content | `max-w-4xl` |
-
-### Spacing
-
-```tsx
-className="py-16 sm:py-20 lg:py-24"  // Section vertical padding
-className="px-4 sm:px-6 lg:px-8"     // Horizontal padding
-className="mb-12"                     // Header bottom margin
-className="space-y-8"                 // Content spacing
-```
-
----
-
-## SEO & Metadata
-
-### Metadata Pattern
-
-```typescript
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Page Title - Isaac Vazquez",
-  description: "SEO-optimized page description.",
-  openGraph: {
-    title: "Page Title",
-    description: "Page description",
-    url: "https://isaacavazquez.com/page-name",
-    siteName: "Isaac Vazquez",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Page Title",
-    description: "Page description",
-  },
-};
-```
-
-### Adding a New Page
-
-1. Create `src/app/[page-name]/page.tsx`
-2. Export `metadata` for SEO
-3. Add to `src/constants/navlinks.tsx` if it belongs in nav
-4. Update `next-sitemap.config.js` with priority and `changefreq`
-
----
-
-## Related Documentation
-
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Full system architecture
-- **[COMPONENTS.md](./COMPONENTS.md)** - Component library reference
-- **[STYLING.md](./STYLING.md)** - Design system and CSS conventions
-- **[API.md](./API.md)** - API endpoint reference
-
----
-
-*Last Updated: March 2026*
+Structured data is added route-by-route with `StructuredData` and `AIStructuredData`.

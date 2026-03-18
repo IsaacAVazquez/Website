@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This redesign package documents an older implementation guide and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `STYLING.md`, and `docs/README.md` for current documentation.
+
 # Implementation Guide
 
 ---

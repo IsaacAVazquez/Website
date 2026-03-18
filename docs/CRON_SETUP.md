@@ -1,108 +1,95 @@
-# Fantasy Football Automated Updates Setup
+# Fantasy Update Cron Setup
 
-## Overview
-The Fantasy Football data is automatically updated daily at 2 AM UTC using Netlify Scheduled Functions.
+Current reference for the scheduled fantasy football refresh flow.
 
-## Configuration
+**Last updated:** 2026-03-17
 
-### 1. Environment Variables
-Set these in your Netlify dashboard under Site Settings > Environment Variables:
+---
 
-```bash
-# Required for cron authentication
-CRON_SECRET="generate-a-secure-random-string"
+## What Exists Today
 
-# Required for FantasyPros API access
-FANTASYPROS_USERNAME="your-username"
-FANTASYPROS_PASSWORD="your-password"
+Two pieces work together:
 
-# Optional: Override default site URL
-URL="https://isaacavazquez.com"
+- Netlify scheduled function: `netlify/functions/scheduled-fantasy-update.ts`
+- protected API endpoint: `src/app/api/scheduled-update/route.ts`
+
+The Netlify function calls the API endpoint with a bearer token.
+
+Current schedule in the checked-in function:
+
+- `0 8 * * 3`
+- Wednesday at 08:00 UTC
+- intended to align with midnight Pacific time during standard time
+
+If the schedule changes, update the function file and redeploy.
+
+---
+
+## Required Environment Variables
+
+- `CRON_SECRET`
+- `URL` or `NEXTAUTH_URL`
+- `FANTASYPROS_USERNAME`
+- `FANTASYPROS_PASSWORD`
+
+`CRON_SECRET` is required for both the Netlify function and any manual request to `/api/scheduled-update`.
+
+---
+
+## Auth Contract
+
+Send:
+
+```http
+Authorization: Bearer <CRON_SECRET>
 ```
 
-### 2. Generate CRON_SECRET
-Generate a secure random string for CRON_SECRET:
+Without that header, both `GET` and `POST` return `401`.
+
+---
+
+## Useful Checks
+
+### Readiness check
 
 ```bash
-openssl rand -base64 32
+curl -H "Authorization: Bearer $CRON_SECRET" \
+  http://localhost:3000/api/scheduled-update
 ```
 
-### 3. Deployment
-The scheduled function is automatically deployed with your site. No additional configuration needed.
-
-## How It Works
-
-1. **Netlify Scheduled Function** (`netlify/functions/scheduled-fantasy-update.ts`)
-   - Runs daily at 2 AM UTC
-   - Authenticates using CRON_SECRET
-   - Calls the internal API endpoint
-
-2. **API Endpoint** (`/api/scheduled-update`)
-   - Verifies the CRON_SECRET
-   - Fetches latest data from FantasyPros
-   - Updates all positions (QB, RB, WR, TE, K, DST, FLEX, OVERALL)
-   - Persists data to TypeScript files weekly
-
-3. **Data Flow**
-   ```
-   Netlify Cron (2 AM UTC) 
-   → Scheduled Function 
-   → API Endpoint (with auth)
-   → FantasyPros API
-   → Data Storage
-   ```
-
-## Monitoring
-
-### Check Function Logs
-1. Go to Netlify Dashboard
-2. Navigate to Functions tab
-3. Click on `scheduled-fantasy-update`
-4. View execution logs
-
-### Manual Testing
-Test the scheduled function locally:
+### Manual run
 
 ```bash
-# Install Netlify CLI
-npm install -g netlify-cli
-
-# Run functions locally
-netlify functions:serve
-
-# Test the function (in another terminal)
-curl http://localhost:9999/.netlify/functions/scheduled-fantasy-update
+curl -X POST \
+  -H "Authorization: Bearer $CRON_SECRET" \
+  -H "Content-Type: application/json" \
+  http://localhost:3000/api/scheduled-update
 ```
 
-### Manual Trigger
-You can manually trigger an update from the admin panel:
-1. Navigate to `/admin`
-2. Sign in with admin credentials
-3. Use the "Update All Positions" button
+---
+
+## What The Update Does
+
+The scheduled update route:
+
+- resolves the current fantasy week
+- loops through fantasy positions
+- fetches FantasyPros-backed rankings by scoring format
+- persists position data through `/api/data-manager`
+- generates overall rankings files through `DataFileWriter`
+
+This is an operational workflow. Treat failures here as seasonal-data issues, not generic app outages.
+
+---
 
 ## Troubleshooting
 
-### Function Not Running
-- Check that environment variables are set in Netlify
-- Verify the function appears in Netlify Functions dashboard
-- Check function logs for errors
+- `401 Unauthorized`: `CRON_SECRET` missing or wrong bearer token
+- `500` with credentials note: `FANTASYPROS_USERNAME` or `FANTASYPROS_PASSWORD` missing
+- wrong target URL: `URL` or `NEXTAUTH_URL` not aligned with the deployed hostname
 
-### Authentication Errors
-- Ensure CRON_SECRET matches in both environment and API
-- Verify the Authorization header format: `Bearer {secret}`
+Related docs:
 
-### Data Not Updating
-- Check FantasyPros credentials are valid
-- Verify API rate limits aren't exceeded
-- Check browser console for API errors
-
-### Schedule Changes
-To change the update schedule, modify the cron expression in:
-`netlify/functions/scheduled-fantasy-update.ts`
-
-Current schedule: `'0 2 * * *'` (2 AM UTC daily)
-
-Cron format: `minute hour day month day-of-week`
-- `0 3 * * *` - 3 AM UTC daily
-- `0 2 * * 1` - 2 AM UTC every Monday
-- `0 */6 * * *` - Every 6 hours
+- `docs/FANTASY_PLATFORM_SETUP.md`
+- `docs/ENVIRONMENT_CONFIGURATION.md`
+- `docs/SECURITY.md`

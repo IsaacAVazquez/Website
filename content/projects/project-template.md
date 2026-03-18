@@ -18,6 +18,9 @@ seo:
   keywords: ["project keywords", "technologies", "outcomes"]
 ---
 
+> [!IMPORTANT]
+> Historical reference only. This markdown template belongs to an older content workflow and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, and `docs/README.md` for current documentation.
+
 # Project Title
 
 ![Project Hero Image](/project-screenshots/project-hero.png)

@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older color-system migration note and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `STYLING.md`, and `docs/README.md` for current documentation.
+
 # Color Palette Modernization - February 2026
 
 ## Overview

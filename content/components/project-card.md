@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This component reference describes an older content/template system and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `COMPONENTS.md`, and `docs/README.md` for current documentation.
+
 # Project Card Component
 
 ## Purpose

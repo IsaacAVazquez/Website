@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older optimization summary and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `ARCHITECTURE.md`, `API.md`, and `docs/README.md` for current documentation.
+
 # AI-Driven Search Optimization Summary
 
 **Date:** November 19, 2025

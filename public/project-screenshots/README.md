@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This asset note reflects an older screenshots plan and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, and `docs/README.md` for current documentation.
+
 # Project Screenshots
 
 This directory contains screenshots and visual assets for project case studies.

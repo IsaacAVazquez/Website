@@ -9,6 +9,9 @@ seo:
   keywords: ["product management blog", "civic tech", "quality engineering", "software development", "Isaac Vazquez writing"]
 ---
 
+> [!IMPORTANT]
+> Historical reference only. This markdown file belongs to an older content/template system and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, and `docs/README.md` for current documentation.
+
 # Blog & Writing
 
 ## Thoughts on Product, Tech, and Impact

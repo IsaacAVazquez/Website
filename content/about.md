@@ -9,6 +9,9 @@ seo:
   keywords: ["Isaac Vazquez", "About", "Product Manager Journey", "UC Berkeley MBA", "Civic Tech", "Career Story"]
 ---
 
+> [!IMPORTANT]
+> Historical reference only. This markdown file belongs to an older content/template system and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, and `docs/README.md` for current documentation.
+
 # About Me
 
 ![Isaac Vazquez](/images/headshot.jpg)

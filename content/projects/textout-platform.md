@@ -18,6 +18,9 @@ seo:
   keywords: ["product management", "user research", "civic tech", "GCP automation", "platform development", "political technology"]
 ---
 
+> [!IMPORTANT]
+> Historical reference only. This markdown example belongs to an older content workflow and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, and `docs/README.md` for current documentation.
+
 # TextOut Platform
 ## Product Vision & User Research
 

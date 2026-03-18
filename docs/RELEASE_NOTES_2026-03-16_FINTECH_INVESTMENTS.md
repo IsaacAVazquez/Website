@@ -1,5 +1,7 @@
 # Release Notes: Public Fintech Repositioning and Dynamic Ticker Research
 
+Release note for the 2026-03-16 investments repositioning work. Historical change record only; use `README.md`, `API.md`, and `docs/README.md` for current source-of-truth documentation.
+
 Date: 2026-03-16
 
 ## Summary

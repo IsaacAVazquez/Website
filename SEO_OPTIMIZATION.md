@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older SEO optimization plan and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `API.md`, `ARCHITECTURE.md`, and `docs/README.md` for current documentation.
+
 # SEO Optimization Report - Phase 5
 **Date:** November 2025
 **Focus:** Product Management SEO & Technical PM Positioning

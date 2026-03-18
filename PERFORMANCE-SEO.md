@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older performance and SEO snapshot and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `ARCHITECTURE.md`, `API.md`, and `docs/README.md` for current documentation.
+
 # Performance & SEO Guide
 
 Complete performance optimization and SEO implementation guide for Isaac Vazquez's portfolio.

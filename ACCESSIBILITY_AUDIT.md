@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older audit snapshot and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `ARCHITECTURE.md`, `API.md`, and `docs/README.md` for current documentation.
+
 # Accessibility Audit Report
 **Date:** November 2025
 **Standard:** WCAG 2.1 AAA Compliance

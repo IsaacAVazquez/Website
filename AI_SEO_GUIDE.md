@@ -1,4 +1,7 @@
 
+> [!IMPORTANT]
+> Historical reference only. This file captures an older SEO guide and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `ARCHITECTURE.md`, `API.md`, and `docs/README.md` for current documentation.
+
 # AI-Optimized SEO Implementation Guide
 
 ## Overview

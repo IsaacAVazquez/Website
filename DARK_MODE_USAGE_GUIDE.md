@@ -1,5 +1,8 @@
 # Dark Mode Implementation - Complete Usage Guide
 
+> [!IMPORTANT]
+> Historical reference only. This file documents an older theme implementation. For the current styling system, start with `STYLING.md` and `src/app/globals.css`.
+
 ## Overview
 
 Your website now has a **fully accessible dark mode toggle** with all requested features:

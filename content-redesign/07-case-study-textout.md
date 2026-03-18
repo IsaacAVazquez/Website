@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This redesign package documents an older sample case study and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, and `docs/README.md` for current documentation.
+
 # Case Study: TextOut SMS Platform
 
 ---

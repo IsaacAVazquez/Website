@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older UX audit and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `STYLING.md`, and `docs/README.md` for current documentation.
+
 # UI/UX Audit Report - Isaac Vazquez Portfolio
 
 **Audit Date:** February 16, 2026

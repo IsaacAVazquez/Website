@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This redesign package documents an older planning pass and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `STYLING.md`, and `docs/README.md` for current documentation.
+
 # Isaac Vazquez PM Portfolio - Complete Redesign Package
 
 ## Overview

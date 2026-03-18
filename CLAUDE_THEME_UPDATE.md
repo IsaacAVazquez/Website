@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This file captures an older theme update note and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `STYLING.md`, and `docs/README.md` for current documentation.
+
 # Claude-Inspired Theme Update - February 2026
 
 ## Overview

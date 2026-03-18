@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This redesign package documents an older planning pass and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, and `docs/README.md` for current documentation.
+
 # Home / Landing Page
 
 ---
