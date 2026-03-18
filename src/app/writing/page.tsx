@@ -1,15 +1,14 @@
 import { getAllBlogPosts } from '@/lib/blog';
 import { StructuredData } from "@/components/StructuredData";
 import { generateBreadcrumbStructuredData, constructMetadata } from "@/lib/seo";
-import { Heading } from "@/components/ui/Heading";
-import { Paragraph } from "@/components/ui/Paragraph";
 import { WarmCard } from "@/components/ui/WarmCard";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "@/components/ui/ServerIcons";
+import { SectionIntro } from "@/components/ui/SectionIntro";
 
 export const metadata = constructMetadata({
   title: 'Writing - Product Management Insights & Technical Articles | Isaac Vazquez',
-  description: 'Articles on product management, product strategy, transitioning from engineering to product roles, data-driven decision making, and building mission-driven products. Written by Isaac Vazquez, Technical Product Manager and UC Berkeley Haas MBA Candidate.',
+  description: 'Writing on product strategy, analytics-heavy decision making, technical product work, and lessons from building systems that need trust as much as speed.',
   canonicalUrl: 'https://isaacavazquez.com/writing',
   dateModified: '2025-02-05',
   aiMetadata: {
@@ -60,7 +59,11 @@ export default async function WritingPage() {
       {/* Breadcrumb Structured Data */}
       <StructuredData
         type="BreadcrumbList"
-        data={{ items: (generateBreadcrumbStructuredData(breadcrumbs) as any).itemListElement }}
+        data={{
+          items: (generateBreadcrumbStructuredData(breadcrumbs) as {
+            itemListElement: object[]
+          }).itemListElement
+        }}
       />
 
       {/* Articles Structured Data */}
@@ -72,33 +75,29 @@ export default async function WritingPage() {
         />
       ))}
 
-      <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          {/* Header */}
-          <div className="mb-12">
-            <Heading level={1} className="text-4xl md:text-5xl lg:text-6xl mb-4">
-              <span className="text-[var(--color-secondary)]">Writing</span>
-            </Heading>
-            <Paragraph size="lg" className="text-[var(--text-secondary)] max-w-3xl">
-              Insights on product management, technical leadership, and building mission-driven products.
-              Perspectives from a Technical PM at UC Berkeley Haas.
-            </Paragraph>
-          </div>
+      <div className="min-h-screen bg-[var(--surface-primary)] page-section">
+        <div className="page-shell-tight">
+          <SectionIntro
+            eyebrow="Writing"
+            size="lg"
+            title="Notes on product strategy, operating systems, and analytics-heavy work."
+            description="This is where I unpack the decisions behind the portfolio: product thinking, technical judgment, and lessons from building systems where trust matters."
+          />
 
           {/* Posts Grid */}
           {posts.length > 0 ? (
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+            <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
               {posts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/writing/${post.slug}`}
                   className="group"
                 >
-                  <WarmCard hover={true} padding="lg" className="h-full flex flex-col">
+                  <WarmCard hover={true} padding="lg" className="flex h-full flex-col shadow-sm">
                     {/* Category Badge */}
                     {post.category && (
                       <div className="mb-3">
-                        <span className="inline-block px-3 py-1 text-xs font-medium bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">
+                        <span className="section-kicker">
                           {post.category}
                         </span>
                       </div>
@@ -117,7 +116,7 @@ export default async function WritingPage() {
                     )}
 
                     {/* Meta Info */}
-                    <div className="flex items-center gap-4 text-sm text-neutral-600 dark:text-neutral-400 mt-auto pt-4 border-t border-neutral-200 dark:border-neutral-700">
+                    <div className="mt-auto flex items-center gap-4 border-t border-neutral-200 pt-4 text-sm text-neutral-600 dark:border-neutral-700 dark:text-neutral-400">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         <time dateTime={post.publishedAt}>
@@ -157,14 +156,14 @@ export default async function WritingPage() {
               ))}
             </div>
           ) : (
-            <WarmCard padding="xl" className="text-center">
-              <Heading level={2} className="text-[var(--color-primary)] mb-4">
+            <WarmCard padding="xl" className="mt-12 text-center shadow-sm">
+              <h2 className="mb-4 text-3xl font-bold text-[var(--text-primary)]">
                 Articles Coming Soon
-              </Heading>
-              <Paragraph>
-                Check back soon for insights on product management, technical leadership,
-                and building impactful products.
-              </Paragraph>
+              </h2>
+              <p className="mx-auto max-w-2xl text-base leading-relaxed text-[var(--text-secondary)]">
+                More essays are on the way around product strategy, technical
+                leadership, and how to build products that help people make clearer decisions.
+              </p>
             </WarmCard>
           )}
         </div>

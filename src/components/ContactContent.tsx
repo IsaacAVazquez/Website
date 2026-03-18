@@ -1,5 +1,4 @@
 "use client";
-import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
 import { motion, useReducedMotion } from "framer-motion";
@@ -8,38 +7,42 @@ import {
   IconBrandLinkedin,
   IconMapPin,
 } from "@tabler/icons-react";
+import { SectionIntro } from "@/components/ui/SectionIntro";
 
 export function ContactContent() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div>
+    <div className="space-y-6">
       <motion.div
         initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
-        className="text-center mb-12 max-w-4xl mx-auto"
+        className="mx-auto max-w-4xl text-center"
       >
-        <Heading level={1} className="mb-8">
-          Let's Work Together
-        </Heading>
-        <p className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
-          Open to product roles, fintech conversations, and advisory work on
-          products where analytics and trust both matter.
-        </p>
+        <SectionIntro
+          eyebrow="Contact"
+          align="center"
+          size="lg"
+          title="Get in touch."
+          description="If you&apos;re working on product, analytics, or investment-focused tools, I&apos;d be glad to connect."
+        />
       </motion.div>
 
       <div className="space-y-6">
-        <WarmCard hover={false} padding="xl" className="text-center w-full">
-          <Heading level={2} className="font-bold mb-4 text-3xl">
-            Ready to Connect?
-          </Heading>
-          <p className="mb-6 max-w-2xl mx-auto text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            I'm pursuing product roles where I can pair QA roots with the
-            strategy work I'm doing at Haas. I'm especially interested in
-            teams building decision-support, analytics, fintech, and workflow
-            products that need both strong execution and clear product
-            judgment.
+        <WarmCard hover={false} padding="xl" className="w-full text-center shadow-sm">
+          <div className="space-y-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+              Good fit
+            </p>
+            <h2 className="text-3xl font-bold text-[var(--text-primary)]">
+              Roles and projects where product judgment and execution both matter.
+            </h2>
+          </div>
+          <p className="mb-6 mt-4 max-w-2xl mx-auto text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+            I&apos;m especially interested in analytics, fintech, workflow, and
+            decision-support products, along with teams that care about clear
+            strategy, reliable delivery, and practical product thinking.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
@@ -58,24 +61,23 @@ export function ContactContent() {
               className="w-2 h-2 bg-[var(--color-success)] rounded-full animate-pulse"
               aria-hidden="true"
             />
-            <span>Open to conversations about product, fintech, and analytics</span>
+            <span>Based in Berkeley and available by email or LinkedIn</span>
           </div>
         </WarmCard>
 
      
-        <WarmCard hover={false} padding="lg" className="w-full">
+        <WarmCard hover={false} padding="lg" className="w-full shadow-sm">
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-4">
               <IconMapPin className="h-5 w-5 text-[var(--color-primary)]" />
-              <Heading level={3} className="text-xl font-bold">
+              <h3 className="text-xl font-bold text-[var(--text-primary)]">
                 Berkeley, CA
-              </Heading>
+              </h3>
             </div>
             <p className="text-base text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
-              Based in the Bay Area while attending UC Berkeley Haas (Class of
-              2027). I like working on products that turn messy data into
-              clearer decisions, whether the use case is civic engagement,
-              SaaS operations, or investment research.
+              Based in the Bay Area while attending UC Berkeley Haas. I enjoy
+              working on products that help people make clearer decisions,
+              whether the setting is civic tech, SaaS operations, or investment research.
             </p>
           </div>
         </WarmCard>

@@ -3,9 +3,9 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 
 export const metadata = constructMetadata({
-  title: "Contact Isaac Vazquez | Product Manager & Fintech Builder",
+  title: "Contact Isaac Vazquez | Product Manager",
   description:
-    "Connect with Isaac Vazquez about product roles, fintech product conversations, or analytics-heavy platform work. UC Berkeley Haas MBA candidate open to PM opportunities and select advisory projects.",
+    "Connect with Isaac Vazquez about product roles, projects, analytics work, and fintech-style product opportunities.",
   canonicalUrl: "/contact",
   dateModified: "2026-03-16",
 });
@@ -43,8 +43,8 @@ export default function Contact() {
         }}
       />
 
-      <div className="min-h-screen w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--surface-secondary)]">
-        <div className="max-w-5xl mx-auto">
+      <div className="min-h-screen w-full bg-[var(--surface-primary)] page-section">
+        <div className="page-shell-tight">
           <ContactContent />
         </div>
       </div>

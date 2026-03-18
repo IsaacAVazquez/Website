@@ -284,6 +284,46 @@
     border-color: var(--border-accent);
     transform: translateY(-1px);
   }
+
+  .page-shell {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-shell-tight {
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-section {
+    @apply py-14 sm:py-16 lg:py-20;
+  }
+
+  .section-panel {
+    background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 35%),
+      var(--surface-elevated);
+    border: 1px solid var(--border-primary);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .section-kicker {
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em];
+    color: var(--color-primary);
+    border-color: color-mix(in srgb, var(--color-primary) 25%, var(--border-primary));
+    background: color-mix(in srgb, var(--color-primary) 8%, var(--surface-secondary));
+  }
+
+  .section-subtitle {
+    @apply text-base md:text-lg leading-relaxed;
+    color: var(--text-secondary);
+    max-width: 42rem;
+  }
+
+  .surface-muted {
+    background: color-mix(in srgb, var(--surface-secondary) 78%, var(--surface-primary));
+    border: 1px solid var(--border-primary);
+    border-radius: 1.25rem;
+  }
 }
 
 @keyframes skeleton-loading {

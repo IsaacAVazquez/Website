@@ -61,12 +61,24 @@ const appleSnapshot = {
 };
 
 test.describe("Investments", () => {
-  test("is discoverable from main navigation", async ({ page }) => {
+  test("is discoverable from main navigation", async ({ page }, testInfo) => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
-    await expect(page.getByRole("link", { name: /investments/i }).first()).toBeVisible();
-    await page.getByRole("link", { name: /investments/i }).first().click();
+    if (testInfo.project.name.includes("Mobile")) {
+      await page.getByRole("button", { name: /open navigation menu/i }).click();
+      const mobileNav = page.getByLabel("Mobile navigation");
+      await expect(mobileNav.getByRole("link", { name: /investments/i })).toBeVisible();
+      await mobileNav.getByRole("link", { name: /investments/i }).click();
+    } else {
+      await expect(
+        page.getByLabel("Primary navigation").getByRole("link", { name: /investments/i })
+      ).toBeVisible();
+      await page
+        .getByLabel("Primary navigation")
+        .getByRole("link", { name: /investments/i })
+        .click();
+    }
 
     await expect(page).toHaveURL(/.*investments/);
     await expect(
@@ -173,11 +185,11 @@ test.describe("Investments", () => {
     expect(hasHorizontalOverflow).toBeFalsy();
   });
 
-  test("homepage prioritizes the fintech project in selected work", async ({ page }) => {
+  test("homepage prioritizes the fintech project in projects", async ({ page }) => {
     await page.goto("/");
-    const section = page.locator('section[aria-label="Selected work"]');
+    const section = page.locator('section[aria-label="Projects"]');
 
-    await expect(section.getByRole("heading", { name: /selected work/i })).toBeVisible();
+    await expect(section.getByRole("heading", { name: /projects/i })).toBeVisible();
 
     const titles = await section.locator("h3").allTextContents();
     expect(titles.slice(0, 3)).toEqual([

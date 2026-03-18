@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Footer } from "@/components/Footer";
+import { Footer, type FooterVariant } from "@/components/Footer";
 
 interface ConditionalLayoutProps {
   children: React.ReactNode;
@@ -10,8 +10,19 @@ interface ConditionalLayoutProps {
 export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const fullWidthRoutes = new Set(["/investments", "/march-madness-2026"]);
-  const isFullWidthRoute = fullWidthRoutes.has(pathname);
+  const selfShellRoutes = new Set([
+    "/about",
+    "/contact",
+    "/investments",
+    "/march-madness-2026",
+    "/portfolio",
+    "/writing",
+  ]);
+  const isSelfShellRoute = selfShellRoutes.has(pathname);
+  const compactFooterRoutes = new Set(["/", "/contact"]);
+  const footerVariant: FooterVariant = compactFooterRoutes.has(pathname)
+    ? "compact"
+    : "full";
 
   return (
     <>
@@ -24,7 +35,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
         >
           {isHomePage ? (
             children
-          ) : isFullWidthRoute ? (
+          ) : isSelfShellRoute ? (
             children
           ) : (
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
@@ -34,7 +45,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
         </main>
       </div>
 
-      <Footer />
+      <Footer variant={footerVariant} />
     </>
   );
 }

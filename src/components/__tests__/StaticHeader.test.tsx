@@ -1,0 +1,80 @@
+import React from "react";
+import { act } from "react";
+import { createRoot, type Root } from "react-dom/client";
+import { usePathname } from "next/navigation";
+import { StaticHeader } from "@/components/StaticHeader";
+
+jest.mock("next/navigation", () => ({
+  usePathname: jest.fn(),
+}));
+
+jest.mock("@/components/ui/ThemeToggle", () => ({
+  ThemeToggle: () => <button type="button">Theme</button>,
+}));
+
+globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+
+const mockUsePathname = usePathname as jest.MockedFunction<typeof usePathname>;
+
+describe("StaticHeader", () => {
+  let container: HTMLDivElement;
+  let root: Root;
+
+  beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+    root = createRoot(container);
+    mockUsePathname.mockReturnValue("/portfolio");
+  });
+
+  afterEach(() => {
+    act(() => root.unmount());
+    container.remove();
+  });
+
+  it("renders the simplified desktop navigation without writing", async () => {
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    const primaryNav = container.querySelector('[aria-label="Primary navigation"]');
+    const brandLink = container.querySelector('nav[aria-label="Main navigation"] a[href="/"]');
+
+    expect(primaryNav?.textContent).toContain("Home");
+    expect(primaryNav?.textContent).toContain("About");
+    expect(primaryNav?.textContent).toContain("Projects");
+    expect(primaryNav?.textContent).toContain("Investments");
+    expect(primaryNav?.textContent).toContain("Resume");
+    expect(primaryNav?.textContent).toContain("Contact");
+    expect(primaryNav?.textContent).not.toContain("Writing");
+    expect(primaryNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Projects");
+
+    expect(brandLink?.textContent).toContain("Isaac Vazquez");
+    expect(brandLink?.getAttribute("href")).toBe("/");
+  });
+
+  it("shows an explicit Home link in the mobile menu", async () => {
+    mockUsePathname.mockReturnValue("/contact");
+
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    const toggleButton = container.querySelector(
+      'button[aria-controls="mobile-menu"]'
+    ) as HTMLButtonElement | null;
+
+    expect(toggleButton).not.toBeNull();
+
+    await act(async () => {
+      toggleButton?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+
+    const mobileNav = container.querySelector('[aria-label="Mobile navigation"]');
+
+    expect(mobileNav?.textContent).toContain("Home");
+    expect(mobileNav?.textContent).toContain("Projects");
+    expect(mobileNav?.textContent).not.toContain("Writing");
+    expect(mobileNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Contact");
+  });
+});

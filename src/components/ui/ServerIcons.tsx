@@ -144,6 +144,17 @@ export function FileText(props: IconProps) {
   );
 }
 
+export function Article(props: IconProps) {
+  return (
+    <svg {...svgProps(props)}>
+      <path d="M4 5a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+      <path d="M8 9h8" />
+      <path d="M8 13h8" />
+      <path d="M8 17h5" />
+    </svg>
+  );
+}
+
 export function Mail(props: IconProps) {
   return (
     <svg {...svgProps(props)}>

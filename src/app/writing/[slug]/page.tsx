@@ -151,21 +151,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="mt-16 mb-12">
           <AuthorBio variant="full" />
         </div>
-
-        {/* Related Posts or Call to Action */}
-        <footer className="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-700">
-          <div className="text-center">
-            <p className="text-neutral-700 dark:text-neutral-300 mb-4">
-              Interested in learning more about product management or working together?
-            </p>
-            <a
-              href="/contact"
-              className="inline-flex items-center px-6 py-3 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black font-medium rounded-lg hover:opacity-90 transition-opacity"
-            >
-              Get in Touch
-            </a>
-          </div>
-        </footer>
       </article>
     </div>
     </>

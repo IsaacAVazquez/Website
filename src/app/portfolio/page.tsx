@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
-import { ArrowRight, ExternalLink } from "@/components/ui/ServerIcons";
+import Link from "next/link";
+import { ArrowRight } from "@/components/ui/ServerIcons";
 import { caseStudiesData } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
+import { SectionIntro } from "@/components/ui/SectionIntro";
 
 export const metadata = constructMetadata({
-  title: "Work & Case Studies | Isaac Vazquez",
+  title: "Projects | Isaac Vazquez",
   description:
-    "PM case studies: scaling platforms to 60M+ users, driving $4M revenue impact, transforming analytics. Problem-Process-Result framework.",
+    "Projects across product strategy, analytics, platform reliability, and investment research tooling.",
   canonicalUrl: "/portfolio",
   aiMetadata: {
     profession: "Product Manager",
@@ -20,16 +20,16 @@ export const metadata = constructMetadata({
       "Experimentation & A/B Testing",
     ],
     topics: [
-      "Product Management Case Studies",
+      "Product Management Projects",
       "SaaS Product Strategy",
       "Revenue Impact",
       "User Growth",
     ],
-    contentType: "Portfolio / Case Studies",
+    contentType: "Portfolio / Projects",
     context:
-      "Portfolio of product management case studies by Isaac Vazquez, showcasing strategic thinking, cross-functional leadership, and measurable business outcomes across SaaS and consumer technology products.",
+      "Portfolio of product management projects by Isaac Vazquez, showcasing strategic thinking, cross-functional leadership, and measurable business outcomes across SaaS and consumer technology products.",
     summary:
-      "Case studies demonstrating product management expertise: scaling platforms to 60M+ users, driving $4M revenue impact, and transforming analytics through the Problem-Process-Result framework.",
+      "Projects demonstrating product management experience across platform scale, analytics, and investment research tooling.",
   },
 });
 
@@ -38,48 +38,52 @@ export default function PortfolioPage() {
   const featuredCaseStudies = allStudies.filter((cs) => cs.featured);
 
   return (
-    <main className="min-h-screen bg-[var(--surface-primary)] py-16 sm:py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <Heading level={1} className="mb-6">
-            Work & Case Studies
-          </Heading>
-          <p className="text-lg text-[var(--text-secondary)] max-w-3xl">
-            Case studies showcasing product management expertise through
-            strategic thinking, cross-functional leadership, and measurable
-            business outcomes. Each follows the Problem-Process-Result
-            framework.
-          </p>
-        </div>
+    <main className="min-h-screen bg-[var(--surface-primary)] page-section">
+      <div className="page-shell">
+        <SectionIntro
+          eyebrow="Projects"
+          size="lg"
+          title="Projects across product, analytics, and platform work."
+          description="A collection of projects spanning high-scale platforms, analytics work, and investment research experiences."
+        />
 
         {featuredCaseStudies.length > 0 && (
-          <div className="mb-14">
-            <h2 className="text-2xl font-bold mb-6 text-[var(--text-primary)]">
-              Featured Work
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-14 mt-12">
+            <div className="mb-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                Featured projects
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {featuredCaseStudies.map((study) => (
                 <Link key={study.slug} href={study.link ?? `/portfolio/${study.slug}`}>
                   <WarmCard
                     padding="none"
                     hover={true}
-                    className="h-full overflow-hidden group"
+                    className="group h-full overflow-hidden shadow-sm"
                   >
-                    <div className="p-6 space-y-4">
+                    <div className="space-y-4 p-6">
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="section-kicker">Project</span>
+                        <span className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
+                          {study.timeline}
+                        </span>
+                      </div>
+
                       <h3 className="font-bold text-xl text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors">
                         {study.title}
                       </h3>
 
-                      <p className="text-sm text-[var(--text-secondary)] line-clamp-3">
+                      <p className="text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
                         {study.description}
                       </p>
 
-                      <div className="space-y-1">
-                        <p className="text-xs font-medium text-[var(--text-tertiary)]">
+                      <div className="space-y-1 border-l-2 border-[var(--border-primary)] pl-3">
+                        <p className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
                           Role: {study.role}
                         </p>
-                        <p className="text-xs text-[var(--text-tertiary)]">
-                          {study.timeline}
+                        <p className="text-xs text-[var(--text-secondary)]">
+                          {study.metrics}
                         </p>
                       </div>
 
@@ -99,12 +103,8 @@ export default function PortfolioPage() {
                         )}
                       </div>
 
-                      <p className="text-xs font-semibold text-[var(--color-primary)]">
-                        {study.metrics}
-                      </p>
-
                       <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors pt-2">
-                        View Case Study
+                        View project
                         <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
@@ -114,19 +114,6 @@ export default function PortfolioPage() {
             </div>
           </div>
         )}
-
-        <div className="mt-16 text-center">
-          <p className="text-lg text-[var(--text-secondary)] mb-6">
-            Interested in working together?
-          </p>
-          <Link
-            href="/#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
-          >
-            Get In Touch
-            <ExternalLink className="h-4 w-4" />
-          </Link>
-        </div>
       </div>
     </main>
   );

@@ -7,7 +7,7 @@ import { constructMetadata } from "@/lib/seo";
 export const metadata = constructMetadata({
   title: "Isaac Vazquez - Product Manager | UC Berkeley Haas MBA",
   description:
-    "Product Manager and UC Berkeley Haas MBA Candidate. Case studies in product strategy, analytics, and data-driven decisions across SaaS, civic tech, and emerging fintech product work.",
+    "Product manager with a QA-to-product background. Projects across SaaS, analytics, civic tech, and investment research tooling.",
   canonicalUrl: "/",
   dateModified: "2026-02-22",
   aiMetadata: {
@@ -29,17 +29,17 @@ export const metadata = constructMetadata({
     topics: [
       "Product Management",
       "Product Strategy",
-      "Case Studies",
+      "Projects",
       "MBA Education",
       "Data-Driven Decisions",
       "Fintech Product Development",
     ],
     contentType: "Professional Portfolio Homepage",
     context:
-      "Homepage of Isaac Vazquez, a product manager with 5+ years of experience building SaaS products reaching 60M+ users. Background in QA engineering provides end-to-end product quality ownership, with growing focus on fintech and investment research tooling. Currently pursuing MBA at UC Berkeley Haas School of Business.",
+      "Homepage of Isaac Vazquez, a product manager with 5+ years of experience building SaaS products reaching 60M+ users. Background in QA engineering provides end-to-end product quality ownership, with growing focus on analytics-heavy SaaS and fintech-style research tooling. Currently pursuing an MBA at UC Berkeley Haas School of Business.",
     summary:
-      "Product management portfolio showcasing case studies in scaling platforms, driving revenue impact, transforming analytics, and building fintech-style research products.",
+      "Product management portfolio showcasing projects in platform scale, analytics, and fintech-style research products.",
     primaryFocus:
-      "Product management case studies, strategic product thinking, and measurable business outcomes in SaaS, civic tech, and fintech-adjacent products",
+      "Product management projects, strategic product thinking, and measurable business outcomes in SaaS, civic tech, and fintech-adjacent products",
   },
 });

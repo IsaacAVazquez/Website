@@ -8,6 +8,7 @@ import {
   IconUser,
   IconTimeline,
 } from "@tabler/icons-react";
+import { SectionIntro } from "@/components/ui/SectionIntro";
 
 type TabType = "overview" | "journey";
 
@@ -21,34 +22,33 @@ export default function About() {
   ];
 
   return (
-    <div className="py-6 sm:py-10">
-      <motion.div
-        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
-        className="text-center mb-12 max-w-4xl mx-auto"
-      >
-        <Heading level={1} className="mb-4">
-          About Isaac Vazquez
-        </Heading>
-        <p className="text-lg md:text-xl text-[var(--text-secondary)]">
-          Berkeley Haas MBA Candidate '27 | Consortium Fellow | MLT
-          Professional Development Fellow
-        </p>
-      </motion.div>
+    <section className="min-h-screen bg-[var(--surface-primary)] page-section">
+      <div className="page-shell space-y-10">
+        <motion.div
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+        >
+          <SectionIntro
+            eyebrow="About"
+            align="center"
+            size="lg"
+            title="A product manager with roots in QA, analytics, and execution."
+            description="My background combines product strategy with hands-on experience in quality, systems thinking, and cross-functional delivery."
+          />
+        </motion.div>
 
-   
-      <motion.div
-        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
-        className="max-w-5xl mx-auto"
-      >
-        <div className="flex justify-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+          className="mx-auto w-full max-w-5xl"
+        >
+          <div className="mb-8 flex justify-center">
           <div
             role="tablist"
             aria-label="About sections"
-            className="flex flex-wrap justify-center bg-[var(--surface-elevated)] p-2 rounded-2xl border border-[var(--border-primary)]"
+            className="flex flex-wrap justify-center gap-2 rounded-[1.5rem] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-2.5 shadow-sm"
           >
             {tabs.map((tab, index) => (
               <button
@@ -69,10 +69,10 @@ export default function About() {
                     setActiveTab(tabs[prevIndex].id);
                   }
                 }}
-                className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-200 min-h-[48px] ${
+                className={`flex min-h-[48px] items-center gap-2 rounded-xl px-6 py-3 font-medium transition-all duration-200 ${
                   activeTab === tab.id
-                    ? "bg-[var(--color-primary)] text-white"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]"
+                    ? "bg-[var(--text-primary)] text-[var(--text-inverse)] shadow-sm"
+                    : "text-[var(--text-secondary)] hover:bg-[var(--surface-primary)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 <tab.icon className="w-5 h-5" aria-hidden="true" />
@@ -112,89 +112,87 @@ export default function About() {
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.div>
-    </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 
 const OverviewContent = () => {
   return (
     <div className="max-w-5xl mx-auto space-y-8">
-      <WarmCard hover={true} padding="xl">
+      <WarmCard hover={true} padding="xl" className="shadow-sm">
         <div className="space-y-6">
           <Heading level={2} className="text-2xl lg:text-3xl mb-6">
             Overview
           </Heading>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            I'm a technical product manager who treats QA, analytics, and
-            operating detail as inputs to better bets. At Civitech I lead
-            quality and product work for platforms that serve 60M+ users,
-            translating system signal into roadmap decisions teams can act on.
+            I&apos;m a technical product manager with a background in QA and
+            analytics. At Civitech I work across quality and product for
+            platforms that serve 60M+ users, helping teams turn complex system
+            and user signals into practical decisions.
           </p>
 
           <div>
             <p className="text-[var(--text-primary)] font-semibold mb-3 text-base md:text-lg">
-              What I bring to the table:
+              What I bring:
             </p>
             <ul className="list-disc ml-6 space-y-3 text-[var(--text-secondary)] text-base md:text-lg">
               <li>
                 <strong className="text-[var(--text-primary)]">
                   Product & Strategy:
                 </strong>{" "}
-                Ground bets in user research, stack-rank ruthlessly, and keep
-                cross-functional partners pointed at the same outcome.
+                Define the problem clearly, balance user and business needs, and
+                keep teams aligned around the right outcome.
               </li>
               <li>
                 <strong className="text-[var(--text-primary)]">
                   Technical:
                 </strong>{" "}
-                Build and maintain automation, dive into SQL or APIs myself,
-                and facilitate Agile rituals that actually unblock shipping.
+                Work comfortably with automation, SQL, and APIs so product
+                decisions stay connected to how the system actually works.
               </li>
               <li>
                 <strong className="text-[var(--text-primary)]">
                   Analytics:
                 </strong>{" "}
-                Define the metric that proves success, run experiments, and
-                convert signal into decisions the business can feel.
+                Use data to understand what&apos;s working, test assumptions, and
+                make measurement useful to the team doing the work.
               </li>
               <li>
                 <strong className="text-[var(--text-primary)]">
                   Fintech Curiosity:
                 </strong>{" "}
-                Build investment research tools and portfolio analytics to stay
-                close to how markets, models, and user trust intersect in
-                product design.
+                Build investment research and analytics projects to stay close to
+                how product design and decision support come together.
               </li>
               <li>
                 <strong className="text-[var(--text-primary)]">
                   Leadership:
                 </strong>{" "}
-                Mentor teammates, de-risk complex launches, and advocate for
-                inclusive, high-impact teams.
+                Support launches, mentor teammates, and help create the clarity
+                teams need to ship well.
               </li>
             </ul>
           </div>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Before Civitech I ran client services at Open Progress —
-            orchestrating 80+ digital programs, building data pipelines, and
-            using audience analytics to make campaigns actually resonate with
-            the people on the other end.
+            Before Civitech I led client services at Open Progress, running 80+
+            digital programs, building data pipelines, and using audience
+            analytics to make campaigns resonate with the people on the other
+            end.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            I'm earning my MBA at UC Berkeley Haas to pair hands-on execution
-            with sharper product strategy and explore how I can build and
-            contribute to SaaS and fintech products that help people make
-            better decisions.
+            I&apos;m earning my MBA at UC Berkeley Haas to deepen the strategy
+            side of the work while continuing to build products that help people
+            make better decisions.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-primary)] leading-relaxed font-medium">
-            If this sparks ideas, let's connect. I'm especially interested in
-            product conversations around analytics, fintech, and systems where
-            trust matters as much as speed.
+            I&apos;m especially interested in products that sit at the intersection
+            of analytics, trust, and clear user decision-making.
           </p>
         </div>
       </WarmCard>

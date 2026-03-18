@@ -572,8 +572,9 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
-  "march-madness-2026",
   "investment-analytics-platform",
+  "data-analytics-dashboard",
+  "civic-engagement-platform",
 ] as const;
 
 /** Get featured case studies (for homepage) */

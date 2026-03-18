@@ -1,34 +1,34 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { IconSearch, IconTarget, IconChartBar, IconDatabase } from "@tabler/icons-react";
+import { SectionIntro } from "@/components/ui/SectionIntro";
 
 const pillars = [
   {
     icon: IconSearch,
     title: "Discovery & Research",
     description:
-      "I start with users. Research, interviews, and data define the problem before solutions.",
+      "I start with users, context, and the problem itself before jumping into solutions.",
   },
   {
     icon: IconDatabase,
-    title: "Data-Driven Decisions",
+    title: "Data-Informed Decisions",
     description:
-      "Quantitative insights guide every call. I instrument, analyze, and let the numbers sharpen intuition.",
+      "I use data to sharpen judgment, validate assumptions, and understand whether the work is moving the right metrics.",
   },
   {
     icon: IconTarget,
     title: "Strategy & Prioritization",
     description:
-      "Every feature is a bet. I use frameworks to stack-rank ruthlessly and align stakeholders.",
+      "I care about choosing the right problems, narrowing scope thoughtfully, and helping teams stay aligned on outcomes.",
   },
   {
     icon: IconChartBar,
     title: "Execution & Measurement",
     description:
-      "Ship, measure, learn. I define the north star metric and build feedback loops.",
+      "I like building simple feedback loops so teams can ship, learn, and improve without losing sight of the bigger goal.",
   },
 ];
 
@@ -56,10 +56,10 @@ export function ThinkingPreview() {
 
   return (
     <section
-      className="py-16 md:py-24 bg-[var(--surface-secondary)]"
+      className="page-section bg-[var(--surface-secondary)]"
       aria-label="How I think about product"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="page-shell">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -67,19 +67,21 @@ export function ThinkingPreview() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div variants={itemVariants} className="mb-10">
-            <Heading level={2} className="mb-4">
-              How I Think About Product
-            </Heading>
+            <SectionIntro
+              eyebrow="How I think"
+              title="How I approach product work."
+              description="The themes stay pretty consistent: understand the problem clearly, use data thoughtfully, and keep execution tied to real outcomes."
+            />
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
           >
             {pillars.map((pillar) => (
-              <WarmCard key={pillar.title} padding="lg">
-                <pillar.icon className="h-8 w-8 text-[var(--color-primary)] mb-4" />
-                <h3 className="font-bold text-lg mb-3 text-[var(--text-primary)]">
+              <WarmCard key={pillar.title} padding="lg" className="h-full shadow-sm">
+                <pillar.icon className="mb-4 h-8 w-8 text-[var(--color-primary)]" />
+                <h3 className="mb-3 text-lg font-bold text-[var(--text-primary)]">
                   {pillar.title}
                 </h3>
                 <p className="text-[var(--text-secondary)]">

@@ -38,7 +38,7 @@ export default function Home() {
             name: "Isaac Vazquez",
             jobTitle: "Technical Product Manager & UC Berkeley Haas MBA Candidate",
             description:
-              "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in SaaS and consumer products. Building analytics-heavy products at the intersection of user insight, data-driven decisions, and emerging fintech workflows.",
+              "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in SaaS and consumer products, with a background spanning QA, analytics, and product execution.",
             url: "https://isaacavazquez.com",
             image: "https://isaacavazquez.com/opengraph-image",
             email: "IsaacVazquez@berkeley.edu",

@@ -6,8 +6,9 @@ import {
   FileText,
   Mail,
 } from "@/components/ui/ServerIcons";
+import type { Navlink } from "@/types/navlink";
 
-export const navlinks = [
+export const navLinks: Navlink[] = [
   {
     href: "/",
     label: "Home",
@@ -20,7 +21,7 @@ export const navlinks = [
   },
   {
     href: "/portfolio",
-    label: "Work",
+    label: "Projects",
     icon: Briefcase,
   },
   {
