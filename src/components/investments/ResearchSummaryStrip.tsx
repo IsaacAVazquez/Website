@@ -3,6 +3,9 @@
 import React from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
+import { useLiveQuote } from "@/hooks/useLiveQuote";
+import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
+import { formatHistoryAsOf, getHistoricalPriceFreshness } from "@/lib/investmentsHistory";
 import type {
   BetaData,
   CompanyInfo,
@@ -95,7 +98,16 @@ export function ResearchSummaryStrip({ symbol }: Props) {
   const { data: profitability } = useStockData<Profitability>(symbol, "profitability");
   const { data: marginsRaw } = useStockData<MarginsData>(symbol, "margins");
   const { data: beta } = useStockData<BetaData>(symbol, "beta");
-  const { data: priceRaw, isLoading: priceLoading } = useStockData<PriceData>(symbol, "price");
+  const {
+    data: priceRaw,
+    lastUpdated: datasetLastUpdated,
+  } = useStockData<PriceData>(symbol, "price");
+  const {
+    quote,
+    isLoading: quoteLoading,
+    error: quoteError,
+    lastUpdated: liveQuoteLastUpdated,
+  } = useLiveQuote(symbol);
   const margins = Array.isArray(marginsRaw) ? marginsRaw[marginsRaw.length - 1] : undefined;
   const prices = React.useMemo(() => {
     if (!Array.isArray(priceRaw)) return [];
@@ -103,16 +115,13 @@ export function ResearchSummaryStrip({ symbol }: Props) {
   }, [priceRaw]);
 
   const latestPrice = prices[prices.length - 1];
-  const previousPrice = prices[prices.length - 2];
   const trailingYear = prices.slice(-252);
   const trailingHigh = trailingYear.length ? Math.max(...trailingYear.map((item) => item.high)) : undefined;
   const trailingLow = trailingYear.length ? Math.min(...trailingYear.map((item) => item.low)) : undefined;
-  const dayChangePercent =
-    latestPrice && previousPrice && previousPrice.close
-      ? ((latestPrice.close - previousPrice.close) / previousPrice.close) * 100
-      : undefined;
-
-  const displayName = info?.shortName ?? info?.longName ?? symbol;
+  const historyFreshness = getHistoricalPriceFreshness(latestPrice?.date, datasetLastUpdated);
+  const livePrice = quote && !quote.error ? quote.price : undefined;
+  const liveDayChangePercent = quote && !quote.error ? quote.changePercent : undefined;
+  const displayName = (!quote?.error ? quote?.name : undefined) ?? info?.longName ?? info?.shortName ?? symbol;
   const stance = dcf?.recommendation ?? "Researching";
   const stanceTone =
     stance.toLowerCase().includes("buy")
@@ -157,21 +166,38 @@ export function ResearchSummaryStrip({ symbol }: Props) {
               </div>
 
               <div className="rounded-3xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3.5 shadow-[var(--shadow-sm)]">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                  Price
-                </p>
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                      Live Price
+                    </p>
+                  </div>
+                  <DataFreshnessIndicator lastUpdated={liveQuoteLastUpdated} mode="live" />
+                </div>
                 <div className="mt-1 flex items-end gap-3">
                   <span className="text-2xl font-semibold text-[var(--text-primary)]">
-                    {priceLoading ? "Loading..." : formatCurrency(latestPrice?.close)}
+                    {quoteLoading ? "Loading..." : livePrice !== undefined ? formatCurrency(livePrice) : "Unavailable"}
                   </span>
-                  <span
-                    className={`text-sm font-semibold ${
-                      (dayChangePercent ?? 0) >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
-                    }`}
-                  >
-                    {formatPercent(dayChangePercent, true)}
-                  </span>
+                  {liveDayChangePercent !== undefined ? (
+                    <span
+                      className={`text-sm font-semibold ${
+                        liveDayChangePercent >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
+                      }`}
+                    >
+                      {formatPercent(liveDayChangePercent, true)}
+                    </span>
+                  ) : null}
                 </div>
+                <p className="mt-2 text-xs text-[var(--text-secondary)]">
+                  {quoteError
+                    ? quoteError
+                    : `Historical chart through ${formatHistoryAsOf(latestPrice?.date)}.`}
+                </p>
+                {historyFreshness.isStale ? (
+                  <p className="mt-1 text-xs font-medium text-[var(--color-warning)]">
+                    Historical series trails the dataset by {historyFreshness.lagDays} days.
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -210,12 +236,12 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                 <span>ROIC</span>
                 <span className="font-medium text-[var(--text-primary)]">{formatPercent(profitability?.roic)}</span>
               </div>
-              <div className="flex items-center justify-between gap-4">
-                <span>Latest trading day</span>
-                <span className="font-medium text-[var(--text-primary)]">{formatDate(latestPrice?.date)}</span>
+                  <div className="flex items-center justify-between gap-4">
+                    <span>History as of</span>
+                    <span className="font-medium text-[var(--text-primary)]">{formatDate(latestPrice?.date)}</span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
         </div>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">

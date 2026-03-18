@@ -16,6 +16,7 @@ jest.mock("../ComparisonTab", () => ({
 
 import { StockSearch } from "../StockSearch";
 import { StockResearch } from "../StockResearch";
+import { __testUtils as liveQuoteTestUtils } from "@/hooks/useLiveQuote";
 import { __testUtils as stockDataTestUtils } from "@/hooks/useStockData";
 import { clearClientInvestmentDataCachesForTests } from "@/lib/investmentsClientData";
 
@@ -37,6 +38,23 @@ function waitForDebounce() {
   });
 }
 
+function setInputValue(input: HTMLInputElement, value: string) {
+  const valueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set;
+  valueSetter?.call(input, value);
+  input.dispatchEvent(new Event("input", { bubbles: true }));
+  input.dispatchEvent(new Event("change", { bubbles: true }));
+}
+
+function pressKey(input: HTMLInputElement, key: string) {
+  input.dispatchEvent(
+    new KeyboardEvent("keydown", {
+      key,
+      code: key,
+      bubbles: true,
+    })
+  );
+}
+
 function queryTabs(container: HTMLElement) {
   return Array.from(container.querySelectorAll('[role="tab"]')).map((tab) =>
     tab.textContent?.trim()
@@ -44,9 +62,29 @@ function queryTabs(container: HTMLElement) {
 }
 
 const curatedIndex = {
-  symbols: ["AAPL", "MSFT"],
+  symbols: ["AAPL", "MSFT", "V"],
   failed: [],
   lastUpdated: "2026-03-16T08:00:00.000Z",
+  entries: [
+    {
+      symbol: "AAPL",
+      shortName: "Apple",
+      longName: "Apple Inc.",
+      searchText: "aapl apple apple inc",
+    },
+    {
+      symbol: "MSFT",
+      shortName: "Microsoft",
+      longName: "Microsoft Corporation",
+      searchText: "msft microsoft microsoft corporation",
+    },
+    {
+      symbol: "V",
+      shortName: "Visa",
+      longName: "Visa Inc.",
+      searchText: "v visa visa inc visa inc class a",
+    },
+  ],
 };
 
 const appleSnapshot = {
@@ -103,6 +141,37 @@ const appleSnapshot = {
   },
 };
 
+const visaSnapshot = {
+  symbol: "V",
+  source: "prefetched",
+  lastUpdated: "2026-03-16T08:00:00.000Z",
+  capabilities: appleSnapshot.capabilities,
+  sections: {
+    ...appleSnapshot.sections,
+    info: {
+      shortName: "Visa",
+      longName: "Visa Inc.",
+      sector: "Financial Services",
+      industry: "Credit Services",
+      country: "United States",
+      longBusinessSummary: "Visa operates a global payments network.",
+    },
+    fundamentals: {
+      ttmPe: 31.2,
+      psRatio: 15.2,
+      pbRatio: 14.9,
+      pegRatio: 2.4,
+      marketCap: 620000000000,
+    },
+    dcf: { fairValue: 340, currentPrice: 340.12, upside: -3.5, recommendation: "Hold" },
+    beta: { beta5y: 0.95 },
+    price: [
+      { date: "2026-02-26", open: 334, high: 339, low: 333, close: 338.2, volume: 900 },
+      { date: "2026-02-27", open: 338.2, high: 341.4, low: 337.5, close: 340.12, volume: 925 },
+    ],
+  },
+};
+
 describe("investments UI", () => {
   let container: HTMLDivElement;
   let root: Root;
@@ -113,6 +182,7 @@ describe("investments UI", () => {
     root = createRoot(container);
     mockFetch.mockReset();
     stockDataTestUtils.clearCaches();
+    liveQuoteTestUtils.clearQuoteCache();
     clearClientInvestmentDataCachesForTests();
   });
 
@@ -128,7 +198,14 @@ describe("investments UI", () => {
     });
 
     await act(async () => {
-      root.render(<StockResearch />);
+      root.render(
+        <StockResearch
+          symbol=""
+          activeTab="overview"
+          onSymbolChange={() => {}}
+          onTabChange={() => {}}
+        />
+      );
     });
     await flushPromises();
 
@@ -136,6 +213,42 @@ describe("investments UI", () => {
       container.querySelector('input[aria-label="Search stock symbol"]')
     ).not.toBeNull();
     expect(container.textContent).toContain("Start with a ticker symbol");
+  });
+
+  it("matches company names and supports keyboard selection for curated symbols", async () => {
+    mockFetch.mockResolvedValue({
+      ok: true,
+      json: async () => curatedIndex,
+    });
+
+    const onChange = jest.fn();
+
+    await act(async () => {
+      root.render(<StockSearch value="" onChange={onChange} />);
+    });
+    await flushPromises();
+
+    const input = container.querySelector(
+      'input[aria-label="Search stock symbol"]'
+    ) as HTMLInputElement | null;
+
+    expect(input).not.toBeNull();
+
+    await act(async () => {
+      if (!input) return;
+      setInputValue(input, "visa");
+    });
+    await waitForDebounce();
+
+    expect(container.textContent).toContain("Visa Inc.");
+
+    await act(async () => {
+      if (!input) return;
+      pressKey(input, "ArrowDown");
+      pressKey(input, "Enter");
+    });
+
+    expect(onChange).toHaveBeenCalledWith("V");
   });
 
   it("blocks non-curated symbols from entering research", async () => {
@@ -159,35 +272,23 @@ describe("investments UI", () => {
 
     await act(async () => {
       if (!input) return;
-      const valueSetter = Object.getOwnPropertyDescriptor(
-        HTMLInputElement.prototype,
-        "value"
-      )?.set;
-      valueSetter?.call(input, "SHOP");
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      input.dispatchEvent(new Event("change", { bubbles: true }));
+      setInputValue(input, "SHOP");
     });
     await waitForDebounce();
 
     await act(async () => {
-      input?.dispatchEvent(
-        new KeyboardEvent("keydown", {
-          key: "Enter",
-          code: "Enter",
-          keyCode: 13,
-          which: 13,
-          bubbles: true,
-        })
-      );
+      if (!input) return;
+      pressKey(input, "Enter");
     });
 
     expect(onChange).not.toHaveBeenCalled();
     expect(container.textContent).toContain("Research is currently available for curated symbols only.");
   });
 
-  it("loads a curated symbol from one static snapshot without showing live-mode UI", async () => {
+  it("uses live quotes for current price while labeling stale historical data", async () => {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
+
       if (url.includes("/data/investments/index.json")) {
         return Promise.resolve({
           ok: true,
@@ -195,10 +296,34 @@ describe("investments UI", () => {
         });
       }
 
-      if (url.includes("/data/investments/AAPL/snapshot.json")) {
+      if (url.includes("/data/investments/V/snapshot.json")) {
         return Promise.resolve({
           ok: true,
-          json: async () => appleSnapshot,
+          json: async () => visaSnapshot,
+        });
+      }
+
+      if (url.includes("/api/investments/quotes?symbols=V")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({
+            quotes: [
+              {
+                symbol: "V",
+                price: 352.45,
+                change: 3.1,
+                changePercent: 0.89,
+                dayHigh: 353,
+                dayLow: 348.2,
+                open: 349.7,
+                previousClose: 349.35,
+                volume: 2500000,
+                marketCap: 0,
+                name: "Visa Inc.",
+              },
+            ],
+            timestamp: "2026-03-16T15:30:00.000Z",
+          }),
         });
       }
 
@@ -206,12 +331,22 @@ describe("investments UI", () => {
     });
 
     await act(async () => {
-      root.render(<StockResearch initialSymbol="AAPL" />);
+      root.render(
+        <StockResearch
+          symbol="V"
+          activeTab="overview"
+          onSymbolChange={() => {}}
+          onTabChange={() => {}}
+        />
+      );
     });
     await flushPromises();
     await flushPromises();
 
-    expect(container.textContent).not.toContain("Live snapshot mode for");
+    expect(container.textContent).toContain("Visa Inc.");
+    expect(container.textContent).toContain("$352.45");
+    expect(container.textContent).toContain("Historical chart through Feb 27, 2026.");
+    expect(container.textContent).toContain("Historical series trails the dataset by");
 
     const tabs = queryTabs(container);
     expect(tabs).toEqual(
@@ -226,10 +361,5 @@ describe("investments UI", () => {
         "Compare",
       ])
     );
-    expect(
-      container.querySelector('input[aria-label="Search stock symbol"]')
-    ).not.toBeNull();
-    expect(container.textContent).toContain("Apple");
-    expect(mockFetch).toHaveBeenCalledTimes(2);
   });
 });

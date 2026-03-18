@@ -1,15 +1,34 @@
 import { buildInvestmentSnapshot } from "../investmentSnapshot";
 
 describe("buildInvestmentSnapshot", () => {
-  it("normalizes sections and caps price/news output", () => {
-    const rawPrice = Array.from({ length: 300 }, (_, index) => ({
-      report_date: `2026-01-${String((index % 28) + 1).padStart(2, "0")}`,
-      open: 100 + index,
-      high: 101 + index,
-      low: 99 + index,
-      close: 100 + index,
-      volume: 1000 + index,
-    }));
+  it("normalizes sections, deduplicates/sorts prices, and caps output", () => {
+    const rawPrice = Array.from({ length: 300 }, (_, index) => {
+      const date = new Date(Date.UTC(2025, 0, 1 + index));
+      return {
+        report_date: date.toISOString().slice(0, 10),
+        open: 100 + index,
+        high: 101 + index,
+        low: 99 + index,
+        close: 100 + index,
+        volume: 1000 + index,
+      };
+    });
+    rawPrice.push({
+      report_date: "2025-05-15",
+      open: 900,
+      high: 901,
+      low: 899,
+      close: 900,
+      volume: 9000,
+    });
+    rawPrice.push({
+      report_date: "2025-05-15",
+      open: Number.NaN,
+      high: 0,
+      low: 0,
+      close: 0,
+      volume: 0,
+    });
     const rawNews = Array.from({ length: 25 }, (_, index) => ({
       uuid: `n-${index}`,
       title: `Headline ${index}`,
@@ -74,10 +93,20 @@ describe("buildInvestmentSnapshot", () => {
     });
 
     expect(snapshot.source).toBe("prefetched");
-    expect(snapshot.sections.price).toHaveLength(252);
+    const prices = snapshot.sections.price as Array<{ date: string; close: number }>;
+
+    expect(prices).toHaveLength(252);
     expect(snapshot.sections.news).toHaveLength(10);
     expect(snapshot.capabilities.news).toBe(true);
     expect(snapshot.capabilities.price).toBe(true);
     expect(snapshot.sections.fundamentals).toMatchObject({ ttmPe: 28.4 });
+    expect(prices[0]).toMatchObject({
+      date: "2025-02-18",
+      close: 148,
+    });
+    expect(prices.at(-1)).toMatchObject({
+      date: "2025-10-27",
+      close: 399,
+    });
   });
 });

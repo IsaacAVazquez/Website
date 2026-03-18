@@ -1,32 +1,54 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 const curatedIndex = {
-  symbols: ["AAPL", "MSFT"],
+  symbols: ["AAPL", "MSFT", "V"],
   failed: [],
   lastUpdated: "2026-03-16T08:00:00.000Z",
+  entries: [
+    {
+      symbol: "AAPL",
+      shortName: "Apple",
+      longName: "Apple Inc.",
+      searchText: "aapl apple apple inc",
+    },
+    {
+      symbol: "MSFT",
+      shortName: "Microsoft",
+      longName: "Microsoft Corporation",
+      searchText: "msft microsoft microsoft corporation",
+    },
+    {
+      symbol: "V",
+      shortName: "Visa",
+      longName: "Visa Inc.",
+      searchText: "v visa visa inc visa inc class a",
+    },
+  ],
+};
+
+const baseCapabilities = {
+  info: true,
+  fundamentals: true,
+  profitability: true,
+  margins: true,
+  growth: true,
+  income_statement: true,
+  balance_sheet: true,
+  cash_flow: true,
+  price: true,
+  beta: true,
+  wacc: true,
+  dcf: true,
+  industry: true,
+  news: true,
+  compare: true,
 };
 
 const appleSnapshot = {
   symbol: "AAPL",
   source: "prefetched",
   lastUpdated: "2026-03-16T08:00:00.000Z",
-  capabilities: {
-    info: true,
-    fundamentals: true,
-    profitability: true,
-    margins: true,
-    growth: true,
-    income_statement: true,
-    balance_sheet: true,
-    cash_flow: true,
-    price: true,
-    beta: true,
-    wacc: true,
-    dcf: true,
-    industry: true,
-    news: true,
-    compare: true,
-  },
+  capabilities: baseCapabilities,
   sections: {
     info: {
       shortName: "Apple",
@@ -60,8 +82,112 @@ const appleSnapshot = {
   },
 };
 
+const visaSnapshot = {
+  symbol: "V",
+  source: "prefetched",
+  lastUpdated: "2026-03-16T08:00:00.000Z",
+  capabilities: baseCapabilities,
+  sections: {
+    ...appleSnapshot.sections,
+    info: {
+      shortName: "Visa",
+      longName: "Visa Inc.",
+      sector: "Financial Services",
+      industry: "Credit Services",
+      country: "United States",
+      longBusinessSummary: "Visa operates a global payments network.",
+    },
+    fundamentals: {
+      ttmPe: 31.2,
+      psRatio: 15.2,
+      pbRatio: 14.9,
+      pegRatio: 2.4,
+      marketCap: 620000000000,
+    },
+    dcf: { fairValue: 340, currentPrice: 340.12, upside: -3.5, recommendation: "Hold" },
+    beta: { beta5y: 0.95 },
+    price: [
+      { date: "2026-02-26", open: 334, high: 339, low: 333, close: 338.2, volume: 900 },
+      { date: "2026-02-27", open: 338.2, high: 341.4, low: 337.5, close: 340.12, volume: 925 },
+    ],
+  },
+};
+
+const quotesBySymbol = {
+  AAPL: {
+    symbol: "AAPL",
+    price: 201.32,
+    change: 2.14,
+    changePercent: 1.07,
+    dayHigh: 202.1,
+    dayLow: 198.8,
+    open: 199.4,
+    previousClose: 199.18,
+    volume: 1000000,
+    marketCap: 0,
+    name: "Apple Inc.",
+  },
+  V: {
+    symbol: "V",
+    price: 352.45,
+    change: 3.1,
+    changePercent: 0.89,
+    dayHigh: 353,
+    dayLow: 348.2,
+    open: 349.7,
+    previousClose: 349.35,
+    volume: 2500000,
+    marketCap: 0,
+    name: "Visa Inc.",
+  },
+} as const;
+
+async function routeInvestmentsFixtures(page: Page) {
+  await page.route("**/data/investments/index.json", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(curatedIndex),
+    });
+  });
+
+  await page.route("**/data/investments/AAPL/snapshot.json", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(appleSnapshot),
+    });
+  });
+
+  await page.route("**/data/investments/V/snapshot.json", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(visaSnapshot),
+    });
+  });
+
+  await page.route("**/api/investments/quotes?**", async (route) => {
+    const url = new URL(route.request().url());
+    const symbols = (url.searchParams.get("symbols") ?? "")
+      .split(",")
+      .map((symbol) => symbol.trim().toUpperCase())
+      .filter(Boolean);
+
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        quotes: symbols.map((symbol) => quotesBySymbol[symbol as keyof typeof quotesBySymbol]).filter(Boolean),
+        timestamp: "2026-03-16T15:30:00.000Z",
+      }),
+    });
+  });
+}
+
 test.describe("Investments", () => {
   test("is discoverable from main navigation", async ({ page }, testInfo) => {
+    await routeInvestmentsFixtures(page);
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
@@ -86,8 +212,61 @@ test.describe("Investments", () => {
     ).toBeVisible();
   });
 
-  test("loads curated research from static assets and blocks non-curated symbols", async ({ page }) => {
+  test("supports deep-linked research and uses live price separately from history", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments?view=research&symbol=V&section=overview");
+    await page.waitForLoadState("networkidle");
+
+    await expect(page.getByRole("textbox", { name: /search stock symbol/i })).toHaveValue("V");
+    await expect(page.getByText("Visa Inc.")).toBeVisible();
+    await expect(page.getByText("$352.45")).toBeVisible();
+    await expect(page.getByText(/historical chart through feb 27, 2026/i)).toBeVisible();
+    await expect(page.getByText(/historical series trails the dataset by/i)).toBeVisible();
+  });
+
+  test("finds Visa by company name and preserves research context across portfolio and reload", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments");
+    await page.waitForLoadState("networkidle");
+
+    const search = page.getByRole("textbox", { name: /search stock symbol/i });
+    await search.fill("visa");
+    await expect(page.getByRole("option", { name: /v visa inc\./i })).toBeVisible();
+    await search.press("ArrowDown");
+    await search.press("Enter");
+
+    await expect(page).toHaveURL(/symbol=V/);
+    await expect(page.getByText("Visa Inc.")).toBeVisible();
+
+    await page.getByRole("tab", { name: /^chart$/i }).click();
+    await expect(page).toHaveURL(/section=chart/);
+    await expect(page.getByRole("heading", { name: /price history/i })).toBeVisible();
+
+    await page.getByRole("tab", { name: /my portfolio/i }).click();
+    await expect(page).toHaveURL(/view=portfolio/);
+    await expect(page.getByText(/no positions yet/i)).toBeVisible();
+
+    await page.getByRole("tab", { name: /^research$/i }).click();
+    await expect(page).toHaveURL(/view=research/);
+    await expect(page).toHaveURL(/symbol=V/);
+    await expect(page).toHaveURL(/section=chart/);
+    await expect(page.getByRole("tab", { name: /^chart$/i })).toHaveAttribute("aria-selected", "true");
+
+    await page.reload();
+    await page.waitForLoadState("networkidle");
+
+    await expect(page).toHaveURL(/symbol=V/);
+    await expect(page).toHaveURL(/section=chart/);
+    await expect(page.getByText("Visa Inc.")).toBeVisible();
+    await expect(page.getByRole("heading", { name: /price history/i })).toBeVisible();
+  });
+
+  test("blocks non-curated symbols without fetching an unknown snapshot", async ({ page }) => {
     const requests: string[] = [];
+
+    await routeInvestmentsFixtures(page);
     page.on("request", (request) => {
       const url = request.url();
       if (
@@ -98,73 +277,28 @@ test.describe("Investments", () => {
       }
     });
 
-    await page.route("**/data/investments/index.json", async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify(curatedIndex),
-      });
-    });
-
-    await page.route("**/data/investments/AAPL/snapshot.json", async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify(appleSnapshot),
-      });
-    });
-
-    await page.route("**/data/investments/SHOP/snapshot.json", async (route) => {
-      await route.fulfill({
-        status: 404,
-        contentType: "text/plain",
-        body: "Not found",
-      });
-    });
-
     await page.goto("/investments");
     await page.waitForLoadState("networkidle");
 
-    await expect(page.getByRole("tab", { name: /overview/i })).toBeVisible();
-    await expect(page.getByRole("tab", { name: /financials/i })).toBeVisible();
-    await expect(page.getByRole("tab", { name: /growth/i })).toBeVisible();
-    await expect(page.getByRole("tab", { name: /valuation/i })).toBeVisible();
-    await expect(page.getByRole("tab", { name: /industry/i })).toBeVisible();
-    await expect(page.getByRole("tab", { name: /^dcf$/i })).toBeVisible();
-    await expect(page.getByRole("tab", { name: /chart/i })).toBeVisible();
-    await expect(page.getByText(/live snapshot mode/i)).toHaveCount(0);
-
-    await page.getByRole("textbox", { name: /search stock symbol/i }).fill("SHOP");
-    await page.getByRole("textbox", { name: /search stock symbol/i }).press("Enter");
+    const search = page.getByRole("textbox", { name: /search stock symbol/i });
+    await search.fill("SHOP");
+    await page.waitForTimeout(300);
 
     await expect(
       page.getByText(/research is currently available for curated symbols only/i)
     ).toBeVisible();
 
+    await search.press("Enter");
+
     expect(requests.filter((url) => url.includes("/api/investments/data/"))).toHaveLength(0);
     expect(requests.filter((url) => url.includes("/data/investments/index.json")).length).toBe(1);
-    expect(requests.filter((url) => url.includes("/data/investments/AAPL/snapshot.json")).length).toBe(1);
     expect(requests.filter((url) => url.includes("/data/investments/SHOP/snapshot.json"))).toHaveLength(0);
   });
 
   test("keeps the shell stable across top-level tabs and avoids horizontal overflow", async ({ page }) => {
-    await page.route("**/data/investments/index.json", async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify(curatedIndex),
-      });
-    });
+    await routeInvestmentsFixtures(page);
 
-    await page.route("**/data/investments/AAPL/snapshot.json", async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify(appleSnapshot),
-      });
-    });
-
-    await page.goto("/investments");
+    await page.goto("/investments?view=research&symbol=V&section=chart");
     await page.waitForLoadState("networkidle");
 
     const shell = page.locator('[data-testid="investments-shell"]');

@@ -103,12 +103,64 @@ def write_json(path: Path, data) -> None:
         json.dump(data, f, indent=2, default=str)
 
 
+def pick_string(record: dict, keys: list[str]) -> str | None:
+    for key in keys:
+        value = record.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return None
+
+
+def build_index_entry(symbol: str, info_payload) -> dict[str, str]:
+    record = {}
+    if isinstance(info_payload, list) and info_payload and isinstance(info_payload[0], dict):
+        record = info_payload[0]
+    elif isinstance(info_payload, dict) and "error" not in info_payload:
+        record = info_payload
+
+    short_name = pick_string(record, [
+        "short_name",
+        "shortName",
+        "display_name",
+        "displayName",
+        "company_name",
+        "companyName",
+        "name",
+        "long_name",
+        "longName",
+        "symbol",
+    ]) or symbol
+    long_name = pick_string(record, [
+        "long_name",
+        "longName",
+        "company_name",
+        "companyName",
+        "display_name",
+        "displayName",
+        "name",
+        "short_name",
+        "shortName",
+        "symbol",
+    ]) or short_name
+
+    search_text = " ".join([symbol, short_name, long_name]).lower()
+
+    return {
+        "symbol": symbol,
+        "shortName": short_name,
+        "longName": long_name,
+        "searchText": search_text,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Fetch helpers — map real API methods to output file names
 # ---------------------------------------------------------------------------
-def fetch_info(t: Ticker, out: Path) -> None:
+def fetch_info(t: Ticker, out: Path):
     print("  info...")
-    write_json(out / "info.json", df_to_json(safe_call(lambda: t.info())))
+    payload = df_to_json(safe_call(lambda: t.info()))
+    write_json(out / "info.json", payload)
+    return payload
 
 
 def fetch_officers(t: Ticker, out: Path) -> None:
@@ -290,9 +342,9 @@ def fetch_news(t: Ticker, out: Path) -> None:
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
-def fetch_symbol(symbol: str, out_dir: Path) -> None:
+def fetch_symbol(symbol: str, out_dir: Path) -> dict[str, str]:
     t = Ticker(symbol)
-    fetch_info(t, out_dir)
+    info_payload = fetch_info(t, out_dir)
     fetch_officers(t, out_dir)
     fetch_price(t, out_dir)
     fetch_beta(t, out_dir)
@@ -306,6 +358,7 @@ def fetch_symbol(symbol: str, out_dir: Path) -> None:
     fetch_industry(t, out_dir)
     fetch_revenue_segments(t, out_dir)
     fetch_news(t, out_dir)
+    return build_index_entry(symbol, info_payload)
 
 
 def main() -> None:
@@ -315,13 +368,15 @@ def main() -> None:
 
     successful: list[str] = []
     failed: list[str] = []
+    entries: list[dict[str, str]] = []
 
     for symbol in symbols:
         print(f"[{symbol}] Starting...")
         out_dir = OUTPUT_DIR / symbol
         try:
-            fetch_symbol(symbol, out_dir)
+            index_entry = fetch_symbol(symbol, out_dir)
             successful.append(symbol)
+            entries.append(index_entry)
             print(f"[{symbol}] Done.\n")
         except Exception as exc:
             failed.append(symbol)
@@ -332,6 +387,7 @@ def main() -> None:
         "symbols": successful,
         "failed": failed,
         "lastUpdated": datetime.now(timezone.utc).isoformat(),
+        "entries": entries,
     }
     write_json(OUTPUT_DIR / "index.json", index_data)
 

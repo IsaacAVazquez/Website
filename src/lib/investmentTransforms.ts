@@ -8,6 +8,16 @@ import type { DcfData } from "@/types/investment";
 
 type RawRecord = Record<string, unknown>;
 
+function pickString(record: RawRecord, keys: string[]): string | undefined {
+  for (const key of keys) {
+    const value = record[key];
+    if (typeof value === "string" && value.trim().length > 0) {
+      return value.trim();
+    }
+  }
+  return undefined;
+}
+
 /** Return the most recent non-null value for a field in a time-series array */
 export function latest(arr: unknown, field: string): number | undefined {
   if (!Array.isArray(arr)) return undefined;
@@ -114,17 +124,43 @@ export function transformSection(section: string, raw: unknown): unknown {
   if (section === "info") {
     const arr = raw as RawRecord[];
     const d = arr[0] ?? {};
+    const symbol = pickString(d, ["symbol", "ticker"]);
+    const shortName = pickString(d, [
+      "short_name",
+      "shortName",
+      "display_name",
+      "displayName",
+      "company_name",
+      "companyName",
+      "name",
+      "long_name",
+      "longName",
+      "symbol",
+    ]);
+    const longName = pickString(d, [
+      "long_name",
+      "longName",
+      "company_name",
+      "companyName",
+      "display_name",
+      "displayName",
+      "name",
+      "short_name",
+      "shortName",
+      "symbol",
+    ]);
+
     return {
-      address: d.address,
+      address: d.address ?? d.street_address,
       city: d.city,
       country: d.country,
       industry: d.industry,
       sector: d.sector,
-      longBusinessSummary: d.long_business_summary,
-      fullTimeEmployees: d.full_time_employees,
-      website: d.web_site,
-      shortName: d.symbol,
-      longName: d.symbol,
+      longBusinessSummary: d.long_business_summary ?? d.longBusinessSummary,
+      fullTimeEmployees: d.full_time_employees ?? d.fullTimeEmployees,
+      website: d.web_site ?? d.website,
+      shortName: shortName ?? symbol,
+      longName: longName ?? shortName ?? symbol,
     };
   }
 

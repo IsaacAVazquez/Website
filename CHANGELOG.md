@@ -4,6 +4,16 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-03-18
+
+- Made the investments workspace URL-backed with supported `view`, `symbol`, and `section` query params, so research context now survives top-level tab switches, portfolio jumps, reloads, and shareable deep links.
+- Split live quote data from curated historical snapshot data in the research experience, so current price and day change come from the quotes path while the chart/header clearly label the latest historical trading day and stale-history lag.
+- Expanded the curated investments index with richer company metadata, preserved provider company names during snapshot transforms, and fixed search/suggestion behavior so symbols like `V` can be found by `Visa` with keyboard-complete dropdown interactions.
+- Tightened snapshot normalization for price history by validating, sorting, deduplicating, and trimming rows before publishing, and refreshed the checked-in curated index/snapshot metadata to carry real company labels.
+- Extended investments coverage with new transform, snapshot, URL-state, UI, and Playwright tests for deep links, Visa company-name search, preserved research state, curated-only failures, and the live-price-versus-history split.
+
+---
+
 ## 2026-03-17
 
 - Simplified the global shell back to a single-row navigation with `Projects` as the public portfolio label, removed `Writing` from the promoted nav/home/footer surfaces, softened homepage and section copy, and kept the spacing cleanup that improved readability across the main landing pages.

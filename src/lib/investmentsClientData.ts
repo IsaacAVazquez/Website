@@ -1,6 +1,7 @@
 "use client";
 
 import type { InvestmentSnapshot, InvestmentsIndex } from "@/types/investment";
+import { normalizeInvestmentsIndex } from "@/lib/investmentsIndex";
 
 type CachedEntry<T> = {
   data: T;
@@ -42,8 +43,9 @@ export async function getClientInvestmentsIndex(): Promise<InvestmentsIndex> {
     "Curated research index is temporarily unavailable."
   )
     .then((data) => {
-      indexCache.set(cacheKey, { data, timestamp: Date.now() });
-      return data;
+      const normalized = normalizeInvestmentsIndex(data);
+      indexCache.set(cacheKey, { data: normalized, timestamp: Date.now() });
+      return normalized;
     })
     .finally(() => indexInflight.delete(cacheKey));
 

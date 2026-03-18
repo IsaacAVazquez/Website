@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
+import { formatHistoryAsOf, getHistoricalPriceFreshness } from "@/lib/investmentsHistory";
 import type { PriceData, StockPrice } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
 
@@ -34,7 +35,14 @@ function normalizeEntry(entry: StockPrice & { report_date?: string; symbol?: str
 }
 
 export function PriceChartPanel({ symbol }: Props) {
-  const { data: raw, isLoading, error, isNotFetched, refetch } = useStockData<PriceData>(symbol, "price");
+  const {
+    data: raw,
+    isLoading,
+    error,
+    isNotFetched,
+    refetch,
+    lastUpdated: datasetLastUpdated,
+  } = useStockData<PriceData>(symbol, "price");
   const [range, setRange] = useState<Range>("1Y");
 
   const priceRef = useRef<SVGSVGElement>(null);
@@ -51,6 +59,8 @@ export function PriceChartPanel({ symbol }: Props) {
     const days = RANGE_DAYS[range];
     return allEntries.slice(-days);
   }, [allEntries, range]);
+  const latestHistoricalDate = allEntries[allEntries.length - 1]?.date;
+  const historyFreshness = getHistoricalPriceFreshness(latestHistoricalDate, datasetLastUpdated);
 
   useEffect(() => {
     if (!priceRef.current || !volumeRef.current || slicedData.length === 0) return;
@@ -265,6 +275,14 @@ export function PriceChartPanel({ symbol }: Props) {
           <p className="mt-1 text-xs text-[var(--text-tertiary)]">
             Trend and volume view for the selected research window.
           </p>
+          <p className="mt-2 text-xs text-[var(--text-secondary)]">
+            Historical series through {formatHistoryAsOf(latestHistoricalDate)}. Live price appears in the research header.
+          </p>
+          {historyFreshness.isStale ? (
+            <p className="mt-1 text-xs font-medium text-[var(--color-warning)]">
+              Historical chart data trails the dataset by {historyFreshness.lagDays} days.
+            </p>
+          ) : null}
         </div>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Date range">
           {RANGES.map((r) => (

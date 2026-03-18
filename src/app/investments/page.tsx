@@ -1,6 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { InvestmentsClient } from "./investments-client";
+import { normalizeInvestmentsState } from "./investments-state";
 
 export const metadata = constructMetadata({
   title: "Investment Research Platform | Isaac Vazquez",
@@ -35,7 +36,16 @@ export const metadata = constructMetadata({
   },
 });
 
-export default function InvestmentsPage() {
+interface InvestmentsPageProps {
+  searchParams: Promise<{
+    view?: string;
+    symbol?: string;
+    section?: string;
+  }>;
+}
+
+export default async function InvestmentsPage({ searchParams }: InvestmentsPageProps) {
+  const initialState = normalizeInvestmentsState(await searchParams);
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Investments", url: "/investments" },
@@ -67,7 +77,7 @@ export default function InvestmentsPage() {
           ],
         }}
       />
-      <InvestmentsClient />
+      <InvestmentsClient initialState={initialState} />
     </>
   );
 }

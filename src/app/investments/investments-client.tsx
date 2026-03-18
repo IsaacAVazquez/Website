@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, lazy, Suspense } from "react";
+import React, { lazy, Suspense, startTransition, useEffect, useMemo } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useInvestments } from "@/hooks/useInvestments";
 import {
   containerVariants,
@@ -9,6 +10,12 @@ import {
   fadeInVariants,
   getReducedMotionVariants,
 } from "@/components/investments/animations";
+import {
+  buildInvestmentsHref,
+  type InvestmentsSearchState,
+  normalizeInvestmentsState,
+  type InvestmentsView,
+} from "./investments-state";
 
 const PortfolioTracker = lazy(() =>
   import("@/components/investments/PortfolioTracker").then((m) => ({ default: m.PortfolioTracker }))
@@ -25,16 +32,18 @@ function TabFallback() {
   );
 }
 
-type Tab = "portfolio" | "research";
-
-const TABS: { key: Tab; label: string }[] = [
+const TABS: { key: InvestmentsView; label: string }[] = [
   { key: "research",  label: "Research" },
   { key: "portfolio", label: "My Portfolio" },
 ];
 
-export function InvestmentsClient() {
-  const [activeTab, setActiveTab] = useState<Tab>("research");
-  const [researchSymbol, setResearchSymbol] = useState("AAPL");
+interface InvestmentsClientProps {
+  initialState: InvestmentsSearchState;
+}
+
+export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const { holdings } = useInvestments();
   const portfolioSymbols = holdings.map((h) => h.symbol);
   const shouldReduceMotion = useReducedMotion();
@@ -42,10 +51,55 @@ export function InvestmentsClient() {
     "mx-auto w-full max-w-[1680px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12";
 
   const variants = shouldReduceMotion ? getReducedMotionVariants() : { containerVariants, itemVariants, fadeInVariants };
+  const hasManagedParams =
+    searchParams.get("view") !== null ||
+    searchParams.get("symbol") !== null ||
+    searchParams.get("section") !== null;
+  const routeState = useMemo(
+    () => (hasManagedParams ? normalizeInvestmentsState(searchParams) : initialState),
+    [hasManagedParams, initialState, searchParams]
+  );
+
+  useEffect(() => {
+    if (
+      searchParams.get("view") === routeState.view &&
+      searchParams.get("symbol") === routeState.symbol &&
+      searchParams.get("section") === routeState.section
+    ) {
+      return;
+    }
+
+    startTransition(() => {
+      router.replace(buildInvestmentsHref(routeState, searchParams), { scroll: false });
+    });
+  }, [routeState, router, searchParams]);
+
+  function updateRouteState(
+    nextState: Partial<InvestmentsSearchState>,
+    options?: { replace?: boolean }
+  ) {
+    const href = buildInvestmentsHref(
+      {
+        ...routeState,
+        ...nextState,
+      },
+      searchParams
+    );
+
+    startTransition(() => {
+      if (options?.replace) {
+        router.replace(href, { scroll: false });
+      } else {
+        router.push(href, { scroll: false });
+      }
+    });
+  }
 
   function handleResearch(symbol: string) {
-    setResearchSymbol(symbol);
-    setActiveTab("research");
+    updateRouteState({
+      view: "research",
+      symbol,
+    });
   }
 
   return (
@@ -113,10 +167,10 @@ export function InvestmentsClient() {
             <button
               key={key}
               role="tab"
-              aria-selected={activeTab === key}
-              onClick={() => setActiveTab(key)}
+              aria-selected={routeState.view === key}
+              onClick={() => updateRouteState({ view: key })}
               className={`min-h-[46px] rounded-2xl px-5 py-3 text-sm font-semibold transition ${
-                activeTab === key
+                routeState.view === key
                   ? "bg-[var(--color-primary)] text-white shadow-[var(--shadow-sm)]"
                   : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
               }`}
@@ -128,9 +182,9 @@ export function InvestmentsClient() {
 
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeTab}
+            key={routeState.view}
             role="tabpanel"
-            aria-label={`${activeTab} panel`}
+            aria-label={`${routeState.view} panel`}
             className="w-full"
             variants={variants.fadeInVariants}
             initial="hidden"
@@ -138,10 +192,23 @@ export function InvestmentsClient() {
             exit="hidden"
           >
             <Suspense fallback={<TabFallback />}>
-              {activeTab === "portfolio" && <PortfolioTracker onResearch={handleResearch} />}
-              {activeTab === "research" && (
+              {routeState.view === "portfolio" && <PortfolioTracker onResearch={handleResearch} />}
+              {routeState.view === "research" && (
                 <StockResearch
-                  initialSymbol={researchSymbol}
+                  symbol={routeState.symbol}
+                  activeTab={routeState.section}
+                  onSymbolChange={(symbol) =>
+                    updateRouteState({
+                      view: "research",
+                      symbol,
+                    })
+                  }
+                  onTabChange={(section) =>
+                    updateRouteState({
+                      view: "research",
+                      section,
+                    })
+                  }
                   portfolioSymbols={portfolioSymbols}
                 />
               )}

@@ -17,6 +17,7 @@ export async function GET(request: NextRequest) {
         symbols: [],
         failed: [],
         lastUpdated: null,
+        entries: [],
         error: err.message || "Unable to load investments index",
       },
       { status: err.status ?? 500 }

@@ -6,6 +6,7 @@ import type {
   InvestmentsIndex,
   InvestmentSnapshot,
 } from "@/types/investment";
+import { normalizeInvestmentsIndex } from "@/lib/investmentsIndex";
 
 type PrefetchedReadStatus = "hit" | "missing" | "skipped";
 
@@ -217,7 +218,8 @@ async function loadInvestmentsIndex(
     return indexCache.data;
   }
 
-  const data = await ensurePrefetchedJson<InvestmentsIndex>("index.json", options);
+  const rawIndex = await ensurePrefetchedJson<InvestmentsIndex>("index.json", options);
+  const data = normalizeInvestmentsIndex(rawIndex);
   indexCache = {
     data,
     expiresAt: Date.now() + INDEX_TTL_MS,

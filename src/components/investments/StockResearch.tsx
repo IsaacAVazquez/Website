@@ -1,6 +1,6 @@
 "use client";
 
-import React, { startTransition, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { StockSearch } from "./StockSearch";
 import { ResearchSummaryStrip } from "./ResearchSummaryStrip";
@@ -25,13 +25,15 @@ import type {
   InvestmentCapabilities,
   InvestmentsIndex,
 } from "@/types/investment";
+import type { ResearchTab } from "@/app/investments/investments-state";
 
 interface Props {
-  initialSymbol?: string;
+  symbol: string;
+  activeTab: ResearchTab;
+  onSymbolChange: (symbol: string) => void;
+  onTabChange: (tab: ResearchTab) => void;
   portfolioSymbols?: string[];
 }
-
-type ResearchTab = "overview" | "financials" | "growth" | "valuation" | "industry" | "dcf" | "chart" | "compare";
 
 const TABS: { key: ResearchTab; label: string }[] = [
   { key: "overview",     label: "Overview" },
@@ -74,9 +76,13 @@ function isTabAvailable(
   }
 }
 
-export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Props) {
-  const [symbol, setSymbol] = useState(initialSymbol);
-  const [activeTab, setActiveTab] = useState<ResearchTab>("overview");
+export function StockResearch({
+  symbol,
+  activeTab,
+  onSymbolChange,
+  onTabChange,
+  portfolioSymbols = [],
+}: Props) {
   const [datasetLastUpdated, setDatasetLastUpdated] = useState<string | null>(null);
   const shouldReduceMotion = useReducedMotion();
   const {
@@ -122,12 +128,11 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
   const showLoadingState =
     !!symbol && symbolLoading && !hasResearchContext;
 
-  function handleSymbolChange(nextSymbol: string) {
-    startTransition(() => {
-      setSymbol(nextSymbol);
-      setActiveTab("overview");
-    });
-  }
+  useEffect(() => {
+    if (symbol && visibleTabs.length > 0 && !visibleTabs.some((tab) => tab.key === activeTab)) {
+      onTabChange("overview");
+    }
+  }, [activeTab, onTabChange, symbol, visibleTabs]);
 
   return (
     <section aria-label="Stock research" className="space-y-6">
@@ -139,7 +144,7 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
                 <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Ticker Research
                 </p>
-                <StockSearch value={symbol} onChange={handleSymbolChange} />
+                <StockSearch value={symbol} onChange={onSymbolChange} />
               </div>
               {isInPortfolio ? (
                 <span
@@ -175,7 +180,7 @@ export function StockResearch({ initialSymbol = "", portfolioSymbols = [] }: Pro
               key={key}
               role="tab"
               aria-selected={resolvedActiveTab === key}
-              onClick={() => setActiveTab(key)}
+              onClick={() => onTabChange(key)}
               className={`min-h-[44px] whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
                 resolvedActiveTab === key
                   ? "bg-[var(--color-primary)] text-white"

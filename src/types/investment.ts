@@ -214,6 +214,14 @@ export interface InvestmentsIndex {
   symbols: string[];
   failed: string[];
   lastUpdated: string;
+  entries?: InvestmentIndexEntry[];
+}
+
+export interface InvestmentIndexEntry {
+  symbol: string;
+  shortName: string;
+  longName: string;
+  searchText: string;
 }
 
 // ============================================================

@@ -32,7 +32,9 @@ function normalizePriceRows(raw: unknown): PriceData | undefined {
     return undefined;
   }
 
-  const rows = raw
+  const dedupedRows = new Map<string, StockPrice>();
+
+  raw
     .map((entry) => {
       const record = entry as JsonRecord;
       const date = typeof record.report_date === "string"
@@ -62,7 +64,12 @@ function normalizePriceRows(raw: unknown): PriceData | undefined {
         volume,
       } satisfies StockPrice;
     })
-    .filter(Boolean) as StockPrice[];
+    .filter(Boolean)
+    .forEach((row) => {
+      dedupedRows.set((row as StockPrice).date, row as StockPrice);
+    });
+
+  const rows = [...dedupedRows.values()].sort((a, b) => a.date.localeCompare(b.date));
 
   if (rows.length === 0) {
     return undefined;
@@ -167,6 +174,7 @@ export function buildInvestmentSnapshot(
   lastUpdated: string | null,
   raw: RawInvestmentSnapshotInputs
 ): InvestmentSnapshot {
+  const normalizedPrice = normalizeSection("price", raw.price);
   const sections: Partial<Record<InvestmentSection, unknown>> = {
     info: normalizeSection("info", raw.info),
     fundamentals: normalizeSection("fundamentals", raw.fundamentals),
@@ -178,7 +186,7 @@ export function buildInvestmentSnapshot(
     cash_flow: normalizeSection("cash_flow", raw.cash_flow),
     wacc: normalizeSection("wacc", raw.wacc),
     beta: normalizeSection("beta", raw.beta),
-    price: normalizeSection("price", raw.price),
+    price: normalizedPrice,
     news: normalizeSection("news", raw.news),
   };
 
@@ -195,8 +203,8 @@ export function buildInvestmentSnapshot(
     ? undefined
     : industry;
 
-  const dcf = raw.wacc && raw.fundamentals && raw.growth && raw.price
-    ? computeDcf(raw.wacc, raw.fundamentals, raw.growth, raw.price)
+  const dcf = raw.wacc && raw.fundamentals && raw.growth && normalizedPrice
+    ? computeDcf(raw.wacc, raw.fundamentals, raw.growth, normalizedPrice)
     : undefined;
   sections.dcf = dcf && !hasErrorShape(dcf) ? (dcf as DcfData) : undefined;
 
