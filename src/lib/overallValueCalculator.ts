@@ -31,7 +31,7 @@ const FORMAT_MULTIPLIERS: Record<ScoringFormat, Record<Position, number>> = {
     'FLEX': 1.25,
     'OVERALL': 1.0
   },
-  'HALF': {
+  'HALF_PPR': {
     'QB': 1.0,
     'RB': 1.25,    // Still valuable, less receiving boost
     'WR': 1.2,     // Moderate PPR benefit
@@ -41,7 +41,7 @@ const FORMAT_MULTIPLIERS: Record<ScoringFormat, Record<Position, number>> = {
     'FLEX': 1.2,
     'OVERALL': 1.0
   },
-  'STD': {
+  'STANDARD': {
     'QB': 1.0,
     'RB': 1.4,     // Rushing TDs and yards more valuable
     'WR': 1.1,     // Less valuable without reception points
@@ -198,7 +198,7 @@ export function calculateOverallRankings(
   });
   
   // Find where to insert K and DST players based on rank floors
-  let currentRank = skillPositions.length + 1;
+  const currentRank = skillPositions.length + 1;
   
   // Place DST players (floor: 165)
   const dstPlayers = kickersAndDefenses.filter(calc => calc.player.position === 'DST');

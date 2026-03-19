@@ -11,6 +11,7 @@ import { fantasyProsSession } from './fantasyProsSession';
 import { convertScoringFormat } from './scoringFormatUtils';
 import { logger } from './logger';
 import { createOverallRankedPlayers, validateOverallRankings, calculateOverallRankings } from './overallValueCalculator';
+import { getFantasyPositionData } from './fantasyPositionData';
 
 export interface FetchResult {
   players: Player[];
@@ -185,7 +186,7 @@ class UnifiedFantasyProsAPI {
       let primarySource = 'sample';
       let hasSuccessfulFetch = false;
       
-      Object.entries(allPositions).forEach(([position, result]) => {
+      Object.entries(allPositions).forEach(([_position, result]) => {
         if (result.success && result.players.length > 0) {
           allPlayers.push(...result.players);
           if (!hasSuccessfulFetch) {
@@ -503,7 +504,7 @@ class UnifiedFantasyProsAPI {
     return Math.round(positionValue * scoringMultiplier);
   }
 
-  private generatePositionProjections(player: Player, scoringFormat: ScoringFormat) {
+  private generatePositionProjections(player: Player, _scoringFormat: ScoringFormat) {
     const rank = typeof player.averageRank === 'string' ? 
                  parseFloat(player.averageRank) : player.averageRank;
     
@@ -605,16 +606,27 @@ class UnifiedFantasyProsAPI {
     return byeWeeks[team] || 0;
   }
 
-  private getSampleData(position: Position, scoringFormat: string = 'HALF'): Player[] {
-    // Import sample data dynamically to avoid circular dependencies
+  private getSampleData(position: Position, scoringFormat: string = 'HALF_PPR'): Player[] {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const { getSampleDataByPosition } = require('@/data/sampleData');
-      // Convert scoring format to match sample data format
-      const sampleFormat = scoringFormat === 'HALF' ? 'HALF_PPR' :
-                          scoringFormat === 'PPR' ? 'PPR' : 'STD';
-      return getSampleDataByPosition(position, sampleFormat as ScoringFormat);
-    } catch (error) {
+      let sampleFormat: ScoringFormat = 'PPR';
+      if (scoringFormat === 'standard' || scoringFormat === 'STANDARD') sampleFormat = 'STANDARD';
+      else if (
+        scoringFormat === 'half-ppr' ||
+        scoringFormat === 'half_ppr' ||
+        scoringFormat === 'HALF_PPR'
+      ) {
+        sampleFormat = 'HALF_PPR';
+      }
+
+      if (position === 'OVERALL' || position === 'FLEX' || position === 'ALL') {
+        return [];
+      }
+
+      return getFantasyPositionData(
+        position as Extract<Position, 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST'>,
+        sampleFormat
+      );
+    } catch {
       logger.warn('Could not load sample data, returning empty array');
       return [];
     }

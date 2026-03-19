@@ -1,263 +1,175 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { ScoringFormat } from "@/types";
-import { WarmCard } from "@/components/ui/WarmCard";
-import { Heading } from "@/components/ui/Heading";
-import { Paragraph } from "@/components/ui/Paragraph";
-import { ModernButton } from "@/components/ui/ModernButton";
-import { Badge } from "@/components/ui/Badge";
-import { IconPlayerPlay, IconUsers, IconSettings, IconTrophy } from "@tabler/icons-react";
-import { useDraftState } from "../hooks/useDraftState";
+import { useEffect, useState } from "react";
+import { DraftSettings, ScoringFormat } from "@/types";
 
 interface DraftSetupProps {
+  settings: DraftSettings;
+  onSaveSettings: (settings: Partial<DraftSettings>) => void;
   onStartDraft: () => void;
-  scoringFormat: ScoringFormat;
-  onScoringFormatChange: (format: ScoringFormat) => void;
 }
 
-export function DraftSetup({ onStartDraft, scoringFormat, onScoringFormatChange }: DraftSetupProps) {
-  const { draftState, updateSettings } = useDraftState();
-  const [leagueName, setLeagueName] = useState(draftState.settings.leagueName || "My Fantasy League");
-  const [totalTeams, setTotalTeams] = useState(draftState.settings.totalTeams);
-  const [userTeam, setUserTeam] = useState(draftState.settings.userTeam);
-  const [draftType, setDraftType] = useState(draftState.settings.draftType);
-  const [rounds, setRounds] = useState(draftState.settings.rounds);
+const SCORING_OPTIONS: { value: ScoringFormat; label: string; description: string }[] = [
+  { value: "PPR", label: "PPR", description: "Best for reception-heavy leagues." },
+  { value: "HALF_PPR", label: "Half PPR", description: "Balanced default for most home leagues." },
+  { value: "STANDARD", label: "Standard", description: "Use when receptions do not score." },
+];
 
-  const handleStartDraft = () => {
-    // Update settings before starting
-    updateSettings({
-      leagueName,
-      totalTeams,
-      userTeam,
-      draftType,
-      rounds,
-      scoringFormat,
+export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetupProps) {
+  const [formState, setFormState] = useState<DraftSettings>(settings);
+
+  useEffect(() => {
+    setFormState(settings);
+  }, [settings]);
+
+  function updateField<Key extends keyof DraftSettings>(field: Key, value: DraftSettings[Key]) {
+    setFormState((current) => {
+      const nextState = { ...current, [field]: value };
+      if (field === "totalTeams" && nextState.userTeam > Number(value)) {
+        nextState.userTeam = Number(value);
+      }
+
+      return nextState;
     });
-    
-    onStartDraft();
-  };
+  }
 
-  const scoringFormats = [
-    { 
-      value: 'STANDARD' as ScoringFormat, 
-      label: 'Standard', 
-      description: 'No points for receptions',
-      badge: 'Classic'
-    },
-    { 
-      value: 'HALF_PPR' as ScoringFormat, 
-      label: 'Half PPR', 
-      description: '0.5 points per reception',
-      badge: 'Balanced'
-    },
-    { 
-      value: 'PPR' as ScoringFormat, 
-      label: 'Full PPR', 
-      description: '1 point per reception',
-      badge: 'Popular'
-    },
-  ];
+  function handleStartDraft() {
+    onSaveSettings(formState);
+    onStartDraft();
+  }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="space-y-6"
-    >
-      {/* League Setup */}
-      <WarmCard hover={false} padding="lg" className="p-8">
-        <div className="flex items-center gap-3 mb-6">
-          <IconTrophy className="text-[var(--color-primary)]" size={24} />
-          <Heading level={3}>League Settings</Heading>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-              League Name
-            </label>
-            <input
-              type="text"
-              value={leagueName}
-              onChange={(e) => setLeagueName(e.target.value)}
-              className="w-full px-4 py-3 bg-[var(--surface-primary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
-              placeholder="Enter your league name"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-              Total Teams
-            </label>
-            <select
-              value={totalTeams}
-              onChange={(e) => setTotalTeams(Number(e.target.value))}
-              className="w-full px-4 py-3 bg-[var(--surface-primary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
-            >
-              {[8, 10, 12, 14, 16].map(num => (
-                <option key={num} value={num}>{num} Teams</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-              Your Draft Position
-            </label>
-            <select
-              value={userTeam}
-              onChange={(e) => setUserTeam(Number(e.target.value))}
-              className="w-full px-4 py-3 bg-[var(--surface-primary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
-            >
-              {Array.from({ length: totalTeams }, (_, i) => i + 1).map(pos => (
-                <option key={pos} value={pos}>Position {pos}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-              Total Rounds
-            </label>
-            <select
-              value={rounds}
-              onChange={(e) => setRounds(Number(e.target.value))}
-              className="w-full px-4 py-3 bg-[var(--surface-primary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-colors"
-            >
-              {[13, 14, 15, 16, 17, 18].map(num => (
-                <option key={num} value={num}>{num} Rounds</option>
-              ))}
-            </select>
-          </div>
-        </div>
-      </WarmCard>
-
-      {/* Draft Type */}
-      <WarmCard hover={false} padding="lg" className="p-8">
-        <div className="flex items-center gap-3 mb-6">
-          <IconSettings className="text-[var(--color-primary)]" size={24} />
-          <Heading level={3}>Draft Format</Heading>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            {
-              value: 'snake',
-              label: 'Snake Draft',
-              description: 'Draft order reverses each round (recommended)',
-              recommended: true
-            },
-            {
-              value: 'linear',
-              label: 'Linear Draft',
-              description: 'Same draft order every round'
-            },
-          ].map(type => (
-            <motion.div
-              key={type.value}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  name="draftType"
-                  value={type.value}
-                  checked={draftType === type.value}
-                  onChange={(e) => setDraftType(e.target.value as 'snake' | 'linear')}
-                  className="sr-only"
-                />
-                <div className={`
-                  p-4 rounded-lg border-2 transition-all duration-200
-                  ${draftType === type.value
-                    ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/10'
-                    : 'border-[var(--border-primary)] bg-[var(--surface-primary)] hover:border-[var(--neutral-600)]'
-                  }
-                `}>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-[var(--text-primary)]">{type.label}</span>
-                    {type.recommended && (
-                      <Badge variant="matrix" size="sm">Recommended</Badge>
-                    )}
-                  </div>
-                  <Paragraph size="sm" className="text-[var(--text-tertiary)]">
-                    {type.description}
-                  </Paragraph>
-                </div>
-              </label>
-            </motion.div>
-          ))}
-        </div>
-      </WarmCard>
-
-      {/* Scoring Format */}
-      <WarmCard hover={false} padding="lg" className="p-8">
-        <div className="flex items-center gap-3 mb-6">
-          <IconUsers className="text-[var(--color-primary)]" size={24} />
-          <Heading level={3}>Scoring Format</Heading>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {scoringFormats.map(format => (
-            <motion.div
-              key={format.value}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <label className="cursor-pointer">
-                <input
-                  type="radio"
-                  name="scoringFormat"
-                  value={format.value}
-                  checked={scoringFormat === format.value}
-                  onChange={(e) => onScoringFormatChange(e.target.value as ScoringFormat)}
-                  className="sr-only"
-                />
-                <div className={`
-                  p-4 rounded-lg border-2 transition-all duration-200 h-full
-                  ${scoringFormat === format.value
-                    ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/10'
-                    : 'border-[var(--border-primary)] bg-[var(--surface-primary)] hover:border-[var(--neutral-600)]'
-                  }
-                `}>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-[var(--text-primary)]">{format.label}</span>
-                    <Badge variant="outline" size="sm">{format.badge}</Badge>
-                  </div>
-                  <Paragraph size="sm" className="text-[var(--text-tertiary)]">
-                    {format.description}
-                  </Paragraph>
-                </div>
-              </label>
-            </motion.div>
-          ))}
-        </div>
-      </WarmCard>
-
-      {/* Start Draft Button */}
-      <div className="text-center">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <ModernButton
-            onClick={handleStartDraft}
-            variant="primary"
-            size="lg"
-            className="px-12 py-4 text-lg font-semibold flex items-center gap-3"
-          >
-            <IconPlayerPlay size={20} />
-            Start Draft Tracker
-          </ModernButton>
-        </motion.div>
-
-        <Paragraph className="text-[var(--text-tertiary)] mt-4 max-w-md mx-auto">
-          Ready to track your draft? Click above to begin and start making picks with real-time analytics.
-        </Paragraph>
+    <div className="rounded-[28px] border border-white/10 bg-[#08111f]/90 p-5 sm:p-6">
+      <div className="border-b border-white/10 pb-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Draft Setup</p>
+        <h2 className="mt-2 text-2xl font-semibold text-white">Configure the room before picks start.</h2>
+        <p className="mt-2 text-sm leading-7 text-slate-300">
+          Save your league settings once, then use the published snapshot board to log every pick as the room moves.
+        </p>
       </div>
-    </motion.div>
+
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <label className="grid gap-2 text-sm">
+          <span className="font-medium text-slate-200">League name</span>
+          <input
+            value={formState.leagueName ?? ""}
+            onChange={(event) => updateField("leagueName", event.target.value)}
+            className="min-h-[48px] rounded-2xl border border-white/10 bg-white/5 px-4 text-white outline-none placeholder:text-slate-500 focus:border-sky-300/40"
+            placeholder="Home league"
+          />
+        </label>
+
+        <label className="grid gap-2 text-sm">
+          <span className="font-medium text-slate-200">Teams</span>
+          <select
+            value={formState.totalTeams}
+            onChange={(event) => updateField("totalTeams", Number(event.target.value))}
+            className="min-h-[48px] rounded-2xl border border-white/10 bg-white/5 px-4 text-white outline-none focus:border-sky-300/40"
+          >
+            {[8, 10, 12, 14, 16].map((teamCount) => (
+              <option key={teamCount} value={teamCount} className="bg-slate-950">
+                {teamCount} teams
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="grid gap-2 text-sm">
+          <span className="font-medium text-slate-200">Your draft slot</span>
+          <select
+            value={formState.userTeam}
+            onChange={(event) => updateField("userTeam", Number(event.target.value))}
+            className="min-h-[48px] rounded-2xl border border-white/10 bg-white/5 px-4 text-white outline-none focus:border-sky-300/40"
+          >
+            {Array.from({ length: formState.totalTeams }, (_, index) => index + 1).map((slot) => (
+              <option key={slot} value={slot} className="bg-slate-950">
+                Pick {slot}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="grid gap-2 text-sm">
+          <span className="font-medium text-slate-200">Rounds</span>
+          <select
+            value={formState.rounds}
+            onChange={(event) => updateField("rounds", Number(event.target.value))}
+            className="min-h-[48px] rounded-2xl border border-white/10 bg-white/5 px-4 text-white outline-none focus:border-sky-300/40"
+          >
+            {[13, 14, 15, 16, 17, 18].map((roundCount) => (
+              <option key={roundCount} value={roundCount} className="bg-slate-950">
+                {roundCount} rounds
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="grid gap-2 text-sm">
+          <span className="font-medium text-slate-200">Draft order</span>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {[
+              { value: "snake" as const, label: "Snake", description: "Reverse order each round." },
+              { value: "linear" as const, label: "Linear", description: "Same order every round." },
+            ].map((option) => {
+              const active = formState.draftType === option.value;
+              return (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => updateField("draftType", option.value)}
+                  className={`rounded-2xl border px-4 py-3 text-left transition ${
+                    active
+                      ? "border-sky-300/40 bg-sky-300/10 text-white"
+                      : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white"
+                  }`}
+                >
+                  <span className="block text-sm font-semibold">{option.label}</span>
+                  <span className="mt-1 block text-xs text-slate-400">{option.description}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="grid gap-2 text-sm">
+          <span className="font-medium text-slate-200">Scoring</span>
+          <div className="grid gap-2">
+            {SCORING_OPTIONS.map((option) => {
+              const active = formState.scoringFormat === option.value;
+              return (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => updateField("scoringFormat", option.value)}
+                  className={`rounded-2xl border px-4 py-3 text-left transition ${
+                    active
+                      ? "border-emerald-300/40 bg-emerald-300/10 text-white"
+                      : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white"
+                  }`}
+                >
+                  <span className="block text-sm font-semibold">{option.label}</span>
+                  <span className="mt-1 block text-xs text-slate-400">{option.description}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-4">
+        <p className="text-sm text-slate-300">
+          The board will track {formState.totalTeams} teams, {formState.rounds} rounds, and highlight your turns from slot {formState.userTeam}.
+        </p>
+        <button
+          type="button"
+          onClick={handleStartDraft}
+          className="min-h-[48px] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+        >
+          Start draft assistant
+        </button>
+      </div>
+    </div>
   );
 }

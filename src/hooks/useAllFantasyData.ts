@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Player, Position, ScoringFormat } from '@/types';
 import { dataCache, CacheStatus } from '@/lib/dataCache';
 import { convertScoringFormat } from '@/lib/scoringFormatUtils';
-import { getSampleDataByPosition } from '@/data/sampleData';
+import { getFantasyPositionData } from '@/lib/fantasyPositionData';
 
 export interface UseAllFantasyDataOptions {
   scoringFormat: ScoringFormat;
@@ -165,7 +165,10 @@ export function useAllFantasyData({
           hasCacheData = true;
         } else {
           // Fall back to sample data for this position
-          const sampleData = getSampleDataByPosition(position);
+          const sampleData = getFantasyPositionData(
+            position as Extract<Position, 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST'>,
+            scoringFormat
+          );
           allPlayers.push(...sampleData);
         }
       }
@@ -213,7 +216,10 @@ export function useAllFantasyData({
           hasAnyCachedData = true;
         } else {
           // Add sample data for missing positions
-          const sampleData = getSampleDataByPosition(position);
+          const sampleData = getFantasyPositionData(
+            position as Extract<Position, 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST'>,
+            scoringFormat
+          );
           allCachedPlayers.push(...sampleData);
         }
       }
@@ -232,7 +238,12 @@ export function useAllFantasyData({
         // Final fallback to all sample data
         const allSampleData: Player[] = [];
         for (const position of ALL_POSITIONS) {
-          allSampleData.push(...getSampleDataByPosition(position));
+          allSampleData.push(
+            ...getFantasyPositionData(
+              position as Extract<Position, 'QB' | 'RB' | 'WR' | 'TE' | 'K' | 'DST'>,
+              scoringFormat
+            )
+          );
         }
         
         allSampleData.sort((a, b) => {
@@ -251,7 +262,7 @@ export function useAllFantasyData({
       setIsLoading(false);
       isRefreshingRef.current = false;
     }
-  }, [scoringFormatParam]); // Removed fetchPositionFromAPI to prevent infinite loops
+  }, [fetchPositionFromAPI, scoringFormat]);
 
   /**
    * Manual refresh function

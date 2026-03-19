@@ -48,22 +48,22 @@ const nextConfig = {
       // Fantasy football position redirects for better URLs
       {
         source: '/qb',
-        destination: '/fantasy-football/tiers/qb',
+        destination: '/fantasy-football?position=qb&scoring=ppr',
         permanent: false,
       },
       {
         source: '/rb',
-        destination: '/fantasy-football/tiers/rb',
+        destination: '/fantasy-football?position=rb&scoring=ppr',
         permanent: false,
       },
       {
         source: '/wr',
-        destination: '/fantasy-football/tiers/wr',
+        destination: '/fantasy-football?position=wr&scoring=ppr',
         permanent: false,
       },
       {
         source: '/te',
-        destination: '/fantasy-football/tiers/te',
+        destination: '/fantasy-football?position=te&scoring=ppr',
         permanent: false,
       },
       
@@ -80,7 +80,7 @@ const nextConfig = {
       },
       {
         source: '/quatrerback',
-        destination: '/fantasy-football/tiers/qb',
+        destination: '/fantasy-football?position=qb&scoring=ppr',
         permanent: false,
       },
       

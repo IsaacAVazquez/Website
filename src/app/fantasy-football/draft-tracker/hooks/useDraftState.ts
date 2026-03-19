@@ -3,10 +3,19 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { DraftState, DraftSettings, DraftPick, Player, TeamRoster, ScoringFormat } from '@/types';
 
-const STORAGE_KEY = 'fantasy-draft-tracker';
+export const FANTASY_DRAFT_STORAGE_KEY = 'fantasy-draft-tracker';
+
+interface PersistedDraftState extends Omit<DraftState, 'settings' | 'picks' | 'startTime' | 'endTime'> {
+  settings?: DraftSettings & {
+    draftDate?: string | Date;
+  };
+  startTime?: string | Date;
+  endTime?: string | Date;
+  picks?: Array<Omit<DraftPick, 'timestamp'> & { timestamp: string | Date }>;
+}
 
 // Default draft settings
-const getDefaultSettings = (): DraftSettings => ({
+export const getDefaultSettings = (): DraftSettings => ({
   totalTeams: 10,
   userTeam: 1,
   scoringFormat: 'PPR' as ScoringFormat,
@@ -18,7 +27,7 @@ const getDefaultSettings = (): DraftSettings => ({
 });
 
 // Initialize empty team rosters
-const initializeTeams = (totalTeams: number): TeamRoster[] => {
+export const initializeTeams = (totalTeams: number): TeamRoster[] => {
   return Array.from({ length: totalTeams }, (_, index) => ({
     teamNumber: index + 1,
     teamName: `Team ${index + 1}`,
@@ -37,7 +46,7 @@ const initializeTeams = (totalTeams: number): TeamRoster[] => {
 };
 
 // Calculate draft order for snake draft
-const calculateDraftOrder = (pick: number, totalTeams: number, draftType: 'snake' | 'linear'): number => {
+export const calculateDraftOrder = (pick: number, totalTeams: number, draftType: 'snake' | 'linear'): number => {
   if (draftType === 'linear') {
     return ((pick - 1) % totalTeams) + 1;
   }
@@ -56,13 +65,13 @@ const calculateDraftOrder = (pick: number, totalTeams: number, draftType: 'snake
 };
 
 // Calculate current round
-const calculateCurrentRound = (pick: number, totalTeams: number): number => {
+export const calculateCurrentRound = (pick: number, totalTeams: number): number => {
   return Math.ceil(pick / totalTeams);
 };
 
 // Generate unique draft ID
 const generateDraftId = (): string => {
-  return `draft_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  return `draft_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
 };
 
 export const useDraftState = () => {
@@ -86,10 +95,10 @@ export const useDraftState = () => {
   // Load from localStorage on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem(STORAGE_KEY);
+      const saved = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
       if (saved) {
         try {
-          const parsedState = JSON.parse(saved);
+          const parsedState = JSON.parse(saved) as PersistedDraftState;
           // Ensure dates are properly parsed
           if (parsedState.settings?.draftDate) {
             parsedState.settings.draftDate = new Date(parsedState.settings.draftDate);
@@ -102,11 +111,12 @@ export const useDraftState = () => {
           }
           // Parse pick timestamps
           if (parsedState.picks) {
-            parsedState.picks = parsedState.picks.map((pick: any) => ({
+            parsedState.picks = parsedState.picks.map((pick) => ({
               ...pick,
               timestamp: new Date(pick.timestamp),
             }));
           }
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setDraftState(parsedState);
         } catch (error) {
           console.error('Error loading draft state from localStorage:', error);
@@ -120,22 +130,43 @@ export const useDraftState = () => {
   useEffect(() => {
     if (isLoaded && typeof window !== 'undefined') {
       const saveState = { ...draftState };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(saveState));
+      localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify(saveState));
     }
   }, [draftState, isLoaded]);
 
   // Update draft settings
   const updateSettings = useCallback((newSettings: Partial<DraftSettings>) => {
-    setDraftState(prev => ({
+    setDraftState(prev => {
+      const mergedSettings = { ...prev.settings, ...newSettings };
+      const normalizedUserTeam = Math.min(mergedSettings.userTeam, mergedSettings.totalTeams);
+
+      return {
+        ...prev,
+        settings: {
+          ...mergedSettings,
+          userTeam: normalizedUserTeam,
+        },
+        teams: newSettings.totalTeams ? initializeTeams(mergedSettings.totalTeams) : prev.teams,
+      };
+    });
+  }, []);
+
+  const startDraft = useCallback(() => {
+    setDraftState((prev) => ({
       ...prev,
-      settings: { ...prev.settings, ...newSettings },
-      teams: newSettings.totalTeams ? initializeTeams(newSettings.totalTeams) : prev.teams,
+      isActive: true,
+      startTime: prev.startTime ?? new Date(),
     }));
   }, []);
 
   // Draft a player
   const draftPlayer = useCallback((player: Player) => {
     setDraftState(prev => {
+      const totalPicks = prev.settings.totalTeams * prev.settings.rounds;
+      if (prev.currentPick > totalPicks) {
+        return prev;
+      }
+
       const currentTeam = calculateDraftOrder(prev.currentPick, prev.settings.totalTeams, prev.settings.draftType);
       const currentRound = calculateCurrentRound(prev.currentPick, prev.settings.totalTeams);
       
@@ -168,7 +199,6 @@ export const useDraftState = () => {
         return team;
       });
 
-      const totalPicks = prev.settings.totalTeams * prev.settings.rounds;
       const isComplete = prev.currentPick >= totalPicks;
       
       return {
@@ -296,11 +326,14 @@ export const useDraftState = () => {
     return currentTeam === draftState.settings.userTeam && !isDraftComplete;
   }, [draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType, draftState.settings.userTeam, isDraftComplete]);
 
+  const currentTeamNumber = useMemo(() => {
+    return calculateDraftOrder(draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType);
+  }, [draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType]);
+
   const currentTeamName = useMemo(() => {
-    const currentTeam = calculateDraftOrder(draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType);
     if (isDraftComplete) return 'Draft Complete';
-    return currentTeam === draftState.settings.userTeam ? 'Your Turn' : `Team ${currentTeam}`;
-  }, [draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType, draftState.settings.userTeam, isDraftComplete]);
+    return currentTeamNumber === draftState.settings.userTeam ? 'Your Turn' : `Team ${currentTeamNumber}`;
+  }, [currentTeamNumber, draftState.settings.userTeam, isDraftComplete]);
 
   const userTeam = useMemo(() => {
     return draftState.teams.find(team => team.teamNumber === draftState.settings.userTeam);
@@ -309,12 +342,14 @@ export const useDraftState = () => {
   return {
     draftState,
     updateSettings,
+    startDraft,
     draftPlayer,
     undoLastPick,
     resetDraft,
     exportDraftResults,
     isUserPick,
     isDraftComplete,
+    currentTeamNumber,
     currentTeamName,
     userTeam,
     isLoaded,

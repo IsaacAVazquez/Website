@@ -4,14 +4,12 @@ import { StructuredData } from "@/components/StructuredData";
 import { DraftTrackerClient } from "./draft-tracker-client";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Fantasy Football Draft Tracker - Live Draft Analytics & Tools",
-  description: "Track your fantasy football draft live with tier-based analytics, player rankings, and real-time decision support. Create, manage, and analyze your draft picks with advanced data insights.",
-  canonicalUrl: "https://isaacavazquez.com/fantasy-football/draft-tracker",
-  dateModified: "2025-02-05",
+  title: "Fantasy Football Draft Assistant | Isaac Vazquez",
+  description:
+    "Manual fantasy football draft assistant with snake-order tracking, local persistence, and the same published snapshot board used on the public rankings page.",
+  canonicalUrl: "/fantasy-football/draft-tracker",
+  dateModified: "2026-03-18",
 });
-
-// Ensure this page is dynamically rendered to prevent build-time issues
-export const dynamic = 'force-dynamic';
 
 export default function DraftTrackerPage() {
   return (
@@ -19,8 +17,8 @@ export default function DraftTrackerPage() {
       <StructuredData 
         type="WebApplication" 
         data={{
-          name: "Fantasy Football Draft Tracker",
-          description: "Interactive fantasy football draft tracking tool with analytics and real-time insights",
+          name: "Fantasy Football Draft Assistant",
+          description: "Manual fantasy football draft tracker with best-available rankings and snake-order awareness",
           url: "https://isaacavazquez.com/fantasy-football/draft-tracker",
           applicationCategory: "Sports",
           operatingSystem: "Web Browser",

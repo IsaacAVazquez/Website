@@ -1,235 +1,159 @@
 /**
  * @jest-environment node
  */
-import { NextRequest } from 'next/server';
-import { GET } from '../route';
+import { NextRequest, NextResponse } from "next/server";
 
-// Mock the nflverseAPI and rate limiting utilities
-jest.mock('@/lib/nflverseAPI', () => ({
-  nflverseAPI: {
-    fetchPlayersData: jest.fn(),
-    fetchAllPositions: jest.fn(),
-  },
-}));
-
-jest.mock('@/lib/rateLimit', () => ({
+jest.mock("@/lib/rateLimit", () => ({
   fantasyRateLimiter: {
-    check: jest.fn().mockReturnValue({ success: true, limit: 100, remaining: 99, reset: Date.now() + 60000 }),
+    check: jest.fn().mockReturnValue({
+      success: true,
+      limit: 100,
+      remaining: 99,
+      reset: Date.now() + 60_000,
+    }),
   },
-  getClientIdentifier: jest.fn().mockReturnValue('test-client'),
-  rateLimitResponse: jest.fn(),
+  getClientIdentifier: jest.fn().mockReturnValue("test-client"),
+  rateLimitResponse: jest.fn((result) =>
+    NextResponse.json({ success: false, rateLimited: true, result }, { status: 429 })
+  ),
 }));
 
-jest.mock('@/lib/logger', () => ({
-  logger: { info: jest.fn(), warn: jest.fn(), error: jest.fn(), debug: jest.fn() },
+jest.mock("@/lib/logger", () => ({
+  logger: {
+    info: jest.fn(),
+    warn: jest.fn(),
+    error: jest.fn(),
+    debug: jest.fn(),
+  },
 }));
 
-import { nflverseAPI } from '@/lib/nflverseAPI';
-import { fantasyRateLimiter } from '@/lib/rateLimit';
+jest.mock("@/lib/fantasySnapshotServer", () => ({
+  loadFantasySnapshot: jest.fn(),
+}));
 
-const mockNflverse = nflverseAPI as jest.Mocked<typeof nflverseAPI>;
+import { fantasyRateLimiter, rateLimitResponse } from "@/lib/rateLimit";
+import { buildFantasySnapshot } from "@/lib/fantasySnapshotBuilder";
+import { normalizeFantasySnapshot } from "@/lib/fantasy";
+import { loadFantasySnapshot } from "@/lib/fantasySnapshotServer";
+import { GET } from "../route";
+
 const mockRateLimiter = fantasyRateLimiter as jest.Mocked<typeof fantasyRateLimiter>;
+const mockRateLimitResponse = rateLimitResponse as jest.MockedFunction<typeof rateLimitResponse>;
+const mockLoadFantasySnapshot = loadFantasySnapshot as jest.MockedFunction<typeof loadFantasySnapshot>;
 
-function makeRequest(params: Record<string, string> = {}): NextRequest {
-  const url = new URL('http://localhost:3000/api/fantasy-data');
+const legacyPprSnapshot = {
+  season: 2026,
+  week: 0,
+  generatedAt: "2026-03-18T00:00:00.000Z",
+  scoringFormat: "PPR",
+  source: "legacy snapshot",
+  positions: {},
+  overall: [
+    {
+      id: "legacy-rb",
+      name: "Saquon Barkley",
+      team: "PHI",
+      position: "RB",
+      averageRank: 1,
+      projectedPoints: 260,
+      standardDeviation: 1.4,
+      expertRanks: [1],
+    },
+  ],
+};
+
+function makeRequest(params: Record<string, string> = {}) {
+  const url = new URL("http://localhost:3000/api/fantasy-data");
   Object.entries(params).forEach(([key, value]) => url.searchParams.set(key, value));
   return new NextRequest(url.toString());
 }
 
-function makePlayerResult(count = 2) {
-  return {
-    success: true,
-    players: Array.from({ length: count }, (_, i) => ({
-      id: `player-${i}`,
-      name: `Player ${i}`,
-      position: 'QB',
-      team: 'TST',
-      averageRank: i + 1,
-      projectedPoints: 25,
-      standardDeviation: 1,
-      expertRanks: [i + 1],
-    })),
-    source: 'nflverse',
-    error: null,
-    metadata: { timestamp: new Date().toISOString(), cacheHit: false },
-  };
-}
-
-describe('GET /api/fantasy-data', () => {
+describe("GET /api/fantasy-data", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockRateLimiter.check.mockReturnValue({
       success: true,
       limit: 100,
       remaining: 99,
-      reset: Date.now() + 60000,
+      reset: Date.now() + 60_000,
+    });
+    mockLoadFantasySnapshot.mockImplementation(async (scoring) => {
+      switch (scoring) {
+        case "ppr":
+          return normalizeFantasySnapshot(legacyPprSnapshot, "ppr");
+        case "half_ppr":
+          return buildFantasySnapshot("half_ppr");
+        case "standard":
+        default:
+          return buildFantasySnapshot("standard");
+      }
     });
   });
 
-  // ─── Input validation ────────────────────────────────────────────────────
+  it("returns snapshot-backed players for a valid position slice", async () => {
+    const response = await GET(makeRequest({ position: "rb", scoring: "standard" }));
+    const body = await response.json();
 
-  it('returns 400 for invalid scoring format', async () => {
-    const res = await GET(makeRequest({ position: 'QB', scoring: 'INVALID' }));
-    expect(res.status).toBe(400);
-    const body = await res.json();
-    expect(body.success).toBe(false);
-    expect(body.error).toMatch(/Invalid scoring format/i);
-  });
-
-  it('returns 400 for invalid position', async () => {
-    mockNflverse.fetchPlayersData.mockResolvedValue(makePlayerResult());
-    const res = await GET(makeRequest({ position: 'INVALID', scoring: 'PPR' }));
-    expect(res.status).toBe(400);
-    const body = await res.json();
-    expect(body.success).toBe(false);
-    expect(body.error).toMatch(/Invalid.*position/i);
-  });
-
-  it('accepts all supported scoring format strings', async () => {
-    mockNflverse.fetchPlayersData.mockResolvedValue(makePlayerResult());
-    // PPR, STANDARD, HALF, STD all pass validateScoringFormat.
-    // Note: 'HALF_PPR' fails validation because the route's replace logic transforms
-    // it to 'HALF_PPR_PPR' before the includes() check — only the alias 'HALF' works.
-    const validFormats = ['PPR', 'STANDARD', 'HALF', 'STD'];
-    for (const scoring of validFormats) {
-      const res = await GET(makeRequest({ position: 'QB', scoring }));
-      expect(res.status).not.toBe(400);
-    }
-  });
-
-  it('rejects HALF_PPR: the route validation transforms it to an invalid value', async () => {
-    // validateScoringFormat replaces 'HALF' in 'HALF_PPR' → 'HALF_PPR_PPR', which
-    // is not in the valid-formats list. Use 'HALF' as the alias instead.
-    const res = await GET(makeRequest({ position: 'QB', scoring: 'HALF_PPR' }));
-    expect(res.status).toBe(400);
-  });
-
-  it('accepts all valid positions', async () => {
-    mockNflverse.fetchPlayersData.mockResolvedValue(makePlayerResult());
-    const positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DST', 'FLEX', 'OVERALL'];
-    for (const position of positions) {
-      const res = await GET(makeRequest({ position, scoring: 'PPR' }));
-      const body = await res.json();
-      expect(body).not.toMatchObject({ error: expect.stringMatching(/Invalid.*position/i) });
-    }
-  });
-
-  // ─── Single position fetch ───────────────────────────────────────────────
-
-  it('returns players from nflverseAPI for a valid single position', async () => {
-    mockNflverse.fetchPlayersData.mockResolvedValue(makePlayerResult(3));
-
-    const res = await GET(makeRequest({ position: 'QB', scoring: 'PPR' }));
-    const body = await res.json();
-
-    expect(res.status).toBe(200);
+    expect(response.status).toBe(200);
     expect(body.success).toBe(true);
-    expect(body.players).toHaveLength(3);
+    expect(body.players.length).toBeGreaterThan(20);
+    expect(body.metadata.position).toBe("rb");
+    expect(body.metadata.scoringFormat).toBe("STANDARD");
+    expect(body.metadata.slice.available).toBe(true);
+    expect(body.metadata.slice.rangeKind).toBe("position");
   });
 
-  it('includes metadata with executionTimeMs and source', async () => {
-    mockNflverse.fetchPlayersData.mockResolvedValue(makePlayerResult());
+  it("returns unavailable metadata instead of overall fallback data for an overall-only legacy ppr slice", async () => {
+    const response = await GET(makeRequest({ position: "rb", scoring: "ppr" }));
+    const body = await response.json();
 
-    const res = await GET(makeRequest({ position: 'RB', scoring: 'STANDARD' }));
-    const body = await res.json();
-
-    expect(body.metadata).toBeDefined();
-    expect(typeof body.metadata.executionTimeMs).toBe('number');
-    expect(body.metadata.source).toBe('nflverse');
+    expect(response.status).toBe(200);
+    expect(body.success).toBe(true);
+    expect(body.players.length).toBe(0);
+    expect(body.metadata.position).toBe("rb");
+    expect(body.metadata.scoringFormat).toBe("PPR");
+    expect(body.metadata.slice.available).toBe(false);
+    expect(body.metadata.slice.sourceKind).toBe("unavailable");
+    expect(body.metadata.slice.reason).toMatch(/unavailable/i);
   });
 
-  it('returns forceRefresh option in response when refresh=true', async () => {
-    mockNflverse.fetchPlayersData.mockResolvedValue(makePlayerResult());
+  it("normalizes scoring aliases and upper-case positions", async () => {
+    const response = await GET(makeRequest({ position: "QB", scoring: "HALF" }));
+    const body = await response.json();
 
-    const res = await GET(makeRequest({ position: 'WR', scoring: 'PPR', refresh: 'true' }));
-    const body = await res.json();
-
-    expect(body.options.forceRefresh).toBe(true);
+    expect(response.status).toBe(200);
+    expect(body.success).toBe(true);
+    expect(body.metadata.position).toBe("qb");
+    expect(body.metadata.scoringFormat).toBe("HALF_PPR");
+    expect(body.metadata.slice.available).toBe(true);
+    expect(body.metadata.slice.sourceKind).toBe("shared_position_consensus");
   });
 
-  it('normalizes scoring format aliases correctly (HALF → HALF_PPR)', async () => {
-    mockNflverse.fetchPlayersData.mockResolvedValue(makePlayerResult());
+  it("returns the full snapshot when all=true", async () => {
+    const response = await GET(makeRequest({ all: "true", scoring: "standard" }));
+    const body = await response.json();
 
-    await GET(makeRequest({ position: 'QB', scoring: 'HALF' }));
-
-    expect(mockNflverse.fetchPlayersData).toHaveBeenCalledWith(
-      'QB',
-      'HALF_PPR'
-    );
+    expect(response.status).toBe(200);
+    expect(body.success).toBe(true);
+    expect(body.data.overall.length).toBeGreaterThan(100);
+    expect(body.data.positions.FLEX.length).toBeGreaterThan(100);
+    expect(body.metadata.position).toBe("all");
+    expect(body.metadata.scoringFormat).toBe("STANDARD");
+    expect(body.metadata.slice).toBeNull();
+    expect(body.metadata.slices.dst.available).toBe(true);
   });
 
-  it('normalizes STD → STANDARD', async () => {
-    mockNflverse.fetchPlayersData.mockResolvedValue(makePlayerResult());
-
-    await GET(makeRequest({ position: 'QB', scoring: 'STD' }));
-
-    expect(mockNflverse.fetchPlayersData).toHaveBeenCalledWith(
-      'QB',
-      'STANDARD'
-    );
-  });
-
-  // ─── All positions fetch ──────────────────────────────────────────────────
-
-  it('calls fetchAllPositions when all=true', async () => {
-    mockNflverse.fetchAllPositions.mockResolvedValue({
-      QB: { ...makePlayerResult(2), players: makePlayerResult(2).players },
-      RB: { ...makePlayerResult(3), players: makePlayerResult(3).players },
-    } as any);
-
-    const res = await GET(makeRequest({ all: 'true', scoring: 'PPR' }));
-    const body = await res.json();
-
-    expect(mockNflverse.fetchAllPositions).toHaveBeenCalledWith('PPR');
-    expect(body.summary).toBeDefined();
-    expect(body.summary.totalPlayers).toBeGreaterThan(0);
-  });
-
-  it('all-positions response includes summary with positionsCount', async () => {
-    mockNflverse.fetchAllPositions.mockResolvedValue({
-      QB: { ...makePlayerResult(2), players: makePlayerResult(2).players },
-    } as any);
-
-    const res = await GET(makeRequest({ all: 'true', scoring: 'PPR' }));
-    const body = await res.json();
-
-    expect(body.summary.positionsCount).toBeGreaterThan(0);
-  });
-
-  // ─── Rate limiting ────────────────────────────────────────────────────────
-
-  it('invokes rateLimitResponse when rate limit is exceeded', async () => {
-    const { rateLimitResponse } = require('@/lib/rateLimit');
+  it("uses the rate limit response when the request is limited", async () => {
     mockRateLimiter.check.mockReturnValueOnce({
       success: false,
       limit: 100,
       remaining: 0,
-      reset: Date.now() + 60000,
+      reset: Date.now() + 60_000,
     });
 
-    await GET(makeRequest({ position: 'QB', scoring: 'PPR' }));
-    expect(rateLimitResponse).toHaveBeenCalled();
-  });
+    const response = await GET(makeRequest({ position: "qb" }));
 
-  // ─── Error handling ───────────────────────────────────────────────────────
-
-  it('returns 500 when nflverseAPI throws', async () => {
-    mockNflverse.fetchPlayersData.mockRejectedValue(new Error('API down'));
-
-    const res = await GET(makeRequest({ position: 'QB', scoring: 'PPR' }));
-    expect(res.status).toBe(500);
-    const body = await res.json();
-    expect(body.success).toBe(false);
-    expect(body.error).toContain('API down');
-  });
-
-  it('500 response includes metadata with timestamp', async () => {
-    mockNflverse.fetchPlayersData.mockRejectedValue(new Error('timeout'));
-
-    const res = await GET(makeRequest({ position: 'QB', scoring: 'PPR' }));
-    const body = await res.json();
-
-    expect(body.metadata.timestamp).toBeTruthy();
-    expect(body.metadata.executionTimeMs).toBeGreaterThanOrEqual(0);
+    expect(mockRateLimitResponse).toHaveBeenCalled();
+    expect(response.status).toBe(429);
   });
 });

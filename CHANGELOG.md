@@ -4,6 +4,17 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-03-19
+
+- Rebuilt the fantasy football experience around a canonical `/fantasy-football` rankings board and a simplified `/fantasy-football/draft-tracker`, both powered by checked-in published snapshots instead of public runtime fetch chains.
+- Replaced the old mixed fantasy runtime path with a scoring-aware generated position-data source, updated the snapshot builder and public APIs to read from it, and added schema-versioned normalization so stale cached payloads do not crash the app.
+- Restored full `PPR`, `HALF_PPR`, and `STANDARD` position-board availability by generating real `RB/WR/TE` scoring-specific data, treating `QB`, `K`, and `DST` as scoring-agnostic shared boards, and deriving `FLEX` from eligible position data.
+- Corrected fantasy board integrity details by preserving real source tiers and ranges, stopping misleading overall fallbacks, making `/api/sample-data` scoring-aware, and aligning legacy/internal fantasy readers with the new static source model.
+- Fixed a real fantasy board query-state bug so scoring and position switches now update the URL reliably, and made the desktop rankings rail sticky while keeping the existing stacked mobile layout.
+- Added and refreshed fantasy unit, API, hook, client, redirect, and Playwright coverage for scoring switches, shared `K/DST` behavior, stable static-data loading, legacy snapshot normalization, and the sticky-versus-stacked aside behavior.
+
+---
+
 ## 2026-03-18
 
 - Made the investments workspace URL-backed with supported `view`, `symbol`, and `section` query params, so research context now survives top-level tab switches, portfolio jumps, reloads, and shareable deep links.
