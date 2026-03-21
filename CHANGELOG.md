@@ -4,6 +4,14 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-03-21
+
+- Fixed a real fantasy football snapshot integrity bug where `overall` boards could drift from the matching positional boards because overall rankings were still sourced from stale checked-in overall files while positional boards were generated from current FantasyPros consensus data.
+- Reworked fantasy snapshot generation so `overall` and `flex` derive from the same current position-board dataset, preserved consistent player projections and position ranks across views, refreshed the published static fantasy snapshots, and bumped the snapshot schema version to force clients onto the corrected data.
+- Added regression coverage to lock the overall-vs-position projection/rank consistency path and kept fantasy API snapshot responses green against the updated source model.
+
+---
+
 ## 2026-03-19
 
 - Rebuilt the fantasy football experience around a canonical `/fantasy-football` rankings board and a simplified `/fantasy-football/draft-tracker`, both powered by checked-in published snapshots instead of public runtime fetch chains.

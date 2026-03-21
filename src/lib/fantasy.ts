@@ -12,15 +12,16 @@ export const FANTASY_ROUTE_POSITIONS = [
 ] as const;
 
 export const FANTASY_ROUTE_SCORING = ["ppr", "half_ppr", "standard"] as const;
-export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 3;
+export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 4;
 export const DEFAULT_FANTASY_SNAPSHOT_SOURCE =
-  "Published fantasy rankings snapshot generated from FantasyPros public consensus pages and repository overall boards.";
+  "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall and flex boards are derived from the current position boards.";
 
 export type FantasyRoutePosition = (typeof FANTASY_ROUTE_POSITIONS)[number];
 export type FantasyRouteScoring = (typeof FANTASY_ROUTE_SCORING)[number];
 export type FantasySnapshotPosition = Extract<Position, "QB" | "RB" | "WR" | "TE" | "K" | "DST" | "FLEX">;
 export type FantasySnapshotSliceSourceKind =
   | "overall_consensus"
+  | "derived_overall"
   | "position_consensus"
   | "shared_position_consensus"
   | "derived_flex"
@@ -203,7 +204,7 @@ function getFantasySliceSupport(
     case "overall":
       return {
         supported: true,
-        sourceKind: "overall_consensus",
+        sourceKind: "derived_overall",
         rangeKind: "overall",
       };
     case "flex":

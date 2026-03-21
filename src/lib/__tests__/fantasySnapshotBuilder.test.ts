@@ -53,6 +53,21 @@ describe("fantasySnapshotBuilder", () => {
     expect(topQuarterback.projectedPoints).toBeGreaterThan(300);
   });
 
+  it("keeps player projections and position ranks aligned between overall and position boards", () => {
+    const snapshot = buildFantasySnapshot("ppr");
+    const overallById = new Map(snapshot.overall.map((player) => [player.id, player]));
+
+    for (const position of ["QB", "RB", "WR", "TE", "K", "DST"] as const) {
+      for (const player of snapshot.positions[position]) {
+        const overallPlayer = overallById.get(player.id);
+
+        expect(overallPlayer).toBeDefined();
+        expect(overallPlayer?.projectedPoints).toBe(player.projectedPoints);
+        expect(overallPlayer?.positionRank).toBe(player.positionRank);
+      }
+    }
+  });
+
   it("preserves multi-tier data and derives flex tiers from eligible position boards", () => {
     const snapshot = buildFantasySnapshot("ppr");
     const overallTiers = new Set(snapshot.overall.map((player) => player.tier));

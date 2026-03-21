@@ -1,6 +1,3 @@
-import { overallPlayers as overallHalfPprPlayers } from "@/data/overallData";
-import { overallPlayers as overallPprPlayers } from "@/data/overallDataPPR";
-import { overallPlayers as overallStandardPlayers } from "@/data/overallDataStandard";
 import {
   DEFAULT_FANTASY_SNAPSHOT_SOURCE,
   FANTASY_SNAPSHOT_SCHEMA_VERSION,
@@ -24,12 +21,6 @@ export const SNAPSHOT_SOURCE = DEFAULT_FANTASY_SNAPSHOT_SOURCE;
 export const FANTASY_SNAPSHOT_POSITION_ORDER = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
 
 const FLEX_ELIGIBLE_POSITIONS = ["RB", "WR", "TE"] as const;
-
-const OVERALL_SOURCE_MAP: Record<FantasyRouteScoring, Player[]> = {
-  ppr: overallPprPlayers,
-  half_ppr: overallHalfPprPlayers,
-  standard: overallStandardPlayers,
-};
 
 const SNAPSHOT_POSITION_TO_ROUTE: Record<FantasySnapshotPosition, FantasyRoutePosition> = {
   QB: "qb",
@@ -147,15 +138,117 @@ function buildPositionSlice(players: Player[], position: Player["position"]): Pl
   }));
 }
 
+function overallTierValue(player: Player): number {
+  if (typeof player.overallValue === "number" && Number.isFinite(player.overallValue)) {
+    return player.overallValue;
+  }
+
+  return Number.isFinite(player.projectedPoints) ? player.projectedPoints : 0;
+}
+
+function assignOverallTiers(players: Player[]): Player[] {
+  if (players.length === 0) {
+    return [];
+  }
+
+  const sortedPlayers = [...players].sort(
+    (left, right) => numericRank(left.averageRank) - numericRank(right.averageRank)
+  );
+  const minTierSize = 8;
+  const maxTiers = 6;
+  const gaps = sortedPlayers.slice(1).map((player, index) => ({
+    index: index + 1,
+    gap: overallTierValue(sortedPlayers[index]) - overallTierValue(player),
+  }));
+  const averageGap = gaps.reduce((sum, { gap }) => sum + gap, 0) / gaps.length || 0;
+  const significantBreaks = gaps
+    .filter(
+      ({ index, gap }) =>
+        gap > Math.max(averageGap * 2, 5) &&
+        index >= minTierSize &&
+        sortedPlayers.length - index >= minTierSize
+    )
+    .sort((left, right) => right.gap - left.gap);
+
+  const selectedBreaks: number[] = [];
+  for (const { index } of significantBreaks) {
+    if (selectedBreaks.length >= maxTiers - 1) {
+      break;
+    }
+
+    if (selectedBreaks.every((existing) => Math.abs(existing - index) >= minTierSize)) {
+      selectedBreaks.push(index);
+    }
+  }
+
+  const fallbackBreaks = [12, 24, 48, 84, 132];
+  for (const index of fallbackBreaks) {
+    if (selectedBreaks.length >= maxTiers - 1 || index >= sortedPlayers.length) {
+      break;
+    }
+
+    if (
+      index >= minTierSize &&
+      sortedPlayers.length - index >= minTierSize &&
+      selectedBreaks.every((existing) => Math.abs(existing - index) >= minTierSize)
+    ) {
+      selectedBreaks.push(index);
+    }
+  }
+
+  const tierBreaks = selectedBreaks.sort((left, right) => left - right);
+  let currentTier = 1;
+  let breakIndex = 0;
+
+  return sortedPlayers.map((player, index) => {
+    if (breakIndex < tierBreaks.length && index >= tierBreaks[breakIndex]) {
+      currentTier += 1;
+      breakIndex += 1;
+    }
+
+    return {
+      ...player,
+      tier: currentTier,
+    };
+  });
+}
+
 function buildOverallSlice(players: Player[]): Player[] {
+  const inputPositionRanks = new Map<string, number>();
+  for (const player of players) {
+    if (typeof player.positionRank === "number" && Number.isFinite(player.positionRank)) {
+      inputPositionRanks.set(player.id, player.positionRank);
+    }
+  }
+
   const normalized = normalizePlayers(players);
-  const tiered = assignMissingTiers(normalized, "OVERALL");
-  const positionRanks = buildPositionRankLookup(tiered);
+  const tiered = assignOverallTiers(normalized);
+  const fallbackPositionRanks = buildPositionRankLookup(players);
 
   return tiered.map((player) => ({
     ...player,
-    positionRank: positionRanks.get(player.id),
+    positionRank: inputPositionRanks.get(player.id) ?? fallbackPositionRanks.get(player.id),
   }));
+}
+
+function buildDerivedOverallPlayers(
+  positions: FantasySnapshot["positions"],
+  scoring: FantasyRouteScoring
+): Player[] {
+  const allCurrentPositionPlayers = FANTASY_SNAPSHOT_POSITION_ORDER.flatMap(
+    (position) => positions[position]
+  );
+
+  return calculateOverallRankings(
+    allCurrentPositionPlayers,
+    routeScoringToScoringFormat(scoring)
+  )
+    .sort((left, right) => left.overallRank - right.overallRank)
+    .map((calculation) => ({
+      ...calculation.player,
+      averageRank: calculation.overallRank,
+      overallValue: calculation.overallValue,
+    }));
 }
 
 function buildFlexSlice(
@@ -241,16 +334,11 @@ function buildUnavailableReason(scoring: FantasyRouteScoring, position: FantasyR
 
 export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnapshot {
   const generatedAt = new Date().toISOString();
-  const overallPlayers = buildOverallSlice(OVERALL_SOURCE_MAP[scoring]);
-  const overallSlice =
-    overallPlayers.length > 0
-      ? buildAvailableSlice(overallPlayers, "overall_consensus", "overall").metadata
-      : buildUnavailableSlice(
-          `Published ${FANTASY_SCORING_LABELS[scoring]} overall rankings are unavailable in the current snapshot.`
-        ).metadata;
 
   const sliceMetadata = {
-    overall: overallSlice,
+    overall: buildUnavailableSlice(
+      `Published ${FANTASY_SCORING_LABELS[scoring]} overall rankings are unavailable in the current snapshot.`
+    ).metadata,
     qb: buildUnavailableSlice(buildUnavailableReason(scoring, "qb")).metadata,
     rb: buildUnavailableSlice(buildUnavailableReason(scoring, "rb")).metadata,
     wr: buildUnavailableSlice(buildUnavailableReason(scoring, "wr")).metadata,
@@ -288,6 +376,14 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
       "position"
     ).metadata;
   }
+
+  const overallPlayers = buildOverallSlice(buildDerivedOverallPlayers(positions, scoring));
+  sliceMetadata.overall =
+    overallPlayers.length > 0
+      ? buildAvailableSlice(overallPlayers, "derived_overall", "overall").metadata
+      : buildUnavailableSlice(
+          `Published ${FANTASY_SCORING_LABELS[scoring]} overall rankings are unavailable in the current snapshot.`
+        ).metadata;
 
   const canBuildFlex =
     sliceMetadata.overall.available &&

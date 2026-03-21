@@ -21,6 +21,7 @@ export interface Player {
   teamLogoUrl?: string; // Team logo URL
   
   // Enhanced player data for improved rankings
+  overallValue?: number; // Weighted value used to order derived overall boards
   auctionValue?: number; // Auction draft value
   upside?: string; // Upside description
   downside?: string; // Risk factors
