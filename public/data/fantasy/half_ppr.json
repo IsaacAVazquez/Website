@@ -2,7 +2,7 @@
   "schemaVersion": 4,
   "season": 2026,
   "week": 0,
-  "generatedAt": "2026-03-19T18:59:48.273Z",
+  "generatedAt": "2026-03-25T18:31:29.851Z",
   "scoringFormat": "HALF_PPR",
   "source": "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall and flex boards are derived from the current position boards.",
   "positions": {
@@ -18170,8 +18170,7 @@
         2,
         2
       ],
-      "positionRank": 1,
-      "overallValue": 636.1875
+      "positionRank": 1
     },
     {
       "id": "fp-RB-2",
@@ -18196,8 +18195,7 @@
         3,
         3
       ],
-      "positionRank": 2,
-      "overallValue": 623.0250000000001
+      "positionRank": 2
     },
     {
       "id": "fp-RB-3",
@@ -18222,8 +18220,7 @@
         5,
         5
       ],
-      "positionRank": 3,
-      "overallValue": 594.50625
+      "positionRank": 3
     },
     {
       "id": "fp-RB-4",
@@ -18248,8 +18245,7 @@
         5,
         5
       ],
-      "positionRank": 4,
-      "overallValue": 581.34375
+      "positionRank": 4
     },
     {
       "id": "fp-RB-5",
@@ -18274,8 +18270,7 @@
         7,
         8
       ],
-      "positionRank": 5,
-      "overallValue": 561.6
+      "positionRank": 5
     },
     {
       "id": "fp-RB-6",
@@ -18300,8 +18295,7 @@
         10,
         11
       ],
-      "positionRank": 6,
-      "overallValue": 537.46875
+      "positionRank": 6
     },
     {
       "id": "fp-RB-7",
@@ -18326,8 +18320,7 @@
         11,
         11
       ],
-      "positionRank": 7,
-      "overallValue": 519.91875
+      "positionRank": 7
     },
     {
       "id": "fp-RB-8",
@@ -18352,8 +18345,7 @@
         11,
         12
       ],
-      "positionRank": 8,
-      "overallValue": 506.75625
+      "positionRank": 8
     },
     {
       "id": "fp-RB-9",
@@ -18378,8 +18370,7 @@
         13,
         14
       ],
-      "positionRank": 9,
-      "overallValue": 493.59375
+      "positionRank": 9
     },
     {
       "id": "fp-RB-10",
@@ -18404,8 +18395,7 @@
         13,
         13
       ],
-      "positionRank": 10,
-      "overallValue": 491.4000000000001
+      "positionRank": 10
     },
     {
       "id": "fp-WR-1",
@@ -18430,8 +18420,7 @@
         2,
         2
       ],
-      "positionRank": 1,
-      "overallValue": 487.5
+      "positionRank": 1
     },
     {
       "id": "fp-WR-2",
@@ -18456,8 +18445,7 @@
         2,
         3
       ],
-      "positionRank": 2,
-      "overallValue": 483.6
+      "positionRank": 2
     },
     {
       "id": "fp-QB-1",
@@ -18482,8 +18470,7 @@
         2,
         2
       ],
-      "positionRank": 1,
-      "overallValue": 478.40000000000003
+      "positionRank": 1
     },
     {
       "id": "fp-RB-11",
@@ -18508,8 +18495,7 @@
         14,
         15
       ],
-      "positionRank": 11,
-      "overallValue": 471.65625
+      "positionRank": 11
     },
     {
       "id": "fp-WR-3",
@@ -18534,8 +18520,7 @@
         4,
         4
       ],
-      "positionRank": 3,
-      "overallValue": 464.1
+      "positionRank": 3
     },
     {
       "id": "fp-RB-12",
@@ -18560,8 +18545,7 @@
         16,
         18
       ],
-      "positionRank": 12,
-      "overallValue": 462.88125
+      "positionRank": 12
     },
     {
       "id": "fp-QB-2",
@@ -18586,8 +18570,7 @@
         4,
         5
       ],
-      "positionRank": 2,
-      "overallValue": 453.7
+      "positionRank": 2
     },
     {
       "id": "fp-QB-3",
@@ -18612,8 +18595,7 @@
         4,
         5
       ],
-      "positionRank": 3,
-      "overallValue": 453.7
+      "positionRank": 3
     },
     {
       "id": "fp-WR-4",
@@ -18638,8 +18620,7 @@
         5,
         6
       ],
-      "positionRank": 4,
-      "overallValue": 442.65000000000003
+      "positionRank": 4
     },
     {
       "id": "fp-WR-5",
@@ -18664,8 +18645,7 @@
         6,
         6
       ],
-      "positionRank": 5,
-      "overallValue": 440.7
+      "positionRank": 5
     },
     {
       "id": "fp-QB-4",
@@ -18690,8 +18670,7 @@
         6,
         6
       ],
-      "positionRank": 4,
-      "overallValue": 434.2
+      "positionRank": 4
     },
     {
       "id": "fp-QB-5",
@@ -18716,8 +18695,7 @@
         7,
         8
       ],
-      "positionRank": 5,
-      "overallValue": 423.8
+      "positionRank": 5
     },
     {
       "id": "fp-QB-6",
@@ -18742,8 +18720,7 @@
         8,
         9
       ],
-      "positionRank": 6,
-      "overallValue": 416
+      "positionRank": 6
     },
     {
       "id": "fp-WR-6",
@@ -18768,8 +18745,7 @@
         9,
         9
       ],
-      "positionRank": 6,
-      "overallValue": 411.45
+      "positionRank": 6
     },
     {
       "id": "fp-WR-7",
@@ -18794,8 +18770,7 @@
         10,
         10
       ],
-      "positionRank": 7,
-      "overallValue": 409.5
+      "positionRank": 7
     },
     {
       "id": "fp-RB-13",
@@ -18820,8 +18795,7 @@
         15,
         15
       ],
-      "positionRank": 13,
-      "overallValue": 403.65
+      "positionRank": 13
     },
     {
       "id": "fp-RB-14",
@@ -18846,8 +18820,7 @@
         15,
         16
       ],
-      "positionRank": 14,
-      "overallValue": 399.76874999999995
+      "positionRank": 14
     },
     {
       "id": "fp-WR-8",
@@ -18872,8 +18845,7 @@
         10,
         11
       ],
-      "positionRank": 8,
-      "overallValue": 399.75
+      "positionRank": 8
     },
     {
       "id": "fp-QB-7",
@@ -18898,8 +18870,7 @@
         10,
         11
       ],
-      "positionRank": 7,
-      "overallValue": 388.7
+      "positionRank": 7
     },
     {
       "id": "fp-WR-9",
@@ -18924,8 +18895,7 @@
         10,
         11
       ],
-      "positionRank": 9,
-      "overallValue": 386.1
+      "positionRank": 9
     },
     {
       "id": "fp-WR-10",
@@ -18950,8 +18920,7 @@
         12,
         12
       ],
-      "positionRank": 10,
-      "overallValue": 374.40000000000003
+      "positionRank": 10
     },
     {
       "id": "fp-WR-11",
@@ -18976,8 +18945,7 @@
         13,
         14
       ],
-      "positionRank": 11,
-      "overallValue": 364.65000000000003
+      "positionRank": 11
     },
     {
       "id": "fp-RB-15",
@@ -19002,8 +18970,7 @@
         21,
         22
       ],
-      "positionRank": 15,
-      "overallValue": 355.134375
+      "positionRank": 15
     },
     {
       "id": "fp-RB-16",
@@ -19028,8 +18995,7 @@
         19,
         19
       ],
-      "positionRank": 16,
-      "overallValue": 355.134375
+      "positionRank": 16
     },
     {
       "id": "fp-RB-17",
@@ -19054,8 +19020,7 @@
         18,
         19
       ],
-      "positionRank": 17,
-      "overallValue": 355.134375
+      "positionRank": 17
     },
     {
       "id": "fp-RB-18",
@@ -19080,8 +19045,7 @@
         22,
         23
       ],
-      "positionRank": 18,
-      "overallValue": 345.43125
+      "positionRank": 18
     },
     {
       "id": "fp-WR-12",
@@ -19106,8 +19070,7 @@
         15,
         16
       ],
-      "positionRank": 12,
-      "overallValue": 345.15000000000003
+      "positionRank": 12
     },
     {
       "id": "fp-WR-13",
@@ -19132,8 +19095,7 @@
         18,
         19
       ],
-      "positionRank": 13,
-      "overallValue": 345.15000000000003
+      "positionRank": 13
     },
     {
       "id": "fp-RB-19",
@@ -19158,8 +19120,7 @@
         21,
         22
       ],
-      "positionRank": 19,
-      "overallValue": 339.60937500000006
+      "positionRank": 19
     },
     {
       "id": "fp-QB-8",
@@ -19184,8 +19145,7 @@
         12,
         13
       ],
-      "positionRank": 8,
-      "overallValue": 334.65
+      "positionRank": 8
     },
     {
       "id": "fp-QB-9",
@@ -19210,8 +19170,7 @@
         12,
         13
       ],
-      "positionRank": 9,
-      "overallValue": 330.04999999999995
+      "positionRank": 9
     },
     {
       "id": "fp-QB-10",
@@ -19236,8 +19195,7 @@
         13,
         13
       ],
-      "positionRank": 10,
-      "overallValue": 323.15
+      "positionRank": 10
     },
     {
       "id": "fp-QB-11",
@@ -19262,8 +19220,7 @@
         13,
         14
       ],
-      "positionRank": 11,
-      "overallValue": 315.09999999999997
+      "positionRank": 11
     },
     {
       "id": "fp-QB-12",
@@ -19288,8 +19245,7 @@
         14,
         14
       ],
-      "positionRank": 12,
-      "overallValue": 309.34999999999997
+      "positionRank": 12
     },
     {
       "id": "fp-RB-20",
@@ -19314,8 +19270,7 @@
         25,
         27
       ],
-      "positionRank": 20,
-      "overallValue": 308.559375
+      "positionRank": 20
     },
     {
       "id": "fp-QB-13",
@@ -19340,8 +19295,7 @@
         15,
         16
       ],
-      "positionRank": 13,
-      "overallValue": 304.75
+      "positionRank": 13
     },
     {
       "id": "fp-RB-21",
@@ -19366,8 +19320,7 @@
         27,
         29
       ],
-      "positionRank": 21,
-      "overallValue": 293.034375
+      "positionRank": 21
     },
     {
       "id": "fp-RB-22",
@@ -19392,8 +19345,7 @@
         26,
         27
       ],
-      "positionRank": 22,
-      "overallValue": 291.09375
+      "positionRank": 22
     },
     {
       "id": "fp-RB-23",
@@ -19418,8 +19370,7 @@
         25,
         26
       ],
-      "positionRank": 23,
-      "overallValue": 291.09375
+      "positionRank": 23
     },
     {
       "id": "fp-WR-14",
@@ -19444,8 +19395,7 @@
         18,
         19
       ],
-      "positionRank": 14,
-      "overallValue": 288.075
+      "positionRank": 14
     },
     {
       "id": "fp-RB-24",
@@ -19470,8 +19420,7 @@
         28,
         30
       ],
-      "positionRank": 24,
-      "overallValue": 287.2125
+      "positionRank": 24
     },
     {
       "id": "fp-WR-15",
@@ -19496,8 +19445,7 @@
         17,
         18
       ],
-      "positionRank": 15,
-      "overallValue": 286.34999999999997
+      "positionRank": 15
     },
     {
       "id": "fp-TE-1",
@@ -19522,8 +19470,7 @@
         2,
         2
       ],
-      "positionRank": 1,
-      "overallValue": 284.49850000000004
+      "positionRank": 1
     },
     {
       "id": "fp-QB-14",
@@ -19548,8 +19495,7 @@
         17,
         17
       ],
-      "positionRank": 14,
-      "overallValue": 281.75
+      "positionRank": 14
     },
     {
       "id": "fp-TE-2",
@@ -19574,8 +19520,7 @@
         2,
         3
       ],
-      "positionRank": 2,
-      "overallValue": 281.2095
+      "positionRank": 2
     },
     {
       "id": "fp-QB-15",
@@ -19600,8 +19545,7 @@
         17,
         18
       ],
-      "positionRank": 15,
-      "overallValue": 278.29999999999995
+      "positionRank": 15
     },
     {
       "id": "fp-RB-25",
@@ -19626,8 +19570,7 @@
         29,
         31
       ],
-      "positionRank": 25,
-      "overallValue": 277.509375
+      "positionRank": 25
     },
     {
       "id": "fp-TE-3",
@@ -19652,8 +19595,7 @@
         4,
         4
       ],
-      "positionRank": 3,
-      "overallValue": 269.698
+      "positionRank": 3
     },
     {
       "id": "fp-WR-16",
@@ -19678,8 +19620,7 @@
         20,
         21
       ],
-      "positionRank": 16,
-      "overallValue": 269.09999999999997
+      "positionRank": 16
     },
     {
       "id": "fp-QB-16",
@@ -19704,8 +19645,7 @@
         20,
         20
       ],
-      "positionRank": 16,
-      "overallValue": 262.2
+      "positionRank": 16
     },
     {
       "id": "fp-WR-17",
@@ -19730,8 +19670,7 @@
         21,
         22
       ],
-      "positionRank": 17,
-      "overallValue": 262.2
+      "positionRank": 17
     },
     {
       "id": "fp-RB-26",
@@ -19756,8 +19695,7 @@
         29,
         30
       ],
-      "positionRank": 26,
-      "overallValue": 261.984375
+      "positionRank": 26
     },
     {
       "id": "fp-QB-17",
@@ -19782,8 +19720,7 @@
         20,
         21
       ],
-      "positionRank": 17,
-      "overallValue": 261.04999999999995
+      "positionRank": 17
     },
     {
       "id": "fp-RB-27",
@@ -19808,8 +19745,7 @@
         32,
         33
       ],
-      "positionRank": 27,
-      "overallValue": 256.1625
+      "positionRank": 27
     },
     {
       "id": "fp-TE-4",
@@ -19834,8 +19770,7 @@
         7,
         8
       ],
-      "positionRank": 4,
-      "overallValue": 254.8975
+      "positionRank": 4
     },
     {
       "id": "fp-TE-5",
@@ -19860,8 +19795,7 @@
         7,
         7
       ],
-      "positionRank": 5,
-      "overallValue": 251.6085
+      "positionRank": 5
     },
     {
       "id": "fp-TE-6",
@@ -19886,8 +19820,7 @@
         7,
         8
       ],
-      "positionRank": 6,
-      "overallValue": 251.6085
+      "positionRank": 6
     },
     {
       "id": "fp-QB-18",
@@ -19912,8 +19845,7 @@
         24,
         25
       ],
-      "positionRank": 18,
-      "overallValue": 247.24999999999997
+      "positionRank": 18
     },
     {
       "id": "fp-QB-19",
@@ -19938,8 +19870,7 @@
         21,
         22
       ],
-      "positionRank": 19,
-      "overallValue": 246.1
+      "positionRank": 19
     },
     {
       "id": "fp-WR-18",
@@ -19964,8 +19895,7 @@
         24,
         26
       ],
-      "positionRank": 18,
-      "overallValue": 244.95
+      "positionRank": 18
     },
     {
       "id": "fp-QB-20",
@@ -19990,8 +19920,7 @@
         21,
         22
       ],
-      "positionRank": 20,
-      "overallValue": 243.79999999999998
+      "positionRank": 20
     },
     {
       "id": "fp-WR-19",
@@ -20016,8 +19945,7 @@
         24,
         26
       ],
-      "positionRank": 19,
-      "overallValue": 243.225
+      "positionRank": 19
     },
     {
       "id": "fp-RB-28",
@@ -20042,8 +19970,7 @@
         33,
         34
       ],
-      "positionRank": 28,
-      "overallValue": 242.57812499999997
+      "positionRank": 28
     },
     {
       "id": "fp-RB-29",
@@ -20068,8 +19995,7 @@
         34,
         36
       ],
-      "positionRank": 29,
-      "overallValue": 240.6375
+      "positionRank": 29
     },
     {
       "id": "fp-QB-21",
@@ -20094,8 +20020,7 @@
         25,
         26
       ],
-      "positionRank": 21,
-      "overallValue": 240.35
+      "positionRank": 21
     },
     {
       "id": "fp-RB-30",
@@ -20120,8 +20045,7 @@
         34,
         36
       ],
-      "positionRank": 30,
-      "overallValue": 238.69687499999998
+      "positionRank": 30
     },
     {
       "id": "fp-WR-20",
@@ -20146,8 +20070,7 @@
         26,
         28
       ],
-      "positionRank": 20,
-      "overallValue": 234.6
+      "positionRank": 20
     },
     {
       "id": "fp-WR-21",
@@ -20172,8 +20095,7 @@
         27,
         28
       ],
-      "positionRank": 21,
-      "overallValue": 232.87499999999997
+      "positionRank": 21
     },
     {
       "id": "fp-WR-22",
@@ -20198,8 +20120,7 @@
         25,
         26
       ],
-      "positionRank": 22,
-      "overallValue": 231.14999999999998
+      "positionRank": 22
     },
     {
       "id": "fp-WR-23",
@@ -20224,8 +20145,7 @@
         27,
         29
       ],
-      "positionRank": 23,
-      "overallValue": 227.7
+      "positionRank": 23
     },
     {
       "id": "fp-WR-24",
@@ -20250,8 +20170,7 @@
         28,
         29
       ],
-      "positionRank": 24,
-      "overallValue": 222.52499999999998
+      "positionRank": 24
     },
     {
       "id": "fp-WR-25",
@@ -20276,8 +20195,7 @@
         29,
         30
       ],
-      "positionRank": 25,
-      "overallValue": 215.62499999999997
+      "positionRank": 25
     },
     {
       "id": "fp-TE-7",
@@ -20302,8 +20220,7 @@
         8,
         8
       ],
-      "positionRank": 7,
-      "overallValue": 212.3935
+      "positionRank": 7
     },
     {
       "id": "fp-RB-31",
@@ -20328,8 +20245,7 @@
         36,
         37
       ],
-      "positionRank": 31,
-      "overallValue": 209.08125
+      "positionRank": 31
     },
     {
       "id": "fp-TE-8",
@@ -20354,8 +20270,7 @@
         9,
         9
       ],
-      "positionRank": 8,
-      "overallValue": 208.02925
+      "positionRank": 8
     },
     {
       "id": "fp-WR-26",
@@ -20380,8 +20295,7 @@
         30,
         31
       ],
-      "positionRank": 26,
-      "overallValue": 206.99999999999997
+      "positionRank": 26
     },
     {
       "id": "fp-QB-22",
@@ -20406,8 +20320,7 @@
         25,
         26
       ],
-      "positionRank": 22,
-      "overallValue": 205.8
+      "positionRank": 22
     },
     {
       "id": "fp-WR-27",
@@ -20432,8 +20345,7 @@
         31,
         32
       ],
-      "positionRank": 27,
-      "overallValue": 205.27499999999998
+      "positionRank": 27
     },
     {
       "id": "fp-RB-32",
@@ -20458,8 +20370,7 @@
         36,
         37
       ],
-      "positionRank": 32,
-      "overallValue": 203.765625
+      "positionRank": 32
     },
     {
       "id": "fp-QB-23",
@@ -20484,8 +20395,7 @@
         25,
         26
       ],
-      "positionRank": 23,
-      "overallValue": 203.70000000000002
+      "positionRank": 23
     },
     {
       "id": "fp-RB-33",
@@ -20510,8 +20420,7 @@
         37,
         38
       ],
-      "positionRank": 33,
-      "overallValue": 198.45000000000005
+      "positionRank": 33
     },
     {
       "id": "fp-QB-24",
@@ -20536,8 +20445,7 @@
         25,
         26
       ],
-      "positionRank": 24,
-      "overallValue": 192.15
+      "positionRank": 24
     },
     {
       "id": "fp-TE-9",
@@ -20562,8 +20470,7 @@
         13,
         14
       ],
-      "positionRank": 9,
-      "overallValue": 192.02700000000002
+      "positionRank": 9
     },
     {
       "id": "fp-QB-25",
@@ -20588,8 +20495,7 @@
         28,
         28
       ],
-      "positionRank": 25,
-      "overallValue": 186.9
+      "positionRank": 25
     },
     {
       "id": "fp-TE-10",
@@ -20614,8 +20520,7 @@
         13,
         14
       ],
-      "positionRank": 10,
-      "overallValue": 186.20799999999997
+      "positionRank": 10
     },
     {
       "id": "fp-WR-28",
@@ -20640,8 +20545,7 @@
         35,
         36
       ],
-      "positionRank": 28,
-      "overallValue": 182.85
+      "positionRank": 28
     },
     {
       "id": "fp-QB-26",
@@ -20666,8 +20570,7 @@
         29,
         30
       ],
-      "positionRank": 26,
-      "overallValue": 181.65
+      "positionRank": 26
     },
     {
       "id": "fp-WR-29",
@@ -20692,8 +20595,7 @@
         35,
         36
       ],
-      "positionRank": 29,
-      "overallValue": 181.125
+      "positionRank": 29
     },
     {
       "id": "fp-RB-34",
@@ -20718,8 +20620,7 @@
         41,
         42
       ],
-      "positionRank": 34,
-      "overallValue": 180.73125000000005
+      "positionRank": 34
     },
     {
       "id": "fp-TE-11",
@@ -20744,8 +20645,7 @@
         15,
         16
       ],
-      "positionRank": 11,
-      "overallValue": 180.38899999999998
+      "positionRank": 11
     },
     {
       "id": "fp-WR-30",
@@ -20770,8 +20670,7 @@
         35,
         37
       ],
-      "positionRank": 30,
-      "overallValue": 177.67499999999998
+      "positionRank": 30
     },
     {
       "id": "fp-TE-12",
@@ -20796,8 +20695,7 @@
         16,
         17
       ],
-      "positionRank": 12,
-      "overallValue": 177.4795
+      "positionRank": 12
     },
     {
       "id": "fp-TE-13",
@@ -20822,8 +20720,7 @@
         18,
         19
       ],
-      "positionRank": 13,
-      "overallValue": 174.56999999999996
+      "positionRank": 13
     },
     {
       "id": "fp-QB-27",
@@ -20848,8 +20745,7 @@
         32,
         34
       ],
-      "positionRank": 27,
-      "overallValue": 173.25
+      "positionRank": 27
     },
     {
       "id": "fp-WR-31",
@@ -20874,8 +20770,7 @@
         36,
         38
       ],
-      "positionRank": 31,
-      "overallValue": 172.5
+      "positionRank": 31
     },
     {
       "id": "fp-WR-32",
@@ -20900,8 +20795,7 @@
         36,
         37
       ],
-      "positionRank": 32,
-      "overallValue": 172.5
+      "positionRank": 32
     },
     {
       "id": "fp-QB-28",
@@ -20926,8 +20820,7 @@
         32,
         33
       ],
-      "positionRank": 28,
-      "overallValue": 172.20000000000002
+      "positionRank": 28
     },
     {
       "id": "fp-RB-35",
@@ -20952,8 +20845,7 @@
         42,
         44
       ],
-      "positionRank": 35,
-      "overallValue": 171.87187500000005
+      "positionRank": 35
     },
     {
       "id": "fp-RB-36",
@@ -20978,8 +20870,7 @@
         42,
         43
       ],
-      "positionRank": 36,
-      "overallValue": 170.10000000000005
+      "positionRank": 36
     },
     {
       "id": "fp-QB-29",
@@ -21004,8 +20895,7 @@
         32,
         33
       ],
-      "positionRank": 29,
-      "overallValue": 166.95000000000002
+      "positionRank": 29
     },
     {
       "id": "fp-RB-37",
@@ -21030,8 +20920,7 @@
         43,
         45
       ],
-      "positionRank": 37,
-      "overallValue": 166.55625
+      "positionRank": 37
     },
     {
       "id": "fp-RB-38",
@@ -21056,8 +20945,7 @@
         44,
         46
       ],
-      "positionRank": 38,
-      "overallValue": 161.240625
+      "positionRank": 38
     },
     {
       "id": "fp-RB-39",
@@ -21082,8 +20970,7 @@
         45,
         46
       ],
-      "positionRank": 39,
-      "overallValue": 159.46875000000003
+      "positionRank": 39
     },
     {
       "id": "fp-RB-40",
@@ -21108,8 +20995,7 @@
         45,
         46
       ],
-      "positionRank": 40,
-      "overallValue": 157.696875
+      "positionRank": 40
     },
     {
       "id": "fp-QB-30",
@@ -21134,8 +21020,7 @@
         34,
         35
       ],
-      "positionRank": 30,
-      "overallValue": 157.5
+      "positionRank": 30
     },
     {
       "id": "fp-QB-31",
@@ -21160,8 +21045,7 @@
         36,
         37
       ],
-      "positionRank": 31,
-      "overallValue": 157.5
+      "positionRank": 31
     },
     {
       "id": "fp-QB-35",
@@ -21186,8 +21070,7 @@
         35,
         36
       ],
-      "positionRank": 32,
-      "overallValue": 155.4
+      "positionRank": 32
     },
     {
       "id": "fp-WR-33",
@@ -21212,8 +21095,7 @@
         40,
         41
       ],
-      "positionRank": 33,
-      "overallValue": 155.25
+      "positionRank": 33
     },
     {
       "id": "fp-WR-34",
@@ -21238,8 +21120,7 @@
         40,
         42
       ],
-      "positionRank": 34,
-      "overallValue": 153.52499999999998
+      "positionRank": 34
     },
     {
       "id": "fp-WR-35",
@@ -21264,8 +21145,7 @@
         39,
         40
       ],
-      "positionRank": 35,
-      "overallValue": 153.52499999999998
+      "positionRank": 35
     },
     {
       "id": "fp-RB-41",
@@ -21290,8 +21170,7 @@
         46,
         48
       ],
-      "positionRank": 41,
-      "overallValue": 152.38125
+      "positionRank": 41
     },
     {
       "id": "fp-QB-32",
@@ -21316,8 +21195,7 @@
         33,
         34
       ],
-      "positionRank": 33,
-      "overallValue": 152.25
+      "positionRank": 33
     },
     {
       "id": "fp-TE-14",
@@ -21342,8 +21220,7 @@
         19,
         20
       ],
-      "positionRank": 14,
-      "overallValue": 151.4205
+      "positionRank": 14
     },
     {
       "id": "fp-TE-15",
@@ -21368,8 +21245,7 @@
         20,
         21
       ],
-      "positionRank": 15,
-      "overallValue": 151.4205
+      "positionRank": 15
     },
     {
       "id": "fp-TE-16",
@@ -21394,8 +21270,7 @@
         20,
         22
       ],
-      "positionRank": 16,
-      "overallValue": 148.764
+      "positionRank": 16
     },
     {
       "id": "fp-TE-17",
@@ -21420,8 +21295,7 @@
         18,
         19
       ],
-      "positionRank": 17,
-      "overallValue": 147.43574999999998
+      "positionRank": 17
     },
     {
       "id": "fp-TE-18",
@@ -21446,8 +21320,7 @@
         20,
         21
       ],
-      "positionRank": 18,
-      "overallValue": 147.43574999999998
+      "positionRank": 18
     },
     {
       "id": "fp-RB-42",
@@ -21472,8 +21345,7 @@
         48,
         50
       ],
-      "positionRank": 42,
-      "overallValue": 143.521875
+      "positionRank": 42
     },
     {
       "id": "fp-RB-43",
@@ -21498,8 +21370,7 @@
         49,
         50
       ],
-      "positionRank": 43,
-      "overallValue": 141.75
+      "positionRank": 43
     },
     {
       "id": "fp-WR-36",
@@ -21524,8 +21395,7 @@
         41,
         42
       ],
-      "positionRank": 36,
-      "overallValue": 138.6
+      "positionRank": 36
     },
     {
       "id": "fp-TE-19",
@@ -21550,8 +21420,7 @@
         21,
         22
       ],
-      "positionRank": 19,
-      "overallValue": 138.138
+      "positionRank": 19
     },
     {
       "id": "fp-WR-37",
@@ -21576,8 +21445,7 @@
         41,
         43
       ],
-      "positionRank": 37,
-      "overallValue": 137.025
+      "positionRank": 37
     },
     {
       "id": "fp-TE-20",
@@ -21602,8 +21470,7 @@
         20,
         21
       ],
-      "positionRank": 20,
-      "overallValue": 135.4815
+      "positionRank": 20
     },
     {
       "id": "fp-WR-38",
@@ -21628,8 +21495,7 @@
         42,
         43
       ],
-      "positionRank": 38,
-      "overallValue": 135.45000000000002
+      "positionRank": 38
     },
     {
       "id": "fp-WR-39",
@@ -21654,8 +21520,7 @@
         42,
         43
       ],
-      "positionRank": 39,
-      "overallValue": 135.45000000000002
+      "positionRank": 39
     },
     {
       "id": "fp-RB-44",
@@ -21680,8 +21545,7 @@
         50,
         52
       ],
-      "positionRank": 44,
-      "overallValue": 134.6625
+      "positionRank": 44
     },
     {
       "id": "fp-WR-40",
@@ -21706,8 +21570,7 @@
         42,
         44
       ],
-      "positionRank": 40,
-      "overallValue": 132.3
+      "positionRank": 40
     },
     {
       "id": "fp-RB-45",
@@ -21732,8 +21595,7 @@
         51,
         53
       ],
-      "positionRank": 45,
-      "overallValue": 131.11875
+      "positionRank": 45
     },
     {
       "id": "fp-RB-46",
@@ -21758,8 +21620,7 @@
         52,
         53
       ],
-      "positionRank": 46,
-      "overallValue": 127.575
+      "positionRank": 46
     },
     {
       "id": "fp-RB-47",
@@ -21784,8 +21645,7 @@
         52,
         54
       ],
-      "positionRank": 47,
-      "overallValue": 127.575
+      "positionRank": 47
     },
     {
       "id": "fp-WR-41",
@@ -21810,8 +21670,7 @@
         42,
         43
       ],
-      "positionRank": 41,
-      "overallValue": 127.575
+      "positionRank": 41
     },
     {
       "id": "fp-RB-48",
@@ -21836,8 +21695,7 @@
         53,
         55
       ],
-      "positionRank": 48,
-      "overallValue": 124.03125
+      "positionRank": 48
     },
     {
       "id": "fp-RB-49",
@@ -21862,8 +21720,7 @@
         53,
         55
       ],
-      "positionRank": 49,
-      "overallValue": 124.03125
+      "positionRank": 49
     },
     {
       "id": "fp-WR-42",
@@ -21888,8 +21745,7 @@
         44,
         45
       ],
-      "positionRank": 42,
-      "overallValue": 122.85000000000001
+      "positionRank": 42
     },
     {
       "id": "fp-QB-33",
@@ -21914,8 +21770,7 @@
         36,
         37
       ],
-      "positionRank": 34,
-      "overallValue": 122.39999999999999
+      "positionRank": 34
     },
     {
       "id": "fp-RB-50",
@@ -21940,8 +21795,7 @@
         54,
         55
       ],
-      "positionRank": 50,
-      "overallValue": 122.259375
+      "positionRank": 50
     },
     {
       "id": "fp-TE-33",
@@ -21966,8 +21820,7 @@
         28,
         29
       ],
-      "positionRank": 21,
-      "overallValue": 120.87075
+      "positionRank": 21
     },
     {
       "id": "fp-TE-21",
@@ -21992,8 +21845,7 @@
         25,
         26
       ],
-      "positionRank": 22,
-      "overallValue": 120.87075
+      "positionRank": 22
     },
     {
       "id": "fp-RB-51",
@@ -22018,8 +21870,7 @@
         55,
         56
       ],
-      "positionRank": 51,
-      "overallValue": 116.94375000000002
+      "positionRank": 51
     },
     {
       "id": "fp-WR-43",
@@ -22044,8 +21895,7 @@
         46,
         48
       ],
-      "positionRank": 43,
-      "overallValue": 116.55000000000001
+      "positionRank": 43
     },
     {
       "id": "fp-QB-44",
@@ -22070,8 +21920,7 @@
         38,
         38
       ],
-      "positionRank": 35,
-      "overallValue": 115.6
+      "positionRank": 35
     },
     {
       "id": "fp-RB-52",
@@ -22096,8 +21945,7 @@
         56,
         57
       ],
-      "positionRank": 52,
-      "overallValue": 115.171875
+      "positionRank": 52
     },
     {
       "id": "fp-WR-44",
@@ -22122,8 +21970,7 @@
         47,
         48
       ],
-      "positionRank": 44,
-      "overallValue": 114.97500000000001
+      "positionRank": 44
     },
     {
       "id": "fp-QB-34",
@@ -22148,8 +21995,7 @@
         39,
         41
       ],
-      "positionRank": 36,
-      "overallValue": 113.89999999999999
+      "positionRank": 36
     },
     {
       "id": "fp-RB-53",
@@ -22174,8 +22020,7 @@
         56,
         58
       ],
-      "positionRank": 53,
-      "overallValue": 113.4
+      "positionRank": 53
     },
     {
       "id": "fp-QB-36",
@@ -22200,8 +22045,7 @@
         39,
         40
       ],
-      "positionRank": 37,
-      "overallValue": 112.2
+      "positionRank": 37
     },
     {
       "id": "fp-QB-38",
@@ -22226,8 +22070,7 @@
         40,
         42
       ],
-      "positionRank": 38,
-      "overallValue": 110.5
+      "positionRank": 38
     },
     {
       "id": "fp-WR-45",
@@ -22252,8 +22095,7 @@
         49,
         51
       ],
-      "positionRank": 45,
-      "overallValue": 107.10000000000001
+      "positionRank": 45
     },
     {
       "id": "fp-RB-54",
@@ -22278,8 +22120,7 @@
         59,
         60
       ],
-      "positionRank": 54,
-      "overallValue": 106.3125
+      "positionRank": 54
     },
     {
       "id": "fp-RB-55",
@@ -22304,8 +22145,7 @@
         59,
         60
       ],
-      "positionRank": 55,
-      "overallValue": 104.540625
+      "positionRank": 55
     },
     {
       "id": "fp-QB-43",
@@ -22330,8 +22170,7 @@
         41,
         41
       ],
-      "positionRank": 39,
-      "overallValue": 103.7
+      "positionRank": 39
     },
     {
       "id": "fp-WR-46",
@@ -22356,8 +22195,7 @@
         51,
         52
       ],
-      "positionRank": 46,
-      "overallValue": 102.375
+      "positionRank": 46
     },
     {
       "id": "fp-QB-37",
@@ -22382,8 +22220,7 @@
         43,
         44
       ],
-      "positionRank": 40,
-      "overallValue": 102
+      "positionRank": 40
     },
     {
       "id": "fp-QB-39",
@@ -22408,8 +22245,7 @@
         43,
         45
       ],
-      "positionRank": 41,
-      "overallValue": 101.14999999999999
+      "positionRank": 41
     },
     {
       "id": "fp-QB-40",
@@ -22434,8 +22270,7 @@
         44,
         45
       ],
-      "positionRank": 42,
-      "overallValue": 100.3
+      "positionRank": 42
     },
     {
       "id": "fp-RB-56",
@@ -22460,8 +22295,7 @@
         61,
         62
       ],
-      "positionRank": 56,
-      "overallValue": 99.22500000000002
+      "positionRank": 56
     },
     {
       "id": "fp-WR-47",
@@ -22486,8 +22320,7 @@
         53,
         54
       ],
-      "positionRank": 47,
-      "overallValue": 97.65
+      "positionRank": 47
     },
     {
       "id": "fp-RB-57",
@@ -22512,8 +22345,7 @@
         61,
         62
       ],
-      "positionRank": 57,
-      "overallValue": 97.453125
+      "positionRank": 57
     },
     {
       "id": "fp-RB-58",
@@ -22538,8 +22370,7 @@
         62,
         64
       ],
-      "positionRank": 58,
-      "overallValue": 93.90937500000003
+      "positionRank": 58
     },
     {
       "id": "fp-QB-41",
@@ -22564,8 +22395,7 @@
         46,
         47
       ],
-      "positionRank": 43,
-      "overallValue": 93.5
+      "positionRank": 43
     },
     {
       "id": "fp-QB-45",
@@ -22590,8 +22420,7 @@
         44,
         45
       ],
-      "positionRank": 44,
-      "overallValue": 92.64999999999999
+      "positionRank": 44
     },
     {
       "id": "fp-TE-22",
@@ -22616,8 +22445,7 @@
         27,
         28
       ],
-      "positionRank": 23,
-      "overallValue": 92.4715
+      "positionRank": 23
     },
     {
       "id": "fp-RB-59",
@@ -22642,8 +22470,7 @@
         63,
         64
       ],
-      "positionRank": 59,
-      "overallValue": 92.1375
+      "positionRank": 59
     },
     {
       "id": "fp-TE-23",
@@ -22668,8 +22495,7 @@
         28,
         28
       ],
-      "positionRank": 24,
-      "overallValue": 91.39625000000001
+      "positionRank": 24
     },
     {
       "id": "fp-WR-48",
@@ -22694,8 +22520,7 @@
         55,
         56
       ],
-      "positionRank": 48,
-      "overallValue": 91.35000000000001
+      "positionRank": 48
     },
     {
       "id": "fp-RB-60",
@@ -22720,8 +22545,7 @@
         64,
         65
       ],
-      "positionRank": 60,
-      "overallValue": 90.36562500000002
+      "positionRank": 60
     },
     {
       "id": "fp-TE-24",
@@ -22746,8 +22570,7 @@
         28,
         29
       ],
-      "positionRank": 25,
-      "overallValue": 90.321
+      "positionRank": 25
     },
     {
       "id": "fp-TE-25",
@@ -22772,8 +22595,7 @@
         30,
         32
       ],
-      "positionRank": 26,
-      "overallValue": 90.321
+      "positionRank": 26
     },
     {
       "id": "fp-WR-49",
@@ -22798,8 +22620,7 @@
         55,
         56
       ],
-      "positionRank": 49,
-      "overallValue": 89.775
+      "positionRank": 49
     },
     {
       "id": "fp-WR-50",
@@ -22824,8 +22645,7 @@
         55,
         57
       ],
-      "positionRank": 50,
-      "overallValue": 89.775
+      "positionRank": 50
     },
     {
       "id": "fp-QB-42",
@@ -22850,8 +22670,7 @@
         48,
         49
       ],
-      "positionRank": 45,
-      "overallValue": 89.25
+      "positionRank": 45
     },
     {
       "id": "fp-RB-63",
@@ -22876,8 +22695,7 @@
         65,
         66
       ],
-      "positionRank": 61,
-      "overallValue": 88.59375
+      "positionRank": 61
     },
     {
       "id": "fp-WR-51",
@@ -22902,8 +22720,7 @@
         56,
         57
       ],
-      "positionRank": 51,
-      "overallValue": 88.2
+      "positionRank": 51
     },
     {
       "id": "fp-WR-52",
@@ -22928,8 +22745,7 @@
         57,
         58
       ],
-      "positionRank": 52,
-      "overallValue": 86.625
+      "positionRank": 52
     },
     {
       "id": "fp-TE-26",
@@ -22954,8 +22770,7 @@
         30,
         31
       ],
-      "positionRank": 27,
-      "overallValue": 86.01999999999998
+      "positionRank": 27
     },
     {
       "id": "fp-TE-27",
@@ -22980,8 +22795,7 @@
         33,
         34
       ],
-      "positionRank": 28,
-      "overallValue": 83.8695
+      "positionRank": 28
     },
     {
       "id": "fp-WR-53",
@@ -23006,8 +22820,7 @@
         58,
         59
       ],
-      "positionRank": 53,
-      "overallValue": 83.47500000000001
+      "positionRank": 53
     },
     {
       "id": "fp-QB-49",
@@ -23032,8 +22845,7 @@
         49,
         51
       ],
-      "positionRank": 46,
-      "overallValue": 82.45
+      "positionRank": 46
     },
     {
       "id": "fp-WR-54",
@@ -23058,8 +22870,7 @@
         57,
         58
       ],
-      "positionRank": 54,
-      "overallValue": 81.9
+      "positionRank": 54
     },
     {
       "id": "fp-TE-28",
@@ -23084,8 +22895,7 @@
         33,
         34
       ],
-      "positionRank": 29,
-      "overallValue": 81.719
+      "positionRank": 29
     },
     {
       "id": "fp-TE-38",
@@ -23110,8 +22920,7 @@
         34,
         36
       ],
-      "positionRank": 30,
-      "overallValue": 79.5685
+      "positionRank": 30
     },
     {
       "id": "fp-TE-29",
@@ -23136,8 +22945,7 @@
         35,
         36
       ],
-      "positionRank": 31,
-      "overallValue": 78.49325
+      "positionRank": 31
     },
     {
       "id": "fp-QB-46",
@@ -23162,8 +22970,7 @@
         52,
         53
       ],
-      "positionRank": 47,
-      "overallValue": 78.2
+      "positionRank": 47
     },
     {
       "id": "fp-QB-47",
@@ -23188,8 +22995,7 @@
         51,
         51
       ],
-      "positionRank": 48,
-      "overallValue": 78.2
+      "positionRank": 48
     },
     {
       "id": "fp-TE-30",
@@ -23214,8 +23020,7 @@
         35,
         37
       ],
-      "positionRank": 32,
-      "overallValue": 77.41799999999999
+      "positionRank": 32
     },
     {
       "id": "fp-QB-50",
@@ -23240,8 +23045,7 @@
         52,
         54
       ],
-      "positionRank": 49,
-      "overallValue": 77.35
+      "positionRank": 49
     },
     {
       "id": "fp-WR-76",
@@ -23266,8 +23070,7 @@
         60,
         61
       ],
-      "positionRank": 55,
-      "overallValue": 77.175
+      "positionRank": 55
     },
     {
       "id": "fp-WR-55",
@@ -23292,8 +23095,7 @@
         60,
         62
       ],
-      "positionRank": 56,
-      "overallValue": 77.175
+      "positionRank": 56
     },
     {
       "id": "fp-WR-56",
@@ -23318,8 +23120,7 @@
         61,
         63
       ],
-      "positionRank": 57,
-      "overallValue": 75.60000000000001
+      "positionRank": 57
     },
     {
       "id": "fp-TE-31",
@@ -23344,8 +23145,7 @@
         33,
         33
       ],
-      "positionRank": 33,
-      "overallValue": 75.2675
+      "positionRank": 33
     },
     {
       "id": "fp-TE-32",
@@ -23370,8 +23170,7 @@
         36,
         37
       ],
-      "positionRank": 34,
-      "overallValue": 75.2675
+      "positionRank": 34
     },
     {
       "id": "fp-TE-46",
@@ -23396,8 +23195,7 @@
         37,
         38
       ],
-      "positionRank": 35,
-      "overallValue": 74.19225
+      "positionRank": 35
     },
     {
       "id": "fp-WR-57",
@@ -23422,8 +23220,7 @@
         61,
         63
       ],
-      "positionRank": 58,
-      "overallValue": 74.025
+      "positionRank": 58
     },
     {
       "id": "fp-QB-48",
@@ -23448,8 +23245,7 @@
         54,
         55
       ],
-      "positionRank": 50,
-      "overallValue": 73.95
+      "positionRank": 50
     },
     {
       "id": "fp-QB-51",
@@ -23474,8 +23270,7 @@
         54,
         56
       ],
-      "positionRank": 51,
-      "overallValue": 73.1
+      "positionRank": 51
     },
     {
       "id": "fp-WR-58",
@@ -23500,8 +23295,7 @@
         61,
         63
       ],
-      "positionRank": 59,
-      "overallValue": 72.45
+      "positionRank": 59
     },
     {
       "id": "fp-TE-34",
@@ -23526,8 +23320,7 @@
         36,
         36
       ],
-      "positionRank": 36,
-      "overallValue": 70.96650000000001
+      "positionRank": 36
     },
     {
       "id": "fp-TE-35",
@@ -23552,8 +23345,7 @@
         38,
         40
       ],
-      "positionRank": 37,
-      "overallValue": 70.96650000000001
+      "positionRank": 37
     },
     {
       "id": "fp-WR-59",
@@ -23578,8 +23370,7 @@
         65,
         67
       ],
-      "positionRank": 60,
-      "overallValue": 66.15
+      "positionRank": 60
     },
     {
       "id": "fp-WR-60",
@@ -23604,8 +23395,7 @@
         66,
         67
       ],
-      "positionRank": 61,
-      "overallValue": 66.15
+      "positionRank": 61
     },
     {
       "id": "fp-RB-61",
@@ -23630,8 +23420,7 @@
         67,
         69
       ],
-      "positionRank": 62,
-      "overallValue": 65.98125
+      "positionRank": 62
     },
     {
       "id": "fp-RB-62",
@@ -23656,8 +23445,7 @@
         67,
         69
       ],
-      "positionRank": 63,
-      "overallValue": 65.98125
+      "positionRank": 63
     },
     {
       "id": "fp-TE-36",
@@ -23682,8 +23470,7 @@
         40,
         42
       ],
-      "positionRank": 38,
-      "overallValue": 65.59025
+      "positionRank": 38
     },
     {
       "id": "fp-WR-61",
@@ -23708,8 +23495,7 @@
         66,
         68
       ],
-      "positionRank": 62,
-      "overallValue": 64.575
+      "positionRank": 62
     },
     {
       "id": "fp-RB-64",
@@ -23734,8 +23520,7 @@
         68,
         69
       ],
-      "positionRank": 64,
-      "overallValue": 64.54687500000001
+      "positionRank": 64
     },
     {
       "id": "fp-TE-37",
@@ -23760,8 +23545,7 @@
         41,
         43
       ],
-      "positionRank": 39,
-      "overallValue": 64.51499999999999
+      "positionRank": 39
     },
     {
       "id": "fp-RB-65",
@@ -23786,8 +23570,7 @@
         69,
         70
       ],
-      "positionRank": 65,
-      "overallValue": 63.1125
+      "positionRank": 65
     },
     {
       "id": "fp-WR-62",
@@ -23812,8 +23595,7 @@
         67,
         69
       ],
-      "positionRank": 63,
-      "overallValue": 63
+      "positionRank": 63
     },
     {
       "id": "fp-WR-63",
@@ -23838,8 +23620,7 @@
         67,
         69
       ],
-      "positionRank": 64,
-      "overallValue": 63
+      "positionRank": 64
     },
     {
       "id": "fp-QB-52",
@@ -23864,8 +23645,7 @@
         60,
         61
       ],
-      "positionRank": 52,
-      "overallValue": 62.05
+      "positionRank": 52
     },
     {
       "id": "fp-QB-53",
@@ -23890,8 +23670,7 @@
         60,
         61
       ],
-      "positionRank": 53,
-      "overallValue": 62.05
+      "positionRank": 53
     },
     {
       "id": "fp-WR-64",
@@ -23916,8 +23695,7 @@
         68,
         69
       ],
-      "positionRank": 65,
-      "overallValue": 61.425000000000004
+      "positionRank": 65
     },
     {
       "id": "fp-WR-65",
@@ -23942,8 +23720,7 @@
         68,
         70
       ],
-      "positionRank": 66,
-      "overallValue": 61.425000000000004
+      "positionRank": 66
     },
     {
       "id": "fp-TE-40",
@@ -23968,8 +23745,7 @@
         43,
         45
       ],
-      "positionRank": 40,
-      "overallValue": 61.28925
+      "positionRank": 40
     },
     {
       "id": "fp-QB-54",
@@ -23994,8 +23770,7 @@
         56,
         57
       ],
-      "positionRank": 54,
-      "overallValue": 61.199999999999996
+      "positionRank": 54
     },
     {
       "id": "fp-QB-55",
@@ -24020,8 +23795,7 @@
         59,
         60
       ],
-      "positionRank": 55,
-      "overallValue": 60.35
+      "positionRank": 55
     },
     {
       "id": "fp-RB-66",
@@ -24046,8 +23820,7 @@
         70,
         72
       ],
-      "positionRank": 66,
-      "overallValue": 60.24375
+      "positionRank": 66
     },
     {
       "id": "fp-QB-57",
@@ -24072,8 +23845,7 @@
         61,
         63
       ],
-      "positionRank": 56,
-      "overallValue": 59.5
+      "positionRank": 56
     },
     {
       "id": "fp-RB-67",
@@ -24098,8 +23870,7 @@
         71,
         72
       ],
-      "positionRank": 67,
-      "overallValue": 58.809374999999996
+      "positionRank": 67
     },
     {
       "id": "fp-RB-69",
@@ -24124,8 +23895,7 @@
         71,
         73
       ],
-      "positionRank": 68,
-      "overallValue": 58.809374999999996
+      "positionRank": 68
     },
     {
       "id": "fp-RB-70",
@@ -24150,8 +23920,7 @@
         71,
         73
       ],
-      "positionRank": 69,
-      "overallValue": 58.809374999999996
+      "positionRank": 69
     },
     {
       "id": "fp-TE-41",
@@ -24176,8 +23945,7 @@
         43,
         43
       ],
-      "positionRank": 41,
-      "overallValue": 58.0635
+      "positionRank": 41
     },
     {
       "id": "fp-QB-56",
@@ -24202,8 +23970,7 @@
         62,
         64
       ],
-      "positionRank": 57,
-      "overallValue": 57.8
+      "positionRank": 57
     },
     {
       "id": "fp-TE-51",
@@ -24228,8 +23995,7 @@
         45,
         47
       ],
-      "positionRank": 42,
-      "overallValue": 56.98825
+      "positionRank": 42
     },
     {
       "id": "fp-TE-42",
@@ -24254,8 +24020,7 @@
         45,
         47
       ],
-      "positionRank": 43,
-      "overallValue": 56.98825
+      "positionRank": 43
     },
     {
       "id": "fp-WR-66",
@@ -24280,8 +24045,7 @@
         70,
         72
       ],
-      "positionRank": 67,
-      "overallValue": 56.7
+      "positionRank": 67
     },
     {
       "id": "fp-QB-58",
@@ -24306,8 +24070,7 @@
         62,
         64
       ],
-      "positionRank": 58,
-      "overallValue": 56.1
+      "positionRank": 58
     },
     {
       "id": "fp-QB-59",
@@ -24332,8 +24095,7 @@
         61,
         62
       ],
-      "positionRank": 59,
-      "overallValue": 56.1
+      "positionRank": 59
     },
     {
       "id": "fp-RB-68",
@@ -24358,8 +24120,7 @@
         72,
         74
       ],
-      "positionRank": 70,
-      "overallValue": 55.940625
+      "positionRank": 70
     },
     {
       "id": "fp-WR-67",
@@ -24384,8 +24145,7 @@
         72,
         73
       ],
-      "positionRank": 68,
-      "overallValue": 55.125
+      "positionRank": 68
     },
     {
       "id": "fp-TE-39",
@@ -24410,8 +24170,7 @@
         47,
         48
       ],
-      "positionRank": 44,
-      "overallValue": 54.83775
+      "positionRank": 44
     },
     {
       "id": "fp-TE-43",
@@ -24436,8 +24195,7 @@
         47,
         48
       ],
-      "positionRank": 45,
-      "overallValue": 53.762499999999996
+      "positionRank": 45
     },
     {
       "id": "fp-TE-47",
@@ -24462,8 +24220,7 @@
         48,
         49
       ],
-      "positionRank": 46,
-      "overallValue": 53.762499999999996
+      "positionRank": 46
     },
     {
       "id": "fp-QB-60",
@@ -24488,8 +24245,7 @@
         63,
         64
       ],
-      "positionRank": 60,
-      "overallValue": 53.55
+      "positionRank": 60
     },
     {
       "id": "fp-RB-71",
@@ -24514,8 +24270,7 @@
         74,
         75
       ],
-      "positionRank": 71,
-      "overallValue": 53.071875
+      "positionRank": 71
     },
     {
       "id": "fp-RB-72",
@@ -24540,8 +24295,7 @@
         74,
         76
       ],
-      "positionRank": 72,
-      "overallValue": 53.071875
+      "positionRank": 72
     },
     {
       "id": "fp-RB-73",
@@ -24566,8 +24320,7 @@
         74,
         76
       ],
-      "positionRank": 73,
-      "overallValue": 53.071875
+      "positionRank": 73
     },
     {
       "id": "fp-TE-44",
@@ -24592,8 +24345,7 @@
         48,
         50
       ],
-      "positionRank": 47,
-      "overallValue": 52.68725
+      "positionRank": 47
     },
     {
       "id": "fp-WR-68",
@@ -24618,8 +24370,7 @@
         74,
         75
       ],
-      "positionRank": 69,
-      "overallValue": 51.975
+      "positionRank": 69
     },
     {
       "id": "fp-TE-45",
@@ -24644,8 +24395,7 @@
         49,
         50
       ],
-      "positionRank": 48,
-      "overallValue": 51.611999999999995
+      "positionRank": 48
     },
     {
       "id": "fp-TE-54",
@@ -24670,8 +24420,7 @@
         46,
         46
       ],
-      "positionRank": 49,
-      "overallValue": 50.53675
+      "positionRank": 49
     },
     {
       "id": "fp-WR-69",
@@ -24696,8 +24445,7 @@
         74,
         76
       ],
-      "positionRank": 70,
-      "overallValue": 50.400000000000006
+      "positionRank": 70
     },
     {
       "id": "fp-WR-70",
@@ -24722,8 +24470,7 @@
         75,
         76
       ],
-      "positionRank": 71,
-      "overallValue": 50.400000000000006
+      "positionRank": 71
     },
     {
       "id": "fp-RB-74",
@@ -24748,8 +24495,7 @@
         76,
         78
       ],
-      "positionRank": 74,
-      "overallValue": 50.203125
+      "positionRank": 74
     },
     {
       "id": "fp-WR-71",
@@ -24774,8 +24520,7 @@
         76,
         77
       ],
-      "positionRank": 72,
-      "overallValue": 48.825
+      "positionRank": 72
     },
     {
       "id": "fp-WR-72",
@@ -24800,8 +24545,7 @@
         76,
         77
       ],
-      "positionRank": 73,
-      "overallValue": 48.825
+      "positionRank": 73
     },
     {
       "id": "fp-TE-48",
@@ -24826,8 +24570,7 @@
         51,
         52
       ],
-      "positionRank": 50,
-      "overallValue": 48.386250000000004
+      "positionRank": 50
     },
     {
       "id": "fp-TE-49",
@@ -24852,8 +24595,7 @@
         51,
         52
       ],
-      "positionRank": 51,
-      "overallValue": 48.386250000000004
+      "positionRank": 51
     },
     {
       "id": "fp-QB-61",
@@ -24878,8 +24620,7 @@
         69,
         70
       ],
-      "positionRank": 61,
-      "overallValue": 47.6
+      "positionRank": 61
     },
     {
       "id": "fp-TE-50",
@@ -24904,8 +24645,7 @@
         52,
         53
       ],
-      "positionRank": 52,
-      "overallValue": 47.311
+      "positionRank": 52
     },
     {
       "id": "fp-WR-73",
@@ -24930,8 +24670,7 @@
         76,
         78
       ],
-      "positionRank": 74,
-      "overallValue": 47.25
+      "positionRank": 74
     },
     {
       "id": "fp-TE-55",
@@ -24956,8 +24695,7 @@
         52,
         54
       ],
-      "positionRank": 53,
-      "overallValue": 46.23575
+      "positionRank": 53
     },
     {
       "id": "fp-RB-75",
@@ -24982,8 +24720,7 @@
         79,
         81
       ],
-      "positionRank": 75,
-      "overallValue": 45.9
+      "positionRank": 75
     },
     {
       "id": "fp-TE-56",
@@ -25008,8 +24745,7 @@
         49,
         50
       ],
-      "positionRank": 54,
-      "overallValue": 45.1605
+      "positionRank": 54
     },
     {
       "id": "fp-RB-101",
@@ -25034,8 +24770,7 @@
         80,
         81
       ],
-      "positionRank": 76,
-      "overallValue": 44.465624999999996
+      "positionRank": 76
     },
     {
       "id": "fp-RB-76",
@@ -25060,8 +24795,7 @@
         80,
         81
       ],
-      "positionRank": 77,
-      "overallValue": 44.465624999999996
+      "positionRank": 77
     },
     {
       "id": "fp-RB-79",
@@ -25086,8 +24820,7 @@
         81,
         82
       ],
-      "positionRank": 78,
-      "overallValue": 44.465624999999996
+      "positionRank": 78
     },
     {
       "id": "fp-QB-63",
@@ -25112,8 +24845,7 @@
         68,
         68
       ],
-      "positionRank": 62,
-      "overallValue": 44.199999999999996
+      "positionRank": 62
     },
     {
       "id": "fp-RB-80",
@@ -25138,8 +24870,7 @@
         82,
         83
       ],
-      "positionRank": 79,
-      "overallValue": 43.03125
+      "positionRank": 79
     },
     {
       "id": "fp-RB-102",
@@ -25164,8 +24895,7 @@
         82,
         83
       ],
-      "positionRank": 80,
-      "overallValue": 43.03125
+      "positionRank": 80
     },
     {
       "id": "fp-TE-52",
@@ -25190,8 +24920,7 @@
         55,
         56
       ],
-      "positionRank": 55,
-      "overallValue": 43.00999999999999
+      "positionRank": 55
     },
     {
       "id": "fp-TE-53",
@@ -25216,8 +24945,7 @@
         55,
         57
       ],
-      "positionRank": 56,
-      "overallValue": 41.93475
+      "positionRank": 56
     },
     {
       "id": "fp-RB-77",
@@ -25242,8 +24970,7 @@
         82,
         83
       ],
-      "positionRank": 81,
-      "overallValue": 41.596875000000004
+      "positionRank": 81
     },
     {
       "id": "fp-RB-104",
@@ -25268,8 +24995,7 @@
         82,
         84
       ],
-      "positionRank": 82,
-      "overallValue": 41.596875000000004
+      "positionRank": 82
     },
     {
       "id": "fp-RB-78",
@@ -25294,8 +25020,7 @@
         82,
         84
       ],
-      "positionRank": 83,
-      "overallValue": 41.596875000000004
+      "positionRank": 83
     },
     {
       "id": "fp-RB-81",
@@ -25320,8 +25045,7 @@
         82,
         84
       ],
-      "positionRank": 84,
-      "overallValue": 41.596875000000004
+      "positionRank": 84
     },
     {
       "id": "fp-RB-82",
@@ -25346,8 +25070,7 @@
         84,
         86
       ],
-      "positionRank": 85,
-      "overallValue": 40.16250000000001
+      "positionRank": 85
     },
     {
       "id": "fp-QB-62",
@@ -25372,8 +25095,7 @@
         75,
         76
       ],
-      "positionRank": 63,
-      "overallValue": 39.949999999999996
+      "positionRank": 63
     },
     {
       "id": "fp-RB-83",
@@ -25398,8 +25120,7 @@
         85,
         86
       ],
-      "positionRank": 86,
-      "overallValue": 38.728125
+      "positionRank": 86
     },
     {
       "id": "fp-RB-84",
@@ -25424,8 +25145,7 @@
         85,
         86
       ],
-      "positionRank": 87,
-      "overallValue": 38.728125
+      "positionRank": 87
     },
     {
       "id": "fp-RB-87",
@@ -25450,8 +25170,7 @@
         86,
         88
       ],
-      "positionRank": 88,
-      "overallValue": 37.293749999999996
+      "positionRank": 88
     },
     {
       "id": "fp-WR-74",
@@ -25476,8 +25195,7 @@
         78,
         79
       ],
-      "positionRank": 75,
-      "overallValue": 36.975
+      "positionRank": 75
     },
     {
       "id": "fp-WR-75",
@@ -25502,8 +25220,7 @@
         78,
         80
       ],
-      "positionRank": 76,
-      "overallValue": 36.975
+      "positionRank": 76
     },
     {
       "id": "fp-TE-57",
@@ -25528,8 +25245,7 @@
         60,
         62
       ],
-      "positionRank": 57,
-      "overallValue": 36.5585
+      "positionRank": 57
     },
     {
       "id": "fp-RB-85",
@@ -25554,8 +25270,7 @@
         88,
         89
       ],
-      "positionRank": 89,
-      "overallValue": 35.859375
+      "positionRank": 89
     },
     {
       "id": "fp-RB-88",
@@ -25580,8 +25295,7 @@
         88,
         89
       ],
-      "positionRank": 90,
-      "overallValue": 35.859375
+      "positionRank": 90
     },
     {
       "id": "fp-RB-91",
@@ -25606,8 +25320,7 @@
         89,
         90
       ],
-      "positionRank": 91,
-      "overallValue": 34.425000000000004
+      "positionRank": 91
     },
     {
       "id": "fp-RB-90",
@@ -25632,8 +25345,7 @@
         89,
         90
       ],
-      "positionRank": 92,
-      "overallValue": 34.425000000000004
+      "positionRank": 92
     },
     {
       "id": "fp-RB-86",
@@ -25658,8 +25370,7 @@
         89,
         91
       ],
-      "positionRank": 93,
-      "overallValue": 34.425000000000004
+      "positionRank": 93
     },
     {
       "id": "fp-RB-89",
@@ -25684,8 +25395,7 @@
         90,
         91
       ],
-      "positionRank": 94,
-      "overallValue": 32.990625
+      "positionRank": 94
     },
     {
       "id": "fp-TE-58",
@@ -25710,8 +25420,7 @@
         64,
         66
       ],
-      "positionRank": 58,
-      "overallValue": 32.25749999999999
+      "positionRank": 58
     },
     {
       "id": "fp-WR-77",
@@ -25736,8 +25445,7 @@
         83,
         84
       ],
-      "positionRank": 77,
-      "overallValue": 31.875
+      "positionRank": 77
     },
     {
       "id": "fp-WR-78",
@@ -25762,8 +25470,7 @@
         83,
         85
       ],
-      "positionRank": 78,
-      "overallValue": 31.875
+      "positionRank": 78
     },
     {
       "id": "fp-RB-94",
@@ -25788,8 +25495,7 @@
         92,
         94
       ],
-      "positionRank": 95,
-      "overallValue": 31.55625
+      "positionRank": 95
     },
     {
       "id": "fp-WR-79",
@@ -25814,8 +25520,7 @@
         84,
         85
       ],
-      "positionRank": 79,
-      "overallValue": 30.599999999999998
+      "positionRank": 79
     },
     {
       "id": "fp-RB-92",
@@ -25840,8 +25545,7 @@
         93,
         94
       ],
-      "positionRank": 96,
-      "overallValue": 30.121875
+      "positionRank": 96
     },
     {
       "id": "fp-RB-95",
@@ -25866,8 +25570,7 @@
         94,
         95
       ],
-      "positionRank": 97,
-      "overallValue": 30.121875
+      "positionRank": 97
     },
     {
       "id": "fp-WR-80",
@@ -25892,8 +25595,7 @@
         85,
         87
       ],
-      "positionRank": 80,
-      "overallValue": 29.325
+      "positionRank": 80
     },
     {
       "id": "fp-WR-81",
@@ -25918,8 +25620,7 @@
         86,
         87
       ],
-      "positionRank": 81,
-      "overallValue": 29.325
+      "positionRank": 81
     },
     {
       "id": "fp-RB-93",
@@ -25944,8 +25645,7 @@
         95,
         96
       ],
-      "positionRank": 98,
-      "overallValue": 28.6875
+      "positionRank": 98
     },
     {
       "id": "fp-WR-82",
@@ -25970,8 +25670,7 @@
         87,
         89
       ],
-      "positionRank": 82,
-      "overallValue": 28.05
+      "positionRank": 82
     },
     {
       "id": "fp-WR-83",
@@ -25996,8 +25695,7 @@
         87,
         89
       ],
-      "positionRank": 83,
-      "overallValue": 28.05
+      "positionRank": 83
     },
     {
       "id": "fp-RB-96",
@@ -26022,8 +25720,7 @@
         97,
         98
       ],
-      "positionRank": 99,
-      "overallValue": 27.253125
+      "positionRank": 99
     },
     {
       "id": "fp-WR-84",
@@ -26048,8 +25745,7 @@
         89,
         90
       ],
-      "positionRank": 84,
-      "overallValue": 26.775
+      "positionRank": 84
     },
     {
       "id": "fp-RB-97",
@@ -26074,8 +25770,7 @@
         99,
         100
       ],
-      "positionRank": 100,
-      "overallValue": 25.818749999999998
+      "positionRank": 100
     },
     {
       "id": "fp-RB-99",
@@ -26100,8 +25795,7 @@
         99,
         101
       ],
-      "positionRank": 101,
-      "overallValue": 25.818749999999998
+      "positionRank": 101
     },
     {
       "id": "fp-WR-85",
@@ -26126,8 +25820,7 @@
         90,
         92
       ],
-      "positionRank": 85,
-      "overallValue": 25.5
+      "positionRank": 85
     },
     {
       "id": "fp-WR-86",
@@ -26152,8 +25845,7 @@
         91,
         92
       ],
-      "positionRank": 86,
-      "overallValue": 25.5
+      "positionRank": 86
     },
     {
       "id": "fp-RB-98",
@@ -26178,8 +25870,7 @@
         100,
         101
       ],
-      "positionRank": 102,
-      "overallValue": 24.384375000000002
+      "positionRank": 102
     },
     {
       "id": "fp-RB-100",
@@ -26204,8 +25895,7 @@
         100,
         101
       ],
-      "positionRank": 103,
-      "overallValue": 24.384375000000002
+      "positionRank": 103
     },
     {
       "id": "fp-RB-103",
@@ -26230,8 +25920,7 @@
         101,
         102
       ],
-      "positionRank": 104,
-      "overallValue": 24.384375000000002
+      "positionRank": 104
     },
     {
       "id": "fp-WR-87",
@@ -26256,8 +25945,7 @@
         91,
         93
       ],
-      "positionRank": 87,
-      "overallValue": 24.224999999999998
+      "positionRank": 87
     },
     {
       "id": "fp-WR-88",
@@ -26282,8 +25970,7 @@
         91,
         93
       ],
-      "positionRank": 88,
-      "overallValue": 24.224999999999998
+      "positionRank": 88
     },
     {
       "id": "fp-WR-89",
@@ -26308,8 +25995,7 @@
         92,
         93
       ],
-      "positionRank": 89,
-      "overallValue": 24.224999999999998
+      "positionRank": 89
     },
     {
       "id": "fp-WR-98",
@@ -26334,8 +26020,7 @@
         92,
         94
       ],
-      "positionRank": 90,
-      "overallValue": 24.224999999999998
+      "positionRank": 90
     },
     {
       "id": "fp-RB-105",
@@ -26360,8 +26045,7 @@
         103,
         104
       ],
-      "positionRank": 105,
-      "overallValue": 22.95
+      "positionRank": 105
     },
     {
       "id": "fp-WR-114",
@@ -26386,8 +26070,7 @@
         93,
         95
       ],
-      "positionRank": 91,
-      "overallValue": 22.95
+      "positionRank": 91
     },
     {
       "id": "fp-WR-122",
@@ -26412,8 +26095,7 @@
         95,
         96
       ],
-      "positionRank": 92,
-      "overallValue": 21.675
+      "positionRank": 92
     },
     {
       "id": "fp-WR-90",
@@ -26438,8 +26120,7 @@
         94,
         96
       ],
-      "positionRank": 93,
-      "overallValue": 21.675
+      "positionRank": 93
     },
     {
       "id": "fp-WR-91",
@@ -26464,8 +26145,7 @@
         96,
         97
       ],
-      "positionRank": 94,
-      "overallValue": 21.675
+      "positionRank": 94
     },
     {
       "id": "fp-WR-92",
@@ -26490,8 +26170,7 @@
         96,
         97
       ],
-      "positionRank": 95,
-      "overallValue": 21.675
+      "positionRank": 95
     },
     {
       "id": "fp-WR-93",
@@ -26516,8 +26195,7 @@
         96,
         98
       ],
-      "positionRank": 96,
-      "overallValue": 21.675
+      "positionRank": 96
     },
     {
       "id": "fp-RB-106",
@@ -26542,8 +26220,7 @@
         105,
         106
       ],
-      "positionRank": 106,
-      "overallValue": 21.515625
+      "positionRank": 106
     },
     {
       "id": "fp-RB-107",
@@ -26568,8 +26245,7 @@
         105,
         106
       ],
-      "positionRank": 107,
-      "overallValue": 21.515625
+      "positionRank": 107
     },
     {
       "id": "fp-RB-110",
@@ -26594,8 +26270,7 @@
         105,
         106
       ],
-      "positionRank": 108,
-      "overallValue": 21.515625
+      "positionRank": 108
     },
     {
       "id": "fp-RB-108",
@@ -26620,8 +26295,7 @@
         105,
         107
       ],
-      "positionRank": 109,
-      "overallValue": 21.515625
+      "positionRank": 109
     },
     {
       "id": "fp-WR-94",
@@ -26646,8 +26320,7 @@
         98,
         99
       ],
-      "positionRank": 97,
-      "overallValue": 20.4
+      "positionRank": 97
     },
     {
       "id": "fp-WR-95",
@@ -26672,8 +26345,7 @@
         98,
         100
       ],
-      "positionRank": 98,
-      "overallValue": 20.4
+      "positionRank": 98
     },
     {
       "id": "fp-RB-109",
@@ -26698,8 +26370,7 @@
         106,
         108
       ],
-      "positionRank": 110,
-      "overallValue": 20.081250000000004
+      "positionRank": 110
     },
     {
       "id": "fp-WR-96",
@@ -26724,8 +26395,7 @@
         99,
         101
       ],
-      "positionRank": 99,
-      "overallValue": 19.125
+      "positionRank": 99
     },
     {
       "id": "fp-WR-97",
@@ -26750,8 +26420,7 @@
         100,
         101
       ],
-      "positionRank": 100,
-      "overallValue": 19.125
+      "positionRank": 100
     },
     {
       "id": "fp-WR-124",
@@ -26776,8 +26445,7 @@
         101,
         102
       ],
-      "positionRank": 101,
-      "overallValue": 19.125
+      "positionRank": 101
     },
     {
       "id": "fp-WR-100",
@@ -26802,8 +26470,7 @@
         101,
         102
       ],
-      "positionRank": 102,
-      "overallValue": 17.849999999999998
+      "positionRank": 102
     },
     {
       "id": "fp-WR-107",
@@ -26828,8 +26495,7 @@
         102,
         104
       ],
-      "positionRank": 103,
-      "overallValue": 17.849999999999998
+      "positionRank": 103
     },
     {
       "id": "fp-WR-99",
@@ -26854,8 +26520,7 @@
         103,
         104
       ],
-      "positionRank": 104,
-      "overallValue": 17.849999999999998
+      "positionRank": 104
     },
     {
       "id": "fp-WR-102",
@@ -26880,8 +26545,7 @@
         103,
         105
       ],
-      "positionRank": 105,
-      "overallValue": 17.849999999999998
+      "positionRank": 105
     },
     {
       "id": "fp-WR-101",
@@ -26906,8 +26570,7 @@
         104,
         106
       ],
-      "positionRank": 106,
-      "overallValue": 16.575
+      "positionRank": 106
     },
     {
       "id": "fp-WR-103",
@@ -26932,8 +26595,7 @@
         107,
         108
       ],
-      "positionRank": 107,
-      "overallValue": 15.299999999999999
+      "positionRank": 107
     },
     {
       "id": "fp-WR-104",
@@ -26958,8 +26620,7 @@
         107,
         108
       ],
-      "positionRank": 108,
-      "overallValue": 15.299999999999999
+      "positionRank": 108
     },
     {
       "id": "fp-WR-105",
@@ -26984,8 +26645,7 @@
         107,
         108
       ],
-      "positionRank": 109,
-      "overallValue": 15.299999999999999
+      "positionRank": 109
     },
     {
       "id": "fp-WR-106",
@@ -27010,8 +26670,7 @@
         107,
         109
       ],
-      "positionRank": 110,
-      "overallValue": 15.299999999999999
+      "positionRank": 110
     },
     {
       "id": "fp-WR-121",
@@ -27036,8 +26695,7 @@
         108,
         109
       ],
-      "positionRank": 111,
-      "overallValue": 15.299999999999999
+      "positionRank": 111
     },
     {
       "id": "fp-WR-108",
@@ -27062,8 +26720,7 @@
         108,
         109
       ],
-      "positionRank": 112,
-      "overallValue": 15.299999999999999
+      "positionRank": 112
     },
     {
       "id": "fp-WR-109",
@@ -27088,8 +26745,7 @@
         109,
         110
       ],
-      "positionRank": 113,
-      "overallValue": 14.025
+      "positionRank": 113
     },
     {
       "id": "fp-WR-125",
@@ -27114,8 +26770,7 @@
         110,
         112
       ],
-      "positionRank": 114,
-      "overallValue": 14.025
+      "positionRank": 114
     },
     {
       "id": "fp-WR-110",
@@ -27140,8 +26795,7 @@
         110,
         112
       ],
-      "positionRank": 115,
-      "overallValue": 14.025
+      "positionRank": 115
     },
     {
       "id": "fp-WR-126",
@@ -27166,8 +26820,7 @@
         112,
         113
       ],
-      "positionRank": 116,
-      "overallValue": 12.75
+      "positionRank": 116
     },
     {
       "id": "fp-WR-127",
@@ -27192,8 +26845,7 @@
         110,
         111
       ],
-      "positionRank": 117,
-      "overallValue": 12.75
+      "positionRank": 117
     },
     {
       "id": "fp-WR-111",
@@ -27218,8 +26870,7 @@
         112,
         113
       ],
-      "positionRank": 118,
-      "overallValue": 12.75
+      "positionRank": 118
     },
     {
       "id": "fp-WR-120",
@@ -27244,8 +26895,7 @@
         112,
         114
       ],
-      "positionRank": 119,
-      "overallValue": 12.75
+      "positionRank": 119
     },
     {
       "id": "fp-WR-128",
@@ -27270,8 +26920,7 @@
         109,
         110
       ],
-      "positionRank": 120,
-      "overallValue": 12.75
+      "positionRank": 120
     },
     {
       "id": "fp-WR-112",
@@ -27296,8 +26945,7 @@
         113,
         115
       ],
-      "positionRank": 121,
-      "overallValue": 12.75
+      "positionRank": 121
     },
     {
       "id": "fp-WR-113",
@@ -27322,8 +26970,7 @@
         113,
         115
       ],
-      "positionRank": 122,
-      "overallValue": 12.75
+      "positionRank": 122
     },
     {
       "id": "fp-WR-117",
@@ -27348,8 +26995,7 @@
         114,
         115
       ],
-      "positionRank": 123,
-      "overallValue": 12.75
+      "positionRank": 123
     },
     {
       "id": "fp-WR-129",
@@ -27374,8 +27020,7 @@
         113,
         115
       ],
-      "positionRank": 124,
-      "overallValue": 12.75
+      "positionRank": 124
     },
     {
       "id": "fp-WR-115",
@@ -27400,8 +27045,7 @@
         115,
         116
       ],
-      "positionRank": 125,
-      "overallValue": 12.75
+      "positionRank": 125
     },
     {
       "id": "fp-WR-116",
@@ -27426,8 +27070,7 @@
         116,
         118
       ],
-      "positionRank": 126,
-      "overallValue": 11.475
+      "positionRank": 126
     },
     {
       "id": "fp-WR-123",
@@ -27452,8 +27095,7 @@
         116,
         118
       ],
-      "positionRank": 127,
-      "overallValue": 11.475
+      "positionRank": 127
     },
     {
       "id": "fp-WR-118",
@@ -27478,8 +27120,7 @@
         117,
         118
       ],
-      "positionRank": 128,
-      "overallValue": 11.475
+      "positionRank": 128
     },
     {
       "id": "fp-WR-119",
@@ -27504,8 +27145,7 @@
         118,
         119
       ],
-      "positionRank": 129,
-      "overallValue": 11.475
+      "positionRank": 129
     },
     {
       "id": "fp-WR-130",
@@ -27530,8 +27170,7 @@
         126,
         127
       ],
-      "positionRank": 130,
-      "overallValue": 8.924999999999999
+      "positionRank": 130
     },
     {
       "id": "fp-DST-1",
@@ -27556,8 +27195,7 @@
         2,
         2
       ],
-      "positionRank": 1,
-      "overallValue": 30.419999999999998
+      "positionRank": 1
     },
     {
       "id": "fp-DST-2",
@@ -27582,8 +27220,7 @@
         4,
         4
       ],
-      "positionRank": 2,
-      "overallValue": 29.484
+      "positionRank": 2
     },
     {
       "id": "fp-DST-3",
@@ -27608,8 +27245,7 @@
         4,
         4
       ],
-      "positionRank": 3,
-      "overallValue": 29.016000000000002
+      "positionRank": 3
     },
     {
       "id": "fp-DST-4",
@@ -27634,8 +27270,7 @@
         5,
         5
       ],
-      "positionRank": 4,
-      "overallValue": 28.08
+      "positionRank": 4
     },
     {
       "id": "fp-DST-5",
@@ -27660,8 +27295,7 @@
         7,
         8
       ],
-      "positionRank": 5,
-      "overallValue": 26.676000000000002
+      "positionRank": 5
     },
     {
       "id": "fp-DST-6",
@@ -27686,8 +27320,7 @@
         8,
         9
       ],
-      "positionRank": 6,
-      "overallValue": 22.977
+      "positionRank": 6
     },
     {
       "id": "fp-DST-7",
@@ -27712,8 +27345,7 @@
         10,
         10
       ],
-      "positionRank": 7,
-      "overallValue": 22.563
+      "positionRank": 7
     },
     {
       "id": "fp-DST-8",
@@ -27738,8 +27370,7 @@
         12,
         13
       ],
-      "positionRank": 8,
-      "overallValue": 21.528
+      "positionRank": 8
     },
     {
       "id": "fp-DST-9",
@@ -27764,8 +27395,7 @@
         15,
         16
       ],
-      "positionRank": 9,
-      "overallValue": 20.7
+      "positionRank": 9
     },
     {
       "id": "fp-DST-10",
@@ -27790,8 +27420,7 @@
         11,
         11
       ],
-      "positionRank": 10,
-      "overallValue": 20.7
+      "positionRank": 10
     },
     {
       "id": "fp-DST-11",
@@ -27816,8 +27445,7 @@
         13,
         14
       ],
-      "positionRank": 11,
-      "overallValue": 20.285999999999998
+      "positionRank": 11
     },
     {
       "id": "fp-DST-12",
@@ -27842,8 +27470,7 @@
         14,
         14
       ],
-      "positionRank": 12,
-      "overallValue": 19.250999999999998
+      "positionRank": 12
     },
     {
       "id": "fp-DST-13",
@@ -27868,8 +27495,7 @@
         17,
         19
       ],
-      "positionRank": 13,
-      "overallValue": 19.250999999999998
+      "positionRank": 13
     },
     {
       "id": "fp-DST-14",
@@ -27894,8 +27520,7 @@
         16,
         16
       ],
-      "positionRank": 14,
-      "overallValue": 16.065
+      "positionRank": 14
     },
     {
       "id": "fp-DST-15",
@@ -27920,8 +27545,7 @@
         19,
         20
       ],
-      "positionRank": 15,
-      "overallValue": 16.065
+      "positionRank": 15
     },
     {
       "id": "fp-DST-21",
@@ -27946,8 +27570,7 @@
         22,
         23
       ],
-      "positionRank": 16,
-      "overallValue": 15.309000000000001
+      "positionRank": 16
     },
     {
       "id": "fp-DST-16",
@@ -27972,8 +27595,7 @@
         22,
         23
       ],
-      "positionRank": 17,
-      "overallValue": 15.12
+      "positionRank": 17
     },
     {
       "id": "fp-DST-17",
@@ -27998,8 +27620,7 @@
         23,
         24
       ],
-      "positionRank": 18,
-      "overallValue": 14.931
+      "positionRank": 18
     },
     {
       "id": "fp-DST-18",
@@ -28024,8 +27645,7 @@
         24,
         25
       ],
-      "positionRank": 19,
-      "overallValue": 14.364
+      "positionRank": 19
     },
     {
       "id": "fp-DST-19",
@@ -28050,8 +27670,7 @@
         25,
         26
       ],
-      "positionRank": 20,
-      "overallValue": 11.322
+      "positionRank": 20
     },
     {
       "id": "fp-DST-20",
@@ -28076,8 +27695,7 @@
         25,
         26
       ],
-      "positionRank": 21,
-      "overallValue": 11.168999999999999
+      "positionRank": 21
     },
     {
       "id": "fp-DST-22",
@@ -28102,8 +27720,7 @@
         24,
         25
       ],
-      "positionRank": 22,
-      "overallValue": 11.015999999999998
+      "positionRank": 22
     },
     {
       "id": "fp-DST-23",
@@ -28128,8 +27745,7 @@
         27,
         28
       ],
-      "positionRank": 23,
-      "overallValue": 10.251
+      "positionRank": 23
     },
     {
       "id": "fp-DST-24",
@@ -28154,8 +27770,7 @@
         28,
         30
       ],
-      "positionRank": 24,
-      "overallValue": 10.251
+      "positionRank": 24
     },
     {
       "id": "fp-DST-25",
@@ -28180,8 +27795,7 @@
         29,
         30
       ],
-      "positionRank": 25,
-      "overallValue": 9.944999999999999
+      "positionRank": 25
     },
     {
       "id": "fp-DST-27",
@@ -28206,8 +27820,7 @@
         30,
         31
       ],
-      "positionRank": 26,
-      "overallValue": 9.639
+      "positionRank": 26
     },
     {
       "id": "fp-DST-28",
@@ -28232,8 +27845,7 @@
         31,
         32
       ],
-      "positionRank": 27,
-      "overallValue": 9.486
+      "positionRank": 27
     },
     {
       "id": "fp-DST-29",
@@ -28258,8 +27870,7 @@
         28,
         29
       ],
-      "positionRank": 28,
-      "overallValue": 9.333
+      "positionRank": 28
     },
     {
       "id": "fp-DST-26",
@@ -28284,8 +27895,7 @@
         31,
         33
       ],
-      "positionRank": 29,
-      "overallValue": 9.333
+      "positionRank": 29
     },
     {
       "id": "fp-DST-30",
@@ -28310,8 +27920,7 @@
         31,
         32
       ],
-      "positionRank": 30,
-      "overallValue": 8.721
+      "positionRank": 30
     },
     {
       "id": "fp-DST-31",
@@ -28336,8 +27945,7 @@
         31,
         31
       ],
-      "positionRank": 31,
-      "overallValue": 8.721
+      "positionRank": 31
     },
     {
       "id": "fp-DST-32",
@@ -28362,8 +27970,7 @@
         33,
         34
       ],
-      "positionRank": 32,
-      "overallValue": 8.415000000000001
+      "positionRank": 32
     },
     {
       "id": "fp-K-1",
@@ -28388,8 +27995,7 @@
         3,
         3
       ],
-      "positionRank": 1,
-      "overallValue": 19.5
+      "positionRank": 1
     },
     {
       "id": "fp-K-2",
@@ -28414,8 +28020,7 @@
         3,
         3
       ],
-      "positionRank": 2,
-      "overallValue": 19.032
+      "positionRank": 2
     },
     {
       "id": "fp-K-3",
@@ -28440,8 +28045,7 @@
         5,
         5
       ],
-      "positionRank": 3,
-      "overallValue": 18.252
+      "positionRank": 3
     },
     {
       "id": "fp-K-4",
@@ -28466,8 +28070,7 @@
         9,
         11
       ],
-      "positionRank": 4,
-      "overallValue": 17.628
+      "positionRank": 4
     },
     {
       "id": "fp-K-5",
@@ -28492,8 +28095,7 @@
         7,
         7
       ],
-      "positionRank": 5,
-      "overallValue": 17.316000000000003
+      "positionRank": 5
     },
     {
       "id": "fp-K-6",
@@ -28518,8 +28120,7 @@
         9,
         9
       ],
-      "positionRank": 6,
-      "overallValue": 14.213999999999999
+      "positionRank": 6
     },
     {
       "id": "fp-K-7",
@@ -28544,8 +28145,7 @@
         13,
         14
       ],
-      "positionRank": 7,
-      "overallValue": 13.937999999999999
+      "positionRank": 7
     },
     {
       "id": "fp-K-8",
@@ -28570,8 +28170,7 @@
         10,
         10
       ],
-      "positionRank": 8,
-      "overallValue": 13.799999999999999
+      "positionRank": 8
     },
     {
       "id": "fp-K-9",
@@ -28596,8 +28195,7 @@
         14,
         16
       ],
-      "positionRank": 9,
-      "overallValue": 13.385999999999997
+      "positionRank": 9
     },
     {
       "id": "fp-K-10",
@@ -28622,8 +28220,7 @@
         11,
         11
       ],
-      "positionRank": 10,
-      "overallValue": 13.11
+      "positionRank": 10
     },
     {
       "id": "fp-K-11",
@@ -28648,8 +28245,7 @@
         14,
         15
       ],
-      "positionRank": 11,
-      "overallValue": 12.971999999999998
+      "positionRank": 11
     },
     {
       "id": "fp-K-25",
@@ -28674,8 +28270,7 @@
         12,
         12
       ],
-      "positionRank": 12,
-      "overallValue": 12.834
+      "positionRank": 12
     },
     {
       "id": "fp-K-12",
@@ -28700,8 +28295,7 @@
         17,
         18
       ],
-      "positionRank": 13,
-      "overallValue": 12.419999999999998
+      "positionRank": 13
     },
     {
       "id": "fp-K-13",
@@ -28726,8 +28320,7 @@
         15,
         16
       ],
-      "positionRank": 14,
-      "overallValue": 12.281999999999998
+      "positionRank": 14
     },
     {
       "id": "fp-K-14",
@@ -28752,8 +28345,7 @@
         17,
         17
       ],
-      "positionRank": 15,
-      "overallValue": 11.591999999999999
+      "positionRank": 15
     },
     {
       "id": "fp-K-15",
@@ -28778,8 +28370,7 @@
         20,
         21
       ],
-      "positionRank": 16,
-      "overallValue": 10.332
+      "positionRank": 16
     },
     {
       "id": "fp-K-16",
@@ -28804,8 +28395,7 @@
         21,
         22
       ],
-      "positionRank": 17,
-      "overallValue": 9.954
+      "positionRank": 17
     },
     {
       "id": "fp-K-17",
@@ -28830,8 +28420,7 @@
         21,
         22
       ],
-      "positionRank": 18,
-      "overallValue": 9.954
+      "positionRank": 18
     },
     {
       "id": "fp-K-18",
@@ -28856,8 +28445,7 @@
         19,
         19
       ],
-      "positionRank": 19,
-      "overallValue": 9.828
+      "positionRank": 19
     },
     {
       "id": "fp-K-19",
@@ -28882,8 +28470,7 @@
         24,
         25
       ],
-      "positionRank": 20,
-      "overallValue": 9.324
+      "positionRank": 20
     },
     {
       "id": "fp-K-20",
@@ -28908,8 +28495,7 @@
         21,
         21
       ],
-      "positionRank": 21,
-      "overallValue": 8.946
+      "positionRank": 21
     },
     {
       "id": "fp-K-27",
@@ -28934,8 +28520,7 @@
         25,
         27
       ],
-      "positionRank": 22,
-      "overallValue": 7.14
+      "positionRank": 22
     },
     {
       "id": "fp-K-21",
@@ -28960,8 +28545,7 @@
         26,
         27
       ],
-      "positionRank": 23,
-      "overallValue": 7.037999999999999
+      "positionRank": 23
     },
     {
       "id": "fp-K-22",
@@ -28986,8 +28570,7 @@
         23,
         24
       ],
-      "positionRank": 24,
-      "overallValue": 7.037999999999999
+      "positionRank": 24
     },
     {
       "id": "fp-K-23",
@@ -29012,8 +28595,7 @@
         24,
         25
       ],
-      "positionRank": 25,
-      "overallValue": 6.936
+      "positionRank": 25
     },
     {
       "id": "fp-K-24",
@@ -29038,8 +28620,7 @@
         28,
         29
       ],
-      "positionRank": 26,
-      "overallValue": 6.528
+      "positionRank": 26
     },
     {
       "id": "fp-K-26",
@@ -29064,8 +28645,7 @@
         28,
         29
       ],
-      "positionRank": 27,
-      "overallValue": 6.528
+      "positionRank": 27
     },
     {
       "id": "fp-K-28",
@@ -29090,8 +28670,7 @@
         27,
         27
       ],
-      "positionRank": 28,
-      "overallValue": 6.119999999999999
+      "positionRank": 28
     },
     {
       "id": "fp-K-29",
@@ -29116,8 +28695,7 @@
         27,
         27
       ],
-      "positionRank": 29,
-      "overallValue": 6.119999999999999
+      "positionRank": 29
     },
     {
       "id": "fp-K-30",
@@ -29142,8 +28720,7 @@
         29,
         29
       ],
-      "positionRank": 30,
-      "overallValue": 5.712
+      "positionRank": 30
     },
     {
       "id": "fp-K-31",
@@ -29168,8 +28745,7 @@
         30,
         30
       ],
-      "positionRank": 31,
-      "overallValue": 5.507999999999999
+      "positionRank": 31
     },
     {
       "id": "fp-K-32",
@@ -29194,8 +28770,7 @@
         31,
         31
       ],
-      "positionRank": 32,
-      "overallValue": 5.406
+      "positionRank": 32
     },
     {
       "id": "fp-K-33",
@@ -29220,8 +28795,7 @@
         32,
         32
       ],
-      "positionRank": 33,
-      "overallValue": 5.202
+      "positionRank": 33
     },
     {
       "id": "fp-K-34",
@@ -29246,8 +28820,7 @@
         33,
         33
       ],
-      "positionRank": 34,
-      "overallValue": 5.1
+      "positionRank": 34
     }
   ],
   "sliceMetadata": {

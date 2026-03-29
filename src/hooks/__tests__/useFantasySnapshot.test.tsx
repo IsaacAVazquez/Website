@@ -29,7 +29,7 @@ describe("useFantasySnapshot", () => {
         scoringFormat: "STANDARD",
         source: "snapshot",
         sliceMetadata: {
-          overall: { available: true, sourceKind: "overall_consensus", rangeKind: "overall", playerCount: 1 },
+          overall: { available: true, sourceKind: "derived_overall", rangeKind: "overall", playerCount: 1 },
           qb: { available: true, sourceKind: "shared_position_consensus", rangeKind: "position", playerCount: 1 },
           rb: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
           wr: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
@@ -91,6 +91,7 @@ describe("useFantasySnapshot", () => {
     expect(result.current.players).toHaveLength(1);
     expect(result.current.metadata?.position).toBe("qb");
     expect(result.current.sliceMetadata?.available).toBe(true);
+    expect(result.current.metadata?.slices?.overall.sourceKind).toBe("derived_overall");
   });
 
   it("loads the full snapshot when all=true", async () => {
@@ -104,7 +105,7 @@ describe("useFantasySnapshot", () => {
         scoringFormat: "HALF_PPR",
         source: "snapshot",
         sliceMetadata: {
-          overall: { available: true, sourceKind: "overall_consensus", rangeKind: "overall", playerCount: 1 },
+          overall: { available: true, sourceKind: "derived_overall", rangeKind: "overall", playerCount: 1 },
           qb: { available: true, sourceKind: "shared_position_consensus", rangeKind: "position", playerCount: 0 },
           rb: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
           wr: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
@@ -161,10 +162,13 @@ describe("useFantasySnapshot", () => {
     expect(result.current.players).toHaveLength(1);
     expect(result.current.metadata?.position).toBe("all");
     expect(result.current.metadata?.slice).toBeNull();
+    expect(result.current.metadata?.slices?.overall.sourceKind).toBe("derived_overall");
     expect(result.current.metadata?.slices?.dst.available).toBe(true);
   });
 
   it("does not refetch when only the position changes for the same scoring format", async () => {
+    const initialProps: { position: "rb" | "flex" } = { position: "rb" };
+
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
       json: async () => ({
@@ -175,7 +179,7 @@ describe("useFantasySnapshot", () => {
         scoringFormat: "STANDARD",
         source: "snapshot",
         sliceMetadata: {
-          overall: { available: true, sourceKind: "overall_consensus", rangeKind: "overall", playerCount: 0 },
+          overall: { available: true, sourceKind: "derived_overall", rangeKind: "overall", playerCount: 0 },
           qb: { available: true, sourceKind: "shared_position_consensus", rangeKind: "position", playerCount: 0 },
           rb: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 1 },
           wr: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 0 },
@@ -220,13 +224,13 @@ describe("useFantasySnapshot", () => {
     });
 
     const { result, rerender } = renderHook(
-      ({ position }) =>
+      ({ position }: { position: "rb" | "flex" }) =>
         useFantasySnapshot({
           position,
           scoring: "standard",
         }),
       {
-        initialProps: { position: "rb" as const },
+        initialProps,
       }
     );
 

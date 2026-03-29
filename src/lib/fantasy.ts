@@ -193,7 +193,12 @@ function snapshotPositionToRoutePosition(position: FantasySnapshotPosition): Fan
 }
 
 function toPlayerArray(raw: unknown): Player[] {
-  return Array.isArray(raw) ? (raw as Player[]) : [];
+  return Array.isArray(raw) ? raw.map((player) => stripFantasyPlayerInternalFields(player as Player)) : [];
+}
+
+export function stripFantasyPlayerInternalFields(player: Player): Player {
+  const { overallValue: _overallValue, ...publishedPlayer } = player;
+  return publishedPlayer;
 }
 
 function getFantasySliceSupport(

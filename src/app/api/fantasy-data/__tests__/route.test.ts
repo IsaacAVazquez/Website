@@ -140,7 +140,9 @@ describe("GET /api/fantasy-data", () => {
     expect(body.metadata.position).toBe("all");
     expect(body.metadata.scoringFormat).toBe("STANDARD");
     expect(body.metadata.slice).toBeNull();
+    expect(body.metadata.slices.overall.sourceKind).toBe("derived_overall");
     expect(body.metadata.slices.dst.available).toBe(true);
+    expect(body.data.overall.every((player: Record<string, unknown>) => !("overallValue" in player))).toBe(true);
   });
 
   it("uses the rate limit response when the request is limited", async () => {

@@ -36,7 +36,7 @@ jest.mock("@/hooks/useFantasySnapshot", () => ({
 
 function buildSliceMetadataMap() {
   return {
-    overall: { available: true, sourceKind: "overall_consensus", rangeKind: "overall", playerCount: 0 },
+    overall: { available: true, sourceKind: "derived_overall", rangeKind: "overall", playerCount: 0 },
     qb: {
       available: true,
       sourceKind: "shared_position_consensus",

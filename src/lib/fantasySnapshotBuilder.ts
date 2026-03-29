@@ -9,6 +9,7 @@ import {
   FantasySnapshotPosition,
   FantasySnapshotSliceMetadata,
   routeScoringToScoringFormat,
+  stripFantasyPlayerInternalFields,
 } from "@/lib/fantasy";
 import { getFantasyPositionData } from "@/lib/fantasyPositionData";
 import { calculateOverallRankings } from "@/lib/overallValueCalculator";
@@ -116,14 +117,14 @@ function buildPositionRankLookup(players: Player[]): Map<string, number> {
   }
 
   const lookup = new Map<string, number>();
-  for (const positionPlayers of byPosition.values()) {
+  byPosition.forEach((positionPlayers: Player[]) => {
     positionPlayers
       .slice()
-      .sort((left, right) => numericRank(left.averageRank) - numericRank(right.averageRank))
-      .forEach((player, index) => {
+      .sort((left: Player, right: Player) => numericRank(left.averageRank) - numericRank(right.averageRank))
+      .forEach((player: Player, index: number) => {
         lookup.set(player.id, index + 1);
       });
-  }
+  });
 
   return lookup;
 }
@@ -133,7 +134,7 @@ function buildPositionSlice(players: Player[], position: Player["position"]): Pl
   const tiered = assignMissingTiers(normalized, position);
 
   return tiered.map((player, index) => ({
-    ...player,
+    ...stripFantasyPlayerInternalFields(player),
     positionRank: index + 1,
   }));
 }
@@ -226,7 +227,7 @@ function buildOverallSlice(players: Player[]): Player[] {
   const fallbackPositionRanks = buildPositionRankLookup(players);
 
   return tiered.map((player) => ({
-    ...player,
+    ...stripFantasyPlayerInternalFields(player),
     positionRank: inputPositionRanks.get(player.id) ?? fallbackPositionRanks.get(player.id),
   }));
 }
@@ -274,7 +275,7 @@ function buildFlexSlice(
   const tieredFlexPlayers = assignMissingTiers(normalizedFlexPlayers, "FLEX");
 
   return tieredFlexPlayers.map((player, index) => ({
-    ...player,
+    ...stripFantasyPlayerInternalFields(player),
     averageRank: index + 1,
   }));
 }
