@@ -15,6 +15,7 @@ import {
   getFantasyPlayerSearchText,
   getFantasyWeekLabel,
 } from "@/lib/fantasy";
+import { Player } from "@/types";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
 
 const POSITION_OPTIONS: FantasyRoutePosition[] = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
@@ -75,6 +76,19 @@ function getPositionTone(position: string): string {
     default:
       return "bg-white/10 text-white ring-white/10";
   }
+}
+
+function getPublishedBoardRank(player: Player, position: FantasyRoutePosition): string {
+  const rankValue =
+    position === "overall" || position === "flex"
+      ? player.averageRank
+      : player.positionRank ?? player.averageRank;
+
+  if (typeof rankValue === "number") {
+    return Number.isFinite(rankValue) ? rankValue.toString() : "--";
+  }
+
+  return rankValue?.trim() ? rankValue : "--";
 }
 
 export function FantasyFootballClient({ initialState }: FantasyFootballClientProps) {
@@ -346,7 +360,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       </p>
                     </div>
                   ) : (
-                    filteredPlayers.map((player, index) => (
+                    filteredPlayers.map((player) => (
                       <div
                         key={player.id}
                         className="grid gap-3 rounded-[24px] border border-white/10 bg-white/[0.035] px-4 py-4 sm:grid-cols-[72px_minmax(0,1.4fr)_120px_120px_110px] sm:items-center"
@@ -355,7 +369,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                             Rank
                           </p>
-                          <p className="mt-1 text-2xl font-semibold text-white">{index + 1}</p>
+                          <p className="mt-1 text-2xl font-semibold text-white">
+                            {getPublishedBoardRank(player, routeState.position)}
+                          </p>
                         </div>
 
                         <div className="min-w-0">

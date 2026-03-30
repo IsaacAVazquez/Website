@@ -81,6 +81,7 @@ export function useStockData<T>(
     ...(EMPTY_STATE as UseStockDataState<T>),
   });
   const isMounted = useRef(true);
+  const latestRequestId = useRef(0);
   const [fetchKey, setFetchKey] = useState(0);
 
   useEffect(() => {
@@ -93,15 +94,19 @@ export function useStockData<T>(
       return;
     }
 
+    let cancelled = false;
     const upperSymbol = symbol.toUpperCase();
-    Promise.resolve().then(() => {
-      if (!isMounted.current) return;
-      setState((prev) => ({ ...prev, isLoading: true, error: null }));
+    const requestId = latestRequestId.current + 1;
+    latestRequestId.current = requestId;
+
+    setState({
+      ...(EMPTY_STATE as UseStockDataState<T>),
+      isLoading: true,
     });
 
     fetchSection<T>(upperSymbol, section)
       .then((envelope) => {
-        if (!isMounted.current) return;
+        if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
         setState({
           data: envelope.data,
           isLoading: false,
@@ -121,7 +126,7 @@ export function useStockData<T>(
             lastUpdated?: string | null;
           }
         ) => {
-        if (!isMounted.current) return;
+        if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
         const isNotFetched = err.status === 404 || err.status === 503;
         setState({
           data: null,
@@ -134,6 +139,10 @@ export function useStockData<T>(
         });
       }
       );
+
+    return () => {
+      cancelled = true;
+    };
   }, [symbol, section, fetchKey]);
 
   const refetch = useCallback(() => {

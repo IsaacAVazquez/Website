@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { FantasyFootballClient } from "../fantasy-football-client";
 
 const mockPush = jest.fn();
@@ -228,5 +228,79 @@ describe("FantasyFootballClient", () => {
     expect(screen.getAllByText("Tier 1").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Tier 2").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Position range").length).toBeGreaterThan(0);
+  });
+
+  it("preserves the published rank when search filters the board down to one player", () => {
+    currentSearchParams = new URLSearchParams("position=rb&scoring=standard");
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [
+        {
+          id: "rb-1",
+          name: "Saquon Barkley",
+          team: "PHI",
+          position: "RB",
+          averageRank: 2.4,
+          projectedPoints: 265,
+          standardDeviation: 0.3,
+          tier: 1,
+          positionRank: 2,
+          minRank: 1,
+          maxRank: 3,
+          expertRanks: [2],
+        },
+        {
+          id: "rb-47",
+          name: "Joe Mixon",
+          team: "HOU",
+          position: "RB",
+          averageRank: 46.7,
+          projectedPoints: 188,
+          standardDeviation: 1.1,
+          tier: 5,
+          positionRank: 47,
+          minRank: 44,
+          maxRank: 50,
+          expertRanks: [47],
+        },
+      ],
+      snapshot: null,
+      metadata: {
+        season: 2026,
+        week: 0,
+        generatedAt: "2026-03-18T00:00:00.000Z",
+        scoringFormat: "STANDARD",
+        source: "snapshot",
+        position: "rb",
+        playerCount: 2,
+        slice: { available: true, sourceKind: "position_consensus", rangeKind: "position", playerCount: 2 },
+        slices: buildSliceMetadataMap(),
+      },
+      sliceMetadata: {
+        available: true,
+        sourceKind: "position_consensus",
+        rangeKind: "position",
+        playerCount: 2,
+      },
+      sliceMetadataMap: buildSliceMetadataMap(),
+      isLoading: false,
+      error: null,
+    });
+
+    render(
+      <FantasyFootballClient
+        initialState={{
+          position: "rb",
+          scoring: "standard",
+        }}
+      />
+    );
+
+    fireEvent.change(screen.getByPlaceholderText(/search rb board/i), {
+      target: { value: "Mixon" },
+    });
+
+    expect(screen.getByText("Joe Mixon")).toBeVisible();
+    expect(screen.queryByText("Saquon Barkley")).not.toBeInTheDocument();
+    expect(screen.getByText("47")).toBeVisible();
   });
 });

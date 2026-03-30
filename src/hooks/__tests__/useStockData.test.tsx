@@ -1,5 +1,6 @@
 import React from "react";
 import { act } from "react";
+import { renderHook, waitFor } from "@testing-library/react";
 import { createRoot, type Root } from "react-dom/client";
 import { __testUtils, useStockData } from "../useStockData";
 
@@ -13,6 +14,17 @@ function flushPromises() {
     await Promise.resolve();
     await Promise.resolve();
   });
+}
+
+function createDeferred<T>() {
+  let resolve!: (value: T | PromiseLike<T>) => void;
+  let reject!: (reason?: unknown) => void;
+  const promise = new Promise<T>((res, rej) => {
+    resolve = res;
+    reject = rej;
+  });
+
+  return { promise, resolve, reject };
 }
 
 describe("useStockData", () => {
@@ -114,5 +126,95 @@ describe("useStockData", () => {
     expect(latestState?.source).toBeNull();
     expect(latestState?.isLoading).toBe(false);
     expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it("clears stale state during symbol switches and ignores late responses from superseded requests", async () => {
+    const aaplResponse = createDeferred<{
+      ok: boolean;
+      json: () => Promise<{
+        source: "prefetched";
+        symbol: string;
+        capabilities: { info: true };
+        lastUpdated: string;
+        sections: { info: { shortName: string } };
+      }>;
+    }>();
+    const msftResponse = createDeferred<{
+      ok: boolean;
+      json: () => Promise<{
+        source: "prefetched";
+        symbol: string;
+        capabilities: { info: true };
+        lastUpdated: string;
+        sections: { info: { shortName: string } };
+      }>;
+    }>();
+
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/data/investments/AAPL/snapshot.json")) {
+        return aaplResponse.promise;
+      }
+
+      if (url.includes("/data/investments/MSFT/snapshot.json")) {
+        return msftResponse.promise;
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    const { result, rerender } = renderHook(
+      ({ symbol }) => useStockData<{ shortName: string }>(symbol, "info"),
+      {
+        initialProps: {
+          symbol: "AAPL" as string | null,
+        },
+      }
+    );
+
+    await waitFor(() => expect(result.current.isLoading).toBe(true));
+
+    rerender({ symbol: "MSFT" });
+
+    await waitFor(() => expect(result.current.isLoading).toBe(true));
+    expect(result.current.data).toBeNull();
+    expect(result.current.error).toBeNull();
+    expect(result.current.source).toBeNull();
+    expect(result.current.capabilities).toEqual({});
+
+    msftResponse.resolve({
+      ok: true,
+      json: async () => ({
+        source: "prefetched",
+        symbol: "MSFT",
+        capabilities: { info: true },
+        lastUpdated: "2026-03-16T08:00:00.000Z",
+        sections: {
+          info: { shortName: "Microsoft" },
+        },
+      }),
+    });
+
+    await waitFor(() => expect(result.current.data?.shortName).toBe("Microsoft"));
+    expect(result.current.source).toBe("prefetched");
+
+    aaplResponse.resolve({
+      ok: true,
+      json: async () => ({
+        source: "prefetched",
+        symbol: "AAPL",
+        capabilities: { info: true },
+        lastUpdated: "2026-03-16T08:00:00.000Z",
+        sections: {
+          info: { shortName: "Apple" },
+        },
+      }),
+    });
+
+    await flushPromises();
+
+    expect(result.current.data?.shortName).toBe("Microsoft");
+    expect(result.current.error).toBeNull();
   });
 });

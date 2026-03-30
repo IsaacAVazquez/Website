@@ -80,6 +80,7 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
   const [state, setState] = useState<UseLiveQuoteState>(EMPTY_STATE);
   const [fetchKey, setFetchKey] = useState(0);
   const isMounted = useRef(true);
+  const latestRequestId = useRef(0);
 
   useEffect(() => {
     isMounted.current = true;
@@ -93,20 +94,19 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
       return;
     }
 
+    let cancelled = false;
     const upperSymbol = symbol.toUpperCase();
+    const requestId = latestRequestId.current + 1;
+    latestRequestId.current = requestId;
 
-    Promise.resolve().then(() => {
-      if (!isMounted.current) return;
-      setState((prev) => ({
-        ...prev,
-        isLoading: true,
-        error: null,
-      }));
+    setState({
+      ...EMPTY_STATE,
+      isLoading: true,
     });
 
     fetchQuote(upperSymbol)
       .then((entry) => {
-        if (!isMounted.current) return;
+        if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
 
         setState({
           quote: entry.quote,
@@ -116,7 +116,7 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
         });
       })
       .catch((error) => {
-        if (!isMounted.current) return;
+        if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
 
         setState({
           quote: null,
@@ -125,6 +125,10 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
           lastUpdated: null,
         });
       });
+
+    return () => {
+      cancelled = true;
+    };
   }, [fetchKey, symbol]);
 
   const refetch = useCallback(() => {

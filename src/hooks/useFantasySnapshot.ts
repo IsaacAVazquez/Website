@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import {
-  FANTASY_SNAPSHOT_SCHEMA_VERSION,
   FantasyRoutePosition,
   FantasyRouteScoring,
   FantasySnapshot,
@@ -31,8 +31,12 @@ interface UseFantasySnapshotResult {
   error: string | null;
 }
 
-const snapshotCache = new Map<FantasyRouteScoring, FantasySnapshot>();
-const inflightSnapshotRequests = new Map<FantasyRouteScoring, Promise<FantasySnapshot>>();
+const snapshotCache = new Map<string, FantasySnapshot>();
+const inflightSnapshotRequests = new Map<string, Promise<FantasySnapshot>>();
+
+function getFantasySnapshotCacheKey(scoring: FantasyRouteScoring): string {
+  return `${scoring}:${fantasySnapshotRevision}`;
+}
 
 export function resetFantasySnapshotCacheForTests() {
   snapshotCache.clear();
@@ -44,22 +48,23 @@ function cacheNormalizedFantasySnapshot(
   snapshot: FantasySnapshot | unknown
 ): FantasySnapshot {
   const normalizedSnapshot = normalizeFantasySnapshot(snapshot, scoring);
-  snapshotCache.set(scoring, normalizedSnapshot);
+  snapshotCache.set(getFantasySnapshotCacheKey(scoring), normalizedSnapshot);
   return normalizedSnapshot;
 }
 
 async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<FantasySnapshot> {
-  const cachedSnapshot = snapshotCache.get(scoring);
+  const cacheKey = getFantasySnapshotCacheKey(scoring);
+  const cachedSnapshot = snapshotCache.get(cacheKey);
   if (cachedSnapshot) {
     return cacheNormalizedFantasySnapshot(scoring, cachedSnapshot);
   }
 
-  const inflightRequest = inflightSnapshotRequests.get(scoring);
+  const inflightRequest = inflightSnapshotRequests.get(cacheKey);
   if (inflightRequest) {
     return inflightRequest;
   }
 
-  const request = fetch(`/data/fantasy/${scoring}.json?v=${FANTASY_SNAPSHOT_SCHEMA_VERSION}`, {
+  const request = fetch(`/data/fantasy/${scoring}.json?v=${fantasySnapshotRevision}`, {
     cache: "force-cache",
   })
     .then(async (response) => {
@@ -70,10 +75,10 @@ async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<Fantas
       return cacheNormalizedFantasySnapshot(scoring, await response.json());
     })
     .finally(() => {
-      inflightSnapshotRequests.delete(scoring);
+      inflightSnapshotRequests.delete(cacheKey);
     });
 
-  inflightSnapshotRequests.set(scoring, request);
+  inflightSnapshotRequests.set(cacheKey, request);
   return request;
 }
 
@@ -82,18 +87,19 @@ export function useFantasySnapshot({
   scoring,
   all = false,
 }: UseFantasySnapshotOptions): UseFantasySnapshotResult {
+  const cacheKey = getFantasySnapshotCacheKey(scoring);
   const [snapshot, setSnapshot] = useState<FantasySnapshot | null>(() => {
-    const cachedSnapshot = snapshotCache.get(scoring);
+    const cachedSnapshot = snapshotCache.get(cacheKey);
     return cachedSnapshot ? cacheNormalizedFantasySnapshot(scoring, cachedSnapshot) : null;
   });
-  const [isLoading, setIsLoading] = useState(snapshotCache.get(scoring) === undefined);
+  const [isLoading, setIsLoading] = useState(snapshotCache.get(cacheKey) === undefined);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
 
     async function loadSnapshot() {
-      const cachedSnapshot = snapshotCache.get(scoring);
+      const cachedSnapshot = snapshotCache.get(cacheKey);
       if (cachedSnapshot) {
         setSnapshot(cacheNormalizedFantasySnapshot(scoring, cachedSnapshot));
         setIsLoading(false);
@@ -127,7 +133,7 @@ export function useFantasySnapshot({
     return () => {
       cancelled = true;
     };
-  }, [scoring]);
+  }, [cacheKey, scoring]);
 
   const players = useMemo<Player[]>(() => {
     if (!snapshot) {

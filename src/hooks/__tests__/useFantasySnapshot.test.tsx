@@ -1,4 +1,5 @@
 import { renderHook, waitFor } from "@testing-library/react";
+import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { FANTASY_SNAPSHOT_SCHEMA_VERSION } from "@/lib/fantasy";
 import { resetFantasySnapshotCacheForTests, useFantasySnapshot } from "../useFantasySnapshot";
 
@@ -83,9 +84,9 @@ describe("useFantasySnapshot", () => {
     await waitFor(() => expect(result.current.isLoading).toBe(false));
 
     expect(global.fetch).toHaveBeenCalledWith(
-      `/data/fantasy/standard.json?v=${FANTASY_SNAPSHOT_SCHEMA_VERSION}`,
+      `/data/fantasy/standard.json?v=${fantasySnapshotRevision}`,
       {
-      cache: "force-cache",
+        cache: "force-cache",
       }
     );
     expect(result.current.players).toHaveLength(1);
