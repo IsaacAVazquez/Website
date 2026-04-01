@@ -547,6 +547,30 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "news-pulse-dashboard": {
+    slug: "news-pulse-dashboard",
+    title: "News Pulse Dashboard",
+    description:
+      "Live news media analytics tool aggregating RSS feeds from 6 major outlets — visualizes coverage patterns, extracts trending topics, and performs lightweight sentiment analysis, all without external dependencies.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "RSS", "Tailwind CSS"],
+    metrics: "6 outlets · Live feeds · Client-side NLP",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/news-pulse",
+    featured: true,
+
+    // Detail page not used — redirects to live tool
+    overview: { summary: "", impact: "" },
+    problem: { context: "", painPoints: [], stakes: "" },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "march-madness-2026": {
     slug: "march-madness-2026",
     title: "March Madness 2026 Bracket Analysis",
