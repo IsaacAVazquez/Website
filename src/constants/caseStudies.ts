@@ -547,138 +547,28 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
-  "news-media-ai-strategy": {
-    slug: "news-media-ai-strategy",
-    title: "Building an AI Integration Strategy for a Legacy News Organization",
+  "news-pulse-dashboard": {
+    slug: "news-pulse-dashboard",
+    title: "News Pulse Dashboard",
     description:
-      "Developed a cross-functional AI adoption framework for a news media company, identifying high-value use cases across editorial, revenue, and audience development — turning scattered experimentation into a coherent, measurable strategy.",
-    role: "Strategy Lead & AI Connector",
-    timeline: "6 months (2025–2026)",
-    tools: ["Python", "SQL", "Tableau", "OpenAI API", "Next.js"],
-    metrics: "35% editorial efficiency gain · 20% subscriber lift · 6 teams aligned",
+      "Live news media analytics tool aggregating RSS feeds from 6 major outlets — visualizes coverage patterns, extracts trending topics, and performs lightweight sentiment analysis, all without external dependencies.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "RSS", "Tailwind CSS"],
+    metrics: "6 outlets · Live feeds · Client-side NLP",
     github: "https://github.com/IsaacAVazquez",
-    link: null,
-    featured: false,
+    link: "/news-pulse",
+    featured: true,
 
-    overview: {
-      summary:
-        "Led a cross-functional initiative to move a mid-size news organization from ad-hoc AI experimentation to a structured, outcome-driven AI strategy — cataloguing existing efforts, identifying the highest-leverage opportunities, and building a shared roadmap across editorial, product, revenue, and audience teams.",
-      impact:
-        "Delivered a prioritized AI roadmap adopted by senior leadership, launched 3 pilot programs that improved editorial workflow efficiency by 35%, and contributed to a 20% lift in subscriber conversion through AI-assisted personalization.",
-    },
-
-    problem: {
-      context:
-        "A legacy news organization was experimenting with AI tools in isolation — individual teams were testing chatbots, summarization, and recommendation features without coordination, shared learnings, or a cohesive strategy.",
-      painPoints: [
-        "No centralized visibility into which teams were using AI tools or what results they were seeing",
-        "Editorial staff were skeptical of AI, worried about quality and credibility risks",
-        "Revenue team was exploring AI-driven ad targeting but lacked data infrastructure to support it",
-        "Audience development had no systematic approach to personalization despite having rich behavioral data",
-        "Leadership wanted to move quickly on AI but had no framework for evaluating risk vs. opportunity",
-      ],
-      stakes:
-        "Without a coherent strategy, the organization risked falling behind competitors already deploying AI at scale — while also risking reputation damage from poorly implemented AI experiments reaching readers.",
-    },
-
-    process: {
-      approach:
-        "Served as an AI connector across 6 departments — translating between business priorities and technical possibilities, documenting what was already being tried, and building a shared evaluation framework for new AI initiatives.",
-      methodology: [
-        "Conducted 25+ stakeholder interviews across editorial, product, revenue, audience, legal, and engineering to map the current AI landscape",
-        "Built an internal AI audit cataloguing 14 active experiments with their status, owners, costs, and measured outcomes",
-        "Developed a scoring rubric for AI initiatives based on editorial integrity risk, revenue impact, implementation complexity, and audience value",
-        "Designed and launched 3 pilot programs: AI-assisted headline testing, automated article tagging for personalization, and AI-powered subscriber churn prediction",
-        "Created a monthly AI review cadence with cross-functional stakeholders to share learnings and reallocate resources",
-      ],
-      decisions: [
-        "Prioritized augmentation over automation — positioned AI as a tool that makes journalists better, not one that replaces them",
-        "Started with low-risk, high-visibility pilots to build organizational trust before tackling sensitive editorial workflows",
-        "Built evaluation framework around reader trust metrics, not just efficiency metrics — ensuring AI adoption wouldn't erode credibility",
-        "Chose to centralize AI governance in a lightweight coordination layer rather than a new department, reducing organizational friction",
-      ],
-      collaboration:
-        "Worked directly with the CEO's office, editorial leadership, product managers, data engineers, and the revenue team. Facilitated bi-weekly cross-functional working sessions and presented strategy updates to the executive team monthly.",
-    },
-
-    result: {
-      outcomes: [
-        "Delivered a prioritized 12-month AI roadmap adopted by senior leadership and the board",
-        "AI-assisted headline testing improved click-through rates by 18% with no reduction in editorial quality scores",
-        "Automated article tagging powered a personalization engine that lifted subscriber conversion by 20%",
-        "Churn prediction model identified at-risk subscribers 30 days earlier, enabling targeted retention campaigns",
-        "Reduced duplicated AI spend by consolidating 14 scattered experiments into 6 coordinated workstreams",
-        "Built organization-wide AI literacy through workshops reaching 85% of editorial and business staff",
-      ],
-      testimonial: {
-        quote:
-          "Isaac brought something we desperately needed — the ability to translate between what AI can actually do and what our business needs. He turned chaos into a strategy we could all rally behind.",
-        author: "David Park",
-        role: "Chief Operating Officer",
-      },
-      lessonsLearned: [
-        "In news media, trust is the product — every AI initiative must be evaluated through the lens of reader credibility, not just efficiency",
-        "Cross-functional alignment matters more than technical sophistication — the best AI strategy is one the whole organization can execute",
-        "Starting with an audit of existing efforts surfaces more value than launching new initiatives — most organizations are already experimenting, just not learning from each other",
-      ],
-    },
-
-    detailedMetrics: [
-      {
-        label: "Editorial Efficiency",
-        value: "35% gain",
-        improvement: "AI-assisted workflows",
-      },
-      {
-        label: "Subscriber Conversion",
-        value: "20% lift",
-        improvement: "Personalization engine",
-      },
-      {
-        label: "Teams Aligned",
-        value: "6 departments",
-        improvement: "From siloed experimentation",
-      },
-      {
-        label: "AI Spend Efficiency",
-        value: "57% reduction",
-        improvement: "14 experiments → 6 workstreams",
-      },
-    ],
-
-    userSegments: [
-      "Editorial leadership seeking to adopt AI without compromising journalistic standards",
-      "Revenue and audience teams exploring data-driven growth strategies",
-      "Executive leadership needing a clear framework for AI investment decisions",
-    ],
-    northStarMetric:
-      "Percentage of AI initiatives with measurable reader or business value within 90 days",
-    tradeoffs: [
-      {
-        decision: "AI governance model",
-        optionChosen: "Lightweight cross-functional coordination layer",
-        optionRejected: "Dedicated AI department with direct reports",
-        reasoning:
-          "A new department would create organizational distance from the teams doing the work. A coordination layer embedded across teams moved faster and had more buy-in.",
-      },
-      {
-        decision: "First pilot selection",
-        optionChosen: "Headline testing (low editorial risk, high visibility)",
-        optionRejected: "AI-generated article drafts (high impact, high risk)",
-        reasoning:
-          "Building trust with the newsroom required starting with something editors could control and validate. Headline testing let us prove value without triggering credibility concerns.",
-      },
-      {
-        decision: "Personalization approach",
-        optionChosen: "Behavioral signals (reading patterns, session depth)",
-        optionRejected: "Declared preferences (user-selected topics)",
-        reasoning:
-          "Behavioral data was richer and already available. Declared preferences had low completion rates in past experiments and biased toward popular topics over discovery.",
-      },
-    ],
-    retrospective:
-      "I'd invest more time upfront building a shared vocabulary around AI across the organization. Engineers, editors, and business leaders all used the same words to mean different things — 'personalization' meant recommendation algorithms to product but editorial curation to the newsroom. Aligning language earlier would have prevented several weeks of miscommunication.",
-    pmFramework: "Double Diamond (discover, define, develop, deliver)",
+    // Detail page not used — redirects to live tool
+    overview: { summary: "", impact: "" },
+    problem: { context: "", painPoints: [], stakes: "" },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
   },
 
   "march-madness-2026": {
