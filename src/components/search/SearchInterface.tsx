@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { WarmCard } from "@/components/ui/WarmCard";
@@ -41,27 +41,70 @@ export interface SearchState {
   searchTime: number;
 }
 
+function readSeededSearchState(fallbacks: Pick<SearchState, "query" | "type" | "category">) {
+  if (typeof window === "undefined") {
+    return fallbacks;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+
+  return {
+    query: params.get("q") ?? fallbacks.query,
+    type: params.get("type") ?? fallbacks.type,
+    category: params.get("category") ?? fallbacks.category,
+  };
+}
+
 export function SearchInterface({ 
   initialQuery = "", 
   initialType = "all",
   initialCategory = "all"
 }: SearchInterfaceProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  
-  const [searchState, setSearchState] = useState<SearchState>({
+  const seededState = readSeededSearchState({
     query: initialQuery,
     type: initialType,
     category: initialCategory,
+  });
+  
+  const [searchState, setSearchState] = useState<SearchState>(() => ({
+    query: seededState.query,
+    type: seededState.type,
+    category: seededState.category,
     results: [],
     isLoading: false,
     hasSearched: false,
     totalResults: 0,
     searchTime: 0
-  });
+  }));
 
   const [showFilters, setShowFilters] = useState(false);
   const debouncedQuery = useDebounce(searchState.query, 300);
+
+  useEffect(() => {
+    const nextSeededState = readSeededSearchState({
+      query: initialQuery,
+      type: initialType,
+      category: initialCategory,
+    });
+
+    setSearchState((prev) => {
+      if (
+        prev.query === nextSeededState.query &&
+        prev.type === nextSeededState.type &&
+        prev.category === nextSeededState.category
+      ) {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        query: nextSeededState.query,
+        type: nextSeededState.type,
+        category: nextSeededState.category,
+      };
+    });
+  }, [initialCategory, initialQuery, initialType]);
 
   // Update URL when search parameters change
   const updateURL = useCallback((query: string, type: string, category: string) => {
@@ -126,18 +169,31 @@ export function SearchInterface({
 
   // Effect for debounced search
   useEffect(() => {
-    if (debouncedQuery !== initialQuery || searchState.type !== initialType || searchState.category !== initialCategory) {
+    if (
+      debouncedQuery !== initialQuery ||
+      searchState.type !== initialType ||
+      searchState.category !== initialCategory
+    ) {
       performSearch(debouncedQuery, searchState.type, searchState.category);
       updateURL(debouncedQuery, searchState.type, searchState.category);
     }
-  }, [debouncedQuery, searchState.type, searchState.category, performSearch, updateURL, initialQuery, initialType, initialCategory]);
+  }, [
+    debouncedQuery,
+    searchState.type,
+    searchState.category,
+    performSearch,
+    updateURL,
+    initialQuery,
+    initialType,
+    initialCategory,
+  ]);
 
   // Initial search if query is provided
   useEffect(() => {
     if (initialQuery) {
       performSearch(initialQuery, initialType, initialCategory);
     }
-  }, []);
+  }, [performSearch, initialCategory, initialQuery, initialType]);
 
   const handleQueryChange = (query: string) => {
     setSearchState(prev => ({ ...prev, query }));

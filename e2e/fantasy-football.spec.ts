@@ -1,4 +1,28 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
+
+async function selectPosition(
+  page: Page,
+  shell: Locator,
+  label: string,
+  position: string
+) {
+  const tab = shell.getByRole("tab", { name: label });
+  await tab.click();
+  await expect(tab).toHaveAttribute("aria-selected", "true");
+  await expect(page).toHaveURL(new RegExp(`position=${position}`));
+}
+
+async function selectScoring(
+  page: Page,
+  shell: Locator,
+  label: string,
+  scoring: string
+) {
+  const button = shell.getByRole("button", { name: new RegExp(`^${label}$`) });
+  await button.click();
+  await expect(button).toHaveAttribute("aria-pressed", "true");
+  await expect(page).toHaveURL(new RegExp(`scoring=${scoring}`));
+}
 
 test.describe("Fantasy football rankings", () => {
   test("loads the canonical rankings board and supports PPR position switching", async ({ page }) => {
@@ -12,8 +36,7 @@ test.describe("Fantasy football rankings", () => {
     await expect(page.getByText("No Data Available")).toHaveCount(0);
     await expect(shell.getByRole("tab", { name: /RB/i })).toHaveAttribute("aria-disabled", "false");
 
-    await shell.getByRole("tab", { name: /RB/i }).click();
-    await expect(page).toHaveURL(/position=rb/);
+    await selectPosition(page, shell, "RB", "rb");
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
     await expect(page.getByText(/Christian McCaffrey|Bijan Robinson|Saquon Barkley/i).first()).toBeVisible();
   });
@@ -38,19 +61,17 @@ test.describe("Fantasy football rankings", () => {
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
     await expect(page.getByText(/unavailable/i)).toHaveCount(0);
 
-    await shell.getByRole("button", { name: /^Half PPR$/ }).click();
-    await expect(page).toHaveURL(/scoring=half_ppr/);
+    await selectScoring(page, shell, "Half PPR", "half_ppr");
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
 
-    await shell.getByRole("button", { name: /^PPR$/ }).click();
-    await expect(page).toHaveURL(/scoring=ppr/);
+    await selectScoring(page, shell, "PPR", "ppr");
     await expect(page.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
 
-    await shell.getByRole("tab", { name: "K" }).click();
+    await selectPosition(page, shell, "K", "k");
     await expect(page.getByRole("heading", { name: /K rankings/i })).toBeVisible();
     await expect(page.getByText(/unavailable/i)).toHaveCount(0);
 
-    await shell.getByRole("tab", { name: "DST" }).click();
+    await selectPosition(page, shell, "DST", "dst");
     await expect(page.getByRole("heading", { name: /DST rankings/i })).toBeVisible();
     await expect(page.getByText(/unavailable/i)).toHaveCount(0);
   });
@@ -61,17 +82,16 @@ test.describe("Fantasy football rankings", () => {
     const shell = page.locator('[data-testid="fantasy-football-shell"]');
 
     for (const target of ["RB", "WR", "QB", "TE"]) {
-      await shell.getByRole("tab", { name: target }).click();
+      await selectPosition(page, shell, target, target.toLowerCase());
       await expect(page.getByRole("heading", { name: new RegExp(`${target} rankings`, "i") })).toBeVisible();
     }
 
-    await shell.getByRole("button", { name: /^Half PPR$/ }).click();
-    await expect(page).toHaveURL(/scoring=half_ppr/);
-    await shell.getByRole("tab", { name: "WR" }).click();
+    await selectScoring(page, shell, "Half PPR", "half_ppr");
+    await selectPosition(page, shell, "WR", "wr");
     await expect(page.getByRole("heading", { name: /WR rankings/i })).toBeVisible();
 
-    await shell.getByRole("button", { name: /^PPR$/ }).click();
-    await shell.getByRole("tab", { name: "TE" }).click();
+    await selectScoring(page, shell, "PPR", "ppr");
+    await selectPosition(page, shell, "TE", "te");
     await expect(page.getByRole("heading", { name: /TE rankings/i })).toBeVisible();
 
     await expect(page.getByText(/429/i)).toHaveCount(0);

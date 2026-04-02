@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useSearchParams } from "next/navigation";
 import type { SearchInterfaceProps } from "./SearchInterface";
 
 const SearchInterfaceNoSSR = dynamic(
@@ -9,5 +10,14 @@ const SearchInterfaceNoSSR = dynamic(
 );
 
 export function SearchInterfaceClient(props: SearchInterfaceProps) {
-  return <SearchInterfaceNoSSR {...props} />;
+  const searchParams = useSearchParams();
+
+  return (
+    <SearchInterfaceNoSSR
+      {...props}
+      initialQuery={searchParams.get("q") ?? props.initialQuery}
+      initialType={searchParams.get("type") ?? props.initialType}
+      initialCategory={searchParams.get("category") ?? props.initialCategory}
+    />
+  );
 }

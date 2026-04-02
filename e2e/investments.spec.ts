@@ -385,7 +385,8 @@ test.describe("Investments", () => {
     await page.goto("/");
     const section = page.locator('section[aria-label="Projects"]');
 
-    await expect(section.getByRole("heading", { name: /projects/i })).toBeVisible();
+    await expect(section).toBeVisible();
+    await expect(section.getByRole("link", { name: /view all projects/i })).toBeVisible();
 
     const titles = await section.locator("h3").allTextContents();
     expect(titles.slice(0, 3)).toEqual([

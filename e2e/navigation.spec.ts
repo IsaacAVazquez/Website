@@ -1,4 +1,11 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, type Locator, type Page } from '@playwright/test'
+
+async function clickAndWaitForURL(page: Page, link: Locator, url: RegExp) {
+  await Promise.all([
+    page.waitForURL(url),
+    link.click(),
+  ])
+}
 
 test.describe('Navigation', () => {
   test('should navigate through the header destinations', async ({ page }, testInfo) => {
@@ -26,28 +33,43 @@ test.describe('Navigation', () => {
     await expect(desktopNav.getByRole('link', { name: /^Contact$/i })).toBeVisible()
     await expect(desktopNav.getByRole('link', { name: /^Writing$/i })).toHaveCount(0)
 
-    await desktopNav.getByRole('link', { name: /^Projects$/i }).click()
-    await expect(page).toHaveURL(/.*portfolio/)
+    await clickAndWaitForURL(
+      page,
+      desktopNav.getByRole('link', { name: /^Projects$/i }),
+      /.*portfolio/
+    )
 
     await page.goto('/')
     await page.waitForLoadState('networkidle')
-    await page.getByLabel('Primary navigation').getByRole('link', { name: /^About$/i }).click()
-    await expect(page).toHaveURL(/.*about/)
+    await clickAndWaitForURL(
+      page,
+      page.getByLabel('Primary navigation').getByRole('link', { name: /^About$/i }),
+      /.*about/
+    )
 
     await page.goto('/')
     await page.waitForLoadState('networkidle')
-    await page.getByLabel('Primary navigation').getByRole('link', { name: /^Investments$/i }).click()
-    await expect(page).toHaveURL(/.*investments/)
+    await clickAndWaitForURL(
+      page,
+      page.getByLabel('Primary navigation').getByRole('link', { name: /^Investments$/i }),
+      /.*investments/
+    )
 
     await page.goto('/')
     await page.waitForLoadState('networkidle')
-    await page.getByLabel('Primary navigation').getByRole('link', { name: /^Resume$/i }).click()
-    await expect(page).toHaveURL(/.*resume/)
+    await clickAndWaitForURL(
+      page,
+      page.getByLabel('Primary navigation').getByRole('link', { name: /^Resume$/i }),
+      /.*resume/
+    )
 
     await page.goto('/')
     await page.waitForLoadState('networkidle')
-    await page.getByLabel('Primary navigation').getByRole('link', { name: /^Contact$/i }).click()
-    await expect(page).toHaveURL(/.*contact/)
+    await clickAndWaitForURL(
+      page,
+      page.getByLabel('Primary navigation').getByRole('link', { name: /^Contact$/i }),
+      /.*contact/
+    )
   })
 
   test('should keep the active destination marked in desktop navigation', async ({ page }, testInfo) => {
@@ -64,8 +86,11 @@ test.describe('Navigation', () => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    await page.getByLabel('Primary navigation').getByRole('link', { name: /^About$/i }).click()
-    await expect(page).toHaveURL(/.*about/)
+    await clickAndWaitForURL(
+      page,
+      page.getByLabel('Primary navigation').getByRole('link', { name: /^About$/i }),
+      /.*about/
+    )
 
     await page.goBack()
     await expect(page).toHaveURL('http://localhost:3000/')
@@ -81,8 +106,11 @@ test.describe('Navigation', () => {
     const mobileNav = page.getByLabel('Mobile navigation')
     await expect(mobileNav.getByRole('link', { name: 'Home' })).toBeVisible()
     await expect(mobileNav.getByRole('link', { name: 'Writing' })).toHaveCount(0)
-    await mobileNav.getByRole('link', { name: 'Projects' }).click()
-    await expect(page).toHaveURL(/.*portfolio/)
+    await clickAndWaitForURL(
+      page,
+      mobileNav.getByRole('link', { name: 'Projects' }),
+      /.*portfolio/
+    )
 
     const hasOverflow = await page.evaluate(() => {
       const viewportWidth = document.documentElement.clientWidth

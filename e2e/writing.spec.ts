@@ -68,9 +68,16 @@ test.describe('Dark mode toggle', () => {
 })
 
 test.describe('Search page', () => {
-  test('/search page loads without error', async ({ page }) => {
-    const response = await page.goto('/search')
+  test('/search page loads without error and preserves a seeded query', async ({ page }) => {
+    const response = await page.goto('/search?q=resume&type=page')
     expect(response?.status()).toBeLessThan(400)
+
+    await page.waitForLoadState('networkidle')
+
+    const searchInput = page.getByRole('textbox').first()
+    await expect(searchInput).toBeVisible()
+    await expect(searchInput).toHaveValue('resume')
+    expect(page.url()).toContain('/search?q=resume')
   })
 
   test('/search page has a visible input', async ({ page }) => {

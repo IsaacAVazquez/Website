@@ -4,7 +4,6 @@ import { SearchInterfaceClient } from "@/components/search/SearchInterface.clien
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { Badge } from "@/components/ui/Badge";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export const metadata: Metadata = constructMetadata({
   title: "Search - Find Content Across the Site",
@@ -14,15 +13,15 @@ export const metadata: Metadata = constructMetadata({
 });
 
 interface SearchPageProps {
-  searchParams: {
+  searchParams: Promise<{
     q?: string;
     type?: string;
     category?: string;
-  };
+  }>;
 }
 
-export default function SearchPage({ searchParams }: SearchPageProps) {
-  const { q, type, category } = searchParams;
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+  const { q, type, category } = await searchParams;
 
   return (
     <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--surface-secondary)]">
