@@ -1,5 +1,6 @@
 import { AlertTriangle, ExternalLink, MapPin, Orbit, Rocket, Users } from "lucide-react";
 import type { MissionLaunchDetail, MissionControlPanel } from "@/types/spacex";
+import { MissionVehiclePhoto } from "./MissionVehiclePhoto";
 import { formatCurrencyCompact, formatInteger, formatMissionMoment } from "./formatters";
 
 const PANEL_OPTIONS: Array<{ key: MissionControlPanel; label: string }> = [
@@ -207,6 +208,16 @@ export function MissionDetailPanel({
 
       {!isLoading && !error && launch && activePanel === "vehicle" ? (
         <div className="mt-5 space-y-4">
+          {launch.rocket?.image ?? launch.vehicleImage ? (
+            <MissionVehiclePhoto
+              name={launch.rocket?.name ?? launch.name}
+              image={launch.rocket?.image ?? launch.vehicleImage}
+              className="h-[240px] min-h-[240px]"
+              label="Vehicle photo"
+              dataTestId="mission-vehicle-photo"
+            />
+          ) : null}
+
           <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)] p-5">
             <div className="flex items-center gap-2">
               <Rocket className="h-5 w-5 text-[var(--color-primary)]" />

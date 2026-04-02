@@ -12,6 +12,7 @@ import type {
 const mockPush = jest.fn();
 const mockReplace = jest.fn();
 let currentSearchParams = new URLSearchParams();
+let documentVisibility: DocumentVisibilityState = "visible";
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -68,7 +69,8 @@ const upcomingLaunch: MissionLaunchCard = {
   rocketName: "Falcon Heavy",
   launchpadName: "KSC LC 39A",
   launchpadLocation: "Cape Canaveral, Florida",
-  patchImage: null,
+  patchImage: "https://images.example.com/ussf44-patch.png",
+  vehicleImage: "https://images.example.com/falcon-heavy.png",
   crewCount: 0,
   payloadCount: 1,
   capsuleCount: 0,
@@ -87,6 +89,14 @@ const impreciseLaunch: MissionLaunchCard = {
   hasExactTime: false,
 };
 
+const patchFallbackLaunch: MissionLaunchCard = {
+  ...upcomingLaunch,
+  id: "5eb87d47ffd86e000604b389",
+  name: "Patch Fallback Mission",
+  vehicleImage: null,
+  patchImage: "https://images.example.com/fallback-patch.png",
+};
+
 const pastLaunch: MissionLaunchCard = {
   ...upcomingLaunch,
   id: "5eb87d46ffd86e000604b388",
@@ -101,6 +111,8 @@ const pastLaunch: MissionLaunchCard = {
   coreCount: 1,
   crewCount: 2,
   capsuleCount: 1,
+  patchImage: "https://images.example.com/ccrew-patch.png",
+  vehicleImage: "https://images.example.com/falcon9-launch.png",
 };
 
 const summary: MissionControlSummary = {
@@ -124,6 +136,22 @@ const impreciseSummary: MissionControlSummary = {
   ...summary,
   heroLaunch: impreciseLaunch,
   nextLaunch: impreciseLaunch,
+};
+
+const refreshedUpcomingLaunch: MissionLaunchCard = {
+  ...impreciseLaunch,
+  id: "6243aec2af52800c6e91925e",
+  name: "Starlink Group 10-58",
+  flightNumber: 189,
+  rocketName: "Falcon 9 Block 5",
+  vehicleImage: "https://images.example.com/starlink-group-10-58.png",
+};
+
+const refreshedSummary: MissionControlSummary = {
+  ...summary,
+  heroLaunch: refreshedUpcomingLaunch,
+  nextLaunch: refreshedUpcomingLaunch,
+  generatedAt: "2026-04-01T00:02:00.000Z",
 };
 
 const detail: MissionLaunchDetail = {
@@ -153,6 +181,7 @@ const detail: MissionLaunchDetail = {
     heightMeters: 70,
     diameterMeters: 3.7,
     massKg: 549054,
+    image: "https://images.example.com/falcon9-vehicle.png",
     flickrImages: [],
   },
   launchpad: {
@@ -172,6 +201,22 @@ const detail: MissionLaunchDetail = {
   cores: [],
 };
 
+const detailWithoutImage: MissionLaunchDetail = {
+  ...detail,
+  vehicleImage: null,
+  rocket: detail.rocket
+    ? {
+        ...detail.rocket,
+        image: null,
+      }
+    : null,
+};
+
+const updatedDetail: MissionLaunchDetail = {
+  ...detail,
+  details: "Updated detail narrative from the live refresh.",
+};
+
 function flushPromises() {
   return act(async () => {
     await Promise.resolve();
@@ -189,12 +234,18 @@ describe("SpaceXMissionControlClient", () => {
     document.body.appendChild(container);
     root = createRoot(container);
     currentSearchParams = new URLSearchParams();
+    documentVisibility = "visible";
+    Object.defineProperty(document, "visibilityState", {
+      configurable: true,
+      get: () => documentVisibility,
+    });
     mockFetch.mockReset();
     mockPush.mockReset();
     mockReplace.mockReset();
   });
 
   afterEach(() => {
+    jest.useRealTimers();
     act(() => root.unmount());
     container.remove();
   });
@@ -231,6 +282,109 @@ describe("SpaceXMissionControlClient", () => {
     expect(container.textContent).toContain("Falcon Heavy");
     expect(container.querySelector('[data-testid="mission-hero"]')).not.toBeNull();
     expect(container.querySelector('[data-testid="mission-board"]')).not.toBeNull();
+    expect(
+      container
+        .querySelector('[data-testid="mission-hero-visual"]')
+        ?.getAttribute("data-image-src")
+    ).toContain("https://images.example.com/falcon-heavy.png");
+    expect(
+      container
+        .querySelector('[data-testid="mission-board-visual-6243aec2af52800c6e91925d"]')
+        ?.getAttribute("data-image-src")
+    ).toContain("https://images.example.com/ussf44-patch.png");
+  });
+
+  it("falls back to mission patch art in the hero when no vehicle photo is available", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/api/spacex/summary")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({
+            ...summary,
+            heroLaunch: patchFallbackLaunch,
+            nextLaunch: patchFallbackLaunch,
+          }),
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=upcoming")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ launches: [patchFallbackLaunch] }),
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    expect(
+      container
+        .querySelector('[data-testid="mission-hero-visual"]')
+        ?.getAttribute("data-image-src")
+    ).toContain("https://images.example.com/fallback-patch.png");
+  });
+
+  it("refreshes the hero and board when newer launch data arrives on the live interval", async () => {
+    jest.useFakeTimers();
+
+    let summaryCalls = 0;
+    let launchesCalls = 0;
+
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/api/spacex/summary")) {
+        summaryCalls += 1;
+        return Promise.resolve({
+          ok: true,
+          json: async () => (summaryCalls === 1 ? impreciseSummary : refreshedSummary),
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=upcoming")) {
+        launchesCalls += 1;
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({
+            launches: launchesCalls === 1 ? [impreciseLaunch] : [refreshedUpcomingLaunch],
+          }),
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    expect(container.querySelector('[data-testid="mission-hero"]')?.textContent).toContain(
+      "Starlink Batch"
+    );
+
+    await act(async () => {
+      jest.advanceTimersByTime(120_000);
+    });
+    await flushPromises();
+
+    expect(container.querySelector('[data-testid="mission-hero"]')?.textContent).toContain(
+      "Starlink Group 10-58"
+    );
+    expect(container.querySelector('[data-testid="mission-board"]')?.textContent).toContain(
+      "Starlink Group 10-58"
+    );
   });
 
   it("updates the URL and refetches when the board status changes", async () => {
@@ -288,6 +442,67 @@ describe("SpaceXMissionControlClient", () => {
     await flushPromises();
 
     expect(container.textContent).toContain("CCtCap Demo Mission 2");
+  });
+
+  it("keeps the hero pinned to the global next mission when the board switches to past launches", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/api/spacex/summary")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => summary,
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=upcoming")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ launches: [upcomingLaunch] }),
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=past")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ launches: [pastLaunch] }),
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    await act(async () => {
+      const button = Array.from(container.querySelectorAll('button[role="tab"]')).find(
+        (tab) => tab.textContent?.includes("Past")
+      ) as HTMLButtonElement | undefined;
+      button?.click();
+    });
+
+    currentSearchParams = new URLSearchParams("status=past");
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    expect(container.querySelector('[data-testid="mission-hero"]')?.textContent).toContain(
+      "USSF-44"
+    );
+    expect(container.querySelector('[data-testid="mission-hero"]')?.textContent).not.toContain(
+      "CCtCap Demo Mission 2"
+    );
+    expect(container.querySelector('[data-testid="mission-board"]')?.textContent).toContain(
+      "CCtCap Demo Mission 2"
+    );
   });
 
   it("loads detail panels from the deep-linked launch id and shows empty-state fallbacks", async () => {
@@ -352,6 +567,200 @@ describe("SpaceXMissionControlClient", () => {
     await flushPromises();
 
     expect(container.textContent).toContain("No external references are listed for this mission.");
+  });
+
+  it("refreshes the selected mission detail when a global live refresh is triggered", async () => {
+    let detailCalls = 0;
+
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/api/spacex/summary")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => summary,
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=upcoming")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ launches: [upcomingLaunch] }),
+        });
+      }
+
+      if (url.includes("/api/spacex/launches/5eb87d46ffd86e000604b388")) {
+        detailCalls += 1;
+        return Promise.resolve({
+          ok: true,
+          json: async () => (detailCalls === 1 ? detail : updatedDetail),
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    currentSearchParams = new URLSearchParams("launch=5eb87d46ffd86e000604b388");
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    expect(container.textContent).toContain("Crewed demo mission");
+
+    await act(async () => {
+      window.dispatchEvent(new Event("focus"));
+    });
+    await flushPromises();
+
+    expect(container.textContent).toContain("Updated detail narrative from the live refresh.");
+    expect(detailCalls).toBe(2);
+  });
+
+  it("renders a vehicle photo card in the vehicle panel when imagery is available", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/api/spacex/summary")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => summary,
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=upcoming")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ launches: [upcomingLaunch] }),
+        });
+      }
+
+      if (url.includes("/api/spacex/launches/5eb87d46ffd86e000604b388")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => detail,
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    currentSearchParams = new URLSearchParams("launch=5eb87d46ffd86e000604b388&panel=vehicle");
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    expect(container.querySelector('[data-testid="mission-vehicle-photo"]')).not.toBeNull();
+    expect(
+      container
+        .querySelector('[data-testid="mission-vehicle-photo"]')
+        ?.getAttribute("data-image-src")
+    ).toContain("https://images.example.com/falcon9-vehicle.png");
+  });
+
+  it("keeps the vehicle panel text-only when no vehicle image is available", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/api/spacex/summary")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => summary,
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=upcoming")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ launches: [upcomingLaunch] }),
+        });
+      }
+
+      if (url.includes("/api/spacex/launches/5eb87d46ffd86e000604b388")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => detailWithoutImage,
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    currentSearchParams = new URLSearchParams("launch=5eb87d46ffd86e000604b388&panel=vehicle");
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    expect(container.querySelector('[data-testid="mission-vehicle-photo"]')).toBeNull();
+    expect(container.textContent).toContain("Reusable two-stage rocket.");
+  });
+
+  it("uses source-agnostic degraded-state copy when a background refresh partially fails", async () => {
+    let detailCalls = 0;
+
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/api/spacex/summary")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => summary,
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=upcoming")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ launches: [upcomingLaunch] }),
+        });
+      }
+
+      if (url.includes("/api/spacex/launches/5eb87d46ffd86e000604b388")) {
+        detailCalls += 1;
+
+        if (detailCalls === 1) {
+          return Promise.resolve({
+            ok: true,
+            json: async () => detail,
+          });
+        }
+
+        return Promise.reject(new Error("Launch detail timed out"));
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    currentSearchParams = new URLSearchParams("launch=5eb87d46ffd86e000604b388");
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    await act(async () => {
+      window.dispatchEvent(new Event("focus"));
+    });
+    await flushPromises();
+
+    expect(container.textContent).toContain(
+      "Countdown timers are intentionally suppressed"
+    );
+    expect(container.textContent).not.toContain("April 1, 2026");
+    expect(container.textContent).not.toContain("outdated");
   });
 
   it("suppresses the live countdown for imprecise launch dates", async () => {

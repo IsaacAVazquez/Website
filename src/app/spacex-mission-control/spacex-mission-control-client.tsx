@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useRef, useState } from "react";
+import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AlertTriangle, DatabaseZap, RefreshCcw, Satellite } from "lucide-react";
@@ -24,6 +24,9 @@ import {
 interface SpaceXMissionControlClientProps {
   initialState: MissionControlSearchState;
 }
+
+const LIVE_REFRESH_INTERVAL_MS = 120_000;
+const LIVE_REFRESH_DEDUPE_MS = 1_500;
 
 function buildApiError(message: string, status: number): Error & { status: number } {
   return Object.assign(new Error(message), { status });
@@ -74,6 +77,8 @@ export function SpaceXMissionControlClient({
   const launchesRequestId = useRef(0);
   const detailRequestId = useRef(0);
   const isMounted = useRef(true);
+  const lastLiveRefreshAt = useRef(0);
+  const selectedLaunchIdRef = useRef<string | null>(initialState.launch);
 
   useEffect(() => {
     isMounted.current = true;
@@ -81,6 +86,10 @@ export function SpaceXMissionControlClient({
       isMounted.current = false;
     };
   }, []);
+
+  useEffect(() => {
+    selectedLaunchIdRef.current = routeState.launch;
+  }, [routeState.launch]);
 
   useEffect(() => {
     const currentStatus = searchParams.get("status") ?? DEFAULT_MISSION_CONTROL_STATE.status;
@@ -111,13 +120,13 @@ export function SpaceXMissionControlClient({
         }
 
         setSummary(payload);
+        setSummaryError(null);
       })
       .catch((error: Error) => {
         if (!isMounted.current || summaryRequestId.current !== requestId) {
           return;
         }
 
-        setSummary(null);
         setSummaryError(error.message);
       })
       .finally(() => {
@@ -142,13 +151,13 @@ export function SpaceXMissionControlClient({
         }
 
         setLaunches(payload.launches);
+        setLaunchesError(null);
       })
       .catch((error: Error) => {
         if (!isMounted.current || launchesRequestId.current !== requestId) {
           return;
         }
 
-        setLaunches([]);
         setLaunchesError(error.message);
       })
       .finally(() => {
@@ -175,13 +184,13 @@ export function SpaceXMissionControlClient({
         }
 
         setDetail(payload);
+        setDetailError(null);
       })
       .catch((error: Error) => {
         if (!isMounted.current || detailRequestId.current !== requestId) {
           return;
         }
 
-        setDetail(null);
         setDetailError(error.message);
       })
       .finally(() => {
@@ -217,6 +226,64 @@ export function SpaceXMissionControlClient({
       );
     });
   }, [launches, launchesLoading, routeState, router, searchParams]);
+
+  const refreshLiveData = useCallback(
+    (options?: { showLoading?: boolean; dedupe?: boolean }) => {
+      const now = Date.now();
+      if (options?.dedupe && now - lastLiveRefreshAt.current < LIVE_REFRESH_DEDUPE_MS) {
+        return;
+      }
+
+      lastLiveRefreshAt.current = now;
+
+      if (options?.showLoading) {
+        setSummaryLoading(true);
+        setSummaryError(null);
+        setLaunchesLoading(true);
+        setLaunchesError(null);
+
+        if (selectedLaunchIdRef.current) {
+          setDetailLoading(true);
+          setDetailError(null);
+        }
+      }
+
+      setSummaryFetchKey((value) => value + 1);
+      setLaunchesFetchKey((value) => value + 1);
+
+      if (selectedLaunchIdRef.current) {
+        setDetailFetchKey((value) => value + 1);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    const refreshOnResume = () => {
+      if (document.visibilityState !== "visible") {
+        return;
+      }
+
+      refreshLiveData({ dedupe: true });
+    };
+
+    const intervalId = window.setInterval(() => {
+      if (document.visibilityState !== "visible") {
+        return;
+      }
+
+      refreshLiveData({ dedupe: true });
+    }, LIVE_REFRESH_INTERVAL_MS);
+
+    document.addEventListener("visibilitychange", refreshOnResume);
+    window.addEventListener("focus", refreshOnResume);
+
+    return () => {
+      window.clearInterval(intervalId);
+      document.removeEventListener("visibilitychange", refreshOnResume);
+      window.removeEventListener("focus", refreshOnResume);
+    };
+  }, [refreshLiveData]);
 
   function updateRouteState(
     nextState: Partial<MissionControlSearchState>,
@@ -275,19 +342,7 @@ export function SpaceXMissionControlClient({
   }
 
   function handleRetryAll() {
-    setSummaryLoading(true);
-    setSummaryError(null);
-    setLaunchesLoading(true);
-    setLaunchesError(null);
-    setLaunches([]);
-    setSummaryFetchKey((value) => value + 1);
-    setLaunchesFetchKey((value) => value + 1);
-    if (routeState.launch) {
-      setDetailLoading(true);
-      setDetailError(null);
-      setDetail(null);
-      setDetailFetchKey((value) => value + 1);
-    }
+    refreshLiveData({ showLoading: true });
   }
 
   const hasPartialDataIssue =
@@ -382,10 +437,10 @@ export function SpaceXMissionControlClient({
             <div className="mt-5 flex items-start gap-3 rounded-[24px] border border-[color-mix(in_srgb,var(--color-warning)_20%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_8%,var(--surface-primary))] px-4 py-3 text-sm leading-6 text-[var(--text-secondary)]">
               <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-warning)]" />
               <p>
-                One or more live requests degraded, but the workspace is still usable. The
-                current SpaceX upstream feed is also carrying an outdated “next launch” record as
-                of April 1, 2026, so countdowns are intentionally suppressed when the scheduled
-                date is already in the past.
+                One or more live requests degraded, but the workspace is still usable.
+                Countdown timers are intentionally suppressed when the provider&apos;s scheduled
+                timestamp is already in the past or not precise enough to trust as an exact launch
+                time.
               </p>
             </div>
           ) : null}

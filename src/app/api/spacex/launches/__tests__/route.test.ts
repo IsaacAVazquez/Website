@@ -49,6 +49,7 @@ describe("GET /api/spacex/launches", () => {
         launchpadName: "KSC LC 39A",
         launchpadLocation: "Cape Canaveral, Florida",
         patchImage: null,
+        vehicleImage: null,
         crewCount: 2,
         payloadCount: 1,
         capsuleCount: 1,

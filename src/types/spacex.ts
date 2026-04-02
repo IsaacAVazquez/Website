@@ -38,6 +38,7 @@ export interface MissionLaunchCard {
   launchpadName: string | null;
   launchpadLocation: string | null;
   patchImage: string | null;
+  vehicleImage: string | null;
   crewCount: number;
   payloadCount: number;
   capsuleCount: number;
@@ -127,6 +128,7 @@ export interface MissionRocket {
   heightMeters: number | null;
   diameterMeters: number | null;
   massKg: number | null;
+  image: string | null;
   flickrImages: string[];
 }
 

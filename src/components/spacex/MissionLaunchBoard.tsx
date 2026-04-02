@@ -139,6 +139,7 @@ export function MissionLaunchBoard({
                     name={launch.name}
                     image={launch.patchImage}
                     className="h-[92px] min-h-[92px]"
+                    dataTestId={`mission-board-visual-${launch.id}`}
                   />
 
                   <div className="min-w-0">

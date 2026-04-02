@@ -509,6 +509,18 @@ function pickMissionPatch(launch: RawLl2Launch): string | null {
   return null;
 }
 
+function pickSpacecraftImage(launch: RawLl2Launch): string | null {
+  return launch.spacecraft_stage?.spacecraft?.spacecraft_config?.image_url ?? null;
+}
+
+function pickVehicleImage(launch: RawLl2Launch): string | null {
+  return (
+    launch.rocket?.configuration?.image_url ??
+    launch.image ??
+    pickSpacecraftImage(launch)
+  );
+}
+
 function extractYoutubeId(url: string | null): string | null {
   if (!url) {
     return null;
@@ -641,6 +653,7 @@ function normalizeLaunchCard(
   const datePrecision = normalizePrecision(launch.net_precision);
   const staleSchedule = upcoming && isPastDate(dateUtc, UPCOMING_STALE_GRACE_MS);
   const tbd = (launch.status?.abbrev ?? "").toUpperCase() === "TBD";
+  const patchImage = pickMissionPatch(launch) ?? launch.image ?? null;
 
   return {
     id: launch.id,
@@ -662,7 +675,8 @@ function normalizeLaunchCard(
       null,
     launchpadName: launch.pad?.name ?? null,
     launchpadLocation: normalizeLocationName(launch.pad?.location),
-    patchImage: pickMissionPatch(launch) ?? launch.image ?? null,
+    patchImage,
+    vehicleImage: pickVehicleImage(launch),
     crewCount: launch.spacecraft_stage?.launch_crew?.length ?? 0,
     payloadCount: derivePayloadCount(launch),
     capsuleCount: launch.spacecraft_stage?.spacecraft ? 1 : 0,
@@ -801,9 +815,11 @@ function normalizeRocket(launch: RawLl2Launch): MissionRocket | null {
     heightMeters: configuration.length ?? null,
     diameterMeters: configuration.diameter ?? null,
     massKg: parseMassKg(configuration.launch_mass),
+    image: configuration.image_url ?? null,
     flickrImages: toStringArray([
       configuration.image_url ?? null,
       launch.image ?? null,
+      pickSpacecraftImage(launch),
     ]),
   };
 }

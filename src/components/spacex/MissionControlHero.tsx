@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Activity, ArrowUpRight, CalendarDays, Clock3, Radar, Rocket } from "lucide-react";
 import type { MissionControlSummary } from "@/types/spacex";
-import { MissionPatch } from "./MissionPatch";
+import { MissionVehiclePhoto } from "./MissionVehiclePhoto";
 import { formatMissionScheduleLabel } from "./formatters";
 
 interface MissionControlHeroProps {
@@ -223,10 +223,13 @@ export function MissionControlHero({
         </div>
 
         <div className="grid gap-4">
-          <MissionPatch
-            name={heroLaunch.name}
-            image={heroLaunch.patchImage}
+          <MissionVehiclePhoto
+            name={heroLaunch.rocketName ?? heroLaunch.name}
+            image={heroLaunch.vehicleImage}
+            fallbackImage={heroLaunch.patchImage}
             className="h-[240px] min-h-[240px]"
+            label="Vehicle view"
+            dataTestId="mission-hero-visual"
           />
           <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)]/90 p-4 shadow-[var(--shadow-sm)]">
             <div className="flex items-center gap-2">

@@ -4,6 +4,7 @@ interface MissionPatchProps {
   name: string;
   image: string | null;
   className?: string;
+  dataTestId?: string;
 }
 
 function getInitials(name: string): string {
@@ -14,10 +15,17 @@ function getInitials(name: string): string {
     .join("");
 }
 
-export function MissionPatch({ name, image, className = "" }: MissionPatchProps) {
+export function MissionPatch({
+  name,
+  image,
+  className = "",
+  dataTestId,
+}: MissionPatchProps) {
   if (image) {
     return (
       <div
+        data-testid={dataTestId}
+        data-image-src={image}
         aria-hidden="true"
         className={`rounded-[22px] border border-[color-mix(in_srgb,var(--color-accent)_24%,var(--border-primary))] bg-[var(--surface-elevated)] bg-center bg-no-repeat shadow-[var(--shadow-md)] ${className}`}
         style={{
@@ -30,6 +38,7 @@ export function MissionPatch({ name, image, className = "" }: MissionPatchProps)
 
   return (
     <div
+      data-testid={dataTestId}
       aria-hidden="true"
       className={`flex items-center justify-center rounded-[22px] border border-[color-mix(in_srgb,var(--color-accent)_22%,var(--border-primary))] bg-[linear-gradient(160deg,color-mix(in_srgb,var(--color-primary)_12%,var(--surface-elevated))_0%,var(--surface-elevated)_72%)] shadow-[var(--shadow-md)] ${className}`}
     >
