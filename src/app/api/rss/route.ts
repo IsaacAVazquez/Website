@@ -14,8 +14,12 @@ export async function GET() {
 
     return true;
   });
-  const lastBuildDate = posts[0]
-    ? new Date(posts[0].updatedAt || posts[0].publishedAt).toUTCString()
+  const lastBuildTimestamp = posts.reduce((latest, post) => {
+    const candidate = new Date(post.updatedAt || post.publishedAt).getTime();
+    return Number.isNaN(candidate) ? latest : Math.max(latest, candidate);
+  }, 0);
+  const lastBuildDate = lastBuildTimestamp > 0
+    ? new Date(lastBuildTimestamp).toUTCString()
     : new Date().toUTCString();
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
