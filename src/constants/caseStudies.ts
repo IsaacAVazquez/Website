@@ -547,6 +547,30 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "interchange-iq": {
+    slug: "interchange-iq",
+    title: "Interchange IQ — Payment Fee Analyzer",
+    description:
+      "Interactive tool that models real payment processing costs across 7 major processors using published 2024 interchange rate data. Adjust volume, avg ticket, and card mix to see live fee comparisons and a breakeven analysis.",
+    role: "Builder",
+    timeline: "2025",
+    tools: ["Next.js", "TypeScript", "React", "Payments Economics"],
+    metrics: "7 processors · Real interchange data · Breakeven calc",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/fintech-tools/interchange-iq",
+    featured: true,
+
+    // Detail page not used — portfolio slug redirects to live tool
+    overview: { summary: "", impact: "" },
+    problem: { context: "", painPoints: [], stakes: "" },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "news-pulse-dashboard": {
     slug: "news-pulse-dashboard",
     title: "News Pulse Dashboard",

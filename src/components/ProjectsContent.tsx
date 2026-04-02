@@ -10,6 +10,7 @@ import {
   IconChartBar,
   IconEye,
   IconChartLine,
+  IconCreditCard,
 } from "@tabler/icons-react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
@@ -65,6 +66,76 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: 6,
+    title: "Interchange IQ",
+    description:
+      "Interactive payment processor fee analyzer — compare Stripe, Square, PayPal, Adyen, and others based on your real volume, avg ticket, and card mix using actual 2024 interchange rate data",
+    tech: ["Next.js", "TypeScript", "Payments", "Interchange Economics"],
+    type: "featured",
+    icon: IconCreditCard,
+    metrics: "7 processors · Real interchange data · Breakeven analysis",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/fintech-tools/interchange-iq",
+    detailedMetrics: [
+      { label: "Processors Modeled", value: "7",          improvement: "Flat-rate + IC+" },
+      { label: "Interchange Tiers",  value: "3 types",    improvement: "Credit, Debit, Amex" },
+      { label: "Breakeven Calc",     value: "Dynamic",    improvement: "Per card mix" },
+      { label: "Data Source",        value: "2024 Published", improvement: "Visa/MC/Amex tables" },
+    ],
+    impact:
+      "Helps merchants and fintech founders understand the true cost structure of accepting payments before committing to a processor — grounded in real interchange economics, not marketing copy",
+    timeline: "Side project (2025)",
+    challenges: [
+      "Interchange has 300+ rate categories; simplifying to a useful model without losing directional accuracy",
+      "Breakeven depends on card mix, avg ticket, and volume simultaneously — requires a clean formula derivation",
+      "Making the UI intuitive for non-technical founders while keeping the underlying math rigorous",
+      "Keeping processor pricing current as rates shift quarterly",
+    ],
+    problem: {
+      context:
+        "Most merchants pick a payment processor based on brand recognition — not unit economics. The difference between flat-rate and interchange+ pricing can be tens of thousands of dollars per year at scale, but the underlying math is deliberately opaque.",
+      painPoints: [
+        "Flat-rate pricing (Stripe 2.9% + $0.30) bundles a significant markup over actual interchange into a 'simple' number",
+        "Interchange+ sounds risky and complex even when it's clearly cheaper at higher volumes",
+        "No simple tool lets you model your specific business profile (ticket size, card mix, volume) against multiple processors",
+        "Breakeven thresholds are non-intuitive — they depend on avg ticket, card mix, AND volume at once",
+      ],
+      stakes:
+        "A merchant processing $200k/month with a favorable card mix could be overpaying $2,000–$3,500/month by defaulting to flat-rate pricing.",
+    },
+    process: {
+      approach:
+        "Researched published Visa/Mastercard interchange schedules and Amex OptBlue pricing. Built a live Next.js calculator with slider-driven inputs, real-time fee comparisons, and a derived breakeven formula.",
+      methodology: [
+        "Researched published 2024 Visa, Mastercard, and Amex interchange rate schedules",
+        "Modeled 3 card categories (Visa/MC credit, regulated debit, Amex) as the dominant cost drivers",
+        "Derived breakeven ticket-size formula: at what avg transaction does IC+ fixed fee disadvantage flip?",
+        "Iterated on UX to surface key insights without requiring users to understand interchange tables",
+      ],
+      decisions: [
+        "Used blended interchange averages over 300+ categories — accurate enough for directional decisions, far more usable",
+        "Sorted results ascending by cost so cheapest option is always visually obvious",
+        "Added breakeven insight panel to answer the most common follow-up question",
+        "Included educational cards explaining interchange to non-experts with an honest caveats section",
+      ],
+      collaboration:
+        "Solo side project. Informed by conversations with fintech PMs and startup founders about how opaque processor pricing is in practice.",
+    },
+    result: {
+      outcomes: [
+        "Live tool modeling 7 processors with adjustable business profile inputs",
+        "Calculates breakeven avg ticket size dynamically based on real card mix",
+        "Surfaces the annual cost of processor choice in a legible, concrete format",
+        "Demonstrates payments domain knowledge: interchange economics, card network structure, flat-rate vs. IC+ tradeoff",
+      ],
+      lessonsLearned: [
+        "Interchange is deliberately complex — useful tools compress 300+ categories into 3–4 decision levers",
+        "Breakeven analysis is the killer feature — it gives founders a concrete threshold, not just a comparison table",
+        "Per-transaction fixed fees are consistently underweighted in payment decisions — the tool makes this viscerally clear",
+      ],
+    },
+  },
   {
     id: 1,
     title: "Scaling a Platform to 60M+ Users",
