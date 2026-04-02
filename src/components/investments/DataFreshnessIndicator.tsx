@@ -9,7 +9,13 @@ interface DataFreshnessIndicatorProps {
   mode?: "default" | "dataset" | "live";
 }
 
-function getRelativeTime(date: Date): { label: string; color: string } {
+const STALE_DATASET_THRESHOLD_DAYS = 7;
+
+function getRelativeTime(date: Date): {
+  label: string;
+  color: string;
+  diffDays: number;
+} {
   const now = new Date();
   const diffMs = Math.max(0, now.getTime() - date.getTime());
   const diffMinutes = Math.floor(diffMs / (1000 * 60));
@@ -36,7 +42,16 @@ function getRelativeTime(date: Date): { label: string; color: string } {
     color = "var(--color-error)";
   }
 
-  return { label, color };
+  return { label, color, diffDays };
+}
+
+function formatAbsoluteDate(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
 }
 
 export function DataFreshnessIndicator({
@@ -80,7 +95,12 @@ export function DataFreshnessIndicator({
 
   const date =
     typeof lastUpdated === "string" ? new Date(lastUpdated) : lastUpdated;
-  const { label, color } = getRelativeTime(date);
+  const { label, color, diffDays } = getRelativeTime(date);
+  const shouldUseAbsoluteDatasetLabel =
+    mode === "dataset" && diffDays >= STALE_DATASET_THRESHOLD_DAYS;
+  const displayedLabel = shouldUseAbsoluteDatasetLabel
+    ? `Snapshot as of ${formatAbsoluteDate(date)}`
+    : `${labelPrefix} ${label}`;
 
   return (
     <div className="inline-flex items-center gap-2">
@@ -89,7 +109,7 @@ export function DataFreshnessIndicator({
         style={{ backgroundColor: color }}
       />
       <span className="text-xs text-[var(--text-tertiary)]">
-        {labelPrefix} {label}
+        {displayedLabel}
       </span>
       {onRefresh && (
         <button
