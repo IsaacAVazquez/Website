@@ -1,0 +1,44 @@
+import { Rocket } from "lucide-react";
+
+interface MissionPatchProps {
+  name: string;
+  image: string | null;
+  className?: string;
+}
+
+function getInitials(name: string): string {
+  return name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
+export function MissionPatch({ name, image, className = "" }: MissionPatchProps) {
+  if (image) {
+    return (
+      <div
+        aria-hidden="true"
+        className={`rounded-[22px] border border-[color-mix(in_srgb,var(--color-accent)_24%,var(--border-primary))] bg-[var(--surface-elevated)] bg-center bg-no-repeat shadow-[var(--shadow-md)] ${className}`}
+        style={{
+          backgroundImage: `linear-gradient(180deg,color-mix(in_srgb,var(--surface-primary)_40%,transparent),transparent), url(${image})`,
+          backgroundSize: "cover",
+        }}
+      />
+    );
+  }
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`flex items-center justify-center rounded-[22px] border border-[color-mix(in_srgb,var(--color-accent)_22%,var(--border-primary))] bg-[linear-gradient(160deg,color-mix(in_srgb,var(--color-primary)_12%,var(--surface-elevated))_0%,var(--surface-elevated)_72%)] shadow-[var(--shadow-md)] ${className}`}
+    >
+      <div className="flex flex-col items-center gap-2">
+        <Rocket className="h-6 w-6 text-[var(--color-primary)]" />
+        <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--text-tertiary)]">
+          {getInitials(name)}
+        </span>
+      </div>
+    </div>
+  );
+}

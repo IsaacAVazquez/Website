@@ -18,6 +18,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/investments",
     "/march-madness-2026",
     "/portfolio",
+    "/spacex-mission-control",
     "/writing",
   ]);
   const isSelfShellRoute = selfShellRoutes.has(pathname);

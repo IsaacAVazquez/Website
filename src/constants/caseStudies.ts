@@ -569,12 +569,36 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+
+  "spacex-mission-control": {
+    slug: "spacex-mission-control",
+    title: "SpaceX Mission Control",
+    description:
+      "Mission-control-style SpaceX launch board with a next-launch hero, upcoming and past mission browsing, and deep-linked relationship-aware mission detail.",
+    role: "Product Designer & Builder",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "REST APIs", "Product Design"],
+    metrics: "Live API surface · deep-linked mission detail",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/spacex-mission-control",
+    featured: true,
+
+    overview: { summary: "", impact: "" },
+    problem: { context: "", painPoints: [], stakes: "" },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
   "investment-analytics-platform",
   "data-analytics-dashboard",
   "civic-engagement-platform",
+  "spacex-mission-control",
 ] as const;
 
 /** Get featured case studies (for homepage) */
