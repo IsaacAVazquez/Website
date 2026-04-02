@@ -42,6 +42,12 @@ describe("GET /api/investments/data/[symbol]", () => {
         source: "prefetched",
         capabilities: { info: true, news: true, compare: true },
         lastUpdated: "2026-03-16T08:00:00.000Z",
+        freshness: {
+          snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+          sections: {
+            price: "2026-03-15",
+          },
+        },
         sections: { info: { shortName: "Apple" } },
       },
     });
@@ -50,6 +56,12 @@ describe("GET /api/investments/data/[symbol]", () => {
       source: "prefetched",
       capabilities: { info: true, news: true, compare: true },
       lastUpdated: "2026-03-16T08:00:00.000Z",
+      freshness: {
+        snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+        sections: {
+          price: "2026-03-15",
+        },
+      },
     });
 
     const response = await makeRequest("AAPL");
@@ -59,6 +71,12 @@ describe("GET /api/investments/data/[symbol]", () => {
     expect(body.source).toBe("prefetched");
     expect(body.capabilities.compare).toBe(true);
     expect(body.data.shortName).toBe("Apple");
+    expect(body.freshness).toEqual({
+      snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+      sections: {
+        price: "2026-03-15",
+      },
+    });
     expect(mockGetInvestmentContext).toHaveBeenCalledWith("AAPL", {
       assetOrigin: "http://localhost:3000",
     });

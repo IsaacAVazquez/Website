@@ -351,7 +351,8 @@ test.describe("Investments", () => {
     await page.waitForLoadState("networkidle");
 
     await expect(page.getByText("$340.12")).toBeVisible();
-    await expect(page.getByText(/showing the latest available close from feb 27, 2026/i)).toBeVisible();
+    await expect(page.getByText(/price as of feb 27, 2026/i)).toBeVisible();
+    await expect(page.getByText(/showing the latest saved close from feb 27, 2026/i)).toBeVisible();
     await expect(page.getByText(/live price is temporarily unavailable/i)).toBeVisible();
     await expect(page.getByText(/^Unavailable$/)).toHaveCount(0);
   });

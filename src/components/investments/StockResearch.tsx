@@ -108,6 +108,7 @@ export function StockResearch({
     source,
     capabilities,
     lastUpdated: symbolLastUpdated,
+    freshness: symbolFreshness,
   } = useStockData<CompanyInfo>(symbol || null, "info");
 
   const v = shouldReduceMotion ? getReducedMotionVariants() : { fadeInVariants };
@@ -132,7 +133,8 @@ export function StockResearch({
 
   const isInPortfolio = symbol && portfolioSymbols.includes(symbol);
   const freshnessMode = "dataset";
-  const freshnessLastUpdated = symbolLastUpdated ?? datasetLastUpdated;
+  const freshnessLastUpdated =
+    symbolFreshness?.snapshotBuiltAt ?? symbolLastUpdated ?? datasetLastUpdated;
   const showNews = capabilities.news !== false;
   const resolvedActiveTab = visibleTabs.some((tab) => tab.key === activeTab)
     ? activeTab

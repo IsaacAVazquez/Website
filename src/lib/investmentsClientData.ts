@@ -6,6 +6,7 @@ import type {
   InvestmentSnapshot,
   InvestmentsIndex,
 } from "@/types/investment";
+import { normalizeInvestmentSnapshot } from "@/lib/investmentFreshness";
 import { normalizeInvestmentsIndex } from "@/lib/investmentsIndex";
 
 type CachedEntry<T> = {
@@ -131,11 +132,12 @@ export async function getClientInvestmentSnapshot(
         const snapshotResponse = await fetchJson<InvestmentSnapshot>(
           `/data/investments/${encodeURIComponent(upperSymbol)}/snapshot.json`
         );
+        const snapshot = normalizeInvestmentSnapshot(snapshotResponse.data);
         snapshotCache.set(upperSymbol, {
-          data: snapshotResponse.data,
+          data: snapshot,
           timestamp: Date.now(),
         });
-        return snapshotResponse.data;
+        return snapshot;
       } catch {
         throw createClientInvestmentDataError(
           `Curated research data for ${upperSymbol} is temporarily unavailable.`,

@@ -63,6 +63,7 @@ export async function GET(
       source?: string;
       capabilities?: Record<string, boolean>;
       lastUpdated?: string | null;
+      freshness?: unknown;
     };
     console.error("Investments data API error:", error);
     return NextResponse.json(
@@ -71,6 +72,7 @@ export async function GET(
         source: err.source,
         capabilities: err.capabilities,
         lastUpdated: err.lastUpdated ?? null,
+        freshness: err.freshness ?? null,
       },
       { status: err.status ?? 500 }
     );

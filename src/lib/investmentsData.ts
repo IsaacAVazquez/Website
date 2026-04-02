@@ -6,6 +6,7 @@ import type {
   InvestmentsIndex,
   InvestmentSnapshot,
 } from "@/types/investment";
+import { normalizeInvestmentSnapshot } from "@/lib/investmentFreshness";
 import { normalizeInvestmentsIndex } from "@/lib/investmentsIndex";
 
 type PrefetchedReadStatus = "hit" | "missing" | "skipped";
@@ -255,10 +256,10 @@ export async function getInvestmentContext(
     };
   }
 
-  const snapshot = await ensurePrefetchedJson<InvestmentSnapshot>(
+  const snapshot = normalizeInvestmentSnapshot(await ensurePrefetchedJson<InvestmentSnapshot>(
     `${upperSymbol}/snapshot.json`,
     options
-  );
+  ));
   snapshotCache.set(upperSymbol, {
     snapshot,
     expiresAt: Date.now() + SNAPSHOT_TTL_MS,
@@ -289,6 +290,7 @@ export async function getInvestmentDataEnvelope<T = unknown>(
         source: resolvedContext.source,
         capabilities: resolvedContext.capabilities,
         lastUpdated: resolvedContext.lastUpdated,
+        freshness: resolvedContext.snapshot.freshness ?? null,
       }
     );
   }
@@ -298,5 +300,6 @@ export async function getInvestmentDataEnvelope<T = unknown>(
     source: resolvedContext.source,
     capabilities: resolvedContext.capabilities,
     lastUpdated: resolvedContext.lastUpdated,
+    freshness: resolvedContext.snapshot.freshness ?? null,
   };
 }

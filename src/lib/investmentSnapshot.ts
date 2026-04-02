@@ -1,4 +1,5 @@
 import { computeDcf, transformIndustryWithStockValues, transformSection } from "@/lib/investmentTransforms";
+import { buildInvestmentFreshness, getPriceAsOf } from "@/lib/investmentFreshness";
 import type {
   DcfData,
   InvestmentCapabilities,
@@ -209,10 +210,17 @@ export function buildInvestmentSnapshot(
   sections.dcf = dcf && !hasErrorShape(dcf) ? (dcf as DcfData) : undefined;
 
   const capabilities = buildCapabilities(sections);
+  const freshness = buildInvestmentFreshness({
+    snapshotBuiltAt: lastUpdated,
+    sections: {
+      price: getPriceAsOf(normalizedPrice),
+    },
+  });
 
   return {
     symbol,
     lastUpdated,
+    freshness,
     source: "prefetched",
     capabilities,
     sections,

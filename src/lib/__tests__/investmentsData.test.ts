@@ -51,7 +51,13 @@ describe("investmentsData curated snapshot resolution", () => {
           source: "prefetched",
           lastUpdated: "2026-03-16T08:00:00.000Z",
           capabilities: { info: true },
-          sections: { info: { shortName: "Apple" } },
+          sections: {
+            info: { shortName: "Apple" },
+            price: [
+              { date: "2026-03-14", close: 195, open: 192, high: 197, low: 191, volume: 1000 },
+              { date: "2026-03-15", close: 198, open: 195, high: 199, low: 194, volume: 1200 },
+            ],
+          },
         }),
       });
 
@@ -65,6 +71,12 @@ describe("investmentsData curated snapshot resolution", () => {
     expect(context.source).toBe("prefetched");
     expect(context.seeded).toBe(true);
     expect(context.snapshot.sections.info).toEqual({ shortName: "Apple" });
+    expect(context.snapshot.freshness).toEqual({
+      snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+      sections: {
+        price: "2026-03-15",
+      },
+    });
     expect(mockFetch).toHaveBeenNthCalledWith(
       1,
       "https://isaacavazquez.com/data/investments/index.json",

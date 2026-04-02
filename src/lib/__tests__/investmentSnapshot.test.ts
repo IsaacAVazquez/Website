@@ -99,6 +99,12 @@ describe("buildInvestmentSnapshot", () => {
     expect(snapshot.sections.news).toHaveLength(10);
     expect(snapshot.capabilities.news).toBe(true);
     expect(snapshot.capabilities.price).toBe(true);
+    expect(snapshot.freshness).toEqual({
+      snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+      sections: {
+        price: "2025-10-27",
+      },
+    });
     expect(snapshot.sections.fundamentals).toMatchObject({ ttmPe: 28.4 });
     expect(prices[0]).toMatchObject({
       date: "2025-02-18",

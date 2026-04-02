@@ -254,16 +254,23 @@ export type InvestmentCapabilities = Partial<
   Record<InvestmentCapabilityKey, boolean>
 >;
 
+export interface InvestmentSnapshotFreshness {
+  snapshotBuiltAt: string | null;
+  sections: Partial<Record<InvestmentSection, string | null>>;
+}
+
 export interface InvestmentDataEnvelope<T> {
   data: T;
   source: InvestmentDataSource;
   capabilities: InvestmentCapabilities;
   lastUpdated: string | null;
+  freshness?: InvestmentSnapshotFreshness | null;
 }
 
 export interface InvestmentSnapshot {
   symbol: string;
   lastUpdated: string | null;
+  freshness?: InvestmentSnapshotFreshness;
   source: "prefetched";
   capabilities: InvestmentCapabilities;
   sections: Partial<Record<InvestmentSection, unknown>>;

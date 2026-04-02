@@ -77,6 +77,10 @@ describe("useStockData", () => {
             sections: {
               info: { shortName: "Apple" },
               fundamentals: { ttmPe: 28.4 },
+              price: [
+                { date: "2026-03-14", open: 192, high: 197, low: 191, close: 195, volume: 1000 },
+                { date: "2026-03-15", open: 195, high: 199, low: 194, close: 198, volume: 1200 },
+              ],
             },
           }),
         });
@@ -112,6 +116,12 @@ describe("useStockData", () => {
     expect(infoState?.source).toBe("prefetched");
     expect(infoState?.capabilities.compare).toBe(true);
     expect(infoState?.data?.shortName).toBe("Apple");
+    expect(infoState?.freshness).toEqual({
+      snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+      sections: {
+        price: "2026-03-15",
+      },
+    });
     expect(fundamentalsState?.data?.ttmPe).toBe(28.4);
     expect(mockFetch).toHaveBeenCalledTimes(2);
   });

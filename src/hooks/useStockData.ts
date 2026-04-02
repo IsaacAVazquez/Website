@@ -6,6 +6,7 @@ import type {
   InvestmentDataEnvelope,
   InvestmentDataSource,
   InvestmentSnapshot,
+  InvestmentSnapshotFreshness,
   InvestmentSection,
 } from "@/types/investment";
 import {
@@ -20,6 +21,7 @@ interface UseStockDataState<T> {
   error: string | null;
   isNotFetched: boolean;
   lastUpdated: string | null;
+  freshness: InvestmentSnapshotFreshness | null;
   source: InvestmentDataSource | null;
   capabilities: InvestmentCapabilities;
 }
@@ -35,6 +37,7 @@ const EMPTY_STATE = {
   error: null,
   isNotFetched: false,
   lastUpdated: null,
+  freshness: null,
   source: null,
   capabilities: EMPTY_CAPABILITIES,
 } as const;
@@ -44,6 +47,7 @@ type StockDataError = Error & {
   source?: InvestmentDataSource | null;
   capabilities?: InvestmentCapabilities;
   lastUpdated?: string | null;
+  freshness?: InvestmentSnapshotFreshness | null;
 };
 
 type StockDataAction<T> =
@@ -66,6 +70,7 @@ function buildEnvelopeFromSnapshot<T>(
         source: snapshot.source as InvestmentDataSource,
         capabilities: snapshot.capabilities,
         lastUpdated: snapshot.lastUpdated,
+        freshness: snapshot.freshness ?? null,
       }
     );
   }
@@ -75,6 +80,7 @@ function buildEnvelopeFromSnapshot<T>(
     source: snapshot.source,
     capabilities: snapshot.capabilities,
     lastUpdated: snapshot.lastUpdated,
+    freshness: snapshot.freshness ?? null,
   };
 }
 
@@ -114,6 +120,7 @@ function stockDataReducer<T>(
         error: null,
         isNotFetched: false,
         lastUpdated: action.envelope.lastUpdated,
+        freshness: action.envelope.freshness ?? null,
         source: action.envelope.source,
         capabilities: action.envelope.capabilities,
       };
@@ -133,6 +140,7 @@ function stockDataReducer<T>(
         error: action.error.message,
         isNotFetched: action.error.status === 404,
         lastUpdated: action.error.lastUpdated ?? null,
+        freshness: action.error.freshness ?? null,
         source: action.error.source ?? null,
         capabilities: action.error.capabilities ?? {},
       };

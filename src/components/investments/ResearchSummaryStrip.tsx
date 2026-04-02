@@ -109,6 +109,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
   const {
     data: priceRaw,
     lastUpdated: datasetLastUpdated,
+    freshness: priceFreshness,
   } = useStockData<PriceData>(symbol, "price");
   const {
     quote,
@@ -127,7 +128,9 @@ export function ResearchSummaryStrip({ symbol }: Props) {
   const trailingYear = prices.slice(-252);
   const trailingHigh = trailingYear.length ? Math.max(...trailingYear.map((item) => item.high)) : undefined;
   const trailingLow = trailingYear.length ? Math.min(...trailingYear.map((item) => item.low)) : undefined;
-  const historyFreshness = getHistoricalPriceFreshness(latestPrice?.date, datasetLastUpdated);
+  const snapshotBuiltAt = priceFreshness?.snapshotBuiltAt ?? datasetLastUpdated;
+  const historicalPriceAsOf = priceFreshness?.sections.price ?? latestPrice?.date ?? null;
+  const historyFreshness = getHistoricalPriceFreshness(historicalPriceAsOf, snapshotBuiltAt);
   const livePrice = quote && !quote.error ? quote.price : undefined;
   const displayedPrice = livePrice ?? latestPrice?.close;
   const displayedDayChangePercent =
@@ -142,7 +145,9 @@ export function ResearchSummaryStrip({ symbol }: Props) {
         : "default";
   const priceFreshnessMode = livePrice !== undefined ? "live" : "dataset";
   const priceFreshnessLastUpdated =
-    livePrice !== undefined ? liveQuoteLastUpdated : datasetLastUpdated ?? latestPrice?.date ?? null;
+    livePrice !== undefined
+      ? liveQuoteLastUpdated
+      : historicalPriceAsOf ?? snapshotBuiltAt ?? null;
 
   return (
     <WarmCard
@@ -188,7 +193,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                   </div>
                   <DataFreshnessIndicator
                     lastUpdated={priceFreshnessLastUpdated}
-                    mode={priceFreshnessMode}
+                    mode={livePrice !== undefined ? priceFreshnessMode : "price"}
                   />
                 </div>
                 <div className="mt-1 flex items-end gap-3">
@@ -213,9 +218,9 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                 </div>
                 <p className="mt-2 text-xs text-[var(--text-secondary)]">
                   {livePrice !== undefined
-                    ? `Historical chart through ${formatHistoryAsOf(latestPrice?.date)}.`
-                    : latestPrice?.date
-                      ? `Showing the latest available close from ${formatHistoryAsOf(latestPrice.date)}.`
+                    ? `Historical chart through ${formatHistoryAsOf(historicalPriceAsOf)}.`
+                    : historicalPriceAsOf
+                      ? `Showing the latest saved close from ${formatHistoryAsOf(historicalPriceAsOf)}.`
                       : "Live pricing is temporarily unavailable."}
                 </p>
                 {quoteError && livePrice === undefined ? (

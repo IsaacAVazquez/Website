@@ -6,7 +6,7 @@ interface DataFreshnessIndicatorProps {
   lastUpdated: Date | string | null;
   onRefresh?: () => void;
   isRefreshing?: boolean;
-  mode?: "default" | "dataset" | "live";
+  mode?: "default" | "dataset" | "live" | "price";
 }
 
 const STALE_DATASET_THRESHOLD_DAYS = 7;
@@ -65,6 +65,8 @@ export function DataFreshnessIndicator({
       ? "Dataset updated"
       : mode === "live"
         ? "Live snapshot fetched"
+        : mode === "price"
+          ? "Price as of"
         : "Updated";
 
   if (lastUpdated === null) {
@@ -75,7 +77,11 @@ export function DataFreshnessIndicator({
           style={{ backgroundColor: "var(--color-error)" }}
         />
         <span className="text-xs text-[var(--text-tertiary)]">
-          {mode === "dataset" ? "No dataset" : "No data"}
+          {mode === "dataset"
+            ? "No dataset"
+            : mode === "price"
+              ? "No price data"
+              : "No data"}
         </span>
         {onRefresh && (
           <button
@@ -98,9 +104,12 @@ export function DataFreshnessIndicator({
   const { label, color, diffDays } = getRelativeTime(date);
   const shouldUseAbsoluteDatasetLabel =
     mode === "dataset" && diffDays >= STALE_DATASET_THRESHOLD_DAYS;
-  const displayedLabel = shouldUseAbsoluteDatasetLabel
-    ? `Snapshot as of ${formatAbsoluteDate(date)}`
-    : `${labelPrefix} ${label}`;
+  const displayedLabel =
+    mode === "price"
+      ? `Price as of ${formatAbsoluteDate(date)}`
+      : shouldUseAbsoluteDatasetLabel
+        ? `Snapshot as of ${formatAbsoluteDate(date)}`
+        : `${labelPrefix} ${label}`;
 
   return (
     <div className="inline-flex items-center gap-2">

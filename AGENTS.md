@@ -198,6 +198,7 @@ The snapshot builder removes legacy per-section JSON files after writing `snapsh
 Checked-in operational workflows:
 
 - `.github/workflows/test.yml`
+- `.github/workflows/update-investments.yml`
 - `.github/workflows/update-fantasy-rb.yml`
 - `netlify/functions/scheduled-fantasy-update.ts`
 - `netlify/functions/purge-cache.ts`
@@ -205,6 +206,7 @@ Checked-in operational workflows:
 Current behavior:
 
 - `test.yml` runs unit tests, Playwright E2E, lint, and build on pushes to `main`, `develop`, and `claude/**`, plus pull requests targeting `main` or `develop`
+- `update-investments.yml` runs on manual dispatch and on weekdays at `22:15 UTC`, then commits refreshed files under `public/data/investments` when the curated dataset changes
 - `update-fantasy-rb.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`
 - `scheduled-fantasy-update.ts` runs on Wednesdays at `08:00 UTC` and calls `/api/scheduled-update` with `Authorization: Bearer $CRON_SECRET`
 - `purge-cache.ts` is protected by `x-cron-secret` or `?secret=` and calls Netlify Durable Cache purge

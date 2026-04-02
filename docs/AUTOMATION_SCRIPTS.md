@@ -33,11 +33,19 @@ Current files under `scripts/`:
 
 ## Scheduled Automations
 
-The repo also contains a Netlify scheduled function:
+The repo also contains scheduled GitHub Actions and a Netlify scheduled function:
+
+- `.github/workflows/update-fantasy-rb.yml`
+- `.github/workflows/update-investments.yml`
 
 - `netlify/functions/scheduled-fantasy-update.ts`
 
-That function calls:
+The GitHub workflow refreshes and commits:
+
+- `public/data/investments/index.json`
+- `public/data/investments/{SYMBOL}/snapshot.json`
+
+The Netlify function calls:
 
 - `/api/scheduled-update`
 

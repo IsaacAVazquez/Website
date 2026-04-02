@@ -32,4 +32,15 @@ describe("DataFreshnessIndicator", () => {
 
     expect(screen.getByText("Live snapshot fetched 30m ago")).toBeInTheDocument();
   });
+
+  it("uses an explicit date label for historical price timestamps", () => {
+    render(
+      <DataFreshnessIndicator
+        lastUpdated="2026-02-27"
+        mode="price"
+      />
+    );
+
+    expect(screen.getByText("Price as of Feb 27, 2026")).toBeInTheDocument();
+  });
 });
