@@ -62,6 +62,14 @@ function normalizePriceEntry(entry: StockPrice & { report_date?: string }): Stoc
   };
 }
 
+function getHistoricalDayChangePercent(prices: StockPrice[]): number | undefined {
+  if (prices.length < 2) return undefined;
+  const latest = prices[prices.length - 1];
+  const previous = prices[prices.length - 2];
+  if (!latest || !previous || previous.close === 0) return undefined;
+  return ((latest.close - previous.close) / previous.close) * 100;
+}
+
 function MetricTile({
   label,
   value,
@@ -115,12 +123,15 @@ export function ResearchSummaryStrip({ symbol }: Props) {
   }, [priceRaw]);
 
   const latestPrice = prices[prices.length - 1];
+  const historicalDayChangePercent = getHistoricalDayChangePercent(prices);
   const trailingYear = prices.slice(-252);
   const trailingHigh = trailingYear.length ? Math.max(...trailingYear.map((item) => item.high)) : undefined;
   const trailingLow = trailingYear.length ? Math.min(...trailingYear.map((item) => item.low)) : undefined;
   const historyFreshness = getHistoricalPriceFreshness(latestPrice?.date, datasetLastUpdated);
   const livePrice = quote && !quote.error ? quote.price : undefined;
-  const liveDayChangePercent = quote && !quote.error ? quote.changePercent : undefined;
+  const displayedPrice = livePrice ?? latestPrice?.close;
+  const displayedDayChangePercent =
+    (quote && !quote.error ? quote.changePercent : undefined) ?? historicalDayChangePercent;
   const displayName = (!quote?.error ? quote?.name : undefined) ?? info?.longName ?? info?.shortName ?? symbol;
   const stance = dcf?.recommendation ?? "Researching";
   const stanceTone =
@@ -129,6 +140,9 @@ export function ResearchSummaryStrip({ symbol }: Props) {
       : stance.toLowerCase().includes("sell")
         ? "negative"
         : "default";
+  const priceFreshnessMode = livePrice !== undefined ? "live" : "dataset";
+  const priceFreshnessLastUpdated =
+    livePrice !== undefined ? liveQuoteLastUpdated : datasetLastUpdated ?? latestPrice?.date ?? null;
 
   return (
     <WarmCard
@@ -161,7 +175,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                   {displayName}
                 </h2>
                 <p className="mt-1 text-sm text-[var(--text-secondary)]">
-                  Research workspace for valuation, quality, and event signals.
+                  Snapshot-backed view of valuation, quality, and market context.
                 </p>
               </div>
 
@@ -169,30 +183,46 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                      Live Price
+                      Latest Price
                     </p>
                   </div>
-                  <DataFreshnessIndicator lastUpdated={liveQuoteLastUpdated} mode="live" />
+                  <DataFreshnessIndicator
+                    lastUpdated={priceFreshnessLastUpdated}
+                    mode={priceFreshnessMode}
+                  />
                 </div>
                 <div className="mt-1 flex items-end gap-3">
                   <span className="text-2xl font-semibold text-[var(--text-primary)]">
-                    {quoteLoading ? "Loading..." : livePrice !== undefined ? formatCurrency(livePrice) : "Unavailable"}
+                    {quoteLoading && displayedPrice === undefined
+                      ? "Loading…"
+                      : displayedPrice !== undefined
+                        ? formatCurrency(displayedPrice)
+                        : "Unavailable"}
                   </span>
-                  {liveDayChangePercent !== undefined ? (
+                  {displayedDayChangePercent !== undefined ? (
                     <span
                       className={`text-sm font-semibold ${
-                        liveDayChangePercent >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
+                        displayedDayChangePercent >= 0
+                          ? "text-[var(--color-success)]"
+                          : "text-[var(--color-error)]"
                       }`}
                     >
-                      {formatPercent(liveDayChangePercent, true)}
+                      {formatPercent(displayedDayChangePercent, true)}
                     </span>
                   ) : null}
                 </div>
                 <p className="mt-2 text-xs text-[var(--text-secondary)]">
-                  {quoteError
-                    ? quoteError
-                    : `Historical chart through ${formatHistoryAsOf(latestPrice?.date)}.`}
+                  {livePrice !== undefined
+                    ? `Historical chart through ${formatHistoryAsOf(latestPrice?.date)}.`
+                    : latestPrice?.date
+                      ? `Showing the latest available close from ${formatHistoryAsOf(latestPrice.date)}.`
+                      : "Live pricing is temporarily unavailable."}
                 </p>
+                {quoteError && livePrice === undefined ? (
+                  <p className="mt-1 text-xs font-medium text-[var(--color-warning)]">
+                    {quoteError}
+                  </p>
+                ) : null}
                 {historyFreshness.isStale ? (
                   <p className="mt-1 text-xs font-medium text-[var(--color-warning)]">
                     Historical series trails the dataset by {historyFreshness.lagDays} days.
@@ -210,7 +240,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
 
           <div className="h-full rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-sm)] lg:p-5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-              Market Take
+              Current Read
             </p>
             <p
               className={`mt-3 text-2xl font-semibold ${
@@ -236,12 +266,12 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                 <span>ROIC</span>
                 <span className="font-medium text-[var(--text-primary)]">{formatPercent(profitability?.roic)}</span>
               </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>History as of</span>
-                    <span className="font-medium text-[var(--text-primary)]">{formatDate(latestPrice?.date)}</span>
-                  </div>
-                </div>
+              <div className="flex items-center justify-between gap-4">
+                <span>History as of</span>
+                <span className="font-medium text-[var(--text-primary)]">{formatDate(latestPrice?.date)}</span>
               </div>
+            </div>
+          </div>
         </div>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">

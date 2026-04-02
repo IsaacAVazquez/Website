@@ -273,10 +273,10 @@ export function PriceChartPanel({ symbol }: Props) {
         <div>
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">Price History</h3>
           <p className="mt-1 text-xs text-[var(--text-tertiary)]">
-            Trend and volume view for the selected research window.
+            Trend and volume from the curated research snapshot.
           </p>
           <p className="mt-2 text-xs text-[var(--text-secondary)]">
-            Historical series through {formatHistoryAsOf(latestHistoricalDate)}. Live price appears in the research header.
+            Historical series through {formatHistoryAsOf(latestHistoricalDate)}. Live pricing, when available, appears in the research header.
           </p>
           {historyFreshness.isStale ? (
             <p className="mt-1 text-xs font-medium text-[var(--color-warning)]">

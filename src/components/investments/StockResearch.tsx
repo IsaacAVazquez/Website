@@ -46,6 +46,22 @@ const TABS: { key: ResearchTab; label: string }[] = [
   { key: "compare",      label: "Compare" },
 ];
 
+function getCuratedOnlyMessage(symbol: string) {
+  return `${symbol.toUpperCase()} is not in the current research set. Search by ticker or company name to pick an available symbol.`;
+}
+
+function getResearchErrorMessage(error: string | null) {
+  if (!error) {
+    return "Research data is temporarily unavailable. Try again shortly.";
+  }
+
+  if (/temporarily unavailable/i.test(error)) {
+    return "Research data is temporarily unavailable. Try again shortly.";
+  }
+
+  return error;
+}
+
 function isTabAvailable(
   tab: ResearchTab,
   capabilities: InvestmentCapabilities
@@ -105,7 +121,7 @@ export function StockResearch({
       .catch(() => {});
   }, []);
 
-  const hasResearchContext = source !== null || Object.keys(capabilities).length > 0;
+  const hasResearchContext = source !== null && !symbolError;
   const visibleTabs = useMemo(
     () =>
       symbol && hasResearchContext
@@ -142,7 +158,7 @@ export function StockResearch({
             <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
               <div className="min-w-0">
                 <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                  Ticker Research
+                  Research Symbol
                 </p>
                 <StockSearch value={symbol} onChange={onSymbolChange} />
               </div>
@@ -223,28 +239,28 @@ export function StockResearch({
           ) : showLoadingState ? (
             <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
               <p className="text-sm font-semibold text-[var(--text-primary)]">
-                Loading research snapshot
+                Loading research data…
               </p>
               <p className="mt-2 text-sm text-[var(--text-tertiary)]">
-                Loading curated research data for {symbol}…
+                Pulling the latest curated snapshot for {symbol.toUpperCase()}.
               </p>
             </div>
           ) : showCuratedOnlyState ? (
             <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--surface-secondary))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
               <p className="text-sm font-semibold text-[var(--text-primary)]">
-                Research is currently available for curated symbols only.
+                This symbol is not in the current research set.
               </p>
               <p className="mt-2 text-sm text-[var(--text-secondary)]">
-                {symbolError ?? `Try a symbol from the curated research universe instead of ${symbol}.`}
+                {getCuratedOnlyMessage(symbol)}
               </p>
             </div>
           ) : showResearchErrorState ? (
             <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-error)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-error)_8%,var(--surface-secondary))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
               <p className="text-sm font-semibold text-[var(--text-primary)]">
-                Research data could not be loaded.
+                Research data is temporarily unavailable.
               </p>
               <p className="mt-2 text-sm text-[var(--text-secondary)]">
-                {symbolError}
+                {getResearchErrorMessage(symbolError)}
               </p>
             </div>
           ) : (

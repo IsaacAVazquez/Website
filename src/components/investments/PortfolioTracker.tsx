@@ -20,8 +20,18 @@ interface Props {
 }
 
 export function PortfolioTracker({ onResearch }: Props) {
-  const { enhancedHoldings, summary, isLoading, lastUpdated, snapshots, addHolding, updateHolding, removeHolding, refetch } =
-    useInvestments();
+  const {
+    enhancedHoldings,
+    summary,
+    isLoading,
+    error,
+    lastUpdated,
+    snapshots,
+    addHolding,
+    updateHolding,
+    removeHolding,
+    refetch,
+  } = useInvestments();
 
   const shouldReduceMotion = useReducedMotion();
   const v = shouldReduceMotion ? getReducedMotionVariants() : { containerVariants, itemVariants };
@@ -49,6 +59,11 @@ export function PortfolioTracker({ onResearch }: Props) {
               />
             </div>
           </div>
+          {error ? (
+            <div className="mb-4 rounded-2xl border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--surface-secondary))] px-4 py-3 text-sm text-[var(--text-secondary)]">
+              {error}
+            </div>
+          ) : null}
           <PortfolioSummary summary={summary} isLoading={isLoading} />
         </div>
       )}

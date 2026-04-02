@@ -114,14 +114,14 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         >
           <div className="min-w-0 p-5 sm:p-6 lg:p-7">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-              Thesis Snapshot
+              Company Snapshot
             </p>
             <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
-              What matters first
+              Start Here
             </h3>
             <p className="mt-3 max-w-[92ch] text-sm leading-7 text-[var(--text-secondary)]">
               {info?.longBusinessSummary ??
-                "Business summary is unavailable for this symbol, but the valuation, quality, and operating signals below are still loaded from the research dataset."}
+                "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics below are still available from the research snapshot."}
             </p>
 
             <div className="mt-5 grid gap-4 lg:grid-cols-2">
@@ -183,11 +183,11 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           className="rounded-[30px] border-[color-mix(in_srgb,var(--color-success)_18%,var(--border-primary))] shadow-[var(--shadow-sm)] xl:self-start"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-            Valuation Call
+            Valuation Read
           </p>
           <div className="mt-4">
             <p className="text-3xl font-semibold text-[var(--text-primary)]">
-              {dcf?.recommendation ?? "Awaiting model"}
+              {dcf?.recommendation ?? "Model unavailable"}
             </p>
             <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
               {dcf?.upside !== undefined
@@ -240,7 +240,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
             {showNews ? (
               <div className="mt-4 rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                  Lead Narrative
+                  Latest Headline
                 </p>
                 <p className="mt-3 line-clamp-4 text-sm font-medium leading-6 text-[var(--text-primary)]">
                   {leadHeadline?.title ?? "No recent headline in the research dataset."}
@@ -257,9 +257,8 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                   Snapshot Mode
                 </p>
                 <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
-                  This ticker is loaded on demand, so the overview focuses on
-                  business context, valuation, and operating metrics instead of
-                  the curated news feed used for seeded research symbols.
+                  This view is falling back to the available company, valuation,
+                  and operating data while the curated headline feed is unavailable.
                 </p>
               </div>
             )}

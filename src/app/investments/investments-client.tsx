@@ -118,14 +118,14 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_auto] xl:items-end">
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
-                Investment Analytics Platform
+                Equity Research Workspace
               </p>
               <h1 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">
                 Investment Research Platform
               </h1>
               <p className="mt-3 max-w-[68ch] text-sm leading-7 text-[var(--text-secondary)] sm:text-[0.95rem]">
-                Public fintech product for curated equity research, portfolio analytics,
-                valuation review, and structured decision support built around reusable data panels.
+                Explore curated company snapshots, valuation panels, price history,
+                and browser-saved portfolio tracking in one stable research workspace.
               </p>
             </div>
 
@@ -135,7 +135,7 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
                   Workspace
                 </p>
                 <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
-                  Research + portfolio
+                  Snapshot-backed research
                 </p>
               </div>
               <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
@@ -143,7 +143,7 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
                   Coverage
                 </p>
                 <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
-                  Curated ticker universe
+                  Curated symbol set
                 </p>
               </div>
               <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
@@ -151,7 +151,7 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
                   Focus
                 </p>
                 <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
-                  Fintech UX clarity
+                  Reliable fallbacks
                 </p>
               </div>
             </div>

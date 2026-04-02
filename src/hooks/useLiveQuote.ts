@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import type { StockQuote } from "@/types/investment";
 
 interface QuotePayload {
@@ -36,6 +36,59 @@ const EMPTY_STATE: UseLiveQuoteState = {
   lastUpdated: null,
 };
 
+type LiveQuoteAction =
+  | { type: "reset" }
+  | { type: "start"; preserveQuote: boolean }
+  | { type: "success"; entry: CachedQuote }
+  | { type: "error"; message: string; preserveQuote: boolean };
+
+function liveQuoteReducer(
+  state: UseLiveQuoteState,
+  action: LiveQuoteAction
+): UseLiveQuoteState {
+  switch (action.type) {
+    case "reset":
+      return EMPTY_STATE;
+    case "start":
+      if (action.preserveQuote && state.quote) {
+        return {
+          ...state,
+          isLoading: true,
+          error: null,
+        };
+      }
+
+      return {
+        ...EMPTY_STATE,
+        isLoading: true,
+      };
+    case "success":
+      return {
+        quote: action.entry.quote,
+        isLoading: false,
+        error: action.entry.quote.error ?? null,
+        lastUpdated: action.entry.lastUpdated,
+      };
+    case "error":
+      if (action.preserveQuote && state.quote) {
+        return {
+          ...state,
+          isLoading: false,
+          error: null,
+        };
+      }
+
+      return {
+        quote: null,
+        isLoading: false,
+        error: action.message,
+        lastUpdated: null,
+      };
+    default:
+      return state;
+  }
+}
+
 async function fetchQuote(symbol: string): Promise<CachedQuote> {
   const upperSymbol = symbol.toUpperCase();
   const cached = quoteCache.get(upperSymbol);
@@ -51,14 +104,14 @@ async function fetchQuote(symbol: string): Promise<CachedQuote> {
   const promise = fetch(`/api/investments/quotes?symbols=${encodeURIComponent(upperSymbol)}`)
     .then(async (response) => {
       if (!response.ok) {
-        throw new Error(`Failed to fetch live quote: HTTP ${response.status}`);
+        throw new Error("Live pricing is temporarily unavailable.");
       }
 
       const payload = (await response.json()) as QuotePayload;
       const quote = payload.quotes?.find((item) => item.symbol === upperSymbol);
 
       if (!quote) {
-        throw new Error(`Live quote unavailable for ${upperSymbol}`);
+        throw new Error("Live pricing is temporarily unavailable.");
       }
 
       const cachedEntry: CachedQuote = {
@@ -77,10 +130,11 @@ async function fetchQuote(symbol: string): Promise<CachedQuote> {
 }
 
 export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
-  const [state, setState] = useState<UseLiveQuoteState>(EMPTY_STATE);
+  const [state, dispatch] = useReducer(liveQuoteReducer, EMPTY_STATE);
   const [fetchKey, setFetchKey] = useState(0);
   const isMounted = useRef(true);
   const latestRequestId = useRef(0);
+  const previousSymbol = useRef<string | null>(null);
 
   useEffect(() => {
     isMounted.current = true;
@@ -91,38 +145,36 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
 
   useEffect(() => {
     if (!symbol) {
+      previousSymbol.current = null;
+      dispatch({ type: "reset" });
       return;
     }
 
     let cancelled = false;
     const upperSymbol = symbol.toUpperCase();
+    const preserveQuote = previousSymbol.current === upperSymbol;
+    previousSymbol.current = upperSymbol;
     const requestId = latestRequestId.current + 1;
     latestRequestId.current = requestId;
 
-    setState({
-      ...EMPTY_STATE,
-      isLoading: true,
-    });
+    dispatch({ type: "start", preserveQuote });
 
     fetchQuote(upperSymbol)
       .then((entry) => {
         if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
 
-        setState({
-          quote: entry.quote,
-          isLoading: false,
-          error: entry.quote.error ?? null,
-          lastUpdated: entry.lastUpdated,
-        });
+        dispatch({ type: "success", entry });
       })
       .catch((error) => {
         if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
 
-        setState({
-          quote: null,
-          isLoading: false,
-          error: error instanceof Error ? error.message : "Failed to fetch live quote",
-          lastUpdated: null,
+        dispatch({
+          type: "error",
+          message:
+            error instanceof Error
+              ? error.message
+              : "Live pricing is temporarily unavailable.",
+          preserveQuote,
         });
       });
 

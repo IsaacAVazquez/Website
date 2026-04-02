@@ -2,6 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import type { StockQuote } from "@/types/investment";
 import { isValidSymbol, yahooFetch } from "@/lib/yahooFinance";
 
+const TEMPORARY_QUOTE_ERROR =
+  "Live price is temporarily unavailable. Showing the latest saved data instead.";
+const RATE_LIMITED_QUOTE_ERROR =
+  "Live price is temporarily unavailable right now. Try again in a few minutes.";
+const INVALID_SYMBOL_QUOTE_ERROR = "This symbol is not eligible for live pricing.";
+const NO_PRICE_DATA_ERROR = "Live price is unavailable for this symbol right now.";
+
 /**
  * Investments Quotes Route
  * Direct Yahoo chart fetch for portfolio quotes.
@@ -24,7 +31,7 @@ export async function GET(request: NextRequest) {
     const validSymbols = symbolArray.filter(isValidSymbol);
     const invalidQuotes = symbolArray
       .filter((symbol) => !isValidSymbol(symbol))
-      .map((symbol) => errorQuote(symbol, `Invalid symbol format: ${symbol}`));
+      .map((symbol) => errorQuote(symbol, INVALID_SYMBOL_QUOTE_ERROR));
 
     if (validSymbols.length === 0) {
       return NextResponse.json({
@@ -40,7 +47,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       quotes: [...validQuotes, ...invalidQuotes],
-      rateLimited: validQuotes.some((quote) => quote.error === "Temporarily rate-limited"),
+      rateLimited: validQuotes.some((quote) => quote.error === RATE_LIMITED_QUOTE_ERROR),
       allFailed,
       timestamp: new Date().toISOString(),
     });
@@ -68,40 +75,44 @@ function errorQuote(symbol: string, message: string): StockQuote {
 }
 
 async function fetchQuote(symbol: string): Promise<StockQuote> {
-  const response = await yahooFetch(
-    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`,
-    8_000
-  );
-
-  if (!response.ok) {
-    return errorQuote(
-      symbol,
-      response.status === 429 ? "Temporarily rate-limited" : `HTTP ${response.status}`
+  try {
+    const response = await yahooFetch(
+      `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=1d`,
+      8_000
     );
+
+    if (!response.ok) {
+      return errorQuote(
+        symbol,
+        response.status === 429 ? RATE_LIMITED_QUOTE_ERROR : TEMPORARY_QUOTE_ERROR
+      );
+    }
+
+    const data = await response.json();
+    const meta = data?.chart?.result?.[0]?.meta ?? {};
+    const price = meta.regularMarketPrice ?? 0;
+    const previousClose = meta.previousClose ?? meta.chartPreviousClose ?? 0;
+    const change = price - previousClose;
+    const changePercent = previousClose ? (change / previousClose) * 100 : 0;
+
+    if (!price) {
+      return errorQuote(symbol, NO_PRICE_DATA_ERROR);
+    }
+
+    return {
+      symbol,
+      price,
+      change,
+      changePercent,
+      dayHigh: meta.regularMarketDayHigh ?? 0,
+      dayLow: meta.regularMarketDayLow ?? 0,
+      open: meta.regularMarketOpen ?? 0,
+      previousClose,
+      volume: meta.regularMarketVolume ?? 0,
+      marketCap: 0,
+      name: meta.shortName ?? meta.longName ?? symbol,
+    };
+  } catch {
+    return errorQuote(symbol, TEMPORARY_QUOTE_ERROR);
   }
-
-  const data = await response.json();
-  const meta = data?.chart?.result?.[0]?.meta ?? {};
-  const price = meta.regularMarketPrice ?? 0;
-  const previousClose = meta.previousClose ?? meta.chartPreviousClose ?? 0;
-  const change = price - previousClose;
-  const changePercent = previousClose ? (change / previousClose) * 100 : 0;
-
-  if (!price) {
-    return errorQuote(symbol, "No price data");
-  }
-
-  return {
-    symbol,
-    price,
-    change,
-    changePercent,
-    dayHigh: meta.regularMarketDayHigh ?? 0,
-    dayLow: meta.regularMarketDayLow ?? 0,
-    open: meta.regularMarketOpen ?? 0,
-    previousClose,
-    volume: meta.regularMarketVolume ?? 0,
-    marketCap: 0,
-    name: meta.shortName ?? meta.longName ?? symbol,
-  };
 }

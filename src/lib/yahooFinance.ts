@@ -15,9 +15,16 @@ const USER_AGENT =
 
 // In-memory cache for crumb + cookie
 let authCache: { crumb: string; cookie: string; expiry: number } | null = null;
+let authInflight:
+  | Promise<{
+      crumb: string;
+      cookie: string;
+    }>
+  | null = null;
 
 // Negative cache: avoid hammering Yahoo if auth keeps failing
 let authFailedUntil = 0;
+let authFailureLoggedUntil = 0;
 
 // Rate limit tracking: stop all requests when Yahoo returns 429
 let rateLimitedUntil = 0;
@@ -165,16 +172,31 @@ export async function getYahooAuth(): Promise<{
     return { crumb: "", cookie: "" };
   }
 
-  try {
-    const { crumb, cookie } = await fetchAuth();
-    authCache = { crumb, cookie, expiry: Date.now() + CACHE_TTL_MS };
-    authFailedUntil = 0;
-    return { crumb, cookie };
-  } catch (error) {
-    console.error("Yahoo Finance auth failed:", error);
-    authFailedUntil = Date.now() + FAIL_CACHE_TTL_MS;
-    return { crumb: "", cookie: "" };
+  if (authInflight) {
+    return authInflight;
   }
+
+  authInflight = fetchAuth()
+    .then(({ crumb, cookie }) => {
+      authCache = { crumb, cookie, expiry: Date.now() + CACHE_TTL_MS };
+      authFailedUntil = 0;
+      authFailureLoggedUntil = 0;
+      return { crumb, cookie };
+    })
+    .catch((error) => {
+      if (Date.now() >= authFailureLoggedUntil) {
+        console.warn("Yahoo Finance auth is unavailable; continuing without a live crumb.", error);
+        authFailureLoggedUntil = Date.now() + FAIL_CACHE_TTL_MS;
+      }
+
+      authFailedUntil = Date.now() + FAIL_CACHE_TTL_MS;
+      return { crumb: "", cookie: "" };
+    })
+    .finally(() => {
+      authInflight = null;
+    });
+
+  return authInflight;
 }
 
 /**

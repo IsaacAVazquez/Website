@@ -61,10 +61,15 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
           <div className="flex items-center gap-2">
             <span className="text-base font-bold text-[var(--text-primary)]">{holding.symbol}</span>
             {holding.isLoading && (
-              <span className="text-xs text-[var(--text-tertiary)]">Loading...</span>
+              <span className="text-xs text-[var(--text-tertiary)]">Loading…</span>
             )}
           </div>
           <p className="max-w-[180px] truncate text-xs text-[var(--text-secondary)]">{holding.name}</p>
+          {holding.error && !holding.isLoading ? (
+            <p className="mt-1 max-w-[220px] text-xs text-[var(--color-warning)]">
+              Live price unavailable. Using your saved cost basis.
+            </p>
+          ) : null}
         </div>
         <div className="shrink-0 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-2 py-1.5">
           {sparklineData.length >= 2 ? (

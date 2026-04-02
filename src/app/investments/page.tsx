@@ -6,7 +6,7 @@ import { normalizeInvestmentsState } from "./investments-state";
 export const metadata = constructMetadata({
   title: "Investment Research Platform | Isaac Vazquez",
   description:
-    "Public investment research platform built by Isaac Vazquez. Explore portfolio analytics, curated ticker research snapshots, valuation metrics, financial statements, and structured equity research workflows.",
+    "Investment research workspace with curated company snapshots, valuation metrics, financial statements, price history, and browser-saved portfolio tracking.",
   canonicalUrl: "/investments",
   dateModified: "2026-03-16",
   aiMetadata: {
@@ -28,11 +28,11 @@ export const metadata = constructMetadata({
     ],
     contentType: "Software Application",
     context:
-      "Recruiter-facing fintech project showcasing Isaac Vazquez's product thinking through a public investment research platform.",
+      "Public investment research workspace for exploring snapshot-backed company analysis and portfolio tracking.",
     summary:
-      "Investment research workspace for portfolio analytics, valuation, financial statement review, and curated equity analysis.",
+      "Investment research workspace for snapshot-backed company analysis, valuation review, and portfolio tracking.",
     primaryFocus:
-      "Fintech product execution, investment research UX, and data-driven decision support",
+      "Investment research workflows, analytics UX, and data-driven decision support",
   },
 });
 
@@ -64,7 +64,7 @@ export default async function InvestmentsPage({ searchParams }: InvestmentsPageP
         data={{
           name: "Investment Research Platform",
           description:
-            "Public investment research platform for portfolio analytics, valuation review, financial statements, and curated ticker snapshots.",
+            "Investment research workspace for valuation review, financial statements, curated company snapshots, and browser-saved portfolio tracking.",
           url: "https://isaacavazquez.com/investments",
           applicationCategory: "FinanceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

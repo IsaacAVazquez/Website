@@ -22,6 +22,7 @@ function Field({
       <span className="block text-xs font-medium text-[var(--text-secondary)] mb-1">{label}</span>
       <input
         id={id}
+        name={id}
         className="w-full px-3 py-2 text-sm rounded-lg border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition"
         {...props}
       />
@@ -70,8 +71,8 @@ export function AddStockForm({ onAdd }: Props) {
 
   if (!open) {
     return (
-      <ModernButton variant="accent" size="md" onClick={() => setOpen(true)} ariaLabel="Add stock">
-        <IconPlus size={16} /> Add Stock
+      <ModernButton variant="accent" size="md" onClick={() => setOpen(true)} ariaLabel="Add holding">
+        <IconPlus size={16} /> Add Holding
       </ModernButton>
     );
   }

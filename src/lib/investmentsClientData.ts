@@ -1,6 +1,11 @@
 "use client";
 
-import type { InvestmentSnapshot, InvestmentsIndex } from "@/types/investment";
+import type {
+  InvestmentCapabilities,
+  InvestmentDataSource,
+  InvestmentSnapshot,
+  InvestmentsIndex,
+} from "@/types/investment";
 import { normalizeInvestmentsIndex } from "@/lib/investmentsIndex";
 
 type CachedEntry<T> = {
@@ -16,14 +21,54 @@ const snapshotCache = new Map<string, CachedEntry<InvestmentSnapshot>>();
 const indexInflight = new Map<string, Promise<InvestmentsIndex>>();
 const snapshotInflight = new Map<string, Promise<InvestmentSnapshot>>();
 
-async function fetchJson<T>(url: string, fallbackMessage: string): Promise<T> {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(
-      response.status === 404 ? fallbackMessage : `Failed to load ${url}: HTTP ${response.status}`
-    );
+export interface ClientInvestmentDataError extends Error {
+  status: number;
+  source: InvestmentDataSource | null;
+  capabilities: InvestmentCapabilities;
+  lastUpdated: string | null;
+}
+
+function createClientInvestmentDataError(
+  message: string,
+  options: {
+    status: number;
+    source?: InvestmentDataSource | null;
+    capabilities?: InvestmentCapabilities;
+    lastUpdated?: string | null;
   }
-  return response.json() as Promise<T>;
+): ClientInvestmentDataError {
+  return Object.assign(new Error(message), {
+    status: options.status,
+    source: options.source ?? "prefetched",
+    capabilities: options.capabilities ?? {},
+    lastUpdated: options.lastUpdated ?? null,
+  });
+}
+
+async function fetchJson<T>(url: string): Promise<{ data: T; status: number }> {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw Object.assign(new Error(`Failed to load ${url}: HTTP ${response.status}`), {
+        status: response.status,
+      });
+    }
+
+    return {
+      data: (await response.json()) as T,
+      status: response.status,
+    };
+  } catch (error) {
+    if (
+      error instanceof Error &&
+      "status" in error &&
+      typeof (error as { status?: unknown }).status === "number"
+    ) {
+      throw error;
+    }
+
+    throw Object.assign(new Error(`Failed to load ${url}`), { status: 503 });
+  }
 }
 
 export async function getClientInvestmentsIndex(): Promise<InvestmentsIndex> {
@@ -38,14 +83,17 @@ export async function getClientInvestmentsIndex(): Promise<InvestmentsIndex> {
     return existing;
   }
 
-  const promise = fetchJson<InvestmentsIndex>(
-    "/data/investments/index.json",
-    "Curated research index is temporarily unavailable."
-  )
+  const promise = fetchJson<InvestmentsIndex>("/data/investments/index.json")
     .then((data) => {
-      const normalized = normalizeInvestmentsIndex(data);
+      const normalized = normalizeInvestmentsIndex(data.data);
       indexCache.set(cacheKey, { data: normalized, timestamp: Date.now() });
       return normalized;
+    })
+    .catch(() => {
+      throw createClientInvestmentDataError(
+        "The research universe is temporarily unavailable.",
+        { status: 503 }
+      );
     })
     .finally(() => indexInflight.delete(cacheKey));
 
@@ -67,13 +115,36 @@ export async function getClientInvestmentSnapshot(
     return existing;
   }
 
-  const promise = fetchJson<InvestmentSnapshot>(
-    `/data/investments/${encodeURIComponent(upperSymbol)}/snapshot.json`,
-    "Research is currently available for curated symbols only."
-  )
-    .then((data) => {
-      snapshotCache.set(upperSymbol, { data, timestamp: Date.now() });
-      return data;
+  const promise = getClientInvestmentsIndex()
+    .then(async (index) => {
+      if (!index.symbols.includes(upperSymbol)) {
+        throw createClientInvestmentDataError(
+          `${upperSymbol} is not in the curated research universe.`,
+          {
+            status: 404,
+            lastUpdated: index.lastUpdated,
+          }
+        );
+      }
+
+      try {
+        const snapshotResponse = await fetchJson<InvestmentSnapshot>(
+          `/data/investments/${encodeURIComponent(upperSymbol)}/snapshot.json`
+        );
+        snapshotCache.set(upperSymbol, {
+          data: snapshotResponse.data,
+          timestamp: Date.now(),
+        });
+        return snapshotResponse.data;
+      } catch {
+        throw createClientInvestmentDataError(
+          `Curated research data for ${upperSymbol} is temporarily unavailable.`,
+          {
+            status: 503,
+            lastUpdated: index.lastUpdated,
+          }
+        );
+      }
     })
     .finally(() => snapshotInflight.delete(upperSymbol));
 

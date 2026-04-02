@@ -170,6 +170,7 @@ export function StockSearch({ value, onChange }: Props) {
         />
         <input
           id="stock-search"
+          name="stock-search"
           type="text"
           value={input}
           onChange={(e) => {
@@ -180,6 +181,7 @@ export function StockSearch({ value, onChange }: Props) {
           onKeyDown={handleKeyDown}
           placeholder="Search symbol or company…"
           autoComplete="off"
+          spellCheck={false}
           className="w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] py-3 pl-9 pr-4 text-sm text-[var(--text-primary)] transition placeholder:text-[var(--text-tertiary)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           aria-label="Search stock symbol"
           aria-autocomplete="list"
@@ -226,7 +228,7 @@ export function StockSearch({ value, onChange }: Props) {
         <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--color-warning)]">
           <IconAlertCircle size={13} />
           <span>
-            Research is currently available for curated symbols only. Try a curated symbol or company name.
+            This workspace currently supports the curated research set only. Pick a ticker from the suggestions.
           </span>
         </p>
       )}

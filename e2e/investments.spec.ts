@@ -142,7 +142,12 @@ const quotesBySymbol = {
   },
 } as const;
 
-async function routeInvestmentsFixtures(page: Page) {
+async function routeInvestmentsFixtures(
+  page: Page,
+  options: {
+    quoteResponse?: (symbols: string[]) => Record<string, unknown>;
+  } = {}
+) {
   await page.route("**/data/investments/index.json", async (route) => {
     await route.fulfill({
       status: 200,
@@ -177,10 +182,16 @@ async function routeInvestmentsFixtures(page: Page) {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
-      body: JSON.stringify({
-        quotes: symbols.map((symbol) => quotesBySymbol[symbol as keyof typeof quotesBySymbol]).filter(Boolean),
-        timestamp: "2026-03-16T15:30:00.000Z",
-      }),
+      body: JSON.stringify(
+        options.quoteResponse
+          ? options.quoteResponse(symbols)
+          : {
+              quotes: symbols
+                .map((symbol) => quotesBySymbol[symbol as keyof typeof quotesBySymbol])
+                .filter(Boolean),
+              timestamp: "2026-03-16T15:30:00.000Z",
+            }
+      ),
     });
   });
 }
@@ -284,15 +295,65 @@ test.describe("Investments", () => {
     await search.fill("SHOP");
     await page.waitForTimeout(300);
 
-    await expect(
-      page.getByText(/research is currently available for curated symbols only/i)
-    ).toBeVisible();
-
     await search.press("Enter");
 
+    await expect(page).not.toHaveURL(/symbol=SHOP/);
     expect(requests.filter((url) => url.includes("/api/investments/data/"))).toHaveLength(0);
     expect(requests.filter((url) => url.includes("/data/investments/index.json")).length).toBe(1);
     expect(requests.filter((url) => url.includes("/data/investments/SHOP/snapshot.json"))).toHaveLength(0);
+  });
+
+  test("handles direct links to non-curated symbols without requesting an unknown snapshot", async ({ page }) => {
+    const requests: string[] = [];
+
+    await routeInvestmentsFixtures(page);
+    page.on("request", (request) => {
+      const url = request.url();
+      if (url.includes("/data/investments/")) {
+        requests.push(url);
+      }
+    });
+
+    await page.goto("/investments?view=research&symbol=SHOP&section=overview");
+    await page.waitForLoadState("networkidle");
+
+    await expect(page.getByRole("textbox", { name: /search stock symbol/i })).toHaveValue("SHOP");
+    await expect(
+      page.getByText("This symbol is not in the current research set.")
+    ).toBeVisible();
+    expect(requests.filter((url) => url.includes("/data/investments/SHOP/snapshot.json"))).toHaveLength(0);
+  });
+
+  test("falls back to the latest historical close when live pricing is unavailable", async ({ page }) => {
+    await routeInvestmentsFixtures(page, {
+      quoteResponse: (symbols) => ({
+        quotes: symbols.map((symbol) => ({
+          symbol,
+          price: 0,
+          change: 0,
+          changePercent: 0,
+          dayHigh: 0,
+          dayLow: 0,
+          open: 0,
+          previousClose: 0,
+          volume: 0,
+          marketCap: 0,
+          name: symbol === "V" ? "Visa Inc." : symbol,
+          error: "Live price is temporarily unavailable. Showing the latest saved data instead.",
+        })),
+        allFailed: true,
+        rateLimited: false,
+        timestamp: "2026-03-16T15:30:00.000Z",
+      }),
+    });
+
+    await page.goto("/investments?view=research&symbol=V&section=overview");
+    await page.waitForLoadState("networkidle");
+
+    await expect(page.getByText("$340.12")).toBeVisible();
+    await expect(page.getByText(/showing the latest available close from feb 27, 2026/i)).toBeVisible();
+    await expect(page.getByText(/live price is temporarily unavailable/i)).toBeVisible();
+    await expect(page.getByText(/^Unavailable$/)).toHaveCount(0);
   });
 
   test("keeps the shell stable across top-level tabs and avoids horizontal overflow", async ({ page }) => {

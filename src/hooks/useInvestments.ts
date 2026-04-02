@@ -53,8 +53,10 @@ function saveSnapshot(snapshot: PortfolioSnapshot): void {
 
 // ─── Quote fetching with retry ───────────────────────────────────────────────
 
-async function fetchQuotes(symbols: string[]): Promise<Map<string, StockQuote>> {
-  if (symbols.length === 0) return new Map();
+async function fetchQuotesWithStatus(
+  symbols: string[]
+): Promise<{ quotes: Map<string, StockQuote>; warning: string | null }> {
+  if (symbols.length === 0) return { quotes: new Map(), warning: null };
 
   const MAX_RETRIES = 2;
   let lastError: Error | null = null;
@@ -78,7 +80,12 @@ async function fetchQuotes(symbols: string[]): Promise<Map<string, StockQuote>> 
       for (const q of data.quotes ?? []) {
         map.set(q.symbol, q);
       }
-      return map;
+      return {
+        quotes: map,
+        warning: data.allFailed
+          ? "Live prices are temporarily unavailable. Portfolio totals are using your saved cost basis."
+          : null,
+      };
     } catch (err) {
       lastError = err as Error;
       if (attempt >= MAX_RETRIES) throw lastError;
@@ -185,10 +192,11 @@ export function useInvestments(): UseInvestmentsReturn {
     setError(null);
     try {
       const symbols = currentHoldings.map((h) => h.symbol);
-      const q = await fetchQuotes(symbols);
+      const { quotes: q, warning } = await fetchQuotesWithStatus(symbols);
       if (isMounted.current) {
         setQuotes(q);
         setLastUpdated(new Date());
+        setError(warning);
 
         // Record daily snapshot
         const enhanced = buildEnhanced(currentHoldings, q, false);
@@ -206,7 +214,7 @@ export function useInvestments(): UseInvestmentsReturn {
       }
     } catch (err) {
       if (isMounted.current) {
-        setError((err as Error).message);
+        setError((err as Error).message || "Live prices are temporarily unavailable.");
       }
     } finally {
       if (isMounted.current) setIsLoading(false);

@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import { __testUtils, useLiveQuote } from "../useLiveQuote";
 
 const originalFetch = global.fetch;
@@ -98,6 +98,31 @@ describe("useLiveQuote", () => {
 
     await waitFor(() => expect(result.current.quote?.symbol).toBe("MSFT"));
     expect(result.current.quote?.name).toBe("Microsoft Corporation");
+    expect(result.current.error).toBeNull();
+  });
+
+  it("keeps the last good quote visible during a same-symbol refetch failure", async () => {
+    (global.fetch as jest.Mock)
+      .mockResolvedValueOnce(buildQuoteResponse("AAPL", 203.1, "Apple Inc."))
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 503,
+      });
+
+    const { result } = renderHook(() => useLiveQuote("AAPL"));
+
+    await waitFor(() => expect(result.current.quote?.symbol).toBe("AAPL"));
+    expect(result.current.quote?.price).toBe(203.1);
+
+    act(() => {
+      result.current.refetch();
+    });
+
+    await waitFor(() => expect(result.current.isLoading).toBe(true));
+    expect(result.current.quote?.price).toBe(203.1);
+
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.quote?.price).toBe(203.1);
     expect(result.current.error).toBeNull();
   });
 });

@@ -282,7 +282,7 @@ describe("investments UI", () => {
     });
 
     expect(onChange).not.toHaveBeenCalled();
-    expect(container.textContent).toContain("Research is currently available for curated symbols only.");
+    expect(container.textContent).toContain("This workspace currently supports the curated research set only.");
   });
 
   it("uses live quotes for current price while labeling stale historical data", async () => {

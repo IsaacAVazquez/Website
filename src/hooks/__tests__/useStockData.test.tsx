@@ -27,6 +27,12 @@ function createDeferred<T>() {
   return { promise, resolve, reject };
 }
 
+const curatedIndex = {
+  symbols: ["AAPL", "MSFT", "V"],
+  failed: [],
+  lastUpdated: "2026-03-16T08:00:00.000Z",
+};
+
 describe("useStockData", () => {
   let container: HTMLDivElement;
   let root: Root;
@@ -47,6 +53,13 @@ describe("useStockData", () => {
   it("fetches one curated snapshot and serves multiple sections from local cache", async () => {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
+      if (url.includes("/data/investments/index.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => curatedIndex,
+        });
+      }
+
       if (url.includes("/data/investments/AAPL/snapshot.json")) {
         return Promise.resolve({
           ok: true,
@@ -100,7 +113,7 @@ describe("useStockData", () => {
     expect(infoState?.capabilities.compare).toBe(true);
     expect(infoState?.data?.shortName).toBe("Apple");
     expect(fundamentalsState?.data?.ttmPe).toBe(28.4);
-    expect(mockFetch).toHaveBeenCalledTimes(1);
+    expect(mockFetch).toHaveBeenCalledTimes(2);
   });
 
   it("returns an empty state when no symbol is selected", async () => {
@@ -129,6 +142,10 @@ describe("useStockData", () => {
   });
 
   it("clears stale state during symbol switches and ignores late responses from superseded requests", async () => {
+    const indexResponse = {
+      ok: true,
+      json: async () => curatedIndex,
+    };
     const aaplResponse = createDeferred<{
       ok: boolean;
       json: () => Promise<{
@@ -152,6 +169,10 @@ describe("useStockData", () => {
 
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
+
+      if (url.includes("/data/investments/index.json")) {
+        return Promise.resolve(indexResponse);
+      }
 
       if (url.includes("/data/investments/AAPL/snapshot.json")) {
         return aaplResponse.promise;
@@ -215,6 +236,135 @@ describe("useStockData", () => {
     await flushPromises();
 
     expect(result.current.data?.shortName).toBe("Microsoft");
+    expect(result.current.error).toBeNull();
+  });
+
+  it("classifies non-curated symbols as not fetched without requesting an unknown snapshot", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/data/investments/index.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => curatedIndex,
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    const { result } = renderHook(() =>
+      useStockData<{ shortName: string }>("SHOP", "info")
+    );
+
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    expect(result.current.data).toBeNull();
+    expect(result.current.isNotFetched).toBe(true);
+    expect(result.current.error).toMatch(/curated research universe/i);
+    expect(
+      (global.fetch as jest.Mock).mock.calls.some(([url]) =>
+        String(url).includes("/data/investments/SHOP/snapshot.json")
+      )
+    ).toBe(false);
+  });
+
+  it("treats missing curated snapshot assets as temporary dataset errors", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/data/investments/index.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => curatedIndex,
+        });
+      }
+
+      if (url.includes("/data/investments/AAPL/snapshot.json")) {
+        return Promise.resolve({
+          ok: false,
+          status: 404,
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    const { result } = renderHook(() =>
+      useStockData<{ shortName: string }>("AAPL", "info")
+    );
+
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    expect(result.current.data).toBeNull();
+    expect(result.current.isNotFetched).toBe(false);
+    expect(result.current.error).toMatch(/temporarily unavailable/i);
+    expect(result.current.source).toBe("prefetched");
+  });
+
+  it("keeps the last good section data visible during a same-symbol refetch failure", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/data/investments/index.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => curatedIndex,
+        });
+      }
+
+      if (url.includes("/data/investments/AAPL/snapshot.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({
+            source: "prefetched",
+            symbol: "AAPL",
+            capabilities: {
+              info: true,
+            },
+            lastUpdated: "2026-03-16T08:00:00.000Z",
+            sections: {
+              info: { shortName: "Apple" },
+            },
+          }),
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    const { result } = renderHook(() =>
+      useStockData<{ shortName: string }>("AAPL", "info")
+    );
+
+    await waitFor(() => expect(result.current.data?.shortName).toBe("Apple"));
+
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/data/investments/index.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => curatedIndex,
+        });
+      }
+
+      if (url.includes("/data/investments/AAPL/snapshot.json")) {
+        return Promise.resolve({
+          ok: false,
+          status: 503,
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    act(() => {
+      result.current.refetch();
+    });
+
+    expect(result.current.data?.shortName).toBe("Apple");
+    expect(result.current.isLoading).toBe(true);
+
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    expect(result.current.data?.shortName).toBe("Apple");
     expect(result.current.error).toBeNull();
   });
 });
