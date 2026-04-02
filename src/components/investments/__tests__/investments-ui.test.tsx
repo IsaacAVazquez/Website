@@ -172,6 +172,18 @@ const visaSnapshot = {
   },
 };
 
+const appleSnapshotWithoutPrice = {
+  ...appleSnapshot,
+  capabilities: {
+    ...appleSnapshot.capabilities,
+    price: false,
+  },
+  sections: {
+    ...appleSnapshot.sections,
+    price: undefined,
+  },
+};
+
 describe("investments UI", () => {
   let container: HTMLDivElement;
   let root: Root;
@@ -361,5 +373,101 @@ describe("investments UI", () => {
         "Compare",
       ])
     );
+  });
+
+  it("falls back to the saved close and price-as-of copy when live quotes are unavailable", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/data/investments/index.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => curatedIndex,
+        });
+      }
+
+      if (url.includes("/data/investments/AAPL/snapshot.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => appleSnapshot,
+        });
+      }
+
+      if (url.includes("/api/investments/quotes?symbols=AAPL")) {
+        return Promise.resolve({
+          ok: false,
+          status: 503,
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    await act(async () => {
+      root.render(
+        <StockResearch
+          symbol="AAPL"
+          activeTab="overview"
+          onSymbolChange={() => {}}
+          onTabChange={() => {}}
+        />
+      );
+    });
+    await flushPromises();
+    await flushPromises();
+
+    expect(container.textContent).toContain("Apple Inc.");
+    expect(container.textContent).toContain("$198.00");
+    expect(container.textContent).toContain("Price as of Mar 15, 2026");
+    expect(container.textContent).toContain("Showing the latest saved close from Mar 15, 2026.");
+    expect(container.textContent).toContain("Live pricing is temporarily unavailable.");
+  });
+
+  it("shows a no-price state when neither live quotes nor historical prices are available", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/data/investments/index.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => curatedIndex,
+        });
+      }
+
+      if (url.includes("/data/investments/AAPL/snapshot.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => appleSnapshotWithoutPrice,
+        });
+      }
+
+      if (url.includes("/api/investments/quotes?symbols=AAPL")) {
+        return Promise.resolve({
+          ok: false,
+          status: 503,
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    await act(async () => {
+      root.render(
+        <StockResearch
+          symbol="AAPL"
+          activeTab="overview"
+          onSymbolChange={() => {}}
+          onTabChange={() => {}}
+        />
+      );
+    });
+    await flushPromises();
+    await flushPromises();
+
+    expect(container.textContent).toContain("Apple Inc.");
+    expect(container.textContent).toContain("Unavailable");
+    expect(container.textContent).toContain("No price data");
+    expect(container.textContent).toContain("Live pricing is temporarily unavailable.");
+    expect(container.textContent).not.toContain("Price as of Mar 16, 2026");
   });
 });
