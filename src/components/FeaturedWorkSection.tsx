@@ -12,6 +12,12 @@ import { SectionIntro } from "@/components/ui/SectionIntro";
 export function FeaturedWorkSection() {
   const shouldReduceMotion = useReducedMotion();
   const featured = getHomepageFeaturedCaseStudies();
+  const featuredProjectTitle =
+    featured.length > 1
+      ? `${featured.slice(0, -1).map((study) => study.title).join(", ")}, and ${
+          featured[featured.length - 1]?.title
+        }.`
+      : featured[0]?.title ?? "Projects";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,7 +53,7 @@ export function FeaturedWorkSection() {
           <motion.div variants={itemVariants} className="mb-10">
             <SectionIntro
               eyebrow="Projects"
-              title="A few projects across analytics, research, and platform work."
+              title={featuredProjectTitle}
               description="These examples show the kinds of problems I like working on, from high-scale systems to data and investment research experiences."
             />
           </motion.div>
