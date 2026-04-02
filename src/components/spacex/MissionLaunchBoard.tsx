@@ -112,7 +112,7 @@ export function MissionLaunchBoard({
           </p>
           <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
             {status === "upcoming"
-              ? "The upstream API may not have a fresh upcoming queue at the moment. The hero will fall back to the latest completed mission when possible."
+              ? "The live provider does not currently list a future SpaceX mission. The hero will fall back to the latest completed launch when possible."
               : "The published archive came back empty. Retry the request to check for recovery."}
           </p>
         </div>

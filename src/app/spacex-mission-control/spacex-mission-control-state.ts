@@ -14,7 +14,8 @@ const VALID_PANELS = new Set<MissionControlPanel>([
   "payloads",
   "links",
 ]);
-const LAUNCH_ID_PATTERN = /^[a-f0-9]{24}$/i;
+const LAUNCH_ID_PATTERN =
+  /^(?:[a-f0-9]{24}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
 
 type SearchParamInput =
   | URLSearchParams
