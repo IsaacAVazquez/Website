@@ -40,7 +40,7 @@ export function StaticHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
+        "sticky top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-300",
         isScrolled ? "border-b border-[var(--border-primary)] shadow-sm" : ""
       )}
       style={{
@@ -110,7 +110,7 @@ export function StaticHeader() {
       <div
         id="mobile-menu"
         className={cn(
-          "overflow-hidden transition-all duration-300 ease-out lg:hidden",
+          "overflow-hidden transition-[max-height,opacity] duration-300 ease-out lg:hidden",
           isMobileMenuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         )}
       >

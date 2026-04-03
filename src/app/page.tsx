@@ -9,11 +9,7 @@ export { metadata } from "./metadata";
 
 export default function Home() {
   return (
-    <main
-      className="min-h-screen w-full scroll-smooth bg-[var(--surface-primary)]"
-      id="main-content"
-      aria-label="Isaac Vazquez - Product Manager Portfolio"
-    >
+    <div className="w-full scroll-smooth bg-[var(--surface-primary)]">
       {/* Hero Section */}
       <header>
         <ModernHero />
@@ -100,6 +96,6 @@ export default function Home() {
           },
         }}
       />
-    </main>
+    </div>
   );
 }

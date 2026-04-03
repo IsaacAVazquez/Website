@@ -68,7 +68,16 @@ Self-shell routes currently include:
 - `/premier-league`
 - `/march-madness-2026`
 - `/portfolio`
+- `/portfolio/[slug]`
+- `/resume`
 - `/writing`
+- `/writing/[slug]`
+
+Shell semantics:
+
+- `src/components/ConditionalLayout.tsx` owns the only page-level `main` landmark for self-shell routes
+- self-shell route files and leaf sections should use `div` or `section` wrappers, not nested `main`
+- portfolio-shell routes should expose exactly one page-level `h1`
 
 Footer variants:
 
@@ -85,6 +94,9 @@ Footer variants:
 - Never create real pages at `/projects`, `/work`, or `/blog`.
 - Keep 44px minimum touch targets for interactive elements.
 - Respect `prefers-reduced-motion` for Framer Motion usage.
+- Shared portfolio-shell primitives must not use `transition-all`. Transition specific properties instead.
+- Portfolio-shell routes must keep the primary message and main CTA visible in the initial mobile viewport whenever the route has a hero.
+- Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
 - `/api/search` is still limited and mostly hardcoded. Do not describe it as full-site search.
 - `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell.
 

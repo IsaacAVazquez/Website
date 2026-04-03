@@ -183,6 +183,11 @@
     background-color: var(--surface-primary);
   }
 
+  a,
+  button {
+    touch-action: manipulation;
+  }
+
   p {
     margin-bottom: 1.25em;
     line-height: 1.7;
@@ -277,7 +282,9 @@
     background: var(--surface-elevated);
     border: 1px solid var(--border-primary);
     border-radius: 12px;
-    transition: all 0.25s ease;
+    transition-property: border-color, box-shadow, background-color, transform;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
   }
 
   .card-hover:hover {
@@ -299,11 +306,34 @@
 
   .section-panel {
     background:
-      radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 35%),
+      radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary) 14%, transparent), transparent 38%),
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 92%, var(--surface-secondary)) 0%, var(--surface-elevated) 100%),
       var(--surface-elevated);
-    border: 1px solid var(--border-primary);
+    border: 1px solid color-mix(in srgb, var(--border-primary) 82%, var(--color-primary) 18%);
     border-radius: 1.5rem;
     box-shadow: var(--shadow-lg);
+  }
+
+  .portfolio-card {
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 32%),
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 94%, var(--surface-secondary)) 0%, var(--surface-elevated) 100%);
+    border: 1px solid color-mix(in srgb, var(--border-primary) 84%, var(--color-primary) 16%);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .portfolio-card-hover {
+    transition-property: transform, border-color, box-shadow, background-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+  }
+
+  .portfolio-card-hover:hover,
+  .portfolio-card-hover:focus-within {
+    border-color: color-mix(in srgb, var(--color-primary) 28%, var(--border-primary));
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
   }
 
   .section-kicker {
@@ -320,9 +350,57 @@
   }
 
   .surface-muted {
-    background: color-mix(in srgb, var(--surface-secondary) 78%, var(--surface-primary));
-    border: 1px solid var(--border-primary);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-secondary) 88%, var(--surface-primary)) 0%, color-mix(in srgb, var(--surface-secondary) 72%, var(--surface-primary)) 100%);
+    border: 1px solid color-mix(in srgb, var(--border-primary) 78%, var(--color-primary) 22%);
     border-radius: 1.25rem;
+  }
+
+  .resume-panel {
+    @apply p-7 sm:p-8 md:p-10;
+    background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 34%),
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 96%, var(--surface-secondary)) 0%, var(--surface-elevated) 100%);
+    border: 1px solid color-mix(in srgb, var(--border-primary) 82%, var(--color-primary) 18%);
+    border-radius: 1.75rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .resume-section-title {
+    @apply mb-8 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl;
+    color: var(--text-primary);
+  }
+
+  .resume-outline-button {
+    @apply inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold uppercase tracking-wider;
+    border: 1px solid color-mix(in srgb, var(--text-primary) 72%, var(--border-primary));
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--surface-primary) 84%, transparent);
+    transition-property: background-color, border-color, color, box-shadow, transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+
+  .resume-outline-button:hover {
+    background: var(--text-primary);
+    color: var(--text-inverse);
+    box-shadow: var(--shadow-md);
+  }
+
+  .resume-chip {
+    @apply inline-flex items-center rounded-full px-4 py-2 text-sm font-medium;
+    border: 1px solid color-mix(in srgb, var(--border-primary) 78%, var(--color-primary) 22%);
+    background: color-mix(in srgb, var(--surface-secondary) 88%, var(--surface-primary));
+    color: var(--text-secondary);
+    transition-property: background-color, border-color, color, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+
+  .resume-chip:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 32%, var(--border-primary));
+    color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
   }
 }
 
@@ -427,7 +505,9 @@ img {
 input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
-  transition: all var(--transition-base);
+  transition-property: border-color, box-shadow, background-color;
+  transition-duration: var(--transition-base);
+  transition-timing-function: ease;
 }
 
 input:invalid:not(:focus):not(:placeholder-shown),

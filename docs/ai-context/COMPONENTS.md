@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -28,6 +28,7 @@ Current component ownership reference.
 | `ContactSection` | Homepage CTA section |
 | `About` | About page tab UI |
 | `ContactContent` | Contact page |
+| `SectionIntro` | Shared page/section intro; set `headingLevel` explicitly when used below the route `h1` |
 
 Legacy/unwired caution:
 
@@ -108,6 +109,12 @@ Current primitives worth reusing first:
 - `ServerIcons`
 - `button.tsx`
 - `dropdown-menu.tsx`
+
+Shared primitive rules:
+
+- `ConditionalLayout` owns the only `main` for self-shell routes
+- `SectionIntro` should be treated as semantic, not decorative; pass `headingLevel={1}` only for the page-level heading
+- shared shell primitives should not use `transition-all`
 
 ---
 

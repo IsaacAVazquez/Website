@@ -2,7 +2,7 @@
 
 Fast styling reference for the current app.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -54,6 +54,12 @@ Important helpers in `globals.css`:
 - `.section-kicker`
 - `.section-subtitle`
 - `.surface-muted`
+- `.portfolio-card`
+- `.portfolio-card-hover`
+- `.resume-panel`
+- `.resume-section-title`
+- `.resume-outline-button`
+- `.resume-chip`
 - `.tap-target`
 
 ---
@@ -71,3 +77,14 @@ Important helpers in `globals.css`:
 - `focus-visible` is styled globally
 - links and buttons should stay at or above 44px touch size
 - dark mode should come from the token system, not ad hoc color overrides
+- self-shell routes should rely on a single `main` from `ConditionalLayout`
+- portfolio-shell pages should expose a single page-level `h1`
+- mobile hero layouts should keep the message and primary CTA in the first viewport when feasible
+
+---
+
+## Practical Rules
+
+- do not use `transition-all` in shared portfolio-shell primitives
+- favor the shared panel/card helpers before inventing new one-off wrappers
+- portfolio and writing cards should surface role, problem space, and impact in the collapsed or default state

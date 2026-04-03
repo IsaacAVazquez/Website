@@ -8,6 +8,7 @@ interface SectionIntroProps {
   title: React.ReactNode;
   description?: React.ReactNode;
   actions?: React.ReactNode;
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   align?: "left" | "center";
   size?: "md" | "lg";
   className?: string;
@@ -20,6 +21,7 @@ export function SectionIntro({
   title,
   description,
   actions,
+  headingLevel = 1,
   align = "left",
   size = "md",
   className,
@@ -44,7 +46,7 @@ export function SectionIntro({
       ) : null}
 
       <Heading
-        level={1}
+        level={headingLevel}
         className={cn(
           size === "lg"
             ? "text-4xl sm:text-5xl lg:text-6xl leading-[1.02]"

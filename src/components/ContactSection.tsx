@@ -54,67 +54,65 @@ export function ContactSection() {
   };
 
   return (
-    <section
-      id="contact"
-      className="page-section bg-[var(--surface-primary)]"
-    >
-      <div className="page-shell text-center">
+    <section id="contact" className="page-section bg-[var(--surface-primary)]">
+      <div className="page-shell-tight text-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div variants={itemVariants} className="mb-12">
+          <motion.div variants={itemVariants} className="section-panel px-6 py-8 sm:px-8 sm:py-10">
             <SectionIntro
               eyebrow="Contact"
               align="center"
+              headingLevel={2}
               title="Interested in working together?"
               description="If you&apos;re hiring for product work or want to talk through a project, I&apos;d be glad to connect."
             />
-          </motion.div>
 
-          <motion.div
-            variants={itemVariants}
-            className="mb-12 grid gap-6 md:grid-cols-3"
-          >
-            {contactMethods.map((method) => (
-              <a
-                key={method.label}
-                href={method.href}
-                {...(method.external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                className="block"
-              >
-                <WarmCard padding="md" hover className="h-full text-center shadow-sm">
-                  <method.icon className="mx-auto mb-4 h-10 w-10 text-[var(--color-primary)]" />
-                  <h3 className="mb-2 text-lg font-bold text-[var(--text-primary)]">
-                    {method.label}
-                  </h3>
-                  <span className="text-sm text-[var(--text-secondary)]">
-                    {method.value}
-                  </span>
-                </WarmCard>
-              </a>
-            ))}
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
-            <ModernButton href="/contact" variant="accent" size="lg">
-              <IconMail className="h-5 w-5" />
-              Get in touch
-            </ModernButton>
-            <Link
-              href="/Isaac_Vazquez_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.div
+              variants={itemVariants}
+              className="mt-8 grid gap-4 md:grid-cols-3"
             >
-              <ModernButton variant="outline" size="lg">
-                <IconDownload className="h-5 w-5" />
-                Download resume
+              {contactMethods.map((method) => (
+                <a
+                  key={method.label}
+                  href={method.href}
+                  {...(method.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="block"
+                >
+                  <WarmCard padding="md" hover className="h-full text-center">
+                    <method.icon className="mx-auto mb-4 h-10 w-10 text-[var(--color-primary)]" />
+                    <h3 className="mb-2 text-lg font-bold text-[var(--text-primary)]">
+                      {method.label}
+                    </h3>
+                    <span className="text-sm text-[var(--text-secondary)]">
+                      {method.value}
+                    </span>
+                  </WarmCard>
+                </a>
+              ))}
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+              <ModernButton href="/contact" variant="accent" size="lg">
+                <IconMail className="h-5 w-5" />
+                Get in touch
               </ModernButton>
-            </Link>
+              <Link
+                href="/Isaac_Vazquez_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ModernButton variant="outline" size="lg">
+                  <IconDownload className="h-5 w-5" />
+                  Download resume
+                </ModernButton>
+              </Link>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

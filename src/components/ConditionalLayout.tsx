@@ -22,10 +22,14 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/news-pulse",
     "/premier-league",
     "/portfolio",
+    "/resume",
     "/spacex-mission-control",
     "/writing",
   ]);
-  const isSelfShellRoute = selfShellRoutes.has(pathname);
+  const isSelfShellRoute =
+    selfShellRoutes.has(pathname) ||
+    pathname.startsWith("/portfolio/") ||
+    pathname.startsWith("/writing/");
   const compactFooterRoutes = new Set(["/", "/contact"]);
   const footerVariant: FooterVariant = compactFooterRoutes.has(pathname)
     ? "compact"

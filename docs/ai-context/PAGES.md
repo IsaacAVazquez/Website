@@ -44,7 +44,16 @@ There is no live `/admin/analytics` route in the current app tree.
   - `/premier-league`
   - `/march-madness-2026`
   - `/portfolio`
+  - `/portfolio/[slug]`
+  - `/resume`
   - `/writing`
+  - `/writing/[slug]`
+
+Semantics:
+
+- `ConditionalLayout` owns the only `main` landmark for self-shell routes
+- route files inside that shell should not render another `main`
+- portfolio-shell routes should render one page-level `h1`
 
 Footer behavior:
 
@@ -59,12 +68,19 @@ Footer behavior:
 
 - uses `caseStudiesData`
 - renders cards directly from the route
+- cards should make role, problem space, and impact scannable before click-through
 - do not document `ProjectsContent.tsx` as the primary live implementation
 
 ### `/writing`
 
 - backed by `content/blog/`
 - `Writing` is live but not promoted in the main nav
+- route should still be discoverable from portfolio-shell CTAs and cross-links
+
+### `/resume`
+
+- uses the shared shell now and should not drift into a disconnected visual language
+- keep the content resume-first even when refreshing the presentation
 
 ### `/investments`
 

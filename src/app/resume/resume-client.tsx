@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { IconDownload, IconMail, IconBrandLinkedin, IconPhone } from "@tabler/icons-react";
 
 const skillCategories = [
@@ -61,47 +60,10 @@ const skillCategories = [
   }
 ];
 
-function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    let startTime: number;
-    let animationFrame: number;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
-
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      setCount(Math.floor(value * easeOutQuart));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(value);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, value, duration]);
-
-  return <span ref={ref}>{count}{suffix}</span>;
-}
-
 const mbaRevealDate = new Date(2025, 0, 1);
 
 export default function Resume() {
-  const [showMBA, setShowMBA] = useState(false);
-
-  useEffect(() => {
-    const now = new Date();
-    setShowMBA(now >= mbaRevealDate);
-  }, []);
+  const showMBA = new Date() >= mbaRevealDate;
 
   const handleDownloadPDF = () => {
     const link = document.createElement('a');
@@ -114,13 +76,14 @@ export default function Resume() {
 
   return (
     <div className="min-h-screen bg-[var(--surface-primary)]">
-      <div className="py-6 sm:py-10">
+      <div className="page-shell page-section">
         <motion.div
+          className="space-y-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <header className="mb-12 sm:mb-16">
+          <header className="resume-panel">
             <h1 className="font-bold text-6xl sm:text-7xl lg:text-8xl mb-8 tracking-tighter text-[var(--text-primary)] leading-[0.9]">
               ISAAC<br />VAZQUEZ
             </h1>
@@ -128,7 +91,7 @@ export default function Resume() {
             <div className="mb-6">
               <button
                 onClick={handleDownloadPDF}
-                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--text-primary)] text-[var(--text-primary)] text-sm font-semibold tracking-wider uppercase transition-all hover:bg-[var(--text-primary)] hover:text-[var(--text-inverse)]"
+                className="resume-outline-button"
               >
                 <IconDownload className="w-4 h-4" />
                 Download PDF
@@ -169,10 +132,16 @@ export default function Resume() {
                 </div>
               </motion.div>
             )}
+
+            <p className="mb-0 max-w-3xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
+              Product manager with roots in QA, analytics, and operational execution.
+              I work best on products where reliability, measurement, and decision
+              quality all materially shape the outcome.
+            </p>
           </header>
 
-          <section className="mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-[var(--text-primary)] tracking-tight">
+          <section className="resume-panel">
+            <h2 className="resume-section-title">
               Experience
             </h2>
 
@@ -346,10 +315,8 @@ export default function Resume() {
             </div>
           </section>
 
-          <div className="h-px bg-[var(--text-primary)]/10 mb-14" />
-
-          <section className="mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-[var(--text-primary)] tracking-tight">
+          <section className="resume-panel">
+            <h2 className="resume-section-title">
               Education
             </h2>
 
@@ -406,10 +373,8 @@ export default function Resume() {
             </div>
           </section>
 
-          <div className="h-px bg-[var(--text-primary)]/10 mb-14" />
-
-          <section className="mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-[var(--text-primary)] tracking-tight">
+          <section className="resume-panel">
+            <h2 className="resume-section-title">
               Skills &amp; Expertise
             </h2>
 
@@ -423,7 +388,7 @@ export default function Resume() {
                     {category.skills.map((skill) => (
                       <span
                         key={skill.name}
-                        className="px-4 py-2 border border-[var(--border-primary)] text-sm text-[var(--text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all"
+                        className="resume-chip"
                       >
                         {skill.name}
                       </span>
@@ -434,10 +399,8 @@ export default function Resume() {
             </div>
           </section>
 
-          <div className="h-px bg-[var(--text-primary)]/10 mb-14" />
-
-          <section>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-[var(--text-primary)] tracking-tight">
+          <section className="resume-panel">
+            <h2 className="resume-section-title">
               Interests
             </h2>
 
@@ -445,7 +408,7 @@ export default function Resume() {
               {["FC Barcelona", "Ferrari (F1)", "Big Foodie", "Film & TV Buff", "Travel & Cultural Immersion", "Digital Photography"].map((interest) => (
                 <span
                   key={interest}
-                  className="px-5 py-2.5 border-2 border-[var(--border-primary)] text-[var(--text-secondary)] text-sm font-medium hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all cursor-default"
+                  className="resume-chip cursor-default"
                 >
                   {interest}
                 </span>

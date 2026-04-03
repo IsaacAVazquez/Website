@@ -114,7 +114,7 @@ describe('ModernButton', () => {
   it('has transition styles', () => {
     render(<ModernButton>Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('transition-all')
+    expect(button).toHaveClass('transition-[background-color,border-color,color,box-shadow,transform]')
     expect(button).toHaveClass('duration-200')
   })
 

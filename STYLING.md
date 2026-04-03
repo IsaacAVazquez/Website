@@ -2,7 +2,7 @@
 
 Current styling and design-token reference for the live app.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -77,6 +77,12 @@ The current shell uses these reusable classes from `globals.css`:
 - `.section-kicker`
 - `.section-subtitle`
 - `.surface-muted`
+- `.portfolio-card`
+- `.portfolio-card-hover`
+- `.resume-panel`
+- `.resume-section-title`
+- `.resume-outline-button`
+- `.resume-chip`
 
 Use these before inventing one-off layout wrappers for standard portfolio pages.
 
@@ -123,6 +129,8 @@ Use raw Tailwind `dark:` utilities only when you truly need behavior outside the
 - `:focus-visible` styles are defined globally
 - buttons and links should maintain 44px minimum targets
 - reduced-motion behavior is enforced in CSS and should also be respected in Framer Motion components
+- self-shell pages should expose one `main` landmark and one page-level `h1`
+- homepage and other hero-led portfolio routes should keep the core value proposition and primary CTA above the fold on mobile
 
 ---
 
@@ -131,4 +139,7 @@ Use raw Tailwind `dark:` utilities only when you truly need behavior outside the
 - prefer semantic token usage over raw Tailwind color literals
 - match existing shell spacing before adding new wrappers
 - keep borders and shadows consistent with current section/card treatment
+- shared cards and panels should rely on token helpers before introducing route-specific styling
+- do not use `transition-all` in shared primitives; transition only the properties that actually change
+- portfolio and writing cards should reveal role, problem space, and impact in the default scan state
 - if a route already has a visual language, extend it instead of introducing a disconnected style system

@@ -12,12 +12,6 @@ import { SectionIntro } from "@/components/ui/SectionIntro";
 export function FeaturedWorkSection() {
   const shouldReduceMotion = useReducedMotion();
   const featured = getHomepageFeaturedCaseStudies();
-  const featuredProjectTitle =
-    featured.length > 1
-      ? `${featured.slice(0, -1).map((study) => study.title).join(", ")}, and ${
-          featured[featured.length - 1]?.title
-        }.`
-      : featured[0]?.title ?? "Projects";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -53,53 +47,83 @@ export function FeaturedWorkSection() {
           <motion.div variants={itemVariants} className="mb-10">
             <SectionIntro
               eyebrow="Projects"
-              title={featuredProjectTitle}
-              description="These examples show the kinds of problems I like working on, from high-scale systems to data and investment research experiences."
+              headingLevel={2}
+              title="Selected work built around hard tradeoffs and measurable outcomes."
+              description="A quick scan of the portfolio: platform scale, decision support, and analytics-heavy products where the role, problem space, and outcome are easy to see."
             />
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-10"
+            className="mb-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
           >
             {featured.map((study) => (
-              <Link key={study.slug} href={study.link ?? `/portfolio/${study.slug}`}>
-                <WarmCard
-                  padding="lg"
-                  hover
-                  className="h-full group border-[var(--border-primary)] bg-[var(--surface-elevated)] shadow-sm"
-                >
-                  <div className="space-y-5">
-                    <div className="flex items-center justify-between gap-3">
+              <Link
+                key={study.slug}
+                href={study.link ?? `/portfolio/${study.slug}`}
+                className="group block h-full"
+              >
+                <WarmCard padding="none" hover className="h-full overflow-hidden">
+                  <div className="space-y-5 p-6">
+                    <div className="flex items-start justify-between gap-4">
                       <span className="section-kicker">Project</span>
                       <span className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
                         {study.timeline}
                       </span>
                     </div>
 
-                    <h3 className="font-bold text-xl text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors">
-                      {study.title}
-                    </h3>
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--color-primary)]">
+                        {study.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
+                        {study.overview.summary || study.description}
+                      </p>
+                    </div>
 
-                    <p className="text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
-                      {study.description}
-                    </p>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <div className="surface-muted px-4 py-3">
+                        <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                          Role
+                        </p>
+                        <p className="mb-0 text-sm leading-relaxed text-[var(--text-primary)]">
+                          {study.role}
+                        </p>
+                      </div>
+                      <div className="surface-muted px-4 py-3">
+                        <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                          Outcome
+                        </p>
+                        <p className="mb-0 text-sm leading-relaxed text-[var(--text-primary)]">
+                          {study.metrics}
+                        </p>
+                      </div>
+                    </div>
 
                     <div className="flex flex-wrap gap-2">
-                      {study.detailedMetrics?.slice(0, 3).map((metric) => (
+                      {(study.detailedMetrics?.slice(0, 2) ?? []).map((metric) => (
                         <Badge key={metric.label} variant="outline">
                           {metric.value} {metric.label}
                         </Badge>
                       ))}
                     </div>
 
+                    <div className="border-t border-[var(--border-primary)] pt-4">
+                      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                        Problem space
+                      </p>
+                      <p className="mb-0 text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-2">
+                        {study.problem.context}
+                      </p>
+                    </div>
+
                     <div className="flex items-center justify-between gap-3 border-t border-[var(--border-primary)] pt-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
-                        {study.metrics}
+                      <p className="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
+                        {study.tools.slice(0, 2).join(" · ")}
                       </p>
                       <div className="flex items-center gap-2 text-sm font-medium text-[var(--color-primary)]">
                         View project
-                        <IconArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </div>
                     </div>
                   </div>
@@ -110,7 +134,7 @@ export function FeaturedWorkSection() {
 
           <motion.div variants={itemVariants} className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
-              A broader set of product and analytics work lives in the projects section.
+              A broader set of product and analytics work lives in the projects section, with full case-study context and project details.
             </p>
             <ModernButton href="/portfolio" variant="outline" size="lg">
               View all projects

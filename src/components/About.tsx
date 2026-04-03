@@ -33,6 +33,7 @@ export default function About() {
             eyebrow="About"
             align="center"
             size="lg"
+            headingLevel={1}
             title="A product manager with roots in QA, analytics, and execution."
             description="My background combines product strategy with hands-on experience in quality, systems thinking, and cross-functional delivery."
           />
@@ -69,7 +70,7 @@ export default function About() {
                     setActiveTab(tabs[prevIndex].id);
                   }
                 }}
-                className={`flex min-h-[48px] items-center gap-2 rounded-xl px-6 py-3 font-medium transition-all duration-200 ${
+                className={`flex min-h-[48px] items-center gap-2 rounded-xl px-6 py-3 font-medium transition-[background-color,color,box-shadow] duration-200 ${
                   activeTab === tab.id
                     ? "bg-[var(--text-primary)] text-[var(--text-inverse)] shadow-sm"
                     : "text-[var(--text-secondary)] hover:bg-[var(--surface-primary)] hover:text-[var(--text-primary)]"

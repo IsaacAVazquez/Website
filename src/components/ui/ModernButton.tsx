@@ -43,7 +43,7 @@ export const ModernButton = React.memo(function ModernButton({
 }: ModernButtonProps) {
   const baseStyles = cn(
     "inline-flex items-center justify-center font-semibold rounded-lg",
-    "transition-all duration-200",
+    "transition-[background-color,border-color,color,box-shadow,transform] duration-200",
     "disabled:opacity-40 disabled:cursor-not-allowed",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)]",
     !disabled && "active:scale-[0.98]",

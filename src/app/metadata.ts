@@ -5,7 +5,7 @@
 import { constructMetadata } from "@/lib/seo";
 
 export const metadata = constructMetadata({
-  title: "Isaac Vazquez - Product Manager | UC Berkeley Haas MBA",
+  title: "Product Manager | UC Berkeley Haas MBA | Portfolio & Case Studies | Isaac Vazquez",
   description:
     "Product manager with a QA-to-product background. Projects across SaaS, analytics, civic tech, and investment research tooling.",
   canonicalUrl: "/",

@@ -1,4 +1,8 @@
-import { constructMetadata, siteConfig } from '../seo';
+import {
+  constructMetadata,
+  generateAIOptimizedMetadata,
+  siteConfig,
+} from "../seo";
 
 jest.mock('@/lib/ai-seo', () => ({
   generateAIMetaTags: jest.fn(() => ({})),
@@ -49,14 +53,45 @@ describe('constructMetadata', () => {
   it('openGraph title contains siteConfig.name', () => {
     const metadata = constructMetadata({ title: 'My Page' });
     const og = metadata.openGraph as { title: string };
-    expect(og.title).toContain(siteConfig.name);
-    expect(og.title).toContain('My Page');
+    expect(og.title).toBe(`My Page | ${siteConfig.name}`);
   });
 
   it('includes authors with siteConfig.name', () => {
     const metadata = constructMetadata();
     expect(metadata.authors).toEqual(
       expect.arrayContaining([expect.objectContaining({ name: siteConfig.name })])
+    );
+  });
+
+  it("returns a page title string when a custom title is provided", () => {
+    const metadata = constructMetadata({ title: "Projects" });
+
+    expect(metadata.title).toBe("Projects");
+  });
+
+  it("keeps social titles branded once for route-specific titles", () => {
+    const metadata = constructMetadata({ title: "Projects" });
+    const og = metadata.openGraph as { title: string };
+    const twitter = metadata.twitter as { title: string };
+
+    expect(og.title).toBe(`Projects | ${siteConfig.name}`);
+    expect(twitter.title).toBe(`Projects | ${siteConfig.name}`);
+  });
+});
+
+describe("generateAIOptimizedMetadata", () => {
+  it("returns an uncluttered page title while branding social metadata once", () => {
+    const metadata = generateAIOptimizedMetadata({
+      title: "About",
+      description: "Bay Area product manager",
+    });
+
+    expect(metadata.title).toBe("About");
+    expect((metadata.openGraph as { title: string }).title).toBe(
+      `About | ${siteConfig.name}`
+    );
+    expect((metadata.twitter as { title: string }).title).toBe(
+      `About | ${siteConfig.name}`
     );
   });
 });

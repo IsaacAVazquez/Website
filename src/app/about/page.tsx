@@ -3,7 +3,7 @@ import { generateAIOptimizedMetadata } from "@/lib/seo";
 import About from "@/components/About";
 
 export const metadata = generateAIOptimizedMetadata({
-  title: "About Isaac Vazquez | Product Manager & UC Berkeley MBA Candidate",
+  title: "About",
   description:
     "Bay Area product manager with a QA-to-product background and experience across analytics, platform reliability, and product execution.",
   summary:

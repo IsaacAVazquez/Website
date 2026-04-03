@@ -3,7 +3,7 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 
 export const metadata = constructMetadata({
-  title: "Contact Isaac Vazquez | Product Manager",
+  title: "Contact",
   description:
     "Connect with Isaac Vazquez about product roles, projects, analytics work, and fintech-style product opportunities.",
   canonicalUrl: "/contact",

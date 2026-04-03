@@ -4,9 +4,10 @@ test.describe('Accessibility', () => {
   test('should have proper heading hierarchy on homepage', async ({ page }) => {
     await page.goto('/')
 
-    // Check for h1
-    const h1 = page.locator('h1').first()
-    await expect(h1).toBeVisible()
+    await expect(page.locator('h1')).toHaveCount(1)
+
+    const mainCount = await page.evaluate(() => document.querySelectorAll('main').length)
+    expect(mainCount).toBe(1)
   })
 
   test('should support keyboard navigation', async ({ page }) => {

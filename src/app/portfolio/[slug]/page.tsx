@@ -22,12 +22,12 @@ export async function generateMetadata({
 
   if (!caseStudy) {
     return {
-      title: "Case Study Not Found | Isaac Vazquez",
+      title: "Case Study Not Found",
     };
   }
 
   return constructMetadata({
-    title: `${caseStudy.title} | Isaac Vazquez`,
+    title: caseStudy.title,
     description: caseStudy.description,
     canonicalUrl: `/portfolio/${params.slug}`,
     aiMetadata: {
@@ -67,7 +67,7 @@ export default function CaseStudyPage({
   const nextCaseStudy = nextSlug ? caseStudiesData[nextSlug] : null;
 
   return (
-    <main className="min-h-screen bg-[var(--surface-primary)] dark:bg-[var(--neutral-950)] py-24 md:py-32">
+    <div className="min-h-screen bg-[var(--surface-primary)] dark:bg-[var(--neutral-950)] py-24 md:py-32">
       <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <Link
           href="/portfolio"
@@ -457,13 +457,13 @@ export default function CaseStudyPage({
                       {nextCaseStudy.metrics}
                     </p>
                   </div>
-                  <ArrowRight className="h-6 w-6 text-neutral-400 group-hover:text-[var(--color-primary)] group-hover:translate-x-1 transition-all flex-shrink-0 ml-4" />
+                  <ArrowRight className="ml-4 h-6 w-6 flex-shrink-0 text-neutral-400 transition-[color,transform] group-hover:translate-x-1 group-hover:text-[var(--color-primary)]" />
                 </div>
               </WarmCard>
             </Link>
           </footer>
         )}
       </article>
-    </main>
+    </div>
   );
 }

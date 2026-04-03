@@ -56,8 +56,14 @@ const absoluteUrl = (path?: string) => {
   return `${base}${normalizedPath}`;
 };
 
+const composeSocialTitle = (title: string) => {
+  return title.toLowerCase().includes(siteConfig.name.toLowerCase())
+    ? title
+    : `${title} | ${siteConfig.name}`;
+};
+
 export function constructMetadata({
-  title = siteConfig.title,
+  title,
   description = siteConfig.description,
   image = siteConfig.ogImage,
   icons = "/favicon.png",
@@ -89,6 +95,8 @@ export function constructMetadata({
 } = {}): Metadata {
   // Generate AI-specific meta tags
   const aiTags = aiMetadata ? generateAIMetaTags(aiMetadata) : {};
+  const resolvedTitle = title ?? siteConfig.title;
+  const socialTitle = composeSocialTitle(resolvedTitle);
 
   const canonicalPath = canonicalUrl || siteConfig.url;
   const metadataBase = new URL(siteConfig.url);
@@ -104,10 +112,12 @@ export function constructMetadata({
   }
 
   return {
-    title: {
-      default: `${siteConfig.name} – ${siteConfig.title}`,
-      template: `%s | ${siteConfig.name}`,
-    },
+    title: title
+      ? resolvedTitle
+      : {
+          default: `${siteConfig.name} – ${siteConfig.title}`,
+          template: `%s | ${siteConfig.name}`,
+        },
     description,
     authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,
@@ -121,7 +131,7 @@ export function constructMetadata({
       type: "website",
       locale: "en_US",
       url: absoluteCanonical,
-      title: `${siteConfig.name} – ${title}`,
+      title: socialTitle,
       description,
       siteName: siteConfig.name,
       images: [
@@ -129,13 +139,13 @@ export function constructMetadata({
           url: absoluteImage,
           width: 1200,
           height: 630,
-          alt: siteConfig.ogImageAlt || `${siteConfig.name} – ${title}`,
+          alt: siteConfig.ogImageAlt || socialTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${siteConfig.name} – ${title}`,
+      title: socialTitle,
       description,
       images: [absoluteImage],
       creator: "@isaacvazquez",
@@ -270,7 +280,7 @@ export function generateAIOptimizedMetadata(
 
   // Build metadata
   const metadata: Metadata = {
-    title: `${title} | ${siteConfig.name}`,
+    title,
     description: enhancedDescription,
     metadataBase,
     alternates: {
@@ -289,7 +299,7 @@ export function generateAIOptimizedMetadata(
       type: "website",
       locale: "en_US",
       url: absoluteCanonical,
-      title: `${title} | ${siteConfig.name}`,
+      title: composeSocialTitle(title),
       description: enhancedDescription,
       siteName: siteConfig.name,
       images: [
@@ -297,13 +307,13 @@ export function generateAIOptimizedMetadata(
           url: absoluteImage,
           width: 1200,
           height: 630,
-          alt: `${title} | ${siteConfig.name}`,
+          alt: composeSocialTitle(title),
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${siteConfig.name}`,
+      title: composeSocialTitle(title),
       description: enhancedDescription,
       images: [absoluteImage],
       creator: "@isaacvazquez",

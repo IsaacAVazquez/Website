@@ -31,10 +31,8 @@ export const WarmCard = React.memo(function WarmCard({
   return (
     <div
       className={cn(
-        "rounded-xl",
-        "bg-[var(--surface-elevated)]",
-        "border border-[var(--border-primary)]",
-        hover && "transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[var(--border-accent)] cursor-pointer",
+        "portfolio-card",
+        hover && "portfolio-card-hover cursor-pointer",
         paddingClasses[padding],
         className
       )}

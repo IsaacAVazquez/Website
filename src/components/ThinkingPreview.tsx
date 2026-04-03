@@ -2,7 +2,13 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { WarmCard } from "@/components/ui/WarmCard";
-import { IconSearch, IconTarget, IconChartBar, IconDatabase } from "@tabler/icons-react";
+import { ModernButton } from "@/components/ui/ModernButton";
+import {
+  IconSearch,
+  IconTarget,
+  IconChartBar,
+  IconDatabase,
+} from "@tabler/icons-react";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 
 const pillars = [
@@ -69,8 +75,14 @@ export function ThinkingPreview() {
           <motion.div variants={itemVariants} className="mb-10">
             <SectionIntro
               eyebrow="How I think"
-              title="How I approach product work."
-              description="The themes stay pretty consistent: understand the problem clearly, use data thoughtfully, and keep execution tied to real outcomes."
+              headingLevel={2}
+              title="How I work through ambiguous product problems."
+              description="The through-line is consistent: get specific about the problem, use evidence without overfitting to it, and keep execution tied to outcomes people can actually feel."
+              actions={
+                <ModernButton href="/writing" variant="ghost" size="md">
+                  Browse writing
+                </ModernButton>
+              }
             />
           </motion.div>
 
@@ -79,12 +91,14 @@ export function ThinkingPreview() {
             className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
           >
             {pillars.map((pillar) => (
-              <WarmCard key={pillar.title} padding="lg" className="h-full shadow-sm">
-                <pillar.icon className="mb-4 h-8 w-8 text-[var(--color-primary)]" />
+              <WarmCard key={pillar.title} padding="lg" className="h-full">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--surface-secondary)] text-[var(--color-primary)]">
+                  <pillar.icon className="h-6 w-6" />
+                </div>
                 <h3 className="mb-3 text-lg font-bold text-[var(--text-primary)]">
                   {pillar.title}
                 </h3>
-                <p className="text-[var(--text-secondary)]">
+                <p className="mb-0 text-[var(--text-secondary)]">
                   {pillar.description}
                 </p>
               </WarmCard>
