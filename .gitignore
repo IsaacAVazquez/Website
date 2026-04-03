@@ -70,6 +70,7 @@ scripts/player-matching-results.json
 
 # Git worktrees
 .worktrees/
+.claude/worktrees/
 
 # Python virtual environment
 .venv/
