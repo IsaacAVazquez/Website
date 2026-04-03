@@ -644,8 +644,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
 const HOMEPAGE_FEATURED_SLUGS = [
   "investment-analytics-platform",
-  "data-analytics-dashboard",
-  "civic-engagement-platform",
+  "news-pulse-dashboard",
   "spacex-mission-control",
 ] as const;
 
