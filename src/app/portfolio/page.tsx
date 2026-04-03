@@ -84,7 +84,7 @@ export default function PortfolioPage() {
                 Full project index
               </p>
               <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--text-secondary)] lg:text-base">
-                Everything in one place, with featured work still marked but no longer split into a separate bucket.
+                The full picture — case studies and live tools together, with featured work marked but not walled off.
               </p>
             </div>
           </div>

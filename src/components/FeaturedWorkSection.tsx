@@ -17,7 +17,7 @@ export function FeaturedWorkSection() {
             <SectionIntro
               headingLevel={2}
               title="Selected Projects"
-              description="A quick scan of platform, analytics, and product work with clear role, scope, and outcomes."
+              description="Each project shows the problem I was solving, the decisions I made, and what actually changed."
               titleClassName="text-3xl leading-[1.05] sm:text-4xl lg:text-[2.9rem]"
               descriptionClassName="max-w-2xl text-base lg:text-lg"
             />

@@ -42,7 +42,7 @@ export function ContactSection() {
               align="center"
               headingLevel={2}
               title="Interested in working together?"
-              description="If you&apos;re hiring for product work or want to talk through a project, I&apos;d be glad to connect."
+              description="If you&apos;re working on something where product judgment and execution both matter, I&apos;d like to hear about it."
             />
 
             <div className="mt-8 grid gap-4 md:grid-cols-3">

@@ -135,48 +135,13 @@ const OverviewContent = () => {
             and user signals into practical decisions.
           </p>
 
-          <div>
-            <p className="text-[var(--text-primary)] font-semibold mb-3 text-base md:text-lg">
-              What I bring:
-            </p>
-            <ul className="list-disc ml-6 space-y-3 text-[var(--text-secondary)] text-base md:text-lg">
-              <li>
-                <strong className="text-[var(--text-primary)]">
-                  Product & Strategy:
-                </strong>{" "}
-                Define the problem clearly, balance user and business needs, and
-                keep teams aligned around the right outcome.
-              </li>
-              <li>
-                <strong className="text-[var(--text-primary)]">
-                  Technical:
-                </strong>{" "}
-                Work comfortably with automation, SQL, and APIs so product
-                decisions stay connected to how the system actually works.
-              </li>
-              <li>
-                <strong className="text-[var(--text-primary)]">
-                  Analytics:
-                </strong>{" "}
-                Use data to understand what&apos;s working, test assumptions, and
-                make measurement useful to the team doing the work.
-              </li>
-              <li>
-                <strong className="text-[var(--text-primary)]">
-                  Fintech Curiosity:
-                </strong>{" "}
-                Build investment research and analytics projects to stay close to
-                how product design and decision support come together.
-              </li>
-              <li>
-                <strong className="text-[var(--text-primary)]">
-                  Leadership:
-                </strong>{" "}
-                Support launches, mentor teammates, and help create the clarity
-                teams need to ship well.
-              </li>
-            </ul>
-          </div>
+          <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+            On the product side, I define problems before jumping to solutions, balance user and business needs, and keep teams aligned around outcomes that matter. I work comfortably with automation, SQL, and APIs, so my product decisions stay connected to how the system actually behaves rather than how I imagine it does. Data is how I check my assumptions and make measurement legible to the people doing the work, not a substitute for judgment.
+          </p>
+
+          <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+            Outside of my core role at Civitech, I build investment research and fintech tools to stay close to how product design and decision support come together in practice. That curiosity, plus the leadership side of the job — supporting launches, mentoring teammates, creating the clarity teams need to ship — is what keeps the work interesting.
+          </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
             Before Civitech I led client services at Open Progress, running 80+

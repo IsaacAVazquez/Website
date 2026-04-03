@@ -99,9 +99,7 @@ export function ContactContent() {
               Best conversations
             </p>
             <p className="mb-0 text-sm leading-relaxed text-[var(--text-secondary)]">
-              Product roles, analytics-heavy tools, fintech-style workflows,
-              platform reliability, and product work where execution quality
-              materially changes the outcome.
+              I&apos;m most engaged when the problem involves analytics, fintech, platform reliability, or anywhere that clear product thinking changes the actual outcome, not just the roadmap.
             </p>
           </div>
         </div>

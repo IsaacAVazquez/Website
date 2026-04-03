@@ -78,7 +78,7 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
         >
           <div className="space-y-1 text-sm text-[var(--text-tertiary)]">
             <p className="font-medium text-[var(--text-primary)]">Isaac Vazquez</p>
-            <p>Product management, projects, and analytics-focused work.</p>
+            <p>Building products where clear thinking and reliable execution actually move the needle.</p>
           </div>
 
           <div className="flex flex-col gap-4 sm:items-end">
