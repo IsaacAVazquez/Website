@@ -243,6 +243,12 @@ curl -X POST \
 
 ---
 
+## Writing Voice
+
+When editing, creating, or rewriting any article under `content/blog/`, read `WRITING_VOICE.md` first. It defines Isaac's voice, hard formatting rules, and the condensing philosophy used across all 22 articles. Non-conforming articles should be rewritten to match it, not patched around it.
+
+---
+
 ## Source Of Truth Docs
 
 - `README.md`
@@ -254,6 +260,7 @@ curl -X POST \
 - `DEVELOPMENT.md`
 - `TESTING.md`
 - `STYLING.md`
+- `WRITING_VOICE.md`
 - `docs/README.md`
 
 Older plans, redesign notes, and summary docs are kept for history. Check `docs/README.md` before treating a markdown file as current.
