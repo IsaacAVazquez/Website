@@ -1,0 +1,51 @@
+# Isaac Vazquez
+
+> Product Manager and UC Berkeley Haas MBA Candidate with 5+ years building SaaS products reaching 60M+ users. Case studies, product thinking, and PM frameworks.
+
+## About
+
+Isaac Vazquez is a Technical Product Manager and UC Berkeley Haas MBA Candidate (Class of 2027). He has 6+ years of experience in SaaS and consumer technology, with a background spanning product strategy, quality engineering, and cross-functional leadership. He is a Consortium Fellow and MLT Professional Development Fellow.
+
+- Website: https://isaacavazquez.com
+- LinkedIn: https://linkedin.com/in/isaac-vazquez
+- GitHub: https://github.com/IsaacAVazquez
+- Email: isaacavazquez95@gmail.com
+
+## Sections
+
+### Portfolio & Case Studies
+- URL: https://isaacavazquez.com/portfolio
+- Description: Product management case studies showcasing strategic thinking, cross-functional leadership, and measurable business outcomes. Each follows a Problem-Process-Result framework. Highlights include scaling platforms to 60M+ users and driving $4M revenue impact.
+
+### About
+- URL: https://isaacavazquez.com/about
+- Description: Professional background, career journey, and product management philosophy.
+
+### Resume
+- URL: https://isaacavazquez.com/resume
+- Description: Professional resume with experience at Civitech, and education at UC Berkeley Haas and Florida State University.
+
+### Writing
+- URL: https://isaacavazquez.com/writing
+- Description: Articles on product management, product strategy, data-driven decisions, and lessons from an MBA journey.
+
+### Contact
+- URL: https://isaacavazquez.com/contact
+- Description: Get in touch for product management opportunities, consulting, or collaboration.
+
+### Fantasy Football Analytics
+- URL: https://isaacavazquez.com/fantasy-football
+- Description: Live fantasy football tier rankings (QB/RB/WR/TE/K/DST/Flex) with interactive D3.js visualizations, clustering algorithms, and draft assistance tools.
+
+## Expertise
+
+- Product Strategy & Roadmapping
+- Product Discovery & User Research
+- Experimentation & A/B Testing
+- Cross-Functional Leadership
+- Data Analysis & Analytics
+- Go-to-Market Planning
+- Stakeholder Management
+- Quality Assurance & Test Automation
+- SaaS & Consumer Technology
+- Civic Technology

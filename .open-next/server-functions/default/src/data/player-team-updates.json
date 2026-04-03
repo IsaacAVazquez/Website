@@ -1,0 +1,42 @@
+{
+  "Saquon Barkley": {
+    "oldTeam": "NYG",
+    "newTeam": "PHI",
+    "season": "2024"
+  },
+  "Austin Ekeler": {
+    "oldTeam": "LAC", 
+    "newTeam": "WAS",
+    "season": "2024"
+  },
+  "Nick Chubb": {
+    "oldTeam": "CLE",
+    "newTeam": "HOU", 
+    "season": "2024"
+  },
+  "Tony Pollard": {
+    "oldTeam": "DAL",
+    "newTeam": "TEN",
+    "season": "2024"
+  },
+  "Josh Jacobs": {
+    "oldTeam": "LV", 
+    "newTeam": "GB",
+    "season": "2024"
+  },
+  "Derrick Henry": {
+    "oldTeam": "TEN",
+    "newTeam": "BAL",
+    "season": "2024"
+  },
+  "Davante Adams": {
+    "oldTeam": "NYJ",
+    "newTeam": "LV",
+    "season": "2024"
+  },
+  "Amari Cooper": {
+    "oldTeam": "BUF",
+    "newTeam": "CLE", 
+    "season": "2024"
+  }
+}
