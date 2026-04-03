@@ -45,14 +45,4 @@ export const handlers = [
       source: 'FantasyPros',
     })
   }),
-
-  // Analytics endpoints
-  http.post('/api/analytics/events', () => {
-    return HttpResponse.json({ success: true })
-  }),
-
-  http.post('/api/analytics/web-vitals', () => {
-    return HttpResponse.json({ success: true })
-  }),
-
 ]

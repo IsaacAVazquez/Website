@@ -1,12 +1,10 @@
 import "./globals.css";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { twMerge } from "tailwind-merge";
-import Script from "next/script";
 import { constructMetadata } from "@/lib/seo";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
 import { StaticHeader } from "@/components/StaticHeader";
-import { ContentsquareInjector } from "@/components/ContentsquareInjector";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,20 +60,7 @@ export default function RootLayout({
           <ConditionalLayout>
             {children}
           </ConditionalLayout>
-          <ContentsquareInjector />
         </Providers>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-RH3GST80DE"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-RH3GST80DE');
-          `}
-        </Script>
       </body>
     </html>
   );

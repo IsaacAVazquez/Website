@@ -1,10 +1,8 @@
-import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// Custom middleware that applies security headers to all routes 
-// but only enforces authentication for admin routes via the component itself
-export default function middleware(req: NextRequest) {
+// Apply security headers to HTML routes. Admin auth is handled elsewhere.
+export default function middleware(_req: NextRequest) {
   const response = NextResponse.next();
   
   // Security headers for all routes
@@ -45,7 +43,7 @@ export default function middleware(req: NextRequest) {
   return response;
 }
 
-// Apply to all routes except static files and API routes
+// Apply to all routes except static files and API routes.
 export const config = {
   matcher: [
     // Apply security headers to all routes except static files

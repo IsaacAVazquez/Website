@@ -125,16 +125,12 @@ These require a product decision before any work begins.
 - **Recommendation:** Remove unless actively pursuing local consulting clients.
 
 ### 18. Analytics system
-- **Current state:** Client-side event collection sends data to `/api/analytics/` which stores in ephemeral in-memory arrays. Wiped on every Netlify cold start. Never persists.
-- **Option A (GA4):** The `NEXT_PUBLIC_GA_ID` env var path already exists. Wire up Google Analytics and remove the custom in-memory API.
-- **Option B (Remove):** Delete `/api/analytics/` and the client-side collection code if analytics aren't needed.
-- **Recommendation:** GA4 is the simplest path to real analytics.
+- **Current state:** Public third-party analytics have been removed from the live site. There is no supported GA measurement ID configuration path and no live `/api/analytics/` integration.
+- **Status:** Done — removed orphaned GA4 and Contentsquare injections while keeping the stricter CSP in place.
 
 ### 19. Admin analytics dashboard
-- **Current state:** `/admin/analytics` shows hardcoded fake data. Doesn't read from any real data source.
-- **Option A (Wire to GA4):** If #18 goes with GA4, pull real data via the GA4 Data API.
-- **Option B (Remove):** Delete the fake dashboard page.
-- **Depends on:** Decision on #18.
+- **Current state:** `/admin/analytics` is not part of the live route tree.
+- **Status:** Done — removed with the rest of the abandoned analytics surface.
 
 ### 20. Contact form
 - **Current state:** Contact page has mailto link + LinkedIn. No actual form submission.
