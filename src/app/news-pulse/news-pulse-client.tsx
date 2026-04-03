@@ -1,6 +1,6 @@
 "use client";
 
-import React, { startTransition, useCallback, useEffect, useMemo, useState } from "react";
+import React, { startTransition, useEffect, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
@@ -19,7 +19,6 @@ import {
   SOURCE_LABELS,
   type NewsPulseSearchState,
   type NewsPulseView,
-  type NewsSource,
 } from "./news-pulse-state";
 
 // ── Types ───────────────────────────────────────────────────────────────────
@@ -33,6 +32,12 @@ interface FeedResponse {
   fetchedAt: string;
   errors: string[];
 }
+
+const VIEW_DESCRIPTIONS: Record<NewsPulseView, string> = {
+  headlines: "Stream the latest article cards and filter by source.",
+  coverage: "Compare topic overlap across outlets in a coverage matrix.",
+  analysis: "Inspect sentiment, headline length, and readability metrics by outlet.",
+};
 
 // ── Animation helpers ───────────────────────────────────────────────────────
 
@@ -153,7 +158,10 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Sources
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p
+                  className="mt-2 text-sm font-semibold text-[var(--text-primary)]"
+                  title="Monitors six RSS feeds and unifies them into one normalized list."
+                >
                   6 major outlets
                 </p>
               </div>
@@ -161,7 +169,10 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Analysis
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p
+                  className="mt-2 text-sm font-semibold text-[var(--text-primary)]"
+                  title="Uses lightweight client-side NLP: topic extraction, lexicon sentiment, and readability estimates."
+                >
                   Topics + Sentiment
                 </p>
               </div>
@@ -169,7 +180,10 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Updates
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p
+                  className="mt-2 text-sm font-semibold text-[var(--text-primary)]"
+                  title="Refreshes whenever the RSS endpoint is queried and parsed."
+                >
                   Live via RSS
                 </p>
               </div>
@@ -189,6 +203,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
               role="tab"
               aria-selected={routeState.view === key}
               onClick={() => updateRouteState({ view: key })}
+              title={VIEW_DESCRIPTIONS[key]}
               className={`min-h-[46px] rounded-2xl px-5 py-3 text-sm font-semibold transition ${
                 routeState.view === key
                   ? "bg-[var(--color-primary)] text-white shadow-[var(--shadow-sm)]"
@@ -380,10 +395,19 @@ function CoverageView({
               {sourceIds.map((s: string) => (
                 <th
                   key={s}
-                  className="px-3 py-3 text-center text-[10px] font-bold uppercase tracking-wider"
-                  style={{ color: SOURCE_META[s]?.color }}
+                  className="px-3 py-3 text-center"
                 >
-                  {SOURCE_META[s]?.name ?? s}
+                  <span
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--text-primary)]"
+                    title={`${SOURCE_META[s]?.name ?? s} topic count`}
+                  >
+                    <span
+                      className="h-2 w-2 rounded-full"
+                      style={{ backgroundColor: SOURCE_META[s]?.color ?? "var(--color-primary)" }}
+                      aria-hidden
+                    />
+                    {SOURCE_META[s]?.name ?? s}
+                  </span>
                 </th>
               ))}
               <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">
@@ -408,7 +432,7 @@ function CoverageView({
                         <span
                           className="inline-flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white"
                           style={{
-                            backgroundColor: SOURCE_META[s]?.color ?? "#666",
+                            backgroundColor: SOURCE_META[s]?.color ?? "var(--color-primary)",
                             opacity: Math.min(0.4 + count * 0.15, 1),
                           }}
                         >
@@ -493,6 +517,13 @@ function AnalysisView({
       initial="hidden"
       animate="visible"
     >
+      <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-5 shadow-[var(--shadow-sm)] lg:col-span-2">
+        <h2 className="text-sm font-semibold text-[var(--text-primary)]">How analysis works</h2>
+        <p className="mt-2 text-xs leading-6 text-[var(--text-secondary)]">
+          Sentiment is estimated from headline + description keyword balance, headline length is average word count, and readability is a headline-level Flesch-style approximation. These are directional indicators for editorial framing, not full article-level NLP.
+        </p>
+      </div>
+
       {/* Sentiment distribution */}
       <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-6 shadow-[var(--shadow-sm)]">
         <h2 className="mb-1 text-base font-bold text-[var(--text-primary)]">Headline Sentiment</h2>
@@ -605,7 +636,7 @@ function AnalysisView({
               >
                 <div
                   className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-bold text-white"
-                  style={{ backgroundColor: SOURCE_META[s]?.color ?? "#666" }}
+                  style={{ backgroundColor: SOURCE_META[s]?.color ?? "var(--color-primary)" }}
                 >
                   {avg}
                 </div>
