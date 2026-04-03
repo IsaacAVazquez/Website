@@ -24,6 +24,7 @@ Current component ownership reference.
 |----------|------|
 | `ModernHero` | Homepage hero |
 | `FeaturedWorkSection` | Homepage featured projects |
+| `PortfolioProjectCard` | Shared project card for homepage and `/portfolio` |
 | `ThinkingPreview` | Homepage product-thinking section |
 | `ContactSection` | Homepage CTA section |
 | `About` | About page tab UI |

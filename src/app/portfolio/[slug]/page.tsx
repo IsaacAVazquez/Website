@@ -4,7 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { Heading } from "@/components/ui/Heading";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ArrowLeft, ArrowRight, ExternalLink, BrandGithub } from "@/components/ui/ServerIcons";
-import { caseStudiesData } from "@/constants/caseStudies";
+import { caseStudiesData, getPortfolioProjects } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
 
 export async function generateStaticParams() {
@@ -60,7 +60,7 @@ export default function CaseStudyPage({
     redirect(caseStudy.link);
   }
 
-  const allSlugs = Object.keys(caseStudiesData);
+  const allSlugs = getPortfolioProjects().map((study) => study.slug);
   const currentIndex = allSlugs.indexOf(params.slug);
   const nextSlug =
     currentIndex < allSlugs.length - 1 ? allSlugs[currentIndex + 1] : null;

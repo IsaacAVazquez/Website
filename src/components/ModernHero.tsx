@@ -50,8 +50,8 @@ export function ModernHero() {
 
   return (
     <section
-      className="relative overflow-hidden bg-[var(--surface-primary)] py-12 md:py-16 lg:py-20"
-      aria-label="Isaac Vazquez - product manager portfolio"
+      className="relative overflow-hidden bg-[var(--surface-primary)] py-10 md:py-14 lg:py-16 xl:py-20"
+      aria-label="Isaac Vazquez introduction"
       data-testid="hero"
     >
       <div className="pointer-events-none absolute inset-0">
@@ -76,26 +76,22 @@ export function ModernHero() {
         initial="hidden"
         animate="visible"
       >
-        <div className="section-panel overflow-hidden px-5 py-6 sm:px-7 sm:py-8 lg:px-10 lg:py-10">
-          <div className="grid items-start gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
-            <div className="space-y-7">
+        <div className="section-panel overflow-hidden px-6 py-7 sm:px-8 sm:py-8 lg:px-10 lg:py-9 xl:px-12 xl:py-10">
+          <div className="grid items-start gap-8 lg:grid-cols-[1.28fr_0.72fr] lg:gap-12 xl:gap-16">
+            <div className="space-y-6">
               <motion.div variants={itemVariants} className="space-y-5">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="section-kicker">Product manager portfolio</span>
-                  <span className="inline-flex items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-primary)] px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)]">
-                    Berkeley, CA · UC Berkeley Haas MBA Candidate
-                  </span>
-                </div>
+                <p className="text-sm font-medium uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  Berkeley, CA · UC Berkeley Haas MBA Candidate
+                </p>
 
-                <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl lg:leading-[1.03]">
-                  Building thoughtful products with a foundation in QA, analytics,
-                  and execution.
+                <h1 className="max-w-5xl text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-[2.85rem] lg:text-[3.45rem] lg:leading-[1.02] xl:text-[4rem]">
+                  Product manager focused on reliability, analytics, and
+                  execution.
                 </h1>
-                <p className="max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg md:text-xl">
-                  I work across product strategy, research, and delivery, with
-                  experience spanning high-scale SaaS platforms, analytics-heavy
-                  workflows, and investment research tools built for clearer
-                  decisions.
+                <p className="max-w-3xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg lg:max-w-2xl lg:text-[1.05rem] xl:max-w-3xl xl:text-[1.1rem]">
+                  I've worked across SaaS, civic tech, and investment tooling,
+                  turning operational complexity into clearer product decisions
+                  and stronger delivery.
                 </p>
               </motion.div>
 
@@ -110,7 +106,7 @@ export function ModernHero() {
 
               <motion.div
                 variants={itemVariants}
-                className="grid gap-3 sm:grid-cols-3"
+                className="grid gap-3 sm:grid-cols-3 xl:max-w-4xl"
               >
                 {heroSignals.map((signal) => (
                   <div key={signal.label} className="surface-muted px-4 py-4">
@@ -128,8 +124,8 @@ export function ModernHero() {
               </motion.div>
             </div>
 
-            <motion.div variants={itemVariants} className="relative lg:pt-2">
-              <div className="mx-auto max-w-sm">
+            <motion.div variants={itemVariants} className="relative lg:pt-1 xl:pt-2">
+              <div className="mx-auto max-w-xs sm:max-w-sm lg:ml-auto lg:max-w-[22rem]">
                 <div className="relative overflow-hidden rounded-[1.75rem] border border-[var(--border-primary)] bg-[var(--surface-primary)] p-3 shadow-[var(--shadow-lg)]">
                   <div
                     className="absolute inset-x-10 top-4 h-20 rounded-full blur-3xl"
@@ -144,7 +140,7 @@ export function ModernHero() {
                       alt="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
                       fill
                       priority
-                      sizes="(min-width: 1024px) 34vw, (min-width: 640px) 70vw, 82vw"
+                      sizes="(min-width: 1280px) 24rem, (min-width: 1024px) 30vw, (min-width: 640px) 70vw, 82vw"
                       className="object-cover object-top"
                     />
                   </div>

@@ -2,7 +2,7 @@
 
 Current nav model, redirect table, and shell notes.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -17,11 +17,10 @@ Current header items:
 | Home | `/` |
 | About | `/about` |
 | Projects | `/portfolio` |
+| Writing | `/writing` |
 | Investments | `/investments` |
 | Resume | `/resume` |
 | Contact | `/contact` |
-
-`Writing` is live but intentionally not included in the global header.
 
 ---
 
@@ -100,4 +99,4 @@ Defined in `next.config.mjs`.
 - `/portfolio` is the canonical projects route
 - `/writing` is the canonical writing route
 - `Projects` is the public-facing nav label even though the route stays `/portfolio`
-- older docs that describe `Writing` as a primary nav item are outdated
+- `Writing` is again a promoted global-nav item

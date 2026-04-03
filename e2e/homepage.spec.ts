@@ -12,29 +12,60 @@ test.describe('Homepage', () => {
     await expect(page.locator('[data-testid="hero"]')).toBeVisible()
   })
 
-  test('should have functional navigation', async ({ page }, testInfo) => {
+  test('should have functional desktop navigation', async ({ page }) => {
     await page.goto('/')
 
     await page.waitForLoadState('networkidle')
 
-    if (testInfo.project.name.includes('Mobile')) {
-      await page.getByRole('button', { name: /open navigation menu/i }).click()
-      const mobileNav = page.getByLabel('Mobile navigation')
-      await expect(mobileNav.getByRole('link', { name: /projects/i })).toBeVisible()
-      await expect(mobileNav.getByRole('link', { name: /writing/i })).toHaveCount(0)
-      return
-    }
+    const navLabels = await page
+      .getByLabel('Primary navigation')
+      .getByRole('link')
+      .allTextContents()
 
-    await expect(page.getByLabel('Primary navigation').getByRole('link', { name: /projects/i })).toBeVisible()
-    await expect(page.getByLabel('Primary navigation').getByRole('link', { name: /writing/i })).toHaveCount(0)
+    expect(navLabels).toEqual([
+      'Home',
+      'About',
+      'Projects',
+      'Writing',
+      'Investments',
+      'Resume',
+      'Contact',
+    ])
+  })
+
+  test('should have functional mobile navigation', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto('/')
+
+    await page.getByRole('button', { name: /open navigation menu/i }).click()
+
+    const navLabels = await page
+      .getByLabel('Mobile navigation')
+      .getByRole('link')
+      .allTextContents()
+
+    expect(navLabels).toEqual([
+      'Home',
+      'About',
+      'Projects',
+      'Writing',
+      'Investments',
+      'Resume',
+      'Contact',
+    ])
   })
 
   test('should use the simplified homepage hero and projects CTA', async ({ page }) => {
     await page.goto('/')
     const hero = page.getByTestId('hero')
 
-    await expect(hero.getByRole('heading', { name: /building thoughtful products/i })).toBeVisible()
+    await expect(
+      hero.getByRole('heading', {
+        name: /product manager focused on reliability, analytics, and execution/i,
+      })
+    ).toBeVisible()
     await expect(hero.getByRole('link', { name: /view projects/i })).toBeVisible()
+    await expect(hero.getByText(/product manager portfolio/i)).toHaveCount(0)
     await expect(page.getByRole('link', { name: /browse writing/i })).toBeVisible()
     await expect(page.getByText(/explore the strongest entry points/i)).toHaveCount(0)
   })
@@ -66,7 +97,7 @@ test.describe('Homepage', () => {
 
     const heroHeading = page.getByRole('heading', {
       level: 1,
-      name: /building thoughtful products/i,
+      name: /product manager focused on reliability, analytics, and execution/i,
     })
     const primaryCta = page.getByRole('link', { name: /view projects/i })
 

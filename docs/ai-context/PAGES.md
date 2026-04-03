@@ -66,15 +66,15 @@ Footer behavior:
 
 ### `/portfolio`
 
-- uses `caseStudiesData`
-- renders cards directly from the route
+- uses ordered helpers from `caseStudiesData`
+- renders the full non-`comingSoon` project index directly from the route
 - cards should make role, problem space, and impact scannable before click-through
 - do not document `ProjectsContent.tsx` as the primary live implementation
 
 ### `/writing`
 
 - backed by `content/blog/`
-- `Writing` is live but not promoted in the main nav
+- `Writing` is promoted in the main nav
 - route should still be discoverable from portfolio-shell CTAs and cross-links
 
 ### `/resume`

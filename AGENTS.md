@@ -38,7 +38,7 @@ Canonical redirects:
 - `/work` -> `/portfolio`
 - `/blog` -> `/writing`
 
-`Writing` is live, but it is not a promoted top-level nav item.
+`Writing` is live and promoted in the global header.
 
 ---
 
@@ -49,9 +49,10 @@ Promoted header items:
 1. `Home`
 2. `About`
 3. `Projects`
-4. `Investments`
-5. `Resume`
-6. `Contact`
+4. `Writing`
+5. `Investments`
+6. `Resume`
+7. `Contact`
 
 Shared shell files:
 

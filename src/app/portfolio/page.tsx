@@ -1,10 +1,7 @@
-import Link from "next/link";
-import { ArrowRight } from "@/components/ui/ServerIcons";
-import { WarmCard } from "@/components/ui/WarmCard";
-import { Badge } from "@/components/ui/Badge";
-import { caseStudiesData } from "@/constants/caseStudies";
+import { getPortfolioProjects } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
 import { SectionIntro } from "@/components/ui/SectionIntro";
+import { PortfolioProjectCard } from "@/components/PortfolioProjectCard";
 
 export const metadata = constructMetadata({
   title: "Projects",
@@ -35,31 +32,30 @@ export const metadata = constructMetadata({
 });
 
 export default function PortfolioPage() {
-  const allStudies = Object.values(caseStudiesData);
-  const featuredCaseStudies = allStudies.filter((cs) => cs.featured);
-  const liveStudies = allStudies.filter((cs) => !cs.comingSoon);
-  const strategyStudies = liveStudies.filter((study) =>
-    /product|strategy|analytics/i.test(study.role)
-  ).length;
+  const portfolioProjects = getPortfolioProjects();
+  const featuredProjects = portfolioProjects.filter((study) => study.featured);
+  const directCaseStudies = portfolioProjects.filter((study) => !study.link);
+  const shippedTools = portfolioProjects.filter((study) => Boolean(study.link));
 
   return (
     <div className="min-h-screen bg-[var(--surface-primary)] page-section">
-      <div className="page-shell space-y-12">
-        <div className="section-panel px-6 py-8 sm:px-8 sm:py-10">
+      <div className="page-shell space-y-10 lg:space-y-12">
+        <div className="section-panel px-6 py-8 sm:px-8 sm:py-10 lg:px-10">
           <SectionIntro
-            eyebrow="Projects"
             size="lg"
             headingLevel={1}
-            title="Projects across product, analytics, and platform work."
-            description="A collection of projects spanning high-scale platforms, analytics work, and investment research experiences."
+            title="All projects across product, analytics, and tooling."
+            description="A complete index of case studies, live tools, and product experiments across SaaS, fintech, media, and sports data."
+            titleClassName="max-w-4xl text-3xl leading-[1.04] sm:text-4xl lg:text-[3.2rem]"
+            descriptionClassName="max-w-3xl text-base lg:text-lg"
           />
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
             <div className="surface-muted px-4 py-4">
               <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                Live case studies
+                Total projects
               </p>
               <p className="mb-0 text-2xl font-semibold text-[var(--text-primary)]">
-                {liveStudies.length}
+                {portfolioProjects.length}
               </p>
             </div>
             <div className="surface-muted px-4 py-4">
@@ -67,102 +63,41 @@ export default function PortfolioPage() {
                 Featured work
               </p>
               <p className="mb-0 text-2xl font-semibold text-[var(--text-primary)]">
-                {featuredCaseStudies.length}
+                {featuredProjects.length}
               </p>
             </div>
             <div className="surface-muted px-4 py-4">
               <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                Strategy-heavy roles
+                Case studies / tools
               </p>
               <p className="mb-0 text-2xl font-semibold text-[var(--text-primary)]">
-                {strategyStudies}+
+                {directCaseStudies.length} / {shippedTools.length}
               </p>
             </div>
           </div>
         </div>
 
-        {featuredCaseStudies.length > 0 ? (
-          <div>
-            <div className="mb-6">
+        <section aria-label="All projects">
+          <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+            <div>
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                Featured projects
+                Full project index
+              </p>
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--text-secondary)] lg:text-base">
+                Everything in one place, with featured work still marked but no longer split into a separate bucket.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {featuredCaseStudies.map((study) => (
-                <Link
-                  key={study.slug}
-                  href={study.link ?? `/portfolio/${study.slug}`}
-                  className="group block h-full"
-                >
-                  <WarmCard padding="none" hover className="h-full overflow-hidden">
-                    <div className="space-y-5 p-6">
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="section-kicker">Project</span>
-                        <span className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
-                          {study.timeline}
-                        </span>
-                      </div>
-
-                      <div className="space-y-3">
-                        <h3 className="text-xl font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--color-primary)]">
-                          {study.title}
-                        </h3>
-                        <p className="text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
-                          {study.overview.summary || study.description}
-                        </p>
-                      </div>
-
-                      <div className="grid gap-3 sm:grid-cols-2">
-                        <div className="surface-muted px-4 py-3">
-                          <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                            Role
-                          </p>
-                          <p className="mb-0 text-sm leading-relaxed text-[var(--text-primary)]">
-                            {study.role}
-                          </p>
-                        </div>
-                        <div className="surface-muted px-4 py-3">
-                          <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                            Impact
-                          </p>
-                          <p className="mb-0 text-sm leading-relaxed text-[var(--text-primary)]">
-                            {study.metrics}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="border-t border-[var(--border-primary)] pt-4">
-                        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                          Problem space
-                        </p>
-                        <p className="mb-0 text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
-                          {study.problem.context}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2">
-                        {study.tools.slice(0, 2).map((tool) => (
-                          <Badge key={tool} variant="outline">
-                            {tool}
-                          </Badge>
-                        ))}
-                        {study.tools.length > 2 ? (
-                          <Badge variant="outline">+{study.tools.length - 2} more</Badge>
-                        ) : null}
-                      </div>
-
-                      <div className="flex items-center gap-2 border-t border-[var(--border-primary)] pt-4 text-sm font-medium text-[var(--text-primary)] transition-colors group-hover:text-[var(--color-primary)]">
-                        View project
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </div>
-                  </WarmCard>
-                </Link>
-              ))}
-            </div>
           </div>
-        ) : null}
+          <div className="grid auto-rows-fr gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {portfolioProjects.map((study) => (
+              <PortfolioProjectCard
+                key={study.slug}
+                study={study}
+                showFeaturedBadge
+              />
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

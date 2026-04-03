@@ -2,6 +2,7 @@ import {
   Home,
   User,
   Briefcase,
+  Article,
   ChartBar,
   FileText,
   Mail,
@@ -23,6 +24,11 @@ export const navLinks: Navlink[] = [
     href: "/portfolio",
     label: "Projects",
     icon: Briefcase,
+  },
+  {
+    href: "/writing",
+    label: "Writing",
+    icon: Article,
   },
   {
     href: "/investments",

@@ -1,13 +1,10 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Link from "next/link";
-import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
-import { Badge } from "@/components/ui/Badge";
-import { IconArrowRight } from "@tabler/icons-react";
 import { getHomepageFeaturedCaseStudies } from "@/constants/caseStudies";
 import { SectionIntro } from "@/components/ui/SectionIntro";
+import { PortfolioProjectCard } from "@/components/PortfolioProjectCard";
 
 export function FeaturedWorkSection() {
   const shouldReduceMotion = useReducedMotion();
@@ -44,91 +41,22 @@ export function FeaturedWorkSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div variants={itemVariants} className="mb-10">
+          <motion.div variants={itemVariants} className="mb-8 lg:mb-10">
             <SectionIntro
-              eyebrow="Projects"
               headingLevel={2}
-              title="Selected work built around hard tradeoffs and measurable outcomes."
-              description="A quick scan of the portfolio: platform scale, decision support, and analytics-heavy products where the role, problem space, and outcome are easy to see."
+              title="Selected Projects"
+              description="A quick scan of platform, analytics, and product work with clear role, scope, and outcomes."
+              titleClassName="text-3xl leading-[1.05] sm:text-4xl lg:text-[2.9rem]"
+              descriptionClassName="max-w-2xl text-base lg:text-lg"
             />
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="mb-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            className="mb-10 grid auto-rows-fr gap-6 md:grid-cols-2 xl:grid-cols-3"
           >
             {featured.map((study) => (
-              <Link
-                key={study.slug}
-                href={study.link ?? `/portfolio/${study.slug}`}
-                className="group block h-full"
-              >
-                <WarmCard padding="none" hover className="h-full overflow-hidden">
-                  <div className="space-y-5 p-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="section-kicker">Project</span>
-                      <span className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
-                        {study.timeline}
-                      </span>
-                    </div>
-
-                    <div className="space-y-3">
-                      <h3 className="text-xl font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--color-primary)]">
-                        {study.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
-                        {study.overview.summary || study.description}
-                      </p>
-                    </div>
-
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      <div className="surface-muted px-4 py-3">
-                        <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                          Role
-                        </p>
-                        <p className="mb-0 text-sm leading-relaxed text-[var(--text-primary)]">
-                          {study.role}
-                        </p>
-                      </div>
-                      <div className="surface-muted px-4 py-3">
-                        <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                          Outcome
-                        </p>
-                        <p className="mb-0 text-sm leading-relaxed text-[var(--text-primary)]">
-                          {study.metrics}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {(study.detailedMetrics?.slice(0, 2) ?? []).map((metric) => (
-                        <Badge key={metric.label} variant="outline">
-                          {metric.value} {metric.label}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <div className="border-t border-[var(--border-primary)] pt-4">
-                      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                        Problem space
-                      </p>
-                      <p className="mb-0 text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-2">
-                        {study.problem.context}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center justify-between gap-3 border-t border-[var(--border-primary)] pt-4">
-                      <p className="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
-                        {study.tools.slice(0, 2).join(" · ")}
-                      </p>
-                      <div className="flex items-center gap-2 text-sm font-medium text-[var(--color-primary)]">
-                        View project
-                        <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </div>
-                  </div>
-                </WarmCard>
-              </Link>
+              <PortfolioProjectCard key={study.slug} study={study} />
             ))}
           </motion.div>
 

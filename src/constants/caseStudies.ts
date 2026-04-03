@@ -437,9 +437,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     link: "/investments",
     featured: true,
 
-    // Required by interface — kept minimal (detail page not used)
-    overview: { summary: "", impact: "" },
-    problem: { context: "", painPoints: [], stakes: "" },
+    overview: {
+      summary:
+        "Built an investment research workspace for tracking positions, comparing stocks, and scanning valuation, profitability, and analyst signals in one place.",
+      impact:
+        "Turns scattered market data into a faster decision surface for portfolio tracking and side-by-side equity research.",
+    },
+    problem: {
+      context:
+        "Retail investors often jump between broker apps, spreadsheets, and finance sites to answer basic portfolio and comparison questions.",
+      painPoints: [],
+      stakes: "",
+    },
     process: { approach: "", methodology: [], decisions: [] },
     result: { outcomes: [], lessonsLearned: [] },
     userSegments: [],
@@ -537,8 +546,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     featured: true,
     comingSoon: false,
 
-    overview: { summary: "", impact: "" },
-    problem: { context: "", painPoints: [], stakes: "" },
+    overview: {
+      summary:
+        "Built a fantasy football platform that combines tier rankings, visualizations, and automated data refreshes into a single weekly workflow.",
+      impact:
+        "Gives players one place to move from raw rankings to lineup and waiver decisions with less tab-hopping.",
+    },
+    problem: {
+      context:
+        "Fantasy players usually stitch rankings, tiers, and matchup context together from scattered sources with little transparency into the underlying data.",
+      painPoints: [],
+      stakes: "",
+    },
     process: { approach: "", methodology: [], decisions: [] },
     result: { outcomes: [], lessonsLearned: [] },
     userSegments: [],
@@ -560,9 +579,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     link: "/fintech-tools/interchange-iq",
     featured: true,
 
-    // Detail page not used — portfolio slug redirects to live tool
-    overview: { summary: "", impact: "" },
-    problem: { context: "", painPoints: [], stakes: "" },
+    overview: {
+      summary:
+        "Created a payment fee analyzer that turns interchange tables into a clear processor comparison with live breakeven logic.",
+      impact:
+        "Makes processor tradeoffs legible before a business commits to flat-rate or interchange-plus pricing.",
+    },
+    problem: {
+      context:
+        "Merchants and fintech founders struggle to compare flat-rate and interchange-plus pricing because processor economics are intentionally opaque.",
+      painPoints: [],
+      stakes: "",
+    },
     process: { approach: "", methodology: [], decisions: [] },
     result: { outcomes: [], lessonsLearned: [] },
     userSegments: [],
@@ -584,9 +612,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     link: "/fintech-tools/budget-planner",
     featured: true,
 
-    // Detail page not used — portfolio slug redirects to live tool
-    overview: { summary: "", impact: "" },
-    problem: { context: "", painPoints: [], stakes: "" },
+    overview: {
+      summary:
+        "Designed a monthly budgeting workspace that keeps planning, savings targets, and manual expense tracking in one browser-persisted flow.",
+      impact:
+        "Keeps personal finance planning lightweight enough to use consistently without adding account-sync complexity.",
+    },
+    problem: {
+      context:
+        "Many budgeting tools either over-automate around bank connections or make simple monthly planning feel rigid and noisy.",
+      painPoints: [],
+      stakes: "",
+    },
     process: { approach: "", methodology: [], decisions: [] },
     result: { outcomes: [], lessonsLearned: [] },
     userSegments: [],
@@ -608,9 +645,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     link: "/news-pulse",
     featured: true,
 
-    // Detail page not used — redirects to live tool
-    overview: { summary: "", impact: "" },
-    problem: { context: "", painPoints: [], stakes: "" },
+    overview: {
+      summary:
+        "Built a media analytics dashboard that tracks coverage patterns, topic frequency, and tone across major outlets without external NLP services.",
+      impact:
+        "Turns RSS feeds into a faster comparison surface for media monitoring and story framing analysis.",
+    },
+    problem: {
+      context:
+        "Following how multiple outlets frame the same story usually means scanning feeds manually with no lightweight way to compare patterns.",
+      painPoints: [],
+      stakes: "",
+    },
     process: { approach: "", methodology: [], decisions: [] },
     result: { outcomes: [], lessonsLearned: [] },
     userSegments: [],
@@ -632,8 +678,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     link: "/march-madness-2026",
     featured: true,
 
-    overview: { summary: "", impact: "" },
-    problem: { context: "", painPoints: [], stakes: "" },
+    overview: {
+      summary:
+        "Created a bracket analysis product that combines rankings, seed context, injuries, and travel penalties into one picking workflow.",
+      impact:
+        "Makes each pick easier to justify with a transparent framework instead of isolated hot takes.",
+    },
+    problem: {
+      context:
+        "Bracket picks are often based on seed bias or isolated stats instead of a consistent framework that weighs matchup context.",
+      painPoints: [],
+      stakes: "",
+    },
     process: { approach: "", methodology: [], decisions: [] },
     result: { outcomes: [], lessonsLearned: [] },
     userSegments: [],
@@ -655,8 +711,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     link: "/la-liga",
     featured: true,
 
-    overview: { summary: "", impact: "" },
-    problem: { context: "", painPoints: [], stakes: "" },
+    overview: {
+      summary:
+        "Built a league dashboard for tracking title-race pressure, European qualification, relegation, and leaderboards in one view.",
+      impact:
+        "Compresses the season state into one product surface instead of forcing fans across standings, fixtures, and stat tables.",
+    },
+    problem: {
+      context:
+        "League tables rarely combine standings pressure, leaderboards, and next-step context into a single product surface.",
+      painPoints: [],
+      stakes: "",
+    },
     process: { approach: "", methodology: [], decisions: [] },
     result: { outcomes: [], lessonsLearned: [] },
     userSegments: [],
@@ -678,8 +744,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     link: "/spacex-mission-control",
     featured: true,
 
-    overview: { summary: "", impact: "" },
-    problem: { context: "", painPoints: [], stakes: "" },
+    overview: {
+      summary:
+        "Designed a mission-control-style launch board that makes upcoming missions, recent launches, and mission detail easier to explore.",
+      impact:
+        "Turns public mission data into a more navigable story and planning surface for enthusiasts.",
+    },
+    problem: {
+      context:
+        "Space launch information is often fragmented across plain tables, isolated articles, and inconsistent detail pages.",
+      painPoints: [],
+      stakes: "",
+    },
     process: { approach: "", methodology: [], decisions: [] },
     result: { outcomes: [], lessonsLearned: [] },
     userSegments: [],
@@ -695,16 +771,59 @@ const HOMEPAGE_FEATURED_SLUGS = [
   "spacex-mission-control",
 ] as const;
 
-/** Get featured case studies (for homepage) */
-export function getFeaturedCaseStudies(): CaseStudyData[] {
-  return Object.values(caseStudiesData).filter((cs) => cs.featured);
-}
+const PORTFOLIO_PROJECT_ORDER = [
+  "investment-analytics-platform",
+  "civic-engagement-platform",
+  "data-analytics-dashboard",
+  "interchange-iq",
+  "test-automation-suite",
+  "performance-monitoring",
+  "news-pulse-dashboard",
+  "budget-planner",
+  "spacex-mission-control",
+  "fantasy-football-analytics",
+  "la-liga-pulse",
+  "march-madness-2026",
+] as const;
 
-export function getHomepageFeaturedCaseStudies(): CaseStudyData[] {
-  return HOMEPAGE_FEATURED_SLUGS.flatMap((slug) => {
+function getStudiesByOrderedSlugs(slugs: readonly string[]): CaseStudyData[] {
+  return slugs.flatMap((slug) => {
     const study = caseStudiesData[slug];
     return study ? [study] : [];
   });
+}
+
+export function getProjectCardSummary(study: CaseStudyData): string {
+  return study.overview.summary.trim() || study.description;
+}
+
+export function getProjectCardProblem(study: CaseStudyData): string {
+  return (
+    study.problem.context.trim() ||
+    study.overview.impact.trim() ||
+    study.description
+  );
+}
+
+/** Get featured case studies (for homepage) */
+export function getFeaturedCaseStudies(): CaseStudyData[] {
+  return getPortfolioProjects().filter((cs) => cs.featured);
+}
+
+export function getHomepageFeaturedCaseStudies(): CaseStudyData[] {
+  return getStudiesByOrderedSlugs(HOMEPAGE_FEATURED_SLUGS);
+}
+
+export function getPortfolioProjects(): CaseStudyData[] {
+  const orderedProjects = getStudiesByOrderedSlugs(PORTFOLIO_PROJECT_ORDER).filter(
+    (study) => !study.comingSoon
+  );
+  const seen = new Set(orderedProjects.map((study) => study.slug));
+  const unorderedProjects = Object.values(caseStudiesData).filter(
+    (study) => !study.comingSoon && !seen.has(study.slug)
+  );
+
+  return [...orderedProjects, ...unorderedProjects];
 }
 
 /** Get all case studies as an array */
