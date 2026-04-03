@@ -9,15 +9,32 @@ const SearchInterfaceNoSSR = dynamic(
   { ssr: false }
 );
 
+function resolveInitialSearchState(searchParams: ReturnType<typeof useSearchParams>) {
+  if (!searchParams.toString()) {
+    return {
+      initialQuery: "",
+      initialType: "all",
+      initialCategory: "all",
+    };
+  }
+
+  return {
+    initialQuery: searchParams.get("q") ?? "",
+    initialType: searchParams.get("type") ?? "all",
+    initialCategory: searchParams.get("category") ?? "all",
+  };
+}
+
 export function SearchInterfaceClient(props: SearchInterfaceProps) {
   const searchParams = useSearchParams();
+  const initialState = resolveInitialSearchState(searchParams);
 
   return (
     <SearchInterfaceNoSSR
       {...props}
-      initialQuery={searchParams.get("q") ?? props.initialQuery}
-      initialType={searchParams.get("type") ?? props.initialType}
-      initialCategory={searchParams.get("category") ?? props.initialCategory}
+      initialQuery={initialState.initialQuery}
+      initialType={initialState.initialType}
+      initialCategory={initialState.initialCategory}
     />
   );
 }

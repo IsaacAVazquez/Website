@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Heading } from "@/components/ui/Heading";
 import { Paragraph } from "@/components/ui/Paragraph";
@@ -41,6 +41,10 @@ export interface SearchState {
   searchTime: number;
 }
 
+function getSearchStateKey(query: string, type: string, category: string) {
+  return JSON.stringify([query, type, category]);
+}
+
 function readSeededSearchState(fallbacks: Pick<SearchState, "query" | "type" | "category">) {
   if (typeof window === "undefined") {
     return fallbacks;
@@ -61,6 +65,7 @@ export function SearchInterface({
   initialCategory = "all"
 }: SearchInterfaceProps) {
   const router = useRouter();
+  const pendingUrlSyncKeyRef = useRef<string | null>(null);
   const seededState = readSeededSearchState({
     query: initialQuery,
     type: initialType,
@@ -80,6 +85,7 @@ export function SearchInterface({
 
   const [showFilters, setShowFilters] = useState(false);
   const debouncedQuery = useDebounce(searchState.query, 300);
+  const effectiveQuery = searchState.query === "" ? "" : debouncedQuery;
 
   useEffect(() => {
     const nextSeededState = readSeededSearchState({
@@ -108,6 +114,7 @@ export function SearchInterface({
 
   // Update URL when search parameters change
   const updateURL = useCallback((query: string, type: string, category: string) => {
+    pendingUrlSyncKeyRef.current = getSearchStateKey(query, type, category);
     const params = new URLSearchParams();
     if (query) params.set('q', query);
     if (type !== 'all') params.set('type', type);
@@ -170,15 +177,15 @@ export function SearchInterface({
   // Effect for debounced search
   useEffect(() => {
     if (
-      debouncedQuery !== initialQuery ||
+      effectiveQuery !== initialQuery ||
       searchState.type !== initialType ||
       searchState.category !== initialCategory
     ) {
-      performSearch(debouncedQuery, searchState.type, searchState.category);
-      updateURL(debouncedQuery, searchState.type, searchState.category);
+      performSearch(effectiveQuery, searchState.type, searchState.category);
+      updateURL(effectiveQuery, searchState.type, searchState.category);
     }
   }, [
-    debouncedQuery,
+    effectiveQuery,
     searchState.type,
     searchState.category,
     performSearch,
@@ -190,9 +197,26 @@ export function SearchInterface({
 
   // Initial search if query is provided
   useEffect(() => {
+    const nextSearchKey = getSearchStateKey(initialQuery, initialType, initialCategory);
+
+    if (pendingUrlSyncKeyRef.current === nextSearchKey) {
+      pendingUrlSyncKeyRef.current = null;
+      return;
+    }
+
     if (initialQuery) {
       performSearch(initialQuery, initialType, initialCategory);
+      return;
     }
+
+    setSearchState((prev) => ({
+      ...prev,
+      results: [],
+      isLoading: false,
+      hasSearched: false,
+      totalResults: 0,
+      searchTime: 0,
+    }));
   }, [performSearch, initialCategory, initialQuery, initialType]);
 
   const handleQueryChange = (query: string) => {
@@ -211,6 +235,8 @@ export function SearchInterface({
     setSearchState(prev => ({
       ...prev,
       query: "",
+      type: "all",
+      category: "all",
       results: [],
       hasSearched: false,
       totalResults: 0,
@@ -255,11 +281,13 @@ export function SearchInterface({
                   value={searchState.query}
                   onChange={(e) => handleQueryChange(e.target.value)}
                   placeholder="Search for content..."
+                  aria-label="Search content"
                   className="w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-slate-900 dark:text-slate-100"
                 />
                 {searchState.query && (
                   <button
                     onClick={clearSearch}
+                    aria-label="Clear search"
                     className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
                   >
                     <IconX className="w-5 h-5" />
@@ -269,6 +297,7 @@ export function SearchInterface({
               
               <button
                 onClick={() => setShowFilters(!showFilters)}
+                aria-label={showFilters ? "Hide filters" : "Show filters"}
                 className={`ml-4 p-4 rounded-lg border transition-all duration-200 ${
                   showFilters || searchState.type !== 'all' || searchState.category !== 'all'
                     ? 'bg-primary text-white border-primary' 
