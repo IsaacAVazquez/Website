@@ -1,6 +1,12 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-03-07T08:09:58.760793+00:00",
+  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "freshness": {
+    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "sections": {
+      "price": "2026-03-27"
+    }
+  },
   "source": "prefetched",
   "capabilities": {
     "price": true,
@@ -26,18 +32,18 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "NVIDIA Corporation, a computing infrastructure company, provides graphics and compute and networking solutions in the United States, Singapore, Taiwan, China, Hong Kong, and internationally. The Compute & Networking segment includes its Data Centre accelerated computing platforms and artificial intelligence solutions and software; networking; automotive platforms and autonomous and electric vehicle solutions; Jetson for robotics and other embedded platforms; and DGX Cloud computing services. The Graphics segment offers GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure, and solutions for gaming platforms; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics; virtual GPU or vGPU software for cloud-based visual and virtual computing; automotive platforms for infotainment systems; and Omniverse software for building and operating industrial AI and digital twin applications. It also customized agentic solutions designed in collaboration with NVIDIA to accelerate enterprise AI adoption. The company's products are used in gaming, professional visualization, data center, and automotive markets. It sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, consumer internet companies, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants. The company has a strategic partnership with Siemens Aktiengesellschaft to develop industrial and physical AI solutions for AI-driven innovation to every industry and industrial workflow. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
-      "fullTimeEmployees": 36000,
+      "longBusinessSummary": "NVIDIA Corporation operates as a data center scale AI infrastructure company. The company operates through two segments, Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets. The company sells its products to original equipment manufacturers, original device manufacturers, system integrators and distributors, independent software vendors, cloud service providers, add-in board manufacturers, distributors, automotive manufacturers and tier-1 automotive suppliers, and other ecosystem participants worldwide. It has a collaboration with Tech Mahindra Limited to develop artificial intelligence powered telco network operations reasoning agent. The company has a strategic partnership with Lumentum Holdings Inc. to develop optics technologies for AI and data centers. It also has a strategic partnership with Nebius Group N.V. to develop and deploy hyperscale cloud for the artificial intelligence market. NVIDIA Corporation was incorporated in 1993 and is headquartered in Santa Clara, California.",
+      "fullTimeEmployees": 42000,
       "website": "https://www.nvidia.com",
       "shortName": "NVIDIA Corporation",
       "longName": "NVIDIA Corporation"
     },
     "fundamentals": {
       "ttmEps": 4.9,
-      "ttmPe": 36.16,
-      "marketCap": 4305717000000,
-      "psRatio": 19.94,
-      "pbRatio": 27.37
+      "ttmPe": 34.19,
+      "marketCap": 4070736000000,
+      "psRatio": 18.85,
+      "pbRatio": 25.88
     },
     "profitability": {
       "roe": 31.11,
@@ -5504,177 +5510,17 @@
       ]
     },
     "wacc": {
-      "wacc": 24.9,
-      "costOfEquity": 24.959999999999997,
+      "wacc": 23.71,
+      "costOfEquity": 23.77,
       "costOfDebt": 0.66,
       "taxRate": 15,
-      "beta": 2.3588,
-      "marketCap": 4305717000000
+      "beta": 2.2934,
+      "marketCap": 4070736000000
     },
     "beta": {
-      "beta5y": 2.3588
+      "beta5y": 2.2934
     },
     "price": [
-      {
-        "date": "2025-02-27",
-        "open": 135,
-        "high": 135.01,
-        "low": 120.01,
-        "close": 120.15,
-        "volume": 443175800
-      },
-      {
-        "date": "2025-02-28",
-        "open": 118.02,
-        "high": 125.09,
-        "low": 116.4,
-        "close": 124.92,
-        "volume": 389091100
-      },
-      {
-        "date": "2025-03-03",
-        "open": 123.51,
-        "high": 123.7,
-        "low": 112.28,
-        "close": 114.06,
-        "volume": 411381400
-      },
-      {
-        "date": "2025-03-04",
-        "open": 110.65,
-        "high": 119.31,
-        "low": 110.11,
-        "close": 115.99,
-        "volume": 398163300
-      },
-      {
-        "date": "2025-03-05",
-        "open": 117.58,
-        "high": 118.28,
-        "low": 114.51,
-        "close": 117.3,
-        "volume": 284337900
-      },
-      {
-        "date": "2025-03-06",
-        "open": 113.53,
-        "high": 115.35,
-        "low": 110.22,
-        "close": 110.57,
-        "volume": 321181900
-      },
-      {
-        "date": "2025-03-07",
-        "open": 111.25,
-        "high": 113.48,
-        "low": 107.56,
-        "close": 112.69,
-        "volume": 341755500
-      },
-      {
-        "date": "2025-03-10",
-        "open": 109.9,
-        "high": 111.85,
-        "low": 105.46,
-        "close": 106.98,
-        "volume": 366487400
-      },
-      {
-        "date": "2025-03-11",
-        "open": 106.99,
-        "high": 112.24,
-        "low": 104.77,
-        "close": 108.76,
-        "volume": 354865700
-      },
-      {
-        "date": "2025-03-12",
-        "open": 114.12,
-        "high": 116.76,
-        "low": 112.88,
-        "close": 115.74,
-        "volume": 323857500
-      },
-      {
-        "date": "2025-03-13",
-        "open": 117.03,
-        "high": 117.76,
-        "low": 113.79,
-        "close": 115.58,
-        "volume": 299033100
-      },
-      {
-        "date": "2025-03-14",
-        "open": 118.61,
-        "high": 121.88,
-        "low": 118.15,
-        "close": 121.67,
-        "volume": 277593500
-      },
-      {
-        "date": "2025-03-17",
-        "open": 122.74,
-        "high": 122.89,
-        "low": 118.03,
-        "close": 119.53,
-        "volume": 255501500
-      },
-      {
-        "date": "2025-03-18",
-        "open": 118,
-        "high": 119.02,
-        "low": 114.54,
-        "close": 115.43,
-        "volume": 299686900
-      },
-      {
-        "date": "2025-03-19",
-        "open": 117.27,
-        "high": 120.45,
-        "low": 115.68,
-        "close": 117.52,
-        "volume": 273426200
-      },
-      {
-        "date": "2025-03-20",
-        "open": 116.55,
-        "high": 120.2,
-        "low": 116.47,
-        "close": 118.53,
-        "volume": 248829700
-      },
-      {
-        "date": "2025-03-21",
-        "open": 116.94,
-        "high": 117.99,
-        "low": 115.42,
-        "close": 117.7,
-        "volume": 266498500
-      },
-      {
-        "date": "2025-03-24",
-        "open": 119.88,
-        "high": 122.22,
-        "low": 119.34,
-        "close": 121.41,
-        "volume": 228452500
-      },
-      {
-        "date": "2025-03-25",
-        "open": 120.55,
-        "high": 121.29,
-        "low": 118.92,
-        "close": 120.69,
-        "volume": 167447200
-      },
-      {
-        "date": "2025-03-26",
-        "open": 118.73,
-        "high": 118.84,
-        "low": 112.71,
-        "close": 113.76,
-        "volume": 293463300
-      },
       {
         "date": "2025-03-27",
         "open": 111.35,
@@ -7529,7 +7375,167 @@
         "high": 182.59,
         "low": 176.38,
         "close": 177.19,
-        "volume": 310523200
+        "volume": 311636500
+      },
+      {
+        "date": "2026-03-02",
+        "open": 175.01,
+        "high": 183.46,
+        "low": 174.64,
+        "close": 182.48,
+        "volume": 209095300
+      },
+      {
+        "date": "2026-03-03",
+        "open": 178.49,
+        "high": 180.9,
+        "low": 176.92,
+        "close": 180.05,
+        "volume": 178099400
+      },
+      {
+        "date": "2026-03-04",
+        "open": 180.44,
+        "high": 184.7,
+        "low": 180.06,
+        "close": 183.04,
+        "volume": 177731200
+      },
+      {
+        "date": "2026-03-05",
+        "open": 181.17,
+        "high": 184.06,
+        "low": 177.88,
+        "close": 183.34,
+        "volume": 198779700
+      },
+      {
+        "date": "2026-03-06",
+        "open": 179.84,
+        "high": 182.76,
+        "low": 176.82,
+        "close": 177.82,
+        "volume": 189021900
+      },
+      {
+        "date": "2026-03-09",
+        "open": 176.83,
+        "high": 182.91,
+        "low": 175.56,
+        "close": 182.65,
+        "volume": 177213600
+      },
+      {
+        "date": "2026-03-10",
+        "open": 182.4,
+        "high": 186.44,
+        "low": 182.01,
+        "close": 184.77,
+        "volume": 179118500
+      },
+      {
+        "date": "2026-03-11",
+        "open": 185.91,
+        "high": 187.62,
+        "low": 184.45,
+        "close": 186.03,
+        "volume": 145280400
+      },
+      {
+        "date": "2026-03-12",
+        "open": 184.05,
+        "high": 184.94,
+        "low": 181.75,
+        "close": 183.14,
+        "volume": 155762700
+      },
+      {
+        "date": "2026-03-13",
+        "open": 184.92,
+        "high": 186.09,
+        "low": 179.94,
+        "close": 180.25,
+        "volume": 160988400
+      },
+      {
+        "date": "2026-03-16",
+        "open": 182.97,
+        "high": 188.88,
+        "low": 181.41,
+        "close": 183.22,
+        "volume": 217307400
+      },
+      {
+        "date": "2026-03-17",
+        "open": 185.06,
+        "high": 185.4,
+        "low": 181.68,
+        "close": 181.93,
+        "volume": 182497800
+      },
+      {
+        "date": "2026-03-18",
+        "open": 182.48,
+        "high": 183.38,
+        "low": 180.33,
+        "close": 180.4,
+        "volume": 156683100
+      },
+      {
+        "date": "2026-03-19",
+        "open": 178.01,
+        "high": 179.98,
+        "low": 175.79,
+        "close": 178.56,
+        "volume": 170968500
+      },
+      {
+        "date": "2026-03-20",
+        "open": 178,
+        "high": 178.26,
+        "low": 171.72,
+        "close": 172.7,
+        "volume": 241323500
+      },
+      {
+        "date": "2026-03-23",
+        "open": 177.26,
+        "high": 178.37,
+        "low": 174.76,
+        "close": 175.64,
+        "volume": 182836300
+      },
+      {
+        "date": "2026-03-24",
+        "open": 174.83,
+        "high": 176.22,
+        "low": 173.98,
+        "close": 175.2,
+        "volume": 147667800
+      },
+      {
+        "date": "2026-03-25",
+        "open": 177.1,
+        "high": 181.22,
+        "low": 176.85,
+        "close": 178.68,
+        "volume": 162602100
+      },
+      {
+        "date": "2026-03-26",
+        "open": 176.07,
+        "high": 176.51,
+        "low": 171.14,
+        "close": 171.24,
+        "volume": 186152200
+      },
+      {
+        "date": "2026-03-27",
+        "open": 170,
+        "high": 170.97,
+        "low": 167.01,
+        "close": 167.52,
+        "volume": 195294300
       }
     ],
     "news": [
@@ -7598,69 +7604,69 @@
         "type": "STORY"
       },
       {
-        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
         "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
+        "type": "STORY"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.16,
-        "industryAvg": 36.32
+        "value": 34.19,
+        "industryAvg": 32.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 19.94,
-        "industryAvg": 11.99
+        "value": 18.85,
+        "industryAvg": 10.87
       },
       {
         "metric": "P/B Ratio",
-        "value": 27.37,
-        "industryAvg": 9.69
+        "value": 25.88,
+        "industryAvg": 8.89
       },
       {
         "metric": "ROE",
         "value": 31.11,
-        "industryAvg": 9.58
+        "industryAvg": 9.94
       },
       {
         "metric": "ROA",
         "value": 23.35,
-        "industryAvg": 5.96
+        "industryAvg": 6.21
       },
       {
         "metric": "Gross Margin",
         "value": 75,
-        "industryAvg": 59.730000000000004
+        "industryAvg": 61.29
       },
       {
         "metric": "EBITDA Margin",
         "value": 75.28,
-        "industryAvg": 57.69
+        "industryAvg": 57.93000000000001
       },
       {
         "metric": "Net Margin",
         "value": 63.06,
-        "industryAvg": 39.64
+        "industryAvg": 39.68
       }
     ],
     "dcf": {
-      "fairValue": 45.96,
-      "currentPrice": 177.19,
-      "upside": -74.06,
-      "wacc": 24.9,
+      "fairValue": 48.85,
+      "currentPrice": 167.52,
+      "upside": -70.84,
+      "wacc": 23.71,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

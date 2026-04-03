@@ -1,6 +1,12 @@
 {
   "symbol": "JPM",
-  "lastUpdated": "2026-03-07T08:09:58.760793+00:00",
+  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "freshness": {
+    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "sections": {
+      "price": "2026-03-27"
+    }
+  },
   "source": "prefetched",
   "capabilities": {
     "price": true,
@@ -26,7 +32,7 @@
       "country": "United States",
       "industry": "Banks-Diversified",
       "sector": "Financial Services",
-      "longBusinessSummary": "JPMorgan Chase & Co. operates as a financial services company worldwide. It operates through three segments: Consumer & Community Banking, Commercial & Investment Bank, and Asset & Wealth Management. The company offers deposit, investment and lending products, cash management, and payments and services; mortgage origination and servicing activities; residential mortgages and home equity loans; and credit cards, auto loans, leases, and travel services to consumers and small businesses through bank branches, ATMs, and digital and telephone banking. It also provides investment banking products and services, including corporate strategy and structure advisory, and equity and debt market capital-raising services, as well as loan origination and syndication; payments; and cash and derivative instruments, risk management solutions, prime brokerage, and research, as well as offers securities services, including custody, fund services, liquidity, and trading services, and data solutions products. In addition, the company provides financial solutions, including lending, payments, investment banking, and asset management to small and midsized companies, local governments, nonprofit clients, and municipalities, as well as commercial real estate clients. Further, it offers multi-asset investment management solutions in equities, fixed income, alternatives, and money market funds to institutional clients and retail investors; and retirement products and services, brokerage, custody, estate planning, lending, deposits, and investment management products to high net worth clients. The company was founded in 1799 and is headquartered in New York, New York.",
+      "longBusinessSummary": "JPMorgan Chase & Co. operates as a bank and financial holding company in the United States, rest of North America, Europe, the Middle East, Africa, the Asia Pacific, Latin America, and the Caribbean. It operates in three segments: Consumer & Community Banking, Commercial & Investment Bank, and Asset & Wealth Management. The company offers deposit, investment and lending products, and cash management; mortgage origination and servicing activities; residential mortgages and home equity loans; and credit cards, payment solutions, travel services, merchant offers, lifestyle benefits, auto loans, and leases to consumers and small businesses through bank branches, ATMs, and digital and telephone banking. It also provides investment banking, market-making, financing, custody, and securities products and services; corporate strategy and structure advisory, equity and debt market capital-raising, and loan origination and syndication services; cash and derivative instruments, risk management solutions, prime brokerage, clearing, and research; and fund services, liquidity and trading services, and data solutions products for large corporations, financial institutions, merchants, start-ups, small and midsized companies, local governments, municipalities, nonprofits, and commercial real estate clients. In addition, the company offers multi-asset investment management solutions in equities, fixed income, alternatives, and money market funds to institutional clients and retail investors; retirement products and services, estate planning, lending, deposits, and investment management products to high-net-worth clients; and financial transaction processing. JPMorgan Chase & Co. was founded in 1799 and is headquartered in New York, New York.",
       "fullTimeEmployees": 318512,
       "website": "https://www.jpmorganchase.com",
       "shortName": "JPMorgan Chase & Co.",
@@ -34,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 20.01,
-      "ttmPe": 15.01,
-      "marketCap": 809918829720,
-      "psRatio": 4.44,
-      "pbRatio": 2.23
+      "ttmPe": 14.13,
+      "marketCap": 762828644016,
+      "psRatio": 4.18,
+      "pbRatio": 2.1
     },
     "profitability": {
       "roe": 3.51,
@@ -1668,8 +1674,8 @@
         {
           "Breakdown": "Non Interest Expense",
           "2025-12-31": "96042000000.0",
-          "2024-12-31": "90332000000.0",
-          "2023-12-31": "82836000000.0",
+          "2024-12-31": "89555000000.0",
+          "2023-12-31": "81776000000.0",
           "2022-12-31": "75874000000.0",
           "2021-12-31": "70917000000.0",
           "2020-12-31": "66656000000.0",
@@ -1768,8 +1774,8 @@
         {
           "Breakdown": "Other Non Interest Expense",
           "2025-12-31": "7178000000.0",
-          "2024-12-31": "8087000000.0",
-          "2023-12-31": "7709000000.0",
+          "2024-12-31": "7310000000.0",
+          "2023-12-31": "6649000000.0",
           "2022-12-31": "6099000000.0",
           "2021-12-31": "5043000000.0",
           "2020-12-31": "4826000000.0",
@@ -1788,8 +1794,8 @@
         {
           "Breakdown": "Special Income Charges",
           "2025-12-31": "1030000000.0",
-          "2024-12-31": "6628000000.0",
-          "2023-12-31": "-1222000000.0",
+          "2024-12-31": "5851000000.0",
+          "2023-12-31": "-2282000000.0",
           "2022-12-31": "648000000.0",
           "2021-12-31": "-426000000.0",
           "2020-12-31": "*",
@@ -1798,8 +1804,8 @@
         {
           "Breakdown": "Restructuring & Mergers Acquisition",
           "2025-12-31": "-628000000.0",
-          "2024-12-31": "-103000000.0",
-          "2023-12-31": "-3114000000.0",
+          "2024-12-31": "674000000.0",
+          "2023-12-31": "-2054000000.0",
           "2022-12-31": "0.0",
           "2021-12-31": "0.0",
           "2020-12-31": "*",
@@ -1968,8 +1974,8 @@
         {
           "Breakdown": "Normalized Income",
           "2025-12-31": "56238585577.52",
-          "2024-12-31": "53309297465.4",
-          "2023-12-31": "50534488000.0",
+          "2024-12-31": "53914403510.87",
+          "2023-12-31": "51386728000.0",
           "2022-12-31": "37147232000.0",
           "2021-12-31": "48679486000.0",
           "2020-12-31": "29131000000.0",
@@ -2008,8 +2014,8 @@
         {
           "Breakdown": "Total Unusual Items Excluding Goodwill",
           "2025-12-31": "1030000000.0",
-          "2024-12-31": "6628000000.0",
-          "2023-12-31": "-1222000000.0",
+          "2024-12-31": "5851000000.0",
+          "2023-12-31": "-2282000000.0",
           "2022-12-31": "648000000.0",
           "2021-12-31": "-426000000.0",
           "2020-12-31": "*",
@@ -2018,8 +2024,8 @@
         {
           "Breakdown": "Total Unusual Items",
           "2025-12-31": "1030000000.0",
-          "2024-12-31": "6628000000.0",
-          "2023-12-31": "-1222000000.0",
+          "2024-12-31": "5851000000.0",
+          "2023-12-31": "-2282000000.0",
           "2022-12-31": "648000000.0",
           "2021-12-31": "-426000000.0",
           "2020-12-31": "*",
@@ -2038,8 +2044,8 @@
         {
           "Breakdown": "Tax Effect of Unusual Items",
           "2025-12-31": "220585577.52",
-          "2024-12-31": "1466297465.4",
-          "2023-12-31": "-239512000.0",
+          "2024-12-31": "1294403510.87",
+          "2023-12-31": "-447272000.0",
           "2022-12-31": "119232000.0",
           "2021-12-31": "-80514000.0",
           "2020-12-31": "0.0",
@@ -5810,177 +5816,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.65,
-      "costOfEquity": 13.38,
+      "wacc": 9.43,
+      "costOfEquity": 13.239999999999998,
       "costOfDebt": 4.760000000000001,
       "taxRate": 24,
-      "beta": 1.0572,
-      "marketCap": 809918829720
+      "beta": 1.0439,
+      "marketCap": 762828644016
     },
     "beta": {
-      "beta5y": 1.0572
+      "beta5y": 1.0439
     },
     "price": [
-      {
-        "date": "2025-02-27",
-        "open": 260.18,
-        "high": 263.64,
-        "low": 257.86,
-        "close": 259.05,
-        "volume": 8204400
-      },
-      {
-        "date": "2025-02-28",
-        "open": 260.73,
-        "high": 264.81,
-        "low": 257.89,
-        "close": 264.65,
-        "volume": 10467100
-      },
-      {
-        "date": "2025-03-03",
-        "open": 264,
-        "high": 266.32,
-        "low": 257.82,
-        "close": 260.62,
-        "volume": 9058300
-      },
-      {
-        "date": "2025-03-04",
-        "open": 255.28,
-        "high": 257.23,
-        "low": 245.95,
-        "close": 250.25,
-        "volume": 13465600
-      },
-      {
-        "date": "2025-03-05",
-        "open": 251.25,
-        "high": 253.05,
-        "low": 247.83,
-        "close": 251.53,
-        "volume": 7861400
-      },
-      {
-        "date": "2025-03-06",
-        "open": 248.11,
-        "high": 249.36,
-        "low": 243.85,
-        "close": 246.54,
-        "volume": 9983200
-      },
-      {
-        "date": "2025-03-07",
-        "open": 245.23,
-        "high": 246.72,
-        "low": 239.42,
-        "close": 242.28,
-        "volume": 20498700
-      },
-      {
-        "date": "2025-03-10",
-        "open": 236.21,
-        "high": 237.51,
-        "low": 228.7,
-        "close": 232.22,
-        "volume": 18887200
-      },
-      {
-        "date": "2025-03-11",
-        "open": 231.75,
-        "high": 233.32,
-        "low": 226.69,
-        "close": 229.14,
-        "volume": 18143000
-      },
-      {
-        "date": "2025-03-12",
-        "open": 234,
-        "high": 234.32,
-        "low": 227.26,
-        "close": 227.9,
-        "volume": 16054000
-      },
-      {
-        "date": "2025-03-13",
-        "open": 229.3,
-        "high": 229.5,
-        "low": 224.23,
-        "close": 225.19,
-        "volume": 16467900
-      },
-      {
-        "date": "2025-03-14",
-        "open": 228.12,
-        "high": 233.14,
-        "low": 227.58,
-        "close": 232.44,
-        "volume": 11962100
-      },
-      {
-        "date": "2025-03-17",
-        "open": 231.18,
-        "high": 235.67,
-        "low": 230.46,
-        "close": 233.93,
-        "volume": 9586000
-      },
-      {
-        "date": "2025-03-18",
-        "open": 234.32,
-        "high": 236.17,
-        "low": 233.52,
-        "close": 234.97,
-        "volume": 10344900
-      },
-      {
-        "date": "2025-03-19",
-        "open": 235.74,
-        "high": 242.33,
-        "low": 234.89,
-        "close": 239.11,
-        "volume": 10120600
-      },
-      {
-        "date": "2025-03-20",
-        "open": 236.56,
-        "high": 241.76,
-        "low": 236.2,
-        "close": 239.01,
-        "volume": 8328500
-      },
-      {
-        "date": "2025-03-21",
-        "open": 237.81,
-        "high": 242.3,
-        "low": 236.5,
-        "close": 241.63,
-        "volume": 19326900
-      },
-      {
-        "date": "2025-03-24",
-        "open": 245.48,
-        "high": 248.69,
-        "low": 244.41,
-        "close": 248.06,
-        "volume": 9422700
-      },
-      {
-        "date": "2025-03-25",
-        "open": 249.31,
-        "high": 251.82,
-        "low": 247.62,
-        "close": 251.13,
-        "volume": 9287700
-      },
-      {
-        "date": "2025-03-26",
-        "open": 252.6,
-        "high": 254.67,
-        "low": 249.78,
-        "close": 251.03,
-        "volume": 12779300
-      },
       {
         "date": "2025-03-27",
         "open": 249.53,
@@ -7835,7 +7681,167 @@
         "high": 302.95,
         "low": 294.45,
         "close": 300.3,
-        "volume": 18601400
+        "volume": 18620800
+      },
+      {
+        "date": "2026-03-02",
+        "open": 294.81,
+        "high": 299.98,
+        "low": 293.21,
+        "close": 297.56,
+        "volume": 8508900
+      },
+      {
+        "date": "2026-03-03",
+        "open": 292.29,
+        "high": 302.39,
+        "low": 289.5,
+        "close": 300.26,
+        "volume": 10278200
+      },
+      {
+        "date": "2026-03-04",
+        "open": 299.99,
+        "high": 301,
+        "low": 295.82,
+        "close": 299.39,
+        "volume": 8055700
+      },
+      {
+        "date": "2026-03-05",
+        "open": 297.98,
+        "high": 301.24,
+        "low": 292.43,
+        "close": 293.55,
+        "volume": 12732500
+      },
+      {
+        "date": "2026-03-06",
+        "open": 286.34,
+        "high": 289.99,
+        "low": 283.71,
+        "close": 289.48,
+        "volume": 13496500
+      },
+      {
+        "date": "2026-03-09",
+        "open": 285.5,
+        "high": 291.1,
+        "low": 280.45,
+        "close": 289.92,
+        "volume": 12241100
+      },
+      {
+        "date": "2026-03-10",
+        "open": 289.29,
+        "high": 292.75,
+        "low": 287.18,
+        "close": 288.73,
+        "volume": 8344900
+      },
+      {
+        "date": "2026-03-11",
+        "open": 288.81,
+        "high": 290.48,
+        "low": 284.86,
+        "close": 287.52,
+        "volume": 10205000
+      },
+      {
+        "date": "2026-03-12",
+        "open": 282.83,
+        "high": 283.88,
+        "low": 279.1,
+        "close": 282.89,
+        "volume": 13760500
+      },
+      {
+        "date": "2026-03-13",
+        "open": 284.67,
+        "high": 287.19,
+        "low": 282.95,
+        "close": 283.44,
+        "volume": 9091200
+      },
+      {
+        "date": "2026-03-16",
+        "open": 286.34,
+        "high": 289.27,
+        "low": 284.61,
+        "close": 286.16,
+        "volume": 8149000
+      },
+      {
+        "date": "2026-03-17",
+        "open": 289,
+        "high": 291.76,
+        "low": 285.95,
+        "close": 286.89,
+        "volume": 8961200
+      },
+      {
+        "date": "2026-03-18",
+        "open": 286.83,
+        "high": 289.41,
+        "low": 285.12,
+        "close": 287.74,
+        "volume": 10057000
+      },
+      {
+        "date": "2026-03-19",
+        "open": 286.88,
+        "high": 289.51,
+        "low": 284.62,
+        "close": 287.97,
+        "volume": 9846700
+      },
+      {
+        "date": "2026-03-20",
+        "open": 288.08,
+        "high": 290.71,
+        "low": 285.27,
+        "close": 286.56,
+        "volume": 22436500
+      },
+      {
+        "date": "2026-03-23",
+        "open": 294.31,
+        "high": 295.75,
+        "low": 287.97,
+        "close": 289.91,
+        "volume": 11470800
+      },
+      {
+        "date": "2026-03-24",
+        "open": 286.17,
+        "high": 295.48,
+        "low": 285.37,
+        "close": 292.4,
+        "volume": 11092300
+      },
+      {
+        "date": "2026-03-25",
+        "open": 294.15,
+        "high": 297.64,
+        "low": 292.44,
+        "close": 295.42,
+        "volume": 12188200
+      },
+      {
+        "date": "2026-03-26",
+        "open": 292.58,
+        "high": 294.99,
+        "low": 290.73,
+        "close": 291.66,
+        "volume": 8669200
+      },
+      {
+        "date": "2026-03-27",
+        "open": 289.14,
+        "high": 290.11,
+        "low": 281.75,
+        "close": 282.84,
+        "volume": 9869500
       }
     ],
     "news": [
@@ -7923,40 +7929,40 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.01,
-        "industryAvg": 14.36
+        "value": 14.13,
+        "industryAvg": 12.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.44,
-        "industryAvg": 1.09
+        "value": 4.18,
+        "industryAvg": 0.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.23,
-        "industryAvg": 0.45
+        "value": 2.1,
+        "industryAvg": 0.4
       },
       {
         "metric": "ROE",
         "value": 3.51,
-        "industryAvg": 2.9000000000000004
+        "industryAvg": 2.74
       },
       {
         "metric": "ROA",
         "value": 0.27999999999999997,
-        "industryAvg": 0.22
+        "industryAvg": 0.21
       },
       {
         "metric": "Net Margin",
         "value": 27.71,
-        "industryAvg": 26.77
+        "industryAvg": 24.72
       }
     ],
     "dcf": {
-      "fairValue": 273.37,
-      "currentPrice": 300.3,
-      "upside": -8.97,
-      "wacc": 9.65,
+      "fairValue": 282.66,
+      "currentPrice": 282.84,
+      "upside": -0.06,
+      "wacc": 9.43,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -3.74,
         "Terminal growth": 3

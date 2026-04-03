@@ -1,6 +1,12 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-03-07T08:09:58.760793+00:00",
+  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "freshness": {
+    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "sections": {
+      "price": "2026-03-27"
+    }
+  },
   "source": "prefetched",
   "capabilities": {
     "price": true,
@@ -26,18 +32,18 @@
       "country": "United States",
       "industry": "Internet Content & Information",
       "sector": "Communication Services",
-      "longBusinessSummary": "Alphabet Inc. offers various products and platforms in the United States, Europe, the Middle East, Africa, the Asia-Pacific, Canada, and Latin America. It operates through Google Services, Google Cloud, and Other Bets segments. The Google Services segment provides products and services, including ads, Android, Chrome, devices, Gmail, Google Drive, Google Maps, Google Photos, Google Play, Search, and YouTube. It is also involved in the sale of apps and in-app purchases and digital content in the Google Play and YouTube; and devices, as well as the provision of YouTube consumer subscription services, such as YouTube TV, YouTube Music and Premium, NFL Sunday Ticket, and Google One. The Google Cloud segment provides consumption-based fees and subscriptions for AI solutions, including AI infrastructure, Vertex AI platform, and Gemini for Google Cloud. It also provides cybersecurity, and data and analytics services; Google Workspace that include cloud-based communication and collaboration tools for enterprises, such as Calendar, Gmail, Docs, Drive, and Meet; and other services for enterprise customers. The Other Bets segment sells healthcare-related and internet services. Alphabet Inc. was incorporated in 1998 and is headquartered in Mountain View, California.",
-      "fullTimeEmployees": 190167,
+      "longBusinessSummary": "Alphabet Inc. offers various products and platforms in the United States, Europe, the Middle East, Africa, the Asia-Pacific, Canada, and Latin America. It operates through Google Services, Google Cloud, and Other Bets segments. The Google Services segment provides products and services, including ads, Android, Chrome, devices, Gmail, Google Drive, Google Maps, Google Photos, Google Play, Search, and YouTube. It is also involved in the sale of apps and in-app purchases and digital content in Google Play and YouTube; and devices, as well as the provision of YouTube consumer subscription services, such as YouTube TV, YouTube Music and Premium, NFL Sunday Ticket, and Google One. The Google Cloud segment offers consumption-based fees and subscriptions for AI solutions, including AI infrastructure, Vertex AI platform, and Gemini enterprise. It also provides cybersecurity, and data and analytics services; Google Workspace that include cloud-based communication and collaboration tools for enterprises, such as Calendar, Gmail, Docs, Drive, and Meet; and other enterprise services. The Other Bets segment sells transportation and internet services. Alphabet Inc. was incorporated in 1998 and is headquartered in Mountain View, California.",
+      "fullTimeEmployees": 190820,
       "website": "https://abc.xyz",
       "shortName": "Alphabet Inc.",
       "longName": "Alphabet Inc."
     },
     "fundamentals": {
       "ttmEps": 10.81,
-      "ttmPe": 28.84,
-      "marketCap": 3771360720000,
-      "psRatio": 9.36,
-      "pbRatio": 9.08
+      "ttmPe": 25.38,
+      "marketCap": 3318690980000,
+      "psRatio": 8.24,
+      "pbRatio": 7.99
     },
     "profitability": {
       "roe": 8.59,
@@ -5399,177 +5405,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.569999999999999,
-      "costOfEquity": 13.780000000000001,
+      "wacc": 13.780000000000001,
+      "costOfEquity": 14.02,
       "costOfDebt": 0.5,
       "taxRate": 12,
-      "beta": 1.1028,
-      "marketCap": 3771360720000
+      "beta": 1.1363,
+      "marketCap": 3318690980000
     },
     "beta": {
-      "beta5y": 1.1028
+      "beta5y": 1.1363
     },
     "price": [
-      {
-        "date": "2025-02-27",
-        "open": 173.99,
-        "high": 174.56,
-        "low": 167.94,
-        "close": 168.5,
-        "volume": 39991000
-      },
-      {
-        "date": "2025-02-28",
-        "open": 168.68,
-        "high": 170.61,
-        "low": 166.77,
-        "close": 170.28,
-        "volume": 48130600
-      },
-      {
-        "date": "2025-03-03",
-        "open": 171.93,
-        "high": 173.37,
-        "low": 165.93,
-        "close": 167.01,
-        "volume": 40770500
-      },
-      {
-        "date": "2025-03-04",
-        "open": 166.24,
-        "high": 173.29,
-        "low": 165.8,
-        "close": 170.92,
-        "volume": 45388000
-      },
-      {
-        "date": "2025-03-05",
-        "open": 170.52,
-        "high": 173.78,
-        "low": 169.06,
-        "close": 173.02,
-        "volume": 30954900
-      },
-      {
-        "date": "2025-03-06",
-        "open": 170.53,
-        "high": 174.81,
-        "low": 170.5,
-        "close": 172.35,
-        "volume": 28302000
-      },
-      {
-        "date": "2025-03-07",
-        "open": 171.26,
-        "high": 174.97,
-        "low": 170.27,
-        "close": 173.86,
-        "volume": 27385800
-      },
-      {
-        "date": "2025-03-10",
-        "open": 168.26,
-        "high": 168.46,
-        "low": 163.69,
-        "close": 165.87,
-        "volume": 43604000
-      },
-      {
-        "date": "2025-03-11",
-        "open": 164.91,
-        "high": 166.75,
-        "low": 161.37,
-        "close": 164.04,
-        "volume": 39587400
-      },
-      {
-        "date": "2025-03-12",
-        "open": 166.58,
-        "high": 167.64,
-        "low": 163.53,
-        "close": 167.11,
-        "volume": 28372400
-      },
-      {
-        "date": "2025-03-13",
-        "open": 166.04,
-        "high": 166.13,
-        "low": 162.11,
-        "close": 162.76,
-        "volume": 31756200
-      },
-      {
-        "date": "2025-03-14",
-        "open": 163.27,
-        "high": 166.49,
-        "low": 162.45,
-        "close": 165.49,
-        "volume": 31995900
-      },
-      {
-        "date": "2025-03-17",
-        "open": 165.03,
-        "high": 166.3,
-        "low": 163.67,
-        "close": 164.29,
-        "volume": 31184300
-      },
-      {
-        "date": "2025-03-18",
-        "open": 163.68,
-        "high": 164.25,
-        "low": 156.72,
-        "close": 160.67,
-        "volume": 42074800
-      },
-      {
-        "date": "2025-03-19",
-        "open": 161.76,
-        "high": 165.87,
-        "low": 161,
-        "close": 163.89,
-        "volume": 34275600
-      },
-      {
-        "date": "2025-03-20",
-        "open": 161.57,
-        "high": 164.89,
-        "low": 160.96,
-        "close": 162.8,
-        "volume": 28138500
-      },
-      {
-        "date": "2025-03-21",
-        "open": 161.21,
-        "high": 164.24,
-        "low": 160.89,
-        "close": 163.99,
-        "volume": 36625800
-      },
-      {
-        "date": "2025-03-24",
-        "open": 167.07,
-        "high": 168.32,
-        "low": 165.14,
-        "close": 167.68,
-        "volume": 30879100
-      },
-      {
-        "date": "2025-03-25",
-        "open": 168.98,
-        "high": 170.63,
-        "low": 168.32,
-        "close": 170.56,
-        "volume": 24174400
-      },
-      {
-        "date": "2025-03-26",
-        "open": 169,
-        "high": 169.61,
-        "low": 164.84,
-        "close": 165.06,
-        "volume": 28901600
-      },
       {
         "date": "2025-03-27",
         "open": 164.63,
@@ -7424,7 +7270,167 @@
         "high": 312.37,
         "low": 303.8,
         "close": 311.76,
-        "volume": 44568300
+        "volume": 44640600
+      },
+      {
+        "date": "2026-03-02",
+        "open": 303.23,
+        "high": 308.49,
+        "low": 301.3,
+        "close": 306.52,
+        "volume": 34790200
+      },
+      {
+        "date": "2026-03-03",
+        "open": 298.59,
+        "high": 303.94,
+        "low": 296.71,
+        "close": 303.58,
+        "volume": 35497000
+      },
+      {
+        "date": "2026-03-04",
+        "open": 302.89,
+        "high": 305.47,
+        "low": 300.75,
+        "close": 303.13,
+        "volume": 29536200
+      },
+      {
+        "date": "2026-03-05",
+        "open": 303.04,
+        "high": 303.3,
+        "low": 297.99,
+        "close": 300.88,
+        "volume": 35752300
+      },
+      {
+        "date": "2026-03-06",
+        "open": 296.09,
+        "high": 300.53,
+        "low": 295.18,
+        "close": 298.52,
+        "volume": 25576900
+      },
+      {
+        "date": "2026-03-09",
+        "open": 294.36,
+        "high": 306.8,
+        "low": 294.08,
+        "close": 306.36,
+        "volume": 29312100
+      },
+      {
+        "date": "2026-03-10",
+        "open": 306.17,
+        "high": 309.51,
+        "low": 305.57,
+        "close": 307.04,
+        "volume": 23239700
+      },
+      {
+        "date": "2026-03-11",
+        "open": 306.75,
+        "high": 311.42,
+        "low": 305.92,
+        "close": 308.7,
+        "volume": 24125700
+      },
+      {
+        "date": "2026-03-12",
+        "open": 306.82,
+        "high": 308.94,
+        "low": 301.03,
+        "close": 303.55,
+        "volume": 24928300
+      },
+      {
+        "date": "2026-03-13",
+        "open": 307.01,
+        "high": 307.69,
+        "low": 300.44,
+        "close": 302.28,
+        "volume": 23693100
+      },
+      {
+        "date": "2026-03-16",
+        "open": 304.35,
+        "high": 306.49,
+        "low": 303.02,
+        "close": 305.56,
+        "volume": 23519700
+      },
+      {
+        "date": "2026-03-17",
+        "open": 305.86,
+        "high": 311.42,
+        "low": 305.5,
+        "close": 310.92,
+        "volume": 21955200
+      },
+      {
+        "date": "2026-03-18",
+        "open": 309.27,
+        "high": 312.47,
+        "low": 306.93,
+        "close": 307.69,
+        "volume": 20009800
+      },
+      {
+        "date": "2026-03-19",
+        "open": 304.01,
+        "high": 308.06,
+        "low": 302.35,
+        "close": 307.13,
+        "volume": 25075800
+      },
+      {
+        "date": "2026-03-20",
+        "open": 305.46,
+        "high": 306,
+        "low": 298.27,
+        "close": 301,
+        "volume": 44364100
+      },
+      {
+        "date": "2026-03-23",
+        "open": 302.11,
+        "high": 305.98,
+        "low": 300.93,
+        "close": 302.06,
+        "volume": 29326900
+      },
+      {
+        "date": "2026-03-24",
+        "open": 299.2,
+        "high": 299.92,
+        "low": 290.33,
+        "close": 290.44,
+        "volume": 36864300
+      },
+      {
+        "date": "2026-03-25",
+        "open": 293.44,
+        "high": 296,
+        "low": 289.24,
+        "close": 290.93,
+        "volume": 29460700
+      },
+      {
+        "date": "2026-03-26",
+        "open": 287.91,
+        "high": 287.95,
+        "low": 278.5,
+        "close": 280.92,
+        "volume": 39080600
+      },
+      {
+        "date": "2026-03-27",
+        "open": 277.28,
+        "high": 279.37,
+        "low": 273.95,
+        "close": 274.34,
+        "volume": 35815200
       }
     ],
     "news": [
@@ -7437,6 +7443,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
+        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
         "title": "3 Top Quantum Computing Stocks to Buy in 2025",
         "publisher": "Motley Fool",
@@ -7445,11 +7459,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
         "type": "STORY"
       },
       {
@@ -7461,19 +7475,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
-        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
-        "publisher": "Zacks",
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
-        "title": "Top Research Reports for Alphabet, IBM & RTX",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -7493,69 +7499,69 @@
         "type": "STORY"
       },
       {
-        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
-        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
-        "publisher": "Motley Fool",
+        "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
+        "title": "Magnificent 7 May Need to Make Room for Broadcom",
+        "publisher": "The Daily Upside",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
+        "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
         "type": "STORY"
       },
       {
-        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
-        "title": "3 Growth Stocks to Buy and Forget About",
+        "uuid": "4d96e147-0572-3919-abe2-9e78a89c6f88",
+        "title": "Got $5,000? 3 Tech Stocks to Buy and Hold for the Long Term.",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
+        "link": "https://finance.yahoo.com/m/4d96e147-0572-3919-abe2-9e78a89c6f88/got-%245%2C000%3F-3-tech-stocks-to.html",
         "type": "STORY"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.84,
-        "industryAvg": 28.68
+        "value": 25.38,
+        "industryAvg": 25.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.36,
-        "industryAvg": 8.44
+        "value": 8.24,
+        "industryAvg": 7.32
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.08,
-        "industryAvg": 7.78
+        "value": 7.99,
+        "industryAvg": 6.76
       },
       {
         "metric": "ROE",
         "value": 8.59,
-        "industryAvg": 7.59
+        "industryAvg": 7.79
       },
       {
         "metric": "ROA",
         "value": 6.09,
-        "industryAvg": 5.11
+        "industryAvg": 5.24
       },
       {
         "metric": "Gross Margin",
         "value": 59.79,
-        "industryAvg": 62.94
+        "industryAvg": 63
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.93,
-        "industryAvg": 37.55
+        "industryAvg": 38.64
       },
       {
         "metric": "Net Margin",
         "value": 30.270000000000003,
-        "industryAvg": 27.99
+        "industryAvg": 28.64
       }
     ],
     "dcf": {
-      "fairValue": 167.68,
-      "currentPrice": 311.76,
-      "upside": -46.21,
-      "wacc": 13.57,
+      "fairValue": 164.29,
+      "currentPrice": 274.34,
+      "upside": -40.11,
+      "wacc": 13.78,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 31.16,
         "Terminal growth": 3

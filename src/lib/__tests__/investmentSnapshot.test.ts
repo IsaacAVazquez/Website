@@ -99,6 +99,10 @@ describe("buildInvestmentSnapshot", () => {
     expect(snapshot.sections.news).toHaveLength(10);
     expect(snapshot.capabilities.news).toBe(true);
     expect(snapshot.capabilities.price).toBe(true);
+    expect(snapshot.sections.info).toMatchObject({
+      shortName: "Apple Inc.",
+      longName: "Apple Inc.",
+    });
     expect(snapshot.freshness).toEqual({
       snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
       sections: {

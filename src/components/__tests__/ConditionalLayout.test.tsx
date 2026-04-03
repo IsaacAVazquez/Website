@@ -39,6 +39,7 @@ describe("ConditionalLayout", () => {
     { pathname: "/", expectedVariant: "compact" },
     { pathname: "/contact", expectedVariant: "compact" },
     { pathname: "/portfolio", expectedVariant: "full" },
+    { pathname: "/fintech-tools/budget-planner", expectedVariant: "full" },
     { pathname: "/writing/2026-march-madness-bracket-analysis", expectedVariant: "full" },
   ])("uses the correct footer variant for $pathname", ({ pathname, expectedVariant }) => {
     mockUsePathname.mockReturnValue(pathname);

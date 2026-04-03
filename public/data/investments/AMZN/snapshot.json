@@ -1,6 +1,12 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-03-07T08:09:58.760793+00:00",
+  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "freshness": {
+    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "sections": {
+      "price": "2026-03-27"
+    }
+  },
   "source": "prefetched",
   "capabilities": {
     "price": true,
@@ -26,18 +32,18 @@
       "country": "United States",
       "industry": "Internet Retail",
       "sector": "Consumer Cyclical",
-      "longBusinessSummary": "Amazon.com, Inc. engages in the retail sale of consumer products, advertising, and subscriptions service through online and physical stores in North America and internationally. The company operates through three segments: North America, International, and Amazon Web Services (AWS). It also manufactures and sells electronic devices, including Kindle, fire tablets, fire TVs, echo, ring, blink, and eero; and develops and produces media content. In addition, the company offers programs that enable sellers to sell their products in its stores; and programs that allow authors, independent publishers, musicians, filmmakers, Twitch streamers, skill and app developers, and others to publish and sell content. Further, it provides compute, storage, database, analytics, machine learning, and other services, as well as advertising services through programs, such as sponsored ads, display, and video advertising. Additionally, the company offers Amazon Prime, a membership program. The company's products offered through its stores include merchandise and content purchased for resale and products offered by third-party sellers. It also provides AgentCore services, such as AgentCore Runtime, AgentCore Memory, AgentCore Observability, AgentCore Identity, AgentCore Gateway, AgentCore Browser, and AgentCore Code Interpreter. It serves consumers, sellers, developers, enterprises, content creators, advertisers, and employees. Amazon.com, Inc. was incorporated in 1994 and is headquartered in Seattle, Washington.",
-      "fullTimeEmployees": 1578000,
+      "longBusinessSummary": "Amazon.com, Inc. engages in the retail sale of consumer products, advertising, and subscriptions service through online and physical stores in North America and internationally. The company operates through three segments: North America, International, and Amazon Web Services (AWS). It also manufactures and sells electronic devices, including Kindle, fire tablets, fire TVs, echo, ring, blink, and eero; and develops and produces media content. In addition, the company offers programs that enable sellers to sell their products in its stores; and programs that allow authors, independent publishers, musicians, filmmakers, Twitch streamers, skill and app developers, and others to publish and sell content. Further, it provides compute, storage, Artificial intelligence, database, analytics, machine learning, and other services, as well as advertising services through programs, such as sponsored ads, display, and video advertising. Additionally, the company offers Amazon Prime, a membership program. The company's products offered through its stores include merchandise and content purchased for resale and products offered by third-party sellers. It serves consumers, sellers, developers, enterprises, content creators, advertisers, and employees. The company was incorporated in 1994 and is headquartered in Seattle, Washington.",
+      "fullTimeEmployees": 1576000,
       "website": "https://www.amazon.com",
       "shortName": "Amazon.com, Inc.",
       "longName": "Amazon.com, Inc."
     },
     "fundamentals": {
       "ttmEps": 7.17,
-      "ttmPe": 29.29,
-      "marketCap": 2254333389000,
-      "psRatio": 3.14,
-      "pbRatio": 5.48
+      "ttmPe": 27.8,
+      "marketCap": 2139899132206,
+      "psRatio": 2.98,
+      "pbRatio": 5.21
     },
     "profitability": {
       "roe": 5.43,
@@ -4722,177 +4728,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.43,
-      "costOfEquity": 16.45,
+      "wacc": 14.87,
+      "costOfEquity": 15.909999999999998,
       "costOfDebt": 0.44,
       "taxRate": 19,
-      "beta": 1.4028,
-      "marketCap": 2254333389000
+      "beta": 1.3602,
+      "marketCap": 2139899132206
     },
     "beta": {
-      "beta5y": 1.4028
+      "beta5y": 1.3602
     },
     "price": [
-      {
-        "date": "2025-02-27",
-        "open": 218.35,
-        "high": 219.97,
-        "low": 208.37,
-        "close": 208.74,
-        "volume": 40548600
-      },
-      {
-        "date": "2025-02-28",
-        "open": 208.65,
-        "high": 212.62,
-        "low": 206.99,
-        "close": 212.28,
-        "volume": 51771700
-      },
-      {
-        "date": "2025-03-03",
-        "open": 213.35,
-        "high": 214.01,
-        "low": 202.55,
-        "close": 205.02,
-        "volume": 42948400
-      },
-      {
-        "date": "2025-03-04",
-        "open": 200.11,
-        "high": 206.8,
-        "low": 197.43,
-        "close": 203.8,
-        "volume": 60853100
-      },
-      {
-        "date": "2025-03-05",
-        "open": 204.8,
-        "high": 209.98,
-        "low": 203.26,
-        "close": 208.36,
-        "volume": 38610100
-      },
-      {
-        "date": "2025-03-06",
-        "open": 204.4,
-        "high": 205.77,
-        "low": 198.3,
-        "close": 200.7,
-        "volume": 49863800
-      },
-      {
-        "date": "2025-03-07",
-        "open": 199.49,
-        "high": 202.27,
-        "low": 192.53,
-        "close": 199.25,
-        "volume": 59802800
-      },
-      {
-        "date": "2025-03-10",
-        "open": 195.6,
-        "high": 196.73,
-        "low": 190.85,
-        "close": 194.54,
-        "volume": 62350900
-      },
-      {
-        "date": "2025-03-11",
-        "open": 193.9,
-        "high": 200.18,
-        "low": 193.4,
-        "close": 196.59,
-        "volume": 54002900
-      },
-      {
-        "date": "2025-03-12",
-        "open": 200.72,
-        "high": 201.52,
-        "low": 195.29,
-        "close": 198.89,
-        "volume": 43679300
-      },
-      {
-        "date": "2025-03-13",
-        "open": 198.17,
-        "high": 198.88,
-        "low": 191.82,
-        "close": 193.89,
-        "volume": 41270800
-      },
-      {
-        "date": "2025-03-14",
-        "open": 197.41,
-        "high": 198.65,
-        "low": 195.32,
-        "close": 197.95,
-        "volume": 38096700
-      },
-      {
-        "date": "2025-03-17",
-        "open": 198.77,
-        "high": 199,
-        "low": 194.32,
-        "close": 195.74,
-        "volume": 47341800
-      },
-      {
-        "date": "2025-03-18",
-        "open": 192.52,
-        "high": 194,
-        "low": 189.38,
-        "close": 192.82,
-        "volume": 40414900
-      },
-      {
-        "date": "2025-03-19",
-        "open": 193.38,
-        "high": 195.97,
-        "low": 191.96,
-        "close": 195.54,
-        "volume": 39442900
-      },
-      {
-        "date": "2025-03-20",
-        "open": 193.07,
-        "high": 199.32,
-        "low": 192.3,
-        "close": 194.95,
-        "volume": 38921100
-      },
-      {
-        "date": "2025-03-21",
-        "open": 192.9,
-        "high": 196.99,
-        "low": 192.52,
-        "close": 196.21,
-        "volume": 60056900
-      },
-      {
-        "date": "2025-03-24",
-        "open": 200,
-        "high": 203.64,
-        "low": 199.95,
-        "close": 203.26,
-        "volume": 41625400
-      },
-      {
-        "date": "2025-03-25",
-        "open": 203.6,
-        "high": 206.21,
-        "low": 203.22,
-        "close": 205.71,
-        "volume": 31171200
-      },
-      {
-        "date": "2025-03-26",
-        "open": 205.84,
-        "high": 206.01,
-        "low": 199.93,
-        "close": 201.13,
-        "volume": 32855300
-      },
       {
         "date": "2025-03-27",
         "open": 200.89,
@@ -6747,7 +6593,167 @@
         "high": 210.33,
         "low": 205.2,
         "close": 210,
-        "volume": 57230900
+        "volume": 57422800
+      },
+      {
+        "date": "2026-03-02",
+        "open": 204.55,
+        "high": 209.73,
+        "low": 203.46,
+        "close": 208.39,
+        "volume": 46001000
+      },
+      {
+        "date": "2026-03-03",
+        "open": 203.1,
+        "high": 209.18,
+        "low": 202.48,
+        "close": 208.73,
+        "volume": 43184900
+      },
+      {
+        "date": "2026-03-04",
+        "open": 210.47,
+        "high": 217.54,
+        "low": 210.15,
+        "close": 216.82,
+        "volume": 54731100
+      },
+      {
+        "date": "2026-03-05",
+        "open": 215.98,
+        "high": 220.47,
+        "low": 215.59,
+        "close": 218.94,
+        "volume": 60943400
+      },
+      {
+        "date": "2026-03-06",
+        "open": 214.99,
+        "high": 217.32,
+        "low": 212.53,
+        "close": 213.21,
+        "volume": 51152700
+      },
+      {
+        "date": "2026-03-09",
+        "open": 210.45,
+        "high": 213.82,
+        "low": 207.11,
+        "close": 213.49,
+        "volume": 54642900
+      },
+      {
+        "date": "2026-03-10",
+        "open": 214.19,
+        "high": 215.65,
+        "low": 212.43,
+        "close": 214.33,
+        "volume": 35678800
+      },
+      {
+        "date": "2026-03-11",
+        "open": 215.71,
+        "high": 217,
+        "low": 211.35,
+        "close": 212.65,
+        "volume": 34199300
+      },
+      {
+        "date": "2026-03-12",
+        "open": 210.39,
+        "high": 211.71,
+        "low": 208.15,
+        "close": 209.53,
+        "volume": 44349500
+      },
+      {
+        "date": "2026-03-13",
+        "open": 209.61,
+        "high": 210.56,
+        "low": 206.22,
+        "close": 207.67,
+        "volume": 35662100
+      },
+      {
+        "date": "2026-03-16",
+        "open": 208.35,
+        "high": 212.72,
+        "low": 207.45,
+        "close": 211.74,
+        "volume": 42209300
+      },
+      {
+        "date": "2026-03-17",
+        "open": 212.82,
+        "high": 215.7,
+        "low": 212.43,
+        "close": 215.2,
+        "volume": 44969900
+      },
+      {
+        "date": "2026-03-18",
+        "open": 213.93,
+        "high": 215.14,
+        "low": 208.83,
+        "close": 209.87,
+        "volume": 37846600
+      },
+      {
+        "date": "2026-03-19",
+        "open": 207.06,
+        "high": 209.12,
+        "low": 206.05,
+        "close": 208.76,
+        "volume": 36440600
+      },
+      {
+        "date": "2026-03-20",
+        "open": 207.4,
+        "high": 207.54,
+        "low": 204.32,
+        "close": 205.37,
+        "volume": 63694600
+      },
+      {
+        "date": "2026-03-23",
+        "open": 209.79,
+        "high": 212.8,
+        "low": 209.51,
+        "close": 210.14,
+        "volume": 44277400
+      },
+      {
+        "date": "2026-03-24",
+        "open": 207.95,
+        "high": 209.35,
+        "low": 206.64,
+        "close": 207.24,
+        "volume": 35351400
+      },
+      {
+        "date": "2026-03-25",
+        "open": 211.56,
+        "high": 213.07,
+        "low": 209.9,
+        "close": 211.71,
+        "volume": 36388800
+      },
+      {
+        "date": "2026-03-26",
+        "open": 210.61,
+        "high": 212.89,
+        "low": 207.12,
+        "close": 207.54,
+        "volume": 46746000
+      },
+      {
+        "date": "2026-03-27",
+        "open": 206.46,
+        "high": 206.6,
+        "low": 199.14,
+        "close": 199.34,
+        "volume": 55855900
       }
     ],
     "news": [
@@ -6760,12 +6766,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
-        "title": "Game On: Discord reportedly in talks for IPO in 2025",
-        "publisher": "TipRanks",
+        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
+        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
@@ -6776,12 +6782,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
-        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
+        "title": "Game On: Discord reportedly in talks for IPO in 2025",
+        "publisher": "TipRanks",
         "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
+        "type": "STORY"
       },
       {
         "uuid": "891b2f8b-8934-31f4-a960-9cf39bc9c7b0",
@@ -6833,10 +6839,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 61.34,
-      "currentPrice": 210,
-      "upside": -70.79,
-      "wacc": 15.43,
+      "fairValue": 64.24,
+      "currentPrice": 199.34,
+      "upside": -67.77,
+      "wacc": 14.87,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 4.84,
         "Terminal growth": 3

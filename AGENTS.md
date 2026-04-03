@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-03-30
+**Last updated:** 2026-04-03
 
 ---
 
@@ -14,6 +14,7 @@ This repo is a Next.js 16 personal site with four live product surfaces:
 - writing and long-form content
 - fantasy football analytics
 - investments and seasonal analysis experiments
+- standalone sports data dashboards like the Premier League tool
 
 Primary live routes:
 
@@ -22,6 +23,7 @@ Primary live routes:
 - `/accessibility`
 - `/portfolio` and `/portfolio/[slug]`
 - `/investments`
+- `/premier-league`
 - `/writing` and `/writing/[slug]`
 - `/resume`
 - `/contact`
@@ -63,6 +65,7 @@ Self-shell routes currently include:
 - `/about`
 - `/contact`
 - `/investments`
+- `/premier-league`
 - `/march-madness-2026`
 - `/portfolio`
 - `/writing`

@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -20,6 +20,7 @@ Fast route reference for the current app.
 | `/writing` | `src/app/writing/page.tsx` | Async server page |
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Async server page |
 | `/investments` | `src/app/investments/page.tsx` | Server page -> `InvestmentsClient` |
+| `/premier-league` | `src/app/premier-league/page.tsx` | Server page -> `PremierLeagueClient` |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Async server page -> `MarchMadnessClient` |
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Server page -> fantasy client UI |
 | `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Async server page |
@@ -40,6 +41,7 @@ There is no live `/admin/analytics` route in the current app tree.
   - `/about`
   - `/contact`
   - `/investments`
+  - `/premier-league`
   - `/march-madness-2026`
   - `/portfolio`
   - `/writing`
@@ -73,6 +75,11 @@ Footer behavior:
 
 - server entry provides metadata, breadcrumb/article/FAQ/sports structured data
 - client route supports deep-linked state through query params
+
+### `/premier-league`
+
+- server entry provides metadata plus breadcrumb and sports-application structured data
+- client route supports deep-linked `overview`, `fixtures`, and `team` views through query params
 
 ### `/search`
 

@@ -1,6 +1,12 @@
 {
   "symbol": "MSFT",
-  "lastUpdated": "2026-03-07T08:09:58.760793+00:00",
+  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "freshness": {
+    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "sections": {
+      "price": "2026-03-27"
+    }
+  },
   "source": "prefetched",
   "capabilities": {
     "price": true,
@@ -26,7 +32,7 @@
       "country": "United States",
       "industry": "Software-Infrastructure",
       "sector": "Technology",
-      "longBusinessSummary": "Microsoft Corporation develops and supports software, services, devices, and solutions worldwide. The company's Productivity and Business Processes segment offers Microsoft 365 Commercial, Enterprise Mobility + Security, Windows Commercial, Power BI, Exchange, SharePoint, Microsoft Teams, Security and Compliance, and Copilot; Microsoft 365 Commercial products, such as Windows Commercial on-premises and Office licensed services; Microsoft 365 Consumer products and cloud services, such as Microsoft 365 Consumer subscriptions, Office licensed on-premises, and other consumer services; LinkedIn; Dynamics products and cloud services, such as Dynamics 365, cloud-based applications, and on-premises ERP and CRM applications. Its Intelligent Cloud segment provides Server products and cloud services, such as Azure and other cloud services, GitHub, Nuance Healthcare, virtual desktop offerings, and other cloud services; Server products, including SQL and Windows Server, Visual Studio and System Center related Client Access Licenses, and other on-premises offerings; Enterprise and partner services, including Enterprise Support and Nuance professional Services, Industry Solutions, Microsoft Partner Network, and Learning Experience. The company's Personal Computing segment provides Windows and Devices, such as Windows OEM licensing and Devices and Surface and PC accessories; Gaming services and solutions, such as Xbox hardware, content, and services, first- and third-party content Xbox Game Pass, subscriptions, and Cloud Gaming, advertising, and other cloud services; search and news advertising services, such as Bing and Copilot, Microsoft News and Edge, and third-party affiliates. It sells its products through OEMs, distributors, and resellers; and online and retail stores. The company has a collaboration with Richtech Robotics Inc. for the development and deployment of agentic artificial intelligence capabilities in real-world robotic systems. The company was founded in 1975 and is headquartered in Redmond, Washington.",
+      "longBusinessSummary": "Microsoft Corporation develops and supports software, services, devices, and solutions worldwide. The Productivity and Business Processes segment offers Microsoft 365 commercial, enterprise mobility + security, windows commercial, power BI, exchange, sharepoint, Microsoft teams, security and compliance, and copilot; Microsoft 365 commercial products, such as Windows commercial on-premises and office licensed services; Microsoft 365 consumer products and cloud services, including Microsoft 365 consumer subscriptions, office licensed on-premises, and other consumer services; LinkedIn; dynamics products and cloud services, such as dynamics 365, cloud-based applications, and on-premises ERP and CRM applications. Its Intelligent Cloud segment provides Server products and cloud services comprising Azure and other cloud services, GitHub, Nuance Healthcare, virtual desktop offerings, and other cloud services; server products, including SQL and windows server, visual studio and system center related client access licenses, and other on-premises offerings; enterprise and partner services, such as enterprise support and nuance professional services, industry solutions, Microsoft partner network, and learning experience. The Personal Computing segment provides windows and devices, such as Windows OEM licensing and devices and surface and PC accessories; gaming services and solutions, such as Xbox hardware, content, and services, first- and third-party content Xbox game pass, subscriptions, and cloud gaming, advertising, and other cloud services; search and news advertising services that includes Bing and Copilot, Microsoft News and Edge, and third-party affiliates. It sells its products through OEMs, distributors, and resellers; and online and retail stores. The company was founded in 1975 and is headquartered in Redmond, Washington.",
       "fullTimeEmployees": 228000,
       "website": "https://www.microsoft.com",
       "shortName": "Microsoft Corporation",
@@ -34,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 15.98,
-      "ttmPe": 24.58,
-      "marketCap": 2916341572734,
-      "psRatio": 9.55,
-      "pbRatio": 7.46
+      "ttmPe": 22.33,
+      "marketCap": 2649241694007,
+      "psRatio": 8.67,
+      "pbRatio": 6.78
     },
     "profitability": {
       "roe": 10.2,
@@ -5333,177 +5339,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.43,
-      "costOfEquity": 13.68,
+      "wacc": 13.420000000000002,
+      "costOfEquity": 13.69,
       "costOfDebt": 1.28,
       "taxRate": 20,
-      "beta": 1.0914,
-      "marketCap": 2916341572734
+      "beta": 1.0975,
+      "marketCap": 2649241694007
     },
     "beta": {
-      "beta5y": 1.0914
+      "beta5y": 1.0975
     },
     "price": [
-      {
-        "date": "2025-02-27",
-        "open": 401.27,
-        "high": 405.74,
-        "low": 392.17,
-        "close": 392.53,
-        "volume": 21127400
-      },
-      {
-        "date": "2025-02-28",
-        "open": 392.66,
-        "high": 397.63,
-        "low": 386.57,
-        "close": 396.99,
-        "volume": 32845700
-      },
-      {
-        "date": "2025-03-03",
-        "open": 398.82,
-        "high": 398.82,
-        "low": 386.16,
-        "close": 388.49,
-        "volume": 23007700
-      },
-      {
-        "date": "2025-03-04",
-        "open": 383.4,
-        "high": 392.58,
-        "low": 381,
-        "close": 388.61,
-        "volume": 29342900
-      },
-      {
-        "date": "2025-03-05",
-        "open": 389.34,
-        "high": 401.67,
-        "low": 388.81,
-        "close": 401.02,
-        "volume": 23433100
-      },
-      {
-        "date": "2025-03-06",
-        "open": 394.28,
-        "high": 402.15,
-        "low": 392.68,
-        "close": 396.89,
-        "volume": 23304600
-      },
-      {
-        "date": "2025-03-07",
-        "open": 392.32,
-        "high": 394.8,
-        "low": 385.54,
-        "close": 393.31,
-        "volume": 22034100
-      },
-      {
-        "date": "2025-03-10",
-        "open": 385.84,
-        "high": 386.4,
-        "low": 377.22,
-        "close": 380.16,
-        "volume": 32840100
-      },
-      {
-        "date": "2025-03-11",
-        "open": 379,
-        "high": 386,
-        "low": 376.91,
-        "close": 380.45,
-        "volume": 30380200
-      },
-      {
-        "date": "2025-03-12",
-        "open": 382.95,
-        "high": 385.22,
-        "low": 378.95,
-        "close": 383.27,
-        "volume": 24253600
-      },
-      {
-        "date": "2025-03-13",
-        "open": 383.16,
-        "high": 385.32,
-        "low": 377.45,
-        "close": 378.77,
-        "volume": 20473000
-      },
-      {
-        "date": "2025-03-14",
-        "open": 379.78,
-        "high": 390.23,
-        "low": 379.51,
-        "close": 388.56,
-        "volume": 19952800
-      },
-      {
-        "date": "2025-03-17",
-        "open": 386.7,
-        "high": 392.71,
-        "low": 385.57,
-        "close": 388.7,
-        "volume": 22474300
-      },
-      {
-        "date": "2025-03-18",
-        "open": 387.07,
-        "high": 387.37,
-        "low": 381.1,
-        "close": 383.52,
-        "volume": 19486900
-      },
-      {
-        "date": "2025-03-19",
-        "open": 385.53,
-        "high": 389.68,
-        "low": 384,
-        "close": 387.82,
-        "volume": 19185500
-      },
-      {
-        "date": "2025-03-20",
-        "open": 385.74,
-        "high": 391.79,
-        "low": 383.28,
-        "close": 386.84,
-        "volume": 18470500
-      },
-      {
-        "date": "2025-03-21",
-        "open": 383.22,
-        "high": 391.74,
-        "low": 382.8,
-        "close": 391.26,
-        "volume": 39675900
-      },
-      {
-        "date": "2025-03-24",
-        "open": 395.4,
-        "high": 395.4,
-        "low": 389.81,
-        "close": 393.08,
-        "volume": 21004500
-      },
-      {
-        "date": "2025-03-25",
-        "open": 393.92,
-        "high": 396.36,
-        "low": 392.64,
-        "close": 395.16,
-        "volume": 15775000
-      },
-      {
-        "date": "2025-03-26",
-        "open": 395,
-        "high": 395.31,
-        "low": 388.57,
-        "close": 389.97,
-        "volume": 16108400
-      },
       {
         "date": "2025-03-27",
         "open": 390.13,
@@ -7358,7 +7204,167 @@
         "high": 396.82,
         "low": 389.88,
         "close": 392.74,
-        "volume": 51276300
+        "volume": 51367200
+      },
+      {
+        "date": "2026-03-02",
+        "open": 392.86,
+        "high": 401.19,
+        "low": 390.63,
+        "close": 398.55,
+        "volume": 35474900
+      },
+      {
+        "date": "2026-03-03",
+        "open": 393.14,
+        "high": 406.7,
+        "low": 392.67,
+        "close": 403.93,
+        "volume": 38199200
+      },
+      {
+        "date": "2026-03-04",
+        "open": 401.27,
+        "high": 411.03,
+        "low": 400.31,
+        "close": 405.2,
+        "volume": 35808000
+      },
+      {
+        "date": "2026-03-05",
+        "open": 404.42,
+        "high": 411.61,
+        "low": 404.4,
+        "close": 410.68,
+        "volume": 39001300
+      },
+      {
+        "date": "2026-03-06",
+        "open": 409.2,
+        "high": 413.05,
+        "low": 408.51,
+        "close": 408.96,
+        "volume": 31123900
+      },
+      {
+        "date": "2026-03-09",
+        "open": 404.92,
+        "high": 410.21,
+        "low": 403.5,
+        "close": 409.41,
+        "volume": 30131900
+      },
+      {
+        "date": "2026-03-10",
+        "open": 410.03,
+        "high": 410.2,
+        "low": 402.93,
+        "close": 405.76,
+        "volume": 31706400
+      },
+      {
+        "date": "2026-03-11",
+        "open": 405.57,
+        "high": 409.01,
+        "low": 401.59,
+        "close": 404.88,
+        "volume": 25512100
+      },
+      {
+        "date": "2026-03-12",
+        "open": 404.63,
+        "high": 406.12,
+        "low": 401.71,
+        "close": 401.86,
+        "volume": 27263900
+      },
+      {
+        "date": "2026-03-13",
+        "open": 401,
+        "high": 404.8,
+        "low": 394.25,
+        "close": 395.55,
+        "volume": 26848000
+      },
+      {
+        "date": "2026-03-16",
+        "open": 398.07,
+        "high": 400.63,
+        "low": 394.79,
+        "close": 399.95,
+        "volume": 27733700
+      },
+      {
+        "date": "2026-03-17",
+        "open": 400.27,
+        "high": 404.4,
+        "low": 397.75,
+        "close": 399.41,
+        "volume": 26228300
+      },
+      {
+        "date": "2026-03-18",
+        "open": 397.13,
+        "high": 398,
+        "low": 391,
+        "close": 391.79,
+        "volume": 25908500
+      },
+      {
+        "date": "2026-03-19",
+        "open": 390.1,
+        "high": 392.49,
+        "low": 387.06,
+        "close": 389.02,
+        "volume": 25138800
+      },
+      {
+        "date": "2026-03-20",
+        "open": 386.79,
+        "high": 387,
+        "low": 380.12,
+        "close": 381.87,
+        "volume": 50853200
+      },
+      {
+        "date": "2026-03-23",
+        "open": 383.9,
+        "high": 387.21,
+        "low": 381.68,
+        "close": 383,
+        "volume": 29680100
+      },
+      {
+        "date": "2026-03-24",
+        "open": 382.36,
+        "high": 382.47,
+        "low": 371.85,
+        "close": 372.74,
+        "volume": 42733600
+      },
+      {
+        "date": "2026-03-25",
+        "open": 376.92,
+        "high": 377.06,
+        "low": 369.63,
+        "close": 371.04,
+        "volume": 31181200
+      },
+      {
+        "date": "2026-03-26",
+        "open": 370.82,
+        "high": 374.72,
+        "low": 365.19,
+        "close": 365.97,
+        "volume": 36836600
+      },
+      {
+        "date": "2026-03-27",
+        "open": 361.9,
+        "high": 362.45,
+        "low": 356.51,
+        "close": 356.77,
+        "volume": 37763600
       }
     ],
     "news": [
@@ -7395,19 +7401,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
         "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
         "type": "STORY"
       },
       {
@@ -7446,55 +7452,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.58,
-        "industryAvg": 30.5
+        "value": 22.33,
+        "industryAvg": 28.96
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.55,
-        "industryAvg": 5.48
+        "value": 8.67,
+        "industryAvg": 5.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.46,
-        "industryAvg": 7.46
+        "value": 6.78,
+        "industryAvg": 6.8
       },
       {
         "metric": "ROE",
         "value": 10.2,
-        "industryAvg": 8.28
+        "industryAvg": 7.48
       },
       {
         "metric": "ROA",
         "value": 5.91,
-        "industryAvg": 3.55
+        "industryAvg": 3.1300000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 68.04,
-        "industryAvg": 50.99
+        "industryAvg": 45.95
       },
       {
         "metric": "EBITDA Margin",
         "value": 71.59,
-        "industryAvg": 39.61
+        "industryAvg": 34.46
       },
       {
         "metric": "Net Margin",
         "value": 47.32,
-        "industryAvg": 24.5
+        "industryAvg": 20.03
       }
     ],
     "dcf": {
-      "fairValue": 332.44,
-      "currentPrice": 392.74,
-      "upside": -15.35,
-      "wacc": 13.43,
+      "fairValue": 332.78,
+      "currentPrice": 356.77,
+      "upside": -6.73,
+      "wacc": 13.42,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3
       },
-      "recommendation": "Sell"
+      "recommendation": "Hold"
     }
   }
 }

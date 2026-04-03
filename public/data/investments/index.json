@@ -6,73 +6,283 @@
     "AMZN",
     "NVDA",
     "META",
-    "TSLA",
+    "AVGO",
+    "ORCL",
+    "CRM",
+    "ADBE",
     "BRK-B",
     "JPM",
-    "V"
+    "V",
+    "MA",
+    "BAC",
+    "GS",
+    "UNH",
+    "JNJ",
+    "LLY",
+    "PFE",
+    "ABBV",
+    "TSLA",
+    "WMT",
+    "PG",
+    "COST",
+    "KO",
+    "HD",
+    "MCD",
+    "NKE",
+    "XOM",
+    "CVX",
+    "CAT",
+    "UNP",
+    "GE",
+    "BA",
+    "NFLX",
+    "DIS",
+    "NEE",
+    "AMD",
+    "INTC"
   ],
   "failed": [],
-  "lastUpdated": "2026-03-07T08:09:58.760793+00:00",
+  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
   "entries": [
     {
       "symbol": "AAPL",
       "shortName": "Apple Inc.",
       "longName": "Apple Inc.",
-      "searchText": "aapl apple inc"
+      "searchText": "aapl apple inc. apple inc."
     },
     {
       "symbol": "MSFT",
       "shortName": "Microsoft Corporation",
       "longName": "Microsoft Corporation",
-      "searchText": "msft microsoft corporation"
+      "searchText": "msft microsoft corporation microsoft corporation"
     },
     {
       "symbol": "GOOGL",
       "shortName": "Alphabet Inc.",
       "longName": "Alphabet Inc.",
-      "searchText": "googl alphabet inc google"
+      "searchText": "googl alphabet inc. alphabet inc."
     },
     {
       "symbol": "AMZN",
       "shortName": "Amazon.com, Inc.",
       "longName": "Amazon.com, Inc.",
-      "searchText": "amzn amazon amazon.com inc"
+      "searchText": "amzn amazon.com, inc. amazon.com, inc."
     },
     {
       "symbol": "NVDA",
       "shortName": "NVIDIA Corporation",
       "longName": "NVIDIA Corporation",
-      "searchText": "nvda nvidia corporation"
+      "searchText": "nvda nvidia corporation nvidia corporation"
     },
     {
       "symbol": "META",
       "shortName": "Meta Platforms, Inc.",
       "longName": "Meta Platforms, Inc.",
-      "searchText": "meta meta platforms inc facebook"
+      "searchText": "meta meta platforms, inc. meta platforms, inc."
     },
     {
-      "symbol": "TSLA",
-      "shortName": "Tesla, Inc.",
-      "longName": "Tesla, Inc.",
-      "searchText": "tsla tesla inc"
+      "symbol": "AVGO",
+      "shortName": "Broadcom Inc.",
+      "longName": "Broadcom Inc.",
+      "searchText": "avgo broadcom inc. broadcom inc."
+    },
+    {
+      "symbol": "ORCL",
+      "shortName": "Oracle Corporation",
+      "longName": "Oracle Corporation",
+      "searchText": "orcl oracle corporation oracle corporation"
+    },
+    {
+      "symbol": "CRM",
+      "shortName": "Salesforce, Inc.",
+      "longName": "Salesforce, Inc.",
+      "searchText": "crm salesforce, inc. salesforce, inc."
+    },
+    {
+      "symbol": "ADBE",
+      "shortName": "Adobe Inc.",
+      "longName": "Adobe Inc.",
+      "searchText": "adbe adobe inc. adobe inc."
     },
     {
       "symbol": "BRK-B",
       "shortName": "Berkshire Hathaway Inc.",
       "longName": "Berkshire Hathaway Inc.",
-      "searchText": "brk-b berkshire hathaway inc berkshire"
+      "searchText": "brk-b berkshire hathaway inc. berkshire hathaway inc."
     },
     {
       "symbol": "JPM",
       "shortName": "JPMorgan Chase & Co.",
       "longName": "JPMorgan Chase & Co.",
-      "searchText": "jpm jpmorgan chase co"
+      "searchText": "jpm jpmorgan chase & co. jpmorgan chase & co."
     },
     {
       "symbol": "V",
       "shortName": "Visa Inc.",
       "longName": "Visa Inc.",
-      "searchText": "v visa inc"
+      "searchText": "v visa inc. visa inc."
+    },
+    {
+      "symbol": "MA",
+      "shortName": "Mastercard Incorporated",
+      "longName": "Mastercard Incorporated",
+      "searchText": "ma mastercard incorporated mastercard incorporated"
+    },
+    {
+      "symbol": "BAC",
+      "shortName": "Bank of America Corporation",
+      "longName": "Bank of America Corporation",
+      "searchText": "bac bank of america corporation bank of america corporation"
+    },
+    {
+      "symbol": "GS",
+      "shortName": "Goldman Sachs Group, Inc.",
+      "longName": "Goldman Sachs Group, Inc.",
+      "searchText": "gs goldman sachs group, inc. goldman sachs group, inc."
+    },
+    {
+      "symbol": "UNH",
+      "shortName": "UnitedHealth Group Incorporated",
+      "longName": "UnitedHealth Group Incorporated",
+      "searchText": "unh unitedhealth group incorporated unitedhealth group incorporated"
+    },
+    {
+      "symbol": "JNJ",
+      "shortName": "Johnson & Johnson",
+      "longName": "Johnson & Johnson",
+      "searchText": "jnj johnson & johnson johnson & johnson"
+    },
+    {
+      "symbol": "LLY",
+      "shortName": "Eli Lilly and Company",
+      "longName": "Eli Lilly and Company",
+      "searchText": "lly eli lilly and company eli lilly and company"
+    },
+    {
+      "symbol": "PFE",
+      "shortName": "Pfizer Inc.",
+      "longName": "Pfizer Inc.",
+      "searchText": "pfe pfizer inc. pfizer inc."
+    },
+    {
+      "symbol": "ABBV",
+      "shortName": "AbbVie Inc.",
+      "longName": "AbbVie Inc.",
+      "searchText": "abbv abbvie inc. abbvie inc."
+    },
+    {
+      "symbol": "TSLA",
+      "shortName": "Tesla, Inc.",
+      "longName": "Tesla, Inc.",
+      "searchText": "tsla tesla, inc. tesla, inc."
+    },
+    {
+      "symbol": "WMT",
+      "shortName": "Walmart Inc.",
+      "longName": "Walmart Inc.",
+      "searchText": "wmt walmart inc. walmart inc."
+    },
+    {
+      "symbol": "PG",
+      "shortName": "Procter & Gamble Company",
+      "longName": "Procter & Gamble Company",
+      "searchText": "pg procter & gamble company procter & gamble company"
+    },
+    {
+      "symbol": "COST",
+      "shortName": "Costco Wholesale Corporation",
+      "longName": "Costco Wholesale Corporation",
+      "searchText": "cost costco wholesale corporation costco wholesale corporation"
+    },
+    {
+      "symbol": "KO",
+      "shortName": "Coca-Cola Company",
+      "longName": "Coca-Cola Company",
+      "searchText": "ko coca-cola company coca-cola company"
+    },
+    {
+      "symbol": "HD",
+      "shortName": "Home Depot, Inc.",
+      "longName": "Home Depot, Inc.",
+      "searchText": "hd home depot, inc. home depot, inc."
+    },
+    {
+      "symbol": "MCD",
+      "shortName": "McDonald's Corporation",
+      "longName": "McDonald's Corporation",
+      "searchText": "mcd mcdonald's corporation mcdonald's corporation"
+    },
+    {
+      "symbol": "NKE",
+      "shortName": "NIKE, Inc.",
+      "longName": "NIKE, Inc.",
+      "searchText": "nke nike, inc. nike, inc."
+    },
+    {
+      "symbol": "XOM",
+      "shortName": "Exxon Mobil Corporation",
+      "longName": "Exxon Mobil Corporation",
+      "searchText": "xom exxon mobil corporation exxon mobil corporation"
+    },
+    {
+      "symbol": "CVX",
+      "shortName": "Chevron Corporation",
+      "longName": "Chevron Corporation",
+      "searchText": "cvx chevron corporation chevron corporation"
+    },
+    {
+      "symbol": "CAT",
+      "shortName": "Caterpillar Inc.",
+      "longName": "Caterpillar Inc.",
+      "searchText": "cat caterpillar inc. caterpillar inc."
+    },
+    {
+      "symbol": "UNP",
+      "shortName": "Union Pacific Corporation",
+      "longName": "Union Pacific Corporation",
+      "searchText": "unp union pacific corporation union pacific corporation"
+    },
+    {
+      "symbol": "GE",
+      "shortName": "General Electric Company",
+      "longName": "General Electric Company",
+      "searchText": "ge general electric company general electric company"
+    },
+    {
+      "symbol": "BA",
+      "shortName": "Boeing Company",
+      "longName": "Boeing Company",
+      "searchText": "ba boeing company boeing company"
+    },
+    {
+      "symbol": "NFLX",
+      "shortName": "Netflix, Inc.",
+      "longName": "Netflix, Inc.",
+      "searchText": "nflx netflix, inc. netflix, inc."
+    },
+    {
+      "symbol": "DIS",
+      "shortName": "Walt Disney Company",
+      "longName": "Walt Disney Company",
+      "searchText": "dis walt disney company walt disney company"
+    },
+    {
+      "symbol": "NEE",
+      "shortName": "NextEra Energy, Inc.",
+      "longName": "NextEra Energy, Inc.",
+      "searchText": "nee nextera energy, inc. nextera energy, inc."
+    },
+    {
+      "symbol": "AMD",
+      "shortName": "Advanced Micro Devices, Inc.",
+      "longName": "Advanced Micro Devices, Inc.",
+      "searchText": "amd advanced micro devices, inc. advanced micro devices, inc."
+    },
+    {
+      "symbol": "INTC",
+      "shortName": "Intel Corporation",
+      "longName": "Intel Corporation",
+      "searchText": "intc intel corporation intel corporation"
     }
   ]
 }

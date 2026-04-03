@@ -50,6 +50,7 @@ pd.DataFrame.merge = lambda self, right, *args, **kwargs: _safe_merge(self, righ
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 SYMBOLS_FILE = SCRIPT_DIR / "investments_symbols.txt"
+COMPANY_NAMES_FILE = PROJECT_ROOT / "src" / "data" / "investmentCompanyNames.json"
 OUTPUT_DIR = PROJECT_ROOT / "public" / "data" / "investments"
 
 
@@ -62,6 +63,26 @@ def read_symbols() -> list[str]:
         sys.exit(1)
     lines = SYMBOLS_FILE.read_text().strip().splitlines()
     return [line.strip().upper() for line in lines if line.strip() and not line.startswith("#")]
+
+
+def read_company_names() -> dict[str, str]:
+    if not COMPANY_NAMES_FILE.exists():
+        return {}
+
+    with open(COMPANY_NAMES_FILE, "r", encoding="utf-8") as file:
+        raw_data = json.load(file)
+
+    if not isinstance(raw_data, dict):
+        return {}
+
+    normalized: dict[str, str] = {}
+    for symbol, name in raw_data.items():
+        if isinstance(symbol, str) and isinstance(name, str) and name.strip():
+            normalized[symbol.strip().upper()] = name.strip()
+    return normalized
+
+
+CURATED_COMPANY_NAMES = read_company_names()
 
 
 def safe_call(fn):
@@ -111,6 +132,24 @@ def pick_string(record: dict, keys: list[str]) -> str | None:
     return None
 
 
+def resolve_company_name(
+    symbol: str,
+    preferred_name: str | None,
+    fallback_name: str | None = None,
+) -> str:
+    normalized_symbol = symbol.strip().upper()
+    for candidate in [preferred_name, fallback_name]:
+        if (
+            isinstance(candidate, str)
+            and candidate.strip()
+            and candidate.strip().upper() != normalized_symbol
+        ):
+            return candidate.strip()
+
+    curated_name = CURATED_COMPANY_NAMES.get(normalized_symbol)
+    return curated_name or normalized_symbol
+
+
 def build_index_entry(symbol: str, info_payload) -> dict[str, str]:
     record = {}
     if isinstance(info_payload, list) and info_payload and isinstance(info_payload[0], dict):
@@ -118,7 +157,7 @@ def build_index_entry(symbol: str, info_payload) -> dict[str, str]:
     elif isinstance(info_payload, dict) and "error" not in info_payload:
         record = info_payload
 
-    short_name = pick_string(record, [
+    short_name = resolve_company_name(symbol, pick_string(record, [
         "short_name",
         "shortName",
         "display_name",
@@ -129,8 +168,8 @@ def build_index_entry(symbol: str, info_payload) -> dict[str, str]:
         "long_name",
         "longName",
         "symbol",
-    ]) or symbol
-    long_name = pick_string(record, [
+    ]))
+    long_name = resolve_company_name(symbol, pick_string(record, [
         "long_name",
         "longName",
         "company_name",
@@ -141,7 +180,7 @@ def build_index_entry(symbol: str, info_payload) -> dict[str, str]:
         "short_name",
         "shortName",
         "symbol",
-    ]) or short_name
+    ]), short_name)
 
     search_text = " ".join([symbol, short_name, long_name]).lower()
 

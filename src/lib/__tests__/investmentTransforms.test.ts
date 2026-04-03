@@ -25,7 +25,7 @@ describe("transformSection info", () => {
     });
   });
 
-  it("falls back safely to the symbol when provider names are missing", () => {
+  it("falls back to curated company names when provider names are missing", () => {
     const result = transformSection("info", [
       {
         symbol: "BRK-B",
@@ -35,7 +35,7 @@ describe("transformSection info", () => {
       longName?: string;
     };
 
-    expect(result.shortName).toBe("BRK-B");
-    expect(result.longName).toBe("BRK-B");
+    expect(result.shortName).toBe("Berkshire Hathaway Inc.");
+    expect(result.longName).toBe("Berkshire Hathaway Inc.");
   });
 });
