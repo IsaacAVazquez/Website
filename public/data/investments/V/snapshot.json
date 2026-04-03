@@ -1,6 +1,12 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-03-07T08:09:58.760793+00:00",
+  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "freshness": {
+    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "sections": {
+      "price": "2026-03-27"
+    }
+  },
   "source": "prefetched",
   "capabilities": {
     "price": true,
@@ -27,17 +33,16 @@
       "industry": "Credit Services",
       "sector": "Financial Services",
       "longBusinessSummary": "Visa Inc. operates as a payment technology company in the United States and internationally. The company operates VisaNet, a transaction processing network that enables authorization, clearing, and settlement of payment transactions. It also offers credit, debit, and prepaid card products; tap to pay, tokenization, and click to pay services; Visa Direct, a platform which facilitates money movement, enabling clients to collect, hold, convert, and send funds across its network; and issuing solutions, such as airport lounge access, dining reservations, shopping experiences, event tickets, and seller offers. In addition, the company provides acceptance solutions, an omnichannel payment integration with e-commerce platforms; risk detection and prevention solutions; and advisory and other services comprising consulting practice, proprietary analytics models, data scientists and economists, marketing services, and managed services. It provides its services under the Visa, Visa Electron, V PAY, Interlink, and PLUS brands. The company serves consumers, sellers, financial institutions, and government entities. Visa Inc. was founded in 1958 and is headquartered in San Francisco, California.",
-      "fullTimeEmployees": 34100,
       "website": "https://www.visa.com",
       "shortName": "Visa Inc.",
       "longName": "Visa Inc."
     },
     "fundamentals": {
       "ttmEps": 10.55,
-      "ttmPe": 30.35,
-      "marketCap": 615700707262,
-      "psRatio": 14.88,
-      "pbRatio": 15.88
+      "ttmPe": 28.01,
+      "marketCap": 568350949616,
+      "psRatio": 13.73,
+      "pbRatio": 14.66
     },
     "profitability": {
       "roe": 15.129999999999999,
@@ -616,9 +621,9 @@
           "TTM": "1618000000.0",
           "2025-12-31": "1913451000.0",
           "2025-09-30": "1924000000.0",
-          "2025-06-30": "1938000000.0",
-          "2025-03-31": "1952000000.0",
-          "2024-12-31": "1959451000.0",
+          "2025-06-30": "1937000000.0",
+          "2025-03-31": "1949000000.0",
+          "2024-12-31": "1961000000.0",
           "2024-09-30": "1970000000.0",
           "2024-06-30": "1610000000.0",
           "2024-03-31": "1579000000.0",
@@ -635,9 +640,9 @@
           "TTM": "2085000000.0",
           "2025-12-31": "2159451000.0",
           "2025-09-30": "2173000000.0",
-          "2025-06-30": "2188000000.0",
-          "2025-03-31": "2205000000.0",
-          "2024-12-31": "2215451000.0",
+          "2025-06-30": "2187000000.0",
+          "2025-03-31": "2202000000.0",
+          "2024-12-31": "2217000000.0",
           "2024-09-30": "2263000000.0",
           "2024-06-30": "2029000000.0",
           "2024-03-31": "2039000000.0",
@@ -1247,8 +1252,8 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2025-09-30": "1944000000.0",
-          "2024-09-30": "1997000000.0",
+          "2025-09-30": "1942000000.0",
+          "2024-09-30": "1991000000.0",
           "2023-09-30": "2040000000.0",
           "2022-09-30": "2073000000.0",
           "2021-09-30": "2130301000.0",
@@ -1257,8 +1262,8 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "2025-09-30": "2196000000.0",
-          "2024-09-30": "2405000000.0",
+          "2025-09-30": "2194000000.0",
+          "2024-09-30": "2399000000.0",
           "2023-09-30": "2507000000.0",
           "2022-09-30": "2558000000.0",
           "2021-09-30": "2188000000.0",
@@ -5026,177 +5031,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.620000000000001,
-      "costOfEquity": 10.96,
+      "wacc": 10.8,
+      "costOfEquity": 11.17,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 13,
-      "beta": 0.7853,
-      "marketCap": 615700707262
+      "beta": 0.798,
+      "marketCap": 568350949616
     },
     "beta": {
-      "beta5y": 0.7853
+      "beta5y": 0.798
     },
     "price": [
-      {
-        "date": "2025-02-27",
-        "open": 351.9,
-        "high": 360.31,
-        "low": 351.68,
-        "close": 355.74,
-        "volume": 7298100
-      },
-      {
-        "date": "2025-02-28",
-        "open": 354.71,
-        "high": 364,
-        "low": 353.71,
-        "close": 362.71,
-        "volume": 15857300
-      },
-      {
-        "date": "2025-03-03",
-        "open": 363,
-        "high": 366.54,
-        "low": 359.54,
-        "close": 361.82,
-        "volume": 9099600
-      },
-      {
-        "date": "2025-03-04",
-        "open": 360.11,
-        "high": 360.27,
-        "low": 350.4,
-        "close": 352.23,
-        "volume": 8955800
-      },
-      {
-        "date": "2025-03-05",
-        "open": 350.83,
-        "high": 354.11,
-        "low": 348.94,
-        "close": 352.68,
-        "volume": 8244200
-      },
-      {
-        "date": "2025-03-06",
-        "open": 345.96,
-        "high": 348.87,
-        "low": 340.39,
-        "close": 344.16,
-        "volume": 8611100
-      },
-      {
-        "date": "2025-03-07",
-        "open": 340.87,
-        "high": 346.39,
-        "low": 339.14,
-        "close": 345.32,
-        "volume": 6358700
-      },
-      {
-        "date": "2025-03-10",
-        "open": 339.94,
-        "high": 345.01,
-        "low": 337.64,
-        "close": 341.48,
-        "volume": 8204300
-      },
-      {
-        "date": "2025-03-11",
-        "open": 338.41,
-        "high": 339.61,
-        "low": 329.58,
-        "close": 332.14,
-        "volume": 9776100
-      },
-      {
-        "date": "2025-03-12",
-        "open": 335.97,
-        "high": 336.16,
-        "low": 329.11,
-        "close": 332.84,
-        "volume": 6295400
-      },
-      {
-        "date": "2025-03-13",
-        "open": 330.99,
-        "high": 336.2,
-        "low": 327.7,
-        "close": 328.55,
-        "volume": 7915300
-      },
-      {
-        "date": "2025-03-14",
-        "open": 327.21,
-        "high": 332.77,
-        "low": 326.38,
-        "close": 331.8,
-        "volume": 7810600
-      },
-      {
-        "date": "2025-03-17",
-        "open": 330.03,
-        "high": 336.11,
-        "low": 329.76,
-        "close": 334.55,
-        "volume": 6149400
-      },
-      {
-        "date": "2025-03-18",
-        "open": 335.29,
-        "high": 335.8,
-        "low": 332.3,
-        "close": 334.77,
-        "volume": 7778300
-      },
-      {
-        "date": "2025-03-19",
-        "open": 336.8,
-        "high": 341.03,
-        "low": 334.5,
-        "close": 339.87,
-        "volume": 5614900
-      },
-      {
-        "date": "2025-03-20",
-        "open": 339,
-        "high": 342.24,
-        "low": 337.66,
-        "close": 339.5,
-        "volume": 5432700
-      },
-      {
-        "date": "2025-03-21",
-        "open": 337.37,
-        "high": 339.43,
-        "low": 335.52,
-        "close": 335.66,
-        "volume": 17279700
-      },
-      {
-        "date": "2025-03-24",
-        "open": 338.65,
-        "high": 345.22,
-        "low": 337.65,
-        "close": 343.87,
-        "volume": 5675100
-      },
-      {
-        "date": "2025-03-25",
-        "open": 344.56,
-        "high": 345.53,
-        "low": 340.67,
-        "close": 344.62,
-        "volume": 3931200
-      },
-      {
-        "date": "2025-03-26",
-        "open": 345.99,
-        "high": 347.38,
-        "low": 343,
-        "close": 344.18,
-        "volume": 6187100
-      },
       {
         "date": "2025-03-27",
         "open": 344,
@@ -7051,7 +6896,167 @@
         "high": 320.23,
         "low": 311.95,
         "close": 320.14,
-        "volume": 12403000
+        "volume": 12412900
+      },
+      {
+        "date": "2026-03-02",
+        "open": 315.5,
+        "high": 322.6,
+        "low": 314.6,
+        "close": 320.51,
+        "volume": 6674900
+      },
+      {
+        "date": "2026-03-03",
+        "open": 315.81,
+        "high": 322.04,
+        "low": 314.35,
+        "close": 320.83,
+        "volume": 5474300
+      },
+      {
+        "date": "2026-03-04",
+        "open": 321.44,
+        "high": 325.77,
+        "low": 319.8,
+        "close": 320.47,
+        "volume": 5257900
+      },
+      {
+        "date": "2026-03-05",
+        "open": 319.33,
+        "high": 322.8,
+        "low": 314.77,
+        "close": 319.8,
+        "volume": 8267200
+      },
+      {
+        "date": "2026-03-06",
+        "open": 316.05,
+        "high": 317.69,
+        "low": 312.3,
+        "close": 317.36,
+        "volume": 6439700
+      },
+      {
+        "date": "2026-03-09",
+        "open": 313.46,
+        "high": 316.4,
+        "low": 310.15,
+        "close": 315.97,
+        "volume": 8381500
+      },
+      {
+        "date": "2026-03-10",
+        "open": 315.43,
+        "high": 317.13,
+        "low": 311.45,
+        "close": 314.43,
+        "volume": 5271300
+      },
+      {
+        "date": "2026-03-11",
+        "open": 313.25,
+        "high": 315.08,
+        "low": 308.39,
+        "close": 308.96,
+        "volume": 6376700
+      },
+      {
+        "date": "2026-03-12",
+        "open": 308.14,
+        "high": 310.95,
+        "low": 306.02,
+        "close": 306.5,
+        "volume": 7514900
+      },
+      {
+        "date": "2026-03-13",
+        "open": 307.59,
+        "high": 310.35,
+        "low": 306.42,
+        "close": 307.14,
+        "volume": 4814100
+      },
+      {
+        "date": "2026-03-16",
+        "open": 307.85,
+        "high": 311.13,
+        "low": 307.38,
+        "close": 310.11,
+        "volume": 6401200
+      },
+      {
+        "date": "2026-03-17",
+        "open": 311.32,
+        "high": 312.69,
+        "low": 307.38,
+        "close": 308.46,
+        "volume": 6872200
+      },
+      {
+        "date": "2026-03-18",
+        "open": 307.41,
+        "high": 307.94,
+        "low": 298.5,
+        "close": 299.02,
+        "volume": 7191700
+      },
+      {
+        "date": "2026-03-19",
+        "open": 298.04,
+        "high": 302.47,
+        "low": 297.03,
+        "close": 299.71,
+        "volume": 6826400
+      },
+      {
+        "date": "2026-03-20",
+        "open": 299.85,
+        "high": 302.92,
+        "low": 299.01,
+        "close": 301.62,
+        "volume": 14398100
+      },
+      {
+        "date": "2026-03-23",
+        "open": 305.2,
+        "high": 307.85,
+        "low": 302.85,
+        "close": 304.44,
+        "volume": 7824500
+      },
+      {
+        "date": "2026-03-24",
+        "open": 302,
+        "high": 306.04,
+        "low": 300.62,
+        "close": 303.76,
+        "volume": 5375900
+      },
+      {
+        "date": "2026-03-25",
+        "open": 305.48,
+        "high": 308.49,
+        "low": 302.17,
+        "close": 304.91,
+        "volume": 6280900
+      },
+      {
+        "date": "2026-03-26",
+        "open": 304.16,
+        "high": 307.87,
+        "low": 303,
+        "close": 305.53,
+        "volume": 7652700
+      },
+      {
+        "date": "2026-03-27",
+        "open": 304.32,
+        "high": 304.59,
+        "low": 294.32,
+        "close": 295.52,
+        "volume": 9971900
       }
     ],
     "news": [
@@ -7072,19 +7077,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
-        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
         "title": "Top Research Reports for Visa, ServiceNow & Progressive",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
         "type": "STORY"
       },
       {
@@ -7096,19 +7101,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "554d65d5-b261-3c95-8aa0-7089a114436d",
-        "title": "Can Global Payments Navigate Lower Americas Revenues in Q1 Earnings?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/global-payments-navigate-lower-americas-120900847.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
         "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
         "publisher": "TipRanks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "554d65d5-b261-3c95-8aa0-7089a114436d",
+        "title": "Can Global Payments Navigate Lower Americas Revenues in Q1 Earnings?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/global-payments-navigate-lower-americas-120900847.html",
         "type": "STORY"
       },
       {
@@ -7139,50 +7144,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.35,
-        "industryAvg": 24.55
+        "value": 28.01,
+        "industryAvg": 22.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.88,
-        "industryAvg": 2.7
+        "value": 13.73,
+        "industryAvg": 2.38
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.88,
-        "industryAvg": 1.67
+        "value": 14.66,
+        "industryAvg": 1.55
       },
       {
         "metric": "ROE",
         "value": 15.129999999999999,
-        "industryAvg": 3.9899999999999998
+        "industryAvg": 3.32
       },
       {
         "metric": "ROA",
         "value": 5.91,
-        "industryAvg": 0.66
+        "industryAvg": 0.5499999999999999
       },
       {
         "metric": "Gross Margin",
         "value": 81.67999999999999,
-        "industryAvg": 14.89
+        "industryAvg": 14.979999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 66.47,
-        "industryAvg": 9.42
+        "industryAvg": 9.71
       },
       {
         "metric": "Net Margin",
         "value": 53.23,
-        "industryAvg": 21.91
+        "industryAvg": 18.48
       }
     ],
     "dcf": {
-      "fairValue": 184.14,
-      "currentPrice": 320.14,
-      "upside": -42.48,
-      "wacc": 10.62,
+      "fairValue": 179.82,
+      "currentPrice": 295.52,
+      "upside": -39.15,
+      "wacc": 10.8,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 17.65,
         "Terminal growth": 3

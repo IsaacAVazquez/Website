@@ -2,7 +2,7 @@
 
 Current environment variable reference for local development and Netlify deployment.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -44,6 +44,16 @@ Public fantasy pages can still function without every FantasyPros credential bec
 
 ---
 
+## Sports Data
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `FOOTBALL_DATA_API_TOKEN` | optional for local dev, required for `/premier-league` live data | Server-side token for football-data.org Premier League requests |
+
+Without this token, the Premier League route can still render its shell, but its internal API routes return a stable unavailable state instead of live standings and fixtures.
+
+---
+
 ## Platform-Provided Variables
 
 The code also reads these when available:
@@ -69,6 +79,7 @@ NEXTAUTH_SECRET=replace-me
 ADMIN_USERNAME=replace-me
 ADMIN_PASSWORD=replace-me
 CRON_SECRET=replace-me
+FOOTBALL_DATA_API_TOKEN=replace-me
 ```
 
 Add FantasyPros credentials only if you are testing session-backed fantasy refreshes.

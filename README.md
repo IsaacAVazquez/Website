@@ -3,7 +3,7 @@
 Portfolio, writing, fantasy football analytics, investment research, and seasonal analysis experiments built on Next.js 16.
 
 **Live:** [isaacavazquez.com](https://isaacavazquez.com)
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -15,6 +15,7 @@ This repo powers a multi-surface personal site with four main product areas:
 - **Writing** — MDX-backed long-form posts under `/writing`
 - **Fantasy football** — rankings, tier charts, and draft tooling
 - **Investments and seasonal analysis** — `/investments` and `/march-madness-2026`
+- **Experimental dashboards** — off-nav data products like `/premier-league`
 
 The site is portfolio-first. `Writing` is live, but it is not a promoted top-level nav item.
 
@@ -45,6 +46,7 @@ The site is portfolio-first. `Writing` is live, but it is not a promoted top-lev
 | `/portfolio` | Projects index |
 | `/portfolio/[slug]` | Project detail |
 | `/investments` | Investment research platform |
+| `/premier-league` | Premier League dashboard |
 | `/writing` | Writing index |
 | `/writing/[slug]` | Article page |
 | `/march-madness-2026` | Seasonal bracket analysis |
@@ -97,6 +99,7 @@ ADMIN_USERNAME=...
 ADMIN_PASSWORD=...
 FANTASYPROS_USERNAME=...
 FANTASYPROS_PASSWORD=...
+FOOTBALL_DATA_API_TOKEN=...
 CRON_SECRET=...
 SITE_URL=https://isaacavazquez.com
 ```

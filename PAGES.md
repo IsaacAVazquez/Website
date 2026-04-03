@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -33,6 +33,7 @@ Current route inventory and page ownership for the live app.
 | Route | File | Notes |
 |------|------|-------|
 | `/investments` | `src/app/investments/page.tsx` | Public investment research platform |
+| `/premier-league` | `src/app/premier-league/page.tsx` | Live Premier League dashboard |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Metadata-driven bracket analysis with client UI |
 
 ### Fantasy football
@@ -81,6 +82,7 @@ These routes manage more of their own spacing and width:
 - `/about`
 - `/contact`
 - `/investments`
+- `/premier-league`
 - `/march-madness-2026`
 - `/portfolio`
 - `/writing`
@@ -97,6 +99,7 @@ These routes manage more of their own spacing and width:
 - `/portfolio` no longer relies on `ProjectsContent.tsx`; that component is legacy/unwired for the main route
 - `Writing` is a live route but not a top-level nav item
 - `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
+- `/premier-league` is a live off-nav sports data dashboard with a self-managed shell
 - `/search` exists, but its data quality is limited by the current hardcoded search API
 - there is no live `/admin/analytics` page in the current app tree
 

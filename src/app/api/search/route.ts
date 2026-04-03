@@ -63,6 +63,16 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       type: 'project' as const,
       category: 'Fantasy Football Analytics',
       tags: ['Fantasy Football', 'Analytics', 'Data Visualization', 'React', 'TypeScript']
+    },
+    {
+      id: 'project-la-liga-pulse',
+      title: 'La Liga Pulse',
+      excerpt: 'Interactive La Liga dashboard with standings, title-race context, European qualification pressure, relegation tracking, and player leaderboards.',
+      content: 'La Liga soccer football standings dashboard title race european qualification relegation league table top scorers assists Next.js TypeScript sports data',
+      url: '/la-liga',
+      type: 'project' as const,
+      category: 'Sports Data Tools',
+      tags: ['La Liga', 'Soccer', 'Sports Data', 'Dashboard', 'Next.js']
     }
   ];
 

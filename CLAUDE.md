@@ -2,7 +2,7 @@
 
 Comprehensive repo context for agents and collaborators working in `/Users/isaacvazquez/Website`.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -14,6 +14,7 @@ This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines 
 2. **Writing surface** — long-form MDX posts under `/writing`
 3. **Fantasy football analytics** — rankings, tiers, and draft tooling
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
+5. **Experimental dashboards** — standalone tools like `/premier-league`
 
 The site is not a generic blog template. It is a portfolio-first experience with secondary authority-building content.
 
@@ -66,6 +67,10 @@ npm run update:investments
 
 - `/investments`
 - `/march-madness-2026`
+
+### Experimental dashboards
+
+- `/premier-league`
 
 ### Fantasy football
 
@@ -148,6 +153,12 @@ This is intentional to avoid stacked closing CTAs.
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
 
+### Premier League
+
+- `/premier-league` is a standalone sports dashboard route
+- live Premier League data is fetched server-side via `football-data.org`
+- the client shell manages deep-linkable `overview`, `fixtures`, and `team` views
+
 ### March Madness
 
 - `/march-madness-2026` is a live seasonal route
@@ -175,6 +186,8 @@ Live routes under `src/app/api/`:
 - `/api/investments/data/[symbol]`
 - `/api/investments/index`
 - `/api/investments/quotes`
+- `/api/premier-league/summary`
+- `/api/premier-league/teams/[teamId]`
 - `/api/rss`
 - `/api/sample-data`
 - `/api/scheduled-update`

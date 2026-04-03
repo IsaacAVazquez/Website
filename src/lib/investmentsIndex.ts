@@ -1,8 +1,17 @@
 import type { InvestmentIndexEntry, InvestmentsIndex } from "@/types/investment";
+import { getCuratedCompanyName } from "@/lib/investmentCompanyNames";
 
 function normalizeName(value: string | undefined, fallback: string): string {
   const trimmed = value?.trim();
   return trimmed && trimmed.length > 0 ? trimmed : fallback;
+}
+
+function normalizeSearchText(value: string | undefined, fallback: string): string {
+  return normalizeName(value, fallback)
+    .toLowerCase()
+    .replace(/[^a-z0-9.-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function buildSearchText(entry: Pick<InvestmentIndexEntry, "symbol" | "shortName" | "longName">): string {
@@ -17,14 +26,27 @@ export function normalizeInvestmentIndexEntry(
   entry: Partial<InvestmentIndexEntry> & { symbol: string }
 ): InvestmentIndexEntry {
   const symbol = entry.symbol.trim().toUpperCase();
-  const shortName = normalizeName(entry.shortName, symbol);
-  const longName = normalizeName(entry.longName, shortName);
+  const curatedCompanyName = getCuratedCompanyName(symbol);
+  const rawShortName = normalizeName(entry.shortName, symbol);
+  const rawLongName = normalizeName(entry.longName, rawShortName);
+  const shortName =
+    rawShortName !== symbol ? rawShortName : curatedCompanyName ?? rawShortName;
+  const longName =
+    rawLongName !== symbol ? rawLongName : curatedCompanyName ?? shortName;
+  const fallbackSearchText = buildSearchText({ symbol, shortName, longName });
+  const symbolOnlySearchText = buildSearchText({
+    symbol,
+    shortName: symbol,
+    longName: symbol,
+  });
+  const rawSearchText = normalizeSearchText(entry.searchText, fallbackSearchText);
 
   return {
     symbol,
     shortName,
     longName,
-    searchText: normalizeName(entry.searchText, buildSearchText({ symbol, shortName, longName })),
+    searchText:
+      rawSearchText === symbolOnlySearchText ? fallbackSearchText : rawSearchText,
   };
 }
 

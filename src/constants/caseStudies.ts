@@ -571,6 +571,30 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "budget-planner": {
+    slug: "budget-planner",
+    title: "Budget Planner",
+    description:
+      "Browser-persisted monthly budgeting tool for planning income, savings targets, category budgets, and manual expenses in an editorial ledger-style workspace.",
+    role: "Product Designer & Builder",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "React", "Personal Finance UX"],
+    metrics: "Monthly planner · Browser persistence · Category insights",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/fintech-tools/budget-planner",
+    featured: true,
+
+    // Detail page not used — portfolio slug redirects to live tool
+    overview: { summary: "", impact: "" },
+    problem: { context: "", painPoints: [], stakes: "" },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "news-pulse-dashboard": {
     slug: "news-pulse-dashboard",
     title: "News Pulse Dashboard",
@@ -606,6 +630,29 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     metrics: "15 ranked teams · 20 picks · 4 regions",
     github: "https://github.com/IsaacAVazquez",
     link: "/march-madness-2026",
+    featured: true,
+
+    overview: { summary: "", impact: "" },
+    problem: { context: "", painPoints: [], stakes: "" },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "la-liga-pulse": {
+    slug: "la-liga-pulse",
+    title: "La Liga Pulse",
+    description:
+      "Interactive La Liga dashboard for title-race context, European qualification pressure, relegation tracking, and curated scorer and assist leaderboards.",
+    role: "Product Designer & Builder",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Sports Data", "UI Design"],
+    metrics: "Matchday 30 snapshot · deep-linkable views · top-10 leaders",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/la-liga",
     featured: true,
 
     overview: { summary: "", impact: "" },

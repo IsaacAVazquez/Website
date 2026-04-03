@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-03
 
 ---
 
@@ -33,6 +33,8 @@ Current API route inventory for the app.
 | `/api/investments/index` | GET | Curated research index / availability info |
 | `/api/investments/quotes` | GET | Quote proxy for investments UI |
 | `/api/investments/data/[symbol]` | GET | Section-based curated research payloads |
+| `/api/premier-league/summary` | GET | League table, fixtures, and club options for the Premier League tool |
+| `/api/premier-league/teams/[teamId]` | GET | Team-specific Premier League drilldown payload |
 | `/api/stocks` | GET | Quote source used by investments flows |
 
 ### Content and utilities
@@ -64,6 +66,8 @@ The live pattern is:
 - `/api/investments/index`
 - `/api/investments/quotes`
 - `/api/investments/data/[symbol]`
+- `/api/premier-league/summary`
+- `/api/premier-league/teams/[teamId]`
 
 ### Admin auth
 
@@ -106,6 +110,8 @@ Use these as the actual source of truth:
 - `src/app/api/investments/index/route.ts`
 - `src/app/api/investments/quotes/route.ts`
 - `src/app/api/investments/data/[symbol]/route.ts`
+- `src/app/api/premier-league/summary/route.ts`
+- `src/app/api/premier-league/teams/[teamId]/route.ts`
 - `src/app/api/stocks/route.ts`
 - `src/app/api/rss/route.ts`
 - `src/app/api/search/route.ts`

@@ -5,6 +5,7 @@
  * to convert raw pre-fetched JSON into the shapes expected by UI components.
  */
 import type { DcfData } from "@/types/investment";
+import { getCuratedCompanyName } from "@/lib/investmentCompanyNames";
 
 type RawRecord = Record<string, unknown>;
 
@@ -16,6 +17,33 @@ function pickString(record: RawRecord, keys: string[]): string | undefined {
     }
   }
   return undefined;
+}
+
+function resolveCompanyName(
+  symbol: string | undefined,
+  preferredName: string | undefined,
+  fallbackName?: string
+): string | undefined {
+  const normalizedSymbol = symbol?.trim().toUpperCase();
+  const trimmedPreferredName = preferredName?.trim();
+  if (
+    trimmedPreferredName &&
+    trimmedPreferredName.length > 0 &&
+    trimmedPreferredName.toUpperCase() !== normalizedSymbol
+  ) {
+    return trimmedPreferredName;
+  }
+
+  const trimmedFallbackName = fallbackName?.trim();
+  if (
+    trimmedFallbackName &&
+    trimmedFallbackName.length > 0 &&
+    trimmedFallbackName.toUpperCase() !== normalizedSymbol
+  ) {
+    return trimmedFallbackName;
+  }
+
+  return getCuratedCompanyName(normalizedSymbol);
 }
 
 /** Return the most recent non-null value for a field in a time-series array */
@@ -125,7 +153,7 @@ export function transformSection(section: string, raw: unknown): unknown {
     const arr = raw as RawRecord[];
     const d = arr[0] ?? {};
     const symbol = pickString(d, ["symbol", "ticker"]);
-    const shortName = pickString(d, [
+    const providerShortName = pickString(d, [
       "short_name",
       "shortName",
       "display_name",
@@ -137,7 +165,7 @@ export function transformSection(section: string, raw: unknown): unknown {
       "longName",
       "symbol",
     ]);
-    const longName = pickString(d, [
+    const providerLongName = pickString(d, [
       "long_name",
       "longName",
       "company_name",
@@ -149,6 +177,8 @@ export function transformSection(section: string, raw: unknown): unknown {
       "shortName",
       "symbol",
     ]);
+    const shortName = resolveCompanyName(symbol, providerShortName, providerLongName) ?? symbol;
+    const longName = resolveCompanyName(symbol, providerLongName, shortName) ?? shortName ?? symbol;
 
     return {
       address: d.address ?? d.street_address,

@@ -1,6 +1,12 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-03-07T08:09:58.760793+00:00",
+  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "freshness": {
+    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "sections": {
+      "price": "2026-03-27"
+    }
+  },
   "source": "prefetched",
   "capabilities": {
     "price": true,
@@ -27,17 +33,17 @@
       "industry": "Auto Manufacturers",
       "sector": "Consumer Cyclical",
       "longBusinessSummary": "Tesla, Inc. designs, develops, manufactures, leases, and sells electric vehicles, and energy generation and storage systems in the United States, China, and internationally. The company operates in two segments, Automotive; and Energy Generation and Storage. The company offers electric vehicles, as well as sells automotive regulatory credits; and non-warranty maintenance services and collision, automotive insurance services, as well as part sales and retail merchandise sale. It also provides sedans and sport utility vehicles through direct and used vehicle sales, a network of Tesla Superchargers, and in-app upgrades; purchase financing and leasing services; services for electric vehicles through its company-owned service locations and Tesla mobile service technicians; and vehicle limited warranties and extended service plans. In addition, the company engages in the design, manufacture, installation, sale, and leasing of solar energy generation and energy storage products, and related services to residential, commercial, and industrial customers and utilities through its website, stores, and galleries, as well as through a network of channel partners. Further, it provides services and repairs to its energy product customers, including under warranty and extended service plans; and various financing options to its residential customers; lithium-ion battery energy storage products, such as Powerwall and Megapack; energy generation products, including solar panels and solar roof; self-driving development and artificial intelligence software, vehicle control and infotainment software, and battery and powertrain. The company was formerly known as Tesla Motors, Inc. and changed its name to Tesla, Inc. in February 2017. Tesla, Inc. was incorporated in 2003 and is headquartered in Austin, Texas.",
-      "fullTimeEmployees": null,
+      "fullTimeEmployees": 134785,
       "website": "https://www.tesla.com",
       "shortName": "Tesla, Inc.",
       "longName": "Tesla, Inc."
     },
     "fundamentals": {
       "ttmEps": 1.08,
-      "ttmPe": 372.69,
-      "marketCap": 1510391404320,
-      "psRatio": 15.93,
-      "pbRatio": 18.39
+      "ttmPe": 335.03,
+      "marketCap": 1357742470560,
+      "psRatio": 14.32,
+      "pbRatio": 16.53
     },
     "profitability": {
       "roe": 1.04,
@@ -713,7 +719,7 @@
           "2025-09-30": "1541980000.0",
           "2025-06-30": "1172000000.0",
           "2025-03-31": "475740000.0",
-          "2024-12-31": "2319901663.05",
+          "2024-12-31": "2361901663.05",
           "2024-09-30": "2215900000.0",
           "2024-06-30": "1891380000.0",
           "2024-03-31": "1390000000.0",
@@ -5581,177 +5587,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.54,
-      "costOfEquity": 20.74,
+      "wacc": 19.900000000000002,
+      "costOfEquity": 20.11,
       "costOfDebt": 0.58,
       "taxRate": 28.000000000000004,
-      "beta": 1.8845,
-      "marketCap": 1510391404320
+      "beta": 1.8586,
+      "marketCap": 1357742470560
     },
     "beta": {
-      "beta5y": 1.8845
+      "beta5y": 1.8586
     },
     "price": [
-      {
-        "date": "2025-02-27",
-        "open": 291.16,
-        "high": 297.23,
-        "low": 280.88,
-        "close": 281.95,
-        "volume": 101748200
-      },
-      {
-        "date": "2025-02-28",
-        "open": 279.5,
-        "high": 293.88,
-        "low": 273.6,
-        "close": 292.98,
-        "volume": 115697000
-      },
-      {
-        "date": "2025-03-03",
-        "open": 300.34,
-        "high": 303.94,
-        "low": 277.3,
-        "close": 284.65,
-        "volume": 115551400
-      },
-      {
-        "date": "2025-03-04",
-        "open": 270.93,
-        "high": 284.35,
-        "low": 261.84,
-        "close": 272.04,
-        "volume": 126706600
-      },
-      {
-        "date": "2025-03-05",
-        "open": 272.92,
-        "high": 279.55,
-        "low": 267.71,
-        "close": 279.1,
-        "volume": 94042900
-      },
-      {
-        "date": "2025-03-06",
-        "open": 272.06,
-        "high": 272.65,
-        "low": 260.02,
-        "close": 263.45,
-        "volume": 98451600
-      },
-      {
-        "date": "2025-03-07",
-        "open": 259.32,
-        "high": 266.25,
-        "low": 250.73,
-        "close": 262.67,
-        "volume": 102369600
-      },
-      {
-        "date": "2025-03-10",
-        "open": 252.54,
-        "high": 253.37,
-        "low": 220,
-        "close": 222.15,
-        "volume": 189076900
-      },
-      {
-        "date": "2025-03-11",
-        "open": 225.31,
-        "high": 237.06,
-        "low": 217.02,
-        "close": 230.58,
-        "volume": 174896400
-      },
-      {
-        "date": "2025-03-12",
-        "open": 247.22,
-        "high": 251.84,
-        "low": 241.1,
-        "close": 248.09,
-        "volume": 142215700
-      },
-      {
-        "date": "2025-03-13",
-        "open": 248.13,
-        "high": 248.29,
-        "low": 232.6,
-        "close": 240.68,
-        "volume": 114813500
-      },
-      {
-        "date": "2025-03-14",
-        "open": 247.31,
-        "high": 251.58,
-        "low": 240.73,
-        "close": 249.98,
-        "volume": 100242300
-      },
-      {
-        "date": "2025-03-17",
-        "open": 245.06,
-        "high": 245.4,
-        "low": 232.8,
-        "close": 238.01,
-        "volume": 111900600
-      },
-      {
-        "date": "2025-03-18",
-        "open": 228.16,
-        "high": 230.1,
-        "low": 222.28,
-        "close": 225.31,
-        "volume": 111477600
-      },
-      {
-        "date": "2025-03-19",
-        "open": 231.61,
-        "high": 241.41,
-        "low": 229.2,
-        "close": 235.86,
-        "volume": 111993800
-      },
-      {
-        "date": "2025-03-20",
-        "open": 233.35,
-        "high": 238,
-        "low": 230.05,
-        "close": 236.26,
-        "volume": 99028300
-      },
-      {
-        "date": "2025-03-21",
-        "open": 234.99,
-        "high": 249.52,
-        "low": 234.55,
-        "close": 248.71,
-        "volume": 132728700
-      },
-      {
-        "date": "2025-03-24",
-        "open": 258.08,
-        "high": 278.64,
-        "low": 256.33,
-        "close": 278.39,
-        "volume": 169079900
-      },
-      {
-        "date": "2025-03-25",
-        "open": 283.6,
-        "high": 288.2,
-        "low": 271.28,
-        "close": 288.14,
-        "volume": 150361500
-      },
-      {
-        "date": "2025-03-26",
-        "open": 282.66,
-        "high": 284.9,
-        "low": 266.51,
-        "close": 272.06,
-        "volume": 153629800
-      },
       {
         "date": "2025-03-27",
         "open": 272.48,
@@ -7606,7 +7452,167 @@
         "high": 407.12,
         "low": 398.11,
         "close": 402.51,
-        "volume": 56760900
+        "volume": 56890100
+      },
+      {
+        "date": "2026-03-02",
+        "open": 390.6,
+        "high": 404.54,
+        "low": 388.25,
+        "close": 403.32,
+        "volume": 55088300
+      },
+      {
+        "date": "2026-03-03",
+        "open": 395.09,
+        "high": 396.34,
+        "low": 385.39,
+        "close": 392.43,
+        "volume": 62617300
+      },
+      {
+        "date": "2026-03-04",
+        "open": 397.85,
+        "high": 408.33,
+        "low": 394.58,
+        "close": 405.94,
+        "volume": 68305500
+      },
+      {
+        "date": "2026-03-05",
+        "open": 401.57,
+        "high": 408.62,
+        "low": 399.42,
+        "close": 405.55,
+        "volume": 51925900
+      },
+      {
+        "date": "2026-03-06",
+        "open": 398.09,
+        "high": 402.35,
+        "low": 394.21,
+        "close": 396.73,
+        "volume": 64054600
+      },
+      {
+        "date": "2026-03-09",
+        "open": 390.05,
+        "high": 401.59,
+        "low": 381.4,
+        "close": 398.68,
+        "volume": 67018900
+      },
+      {
+        "date": "2026-03-10",
+        "open": 402.22,
+        "high": 406.59,
+        "low": 398.19,
+        "close": 399.24,
+        "volume": 59258700
+      },
+      {
+        "date": "2026-03-11",
+        "open": 402.28,
+        "high": 416.38,
+        "low": 402.15,
+        "close": 407.82,
+        "volume": 62559900
+      },
+      {
+        "date": "2026-03-12",
+        "open": 405.18,
+        "high": 406.5,
+        "low": 394.65,
+        "close": 395.01,
+        "volume": 60973800
+      },
+      {
+        "date": "2026-03-13",
+        "open": 399.17,
+        "high": 400.2,
+        "low": 389.95,
+        "close": 391.2,
+        "volume": 58504100
+      },
+      {
+        "date": "2026-03-16",
+        "open": 396.22,
+        "high": 403.73,
+        "low": 394.42,
+        "close": 395.56,
+        "volume": 58068300
+      },
+      {
+        "date": "2026-03-17",
+        "open": 395.69,
+        "high": 400.12,
+        "low": 393,
+        "close": 399.27,
+        "volume": 46890500
+      },
+      {
+        "date": "2026-03-18",
+        "open": 399,
+        "high": 403.07,
+        "low": 392.31,
+        "close": 392.78,
+        "volume": 50853100
+      },
+      {
+        "date": "2026-03-19",
+        "open": 387.27,
+        "high": 387.27,
+        "low": 378.73,
+        "close": 380.3,
+        "volume": 67078300
+      },
+      {
+        "date": "2026-03-20",
+        "open": 379.85,
+        "high": 379.89,
+        "low": 364.46,
+        "close": 367.96,
+        "volume": 78628600
+      },
+      {
+        "date": "2026-03-23",
+        "open": 373.09,
+        "high": 385.33,
+        "low": 372.73,
+        "close": 380.85,
+        "volume": 74606000
+      },
+      {
+        "date": "2026-03-24",
+        "open": 376.56,
+        "high": 387.48,
+        "low": 376.31,
+        "close": 383.03,
+        "volume": 60004900
+      },
+      {
+        "date": "2026-03-25",
+        "open": 389.99,
+        "high": 396.23,
+        "low": 385.01,
+        "close": 385.95,
+        "volume": 55157300
+      },
+      {
+        "date": "2026-03-26",
+        "open": 381.6,
+        "high": 384.44,
+        "low": 371.87,
+        "close": 372.11,
+        "volume": 55522900
+      },
+      {
+        "date": "2026-03-27",
+        "open": 369.69,
+        "high": 369.86,
+        "low": 359.47,
+        "close": 361.83,
+        "volume": 61869200
       }
     ],
     "news": [
@@ -7667,19 +7673,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
-        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
         "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
         "publisher": "Yahoo Finance",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
+        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
         "type": "STORY"
       },
       {
@@ -7694,50 +7700,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 372.69,
-        "industryAvg": 70.14
+        "value": 335.03,
+        "industryAvg": 120.59
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.93,
-        "industryAvg": 1.29
+        "value": 14.32,
+        "industryAvg": 1.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.39,
-        "industryAvg": 2.04
+        "value": 16.53,
+        "industryAvg": 1.83
       },
       {
         "metric": "ROE",
         "value": 1.04,
-        "industryAvg": 0.61
+        "industryAvg": 0.09
       },
       {
         "metric": "ROA",
         "value": 0.62,
-        "industryAvg": 0.2
+        "industryAvg": 0.03
       },
       {
         "metric": "Gross Margin",
         "value": 20.119999999999997,
-        "industryAvg": 13.61
+        "industryAvg": 12.22
       },
       {
         "metric": "EBITDA Margin",
         "value": 11.68,
-        "industryAvg": 9.180000000000001
+        "industryAvg": 8.44
       },
       {
         "metric": "Net Margin",
         "value": 3.37,
-        "industryAvg": 1.46
+        "industryAvg": 1.08
       }
     ],
     "dcf": {
-      "fairValue": 3.45,
-      "currentPrice": 402.51,
-      "upside": -99.14,
-      "wacc": 20.54,
+      "fairValue": 3.57,
+      "currentPrice": 361.83,
+      "upside": -99.01,
+      "wacc": 19.9,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3
