@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/constants/navlinks";
 import { Menu2, X } from "@/components/ui/ServerIcons";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { DeferredThemeToggle } from "@/components/ui/DeferredThemeToggle";
 import { cn } from "@/lib/utils";
 
 function isRouteActive(pathname: string, href: string) {
@@ -85,13 +85,13 @@ export function StaticHeader() {
             </ul>
 
             <div className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-primary)]">
-              <ThemeToggle />
+              <DeferredThemeToggle />
             </div>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
             <div className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-primary)]">
-              <ThemeToggle />
+              <DeferredThemeToggle />
             </div>
             <button
               type="button"

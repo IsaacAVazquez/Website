@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { ModernButton } from "@/components/ui/ModernButton";
 
@@ -23,31 +20,6 @@ const heroSignals = [
 ];
 
 export function ModernHero() {
-  const shouldReduceMotion = useReducedMotion();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: shouldReduceMotion ? 0 : 0.8,
-        staggerChildren: shouldReduceMotion ? 0 : 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0 : 0.55,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
-
   return (
     <section
       className="relative overflow-hidden bg-[var(--surface-primary)] py-10 md:py-14 lg:py-16 xl:py-20"
@@ -70,16 +42,11 @@ export function ModernHero() {
         />
       </div>
 
-      <motion.div
-        className="page-shell relative z-10"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <div className="page-shell relative z-10">
         <div className="section-panel overflow-hidden px-6 py-7 sm:px-8 sm:py-8 lg:px-10 lg:py-9 xl:px-12 xl:py-10">
           <div className="grid items-start gap-8 lg:grid-cols-[1.28fr_0.72fr] lg:gap-12 xl:gap-16">
             <div className="space-y-6">
-              <motion.div variants={itemVariants} className="space-y-5">
+              <div className="space-y-5">
                 <p className="text-sm font-medium uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
                   Berkeley, CA · UC Berkeley Haas MBA Candidate
                 </p>
@@ -93,21 +60,18 @@ export function ModernHero() {
                   turning operational complexity into clearer product decisions
                   and stronger delivery.
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3">
                 <ModernButton href="/portfolio" variant="accent" size="lg">
                   View projects
                 </ModernButton>
                 <ModernButton href="/about" variant="outline" size="lg">
                   Learn more
                 </ModernButton>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={itemVariants}
-                className="grid gap-3 sm:grid-cols-3 xl:max-w-4xl"
-              >
+              <div className="grid gap-3 sm:grid-cols-3 xl:max-w-4xl">
                 {heroSignals.map((signal) => (
                   <div key={signal.label} className="surface-muted px-4 py-4">
                     <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
@@ -121,10 +85,10 @@ export function ModernHero() {
                     </p>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
 
-            <motion.div variants={itemVariants} className="relative lg:pt-1 xl:pt-2">
+            <div className="relative lg:pt-1 xl:pt-2">
               <div className="mx-auto max-w-xs sm:max-w-sm lg:ml-auto lg:max-w-[22rem]">
                 <div className="relative overflow-hidden rounded-[1.75rem] border border-[var(--border-primary)] bg-[var(--surface-primary)] p-3 shadow-[var(--shadow-lg)]">
                   <div
@@ -136,7 +100,7 @@ export function ModernHero() {
                   />
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[1.4rem] border border-[var(--border-primary)] bg-[var(--surface-secondary)]">
                     <Image
-                      src="/images/headshot-new.png"
+                      src="/images/headshot-home.webp"
                       alt="Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate"
                       fill
                       priority
@@ -146,10 +110,10 @@ export function ModernHero() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

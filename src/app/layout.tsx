@@ -5,6 +5,7 @@ import { constructMetadata } from "@/lib/seo";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
 import { StaticHeader } from "@/components/StaticHeader";
+import { ContentsquareInjector } from "@/components/ContentsquareInjector";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,7 +45,6 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png" />
         <link rel="icon" type="image/png" sizes="72x72" href="/icons/icon-72x72.png" />
         <link rel="alternate" type="application/rss+xml" title="Isaac Vazquez - Writing & Insights" href="/api/rss" />
-        <script src="https://t.contentsquare.net/uxa/248dde0734062.js"></script>
       </head>
       <body
         className={twMerge(
@@ -61,6 +61,7 @@ export default function RootLayout({
           <ConditionalLayout>
             {children}
           </ConditionalLayout>
+          <ContentsquareInjector />
         </Providers>
       </body>
     </html>

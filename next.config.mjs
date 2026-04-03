@@ -1,10 +1,12 @@
 import path from 'path';
+import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 
 /** @type {import('next').NextConfig} */
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
 
 const nextConfig = {
   // URL redirects for better SEO and user experience
@@ -179,7 +181,7 @@ const nextConfig = {
     scrollRestoration: true,
   },
   // Enhanced webpack configuration for performance
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+  webpack: (config, { dev, isServer }) => {
     // Exclude server-only packages from client bundle
     if (!isServer) {
       config.externals = config.externals || [];
@@ -188,74 +190,15 @@ const nextConfig = {
       });
     }
 
-    if (!dev && !isServer) {
-      // Bundle splitting for better caching
-      config.optimization.splitChunks = {
-        ...config.optimization.splitChunks,
-        cacheGroups: {
-          ...config.optimization.splitChunks.cacheGroups,
-          // Separate chunk for heavy UI components (portfolio-specific)
-          uiComponents: {
-            test: /[\\/](components[\\/](ui|ProjectDetailModal|LazyQADashboard)|hooks[\\/](useDebounce|useTypingAnimation)).*\.tsx?$/,
-            name: 'ui-components',
-            chunks: 'all',
-            priority: 20,
-            reuseExistingChunk: true,
-          },
-          // Enhanced icons chunk - optimize for portfolio usage
-          icons: {
-            test: /[\\/]node_modules[\\/](@tabler[\\/]icons-react|lucide-react)[\\/]/,
-            name: 'icons',
-            chunks: 'all',
-            priority: 15,
-            reuseExistingChunk: true,
-          },
-          // Framer Motion chunk (heavy animation library)
-          framerMotion: {
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-            name: 'framer-motion',
-            chunks: 'all',
-            priority: 15,
-            reuseExistingChunk: true,
-          },
-          // Blog and content chunk
-          content: {
-            test: /[\\/](components[\\/](blog|newsletter)|lib[\\/](blog|seo)).*\.tsx?$/,
-            name: 'content-features',
-            chunks: 'all',
-            priority: 12,
-            reuseExistingChunk: true,
-          },
-          // Default vendor chunk for everything else
-          default: {
-            minChunks: 1,
-            priority: -20,
-            reuseExistingChunk: true,
-          },
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: -10,
-            reuseExistingChunk: true,
-          },
-        },
-      };
-
-      // Bundle analyzer (enabled for production analysis)
-      if (process.env.ANALYZE === 'true') {
-        try {
-          const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-          config.plugins.push(
-            new BundleAnalyzerPlugin({
-              analyzerMode: 'static',
-              openAnalyzer: false,
-              reportFilename: '../bundle-analyzer-report.html',
-            })
-          );
-        } catch (error) {
-          console.warn('Bundle analyzer not available, skipping...');
-        }
-      }
+    if (!dev && process.env.ANALYZE === 'true') {
+      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          openAnalyzer: false,
+          reportFilename: '../bundle-analyzer-report.html',
+        })
+      );
     }
 
     return config;

@@ -8,8 +8,8 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
-jest.mock("@/components/ui/ThemeToggle", () => ({
-  ThemeToggle: () => <button type="button">Theme</button>,
+jest.mock("@/components/ui/DeferredThemeToggle", () => ({
+  DeferredThemeToggle: () => <button type="button">Theme</button>,
 }));
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
@@ -32,7 +32,7 @@ describe("StaticHeader", () => {
     container.remove();
   });
 
-  it("renders the simplified desktop navigation without writing", async () => {
+  it("renders the promoted desktop navigation", async () => {
     await act(async () => {
       root.render(<StaticHeader />);
     });
@@ -43,10 +43,10 @@ describe("StaticHeader", () => {
     expect(primaryNav?.textContent).toContain("Home");
     expect(primaryNav?.textContent).toContain("About");
     expect(primaryNav?.textContent).toContain("Projects");
+    expect(primaryNav?.textContent).toContain("Writing");
     expect(primaryNav?.textContent).toContain("Investments");
     expect(primaryNav?.textContent).toContain("Resume");
     expect(primaryNav?.textContent).toContain("Contact");
-    expect(primaryNav?.textContent).not.toContain("Writing");
     expect(primaryNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Projects");
 
     expect(brandLink?.textContent).toContain("Isaac Vazquez");
@@ -74,7 +74,7 @@ describe("StaticHeader", () => {
 
     expect(mobileNav?.textContent).toContain("Home");
     expect(mobileNav?.textContent).toContain("Projects");
-    expect(mobileNav?.textContent).not.toContain("Writing");
+    expect(mobileNav?.textContent).toContain("Writing");
     expect(mobileNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Contact");
   });
 });

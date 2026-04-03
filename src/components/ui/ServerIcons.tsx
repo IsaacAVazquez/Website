@@ -92,6 +92,35 @@ export function ChartBar(props: IconProps) {
   );
 }
 
+export function Search(props: IconProps) {
+  return (
+    <svg {...svgProps(props)}>
+      <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+      <path d="M21 21l-6 -6" />
+    </svg>
+  );
+}
+
+export function Target(props: IconProps) {
+  return (
+    <svg {...svgProps(props)}>
+      <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+      <path d="M7 12a5 5 0 1 0 10 0a5 5 0 1 0 -10 0" />
+      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+    </svg>
+  );
+}
+
+export function Database(props: IconProps) {
+  return (
+    <svg {...svgProps(props)}>
+      <path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" />
+      <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
+      <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+    </svg>
+  );
+}
+
 export function BrandGithub(props: IconProps) {
   return (
     <svg {...svgProps(props)}>
@@ -160,6 +189,16 @@ export function Mail(props: IconProps) {
     <svg {...svgProps(props)}>
       <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
       <path d="M3 7l9 6l9 -6" />
+    </svg>
+  );
+}
+
+export function Download(props: IconProps) {
+  return (
+    <svg {...svgProps(props)}>
+      <path d="M12 15V3" />
+      <path d="M21 15v4a2 2 0 0 1 -2 2H5a2 2 0 0 1 -2 -2v-4" />
+      <path d="m7 10 5 5l5 -5" />
     </svg>
   );
 }

@@ -1,33 +1,29 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Link from "next/link";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { ModernButton } from "@/components/ui/ModernButton";
 import {
-  IconMail,
-  IconBrandLinkedin,
-  IconBrandGithub,
-  IconDownload,
-} from "@tabler/icons-react";
+  Mail,
+  BrandLinkedin,
+  BrandGithub,
+  Download,
+} from "@/components/ui/ServerIcons";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 
 const contactMethods = [
   {
-    icon: IconMail,
+    icon: Mail,
     label: "Email",
     value: "IsaacVazquez@berkeley.edu",
     href: "mailto:IsaacVazquez@berkeley.edu",
   },
   {
-    icon: IconBrandLinkedin,
+    icon: BrandLinkedin,
     label: "LinkedIn",
     value: "/in/isaac-vazquez",
     href: "https://linkedin.com/in/isaac-vazquez",
     external: true,
   },
   {
-    icon: IconBrandGithub,
+    icon: BrandGithub,
     label: "GitHub",
     value: "@isaacavazquez",
     href: "https://github.com/isaacavazquez",
@@ -36,33 +32,11 @@ const contactMethods = [
 ];
 
 export function ContactSection() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
     <section id="contact" className="page-section bg-[var(--surface-primary)]">
       <div className="page-shell-tight text-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <motion.div variants={itemVariants} className="section-panel px-6 py-8 sm:px-8 sm:py-10">
+        <div>
+          <div className="section-panel px-6 py-8 sm:px-8 sm:py-10">
             <SectionIntro
               eyebrow="Contact"
               align="center"
@@ -71,10 +45,7 @@ export function ContactSection() {
               description="If you&apos;re hiring for product work or want to talk through a project, I&apos;d be glad to connect."
             />
 
-            <motion.div
-              variants={itemVariants}
-              className="mt-8 grid gap-4 md:grid-cols-3"
-            >
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
               {contactMethods.map((method) => (
                 <a
                   key={method.label}
@@ -95,26 +66,26 @@ export function ContactSection() {
                   </WarmCard>
                 </a>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div variants={itemVariants} className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
               <ModernButton href="/contact" variant="accent" size="lg">
-                <IconMail className="h-5 w-5" />
+                <Mail className="h-5 w-5" />
                 Get in touch
               </ModernButton>
-              <Link
+              <ModernButton
                 href="/Isaac_Vazquez_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                variant="outline"
+                size="lg"
               >
-                <ModernButton variant="outline" size="lg">
-                  <IconDownload className="h-5 w-5" />
-                  Download resume
-                </ModernButton>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+                <Download className="h-5 w-5" />
+                Download resume
+              </ModernButton>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
