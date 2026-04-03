@@ -377,4 +377,58 @@ describe("useStockData", () => {
     expect(result.current.data?.shortName).toBe("Apple");
     expect(result.current.error).toBeNull();
   });
+
+  it("preserves freshness details when a curated snapshot is missing the requested section", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/data/investments/index.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => curatedIndex,
+        });
+      }
+
+      if (url.includes("/data/investments/AAPL/snapshot.json")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({
+            source: "prefetched",
+            symbol: "AAPL",
+            capabilities: {
+              info: true,
+              compare: true,
+            },
+            lastUpdated: "2026-03-16T08:00:00.000Z",
+            freshness: {
+              snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+              sections: {
+                price: "2026-03-15",
+              },
+            },
+            sections: {
+              info: { shortName: "Apple" },
+            },
+          }),
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    const { result } = renderHook(() =>
+      useStockData<{ headline: string }>("AAPL", "news")
+    );
+
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    expect(result.current.data).toBeNull();
+    expect(result.current.isNotFetched).toBe(true);
+    expect(result.current.error).toMatch(/section "news" not available/i);
+    expect(result.current.freshness).toEqual({
+      snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+      sections: {
+        price: "2026-03-15",
+      },
+    });
+  });
 });

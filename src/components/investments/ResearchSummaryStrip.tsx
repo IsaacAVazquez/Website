@@ -147,7 +147,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
   const priceFreshnessLastUpdated =
     livePrice !== undefined
       ? liveQuoteLastUpdated
-      : historicalPriceAsOf ?? snapshotBuiltAt ?? null;
+      : historicalPriceAsOf;
 
   return (
     <WarmCard

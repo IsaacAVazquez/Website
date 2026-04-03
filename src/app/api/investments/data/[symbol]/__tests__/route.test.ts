@@ -144,4 +144,52 @@ describe("GET /api/investments/data/[symbol]", () => {
       assetOrigin: "http://localhost:3000",
     });
   });
+
+  it("preserves freshness metadata when a requested section is unavailable", async () => {
+    mockGetInvestmentContext.mockResolvedValue({
+      source: "prefetched",
+      capabilities: { info: true, compare: true },
+      lastUpdated: "2026-03-16T08:00:00.000Z",
+      seeded: true,
+      snapshot: {
+        symbol: "AAPL",
+        source: "prefetched",
+        capabilities: { info: true, compare: true },
+        lastUpdated: "2026-03-16T08:00:00.000Z",
+        freshness: {
+          snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+          sections: {
+            price: "2026-03-15",
+          },
+        },
+        sections: { info: { shortName: "Apple" } },
+      },
+    });
+    mockGetInvestmentDataEnvelope.mockRejectedValue(
+      Object.assign(new Error('Section "news" not available for AAPL'), {
+        status: 404,
+        source: "prefetched",
+        capabilities: { info: true, compare: true },
+        lastUpdated: "2026-03-16T08:00:00.000Z",
+        freshness: {
+          snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+          sections: {
+            price: "2026-03-15",
+          },
+        },
+      })
+    );
+
+    const response = await makeRequest("AAPL", "news");
+    const body = await response.json();
+
+    expect(response.status).toBe(404);
+    expect(body.error).toMatch(/section "news" not available/i);
+    expect(body.freshness).toEqual({
+      snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
+      sections: {
+        price: "2026-03-15",
+      },
+    });
+  });
 });
