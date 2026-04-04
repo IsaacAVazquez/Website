@@ -104,55 +104,77 @@ export default async function BlogPostPage({ params }: PageProps) {
         }}
       />
 
-      <div className="min-h-screen bg-[var(--surface-primary)] py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
-        <article className="max-w-4xl mx-auto">
-        <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
-            {post.title}
-          </h1>
-          <div className="flex items-center gap-4 text-[var(--text-secondary)] mb-6">
-            <time dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
-            <>
-              <span>•</span>
-              <span>{readingTime}</span>
-              <span>•</span>
-              <span>{wordCount} words</span>
-            </>
-          </div>
+      <div className="min-h-screen bg-[var(--surface-primary)] page-section">
+        <div className="page-shell-tight">
+          <article>
+            {/* Breadcrumb */}
+            <nav aria-label="Breadcrumb" className="mb-8">
+              <ol className="flex items-center gap-2 text-sm text-[var(--text-tertiary)]">
+                <li><a href="/writing" className="hover:text-[var(--color-primary)] transition-colors">Writing</a></li>
+                <li aria-hidden="true">/</li>
+                <li className="text-[var(--text-secondary)] truncate max-w-[40ch]">{post.title}</li>
+              </ol>
+            </nav>
 
-          {/* Tags */}
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-8">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 text-sm font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
+            <header className="mb-10">
+              {post.tags && post.tags[0] && (
+                <span className="section-kicker mb-4 inline-block">{post.tags[0]}</span>
+              )}
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)] mb-4 max-w-3xl">
+                {post.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[var(--text-tertiary)]">
+                <time dateTime={post.publishedAt}>
+                  {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+                <span>•</span>
+                <span>{readingTime}</span>
+              </div>
+
+              {/* Tags */}
+              {post.tags && post.tags.length > 1 && (
+                <div className="flex flex-wrap gap-2 mt-5">
+                  {post.tags.slice(1).map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-0.5 text-xs font-medium bg-[var(--surface-secondary)] text-[var(--text-tertiary)] rounded-full border border-[var(--border-secondary)]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <hr className="mt-8 border-[var(--border-primary)]" />
+            </header>
+
+            {/* Article Content */}
+            <div
+              className="prose prose-writing dark:prose-invert max-w-prose mb-16"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+
+            {/* Author Bio */}
+            <div className="border-t border-[var(--border-primary)] pt-10 mb-10">
+              <AuthorBio variant="full" />
             </div>
-          )}
-        </header>
 
-        {/* Article Content */}
-        <div
-          className="prose prose-writing dark:prose-invert max-w-none mb-12"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-
-        {/* Author Bio - E-E-A-T Signal */}
-        <div className="mt-16 mb-12">
-          <AuthorBio variant="full" />
+            {/* Back link */}
+            <div className="pb-8">
+              <a
+                href="/writing"
+                className="text-sm font-medium text-[var(--text-tertiary)] hover:text-[var(--color-primary)] transition-colors"
+              >
+                &larr; Back to writing
+              </a>
+            </div>
+          </article>
         </div>
-      </article>
-    </div>
+      </div>
     </>
   );
 }

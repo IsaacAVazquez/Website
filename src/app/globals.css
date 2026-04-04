@@ -224,42 +224,151 @@
 }
 
 @layer utilities {
-  /* Prose override: tie article body text to CSS variables so light/dark mode always works */
+  /* Article prose: tie body text to CSS variables and polish reading experience */
   .prose-writing {
     color: var(--text-primary);
+    --tw-prose-body: var(--text-secondary);
+    --tw-prose-headings: var(--text-primary);
+    --tw-prose-links: var(--color-primary);
+    --tw-prose-bold: var(--text-primary);
+    --tw-prose-counters: var(--text-tertiary);
+    --tw-prose-bullets: var(--text-tertiary);
+    --tw-prose-hr: var(--border-primary);
+    --tw-prose-quotes: var(--text-secondary);
+    --tw-prose-quote-borders: var(--color-primary);
+    --tw-prose-code: var(--text-primary);
+    --tw-prose-pre-code: var(--text-primary);
+    --tw-prose-pre-bg: var(--surface-secondary);
+    --tw-prose-th-borders: var(--border-primary);
+    --tw-prose-td-borders: var(--border-secondary);
   }
   .prose-writing p,
-  .prose-writing li,
-  .prose-writing blockquote {
+  .prose-writing li {
     color: var(--text-secondary);
   }
-  .prose-writing h1,
-  .prose-writing h2,
-  .prose-writing h3,
+
+  /* Headings */
+  .prose-writing h2 {
+    color: var(--text-primary);
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid var(--border-secondary);
+  }
+  .prose-writing h3 {
+    color: var(--text-primary);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
   .prose-writing h4,
   .prose-writing h5,
   .prose-writing h6 {
     color: var(--text-primary);
   }
+
+  /* Strong and emphasis */
   .prose-writing strong {
     color: var(--text-primary);
   }
+
+  /* Links */
   .prose-writing a {
     color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    text-underline-offset: 3px;
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
   }
-  .prose-writing code {
+  .prose-writing a:hover {
+    text-decoration-color: var(--color-primary);
+  }
+
+  /* Inline code */
+  .prose-writing :not(pre) > code {
     color: var(--text-primary);
     background-color: var(--surface-secondary);
+    padding: 0.15em 0.4em;
+    border-radius: 0.3em;
+    font-size: 0.875em;
+    border: 1px solid var(--border-secondary);
   }
+  .prose-writing :not(pre) > code::before,
+  .prose-writing :not(pre) > code::after {
+    content: none;
+  }
+
+  /* Code blocks */
   .prose-writing pre {
     background-color: var(--surface-secondary);
     color: var(--text-primary);
+    border: 1px solid var(--border-primary);
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0.5rem;
+    padding: 1.25em 1.5em;
+    overflow-x: auto;
+    font-size: 0.875em;
+    line-height: 1.7;
   }
+  .prose-writing pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  /* Blockquotes */
   .prose-writing blockquote {
-    border-left-color: var(--border-primary);
+    border-left: 3px solid var(--color-primary);
+    background-color: color-mix(in srgb, var(--color-primary) 4%, var(--surface-primary));
+    padding: 1em 1.25em;
+    border-radius: 0 0.375rem 0.375rem 0;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
   }
+  .prose-writing blockquote p {
+    margin-bottom: 0;
+  }
+
+  /* Lists */
+  .prose-writing ul,
+  .prose-writing ol {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .prose-writing li {
+    margin-top: 0.35em;
+    margin-bottom: 0.35em;
+  }
+
+  /* Images */
+  .prose-writing img {
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-primary);
+  }
+
+  /* Horizontal rules */
   .prose-writing hr {
     border-color: var(--border-primary);
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+    max-width: 8rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Tables */
+  .prose-writing table {
+    font-size: 0.875em;
+  }
+  .prose-writing th {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .prose-writing td {
+    color: var(--text-secondary);
   }
 
   .max-inline-size-prose {
