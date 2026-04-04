@@ -315,7 +315,7 @@ export function InterchangeIQClient() {
             <div className="flex items-start gap-3 p-4 rounded-xl border border-[var(--color-warning,#f59e0b)]/25 bg-[var(--color-warning,#f59e0b)]/5">
               <IconAlertTriangle className="h-5 w-5 text-[var(--color-warning,#f59e0b)] flex-shrink-0 mt-0.5" />
               <p className="text-sm text-[var(--text-primary)]">
-                At your volume and ticket size, flat-rate is cheaper — per-transaction fixed fees on
+                At your volume and ticket size, flat-rate is cheaper. Per-transaction fixed fees on
                 interchange+ compound quickly at lower average ticket sizes.
               </p>
             </div>
@@ -386,7 +386,7 @@ export function InterchangeIQClient() {
           <WarmCard padding="lg">
             <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[var(--text-primary)] mb-4 flex items-center gap-2">
               <IconArrowRight className="h-4 w-4 text-[var(--color-primary)]" />
-              Annual Projection — Top 3
+              Annual Projection: Top 3
             </h2>
             <div className="grid grid-cols-3 gap-3">
               {results.slice(0, 3).map((r, i) => (
@@ -411,9 +411,9 @@ export function InterchangeIQClient() {
                 With your card mix, Stripe IC+ becomes cheaper than Stripe flat-rate when avg ticket exceeds{" "}
                 <strong className="text-[var(--color-primary)] tabular-nums">${breakevenTicket.toFixed(2)}</strong>.
                 {avgTicket >= breakevenTicket ? (
-                  <span> Your current avg ticket (${avgTicket}) is <strong>above</strong> that — IC+ wins on unit economics.</span>
+                  <span> Your current avg ticket (${avgTicket}) is <strong>above</strong> that, so IC+ wins on unit economics.</span>
                 ) : (
-                  <span> Your current avg ticket (${avgTicket}) is <strong>below</strong> that — flat-rate wins per transaction.</span>
+                  <span> Your current avg ticket (${avgTicket}) is <strong>below</strong> that, so flat-rate wins per transaction.</span>
                 )}
               </p>
               <p className="text-xs text-[var(--text-tertiary)] mt-2">
@@ -431,15 +431,15 @@ export function InterchangeIQClient() {
           {[
             {
               title: "What is interchange?",
-              body: "Interchange is the fee the card-issuing bank charges every time a card is swiped or typed. It's set by Visa and Mastercard — not your processor. It flows: Issuer ← Acquirer ← Merchant. Your processor doesn't set it; they just pass it through (or bundle it into a flat rate).",
+              body: "Interchange is the fee the card-issuing bank charges every time a card is swiped or typed. It's set by Visa and Mastercard, not your processor. It flows: Issuer ← Acquirer ← Merchant. Your processor doesn't set it; they just pass it through (or bundle it into a flat rate).",
             },
             {
               title: "Flat-rate vs. Interchange+",
-              body: "Flat-rate (e.g., 2.9% + $0.30) bundles interchange, network assessments, and processor markup into one predictable number. Interchange+ passes the actual interchange cost through to you and adds a transparent markup — which is cheaper at scale when your card mix is favorable.",
+              body: "Flat-rate (e.g., 2.9% + $0.30) bundles interchange, network assessments, and processor markup into one predictable number. Interchange+ passes the actual interchange cost through to you and adds a transparent markup, which is cheaper at scale when your card mix is favorable.",
             },
             {
               title: "Caveats & real-world nuance",
-              body: "These are representative averages. Real interchange has 300+ rate categories by card type, industry code, and auth method. IC+ is typically available to merchants processing $250k+/yr. Card-present transactions have lower interchange than online. Always get actual quotes — this tool is directional, not definitive.",
+              body: "These are representative averages. Real interchange has 300+ rate categories by card type, industry code, and auth method. IC+ is typically available to merchants processing $250k+/yr. Card-present transactions have lower interchange than online. Always get actual quotes. This tool is directional, not definitive.",
             },
           ].map((card) => (
             <WarmCard key={card.title} padding="lg">
@@ -450,7 +450,7 @@ export function InterchangeIQClient() {
         </div>
         <p className="text-xs text-[var(--text-tertiary)] text-center">
           Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue program averages.
-          Processor fees from public pricing pages. For educational purposes — actual rates vary by industry, card type, and negotiated terms.
+          Processor fees from public pricing pages. For educational purposes only. Actual rates vary by industry, card type, and negotiated terms.
         </p>
       </div>
     </div>

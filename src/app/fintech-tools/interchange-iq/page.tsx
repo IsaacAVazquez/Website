@@ -2,7 +2,7 @@ import { constructMetadata } from "@/lib/seo";
 import { InterchangeIQClient } from "./interchange-iq-client";
 
 export const metadata = constructMetadata({
-  title: "Interchange IQ — Payment Processor Fee Analyzer | Isaac Vazquez",
+  title: "Interchange IQ: Payment Processor Fee Analyzer | Isaac Vazquez",
   description:
     "Compare payment processing costs across Stripe, Square, PayPal, Adyen, and others using real 2024 interchange rate data. Adjust volume, avg ticket, and card mix for live fee comparisons and breakeven analysis.",
   canonicalUrl: "/fintech-tools/interchange-iq",
@@ -19,7 +19,7 @@ export default function InterchangeIQPage() {
             Interchange IQ
           </h1>
           <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed mb-2">
-            Most merchants don&apos;t know what they&apos;re actually paying for payment processing —
+            Most merchants don&apos;t know what they&apos;re actually paying for payment processing,
             or why. Adjust the sliders to see how volume, average ticket size, and card mix
             affect total fees across major processors.
           </p>

@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-04-03
 
-This document governs all writing under `content/blog/`. Any agent or collaborator editing, creating, or rewriting articles must follow these rules exactly.
+This document governs all writing across the site — UI copy, page descriptions, bios, article content under `content/blog/`, and any other user-facing text. Any agent or collaborator editing, creating, or rewriting text must follow these rules exactly.
 
 ---
 

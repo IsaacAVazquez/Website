@@ -224,6 +224,44 @@
 }
 
 @layer utilities {
+  /* Prose override: tie article body text to CSS variables so light/dark mode always works */
+  .prose-writing {
+    color: var(--text-primary);
+  }
+  .prose-writing p,
+  .prose-writing li,
+  .prose-writing blockquote {
+    color: var(--text-secondary);
+  }
+  .prose-writing h1,
+  .prose-writing h2,
+  .prose-writing h3,
+  .prose-writing h4,
+  .prose-writing h5,
+  .prose-writing h6 {
+    color: var(--text-primary);
+  }
+  .prose-writing strong {
+    color: var(--text-primary);
+  }
+  .prose-writing a {
+    color: var(--color-primary);
+  }
+  .prose-writing code {
+    color: var(--text-primary);
+    background-color: var(--surface-secondary);
+  }
+  .prose-writing pre {
+    background-color: var(--surface-secondary);
+    color: var(--text-primary);
+  }
+  .prose-writing blockquote {
+    border-left-color: var(--border-primary);
+  }
+  .prose-writing hr {
+    border-color: var(--border-primary);
+  }
+
   .max-inline-size-prose {
     max-inline-size: 65ch;
   }
@@ -301,7 +339,7 @@
   }
 
   .page-section {
-    @apply py-14 sm:py-16 lg:py-20;
+    @apply py-7 sm:py-8 lg:py-10;
   }
 
   .section-panel {

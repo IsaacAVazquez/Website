@@ -143,7 +143,7 @@ This is intentional to avoid stacked closing CTAs.
 - Posts live in `content/blog/`
 - `src/lib/blog.ts` reads frontmatter and converts markdown/MDX to HTML using `remark`
 - `/writing` and `/writing/[slug]` are the live surfaced routes
-- All articles must follow the voice and formatting rules in `WRITING_VOICE.md` — read it before editing or creating any post
+- All user-facing text must follow the voice and formatting rules in `WRITING_VOICE.md` — this includes articles, UI copy, page descriptions, bios, and hero text. Read it before editing or creating any text.
 
 ### Investments
 

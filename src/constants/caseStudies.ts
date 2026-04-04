@@ -59,7 +59,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "investment-analytics-platform",
     title: "Investment Analytics Platform",
     description:
-      "Full-stack investment platform with live Yahoo Finance data — portfolio tracking, gain/loss analytics, and side-by-side stock comparison with 30+ metrics and analyst consensus ratings.",
+      "Full-stack investment platform with live Yahoo Finance data. Portfolio tracking, gain/loss analytics, and side-by-side stock comparison with 30+ metrics and analyst consensus ratings.",
     role: "Full-Stack Developer & Designer",
     timeline: "2025",
     tools: ["Next.js", "TypeScript", "Yahoo Finance API", "Tailwind CSS"],
@@ -70,7 +70,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "Built an investment research workspace for tracking positions, comparing stocks, and scanning valuation, profitability, and analyst signals in one place.",
+        "I built an investment research workspace for tracking positions, comparing stocks, and scanning valuation, profitability, and analyst signals in one place.",
       impact:
         "Turns scattered market data into a faster decision surface for portfolio tracking and side-by-side equity research.",
     },
@@ -105,7 +105,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "Built a fantasy football platform that combines tier rankings, visualizations, and automated data refreshes into a single weekly workflow.",
+        "I built a fantasy football platform that combines tier rankings, visualizations, and automated data refreshes into a single weekly workflow.",
       impact:
         "Gives players one place to move from raw rankings to lineup and waiver decisions with less tab-hopping.",
     },
@@ -125,7 +125,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
   "interchange-iq": {
     slug: "interchange-iq",
-    title: "Interchange IQ — Payment Fee Analyzer",
+    title: "Interchange IQ: Payment Fee Analyzer",
     description:
       "Interactive tool that models real payment processing costs across 7 major processors using published 2024 interchange rate data. Adjust volume, avg ticket, and card mix to see live fee comparisons and a breakeven analysis.",
     role: "Builder",
@@ -138,7 +138,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "Created a payment fee analyzer that turns interchange tables into a clear processor comparison with live breakeven logic.",
+        "I created a payment fee analyzer that turns interchange tables into a clear processor comparison with live breakeven logic.",
       impact:
         "Makes processor tradeoffs legible before a business commits to flat-rate or interchange-plus pricing.",
     },
@@ -171,7 +171,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "Designed a monthly budgeting workspace that keeps planning, savings targets, and manual expense tracking in one browser-persisted flow.",
+        "I designed a monthly budgeting workspace that keeps planning, savings targets, and manual expense tracking in one browser-persisted flow.",
       impact:
         "Keeps personal finance planning lightweight enough to use consistently without adding account-sync complexity.",
     },
@@ -193,7 +193,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "news-pulse-dashboard",
     title: "News Pulse Dashboard",
     description:
-      "Live news media analytics tool aggregating RSS feeds from 6 major outlets — visualizes coverage patterns, extracts trending topics, and performs lightweight sentiment analysis, all without external dependencies.",
+      "Live news media analytics tool aggregating RSS feeds from 6 major outlets. Visualizes coverage patterns, extracts trending topics, and performs lightweight sentiment analysis, all without external dependencies.",
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "RSS", "Tailwind CSS"],
@@ -204,7 +204,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "Built a media analytics dashboard that tracks coverage patterns, topic frequency, and tone across major outlets without external NLP services.",
+        "I built a media analytics dashboard that tracks coverage patterns, topic frequency, and tone across major outlets without external NLP services.",
       impact:
         "Turns RSS feeds into a faster comparison surface for media monitoring and story framing analysis.",
     },
@@ -237,7 +237,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "Created a bracket analysis product that combines rankings, seed context, injuries, and travel penalties into one picking workflow.",
+        "I created a bracket analysis product that combines rankings, seed context, injuries, and travel penalties into one picking workflow.",
       impact:
         "Makes each pick easier to justify with a transparent framework instead of isolated hot takes.",
     },
@@ -270,7 +270,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "Built a league dashboard for tracking title-race pressure, European qualification, relegation, and leaderboards in one view.",
+        "I built a league dashboard for tracking title-race pressure, European qualification, relegation, and leaderboards in one view.",
       impact:
         "Compresses the season state into one product surface instead of forcing fans across standings, fixtures, and stat tables.",
     },
@@ -303,7 +303,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "Designed a mission-control-style launch board that makes upcoming missions, recent launches, and mission detail easier to explore.",
+        "I designed a mission-control-style launch board that makes upcoming missions, recent launches, and mission detail easier to explore.",
       impact:
         "Turns public mission data into a more navigable story and planning surface for enthusiasts.",
     },
@@ -336,7 +336,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "Built a Premier League dashboard that packages live competition data into a deep-linkable product surface for standings, fixtures, and club-level recent-form exploration.",
+        "I built a Premier League dashboard that packages live competition data into a deep-linkable product surface for standings, fixtures, and club-level recent-form exploration.",
       impact:
         "Turns a server-side football-data proxy into a fast, shareable league exploration tool without requiring third-party embed widgets.",
     },

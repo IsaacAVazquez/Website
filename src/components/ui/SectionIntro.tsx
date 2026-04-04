@@ -35,7 +35,7 @@ export function SectionIntro({
       className={cn(
         "space-y-4",
         centered && "mx-auto text-center items-center",
-        size === "lg" ? "max-w-4xl" : "max-w-3xl",
+        size === "lg" ? "max-w-none" : "max-w-none",
         className
       )}
     >

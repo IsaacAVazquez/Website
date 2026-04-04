@@ -245,7 +245,7 @@ curl -X POST \
 
 ## Writing Voice
 
-When editing, creating, or rewriting any article under `content/blog/`, read `WRITING_VOICE.md` first. It defines Isaac's voice, hard formatting rules, and the condensing philosophy used across all 22 articles. Non-conforming articles should be rewritten to match it, not patched around it.
+`WRITING_VOICE.md` governs all user-facing text across the site, not just blog articles. This includes UI copy, page descriptions, bios, hero text, section headings, and any other text a user will read. Read it before editing or creating any text. Non-conforming copy should be rewritten to match it, not patched around it.
 
 ---
 

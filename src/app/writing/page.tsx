@@ -82,10 +82,10 @@ export default async function WritingPage() {
         <div className="page-shell-tight">
           <SectionIntro
             eyebrow="Writing"
-            size="lg"
+            size="md"
             headingLevel={1}
             title="Notes on product strategy, operating systems, and analytics-heavy work."
-            description="This is where I unpack the decisions behind the portfolio: product thinking, technical judgment, and lessons from building systems where trust matters."
+            description="This is where I unpack the decisions behind the portfolio. Product thinking, technical judgment, and lessons from building systems where trust matters."
             actions={
               <ModernButton href="/portfolio" variant="outline" size="md">
                 View projects

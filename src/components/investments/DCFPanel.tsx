@@ -29,7 +29,7 @@ export function DCFPanel({ symbol }: Props) {
     <WarmCard padding="sm">
       <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1">DCF Fair Value</h3>
       <p className="text-xs text-[var(--text-tertiary)] mb-4">
-        Discounted cash flow estimate — for informational purposes only.
+        Discounted cash flow estimate, for informational purposes only.
       </p>
 
       {isLoading && (

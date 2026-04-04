@@ -34,7 +34,7 @@ export default function About() {
             align="center"
             size="lg"
             headingLevel={1}
-            title="An MBA candidate with roots in QA, analytics, and product execution."
+            title="I'm an MBA candidate with roots in QA, analytics, and product execution."
             description="My background combines product strategy with hands-on experience in quality, systems thinking, and cross-functional delivery."
           />
         </motion.div>

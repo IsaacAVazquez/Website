@@ -70,7 +70,7 @@ const projects: Project[] = [
     id: 6,
     title: "Interchange IQ",
     description:
-      "Interactive payment processor fee analyzer — compare Stripe, Square, PayPal, Adyen, and others based on your real volume, avg ticket, and card mix using actual 2024 interchange rate data",
+      "Interactive payment processor fee analyzer. Compare Stripe, Square, PayPal, Adyen, and others based on your real volume, avg ticket, and card mix using actual 2024 interchange rate data.",
     tech: ["Next.js", "TypeScript", "Payments", "Interchange Economics"],
     type: "featured",
     icon: IconCreditCard,
@@ -84,22 +84,22 @@ const projects: Project[] = [
       { label: "Data Source",        value: "2024 Published", improvement: "Visa/MC/Amex tables" },
     ],
     impact:
-      "Helps merchants and fintech founders understand the true cost structure of accepting payments before committing to a processor — grounded in real interchange economics, not marketing copy",
+      "Helps merchants and fintech founders understand the true cost structure of accepting payments before committing to a processor, grounded in real interchange economics, not marketing copy.",
     timeline: "Side project (2025)",
     challenges: [
       "Interchange has 300+ rate categories; simplifying to a useful model without losing directional accuracy",
-      "Breakeven depends on card mix, avg ticket, and volume simultaneously — requires a clean formula derivation",
+      "Breakeven depends on card mix, avg ticket, and volume simultaneously, requiring a clean formula derivation",
       "Making the UI intuitive for non-technical founders while keeping the underlying math rigorous",
       "Keeping processor pricing current as rates shift quarterly",
     ],
     problem: {
       context:
-        "Most merchants pick a payment processor based on brand recognition — not unit economics. The difference between flat-rate and interchange+ pricing can be tens of thousands of dollars per year at scale, but the underlying math is deliberately opaque.",
+        "Most merchants pick a payment processor based on brand recognition, not unit economics. The difference between flat-rate and interchange+ pricing can be tens of thousands of dollars per year at scale, but the underlying math is deliberately opaque.",
       painPoints: [
         "Flat-rate pricing (Stripe 2.9% + $0.30) bundles a significant markup over actual interchange into a 'simple' number",
         "Interchange+ sounds risky and complex even when it's clearly cheaper at higher volumes",
         "No simple tool lets you model your specific business profile (ticket size, card mix, volume) against multiple processors",
-        "Breakeven thresholds are non-intuitive — they depend on avg ticket, card mix, AND volume at once",
+        "Breakeven thresholds are non-intuitive because they depend on avg ticket, card mix, AND volume at once",
       ],
       stakes:
         "A merchant processing $200k/month with a favorable card mix could be overpaying $2,000–$3,500/month by defaulting to flat-rate pricing.",
@@ -114,7 +114,7 @@ const projects: Project[] = [
         "Iterated on UX to surface key insights without requiring users to understand interchange tables",
       ],
       decisions: [
-        "Used blended interchange averages over 300+ categories — accurate enough for directional decisions, far more usable",
+        "Used blended interchange averages over 300+ categories. Accurate enough for directional decisions, far more usable.",
         "Sorted results ascending by cost so cheapest option is always visually obvious",
         "Added breakeven insight panel to answer the most common follow-up question",
         "Included educational cards explaining interchange to non-experts with an honest caveats section",
@@ -130,9 +130,9 @@ const projects: Project[] = [
         "Demonstrates payments domain knowledge: interchange economics, card network structure, flat-rate vs. IC+ tradeoff",
       ],
       lessonsLearned: [
-        "Interchange is deliberately complex — useful tools compress 300+ categories into 3–4 decision levers",
-        "Breakeven analysis is the killer feature — it gives founders a concrete threshold, not just a comparison table",
-        "Per-transaction fixed fees are consistently underweighted in payment decisions — the tool makes this viscerally clear",
+        "Interchange is deliberately complex. Useful tools compress 300+ categories into 3–4 decision levers.",
+        "Breakeven analysis is the killer feature. It gives founders a concrete threshold, not just a comparison table.",
+        "Per-transaction fixed fees are consistently underweighted in payment decisions. The tool makes this viscerally clear.",
       ],
     },
   },
@@ -458,7 +458,7 @@ const projects: Project[] = [
     id: 5,
     title: "Investment Analytics Platform",
     description:
-      "Built a full-stack investment platform with live Yahoo Finance data — portfolio tracking with gain/loss analytics, plus a side-by-side stock comparison tool with 30+ metrics and Wall Street analyst consensus ratings.",
+      "Built a full-stack investment platform with live Yahoo Finance data. Portfolio tracking with gain/loss analytics, plus a side-by-side stock comparison tool with 30+ metrics and Wall Street analyst consensus ratings.",
     tech: ["Next.js", "TypeScript", "Yahoo Finance API", "React", "Tailwind CSS"],
     type: "normal",
     icon: IconChartLine,
@@ -494,7 +494,7 @@ const projects: Project[] = [
       "Client-side state persistence without a backend database",
     ],
     impact:
-      "Enables real-time portfolio tracking with gain/loss analytics and Wall Street-level stock comparison — analyst consensus, price targets, PE ratios, margins, and growth metrics — for free",
+      "Enables real-time portfolio tracking with gain/loss analytics and Wall Street-level stock comparison: analyst consensus, price targets, PE ratios, margins, and growth metrics, all for free.",
     timeline: "2025",
     problem: {
       context:
@@ -524,7 +524,7 @@ const projects: Project[] = [
         "Chose visual metric bars over raw numbers for faster comparison scanning",
       ],
       collaboration:
-        "Solo project — designed, built, and iterated on the platform end-to-end, from API reverse-engineering to UI/UX design.",
+        "Solo project. Designed, built, and iterated on the platform end-to-end, from API reverse-engineering to UI/UX design.",
     },
     result: {
       outcomes: [
@@ -534,8 +534,8 @@ const projects: Project[] = [
         "Timeout and rate limit handling ensures users always get feedback",
       ],
       lessonsLearned: [
-        "External API dependencies require defensive coding — timeouts, retries, and fallbacks are essential",
-        "Promise.allSettled is essential for multi-source data fetching — always show what you can",
+        "External API dependencies require defensive coding. Timeouts, retries, and fallbacks are essential.",
+        "Promise.allSettled is essential for multi-source data fetching. Always show what you can.",
         "Visual comparison (bars, color coding) is far more effective than tables of raw numbers",
       ],
     },

@@ -22,7 +22,7 @@ const heroSignals = [
 export function ModernHero() {
   return (
     <section
-      className="relative overflow-hidden bg-[var(--surface-primary)] py-10 md:py-14 lg:py-16 xl:py-20"
+      className="relative overflow-hidden bg-[var(--surface-primary)] py-6 md:py-8 lg:py-10 xl:py-12"
       aria-label="Isaac Vazquez introduction"
       data-testid="hero"
     >
@@ -43,7 +43,7 @@ export function ModernHero() {
       </div>
 
       <div className="page-shell relative z-10">
-        <div className="section-panel overflow-hidden px-6 py-7 sm:px-8 sm:py-8 lg:px-10 lg:py-9 xl:px-12 xl:py-10">
+        <div className="section-panel overflow-hidden px-6 py-4 sm:px-8 sm:py-5 lg:px-10 lg:py-6 xl:px-12 xl:py-7">
           <div className="grid items-start gap-8 lg:grid-cols-[1.28fr_0.72fr] lg:gap-12 xl:gap-16">
             <div className="space-y-6">
               <div className="space-y-5">
@@ -69,22 +69,6 @@ export function ModernHero() {
                 <ModernButton href="/about" variant="outline" size="lg">
                   Learn more
                 </ModernButton>
-              </div>
-
-              <div className="grid gap-3 sm:grid-cols-3 xl:max-w-4xl">
-                {heroSignals.map((signal) => (
-                  <div key={signal.label} className="surface-muted px-4 py-4">
-                    <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                      {signal.label}
-                    </p>
-                    <p className="mb-1 text-lg font-semibold text-[var(--text-primary)]">
-                      {signal.value}
-                    </p>
-                    <p className="mb-0 text-sm leading-relaxed text-[var(--text-secondary)]">
-                      {signal.detail}
-                    </p>
-                  </div>
-                ))}
               </div>
             </div>
 

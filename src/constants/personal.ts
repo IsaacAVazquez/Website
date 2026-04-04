@@ -165,7 +165,7 @@ export const personalMetrics = {
     "/api/philosophy": {
       method: "GET",
       description: "Core beliefs about QA and technology",
-      response: "Quality isn't just testing—it's building trust"
+      response: "Quality isn't just testing. It's building trust."
     },
     "/api/availability": {
       method: "GET",
@@ -278,7 +278,7 @@ export const personalMetrics = {
   ],
 
   philosophy: {
-    qa: "Quality isn't just about finding bugs—it's about building trust, protecting users, and ensuring technology serves humanity's best interests.",
+    qa: "Quality isn't just about finding bugs. It's about building trust, protecting users, and ensuring technology serves humanity's best interests.",
     career: "I believe in the power of meticulous attention to detail combined with empathetic understanding of user needs.",
     life: "Every system can be improved, every process can be optimized, and every challenge is an opportunity to learn and grow.",
     teamwork: "The best QA work happens when testing is everyone's responsibility, not just the QA team's.",

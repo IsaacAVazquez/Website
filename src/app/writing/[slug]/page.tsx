@@ -104,13 +104,13 @@ export default async function BlogPostPage({ params }: PageProps) {
         }}
       />
 
-      <div className="min-h-screen py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[var(--surface-primary)] py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
         <article className="max-w-4xl mx-auto">
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
             {post.title}
           </h1>
-          <div className="flex items-center gap-4 text-neutral-600 dark:text-neutral-400 mb-6">
+          <div className="flex items-center gap-4 text-[var(--text-secondary)] mb-6">
             <time dateTime={post.publishedAt}>
               {new Date(post.publishedAt).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -132,7 +132,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-sm font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full"
+                  className="px-3 py-1 text-sm font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] rounded-full"
                 >
                   {tag}
                 </span>
@@ -143,7 +143,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Article Content */}
         <div
-          className="prose prose-neutral dark:prose-invert max-w-none mb-12"
+          className="prose prose-writing dark:prose-invert max-w-none mb-12"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 

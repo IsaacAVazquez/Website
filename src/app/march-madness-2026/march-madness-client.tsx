@@ -369,8 +369,8 @@ function SCurveSection() {
   return (
     <div className="grid gap-5 lg:grid-cols-2">
       {[
-        { label: "Underseeded — got a raw deal", data: SCURVE.under, positive: true },
-        { label: "Overseeded — got a gift", data: SCURVE.over, positive: false },
+        { label: "Underseeded: got a raw deal", data: SCURVE.under, positive: true },
+        { label: "Overseeded: got a gift", data: SCURVE.over, positive: false },
       ].map(({ label, data, positive }) => (
         <div key={label} className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
           <p
@@ -421,7 +421,7 @@ function InjuriesSection() {
           </div>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-white">
-              {injury.team} — {injury.player}
+              {injury.team}: {injury.player}
             </p>
             <p className="mt-1 text-sm text-slate-300">{injury.line}</p>
             <p className="mt-2 text-xs leading-6 text-slate-400">{injury.note}</p>
@@ -577,7 +577,7 @@ function RegionBracket({ data }: { data: RegionData }) {
           {data.r2.map((matchup, index) => (
             <Matchup2 key={`r2-${index}`} {...matchup} />
           ))}
-          <RoundLabel>Sweet 16 — {data.site}</RoundLabel>
+          <RoundLabel>Sweet 16: {data.site}</RoundLabel>
           {data.s16.map((matchup, index) => (
             <Matchup2 key={`s16-${index}`} {...matchup} />
           ))}

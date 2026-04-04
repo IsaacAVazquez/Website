@@ -149,8 +149,8 @@ export const INJURIES: InjuryEntry[] = [
   { team: "Texas Tech", seed: 5, player: "JT Toppin", line: "22 Pts / 11 Reb (All-American)", note: "Lost Feb 17, team has adapted well" },
   { team: "BYU", seed: 6, player: "Richie Saunders", line: "18 Pts / 6 Reb", note: "Returned strong, won Big 12 Tourney games" },
   { team: "UNC", seed: 6, player: "Caleb Wilson", line: "9 Pts / 5 Reb", note: "Freshman rotation piece" },
-  { team: "Clemson", seed: 8, player: "Carter Welling", line: "10 Pts / 5 Reb (starter)", note: "Injured in ACC tourney — key flip factor" },
-  { team: "Villanova", seed: 8, player: "Matthew Hodge", line: "9 Pts / 4 Reb (starter)", note: "Out — contributes to TZ flip vs Utah St." },
+  { team: "Clemson", seed: 8, player: "Carter Welling", line: "10 Pts / 5 Reb (starter)", note: "Injured in ACC tourney. Key flip factor." },
+  { team: "Villanova", seed: 8, player: "Matthew Hodge", line: "9 Pts / 4 Reb (starter)", note: "Out. Contributes to TZ flip vs Utah St." },
   { team: "Michigan St.", seed: 3, player: "Braden Huff (Q)", line: "18 Pts / 6 Reb", note: "Questionable status" },
 ];
 
@@ -159,7 +159,7 @@ export const TZ_IMPACTS: TimeZoneImpact[] = [
   { team: "UCLA", home: "PT", site: "Philadelphia (ET)", direction: "east", zones: 3, pct: -9, final: false, note: "FLIP → UCF wins" },
   { team: "Saint Mary's", home: "PT", site: "Oklahoma City (CT)", direction: "east", zones: 2, pct: -6, final: false, note: "FLIP → Texas A&M wins" },
   { team: "Idaho", home: "PT", site: "Oklahoma City (CT)", direction: "east", zones: 2, pct: -6, final: true, note: "Doesn't affect outcome vs Houston" },
-  { team: "Purdue", home: "ET", site: "San Jose (PT)", direction: "west", zones: 3, pct: -6, final: true, note: "Regional Sweet 16 — Gonzaga beats them" },
+  { team: "Purdue", home: "ET", site: "San Jose (PT)", direction: "west", zones: 3, pct: -6, final: true, note: "Regional Sweet 16. Gonzaga beats them." },
   { team: "Santa Clara", home: "PT", site: "St. Louis (CT)", direction: "east", zones: 2, pct: -6, final: false, note: "Doesn't matter vs Kentucky" },
   { team: "Kansas", home: "CT", site: "San Diego (PT)", direction: "west", zones: 2, pct: -4, final: true, note: "Final broadcast slot tightens vs Cal Baptist" },
   { team: "TCU", home: "CT", site: "Greenville (ET)", direction: "east", zones: 1, pct: -3, final: false, note: "FLIP → Ohio St. wins" },
@@ -167,9 +167,9 @@ export const TZ_IMPACTS: TimeZoneImpact[] = [
   { team: "Iowa", home: "CT", site: "Tampa (ET)", direction: "east", zones: 1, pct: -3, final: false, note: "Still beats Clemson (injury)" },
   { team: "Illinois", home: "CT", site: "Greenville (ET)", direction: "east", zones: 1, pct: -3, final: true, note: "Final slot, still beats Penn" },
   { team: "Saint Louis", home: "CT", site: "Buffalo (ET)", direction: "east", zones: 1, pct: -3, final: true, note: "Final slot" },
-  { team: "Michigan", home: "ET", site: "Chicago (CT)", direction: "west", zones: 1, pct: -2, final: true, note: "Regional — still beats Alabama" },
+  { team: "Michigan", home: "ET", site: "Chicago (CT)", direction: "west", zones: 1, pct: -2, final: true, note: "Regional. Still beats Alabama." },
   { team: "Florida", home: "ET", site: "Houston (CT)", direction: "west", zones: 1, pct: -2, final: true, note: "FLIP → Houston wins Elite Eight" },
-  { team: "Arizona", home: "PT", site: "Indianapolis (ET)", direction: "east", zones: 3, pct: -9, final: false, note: "Final Four — Duke unaffected at 0%" },
+  { team: "Arizona", home: "PT", site: "Indianapolis (ET)", direction: "east", zones: 3, pct: -9, final: false, note: "Final Four. Duke unaffected at 0%." },
 ];
 
 export const BRACKET: Record<"east" | "west" | "south" | "midwest", RegionData> = {
@@ -184,7 +184,7 @@ export const BRACKET: Record<"east" | "west" | "south" | "midwest", RegionData> 
       { s1: 4, t1: "Kansas", s2: 13, t2: "Cal Baptist", w: 1, tags: [] },
       { s1: 6, t1: "Louisville", s2: 11, t2: "S. Florida", w: 1, tags: [] },
       { s1: 3, t1: "Michigan St.", s2: 14, t2: "N. Dakota St.", w: 1, tags: ["ND St. −3%"] },
-      { s1: 10, t1: "UCF", s2: 7, t2: "UCLA", w: 1, tags: ["TZ FLIP — UCLA −9%"] },
+      { s1: 10, t1: "UCF", s2: 7, t2: "UCLA", w: 1, tags: ["TZ FLIP: UCLA −9%"] },
       { s1: 2, t1: "UConn", s2: 15, t2: "Furman", w: 1, tags: [] },
     ],
     r2: [
@@ -223,7 +223,7 @@ export const BRACKET: Record<"east" | "west" | "south" | "midwest", RegionData> 
       { t1: "Arizona", t2: "Arkansas", w: 1, tags: ["Arkansas CT→PT −6%"] },
       { t1: "Gonzaga", t2: "Purdue", w: 1, tags: ["Purdue ET→PT −6% final"] },
     ],
-    e8: { t1: "Arizona", t2: "Gonzaga", w: 1, note: "Arizona to Final Four — PT perfect path, but −9% awaits in Indy" },
+    e8: { t1: "Arizona", t2: "Gonzaga", w: 1, note: "Arizona to Final Four. PT perfect path, but −9% awaits in Indy." },
   },
   south: {
     region: "South",
@@ -234,7 +234,7 @@ export const BRACKET: Record<"east" | "west" | "south" | "midwest", RegionData> 
       { s1: 9, t1: "Iowa", s2: 8, t2: "Clemson", w: 1, tags: ["Clemson overseeded, Welling out"] },
       { s1: 5, t1: "Vanderbilt", s2: 12, t2: "McNeese", w: 1, tags: ["Vanderbilt underseeded +5"] },
       { s1: 4, t1: "Nebraska", s2: 13, t2: "Troy", w: 1, tags: [] },
-      { s1: 10, t1: "Texas A&M", s2: 7, t2: "Saint Mary's", w: 1, tags: ["TZ FLIP — Saint Mary's −6%"] },
+      { s1: 10, t1: "Texas A&M", s2: 7, t2: "Saint Mary's", w: 1, tags: ["TZ FLIP: Saint Mary's −6%"] },
       { s1: 2, t1: "Houston", s2: 15, t2: "Idaho", w: 1, tags: ["Idaho −6%"] },
       { s1: 6, t1: "N. Carolina", s2: 11, t2: "VCU", w: 1, tags: [] },
       { s1: 3, t1: "Illinois", s2: 14, t2: "Penn", w: 1, tags: ["Illinois −3% final slot"] },
@@ -249,7 +249,7 @@ export const BRACKET: Record<"east" | "west" | "south" | "midwest", RegionData> 
       { t1: "Florida", t2: "Vanderbilt", w: 1, tags: ["Florida −2% ET→CT"] },
       { t1: "Houston", t2: "Illinois", w: 1, tags: ["Houston home region 0%"] },
     ],
-    e8: { t1: "Houston", t2: "Florida", w: 1, note: "BIGGEST UPSET — Houston home regional (0%) vs Florida −2% final. KP#4 vs #5. Florida fringe-trap." },
+    e8: { t1: "Houston", t2: "Florida", w: 1, note: "BIGGEST UPSET. Houston home regional (0%) vs Florida −2% final. KP#4 vs #5. Florida fringe-trap." },
   },
   midwest: {
     region: "Midwest",
@@ -287,7 +287,7 @@ export const PICKS: PickEntry[] = [
     region: "East",
     pick: "UCF over UCLA",
     reason: "UCLA PT→ET −9% · spread only −2.5 · mathematically clean reversal",
-    body: "UCLA (Pacific) travels cross-country to Philadelphia (Eastern) — a full 3-zone eastward jump, carrying a 9% output penalty. UCF is home time zone (Eastern), zero penalty. The opening line was only −2.5 for UCLA. With UCLA effectively operating at 91% of their statistical output, this flips cleanly to UCF. One of the highest-confidence TZ picks in the bracket.",
+    body: "UCLA (Pacific) travels cross-country to Philadelphia (Eastern), a full 3-zone eastward jump carrying a 9% output penalty. UCF is home time zone (Eastern), zero penalty. The opening line was only −2.5 for UCLA. With UCLA effectively operating at 91% of their statistical output, this flips cleanly to UCF. One of the highest-confidence TZ picks in the bracket.",
   },
   {
     group: "tz",
@@ -296,7 +296,7 @@ export const PICKS: PickEntry[] = [
     region: "South",
     pick: "Texas A&M over Saint Mary's",
     reason: "Saint Mary's PT→CT −6% · Texas A&M home TZ (CT=CT) · 7/10 matchup on the margin",
-    body: "Saint Mary's (Moraga, CA — Pacific) travels 2 time zones east to Oklahoma City (Central), absorbing a 6% output penalty. Texas A&M (College Station, TX) is Central time — same zone as the site, zero penalty. This is a 7-seed vs 10-seed matchup where that 6% edge is the entire margin. Texas A&M advances and faces Houston in Round 2 (where Houston wins).",
+    body: "Saint Mary's (Moraga, CA, Pacific) travels 2 time zones east to Oklahoma City (Central), absorbing a 6% output penalty. Texas A&M (College Station, TX) is Central time, same zone as the site, zero penalty. This is a 7-seed vs 10-seed matchup where that 6% edge is the entire margin. Texas A&M advances and faces Houston in Round 2 (where Houston wins).",
   },
   {
     group: "tz",
@@ -304,8 +304,8 @@ export const PICKS: PickEntry[] = [
     round: "R1",
     region: "East",
     pick: "Ohio St. over TCU",
-    reason: "TCU CT→ET −3% · already a coin-flip 8/9 — penalty breaks the tie",
-    body: "TCU (Fort Worth, TX — Central) travels east to Greenville (Eastern), picking up a 3% penalty. Ohio St. is Eastern, zero penalty. This was going to be close regardless — 8/9 games are historically near 50/50 — but the TZ math cleanly tips it to Ohio St. Duke beats them in Round 2 without issue.",
+    reason: "TCU CT→ET −3% · already a coin-flip 8/9, penalty breaks the tie",
+    body: "TCU (Fort Worth, TX, Central) travels east to Greenville (Eastern), picking up a 3% penalty. Ohio St. is Eastern, zero penalty. This was going to be close regardless. 8/9 games are historically near 50/50, but the TZ math cleanly tips it to Ohio St. Duke beats them in Round 2 without issue.",
   },
   {
     group: "tz",
@@ -314,7 +314,7 @@ export const PICKS: PickEntry[] = [
     region: "West",
     pick: "Utah St. over Villanova",
     reason: "Villanova ET→PT −9% + Matthew Hodge (starting guard) out",
-    body: "Villanova (Philadelphia, PA — Eastern) travels all the way west to San Diego (Pacific) — a 3-zone westward jump in the final broadcast slot, carrying a 9% output penalty. On top of that, Matthew Hodge (starting guard, 9 Pts/4 Reb) is out. Utah St. is a Mountain time team traveling to Pacific — just 1 zone, not in the final slot, so only a −3% hit. The net differential is enormous. Utah St. wins comfortably.",
+    body: "Villanova (Philadelphia, PA, Eastern) travels all the way west to San Diego (Pacific), a 3-zone westward jump in the final broadcast slot carrying a 9% output penalty. On top of that, Matthew Hodge (starting guard, 9 Pts/4 Reb) is out. Utah St. is a Mountain time team traveling to Pacific, just 1 zone, not in the final slot, so only a −3% hit. The net differential is enormous. Utah St. wins comfortably.",
   },
   {
     group: "tz",
@@ -323,7 +323,7 @@ export const PICKS: PickEntry[] = [
     region: "West",
     pick: "Missouri over Miami FL",
     reason: "Miami FL ET→CT −2% final broadcast slot · St. Louis is Miami's home turf on paper, not really",
-    body: "Miami FL (Coral Gables — Eastern) travels to St. Louis (Central) in the final broadcast slot — triggering the 2% westward penalty. Missouri (Columbia, MO) is Central, zero penalty at a home-state site. This is the smallest flip in the bracket — 2% — but Miami FL's blended analytics rank (#31) vs Missouri's (#46) was already close enough for the penalty to decide it.",
+    body: "Miami FL (Coral Gables, Eastern) travels to St. Louis (Central) in the final broadcast slot, triggering the 2% westward penalty. Missouri (Columbia, MO) is Central, zero penalty at a home-state site. This is the smallest flip in the bracket at just 2%, but Miami FL's blended analytics rank (#31) vs Missouri's (#46) was already close enough for the penalty to decide it.",
   },
   {
     group: "tz",
@@ -332,7 +332,7 @@ export const PICKS: PickEntry[] = [
     region: "Midwest",
     pick: "Georgia over Saint Louis",
     reason: "Saint Louis CT→ET −3% final slot · Georgia ET home TZ at Buffalo",
-    body: "Saint Louis (Missouri — Central) travels east to Buffalo (Eastern) for the final evening game, absorbing a 3% penalty in the final broadcast slot. Georgia (Athens, GA) is Eastern — zero penalty. The blended rankings have Georgia at #32 vs Saint Louis at #41, so this was chalky to begin with. The TZ edge just makes it more comfortable.",
+    body: "Saint Louis (Missouri, Central) travels east to Buffalo (Eastern) for the final evening game, absorbing a 3% penalty in the final broadcast slot. Georgia (Athens, GA) is Eastern, zero penalty. The blended rankings have Georgia at #32 vs Saint Louis at #41, so this was chalky to begin with. The TZ edge just makes it more comfortable.",
   },
   {
     group: "tz",
@@ -340,8 +340,8 @@ export const PICKS: PickEntry[] = [
     round: "R1",
     region: "Midwest",
     pick: "Kentucky over Santa Clara",
-    reason: "Santa Clara PT→CT −6% · two zones east · Kentucky ET travels to CT (west, not final slot — 0%)",
-    body: "Santa Clara (Silicon Valley — Pacific) travels two zones east to St. Louis (Central), eating a 6% output penalty with no mitigating factors. Kentucky (Lexington — Eastern) is actually traveling west to St. Louis, but since it's not the final broadcast slot, the westward rule doesn't trigger. Net: Santa Clara at −6%, Kentucky at 0%. The bracket has Kentucky winning this comfortably.",
+    reason: "Santa Clara PT→CT −6% · two zones east · Kentucky ET travels to CT (west, not final slot, 0%)",
+    body: "Santa Clara (Silicon Valley, Pacific) travels two zones east to St. Louis (Central), eating a 6% output penalty with no mitigating factors. Kentucky (Lexington, Eastern) is actually traveling west to St. Louis, but since it's not the final broadcast slot, the westward rule doesn't trigger. Net: Santa Clara at −6%, Kentucky at 0%. The bracket has Kentucky winning this comfortably.",
   },
   {
     group: "tz",
@@ -350,7 +350,7 @@ export const PICKS: PickEntry[] = [
     region: "West",
     pick: "Gonzaga over Purdue",
     reason: "Purdue ET→PT −6% final slot at San Jose · Gonzaga 0% (home PT) · Trapezoid-qualified",
-    body: "Purdue (West Lafayette, IN — Eastern) travels three zones west to San Jose (Pacific) for the Sweet 16 in what will be an evening game — triggering the 6% westward final-slot penalty. Gonzaga (Spokane, WA — Pacific) is home time zone, zero penalty. On top of that, Gonzaga is a legitimate Trapezoid of Excellence team (KP#10), while Purdue plays historically slow (364th pace). Purdue has the #1 adjusted offensive efficiency in the nation, making them a genuine dark horse — but the path kills them.",
+    body: "Purdue (West Lafayette, IN, Eastern) travels three zones west to San Jose (Pacific) for the Sweet 16 in what will be an evening game, triggering the 6% westward final-slot penalty. Gonzaga (Spokane, WA, Pacific) is home time zone, zero penalty. On top of that, Gonzaga is a legitimate Trapezoid of Excellence team (KP#10), while Purdue plays historically slow (364th pace). Purdue has the #1 adjusted offensive efficiency in the nation, making them a genuine dark horse, but the path kills them.",
   },
   {
     group: "tz",
@@ -359,7 +359,7 @@ export const PICKS: PickEntry[] = [
     region: "South",
     pick: "Houston over Florida",
     reason: "Florida ET→CT −2% final slot · Houston home regional (0%) · KP#5 vs KP#4 · Florida fringe-trap",
-    body: "This is the biggest upset in the bracket and the most analytically loaded pick. Houston's regional site is literally their home city — they play Round 1/2 in Oklahoma City (CT, same zone), then the Elite Eight in Houston, TX (CT, still home). Zero accumulated TZ penalty through five rounds. Florida (Gainesville — Eastern) travels one zone west to Houston in what will be the final evening game, triggering the 2% westward penalty. The KenPom gap is razor thin: Florida is #4, Houston is #5 in the blended rankings. Florida is flagged as 'Fringe Trap — too fast' in the Trapezoid model. Houston's defense is elite (#5 adj. def. eff.). The TZ advantage plus defensive profile plus Trapezoid flag tips this to Houston.",
+    body: "This is the biggest upset in the bracket and the most analytically loaded pick. Houston's regional site is literally their home city. They play Round 1/2 in Oklahoma City (CT, same zone), then the Elite Eight in Houston, TX (CT, still home). Zero accumulated TZ penalty through five rounds. Florida (Gainesville, Eastern) travels one zone west to Houston in what will be the final evening game, triggering the 2% westward penalty. The KenPom gap is razor thin: Florida is #4, Houston is #5 in the blended rankings. Florida is flagged as 'Fringe Trap, too fast' in the Trapezoid model. Houston's defense is elite (#5 adj. def. eff.). The TZ advantage plus defensive profile plus Trapezoid flag tips this to Houston.",
   },
   {
     group: "analytics",
@@ -368,7 +368,7 @@ export const PICKS: PickEntry[] = [
     region: "East",
     pick: "St. John's over N. Iowa",
     reason: "St. John's underseeded +3 · KP#15 as a 5-seed · N. Iowa is 68th in adjusted offensive efficiency",
-    body: "St. John's (Big East) is the 15th-best team in the blended multi-system rankings playing as a 5-seed — underseeded by 3 positions on the S-curve. Northern Iowa ranks 68th in adjusted offensive efficiency among the 68 tournament teams (second-worst in the field). This is a comfortable first-round win.",
+    body: "St. John's (Big East) is the 15th-best team in the blended multi-system rankings playing as a 5-seed, underseeded by 3 positions on the S-curve. Northern Iowa ranks 68th in adjusted offensive efficiency among the 68 tournament teams (second-worst in the field). This is a comfortable first-round win.",
   },
   {
     group: "analytics",
@@ -377,7 +377,7 @@ export const PICKS: PickEntry[] = [
     region: "East",
     pick: "St. John's over Kansas",
     reason: "St. John's underseeded +3 (KP#15) · Kansas overseeded −5 (KP#21 as 4-seed) · biggest seed error in the field",
-    body: "Kansas is overseeded by 5 positions on the S-curve — the largest overseeding error for a top-4 seed. The committee placed them 15th on the S-curve; analytics say 20th. St. John's, meanwhile, is underseeded by 3 (expected 15th, placed 18th). In reality these two teams are much closer to equals than the 4-vs-5 matchup implies, and St. John's has the better blended profile. Kansas exits in Round 2.",
+    body: "Kansas is overseeded by 5 positions on the S-curve, the largest overseeding error for a top-4 seed. The committee placed them 15th on the S-curve; analytics say 20th. St. John's, meanwhile, is underseeded by 3 (expected 15th, placed 18th). In reality these two teams are much closer to equals than the 4-vs-5 matchup implies, and St. John's has the better blended profile. Kansas exits in Round 2.",
   },
   {
     group: "analytics",
@@ -386,7 +386,7 @@ export const PICKS: PickEntry[] = [
     region: "South",
     pick: "Vanderbilt to Sweet 16",
     reason: "Most underseeded team in the field (+5 S-diff) · KP#12 playing as a 5-seed · beats Nebraska in R2",
-    body: "S-curve analysis from the Eisenberg Guide confirms Vanderbilt is the single most underseeded team in the entire 68-team field. Their expected S-curve position is 12th; the committee placed them 17th — nearly a full seed line of error. The blended multi-system rank is #13 overall (BPI 14, EM 14, KPI 9, NET 13, KenPom 12). They're a 5-seed with a 2-seed's analytics profile. Nebraska (their Round 2 opponent) is overseeded by 3 on the S-curve and has a worse blended rank. Vanderbilt reaches the Sweet 16 with high conviction.",
+    body: "S-curve analysis from the Eisenberg Guide confirms Vanderbilt is the single most underseeded team in the entire 68-team field. Their expected S-curve position is 12th; the committee placed them 17th, nearly a full seed line of error. The blended multi-system rank is #13 overall (BPI 14, EM 14, KPI 9, NET 13, KenPom 12). They're a 5-seed with a 2-seed's analytics profile. Nebraska (their Round 2 opponent) is overseeded by 3 on the S-curve and has a worse blended rank. Vanderbilt reaches the Sweet 16 with high conviction.",
   },
   {
     group: "analytics",
@@ -395,7 +395,7 @@ export const PICKS: PickEntry[] = [
     region: "South",
     pick: "Iowa over Clemson",
     reason: "Clemson overseeded −2 · Carter Welling (starter) out · Iowa underseeded +3 · TZ only −3%",
-    body: "Iowa absorbs a −3% east penalty traveling to Tampa (CT→ET), which initially looks like a concern. But Clemson's starting forward Carter Welling is out with an ACC tourney injury, Clemson is overseeded by 2 on the S-curve, and Iowa is underseeded by 3. The Eisenberg Guide's opening line data also shows Clemson is a slow-paced team with mediocre defense — not a great matchup profile. The injury and S-curve gap comfortably outweigh the TZ penalty. Iowa advances.",
+    body: "Iowa absorbs a −3% east penalty traveling to Tampa (CT→ET), which initially looks like a concern. But Clemson's starting forward Carter Welling is out with an ACC tourney injury, Clemson is overseeded by 2 on the S-curve, and Iowa is underseeded by 3. The Eisenberg Guide's opening line data also shows Clemson is a slow-paced team with mediocre defense, not a great matchup profile. The injury and S-curve gap comfortably outweigh the TZ penalty. Iowa advances.",
   },
   {
     group: "analytics",
@@ -404,7 +404,7 @@ export const PICKS: PickEntry[] = [
     region: "Midwest",
     pick: "Michigan over Alabama",
     reason: "Alabama 356th defense nationally · overseeded −3 · CT→ET −3% · Michigan #2 adj. def. eff.",
-    body: "Alabama allows 83.5 PPG — dead last (356th nationally) among all 68 tournament teams. For context, that's historically bad defense for a 4-seed in any era. They're also overseeded by 3 on the S-curve and absorb a −3% TZ penalty going to Tampa. Their offense is real (fastest pace, #3 adj. off. eff., Aden Holloway and Louis Philon are legitimate scorers) but Michigan's #2 adjusted defensive efficiency (91.0) is purpose-built to neutralize exactly that style. Alabama's run ends in the Sweet 16.",
+    body: "Alabama allows 83.5 PPG, dead last (356th nationally) among all 68 tournament teams. For context, that's historically bad defense for a 4-seed in any era. They're also overseeded by 3 on the S-curve and absorb a −3% TZ penalty going to Tampa. Their offense is real (fastest pace, #3 adj. off. eff., Aden Holloway and Louis Philon are legitimate scorers) but Michigan's #2 adjusted defensive efficiency (91.0) is purpose-built to neutralize exactly that style. Alabama's run ends in the Sweet 16.",
   },
   {
     group: "analytics",
@@ -413,7 +413,7 @@ export const PICKS: PickEntry[] = [
     region: "South",
     pick: "Illinois over N. Carolina",
     reason: "Illinois KP#7 · stronger analytics profile than their 3-seed suggests · UNC overseeded",
-    body: "Illinois ranks 7th in the blended multi-system rankings — better than their 3-seed implies — with strong adjusted offensive efficiency (#2 nationally at 131.9) and a solid defensive profile. North Carolina (KP#24 blended) is a 6-seed that plays solid basketball but doesn't have the analytics profile to beat Illinois in a second-round game. Illinois advances to the Sweet 16 where they face Houston.",
+    body: "Illinois ranks 7th in the blended multi-system rankings, better than their 3-seed implies, with strong adjusted offensive efficiency (#2 nationally at 131.9) and a solid defensive profile. North Carolina (KP#24 blended) is a 6-seed that plays solid basketball but doesn't have the analytics profile to beat Illinois in a second-round game. Illinois advances to the Sweet 16 where they face Houston.",
   },
   {
     group: "analytics",
@@ -422,7 +422,7 @@ export const PICKS: PickEntry[] = [
     region: "Midwest",
     pick: "Virginia over Tennessee",
     reason: "Virginia KP#9 blended · underseeded +3 on S-curve · should be a 2-seed",
-    body: "Virginia's blended multi-system rank is #9 overall — dramatically better than a 3-seed. The S-curve analysis has them underseeded by 3 positions (expected 9th, placed 12th). Their defensive efficiency is elite. Tennessee (22-11 record, KP#16 blended) is the weaker team here despite equivalent seeding. Virginia advances to the Sweet 16 where Iowa St. edges them.",
+    body: "Virginia's blended multi-system rank is #9 overall, dramatically better than a 3-seed. The S-curve analysis has them underseeded by 3 positions (expected 9th, placed 12th). Their defensive efficiency is elite. Tennessee (22-11 record, KP#16 blended) is the weaker team here despite equivalent seeding. Virginia advances to the Sweet 16 where Iowa St. edges them.",
   },
   {
     group: "confirm",
@@ -431,7 +431,7 @@ export const PICKS: PickEntry[] = [
     region: "East",
     pick: "Duke wins the championship",
     reason: "#1 in all 8 systems · 0% TZ penalty every round · best defense in country (90.8)",
-    body: "Duke is ranked #1 in every one of the 8 metric systems used in the Eisenberg Guide: BPI (1), Evan Miya (1), KPI (1), NCAA NET (1), KenPom (1), SOR (3), T-Rank (1), WAB (2). They hold the best adjusted defensive efficiency in the nation at 90.8. Cooper Boozer scores at 22.5 PPG with 29.6% usage. Critically, Duke plays every single game in Eastern time — Greenville (ET), Washington D.C. (ET), Indianapolis (ET). Zero accumulated travel penalty from first round through the national championship. Their Final Four opponent Arizona absorbs a brutal −9% hit stepping off the plane in Indianapolis. The case is airtight.",
+    body: "Duke is ranked #1 in every one of the 8 metric systems used in the Eisenberg Guide: BPI (1), Evan Miya (1), KPI (1), NCAA NET (1), KenPom (1), SOR (3), T-Rank (1), WAB (2). They hold the best adjusted defensive efficiency in the nation at 90.8. Cooper Boozer scores at 22.5 PPG with 29.6% usage. Critically, Duke plays every single game in Eastern time: Greenville (ET), Washington D.C. (ET), Indianapolis (ET). Zero accumulated travel penalty from first round through the national championship. Their Final Four opponent Arizona absorbs a brutal −9% hit stepping off the plane in Indianapolis. The case is airtight.",
   },
   {
     group: "confirm",
@@ -440,7 +440,7 @@ export const PICKS: PickEntry[] = [
     region: "Midwest",
     pick: "Michigan to the Final Four",
     reason: "#2 in all 8 systems · #2 adj. def. eff. (91.0) · beats Alabama (worst defense) and Iowa St.",
-    body: "Michigan is #2 in the blended multi-system rankings across every metric. Their adjusted defensive efficiency of 91.0 is second only to Duke in the entire field. They face Alabama in the Sweet 16 — the team with the worst defense in the tournament (356th nationally) — and Iowa St. in the Elite Eight. The Chicago regional is one zone west for Michigan (−2% in the final slot), but that's a manageable penalty against inferior opponents. Michigan reaches Indianapolis at 0% penalty for the Final Four.",
+    body: "Michigan is #2 in the blended multi-system rankings across every metric. Their adjusted defensive efficiency of 91.0 is second only to Duke in the entire field. They face Alabama in the Sweet 16, the team with the worst defense in the tournament (356th nationally), and Iowa St. in the Elite Eight. The Chicago regional is one zone west for Michigan (−2% in the final slot), but that's a manageable penalty against inferior opponents. Michigan reaches Indianapolis at 0% penalty for the Final Four.",
   },
   {
     group: "confirm",
@@ -448,8 +448,8 @@ export const PICKS: PickEntry[] = [
     round: "FF",
     region: "West",
     pick: "Arizona to the Final Four (then −9% in Indy)",
-    reason: "Perfect PT path all the way — then the cliff: PT→ET −9% vs Duke at 0%",
-    body: "Arizona's path through the West is perfectly aligned: Tucson (Pacific), San Diego (Pacific), San Jose (Pacific). Zero accumulated travel penalty through six rounds. They're #2 in the blended rankings, #1 in SOR. Then they board a plane to Indianapolis (Eastern) and absorb a 9% output penalty for the national semifinal against Duke — who has been at 100% output since day one. The analytics gap between Duke and Arizona is not large enough to survive a 9-point swing. Arizona is eliminated in the semis.",
+    reason: "Perfect PT path all the way, then the cliff: PT→ET −9% vs Duke at 0%",
+    body: "Arizona's path through the West is perfectly aligned: Tucson (Pacific), San Diego (Pacific), San Jose (Pacific). Zero accumulated travel penalty through six rounds. They're #2 in the blended rankings, #1 in SOR. Then they board a plane to Indianapolis (Eastern) and absorb a 9% output penalty for the national semifinal against Duke, who has been at 100% output since day one. The analytics gap between Duke and Arizona is not large enough to survive a 9-point swing. Arizona is eliminated in the semis.",
   },
   {
     group: "confirm",
@@ -458,7 +458,7 @@ export const PICKS: PickEntry[] = [
     region: "South",
     pick: "Houston to the Final Four",
     reason: "Home regional (0% accumulated) · KP#5 · elite defense · only −3% at Final Four",
-    body: "Houston's structural TZ advantage is the most underappreciated factor in the bracket. Oklahoma City (Round 1/2) is Central time — same zone as Houston. Their regional site is literally Houston, TX. Zero accumulated TZ penalty through five rounds. They pick up just −3% heading to Indianapolis for the Final Four — the smallest penalty among the four Final Four teams. For a KP#5 team with the 5th-best adjusted defensive efficiency in the field, that's a significant structural edge. They beat Florida (who pays −2% at the Houston regional) in the Elite Eight and face Michigan in Indianapolis.",
+    body: "Houston's structural TZ advantage is the most underappreciated factor in the bracket. Oklahoma City (Round 1/2) is Central time, same zone as Houston. Their regional site is literally Houston, TX. Zero accumulated TZ penalty through five rounds. They pick up just −3% heading to Indianapolis for the Final Four, the smallest penalty among the four Final Four teams. For a KP#5 team with the 5th-best adjusted defensive efficiency in the field, that's a significant structural edge. They beat Florida (who pays −2% at the Houston regional) in the Elite Eight and face Michigan in Indianapolis.",
   },
 ];
 

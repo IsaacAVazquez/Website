@@ -28,7 +28,7 @@ export function AuthorBio({
   name = "Isaac Vazquez",
   title = "UC Berkeley Haas MBA Candidate",
   image = "/images/headshot-home.webp",
-  bio = "I'm a full-time MBA Candidate at UC Berkeley Haas with a background in QA and product work across SaaS and civic technology. I build investment research and fintech tools on the side because I'm genuinely interested in how product design and decision support come together in practice.",
+  bio = "I'm an MBA candidate at UC Berkeley Haas with six years in QA and product across SaaS and civic tech. Most of what I write comes from things I've actually built or gotten wrong, including investment research tooling, draft strategy models, and product decisions that didn't go the way I planned. I write to work through ideas, not to summarize them.",
   credentials = [
     "UC Berkeley Haas MBA Candidate '27",
     "Consortium Fellow",
@@ -215,12 +215,9 @@ export function AuthorBio({
         {/* Author Info */}
         <div className="flex-1">
           <div className="mb-4">
-            <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2" itemProp="name">
-              About the Author
-            </h3>
-            <h4 className="text-xl font-semibold text-[var(--text-primary)] mb-1">
+            <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-1" itemProp="name">
               {name}
-            </h4>
+            </h3>
             <p className="text-base text-[var(--text-tertiary)]" itemProp="jobTitle">
               {title}
             </p>
@@ -232,30 +229,6 @@ export function AuthorBio({
             </p>
           )}
 
-          {/* Credentials Section */}
-          {credentials && credentials.length > 0 && (
-            <div className="mb-4">
-              <p className="text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-2">
-                Credentials & Experience
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {credentials.map((cred, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-2"
-                    itemProp="hasCredential"
-                    itemScope
-                    itemType="https://schema.org/EducationalOccupationalCredential"
-                  >
-                    <span className="text-[var(--text-primary)]">•</span>
-                    <span className="text-sm text-[var(--text-secondary)]" itemProp="name">
-                      {cred}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Expertise Section */}
           {expertise && expertise.length > 0 && (
@@ -281,7 +254,7 @@ export function AuthorBio({
           {showSocial && social && (
             <div className="flex items-center gap-4 pt-4 border-t border-[var(--border-primary)]">
               <p className="text-sm font-semibold text-[var(--text-primary)]">
-                Connect:
+                
               </p>
               {social.linkedin && (
                 <Link

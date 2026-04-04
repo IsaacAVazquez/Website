@@ -149,7 +149,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
               </h1>
               <p className="mt-3 max-w-[68ch] text-sm leading-7 text-[var(--text-secondary)] sm:text-[0.95rem]">
                 Live feed aggregating headlines from 6 major news outlets. Explore coverage patterns,
-                trending topics, and headline sentiment — all powered by RSS with client-side NLP.
+                trending topics, and headline sentiment, all powered by RSS with client-side NLP.
               </p>
             </div>
 
@@ -620,7 +620,7 @@ function AnalysisView({
       <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-6 shadow-[var(--shadow-sm)] lg:col-span-2">
         <h2 className="mb-1 text-base font-bold text-[var(--text-primary)]">Readability Score</h2>
         <p className="mb-5 text-xs text-[var(--text-tertiary)]">
-          Flesch Reading Ease approximation — higher is easier to read (0–100 scale)
+          Flesch Reading Ease approximation. Higher is easier to read (0–100 scale).
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {sourceIds.map((s: string) => {
