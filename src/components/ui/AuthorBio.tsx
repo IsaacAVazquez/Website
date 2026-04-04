@@ -26,9 +26,9 @@ export interface AuthorBioProps {
 
 export function AuthorBio({
   name = "Isaac Vazquez",
-  title = "Technical Product Manager & UC Berkeley Haas MBA Candidate",
+  title = "UC Berkeley Haas MBA Candidate",
   image = "/images/headshot-home.webp",
-  bio = "Product manager with 6+ years across SaaS and high-scale consumer platforms, currently pursuing MBA at UC Berkeley Haas. Building mission-driven products that balance user insight, data-driven decisions, and cross-functional collaboration.",
+  bio = "I'm a full-time MBA Candidate at UC Berkeley Haas with a background in QA and product work across SaaS and civic technology. I build investment research and fintech tools on the side because I'm genuinely interested in how product design and decision support come together in practice.",
   credentials = [
     "UC Berkeley Haas MBA Candidate '27",
     "Consortium Fellow",

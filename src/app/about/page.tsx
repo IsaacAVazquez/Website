@@ -5,9 +5,9 @@ import About from "@/components/About";
 export const metadata = generateAIOptimizedMetadata({
   title: "About",
   description:
-    "Bay Area product manager with a QA-to-product background and experience across analytics, platform reliability, and product execution.",
+    "Full-time MBA Candidate at UC Berkeley Haas with a background in QA, analytics, and product work across SaaS and civic technology.",
   summary:
-    "Technical Product Manager with 6+ years in SaaS and analytics-intensive product work, currently pursuing an MBA at UC Berkeley Haas",
+    "MBA Candidate at UC Berkeley Haas with six years across SaaS and civic technology product and quality work.",
   expertise: [
     "Product Management",
     "Product Strategy",
@@ -24,7 +24,7 @@ export const metadata = generateAIOptimizedMetadata({
     "UC Berkeley Haas MBA Candidate • Consortium Fellow • MLT Professional Development Fellow • Based in the Bay Area • Focused on SaaS, analytics, and fintech-style product work",
   author: {
     name: "Isaac Vazquez",
-    title: "Technical Product Manager & UC Berkeley Haas MBA Candidate",
+    title: "UC Berkeley Haas MBA Candidate",
     credentials: [
       "UC Berkeley Haas MBA Candidate '27",
       "Consortium Fellow",
@@ -59,12 +59,12 @@ export default function AboutPage() {
           data: {
             url: "https://isaacavazquez.com/about",
             description:
-              "Professional profile of Isaac Vazquez - Technical Product Manager and UC Berkeley Haas MBA Candidate with expertise in product strategy, quality engineering, analytics, and fintech-style product work.",
+              "Professional profile of Isaac Vazquez - UC Berkeley Haas MBA Candidate with a background in QA, analytics, and product work across SaaS and civic technology.",
             person: {
               name: "Isaac Vazquez",
-              jobTitle: "Technical Product Manager & UC Berkeley Haas MBA Candidate",
+              jobTitle: "UC Berkeley Haas MBA Candidate",
               description:
-                "Product manager with a technical background building products across SaaS, civic technology, and fintech-style platforms. Expertise in product strategy, user research, quality assurance, and data-driven decision making.",
+                "MBA Candidate at UC Berkeley Haas with a background in QA and product work. Builds investment research and fintech tools focused on analytics, trust, and user decision-making.",
               url: "https://isaacavazquez.com",
               email: "IsaacVazquez@berkeley.edu",
               sameAs: [

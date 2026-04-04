@@ -34,7 +34,7 @@ export default function About() {
             align="center"
             size="lg"
             headingLevel={1}
-            title="A product manager with roots in QA, analytics, and execution."
+            title="An MBA candidate with roots in QA, analytics, and product execution."
             description="My background combines product strategy with hands-on experience in quality, systems thinking, and cross-functional delivery."
           />
         </motion.div>
@@ -129,36 +129,27 @@ const OverviewContent = () => {
           </Heading>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            I&apos;m a technical product manager with a background in QA and
-            analytics. At Civitech I work across quality and product for
-            platforms that serve 60M+ users, helping teams turn complex system
-            and user signals into practical decisions.
+            I&apos;m a full-time MBA Candidate at UC Berkeley Haas with a background in QA and analytics. Before business school, I spent six years building products across SaaS and civic technology.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            On the product side, I define problems before jumping to solutions, balance user and business needs, and keep teams aligned around outcomes that matter. I work comfortably with automation, SQL, and APIs, so my product decisions stay connected to how the system actually behaves rather than how I imagine it does. Data is how I check my assumptions and make measurement legible to the people doing the work, not a substitute for judgment.
+            What a QA background actually teaches you is to distrust your own assumptions. I don&apos;t write product requirements by imagining how users will behave. I look at what the system is doing, find where the gaps are, and work from there. I&apos;m comfortable with automation, SQL, and APIs, and I lean on them because they keep my product decisions connected to how things actually work rather than how I imagine they do. Data is how I check my assumptions and make measurement legible to the people doing the work, not a substitute for judgment.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Outside of my core role at Civitech, I build investment research and fintech tools to stay close to how product design and decision support come together in practice. That curiosity, plus the leadership side of the job — supporting launches, mentoring teammates, creating the clarity teams need to ship — is what keeps the work interesting.
+            Right now I&apos;m building investment research and fintech tools because I&apos;m genuinely curious about how product design and decision support come together. That curiosity is why I ended up in product work in the first place, and it&apos;s what keeps me building things outside of class.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Before Civitech I led client services at Open Progress, running 80+
-            digital programs, building data pipelines, and using audience
-            analytics to make campaigns resonate with the people on the other
-            end.
+            Before business school, I ran client services at Open Progress, managing 80+ digital programs and building the data pipelines that made campaign analytics actually useful to the people running them.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            I&apos;m earning my MBA at UC Berkeley Haas to deepen the strategy
-            side of the work while continuing to build products that help people
-            make better decisions.
+            I&apos;m at Haas to sharpen the strategy side of product work while I continue to build things I find interesting. Those two things are related.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-primary)] leading-relaxed font-medium">
-            I&apos;m especially interested in products that sit at the intersection
-            of analytics, trust, and clear user decision-making.
+            I&apos;m most interested in products at the intersection of analytics, trust, and clear user decision-making.
           </p>
         </div>
       </WarmCard>
