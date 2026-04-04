@@ -1,4 +1,5 @@
 import { StructuredData } from "@/components/StructuredData";
+import { premierLeagueSnapshot } from "@/data/premierLeagueSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { PremierLeagueClient } from "./premier-league-client";
 import { normalizePremierLeagueState } from "./premier-league-state";
@@ -7,17 +8,17 @@ import { normalizePremierLeagueState } from "./premier-league-state";
 export const metadata = constructMetadata({
   title: "Premier League Pulse | Isaac Vazquez",
   description:
-    "Live Premier League dashboard with standings, recent and upcoming fixtures, and club-level drilldowns powered by a server-side football-data proxy.",
+    "Premier League dashboard with standings, recent and upcoming fixtures, and club-level drilldowns backed by a checked-in snapshot.",
   canonicalUrl: "/premier-league",
-  dateModified: "2026-04-03",
+  dateModified: premierLeagueSnapshot.summary.generatedAt.slice(0, 10),
   aiMetadata: {
     profession: "Product Manager",
-    specialty: "Interactive sports dashboards, API-backed product surfaces, and exploratory data UX",
+    specialty: "Interactive sports dashboards, snapshot-driven product surfaces, and exploratory data UX",
     expertise: [
       "Next.js",
       "Sports data products",
       "Dashboard design",
-      "API normalization",
+      "Snapshot normalization",
       "Deep-linkable UI state",
     ],
     industry: ["Sports", "Media", "Analytics"],
@@ -29,11 +30,11 @@ export const metadata = constructMetadata({
     ],
     contentType: "Software Application",
     context:
-      "Standalone Premier League tool by Isaac Vazquez that packages live football-data.org competition data into a deep-linkable product surface.",
+      "Standalone Premier League tool by Isaac Vazquez that packages a checked-in competition snapshot into a deep-linkable product surface.",
     summary:
       "Premier League dashboard for standings, fixtures, and club-level recent-form drilldowns.",
     primaryFocus:
-      "API-backed sports exploration, fast dashboard UX, and shareable league views",
+      "Snapshot-driven sports exploration, fast dashboard UX, and shareable league views",
   },
 });
 
@@ -65,7 +66,7 @@ export default async function PremierLeaguePage({ searchParams }: PremierLeagueP
         data={{
           name: "Premier League Pulse",
           description:
-            "Live Premier League dashboard with standings, fixture tracking, and club-level form drilldowns.",
+            "Premier League dashboard with standings, fixture tracking, and club-level form drilldowns backed by a checked-in snapshot.",
           url: "https://isaacavazquez.com/premier-league",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
@@ -73,11 +74,14 @@ export default async function PremierLeaguePage({ searchParams }: PremierLeagueP
             "Deep-linkable overview, fixtures, and club views",
             "League standings with quick club drilldowns",
             "Recent and upcoming fixture tracking",
-            "Club form summaries powered by a server-side API proxy",
+            "Club form summaries backed by a checked-in snapshot",
           ],
         }}
       />
-      <PremierLeagueClient initialState={initialState} />
+      <PremierLeagueClient
+        initialState={initialState}
+        snapshot={premierLeagueSnapshot}
+      />
     </>
   );
 }

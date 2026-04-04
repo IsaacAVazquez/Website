@@ -157,7 +157,8 @@ This is intentional to avoid stacked closing CTAs.
 ### Premier League
 
 - `/premier-league` is a standalone sports dashboard route
-- live Premier League data is fetched server-side via `football-data.org`
+- Premier League data is served from a checked-in snapshot at `src/data/premierLeagueSnapshot.ts`
+- `football-data.org` is only used when rebuilding that snapshot through the updater script or workflow
 - the client shell manages deep-linkable `overview`, `fixtures`, and `team` views
 
 ### March Madness

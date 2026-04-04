@@ -19,8 +19,8 @@ Current API route map.
 | `/api/investments/data/[symbol]` | GET | Section-based investment research payloads |
 | `/api/investments/index` | GET | Curated investments index/availability |
 | `/api/investments/quotes` | GET | Quote proxy for the investments UI |
-| `/api/premier-league/summary` | GET | League table, fixtures, and club options for `/premier-league` |
-| `/api/premier-league/teams/[teamId]` | GET | Team-specific drilldown payload for `/premier-league` |
+| `/api/premier-league/summary` | GET | Snapshot-backed league table, fixtures, and club options for `/premier-league` |
+| `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/premier-league` |
 | `/api/rss` | GET | RSS feed |
 | `/api/sample-data` | GET | Sample fantasy data |
 | `/api/scheduled-update` | POST | Scheduled fantasy refresh |

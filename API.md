@@ -33,8 +33,8 @@ Current API route inventory for the app.
 | `/api/investments/index` | GET | Curated research index / availability info |
 | `/api/investments/quotes` | GET | Quote proxy for investments UI |
 | `/api/investments/data/[symbol]` | GET | Section-based curated research payloads |
-| `/api/premier-league/summary` | GET | League table, fixtures, and club options for the Premier League tool |
-| `/api/premier-league/teams/[teamId]` | GET | Team-specific Premier League drilldown payload |
+| `/api/premier-league/summary` | GET | Snapshot-backed league table, fixtures, and club options for the Premier League tool |
+| `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed Premier League club drilldown payload |
 | `/api/stocks` | GET | Quote source used by investments flows |
 
 ### Content and utilities

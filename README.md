@@ -105,6 +105,7 @@ SITE_URL=https://isaacavazquez.com
 ```
 
 `update:investments` also expects the Python environment described in `DEVELOPMENT.md`.
+`update:premier-league` uses `FOOTBALL_DATA_API_TOKEN` only when rebuilding the checked-in Premier League snapshot.
 
 ---
 

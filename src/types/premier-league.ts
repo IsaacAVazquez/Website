@@ -93,3 +93,17 @@ export interface PremierLeagueTeamSnapshot {
   form: PremierLeagueFormSummary;
   generatedAt: string;
 }
+
+export interface PremierLeagueSnapshotSourceUrls {
+  provider: string;
+  standings: string;
+  fixtures: string;
+  teams: string;
+}
+
+export interface PremierLeagueSnapshot {
+  sourceLabel: string;
+  sourceUrls: PremierLeagueSnapshotSourceUrls;
+  summary: PremierLeagueSummary;
+  teamSnapshots: Record<string, PremierLeagueTeamSnapshot>;
+}

@@ -325,20 +325,20 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "premier-league-pulse",
     title: "Premier League Pulse",
     description:
-      "Live Premier League dashboard with standings, recent and upcoming fixtures, and club-level form drilldowns powered by a server-side football-data proxy.",
+      "Premier League dashboard with standings, recent and upcoming fixtures, and club-level form drilldowns backed by a checked-in snapshot.",
     role: "Product Designer & Builder",
     timeline: "2026",
-    tools: ["Next.js", "TypeScript", "football-data.org API", "Tailwind CSS"],
-    metrics: "Live standings · Fixture tracking · Club form drilldowns",
+    tools: ["Next.js", "TypeScript", "Snapshot pipeline", "Tailwind CSS"],
+    metrics: "Checked-in standings · Fixture tracking · Club form drilldowns",
     github: "https://github.com/IsaacAVazquez",
     link: "/premier-league",
     featured: true,
 
     overview: {
       summary:
-        "I built a Premier League dashboard that packages live competition data into a deep-linkable product surface for standings, fixtures, and club-level recent-form exploration.",
+        "I built a Premier League dashboard that packages a checked-in competition snapshot into a deep-linkable product surface for standings, fixtures, and club-level recent-form exploration.",
       impact:
-        "Turns a server-side football-data proxy into a fast, shareable league exploration tool without requiring third-party embed widgets.",
+        "Turns a scheduled snapshot pipeline into a fast, shareable league exploration tool without a live runtime dependency.",
     },
     problem: {
       context:

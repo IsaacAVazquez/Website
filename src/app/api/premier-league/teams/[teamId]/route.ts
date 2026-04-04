@@ -3,7 +3,7 @@ import {
   createEmptyPremierLeagueTeamSnapshot,
   getPremierLeagueTeamSnapshot,
   isValidPremierLeagueTeamId,
-} from "@/lib/premierLeagueData";
+} from "@/lib/premierLeagueSnapshot";
 
 const CACHE_HEADERS = {
   "Cache-Control": "public, max-age=300, stale-while-revalidate=900",

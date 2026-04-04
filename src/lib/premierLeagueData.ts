@@ -1,6 +1,5 @@
-import "server-only";
-
 import type {
+  PremierLeagueSnapshot,
   PremierLeagueCompetitionMeta,
   PremierLeagueFixture,
   PremierLeagueFixtureTeam,
@@ -527,5 +526,37 @@ export async function getPremierLeagueTeamSnapshot(
     upcomingFixtures,
     form: buildTeamFormSummary(teamId, recentFixtures),
     generatedAt: new Date().toISOString(),
+  };
+}
+
+export async function buildPremierLeagueSnapshot(): Promise<PremierLeagueSnapshot> {
+  const summary = await getPremierLeagueSummary();
+  const generatedAt = new Date().toISOString();
+  const teamSnapshotsEntries: Array<[string, PremierLeagueTeamSnapshot]> = [];
+
+  for (const team of summary.teams) {
+    const teamSnapshot = await getPremierLeagueTeamSnapshot(team.id);
+    teamSnapshotsEntries.push([
+      team.id,
+      {
+        ...teamSnapshot,
+        generatedAt,
+      },
+    ]);
+  }
+
+  return {
+    sourceLabel: "football-data.org snapshot",
+    sourceUrls: {
+      provider: "https://www.football-data.org/",
+      standings: "https://www.football-data.org/documentation/api#_standings",
+      fixtures: "https://www.football-data.org/documentation/api#_matches",
+      teams: "https://www.football-data.org/documentation/api#_teams",
+    },
+    summary: {
+      ...summary,
+      generatedAt,
+    },
+    teamSnapshots: Object.fromEntries(teamSnapshotsEntries),
   };
 }

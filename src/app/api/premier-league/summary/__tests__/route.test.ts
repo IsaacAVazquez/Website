@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-jest.mock("@/lib/premierLeagueData", () => ({
+jest.mock("@/lib/premierLeagueSnapshot", () => ({
   createEmptyPremierLeagueSummary: jest.fn(() => ({
     competition: null,
     standings: [],
@@ -14,7 +14,7 @@ jest.mock("@/lib/premierLeagueData", () => ({
 }));
 
 import { GET } from "../route";
-import { getPremierLeagueSummary } from "@/lib/premierLeagueData";
+import { getPremierLeagueSummary } from "@/lib/premierLeagueSnapshot";
 
 const mockGetPremierLeagueSummary = getPremierLeagueSummary as jest.MockedFunction<
   typeof getPremierLeagueSummary
@@ -58,9 +58,9 @@ describe("GET /api/premier-league/summary", () => {
     );
   });
 
-  it("returns a stable empty payload when the provider is unavailable", async () => {
+  it("returns a stable empty payload when the snapshot is unavailable", async () => {
     mockGetPremierLeagueSummary.mockRejectedValue(
-      Object.assign(new Error("Premier League data source is not configured."), {
+      Object.assign(new Error("Premier League snapshot is not available."), {
         status: 503,
       })
     );
@@ -69,7 +69,7 @@ describe("GET /api/premier-league/summary", () => {
     const body = await response.json();
 
     expect(response.status).toBe(503);
-    expect(body.error).toMatch(/not configured/i);
+    expect(body.error).toMatch(/not available/i);
     expect(body.standings).toEqual([]);
     expect(body.teams).toEqual([]);
   });

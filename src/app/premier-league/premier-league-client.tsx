@@ -4,8 +4,6 @@ import {
   startTransition,
   useEffect,
   useMemo,
-  useRef,
-  useState,
   type CSSProperties,
   type ReactNode,
 } from "react";
@@ -13,11 +11,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   CalendarDays,
-  CircleAlert,
   Clock3,
-  LoaderCircle,
   MapPin,
-  RefreshCcw,
   Shield,
   Trophy,
 } from "lucide-react";
@@ -27,9 +22,8 @@ import type {
   PremierLeagueFixture,
   PremierLeagueFormSummary,
   PremierLeagueRouteState,
+  PremierLeagueSnapshot,
   PremierLeagueStandingRow,
-  PremierLeagueSummary,
-  PremierLeagueTeamSnapshot,
   PremierLeagueView,
 } from "@/types/premier-league";
 import {
@@ -40,10 +34,7 @@ import {
 
 interface PremierLeagueClientProps {
   initialState: PremierLeagueRouteState;
-}
-
-interface ApiError extends Error {
-  status: number;
+  snapshot: PremierLeagueSnapshot;
 }
 
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -103,21 +94,6 @@ const noMotion = {
     transition: { duration: 0 },
   },
 };
-
-function buildApiError(message: string, status: number): ApiError {
-  return Object.assign(new Error(message), { status });
-}
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url);
-  const body = (await response.json()) as T & { error?: string };
-
-  if (!response.ok) {
-    throw buildApiError(body.error ?? "Request failed", response.status);
-  }
-
-  return body;
-}
 
 function formatMatchday(matchday: number | null): string {
   return matchday ? `Matchday ${matchday}` : "League fixture";
@@ -285,49 +261,6 @@ function CrestAvatar({
     >
       {getTeamInitials(name)}
     </div>
-  );
-}
-
-function InlineSpinner({ label }: { label: string }) {
-  return (
-    <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-      <LoaderCircle className="h-4 w-4 animate-spin text-[var(--color-primary)]" />
-      <span>{label}</span>
-    </div>
-  );
-}
-
-function ErrorPanel({
-  title,
-  message,
-  onRetry,
-}: {
-  title: string;
-  message: string;
-  onRetry?: () => void;
-}) {
-  return (
-    <SurfaceCard className="p-5 sm:p-6">
-      <div className="flex items-start gap-4">
-        <div className="rounded-2xl bg-[color-mix(in_srgb,var(--color-danger)_12%,var(--surface-secondary))] p-3 text-[var(--color-danger)]">
-          <CircleAlert className="h-5 w-5" />
-        </div>
-        <div className="min-w-0 flex-1">
-          <h3 className="text-lg font-semibold text-[var(--text-primary)]">{title}</h3>
-          <p className="mt-2 text-sm leading-7 text-[var(--text-secondary)]">{message}</p>
-          {onRetry ? (
-            <button
-              type="button"
-              onClick={onRetry}
-              className="mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
-            >
-              <RefreshCcw className="h-4 w-4" />
-              Try again
-            </button>
-          ) : null}
-        </div>
-      </div>
-    </SurfaceCard>
   );
 }
 
@@ -635,7 +568,7 @@ function StandingsTable({
   );
 }
 
-export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) {
+export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();
@@ -646,33 +579,27 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
     () => (hasManagedParams ? normalizePremierLeagueState(searchParams) : initialState),
     [hasManagedParams, initialState, searchParams]
   );
-
-  const [summary, setSummary] = useState<PremierLeagueSummary | null>(null);
-  const [summaryError, setSummaryError] = useState<string | null>(null);
-  const [summaryFetchKey, setSummaryFetchKey] = useState(0);
-
-  const [teamSnapshots, setTeamSnapshots] = useState<Map<string, PremierLeagueTeamSnapshot>>(
-    () => new Map()
+  const summary = snapshot.summary;
+  const validTeamIds = useMemo(
+    () => new Set(summary.teams.map((team) => team.id)),
+    [summary.teams]
   );
-  const [teamErrors, setTeamErrors] = useState<Record<string, string>>({});
-  const [teamFetchKey, setTeamFetchKey] = useState(0);
+  const effectiveRouteState = useMemo(() => {
+    if (!routeState.team || validTeamIds.has(routeState.team)) {
+      return routeState;
+    }
 
-  const summaryRequestId = useRef(0);
-  const teamRequestId = useRef(0);
-  const isMounted = useRef(true);
+    return {
+      ...routeState,
+      team: null,
+    };
+  }, [routeState, validTeamIds]);
 
   const shellClassName =
     "mx-auto w-full max-w-[1680px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12";
 
   useEffect(() => {
-    isMounted.current = true;
-    return () => {
-      isMounted.current = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    const href = buildPremierLeagueHref(routeState, searchParams);
+    const href = buildPremierLeagueHref(effectiveRouteState, searchParams);
     const currentHref = `/premier-league${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
 
     if (href === currentHref) {
@@ -682,76 +609,7 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
     startTransition(() => {
       router.replace(href, { scroll: false });
     });
-  }, [routeState, router, searchParams]);
-
-  useEffect(() => {
-    const requestId = summaryRequestId.current + 1;
-    summaryRequestId.current = requestId;
-
-    fetchJson<PremierLeagueSummary>("/api/premier-league/summary")
-      .then((payload) => {
-        if (!isMounted.current || summaryRequestId.current !== requestId) {
-          return;
-        }
-
-        setSummary(payload);
-      })
-      .catch((error: Error) => {
-        if (!isMounted.current || summaryRequestId.current !== requestId) {
-          return;
-        }
-
-        setSummaryError(error.message);
-        setSummary(null);
-      })
-  }, [summaryFetchKey]);
-
-  useEffect(() => {
-    if (routeState.view !== "team" || !routeState.team) {
-      return;
-    }
-
-    if (teamSnapshots.has(routeState.team) || teamErrors[routeState.team]) {
-      return;
-    }
-
-    const requestId = teamRequestId.current + 1;
-    teamRequestId.current = requestId;
-
-    fetchJson<PremierLeagueTeamSnapshot>(
-      `/api/premier-league/teams/${encodeURIComponent(routeState.team)}`
-    )
-      .then((payload) => {
-        if (!isMounted.current || teamRequestId.current !== requestId) {
-          return;
-        }
-
-        setTeamSnapshots((current) => {
-          const next = new Map(current);
-          next.set(routeState.team!, payload);
-          return next;
-        });
-        setTeamErrors((current) => {
-          if (!current[routeState.team!]) {
-            return current;
-          }
-
-          const next = { ...current };
-          delete next[routeState.team!];
-          return next;
-        });
-      })
-      .catch((error: Error) => {
-        if (!isMounted.current || teamRequestId.current !== requestId) {
-          return;
-        }
-
-        setTeamErrors((current) => ({
-          ...current,
-          [routeState.team!]: error.message,
-        }));
-      });
-  }, [routeState.team, routeState.view, teamErrors, teamFetchKey, teamSnapshots]);
+  }, [effectiveRouteState, router, searchParams]);
 
   function updateRouteState(
     nextState: Partial<PremierLeagueRouteState>,
@@ -759,7 +617,7 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
   ) {
     const href = buildPremierLeagueHref(
       {
-        ...routeState,
+        ...effectiveRouteState,
         ...nextState,
       },
       searchParams
@@ -785,43 +643,16 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
     });
   }
 
-  function handleRetrySummary() {
-    setSummary(null);
-    setSummaryError(null);
-    setSummaryFetchKey((value) => value + 1);
-  }
-
-  function handleRetryTeam() {
-    if (routeState.team) {
-      setTeamSnapshots((current) => {
-        const next = new Map(current);
-        next.delete(routeState.team!);
-        return next;
-      });
-      setTeamErrors((current) => {
-        const next = { ...current };
-        delete next[routeState.team!];
-        return next;
-      });
-    }
-    setTeamFetchKey((value) => value + 1);
-  }
-
-  const leader = summary?.standings[0] ?? null;
-  const runnerUp = summary?.standings[1] ?? null;
+  const leader = summary.standings[0] ?? null;
+  const runnerUp = summary.standings[1] ?? null;
   const titleGap =
     leader && runnerUp ? `${leader.points - runnerUp.points} pts` : "—";
   const teamStanding =
-    summary?.standings.find((row) => row.team.id === routeState.team) ?? null;
-  const lastUpdatedLabel = summary ? formatGeneratedAt(summary.generatedAt) : "Loading";
-  const summaryLoading = !summary && !summaryError;
-  const teamSnapshot = routeState.team ? teamSnapshots.get(routeState.team) ?? null : null;
-  const teamError = routeState.team ? teamErrors[routeState.team] ?? null : null;
-  const teamLoading =
-    routeState.view === "team" &&
-    Boolean(routeState.team) &&
-    !teamSnapshot &&
-    !teamError;
+    summary.standings.find((row) => row.team.id === effectiveRouteState.team) ?? null;
+  const lastUpdatedLabel = formatGeneratedAt(summary.generatedAt);
+  const teamSnapshot = effectiveRouteState.team
+    ? snapshot.teamSnapshots[effectiveRouteState.team] ?? null
+    : null;
 
   return (
     <section
@@ -842,19 +673,19 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
                 eyebrow="Football Data Tool"
                 size="lg"
                 title="Premier League Pulse"
-                description="A live Premier League workspace for the table, the current fixture slate, and club-level form. All third-party traffic stays server-side behind a thin internal API layer."
+                description="A Premier League workspace for the table, the current fixture slate, and club-level form. The route reads from a checked-in snapshot so it stays stable in local dev and production."
                 titleClassName="text-[var(--text-primary)]"
                 descriptionClassName="max-w-[68ch] text-[var(--text-secondary)]"
               />
 
               <div className="mt-6 flex flex-wrap gap-3 text-sm text-[var(--text-secondary)]">
                 <span className="inline-flex min-h-[36px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-2">
-                  {summary?.competition?.seasonLabel ?? "Current season"}
+                  {summary.competition?.seasonLabel ?? "Current season"}
                 </span>
                 <span className="inline-flex min-h-[36px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-2">
-                  {summary?.competition?.currentMatchday
+                  {summary.competition?.currentMatchday
                     ? `Matchday ${summary.competition.currentMatchday}`
-                    : "Live competition feed"}
+                    : snapshot.sourceLabel}
                 </span>
                 <span className="inline-flex min-h-[36px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-2">
                   Updated {lastUpdatedLabel}
@@ -885,14 +716,14 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
               />
               <HeroMetric
                 eyebrow="Fixtures ahead"
-                value={`${summary?.upcomingFixtures.length ?? 0}`}
-                detail="Upcoming matches currently cached in the feed"
+                value={`${summary.upcomingFixtures.length}`}
+                detail="Upcoming matches currently in the checked-in snapshot"
                 icon={<CalendarDays className="h-4 w-4" />}
               />
               <HeroMetric
                 eyebrow="Coverage"
-                value={`${summary?.teams.length ?? 0} clubs`}
-                detail="All Premier League team selectors exposed in the club view"
+                value={`${summary.teams.length} clubs`}
+                detail="Clubs currently included in the checked-in snapshot"
                 icon={<MapPin className="h-4 w-4" />}
               />
             </div>
@@ -924,19 +755,9 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
         </div>
 
         <motion.div variants={variants} initial="hidden" animate="visible">
-          {summaryLoading ? (
-            <SurfaceCard className="p-6 sm:p-8">
-              <InlineSpinner label="Loading Premier League summary..." />
-            </SurfaceCard>
-          ) : summaryError ? (
-            <ErrorPanel
-              title="Unable to load Premier League data."
-              message={summaryError}
-              onRetry={handleRetrySummary}
-            />
-          ) : summary ? (
+          {summary ? (
             <>
-              {routeState.view === "overview" ? (
+              {effectiveRouteState.view === "overview" ? (
                 <div className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(340px,0.95fr)]">
                   <SurfaceCard className="p-5 sm:p-6">
                     <div className="flex flex-col gap-3 border-b border-[var(--border-primary)] pb-5">
@@ -972,7 +793,7 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
                 </div>
               ) : null}
 
-              {routeState.view === "fixtures" ? (
+              {effectiveRouteState.view === "fixtures" ? (
                 <div className="grid gap-6 xl:grid-cols-2">
                   <FixtureGroupSection
                     title="Recent fixtures"
@@ -989,7 +810,7 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
                 </div>
               ) : null}
 
-              {routeState.view === "team" ? (
+              {effectiveRouteState.view === "team" ? (
                 <div className="space-y-6">
                   <SurfaceCard className="p-5 sm:p-6">
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
@@ -1011,7 +832,7 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
                         </span>
                         <select
                           data-testid="premier-league-team-select"
-                          value={routeState.team ?? ""}
+                          value={effectiveRouteState.team ?? ""}
                           onChange={(event) => {
                             const teamId = event.target.value || null;
                             updateRouteState({
@@ -1032,20 +853,10 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
                     </div>
                   </SurfaceCard>
 
-                  {!routeState.team ? (
+                  {!effectiveRouteState.team ? (
                     <EmptyPanel
                       title="Select a club to open the drilldown."
                       description="The team view stays deep-linkable, so the selected club id appears in the URL once you choose one."
-                    />
-                  ) : teamLoading ? (
-                    <SurfaceCard className="p-6 sm:p-8">
-                      <InlineSpinner label="Loading club snapshot..." />
-                    </SurfaceCard>
-                  ) : teamError ? (
-                    <ErrorPanel
-                      title="Unable to load the selected club."
-                      message={teamError}
-                      onRetry={handleRetryTeam}
                     />
                   ) : teamSnapshot?.team ? (
                     <>
@@ -1127,14 +938,14 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
                           title="Recent results"
                           description="Latest completed Premier League matches"
                           fixtures={teamSnapshot.recentFixtures}
-                          contextTeamId={routeState.team}
+                          contextTeamId={effectiveRouteState.team}
                           onOpenTeam={handleOpenTeam}
                         />
                         <FixtureGroupSection
                           title="Upcoming fixtures"
                           description="Next scheduled Premier League matches"
                           fixtures={teamSnapshot.upcomingFixtures}
-                          contextTeamId={routeState.team}
+                          contextTeamId={effectiveRouteState.team}
                           onOpenTeam={handleOpenTeam}
                         />
                       </div>
@@ -1142,7 +953,7 @@ export function PremierLeagueClient({ initialState }: PremierLeagueClientProps) 
                   ) : (
                     <EmptyPanel
                       title="Club snapshot unavailable."
-                      description="The selected team did not return a usable response from the upstream feed."
+                      description="The selected team is not included in the current checked-in snapshot."
                     />
                   )}
                 </div>

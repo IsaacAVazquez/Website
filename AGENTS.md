@@ -115,6 +115,7 @@ npm run dev
 
 - Prefer Node 20 locally to match GitHub Actions.
 - `npm run update:investments` also requires `.venv/bin/python3`.
+- `npm run update:premier-league` uses `FOOTBALL_DATA_API_TOKEN` only when rebuilding the checked-in snapshot.
 - If the investments fetch step fails on imports, install the Python dependency with `.venv/bin/pip install defeatbeta-api`.
 
 ### Day-to-day verification
@@ -174,6 +175,25 @@ Inputs and outputs:
 
 The snapshot builder removes legacy per-section JSON files after writing `snapshot.json`.
 
+### Premier League data workflow
+
+The Premier League refresh path is:
+
+1. `tsx scripts/buildPremierLeagueSnapshot.ts`
+
+Use:
+
+```bash
+npm run update:premier-league
+```
+
+Inputs and outputs:
+
+- auth token: `FOOTBALL_DATA_API_TOKEN`
+- checked-in snapshot output: `src/data/premierLeagueSnapshot.ts`
+
+The app reads the checked-in snapshot at runtime. The token is only needed when rebuilding it.
+
 ### Build and asset workflow
 
 - `npm run build` runs `next build --webpack`
@@ -205,6 +225,7 @@ The snapshot builder removes legacy per-section JSON files after writing `snapsh
 | `npm run update:fantasy` | Generate fantasy position data and snapshot JSON |
 | `npm run update:fantasy-rb` | Alias of `npm run update:fantasy` |
 | `npm run update:investments` | Fetch investment data and build compact snapshots |
+| `npm run update:premier-league` | Rebuild the checked-in Premier League snapshot |
 | `npm run generate:icons` | Regenerate PWA icons |
 
 ---
@@ -215,6 +236,7 @@ Checked-in operational workflows:
 
 - `.github/workflows/test.yml`
 - `.github/workflows/update-investments.yml`
+- `.github/workflows/update-premier-league.yml`
 - `.github/workflows/update-fantasy-rb.yml`
 - `netlify/functions/scheduled-fantasy-update.ts`
 - `netlify/functions/purge-cache.ts`

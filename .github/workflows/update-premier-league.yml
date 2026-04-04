@@ -1,0 +1,72 @@
+name: Refresh Premier League Snapshot
+
+on:
+  schedule:
+    - cron: "15 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  refresh-premier-league:
+    name: Refresh Premier League Snapshot
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh Premier League snapshot
+        run: npm run update:premier-league
+        env:
+          FOOTBALL_DATA_API_TOKEN: ${{ secrets.FOOTBALL_DATA_API_TOKEN }}
+          NODE_ENV: production
+
+      - name: Check for snapshot changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain -- src/data/premierLeagueSnapshot.ts)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected in src/data/premierLeagueSnapshot.ts"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected in src/data/premierLeagueSnapshot.ts"
+          fi
+
+      - name: Commit and push refreshed snapshot
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/premierLeagueSnapshot.ts
+          git commit -m "chore: refresh premier league snapshot [automated]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create job summary
+        if: always()
+        run: |
+          echo "## Premier League Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Daily at 06:15 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+            echo "✅ Premier League snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "ℹ️ Premier League snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
+          fi

@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-jest.mock("@/lib/premierLeagueData", () => ({
+jest.mock("@/lib/premierLeagueSnapshot", () => ({
   createEmptyPremierLeagueTeamSnapshot: jest.fn(() => ({
     team: null,
     recentFixtures: [],
@@ -25,7 +25,7 @@ import { GET } from "../route";
 import {
   getPremierLeagueTeamSnapshot,
   isValidPremierLeagueTeamId,
-} from "@/lib/premierLeagueData";
+} from "@/lib/premierLeagueSnapshot";
 
 const mockGetPremierLeagueTeamSnapshot =
   getPremierLeagueTeamSnapshot as jest.MockedFunction<typeof getPremierLeagueTeamSnapshot>;
@@ -97,10 +97,10 @@ describe("GET /api/premier-league/teams/[teamId]", () => {
     expect(mockGetPremierLeagueTeamSnapshot).toHaveBeenCalledWith("57");
   });
 
-  it("returns a stable empty payload when the upstream team lookup fails", async () => {
+  it("returns a stable empty payload when the snapshot team lookup fails", async () => {
     mockIsValidPremierLeagueTeamId.mockReturnValue(true);
     mockGetPremierLeagueTeamSnapshot.mockRejectedValue(
-      Object.assign(new Error("Unable to load Premier League data from the upstream provider."), {
+      Object.assign(new Error("Premier League team snapshot was not found."), {
         status: 503,
       })
     );
@@ -111,7 +111,7 @@ describe("GET /api/premier-league/teams/[teamId]", () => {
     const body = await response.json();
 
     expect(response.status).toBe(503);
-    expect(body.error).toMatch(/upstream provider/i);
+    expect(body.error).toMatch(/snapshot/i);
     expect(body.team).toBeNull();
     expect(body.recentFixtures).toEqual([]);
   });
