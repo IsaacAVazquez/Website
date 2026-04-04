@@ -24,15 +24,15 @@ describe("LaLigaClient", () => {
 
   it("hydrates from the URL state and keeps focused views shareable", async () => {
     const user = userEvent.setup();
-    currentSearchParams = new URLSearchParams("view=europe&club=real-betis");
+    currentSearchParams = new URLSearchParams("view=europe&club=bet");
 
     render(<LaLigaClient initialState={DEFAULT_LA_LIGA_STATE} />);
 
-    expect(screen.getByRole("heading", { name: "Real Betis" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Real Betis Balompié" })).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: /relegation fight/i }));
 
-    expect(mockPush).toHaveBeenCalledWith("/la-liga?view=relegation&club=alaves", {
+    expect(mockPush).toHaveBeenCalledWith("/la-liga?view=relegation&club=sev", {
       scroll: false,
     });
   });
@@ -43,11 +43,11 @@ describe("LaLigaClient", () => {
     render(<LaLigaClient initialState={DEFAULT_LA_LIGA_STATE} />);
 
     await waitFor(() =>
-      expect(mockReplace).toHaveBeenCalledWith("/la-liga?view=relegation&club=alaves", {
+      expect(mockReplace).toHaveBeenCalledWith("/la-liga?view=relegation&club=sev", {
         scroll: false,
       })
     );
 
-    expect(screen.getByRole("heading", { name: "Alaves" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Sevilla FC" })).toBeInTheDocument();
   });
 });

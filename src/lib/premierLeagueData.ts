@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import type {
   PremierLeagueSnapshot,
   PremierLeagueCompetitionMeta,
@@ -576,8 +578,6 @@ const PL_SNAPSHOT_PATH = "src/data/premierLeagueSnapshot.ts";
 
 function readExistingPLTeamSnapshots(filePath: string): Record<string, PremierLeagueTeamSnapshot> {
   try {
-    const { readFileSync } = require("node:fs") as typeof import("node:fs");
-    const { resolve } = require("node:path") as typeof import("node:path");
     const fullPath = resolve(process.cwd(), filePath);
     const content = readFileSync(fullPath, "utf8");
     const match = content.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);

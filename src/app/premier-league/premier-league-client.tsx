@@ -9,7 +9,6 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { BarChart3, ExternalLink, Shield, Trophy, TrendingUp } from "lucide-react";
 import { SectionIntro } from "@/components/ui/SectionIntro";
-import { cn } from "@/lib/utils";
 import {
   SurfaceCard,
   StatCard,
@@ -24,15 +23,12 @@ import {
 import type {
   PremierLeagueRouteState,
   PremierLeagueSnapshot,
-  PremierLeagueStandingRow,
   PremierLeagueView,
 } from "@/types/premier-league";
 import {
   buildPremierLeagueHref,
-  DEFAULT_PREMIER_LEAGUE_STATE,
   filterStandingsForView,
   normalizePremierLeagueState,
-  PREMIER_LEAGUE_VIEW_DESCRIPTIONS,
   PREMIER_LEAGUE_VIEW_LABELS,
   PREMIER_LEAGUE_VIEW_OPTIONS,
 } from "./premier-league-state";
@@ -145,12 +141,11 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
 
   const summary = snapshot.summary;
   const validTeamIds = useMemo(() => new Set(summary.teams.map((t) => t.id)), [summary.teams]);
-  const selectedTeamId = validTeamIds.has(routeState.team ?? "")
-    ? routeState.team
-    : summary.standings[0]?.team.id ?? null;
+  const canonicalTeamId = validTeamIds.has(routeState.team ?? "") ? routeState.team : null;
+  const selectedTeamId = canonicalTeamId ?? summary.standings[0]?.team.id ?? null;
 
   const desiredHref = buildPremierLeagueHref(
-    { view: routeState.view, team: selectedTeamId },
+    { view: routeState.view, team: canonicalTeamId },
     searchParams
   );
 

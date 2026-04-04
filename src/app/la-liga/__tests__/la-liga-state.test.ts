@@ -20,30 +20,30 @@ describe("la-liga-state", () => {
     expect(
       normalizeLaLigaState({
         view: "europe",
-        club: "real-betis",
+        club: "bet",
       })
     ).toEqual({
       view: "europe",
-      club: "real-betis",
+      club: "bet",
     });
   });
 
   it("returns the expected club slices for focused views", () => {
     expect(filterClubsForView("title-race").map((club) => club.id)).toEqual([
-      "barcelona",
-      "real-madrid",
-      "villarreal",
-      "atletico-madrid",
+      "fcb",
+      "rma",
+      "vil",
+      "atl",
     ]);
     expect(filterClubsForView("europe")).toHaveLength(6);
     expect(filterClubsForView("relegation").map((club) => club.id)).toEqual([
-      "alaves",
-      "elche",
-      "mallorca",
-      "levante",
-      "real-oviedo",
+      "sev",
+      "ala",
+      "elc",
+      "lev",
+      "ovi",
     ]);
-    expect(getDefaultClubForView("relegation")).toBe("alaves");
+    expect(getDefaultClubForView("relegation")).toBe("sev");
   });
 
   it("builds clean hrefs while preserving unrelated query params", () => {
@@ -51,16 +51,16 @@ describe("la-liga-state", () => {
       buildLaLigaHref(
         {
           view: "europe",
-          club: "real-betis",
+          club: "bet",
         },
         new URLSearchParams("ref=portfolio")
       )
-    ).toBe("/la-liga?ref=portfolio&view=europe&club=real-betis");
+    ).toBe("/la-liga?ref=portfolio&view=europe&club=bet");
 
     expect(
       buildLaLigaHref(
         DEFAULT_LA_LIGA_STATE,
-        new URLSearchParams("ref=portfolio&view=europe&club=real-betis")
+        new URLSearchParams("ref=portfolio&view=europe&club=bet")
       )
     ).toBe("/la-liga?ref=portfolio");
   });
