@@ -254,7 +254,7 @@ export function AuthorBio({
           {showSocial && social && (
             <div className="flex items-center gap-4 pt-4 border-t border-[var(--border-primary)]">
               <p className="text-sm font-semibold text-[var(--text-primary)]">
-                
+               
               </p>
               {social.linkedin && (
                 <Link

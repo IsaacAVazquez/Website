@@ -1,24 +1,6 @@
 import Image from "next/image";
 import { ModernButton } from "@/components/ui/ModernButton";
 
-const heroSignals = [
-  {
-    label: "Scale",
-    value: "60M+",
-    detail: "users supported across civic-tech platforms",
-  },
-  {
-    label: "Focus",
-    value: "QA → PM",
-    detail: "bridging reliability, analytics, and execution",
-  },
-  {
-    label: "Current",
-    value: "Haas MBA",
-    detail: "UC Berkeley, Class of 2027",
-  },
-];
-
 export function ModernHero() {
   return (
     <section
@@ -70,6 +52,7 @@ export function ModernHero() {
                   Learn more
                 </ModernButton>
               </div>
+
             </div>
 
             <div className="relative lg:pt-1 xl:pt-2">
