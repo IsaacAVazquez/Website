@@ -49,32 +49,6 @@ export default function PortfolioPage() {
             titleClassName="max-w-4xl text-3xl leading-[1.04] sm:text-4xl lg:text-[3.2rem]"
             descriptionClassName="max-w-3xl text-base lg:text-lg"
           />
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <div className="surface-muted px-4 py-4">
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                Total projects
-              </p>
-              <p className="mb-0 text-2xl font-semibold text-[var(--text-primary)]">
-                {portfolioProjects.length}
-              </p>
-            </div>
-            <div className="surface-muted px-4 py-4">
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                Featured work
-              </p>
-              <p className="mb-0 text-2xl font-semibold text-[var(--text-primary)]">
-                {featuredProjects.length}
-              </p>
-            </div>
-            <div className="surface-muted px-4 py-4">
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                Case studies / tools
-              </p>
-              <p className="mb-0 text-2xl font-semibold text-[var(--text-primary)]">
-                {directCaseStudies.length} / {shippedTools.length}
-              </p>
-            </div>
-          </div>
         </div>
 
         <section aria-label="All projects">
