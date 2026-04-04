@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
+    "prebuild": "tsx scripts/updateFootballSnapshots.ts --league-only",
+    "update:football": "tsx scripts/updateFootballSnapshots.ts",
     "build": "next build --webpack",
     "postbuild": "next-sitemap && node scripts/patch-nft-sharp.mjs",
     "start": "next start",

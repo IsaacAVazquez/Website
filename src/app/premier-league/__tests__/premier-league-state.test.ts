@@ -17,11 +17,11 @@ describe("premier-league-state", () => {
   it("preserves valid view and team values", () => {
     expect(
       normalizePremierLeagueState({
-        view: "team",
+        view: "title-race",
         team: "57",
       })
     ).toEqual({
-      view: "team",
+      view: "title-race",
       team: "57",
     });
   });
@@ -30,17 +30,17 @@ describe("premier-league-state", () => {
     expect(
       buildPremierLeagueHref(
         {
-          view: "fixtures",
+          view: "europe",
           team: "57",
         },
         new URLSearchParams("ref=portfolio")
       )
-    ).toBe("/premier-league?ref=portfolio&view=fixtures&team=57");
+    ).toBe("/premier-league?ref=portfolio&view=europe&team=57");
 
     expect(
       buildPremierLeagueHref(
         DEFAULT_PREMIER_LEAGUE_STATE,
-        new URLSearchParams("ref=portfolio&view=team&team=57")
+        new URLSearchParams("ref=portfolio&view=title-race&team=57")
       )
     ).toBe("/premier-league?ref=portfolio");
   });

@@ -1,0 +1,51 @@
+import { cn } from "@/lib/utils";
+
+function getTeamInitials(name: string): string {
+  return name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join("");
+}
+
+export function CrestAvatar({
+  crest,
+  name,
+  size = "md",
+}: {
+  crest: string | null;
+  name: string;
+  size?: "sm" | "md" | "lg";
+}) {
+  const dimensionClass =
+    size === "lg"
+      ? "h-16 w-16 text-lg"
+      : size === "sm"
+        ? "h-9 w-9 text-xs"
+        : "h-12 w-12 text-sm";
+
+  if (crest) {
+    return (
+      <img
+        src={crest}
+        alt={`${name} crest`}
+        className={cn(
+          "rounded-full border border-[var(--border-primary)] bg-white object-contain p-1",
+          dimensionClass
+        )}
+      />
+    );
+  }
+
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] font-semibold text-[var(--text-primary)]",
+        dimensionClass
+      )}
+      aria-hidden="true"
+    >
+      {getTeamInitials(name)}
+    </div>
+  );
+}

@@ -1,9 +1,9 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
-import type { PremierLeagueRouteState, PremierLeagueView } from "@/types/premier-league";
+import type { PremierLeagueRouteState, PremierLeagueStandingRow, PremierLeagueView } from "@/types/premier-league";
 
 export const PREMIER_LEAGUE_ROUTE = "/premier-league";
 
-export const PREMIER_LEAGUE_VIEW_OPTIONS = ["overview", "fixtures", "team"] as const;
+export const PREMIER_LEAGUE_VIEW_OPTIONS = ["table", "title-race", "europe", "relegation"] as const;
 
 const VALID_VIEWS = new Set<PremierLeagueView>(PREMIER_LEAGUE_VIEW_OPTIONS);
 
@@ -15,19 +15,27 @@ type SearchParamInput =
 type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 export const DEFAULT_PREMIER_LEAGUE_STATE: PremierLeagueRouteState = {
-  view: "overview",
+  view: "table",
   team: null,
 };
 
 export const PREMIER_LEAGUE_VIEW_LABELS: Record<PremierLeagueView, string> = {
-  overview: "Overview",
-  fixtures: "Fixtures",
-  team: "Club View",
+  table: "Full table",
+  "title-race": "Title chase",
+  europe: "European places",
+  relegation: "Relegation fight",
 };
 
-function readParam(input: SearchParamInput, key: keyof PremierLeagueRouteState): string | null {
+export const PREMIER_LEAGUE_VIEW_DESCRIPTIONS: Record<PremierLeagueView, string> = {
+  table: "All 20 clubs in the current standings order.",
+  "title-race": "The top four clubs competing for Champions League places.",
+  europe: "Clubs inside the Champions League, Europa League, and Conference League lines.",
+  relegation: "Bottom-five pressure view around the safety and drop lines.",
+};
+
+function readParam(input: SearchParamInput, key: string): string | null {
   if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
+    return (input as URLSearchParams).get(key);
   }
 
   const rawValue = (input as SearchParamRecord)[key];
@@ -39,12 +47,26 @@ function readParam(input: SearchParamInput, key: keyof PremierLeagueRouteState):
 }
 
 function normalizeTeamParam(team: string | null): string | null {
-  if (!team) {
-    return null;
-  }
-
+  if (!team) return null;
   const trimmed = team.trim();
   return /^[1-9]\d*$/.test(trimmed) ? trimmed : null;
+}
+
+export function filterStandingsForView(
+  standings: PremierLeagueStandingRow[],
+  view: PremierLeagueView
+): PremierLeagueStandingRow[] {
+  switch (view) {
+    case "title-race":
+      return standings.filter((row) => row.position <= 4);
+    case "europe":
+      return standings.filter((row) => row.position <= 7);
+    case "relegation":
+      return standings.filter((row) => row.position >= 16);
+    case "table":
+    default:
+      return standings;
+  }
 }
 
 export function normalizePremierLeagueState(

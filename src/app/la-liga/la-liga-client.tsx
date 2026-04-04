@@ -1,10 +1,20 @@
 "use client";
 
-import { startTransition, useEffect, type CSSProperties, type ReactNode } from "react";
+import { startTransition, useEffect, type CSSProperties } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { BarChart3, CircleAlert, ExternalLink, Shield, TrendingUp, Trophy } from "lucide-react";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 import { cn } from "@/lib/utils";
+import {
+  SurfaceCard,
+  StatCard,
+  MetricCard,
+  InfoChip,
+  CrestAvatar,
+  TeamResultPill,
+  FixtureCard,
+  LeaderList,
+} from "@/components/football";
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
 import type { LaLigaClub, LaLigaLeader, LaLigaRouteState, LaLigaView } from "@/types/la-liga";
 import {
@@ -33,7 +43,10 @@ const defenseRankings = clubs
 const attackRankByClub = new Map(attackRankings);
 const defenseRankByClub = new Map(defenseRankings);
 const scorersByClub = groupLeadersByClub(laLigaSnapshot.scorers);
-const assistsByClub = groupLeadersByClub(laLigaSnapshot.assists);
+const clubLookup = new Map(clubs.map((club) => [club.id, club.shortName]));
+const crestByClubId = new Map(
+  laLigaSnapshot.teams.map((t) => [t.tla?.toLowerCase() ?? "", t.crest] as const)
+);
 const snapshotDateLabel = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
@@ -140,8 +153,11 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
   const clubStoryline = getClubStoryline(selectedClub);
   const clubPressurePoints = getClubPressurePoints(selectedClub);
   const clubScorers = scorersByClub.get(selectedClub.id) ?? [];
-  const clubAssists = assistsByClub.get(selectedClub.id) ?? [];
   const selectedZone = getClubZone(selectedClub.position);
+  const teamSnapshot = laLigaSnapshot.teamSnapshots[selectedClub.id];
+  const formSequence = teamSnapshot?.form?.sequence ?? [];
+  const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(-3);
+  const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
 
   return (
     <section className="page-section relative overflow-hidden bg-[var(--surface-primary)]">
@@ -160,48 +176,48 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
             eyebrow="Football Data Tool"
             size="lg"
             title="La Liga Pulse"
-            description="A deep-linkable league snapshot for the 2025/26 title race, European cutoff, and relegation pressure. The tool is local-first, so it stays fast and readable without depending on a live third-party API."
+            description="I track the La Liga title race, European cutoff, and relegation pressure here. Updated weekly from football-data.org."
           />
 
-          <div className="mt-8 flex flex-wrap gap-3 text-sm text-[var(--text-secondary)]">
+          <div className="mt-6 flex flex-wrap gap-3 text-sm text-[var(--text-secondary)]">
             <InfoChip label={`Season ${laLigaSnapshot.season}`} />
             <InfoChip label={`Matchday ${laLigaSnapshot.matchday}`} />
             <InfoChip label={`Snapshot ${snapshotDateLabel}`} />
             <InfoChip label={laLigaSnapshot.sourceLabel} />
           </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <SnapshotStatCard
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <StatCard
+              variant="compact"
               eyebrow="Leader"
-              title={leader.shortName}
-              metric={`${leader.points} pts`}
+              metric={`${leader.shortName} · ${leader.points} pts`}
               detail={`${leader.points - runnerUp.points} clear of ${runnerUp.shortName}`}
               icon={<Trophy className="h-4 w-4" />}
             />
-            <SnapshotStatCard
+            <StatCard
+              variant="compact"
               eyebrow="Top-four line"
-              title={fourthPlace.shortName}
               metric={`+${fourthPlace.points - fifthPlace.points} pts`}
-              detail={`Atletico over ${fifthPlace.shortName}`}
+              detail={`${fourthPlace.shortName} over ${fifthPlace.shortName}`}
               icon={<TrendingUp className="h-4 w-4" />}
             />
-            <SnapshotStatCard
+            <StatCard
+              variant="compact"
               eyebrow="Europe line"
-              title={sixthPlace.shortName}
               metric={`+${sixthPlace.points - seventhPlace.points} pts`}
               detail={`${sixthPlace.shortName} over ${seventhPlace.shortName}`}
               icon={<BarChart3 className="h-4 w-4" />}
             />
-            <SnapshotStatCard
+            <StatCard
+              variant="compact"
               eyebrow="Safety line"
-              title={safetyLine.shortName}
               metric={`+${safetyLine.points - dropLine.points} pt`}
               detail={`${safetyLine.shortName} over ${dropLine.shortName}`}
               icon={<Shield className="h-4 w-4" />}
             />
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-[var(--text-secondary)]">
+          <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-[var(--text-secondary)]">
             <span className="flex items-center gap-2">
               <BarChart3 className="h-4 w-4 text-[var(--color-primary)]" />
               Best attack: {bestAttack.shortName} ({bestAttack.goalsFor} GF)
@@ -213,27 +229,14 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
           </div>
         </div>
 
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.55fr)_minmax(320px,0.95fr)]">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.55fr)_minmax(300px,0.95fr)]">
           <section className="section-panel p-5 sm:p-6">
-            <div className="flex flex-col gap-4 border-b border-[var(--border-primary)] pb-5 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                  Standings workspace
-                </p>
-                <h2 className="mt-2 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
-                  Focus the table by competition pressure
-                </h2>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">
-                  Switch between the full table, the title chase, the European line, or the bottom-five fight. Club selection stays in the URL so any filtered view can be shared directly.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-3 text-sm text-[var(--text-secondary)]">
-                Showing <span className="font-semibold text-[var(--text-primary)]">{visibleClubs.length}</span>{" "}
-                clubs
-              </div>
+            <div className="flex items-center justify-between border-b border-[var(--border-primary)] pb-4">
+              <h2 className="text-lg font-bold text-[var(--text-primary)]">Standings</h2>
+              <span className="text-sm text-[var(--text-secondary)]">{visibleClubs.length} clubs</span>
             </div>
 
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               {viewOptions.map((option) => {
                 const isActive = option.id === routeState.view;
                 return (
@@ -242,21 +245,11 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
                     type="button"
                     onClick={() => handleViewChange(option.id)}
                     aria-pressed={isActive}
-                    className={cn(
-                      "min-h-[44px] rounded-2xl border p-4 text-left transition-colors",
-                      "focus-visible:outline-none"
-                    )}
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
                     style={getViewButtonStyle(isActive)}
                   >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="font-semibold text-[var(--text-primary)]">{option.label}</span>
-                      <span className="text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-                        {filterClubsForView(option.id).length} clubs
-                      </span>
-                    </div>
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
-                      {option.description}
-                    </p>
+                    <span className="text-[var(--text-primary)]">{option.label}</span>
+                    <span className="text-xs text-[var(--text-tertiary)]">{filterClubsForView(option.id).length}</span>
                   </button>
                 );
               })}
@@ -288,8 +281,15 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
                         className="border border-[var(--border-primary)]"
                         style={getTableRowStyle(isSelected)}
                       >
-                        <td className="rounded-l-2xl px-3 py-3 align-middle text-sm font-semibold text-[var(--text-primary)]">
-                          {club.position}
+                        <td className="rounded-l-2xl px-3 py-3 align-middle">
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="h-2 w-2 flex-shrink-0 rounded-full"
+                              style={{ backgroundColor: getZoneDotColor(zone) }}
+                              title={getZoneLabel(zone)}
+                            />
+                            <span className="text-sm font-semibold text-[var(--text-primary)]">{club.position}</span>
+                          </div>
                         </td>
                         <td className="px-3 py-3 align-middle">
                           <button
@@ -297,17 +297,10 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
                             onClick={() => handleClubChange(club.id)}
                             aria-pressed={isSelected}
                             aria-label={`Show ${club.name} details`}
-                            className="flex min-h-[44px] w-full flex-col items-start justify-center gap-2 rounded-xl text-left"
+                            className="flex min-h-[44px] w-full items-center gap-2 rounded-xl text-left"
                           >
-                            <span className="font-semibold text-[var(--text-primary)]">
-                              {club.shortName}
-                            </span>
-                            <span
-                              className="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
-                              style={getZonePillStyle(zone)}
-                            >
-                              {getZoneLabel(zone)}
-                            </span>
+                            <CrestAvatar crest={crestByClubId.get(club.id) ?? null} name={club.shortName} size="sm" />
+                            <span className="font-semibold text-[var(--text-primary)]">{club.shortName}</span>
                           </button>
                         </td>
                         <td className="hidden px-3 py-3 align-middle text-sm text-[var(--text-secondary)] sm:table-cell">
@@ -344,22 +337,29 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
             </div>
           </section>
 
-          <aside className="space-y-6 xl:sticky xl:top-24 xl:self-start">
+          <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             <section
               className="section-panel p-5 sm:p-6"
               aria-live="polite"
               data-testid="la-liga-selected-club"
             >
               <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                    Club snapshot
-                  </p>
-                  <h2 className="mt-2 text-3xl font-bold text-[var(--text-primary)]">
-                    {selectedClub.name}
-                  </h2>
+                <div className="flex items-center gap-4">
+                  <CrestAvatar
+                    crest={crestByClubId.get(selectedClub.id) ?? null}
+                    name={selectedClub.name}
+                    size="lg"
+                  />
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                      Club snapshot
+                    </p>
+                    <h2 className="mt-1 text-2xl font-bold text-[var(--text-primary)]">
+                      {selectedClub.name}
+                    </h2>
+                  </div>
                 </div>
-                <div className="rounded-2xl bg-[var(--color-primary)] px-4 py-3 text-right text-[var(--text-inverse)] shadow-sm">
+                <div className="flex-shrink-0 rounded-2xl bg-[var(--color-primary)] px-4 py-3 text-right text-[var(--text-inverse)] shadow-sm">
                   <p className="text-xs uppercase tracking-[0.14em] opacity-80">Position</p>
                   <p className="text-2xl font-bold">{selectedClub.position}</p>
                 </div>
@@ -384,14 +384,27 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
                 {clubStoryline}
               </p>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <div className="mt-6 grid gap-3 grid-cols-2 sm:grid-cols-3">
                 <MetricCard label="PPG" value={formatFixed(selectedClub.points / selectedClub.played)} />
                 <MetricCard label="Record" value={`${selectedClub.won}-${selectedClub.drawn}-${selectedClub.lost}`} />
                 <MetricCard label="Attack rank" value={`#${attackRankByClub.get(selectedClub.id) ?? "-"}`} />
                 <MetricCard label="Defense rank" value={`#${defenseRankByClub.get(selectedClub.id) ?? "-"}`} />
-                <MetricCard label="Goals / match" value={formatFixed(selectedClub.goalsFor / selectedClub.played)} />
-                <MetricCard label="Conceded / match" value={formatFixed(selectedClub.goalsAgainst / selectedClub.played)} />
+                <MetricCard label="GF / match" value={formatFixed(selectedClub.goalsFor / selectedClub.played)} />
+                <MetricCard label="GA / match" value={formatFixed(selectedClub.goalsAgainst / selectedClub.played)} />
               </div>
+
+              {formSequence.length > 0 && (
+                <div className="mt-6">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                    Recent form
+                  </p>
+                  <div className="flex gap-1.5">
+                    {formSequence.slice(-5).map((result, i) => (
+                      <TeamResultPill key={i} result={result} />
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="mt-6 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
                 <p className="text-sm font-semibold text-[var(--text-primary)]">Pressure points</p>
@@ -402,20 +415,48 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
                 </ul>
               </div>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <ClubLeaderCard
-                  title="Top scorer"
-                  leader={clubScorers[0]}
-                  statLabel="Goals"
-                  emptyLabel="No current top-10 scorer in this snapshot."
-                />
-                <ClubLeaderCard
-                  title="Top creator"
-                  leader={clubAssists[0]}
-                  statLabel="Assists"
-                  emptyLabel="No current top-10 assister in this snapshot."
-                />
-              </div>
+              <ClubLeaderCard
+                title="Top scorer"
+                leader={clubScorers[0]}
+                statLabel="Goals"
+                emptyLabel="No current top-10 scorer in this snapshot."
+              />
+
+              {recentFixtures.length > 0 && (
+                <div className="mt-6">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                    Recent results
+                  </p>
+                  <div className="space-y-2">
+                    {recentFixtures.map((fixture) => (
+                      <FixtureCard
+                        key={fixture.id}
+                        fixture={fixture}
+                        contextTeamId={teamSnapshot?.team?.id ?? undefined}
+                        compact
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {upcomingFixtures.length > 0 && (
+                <div className="mt-6">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                    Upcoming fixtures
+                  </p>
+                  <div className="space-y-2">
+                    {upcomingFixtures.map((fixture) => (
+                      <FixtureCard
+                        key={fixture.id}
+                        fixture={fixture}
+                        contextTeamId={teamSnapshot?.team?.id ?? undefined}
+                        compact
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </section>
 
             <section className="section-panel p-5 sm:p-6">
@@ -438,30 +479,7 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
                   <ExternalLink className="h-4 w-4" />
                 </a>
               </div>
-              <LeaderList leaders={laLigaSnapshot.scorers} statLabel="goals" />
-            </section>
-
-            <section className="section-panel p-5 sm:p-6">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                    Chance creation
-                  </p>
-                  <h3 className="mt-2 text-xl font-bold text-[var(--text-primary)]">
-                    Top assisters
-                  </h3>
-                </div>
-                <a
-                  href={laLigaSnapshot.sourceUrls.assists}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--color-primary)]"
-                >
-                  Official
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              </div>
-              <LeaderList leaders={laLigaSnapshot.assists} statLabel="assists" />
+              <LeaderList leaders={laLigaSnapshot.scorers} statLabel="goals" clubLookup={clubLookup} />
             </section>
 
             <section className="rounded-3xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-5 text-sm text-[var(--text-secondary)] shadow-sm">
@@ -474,59 +492,43 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
             </section>
           </aside>
         </div>
+
+        {/* League-wide fixtures */}
+        {(laLigaSnapshot.recentFixtures.length > 0 || laLigaSnapshot.upcomingFixtures.length > 0) && (
+          <div className="grid gap-6 md:grid-cols-2">
+            {laLigaSnapshot.recentFixtures.length > 0 && (
+              <SurfaceCard className="p-5 sm:p-6">
+                <div className="border-b border-[var(--border-primary)] pb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Recent slate</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Latest results</h3>
+                </div>
+                <div className="mt-4 space-y-3">
+                  {laLigaSnapshot.recentFixtures.slice(0, 6).map((f) => (
+                    <FixtureCard key={f.id} fixture={f} onOpenTeam={handleClubChange} />
+                  ))}
+                </div>
+              </SurfaceCard>
+            )}
+            {laLigaSnapshot.upcomingFixtures.length > 0 && (
+              <SurfaceCard className="p-5 sm:p-6">
+                <div className="border-b border-[var(--border-primary)] pb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Next up</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Upcoming fixtures</h3>
+                </div>
+                <div className="mt-4 space-y-3">
+                  {laLigaSnapshot.upcomingFixtures.slice(0, 6).map((f) => (
+                    <FixtureCard key={f.id} fixture={f} onOpenTeam={handleClubChange} />
+                  ))}
+                </div>
+              </SurfaceCard>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
-function InfoChip({ label }: { label: string }) {
-  return (
-    <span className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-2 font-medium text-[var(--text-secondary)]">
-      {label}
-    </span>
-  );
-}
-
-function SnapshotStatCard({
-  eyebrow,
-  title,
-  metric,
-  detail,
-  icon,
-}: {
-  eyebrow: string;
-  title: string;
-  metric: string;
-  detail: string;
-  icon: ReactNode;
-}) {
-  return (
-    <div className="rounded-3xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-5 shadow-sm">
-      <div className="flex items-center justify-between gap-3">
-        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-          {eyebrow}
-        </span>
-        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--surface-primary)] text-[var(--color-primary)] shadow-sm">
-          {icon}
-        </span>
-      </div>
-      <h3 className="mt-4 text-xl font-bold text-[var(--text-primary)]">{title}</h3>
-      <p className="mt-2 text-3xl font-bold tracking-tight text-[var(--text-primary)]">{metric}</p>
-      <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{detail}</p>
-    </div>
-  );
-}
-
-function MetricCard({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-        {label}
-      </p>
-      <p className="mt-2 text-xl font-bold text-[var(--text-primary)]">{value}</p>
-    </div>
-  );
-}
 
 function ClubLeaderCard({
   title,
@@ -561,47 +563,6 @@ function ClubLeaderCard({
   );
 }
 
-function LeaderList({
-  leaders,
-  statLabel,
-}: {
-  leaders: LaLigaLeader[];
-  statLabel: string;
-}) {
-  return (
-    <ol className="mt-5 space-y-3 pl-0">
-      {leaders.map((leaderEntry) => {
-        const club = clubById.get(leaderEntry.clubId);
-        return (
-          <li
-            key={`${statLabel}-${leaderEntry.rank}-${leaderEntry.name}`}
-            className="flex items-center justify-between gap-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-3"
-          >
-            <div className="flex min-w-0 items-center gap-3">
-              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--surface-primary)] text-sm font-bold text-[var(--color-primary)] shadow-sm">
-                {leaderEntry.rank}
-              </div>
-              <div className="min-w-0">
-                <p className="truncate font-semibold text-[var(--text-primary)]">
-                  {leaderEntry.name}
-                </p>
-                <p className="text-sm text-[var(--text-secondary)]">
-                  {club?.shortName ?? leaderEntry.clubCode} • {leaderEntry.clubCode}
-                </p>
-              </div>
-            </div>
-            <div className="text-right">
-              <p className="text-lg font-bold text-[var(--text-primary)]">{leaderEntry.total}</p>
-              <p className="text-xs uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
-                {statLabel}
-              </p>
-            </div>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
 
 function groupLeadersByClub(leaders: LaLigaLeader[]) {
   return leaders.reduce((map, leaderEntry) => {
@@ -610,6 +571,16 @@ function groupLeadersByClub(leaders: LaLigaLeader[]) {
     map.set(leaderEntry.clubId, existing);
     return map;
   }, new Map<string, LaLigaLeader[]>());
+}
+
+function getZoneDotColor(zone: ReturnType<typeof getClubZone>): string {
+  switch (zone) {
+    case "champions": return "var(--color-primary)";
+    case "europa": return "var(--color-warning)";
+    case "conference": return "var(--color-success)";
+    case "relegation": return "var(--color-error)";
+    default: return "var(--border-primary)";
+  }
 }
 
 function getClubZone(position: number) {

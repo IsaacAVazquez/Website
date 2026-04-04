@@ -5,22 +5,23 @@ import {
   useEffect,
   useMemo,
   type CSSProperties,
-  type ReactNode,
 } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
-import {
-  CalendarDays,
-  Clock3,
-  MapPin,
-  Shield,
-  Trophy,
-} from "lucide-react";
+import { BarChart3, ExternalLink, Shield, Trophy, TrendingUp } from "lucide-react";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 import { cn } from "@/lib/utils";
+import {
+  SurfaceCard,
+  StatCard,
+  MetricCard,
+  CrestAvatar,
+  InfoChip,
+  TeamResultPill,
+  FixtureCard,
+  LeaderList,
+  type LeaderEntry,
+} from "@/components/football";
 import type {
-  PremierLeagueFixture,
-  PremierLeagueFormSummary,
   PremierLeagueRouteState,
   PremierLeagueSnapshot,
   PremierLeagueStandingRow,
@@ -28,8 +29,12 @@ import type {
 } from "@/types/premier-league";
 import {
   buildPremierLeagueHref,
+  DEFAULT_PREMIER_LEAGUE_STATE,
+  filterStandingsForView,
   normalizePremierLeagueState,
+  PREMIER_LEAGUE_VIEW_DESCRIPTIONS,
   PREMIER_LEAGUE_VIEW_LABELS,
+  PREMIER_LEAGUE_VIEW_OPTIONS,
 } from "./premier-league-state";
 
 interface PremierLeagueClientProps {
@@ -37,935 +42,498 @@ interface PremierLeagueClientProps {
   snapshot: PremierLeagueSnapshot;
 }
 
-const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  weekday: "short",
-  month: "short",
-  day: "numeric",
-});
-const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
-const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
-
-const VIEW_CARDS: Array<{
-  key: PremierLeagueView;
-  label: string;
-  description: string;
-}> = [
-  {
-    key: "overview",
-    label: "Overview",
-    description: "Standings, title-race context, and the next league-wide fixtures.",
-  },
-  {
-    key: "fixtures",
-    label: "Fixtures",
-    description: "Recent final scores and the next upcoming Premier League slate.",
-  },
-  {
-    key: "team",
-    label: "Club View",
-    description: "Choose a club for form, recent results, and the next five matches.",
-  },
-];
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 14 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.32 },
-  },
-};
-
-const noMotion = {
-  hidden: { opacity: 1, y: 0 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0 },
-  },
-};
-
-function formatMatchday(matchday: number | null): string {
-  return matchday ? `Matchday ${matchday}` : "League fixture";
+function formatFixed(value: number, decimals = 2): string {
+  return Number.isFinite(value) ? value.toFixed(decimals) : "—";
 }
+
+function getPLZone(position: number): "champions" | "europa" | "conference" | "midtable" | "relegation" {
+  if (position <= 4) return "champions";
+  if (position === 5) return "europa";
+  if (position === 6) return "conference";
+  if (position >= 18) return "relegation";
+  return "midtable";
+}
+
+function getZoneLabel(zone: ReturnType<typeof getPLZone>): string {
+  switch (zone) {
+    case "champions": return "Champions League";
+    case "europa": return "Europa League";
+    case "conference": return "Conference League";
+    case "relegation": return "Relegation";
+    case "midtable": default: return "Midtable";
+  }
+}
+
+function getZonePillStyle(zone: ReturnType<typeof getPLZone>): CSSProperties {
+  switch (zone) {
+    case "champions":
+      return {
+        color: "var(--color-primary)",
+        borderColor: "color-mix(in srgb, var(--color-primary) 30%, var(--border-primary))",
+        background: "color-mix(in srgb, var(--color-primary) 10%, var(--surface-secondary))",
+      };
+    case "europa":
+      return {
+        color: "var(--color-warning)",
+        borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--border-primary))",
+        background: "color-mix(in srgb, var(--color-warning) 10%, var(--surface-secondary))",
+      };
+    case "conference":
+      return {
+        color: "var(--color-success)",
+        borderColor: "color-mix(in srgb, var(--color-success) 30%, var(--border-primary))",
+        background: "color-mix(in srgb, var(--color-success) 10%, var(--surface-secondary))",
+      };
+    case "relegation":
+      return {
+        color: "var(--color-error, var(--color-danger))",
+        borderColor: "color-mix(in srgb, var(--color-danger) 30%, var(--border-primary))",
+        background: "color-mix(in srgb, var(--color-danger) 10%, var(--surface-secondary))",
+      };
+    default:
+      return { color: "var(--text-secondary)", borderColor: "var(--border-primary)", background: "var(--surface-secondary)" };
+  }
+}
+
+function getZoneDotColor(zone: ReturnType<typeof getPLZone>): string {
+  switch (zone) {
+    case "champions": return "var(--color-primary)";
+    case "europa": return "var(--color-warning)";
+    case "conference": return "var(--color-success)";
+    case "relegation": return "var(--color-danger)";
+    default: return "var(--border-primary)";
+  }
+}
+
+function getTableRowStyle(isSelected: boolean): CSSProperties {
+  if (isSelected) {
+    return {
+      borderColor: "color-mix(in srgb, var(--color-primary) 35%, var(--border-primary))",
+      background: "color-mix(in srgb, var(--color-primary) 9%, var(--surface-secondary))",
+    };
+  }
+  return { borderColor: "var(--border-primary)", background: "var(--surface-secondary)" };
+}
+
+function getViewButtonStyle(isActive: boolean): CSSProperties {
+  if (isActive) {
+    return {
+      borderColor: "color-mix(in srgb, var(--color-primary) 35%, var(--border-primary))",
+      background: "color-mix(in srgb, var(--color-primary) 9%, var(--surface-secondary))",
+      boxShadow: "var(--shadow-sm)",
+    };
+  }
+  return { borderColor: "var(--border-primary)", background: "var(--surface-secondary)" };
+}
+
+const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short", day: "numeric", hour: "numeric", minute: "2-digit",
+});
 
 function formatGeneratedAt(value: string): string {
   const date = new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return "Unavailable";
-  }
-
-  return LAST_UPDATED_FORMATTER.format(date);
-}
-
-function formatFixtureDate(utcDate: string): string {
-  const date = new Date(utcDate);
-  if (Number.isNaN(date.getTime())) {
-    return "Date TBD";
-  }
-
-  return DATE_FORMATTER.format(date);
-}
-
-function formatFixtureDateTime(utcDate: string): string {
-  const date = new Date(utcDate);
-  if (Number.isNaN(date.getTime())) {
-    return "Time TBD";
-  }
-
-  return DATE_TIME_FORMATTER.format(date);
-}
-
-function getTeamInitials(name: string): string {
-  return name
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join("");
-}
-
-function getResultForTeam(
-  fixture: PremierLeagueFixture,
-  teamId: string
-): "W" | "D" | "L" | null {
-  const isHome = fixture.homeTeam.id === teamId;
-  const isAway = fixture.awayTeam.id === teamId;
-
-  if (!isHome && !isAway) {
-    return null;
-  }
-
-  if (fixture.score.winner === "DRAW") {
-    return "D";
-  }
-
-  if (
-    (isHome && fixture.score.winner === "HOME_TEAM") ||
-    (isAway && fixture.score.winner === "AWAY_TEAM")
-  ) {
-    return "W";
-  }
-
-  return "L";
-}
-
-function groupFixturesByDay(fixtures: PremierLeagueFixture[]) {
-  const groups = new Map<string, PremierLeagueFixture[]>();
-
-  for (const fixture of fixtures) {
-    const label = formatFixtureDate(fixture.utcDate);
-    const existing = groups.get(label);
-    if (existing) {
-      existing.push(fixture);
-    } else {
-      groups.set(label, [fixture]);
-    }
-  }
-
-  return Array.from(groups.entries()).map(([label, items]) => ({
-    label,
-    items,
-  }));
-}
-
-function SurfaceCard({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] shadow-[var(--shadow-sm)]",
-        className
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
-function HeroMetric({
-  eyebrow,
-  value,
-  detail,
-  icon,
-}: {
-  eyebrow: string;
-  value: string;
-  detail: string;
-  icon: ReactNode;
-}) {
-  return (
-    <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
-      <div className="flex items-center justify-between gap-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-          {eyebrow}
-        </p>
-        <span className="text-[var(--color-primary)]">{icon}</span>
-      </div>
-      <p className="mt-3 text-lg font-semibold text-[var(--text-primary)]">{value}</p>
-      <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">{detail}</p>
-    </div>
-  );
-}
-
-function CrestAvatar({
-  crest,
-  name,
-  size = "md",
-}: {
-  crest: string | null;
-  name: string;
-  size?: "sm" | "md" | "lg";
-}) {
-  const dimensionClass =
-    size === "lg"
-      ? "h-16 w-16 text-lg"
-      : size === "sm"
-        ? "h-9 w-9 text-xs"
-        : "h-12 w-12 text-sm";
-
-  if (crest) {
-    return (
-      <img
-        src={crest}
-        alt={`${name} crest`}
-        className={cn(
-          "rounded-full border border-[var(--border-primary)] bg-white object-contain p-1",
-          dimensionClass
-        )}
-      />
-    );
-  }
-
-  return (
-    <div
-      className={cn(
-        "flex items-center justify-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] font-semibold text-[var(--text-primary)]",
-        dimensionClass
-      )}
-      aria-hidden="true"
-    >
-      {getTeamInitials(name)}
-    </div>
-  );
-}
-
-function EmptyPanel({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
-  return (
-    <SurfaceCard className="p-6 text-center sm:p-8">
-      <p className="text-lg font-semibold text-[var(--text-primary)]">{title}</p>
-      <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">{description}</p>
-    </SurfaceCard>
-  );
-}
-
-function TeamResultPill({ result }: { result: "W" | "D" | "L" }) {
-  const colorClass =
-    result === "W"
-      ? "border-[color-mix(in_srgb,var(--color-success)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-success)_12%,var(--surface-secondary))] text-[var(--color-success)]"
-      : result === "D"
-        ? "border-[color-mix(in_srgb,var(--color-primary)_25%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-primary)_10%,var(--surface-secondary))] text-[var(--color-primary)]"
-        : "border-[color-mix(in_srgb,var(--color-danger)_30%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-danger)_10%,var(--surface-secondary))] text-[var(--color-danger)]";
-
-  return (
-    <span
-      className={cn(
-        "inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-bold",
-        colorClass
-      )}
-    >
-      {result}
-    </span>
-  );
-}
-
-function FixtureCard({
-  fixture,
-  contextTeamId,
-  onOpenTeam,
-}: {
-  fixture: PremierLeagueFixture;
-  contextTeamId?: string | null;
-  onOpenTeam: (teamId: string) => void;
-}) {
-  const contextualResult = contextTeamId ? getResultForTeam(fixture, contextTeamId) : null;
-
-  return (
-    <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-4">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-            {formatMatchday(fixture.matchday)}
-          </p>
-          <p className="mt-1 flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-            <Clock3 className="h-4 w-4 text-[var(--color-primary)]" />
-            {fixture.status === "FINISHED"
-              ? `Final · ${formatFixtureDateTime(fixture.utcDate)}`
-              : formatFixtureDateTime(fixture.utcDate)}
-          </p>
-        </div>
-        {contextualResult ? <TeamResultPill result={contextualResult} /> : null}
-      </div>
-
-      <div className="mt-4 space-y-3">
-        {[fixture.homeTeam, fixture.awayTeam].map((team, index) => {
-          const isHome = index === 0;
-          const score = isHome ? fixture.score.home : fixture.score.away;
-          const isWinner =
-            (isHome && fixture.score.winner === "HOME_TEAM") ||
-            (!isHome && fixture.score.winner === "AWAY_TEAM");
-
-          return (
-            <div
-              key={`${fixture.id}-${team.id}`}
-              className="flex items-center justify-between gap-3"
-            >
-              <button
-                type="button"
-                onClick={() => onOpenTeam(team.id)}
-                className="flex min-h-[44px] min-w-0 flex-1 items-center gap-3 rounded-xl text-left transition hover:text-[var(--color-primary)]"
-              >
-                <CrestAvatar crest={team.crest} name={team.shortName} size="sm" />
-                <span
-                  className={cn(
-                    "truncate text-sm",
-                    isWinner
-                      ? "font-semibold text-[var(--text-primary)]"
-                      : "text-[var(--text-secondary)]"
-                  )}
-                >
-                  {team.shortName}
-                </span>
-              </button>
-              <span className="w-8 text-right text-sm font-semibold text-[var(--text-primary)]">
-                {fixture.status === "FINISHED" && score !== null ? score : "—"}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function FixtureGroupSection({
-  title,
-  description,
-  fixtures,
-  contextTeamId,
-  onOpenTeam,
-}: {
-  title: string;
-  description: string;
-  fixtures: PremierLeagueFixture[];
-  contextTeamId?: string | null;
-  onOpenTeam: (teamId: string) => void;
-}) {
-  const groups = groupFixturesByDay(fixtures);
-
-  return (
-    <SurfaceCard className="p-5 sm:p-6">
-      <div className="flex flex-col gap-2 border-b border-[var(--border-primary)] pb-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-          {title}
-        </p>
-        <h3 className="text-xl font-semibold text-[var(--text-primary)]">{description}</h3>
-      </div>
-
-      <div className="mt-5 space-y-6">
-        {groups.length === 0 ? (
-          <p className="text-sm text-[var(--text-secondary)]">No matches available right now.</p>
-        ) : (
-          groups.map((group) => (
-            <div key={group.label}>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-                {group.label}
-              </p>
-              <div className="space-y-3">
-                {group.items.map((fixture) => (
-                  <FixtureCard
-                    key={fixture.id}
-                    fixture={fixture}
-                    contextTeamId={contextTeamId}
-                    onOpenTeam={onOpenTeam}
-                  />
-                ))}
-              </div>
-            </div>
-          ))
-        )}
-      </div>
-    </SurfaceCard>
-  );
-}
-
-function TeamFormStrip({ form }: { form: PremierLeagueFormSummary }) {
-  return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-2">
-        {form.sequence.length === 0 ? (
-          <span className="text-sm text-[var(--text-secondary)]">No completed Premier League matches yet.</span>
-        ) : (
-          form.sequence.map((result, index) => (
-            <TeamResultPill key={`${result}-${index}`} result={result} />
-          ))
-        )}
-      </div>
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-            Record
-          </p>
-          <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
-            {form.wins}-{form.draws}-{form.losses}
-          </p>
-        </div>
-        <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-            Points
-          </p>
-          <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">{form.points}</p>
-        </div>
-        <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-            Goals For
-          </p>
-          <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">{form.goalsFor}</p>
-        </div>
-        <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-            Goals Against
-          </p>
-          <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">{form.goalsAgainst}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function getStandingsAccent(position: number): CSSProperties {
-  if (position <= 4) {
-    return {
-      borderLeftColor: "var(--color-primary)",
-      background:
-        "linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 30%)",
-    };
-  }
-
-  if (position <= 6) {
-    return {
-      borderLeftColor: "var(--color-success)",
-      background:
-        "linear-gradient(90deg, color-mix(in srgb, var(--color-success) 10%, transparent), transparent 30%)",
-    };
-  }
-
-  if (position >= 18) {
-    return {
-      borderLeftColor: "var(--color-danger)",
-      background:
-        "linear-gradient(90deg, color-mix(in srgb, var(--color-danger) 10%, transparent), transparent 30%)",
-    };
-  }
-
-  return {
-    borderLeftColor: "transparent",
-  };
-}
-
-function StandingsTable({
-  standings,
-  onOpenTeam,
-}: {
-  standings: PremierLeagueStandingRow[];
-  onOpenTeam: (teamId: string) => void;
-}) {
-  return (
-    <div className="overflow-x-auto" data-testid="premier-league-standings">
-      <table className="min-w-full border-separate border-spacing-y-2" aria-label="Premier League standings">
-        <thead>
-          <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-            <th className="px-3 py-2 font-semibold">Pos</th>
-            <th className="px-3 py-2 font-semibold">Club</th>
-            <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
-            <th className="px-3 py-2 font-semibold">Pts</th>
-            <th className="hidden px-3 py-2 font-semibold md:table-cell">GF</th>
-            <th className="hidden px-3 py-2 font-semibold md:table-cell">GA</th>
-            <th className="px-3 py-2 font-semibold">GD</th>
-            <th className="px-3 py-2 font-semibold">Club</th>
-          </tr>
-        </thead>
-        <tbody>
-          {standings.map((row) => (
-            <tr
-              key={row.team.id}
-              className="border border-[var(--border-primary)]"
-              style={getStandingsAccent(row.position)}
-            >
-              <td className="rounded-l-2xl border-l-4 px-3 py-3 text-sm font-semibold text-[var(--text-primary)]">
-                {row.position}
-              </td>
-              <td className="px-3 py-3">
-                <div className="flex min-w-[220px] items-center gap-3">
-                  <CrestAvatar crest={row.team.crest} name={row.team.shortName} size="sm" />
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-[var(--text-primary)]">
-                      {row.team.shortName}
-                    </p>
-                    <p className="truncate text-xs text-[var(--text-secondary)]">
-                      {row.playedGames} played
-                    </p>
-                  </div>
-                </div>
-              </td>
-              <td className="hidden px-3 py-3 text-sm text-[var(--text-secondary)] sm:table-cell">
-                {row.won}-{row.draw}-{row.lost}
-              </td>
-              <td className="px-3 py-3 text-sm font-semibold text-[var(--text-primary)]">{row.points}</td>
-              <td className="hidden px-3 py-3 text-sm text-[var(--text-secondary)] md:table-cell">
-                {row.goalsFor}
-              </td>
-              <td className="hidden px-3 py-3 text-sm text-[var(--text-secondary)] md:table-cell">
-                {row.goalsAgainst}
-              </td>
-              <td className="px-3 py-3 text-sm font-semibold text-[var(--text-primary)]">
-                {row.goalDifference >= 0 ? `+${row.goalDifference}` : row.goalDifference}
-              </td>
-              <td className="rounded-r-2xl px-3 py-3">
-                <button
-                  type="button"
-                  onClick={() => onOpenTeam(row.team.id)}
-                  className="inline-flex min-h-[44px] items-center rounded-xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2 text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
-                >
-                  Club view
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+  return Number.isNaN(date.getTime()) ? "Unavailable" : LAST_UPDATED_FORMATTER.format(date);
 }
 
 export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const shouldReduceMotion = useReducedMotion();
-  const variants = shouldReduceMotion ? noMotion : fadeIn;
-  const hasManagedParams =
-    searchParams.get("view") !== null || searchParams.get("team") !== null;
-  const routeState = useMemo(
-    () => (hasManagedParams ? normalizePremierLeagueState(searchParams) : initialState),
-    [hasManagedParams, initialState, searchParams]
-  );
+  const currentQuery = searchParams.toString();
+  const currentHref = `/premier-league${currentQuery ? `?${currentQuery}` : ""}`;
+  const hasManagedParams = searchParams.get("view") !== null || searchParams.get("team") !== null;
+  const routeState = hasManagedParams ? normalizePremierLeagueState(searchParams) : initialState;
+
   const summary = snapshot.summary;
-  const validTeamIds = useMemo(
-    () => new Set(summary.teams.map((team) => team.id)),
-    [summary.teams]
+  const validTeamIds = useMemo(() => new Set(summary.teams.map((t) => t.id)), [summary.teams]);
+  const selectedTeamId = validTeamIds.has(routeState.team ?? "")
+    ? routeState.team
+    : summary.standings[0]?.team.id ?? null;
+
+  const desiredHref = buildPremierLeagueHref(
+    { view: routeState.view, team: selectedTeamId },
+    searchParams
   );
-  const effectiveRouteState = useMemo(() => {
-    if (!routeState.team || validTeamIds.has(routeState.team)) {
-      return routeState;
-    }
-
-    return {
-      ...routeState,
-      team: null,
-    };
-  }, [routeState, validTeamIds]);
-
-  const shellClassName =
-    "mx-auto w-full max-w-[1680px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12";
 
   useEffect(() => {
-    const href = buildPremierLeagueHref(effectiveRouteState, searchParams);
-    const currentHref = `/premier-league${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
+    if (currentHref === desiredHref) return;
+    startTransition(() => { router.replace(desiredHref, { scroll: false }); });
+  }, [currentHref, desiredHref, router]);
 
-    if (href === currentHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.replace(href, { scroll: false });
-    });
-  }, [effectiveRouteState, router, searchParams]);
-
-  function updateRouteState(
-    nextState: Partial<PremierLeagueRouteState>,
-    options?: { replace?: boolean }
-  ) {
-    const href = buildPremierLeagueHref(
-      {
-        ...effectiveRouteState,
-        ...nextState,
-      },
-      searchParams
-    );
-
-    startTransition(() => {
-      if (options?.replace) {
-        router.replace(href, { scroll: false });
-      } else {
-        router.push(href, { scroll: false });
-      }
-    });
+  function navigate(nextState: PremierLeagueRouteState) {
+    const href = buildPremierLeagueHref(nextState, searchParams);
+    if (href === currentHref) return;
+    startTransition(() => { router.push(href, { scroll: false }); });
   }
 
   function handleViewChange(view: PremierLeagueView) {
-    updateRouteState({ view });
+    const visibleRows = filterStandingsForView(summary.standings, view);
+    const nextTeam = visibleRows.some((r) => r.team.id === selectedTeamId)
+      ? selectedTeamId
+      : visibleRows[0]?.team.id ?? null;
+    navigate({ view, team: nextTeam });
   }
 
-  function handleOpenTeam(teamId: string) {
-    updateRouteState({
-      view: "team",
-      team: teamId,
-    });
+  function handleTeamChange(teamId: string) {
+    navigate({ view: routeState.view, team: teamId });
   }
 
+  // Derived state
+  const visibleStandings = filterStandingsForView(summary.standings, routeState.view);
+  const selectedRow = summary.standings.find((r) => r.team.id === selectedTeamId) ?? summary.standings[0] ?? null;
+  const teamSnapshot = selectedTeamId ? snapshot.teamSnapshots[selectedTeamId] ?? null : null;
+
+  // Derived stats for sidebar
+  const attackRankings = useMemo(() => {
+    const ranked = [...summary.standings].sort((a, b) => b.goalsFor - a.goalsFor || a.position - b.position);
+    return new Map(ranked.map((r, i) => [r.team.id, i + 1]));
+  }, [summary.standings]);
+  const defenseRankings = useMemo(() => {
+    const ranked = [...summary.standings].sort((a, b) => a.goalsAgainst - b.goalsAgainst || a.position - b.position);
+    return new Map(ranked.map((r, i) => [r.team.id, i + 1]));
+  }, [summary.standings]);
+
+  // Hero stats
   const leader = summary.standings[0] ?? null;
   const runnerUp = summary.standings[1] ?? null;
-  const titleGap =
-    leader && runnerUp ? `${leader.points - runnerUp.points} pts` : "—";
-  const teamStanding =
-    summary.standings.find((row) => row.team.id === effectiveRouteState.team) ?? null;
-  const lastUpdatedLabel = formatGeneratedAt(summary.generatedAt);
-  const teamSnapshot = effectiveRouteState.team
-    ? snapshot.teamSnapshots[effectiveRouteState.team] ?? null
-    : null;
+  const fourthPlace = summary.standings[3] ?? null;
+  const fifthPlace = summary.standings[4] ?? null;
+  const safetyLine = summary.standings[16] ?? null;
+  const dropLine = summary.standings[17] ?? null;
+
+  // Club lookup for leader list
+  const clubLookup = useMemo(
+    () => new Map(summary.teams.map((t) => [t.id, t.shortName])),
+    [summary.teams]
+  );
+
+  // Scorers as LeaderEntry[]
+  const scorerEntries: LeaderEntry[] = summary.scorers.map((s) => ({
+    rank: s.rank,
+    name: s.name,
+    clubId: s.teamId,
+    clubCode: s.teamName,
+    total: s.goals,
+    appearances: s.appearances,
+    perMatch: s.appearances ? s.goals / s.appearances : 0,
+  }));
+
+  const selectedZone = selectedRow ? getPLZone(selectedRow.position) : "midtable";
+  const lastUpdated = formatGeneratedAt(summary.generatedAt);
 
   return (
-    <section
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--color-primary)_12%,transparent),transparent_28%),linear-gradient(180deg,var(--surface-primary)_0%,color-mix(in_srgb,var(--surface-secondary)_70%,var(--surface-primary))_100%)]"
-      aria-label="Premier League dashboard"
-      data-testid="premier-league-shell"
-    >
-      <div className={shellClassName}>
-        <motion.div
-          className="mb-8 rounded-[32px] border border-[color-mix(in_srgb,var(--color-primary)_14%,var(--border-primary))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_8%,var(--surface-elevated))_0%,var(--surface-elevated)_55%,color-mix(in_srgb,var(--color-success)_8%,var(--surface-elevated))_100%)] p-6 shadow-[var(--shadow-sm)] sm:p-8"
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_auto] xl:items-end">
-            <div className="min-w-0">
-              <SectionIntro
-                eyebrow="Football Data Tool"
-                size="lg"
-                title="Premier League Pulse"
-                description="A Premier League workspace for the table, the current fixture slate, and club-level form. The route reads from a checked-in snapshot so it stays stable in local dev and production."
-                titleClassName="text-[var(--text-primary)]"
-                descriptionClassName="max-w-[68ch] text-[var(--text-secondary)]"
-              />
+    <section className="page-section relative overflow-hidden bg-[var(--surface-primary)]">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[26rem] opacity-90"
+        style={{
+          background: "radial-gradient(circle at top, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 56%)",
+        }}
+      />
 
-              <div className="mt-6 flex flex-wrap gap-3 text-sm text-[var(--text-secondary)]">
-                <span className="inline-flex min-h-[36px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-2">
-                  {summary.competition?.seasonLabel ?? "Current season"}
-                </span>
-                <span className="inline-flex min-h-[36px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-2">
-                  {summary.competition?.currentMatchday
-                    ? `Matchday ${summary.competition.currentMatchday}`
-                    : snapshot.sourceLabel}
-                </span>
-                <span className="inline-flex min-h-[36px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-2">
-                  Updated {lastUpdatedLabel}
-                </span>
-              </div>
-            </div>
+      <div className="page-shell relative space-y-8 sm:space-y-10">
+        {/* Hero panel */}
+        <div className="section-panel p-6 sm:p-8 lg:p-10">
+          <SectionIntro
+            eyebrow="Football Data Tool"
+            size="lg"
+            title="Premier League Pulse"
+            description="I track the Premier League title race, European qualification gaps, and relegation fight here. Updated weekly from football-data.org."
+          />
 
-            <div className="grid gap-3 sm:grid-cols-2 xl:min-w-[520px]">
-              <HeroMetric
-                eyebrow="Leader"
-                value={leader?.team.shortName ?? "Loading"}
-                detail={
-                  leader
-                    ? `${leader.points} points through ${leader.playedGames} matches`
-                    : "Waiting for the league table"
-                }
-                icon={<Trophy className="h-4 w-4" />}
-              />
-              <HeroMetric
-                eyebrow="Title gap"
-                value={titleGap}
-                detail={
-                  leader && runnerUp
-                    ? `${leader.team.shortName} over ${runnerUp.team.shortName}`
-                    : "Gap appears after the standings load"
-                }
-                icon={<Shield className="h-4 w-4" />}
-              />
-              <HeroMetric
-                eyebrow="Fixtures ahead"
-                value={`${summary.upcomingFixtures.length}`}
-                detail="Upcoming matches currently in the checked-in snapshot"
-                icon={<CalendarDays className="h-4 w-4" />}
-              />
-              <HeroMetric
-                eyebrow="Coverage"
-                value={`${summary.teams.length} clubs`}
-                detail="Clubs currently included in the checked-in snapshot"
-                icon={<MapPin className="h-4 w-4" />}
-              />
-            </div>
+          <div className="mt-6 flex flex-wrap gap-3 text-sm text-[var(--text-secondary)]">
+            <InfoChip label={`Season ${summary.competition?.seasonLabel ?? "2025/26"}`} />
+            {summary.competition?.currentMatchday && (
+              <InfoChip label={`Matchday ${summary.competition.currentMatchday}`} />
+            )}
+            <InfoChip label={`Updated ${lastUpdated}`} />
+            <InfoChip label={snapshot.sourceLabel} />
           </div>
-        </motion.div>
 
-        <div
-          className="mb-8 inline-flex flex-wrap gap-2 rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)]/90 p-2 shadow-[var(--shadow-sm)] backdrop-blur"
-          role="tablist"
-          aria-label="Premier League tabs"
-        >
-          {VIEW_CARDS.map((view) => (
-            <button
-              key={view.key}
-              type="button"
-              role="tab"
-              aria-selected={routeState.view === view.key}
-              onClick={() => handleViewChange(view.key)}
-              className={cn(
-                "min-h-[46px] rounded-2xl px-5 py-3 text-sm font-semibold transition",
-                routeState.view === view.key
-                  ? "bg-[var(--color-primary)] text-white shadow-[var(--shadow-sm)]"
-                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
-              )}
-            >
-              {PREMIER_LEAGUE_VIEW_LABELS[view.key]}
-            </button>
-          ))}
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <StatCard
+              variant="compact"
+              eyebrow="Leader"
+              metric={`${leader?.team.shortName ?? "—"} · ${leader?.points ?? "—"} pts`}
+              detail={leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.team.shortName}` : "Standings loading"}
+              icon={<Trophy className="h-4 w-4" />}
+            />
+            <StatCard
+              variant="compact"
+              eyebrow="Top-four line"
+              metric={fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—"}
+              detail={fourthPlace && fifthPlace ? `${fourthPlace.team.shortName} over ${fifthPlace.team.shortName}` : ""}
+              icon={<TrendingUp className="h-4 w-4" />}
+            />
+            <StatCard
+              variant="compact"
+              eyebrow="Europe line"
+              metric={summary.standings[5] && summary.standings[6] ? `+${summary.standings[5].points - summary.standings[6].points} pts` : "—"}
+              detail={summary.standings[5] && summary.standings[6] ? `${summary.standings[5].team.shortName} over ${summary.standings[6].team.shortName}` : ""}
+              icon={<BarChart3 className="h-4 w-4" />}
+            />
+            <StatCard
+              variant="compact"
+              eyebrow="Safety line"
+              metric={safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—"}
+              detail={safetyLine && dropLine ? `${safetyLine.team.shortName} over ${dropLine.team.shortName}` : ""}
+              icon={<Shield className="h-4 w-4" />}
+            />
+          </div>
         </div>
 
-        <motion.div variants={variants} initial="hidden" animate="visible">
-          {summary ? (
-            <>
-              {effectiveRouteState.view === "overview" ? (
-                <div className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(340px,0.95fr)]">
-                  <SurfaceCard className="p-5 sm:p-6">
-                    <div className="flex flex-col gap-3 border-b border-[var(--border-primary)] pb-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                        Table
-                      </p>
-                      <h2 className="text-2xl font-semibold text-[var(--text-primary)]">
-                        Standings workspace
-                      </h2>
-                      <p className="max-w-[70ch] text-sm leading-7 text-[var(--text-secondary)]">
-                        Jump from the league table into a club drilldown without leaving the route. The URL keeps the active view and club id shareable.
-                      </p>
-                    </div>
-                    <div className="mt-5">
-                      <StandingsTable standings={summary.standings} onOpenTeam={handleOpenTeam} />
-                    </div>
-                  </SurfaceCard>
+        {/* Main standings + sidebar */}
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.55fr)_minmax(300px,0.95fr)]">
+          {/* Standings */}
+          <section className="section-panel p-5 sm:p-6">
+            <div className="flex items-center justify-between border-b border-[var(--border-primary)] pb-4">
+              <h2 className="text-lg font-bold text-[var(--text-primary)]">Standings</h2>
+              <span className="text-sm text-[var(--text-secondary)]">{visibleStandings.length} clubs</span>
+            </div>
 
-                  <div className="space-y-6">
-                    <FixtureGroupSection
-                      title="Recent slate"
-                      description="Latest final scores"
-                      fixtures={summary.recentFixtures.slice(0, 6)}
-                      onOpenTeam={handleOpenTeam}
-                    />
-                    <FixtureGroupSection
-                      title="Next up"
-                      description="Upcoming fixtures"
-                      fixtures={summary.upcomingFixtures.slice(0, 6)}
-                      onOpenTeam={handleOpenTeam}
-                    />
+            <div className="mt-4 flex flex-wrap gap-2">
+              {PREMIER_LEAGUE_VIEW_OPTIONS.map((key) => {
+                const isActive = key === routeState.view;
+                const count = filterStandingsForView(summary.standings, key).length;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => handleViewChange(key)}
+                    aria-pressed={isActive}
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
+                    style={getViewButtonStyle(isActive)}
+                  >
+                    <span className="text-[var(--text-primary)]">{PREMIER_LEAGUE_VIEW_LABELS[key]}</span>
+                    <span className="text-xs text-[var(--text-tertiary)]">{count}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-6 overflow-x-auto">
+              <table className="min-w-full border-separate border-spacing-y-2" aria-label="Premier League standings">
+                <thead>
+                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                    <th className="px-3 py-2 font-semibold">Pos</th>
+                    <th className="px-3 py-2 font-semibold">Club</th>
+                    <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
+                    <th className="px-3 py-2 font-semibold">Pts</th>
+                    <th className="hidden px-3 py-2 font-semibold md:table-cell">PPG</th>
+                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">GF</th>
+                    <th className="hidden px-3 py-2 font-semibold lg:table-cell">GA</th>
+                    <th className="px-3 py-2 font-semibold">GD</th>
+                    <th className="hidden px-3 py-2 font-semibold xl:table-cell">Meter</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visibleStandings.map((row) => {
+                    const isSelected = row.team.id === selectedTeamId;
+                    const zone = getPLZone(row.position);
+                    return (
+                      <tr
+                        key={row.team.id}
+                        className="border border-[var(--border-primary)]"
+                        style={getTableRowStyle(isSelected)}
+                      >
+                        <td className="rounded-l-2xl px-3 py-3 align-middle">
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="h-2 w-2 flex-shrink-0 rounded-full"
+                              style={{ backgroundColor: getZoneDotColor(zone) }}
+                              title={getZoneLabel(zone)}
+                            />
+                            <span className="text-sm font-semibold text-[var(--text-primary)]">{row.position}</span>
+                          </div>
+                        </td>
+                        <td className="px-3 py-3 align-middle">
+                          <button
+                            type="button"
+                            onClick={() => handleTeamChange(row.team.id)}
+                            aria-pressed={isSelected}
+                            aria-label={`Show ${row.team.name} details`}
+                            className="flex min-h-[44px] w-full items-center gap-2 rounded-xl text-left"
+                          >
+                            <CrestAvatar crest={row.team.crest} name={row.team.shortName} size="sm" />
+                            <span className="font-semibold text-[var(--text-primary)]">{row.team.shortName}</span>
+                          </button>
+                        </td>
+                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--text-secondary)] sm:table-cell">
+                          {row.won}-{row.draw}-{row.lost}
+                        </td>
+                        <td className="px-3 py-3 align-middle text-sm font-semibold text-[var(--text-primary)]">
+                          {row.points}
+                        </td>
+                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--text-secondary)] md:table-cell">
+                          {formatFixed(row.points / row.playedGames)}
+                        </td>
+                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--text-secondary)] lg:table-cell">
+                          {row.goalsFor}
+                        </td>
+                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--text-secondary)] lg:table-cell">
+                          {row.goalsAgainst}
+                        </td>
+                        <td className="px-3 py-3 align-middle text-sm font-medium text-[var(--text-primary)]">
+                          {row.goalDifference > 0 ? `+${row.goalDifference}` : row.goalDifference}
+                        </td>
+                        <td className="hidden rounded-r-2xl px-3 py-3 align-middle xl:table-cell">
+                          {leader && (
+                            <div className="h-2.5 w-28 rounded-full bg-[var(--surface-primary)]">
+                              <div
+                                className="h-full rounded-full bg-[var(--color-primary)] transition-[width]"
+                                style={{ width: `${(row.points / leader.points) * 100}%` }}
+                              />
+                            </div>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* Club sidebar */}
+          <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+            {selectedRow ? (
+              <section className="section-panel p-5 sm:p-6" aria-live="polite" data-testid="pl-selected-club">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <CrestAvatar crest={selectedRow.team.crest} name={selectedRow.team.shortName} size="lg" />
+                    <div>
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Club snapshot</p>
+                      <h2 className="mt-1 text-2xl font-bold text-[var(--text-primary)]">{selectedRow.team.name}</h2>
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-[var(--color-primary)] px-4 py-3 text-right text-[var(--text-inverse)] shadow-sm flex-shrink-0">
+                    <p className="text-xs uppercase tracking-[0.14em] opacity-80">Position</p>
+                    <p className="text-2xl font-bold">{selectedRow.position}</p>
                   </div>
                 </div>
-              ) : null}
 
-              {effectiveRouteState.view === "fixtures" ? (
-                <div className="grid gap-6 xl:grid-cols-2">
-                  <FixtureGroupSection
-                    title="Recent fixtures"
-                    description="Most recent finished Premier League matches"
-                    fixtures={summary.recentFixtures}
-                    onOpenTeam={handleOpenTeam}
-                  />
-                  <FixtureGroupSection
-                    title="Upcoming fixtures"
-                    description="Next scheduled Premier League matches"
-                    fixtures={summary.upcomingFixtures}
-                    onOpenTeam={handleOpenTeam}
-                  />
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span
+                    className="inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em]"
+                    style={getZonePillStyle(selectedZone)}
+                  >
+                    {getZoneLabel(selectedZone)}
+                  </span>
+                  <span className="inline-flex items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-secondary)]">
+                    {selectedRow.points} points
+                  </span>
+                  <span className="inline-flex items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-secondary)]">
+                    {38 - selectedRow.playedGames} matches left
+                  </span>
                 </div>
-              ) : null}
 
-              {effectiveRouteState.view === "team" ? (
-                <div className="space-y-6">
-                  <SurfaceCard className="p-5 sm:p-6">
-                    <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                          Club view
-                        </p>
-                        <h2 className="mt-2 text-2xl font-semibold text-[var(--text-primary)]">
-                          Club drilldown
-                        </h2>
-                        <p className="mt-2 max-w-[70ch] text-sm leading-7 text-[var(--text-secondary)]">
-                          Choose any club to inspect recent form, last results, and the next five Premier League fixtures.
-                        </p>
-                      </div>
+                <div className="mt-6 grid gap-3 grid-cols-2 sm:grid-cols-3">
+                  <MetricCard label="PPG" value={formatFixed(selectedRow.points / selectedRow.playedGames)} />
+                  <MetricCard label="Record" value={`${selectedRow.won}-${selectedRow.draw}-${selectedRow.lost}`} />
+                  <MetricCard label="Attack rank" value={`#${attackRankings.get(selectedRow.team.id) ?? "—"}`} />
+                  <MetricCard label="Defense rank" value={`#${defenseRankings.get(selectedRow.team.id) ?? "—"}`} />
+                  <MetricCard label="GF / match" value={formatFixed(selectedRow.goalsFor / selectedRow.playedGames)} />
+                  <MetricCard label="GA / match" value={formatFixed(selectedRow.goalsAgainst / selectedRow.playedGames)} />
+                </div>
 
-                      <label className="block min-w-[260px]">
-                        <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
-                          Select a club
-                        </span>
-                        <select
-                          data-testid="premier-league-team-select"
-                          value={effectiveRouteState.team ?? ""}
-                          onChange={(event) => {
-                            const teamId = event.target.value || null;
-                            updateRouteState({
-                              view: "team",
-                              team: teamId,
-                            });
-                          }}
-                          className="min-h-[48px] w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-3 text-sm text-[var(--text-primary)] outline-none transition focus:border-[var(--color-primary)]"
-                        >
-                          <option value="">Choose a club</option>
-                          {summary.teams.map((team) => (
-                            <option key={team.id} value={team.id}>
-                              {team.shortName}
-                            </option>
+                {teamSnapshot && (
+                  <>
+                    {teamSnapshot.form.sequence.length > 0 && (
+                      <div className="mt-6">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Recent form</p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {teamSnapshot.form.sequence.map((result, i) => (
+                            <TeamResultPill key={`${result}-${i}`} result={result} />
                           ))}
-                        </select>
-                      </label>
-                    </div>
-                  </SurfaceCard>
-
-                  {!effectiveRouteState.team ? (
-                    <EmptyPanel
-                      title="Select a club to open the drilldown."
-                      description="The team view stays deep-linkable, so the selected club id appears in the URL once you choose one."
-                    />
-                  ) : teamSnapshot?.team ? (
-                    <>
-                      <SurfaceCard className="p-6 sm:p-8">
-                        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(280px,0.9fr)] xl:items-start">
-                          <div className="flex items-start gap-4">
-                            <CrestAvatar
-                              crest={teamSnapshot.team.crest}
-                              name={teamSnapshot.team.shortName}
-                              size="lg"
-                            />
-                            <div className="min-w-0">
-                              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                                Selected club
-                              </p>
-                              <h3
-                                className="mt-2 text-3xl font-semibold tracking-tight text-[var(--text-primary)]"
-                                data-testid="premier-league-selected-team"
-                              >
-                                {teamSnapshot.team.name}
-                              </h3>
-                              <div className="mt-3 flex flex-wrap gap-3 text-sm text-[var(--text-secondary)]">
-                                {teamSnapshot.team.venue ? (
-                                  <span className="inline-flex min-h-[36px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-2">
-                                    {teamSnapshot.team.venue}
-                                  </span>
-                                ) : null}
-                                {teamSnapshot.team.founded ? (
-                                  <span className="inline-flex min-h-[36px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-2">
-                                    Founded {teamSnapshot.team.founded}
-                                  </span>
-                                ) : null}
-                                {teamSnapshot.team.clubColors ? (
-                                  <span className="inline-flex min-h-[36px] items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-2">
-                                    {teamSnapshot.team.clubColors}
-                                  </span>
-                                ) : null}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="grid gap-3 sm:grid-cols-2">
-                            <HeroMetric
-                              eyebrow="League position"
-                              value={teamStanding ? `#${teamStanding.position}` : "—"}
-                              detail={
-                                teamStanding
-                                  ? `${teamStanding.points} points, ${teamStanding.goalDifference >= 0 ? "+" : ""}${teamStanding.goalDifference} GD`
-                                  : "Standing unavailable"
-                              }
-                              icon={<Trophy className="h-4 w-4" />}
-                            />
-                            <HeroMetric
-                              eyebrow="Last updated"
-                              value={formatGeneratedAt(teamSnapshot.generatedAt)}
-                              detail="Cached team snapshot timestamp"
-                              icon={<Clock3 className="h-4 w-4" />}
-                            />
-                          </div>
                         </div>
-                      </SurfaceCard>
-
-                      <SurfaceCard className="p-5 sm:p-6">
-                        <div className="border-b border-[var(--border-primary)] pb-5">
-                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                            Form
-                          </p>
-                          <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">
-                            Last five Premier League results
-                          </h3>
-                        </div>
-                        <div className="mt-5">
-                          <TeamFormStrip form={teamSnapshot.form} />
-                        </div>
-                      </SurfaceCard>
-
-                      <div className="grid gap-6 xl:grid-cols-2">
-                        <FixtureGroupSection
-                          title="Recent results"
-                          description="Latest completed Premier League matches"
-                          fixtures={teamSnapshot.recentFixtures}
-                          contextTeamId={effectiveRouteState.team}
-                          onOpenTeam={handleOpenTeam}
-                        />
-                        <FixtureGroupSection
-                          title="Upcoming fixtures"
-                          description="Next scheduled Premier League matches"
-                          fixtures={teamSnapshot.upcomingFixtures}
-                          contextTeamId={effectiveRouteState.team}
-                          onOpenTeam={handleOpenTeam}
-                        />
                       </div>
-                    </>
-                  ) : (
-                    <EmptyPanel
-                      title="Club snapshot unavailable."
-                      description="The selected team is not included in the current checked-in snapshot."
-                    />
-                  )}
+                    )}
+
+                    {teamSnapshot.recentFixtures.length > 0 && (
+                      <div className="mt-6">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Recent results</p>
+                        <div className="space-y-2">
+                          {teamSnapshot.recentFixtures.slice(0, 3).map((fixture) => (
+                            <FixtureCard
+                              key={fixture.id}
+                              fixture={fixture}
+                              contextTeamId={selectedTeamId}
+                              compact
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {teamSnapshot.upcomingFixtures.length > 0 && (
+                      <div className="mt-6">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Upcoming fixtures</p>
+                        <div className="space-y-2">
+                          {teamSnapshot.upcomingFixtures.slice(0, 3).map((fixture) => (
+                            <FixtureCard key={fixture.id} fixture={fixture} contextTeamId={selectedTeamId} compact />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+              </section>
+            ) : null}
+
+            {/* Top scorers */}
+            {scorerEntries.length > 0 && (
+              <section className="section-panel p-5 sm:p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Goals leaderboard</p>
+                    <h3 className="mt-2 text-xl font-bold text-[var(--text-primary)]">Top scorers</h3>
+                  </div>
+                  <a
+                    href="https://www.premierleague.com/stats/top/players/goals"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--color-primary)]"
+                  >
+                    Official
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
                 </div>
-              ) : null}
-            </>
-          ) : (
-            <EmptyPanel
-              title="Premier League data unavailable."
-              description="The summary feed returned no usable data."
-            />
-          )}
-        </motion.div>
+                <LeaderList leaders={scorerEntries} statLabel="goals" clubLookup={clubLookup} />
+              </section>
+            )}
+          </aside>
+        </div>
+
+        {/* League-wide fixtures */}
+        {(summary.recentFixtures.length > 0 || summary.upcomingFixtures.length > 0) && (
+          <div className="grid gap-6 md:grid-cols-2">
+            {summary.recentFixtures.length > 0 && (
+              <SurfaceCard className="p-5 sm:p-6">
+                <div className="border-b border-[var(--border-primary)] pb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Recent slate</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Latest results</h3>
+                </div>
+                <div className="mt-4 space-y-3">
+                  {summary.recentFixtures.slice(0, 6).map((f) => (
+                    <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
+                  ))}
+                </div>
+              </SurfaceCard>
+            )}
+            {summary.upcomingFixtures.length > 0 && (
+              <SurfaceCard className="p-5 sm:p-6">
+                <div className="border-b border-[var(--border-primary)] pb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Next up</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Upcoming fixtures</h3>
+                </div>
+                <div className="mt-4 space-y-3">
+                  {summary.upcomingFixtures.slice(0, 6).map((f) => (
+                    <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
+                  ))}
+                </div>
+              </SurfaceCard>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

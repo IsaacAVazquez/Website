@@ -106,6 +106,18 @@ interface FootballDataCompetitionTeamsResponse {
   teams?: FootballDataTeam[] | null;
 }
 
+interface FootballDataScorerEntry {
+  player?: { name?: string | null } | null;
+  team?: FootballDataTeam | null;
+  goals?: number | null;
+  assists?: number | null;
+  playedMatches?: number | null;
+}
+
+interface FootballDataScorersResponse {
+  scorers?: FootballDataScorerEntry[] | null;
+}
+
 interface FootballDataError extends Error {
   status: number;
 }
@@ -235,6 +247,25 @@ function normalizeFixture(rawMatch: FootballDataMatch | null | undefined): Premi
       home: rawMatch?.score?.fullTime?.home ?? null,
       away: rawMatch?.score?.fullTime?.away ?? null,
     },
+  };
+}
+
+function normalizeScorer(
+  entry: FootballDataScorerEntry | null | undefined,
+  rank: number
+): import("@/types/premier-league").PremierLeagueScorer | null {
+  const name = entry?.player?.name?.trim();
+  const teamId = entry?.team?.id;
+  const teamName = entry?.team?.shortName?.trim() || entry?.team?.name?.trim();
+  if (!name || typeof teamId !== "number" || !teamName) return null;
+  return {
+    rank,
+    name,
+    teamId: String(teamId),
+    teamName,
+    goals: entry?.goals ?? 0,
+    assists: entry?.assists ?? 0,
+    appearances: entry?.playedMatches ?? 0,
   };
 }
 
@@ -428,17 +459,23 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
     `/competitions/${PREMIER_LEAGUE_CODE}/teams`,
     SUMMARY_REVALIDATE_SECONDS
   );
+  const scorersPromise = fetchFootballDataJson<FootballDataScorersResponse>(
+    `/competitions/${PREMIER_LEAGUE_CODE}/scorers`,
+    SUMMARY_REVALIDATE_SECONDS
+  );
 
   const [
     standingsResponse,
     recentFixturesResponse,
     upcomingFixturesResponse,
     teamsResponse,
+    scorersResponse,
   ] = await Promise.all([
     standingsPromise,
     recentFixturesPromise,
     upcomingFixturesPromise,
     teamsPromise,
+    scorersPromise,
   ]);
 
   const standingsGroup =
@@ -465,12 +502,17 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
     .filter((team): team is PremierLeagueTeamOption => team !== null)
     .sort((left, right) => left.shortName.localeCompare(right.shortName));
 
+  const scorers = (scorersResponse.scorers ?? [])
+    .map((entry, i) => normalizeScorer(entry, i + 1))
+    .filter((s): s is import("@/types/premier-league").PremierLeagueScorer => s !== null);
+
   return {
     competition: buildCompetitionMeta(standingsResponse),
     standings,
     recentFixtures,
     upcomingFixtures,
     teams,
+    scorers,
     generatedAt: new Date().toISOString(),
   };
 }
@@ -529,20 +571,44 @@ export async function getPremierLeagueTeamSnapshot(
   };
 }
 
-export async function buildPremierLeagueSnapshot(): Promise<PremierLeagueSnapshot> {
+const TEAM_FETCH_DELAY_MS = 20_000;
+const PL_SNAPSHOT_PATH = "src/data/premierLeagueSnapshot.ts";
+
+function readExistingPLTeamSnapshots(filePath: string): Record<string, PremierLeagueTeamSnapshot> {
+  try {
+    const { readFileSync } = require("node:fs") as typeof import("node:fs");
+    const { resolve } = require("node:path") as typeof import("node:path");
+    const fullPath = resolve(process.cwd(), filePath);
+    const content = readFileSync(fullPath, "utf8");
+    const match = content.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);
+    if (!match) return {};
+    const parsed = JSON.parse(match[1]);
+    return parsed.teamSnapshots ?? {};
+  } catch {
+    return {};
+  }
+}
+
+export async function buildPremierLeagueSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<PremierLeagueSnapshot> {
   const summary = await getPremierLeagueSummary();
   const generatedAt = new Date().toISOString();
-  const teamSnapshotsEntries: Array<[string, PremierLeagueTeamSnapshot]> = [];
+  let teamSnapshots: Record<string, PremierLeagueTeamSnapshot> = {};
 
-  for (const team of summary.teams) {
-    const teamSnapshot = await getPremierLeagueTeamSnapshot(team.id);
-    teamSnapshotsEntries.push([
-      team.id,
-      {
-        ...teamSnapshot,
-        generatedAt,
-      },
-    ]);
+  if (options?.skipTeamSnapshots) {
+    teamSnapshots = readExistingPLTeamSnapshots(PL_SNAPSHOT_PATH);
+    console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
+  } else {
+    const entries: Array<[string, PremierLeagueTeamSnapshot]> = [];
+    for (const team of summary.teams) {
+      await new Promise<void>((resolve) => setTimeout(resolve, TEAM_FETCH_DELAY_MS));
+      try {
+        const teamSnapshot = await getPremierLeagueTeamSnapshot(team.id);
+        entries.push([team.id, { ...teamSnapshot, generatedAt }]);
+      } catch (err) {
+        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message}`);
+      }
+    }
+    teamSnapshots = Object.fromEntries(entries);
   }
 
   return {
@@ -557,6 +623,6 @@ export async function buildPremierLeagueSnapshot(): Promise<PremierLeagueSnapsho
       ...summary,
       generatedAt,
     },
-    teamSnapshots: Object.fromEntries(teamSnapshotsEntries),
+    teamSnapshots,
   };
 }

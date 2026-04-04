@@ -1,4 +1,4 @@
-export type PremierLeagueView = "overview" | "fixtures" | "team";
+export type PremierLeagueView = "table" | "title-race" | "europe" | "relegation";
 
 export interface PremierLeagueRouteState {
   view: PremierLeagueView;
@@ -60,12 +60,23 @@ export interface PremierLeagueFixture {
   };
 }
 
+export interface PremierLeagueScorer {
+  rank: number;
+  name: string;
+  teamId: string;
+  teamName: string;
+  goals: number;
+  assists: number;
+  appearances: number;
+}
+
 export interface PremierLeagueSummary {
   competition: PremierLeagueCompetitionMeta | null;
   standings: PremierLeagueStandingRow[];
   recentFixtures: PremierLeagueFixture[];
   upcomingFixtures: PremierLeagueFixture[];
   teams: PremierLeagueTeamOption[];
+  scorers: PremierLeagueScorer[];
   generatedAt: string;
 }
 

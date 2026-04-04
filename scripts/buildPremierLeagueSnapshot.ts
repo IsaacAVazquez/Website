@@ -1,5 +1,7 @@
+import { config } from "dotenv";
 import { promises as fs } from "fs";
 import path from "path";
+config({ path: path.resolve(__dirname, "../.env.local") });
 import { buildPremierLeagueSnapshot } from "../src/lib/premierLeagueData";
 
 const PROJECT_ROOT = process.cwd();

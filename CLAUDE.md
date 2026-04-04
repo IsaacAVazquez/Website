@@ -154,12 +154,43 @@ This is intentional to avoid stacked closing CTAs.
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
 
-### Premier League
+### Football Dashboards (Premier League + La Liga)
 
-- `/premier-league` is a standalone sports dashboard route
-- Premier League data is served from a checked-in snapshot at `src/data/premierLeagueSnapshot.ts`
-- `football-data.org` is only used when rebuilding that snapshot through the updater script or workflow
-- the client shell manages deep-linkable `overview`, `fixtures`, and `team` views
+Both dashboards are snapshot-driven. Data is fetched from `football-data.org` by local scripts and committed as TypeScript files. The app reads those files at build time — no live API calls at runtime.
+
+**API token:** `FOOTBALL_DATA_API_TOKEN` in `.env.local` (free tier, 10 req/min limit). Also set in Netlify environment variables.
+
+**Snapshot files:**
+- `src/data/premierLeagueSnapshot.ts`
+- `src/data/laLigaSnapshot.ts`
+
+**Update scripts:**
+
+| Command | What it fetches | Time | When to use |
+|---|---|---|---|
+| `npm run build` (Netlify prebuild) | Standings, fixtures, scorers only | ~2 min | Runs automatically on every Netlify deploy |
+| `npm run update:football` | Full update including per-team fixtures and form | ~16 min | Run locally ~weekly, then commit snapshots |
+| `npx tsx scripts/buildPremierLeagueSnapshot.ts` | PL only, full | ~8 min | Run locally when you only want PL refreshed |
+| `npx tsx scripts/updateLaLigaSnapshot.ts` | La Liga only, full | ~8 min | Run locally when you only want La Liga refreshed |
+
+**Recommended weekly workflow:**
+```
+npm run update:football   # ~16 min, run in background
+git add src/data/
+git commit -m "data: refresh football snapshots"
+git push
+```
+
+**Netlify auto-refresh (standings only, daily):**
+- Build hook URL is in Netlify → Site configuration → Build hooks
+- A scheduled job on cron-job.org hits that URL daily to trigger a rebuild
+- This keeps standings/scorers/fixtures current without any manual steps
+- Team snapshot data (sidebar fixtures, form strip) only updates on a manual `npm run update:football`
+
+**Shared components:** `src/components/football/` — used by both dashboards:
+- `FixtureCard`, `FixtureGroupSection` — generic fixture rendering
+- `LeaderList` — scorers/assists leaderboard
+- `StatCard`, `MetricCard`, `InfoChip`, `CrestAvatar`, `TeamResultPill`, `EmptyPanel`, `SurfaceCard`
 
 ### March Madness
 

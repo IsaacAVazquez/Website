@@ -22,6 +22,7 @@ export function createEmptyPremierLeagueSummary(): PremierLeagueSummary {
     recentFixtures: [],
     upcomingFixtures: [],
     teams: [],
+    scorers: [],
     generatedAt: new Date().toISOString(),
   };
 }
