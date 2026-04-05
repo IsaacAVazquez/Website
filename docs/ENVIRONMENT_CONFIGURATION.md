@@ -2,7 +2,7 @@
 
 Current environment variable reference for local development and Netlify deployment.
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-05
 
 ---
 
