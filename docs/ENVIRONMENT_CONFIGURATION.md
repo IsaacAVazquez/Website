@@ -48,7 +48,7 @@ Public fantasy pages can still function without every FantasyPros credential bec
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `FOOTBALL_DATA_API_TOKEN` | optional for local dev, optional for runtime, required for `npm run update:premier-league` and the scheduled Premier League refresh workflow | Token used only when rebuilding the checked-in football-data.org snapshot |
+| `FOOTBALL_DATA_API_TOKEN` | optional for local dev, optional for runtime, required for `npm run update:football`, `npm run update:premier-league`, and `npx tsx scripts/updateLaLigaSnapshot.ts` | Token used only when rebuilding the checked-in Premier League and La Liga snapshots — not needed at runtime since both dashboards serve from committed snapshot files |
 
 Without this token, the Premier League route still works from the checked-in snapshot. You only need it when you want to refresh that snapshot locally or in GitHub Actions.
 
@@ -81,7 +81,7 @@ ADMIN_PASSWORD=replace-me
 CRON_SECRET=replace-me
 ```
 
-Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:premier-league`, and add FantasyPros credentials only if you are testing session-backed fantasy refreshes.
+Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npx tsx scripts/updateLaLigaSnapshot.ts`, and add FantasyPros credentials only if you are testing session-backed fantasy refreshes.
 
 ---
 
