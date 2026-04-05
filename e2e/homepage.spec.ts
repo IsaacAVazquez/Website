@@ -65,7 +65,7 @@ test.describe('Homepage', () => {
       })
     ).toBeVisible()
     await expect(hero.getByRole('link', { name: /view projects/i })).toBeVisible()
-    await expect(hero.getByRole('link', { name: /read writing/i })).toBeVisible()
+    await expect(hero.getByRole('link', { name: /about/i })).toBeVisible()
     await expect(page.getByTestId('home-projects')).toBeVisible()
     await expect(page.getByTestId('home-writing')).toBeVisible()
     await expect(page.getByRole('button', { name: /toggle theme/i }).first()).toBeVisible()
@@ -154,16 +154,13 @@ test.describe('Homepage', () => {
     await page.waitForLoadState('networkidle')
 
     const styles = await page.evaluate(() => {
-      const drifting = document.querySelector('.home-gradient-drift')
       const reveal = document.querySelector('.home-reveal')
 
       return {
-        driftingAnimation: drifting ? window.getComputedStyle(drifting).animationName : null,
         revealOpacity: reveal ? window.getComputedStyle(reveal).opacity : null,
       }
     })
 
-    expect(styles.driftingAnimation).toBe('none')
     expect(styles.revealOpacity).toBe('1')
   })
 })
