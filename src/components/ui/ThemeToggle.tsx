@@ -12,33 +12,30 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export function ThemeToggle() {
-  const { setTheme } = useTheme()
+  const { theme, resolvedTheme, setTheme } = useTheme()
+  const currentTheme = resolvedTheme || theme || "light"
+  const isDarkMode = currentTheme === "dark"
+  const nextTheme = isDarkMode ? "light" : "dark"
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="min-w-[44px] min-h-[44px] text-[var(--text-tertiary)] hover:text-[var(--color-primary)] focus-visible:ring-[var(--color-primary)]"
-          aria-label="Toggle theme"
-        >
-          <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <button
+      type="button"
+      onClick={() => setTheme(nextTheme)}
+      className="relative inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-[var(--text-tertiary)] transition-colors hover:text-[var(--color-primary)]"
+      aria-label={`Theme: ${currentTheme}. Switch to ${nextTheme}.`}
+      title={`Switch to ${nextTheme} theme`}
+    >
+      <Sun
+        className={`h-5 w-5 transition-transform duration-200 ${
+          isDarkMode ? "scale-0 rotate-90" : "scale-100 rotate-0"
+        }`}
+      />
+      <Moon
+        className={`absolute h-5 w-5 transition-transform duration-200 ${
+          isDarkMode ? "scale-100 rotate-0" : "scale-0 -rotate-90"
+        }`}
+      />
+      <span className="sr-only">Cycle theme preference</span>
+    </button>
   )
 }
