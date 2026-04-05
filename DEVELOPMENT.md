@@ -2,7 +2,7 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-05
 
 ---
 
@@ -39,6 +39,8 @@ npm test
 npm run test:e2e
 npm run update:fantasy-rb
 npm run update:investments
+npm run update:football      # full football snapshot refresh (~16 min, both leagues)
+npm run update:premier-league  # PL snapshot only
 ```
 
 Additional useful scripts:
@@ -109,6 +111,33 @@ Do not assume old doc paths are current. Check the actual route tree first.
 - database and ingestion logic are server-side
 - there are sample data fallbacks for degraded environments
 
+### Football dashboards (Premier League + La Liga)
+
+Both dashboards read from committed TypeScript snapshot files — no live API calls at runtime:
+
+- `src/data/premierLeagueSnapshot.ts`
+- `src/data/laLigaSnapshot.ts`
+
+Updating snapshots:
+
+```bash
+npm run update:football          # full update, both leagues, ~16 min
+npm run update:premier-league    # PL only, ~8 min
+npx tsx scripts/updateLaLigaSnapshot.ts  # La Liga only, ~8 min
+```
+
+After running, commit the changed snapshot files:
+
+```bash
+git add src/data/premierLeagueSnapshot.ts src/data/laLigaSnapshot.ts
+git commit -m "data: refresh football snapshots"
+git push
+```
+
+Netlify auto-refreshes standings-only daily via a cron-job.org build hook that triggers a rebuild. This keeps standings current without manual steps. Full team fixture data only updates on a manual `npm run update:football`.
+
+Requires `FOOTBALL_DATA_API_TOKEN` in `.env.local` (free tier, 10 req/min limit). Without it, the dashboard still loads from the last committed snapshot.
+
 ---
 
 ## Auth And Admin
@@ -126,6 +155,7 @@ There is no live `/admin/analytics` page in the current route tree.
 ## Build And Deployment Notes
 
 - deployment target is Netlify
+- `prebuild` runs `scripts/updateFootballSnapshots.ts --league-only` (standings, fixtures, scorers only — not full team snapshots)
 - `next-sitemap` runs during postbuild
 - `typescript.ignoreBuildErrors` is still enabled in `next.config.mjs`
 - build-time tracing excludes large optional assets and packages
