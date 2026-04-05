@@ -2,7 +2,7 @@
 
 Current inventory of the checked-in scripts and operational automations in this repo.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-05
 
 ---
 
@@ -12,11 +12,16 @@ Current files under `scripts/`:
 
 | File | Purpose |
 | --- | --- |
+| `buildFantasyPositionData.ts` | Build per-position fantasy data files |
+| `buildFantasySnapshots.ts` | Generate static fantasy ranking snapshots |
 | `buildInvestmentsSnapshots.ts` | Convert fetched investments data into curated static snapshots |
+| `buildPremierLeagueSnapshot.ts` | Rebuild `src/data/premierLeagueSnapshot.ts` from football-data.org (~8 min) |
 | `fetch_investments_data.py` | Pull raw investment data before snapshot generation |
 | `generate-pwa-icons.mjs` | Rebuild icon assets |
 | `patch-nft-sharp.mjs` | Postbuild patch step used after `next-sitemap` |
 | `updateFantasyRBTiers.ts` | Refresh RB tiers data |
+| `updateFootballSnapshots.ts` | Orchestrates full football refresh (both PL and La Liga); with `--league-only` flag runs standings-only fast path used in prebuild |
+| `updateLaLigaSnapshot.ts` | Rebuild `src/data/laLigaSnapshot.ts` from football-data.org (~8 min) |
 | `investments_symbols.txt` | Curated input list for the investments data workflow |
 
 ---
@@ -25,8 +30,10 @@ Current files under `scripts/`:
 
 | Command | Underlying workflow |
 | --- | --- |
+| `npm run update:football` | Full football snapshot refresh — both PL and La Liga (~16 min) |
+| `npm run update:premier-league` | PL snapshot only — `buildPremierLeagueSnapshot.ts` (~8 min) |
 | `npm run update:investments` | Python fetch plus TypeScript snapshot build |
-| `npm run update:fantasy-rb` | RB tiers update script |
+| `npm run update:fantasy-rb` | Fantasy position data + snapshot build |
 | `npm run generate:icons` | PWA icon generation |
 
 ---
