@@ -1,5 +1,10 @@
 import "./globals.css";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import {
+  Instrument_Sans,
+  Instrument_Serif,
+  Inter,
+  JetBrains_Mono,
+} from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import { constructMetadata } from "@/lib/seo";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
@@ -15,6 +20,20 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument-sans",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -49,6 +68,8 @@ export default function RootLayout({
         className={twMerge(
           inter.variable,
           jetbrainsMono.variable,
+          instrumentSans.variable,
+          instrumentSerif.variable,
           "font-sans min-h-screen antialiased"
         )}
       >

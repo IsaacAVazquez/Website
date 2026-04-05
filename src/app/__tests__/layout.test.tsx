@@ -4,6 +4,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 jest.mock("next/font/google", () => ({
   Inter: () => ({ variable: "font-inter" }),
   JetBrains_Mono: () => ({ variable: "font-jetbrains-mono" }),
+  Instrument_Sans: () => ({ variable: "font-instrument-sans" }),
+  Instrument_Serif: () => ({ variable: "font-instrument-serif" }),
 }));
 
 jest.mock("@/components/Providers", () => ({

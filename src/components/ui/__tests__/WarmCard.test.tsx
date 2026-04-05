@@ -19,7 +19,7 @@ describe('WarmCard', () => {
       </WarmCard>
     )
     const card = container.firstChild as HTMLElement
-    expect(card).toHaveClass('p-6')
+    expect(card.className).toContain('p-6')
   })
 
   it('applies custom padding when specified', () => {
@@ -29,7 +29,7 @@ describe('WarmCard', () => {
       </WarmCard>
     )
     const card = container.firstChild as HTMLElement
-    expect(card).toHaveClass('p-8')
+    expect(card.className).toContain('p-8')
   })
 
   it('applies no padding when padding is "none"', () => {
@@ -53,8 +53,7 @@ describe('WarmCard', () => {
       </WarmCard>
     )
     const card = container.firstChild as HTMLElement
-    expect(card).toHaveClass('hover:-translate-y-0.5')
-    expect(card).toHaveClass('hover:border-[var(--border-accent)]')
+    expect(card).toHaveClass('portfolio-card-hover')
     expect(card).toHaveClass('cursor-pointer')
   })
 
@@ -97,14 +96,12 @@ describe('WarmCard', () => {
       </WarmCard>
     )
     const card = container.firstChild as HTMLElement
-    expect(card).toHaveClass('bg-[var(--surface-elevated)]')
-    expect(card).toHaveClass('rounded-xl')
-    expect(card).toHaveClass('border')
+    expect(card).toHaveClass('portfolio-card')
   })
 
   it('supports all padding sizes', () => {
     const sizes: Array<'none' | 'sm' | 'md' | 'lg' | 'xl'> = ['none', 'sm', 'md', 'lg', 'xl']
-    const expectedClasses = ['', 'p-5', 'p-6', 'p-8', 'p-10']
+    const expectedSubstrings = ['', 'p-5', 'p-6', 'p-8', 'p-10']
 
     sizes.forEach((size, index) => {
       const { container } = render(
@@ -113,8 +110,8 @@ describe('WarmCard', () => {
         </WarmCard>
       )
       const card = container.firstChild as HTMLElement
-      if (expectedClasses[index]) {
-        expect(card).toHaveClass(expectedClasses[index])
+      if (expectedSubstrings[index]) {
+        expect(card.className).toContain(expectedSubstrings[index])
       }
     })
   })

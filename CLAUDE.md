@@ -2,7 +2,7 @@
 
 Comprehensive repo context for agents and collaborators working in `/Users/isaacvazquez/Website`.
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-05
 
 ---
 
@@ -71,6 +71,7 @@ npm run update:investments
 ### Experimental dashboards
 
 - `/premier-league`
+- `/la-liga`
 
 ### Fantasy football
 
@@ -78,6 +79,13 @@ npm run update:investments
 - `/fantasy-football/tiers/[position]`
 - `/fantasy-football/rb-tiers`
 - `/fantasy-football/draft-tracker`
+
+### Other live routes
+
+- `/news-pulse`
+- `/spacex-mission-control`
+- `/fintech-tools/budget-planner`
+- `/fintech-tools/interchange-iq`
 
 ### Utility/admin
 
@@ -100,16 +108,7 @@ Redirects:
 
 `src/components/StaticHeader.tsx` uses `src/constants/navlinks.tsx`.
 
-Promoted header items:
-
-1. `Home`
-2. `About`
-3. `Projects`
-4. `Investments`
-5. `Resume`
-6. `Contact`
-
-`Writing` remains live but is intentionally not promoted in the global nav.
+All 7 links are active in the nav: Home, About, Projects, Writing, Investments, Resume, Contact.
 
 ### Layout
 
@@ -221,6 +220,10 @@ Live routes under `src/app/api/`:
 - `/api/investments/quotes`
 - `/api/premier-league/summary`
 - `/api/premier-league/teams/[teamId]`
+- `/api/la-liga/summary`
+- `/api/la-liga/teams/[teamId]`
+- `/api/news-pulse`
+- `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/spacex/summary`
 - `/api/rss`
 - `/api/sample-data`
 - `/api/scheduled-update`

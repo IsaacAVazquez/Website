@@ -48,6 +48,20 @@ describe("Footer", () => {
     expect(heading).toBeNull();
     expect(Array.from(links ?? []).some((link) => link.getAttribute("href") === "/portfolio")).toBe(false);
     expect(Array.from(links ?? []).some((link) => link.getAttribute("href") === "/contact")).toBe(false);
-    expect(footer?.textContent).toContain("Product management, projects, and analytics-focused work.");
+    expect(footer?.textContent).toContain("Building products where clear thinking and reliable execution actually move the needle.");
+  });
+
+  it("supports the homepage editorial surface without restoring the large CTA block", () => {
+    act(() => {
+      root.render(<Footer variant="compact" surface="home" />);
+    });
+
+    const footer = container.querySelector('footer[aria-label="Site footer"]');
+    const heading = footer?.querySelector("h2");
+
+    expect(footer?.getAttribute("data-footer-variant")).toBe("compact");
+    expect(footer?.getAttribute("data-footer-surface")).toBe("home");
+    expect(heading).toBeNull();
+    expect(footer?.className).toContain("footer-home");
   });
 });

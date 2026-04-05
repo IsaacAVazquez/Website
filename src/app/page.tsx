@@ -1,30 +1,22 @@
 import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
-import { ModernHero } from "@/components/ModernHero";
-import { FeaturedWorkSection } from "@/components/FeaturedWorkSection";
-import { ThinkingPreview } from "@/components/ThinkingPreview";
-import { ContactSection } from "@/components/ContactSection";
+import { HomePageContent } from "@/components/home/HomePageContent";
+import { getHomepageFeaturedCaseStudies } from "@/constants/caseStudies";
+import { getLatestBlogPostPreviews } from "@/lib/blog";
 
 export { metadata } from "./metadata";
 
 export default function Home() {
+  const featuredProjects = getHomepageFeaturedCaseStudies();
+  const latestPosts = getLatestBlogPostPreviews(3);
+
   return (
     <div className="w-full scroll-smooth bg-[var(--surface-primary)]">
-      {/* Hero Section */}
-      <header>
-        <ModernHero />
-      </header>
+      <HomePageContent
+        featuredProjects={featuredProjects}
+        latestPosts={latestPosts}
+      />
 
-      {/* Featured Work */}
-      <FeaturedWorkSection />
-
-      {/* PM Thinking */}
-      <ThinkingPreview />
-
-      {/* Contact Section */}
-      <ContactSection />
-
-      {/* Structured Data for SEO */}
       <StructuredData type="ProfilePage" />
       <StructuredData type="WebSite" />
       <AIStructuredData

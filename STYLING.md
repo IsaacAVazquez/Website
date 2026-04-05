@@ -10,6 +10,7 @@ Current styling and design-token reference for the live app.
 
 - token-driven colors, spacing, type, and shadows
 - light and dark mode support via CSS variables
+- a homepage-only editorial system can coexist with the default portfolio shell
 - shared shell helpers for page rhythm
 - accessible focus styles and touch targets
 - restrained motion that respects reduced-motion preferences
@@ -23,6 +24,7 @@ The live system is blue/slate-based. Older warm or cyberpunk references are hist
 - `src/app/globals.css`
 - `tailwind.config.ts`
 - `src/components/ui/*`
+- `src/components/home/HomePageContent.tsx`
 
 ---
 
@@ -39,6 +41,7 @@ Important groups:
 - borders: `--border-primary`, `--border-secondary`, `--border-accent`
 - spacing: `--space-xs` through `--space-4xl`
 - shadows: `--shadow-sm` through `--shadow-xl`
+- homepage editorial tokens: `--home-paper`, `--home-paper-alt`, `--home-ink`, `--home-ink-muted`, `--home-acid`, `--home-moss`, `--home-haze`, `--home-stone`, `--home-rule`, `--home-dark-paper`, `--home-dark-panel`, `--home-dark-ink`
 
 Do not hardcode hex colors in components when a token exists.
 
@@ -94,6 +97,8 @@ Fonts are loaded in `src/app/layout.tsx`:
 
 - Inter
 - JetBrains Mono
+- Instrument Sans
+- Instrument Serif
 
 Typography is fluid and token-based via:
 
@@ -110,6 +115,12 @@ Typography is fluid and token-based via:
 
 Headings use tighter tracking and balanced wrapping by default.
 
+Homepage editorial usage:
+
+- `Instrument Sans` for homepage UI, navigation treatment, body copy, and project or writing cards
+- `Instrument Serif` for oversized manifesto moments and selective italic emphasis only
+- keep the default Inter-based system on non-home routes unless a route-specific design explicitly opts out
+
 ---
 
 ## Theme Behavior
@@ -121,6 +132,30 @@ Dark mode is class-based:
 - components using CSS variables adapt automatically
 
 Use raw Tailwind `dark:` utilities only when you truly need behavior outside the token system.
+
+## Homepage Editorial System
+
+`/` has a dedicated editorial namespace and should not rely on the shared portfolio cards or section panels for its main art direction.
+
+Current homepage helpers in `globals.css` include:
+
+- `.home-page`
+- `.home-shell`, `.home-shell-tight`, `.home-shell-narrow`
+- `.home-section`
+- `.home-wordmark`
+- `.home-button*`
+- `.home-card`
+- `.home-section-dark`
+- `.home-contact-panel`
+- `.header-home*`
+- `.footer-home*`
+
+Rules for the homepage:
+
+- keep the redesign isolated to `/` unless there is an explicit decision to expand it
+- preserve the theme toggle, but use the home tokens so dark mode still feels editorial rather than like the default app theme
+- do not introduce route-wide screenshots as a dependency for homepage cards; stay text-forward unless a later content pass adds curated assets
+- if motion is added, keep it to reveal or drift effects and disable it under `prefers-reduced-motion`
 
 ---
 

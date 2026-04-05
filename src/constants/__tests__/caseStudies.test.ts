@@ -6,14 +6,11 @@ describe("caseStudies helpers", () => {
 
     expect(projects.map((project) => project.slug)).toEqual([
       "investment-analytics-platform",
-      "civic-engagement-platform",
-      "data-analytics-dashboard",
       "interchange-iq",
-      "test-automation-suite",
-      "performance-monitoring",
       "news-pulse-dashboard",
       "budget-planner",
       "spacex-mission-control",
+      "premier-league-pulse",
       "fantasy-football-analytics",
       "la-liga-pulse",
       "march-madness-2026",

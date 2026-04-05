@@ -17,10 +17,10 @@ test.describe('Navigation', () => {
       const mobileNav = page.getByLabel('Mobile navigation')
       await expect(mobileNav.getByRole('link', { name: /^Home$/i })).toBeVisible()
       await expect(mobileNav.getByRole('link', { name: /^Projects$/i })).toBeVisible()
+      await expect(mobileNav.getByRole('link', { name: /^Writing$/i })).toBeVisible()
       await expect(mobileNav.getByRole('link', { name: /^Investments$/i })).toBeVisible()
       await expect(mobileNav.getByRole('link', { name: /^Resume$/i })).toBeVisible()
       await expect(mobileNav.getByRole('link', { name: /^Contact$/i })).toBeVisible()
-      await expect(mobileNav.getByRole('link', { name: /^Writing$/i })).toHaveCount(0)
       return
     }
 
@@ -28,10 +28,10 @@ test.describe('Navigation', () => {
     await expect(desktopNav.getByRole('link', { name: /^Home$/i })).toBeVisible()
     await expect(desktopNav.getByRole('link', { name: /^About$/i })).toBeVisible()
     await expect(desktopNav.getByRole('link', { name: /^Projects$/i })).toBeVisible()
+    await expect(desktopNav.getByRole('link', { name: /^Writing$/i })).toBeVisible()
     await expect(desktopNav.getByRole('link', { name: /^Investments$/i })).toBeVisible()
     await expect(desktopNav.getByRole('link', { name: /^Resume$/i })).toBeVisible()
     await expect(desktopNav.getByRole('link', { name: /^Contact$/i })).toBeVisible()
-    await expect(desktopNav.getByRole('link', { name: /^Writing$/i })).toHaveCount(0)
 
     await clickAndWaitForURL(
       page,
@@ -105,7 +105,7 @@ test.describe('Navigation', () => {
 
     const mobileNav = page.getByLabel('Mobile navigation')
     await expect(mobileNav.getByRole('link', { name: 'Home' })).toBeVisible()
-    await expect(mobileNav.getByRole('link', { name: 'Writing' })).toHaveCount(0)
+    await expect(mobileNav.getByRole('link', { name: 'Writing' })).toBeVisible()
     await clickAndWaitForURL(
       page,
       mobileNav.getByRole('link', { name: 'Projects' }),

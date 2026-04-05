@@ -19,6 +19,7 @@ import {
   getBlogPostsByCategory,
   getBlogPostsByTag,
   getFeaturedBlogPosts,
+  getLatestBlogPostPreviews,
   searchBlogPosts,
   getAllCategories,
   getAllTags,
@@ -158,6 +159,35 @@ describe('getBlogPostBySlug', () => {
     });
     const result = await getBlogPostBySlug('broken');
     expect(result).toBeNull();
+  });
+});
+
+describe('getLatestBlogPostPreviews', () => {
+  beforeEach(() => {
+    mockFs.existsSync = jest.fn().mockReturnValue(true);
+    mockFs.mkdirSync = jest.fn();
+    (mockFs.readdirSync as jest.Mock).mockReturnValue([
+      'older-post.mdx',
+      'newer-post.mdx',
+    ]);
+    mockFs.readFileSync = jest.fn().mockReturnValue('body content');
+    mockMatter
+      .mockReturnValueOnce({
+        data: makeFrontmatter({ title: 'Older', publishedAt: '2024-01-01' }),
+        content: 'older content',
+      })
+      .mockReturnValueOnce({
+        data: makeFrontmatter({ title: 'Newer', publishedAt: '2024-02-01' }),
+        content: 'newer content',
+      });
+  });
+
+  it('returns sorted previews limited to the requested count', () => {
+    const previews = getLatestBlogPostPreviews(1);
+
+    expect(previews).toHaveLength(1);
+    expect(previews[0].title).toBe('Newer');
+    expect(previews[0].readingTime).toBe('1 min read');
   });
 });
 

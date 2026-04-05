@@ -6,11 +6,14 @@ test.describe("Footer CTA cleanup", () => {
     await page.waitForLoadState("networkidle");
 
     await expect(
-      page.getByRole("heading", { name: /interested in working together\?/i })
+      page.getByRole("heading", {
+        name: /if you're building something that needs judgment and follow-through, i'd like to hear about it/i,
+      })
     ).toBeVisible();
 
     const footer = page.getByRole("contentinfo");
     await expect(footer).toHaveAttribute("data-footer-variant", "compact");
+    await expect(footer).toHaveAttribute("data-footer-surface", "home");
     await expect(
       footer.getByRole("heading", { name: /thanks for taking a look\./i })
     ).toHaveCount(0);

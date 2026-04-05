@@ -4,7 +4,7 @@ import { DataFreshnessIndicator } from "../DataFreshnessIndicator";
 describe("DataFreshnessIndicator", () => {
   beforeEach(() => {
     jest.useFakeTimers();
-    jest.setSystemTime(new Date("2026-04-02T12:00:00.000Z"));
+    jest.setSystemTime(Date.parse("2026-04-02T12:00:00.000Z"));
   });
 
   afterEach(() => {

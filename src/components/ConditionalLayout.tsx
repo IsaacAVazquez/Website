@@ -1,7 +1,11 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Footer, type FooterVariant } from "@/components/Footer";
+import {
+  Footer,
+  type FooterSurface,
+  type FooterVariant,
+} from "@/components/Footer";
 
 interface ConditionalLayoutProps {
   children: React.ReactNode;
@@ -34,6 +38,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const footerVariant: FooterVariant = compactFooterRoutes.has(pathname)
     ? "compact"
     : "full";
+  const footerSurface: FooterSurface = isHomePage ? "home" : "default";
 
   return (
     <>
@@ -56,7 +61,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
         </main>
       </div>
 
-      <Footer variant={footerVariant} />
+      <Footer variant={footerVariant} surface={footerSurface} />
     </>
   );
 }

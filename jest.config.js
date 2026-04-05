@@ -53,15 +53,18 @@ const customJestConfig = {
     '/e2e/',
     '/.next/',
     '/.worktrees/',
+    '/.claude/',
   ],
 
   // Keep local worktree clones out of root test discovery and coverage reports.
   modulePathIgnorePatterns: [
     '<rootDir>/.worktrees/',
+    '<rootDir>/.claude/',
   ],
 
   watchPathIgnorePatterns: [
     '<rootDir>/.worktrees/',
+    '<rootDir>/.claude/',
   ],
 
   // Transform ignore patterns for node_modules

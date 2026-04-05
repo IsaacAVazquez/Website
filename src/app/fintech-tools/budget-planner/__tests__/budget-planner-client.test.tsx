@@ -15,7 +15,7 @@ jest.mock("framer-motion", () => ({
 
 describe("BudgetPlannerClient", () => {
   beforeAll(() => {
-    jest.useFakeTimers().setSystemTime(new Date("2026-04-03T16:00:00.000Z"));
+    jest.useFakeTimers().setSystemTime(Date.parse("2026-04-03T16:00:00.000Z"));
   });
 
   afterAll(() => {

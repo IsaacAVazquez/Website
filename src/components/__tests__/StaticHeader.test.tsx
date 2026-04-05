@@ -77,4 +77,22 @@ describe("StaticHeader", () => {
     expect(mobileNav?.textContent).toContain("Writing");
     expect(mobileNav?.querySelector('a[aria-current="page"]')?.textContent).toBe("Contact");
   });
+
+  it("keeps navigation and theme controls available on the homepage variant", async () => {
+    mockUsePathname.mockReturnValue("/");
+
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    const primaryNav = container.querySelector('[aria-label="Primary navigation"]');
+    const themeButtons = Array.from(container.querySelectorAll("button")).filter(
+      (button) => button.textContent === "Theme"
+    );
+
+    expect(primaryNav?.textContent).toContain("Home");
+    expect(primaryNav?.textContent).toContain("Writing");
+    expect(themeButtons.length).toBeGreaterThan(0);
+    expect(container.querySelector("header")?.className).toContain("header-home");
+  });
 });

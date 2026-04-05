@@ -61,13 +61,14 @@ test.describe('Homepage', () => {
 
     await expect(
       hero.getByRole('heading', {
-        name: /product manager focused on reliability, analytics, and execution/i,
+        name: /i build product work that makes complexity easier to read/i,
       })
     ).toBeVisible()
     await expect(hero.getByRole('link', { name: /view projects/i })).toBeVisible()
-    await expect(hero.getByText(/product manager portfolio/i)).toHaveCount(0)
-    await expect(page.getByRole('link', { name: /browse writing/i })).toBeVisible()
-    await expect(page.getByText(/explore the strongest entry points/i)).toHaveCount(0)
+    await expect(hero.getByRole('link', { name: /read writing/i })).toBeVisible()
+    await expect(page.getByTestId('home-projects')).toBeVisible()
+    await expect(page.getByTestId('home-writing')).toBeVisible()
+    await expect(page.getByRole('button', { name: /toggle theme/i }).first()).toBeVisible()
   })
 
   test('should be responsive on mobile', async ({ page }) => {
@@ -97,7 +98,7 @@ test.describe('Homepage', () => {
 
     const heroHeading = page.getByRole('heading', {
       level: 1,
-      name: /product manager focused on reliability, analytics, and execution/i,
+      name: /i build product work that makes complexity easier to read/i,
     })
     const primaryCta = page.getByRole('link', { name: /view projects/i })
 
@@ -108,5 +109,61 @@ test.describe('Homepage', () => {
     expect(ctaBox).not.toBeNull()
     expect((headingBox?.y ?? 9999) < 650).toBe(true)
     expect((ctaBox?.y ?? 9999) + (ctaBox?.height ?? 0) <= 844).toBe(true)
+  })
+
+  test('shows the editorial sections and card links', async ({ page }) => {
+    await page.goto('/')
+    await page.waitForLoadState('networkidle')
+
+    await expect(
+      page.getByRole('heading', {
+        name: /a few strong entry points into how i structure product work/i,
+      })
+    ).toBeVisible()
+    await expect(
+      page.getByRole('heading', {
+        name: /i use the writing to unpack the reasoning behind the work/i,
+      })
+    ).toBeVisible()
+    await expect(
+      page.getByRole('heading', {
+        name: /if you're building something that needs judgment and follow-through, i'd like to hear about it/i,
+      })
+    ).toBeVisible()
+
+    await expect(page.getByTestId('home-projects').getByRole('link')).toHaveCount(3)
+    await expect(page.getByTestId('home-writing').getByRole('link')).toHaveCount(4)
+  })
+
+  test('supports dark theme on the homepage', async ({ page }) => {
+    await page.addInitScript(() => {
+      window.localStorage.setItem('theme', 'dark')
+    })
+
+    await page.goto('/')
+    await page.waitForLoadState('networkidle')
+
+    await expect(page.locator('html')).toHaveClass(/dark/)
+    await expect(page.getByTestId('hero')).toBeVisible()
+    await expect(page.getByTestId('home-writing')).toBeVisible()
+  })
+
+  test('disables decorative homepage motion when reduced motion is requested', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await page.goto('/')
+    await page.waitForLoadState('networkidle')
+
+    const styles = await page.evaluate(() => {
+      const drifting = document.querySelector('.home-gradient-drift')
+      const reveal = document.querySelector('.home-reveal')
+
+      return {
+        driftingAnimation: drifting ? window.getComputedStyle(drifting).animationName : null,
+        revealOpacity: reveal ? window.getComputedStyle(reveal).opacity : null,
+      }
+    })
+
+    expect(styles.driftingAnimation).toBe('none')
+    expect(styles.revealOpacity).toBe('1')
   })
 })

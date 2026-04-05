@@ -24,6 +24,19 @@ export interface BlogPost {
   };
 }
 
+export interface BlogPostPreview {
+  slug: string;
+  title: string;
+  excerpt: string;
+  publishedAt: string;
+  updatedAt?: string;
+  category: string;
+  tags: string[];
+  featured: boolean;
+  readingTime: string;
+  author: string;
+}
+
 export interface BlogPostMetadata {
   title: string;
   excerpt: string;
@@ -57,6 +70,56 @@ function calculateReadingTime(content: string): string {
   return `${minutes} min read`;
 }
 
+function resolveBlogPostPath(slug: string): string | null {
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  const fallbackPath = path.join(postsDirectory, `${slug}.md`);
+
+  if (fs.existsSync(fullPath)) {
+    return fullPath;
+  }
+
+  if (fs.existsSync(fallbackPath)) {
+    return fallbackPath;
+  }
+
+  return null;
+}
+
+function readBlogPostSource(slug: string): { metadata: BlogPostMetadata; content: string } | null {
+  const filePath = resolveBlogPostPath(slug);
+
+  if (!filePath) {
+    return null;
+  }
+
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const { data, content } = matter(fileContents);
+
+  return {
+    metadata: data as BlogPostMetadata,
+    content,
+  };
+}
+
+function buildBlogPostPreview(
+  slug: string,
+  metadata: BlogPostMetadata,
+  content: string
+): BlogPostPreview {
+  return {
+    slug,
+    title: metadata.title,
+    excerpt: metadata.excerpt,
+    publishedAt: metadata.publishedAt,
+    updatedAt: metadata.updatedAt,
+    category: metadata.category,
+    tags: metadata.tags || [],
+    featured: metadata.featured || false,
+    readingTime: calculateReadingTime(content),
+    author: metadata.author || 'Isaac Vazquez',
+  };
+}
+
 // Get all blog post slugs
 export function getBlogPostSlugs(): string[] {
   ensureBlogDirectory();
@@ -76,23 +139,14 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
   ensureBlogDirectory();
   
   try {
-    const fullPath = path.join(postsDirectory, `${slug}.mdx`);
-    const fallbackPath = path.join(postsDirectory, `${slug}.md`);
-    
-    let filePath = fullPath;
-    if (!fs.existsSync(fullPath) && fs.existsSync(fallbackPath)) {
-      filePath = fallbackPath;
-    }
-    
-    if (!fs.existsSync(filePath)) {
+    const source = readBlogPostSource(slug);
+
+    if (!source) {
       return null;
     }
 
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const { data, content } = matter(fileContents);
-    
-    const metadata = data as BlogPostMetadata;
-    
+    const { metadata, content } = source;
+
     // Process markdown content
     const processedContent = await remark()
       .use(remarkGfm)
@@ -137,6 +191,27 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
   return posts.sort((a, b) => {
     return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
   });
+}
+
+export function getLatestBlogPostPreviews(limit: number = 3): BlogPostPreview[] {
+  const slugs = getBlogPostSlugs();
+  const previews: BlogPostPreview[] = [];
+
+  for (const slug of slugs) {
+    try {
+      const source = readBlogPostSource(slug);
+
+      if (source) {
+        previews.push(buildBlogPostPreview(slug, source.metadata, source.content));
+      }
+    } catch (error) {
+      console.error(`Error reading blog post preview ${slug}:`, error);
+    }
+  }
+
+  return previews
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .slice(0, limit);
 }
 
 // Get blog posts by category
