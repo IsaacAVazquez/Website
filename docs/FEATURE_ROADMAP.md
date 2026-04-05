@@ -10,6 +10,8 @@ Last updated: 2026-03-03
 - ~~P1-A: Historical Price Chart~~ — Done (PriceChartPanel.tsx, D3 candlestick + volume)
 - ~~P3-A: Fix OptimizedImage~~ — Done (dynamic class, undefined bg, overlay divs, reduced motion)
 - ~~P3-B: Search Page Design System~~ — Done (all slate-* → CSS variables)
+- ~~Football Dashboards: Premier League refactored to snapshot-backed data~~ — Done (`src/data/premierLeagueSnapshot.ts`, `src/components/football/`)
+- ~~Football Dashboards: La Liga dashboard added~~ — Done (`/la-liga`, `src/data/laLigaSnapshot.ts`)
 
 ---
 
