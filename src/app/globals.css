@@ -883,6 +883,19 @@
     padding: 1.5rem;
   }
 
+  .home-writing-card {
+    box-shadow: none;
+  }
+
+  .home-headshot-frame {
+    position: relative;
+    width: min(100%, 26rem);
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 1.8rem;
+    box-shadow: var(--shadow-xl);
+  }
+
   .home-pill {
     display: inline-flex;
     align-items: center;
@@ -1075,7 +1088,6 @@
   .home-writing-card {
     border-color: var(--home-dark-rule);
     background: color-mix(in srgb, var(--home-dark-panel) 94%, black);
-    box-shadow: none;
   }
 
   .home-writing-card:hover,

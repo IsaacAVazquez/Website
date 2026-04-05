@@ -6,12 +6,7 @@ import { ModernButton } from "@/components/ui/ModernButton";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "@/components/ui/ServerIcons";
 import { SectionIntro } from "@/components/ui/SectionIntro";
-
-const publishedDateFormatter = new Intl.DateTimeFormat("en-US", {
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
+import { publishedDateFormatter } from "@/lib/utils";
 
 export const metadata = constructMetadata({
   title: "Writing",

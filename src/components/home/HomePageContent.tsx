@@ -14,12 +14,7 @@ import {
   getProjectCardSummary,
 } from "@/constants/caseStudies";
 import type { BlogPostPreview } from "@/lib/blog";
-
-const publishedDateFormatter = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-});
+import { publishedDateFormatter } from "@/lib/utils";
 
 interface HomePageContentProps {
   featuredProjects: CaseStudyData[];
@@ -149,7 +144,7 @@ export function HomePageContent({
             </div>
 
             <div className="home-reveal home-reveal-delay-3 flex justify-center lg:justify-end">
-              <div className="relative overflow-hidden rounded-[1.8rem] shadow-xl" style={{ width: "min(100%, 26rem)", aspectRatio: "3/4" }}>
+              <div className="home-headshot-frame">
                 <Image
                   src="/images/headshot-home.webp"
                   alt="Isaac Vazquez"
@@ -172,10 +167,10 @@ export function HomePageContent({
           <div className="home-section-intro home-reveal">
             <div>
               <p className="home-kicker">Selected work</p>
-              <h2 id="home-projects-heading" className="home-section-title mx-center max-w-3xl">
+              <h2 id="home-projects-heading" className="home-section-title mx-auto max-w-3xl">
                 A few strong entry points into how I structure product work.
               </h2>
-              <p className="home-body mx-center max-w-3xl home-section-copy">
+              <p className="home-body mx-auto max-w-3xl home-section-copy">
                 Each project surfaces the role, the problem space, and what actually changed once shipped.
               </p>
             </div>

@@ -1,3 +1,9 @@
+export const publishedDateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+
 export const isMobile = () => {
   if (typeof window === "undefined") return false;
   const width = window.innerWidth;

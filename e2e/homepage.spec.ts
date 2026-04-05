@@ -75,7 +75,6 @@ test.describe('Homepage', () => {
     await page.setViewportSize({ width: 375, height: 667 })
     await page.goto('/')
 
-    // Check that page loads on mobile
     await expect(page).toHaveTitle(/Isaac Vazquez/)
   })
 
