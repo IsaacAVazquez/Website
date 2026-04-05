@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-05
 
 ---
 
@@ -15,6 +15,7 @@ This repo is a single Next.js app that serves multiple product surfaces:
 3. fantasy football analytics tools
 4. an investment research platform
 5. a seasonal March Madness editorial analysis route
+6. football dashboards — Premier League (`/premier-league`) and La Liga (`/la-liga`)
 
 The architecture is intentionally mixed:
 
@@ -64,6 +65,21 @@ src/app/layout.tsx
 - browser-local portfolio state
 - curated research snapshots served through narrow API routes
 
+### Football dashboards
+
+Both `/premier-league` and `/la-liga` are snapshot-driven. Data is fetched from `football-data.org` by local scripts and committed as TypeScript files to `src/data/`. The app reads those files at build time — no live third-party API calls at runtime.
+
+- `src/data/premierLeagueSnapshot.ts` — Premier League standings, fixtures, scorers
+- `src/data/laLigaSnapshot.ts` — La Liga standings, fixtures, scorers
+
+Shared UI components for both dashboards live in `src/components/football/`.
+
+Update workflow:
+- `npm run update:football` — full update for both leagues (~16 min, run locally then commit snapshots)
+- `npm run update:premier-league` — PL only
+- `npx tsx scripts/updateLaLigaSnapshot.ts` — La Liga only
+- Netlify auto-refreshes standings-only daily via a cron-job.org build hook
+
 ### March Madness
 
 - server page for metadata and structured data
@@ -79,6 +95,13 @@ src/app/layout.tsx
 - `src/constants/caseStudies.ts`
 - `src/constants/navlinks.tsx`
 - `src/constants/personal.ts`
+
+### Football snapshots
+
+- `src/data/premierLeagueSnapshot.ts`
+- `src/data/laLigaSnapshot.ts`
+
+These are committed TypeScript files rebuilt by `scripts/buildPremierLeagueSnapshot.ts` and `scripts/updateLaLigaSnapshot.ts`. The API routes for each dashboard read from these files, not from `football-data.org` at runtime.
 
 ### Writing content
 
@@ -107,6 +130,7 @@ Important groups:
 - auth: `/api/auth/[...nextauth]`
 - fantasy football: `/api/fantasy-data`, `/api/fantasy-pros-session`, `/api/fantasy-pros-free`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, `/api/scheduled-update`
 - investments: `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`, `/api/stocks`
+- football: `/api/premier-league/summary`, `/api/premier-league/teams/[teamId]`, `/api/la-liga/summary`, `/api/la-liga/teams/[teamId]`
 - content/utilities: `/api/rss`, `/api/search`, `/api/scrape`
 
 Current caveat:
