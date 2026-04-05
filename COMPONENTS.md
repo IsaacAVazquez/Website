@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-05
 
 ---
 
@@ -77,6 +77,23 @@ Main components:
 - `ProfitabilityPanel`
 - `IndustryPanel`
 - `NewsPanel`
+
+### Football dashboards
+
+Shared components for both `/premier-league` and `/la-liga` dashboards. All live in `src/components/football/`.
+
+| Component | File | Role |
+|----------|------|------|
+| `FixtureCard` | `src/components/football/FixtureCard.tsx` | Single fixture result or upcoming match card |
+| `FixtureGroupSection` | `src/components/football/FixtureGroupSection.tsx` | Grouped fixture list by matchday or date |
+| `LeaderList` | `src/components/football/LeaderList.tsx` | Scorers and assists leaderboard |
+| `StatCard` | `src/components/football/StatCard.tsx` | Single stat display with label and value |
+| `MetricCard` | `src/components/football/MetricCard.tsx` | Metric highlight card with optional trend |
+| `InfoChip` | `src/components/football/InfoChip.tsx` | Inline label chip for league/competition context |
+| `CrestAvatar` | `src/components/football/CrestAvatar.tsx` | Team crest image with fallback initials |
+| `TeamResultPill` | `src/components/football/TeamResultPill.tsx` | Win/draw/loss pill for form strips |
+| `SurfaceCard` | `src/components/football/SurfaceCard.tsx` | Consistent card surface wrapper |
+| `EmptyPanel` | `src/components/football/EmptyPanel.tsx` | Empty-state placeholder panel |
 
 ---
 

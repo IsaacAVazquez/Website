@@ -2,7 +2,7 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-05
 
 ---
 
@@ -56,6 +56,7 @@ Do not document or assume older 70% thresholds.
 
 - `src/components/**/__tests__`
 - `src/hooks/**/__tests__`
+- `src/app/fantasy-football/__tests__/` — route state integration tests, including fantasy football client and fantasy state tests
 - other repo-level `*.test.*` and `*.spec.*` files outside `e2e/`
 
 ### Playwright
