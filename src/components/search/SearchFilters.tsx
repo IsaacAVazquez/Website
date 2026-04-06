@@ -28,12 +28,11 @@ export function SearchFilters({
 
   const categories = [
     { id: 'all', label: 'All Categories' },
-    { id: 'QA Engineering', label: 'QA Engineering' },
+    { id: 'Product Strategy', label: 'Product Strategy' },
     { id: 'Fantasy Football Analytics', label: 'Fantasy Football' },
-    { id: 'Software Quality', label: 'Software Quality' },
-    { id: 'Software Development', label: 'Development' },
-    { id: 'Testing', label: 'Testing' },
-    { id: 'Analytics', label: 'Analytics' }
+    { id: 'Analytics', label: 'Analytics' },
+    { id: 'Fintech', label: 'Fintech' },
+    { id: 'Sports Data', label: 'Sports Data' }
   ];
 
   const hasActiveFilters = type !== 'all' || category !== 'all';

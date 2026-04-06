@@ -264,7 +264,7 @@ export function SearchInterface({
           </span>
         </Heading>
         <Paragraph size="lg" className="max-w-2xl mx-auto text-slate-600 dark:text-slate-400">
-          Find blog posts, projects, and insights across QA engineering, fantasy football analytics, and software development.
+          Find writing, case studies, and tools across product strategy, analytics, fantasy football, and fintech.
         </Paragraph>
       </div>
 
@@ -367,11 +367,11 @@ export function SearchInterface({
                 What you can search for:
               </h4>
               <ul className="space-y-1 text-sm text-slate-600 dark:text-slate-400">
-                <li>• Blog posts and technical articles</li>
-                <li>• Project documentation</li>
-                <li>• QA engineering resources</li>
-                <li>• Fantasy football analytics</li>
-                <li>• Software development guides</li>
+                <li>• Writing on product strategy and analytics</li>
+                <li>• Case studies and project details</li>
+                <li>• Fantasy football rankings and analysis</li>
+                <li>• Investment and fintech tools</li>
+                <li>• Sports dashboards</li>
               </ul>
             </div>
             <div>
@@ -380,22 +380,22 @@ export function SearchInterface({
               </h4>
               <div className="space-y-2">
                 <button
-                  onClick={() => handleQueryChange("automated testing")}
+                  onClick={() => handleQueryChange("product strategy")}
                   className="block text-sm text-primary hover:underline text-left"
                 >
-                  "automated testing"
+                  "product strategy"
                 </button>
                 <button
-                  onClick={() => handleQueryChange("fantasy football analytics")}
+                  onClick={() => handleQueryChange("fantasy football")}
                   className="block text-sm text-primary hover:underline text-left"
                 >
-                  "fantasy football analytics"
+                  "fantasy football"
                 </button>
                 <button
-                  onClick={() => handleQueryChange("software quality")}
+                  onClick={() => handleQueryChange("investment research")}
                   className="block text-sm text-primary hover:underline text-left"
                 >
-                  "software quality"
+                  "investment research"
                 </button>
               </div>
             </div>

@@ -2,7 +2,7 @@
 
 import { WarmCard } from "./WarmCard";
 import { Heading } from "./Heading";
-import { personalMetrics } from "@/constants/personal";
+import { careerTimeline } from "@/constants/personal";
 import Image from "next/image";
 import {
   IconBriefcase,
@@ -13,7 +13,7 @@ import {
 } from "@tabler/icons-react";
 
 interface TimelineItemProps {
-  item: typeof personalMetrics.careerTimeline[0];
+  item: typeof careerTimeline[0];
   isLast: boolean;
 }
 
@@ -121,7 +121,7 @@ export function JourneyTimeline() {
               Career Journey
             </Heading>
             <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed max-w-3xl mx-auto">
-              From Political Science graduate to QA engineer, and now an MBA candidate at UC Berkeley, my career has been a journey of continuous learning and impact. Here's a snapshot of my professional timeline.
+              I started in political science, moved into data and campaign work, and found my way to product through quality engineering. Here's how that path unfolded.
             </p>
           </div>
 
@@ -129,11 +129,11 @@ export function JourneyTimeline() {
           <div className="relative">
             {/* Timeline items */}
             <div className="relative space-y-4">
-              {personalMetrics.careerTimeline.map((item, index) => (
+              {careerTimeline.map((item, index) => (
                 <TimelineItem
                   key={`${item.year}-${item.role}`}
                   item={item}
-                  isLast={index === personalMetrics.careerTimeline.length - 1}
+                  isLast={index === careerTimeline.length - 1}
                 />
               ))}
             </div>

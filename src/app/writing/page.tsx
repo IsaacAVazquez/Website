@@ -159,8 +159,7 @@ export default async function WritingPage() {
                 Articles Coming Soon
               </h2>
               <p className="mx-auto max-w-2xl text-base leading-relaxed text-[var(--text-secondary)]">
-                More essays are on the way around product strategy, technical
-                leadership, and how to build products that help people make clearer decisions.
+                I'm working on more pieces about product thinking, analytics, and the decisions behind the tools I build.
               </p>
             </WarmCard>
           )}

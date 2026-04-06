@@ -36,10 +36,10 @@ export const metadata = constructMetadata({
     ],
     contentType: "Professional Portfolio Homepage",
     context:
-      "Homepage of Isaac Vazquez, a product manager with 5+ years of experience building SaaS products reaching 60M+ users. Background in QA engineering provides end-to-end product quality ownership, with growing focus on analytics-heavy SaaS and fintech-style research tooling. Currently pursuing an MBA at UC Berkeley Haas School of Business.",
+      "Homepage of Isaac Vazquez, a product manager with 6+ years across SaaS, analytics, and civic technology. QA background grounds product decisions in how systems actually work. Currently pursuing an MBA at UC Berkeley Haas, building investment research and fintech tools.",
     summary:
-      "Product management portfolio showcasing projects in platform scale, analytics, and fintech-style research products.",
+      "Product portfolio with case studies, writing, and working tools across reliability, fintech, and sports data.",
     primaryFocus:
-      "Product management projects, strategic product thinking, and measurable business outcomes in SaaS, civic tech, and fintech-adjacent products",
+      "Product work across SaaS, civic tech, and fintech where judgment, analytics, and execution have to hold together",
   },
 });
