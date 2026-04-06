@@ -79,8 +79,8 @@ export default async function WritingPage() {
             eyebrow="Writing"
             size="md"
             headingLevel={1}
-            title="Notes on product strategy, operating systems, and analytics-heavy work."
-            description="This is where I unpack the decisions behind the portfolio. Product thinking, technical judgment, and lessons from building systems where trust matters."
+            title="I write to work through ideas, not to summarize them."
+            description="Product strategy, analytics-heavy decisions, and the parts of the job that usually matter more than the framework language around them."
             actions={
               <ModernButton href="/portfolio" variant="outline" size="md">
                 View projects
