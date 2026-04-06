@@ -114,7 +114,7 @@ export function HomePageContent({
           <div className="home-wordmark home-reveal mx-auto text-center">ISAAC VAZQUEZ</div>
 
           <div className="home-intro-block home-reveal home-reveal-delay-1">
-            <p className="home-kicker">Product systems, writing, and decision-support tools</p>
+            <p className="home-kicker">Product work, writing, and working tools</p>
             <p className="home-body home-intro-copy">
               Most of my work lives where judgment, analytics, and execution all
               have to hold together at the same time.
@@ -122,11 +122,11 @@ export function HomePageContent({
           </div>
 
           <div className="home-hero-grid">
-            <div className="home-reveal home-reveal-delay-2">
-              <h1 id="home-hero-heading" className="home-hero-title">
-                I build product work that makes complexity easier to read.
+            <div className="home-reveal home-reveal-delay-2 lg:ml-auto">
+              <h1 id="home-hero-heading" className="home-hero-title max-w-3xl">
+                I build products that make hard problems easier to act on.
               </h1>
-              <p className="home-body home-hero-body">
+              <p className="home-body home-hero-body max-w-3xl">
                 That shows up here as case studies, writing, and working tools
                 across reliability, fintech, media, and sports data.
               </p>
@@ -168,10 +168,10 @@ export function HomePageContent({
             <div>
               <p className="home-kicker">Selected work</p>
               <h2 id="home-projects-heading" className="home-section-title mx-auto max-w-3xl">
-                A few strong entry points into how I structure product work.
+                A few projects that show how I think about product work.
               </h2>
               <p className="home-body mx-auto max-w-3xl home-section-copy">
-                Each project surfaces the role, the problem space, and what actually changed once shipped.
+                Each one covers the role, the problem, and what actually changed once it shipped.
               </p>
             </div>
           </div>
