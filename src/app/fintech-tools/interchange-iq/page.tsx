@@ -2,9 +2,9 @@ import { constructMetadata } from "@/lib/seo";
 import { InterchangeIQClient } from "./interchange-iq-client";
 
 export const metadata = constructMetadata({
-  title: "Interchange IQ: Payment Processor Fee Analyzer | Isaac Vazquez",
+  title: "Interchange IQ",
   description:
-    "Compare payment processing costs across Stripe, Square, PayPal, Adyen, and others using real 2024 interchange rate data. Adjust volume, avg ticket, and card mix for live fee comparisons and breakeven analysis.",
+    "I built a fee analyzer that models real interchange economics across Stripe, Square, PayPal, Adyen, and others so you can compare flat-rate and interchange+ pricing before committing.",
   canonicalUrl: "/fintech-tools/interchange-iq",
 });
 
@@ -24,7 +24,7 @@ export default function InterchangeIQPage() {
             affect total fees across major processors.
           </p>
           <p className="text-sm text-[var(--text-tertiary)] max-w-2xl">
-            Interchange economics are at the core of every payments product. This tool models
+            Interchange economics are at the core of every payments product. I modeled
             the real cost structure behind flat-rate and interchange+ pricing using published rate data.
           </p>
         </div>

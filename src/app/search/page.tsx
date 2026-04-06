@@ -6,9 +6,9 @@ import { Paragraph } from "@/components/ui/Paragraph";
 import { Badge } from "@/components/ui/Badge";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Search - Find Content Across the Site",
-  description: "Search through blog posts, projects, and documentation. Find QA engineering insights, fantasy football analytics, and software development resources.",
-  canonicalUrl: "https://isaacavazquez.com/search",
+  title: "Search",
+  description: "Search across case studies, writing, and tools covering product strategy, QA engineering, fantasy football analytics, and fintech tooling.",
+  canonicalUrl: "/search",
   dateModified: "2025-02-05",
 });
 
@@ -31,8 +31,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             Search my portfolio, writing, and tools
           </Heading>
           <Paragraph size="lg" className="text-[var(--text-secondary)]">
-            This search covers every public case study, blog post, and fantasy football tool.
-            Use it to surface product management experience, QA engineering playbooks, or data-driven content in seconds.
+            Everything here is searchable, from case studies and writing to fantasy football tools and fintech experiments.
           </Paragraph>
           <div className="flex flex-wrap justify-center gap-3">
             {["Product Strategy", "QA Engineering", "Fantasy Football", "Career Playbooks", "AI & Analytics"].map((topic) => (

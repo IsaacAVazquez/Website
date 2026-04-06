@@ -4,7 +4,7 @@ import ResumeClient from "./resume-client";
 
 export const metadata = constructMetadata({
   title: "Resume",
-  description: "Isaac Vazquez resume: UC Berkeley Haas MBA Candidate '27, Consortium Fellow. Technical Product Manager with 6+ years leading quality engineering, data analytics, and product initiatives at Civitech, Open Progress, and Florida State University. Skills in product strategy, cross-functional leadership, stakeholder management, SQL, test automation, and Agile methodologies.",
+  description: "UC Berkeley Haas MBA Candidate and Consortium Fellow with 6+ years in product, QA, and analytics across SaaS and civic tech.",
   canonicalUrl: "/resume",
   dateModified: "2025-02-05",
 });
@@ -64,8 +64,8 @@ export default function ResumePage() {
       <StructuredData
         type="JobPosting"
         data={{
-          title: "Seeking: Associate Product Manager / Product Manager",
-          description: "UC Berkeley Haas MBA Candidate '27 seeking Product Manager or Associate Product Manager roles in Austin TX or San Francisco Bay Area. 6+ years experience in quality assurance leadership, data analytics, and SaaS product development. Technical background with expertise in product strategy, cross-functional collaboration, SQL, test automation (Cypress), and Agile methodologies. Passionate about building mission-driven products in SaaS and consumer technology.",
+          title: "Associate Product Manager / Product Manager",
+          description: "UC Berkeley Haas MBA Candidate seeking PM or APM roles in Austin TX or the San Francisco Bay Area. 6+ years in quality assurance leadership, data analytics, and SaaS product development with expertise in product strategy, cross-functional collaboration, SQL, and test automation.",
           datePosted: "2024-08-15",
           validThrough: "2027-05-31",
           employmentType: ["FULL_TIME"],

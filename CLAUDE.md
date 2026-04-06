@@ -291,11 +291,12 @@ Treat the following as current source of truth:
 - `DEVELOPMENT.md`
 - `TESTING.md`
 - `STYLING.md`
+- `SEO.md`
 - `WRITING_VOICE.md`
 - `docs/README.md`
 - `docs/ai-context/*`
 
-Treat older plans, redesign specs, SEO summaries, and reference templates as historical unless they explicitly say they are current.
+Treat older plans, redesign specs, and reference templates as historical unless they explicitly say they are current. `SEO.md` (listed above) is the current SEO reference — older root-level SEO audit/summary docs are historical.
 
 ---
 

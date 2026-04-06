@@ -125,9 +125,9 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
   "interchange-iq": {
     slug: "interchange-iq",
-    title: "Interchange IQ: Payment Fee Analyzer",
+    title: "Interchange IQ",
     description:
-      "Interactive tool that models real payment processing costs across 7 major processors using published 2024 interchange rate data. Adjust volume, avg ticket, and card mix to see live fee comparisons and a breakeven analysis.",
+      "I built a fee analyzer that models real payment processing costs across 7 major processors using published 2024 interchange rate data. Adjust volume, avg ticket, and card mix to see live fee comparisons and a breakeven analysis.",
     role: "Builder",
     timeline: "2025",
     tools: ["Next.js", "TypeScript", "React", "Payments Economics"],

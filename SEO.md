@@ -31,7 +31,7 @@ export const siteConfig = {
   title: "Product Manager | UC Berkeley Haas MBA | Portfolio & Case Studies",
   description: "...",
   url: "https://isaacavazquez.com",
-  ogImage: "/opengraph-image",        // 1200×630
+  ogImage: "/opengraph-image",        // 1200x630
   ogImageAlt: "Isaac Vazquez - ...",
   links: {
     twitter: "https://twitter.com/isaacvazquez",
@@ -282,7 +282,7 @@ export async function generateMetadata({ params }) {
     aiMetadata: { contentType: "Case Study", ... },
   });
 }
-// No structured data component rendered — metadata only.
+// Gap: No structured data or breadcrumb component rendered in JSX. See compliance table below.
 ```
 
 ### Generic Static Page
@@ -313,7 +313,7 @@ The root layout provides the baseline for every page:
   - `/manifest.json` link
   - Apple touch icon + favicon
   - RSS feed: `<link rel="alternate" href="/api/rss">`
-- **Google Search Console**: verification field is stubbed at `seo.ts:179`. To activate: paste the verification code value into `verification: { google: "your-code" }`.
+- **Google Search Console**: verification field is stubbed in `constructMetadata()` under the `verification` key. To activate: uncomment the `google` line and paste your Search Console verification code.
 
 ---
 
@@ -329,9 +329,10 @@ Runs automatically via `postbuild` script. Generates `public/sitemap.xml`.
 | 0.95 | `/portfolio` |
 | 0.9 | `/about`, `/resume` |
 | 0.85 | `/investments`, `/writing`, blog posts with "product"/"mba"/"berkeley" in slug |
-| 0.75 | `/march-madness-2026`, blog posts with "qa"/"testing" in slug |
+| 0.75 | `/march-madness-2026`, blog posts with "qa"/"testing"/"quality" in slug |
 | 0.7 | `/contact`, all other blog posts |
-| 0.5–0.6 | Fantasy football pages, `/accessibility` |
+| 0.6 | `/fantasy-football` |
+| 0.5 | `/fantasy-football/tiers/*`, `/fantasy-football/draft-tracker`, `/accessibility` |
 
 ### Dynamic blog discovery
 
@@ -343,18 +344,77 @@ Blog posts are discovered from `content/blog/*.mdx` at build time. Slug keywords
 
 ---
 
+## Writing Voice in Meta Content
+
+All user-facing text, including meta descriptions and page titles, must follow `WRITING_VOICE.md`. Key rules for SEO copy:
+
+- **First-person, direct tone** — "I built this because..." not "This tool was designed to..."
+- **No corporate hedging** — state what the page is, clearly
+- **No "Comprehensive Guide" or "Complete Guide" openers** — these read as generic listicle content
+- **No em dashes as stylistic devices** — use commas or periods instead
+- **No colons as sentence connectors** — "The problem is X" not "The problem: X"
+- **Data woven into sentences** — "5+ years building SaaS products reaching 60M+ users" not a separate stats callout
+- **Keep descriptions under 160 characters** — Google truncates beyond this
+
+When writing or editing `description` strings in `constructMetadata()` calls, read `WRITING_VOICE.md` first. The meta description is often the first thing someone reads about a page.
+
+---
+
+## Page Compliance Audit
+
+Current status of metadata and structured data across all pages. Use this to identify gaps.
+
+| Page | Metadata | ogType | canonicalUrl | dateModified | Structured Data | Breadcrumbs | Status |
+|---|---|---|---|---|---|---|---|
+| `/` | `constructMetadata` | website | `/` | 2026-02-22 | ProfilePage, WebSite, Person | N/A (root) | OK |
+| `/about` | `generateAIOptimizedMetadata` | website | `/about` | 2025-02-05 | Breadcrumb, ProfilePage | Yes | OK |
+| `/contact` | `constructMetadata` | website | `/contact` | 2026-03-16 | BreadcrumbList, ContactPage | Yes | OK |
+| `/resume` | `constructMetadata` | website | `/resume` | 2025-02-05 | BreadcrumbList, Person, JobPosting | Yes | OK |
+| `/portfolio` | `constructMetadata` | website | `/portfolio` | None | None | None | **Gap** |
+| `/portfolio/[slug]` | `generateMetadata` | article | `/portfolio/{slug}` | None | None | None | **Gap** |
+| `/writing` | `constructMetadata` | website | `/writing` | 2025-02-05 | BreadcrumbList, Article (list) | Yes | OK |
+| `/writing/[slug]` | `generateMetadata` | article | full URL | post dates | Breadcrumb, Article | Yes | OK |
+| `/investments` | `constructMetadata` | website | `/investments` | 2026-03-16 | BreadcrumbList, SoftwareApplication | Yes | OK |
+| `/accessibility` | `constructMetadata` | website | full URL | 2025-02-05 | None | None | **Gap** |
+| `/search` | `constructMetadata` | website | full URL | 2025-02-05 | None | None | **Gap** |
+| `/admin` | None | N/A | N/A | N/A | None | None | **Gap** |
+| `/fantasy-football` | `constructMetadata` | website | relative | 2026-03-18 | BreadcrumbList, SportsApp, FAQ | Yes | OK |
+| `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | 2026-03-18 | WebApplication | None | **Gap** |
+| `/fantasy-football/rb-tiers` | Redirect (301) | — | — | — | — | — | OK |
+| `/fantasy-football/tiers/[pos]` | Redirect (301) | — | — | — | — | — | OK |
+| `/premier-league` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
+| `/la-liga` | `constructMetadata` | website | relative | 2026-04-03 | BreadcrumbList, SoftwareApp | Yes | OK |
+| `/news-pulse` | `constructMetadata` | website | relative | 2026-04-01 | BreadcrumbList, SoftwareApp | Yes | OK |
+| `/march-madness-2026` | `constructMetadata` | website | relative | dynamic | BreadcrumbList, Article, FAQ, Sports | Yes | OK |
+| `/spacex-mission-control` | `constructMetadata` | website | relative | 2026-04-01 | BreadcrumbList, SoftwareApp | Yes | OK |
+| `/fintech-tools/budget-planner` | `constructMetadata` | website | relative | 2026-04-03 | BreadcrumbList, SoftwareApp | Yes | OK |
+| `/fintech-tools/interchange-iq` | `constructMetadata` | website | relative | None | None | None | **Gap** |
+
+### Gaps to address
+
+1. **`/portfolio`** — Missing structured data and breadcrumbs. Should have `BreadcrumbList` + `ItemList` or `CreativeWork` schema.
+2. **`/portfolio/[slug]`** — Has `ogType: "article"` in metadata but renders no structured data or breadcrumbs in JSX. Should match the `/writing/[slug]` pattern with `Breadcrumb` + `Article` schemas. Also missing `datePublished`/`dateModified` in the metadata call.
+3. **`/accessibility`** — Missing structured data and breadcrumbs. Low priority but should have a `BreadcrumbList` at minimum.
+4. **`/search`** — Missing structured data and breadcrumbs. Consider `noIndex: true` since the search index is limited.
+5. **`/admin`** — No metadata export at all. Should export `constructMetadata({ noIndex: true })` to prevent indexing.
+6. **`/fantasy-football/draft-tracker`** — Missing breadcrumb structured data despite having a parent route.
+7. **`/fintech-tools/interchange-iq`** — Missing `dateModified`, structured data, and breadcrumbs.
+
+---
+
 ## Best Practices Checklist
 
 ### Every page must have
 - [ ] `title` — unique, under 60 characters where possible
-- [ ] `description` — unique, 150–160 characters, written for humans
+- [ ] `description` — unique, 150-160 characters, following `WRITING_VOICE.md` tone
 - [ ] `canonicalUrl` — prevents duplicate content (use relative paths like `"/about"`)
+- [ ] `dateModified` — helps search engines understand content freshness
 - [ ] At minimum one structured data type
+- [ ] Breadcrumb structured data (all non-homepage pages)
 
 ### Article and content pages additionally need
 - [ ] `ogType: "article"`
 - [ ] `datePublished` (ISO 8601)
-- [ ] `dateModified` (ISO 8601)
 - [ ] `articleAuthor`, `articleSection`, `articleTags`
 - [ ] `<AIStructuredData type="Article" />` in JSX
 - [ ] `<AIStructuredData type="Breadcrumb" />` in JSX
@@ -367,6 +427,8 @@ Blog posts are discovered from `content/blog/*.mdx` at build time. Slug keywords
 - Set `og:type: "website"` on blog posts or case studies
 - Skip `canonicalUrl` on dynamic routes (duplicate content risk)
 - Add `next-seo` imports for meta tags — use `constructMetadata` instead
+- Write meta descriptions in third person or corporate voice — see Writing Voice section above
+- Use "Comprehensive Guide" or "Complete Guide" in titles or descriptions
 
 ---
 
@@ -377,11 +439,11 @@ Blog posts are discovered from `content/blog/*.mdx` at build time. Slug keywords
 ```tsx
 // src/app/new-page/page.tsx
 import { constructMetadata } from "@/lib/seo";
-import { AIStructuredData } from "@/components/AIStructuredData";
+import { StructuredData } from "@/components/StructuredData";
 
 export const metadata = constructMetadata({
   title: "New Page Title",
-  description: "150-160 character description.",
+  description: "150-160 character description in first-person voice.",
   canonicalUrl: "/new-page",
   dateModified: "2026-04-05",
 });
@@ -389,10 +451,13 @@ export const metadata = constructMetadata({
 export default function NewPage() {
   return (
     <>
-      <AIStructuredData
-        schema={{
-          type: "Breadcrumb",
-          data: { items: [{ name: "Home", url: "/" }, { name: "New Page", url: "/new-page" }] },
+      <StructuredData
+        type="BreadcrumbList"
+        data={{
+          items: [
+            { name: "Home", url: "https://isaacavazquez.com" },
+            { name: "New Page", url: "https://isaacavazquez.com/new-page" },
+          ],
         }}
       />
       {/* page content */}
@@ -406,6 +471,7 @@ export default function NewPage() {
 ```tsx
 // src/app/[slug]/page.tsx
 import { constructMetadata } from "@/lib/seo";
+import { AIStructuredData } from "@/components/AIStructuredData";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -424,6 +490,43 @@ export async function generateMetadata({ params }) {
     articleTags: item.tags,
     canonicalUrl: `/items/${slug}`,
   });
+}
+
+export default async function ItemPage({ params }) {
+  const { slug } = await params;
+  const item = await getItem(slug);
+
+  return (
+    <>
+      <AIStructuredData
+        schema={{
+          type: "Breadcrumb",
+          data: {
+            items: [
+              { name: "Home", url: "/" },
+              { name: "Items", url: "/items" },
+              { name: item.title, url: `/items/${slug}` },
+            ],
+          },
+        }}
+      />
+      <AIStructuredData
+        schema={{
+          type: "Article",
+          data: {
+            headline: item.title,
+            description: item.description,
+            author: { name: "Isaac Vazquez", url: "https://isaacavazquez.com" },
+            datePublished: item.createdAt,
+            dateModified: item.updatedAt,
+            url: `https://isaacavazquez.com/items/${slug}`,
+            keywords: item.tags?.join(", ") || "",
+          },
+        }}
+      />
+      {/* page content */}
+    </>
+  );
 }
 ```
 
@@ -448,7 +551,7 @@ const minutes = calculateReadingTime(post.content); // e.g. 4
 |---|---|
 | `src/lib/seo.ts` | `constructMetadata`, `siteConfig`, basic schema generators |
 | `src/lib/ai-seo.ts` | AI-optimized schema generators, `generateAIMetaTags` |
-| `src/components/StructuredData.tsx` | Preset JSON-LD component (14 types) |
+| `src/components/StructuredData.tsx` | Preset JSON-LD component (15 types) |
 | `src/components/AIStructuredData.tsx` | Data-driven JSON-LD component (10 types) |
 | `src/app/layout.tsx` | Global metadata, head tags |
 | `src/app/metadata.ts` | Homepage metadata config |
@@ -456,3 +559,4 @@ const minutes = calculateReadingTime(post.content); // e.g. 4
 | `src/app/portfolio/[slug]/page.tsx` | Case study pattern reference |
 | `next-sitemap.config.js` | Sitemap generation and priorities |
 | `public/robots.txt` | Crawl directives (manually maintained) |
+| `WRITING_VOICE.md` | Voice and tone rules for all user-facing text including meta content |

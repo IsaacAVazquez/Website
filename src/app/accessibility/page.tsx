@@ -6,8 +6,8 @@ import { WarmCard } from "@/components/ui/WarmCard";
 import Link from "next/link";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Accessibility Statement | Isaac Vazquez",
-  description: "Isaac Vazquez is committed to ensuring digital accessibility for people with disabilities. Learn about our WCAG 2.1 AA+ compliance, keyboard navigation, screen reader support, and accessibility features.",
+  title: "Accessibility",
+  description: "How I approach digital accessibility on this site, including WCAG 2.1 AA conformance, keyboard navigation, screen reader support, and reduced motion.",
   canonicalUrl: "https://isaacavazquez.com/accessibility",
   dateModified: "2025-02-05",
 });
@@ -34,9 +34,8 @@ export default function AccessibilityPage() {
               Commitment to Accessibility
             </Heading>
             <Paragraph className="text-neutral-700 dark:text-neutral-300">
-              Isaac Vazquez is committed to ensuring digital accessibility for people with disabilities.
-              I am continually improving the user experience for everyone and applying the relevant
-              accessibility standards to ensure this website is accessible to all.
+              I take accessibility seriously. I build and test this site against WCAG standards
+              and keep improving it so that everyone can use it, regardless of ability.
             </Paragraph>
           </WarmCard>
 
@@ -46,15 +45,14 @@ export default function AccessibilityPage() {
               Conformance Status
             </Heading>
             <Paragraph className="text-neutral-700 dark:text-neutral-300 mb-4">
-              The Web Content Accessibility Guidelines (WCAG) defines requirements for designers and
-              developers to improve accessibility for people with disabilities. It defines three levels
-              of conformance: Level A, Level AA, and Level AAA.
+              WCAG defines three conformance levels (A, AA, AAA) for how well a site supports
+              people with disabilities.
             </Paragraph>
             <Paragraph className="text-neutral-700 dark:text-neutral-300 font-semibold mb-4">
-              isaacavazquez.com is fully conformant with WCAG 2.1 level AA and strives for AAA conformance.
+              This site is fully conformant with WCAG 2.1 Level AA and I aim for AAA where possible.
             </Paragraph>
             <Paragraph className="text-neutral-700 dark:text-neutral-300 text-sm">
-              Fully conformant means that the content fully conforms to the accessibility standard without any exceptions.
+              Fully conformant means the content meets the standard without exceptions.
             </Paragraph>
           </WarmCard>
 
@@ -201,8 +199,7 @@ export default function AccessibilityPage() {
               Feedback
             </Heading>
             <Paragraph className="text-neutral-700 dark:text-neutral-300 mb-4">
-              I welcome your feedback on the accessibility of isaacavazquez.com. Please let me know
-              if you encounter accessibility barriers:
+              I welcome feedback on accessibility. If you run into barriers, please reach out.
             </Paragraph>
             <div className="space-y-2">
               <Paragraph className="text-neutral-700 dark:text-neutral-300">
@@ -235,7 +232,7 @@ export default function AccessibilityPage() {
               Technical Specifications
             </Heading>
             <Paragraph className="text-neutral-700 dark:text-neutral-300 mb-4">
-              Accessibility of isaacavazquez.com relies on the following technologies:
+              The site is built on these technologies for accessibility conformance.
             </Paragraph>
             <ul className="list-disc list-inside space-y-1 text-neutral-700 dark:text-neutral-300">
               <li>HTML5</li>
@@ -244,7 +241,7 @@ export default function AccessibilityPage() {
               <li>ARIA (Accessible Rich Internet Applications)</li>
             </ul>
             <Paragraph className="text-neutral-700 dark:text-neutral-300 mt-4 text-sm">
-              These technologies are relied upon for conformance with the accessibility standards used.
+              I rely on these to meet the accessibility standards described above.
             </Paragraph>
           </WarmCard>
 
@@ -254,7 +251,7 @@ export default function AccessibilityPage() {
               Assessment Approach
             </Heading>
             <Paragraph className="text-neutral-700 dark:text-neutral-300 mb-4">
-              I assessed the accessibility of isaacavazquez.com by the following approaches:
+              I assess the site using these approaches.
             </Paragraph>
             <ul className="list-disc list-inside space-y-1 text-neutral-700 dark:text-neutral-300">
               <li>Self-evaluation and code review</li>
@@ -272,16 +269,15 @@ export default function AccessibilityPage() {
               Known Limitations
             </Heading>
             <Paragraph className="text-neutral-700 dark:text-neutral-300 mb-4">
-              Despite my best efforts to ensure accessibility, some areas for improvement remain.
-              I am actively working to:
+              There are a few areas I am still improving.
             </Paragraph>
             <ul className="list-disc list-inside space-y-1 text-neutral-700 dark:text-neutral-300">
-              <li>Complete comprehensive screen reader testing with multiple assistive technologies</li>
-              <li>Achieve AAA contrast (7:1) for all text elements (currently: primary and secondary meet AAA, tertiary meets AA)</li>
-              <li>Expand public-facing keyboard shortcut documentation</li>
+              <li>Broader screen reader testing with multiple assistive technologies</li>
+              <li>AAA contrast (7:1) for all text elements (primary and secondary meet AAA today, tertiary meets AA)</li>
+              <li>More public-facing keyboard shortcut documentation</li>
             </ul>
             <Paragraph className="text-neutral-700 dark:text-neutral-300 mt-4">
-              If you encounter any accessibility barriers, please contact me so I can address them promptly.
+              If you run into a barrier, please reach out so I can fix it.
             </Paragraph>
           </WarmCard>
         </div>
@@ -289,8 +285,8 @@ export default function AccessibilityPage() {
         {/* Footer Note */}
         <div className="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-700">
           <Paragraph className="text-sm text-neutral-500 dark:text-neutral-500 text-center">
-            This accessibility statement was created on November 2025 and reflects our ongoing commitment
-            to digital accessibility. For more information about web accessibility, visit the{" "}
+            This statement was written in November 2025 and I update it as the site changes.
+            For more on web accessibility, visit the{" "}
             <a
               href="https://www.w3.org/WAI/"
               target="_blank"
