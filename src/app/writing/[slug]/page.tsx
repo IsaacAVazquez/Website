@@ -34,8 +34,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return constructMetadata({
     title: metadataTitle,
     description: metadataDescription,
+    ogType: "article",
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
+    articleAuthor: "https://isaacavazquez.com/about",
+    articleSection: Array.isArray(post.tags) && post.tags[0] ? post.tags[0] : "Product Management",
+    articleTags: post.seo?.keywords || post.tags,
     canonicalUrl: `https://isaacavazquez.com/writing/${slug}`,
     aiMetadata: {
       expertise: post.seo?.keywords || post.tags || [],

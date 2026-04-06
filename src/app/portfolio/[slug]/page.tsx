@@ -29,6 +29,10 @@ export async function generateMetadata({
   return constructMetadata({
     title: caseStudy.title,
     description: caseStudy.description,
+    ogType: "article",
+    articleAuthor: "https://isaacavazquez.com/about",
+    articleSection: "Product Management",
+    articleTags: ["Product Management", caseStudy.role, ...caseStudy.tools.slice(0, 3)],
     canonicalUrl: `/portfolio/${params.slug}`,
     aiMetadata: {
       profession: "Product Manager",

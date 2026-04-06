@@ -71,6 +71,10 @@ export function constructMetadata({
   canonicalUrl,
   datePublished,
   dateModified,
+  ogType = "website",
+  articleAuthor,
+  articleSection,
+  articleTags,
   aiMetadata,
 }: {
   title?: string;
@@ -81,6 +85,11 @@ export function constructMetadata({
   canonicalUrl?: string;
   datePublished?: string;
   dateModified?: string;
+  /** Set to "article" for blog posts and case studies */
+  ogType?: "website" | "article";
+  articleAuthor?: string;
+  articleSection?: string;
+  articleTags?: string[];
   aiMetadata?: {
     expertise?: string[];
     specialty?: string;
@@ -103,13 +112,42 @@ export function constructMetadata({
   const absoluteCanonical = absoluteUrl(canonicalPath);
   const absoluteImage = absoluteUrl(image);
   const otherMeta: Record<string, string> = { ...aiTags };
-  if (datePublished) {
-    otherMeta["article:published_time"] = datePublished;
-  }
   if (dateModified) {
-    otherMeta["article:modified_time"] = dateModified;
     otherMeta["og:updated_time"] = dateModified;
   }
+
+  // Build OpenGraph object — article type gets proper article fields
+  const openGraphBase = {
+    locale: "en_US" as const,
+    url: absoluteCanonical,
+    title: socialTitle,
+    description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: absoluteImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.ogImageAlt || socialTitle,
+      },
+    ],
+  };
+
+  const openGraph =
+    ogType === "article"
+      ? {
+          ...openGraphBase,
+          type: "article" as const,
+          publishedTime: datePublished,
+          modifiedTime: dateModified,
+          authors: [articleAuthor ?? siteConfig.url],
+          section: articleSection,
+          tags: articleTags,
+        }
+      : {
+          ...openGraphBase,
+          type: "website" as const,
+        };
 
   return {
     title: title
@@ -127,22 +165,7 @@ export function constructMetadata({
       address: false,
       telephone: false,
     },
-    openGraph: {
-      type: "website",
-      locale: "en_US",
-      url: absoluteCanonical,
-      title: socialTitle,
-      description,
-      siteName: siteConfig.name,
-      images: [
-        {
-          url: absoluteImage,
-          width: 1200,
-          height: 630,
-          alt: siteConfig.ogImageAlt || socialTitle,
-        },
-      ],
-    },
+    openGraph,
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
@@ -273,7 +296,7 @@ export function generateAIOptimizedMetadata(
           index: true,
           follow: true,
           "max-video-preview": -1,
-          "max-image-preview": "large",
+          "max-image-preview": "large" as const,
           "max-snippet": -1,
         },
       };
