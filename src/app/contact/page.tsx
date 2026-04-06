@@ -5,7 +5,7 @@ import { StructuredData } from "@/components/StructuredData";
 export const metadata = constructMetadata({
   title: "Contact",
   description:
-    "Connect with Isaac Vazquez about product roles, projects, analytics work, and fintech-style product opportunities.",
+    "Get in touch about product roles, analytics work, or fintech-focused projects.",
   canonicalUrl: "/contact",
   dateModified: "2026-03-16",
 });
@@ -33,7 +33,7 @@ export default function Contact() {
         data={{
           name: "Contact Isaac Vazquez",
           description:
-            "Reach out to discuss product management opportunities, fintech product work, or analytics-driven platform initiatives with Isaac Vazquez.",
+            "Get in touch with Isaac Vazquez about product work, analytics, or fintech projects.",
           mainEntity: {
             "@type": "Person",
             "name": "Isaac Vazquez",

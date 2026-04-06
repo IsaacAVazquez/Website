@@ -24,10 +24,10 @@ export function ContactContent() {
         <SectionIntro
           eyebrow="Contact"
           align="center"
-          size="lg"
+          size="md"
           headingLevel={1}
           title="Get in touch."
-          description="If you&apos;re working on product, analytics, or investment-focused tools, I&apos;d be glad to connect."
+          description="If you&apos;re working on something where product thinking and follow-through both matter, I&apos;d like to hear about it."
         />
       </motion.div>
 
@@ -38,13 +38,13 @@ export function ContactContent() {
               Good fit
             </p>
             <h2 className="text-3xl font-bold text-[var(--text-primary)]">
-              Roles and projects where product judgment and execution both matter.
+              I&apos;m looking for product work where the thinking and the delivery both have to be good.
             </h2>
           </div>
           <p className="mb-6 mt-4 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg lg:mx-0">
-            I&apos;m especially interested in analytics, fintech, workflow, and
-            decision-support products, along with teams that care about clear
-            strategy, reliable delivery, and practical product thinking.
+            I&apos;m especially interested in analytics, fintech, and workflow
+            products, along with teams where clear strategy and reliable
+            delivery are actually connected.
           </p>
 
           <div className="mb-6 flex flex-col gap-4 sm:flex-row lg:justify-start">
@@ -87,9 +87,9 @@ export function ContactContent() {
                 </h3>
               </div>
               <p className="mb-0 text-base leading-relaxed text-[var(--text-secondary)]">
-                Based in the Bay Area while attending UC Berkeley Haas. I enjoy
-                working on products that help people make clearer decisions,
-                whether the setting is civic tech, SaaS operations, or investment research.
+                Based in the Bay Area while attending UC Berkeley Haas. Most of
+                what I&apos;ve worked on has been in civic tech, SaaS, and
+                investment research.
               </p>
             </div>
           </WarmCard>
