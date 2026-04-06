@@ -32,10 +32,9 @@ export default function About() {
           <SectionIntro
             eyebrow="About"
             align="center"
-            size="lg"
+            size="md"
             headingLevel={1}
-            title="I'm an MBA candidate with roots in QA, analytics, and product execution."
-            description="My background combines product strategy with hands-on experience in quality, systems thinking, and cross-functional delivery."
+            title="I'm an MBA candidate at Berkeley Haas with six years across QA, analytics, and product work."
           />
         </motion.div>
 
@@ -129,7 +128,7 @@ const OverviewContent = () => {
           </Heading>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            I&apos;m a full-time MBA Candidate at UC Berkeley Haas with a background in QA and analytics. Before business school, I spent six years building products across SaaS and civic technology.
+            I&apos;m a full-time MBA Candidate at UC Berkeley Haas with a background in QA and analytics. Before business school, I spent six years at two companies in civic technology, starting in campaign analytics and working my way into quality engineering and product ownership.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
@@ -137,11 +136,15 @@ const OverviewContent = () => {
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Right now I&apos;m building investment research and fintech tools because I&apos;m genuinely curious about how product design and decision support come together. That curiosity is why I ended up in product work in the first place, and it&apos;s what keeps me building things outside of class.
+            At Civitech, I started in QA owning reliability for SaaS platforms that reached millions of voters. Over three years the role grew into something closer to product management. I led the pricing strategy that brought in $4M in new revenue, owned the product vision for a peer-to-peer texting platform that drove a 35% engagement increase, and built a real-time event system in Google Cloud that cut client onboarding time by 60%. By the end I was running user interviews, translating cross-functional feedback into requirements for a new platform launch, and shipping biweekly instead of monthly.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Before business school, I ran client services at Open Progress, managing 80+ digital programs and building the data pipelines that made campaign analytics actually useful to the people running them.
+            Before that, I ran client services at Open Progress, managing 80+ digital programs that reached over 50 million voters. I built the ETL pipelines and dashboards that turned campaign analytics from manual reporting into something teams could actually use to make decisions.
+          </p>
+
+          <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+            Right now I&apos;m building investment research and fintech tools because I&apos;m genuinely curious about how product design and decision support come together. That curiosity is why I ended up in product work in the first place, and it&apos;s what keeps me building things outside of class.
           </p>
 
           <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
