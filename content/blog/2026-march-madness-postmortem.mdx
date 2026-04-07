@@ -1,0 +1,55 @@
+---
+title: "2026 March Madness Postmortem: Where the Model Got Humbled"
+excerpt: "Michigan won the title. Duke lost on a buzzer beater. Iowa knocked off the defending champion in the final seconds. A full accounting of what the time-zone and seed-error model got right, what it missed badly, and what that tells me about building this kind of bracket."
+publishedAt: "2026-04-07"
+category: "Sports Analytics"
+tags: ["March Madness", "NCAA Tournament", "Sports Analytics", "Bracket Analysis", "Postmortem", "Model Evaluation"]
+featured: false
+author: "Isaac Vazquez"
+seo:
+  title: "2026 March Madness Postmortem: Where the Bracket Model Went Wrong"
+  description: "A full postmortem on the 2026 March Madness bracket predictions. Michigan won the championship. Duke lost on a UConn buzzer beater. Here's what the time-zone and seed-error model got right, what it missed, and what I'd change."
+  keywords: ["2026 March Madness postmortem", "bracket model analysis", "March Madness predictions wrong", "Michigan national champion 2026", "Duke UConn Elite Eight", "bracket analysis recap"]
+---
+
+# 2026 March Madness Postmortem: Where the Model Got Humbled
+
+Michigan won the national title. Duke, my champion pick, lost to UConn on a last-second buzzer beater in the Elite Eight. Iowa knocked off defending-champion Florida on a corner three with 4.5 seconds left. The 2026 tournament was the kind of field where a lot of models got punished, and mine was not an exception.
+
+This is the full accounting. You can read the original predictions in the [2026 bracket analysis](/writing/2026-march-madness-bracket-analysis) and explore what the model was projecting in the [interactive bracket](/march-madness-2026). What I want to do here is be honest about what the model produced, where it was directionally right, and where the structural assumptions broke down entirely.
+
+## What the Model Got Right
+
+Michigan was a Final Four pick, and Michigan won the championship. That is the clearest vindication in this bracket, and it matters because Michigan was not a consensus favorite. The model had them at number two overall in the blended rankings — KenPom, BPI, Evan Miya, and the rest — and the argument for their path through the Midwest held up. Their defensive efficiency was real. The model did not predict Michigan as champion, but predicting them to the Final Four when the public was mostly on Duke or Florida is a reasonable call to be right about.
+
+Arizona also reached the Final Four, exactly as predicted. The argument that Arizona would own a clean Pacific path before running into a travel penalty in Indianapolis turned out to be accurate. They absorbed the penalty and lost to Michigan in the semifinals, 91-73, which is a blowout that reflects the gap in those two teams' underlying profiles at that stage of the tournament.
+
+St. John's over Kansas was the best-performing upset pick in the bracket. The seed-error analysis had St. John's as underseeded by roughly three spots and Kansas as overseeded by five. St. John's won 67-65, exactly the kind of narrow outcome that model was designed to surface. If the whole bracket produced one call that validated the seed-error layer, that was it.
+
+Illinois advancing deep into the tournament was not fully credited in the original bracket, but it was not a surprise given the analytics either. The Illinois over North Carolina pick was in the bracket, and while VCU actually eliminated North Carolina before Illinois could play them, Illinois reached the Final Four. The model had Illinois as a dangerous team it was partially tracking but not willing to take all the way. In retrospect, that hesitation cost me a Final Four slot.
+
+## Where It Went Wrong
+
+The Duke pick is where I want to start because it is the most instructive failure. My reasoning was clean: Duke had the best blended ranking in the field, a 0% total travel penalty through the East bracket, and the strongest defensive profile. All of that was true. What I did not adequately model was UConn.
+
+UConn was seeded second in the East. That meant Duke and UConn were on a collision course for the Elite Eight, and I had Duke winning that matchup. What I did not account for was how similar their profiles were across the metrics I was using and how little margin there was in a one-game knockout format when two elite defenses meet. A freshman named Braylon Mullins hit a three-pointer at the buzzer to win 73-72. The time-zone model was not designed to catch the fact that both teams play in roughly the same region and the real differentiator was going to be shot-making in a tight game. I picked the wrong team in that matchup.
+
+The UCF over UCLA upset was the flagship pick in the bracket, and it failed. UCLA won 75-71. The model applied a 9% penalty to UCLA for traveling from Pacific to Eastern time, which I still think is a real phenomenon in aggregate. But aggregate effects do not override individual talent gaps in a single game, and UCLA was a better basketball team. I think the time-zone model works as a tiebreaker or a mild edge multiplier in close matchups. I treated it as a stronger signal than it deserved to be in this case.
+
+Houston over Florida was supposed to be the biggest later-round call in the bracket, and it never happened. Iowa knocked Florida out in the Round of 64, 73-72, on an Alvaro Folgueiras corner three with 4.5 seconds left. Florida was gone before Houston could play them. Then Illinois eliminated Houston 65-55 in the second round. The model built a compelling case for a matchup that never materialized because the first part of the setup was wrong. Florida's vulnerability was real — Iowa proved that — but I attributed the edge to Houston's geography rather than to Florida being genuinely beatable by multiple teams.
+
+Ohio State over TCU missed. Texas A&M advanced in the first round but got eliminated by Houston in the second round, 88-57, so the round-by-round logic that powered that pick fell apart immediately. Gonzaga lost to Texas in the second round rather than going further. A number of the time-zone picks that depended on teams staying in the bracket long enough for the travel burden to accumulate simply could not survive the randomness of first and second round matchups.
+
+## What This Tells Me About the Model
+
+The seed-error layer worked. St. John's over Kansas is a clean proof of concept, and the general identification of Vanderbilt and Illinois as undervalued teams tracked with how those teams actually performed. I would not change that part of the framework.
+
+The time-zone model is a genuine structural insight that is harder to apply cleanly than I thought. The evidence that West Coast teams struggle in Eastern venues is real in aggregate data. But the model is probabilistic across a population of games, and March Madness is a small sample of individual games played over three weeks. Applying a percentage penalty to a single first-round matchup and treating it as predictive requires more certainty about the underlying effect size than I had. I think the right application of the travel model is to treat it as a mild edge in genuinely even matchups rather than a primary reason to pick an upset. I overcalibrated it in a few places.
+
+The bigger miss was not having a way to model late-game performance in tight finishes. Two of the biggest results in the tournament, UConn's buzzer beater to end Duke's run and Iowa's buzzer beater to end Florida's run, came down to individual shots in the final seconds. The model had the correct aggregate read on both of those games being close. It did not have a framework for which team was more likely to execute a final possession correctly, and I am not sure a statistical model can reliably answer that question. That is a real limitation worth being honest about.
+
+Michigan winning the championship is a satisfying outcome in one narrow sense. The model identified them correctly as one of the two or three best teams in the country. It just did not have the confidence to pick them over Duke when both were in the same projected path. In retrospect, Michigan's defensive identity and consistency made them the better choice for a champion who had to win six games against elite competition. That is a lesson about how to weigh peak performance versus consistency when building a Final Four.
+
+The tournament itself was a reminder that one-and-done formats are hostile to models. The signal is real. The noise is enormous. A model that gets the right five teams into consideration and correctly identifies the structural edges should expect to be right about the champion maybe once in every two or three years if it is working. Getting Michigan to the Final Four while picking Duke as the winner is not a catastrophic miss. It is the expected distribution of outcomes in a bracket that compressed a real signal into a six-game knockout format.
+
+I'll build the same model next year. I'll recalibrate the time-zone weights. And I'll be more willing to pick Michigan.
