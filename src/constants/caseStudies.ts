@@ -161,7 +161,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     title: "Budget Planner",
     description:
       "Browser-persisted monthly budgeting tool for planning income, savings targets, category budgets, and manual expenses in an editorial ledger-style workspace.",
-    role: "Product Designer & Builder",
+    role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "React", "Personal Finance UX"],
     metrics: "Monthly planner · Browser persistence · Category insights",
@@ -260,7 +260,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     title: "La Liga Pulse",
     description:
       "Interactive La Liga dashboard for title-race context, European qualification pressure, relegation tracking, and curated scorer and assist leaderboards.",
-    role: "Product Designer & Builder",
+    role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Sports Data", "UI Design"],
     metrics: "Matchday 30 snapshot · deep-linkable views · top-10 leaders",
@@ -293,7 +293,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     title: "SpaceX Mission Control",
     description:
       "Mission-control-style SpaceX launch board with a next-launch hero, upcoming and past mission browsing, and deep-linked relationship-aware mission detail.",
-    role: "Product Designer & Builder",
+    role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "REST APIs", "Product Design"],
     metrics: "Live API surface · deep-linked mission detail",
@@ -309,7 +309,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     },
     problem: {
       context:
-        "Space launch information is often fragmented across plain tables, isolated articles, and inconsistent detail pages.",
+        "Space launch information is often fragmented across plain tables, isolated articles, and inconsistent detail pages, and hard to aggregate for those that are curious.",
       painPoints: [],
       stakes: "",
     },
@@ -326,7 +326,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     title: "Premier League Pulse",
     description:
       "Premier League dashboard with standings, recent and upcoming fixtures, and club-level form drilldowns backed by a checked-in snapshot.",
-    role: "Product Designer & Builder",
+    role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Snapshot pipeline", "Tailwind CSS"],
     metrics: "Checked-in standings · Fixture tracking · Club form drilldowns",

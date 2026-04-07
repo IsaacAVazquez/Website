@@ -9,10 +9,7 @@ import {
   Mail,
 } from "@/components/ui/ServerIcons";
 import type { CaseStudyData } from "@/constants/caseStudies";
-import {
-  getProjectCardProblem,
-  getProjectCardSummary,
-} from "@/constants/caseStudies";
+import { getProjectCardProblem } from "@/constants/caseStudies";
 import type { BlogPostPreview } from "@/lib/blog";
 import { publishedDateFormatter } from "@/lib/utils";
 
@@ -29,41 +26,29 @@ function HomeProjectCard({
   index: number;
 }) {
   const href = project.link ?? `/portfolio/${project.slug}`;
-  const summary = getProjectCardSummary(project);
-  const problem = getProjectCardProblem(project);
   const impact = project.overview.impact.trim() || project.metrics;
+  const problem = getProjectCardProblem(project);
 
   return (
     <Link href={href} className="group block h-full">
-      <article className="home-card home-project-card h-full">
-        <div className="flex items-start justify-between gap-4">
-          <div className="space-y-2">
+      <article className="home-card home-project-card flex h-full flex-col">
+        <div className="flex items-center justify-between gap-4">
             <span className="home-pill">Project {String(index + 1).padStart(2, "0")}</span>
-            <p className="home-meta mb-0">{project.timeline}</p>
-          </div>
-          <ArrowRight className="h-5 w-5 text-[var(--home-ink-muted)] transition-transform duration-200 group-hover:translate-x-1 group-hover:text-[var(--home-ink)]" />
+          <ArrowRight className="h-4 w-4 text-[var(--home-ink-muted)] transition-transform duration-200 group-hover:translate-x-1 group-hover:text-[var(--home-ink)]" />
         </div>
 
-        <div className="mt-10 space-y-6">
-          <div className="space-y-3">
+        <div className="mt-5 flex flex-1 flex-col gap-4">
             <h3 className="home-project-title">{project.title}</h3>
-            <p className="home-body home-body-strong mb-0 max-w-none">{summary}</p>
-          </div>
+          <p className="home-body home-body-strong mb-0">{impact}</p>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="home-note-card">
-              <p className="home-meta mb-2">Role</p>
-              <p className="home-note-copy mb-0">{project.role}</p>
-            </div>
-            <div className="home-note-card">
-              <p className="home-meta mb-2">Impact</p>
-              <p className="home-note-copy mb-0">{impact}</p>
-            </div>
-          </div>
-
-          <div className="space-y-2 border-t border-[var(--home-rule)] pt-5">
+          <div className="space-y-1">
             <p className="home-meta mb-0">Problem space</p>
             <p className="home-note-copy mb-0">{problem}</p>
+          </div>
+
+          <div className="mt-auto flex items-center justify-between gap-3 border-t border-[var(--home-rule)] pt-4">
+            <p className="home-meta mb-0">{project.role}</p>
+            <p className="home-meta mb-0">{project.timeline}</p>
           </div>
         </div>
       </article>

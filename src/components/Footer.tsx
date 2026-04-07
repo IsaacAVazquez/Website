@@ -45,7 +45,7 @@ export const Footer = ({ variant = "full", surface = "default" }: FooterProps) =
           : "border-[var(--border-primary)] bg-[var(--surface-primary)]"
       }`}
     >
-      <div className={`page-shell ${isCompact ? "py-8 md:py-10" : "py-12 md:py-16"}`}>
+      <div className={`page-shell ${isCompact ? "py-4 md:py-5" : "py-6 md:py-8"}`}>
         {!isCompact ? (
           <div className={`section-panel p-8 md:p-10 ${isHomeSurface ? "footer-home-panel" : ""}`}>
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
