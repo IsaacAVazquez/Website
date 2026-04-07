@@ -618,11 +618,11 @@
 
   .home-section {
     position: relative;
-    padding-block: clamp(2.5rem, 4vw, 4rem);
+    padding-block: clamp(1.25rem, 2vw, 2rem);
   }
 
   .home-hero-section {
-    padding-top: clamp(2.75rem, 5vw, 4.75rem);
+    padding-top: clamp(1.375rem, 2.5vw, 2.375rem);
   }
 
   .home-wordmark {
@@ -1097,7 +1097,7 @@
   }
 
   .home-contact-section {
-    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
   }
 
   .home-contact-panel {

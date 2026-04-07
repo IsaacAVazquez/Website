@@ -1,0 +1,77 @@
+---
+title: "Where AI Agent Delegation Actually Breaks Down: A PM's Notes From Six Months of Trying"
+excerpt: "The honest answer to what you can delegate to AI agents is not a task list. It is a set of conditions. The tasks that fail share something in common, and once you see the pattern, you stop wasting time on the wrong things."
+publishedAt: "2026-04-07"
+category: "Technology"
+tags: ["AI", "Agentic AI", "Product Management", "Productivity", "Workflow"]
+featured: false
+author: "Isaac Vazquez"
+seo:
+  title: "Where AI Agent Delegation Breaks Down: Real Failure Modes"
+  description: "A PM's honest documentation of where AI agent delegation fails, the underlying patterns behind each failure mode, and a practical framework for deciding what to actually delegate."
+  keywords: ["AI agent failure modes", "when AI agents fail", "AI delegation", "agentic AI limits", "AI productivity", "AI for product managers", "AI workflow failures"]
+---
+
+# Where AI Agent Delegation Actually Breaks Down: A PM's Notes From Six Months of Trying
+
+The question is not what AI agents can do. The question is what conditions have to be true for delegation to actually work, and what signals tell you in advance that a task does not meet those conditions. The first framing leads to a list of tools. The second framing leads to a decision you can use.
+
+I have been running AI agents into real work for about six months now — research tasks, writing tasks, analysis tasks, coordination tasks — and the failure modes are not random. They cluster around a small number of underlying problems. What follows is my honest documentation of those problems, with the specific conditions I now look for before I delegate anything.
+
+## Failure mode one is ambiguous completion criteria
+
+This is the most common failure and the most preventable. An AI agent will complete whatever task you give it, which means it needs to know what "complete" actually looks like. When that definition is unclear, agents do one of two things: they produce output that technically satisfies the surface-level request while missing the point entirely, or they ask clarifying questions at every step in a way that defeats the purpose of delegation.
+
+The test I now run before delegating anything is whether I can write a two-sentence definition of done. Not a list of requirements, not a rubric — just a concrete description of what the finished output looks like and what it needs to do. If I cannot write that quickly, the task is not ready to delegate. The work at that point is to define the task more precisely, which is my job to do first.
+
+The tasks that pass this test cleanly are things like "summarize this document in three bullet points structured this way" or "find all mentions of competitor X in this set of transcripts and sort them by sentiment." The tasks that fail it are things like "help me think through our go-to-market approach" or "make this better." Those are real work, but they are not delegation-ready.
+
+## Failure mode two is missing cross-session state
+
+Most agent tools do not maintain meaningful state between sessions. Each conversation starts fresh. This is fine for self-contained tasks but breaks down immediately for anything that spans multiple work sessions or requires building on prior outputs.
+
+I ran into this badly when trying to use Claude to maintain a running research thread across several weeks of market analysis work. The work itself was well-defined, but each session required re-establishing context that should have already been established. What I thought was a research assistant was actually a very fast document processor that I had to fully brief every single time.
+
+The workaround is to maintain your own state layer. A running document that summarizes prior sessions, captures decisions made, and provides enough context for a new session to pick up where the last one left off. This works, but it adds overhead that partially defeats the efficiency gain. For tasks with significant cross-session dependencies, that overhead is real and worth factoring into whether delegation makes sense at all.
+
+## Failure mode three is context exhaustion mid-task
+
+For longer tasks, agents can run into context window limits that cause quality to degrade toward the end of the output. This is not a failure of the task definition — it is a capacity constraint. And because the degradation is gradual rather than sudden, it is easy to miss.
+
+What I have learned to do is structure longer tasks so the most important output comes first. If I am asking for an analysis of ten different documents, I ask for the three most critical first and review before proceeding. If I am generating a long document, I do it in sections rather than all at once. This is not a solution to the context problem, but it means the context exhaustion happens in the lower-priority sections rather than the ones that matter most.
+
+The broader pattern here is that tasks with a natural sequential structure that gets harder toward the end are higher risk than tasks where every unit is roughly equal in complexity.
+
+## Failure mode four is judgment calls at decision points
+
+Some tasks look like execution but require judgment. A research synthesis that needs to decide which sources are credible. A first draft that needs to decide which arguments are strong enough to include. An outreach sequence that needs to decide what tone is appropriate for a particular contact.
+
+Agents will make these calls, but they will not always make them the way you would, and they will not flag that they made them. The output looks complete. The judgment embedded in it may be wrong in ways that only become apparent later.
+
+I have started explicitly identifying the judgment calls in a task before delegating it. If the task has more than one or two places where real judgment is required, I either break it into smaller pieces where I am the one making the judgment calls and the agent is handling the execution around them, or I do not delegate it at all.
+
+The tasks that work cleanly here are ones where judgment has already been applied upstream. Drafting from an outline I built. Synthesizing from sources I selected. Formatting analysis I designed. The agent handles the execution; the judgment was mine.
+
+## Failure mode five is tasks requiring coordination with other people
+
+I have seen teams try to use AI agents to handle email drafts, stakeholder updates, and communication tasks involving real people. These can work for low-stakes, high-volume routine communication. They break down when the communication requires reading the relationship, matching the tone to a specific person's expectations, or navigating a situation that has interpersonal nuance.
+
+The failure mode here is subtle. The output is grammatically correct, professionally appropriate, and completely wrong for the specific situation. It does not factor in that this stakeholder tends to interpret anything longer than three paragraphs as hedging, or that this relationship has history that changes how a certain kind of ask lands.
+
+My current view is that AI is useful for drafting communication I then edit to match what I know about the relationship, not for producing final communication directly. The drafting step saves time. Skipping the editing step costs more time in downstream friction than it saves.
+
+## Failure mode six is when format matters as much as content
+
+Certain outputs need to land in a specific format for structural reasons that are hard to specify fully in a prompt. Board decks with particular visual conventions. Legal-adjacent documents with specific section requirements. Internal templates with institutional history behind the structure choices.
+
+Agents produce output that hits the content requirements and misses the format requirements in ways that require significant rework. Sometimes the rework takes longer than building from scratch would have.
+
+The fix is to provide a template or example output as part of the prompt, not just a description of the format. "Structure this like the attached example" produces far better results than "format this as a standard X document." But this requires having a good example ready, which means the most useful delegation setup includes maintaining a library of example outputs for the formats you use repeatedly.
+
+## The underlying pattern
+
+Looking across all six failure modes, the common thread is that successful delegation requires the task to be fully specified before it reaches the agent. Ambiguous completion criteria, unclear state context, judgment calls that are not yet made, format requirements that are not fully articulated — these are all failures of specification that show up as agent failures but originate earlier.
+
+The shift I have made is spending more time on task specification before delegation and less time on debugging agent outputs after the fact. A well-specified task delegated to a capable agent usually works. A poorly specified task delegated to a capable agent produces output that looks reasonable and requires significant rework.
+
+The work that makes delegation valuable is mostly done before the agent runs.

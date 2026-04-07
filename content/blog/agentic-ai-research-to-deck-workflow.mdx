@@ -1,0 +1,81 @@
+---
+title: "The Actual Workflow for Going From a Research Question to a Finished Deck With AI Agents"
+excerpt: "Most AI productivity advice covers individual tools. What actually saves time is connecting them into a sequence. Here is the full workflow I use to go from a research question to a presentable deck, with the specific prompts and the places the process reliably breaks."
+publishedAt: "2026-04-07"
+category: "Technology"
+tags: ["AI", "Productivity", "Product Management", "Agentic AI", "Workflow"]
+featured: false
+author: "Isaac Vazquez"
+seo:
+  title: "AI Agents Workflow: Research Question to Finished Deck"
+  description: "A step-by-step first-person walkthrough of using AI agents to go from a research question to a finished presentation deck, with specific prompts, tool stack, and honest failure documentation."
+  keywords: ["AI agents workflow", "research to slides AI", "agentic AI productivity", "AI presentation workflow", "AI for product managers", "Claude workflow", "AI agents multi-step"]
+---
+
+# The Actual Workflow for Going From a Research Question to a Finished Deck With AI Agents
+
+The fastest version of this workflow takes about 90 minutes from question to draft deck, with roughly 20 of those minutes being actual human time. The rest is prompting, reviewing output, and iterating on structure. That number is real, and it depends on the research question being reasonably well-scoped. When the question is fuzzy, the workflow slows down — not because the tools fail, but because you have to do more thinking before they can help.
+
+This is the actual sequence I use, not a cleaned-up version of it.
+
+## The tool stack
+
+Before walking through the steps, the honest answer on tooling is that it changes depending on the task type. For most of what I describe here, I use Claude for synthesis and drafting, Perplexity for grounded research retrieval when I need current information, and either Google Slides or Gamma for the deck itself. NotebookLM is useful when I have a specific set of documents to work from rather than an open research question.
+
+Nothing here requires paying for multiple premium tiers simultaneously. The sequence matters more than the specific tools.
+
+## Step one is being specific about what the deck is actually trying to do
+
+This step involves no AI at all, and it is the one most people skip. Before I start prompting anything, I write two sentences: what question does this deck answer, and who is it for. Not in a slide, not in a doc — just in a scratch note I can reference throughout the workflow.
+
+The reason this matters is that AI synthesis is very good at producing well-organized content and very bad at deciding what the content is trying to accomplish. If you do not have that answer before you start, you will end up with a coherent-sounding deck that does not make an argument. That failure mode is subtle enough that you often do not notice it until someone reads the deck and asks what the point is.
+
+## Step two is building the research base
+
+Once I know what I am trying to answer, I use Perplexity or Claude with web search to build an initial research base. The prompt I use here is deliberately specific:
+
+"I am putting together a presentation on [specific question]. I need a synthesis of what is currently known about this, including the strongest arguments on each side, the key data points, and the most credible sources I should read. Do not give me a list of links. Give me a structured synthesis with citations."
+
+The reason I ask for a synthesis rather than a list of sources is that a list of sources just moves the research work one step earlier. A synthesis that tells me which arguments are strong, which are contested, and where the data is thin gives me something I can actually work with.
+
+I read the output carefully. This is not the step to trust blindly. Perplexity has a tendency to sound more confident about contested claims than the underlying sources warrant. I note anything that seems overstated and mark it for verification before the deck goes anywhere.
+
+## Step three is building the outline
+
+With a research base in hand, I ask Claude to help structure an outline. The prompt looks like this:
+
+"Here is my research synthesis: [paste synthesis]. My deck needs to answer this question: [question]. The audience is [audience description]. Help me build a 5 to 7 slide outline where each slide makes a single clear point. Give me the slide title, the main claim, and the one or two supporting points for each slide."
+
+The output is usually close but not exactly right. I almost always reorder a few slides and rewrite a title or two. What I am doing at this stage is using AI to force a structure quickly so I can react to it rather than build from scratch. Reacting is faster than generating, and Claude's first-pass outlines are good enough to react to.
+
+## Step four is drafting the narrative
+
+This is where the workflow gets most of its time savings. Once I have an outline I believe in, I draft the speaker notes for each slide individually.
+
+"Write the speaker notes for this slide. The slide title is [title]. The main claim is [claim]. Supporting points are [points]. Write this for an audience of [audience]. The notes should be three to five sentences that a presenter could say conversationally, not read word for word. Be specific and avoid generic business language."
+
+I do this slide by slide rather than all at once. When I ask for all slides simultaneously, the quality drops noticeably — the later slides tend toward generic language and the voice becomes less consistent. Slide by slide takes a little longer but produces better output.
+
+## Step five is building the deck
+
+For the actual slides, I use Gamma when speed matters most and Google Slides when I need precise control over layout. Gamma can take an outline and produce a presentable deck in a few minutes, but it makes layout decisions I often disagree with. Google Slides gives me full control at the cost of doing the visual work manually.
+
+For most purposes I export Gamma's output and then edit it in Google Slides. The combination gets me a reasonable visual starting point without starting from a blank canvas.
+
+## Where the workflow breaks
+
+I want to be honest about the failure modes because they are predictable and worth knowing in advance.
+
+The first is scope creep in the research phase. If the research question is too broad, the synthesis becomes a survey rather than an answer. The deck then feels like it is covering everything without committing to anything. The fix is always to narrow the question before starting, not to try to focus the synthesis after the fact.
+
+The second is hallucination in the synthesis. Claude and Perplexity both occasionally produce output that sounds accurate and specific but is wrong in verifiable ways. This happens most often with specific statistics, recent events, and claims about what particular companies have done. My rule is that anything presenting as a specific number or a specific company action gets verified against a primary source before the deck goes to anyone.
+
+The third is that the workflow is not useful for decks that need original analysis. If I am trying to communicate research I conducted, user data from our product, or findings from work I did directly in the world, the AI tools are helpful for structuring and drafting but the core content has to come from me. The workflow is best for synthesizing what is known externally, not for packaging what I know.
+
+The fourth is that slides built this way sometimes read as comprehensive and thorough without having a clear point of view. A good presentation argues something. A deck built from AI-synthesized research can describe a landscape without committing to a position. I watch for this explicitly before I consider any deck finished.
+
+## What is still human work
+
+Deciding what question to answer, reading the synthesis critically, making judgment calls about what the outline should prioritize, and adding the specific examples and context that make an argument land for a particular audience — that is still mine.
+
+What has changed is that the volume and structure parts used to take most of the time. Now they take a fraction of it, which means more time for the thinking parts. That is the only place the work actually gets better.

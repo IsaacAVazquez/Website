@@ -1,0 +1,73 @@
+---
+title: "Reasoning Model Economics: When Opus Is Worth It and When Sonnet Does the Job"
+excerpt: "The question is not whether the more expensive model is better. It usually is. The question is whether the task actually needs what it adds, and that is a less obvious call than most people realize."
+publishedAt: "2026-04-07"
+category: "Technology"
+tags: ["AI", "Product Management", "Software Architecture", "AI Infrastructure", "Developer Tools"]
+featured: false
+author: "Isaac Vazquez"
+seo:
+  title: "Reasoning Model Economics: Claude Opus vs Sonnet vs Haiku Decision Framework"
+  description: "A practical framework for deciding when to use frontier reasoning models versus faster, cheaper tiers. Covers cost, latency, task fit, and a decision framework for PMs and builders."
+  keywords: ["Claude Opus vs Sonnet", "reasoning model economics", "when to use Claude Opus", "LLM cost optimization", "AI model selection", "GPT-4o vs o3", "reasoning models", "AI infrastructure decisions"]
+---
+
+# Reasoning Model Economics: When Opus Is Worth It and When Sonnet Does the Job
+
+The question is not whether the more expensive model is better. It usually is, on tasks that stress-test it. The question is whether the task you are running actually needs what the expensive model adds, and that is a less obvious call than the benchmark numbers suggest.
+
+I think about this a lot because the cost difference between model tiers is not trivial at any meaningful usage volume. Opus-class models cost somewhere between ten and twenty times more per token than mid-tier models like Sonnet, and the latency gap is significant as well. If you are running Opus on tasks that Sonnet would handle equally well, you are paying a substantial premium for a capability the task does not require. And if you are running Sonnet on tasks that actually need Opus, you are getting worse outcomes than the cost savings justify.
+
+Getting this right requires understanding what the capability difference actually is, which is less obvious than the marketing language around it.
+
+## What reasoning capability actually is
+
+"Reasoning" in the model-tier context refers to the ability to hold a complex problem in context, decompose it into steps, consider and revise intermediate conclusions, and arrive at an answer that accounts for constraints and tradeoffs that were not explicitly stated in the prompt. It is different from instruction-following capability, which is about accurately executing a well-specified request. And it is different from knowledge breadth, which is about having seen and retained a large amount of information during training.
+
+Most tasks that feel complicated are actually well-specified instruction-following tasks. Summarize this document. Draft a response to this email. Generate five alternatives to this headline. These tasks feel like they require thought, but they are actually pattern-matching against well-established templates. Mid-tier models handle them with quality that is indistinguishable from frontier models in practice.
+
+The tasks that actually require reasoning are the ones where the problem is underspecified, where multiple constraints have to be balanced against each other simultaneously, where the answer depends on unstated context that has to be inferred, or where the correct answer requires recognizing that the question itself is framed incorrectly. These are genuinely rarer than we tend to assume.
+
+## The cost reality
+
+The exact pricing changes frequently enough that I am reluctant to quote specific numbers, but the structure is stable. Frontier models like Opus or GPT-4o with extended thinking cost significantly more per input and output token than mid-tier models, and they are substantially slower. At low usage volumes, the cost difference is small in absolute terms. At production scale — thousands of API calls per day — it becomes a meaningful line item.
+
+The latency difference matters independently of cost. Tasks that need a response in under two seconds, like interactive UI flows or real-time suggestion features, often cannot use frontier models even if the budget supports it. The throughput ceiling for latency-sensitive applications is real, and it forces a tier decision that money alone cannot solve.
+
+## Tasks where Opus-class models are worth it
+
+The tasks where I consistently see meaningful quality differences are multi-constraint planning problems, code generation for complex or unfamiliar codebases, long-horizon reasoning where early decisions affect the validity of later conclusions, and tasks where the model needs to recognize and correct a flawed premise in the input.
+
+Architectural planning falls into this category. If I ask a model to help me think through the tradeoffs of three different system designs given a specific set of constraints, the quality difference between tiers is noticeable. Mid-tier models tend to evaluate each option separately and then aggregate. Frontier models tend to hold the constraints and the options simultaneously and reason about the interactions, which produces analysis that is genuinely more useful for the decision.
+
+Complex code review is similar. Reviewing a small, well-isolated function is an instruction-following task. Reviewing a change that touches multiple systems and requires understanding how a behavior change in one place might propagate through the codebase is a reasoning task. The quality gap is real there.
+
+Tasks requiring the model to push back intelligently on its own inputs also tend to benefit from frontier models. If I want a model to stress-test a business case or find the weaknesses in a technical plan, mid-tier models will produce a list of concerns but will miss the second-order implications that a more capable model surfaces.
+
+## Tasks where mid-tier models are sufficient
+
+The majority of tasks that teams run against frontier models fall into this category. Drafting, summarization, reformatting, translation, generating alternatives, answering questions from a defined knowledge base, extracting structured information from unstructured text — these are all tasks where Sonnet-class models produce output that is functionally identical to Opus-class output for practical purposes.
+
+The tell is whether the task has a single clear correct approach. If I am asking a model to extract all dates from a document and format them consistently, there is a right way to do that and both models will do it. The additional reasoning capability of a frontier model adds nothing, because the task does not require reasoning in the relevant sense.
+
+Classification tasks, even complex ones, usually fall here. Sentiment analysis, intent detection, topic categorization — these are pattern-matching tasks that mid-tier models handle well. I have run comparisons on classification tasks where the intuition was that the nuance required a frontier model, and the actual quality difference was small enough that it did not justify the cost.
+
+## A practical decision framework
+
+The question I ask before choosing a model tier is whether the task requires holding multiple competing constraints simultaneously and reasoning about their interactions, or whether it requires accurately executing a well-specified transformation.
+
+If the answer is the former, I lean toward a frontier model. If it is the latter, I start with a mid-tier model and only upgrade if the output quality is actually insufficient for the use case.
+
+For production systems, the right pattern is usually to use a fast, cheap model as the default and escalate to a frontier model only when a confidence threshold or quality signal suggests the task needs more capability. This requires building a routing layer, which has its own costs, but those costs amortize well at any meaningful usage volume.
+
+For interactive tools and assistants, I generally default to a mid-tier model and let users escalate to a frontier model explicitly when they need it. The latency and cost of running everything through a frontier model does not produce proportionally better outcomes for the distribution of tasks people actually send.
+
+## What I think people get wrong about this
+
+The most common mistake is using benchmark performance as a proxy for task-level quality. A model that scores significantly higher on MMLU or HumanEval does not necessarily produce significantly better output on the specific, repetitive tasks that make up most of a team's actual usage. Benchmarks measure the ceiling; production usage reflects the average case.
+
+The second mistake is evaluating model quality on the tasks that went well. The right test is to find the tasks where output quality was unsatisfactory and ask whether a different model tier would have produced a different outcome. Often the answer is that the task definition was the problem, not the model capability.
+
+The third mistake is treating model selection as a one-time architectural decision rather than something that should be revisited as model pricing evolves and as the actual distribution of tasks your system handles becomes clearer. The right answer today is probably not the right answer in twelve months, and building the infrastructure to update that choice cheaply is worth more than optimizing it perfectly at the start.
+
+My general view is that most teams should be running more tasks on mid-tier models than they currently are, and investing the cost savings into volume — more analysis, more coverage, more iterations — rather than into marginal quality improvements on tasks that do not require them.

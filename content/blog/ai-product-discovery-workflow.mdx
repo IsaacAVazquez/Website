@@ -1,0 +1,73 @@
+---
+title: "The AI Workflow I Use for Product Discovery, From Weak Signal to Working Spec"
+excerpt: "The parts of product discovery that take the longest are not the hardest ones. Synthesis takes forever not because the analysis is difficult but because you are usually doing it manually across a dozen artifacts. AI compresses that part dramatically, if you use it at the right stages."
+publishedAt: "2026-04-07"
+category: "Technology"
+tags: ["Product Management", "AI", "Productivity", "Product Discovery", "Workflow"]
+featured: false
+author: "Isaac Vazquez"
+seo:
+  title: "AI for Product Discovery: Workflow From Signal to Spec"
+  description: "A product manager's first-person walkthrough of how AI tools fit into each stage of product discovery, from signal aggregation through synthesis, problem framing, and spec drafting."
+  keywords: ["AI for product managers", "AI product discovery", "product discovery workflow", "AI product spec", "AI for PMs", "product management AI tools", "AI user research synthesis"]
+---
+
+# The AI Workflow I Use for Product Discovery, From Weak Signal to Working Spec
+
+The parts of product discovery that take the longest are not the hardest ones. Synthesis is slow not because the analysis is difficult but because you are usually doing it manually — reading through interview transcripts, support tickets, usage data, and stakeholder feedback that live in different places and have no common structure. AI compresses that part dramatically, if you use it at the right stages.
+
+What follows is how I actually integrate AI into discovery work. Not as a replacement for the judgment calls that matter, but as a tool that handles the volume and structure so I can spend time on the parts that require genuine thinking.
+
+## Where AI belongs and where it does not
+
+The honest starting point is that AI is useful in product discovery for tasks that involve processing large volumes of text to find patterns, drafting structured artifacts from inputs I have already processed, and stress-testing problem frames by generating counterarguments and edge cases. It is not useful for deciding what matters most, reading the political context around a decision, or understanding the emotional reality of what users are experiencing. Those things require human judgment and direct engagement with the people involved.
+
+I keep this distinction in mind throughout the workflow because the failure mode I see most often in how teams use AI for discovery is applying it to the judgment-heavy parts and then wondering why the output feels hollow.
+
+## Signal aggregation
+
+Discovery typically starts with scattered signals — a few user interviews, some support ticket themes, patterns in usage data, stakeholder opinions that have been shared informally, market research from a consultant that nobody fully read. The first job is getting these into a form where you can actually work with them.
+
+AI is useful here in a specific and limited way. If I have transcripts from user interviews, I will ask Claude to extract distinct problems the user articulated, direct quotes that illustrate those problems, and anything that surprised them or contradicted their expectations. I do not ask for a summary. Summaries lose the specific language users use, which is often the most valuable thing in an interview.
+
+The prompt I use looks like this: "Here is a user interview transcript. Extract every distinct problem or frustration the user mentions. For each one, include the exact quote where they describe it and one sentence of context about when it came up in the conversation. Do not summarize or interpret — just extract."
+
+I run this across all my transcripts and then have a structured set of problems to work with rather than a pile of recordings I am trying to hold in my head simultaneously.
+
+## Finding the pattern across sources
+
+Once I have processed individual sources, the synthesis question is what patterns exist across them. This is where AI earns its time savings most clearly.
+
+I paste the extracted problems from multiple interviews or sources and ask Claude to group them by theme, noting which themes appear across multiple sources and which appear in only one. I also ask it to flag anything that seems contradictory — a problem that some users mention and others explicitly do not have. Contradictions in discovery data are often the most informative signal, and I want them surfaced rather than smoothed over.
+
+I then read the groupings critically. I am looking for whether the AI's thematic groupings match my intuition from being in the conversations, and whether anything important got missed or miscategorized. It usually gets most of it right. The places where it does not are often instructive — they reveal that my signal is not as clear as I thought, or that I have two problems that look similar but are actually different.
+
+## Problem framing
+
+This is the stage where I do the most work myself, with AI as a tool for stress-testing rather than generating. I take the themes from synthesis and try to articulate the underlying problem in one or two sentences that would hold up to scrutiny.
+
+A useful format I have found is the "job to be done" structure: when someone is in situation X and trying to accomplish Y, the obstacle is Z. This forces precision. If I cannot fill in Z specifically, my problem framing is still too vague to be useful.
+
+Once I have a framing I believe, I ask Claude to generate counterarguments. The prompt is: "Here is my problem framing: [framing]. Generate five reasons this framing might be wrong, incomplete, or missing an important part of the picture." The counterarguments are almost always partially right, which means there is almost always refinement to do.
+
+I also ask it to generate alternative framings of the same signal. If the same pattern of user behavior could indicate two different underlying problems, I want to know that before I have committed to a direction. Switching costs in discovery are low. Switching costs after you have built something based on the wrong framing are high.
+
+## Opportunity sizing
+
+This is the stage where I use AI least, because opportunity sizing depends on company-specific data, market context, and judgment about what the organization is positioned to win that AI cannot replicate from general knowledge.
+
+Where I do use it is for structuring the analysis and filling in publicly available numbers. If I am trying to estimate the size of a market segment or find comparable data points from adjacent spaces, AI is a useful starting point that I then verify. The risk here is that Claude and Perplexity will sometimes produce confident-sounding numbers that are either outdated or simply wrong. Anything quantitative that goes into an opportunity sizing document gets sourced to a primary reference.
+
+## Drafting the spec
+
+By the time I get to spec drafting, I have a well-defined problem, a point of view on why solving it is worth the investment, and usually some early thinking on what a solution might look like. The drafting work is translating that into a format that engineers, designers, and stakeholders can work from.
+
+AI is genuinely good at this translation. The prompt I use is something like: "Here is my problem framing, opportunity summary, and rough solution direction: [content]. Draft a product spec that covers the problem statement, success metrics, proposed solution, out-of-scope items, and open questions. Write it for an audience of engineers and designers who have not been in the discovery process."
+
+The output is never a final spec, but it is a solid structural starting point. I rewrite the problem statement almost every time — the language AI uses is too generic and I want language that reflects what I actually learned from users. The success metrics section usually needs significant work because AI tends toward generic metrics rather than the specific ones that would tell you whether this particular problem is solved for this particular user population.
+
+## What the workflow actually changes
+
+The honest accounting is that AI has compressed the time I spend on mechanical synthesis from days to hours and from hours to minutes. What it has not changed is how long I spend on the parts that require genuine judgment: deciding which user signals to trust, deciding which problem framing is most accurate, deciding which opportunity is worth the investment, and deciding whether the spec actually captures what we learned.
+
+In my experience, those judgment parts are about half the work. AI has made the other half dramatically faster. The result is not that discovery takes half as long — it is that I can do more discovery in the same amount of time, which means decisions get made on better evidence. That is the actual value. It is less glamorous than the productivity narrative but more honest about what changes and what does not.
