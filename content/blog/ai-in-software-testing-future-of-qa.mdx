@@ -14,7 +14,7 @@ seo:
 
 # AI in Software Testing: The Future of Quality Assurance
 
-Something has shifted in the last couple of years in how I think about test automation, and I don't think it's fully settled yet. AI tools are becoming genuinely useful in testing workflows — not just as a marketing angle, but in ways that change what the job actually involves. I've seen this across the systems I've worked on, from civic tech platforms serving millions of voters to higher-scale applications in the Bay Area. The honest version of what's happening is more nuanced than most of the hype suggests.
+Something has shifted in the last couple of years in how I think about test automation, and I don't think it's fully settled yet. AI tools are becoming genuinely useful in testing workflows, not just as a marketing angle, but in ways that change what the job actually involves. I've seen this across the systems I've worked on, from civic tech platforms serving millions of voters to higher-scale applications in the Bay Area. The honest version of what's happening is more nuanced than most of the hype suggests.
 
 AI is not going to replace QA engineers. But I think it will change what we spend our time on in pretty fundamental ways, and the people who adapt early will have a real advantage.
 
@@ -38,7 +38,7 @@ class BehaviorBasedTestGenerator:
         return standard_tests + edge_tests
 ```
 
-The real value there isn't the volume of tests produced. It's the systematic exploration of scenarios you would have skimmed past. When I think about where teams consistently miss bugs, it's usually in the space between the happy path and the error path — the weird middle cases where inputs are technically valid but unusual.
+The real value there isn't the volume of tests produced. It's the systematic exploration of scenarios you would have skimmed past. When I think about where teams consistently miss bugs, it's usually in the space between the happy path and the error path, the weird middle cases where inputs are technically valid but unusual.
 
 Visual regression testing is another area where AI has gotten legitimately good. Traditional pixel-diff approaches break constantly because they can't distinguish an intentional design change from a layout bug. Computer vision models can learn to recognize UI elements semantically, which means they can flag things that actually matter instead of everything that changed.
 
@@ -71,7 +71,7 @@ What makes that useful is the baseline model learning what "normal" looks like f
 
 ## Natural Language to Tests
 
-I'm genuinely excited about NLP-based test generation even though it's still early. The idea is straightforward: you shouldn't have to translate a business requirement into a test case manually. Give a model a requirement written in plain English, and it should be able to derive the testable conditions from it.
+I'm genuinely excited about NLP-based test generation even though it's still early. The idea is straightforward. You shouldn't have to translate a business requirement into a test case manually. Give a model a requirement written in plain English, and it should be able to derive the testable conditions from it.
 
 Take something like "users should be able to reset their password by entering their email address, and the reset link should expire after 24 hours." A well-trained system can recognize that this implies at least seven test cases: valid email submission, invalid email format, link works within the 24-hour window, link expired after 24 hours, link is single-use, successful reset enables login with new password, and email delivery across providers. I've seen tools do this credibly.
 
@@ -94,11 +94,11 @@ class NLPTestGenerator:
         return test_cases
 ```
 
-The limitation is that it works best when requirements are well-written in the first place. If the requirement is vague, the generated tests will be too. That's actually useful signal for QA engineers — the places where test generation is hard are often the places where the requirements themselves need more work.
+The limitation is that it works best when requirements are well-written in the first place. If the requirement is vague, the generated tests will be too. That's actually useful signal for QA engineers. The places where test generation is hard are often the places where the requirements themselves need more work.
 
 ## Predictive Quality Analytics
 
-This is where the MBA perspective I've been developing becomes interesting. AI models trained on historical bug reports and code change data can predict which parts of a codebase carry the most risk in a given release. That's not just useful for QA planning — it's a risk management input.
+This is where the MBA perspective I've been developing becomes interesting. AI models trained on historical bug reports and code change data can predict which parts of a codebase carry the most risk in a given release. That's not just useful for QA planning. It's a risk management input.
 
 ```python
 class CodeQualityPredictor:

@@ -14,29 +14,29 @@ seo:
 
 # Low-Code/No-Code vs Traditional Development: When to Choose What
 
-The conversation around low-code and no-code platforms tends to get framed as a choice between two opposing philosophies. On one side, the promise of democratization — business users building their own tools, faster time-to-market, reduced dependency on engineering. On the other, the traditional argument that real software requires real engineering, that platforms create lock-in, and that you will eventually need to migrate off them anyway.
+The conversation around low-code and no-code platforms tends to get framed as a choice between two opposing philosophies. On one side, the promise of democratization. Business users building their own tools, faster time-to-market, reduced dependency on engineering. On the other, the traditional argument that real software requires real engineering, that platforms create lock-in, and that you will eventually need to migrate off them anyway.
 
 I think both sides mostly miss the point. The question is not which approach is philosophically correct. It is which one fits the actual constraints of the problem in front of you.
 
 ## What Low-Code and No-Code Are Actually Good At
 
-No-code platforms — Zapier, Webflow, Airtable, Bubble and their equivalents — are genuinely excellent for a specific class of problem: standard business workflows where the value comes from automation rather than differentiation. Employee onboarding flows, internal approval systems, basic customer intake forms, content management for sites that do not need custom frontend behavior. For these use cases, the time savings are real. Something that would take a developer three weeks to build can often be assembled in a few days.
+No-code platforms (Zapier, Webflow, Airtable, Bubble and their equivalents) are genuinely excellent for a specific class of problem, which is standard business workflows where the value comes from automation rather than differentiation. Employee onboarding flows, internal approval systems, basic customer intake forms, content management for sites that do not need custom frontend behavior. For these use cases, the time savings are real. Something that would take a developer three weeks to build can often be assembled in a few days.
 
 The key word in that sentence is "standard." No-code platforms work well when your requirement is close to something the platform was already designed to handle. They work poorly when you are trying to make them do something the platform designers did not anticipate. Every platform has a ceiling, and the closer you push to that ceiling, the more time you spend fighting the tool rather than building the product.
 
-Low-code platforms extend the range somewhat by allowing code customization at the edges. They are better suited for teams that have some engineering capacity but want to accelerate development on components that do not need custom architecture. Enterprise workflow tools, internal dashboards, integration layers between existing systems — these are legitimate low-code use cases where the speed-to-value is real.
+Low-code platforms extend the range somewhat by allowing code customization at the edges. They are better suited for teams that have some engineering capacity but want to accelerate development on components that do not need custom architecture. Enterprise workflow tools, internal dashboards, integration layers between existing systems. These are legitimate low-code use cases where the speed-to-value is real.
 
 ## What Traditional Development Is Actually Good At
 
-I would argue that traditional development earns its overhead when three conditions are true: the problem requires custom logic that platforms cannot express, the performance or scale requirements exceed what a platform can deliver, or the product is a competitive differentiator that you expect to need to evolve in unpredictable directions.
+I would argue that traditional development earns its overhead when three conditions are true. The problem requires custom logic that platforms cannot express, the performance or scale requirements exceed what a platform can deliver, or the product is a competitive differentiator that you expect to need to evolve in unpredictable directions.
 
-Social media recommendation algorithms, real-time multiplayer systems, custom ML inference pipelines, and civic tech platforms serving millions of users at high reliability requirements — these are not low-code problems. The customization depth and performance ceiling that traditional development provides are not abstractions. They are real requirements for specific product categories.
+Social media recommendation algorithms, real-time multiplayer systems, custom ML inference pipelines, and civic tech platforms serving millions of users at high reliability requirements. These are not low-code problems. The customization depth and performance ceiling that traditional development provides are not abstractions. They are real requirements for specific product categories.
 
 I have also seen the flip side of this. Teams that chose traditional development for internal HR dashboards, simple customer feedback forms, and basic workflow tooling created maintenance overhead for themselves that never paid off. Those were platform problems built with engineering resources that could have been spent on harder problems.
 
 ## The Vendor Lock-In Question
 
-Lock-in is the most common objection to low-code platforms, and it is worth taking seriously without overstating it. The concern is legitimate: a system built on Bubble or Webflow or Power Automate is not easily migrated to a different environment if the platform changes its pricing, shuts down, or stops meeting your needs.
+Lock-in is the most common objection to low-code platforms, and it is worth taking seriously without overstating it. The concern is legitimate. A system built on Bubble or Webflow or Power Automate is not easily migrated to a different environment if the platform changes its pricing, shuts down, or stops meeting your needs.
 
 I think the honest answer is that this risk is often overstated for appropriate use cases and understated for inappropriate ones. If you are using a no-code platform for an internal workflow tool that nobody outside your company depends on, the migration cost of a platform change is real but manageable. If you have built your entire customer-facing product on a platform that cannot handle your scale, the migration cost is a crisis, not an inconvenience.
 
@@ -60,7 +60,7 @@ I do not think this eliminates the case for platforms. The cognitive overhead of
 
 When I look at a problem and try to decide which approach fits, I work through a short set of questions rather than a weighted scoring matrix. Does this component have requirements that a platform cannot express? If yes, build traditionally. Will this component need to handle significant scale or strict performance requirements? If yes, build traditionally. Is this component core to your competitive differentiation, the thing users chose your product for? If yes, build traditionally. Is it a workflow, an internal tool, or a standard business process with well-understood requirements? If yes, a platform is probably the right answer.
 
-The bigger mistake I see teams make is not choosing the wrong approach — it is treating the decision as irreversible. Most systems are not locked into their original architecture forever, and starting with a platform to validate whether a problem is worth building traditionally at all is often a reasonable choice. What you want to avoid is building significant platform dependencies for components that you know will need to evolve in ways the platform cannot support.
+The bigger mistake I see teams make is not choosing the wrong approach. It is treating the decision as irreversible. Most systems are not locked into their original architecture forever, and starting with a platform to validate whether a problem is worth building traditionally at all is often a reasonable choice. What you want to avoid is building significant platform dependencies for components that you know will need to evolve in ways the platform cannot support.
 
 ---
 

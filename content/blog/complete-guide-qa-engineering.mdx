@@ -16,7 +16,7 @@ seo:
 
 QA engineering is one of those roles that looks simple from the outside and turns out to be surprisingly deep once you're in it. The job description says "find bugs," but the actual work is about building systems and processes that make bugs visible earlier, reduce the cost of finding them, and give development teams enough confidence to ship at speed. Those are different problems.
 
-I've built testing infrastructure for high-traffic applications — from civic tech platforms serving tens of millions of voters in Austin to more recent work at Silicon Valley scale. Alongside that, I've been doing my MBA at UC Berkeley, which has changed how I think about QA as a business function rather than just a technical one. Both lenses matter.
+I've built testing infrastructure for high-traffic applications, from civic tech platforms serving tens of millions of voters in Austin to more recent work at Silicon Valley scale. Alongside that, I've been doing my MBA at UC Berkeley, which has changed how I think about QA as a business function rather than just a technical one. Both lenses matter.
 
 ## What QA Actually Means
 
@@ -44,7 +44,7 @@ __________ Unit Tests (70%)
           - Individual function testing
 ```
 
-The rationale is economic. Unit tests are cheap to write, fast to run, and precise about what broke. End-to-end tests are expensive, slow, and when they fail they often don't tell you why. You want the expensive tests to be the ones covering things unit tests structurally can't cover — full user workflows, cross-browser behavior, integration points with external services.
+The rationale is economic. Unit tests are cheap to write, fast to run, and precise about what broke. End-to-end tests are expensive, slow, and when they fail they often don't tell you why. You want the expensive tests to be the ones covering things unit tests structurally can't cover, such as full user workflows, cross-browser behavior, and integration points with external services.
 
 I've seen teams invert this accidentally. They write lots of E2E tests because they feel thorough and concrete, then spend half their CI time maintaining flaky selectors. The result is a test suite that's slow to run, slow to fix, and loses credibility over time because it fails for reasons unrelated to real bugs.
 
@@ -97,7 +97,7 @@ Scenario: Calculate total with tax
 
 ## Automation
 
-A question I get asked a lot is when to automate. My honest answer is: automate anything you need to run repeatedly and reliably. Regression testing, critical path testing, data-driven scenarios, API contract testing — these are good candidates. One-time checks, exploratory testing, usability testing, and anything with a UI that changes frequently are often not worth automating, at least not aggressively.
+A question I get asked a lot is when to automate. My honest answer is: automate anything you need to run repeatedly and reliably. Regression testing, critical path testing, data-driven scenarios, API contract testing. These are good candidates. One-time checks, exploratory testing, usability testing, and anything with a UI that changes frequently are often not worth automating, at least not aggressively.
 
 The JavaScript/TypeScript ecosystem has solid tooling. Jest for unit and integration tests, React Testing Library for component tests, Playwright for E2E. Here's what each looks like in practice:
 
@@ -289,7 +289,7 @@ config:
       arrivalRate: 10
 ```
 
-Security testing for QA engineers usually means covering the obvious attack surface in automated tests — SQL injection, XSS, authentication boundaries:
+Security testing for QA engineers usually means covering the obvious attack surface in automated tests (SQL injection, XSS, authentication boundaries):
 
 ```javascript
 describe('Security Tests', () => {
@@ -387,12 +387,12 @@ const qualityMetrics = {
 
 ## Austin vs. Bay Area
 
-I've worked in both markets and they have genuinely different cultures around quality. In Austin's civic tech sector, the framing is impact-focused — quality decisions have direct consequences for civic participation, so there's a strong orientation toward sustainable, maintainable practices. In the Bay Area, the dominant concern is scale and velocity. Quality processes have to enable speed, not slow it down, and everything is expected to be instrumented and data-driven.
+I've worked in both markets and they have genuinely different cultures around quality. In Austin's civic tech sector, the framing is impact-focused. Quality decisions have direct consequences for civic participation, so there's a strong orientation toward sustainable, maintainable practices. In the Bay Area, the dominant concern is scale and velocity. Quality processes have to enable speed, not slow it down, and everything is expected to be instrumented and data-driven.
 
 I think the best QA engineers draw on both. Austin's emphasis on long-term maintainability keeps you from building test suites that collapse under their own weight. The Bay Area's data-driven culture keeps you honest about whether your testing is actually finding bugs.
 
 ## What's Coming
 
-AI-assisted testing, shift-left practices, and cloud-native testing approaches are real trends, not just buzzwords. The practical implication for QA engineers is that the job will keep moving away from execution and toward strategy. The engineers who understand what AI testing tools can and can't do — and who can make quality arguments in business language, not just technical language — are going to be the ones setting the direction for their teams.
+AI-assisted testing, shift-left practices, and cloud-native testing approaches are real trends, not just buzzwords. The practical implication for QA engineers is that the job will keep moving away from execution and toward strategy. The engineers who understand what AI testing tools can and can't do, and who can make quality arguments in business language, not just technical language, are going to be the ones setting the direction for their teams.
 
 That's a harder job to do well, and also a more interesting one.

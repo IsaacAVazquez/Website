@@ -21,7 +21,7 @@ You can explore the full interactive bracket here: [March Madness 2026 Bracket A
 
 ## Why This Project Exists
 
-Most March Madness content falls into one of two buckets: generic bracket advice that mostly repeats seed-line history, or highly technical analytics that don't translate into an actual picking workflow. I wanted something in between — a product that helps you build a bracket by showing the strongest calls, but also explains the structure underneath those calls.
+Most March Madness content falls into one of two buckets: generic bracket advice that mostly repeats seed-line history, or highly technical analytics that don't translate into an actual picking workflow. I wanted something in between, a product that helps you build a bracket by showing the strongest calls, but also explains the structure underneath those calls.
 
 The key premise is simple. Seed lines are useful, but they are not the answer. The committee misses teams every year. Injuries shift matchups. Travel matters. And in a one-and-done format, those small structural edges can matter more than broad brand perception.
 
@@ -43,13 +43,13 @@ Duke combines the best blended ranking set across the major public analytics sys
 
 ## How The Model Works
 
-This bracket is built from four inputs layered together. The rankings blend KenPom with BPI, Evan Miya, KPI, NET, SOR, T-Rank, and WAB, which keeps the bracket from overreacting to one system. On top of that sits seed-error analysis — the committee misses every year, and Vanderbilt and St. John's look meaningfully better than their seed lines, while teams like Kansas and Alabama get more credit than the underlying numbers support. Injury context matters most in coin-flip games, where a missing starter or thin rotation can shift the actual signal. And then there is the time-zone layer, which is where this model diverges from most bracket tools.
+This bracket is built from four inputs layered together. The rankings blend KenPom with BPI, Evan Miya, KPI, NET, SOR, T-Rank, and WAB, which keeps the bracket from overreacting to one system. On top of that sits seed-error analysis. The committee misses every year, and Vanderbilt and St. John's look meaningfully better than their seed lines, while teams like Kansas and Alabama get more credit than the underlying numbers support. Injury context matters most in coin-flip games, where a missing starter or thin rotation can shift the actual signal. And then there is the time-zone layer, which is where this model diverges from most bracket tools.
 
 The time-zone model applies penalties for east-west travel and final-slot games. That is why UCF over UCLA and Gonzaga over Purdue show up as real edges instead of novelty picks. You can inspect each layer directly in the interactive route: [Rankings](/march-madness-2026?view=analytics&analytics=rankings#analysis-workspace), [S-curve seed errors](/march-madness-2026?view=analytics&analytics=s-curve#analysis-workspace), [Injury notes](/march-madness-2026?view=analytics&analytics=injuries#analysis-workspace), and the [Time-zone model](/march-madness-2026?view=time-zones#analysis-workspace).
 
 ## Why Time Zones Matter More Than People Admit
 
-A lot of bracket analysis is really ranking analysis in disguise. This project gets more interesting where the rankings are close and the travel burden is not. That is where the time-zone layer earns its place. It does not replace the consensus metrics — it changes how narrow matchups should be interpreted. In the 2026 field, that shift is large enough to produce cleaner upset logic than seed lines alone would suggest.
+A lot of bracket analysis is really ranking analysis in disguise. This project gets more interesting where the rankings are close and the travel burden is not. That is where the time-zone layer earns its place. It does not replace the consensus metrics. It changes how narrow matchups should be interpreted. In the 2026 field, that shift is large enough to produce cleaner upset logic than seed lines alone would suggest.
 
 ## Region Notes
 

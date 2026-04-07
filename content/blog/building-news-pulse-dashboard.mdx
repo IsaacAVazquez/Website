@@ -30,7 +30,7 @@ The product starts with RSS because RSS is still one of the cleanest ways to cap
 
 ## The Core Decisions And Tradeoffs
 
-News Pulse is not trying to be another article reader. It is organized around three higher-level views — headlines, coverage, and analysis — because the value of the product is comparative, not archival. The user should feel like they are seeing patterns across sources rather than just skimming a merged list of links.
+News Pulse is not trying to be another article reader. It is organized around three higher-level views (headlines, coverage, and analysis) because the value of the product is comparative, not archival. The user should feel like they are seeing patterns across sources rather than just skimming a merged list of links.
 
 One of the most deliberate choices in the product was to keep the analysis layer lightweight. The dashboard extracts topics, summarizes source behavior, and performs headline-level sentiment without introducing a large external dependency chain. Headlines are short and structured enough for lightweight heuristics to be useful, the goal is directional media intelligence rather than perfect semantic classification, and keeping the stack lighter makes the product easier to maintain and reason about. This is a case where "good enough and understandable" is better than "technically impressive but hard to trust."
 

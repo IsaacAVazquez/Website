@@ -20,7 +20,7 @@ Most merchants know they are paying for card processing. Far fewer know what the
 
 That confusion is not accidental. Processor pricing is full of blended rates, flat-rate convenience, card-mix variation, scheme complexity, and enterprise plans that only become legible once a business is already large enough to negotiate. For operators trying to make a clean decision, the market often feels deliberately hard to compare.
 
-I built Interchange IQ to make that comparison more concrete. The product is designed to answer a practical question: given your monthly volume, average ticket size, and card mix, how different do processor economics actually look?
+I built Interchange IQ to make that comparison more concrete. The product is designed to answer a practical question. Given your monthly volume, average ticket size, and card mix, how different do processor economics actually look?
 
 ## The Problem
 
@@ -40,15 +40,15 @@ Card mix is where processor comparisons start to become real. A business with a 
 
 I also wanted to compare flat-rate and interchange-plus on the same surface rather than implicitly arguing for one before showing the math. Interchange IQ places both options side by side so you can see when simplicity is worth paying for and when it becomes too expensive. A smaller operator may decide flat rate is still the right answer. A larger operator may realize the markup on interchange-plus becomes compelling once volume rises or average ticket size increases.
 
-The cheapest option at one ticket size is not necessarily the cheapest option at another, which is why the tool includes breakeven logic. A single "best processor" label is too shallow. The better question is: at what point does the economic logic flip? Breakeven analysis teaches you how the market works, not just what the calculator currently outputs.
+The cheapest option at one ticket size is not necessarily the cheapest option at another, which is why the tool includes breakeven logic. A single "best processor" label is too shallow. The better question is at what point does the economic logic flip. Breakeven analysis teaches you how the market works, not just what the calculator currently outputs.
 
 ## How The Experience Works
 
-The interface is intentionally direct. Inputs define the business profile. Summary stats show the cheapest current option and monthly fee impact. A ranked comparison table surfaces effective rates and fee outcomes. And explanatory copy clarifies what card mix and pricing models actually mean, because payments products can become abstract very quickly. The structure keeps you oriented around real operating questions — what happens if my volume doubles, what happens if my average ticket falls, how much is flat-rate convenience costing me, when does interchange-plus start to win.
+The interface is intentionally direct. Inputs define the business profile. Summary stats show the cheapest current option and monthly fee impact. A ranked comparison table surfaces effective rates and fee outcomes. And explanatory copy clarifies what card mix and pricing models actually mean, because payments products can become abstract very quickly. The structure keeps you oriented around real operating questions. What happens if my volume doubles, what happens if my average ticket falls, how much is flat-rate convenience costing me, when does interchange-plus start to win.
 
 ## Tradeoffs I Chose On Purpose
 
-I made a deliberate call to cover major processors and representative rate assumptions rather than model every private contract or every network nuance. That keeps the experience readable and useful for decision framing without trying to be exhaustive. I also chose to show the math drivers instead of dressing them up as a mysterious score, because in payments a product builds more trust when users can understand the model underneath it. And I included explanations for why debit, credit, and Amex matter differently — a calculator without explanation only helps people who already know the answer.
+I made a deliberate call to cover major processors and representative rate assumptions rather than model every private contract or every network nuance. That keeps the experience readable and useful for decision framing without trying to be exhaustive. I also chose to show the math drivers instead of dressing them up as a mysterious score, because in payments a product builds more trust when users can understand the model underneath it. And I included explanations for why debit, credit, and Amex matter differently, because a calculator without explanation only helps people who already know the answer.
 
 ## What This Project Taught Me
 

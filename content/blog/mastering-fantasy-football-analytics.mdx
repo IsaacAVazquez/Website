@@ -16,11 +16,11 @@ seo:
 
 As a software engineer who's spent years building tools around NFL data, I've had a front-row seat to how analytics has changed fantasy football. When I started playing seriously, the edge you could get from data was mostly about having access to it at all. Now the data is everywhere. The edge is knowing what to do with it.
 
-What I've found is that most fantasy analytics fails in one of two directions. Either it stays too shallow — just using box score totals and expert rankings — or it goes too deep into complexity that doesn't actually help you make better decisions. Neither one is useful. The useful stuff lives in the middle: a handful of metrics that are genuinely predictive, applied consistently, adjusted for context.
+What I've found is that most fantasy analytics fails in one of two directions. Either it stays too shallow (just using box score totals and expert rankings) or it goes too deep into complexity that doesn't actually help you make better decisions. Neither one is useful. The useful stuff lives in the middle: a handful of metrics that are genuinely predictive, applied consistently, adjusted for context.
 
 ## What the Data Actually Tells You
 
-The distinction I keep coming back to is opportunity versus efficiency. Opportunity is how many chances a player gets — targets, carries, red zone looks, snap counts. Efficiency is what they do with those chances — catch rate, yards per touch, success rate. Both matter, but they matter differently.
+The distinction I keep coming back to is opportunity versus efficiency. Opportunity is how many chances a player gets (targets, carries, red zone looks, snap counts). Efficiency is what they do with those chances (catch rate, yards per touch, success rate). Both matter, but they matter differently.
 
 Opportunity metrics tend to be more stable and more predictive of future performance. A receiver who commands 25 percent of his team's targets this week will probably command something close to that next week, because target share is a function of role and coaching decisions that don't change quickly. Efficiency metrics are noisier. Yards per carry varies a lot week to week based on blocking and game script. Touchdown rate is extremely volatile because touchdowns are a small enough sample that luck dominates in any given stretch.
 
@@ -30,11 +30,11 @@ What this means practically is that I trust opportunity data more than productio
 
 **Target share** is the most reliable metric I've found for evaluating receivers and tight ends. It tells you what percentage of a team's passing attempts go to a specific player. A player with 22 to 25 percent target share on a pass-heavy offense has a floor that most box score analysis misses. In my experience, target share is a better predictor of next week's production than last week's fantasy points.
 
-**Air yards** add another dimension. Air yards measure how far the ball traveled through the air on targets directed at a player, regardless of whether it was caught. A receiver with high air yards per target is getting deep looks that carry more touchdown upside. A receiver with low air yards per target is running short routes — high catch rate, lower ceiling. Neither is better by default; it depends on what kind of production you need.
+**Air yards** add another dimension. Air yards measure how far the ball traveled through the air on targets directed at a player, regardless of whether it was caught. A receiver with high air yards per target is getting deep looks that carry more touchdown upside. A receiver with low air yards per target is running short routes, with a high catch rate and lower ceiling. Neither is better by default; it depends on what kind of production you need.
 
 **Snap count percentage** is my first screen for any running back or receiver I'm considering. A back who plays 70 percent of his team's offensive snaps has a defined role. A back at 45 percent is in a committee, and committee backs are risky regardless of what their efficiency numbers look like, because the workload can shift based on game script in ways that are hard to predict.
 
-**Red zone usage** is where touchdowns come from, and touchdowns are worth six points. A tight end who draws three or more red zone targets per game is a legitimate weekly option even if his other numbers are unremarkable. I pay particular attention to goal line carries for running backs — the percentage of a team's carries inside the five-yard line. That's where touchdowns get scored, and coaches tend to be consistent about who they trust in that situation.
+**Red zone usage** is where touchdowns come from, and touchdowns are worth six points. A tight end who draws three or more red zone targets per game is a legitimate weekly option even if his other numbers are unremarkable. I pay particular attention to goal line carries for running backs, the percentage of a team's carries inside the five-yard line. That's where touchdowns get scored, and coaches tend to be consistent about who they trust in that situation.
 
 ## Predictive vs. Descriptive Thinking
 
@@ -42,28 +42,28 @@ The shift that made the most difference in my analysis was learning to distingui
 
 Touchdowns are largely descriptive. A player who scored four touchdowns in three weeks had a great three weeks. That doesn't tell you much about what happens next, because touchdown rate is highly variable and regresses toward the mean. Target share is predictive. A player who commanded 28 percent of his team's targets for six consecutive weeks is telling you something durable about his role.
 
-Positive regression candidates are players whose predictive numbers are better than their results. A receiver with a 24 percent target share and a 55 percent catch rate but only 9 fantasy points per game is likely outperforming his opportunity on the negative side — he's probably due for better results as long as the opportunity stays stable. Negative regression candidates are the mirror image: players with good results built on unsustainable efficiency or high touchdown rates with modest opportunity numbers. These are the players you want to trade away when their points total looks impressive.
+Positive regression candidates are players whose predictive numbers are better than their results. A receiver with a 24 percent target share and a 55 percent catch rate but only 9 fantasy points per game is likely outperforming his opportunity on the negative side. He's probably due for better results as long as the opportunity stays stable. Negative regression candidates are the mirror image: players with good results built on unsustainable efficiency or high touchdown rates with modest opportunity numbers. These are the players you want to trade away when their points total looks impressive.
 
 ## Consistency and Variance
 
 I've spent a lot of time thinking about consistency versus ceiling in roster construction, and I've landed on this: I want consistent players in my core lineup spots and high-variance players in my flex and speculative roster spots.
 
-What I measure as consistency is coefficient of variation — the ratio of a player's standard deviation to their mean. A player who averages 14 fantasy points with a standard deviation of 3 is more consistent than a player who averages 14 points with a standard deviation of 8. They're both worth 14 points on average, but the first player gives you a reliable contribution while the second might give you 4 one week and 24 the next.
+What I measure as consistency is coefficient of variation, the ratio of a player's standard deviation to their mean. A player who averages 14 fantasy points with a standard deviation of 3 is more consistent than a player who averages 14 points with a standard deviation of 8. They're both worth 14 points on average, but the first player gives you a reliable contribution while the second might give you 4 one week and 24 the next.
 
 For a lineup that needs to beat a specific opponent each week, consistency compounds over time. The team that puts up a reliable 110 points every week will win more matchups than the team that alternates between 80 and 140.
 
 ## Applying This in Practice
 
-The way I've built my process is to track a core set of metrics each week rather than trying to look at everything. On Tuesday, I pull snap count percentages and target distribution from the previous week's games. I'm looking for changes from established patterns — a back who suddenly lost 15 percent of his snaps, or a receiver who saw a jump in red zone targets. Changes in usage pattern are early signals worth investigating.
+The way I've built my process is to track a core set of metrics each week rather than trying to look at everything. On Tuesday, I pull snap count percentages and target distribution from the previous week's games. I'm looking for changes from established patterns, a back who suddenly lost 15 percent of his snaps, or a receiver who saw a jump in red zone targets. Changes in usage pattern are early signals worth investigating.
 
-On Wednesday and Thursday I look at injury reports and update my projections for the coming week. I adjust for matchup — which defenses have been strong against which positions — but I don't let matchup override the underlying opportunity data unless the adjustment is extreme. A defender giving up 30 points per game to running backs this year is a real matchup advantage. A defender ranked 18th versus receivers instead of 12th is noise.
+On Wednesday and Thursday I look at injury reports and update my projections for the coming week. I adjust for matchup (which defenses have been strong against which positions) but I don't let matchup override the underlying opportunity data unless the adjustment is extreme. A defender giving up 30 points per game to running backs this year is a real matchup advantage. A defender ranked 18th versus receivers instead of 12th is noise.
 
-The data is more available now than it's ever been. NFL Next Gen Stats, Pro Football Reference, and tools like FantasyPros all surface tracking data that used to require a subscription or a scraper. What separates the managers who benefit from this data from those who don't isn't access — it's the discipline to apply it consistently rather than just reaching for it when they feel uncertain about a decision.
+The data is more available now than it's ever been. NFL Next Gen Stats, Pro Football Reference, and tools like FantasyPros all surface tracking data that used to require a subscription or a scraper. What separates the managers who benefit from this data from those who don't isn't access. It's the discipline to apply it consistently rather than just reaching for it when they feel uncertain about a decision.
 
 ## What I've Built
 
 A lot of what drives the analytics features on this site came out of my own frustration with existing tools. I wanted to see tier visualizations that reflected actual value clusters rather than arbitrary rankings, and I wanted them to update as news broke rather than reflecting last week's consensus. Building those tools as a software engineer taught me a lot about what the data can and can't support.
 
-The tier model I use groups players by projected points in a specific scoring format, with adjustments for consistency and injury risk. The goal is to surface tier breaks — the places on the board where the value genuinely drops — rather than treating every pick position as equally meaningful. When you can see the tiers clearly, draft decisions become simpler. You're not agonizing over whether the 8th-ranked receiver is better than the 9th-ranked; you're asking whether both of them are in the same tier or different ones.
+The tier model I use groups players by projected points in a specific scoring format, with adjustments for consistency and injury risk. The goal is to surface tier breaks (the places on the board where the value genuinely drops) rather than treating every pick position as equally meaningful. When you can see the tiers clearly, draft decisions become simpler. You're not agonizing over whether the 8th-ranked receiver is better than the 9th-ranked; you're asking whether both of them are in the same tier or different ones.
 
 That's the application I find most useful: not replacing judgment, but giving judgment a better structure to work within.

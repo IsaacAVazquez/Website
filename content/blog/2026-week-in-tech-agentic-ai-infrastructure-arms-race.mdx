@@ -8,7 +8,7 @@ featured: false
 author: "Isaac Vazquez"
 seo:
   title: "Week in Tech: Agentic AI, Infrastructure Arms Race, and the Enterprise Pivot"
-  description: "My take on the week's biggest tech developments — from self-improving AI systems and GPT-5.4's reasoning focus to NVIDIA's GPU scarcity, OpenAI's hiring surge, and Apple's WWDC setup."
+  description: "My take on the week's biggest tech developments, from self-improving AI systems and GPT-5.4's reasoning focus to NVIDIA's GPU scarcity, OpenAI's hiring surge, and Apple's WWDC setup."
   keywords: ["agentic AI", "AI infrastructure", "OpenAI enterprise", "NVIDIA GPU scarcity", "AI governance", "tech strategy", "frontier models", "autonomous systems"]
 ---
 
@@ -22,7 +22,7 @@ Here's what I found worth paying attention to.
 
 Coverage around GTC and the adjacent research circuit put a lot of focus on systems like the Darwin Gödel Machine and its follow-on work around what's being called DGM-Hyperagents. The core idea is recursive self-improvement: systems that can rewrite and benchmark their own code to optimize for arbitrary computable tasks. That's been a theoretical aspiration in AI research for a long time. What's changing is that it's showing up in near-term product roadmaps and infrastructure discussions rather than purely in academic framing.
 
-I think the implications here are significant and underappreciated. The standard mental model for AI-powered software is a static model plus a wrapper. You call the API, you get an output, you ship something. Agentic systems with self-modification capabilities are a different category of product problem. Evaluation becomes harder when the system you're evaluating last week is no longer the system running today. Safety baselines need to be continuous rather than point-in-time. And the engineering roles most exposed to displacement aren't going to be writing the agents — they're going to be supervising them.
+I think the implications here are significant and underappreciated. The standard mental model for AI-powered software is a static model plus a wrapper. You call the API, you get an output, you ship something. Agentic systems with self-modification capabilities are a different category of product problem. Evaluation becomes harder when the system you're evaluating last week is no longer the system running today. Safety baselines need to be continuous rather than point-in-time. And the engineering roles most exposed to displacement aren't going to be writing the agents. They're going to be supervising them.
 
 Paired with this, frontier models are increasingly being tuned for what you might call deliberative inference rather than just scale. GPT-5.4 is optimized for step-by-step reasoning and coding workflows. Google is running a similar playbook with Gemini variants, separating a fast high-throughput track from a slower high-IQ agent workflow track. The product architecture is converging around a common pattern: cheap models for volume tasks, expensive reasoning models for anything that needs to actually think. That bifurcation has real pricing and margin implications for anyone building on top of these systems.
 
@@ -44,20 +44,20 @@ I'd argue this is smart execution but also a signal that OpenAI knows the purely
 
 ## Apple's credibility test is coming
 
-Apple scheduled WWDC for June 8 through 12 and has telegraphed a heavier AI emphasis than any prior year. Given where Apple's AI perception currently sits relative to OpenAI and Google, this event is shaping up as a real test. Not of whether Apple can ship AI features — they've been shipping them — but of whether they can integrate on-device and cloud inference in a way that feels both genuinely private and competitive with the best-in-class assistant experiences.
+Apple scheduled WWDC for June 8 through 12 and has telegraphed a heavier AI emphasis than any prior year. Given where Apple's AI perception currently sits relative to OpenAI and Google, this event is shaping up as a real test. Not of whether Apple can ship AI features (they've been shipping them) but of whether they can integrate on-device and cloud inference in a way that feels both genuinely private and competitive with the best-in-class assistant experiences.
 
 The privacy-by-design angle is the one place Apple has a structural advantage the others don't. If they can make that feel like a real differentiator rather than a limitation dressed up as a feature, there's a positioning play there. But it requires actually being better at the things users care about day to day. We'll see in June.
 
 ## The security and governance tension is getting harder to ignore
 
-A few things from the security side of this week's coverage stood out to me. Research is surfacing attacks that exfiltrate secrets by analyzing tiny power-consumption variations on chips — what's being called power siphon style exploits. Separately, malicious npm packages targeting wallet credentials and developer machines showed up in threat briefings. And several organizations are dealing with the compound risk of ransomware targeting semiconductor fab and test operations, as with the Trio-Tech disclosure in Singapore.
+A few things from the security side of this week's coverage stood out to me. Research is surfacing attacks that exfiltrate secrets by analyzing tiny power-consumption variations on chips, what's being called power siphon style exploits. Separately, malicious npm packages targeting wallet credentials and developer machines showed up in threat briefings. And several organizations are dealing with the compound risk of ransomware targeting semiconductor fab and test operations, as with the Trio-Tech disclosure in Singapore.
 
 The through-line is that as AI systems get more autonomous and more embedded in software development pipelines, the attack surface expands in ways that are hard to fully anticipate. The same capabilities that make agentic AI useful for writing and reviewing code make it useful for writing and reviewing exploits. Governance and safety debates that felt abstract a year ago are now directly tied to specific operational risks that security teams have to actually defend against.
 
-I think the conclusion most enterprise leaders are reluctantly reaching is that security-by-design for AI systems isn't a feature — it's a prerequisite. The question is whether the tooling and standards mature fast enough to keep up with how quickly these systems are being deployed.
+I think the conclusion most enterprise leaders are reluctantly reaching is that security-by-design for AI systems isn't a feature. It's a prerequisite. The question is whether the tooling and standards mature fast enough to keep up with how quickly these systems are being deployed.
 
 ## The organizational question nobody has answered yet
 
-What I keep coming back to after a week like this is that the hardest problems here are not technical. The technical challenges are real, but they're tractable. The harder question is what organizations look like when AI agents own entire workflows with limited human review. Not the philosophical version of that question — the practical version. Who is accountable when an agent tunes production infrastructure and something breaks? How do you evaluate a system that is continuously modifying itself? What does a team of ten people supervising a fleet of agents actually do day to day?
+What I keep coming back to after a week like this is that the hardest problems here are not technical. The technical challenges are real, but they're tractable. The harder question is what organizations look like when AI agents own entire workflows with limited human review. Not the philosophical version of that question, the practical version. Who is accountable when an agent tunes production infrastructure and something breaks? How do you evaluate a system that is continuously modifying itself? What does a team of ten people supervising a fleet of agents actually do day to day?
 
 Those questions don't have consensus answers yet. The companies that work them out clearly, and build the tooling and processes to support them, are going to have a real operational advantage over the ones that are still treating AI as a features-and-API problem. That transition is happening faster than most planning cycles assume.

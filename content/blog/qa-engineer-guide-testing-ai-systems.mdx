@@ -14,7 +14,7 @@ seo:
 
 # The QA Engineer's Guide to Testing AI Systems: Quality Assurance for Machine Learning
 
-Testing AI systems is genuinely different from testing conventional software, and I think it's worth being direct about why. The usual QA toolkit assumes deterministic behavior: the same input produces the same output, and you can write an assertion that either passes or fails. With machine learning systems, that assumption breaks down. The output is probabilistic. The behavior changes as models retrain. The "correct" answer for a given input may be undefined or context-dependent. And the failure modes — a model that's overfit, a dataset that's been poisoned, a prediction that's systematically biased against a demographic group — are fundamentally different from a null pointer exception or a missing API parameter.
+Testing AI systems is genuinely different from testing conventional software, and I think it's worth being direct about why. The usual QA toolkit assumes deterministic behavior: the same input produces the same output, and you can write an assertion that either passes or fails. With machine learning systems, that assumption breaks down. The output is probabilistic. The behavior changes as models retrain. The "correct" answer for a given input may be undefined or context-dependent. And the failure modes (a model that's overfit, a dataset that's been poisoned, a prediction that's systematically biased against a demographic group) are fundamentally different from a null pointer exception or a missing API parameter.
 
 I've worked on AI-powered analytics systems and spent a lot of time thinking through how to apply rigorous QA practice to components that don't behave deterministically. This is what I've found works.
 
@@ -46,7 +46,7 @@ I think about AI system testing across four dimensions: data quality, model perf
 
 ## Data Quality Testing
 
-The quality of an ML system is bounded by the quality of its data. This sounds obvious but it's consistently underweighted — teams spend enormous time tuning model architectures and relatively little time validating the data those models are trained and evaluated on.
+The quality of an ML system is bounded by the quality of its data. This sounds obvious but it's consistently underweighted. Teams spend enormous time tuning model architectures and relatively little time validating the data those models are trained and evaluated on.
 
 ```python
 class DataQualityTester:
@@ -184,7 +184,7 @@ class ModelPerformanceTester:
             }
 ```
 
-The segment analysis piece is one I want to call out specifically. Overall accuracy numbers can look fine while the model is performing significantly worse on specific demographic groups or edge case inputs. Testing performance by segment — age range, geography, user type, whatever is meaningful for your use case — is how you catch that.
+The segment analysis piece is one I want to call out specifically. Overall accuracy numbers can look fine while the model is performing significantly worse on specific demographic groups or edge case inputs. Testing performance by segment (age range, geography, user type, whatever is meaningful for your use case) is how you catch that.
 
 Model robustness testing is about understanding how stable the model is under perturbation. A model that's confident about edge cases it shouldn't be confident about is a reliability risk:
 
@@ -229,7 +229,7 @@ class ModelRobustnessTester:
 
 ## Bias and Fairness Testing
 
-Bias testing is where I think QA engineering intersects most directly with ethics, and it's also where I see the most inconsistency in how teams approach it. The legal and business risks of biased ML systems are substantial — disparate impact in lending, hiring, or healthcare decisions has real regulatory exposure — but many teams don't test for it at all.
+Bias testing is where I think QA engineering intersects most directly with ethics, and it's also where I see the most inconsistency in how teams approach it. The legal and business risks of biased ML systems are substantial. Disparate impact in lending, hiring, or healthcare decisions has real regulatory exposure, but many teams don't test for it at all.
 
 The 80% rule (disparate impact ratio) is the standard legal threshold in the US for measuring whether a model treats protected groups differently:
 
@@ -324,7 +324,7 @@ class RealTimeInferenceTest:
         )
 ```
 
-Scalability testing for AI systems often surfaces infrastructure bottlenecks that don't show up under normal load — GPU memory constraints, inference queue saturation, model loading time under cold start conditions. These are worth testing explicitly before a production traffic spike finds them for you.
+Scalability testing for AI systems often surfaces infrastructure bottlenecks that don't show up under normal load, including GPU memory constraints, inference queue saturation, model loading time under cold start conditions. These are worth testing explicitly before a production traffic spike finds them for you.
 
 ## Production Monitoring
 
@@ -336,6 +336,6 @@ The testing lifecycle looks like development-phase validation (data quality, mod
 
 ## What This Changes for QA Practice
 
-The main shift is that QA engineers working on AI systems need to understand probabilistic reasoning well enough to interpret model metrics, think about distributional properties of test data, and evaluate bias claims. That's a different skill set from traditional test automation, but it's learnable. The underlying instincts — understanding what failure modes you're protecting against, building systematic coverage, tracking quality over time — translate directly.
+The main shift is that QA engineers working on AI systems need to understand probabilistic reasoning well enough to interpret model metrics, think about distributional properties of test data, and evaluate bias claims. That's a different skill set from traditional test automation, but it's learnable. The underlying instincts (understanding what failure modes you're protecting against, building systematic coverage, tracking quality over time) translate directly.
 
 What I find most interesting about AI testing is that it pushes QA engineers toward being genuine collaborators in system design. The decisions about what data to train on, what fairness constraints to enforce, and what performance thresholds to accept are quality decisions as much as engineering decisions. Having QA perspective in those conversations early usually produces better outcomes.
