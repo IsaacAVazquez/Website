@@ -1,0 +1,51 @@
+---
+title: "Writing Better PRDs with AI: Prompts, Structure, and Common Failure Modes"
+excerpt: "AI is useful for spec drafting, but the sections it handles well and the sections it gets wrong are predictable. Knowing which is which saves you from shipping a spec that looks finished but is not."
+publishedAt: "2026-04-07"
+category: "Product Management"
+tags: ["Product Management", "AI", "PRD", "Workflow", "Writing"]
+featured: false
+author: "Isaac Vazquez"
+seo:
+  title: "Writing Better PRDs with AI: Prompts, Structure, and Failure Modes"
+  description: "A PM's guide to using AI for PRD and product spec drafting: which sections AI handles well, which always need rewriting, and the failure modes that signal you are not the author."
+  keywords: ["AI PRD writing", "AI product spec", "writing PRD with AI", "product requirements document AI", "AI for product managers", "PM spec writing AI", "PRD prompts"]
+---
+
+# Writing Better PRDs with AI: Prompts, Structure, and Common Failure Modes
+
+The expectation in most PM interview processes and in most teams is no longer that you did not use AI to help draft your specs. The expectation is that the spec reflects your thinking, with AI helping you structure and express it faster. The distinction matters because the gap between those two things is obvious to anyone who reads a lot of specs.
+
+Here is what I have learned about where AI helps in PRD drafting, where it consistently falls short, and how to use it in a way that produces a document that is actually yours.
+
+## What AI is good at in spec drafting
+
+The sections of a PRD that AI handles well are the ones with predictable structure and low dependence on context it does not have. Given a clear problem statement and solution direction, AI is reliable at generating a reasonable structure for the document, drafting out-of-scope items by extrapolating from the in-scope list, and populating open questions with the kinds of things engineers and designers typically want answered.
+
+It is also useful for the first draft of the technical considerations section, particularly when you give it context about the stack and the constraints you are working within. The output is not always accurate, but it surfaces the right categories of concern fast enough that you can react to it rather than generate from scratch.
+
+The prompt I use for an initial spec draft looks like this:
+
+"Here is my problem framing, the core user need, and the solution direction I am considering: [content]. Draft a product spec structured with these sections: problem statement, success metrics, proposed solution, out-of-scope, open questions. Write for an audience of engineers and designers who have not been in the discovery process. Flag any places where you are uncertain about scope or where additional information would change the spec significantly."
+
+## The sections you will always rewrite
+
+The problem statement is the section I rewrite every time. AI's version is almost always too generic, because generic is the default when a model is synthesizing from a prompt rather than from actual research. The problem statement has to reflect the specific language your users use, the specific context in which the problem appears, and the specific reason this problem matters to the business. None of that is in the prompt; it is in your head and your research notes. The AI version is a placeholder.
+
+Success metrics is the other section that consistently needs significant work. AI defaults to widely recognized metrics: DAU, retention, NPS, conversion rate. Those are fine as starting points, but a spec with generic metrics is a spec that cannot tell you whether you actually solved the problem you set out to solve. Good success metrics are specific to the user behavior you are trying to change and grounded in the research that defined the problem. I usually draft this section myself from scratch and use the AI version only as a checklist of what I might have missed.
+
+## The failure mode that signals you are not the author
+
+The tell in a spec that was drafted primarily by AI and lightly edited is specificity. Or the lack of it. A problem statement that could apply to a dozen different products. Success metrics that are reasonable for any feature but not this one. An out-of-scope section that reads like a template. A solution description that describes the feature at a high level but does not explain why specific trade-offs were made.
+
+Interviewers who read many specs can identify this quickly, and the follow-up questions expose it. "Why did you choose this success metric over retention?" If the honest answer is that AI suggested it and it seemed reasonable, that is the moment the spec stops representing you.
+
+The way I check my own work is to ask: can I explain every decision in this document in a conversation, including where I considered alternatives and why I made the call I did? If there are sections I cannot explain that way, they are sections I did not write.
+
+## The prompt that produces the most useful draft
+
+After a lot of iteration, the draft prompt that works best for me includes four things: the problem framing in my own words, the specific user segment affected, the solution direction with the key constraints, and a note about what I want the AI to flag rather than fill in.
+
+That last part is important. By default, AI fills in gaps with plausible-sounding content. I would rather it tell me what is missing than produce something that looks complete but is not. Adding "flag any sections where you do not have enough context to write something specific rather than generic" to the prompt produces a draft that is more honest about what I still need to fill in.
+
+The draft is always a first pass, not a final document. The value is that it gives me a structure to react to in 20 minutes rather than building the structure myself in two hours. The spec that ships is the result of two or three rounds of rewriting, not the AI draft with light edits.

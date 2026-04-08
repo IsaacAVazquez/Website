@@ -1,0 +1,87 @@
+---
+title: "AI-Powered User Research: Turning 10 Interviews into Themes in One Evening"
+excerpt: "The bottleneck in user research is not the interviews. It is the days between finishing the last conversation and being able to say anything coherent about what you learned. AI compresses that gap to a few hours, if you use it at the right steps."
+publishedAt: "2026-04-07"
+category: "Product Management"
+tags: ["Product Management", "User Research", "AI", "Workflow", "UX"]
+featured: false
+author: "Isaac Vazquez"
+seo:
+  title: "AI-Powered User Research: 10 Interviews into Themes in One Evening"
+  description: "A PM's first-person walkthrough of using AI to synthesize user interview transcripts into themes, contradictions, and a usable problem statement in one evening."
+  keywords: ["AI user research synthesis", "AI user interviews", "user research workflow", "interview synthesis AI", "PM user research", "qualitative research AI", "AI for product managers"]
+---
+
+# AI-Powered User Research: Turning 10 Interviews into Themes in One Evening
+
+The bottleneck in user research is not the interviews. It is the time between finishing the last conversation and being able to say anything coherent about what you learned. Synthesizing ten conversations into a clear picture of user problems used to take me three or four days: reading through transcripts, building a spreadsheet of themes, checking my groupings against the raw quotes, and eventually writing a problem statement I half-believed. Now that process takes an evening. The workflow is specific enough to walk through exactly.
+
+## Why synthesis is the hard part
+
+Interviews are fun. You get to talk to people about their problems, follow the unexpected threads, and come away with a genuine sense of what the work is like for them. Synthesis is where it gets hard.
+
+The challenge is not that the patterns are difficult to find. It is that finding them requires holding ten different conversations in your head at once and comparing them along dimensions you often have not defined in advance. Which problems are structural and which are incidental to one person's setup? Which complaints are about the same underlying issue expressed differently? Where do two users describe the same situation but want completely different things? Those questions require moving back and forth across transcripts constantly, and the mechanical overhead of doing that manually is what kills the timeline.
+
+AI solves the mechanical overhead. It does not replace the judgment calls, and it does not tell you which problems matter most. What it does is get everything into a structured form fast enough that you can start making those calls while the interviews are still fresh.
+
+## The transcript question
+
+The workflow starts with transcripts. If you are recording interviews, most tools will produce a transcript automatically. I use Otter for interviews where I have the participant's permission to record, and I download the raw text transcript, not the cleaned-up summary version. The summary loses things. The raw transcript keeps the specific language people use to describe their problems, which is often the most valuable part.
+
+If you are not recording, take notes in a structured format during the interview: problem, context, exact quote. The exact quote matters because paraphrased notes lose the phrasing that tells you how the person thinks about the problem, not just what the problem is.
+
+## Extraction: one transcript at a time
+
+The first step is processing each transcript individually to extract the problems. I do not ask for a summary here. Summaries compress the specifics out of the content and produce the kind of generic themes that could apply to any user research. What I want is extraction: every distinct problem the person articulated, with the exact language they used.
+
+The prompt I use looks like this:
+
+"Here is a user interview transcript. Do not summarize it. Extract every distinct problem, frustration, or unmet need the user mentions. For each one: (1) the problem in one sentence, (2) the exact quote where they describe it, (3) one sentence of context about when it came up and what they were trying to do. If the same underlying problem comes up multiple times, include each instance separately."
+
+I run this on each transcript and save the output in a simple document. After ten interviews I have ten sets of extracted problems, all in the same structure.
+
+The reason I ask for each instance separately rather than deduplicating is that the repetition is informative. If someone mentions a problem three times in different contexts, that is different from mentioning it once. The extraction step should preserve that signal.
+
+## Cross-interview synthesis
+
+Once I have extracted problems from all ten transcripts, the synthesis question is what patterns exist across them. I paste all ten extraction outputs into a single document and run a different prompt.
+
+"Here are extracted problems from ten user interviews. Group these by theme, noting which themes appear across multiple interviews and how many. For each group: (1) a theme label, (2) the common pattern, (3) which interviews it appeared in. Then identify anything that seems contradictory: problems that some users mention and others explicitly do not have, or situations where users want opposite things."
+
+The output is a set of themes with interview counts and a list of contradictions. The themes are the start of a pattern map. The contradictions are usually more interesting.
+
+## Why contradictions matter more than themes
+
+This is the part of the workflow I pay the most attention to.
+
+Themes are satisfying because they confirm that a problem is real and shared. But themes can also obscure the complexity of what users actually need. A theme that says "users want faster onboarding" hides the fact that some users want a shorter form and others want more guidance in the form they have. Those are opposite solutions to a surface-similar complaint.
+
+Contradictions in research data are almost always a signal that there are two or more distinct user segments with different needs, or that the problem is more nuanced than the theme label suggests. When I find a contradiction, I treat it as a question: what is different about the users on each side of this?
+
+I ask Claude to dig into contradictions explicitly rather than smooth them over. The prompt is: "For each contradiction you identified, describe what might be different about the users on each side. What do we know from the transcripts about their situations, goals, or contexts that could explain why they have different experiences?"
+
+That output usually helps me see the segmentation clearly enough to refine the problem framing.
+
+## What you review manually
+
+At this point I have themes, interview counts, contradictions, and some initial segmentation hypotheses. Before writing anything, I read back through the original extraction documents.
+
+What I am looking for is whether the AI's groupings match my intuition from being in the conversations. It usually gets most of them right. The places where it does not tend to fall into two categories: problems that got grouped together because they sounded similar but are actually different, and problems that got separated because they were described differently but are the same underlying issue.
+
+I also look for anything that got missed. The extraction prompt is good, but it occasionally misses a problem that was implied rather than stated directly. If someone says "I usually just give up at that point," that is describing a failure mode even if they never named it as a problem. I add those to the set when I find them.
+
+## What the output looks like
+
+By the end of the evening I have a document with the following sections: a list of themes in priority order by interview count, the specific quotes that illustrate each theme, a section on contradictions and what they imply about segmentation, and a first draft of a problem statement that I will refine the next morning.
+
+The problem statement draft is mine, not the AI's. I use everything I collected to write it, and I write it in the format I find most useful: when a user is in situation X and trying to accomplish Y, the obstacle is Z. That structure forces precision. If I cannot fill it in specifically, I have not finished synthesizing yet.
+
+The drafts are usually close but not quite right. I almost always rewrite the problem statement the next morning after sleeping on it. What the evening's work does is get me to a place where I have real material to react to rather than a pile of transcripts I am trying to hold in my head.
+
+## What this changes about the work
+
+The honest version is that AI has compressed the mechanical part of synthesis from days to hours. The judgment part, deciding which themes matter, understanding what the contradictions mean, writing a problem statement that is actually specific enough to be useful, still takes the same amount of thinking. What has changed is the ratio.
+
+I used to spend most of my synthesis time on structure: building the spreadsheet, tracking quotes, managing the comparison matrix. Now I spend most of it on interpretation, which is where the work actually is. The result is not just faster. It is more thorough, because I can run the analysis with more rigor than I could sustain manually across ten interviews.
+
+If you do ten interviews and skip synthesis, you will come out of them with a general sense of what you heard but not a defensible problem statement. This workflow produces a defensible problem statement. That is the thing that actually moves a product decision forward.
