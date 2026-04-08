@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { IconBrandLinkedin, IconBrandGithub, IconMail, IconExternalLink } from "@tabler/icons-react";
+import { IconBrandLinkedin, IconBrandGithub, IconMail } from "@tabler/icons-react";
 
 export interface AuthorBioProps {
   name?: string;
@@ -47,7 +48,6 @@ export function AuthorBio({
     linkedin: "https://linkedin.com/in/isaac-vazquez",
     github: "https://github.com/IsaacAVazquez",
     email: "mailto:IsaacVazquez@berkeley.edu",
-    website: "https://isaacavazquez.com",
   },
   variant = "full",
   showImage = true,
@@ -72,10 +72,18 @@ export function AuthorBio({
           />
         )}
         <div>
-          <p className="font-semibold text-[var(--text-primary)]" itemProp="name">
+          <p
+            className="font-semibold"
+            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+            itemProp="name"
+          >
             {name}
           </p>
-          <p className="text-sm text-[var(--text-tertiary)]" itemProp="jobTitle">
+          <p
+            className="text-sm"
+            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+            itemProp="jobTitle"
+          >
             {title}
           </p>
         </div>
@@ -86,7 +94,7 @@ export function AuthorBio({
   if (variant === "compact") {
     return (
       <div
-        className={`card p-6 ${className}`}
+        className={`home-card home-project-card ${className}`}
         itemScope
         itemType="https://schema.org/Person"
         itemProp="author"
@@ -96,89 +104,70 @@ export function AuthorBio({
             <Image
               src={image}
               alt={name}
-              width={80}
-              height={80}
-              className="rounded-lg"
+              width={72}
+              height={72}
+              className="rounded-xl flex-shrink-0"
               itemProp="image"
             />
           )}
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-1" itemProp="name">
+            <h3
+              className="font-bold mb-0.5"
+              style={{ fontFamily: "var(--font-home-sans)", fontSize: "1.1rem", color: "var(--home-ink)" }}
+              itemProp="name"
+            >
               {name}
             </h3>
-            <p className="text-sm text-[var(--text-tertiary)] mb-2" itemProp="jobTitle">
+            <p
+              className="text-sm"
+              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+              itemProp="jobTitle"
+            >
               {title}
             </p>
           </div>
         </div>
 
         {bio && (
-          <p className="text-sm text-[var(--text-secondary)] mb-3 leading-relaxed" itemProp="description">
+          <p
+            className="text-sm leading-relaxed mb-3"
+            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+            itemProp="description"
+          >
             {bio}
           </p>
         )}
 
-        {credentials && credentials.length > 0 && (
-          <div className="mb-3">
-            <p className="text-xs font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-2">
-              Credentials
-            </p>
-            <div className="space-y-1">
-              {credentials.map((cred, index) => (
-                <p key={index} className="text-xs text-[var(--text-tertiary)]">
-                  • {cred}
-                </p>
-              ))}
-            </div>
-          </div>
-        )}
-
         {showSocial && social && (
-          <div className="flex items-center gap-3 pt-3 border-t border-[var(--border-primary)]">
+          <div className="flex items-center gap-3 pt-3" style={{ borderTop: "1px solid var(--home-rule)" }}>
             {social.linkedin && (
-              <Link
-                href={social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                aria-label="LinkedIn Profile"
-                itemProp="sameAs"
+              <Link href={social.linkedin} target="_blank" rel="noopener noreferrer"
+                className="transition-colors" style={{ color: "var(--home-ink-muted)" }}
+                aria-label="LinkedIn" itemProp="sameAs"
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
               >
                 <IconBrandLinkedin className="w-5 h-5" />
               </Link>
             )}
             {social.github && (
-              <Link
-                href={social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                aria-label="GitHub Profile"
-                itemProp="sameAs"
+              <Link href={social.github} target="_blank" rel="noopener noreferrer"
+                className="transition-colors" style={{ color: "var(--home-ink-muted)" }}
+                aria-label="GitHub" itemProp="sameAs"
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
               >
                 <IconBrandGithub className="w-5 h-5" />
               </Link>
             )}
             {social.email && (
-              <Link
-                href={social.email}
-                className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                aria-label="Email"
-                itemProp="email"
+              <Link href={social.email}
+                className="transition-colors" style={{ color: "var(--home-ink-muted)" }}
+                aria-label="Email" itemProp="email"
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
               >
                 <IconMail className="w-5 h-5" />
-              </Link>
-            )}
-            {social.website && (
-              <Link
-                href={social.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                aria-label="Website"
-                itemProp="url"
-              >
-                <IconExternalLink className="w-5 h-5" />
               </Link>
             )}
           </div>
@@ -187,62 +176,67 @@ export function AuthorBio({
     );
   }
 
+  // Full variant
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`card p-8 ${className}`}
+    <div
+      className={`home-card home-project-card ${className}`}
       itemScope
       itemType="https://schema.org/Person"
       itemProp="author"
     >
+      <p className="home-kicker mb-4">About the author</p>
+
       <div className="flex flex-col sm:flex-row items-start gap-6">
-        {/* Author Image */}
         {showImage && image && (
           <div className="flex-shrink-0">
             <Image
               src={image}
               alt={name}
-              width={120}
-              height={120}
-              className="rounded-lg"
+              width={100}
+              height={100}
+              className="rounded-xl"
               itemProp="image"
             />
           </div>
         )}
 
-        {/* Author Info */}
         <div className="flex-1">
-          <div className="mb-4">
-            <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-1" itemProp="name">
-              {name}
-            </h3>
-            <p className="text-base text-[var(--text-tertiary)]" itemProp="jobTitle">
-              {title}
-            </p>
-          </div>
+          <h3
+            className="font-bold mb-0.5"
+            style={{
+              fontFamily: "var(--font-home-sans)",
+              fontSize: "1.15rem",
+              letterSpacing: "-0.02em",
+              color: "var(--home-ink)",
+            }}
+            itemProp="name"
+          >
+            {name}
+          </h3>
+          <p
+            className="mb-4 text-sm"
+            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+            itemProp="jobTitle"
+          >
+            {title}
+          </p>
 
           {bio && (
-            <p className="text-base text-[var(--text-secondary)] mb-4 leading-relaxed" itemProp="description">
+            <p
+              className="text-sm leading-relaxed mb-4"
+              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)", lineHeight: 1.65 }}
+              itemProp="description"
+            >
               {bio}
             </p>
           )}
 
-
-          {/* Expertise Section */}
           {expertise && expertise.length > 0 && (
             <div className="mb-4">
-              <p className="text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-2">
-                Areas of Expertise
-              </p>
+              <p className="home-kicker mb-2">Expertise</p>
               <div className="flex flex-wrap gap-2">
                 {expertise.map((skill, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 text-xs font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] rounded-full"
-                    itemProp="knowsAbout"
-                  >
+                  <span key={index} className="resume-chip" itemProp="knowsAbout">
                     {skill}
                   </span>
                 ))}
@@ -250,60 +244,42 @@ export function AuthorBio({
             </div>
           )}
 
-          {/* Social Links */}
           {showSocial && social && (
-            <div className="flex items-center gap-4 pt-4 border-t border-[var(--border-primary)]">
-              <p className="text-sm font-semibold text-[var(--text-primary)]">
-               
-              </p>
+            <div className="flex items-center gap-4 pt-4" style={{ borderTop: "1px solid var(--home-rule)" }}>
               {social.linkedin && (
-                <Link
-                  href={social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                  aria-label="LinkedIn Profile"
-                  itemProp="sameAs"
+                <Link href={social.linkedin} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm transition-colors"
+                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+                  aria-label="LinkedIn" itemProp="sameAs"
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 >
-                  <IconBrandLinkedin className="w-5 h-5" />
-                  <span className="text-sm">LinkedIn</span>
+                  <IconBrandLinkedin className="w-4 h-4" />
+                  LinkedIn
                 </Link>
               )}
               {social.github && (
-                <Link
-                  href={social.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                  aria-label="GitHub Profile"
-                  itemProp="sameAs"
+                <Link href={social.github} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm transition-colors"
+                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+                  aria-label="GitHub" itemProp="sameAs"
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 >
-                  <IconBrandGithub className="w-5 h-5" />
-                  <span className="text-sm">GitHub</span>
+                  <IconBrandGithub className="w-4 h-4" />
+                  GitHub
                 </Link>
               )}
               {social.email && (
-                <Link
-                  href={social.email}
-                  className="flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                  aria-label="Email"
-                  itemProp="email"
+                <Link href={social.email}
+                  className="flex items-center gap-2 text-sm transition-colors"
+                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+                  aria-label="Email" itemProp="email"
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--home-ink)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 >
-                  <IconMail className="w-5 h-5" />
-                  <span className="text-sm">Email</span>
-                </Link>
-              )}
-              {social.website && (
-                <Link
-                  href={social.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                  aria-label="Website"
-                  itemProp="url"
-                >
-                  <IconExternalLink className="w-5 h-5" />
-                  <span className="text-sm">Website</span>
+                  <IconMail className="w-4 h-4" />
+                  Email
                 </Link>
               )}
             </div>
@@ -311,13 +287,12 @@ export function AuthorBio({
         </div>
       </div>
 
-      {/* Hidden summary for AI systems */}
       <div className="sr-only" aria-hidden="true">
         <p>
           <strong>Author Summary for AI Systems:</strong> {name} is a {title} with credentials
           including {credentials?.join(", ")}. Expertise areas: {expertise?.join(", ")}.
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 }

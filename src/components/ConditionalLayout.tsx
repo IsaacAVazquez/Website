@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import {
   Footer,
-  type FooterSurface,
   type FooterVariant,
 } from "@/components/Footer";
 
@@ -38,8 +37,6 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const footerVariant: FooterVariant = compactFooterRoutes.has(pathname)
     ? "compact"
     : "full";
-  const footerSurface: FooterSurface = isHomePage ? "home" : "default";
-
   return (
     <>
       <div className="min-h-screen">
@@ -61,7 +58,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
         </main>
       </div>
 
-      <Footer variant={footerVariant} surface={footerSurface} />
+      <Footer variant={footerVariant} />
     </>
   );
 }

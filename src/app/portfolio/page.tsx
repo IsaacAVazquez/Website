@@ -1,6 +1,5 @@
 import { getPortfolioProjects } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
-import { SectionIntro } from "@/components/ui/SectionIntro";
 import { PortfolioProjectCard } from "@/components/PortfolioProjectCard";
 
 export const metadata = constructMetadata({
@@ -33,35 +32,36 @@ export const metadata = constructMetadata({
 
 export default function PortfolioPage() {
   const portfolioProjects = getPortfolioProjects();
-  const featuredProjects = portfolioProjects.filter((study) => study.featured);
-  const directCaseStudies = portfolioProjects.filter((study) => !study.link);
-  const shippedTools = portfolioProjects.filter((study) => Boolean(study.link));
 
   return (
-    <div className="min-h-screen bg-[var(--surface-primary)] page-section">
-      <div className="page-shell space-y-10 lg:space-y-12">
-        <div className="section-panel px-6 py-8 sm:px-8 sm:py-10 lg:px-10">
-          <SectionIntro
-            size="lg"
-            headingLevel={1}
-            title="All projects across product, analytics, and tooling."
-            description="A complete index of case studies, live tools, and product experiments across SaaS, fintech, media, and sports data."
-            titleClassName="max-w-4xl text-3xl leading-[1.04] sm:text-4xl lg:text-[3.2rem]"
-            descriptionClassName="max-w-3xl text-base lg:text-lg"
-          />
+    <section className="home-page min-h-screen">
+      <div className="home-shell home-section space-y-10">
+        {/* Page heading */}
+        <div className="text-center space-y-3 pt-4">
+          <p className="home-kicker">Projects</p>
+          <h1
+            className="mx-auto w-full max-w-5xl text-center"
+            style={{
+              fontFamily: "var(--font-home-sans)",
+              fontSize: "clamp(2.6rem, 6vw, 5rem)",
+              fontWeight: 600,
+              lineHeight: 0.94,
+              letterSpacing: "-0.07em",
+              color: "var(--home-ink)",
+            }}
+          >
+            Product work across SaaS, analytics, and tooling.
+          </h1>
         </div>
 
-        <section aria-label="All projects">
-          <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                Full project index
-              </p>
-              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--text-secondary)] lg:text-base">
-                The full picture is case studies and live tools together, with featured work marked but not walled off.
-              </p>
-            </div>
-          </div>
+        {/* Intro + grid */}
+        <div className="space-y-8">
+          <p
+            className="home-body max-w-none-b"
+            style={{ maxWidth: "48rem" }}
+          >
+          </p>
+
           <div className="grid auto-rows-fr gap-6 md:grid-cols-2 xl:grid-cols-3">
             {portfolioProjects.map((study) => (
               <PortfolioProjectCard
@@ -71,8 +71,8 @@ export default function PortfolioPage() {
               />
             ))}
           </div>
-        </section>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

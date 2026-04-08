@@ -1,11 +1,8 @@
 import { getAllBlogPosts } from "@/lib/blog";
 import { StructuredData } from "@/components/StructuredData";
 import { generateBreadcrumbStructuredData, constructMetadata } from "@/lib/seo";
-import { WarmCard } from "@/components/ui/WarmCard";
-import { ModernButton } from "@/components/ui/ModernButton";
 import Link from "next/link";
-import { Calendar, Clock, ArrowRight } from "@/components/ui/ServerIcons";
-import { SectionIntro } from "@/components/ui/SectionIntro";
+import { Clock, ArrowRight } from "@/components/ui/ServerIcons";
 import { publishedDateFormatter } from "@/lib/utils";
 
 export const metadata = constructMetadata({
@@ -73,98 +70,157 @@ export default async function WritingPage() {
         <StructuredData key={index} type="Article" data={article} />
       ))}
 
-      <div className="min-h-screen bg-[var(--surface-primary)] page-section">
-        <div className="page-shell-tight">
-          <SectionIntro
-            eyebrow="Writing"
-            size="md"
-            headingLevel={1}
-            title="I write to work through ideas, not to summarize them."
-            description="Product strategy, analytics-heavy decisions, and the parts of the job that usually matter more than the framework language around them."
-            actions={
-              <ModernButton href="/portfolio" variant="outline" size="md">
-                View projects
-              </ModernButton>
-            }
-          />
+      <section className="home-page min-h-screen">
+        <div className="home-shell home-section space-y-10">
+          {/* Page heading */}
+          <div className="text-center space-y-3 pt-4">
+            <p className="home-kicker">Writing</p>
+            <h1
+              className="mx-auto w-full max-w-5xl text-center"
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                fontSize: "clamp(2.6rem, 6vw, 5rem)",
+                fontWeight: 600,
+                lineHeight: 0.94,
+                letterSpacing: "-0.07em",
+                color: "var(--home-ink)",
+              }}
+            >
+              I write to think through ideas, not to summarize them.
+            </h1>
+          </div>
 
-          {posts.length > 0 ? (
-            <div className="mt-12 grid gap-8 md:grid-cols-2">
-              {posts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/writing/${post.slug}`}
-                  className="group block h-full"
-                >
-                  <WarmCard hover padding="lg" className="flex h-full flex-col overflow-hidden">
-                    <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                      {post.category ? (
-                        <span className="section-kicker">{post.category}</span>
-                      ) : (
-                        <span />
-                      )}
-                      <time
-                        dateTime={post.publishedAt}
-                        className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--text-tertiary)]"
+          {/* Intro + posts */}
+          <div className="space-y-8">
+            <p className="home-body" style={{ maxWidth: "48rem" }}>
+            </p>
+
+            {posts.length > 0 ? (
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {posts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/writing/${post.slug}`}
+                    className="group block h-full"
+                  >
+                    <div
+                      className="home-card h-full flex flex-col"
+                      style={{ padding: "1.5rem" }}
+                    >
+                      {/* Category + date */}
+                      <div className="mb-4 flex items-center justify-between gap-3">
+                        {post.category ? (
+                          <span className="home-kicker">{post.category}</span>
+                        ) : (
+                          <span />
+                        )}
+                        <time
+                          dateTime={post.publishedAt}
+                          style={{
+                            fontFamily: "var(--font-home-sans)",
+                            fontSize: "0.72rem",
+                            fontWeight: 600,
+                            letterSpacing: "0.12em",
+                            textTransform: "uppercase",
+                            color: "var(--home-ink-muted)",
+                          }}
+                        >
+                          {publishedDateFormatter.format(new Date(post.publishedAt))}
+                        </time>
+                      </div>
+
+                      {/* Title */}
+                      <h2
+                        className="mb-3 transition-colors group-hover:opacity-70"
+                        style={{
+                          fontFamily: "var(--font-home-sans)",
+                          fontSize: "1.15rem",
+                          fontWeight: 700,
+                          letterSpacing: "-0.03em",
+                          lineHeight: 1.2,
+                          color: "var(--home-ink)",
+                        }}
                       >
-                        {publishedDateFormatter.format(new Date(post.publishedAt))}
-                      </time>
-                    </div>
+                        {post.title}
+                      </h2>
 
-                    <h2 className="mb-3 text-xl font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--color-primary)] md:text-2xl">
-                      {post.title}
-                    </h2>
-
-                    {post.excerpt ? (
-                      <p className="mb-5 flex-grow text-base leading-relaxed text-[var(--text-secondary)] line-clamp-4">
-                        {post.excerpt}
-                      </p>
-                    ) : null}
-
-                    <div className="mt-auto flex flex-wrap items-center gap-4 border-t border-[var(--border-primary)] pt-4 text-sm text-[var(--text-secondary)]">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        <span>{publishedDateFormatter.format(new Date(post.publishedAt))}</span>
-                      </div>
-                      {post.readingTime ? (
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          <span>{post.readingTime}</span>
-                        </div>
+                      {/* Excerpt */}
+                      {post.excerpt ? (
+                        <p
+                          className="mb-5 flex-grow text-sm leading-relaxed line-clamp-4"
+                          style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
+                        >
+                          {post.excerpt}
+                        </p>
                       ) : null}
-                      <div className="ml-auto">
-                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+
+                      {/* Footer row */}
+                      <div
+                        className="mt-auto flex items-center justify-between gap-4 pt-4"
+                        style={{ borderTop: "1px solid var(--home-rule)" }}
+                      >
+                        <div className="flex items-center gap-3">
+                          {post.readingTime ? (
+                            <div
+                              className="flex items-center gap-1"
+                              style={{
+                                fontFamily: "var(--font-home-sans)",
+                                fontSize: "0.8rem",
+                                color: "var(--home-ink-muted)",
+                              }}
+                            >
+                              <Clock className="h-3.5 w-3.5" />
+                              <span>{post.readingTime}</span>
+                            </div>
+                          ) : null}
+
+                          {post.tags && post.tags.length > 0 ? (
+                            <div className="flex flex-wrap gap-1.5">
+                              {post.tags.slice(0, 2).map((tag) => (
+                                <span key={tag} className="resume-chip">{tag}</span>
+                              ))}
+                            </div>
+                          ) : null}
+                        </div>
+
+                        <ArrowRight
+                          className="h-4 w-4 flex-shrink-0 transition-transform group-hover:translate-x-1"
+                          style={{ color: "var(--home-haze)" }}
+                        />
                       </div>
                     </div>
-
-                    {post.tags && post.tags.length > 0 ? (
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {post.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs text-[var(--text-tertiary)]"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    ) : null}
-                  </WarmCard>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <WarmCard padding="xl" className="mt-12 text-center">
-              <h2 className="mb-4 text-3xl font-bold text-[var(--text-primary)]">
-                Articles Coming Soon
-              </h2>
-              <p className="mx-auto max-w-2xl text-base leading-relaxed text-[var(--text-secondary)]">
-                I'm working on more pieces about product thinking, analytics, and the decisions behind the tools I build.
-              </p>
-            </WarmCard>
-          )}
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="home-card home-project-card text-center">
+                <h2
+                  className="mb-4"
+                  style={{
+                    fontFamily: "var(--font-home-sans)",
+                    fontSize: "2rem",
+                    fontWeight: 700,
+                    color: "var(--home-ink)",
+                  }}
+                >
+                  Articles Coming Soon
+                </h2>
+                <p
+                  className="mx-auto"
+                  style={{
+                    maxWidth: "40rem",
+                    fontFamily: "var(--font-home-sans)",
+                    color: "var(--home-ink-muted)",
+                    lineHeight: 1.65,
+                  }}
+                >
+                  I&apos;m working on more pieces about product thinking, analytics, and the decisions behind the tools I build.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

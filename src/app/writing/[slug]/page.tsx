@@ -23,9 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = await getBlogPostBySlug(slug);
 
   if (!post) {
-    return {
-      title: 'Post not found',
-    };
+    return { title: 'Post not found' };
   }
 
   const metadataTitle = post.seo?.title || post.title;
@@ -58,15 +56,13 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  // Calculate reading time if not provided
   const readingTime = post.readingTime || `${calculateReadingTime(post.content)} min read`;
   const wordCount = post.content.split(/\s+/).length;
 
-  // Breadcrumbs
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Writing", url: "/writing" },
-    { name: post.title, url: `/writing/${slug}` }
+    { name: post.title, url: `/writing/${slug}` },
   ];
 
   const articleDescription = post.seo?.description || post.excerpt || post.title;
@@ -74,15 +70,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <>
-      {/* Breadcrumb Structured Data */}
       <AIStructuredData
         schema={{
           type: "Breadcrumb",
           data: { items: breadcrumbs },
         }}
       />
-
-      {/* Enhanced Article Structured Data */}
       <AIStructuredData
         schema={{
           type: "Article",
@@ -92,7 +85,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             author: {
               name: "Isaac Vazquez",
               jobTitle: "Technical Product Manager & UC Berkeley MBA Candidate",
-              url: "https://isaacavazquez.com"
+              url: "https://isaacavazquez.com",
             },
             datePublished: post.publishedAt,
             dateModified: post.updatedAt || post.publishedAt,
@@ -108,26 +101,62 @@ export default async function BlogPostPage({ params }: PageProps) {
         }}
       />
 
-      <div className="min-h-screen bg-[var(--surface-primary)] page-section">
-        <div className="page-shell-tight">
-          <article>
+      <section className="home-page min-h-screen">
+        <div className="home-shell home-section">
+          <article className="max-w-4xl mx-auto">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex items-center gap-2 text-sm text-[var(--text-tertiary)]">
-                <li><a href="/writing" className="hover:text-[var(--color-primary)] transition-colors">Writing</a></li>
+              <ol
+                className="flex items-center gap-2 text-sm"
+                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+              >
+                <li>
+                  <a
+                    href="/writing"
+                    className="transition-colors hover:text-[var(--home-ink)]"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
+                    Writing
+                  </a>
+                </li>
                 <li aria-hidden="true">/</li>
-                <li className="text-[var(--text-secondary)] truncate max-w-[40ch]">{post.title}</li>
+                <li className="truncate max-w-[40ch]" style={{ color: "var(--home-ink)" }}>
+                  {post.title}
+                </li>
               </ol>
             </nav>
 
+            {/* Article header */}
             <header className="mb-10">
               {post.tags && post.tags[0] && (
-                <span className="section-kicker mb-4 inline-block">{post.tags[0]}</span>
+                <span className="home-kicker mb-4 inline-block">{post.tags[0]}</span>
               )}
-              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)] mb-4 max-w-3xl">
+
+              <h1
+                className="mb-4 max-w-5xl"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  fontSize: "clamp(2rem, 5vw, 3.2rem)",
+                  fontWeight: 700,
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.04em",
+                  color: "var(--home-ink)",
+                }}
+              >
                 {post.title}
               </h1>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[var(--text-tertiary)]">
+
+              <div
+                className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-5"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  fontSize: "0.8rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "var(--home-ink-muted)",
+                }}
+              >
                 <time dateTime={post.publishedAt}>
                   {new Date(post.publishedAt).toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -135,50 +164,41 @@ export default async function BlogPostPage({ params }: PageProps) {
                     day: 'numeric',
                   })}
                 </time>
-                <span>•</span>
+                <span aria-hidden="true">·</span>
                 <span>{readingTime}</span>
               </div>
 
-              {/* Tags */}
               {post.tags && post.tags.length > 1 && (
-                <div className="flex flex-wrap gap-2 mt-5">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {post.tags.slice(1).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-0.5 text-xs font-medium bg-[var(--surface-secondary)] text-[var(--text-tertiary)] rounded-full border border-[var(--border-secondary)]"
-                    >
-                      {tag}
-                    </span>
+                    <span key={tag} className="resume-chip">{tag}</span>
                   ))}
                 </div>
               )}
 
-              <hr className="mt-8 border-[var(--border-primary)]" />
+              <hr style={{ borderColor: "var(--home-rule)", marginTop: "1.5rem" }} />
             </header>
 
-            {/* Article Content */}
+            {/* Article body */}
             <div
-              className="prose prose-writing dark:prose-invert max-w-prose mb-16"
+              className="prose prose-home dark:prose-invert max-w-none mb-16"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
-            {/* Author Bio */}
-            <div className="border-t border-[var(--border-primary)] pt-10 mb-10">
+            {/* Author bio */}
+            <div className="mb-10" style={{ borderTop: "1px solid var(--home-rule)", paddingTop: "2.5rem" }}>
               <AuthorBio variant="full" />
             </div>
 
             {/* Back link */}
             <div className="pb-8">
-              <a
-                href="/writing"
-                className="text-sm font-medium text-[var(--text-tertiary)] hover:text-[var(--color-primary)] transition-colors"
-              >
+              <a href="/writing" className="home-inline-link">
                 &larr; Back to writing
               </a>
             </div>
           </article>
         </div>
-      </div>
+      </section>
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { IconDownload, IconMail, IconBrandLinkedin, IconPhone } from "@tabler/icons-react";
+import { IconDownload, IconMail, IconBrandLinkedin } from "@tabler/icons-react";
 
 const skillCategories = [
   {
@@ -88,20 +88,21 @@ export default function Resume() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--surface-primary)]">
-      <div className="page-shell page-section">
+    <div className="home-page min-h-screen">
+      <div className="home-shell home-section">
         <motion.div
           className="space-y-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
+          {/* Header panel */}
           <header className="resume-panel">
-            <h1 className="font-bold text-6xl sm:text-7xl lg:text-8xl mb-8 tracking-tighter text-[var(--text-primary)] leading-[0.9]">
-              ISAAC<br />VAZQUEZ
+            <h1 className="home-wordmark mb-6">
+              ISAAC VAZQUEZ
             </h1>
 
-            <div className="mb-6">
+            <div className="mb-5">
               <button
                 onClick={handleDownloadPDF}
                 className="resume-outline-button"
@@ -111,21 +112,27 @@ export default function Resume() {
               </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-6 text-[var(--text-secondary)] text-sm">
-              <span className="flex items-center gap-2">
-                <IconPhone className="w-4 h-4" />
-                (850) 591-0159
-              </span>
+            <div
+              className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-5 text-sm"
+              style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
+            >
+      
               <a
                 href="mailto:IsaacVazquez@berkeley.edu"
-                className="flex items-center gap-2 hover:text-[var(--color-primary)] transition-colors"
+                className="flex items-center gap-2 transition-colors"
+                style={{ color: "var(--home-ink-muted)" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "var(--home-ink)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "var(--home-ink-muted)")}
               >
                 <IconMail className="w-4 h-4" />
                 IsaacVazquez@berkeley.edu
               </a>
               <a
                 href="https://linkedin.com/in/isaac-vazquez"
-                className="flex items-center gap-2 hover:text-[var(--color-primary)] transition-colors"
+                className="flex items-center gap-2 transition-colors"
+                style={{ color: "var(--home-ink-muted)" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "var(--home-ink)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "var(--home-ink-muted)")}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -138,188 +145,205 @@ export default function Resume() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-6"
+                className="mb-5"
               >
-                <div className="inline-block px-6 py-2 border-2 border-[var(--color-primary)] text-[var(--color-primary)] text-sm font-semibold tracking-wide">
-                  Berkeley Haas MBA &apos;27 • Consortium Fellow • MLT Fellow
-                </div>
+                <span className="home-pill">
+                  Berkeley Haas MBA &apos;27 · Consortium Fellow · MLT Fellow
+                </span>
               </motion.div>
             )}
 
-            <p className="mb-0 max-w-3xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-              Product manager with roots in QA, analytics, and operational execution.
-              I work best on products where reliability, measurement, and decision
-              quality all materially shape the outcome.
+            <p className="home-body mb-0 max-w-none">
+              My background spans QA, analytics, and client strategy across six years in civic tech. I&apos;m an MBA candidate at Berkeley Haas pursuing roles in product, growth, strategy, and operations where data-driven execution and cross-functional range are an asset and measurement and 
+  execution both matter.
             </p>
           </header>
 
+          {/* Experience */}
           <section className="resume-panel">
             <h2 className="resume-section-title">
               Experience
             </h2>
 
             <div className="space-y-14">
+              {/* Civitech */}
               <div>
                 <div className="mb-5">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
-                    <h3 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+                    <h3
+                      className="text-3xl sm:text-4xl font-bold tracking-tighter"
+                      style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                    >
                       CIVITECH
                     </h3>
-                    <div className="text-base text-[var(--text-secondary)] mt-2 sm:mt-0">
+                    <div
+                      className="text-base mt-2 sm:mt-0"
+                      style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
+                    >
                       January 2022–August 2025
                     </div>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm italic max-w-3xl">
-                    Austin, TX • Civitech is a SaaS tech company that builds software and tools for political candidates to improve voter engagement
+                  <p
+                    className="text-sm italic max-w-3xl"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
+                    Austin, TX · Civitech is a SaaS tech company that builds software and tools for political candidates to improve voter engagement
                   </p>
                 </div>
 
-                <div className="space-y-8 ml-0 sm:ml-8">
+                <div className="space-y-8 ml-0">
                   <div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4 className="text-xl font-bold text-[var(--text-primary)]">
+                      <h4
+                        className="text-xl font-bold"
+                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                      >
                         Quality Assurance Engineer
                       </h4>
-                      <span className="text-sm text-[var(--text-secondary)] mt-1 sm:mt-0">
+                      <span
+                        className="text-sm mt-1 sm:mt-0"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
                         Feb 2025–Aug 2025
                       </span>
                     </div>
-                    <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
+                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Translated leadership and user feedback into product requirements for RunningMate, a platform that helps political campaigns manage voter engagement, data analytics, and campaign strategy, aligning engineering and product teams</span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span style={{ color: "var(--home-ink-muted)" }}>Translated leadership and user feedback into product requirements for RunningMate, a platform that helps political campaigns manage voter engagement, data analytics, and campaign strategy, aligning engineering and product teams</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Conducted user interviews and analyzed user clickstream data to identify onboarding obstacles and technical challenges, leading to a redesign of product tutorials and first-time user flows that increased activation rates by <span className="font-semibold text-[var(--text-primary)]">25%</span></span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Conducted user interviews and analyzed user clickstream data to identify onboarding obstacles and technical challenges, leading to a redesign of product tutorials and first-time user flows that increased activation rates by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>25%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Built and deployed AI-powered QA and product workflow automation to solve operational challenges, increasing transparency between engineering, product, and client services teams while reducing bug triage time by <span className="font-semibold text-[var(--text-primary)]">40%</span></span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Built and deployed AI-powered QA and product workflow automation to solve operational challenges, increasing transparency between engineering, product, and client services teams while reducing bug triage time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>40%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Designed and implemented structured manual and automated QA testing and planning processes across two core products, accelerating delivery cycles from monthly to biweekly releases and reducing release validation time by <span className="font-semibold text-[var(--text-primary)]">30%</span></span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Designed and implemented structured manual and automated QA testing and planning processes across two core products, accelerating delivery cycles from monthly to biweekly releases and reducing release validation time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>30%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Built a real-time event-generation system in Google Cloud, improving client onboarding and delivering instant access to campaign performance metrics, transitioning clients to a self-service model and reducing onboarding time by <span className="font-semibold text-[var(--text-primary)]">60%</span></span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Built a real-time event-generation system in Google Cloud, improving client onboarding and delivering instant access to campaign performance metrics, transitioning clients to a self-service model and reducing onboarding time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>60%</span></span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="h-px bg-[var(--text-primary)]/5" />
-
                   <div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4 className="text-xl font-bold text-[var(--text-primary)]">
+                      <h4
+                        className="text-xl font-bold"
+                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                      >
                         Quality Assurance Analyst
                       </h4>
-                      <span className="text-sm text-[var(--text-secondary)] mt-1 sm:mt-0">
+                      <span className="text-sm mt-1 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
                         Jan 2022–Jan 2025
                       </span>
                     </div>
-                    <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
+                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Owned product vision for peer-to-peer texting platform by connecting directly with customers to understand pain points and prioritizing features based on quantitative impact assessments that drove a <span className="font-semibold text-[var(--text-primary)]">35%</span> increase in engagement</span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Owned product vision for peer-to-peer texting platform by connecting directly with customers to understand pain points and prioritizing features based on quantitative impact assessments that drove a <span className="font-semibold" style={{ color: "var(--home-ink)" }}>35%</span> increase in engagement</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Generated <span className="font-semibold text-[var(--text-primary)]">$4M</span> in additional revenue by leading a cross-functional pricing strategy initiative, aligning engineering, sales, and finance teams around product value through market analysis, competitor research, and financial modeling</span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Generated <span className="font-semibold" style={{ color: "var(--home-ink)" }}>$4M</span> in additional revenue by leading a cross-functional pricing strategy initiative, aligning engineering, sales, and finance teams around product value through market analysis, competitor research, and financial modeling</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Championed product reliability and release standards, achieving <span className="font-semibold text-[var(--text-primary)]">99.999%</span> uptime, reducing critical defects by <span className="font-semibold text-[var(--text-primary)]">90%</span>, and improving release efficiency by <span className="font-semibold text-[var(--text-primary)]">50%</span> through new deployment rules and strategic test planning and implementation</span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Championed product reliability and release standards, achieving <span className="font-semibold" style={{ color: "var(--home-ink)" }}>99.999%</span> uptime, reducing critical defects by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>90%</span>, and improving release efficiency by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>50%</span> through new deployment rules and strategic test planning and implementation</span>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
 
+              {/* Open Progress */}
               <div>
                 <div className="mb-5">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
-                    <h3 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] tracking-tight">
+                    <h3
+                      className="text-3xl sm:text-4xl font-bold tracking-tighter"
+                      style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                    >
                       OPEN PROGRESS
                     </h3>
-                    <div className="text-base text-[var(--text-secondary)] mt-2 sm:mt-0">
+                    <div className="text-base mt-2 sm:mt-0" style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}>
                       June 2019–December 2021
                     </div>
                   </div>
-                  <p className="text-[var(--text-secondary)] text-sm italic max-w-3xl">
-                    Los Angeles, CA • Consultancy that built digital engagement solutions through innovative peer-to-peer outreach (acquired by Civitech)
+                  <p className="text-sm italic max-w-3xl" style={{ color: "var(--home-ink-muted)" }}>
+                    Los Angeles, CA · Consultancy that built digital engagement solutions through innovative peer-to-peer outreach (acquired by Civitech)
                   </p>
                 </div>
 
-                <div className="space-y-8 ml-0 sm:ml-8">
+                <div className="space-y-8 ml-0">
                   <div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4 className="text-xl font-bold text-[var(--text-primary)]">
+                      <h4 className="text-xl font-bold" style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}>
                         Client Services Manager
                       </h4>
-                      <span className="text-sm text-[var(--text-secondary)] mt-1 sm:mt-0">
+                      <span className="text-sm mt-1 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
                         Jan 2021–Dec 2021
                       </span>
                     </div>
-                    <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
+                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Led client digital and communication strategy by developing data-driven messaging validation and audience sampling frameworks, aligning content with client goals and boosting response rates <span className="font-semibold text-[var(--text-primary)]">20%</span> while scaling outreach to <span className="font-semibold text-[var(--text-primary)]">50M+</span> voters</span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Led client digital and communication strategy by developing data-driven messaging validation and audience sampling frameworks, aligning content with client goals and boosting response rates <span className="font-semibold" style={{ color: "var(--home-ink)" }}>20%</span> while scaling outreach to <span className="font-semibold" style={{ color: "var(--home-ink)" }}>50M+</span> voters</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
                         <span>Analyzed voter behavior and campaign performance to surface high-impact opportunities, presenting findings in client meetings and delivering concise summaries that informed targeting choices and shaped strategic program priorities</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Orchestrated successful delivery of <span className="font-semibold text-[var(--text-primary)]">80+</span> client campaigns by establishing clear milestones and aligning cross-functional teams, achieving <span className="font-semibold text-[var(--text-primary)]">100%</span> on-time delivery while maintaining consistency and performance across multiple channels</span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Orchestrated successful delivery of <span className="font-semibold" style={{ color: "var(--home-ink)" }}>80+</span> client campaigns by establishing clear milestones and aligning cross-functional teams, achieving <span className="font-semibold" style={{ color: "var(--home-ink)" }}>100%</span> on-time delivery while maintaining consistency and performance across multiple channels</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="h-px bg-[var(--text-primary)]/5" />
-
                   <div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4 className="text-xl font-bold text-[var(--text-primary)]">
+                      <h4 className="text-xl font-bold" style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}>
                         Digital and Data Associate
                       </h4>
-                      <span className="text-sm text-[var(--text-secondary)] mt-1 sm:mt-0">
+                      <span className="text-sm mt-1 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
                         Sep 2019–Dec 2020
                       </span>
                     </div>
-                    <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
+                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Automated ETL processes and reporting pipelines, replacing manual spreadsheet workflows with nightly data drops and interactive dashboards (Sisense, Tableau), reducing analysis time by <span className="font-semibold text-[var(--text-primary)]">40%</span></span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Automated ETL processes and reporting pipelines, replacing manual spreadsheet workflows with nightly data drops and interactive dashboards (Sisense, Tableau), reducing analysis time by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>40%</span></span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Leveraged user behavior analytics to optimize segmentation and targeting features across 20+ campaigns, improving conversion rates by <span className="font-semibold text-[var(--text-primary)]">25%</span> and supporter conversion efficiency by <span className="font-semibold text-[var(--text-primary)]">15%</span> through data-driven program enhancements</span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Leveraged user behavior analytics to optimize segmentation and targeting features across 20+ campaigns, improving conversion rates by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>25%</span> and supporter conversion efficiency by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>15%</span> through data-driven program enhancements</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Created compelling visual content for multichannel campaigns including email, SMS, and events, applying design principles and A/B testing to enhance visual appeal and messaging clarity, increasing response rates by <span className="font-semibold text-[var(--text-primary)]">30%</span></span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Created compelling visual content for multichannel campaigns including email, SMS, and events, applying design principles and A/B testing to enhance visual appeal and messaging clarity, increasing response rates by <span className="font-semibold" style={{ color: "var(--home-ink)" }}>30%</span></span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="h-px bg-[var(--text-primary)]/5" />
-
                   <div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
-                      <h4 className="text-xl font-bold text-[var(--text-primary)]">
+                      <h4 className="text-xl font-bold" style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}>
                         Digital and Communications Intern
                       </h4>
-                      <span className="text-sm text-[var(--text-secondary)] mt-1 sm:mt-0">
+                      <span className="text-sm mt-1 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
                         Jun 2019–Aug 2019
                       </span>
                     </div>
-                    <ul className="space-y-3 text-[var(--text-secondary)] text-base leading-relaxed">
+                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-4 mt-1.5 text-[var(--color-primary)] flex-shrink-0">—</span>
-                        <span>Developed data-driven user acquisition strategy by implementing personalized email campaigns and A/B testing frameworks, resulting in <span className="font-semibold text-[var(--text-primary)]">5x</span> growth in user base and <span className="font-semibold text-[var(--text-primary)]">50%</span> increase in conversion rates across client platforms</span>
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Developed data-driven user acquisition strategy by implementing personalized email campaigns and A/B testing frameworks, resulting in <span className="font-semibold" style={{ color: "var(--home-ink)" }}>5x</span> growth in user base and <span className="font-semibold" style={{ color: "var(--home-ink)" }}>50%</span> increase in conversion rates across client platforms</span>
                       </li>
                     </ul>
                   </div>
@@ -328,12 +352,13 @@ export default function Resume() {
             </div>
           </section>
 
+          {/* Education */}
           <section className="resume-panel">
             <h2 className="resume-section-title">
               Education
             </h2>
 
-            <div className="space-y-8 ml-0 sm:ml-8">
+            <div className="space-y-8 ml-0">
               {showMBA && (
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -341,72 +366,73 @@ export default function Resume() {
                 >
                   <div className="mb-6">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
-                      <h3 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
+                      <h3
+                        className="text-2xl sm:text-3xl font-bold tracking-tight"
+                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                      >
                         University of California, Berkeley
                       </h3>
-                      <div className="text-base text-[var(--text-secondary)] mt-2 sm:mt-0">
+                      <div className="text-base mt-2 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
                         May 2027
                       </div>
                     </div>
-                    <p className="text-lg font-semibold text-[var(--color-primary)] mb-4">
+                    <p className="text-lg font-semibold mb-4" style={{ color: "var(--home-haze)" }}>
                       Master of Business Administration
                     </p>
-                    <p className="text-sm text-[var(--text-secondary)] mb-3">
+                    <p className="text-sm mb-3" style={{ color: "var(--home-ink-muted)" }}>
                       Haas School of Business
                     </p>
-                    <ul className="space-y-2 text-[var(--text-secondary)] text-sm leading-relaxed">
+                    <ul className="space-y-2 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
                       <li className="flex items-start">
-                        <span className="mr-3 mt-1 text-[var(--color-primary)] flex-shrink-0">—</span>
+                        <span className="mr-3 mt-1 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
                         <span>Consortium Fellow; Management Leadership for Tomorrow (MLT) Professional Development Fellow; MLT Ambassador</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-3 mt-1 text-[var(--color-primary)] flex-shrink-0">—</span>
+                        <span className="mr-3 mt-1 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
                         <span>VP of Marketing, Haas Tech Club; VP of Admissions, Consortium; Product Management Club, AI Club, Fintech Club</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-3 mt-1 text-[var(--color-primary)] flex-shrink-0">—</span>
+                        <span className="mr-3 mt-1 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
                         <span>Currently leading client project for a global rideshare technology company, driving cross-functional program execution, stakeholder alignment and communication, and operational scaling initiatives across a consulting team</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="h-px bg-[var(--text-primary)]/5 mb-6" />
                 </motion.div>
               )}
 
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] tracking-tight">
+                  <h3
+                    className="text-2xl sm:text-3xl font-bold tracking-tight"
+                    style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                  >
                     Florida State University
                   </h3>
-                  <div className="text-base text-[var(--text-secondary)] mt-2 sm:mt-0">
+                  <div className="text-base mt-2 sm:mt-0" style={{ color: "var(--home-ink-muted)" }}>
                     December 2018
                   </div>
                 </div>
-                <p className="text-base text-[var(--text-secondary)]">
+                <p className="text-base" style={{ color: "var(--home-ink-muted)" }}>
                   Bachelor of Arts, Political Science and International Affairs
                 </p>
               </div>
             </div>
           </section>
 
+          {/* Skills */}
           <section className="resume-panel">
             <h2 className="resume-section-title">
               Skills &amp; Expertise
             </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ml-0 sm:ml-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ml-0">
               {skillCategories.map((category) => (
                 <div key={category.category}>
-                  <h3 className="text-sm font-bold text-[var(--color-primary)] uppercase tracking-wider mb-4">
-                    {category.category}
-                  </h3>
+                  <p className="home-kicker mb-4">{category.category}</p>
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill) => (
-                      <span
-                        key={skill.name}
-                        className="resume-chip"
-                      >
+                      <span key={skill.name} className="resume-chip">
                         {skill.name}
                       </span>
                     ))}
@@ -416,17 +442,15 @@ export default function Resume() {
             </div>
           </section>
 
+          {/* Interests */}
           <section className="resume-panel">
             <h2 className="resume-section-title">
               Interests
             </h2>
 
-            <div className="flex flex-wrap gap-3 ml-0 sm:ml-8">
+            <div className="flex flex-wrap gap-3 ml-0">
               {["FC Barcelona", "Ferrari (F1)", "Big Foodie", "Film & TV Buff", "Travel & Cultural Immersion", "Digital Photography"].map((interest) => (
-                <span
-                  key={interest}
-                  className="resume-chip cursor-default"
-                >
+                <span key={interest} className="resume-chip cursor-default">
                   {interest}
                 </span>
               ))}

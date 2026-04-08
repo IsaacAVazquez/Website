@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { ArrowRight } from "@/components/ui/ServerIcons";
-import { WarmCard } from "@/components/ui/WarmCard";
-import { Badge } from "@/components/ui/Badge";
 import {
   CaseStudyData,
   getProjectCardProblem,
@@ -27,88 +25,141 @@ export function PortfolioProjectCard({
 
   return (
     <Link href={href} className="group block h-full">
-      <WarmCard
-        padding="none"
-        hover
-        className={cn("h-full overflow-hidden", className)}
-      >
-        <div className="flex h-full flex-col p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="section-kicker">Project</span>
-              {showFeaturedBadge && study.featured ? (
-                <Badge variant="default">Featured</Badge>
-              ) : null}
-            </div>
-            <span className="text-right text-xs font-medium uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
-              {study.timeline}
-            </span>
+      <div className={cn("home-card h-full flex flex-col", className)} style={{ padding: "1.5rem" }}>
+        {/* Top row: kicker + timeline */}
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="home-kicker">Project</span>
+            {showFeaturedBadge && study.featured ? (
+              <span className="home-pill">Featured</span>
+            ) : null}
           </div>
+          <span
+            style={{
+              fontFamily: "var(--font-home-sans)",
+              fontSize: "0.72rem",
+              fontWeight: 600,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "var(--home-ink-muted)",
+            }}
+          >
+            {study.timeline}
+          </span>
+        </div>
 
-          <div className="mt-5 flex flex-1 flex-col gap-5">
-            <div className="space-y-3">
-              <h3 className="min-h-[3.5rem] text-xl font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--color-primary)] line-clamp-2">
-                {study.title}
-              </h3>
-              <p className="min-h-[4.75rem] text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-3">
-                {summary}
-              </p>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="surface-muted px-4 py-3">
-                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                  Role
-                </p>
-                <p className="mb-0 min-h-[2.75rem] text-sm leading-relaxed text-[var(--text-primary)] line-clamp-2">
-                  {study.role}
-                </p>
-              </div>
-              <div className="surface-muted px-4 py-3">
-                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                  Outcome
-                </p>
-                <p className="mb-0 min-h-[2.75rem] text-sm leading-relaxed text-[var(--text-primary)] line-clamp-2">
-                  {study.metrics}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex min-h-[2rem] flex-wrap gap-2">
-              {highlightedMetrics.length > 0
-                ? highlightedMetrics.map((metric) => (
-                    <Badge key={metric.label} variant="outline">
-                      {metric.value} {metric.label}
-                    </Badge>
-                  ))
-                : study.tools.slice(0, 2).map((tool) => (
-                    <Badge key={tool} variant="outline">
-                      {tool}
-                    </Badge>
-                  ))}
-            </div>
-
-            <div className="border-t border-[var(--border-primary)] pt-4">
-              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
-                Problem space
-              </p>
-              <p className="mb-0 min-h-[3.5rem] text-sm leading-relaxed text-[var(--text-secondary)] line-clamp-2">
-                {problem}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-5 flex items-center justify-between gap-3 border-t border-[var(--border-primary)] pt-4">
-            <p className="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
-              {study.tools.slice(0, 2).join(" · ")}
+        {/* Main content */}
+        <div className="mt-5 flex flex-1 flex-col gap-5">
+          <div className="space-y-3">
+            <h3
+              className="min-h-[3.5rem] line-clamp-2"
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                fontSize: "1.2rem",
+                fontWeight: 700,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.15,
+                color: "var(--home-ink)",
+              }}
+            >
+              {study.title}
+            </h3>
+            <p
+              className="min-h-[4.75rem] text-sm leading-relaxed line-clamp-3"
+              style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
+            >
+              {summary}
             </p>
-            <div className="flex items-center gap-2 text-sm font-medium text-[var(--color-primary)]">
-              View project
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </div>
+
+          {/* Role + Outcome */}
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div
+              className="px-4 py-3 rounded-xl"
+              style={{
+                background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+                border: "1px solid var(--home-rule)",
+              }}
+            >
+              <p className="home-kicker mb-1">Role</p>
+              <p
+                className="mb-0 min-h-[2.75rem] text-sm leading-relaxed line-clamp-2"
+                style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+              >
+                {study.role}
+              </p>
             </div>
+            <div
+              className="px-4 py-3 rounded-xl"
+              style={{
+                background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+                border: "1px solid var(--home-rule)",
+              }}
+            >
+              <p className="home-kicker mb-1">Outcome</p>
+              <p
+                className="mb-0 min-h-[2.75rem] text-sm leading-relaxed line-clamp-2"
+                style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+              >
+                {study.metrics}
+              </p>
+            </div>
+          </div>
+
+          {/* Metric / tool chips */}
+          <div className="flex min-h-[2rem] flex-wrap gap-2">
+            {highlightedMetrics.length > 0
+              ? highlightedMetrics.map((metric) => (
+                  <span key={metric.label} className="resume-chip">
+                    {metric.value} {metric.label}
+                  </span>
+                ))
+              : study.tools.slice(0, 2).map((tool) => (
+                  <span key={tool} className="resume-chip">
+                    {tool}
+                  </span>
+                ))}
+          </div>
+
+          {/* Problem space */}
+          <div className="pt-4" style={{ borderTop: "1px solid var(--home-rule)" }}>
+            <p className="home-kicker mb-3">Problem space</p>
+            <p
+              className="mb-0 min-h-[3.5rem] text-sm leading-relaxed line-clamp-2"
+              style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
+            >
+              {problem}
+            </p>
           </div>
         </div>
-      </WarmCard>
+
+        {/* Footer row */}
+        <div
+          className="mt-5 flex items-center justify-between gap-3 pt-4"
+          style={{ borderTop: "1px solid var(--home-rule)" }}
+        >
+          <p
+            className="mb-0"
+            style={{
+              fontFamily: "var(--font-home-sans)",
+              fontSize: "0.72rem",
+              fontWeight: 600,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "var(--home-ink-muted)",
+            }}
+          >
+            {study.tools.slice(0, 2).join(" · ")}
+          </p>
+          <div
+            className="flex items-center gap-2 text-sm font-semibold"
+            style={{ color: "var(--home-haze)", fontFamily: "var(--font-home-sans)" }}
+          >
+            View project
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </div>
+        </div>
+      </div>
     </Link>
   );
 }

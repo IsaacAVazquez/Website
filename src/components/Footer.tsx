@@ -22,46 +22,30 @@ const socialLinks = [
 ];
 
 export type FooterVariant = "full" | "compact";
-export type FooterSurface = "default" | "home";
 
 interface FooterProps {
   variant?: FooterVariant;
-  surface?: FooterSurface;
 }
 
-export const Footer = ({ variant = "full", surface = "default" }: FooterProps) => {
+export const Footer = ({ variant = "full" }: FooterProps) => {
   const isCompact = variant === "compact";
-  const isHomeSurface = surface === "home";
 
   return (
     <footer
       role="contentinfo"
       aria-label="Site footer"
       data-footer-variant={variant}
-      data-footer-surface={surface}
-      className={`relative z-20 border-t ${
-        isHomeSurface
-          ? "footer-home"
-          : "border-[var(--border-primary)] bg-[var(--surface-primary)]"
-      }`}
+      className="relative z-20 border-t footer-home"
     >
       <div className={`page-shell ${isCompact ? "py-4 md:py-5" : "py-6 md:py-8"}`}>
         {!isCompact ? (
-          <div className={`section-panel p-8 md:p-10 ${isHomeSurface ? "footer-home-panel" : ""}`}>
+          <div className="section-panel p-8 md:p-10 footer-home-panel">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
               <div className="space-y-4">
-                <h2
-                  className={`max-w-2xl text-3xl font-bold tracking-tight md:text-4xl ${
-                    isHomeSurface ? "footer-home-text-strong" : "text-[var(--text-primary)]"
-                  }`}
-                >
+                <h2 className="max-w-2xl text-3xl font-bold tracking-tight md:text-4xl footer-home-text-strong">
                   Thanks for taking a look.
                 </h2>
-                <p
-                  className={`max-w-2xl text-lg leading-relaxed ${
-                    isHomeSurface ? "footer-home-text" : "text-[var(--text-secondary)]"
-                  }`}
-                >
+                <p className="max-w-2xl text-lg leading-relaxed footer-home-text">
                   If a project stands out, I&apos;d be happy to share more about the
                   work or my background.
                 </p>
@@ -70,14 +54,14 @@ export const Footer = ({ variant = "full", surface = "default" }: FooterProps) =
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/portfolio"
-                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[var(--text-primary)] px-6 py-3 font-medium text-[var(--text-inverse)] transition-colors hover:bg-[var(--neutral-800)]"
+                  className="home-button home-button-primary inline-flex items-center gap-2"
                 >
                   View projects
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-primary)] px-6 py-3 font-medium text-[var(--text-primary)] transition-colors hover:bg-[var(--surface-secondary)]"
+                  className="home-button home-button-secondary inline-flex items-center gap-2"
                 >
                   <Mail className="h-4 w-4" />
                   Get in touch
@@ -88,23 +72,11 @@ export const Footer = ({ variant = "full", surface = "default" }: FooterProps) =
         ) : null}
 
         <div
-          className={`flex flex-col gap-5 border-t border-[var(--border-primary)] pt-6 sm:flex-row sm:items-center sm:justify-between ${
-            isCompact ? "" : "mt-8"
-          }`}
-          style={isHomeSurface ? { borderTopColor: "var(--home-rule)" } : undefined}
+          className={`flex flex-col gap-5 border-t pt-6 sm:flex-row sm:items-center sm:justify-between ${isCompact ? "" : "mt-8"}`}
+          style={{ borderTopColor: "var(--home-rule)" }}
         >
-          <div
-            className={`space-y-1 text-sm ${
-              isHomeSurface ? "footer-home-text" : "text-[var(--text-tertiary)]"
-            }`}
-          >
-            <p
-              className={`font-medium ${
-                isHomeSurface ? "footer-home-text-strong" : "text-[var(--text-primary)]"
-              }`}
-            >
-              Isaac Vazquez
-            </p>
+          <div className="space-y-1 text-sm footer-home-text">
+            <p className="font-medium footer-home-text-strong">Isaac Vazquez</p>
             <p>Building products where clear thinking and reliable execution actually move the needle.</p>
           </div>
 
@@ -117,38 +89,24 @@ export const Footer = ({ variant = "full", surface = "default" }: FooterProps) =
                   aria-label={link.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors ${
-                    isHomeSurface
-                      ? "footer-home-icon"
-                      : "border-[var(--border-primary)] text-[var(--text-tertiary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
-                  }`}
+                  className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors footer-home-icon"
                 >
                   <link.icon size={18} aria-hidden="true" />
                 </a>
               ))}
             </nav>
 
-            <div
-              className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-sm ${
-                isHomeSurface ? "footer-home-text" : "text-[var(--text-tertiary)]"
-              }`}
-            >
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm footer-home-text">
               <span>{new Date().getFullYear()}</span>
               <Link
                 href="/accessibility"
-                className={`transition-colors ${
-                  isHomeSurface ? "hover:text-[var(--home-ink)]" : "hover:text-[var(--text-primary)]"
-                }`}
+                className="transition-colors hover:text-[var(--home-ink)]"
               >
                 Accessibility
               </Link>
               <a
                 href="https://isaacavazquez.com"
-                className={`font-medium transition-colors ${
-                  isHomeSurface
-                    ? "footer-home-text-strong hover:text-[var(--home-haze)]"
-                    : "text-[var(--text-primary)] hover:text-[var(--color-primary)]"
-                }`}
+                className="font-medium transition-colors footer-home-text-strong hover:text-[var(--home-haze)]"
               >
                 isaacavazquez.com
               </a>

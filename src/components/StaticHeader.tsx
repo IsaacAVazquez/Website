@@ -17,7 +17,6 @@ export function StaticHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,24 +40,13 @@ export function StaticHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-300",
-        isScrolled
-          ? cn(
-              "border-b shadow-sm",
-              isHomePage ? "header-home" : "border-[var(--border-primary)]"
-            )
-          : isHomePage
-            ? "header-home"
-            : ""
+        "sticky top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-300 header-home",
+        isScrolled && "border-b shadow-sm"
       )}
       style={{
-        backgroundColor: isHomePage
-          ? isScrolled
-            ? "color-mix(in srgb, var(--home-paper) 88%, transparent)"
-            : "color-mix(in srgb, var(--home-paper) 72%, transparent)"
-          : isScrolled
-            ? "color-mix(in srgb, var(--surface-primary) 92%, transparent)"
-            : "color-mix(in srgb, var(--surface-primary) 78%, transparent)",
+        backgroundColor: isScrolled
+          ? "color-mix(in srgb, var(--home-paper) 88%, transparent)"
+          : "color-mix(in srgb, var(--home-paper) 72%, transparent)",
         backdropFilter: "blur(16px)",
       }}
     >
@@ -66,12 +54,7 @@ export function StaticHeader() {
         <div className="flex min-h-[72px] items-center justify-between gap-4 py-3">
           <Link
             href="/"
-            className={cn(
-              "min-h-[44px] rounded-xl px-1 py-1 transition-colors",
-              isHomePage
-                ? "header-home-brand hover:text-[var(--home-haze)]"
-                : "text-lg font-semibold tracking-tight text-[var(--text-primary)] hover:text-[var(--color-primary)]"
-            )}
+            className="header-home-brand min-h-[44px] rounded-xl px-1 py-1 transition-colors hover:text-[var(--home-haze)]"
             onClick={closeMobileMenu}
           >
             Isaac Vazquez
@@ -87,16 +70,7 @@ export function StaticHeader() {
                     <Link
                       href={link.href}
                       aria-current={active ? "page" : undefined}
-                      className={cn(
-                        "inline-flex min-h-[44px] items-center px-4 py-2 transition-colors",
-                        isHomePage
-                          ? "header-home-link"
-                          : "rounded-full text-sm font-medium",
-                        !isHomePage &&
-                          (active
-                            ? "bg-[var(--surface-secondary)] text-[var(--text-primary)]"
-                            : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]")
-                      )}
+                      className="inline-flex min-h-[44px] items-center px-4 py-2 header-home-link"
                     >
                       {link.label}
                     </Link>
@@ -105,38 +79,19 @@ export function StaticHeader() {
               })}
             </ul>
 
-            <div
-              className={cn(
-                "flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border",
-                isHomePage
-                  ? "header-home-control"
-                  : "border-[var(--border-primary)] bg-[var(--surface-primary)]"
-              )}
-            >
+            <div className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border header-home-control">
               <DeferredThemeToggle />
             </div>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
-            <div
-              className={cn(
-                "flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border",
-                isHomePage
-                  ? "header-home-control"
-                  : "border-[var(--border-primary)] bg-[var(--surface-primary)]"
-              )}
-            >
+            <div className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border header-home-control">
               <DeferredThemeToggle />
             </div>
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen((current) => !current)}
-              className={cn(
-                "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors",
-                isHomePage
-                  ? "header-home-control text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
-                  : "border-[var(--border-primary)] bg-[var(--surface-primary)] text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]"
-              )}
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border transition-colors header-home-control text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
               aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -155,14 +110,7 @@ export function StaticHeader() {
         )}
       >
         <div className="page-shell pb-5">
-          <div
-            className={cn(
-              "rounded-2xl border p-3 shadow-sm",
-              isHomePage
-                ? "header-home-menu"
-                : "border-[var(--border-primary)] bg-[var(--surface-primary)]"
-            )}
-          >
+          <div className="rounded-2xl border p-3 shadow-sm header-home-menu">
             <ul className="space-y-1" aria-label="Mobile navigation">
               {navLinks.map((link) => {
                 const active = isRouteActive(pathname, link.href);
@@ -174,17 +122,10 @@ export function StaticHeader() {
                       aria-current={active ? "page" : undefined}
                       onClick={closeMobileMenu}
                       className={cn(
-                        "flex min-h-[48px] items-center gap-3 rounded-xl px-4 py-3 transition-colors",
-                        isHomePage
-                          ? cn(
-                              "header-home-mobile-link",
-                              active
-                                ? "bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
-                                : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-                            )
-                          : active
-                            ? "text-base font-medium bg-[var(--surface-secondary)] text-[var(--text-primary)]"
-                            : "text-base font-medium text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
+                        "flex min-h-[48px] items-center gap-3 rounded-xl px-4 py-3 transition-colors header-home-mobile-link",
+                        active
+                          ? "bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                          : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                       )}
                     >
                       <link.icon className="h-5 w-5 shrink-0" />
@@ -202,10 +143,7 @@ export function StaticHeader() {
         <button
           type="button"
           aria-hidden="true"
-          className={cn(
-            "fixed inset-0 z-[-1] lg:hidden",
-            isHomePage ? "bg-[var(--home-overlay)]" : "bg-[var(--surface-overlay)]"
-          )}
+          className="fixed inset-0 z-[-1] lg:hidden bg-[var(--home-overlay)]"
           onClick={closeMobileMenu}
           tabIndex={-1}
         />

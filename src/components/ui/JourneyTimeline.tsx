@@ -1,15 +1,12 @@
 "use client";
 
-import { WarmCard } from "./WarmCard";
-import { Heading } from "./Heading";
 import { careerTimeline } from "@/constants/personal";
 import Image from "next/image";
 import {
   IconBriefcase,
   IconSchool,
   IconTrendingUp,
-  IconCode,
-  IconRocket
+  IconRocket,
 } from "@tabler/icons-react";
 
 interface TimelineItemProps {
@@ -20,91 +17,88 @@ interface TimelineItemProps {
 const TimelineItem = ({ item, isLast }: TimelineItemProps) => {
   const getIcon = () => {
     const company = item.company.toLowerCase();
-    if (company.includes('florida state')) return IconSchool;
-    if (company.includes('open progress')) return IconTrendingUp;
-    if (company.includes('civitech')) return IconBriefcase;
-    if (company.includes('berkeley') || company.includes('haas')) return IconRocket;
+    if (company.includes("florida state")) return IconSchool;
+    if (company.includes("open progress")) return IconTrendingUp;
+    if (company.includes("berkeley") || company.includes("haas")) return IconRocket;
     return IconBriefcase;
   };
 
   const Icon = getIcon();
 
   return (
-    <div className="relative flex items-start gap-6 group">
-      {/* Timeline line */}
-      <div className="relative flex flex-col items-center">
-        {/* Year badge with logo */}
-        <div className="relative z-10 w-16 h-16 rounded-full bg-[var(--surface-elevated)] p-2 mb-4 border-2 border-[var(--border-primary)]">
+    <div className="flex gap-6">
+      {/* Left: logo + connecting line */}
+      <div className="flex flex-col items-center flex-shrink-0">
+        <div
+          className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0"
+          style={{
+            background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+            border: "1px solid var(--home-rule)",
+          }}
+        >
           {item.logo ? (
-            <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden bg-[var(--surface-elevated)]">
-              <Image
-                src={item.logo}
-                alt={`${item.company} logo`}
-                width={48}
-                height={48}
-                className="object-contain"
-              />
-            </div>
+            <Image
+              src={item.logo}
+              alt={`${item.company} logo`}
+              width={36}
+              height={36}
+              className="object-contain"
+            />
           ) : (
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center">
-              <Icon className="w-6 h-6 text-white" />
-            </div>
+            <Icon className="w-5 h-5" style={{ color: "var(--home-ink-muted)" }} />
           )}
         </div>
-
-        {/* Vertical line */}
         {!isLast && (
-          <div className="w-0.5 h-32 bg-gradient-to-b from-[var(--color-primary)]/50 to-transparent" />
+          <div
+            className="w-px flex-1 my-2"
+            style={{ background: "var(--home-rule)" }}
+          />
         )}
       </div>
 
-      {/* Content */}
-      <div className="flex-1 pb-8">
-        <WarmCard hover={true} padding="lg">
-          <div>
-            {/* Header */}
-            <div className="flex items-start mb-4">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-xl font-bold text-[var(--color-primary)]">
-                    {item.role}
-                  </h3>
-                  <div className="text-sm text-[var(--text-tertiary)] font-mono">
-                    {item.year}
-                  </div>
-                </div>
-                <div className="text-lg font-semibold text-[var(--text-primary)] mb-2">
-                  {item.company}
-                </div>
-              </div>
-            </div>
-
-            {/* Description */}
-            <p className="text-[var(--text-secondary)] mb-4 leading-relaxed">
-              {item.description}
-            </p>
-
-            {/* Tech Stack */}
-            <div className="mb-4">
-              <div className="flex items-center gap-2 mb-2">
-                <IconCode className="w-4 h-4 text-[var(--color-primary)]" />
-                <span className="text-sm font-semibold text-[var(--color-primary)]">
-                  Tech Stack
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {item.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 text-xs rounded-full bg-[var(--surface-secondary)] border border-[var(--color-primary)]/30 text-[var(--color-primary)] font-mono"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </WarmCard>
+      {/* Right: content */}
+      <div className="flex-1 pb-10">
+        <p className="home-kicker mb-1">{item.year}</p>
+        <h3
+          className="font-bold mb-0.5"
+          style={{
+            fontFamily: "var(--font-home-sans)",
+            fontSize: "1.1rem",
+            letterSpacing: "-0.02em",
+            color: "var(--home-ink)",
+          }}
+        >
+          {item.role}
+        </h3>
+        <p
+          className="mb-3"
+          style={{
+            fontFamily: "var(--font-home-sans)",
+            fontSize: "0.88rem",
+            fontWeight: 600,
+            color: "var(--home-ink-muted)",
+          }}
+        >
+          {item.company}
+        </p>
+        <p
+          className="mb-4"
+          style={{
+            fontFamily: "var(--font-home-sans)",
+            fontSize: "0.95rem",
+            lineHeight: 1.65,
+            color: "var(--home-ink-muted)",
+          }}
+        >
+          {item.description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {item.techStack.map((tech) => (
+            <span key={tech} className="resume-chip">
+              {tech}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -113,33 +107,22 @@ const TimelineItem = ({ item, isLast }: TimelineItemProps) => {
 export function JourneyTimeline() {
   return (
     <div className="max-w-5xl mx-auto">
-      <WarmCard hover={true} padding="xl">
-        <div className="space-y-10">
-          {/* Header */}
-          <div className="text-center">
-            <Heading level={2} className="text-[var(--color-primary)] text-2xl lg:text-3xl mb-6">
-              Career Journey
-            </Heading>
-            <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed max-w-3xl mx-auto">
-              I started in political science, moved into data and campaign work, and found my way to product through quality engineering. Here's how that path unfolded.
-            </p>
-          </div>
+      <div className="home-card home-project-card space-y-5">
+        <p className="home-kicker">Journey</p>
+        <p className="home-body max-w-none">
+          I started in political science, moved into data and campaign work, and found my way to product through quality engineering. Here&apos;s how that path unfolded.
+        </p>
 
-          {/* Timeline */}
-          <div className="relative">
-            {/* Timeline items */}
-            <div className="relative space-y-4">
-              {careerTimeline.map((item, index) => (
-                <TimelineItem
-                  key={`${item.year}-${item.role}`}
-                  item={item}
-                  isLast={index === careerTimeline.length - 1}
-                />
-              ))}
-            </div>
-          </div>
+        <div className="pt-2">
+          {careerTimeline.map((item, index) => (
+            <TimelineItem
+              key={`${item.year}-${item.role}`}
+              item={item}
+              isLast={index === careerTimeline.length - 1}
+            />
+          ))}
         </div>
-      </WarmCard>
+      </div>
     </div>
   );
 }
