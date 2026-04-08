@@ -1,10 +1,8 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, type CSSProperties } from "react";
+import { startTransition, useEffect, useMemo, type CSSProperties, type ReactNode } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { BarChart3, TrendingUp, TrendingDown, Minus, Users, MapPin, Award } from "lucide-react";
-import { SectionIntro } from "@/components/ui/SectionIntro";
-import { SurfaceCard, StatCard, MetricCard, InfoChip } from "@/components/football";
 import type { PollingRouteState, PollingSnapshot, PollingView, Race, RacePoll } from "@/types/polling";
 import {
   buildPollingHref,
@@ -21,9 +19,7 @@ import {
   formatMargin,
   formatNet,
   partyColor,
-  partyLabel,
   getRatingPillStyle,
-  getActiveViewStyle,
   getRowStyle,
   buildPolyline,
   DEM_COLOR,
@@ -33,6 +29,32 @@ import {
 interface Props {
   initialState: PollingRouteState;
   snapshot: PollingSnapshot;
+}
+
+// ─── Local stat/metric cards (home-token equivalents) ──────────────────────────
+
+function PollingStatCard({ eyebrow, metric, detail, icon }: {
+  eyebrow: string; metric: string; detail: string; icon: ReactNode;
+}) {
+  return (
+    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-4 py-4">
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">{eyebrow}</p>
+        <span className="text-[var(--home-ink-muted)]">{icon}</span>
+      </div>
+      <p className="mt-3 text-lg font-semibold text-[var(--home-ink)]">{metric}</p>
+      <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">{detail}</p>
+    </div>
+  );
+}
+
+function PollingMetricCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] p-4">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">{label}</p>
+      <p className="mt-2 text-xl font-bold text-[var(--home-ink)]">{value}</p>
+    </div>
+  );
 }
 
 // ─── Trend chart (SVG) ─────────────────────────────────────────────────────────
@@ -63,8 +85,8 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
           const y = PAD + ((maxVal - val) / (maxVal - minVal)) * (H - PAD * 2);
           return (
             <g key={val}>
-              <line x1={PAD} y1={y} x2={W - PAD} y2={y} stroke="var(--border-primary)" strokeWidth={1} strokeDasharray="3 3" />
-              <text x={PAD - 4} y={y + 4} textAnchor="end" fontSize={10} fill="var(--text-tertiary)">{val}%</text>
+              <line x1={PAD} y1={y} x2={W - PAD} y2={y} stroke="var(--home-rule)" strokeWidth={1} strokeDasharray="3 3" />
+              <text x={PAD - 4} y={y + 4} textAnchor="end" fontSize={10} fill="var(--home-ink-muted)">{val}%</text>
             </g>
           );
         })}
@@ -100,7 +122,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
         {trend.map((d, i) => {
           const x = PAD + (i / (trend.length - 1)) * (W - PAD * 2);
           return (
-            <text key={d.date} x={x} y={H + 20} textAnchor="middle" fontSize={10} fill="var(--text-tertiary)">
+            <text key={d.date} x={x} y={H + 20} textAnchor="middle" fontSize={10} fill="var(--home-ink-muted)">
               {formatShortDate(d.date)}
             </text>
           );
@@ -108,7 +130,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
       </svg>
 
       {/* Legend */}
-      <div className="mt-2 flex items-center gap-6 text-xs text-[var(--text-secondary)]">
+      <div className="mt-2 flex items-center gap-6 text-xs text-[var(--home-ink-muted)]">
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-2 w-6 rounded-full" style={{ background: DEM_COLOR }} />
           Approve
@@ -157,7 +179,7 @@ function RaceRow({
 
   return (
     <tr
-      className="cursor-pointer border border-[var(--border-primary)] transition-colors"
+      className="cursor-pointer border border-[var(--home-rule)] transition-colors"
       style={getRowStyle(isSelected)}
       onClick={onClick}
       aria-selected={isSelected}
@@ -169,12 +191,12 @@ function RaceRow({
           onClick={(e) => { e.stopPropagation(); onClick(); }}
           aria-label={`Show ${race.state} ${race.office} race`}
         >
-          <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--surface-primary)] text-xs font-bold border border-[var(--border-primary)] text-[var(--text-secondary)]">
+          <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-xs font-bold border border-[var(--home-rule)] text-[var(--home-ink-muted)]">
             {race.stateAbbr}
           </span>
           <div>
-            <p className="text-sm font-semibold text-[var(--text-primary)] leading-tight">{race.state}</p>
-            <p className="text-xs text-[var(--text-tertiary)]">{race.office}{race.openSeat ? " · Open" : ""}</p>
+            <p className="text-sm font-semibold text-[var(--home-ink)] leading-tight">{race.state}</p>
+            <p className="text-xs text-[var(--home-ink-muted)]">{race.office}{race.openSeat ? " · Open" : ""}</p>
           </div>
         </button>
       </td>
@@ -187,14 +209,14 @@ function RaceRow({
         </span>
       </td>
       <td className="hidden px-3 py-3 align-middle sm:table-cell">
-        <div className="flex h-2.5 w-24 overflow-hidden rounded-full bg-[var(--surface-primary)]">
+        <div className="flex h-2.5 w-24 overflow-hidden rounded-full bg-[var(--home-paper)]">
           <div style={{ width: `${race.demAvg}%`, background: DEM_COLOR }} className="h-full" />
         </div>
       </td>
       <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: leadColor }}>
         {race.marginLabel}
       </td>
-      <td className="hidden rounded-r-2xl px-3 py-3 align-middle text-xs text-[var(--text-tertiary)] md:table-cell">
+      <td className="hidden rounded-r-2xl px-3 py-3 align-middle text-xs text-[var(--home-ink-muted)] md:table-cell">
         {formatDate(race.lastPolled)}
       </td>
     </tr>
@@ -209,13 +231,13 @@ function RaceSidebar({ race }: { race: Race }) {
   );
 
   return (
-    <section className="section-panel p-5 sm:p-6 space-y-5" aria-live="polite">
+    <section className="home-card space-y-5" style={{ padding: "1.25rem 1.5rem" }} aria-live="polite">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
             {race.office} race
           </p>
-          <h2 className="mt-1 text-2xl font-bold text-[var(--text-primary)]">{race.state}</h2>
+          <h2 className="mt-1 text-2xl font-bold text-[var(--home-ink)]">{race.state}</h2>
         </div>
         <span
           className="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-semibold flex-shrink-0 mt-1"
@@ -226,16 +248,16 @@ function RaceSidebar({ race }: { race: Race }) {
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <MetricCard label="Dem. avg" value={`${race.demAvg.toFixed(1)}%`} />
-        <MetricCard label="Rep. avg" value={`${race.repAvg.toFixed(1)}%`} />
-        <MetricCard label="Margin" value={race.marginLabel} />
-        <MetricCard label="Polls" value={String(race.pollCount)} />
+        <PollingMetricCard label="Dem. avg" value={`${race.demAvg.toFixed(1)}%`} />
+        <PollingMetricCard label="Rep. avg" value={`${race.repAvg.toFixed(1)}%`} />
+        <PollingMetricCard label="Margin" value={race.marginLabel} />
+        <PollingMetricCard label="Polls" value={String(race.pollCount)} />
       </div>
 
       <GenericBallotBar dem={race.demAvg} rep={race.repAvg} />
 
       <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
           Recent polls
         </p>
         <div className="space-y-3">
@@ -246,10 +268,10 @@ function RaceSidebar({ race }: { race: Race }) {
             return (
               <div
                 key={poll.id}
-                className="rounded-xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-3 text-sm"
+                className="rounded-xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] p-3 text-sm"
               >
                 <div className="flex items-start justify-between gap-2">
-                  <p className="font-semibold text-[var(--text-primary)] leading-tight">{poll.pollster}</p>
+                  <p className="font-semibold text-[var(--home-ink)] leading-tight">{poll.pollster}</p>
                   <span
                     className="text-xs font-bold flex-shrink-0"
                     style={{ color: margin === 0 ? "#D97706" : margin > 0 ? DEM_COLOR : REP_COLOR }}
@@ -257,7 +279,7 @@ function RaceSidebar({ race }: { race: Race }) {
                     {formatMargin(margin)}
                   </span>
                 </div>
-                <p className="mt-0.5 text-xs text-[var(--text-tertiary)]">
+                <p className="mt-0.5 text-xs text-[var(--home-ink-muted)]">
                   {formatDate(poll.endDate)} · {poll.sampleSize.toLocaleString()} {poll.sampleType} · ±{poll.moe}
                 </p>
                 <div className="mt-2 flex flex-wrap gap-2">
@@ -267,8 +289,8 @@ function RaceSidebar({ race }: { race: Race }) {
                       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium border"
                       style={{
                         color: partyColor(c.party),
-                        borderColor: `color-mix(in srgb, ${partyColor(c.party)} 30%, var(--border-primary))`,
-                        background: `color-mix(in srgb, ${partyColor(c.party)} 8%, var(--surface-secondary))`,
+                        borderColor: `color-mix(in srgb, ${partyColor(c.party)} 30%, var(--home-rule))`,
+                        background: `color-mix(in srgb, ${partyColor(c.party)} 8%, color-mix(in srgb, var(--home-paper-alt) 80%, white))`,
                       }}
                     >
                       {c.name.split(" ").pop()} {c.support}%{c.incumbent ? " ★" : ""}
@@ -294,7 +316,7 @@ function ApprovalPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
     <div className="overflow-x-auto">
       <table className="min-w-full border-separate border-spacing-y-2" aria-label="Presidential approval polls">
         <thead>
-          <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+          <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
             <th className="px-3 py-2 font-semibold">Pollster</th>
             <th className="px-3 py-2 font-semibold">Date</th>
             <th className="hidden px-3 py-2 font-semibold sm:table-cell">Sample</th>
@@ -309,16 +331,16 @@ function ApprovalPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
             return (
               <tr
                 key={poll.id}
-                className="border border-[var(--border-primary)] bg-[var(--surface-secondary)]"
+                className="border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)]"
               >
                 <td className="rounded-l-2xl px-3 py-3 align-middle">
-                  <p className="text-sm font-semibold text-[var(--text-primary)]">{poll.pollster}</p>
-                  {poll.sponsor && <p className="text-xs text-[var(--text-tertiary)]">{poll.sponsor}</p>}
+                  <p className="text-sm font-semibold text-[var(--home-ink)]">{poll.pollster}</p>
+                  {poll.sponsor && <p className="text-xs text-[var(--home-ink-muted)]">{poll.sponsor}</p>}
                 </td>
-                <td className="px-3 py-3 align-middle text-sm text-[var(--text-secondary)]">
+                <td className="px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)]">
                   {formatDate(poll.endDate)}
                 </td>
-                <td className="hidden px-3 py-3 align-middle text-xs text-[var(--text-tertiary)] sm:table-cell">
+                <td className="hidden px-3 py-3 align-middle text-xs text-[var(--home-ink-muted)] sm:table-cell">
                   {poll.sampleSize.toLocaleString()} {poll.sampleType}
                 </td>
                 <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: DEM_COLOR }}>
@@ -352,7 +374,7 @@ function GenericBallotPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
     <div className="overflow-x-auto">
       <table className="min-w-full border-separate border-spacing-y-2" aria-label="Generic ballot polls">
         <thead>
-          <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+          <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
             <th className="px-3 py-2 font-semibold">Pollster</th>
             <th className="px-3 py-2 font-semibold">Date</th>
             <th className="hidden px-3 py-2 font-semibold sm:table-cell">Sample</th>
@@ -367,15 +389,15 @@ function GenericBallotPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
             return (
               <tr
                 key={poll.id}
-                className="border border-[var(--border-primary)] bg-[var(--surface-secondary)]"
+                className="border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)]"
               >
                 <td className="rounded-l-2xl px-3 py-3 align-middle">
-                  <p className="text-sm font-semibold text-[var(--text-primary)]">{poll.pollster}</p>
+                  <p className="text-sm font-semibold text-[var(--home-ink)]">{poll.pollster}</p>
                 </td>
-                <td className="px-3 py-3 align-middle text-sm text-[var(--text-secondary)]">
+                <td className="px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)]">
                   {formatDate(poll.endDate)}
                 </td>
-                <td className="hidden px-3 py-3 align-middle text-xs text-[var(--text-tertiary)] sm:table-cell">
+                <td className="hidden px-3 py-3 align-middle text-xs text-[var(--home-ink-muted)] sm:table-cell">
                   {poll.sampleSize.toLocaleString()} {poll.sampleType}
                 </td>
                 <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: DEM_COLOR }}>
@@ -418,10 +440,10 @@ function RacesPanel({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,1fr)]">
-      <section className="section-panel p-5 sm:p-6">
-        <div className="flex items-center justify-between border-b border-[var(--border-primary)] pb-4">
-          <h2 className="text-lg font-bold text-[var(--text-primary)]">{label} Races</h2>
-          <span className="text-sm text-[var(--text-secondary)]">{races.length} tracked</span>
+      <section className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
+        <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
+          <h2 className="text-lg font-bold text-[var(--home-ink)]">{label} Races</h2>
+          <span className="text-sm text-[var(--home-ink-muted)]">{races.length} tracked</span>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-3 text-xs">
@@ -442,7 +464,7 @@ function RacesPanel({
         <div className="mt-6 overflow-x-auto">
           <table className="min-w-full border-separate border-spacing-y-2" aria-label={`${label} race ratings`}>
             <thead>
-              <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+              <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                 <th className="px-3 py-2 font-semibold">State</th>
                 <th className="px-3 py-2 font-semibold">Rating</th>
                 <th className="hidden px-3 py-2 font-semibold sm:table-cell">Avg. lead</th>
@@ -489,29 +511,25 @@ function OverviewPanel({ snapshot }: { snapshot: PollingSnapshot }) {
     <div className="space-y-8">
       {/* Summary stat cards */}
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard
-          variant="compact"
+        <PollingStatCard
           eyebrow="Approval net"
           metric={formatNet(approvalNet)}
           detail={`${snapshot.approvalAvg.approve.toFixed(1)}% approve · ${snapshot.approvalAvg.disapprove.toFixed(1)}% disapprove`}
           icon={<NetIcon className="h-4 w-4" style={netColor} />}
         />
-        <StatCard
-          variant="compact"
+        <PollingStatCard
           eyebrow="Generic ballot"
           metric={formatMargin(ballotMargin)}
           detail={`Dem. ${snapshot.genericBallotAvg.dem.toFixed(1)}% vs Rep. ${snapshot.genericBallotAvg.rep.toFixed(1)}%`}
           icon={<BarChart3 className="h-4 w-4" />}
         />
-        <StatCard
-          variant="compact"
+        <PollingStatCard
           eyebrow="Senate toss-ups"
           metric={String(senateCounts.tossup)}
           detail={`D+${senateCounts.demLeading} leading · R+${senateCounts.repLeading} leading`}
           icon={<Users className="h-4 w-4" />}
         />
-        <StatCard
-          variant="compact"
+        <PollingStatCard
           eyebrow="Days to election"
           metric={daysToElection > 0 ? String(daysToElection) : "Election day"}
           detail="Nov 3, 2026 midterms"
@@ -520,31 +538,31 @@ function OverviewPanel({ snapshot }: { snapshot: PollingSnapshot }) {
       </div>
 
       {/* Approval trend mini */}
-      <div className="grid gap-6 lg:grid-cols-2">
-        <SurfaceCard className="p-5 sm:p-6">
-          <div className="border-b border-[var(--border-primary)] pb-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Approval trend</p>
-            <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Presidential approval</h3>
+      <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">
+        <div className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
+          <div className="border-b border-[var(--home-rule)] pb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">Approval trend</p>
+            <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Presidential approval</h3>
           </div>
           <div className="mt-4">
             <TrendChart snapshot={snapshot} />
           </div>
-        </SurfaceCard>
+        </div>
 
-        <SurfaceCard className="p-5 sm:p-6">
-          <div className="border-b border-[var(--border-primary)] pb-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">2026 generic ballot</p>
-            <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Congressional preference</h3>
+        <div className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
+          <div className="border-b border-[var(--home-rule)] pb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">2026 generic ballot</p>
+            <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Congressional preference</h3>
           </div>
           <div className="mt-6 space-y-4">
             <GenericBallotBar dem={snapshot.genericBallotAvg.dem} rep={snapshot.genericBallotAvg.rep} />
-            <p className="text-xs text-[var(--text-tertiary)]">
+            <p className="text-xs text-[var(--home-ink-muted)]">
               Average of {snapshot.genericBallotPolls.length} polls. Voters asked which party they prefer for Congress.
             </p>
           </div>
 
-          <div className="mt-6 border-t border-[var(--border-primary)] pt-4">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Senate race map</p>
+          <div className="mt-6 border-t border-[var(--home-rule)] pt-4">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">Senate race map</p>
             <div className="flex flex-wrap gap-2">
               {sortRacesByCompetitiveness(snapshot.senateRaces).map((race) => (
                 <span
@@ -559,22 +577,22 @@ function OverviewPanel({ snapshot }: { snapshot: PollingSnapshot }) {
               ))}
             </div>
           </div>
-        </SurfaceCard>
+        </div>
       </div>
 
       {/* Governor overview */}
-      <SurfaceCard className="p-5 sm:p-6">
-        <div className="border-b border-[var(--border-primary)] pb-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Governor races</p>
-          <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Key 2026 governor contests</h3>
+      <div className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
+        <div className="border-b border-[var(--home-rule)] pb-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">Governor races</p>
+          <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Key 2026 governor contests</h3>
         </div>
-        <div className="mt-4 flex flex-wrap gap-3">
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
           {sortRacesByCompetitiveness(snapshot.governorRaces).map((race) => (
             <div
               key={race.id}
-              className="flex items-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2"
+              className="flex items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-2"
             >
-              <span className="text-sm font-semibold text-[var(--text-primary)]">{race.state}</span>
+              <span className="text-sm font-semibold text-[var(--home-ink)]">{race.state}</span>
               <span
                 className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold"
                 style={getRatingPillStyle(race.rating)}
@@ -590,12 +608,12 @@ function OverviewPanel({ snapshot }: { snapshot: PollingSnapshot }) {
             </div>
           ))}
         </div>
-        <div className="mt-3 flex gap-4 text-xs text-[var(--text-tertiary)]">
+        <div className="mt-3 flex gap-4 text-xs text-[var(--home-ink-muted)]">
           <span>D leading: {govCounts.demLeading}</span>
           <span>Toss-up: {govCounts.tossup}</span>
           <span>R leading: {govCounts.repLeading}</span>
         </div>
-      </SurfaceCard>
+      </div>
     </div>
   );
 }
@@ -638,45 +656,59 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
   const lastUpdated = useMemo(() => formatUpdated(snapshot.generatedAt), [snapshot.generatedAt]);
 
   return (
-    <section className="page-section relative overflow-hidden bg-[var(--surface-primary)]">
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[26rem] opacity-80"
-        style={{
-          background:
-            "radial-gradient(circle at top, color-mix(in srgb, var(--color-primary) 14%, transparent), transparent 56%)",
-        }}
-      />
-
-      <div className="page-shell relative space-y-8 sm:space-y-10">
-        {/* Hero panel */}
-        <div className="section-panel p-6 sm:p-8 lg:p-10">
-          <SectionIntro
-            eyebrow="Political Data Tool"
-            size="lg"
-            title="Polling Aggregator"
-            description="Aggregated presidential approval, generic ballot averages, and key 2026 Senate and governor race polls — updated from public pollsters."
-          />
-          <div className="mt-6 flex flex-wrap gap-3">
-            <InfoChip label="2026 Midterms" />
-            <InfoChip label={`Updated ${lastUpdated}`} />
-            <InfoChip label={snapshot.sourceLabel} />
-            <InfoChip label={`${snapshot.approvalPolls.length + snapshot.genericBallotPolls.length} polls tracked`} />
+    <section className="home-page min-h-screen">
+      <div className="home-shell home-section space-y-8">
+        {/* Page heading */}
+        <div className="space-y-3 pt-4">
+          <p className="home-kicker">Political Data Tool</p>
+          <h1
+            style={{
+              fontFamily: "var(--font-home-sans)",
+              fontSize: "clamp(2.6rem, 6vw, 5rem)",
+              fontWeight: 600,
+              lineHeight: 0.94,
+              letterSpacing: "-0.07em",
+              color: "var(--home-ink)",
+            }}
+          >
+            Polling Aggregator
+          </h1>
+          <p className="home-body max-w-none">
+            Aggregated presidential approval, generic ballot averages, and key 2026 Senate and governor race polls — updated from public pollsters.
+          </p>
+          <div className="flex flex-wrap gap-2 pt-2">
+            {["2026 Midterms", `Updated ${lastUpdated}`, snapshot.sourceLabel, `${snapshot.approvalPolls.length + snapshot.genericBallotPolls.length} polls tracked`].map((label) => (
+              <span key={label} className="resume-chip">{label}</span>
+            ))}
           </div>
         </div>
 
         {/* View tabs */}
-        <div className="flex flex-wrap gap-2">
+        <div
+          className="flex flex-wrap gap-2 rounded-[1.5rem] p-2"
+          style={{
+            border: "1px solid var(--home-rule)",
+            background: "color-mix(in srgb, var(--home-paper-alt) 90%, white)",
+            width: "fit-content",
+          }}
+        >
           {POLLING_VIEW_OPTIONS.map((key) => (
             <button
               key={key}
               type="button"
               onClick={() => handleViewChange(key)}
               aria-pressed={key === routeState.view}
-              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
-              style={getActiveViewStyle(key === routeState.view)}
+              className="inline-flex min-h-[44px] items-center rounded-xl px-5 py-2 text-sm font-semibold transition-colors"
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                fontSize: "0.88rem",
+                letterSpacing: "0.02em",
+                ...(key === routeState.view
+                  ? { background: "var(--home-ink)", color: "var(--home-paper)" }
+                  : { color: "var(--home-ink-muted)" }),
+              }}
             >
-              <span className="text-[var(--text-primary)]">{POLLING_VIEW_LABELS[key]}</span>
+              {POLLING_VIEW_LABELS[key]}
             </button>
           ))}
         </div>
@@ -686,40 +718,42 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
 
         {routeState.view === "approval" && (
           <div className="space-y-6">
-            <SurfaceCard className="p-5 sm:p-6">
-              <div className="border-b border-[var(--border-primary)] pb-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Monthly averages</p>
-                <h2 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Approval trend</h2>
+            <div className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
+              <div className="border-b border-[var(--home-rule)] pb-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">Monthly averages</p>
+                <h2 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Approval trend</h2>
               </div>
               <div className="mt-4">
                 <TrendChart snapshot={snapshot} />
               </div>
-            </SurfaceCard>
+            </div>
 
-            <SurfaceCard className="p-5 sm:p-6">
-              <div className="border-b border-[var(--border-primary)] pb-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Recent polls</p>
-                <h2 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">
-                  Presidential approval · {snapshot.approvalAvg.approve.toFixed(1)}% avg
-                </h2>
+            <div className="grid gap-6 lg:grid-cols-[3fr_2fr]">
+              <div className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
+                <div className="border-b border-[var(--home-rule)] pb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">Recent polls</p>
+                  <h2 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
+                    Presidential approval · {snapshot.approvalAvg.approve.toFixed(1)}% avg
+                  </h2>
+                </div>
+                <div className="mt-4">
+                  <ApprovalPollsTable snapshot={snapshot} />
+                </div>
               </div>
-              <div className="mt-4">
-                <ApprovalPollsTable snapshot={snapshot} />
-              </div>
-            </SurfaceCard>
 
-            <SurfaceCard className="p-5 sm:p-6">
-              <div className="border-b border-[var(--border-primary)] pb-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Congressional preference</p>
-                <h2 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">
-                  Generic ballot · {formatMargin(snapshot.genericBallotAvg.margin)}
-                </h2>
+              <div className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
+                <div className="border-b border-[var(--home-rule)] pb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">Congressional preference</p>
+                  <h2 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
+                    Generic ballot · {formatMargin(snapshot.genericBallotAvg.margin)}
+                  </h2>
+                </div>
+                <div className="mt-6 mb-4">
+                  <GenericBallotBar dem={snapshot.genericBallotAvg.dem} rep={snapshot.genericBallotAvg.rep} />
+                </div>
+                <GenericBallotPollsTable snapshot={snapshot} />
               </div>
-              <div className="mt-6 mb-4">
-                <GenericBallotBar dem={snapshot.genericBallotAvg.dem} rep={snapshot.genericBallotAvg.rep} />
-              </div>
-              <GenericBallotPollsTable snapshot={snapshot} />
-            </SurfaceCard>
+            </div>
           </div>
         )}
 

@@ -73,7 +73,7 @@ export default async function WritingPage() {
       <section className="home-page min-h-screen">
         <div className="home-shell home-section space-y-10">
           {/* Page heading */}
-          <div className="text-center space-y-3 pt-4">
+          <div className="space-y-3 pt-4">
             <p className="home-kicker">Writing</p>
             <h1
               className="mx-auto w-full max-w-5xl text-center"
@@ -92,9 +92,6 @@ export default async function WritingPage() {
 
           {/* Intro + posts */}
           <div className="space-y-8">
-            <p className="home-body" style={{ maxWidth: "48rem" }}>
-            </p>
-
             {posts.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {posts.map((post) => (

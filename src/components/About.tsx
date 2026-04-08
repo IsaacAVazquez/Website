@@ -20,7 +20,7 @@ export default function About() {
       <div className="home-shell home-section space-y-10">
         {/* Page heading */}
         <motion.div
-          className="text-center space-y-3 pt-4"
+          className="space-y-3 pt-4"
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.5 }}
@@ -45,7 +45,7 @@ export default function About() {
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: 0.1 }}
-          className="mx-auto w-full max-w-5xl"
+          className="w-full"
         >
           {/* Tab bar */}
           <div className="mb-8 flex justify-center">

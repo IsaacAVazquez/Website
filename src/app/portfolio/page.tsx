@@ -37,7 +37,7 @@ export default function PortfolioPage() {
     <section className="home-page min-h-screen">
       <div className="home-shell home-section space-y-10">
         {/* Page heading */}
-        <div className="text-center space-y-3 pt-4">
+        <div className="space-y-3 pt-4">
           <p className="home-kicker">Projects</p>
           <h1
             className="mx-auto w-full max-w-5xl text-center"
@@ -56,12 +56,6 @@ export default function PortfolioPage() {
 
         {/* Intro + grid */}
         <div className="space-y-8">
-          <p
-            className="home-body max-w-none-b"
-            style={{ maxWidth: "48rem" }}
-          >
-          </p>
-
           <div className="grid auto-rows-fr gap-6 md:grid-cols-2 xl:grid-cols-3">
             {portfolioProjects.map((study) => (
               <PortfolioProjectCard

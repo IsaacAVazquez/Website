@@ -98,25 +98,29 @@ export function getRatingPillStyle(rating: RaceRating): CSSProperties {
 export function getActiveViewStyle(isActive: boolean): CSSProperties {
   if (isActive) {
     return {
-      borderColor: "color-mix(in srgb, var(--color-primary) 35%, var(--border-primary))",
-      background: "color-mix(in srgb, var(--color-primary) 9%, var(--surface-secondary))",
-      boxShadow: "var(--shadow-sm)",
+      background: "var(--home-ink)",
+      color: "var(--home-paper)",
+      borderColor: "var(--home-ink)",
     };
   }
   return {
-    borderColor: "var(--border-primary)",
-    background: "var(--surface-secondary)",
+    borderColor: "var(--home-rule)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+    color: "var(--home-ink-muted)",
   };
 }
 
 export function getRowStyle(isSelected: boolean): CSSProperties {
   if (isSelected) {
     return {
-      borderColor: "color-mix(in srgb, var(--color-primary) 35%, var(--border-primary))",
-      background: "color-mix(in srgb, var(--color-primary) 9%, var(--surface-secondary))",
+      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-haze) 8%, var(--home-paper-alt))",
     };
   }
-  return { borderColor: "var(--border-primary)", background: "var(--surface-secondary)" };
+  return {
+    borderColor: "var(--home-rule)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+  };
 }
 
 // ─── SVG trend chart helpers ───────────────────────────────────────────────────
