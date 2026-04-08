@@ -103,7 +103,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <section className="home-page min-h-screen">
         <div className="home-shell home-section">
-          <article className="max-w-4xl mx-auto">
+          <article className="max-w-6xl mx-auto">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="mb-8">
               <ol

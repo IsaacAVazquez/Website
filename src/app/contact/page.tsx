@@ -43,11 +43,7 @@ export default function Contact() {
         }}
       />
 
-      <div className="min-h-screen w-full bg-[var(--surface-primary)] page-section">
-        <div className="page-shell-tight">
-          <ContactContent />
-        </div>
-      </div>
+      <ContactContent />
     </>
   );
 }

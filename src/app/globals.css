@@ -278,143 +278,6 @@
     --tw-prose-th-borders: var(--border-primary);
     --tw-prose-td-borders: var(--border-secondary);
   }
-
-  /* Home editorial prose — used in writing/[slug] */
-  .prose-home {
-    max-width: none;
-    font-family: var(--font-home-sans);
-    color: var(--home-ink);
-    --tw-prose-body: var(--home-ink-muted);
-    --tw-prose-headings: var(--home-ink);
-    --tw-prose-links: var(--home-haze);
-    --tw-prose-bold: var(--home-ink);
-    --tw-prose-counters: var(--home-ink-muted);
-    --tw-prose-bullets: var(--home-ink-muted);
-    --tw-prose-hr: var(--home-rule);
-    --tw-prose-quotes: var(--home-ink-muted);
-    --tw-prose-quote-borders: var(--home-acid);
-    --tw-prose-code: var(--home-ink);
-    --tw-prose-pre-code: var(--home-ink);
-    --tw-prose-pre-bg: color-mix(in srgb, var(--home-paper-alt) 90%, white);
-    --tw-prose-th-borders: var(--home-rule);
-    --tw-prose-td-borders: var(--home-rule);
-  }
-  .prose-home p,
-  .prose-home li {
-    color: var(--home-ink-muted);
-    line-height: 1.75;
-  }
-  .prose-home h2 {
-    color: var(--home-ink);
-    font-family: var(--font-home-sans);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    margin-top: 2.25em;
-    margin-bottom: 0.75em;
-    padding-bottom: 0.4em;
-    border-bottom: 1px solid var(--home-rule);
-  }
-  .prose-home h3 {
-    color: var(--home-ink);
-    font-family: var(--font-home-sans);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    margin-top: 1.75em;
-    margin-bottom: 0.5em;
-  }
-  .prose-home h4,
-  .prose-home h5,
-  .prose-home h6 {
-    color: var(--home-ink);
-    font-family: var(--font-home-sans);
-    font-weight: 600;
-  }
-  .prose-home strong {
-    color: var(--home-ink);
-    font-weight: 600;
-  }
-  .prose-home a {
-    color: var(--home-haze);
-    text-decoration: none;
-    text-underline-offset: 3px;
-    text-decoration-line: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color 0.15s ease;
-  }
-  .prose-home a:hover {
-    text-decoration-color: var(--home-haze);
-  }
-  .prose-home :not(pre) > code {
-    color: var(--home-ink);
-    background-color: color-mix(in srgb, var(--home-paper-alt) 90%, white);
-    padding: 0.15em 0.4em;
-    border-radius: 0.3em;
-    font-size: 0.875em;
-    border: 1px solid var(--home-rule);
-  }
-  .prose-home :not(pre) > code::before,
-  .prose-home :not(pre) > code::after {
-    content: none;
-  }
-  .prose-home pre {
-    background-color: color-mix(in srgb, var(--home-paper-alt) 90%, white);
-    color: var(--home-ink);
-    border: 1px solid var(--home-rule);
-    border-left: 3px solid var(--home-acid);
-    border-radius: 0.5rem;
-    padding: 1.25em 1.5em;
-    overflow-x: auto;
-    font-size: 0.875em;
-    line-height: 1.7;
-  }
-  .prose-home pre code {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: inherit;
-  }
-  .prose-home blockquote {
-    border-left: 3px solid var(--home-acid);
-    background-color: color-mix(in srgb, var(--home-paper-alt) 60%, transparent);
-    padding: 1em 1.25em;
-    border-radius: 0 0.375rem 0.375rem 0;
-    font-style: italic;
-    color: var(--home-ink-muted);
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-  }
-  .prose-home blockquote p {
-    margin-bottom: 0;
-  }
-  .prose-home ul,
-  .prose-home ol {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-  .prose-home li {
-    margin-top: 0.35em;
-    margin-bottom: 0.35em;
-  }
-  .prose-home img {
-    border-radius: 0.75rem;
-    border: 1px solid var(--home-rule);
-  }
-  .prose-home hr {
-    border-color: var(--home-rule);
-    margin-top: 2.5em;
-    margin-bottom: 2.5em;
-    max-width: 8rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .prose-home th {
-    color: var(--home-ink);
-    font-weight: 600;
-    font-family: var(--font-home-sans);
-  }
-  .prose-home td {
-    color: var(--home-ink-muted);
-  }
   .prose-writing p,
   .prose-writing li {
     color: var(--text-secondary);
@@ -700,49 +563,51 @@
 
   .resume-outline-button {
     display: inline-flex;
-    min-height: 44px;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     border-radius: 999px;
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 1.5rem;
     font-family: var(--font-home-sans);
-    font-size: 0.88rem;
-    font-weight: 600;
-    line-height: 1;
-    text-decoration: none;
-    border: 1px solid color-mix(in srgb, var(--home-stone) 82%, var(--home-ink) 18%);
-    background: color-mix(in srgb, var(--home-paper) 80%, transparent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid color-mix(in srgb, var(--home-stone) 70%, var(--home-ink) 30%);
     color: var(--home-ink);
-    transition-property: background-color, border-color, color, box-shadow, transform;
-    transition-duration: 180ms;
+    background: color-mix(in srgb, var(--home-paper) 80%, transparent);
+    transition-property: background-color, border-color, color, box-shadow;
+    transition-duration: 200ms;
     transition-timing-function: ease;
   }
 
   .resume-outline-button:hover {
-    background: color-mix(in srgb, var(--home-acid) 22%, var(--home-paper));
-    border-color: color-mix(in srgb, var(--home-ink) 24%, var(--home-stone));
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
+    background: var(--home-ink);
+    color: var(--home-paper);
+    border-color: var(--home-ink);
+    box-shadow: var(--shadow-md);
   }
 
   .resume-chip {
     display: inline-flex;
     align-items: center;
     border-radius: 999px;
-    background: color-mix(in srgb, var(--home-acid) 20%, var(--home-paper));
-    padding: 0.38rem 0.7rem;
+    padding: 0.25rem 0.75rem;
     font-family: var(--font-home-sans);
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    background: color-mix(in srgb, var(--home-acid) 20%, var(--home-paper));
+    border: 1px solid color-mix(in srgb, var(--home-stone) 50%, var(--home-rule));
     color: var(--home-ink);
-    transition-property: background-color;
-    transition-duration: 160ms;
+    transition-property: background-color, border-color, color;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
   }
 
   .resume-chip:hover {
-    background: color-mix(in srgb, var(--home-acid) 38%, var(--home-paper));
+    background: color-mix(in srgb, var(--home-acid) 35%, var(--home-paper));
+    border-color: var(--home-stone);
   }
 
   .home-page {

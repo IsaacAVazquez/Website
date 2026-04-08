@@ -59,7 +59,7 @@ function HomeProjectCard({
 function HomeWritingCard({ post }: { post: BlogPostPreview }) {
   return (
     <Link href={`/writing/${post.slug}`} className="group block h-full">
-      <article className="home-card home-writing-card h-full">
+      <article className="home-card home-writing-card flex h-full flex-col">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <span className="home-pill home-pill-dark">{post.category}</span>
           <time dateTime={post.publishedAt} className="home-meta home-meta-dark mb-0">
@@ -67,16 +67,16 @@ function HomeWritingCard({ post }: { post: BlogPostPreview }) {
           </time>
         </div>
 
-        <div className="mt-8 space-y-4">
+        <div className="mt-8 flex flex-1 flex-col gap-4">
           <h3 className="home-writing-title">{post.title}</h3>
           <p className="home-writing-copy mb-0">{post.excerpt}</p>
-        </div>
 
-        <div className="mt-8 flex items-center justify-between border-t border-[var(--home-dark-rule)] pt-4">
-          <p className="home-meta home-meta-dark mb-0">{post.readingTime}</p>
-          <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--home-dark-ink)]">
-            Read it
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+          <div className="mt-auto flex items-center justify-between border-t border-[var(--home-dark-rule)] pt-4">
+            <p className="home-meta home-meta-dark mb-0">{post.readingTime}</p>
+            <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--home-dark-ink)]">
+              Read it
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </div>
           </div>
         </div>
       </article>

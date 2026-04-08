@@ -30,7 +30,7 @@ const TimelineItem = ({ item, isLast }: TimelineItemProps) => {
       {/* Left: logo + connecting line */}
       <div className="flex flex-col items-center flex-shrink-0">
         <div
-          className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0"
+          className="rounded-full overflow-hidden"
           style={{
             background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
             border: "1px solid var(--home-rule)",
