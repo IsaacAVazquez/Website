@@ -16,13 +16,13 @@ seo:
 
 The question is not what AI agents can do. The question is what conditions have to be true for delegation to actually work, and what signals tell you in advance that a task does not meet those conditions. The first framing leads to a list of tools. The second framing leads to a decision you can use.
 
-I have been running AI agents into real work for about six months now — research tasks, writing tasks, analysis tasks, coordination tasks — and the failure modes are not random. They cluster around a small number of underlying problems. What follows is my honest documentation of those problems, with the specific conditions I now look for before I delegate anything.
+I have been running AI agents into real work for about six months now: research tasks, writing tasks, analysis tasks, coordination tasks. The failure modes are not random. They cluster around a small number of underlying problems. What follows is my honest documentation of those problems, with the specific conditions I now look for before I delegate anything.
 
 ## Failure mode one is ambiguous completion criteria
 
 This is the most common failure and the most preventable. An AI agent will complete whatever task you give it, which means it needs to know what "complete" actually looks like. When that definition is unclear, agents do one of two things: they produce output that technically satisfies the surface-level request while missing the point entirely, or they ask clarifying questions at every step in a way that defeats the purpose of delegation.
 
-The test I now run before delegating anything is whether I can write a two-sentence definition of done. Not a list of requirements, not a rubric — just a concrete description of what the finished output looks like and what it needs to do. If I cannot write that quickly, the task is not ready to delegate. The work at that point is to define the task more precisely, which is my job to do first.
+The test I now run before delegating anything is whether I can write a two-sentence definition of done. Not a list of requirements, not a rubric, just a concrete description of what the finished output looks like and what it needs to do. If I cannot write that quickly, the task is not ready to delegate. The work at that point is to define the task more precisely, which is my job to do first.
 
 The tasks that pass this test cleanly are things like "summarize this document in three bullet points structured this way" or "find all mentions of competitor X in this set of transcripts and sort them by sentiment." The tasks that fail it are things like "help me think through our go-to-market approach" or "make this better." Those are real work, but they are not delegation-ready.
 
@@ -36,7 +36,7 @@ The workaround is to maintain your own state layer. A running document that summ
 
 ## Failure mode three is context exhaustion mid-task
 
-For longer tasks, agents can run into context window limits that cause quality to degrade toward the end of the output. This is not a failure of the task definition — it is a capacity constraint. And because the degradation is gradual rather than sudden, it is easy to miss.
+For longer tasks, agents can run into context window limits that cause quality to degrade toward the end of the output. This is not a failure of the task definition. It is a capacity constraint. And because the degradation is gradual rather than sudden, it is easy to miss.
 
 What I have learned to do is structure longer tasks so the most important output comes first. If I am asking for an analysis of ten different documents, I ask for the three most critical first and review before proceeding. If I am generating a long document, I do it in sections rather than all at once. This is not a solution to the context problem, but it means the context exhaustion happens in the lower-priority sections rather than the ones that matter most.
 
@@ -70,7 +70,7 @@ The fix is to provide a template or example output as part of the prompt, not ju
 
 ## The underlying pattern
 
-Looking across all six failure modes, the common thread is that successful delegation requires the task to be fully specified before it reaches the agent. Ambiguous completion criteria, unclear state context, judgment calls that are not yet made, format requirements that are not fully articulated — these are all failures of specification that show up as agent failures but originate earlier.
+Looking across all six failure modes, the common thread is that successful delegation requires the task to be fully specified before it reaches the agent. Ambiguous completion criteria, unclear state context, judgment calls that are not yet made, format requirements that are not fully articulated. These are all failures of specification that show up as agent failures but originate earlier.
 
 The shift I have made is spending more time on task specification before delegation and less time on debugging agent outputs after the fact. A well-specified task delegated to a capable agent usually works. A poorly specified task delegated to a capable agent produces output that looks reasonable and requires significant rework.
 

@@ -30,7 +30,7 @@ The tasks that actually require reasoning are the ones where the problem is unde
 
 ## The cost reality
 
-The exact pricing changes frequently enough that I am reluctant to quote specific numbers, but the structure is stable. Frontier models like Opus or GPT-4o with extended thinking cost significantly more per input and output token than mid-tier models, and they are substantially slower. At low usage volumes, the cost difference is small in absolute terms. At production scale — thousands of API calls per day — it becomes a meaningful line item.
+The exact pricing changes frequently enough that I am reluctant to quote specific numbers, but the structure is stable. Frontier models like Opus or GPT-4o with extended thinking cost significantly more per input and output token than mid-tier models, and they are substantially slower. At low usage volumes, the cost difference is small in absolute terms. At production scale, meaning thousands of API calls per day, it becomes a meaningful line item.
 
 The latency difference matters independently of cost. Tasks that need a response in under two seconds, like interactive UI flows or real-time suggestion features, often cannot use frontier models even if the budget supports it. The throughput ceiling for latency-sensitive applications is real, and it forces a tier decision that money alone cannot solve.
 
@@ -46,11 +46,11 @@ Tasks requiring the model to push back intelligently on its own inputs also tend
 
 ## Tasks where mid-tier models are sufficient
 
-The majority of tasks that teams run against frontier models fall into this category. Drafting, summarization, reformatting, translation, generating alternatives, answering questions from a defined knowledge base, extracting structured information from unstructured text — these are all tasks where Sonnet-class models produce output that is functionally identical to Opus-class output for practical purposes.
+The majority of tasks that teams run against frontier models fall into this category. Drafting, summarization, reformatting, translation, generating alternatives, answering questions from a defined knowledge base, extracting structured information from unstructured text. These are all tasks where Sonnet-class models produce output that is functionally identical to Opus-class output for practical purposes.
 
 The tell is whether the task has a single clear correct approach. If I am asking a model to extract all dates from a document and format them consistently, there is a right way to do that and both models will do it. The additional reasoning capability of a frontier model adds nothing, because the task does not require reasoning in the relevant sense.
 
-Classification tasks, even complex ones, usually fall here. Sentiment analysis, intent detection, topic categorization — these are pattern-matching tasks that mid-tier models handle well. I have run comparisons on classification tasks where the intuition was that the nuance required a frontier model, and the actual quality difference was small enough that it did not justify the cost.
+Classification tasks, even complex ones, usually fall here. Sentiment analysis, intent detection, topic categorization. These are pattern-matching tasks that mid-tier models handle well. I have run comparisons on classification tasks where the intuition was that the nuance required a frontier model, and the actual quality difference was small enough that it did not justify the cost.
 
 ## A practical decision framework
 
@@ -70,4 +70,4 @@ The second mistake is evaluating model quality on the tasks that went well. The 
 
 The third mistake is treating model selection as a one-time architectural decision rather than something that should be revisited as model pricing evolves and as the actual distribution of tasks your system handles becomes clearer. The right answer today is probably not the right answer in twelve months, and building the infrastructure to update that choice cheaply is worth more than optimizing it perfectly at the start.
 
-My general view is that most teams should be running more tasks on mid-tier models than they currently are, and investing the cost savings into volume — more analysis, more coverage, more iterations — rather than into marginal quality improvements on tasks that do not require them.
+My general view is that most teams should be running more tasks on mid-tier models than they currently are, and investing the cost savings into volume, meaning more analysis, more coverage, more iterations, rather than into marginal quality improvements on tasks that do not require them.

@@ -8,13 +8,13 @@ featured: false
 author: "Isaac Vazquez"
 seo:
   title: "Week in Tech: AI Coding Tools, Developer Displacement, and MCP Goes Mainstream"
-  description: "My take on the week's biggest tech developments — from AI coding agents crossing into autonomous delivery to MCP becoming the default integration layer and what reasoning model economics mean for product teams."
+  description: "My take on the week's biggest tech developments: AI coding agents crossing into autonomous delivery, MCP becoming the default integration layer, and what reasoning model economics mean for product teams."
   keywords: ["AI coding tools", "developer displacement", "Model Context Protocol", "MCP", "AI agents", "software engineering", "reasoning models", "Cursor", "GitHub Copilot", "AI product strategy"]
 ---
 
 # The Week AI Started Doing the Job, Not Just Helping With It
 
-There's been a pattern in how AI coding tools have been discussed for the past two years that I think quietly broke this week. The framing has been autocomplete — AI as a faster way to write code you already knew how to write. What's landing now is something different. These tools are being used, at scale, to close complete tasks without a human in the loop. That shift in how they're actually being deployed is more significant than any individual model update.
+There's been a pattern in how AI coding tools have been discussed for the past two years that I think quietly broke this week. The framing has been autocomplete, meaning AI as a faster way to write code you already knew how to write. What's landing now is something different. These tools are being used, at scale, to close complete tasks without a human in the loop. That shift in how they're actually being deployed is more significant than any individual model update.
 
 Here's what I found worth paying attention to.
 
@@ -22,7 +22,7 @@ Here's what I found worth paying attention to.
 
 Reports from engineering leaders at mid-size product companies this week are describing a pattern that's becoming common: give an AI agent a GitHub issue, a testing suite, and repo access, and it returns a pull request that passes CI. Not always. Not on anything architecturally novel. But reliably enough on scoped, well-specified tasks that it's changing how teams are sized and how work gets allocated.
 
-What I find interesting is that this isn't happening because of a single breakthrough model announcement. It's happening because the workflow infrastructure around these models has matured. Tools like Cursor, Windsurf, and GitHub Copilot Workspace have spent the past six to eight months building the context management, file system access, and iteration loop tooling that lets a model actually navigate a real codebase instead of just a toy prompt. The model capabilities are necessary but not sufficient — it's the scaffolding that turned capability into deployment.
+What I find interesting is that this isn't happening because of a single breakthrough model announcement. It's happening because the workflow infrastructure around these models has matured. Tools like Cursor, Windsurf, and GitHub Copilot Workspace have spent the past six to eight months building the context management, file system access, and iteration loop tooling that lets a model actually navigate a real codebase instead of just a toy prompt. The model capabilities are necessary but not sufficient. It's the scaffolding that turned capability into deployment.
 
 The immediate implication for hiring is the one that's getting coverage, and I think it's real. Entry-level and junior engineering roles oriented around ticket closure, bug fixing, and straightforward feature work are going to compress. That's not a distant prediction anymore. Companies that are honest about their hiring plans are already describing this in terms of "fewer junior hires, same or higher output." What that means for the pipeline of engineers building toward senior roles is a more complex question that no one has answered convincingly yet.
 
@@ -30,21 +30,21 @@ The immediate implication for hiring is the one that's getting coverage, and I t
 
 Anthropic's Model Context Protocol has been around since late 2024, but something shifted this week in terms of adoption signals. Major cloud providers and developer tooling companies started shipping native MCP support, and the conversation in developer communities moved from "should we support MCP" to "which MCP servers are we building first." That's a different kind of momentum.
 
-I think the significance here is not just technical. MCP is effectively standardizing how AI agents get context from external systems. If it becomes the dominant pattern — and the current adoption curve suggests it's heading that way — then the architectural question for every product that wants to be AI-accessible is "how does our data surface through MCP" rather than "how do we build an AI integration." That's a real simplification, and it has implications for how enterprise software gets bought and evaluated.
+I think the significance here is not just technical. MCP is effectively standardizing how AI agents get context from external systems. If it becomes the dominant pattern, and the current adoption curve suggests it's heading that way, then the architectural question for every product that wants to be AI-accessible is "how does our data surface through MCP" rather than "how do we build an AI integration." That's a real simplification, and it has implications for how enterprise software gets bought and evaluated.
 
 What I'd watch is whether the major CRM and ERP vendors move to support MCP natively. If Salesforce, ServiceNow, and SAP build MCP-native context APIs, then AI agents become dramatically more useful inside the enterprise workflows where most knowledge workers actually operate. That would accelerate the autonomous agent use cases significantly, and it would also shift negotiating leverage in enterprise software deals toward whoever controls the agent layer.
 
 ## Reasoning model economics are changing product decisions
 
-OpenAI's o3 and Gemini 2.5 Pro have both seen meaningful price reductions in the past three weeks, and usage data from major API consumers is showing a shift. Tasks that were previously routed to cheaper, faster models are being re-routed to reasoning variants as the cost gap narrows. That's not a story about model quality — it's a story about what becomes economically viable when smarter models get cheaper.
+OpenAI's o3 and Gemini 2.5 Pro have both seen meaningful price reductions in the past three weeks, and usage data from major API consumers is showing a shift. Tasks that were previously routed to cheaper, faster models are being re-routed to reasoning variants as the cost gap narrows. That's not a story about model quality. It's a story about what becomes economically viable when smarter models get cheaper.
 
-The product implication I keep coming back to is in decision support. There's a category of business problem where you genuinely want a model that can reason carefully rather than just pattern-match — diagnosis, contract analysis, financial modeling, code review of complex logic. At the pricing from 18 months ago, those use cases were difficult to build around because the inference costs didn't support the required query volume. At current and near-future pricing, many of them become straightforwardly viable.
+The product implication I keep coming back to is in decision support. There's a category of business problem where you genuinely want a model that can reason carefully rather than just pattern-match: diagnosis, contract analysis, financial modeling, code review of complex logic. At the pricing from 18 months ago, those use cases were difficult to build around because the inference costs didn't support the required query volume. At current and near-future pricing, many of them become straightforwardly viable.
 
 I'd argue this is the more important capability story than whatever the frontier benchmark is this week. The interesting question isn't whether o3 can solve a competition math problem. It's whether it's cheap enough to run on every customer support ticket or every code commit to an internal repo. That transition is happening faster than most enterprise technology plans anticipated.
 
 ## The security surface is expanding with the agent surface
 
-Something that isn't getting enough coverage alongside all the agentic AI deployment news is what happens to the threat model when agents have persistent access to production systems. A single compromised agent context window — through prompt injection, a malicious dependency, or a manipulated tool response — can now be the entry point for actions across whatever systems that agent has access to. That's not theoretical. Red teams at several major enterprises have already demonstrated it in controlled exercises.
+Something that isn't getting enough coverage alongside all the agentic AI deployment news is what happens to the threat model when agents have persistent access to production systems. A single compromised agent context window, through prompt injection, a malicious dependency, or a manipulated tool response, can now be the entry point for actions across whatever systems that agent has access to. That's not theoretical. Red teams at several major enterprises have already demonstrated it in controlled exercises.
 
 The MCP expansion I mentioned above makes this more important to think about carefully, not less. Every new MCP server connection is a new trust boundary. Every tool an agent can call is a potential pivot point. The security industry is starting to talk about "agentic attack surfaces" as a category, and I think that framing is going to become standard quickly.
 
@@ -52,6 +52,6 @@ What I believe the practical response looks like isn't waiting for a comprehensi
 
 ## The question I keep coming back to
 
-The story of this week, taken together, is that AI tools have crossed a threshold from assistance into execution on a meaningful class of tasks. That's not evenly distributed — it matters much more for software delivery than for most other knowledge work right now — but the pattern is directional.
+The story of this week, taken together, is that AI tools have crossed a threshold from assistance into execution on a meaningful class of tasks. That's not evenly distributed. It matters much more for software delivery than for most other knowledge work right now, but the pattern is directional.
 
 What I think gets underweighted in most analysis of this is the compounding effect. If AI agents are closing 30% of engineering tickets today, and the scaffolding and models continue improving at current rates, what does that number look like in 18 months? The answer matters a lot to anyone currently in or planning to enter technical roles, and it matters to any product organization whose competitive advantage depends on shipping speed. The interesting question isn't what AI can do today. It's what the slope of the improvement curve implies about what you should be building toward.

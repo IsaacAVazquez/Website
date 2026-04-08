@@ -22,7 +22,7 @@ Understanding why it is winning tells you something useful about where to invest
 
 The simplest way to describe it is that MCP is a common language AI models use to talk to external systems. Before it existed, every tool integration was custom. If you wanted Claude to read your Notion database, you built a specific integration for that. If you wanted it to query a Postgres instance, you built a different specific integration. Each connection required its own implementation, its own error handling, its own maintenance.
 
-MCP standardizes that. It defines a protocol — a set of rules for how a model describes what tools are available, how it requests a tool call, and how results come back. Any system that implements the MCP server specification can now be connected to any model that implements the client side. The integration work happens once, not repeatedly for every model-tool pair.
+MCP standardizes that. It defines a protocol: a set of rules for how a model describes what tools are available, how it requests a tool call, and how results come back. Any system that implements the MCP server specification can now be connected to any model that implements the client side. The integration work happens once, not repeatedly for every model-tool pair.
 
 Anthropic published the specification in late 2024. What made it matter is that enough of the ecosystem adopted it quickly enough that it started becoming self-reinforcing. Tools built MCP servers because models supported it. Models supported it because tools were building servers. That dynamic is now far enough along that building a custom integration instead of an MCP server is the unusual choice, not the other way around.
 
@@ -30,7 +30,7 @@ Anthropic published the specification in late 2024. What made it matter is that 
 
 The prior approach was a combination of custom tool use implementations, function calling with ad-hoc schemas, and direct API calls baked into agent scaffolding. These worked but created fragmentation. An agent built to use one model's tool use format would not transfer cleanly to a different model. A tool integration built for one workflow could not be reused elsewhere without significant adaptation.
 
-What MCP replaces is not any single technology — it replaces the pattern of building integrations point-to-point rather than to a standard. The analogy that makes the most sense to me is the shift from proprietary database drivers to ODBC. At some point it became more expensive to maintain custom drivers for every database than to implement a standard interface and let the ecosystem handle the rest. MCP is playing a similar role for AI tool connections.
+What MCP replaces is not any single technology. It replaces the pattern of building integrations point-to-point rather than to a standard. The analogy that makes the most sense to me is the shift from proprietary database drivers to ODBC. At some point it became more expensive to maintain custom drivers for every database than to implement a standard interface and let the ecosystem handle the rest. MCP is playing a similar role for AI tool connections.
 
 ## Why it is winning over alternatives
 
@@ -46,7 +46,7 @@ The practical implication for product teams is less about adopting MCP itself an
 
 If you are building a product that other teams or developers will connect AI agents to, having an MCP server is becoming a table-stakes integration path. The same way REST APIs became the expected way to expose data to external systems, MCP servers are becoming the expected way to expose functionality to AI systems. Teams that build this now are ahead of an expectation that will harden over the next 12 to 18 months.
 
-If you are building internal AI tooling, MCP changes the build-versus-buy calculation for integrations. The existence of an MCP ecosystem means there are existing servers for common tools — GitHub, Slack, databases, file systems, web browsing — that you can use rather than build. The time to a working agent with real tool access has compressed significantly because of this.
+If you are building internal AI tooling, MCP changes the build-versus-buy calculation for integrations. The existence of an MCP ecosystem means there are existing servers for common tools, including GitHub, Slack, databases, file systems, and web browsing, that you can use rather than build. The time to a working agent with real tool access has compressed significantly because of this.
 
 If you are evaluating AI platforms for your team, MCP compatibility is a meaningful differentiator. A platform that supports MCP clients lets you connect the tools you already have. One that does not means you are locked into whatever integrations that platform chooses to build.
 
@@ -58,4 +58,4 @@ For teams building internal tooling, I would look at the existing MCP server eco
 
 For everyone else, I think the most useful thing is just knowing that this is the direction the integration layer is going. The decisions you make about how your systems expose functionality in the next 12 months will be easier to maintain if they account for MCP than if they do not.
 
-The standard is not final. The specification will evolve. But the pattern it establishes — a common interface between AI models and external systems — is the right pattern, and the ecosystem that has formed around it has enough momentum that betting against it requires a specific thesis for why something better will displace it. I do not have that thesis.
+The standard is not final. The specification will evolve. But the pattern it establishes, a common interface between AI models and external systems, is the right pattern, and the ecosystem that has formed around it has enough momentum that betting against it requires a specific thesis for why something better will displace it. I do not have that thesis.

@@ -14,7 +14,7 @@ seo:
 
 # The AI Workflow I Use for Product Discovery, From Weak Signal to Working Spec
 
-The parts of product discovery that take the longest are not the hardest ones. Synthesis is slow not because the analysis is difficult but because you are usually doing it manually — reading through interview transcripts, support tickets, usage data, and stakeholder feedback that live in different places and have no common structure. AI compresses that part dramatically, if you use it at the right stages.
+The parts of product discovery that take the longest are not the hardest ones. Synthesis is slow not because the analysis is difficult but because you are usually doing it manually, reading through interview transcripts, support tickets, usage data, and stakeholder feedback that live in different places and have no common structure. AI compresses that part dramatically, if you use it at the right stages.
 
 What follows is how I actually integrate AI into discovery work. Not as a replacement for the judgment calls that matter, but as a tool that handles the volume and structure so I can spend time on the parts that require genuine thinking.
 
@@ -26,11 +26,11 @@ I keep this distinction in mind throughout the workflow because the failure mode
 
 ## Signal aggregation
 
-Discovery typically starts with scattered signals — a few user interviews, some support ticket themes, patterns in usage data, stakeholder opinions that have been shared informally, market research from a consultant that nobody fully read. The first job is getting these into a form where you can actually work with them.
+Discovery typically starts with scattered signals: a few user interviews, some support ticket themes, patterns in usage data, stakeholder opinions that have been shared informally, market research from a consultant that nobody fully read. The first job is getting these into a form where you can actually work with them.
 
 AI is useful here in a specific and limited way. If I have transcripts from user interviews, I will ask Claude to extract distinct problems the user articulated, direct quotes that illustrate those problems, and anything that surprised them or contradicted their expectations. I do not ask for a summary. Summaries lose the specific language users use, which is often the most valuable thing in an interview.
 
-The prompt I use looks like this: "Here is a user interview transcript. Extract every distinct problem or frustration the user mentions. For each one, include the exact quote where they describe it and one sentence of context about when it came up in the conversation. Do not summarize or interpret — just extract."
+The prompt I use looks like this: "Here is a user interview transcript. Extract every distinct problem or frustration the user mentions. For each one, include the exact quote where they describe it and one sentence of context about when it came up in the conversation. Do not summarize or interpret. Just extract."
 
 I run this across all my transcripts and then have a structured set of problems to work with rather than a pile of recordings I am trying to hold in my head simultaneously.
 
@@ -38,9 +38,9 @@ I run this across all my transcripts and then have a structured set of problems 
 
 Once I have processed individual sources, the synthesis question is what patterns exist across them. This is where AI earns its time savings most clearly.
 
-I paste the extracted problems from multiple interviews or sources and ask Claude to group them by theme, noting which themes appear across multiple sources and which appear in only one. I also ask it to flag anything that seems contradictory — a problem that some users mention and others explicitly do not have. Contradictions in discovery data are often the most informative signal, and I want them surfaced rather than smoothed over.
+I paste the extracted problems from multiple interviews or sources and ask Claude to group them by theme, noting which themes appear across multiple sources and which appear in only one. I also ask it to flag anything that seems contradictory, specifically a problem that some users mention and others explicitly do not have. Contradictions in discovery data are often the most informative signal, and I want them surfaced rather than smoothed over.
 
-I then read the groupings critically. I am looking for whether the AI's thematic groupings match my intuition from being in the conversations, and whether anything important got missed or miscategorized. It usually gets most of it right. The places where it does not are often instructive — they reveal that my signal is not as clear as I thought, or that I have two problems that look similar but are actually different.
+I then read the groupings critically. I am looking for whether the AI's thematic groupings match my intuition from being in the conversations, and whether anything important got missed or miscategorized. It usually gets most of it right. The places where it does not are often instructive. They reveal that my signal is not as clear as I thought, or that I have two problems that look similar but are actually different.
 
 ## Problem framing
 
@@ -64,10 +64,10 @@ By the time I get to spec drafting, I have a well-defined problem, a point of vi
 
 AI is genuinely good at this translation. The prompt I use is something like: "Here is my problem framing, opportunity summary, and rough solution direction: [content]. Draft a product spec that covers the problem statement, success metrics, proposed solution, out-of-scope items, and open questions. Write it for an audience of engineers and designers who have not been in the discovery process."
 
-The output is never a final spec, but it is a solid structural starting point. I rewrite the problem statement almost every time — the language AI uses is too generic and I want language that reflects what I actually learned from users. The success metrics section usually needs significant work because AI tends toward generic metrics rather than the specific ones that would tell you whether this particular problem is solved for this particular user population.
+The output is never a final spec, but it is a solid structural starting point. I rewrite the problem statement almost every time because the language AI uses is too generic and I want language that reflects what I actually learned from users. The success metrics section usually needs significant work because AI tends toward generic metrics rather than the specific ones that would tell you whether this particular problem is solved for this particular user population.
 
 ## What the workflow actually changes
 
 The honest accounting is that AI has compressed the time I spend on mechanical synthesis from days to hours and from hours to minutes. What it has not changed is how long I spend on the parts that require genuine judgment: deciding which user signals to trust, deciding which problem framing is most accurate, deciding which opportunity is worth the investment, and deciding whether the spec actually captures what we learned.
 
-In my experience, those judgment parts are about half the work. AI has made the other half dramatically faster. The result is not that discovery takes half as long — it is that I can do more discovery in the same amount of time, which means decisions get made on better evidence. That is the actual value. It is less glamorous than the productivity narrative but more honest about what changes and what does not.
+In my experience, those judgment parts are about half the work. AI has made the other half dramatically faster. The result is not that discovery takes half as long. It is that I can do more discovery in the same amount of time, which means decisions get made on better evidence. That is the actual value. It is less glamorous than the productivity narrative but more honest about what changes and what does not.
