@@ -571,12 +571,12 @@ export function ProjectsContent() {
         <Heading className="text-5xl mb-4 tracking-tight">
           Case Studies
         </Heading>
-        <p className="text-lg text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+        <p className="text-lg text-[var(--home-ink-muted)] max-w-3xl leading-relaxed">
           A curated selection of projects demonstrating product management
           expertise through strategic thinking, cross-functional leadership,
           and measurable business outcomes.
         </p>
-        <p className="text-sm text-[var(--text-tertiary)] mt-4 max-w-3xl">
+        <p className="text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mt-4 max-w-3xl">
           Click any project to view metrics, challenges, and outcomes.
         </p>
       </div>
@@ -605,19 +605,19 @@ export function ProjectsContent() {
             >
               <div className="relative h-full p-6 flex flex-col">
                 <div className="mb-4">
-                  <Icon className="h-8 w-8 text-[var(--color-primary)]" />
+                  <Icon className="h-8 w-8 text-[var(--home-haze)]" />
                 </div>
 
-                <h3 className="font-bold text-xl mb-2 text-[var(--text-primary)]">
+                <h3 className="font-bold text-xl mb-2 text-[var(--home-ink)]">
                   {project.title}
                 </h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-4 flex-grow">
+                <p className="text-sm text-[var(--home-ink-muted)] mb-4 flex-grow">
                   {project.description}
                 </p>
 
                 {project.metrics && (
                   <div className="mb-4">
-                    <span className="text-xs font-semibold text-[var(--color-primary)]">
+                    <span className="text-xs font-semibold text-[var(--home-haze)]">
                       {project.metrics}
                     </span>
                   </div>
@@ -627,7 +627,7 @@ export function ProjectsContent() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 text-xs font-medium rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20"
+                      className="px-2 py-1 text-xs font-medium rounded-full bg-[var(--home-haze)]/10 text-[var(--home-haze)] border border-[var(--home-haze)]/20"
                     >
                       {tech}
                     </span>
@@ -640,10 +640,10 @@ export function ProjectsContent() {
                     project.impact) && (
                     <button
                       onClick={() => openProjectDetail(project)}
-                      className="p-2 rounded-lg bg-[var(--surface-elevated)] hover:bg-[var(--color-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--color-primary)]/50 transition-all"
+                      className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, white)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
                       aria-label="View project details"
                     >
-                      <IconEye className="h-4 w-4 text-[var(--color-primary)]" />
+                      <IconEye className="h-4 w-4 text-[var(--home-haze)]" />
                     </button>
                   )}
                   {project.github && (
@@ -651,30 +651,30 @@ export function ProjectsContent() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-[var(--surface-elevated)] hover:bg-[var(--color-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--color-primary)]/50 transition-all"
+                      className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, white)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
                       aria-label="View source code"
                     >
-                      <IconBrandGithub className="h-4 w-4 text-[var(--color-primary)]" />
+                      <IconBrandGithub className="h-4 w-4 text-[var(--home-haze)]" />
                     </a>
                   )}
                   {project.link &&
                     (project.link.startsWith("/") ? (
                       <Link
                         href={project.link}
-                        className="p-2 rounded-lg bg-[var(--surface-elevated)] hover:bg-[var(--color-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--color-primary)]/50 transition-all"
+                        className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, white)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
                         aria-label="View live project"
                       >
-                        <IconExternalLink className="h-4 w-4 text-[var(--color-primary)]" />
+                        <IconExternalLink className="h-4 w-4 text-[var(--home-haze)]" />
                       </Link>
                     ) : (
                       <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-lg bg-[var(--surface-elevated)] hover:bg-[var(--color-primary)]/10 border border-[var(--border-primary)] hover:border-[var(--color-primary)]/50 transition-all"
+                        className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, white)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
                         aria-label="View live project"
                       >
-                        <IconExternalLink className="h-4 w-4 text-[var(--color-primary)]" />
+                        <IconExternalLink className="h-4 w-4 text-[var(--home-haze)]" />
                       </a>
                     ))}
                 </div>
@@ -690,7 +690,7 @@ export function ProjectsContent() {
         transition={{ delay: shouldReduceMotion ? 0 : 0.5 }}
         className="mt-16 text-center"
       >
-        <p className="text-lg text-[var(--text-secondary)] mb-6">
+        <p className="text-lg text-[var(--home-ink-muted)] mb-6">
           Interested in working together? Let's build something great.
         </p>
         <ModernButton href="/contact" variant="accent" size="lg">

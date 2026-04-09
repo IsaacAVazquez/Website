@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { Heading } from "@/components/ui/Heading";
-import { WarmCard } from "@/components/ui/WarmCard";
 import { ArrowLeft, ArrowRight, ExternalLink, BrandGithub } from "@/components/ui/ServerIcons";
 import { caseStudiesData, getPortfolioProjects } from "@/constants/caseStudies";
 import { constructMetadata } from "@/lib/seo";
@@ -49,6 +47,46 @@ export async function generateMetadata({
   });
 }
 
+const sectionTitleStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  fontWeight: 600,
+  letterSpacing: "-0.03em",
+} as const;
+
+const subsectionTitleStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  fontWeight: 600,
+  letterSpacing: "-0.02em",
+} as const;
+
+const bodyStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink-muted)",
+} as const;
+
+const strongStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  fontWeight: 600,
+} as const;
+
+const chipStyle = {
+  fontFamily: "var(--font-home-sans)",
+  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+  color: "var(--home-ink)",
+  border: "1px solid var(--home-rule)",
+  letterSpacing: "0.02em",
+} as const;
+
+const outlineButtonStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+  border: "1px solid var(--home-rule)",
+} as const;
+
 export default function CaseStudyPage({
   params,
 }: {
@@ -71,223 +109,235 @@ export default function CaseStudyPage({
   const nextCaseStudy = nextSlug ? caseStudiesData[nextSlug] : null;
 
   return (
-    <div className="min-h-screen bg-[var(--surface-primary)] dark:bg-[var(--neutral-950)] py-24 md:py-32">
-      <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+    <section className="home-page home-section min-h-screen" aria-label={caseStudy.title}>
+      <article className="home-shell home-shell-tight space-y-12">
         <Link
           href="/portfolio"
-          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-[var(--color-primary)] transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Portfolio
         </Link>
 
-        <header className="mb-12">
-          <Heading level={1} className="mb-4">
+        <header className="space-y-5">
+          <p className="home-kicker mb-0">{caseStudy.role} · Case study</p>
+          <h1
+            className="mb-0"
+            style={{
+              fontFamily: "var(--font-home-sans)",
+              fontSize: "clamp(2.4rem, 5.5vw, 4rem)",
+              fontWeight: 600,
+              lineHeight: 0.95,
+              letterSpacing: "-0.06em",
+              color: "var(--home-ink)",
+            }}
+          >
             {caseStudy.title}
-          </Heading>
+          </h1>
 
-          <div className="flex flex-wrap gap-4 text-sm text-neutral-600 dark:text-neutral-400 mb-6">
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm" style={bodyStyle}>
             <span>
-              <strong>Role:</strong> {caseStudy.role}
+              <strong style={strongStyle}>Role:</strong> {caseStudy.role}
             </span>
-            <span>&middot;</span>
+            <span aria-hidden="true">·</span>
             <span>
-              <strong>Timeline:</strong> {caseStudy.timeline}
+              <strong style={strongStyle}>Timeline:</strong> {caseStudy.timeline}
             </span>
             {caseStudy.pmFramework && (
               <>
-                <span>&middot;</span>
+                <span aria-hidden="true">·</span>
                 <span>
-                  <strong>Framework:</strong> {caseStudy.pmFramework}
+                  <strong style={strongStyle}>Framework:</strong> {caseStudy.pmFramework}
                 </span>
               </>
             )}
           </div>
 
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2">
             {caseStudy.tools.map((tool) => (
               <span
                 key={tool}
-                className="px-3 py-1 text-sm font-medium rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                style={chipStyle}
               >
                 {tool}
               </span>
             ))}
           </div>
 
-          <div className="flex gap-4">
-            {caseStudy.github && (
-              <a
-                href={caseStudy.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
-              >
-                <BrandGithub className="h-4 w-4" />
-                View Code
-              </a>
-            )}
-            {caseStudy.link && (
-              caseStudy.link.startsWith("/") ? (
-                <Link
-                  href={caseStudy.link}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  Live Project
-                </Link>
-              ) : (
+          {(caseStudy.github || caseStudy.link) && (
+            <div className="flex flex-wrap gap-3 pt-2">
+              {caseStudy.github && (
                 <a
-                  href={caseStudy.link}
+                  href={caseStudy.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+                  style={outlineButtonStyle}
                 >
-                  <ExternalLink className="h-4 w-4" />
-                  Live Project
+                  <BrandGithub className="h-4 w-4" />
+                  View code
                 </a>
-              )
-            )}
-          </div>
+              )}
+              {caseStudy.link && (
+                caseStudy.link.startsWith("/") ? (
+                  <Link
+                    href={caseStudy.link}
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+                    style={outlineButtonStyle}
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Live project
+                  </Link>
+                ) : (
+                  <a
+                    href={caseStudy.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+                    style={outlineButtonStyle}
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Live project
+                  </a>
+                )
+              )}
+            </div>
+          )}
         </header>
 
         {/* Overview */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
+        <section className="space-y-5">
+          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
             Overview
           </h2>
-          <WarmCard
-            padding="lg"
-            className="mb-6 border border-neutral-200 dark:border-neutral-700"
-          >
-            <p className="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+          <div className="home-card p-6 sm:p-8 space-y-4">
+            <p className="mb-0 text-lg leading-7" style={bodyStyle}>
               {caseStudy.overview.summary}
             </p>
-            <p className="text-base text-neutral-600 dark:text-neutral-400">
-              <strong className="text-neutral-900 dark:text-neutral-100">
-                Impact:
-              </strong>{" "}
-              {caseStudy.overview.impact}
+            <p className="mb-0 text-base leading-7" style={bodyStyle}>
+              <strong style={strongStyle}>Impact:</strong> {caseStudy.overview.impact}
             </p>
-          </WarmCard>
+          </div>
 
           {caseStudy.detailedMetrics && (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {caseStudy.detailedMetrics.map((metric, index) => (
-                <WarmCard
+                <div
                   key={index}
-                  padding="md"
-                  className="text-center border border-neutral-200 dark:border-neutral-700"
+                  className="home-card p-5 text-center space-y-1"
                 >
-                  <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-1">
+                  <p
+                    className="mb-0 text-xs font-semibold uppercase tracking-wider"
+                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)", letterSpacing: "0.1em" }}
+                  >
                     {metric.label}
                   </p>
-                  <p className="text-2xl font-bold text-[var(--color-primary)] mb-1">
+                  <p
+                    className="mb-0 text-2xl"
+                    style={{ ...subsectionTitleStyle, fontWeight: 700 }}
+                  >
                     {metric.value}
                   </p>
                   {metric.improvement && (
-                    <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                    <p className="mb-0 text-xs" style={bodyStyle}>
                       {metric.improvement}
                     </p>
                   )}
-                </WarmCard>
+                </div>
               ))}
             </div>
           )}
         </section>
 
         {/* User Segments & North Star */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
-            User Segments & North Star
+        <section className="space-y-5">
+          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
+            User segments & north star
           </h2>
           <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
-                Who Was This Built For?
+            <div className="space-y-3">
+              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
+                Who was this built for?
               </h3>
-              <ul className="list-disc list-inside space-y-2 text-neutral-700 dark:text-neutral-300">
+              <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
                 {caseStudy.userSegments.map((segment, index) => (
                   <li key={index}>{segment}</li>
                 ))}
               </ul>
             </div>
-            <WarmCard
-              padding="lg"
-              className="border border-neutral-200 dark:border-neutral-700"
-            >
-              <h3 className="text-xl font-semibold mb-2 text-neutral-900 dark:text-neutral-100">
-                North Star Metric
+            <div className="home-card p-6 sm:p-8 space-y-2">
+              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
+                North star metric
               </h3>
-              <p className="text-lg text-[var(--color-primary)] font-medium">
+              <p className="mb-0 text-lg font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}>
                 {caseStudy.northStarMetric}
               </p>
-            </WarmCard>
+            </div>
           </div>
         </section>
 
         {/* Problem */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
+        <section className="space-y-5">
+          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
             Problem
           </h2>
-
           <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
+            <div className="space-y-3">
+              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
                 Context
               </h3>
-              <p className="text-neutral-700 dark:text-neutral-300">
+              <p className="mb-0 text-base leading-7" style={bodyStyle}>
                 {caseStudy.problem.context}
               </p>
             </div>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
-                Pain Points
+            <div className="space-y-3">
+              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
+                Pain points
               </h3>
-              <ul className="list-disc list-inside space-y-2 text-neutral-700 dark:text-neutral-300">
+              <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
                 {caseStudy.problem.painPoints.map((point, index) => (
                   <li key={index}>{point}</li>
                 ))}
               </ul>
             </div>
 
-            <WarmCard
-              padding="lg"
-              className="bg-[var(--surface-secondary)] border border-[var(--border-primary)]"
+            <div
+              className="home-card p-6 sm:p-8 space-y-3"
+              style={{ background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)" }}
             >
-              <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
+              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
                 Stakes
               </h3>
-              <p className="text-neutral-700 dark:text-neutral-300">
+              <p className="mb-0 text-base leading-7" style={bodyStyle}>
                 {caseStudy.problem.stakes}
               </p>
-            </WarmCard>
+            </div>
           </div>
         </section>
 
         {/* Process */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
+        <section className="space-y-5">
+          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
             Process
           </h2>
-
           <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
+            <div className="space-y-3">
+              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
                 Approach
               </h3>
-              <p className="text-neutral-700 dark:text-neutral-300">
+              <p className="mb-0 text-base leading-7" style={bodyStyle}>
                 {caseStudy.process.approach}
               </p>
             </div>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
+            <div className="space-y-3">
+              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
                 Methodology
               </h3>
-              <ul className="list-disc list-inside space-y-2 text-neutral-700 dark:text-neutral-300">
+              <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
                 {caseStudy.process.methodology.map((step, index) => (
                   <li key={index}>{step}</li>
                 ))}
@@ -295,11 +345,11 @@ export default function CaseStudyPage({
             </div>
 
             {caseStudy.process.decisions && (
-              <div>
-                <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
-                  Key Decisions
+              <div className="space-y-3">
+                <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
+                  Key decisions
                 </h3>
-                <ul className="list-disc list-inside space-y-2 text-neutral-700 dark:text-neutral-300">
+                <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
                   {caseStudy.process.decisions.map((decision, index) => (
                     <li key={index}>{decision}</li>
                   ))}
@@ -308,79 +358,83 @@ export default function CaseStudyPage({
             )}
 
             {caseStudy.process.collaboration && (
-              <WarmCard
-                padding="lg"
-                className="border border-neutral-200 dark:border-neutral-700"
-              >
-                <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
+              <div className="home-card p-6 sm:p-8 space-y-3">
+                <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
                   Collaboration
                 </h3>
-                <p className="text-neutral-700 dark:text-neutral-300">
+                <p className="mb-0 text-base leading-7" style={bodyStyle}>
                   {caseStudy.process.collaboration}
                 </p>
-              </WarmCard>
+              </div>
             )}
           </div>
         </section>
 
         {/* Tradeoff Analysis */}
         {caseStudy.tradeoffs && caseStudy.tradeoffs.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
-              Tradeoff Analysis
+          <section className="space-y-5">
+            <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
+              Tradeoff analysis
             </h2>
             <div className="space-y-4">
               {caseStudy.tradeoffs.map((tradeoff, index) => (
-                <WarmCard
+                <div
                   key={index}
-                  padding="lg"
-                  className="border border-neutral-200 dark:border-neutral-700"
+                  className="home-card p-6 sm:p-8 space-y-4"
                 >
-                  <h3 className="text-lg font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
+                  <h3 className="text-lg mb-0" style={subsectionTitleStyle}>
                     {tradeoff.decision}
                   </h3>
-                  <div className="grid md:grid-cols-2 gap-4 mb-3">
-                    <div className="p-3 rounded-lg bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/20">
-                      <p className="text-xs font-medium text-[var(--color-primary)] mb-1">
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div
+                      className="rounded-xl p-4 space-y-1"
+                      style={{
+                        background: "color-mix(in srgb, var(--home-haze) 10%, var(--home-paper))",
+                        border: "1px solid color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
+                      }}
+                    >
+                      <p className="mb-0 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)", letterSpacing: "0.1em" }}>
                         Chose
                       </p>
-                      <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+                      <p className="mb-0 text-sm font-semibold" style={strongStyle}>
                         {tradeoff.optionChosen}
                       </p>
                     </div>
-                    <div className="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700">
-                      <p className="text-xs font-medium text-neutral-500 mb-1">
+                    <div
+                      className="rounded-xl p-4 space-y-1"
+                      style={{
+                        background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                        border: "1px solid var(--home-rule)",
+                      }}
+                    >
+                      <p className="mb-0 text-xs font-semibold uppercase tracking-wider" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)", letterSpacing: "0.1em" }}>
                         Rejected
                       </p>
-                      <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                      <p className="mb-0 text-sm" style={bodyStyle}>
                         {tradeoff.optionRejected}
                       </p>
                     </div>
                   </div>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                    <strong className="text-neutral-900 dark:text-neutral-100">
-                      Reasoning:
-                    </strong>{" "}
-                    {tradeoff.reasoning}
+                  <p className="mb-0 text-sm leading-6" style={bodyStyle}>
+                    <strong style={strongStyle}>Reasoning:</strong> {tradeoff.reasoning}
                   </p>
-                </WarmCard>
+                </div>
               ))}
             </div>
           </section>
         )}
 
         {/* Results */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
+        <section className="space-y-5">
+          <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
             Results
           </h2>
-
           <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
+            <div className="space-y-3">
+              <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
                 Outcomes
               </h3>
-              <ul className="list-disc list-inside space-y-2 text-neutral-700 dark:text-neutral-300">
+              <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
                 {caseStudy.result.outcomes.map((outcome, index) => (
                   <li key={index}>{outcome}</li>
                 ))}
@@ -388,86 +442,87 @@ export default function CaseStudyPage({
             </div>
 
             {caseStudy.result.testimonial && (
-              <WarmCard
-                padding="lg"
-                className="bg-[var(--surface-secondary)] border-l-4 border-[var(--color-primary)]"
+              <div
+                className="home-card p-6 sm:p-8 space-y-4"
+                style={{
+                  background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                  borderLeft: "3px solid var(--home-haze)",
+                }}
               >
-                <blockquote className="text-lg italic text-neutral-700 dark:text-neutral-300 mb-4">
+                <blockquote className="mb-0 text-lg italic leading-7" style={bodyStyle}>
                   &ldquo;{caseStudy.result.testimonial.quote}&rdquo;
                 </blockquote>
-                <p className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
-                  &mdash; {caseStudy.result.testimonial.author},{" "}
-                  {caseStudy.result.testimonial.role}
+                <p className="mb-0 text-sm" style={strongStyle}>
+                  — {caseStudy.result.testimonial.author}, {caseStudy.result.testimonial.role}
                 </p>
-              </WarmCard>
+              </div>
             )}
 
-            {caseStudy.result.lessonsLearned &&
-              caseStudy.result.lessonsLearned.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
-                    Lessons Learned
-                  </h3>
-                  <ul className="list-disc list-inside space-y-2 text-neutral-700 dark:text-neutral-300">
-                    {caseStudy.result.lessonsLearned.map((lesson, index) => (
-                      <li key={index}>{lesson}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+            {caseStudy.result.lessonsLearned && caseStudy.result.lessonsLearned.length > 0 && (
+              <div className="space-y-3">
+                <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
+                  Lessons learned
+                </h3>
+                <ul className="mb-0 list-disc space-y-2 pl-5 text-base leading-7" style={bodyStyle}>
+                  {caseStudy.result.lessonsLearned.map((lesson, index) => (
+                    <li key={index}>{lesson}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </section>
 
         {/* Retrospective */}
         {caseStudy.retrospective && (
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
+          <section className="space-y-5">
+            <h2 className="text-3xl mb-0" style={sectionTitleStyle}>
               Retrospective
             </h2>
-            <WarmCard
-              padding="lg"
-              className="bg-[var(--surface-secondary)] border border-[var(--border-primary)]"
+            <div
+              className="home-card p-6 sm:p-8 space-y-3"
+              style={{ background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)" }}
             >
-              <h3 className="text-lg font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
-                What I&apos;d Do Differently
+              <h3 className="text-lg mb-0" style={subsectionTitleStyle}>
+                What I&apos;d do differently
               </h3>
-              <p className="text-neutral-700 dark:text-neutral-300">
+              <p className="mb-0 text-base leading-7" style={bodyStyle}>
                 {caseStudy.retrospective}
               </p>
-            </WarmCard>
+            </div>
           </section>
         )}
 
         {nextCaseStudy && (
-          <footer className="pt-12 border-t border-neutral-200 dark:border-neutral-800">
-            <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-500 mb-4">
-              Next Case Study
-            </h3>
-            <Link href={`/portfolio/${nextCaseStudy.slug}`}>
-              <WarmCard
-                padding="lg"
-                hover={true}
-                className="border border-neutral-200 dark:border-neutral-700 group"
-              >
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="text-xl font-bold mb-2 text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-primary)] transition-colors">
+          <footer
+            className="pt-10"
+            style={{ borderTop: "1px solid var(--home-rule)" }}
+          >
+            <p className="home-kicker mb-3">Next case study</p>
+            <Link href={`/portfolio/${nextCaseStudy.slug}`} className="block group">
+              <div className="home-card home-project-card p-6 sm:p-8 transition-transform duration-200 group-hover:-translate-y-0.5">
+                <div className="flex justify-between items-start gap-6">
+                  <div className="space-y-2">
+                    <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
                       {nextCaseStudy.title}
-                    </h4>
-                    <p className="text-neutral-600 dark:text-neutral-400 mb-2">
+                    </h3>
+                    <p className="mb-0 text-base leading-7" style={bodyStyle}>
                       {nextCaseStudy.description}
                     </p>
-                    <p className="text-sm text-[var(--color-primary)] font-medium">
+                    <p className="mb-0 text-sm font-semibold" style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}>
                       {nextCaseStudy.metrics}
                     </p>
                   </div>
-                  <ArrowRight className="ml-4 h-6 w-6 flex-shrink-0 text-neutral-400 transition-[color,transform] group-hover:translate-x-1 group-hover:text-[var(--color-primary)]" />
+                  <ArrowRight
+                    className="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  />
                 </div>
-              </WarmCard>
+              </div>
             </Link>
           </footer>
         )}
       </article>
-    </div>
+    </section>
   );
 }

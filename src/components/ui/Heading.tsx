@@ -28,7 +28,7 @@ export const Heading = ({
     <HeadingTag
       className={twMerge(
         levelStyles[level],
-        "text-[var(--text-primary)] leading-tight",
+        "text-[var(--home-ink)] leading-tight",
         className
       )}
     >

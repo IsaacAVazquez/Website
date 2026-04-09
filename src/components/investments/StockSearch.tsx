@@ -166,7 +166,7 @@ export function StockSearch({ value, onChange }: Props) {
       <div className="relative">
         <IconSearch
           size={16}
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)] pointer-events-none"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] pointer-events-none"
         />
         <input
           id="stock-search"
@@ -182,7 +182,7 @@ export function StockSearch({ value, onChange }: Props) {
           placeholder="Search symbol or company…"
           autoComplete="off"
           spellCheck={false}
-          className="w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] py-3 pl-9 pr-4 text-sm text-[var(--text-primary)] transition placeholder:text-[var(--text-tertiary)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+          className="w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]"
           aria-label="Search stock symbol"
           aria-autocomplete="list"
           aria-controls="stock-search-listbox"
@@ -199,7 +199,7 @@ export function StockSearch({ value, onChange }: Props) {
           id="stock-search-listbox"
           role="listbox"
           aria-label="Symbol suggestions"
-          className="absolute z-20 mt-2 w-full overflow-hidden rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] shadow-lg"
+          className="absolute z-20 mt-2 w-full overflow-hidden rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] shadow-lg"
         >
           {suggestions.map((entry, indexPosition) => (
             <li key={entry.symbol}>
@@ -210,12 +210,12 @@ export function StockSearch({ value, onChange }: Props) {
                 onMouseDown={() => selectEntry(entry)}
                 className={`flex min-h-[52px] w-full flex-col items-start justify-center px-3 py-2 text-left text-sm transition ${
                   indexPosition === activeIndex
-                    ? "bg-[var(--surface-secondary)] text-[var(--text-primary)]"
-                    : "text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]"
+                    ? "bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
+                    : "text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
                 }`}
               >
                 <span className="font-semibold">{entry.symbol}</span>
-                <span className="text-xs text-[var(--text-secondary)]">
+                <span className="text-xs text-[var(--home-ink-muted)]">
                   {entry.longName !== entry.symbol ? entry.longName : entry.shortName}
                 </span>
               </button>

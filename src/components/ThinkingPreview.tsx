@@ -38,7 +38,7 @@ const pillars = [
 export function ThinkingPreview() {
   return (
     <section
-      className="page-section bg-[var(--surface-secondary)]"
+      className="page-section bg-[var(--home-paper-alt)]"
       aria-label="How I think about product"
     >
       <div className="page-shell">
@@ -60,13 +60,13 @@ export function ThinkingPreview() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {pillars.map((pillar) => (
               <WarmCard key={pillar.title} padding="lg" className="h-full">
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--surface-secondary)] text-[var(--color-primary)]">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--home-paper-alt)] text-[var(--home-haze)]">
                   <pillar.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mb-3 text-lg font-bold text-[var(--text-primary)]">
+                <h3 className="mb-3 text-lg font-bold text-[var(--home-ink)]">
                   {pillar.title}
                 </h3>
-                <p className="mb-0 text-[var(--text-secondary)]">
+                <p className="mb-0 text-[var(--home-ink-muted)]">
                   {pillar.description}
                 </p>
               </WarmCard>

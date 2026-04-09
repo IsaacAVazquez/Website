@@ -176,7 +176,7 @@ function Skeleton() {
         <div className="w-[320px] h-[320px] rounded-full bg-[var(--neutral-200)]" />
       </div>
       {[1, 2, 3, 4].map((i) => (
-        <div key={i} className="rounded-xl border border-[var(--border-primary)] p-5 space-y-3">
+        <div key={i} className="rounded-xl border border-[var(--home-rule)] p-5 space-y-3">
           <div className="h-4 w-32 rounded bg-[var(--neutral-200)]" />
           {[1, 2, 3, 4].map((j) => (
             <div key={j} className="h-8 rounded bg-[var(--neutral-200)]" />
@@ -310,16 +310,16 @@ export function ComparisonTab() {
   // ── Render ─────────────────────────────────────────────────────────────
   return (
     <div className="space-y-6">
-      <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
+      <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-end">
           <div className="flex flex-col gap-2">
-            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
               Stock A
             </label>
             <select
               value={symbolA}
               onChange={(e) => setSymbolA(e.target.value)}
-              className="min-h-[46px] rounded-2xl border border-[var(--color-primary)] bg-[var(--surface-primary)] px-3 py-2 text-sm font-semibold text-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+              className="min-h-[46px] rounded-2xl border border-[var(--home-haze)] bg-[var(--home-paper)] px-3 py-2 text-sm font-semibold text-[var(--home-haze)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]"
               aria-label="Select first stock to compare"
             >
               {SYMBOLS.map((s) => (
@@ -328,18 +328,18 @@ export function ComparisonTab() {
             </select>
           </div>
 
-          <div className="flex min-h-[46px] items-center justify-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+          <div className="flex min-h-[46px] items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
             vs
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+            <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
               Stock B
             </label>
             <select
               value={symbolB}
               onChange={(e) => setSymbolB(e.target.value)}
-              className="min-h-[46px] rounded-2xl border border-[var(--color-warning)] bg-[var(--surface-primary)] px-3 py-2 text-sm font-semibold text-[var(--color-warning)] focus:outline-none focus:ring-2 focus:ring-[var(--color-warning)]"
+              className="min-h-[46px] rounded-2xl border border-[var(--color-warning)] bg-[var(--home-paper)] px-3 py-2 text-sm font-semibold text-[var(--color-warning)] focus:outline-none focus:ring-2 focus:ring-[var(--color-warning)]"
               aria-label="Select second stock to compare"
             >
               {SYMBOLS.map((s) => (
@@ -348,7 +348,7 @@ export function ComparisonTab() {
             </select>
           </div>
         </div>
-        <p className="mt-4 text-sm leading-6 text-[var(--text-secondary)]">
+        <p className="mt-4 text-sm leading-6 text-[var(--home-ink-muted)]">
           Compare valuation, growth, profitability, risk, and DCF upside using the same curated data snapshot for both companies.
         </p>
       </div>
@@ -357,7 +357,7 @@ export function ComparisonTab() {
         <Skeleton />
       ) : (
         <>
-          <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-5 shadow-[var(--shadow-sm)] sm:p-6">
+          <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-5 shadow-[var(--shadow-sm)] sm:p-6">
             <ComparisonRadarChart
               data={radarData}
               symbolA={symbolA}

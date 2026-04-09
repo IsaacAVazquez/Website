@@ -27,8 +27,8 @@ export function DCFPanel({ symbol }: Props) {
 
   return (
     <WarmCard padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1">DCF Fair Value</h3>
-      <p className="text-xs text-[var(--text-tertiary)] mb-4">
+      <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">DCF Fair Value</h3>
+      <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-4">
         Discounted cash flow estimate, for informational purposes only.
       </p>
 
@@ -49,19 +49,19 @@ export function DCFPanel({ symbol }: Props) {
           {/* Key values */}
           <div className="grid grid-cols-3 gap-3 mb-4">
             <div className="text-center">
-              <p className="text-xs text-[var(--text-tertiary)] mb-1">Fair Value</p>
-              <p className="text-lg font-bold text-[var(--text-primary)]">
+              <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-1">Fair Value</p>
+              <p className="text-lg font-bold text-[var(--home-ink)]">
                 {fmt(data.fairValue, "currency")}
               </p>
             </div>
             <div className="text-center">
-              <p className="text-xs text-[var(--text-tertiary)] mb-1">Current Price</p>
-              <p className="text-lg font-bold text-[var(--text-primary)]">
+              <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-1">Current Price</p>
+              <p className="text-lg font-bold text-[var(--home-ink)]">
                 {fmt(data.currentPrice, "currency")}
               </p>
             </div>
             <div className="text-center">
-              <p className="text-xs text-[var(--text-tertiary)] mb-1">Upside</p>
+              <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-1">Upside</p>
               <p
                 className={`text-lg font-bold ${
                   upside >= 0 ? "text-[var(--color-success)]" : "text-[var(--color-error)]"
@@ -82,7 +82,7 @@ export function DCFPanel({ symbol }: Props) {
                     ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
                     : isSell
                     ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-                    : "bg-[var(--surface-secondary)] text-[var(--text-secondary)]"
+                    : "bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]"
                 }`}
               >
                 {rec}
@@ -91,26 +91,26 @@ export function DCFPanel({ symbol }: Props) {
           )}
 
           {/* Assumptions */}
-          <div className="space-y-1.5 text-sm border-t border-[var(--border-primary)] pt-3">
+          <div className="space-y-1.5 text-sm border-t border-[var(--home-rule)] pt-3">
             {data.wacc !== undefined && (
               <div className="flex justify-between">
-                <span className="text-[var(--text-secondary)]">WACC</span>
-                <span className="font-medium text-[var(--text-primary)]">{fmt(data.wacc, "percent")}</span>
+                <span className="text-[var(--home-ink-muted)]">WACC</span>
+                <span className="font-medium text-[var(--home-ink)]">{fmt(data.wacc, "percent")}</span>
               </div>
             )}
             {data.growthEstimates &&
               Object.entries(data.growthEstimates).map(([k, v]) => (
                 <div key={k} className="flex justify-between">
-                  <span className="text-[var(--text-secondary)] capitalize">{k.replace(/_/g, " ")}</span>
-                  <span className="font-medium text-[var(--text-primary)]">{fmt(v, "percent")}</span>
+                  <span className="text-[var(--home-ink-muted)] capitalize">{k.replace(/_/g, " ")}</span>
+                  <span className="font-medium text-[var(--home-ink)]">{fmt(v, "percent")}</span>
                 </div>
               ))}
           </div>
 
           {/* Disclaimer */}
-          <div className="mt-4 flex items-start gap-1.5 p-2.5 rounded-lg bg-[var(--surface-secondary)]">
-            <IconInfoCircle size={14} className="text-[var(--text-tertiary)] shrink-0 mt-0.5" />
-            <p className="text-xs text-[var(--text-tertiary)] leading-relaxed">
+          <div className="mt-4 flex items-start gap-1.5 p-2.5 rounded-lg bg-[var(--home-paper-alt)]">
+            <IconInfoCircle size={14} className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] shrink-0 mt-0.5" />
+            <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] leading-relaxed">
               DCF estimates are based on analyst projections and model assumptions. Not financial
               advice. Past performance is not indicative of future results.
             </p>

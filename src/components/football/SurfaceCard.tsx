@@ -11,7 +11,7 @@ export function SurfaceCard({
   return (
     <div
       className={cn(
-        "rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] shadow-[var(--shadow-sm)]",
+        "rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] shadow-[var(--shadow-sm)]",
         className
       )}
     >

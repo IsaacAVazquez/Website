@@ -76,10 +76,10 @@ export function MetricCallout({
 
   const variants = {
     default: {
-      gradient: 'from-[var(--text-secondary)] to-[var(--text-secondary)]',
-      bg: 'bg-[var(--surface-secondary)]',
-      border: 'border-[var(--border-primary)]',
-      text: 'text-[var(--color-primary)]',
+      gradient: 'from-[var(--home-ink-muted)] to-[var(--home-ink-muted)]',
+      bg: 'bg-[var(--home-paper-alt)]',
+      border: 'border-[var(--home-rule)]',
+      text: 'text-[var(--home-haze)]',
     },
     success: {
       gradient: 'from-[var(--color-success)] to-[var(--color-success)]',
@@ -88,13 +88,13 @@ export function MetricCallout({
       text: 'text-[var(--color-success)]',
     },
     primary: {
-      gradient: 'from-[var(--color-primary)] to-[var(--color-warning)]',
-      bg: 'bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-warning)]/10',
-      border: 'border-[var(--color-primary)]/30',
-      text: 'text-[var(--color-primary)]',
+      gradient: 'from-[var(--home-haze)] to-[var(--color-warning)]',
+      bg: 'bg-gradient-to-br from-[var(--home-haze)]/10 to-[var(--color-warning)]/10',
+      border: 'border-[var(--home-haze)]/30',
+      text: 'text-[var(--home-haze)]',
     },
     warning: {
-      gradient: 'from-[var(--color-warning)] to-[var(--color-primary)]',
+      gradient: 'from-[var(--color-warning)] to-[var(--home-haze)]',
       bg: 'bg-[var(--color-warning)]/10',
       border: 'border-[var(--color-warning)]/30',
       text: 'text-[var(--color-warning)]',
@@ -171,7 +171,7 @@ export function MetricCallout({
         </motion.div>
 
         <div className={cn(
-          "font-medium text-[var(--text-secondary)] mb-1",
+          "font-medium text-[var(--home-ink-muted)] mb-1",
           sizeStyles.label
         )}>
           {label}

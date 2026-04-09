@@ -61,7 +61,7 @@ export function AllocationChart({ holdings }: Props) {
       .join("path")
       .attr("d", arc)
       .attr("fill", (_, i) => PALETTE[i % PALETTE.length])
-      .attr("stroke", "var(--surface-elevated)")
+      .attr("stroke", "color-mix(in srgb, var(--home-paper) 92%, white)")
       .attr("stroke-width", 2)
       .style("cursor", "pointer")
       .style("transition", "opacity 0.15s ease");
@@ -93,13 +93,13 @@ export function AllocationChart({ holdings }: Props) {
     g.append("text")
       .attr("text-anchor", "middle")
       .attr("dy", "-0.3em")
-      .attr("fill", "var(--text-secondary)")
+      .attr("fill", "var(--home-ink-muted)")
       .attr("font-size", "11px")
       .text("Portfolio");
     g.append("text")
       .attr("text-anchor", "middle")
       .attr("dy", "1.1em")
-      .attr("fill", "var(--text-primary)")
+      .attr("fill", "var(--home-ink)")
       .attr("font-size", "13px")
       .attr("font-weight", "600")
       .text(
@@ -117,13 +117,13 @@ export function AllocationChart({ holdings }: Props) {
   return (
     <WarmCard padding="sm" ariaLabel="Portfolio allocation chart" className="rounded-[28px] shadow-[var(--shadow-sm)]">
       <div className="mb-4">
-        <h3 className="text-sm font-semibold text-[var(--text-primary)]">Allocation</h3>
-        <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+        <h3 className="text-sm font-semibold text-[var(--home-ink)]">Allocation</h3>
+        <p className="mt-1 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
           Position weights based on current market value.
         </p>
       </div>
       <div className="flex flex-col gap-5 xl:flex-row xl:items-start">
-        <div className="relative shrink-0 self-center rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-4">
+        <div className="relative shrink-0 self-center rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-4">
           <svg ref={svgRef} />
           <div
             ref={tooltipRef}
@@ -134,13 +134,13 @@ export function AllocationChart({ holdings }: Props) {
 
         <ol className="space-y-1.5 text-sm w-full">
           {data.map((h, i) => (
-            <li key={h.symbol} className="flex items-center gap-2 rounded-[18px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2.5">
+            <li key={h.symbol} className="flex items-center gap-2 rounded-[18px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2.5">
               <span
                 className="w-2.5 h-2.5 rounded-full shrink-0"
                 style={{ backgroundColor: PALETTE[i % PALETTE.length] }}
                 aria-hidden="true"
               />
-              <span className="font-medium text-[var(--text-primary)] w-14 shrink-0">{h.symbol}</span>
+              <span className="font-medium text-[var(--home-ink)] w-14 shrink-0">{h.symbol}</span>
               <div className="flex-1 h-1 rounded-full bg-[var(--neutral-200)] overflow-hidden">
                 <div
                   className="h-full rounded-full"
@@ -150,7 +150,7 @@ export function AllocationChart({ holdings }: Props) {
                   }}
                 />
               </div>
-              <span className="text-[var(--text-secondary)] shrink-0 w-12 text-right">
+              <span className="text-[var(--home-ink-muted)] shrink-0 w-12 text-right">
                 {(h.allocationPercent ?? 0).toFixed(1)}%
               </span>
             </li>

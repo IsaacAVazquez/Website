@@ -33,7 +33,7 @@ const contactMethods = [
 
 export function ContactSection() {
   return (
-    <section id="contact" className="page-section bg-[var(--surface-primary)]">
+    <section id="contact" className="page-section bg-[var(--home-paper)]">
       <div className="page-shell-tight text-center">
         <div>
           <div className="section-panel px-6 py-8 sm:px-8 sm:py-10">
@@ -56,11 +56,11 @@ export function ContactSection() {
                   className="block"
                 >
                   <WarmCard padding="md" hover className="h-full text-center">
-                    <method.icon className="mx-auto mb-4 h-10 w-10 text-[var(--color-primary)]" />
-                    <h3 className="mb-2 text-lg font-bold text-[var(--text-primary)]">
+                    <method.icon className="mx-auto mb-4 h-10 w-10 text-[var(--home-haze)]" />
+                    <h3 className="mb-2 text-lg font-bold text-[var(--home-ink)]">
                       {method.label}
                     </h3>
-                    <span className="text-sm text-[var(--text-secondary)]">
+                    <span className="text-sm text-[var(--home-ink-muted)]">
                       {method.value}
                     </span>
                   </WarmCard>

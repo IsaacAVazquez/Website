@@ -49,7 +49,7 @@ export function IndustryPanel({ symbol }: Props) {
 
   return (
     <WarmCard padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">
+      <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">
         Industry Comparison
       </h3>
 
@@ -69,21 +69,21 @@ export function IndustryPanel({ symbol }: Props) {
         <div className="overflow-x-auto">
           <table className="w-full text-sm min-w-[400px]" aria-label="Industry comparison table">
             <thead>
-              <tr className="border-b border-[var(--border-primary)]">
-                <th className="text-left py-2 text-[var(--text-tertiary)] font-medium">Metric</th>
-                <th className="text-right py-2 text-[var(--text-tertiary)] font-medium">This Stock</th>
-                <th className="text-right py-2 text-[var(--text-tertiary)] font-medium">Industry Avg</th>
-                <th className="text-right py-2 text-[var(--text-tertiary)] font-medium">vs Avg</th>
+              <tr className="border-b border-[var(--home-rule)]">
+                <th className="text-left py-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium">Metric</th>
+                <th className="text-right py-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium">This Stock</th>
+                <th className="text-right py-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium">Industry Avg</th>
+                <th className="text-right py-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium">vs Avg</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, i) => (
-                <tr key={i} className="border-b border-[var(--border-primary)] last:border-0 hover:bg-[var(--surface-secondary)] transition-colors">
-                  <td className="py-2.5 text-[var(--text-secondary)]">{row.metric}</td>
-                  <td className="py-2.5 text-right font-medium text-[var(--text-primary)]">
+                <tr key={i} className="border-b border-[var(--home-rule)] last:border-0 hover:bg-[var(--home-paper-alt)] transition-colors">
+                  <td className="py-2.5 text-[var(--home-ink-muted)]">{row.metric}</td>
+                  <td className="py-2.5 text-right font-medium text-[var(--home-ink)]">
                     {row.value !== undefined ? row.value.toFixed(2) : "—"}
                   </td>
-                  <td className="py-2.5 text-right text-[var(--text-secondary)]">
+                  <td className="py-2.5 text-right text-[var(--home-ink-muted)]">
                     {row.industryAvg !== undefined ? row.industryAvg.toFixed(2) : "—"}
                   </td>
                   <td className="py-2.5 text-right">

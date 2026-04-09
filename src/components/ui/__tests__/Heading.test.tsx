@@ -84,6 +84,6 @@ describe('Heading', () => {
   it('applies text color from CSS variable', () => {
     render(<Heading>Styled</Heading>)
     const heading = screen.getByText('Styled')
-    expect(heading).toHaveClass('text-[var(--text-primary)]')
+    expect(heading).toHaveClass('text-[var(--home-ink)]')
   })
 })

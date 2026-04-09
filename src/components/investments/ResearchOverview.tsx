@@ -89,7 +89,7 @@ function buildSignals({
 function toneClasses(tone: "positive" | "neutral" | "negative") {
   if (tone === "positive") return "border-emerald-200/70 bg-emerald-500/8 text-emerald-700 dark:text-emerald-300";
   if (tone === "negative") return "border-red-200/70 bg-red-500/8 text-red-700 dark:text-red-300";
-  return "border-[var(--border-primary)] bg-[var(--surface-secondary)] text-[var(--text-secondary)]";
+  return "border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]";
 }
 
 export function ResearchOverview({ symbol, showNews = true }: Props) {
@@ -110,67 +110,67 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1.35fr)_minmax(340px,0.95fr)]">
         <WarmCard
           padding="none"
-          className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--color-primary)_16%,var(--border-primary))] shadow-[var(--shadow-sm)]"
+          className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] shadow-[var(--shadow-sm)]"
         >
           <div className="min-w-0 p-5 sm:p-6 lg:p-7">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
               Company Snapshot
             </p>
-            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
+            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
               Start Here
             </h3>
-            <p className="mt-3 max-w-[92ch] text-sm leading-7 text-[var(--text-secondary)]">
+            <p className="mt-3 max-w-[92ch] text-sm leading-7 text-[var(--home-ink-muted)]">
               {info?.longBusinessSummary ??
                 "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics below are still available from the research snapshot."}
             </p>
 
             <div className="mt-5 grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Business Lens
                 </p>
-                <div className="mt-3 space-y-2 text-sm text-[var(--text-secondary)]">
+                <div className="mt-3 space-y-2 text-sm text-[var(--home-ink-muted)]">
                   <div className="flex items-center justify-between gap-4">
                     <span>Sector</span>
-                    <span className="font-medium text-[var(--text-primary)]">{info?.sector ?? "—"}</span>
+                    <span className="font-medium text-[var(--home-ink)]">{info?.sector ?? "—"}</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span>Industry</span>
-                    <span className="font-medium text-[var(--text-primary)]">{info?.industry ?? "—"}</span>
+                    <span className="font-medium text-[var(--home-ink)]">{info?.industry ?? "—"}</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span>Employees</span>
-                    <span className="font-medium text-[var(--text-primary)]">
+                    <span className="font-medium text-[var(--home-ink)]">
                       {info?.fullTimeEmployees?.toLocaleString("en-US") ?? "—"}
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span>Country</span>
-                    <span className="font-medium text-[var(--text-primary)]">{info?.country ?? "—"}</span>
+                    <span className="font-medium text-[var(--home-ink)]">{info?.country ?? "—"}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Operating Read
                 </p>
-                <div className="mt-3 space-y-2 text-sm text-[var(--text-secondary)]">
+                <div className="mt-3 space-y-2 text-sm text-[var(--home-ink-muted)]">
                   <div className="flex items-center justify-between gap-4">
                     <span>ROIC</span>
-                    <span className="font-medium text-[var(--text-primary)]">{formatPercent(profitability?.roic)}</span>
+                    <span className="font-medium text-[var(--home-ink)]">{formatPercent(profitability?.roic)}</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span>ROE</span>
-                    <span className="font-medium text-[var(--text-primary)]">{formatPercent(profitability?.roe)}</span>
+                    <span className="font-medium text-[var(--home-ink)]">{formatPercent(profitability?.roe)}</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span>Net Margin</span>
-                    <span className="font-medium text-[var(--text-primary)]">{formatPercent(margins?.netMargin)}</span>
+                    <span className="font-medium text-[var(--home-ink)]">{formatPercent(margins?.netMargin)}</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span>FCF Margin</span>
-                    <span className="font-medium text-[var(--text-primary)]">{formatPercent(margins?.fcfMargin)}</span>
+                    <span className="font-medium text-[var(--home-ink)]">{formatPercent(margins?.fcfMargin)}</span>
                   </div>
                 </div>
               </div>
@@ -180,16 +180,16 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
 
         <WarmCard
           padding="sm"
-          className="rounded-[30px] border-[color-mix(in_srgb,var(--color-success)_18%,var(--border-primary))] shadow-[var(--shadow-sm)] xl:self-start"
+          className="rounded-[30px] border-[color-mix(in_srgb,var(--color-success)_18%,var(--home-rule))] shadow-[var(--shadow-sm)] xl:self-start"
         >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
             Valuation Read
           </p>
           <div className="mt-4">
-            <p className="text-3xl font-semibold text-[var(--text-primary)]">
+            <p className="text-3xl font-semibold text-[var(--home-ink)]">
               {dcf?.recommendation ?? "Model unavailable"}
             </p>
-            <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+            <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
               {dcf?.upside !== undefined
                 ? `The model currently points to ${formatPercent(dcf.upside, true)} relative to the latest market price.`
                 : "DCF output is not available yet for this symbol."}
@@ -197,26 +197,26 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+            <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Fair Value
               </p>
-              <p className="mt-2 text-xl font-semibold text-[var(--text-primary)]">
+              <p className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
                 {dcf?.fairValue !== undefined ? `$${dcf.fairValue.toFixed(2)}` : "—"}
               </p>
             </div>
-            <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+            <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 WACC
               </p>
-              <p className="mt-2 text-xl font-semibold text-[var(--text-primary)]">
+              <p className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
                 {formatCompactPercent(dcf?.wacc)}
               </p>
             </div>
           </div>
 
-          <div className="mt-6 border-t border-[var(--border-primary)] pt-6">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+          <div className="mt-6 border-t border-[var(--home-rule)] pt-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
               Signals
             </p>
             <div className="mt-4 space-y-3">
@@ -231,32 +231,32 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                   </div>
                 ))
               ) : (
-                <div className="rounded-[24px] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-secondary)]">
+                <div className="rounded-[24px] border border-[var(--home-rule)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
                   Research signals will appear once valuation and operating data are available.
                 </div>
               )}
             </div>
 
             {showNews ? (
-              <div className="mt-4 rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="mt-4 rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Latest Headline
                 </p>
-                <p className="mt-3 line-clamp-4 text-sm font-medium leading-6 text-[var(--text-primary)]">
+                <p className="mt-3 line-clamp-4 text-sm font-medium leading-6 text-[var(--home-ink)]">
                   {leadHeadline?.title ?? "No recent headline in the research dataset."}
                 </p>
                 {leadHeadline?.publisher ? (
-                  <p className="mt-2 text-xs text-[var(--text-secondary)]">
+                  <p className="mt-2 text-xs text-[var(--home-ink-muted)]">
                     {leadHeadline.publisher}
                   </p>
                 ) : null}
               </div>
             ) : (
-              <div className="mt-4 rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="mt-4 rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Snapshot Mode
                 </p>
-                <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">
                   This view is falling back to the available company, valuation,
                   and operating data while the curated headline feed is unavailable.
                 </p>

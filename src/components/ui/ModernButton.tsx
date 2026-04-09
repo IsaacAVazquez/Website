@@ -43,36 +43,38 @@ export const ModernButton = React.memo(function ModernButton({
     "inline-flex items-center justify-center font-semibold rounded-lg",
     "transition-[background-color,border-color,color,box-shadow,transform] duration-200",
     "disabled:opacity-40 disabled:cursor-not-allowed",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)]",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--home-haze)]",
     !disabled && "active:scale-[0.98]",
     fullWidth && "w-full"
   );
 
   const variants = {
     primary: cn(
-      "bg-[var(--neutral-900)] hover:bg-[var(--neutral-800)]",
-      "text-[var(--neutral-50)]",
+      "bg-[var(--home-ink)] hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-paper))]",
+      "text-[var(--home-paper)]",
       "shadow-sm hover:shadow-md"
     ),
     secondary: cn(
-      "bg-[var(--surface-elevated)] hover:bg-[var(--neutral-200)] dark:hover:bg-[var(--neutral-300)]",
-      "text-[var(--text-primary)]",
-      "border border-[var(--border-primary)]",
+      "bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]",
+      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,white)]",
+      "text-[var(--home-ink)]",
+      "border border-[var(--home-rule)]",
       "shadow-sm hover:shadow-md"
     ),
     outline: cn(
-      "border border-[var(--neutral-300)]",
-      "text-[var(--text-primary)]",
-      "hover:bg-[var(--neutral-200)] dark:hover:bg-[var(--neutral-300)] hover:border-[var(--neutral-400)]"
+      "border border-[var(--home-rule)]",
+      "text-[var(--home-ink)]",
+      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]",
+      "hover:border-[color-mix(in_srgb,var(--home-stone)_58%,var(--home-rule))]"
     ),
     ghost: cn(
-      "text-[var(--text-secondary)]",
-      "hover:text-[var(--text-primary)]",
-      "hover:bg-[var(--neutral-200)] dark:hover:bg-[var(--neutral-300)]"
+      "text-[var(--home-ink-muted)]",
+      "hover:text-[var(--home-ink)]",
+      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]"
     ),
     accent: cn(
-      "bg-[var(--color-primary)] hover:bg-[var(--color-secondary)]",
-      "text-white",
+      "bg-[var(--home-haze)] hover:bg-[color-mix(in_srgb,var(--home-haze)_88%,var(--home-ink))]",
+      "text-[var(--home-paper)]",
       "shadow-sm hover:shadow-md"
     ),
   };

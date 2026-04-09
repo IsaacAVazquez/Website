@@ -69,7 +69,7 @@ export function WritingPreview() {
 
   return (
     <section
-      className="py-16 md:py-24 bg-[var(--surface-primary)]"
+      className="py-16 md:py-24 bg-[var(--home-paper)]"
       aria-label="Product thinking and writing"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,15 +93,15 @@ export function WritingPreview() {
               <Link key={post.slug} href={`/writing/${post.slug}`}>
                 <WarmCard padding="md" hover className="h-full group">
                   <div className="space-y-3">
-                    <h3 className="font-bold text-lg text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition-colors">
+                    <h3 className="font-bold text-lg text-[var(--home-ink)] group-hover:text-[var(--home-haze)] transition-colors">
                       {post.title}
                     </h3>
                     {post.excerpt && (
-                      <p className="text-sm text-[var(--text-secondary)] line-clamp-2">
+                      <p className="text-sm text-[var(--home-ink-muted)] line-clamp-2">
                         {post.excerpt}
                       </p>
                     )}
-                    <div className="flex items-center gap-3 text-xs text-[var(--text-tertiary)]">
+                    <div className="flex items-center gap-3 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                       {post.publishedAt && (
                         <span>
                           {new Date(post.publishedAt).toLocaleDateString(

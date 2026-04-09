@@ -15,7 +15,7 @@ export function ErrorState({ message, isNotFetched, onRetry }: ErrorStateProps) 
       {isNotFetched ? (
         <IconInfoCircle
           size={32}
-          style={{ color: "var(--text-tertiary)" }}
+          style={{ color: "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))" }}
           aria-hidden="true"
         />
       ) : (
@@ -28,7 +28,7 @@ export function ErrorState({ message, isNotFetched, onRetry }: ErrorStateProps) 
 
       <p
         className="text-sm max-w-xs"
-        style={{ color: isNotFetched ? "var(--text-tertiary)" : "var(--color-error)" }}
+        style={{ color: isNotFetched ? "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))" : "var(--color-error)" }}
       >
         {message}
       </p>

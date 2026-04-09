@@ -1,8 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/Badge";
-import { ModernButton } from "@/components/ui/ModernButton";
-
 interface SearchFiltersProps {
   type: string;
   category: string;
@@ -11,101 +8,116 @@ interface SearchFiltersProps {
   onClearFilters: () => void;
 }
 
+const contentTypes = [
+  { id: 'all', label: 'All Content' },
+  { id: 'blog', label: 'Blog Posts' },
+  { id: 'project', label: 'Projects' },
+  { id: 'page', label: 'Pages' },
+];
+
+const categories = [
+  { id: 'all', label: 'All Categories' },
+  { id: 'Product Strategy', label: 'Product Strategy' },
+  { id: 'Fantasy Football Analytics', label: 'Fantasy Football' },
+  { id: 'Analytics', label: 'Analytics' },
+  { id: 'Fintech', label: 'Fintech' },
+  { id: 'Sports Data', label: 'Sports Data' },
+];
+
+function getPillStyle(active: boolean) {
+  if (active) {
+    return {
+      background: "var(--home-ink)",
+      color: "var(--home-paper)",
+      border: "1px solid var(--home-ink)",
+    } as const;
+  }
+  return {
+    background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+    color: "var(--home-ink)",
+    border: "1px solid var(--home-rule)",
+  } as const;
+}
+
 export function SearchFilters({
   type,
   category,
   onTypeChange,
   onCategoryChange,
-  onClearFilters
+  onClearFilters,
 }: SearchFiltersProps) {
-  
-  const contentTypes = [
-    { id: 'all', label: 'All Content' },
-    { id: 'blog', label: 'Blog Posts' },
-    { id: 'project', label: 'Projects' },
-    { id: 'page', label: 'Pages' }
-  ];
-
-  const categories = [
-    { id: 'all', label: 'All Categories' },
-    { id: 'Product Strategy', label: 'Product Strategy' },
-    { id: 'Fantasy Football Analytics', label: 'Fantasy Football' },
-    { id: 'Analytics', label: 'Analytics' },
-    { id: 'Fintech', label: 'Fintech' },
-    { id: 'Sports Data', label: 'Sports Data' }
-  ];
-
   const hasActiveFilters = type !== 'all' || category !== 'all';
 
   return (
-    <div className="space-y-4 p-4 bg-slate-50/50 dark:bg-slate-800/25 rounded-lg border border-slate-200/50 dark:border-slate-700/50">
-      {/* Content Type Filter */}
+    <div
+      className="space-y-4 rounded-xl p-4"
+      style={{
+        background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+        border: "1px solid var(--home-rule)",
+      }}
+    >
       <div>
-        <h4 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-          Content Type
-        </h4>
+        <p
+          className="home-kicker mb-2"
+          style={{ marginTop: 0 }}
+        >
+          Content type
+        </p>
         <div className="flex flex-wrap gap-2">
           {contentTypes.map((contentType) => (
             <button
               key={contentType.id}
               onClick={() => onTypeChange(contentType.id)}
-              className={`transition-all duration-200 ${
-                type === contentType.id
-                  ? 'transform scale-105'
-                  : 'hover:scale-105'
-              }`}
+              className="inline-flex min-h-[36px] items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors"
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                letterSpacing: "0.02em",
+                ...getPillStyle(type === contentType.id),
+              }}
             >
-              <Badge
-                variant={type === contentType.id ? 'electric' : 'outline'}
-                size="sm"
-                className="cursor-pointer"
-              >
-                {contentType.label}
-              </Badge>
+              {contentType.label}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Category Filter */}
       <div>
-        <h4 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+        <p
+          className="home-kicker mb-2"
+          style={{ marginTop: 0 }}
+        >
           Category
-        </h4>
+        </p>
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => onCategoryChange(cat.id)}
-              className={`transition-all duration-200 ${
-                category === cat.id
-                  ? 'transform scale-105'
-                  : 'hover:scale-105'
-              }`}
+              className="inline-flex min-h-[36px] items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors"
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                letterSpacing: "0.02em",
+                ...getPillStyle(category === cat.id),
+              }}
             >
-              <Badge
-                variant={category === cat.id ? 'matrix' : 'outline'}
-                size="sm"
-                className="cursor-pointer"
-              >
-                {cat.label}
-              </Badge>
+              {cat.label}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Clear Filters */}
       {hasActiveFilters && (
-        <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-          <ModernButton
+        <div
+          className="pt-3"
+          style={{ borderTop: "1px solid var(--home-rule)" }}
+        >
+          <button
             onClick={onClearFilters}
-            variant="ghost"
-            size="sm"
-            className="text-sm"
+            className="text-sm underline underline-offset-2"
+            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
           >
             Clear all filters
-          </ModernButton>
+          </button>
         </div>
       )}
     </div>

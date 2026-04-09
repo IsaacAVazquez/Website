@@ -86,15 +86,15 @@ function MetricTile({
       ? "text-[var(--color-success)]"
       : tone === "negative"
         ? "text-[var(--color-error)]"
-        : "text-[var(--text-primary)]";
+        : "text-[var(--home-ink)]";
 
   return (
-    <div className="flex min-h-[112px] flex-col justify-between rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)]/70 px-4 py-3">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+    <div className="flex min-h-[112px] flex-col justify-between rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/70 px-4 py-3">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
         {label}
       </p>
       <p className={`mt-3 text-lg font-semibold leading-tight xl:text-xl ${toneClass}`}>{value}</p>
-      {detail ? <p className="mt-1 text-xs text-[var(--text-secondary)]">{detail}</p> : null}
+      {detail ? <p className="mt-1 text-xs text-[var(--home-ink-muted)]">{detail}</p> : null}
     </div>
   );
 }
@@ -152,23 +152,23 @@ export function ResearchSummaryStrip({ symbol }: Props) {
   return (
     <WarmCard
       padding="none"
-      className="relative overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--color-primary)_18%,var(--border-primary))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_8%,var(--surface-elevated))_0%,var(--surface-elevated)_42%,color-mix(in_srgb,var(--color-success)_8%,var(--surface-elevated))_100%)] shadow-[var(--shadow-sm)]"
+      className="relative overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_18%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_8%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_42%,color-mix(in_srgb,var(--color-success)_8%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)] shadow-[var(--shadow-sm)]"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--color-primary)_18%,transparent),transparent_34%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--home-haze)_18%,transparent),transparent_34%)]" />
       <div className="relative p-5 sm:p-6 lg:p-7">
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(300px,360px)] xl:items-start">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--text-secondary)]">
+              <span className="rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 {symbol}
               </span>
               {info?.sector ? (
-                <span className="rounded-full bg-[color-mix(in_srgb,var(--color-primary)_12%,transparent)] px-3 py-1 text-xs font-medium text-[var(--color-primary)]">
+                <span className="rounded-full bg-[color-mix(in_srgb,var(--home-haze)_12%,transparent)] px-3 py-1 text-xs font-medium text-[var(--home-haze)]">
                   {info.sector}
                 </span>
               ) : null}
               {info?.industry ? (
-                <span className="rounded-full bg-[var(--surface-secondary)] px-3 py-1 text-xs text-[var(--text-secondary)]">
+                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-xs text-[var(--home-ink-muted)]">
                   {info.industry}
                 </span>
               ) : null}
@@ -176,18 +176,18 @@ export function ResearchSummaryStrip({ symbol }: Props) {
 
             <div className="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
               <div>
-                <h2 className="text-3xl font-semibold tracking-tight text-[var(--text-primary)] xl:text-[2.15rem]">
+                <h2 className="text-3xl font-semibold tracking-tight text-[var(--home-ink)] xl:text-[2.15rem]">
                   {displayName}
                 </h2>
-                <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
                   Snapshot-backed view of valuation, quality, and market context.
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3.5 shadow-[var(--shadow-sm)]">
+              <div className="rounded-3xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3.5 shadow-[var(--shadow-sm)]">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                       Latest Price
                     </p>
                   </div>
@@ -197,7 +197,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                   />
                 </div>
                 <div className="mt-1 flex items-end gap-3">
-                  <span className="text-2xl font-semibold text-[var(--text-primary)]">
+                  <span className="text-2xl font-semibold text-[var(--home-ink)]">
                     {quoteLoading && displayedPrice === undefined
                       ? "Loading…"
                       : displayedPrice !== undefined
@@ -216,7 +216,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-2 text-xs text-[var(--text-secondary)]">
+                <p className="mt-2 text-xs text-[var(--home-ink-muted)]">
                   {livePrice !== undefined
                     ? `Historical chart through ${formatHistoryAsOf(historicalPriceAsOf)}.`
                     : historicalPriceAsOf
@@ -237,14 +237,14 @@ export function ResearchSummaryStrip({ symbol }: Props) {
             </div>
 
             {info?.longBusinessSummary ? (
-              <p className="mt-4 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] line-clamp-3">
+              <p className="mt-4 max-w-[72ch] text-sm leading-6 text-[var(--home-ink-muted)] line-clamp-3">
                 {info.longBusinessSummary}
               </p>
             ) : null}
           </div>
 
-          <div className="h-full rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-sm)] lg:p-5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+          <div className="h-full rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4 shadow-[var(--shadow-sm)] lg:p-5">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
               Current Read
             </p>
             <p
@@ -253,27 +253,27 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                   ? "text-[var(--color-success)]"
                   : stanceTone === "negative"
                     ? "text-[var(--color-error)]"
-                    : "text-[var(--text-primary)]"
+                    : "text-[var(--home-ink)]"
               }`}
             >
               {stance}
             </p>
-            <div className="mt-3 space-y-2 text-sm text-[var(--text-secondary)]">
+            <div className="mt-3 space-y-2 text-sm text-[var(--home-ink-muted)]">
               <div className="flex items-center justify-between gap-4">
                 <span>DCF upside</span>
-                <span className="font-medium text-[var(--text-primary)]">{formatPercent(dcf?.upside, true)}</span>
+                <span className="font-medium text-[var(--home-ink)]">{formatPercent(dcf?.upside, true)}</span>
               </div>
               <div className="flex items-center justify-between gap-4">
                 <span>Net margin</span>
-                <span className="font-medium text-[var(--text-primary)]">{formatPercent(margins?.netMargin)}</span>
+                <span className="font-medium text-[var(--home-ink)]">{formatPercent(margins?.netMargin)}</span>
               </div>
               <div className="flex items-center justify-between gap-4">
                 <span>ROIC</span>
-                <span className="font-medium text-[var(--text-primary)]">{formatPercent(profitability?.roic)}</span>
+                <span className="font-medium text-[var(--home-ink)]">{formatPercent(profitability?.roic)}</span>
               </div>
               <div className="flex items-center justify-between gap-4">
                 <span>History as of</span>
-                <span className="font-medium text-[var(--text-primary)]">{formatDate(latestPrice?.date)}</span>
+                <span className="font-medium text-[var(--home-ink)]">{formatDate(latestPrice?.date)}</span>
               </div>
             </div>
           </div>

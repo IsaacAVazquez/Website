@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 export function TeamResultPill({ result }: { result: "W" | "D" | "L" }) {
   const colorClass =
     result === "W"
-      ? "border-[color-mix(in_srgb,var(--color-success)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-success)_12%,var(--surface-secondary))] text-[var(--color-success)]"
+      ? "border-[color-mix(in_srgb,var(--color-success)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-success)_12%,var(--home-paper-alt))] text-[var(--color-success)]"
       : result === "D"
-        ? "border-[color-mix(in_srgb,var(--color-primary)_25%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-primary)_10%,var(--surface-secondary))] text-[var(--color-primary)]"
-        : "border-[color-mix(in_srgb,var(--color-danger)_30%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-danger)_10%,var(--surface-secondary))] text-[var(--color-danger)]";
+        ? "border-[color-mix(in_srgb,var(--home-haze)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-paper-alt))] text-[var(--home-haze)]"
+        : "border-[color-mix(in_srgb,var(--color-danger)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-danger)_10%,var(--home-paper-alt))] text-[var(--color-danger)]";
 
   return (
     <span

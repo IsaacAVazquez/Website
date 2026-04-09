@@ -19,11 +19,11 @@ function Field({
 }: { label: string; id: string } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label htmlFor={id} className="block">
-      <span className="block text-xs font-medium text-[var(--text-secondary)] mb-1">{label}</span>
+      <span className="block text-xs font-medium text-[var(--home-ink-muted)] mb-1">{label}</span>
       <input
         id={id}
         name={id}
-        className="w-full px-3 py-2 text-sm rounded-lg border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition"
+        className="w-full px-3 py-2 text-sm rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] placeholder:text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)] focus:border-transparent transition"
         {...props}
       />
     </label>
@@ -81,14 +81,14 @@ export function AddStockForm({ onAdd }: Props) {
     <WarmCard padding="sm" ariaLabel="Add stock form" className="rounded-[28px] shadow-[var(--shadow-sm)]">
       <div className="mb-5 flex items-center justify-between">
         <div>
-          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Add Position</h3>
-          <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+          <h3 className="text-sm font-semibold text-[var(--home-ink)]">Add Position</h3>
+          <p className="mt-1 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
             Save a holding locally to include it in portfolio analytics.
           </p>
         </div>
         <button
           onClick={() => { setOpen(false); setError(null); }}
-          className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
+          className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] hover:text-[var(--home-ink)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
           aria-label="Close add stock form"
         >
           <IconX size={18} />

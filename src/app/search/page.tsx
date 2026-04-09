@@ -1,9 +1,6 @@
 import { Metadata } from "next";
 import { constructMetadata } from "@/lib/seo";
 import { SearchInterfaceClient } from "@/components/search/SearchInterface.client";
-import { Heading } from "@/components/ui/Heading";
-import { Paragraph } from "@/components/ui/Paragraph";
-import { Badge } from "@/components/ui/Badge";
 
 export const metadata: Metadata = constructMetadata({
   title: "Search",
@@ -20,51 +17,106 @@ interface SearchPageProps {
   }>;
 }
 
+const topicPills = [
+  "Product Strategy",
+  "QA Engineering",
+  "Fantasy Football",
+  "Career Playbooks",
+  "AI & Analytics",
+];
+
+const popularQueries = [
+  '"Product manager case studies"',
+  '"QA automation frameworks"',
+  '"Fantasy football tier lists"',
+];
+
+const indexedContent = [
+  "20+ product & QA articles",
+  "Live fantasy football tools",
+  "Contact, resume, and more",
+];
+
+const sectionTitleStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  fontWeight: 600,
+  letterSpacing: "-0.02em",
+} as const;
+
+const bodyStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink-muted)",
+} as const;
+
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const { q, type, category } = await searchParams;
 
   return (
-    <div className="min-h-screen py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--surface-secondary)]">
-      <div className="max-w-4xl mx-auto">
-        <section className="mb-12 space-y-6 text-center">
-          <Heading level={1} className="text-4xl md:text-5xl">
-            Search my portfolio, writing, and tools
-          </Heading>
-          <Paragraph size="lg" className="text-[var(--text-secondary)]">
-            Everything here is searchable, from case studies and writing to fantasy football tools and fintech experiments.
-          </Paragraph>
-          <div className="flex flex-wrap justify-center gap-3">
-            {["Product Strategy", "QA Engineering", "Fantasy Football", "Career Playbooks", "AI & Analytics"].map((topic) => (
-              <Badge key={topic} variant="electric">
+    <section className="home-page home-section min-h-screen" aria-label="Search">
+      <div className="home-shell home-shell-tight space-y-10">
+        <header className="space-y-4">
+          <p className="home-kicker mb-0">Search · Portfolio, writing, tools</p>
+          <h1
+            className="mb-0"
+            style={{
+              fontFamily: "var(--font-home-sans)",
+              fontSize: "clamp(2.4rem, 5.5vw, 4rem)",
+              fontWeight: 600,
+              lineHeight: 0.95,
+              letterSpacing: "-0.06em",
+              color: "var(--home-ink)",
+            }}
+          >
+            Search my portfolio, writing, and tools.
+          </h1>
+          <p className="home-body max-w-[52rem]">
+            Everything here is searchable — from case studies and writing to fantasy football tools and fintech experiments.
+          </p>
+          <div className="flex flex-wrap gap-2 pt-2">
+            {topicPills.map((topic) => (
+              <span
+                key={topic}
+                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                  color: "var(--home-ink)",
+                  border: "1px solid var(--home-rule)",
+                  letterSpacing: "0.02em",
+                }}
+              >
                 {topic}
-              </Badge>
+              </span>
             ))}
           </div>
-          <div className="grid gap-4 text-left md:grid-cols-2">
-            <div className="rounded-xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4">
-              <p className="text-sm font-semibold text-[var(--text-primary)] mb-2">Popular queries</p>
-              <ul className="space-y-1 text-sm text-[var(--text-secondary)]">
-                <li>• "Product manager case studies"</li>
-                <li>• "QA automation frameworks"</li>
-                <li>• "Fantasy football tier lists"</li>
-              </ul>
-            </div>
-            <div className="rounded-xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4">
-              <p className="text-sm font-semibold text-[var(--text-primary)] mb-2">Indexed content</p>
-              <ul className="space-y-1 text-sm text-[var(--text-secondary)]">
-                <li>• 20+ product & QA articles</li>
-                <li>• Live fantasy football tools</li>
-                <li>• Contact, resume, and more</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+        </header>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <article className="home-card p-6 sm:p-7 space-y-3">
+            <p className="home-kicker mb-0">Popular queries</p>
+            <ul className="mb-0 space-y-1.5 text-sm leading-6" style={bodyStyle}>
+              {popularQueries.map((query) => (
+                <li key={query}>• {query}</li>
+              ))}
+            </ul>
+          </article>
+          <article className="home-card p-6 sm:p-7 space-y-3">
+            <p className="home-kicker mb-0">Indexed content</p>
+            <ul className="mb-0 space-y-1.5 text-sm leading-6" style={bodyStyle}>
+              {indexedContent.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </article>
+        </div>
+
         <SearchInterfaceClient
           initialQuery={q}
           initialType={type}
           initialCategory={category}
         />
       </div>
-    </div>
+    </section>
   );
 }

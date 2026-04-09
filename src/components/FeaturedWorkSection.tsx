@@ -8,7 +8,7 @@ export function FeaturedWorkSection() {
 
   return (
     <section
-      className="page-section bg-[var(--surface-primary)]"
+      className="page-section bg-[var(--home-paper)]"
       aria-label="Projects"
     >
       <div className="page-shell">
@@ -30,7 +30,7 @@ export function FeaturedWorkSection() {
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
+            <p className="text-sm leading-relaxed text-[var(--home-ink-muted)]">
               A broader set of product and analytics work lives in the projects section, with full case-study context and project details.
             </p>
             <ModernButton href="/portfolio" variant="outline" size="lg">

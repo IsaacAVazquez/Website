@@ -23,34 +23,34 @@ export function StatCard({
 }) {
   if (variant === "compact") {
     return (
-      <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-4">
+      <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-4">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
             {eyebrow}
           </p>
-          <span className="text-[var(--color-primary)]">{icon}</span>
+          <span className="text-[var(--home-haze)]">{icon}</span>
         </div>
-        <p className="mt-3 text-lg font-semibold text-[var(--text-primary)]">{metric}</p>
-        <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">{detail}</p>
+        <p className="mt-3 text-lg font-semibold text-[var(--home-ink)]">{metric}</p>
+        <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">{detail}</p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-3xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-5 shadow-sm">
+    <div className="rounded-3xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 shadow-sm">
       <div className="flex items-center justify-between gap-3">
-        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
           {eyebrow}
         </span>
-        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--surface-primary)] text-[var(--color-primary)] shadow-sm">
+        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--home-paper)] text-[var(--home-haze)] shadow-sm">
           {icon}
         </span>
       </div>
       {title && (
-        <h3 className="mt-4 text-xl font-bold text-[var(--text-primary)]">{title}</h3>
+        <h3 className="mt-4 text-xl font-bold text-[var(--home-ink)]">{title}</h3>
       )}
-      <p className="mt-2 text-3xl font-bold tracking-tight text-[var(--text-primary)]">{metric}</p>
-      <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{detail}</p>
+      <p className="mt-2 text-3xl font-bold tracking-tight text-[var(--home-ink)]">{metric}</p>
+      <p className="mt-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">{detail}</p>
     </div>
   );
 }

@@ -39,15 +39,15 @@ function compareValues(
 export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) {
   return (
     <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
-      <h3 className="mb-4 text-sm font-semibold text-[var(--text-primary)]">{title}</h3>
+      <h3 className="mb-4 text-sm font-semibold text-[var(--home-ink)]">{title}</h3>
       <div className="overflow-x-auto">
         <table className="w-full text-sm" aria-label={`${title} comparison`}>
           <thead>
-            <tr className="border-b border-[var(--border-primary)]">
-              <th className="text-left py-2 pr-4 text-xs font-medium text-[var(--text-tertiary)] w-1/2">
+            <tr className="border-b border-[var(--home-rule)]">
+              <th className="text-left py-2 pr-4 text-xs font-medium text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] w-1/2">
                 Metric
               </th>
-              <th className="text-right py-2 px-3 text-xs font-medium text-[var(--color-primary)] whitespace-nowrap">
+              <th className="text-right py-2 px-3 text-xs font-medium text-[var(--home-haze)] whitespace-nowrap">
                 {symbolA}
               </th>
               <th className="text-right py-2 pl-3 text-xs font-medium text-[var(--color-warning)] whitespace-nowrap">
@@ -59,8 +59,8 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
             {rows.map((row, i) => {
               const winner = compareValues(row.valueA, row.valueB, row.higherIsBetter);
               return (
-                <tr key={i} className="border-b border-[var(--border-primary)] last:border-0">
-                  <td className="py-2 pr-4 text-[var(--text-secondary)]">{row.label}</td>
+                <tr key={i} className="border-b border-[var(--home-rule)] last:border-0">
+                  <td className="py-2 pr-4 text-[var(--home-ink-muted)]">{row.label}</td>
                   <td className="py-2 px-3 text-right">
                     {winner === "a" ? (
                       <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--color-success)]">
@@ -68,7 +68,7 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
                         <IconTrendingUp size={13} />
                       </span>
                     ) : (
-                      <span className="text-[var(--text-secondary)]">{formatValue(row.valueA)}</span>
+                      <span className="text-[var(--home-ink-muted)]">{formatValue(row.valueA)}</span>
                     )}
                   </td>
                   <td className="py-2 pl-3 text-right">
@@ -78,7 +78,7 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
                         <IconTrendingUp size={13} />
                       </span>
                     ) : (
-                      <span className="text-[var(--text-secondary)]">{formatValue(row.valueB)}</span>
+                      <span className="text-[var(--home-ink-muted)]">{formatValue(row.valueB)}</span>
                     )}
                   </td>
                 </tr>

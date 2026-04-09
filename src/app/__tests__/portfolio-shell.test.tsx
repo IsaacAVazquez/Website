@@ -62,7 +62,7 @@ describe("Portfolio shell page semantics", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /all projects across product, analytics, and tooling/i,
+        name: /product work across saas, analytics, and tooling/i,
       })
     ).toBeVisible();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);

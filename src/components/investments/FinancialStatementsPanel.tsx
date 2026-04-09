@@ -89,7 +89,7 @@ function StatementTable({
 
   const table = normalize(data, period);
   if (!table) {
-    return <p className="text-sm text-[var(--text-tertiary)] py-4">No data available.</p>;
+    return <p className="text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] py-4">No data available.</p>;
   }
 
   // Identify the label column (first string column) vs numeric period columns
@@ -100,14 +100,14 @@ function StatementTable({
     <div className="overflow-x-auto -mx-1">
       <table className="w-full text-xs min-w-[480px]" aria-label={`${section.replace("_", " ")} statement`}>
         <thead>
-          <tr className="border-b border-[var(--border-primary)]">
-            <th className="text-left py-2 px-2 text-[var(--text-tertiary)] font-medium w-40 sticky left-0 bg-[var(--surface-elevated)]">
+          <tr className="border-b border-[var(--home-rule)]">
+            <th className="text-left py-2 px-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium w-40 sticky left-0 bg-[color-mix(in srgb, var(--home-paper) 92%, white)]">
               Metric
             </th>
             {periodCols.map((col) => (
               <th
                 key={col}
-                className="text-right py-2 px-2 text-[var(--text-tertiary)] font-medium whitespace-nowrap"
+                className="text-right py-2 px-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium whitespace-nowrap"
               >
                 {String(col)}
               </th>
@@ -118,9 +118,9 @@ function StatementTable({
           {table.rows.map((row, i) => (
             <tr
               key={i}
-              className="border-b border-[var(--border-primary)] last:border-0 hover:bg-[var(--surface-secondary)] transition-colors"
+              className="border-b border-[var(--home-rule)] last:border-0 hover:bg-[var(--home-paper-alt)] transition-colors"
             >
-              <td className="py-2 px-2 text-[var(--text-secondary)] font-medium sticky left-0 bg-[var(--surface-elevated)] whitespace-nowrap">
+              <td className="py-2 px-2 text-[var(--home-ink-muted)] font-medium sticky left-0 bg-[color-mix(in srgb, var(--home-paper) 92%, white)] whitespace-nowrap">
                 {String(row[labelCol] ?? "")}
               </td>
               {periodCols.map((col) => {
@@ -130,7 +130,7 @@ function StatementTable({
                 return (
                   <td
                     key={col}
-                    className={`py-2 px-2 text-right whitespace-nowrap ${isNeg ? "text-[var(--color-error)]" : "text-[var(--text-primary)]"}`}
+                    className={`py-2 px-2 text-right whitespace-nowrap ${isNeg ? "text-[var(--color-error)]" : "text-[var(--home-ink)]"}`}
                   >
                     {val !== undefined && val !== null && val !== "*" ? formatNum(val) : "—"}
                   </td>
@@ -161,8 +161,8 @@ export function FinancialStatementsPanel({ symbol }: Props) {
               onClick={() => setActiveTab(key)}
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition whitespace-nowrap min-h-[36px] ${
                 activeTab === key
-                  ? "bg-[var(--color-primary)] text-white"
-                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)]"
+                  ? "bg-[var(--home-haze)] text-white"
+                  : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)]"
               }`}
             >
               {label}
@@ -178,8 +178,8 @@ export function FinancialStatementsPanel({ symbol }: Props) {
               onClick={() => setPeriod(p)}
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition capitalize min-h-[36px] ${
                 period === p
-                  ? "bg-[var(--neutral-200)] text-[var(--text-primary)]"
-                  : "text-[var(--text-tertiary)] hover:bg-[var(--surface-secondary)]"
+                  ? "bg-[var(--neutral-200)] text-[var(--home-ink)]"
+                  : "text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] hover:bg-[var(--home-paper-alt)]"
               }`}
             >
               {p.charAt(0).toUpperCase() + p.slice(1)}

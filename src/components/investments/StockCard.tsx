@@ -59,19 +59,19 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
       <div className="mb-4 flex items-start justify-between gap-3">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-base font-bold text-[var(--text-primary)]">{holding.symbol}</span>
+            <span className="text-base font-bold text-[var(--home-ink)]">{holding.symbol}</span>
             {holding.isLoading && (
-              <span className="text-xs text-[var(--text-tertiary)]">Loading…</span>
+              <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Loading…</span>
             )}
           </div>
-          <p className="max-w-[180px] truncate text-xs text-[var(--text-secondary)]">{holding.name}</p>
+          <p className="max-w-[180px] truncate text-xs text-[var(--home-ink-muted)]">{holding.name}</p>
           {holding.error && !holding.isLoading ? (
             <p className="mt-1 max-w-[220px] text-xs text-[var(--color-warning)]">
               Live price unavailable. Using your saved cost basis.
             </p>
           ) : null}
         </div>
-        <div className="shrink-0 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-2 py-1.5">
+        <div className="shrink-0 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2 py-1.5">
           {sparklineData.length >= 2 ? (
             <Sparkline data={sparklineData} width={80} height={30} />
           ) : (
@@ -85,7 +85,7 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
           <div className="h-6 w-20 rounded bg-[var(--neutral-200)] animate-pulse" />
         ) : (
           <>
-            <p className="text-lg font-bold text-[var(--text-primary)]">
+            <p className="text-lg font-bold text-[var(--home-ink)]">
               {fmt(holding.currentPrice, "currency")}
             </p>
             <span className={`text-xs font-semibold px-1.5 py-0.5 rounded-full ${
@@ -102,23 +102,23 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
       {editing ? (
         <div className="mb-4 space-y-3">
           <label className="block">
-            <span className="text-xs text-[var(--text-tertiary)]">Shares</span>
+            <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Shares</span>
             <input
               type="number"
               value={editShares}
               onChange={(e) => setEditShares(e.target.value)}
-              className="w-full mt-0.5 px-2 py-1.5 text-sm rounded border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+              className="w-full mt-0.5 px-2 py-1.5 text-sm rounded border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]"
               min="0"
               step="any"
             />
           </label>
           <label className="block">
-            <span className="text-xs text-[var(--text-tertiary)]">Average Cost ($)</span>
+            <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Average Cost ($)</span>
             <input
               type="number"
               value={editCost}
               onChange={(e) => setEditCost(e.target.value)}
-              className="w-full mt-0.5 px-2 py-1.5 text-sm rounded border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+              className="w-full mt-0.5 px-2 py-1.5 text-sm rounded border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)]"
               min="0"
               step="any"
             />
@@ -127,12 +127,12 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
       ) : (
         <>
           <div className="mb-4 grid grid-cols-2 gap-3 text-sm">
-            <div className="rounded-[20px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-3">
-              <span className="text-[var(--text-tertiary)] text-xs">Market Value</span>
-              <p className="mt-1 font-medium text-[var(--text-primary)]">{fmt(holding.currentValue, "currency")}</p>
+            <div className="rounded-[20px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3">
+              <span className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] text-xs">Market Value</span>
+              <p className="mt-1 font-medium text-[var(--home-ink)]">{fmt(holding.currentValue, "currency")}</p>
             </div>
-            <div className="rounded-[20px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-3">
-              <span className="text-[var(--text-tertiary)] text-xs">Gain / Loss</span>
+            <div className="rounded-[20px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3">
+              <span className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] text-xs">Gain / Loss</span>
               <p className={`mt-1 font-medium ${valueColor}`}>
                 {fmt(holding.gainLoss, "currency")}
               </p>
@@ -140,14 +140,14 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
           </div>
 
           {holding.allocationPercent !== null && (
-            <div className="mb-4 rounded-[20px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-3">
-              <div className="mb-1 flex justify-between text-xs text-[var(--text-tertiary)]">
+            <div className="mb-4 rounded-[20px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3">
+              <div className="mb-1 flex justify-between text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 <span>Allocation</span>
                 <span>{holding.allocationPercent.toFixed(1)}%</span>
               </div>
               <div className="h-1.5 rounded-full bg-[var(--neutral-200)] overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-[var(--color-primary)] transition-all duration-500"
+                  className="h-full rounded-full bg-[var(--home-haze)] transition-all duration-500"
                   style={{ width: `${Math.min(holding.allocationPercent, 100)}%` }}
                   role="progressbar"
                   aria-valuenow={holding.allocationPercent}
@@ -161,7 +161,7 @@ export function StockCard({ holding, onUpdate, onRemove, onResearch }: Props) {
         </>
       )}
 
-      <div className="flex flex-wrap items-center gap-2 border-t border-[var(--border-primary)] pt-3">
+      <div className="flex flex-wrap items-center gap-2 border-t border-[var(--home-rule)] pt-3">
         {editing ? (
           <>
             <ModernButton size="sm" variant="accent" onClick={handleSave} ariaLabel="Save changes">

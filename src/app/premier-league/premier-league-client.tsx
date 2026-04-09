@@ -64,62 +64,62 @@ function getZonePillStyle(zone: ReturnType<typeof getPLZone>): CSSProperties {
   switch (zone) {
     case "champions":
       return {
-        color: "var(--color-primary)",
-        borderColor: "color-mix(in srgb, var(--color-primary) 30%, var(--border-primary))",
-        background: "color-mix(in srgb, var(--color-primary) 10%, var(--surface-secondary))",
+        color: "var(--home-haze)",
+        borderColor: "color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-haze) 10%, var(--home-paper-alt))",
       };
     case "europa":
       return {
         color: "var(--color-warning)",
-        borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--border-primary))",
-        background: "color-mix(in srgb, var(--color-warning) 10%, var(--surface-secondary))",
+        borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--color-warning) 10%, var(--home-paper-alt))",
       };
     case "conference":
       return {
         color: "var(--color-success)",
-        borderColor: "color-mix(in srgb, var(--color-success) 30%, var(--border-primary))",
-        background: "color-mix(in srgb, var(--color-success) 10%, var(--surface-secondary))",
+        borderColor: "color-mix(in srgb, var(--color-success) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper-alt))",
       };
     case "relegation":
       return {
         color: "var(--color-error, var(--color-danger))",
-        borderColor: "color-mix(in srgb, var(--color-danger) 30%, var(--border-primary))",
-        background: "color-mix(in srgb, var(--color-danger) 10%, var(--surface-secondary))",
+        borderColor: "color-mix(in srgb, var(--color-danger) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--color-danger) 10%, var(--home-paper-alt))",
       };
     default:
-      return { color: "var(--text-secondary)", borderColor: "var(--border-primary)", background: "var(--surface-secondary)" };
+      return { color: "var(--home-ink-muted)", borderColor: "var(--home-rule)", background: "var(--home-paper-alt)" };
   }
 }
 
 function getZoneDotColor(zone: ReturnType<typeof getPLZone>): string {
   switch (zone) {
-    case "champions": return "var(--color-primary)";
+    case "champions": return "var(--home-haze)";
     case "europa": return "var(--color-warning)";
     case "conference": return "var(--color-success)";
     case "relegation": return "var(--color-danger)";
-    default: return "var(--border-primary)";
+    default: return "var(--home-rule)";
   }
 }
 
 function getTableRowStyle(isSelected: boolean): CSSProperties {
   if (isSelected) {
     return {
-      borderColor: "color-mix(in srgb, var(--color-primary) 35%, var(--border-primary))",
-      background: "color-mix(in srgb, var(--color-primary) 9%, var(--surface-secondary))",
+      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
     };
   }
-  return { borderColor: "var(--border-primary)", background: "var(--surface-secondary)" };
+  return { borderColor: "var(--home-rule)", background: "var(--home-paper-alt)" };
 }
 
 function getViewButtonStyle(isActive: boolean): CSSProperties {
   if (isActive) {
     return {
-      borderColor: "color-mix(in srgb, var(--color-primary) 35%, var(--border-primary))",
-      background: "color-mix(in srgb, var(--color-primary) 9%, var(--surface-secondary))",
+      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
       boxShadow: "var(--shadow-sm)",
     };
   }
-  return { borderColor: "var(--border-primary)", background: "var(--surface-secondary)" };
+  return { borderColor: "var(--home-rule)", background: "var(--home-paper-alt)" };
 }
 
 const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -216,12 +216,12 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
   const lastUpdated = formatGeneratedAt(summary.generatedAt);
 
   return (
-    <section className="page-section relative overflow-hidden bg-[var(--surface-primary)]">
+    <section className="page-section relative overflow-hidden bg-[var(--home-paper)]">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-[26rem] opacity-90"
         style={{
-          background: "radial-gradient(circle at top, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 56%)",
+          background: "radial-gradient(circle at top, color-mix(in srgb, var(--home-haze) 18%, transparent), transparent 56%)",
         }}
       />
 
@@ -235,7 +235,7 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
             description="I track the Premier League title race, European qualification gaps, and relegation fight here. Updated weekly from football-data.org."
           />
 
-          <div className="mt-6 flex flex-wrap gap-3 text-sm text-[var(--text-secondary)]">
+          <div className="mt-6 flex flex-wrap gap-3 text-sm text-[var(--home-ink-muted)]">
             <InfoChip label={`Season ${summary.competition?.seasonLabel ?? "2025/26"}`} />
             {summary.competition?.currentMatchday && (
               <InfoChip label={`Matchday ${summary.competition.currentMatchday}`} />
@@ -280,9 +280,9 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.55fr)_minmax(300px,0.95fr)]">
           {/* Standings */}
           <section className="section-panel p-5 sm:p-6">
-            <div className="flex items-center justify-between border-b border-[var(--border-primary)] pb-4">
-              <h2 className="text-lg font-bold text-[var(--text-primary)]">Standings</h2>
-              <span className="text-sm text-[var(--text-secondary)]">{visibleStandings.length} clubs</span>
+            <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
+              <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
+              <span className="text-sm text-[var(--home-ink-muted)]">{visibleStandings.length} clubs</span>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
@@ -298,8 +298,8 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                     className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
                     style={getViewButtonStyle(isActive)}
                   >
-                    <span className="text-[var(--text-primary)]">{PREMIER_LEAGUE_VIEW_LABELS[key]}</span>
-                    <span className="text-xs text-[var(--text-tertiary)]">{count}</span>
+                    <span className="text-[var(--home-ink)]">{PREMIER_LEAGUE_VIEW_LABELS[key]}</span>
+                    <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">{count}</span>
                   </button>
                 );
               })}
@@ -308,7 +308,7 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
             <div className="mt-6 overflow-x-auto">
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="Premier League standings">
                 <thead>
-                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                     <th className="px-3 py-2 font-semibold">Pos</th>
                     <th className="px-3 py-2 font-semibold">Club</th>
                     <th className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
@@ -327,7 +327,7 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                     return (
                       <tr
                         key={row.team.id}
-                        className="border border-[var(--border-primary)]"
+                        className="border border-[var(--home-rule)]"
                         style={getTableRowStyle(isSelected)}
                       >
                         <td className="rounded-l-2xl px-3 py-3 align-middle">
@@ -337,7 +337,7 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                               style={{ backgroundColor: getZoneDotColor(zone) }}
                               title={getZoneLabel(zone)}
                             />
-                            <span className="text-sm font-semibold text-[var(--text-primary)]">{row.position}</span>
+                            <span className="text-sm font-semibold text-[var(--home-ink)]">{row.position}</span>
                           </div>
                         </td>
                         <td className="px-3 py-3 align-middle">
@@ -349,32 +349,32 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                             className="flex min-h-[44px] w-full items-center gap-2 rounded-xl text-left"
                           >
                             <CrestAvatar crest={row.team.crest} name={row.team.shortName} size="sm" />
-                            <span className="font-semibold text-[var(--text-primary)]">{row.team.shortName}</span>
+                            <span className="font-semibold text-[var(--home-ink)]">{row.team.shortName}</span>
                           </button>
                         </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--text-secondary)] sm:table-cell">
+                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] sm:table-cell">
                           {row.won}-{row.draw}-{row.lost}
                         </td>
-                        <td className="px-3 py-3 align-middle text-sm font-semibold text-[var(--text-primary)]">
+                        <td className="px-3 py-3 align-middle text-sm font-semibold text-[var(--home-ink)]">
                           {row.points}
                         </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--text-secondary)] md:table-cell">
+                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] md:table-cell">
                           {formatFixed(row.points / row.playedGames)}
                         </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--text-secondary)] lg:table-cell">
+                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] lg:table-cell">
                           {row.goalsFor}
                         </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--text-secondary)] lg:table-cell">
+                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] lg:table-cell">
                           {row.goalsAgainst}
                         </td>
-                        <td className="px-3 py-3 align-middle text-sm font-medium text-[var(--text-primary)]">
+                        <td className="px-3 py-3 align-middle text-sm font-medium text-[var(--home-ink)]">
                           {row.goalDifference > 0 ? `+${row.goalDifference}` : row.goalDifference}
                         </td>
                         <td className="hidden rounded-r-2xl px-3 py-3 align-middle xl:table-cell">
                           {leader && (
-                            <div className="h-2.5 w-28 rounded-full bg-[var(--surface-primary)]">
+                            <div className="h-2.5 w-28 rounded-full bg-[var(--home-paper)]">
                               <div
-                                className="h-full rounded-full bg-[var(--color-primary)] transition-[width]"
+                                className="h-full rounded-full bg-[var(--home-haze)] transition-[width]"
                                 style={{ width: `${(row.points / leader.points) * 100}%` }}
                               />
                             </div>
@@ -396,11 +396,11 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                   <div className="flex items-center gap-4">
                     <CrestAvatar crest={selectedRow.team.crest} name={selectedRow.team.shortName} size="lg" />
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Club snapshot</p>
-                      <h2 className="mt-1 text-2xl font-bold text-[var(--text-primary)]">{selectedRow.team.name}</h2>
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Club snapshot</p>
+                      <h2 className="mt-1 text-2xl font-bold text-[var(--home-ink)]">{selectedRow.team.name}</h2>
                     </div>
                   </div>
-                  <div className="rounded-2xl bg-[var(--color-primary)] px-4 py-3 text-right text-[var(--text-inverse)] shadow-sm flex-shrink-0">
+                  <div className="rounded-2xl bg-[var(--home-haze)] px-4 py-3 text-right text-[var(--home-paper)] shadow-sm flex-shrink-0">
                     <p className="text-xs uppercase tracking-[0.14em] opacity-80">Position</p>
                     <p className="text-2xl font-bold">{selectedRow.position}</p>
                   </div>
@@ -413,10 +413,10 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                   >
                     {getZoneLabel(selectedZone)}
                   </span>
-                  <span className="inline-flex items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-secondary)]">
+                  <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                     {selectedRow.points} points
                   </span>
-                  <span className="inline-flex items-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-secondary)]">
+                  <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
                     {38 - selectedRow.playedGames} matches left
                   </span>
                 </div>
@@ -434,7 +434,7 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                   <>
                     {teamSnapshot.form.sequence.length > 0 && (
                       <div className="mt-6">
-                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Recent form</p>
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Recent form</p>
                         <div className="mt-3 flex flex-wrap gap-2">
                           {teamSnapshot.form.sequence.map((result, i) => (
                             <TeamResultPill key={`${result}-${i}`} result={result} />
@@ -445,7 +445,7 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
 
                     {teamSnapshot.recentFixtures.length > 0 && (
                       <div className="mt-6">
-                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Recent results</p>
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Recent results</p>
                         <div className="space-y-2">
                           {teamSnapshot.recentFixtures.slice(0, 3).map((fixture) => (
                             <FixtureCard
@@ -461,7 +461,7 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
 
                     {teamSnapshot.upcomingFixtures.length > 0 && (
                       <div className="mt-6">
-                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Upcoming fixtures</p>
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Upcoming fixtures</p>
                         <div className="space-y-2">
                           {teamSnapshot.upcomingFixtures.slice(0, 3).map((fixture) => (
                             <FixtureCard key={fixture.id} fixture={fixture} contextTeamId={selectedTeamId} compact />
@@ -479,14 +479,14 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
               <section className="section-panel p-5 sm:p-6">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Goals leaderboard</p>
-                    <h3 className="mt-2 text-xl font-bold text-[var(--text-primary)]">Top scorers</h3>
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Goals leaderboard</p>
+                    <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
                   </div>
                   <a
                     href="https://www.premierleague.com/stats/top/players/goals"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--color-primary)]"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-haze)]"
                   >
                     Official
                     <ExternalLink className="h-4 w-4" />
@@ -503,9 +503,9 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
           <div className="grid gap-6 md:grid-cols-2">
             {summary.recentFixtures.length > 0 && (
               <SurfaceCard className="p-5 sm:p-6">
-                <div className="border-b border-[var(--border-primary)] pb-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Recent slate</p>
-                  <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Latest results</h3>
+                <div className="border-b border-[var(--home-rule)] pb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Recent slate</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
                 </div>
                 <div className="mt-4 space-y-3">
                   {summary.recentFixtures.slice(0, 6).map((f) => (
@@ -516,9 +516,9 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
             )}
             {summary.upcomingFixtures.length > 0 && (
               <SurfaceCard className="p-5 sm:p-6">
-                <div className="border-b border-[var(--border-primary)] pb-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">Next up</p>
-                  <h3 className="mt-2 text-xl font-semibold text-[var(--text-primary)]">Upcoming fixtures</h3>
+                <div className="border-b border-[var(--home-rule)] pb-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Next up</p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
                 </div>
                 <div className="mt-4 space-y-3">
                   {summary.upcomingFixtures.slice(0, 6).map((f) => (

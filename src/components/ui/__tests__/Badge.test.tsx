@@ -11,8 +11,8 @@ describe('Badge', () => {
   it('applies default variant', () => {
     const { container } = render(<Badge>Default</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('bg-[var(--color-primary)]/10')
-    expect(badge).toHaveClass('text-[var(--color-primary)]')
+    expect(badge).toHaveClass('bg-[var(--home-haze)]/10')
+    expect(badge).toHaveClass('text-[var(--home-haze)]')
   })
 
   it('applies success variant correctly', () => {
@@ -32,7 +32,7 @@ describe('Badge', () => {
   it('applies outline variant correctly', () => {
     const { container } = render(<Badge variant="outline">Outline</Badge>)
     const badge = container.firstChild as HTMLElement
-    expect(badge).toHaveClass('border-[var(--border-primary)]')
+    expect(badge).toHaveClass('border-[var(--home-rule)]')
   })
 
   it('applies default size (sm)', () => {

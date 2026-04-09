@@ -18,7 +18,7 @@ function formatDate(raw: string | undefined): string {
 
 function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <div className="py-3 border-b border-[var(--border-primary)] last:border-0">
+    <div className="py-3 border-b border-[var(--home-rule)] last:border-0">
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">
           {item.link ? (
@@ -26,20 +26,20 @@ function NewsCard({ item }: { item: NewsItem }) {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--color-primary)] transition line-clamp-2 flex items-center gap-1"
+              className="text-sm font-medium text-[var(--home-ink)] hover:text-[var(--home-haze)] transition line-clamp-2 flex items-center gap-1"
             >
               {item.title}
-              <IconExternalLink size={12} className="shrink-0 text-[var(--text-tertiary)]" />
+              <IconExternalLink size={12} className="shrink-0 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]" />
             </a>
           ) : (
-            <p className="text-sm font-medium text-[var(--text-primary)] line-clamp-2">{item.title}</p>
+            <p className="text-sm font-medium text-[var(--home-ink)] line-clamp-2">{item.title}</p>
           )}
           <div className="flex items-center gap-2 mt-1">
             {item.publisher && (
-              <span className="text-xs text-[var(--text-tertiary)]">{item.publisher}</span>
+              <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">{item.publisher}</span>
             )}
             {item.reportDate && (
-              <span className="text-xs text-[var(--text-tertiary)]">{formatDate(item.reportDate)}</span>
+              <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">{formatDate(item.reportDate)}</span>
             )}
           </div>
         </div>
@@ -54,7 +54,7 @@ export function NewsPanel({ symbol }: Props) {
 
   return (
     <WarmCard padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Latest News</h3>
+      <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">Latest News</h3>
 
       {isLoading && (
         <div className="space-y-3">

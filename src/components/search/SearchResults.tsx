@@ -1,10 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Heading } from "@/components/ui/Heading";
-import { Paragraph } from "@/components/ui/Paragraph";
-import { WarmCard } from "@/components/ui/WarmCard";
-import { Badge } from "@/components/ui/Badge";
 import { IconClock, IconSearch, IconFileText, IconBriefcase, IconHome } from "@tabler/icons-react";
 import type { SearchResult } from "./SearchInterface";
 
@@ -17,25 +13,56 @@ interface SearchResultsProps {
   searchTime: number;
 }
 
+const sectionTitleStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  fontWeight: 600,
+  letterSpacing: "-0.02em",
+} as const;
+
+const bodyStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink-muted)",
+} as const;
+
+const strongBodyStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  fontWeight: 600,
+} as const;
+
+const tagPillStyle = {
+  fontFamily: "var(--font-home-sans)",
+  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+  color: "var(--home-ink)",
+  border: "1px solid var(--home-rule)",
+  letterSpacing: "0.02em",
+} as const;
+
 export function SearchResults({
   query,
   results,
   isLoading,
   hasSearched,
   totalResults,
-  searchTime
+  searchTime,
 }: SearchResultsProps) {
-  
   if (isLoading) {
     return (
-      <div className="space-y-4">
-        <div className="flex items-center justify-center py-12">
-          <div className="flex items-center space-x-3">
-            <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary border-t-transparent"></div>
-            <span className="text-slate-600 dark:text-slate-400">Searching...</span>
+      <article className="home-card p-6 sm:p-8">
+        <div className="flex items-center justify-center py-8">
+          <div className="flex items-center gap-3">
+            <div
+              className="h-5 w-5 animate-spin rounded-full border-2 border-t-transparent"
+              style={{ borderColor: "var(--home-ink)", borderTopColor: "transparent" }}
+              aria-hidden="true"
+            />
+            <span className="text-sm" style={bodyStyle}>
+              Searching…
+            </span>
           </div>
         </div>
-      </div>
+      </article>
     );
   }
 
@@ -45,22 +72,30 @@ export function SearchResults({
 
   if (hasSearched && results.length === 0) {
     return (
-      <WarmCard hover={false} padding="md" className="text-center py-12">
-        <div className="max-w-md mx-auto">
-          <IconSearch className="w-16 h-16 text-slate-400 mx-auto mb-4" />
-          <Heading level={3} className="mb-2">
+      <article className="home-card p-6 sm:p-10 text-center">
+        <div className="mx-auto max-w-md space-y-4">
+          <IconSearch
+            className="mx-auto h-12 w-12"
+            style={{ color: "var(--home-ink-muted)" }}
+            aria-hidden="true"
+          />
+          <h3 className="text-xl mb-0" style={sectionTitleStyle}>
             No results found
-          </Heading>
-          <Paragraph className="text-slate-600 dark:text-slate-400 mb-6">
+          </h3>
+          <p className="mb-0 text-base leading-7" style={bodyStyle}>
             {query ? (
-              <>No results found for "<strong>{query}</strong>". Try different keywords or remove filters.</>
+              <>
+                No results for &ldquo;<strong style={strongBodyStyle}>{query}</strong>&rdquo;. Try different keywords or remove filters.
+              </>
             ) : (
               "Please enter a search query to find content."
             )}
-          </Paragraph>
-          <div className="space-y-2">
-            <p className="text-sm text-slate-500 dark:text-slate-400">Suggestions:</p>
-            <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+          </p>
+          <div className="space-y-2 pt-2 text-left">
+            <p className="mb-0 text-sm" style={{ ...sectionTitleStyle, fontSize: "0.88rem" }}>
+              Suggestions
+            </p>
+            <ul className="mb-0 space-y-1 text-sm leading-6" style={bodyStyle}>
               <li>• Try broader or different keywords</li>
               <li>• Check spelling and try again</li>
               <li>• Remove filters to expand results</li>
@@ -68,41 +103,39 @@ export function SearchResults({
             </ul>
           </div>
         </div>
-      </WarmCard>
+      </article>
     );
   }
 
   return (
     <div className="space-y-6">
-      {/* Results Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <Heading level={2} className="text-xl">
-            Search Results
-          </Heading>
-          <Paragraph className="text-slate-600 dark:text-slate-400">
-            {totalResults.toLocaleString()} result{totalResults !== 1 ? 's' : ''} found
-            {query && (
-              <> for "<span className="font-medium text-slate-900 dark:text-slate-100">{query}</span>"</>
-            )}
-            <span className="ml-2 text-sm">
-              ({searchTime}ms)
-            </span>
-          </Paragraph>
-        </div>
+      <div className="space-y-2">
+        <p className="home-kicker mb-0">Results</p>
+        <h2 className="text-2xl mb-0" style={sectionTitleStyle}>
+          {totalResults.toLocaleString()} result{totalResults !== 1 ? 's' : ''} found
+          {query ? (
+            <>
+              {' '}for &ldquo;<span style={{ color: "var(--home-ink)" }}>{query}</span>&rdquo;
+            </>
+          ) : null}
+        </h2>
+        <p className="mb-0 text-sm" style={bodyStyle}>
+          Returned in {searchTime}ms
+        </p>
       </div>
 
-      {/* Results List */}
       <div className="space-y-4">
         {results.map((result) => (
           <SearchResultCard key={result.id} result={result} query={query} />
         ))}
       </div>
 
-      {/* Load More (if needed) */}
       {results.length < totalResults && (
         <div className="text-center">
-          <button className="text-primary hover:underline text-sm">
+          <button
+            className="text-sm underline underline-offset-2"
+            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
+          >
             Load more results
           </button>
         </div>
@@ -120,108 +153,113 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'blog':
-        return <IconFileText className="w-4 h-4" />;
+        return <IconFileText className="w-3.5 h-3.5" aria-hidden="true" />;
       case 'project':
-        return <IconBriefcase className="w-4 h-4" />;
+        return <IconBriefcase className="w-3.5 h-3.5" aria-hidden="true" />;
       default:
-        return <IconHome className="w-4 h-4" />;
+        return <IconHome className="w-3.5 h-3.5" aria-hidden="true" />;
     }
   };
 
-  const getTypeColor = (type: string): "electric" | "matrix" | "outline" => {
-    switch (type) {
-      case 'blog':
-        return 'electric';
-      case 'project':
-        return 'matrix';
-      default:
-        return 'outline';
-    }
+  const highlightQuery = (text: string, q: string): string => {
+    if (!q) return text;
+    const regex = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(
+      regex,
+      '<mark style="background-color: color-mix(in srgb, var(--home-acid) 40%, transparent); color: var(--home-ink); padding: 0 2px; border-radius: 2px;">$1</mark>'
+    );
   };
 
-  const highlightQuery = (text: string, query: string): string => {
-    if (!query) return text;
-    
-    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-    return text.replace(regex, '<mark class="bg-yellow-200 dark:bg-yellow-800 px-1 rounded">$1</mark>');
-  };
+  const typePillStyle = {
+    fontFamily: "var(--font-home-sans)",
+    background: "var(--home-ink)",
+    color: "var(--home-paper)",
+    letterSpacing: "0.02em",
+  } as const;
 
   return (
-    <WarmCard hover={false} padding="md" className="p-6 hover:translate-x-1 transition-transform duration-200">
-      <Link href={result.url} className="block">
-        <div className="space-y-3">
-          {/* Header */}
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-2">
-                <Badge variant={getTypeColor(result.type)} size="sm">
-                  <span className="flex items-center gap-1">
-                    {getTypeIcon(result.type)}
-                    {result.type.charAt(0).toUpperCase() + result.type.slice(1)}
-                  </span>
-                </Badge>
-                {result.category && (
-                  <Badge variant="outline" size="sm">
-                    {result.category}
-                  </Badge>
-                )}
-              </div>
-              
-              <Heading 
-                level={3} 
-                className="text-lg text-primary hover:text-success transition-colors line-clamp-2"
+    <article className="home-card p-6 transition-transform duration-200 hover:translate-x-1">
+      <Link href={result.url} className="block space-y-3">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1 min-w-0 space-y-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold"
+                style={typePillStyle}
               >
-                <span 
-                  dangerouslySetInnerHTML={{ 
-                    __html: highlightQuery(result.title, query) 
-                  }} 
-                />
-              </Heading>
-            </div>
-            
-            <div className="text-right text-sm text-slate-500 dark:text-slate-400 flex-shrink-0">
-              {result.publishedAt && (
-                <div className="flex items-center gap-1">
-                  <IconClock className="w-3 h-3" />
-                  {new Date(result.publishedAt).toLocaleDateString()}
-                </div>
+                {getTypeIcon(result.type)}
+                {result.type.charAt(0).toUpperCase() + result.type.slice(1)}
+              </span>
+              {result.category && (
+                <span
+                  className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                  style={tagPillStyle}
+                >
+                  {result.category}
+                </span>
               )}
             </div>
+
+            <h3
+              className="text-lg mb-0 line-clamp-2"
+              style={sectionTitleStyle}
+            >
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: highlightQuery(result.title, query),
+                }}
+              />
+            </h3>
           </div>
 
-          {/* Excerpt */}
-          <Paragraph 
-            className="text-slate-600 dark:text-slate-400 line-clamp-3"
-          >
-            <span 
-              dangerouslySetInnerHTML={{ 
-                __html: highlightQuery(result.excerpt, query) 
-              }} 
-            />
-          </Paragraph>
-
-          {/* Tags */}
-          {result.tags && result.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1">
-              {result.tags.slice(0, 4).map((tag) => (
-                <Badge key={tag} variant="ghost" size="sm">
-                  {tag}
-                </Badge>
-              ))}
-              {result.tags.length > 4 && (
-                <Badge variant="ghost" size="sm">
-                  +{result.tags.length - 4} more
-                </Badge>
-              )}
+          {result.publishedAt && (
+            <div
+              className="flex items-center gap-1 text-xs flex-shrink-0"
+              style={bodyStyle}
+            >
+              <IconClock className="w-3 h-3" aria-hidden="true" />
+              {new Date(result.publishedAt).toLocaleDateString()}
             </div>
           )}
+        </div>
 
-          {/* URL Preview */}
-          <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
-            isaacavazquez.com{result.url}
+        <p className="mb-0 text-sm leading-6 line-clamp-3" style={bodyStyle}>
+          <span
+            dangerouslySetInnerHTML={{
+              __html: highlightQuery(result.excerpt, query),
+            }}
+          />
+        </p>
+
+        {result.tags && result.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5">
+            {result.tags.slice(0, 4).map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                style={tagPillStyle}
+              >
+                {tag}
+              </span>
+            ))}
+            {result.tags.length > 4 && (
+              <span
+                className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                style={tagPillStyle}
+              >
+                +{result.tags.length - 4} more
+              </span>
+            )}
           </div>
+        )}
+
+        <div
+          className="text-xs truncate"
+          style={{ ...bodyStyle, opacity: 0.75 }}
+        >
+          isaacavazquez.com{result.url}
         </div>
       </Link>
-    </WarmCard>
+    </article>
   );
 }

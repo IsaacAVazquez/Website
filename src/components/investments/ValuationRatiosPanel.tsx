@@ -27,16 +27,16 @@ function CompareRow({ label, value, industryAvg }: { label: string; value: numbe
   const hasComparison = value !== undefined && industryAvg !== undefined && !isNaN(value) && !isNaN(industryAvg);
   const better = hasComparison ? value <= industryAvg : null; // lower P/E = better (rule of thumb)
   return (
-    <div className="flex items-center gap-3 py-2.5 border-b border-[var(--border-primary)] last:border-0">
-      <span className="text-sm text-[var(--text-secondary)] flex-1">{label}</span>
+    <div className="flex items-center gap-3 py-2.5 border-b border-[var(--home-rule)] last:border-0">
+      <span className="text-sm text-[var(--home-ink-muted)] flex-1">{label}</span>
       <div className="flex items-center gap-4 shrink-0">
         <div className="text-right">
-          <p className="text-xs text-[var(--text-tertiary)]">Stock</p>
-          <p className="text-sm font-semibold text-[var(--text-primary)]">{fmt(value)}</p>
+          <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Stock</p>
+          <p className="text-sm font-semibold text-[var(--home-ink)]">{fmt(value)}</p>
         </div>
         <div className="text-right">
-          <p className="text-xs text-[var(--text-tertiary)]">Industry</p>
-          <p className="text-sm text-[var(--text-secondary)]">{fmt(industryAvg)}</p>
+          <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Industry</p>
+          <p className="text-sm text-[var(--home-ink-muted)]">{fmt(industryAvg)}</p>
         </div>
         {hasComparison && (
           <span
@@ -73,13 +73,13 @@ function StandaloneMetric({
   detail?: string;
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
         {label}
       </p>
-      <p className="mt-2 text-lg font-semibold text-[var(--text-primary)]">{value}</p>
+      <p className="mt-2 text-lg font-semibold text-[var(--home-ink)]">{value}</p>
       {detail ? (
-        <p className="mt-1 text-xs text-[var(--text-secondary)]">{detail}</p>
+        <p className="mt-1 text-xs text-[var(--home-ink-muted)]">{detail}</p>
       ) : null}
     </div>
   );
@@ -119,10 +119,10 @@ export function ValuationRatiosPanel({
   if (!showIndustryComparison) {
     return (
       <WarmCard padding="sm">
-        <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1">
+        <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">
           Valuation Snapshot
         </h3>
-        <p className="text-xs text-[var(--text-tertiary)] mb-4">
+        <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-4">
           Standalone valuation view when industry comparison data is unavailable
           for this curated research symbol.
         </p>
@@ -179,8 +179,8 @@ export function ValuationRatiosPanel({
 
   return (
     <WarmCard padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1">Valuation vs Industry</h3>
-      <p className="text-xs text-[var(--text-tertiary)] mb-3">
+      <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">Valuation vs Industry</h3>
+      <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] mb-3">
         Comparing this stock&apos;s valuation ratios against its industry average.
       </p>
 

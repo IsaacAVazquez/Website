@@ -33,8 +33,8 @@ function Bar({ value, max = 100 }: { value: number | undefined; max?: number }) 
 function MetricRow({ label, value, max }: { label: string; value: number | undefined; max?: number }) {
   const positive = (value ?? 0) >= 0;
   return (
-    <div className="flex items-center gap-3 py-2 border-b border-[var(--border-primary)] last:border-0">
-      <span className="text-sm text-[var(--text-secondary)] w-40 shrink-0">{label}</span>
+    <div className="flex items-center gap-3 py-2 border-b border-[var(--home-rule)] last:border-0">
+      <span className="text-sm text-[var(--home-ink-muted)] w-40 shrink-0">{label}</span>
       <Bar value={value} max={max} />
       <span
         className={`text-sm font-medium w-16 text-right shrink-0 ${
@@ -57,7 +57,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
 
   return (
     <WarmCard padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Profitability & Margins</h3>
+      <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">Profitability & Margins</h3>
 
       {isLoading ? (
         <div className="space-y-2">
@@ -69,7 +69,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
         <>
           {prof && !prof.error && (
             <div className="mb-4">
-              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wide mb-2">Returns</p>
+              <p className="text-xs font-medium text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] uppercase tracking-wide mb-2">Returns</p>
               <MetricRow label="Return on Equity (ROE)" value={prof.roe} max={50} />
               <MetricRow label="Return on Assets (ROA)" value={prof.roa} max={30} />
               <MetricRow label="Return on Inv. Capital" value={prof.roic} max={40} />
@@ -80,7 +80,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
 
           {margins && !margins.error && (
             <div>
-              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wide mb-2">Margins (latest)</p>
+              <p className="text-xs font-medium text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] uppercase tracking-wide mb-2">Margins (latest)</p>
               <MetricRow label="Gross Margin" value={margins.grossMargin} />
               <MetricRow label="Operating Margin" value={margins.operatingMargin} />
               <MetricRow label="Net Margin" value={margins.netMargin} />

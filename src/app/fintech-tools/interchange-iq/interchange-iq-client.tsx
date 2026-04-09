@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { WarmCard } from "@/components/ui/WarmCard";
 import {
   IconCreditCard,
   IconInfoCircle,
@@ -101,6 +100,38 @@ const fmtK = (n: number) =>
 const fmtFull = (n: number) =>
   `$${n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
+// ─── Style tokens ─────────────────────────────────────────────────────────────
+const labelStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  fontWeight: 600,
+} as const;
+
+const bodyStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink-muted)",
+} as const;
+
+const mutedStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))",
+} as const;
+
+const accentStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-haze)",
+  fontWeight: 600,
+} as const;
+
+const sectionHeadingStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  fontWeight: 600,
+  fontSize: "0.72rem",
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.12em",
+};
+
 // ─── Slider ───────────────────────────────────────────────────────────────────
 function Slider({
   label,
@@ -125,8 +156,13 @@ function Slider({
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-baseline gap-2">
-        <label className="text-sm font-medium text-[var(--text-primary)]">{label}</label>
-        <span className="text-sm font-semibold text-[var(--color-primary)] tabular-nums flex-shrink-0">
+        <label className="text-sm" style={labelStyle}>
+          {label}
+        </label>
+        <span
+          className="text-sm tabular-nums flex-shrink-0"
+          style={accentStyle}
+        >
           {format(value)}
         </span>
       </div>
@@ -139,10 +175,14 @@ function Slider({
         onChange={(e) => onChange(Number(e.target.value))}
         className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
         style={{
-          background: `linear-gradient(to right, var(--color-primary) ${pct}%, var(--border-primary) ${pct}%)`,
+          background: `linear-gradient(to right, var(--home-haze) ${pct}%, var(--home-rule) ${pct}%)`,
         }}
       />
-      {hint && <p className="text-xs text-[var(--text-tertiary)]">{hint}</p>}
+      {hint && (
+        <p className="text-xs" style={mutedStyle}>
+          {hint}
+        </p>
+      )}
     </div>
   );
 }
@@ -186,7 +226,6 @@ export function InterchangeIQClient() {
 
   return (
     <div className="space-y-8">
-
       {/* Summary stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
@@ -195,19 +234,22 @@ export function InterchangeIQClient() {
           { label: "Lowest Cost Option", value: cheapest?.name ?? "—" },
           { label: "Lowest Monthly Fee", value: fmtFull(cheapest?.monthlyFee ?? 0) },
         ].map((s) => (
-          <WarmCard key={s.label} padding="md" className="text-center">
-            <p className="text-xs text-[var(--text-tertiary)] mb-1">{s.label}</p>
-            <p className="text-base font-bold text-[var(--color-primary)] tabular-nums">{s.value}</p>
-          </WarmCard>
+          <div key={s.label} className="home-card p-4 text-center space-y-1">
+            <p className="mb-0 text-xs" style={mutedStyle}>
+              {s.label}
+            </p>
+            <p className="mb-0 text-base tabular-nums" style={accentStyle}>
+              {s.value}
+            </p>
+          </div>
         ))}
       </div>
 
       <div className="grid lg:grid-cols-[320px_1fr] gap-8">
-
         {/* ── Inputs ── */}
-        <WarmCard padding="lg" className="space-y-7 self-start">
-          <h2 className="text-sm font-semibold text-[var(--text-primary)] flex items-center gap-2 uppercase tracking-[0.12em]">
-            <IconCreditCard className="h-4 w-4 text-[var(--color-primary)]" />
+        <article className="home-card p-6 sm:p-7 space-y-7 self-start">
+          <h2 className="flex items-center gap-2 mb-0" style={sectionHeadingStyle}>
+            <IconCreditCard className="h-4 w-4" style={{ color: "var(--home-haze)" }} />
             Business Profile
           </h2>
 
@@ -233,20 +275,33 @@ export function InterchangeIQClient() {
             hint="Per-transaction fixed fees matter more at lower ticket sizes"
           />
 
-          <div className="border-t border-[var(--border-primary)] pt-5 space-y-5">
+          <div
+            className="pt-5 space-y-5"
+            style={{ borderTop: "1px solid var(--home-rule)" }}
+          >
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-[var(--text-primary)]">Card Mix</span>
+              <span className="text-sm" style={labelStyle}>
+                Card Mix
+              </span>
               <button
                 onClick={() => setShowInfo(!showInfo)}
                 aria-label="Learn about card mix"
-                className="text-[var(--text-tertiary)] hover:text-[var(--color-primary)] transition-colors"
+                className="transition-colors"
+                style={{ color: "var(--home-ink-muted)" }}
               >
                 <IconInfoCircle className="h-4 w-4" />
               </button>
             </div>
 
             {showInfo && (
-              <p className="text-xs text-[var(--text-secondary)] bg-[var(--surface-secondary)] rounded-lg p-3 leading-relaxed">
+              <p
+                className="text-xs rounded-lg p-3 leading-relaxed mb-0"
+                style={{
+                  ...bodyStyle,
+                  background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                  border: "1px solid var(--home-rule)",
+                }}
+              >
                 Different card types carry different interchange rates. Debit cards (regulated Reg E)
                 have much lower interchange than consumer credit. Amex runs its own network and
                 typically costs more. Your mix determines your effective interchange rate.
@@ -284,45 +339,83 @@ export function InterchangeIQClient() {
               ].map((row) => (
                 <div key={row.label} className="flex items-center gap-2 text-xs">
                   <div
-                    className="h-1.5 rounded-full bg-[var(--color-primary)] flex-shrink-0 min-w-[4px]"
-                    style={{ width: `${Math.max(row.pct, 1)}%`, maxWidth: "50%", opacity: 0.4 + row.pct / 150 }}
+                    className="h-1.5 rounded-full flex-shrink-0 min-w-[4px]"
+                    style={{
+                      width: `${Math.max(row.pct, 1)}%`,
+                      maxWidth: "50%",
+                      opacity: 0.4 + row.pct / 150,
+                      background: "var(--home-haze)",
+                    }}
                   />
-                  <span className="text-[var(--text-secondary)]">
-                    {row.label}: <span className="font-medium tabular-nums">{row.pct.toFixed(1)}%</span>
-                    <span className="text-[var(--text-tertiary)] ml-1">({row.rate})</span>
+                  <span style={bodyStyle}>
+                    {row.label}:{" "}
+                    <span className="font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
+                      {row.pct.toFixed(1)}%
+                    </span>
+                    <span className="ml-1" style={mutedStyle}>
+                      ({row.rate})
+                    </span>
                   </span>
                 </div>
               ))}
             </div>
           </div>
-        </WarmCard>
+        </article>
 
         {/* ── Results ── */}
         <div className="space-y-5">
-
           {/* Insight banner */}
           {savings > 100 ? (
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-[var(--color-success,#22c55e)]/25 bg-[var(--color-success,#22c55e)]/5">
-              <IconTrendingDown className="h-5 w-5 text-[var(--color-success,#22c55e)] flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-[var(--text-primary)]">
-                At your volume, <strong>{bestIC.name}</strong> saves{" "}
-                <strong className="text-[var(--color-success,#22c55e)]">{fmtFull(savings)}/month</strong>{" "}
+            <div
+              className="flex items-start gap-3 p-4 rounded-xl"
+              style={{
+                border: "1px solid color-mix(in srgb, var(--color-success) 35%, var(--home-rule))",
+                background: "color-mix(in srgb, var(--color-success) 8%, var(--home-paper))",
+              }}
+            >
+              <IconTrendingDown
+                className="h-5 w-5 flex-shrink-0 mt-0.5"
+                style={{ color: "var(--color-success)" }}
+              />
+              <p className="mb-0 text-sm leading-6" style={{ ...bodyStyle, color: "var(--home-ink)" }}>
+                At your volume, <strong style={labelStyle}>{bestIC.name}</strong> saves{" "}
+                <strong style={{ ...labelStyle, color: "var(--color-success)" }}>
+                  {fmtFull(savings)}/month
+                </strong>{" "}
                 ({fmtFull(savings * 12)}/year) vs. the best flat-rate option.
                 Interchange+ becomes more attractive as volume scales.
               </p>
             </div>
           ) : savings < -50 ? (
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-[var(--color-warning,#f59e0b)]/25 bg-[var(--color-warning,#f59e0b)]/5">
-              <IconAlertTriangle className="h-5 w-5 text-[var(--color-warning,#f59e0b)] flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-[var(--text-primary)]">
+            <div
+              className="flex items-start gap-3 p-4 rounded-xl"
+              style={{
+                border: "1px solid color-mix(in srgb, var(--color-warning) 35%, var(--home-rule))",
+                background: "color-mix(in srgb, var(--color-warning) 8%, var(--home-paper))",
+              }}
+            >
+              <IconAlertTriangle
+                className="h-5 w-5 flex-shrink-0 mt-0.5"
+                style={{ color: "var(--color-warning)" }}
+              />
+              <p className="mb-0 text-sm leading-6" style={{ ...bodyStyle, color: "var(--home-ink)" }}>
                 At your volume and ticket size, flat-rate is cheaper. Per-transaction fixed fees on
                 interchange+ compound quickly at lower average ticket sizes.
               </p>
             </div>
           ) : (
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-secondary)]">
-              <IconInfoCircle className="h-5 w-5 text-[var(--color-primary)] flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-[var(--text-secondary)]">
+            <div
+              className="flex items-start gap-3 p-4 rounded-xl"
+              style={{
+                border: "1px solid var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+              }}
+            >
+              <IconInfoCircle
+                className="h-5 w-5 flex-shrink-0 mt-0.5"
+                style={{ color: "var(--home-haze)" }}
+              />
+              <p className="mb-0 text-sm leading-6" style={bodyStyle}>
                 Flat-rate and interchange+ are roughly equivalent at your current profile.
                 The right choice depends on your growth trajectory and negotiating leverage.
               </p>
@@ -330,103 +423,162 @@ export function InterchangeIQClient() {
           )}
 
           {/* Comparison bars */}
-          <WarmCard padding="lg">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[var(--text-primary)] mb-5 flex items-center gap-2">
-              <IconBuildingBank className="h-4 w-4 text-[var(--color-primary)]" />
+          <article className="home-card p-6 sm:p-7">
+            <h2 className="flex items-center gap-2 mb-5" style={sectionHeadingStyle}>
+              <IconBuildingBank className="h-4 w-4" style={{ color: "var(--home-haze)" }} />
               Monthly Fee Comparison
             </h2>
 
             <div className="space-y-5">
               {results.map((r, i) => {
-                const barPct    = (r.monthlyFee / maxFee) * 100;
-                const isBest    = i === 0;
+                const barPct = (r.monthlyFee / maxFee) * 100;
+                const isBest = i === 0;
                 return (
                   <div key={r.id} className="space-y-1.5">
                     <div className="flex items-center justify-between gap-3 flex-wrap">
                       <div className="flex items-center gap-2 min-w-0 flex-wrap">
-                        <span className={`text-sm font-medium truncate ${isBest ? "text-[var(--color-primary)]" : "text-[var(--text-primary)]"}`}>
+                        <span
+                          className="text-sm truncate"
+                          style={isBest ? accentStyle : labelStyle}
+                        >
                           {r.name}
                         </span>
-                        <span className="text-xs px-1.5 py-0.5 rounded-full border border-[var(--border-primary)] text-[var(--text-tertiary)] whitespace-nowrap flex-shrink-0">
+                        <span
+                          className="text-xs px-1.5 py-0.5 rounded-full whitespace-nowrap flex-shrink-0"
+                          style={{
+                            fontFamily: "var(--font-home-sans)",
+                            color: "var(--home-ink-muted)",
+                            border: "1px solid var(--home-rule)",
+                          }}
+                        >
                           {r.model}
                         </span>
                         {isBest && (
-                          <span className="text-xs px-1.5 py-0.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-medium whitespace-nowrap flex-shrink-0">
+                          <span
+                            className="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap flex-shrink-0"
+                            style={{
+                              fontFamily: "var(--font-home-sans)",
+                              background: "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))",
+                              color: "var(--home-haze)",
+                              border: "1px solid color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
+                            }}
+                          >
                             Cheapest
                           </span>
                         )}
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <span className={`text-sm font-semibold tabular-nums ${isBest ? "text-[var(--color-primary)]" : "text-[var(--text-primary)]"}`}>
-                          {fmtFull(r.monthlyFee)}<span className="font-normal text-[var(--text-tertiary)]">/mo</span>
+                        <span
+                          className="text-sm tabular-nums"
+                          style={isBest ? accentStyle : labelStyle}
+                        >
+                          {fmtFull(r.monthlyFee)}
+                          <span className="font-normal" style={mutedStyle}>
+                            /mo
+                          </span>
                         </span>
-                        <span className="text-xs text-[var(--text-tertiary)] ml-2 tabular-nums">
+                        <span className="text-xs ml-2 tabular-nums" style={mutedStyle}>
                           ({(r.effectiveRate * 100).toFixed(2)}% eff.)
                         </span>
                       </div>
                     </div>
-                    <div className="h-1.5 bg-[var(--surface-secondary)] rounded-full overflow-hidden">
+                    <div
+                      className="h-1.5 rounded-full overflow-hidden"
+                      style={{ background: "var(--home-rule)" }}
+                    >
                       <div
                         className="h-full rounded-full transition-all duration-500 ease-out"
                         style={{
                           width: `${barPct}%`,
                           opacity: isBest ? 1 : 0.35 + 0.5 * (1 - i / results.length),
-                          backgroundColor: "var(--color-primary)",
+                          backgroundColor: "var(--home-haze)",
                         }}
                       />
                     </div>
-                    <p className="text-xs text-[var(--text-tertiary)]">{r.note}</p>
+                    <p className="mb-0 text-xs" style={mutedStyle}>
+                      {r.note}
+                    </p>
                   </div>
                 );
               })}
             </div>
-          </WarmCard>
+          </article>
 
           {/* Annual projection */}
-          <WarmCard padding="lg">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[var(--text-primary)] mb-4 flex items-center gap-2">
-              <IconArrowRight className="h-4 w-4 text-[var(--color-primary)]" />
+          <article className="home-card p-6 sm:p-7">
+            <h2 className="flex items-center gap-2 mb-4" style={sectionHeadingStyle}>
+              <IconArrowRight className="h-4 w-4" style={{ color: "var(--home-haze)" }} />
               Annual Projection: Top 3
             </h2>
             <div className="grid grid-cols-3 gap-3">
               {results.slice(0, 3).map((r, i) => (
-                <div key={r.id} className="text-center p-3 rounded-xl bg-[var(--surface-secondary)]">
-                  <p className="text-xs text-[var(--text-tertiary)] mb-1">{r.name}</p>
-                  <p className={`text-xl font-bold tabular-nums ${i === 0 ? "text-[var(--color-primary)]" : "text-[var(--text-primary)]"}`}>
+                <div
+                  key={r.id}
+                  className="text-center p-3 rounded-xl space-y-1"
+                  style={{
+                    background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                    border: "1px solid var(--home-rule)",
+                  }}
+                >
+                  <p className="mb-0 text-xs" style={mutedStyle}>
+                    {r.name}
+                  </p>
+                  <p
+                    className="mb-0 text-xl tabular-nums"
+                    style={i === 0 ? { ...accentStyle, fontWeight: 700 } : { ...labelStyle, fontWeight: 700 }}
+                  >
                     {fmtK(r.monthlyFee * 12)}
                   </p>
-                  <p className="text-xs text-[var(--text-tertiary)] mt-0.5">per year</p>
+                  <p className="mb-0 text-xs" style={mutedStyle}>
+                    per year
+                  </p>
                 </div>
               ))}
             </div>
-          </WarmCard>
+          </article>
 
           {/* Breakeven insight */}
           {breakevenTicket !== null && breakevenTicket > 0 && (
-            <WarmCard padding="lg" className="border border-[var(--border-accent)]">
-              <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-2">
+            <article
+              className="home-card p-6 sm:p-7 space-y-2"
+              style={{
+                border: "1px solid color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
+              }}
+            >
+              <h2 className="text-sm mb-0" style={labelStyle}>
                 Breakeven: Stripe Flat vs. Stripe IC+
               </h2>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+              <p className="mb-0 text-sm leading-6" style={bodyStyle}>
                 With your card mix, Stripe IC+ becomes cheaper than Stripe flat-rate when avg ticket exceeds{" "}
-                <strong className="text-[var(--color-primary)] tabular-nums">${breakevenTicket.toFixed(2)}</strong>.
+                <strong className="tabular-nums" style={accentStyle}>
+                  ${breakevenTicket.toFixed(2)}
+                </strong>
+                .
                 {avgTicket >= breakevenTicket ? (
-                  <span> Your current avg ticket (${avgTicket}) is <strong>above</strong> that, so IC+ wins on unit economics.</span>
+                  <span> Your current avg ticket (${avgTicket}) is <strong style={labelStyle}>above</strong> that, so IC+ wins on unit economics.</span>
                 ) : (
-                  <span> Your current avg ticket (${avgTicket}) is <strong>below</strong> that, so flat-rate wins per transaction.</span>
+                  <span> Your current avg ticket (${avgTicket}) is <strong style={labelStyle}>below</strong> that, so flat-rate wins per transaction.</span>
                 )}
               </p>
-              <p className="text-xs text-[var(--text-tertiary)] mt-2">
+              <p className="mb-0 text-xs" style={mutedStyle}>
                 Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume.
               </p>
-            </WarmCard>
+            </article>
           )}
         </div>
       </div>
 
       {/* Education */}
-      <div className="border-t border-[var(--border-primary)] pt-8 space-y-6">
-        <h2 className="text-lg font-bold text-[var(--text-primary)]">How Payment Processing Fees Work</h2>
+      <div
+        className="pt-8 space-y-6"
+        style={{ borderTop: "1px solid var(--home-rule)" }}
+      >
+        <h2
+          className="mb-0 text-lg"
+          style={{ ...labelStyle, fontSize: "1.125rem" }}
+        >
+          How Payment Processing Fees Work
+        </h2>
         <div className="grid md:grid-cols-3 gap-5">
           {[
             {
@@ -442,13 +594,17 @@ export function InterchangeIQClient() {
               body: "These are representative averages. Real interchange has 300+ rate categories by card type, industry code, and auth method. IC+ is typically available to merchants processing $250k+/yr. Card-present transactions have lower interchange than online. Always get actual quotes. This tool is directional, not definitive.",
             },
           ].map((card) => (
-            <WarmCard key={card.title} padding="lg">
-              <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2">{card.title}</h3>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{card.body}</p>
-            </WarmCard>
+            <article key={card.title} className="home-card p-6 sm:p-7 space-y-2">
+              <h3 className="mb-0 text-sm" style={labelStyle}>
+                {card.title}
+              </h3>
+              <p className="mb-0 text-sm leading-6" style={bodyStyle}>
+                {card.body}
+              </p>
+            </article>
           ))}
         </div>
-        <p className="text-xs text-[var(--text-tertiary)] text-center">
+        <p className="mb-0 text-xs text-center" style={mutedStyle}>
           Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue program averages.
           Processor fees from public pricing pages. For educational purposes only. Actual rates vary by industry, card type, and negotiated terms.
         </p>

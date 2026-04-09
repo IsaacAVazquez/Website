@@ -33,24 +33,24 @@ export function MissionLaunchBoard({
     <section
       data-testid="mission-board"
       aria-label="Mission board"
-      className="rounded-[30px] border border-[var(--border-primary)] bg-[var(--surface-elevated)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
+      className="rounded-[30px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
     >
       <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--text-tertiary)]">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
             Launch board
           </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--text-primary)]">
+          <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-ink)]">
             Browse the SpaceX launch queue.
           </h2>
-          <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+          <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
             Filter by upcoming or past missions, then open a launch to inspect vehicles,
             payloads, and outbound references in context.
           </p>
         </div>
 
         <div
-          className="inline-flex flex-wrap gap-2 rounded-[22px] border border-[var(--border-primary)] bg-[var(--surface-primary)] p-2"
+          className="inline-flex flex-wrap gap-2 rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-2"
           role="tablist"
           aria-label="Mission board status filters"
         >
@@ -63,8 +63,8 @@ export function MissionLaunchBoard({
               onClick={() => onStatusChange(option.key)}
               className={`tap-target rounded-2xl px-4 py-3 text-sm font-semibold transition ${
                 status === option.key
-                  ? "bg-[var(--color-primary)] text-white"
-                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
+                  ? "bg-[var(--home-haze)] text-white"
+                  : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
               }`}
             >
               {option.label}
@@ -74,15 +74,15 @@ export function MissionLaunchBoard({
       </div>
 
       {error && launches.length === 0 && !isLoading ? (
-        <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--color-error)_18%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-error)_7%,var(--surface-primary))] p-4">
-          <p className="text-sm font-semibold text-[var(--text-primary)]">
+        <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--color-error)_18%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-error)_7%,var(--home-paper))] p-4">
+          <p className="text-sm font-semibold text-[var(--home-ink)]">
             Mission board unavailable
           </p>
-          <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">{error}</p>
+          <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">{error}</p>
           <button
             type="button"
             onClick={onRetry}
-            className="tap-target mt-4 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+            className="tap-target mt-4 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
           >
             Retry board
           </button>
@@ -94,23 +94,23 @@ export function MissionLaunchBoard({
           {Array.from({ length: 5 }, (_, index) => (
             <div
               key={index}
-              className="h-[124px] animate-pulse rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)]"
+              className="h-[124px] animate-pulse rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)]"
             />
           ))}
         </div>
       ) : null}
 
       {!isLoading && launches.length === 0 ? (
-        <div className="rounded-[24px] border border-dashed border-[var(--border-primary)] bg-[var(--surface-primary)] px-5 py-8 text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--color-primary)_10%,var(--surface-secondary))]">
-            <Radar className="h-6 w-6 text-[var(--color-primary)]" />
+        <div className="rounded-[24px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-8 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-paper-alt))]">
+            <Radar className="h-6 w-6 text-[var(--home-haze)]" />
           </div>
-          <p className="mt-4 text-lg font-semibold text-[var(--text-primary)]">
+          <p className="mt-4 text-lg font-semibold text-[var(--home-ink)]">
             {status === "upcoming"
               ? "No upcoming launches are currently available."
               : "No past launches are currently available."}
           </p>
-          <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+          <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
             {status === "upcoming"
               ? "The live provider does not currently list a future SpaceX mission. The hero will fall back to the latest completed launch when possible."
               : "The published archive came back empty. Retry the request to check for recovery."}
@@ -130,8 +130,8 @@ export function MissionLaunchBoard({
                 onClick={() => onSelectLaunch(launch.id)}
                 className={`w-full rounded-[24px] border p-4 text-left transition sm:p-5 ${
                   isSelected
-                    ? "border-[var(--color-primary)] bg-[color-mix(in_srgb,var(--color-primary)_7%,var(--surface-primary))] shadow-[var(--shadow-sm)]"
-                    : "border-[var(--border-primary)] bg-[var(--surface-primary)] hover:border-[color-mix(in_srgb,var(--color-primary)_26%,var(--border-primary))] hover:bg-[var(--surface-secondary)]"
+                    ? "border-[var(--home-haze)] bg-[color-mix(in_srgb,var(--home-haze)_7%,var(--home-paper))] shadow-[var(--shadow-sm)]"
+                    : "border-[var(--home-rule)] bg-[var(--home-paper)] hover:border-[color-mix(in_srgb,var(--home-haze)_26%,var(--home-rule))] hover:bg-[var(--home-paper-alt)]"
                 }`}
               >
                 <div className="grid gap-4 md:grid-cols-[92px_minmax(0,1fr)]">
@@ -146,19 +146,19 @@ export function MissionLaunchBoard({
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+                          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                             Flight #{launch.flightNumber}
                           </span>
-                          <span className="rounded-full border border-[var(--border-primary)] px-2 py-1 text-[11px] font-medium text-[var(--text-secondary)]">
+                          <span className="rounded-full border border-[var(--home-rule)] px-2 py-1 text-[11px] font-medium text-[var(--home-ink-muted)]">
                             {launch.upcoming ? "Upcoming" : launch.success === true ? "Successful" : launch.success === false ? "Failed" : "Status pending"}
                           </span>
                         </div>
-                        <h3 className="mt-3 text-xl font-bold tracking-[-0.03em] text-[var(--text-primary)]">
+                        <h3 className="mt-3 text-xl font-bold tracking-[-0.03em] text-[var(--home-ink)]">
                           {launch.name}
                         </h3>
                       </div>
 
-                      <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)]">
+                      <div className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--home-haze)]">
                         Open detail
                         {isLoading && isSelected ? (
                           <LoaderCircle className="h-4 w-4 animate-spin" />
@@ -170,20 +170,20 @@ export function MissionLaunchBoard({
 
                     <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
                       <div className="min-w-0">
-                        <p className="text-sm font-semibold text-[var(--text-primary)]">
+                        <p className="text-sm font-semibold text-[var(--home-ink)]">
                           {launch.rocketName ?? "Rocket pending"} from {launch.launchpadName ?? "Launch site pending"}
                         </p>
-                        <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
+                        <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">
                           {formatMissionScheduleLabel(launch)}
                         </p>
                       </div>
 
                       <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full bg-[var(--surface-secondary)] px-3 py-2 text-xs font-medium text-[var(--text-secondary)]">
+                        <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-medium text-[var(--home-ink-muted)]">
                           <Layers3 className="mr-1 inline h-3.5 w-3.5" />
                           {launch.payloadCount} payload{launch.payloadCount === 1 ? "" : "s"}
                         </span>
-                        <span className="rounded-full bg-[var(--surface-secondary)] px-3 py-2 text-xs font-medium text-[var(--text-secondary)]">
+                        <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-medium text-[var(--home-ink-muted)]">
                           <Orbit className="mr-1 inline h-3.5 w-3.5" />
                           {launch.coreCount} core{launch.coreCount === 1 ? "" : "s"}
                         </span>

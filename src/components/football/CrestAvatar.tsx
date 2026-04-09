@@ -30,7 +30,7 @@ export function CrestAvatar({
         src={crest}
         alt={`${name} crest`}
         className={cn(
-          "rounded-full border border-[var(--border-primary)] bg-white object-contain p-1",
+          "rounded-full border border-[var(--home-rule)] bg-white object-contain p-1",
           dimensionClass
         )}
       />
@@ -40,7 +40,7 @@ export function CrestAvatar({
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] font-semibold text-[var(--text-primary)]",
+        "flex items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] font-semibold text-[var(--home-ink)]",
         dimensionClass
       )}
       aria-hidden="true"

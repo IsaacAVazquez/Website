@@ -27,9 +27,9 @@ export function MissionPatch({
         data-testid={dataTestId}
         data-image-src={image}
         aria-hidden="true"
-        className={`rounded-[22px] border border-[color-mix(in_srgb,var(--color-accent)_24%,var(--border-primary))] bg-[var(--surface-elevated)] bg-center bg-no-repeat shadow-[var(--shadow-md)] ${className}`}
+        className={`rounded-[22px] border border-[color-mix(in_srgb,var(--home-haze)_24%,var(--home-rule))] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] bg-center bg-no-repeat shadow-[var(--shadow-md)] ${className}`}
         style={{
-          backgroundImage: `linear-gradient(180deg,color-mix(in_srgb,var(--surface-primary)_40%,transparent),transparent), url(${image})`,
+          backgroundImage: `linear-gradient(180deg,color-mix(in_srgb,var(--home-paper)_40%,transparent),transparent), url(${image})`,
           backgroundSize: "cover",
         }}
       />
@@ -40,11 +40,11 @@ export function MissionPatch({
     <div
       data-testid={dataTestId}
       aria-hidden="true"
-      className={`flex items-center justify-center rounded-[22px] border border-[color-mix(in_srgb,var(--color-accent)_22%,var(--border-primary))] bg-[linear-gradient(160deg,color-mix(in_srgb,var(--color-primary)_12%,var(--surface-elevated))_0%,var(--surface-elevated)_72%)] shadow-[var(--shadow-md)] ${className}`}
+      className={`flex items-center justify-center rounded-[22px] border border-[color-mix(in_srgb,var(--home-haze)_22%,var(--home-rule))] bg-[linear-gradient(160deg,color-mix(in_srgb,var(--home-haze)_12%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_72%)] shadow-[var(--shadow-md)] ${className}`}
     >
       <div className="flex flex-col items-center gap-2">
-        <Rocket className="h-6 w-6 text-[var(--color-primary)]" />
-        <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--text-tertiary)]">
+        <Rocket className="h-6 w-6 text-[var(--home-haze)]" />
+        <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
           {getInitials(name)}
         </span>
       </div>

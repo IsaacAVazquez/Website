@@ -11,27 +11,27 @@ describe('ModernButton', () => {
   it('applies default variant (primary)', () => {
     render(<ModernButton>Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('bg-[var(--neutral-900)]')
-    expect(button).toHaveClass('text-[var(--neutral-50)]')
+    expect(button).toHaveClass('bg-[var(--home-ink)]')
+    expect(button).toHaveClass('text-[var(--home-paper)]')
   })
 
   it('applies secondary variant correctly', () => {
     render(<ModernButton variant="secondary">Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('bg-[var(--surface-elevated)]')
+    expect(button).toHaveClass('bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,white)]')
   })
 
   it('applies outline variant correctly', () => {
     render(<ModernButton variant="outline">Button</ModernButton>)
     const button = screen.getByText('Button')
     expect(button).toHaveClass('border')
-    expect(button).toHaveClass('border-[var(--neutral-300)]')
+    expect(button).toHaveClass('border-[var(--home-rule)]')
   })
 
   it('applies ghost variant correctly', () => {
     render(<ModernButton variant="ghost">Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('text-[var(--text-secondary)]')
+    expect(button).toHaveClass('text-[var(--home-ink-muted)]')
   })
 
   it('applies default size (md)', () => {

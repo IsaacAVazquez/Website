@@ -5,6 +5,9 @@ interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default" | "success" | "warning" | "outline";
   size?: "sm" | "md" | "lg";
   children: React.ReactNode;
+  /** Legacy props accepted but ignored for backwards compat */
+  glow?: boolean;
+  href?: string;
 }
 
 export function Badge({
@@ -12,15 +15,17 @@ export function Badge({
   size = "sm",
   className = "",
   children,
+  glow: _glow,
+  href: _href,
   ...props
 }: BadgeProps) {
   const baseClasses = "inline-flex items-center rounded-md font-medium transition-colors";
 
   const variantClasses = {
-    default: "bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20",
+    default: "bg-[var(--home-haze)]/10 text-[var(--home-haze)] border border-[var(--home-haze)]/20",
     success: "bg-[var(--color-success)]/10 text-[var(--color-success)] border border-[var(--color-success)]/20",
     warning: "bg-[var(--color-warning)]/10 text-[var(--color-warning)] border border-[var(--color-warning)]/20",
-    outline: "border border-[var(--border-primary)] text-[var(--text-secondary)]",
+    outline: "border border-[var(--home-rule)] text-[var(--home-ink-muted)]",
   };
 
   const sizeClasses = {

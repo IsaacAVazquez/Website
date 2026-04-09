@@ -53,14 +53,13 @@ describe("Footer", () => {
 
   it("supports the homepage editorial surface without restoring the large CTA block", () => {
     act(() => {
-      root.render(<Footer variant="compact" surface="home" />);
+      root.render(<Footer variant="compact" />);
     });
 
     const footer = container.querySelector('footer[aria-label="Site footer"]');
     const heading = footer?.querySelector("h2");
 
     expect(footer?.getAttribute("data-footer-variant")).toBe("compact");
-    expect(footer?.getAttribute("data-footer-surface")).toBe("home");
     expect(heading).toBeNull();
     expect(footer?.className).toContain("footer-home");
   });

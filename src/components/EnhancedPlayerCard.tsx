@@ -66,13 +66,13 @@ function EnhancedPlayerCardComponent({
         <div className="flex items-center justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h4 className="font-semibold text-[var(--text-primary)] dark:text-[var(--neutral-100)] text-sm">{player.name}</h4>
+              <h4 className="font-semibold text-[var(--home-ink)] dark:text-[var(--neutral-100)] text-sm">{player.name}</h4>
               <Badge variant="secondary" size="sm">
                 {player.team} {player.position}
               </Badge>
               <ExpertConsensusIndicator player={player} showDetails={false} />
             </div>
-            <div className="flex items-center gap-3 mt-1 text-xs text-[var(--text-primary)] dark:text-[var(--neutral-100)]">
+            <div className="flex items-center gap-3 mt-1 text-xs text-[var(--home-ink)] dark:text-[var(--neutral-100)]">
               <span>#{rank}</span>
               {player.auctionValue && (
                 <span className="flex items-center gap-1">
@@ -110,17 +110,17 @@ function EnhancedPlayerCardComponent({
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <h3 className="text-xl font-bold text-[var(--text-primary)] dark:text-[var(--neutral-100)]">{player.name}</h3>
+              <h3 className="text-xl font-bold text-[var(--home-ink)] dark:text-[var(--neutral-100)]">{player.name}</h3>
               <Badge variant="primary">
                 {player.team} {player.position}
               </Badge>
-              <span className="text-sm text-[var(--text-secondary)] dark:text-[var(--neutral-400)]">#{rank}</span>
+              <span className="text-sm text-[var(--home-ink-muted)] dark:text-[var(--neutral-400)]">#{rank}</span>
             </div>
 
-            <div className="flex items-center gap-4 text-sm text-[var(--text-primary)] dark:text-[var(--neutral-100)]">
+            <div className="flex items-center gap-4 text-sm text-[var(--home-ink)] dark:text-[var(--neutral-100)]">
               {player.auctionValue && (
                 <div className="flex items-center gap-1">
-                  <DollarSign className="w-4 h-4 text-[var(--color-primary)] dark:text-[var(--color-accent)]" />
+                  <DollarSign className="w-4 h-4 text-[var(--home-haze)] dark:text-[var(--home-haze)]" />
                   <span className="font-semibold">${player.auctionValue}</span>
                 </div>
               )}
@@ -153,13 +153,13 @@ function EnhancedPlayerCardComponent({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsExpanded(!isExpanded)}
-              className="p-2 rounded-lg bg-[var(--surface-secondary)] dark:bg-[var(--neutral-800)]/50 hover:bg-[var(--neutral-100)] dark:hover:bg-[var(--neutral-700)]/50
-                       transition-colors border border-[var(--border-primary)] dark:border-[var(--color-accent)]/30"
+              className="p-2 rounded-lg bg-[var(--home-paper-alt)] dark:bg-[var(--neutral-800)]/50 hover:bg-[var(--neutral-100)] dark:hover:bg-[var(--neutral-700)]/50
+                       transition-colors border border-[var(--home-rule)] dark:border-[var(--home-haze)]/30"
             >
               {isExpanded ? (
-                <ChevronUp className="w-5 h-5 text-[var(--text-secondary)] dark:text-[var(--neutral-400)]" />
+                <ChevronUp className="w-5 h-5 text-[var(--home-ink-muted)] dark:text-[var(--neutral-400)]" />
               ) : (
-                <ChevronDown className="w-5 h-5 text-[var(--text-secondary)] dark:text-[var(--neutral-400)]" />
+                <ChevronDown className="w-5 h-5 text-[var(--home-ink-muted)] dark:text-[var(--neutral-400)]" />
               )}
             </motion.button>
           </div>
@@ -172,9 +172,9 @@ function EnhancedPlayerCardComponent({
         {(player.upside || player.downside || player.bottomLine) && (
           <div className="space-y-3">
             {player.bottomLine && (
-              <div className="p-3 rounded-lg bg-[var(--color-primary)]/10 dark:bg-[var(--color-primary)]/20 border border-[var(--color-primary)]/20 dark:border-[var(--color-primary)]/30">
-                <h5 className="text-[var(--color-primary)] dark:text-[var(--color-accent)] font-semibold text-sm mb-1">Bottom Line</h5>
-                <p className="text-sm text-[var(--text-primary)] dark:text-[var(--neutral-100)]">{player.bottomLine}</p>
+              <div className="p-3 rounded-lg bg-[var(--home-haze)]/10 dark:bg-[var(--home-haze)]/20 border border-[var(--home-haze)]/20 dark:border-[var(--home-haze)]/30">
+                <h5 className="text-[var(--home-haze)] dark:text-[var(--home-haze)] font-semibold text-sm mb-1">Bottom Line</h5>
+                <p className="text-sm text-[var(--home-ink)] dark:text-[var(--neutral-100)]">{player.bottomLine}</p>
               </div>
             )}
 
@@ -184,7 +184,7 @@ function EnhancedPlayerCardComponent({
                   <TrendingUp className="w-4 h-4 text-[var(--color-success)]" />
                   <h5 className="text-[var(--color-success)] font-semibold text-sm">Upside</h5>
                 </div>
-                <p className="text-sm text-[var(--text-primary)] dark:text-[var(--neutral-100)]">{player.upside}</p>
+                <p className="text-sm text-[var(--home-ink)] dark:text-[var(--neutral-100)]">{player.upside}</p>
               </div>
             )}
 
@@ -194,7 +194,7 @@ function EnhancedPlayerCardComponent({
                   <TrendingDown className="w-4 h-4 text-[var(--color-warning)]" />
                   <h5 className="text-[var(--color-warning)] font-semibold text-sm">Risk Factors</h5>
                 </div>
-                <p className="text-sm text-[var(--text-primary)] dark:text-[var(--neutral-100)]">{player.downside}</p>
+                <p className="text-sm text-[var(--home-ink)] dark:text-[var(--neutral-100)]">{player.downside}</p>
               </div>
             )}
           </div>
@@ -212,10 +212,10 @@ function EnhancedPlayerCardComponent({
               {/* Projection toggle */}
               {player.projections && Object.keys(player.projections).length > 0 && (
                 <div className="flex items-center justify-between">
-                  <h5 className="text-[var(--text-primary)] dark:text-[var(--neutral-100)] font-semibold">Season Projections</h5>
+                  <h5 className="text-[var(--home-ink)] dark:text-[var(--neutral-100)] font-semibold">Season Projections</h5>
                   <button
                     onClick={() => setShowProjections(!showProjections)}
-                    className="flex items-center gap-1 text-sm text-[var(--color-primary)] dark:text-[var(--color-accent)] hover:text-[var(--text-primary)] dark:hover:text-[var(--neutral-100)] transition-colors"
+                    className="flex items-center gap-1 text-sm text-[var(--home-haze)] dark:text-[var(--home-haze)] hover:text-[var(--home-ink)] dark:hover:text-[var(--neutral-100)] transition-colors"
                   >
                     {showProjections ? (
                       <>
@@ -240,12 +240,12 @@ function EnhancedPlayerCardComponent({
                     .map(([key, value]) => (
                       <div
                         key={key}
-                        className="p-3 rounded-lg bg-[var(--surface-secondary)] dark:bg-[var(--neutral-800)]/30 border border-[var(--border-primary)] dark:border-[var(--color-accent)]/30"
+                        className="p-3 rounded-lg bg-[var(--home-paper-alt)] dark:bg-[var(--neutral-800)]/30 border border-[var(--home-rule)] dark:border-[var(--home-haze)]/30"
                       >
-                        <div className="text-xs text-[var(--text-secondary)] dark:text-[var(--neutral-400)] uppercase tracking-wide">
+                        <div className="text-xs text-[var(--home-ink-muted)] dark:text-[var(--neutral-400)] uppercase tracking-wide">
                           {key.replace(/([A-Z])/g, ' $1').trim()}
                         </div>
-                        <div className="text-lg font-bold text-[var(--text-primary)] dark:text-[var(--neutral-100)]">
+                        <div className="text-lg font-bold text-[var(--home-ink)] dark:text-[var(--neutral-100)]">
                           {typeof value === 'number' ?
                             (key.includes('Percentage') || key.includes('Share') ?
                               `${(value * 100).toFixed(1)}%` :
@@ -262,7 +262,7 @@ function EnhancedPlayerCardComponent({
               {/* Weekly projections preview */}
               {player.weeklyProjections && player.weeklyProjections.length > 0 && (
                 <div>
-                  <h5 className="text-[var(--text-primary)] dark:text-[var(--neutral-100)] font-semibold mb-3">Upcoming Weeks</h5>
+                  <h5 className="text-[var(--home-ink)] dark:text-[var(--neutral-100)] font-semibold mb-3">Upcoming Weeks</h5>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                     {player.weeklyProjections.slice(0, 4).map((week) => (
                       <div
@@ -270,14 +270,14 @@ function EnhancedPlayerCardComponent({
                         className={`p-2 rounded border text-center ${
                           week.difficulty === 'easy' ? 'bg-[var(--color-success)]/10 dark:bg-[var(--color-success)]/20 border-[var(--color-success)]/20 dark:border-[var(--color-success)]/30' :
                           week.difficulty === 'hard' ? 'bg-[var(--color-error)]/10 dark:bg-[var(--color-error)]/20 border-[var(--color-error)]/20 dark:border-[var(--color-error)]/30' :
-                          'bg-[var(--neutral-100)]/20 dark:bg-[var(--neutral-700)]/20 border-[var(--border-primary)] dark:border-[var(--neutral-700)]/20'
+                          'bg-[var(--neutral-100)]/20 dark:bg-[var(--neutral-700)]/20 border-[var(--home-rule)] dark:border-[var(--neutral-700)]/20'
                         }`}
                       >
-                        <div className="text-xs text-[var(--text-secondary)] dark:text-[var(--neutral-400)]">Week {week.week}</div>
-                        <div className="text-sm font-semibold text-[var(--text-primary)] dark:text-[var(--neutral-100)]">
+                        <div className="text-xs text-[var(--home-ink-muted)] dark:text-[var(--neutral-400)]">Week {week.week}</div>
+                        <div className="text-sm font-semibold text-[var(--home-ink)] dark:text-[var(--neutral-100)]">
                           {week.projectedPoints.toFixed(1)}
                         </div>
-                        <div className="text-xs text-[var(--text-secondary)] dark:text-[var(--neutral-400)]">vs {week.opponent}</div>
+                        <div className="text-xs text-[var(--home-ink-muted)] dark:text-[var(--neutral-400)]">vs {week.opponent}</div>
                       </div>
                     ))}
                   </div>

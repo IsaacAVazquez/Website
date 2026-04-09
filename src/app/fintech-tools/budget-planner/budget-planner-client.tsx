@@ -48,7 +48,7 @@ function formatSignedCurrency(value: number) {
 function getBalanceTone(value: number) {
   if (value > 0) return "text-[var(--color-success)]";
   if (value < 0) return "text-[var(--color-error)]";
-  return "text-[var(--text-primary)]";
+  return "text-[var(--home-ink)]";
 }
 
 function createEmptyExpenseDraft(monthKey: string, categoryId = ""): ExpenseDraft {
@@ -103,7 +103,7 @@ export function BudgetPlannerClient() {
       {
         label: "Income",
         value: formatCurrency(activeMonth.income),
-        tone: "text-[var(--text-primary)]",
+        tone: "text-[var(--home-ink)]",
         icon: Landmark,
       },
       {
@@ -186,7 +186,7 @@ export function BudgetPlannerClient() {
 
   return (
     <section
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--color-primary)_11%,transparent),transparent_30%),linear-gradient(180deg,color-mix(in_srgb,var(--surface-secondary)_88%,var(--surface-primary))_0%,var(--surface-primary)_100%)]"
+      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_11%,transparent),transparent_30%),linear-gradient(180deg,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--home-paper))_0%,var(--home-paper)_100%)]"
       aria-label="Budget planner workspace"
       data-testid="budget-planner-shell"
     >
@@ -195,44 +195,44 @@ export function BudgetPlannerClient() {
           variants={motionVariants}
           initial="hidden"
           animate="visible"
-          className="mb-8 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--color-primary)_14%,var(--border-primary))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--surface-elevated)_94%,var(--color-primary)_6%)_0%,var(--surface-elevated)_45%,color-mix(in_srgb,var(--surface-secondary)_88%,var(--color-success)_12%)_100%)] shadow-[var(--shadow-lg)]"
+          className="mb-8 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,color-mix(in srgb, var(--home-paper) 92%, white)_94%,var(--home-haze)_6%)_0%,color-mix(in srgb, var(--home-paper) 92%, white)_45%,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--color-success)_12%)_100%)] shadow-[var(--shadow-lg)]"
         >
-          <div className="grid gap-8 border-b border-[var(--border-primary)]/80 px-6 py-6 sm:px-8 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-end">
+          <div className="grid gap-8 border-b border-[var(--home-rule)]/80 px-6 py-6 sm:px-8 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-end">
             <div className="min-w-0">
-              <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)]">
+              <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--home-haze)]">
                 Fintech Tools
               </p>
-              <h1 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">
+              <h1 className="text-3xl font-bold tracking-tight text-[var(--home-ink)] sm:text-4xl">
                 Budget Planner
               </h1>
-              <p className="mt-3 max-w-[64ch] text-sm leading-7 text-[var(--text-secondary)] sm:text-[0.98rem]">
+              <p className="mt-3 max-w-[64ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[0.98rem]">
                 Plan one month at a time with an editorial-style ledger for income, savings,
                 category targets, and manual expenses. Everything stays in your browser.
               </p>
             </div>
 
-            <div className="grid gap-3 rounded-[26px] border border-[var(--border-primary)] bg-[color-mix(in_srgb,var(--surface-primary)_88%,transparent)] p-3 shadow-[var(--shadow-sm)] backdrop-blur sm:grid-cols-[auto_minmax(180px,1fr)_auto]">
+            <div className="grid gap-3 rounded-[26px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_88%,transparent)] p-3 shadow-[var(--shadow-sm)] backdrop-blur sm:grid-cols-[auto_minmax(180px,1fr)_auto]">
               <button
                 type="button"
                 aria-label="Previous month"
                 onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, -1))}
-                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 text-[var(--text-primary)] transition hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
               >
                 <ArrowLeft className="h-4 w-4" />
               </button>
 
-              <label className="flex min-h-[48px] flex-col justify-center rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-2">
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <label className="flex min-h-[48px] flex-col justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-2">
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Budget month
                 </span>
                 <div className="mt-1 flex items-center gap-2">
-                  <CalendarRange className="h-4 w-4 text-[var(--color-primary)]" />
+                  <CalendarRange className="h-4 w-4 text-[var(--home-haze)]" />
                   <input
                     aria-label="Budget month"
                     type="month"
                     value={activeMonthKey}
                     onChange={(event) => handleMonthChange(event.target.value)}
-                    className="w-full border-0 bg-transparent p-0 text-sm font-semibold text-[var(--text-primary)] focus-visible:rounded-md"
+                    className="w-full border-0 bg-transparent p-0 text-sm font-semibold text-[var(--home-ink)] focus-visible:rounded-md"
                   />
                 </div>
               </label>
@@ -241,7 +241,7 @@ export function BudgetPlannerClient() {
                 type="button"
                 aria-label="Next month"
                 onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, 1))}
-                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 text-[var(--text-primary)] transition hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
               >
                 <ArrowRight className="h-4 w-4" />
               </button>
@@ -249,20 +249,20 @@ export function BudgetPlannerClient() {
           </div>
 
           <div className="px-6 py-5 sm:px-8">
-            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--text-tertiary)]">
+            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
               {formatBudgetMonthLabel(activeMonthKey)}
             </p>
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
               {topMetrics.map(({ label, value, tone, icon: Icon }) => (
                 <div
                   key={label}
-                  className="rounded-[24px] border border-[var(--border-primary)] bg-[color-mix(in_srgb,var(--surface-primary)_82%,transparent)] px-4 py-4 shadow-[var(--shadow-sm)]"
+                  className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_82%,transparent)] px-4 py-4 shadow-[var(--shadow-sm)]"
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                       {label}
                     </p>
-                    <Icon className="h-4 w-4 text-[var(--color-primary)]" />
+                    <Icon className="h-4 w-4 text-[var(--home-haze)]" />
                   </div>
                   <p className={`mt-3 text-2xl font-semibold tracking-tight ${tone}`}>{value}</p>
                 </div>
@@ -275,24 +275,24 @@ export function BudgetPlannerClient() {
           <motion.div variants={motionVariants} initial="hidden" animate="visible">
             <WarmCard
               padding="none"
-              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--color-primary)_14%,var(--border-primary))] bg-[linear-gradient(180deg,var(--surface-elevated)_0%,color-mix(in_srgb,var(--surface-secondary)_72%,var(--surface-elevated))_100%)]"
+              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, white)_0%,color-mix(in_srgb,var(--home-paper-alt)_72%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)]"
             >
-              <div className="border-b border-[var(--border-primary)] px-6 py-5 sm:px-8">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--color-primary)]">
+              <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
                   Planning
                 </p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
                   Planning
                 </h2>
-                <p className="mt-2 text-sm leading-7 text-[var(--text-secondary)]">
+                <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
                   Set income, savings, and category targets before the spending ledger fills in.
                 </p>
               </div>
 
               <div className="grid gap-6 px-6 py-6 sm:px-8">
                 <div className="grid gap-4 md:grid-cols-2">
-                  <label className="rounded-[22px] border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-3">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  <label className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                       Monthly income
                     </span>
                     <input
@@ -302,12 +302,12 @@ export function BudgetPlannerClient() {
                       step="50"
                       value={String(activeMonth.income)}
                       onChange={(event) => updateIncome(Number(event.target.value))}
-                      className="mt-2 w-full border-0 bg-transparent p-0 text-lg font-semibold text-[var(--text-primary)]"
+                      className="mt-2 w-full border-0 bg-transparent p-0 text-lg font-semibold text-[var(--home-ink)]"
                     />
                   </label>
 
-                  <label className="rounded-[22px] border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-3">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                  <label className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                       Savings target
                     </span>
                     <input
@@ -317,24 +317,24 @@ export function BudgetPlannerClient() {
                       step="25"
                       value={String(activeMonth.savingsTarget)}
                       onChange={(event) => updateSavingsTarget(Number(event.target.value))}
-                      className="mt-2 w-full border-0 bg-transparent p-0 text-lg font-semibold text-[var(--text-primary)]"
+                      className="mt-2 w-full border-0 bg-transparent p-0 text-lg font-semibold text-[var(--home-ink)]"
                     />
                   </label>
                 </div>
 
-                <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-4">
+                <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-4">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
-                      <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                      <h3 className="text-lg font-semibold text-[var(--home-ink)]">
                         Category budgets
                       </h3>
-                      <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                      <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
                         Rename, rebudget, or remove categories as your month evolves.
                       </p>
                     </div>
-                    <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2 text-sm text-[var(--text-secondary)]">
+                    <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink-muted)]">
                       Budgeted total:{" "}
-                      <span className="font-semibold text-[var(--text-primary)]">
+                      <span className="font-semibold text-[var(--home-ink)]">
                         {formatCurrency(summary.budgetedTotal)}
                       </span>
                     </div>
@@ -349,11 +349,11 @@ export function BudgetPlannerClient() {
                       return (
                         <div
                           key={category.id}
-                          className="rounded-[24px] border border-[var(--border-primary)] bg-[color-mix(in_srgb,var(--surface-secondary)_60%,var(--surface-primary))] p-4"
+                          className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_60%,var(--home-paper))] p-4"
                         >
                           <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_180px_auto] lg:items-end">
                             <label className="min-w-0">
-                              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                                 Category name
                               </span>
                               <input
@@ -368,12 +368,12 @@ export function BudgetPlannerClient() {
                                     renameCategory(category.id, "Untitled");
                                   }
                                 }}
-                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-primary)] px-3 py-2 text-sm font-medium text-[var(--text-primary)]"
+                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
                               />
                             </label>
 
                             <label>
-                              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                                 Budgeted amount
                               </span>
                               <input
@@ -385,7 +385,7 @@ export function BudgetPlannerClient() {
                                 onChange={(event) =>
                                   updateCategoryBudget(category.id, Number(event.target.value))
                                 }
-                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-primary)] px-3 py-2 text-sm font-medium text-[var(--text-primary)]"
+                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
                               />
                             </label>
 
@@ -394,7 +394,7 @@ export function BudgetPlannerClient() {
                               aria-label={`Delete ${displayName}`}
                               disabled={hasLinkedExpenses}
                               onClick={() => removeCategory(category.id)}
-                              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-2 text-sm font-medium text-[var(--text-secondary)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] disabled:cursor-not-allowed disabled:opacity-55"
+                              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] disabled:cursor-not-allowed disabled:opacity-55"
                             >
                               <Trash2 className="h-4 w-4" />
                               Delete
@@ -402,16 +402,16 @@ export function BudgetPlannerClient() {
                           </div>
 
                           <div className="mt-4 grid gap-3 md:grid-cols-3">
-                            <div className="rounded-2xl bg-[var(--surface-primary)] px-3 py-3">
-                              <p className="text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                            <div className="rounded-2xl bg-[var(--home-paper)] px-3 py-3">
+                              <p className="text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                                 Spent
                               </p>
-                              <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">
+                              <p className="mt-2 text-base font-semibold text-[var(--home-ink)]">
                                 {formatCurrency(category.spent)}
                               </p>
                             </div>
-                            <div className="rounded-2xl bg-[var(--surface-primary)] px-3 py-3">
-                              <p className="text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                            <div className="rounded-2xl bg-[var(--home-paper)] px-3 py-3">
+                              <p className="text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                                 Remaining
                               </p>
                               <p
@@ -422,35 +422,35 @@ export function BudgetPlannerClient() {
                                 {formatSignedCurrency(category.remaining)}
                               </p>
                             </div>
-                            <div className="rounded-2xl bg-[var(--surface-primary)] px-3 py-3">
-                              <p className="text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                            <div className="rounded-2xl bg-[var(--home-paper)] px-3 py-3">
+                              <p className="text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                                 Linked expenses
                               </p>
-                              <p className="mt-2 text-base font-semibold text-[var(--text-primary)]">
+                              <p className="mt-2 text-base font-semibold text-[var(--home-ink)]">
                                 {category.expenseCount}
                               </p>
                             </div>
                           </div>
 
                           <div className="mt-4">
-                            <div className="mb-2 flex items-center justify-between gap-3 text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                            <div className="mb-2 flex items-center justify-between gap-3 text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                               <span>Spend vs budget</span>
                               <span>{Math.round(category.utilization * 100)}%</span>
                             </div>
-                            <div className="h-2 overflow-hidden rounded-full bg-[var(--surface-primary)]">
+                            <div className="h-2 overflow-hidden rounded-full bg-[var(--home-paper)]">
                               <div
                                 className={`h-full rounded-full ${
                                   category.overBudget
                                     ? "bg-[var(--color-error)]"
                                     : category.utilization >= 0.85
                                       ? "bg-[var(--color-warning)]"
-                                      : "bg-[var(--color-primary)]"
+                                      : "bg-[var(--home-haze)]"
                                 }`}
                                 style={{ width: progressWidth }}
                               />
                             </div>
                             {hasLinkedExpenses && (
-                              <p className="mt-3 text-xs leading-6 text-[var(--text-tertiary)]">
+                              <p className="mt-3 text-xs leading-6 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                                 Remove linked expenses before deleting this category.
                               </p>
                             )}
@@ -469,12 +469,12 @@ export function BudgetPlannerClient() {
                         value={newCategoryName}
                         onChange={(event) => setNewCategoryName(event.target.value)}
                         placeholder="Add a custom category"
-                        className="min-h-[46px] w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-3 text-sm text-[var(--text-primary)]"
+                        className="min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3 text-sm text-[var(--home-ink)]"
                       />
                     </label>
                     <button
                       type="submit"
-                      className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-2xl bg-[var(--color-primary)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--color-secondary)]"
+                      className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)]"
                     >
                       <Plus className="h-4 w-4" />
                       Add category
@@ -488,16 +488,16 @@ export function BudgetPlannerClient() {
           <motion.div variants={motionVariants} initial="hidden" animate="visible">
             <WarmCard
               padding="none"
-              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--color-primary)_10%,var(--border-primary))] bg-[linear-gradient(180deg,var(--surface-elevated)_0%,color-mix(in_srgb,var(--surface-secondary)_58%,var(--surface-elevated))_100%)]"
+              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, white)_0%,color-mix(in_srgb,var(--home-paper-alt)_58%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)]"
             >
-              <div className="border-b border-[var(--border-primary)] px-6 py-5 sm:px-8">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--color-primary)]">
+              <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
                   Expense Ledger
                 </p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
                   Expense Ledger
                 </h2>
-                <p className="mt-2 text-sm leading-7 text-[var(--text-secondary)]">
+                <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
                   Track manual expenses and edit them in place when the month changes shape.
                 </p>
               </div>
@@ -505,11 +505,11 @@ export function BudgetPlannerClient() {
               <div className="grid gap-6 px-6 py-6 sm:px-8">
                 <form
                   onSubmit={handleExpenseSubmit}
-                  className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)] p-4"
+                  className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4"
                 >
                   <div className="grid gap-4 md:grid-cols-2">
                     <label>
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                         Expense category
                       </span>
                       <select
@@ -521,7 +521,7 @@ export function BudgetPlannerClient() {
                             categoryId: event.target.value,
                           }))
                         }
-                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2 text-sm text-[var(--text-primary)]"
+                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink)]"
                       >
                         {activeMonth.categories.map((category) => (
                           <option key={category.id} value={category.id}>
@@ -532,7 +532,7 @@ export function BudgetPlannerClient() {
                     </label>
 
                     <label>
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                         Expense amount
                       </span>
                       <input
@@ -547,12 +547,12 @@ export function BudgetPlannerClient() {
                             amount: event.target.value,
                           }))
                         }
-                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2 text-sm text-[var(--text-primary)]"
+                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink)]"
                       />
                     </label>
 
                     <label>
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                         Expense date
                       </span>
                       <input
@@ -565,12 +565,12 @@ export function BudgetPlannerClient() {
                             date: event.target.value,
                           }))
                         }
-                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2 text-sm text-[var(--text-primary)]"
+                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink)]"
                       />
                     </label>
 
                     <label>
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                         Expense note
                       </span>
                       <input
@@ -584,7 +584,7 @@ export function BudgetPlannerClient() {
                           }))
                         }
                         placeholder="Coffee, rent, groceries"
-                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-3 py-2 text-sm text-[var(--text-primary)]"
+                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink)]"
                       />
                     </label>
                   </div>
@@ -595,7 +595,7 @@ export function BudgetPlannerClient() {
                       disabled={
                         !resolvedExpenseCategoryId || !expenseDraft.amount || !expenseDraft.date
                       }
-                      className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-2xl bg-[var(--color-primary)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--color-secondary)] disabled:cursor-not-allowed disabled:opacity-60"
+                      className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)] disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       <Plus className="h-4 w-4" />
                       {editingExpenseId ? "Save expense" : "Add expense"}
@@ -604,7 +604,7 @@ export function BudgetPlannerClient() {
                       <button
                         type="button"
                         onClick={resetExpenseDraft}
-                        className="inline-flex min-h-[46px] items-center justify-center rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-5 py-3 text-sm font-semibold text-[var(--text-secondary)] transition hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+                        className="inline-flex min-h-[46px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-5 py-3 text-sm font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
                       >
                         Cancel edit
                       </button>
@@ -612,16 +612,16 @@ export function BudgetPlannerClient() {
                   </div>
                 </form>
 
-                <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)] p-4">
+                <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="text-lg font-semibold text-[var(--text-primary)]">Entries</h3>
-                    <p className="text-sm text-[var(--text-secondary)]">
+                    <h3 className="text-lg font-semibold text-[var(--home-ink)]">Entries</h3>
+                    <p className="text-sm text-[var(--home-ink-muted)]">
                       {summary.expenseEntries.length} total
                     </p>
                   </div>
 
                   {summary.expenseEntries.length === 0 ? (
-                    <div className="mt-4 rounded-[22px] border border-dashed border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-6 text-sm leading-7 text-[var(--text-secondary)]">
+                    <div className="mt-4 rounded-[22px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-6 text-sm leading-7 text-[var(--home-ink-muted)]">
                       Your ledger is empty. Add the first expense to start tracking where this
                       month is going.
                     </div>
@@ -630,32 +630,32 @@ export function BudgetPlannerClient() {
                       {summary.expenseEntries.map((expense) => (
                         <div
                           key={expense.id}
-                          className="rounded-[22px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-4"
+                          className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-4"
                         >
                           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                             <div className="min-w-0">
-                              <p className="text-base font-semibold text-[var(--text-primary)]">
+                              <p className="text-base font-semibold text-[var(--home-ink)]">
                                 {expense.note || expense.categoryName}
                               </p>
                               <div className="mt-2 flex flex-wrap gap-2">
-                                <span className="rounded-full bg-[var(--surface-primary)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
+                                <span className="rounded-full bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                                   {expense.categoryName}
                                 </span>
-                                <span className="rounded-full bg-[var(--surface-primary)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-tertiary)]">
+                                <span className="rounded-full bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                                   {expense.date}
                                 </span>
                               </div>
                             </div>
 
                             <div className="flex flex-wrap items-center gap-3">
-                              <p className="text-lg font-semibold text-[var(--text-primary)]">
+                              <p className="text-lg font-semibold text-[var(--home-ink)]">
                                 {formatCurrency(expense.amount)}
                               </p>
                               <button
                                 type="button"
                                 aria-label={`Edit ${expense.note || expense.categoryName} expense`}
                                 onClick={() => handleEditExpense(expense.id)}
-                                className="inline-flex min-h-[42px] items-center justify-center rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-2 text-sm font-medium text-[var(--text-secondary)] transition hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+                                className="inline-flex min-h-[42px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
                               >
                                 Edit
                               </button>
@@ -668,7 +668,7 @@ export function BudgetPlannerClient() {
                                     resetExpenseDraft();
                                   }
                                 }}
-                                className="inline-flex min-h-[42px] items-center justify-center rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-2 text-sm font-medium text-[var(--text-secondary)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)]"
+                                className="inline-flex min-h-[42px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)]"
                               >
                                 Delete
                               </button>
@@ -692,16 +692,16 @@ export function BudgetPlannerClient() {
         >
           <WarmCard
             padding="none"
-            className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--color-primary)_10%,var(--border-primary))] bg-[linear-gradient(180deg,var(--surface-elevated)_0%,color-mix(in_srgb,var(--surface-secondary)_54%,var(--surface-elevated))_100%)]"
+            className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, white)_0%,color-mix(in_srgb,var(--home-paper-alt)_54%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)]"
           >
-            <div className="border-b border-[var(--border-primary)] px-6 py-5 sm:px-8">
-              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--color-primary)]">
+            <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
                 Insights
               </p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
                 Category Insights
               </h2>
-              <p className="mt-2 text-sm leading-7 text-[var(--text-secondary)]">
+              <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
                 See how assigned budget, actual spend, and recent movement line up before the
                 month closes.
               </p>
@@ -710,24 +710,24 @@ export function BudgetPlannerClient() {
             <div className="grid gap-6 px-6 py-6 sm:px-8 xl:grid-cols-[1.15fr_0.85fr]">
               <div className="space-y-4">
                 <div className="grid gap-3 md:grid-cols-3">
-                  <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-4">
-                    <p className="text-xs uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                  <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-4">
+                    <p className="text-xs uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                       Remaining to budget
                     </p>
                     <p className={`mt-3 text-xl font-semibold ${getBalanceTone(summary.remainingToBudget)}`}>
                       {formatSignedCurrency(summary.remainingToBudget)}
                     </p>
                   </div>
-                  <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-4">
-                    <p className="text-xs uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                  <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-4">
+                    <p className="text-xs uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                       Spent so far
                     </p>
-                    <p className="mt-3 text-xl font-semibold text-[var(--text-primary)]">
+                    <p className="mt-3 text-xl font-semibold text-[var(--home-ink)]">
                       {formatCurrency(summary.spentTotal)}
                     </p>
                   </div>
-                  <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-4">
-                    <p className="text-xs uppercase tracking-[0.16em] text-[var(--text-tertiary)]">
+                  <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-4">
+                    <p className="text-xs uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                       Remaining to spend
                     </p>
                     <p className={`mt-3 text-xl font-semibold ${getBalanceTone(summary.remainingToSpend)}`}>
@@ -736,17 +736,17 @@ export function BudgetPlannerClient() {
                   </div>
                 </div>
 
-                <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)] p-4">
-                  <h3 className="text-lg font-semibold text-[var(--text-primary)]">Category Insights</h3>
+                <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
+                  <h3 className="text-lg font-semibold text-[var(--home-ink)]">Category Insights</h3>
                   <div className="mt-4 space-y-4">
                     {summary.categorySummaries.map((category) => (
                       <div key={category.id}>
                         <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
                           <div>
-                            <p className="text-sm font-semibold text-[var(--text-primary)]">
+                            <p className="text-sm font-semibold text-[var(--home-ink)]">
                               {category.name || "Untitled"}
                             </p>
-                            <p className="text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                            <p className="text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                               {formatCurrency(category.spent)} spent of {formatCurrency(category.budgetedAmount)}
                             </p>
                           </div>
@@ -754,14 +754,14 @@ export function BudgetPlannerClient() {
                             {formatSignedCurrency(category.remaining)}
                           </p>
                         </div>
-                        <div className="h-2 overflow-hidden rounded-full bg-[var(--surface-secondary)]">
+                        <div className="h-2 overflow-hidden rounded-full bg-[var(--home-paper-alt)]">
                           <div
                             className={`h-full rounded-full ${
                               category.overBudget
                                 ? "bg-[var(--color-error)]"
                                 : category.utilization >= 0.85
                                   ? "bg-[var(--color-warning)]"
-                                  : "bg-[var(--color-primary)]"
+                                  : "bg-[var(--home-haze)]"
                             }`}
                             style={{
                               width: `${Math.min(100, Math.max(0, category.utilization * 100))}%`,
@@ -774,10 +774,10 @@ export function BudgetPlannerClient() {
                 </div>
               </div>
 
-              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-primary)] p-4">
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">Recent Activity</h3>
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
+                <h3 className="text-lg font-semibold text-[var(--home-ink)]">Recent Activity</h3>
                 {summary.recentExpenses.length === 0 ? (
-                  <div className="mt-4 rounded-[22px] border border-dashed border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-6 text-sm leading-7 text-[var(--text-secondary)]">
+                  <div className="mt-4 rounded-[22px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-6 text-sm leading-7 text-[var(--home-ink-muted)]">
                     Recent activity will appear here as you add expenses.
                   </div>
                 ) : (
@@ -785,18 +785,18 @@ export function BudgetPlannerClient() {
                     {summary.recentExpenses.map((expense) => (
                       <div
                         key={expense.id}
-                        className="rounded-[22px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-4 py-4"
+                        className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-4"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div className="min-w-0">
-                            <p className="text-sm font-semibold text-[var(--text-primary)]">
+                            <p className="text-sm font-semibold text-[var(--home-ink)]">
                               {expense.note || expense.categoryName}
                             </p>
-                            <p className="mt-1 text-xs uppercase tracking-[0.14em] text-[var(--text-tertiary)]">
+                            <p className="mt-1 text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                               {expense.categoryName} • {expense.date}
                             </p>
                           </div>
-                          <p className="text-sm font-semibold text-[var(--text-primary)]">
+                          <p className="text-sm font-semibold text-[var(--home-ink)]">
                             {formatCurrency(expense.amount)}
                           </p>
                         </div>

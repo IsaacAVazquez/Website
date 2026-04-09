@@ -27,7 +27,7 @@ const StockResearch = lazy(() =>
 function TabFallback() {
   return (
     <div className="flex items-center justify-center h-64">
-      <div className="w-8 h-8 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin" />
+      <div className="w-8 h-8 border-2 border-[var(--home-haze)] border-t-transparent rounded-full animate-spin" />
     </div>
   );
 }
@@ -104,53 +104,53 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
 
   return (
     <section
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--color-primary)_10%,transparent),transparent_28%),linear-gradient(180deg,var(--surface-primary)_0%,color-mix(in_srgb,var(--surface-secondary)_65%,var(--surface-primary))_100%)]"
+      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_10%,transparent),transparent_28%),linear-gradient(180deg,var(--home-paper)_0%,color-mix(in_srgb,var(--home-paper-alt)_65%,var(--home-paper))_100%)]"
       aria-label="Investment research workspace"
       data-testid="investments-shell"
     >
       <div className={shellClassName}>
         <motion.div
-          className="mb-8 rounded-[30px] border border-[color-mix(in_srgb,var(--color-primary)_12%,var(--border-primary))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_7%,var(--surface-elevated))_0%,var(--surface-elevated)_55%,color-mix(in_srgb,var(--color-success)_7%,var(--surface-elevated))_100%)] p-6 shadow-[var(--shadow-sm)] sm:p-8"
+          className="mb-8 rounded-[30px] border border-[color-mix(in_srgb,var(--home-haze)_12%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_7%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_55%,color-mix(in_srgb,var(--color-success)_7%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)] p-6 shadow-[var(--shadow-sm)] sm:p-8"
           variants={variants.fadeInVariants}
           initial="hidden"
           animate="visible"
         >
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_auto] xl:items-end">
             <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--home-haze)]">
                 Equity Research Workspace
               </p>
-              <h1 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">
+              <h1 className="mt-3 text-3xl font-bold tracking-tight text-[var(--home-ink)] sm:text-4xl">
                 Investment Research Platform
               </h1>
-              <p className="mt-3 max-w-[68ch] text-sm leading-7 text-[var(--text-secondary)] sm:text-[0.95rem]">
+              <p className="mt-3 max-w-[68ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[0.95rem]">
                 Explore curated company snapshots, valuation panels, price history,
                 and browser-saved portfolio tracking in one stable research workspace.
               </p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3 xl:min-w-[520px]">
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Workspace
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
                   Snapshot-backed research
                 </p>
               </div>
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Coverage
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
                   Curated symbol set
                 </p>
               </div>
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Focus
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
                   Reliable fallbacks
                 </p>
               </div>
@@ -159,7 +159,7 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
         </motion.div>
 
         <div
-          className="mb-8 inline-flex flex-wrap gap-2 rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)]/90 p-2 shadow-[var(--shadow-sm)] backdrop-blur"
+          className="mb-8 inline-flex flex-wrap gap-2 rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-2 shadow-[var(--shadow-sm)] backdrop-blur"
           role="tablist"
           aria-label="Investments tabs"
         >
@@ -171,8 +171,8 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
               onClick={() => updateRouteState({ view: key })}
               className={`min-h-[46px] rounded-2xl px-5 py-3 text-sm font-semibold transition ${
                 routeState.view === key
-                  ? "bg-[var(--color-primary)] text-white shadow-[var(--shadow-sm)]"
-                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
+                  ? "bg-[var(--home-haze)] text-white shadow-[var(--shadow-sm)]"
+                  : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
               }`}
             >
               {label}

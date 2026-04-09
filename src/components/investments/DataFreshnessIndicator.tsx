@@ -35,7 +35,7 @@ function getRelativeTime(date: Date): {
   if (diffHours < 1) {
     color = "var(--color-success)";
   } else if (diffHours < 24) {
-    color = "var(--color-primary)";
+    color = "var(--home-haze)";
   } else if (diffDays < 3) {
     color = "var(--color-warning)";
   } else {
@@ -76,7 +76,7 @@ export function DataFreshnessIndicator({
           className="w-2 h-2 rounded-full"
           style={{ backgroundColor: "var(--color-error)" }}
         />
-        <span className="text-xs text-[var(--text-tertiary)]">
+        <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
           {mode === "dataset"
             ? "No dataset"
             : mode === "price"
@@ -86,12 +86,12 @@ export function DataFreshnessIndicator({
         {onRefresh && (
           <button
             onClick={onRefresh}
-            className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[var(--text-tertiary)] transition hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
+            className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
             aria-label="Refresh data"
           >
             <IconRefresh
               size={14}
-              className={`text-[var(--text-tertiary)] ${isRefreshing ? "animate-spin" : ""}`}
+              className={`text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] ${isRefreshing ? "animate-spin" : ""}`}
             />
           </button>
         )}
@@ -117,18 +117,18 @@ export function DataFreshnessIndicator({
         className="w-2 h-2 rounded-full"
         style={{ backgroundColor: color }}
       />
-      <span className="text-xs text-[var(--text-tertiary)]">
+      <span className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
         {displayedLabel}
       </span>
       {onRefresh && (
         <button
           onClick={onRefresh}
-          className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[var(--text-tertiary)] transition hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
+          className="inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-full text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
           aria-label="Refresh data"
         >
           <IconRefresh
             size={14}
-            className={`text-[var(--text-tertiary)] ${isRefreshing ? "animate-spin" : ""}`}
+            className={`text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] ${isRefreshing ? "animate-spin" : ""}`}
           />
         </button>
       )}

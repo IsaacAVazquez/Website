@@ -4,63 +4,55 @@ import { ModernButton } from "@/components/ui/ModernButton";
 
 export default function NotFound() {
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4">
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--surface-secondary)]/60 via-[var(--surface-primary)] to-[var(--border-primary)]/20" />
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(15, 23, 42, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(15, 23, 42, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: "50px 50px",
-        }}
-      />
-      <div
-        className="absolute inset-0 opacity-[0.08]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(15, 23, 42, 0.1) 10px, rgba(15, 23, 42, 0.1) 20px)",
-        }}
-      />
-
-      <div className="relative z-10 max-w-2xl text-center">
-        <div className="relative mb-8">
-          <h1 className="text-9xl font-black text-[var(--color-primary)]">404</h1>
-        </div>
-
-        <div className="mb-8 font-mono text-[var(--color-success)]">
-          <p className="mb-2 text-xl">
-            <span className="text-[var(--color-primary)]">$</span> cat /page/not/found
-          </p>
-          <p className="text-sm text-[var(--text-secondary)]">
-            Error: The requested resource could not be located in the system.
-          </p>
-        </div>
-
-        <p className="mb-8 text-lg text-[var(--text-primary)]">
-          Looks like you&apos;ve ventured into uncharted territory. This page
-          doesn&apos;t exist in the current route map.
+    <section className="home-page home-section min-h-screen">
+      <div className="home-shell home-shell-tight flex min-h-[60vh] flex-col items-center justify-center text-center">
+        <p className="home-kicker mb-6">Error · 404</p>
+        <h1
+          className="mb-6"
+          style={{
+            fontFamily: "var(--font-home-sans)",
+            fontSize: "clamp(4rem, 14vw, 9rem)",
+            fontWeight: 600,
+            lineHeight: 0.9,
+            letterSpacing: "-0.08em",
+            color: "var(--home-ink)",
+          }}
+        >
+          404
+        </h1>
+        <h2
+          className="mb-5 max-w-[28ch] text-balance"
+          style={{
+            fontFamily: "var(--font-home-sans)",
+            fontSize: "clamp(1.35rem, 2.4vw, 1.75rem)",
+            fontWeight: 600,
+            letterSpacing: "-0.02em",
+            color: "var(--home-ink)",
+          }}
+        >
+          I don&apos;t have a page at that address.
+        </h2>
+        <p
+          className="mb-10 max-w-[44ch] text-base leading-7"
+          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+        >
+          The URL you followed isn&apos;t in my current route map. It may have moved, or the
+          link might be a little old. Jump back to the home page or browse the portfolio.
         </p>
-
-        <div className="flex flex-col justify-center gap-4 sm:flex-row">
+        <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
           <ModernButton href="/" variant="primary" size="lg">
             <Home className="h-5 w-5" />
-            Return Home
+            Return home
           </ModernButton>
 
           <Link href="/portfolio">
             <ModernButton variant="outline" size="lg">
               <ArrowLeft className="h-5 w-5" />
-              Browse Projects
+              Browse projects
             </ModernButton>
           </Link>
         </div>
-
-        <div className="mt-16 font-mono text-sm text-[var(--text-secondary)]">
-          <span className="opacity-80">■ SEARCHING FOR PAGE... ■</span>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }

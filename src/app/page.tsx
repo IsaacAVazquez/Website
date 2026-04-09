@@ -11,7 +11,7 @@ export default function Home() {
   const latestPosts = getLatestBlogPostPreviews(3);
 
   return (
-    <div className="w-full scroll-smooth bg-[var(--surface-primary)]">
+    <div className="w-full scroll-smooth bg-[var(--home-paper)]">
       <HomePageContent
         featuredProjects={featuredProjects}
         latestPosts={latestPosts}

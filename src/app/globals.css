@@ -71,9 +71,16 @@
   --font-semibold: 600;
   --font-bold: 700;
 
-  --color-primary: #2563EB;
-  --color-secondary: #1D4ED8;
-  --color-accent: #3B82F6;
+  /*
+   * Legacy semantic tokens below are aliased to the editorial --home-* palette
+   * so that any component still referencing them (--color-primary, --surface-*,
+   * --text-*, --border-primary) automatically picks up the editorial look in
+   * both light and dark mode. New code should prefer --home-* variables
+   * directly; these aliases exist as a cascade safety net during migration.
+   */
+  --color-primary: var(--home-haze);
+  --color-secondary: var(--home-haze);
+  --color-accent: var(--home-haze);
   --color-success: #059669;
   --color-warning: #D97706;
   --color-error: #DC2626;
@@ -90,19 +97,19 @@
   --neutral-900: #0F172A;
   --neutral-950: #020617;
 
-  --surface-primary: #FFFFFF;
-  --surface-secondary: #F8FAFC;
-  --surface-elevated: #FFFFFF;
-  --surface-overlay: rgba(15, 23, 42, 0.5);
+  --surface-primary: var(--home-paper);
+  --surface-secondary: var(--home-paper-alt);
+  --surface-elevated: color-mix(in srgb, var(--home-paper) 92%, white);
+  --surface-overlay: rgba(18, 17, 15, 0.5);
 
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-tertiary: #64748B;
-  --text-inverse: #FFFFFF;
+  --text-primary: var(--home-ink);
+  --text-secondary: var(--home-ink-muted);
+  --text-tertiary: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
+  --text-inverse: var(--home-paper);
 
-  --border-primary: #E2E8F0;
-  --border-secondary: #F1F5F9;
-  --border-accent: rgba(37, 99, 235, 0.3);
+  --border-primary: var(--home-rule);
+  --border-secondary: color-mix(in srgb, var(--home-rule) 60%, transparent);
+  --border-accent: color-mix(in srgb, var(--home-haze) 30%, transparent);
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
@@ -155,23 +162,13 @@
   --neutral-900: #F1F5F9;
   --neutral-950: #F8FAFC;
 
-  --surface-primary: #0F172A;
-  --surface-secondary: #1E293B;
-  --surface-elevated: #1E293B;
-  --surface-overlay: rgba(2, 6, 23, 0.8);
+  /*
+   * Legacy semantic tokens intentionally not overridden here — they alias to
+   * --home-* in :root and --home-* already has dark-mode values further down,
+   * so they pick up the correct dark palette automatically.
+   */
+  --surface-overlay: rgba(0, 0, 0, 0.55);
 
-  --text-primary: #F1F5F9;
-  --text-secondary: #CBD5E1;
-  --text-tertiary: #94A3B8;
-  --text-inverse: #0F172A;
-
-  --border-primary: #334155;
-  --border-secondary: #1E293B;
-  --border-accent: rgba(59, 130, 246, 0.4);
-
-  --color-primary: #3B82F6;
-  --color-secondary: #60A5FA;
-  --color-accent: #93C5FD;
   --color-success: #34D399;
   --color-warning: #FBBF24;
   --color-error: #F87171;

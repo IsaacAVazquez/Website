@@ -155,11 +155,11 @@ export function StockResearch({
   return (
     <section aria-label="Stock research" className="space-y-6">
       {resolvedActiveTab !== "compare" && (
-        <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
+        <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
           <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center">
             <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
               <div className="min-w-0">
-                <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Research Symbol
                 </p>
                 <StockSearch value={symbol} onChange={onSymbolChange} />
@@ -189,7 +189,7 @@ export function StockResearch({
 
       {visibleTabs.length > 0 ? (
         <div
-          className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-2 shadow-[var(--shadow-sm)]"
+          className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-2 shadow-[var(--shadow-sm)]"
           role="tablist"
           aria-label="Research sections"
         >
@@ -201,8 +201,8 @@ export function StockResearch({
               onClick={() => onTabChange(key)}
               className={`min-h-[44px] whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
                 resolvedActiveTab === key
-                  ? "bg-[var(--color-primary)] text-white"
-                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
+                  ? "bg-[var(--home-haze)] text-white"
+                  : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
               }`}
             >
               {label}
@@ -230,38 +230,38 @@ export function StockResearch({
           {resolvedActiveTab === "compare" ? (
             <ComparisonTab />
           ) : !symbol ? (
-            <div className="rounded-[28px] border border-dashed border-[var(--border-primary)] bg-[var(--surface-elevated)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
-              <p className="text-sm font-semibold text-[var(--text-primary)]">
+            <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Start with a ticker symbol
               </p>
-              <p className="mt-2 text-sm text-[var(--text-tertiary)]">
+              <p className="mt-2 text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Enter a stock symbol above to start researching.
               </p>
             </div>
           ) : showLoadingState ? (
-            <div className="rounded-[28px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
-              <p className="text-sm font-semibold text-[var(--text-primary)]">
+            <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Loading research data…
               </p>
-              <p className="mt-2 text-sm text-[var(--text-tertiary)]">
+              <p className="mt-2 text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Pulling the latest curated snapshot for {symbol.toUpperCase()}.
               </p>
             </div>
           ) : showCuratedOnlyState ? (
-            <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--surface-secondary))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
-              <p className="text-sm font-semibold text-[var(--text-primary)]">
+            <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--home-paper-alt))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--home-ink)]">
                 This symbol is not in the current research set.
               </p>
-              <p className="mt-2 text-sm text-[var(--text-secondary)]">
+              <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
                 {getCuratedOnlyMessage(symbol)}
               </p>
             </div>
           ) : showResearchErrorState ? (
-            <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-error)_35%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-error)_8%,var(--surface-secondary))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
-              <p className="text-sm font-semibold text-[var(--text-primary)]">
+            <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-error)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-error)_8%,var(--home-paper-alt))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Research data is temporarily unavailable.
               </p>
-              <p className="mt-2 text-sm text-[var(--text-secondary)]">
+              <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
                 {getResearchErrorMessage(symbolError)}
               </p>
             </div>

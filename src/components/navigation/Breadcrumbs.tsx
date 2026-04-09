@@ -128,7 +128,7 @@ export function Breadcrumbs({
         aria-label="Breadcrumb"
         className={`py-4 ${className}`}
       >
-        <ol className="flex flex-wrap items-center gap-2 p-3 bg-white/60 dark:bg-[var(--neutral-900)]/60 rounded-xl border border-[var(--border-primary)] backdrop-blur-sm shadow-sm">
+        <ol className="flex flex-wrap items-center gap-2 p-3 bg-[var(--home-paper)]/60 rounded-xl border border-[var(--home-rule)] backdrop-blur-sm shadow-sm">
           {breadcrumbs.map((item, index) => (
             <li key={item.href} className="flex items-center">
               {index > 0 && (
@@ -136,7 +136,7 @@ export function Breadcrumbs({
               )}
 
               {item.isActive ? (
-                <span className="text-[var(--color-primary)] font-semibold text-sm px-2 py-1 rounded-lg bg-[var(--color-primary)]/10">
+                <span className="text-[var(--home-haze)] font-semibold text-sm px-2 py-1 rounded-lg bg-[var(--home-haze)]/10">
                   {item.label === "Home" && showHome ? (
                     <span className="flex items-center gap-1.5">
                       <IconHome className="w-4 h-4" />
@@ -149,7 +149,7 @@ export function Breadcrumbs({
               ) : (
                 <Link
                   href={item.href}
-                  className="text-[var(--text-secondary)] hover:text-[var(--color-primary)] transition-all duration-200 text-sm px-2 py-1 rounded-lg hover:bg-[var(--surface-secondary)] font-medium"
+                  className="text-[var(--home-ink-muted)] hover:text-[var(--home-haze)] transition-all duration-200 text-sm px-2 py-1 rounded-lg hover:bg-[var(--home-paper-alt)] font-medium"
                 >
                   {item.label === "Home" && showHome ? (
                     <span className="flex items-center gap-1.5">

@@ -1,27 +1,47 @@
 "use client";
 
-import React, { startTransition, useEffect, useMemo, useState } from "react";
+import {
+  startTransition,
+  useEffect,
+  useMemo,
+  useState,
+  type CSSProperties,
+} from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { ChevronDown, CircleAlert, ExternalLink } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import {
+  EditorialPillButton,
+  InlineSectionLead,
+  StatusPanel,
+  getPillStyle,
+  insetPanelStyle,
+} from "@/components/editorial";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
 import {
   analyzeSentiment,
-  extractTopics,
   calculateReadingLevel,
+  extractTopics,
   SOURCE_META,
 } from "@/lib/news-pulse-utils";
 import {
   buildNewsPulseHref,
   normalizeNewsPulseState,
-  VIEW_OPTIONS,
-  VIEW_LABELS,
-  SOURCE_OPTIONS,
   SOURCE_LABELS,
+  SOURCE_OPTIONS,
+  VIEW_LABELS,
+  VIEW_OPTIONS,
   type NewsPulseSearchState,
+  type NewsSource,
   type NewsPulseView,
 } from "./news-pulse-state";
-
-// ── Types ───────────────────────────────────────────────────────────────────
 
 interface NewsPulseClientProps {
   initialState: NewsPulseSearchState;
@@ -33,14 +53,6 @@ interface FeedResponse {
   errors: string[];
 }
 
-const VIEW_DESCRIPTIONS: Record<NewsPulseView, string> = {
-  headlines: "Stream the latest article cards and filter by source.",
-  coverage: "Compare topic overlap across outlets in a coverage matrix.",
-  analysis: "Inspect sentiment, headline length, and readability metrics by outlet.",
-};
-
-// ── Animation helpers ───────────────────────────────────────────────────────
-
 const fadeIn = {
   hidden: { opacity: 0, y: 12 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
@@ -51,11 +63,16 @@ const noMotion = {
   visible: { opacity: 1, y: 0, transition: { duration: 0 } },
 };
 
-// ── Relative time ───────────────────────────────────────────────────────────
+const LAST_FETCHED_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+});
 
 function timeAgo(dateStr: string): string {
   const d = new Date(dateStr);
-  if (isNaN(d.getTime())) return "";
+  if (Number.isNaN(d.getTime())) return "";
   const diff = Date.now() - d.getTime();
   const mins = Math.floor(diff / 60_000);
   if (mins < 1) return "just now";
@@ -66,7 +83,74 @@ function timeAgo(dateStr: string): string {
   return `${days}d ago`;
 }
 
-// ── Main client ─────────────────────────────────────────────────────────────
+function formatFetchedAt(value: string): string {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? "Waiting on a refresh" : LAST_FETCHED_FORMATTER.format(date);
+}
+
+function getSourceBadgeStyle(sourceColor: string): CSSProperties {
+  return {
+    color: "var(--home-ink)",
+    borderColor: "color-mix(in srgb, var(--home-stone) 58%, var(--home-rule))",
+    background: `color-mix(in srgb, ${sourceColor} 12%, var(--home-paper))`,
+  };
+}
+
+function getReadabilityTone(score: number): CSSProperties {
+  if (score >= 70) return { color: "var(--color-success)" };
+  if (score >= 50) return { color: "var(--color-warning)" };
+  return { color: "var(--color-error)" };
+}
+
+function SourceDropdown({
+  value,
+  onValueChange,
+}: {
+  value: NewsSource;
+  onValueChange: (value: NewsSource) => void;
+}) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          type="button"
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease"
+          style={getPillStyle(false)}
+          aria-label={`Source selector: ${SOURCE_LABELS[value]}`}
+        >
+          <span
+            className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+            style={{ fontFamily: "var(--font-home-sans)" }}
+          >
+            Source
+          </span>
+          <span>{SOURCE_LABELS[value]}</span>
+          <ChevronDown className="h-4 w-4" aria-hidden="true" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="end"
+        className="min-w-[14rem] rounded-[1rem] border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-1.5 text-[var(--home-ink)] shadow-[var(--shadow-lg)]"
+      >
+        <DropdownMenuRadioGroup
+          value={value}
+          onValueChange={(nextValue) => onValueChange(nextValue as NewsSource)}
+        >
+          {SOURCE_OPTIONS.map((source) => (
+            <DropdownMenuRadioItem
+              key={source}
+              value={source}
+              className="rounded-[0.8rem] py-2 pl-8 pr-3 text-sm font-medium focus:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,white)]"
+              style={{ fontFamily: "var(--font-home-sans)" }}
+            >
+              {SOURCE_LABELS[source]}
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
   const router = useRouter();
@@ -74,12 +158,11 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
   const shouldReduceMotion = useReducedMotion();
   const variants = shouldReduceMotion ? noMotion : fadeIn;
 
-  // Route state
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("source") !== null;
   const routeState = useMemo(
     () => (hasManagedParams ? normalizeNewsPulseState(searchParams) : initialState),
-    [hasManagedParams, initialState, searchParams],
+    [hasManagedParams, initialState, searchParams]
   );
 
   function updateRouteState(next: Partial<NewsPulseSearchState>) {
@@ -87,215 +170,230 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
     startTransition(() => router.push(href, { scroll: false }));
   }
 
-  // Data fetching
   const [articles, setArticles] = useState<NewsArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [feedErrors, setFeedErrors] = useState<string[]>([]);
-  const [fetchedAt, setFetchedAt] = useState<string>("");
+  const [fetchedAt, setFetchedAt] = useState("");
 
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
+    setError(null);
+    setFeedErrors([]);
+
     fetch("/api/news-pulse", { signal: controller.signal })
-      .then((r) => r.json())
+      .then((response) => response.json())
       .then((data: FeedResponse) => {
-        setArticles(data.articles);
-        setFetchedAt(data.fetchedAt);
+        setArticles(Array.isArray(data.articles) ? data.articles : []);
+        setFetchedAt(data.fetchedAt ?? "");
         setFeedErrors(data.errors ?? []);
         setLoading(false);
       })
-      .catch((err) => {
-        if (err.name !== "AbortError") {
-          setError(err.message);
+      .catch((fetchError: Error) => {
+        if (fetchError.name !== "AbortError") {
+          setError(fetchError.message);
           setLoading(false);
         }
       });
+
     return () => controller.abort();
   }, []);
 
-  // Filtered articles
-  const filtered = useMemo(
+  const filteredArticles = useMemo(
     () =>
       routeState.source === "all"
         ? articles
-        : articles.filter((a: NewsArticle) => a.source === routeState.source),
-    [articles, routeState.source],
+        : articles.filter((article) => article.source === routeState.source),
+    [articles, routeState.source]
   );
 
-  const shellClassName =
-    "mx-auto w-full max-w-[1680px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12";
+  const trackedSourceCount = SOURCE_OPTIONS.length - 1;
+  const articleSourceCount = useMemo(
+    () => new Set(articles.map((article) => article.source)).size,
+    [articles]
+  );
+  const updatedLabel = loading
+    ? "Refreshing now"
+    : error
+      ? "Feed unavailable"
+      : `Updated ${formatFetchedAt(fetchedAt)}`;
 
   return (
     <section
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--color-primary)_10%,transparent),transparent_28%),linear-gradient(180deg,var(--surface-primary)_0%,color-mix(in_srgb,var(--surface-secondary)_65%,var(--surface-primary))_100%)]"
+      className="home-page min-h-screen"
       aria-label="News Pulse Dashboard"
+      data-testid="news-pulse-shell"
     >
-      <div className={shellClassName}>
-        {/* ── Hero ─────────────────────────────────────────── */}
+      <div className="home-shell home-section space-y-4 sm:space-y-5">
         <motion.div
-          className="mb-8 rounded-[30px] border border-[color-mix(in_srgb,var(--color-primary)_12%,var(--border-primary))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_7%,var(--surface-elevated))_0%,var(--surface-elevated)_55%,color-mix(in_srgb,var(--color-success)_7%,var(--surface-elevated))_100%)] p-6 shadow-[var(--shadow-sm)] sm:p-8"
+          className="space-y-3 pt-2"
           variants={variants}
           initial="hidden"
           animate="visible"
         >
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_auto] xl:items-end">
-            <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
-                Media Intelligence
-              </p>
-              <h1 className="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">
-                News Pulse Dashboard
-              </h1>
-              <p className="mt-3 max-w-[68ch] text-sm leading-7 text-[var(--text-secondary)] sm:text-[0.95rem]">
-                Live feed aggregating headlines from 6 major news outlets. Explore coverage patterns,
-                trending topics, and headline sentiment, all powered by RSS with client-side NLP.
+          <div className="space-y-3">
+            <h1
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                fontSize: "clamp(2.55rem, 6vw, 4.8rem)",
+                fontWeight: 600,
+                lineHeight: 0.92,
+                letterSpacing: "-0.08em",
+                color: "var(--home-ink)",
+              }}
+            >
+              News Pulse
+            </h1>
+            <div>
+              <p className="home-body max-w-[42rem]">
+                I built News Pulse to get a fast read on what major outlets are choosing to
+                emphasize right now. It pulls six RSS feeds into one editorial desk, then layers
+                on lightweight topic, tone, and readability signals so I can compare framing before
+                I read deeply.
               </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3 xl:min-w-[520px]">
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                  Sources
-                </p>
-                <p
-                  className="mt-2 text-sm font-semibold text-[var(--text-primary)]"
-                  title="Monitors six RSS feeds and unifies them into one normalized list."
-                >
-                  6 major outlets
-                </p>
-              </div>
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                  Analysis
-                </p>
-                <p
-                  className="mt-2 text-sm font-semibold text-[var(--text-primary)]"
-                  title="Uses lightweight client-side NLP: topic extraction, lexicon sentiment, and readability estimates."
-                >
-                  Topics + Sentiment
-                </p>
-              </div>
-              <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
-                  Updates
-                </p>
-                <p
-                  className="mt-2 text-sm font-semibold text-[var(--text-primary)]"
-                  title="Refreshes whenever the RSS endpoint is queried and parsed."
-                >
-                  Live via RSS
-                </p>
-              </div>
+            <div className="flex flex-wrap gap-2 pt-1">
+              <span className="resume-chip">{trackedSourceCount} outlets tracked</span>
+              <span className="resume-chip">{updatedLabel}</span>
+              <span className="resume-chip">Headline-level topic, tone, readability</span>
+              {!loading && !error ? (
+                <span className="resume-chip">{articles.length} headlines in this pull</span>
+              ) : null}
             </div>
+          </div>
+
+       
+        </motion.div>
+
+        <motion.div
+          className="pt-1"
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div
+              className="flex flex-wrap gap-2 rounded-[1.1rem] p-1.5"
+              role="tablist"
+              aria-label="News Pulse tabs"
+              style={{
+                width: "fit-content",
+      //          border: "1px solid var(--home-rule)",
+      //          background: "color-mix(in srgb, var(--home-paper-alt) 90%, white)",
+              }}
+            >
+              {VIEW_OPTIONS.map((view) => (
+                <EditorialPillButton
+                  key={view}
+                  active={routeState.view === view}
+                  onClick={() => updateRouteState({ view })}
+                  role="tab"
+                  ariaSelected={routeState.view === view}
+                >
+                  {VIEW_LABELS[view]}
+                </EditorialPillButton>
+              ))}
+            </div>
+
+            {routeState.view === "headlines" ? (
+              <SourceDropdown
+                value={routeState.source}
+                onValueChange={(source) => updateRouteState({ source })}
+              />
+            ) : null}
           </div>
         </motion.div>
 
-        {/* ── Tabs ─────────────────────────────────────────── */}
-        <div
-          className="mb-8 inline-flex flex-wrap gap-2 rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)]/90 p-2 shadow-[var(--shadow-sm)] backdrop-blur"
-          role="tablist"
-          aria-label="News Pulse tabs"
-        >
-          {VIEW_OPTIONS.map((key) => (
-            <button
-              key={key}
-              role="tab"
-              aria-selected={routeState.view === key}
-              onClick={() => updateRouteState({ view: key })}
-              title={VIEW_DESCRIPTIONS[key]}
-              className={`min-h-[46px] rounded-2xl px-5 py-3 text-sm font-semibold transition ${
-                routeState.view === key
-                  ? "bg-[var(--color-primary)] text-white shadow-[var(--shadow-sm)]"
-                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
-              }`}
+        {feedErrors.length > 0 && !loading ? (
+          <div
+            className="home-card flex items-start gap-3 rounded-[1.5rem] px-5 py-4"
+            style={{
+              borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--color-warning) 10%, var(--home-paper))",
+            }}
+          >
+            <div
+              className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+              style={{ background: "color-mix(in srgb, var(--home-paper) 88%, white)" }}
             >
-              {VIEW_LABELS[key]}
-            </button>
-          ))}
-        </div>
-
-        {/* ── Source filter (headlines tab) ────────────────── */}
-        {routeState.view === "headlines" && (
-          <div className="mb-6 flex flex-wrap gap-2">
-            {SOURCE_OPTIONS.map((src) => (
-              <button
-                key={src}
-                onClick={() => updateRouteState({ source: src })}
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
-                  routeState.source === src
-                    ? "bg-[var(--color-primary)] text-white"
-                    : "border border-[var(--border-primary)] bg-[var(--surface-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                }`}
+              <CircleAlert
+                className="h-4 w-4"
+                style={{ color: "var(--color-warning)" }}
+                aria-hidden="true"
+              />
+            </div>
+            <div>
+              <p
+                className="mb-1 text-sm font-semibold"
+                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
               >
-                {SOURCE_LABELS[src]}
-              </button>
-            ))}
+                Some feeds did not come through on this refresh.
+              </p>
+              <p
+                className="mb-0 max-w-none text-sm leading-7"
+                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+              >
+                {feedErrors.join("; ")}
+              </p>
+            </div>
           </div>
-        )}
+        ) : null}
 
-        {/* ── Feed errors banner ──────────────────────────── */}
-        {feedErrors.length > 0 && !loading && (
-          <div className="mb-6 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-xs text-amber-700 dark:text-amber-300">
-            Some feeds unavailable: {feedErrors.join("; ")}
-          </div>
-        )}
-
-        {/* ── Content ─────────────────────────────────────── */}
         {loading ? (
           <LoadingState />
         ) : error ? (
           <ErrorState message={error} />
+        ) : routeState.view === "headlines" ? (
+          <HeadlinesView articles={filteredArticles} variants={variants} />
+        ) : routeState.view === "coverage" ? (
+          <CoverageView articles={articles} variants={variants} />
         ) : (
-          <>
-            {routeState.view === "headlines" && (
-              <HeadlinesView articles={filtered} variants={variants} />
-            )}
-            {routeState.view === "coverage" && (
-              <CoverageView articles={articles} variants={variants} />
-            )}
-            {routeState.view === "analysis" && (
-              <AnalysisView articles={articles} variants={variants} />
-            )}
-          </>
+          <AnalysisView articles={articles} variants={variants} />
         )}
 
-        {/* ── Footer ──────────────────────────────────────── */}
-        {fetchedAt && !loading && (
-          <p className="mt-8 text-center text-xs text-[var(--text-tertiary)]">
-            Last fetched: {new Date(fetchedAt).toLocaleString()}
-            {" · "}
-            {articles.length} articles from {Array.from(new Set(articles.map((a: NewsArticle) => a.source))).length} sources
+        {fetchedAt && !loading && !error ? (
+          <p
+            className="mb-0 pt-1 text-center text-xs"
+            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+          >
+            Last fetched {formatFetchedAt(fetchedAt)} · {articles.length} headlines across{" "}
+            {articleSourceCount || trackedSourceCount} sources
           </p>
-        )}
+        ) : null}
       </div>
     </section>
   );
 }
 
-// ── Loading / Error ─────────────────────────────────────────────────────────
-
 function LoadingState() {
   return (
-    <div className="flex flex-col items-center justify-center py-24 gap-4">
-      <div className="w-10 h-10 border-3 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin" />
-      <p className="text-sm text-[var(--text-tertiary)]">Fetching live feeds…</p>
-    </div>
+    <StatusPanel
+      title="Refreshing live feeds"
+      message="I am pulling the latest RSS headlines now so the dashboard can rebuild the digest and comparison views."
+      icon={
+        <div
+          className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent"
+          aria-hidden="true"
+        />
+      }
+      statusRole="status"
+    />
   );
 }
 
 function ErrorState({ message }: { message: string }) {
   return (
-    <div className="rounded-2xl border border-red-500/30 bg-red-500/10 px-6 py-8 text-center">
-      <p className="text-sm font-semibold text-red-600 dark:text-red-400">
-        Failed to load feeds
-      </p>
-      <p className="mt-2 text-xs text-[var(--text-tertiary)]">{message}</p>
-    </div>
+    <StatusPanel
+      title="I could not load the feeds."
+      message={message}
+      tone="error"
+      icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
+      statusRole="alert"
+    />
   );
 }
-
-// ── Headlines View ──────────────────────────────────────────────────────────
 
 function HeadlinesView({
   articles,
@@ -306,58 +404,110 @@ function HeadlinesView({
 }) {
   if (articles.length === 0) {
     return (
-      <p className="py-12 text-center text-sm text-[var(--text-tertiary)]">
-        No articles found for this source.
-      </p>
+      <StatusPanel
+        title="No headlines match this filter."
+        message="That source did not return any articles in the current pull, so there is nothing to compare yet."
+      />
     );
   }
 
   return (
     <motion.div
-      className="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+      className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
       variants={variants}
       initial="hidden"
       animate="visible"
     >
-      {articles.slice(0, 60).map((article, i) => (
+      {articles.slice(0, 60).map((article, index) => (
         <a
-          key={`${article.source}-${i}`}
+          key={`${article.source}-${index}`}
           href={article.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex flex-col rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-5 shadow-[var(--shadow-sm)] transition hover:shadow-md hover:border-[color-mix(in_srgb,var(--color-primary)_30%,var(--border-primary))]"
+          className="home-card group flex h-full flex-col no-underline"
+          style={{ padding: "1.5rem" }}
         >
-          <div className="mb-3 flex items-center justify-between gap-3">
+          <div className="flex items-start justify-between gap-3">
             <span
-              className="inline-block rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white"
-              style={{ backgroundColor: article.sourceColor }}
+              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+              style={getSourceBadgeStyle(article.sourceColor)}
             >
+              <span
+                className="h-2.5 w-2.5 rounded-full"
+                style={{ background: article.sourceColor }}
+                aria-hidden="true"
+              />
               {article.sourceName}
             </span>
-            <span className="shrink-0 text-[11px] text-[var(--text-tertiary)]">
+
+            <span
+              className="shrink-0 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+            >
               {timeAgo(article.pubDate)}
             </span>
           </div>
-          <h3 className="text-[15px] font-semibold leading-snug text-[var(--text-primary)] group-hover:text-[var(--color-primary)] transition">
-            {article.title}
-          </h3>
-          {article.description && (
-            <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-[var(--text-secondary)]">
-              {article.description}
-            </p>
-          )}
-          {article.category && article.category !== "General" && (
-            <span className="mt-3 self-start rounded-md bg-[var(--surface-secondary)] px-2 py-0.5 text-[10px] font-medium text-[var(--text-tertiary)]">
-              {article.category}
+
+          <div className="mt-5 flex-1 space-y-3">
+            <h2
+              className="text-[1.2rem] leading-[1.15] transition-colors duration-200 ease group-hover:text-[var(--home-haze)]"
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                fontWeight: 700,
+                letterSpacing: "-0.03em",
+                color: "var(--home-ink)",
+              }}
+            >
+              {article.title}
+            </h2>
+
+            {article.description ? (
+              <p
+                className="mb-0 line-clamp-3 text-sm leading-7"
+                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+              >
+                {article.description}
+              </p>
+            ) : null}
+          </div>
+
+          <div
+            className="mt-5 flex items-center justify-between gap-3 pt-4"
+            style={{ borderTop: "1px solid var(--home-rule)" }}
+          >
+            {article.category && article.category !== "General" ? (
+              <span
+                className="inline-flex items-center rounded-full px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  color: "var(--home-ink)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                }}
+              >
+                {article.category}
+              </span>
+            ) : (
+              <span
+                className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+              >
+                Open feed item
+              </span>
+            )}
+
+            <span
+              className="inline-flex items-center gap-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
+            >
+              Read headline
+              <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
-          )}
+          </div>
         </a>
       ))}
     </motion.div>
   );
 }
-
-// ── Coverage View ───────────────────────────────────────────────────────────
 
 function CoverageView({
   articles,
@@ -368,95 +518,116 @@ function CoverageView({
 }) {
   const topics = useMemo(() => extractTopics(articles), [articles]);
   const sourceIds = useMemo(
-    () => Array.from(new Set(articles.map((a: NewsArticle) => a.source))).sort(),
-    [articles],
+    () => Array.from(new Set(articles.map((article) => article.source))).sort(),
+    [articles]
   );
 
   if (topics.length === 0) {
     return (
-      <p className="py-12 text-center text-sm text-[var(--text-tertiary)]">
-        Not enough articles to extract topics.
-      </p>
+      <StatusPanel
+        title="The overlap is thin right now."
+        message="I need repeated language across at least two outlets before the coverage map becomes useful."
+      />
     );
   }
 
   return (
-    <motion.div variants={variants} initial="hidden" animate="visible">
-      <p className="mb-4 text-sm text-[var(--text-secondary)]">
-        Topics appearing across 2+ outlets, ranked by total coverage depth.
-      </p>
-      <div className="overflow-x-auto rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] shadow-[var(--shadow-sm)]">
-        <table className="w-full text-left text-sm">
-          <thead>
-            <tr className="border-b border-[var(--border-primary)]">
-              <th className="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">
-                Topic
-              </th>
-              {sourceIds.map((s: string) => (
+    <motion.div className="space-y-6" variants={variants} initial="hidden" animate="visible">
+      <div className="home-card overflow-hidden p-5 sm:p-6">
+        <div className="overflow-x-auto">
+          <table className="min-w-[720px] w-full text-left text-sm">
+            <thead>
+              <tr style={{ borderBottom: "1px solid var(--home-rule)" }}>
                 <th
-                  key={s}
-                  className="px-3 py-3 text-center"
+                  className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em]"
+                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
                 >
-                  <span
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--text-primary)]"
-                    title={`${SOURCE_META[s]?.name ?? s} topic count`}
-                  >
-                    <span
-                      className="h-2 w-2 rounded-full"
-                      style={{ backgroundColor: SOURCE_META[s]?.color ?? "var(--color-primary)" }}
-                      aria-hidden
-                    />
-                    {SOURCE_META[s]?.name ?? s}
-                  </span>
+                  Topic
                 </th>
-              ))}
-              <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">
-                Total
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {topics.map((t: { topic: string; count: number; sources: Record<string, number> }) => (
-              <tr
-                key={t.topic}
-                className="border-b border-[var(--border-primary)] last:border-b-0"
-              >
-                <td className="px-4 py-3 font-medium capitalize text-[var(--text-primary)]">
-                  {t.topic}
-                </td>
-                {sourceIds.map((s: string) => {
-                  const count = t.sources[s] ?? 0;
-                  return (
-                    <td key={s} className="px-3 py-3 text-center">
-                      {count > 0 ? (
-                        <span
-                          className="inline-flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white"
-                          style={{
-                            backgroundColor: SOURCE_META[s]?.color ?? "var(--color-primary)",
-                            opacity: Math.min(0.4 + count * 0.15, 1),
-                          }}
-                        >
-                          {count}
-                        </span>
-                      ) : (
-                        <span className="text-[var(--text-tertiary)]">—</span>
-                      )}
-                    </td>
-                  );
-                })}
-                <td className="px-4 py-3 text-center font-semibold text-[var(--text-primary)]">
-                  {t.count}
-                </td>
+                {sourceIds.map((source) => (
+                  <th key={source} className="px-3 py-3 text-center">
+                    <span
+                      className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                      style={getSourceBadgeStyle(SOURCE_META[source]?.color ?? "var(--home-haze)")}
+                    >
+                      <span
+                        className="h-2.5 w-2.5 rounded-full"
+                        style={{ background: SOURCE_META[source]?.color ?? "var(--home-haze)" }}
+                        aria-hidden="true"
+                      />
+                      {SOURCE_META[source]?.name ?? source}
+                    </span>
+                  </th>
+                ))}
+                <th
+                  className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.14em]"
+                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+                >
+                  Total
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {topics.map((topic) => (
+                <tr key={topic.topic} style={{ borderBottom: "1px solid var(--home-rule)" }}>
+                  <td
+                    className="px-4 py-4 capitalize"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontWeight: 600,
+                      color: "var(--home-ink)",
+                    }}
+                  >
+                    {topic.topic}
+                  </td>
+                  {sourceIds.map((source) => {
+                    const count = topic.sources[source] ?? 0;
+                    return (
+                      <td key={source} className="px-3 py-4 text-center">
+                        {count > 0 ? (
+                          <span
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold"
+                            style={{
+                              fontFamily: "var(--font-home-sans)",
+                              color: "white",
+                              background: SOURCE_META[source]?.color ?? "var(--home-haze)",
+                              opacity: Math.min(0.42 + count * 0.14, 1),
+                            }}
+                          >
+                            {count}
+                          </span>
+                        ) : (
+                          <span
+                            style={{
+                              fontFamily: "var(--font-home-sans)",
+                              color: "var(--home-ink-muted)",
+                            }}
+                          >
+                            —
+                          </span>
+                        )}
+                      </td>
+                    );
+                  })}
+                  <td
+                    className="px-4 py-4 text-center"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontWeight: 700,
+                      color: "var(--home-ink)",
+                    }}
+                  >
+                    {topic.count}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </motion.div>
   );
 }
-
-// ── Analysis View ───────────────────────────────────────────────────────────
 
 function AnalysisView({
   articles,
@@ -466,49 +637,80 @@ function AnalysisView({
   variants: typeof fadeIn;
 }) {
   const sourceIds = useMemo(
-    () => Array.from(new Set(articles.map((a: NewsArticle) => a.source))).sort(),
-    [articles],
+    () => Array.from(new Set(articles.map((article) => article.source))).sort(),
+    [articles]
   );
 
   const sentimentBySource = useMemo(() => {
-    const map: Record<string, { positive: number; negative: number; neutral: number; total: number }> = {};
-    for (const a of articles) {
-      const s = analyzeSentiment(`${a.title} ${a.description}`);
-      if (!map[a.source]) map[a.source] = { positive: 0, negative: 0, neutral: 0, total: 0 };
-      map[a.source][s.label]++;
-      map[a.source].total++;
+    const sentimentMap: Record<
+      string,
+      { positive: number; negative: number; neutral: number; total: number }
+    > = {};
+
+    for (const article of articles) {
+      const sentiment = analyzeSentiment(`${article.title} ${article.description}`);
+      if (!sentimentMap[article.source]) {
+        sentimentMap[article.source] = {
+          positive: 0,
+          negative: 0,
+          neutral: 0,
+          total: 0,
+        };
+      }
+      sentimentMap[article.source][sentiment.label]++;
+      sentimentMap[article.source].total++;
     }
-    return map;
+
+    return sentimentMap;
   }, [articles]);
 
   const headlineLengthBySource = useMemo(() => {
-    const map: Record<string, { totalLen: number; count: number }> = {};
-    for (const a of articles) {
-      if (!map[a.source]) map[a.source] = { totalLen: 0, count: 0 };
-      map[a.source].totalLen += a.title.split(/\s+/).length;
-      map[a.source].count++;
+    const lengthMap: Record<string, { totalLength: number; count: number }> = {};
+
+    for (const article of articles) {
+      if (!lengthMap[article.source]) {
+        lengthMap[article.source] = { totalLength: 0, count: 0 };
+      }
+
+      lengthMap[article.source].totalLength += article.title.split(/\s+/).length;
+      lengthMap[article.source].count++;
     }
-    return map;
+
+    return lengthMap;
   }, [articles]);
 
   const readabilityBySource = useMemo(() => {
-    const map: Record<string, { totalScore: number; count: number }> = {};
-    for (const a of articles) {
-      const r = calculateReadingLevel(a.title);
-      if (!map[a.source]) map[a.source] = { totalScore: 0, count: 0 };
-      map[a.source].totalScore += r.score;
-      map[a.source].count++;
+    const readabilityMap: Record<string, { totalScore: number; count: number }> = {};
+
+    for (const article of articles) {
+      const readability = calculateReadingLevel(article.title);
+      if (!readabilityMap[article.source]) {
+        readabilityMap[article.source] = { totalScore: 0, count: 0 };
+      }
+
+      readabilityMap[article.source].totalScore += readability.score;
+      readabilityMap[article.source].count++;
     }
-    return map;
+
+    return readabilityMap;
   }, [articles]);
 
-  const maxAvgLen = Math.max(
-    ...sourceIds.map((s: string) => {
-      const d = headlineLengthBySource[s];
-      return d ? d.totalLen / d.count : 0;
+  const maxAverageHeadlineLength = Math.max(
+    ...sourceIds.map((source) => {
+      const sourceData = headlineLengthBySource[source];
+      return sourceData ? sourceData.totalLength / sourceData.count : 0;
     }),
-    1,
+    1
   );
+
+  if (sourceIds.length === 0) {
+    return (
+      <StatusPanel
+        title="There is no analysis to compare yet."
+        message="The dashboard needs headline data before it can calculate tone, length, and readability by outlet."
+      />
+    );
+  }
 
   return (
     <motion.div
@@ -517,60 +719,94 @@ function AnalysisView({
       initial="hidden"
       animate="visible"
     >
-      <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-5 shadow-[var(--shadow-sm)] lg:col-span-2">
-        <h2 className="text-sm font-semibold text-[var(--text-primary)]">How analysis works</h2>
-        <p className="mt-2 text-xs leading-6 text-[var(--text-secondary)]">
-          Sentiment is estimated from headline + description keyword balance, headline length is average word count, and readability is a headline-level Flesch-style approximation. These are directional indicators for editorial framing, not full article-level NLP.
-        </p>
-      </div>
+      <div className="home-card p-5 sm:p-6">
+        <h2
+          className="text-xl font-semibold"
+          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+        >
+          Tone distribution by outlet
+        </h2>
+        <InlineSectionLead kicker="Headline sentiment">
+          I read this as directional framing pressure, not article-level sentiment.
+        </InlineSectionLead>
 
-      {/* Sentiment distribution */}
-      <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-6 shadow-[var(--shadow-sm)]">
-        <h2 className="mb-1 text-base font-bold text-[var(--text-primary)]">Headline Sentiment</h2>
-        <p className="mb-5 text-xs text-[var(--text-tertiary)]">
-          Lexicon-based positive / neutral / negative distribution per outlet
-        </p>
-        <div className="space-y-4">
-          {sourceIds.map((s: string) => {
-            const d = sentimentBySource[s];
-            if (!d) return null;
-            const pPct = Math.round((d.positive / d.total) * 100);
-            const nPct = Math.round((d.negative / d.total) * 100);
-            const neuPct = 100 - pPct - nPct;
+        <div className="mt-6 space-y-5">
+          {sourceIds.map((source) => {
+            const sourceData = sentimentBySource[source];
+            if (!sourceData) return null;
+
+            const positivePercent = Math.round((sourceData.positive / sourceData.total) * 100);
+            const negativePercent = Math.round((sourceData.negative / sourceData.total) * 100);
+            const neutralPercent = 100 - positivePercent - negativePercent;
+
             return (
-              <div key={s}>
-                <div className="mb-1.5 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-[var(--text-primary)]">
-                    {SOURCE_META[s]?.name ?? s}
+              <div key={source}>
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <span
+                    className="text-sm font-semibold"
+                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+                  >
+                    {SOURCE_META[source]?.name ?? source}
                   </span>
-                  <span className="text-[10px] text-[var(--text-tertiary)]">{d.total} articles</span>
+                  <span
+                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      color: "var(--home-ink-muted)",
+                    }}
+                  >
+                    {sourceData.total} headlines
+                  </span>
                 </div>
-                <div className="flex h-5 w-full overflow-hidden rounded-full">
+
+                <div
+                  className="flex h-5 w-full overflow-hidden rounded-full"
+                  style={{ background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)" }}
+                >
                   <div
-                    className="bg-emerald-500 transition-all"
-                    style={{ width: `${pPct}%` }}
-                    title={`Positive: ${pPct}%`}
+                    className="transition-[width] duration-500 ease"
+                    style={{ width: `${positivePercent}%`, background: "var(--color-success)" }}
+                    title={`Positive ${positivePercent}%`}
                   />
                   <div
-                    className="bg-slate-400 transition-all"
-                    style={{ width: `${neuPct}%` }}
-                    title={`Neutral: ${neuPct}%`}
+                    className="transition-[width] duration-500 ease"
+                    style={{ width: `${neutralPercent}%`, background: "var(--home-stone)" }}
+                    title={`Neutral ${neutralPercent}%`}
                   />
                   <div
-                    className="bg-rose-500 transition-all"
-                    style={{ width: `${nPct}%` }}
-                    title={`Negative: ${nPct}%`}
+                    className="transition-[width] duration-500 ease"
+                    style={{ width: `${negativePercent}%`, background: "var(--color-error)" }}
+                    title={`Negative ${negativePercent}%`}
                   />
                 </div>
-                <div className="mt-1 flex gap-3 text-[10px] text-[var(--text-tertiary)]">
-                  <span className="flex items-center gap-1">
-                    <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" /> {pPct}% pos
+
+                <div
+                  className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+                >
+                  <span className="inline-flex items-center gap-1.5">
+                    <span
+                      className="h-2.5 w-2.5 rounded-full"
+                      style={{ background: "var(--color-success)" }}
+                      aria-hidden="true"
+                    />
+                    {positivePercent}% positive
                   </span>
-                  <span className="flex items-center gap-1">
-                    <span className="inline-block h-2 w-2 rounded-full bg-slate-400" /> {neuPct}% neu
+                  <span className="inline-flex items-center gap-1.5">
+                    <span
+                      className="h-2.5 w-2.5 rounded-full"
+                      style={{ background: "var(--home-stone)" }}
+                      aria-hidden="true"
+                    />
+                    {neutralPercent}% neutral
                   </span>
-                  <span className="flex items-center gap-1">
-                    <span className="inline-block h-2 w-2 rounded-full bg-rose-500" /> {nPct}% neg
+                  <span className="inline-flex items-center gap-1.5">
+                    <span
+                      className="h-2.5 w-2.5 rounded-full"
+                      style={{ background: "var(--color-error)" }}
+                      aria-hidden="true"
+                    />
+                    {negativePercent}% negative
                   </span>
                 </div>
               </div>
@@ -579,34 +815,51 @@ function AnalysisView({
         </div>
       </div>
 
-      {/* Headline length */}
-      <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-6 shadow-[var(--shadow-sm)]">
-        <h2 className="mb-1 text-base font-bold text-[var(--text-primary)]">Average Headline Length</h2>
-        <p className="mb-5 text-xs text-[var(--text-tertiary)]">
-          Words per headline by outlet
-        </p>
-        <div className="space-y-4">
-          {sourceIds.map((s: string) => {
-            const d = headlineLengthBySource[s];
-            if (!d) return null;
-            const avg = d.totalLen / d.count;
-            const pct = (avg / maxAvgLen) * 100;
+      <div className="home-card p-5 sm:p-6">
+        <h2
+          className="text-xl font-semibold"
+          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+        >
+          Average words per headline
+        </h2>
+        <InlineSectionLead kicker="Headline length">
+          Longer headlines usually signal more context, but sometimes they just mean more hedging.
+        </InlineSectionLead>
+
+        <div className="mt-6 space-y-5">
+          {sourceIds.map((source) => {
+            const sourceData = headlineLengthBySource[source];
+            if (!sourceData) return null;
+
+            const averageLength = sourceData.totalLength / sourceData.count;
+            const widthPercent = (averageLength / maxAverageHeadlineLength) * 100;
+
             return (
-              <div key={s}>
-                <div className="mb-1.5 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-[var(--text-primary)]">
-                    {SOURCE_META[s]?.name ?? s}
+              <div key={source}>
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <span
+                    className="text-sm font-semibold"
+                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+                  >
+                    {SOURCE_META[source]?.name ?? source}
                   </span>
-                  <span className="text-xs font-medium text-[var(--text-secondary)]">
-                    {avg.toFixed(1)} words
+                  <span
+                    className="text-sm font-semibold"
+                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+                  >
+                    {averageLength.toFixed(1)} words
                   </span>
                 </div>
-                <div className="h-4 w-full rounded-full bg-[var(--surface-secondary)]">
+
+                <div
+                  className="h-4 w-full overflow-hidden rounded-full"
+                  style={{ background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)" }}
+                >
                   <div
-                    className="h-4 rounded-full transition-all"
+                    className="h-full rounded-full transition-[width] duration-500 ease"
                     style={{
-                      width: `${pct}%`,
-                      backgroundColor: SOURCE_META[s]?.color ?? "var(--color-primary)",
+                      width: `${widthPercent}%`,
+                      background: SOURCE_META[source]?.color ?? "var(--home-haze)",
                     }}
                   />
                 </div>
@@ -616,35 +869,62 @@ function AnalysisView({
         </div>
       </div>
 
-      {/* Readability */}
-      <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-6 shadow-[var(--shadow-sm)] lg:col-span-2">
-        <h2 className="mb-1 text-base font-bold text-[var(--text-primary)]">Readability Score</h2>
-        <p className="mb-5 text-xs text-[var(--text-tertiary)]">
-          Flesch Reading Ease approximation. Higher is easier to read (0–100 scale).
-        </p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {sourceIds.map((s: string) => {
-            const d = readabilityBySource[s];
-            if (!d) return null;
-            const avg = Math.round(d.totalScore / d.count);
-            const label = avg >= 70 ? "Easy" : avg >= 50 ? "Moderate" : "Advanced";
-            const color = avg >= 70 ? "text-emerald-600" : avg >= 50 ? "text-amber-600" : "text-rose-600";
+      <div className="home-card p-5 sm:p-6 lg:col-span-2">
+        <h2
+          className="text-xl font-semibold"
+          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+        >
+          How dense the headline writing feels
+        </h2>
+        <InlineSectionLead kicker="Readability">
+          Higher scores are easier to scan quickly. Lower scores usually mean denser wording or
+          more clauses packed into the headline.
+        </InlineSectionLead>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {sourceIds.map((source) => {
+            const sourceData = readabilityBySource[source];
+            if (!sourceData) return null;
+
+            const averageScore = Math.round(sourceData.totalScore / sourceData.count);
+            const readabilityLabel =
+              averageScore >= 70 ? "Easy" : averageScore >= 50 ? "Moderate" : "Advanced";
+
             return (
               <div
-                key={s}
-                className="flex items-center gap-4 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-3"
+                key={source}
+                className="rounded-[1.25rem] px-4 py-4"
+                style={insetPanelStyle}
               >
-                <div
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-lg font-bold text-white"
-                  style={{ backgroundColor: SOURCE_META[s]?.color ?? "var(--color-primary)" }}
-                >
-                  {avg}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[var(--text-primary)]">
-                    {SOURCE_META[s]?.name ?? s}
-                  </p>
-                  <p className={`text-xs font-medium ${color}`}>{label}</p>
+                <div className="flex items-center gap-4">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-full text-base font-semibold"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      color: "white",
+                      background: SOURCE_META[source]?.color ?? "var(--home-haze)",
+                    }}
+                  >
+                    {averageScore}
+                  </div>
+
+                  <div>
+                    <p
+                      className="mb-1 text-sm font-semibold"
+                      style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+                    >
+                      {SOURCE_META[source]?.name ?? source}
+                    </p>
+                    <p
+                      className="mb-0 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                      style={{
+                        ...getReadabilityTone(averageScore),
+                        fontFamily: "var(--font-home-sans)",
+                      }}
+                    >
+                      {readabilityLabel}
+                    </p>
+                  </div>
                 </div>
               </div>
             );

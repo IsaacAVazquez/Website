@@ -52,12 +52,12 @@ export function PortfolioSummary({ summary, isLoading }: Props) {
           </div>
         ) : (
           <div className="grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.9fr)]">
-            <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-secondary)] p-5">
+            <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5">
               <motion.div variants={v.itemVariants}>
-                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Total Portfolio Value
                 </p>
-                <p className="text-3xl font-bold text-[var(--text-primary)]">
+                <p className="text-3xl font-bold text-[var(--home-ink)]">
                   {formatCurrency(summary.totalValue)}
                 </p>
               </motion.div>
@@ -73,19 +73,19 @@ export function PortfolioSummary({ summary, isLoading }: Props) {
               variants={v.itemVariants}
               className="grid gap-3 sm:grid-cols-2"
             >
-              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Today
                 </p>
                 <p className={`mt-2 text-sm font-semibold ${dayColor}`}>
                   {formatCurrency(summary.dayChange)} ({formatPercent(summary.dayChangePercent)})
                 </p>
               </div>
-              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] p-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Total Cost
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
                   {formatCurrency(summary.totalCost)}
                 </p>
               </div>

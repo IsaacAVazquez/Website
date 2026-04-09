@@ -15,7 +15,7 @@ interface Props {
   symbolB: string;
 }
 
-const COLOR_A = "var(--color-primary)";
+const COLOR_A = "var(--home-haze)";
 const COLOR_B = "#D97706";
 const COLOR_A_HEX = "#2563EB";
 const COLOR_B_HEX = "#D97706";
@@ -46,7 +46,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
       g.append("circle")
         .attr("r", r)
         .attr("fill", "none")
-        .attr("stroke", "var(--border-primary)")
+        .attr("stroke", "var(--home-rule)")
         .attr("stroke-width", 1)
         .attr("opacity", 0.6);
     }
@@ -61,7 +61,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("y1", 0)
         .attr("x2", x)
         .attr("y2", y)
-        .attr("stroke", "var(--border-primary)")
+        .attr("stroke", "var(--home-rule)")
         .attr("stroke-width", 1)
         .attr("opacity", 0.5);
     });
@@ -77,7 +77,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("y", y)
         .attr("dy", "0.35em")
         .attr("text-anchor", Math.abs(x) < 5 ? "middle" : x > 0 ? "start" : "end")
-        .attr("fill", "var(--text-secondary)")
+        .attr("fill", "var(--home-ink-muted)")
         .attr("font-size", "11px")
         .attr("font-family", "var(--font-inter, system-ui)")
         .text(d.dimension);

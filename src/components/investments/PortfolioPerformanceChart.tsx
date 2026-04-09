@@ -248,7 +248,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
           <div style="font-size:11px;color:${textSecondary};margin-bottom:2px;">
             ${d3.timeFormat("%b %d, %Y")(d.date)}
           </div>
-          <div style="font-size:13px;font-weight:600;color:var(--text-primary);">
+          <div style="font-size:13px;font-weight:600;color:var(--home-ink);">
             $${d3.format(",.2f")(d.value)}
           </div>
           <div style="font-size:11px;color:${gainColor};margin-top:1px;">
@@ -282,13 +282,13 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
         <h3
           className="text-base font-semibold mb-0"
-          style={{ color: "var(--text-primary)" }}
+          style={{ color: "var(--home-ink)" }}
         >
           Portfolio Performance
         </h3>
         <div
           className="py-12 text-center text-sm"
-          style={{ color: "var(--text-tertiary)" }}
+          style={{ color: "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))" }}
         >
           Performance tracking starts after 2 days of data
         </div>
@@ -302,11 +302,11 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         <div>
           <h3
             className="text-base font-semibold"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--home-ink)" }}
           >
             Portfolio Performance
           </h3>
-          <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+          <p className="mt-1 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
             Value versus cost basis across the saved snapshot history.
           </p>
         </div>
@@ -320,12 +320,12 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
               style={{
                 backgroundColor:
                   selectedRange === r.label
-                    ? "var(--color-primary)"
-                    : "var(--surface-secondary)",
+                    ? "var(--home-haze)"
+                    : "var(--home-paper-alt)",
                 color:
                   selectedRange === r.label
                     ? "#ffffff"
-                    : "var(--text-tertiary)",
+                    : "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))",
               }}
               aria-label={`Show ${r.label} range`}
               aria-pressed={selectedRange === r.label}
@@ -345,8 +345,8 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         style={{
           opacity: 0,
           padding: "8px 10px",
-            backgroundColor: "var(--surface-elevated)",
-            border: "1px solid var(--border-primary)",
+            backgroundColor: "color-mix(in srgb, var(--home-paper) 92%, white)",
+            border: "1px solid var(--home-rule)",
             zIndex: 10,
           }}
         />
@@ -354,9 +354,9 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
       {/* Legend */}
       <div
-        className="mt-3 flex flex-wrap items-center gap-5 border-t border-[var(--border-primary)] pt-3 text-xs text-[var(--text-tertiary)]"
+        className="mt-3 flex flex-wrap items-center gap-5 border-t border-[var(--home-rule)] pt-3 text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]"
         style={{
-          color: "var(--text-tertiary)",
+          color: "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))",
         }}
       >
         <div className="flex items-center gap-1.5">
@@ -366,7 +366,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
               y1="1"
               x2="20"
               y2="1"
-              stroke="var(--color-primary)"
+              stroke="var(--home-haze)"
               strokeWidth="2"
             />
           </svg>
@@ -379,7 +379,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
               y1="1"
               x2="20"
               y2="1"
-              stroke="var(--text-tertiary)"
+              stroke="color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))"
               strokeWidth="1.5"
               strokeDasharray="4 2"
             />

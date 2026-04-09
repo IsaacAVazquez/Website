@@ -18,9 +18,9 @@ function fmt(n: number | undefined, style: "currency" | "percent" | "compact" | 
 
 function MetricRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between py-2 border-b border-[var(--border-primary)] last:border-0">
-      <span className="text-sm text-[var(--text-secondary)]">{label}</span>
-      <span className="text-sm font-medium text-[var(--text-primary)]">{value}</span>
+    <div className="flex justify-between py-2 border-b border-[var(--home-rule)] last:border-0">
+      <span className="text-sm text-[var(--home-ink-muted)]">{label}</span>
+      <span className="text-sm font-medium text-[var(--home-ink)]">{value}</span>
     </div>
   );
 }
@@ -45,13 +45,13 @@ export function FundamentalsPanel({ symbol }: Props) {
     <div className="space-y-4">
       {/* Company info */}
       <WarmCard padding="sm">
-        <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Company</h3>
+        <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">Company</h3>
         {infoLoading ? (
           <SectionSkeleton rows={3} />
         ) : info && !info.error ? (
           <>
             {info.longBusinessSummary && (
-              <p className="text-sm text-[var(--text-secondary)] mb-3 line-clamp-4">
+              <p className="text-sm text-[var(--home-ink-muted)] mb-3 line-clamp-4">
                 {info.longBusinessSummary}
               </p>
             )}
@@ -66,13 +66,13 @@ export function FundamentalsPanel({ symbol }: Props) {
               )}
               {info.country && <MetricRow label="Country" value={info.country} />}
               {info.website && (
-                <div className="flex justify-between py-2 border-b border-[var(--border-primary)] last:border-0 col-span-2">
-                  <span className="text-sm text-[var(--text-secondary)]">Website</span>
+                <div className="flex justify-between py-2 border-b border-[var(--home-rule)] last:border-0 col-span-2">
+                  <span className="text-sm text-[var(--home-ink-muted)]">Website</span>
                   <a
                     href={info.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-medium text-[var(--color-primary)] hover:underline truncate max-w-[200px]"
+                    className="text-sm font-medium text-[var(--home-haze)] hover:underline truncate max-w-[200px]"
                   >
                     {info.website.replace(/^https?:\/\//, "")}
                   </a>
@@ -87,7 +87,7 @@ export function FundamentalsPanel({ symbol }: Props) {
 
       {/* Key metrics */}
       <WarmCard padding="sm">
-        <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Key Metrics</h3>
+        <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">Key Metrics</h3>
         {fundLoading ? (
           <SectionSkeleton />
         ) : fund && !fund.error ? (

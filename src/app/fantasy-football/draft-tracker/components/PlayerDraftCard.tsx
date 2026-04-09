@@ -94,7 +94,7 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
         {/* Tier Indicator */}
         {player.tier && (
           <div
-            className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-[var(--text-primary)] z-10"
+            className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-[var(--home-ink)] z-10"
             style={{ backgroundColor: tierColor }}
           >
             {player.tier}
@@ -102,7 +102,7 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
         )}
 
         {/* Player Image */}
-        <div className="relative h-24 bg-gradient-to-br from-[var(--surface-secondary)] to-[var(--neutral-200)] dark:from-[var(--neutral-800)] dark:to-[var(--neutral-900)] overflow-hidden">
+        <div className="relative h-24 bg-gradient-to-br from-[var(--home-paper-alt)] to-[var(--neutral-200)] dark:from-[var(--neutral-800)] dark:to-[var(--neutral-900)] overflow-hidden">
           <OptimizedImage
             src={getPlayerImagePath(player)}
             alt={player.name}
@@ -118,7 +118,7 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
             <Badge
               variant="solid"
               size="sm"
-              className="text-[var(--text-primary)] font-bold"
+              className="text-[var(--home-ink)] font-bold"
               style={{ backgroundColor: positionColor }}
             >
               {player.position}
@@ -130,26 +130,26 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
         <div className="p-3 space-y-3">
           {/* Name and Team */}
           <div>
-            <h4 className="font-semibold text-[var(--text-primary)] text-sm truncate group-hover:text-[var(--color-primary)] transition-colors">
+            <h4 className="font-semibold text-[var(--home-ink)] text-sm truncate group-hover:text-[var(--home-haze)] transition-colors">
               {player.name}
             </h4>
-            <p className="text-xs text-[var(--text-secondary)]">
+            <p className="text-xs text-[var(--home-ink-muted)]">
               {player.team} • #{formatRank(player.averageRank)}
             </p>
           </div>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="text-center p-2 bg-[var(--surface-secondary)] rounded">
-              <div className="text-[var(--text-secondary)]">Proj</div>
-              <div className="font-medium text-[var(--text-primary)]">
+            <div className="text-center p-2 bg-[var(--home-paper-alt)] rounded">
+              <div className="text-[var(--home-ink-muted)]">Proj</div>
+              <div className="font-medium text-[var(--home-ink)]">
                 {Math.round(player.projectedPoints)}
               </div>
             </div>
 
-            <div className="text-center p-2 bg-[var(--surface-secondary)] rounded">
-              <div className="text-[var(--text-secondary)]">ADP</div>
-              <div className="font-medium text-[var(--text-primary)]">
+            <div className="text-center p-2 bg-[var(--home-paper-alt)] rounded">
+              <div className="text-[var(--home-ink-muted)]">ADP</div>
+              <div className="font-medium text-[var(--home-ink)]">
                 {player.adp ? Math.round(player.adp) : '--'}
               </div>
             </div>
@@ -158,7 +158,7 @@ export function PlayerDraftCard({ player, onDraft, showDraftButton }: Omit<Playe
           {/* Additional Stats Row */}
           {player.auctionValue && (
             <div className="flex justify-between items-center text-xs">
-              <span className="text-[var(--text-secondary)]">Value:</span>
+              <span className="text-[var(--home-ink-muted)]">Value:</span>
               <span className="font-medium text-[var(--color-success)]">${player.auctionValue}</span>
             </div>
           )}

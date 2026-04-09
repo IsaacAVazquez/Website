@@ -2,11 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Heading } from "@/components/ui/Heading";
-import { Paragraph } from "@/components/ui/Paragraph";
-import { WarmCard } from "@/components/ui/WarmCard";
-import { Badge } from "@/components/ui/Badge";
-import { ModernButton } from "@/components/ui/ModernButton";
 import { SearchResults } from "./SearchResults";
 import { SearchFilters } from "./SearchFilters";
 import { IconSearch, IconX, IconFilter } from "@tabler/icons-react";
@@ -59,8 +54,29 @@ function readSeededSearchState(fallbacks: Pick<SearchState, "query" | "type" | "
   };
 }
 
-export function SearchInterface({ 
-  initialQuery = "", 
+const kickerStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink-muted)",
+  fontWeight: 600,
+  fontSize: "0.72rem",
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.12em",
+};
+
+const sectionTitleStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink)",
+  fontWeight: 600,
+  letterSpacing: "-0.02em",
+};
+
+const bodyStyle = {
+  fontFamily: "var(--font-home-sans)",
+  color: "var(--home-ink-muted)",
+};
+
+export function SearchInterface({
+  initialQuery = "",
   initialType = "all",
   initialCategory = "all"
 }: SearchInterfaceProps) {
@@ -71,7 +87,7 @@ export function SearchInterface({
     type: initialType,
     category: initialCategory,
   });
-  
+
   const [searchState, setSearchState] = useState<SearchState>(() => ({
     query: seededState.query,
     type: seededState.type,
@@ -119,10 +135,10 @@ export function SearchInterface({
     if (query) params.set('q', query);
     if (type !== 'all') params.set('type', type);
     if (category !== 'all') params.set('category', category);
-    
+
     const queryString = params.toString();
     const newUrl = queryString ? `/search?${queryString}` : '/search';
-    
+
     router.push(newUrl, { scroll: false });
   }, [router]);
 
@@ -140,19 +156,19 @@ export function SearchInterface({
     }
 
     setSearchState(prev => ({ ...prev, isLoading: true }));
-    
+
     const startTime = Date.now();
-    
+
     try {
       const response = await fetch(`/api/search?${new URLSearchParams({
         q: query,
         ...(type !== 'all' && { type }),
         ...(category !== 'all' && { category })
       })}`);
-      
+
       const data = await response.json();
       const searchTime = Date.now() - startTime;
-      
+
       setSearchState(prev => ({
         ...prev,
         results: data.results || [],
@@ -253,97 +269,122 @@ export function SearchInterface({
     }));
   };
 
+  const filterActive = showFilters || searchState.type !== "all" || searchState.category !== "all";
+
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="text-center">
-        <Heading level={1} className="mb-4">
-          Search{" "}
-          <span className="bg-gradient-to-r from-primary via-success to-accent bg-clip-text text-transparent">
-            Everything
-          </span>
-        </Heading>
-        <Paragraph size="lg" className="max-w-2xl mx-auto text-slate-600 dark:text-slate-400">
-          Find writing, case studies, and tools across product strategy, analytics, fantasy football, and fintech.
-        </Paragraph>
-      </div>
-
       {/* Search Bar */}
-      <WarmCard hover={false} padding="md" className="p-6">
-        <div className="space-y-4">
-          {/* Main Search Input */}
-          <div className="relative">
-            <div className="flex items-center">
-              <div className="relative flex-1">
-                <IconSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
-                <input
-                  type="text"
-                  value={searchState.query}
-                  onChange={(e) => handleQueryChange(e.target.value)}
-                  placeholder="Search for content..."
-                  aria-label="Search content"
-                  className="w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-slate-900 dark:text-slate-100"
-                />
-                {searchState.query && (
-                  <button
-                    onClick={clearSearch}
-                    aria-label="Clear search"
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
-                  >
-                    <IconX className="w-5 h-5" />
-                  </button>
-                )}
-              </div>
-              
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                aria-label={showFilters ? "Hide filters" : "Show filters"}
-                className={`ml-4 p-4 rounded-lg border transition-all duration-200 ${
-                  showFilters || searchState.type !== 'all' || searchState.category !== 'all'
-                    ? 'bg-primary text-white border-primary' 
-                    : 'bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
-                }`}
-              >
-                <IconFilter className="w-5 h-5" />
-              </button>
+      <article className="home-card p-6 sm:p-7 space-y-4">
+        <div className="relative">
+          <div className="flex items-center gap-3">
+            <div className="relative flex-1">
+              <IconSearch
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5"
+                style={{ color: "var(--home-ink-muted)" }}
+                aria-hidden="true"
+              />
+              <input
+                type="text"
+                value={searchState.query}
+                onChange={(e) => handleQueryChange(e.target.value)}
+                placeholder="Search for content..."
+                aria-label="Search content"
+                className="w-full min-h-[44px] pl-12 pr-12 py-3 rounded-xl transition-colors"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                  border: "1px solid var(--home-rule)",
+                  color: "var(--home-ink)",
+                }}
+              />
+              {searchState.query && (
+                <button
+                  onClick={clearSearch}
+                  aria-label="Clear search"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-md transition-colors"
+                  style={{ color: "var(--home-ink-muted)" }}
+                >
+                  <IconX className="w-5 h-5" />
+                </button>
+              )}
             </div>
+
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              aria-label={showFilters ? "Hide filters" : "Show filters"}
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl p-3 transition-colors"
+              style={
+                filterActive
+                  ? {
+                      background: "var(--home-ink)",
+                      color: "var(--home-paper)",
+                      border: "1px solid var(--home-ink)",
+                    }
+                  : {
+                      background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                      color: "var(--home-ink-muted)",
+                      border: "1px solid var(--home-rule)",
+                    }
+              }
+            >
+              <IconFilter className="w-5 h-5" />
+            </button>
           </div>
-
-          {/* Filters */}
-          {showFilters && (
-            <SearchFilters
-              type={searchState.type}
-              category={searchState.category}
-              onTypeChange={handleTypeChange}
-              onCategoryChange={handleCategoryChange}
-              onClearFilters={clearFilters}
-            />
-          )}
-
-          {/* Active Filters Display */}
-          {(searchState.type !== 'all' || searchState.category !== 'all') && (
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm text-slate-600 dark:text-slate-400">Active filters:</span>
-              {searchState.type !== 'all' && (
-                <Badge variant="electric" size="sm">
-                  Type: {searchState.type}
-                </Badge>
-              )}
-              {searchState.category !== 'all' && (
-                <Badge variant="matrix" size="sm">
-                  Category: {searchState.category}
-                </Badge>
-              )}
-              <button
-                onClick={clearFilters}
-                className="text-sm text-primary hover:underline"
-              >
-                Clear filters
-              </button>
-            </div>
-          )}
         </div>
-      </WarmCard>
+
+        {/* Filters */}
+        {showFilters && (
+          <SearchFilters
+            type={searchState.type}
+            category={searchState.category}
+            onTypeChange={handleTypeChange}
+            onCategoryChange={handleCategoryChange}
+            onClearFilters={clearFilters}
+          />
+        )}
+
+        {/* Active Filters Display */}
+        {(searchState.type !== 'all' || searchState.category !== 'all') && (
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-sm" style={bodyStyle}>
+              Active filters:
+            </span>
+            {searchState.type !== 'all' && (
+              <span
+                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  background: "var(--home-ink)",
+                  color: "var(--home-paper)",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Type: {searchState.type}
+              </span>
+            )}
+            {searchState.category !== 'all' && (
+              <span
+                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  background: "var(--home-ink)",
+                  color: "var(--home-paper)",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Category: {searchState.category}
+              </span>
+            )}
+            <button
+              onClick={clearFilters}
+              className="text-sm underline underline-offset-2"
+              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
+            >
+              Clear filters
+            </button>
+          </div>
+        )}
+      </article>
 
       {/* Search Results */}
       <SearchResults
@@ -357,16 +398,16 @@ export function SearchInterface({
 
       {/* Search Tips */}
       {!searchState.hasSearched && !searchState.query && (
-        <WarmCard hover={false} padding="md" className="p-6">
-          <Heading level={3} className="mb-4">
-            Search Tips
-          </Heading>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div>
-              <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                What you can search for:
-              </h4>
-              <ul className="space-y-1 text-sm text-slate-600 dark:text-slate-400">
+        <article className="home-card p-6 sm:p-8 space-y-5">
+          <h2 className="text-xl mb-0" style={sectionTitleStyle}>
+            Search tips
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="space-y-2">
+              <p className="mb-0 text-sm" style={{ ...sectionTitleStyle, fontSize: "0.95rem" }}>
+                What you can search for
+              </p>
+              <ul className="mb-0 space-y-1 text-sm leading-6" style={bodyStyle}>
                 <li>• Writing on product strategy and analytics</li>
                 <li>• Case studies and project details</li>
                 <li>• Fantasy football rankings and analysis</li>
@@ -374,33 +415,25 @@ export function SearchInterface({
                 <li>• Sports dashboards</li>
               </ul>
             </div>
-            <div>
-              <h4 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                Search examples:
-              </h4>
-              <div className="space-y-2">
-                <button
-                  onClick={() => handleQueryChange("product strategy")}
-                  className="block text-sm text-primary hover:underline text-left"
-                >
-                  "product strategy"
-                </button>
-                <button
-                  onClick={() => handleQueryChange("fantasy football")}
-                  className="block text-sm text-primary hover:underline text-left"
-                >
-                  "fantasy football"
-                </button>
-                <button
-                  onClick={() => handleQueryChange("investment research")}
-                  className="block text-sm text-primary hover:underline text-left"
-                >
-                  "investment research"
-                </button>
+            <div className="space-y-2">
+              <p className="mb-0 text-sm" style={{ ...sectionTitleStyle, fontSize: "0.95rem" }}>
+                Search examples
+              </p>
+              <div className="space-y-1.5">
+                {["product strategy", "fantasy football", "investment research"].map((example) => (
+                  <button
+                    key={example}
+                    onClick={() => handleQueryChange(example)}
+                    className="block text-left text-sm underline underline-offset-2"
+                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-haze)" }}
+                  >
+                    &ldquo;{example}&rdquo;
+                  </button>
+                ))}
               </div>
             </div>
           </div>
-        </WarmCard>
+        </article>
       )}
     </div>
   );

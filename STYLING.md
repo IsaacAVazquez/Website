@@ -2,20 +2,20 @@
 
 Current styling and design-token reference for the live app.
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-09
 
 ---
 
 ## Core Principles
 
-- token-driven colors, spacing, type, and shadows
-- light and dark mode support via CSS variables
-- a homepage-only editorial system can coexist with the default portfolio shell
-- shared shell helpers for page rhythm
-- accessible focus styles and touch targets
+- token-driven colors, spacing, type, and shadows via the `--home-*` editorial palette
+- light and dark mode support via CSS variables (every `--home-*` token has a `.dark` counterpart)
+- the editorial system (`--home-paper`, `--home-ink`, `--home-haze`, etc.) is the **site-wide standard** for all routes except `/admin`
+- shared shell helpers (`home-page`, `home-shell`, `home-card`, `home-kicker`) for page rhythm
+- accessible focus styles and 44px minimum touch targets
 - restrained motion that respects reduced-motion preferences
 
-The live system is blue/slate-based. Older warm or cyberpunk references are historical only.
+Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primary`) are aliased to `--home-*` equivalents in `globals.css` for backwards compatibility. New code should use `--home-*` tokens directly. The only route that intentionally uses a different aesthetic is `/admin` (cyberpunk theme).
 
 ---
 
@@ -32,16 +32,47 @@ The live system is blue/slate-based. Older warm or cyberpunk references are hist
 
 Global tokens are defined in `src/app/globals.css`.
 
-Important groups:
+### Primary palette (editorial system — use these in new code)
 
-- colors: `--color-primary`, `--color-secondary`, `--color-accent`, `--color-success`, `--color-warning`, `--color-error`
+| Token | Purpose |
+|-------|---------|
+| `--home-paper` | Primary background |
+| `--home-paper-alt` | Secondary/card background |
+| `--home-ink` | Primary text, strong fills |
+| `--home-ink-muted` | Secondary/muted text |
+| `--home-haze` | Accent (links, focus rings, highlights) |
+| `--home-acid` | Accent (charts, badges, gradients) |
+| `--home-moss` | Accent (success-adjacent, nature tones) |
+| `--home-stone` | Decorative borders, subtle fills |
+| `--home-rule` | Standard borders and dividers |
+| `--home-dark-paper` / `--home-dark-panel` / `--home-dark-ink` | Dark-section overrides |
+
+For intermediate tones, use `color-mix()`:
+- Tertiary text: `color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))`
+- Elevated surface: `color-mix(in srgb, var(--home-paper) 92%, white)`
+- Softer card bg: `color-mix(in srgb, var(--home-paper-alt) 78%, white)`
+
+### Semantic tokens (kept for charts and status indicators)
+
+- `--color-success`, `--color-warning`, `--color-error` — still valid for semantic states
+- `--color-secondary`, `--color-accent` — available but prefer `--home-haze` / `--home-acid`
+
+### Legacy aliases (deprecated — do not use in new code)
+
+These are defined in `globals.css` but resolve to `--home-*` equivalents:
+
+- `--surface-primary` → `var(--home-paper)`
+- `--surface-secondary` → `var(--home-paper-alt)`
+- `--text-primary` → `var(--home-ink)`
+- `--text-secondary` → `var(--home-ink-muted)`
+- `--border-primary` → `var(--home-rule)`
+- `--color-primary` → `var(--home-haze)`
+
+### Other groups
+
 - neutrals: `--neutral-50` through `--neutral-950`
-- surfaces: `--surface-primary`, `--surface-secondary`, `--surface-elevated`, `--surface-overlay`
-- text: `--text-primary`, `--text-secondary`, `--text-tertiary`, `--text-inverse`
-- borders: `--border-primary`, `--border-secondary`, `--border-accent`
 - spacing: `--space-xs` through `--space-4xl`
 - shadows: `--shadow-sm` through `--shadow-xl`
-- homepage editorial tokens: `--home-paper`, `--home-paper-alt`, `--home-ink`, `--home-ink-muted`, `--home-acid`, `--home-moss`, `--home-haze`, `--home-stone`, `--home-rule`, `--home-dark-paper`, `--home-dark-panel`, `--home-dark-ink`
 
 Do not hardcode hex colors in components when a token exists.
 
@@ -115,11 +146,11 @@ Typography is fluid and token-based via:
 
 Headings use tighter tracking and balanced wrapping by default.
 
-Homepage editorial usage:
+Font usage across the site:
 
-- `Instrument Sans` for homepage UI, navigation treatment, body copy, and project or writing cards
-- `Instrument Serif` for oversized manifesto moments and selective italic emphasis only
-- keep the default Inter-based system on non-home routes unless a route-specific design explicitly opts out
+- `Instrument Sans` (`--font-home-sans`) is the primary font for all editorial surfaces — UI, navigation, body copy, cards, and dashboards
+- `Instrument Serif` (`--font-home-serif`) for oversized manifesto moments and selective italic emphasis only
+- `Inter` remains available as a system font but is no longer the default for new components
 
 ---
 
@@ -133,9 +164,9 @@ Dark mode is class-based:
 
 Use raw Tailwind `dark:` utilities only when you truly need behavior outside the token system.
 
-## Homepage Editorial System
+## Editorial System (Site-Wide)
 
-`/` has a dedicated editorial namespace and should not rely on the shared portfolio cards or section panels for its main art direction. The system uses warm paper tones, tight tracked type, and acid/haze accent gradients.
+The editorial design system is the site-wide standard as of April 2026. All routes (except `/admin`) use the `--home-*` palette, `home-card`/`home-kicker` rhythm, and Instrument Sans typography. The system uses warm paper tones, tight tracked type, and acid/haze accent gradients.
 
 **Color tokens (light / dark):**
 
@@ -271,8 +302,8 @@ Applied to `StaticHeader` when on `/`:
 
 ### Rules
 
-- keep the redesign isolated to `/` unless there is an explicit decision to expand it
-- preserve the theme toggle, but use the home tokens so dark mode still feels editorial rather than like the default app theme
+- all routes except `/admin` use the editorial `--home-*` palette — do not introduce a separate token system
+- preserve the theme toggle; dark mode uses the `.dark` counterparts of `--home-*` tokens
 - do not introduce route-wide screenshots as a dependency for homepage cards; stay text-forward unless a later content pass adds curated assets
 - all motion classes must be paired with reduced-motion guards in CSS (`@media (prefers-reduced-motion: reduce)`)
 

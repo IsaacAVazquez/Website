@@ -361,29 +361,29 @@ export function SpaceXMissionControlClient({
   return (
     <section
       aria-label="SpaceX Mission Control"
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--color-primary)_12%,transparent),transparent_32%),radial-gradient(circle_at_bottom_right,color-mix(in_srgb,var(--color-success)_8%,transparent),transparent_28%),linear-gradient(180deg,var(--surface-primary)_0%,color-mix(in_srgb,var(--surface-secondary)_70%,var(--surface-primary))_100%)]"
+      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_12%,transparent),transparent_32%),radial-gradient(circle_at_bottom_right,color-mix(in_srgb,var(--color-success)_8%,transparent),transparent_28%),linear-gradient(180deg,var(--home-paper)_0%,color-mix(in_srgb,var(--home-paper-alt)_70%,var(--home-paper))_100%)]"
     >
       <div className="mx-auto w-full max-w-[1700px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12">
         <motion.div
-          className="mb-6 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--color-primary)_14%,var(--border-primary))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_7%,var(--surface-elevated))_0%,var(--surface-elevated)_50%,color-mix(in_srgb,var(--color-success)_7%,var(--surface-elevated))_100%)] p-6 shadow-[var(--shadow-md)] sm:p-8"
+          className="mb-6 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_7%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_50%,color-mix(in_srgb,var(--color-success)_7%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)] p-6 shadow-[var(--shadow-md)] sm:p-8"
           {...motionProps}
         >
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_auto] xl:items-end">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-[color-mix(in_srgb,var(--color-primary)_24%,var(--border-primary))] bg-[color-mix(in_srgb,var(--surface-primary)_72%,transparent)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">
+                <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_24%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_72%,transparent)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
                   SpaceX Mission Control
                 </span>
-                <span className="rounded-full border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-3 py-1 text-xs font-medium text-[var(--text-secondary)]">
+                <span className="rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
                   Local API backed
                 </span>
               </div>
 
-              <h1 className="mt-4 text-4xl font-bold tracking-[-0.05em] text-[var(--text-primary)] sm:text-5xl">
+              <h1 className="mt-4 text-4xl font-bold tracking-[-0.05em] text-[var(--home-ink)] sm:text-5xl">
                 A launch board built like an operations room, not a brochure.
               </h1>
 
-              <p className="mt-4 max-w-[72ch] text-sm leading-7 text-[var(--text-secondary)] sm:text-[0.95rem]">
+              <p className="mt-4 max-w-[72ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[0.95rem]">
                 Track the next mission, scan the upcoming or past queue, and open a
                 relationship-aware detail rail for rockets, payloads, crew, capsules, and
                 launch infrastructure without leaving the page.
@@ -391,27 +391,27 @@ export function SpaceXMissionControlClient({
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3 xl:min-w-[560px]">
-              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Data flow
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
                   Server-cached live reads
                 </p>
               </div>
-              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Route state
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
                   Deep-linked mission context
                 </p>
               </div>
-              <div className="rounded-[24px] border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--text-tertiary)]">
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   UX posture
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--text-primary)]">
+                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
                   Fan-first operations view
                 </p>
               </div>
@@ -422,19 +422,19 @@ export function SpaceXMissionControlClient({
             <button
               type="button"
               onClick={handleRetryAll}
-              className="tap-target inline-flex items-center gap-2 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-elevated)] px-4 py-3 text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+              className="tap-target inline-flex items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
             >
               <RefreshCcw className="h-4 w-4" />
               Refresh live data
             </button>
-            <div className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-3 text-sm text-[var(--text-secondary)]">
-              <DatabaseZap className="h-4 w-4 text-[var(--color-primary)]" />
+            <div className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+              <DatabaseZap className="h-4 w-4 text-[var(--home-haze)]" />
               Local routes proxy and normalize upstream SpaceX responses before they reach the browser.
             </div>
           </div>
 
           {hasPartialDataIssue ? (
-            <div className="mt-5 flex items-start gap-3 rounded-[24px] border border-[color-mix(in_srgb,var(--color-warning)_20%,var(--border-primary))] bg-[color-mix(in_srgb,var(--color-warning)_8%,var(--surface-primary))] px-4 py-3 text-sm leading-6 text-[var(--text-secondary)]">
+            <div className="mt-5 flex items-start gap-3 rounded-[24px] border border-[color-mix(in_srgb,var(--color-warning)_20%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-warning)_8%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]">
               <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-warning)]" />
               <p>
                 One or more live requests degraded, but the workspace is still usable.
@@ -502,20 +502,20 @@ export function SpaceXMissionControlClient({
           </motion.div>
         </div>
 
-        <div className="mt-8 rounded-[28px] border border-[var(--border-primary)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-primary)_6%,var(--surface-elevated))_0%,var(--surface-elevated)_100%)] p-5 shadow-[var(--shadow-sm)]">
+        <div className="mt-8 rounded-[28px] border border-[var(--home-rule)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_6%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_100%)] p-5 shadow-[var(--shadow-sm)]">
           <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
             <div className="max-w-[72ch]">
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Product note
               </p>
-              <p className="mt-2 text-sm leading-7 text-[var(--text-secondary)]">
+              <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
                 This surface intentionally uses a local normalization layer instead of direct
                 browser fetches. That keeps the UI stable even when the public SpaceX API returns
                 stale scheduling data, partial relationships, or uneven populate behavior.
               </p>
             </div>
-            <div className="inline-flex items-center gap-2 rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-primary)] px-4 py-3 text-sm font-semibold text-[var(--text-primary)]">
-              <Satellite className="h-4 w-4 text-[var(--color-primary)]" />
+            <div className="inline-flex items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)]">
+              <Satellite className="h-4 w-4 text-[var(--home-haze)]" />
               Query-linked launch detail
             </div>
           </div>

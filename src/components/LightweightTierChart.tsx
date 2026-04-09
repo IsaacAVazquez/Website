@@ -71,7 +71,7 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
   if (!players.length) {
     return (
       <div className={`flex items-center justify-center h-64 bg-[var(--neutral-900)]/30 rounded-lg ${className}`}>
-        <p className="text-[var(--text-tertiary)]">No players available</p>
+        <p className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">No players available</p>
       </div>
     );
   }
@@ -80,8 +80,8 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
     return (
       <div className={`flex items-center justify-center h-64 bg-[var(--neutral-900)]/30 rounded-lg ${className}`}>
         <div className="text-center">
-          <div className="w-8 h-8 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-[var(--text-tertiary)]">Calculating tiers...</p>
+          <div className="w-8 h-8 border-2 border-[var(--home-haze)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Calculating tiers...</p>
         </div>
       </div>
     );
@@ -92,7 +92,7 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
       {/* Chart Controls */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+          <h3 className="text-lg font-semibold text-[var(--home-ink)]">
             Player Tiers ({players.length} players)
           </h3>
           <div className="flex items-center gap-2">
@@ -100,7 +100,7 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
               onClick={() => setViewMode('horizontal')}
               className={`px-3 py-1 rounded text-sm ${
                 viewMode === 'horizontal'
-                  ? 'bg-[var(--color-primary)] text-white'
+                  ? 'bg-[var(--home-haze)] text-white'
                   : 'bg-[var(--neutral-700)] text-[var(--neutral-300)] hover:bg-[var(--neutral-600)]'
               }`}
             >
@@ -110,7 +110,7 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
               onClick={() => setViewMode('vertical')}
               className={`px-3 py-1 rounded text-sm ${
                 viewMode === 'vertical'
-                  ? 'bg-[var(--color-primary)] text-white'
+                  ? 'bg-[var(--home-haze)] text-white'
                   : 'bg-[var(--neutral-700)] text-[var(--neutral-300)] hover:bg-[var(--neutral-600)]'
               }`}
             >
@@ -127,7 +127,7 @@ export const LightweightTierChart = memo<LightweightTierChartProps>(({
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: tier.color }}
               />
-              <span className="text-[var(--text-tertiary)]">{tier.label}</span>
+              <span className="text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">{tier.label}</span>
             </div>
           ))}
         </div>
@@ -213,8 +213,8 @@ const TierRow = memo<TierRowProps>(({
             className="w-4 h-4 rounded-full"
             style={{ backgroundColor: tier.color }}
           />
-          <h4 className="text-lg font-bold text-[var(--text-primary)]">{tier.label}</h4>
-          <span className="text-sm text-[var(--text-tertiary)]">
+          <h4 className="text-lg font-bold text-[var(--home-ink)]">{tier.label}</h4>
+          <span className="text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
             Ranks {tier.minRank}-{tier.maxRank} • {tier.playerCount} players
           </span>
         </div>
@@ -251,7 +251,7 @@ const TierRow = memo<TierRowProps>(({
           transition-transform duration-300
           ${isSelected ? 'rotate-180' : ''}
         `}>
-          <svg className="w-3 h-3 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-3 h-3 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </div>
@@ -300,9 +300,9 @@ const TierColumn = memo<TierColumnProps>(({
             className="w-3 h-3 rounded-full"
             style={{ backgroundColor: tier.color }}
           />
-          <h4 className="font-bold text-[var(--text-primary)]">{tier.label}</h4>
+          <h4 className="font-bold text-[var(--home-ink)]">{tier.label}</h4>
         </div>
-        <p className="text-xs text-[var(--text-tertiary)]">
+        <p className="text-xs text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
           {tier.playerCount} players • Ranks {tier.minRank}-{tier.maxRank}
         </p>
       </div>
