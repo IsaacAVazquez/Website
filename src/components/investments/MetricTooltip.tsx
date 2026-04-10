@@ -66,10 +66,10 @@ export function MetricTooltip({ term, definition }: Props) {
       </span>
       <span
         role="tooltip"
-        className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-52 -translate-x-1/2 rounded-2xl bg-[var(--home-ink)] px-3 py-2.5 text-[11px] leading-snug text-white opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100"
+        className="pointer-events-none absolute bottom-full left-0 z-50 mb-2 w-52 rounded-2xl bg-[var(--home-ink)] px-3 py-2.5 text-[11px] leading-snug text-white opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100"
       >
         {text}
-        <span className="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-[var(--home-ink)]" />
+        <span className="absolute left-3 top-full border-4 border-transparent border-t-[var(--home-ink)]" />
       </span>
     </span>
   );

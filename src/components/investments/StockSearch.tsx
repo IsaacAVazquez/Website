@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
+import { createPortal } from "react-dom";
 import { IconSearch, IconAlertCircle } from "@tabler/icons-react";
 import { useDebounce } from "@/hooks/useDebounce";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
@@ -41,8 +42,12 @@ export function StockSearch({ value, onChange }: Props) {
   const [index, setIndex] = useState<InvestmentsIndex | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
+  const [mounted, setMounted] = useState(false);
   const debouncedInput = useDebounce(input, 200);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { setMounted(true); }, []);
 
   // Load pre-fetched index once (served directly from public/)
   useEffect(() => {
@@ -102,6 +107,18 @@ export function StockSearch({ value, onChange }: Props) {
   useEffect(() => {
     setActiveIndex(suggestions.length > 0 ? 0 : -1);
   }, [suggestions]);
+
+  useEffect(() => {
+    if (!showDropdown || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setDropdownStyle({
+      position: "fixed",
+      top: rect.bottom + 6,
+      left: rect.left,
+      width: rect.width,
+      zIndex: 9999,
+    });
+  }, [showDropdown, suggestions.length]);
 
   function selectEntry(entry: InvestmentIndexEntry) {
     setInput(entry.symbol);
@@ -193,13 +210,14 @@ export function StockSearch({ value, onChange }: Props) {
         />
       </div>
 
-      {/* Suggestions dropdown */}
-      {showDropdown && suggestions.length > 0 && (
+      {/* Suggestions dropdown — portalled to body to escape all stacking contexts */}
+      {mounted && showDropdown && suggestions.length > 0 && createPortal(
         <ul
           id="stock-search-listbox"
           role="listbox"
           aria-label="Symbol suggestions"
-          className="absolute z-20 mt-2 w-full overflow-hidden rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] shadow-lg"
+          style={dropdownStyle}
+          className="overflow-hidden rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] shadow-lg"
         >
           {suggestions.map((entry, indexPosition) => (
             <li key={entry.symbol}>
@@ -221,7 +239,8 @@ export function StockSearch({ value, onChange }: Props) {
               </button>
             </li>
           ))}
-        </ul>
+        </ul>,
+        document.body
       )}
 
       {shouldShowCuratedOnlyHint && (

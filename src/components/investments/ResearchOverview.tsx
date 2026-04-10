@@ -163,7 +163,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
             About
           </p>
-          <p className="mt-3 text-sm leading-7 text-[var(--home-ink-muted)]">
+          <p className="mt-3 text-sm leading-[1.7] text-[var(--home-ink-muted)] w-full max-w-full overflow-hidden text-ellipsis ">
             {info?.longBusinessSummary ??
               "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics are still available from the research snapshot."}
           </p>
@@ -234,7 +234,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                   className={`rounded-[24px] border px-4 py-3 ${toneClasses(signal.tone)}`}
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
-                  <p className="mt-2 text-sm leading-6">{signal.body}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--home-ink)]">{signal.body}</p>
                 </div>
               ))
             ) : (

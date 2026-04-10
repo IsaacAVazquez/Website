@@ -60,6 +60,18 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
     [hasManagedParams, initialState, searchParams]
   );
 
+  // Clear researched symbol when user navigates away from this page
+  useEffect(() => {
+    return () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("symbol")) {
+        params.delete("symbol");
+        const next = "/investments" + (params.toString() ? "?" + params.toString() : "");
+        window.history.replaceState(null, "", next);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     if (
       searchParams.get("view") === routeState.view &&

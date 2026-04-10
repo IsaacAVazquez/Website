@@ -6,7 +6,6 @@ import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { MetricTooltip } from "./MetricTooltip";
 import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
-import { formatHistoryAsOf, getHistoricalPriceFreshness } from "@/lib/investmentsHistory";
 import type {
   BetaData,
   CompanyInfo,
@@ -101,8 +100,6 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
   const trailingLow = trailingYear.length ? Math.min(...trailingYear.map((p) => p.low)) : undefined;
   const historicalPriceAsOf = priceFreshness?.sections.price ?? latestPrice?.date ?? null;
   const snapshotBuiltAt = priceFreshness?.snapshotBuiltAt ?? datasetLastUpdated;
-  const historyFreshness = getHistoricalPriceFreshness(historicalPriceAsOf, snapshotBuiltAt);
-
   const livePrice = quote && !quote.error ? quote.price : undefined;
   const displayedPrice = livePrice ?? latestPrice?.close;
   const displayedDayChangePercent = quote && !quote.error ? quote.changePercent : undefined;
@@ -116,12 +113,12 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
         ? "negative"
         : "default"
     : "default";
-  const stanceBadgeClass =
+  const stanceColorClass =
     stanceTone === "positive"
-      ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
+      ? "text-emerald-600 dark:text-emerald-400"
       : stanceTone === "negative"
-        ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-        : "bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]";
+        ? "text-red-600 dark:text-red-400"
+        : "text-[var(--home-ink-muted)]";
 
   const priceFreshnessMode = livePrice !== undefined ? "live" : "dataset";
   const priceFreshnessLastUpdated = livePrice !== undefined ? liveQuoteLastUpdated : historicalPriceAsOf;
@@ -134,14 +131,13 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
     <div className="space-y-3">
       {/* Search */}
       <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4 shadow-[var(--shadow-sm)]">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-          Research Symbol
-        </p>
-        <StockSearch value={symbol} onChange={onSymbolChange} />
-        {isInPortfolio ? (
-          <div className="mt-2">
+        <div className="mb-2 flex items-center justify-between gap-2">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            Research Symbol
+          </p>
+          {isInPortfolio ? (
             <span
-              className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold"
+              className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold"
               style={{
                 backgroundColor: "color-mix(in srgb, var(--color-success) 15%, transparent)",
                 color: "var(--color-success)",
@@ -149,43 +145,32 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
             >
               In portfolio
             </span>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
+        <StockSearch value={symbol} onChange={onSymbolChange} />
       </div>
 
       {symbol ? (
         <>
           {/* Company identity + stance */}
           <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4 shadow-[var(--shadow-sm)]">
-            <div className="flex items-start justify-between gap-2">
-              <p className="text-sm font-semibold leading-snug text-[var(--home-ink)]">
-                {displayName || symbol}
-              </p>
-              {stance ? (
-                <span className={`shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${stanceBadgeClass}`}>
-                  {stance}
-                </span>
-              ) : null}
-            </div>
-            <p className="mt-1 text-xs text-[var(--home-ink-muted)]">
-              {[symbol, info?.sector, info?.industry].filter(Boolean).join(" · ")}
+            <p className="text-sm font-semibold leading-snug text-[var(--home-ink)]">
+              {[displayName || symbol, symbol !== (displayName || symbol) ? symbol : null, info?.sector, info?.industry].filter(Boolean).join(" · ")}
             </p>
-            {(info?.country || info?.fullTimeEmployees) ? (
-              <p className="mt-0.5 text-xs text-[var(--home-ink-muted)]">
-                {[
-                  info?.country,
-                  info?.fullTimeEmployees
-                    ? `${(info.fullTimeEmployees / 1000).toFixed(0)}K employees`
-                    : null,
-                ].filter(Boolean).join(" · ")}
+            {stance ? (
+              <p className={`mt-2 text-base font-bold ${stanceColorClass}`}>
+                {stance}
               </p>
             ) : null}
           </div>
 
           {/* Live price */}
           <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4 shadow-[var(--shadow-sm)]">
-            <div className="flex items-baseline justify-between gap-2">
-              <span className="text-xl font-semibold text-[var(--home-ink)]">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              Latest Price
+            </p>
+            <div className="flex items-baseline gap-3">
+              <span className="text-2xl font-bold text-[var(--home-ink)]">
                 {quoteLoading && displayedPrice === undefined
                   ? "Loading…"
                   : displayedPrice !== undefined
@@ -202,14 +187,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
                 </span>
               ) : null}
             </div>
-            <div className="mt-1.5 flex items-center justify-between gap-2">
-              <p className="text-[11px] text-[var(--home-ink-muted)]">
-                {livePrice !== undefined && historicalPriceAsOf
-                  ? `Chart through ${formatHistoryAsOf(historicalPriceAsOf)}`
-                  : livePrice === undefined && historicalPriceAsOf
-                    ? `Showing the latest saved close from ${formatHistoryAsOf(historicalPriceAsOf)}.`
-                    : "Latest Price"}
-              </p>
+            <div className="mt-2">
               <DataFreshnessIndicator
                 lastUpdated={priceFreshnessLastUpdated}
                 mode={livePrice !== undefined ? priceFreshnessMode : "price"}
@@ -217,11 +195,6 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
             </div>
             {quoteError && livePrice === undefined ? (
               <p className="mt-1 text-[11px] font-medium text-[var(--color-warning)]">{quoteError}</p>
-            ) : null}
-            {historyFreshness.isStale ? (
-              <p className="mt-1 text-[11px] font-medium text-[var(--color-warning)]">
-                Historical series trails the dataset by {historyFreshness.lagDays} days.
-              </p>
             ) : null}
           </div>
 

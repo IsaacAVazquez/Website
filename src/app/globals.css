@@ -485,22 +485,24 @@
   }
 
   .section-panel {
-    background:
-      radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary) 14%, transparent), transparent 38%),
-      linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 92%, var(--surface-secondary)) 0%, var(--surface-elevated) 100%),
-      var(--surface-elevated);
-    border: 1px solid color-mix(in srgb, var(--border-primary) 82%, var(--color-primary) 18%);
+    background: color-mix(in srgb, var(--home-paper) 92%, white);
+    border: 1px solid var(--home-rule);
     border-radius: 1.5rem;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-panel {
+      padding: 2.5rem;
+    }
   }
 
   .portfolio-card {
-    background:
-      radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 32%),
-      linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 94%, var(--surface-secondary)) 0%, var(--surface-elevated) 100%);
-    border: 1px solid color-mix(in srgb, var(--border-primary) 84%, var(--color-primary) 16%);
+    background: color-mix(in srgb, var(--home-paper) 92%, white);
+    border: 1px solid var(--home-rule);
     border-radius: 1.5rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
   }
 
   .portfolio-card-hover {
@@ -511,8 +513,8 @@
 
   .portfolio-card-hover:hover,
   .portfolio-card-hover:focus-within {
-    border-color: color-mix(in srgb, var(--color-primary) 28%, var(--border-primary));
-    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in srgb, var(--home-ink) 20%, var(--home-rule));
+    box-shadow: var(--shadow-md);
     transform: translateY(-4px);
   }
 
@@ -532,7 +534,7 @@
   .surface-muted {
     background:
       linear-gradient(180deg, color-mix(in srgb, var(--surface-secondary) 88%, var(--surface-primary)) 0%, color-mix(in srgb, var(--surface-secondary) 72%, var(--surface-primary)) 100%);
-    border: 1px solid color-mix(in srgb, var(--border-primary) 78%, var(--color-primary) 22%);
+    border: 1px solid var(--home-rule);
     border-radius: 1.25rem;
   }
 
@@ -1221,10 +1223,8 @@
 
   .footer-home-panel {
     border-color: var(--home-rule);
-    background:
-      radial-gradient(circle at top left, color-mix(in srgb, var(--home-haze) 10%, transparent), transparent 30%),
-      linear-gradient(180deg, color-mix(in srgb, var(--home-paper) 90%, white) 0%, color-mix(in srgb, var(--home-paper-alt) 88%, white) 100%);
-    box-shadow: var(--shadow-md);
+    background: color-mix(in srgb, var(--home-paper) 92%, white);
+    box-shadow: var(--shadow-sm);
   }
 
   .footer-home-text {
@@ -1277,11 +1277,14 @@
       linear-gradient(180deg, color-mix(in srgb, var(--home-paper-alt) 94%, black) 0%, color-mix(in srgb, var(--home-paper) 90%, black) 100%);
   }
 
-  .dark .home-contact-panel,
-  .dark .footer-home-panel {
+  .dark .home-contact-panel {
     background:
       radial-gradient(circle at top center, color-mix(in srgb, var(--home-haze) 10%, transparent), transparent 32%),
       linear-gradient(180deg, color-mix(in srgb, var(--home-paper-alt) 94%, black) 0%, color-mix(in srgb, var(--home-paper) 90%, black) 100%);
+  }
+
+  .dark .footer-home-panel {
+    background: color-mix(in srgb, var(--home-paper-alt) 94%, black);
   }
 
   @media (min-width: 640px) {

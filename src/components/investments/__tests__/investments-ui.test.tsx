@@ -252,7 +252,7 @@ describe("investments UI", () => {
     });
     await waitForDebounce();
 
-    expect(container.textContent).toContain("Visa Inc.");
+    expect(document.body.textContent).toContain("Visa Inc.");
 
     await act(async () => {
       if (!input) return;
@@ -357,8 +357,6 @@ describe("investments UI", () => {
 
     expect(container.textContent).toContain("Visa Inc.");
     expect(container.textContent).toContain("$352.45");
-    expect(container.textContent).toContain("Chart through Feb 27, 2026");
-    expect(container.textContent).toContain("Historical series trails the dataset by");
 
     const tabs = queryTabs(container);
     expect(tabs).toEqual(
@@ -419,7 +417,6 @@ describe("investments UI", () => {
     expect(container.textContent).toContain("Apple Inc.");
     expect(container.textContent).toContain("$198.00");
     expect(container.textContent).toContain("Price as of Mar 15, 2026");
-    expect(container.textContent).toContain("Showing the latest saved close from Mar 15, 2026.");
     expect(container.textContent).toContain("Live pricing is temporarily unavailable.");
   });
 
