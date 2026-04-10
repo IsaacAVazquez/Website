@@ -1,10 +1,10 @@
 {
   "symbol": "PG",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.75,
-      "ttmPe": 21.14,
-      "marketCap": 331658139897,
-      "psRatio": 3.89,
-      "pbRatio": 6.25
+      "ttmPe": 21.2,
+      "marketCap": 332610980184,
+      "psRatio": 3.9,
+      "pbRatio": 6.27
     },
     "profitability": {
       "roe": 7.99,
@@ -5233,49 +5234,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.28,
-      "costOfEquity": 8.03,
+      "wacc": 7.140000000000001,
+      "costOfEquity": 7.870000000000001,
       "costOfDebt": 0.6,
       "taxRate": 20,
-      "beta": 0.4259,
-      "marketCap": 331658139897
+      "beta": 0.4164,
+      "marketCap": 332610980184
     },
     "beta": {
-      "beta5y": 0.4259
+      "beta5y": 0.4164
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 167.87,
-        "high": 169.03,
-        "low": 166.62,
-        "close": 168.71,
-        "volume": 6211700
-      },
-      {
-        "date": "2025-03-28",
-        "open": 169.38,
-        "high": 169.71,
-        "low": 167.62,
-        "close": 168.03,
-        "volume": 5479100
-      },
-      {
-        "date": "2025-03-31",
-        "open": 168.1,
-        "high": 171.14,
-        "low": 168.1,
-        "close": 170.42,
-        "volume": 11520100
-      },
-      {
-        "date": "2025-04-01",
-        "open": 170.57,
-        "high": 171.05,
-        "low": 169.06,
-        "close": 170.56,
-        "volume": 7021100
-      },
       {
         "date": "2025-04-02",
         "open": 170.07,
@@ -7258,24 +7227,56 @@
         "high": 144.08,
         "low": 142.01,
         "close": 142.71,
-        "volume": 11557100
+        "volume": 11558300
+      },
+      {
+        "date": "2026-03-30",
+        "open": 143.04,
+        "high": 145.57,
+        "low": 142.57,
+        "close": 144.72,
+        "volume": 11616300
+      },
+      {
+        "date": "2026-03-31",
+        "open": 144.82,
+        "high": 144.92,
+        "low": 142.28,
+        "close": 144.44,
+        "volume": 10407500
+      },
+      {
+        "date": "2026-04-01",
+        "open": 143.92,
+        "high": 144.97,
+        "low": 143.21,
+        "close": 144.09,
+        "volume": 8061700
+      },
+      {
+        "date": "2026-04-02",
+        "open": 144.09,
+        "high": 144.21,
+        "low": 142.58,
+        "close": 143.12,
+        "volume": 5941700
       }
     ],
     "news": [
-      {
-        "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
-        "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-10",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
-        "type": "STORY"
-      },
       {
         "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
         "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
         "publisher": "Zacks",
         "reportDate": "2025-04-10",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
+        "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-10",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
         "type": "STORY"
       },
       {
@@ -7335,34 +7336,97 @@
         "type": "STORY"
       },
       {
-        "uuid": "d648ba01-435f-3d01-ae5d-c4060f97a638",
-        "title": "How Trump Inspired One Law Firm to Blitz Brands With ‘Made in USA’ Challenges",
-        "publisher": "The Wall Street Journal",
+        "uuid": "648c87cc-233c-3f92-938d-b8793ce7d880",
+        "title": "Clorox (CLX) Down 3.7% Since Last Earnings Report: Can It Rebound?",
+        "publisher": "Zacks",
         "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/m/d648ba01-435f-3d01-ae5d-c4060f97a638/how-trump-inspired-one-law.html",
+        "link": "https://finance.yahoo.com/news/clorox-clx-down-3-7-153027205.html",
         "type": "STORY"
+      }
+    ],
+    "officers": [
+      {
+        "name": "Mr. Andre Schulten",
+        "title": "Chief Financial Officer",
+        "age": 54,
+        "yearBorn": 1971,
+        "totalPay": 1824131
+      },
+      {
+        "name": "Mr. Damon D. Jones",
+        "title": "Chief Communications Officer",
+        "age": 49,
+        "yearBorn": 1976
+      },
+      {
+        "name": "Mr. John T. Chevalier",
+        "title": "Senior Vice President of Investor Relations"
+      },
+      {
+        "name": "Mr. Jon R. Moeller",
+        "title": "Executive Chairman",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 3827656
+      },
+      {
+        "name": "Mr. Matthew W. Janzaruk",
+        "title": "Senior VP & Chief Accounting Officer",
+        "age": 51,
+        "yearBorn": 1974
+      },
+      {
+        "name": "Mr. Seth Cohen",
+        "title": "Chief Information Officer"
+      },
+      {
+        "name": "Mr. Shailesh G. Jejurikar",
+        "title": "CEO, President & Director",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 2118211
+      },
+      {
+        "name": "Mr. Sundar G. Raman",
+        "title": "Chief Executive Officer of Fabric and Home Care and P&G Ventures",
+        "age": 50,
+        "yearBorn": 1975,
+        "totalPay": 2731833
+      },
+      {
+        "name": "Ms. Jennifer L. Davis",
+        "title": "Chief Executive Officer of Health Care",
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 1734433
+      },
+      {
+        "name": "Ms. Susan Street Whaley",
+        "title": "Chief Legal Officer & Secretary",
+        "age": 51,
+        "yearBorn": 1974
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.14,
-        "industryAvg": 37.89
+        "value": 21.2,
+        "industryAvg": 38.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.89,
-        "industryAvg": 4.24
+        "value": 3.9,
+        "industryAvg": 4.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.25,
-        "industryAvg": 5.96
+        "value": 6.27,
+        "industryAvg": 6.02
       },
       {
         "metric": "ROE",
         "value": 7.99,
-        "industryAvg": 5.59
+        "industryAvg": 5.58
       },
       {
         "metric": "ROA",
@@ -7377,19 +7441,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 29.01,
-        "industryAvg": 18.57
+        "industryAvg": 18.55
       },
       {
         "metric": "Net Margin",
         "value": 19.12,
-        "industryAvg": 9.83
+        "industryAvg": 9.82
       }
     ],
     "dcf": {
-      "fairValue": 138.57,
-      "currentPrice": 142.71,
-      "upside": -2.9,
-      "wacc": 7.28,
+      "fairValue": 143.22,
+      "currentPrice": 143.12,
+      "upside": 0.07,
+      "wacc": 7.14,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -5.32,
         "Terminal growth": 3

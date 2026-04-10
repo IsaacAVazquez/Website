@@ -357,7 +357,7 @@ describe("investments UI", () => {
 
     expect(container.textContent).toContain("Visa Inc.");
     expect(container.textContent).toContain("$352.45");
-    expect(container.textContent).toContain("Historical chart through Feb 27, 2026.");
+    expect(container.textContent).toContain("Chart through Feb 27, 2026");
     expect(container.textContent).toContain("Historical series trails the dataset by");
 
     const tabs = queryTabs(container);

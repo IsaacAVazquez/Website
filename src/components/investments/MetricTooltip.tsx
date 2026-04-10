@@ -1,0 +1,76 @@
+"use client";
+
+import React from "react";
+
+export const METRIC_DEFINITIONS: Record<string, string> = {
+  // Valuation — all label variants
+  "P/E TTM": "Price-to-Earnings (trailing 12 months). How much investors pay per $1 of profit. Lower generally means cheaper.",
+  "P/E (TTM)": "Price-to-Earnings (trailing 12 months). How much investors pay per $1 of profit. Lower generally means cheaper.",
+  "EPS TTM": "Earnings Per Share (trailing 12 months). Net profit divided by shares outstanding.",
+  "EPS (TTM)": "Earnings Per Share (trailing 12 months). Net profit divided by shares outstanding.",
+  "P/S": "Price-to-Sales. Market cap divided by annual revenue. Useful when a company isn't yet profitable.",
+  "P/S Ratio": "Price-to-Sales. Market cap divided by annual revenue. Useful when a company isn't yet profitable.",
+  "P/B": "Price-to-Book. Market cap relative to net assets on the balance sheet. Under 1 may signal undervaluation.",
+  "P/B Ratio": "Price-to-Book. Market cap relative to net assets on the balance sheet. Under 1 may signal undervaluation.",
+  "PEG": "Price/Earnings-to-Growth. P/E adjusted for expected growth rate. Under 1 is often considered attractive.",
+  "PEG Ratio": "Price/Earnings-to-Growth. P/E adjusted for expected growth rate. Under 1 is often considered attractive.",
+
+  // Market & capital
+  "Market Cap": "Total market value of all outstanding shares — price × shares outstanding.",
+  "52W Range": "The stock's highest and lowest closing price over the trailing 52 weeks.",
+
+  // Risk
+  "Beta 5Y": "5-year beta measures volatility relative to the broader market. 1.0 = moves with the market. Above 1 = more volatile.",
+  "Beta (5Y)": "5-year beta measures volatility relative to the broader market. 1.0 = moves with the market. Above 1 = more volatile.",
+
+  // Margins & returns
+  "Net Margin": "Percentage of revenue that becomes net profit after all expenses and taxes.",
+  "FCF Margin": "Free Cash Flow margin — cash generated after capital expenditures, as a percentage of revenue.",
+  "Gross Margin": "Revenue minus cost of goods sold, as a percentage of revenue.",
+  "Operating Margin": "Operating profit as a percentage of revenue — before interest and taxes.",
+  "EBITDA Margin": "Earnings before interest, taxes, depreciation, and amortization, as a percentage of revenue.",
+  "ROIC": "Return on Invested Capital. Measures how efficiently the company converts invested capital into profit. Above 10% is generally strong.",
+  "Return on Inv. Capital": "Return on Invested Capital. Measures how efficiently the company converts invested capital into profit. Above 10% is generally strong.",
+  "ROE": "Return on Equity. Net income as a percentage of shareholder equity.",
+  "Return on Equity (ROE)": "Net income as a percentage of shareholder equity. Measures how effectively management uses equity to generate profit.",
+  "ROA": "Return on Assets. Net income relative to total assets — a measure of asset efficiency.",
+  "Return on Assets (ROA)": "Net income relative to total assets. Measures how efficiently the company uses its assets to generate earnings.",
+  "Asset Turnover": "Revenue divided by total assets. Shows how efficiently the company generates revenue from its asset base.",
+  "Equity Multiplier": "Total assets divided by shareholder equity. A higher value indicates more financial leverage.",
+
+  // DCF
+  "DCF Upside": "Model-implied return vs. the current market price, based on a Discounted Cash Flow valuation.",
+  "Fair Value": "The DCF model's estimate of intrinsic value per share.",
+  "DCF Fair Value": "The DCF model's estimate of intrinsic value per share.",
+  "WACC": "Weighted Average Cost of Capital — the discount rate used in the DCF model. Reflects the blended cost of equity and debt financing.",
+
+  // Growth
+  "YoY": "Year-over-Year — the percentage change compared to the same period a year ago.",
+  "QoQ": "Quarter-over-Quarter — the percentage change compared to the immediately preceding quarter.",
+  "TTM": "Trailing Twelve Months — a rolling 12-month window of the most recent available data.",
+};
+
+interface Props {
+  term: string;
+  definition?: string;
+}
+
+export function MetricTooltip({ term, definition }: Props) {
+  const text = definition ?? METRIC_DEFINITIONS[term];
+  if (!text) return null;
+
+  return (
+    <span className="group relative ml-0.5 inline-flex cursor-help items-center">
+      <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[var(--home-paper-alt)] text-[9px] font-bold leading-none text-[var(--home-ink-muted)] ring-1 ring-[var(--home-rule)]">
+        ?
+      </span>
+      <span
+        role="tooltip"
+        className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-52 -translate-x-1/2 rounded-2xl bg-[var(--home-ink)] px-3 py-2.5 text-[11px] leading-snug text-white opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100"
+      >
+        {text}
+        <span className="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-[var(--home-ink)]" />
+      </span>
+    </span>
+  );
+}

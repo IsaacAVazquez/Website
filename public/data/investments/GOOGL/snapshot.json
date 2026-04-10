@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.81,
-      "ttmPe": 25.38,
-      "marketCap": 3318690980000,
-      "psRatio": 8.24,
-      "pbRatio": 7.99
+      "ttmPe": 27.36,
+      "marketCap": 3577929690000,
+      "psRatio": 8.88,
+      "pbRatio": 8.62
     },
     "profitability": {
       "roe": 8.59,
@@ -699,7 +700,7 @@
           "2025-12-31": "12228000000.0",
           "2025-09-30": "12203000000.0",
           "2025-06-30": "12198000000.0",
-          "2025-03-31": "12183000000.0",
+          "2025-03-31": "12291000000.0",
           "2024-12-31": "12348000000.0",
           "2024-09-30": "12419000000.0",
           "2024-06-30": "12495000000.0",
@@ -5405,49 +5406,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.780000000000001,
-      "costOfEquity": 14.02,
+      "wacc": 13.43,
+      "costOfEquity": 13.65,
       "costOfDebt": 0.5,
       "taxRate": 12,
-      "beta": 1.1363,
-      "marketCap": 3318690980000
+      "beta": 1.0915,
+      "marketCap": 3577929690000
     },
     "beta": {
-      "beta5y": 1.1363
+      "beta5y": 1.0915
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 164.63,
-        "high": 165.42,
-        "low": 162,
-        "close": 162.24,
-        "volume": 24508300
-      },
-      {
-        "date": "2025-03-28",
-        "open": 160.49,
-        "high": 161.82,
-        "low": 153.63,
-        "close": 154.33,
-        "volume": 48669300
-      },
-      {
-        "date": "2025-03-31",
-        "open": 153.11,
-        "high": 155.54,
-        "low": 150.66,
-        "close": 154.64,
-        "volume": 54603500
-      },
-      {
-        "date": "2025-04-01",
-        "open": 153.62,
-        "high": 158.1,
-        "low": 153.62,
-        "close": 157.07,
-        "volume": 30672900
-      },
       {
         "date": "2025-04-02",
         "open": 155.15,
@@ -7430,7 +7399,39 @@
         "high": 279.37,
         "low": 273.95,
         "close": 274.34,
-        "volume": 35815200
+        "volume": 35890600
+      },
+      {
+        "date": "2026-03-30",
+        "open": 276.42,
+        "high": 277.09,
+        "low": 272.11,
+        "close": 273.5,
+        "volume": 35141200
+      },
+      {
+        "date": "2026-03-31",
+        "open": 278.04,
+        "high": 288.08,
+        "low": 277.09,
+        "close": 287.56,
+        "volume": 43875400
+      },
+      {
+        "date": "2026-04-01",
+        "open": 290.84,
+        "high": 300.52,
+        "low": 290.41,
+        "close": 297.39,
+        "volume": 37684500
+      },
+      {
+        "date": "2026-04-02",
+        "open": 290.69,
+        "high": 298.08,
+        "low": 289.45,
+        "close": 295.77,
+        "volume": 21666500
       }
     ],
     "news": [
@@ -7443,11 +7444,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
-        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
         "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
         "type": "STORY"
       },
       {
@@ -7459,11 +7460,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
-        "title": "Top Research Reports for Alphabet, IBM & RTX",
-        "publisher": "Zacks",
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -7475,19 +7476,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
+        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
+        "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
-        "title": "Sector Update: Consumer",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
         "type": "STORY"
       },
       {
@@ -7499,42 +7492,117 @@
         "type": "STORY"
       },
       {
+        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
+        "title": "Sector Update: Consumer",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4c10d800-1065-3e25-af9a-f43f0e8b2904",
+        "title": "Japan's TDK acquires US-based smart glasses company SoftEye",
+        "publisher": "Reuters",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
         "title": "Magnificent 7 May Need to Make Room for Broadcom",
         "publisher": "The Daily Upside",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
         "type": "STORY"
+      }
+    ],
+    "officers": [
+      {
+        "name": "Dr. Lawrence Edward Page II",
+        "title": "Co-Founder & Director",
+        "age": 52,
+        "yearBorn": 1973,
+        "totalPay": 1
       },
       {
-        "uuid": "4d96e147-0572-3919-abe2-9e78a89c6f88",
-        "title": "Got $5,000? 3 Tech Stocks to Buy and Hold for the Long Term.",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/4d96e147-0572-3919-abe2-9e78a89c6f88/got-%245%2C000%3F-3-tech-stocks-to.html",
-        "type": "STORY"
+        "name": "Mr. J. Kent Walker",
+        "title": "President of Global Affairs, Chief Legal Officer & Company Secretary",
+        "age": 64,
+        "yearBorn": 1961,
+        "totalPay": 3019696
+      },
+      {
+        "name": "Mr. Philipp Schindler",
+        "title": "Senior Vice President & Chief Business Officer of Google",
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 3051699
+      },
+      {
+        "name": "Mr. Sergey Brin",
+        "title": "Co-Founder & Director",
+        "age": 51,
+        "yearBorn": 1974,
+        "totalPay": 1
+      },
+      {
+        "name": "Mr. Sundar Pichai",
+        "title": "CEO & Director",
+        "age": 52,
+        "yearBorn": 1973,
+        "totalPay": 10319413
+      },
+      {
+        "name": "Ms. Amie Thuener O'Toole",
+        "title": "Corporate Controller, Chief Accounting Officer & VP",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
+        "name": "Ms. Anat Ashkenazi",
+        "title": "Senior VP & CFO",
+        "age": 52,
+        "yearBorn": 1973,
+        "totalPay": 11455556
+      },
+      {
+        "name": "Ms. Ellen West",
+        "title": "Vice President of Investor Relations"
+      },
+      {
+        "name": "Ms. Fiona Clare Cicconi",
+        "title": "Chief People Officer",
+        "age": 59,
+        "yearBorn": 1966
+      },
+      {
+        "name": "Ms. Ruth M. Porat",
+        "title": "President & Chief Investment Officer",
+        "age": 67,
+        "yearBorn": 1958,
+        "totalPay": 3023363
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.38,
-        "industryAvg": 25.13
+        "value": 27.36,
+        "industryAvg": 27.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.24,
-        "industryAvg": 7.32
+        "value": 8.88,
+        "industryAvg": 7.89
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.99,
-        "industryAvg": 6.76
+        "value": 8.62,
+        "industryAvg": 7.28
       },
       {
         "metric": "ROE",
         "value": 8.59,
-        "industryAvg": 7.79
+        "industryAvg": 7.8
       },
       {
         "metric": "ROA",
@@ -7549,19 +7617,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 39.93,
-        "industryAvg": 38.64
+        "industryAvg": 38.66
       },
       {
         "metric": "Net Margin",
         "value": 30.270000000000003,
-        "industryAvg": 28.64
+        "industryAvg": 28.660000000000004
       }
     ],
     "dcf": {
-      "fairValue": 164.29,
-      "currentPrice": 274.34,
-      "upside": -40.11,
-      "wacc": 13.78,
+      "fairValue": 170.01,
+      "currentPrice": 295.77,
+      "upside": -42.52,
+      "wacc": 13.43,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 31.16,
         "Terminal growth": 3

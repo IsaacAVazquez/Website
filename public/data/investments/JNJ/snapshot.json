@@ -1,10 +1,10 @@
 {
   "symbol": "JNJ",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 11.05,
-      "ttmPe": 21.76,
-      "marketCap": 579151043940,
-      "psRatio": 6.15,
-      "pbRatio": 7.1
+      "ttmPe": 21.99,
+      "marketCap": 585389352128,
+      "psRatio": 6.21,
+      "pbRatio": 7.18
     },
     "profitability": {
       "roe": 6.36,
@@ -5503,49 +5504,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.710000000000001,
-      "costOfEquity": 7.24,
+      "wacc": 6.68,
+      "costOfEquity": 7.199999999999999,
       "costOfDebt": 0.44999999999999996,
       "taxRate": 21,
-      "beta": 0.3319,
-      "marketCap": 579151043940
+      "beta": 0.3376,
+      "marketCap": 585389352128
     },
     "beta": {
-      "beta5y": 0.3319
+      "beta5y": 0.3376
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 162.35,
-        "high": 164.07,
-        "low": 161.32,
-        "close": 163.13,
-        "volume": 6752500
-      },
-      {
-        "date": "2025-03-28",
-        "open": 163.59,
-        "high": 164.52,
-        "low": 162.91,
-        "close": 163.71,
-        "volume": 5760300
-      },
-      {
-        "date": "2025-03-31",
-        "open": 164.37,
-        "high": 166.63,
-        "low": 164.23,
-        "close": 165.84,
-        "volume": 12481400
-      },
-      {
-        "date": "2025-04-01",
-        "open": 160.73,
-        "high": 161.81,
-        "low": 153.13,
-        "close": 153.25,
-        "volume": 23303100
-      },
       {
         "date": "2025-04-02",
         "open": 154.01,
@@ -7528,24 +7497,56 @@
         "high": 242.68,
         "low": 239.13,
         "close": 240.45,
-        "volume": 7617100
+        "volume": 7617600
+      },
+      {
+        "date": "2026-03-30",
+        "open": 243.49,
+        "high": 244.21,
+        "low": 240.51,
+        "close": 242.49,
+        "volume": 7241300
+      },
+      {
+        "date": "2026-03-31",
+        "open": 243.01,
+        "high": 245.33,
+        "low": 242.65,
+        "close": 244.44,
+        "volume": 7554200
+      },
+      {
+        "date": "2026-04-01",
+        "open": 245.6,
+        "high": 247.2,
+        "low": 243.74,
+        "close": 244.12,
+        "volume": 6314600
+      },
+      {
+        "date": "2026-04-02",
+        "open": 245.11,
+        "high": 247.21,
+        "low": 241.87,
+        "close": 243.04,
+        "volume": 6878700
       }
     ],
     "news": [
-      {
-        "uuid": "26c8f9f1-d78a-3b55-8cc9-df6c3c7da8b8",
-        "title": "The Zacks Analyst Blog Highlights Visa, Johnson & Johnson, Thermo Fisher and AMREP",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-090000990.html",
-        "type": "STORY"
-      },
       {
         "uuid": "06ab889d-697a-3f25-95b3-27373b43c63e",
         "title": "Top Stock Reports for Visa, Johnson & Johnson & Thermo Fisher Scientific",
         "publisher": "Zacks",
         "reportDate": "2025-03-19",
         "link": "https://finance.yahoo.com/news/top-stock-reports-visa-johnson-210100930.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "26c8f9f1-d78a-3b55-8cc9-df6c3c7da8b8",
+        "title": "The Zacks Analyst Blog Highlights Visa, Johnson & Johnson, Thermo Fisher and AMREP",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-090000990.html",
         "type": "STORY"
       },
       {
@@ -7589,19 +7590,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bef36d82-18df-3b8a-b1d3-cbe5aec53f90",
-        "title": "The Zacks Analyst Blog Highlights Amazon, Johnson & Johnson, Cisco Systems and NeurAxis",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-amazon-084900432.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "805043bf-ab7d-346e-b3c8-0163ff94cf2f",
         "title": "Top Stock Reports for Amazon.com, Johnson & Johnson & Cisco Systems",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/top-stock-reports-amazon-com-210200739.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bef36d82-18df-3b8a-b1d3-cbe5aec53f90",
+        "title": "The Zacks Analyst Blog Highlights Amazon, Johnson & Johnson, Cisco Systems and NeurAxis",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-amazon-084900432.html",
         "type": "STORY"
       },
       {
@@ -7613,21 +7614,83 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Dr. John C. Reed M.D., Ph.D.",
+        "title": "Executive Vice President of Innovative Medicine and R&D",
+        "age": 67,
+        "yearBorn": 1958,
+        "totalPay": 3165384
+      },
+      {
+        "name": "Mr. Darren Snellgrove",
+        "title": "Vice President of Investor Relations"
+      },
+      {
+        "name": "Mr. Dirk Brinckman",
+        "title": "Chief Compliance Officer"
+      },
+      {
+        "name": "Mr. James Swanson",
+        "title": "Executive VP & Chief Information Officer",
+        "age": 58,
+        "yearBorn": 1967
+      },
+      {
+        "name": "Mr. Joaquin Duato",
+        "title": "CEO & Chairman",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 6499931
+      },
+      {
+        "name": "Mr. Robert J. Decker Jr.",
+        "title": "Controller & Chief Accounting Officer",
+        "age": 52,
+        "yearBorn": 1973
+      },
+      {
+        "name": "Mr. Timothy Schmid",
+        "title": "Executive VP & Worldwide Chairman of MedTech",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 2538167
+      },
+      {
+        "name": "Ms. Elizabeth Forminard J.D.",
+        "title": "Executive VP & Chief Legal Officer",
+        "age": 53,
+        "yearBorn": 1972
+      },
+      {
+        "name": "Ms. Jennifer L. Taubert",
+        "title": "Executive VP & Worldwide Chairman of Innovative Medicine",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 3313021
+      },
+      {
+        "name": "Ms. Kristen Blair Mulholland",
+        "title": "Executive VP & Chief Human Resources Officer",
+        "age": 58,
+        "yearBorn": 1967
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.76,
-        "industryAvg": 20.05
+        "value": 21.99,
+        "industryAvg": 20.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.15,
-        "industryAvg": 4.32
+        "value": 6.21,
+        "industryAvg": 4.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.1,
-        "industryAvg": 5.41
+        "value": 7.18,
+        "industryAvg": 5.57
       },
       {
         "metric": "ROE",
@@ -7656,10 +7719,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 661.34,
-      "currentPrice": 240.45,
-      "upside": 175.04,
-      "wacc": 6.71,
+      "fairValue": 666.86,
+      "currentPrice": 243.04,
+      "upside": 174.38,
+      "wacc": 6.68,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 48.94,
         "Terminal growth": 3

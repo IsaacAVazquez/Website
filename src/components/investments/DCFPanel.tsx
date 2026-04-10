@@ -6,6 +6,7 @@ import { useStockData } from "@/hooks/useStockData";
 import { IconInfoCircle } from "@tabler/icons-react";
 import type { DcfData } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
+import { MetricTooltip } from "./MetricTooltip";
 
 interface Props { symbol: string }
 
@@ -94,7 +95,7 @@ export function DCFPanel({ symbol }: Props) {
           <div className="space-y-1.5 text-sm border-t border-[var(--home-rule)] pt-3">
             {data.wacc !== undefined && (
               <div className="flex justify-between">
-                <span className="text-[var(--home-ink-muted)]">WACC</span>
+                <span className="flex items-center gap-0.5 text-[var(--home-ink-muted)]">WACC<MetricTooltip term="WACC" /></span>
                 <span className="font-medium text-[var(--home-ink)]">{fmt(data.wacc, "percent")}</span>
               </div>
             )}

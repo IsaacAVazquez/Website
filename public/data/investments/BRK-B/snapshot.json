@@ -1,10 +1,10 @@
 {
   "symbol": "BRK-B",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": false,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -4169,41 +4170,9 @@
       ]
     },
     "beta": {
-      "beta5y": 0.7192
+      "beta5y": 0.6995
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 533.25,
-        "high": 537.38,
-        "low": 529.35,
-        "close": 534.52,
-        "volume": 5154600
-      },
-      {
-        "date": "2025-03-28",
-        "open": 535.35,
-        "high": 536,
-        "low": 524.68,
-        "close": 526.31,
-        "volume": 5321400
-      },
-      {
-        "date": "2025-03-31",
-        "open": 521.4,
-        "high": 536.52,
-        "low": 519,
-        "close": 532.58,
-        "volume": 7139300
-      },
-      {
-        "date": "2025-04-01",
-        "open": 531.88,
-        "high": 536.41,
-        "low": 527.5,
-        "close": 532.99,
-        "volume": 4130600
-      },
       {
         "date": "2025-04-02",
         "open": 532.13,
@@ -6186,7 +6155,39 @@
         "high": 474.8,
         "low": 467.21,
         "close": 468.49,
-        "volume": 5369600
+        "volume": 5382300
+      },
+      {
+        "date": "2026-03-30",
+        "open": 470.68,
+        "high": 477.69,
+        "low": 470.65,
+        "close": 474.66,
+        "volume": 4590900
+      },
+      {
+        "date": "2026-03-31",
+        "open": 477.78,
+        "high": 479.81,
+        "low": 474.77,
+        "close": 479.2,
+        "volume": 4725300
+      },
+      {
+        "date": "2026-04-01",
+        "open": 478.98,
+        "high": 481.1,
+        "low": 477.25,
+        "close": 478.5,
+        "volume": 3600800
+      },
+      {
+        "date": "2026-04-02",
+        "open": 477.82,
+        "high": 479.77,
+        "low": 475.68,
+        "close": 477.35,
+        "volume": 2972800
       }
     ],
     "news": [
@@ -6223,6 +6224,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
+        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
         "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
         "publisher": "Zacks",
@@ -6236,14 +6245,6 @@
         "publisher": "Yahoo Finance",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/bill-ackman-on-his-move-to-recreate-warren-buffetts-berkshire-hathaway-185906487.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
-        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
         "type": "STORY"
       },
       {
@@ -6271,14 +6272,65 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Mr. Adam M. Johnson",
+        "title": "President of Consumer Products, Service & Retailing",
+        "age": 53,
+        "yearBorn": 1972
+      },
+      {
+        "name": "Mr. Ajit Jain",
+        "title": "Vice Chairman of Insurance Operations & Director",
+        "age": 73,
+        "yearBorn": 1952,
+        "totalPay": 22017500
+      },
+      {
+        "name": "Mr. Daniel Jerome Jaksich",
+        "title": "VP, Controller & Principal Accounting Officer"
+      },
+      {
+        "name": "Mr. Gregory Edward Abel",
+        "title": "CEO, President & Director",
+        "age": 63,
+        "yearBorn": 1962,
+        "totalPay": 22017500
+      },
+      {
+        "name": "Mr. Kerby S. Ham",
+        "title": "Treasurer"
+      },
+      {
+        "name": "Mr. Marc David Hamburg",
+        "title": "Senior VP, CFO & Secretary",
+        "age": 75,
+        "yearBorn": 1950,
+        "totalPay": 4330000
+      },
+      {
+        "name": "Mr. Michael J. O'Sullivan J.D.",
+        "title": "Senior VP & General Counsel",
+        "age": 59,
+        "yearBorn": 1966
+      },
+      {
+        "name": "Mr. Peter James Eastwood",
+        "title": "CEO & President of Specialty Insurance"
+      },
+      {
+        "name": "Ms. Kara Lee Raiguel",
+        "title": "CEO & President of General Re Unit"
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "industryAvg": 16.46
+        "industryAvg": 17.55
       },
       {
         "metric": "P/S Ratio",
-        "industryAvg": 1.05
+        "industryAvg": 1.1
       },
       {
         "metric": "P/B Ratio",
@@ -6286,11 +6338,11 @@
       },
       {
         "metric": "ROE",
-        "industryAvg": 4
+        "industryAvg": 3.7199999999999998
       },
       {
         "metric": "ROA",
-        "industryAvg": 0.5599999999999999
+        "industryAvg": 0.52
       },
       {
         "metric": "Gross Margin",
@@ -6303,7 +6355,7 @@
       {
         "metric": "Net Margin",
         "value": 17.23,
-        "industryAvg": 16.939999999999998
+        "industryAvg": 16.73
       }
     ]
   }

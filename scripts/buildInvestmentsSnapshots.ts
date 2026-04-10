@@ -16,7 +16,8 @@ type RawSectionName =
   | "industry"
   | "beta"
   | "news"
-  | "price";
+  | "price"
+  | "officers";
 
 const PROJECT_ROOT = process.cwd();
 const DATA_DIR = path.join(PROJECT_ROOT, "public", "data", "investments");
@@ -34,6 +35,7 @@ const RAW_SECTIONS: RawSectionName[] = [
   "beta",
   "news",
   "price",
+  "officers",
 ];
 const REQUIRED_RAW_SECTIONS: RawSectionName[] = [
   "info",

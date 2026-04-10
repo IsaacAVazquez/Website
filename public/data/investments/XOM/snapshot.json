@@ -1,10 +1,10 @@
 {
   "symbol": "XOM",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.69,
-      "ttmPe": 25.56,
-      "marketCap": 712474890865,
-      "psRatio": 2.2,
-      "pbRatio": 2.75
+      "ttmPe": 24.02,
+      "marketCap": 669557226815,
+      "psRatio": 2.07,
+      "pbRatio": 2.58
     },
     "profitability": {
       "roe": 2.5,
@@ -4854,49 +4855,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.23,
-      "costOfEquity": 6.59,
+      "wacc": 6.4,
+      "costOfEquity": 6.800000000000001,
       "costOfDebt": 0.37,
       "taxRate": 18,
-      "beta": 0.2555,
-      "marketCap": 712474890865
+      "beta": 0.2914,
+      "marketCap": 669557226815
     },
     "beta": {
-      "beta5y": 0.2555
+      "beta5y": 0.2914
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 118.1,
-        "high": 119.07,
-        "low": 117.26,
-        "close": 117.89,
-        "volume": 12740800
-      },
-      {
-        "date": "2025-03-28",
-        "open": 118.1,
-        "high": 118.46,
-        "low": 117.24,
-        "close": 117.73,
-        "volume": 10233400
-      },
-      {
-        "date": "2025-03-31",
-        "open": 117.79,
-        "high": 119.91,
-        "low": 117.79,
-        "close": 118.93,
-        "volume": 21652300
-      },
-      {
-        "date": "2025-04-01",
-        "open": 119.22,
-        "high": 119.28,
-        "low": 117.93,
-        "close": 119.04,
-        "volume": 12425400
-      },
       {
         "date": "2025-04-02",
         "open": 118.39,
@@ -6879,7 +6848,39 @@
         "high": 171.23,
         "low": 164.8,
         "close": 170.99,
-        "volume": 30296400
+        "volume": 30338300
+      },
+      {
+        "date": "2026-03-30",
+        "open": 172.51,
+        "high": 176.41,
+        "low": 171.05,
+        "close": 171.47,
+        "volume": 29813500
+      },
+      {
+        "date": "2026-03-31",
+        "open": 172.67,
+        "high": 174.38,
+        "low": 165.97,
+        "close": 169.66,
+        "volume": 32006700
+      },
+      {
+        "date": "2026-04-01",
+        "open": 165.77,
+        "high": 168,
+        "low": 159.53,
+        "close": 160.78,
+        "volume": 37927600
+      },
+      {
+        "date": "2026-04-02",
+        "open": 164.49,
+        "high": 166.9,
+        "low": 159.59,
+        "close": 160.69,
+        "volume": 25377700
       }
     ],
     "news": [
@@ -6940,19 +6941,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
-        "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
         "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
+        "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
         "type": "STORY"
       },
       {
@@ -6964,53 +6965,114 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Inge A. Van Coppenolle",
+        "title": "Vice President of Human Resources"
+      },
+      {
+        "name": "Mr. Darren W. Woods",
+        "title": "Chairman of the Board, President & CEO",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 6913893
+      },
+      {
+        "name": "Mr. Jack P. Williams Jr.",
+        "title": "Senior Vice President",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 4630057
+      },
+      {
+        "name": "Mr. James R. Chapman",
+        "title": "VP of Investor Relations & Treasurer",
+        "age": 54,
+        "yearBorn": 1971
+      },
+      {
+        "name": "Mr. Jeffrey A. Taylor",
+        "title": "VP, General Counsel & Secretary",
+        "age": 60,
+        "yearBorn": 1965
+      },
+      {
+        "name": "Mr. Jon M. Gibbs",
+        "title": "Senior President of ExxonMobil Global Operations",
+        "age": 52,
+        "yearBorn": 1973
+      },
+      {
+        "name": "Mr. Leonard M. Fox",
+        "title": "VP of Tax, Principal Accounting Officer & Controller",
+        "age": 61,
+        "yearBorn": 1964
+      },
+      {
+        "name": "Mr. Neil A. Chapman",
+        "title": "Senior Vice President",
+        "age": 63,
+        "yearBorn": 1962,
+        "totalPay": 4545167
+      },
+      {
+        "name": "Mr. Neil A. Hansen",
+        "title": "Senior VP & CFO",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
+        "name": "Ms. Tracey C. Gunnlaugsson",
+        "title": "President of Global Trading"
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.56,
-        "industryAvg": 21.44
+        "value": 24.02,
+        "industryAvg": 25.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.2,
-        "industryAvg": 1.2
+        "value": 2.07,
+        "industryAvg": 1.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.75,
-        "industryAvg": 1.86
+        "value": 2.58,
+        "industryAvg": 1.81
       },
       {
         "metric": "ROE",
         "value": 2.5,
-        "industryAvg": 1.6400000000000001
+        "industryAvg": 1.53
       },
       {
         "metric": "ROA",
         "value": 1.44,
-        "industryAvg": 0.7000000000000001
+        "industryAvg": 0.63
       },
       {
         "metric": "Gross Margin",
         "value": 19.96,
-        "industryAvg": 19.67
+        "industryAvg": 19.61
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.88,
-        "industryAvg": 16.75
+        "industryAvg": 16.07
       },
       {
         "metric": "Net Margin",
         "value": 8.12,
-        "industryAvg": 3.7800000000000002
+        "industryAvg": 3.6799999999999997
       }
     ],
     "dcf": {
-      "fairValue": 161.92,
-      "currentPrice": 170.99,
-      "upside": -5.31,
-      "wacc": 6.23,
+      "fairValue": 153.89,
+      "currentPrice": 160.69,
+      "upside": -4.23,
+      "wacc": 6.4,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -11.05,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.17,
-      "ttmPe": 27.8,
-      "marketCap": 2139899132206,
-      "psRatio": 2.98,
-      "pbRatio": 5.21
+      "ttmPe": 29.26,
+      "marketCap": 2251864357193,
+      "psRatio": 3.14,
+      "pbRatio": 5.48
     },
     "profitability": {
       "roe": 5.43,
@@ -4728,49 +4729,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.87,
-      "costOfEquity": 15.909999999999998,
+      "wacc": 14.85,
+      "costOfEquity": 15.83,
       "costOfDebt": 0.44,
       "taxRate": 19,
-      "beta": 1.3602,
-      "marketCap": 2139899132206
+      "beta": 1.346,
+      "marketCap": 2251864357193
     },
     "beta": {
-      "beta5y": 1.3602
+      "beta5y": 1.346
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 200.89,
-        "high": 203.79,
-        "low": 199.28,
-        "close": 201.36,
-        "volume": 27317700
-      },
-      {
-        "date": "2025-03-28",
-        "open": 198.42,
-        "high": 199.26,
-        "low": 191.88,
-        "close": 192.72,
-        "volume": 52548200
-      },
-      {
-        "date": "2025-03-31",
-        "open": 188.19,
-        "high": 191.33,
-        "low": 184.4,
-        "close": 190.26,
-        "volume": 63547600
-      },
-      {
-        "date": "2025-04-01",
-        "open": 187.86,
-        "high": 193.93,
-        "low": 187.2,
-        "close": 192.17,
-        "volume": 41267300
-      },
       {
         "date": "2025-04-02",
         "open": 187.66,
@@ -6753,7 +6722,39 @@
         "high": 206.6,
         "low": 199.14,
         "close": 199.34,
-        "volume": 55855900
+        "volume": 56009800
+      },
+      {
+        "date": "2026-03-30",
+        "open": 201.48,
+        "high": 203.8,
+        "low": 199.98,
+        "close": 200.95,
+        "volume": 46373800
+      },
+      {
+        "date": "2026-03-31",
+        "open": 204.85,
+        "high": 210.28,
+        "low": 204.14,
+        "close": 208.27,
+        "volume": 58470100
+      },
+      {
+        "date": "2026-04-01",
+        "open": 210.44,
+        "high": 213.58,
+        "low": 208.19,
+        "close": 210.57,
+        "volume": 45955400
+      },
+      {
+        "date": "2026-04-02",
+        "open": 206.54,
+        "high": 212.21,
+        "low": 204.9,
+        "close": 209.77,
+        "volume": 31453000
       }
     ],
     "news": [
@@ -6766,20 +6767,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
-        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
         "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-03-13",
         "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
+        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
@@ -6838,11 +6839,74 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Dr. Werner Vogels",
+        "title": "Chief Technology Officer"
+      },
+      {
+        "name": "Drew Herdener",
+        "title": "Senior Vice President of Communications & Corporate Responsibility"
+      },
+      {
+        "name": "Mr. Andrew R. Jassy",
+        "title": "President, CEO & Director",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 1596889
+      },
+      {
+        "name": "Mr. Brian T. Olsavsky",
+        "title": "Senior VP & CFO",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 371900
+      },
+      {
+        "name": "Mr. Dave Fildes",
+        "title": "Vice President of Investor Relations"
+      },
+      {
+        "name": "Mr. David A. Zapolsky J.D.",
+        "title": "Senior VP and Chief Global Affairs & Legal Officer",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 371900
+      },
+      {
+        "name": "Mr. Douglas J. Herrington",
+        "title": "Chief Executive Officer of Worldwide Amazon Stores",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 386435
+      },
+      {
+        "name": "Mr. Jeffrey P. Bezos",
+        "title": "Founder & Executive Chairman",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 1681840
+      },
+      {
+        "name": "Mr. Matthew S. Garman",
+        "title": "Chief Executive Officer of Amazon Web Series",
+        "age": 48,
+        "yearBorn": 1977,
+        "totalPay": 384275
+      },
+      {
+        "name": "Ms. Shelley L. Reynolds",
+        "title": "VP, Worldwide Controller & Principal Accounting Officer",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 163200
+      }
+    ],
     "dcf": {
-      "fairValue": 64.24,
-      "currentPrice": 199.34,
-      "upside": -67.77,
-      "wacc": 14.87,
+      "fairValue": 64.35,
+      "currentPrice": 209.77,
+      "upside": -69.32,
+      "wacc": 14.85,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 4.84,
         "Terminal growth": 3

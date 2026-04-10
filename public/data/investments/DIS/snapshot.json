@@ -1,10 +1,10 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.79,
-      "ttmPe": 13.61,
-      "marketCap": 163723869158,
-      "psRatio": 1.71,
-      "pbRatio": 1.51
+      "ttmPe": 14.23,
+      "marketCap": 171146537539,
+      "psRatio": 1.79,
+      "pbRatio": 1.58
     },
     "profitability": {
       "roe": 2.1999999999999997,
@@ -5682,49 +5683,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.01,
-      "costOfEquity": 16.53,
+      "wacc": 13.28,
+      "costOfEquity": 16.73,
       "costOfDebt": 0.95,
       "taxRate": 33,
-      "beta": 1.4341,
-      "marketCap": 163723869158
+      "beta": 1.4509,
+      "marketCap": 171146537539
     },
     "beta": {
-      "beta5y": 1.4341
+      "beta5y": 1.4509
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 100.71,
-        "high": 101.03,
-        "low": 99.58,
-        "close": 100.45,
-        "volume": 6598800
-      },
-      {
-        "date": "2025-03-28",
-        "open": 100.05,
-        "high": 100.39,
-        "low": 97.74,
-        "close": 98.07,
-        "volume": 7679700
-      },
-      {
-        "date": "2025-03-31",
-        "open": 96.83,
-        "high": 98.85,
-        "low": 95.7,
-        "close": 98.7,
-        "volume": 10554000
-      },
-      {
-        "date": "2025-04-01",
-        "open": 98.32,
-        "high": 98.59,
-        "low": 96.84,
-        "close": 97.68,
-        "volume": 8762700
-      },
       {
         "date": "2025-04-02",
         "open": 96.62,
@@ -7707,7 +7676,39 @@
         "high": 94.19,
         "low": 92.19,
         "close": 92.42,
-        "volume": 12470700
+        "volume": 12475900
+      },
+      {
+        "date": "2026-03-30",
+        "open": 92.89,
+        "high": 95.19,
+        "low": 92.89,
+        "close": 94.32,
+        "volume": 10592600
+      },
+      {
+        "date": "2026-03-31",
+        "open": 95.34,
+        "high": 96.89,
+        "low": 94.19,
+        "close": 96.38,
+        "volume": 11180200
+      },
+      {
+        "date": "2026-04-01",
+        "open": 97.26,
+        "high": 98.36,
+        "low": 96.49,
+        "close": 96.56,
+        "volume": 8518600
+      },
+      {
+        "date": "2026-04-02",
+        "open": 96,
+        "high": 97.17,
+        "low": 95.09,
+        "close": 96.61,
+        "volume": 6379100
       }
     ],
     "news": [
@@ -7728,14 +7729,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
-        "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/media-stocks-q4-review-fubotv-090639393.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
         "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
         "publisher": "StockStory",
@@ -7744,11 +7737,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0dc1ef64-366b-330a-b84e-ad03743a8224",
-        "title": "Trump Threat To Tax Foreign-Made Movies Hits Netflix; How Would It Work?",
-        "publisher": "Investor's Business Daily",
+        "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
+        "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/media-stocks-q4-review-fubotv-090639393.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
+        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/m/0dc1ef64-366b-330a-b84e-ad03743a8224/trump-threat-to-tax.html",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
         "type": "STORY"
       },
       {
@@ -7760,19 +7761,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "0dc1ef64-366b-330a-b84e-ad03743a8224",
+        "title": "Trump Threat To Tax Foreign-Made Movies Hits Netflix; How Would It Work?",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/m/0dc1ef64-366b-330a-b84e-ad03743a8224/trump-threat-to-tax.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
         "title": "Tariffs on films may end up hurting industry, says Barclays",
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
-        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
         "type": "STORY"
       },
       {
@@ -7792,21 +7793,81 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Mr. Asad Ayaz",
+        "title": "Chief Marketing & Brand Officer"
+      },
+      {
+        "name": "Mr. Carlos A. Gomez",
+        "title": "EVP, Treasurer & Head of Investor Relations"
+      },
+      {
+        "name": "Mr. Horacio E. Gutierrez J.D.",
+        "title": "Senior EVP and Chief Legal & Global Affairs Officer",
+        "age": 59,
+        "yearBorn": 1966,
+        "totalPay": 6140978
+      },
+      {
+        "name": "Mr. Hugh F. Johnston",
+        "title": "Senior Executive VP & CFO",
+        "age": 63,
+        "yearBorn": 1962,
+        "totalPay": 7918292
+      },
+      {
+        "name": "Mr. Josh D'Amaro",
+        "title": "CEO & Director",
+        "age": 53,
+        "yearBorn": 1972
+      },
+      {
+        "name": "Mr. Paul Roeder",
+        "title": "Senior Executive VP & Chief Communications Officer"
+      },
+      {
+        "name": "Mr. Robert Alan Iger",
+        "title": "Senior Advisor & Director",
+        "age": 74,
+        "yearBorn": 1951,
+        "totalPay": 10842511
+      },
+      {
+        "name": "Mr. Ronald L. Iden",
+        "title": "Senior VP & Chief Security Officer",
+        "age": 78,
+        "yearBorn": 1947
+      },
+      {
+        "name": "Ms. Dana Walden",
+        "title": "President & Chief Creative Officer",
+        "age": 59,
+        "yearBorn": 1966
+      },
+      {
+        "name": "Ms. Sonia L. Coleman",
+        "title": "Senior EVP & Chief People Officer",
+        "age": 52,
+        "yearBorn": 1973,
+        "totalPay": 3530136
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.61,
-        "industryAvg": 28.44
+        "value": 14.23,
+        "industryAvg": 29.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.71,
-        "industryAvg": 2.64
+        "value": 1.79,
+        "industryAvg": 2.77
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.51,
-        "industryAvg": 3.16
+        "value": 1.58,
+        "industryAvg": 3.32
       },
       {
         "metric": "ROE",
@@ -7821,12 +7882,12 @@
       {
         "metric": "Gross Margin",
         "value": 35.839999999999996,
-        "industryAvg": 33.15
+        "industryAvg": 33.19
       },
       {
         "metric": "EBITDA Margin",
         "value": 20.979999999999997,
-        "industryAvg": 25.85
+        "industryAvg": 25.86
       },
       {
         "metric": "Net Margin",
@@ -7835,10 +7896,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 61.22,
-      "currentPrice": 92.42,
-      "upside": -33.76,
-      "wacc": 13.01,
+      "fairValue": 59.63,
+      "currentPrice": 96.61,
+      "upside": -38.28,
+      "wacc": 13.28,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -4.29,
         "Terminal growth": 3

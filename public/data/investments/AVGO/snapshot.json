@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.13,
-      "ttmPe": 58.61,
-      "marketCap": 1423620034376,
-      "psRatio": 20.85,
-      "pbRatio": 17.82
+      "ttmPe": 61.32,
+      "marketCap": 1489289882310,
+      "psRatio": 21.81,
+      "pbRatio": 18.65
     },
     "profitability": {
       "roe": 9.120000000000001,
@@ -5766,49 +5767,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.14,
-      "costOfEquity": 14.75,
+      "wacc": 14.56,
+      "costOfEquity": 15.160000000000002,
       "costOfDebt": 1.21,
       "taxRate": 10,
-      "beta": 1.2234,
-      "marketCap": 1423620034376
+      "beta": 1.2672,
+      "marketCap": 1489289882310
     },
     "beta": {
-      "beta5y": 1.2234
+      "beta5y": 1.2672
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 177.66,
-        "high": 178.38,
-        "low": 170.46,
-        "close": 171.99,
-        "volume": 32151700
-      },
-      {
-        "date": "2025-03-28",
-        "open": 171.93,
-        "high": 173.3,
-        "low": 166.47,
-        "close": 169.12,
-        "volume": 30391500
-      },
-      {
-        "date": "2025-03-31",
-        "open": 164.49,
-        "high": 167.94,
-        "low": 160.62,
-        "close": 167.43,
-        "volume": 35656400
-      },
-      {
-        "date": "2025-04-01",
-        "open": 166.37,
-        "high": 168.71,
-        "low": 163.42,
-        "close": 168.52,
-        "volume": 20472400
-      },
       {
         "date": "2025-04-02",
         "open": 166.08,
@@ -7791,7 +7760,39 @@
         "high": 307.5,
         "low": 298.87,
         "close": 300.68,
-        "volume": 23546000
+        "volume": 23593900
+      },
+      {
+        "date": "2026-03-30",
+        "open": 300.87,
+        "high": 304.77,
+        "low": 289.96,
+        "close": 293.41,
+        "volume": 28054500
+      },
+      {
+        "date": "2026-03-31",
+        "open": 299.39,
+        "high": 310.31,
+        "low": 296.34,
+        "close": 309.51,
+        "volume": 29289500
+      },
+      {
+        "date": "2026-04-01",
+        "open": 313.37,
+        "high": 315.79,
+        "low": 310.48,
+        "close": 313.49,
+        "volume": 19171000
+      },
+      {
+        "date": "2026-04-02",
+        "open": 304.49,
+        "high": 314.69,
+        "low": 301.75,
+        "close": 314.55,
+        "volume": 14021100
       }
     ],
     "news": [
@@ -7876,26 +7877,80 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Dr. Charlie B. Kawwas Ph.D.",
+        "title": "President of Semiconductor Solutions",
+        "age": 54,
+        "yearBorn": 1971,
+        "totalPay": 2093876
+      },
+      {
+        "name": "Mr. Alan Davidson",
+        "title": "Chief Information Officer"
+      },
+      {
+        "name": "Mr. Frank Ostojic",
+        "title": "Senior VP & GM of ASIC Products Division"
+      },
+      {
+        "name": "Mr. Hock E. Tan",
+        "title": "President, CEO & Executive Director",
+        "age": 73,
+        "yearBorn": 1952,
+        "totalPay": 2926926
+      },
+      {
+        "name": "Mr. Ji Yoo",
+        "title": "Director of Investor Relations"
+      },
+      {
+        "name": "Mr. Mark D. Brazeal J.D.",
+        "title": "Chief Legal & Corporate Affairs Officer",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 1405063
+      },
+      {
+        "name": "Mr. Ram Velaga",
+        "title": "Senior VP & GM of Core Switching Group"
+      },
+      {
+        "name": "Mr. Rich Nelson",
+        "title": "Senior VP & GM of Broadband Video Group"
+      },
+      {
+        "name": "Ms. Jill Turner",
+        "title": "Vice President of Human Resources"
+      },
+      {
+        "name": "Ms. Kirsten M. Spears",
+        "title": "CFO & Chief Accounting Officer",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 1027632
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 58.61,
-        "industryAvg": 32.23
+        "value": 61.32,
+        "industryAvg": 33.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 20.85,
-        "industryAvg": 10.87
+        "value": 21.81,
+        "industryAvg": 11.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.82,
-        "industryAvg": 8.89
+        "value": 18.65,
+        "industryAvg": 9.33
       },
       {
         "metric": "ROE",
         "value": 9.120000000000001,
-        "industryAvg": 9.94
+        "industryAvg": 9.93
       },
       {
         "metric": "ROA",
@@ -7910,19 +7965,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 57.730000000000004,
-        "industryAvg": 57.93000000000001
+        "industryAvg": 57.91
       },
       {
         "metric": "Net Margin",
         "value": 38.06,
-        "industryAvg": 39.68
+        "industryAvg": 39.65
       }
     ],
     "dcf": {
-      "fairValue": 75.84,
-      "currentPrice": 300.68,
-      "upside": -74.78,
-      "wacc": 14.14,
+      "fairValue": 72.98,
+      "currentPrice": 314.55,
+      "upside": -76.8,
+      "wacc": 14.56,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 31.58,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "GS",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 51.3,
-      "ttmPe": 15.65,
-      "marketCap": 236847652371,
-      "psRatio": 4.06,
-      "pbRatio": 1.9
+      "ttmPe": 16.82,
+      "marketCap": 254591535456,
+      "psRatio": 4.37,
+      "pbRatio": 2.04
     },
     "profitability": {
       "roe": 3.52,
@@ -782,7 +783,7 @@
         },
         {
           "Breakdown": "Special Income Charges",
-          "TTM": "-215000000.0",
+          "TTM": "-399000000.0",
           "2025-12-31": "-278000000.0",
           "2025-09-30": "-131000000.0",
           "2025-06-30": "-1000000.0",
@@ -5877,49 +5878,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.01,
-      "costOfEquity": 15.509999999999998,
+      "wacc": 8.23,
+      "costOfEquity": 15.55,
       "costOfDebt": 4.32,
       "taxRate": 21,
-      "beta": 1.3132,
-      "marketCap": 236847652371
+      "beta": 1.3128,
+      "marketCap": 254591535456
     },
     "beta": {
-      "beta5y": 1.3132
+      "beta5y": 1.3128
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 565,
-        "high": 566,
-        "low": 552.55,
-        "close": 558.92,
-        "volume": 2100900
-      },
-      {
-        "date": "2025-03-28",
-        "open": 555.95,
-        "high": 560.5,
-        "low": 537.71,
-        "close": 543.12,
-        "volume": 2773100
-      },
-      {
-        "date": "2025-03-31",
-        "open": 533.82,
-        "high": 547.39,
-        "low": 528.59,
-        "close": 546.29,
-        "volume": 2455100
-      },
-      {
-        "date": "2025-04-01",
-        "open": 543.25,
-        "high": 551.96,
-        "low": 533.24,
-        "close": 548.45,
-        "volume": 1869600
-      },
       {
         "date": "2025-04-02",
         "open": 539.8,
@@ -7902,7 +7871,39 @@
         "high": 817.1,
         "low": 797.78,
         "close": 802.89,
-        "volume": 2104500
+        "volume": 2106800
+      },
+      {
+        "date": "2026-03-30",
+        "open": 811.12,
+        "high": 818.63,
+        "low": 801.88,
+        "close": 807.6,
+        "volume": 1621400
+      },
+      {
+        "date": "2026-03-31",
+        "open": 823.9,
+        "high": 848.5,
+        "low": 810,
+        "close": 845.99,
+        "volume": 2689800
+      },
+      {
+        "date": "2026-04-01",
+        "open": 859.95,
+        "high": 870.2,
+        "low": 850.15,
+        "close": 860.21,
+        "volume": 1803600
+      },
+      {
+        "date": "2026-04-02",
+        "open": 838.39,
+        "high": 867.3,
+        "low": 831,
+        "close": 863.04,
+        "volume": 1717700
       }
     ],
     "news": [
@@ -7931,19 +7932,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5993ebe9-4760-34f1-805f-60ebd30f6f39",
-        "title": "Wall Street Sees Higher China Growth, Less Stimulus on US Truce",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/wall-street-sees-higher-china-032012202.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f1e194fe-0d9c-3a7a-99fd-efdbbb87fce0",
         "title": "Princeton CorpGov Forum Featuring Alternative Investments with NYSE, Goldman Sachs, May 22",
         "publisher": "CorpGov.com",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/princeton-corpgov-forum-featuring-alternative-171528249.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5993ebe9-4760-34f1-805f-60ebd30f6f39",
+        "title": "Wall Street Sees Higher China Growth, Less Stimulus on US Truce",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/wall-street-sees-higher-china-032012202.html",
         "type": "STORY"
       },
       {
@@ -7979,34 +7980,90 @@
         "type": "STORY"
       },
       {
-        "uuid": "82bb8bb2-b015-3d63-ad38-fef7f33a4c72",
-        "title": "Tariff Ruling Threatens a $2 Trillion Fiscal Hole in Trump Plan",
+        "uuid": "8aa45d72-cd98-3a93-9044-f2eac11837af",
+        "title": "Earnings show ‘uncertainty’ is only sure thing for investors",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/tariff-ruling-threatens-2-trillion-113000185.html",
+        "link": "https://finance.yahoo.com/news/earnings-show-uncertainty-only-sure-114412102.html",
         "type": "STORY"
+      }
+    ],
+    "officers": [
+      {
+        "name": "Mr. David M. Solomon",
+        "title": "Chairman & CEO",
+        "age": 63,
+        "yearBorn": 1962,
+        "totalPay": 13603719
+      },
+      {
+        "name": "Mr. Denis P. Coleman III",
+        "title": "Chief Financial Officer",
+        "age": 50,
+        "yearBorn": 1975,
+        "totalPay": 11829259
+      },
+      {
+        "name": "Mr. Francois-Xavier De Mallmann",
+        "title": "Chair of Goldman Sachs EMEA & Chair of Investment Banking."
+      },
+      {
+        "name": "Mr. J. D. Gardner",
+        "title": "Director"
+      },
+      {
+        "name": "Mr. John E. Waldron",
+        "title": "President, COO & Director",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 16957886
+      },
+      {
+        "name": "Mr. John F. W. Rogers",
+        "title": "Executive VP, Lead Director & Secretary to the Board of Directors",
+        "age": 68,
+        "yearBorn": 1957,
+        "totalPay": 8431660
+      },
+      {
+        "name": "Mr. Marco Argenti",
+        "title": "Partner & Chief Information Officer"
+      },
+      {
+        "name": "Mr. Michael J. Richman J.D.",
+        "title": "Chief Compliance Officer"
+      },
+      {
+        "name": "Ms. Jacqueline Dupree Arthur",
+        "title": "Global Head of Human Capital Management & Corporate and Workplace Solutions"
+      },
+      {
+        "name": "Ms. Sheara J. Fredman",
+        "title": "Controller & Chief Accounting Officer",
+        "age": 49,
+        "yearBorn": 1976
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.65,
-        "industryAvg": 21.85
+        "value": 16.82,
+        "industryAvg": 22.93
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.06,
-        "industryAvg": 0.83
+        "value": 4.37,
+        "industryAvg": 0.87
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.9,
-        "industryAvg": 0.58
+        "value": 2.04,
+        "industryAvg": 0.6
       },
       {
         "metric": "ROE",
         "value": 3.52,
-        "industryAvg": 3.2800000000000002
+        "industryAvg": 3.2300000000000004
       },
       {
         "metric": "ROA",
@@ -8015,23 +8072,23 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 3.55
+        "industryAvg": 3.8
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": -0.18
+        "industryAvg": 0.02
       },
       {
         "metric": "Net Margin",
         "value": 32.59,
-        "industryAvg": 17.57
+        "industryAvg": 17.28
       }
     ],
     "dcf": {
-      "fairValue": 1359.87,
-      "currentPrice": 802.89,
-      "upside": 69.37,
-      "wacc": 8.01,
+      "fairValue": 1302.05,
+      "currentPrice": 863.04,
+      "upside": 50.87,
+      "wacc": 8.23,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 17.24,
         "Terminal growth": 3

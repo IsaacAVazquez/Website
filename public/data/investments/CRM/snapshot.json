@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": false,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.81,
-      "ttmPe": 22.96,
-      "marketCap": 165503130000,
-      "psRatio": 3.99,
-      "pbRatio": 2.8
+      "ttmPe": 23.97,
+      "marketCap": 172767140000,
+      "psRatio": 4.16,
+      "pbRatio": 2.92
     },
     "profitability": {
       "roe": 3.26,
@@ -5132,41 +5133,9 @@
       ]
     },
     "beta": {
-      "beta5y": 1.2667
+      "beta5y": 1.2566
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 280.54,
-        "high": 280.9,
-        "low": 276.01,
-        "close": 277.81,
-        "volume": 3757200
-      },
-      {
-        "date": "2025-03-28",
-        "open": 276.71,
-        "high": 277.21,
-        "low": 269.19,
-        "close": 269.97,
-        "volume": 4973400
-      },
-      {
-        "date": "2025-03-31",
-        "open": 264.55,
-        "high": 268.45,
-        "low": 259.19,
-        "close": 268.36,
-        "volume": 7585800
-      },
-      {
-        "date": "2025-04-01",
-        "open": 268.86,
-        "high": 270.82,
-        "low": 265.82,
-        "close": 270.2,
-        "volume": 4598200
-      },
       {
         "date": "2025-04-02",
         "open": 265.96,
@@ -7149,7 +7118,39 @@
         "high": 184.11,
         "low": 178.82,
         "close": 179.31,
-        "volume": 9894100
+        "volume": 9902000
+      },
+      {
+        "date": "2026-03-30",
+        "open": 180.1,
+        "high": 186.39,
+        "low": 179.58,
+        "close": 185.03,
+        "volume": 11617700
+      },
+      {
+        "date": "2026-03-31",
+        "open": 184.9,
+        "high": 188.5,
+        "low": 182.31,
+        "close": 186.67,
+        "volume": 11041400
+      },
+      {
+        "date": "2026-04-01",
+        "open": 186.85,
+        "high": 188.98,
+        "low": 183.01,
+        "close": 186.24,
+        "volume": 11677700
+      },
+      {
+        "date": "2026-04-02",
+        "open": 185.3,
+        "high": 187.58,
+        "low": 181.58,
+        "close": 187.18,
+        "volume": 11635500
       }
     ],
     "news": [
@@ -7186,19 +7187,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
         "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
         "publisher": "TipRanks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
         "type": "STORY"
       },
       {
@@ -7218,62 +7219,127 @@
         "type": "STORY"
       },
       {
-        "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
-        "title": "3 S&P 500 Stocks Facing Headwinds",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
         "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
+        "title": "3 S&P 500 Stocks Facing Headwinds",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
+        "type": "STORY"
+      }
+    ],
+    "officers": [
+      {
+        "name": "Mr. David Schmaier",
+        "title": "President and Chief Strategy Officer",
+        "age": 61,
+        "yearBorn": 1964
+      },
+      {
+        "name": "Mr. Marc R. Benioff",
+        "title": "Co-Founder, Chairman & CEO",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 9646000
+      },
+      {
+        "name": "Mr. Miguel Milano",
+        "title": "President & Chief Revenue Officer",
+        "age": 56,
+        "yearBorn": 1969
+      },
+      {
+        "name": "Mr. Parker Harris",
+        "title": "Co-Founder, CTO of Slack & Director",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 2250000
+      },
+      {
+        "name": "Mr. Patrick Stokes",
+        "title": "President & Chief Marketing Officer"
+      },
+      {
+        "name": "Mr. Sabastian V. Niles",
+        "title": "President, Chief Legal Officer & Corporate Secretary",
+        "age": 45,
+        "yearBorn": 1980,
+        "totalPay": 3918008
+      },
+      {
+        "name": "Mr. Srinivas Tallapragada",
+        "title": "President, Chief Engineering & Customer Success Officer",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 2512428
+      },
+      {
+        "name": "Mr. Stephen D. Fisher",
+        "title": "President, CPO, Executive VP and GM of Next Gen CRM & Unified Data",
+        "age": 60,
+        "yearBorn": 1965
+      },
+      {
+        "name": "Mr. Sundeep G. Reddy",
+        "title": "Executive VP & Chief Accounting Officer",
+        "age": 51,
+        "yearBorn": 1974
+      },
+      {
+        "name": "Ms. Robin L. Washington CPA",
+        "title": "President, Chief Operating & Financial Officer and Director",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 200000
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.96,
-        "industryAvg": 37.73
+        "value": 23.97,
+        "industryAvg": 39.2
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.99,
-        "industryAvg": 4.23
+        "value": 4.16,
+        "industryAvg": 4.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.8,
-        "industryAvg": 2.65
+        "value": 2.92,
+        "industryAvg": 2.74
       },
       {
         "metric": "ROE",
         "value": 3.26,
-        "industryAvg": -6.49
+        "industryAvg": -6.510000000000001
       },
       {
         "metric": "ROA",
         "value": 1.87,
-        "industryAvg": -3.6799999999999997
+        "industryAvg": -3.6900000000000004
       },
       {
         "metric": "Gross Margin",
         "value": 77.61,
-        "industryAvg": 63.81
+        "industryAvg": 63.05
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.24,
-        "industryAvg": -42.13
+        "industryAvg": -41.91
       },
       {
         "metric": "Net Margin",
         "value": 17.349999999999998,
-        "industryAvg": -31.929999999999996
+        "industryAvg": -31.919999999999998
       }
     ]
   }

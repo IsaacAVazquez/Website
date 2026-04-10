@@ -1,10 +1,10 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.64,
-      "ttmPe": 76.51,
-      "marketCap": 329326677492,
-      "psRatio": 9.51,
-      "pbRatio": 5.23
+      "ttmPe": 82.39,
+      "marketCap": 354598689000,
+      "psRatio": 10.24,
+      "pbRatio": 5.63
     },
     "profitability": {
       "roe": 2.44,
@@ -5632,49 +5633,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.32,
-      "costOfEquity": 20.549999999999997,
+      "wacc": 21.11,
+      "costOfEquity": 21.33,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 22,
-      "beta": 1.9106,
-      "marketCap": 329326677492
+      "beta": 1.9882,
+      "marketCap": 354598689000
     },
     "beta": {
-      "beta5y": 1.9106
+      "beta5y": 1.9882
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 106.11,
-        "high": 107.62,
-        "low": 105.55,
-        "close": 106.65,
-        "volume": 32773700
-      },
-      {
-        "date": "2025-03-28",
-        "open": 105.53,
-        "high": 106.51,
-        "low": 102.48,
-        "close": 103.22,
-        "volume": 31069100
-      },
-      {
-        "date": "2025-03-31",
-        "open": 100.24,
-        "high": 102.82,
-        "low": 98.8,
-        "close": 102.74,
-        "volume": 30865300
-      },
-      {
-        "date": "2025-04-01",
-        "open": 102.16,
-        "high": 102.83,
-        "low": 100.93,
-        "close": 102.78,
-        "volume": 23523200
-      },
       {
         "date": "2025-04-02",
         "open": 101.52,
@@ -7657,7 +7626,39 @@
         "high": 203.27,
         "low": 197.69,
         "close": 201.99,
-        "volume": 29111300
+        "volume": 29206600
+      },
+      {
+        "date": "2026-03-30",
+        "open": 204.95,
+        "high": 208.43,
+        "low": 192.87,
+        "close": 196.04,
+        "volume": 41053300
+      },
+      {
+        "date": "2026-03-31",
+        "open": 198.05,
+        "high": 204,
+        "low": 196.41,
+        "close": 203.43,
+        "volume": 42318700
+      },
+      {
+        "date": "2026-04-01",
+        "open": 207.59,
+        "high": 213.83,
+        "low": 205.84,
+        "close": 210.21,
+        "volume": 40835800
+      },
+      {
+        "date": "2026-04-02",
+        "open": 204.05,
+        "high": 217.78,
+        "low": 200.62,
+        "close": 217.5,
+        "volume": 38463500
       }
     ],
     "news": [
@@ -7742,26 +7743,82 @@
         "type": "VIDEO"
       }
     ],
+    "officers": [
+      {
+        "name": "Dr. Lisa T. Su Ph.D.",
+        "title": "Chair, President & CEO",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 4540876
+      },
+      {
+        "name": "Mr. Forrest E. Norrod",
+        "title": "Executive VP & GM of the Data Center Solutions Business Group",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 1939077
+      },
+      {
+        "name": "Mr. Hasmukh Ranjan",
+        "title": "Senior VP & Chief Information Officer"
+      },
+      {
+        "name": "Mr. Keivan Keshvari",
+        "title": "Senior Vice President of Global Operations & Quality"
+      },
+      {
+        "name": "Mr. Mark D. Papermaster",
+        "title": "CTO and Executive VP of Technology & Engineering",
+        "age": 63,
+        "yearBorn": 1962,
+        "totalPay": 2165455
+      },
+      {
+        "name": "Mr. Mathew Hein",
+        "title": "Chief Strategy Officer & Senior VP of Corporate Development"
+      },
+      {
+        "name": "Mr. Matthew D. Ramsay",
+        "title": "Vice President of Financial Strategy & Investor Relations"
+      },
+      {
+        "name": "Ms. Emily Ellis",
+        "title": "Corporate VP, Chief Accounting Officer & Principal Accounting Officer",
+        "age": 43,
+        "yearBorn": 1982
+      },
+      {
+        "name": "Ms. Jean X. Hu Ph.D.",
+        "title": "Executive VP, CFO & Treasurer",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 1976642
+      },
+      {
+        "name": "Ms. Ruth Cotter",
+        "title": "Senior VP & Chief Administrative Officer"
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 76.51,
-        "industryAvg": 32.23
+        "value": 82.39,
+        "industryAvg": 33.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.51,
-        "industryAvg": 10.87
+        "value": 10.24,
+        "industryAvg": 11.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.23,
-        "industryAvg": 8.89
+        "value": 5.63,
+        "industryAvg": 9.33
       },
       {
         "metric": "ROE",
         "value": 2.44,
-        "industryAvg": 9.94
+        "industryAvg": 9.93
       },
       {
         "metric": "ROA",
@@ -7776,19 +7833,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 27.860000000000003,
-        "industryAvg": 57.93000000000001
+        "industryAvg": 57.91
       },
       {
         "metric": "Net Margin",
         "value": 14.71,
-        "industryAvg": 39.68
+        "industryAvg": 39.65
       }
     ],
     "dcf": {
-      "fairValue": 31.95,
-      "currentPrice": 201.99,
-      "upside": -84.18,
-      "wacc": 20.32,
+      "fairValue": 30.45,
+      "currentPrice": 217.5,
+      "upside": -86,
+      "wacc": 21.11,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

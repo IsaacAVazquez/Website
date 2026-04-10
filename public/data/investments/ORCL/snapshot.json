@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.57,
-      "ttmPe": 25.07,
-      "marketCap": 401668584360,
-      "psRatio": 6.27,
-      "pbRatio": 10.43
+      "ttmPe": 26.28,
+      "marketCap": 420995613480,
+      "psRatio": 6.57,
+      "pbRatio": 10.94
     },
     "profitability": {
       "roe": 10.81,
@@ -5473,49 +5474,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.91,
-      "costOfEquity": 17.580000000000002,
+      "wacc": 13.18,
+      "costOfEquity": 17.740000000000002,
       "costOfDebt": 0.77,
       "taxRate": 16,
-      "beta": 1.559,
-      "marketCap": 401668584360
+      "beta": 1.5693,
+      "marketCap": 420995613480
     },
     "beta": {
-      "beta5y": 1.559
+      "beta5y": 1.5693
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 145.85,
-        "high": 147.04,
-        "low": 144.92,
-        "close": 145.78,
-        "volume": 9148300
-      },
-      {
-        "date": "2025-03-28",
-        "open": 143.78,
-        "high": 145.65,
-        "low": 139.11,
-        "close": 140.87,
-        "volume": 13144500
-      },
-      {
-        "date": "2025-03-31",
-        "open": 138.64,
-        "high": 140.59,
-        "low": 136.76,
-        "close": 139.81,
-        "volume": 15509900
-      },
-      {
-        "date": "2025-04-01",
-        "open": 139.76,
-        "high": 143.25,
-        "low": 138.76,
-        "close": 141.94,
-        "volume": 9518500
-      },
       {
         "date": "2025-04-02",
         "open": 139.86,
@@ -7498,7 +7467,39 @@
         "high": 141.69,
         "low": 138.3,
         "close": 139.66,
-        "volume": 17879600
+        "volume": 17929600
+      },
+      {
+        "date": "2026-03-30",
+        "open": 140.04,
+        "high": 141.2,
+        "low": 136.95,
+        "close": 138.8,
+        "volume": 20125700
+      },
+      {
+        "date": "2026-03-31",
+        "open": 140.3,
+        "high": 147.4,
+        "low": 139.85,
+        "close": 147.11,
+        "volume": 24492000
+      },
+      {
+        "date": "2026-04-01",
+        "open": 149.09,
+        "high": 149.65,
+        "low": 144.67,
+        "close": 145.23,
+        "volume": 20495900
+      },
+      {
+        "date": "2026-04-02",
+        "open": 142.78,
+        "high": 146.44,
+        "low": 140.3,
+        "close": 146.38,
+        "volume": 14381900
       }
     ],
     "news": [
@@ -7551,14 +7552,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
-        "title": "Why Oracle Stock Was on Fire Today",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2fa586c6-fea0-3ed3-9dbe-a55dc20b7137",
         "title": "Olo jumps after Bloomberg says company exploring possible sale",
         "publisher": "TipRanks",
@@ -7567,11 +7560,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
-        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
+        "title": "Why Oracle Stock Was on Fire Today",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html",
         "type": "STORY"
       },
       {
@@ -7581,55 +7574,126 @@
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      }
+    ],
+    "officers": [
+      {
+        "name": "Mr. Clayton Magouyrk",
+        "title": "Chief Executive Officer & Director",
+        "age": 38,
+        "yearBorn": 1987
+      },
+      {
+        "name": "Mr. Douglas A. Kehring",
+        "title": "Executive VP & Principal Financial Officer",
+        "age": 52,
+        "yearBorn": 1973
+      },
+      {
+        "name": "Mr. Jeffrey O. Henley",
+        "title": "Executive Vice Chairman of the Board",
+        "age": 80,
+        "yearBorn": 1945,
+        "totalPay": 658717
+      },
+      {
+        "name": "Mr. Lawrence J. Ellison",
+        "title": "Co-Founder, Chairman & CTO",
+        "age": 81,
+        "yearBorn": 1944,
+        "totalPay": 5643948
+      },
+      {
+        "name": "Mr. Mark Hura",
+        "title": "President of Global Field Operations"
+      },
+      {
+        "name": "Mr. Michael D. Sicilia",
+        "title": "Chief Executive Officer & Director",
+        "age": 53,
+        "yearBorn": 1972
+      },
+      {
+        "name": "Mr. Stuart A. Levey",
+        "title": "Executive VP & Chief Legal Officer",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 990091
+      },
+      {
+        "name": "Ms. Jae Evans",
+        "title": "Global Chief Information Officer & Executive VP"
+      },
+      {
+        "name": "Ms. Maria Smith",
+        "title": "Executive VP & Chief Accounting Officer",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 639362
+      },
+      {
+        "name": "Ms. Safra Ada Catz",
+        "title": "Executive Vice Chair",
+        "age": 63,
+        "yearBorn": 1962,
+        "totalPay": 1113417
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.07,
-        "industryAvg": 28.96
+        "value": 26.28,
+        "industryAvg": 30.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.27,
-        "industryAvg": 5.09
+        "value": 6.57,
+        "industryAvg": 5.32
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.43,
-        "industryAvg": 6.8
+        "value": 10.94,
+        "industryAvg": 7.12
       },
       {
         "metric": "ROE",
         "value": 10.81,
-        "industryAvg": 7.48
+        "industryAvg": 7.449999999999999
       },
       {
         "metric": "ROA",
         "value": 1.6400000000000001,
-        "industryAvg": 3.1300000000000003
+        "industryAvg": 3.1199999999999997
       },
       {
         "metric": "Gross Margin",
         "value": 64.56,
-        "industryAvg": 45.95
+        "industryAvg": 46.01
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.48,
-        "industryAvg": 34.46
+        "industryAvg": 34.64
       },
       {
         "metric": "Net Margin",
         "value": 21.52,
-        "industryAvg": 20.03
+        "industryAvg": 19.98
       }
     ],
     "dcf": {
-      "fairValue": 83.18,
-      "currentPrice": 139.66,
-      "upside": -40.44,
-      "wacc": 12.91,
+      "fairValue": 80.92,
+      "currentPrice": 146.38,
+      "upside": -44.72,
+      "wacc": 13.18,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 24.51,
         "Terminal growth": 3

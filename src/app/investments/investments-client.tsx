@@ -110,52 +110,18 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
     >
       <div className={shellClassName}>
         <motion.div
-          className="mb-8 rounded-[30px] border border-[color-mix(in_srgb,var(--home-haze)_12%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_7%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_55%,color-mix(in_srgb,var(--color-success)_7%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)] p-6 shadow-[var(--shadow-sm)] sm:p-8"
+          className="mb-6"
           variants={variants.fadeInVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_auto] xl:items-end">
-            <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--home-haze)]">
-                Equity Research Workspace
-              </p>
-              <h1 className="mt-3 text-3xl font-bold tracking-tight text-[var(--home-ink)] sm:text-4xl">
-                Investment Research Platform
-              </h1>
-              <p className="mt-3 max-w-[68ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[0.95rem]">
-                Explore curated company snapshots, valuation panels, price history,
-                and browser-saved portfolio tracking in one stable research workspace.
-              </p>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-3 xl:min-w-[520px]">
-              <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Workspace
-                </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
-                  Snapshot-backed research
-                </p>
-              </div>
-              <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Coverage
-                </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
-                  Curated symbol set
-                </p>
-              </div>
-              <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Focus
-                </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--home-ink)]">
-                  Reliable fallbacks
-                </p>
-              </div>
-            </div>
-          </div>
+          <p className="home-kicker">Equity Research Workspace</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-[var(--home-ink)] sm:text-4xl">
+            Investment Research
+          </h1>
+          <p className="mt-2 max-w-[64ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+            Curated company snapshots, valuation panels, price history, and browser-saved portfolio tracking.
+          </p>
         </motion.div>
 
         <div

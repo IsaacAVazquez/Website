@@ -3,14 +3,16 @@
 import React from "react";
 import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
-import { FundamentalsPanel } from "./FundamentalsPanel";
-import { NewsPanel } from "./NewsPanel";
+import { IconExternalLink } from "@tabler/icons-react";
 import type {
   CompanyInfo,
   DcfData,
   GrowthData,
+  Margin,
   MarginsData,
   NewsData,
+  NewsItem,
+  OfficersData,
   Profitability,
 } from "@/types/investment";
 
@@ -19,15 +21,52 @@ interface Props {
   showNews?: boolean;
 }
 
+function formatDate(raw: string | undefined): string {
+  if (!raw) return "";
+  const d = new Date(raw);
+  if (isNaN(d.getTime())) return raw;
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
+function NewsCard({ item }: { item: NewsItem }) {
+  return (
+    <div className="py-3 border-b border-[var(--home-rule)] last:border-0">
+      <div className="min-w-0">
+        {item.link ? (
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-start gap-1 text-sm font-medium text-[var(--home-ink)] hover:text-[var(--home-haze)] transition line-clamp-2"
+          >
+            <span>{item.title}</span>
+            <IconExternalLink size={12} className="mt-1 shrink-0 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]" />
+          </a>
+        ) : (
+          <p className="text-sm font-medium leading-6 text-[var(--home-ink)] line-clamp-2">{item.title}</p>
+        )}
+        <div className="mt-1 flex items-center gap-2">
+          {item.publisher ? (
+            <span className="text-xs text-[var(--home-ink-muted)]">{item.publisher}</span>
+          ) : null}
+          {item.reportDate ? (
+            <span className="text-xs text-[var(--home-ink-muted)]">{formatDate(item.reportDate)}</span>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function formatPercent(value: number | undefined, signed = false): string {
   if (value === undefined || value === null || Number.isNaN(value)) return "—";
   const prefix = signed && value > 0 ? "+" : "";
   return `${prefix}${value.toFixed(1)}%`;
 }
 
-function formatCompactPercent(value: number | undefined): string {
-  if (value === undefined || value === null || Number.isNaN(value)) return "—";
-  return `${value.toFixed(0)}%`;
+function formatPay(value: number | undefined): string {
+  if (value === undefined || value === null || Number.isNaN(value)) return "";
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", notation: "compact", maximumFractionDigits: 1 }).format(value);
 }
 
 function buildSignals({
@@ -38,7 +77,7 @@ function buildSignals({
 }: {
   dcf?: DcfData;
   profitability?: Profitability;
-  margins?: MarginsData extends Array<infer U> ? U : never;
+  margins?: Margin;
   growth?: GrowthData;
 }) {
   const signals: { label: string; tone: "positive" | "neutral" | "negative"; body: string }[] = [];
@@ -98,183 +137,136 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
   const { data: profitability } = useStockData<Profitability>(symbol, "profitability");
   const { data: marginsRaw } = useStockData<MarginsData>(symbol, "margins");
   const { data: growth } = useStockData<GrowthData>(symbol, "growth");
+  const { data: officersRaw } = useStockData<OfficersData>(symbol, "officers");
   const { data: newsRaw } = useStockData<NewsData>(showNews ? symbol : null, "news");
 
   const margins = Array.isArray(marginsRaw) ? marginsRaw[marginsRaw.length - 1] : undefined;
-  const newsItems = showNews && Array.isArray(newsRaw) ? newsRaw : [];
-  const leadHeadline = newsItems[0];
-  const signals = buildSignals({ dcf, profitability, margins, growth });
+  const newsItems = React.useMemo(() => {
+    if (!showNews || !Array.isArray(newsRaw)) return [];
+    return [...newsRaw].sort((a, b) => {
+      const ta = a.reportDate ? new Date(a.reportDate).getTime() : 0;
+      const tb = b.reportDate ? new Date(b.reportDate).getTime() : 0;
+      return tb - ta;
+    });
+  }, [showNews, newsRaw]);
+  const officers = Array.isArray(officersRaw) ? officersRaw.slice(0, 8) : [];
+  const signals = buildSignals({ dcf: dcf ?? undefined, profitability: profitability ?? undefined, margins, growth: growth ?? undefined });
 
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1.35fr)_minmax(340px,0.95fr)]">
+      {/* Company bio */}
+      <WarmCard
+        padding="none"
+        className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] shadow-[var(--shadow-sm)]"
+      >
+        <div className="p-5 sm:p-6">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            About
+          </p>
+          <p className="mt-3 text-sm leading-7 text-[var(--home-ink-muted)]">
+            {info?.longBusinessSummary ??
+              "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics are still available from the research snapshot."}
+          </p>
+          {info?.website ? (
+            <a
+              href={info.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-[var(--home-haze)] hover:underline"
+            >
+              {info.website.replace(/^https?:\/\//, "")}
+            </a>
+          ) : null}
+        </div>
+      </WarmCard>
+
+      {/* Officers */}
+      {officers.length > 0 ? (
         <WarmCard
           padding="none"
-          className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] shadow-[var(--shadow-sm)]"
+          className="rounded-[30px] shadow-[var(--shadow-sm)]"
         >
-          <div className="min-w-0 p-5 sm:p-6 lg:p-7">
+          <div className="p-5 sm:p-6">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-              Company Snapshot
+              Leadership
             </p>
-            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-              Start Here
-            </h3>
-            <p className="mt-3 max-w-[92ch] text-sm leading-7 text-[var(--home-ink-muted)]">
-              {info?.longBusinessSummary ??
-                "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics below are still available from the research snapshot."}
-            </p>
-
-            <div className="mt-5 grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Business Lens
-                </p>
-                <div className="mt-3 space-y-2 text-sm text-[var(--home-ink-muted)]">
-                  <div className="flex items-center justify-between gap-4">
-                    <span>Sector</span>
-                    <span className="font-medium text-[var(--home-ink)]">{info?.sector ?? "—"}</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>Industry</span>
-                    <span className="font-medium text-[var(--home-ink)]">{info?.industry ?? "—"}</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>Employees</span>
-                    <span className="font-medium text-[var(--home-ink)]">
-                      {info?.fullTimeEmployees?.toLocaleString("en-US") ?? "—"}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>Country</span>
-                    <span className="font-medium text-[var(--home-ink)]">{info?.country ?? "—"}</span>
-                  </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+              {officers.map((officer, i) => (
+                <div
+                  key={i}
+                  className="rounded-[20px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
+                >
+                  <p className="text-sm font-semibold leading-tight text-[var(--home-ink)]">
+                    {officer.name ?? "—"}
+                  </p>
+                  {officer.title ? (
+                    <p className="mt-0.5 text-xs leading-snug text-[var(--home-ink-muted)]">
+                      {officer.title}
+                    </p>
+                  ) : null}
+                  {officer.totalPay ? (
+                    <p className="mt-1.5 text-[11px] font-medium text-[var(--home-haze)]">
+                      {formatPay(officer.totalPay)}
+                    </p>
+                  ) : null}
                 </div>
-              </div>
-
-              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Operating Read
-                </p>
-                <div className="mt-3 space-y-2 text-sm text-[var(--home-ink-muted)]">
-                  <div className="flex items-center justify-between gap-4">
-                    <span>ROIC</span>
-                    <span className="font-medium text-[var(--home-ink)]">{formatPercent(profitability?.roic)}</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>ROE</span>
-                    <span className="font-medium text-[var(--home-ink)]">{formatPercent(profitability?.roe)}</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>Net Margin</span>
-                    <span className="font-medium text-[var(--home-ink)]">{formatPercent(margins?.netMargin)}</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>FCF Margin</span>
-                    <span className="font-medium text-[var(--home-ink)]">{formatPercent(margins?.fcfMargin)}</span>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </WarmCard>
+      ) : null}
 
+      {/* Signals + News */}
+      <div className={`grid gap-5 ${newsItems.length > 0 ? "lg:grid-cols-2" : ""}`}>
+        {/* Signals */}
         <WarmCard
           padding="sm"
-          className="rounded-[30px] border-[color-mix(in_srgb,var(--color-success)_18%,var(--home-rule))] shadow-[var(--shadow-sm)] xl:self-start"
+          className="rounded-[30px] border-[color-mix(in_srgb,var(--color-success)_18%,var(--home-rule))] shadow-[var(--shadow-sm)]"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-            Valuation Read
+            Signals
           </p>
-          <div className="mt-4">
-            <p className="text-3xl font-semibold text-[var(--home-ink)]">
-              {dcf?.recommendation ?? "Model unavailable"}
-            </p>
-            <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
-              {dcf?.upside !== undefined
-                ? `The model currently points to ${formatPercent(dcf.upside, true)} relative to the latest market price.`
-                : "DCF output is not available yet for this symbol."}
-            </p>
-          </div>
-
-          <div className="mt-6 grid grid-cols-2 gap-3">
-            <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                Fair Value
-              </p>
-              <p className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
-                {dcf?.fairValue !== undefined ? `$${dcf.fairValue.toFixed(2)}` : "—"}
-              </p>
-            </div>
-            <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                WACC
-              </p>
-              <p className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
-                {formatCompactPercent(dcf?.wacc)}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-6 border-t border-[var(--home-rule)] pt-6">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-              Signals
-            </p>
-            <div className="mt-4 space-y-3">
-              {signals.length > 0 ? (
-                signals.map((signal) => (
-                  <div
-                    key={signal.label}
-                    className={`rounded-[24px] border px-4 py-3 ${toneClasses(signal.tone)}`}
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
-                    <p className="mt-2 text-sm leading-6">{signal.body}</p>
-                  </div>
-                ))
-              ) : (
-                <div className="rounded-[24px] border border-[var(--home-rule)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
-                  Research signals will appear once valuation and operating data are available.
+          <div className="mt-4 space-y-3">
+            {signals.length > 0 ? (
+              signals.map((signal) => (
+                <div
+                  key={signal.label}
+                  className={`rounded-[24px] border px-4 py-3 ${toneClasses(signal.tone)}`}
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
+                  <p className="mt-2 text-sm leading-6">{signal.body}</p>
                 </div>
-              )}
-            </div>
-
-            {showNews ? (
-              <div className="mt-4 rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Latest Headline
-                </p>
-                <p className="mt-3 line-clamp-4 text-sm font-medium leading-6 text-[var(--home-ink)]">
-                  {leadHeadline?.title ?? "No recent headline in the research dataset."}
-                </p>
-                {leadHeadline?.publisher ? (
-                  <p className="mt-2 text-xs text-[var(--home-ink-muted)]">
-                    {leadHeadline.publisher}
-                  </p>
-                ) : null}
-              </div>
+              ))
             ) : (
-              <div className="mt-4 rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Snapshot Mode
-                </p>
-                <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">
-                  This view is falling back to the available company, valuation,
-                  and operating data while the curated headline feed is unavailable.
-                </p>
+              <div className="rounded-[24px] border border-[var(--home-rule)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+                Signals will appear once valuation and operating data are available.
               </div>
             )}
           </div>
         </WarmCard>
-      </div>
 
-      <div
-        className={`grid grid-cols-1 gap-5 ${
-          showNews
-            ? "2xl:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.9fr)]"
-            : ""
-        }`}
-      >
-        <FundamentalsPanel symbol={symbol} />
-        {showNews ? <NewsPanel symbol={symbol} /> : null}
+        {/* News */}
+        {newsItems.length > 0 ? (
+          <WarmCard padding="sm" className="rounded-[30px] shadow-[var(--shadow-sm)]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              Latest News
+            </p>
+            <div className="mt-3 max-h-[400px] overflow-y-auto pr-1">
+              {newsItems.map((item, i) => (
+                <NewsCard key={item.uuid ?? i} item={item} />
+              ))}
+            </div>
+          </WarmCard>
+        ) : !showNews ? (
+          <WarmCard padding="sm" className="rounded-[30px] shadow-[var(--shadow-sm)]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+              Snapshot Mode
+            </p>
+            <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">
+              Valuation, quality, and operating data are available while the curated headline feed is unavailable.
+            </p>
+          </WarmCard>
+        ) : null}
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.9,
-      "ttmPe": 34.19,
-      "marketCap": 4070736000000,
-      "psRatio": 18.85,
-      "pbRatio": 25.88
+      "ttmPe": 36.2,
+      "marketCap": 4310577000000,
+      "psRatio": 19.96,
+      "pbRatio": 27.4
     },
     "profitability": {
       "roe": 31.11,
@@ -5510,49 +5511,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.71,
-      "costOfEquity": 23.77,
+      "wacc": 24.2,
+      "costOfEquity": 24.26,
       "costOfDebt": 0.66,
       "taxRate": 15,
-      "beta": 2.2934,
-      "marketCap": 4070736000000
+      "beta": 2.331,
+      "marketCap": 4310577000000
     },
     "beta": {
-      "beta5y": 2.2934
+      "beta5y": 2.331
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 111.35,
-        "high": 114.45,
-        "low": 110.66,
-        "close": 111.43,
-        "volume": 236902100
-      },
-      {
-        "date": "2025-03-28",
-        "open": 111.49,
-        "high": 112.87,
-        "low": 109.07,
-        "close": 109.67,
-        "volume": 229872500
-      },
-      {
-        "date": "2025-03-31",
-        "open": 105.13,
-        "high": 110.96,
-        "low": 103.65,
-        "close": 108.38,
-        "volume": 299212700
-      },
-      {
-        "date": "2025-04-01",
-        "open": 108.52,
-        "high": 110.2,
-        "low": 106.47,
-        "close": 110.15,
-        "volume": 222614000
-      },
       {
         "date": "2025-04-02",
         "open": 107.29,
@@ -7535,7 +7504,39 @@
         "high": 170.97,
         "low": 167.01,
         "close": 167.52,
-        "volume": 195294300
+        "volume": 196212700
+      },
+      {
+        "date": "2026-03-30",
+        "open": 168.78,
+        "high": 169.45,
+        "low": 164.27,
+        "close": 165.17,
+        "volume": 185627000
+      },
+      {
+        "date": "2026-03-31",
+        "open": 166.97,
+        "high": 174.62,
+        "low": 166.96,
+        "close": 174.4,
+        "volume": 226181300
+      },
+      {
+        "date": "2026-04-01",
+        "open": 176,
+        "high": 177.37,
+        "low": 174.75,
+        "close": 175.75,
+        "volume": 168132000
+      },
+      {
+        "date": "2026-04-02",
+        "open": 172.18,
+        "high": 177.49,
+        "low": 171.37,
+        "close": 177.39,
+        "volume": 143143200
       }
     ],
     "news": [
@@ -7604,42 +7605,104 @@
         "type": "STORY"
       },
       {
-        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
-        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
         "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
+        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
+        "type": "STORY"
+      }
+    ],
+    "officers": [
+      {
+        "name": "Mr. Ajay K. Puri",
+        "title": "Executive Vice President of Worldwide Field Operations",
+        "age": 70,
+        "yearBorn": 1955,
+        "totalPay": 2313851
+      },
+      {
+        "name": "Mr. Chris A. Malachowsky",
+        "title": "Co-Founder",
+        "totalPay": 320000
+      },
+      {
+        "name": "Mr. Donald F. Robertson Jr.",
+        "title": "VP & Chief Accounting Officer",
+        "age": 56,
+        "yearBorn": 1969
+      },
+      {
+        "name": "Mr. Jen-Hsun Huang",
+        "title": "Co-Founder, CEO & Director",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 11054945
+      },
+      {
+        "name": "Mr. Timothy S. Teter J.D.",
+        "title": "Executive VP, General Counsel & Secretary",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 1362989
+      },
+      {
+        "name": "Mr. Toshiya Hari",
+        "title": "Vice President of Investor Relations & Strategic Finance"
+      },
+      {
+        "name": "Ms. Colette M. Kress",
+        "title": "Executive VP & CFO",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 1512641
+      },
+      {
+        "name": "Ms. Debora Shoquist",
+        "title": "Executive Vice President of Operations",
+        "age": 70,
+        "yearBorn": 1955,
+        "totalPay": 1379071
+      },
+      {
+        "name": "Ms. Mylene Mangalindan",
+        "title": "Vice President of Corporate Communications"
+      },
+      {
+        "name": "Prof. William J. Dally Ph.D.",
+        "title": "Chief Scientist & Senior VP of Research",
+        "age": 64,
+        "yearBorn": 1961
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.19,
-        "industryAvg": 32.23
+        "value": 36.2,
+        "industryAvg": 33.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.85,
-        "industryAvg": 10.87
+        "value": 19.96,
+        "industryAvg": 11.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.88,
-        "industryAvg": 8.89
+        "value": 27.4,
+        "industryAvg": 9.33
       },
       {
         "metric": "ROE",
         "value": 31.11,
-        "industryAvg": 9.94
+        "industryAvg": 9.93
       },
       {
         "metric": "ROA",
@@ -7654,19 +7717,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 75.28,
-        "industryAvg": 57.93000000000001
+        "industryAvg": 57.91
       },
       {
         "metric": "Net Margin",
         "value": 63.06,
-        "industryAvg": 39.68
+        "industryAvg": 39.65
       }
     ],
     "dcf": {
-      "fairValue": 48.85,
-      "currentPrice": 167.52,
-      "upside": -70.84,
-      "wacc": 23.71,
+      "fairValue": 47.62,
+      "currentPrice": 177.39,
+      "upside": -73.16,
+      "wacc": 24.2,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

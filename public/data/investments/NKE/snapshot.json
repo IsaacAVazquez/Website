@@ -1,10 +1,10 @@
 {
   "symbol": "NKE",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": false,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -39,11 +40,11 @@
       "longName": "NIKE, Inc."
     },
     "fundamentals": {
-      "ttmEps": 1.71,
-      "ttmPe": 30.04,
-      "marketCap": 76047295258,
-      "psRatio": 1.63,
-      "pbRatio": 5.4
+      "ttmEps": 1.52,
+      "ttmPe": 29.07,
+      "marketCap": 65418142446,
+      "psRatio": 1.41,
+      "pbRatio": 4.64
     },
     "profitability": {
       "roe": 5.75,
@@ -80,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": -32.05
+        "yoyGrowth": -35.19
       }
     ],
     "income_statement": {
@@ -4919,41 +4920,9 @@
       ]
     },
     "beta": {
-      "beta5y": 1.3189
+      "beta5y": 1.3315
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 65.5,
-        "high": 67.1,
-        "low": 65.29,
-        "close": 65.8,
-        "volume": 16435800
-      },
-      {
-        "date": "2025-03-28",
-        "open": 65.86,
-        "high": 65.86,
-        "low": 63.14,
-        "close": 63.29,
-        "volume": 19600300
-      },
-      {
-        "date": "2025-03-31",
-        "open": 62.84,
-        "high": 63.99,
-        "low": 62.65,
-        "close": 63.48,
-        "volume": 17400000
-      },
-      {
-        "date": "2025-04-01",
-        "open": 63.83,
-        "high": 65.16,
-        "low": 63.3,
-        "close": 64.76,
-        "volume": 13489500
-      },
       {
         "date": "2025-04-02",
         "open": 64.3,
@@ -6936,7 +6905,39 @@
         "high": 52.11,
         "low": 51.2,
         "close": 51.37,
-        "volume": 13028100
+        "volume": 13077800
+      },
+      {
+        "date": "2026-03-30",
+        "open": 51.43,
+        "high": 52.19,
+        "low": 50.95,
+        "close": 51.24,
+        "volume": 16869200
+      },
+      {
+        "date": "2026-03-31",
+        "open": 51.93,
+        "high": 53.11,
+        "low": 51.69,
+        "close": 52.82,
+        "volume": 36422800
+      },
+      {
+        "date": "2026-04-01",
+        "open": 46.56,
+        "high": 46.83,
+        "low": 44.56,
+        "close": 44.63,
+        "volume": 114225700
+      },
+      {
+        "date": "2026-04-02",
+        "open": 43.76,
+        "high": 44.34,
+        "low": 43.17,
+        "close": 44.19,
+        "volume": 63242600
       }
     ],
     "news": [
@@ -7021,46 +7022,105 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Mr. Craig Anthony Williams",
+        "title": "Full-Time Non-Executive Employee",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 1267250
+      },
+      {
+        "name": "Mr. Elliott J. Hill",
+        "title": "CEO, President & Director",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 5297497
+      },
+      {
+        "name": "Mr. Mark G. Parker",
+        "title": "Executive Chairman",
+        "age": 69,
+        "yearBorn": 1956
+      },
+      {
+        "name": "Mr. Matthew Friend",
+        "title": "Executive VP & CFO",
+        "age": 46,
+        "yearBorn": 1979,
+        "totalPay": 1267250
+      },
+      {
+        "name": "Mr. Michael Gonda",
+        "title": "Executive VP & Chief Communications Officer"
+      },
+      {
+        "name": "Mr. Philip H. Knight",
+        "title": "Co-Founder & Chairman Emeritus",
+        "age": 87,
+        "yearBorn": 1938,
+        "totalPay": 3069594
+      },
+      {
+        "name": "Mr. Robert Leinwand",
+        "title": "EVP & Chief Legal Officer",
+        "totalPay": 816877
+      },
+      {
+        "name": "Ms. Johanna Nielsen",
+        "title": "VP of Controlling & Principal Accounting Officer",
+        "age": 47,
+        "yearBorn": 1978
+      },
+      {
+        "name": "Ms. Nicole Hubbard Graham",
+        "title": "Executive VP & Chief Marketing Officer"
+      },
+      {
+        "name": "Ms. Treasure Heinle",
+        "title": "Executive VP and Chief Human Resources & People Officer"
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.04,
-        "industryAvg": 37.69
+        "value": 29.07,
+        "industryAvg": 34.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.63,
-        "industryAvg": 1.69
+        "value": 1.41,
+        "industryAvg": 1.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.4,
-        "industryAvg": 3.93
+        "value": 4.64,
+        "industryAvg": 3.62
       },
       {
         "metric": "ROE",
         "value": 5.75,
-        "industryAvg": 3.05
+        "industryAvg": 2.97
       },
       {
         "metric": "ROA",
         "value": 2.11,
-        "industryAvg": 1.28
+        "industryAvg": 1.25
       },
       {
         "metric": "Gross Margin",
         "value": 40.6,
-        "industryAvg": 45.51
+        "industryAvg": 45.43
       },
       {
         "metric": "EBITDA Margin",
         "value": 9.54,
-        "industryAvg": 11.77
+        "industryAvg": 11.57
       },
       {
         "metric": "Net Margin",
         "value": 6.370000000000001,
-        "industryAvg": 4.279999999999999
+        "industryAvg": 4.16
       }
     ]
   }

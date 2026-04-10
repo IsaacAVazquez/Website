@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 23.49,
-      "ttmPe": 22.38,
-      "marketCap": 1329837917460,
-      "psRatio": 6.62,
-      "pbRatio": 6.12
+      "ttmPe": 24.46,
+      "marketCap": 1453128452530,
+      "psRatio": 7.23,
+      "pbRatio": 6.69
     },
     "profitability": {
       "roe": 11.07,
@@ -5214,49 +5215,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.719999999999999,
-      "costOfEquity": 15.620000000000001,
+      "wacc": 14.42,
+      "costOfEquity": 15.22,
       "costOfDebt": 0.54,
       "taxRate": 10,
-      "beta": 1.3265,
-      "marketCap": 1329837917460
+      "beta": 1.275,
+      "marketCap": 1453128452530
     },
     "beta": {
-      "beta5y": 1.3265
+      "beta5y": 1.275
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 602,
-        "high": 614.25,
-        "low": 600.1,
-        "close": 602.58,
-        "volume": 10436500
-      },
-      {
-        "date": "2025-03-28",
-        "open": 600.31,
-        "high": 601.75,
-        "low": 573.92,
-        "close": 576.74,
-        "volume": 17602800
-      },
-      {
-        "date": "2025-03-31",
-        "open": 563.5,
-        "high": 578.7,
-        "low": 553.3,
-        "close": 576.36,
-        "volume": 21124700
-      },
-      {
-        "date": "2025-04-01",
-        "open": 570.84,
-        "high": 589.91,
-        "low": 570,
-        "close": 586,
-        "volume": 12836600
-      },
       {
         "date": "2025-04-02",
         "open": 574.91,
@@ -7239,7 +7208,39 @@
         "high": 543.6,
         "low": 520.26,
         "close": 525.72,
-        "volume": 29980300
+        "volume": 30133000
+      },
+      {
+        "date": "2026-03-30",
+        "open": 536.38,
+        "high": 539.55,
+        "low": 528.54,
+        "close": 536.38,
+        "volume": 22795200
+      },
+      {
+        "date": "2026-03-31",
+        "open": 549.98,
+        "high": 573.69,
+        "low": 546.77,
+        "close": 572.13,
+        "volume": 32898300
+      },
+      {
+        "date": "2026-04-01",
+        "open": 580.13,
+        "high": 592.55,
+        "low": 573.82,
+        "close": 579.23,
+        "volume": 23608100
+      },
+      {
+        "date": "2026-04-02",
+        "open": 566.04,
+        "high": 578.5,
+        "low": 559.7,
+        "close": 574.46,
+        "volume": 13518500
       }
     ],
     "news": [
@@ -7260,19 +7261,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
         "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {
@@ -7324,26 +7325,90 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Mr. Aaron A. Anderson",
+        "title": "Chief Accounting Officer"
+      },
+      {
+        "name": "Mr. Andrew Bosworth",
+        "title": "Chief Technology Officer",
+        "age": 43,
+        "yearBorn": 1982,
+        "totalPay": 1923184
+      },
+      {
+        "name": "Mr. Atish Banerjea",
+        "title": "Chief Information Officer",
+        "age": 59,
+        "yearBorn": 1966
+      },
+      {
+        "name": "Mr. Christopher K. Cox",
+        "title": "Chief Product Officer",
+        "age": 42,
+        "yearBorn": 1983,
+        "totalPay": 1937677
+      },
+      {
+        "name": "Mr. Dana White",
+        "title": "Independent Director",
+        "totalPay": 272
+      },
+      {
+        "name": "Mr. Henry T. A. Moniz",
+        "title": "Chief Compliance Officer",
+        "age": 59,
+        "yearBorn": 1966
+      },
+      {
+        "name": "Mr. Javier Olivan",
+        "title": "Chief Operating Officer",
+        "age": 48,
+        "yearBorn": 1977,
+        "totalPay": 3835042
+      },
+      {
+        "name": "Mr. Mark Elliot Zuckerberg",
+        "title": "Founder, Chairman & CEO",
+        "age": 41,
+        "yearBorn": 1984,
+        "totalPay": 27219874
+      },
+      {
+        "name": "Ms. Dina Powell McCormick",
+        "title": "President & Vice Chairman",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
+        "name": "Ms. Susan J. S. Li",
+        "title": "Chief Financial Officer",
+        "age": 39,
+        "yearBorn": 1986,
+        "totalPay": 1948846
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.38,
-        "industryAvg": 25.13
+        "value": 24.46,
+        "industryAvg": 27.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.62,
-        "industryAvg": 7.32
+        "value": 7.23,
+        "industryAvg": 7.89
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.12,
-        "industryAvg": 6.76
+        "value": 6.69,
+        "industryAvg": 7.28
       },
       {
         "metric": "ROE",
         "value": 11.07,
-        "industryAvg": 7.79
+        "industryAvg": 7.8
       },
       {
         "metric": "ROA",
@@ -7358,19 +7423,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 52.129999999999995,
-        "industryAvg": 38.64
+        "industryAvg": 38.66
       },
       {
         "metric": "Net Margin",
         "value": 38.01,
-        "industryAvg": 28.64
+        "industryAvg": 28.660000000000004
       }
     ],
     "dcf": {
-      "fairValue": 235.73,
-      "currentPrice": 525.72,
-      "upside": -55.16,
-      "wacc": 14.72,
+      "fairValue": 242,
+      "currentPrice": 574.46,
+      "upside": -57.87,
+      "wacc": 14.42,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 10.72,
         "Terminal growth": 3

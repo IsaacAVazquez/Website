@@ -1,10 +1,10 @@
 {
   "symbol": "PFE",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.36,
-      "ttmPe": 19.88,
-      "marketCap": 153813148944,
-      "psRatio": 2.46,
-      "pbRatio": 1.78
+      "ttmPe": 20.82,
+      "marketCap": 161094244752,
+      "psRatio": 2.57,
+      "pbRatio": 1.86
     },
     "profitability": {
       "roe": -1.8399999999999999,
@@ -6039,49 +6040,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.81,
-      "costOfEquity": 7.7700000000000005,
+      "wacc": 5.63,
+      "costOfEquity": 7.42,
       "costOfDebt": 1.11,
       "taxRate": 0,
-      "beta": 0.3955,
-      "marketCap": 153813148944
+      "beta": 0.3633,
+      "marketCap": 161094244752
     },
     "beta": {
-      "beta5y": 0.3955
+      "beta5y": 0.3633
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 25.2,
-        "high": 25.23,
-        "low": 24.83,
-        "close": 25.01,
-        "volume": 51302000
-      },
-      {
-        "date": "2025-03-28",
-        "open": 25.03,
-        "high": 25.22,
-        "low": 24.81,
-        "close": 25.21,
-        "volume": 32352500
-      },
-      {
-        "date": "2025-03-31",
-        "open": 24.8,
-        "high": 25.43,
-        "low": 24.61,
-        "close": 25.34,
-        "volume": 53498100
-      },
-      {
-        "date": "2025-04-01",
-        "open": 25.29,
-        "high": 25.35,
-        "low": 24.52,
-        "close": 24.54,
-        "volume": 54444200
-      },
       {
         "date": "2025-04-02",
         "open": 24.5,
@@ -8064,7 +8033,39 @@
         "high": 27.77,
         "low": 27.02,
         "close": 27.04,
-        "volume": 29039300
+        "volume": 29124600
+      },
+      {
+        "date": "2026-03-30",
+        "open": 27.42,
+        "high": 27.82,
+        "low": 27.15,
+        "close": 27.77,
+        "volume": 46696000
+      },
+      {
+        "date": "2026-03-31",
+        "open": 27.99,
+        "high": 28.31,
+        "low": 27.79,
+        "close": 28.08,
+        "volume": 44841500
+      },
+      {
+        "date": "2026-04-01",
+        "open": 28.27,
+        "high": 28.64,
+        "low": 28.04,
+        "close": 28.55,
+        "volume": 44208500
+      },
+      {
+        "date": "2026-04-02",
+        "open": 28.5,
+        "high": 28.75,
+        "low": 28.22,
+        "close": 28.32,
+        "volume": 30920600
       }
     ],
     "news": [
@@ -8085,27 +8086,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "418d9b30-a2ae-3a5c-bbba-20acae3495a0",
-        "title": "Haleon Agrees to Buy Back Over 44 Million Shares From Pfizer",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/haleon-agrees-buy-back-over-150207516.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1152f165-8c48-32c4-a775-4f515c152ef7",
         "title": "Pfizer to sell entire Haleon stake",
         "publisher": "Reuters",
         "reportDate": "2025-03-19",
         "link": "https://finance.yahoo.com/news/pfizer-sell-entire-haleon-stake-165448665.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "3bb1808e-367b-3ade-9d4f-08e743dffe14",
-        "title": "Market Chatter: Pfizer Sells Entire Stake in Haleon for $3.24 Billion",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/market-chatter-pfizer-sells-entire-100802735.html",
         "type": "STORY"
       },
       {
@@ -8117,11 +8102,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "af863e42-7898-396f-9797-62a0d3789ed3",
-        "title": "Top Midday Stories: EC Notifies Alphabet of DMA Noncompliance, Adopts Requirements for Apple; Boeing Expects Less Q1 Cash Outflow",
+        "uuid": "3bb1808e-367b-3ade-9d4f-08e743dffe14",
+        "title": "Market Chatter: Pfizer Sells Entire Stake in Haleon for $3.24 Billion",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/top-midday-stories-ec-notifies-155033951.html",
+        "link": "https://finance.yahoo.com/news/market-chatter-pfizer-sells-entire-100802735.html",
         "type": "STORY"
       },
       {
@@ -8141,29 +8126,108 @@
         "type": "STORY"
       },
       {
-        "uuid": "e841ce48-7c32-3ca8-b63e-53c4bb7fcf57",
-        "title": "Pfizer Sells Remaining 7.3% Stake in Haleon for Around 3.3B",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-20",
-        "link": "https://finance.yahoo.com/news/pfizer-sells-remaining-7-3-124500233.html",
+        "uuid": "418d9b30-a2ae-3a5c-bbba-20acae3495a0",
+        "title": "Haleon Agrees to Buy Back Over 44 Million Shares From Pfizer",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/haleon-agrees-buy-back-over-150207516.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "af863e42-7898-396f-9797-62a0d3789ed3",
+        "title": "Top Midday Stories: EC Notifies Alphabet of DMA Noncompliance, Adopts Requirements for Apple; Boeing Expects Less Q1 Cash Outflow",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/top-midday-stories-ec-notifies-155033951.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5c370e40-7e16-3e2a-b93b-b48b50d34db4",
+        "title": "Pfizer sells 7.3% stake in Haleon for $3.3bn",
+        "publisher": "Pharmaceutical Technology",
+        "reportDate": "2025-03-20",
+        "link": "https://finance.yahoo.com/m/5c370e40-7e16-3e2a-b93b-b48b50d34db4/pfizer-sells-7.3%25-stake-in.html",
+        "type": "STORY"
+      }
+    ],
+    "officers": [
+      {
+        "name": "Dr. Albert Bourla D.V.M., Ph.D.",
+        "title": "Chairman of the Board & CEO",
+        "age": 63,
+        "yearBorn": 1962,
+        "totalPay": 9140441
+      },
+      {
+        "name": "Dr. Chris Boshoff FMedSci, M.D., Ph.D.",
+        "title": "Chief Scientific Officer and President of Research & Development",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 5198006
+      },
+      {
+        "name": "Dr. Michael S. Vincent M.D., Ph.D.",
+        "title": "Senior VP and Chief Scientific Officer of Inflammation & Immunology"
+      },
+      {
+        "name": "Mr. Aamir Malik",
+        "title": "Executive VP & Chief U.S. Commercial Officer",
+        "age": 49,
+        "yearBorn": 1976,
+        "totalPay": 4898062
+      },
+      {
+        "name": "Mr. David M. Denton",
+        "title": "Executive VP & CFO",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 4802804
+      },
+      {
+        "name": "Mr. Douglas M. Lankler",
+        "title": "Executive VP & Chief Legal Officer",
+        "age": 59,
+        "yearBorn": 1966,
+        "totalPay": 4622375
+      },
+      {
+        "name": "Ms. Francesca M. DeMartino",
+        "title": "Chief Investor Relations Officer"
+      },
+      {
+        "name": "Ms. Jennifer B. Damico",
+        "title": "Senior VP, Controller & Principal Accounting Officer",
+        "age": 56,
+        "yearBorn": 1969
+      },
+      {
+        "name": "Ms. Lidia L. Fonseca",
+        "title": "Executive VP and Chief Digital & Technology Officer",
+        "age": 56,
+        "yearBorn": 1969
+      },
+      {
+        "name": "Ms. Payal Sahni Becher",
+        "title": "Chief People Experience Officer & Executive VP",
+        "age": 50,
+        "yearBorn": 1975
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.88,
-        "industryAvg": 20.05
+        "value": 20.82,
+        "industryAvg": 20.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.46,
-        "industryAvg": 4.32
+        "value": 2.57,
+        "industryAvg": 4.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.78,
-        "industryAvg": 5.41
+        "value": 1.86,
+        "industryAvg": 5.57
       },
       {
         "metric": "ROE",
@@ -8192,10 +8256,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 24.96,
-      "currentPrice": 27.04,
-      "upside": -7.71,
-      "wacc": 5.81,
+      "fairValue": 26.63,
+      "currentPrice": 28.32,
+      "upside": -5.97,
+      "wacc": 5.63,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

@@ -6,6 +6,7 @@ import type {
   InvestmentSection,
   InvestmentSnapshot,
   NewsData,
+  OfficerInfo,
   PriceData,
   StockPrice,
 } from "@/types/investment";
@@ -95,6 +96,25 @@ function normalizeNews(raw: unknown): NewsData | undefined {
   return news.length > 0 ? (news as NewsData) : undefined;
 }
 
+function normalizeOfficers(raw: unknown): OfficerInfo[] | undefined {
+  if (!Array.isArray(raw)) return undefined;
+  const officers: OfficerInfo[] = [];
+  for (const entry of raw) {
+    const r = entry as Record<string, unknown>;
+    const name = typeof r.name === "string" ? r.name.replace(/\s{2,}/g, " ").trim() : undefined;
+    const title = typeof r.title === "string" ? r.title : undefined;
+    if (!name || !title) continue;
+    officers.push({
+      name,
+      title,
+      age: typeof r.age === "number" ? r.age : undefined,
+      yearBorn: typeof r.born === "number" ? r.born : (typeof r.yearBorn === "number" ? r.yearBorn : undefined),
+      totalPay: typeof r.pay === "number" && r.pay > 0 ? r.pay : (typeof r.totalPay === "number" ? r.totalPay : undefined),
+    });
+  }
+  return officers.length > 0 ? officers : undefined;
+}
+
 function normalizeSection(
   section: InvestmentSection,
   raw: unknown
@@ -148,6 +168,7 @@ function buildCapabilities(
     beta: sections.beta !== undefined,
     news: hasRows(sections.news),
     dcf: sections.dcf !== undefined,
+    officers: hasRows(sections.officers),
     compare: true,
   };
 
@@ -168,6 +189,7 @@ export interface RawInvestmentSnapshotInputs {
   beta?: unknown;
   news?: unknown;
   price?: unknown;
+  officers?: unknown;
 }
 
 export function buildInvestmentSnapshot(
@@ -189,6 +211,7 @@ export function buildInvestmentSnapshot(
     beta: normalizeSection("beta", raw.beta),
     price: normalizedPrice,
     news: normalizeSection("news", raw.news),
+    officers: normalizeOfficers(raw.officers),
   };
 
   const industry = raw.industry

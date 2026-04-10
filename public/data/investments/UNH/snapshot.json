@@ -1,10 +1,10 @@
 {
   "symbol": "UNH",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.19,
-      "ttmPe": 19.64,
-      "marketCap": 235106185716,
-      "psRatio": 0.53,
-      "pbRatio": 2.5
+      "ttmPe": 21.02,
+      "marketCap": 251662192308,
+      "psRatio": 0.56,
+      "pbRatio": 2.67
     },
     "profitability": {
       "roe": 0.01,
@@ -4720,49 +4721,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.329999999999999,
-      "costOfEquity": 8.110000000000001,
+      "wacc": 6.01,
+      "costOfEquity": 7.580000000000001,
       "costOfDebt": 1.24,
       "taxRate": 21,
-      "beta": 0.4348,
-      "marketCap": 235106185716
+      "beta": 0.3821,
+      "marketCap": 251662192308
     },
     "beta": {
-      "beta5y": 0.4348
+      "beta5y": 0.3821
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 516.29,
-        "high": 521.08,
-        "low": 512.95,
-        "close": 515.72,
-        "volume": 2822200
-      },
-      {
-        "date": "2025-03-28",
-        "open": 516.87,
-        "high": 520.98,
-        "low": 515.05,
-        "close": 516.04,
-        "volume": 2379100
-      },
-      {
-        "date": "2025-03-31",
-        "open": 519.18,
-        "high": 528.12,
-        "low": 518.59,
-        "close": 523.75,
-        "volume": 5238700
-      },
-      {
-        "date": "2025-04-01",
-        "open": 525.74,
-        "high": 528.17,
-        "low": 520.95,
-        "close": 523.12,
-        "volume": 2962500
-      },
       {
         "date": "2025-04-02",
         "open": 522.95,
@@ -6745,7 +6714,39 @@
         "high": 267.67,
         "low": 255.97,
         "close": 259.02,
-        "volume": 10720100
+        "volume": 10735300
+      },
+      {
+        "date": "2026-03-30",
+        "open": 260.18,
+        "high": 262.33,
+        "low": 256.67,
+        "close": 261.79,
+        "volume": 7774700
+      },
+      {
+        "date": "2026-03-31",
+        "open": 263,
+        "high": 271.88,
+        "low": 262.61,
+        "close": 270.59,
+        "volume": 9170800
+      },
+      {
+        "date": "2026-04-01",
+        "open": 274.21,
+        "high": 275.3,
+        "low": 270.76,
+        "close": 273.98,
+        "volume": 5473400
+      },
+      {
+        "date": "2026-04-02",
+        "open": 272.29,
+        "high": 279.04,
+        "low": 271.53,
+        "close": 277.26,
+        "volume": 6407000
       }
     ],
     "news": [
@@ -6790,19 +6791,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "4baf6117-8def-30b6-8fd6-c5b66c69be8e",
-        "title": "1 of Wall Street’s Favorite Stock That Stand Out and 2 to Steer Clear Of",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-043449940.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1ce151a6-8b4a-34e8-860a-e7e6ece6f141",
         "title": "UnitedHealth, Amedisys reach new deal to sell home health and hospice locations if merger approved",
         "publisher": "Healthcare Dive",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/m/1ce151a6-8b4a-34e8-860a-e7e6ece6f141/unitedhealth%2C-amedisys-reach.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4baf6117-8def-30b6-8fd6-c5b66c69be8e",
+        "title": "1 of Wall Street’s Favorite Stock That Stand Out and 2 to Steer Clear Of",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-043449940.html",
         "type": "STORY"
       },
       {
@@ -6822,29 +6823,91 @@
         "type": "STORY"
       },
       {
-        "uuid": "c017eb02-e851-3ee3-98c7-3315aaa7c8de",
-        "title": "Health Insurance Providers Stocks Q1 Highlights: Molina Healthcare (NYSE:MOH)",
-        "publisher": "StockStory",
+        "uuid": "6bd9f8f6-e32b-372a-95b2-aa59eacd547a",
+        "title": "Sector Update: Health Care Stocks Decline Tuesday Afternoon",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/health-insurance-providers-stocks-q1-033235659.html",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-decline-180552670.html",
         "type": "STORY"
+      }
+    ],
+    "officers": [
+      {
+        "name": "Dr. Richard J. Migliori M.D.",
+        "title": "Executive Vice President & Senior Advisor",
+        "age": 68,
+        "yearBorn": 1957
+      },
+      {
+        "name": "Mr. Christopher R. Zaetta",
+        "title": "Executive VP, Chief Legal Officer & Corporate Secretary",
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 1872229
+      },
+      {
+        "name": "Mr. Dennis Stankiewicz",
+        "title": "Chief Accounting Officer & Corporate Controller",
+        "age": 47,
+        "yearBorn": 1978
+      },
+      {
+        "name": "Mr. Sandeep Dadlani",
+        "title": "Executive VP and Chief Digital & Technology Officer",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
+        "name": "Mr. Stephen J. Hemsley",
+        "title": "CEO & Non-Independent Non-Executive Chairman",
+        "age": 72,
+        "yearBorn": 1953,
+        "totalPay": 285077
+      },
+      {
+        "name": "Mr. Terry Clark",
+        "title": "Executive VP & Chief Marketing Officer"
+      },
+      {
+        "name": "Mr. Wayne Scott DeVeydt",
+        "title": "Chief Financial Officer",
+        "age": 55,
+        "yearBorn": 1970
+      },
+      {
+        "name": "Mr. Zachary William Sopcak",
+        "title": "Senior Vice President of Capital Markets Communications & Investor Relations"
+      },
+      {
+        "name": "Ms. Erin L. McSweeney",
+        "title": "Executive VP & Chief People Officer",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 1767835
+      },
+      {
+        "name": "Ms. Heather Rachelle Cianfrocco",
+        "title": "EVP of Governance, Compliance & Information Security",
+        "age": 51,
+        "yearBorn": 1974,
+        "totalPay": 3448035
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.64,
-        "industryAvg": 25.5
+        "value": 21.02,
+        "industryAvg": 26.99
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.53,
-        "industryAvg": 0.3
+        "value": 0.56,
+        "industryAvg": 0.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.5,
-        "industryAvg": 1.7
+        "value": 2.67,
+        "industryAvg": 1.8
       },
       {
         "metric": "ROE",
@@ -6873,10 +6936,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 204.99,
-      "currentPrice": 259.02,
-      "upside": -20.86,
-      "wacc": 6.33,
+      "fairValue": 226.28,
+      "currentPrice": 277.26,
+      "upside": -18.39,
+      "wacc": 6.01,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

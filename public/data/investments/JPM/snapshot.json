@@ -1,10 +1,10 @@
 {
   "symbol": "JPM",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 20.01,
-      "ttmPe": 14.13,
-      "marketCap": 762828644016,
-      "psRatio": 4.18,
-      "pbRatio": 2.1
+      "ttmPe": 14.72,
+      "marketCap": 794545745040,
+      "psRatio": 4.36,
+      "pbRatio": 2.19
     },
     "profitability": {
       "roe": 3.51,
@@ -5816,49 +5817,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.43,
-      "costOfEquity": 13.239999999999998,
+      "wacc": 9.610000000000001,
+      "costOfEquity": 13.38,
       "costOfDebt": 4.760000000000001,
       "taxRate": 24,
-      "beta": 1.0439,
-      "marketCap": 762828644016
+      "beta": 1.0593,
+      "marketCap": 794545745040
     },
     "beta": {
-      "beta5y": 1.0439
+      "beta5y": 1.0593
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 249.53,
-        "high": 250.64,
-        "low": 247.18,
-        "close": 248.12,
-        "volume": 8022500
-      },
-      {
-        "date": "2025-03-28",
-        "open": 246.94,
-        "high": 249.51,
-        "low": 241.11,
-        "close": 242.85,
-        "volume": 11978400
-      },
-      {
-        "date": "2025-03-31",
-        "open": 239.41,
-        "high": 245.86,
-        "low": 237.36,
-        "close": 245.3,
-        "volume": 13603000
-      },
-      {
-        "date": "2025-04-01",
-        "open": 242.62,
-        "high": 245.69,
-        "low": 240.88,
-        "close": 243.66,
-        "volume": 8054700
-      },
       {
         "date": "2025-04-02",
         "open": 241.6,
@@ -7841,7 +7810,39 @@
         "high": 290.11,
         "low": 281.75,
         "close": 282.84,
-        "volume": 9869500
+        "volume": 9873300
+      },
+      {
+        "date": "2026-03-30",
+        "open": 284.74,
+        "high": 287.25,
+        "low": 282.33,
+        "close": 283.77,
+        "volume": 11734400
+      },
+      {
+        "date": "2026-03-31",
+        "open": 288.47,
+        "high": 295.07,
+        "low": 284.95,
+        "close": 294.16,
+        "volume": 12956900
+      },
+      {
+        "date": "2026-04-01",
+        "open": 295.39,
+        "high": 298.72,
+        "low": 292.91,
+        "close": 295.38,
+        "volume": 11267200
+      },
+      {
+        "date": "2026-04-02",
+        "open": 291.91,
+        "high": 295.62,
+        "low": 288.72,
+        "close": 294.6,
+        "volume": 6669300
       }
     ],
     "news": [
@@ -7926,21 +7927,86 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Eugene Davy",
+        "title": "Co-Founder & Head of Investment Banking of EMEA"
+      },
+      {
+        "name": "Mr. Daniel Eduardo Pinto",
+        "title": "Vice Chairman",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 6572089
+      },
+      {
+        "name": "Mr. James Dimon",
+        "title": "Chairman & CEO",
+        "age": 69,
+        "yearBorn": 1956,
+        "totalPay": 8132636
+      },
+      {
+        "name": "Mr. Jeremy Barnum",
+        "title": "Executive VP & CFO",
+        "age": 52,
+        "yearBorn": 1973,
+        "totalPay": 7535000
+      },
+      {
+        "name": "Mr. Kevin Brunner",
+        "title": "Global Chairperson of Investment Banking and M&A"
+      },
+      {
+        "name": "Mr. Todd Anthony Combs M.B.A.",
+        "title": "Head Strategic Investment Group of Security & Resiliency Initiative",
+        "age": 54,
+        "yearBorn": 1971,
+        "totalPay": 170000
+      },
+      {
+        "name": "Mr. Troy Larry Rohrbaugh",
+        "title": "Co- CEO of Commercial & Investment Bank",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 10205373
+      },
+      {
+        "name": "Ms. Elena A. Korablina",
+        "title": "MD, Firmwide Controller & Principal Accounting Officer",
+        "age": 51,
+        "yearBorn": 1974
+      },
+      {
+        "name": "Ms. Jennifer A. Piepszak",
+        "title": "Chief Operating Officer",
+        "age": 54,
+        "yearBorn": 1971,
+        "totalPay": 7855000
+      },
+      {
+        "name": "Ms. Mary Callahan Erdoes",
+        "title": "Chief Executive Officer of Asset & Wealth Management and Executive VP",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 12037181
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.13,
-        "industryAvg": 12.44
+        "value": 14.72,
+        "industryAvg": 13.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.18,
-        "industryAvg": 0.94
+        "value": 4.36,
+        "industryAvg": 0.99
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.1,
-        "industryAvg": 0.4
+        "value": 2.19,
+        "industryAvg": 0.42
       },
       {
         "metric": "ROE",
@@ -7959,10 +8025,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 282.66,
-      "currentPrice": 282.84,
-      "upside": -0.06,
-      "wacc": 9.43,
+      "fairValue": 275.02,
+      "currentPrice": 294.6,
+      "upside": -6.65,
+      "wacc": 9.61,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -3.74,
         "Terminal growth": 3

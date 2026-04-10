@@ -5,6 +5,7 @@ import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import type { BetaData, DcfData, Fundamentals, IndustryData, WaccData } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
+import { MetricTooltip } from "./MetricTooltip";
 
 interface Props {
   symbol: string;
@@ -74,8 +75,9 @@ function StandaloneMetric({
 }) {
   return (
     <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+      <p className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
         {label}
+        <MetricTooltip term={label} />
       </p>
       <p className="mt-2 text-lg font-semibold text-[var(--home-ink)]">{value}</p>
       {detail ? (

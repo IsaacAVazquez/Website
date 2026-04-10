@@ -5,6 +5,7 @@ import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import type { Fundamentals, CompanyInfo, BetaData, WaccData } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
+import { MetricTooltip } from "./MetricTooltip";
 
 interface Props { symbol: string }
 
@@ -19,7 +20,10 @@ function fmt(n: number | undefined, style: "currency" | "percent" | "compact" | 
 function MetricRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between py-2 border-b border-[var(--home-rule)] last:border-0">
-      <span className="text-sm text-[var(--home-ink-muted)]">{label}</span>
+      <span className="flex items-center gap-0.5 text-sm text-[var(--home-ink-muted)]">
+        {label}
+        <MetricTooltip term={label} />
+      </span>
       <span className="text-sm font-medium text-[var(--home-ink)]">{value}</span>
     </div>
   );

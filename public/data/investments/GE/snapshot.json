@@ -1,10 +1,10 @@
 {
   "symbol": "GE",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -35,15 +36,15 @@
       "longBusinessSummary": "General Electric Company, doing business as GE Aerospace, designs and produces commercial and defense aircraft engines, integrated engine components, electric power, and aircraft systems. The company operates through two segments, Commercial Engines & Services, and Defense & Propulsion Technologies. The Commercial Engines & Services segment designs, develops, manufactures, maintenance, repair, and overhaul (MRO) services of jet engines and sale of spare parts for commercial airframes, business aviation, and aeroderivative applications. The Defense & Propulsion Technologies designs, develops, manufactures, and services jet engines and avionics and power systems for governments, militaries, and commercial airframers, as well as MRO of engines and the sale of spare parts. This segment also offers aircraft components and systems, such as small turboprop engines, aeroengine mechanical transmissions, turbines, combustors and controls, additive manufacturing, propeller systems, ignition systems, sensors and engine accessories for fixed wing and rotorcraft applications for commercial and military end users under the Avio Aero, Unison, Dowty Propellers, and Colibrium Additive brands. The company operates in the United States, Europe, Asia, the Americas, the Middle East, and Africa. General Electric Company was incorporated in 1892 and is based in Evendale, Ohio.",
       "fullTimeEmployees": 57000,
       "website": "https://www.geaerospace.com",
-      "shortName": "General Electric Company",
-      "longName": "General Electric Company"
+      "shortName": "GE Aerospace",
+      "longName": "GE Aerospace"
     },
     "fundamentals": {
       "ttmEps": 8.14,
-      "ttmPe": 34.74,
-      "marketCap": 295488259176,
-      "psRatio": 6.44,
-      "pbRatio": 15.82
+      "ttmPe": 34.54,
+      "marketCap": 293764290336,
+      "psRatio": 6.41,
+      "pbRatio": 15.73
     },
     "profitability": {
       "roe": 13.56,
@@ -6423,49 +6424,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.590000000000002,
-      "costOfEquity": 16.6,
+      "wacc": 15.93,
+      "costOfEquity": 16.97,
       "costOfDebt": 1.22,
       "taxRate": 14.000000000000002,
-      "beta": 1.4429,
-      "marketCap": 295488259176
+      "beta": 1.4789,
+      "marketCap": 293764290336
     },
     "beta": {
-      "beta5y": 1.4429
+      "beta5y": 1.4789
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 206.36,
-        "high": 207.69,
-        "low": 202.8,
-        "close": 205.88,
-        "volume": 3301900
-      },
-      {
-        "date": "2025-03-28",
-        "open": 205.6,
-        "high": 206.86,
-        "low": 199.59,
-        "close": 199.88,
-        "volume": 5178400
-      },
-      {
-        "date": "2025-03-31",
-        "open": 197.53,
-        "high": 201.57,
-        "low": 194.45,
-        "close": 200.15,
-        "volume": 6923100
-      },
-      {
-        "date": "2025-04-01",
-        "open": 199.56,
-        "high": 204.5,
-        "low": 198.47,
-        "close": 203.79,
-        "volume": 3854000
-      },
       {
         "date": "2025-04-02",
         "open": 199.48,
@@ -8448,7 +8417,39 @@
         "high": 284.97,
         "low": 280.97,
         "close": 282.81,
-        "volume": 4160400
+        "volume": 4161700
+      },
+      {
+        "date": "2026-03-30",
+        "open": 284.07,
+        "high": 284.71,
+        "low": 270.79,
+        "close": 273.25,
+        "volume": 8598600
+      },
+      {
+        "date": "2026-03-31",
+        "open": 277.93,
+        "high": 286.49,
+        "low": 275.8,
+        "close": 283.77,
+        "volume": 7828800
+      },
+      {
+        "date": "2026-04-01",
+        "open": 290.21,
+        "high": 295.5,
+        "low": 289.99,
+        "close": 292.68,
+        "volume": 5242500
+      },
+      {
+        "date": "2026-04-02",
+        "open": 284.89,
+        "high": 289.11,
+        "low": 279.31,
+        "close": 281.16,
+        "volume": 5322900
       }
     ],
     "news": [
@@ -8477,19 +8478,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "60c8b30b-fb84-30f1-bb0d-808be867ee93",
-        "title": "GE Vernova: What's Energizing This General Electric Spinoff? Eye-Popping Growth For Starters",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/60c8b30b-fb84-30f1-bb0d-808be867ee93/ge-vernova%3A-what%27s-energizing.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
         "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "60c8b30b-fb84-30f1-bb0d-808be867ee93",
+        "title": "GE Vernova: What's Energizing This General Electric Spinoff? Eye-Popping Growth For Starters",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/60c8b30b-fb84-30f1-bb0d-808be867ee93/ge-vernova%3A-what%27s-energizing.html",
         "type": "STORY"
       },
       {
@@ -8533,21 +8534,82 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Mr. Christian E. Meisner",
+        "title": "Senior VP & Chief Human Resources Officer",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 2267604
+      },
+      {
+        "name": "Mr. Christoph A. Pereira",
+        "title": "Chief Strategy & Risk Officer and CEO of Aerospace Carbon Solutions, SaaS & Sustainability",
+        "age": 52,
+        "yearBorn": 1973
+      },
+      {
+        "name": "Mr. H. Lawrence Culp Jr.",
+        "title": "Chairman & CEO",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 10262962
+      },
+      {
+        "name": "Mr. John R. Phillips III",
+        "title": "Senior VP, General Counsel & Secretary",
+        "age": 47,
+        "yearBorn": 1978,
+        "totalPay": 2419640
+      },
+      {
+        "name": "Mr. Mohamed Ali",
+        "title": "President & CEO of Commercial Engines and Services",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 2355842
+      },
+      {
+        "name": "Mr. Rahul Ghai",
+        "title": "Senior VP & CFO",
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 3251678
+      },
+      {
+        "name": "Mr. Ramesh Singaram",
+        "title": "President & CEO of GE Gas Power's APAC"
+      },
+      {
+        "name": "Mr. Robert M. Giglietti",
+        "title": "VP, Chief Accounting Officer, Controller & Treasurer",
+        "age": 53,
+        "yearBorn": 1972
+      },
+      {
+        "name": "Ms. Blaire Shoor",
+        "title": "Head of Investor Relations"
+      },
+      {
+        "name": "Ms. Tara DiJulio",
+        "title": "VP, Chief Communications Officer & Chief Corporate Affairs Officer of GE Aerospace"
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.74,
-        "industryAvg": 50.36
+        "value": 34.54,
+        "industryAvg": 51.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.44,
-        "industryAvg": 3.22
+        "value": 6.41,
+        "industryAvg": 3.38
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.82,
-        "industryAvg": 6.64
+        "value": 15.73,
+        "industryAvg": 6.82
       },
       {
         "metric": "ROE",
@@ -8557,29 +8619,29 @@
       {
         "metric": "ROA",
         "value": 1.97,
-        "industryAvg": 1.92
+        "industryAvg": 1.94
       },
       {
         "metric": "Gross Margin",
         "value": 34.239999999999995,
-        "industryAvg": 17.79
+        "industryAvg": 18.08
       },
       {
         "metric": "EBITDA Margin",
         "value": 26.8,
-        "industryAvg": 18.12
+        "industryAvg": 18.25
       },
       {
         "metric": "Net Margin",
         "value": 19.98,
-        "industryAvg": 11.01
+        "industryAvg": 11.14
       }
     ],
     "dcf": {
-      "fairValue": 114.21,
-      "currentPrice": 282.81,
-      "upside": -59.62,
-      "wacc": 15.59,
+      "fairValue": 111.06,
+      "currentPrice": 281.16,
+      "upside": -60.5,
+      "wacc": 15.93,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 36.57,
         "Terminal growth": 3

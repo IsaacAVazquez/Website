@@ -1,10 +1,10 @@
 {
   "symbol": "LLY",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 22.59,
-      "ttmPe": 38.88,
-      "marketCap": 784582202976,
-      "psRatio": 12.04,
-      "pbRatio": 29.57
+      "ttmPe": 41.42,
+      "marketCap": 835807316292,
+      "psRatio": 12.82,
+      "pbRatio": 31.5
     },
     "profitability": {
       "roe": 26.38,
@@ -696,7 +697,7 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "900536000.0",
-          "2025-12-31": "894435000.0",
+          "2025-12-31": "894800000.0",
           "2025-09-30": "895841000.0",
           "2025-06-30": "897900000.0",
           "2025-03-31": "897730000.0",
@@ -3078,7 +3079,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2025-12-31": "894435000.0",
+          "2025-12-31": "894800000.0",
           "2025-09-30": "895841000.0",
           "2025-06-30": "896833000.0",
           "2025-03-31": "897730000.0",
@@ -3096,7 +3097,7 @@
         },
         {
           "Breakdown": "Treasury Shares Number",
-          "2025-12-31": "50365000.0",
+          "2025-12-31": "50000000.0",
           "2025-09-30": "50365000.0",
           "2025-06-30": "50365000.0",
           "2025-03-31": "50365000.0",
@@ -3966,7 +3967,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2025-12-31": "894435000.0",
+          "2025-12-31": "894800000.0",
           "2024-12-31": "897538000.0",
           "2023-12-31": "899379000.0",
           "2022-12-31": "950182000.0",
@@ -3976,7 +3977,7 @@
         },
         {
           "Breakdown": "Treasury Shares Number",
-          "2025-12-31": "50365000.0",
+          "2025-12-31": "50000000.0",
           "2024-12-31": "50365000.0",
           "2023-12-31": "50402000.0",
           "2022-12-31": "450000.0",
@@ -5628,49 +5629,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.540000000000001,
-      "costOfEquity": 8.99,
+      "wacc": 8.38,
+      "costOfEquity": 8.790000000000001,
       "costOfDebt": 0.42,
       "taxRate": 23,
-      "beta": 0.5395,
-      "marketCap": 784582202976
+      "beta": 0.5238,
+      "marketCap": 835807316292
     },
     "beta": {
-      "beta5y": 0.5395
+      "beta5y": 0.5238
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 822.82,
-        "high": 826.77,
-        "low": 815.29,
-        "close": 821.67,
-        "volume": 2128200
-      },
-      {
-        "date": "2025-03-28",
-        "open": 820,
-        "high": 829.78,
-        "low": 817.43,
-        "close": 822.51,
-        "volume": 2124700
-      },
-      {
-        "date": "2025-03-31",
-        "open": 808.98,
-        "high": 828.01,
-        "low": 789.4,
-        "close": 825.91,
-        "volume": 3737000
-      },
-      {
-        "date": "2025-04-01",
-        "open": 818.6,
-        "high": 820.66,
-        "low": 797,
-        "close": 805.23,
-        "volume": 2987700
-      },
       {
         "date": "2025-04-02",
         "open": 795.04,
@@ -7653,7 +7622,39 @@
         "high": 900.83,
         "low": 877.11,
         "close": 878.24,
-        "volume": 2736700
+        "volume": 2740800
+      },
+      {
+        "date": "2026-03-30",
+        "open": 888.48,
+        "high": 897.43,
+        "low": 883.11,
+        "close": 886.63,
+        "volume": 3070200
+      },
+      {
+        "date": "2026-03-31",
+        "open": 893.49,
+        "high": 924.14,
+        "low": 892.14,
+        "close": 919.77,
+        "volume": 3464200
+      },
+      {
+        "date": "2026-04-01",
+        "open": 926.88,
+        "high": 976.68,
+        "low": 925.99,
+        "close": 954.52,
+        "volume": 6267900
+      },
+      {
+        "date": "2026-04-02",
+        "open": 945,
+        "high": 957.69,
+        "low": 930.02,
+        "close": 935.58,
+        "volume": 2727100
       }
     ],
     "news": [
@@ -7682,19 +7683,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3e5ef098-2460-375f-92ec-d76a42b3dce8",
-        "title": "Sector Update: Health Care Stocks Fall Pre-Bell Wednesday",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-02",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-fall-131725544.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
         "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-04-02",
         "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3e5ef098-2460-375f-92ec-d76a42b3dce8",
+        "title": "Sector Update: Health Care Stocks Fall Pre-Bell Wednesday",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-02",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-fall-131725544.html",
         "type": "STORY"
       },
       {
@@ -7722,37 +7723,101 @@
         "type": "STORY"
       },
       {
+        "uuid": "4ac38fff-46ac-34a8-b27b-f8adbf604532",
+        "title": "The Zacks Analyst Blog Highlights Eli Lilly, American Express, Thermo Fisher, Steel Partners and Oil-Dri",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-eli-105300304.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "774a1898-ee7f-3b25-b70e-2c4a539fb1dd",
         "title": "Select Medical, Phreesia, Eli Lilly, Pfizer, and Brink's Shares Are Falling, What You Need To Know",
         "publisher": "StockStory",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/select-medical-phreesia-eli-lilly-171104703.html",
         "type": "STORY"
+      }
+    ],
+    "officers": [
+      {
+        "name": "Dr. Daniel M. Skovronsky M.D., Ph.D.",
+        "title": "Chief Scientific & Product Officer and President of Lilly Research Laboratories",
+        "age": 51,
+        "yearBorn": 1974,
+        "totalPay": 4898731
       },
       {
-        "uuid": "25da5773-f641-3465-b822-ea6b73672626",
-        "title": "How to Play the Biotech Meltdown in the Age of RFK Jr. and Tariffs",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/m/25da5773-f641-3465-b822-ea6b73672626/how-to-play-the-biotech.html",
-        "type": "STORY"
+        "name": "Mr. David A. Ricks",
+        "title": "Chairman & CEO",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 8921701
+      },
+      {
+        "name": "Mr. Diogo Rau",
+        "title": "Executive VP and Chief Information & Digital Officer",
+        "age": 50,
+        "yearBorn": 1975,
+        "totalPay": 1056809
+      },
+      {
+        "name": "Mr. Donald A. Zakrowski",
+        "title": "Senior VP of Finance & Chief Accounting Officer"
+      },
+      {
+        "name": "Mr. Eric Dozier",
+        "title": "Executive VP & Chief People Officer",
+        "age": 57,
+        "yearBorn": 1968
+      },
+      {
+        "name": "Mr. Ilya Yuffa",
+        "title": "Executive VP and President of Lilly USA & Global Customer Capabilities",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
+        "name": "Mr. Jacob S. Van Naarden",
+        "title": "Executive VP & President of Lilly Oncology",
+        "age": 40,
+        "yearBorn": 1985,
+        "totalPay": 2998730
+      },
+      {
+        "name": "Mr. Lucas E. Montarce",
+        "title": "Executive VP & CFO",
+        "age": 47,
+        "yearBorn": 1978,
+        "totalPay": 3240000
+      },
+      {
+        "name": "Mr. Michael Czapar",
+        "title": "Director of Investor Relations"
+      },
+      {
+        "name": "Ms. Anat Hakim J.D.",
+        "title": "Executive VP, General Counsel & Secretary",
+        "age": 56,
+        "yearBorn": 1969,
+        "totalPay": 3342570
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.88,
-        "industryAvg": 20.05
+        "value": 41.42,
+        "industryAvg": 20.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.04,
-        "industryAvg": 4.32
+        "value": 12.82,
+        "industryAvg": 4.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 29.57,
-        "industryAvg": 5.41
+        "value": 31.5,
+        "industryAvg": 5.57
       },
       {
         "metric": "ROE",
@@ -7781,10 +7846,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 909.65,
-      "currentPrice": 878.24,
-      "upside": 3.58,
-      "wacc": 8.54,
+      "fairValue": 937.6,
+      "currentPrice": 935.58,
+      "upside": 0.22,
+      "wacc": 8.38,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

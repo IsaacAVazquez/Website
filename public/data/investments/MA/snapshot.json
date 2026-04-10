@@ -1,10 +1,10 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.52,
-      "ttmPe": 29.31,
-      "marketCap": 431851188152,
-      "psRatio": 13.17,
-      "pbRatio": 55.82
+      "ttmPe": 29.87,
+      "marketCap": 440055861312,
+      "psRatio": 13.42,
+      "pbRatio": 56.88
     },
     "profitability": {
       "roe": 51.910000000000004,
@@ -5118,49 +5119,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.979999999999999,
-      "costOfEquity": 11.43,
+      "wacc": 10.82,
+      "costOfEquity": 11.26,
       "costOfDebt": 0.84,
       "taxRate": 17,
-      "beta": 0.829,
-      "marketCap": 431851188152
+      "beta": 0.812,
+      "marketCap": 440055861312
     },
     "beta": {
-      "beta5y": 0.829
+      "beta5y": 0.812
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 549.07,
-        "high": 561.83,
-        "low": 547.8,
-        "close": 557.57,
-        "volume": 2901200
-      },
-      {
-        "date": "2025-03-28",
-        "open": 554.23,
-        "high": 558.59,
-        "low": 540.09,
-        "close": 540.61,
-        "volume": 2656400
-      },
-      {
-        "date": "2025-03-31",
-        "open": 532.16,
-        "high": 551.43,
-        "low": 531.02,
-        "close": 548.12,
-        "volume": 4741800
-      },
-      {
-        "date": "2025-04-01",
-        "open": 546.8,
-        "high": 551.15,
-        "low": 544,
-        "close": 548.51,
-        "volume": 2714900
-      },
       {
         "date": "2025-04-02",
         "open": 542.86,
@@ -7144,6 +7113,38 @@
         "low": 480.5,
         "close": 484.24,
         "volume": 3963300
+      },
+      {
+        "date": "2026-03-30",
+        "open": 488.03,
+        "high": 495.54,
+        "low": 487,
+        "close": 494,
+        "volume": 3629500
+      },
+      {
+        "date": "2026-03-31",
+        "open": 500,
+        "high": 501.41,
+        "low": 490.58,
+        "close": 499.66,
+        "volume": 4417600
+      },
+      {
+        "date": "2026-04-01",
+        "open": 502.23,
+        "high": 503,
+        "low": 485.65,
+        "close": 491.65,
+        "volume": 4607100
+      },
+      {
+        "date": "2026-04-02",
+        "open": 488.13,
+        "high": 499.88,
+        "low": 487.75,
+        "close": 493.44,
+        "volume": 2926000
       }
     ],
     "news": [
@@ -7228,21 +7229,84 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Mr. Craig E. Vosburg",
+        "title": "Chief Services Officer",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 2323225
+      },
+      {
+        "name": "Mr. Devin Corr",
+        "title": "Executive Vice President of Investor Relations"
+      },
+      {
+        "name": "Mr. Michael Miebach",
+        "title": "CEO, President & Director",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 5991496
+      },
+      {
+        "name": "Mr. Richard R. Verma Ph.D.",
+        "title": "Chief Administrative Officer",
+        "age": 52,
+        "yearBorn": 1973
+      },
+      {
+        "name": "Mr. Sachin Mehra",
+        "title": "Chief Financial Officer",
+        "age": 54,
+        "yearBorn": 1971,
+        "totalPay": 2953621
+      },
+      {
+        "name": "Mr. Timothy Henry Murphy J.D.",
+        "title": "Vice Chair",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 2286695
+      },
+      {
+        "name": "Ms. Jill Kramer",
+        "title": "Chief Marketing & Communications Officer",
+        "age": 55,
+        "yearBorn": 1970
+      },
+      {
+        "name": "Ms. P. Raj Seshadri",
+        "title": "Chief Commercial Payments Officer",
+        "age": 59,
+        "yearBorn": 1966,
+        "totalPay": 1931834
+      },
+      {
+        "name": "Ms. Ruosi Wan",
+        "title": "Executive Vice President of Strategy, Corporate Development and M&A"
+      },
+      {
+        "name": "Ms. Tiffany M. Hall",
+        "title": "General Counsel",
+        "age": 45,
+        "yearBorn": 1980
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.31,
-        "industryAvg": 22.16
+        "value": 29.87,
+        "industryAvg": 22.68
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.17,
-        "industryAvg": 2.38
+        "value": 13.42,
+        "industryAvg": 2.43
       },
       {
         "metric": "P/B Ratio",
-        "value": 55.82,
-        "industryAvg": 1.55
+        "value": 56.88,
+        "industryAvg": 1.59
       },
       {
         "metric": "ROE",
@@ -7257,24 +7321,24 @@
       {
         "metric": "Gross Margin",
         "value": 79.35,
-        "industryAvg": 14.979999999999999
+        "industryAvg": 14.97
       },
       {
         "metric": "EBITDA Margin",
         "value": 60.550000000000004,
-        "industryAvg": 9.71
+        "industryAvg": 9.719999999999999
       },
       {
         "metric": "Net Margin",
         "value": 46.1,
-        "industryAvg": 18.48
+        "industryAvg": 18.45
       }
     ],
     "dcf": {
-      "fairValue": 306.43,
-      "currentPrice": 484.24,
-      "upside": -36.72,
-      "wacc": 10.98,
+      "fairValue": 312.84,
+      "currentPrice": 493.44,
+      "upside": -36.6,
+      "wacc": 10.82,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 24.18,
         "Terminal growth": 3

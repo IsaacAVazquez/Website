@@ -79,52 +79,67 @@ function fmt(v: number | null | undefined, style: "decimal" | "percent" | "curre
   return v.toFixed(2);
 }
 
-// ─── Score helpers ─────────────────────────────────────────────────────────
+// ─── Absolute score benchmarks (0–100 against market norms) ───────────────
+// Values are in the same units the API returns:
+//   P/E, P/S, P/B  → raw ratio  (25 = 25×)
+//   ROE/ROA/margin → percentage (25 = 25%)
+//   Beta           → decimal    (1.2)
+//   Growth/DCF     → percentage (20 = 20%)
 
-/** Normalize two values between 0–100. Returns [scoreA, scoreB]. */
-function normalizeTwo(
-  a: number | null | undefined,
-  b: number | null | undefined,
-  higherIsBetter: boolean,
-): [number, number] {
-  const numA = a ?? null;
-  const numB = b ?? null;
-  if (numA === null && numB === null) return [50, 50];
-  if (numA === null) return [20, 80];
-  if (numB === null) return [80, 20];
-
-  const va = higherIsBetter ? numA : -numA;
-  const vb = higherIsBetter ? numB : -numB;
-  if (va === vb) return [50, 50];
-
-  const min = Math.min(va, vb);
-  const max = Math.max(va, vb);
-  const range = max - min;
-  if (range === 0) return [50, 50];
-
-  return [((va - min) / range) * 100, ((vb - min) / range) * 100];
+function avg(scores: number[]): number {
+  return scores.length === 0 ? 50 : scores.reduce((a, b) => a + b, 0) / scores.length;
 }
 
-/**
- * Composite score across multiple metric pairs.
- * Each pair is normalized independently, then scores are averaged.
- */
-function compositeScore(
-  valuesA: (number | null | undefined)[],
-  valuesB: (number | null | undefined)[],
-  higherIsBetter: boolean,
-): [number, number] {
-  const sumA: number[] = [];
-  const sumB: number[] = [];
-  for (let i = 0; i < valuesA.length; i++) {
-    const [sa, sb] = normalizeTwo(valuesA[i], valuesB[i], higherIsBetter);
-    sumA.push(sa);
-    sumB.push(sb);
+function scoreValuation(
+  pe: number | null | undefined,
+  ps: number | null | undefined,
+  pb: number | null | undefined,
+): number {
+  const scores: number[] = [];
+  if (pe != null && isFinite(pe) && pe > 0) {
+    scores.push(pe < 10 ? 95 : pe < 15 ? 82 : pe < 20 ? 68 : pe < 30 ? 52 : pe < 45 ? 35 : pe < 70 ? 20 : 8);
   }
-  if (sumA.length === 0) return [50, 50];
-  const avgA = sumA.reduce((s, v) => s + v, 0) / sumA.length;
-  const avgB = sumB.reduce((s, v) => s + v, 0) / sumB.length;
-  return [avgA, avgB];
+  if (ps != null && isFinite(ps) && ps > 0) {
+    scores.push(ps < 1 ? 95 : ps < 2 ? 80 : ps < 5 ? 62 : ps < 10 ? 42 : ps < 20 ? 22 : 8);
+  }
+  if (pb != null && isFinite(pb) && pb > 0) {
+    scores.push(pb < 1 ? 95 : pb < 2 ? 82 : pb < 4 ? 65 : pb < 8 ? 45 : pb < 15 ? 25 : 8);
+  }
+  return avg(scores);
+}
+
+function scoreGrowth(growthRate: number | null): number {
+  if (growthRate == null || !isFinite(growthRate)) return 50;
+  // growthRate is in percentage units (e.g. 25 = 25%)
+  return growthRate > 30 ? 95 : growthRate > 20 ? 82 : growthRate > 10 ? 67 : growthRate > 5 ? 52 : growthRate > 0 ? 36 : growthRate > -10 ? 20 : 8;
+}
+
+function scoreProfitability(
+  roe: number | null | undefined,
+  roa: number | null | undefined,
+  netMargin: number | null | undefined,
+): number {
+  const scores: number[] = [];
+  if (roe != null && isFinite(roe)) {
+    scores.push(roe > 30 ? 95 : roe > 20 ? 80 : roe > 10 ? 65 : roe > 0 ? 42 : 10);
+  }
+  if (roa != null && isFinite(roa)) {
+    scores.push(roa > 15 ? 95 : roa > 10 ? 80 : roa > 5 ? 65 : roa > 0 ? 42 : 10);
+  }
+  if (netMargin != null && isFinite(netMargin)) {
+    scores.push(netMargin > 30 ? 95 : netMargin > 20 ? 80 : netMargin > 10 ? 62 : netMargin > 5 ? 44 : netMargin > 0 ? 26 : 8);
+  }
+  return avg(scores);
+}
+
+function scoreSafety(beta: number | null | undefined): number {
+  if (beta == null || !isFinite(beta)) return 50;
+  return beta < 0.3 ? 95 : beta < 0.6 ? 82 : beta < 0.8 ? 70 : beta < 1.0 ? 60 : beta < 1.2 ? 50 : beta < 1.5 ? 36 : beta < 2.0 ? 22 : 10;
+}
+
+function scoreDcfUpside(upside: number | null | undefined): number {
+  if (upside == null || !isFinite(upside)) return 50;
+  return upside > 50 ? 95 : upside > 30 ? 80 : upside > 15 ? 65 : upside > 5 ? 50 : upside > 0 ? 36 : upside > -15 ? 22 : 8;
 }
 
 // ─── Growth data helpers ───────────────────────────────────────────────────
@@ -216,37 +231,34 @@ export function ComparisonTab() {
   const marginsA = Array.isArray(marginsRawA) ? marginsRawA[marginsRawA.length - 1] : undefined;
   const marginsB = Array.isArray(marginsRawB) ? marginsRawB[marginsRawB.length - 1] : undefined;
 
-  // ── Radar scores ───────────────────────────────────────────────────────
+  // ── Radar scores (absolute benchmarks — independent of comparison stock) ──
   const radarData = useMemo((): RadarDimension[] => {
-    // 1. Valuation (lower P/E, P/S, P/B = better)
-    const [valA, valB] = compositeScore(
-      [fundA?.ttmPe, fundA?.psRatio, fundA?.pbRatio],
-      [fundB?.ttmPe, fundB?.psRatio, fundB?.pbRatio],
-      false, // lower is better
-    );
-
-    // 2. Growth (higher avg YoY growth = better)
-    const [growA, growB] = normalizeTwo(avgGrowth(growthRawA), avgGrowth(growthRawB), true);
-
-    // 3. Profitability (higher ROE, ROA, net margin = better)
-    const [profScoreA, profScoreB] = compositeScore(
-      [profA?.roe, profA?.roa, marginsA?.netMargin],
-      [profB?.roe, profB?.roa, marginsB?.netMargin],
-      true,
-    );
-
-    // 4. Safety (lower beta = higher score)
-    const [safeA, safeB] = normalizeTwo(betaA?.beta5y, betaB?.beta5y, false);
-
-    // 5. DCF Upside (higher = better)
-    const [dcfScoreA, dcfScoreB] = normalizeTwo(dcfA?.upside, dcfB?.upside, true);
-
     return [
-      { dimension: "Valuation",    scoreA: valA,       scoreB: valB },
-      { dimension: "Growth",       scoreA: growA,      scoreB: growB },
-      { dimension: "Profitability",scoreA: profScoreA, scoreB: profScoreB },
-      { dimension: "Safety",       scoreA: safeA,      scoreB: safeB },
-      { dimension: "DCF Upside",   scoreA: dcfScoreA,  scoreB: dcfScoreB },
+      {
+        dimension: "Valuation",
+        scoreA: scoreValuation(fundA?.ttmPe, fundA?.psRatio, fundA?.pbRatio),
+        scoreB: scoreValuation(fundB?.ttmPe, fundB?.psRatio, fundB?.pbRatio),
+      },
+      {
+        dimension: "Growth",
+        scoreA: scoreGrowth(avgGrowth(growthRawA)),
+        scoreB: scoreGrowth(avgGrowth(growthRawB)),
+      },
+      {
+        dimension: "Profitability",
+        scoreA: scoreProfitability(profA?.roe, profA?.roa, marginsA?.netMargin),
+        scoreB: scoreProfitability(profB?.roe, profB?.roa, marginsB?.netMargin),
+      },
+      {
+        dimension: "Safety",
+        scoreA: scoreSafety(betaA?.beta5y),
+        scoreB: scoreSafety(betaB?.beta5y),
+      },
+      {
+        dimension: "DCF Upside",
+        scoreA: scoreDcfUpside(dcfA?.upside),
+        scoreB: scoreDcfUpside(dcfB?.upside),
+      },
     ];
   }, [fundA, fundB, growthRawA, growthRawB, profA, profB, marginsA, marginsB, betaA, betaB, dcfA, dcfB]);
 

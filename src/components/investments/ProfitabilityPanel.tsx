@@ -5,6 +5,7 @@ import { WarmCard } from "@/components/ui/WarmCard";
 import { useStockData } from "@/hooks/useStockData";
 import type { Profitability, MarginsData } from "@/types/investment";
 import { ErrorState } from "./ErrorState";
+import { MetricTooltip } from "./MetricTooltip";
 
 interface Props { symbol: string }
 
@@ -34,7 +35,10 @@ function MetricRow({ label, value, max }: { label: string; value: number | undef
   const positive = (value ?? 0) >= 0;
   return (
     <div className="flex items-center gap-3 py-2 border-b border-[var(--home-rule)] last:border-0">
-      <span className="text-sm text-[var(--home-ink-muted)] w-40 shrink-0">{label}</span>
+      <span className="flex items-center gap-0.5 text-sm text-[var(--home-ink-muted)] w-40 shrink-0">
+        {label}
+        <MetricTooltip term={label} />
+      </span>
       <Bar value={value} max={max} />
       <span
         className={`text-sm font-medium w-16 text-right shrink-0 ${

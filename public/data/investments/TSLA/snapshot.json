@@ -1,10 +1,10 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-04-03T19:32:11.799499+00:00",
+  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-03T19:32:11.799499+00:00",
+    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
     "sections": {
-      "price": "2026-03-27"
+      "price": "2026-04-02"
     }
   },
   "source": "prefetched",
@@ -23,6 +23,7 @@
     "beta": true,
     "news": true,
     "dcf": true,
+    "officers": true,
     "compare": true
   },
   "sections": {
@@ -40,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.08,
-      "ttmPe": 335.03,
-      "marketCap": 1357742470560,
-      "psRatio": 14.32,
-      "pbRatio": 16.53
+      "ttmPe": 333.88,
+      "marketCap": 1353089454880,
+      "psRatio": 14.27,
+      "pbRatio": 16.47
     },
     "profitability": {
       "roe": 1.04,
@@ -5587,49 +5588,17 @@
       ]
     },
     "wacc": {
-      "wacc": 19.900000000000002,
-      "costOfEquity": 20.11,
+      "wacc": 20.29,
+      "costOfEquity": 20.51,
       "costOfDebt": 0.58,
       "taxRate": 28.000000000000004,
-      "beta": 1.8586,
-      "marketCap": 1357742470560
+      "beta": 1.8921,
+      "marketCap": 1353089454880
     },
     "beta": {
-      "beta5y": 1.8586
+      "beta5y": 1.8921
     },
     "price": [
-      {
-        "date": "2025-03-27",
-        "open": 272.48,
-        "high": 291.85,
-        "low": 271.82,
-        "close": 273.13,
-        "volume": 162572100
-      },
-      {
-        "date": "2025-03-28",
-        "open": 275.58,
-        "high": 276.1,
-        "low": 260.57,
-        "close": 263.55,
-        "volume": 123809400
-      },
-      {
-        "date": "2025-03-31",
-        "open": 249.31,
-        "high": 260.56,
-        "low": 243.36,
-        "close": 259.16,
-        "volume": 134008900
-      },
-      {
-        "date": "2025-04-01",
-        "open": 263.8,
-        "high": 277.45,
-        "low": 259.25,
-        "close": 268.46,
-        "volume": 146486900
-      },
       {
         "date": "2025-04-02",
         "open": 254.6,
@@ -7612,7 +7581,39 @@
         "high": 369.86,
         "low": 359.47,
         "close": 361.83,
-        "volume": 61869200
+        "volume": 62065700
+      },
+      {
+        "date": "2026-03-30",
+        "open": 365.86,
+        "high": 367.29,
+        "low": 352.14,
+        "close": 355.28,
+        "volume": 67954400
+      },
+      {
+        "date": "2026-03-31",
+        "open": 361.51,
+        "high": 373.33,
+        "low": 361,
+        "close": 371.75,
+        "volume": 75534900
+      },
+      {
+        "date": "2026-04-01",
+        "open": 378.63,
+        "high": 383.14,
+        "low": 374.08,
+        "close": 381.26,
+        "volume": 58683800
+      },
+      {
+        "date": "2026-04-02",
+        "open": 364.2,
+        "high": 370.28,
+        "low": 359.03,
+        "close": 360.59,
+        "volume": 83031200
       }
     ],
     "news": [
@@ -7673,19 +7674,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
-        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
         "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
         "publisher": "Zacks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
         "type": "STORY"
       },
       {
@@ -7697,53 +7698,106 @@
         "type": "STORY"
       }
     ],
+    "officers": [
+      {
+        "name": "Ashok Elluswamy",
+        "title": "Executive Officer"
+      },
+      {
+        "name": "Mr. Brandon Ehrhart",
+        "title": "General Counsel & Corporate Secretary"
+      },
+      {
+        "name": "Mr. Elon R. Musk",
+        "title": "Co-Founder, Technoking of Tesla, CEO & Director",
+        "age": 54,
+        "yearBorn": 1971
+      },
+      {
+        "name": "Mr. Franz von Holzhausen",
+        "title": "Chief Designer"
+      },
+      {
+        "name": "Mr. John Walker",
+        "title": "Vice President of Sales - North America",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 121550
+      },
+      {
+        "name": "Mr. Lars Moravy",
+        "title": "Vice President of Vehicle Engineering"
+      },
+      {
+        "name": "Mr. Rodney D. Westmoreland Jr.",
+        "title": "Director of Construction Management"
+      },
+      {
+        "name": "Mr. Vaibhav Taneja",
+        "title": "Chief Financial Officer",
+        "age": 47,
+        "yearBorn": 1978,
+        "totalPay": 306846
+      },
+      {
+        "name": "Mr. Xiaotong Zhu",
+        "title": "Senior Vice President of APAC & Global Vehicle Manufacturing",
+        "age": 45,
+        "yearBorn": 1980,
+        "totalPay": 518250
+      },
+      {
+        "name": "Travis Axelrod",
+        "title": "Head of Investor Relations"
+      }
+    ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 335.03,
-        "industryAvg": 120.59
+        "value": 333.88,
+        "industryAvg": 86.89
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.32,
-        "industryAvg": 1.59
+        "value": 14.27,
+        "industryAvg": 1.7
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.53,
-        "industryAvg": 1.83
+        "value": 16.47,
+        "industryAvg": 1.85
       },
       {
         "metric": "ROE",
         "value": 1.04,
-        "industryAvg": 0.09
+        "industryAvg": -0.11
       },
       {
         "metric": "ROA",
         "value": 0.62,
-        "industryAvg": 0.03
+        "industryAvg": -0.03
       },
       {
         "metric": "Gross Margin",
         "value": 20.119999999999997,
-        "industryAvg": 12.22
+        "industryAvg": 12.33
       },
       {
         "metric": "EBITDA Margin",
         "value": 11.68,
-        "industryAvg": 8.44
+        "industryAvg": 8.559999999999999
       },
       {
         "metric": "Net Margin",
         "value": 3.37,
-        "industryAvg": 1.08
+        "industryAvg": 1.01
       }
     ],
     "dcf": {
-      "fairValue": 3.57,
-      "currentPrice": 361.83,
-      "upside": -99.01,
-      "wacc": 19.9,
+      "fairValue": 3.5,
+      "currentPrice": 360.59,
+      "upside": -99.03,
+      "wacc": 20.29,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3
