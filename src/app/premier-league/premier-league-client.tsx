@@ -4,17 +4,15 @@ import {
   startTransition,
   useEffect,
   useMemo,
+  useState,
   type CSSProperties,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { BarChart3, ExternalLink, Shield, Trophy, TrendingUp } from "lucide-react";
-import { SectionIntro } from "@/components/ui/SectionIntro";
 import {
-  SurfaceCard,
   StatCard,
   MetricCard,
   CrestAvatar,
-  InfoChip,
   TeamResultPill,
   FixtureCard,
   LeaderList,
@@ -214,72 +212,71 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
 
   const selectedZone = selectedRow ? getPLZone(selectedRow.position) : "midtable";
   const lastUpdated = formatGeneratedAt(summary.generatedAt);
+  const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
 
   return (
-    <section className="page-section relative overflow-hidden bg-[var(--home-paper)]">
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[26rem] opacity-90"
-        style={{
-          background: "radial-gradient(circle at top, color-mix(in srgb, var(--home-haze) 18%, transparent), transparent 56%)",
-        }}
-      />
-
-      <div className="page-shell relative space-y-8 sm:space-y-10">
-        {/* Hero panel */}
-        <div className="section-panel p-6 sm:p-8 lg:p-10">
-          <SectionIntro
-            eyebrow="Football Data Tool"
-            size="lg"
-            title="Premier League Pulse"
-            description="I track the Premier League title race, European qualification gaps, and relegation fight here. Updated weekly from football-data.org."
-          />
-
-          <div className="mt-6 flex flex-wrap gap-3 text-sm text-[var(--home-ink-muted)]">
-            <InfoChip label={`Season ${summary.competition?.seasonLabel ?? "2025/26"}`} />
-            {summary.competition?.currentMatchday && (
-              <InfoChip label={`Matchday ${summary.competition.currentMatchday}`} />
-            )}
-            <InfoChip label={`Updated ${lastUpdated}`} />
-            <InfoChip label={snapshot.sourceLabel} />
+    <div className="home-page min-h-screen">
+      <div className="home-shell home-section space-y-5 sm:space-y-6">
+        {/* Page header */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="home-kicker mb-1">Football Data Tool</p>
+            <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
+              Premier League Pulse
+            </h1>
+            <p className="mt-1 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+              Title race, European qualification gaps, and relegation fight. Updated weekly from football-data.org.
+            </p>
           </div>
-
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            <StatCard
-              variant="compact"
-              eyebrow="Leader"
-              metric={`${leader?.team.shortName ?? "—"} · ${leader?.points ?? "—"} pts`}
-              detail={leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.team.shortName}` : "Standings loading"}
-              icon={<Trophy className="h-4 w-4" />}
-            />
-            <StatCard
-              variant="compact"
-              eyebrow="Top-four line"
-              metric={fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—"}
-              detail={fourthPlace && fifthPlace ? `${fourthPlace.team.shortName} over ${fifthPlace.team.shortName}` : ""}
-              icon={<TrendingUp className="h-4 w-4" />}
-            />
-            <StatCard
-              variant="compact"
-              eyebrow="Europe line"
-              metric={summary.standings[5] && summary.standings[6] ? `+${summary.standings[5].points - summary.standings[6].points} pts` : "—"}
-              detail={summary.standings[5] && summary.standings[6] ? `${summary.standings[5].team.shortName} over ${summary.standings[6].team.shortName}` : ""}
-              icon={<BarChart3 className="h-4 w-4" />}
-            />
-            <StatCard
-              variant="compact"
-              eyebrow="Safety line"
-              metric={safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—"}
-              detail={safetyLine && dropLine ? `${safetyLine.team.shortName} over ${dropLine.team.shortName}` : ""}
-              icon={<Shield className="h-4 w-4" />}
-            />
+          <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
+            {[
+              `Season ${summary.competition?.seasonLabel ?? "2025/26"}`,
+              summary.competition?.currentMatchday ? `Matchday ${summary.competition.currentMatchday}` : null,
+              `Updated ${lastUpdated}`,
+            ].filter(Boolean).map((label) => (
+              <span key={label} className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium">
+                {label}
+              </span>
+            ))}
           </div>
         </div>
 
+        {/* Key gaps */}
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <StatCard
+            variant="compact"
+            eyebrow="Leader"
+            metric={`${leader?.team.shortName ?? "—"} · ${leader?.points ?? "—"} pts`}
+            detail={leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.team.shortName}` : "Standings loading"}
+            icon={<Trophy className="h-4 w-4" />}
+          />
+          <StatCard
+            variant="compact"
+            eyebrow="Top-four line"
+            metric={fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—"}
+            detail={fourthPlace && fifthPlace ? `${fourthPlace.team.shortName} over ${fifthPlace.team.shortName}` : ""}
+            icon={<TrendingUp className="h-4 w-4" />}
+          />
+          <StatCard
+            variant="compact"
+            eyebrow="Europe line"
+            metric={summary.standings[5] && summary.standings[6] ? `+${summary.standings[5].points - summary.standings[6].points} pts` : "—"}
+            detail={summary.standings[5] && summary.standings[6] ? `${summary.standings[5].team.shortName} over ${summary.standings[6].team.shortName}` : ""}
+            icon={<BarChart3 className="h-4 w-4" />}
+          />
+          <StatCard
+            variant="compact"
+            eyebrow="Safety line"
+            metric={safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—"}
+            detail={safetyLine && dropLine ? `${safetyLine.team.shortName} over ${dropLine.team.shortName}` : ""}
+            icon={<Shield className="h-4 w-4" />}
+          />
+        </div>
+
         {/* Main standings + sidebar */}
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.55fr)_minmax(300px,0.95fr)]">
+        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           {/* Standings */}
-          <section className="section-panel p-5 sm:p-6">
+          <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
               <span className="text-sm text-[var(--home-ink-muted)]">{visibleStandings.length} clubs</span>
@@ -317,7 +314,6 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                     <th className="hidden px-3 py-2 font-semibold lg:table-cell">GF</th>
                     <th className="hidden px-3 py-2 font-semibold lg:table-cell">GA</th>
                     <th className="px-3 py-2 font-semibold">GD</th>
-                    <th className="hidden px-3 py-2 font-semibold xl:table-cell">Meter</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -367,18 +363,8 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                         <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] lg:table-cell">
                           {row.goalsAgainst}
                         </td>
-                        <td className="px-3 py-3 align-middle text-sm font-medium text-[var(--home-ink)]">
+                        <td className="rounded-r-2xl px-3 py-3 align-middle text-sm font-medium text-[var(--home-ink)]">
                           {row.goalDifference > 0 ? `+${row.goalDifference}` : row.goalDifference}
-                        </td>
-                        <td className="hidden rounded-r-2xl px-3 py-3 align-middle xl:table-cell">
-                          {leader && (
-                            <div className="h-2.5 w-28 rounded-full bg-[var(--home-paper)]">
-                              <div
-                                className="h-full rounded-full bg-[var(--home-haze)] transition-[width]"
-                                style={{ width: `${(row.points / leader.points) * 100}%` }}
-                              />
-                            </div>
-                          )}
                         </td>
                       </tr>
                     );
@@ -388,148 +374,192 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
             </div>
           </section>
 
-          {/* Club sidebar */}
-          <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+          {/* Compact club sidebar */}
+          <aside className="md:sticky md:top-24 md:self-start">
             {selectedRow ? (
-              <section className="section-panel p-5 sm:p-6" aria-live="polite" data-testid="pl-selected-club">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-4">
-                    <CrestAvatar crest={selectedRow.team.crest} name={selectedRow.team.shortName} size="lg" />
-                    <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Club snapshot</p>
-                      <h2 className="mt-1 text-2xl font-bold text-[var(--home-ink)]">{selectedRow.team.name}</h2>
+              <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 shadow-[var(--shadow-sm)]" aria-live="polite" data-testid="pl-selected-club">
+                <div className="flex items-start gap-3">
+                  <CrestAvatar crest={selectedRow.team.crest} name={selectedRow.team.shortName} size="lg" />
+                  <div className="min-w-0 flex-1">
+                    <h2 className="truncate text-lg font-bold text-[var(--home-ink)]">{selectedRow.team.name}</h2>
+                    <div className="mt-1.5 flex flex-wrap gap-1.5">
+                      <span
+                        className="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                        style={getZonePillStyle(selectedZone)}
+                      >
+                        {getZoneLabel(selectedZone)}
+                      </span>
+                      <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                        {selectedRow.points} pts
+                      </span>
+                      <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                        {38 - selectedRow.playedGames} left
+                      </span>
                     </div>
                   </div>
-                  <div className="rounded-2xl bg-[var(--home-haze)] px-4 py-3 text-right text-[var(--home-paper)] shadow-sm flex-shrink-0">
-                    <p className="text-xs uppercase tracking-[0.14em] opacity-80">Position</p>
-                    <p className="text-2xl font-bold">{selectedRow.position}</p>
+                  <div className="flex-shrink-0 rounded-xl bg-[var(--home-haze)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
+                    <p className="text-[10px] uppercase tracking-[0.14em] opacity-80">Pos</p>
+                    <p className="text-xl font-bold">{selectedRow.position}</p>
                   </div>
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span
-                    className="inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em]"
-                    style={getZonePillStyle(selectedZone)}
-                  >
-                    {getZoneLabel(selectedZone)}
-                  </span>
-                  <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                    {selectedRow.points} points
-                  </span>
-                  <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                    {38 - selectedRow.playedGames} matches left
-                  </span>
-                </div>
+                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[var(--home-rule)] pt-4">
+                  {([
+                    ["PPG", formatFixed(selectedRow.points / selectedRow.playedGames)],
+                    ["Record", `${selectedRow.won}-${selectedRow.draw}-${selectedRow.lost}`],
+                    ["Attack", `#${attackRankings.get(selectedRow.team.id) ?? "—"}`],
+                    ["Defense", `#${defenseRankings.get(selectedRow.team.id) ?? "—"}`],
+                    ["GF/m", formatFixed(selectedRow.goalsFor / selectedRow.playedGames)],
+                    ["GA/m", formatFixed(selectedRow.goalsAgainst / selectedRow.playedGames)],
+                  ] as const).map(([label, value]) => (
+                    <div key={label} className="flex items-baseline justify-between gap-2">
+                      <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">{label}</dt>
+                      <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
 
-                <div className="mt-6 grid gap-3 grid-cols-2 sm:grid-cols-3">
-                  <MetricCard label="PPG" value={formatFixed(selectedRow.points / selectedRow.playedGames)} />
-                  <MetricCard label="Record" value={`${selectedRow.won}-${selectedRow.draw}-${selectedRow.lost}`} />
-                  <MetricCard label="Attack rank" value={`#${attackRankings.get(selectedRow.team.id) ?? "—"}`} />
-                  <MetricCard label="Defense rank" value={`#${defenseRankings.get(selectedRow.team.id) ?? "—"}`} />
-                  <MetricCard label="GF / match" value={formatFixed(selectedRow.goalsFor / selectedRow.playedGames)} />
-                  <MetricCard label="GA / match" value={formatFixed(selectedRow.goalsAgainst / selectedRow.playedGames)} />
-                </div>
-
-                {teamSnapshot && (
-                  <>
-                    {teamSnapshot.form.sequence.length > 0 && (
-                      <div className="mt-6">
-                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Recent form</p>
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          {teamSnapshot.form.sequence.map((result, i) => (
-                            <TeamResultPill key={`${result}-${i}`} result={result} />
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {teamSnapshot.recentFixtures.length > 0 && (
-                      <div className="mt-6">
-                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Recent results</p>
-                        <div className="space-y-2">
-                          {teamSnapshot.recentFixtures.slice(0, 3).map((fixture) => (
-                            <FixtureCard
-                              key={fixture.id}
-                              fixture={fixture}
-                              contextTeamId={selectedTeamId}
-                              compact
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {teamSnapshot.upcomingFixtures.length > 0 && (
-                      <div className="mt-6">
-                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Upcoming fixtures</p>
-                        <div className="space-y-2">
-                          {teamSnapshot.upcomingFixtures.slice(0, 3).map((fixture) => (
-                            <FixtureCard key={fixture.id} fixture={fixture} contextTeamId={selectedTeamId} compact />
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </>
+                {teamSnapshot && teamSnapshot.form.sequence.length > 0 && (
+                  <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Form</p>
+                    <div className="mt-2 flex gap-1.5">
+                      {teamSnapshot.form.sequence.map((result, i) => (
+                        <TeamResultPill key={`${result}-${i}`} result={result} />
+                      ))}
+                    </div>
+                  </div>
                 )}
               </section>
             ) : null}
-
-            {/* Top scorers */}
-            {scorerEntries.length > 0 && (
-              <section className="section-panel p-5 sm:p-6">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Goals leaderboard</p>
-                    <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
-                  </div>
-                  <a
-                    href="https://www.premierleague.com/stats/top/players/goals"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-haze)]"
-                  >
-                    Official
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                </div>
-                <LeaderList leaders={scorerEntries} statLabel="goals" clubLookup={clubLookup} />
-              </section>
-            )}
           </aside>
         </div>
 
-        {/* League-wide fixtures */}
-        {(summary.recentFixtures.length > 0 || summary.upcomingFixtures.length > 0) && (
-          <div className="grid gap-6 md:grid-cols-2">
-            {summary.recentFixtures.length > 0 && (
-              <SurfaceCard className="p-5 sm:p-6">
-                <div className="border-b border-[var(--home-rule)] pb-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Recent slate</p>
-                  <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
+        {/* Tabbed detail strip */}
+        <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
+          <div
+            className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-1.5"
+            role="tablist"
+            aria-label="Club and league details"
+          >
+            {(["club", "fixtures", "scorers"] as const).map((tab) => {
+              const labels = { club: "Club Detail", fixtures: "Fixtures", scorers: "Top Scorers" } as const;
+              return (
+                <button
+                  key={tab}
+                  role="tab"
+                  type="button"
+                  aria-selected={activeDetailTab === tab}
+                  onClick={() => setActiveDetailTab(tab)}
+                  className={`min-h-[44px] whitespace-nowrap rounded-2xl px-5 py-2.5 text-sm font-semibold transition-colors ${
+                    activeDetailTab === tab
+                      ? "bg-[var(--home-haze)] text-white shadow-sm"
+                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+                  }`}
+                >
+                  {labels[tab]}
+                </button>
+              );
+            })}
+          </div>
+
+          <div role="tabpanel" className="mt-6">
+            {activeDetailTab === "club" && selectedRow && (
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                <div className="space-y-5">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Performance</p>
+                    <div className="mt-3 grid grid-cols-2 gap-3">
+                      <MetricCard label="PPG" value={formatFixed(selectedRow.points / selectedRow.playedGames)} />
+                      <MetricCard label="Record" value={`${selectedRow.won}-${selectedRow.draw}-${selectedRow.lost}`} />
+                      <MetricCard label="Attack rank" value={`#${attackRankings.get(selectedRow.team.id) ?? "—"}`} />
+                      <MetricCard label="Defense rank" value={`#${defenseRankings.get(selectedRow.team.id) ?? "—"}`} />
+                      <MetricCard label="GF / match" value={formatFixed(selectedRow.goalsFor / selectedRow.playedGames)} />
+                      <MetricCard label="GA / match" value={formatFixed(selectedRow.goalsAgainst / selectedRow.playedGames)} />
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-4 space-y-3">
-                  {summary.recentFixtures.slice(0, 6).map((f) => (
-                    <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
-                  ))}
-                </div>
-              </SurfaceCard>
+
+                {teamSnapshot && teamSnapshot.recentFixtures.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Recent results</p>
+                    <div className="mt-3 space-y-2">
+                      {teamSnapshot.recentFixtures.slice(0, 3).map((fixture) => (
+                        <FixtureCard key={fixture.id} fixture={fixture} contextTeamId={selectedTeamId} compact />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {teamSnapshot && teamSnapshot.upcomingFixtures.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Upcoming fixtures</p>
+                    <div className="mt-3 space-y-2">
+                      {teamSnapshot.upcomingFixtures.slice(0, 3).map((fixture) => (
+                        <FixtureCard key={fixture.id} fixture={fixture} contextTeamId={selectedTeamId} compact />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             )}
-            {summary.upcomingFixtures.length > 0 && (
-              <SurfaceCard className="p-5 sm:p-6">
-                <div className="border-b border-[var(--home-rule)] pb-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">Next up</p>
-                  <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
+
+            {activeDetailTab === "fixtures" && (
+              <div className="grid gap-6 md:grid-cols-2">
+                {summary.recentFixtures.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Recent slate</p>
+                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
+                    <div className="mt-4 space-y-3">
+                      {summary.recentFixtures.slice(0, 8).map((f) => (
+                        <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {summary.upcomingFixtures.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Next up</p>
+                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
+                    <div className="mt-4 space-y-3">
+                      {summary.upcomingFixtures.slice(0, 8).map((f) => (
+                        <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {activeDetailTab === "scorers" && scorerEntries.length > 0 && (
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Goals leaderboard</p>
+                      <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
+                    </div>
+                    <a
+                      href="https://www.premierleague.com/stats/top/players/goals"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-haze)]"
+                    >
+                      Official
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </div>
+                  <LeaderList leaders={scorerEntries.slice(0, 5)} statLabel="goals" clubLookup={clubLookup} />
                 </div>
-                <div className="mt-4 space-y-3">
-                  {summary.upcomingFixtures.slice(0, 6).map((f) => (
-                    <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
-                  ))}
-                </div>
-              </SurfaceCard>
+                {scorerEntries.length > 5 && (
+                  <div>
+                    <LeaderList leaders={scorerEntries.slice(5, 10)} statLabel="goals" clubLookup={clubLookup} />
+                  </div>
+                )}
+              </div>
             )}
           </div>
-        )}
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

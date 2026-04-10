@@ -21,6 +21,7 @@
     "test:e2e:debug": "playwright test --debug",
     "test:all": "npm run test:coverage && npm run test:e2e",
     "update:premier-league": "tsx scripts/buildPremierLeagueSnapshot.ts",
+    "update:la-liga": "tsx scripts/updateLaLigaSnapshot.ts",
     "update:fantasy": "tsx scripts/buildFantasyPositionData.ts && tsx scripts/buildFantasySnapshots.ts",
     "update:fantasy-rb": "tsx scripts/buildFantasyPositionData.ts && tsx scripts/buildFantasySnapshots.ts",
     "update:investments": ".venv/bin/python3 scripts/fetch_investments_data.py && tsx scripts/buildInvestmentsSnapshots.ts",
