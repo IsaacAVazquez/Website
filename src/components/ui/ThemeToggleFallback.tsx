@@ -11,7 +11,7 @@ export function ThemeToggleFallback({ className }: ThemeToggleFallbackProps) {
       aria-hidden="true"
       tabIndex={-1}
       className={cn(
-        "inline-flex items-center justify-center rounded-full text-[var(--home-ink-muted)]",
+        "inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-full text-[var(--home-ink-muted)]",
         className
       )}
     >

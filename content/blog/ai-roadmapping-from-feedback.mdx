@@ -1,6 +1,6 @@
 ---
 title: "Roadmapping with AI: Turning Raw Feedback into Quarterly Bets"
-excerpt: "The hard part of roadmap planning is not prioritization. It is the step before that: turning scattered feedback from interviews, tickets, and stakeholder requests into a coherent set of options that are actually comparable."
+excerpt: "AI helps me most before prioritization. It is useful for turning scattered feedback into a smaller set of comparable problems, which is the part of roadmapping that usually gets rushed."
 publishedAt: "2026-04-10"
 category: "Product Management"
 tags: ["Product Management", "AI", "Roadmapping", "User Research", "Workflow"]
@@ -8,60 +8,30 @@ featured: false
 author: "Isaac Vazquez"
 seo:
   title: "Roadmapping with AI: Turning Raw Feedback into Quarterly Bets"
-  description: "A step-by-step guide to using AI to synthesize user interviews, support tickets, and stakeholder inputs into structured roadmap options — and where the judgment still has to be yours."
+  description: "How I use AI to turn raw user and stakeholder feedback into roadmap options, and where the judgment still stays with me."
   keywords: ["AI roadmapping", "product roadmap AI", "AI feedback synthesis roadmap", "product manager AI workflow", "roadmap planning AI", "quarterly roadmap AI", "feedback to roadmap"]
 ---
 
 # Roadmapping with AI: Turning Raw Feedback into Quarterly Bets
 
-The hardest part of roadmap planning is not prioritization. Most frameworks for weighing impact against effort are not that complicated. The hard part is the step before that: taking the raw signal you have collected from user interviews, support tickets, sales feedback, and internal requests and turning it into a coherent set of options that are actually comparable.
+I think most roadmap conversations go wrong before prioritization even starts. Teams act as if the hard part is ranking opportunities, but the harder problem is turning raw feedback into something coherent enough to rank in the first place. Interviews, support tickets, sales asks, executive nudges, churn notes, and product analytics all arrive in different forms and carry different kinds of truth. If you flatten that mess too early, the roadmap meeting becomes a fight between whoever tells the cleanest story, not whoever has the strongest evidence.
 
-Without that synthesis step being done well, the prioritization process is doing more work than it should. You end up arguing about themes rather than tradeoffs because the underlying feedback has not been processed into a form where the tradeoffs are clear. AI has changed this step substantially for me, and the way it changed it is specific enough to describe.
+AI has been genuinely useful for me in this part of the process, but not because it decides what to build. It helps me do the preparation work that usually gets compressed under time pressure. It can cluster, summarize, and expose holes faster than I can. The decision still stays with me. That distinction matters, because once people start treating a model like a prioritization oracle, the quality of the roadmap usually drops rather than improves.
 
-## What the raw input actually looks like
+## What I ask it to do before the roadmap meeting
 
-Before I can synthesize feedback into roadmap inputs, I have to have the feedback in a usable form. This sounds obvious, and it took me longer than it should have to get right.
+The first thing I do is separate sources instead of merging them. I want user interviews in one place, support themes in another, sales feedback in another, and internal asks somewhere I can see clearly without letting them dominate the rest. I also want the reliability of the source called out, because not all signal deserves equal weight. One memorable anecdote from a senior stakeholder is not the same as a repeating pattern from users, even if it enters the room with more force.
 
-In practice, my raw input for a quarterly planning cycle comes from several sources with different formats and different levels of reliability. User interview transcripts are the highest quality signal, with specific quotes and context about what users were doing and why. Support ticket themes are aggregated and noisy, but they represent actual pain points at scale. Sales win/loss notes reflect what has been told to me about what matters to buyers, filtered through another person's interpretation. Internal requests come with political weight that does not always correlate with user value.
+Once the raw material is organized, I use AI to cluster problems rather than solutions. That has become an important rule for me. If I ask for solution ideas too early, the obvious solutions anchor the rest of the discussion and the team starts debating implementation before we have agreed on the underlying problem. When I keep the first pass focused on problem statements, the output is much more useful. I get a smaller set of recurring issues, direct quotes or evidence attached to them, and a clearer sense of where multiple sources are pointing at the same thing from different angles.
 
-The mistake I made early on was treating all of this as equivalent. It is not. A single user saying something in an interview is a data point. Fifteen support tickets describing the same workflow breakdown is a pattern. A sales team saying customers keep asking about integration X might be genuine or might be a negotiating tactic that never shows up after the deal is signed. The synthesis step has to preserve these distinctions, not flatten them.
+That step saves real time. It turns days of rereading into an hour or two of cleanup and review. But the system still needs a human editor. I almost always collapse a few clusters that should be one, split one that got merged too aggressively, and throw out some noise that the model interpreted as a theme simply because the wording repeated. I do not think that means the tool failed. I think it means clustering is a collaboration step, not a one-click truth machine.
 
-## Setting up the synthesis
+## Where the real product judgment still happens
 
-The workflow I use now starts with a structure document before I involve AI at all. I spend an hour or two organizing my raw inputs by type and by what I already believe about their relative reliability. I write brief notes on each major input source: how it was collected, who was involved, what biases might be in it, and what questions it leaves open.
+The part AI cannot own is deciding what matters now. A roadmap is not a report on the top five pains users mentioned. It is a set of bets shaped by strategy, timing, technical constraints, organizational capacity, and what the company is willing to defer. Models are not good at that because the most important variables are often the least explicit. They do not know the executive commitment you already made, the dependency that will not land this quarter, or the competitive pressure that changes how you should weight a problem even if users mention it less often.
 
-That hour is not optional. When I have tried to jump straight to AI synthesis without doing it, the outputs are plausible but shallow. The model surfaces the themes that are easiest to find rather than the ones that matter most. The pre-work forces me to engage with the source material myself before I hand it off for pattern recognition.
+I have seen PMs ask a model to score the opportunities and recommend the priority order. The answers usually sound reasonable, which is exactly why I do not trust them much. They are built from visible evidence and generic logic. Roadmapping is full of invisible constraints and asymmetric information. The better use of AI is to get the evidence into shape faster, write clearer option descriptions, and surface the places where you are relying on assumptions instead of actual signal.
 
-## Clustering problems, not solutions
+That last use is underrated. If I ask the model what information would most change my confidence in a proposed bet, it often points me toward the missing piece I should go get before the meeting. Maybe I need one more user conversation, a volume cut from support, or a better sense of implementation cost. That is valuable because it sharpens my own judgment instead of pretending to replace it.
 
-The first AI pass is clustering. I give Claude my organized input and ask it to identify the distinct problems users are describing, with direct quotes as evidence, grouped by similarity and tagged with source type. I specifically ask it not to infer solutions, just to describe the problems as users experienced them.
-
-The result is usually a set of 8 to 15 problem clusters, with some that are clearly the same problem described from different angles and some that are related but distinct. I review this output manually and collapse the ones that are clearly overlapping, separate the ones that got merged when they should not have, and cut the ones that represent edge cases that do not warrant roadmap attention.
-
-This takes about 30 minutes and produces what I think of as the cleaned feedback inventory: the set of problems worth taking into the prioritization discussion.
-
-I want to be specific about why asking for problems rather than solutions matters. If I let the AI suggest solutions, it will surface the obvious ones, and the obvious solutions will anchor the subsequent discussion. By clustering problems first and generating solution directions separately, I preserve the ability to consider non-obvious approaches to real problems.
-
-## Estimating relative scale
-
-The next step is harder, and AI is less reliable here, but still useful.
-
-I want some sense of how many users are affected by each problem and how significant the impact is when they encounter it. This is inherently an estimation exercise because I almost never have clean data for it. What I have is a mix of high-quality interviews that give depth but not breadth, support ticket volumes that give relative frequency, and some user research on task frequency and criticality.
-
-I describe each problem cluster to Claude and give it the evidence I have for scale and impact. Then I ask it to flag which estimates feel underconfident and what additional information would most change the picture. This produces a set of questions I can answer quickly, usually by pulling a number from analytics or by scheduling a targeted user call. The model is useful here not because it can estimate the number, but because it identifies where the number is missing and what it would take to get a better one.
-
-## Writing option descriptions
-
-By the time I reach the actual roadmap discussion, I want to have already turned feedback themes into option descriptions. An option is not a feature request. It is a problem statement, a proposed solution direction, a rough sense of who it affects, and a hypothesis about why it matters strategically.
-
-AI is good at the option description step. I give it a problem cluster, the evidence for it, and a rough solution direction I have sketched out myself, and ask it to write a clear option description that would make sense to a stakeholder who was not in the user research. I then edit that description to add anything that requires context it does not have.
-
-The goal is not to have AI make the strategic argument for the option. That argument is mine, and I need to be able to make it in my own words or it will not survive the discussion. What AI does is save the drafting time so I can get more options to the description stage before the meeting.
-
-## What AI cannot do in this process
-
-The judgment calls that roadmapping actually requires are not in the synthesis steps. They are in interpreting conflicting evidence, deciding which strategic bets align with where the company is going, and making the call about which problem to solve when you cannot solve all of them.
-
-I have seen PMs try to outsource these calls. They give a language model the list of options, a set of criteria, and ask it to recommend the priority order. The recommendation is usually defensible and usually wrong, because the model does not understand the history behind why certain bets are off the table or how the upcoming competitive environment changes what matters.
-
-The synthesis work that AI accelerates is genuinely valuable. It compresses the time between collecting feedback and having a structured set of options from several days to a few hours. But the time savings in synthesis only matters if you spend the time freed on the judgment work that synthesis was clearing the path for. The roadmap does not get better because the clustering was faster. It gets better because the faster clustering gave you more time to think carefully about what the options mean.
+So my view is straightforward. AI is excellent at compressing the messy middle between raw feedback and a clean set of options. It is not especially good at deciding which bet belongs on the roadmap once the politics, sequencing, and strategic context get real. I use it heavily for the first part and keep a very tight grip on the second. That has felt like the right division of labor.

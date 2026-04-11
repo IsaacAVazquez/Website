@@ -1,6 +1,6 @@
 ---
 title: "How I'd Evaluate an Agentic AI Product as a PM (Interview-Ready Framework)"
-excerpt: "Evaluating an agentic AI product in an interview requires a different framework than evaluating a traditional product. The questions around trust, failure modes, and human oversight are not optional considerations. They are the core of what makes or breaks these products."
+excerpt: "When I hear PM candidates evaluate an agentic AI product, I pay less attention to the cleverness of the framework and more attention to whether they understand where these products break."
 publishedAt: "2026-04-10"
 category: "Agentic AI"
 tags: ["Product Management", "AI", "Agentic AI", "PM Interviews", "Career"]
@@ -8,62 +8,30 @@ featured: false
 author: "Isaac Vazquez"
 seo:
   title: "How to Evaluate an Agentic AI Product as a PM"
-  description: "An interview-ready framework for evaluating agentic AI products as a product manager — what to assess, which metrics matter, and what strong answers actually sound like."
+  description: "How I would evaluate an agentic AI product in a PM interview, starting with task fit, trust, failure design, and the metrics that matter."
   keywords: ["evaluate agentic AI product", "PM interview AI framework", "product manager agentic AI evaluation", "AI product evaluation framework", "PM interview agentic AI", "agentic AI PM skills", "evaluate AI product PM"]
 ---
 
 # How I'd Evaluate an Agentic AI Product as a PM (Interview-Ready Framework)
 
-PM interviews involving agentic AI products have a pattern I have noticed: the candidates who struggle are the ones trying to apply traditional product evaluation frameworks without adjusting for what makes agentic AI different. They ask about retention and engagement. They analyze the competitive landscape. They build a roadmap. These are not wrong, but they are incomplete in ways that become obvious to an interviewer who has actually worked on these products.
+When a PM interview turns to agentic AI, the candidates who struggle usually make the same mistake. They reach for a general product framework and start talking about growth, retention, engagement, and competitive landscape as if the product were just another SaaS surface with a language model inside it. None of those things are irrelevant. They just are not the first things I care about.
 
-What follows is the framework I would use to evaluate an agentic AI product in a PM interview, grounded in what I actually think about when I look at these products. It is also the framework I use when evaluating products I am building or considering building.
+If I am evaluating a candidate on an agentic AI question, I want to know whether they understand what is uniquely fragile about products that can act, not just talk. I want to hear whether they question the task fit, whether they understand trust as a design problem, and whether they know how to talk about failure without getting vague. Those are the signals that tell me the person has actually thought about this category and is not just swapping AI terminology into a standard PM answer.
 
-## Start with the task-agent fit question
+## The first questions I would ask
 
-The first question I always ask about an agentic AI product is whether the task it is automating actually benefits from agentic behavior, or whether a simpler design would serve users better.
+The first question is whether the task even deserves an agentic product shape. That is the simplest test and the one people skip most often. Does the job require multiple steps, tool use, longer-running execution, or action on the user's behalf. Or is it really just a conversational assistance problem wearing more ambitious language. Candidates who ask that question early usually understand scope better than candidates who take the agentic premise as given.
 
-Agentic products make sense when the task requires planning across multiple steps, uses multiple external tools or data sources, can run without real-time human input for meaningful stretches, and produces work product that is worth the latency cost of agentic execution. They do not make sense for tasks where the user wants continuous involvement, where each decision requires human judgment, or where the interaction is better described as a conversation than a workflow.
+The second question is what the user is being asked to trust. I think this is the center of the evaluation. If the system can act, then predictability, transparency, and control matter immediately. Can the user tell what the system is doing. Can they stop it. Can they understand why a result happened. Can they recover when the agent took the wrong branch. If a candidate cannot talk concretely about that, the rest of the analysis usually sounds polished but hollow.
 
-In an interview, naming this question upfront signals that you understand the design space. Many candidates skip straight to evaluating the product as given without asking whether the product should exist in its current form. The question is not always answerable in an interview context, but asking it shows that you think about product scope before product execution.
+The third question is how the product fails. I care a lot less about whether someone can recite a metrics stack than whether they understand the difference between an obvious failure and a silent one. An agent that visibly fails is annoying. An agent that quietly makes the wrong move and leaves the user thinking it succeeded is much more dangerous. When a candidate starts talking about loops, bad actions, weak escalations, invisible errors, and audit trails, I pay attention. That person is closer to the actual problem.
 
-## Evaluate trust and transparency
+## What I would listen for in a strong answer
 
-Trust is the central user experience problem in agentic AI, and it is where most products in this category underinvest. Users need to trust that the agent will take the right actions on their behalf, that it will escalate or stop when it encounters a situation outside its competence, and that they can understand what it did and why after the fact.
+A strong answer usually gets more specific as it goes. On metrics, for example, I would want to hear something beyond standard retention language. I want to hear task completion quality, escalation timing, override rate, and where human correction is showing up. I want to hear that the candidate knows a zero escalation rate is not automatically good and that a high completion rate may hide low-quality completions. Those are category-specific instincts, and they matter.
 
-The trust evaluation framework I use has three components. Predictability: does the agent behave consistently in similar situations, so users develop accurate mental models of what it will and will not do? Transparency: does the product surface what the agent is doing in a way that users can monitor and interpret without requiring technical knowledge of how the agent works? Controllability: can users intervene, pause, or reverse the agent's actions when they want to, and is this affordance visible and accessible rather than buried in settings?
+I also want to hear a view on differentiation that is more durable than "the model is strong." That answer was weak a year ago and it is weaker now. What matters more is workflow context, proprietary data, tool access, integration depth, and whether the product is learning from repeated use in a way a generic agent cannot. Candidates who say that plainly usually understand that the product moat is not the same thing as the model vendor's moat.
 
-Most agentic products I have evaluated fail on at least one of these. The most common failure is transparency. The agent works in a black box, and users either trust it completely or not at all. There is no middle ground where users can see enough of what the agent is doing to calibrate their trust appropriately.
+The interview-ready version of all of this is not a memorized checklist. It is a way of showing how you think. Start by questioning task fit. Move quickly into trust and failure design. Use metrics that actually reflect agent behavior. End with what the product owns that is hard to copy. If I heard that shape from a candidate, I would take it seriously, because it tells me they know where these products succeed and where they get exposed.
 
-In an interview, I would describe this framework and apply it to the specific product. What does the product do to make the agent's actions visible? What is the user experience when an action is taken that the user did not expect? Is there an audit trail?
-
-## Assess the failure mode design
-
-Every agentic product will fail, and how it fails matters as much as how it succeeds. The failure mode design is one of the things I evaluate most carefully because it is one of the things most commonly left unaddressed in early product thinking.
-
-Failure modes in agentic products cluster into a few types: taking an action that was not intended, failing to take an action when one was needed, getting stuck in a loop or a dead end and not escalating, and producing confident-sounding wrong output that the user accepts because they trusted the agent.
-
-The last failure mode is the hardest to design around and the most consequential. An agent that fails obviously is frustrating but recoverable. An agent that fails silently produces downstream problems that are harder to trace and correct.
-
-In an interview, I would ask which of these failure modes the product has designed for explicitly, and how. The answer tells me a lot about how mature the product thinking is. A product that has thought through its failure modes has usually also built the observability and feedback loops to detect them in production. A product that has not is one that will encounter these failures for the first time in front of users.
-
-## Look at the metrics that actually matter
-
-The standard product metrics apply to agentic products: activation, retention, NPS, revenue outcomes. But there are agentic-specific metrics that matter more than these for understanding whether the product is actually working.
-
-Task completion rate for agent-handled tasks tells you whether the agent is completing the work it attempts. Task completion rate alone is not enough because it does not distinguish between completing correctly and completing incorrectly, so it needs to be paired with a quality or accuracy measure.
-
-Escalation rate and escalation timing tell you how often the agent needs human intervention and whether it is escalating at the right moments. An escalation rate of zero usually means the agent is not escalating when it should. A high escalation rate might mean the agent's scope is poorly calibrated.
-
-User override rate tells you how often users correct or reverse the agent's actions. High override rates suggest the agent's judgment does not match the user's preferences, either because of a general calibration problem or a specific failure mode that keeps recurring.
-
-In an interview, proposing these metrics alongside standard engagement metrics shows that you understand what is actually being measured when you measure the success of an agentic product.
-
-## The competitive differentiation question
-
-Agentic AI products are being built by teams with access to roughly the same foundation models. This means the traditional competitive moat for AI products, model quality, is eroding faster than most teams anticipated. The differentiation question for agentic products in 2026 is not which model the product is built on. It is what task-specific design decisions, tool integrations, and workflow context have been built into the product that make it significantly better for a specific use case than a general-purpose agent would be.
-
-Data is one form of differentiation. An agentic product that has been trained on, or has access to, proprietary workflow data from its users is better calibrated for their specific tasks than a general model. This is the differentiation story that holds up over time as base model capabilities commoditize.
-
-Workflow integration is another. An agent that is deeply integrated into the tools users already use has lower adoption friction and more context to work from than one that requires users to operate from a separate interface.
-
-In an interview, I would frame this as the question of what the product owns that is hard to replicate: the data, the integrations, the workflow context, or some combination. Products that can only answer "the model" are in a more precarious competitive position than they may realize.
+That is also more or less how I evaluate real agentic products. The interview framing is different, but the substance is the same. I am not looking for a clever framework name. I am looking for evidence that the person understands the product surface, the failure surface, and the human trust problem well enough to make good decisions once the product leaves the demo.

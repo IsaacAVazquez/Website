@@ -9,7 +9,11 @@ jest.mock("next/navigation", () => ({
 }));
 
 jest.mock("@/components/ui/DeferredThemeToggle", () => ({
-  DeferredThemeToggle: () => <button type="button">Theme</button>,
+  DeferredThemeToggle: ({ className }: { className?: string }) => (
+    <button type="button" className={className}>
+      Theme
+    </button>
+  ),
 }));
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
@@ -94,5 +98,18 @@ describe("StaticHeader", () => {
     expect(primaryNav?.textContent).toContain("Writing");
     expect(themeButtons.length).toBeGreaterThan(0);
     expect(container.querySelector("header")?.className).toContain("header-home");
+  });
+
+  it("passes desktop sizing classes to the deferred theme toggle", async () => {
+    await act(async () => {
+      root.render(<StaticHeader />);
+    });
+
+    const desktopThemeButton = container.querySelector(
+      '[aria-label="Primary navigation"] button'
+    );
+
+    expect(desktopThemeButton).toHaveClass("min-h-[44px]");
+    expect(desktopThemeButton).toHaveClass("px-3");
   });
 });

@@ -1,6 +1,6 @@
 ---
 title: "Build vs Buy for Agentic AI: When Startups Should Roll Their Own"
-excerpt: "The build vs buy question for agentic AI infrastructure is different from the usual version of this question. The platforms have matured fast, but the reasons to build your own are more real than they were 12 months ago."
+excerpt: "I think most teams should buy more than they are initially comfortable with and own less than they imagine. The exception comes later, when workflow and data constraints start getting real."
 publishedAt: "2026-04-10"
 category: "Agentic AI"
 tags: ["AI", "Agentic AI", "Product Strategy", "Build vs Buy", "Startups"]
@@ -8,56 +8,30 @@ featured: false
 author: "Isaac Vazquez"
 seo:
   title: "Build vs Buy for Agentic AI: When Startups Should Roll Their Own"
-  description: "The real trade-offs in the build vs buy decision for agentic AI infrastructure — when to use a framework, when to build, and what changes at different company stages."
+  description: "A practical view on build versus buy for agentic AI infrastructure, when a framework is enough, and when owning orchestration starts to matter."
   keywords: ["build vs buy agentic AI", "agentic AI platform decision", "AI agent framework", "build AI agent infrastructure", "agentic AI startup decision", "LangChain vs custom", "agentic AI framework comparison"]
 ---
 
 # Build vs Buy for Agentic AI: When Startups Should Roll Their Own
 
-The build vs buy question comes up early in every agentic AI project, and the answer has gotten more complicated in the last 12 months. The platforms have matured, which makes buying more appealing. But the reasons to build your own have also become clearer, particularly as teams that started with frameworks have run into their limitations in production.
+The build versus buy conversation around agentic AI is getting worse at the same time it is getting more important. A lot of advice in this category comes from people who are arguing from identity rather than from product constraints. One camp treats frameworks as a sign that you are moving fast and staying practical. The other treats custom infrastructure as proof that you are building something real. I do not think either instinct is very helpful on its own.
 
-I want to walk through the actual trade-offs, because the advice circulating tends to collapse into either "always use a framework" or "roll your own for anything real," and both versions are wrong.
+My default view is that most startups should buy more than they think at the beginning and own more than they expect by the time the workflow actually matters. That sounds like a dodge, but it is not. It is just a recognition that the constraints change as the product gets real. Early on, the biggest risk is that you spend months building infrastructure around a workflow users do not care about. Later, the biggest risk is that you inherit abstractions that no longer fit the product you proved people want.
 
-## What you are actually deciding
+## Why I would start by buying
 
-The build vs buy question in agentic AI is not a single decision. It has at least three layers: the model layer, the orchestration layer, and the application layer.
+At the beginning, the question is usually product risk, not infrastructure purity. Does the workflow create value. Do users actually want the system to take the steps you think they want automated. Can you make the experience trustworthy enough that anyone will use it repeatedly. Those are the things I would want to learn quickly, and a framework or platform is usually the fastest way to learn them.
 
-At the model layer, almost every team is buying. Building foundation models is a multi-billion-dollar endeavor that is not within scope for the vast majority of companies. Fine-tuning is within scope for some, and inference infrastructure decisions matter for latency and cost, but the model itself is bought.
+That does not mean frameworks are perfect. It means their flaws are often cheaper than building the wrong thing. If the workflow turns out to be weak, I would much rather discover that while standing on somebody else's abstractions than after spending a quarter building my own orchestration layer, state model, retry logic, and evaluation plumbing. Speed of learning matters more than elegance when the product still might be wrong.
 
-At the orchestration layer, the question is real. Frameworks like LangChain, LlamaIndex, and others provide abstractions for building agentic workflows: memory management, tool calling, multi-agent coordination, state management. The question is whether these abstractions fit your use case or fight it.
+I also think teams often underestimate how much of the product value lives above the orchestration layer anyway. Users care about whether the system fits their workflow, whether it is transparent, whether the outputs are useful, and whether the handoffs are clean. Very little of that value comes from having a lovingly handcrafted agent runtime on day one. A lot of it comes from making good product decisions while moving fast enough to get feedback.
 
-At the application layer, you are always building. The actual product experience, the UX decisions, the escalation logic, the feedback loops: none of this comes from a framework. This is where most of the product differentiation lives.
+## When the custom path starts making sense
 
-## When to use a framework
+The case for building usually shows up after the product earns the right to be optimized. It appears when context handling becomes specific enough that the framework assumptions fight you. It appears when audit requirements, privacy boundaries, or customer isolation rules stop being optional. It appears when unit economics start to matter and the framework overhead is no longer a rounding error. It appears when reliability work stops being edge-case cleanup and starts becoming the core of the product.
 
-Frameworks make sense when your use case is close to the patterns the framework was designed for, when speed of initial development matters more than long-term control, and when the team does not have deep experience with the lower-level mechanics of managing agent state and context.
+That is usually the point when teams realize the real question was never build or buy in the abstract. The real question was which decisions they needed to own. If your differentiation depends on how memory is managed, how tool calls are sequenced, how errors are recovered, or how customer data is partitioned, then those parts probably should not stay buried inside a generic layer you do not control. If your differentiation is mostly workflow design and domain context, a framework may keep being good enough longer than the engineers want to admit.
 
-For a proof of concept or an internal tool where production reliability is not the primary concern, a framework is almost always the right starting point. It lets you validate the workflow design without spending engineering time on infrastructure decisions you have not yet learned enough to make well.
+I think the biggest mistake on the build side is romanticizing ownership. Custom infrastructure has a maintenance cost that does not disappear because the architecture diagram looks impressive. The biggest mistake on the buy side is pretending migration will be painless once the framework no longer fits. It usually is not. Both paths create future bills. The right move is the one that buys the right learning now without trapping the product later.
 
-For a product in a category where the framework has active development and strong community support for your specific use case, the buy decision also makes sense for longer than people expect. The frameworks have improved substantially and the common failure modes are better documented.
-
-## When to build your own
-
-The reasons to build your own orchestration tend to emerge from direct experience rather than from a priori reasoning. But they cluster around a few patterns.
-
-Control over context management is the most common one. Frameworks make assumptions about how context is managed across agent interactions. Those assumptions work for the cases the framework was designed around. When your workflow has unusual memory requirements, unusual context window constraints, or unusual patterns for how information needs to flow between agents, the framework abstractions start fighting you rather than helping you. At that point, the cost of working around the framework exceeds the cost of building the specific thing you actually need.
-
-Data handling and security requirements are the second common driver. Frameworks route data through their abstractions in ways that may not be compatible with strict data residency requirements, audit logging requirements, or customer data isolation requirements. A healthcare company or a financial services company building agentic workflows may find that the framework's data handling is non-negotiable in the wrong direction, and the cost of instrumenting around it is higher than building the relevant pieces themselves.
-
-Performance at scale is the third. Frameworks add overhead. For most use cases, that overhead is acceptable. For high-volume workflows where latency directly affects user experience or cost, the overhead becomes a real constraint.
-
-## The stage question
-
-The right answer to build vs buy changes at different company stages, and I think this is where the generic advice breaks down most completely.
-
-At early stage, before you have validated that the workflow design produces real value for users, the right answer is almost always to use a framework or even a higher-level platform. The risk is not technical. It is product. Getting to a working prototype quickly enough to learn from users is more valuable than owning the infrastructure you learn from.
-
-At growth stage, when you know the workflow produces value and you are scaling usage, the constraints start appearing. Performance requirements tighten, cost per interaction matters, and the framework abstractions that were good enough for validation start showing their limitations. This is when the migration conversation typically starts.
-
-At scale, the teams that have built their own orchestration are generally glad they did, and the teams that are still on unmodified frameworks are usually managing workarounds. The exception is the teams that started with frameworks and built sufficient abstraction layers above them that the framework is hidden behind interfaces they control.
-
-## The honest version
-
-I will say directly: most teams underestimate the ongoing maintenance cost of building their own agentic infrastructure, and most teams underestimate the eventual migration cost of staying on a framework that does not fit their use case. Both of these costs are real, and which one you should bear depends on your specific situation rather than on a general principle.
-
-The useful question is not "framework or custom" but "which decisions do I need to own, and which can I delegate to the platform without significant risk?" Answering that question specifically is harder than choosing a general strategy, but it is the question that will determine whether you make the right call.
+So if I were advising an early-stage team, I would ask a very plain question. What part of this system must be yours for the product to work the way you intend. If the honest answer is "not much yet," buy aggressively and learn fast. If the answer starts becoming specific and expensive in the middle of growth, that is when the custom path becomes rational. Not because custom is more serious, but because the product finally has something serious enough to protect.

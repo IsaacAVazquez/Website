@@ -1,6 +1,6 @@
 ---
 title: "Agentic AI in Plain English: What It Is and Why Product Managers Should Care"
-excerpt: "The word agent is used for everything from a customer service chatbot to a fully autonomous workflow system. That range makes the term almost useless unless you are specific. Here is what agentic AI actually means and why it changes product thinking."
+excerpt: "I think the word agent has gotten vague enough to stop being useful. What matters is whether the system can plan, use tools, and carry work forward without being handheld the whole time."
 publishedAt: "2026-04-08"
 category: "Agentic AI"
 tags: ["AI", "Product Management", "Agentic AI", "LLMs", "Workflow"]
@@ -8,62 +8,36 @@ featured: false
 author: "Isaac Vazquez"
 seo:
   title: "Agentic AI Explained for Product Managers"
-  description: "What agentic AI actually means — planning, tools, memory, interfaces — and why it creates new product design challenges that PMs need to understand in 2026."
+  description: "A practical explanation of agentic AI for product managers, what separates an agent from a chatbot, and why the difference changes product design."
   keywords: ["agentic AI explained", "what is agentic AI", "AI agents product management", "agentic AI for PMs", "AI agents vs chatbots", "agentic workflows product manager", "agentic AI 2026"]
 ---
 
 # Agentic AI in Plain English: What It Is and Why Product Managers Should Care
 
-The terminology around AI has gotten dense enough that "agent" is now used for everything from a customer service chatbot to a fully autonomous workflow system that coordinates multiple AI models, external APIs, and human approval steps. That range makes the term almost useless unless you are specific about what you mean.
+The word agent has gotten stretched far enough that it now means almost nothing on its own. I hear people use it for chatbots, copilots, workflow tools, and fully automated systems that can go take actions across several applications. That is too much ground for one word to cover. If I am being precise, I use agentic AI for systems that can take a goal, decide on intermediate steps, use tools to execute those steps, and keep going long enough to finish meaningful work without a human having to drive every turn.
 
-This is my attempt to explain what I actually mean when I say agentic AI, why the distinction from regular chatbot interactions matters for product work, and where I think PMs should be paying close attention.
+That last part matters more than the branding language around it. A chatbot can sound smart and still be non-agentic in any useful sense. If I have to keep choosing the next step, pasting in the missing context, and telling it which tab to open or which source to check, I am still doing the workflow myself. The model is just helping me talk through it. An agentic system earns the name when it can hold onto the objective, move through a sequence of actions, and return with something closer to completed work than a single answer.
 
-## The difference between a chatbot and an agent
+When I explain the distinction to PMs, I usually start with the job rather than the model. If the job is "answer my question," a chatbot may be enough. If the job is "research three competitors, compare pricing changes, pull examples, and draft a brief I can react to," then the question becomes whether the system can plan, call the right tools, recover when one of them fails, and show me what it did. That is the practical difference. I do not think it helps to turn this into abstract taxonomy when the product consequences are concrete.
 
-A chatbot takes input and produces output in a single conversational turn. You ask something, it responds, and the interaction is complete. The model has no memory of previous conversations unless you explicitly provide that context, and it is not doing anything other than generating text in response to your prompt.
+## What makes an agentic system feel real
 
-An agent, in the meaningful sense, does something more than that. It plans. It breaks a goal into steps. It uses tools, APIs, and external systems to take actions. It evaluates the results of those actions and adjusts. It may call other models or agents for specific subtasks. And it operates across multiple turns or over an extended period of time without requiring a human to initiate each step.
+The systems that feel meaningfully agentic to me usually have four things working together. They can decide on an execution path instead of just continuing the conversation. They can use external tools that matter, whether that is search, code execution, a database, or an internal API. They keep enough state to avoid starting over every few minutes. And they expose the work in a way that a human can audit when something looks off.
 
-The practical difference is significant. You cannot tell a chatbot to research three competitors, summarize their pricing pages, compare them to your own pricing, and draft a brief for your team, then come back an hour later to find it done. An agent can be given that goal, work through the steps, and produce a useful output without you shepherding each one. Whether it does so accurately and reliably is a different question, but the capability class is different.
+I think PMs often focus on the first part and underweight the other three. Planning is the flashy part in demos. Tool use, state management, and recovery are where production products either become trustworthy or fall apart. A system that can make a plan but cannot reliably operate the tools it needs is just a confident narrator. A system that can use tools but cannot preserve context across a longer workflow becomes exhausting to supervise. A system that can do both but hides its actions behind a polished chat bubble will eventually create a trust problem of its own.
 
-## What makes an agent work
+That is why I do not find "it feels like ChatGPT but for workflows" to be a useful product description. Once a system can act, the interface and control model matter much more than they do in a pure Q and A product. The product is no longer just about quality of generated language. It is about visibility, reversibility, permissions, escalation, and the point at which the user is supposed to step back in.
 
-The components that enable agentic behavior are worth understanding because they show up in how products get designed and where things go wrong.
+## Why PMs should care about the distinction
 
-Planning is the part where the model takes a goal and figures out what steps are required to accomplish it. Some agents do this explicitly, generating a written plan before execution. Some do it implicitly, deciding the next step at each point. The explicit planning approach is more interpretable and easier to debug. The implicit approach is more flexible and sometimes faster. Neither is reliably correct, which is why human review points matter.
+PMs need to understand this because the design questions change the minute a system is allowed to do more than answer. The important questions are no longer just "Was the response good?" and "Did the user get value?" They become "What was the system allowed to do?" "How did the user know what was happening?" "What happened when the agent got something wrong?" and "Could the user stop it before a small error became a real one?"
 
-Tools are what give agents the ability to do things beyond generating text. A tool is an external function the model can call: a web search, a calendar API, a database query, a code execution environment, a file system. The agent decides when to call a tool and what to pass it, then uses the result to continue reasoning. The quality of an agent is heavily shaped by the quality of its tool definitions and by how well the model has been trained to use them appropriately.
+I think this is where a lot of AI product thinking still feels shallow. Teams treat an agent like a stronger assistant and then act surprised when users ask for an audit trail, a confirmation step, or a cleaner handoff to a human. Of course they do. Once the system can act on their behalf, the emotional contract is different. People do not calibrate trust in agents the same way they calibrate trust in autocomplete. If the product does not make that legible, the user either overtrusts it or never trusts it enough to use the feature seriously.
 
-Memory is more complicated than it sounds. Most language models have no persistent memory across sessions. Agentic systems get around this in various ways: storing relevant context in a database and retrieving it when needed, maintaining running summaries of prior interactions, using structured logs that the model can query. The approach affects how well the agent can handle long-running tasks or personalize to specific users. It also creates data and privacy considerations that product teams often underweight.
+The PM who understands planning, tool use, memory, and interface design at a practical level has a much easier time pushing the right conversations forward. You do not need to be the person implementing orchestration logic. You do need enough depth to ask whether the workflow actually needs autonomy, whether the tool definitions are robust, whether the review points are in the right places, and whether the user can recover cleanly when the system does something dumb. Those are product questions, not just engineering questions.
 
-The interface is how humans interact with the agent and monitor what it is doing. A good agentic interface makes the agent's planning and actions visible and reviewable, allows humans to intervene at appropriate points, and makes it easy to understand what happened when something goes wrong. Most current agentic products are not good at this, which is one of the main reasons they generate trust issues even when the outputs are reasonable.
+## What I think the current products get wrong
 
-## A concrete example
+Most agentic products are still better in a narrow lane than they are across a wide one. That is not a criticism so much as a design constraint. The systems I trust most are the ones that do less, more clearly. They are explicit about their tools, explicit about their limits, and explicit about where a human should step in. The ones I trust least are the ones that advertise general autonomy while quietly depending on ideal inputs, ideal data, and ideal tool responses.
 
-I want to make this specific, so here is an agentic workflow I have actually run.
-
-I was doing research for a product decision about whether to build a native mobile app or continue with a progressive web app. I set up a workflow in which an agent was given the question, a set of source types to draw from, a time constraint, and a brief on what I already knew. The agent ran searches, summarized relevant sources, flagged contradictions between them, noted where the evidence was thin or outdated, and produced a structured brief with citations.
-
-The result was usable in about 40 minutes. The same work done manually would have taken most of a day. More importantly, the structured output made it easy for me to identify the two or three questions where I needed to do additional research myself, because the agent's confidence was clearly low or the sources were conflicting.
-
-What the agent did not do was make the decision. It did not weigh the organizational factors, the team's capabilities, or the strategic timing. Those required judgment about context the agent did not have access to and would not have known how to weight if it did.
-
-## Why PMs should care
-
-The case for PMs understanding agentic AI is not mainly about personal productivity, though there is a real productivity argument. It is about what happens to products as this capability class becomes more widespread.
-
-Agentic systems are going to be embedded in products across every category. Customer support will run on agents that can take action in external systems, not just route tickets. Data analysis tools will surface insights proactively without waiting for a user to ask a question. Workflow tools will coordinate across platforms without requiring manual handoffs. The user experience questions this creates are genuinely new.
-
-A user interacting with an agent that can act on their behalf has to develop trust in a different way than a user interacting with a tool that executes explicit commands. The transparency questions are different. The error recovery questions are different. The question of how much autonomy to grant the agent and how to revoke it is different.
-
-PMs who understand agentic architecture at the level of planning, tools, memory, and interfaces can have these design conversations with depth. PMs who understand it only at the level of "it does things automatically" will be dependent on engineers to define what is possible and will not be well-positioned to push back or set direction when the design choices are consequential.
-
-## The current state of reliability
-
-Current agentic systems fail in predictable ways. They hallucinate tool calls, invoking tools with arguments that are not valid. They lose track of the plan midway through complex tasks. They fail to notice when a step produced an error that should have changed direction. They accumulate small errors in ways that compound into significantly wrong outputs.
-
-The systems that work reliably in production today are the ones with narrow scope, well-defined tool interfaces, and human review at critical decision points. The systems that look impressive in demos often fail on variations from the demo scenario that are not edge cases at all.
-
-This is not a reason to dismiss agentic AI. It is a reason to design with the failure modes in mind and to maintain human oversight at the points where errors are hard to recover from. The systems will get better. The design principles for making them trustworthy will remain relevant regardless of how capable the underlying models become.
-
-What changes for PMs is not the fundamental question of whether an experience is trustworthy and useful for users. That question is the same as it always was. What changes is the set of design levers that determine the answer. Understanding what those levers are is the starting point for using them well.
+So where does that leave PMs? In my mind, the practical takeaway is simple. Do not ask first whether a product has an agent. Ask what work it can finish without supervision, what systems it can touch, how it handles failure, and what the user sees while it is doing the job. If the answers to those questions are weak, the product is probably less agentic than the marketing suggests. If the answers are strong, you are looking at a genuinely different product surface, and it deserves to be designed that way.
