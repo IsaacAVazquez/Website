@@ -2,7 +2,7 @@
 
 Current API route map.
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-10
 
 ---
 
@@ -11,7 +11,7 @@ Current API route map.
 | Endpoint | Methods | Purpose |
 |---------|---------|---------|
 | `/api/auth/[...nextauth]` | GET, POST | Admin auth |
-| `/api/data-manager` | GET, POST | Fantasy data management helpers |
+| `/api/data-manager` | GET, POST, DELETE | Fantasy data management helpers |
 | `/api/data-metadata` | GET | Fantasy freshness metadata |
 | `/api/fantasy-data` | GET | Main fantasy data route |
 | `/api/fantasy-pros-free` | GET | Free/public fantasy source |
@@ -19,13 +19,19 @@ Current API route map.
 | `/api/investments/data/[symbol]` | GET | Section-based investment research payloads |
 | `/api/investments/index` | GET | Curated investments index/availability |
 | `/api/investments/quotes` | GET | Quote proxy for the investments UI |
+| `/api/la-liga/summary` | GET | Snapshot-backed league table, fixtures, and club options for `/la-liga` |
+| `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/la-liga` |
+| `/api/news-pulse` | GET | News Pulse article summaries |
 | `/api/premier-league/summary` | GET | Snapshot-backed league table, fixtures, and club options for `/premier-league` |
 | `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/premier-league` |
 | `/api/rss` | GET | RSS feed |
 | `/api/sample-data` | GET | Sample fantasy data |
-| `/api/scheduled-update` | POST | Scheduled fantasy refresh |
+| `/api/scheduled-update` | GET, POST | Scheduled fantasy refresh readiness and execution |
 | `/api/scrape` | GET, POST | Utility scraping endpoint |
 | `/api/search` | GET | Limited search |
+| `/api/spacex/launches` | GET | SpaceX launch list payload |
+| `/api/spacex/launches/[id]` | GET | SpaceX launch detail payload |
+| `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
 | `/api/stocks` | GET | Quote source for investments flows |
 
 ---
@@ -35,6 +41,7 @@ Current API route map.
 - there is no generic `/api/investments` catch-all route in the live app
 - `/api/search` is not a full dynamic site index
 - `/api/rss` is still a small writing feed route
+- `/api/premier-league/*` and `/api/la-liga/*` read committed snapshots, not `football-data.org` directly at runtime
 - auth is still NextAuth credentials-based
 
 ---

@@ -2,7 +2,7 @@
 
 Current overview of the fantasy-football surface, its routes, and the mixed data workflows behind it.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
@@ -11,8 +11,11 @@ Current overview of the fantasy-football surface, its routes, and the mixed data
 Primary fantasy routes:
 
 - `/fantasy-football`
-- `/fantasy-football/rb-tiers`
 - `/fantasy-football/draft-tracker`
+
+Redirect-only legacy fantasy routes:
+
+- `/fantasy-football/rb-tiers`
 - `/fantasy-football/tiers/[position]`
 
 Supporting APIs:
@@ -34,7 +37,11 @@ Current pieces include:
 
 - `src/app/api/fantasy-data/route.ts`
   - public-facing fantasy data endpoint
-  - built around nflverse-style data access and caching
+  - reads the current published snapshot-backed fantasy data path
+- `src/data/fantasyPositionData.generated.ts`
+  - generated TypeScript source for position boards
+- `public/data/fantasy/{ppr,half_ppr,standard}.json`
+  - published fantasy snapshots used by public ranking surfaces
 - `src/lib/database.ts`
   - SQLite-backed helper for dataset and player storage
 - `src/app/api/data-manager/route.ts`
@@ -62,17 +69,21 @@ ADMIN_PASSWORD=replace-me
 CRON_SECRET=replace-me
 FANTASYPROS_USERNAME=replace-me
 FANTASYPROS_PASSWORD=replace-me
+FANTASYPROS_API_KEY=replace-me
 ```
 
 ---
 
 ## Common Workflows
 
-### Refresh RB tiers
+### Refresh published fantasy snapshots
 
 ```bash
+npm run update:fantasy
 npm run update:fantasy-rb
 ```
+
+Both npm commands currently run the same generated position-data plus snapshot build pipeline.
 
 ### Check the public fantasy API
 

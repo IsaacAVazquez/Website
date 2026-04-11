@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-10
 
 ---
 
@@ -21,10 +21,16 @@ Fast route reference for the current app.
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Async server page |
 | `/investments` | `src/app/investments/page.tsx` | Server page -> `InvestmentsClient` |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Server page -> `PremierLeagueClient` |
+| `/la-liga` | `src/app/la-liga/page.tsx` | Server page -> `LaLigaClient` |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Async server page -> `MarchMadnessClient` |
+| `/news-pulse` | `src/app/news-pulse/page.tsx` | Server page -> `NewsPulseClient` |
+| `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | Server page -> SpaceX client dashboard |
+| `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Async server page -> `PollingAggregatorClient` |
+| `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Server page -> budget planner client |
+| `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Server page -> `InterchangeIQClient` |
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Server page -> fantasy client UI |
-| `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Async server page |
-| `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Server page |
+| `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirect page to the canonical fantasy board |
+| `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirect page to the canonical RB board |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Server page |
 | `/search` | `src/app/search/page.tsx` | Search UI page |
 | `/admin` | `src/app/admin/page.tsx` | Auth-aware admin page |
@@ -40,12 +46,19 @@ There is no live `/admin/analytics` route in the current app tree.
 - self-shell routes:
   - `/about`
   - `/contact`
+  - `/fantasy-football`
+  - `/fantasy-football/draft-tracker`
+  - `/fintech-tools/budget-planner`
   - `/investments`
+  - `/la-liga`
   - `/premier-league`
   - `/march-madness-2026`
+  - `/news-pulse`
+  - `/polling-aggregator`
   - `/portfolio`
   - `/portfolio/[slug]`
   - `/resume`
+  - `/spacex-mission-control`
   - `/writing`
   - `/writing/[slug]`
 
@@ -96,6 +109,18 @@ Footer behavior:
 
 - server entry provides metadata plus breadcrumb and sports-application structured data
 - client route supports deep-linked `overview`, `fixtures`, and `team` views through query params
+
+### `/la-liga`
+
+- server entry provides metadata plus breadcrumb and sports-application structured data
+- client route supports deep-linked `overview`, `fixtures`, `europe`, `relegation`, and club views through query params
+
+### Standalone data tools
+
+- `/news-pulse` is a live route backed by `/api/news-pulse`
+- `/spacex-mission-control` is a live route backed by `/api/spacex/*`
+- `/polling-aggregator` is a live route backed by `src/data/pollingSnapshot.ts`
+- `/fintech-tools/budget-planner` and `/fintech-tools/interchange-iq` are live fintech tool routes
 
 ### `/search`
 

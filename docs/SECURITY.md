@@ -2,7 +2,7 @@
 
 Current security and operational-safety notes for the live site.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
@@ -18,6 +18,8 @@ Primary secrets:
 - `CRON_SECRET`
 - `FANTASYPROS_USERNAME`
 - `FANTASYPROS_PASSWORD`
+- `FANTASYPROS_API_KEY`
+- `FOOTBALL_DATA_API_TOKEN`
 
 Do not commit these values into markdown examples, scripts, or test fixtures.
 
@@ -52,6 +54,14 @@ This is a lightweight admin gate, not a full RBAC system.
 - `/api/investments/index`
 - `/api/investments/data/[symbol]`
 - `/api/investments/quotes`
+- `/api/premier-league/summary`
+- `/api/premier-league/teams/[teamId]`
+- `/api/la-liga/summary`
+- `/api/la-liga/teams/[teamId]`
+- `/api/news-pulse`
+- `/api/spacex/launches`
+- `/api/spacex/launches/[id]`
+- `/api/spacex/summary`
 - `/api/stocks`
 
 These are part of the public app surface. Keep them rate-limited, cached where appropriate, and free of secret leakage.

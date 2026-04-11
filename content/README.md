@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Historical reference only. This markdown content system describes an older internal content/template workflow and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, and `docs/README.md` for current documentation.
+> Historical reference only. This markdown content system describes an older internal content/template workflow and is not a current source of truth by itself. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, and `docs/README.md` for current documentation.
 
 # Isaac Vazquez Website — Markdown Content System
 

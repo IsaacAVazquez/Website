@@ -2,7 +2,7 @@
 
 Fast styling reference for the current app.
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-10
 
 ---
 
@@ -16,30 +16,33 @@ Fast styling reference for the current app.
 
 ## Token System
 
-Current live styling is based on CSS variables for:
+Current live styling is based on the `--home-*` editorial CSS variables defined in `globals.css` and mapped into Tailwind in `tailwind.config.ts`.
 
-- brand colors
-- neutrals
-- surfaces
-- text hierarchy
-- borders
-- shadows
-- spacing
-- transitions
+Use these tokens first in new work:
 
-These are defined in `globals.css` and mapped into Tailwind in `tailwind.config.ts`.
+- `--home-paper`
+- `--home-paper-alt`
+- `--home-ink`
+- `--home-ink-muted`
+- `--home-haze`
+- `--home-acid`
+- `--home-moss`
+- `--home-stone`
+- `--home-rule`
+
+Legacy aliases such as `--surface-*`, `--text-*`, `--border-*`, and `--color-primary` remain for compatibility, but new docs and components should prefer `--home-*`.
 
 ---
 
 ## Current Visual Language
 
-- blue/slate palette
-- crisp light/dark theme support
-- shared shell helpers for spacing rhythm
-- rounded panels and cards
+- editorial paper/ink palette with acid, haze, moss, and stone accents
+- class-based light/dark theme support through token counterparts
+- shared `home-*` shell helpers for spacing rhythm
+- rounded panels, cards, and editorial section treatments
 - restrained shadow usage
 
-Historical warm/cyberpunk styling docs are not current source of truth.
+Historical theme docs are not current source of truth. `/admin` is the only live route with an intentionally separate visual language.
 
 ---
 
@@ -47,6 +50,13 @@ Historical warm/cyberpunk styling docs are not current source of truth.
 
 Important helpers in `globals.css`:
 
+- `.home-page`
+- `.home-shell`
+- `.home-shell-tight`
+- `.home-shell-narrow`
+- `.home-section`
+- `.home-card`
+- `.home-kicker`
 - `.page-shell`
 - `.page-shell-tight`
 - `.page-section`
@@ -86,5 +96,5 @@ Important helpers in `globals.css`:
 ## Practical Rules
 
 - do not use `transition-all` in shared portfolio-shell primitives
-- favor the shared panel/card helpers before inventing new one-off wrappers
+- favor the shared `home-*` panel/card helpers before inventing new one-off wrappers
 - portfolio and writing cards should surface role, problem space, and impact in the collapsed or default state

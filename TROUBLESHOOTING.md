@@ -2,7 +2,7 @@
 
 Fast diagnostics for the current site, data workflows, and deployment path.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
@@ -51,6 +51,7 @@ Confirm:
 
 - `FANTASYPROS_USERNAME`
 - `FANTASYPROS_PASSWORD`
+- `FANTASYPROS_API_KEY` if the failing path is the older FantasyPros API helper
 
 If those are missing, session-based fantasy update routes will fail even though the public fantasy pages may still load from other sources.
 
@@ -79,6 +80,13 @@ The fantasy surface is mixed-source:
 
 Check the exact route or script before assuming the whole fantasy stack uses one source.
 
+### Premier League or La Liga data looks stale
+
+- The public dashboards read from `src/data/premierLeagueSnapshot.ts` and `src/data/laLigaSnapshot.ts`
+- Rebuild both with `npm run update:football`
+- Rebuild one league with `npm run update:premier-league` or `npm run update:la-liga`
+- These rebuild commands need `FOOTBALL_DATA_API_TOKEN`; runtime page loads do not
+
 ---
 
 ## UI And Layout Problems
@@ -96,13 +104,14 @@ The footer is route-aware:
 
 If a page ends with its own strong CTA, verify it is not stacking against the full footer.
 
-### March Madness or investments has horizontal scrolling
+### March Madness, football dashboards, or investments has horizontal scrolling
 
 Recheck:
 
 - tab button widths
 - chart container overflow
 - bracket region grids
+- fixture/table containers
 - mobile viewport behavior in Playwright
 
 ---

@@ -2,7 +2,7 @@
 
 Current config-file reference.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
@@ -42,8 +42,8 @@ If you update routes or package behavior, this file is one of the first places t
 Key facts:
 
 - dark mode is class-based
-- fonts map to Inter and JetBrains Mono variables from `layout.tsx`
-- colors, spacing, border colors, and shadows map to CSS variables from `globals.css`
+- fonts map to Inter and JetBrains Mono variables from `layout.tsx`; the editorial system also uses Instrument Sans and Instrument Serif through globals
+- colors, spacing, border colors, and shadows map to CSS variables from `globals.css`, with `--home-*` as the current palette
 - 44px touch helpers are defined here
 
 ---
@@ -93,8 +93,11 @@ Current priorities include:
 
 - `/`
 - `/portfolio`
+- `/about`
+- `/resume`
 - `/investments`
 - `/march-madness-2026`
+- `/contact`
 - `/writing`
 - fantasy football routes
 

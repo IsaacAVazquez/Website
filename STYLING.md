@@ -15,7 +15,7 @@ Current styling and design-token reference for the live app.
 - accessible focus styles and 44px minimum touch targets
 - restrained motion that respects reduced-motion preferences
 
-Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primary`) are aliased to `--home-*` equivalents in `globals.css` for backwards compatibility. New code should use `--home-*` tokens directly. The only route that intentionally uses a different aesthetic is `/admin` (cyberpunk theme).
+Legacy semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--color-primary`) are aliased to `--home-*` equivalents in `globals.css` for backwards compatibility. New code should use `--home-*` tokens directly. The only route that intentionally uses a different aesthetic is `/admin`.
 
 ---
 
@@ -104,6 +104,13 @@ Plugins:
 
 The current shell uses these reusable classes from `globals.css`:
 
+- `.home-page`
+- `.home-shell`
+- `.home-shell-tight`
+- `.home-shell-narrow`
+- `.home-section`
+- `.home-card`
+- `.home-kicker`
 - `.page-shell`
 - `.page-shell-tight`
 - `.page-section`
@@ -118,7 +125,7 @@ The current shell uses these reusable classes from `globals.css`:
 - `.resume-outline-button`
 - `.resume-chip`
 
-Use these before inventing one-off layout wrappers for standard portfolio pages.
+Use the `home-*` helpers first for new route work. The older semantic helpers remain available for routes that already use them.
 
 ---
 

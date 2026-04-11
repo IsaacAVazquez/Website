@@ -2,7 +2,7 @@
 
 Current reference for the scheduled fantasy football refresh flow.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
@@ -79,6 +79,8 @@ The scheduled update route:
 - generates overall rankings files through `DataFileWriter`
 
 This is an operational workflow. Treat failures here as seasonal-data issues, not generic app outages.
+
+This Netlify cron path is separate from the checked-in `npm run update:fantasy` / `npm run update:fantasy-rb` snapshot generation commands. Verify the exact route or script before assuming one fantasy refresh path updates every published artifact.
 
 ---
 

@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Historical reference only. This redesign package documents an older component-specification set and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `COMPONENTS.md`, `STYLING.md`, and `docs/README.md` for current documentation.
+> Historical reference only. This redesign package documents an older component-specification set and is not a current source of truth by itself. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `COMPONENTS.md`, `STYLING.md`, and `docs/README.md` for current documentation.
 
 # Component Specifications
 

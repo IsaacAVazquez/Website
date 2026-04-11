@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Historical reference only. This file captures an older roadmap snapshot and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `ARCHITECTURE.md`, `API.md`, and `docs/README.md` for current documentation.
+> Historical reference only. This file captures an older roadmap snapshot and is not a current source of truth by itself. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, `ARCHITECTURE.md`, `API.md`, and `docs/README.md` for current documentation.
 
 # Project Roadmap
 

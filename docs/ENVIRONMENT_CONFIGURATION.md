@@ -2,7 +2,7 @@
 
 Current environment variable reference for local development and Netlify deployment.
 
-**Last updated:** 2026-04-05
+**Last updated:** 2026-04-10
 
 ---
 
@@ -38,7 +38,7 @@ The admin surface uses credential auth, not a multi-user identity provider.
 | `CRON_SECRET` | yes for scheduled updates | Bearer token for `/api/scheduled-update` |
 | `FANTASYPROS_USERNAME` | optional for public pages, required for session refresh flows | FantasyPros login |
 | `FANTASYPROS_PASSWORD` | optional for public pages, required for session refresh flows | FantasyPros login |
-| `FANTASY_API_KEY` | optional | Legacy or experimental fantasy integrations |
+| `FANTASYPROS_API_KEY` | optional | FantasyPros API key used by older or operational FantasyPros API helper paths |
 
 Public fantasy pages can still function without every FantasyPros credential because not every fantasy path depends on that provider.
 
@@ -48,9 +48,9 @@ Public fantasy pages can still function without every FantasyPros credential bec
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `FOOTBALL_DATA_API_TOKEN` | optional for local dev, optional for runtime, required for `npm run update:football`, `npm run update:premier-league`, and `npx tsx scripts/updateLaLigaSnapshot.ts` | Token used only when rebuilding the checked-in Premier League and La Liga snapshots — not needed at runtime since both dashboards serve from committed snapshot files |
+| `FOOTBALL_DATA_API_TOKEN` | optional for local dev, optional for runtime, required for `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` | Token used only when rebuilding the checked-in Premier League and La Liga snapshots — not needed at runtime since both dashboards serve from committed snapshot files |
 
-Without this token, the Premier League route still works from the checked-in snapshot. You only need it when you want to refresh that snapshot locally or in GitHub Actions.
+Without this token, the Premier League and La Liga routes still work from the checked-in snapshots. You only need it when you want to refresh those snapshots locally or in GitHub Actions.
 
 ---
 
@@ -81,7 +81,7 @@ ADMIN_PASSWORD=replace-me
 CRON_SECRET=replace-me
 ```
 
-Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npx tsx scripts/updateLaLigaSnapshot.ts`, and add FantasyPros credentials only if you are testing session-backed fantasy refreshes.
+Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`, and add FantasyPros credentials or `FANTASYPROS_API_KEY` only if you are testing FantasyPros-backed refreshes.
 
 ---
 

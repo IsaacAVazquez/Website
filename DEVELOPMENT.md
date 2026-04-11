@@ -2,13 +2,13 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-04-05
+**Last updated:** 2026-04-10
 
 ---
 
 ## Prerequisites
 
-- Node.js 18+
+- Node.js 20 preferred to match GitHub Actions
 - npm
 - Git
 - Python 3 for `npm run update:investments`
@@ -37,10 +37,12 @@ npm run build
 npm run lint
 npm test
 npm run test:e2e
+npm run update:fantasy
 npm run update:fantasy-rb
 npm run update:investments
 npm run update:football      # full football snapshot refresh (~16 min, both leagues)
 npm run update:premier-league  # PL snapshot only
+npm run update:la-liga       # La Liga snapshot only
 ```
 
 Additional useful scripts:
@@ -50,6 +52,7 @@ npm run test:watch
 npm run test:coverage
 npm run test:e2e:ui
 npm run analyze
+npm run build:analyze
 ```
 
 ---
@@ -67,6 +70,8 @@ Important current routes:
 - fantasy football routes
 - investments route
 - March Madness route
+- Premier League and La Liga dashboards
+- standalone routes for News Pulse, SpaceX Mission Control, Polling Aggregator, and fintech tools
 - search and admin
 
 ### Shared shell
@@ -90,7 +95,7 @@ Do not assume old doc paths are current. Check the actual route tree first.
 
 ## Frontend Conventions
 
-- use CSS variables from `src/app/globals.css`
+- use CSS variables from `src/app/globals.css`, preferably the current `--home-*` editorial tokens for new work
 - use `@/components/ui/ServerIcons` for server components
 - keep 44px touch targets
 - respect reduced motion
@@ -123,7 +128,7 @@ Updating snapshots:
 ```bash
 npm run update:football          # full update, both leagues, ~16 min
 npm run update:premier-league    # PL only, ~8 min
-npx tsx scripts/updateLaLigaSnapshot.ts  # La Liga only, ~8 min
+npm run update:la-liga           # La Liga only, ~8 min
 ```
 
 After running, commit the changed snapshot files:
@@ -134,7 +139,7 @@ git commit -m "data: refresh football snapshots"
 git push
 ```
 
-Netlify auto-refreshes standings-only daily via a cron-job.org build hook that triggers a rebuild. This keeps standings current without manual steps. Full team fixture data only updates on a manual `npm run update:football`.
+`prebuild` runs `scripts/updateFootballSnapshots.ts --league-only` before `next build`, which refreshes the faster standings/fixtures/scorers path. The checked-in GitHub Actions workflows also refresh Premier League and La Liga snapshots daily and commit changes when the data moves. Full local team fixture/form refreshes still use `npm run update:football`.
 
 Requires `FOOTBALL_DATA_API_TOKEN` in `.env.local` (free tier, 10 req/min limit). Without it, the dashboard still loads from the last committed snapshot.
 
@@ -166,10 +171,11 @@ There is no live `/admin/analytics` page in the current route tree.
 
 Before changing docs, check:
 
-1. `AGENT.md`
-2. `README.md`
-3. `PAGES.md`
-4. `COMPONENTS.md`
-5. `docs/README.md`
+1. `AGENTS.md`
+2. `CLAUDE.md`
+3. `README.md`
+4. `PAGES.md`
+5. `COMPONENTS.md`
+6. `docs/README.md`
 
 Older plans and redesign docs are retained for history and should not be treated as live implementation docs without verification.

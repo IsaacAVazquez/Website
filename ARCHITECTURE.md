@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-04-05
+**Last updated:** 2026-04-10
 
 ---
 
@@ -16,6 +16,7 @@ This repo is a single Next.js app that serves multiple product surfaces:
 4. an investment research platform
 5. a seasonal March Madness editorial analysis route
 6. football dashboards — Premier League (`/premier-league`) and La Liga (`/la-liga`)
+7. standalone data tools for news, space launches, polling, and fintech calculators
 
 The architecture is intentionally mixed:
 
@@ -77,14 +78,23 @@ Shared UI components for both dashboards live in `src/components/football/`.
 Update workflow:
 - `npm run update:football` — full update for both leagues (~16 min, run locally then commit snapshots)
 - `npm run update:premier-league` — PL only
-- `npx tsx scripts/updateLaLigaSnapshot.ts` — La Liga only
-- Netlify auto-refreshes standings-only daily via a cron-job.org build hook
+- `npm run update:la-liga` — La Liga only
+- `prebuild` runs a standings/fixtures/scorers-only fast path through `scripts/updateFootballSnapshots.ts --league-only`
+- GitHub Actions also provide daily per-league snapshot refresh workflows
 
 ### March Madness
 
 - server page for metadata and structured data
 - client UI for deep-linked tabs and editorial analysis modules
 - companion article under `/writing`
+
+### Other standalone tools
+
+- `/news-pulse` uses `/api/news-pulse` and `src/lib/news-pulse-utils.ts`
+- `/spacex-mission-control` uses `src/components/spacex/` and `/api/spacex/*`
+- `/polling-aggregator` uses a committed polling snapshot in `src/data/pollingSnapshot.ts`
+- `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
+- `/fintech-tools/interchange-iq` is a client-side fee analyzer
 
 ---
 
@@ -131,7 +141,7 @@ Important groups:
 - fantasy football: `/api/fantasy-data`, `/api/fantasy-pros-session`, `/api/fantasy-pros-free`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, `/api/scheduled-update`
 - investments: `/api/investments/index`, `/api/investments/quotes`, `/api/investments/data/[symbol]`, `/api/stocks`
 - football: `/api/premier-league/summary`, `/api/premier-league/teams/[teamId]`, `/api/la-liga/summary`, `/api/la-liga/teams/[teamId]`
-- content/utilities: `/api/rss`, `/api/search`, `/api/scrape`
+- content/utilities: `/api/news-pulse`, `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/rss`, `/api/search`, `/api/scrape`
 
 Current caveat:
 
@@ -143,8 +153,8 @@ Current caveat:
 
 - canonical portfolio path is `/portfolio`, not `/projects`
 - canonical writing path is `/writing`, not `/blog`
-- promoted nav is `Home / About / Projects / Investments / Resume / Contact`
-- `Writing` remains live but secondary
+- promoted nav is `Home / About / Projects / Writing / Investments / Resume / Contact`
+- standalone dashboard/tool routes are live but not promoted in the global header
 
 See `PAGES.md` and `docs/ai-context/REDIRECTS-AND-NAVIGATION.md` for the detailed route map.
 
@@ -159,9 +169,10 @@ Core styling lives in:
 
 The system is token-driven:
 
-- semantic CSS variables for color, text, borders, surfaces, spacing, and shadows
+- the `--home-*` editorial palette for all live routes except `/admin`
+- legacy semantic aliases for compatibility
 - Tailwind extensions mapped to those tokens
-- shared shell helpers like `.page-shell`, `.page-section`, and `.section-panel`
+- shared shell helpers like `.home-page`, `.home-shell`, `.home-section`, and `.home-card`
 
 ---
 
@@ -169,6 +180,7 @@ The system is token-driven:
 
 - deployed on Netlify
 - build command comes from `netlify.toml`
+- `prebuild` runs the fast football snapshot refresh path before `next build`
 - `next-sitemap` runs after build
 - `next.config.mjs` handles redirects, tracing exclusions, image config, and bundle splitting
 

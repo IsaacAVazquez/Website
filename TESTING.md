@@ -2,7 +2,7 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-04-05
+**Last updated:** 2026-04-10
 
 ---
 
@@ -57,13 +57,16 @@ Do not document or assume older 70% thresholds.
 - `src/components/**/__tests__`
 - `src/hooks/**/__tests__`
 - `src/app/fantasy-football/__tests__/` — route state integration tests, including fantasy football client and fantasy state tests
+- `src/app/premier-league/__tests__/` and `src/app/la-liga/__tests__/` — dashboard client and route-state regression tests
+- `src/app/news-pulse/__tests__/`, `src/app/spacex-mission-control/__tests__/`, and `src/app/fintech-tools/budget-planner/__tests__/` — standalone tool coverage
+- `src/app/api/news-pulse/__tests__/`, `src/app/api/spacex/**/__tests__/`, and `src/app/api/premier-league/**/__tests__/` — API route coverage for data tools
 - other repo-level `*.test.*` and `*.spec.*` files outside `e2e/`
 
 ### Playwright
 
 - `e2e/*.spec.ts`
 
-Current e2e coverage includes navigation, homepage, investments, March Madness, and footer CTA scenarios.
+Current e2e coverage includes navigation, homepage, portfolio shell, accessibility, writing, search, investments, fantasy football, March Madness, and footer CTA scenarios.
 
 ---
 
@@ -91,6 +94,7 @@ Some local environments may only have a subset of browsers installed, so targete
   - footer behavior
   - mobile overflow
 - For route-specific UI updates, add focused Playwright coverage instead of broad unrelated regression suites
+- For dashboard route-state changes, add or update the colocated state helper tests first, then add focused Playwright coverage only when browser behavior is part of the risk
 
 ---
 

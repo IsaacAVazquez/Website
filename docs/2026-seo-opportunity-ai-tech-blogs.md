@@ -1,5 +1,7 @@
-
 # Where SEO Opportunity Is Actually Hiding in 2026
+
+> [!NOTE]
+> Strategy reference only. This is a content strategy note, not a current implementation source of truth. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `SEO.md`, `WRITING_VOICE.md`, and `docs/README.md` for current documentation.
 
 The SEO landscape in 2026 is not what it was two years ago, and a lot of the advice circulating about how to build a tech blog audience hasn't caught up to what's actually working now.
 

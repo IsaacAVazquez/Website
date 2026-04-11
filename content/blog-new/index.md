@@ -10,7 +10,7 @@ seo:
 ---
 
 > [!IMPORTANT]
-> Historical reference only. This markdown file belongs to an older content/template system and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, and `docs/README.md` for current documentation.
+> Historical reference only. This markdown file belongs to an older content/template system and is not a current source of truth by itself. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `PAGES.md`, and `docs/README.md` for current documentation.
 
 # Blog & Writing
 

@@ -1,8 +1,8 @@
 # Performance Playbook
 
-Current performance guidance for the live site, with emphasis on the routes that matter most: portfolio pages, investments, fantasy tools, and March Madness.
+Current performance guidance for the live site, with emphasis on the routes that matter most: portfolio pages, investments, fantasy tools, football dashboards, standalone data tools, and March Madness.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
@@ -14,9 +14,18 @@ Current performance guidance for the live site, with emphasis on the routes that
 - `src/components/ConditionalLayout.tsx` keeps default pages inside a constrained wrapper while self-shell routes manage their own spacing:
   - `/about`
   - `/contact`
+  - `/fantasy-football`
+  - `/fantasy-football/draft-tracker`
+  - `/fintech-tools/budget-planner`
   - `/investments`
+  - `/la-liga`
   - `/march-madness-2026`
+  - `/news-pulse`
+  - `/polling-aggregator`
+  - `/premier-league`
   - `/portfolio`
+  - `/resume`
+  - `/spacex-mission-control`
   - `/writing`
 
 ### Investments
@@ -31,6 +40,17 @@ Current performance guidance for the live site, with emphasis on the routes that
 - `/march-madness-2026` is split into a server entry plus a client experience.
 - Metadata and structured data render on the server.
 - Deep-linkable client state keeps the interactive UI shareable without moving the entire route fully client-side.
+
+### Football dashboards
+
+- `/premier-league` and `/la-liga` read committed TypeScript snapshots at runtime.
+- Avoid reintroducing live third-party API calls into page render or API handlers.
+- Shared football components live in `src/components/football/` and should stay reusable across leagues.
+
+### Standalone data tools
+
+- `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, and `/fintech-tools/*` are app-like routes with their own client islands.
+- Keep heavy route-specific state, data normalization, and visual components out of the shared homepage/portfolio path.
 
 ### Fantasy football
 
@@ -54,7 +74,10 @@ Then spot-check:
 
 - desktop and mobile nav behavior
 - `/investments`
+- `/premier-league`
+- `/la-liga`
 - `/march-madness-2026`
+- one standalone data tool route
 - one fantasy route
 - one writing article
 
@@ -71,6 +94,7 @@ npm run start
 
 - Over-expanding shared layout wrappers or adding duplicate shell padding
 - Turning static investments data back into many panel-level runtime requests
+- Turning football snapshots back into live runtime provider calls
 - Reintroducing horizontal overflow in chart-heavy or bracket-heavy routes
 - Shipping large unoptimized images into homepage or portfolio surfaces
 - Adding client-only dependencies to routes that can stay server-rendered

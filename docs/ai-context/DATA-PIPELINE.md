@@ -2,7 +2,7 @@
 
 Current high-level data flow reference.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
@@ -52,13 +52,31 @@ Update path:
 - `npm run update:investments`
 - runs the Python fetch script and snapshot build pipeline
 
+## Football Dashboard Pipeline
+
+Premier League and La Liga use committed TypeScript snapshots:
+
+- `src/data/premierLeagueSnapshot.ts`
+- `src/data/laLigaSnapshot.ts`
+
+Update paths:
+
+- `npm run update:football` for both leagues
+- `npm run update:premier-league` for Premier League only
+- `npm run update:la-liga` for La Liga only
+- `prebuild` runs the faster `scripts/updateFootballSnapshots.ts --league-only` path during `npm run build`
+
+Runtime API routes read those committed snapshots instead of calling `football-data.org`.
+
 ---
 
 ## Fantasy Football Pipeline
 
 The fantasy stack mixes:
 
-- API-backed ranking fetches
+- published static snapshot JSON
+- generated TypeScript position data
+- API-backed operational ranking fetches
 - sample-data fallbacks
 - scheduled refresh endpoints
 - SQLite persistence and helper libraries
@@ -69,7 +87,17 @@ The exact ingestion flow is broader than this quick reference, so verify the cur
 - `src/app/api/fantasy-pros-session/route.ts`
 - `src/app/api/data-manager/route.ts`
 - `src/lib/`
+- `scripts/buildFantasyPositionData.ts`
+- `scripts/buildFantasySnapshots.ts`
 - `scripts/updateFantasyRBTiers.ts`
+
+Public generated outputs include:
+
+- `src/data/fantasyPositionData.generated.ts`
+- `src/data/fantasySnapshotRevision.generated.ts`
+- `public/data/fantasy/ppr.json`
+- `public/data/fantasy/half_ppr.json`
+- `public/data/fantasy/standard.json`
 
 ---
 
@@ -91,6 +119,14 @@ March Madness is split between:
 - route metadata and structured data in the server page
 - interactive state and content in the client route files
 - companion article content in `content/blog/2026-march-madness-bracket-analysis.mdx`
+
+## Other Standalone Data Tools
+
+- `/news-pulse` reads data through `/api/news-pulse` and `src/lib/news-pulse-utils.ts`
+- `/spacex-mission-control` reads SpaceX payloads through `/api/spacex/*` and `src/lib/spacexData.ts`
+- `/polling-aggregator` reads `src/data/pollingSnapshot.ts`
+- `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
+- `/fintech-tools/interchange-iq` is client-side and does not depend on a checked-in data refresh script
 
 ---
 

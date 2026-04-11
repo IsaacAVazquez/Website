@@ -1,7 +1,7 @@
 # Deployment Guide - SEO Optimized Build
 
 > [!IMPORTANT]
-> Historical reference only. This was a one-off deployment checklist for an earlier SEO pass. For the current deployment workflow, use `DEPLOYMENT.md`, `docs/ENVIRONMENT_CONFIGURATION.md`, and `netlify.toml`.
+> Historical reference only. This was a one-off deployment checklist for an earlier SEO pass and is not a current source of truth by itself. Use `AGENTS.md`, `CLAUDE.md`, `DEPLOYMENT.md`, `docs/ENVIRONMENT_CONFIGURATION.md`, `netlify.toml`, and `docs/README.md` for current documentation.
 
 ## Pre-Deployment Checklist
 

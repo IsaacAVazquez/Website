@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-10
 
 ---
 
@@ -28,21 +28,27 @@ Current route inventory and page ownership for the live app.
 | `/writing` | `src/app/writing/page.tsx` | Lists posts from `content/blog/` |
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Server-rendered article page |
 
-### Investments and seasonal analysis
+### Investments, sports, and standalone data tools
 
 | Route | File | Notes |
 |------|------|-------|
 | `/investments` | `src/app/investments/page.tsx` | Public investment research platform |
-| `/premier-league` | `src/app/premier-league/page.tsx` | Live Premier League dashboard |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Metadata-driven bracket analysis with client UI |
+| `/premier-league` | `src/app/premier-league/page.tsx` | Snapshot-backed Premier League dashboard |
+| `/la-liga` | `src/app/la-liga/page.tsx` | Snapshot-backed La Liga dashboard |
+| `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
+| `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | SpaceX Mission Control dashboard |
+| `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
+| `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Budget planner tool |
+| `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Interchange fee analyzer |
 
 ### Fantasy football
 
 | Route | File | Notes |
 |------|------|-------|
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Fantasy football landing page |
-| `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Position tier route |
-| `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | RB-specific page |
+| `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirects to the canonical fantasy board with query parameters |
+| `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirects to the canonical RB board with query parameters |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Draft tracker |
 
 ### Utility/admin
@@ -81,11 +87,21 @@ These routes manage more of their own spacing and width:
 
 - `/about`
 - `/contact`
+- `/fantasy-football`
+- `/fantasy-football/draft-tracker`
+- `/fintech-tools/budget-planner`
 - `/investments`
+- `/la-liga`
 - `/premier-league`
 - `/march-madness-2026`
+- `/news-pulse`
+- `/polling-aggregator`
 - `/portfolio`
+- `/portfolio/[slug]`
 - `/writing`
+- `/writing/[slug]`
+- `/resume`
+- `/spacex-mission-control`
 
 ### Footer variants
 
@@ -97,9 +113,10 @@ These routes manage more of their own spacing and width:
 ## Important Page Notes
 
 - `/portfolio` no longer relies on `ProjectsContent.tsx`; that component is legacy/unwired for the main route
-- `Writing` is a live route but not a top-level nav item
+- `Writing` is a live route and a top-level nav item
 - `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
-- `/premier-league` is a live off-nav sports data dashboard with a self-managed shell
+- `/premier-league` and `/la-liga` are live off-nav sports data dashboards with self-managed shells
+- `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
 - `/search` exists, but its data quality is limited by the current hardcoded search API
 - there is no live `/admin/analytics` page in the current app tree
 

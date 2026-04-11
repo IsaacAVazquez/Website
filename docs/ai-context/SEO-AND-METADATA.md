@@ -2,7 +2,7 @@
 
 Current metadata and structured-data reference.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
@@ -39,6 +39,16 @@ Dynamic routes use `generateMetadata(...)` where needed.
   - `SportsApplication`
   - `BreadcrumbList`
 
+### Football dashboards
+
+- `/premier-league` uses snapshot-date metadata plus breadcrumb and sports-application structured data
+- `/la-liga` uses route metadata plus breadcrumb and sports-application structured data
+
+### Standalone data tools
+
+- `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, and `/fintech-tools/budget-planner` include route metadata and structured data
+- `/fintech-tools/interchange-iq` currently has metadata but no date-modified or structured-data block
+
 ### Writing
 
 - writing index emits breadcrumb and per-post article structured data
@@ -68,7 +78,7 @@ Use them for:
 
 `next-sitemap.config.js` is the source of truth for sitemap generation.
 
-Notable currently included routes:
+Notable routes to verify in generated sitemap output:
 
 - `/`
 - `/portfolio`
@@ -76,6 +86,13 @@ Notable currently included routes:
 - `/resume`
 - `/investments`
 - `/march-madness-2026`
+- `/premier-league`
+- `/la-liga`
+- `/news-pulse`
+- `/spacex-mission-control`
+- `/polling-aggregator`
+- `/fintech-tools/budget-planner`
+- `/fintech-tools/interchange-iq`
 - `/contact`
 - `/writing`
 - fantasy football routes

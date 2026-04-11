@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-04-05
+**Last updated:** 2026-04-10
 
 ---
 
@@ -329,7 +329,7 @@ Runs automatically via `postbuild` script. Generates `public/sitemap.xml`.
 | 0.95 | `/portfolio` |
 | 0.9 | `/about`, `/resume` |
 | 0.85 | `/investments`, `/writing`, blog posts with "product"/"mba"/"berkeley" in slug |
-| 0.75 | `/march-madness-2026`, blog posts with "qa"/"testing"/"quality" in slug |
+| 0.75 | `/march-madness-2026`, standalone dashboards, blog posts with "qa"/"testing"/"quality" in slug |
 | 0.7 | `/contact`, all other blog posts |
 | 0.6 | `/fantasy-football` |
 | 0.5 | `/fantasy-football/tiers/*`, `/fantasy-football/draft-tracker`, `/accessibility` |
@@ -337,6 +337,10 @@ Runs automatically via `postbuild` script. Generates `public/sitemap.xml`.
 ### Dynamic blog discovery
 
 Blog posts are discovered from `content/blog/*.mdx` at build time. Slug keywords determine priority (see above).
+
+### Standalone route note
+
+Routes such as `/premier-league`, `/la-liga`, `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/fintech-tools/budget-planner`, and `/fintech-tools/interchange-iq` are live app routes. Check `next-sitemap.config.js` and generated sitemap output before assuming each has explicit additional-path configuration.
 
 ### Excluded paths
 
@@ -380,13 +384,14 @@ Current status of metadata and structured data across all pages. Use this to ide
 | `/admin` | None | N/A | N/A | N/A | None | None | **Gap** |
 | `/fantasy-football` | `constructMetadata` | website | relative | 2026-03-18 | BreadcrumbList, SportsApp, FAQ | Yes | OK |
 | `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | 2026-03-18 | WebApplication | None | **Gap** |
-| `/fantasy-football/rb-tiers` | Redirect (301) | — | — | — | — | — | OK |
-| `/fantasy-football/tiers/[pos]` | Redirect (301) | — | — | — | — | — | OK |
+| `/fantasy-football/rb-tiers` | Redirect | — | — | — | — | — | OK |
+| `/fantasy-football/tiers/[pos]` | Redirect | — | — | — | — | — | OK |
 | `/premier-league` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
 | `/la-liga` | `constructMetadata` | website | relative | 2026-04-03 | BreadcrumbList, SoftwareApp | Yes | OK |
 | `/news-pulse` | `constructMetadata` | website | relative | 2026-04-01 | BreadcrumbList, SoftwareApp | Yes | OK |
 | `/march-madness-2026` | `constructMetadata` | website | relative | dynamic | BreadcrumbList, Article, FAQ, Sports | Yes | OK |
 | `/spacex-mission-control` | `constructMetadata` | website | relative | 2026-04-01 | BreadcrumbList, SoftwareApp | Yes | OK |
+| `/polling-aggregator` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
 | `/fintech-tools/budget-planner` | `constructMetadata` | website | relative | 2026-04-03 | BreadcrumbList, SoftwareApp | Yes | OK |
 | `/fintech-tools/interchange-iq` | `constructMetadata` | website | relative | None | None | None | **Gap** |
 

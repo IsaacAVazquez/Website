@@ -2,19 +2,20 @@
 
 Comprehensive repo context for agents and collaborators working in `/Users/isaacvazquez/Website`.
 
-**Last updated:** 2026-04-05
+**Last updated:** 2026-04-10
 
 ---
 
 ## Platform Overview
 
-This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines four distinct product surfaces inside one app:
+This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines several distinct product surfaces inside one app:
 
 1. **Portfolio site** — homepage, about, projects, resume, contact
 2. **Writing surface** — long-form MDX posts under `/writing`
 3. **Fantasy football analytics** — rankings, tiers, and draft tooling
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
-5. **Experimental dashboards** — standalone tools like `/premier-league`
+5. **Experimental dashboards** — standalone tools like `/premier-league`, `/la-liga`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
+6. **Fintech tools** — standalone calculators under `/fintech-tools/*`
 
 The site is not a generic blog template. It is a portfolio-first experience with secondary authority-building content.
 
@@ -40,8 +41,12 @@ npm run dev
 npm run build
 npm test
 npm run test:e2e
+npm run update:fantasy
 npm run update:fantasy-rb
 npm run update:investments
+npm run update:football
+npm run update:premier-league
+npm run update:la-liga
 ```
 
 ---
@@ -86,6 +91,7 @@ npm run update:investments
 - `/spacex-mission-control`
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
+- `/polling-aggregator`
 
 ### Utility/admin
 
@@ -169,8 +175,8 @@ Both dashboards are snapshot-driven. Data is fetched from `football-data.org` by
 |---|---|---|---|
 | `npm run build` (Netlify prebuild) | Standings, fixtures, scorers only | ~2 min | Runs automatically on every Netlify deploy |
 | `npm run update:football` | Full update including per-team fixtures and form | ~16 min | Run locally ~weekly, then commit snapshots |
-| `npx tsx scripts/buildPremierLeagueSnapshot.ts` | PL only, full | ~8 min | Run locally when you only want PL refreshed |
-| `npx tsx scripts/updateLaLigaSnapshot.ts` | La Liga only, full | ~8 min | Run locally when you only want La Liga refreshed |
+| `npm run update:premier-league` | PL only, full | ~8 min | Run locally when you only want PL refreshed |
+| `npm run update:la-liga` | La Liga only, full | ~8 min | Run locally when you only want La Liga refreshed |
 
 **Recommended weekly workflow:**
 ```
@@ -190,6 +196,14 @@ git push
 - `FixtureCard`, `FixtureGroupSection` — generic fixture rendering
 - `LeaderList` — scorers/assists leaderboard
 - `StatCard`, `MetricCard`, `InfoChip`, `CrestAvatar`, `TeamResultPill`, `EmptyPanel`, `SurfaceCard`
+
+### Other standalone data tools
+
+- `/news-pulse` reads from `src/lib/news-pulse-utils.ts` through `/api/news-pulse`
+- `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes
+- `/polling-aggregator` reads from `src/data/pollingSnapshot.ts` with deep-linkable route state
+- `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
+- `/fintech-tools/interchange-iq` is a client-side fee analyzer under `src/app/fintech-tools/interchange-iq`
 
 ### March Madness
 
@@ -245,19 +259,20 @@ Global tokens and helpers live in `src/app/globals.css`.
 
 Key conventions:
 
-- use CSS variables such as `var(--color-primary)` and `var(--text-primary)`
-- use semantic shell helpers like:
-  - `.page-shell`
-  - `.page-shell-tight`
-  - `.page-section`
-  - `.section-panel`
-  - `.section-kicker`
-  - `.section-subtitle`
+- new code should use the `--home-*` editorial palette directly, such as `var(--home-paper)`, `var(--home-ink)`, `var(--home-haze)`, and `var(--home-acid)`
+- legacy aliases such as `--surface-*`, `--text-*`, `--border-*`, and `--color-primary` still exist for compatibility, but should not be introduced in new docs or code
+- use editorial shell helpers like:
+  - `.home-page`
+  - `.home-shell`
+  - `.home-shell-tight`
+  - `.home-section`
+  - `.home-card`
+  - `.home-kicker`
 - keep light/dark mode support intact
 - maintain 44px minimum touch targets
 - honor reduced motion for animated components
 
-Do not reintroduce older “warm modern” or “cyberpunk” palette assumptions into live docs or code unless you are explicitly working on historical materials.
+The editorial system is the site-wide standard for all live routes except `/admin`, which intentionally keeps its separate admin aesthetic. Do not reintroduce older palette assumptions into live docs or code unless you are explicitly working on historical materials.
 
 ---
 

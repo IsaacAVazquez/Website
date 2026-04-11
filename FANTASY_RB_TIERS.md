@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Historical reference only. This file captures an older RB tiers implementation note and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, `ARCHITECTURE.md`, and `docs/README.md` for current documentation.
+> Historical reference only. This file captures an older RB tiers implementation note and is not a current source of truth by itself. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `PAGES.md`, `ARCHITECTURE.md`, and `docs/README.md` for current documentation.
 
 # Fantasy Football RB Tiers - Static Weekly Data Implementation
 

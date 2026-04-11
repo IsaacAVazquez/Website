@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-10
 
 ---
 
@@ -21,10 +21,10 @@ Current API route inventory for the app.
 | `/api/fantasy-data` | GET | Main fantasy data route |
 | `/api/fantasy-pros-free` | GET | Public/free fantasy data path |
 | `/api/fantasy-pros-session` | GET, POST | Session-backed FantasyPros flow |
-| `/api/data-manager` | GET, POST | Fantasy data management utilities |
+| `/api/data-manager` | GET, POST, DELETE | Fantasy data management utilities |
 | `/api/data-metadata` | GET | Freshness and metadata |
 | `/api/sample-data` | GET | Fallback sample data |
-| `/api/scheduled-update` | POST | Scheduled refresh route |
+| `/api/scheduled-update` | GET, POST | Scheduled refresh readiness and execution route |
 
 ### Investments
 
@@ -33,16 +33,27 @@ Current API route inventory for the app.
 | `/api/investments/index` | GET | Curated research index / availability info |
 | `/api/investments/quotes` | GET | Quote proxy for investments UI |
 | `/api/investments/data/[symbol]` | GET | Section-based curated research payloads |
+| `/api/stocks` | GET | Quote source used by investments flows |
+
+### Sports dashboards
+
+| Route | Methods | Notes |
+|------|---------|-------|
 | `/api/premier-league/summary` | GET | Snapshot-backed league table, fixtures, and club options for the Premier League tool |
 | `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed Premier League club drilldown payload |
-| `/api/stocks` | GET | Quote source used by investments flows |
+| `/api/la-liga/summary` | GET | Snapshot-backed league table, fixtures, and club options for the La Liga tool |
+| `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed La Liga club drilldown payload |
 
 ### Content and utilities
 
 | Route | Methods | Notes |
 |------|---------|-------|
+| `/api/news-pulse` | GET | News Pulse article summary data |
+| `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
+| `/api/spacex/launches` | GET | SpaceX launch list payload |
+| `/api/spacex/launches/[id]` | GET | SpaceX launch detail payload |
 | `/api/rss` | GET | RSS feed |
-| `/api/search` | GET | Limited search endpoint; not full-site search |
+| `/api/search` | GET | Limited search endpoint; not comprehensive site search |
 | `/api/scrape` | GET, POST | Utility scraping endpoint |
 
 ---
@@ -66,8 +77,13 @@ The live pattern is:
 - `/api/investments/index`
 - `/api/investments/quotes`
 - `/api/investments/data/[symbol]`
+
+Football dashboard routes are separate from the investments surface:
+
 - `/api/premier-league/summary`
 - `/api/premier-league/teams/[teamId]`
+- `/api/la-liga/summary`
+- `/api/la-liga/teams/[teamId]`
 
 ### Admin auth
 
@@ -112,6 +128,12 @@ Use these as the actual source of truth:
 - `src/app/api/investments/data/[symbol]/route.ts`
 - `src/app/api/premier-league/summary/route.ts`
 - `src/app/api/premier-league/teams/[teamId]/route.ts`
+- `src/app/api/la-liga/summary/route.ts`
+- `src/app/api/la-liga/teams/[teamId]/route.ts`
+- `src/app/api/news-pulse/route.ts`
+- `src/app/api/spacex/summary/route.ts`
+- `src/app/api/spacex/launches/route.ts`
+- `src/app/api/spacex/launches/[id]/route.ts`
 - `src/app/api/stocks/route.ts`
 - `src/app/api/rss/route.ts`
 - `src/app/api/search/route.ts`

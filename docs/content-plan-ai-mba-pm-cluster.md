@@ -1,5 +1,8 @@
 # Content Plan: AI for MBAs & Product Managers (3-Month, 24 Posts)
 
+> [!NOTE]
+> Planning reference only. This is a content strategy plan, not a current implementation source of truth. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `SEO.md`, `WRITING_VOICE.md`, and `docs/README.md` for current documentation.
+
 **Last updated:** 2026-04-07
 **Cadence:** 2 posts/week — 1 flagship (2–3k words) + 1 lighter tactical (800–1200 words)
 **Goal:** Build topical authority across 3 clusters; set up talks, courses, or paid products

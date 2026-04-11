@@ -1,5 +1,8 @@
 # SpaceX API Codebase README
 
+> [!NOTE]
+> External reference only. This file summarizes the upstream `r-spacex/SpaceX-API` project and is not a current source of truth for this website's implementation. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `API.md`, `ARCHITECTURE.md`, and `docs/README.md` for current site documentation.
+
 Guide to the `r-spacex/SpaceX-API` project, based on its public docs and repository structure reviewed on April 1, 2026.
 
 This project is an open-source, community-maintained REST API for SpaceX-related data. It is not an official SpaceX product. Its value is not just that it exposes JSON endpoints, but that it organizes a broad set of related spaceflight data into one queryable, versioned, cached, and automation-backed service.

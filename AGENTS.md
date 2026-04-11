@@ -2,19 +2,19 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-10
 
 ---
 
 ## Project Snapshot
 
-This repo is a Next.js 16 personal site with four live product surfaces:
+This repo is a Next.js 16 personal site with several live product surfaces:
 
 - portfolio and resume
 - writing and long-form content
 - fantasy football analytics
 - investments and seasonal analysis experiments
-- standalone sports data dashboards like the Premier League tool
+- standalone sports, political, space, news, and fintech data tools
 
 Primary live routes:
 
@@ -24,11 +24,17 @@ Primary live routes:
 - `/portfolio` and `/portfolio/[slug]`
 - `/investments`
 - `/premier-league`
+- `/la-liga`
 - `/writing` and `/writing/[slug]`
 - `/resume`
 - `/contact`
 - `/fantasy-football/*`
 - `/march-madness-2026`
+- `/news-pulse`
+- `/spacex-mission-control`
+- `/fintech-tools/budget-planner`
+- `/fintech-tools/interchange-iq`
+- `/polling-aggregator`
 - `/search`
 - `/admin`
 
@@ -37,6 +43,7 @@ Canonical redirects:
 - `/projects` -> `/portfolio`
 - `/work` -> `/portfolio`
 - `/blog` -> `/writing`
+- `/blog/:slug` -> `/writing/:slug`
 
 `Writing` is live and promoted in the global header.
 
@@ -65,12 +72,19 @@ Self-shell routes currently include:
 
 - `/about`
 - `/contact`
+- `/fantasy-football`
+- `/fantasy-football/draft-tracker`
+- `/fintech-tools/budget-planner`
 - `/investments`
+- `/la-liga`
 - `/premier-league`
 - `/march-madness-2026`
+- `/news-pulse`
+- `/polling-aggregator`
 - `/portfolio`
 - `/portfolio/[slug]`
 - `/resume`
+- `/spacex-mission-control`
 - `/writing`
 - `/writing/[slug]`
 
@@ -89,7 +103,7 @@ Footer variants:
 
 ## Guardrails
 
-- Never hardcode hex colors in components. Use CSS variables from `src/app/globals.css`.
+- Never hardcode hex colors in components. Use CSS variables from `src/app/globals.css`, preferably the current `--home-*` editorial tokens for new work.
 - Never import `@tabler/icons-react` in server components. Use `@/components/ui/ServerIcons`.
 - Never import `better-sqlite3` into client code.
 - Never create real pages at `/projects`, `/work`, or `/blog`.
@@ -98,7 +112,7 @@ Footer variants:
 - Shared portfolio-shell primitives must not use `transition-all`. Transition specific properties instead.
 - Portfolio-shell routes must keep the primary message and main CTA visible in the initial mobile viewport whenever the route has a hero.
 - Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
-- `/api/search` is still limited and mostly hardcoded. Do not describe it as full-site search.
+- `/api/search` is still limited and mostly hardcoded. Do not describe it as comprehensive site search.
 - `ProjectsContent.tsx` and `WritingPreview.tsx` still exist, but they are not the primary live path for the current shell.
 
 ---
@@ -115,7 +129,7 @@ npm run dev
 
 - Prefer Node 20 locally to match GitHub Actions.
 - `npm run update:investments` also requires `.venv/bin/python3`.
-- `npm run update:premier-league` uses `FOOTBALL_DATA_API_TOKEN` only when rebuilding the checked-in snapshot.
+- `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots.
 - If the investments fetch step fails on imports, install the Python dependency with `.venv/bin/pip install defeatbeta-api`.
 
 ### Day-to-day verification
@@ -175,9 +189,21 @@ Inputs and outputs:
 
 The snapshot builder removes legacy per-section JSON files after writing `snapshot.json`.
 
-### Premier League data workflow
+### Football dashboard data workflow
 
-The Premier League refresh path is:
+The football dashboards read committed TypeScript snapshots at runtime. The token is only needed when rebuilding those snapshots.
+
+Full football refresh path:
+
+1. `tsx scripts/updateFootballSnapshots.ts`
+
+Use:
+
+```bash
+npm run update:football
+```
+
+Premier League-only refresh path:
 
 1. `tsx scripts/buildPremierLeagueSnapshot.ts`
 
@@ -187,12 +213,23 @@ Use:
 npm run update:premier-league
 ```
 
+La Liga-only refresh path:
+
+1. `tsx scripts/updateLaLigaSnapshot.ts`
+
+Use:
+
+```bash
+npm run update:la-liga
+```
+
 Inputs and outputs:
 
 - auth token: `FOOTBALL_DATA_API_TOKEN`
-- checked-in snapshot output: `src/data/premierLeagueSnapshot.ts`
+- Premier League snapshot output: `src/data/premierLeagueSnapshot.ts`
+- La Liga snapshot output: `src/data/laLigaSnapshot.ts`
 
-The app reads the checked-in snapshot at runtime. The token is only needed when rebuilding it.
+`prebuild` runs `tsx scripts/updateFootballSnapshots.ts --league-only` as the faster standings/fixtures/scorers refresh path during `npm run build`.
 
 ### Build and asset workflow
 
@@ -225,7 +262,9 @@ The app reads the checked-in snapshot at runtime. The token is only needed when 
 | `npm run update:fantasy` | Generate fantasy position data and snapshot JSON |
 | `npm run update:fantasy-rb` | Alias of `npm run update:fantasy` |
 | `npm run update:investments` | Fetch investment data and build compact snapshots |
+| `npm run update:football` | Rebuild both Premier League and La Liga snapshots |
 | `npm run update:premier-league` | Rebuild the checked-in Premier League snapshot |
+| `npm run update:la-liga` | Rebuild the checked-in La Liga snapshot |
 | `npm run generate:icons` | Regenerate PWA icons |
 
 ---
@@ -237,6 +276,7 @@ Checked-in operational workflows:
 - `.github/workflows/test.yml`
 - `.github/workflows/update-investments.yml`
 - `.github/workflows/update-premier-league.yml`
+- `.github/workflows/update-la-liga.yml`
 - `.github/workflows/update-fantasy-rb.yml`
 - `netlify/functions/scheduled-fantasy-update.ts`
 - `netlify/functions/purge-cache.ts`
@@ -245,11 +285,13 @@ Current behavior:
 
 - `test.yml` runs unit tests, Playwright E2E, lint, and build on pushes to `main`, `develop`, and `claude/**`, plus pull requests targeting `main` or `develop`
 - `update-investments.yml` runs on manual dispatch and on weekdays at `22:15 UTC`, then commits refreshed files under `public/data/investments` when the curated dataset changes
+- `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC`, then commits `src/data/premierLeagueSnapshot.ts` when it changes
+- `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC`, then commits `src/data/laLigaSnapshot.ts` when it changes
 - `update-fantasy-rb.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`
 - `scheduled-fantasy-update.ts` runs on Wednesdays at `08:00 UTC` and calls `/api/scheduled-update` with `Authorization: Bearer $CRON_SECRET`
 - `purge-cache.ts` is protected by `x-cron-secret` or `?secret=` and calls Netlify Durable Cache purge
 
-If seasonal automation changes, verify both the GitHub Actions workflow and the Netlify scheduled function. They are separate checked-in schedules today.
+If seasonal automation changes, verify both the GitHub Actions workflows and the Netlify scheduled function. They are separate checked-in schedules today.
 
 Useful scheduled-update checks:
 
@@ -274,6 +316,7 @@ curl -X POST \
 ## Source Of Truth Docs
 
 - `README.md`
+- `AGENTS.md`
 - `CLAUDE.md`
 - `PAGES.md`
 - `COMPONENTS.md`

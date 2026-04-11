@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-04-03
+**Last updated:** 2026-04-10
 
 ---
 
@@ -76,6 +76,35 @@ Top-level ownership:
 
 - `src/app/investments/investments-client.tsx` is the route shell
 - it lazy-loads `PortfolioTracker` and `StockResearch`
+
+---
+
+## Football Dashboards
+
+Shared components for `/premier-league` and `/la-liga` live in `src/components/football/`:
+
+- `FixtureCard`
+- `FixtureGroupSection`
+- `LeaderList`
+- `StatCard`
+- `MetricCard`
+- `InfoChip`
+- `CrestAvatar`
+- `TeamResultPill`
+- `SurfaceCard`
+- `EmptyPanel`
+
+Page-level clients live at `src/app/premier-league/premier-league-client.tsx` and `src/app/la-liga/la-liga-client.tsx`.
+
+---
+
+## Standalone Data Tools
+
+- `src/app/news-pulse/*` plus `src/lib/news-pulse-utils.ts`
+- `src/components/spacex/*` plus `src/app/spacex-mission-control/*`
+- `src/app/polling-aggregator/*` plus `src/data/pollingSnapshot.ts`
+- `src/app/fintech-tools/budget-planner/*` plus `src/hooks/useBudgetPlanner.ts`
+- `src/app/fintech-tools/interchange-iq/*`
 
 ---
 

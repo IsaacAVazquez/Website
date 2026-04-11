@@ -2,13 +2,13 @@
 
 Quick local setup for the current Next.js site and its supporting data workflows.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
 
 ---
 
 ## Prerequisites
 
-- Node.js 18+
+- Node.js 20 preferred to match GitHub Actions
 - npm 10+
 - Python 3 if you plan to run `npm run update:investments`
 
@@ -39,8 +39,12 @@ Open `http://localhost:3000`.
 | `npm test` | Run Jest |
 | `npm run test:e2e` | Run Playwright |
 | `npm run analyze` | Build with bundle analysis enabled |
-| `npm run update:fantasy-rb` | Refresh the RB tiers source data |
+| `npm run update:fantasy` | Refresh generated fantasy data and published snapshot JSON |
+| `npm run update:fantasy-rb` | Alias of the fantasy snapshot refresh pipeline |
 | `npm run update:investments` | Fetch investment data and rebuild curated snapshots |
+| `npm run update:football` | Refresh both Premier League and La Liga snapshots |
+| `npm run update:premier-league` | Refresh the Premier League snapshot |
+| `npm run update:la-liga` | Refresh the La Liga snapshot |
 | `npm run generate:icons` | Regenerate PWA icons |
 
 ---
@@ -55,6 +59,8 @@ Add the following for broader local coverage:
 - `NEXTAUTH_URL`, `NEXTAUTH_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD` for `/admin`
 - `CRON_SECRET` for `/api/scheduled-update`
 - `FANTASYPROS_USERNAME` and `FANTASYPROS_PASSWORD` for FantasyPros session-based refreshes
+- `FANTASYPROS_API_KEY` for older or operational FantasyPros API helper paths
+- `FOOTBALL_DATA_API_TOKEN` for football snapshot refreshes
 
 See `docs/ENVIRONMENT_CONFIGURATION.md` for the full matrix.
 
@@ -81,6 +87,26 @@ That script chain expects:
 ### Fantasy football
 
 Fantasy routes mix static assets, API fetches, and SQLite-backed helpers.
+
+To rebuild the currently published static fantasy snapshots:
+
+```bash
+npm run update:fantasy
+```
+
+`npm run update:fantasy-rb` is currently an alias for the same snapshot pipeline.
+
+### Football dashboards
+
+Premier League and La Liga run from committed TypeScript snapshots:
+
+```bash
+npm run update:football
+npm run update:premier-league
+npm run update:la-liga
+```
+
+These commands need `FOOTBALL_DATA_API_TOKEN`; normal page loads do not.
 
 Useful references:
 

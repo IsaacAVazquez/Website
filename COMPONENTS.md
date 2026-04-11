@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-04-05
+**Last updated:** 2026-04-10
 
 ---
 
@@ -95,6 +95,16 @@ Shared components for both `/premier-league` and `/la-liga` dashboards. All live
 | `SurfaceCard` | `src/components/football/SurfaceCard.tsx` | Consistent card surface wrapper |
 | `EmptyPanel` | `src/components/football/EmptyPanel.tsx` | Empty-state placeholder panel |
 
+### Standalone data tools
+
+| Area | Primary files | Role |
+|------|---------------|------|
+| News Pulse | `src/app/news-pulse/*`, `src/lib/news-pulse-utils.ts` | News dashboard route and API-backed article summaries |
+| SpaceX Mission Control | `src/components/spacex/*`, `src/app/spacex-mission-control/*` | SpaceX launch dashboard, mission cards, detail panels, patch and vehicle visuals |
+| Polling Aggregator | `src/app/polling-aggregator/*`, `src/data/pollingSnapshot.ts` | Snapshot-backed polling dashboard and deep-linkable route state |
+| Budget Planner | `src/app/fintech-tools/budget-planner/*`, `src/hooks/useBudgetPlanner.ts` | Client-side budget planning tool |
+| Interchange IQ | `src/app/fintech-tools/interchange-iq/*` | Client-side interchange fee analyzer |
+
 ---
 
 ## UI Primitives
@@ -114,6 +124,8 @@ Most reused primitives:
 - `ServerIcons`
 - `button.tsx`
 - `dropdown-menu.tsx`
+
+Editorial shared components also live under `src/components/editorial/`; use them when working in the current `--home-*` visual system.
 
 Styling guidance for these lives in `STYLING.md`.
 
@@ -150,6 +162,15 @@ The page uses a server entry plus client UI:
 
 - `src/app/march-madness-2026/page.tsx`
 - `src/app/march-madness-2026/march-madness-client.tsx`
+
+### Football dashboards
+
+The page-level clients are:
+
+- `src/app/premier-league/premier-league-client.tsx`
+- `src/app/la-liga/la-liga-client.tsx`
+
+Route state helpers live next to each client and have unit coverage for invalid params and deep links.
 
 ---
 

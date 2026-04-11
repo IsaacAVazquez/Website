@@ -1,7 +1,7 @@
 # Dark Mode Implementation - Complete Usage Guide
 
 > [!IMPORTANT]
-> Historical reference only. This file documents an older theme implementation. For the current styling system, start with `STYLING.md` and `src/app/globals.css`.
+> Historical reference only. This file documents an older theme implementation and is not a current source of truth by itself. Use `AGENTS.md`, `CLAUDE.md`, `STYLING.md`, `src/app/globals.css`, and `docs/README.md` for current documentation.
 
 ## Overview
 

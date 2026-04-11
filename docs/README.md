@@ -1,15 +1,18 @@
 # Documentation Index
 
-Current map of repo documentation.
+Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-03-17
+**Last updated:** 2026-04-10
+
+Tracked Markdown audit scope: `git ls-files '*.md'` returned 215 files on 2026-04-10.
 
 ---
 
 ## Current Source Of Truth
 
-Start here for live implementation context:
+Start here for live implementation and agent context:
 
+- `../AGENTS.md`
 - `../AGENT.md`
 - `../CLAUDE.md`
 - `../README.md`
@@ -20,6 +23,9 @@ Start here for live implementation context:
 - `../DEVELOPMENT.md`
 - `../TESTING.md`
 - `../STYLING.md`
+- `../SEO.md`
+- `../WRITING_VOICE.md`
+- `README.md`
 
 AI-oriented technical references:
 
@@ -37,37 +43,77 @@ AI-oriented technical references:
 
 ## Supporting Operational Docs
 
-- `ENVIRONMENT_CONFIGURATION.md`
-- `DATABASE_SCHEMA.md`
-- `FANTASY_PLATFORM_SETUP.md`
+Use these when the task is specifically about setup, deployment, data operations, security, or troubleshooting:
+
+- `../DEPLOYMENT.md`
+- `../GETTING-STARTED.md`
+- `../PERFORMANCE.md`
+- `../TROUBLESHOOTING.md`
 - `AUTOMATION_SCRIPTS.md`
 - `CRON_SETUP.md`
+- `DATABASE_SCHEMA.md`
+- `ENVIRONMENT_CONFIGURATION.md`
+- `FANTASY_PLATFORM_SETUP.md`
+- `PLAYER_IMAGES_SETUP.md`
 - `SECURITY.md`
+
+Historical release notes and changelogs:
+
+- `../CHANGELOG.md`
 - `RELEASE_NOTES_2026-03-16_FINTECH_INVESTMENTS.md`
 
-Use these when the task is specifically about setup, operations, or a documented release.
+Planning and strategy references:
+
+- `2026-seo-opportunity-ai-tech-blogs.md`
+- `content-plan-ai-mba-pm-cluster.md`
+- `SPACEX_API_CODEBASE_README.md`
 
 ---
 
-## Historical Or Planning Docs
+## Historical Or Reference Docs
 
 These remain in the repo for context, but they should not be treated as live source-of-truth docs:
 
-- `docs/plans/*`
-- `docs/PROJECTS.md`
-- `docs/UNDERUTILIZED_FEATURES.md`
-- root-level SEO, UX, audit, and implementation-summary markdowns
-- `content-redesign/*`
-- non-live content reference/template markdowns under `content/`
+- `../ACCESSIBILITY_AUDIT.md`
+- `../DARK_MODE_USAGE_GUIDE.md`
+- `../DEPLOYMENT_GUIDE.md`
+- `../FANTASY_RB_TIERS.md`
+- `../INVESTMENT_TRACKER.md`
+- `../NFLVERSE_INTEGRATION.md`
+- `../PERFORMANCE-SEO.md`
+- `../PERFORMANCE_REPORT.md`
+- `FEATURE_ROADMAP.md`
+- `PROJECTS.md`
+- `UNDERUTILIZED_FEATURES.md`
+- `plans/*`
+- `archive/*`
+- `superpowers/specs/*`
+- `../content-redesign/*`
+- `../content/*`
+- `../public/project-screenshots/README.md`
+- `../src/app/admin/README_scoring_format.md`
+- `../.open-next/assets/project-screenshots/README.md`
 
-Where possible, those files are marked with a historical banner and point back to the current docs above.
+Historical files should have an explicit banner where practical. If one conflicts with code or a current doc, trust the current doc and then the code.
+
+---
+
+## Bundled Skill Docs
+
+The repo tracks 104 Markdown files under `../.agents/skills/**`.
+
+These are bundled skill-library docs, not website implementation docs. They are included in the all-Markdown inventory, but they should not be rewritten during website documentation sync work unless they contain a repo-specific reference that directly contradicts `AGENTS.md`, `CLAUDE.md`, or this index.
+
+Root `../SKILL.md` is different: it is a repo-level skill entry and may be updated when the site copy or agent guidance changes.
 
 ---
 
 ## Usage Guidance
 
-- If a markdown file conflicts with the app code, trust the code.
+- If a Markdown file conflicts with app code, trust the code.
 - If a historical doc conflicts with a current doc, trust the current doc.
 - For route truth, check `src/app/**/page.tsx`.
 - For API truth, check `src/app/api/**/route.ts`.
 - For shell and nav truth, check `StaticHeader.tsx`, `ConditionalLayout.tsx`, and `Footer.tsx`.
+- For scripts, check `package.json` first.
+- For styling, check `STYLING.md` and `src/app/globals.css`.

@@ -7,6 +7,8 @@ description: Step-by-step process for producing concise, high-converting copy ac
 
 Use this skill whenever you are asked to tighten messaging, rewrite a section, or create net-new copy for Isaac’s site, emails, or collateral.
 
+Before editing site-facing copy, read `WRITING_VOICE.md`. Before changing repo documentation, check `AGENTS.md`, `CLAUDE.md`, and `docs/README.md` so copy guidance does not drift from current route, styling, or agent instructions.
+
 ## When to use
 
 - Refreshing hero sections, CTAs, or landing page copy.

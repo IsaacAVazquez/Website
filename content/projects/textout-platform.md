@@ -19,7 +19,7 @@ seo:
 ---
 
 > [!IMPORTANT]
-> Historical reference only. This markdown example belongs to an older content workflow and is not a current source of truth by itself. Use `AGENT.md`, `README.md`, `PAGES.md`, and `docs/README.md` for current documentation.
+> Historical reference only. This markdown example belongs to an older content workflow and is not a current source of truth by itself. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `PAGES.md`, and `docs/README.md` for current documentation.
 
 # TextOut Platform
 ## Product Vision & User Research
