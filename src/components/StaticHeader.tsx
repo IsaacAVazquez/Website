@@ -77,17 +77,14 @@ export function StaticHeader() {
                   </li>
                 );
               })}
+              <li>
+                <DeferredThemeToggle className="inline-flex min-h-[44px] items-center px-3" />
+              </li>
             </ul>
-
-            <div className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border header-home-control">
-              <DeferredThemeToggle />
-            </div>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
-            <div className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border header-home-control">
-              <DeferredThemeToggle />
-            </div>
+            <DeferredThemeToggle />
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen((current) => !current)}

@@ -1,10 +1,19 @@
-export function ThemeToggleFallback() {
+import { cn } from "@/lib/utils";
+
+interface ThemeToggleFallbackProps {
+  className?: string;
+}
+
+export function ThemeToggleFallback({ className }: ThemeToggleFallbackProps) {
   return (
     <button
       type="button"
       aria-hidden="true"
       tabIndex={-1}
-      className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-[var(--home-ink-muted)]"
+      className={cn(
+        "inline-flex items-center justify-center rounded-full text-[var(--home-ink-muted)]",
+        className
+      )}
     >
       <span
         aria-hidden="true"
