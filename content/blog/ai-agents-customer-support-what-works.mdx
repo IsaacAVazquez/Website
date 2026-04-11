@@ -1,0 +1,67 @@
+---
+title: "AI Agents for Customer Support: What Actually Works in 2026"
+excerpt: "Customer support is the most common starting point for agentic AI in production. Most implementations underdeliver not because the technology is wrong but because the use case design is wrong. Here is what I have seen work and where the skepticism is warranted."
+publishedAt: "2026-04-21"
+category: "Agentic AI"
+tags: ["AI", "Product Management", "Agentic AI", "Customer Support", "Product Design"]
+featured: false
+author: "Isaac Vazquez"
+seo:
+  title: "AI Agents for Customer Support: What Actually Works in 2026"
+  description: "A PM's perspective on what actually works when deploying AI agents for customer support — real use cases, KPIs that matter, and where the demos are misleading."
+  keywords: ["AI agents customer support", "AI customer support 2026", "agentic AI support", "customer support AI what works", "AI support deflection", "AI agents CSAT", "product manager AI support"]
+---
+
+# AI Agents for Customer Support: What Actually Works in 2026
+
+Customer support is where most companies start with agentic AI, and for good reason. The use case is clear, the ROI story is easy to tell, and the stakes on any individual interaction are lower than in, say, financial transactions or medical decisions. But most implementations I have seen underdeliver, and the reason is usually not the technology. It is that the use case design does not match what the technology is actually good at.
+
+I want to be specific about what works, what does not, and how to think about this as a PM who is either building one of these systems or evaluating one.
+
+## What agents are actually good at in support
+
+The interactions where AI agents perform reliably are narrow: common questions with known answers, status lookups that require pulling structured data from a system of record, and guided troubleshooting flows where the decision tree is well defined.
+
+Someone asking "when will my order arrive?" is a good agent use case. The answer is deterministic, the data source is clear, and the interaction is complete when the fact is retrieved and stated. A company with 5,000 of those a day and a straightforward lookup API can deflect a meaningful percentage of support volume with an agent that does this well.
+
+Guided troubleshooting works when the problem space is bounded. "My device is not connecting to the network" has a finite set of probable causes and a finite set of resolution steps. An agent that can walk through that tree, confirm which steps have been attempted, and escalate when the standard resolution path is exhausted is genuinely useful. The key word is bounded. The same agent applied to an open-ended problem where the user's situation does not fit the known patterns will produce frustrating loops.
+
+What surprises most teams is that the agent does not need to be clever to deliver value. It needs to be clear, fast, and honest about its limits.
+
+## The KPIs that actually matter
+
+Deflection rate is the number most commonly cited in AI support demos, and it is also the easiest to game. An agent that refuses to escalate, that routes everything to self-service knowledge articles, or that closes tickets unresolved will produce high deflection numbers and low user satisfaction. I have seen this pattern more than once.
+
+The metrics that actually tell you whether the system is working are deflection rate alongside resolution rate and CSAT for agent-handled interactions. Deflection that ends in resolution is valuable. Deflection that ends in the user re-opening the ticket or going to a different channel is negative value. Combining all three tells a coherent story. Looking at deflection alone does not.
+
+For escalation, I want to track time-to-escalate alongside escalation rate. An agent that escalates after 15 minutes of failed attempts is worse than one that escalates immediately when it detects a pattern it cannot resolve. The goal is not to minimize escalations. It is to escalate at the right moment with the right context handed off.
+
+## Where the demos are misleading
+
+The demo version of an AI support agent handles the prototypical version of every question type perfectly. The production version handles the prototypical version well and fails on the 30% of variations that are slightly off the expected pattern.
+
+The failure modes I have seen most often are misunderstanding ambiguous requests where the user knows what they want but expresses it in a way the model does not recognize; losing context across a multi-turn conversation when the user provides clarifying information that should change the earlier interpretation; and recovering poorly from errors, either looping on the same failed resolution path or offering the same self-service article the user already read.
+
+None of these failure modes is intractable. But they require investment in the edge case handling that demos never show.
+
+The other misleading thing about demos is that they show the agent resolving issues. In production, a significant portion of what agents do is not resolve issues but qualify and route them. That is still valuable, but it is a different kind of value than the demo implies. If your success metric is resolution, and your agent is mostly doing qualification, you will be disappointed with the numbers even if the system is working correctly.
+
+## Design principles that hold up
+
+The support agents I have seen work well share a few properties worth naming explicitly.
+
+They are transparent about being AI. Users who discover mid-conversation that they were not talking to a human are more frustrated than users who knew from the start. Transparency upfront reduces CSAT risk and builds a more realistic expectation for what the interaction will produce.
+
+They escalate early and with context. When an agent detects that a situation is outside its competence, it hands off immediately rather than attempting more passes. The handoff includes a summary of what the user has told the agent and what has already been tried. A human agent receiving a complete context handoff can resolve things in a fraction of the time it would take to start over.
+
+They are designed around the actual support volume distribution, not the average case. In most support queues, the top 10 question types account for 60 to 70 percent of volume. An agent designed specifically to handle those 10 types well, with clean escalation for everything else, is more valuable than an agent designed to handle everything adequately.
+
+## The PM's role in this
+
+If you are owning an AI support product, the design decisions that matter most are not the model choices. They are the scope definition, the escalation logic, and the feedback loop.
+
+Scope definition means being specific about which interaction types the agent handles and which it does not. Vague scope leads to an agent that attempts everything and handles little reliably. Tight scope leads to an agent that handles a defined set of interactions well and routes everything else cleanly.
+
+Escalation logic means treating the decision to escalate as a first-class design problem, not as a failure fallback. The criteria for escalation, the timing, and the handoff format are all choices that affect user experience and agent CSAT more than almost anything else.
+
+The feedback loop means capturing what happens after escalation. When a human agent resolves something the AI agent could not, what made the resolution possible? That information is the primary source of signal for improving the scope definition and handling over time. An AI support system without a systematic feedback loop is a system that cannot improve, which means it will fall behind the support volume it was meant to handle.

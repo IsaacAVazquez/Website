@@ -3,7 +3,7 @@
 > [!NOTE]
 > Planning reference only. This is a content strategy plan, not a current implementation source of truth. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `SEO.md`, `WRITING_VOICE.md`, and `docs/README.md` for current documentation.
 
-**Last updated:** 2026-04-07
+**Last updated:** 2026-04-10
 **Cadence:** 2 posts/week — 1 flagship (2–3k words) + 1 lighter tactical (800–1200 words)
 **Goal:** Build topical authority across 3 clusters; set up talks, courses, or paid products
 
@@ -92,20 +92,20 @@ All 24 posts with finalized slugs, personas, and funnel stage. Status: **Written
 |---|---------|-----------|------|---------|--------|--------|
 | 1 | AI for MBAs & PMs | How I Actually Use AI as an MBA and Aspiring Product Manager Every Day | ai-mba-pm-daily-workflow | MBAs, junior PMs | Awareness | Written (`ai-workflow-mba-product-manager-daily`) |
 | 2 | AI for MBAs & PMs | The AI Skills Every PM Internship Will Expect in 2026 | ai-skills-product-management-internships-2026 | PM interns, recruiters | Awareness | Written (`ai-skills-pm-internship-2026`) |
-| 3 | AI for MBAs & PMs | AI-Powered User Research: Turning 10 Interviews into Themes in One Evening | ai-user-research-synthesis-workflow | PMs, UX researchers | Consideration | Pending |
-| 4 | AI for MBAs & PMs | Writing Better PRDs with AI: Prompts, Structure, and Common Failure Modes | ai-prd-writing-prompts-structure | PMs, tech leads | Consideration | Pending |
-| 5 | AI for MBAs & PMs | Using AI for Quant Cases and Financial Models Without Cheating | ai-quant-cases-financial-modeling | MBAs, strategy/finance | Consideration | Pending |
-| 6 | AI for MBAs & PMs | From Inbox Chaos to Signal: How PMs Can Use AI for Email and Stakeholder Updates | ai-email-stakeholder-comms-pm | PMs, team leads | Consideration | Pending |
-| 7 | AI for MBAs & PMs | Roadmapping with AI: Turning Raw Feedback into Quarterly Bets | ai-roadmapping-from-feedback | PMs, founders | Decision | Pending |
-| 8 | AI for MBAs & PMs | How MBAs Misuse AI (and How to Stand Out Instead) | mba-ai-misuse-how-to-stand-out | MBAs, early-career pros | Awareness | Pending |
-| 9 | Agentic AI & Workflows | Agentic AI in Plain English: What It Is and Why Product Managers Should Care | agentic-ai-explained-for-product-managers | PMs, founders | Awareness | Pending |
+| 3 | AI for MBAs & PMs | AI-Powered User Research: Turning 10 Interviews into Themes in One Evening | ai-user-research-synthesis-workflow | PMs, UX researchers | Consideration | Written |
+| 4 | AI for MBAs & PMs | Writing Better PRDs with AI: Prompts, Structure, and Common Failure Modes | ai-prd-writing-prompts-structure | PMs, tech leads | Consideration | Written |
+| 5 | AI for MBAs & PMs | Using AI for Quant Cases and Financial Models Without Cheating | ai-quant-cases-financial-modeling | MBAs, strategy/finance | Consideration | Written |
+| 6 | AI for MBAs & PMs | From Inbox Chaos to Signal: How PMs Can Use AI for Email and Stakeholder Updates | ai-email-stakeholder-comms-pm | PMs, team leads | Consideration | Written |
+| 7 | AI for MBAs & PMs | Roadmapping with AI: Turning Raw Feedback into Quarterly Bets | ai-roadmapping-from-feedback | PMs, founders | Decision | Written |
+| 8 | AI for MBAs & PMs | How MBAs Misuse AI (and How to Stand Out Instead) | mba-ai-misuse-how-to-stand-out | MBAs, early-career pros | Awareness | Written |
+| 9 | Agentic AI & Workflows | Agentic AI in Plain English: What It Is and Why Product Managers Should Care | agentic-ai-explained-for-product-managers | PMs, founders | Awareness | Written |
 | 10 | Agentic AI & Workflows | Designing My First Agentic Workflow: A Real Example from My Own Work | designing-first-agentic-ai-workflow | PMs, builders | Consideration | Covered (`agentic-ai-research-to-deck-workflow`) |
-| 11 | Agentic AI & Workflows | AI Agents for Customer Support: What Actually Works in 2026 | ai-agents-customer-support-what-works | PMs, support leaders | Consideration | Pending |
-| 12 | Agentic AI & Workflows | Testing "Autopilot" Marketing: Agentic AI Content Workflows in Practice | agentic-ai-marketing-content-workflows | Marketers, PMs | Consideration | Pending |
-| 13 | Agentic AI & Workflows | Multi-Agent Architectures for Business Workflows (Without the Hype) | multi-agent-ai-architectures-business | Senior PMs, architects | Consideration | Pending |
+| 11 | Agentic AI & Workflows | AI Agents for Customer Support: What Actually Works in 2026 | ai-agents-customer-support-what-works | PMs, support leaders | Consideration | Written |
+| 12 | Agentic AI & Workflows | Testing "Autopilot" Marketing: Agentic AI Content Workflows in Practice | agentic-ai-marketing-content-workflows | Marketers, PMs | Consideration | Written |
+| 13 | Agentic AI & Workflows | Multi-Agent Architectures for Business Workflows (Without the Hype) | multi-agent-ai-architectures-business | Senior PMs, architects | Consideration | Written |
 | 14 | Agentic AI & Workflows | Where Agentic AI Breaks: Edge Cases, Governance, and Human-in-the-Loop Design | agentic-ai-failure-modes-governance | PMs, ops leaders | Decision | Covered (`ai-agent-delegation-failure-modes`) |
-| 15 | Agentic AI & Workflows | How I'd Evaluate an Agentic AI Product as a PM (Interview-Ready Framework) | evaluate-agentic-ai-product-pm-framework | PM candidates | Decision | Pending |
-| 16 | Agentic AI & Workflows | Build vs Buy for Agentic AI: When Startups Should Roll Their Own | build-vs-buy-agentic-ai-platform | Founders, PMs | Decision | Pending |
+| 15 | Agentic AI & Workflows | How I'd Evaluate an Agentic AI Product as a PM (Interview-Ready Framework) | evaluate-agentic-ai-product-pm-framework | PM candidates | Decision | Written |
+| 16 | Agentic AI & Workflows | Build vs Buy for Agentic AI: When Startups Should Roll Their Own | build-vs-buy-agentic-ai-platform | Founders, PMs | Decision | Written |
 | 17 | AI for Strategy, Finance & Ops | How Finance and Strategy Teams Are Actually Using AI in 2026 | ai-in-finance-strategy-real-use-cases | Strategy, finance, MBAs | Awareness | Pending |
 | 18 | AI for Strategy, Finance & Ops | AI-Driven Management Dashboards: From Raw Data to Executive Narrative | ai-management-dashboards-exec-narrative | PMs, BI leads | Consideration | Pending |
 | 19 | AI for Strategy, Finance & Ops | Using AI to Speed Up Case Prep and Consulting-Style Slides | ai-for-case-prep-consulting-slides | MBAs, consultants | Consideration | Covered (`agentic-ai-research-to-deck-workflow`) |

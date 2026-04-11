@@ -233,10 +233,11 @@ Inputs and outputs:
 
 ### Build and asset workflow
 
-- `npm run build` runs `next build --webpack`
+- `npm run build` runs `prebuild`, `next build --webpack`, and npm `postbuild`
+- `npm run prebuild` runs `tsx scripts/updateFootballSnapshots.ts --league-only` as the faster standings/fixtures/scorers refresh path before builds
 - `postbuild` runs `next-sitemap` and `scripts/patch-nft-sharp.mjs`
 - `npm run analyze` enables bundle analysis and still runs the npm `postbuild` hook
-- `npm run build:analyze` runs `ANALYZE=true next build` directly and skips npm `postbuild`
+- `npm run build:analyze` runs `ANALYZE=true next build --webpack` directly and skips npm `postbuild`
 - `npm run generate:icons` rebuilds PWA icons
 
 ---
@@ -246,7 +247,8 @@ Inputs and outputs:
 | Command | Use |
 | --- | --- |
 | `npm run dev` | Start the Next.js dev server |
-| `npm run build` | Production build plus `postbuild` sitemap and NFT patch steps |
+| `npm run build` | Production build plus the football `prebuild` fast path and `postbuild` sitemap/NFT patch steps |
+| `npm run prebuild` | Run the football `--league-only` fast path used automatically before build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint against `src` |
 | `npm test` | Run Jest |
@@ -288,7 +290,7 @@ Current behavior:
 - `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC`, then commits `src/data/premierLeagueSnapshot.ts` when it changes
 - `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC`, then commits `src/data/laLigaSnapshot.ts` when it changes
 - `update-fantasy-rb.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`
-- `scheduled-fantasy-update.ts` runs on Wednesdays at `08:00 UTC` and calls `/api/scheduled-update` with `Authorization: Bearer $CRON_SECRET`
+- `scheduled-fantasy-update.ts` runs on Wednesdays at `08:00 UTC` and POSTs to `/api/scheduled-update` with `Authorization: Bearer $CRON_SECRET`
 - `purge-cache.ts` is protected by `x-cron-secret` or `?secret=` and calls Netlify Durable Cache purge
 
 If seasonal automation changes, verify both the GitHub Actions workflows and the Netlify scheduled function. They are separate checked-in schedules today.
