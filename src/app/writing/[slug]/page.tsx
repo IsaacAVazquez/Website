@@ -1,9 +1,16 @@
-import { getBlogPostBySlug, getAllBlogPosts } from '@/lib/blog';
-import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
-import { AuthorBio } from '@/components/ui/AuthorBio';
-import { constructMetadata, calculateReadingTime } from '@/lib/seo';
-import { AIStructuredData } from '@/components/AIStructuredData';
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import { AuthorBio } from "@/components/ui/AuthorBio";
+import { constructMetadata, absoluteUrl } from "@/lib/seo";
+import { AIStructuredData } from "@/components/AIStructuredData";
+import {
+  getAllBlogPostPreviews,
+  getBlogPostBySlug,
+  getRelatedBlogPosts,
+} from "@/lib/blog";
+import { ArrowRight } from "@/components/ui/ServerIcons";
 
 interface PageProps {
   params: Promise<{
@@ -12,7 +19,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllBlogPosts();
+  const posts = getAllBlogPostPreviews();
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -23,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = await getBlogPostBySlug(slug);
 
   if (!post) {
-    return { title: 'Post not found' };
+    return { title: "Post not found" };
   }
 
   const metadataTitle = post.seo?.title || post.title;
@@ -32,17 +39,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return constructMetadata({
     title: metadataTitle,
     description: metadataDescription,
+    image: post.coverImage,
     ogType: "article",
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
     articleAuthor: "https://isaacavazquez.com/about",
-    articleSection: Array.isArray(post.tags) && post.tags[0] ? post.tags[0] : "Product Management",
+    articleSection:
+      Array.isArray(post.tags) && post.tags[0] ? post.tags[0] : "Product Management",
     articleTags: post.seo?.keywords || post.tags,
     canonicalUrl: `https://isaacavazquez.com/writing/${slug}`,
     aiMetadata: {
       expertise: post.seo?.keywords || post.tags || [],
       contentType: "Article",
-      profession: "Technical Product Manager",
+      profession: "Product Manager",
       summary: metadataDescription,
     },
   });
@@ -56,9 +65,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const readingTime = post.readingTime || `${calculateReadingTime(post.content)} min read`;
-  const wordCount = post.content.split(/\s+/).length;
-
+  const relatedPosts = await getRelatedBlogPosts(slug, 3);
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Writing", url: "/writing" },
@@ -84,56 +91,65 @@ export default async function BlogPostPage({ params }: PageProps) {
             description: articleDescription,
             author: {
               name: "Isaac Vazquez",
-              jobTitle: "Technical Product Manager & UC Berkeley MBA Candidate",
+              jobTitle: "Product Manager & UC Berkeley Haas MBA Candidate",
               url: "https://isaacavazquez.com",
             },
             datePublished: post.publishedAt,
             dateModified: post.updatedAt || post.publishedAt,
             url: `https://isaacavazquez.com/writing/${slug}`,
-            keywords: Array.isArray(articleKeywords) ? articleKeywords.join(", ") : (articleKeywords || ""),
-            wordCount: wordCount,
-            readingTime: readingTime,
-            image: "https://isaacavazquez.com/og-image.png",
+            keywords: Array.isArray(articleKeywords)
+              ? articleKeywords
+              : articleKeywords
+                ? [articleKeywords]
+                : undefined,
+            wordCount: post.wordCount,
+            image: absoluteUrl(post.coverImage),
             inLanguage: "en-US",
             isAccessibleForFree: true,
-            articleSection: Array.isArray(post.tags) && post.tags[0] ? post.tags[0] : "Product Management",
+            articleSection:
+              Array.isArray(post.tags) && post.tags[0]
+                ? post.tags[0]
+                : "Product Management",
           },
         }}
       />
 
       <section className="home-page min-h-screen">
         <div className="home-shell home-section">
-          <article className="max-w-6xl mx-auto">
-            {/* Breadcrumb */}
+          <article className="mx-auto max-w-6xl">
             <nav aria-label="Breadcrumb" className="mb-8">
               <ol
                 className="flex items-center gap-2 text-sm"
-                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  color: "var(--home-ink-muted)",
+                }}
               >
                 <li>
-                  <a
+                  <Link
                     href="/writing"
                     className="transition-colors hover:text-[var(--home-ink)]"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
                     Writing
-                  </a>
+                  </Link>
                 </li>
                 <li aria-hidden="true">/</li>
-                <li className="truncate max-w-[40ch]" style={{ color: "var(--home-ink)" }}>
+                <li className="max-w-[40ch] truncate" style={{ color: "var(--home-ink)" }}>
                   {post.title}
                 </li>
               </ol>
             </nav>
 
-            {/* Article header */}
-            <header className="mb-10">
-              {post.tags && post.tags[0] && (
-                <span className="home-kicker mb-4 inline-block">{post.tags[0]}</span>
-              )}
+            <header className="mb-10 space-y-5">
+              {post.cluster ? (
+                <span className="home-kicker inline-block">{post.cluster}</span>
+              ) : post.tags && post.tags[0] ? (
+                <span className="home-kicker inline-block">{post.tags[0]}</span>
+              ) : null}
 
               <h1
-                className="mb-4 max-w-5xl"
+                className="max-w-5xl"
                 style={{
                   fontFamily: "var(--font-home-sans)",
                   fontSize: "clamp(2rem, 5vw, 3.2rem)",
@@ -147,7 +163,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </h1>
 
               <div
-                className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-5"
+                className="flex flex-wrap items-center gap-x-4 gap-y-1"
                 style={{
                   fontFamily: "var(--font-home-sans)",
                   fontSize: "0.8rem",
@@ -158,43 +174,143 @@ export default async function BlogPostPage({ params }: PageProps) {
                 }}
               >
                 <time dateTime={post.publishedAt}>
-                  {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
+                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
                   })}
                 </time>
                 <span aria-hidden="true">·</span>
-                <span>{readingTime}</span>
+                <span>{post.readingTime}</span>
               </div>
 
-              {post.tags && post.tags.length > 1 && (
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {post.tags.slice(1).map((tag) => (
-                    <span key={tag} className="resume-chip">{tag}</span>
+              <p className="home-body max-w-[54rem]">{post.excerpt}</p>
+
+              {post.tags && post.tags.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.slice(0, 4).map((tag) => (
+                    <span key={tag} className="resume-chip">
+                      {tag}
+                    </span>
                   ))}
                 </div>
-              )}
+              ) : null}
 
-              <hr style={{ borderColor: "var(--home-rule)", marginTop: "1.5rem" }} />
+              <div className="relative aspect-[1200/630] overflow-hidden rounded-[1.6rem] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
+                <Image
+                  src={post.coverImage}
+                  alt={post.title}
+                  fill
+                  priority
+                  sizes="(min-width: 1280px) 72rem, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </header>
 
-            {/* Article body */}
             <div
-              className="prose prose-home dark:prose-invert max-w-none mb-16"
+              className="prose prose-home dark:prose-invert mb-16 max-w-none"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
-            {/* Author bio */}
-            <div className="mb-10" style={{ borderTop: "1px solid var(--home-rule)", paddingTop: "2.5rem" }}>
+            {post.cta ? (
+              <section
+                className="home-card mb-10 space-y-4"
+                style={{
+                  background: "color-mix(in srgb, var(--home-paper-alt) 86%, white)",
+                  padding: "1.8rem",
+                }}
+              >
+                <p className="home-kicker mb-0">{post.cta.eyebrow || "Related work"}</p>
+                <h2
+                  style={{
+                    fontFamily: "var(--font-home-sans)",
+                    fontSize: "1.7rem",
+                    fontWeight: 600,
+                    lineHeight: 1.02,
+                    letterSpacing: "-0.04em",
+                    color: "var(--home-ink)",
+                  }}
+                >
+                  {post.cta.title}
+                </h2>
+                <p className="home-body mb-0 max-w-[42rem]">{post.cta.description}</p>
+                <Link href={post.cta.href} className="home-inline-link inline-flex items-center gap-2">
+                  {post.cta.actionLabel || "Open it"}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </section>
+            ) : null}
+
+            {relatedPosts.length > 0 ? (
+              <section className="mb-12 space-y-5">
+                <div className="space-y-2">
+                  <p className="home-kicker mb-0">Related writing</p>
+                  <h2
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "clamp(1.7rem, 4vw, 2.2rem)",
+                      fontWeight: 600,
+                      lineHeight: 1,
+                      letterSpacing: "-0.04em",
+                      color: "var(--home-ink)",
+                    }}
+                  >
+                    If this piece was useful, these should stack on top of it.
+                  </h2>
+                </div>
+
+                <div className="grid gap-5 md:grid-cols-3">
+                  {relatedPosts.map((relatedPost) => (
+                    <Link
+                      key={relatedPost.slug}
+                      href={`/writing/${relatedPost.slug}`}
+                      className="group block h-full"
+                    >
+                      <article className="home-card h-full" style={{ padding: "1.35rem" }}>
+                        <p className="home-kicker mb-2">{relatedPost.category}</p>
+                        <h3
+                          style={{
+                            fontFamily: "var(--font-home-sans)",
+                            fontSize: "1.05rem",
+                            fontWeight: 700,
+                            letterSpacing: "-0.03em",
+                            lineHeight: 1.18,
+                            color: "var(--home-ink)",
+                          }}
+                        >
+                          {relatedPost.title}
+                        </h3>
+                        <p
+                          className="mb-0 mt-3 text-sm leading-6"
+                          style={{ color: "var(--home-ink-muted)" }}
+                        >
+                          {relatedPost.excerpt}
+                        </p>
+                        <div className="mt-5 flex items-center justify-between border-t border-[var(--home-rule)] pt-4 text-sm">
+                          <span style={{ color: "var(--home-ink-muted)" }}>
+                            {relatedPost.readingTime}
+                          </span>
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </div>
+                      </article>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            <div
+              className="mb-10"
+              style={{ borderTop: "1px solid var(--home-rule)", paddingTop: "2.5rem" }}
+            >
               <AuthorBio variant="full" />
             </div>
 
-            {/* Back link */}
             <div className="pb-8">
-              <a href="/writing" className="home-inline-link">
+              <Link href="/writing" className="home-inline-link">
                 &larr; Back to writing
-              </a>
+              </Link>
             </div>
           </article>
         </div>

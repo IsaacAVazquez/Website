@@ -127,12 +127,12 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
           initial="hidden"
           animate="visible"
         >
-          <p className="home-kicker">Equity Research Workspace</p>
+          <p className="home-kicker">Investment Research</p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-[var(--home-ink)] sm:text-4xl">
             Investment Research
           </h1>
           <p className="mt-2 max-w-[64ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-            Curated company snapshots, valuation panels, price history, and browser-saved portfolio tracking.
+            I built this to stress-test investment theses in one place. Company snapshots, valuation history, and a portfolio tracker that lives in your browser with no logins or cloud sync.
           </p>
         </motion.div>
 

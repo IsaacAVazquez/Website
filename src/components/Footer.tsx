@@ -77,7 +77,7 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
         >
           <div className="space-y-1 text-sm footer-home-text">
             <p className="font-medium footer-home-text-strong">Isaac Vazquez</p>
-            <p>Building products where clear thinking and reliable execution actually move the needle.</p>
+            <p>Building products where clear thinking and reliable execution move the needle.</p>
           </div>
 
           <div className="flex flex-col gap-4 sm:items-end">

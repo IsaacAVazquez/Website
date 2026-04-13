@@ -841,9 +841,9 @@ export function MarchMadnessClient({
                     {MARCH_MADNESS_THESIS}
                   </p>
                   <p className="max-w-[64ch] text-sm leading-7 text-slate-300 sm:text-base">
-                    Best upset picks, Final Four predictions, and a full 2026 March Madness bracket
-                    built from KenPom consensus metrics, S-curve seed errors, injury context, and a
-                    custom travel-penalty model.
+                    A full 2026 bracket built from KenPom consensus metrics, S-curve seed errors,
+                    injury context, and a custom time-zone travel penalty model. Best upset picks
+                    and Final Four predictions included.
                   </p>
                 </div>
 

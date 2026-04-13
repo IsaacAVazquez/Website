@@ -154,8 +154,7 @@ export default function Resume() {
             )}
 
             <p className="home-body mb-0 max-w-none">
-              My background spans QA, analytics, and client strategy across six years in civic tech. I&apos;m an MBA candidate at Berkeley Haas pursuing roles in product, growth, strategy, and operations where data-driven execution and cross-functional range are an asset and measurement and 
-  execution both matter.
+              Six years across QA, analytics, and client strategy in civic tech. I&apos;m an MBA candidate at Berkeley Haas looking for product and growth roles where analytical rigor and delivery speed feed each other.
             </p>
           </header>
 

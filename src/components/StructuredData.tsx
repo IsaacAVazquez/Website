@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/seo";
+import { profile, profileSameAs } from "@/lib/profile";
 
 interface StructuredDataProps {
   type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage" | "CreativeWork" | "ProfessionalService" | "ContactPage" | "ProfilePage" | "Organization" | "Article" | "BlogPosting" | "JobPosting";
@@ -17,78 +18,41 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...baseData,
           "@type": "Person",
           "name": siteConfig.name,
-          "jobTitle": "Technical Product Manager & UC Berkeley MBA Candidate",
+          "jobTitle": profile.fullTitle,
           "description": siteConfig.description,
           "url": siteConfig.url,
           "image": `${siteConfig.url}${siteConfig.ogImage}`,
-          "sameAs": [
-            siteConfig.links.linkedin,
-            siteConfig.links.github,
-          ],
+          "sameAs": profileSameAs,
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Austin",
-            "addressRegion": "TX",
+            "addressLocality": profile.location.locality,
+            "addressRegion": profile.location.region,
             "addressCountry": "US"
           },
           "worksFor": {
             "@type": "Organization",
-            "name": "Civitech",
+            "name": profile.employer.name,
+            "url": profile.employer.url,
+            "description": profile.employer.description,
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "Austin",
-              "addressRegion": "TX",
+              "addressLocality": profile.location.locality,
+              "addressRegion": profile.location.region,
               "addressCountry": "US"
             }
           },
-          "knowsAbout": [
-            "Product Management",
-            "Product Strategy",
-            "Go-To-Market Planning",
-            "Cross-functional Leadership",
-            "Experimentation and Analytics",
-            "Quality Assurance",
-            "Test Automation",
-            "Civic Technology",
-            "SaaS Platforms",
-            "Data-informed Product Decisions",
-            "Technical Discovery",
-            "User Research"
-          ],
-          "alumniOf": [
-            {
-              "@type": "CollegeOrUniversity",
-              "name": "UC Berkeley Haas School of Business",
-              "description": "MBA Candidate",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Berkeley",
-                "addressRegion": "CA",
-                "addressCountry": "US"
-              }
-            },
-            {
-              "@type": "CollegeOrUniversity",
-              "name": "Florida State University",
-              "description": "Bachelor of Arts, Political Science and International Affairs",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Tallahassee",
-                "addressRegion": "FL",
-                "addressCountry": "US"
-              }
-            }
-          ],
+          "knowsAbout": profile.knowsAbout,
+          "alumniOf": profile.education,
           "hasOccupation": [
             {
               "@type": "Occupation",
-              "name": "Technical Product Manager",
+              "name": "Product Manager",
               "occupationLocation": {
                 "@type": "City",
-                "name": "Austin",
+                "name": profile.location.locality,
                 "containedInPlace": {
                   "@type": "State",
-                  "name": "Texas"
+                  "name": profile.location.region
                 }
               },
               "skills": [
@@ -104,10 +68,10 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
               "name": "Quality Engineering Leader",
               "occupationLocation": {
                 "@type": "City",
-                "name": "Austin",
+                "name": profile.location.locality,
                 "containedInPlace": {
                   "@type": "State",
-                  "name": "Texas"
+                  "name": profile.location.region
                 }
               },
               "skills": [
@@ -120,7 +84,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ],
           "memberOf": {
             "@type": "Organization",
-            "name": "Austin Tech Community"
+            "name": "San Francisco Bay Area Product & Tech Community"
           },
           ...data,
         };
@@ -135,14 +99,6 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "author": {
             "@type": "Person",
             "name": siteConfig.name,
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": `${siteConfig.url}/search?q={search_term_string}`
-            },
-            "query-input": "required name=search_term_string"
           },
           ...data,
         };

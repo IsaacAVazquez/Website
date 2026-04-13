@@ -7,6 +7,7 @@ export const metadata: Metadata = constructMetadata({
   description: "Search across case studies, writing, and tools covering product strategy, QA engineering, fantasy football analytics, and fintech tooling.",
   canonicalUrl: "/search",
   dateModified: "2025-02-05",
+  noIndex: true,
 });
 
 interface SearchPageProps {
@@ -18,23 +19,23 @@ interface SearchPageProps {
 }
 
 const topicPills = [
-  "Product Strategy",
-  "QA Engineering",
-  "Fantasy Football",
-  "Career Playbooks",
-  "AI & Analytics",
+  "PM workflows",
+  "Agentic AI",
+  "Fintech tools",
+  "Quality systems",
+  "Career",
 ];
 
 const popularQueries = [
-  '"Product manager case studies"',
-  '"QA automation frameworks"',
-  '"Fantasy football tier lists"',
+  '"Agentic AI for product managers"',
+  '"Investment research platform"',
+  '"Writing better PRDs with AI"',
 ];
 
 const indexedContent = [
-  "20+ product & QA articles",
-  "Live fantasy football tools",
-  "Contact, resume, and more",
+  "Curated PM and AI writing",
+  "Fintech and analytics tools",
+  "Case studies, resume, and contact",
 ];
 
 const sectionTitleStyle = {
@@ -71,7 +72,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             Search my portfolio, writing, and tools.
           </h1>
           <p className="home-body max-w-[52rem]">
-            Everything here is searchable — from case studies and writing to fantasy football tools and fintech experiments.
+            This is a lightweight search layer for core case studies, writing, and tools. It is useful for navigation, not a comprehensive site index.
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
             {topicPills.map((topic) => (

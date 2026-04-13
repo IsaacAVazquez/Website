@@ -21,8 +21,8 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     {
       id: 'page-portfolio',
       title: 'Portfolio & Case Studies',
-      excerpt: 'Explore my portfolio of product management case studies, fantasy football analytics tools, and software development work.',
-      content: 'Portfolio case studies product management QA engineering fantasy football analytics software development testing automation data visualization',
+      excerpt: 'Portfolio of product case studies, fintech tools, analytics products, and decision-support interfaces.',
+      content: 'Portfolio case studies product management fintech product analytics decision support AI workflows product tools',
       url: '/portfolio',
       type: 'page' as const,
       category: 'Projects'
@@ -30,8 +30,8 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     {
       id: 'page-resume',
       title: 'Resume - Isaac Vazquez',
-      excerpt: 'Professional resume showcasing QA engineering experience, software testing expertise, and technical skills.',
-      content: 'Resume QA engineer software testing automation quality assurance technical skills experience Austin Texas',
+      excerpt: 'Resume for a product manager with 6+ years across QA, analytics, civic tech, and fintech-style product work.',
+      content: 'Resume product manager QA analytics civic tech fintech product work Berkeley Bay Area',
       url: '/resume',
       type: 'page' as const,
       category: 'Professional'
@@ -39,8 +39,8 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     {
       id: 'page-contact',
       title: 'Contact Isaac Vazquez',
-      excerpt: 'Get in touch for QA engineering consulting, software testing projects, or fantasy football analytics discussions.',
-      content: 'Contact QA engineer software testing consulting fantasy football analytics Austin Texas collaboration',
+      excerpt: 'Get in touch about product roles, analytics work, AI workflows, or fintech-focused projects.',
+      content: 'Contact product manager analytics AI workflows fintech product collaboration Berkeley Bay Area',
       url: '/contact',
       type: 'page' as const,
       category: 'Contact'
@@ -48,11 +48,41 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     {
       id: 'page-writing',
       title: 'Writing',
-      excerpt: 'Articles and insights on product management, QA engineering, and technical leadership.',
-      content: 'Writing blog articles product management QA engineering technical leadership software development',
+      excerpt: 'Writing on PM workflows, agentic AI, fintech product thinking, reliability, and systems design.',
+      content: 'Writing blog articles product management agentic AI fintech product reliability systems design',
       url: '/writing',
       type: 'page' as const,
       category: 'Writing'
+    },
+    {
+      id: 'project-investments',
+      title: 'Investment Research Platform',
+      excerpt: 'Snapshot-backed investment research workspace for valuation review, financial statements, and portfolio tracking.',
+      content: 'Investment research platform fintech product valuation dashboard portfolio tracking equity analysis',
+      url: '/investments',
+      type: 'project' as const,
+      category: 'Fintech Product',
+      tags: ['Investments', 'Fintech Product', 'Portfolio Tracking', 'Equity Analysis']
+    },
+    {
+      id: 'project-interchange-iq',
+      title: 'Interchange IQ',
+      excerpt: 'Payments fee analyzer for comparing flat-rate and interchange-plus processor economics.',
+      content: 'Interchange IQ payments pricing interchange economics processor comparison fintech tool',
+      url: '/fintech-tools/interchange-iq',
+      type: 'project' as const,
+      category: 'Fintech Product',
+      tags: ['Payments', 'Interchange', 'Pricing', 'Fintech Product']
+    },
+    {
+      id: 'project-news-pulse',
+      title: 'News Pulse Dashboard',
+      excerpt: 'News media analytics dashboard for comparing cross-outlet framing, topics, and sentiment.',
+      content: 'News Pulse dashboard media analytics RSS aggregation sentiment analysis topic extraction',
+      url: '/news-pulse',
+      type: 'project' as const,
+      category: 'Analytics Tools',
+      tags: ['Media Analytics', 'Dashboard', 'News Product', 'Next.js']
     },
     {
       id: 'project-fantasy-football',

@@ -149,7 +149,7 @@ const OverviewContent = () => {
         </p>
 
         <p className="home-body max-w-none">
-          What a QA background actually teaches you is to distrust your own assumptions. I don&apos;t write product requirements by imagining how users will behave. I look at what the system is doing, find where the gaps are, and work from there. I&apos;m comfortable with automation, SQL, and APIs, and I lean on them because they keep my product decisions connected to how things actually work rather than how I imagine they do. Data is how I check my assumptions and make measurement legible to the people doing the work, not a substitute for judgment.
+          What a QA background actually teaches you is to distrust your own assumptions. I don&apos;t write product requirements by imagining how users will behave. I look at what the system is doing, find where the gaps are, and work from there. I&apos;m comfortable with automation, SQL, and APIs, and I lean on them because they keep my product decisions connected to how things work rather than how I imagine they do. Data is how I check my assumptions and make measurement legible to the people doing the work, not a substitute for judgment.
         </p>
 
         <p className="home-body max-w-none">

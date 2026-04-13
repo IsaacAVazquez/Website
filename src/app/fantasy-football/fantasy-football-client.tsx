@@ -184,8 +184,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                 Rankings first. Draft utility second.
               </h1>
               <p className="mt-4 max-w-[66ch] text-sm leading-7 text-slate-300 sm:text-[0.98rem]">
-                Published fantasy snapshots power the public board and the draft tracker, so the
-                rankings, timestamps, and best-available lists stay aligned.
+                I publish weekly snapshots that power both the public board and the draft tracker.
+                Your rankings, best-available lists, and timestamps always agree because they come from the same source.
               </p>
 
               <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-slate-300">

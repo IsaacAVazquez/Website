@@ -15,7 +15,7 @@ import { publishedDateFormatter } from "@/lib/utils";
 
 interface HomePageContentProps {
   featuredProjects: CaseStudyData[];
-  latestPosts: BlogPostPreview[];
+  proofOfWorkPosts: BlogPostPreview[];
 }
 
 function HomeProjectCard({
@@ -33,12 +33,12 @@ function HomeProjectCard({
     <Link href={href} className="group block h-full">
       <article className="home-card home-project-card flex h-full flex-col">
         <div className="flex items-center justify-between gap-4">
-            <span className="home-pill">Project {String(index + 1).padStart(2, "0")}</span>
+          <span className="home-pill">Project {String(index + 1).padStart(2, "0")}</span>
           <ArrowRight className="h-4 w-4 text-[var(--home-ink-muted)] transition-transform duration-200 group-hover:translate-x-1 group-hover:text-[var(--home-ink)]" />
         </div>
 
         <div className="mt-5 flex flex-1 flex-col gap-4">
-            <h3 className="home-project-title">{project.title}</h3>
+          <h3 className="home-project-title">{project.title}</h3>
           <p className="home-body home-body-strong mb-0">{impact}</p>
 
           <div className="space-y-1">
@@ -86,7 +86,7 @@ function HomeWritingCard({ post }: { post: BlogPostPreview }) {
 
 export function HomePageContent({
   featuredProjects,
-  latestPosts,
+  proofOfWorkPosts,
 }: HomePageContentProps) {
   return (
     <div className="home-page">
@@ -99,10 +99,10 @@ export function HomePageContent({
           <div className="home-wordmark home-reveal mx-auto text-center">ISAAC VAZQUEZ</div>
 
           <div className="home-intro-block home-reveal home-reveal-delay-1">
-            <p className="home-kicker">Product work, writing, and working tools</p>
+            <p className="home-kicker">Product work, writing, and live tools</p>
             <p className="home-body home-intro-copy">
-              Most of my work lives where judgment, analytics, and execution all
-              have to hold together at the same time.
+              Most of my work lives where product judgment, AI workflows, and
+              clear decision support have to hold together at the same time.
             </p>
           </div>
 
@@ -112,8 +112,9 @@ export function HomePageContent({
                 I build products that make hard problems easier to act on.
               </h1>
               <p className="home-body home-hero-body max-w-3xl">
-                That shows up here as case studies, writing, and working tools
-                across reliability, fintech, media, and sports data.
+                Product case studies, PM-focused AI writing, and interactive
+                fintech and analytics tools built to make complex choices
+                easier to inspect.
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -153,10 +154,10 @@ export function HomePageContent({
             <div>
               <p className="home-kicker">Selected work</p>
               <h2 id="home-projects-heading" className="home-section-title mx-auto max-w-3xl">
-                A few projects that show how I think about product work.
+                Product surfaces that show how I think in practice.
               </h2>
               <p className="home-body mx-auto max-w-3xl home-section-copy">
-                Each one covers the role, the problem, and what actually changed once it shipped.
+                Fintech tools, research workflows, and data-heavy products where the tradeoffs need to stay legible.
               </p>
             </div>
           </div>
@@ -222,20 +223,18 @@ export function HomePageContent({
         <div className="home-shell">
           <div className="home-section-intro home-section-intro-dark home-reveal">
             <div>
-              <p className="home-kicker home-kicker-dark">Latest writing</p>
+              <p className="home-kicker home-kicker-dark">Proof of work</p>
               <h2 id="home-writing-heading" className="home-section-title mx-auto max-w-3xl home-section-title-dark">
-                I use the writing to unpack the reasoning behind the work.
+                Writing that shows how I think about PM, AI workflows, and fintech tools.
               </h2>
             </div>
             <p className="home-body home-body-dark home-section-copy">
-              Product strategy, analytics-heavy decisions, and the parts of the
-              job that usually matter more than the framework language around
-              them.
+              These are the pieces I would send first if you wanted to see how I frame discovery, agentic products, and decision-support tooling.
             </p>
           </div>
 
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {latestPosts.map((post) => (
+            {proofOfWorkPosts.map((post) => (
               <HomeWritingCard key={post.slug} post={post} />
             ))}
           </div>

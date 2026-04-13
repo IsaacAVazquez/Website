@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import SearchPage from "../page";
+import SearchPage, { metadata } from "../page";
 
 type SearchInterfaceClientProps = {
   initialQuery?: string;
@@ -40,6 +40,17 @@ describe("SearchPage", () => {
       initialQuery: "resume",
       initialType: "page",
       initialCategory: "Career Playbooks",
+    });
+  });
+
+  it("marks the route as noindex", () => {
+    expect(metadata.robots).toMatchObject({
+      index: false,
+      follow: true,
+      googleBot: {
+        index: false,
+        follow: true,
+      },
     });
   });
 });

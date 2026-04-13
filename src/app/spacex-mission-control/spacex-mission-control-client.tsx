@@ -424,8 +424,8 @@ export function SpaceXMissionControlClient({
             </h1>
 
             <p className="mt-3 max-w-[64ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[0.95rem]">
-              Track the next mission, scan the queue, and inspect rockets, payloads, crew,
-              capsules, and pads without losing context.
+              Next mission, launch queue, and a detail panel for rockets, crew, payloads,
+              capsules, and pads. Everything stays connected so you don&apos;t lose the thread when you drill in.
             </p>
 
             <div className="mt-4 flex flex-wrap items-center gap-3">

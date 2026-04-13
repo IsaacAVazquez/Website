@@ -50,7 +50,7 @@ export default function PortfolioPage() {
               color: "var(--home-ink)",
             }}
           >
-            Product work across SaaS, analytics, and tooling.
+            Product work across fintech, analytics, and civic technology.
           </h1>
         </div>
 

@@ -63,7 +63,7 @@ export function ContactContent() {
             <p className="home-body max-w-none">
               I&apos;m especially interested in analytics, fintech, and workflow
               products, along with teams where clear strategy and reliable
-              delivery are actually connected.
+              delivery are connected.
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -137,7 +137,7 @@ export function ContactContent() {
                 className="text-sm leading-relaxed"
                 style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)", lineHeight: 1.65 }}
               >
-                I&apos;m most engaged when the problem involves analytics, fintech, platform reliability, or anywhere that clear product thinking changes the actual outcome, not just the roadmap.
+                I&apos;m most engaged when the problem involves analytics, fintech, or platform reliability. Places where clear product thinking changes the outcome, not just the roadmap.
               </p>
             </div>
           </div>

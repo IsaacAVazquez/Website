@@ -167,7 +167,7 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
               La Liga Pulse
             </h1>
             <p className="mt-1 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-              Title race, European cutoff, and relegation pressure. Updated weekly from football-data.org.
+              La Liga&apos;s title race compressed into one view. Top-four gaps, European qualification pressure, and relegation context, updated weekly.
             </p>
           </div>
           <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">

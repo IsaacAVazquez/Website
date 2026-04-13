@@ -48,7 +48,7 @@ describe("Footer", () => {
     expect(heading).toBeNull();
     expect(Array.from(links ?? []).some((link) => link.getAttribute("href") === "/portfolio")).toBe(false);
     expect(Array.from(links ?? []).some((link) => link.getAttribute("href") === "/contact")).toBe(false);
-    expect(footer?.textContent).toContain("Building products where clear thinking and reliable execution actually move the needle.");
+    expect(footer?.textContent).toContain("Building products where clear thinking and reliable execution move the needle.");
   });
 
   it("supports the homepage editorial surface without restoring the large CTA block", () => {

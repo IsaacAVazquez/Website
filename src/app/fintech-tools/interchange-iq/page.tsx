@@ -6,6 +6,8 @@ export const metadata = constructMetadata({
   description:
     "I built a fee analyzer that models real interchange economics across Stripe, Square, PayPal, Adyen, and others so you can compare flat-rate and interchange+ pricing before committing.",
   canonicalUrl: "/fintech-tools/interchange-iq",
+  image: "/fintech-tools/interchange-iq/opengraph-image",
+  dateModified: "2026-04-02",
 });
 
 export default function InterchangeIQPage() {
@@ -29,8 +31,8 @@ export default function InterchangeIQPage() {
           </h1>
           <p className="home-body">
             Most merchants don&apos;t know what they&apos;re actually paying for payment processing,
-            or why. Adjust the sliders to see how volume, average ticket size, and card mix
-            affect total fees across major processors.
+            or why. Move the sliders to see how volume, ticket size, and card mix change
+            your total fees across seven processors.
           </p>
           <p
             className="mb-0 text-sm leading-6"

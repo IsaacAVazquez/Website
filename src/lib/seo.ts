@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { generateAIMetaTags } from "./ai-seo";
+import { profile } from "./profile";
 
 export interface ProjectStructuredData {
   name: string;
@@ -33,20 +34,20 @@ export interface AIOptimizedMetadata {
 }
 
 export const siteConfig = {
-  name: "Isaac Vazquez",
+  name: profile.name,
   title: "Product Manager | UC Berkeley Haas MBA | Portfolio & Case Studies",
-  description: "Product manager with a QA-to-product background and 6+ years across SaaS, analytics, and civic tech. Case studies, writing, and working tools.",
+  description: profile.description,
   url: "https://isaacavazquez.com",
   ogImage: "/opengraph-image", // 1200x630 OG image optimized for social media & AI previews
-  ogImageAlt: "Isaac Vazquez - Technical Product Manager & UC Berkeley Haas MBA Candidate",
+  ogImageAlt: "Isaac Vazquez - Product Manager & UC Berkeley Haas MBA Candidate",
   links: {
-    twitter: "https://twitter.com/isaacvazquez",
-    github: "https://github.com/IsaacAVazquez",
-    linkedin: "https://linkedin.com/in/isaac-vazquez",
+    twitter: profile.sameAs.twitter,
+    github: profile.sameAs.github,
+    linkedin: profile.sameAs.linkedin,
   },
 };
 
-const absoluteUrl = (path?: string) => {
+export const absoluteUrl = (path?: string) => {
   if (!path) return siteConfig.url;
   if (path.startsWith("http")) return path;
   const base = siteConfig.url.endsWith("/")
@@ -184,8 +185,12 @@ export function constructMetadata({
     },
     robots: noIndex ? {
       index: false,
-      follow: false,
+      follow: true,
       nocache: true,
+      googleBot: {
+        index: false,
+        follow: true,
+      },
     } : {
       index: true,
       follow: true,
@@ -200,10 +205,7 @@ export function constructMetadata({
     // Add AI-specific meta tags
     other: otherMeta,
     verification: {
-      // Google Search Console verification
-      // To add: Go to Google Search Console → Add Property → HTML tag method
-      // Copy the content value from the meta tag and uncomment the line below
-      // google: 'your-google-site-verification-code',
+      google: process.env.GOOGLE_SITE_VERIFICATION,
     },
   };
 }
@@ -286,8 +288,12 @@ export function generateAIOptimizedMetadata(
   const robots = noIndex
     ? {
         index: false,
-        follow: false,
+        follow: true,
         nocache: true,
+        googleBot: {
+          index: false,
+          follow: true,
+        },
       }
     : {
         index: true,

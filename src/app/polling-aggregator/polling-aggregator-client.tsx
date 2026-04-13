@@ -674,7 +674,7 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
             Polling Aggregator
           </h1>
           <p className="home-body max-w-none">
-            Aggregated presidential approval, generic ballot averages, and key 2026 Senate and governor race polls — updated from public pollsters.
+            Presidential approval, generic ballot averages, and key 2026 Senate and governor race polls aggregated from public pollsters.
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
             {["2026 Midterms", `Updated ${lastUpdated}`, snapshot.sourceLabel, `${snapshot.approvalPolls.length + snapshot.genericBallotPolls.length} polls tracked`].map((label) => (

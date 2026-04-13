@@ -134,6 +134,8 @@ describe('getBlogPostBySlug', () => {
     expect(result!.tags).toEqual(['pm', 'strategy']);
     expect(result!.featured).toBe(true);
     expect(result!.readingTime).toMatch(/\d+ min read/);
+    expect(result!.wordCount).toBeGreaterThan(200);
+    expect(result!.coverImage).toBe('/writing/my-article/opengraph-image');
     expect(result!.content).toBeTruthy();
   });
 
@@ -188,6 +190,7 @@ describe('getLatestBlogPostPreviews', () => {
     expect(previews).toHaveLength(1);
     expect(previews[0].title).toBe('Newer');
     expect(previews[0].readingTime).toBe('1 min read');
+    expect(previews[0].coverImage).toBe('/writing/newer-post/opengraph-image');
   });
 });
 
@@ -228,7 +231,9 @@ function makePost(overrides: Partial<BlogPost> = {}): BlogPost {
     tags: [],
     featured: false,
     readingTime: '1 min read',
+    wordCount: 2,
     author: 'Isaac Vazquez',
+    coverImage: '/writing/default-slug/opengraph-image',
     ...overrides,
   };
 }

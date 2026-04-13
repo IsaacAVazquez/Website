@@ -225,7 +225,7 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
               Premier League Pulse
             </h1>
             <p className="mt-1 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-              Title race, European qualification gaps, and relegation fight. Updated weekly from football-data.org.
+              Where does the title race actually stand? Points gaps to the top four, European qualification line, and relegation pressure, refreshed weekly from live data.
             </p>
           </div>
           <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">

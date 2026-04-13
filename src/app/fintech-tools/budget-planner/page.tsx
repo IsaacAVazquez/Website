@@ -9,6 +9,7 @@ export const metadata = constructMetadata({
     "Monthly budgeting tool for planning income, category budgets, savings targets, and manual expense tracking in a browser-persisted ledger.",
   canonicalUrl: "/fintech-tools/budget-planner",
   dateModified: "2026-04-03",
+  image: "/fintech-tools/budget-planner/opengraph-image",
   aiMetadata: {
     profession: "Product Manager",
     specialty: "Budgeting UX, fintech product thinking, and personal finance workflow design",
@@ -58,6 +59,7 @@ export default function BudgetPlannerPage() {
           description:
             "Monthly budgeting tool for planning income, savings, category budgets, and manual expense tracking with browser-local persistence.",
           url: "https://isaacavazquez.com/fintech-tools/budget-planner",
+          image: "https://isaacavazquez.com/fintech-tools/budget-planner/opengraph-image",
           applicationCategory: "FinanceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

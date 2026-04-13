@@ -206,8 +206,8 @@ export function BudgetPlannerClient() {
                 Budget Planner
               </h1>
               <p className="mt-3 max-w-[64ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[0.98rem]">
-                Plan one month at a time with an editorial-style ledger for income, savings,
-                category targets, and manual expenses. Everything stays in your browser.
+                Monthly budgeting in a single editorial-style ledger. Income, savings targets,
+                category budgets, and manual expenses all in one place, saved in your browser.
               </p>
             </div>
 

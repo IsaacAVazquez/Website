@@ -2,19 +2,20 @@ import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { HomePageContent } from "@/components/home/HomePageContent";
 import { getHomepageFeaturedCaseStudies } from "@/constants/caseStudies";
-import { getLatestBlogPostPreviews } from "@/lib/blog";
+import { getHomepageProofOfWorkBlogPostPreviews } from "@/lib/blog";
+import { profile, profileSameAs } from "@/lib/profile";
 
 export { metadata } from "./metadata";
 
 export default function Home() {
   const featuredProjects = getHomepageFeaturedCaseStudies();
-  const latestPosts = getLatestBlogPostPreviews(3);
+  const proofOfWorkPosts = getHomepageProofOfWorkBlogPostPreviews();
 
   return (
     <div className="w-full scroll-smooth bg-[var(--home-paper)]">
       <HomePageContent
         featuredProjects={featuredProjects}
-        latestPosts={latestPosts}
+        proofOfWorkPosts={proofOfWorkPosts}
       />
 
       <StructuredData type="ProfilePage" />
@@ -23,36 +24,19 @@ export default function Home() {
         schema={{
           type: "Person",
           data: {
-            name: "Isaac Vazquez",
-            jobTitle: "Technical Product Manager & UC Berkeley Haas MBA Candidate",
-            description:
-              "Technical Product Manager and UC Berkeley Haas MBA Candidate '27 with 6+ years experience in SaaS and consumer products, with a background spanning QA, analytics, and product execution.",
+            name: profile.name,
+            jobTitle: profile.fullTitle,
+            description: profile.description,
             url: "https://isaacavazquez.com",
             image: "https://isaacavazquez.com/opengraph-image",
-            email: "IsaacVazquez@berkeley.edu",
-            sameAs: [
-              "https://linkedin.com/in/isaac-vazquez",
-              "https://github.com/IsaacAVazquez",
-            ],
+            email: profile.email,
+            sameAs: profileSameAs,
             address: {
-              addressLocality: "Berkeley",
-              addressRegion: "CA",
-              addressCountry: "US",
+              addressLocality: profile.location.locality,
+              addressRegion: profile.location.region,
+              addressCountry: profile.location.country,
             },
-            knowsAbout: [
-              "Product Management",
-              "Product Strategy",
-              "Product Discovery",
-              "Cross-functional Leadership",
-              "Quality Assurance",
-              "Test Automation",
-              "Consumer Technology",
-              "SaaS Platforms",
-              "Data Analysis",
-              "Fintech Product Development",
-              "Investment Research Tools",
-              "Agile/Scrum",
-            ],
+            knowsAbout: profile.knowsAbout,
             expertise: [
               {
                 name: "Product Management",
@@ -70,20 +54,20 @@ export default function Home() {
             alumniOf: [
               {
                 "@type": "CollegeOrUniversity",
-                name: "UC Berkeley Haas School of Business",
-                description: "MBA Candidate (Class of 2027)",
+                name: profile.education[0].name,
+                description: profile.education[0].description,
               },
               {
                 "@type": "CollegeOrUniversity",
-                name: "Florida State University",
-                description: "Bachelor of Arts - Political Science and International Affairs",
+                name: profile.education[1].name,
+                description: profile.education[1].description,
               },
             ],
             worksFor: {
               "@type": "Organization",
-              name: "Civitech",
-              description: "Civic technology company providing voter engagement platforms",
-              url: "https://civitech.io",
+              name: profile.employer.name,
+              description: profile.employer.description,
+              url: profile.employer.url,
             },
           },
         }}

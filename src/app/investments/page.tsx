@@ -9,6 +9,7 @@ export const metadata = constructMetadata({
     "Investment research workspace with curated company snapshots, valuation metrics, financial statements, price history, and browser-saved portfolio tracking.",
   canonicalUrl: "/investments",
   dateModified: "2026-03-16",
+  image: "/investments/opengraph-image",
   aiMetadata: {
     profession: "Product Manager",
     specialty: "Investment research tooling, analytics UX, and fintech product thinking",
@@ -66,6 +67,7 @@ export default async function InvestmentsPage({ searchParams }: InvestmentsPageP
           description:
             "Investment research workspace for valuation review, financial statements, curated company snapshots, and browser-saved portfolio tracking.",
           url: "https://isaacavazquez.com/investments",
+          image: "https://isaacavazquez.com/investments/opengraph-image",
           applicationCategory: "FinanceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

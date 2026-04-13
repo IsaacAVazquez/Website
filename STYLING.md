@@ -2,7 +2,7 @@
 
 Current styling and design-token reference for the live app.
 
-**Last updated:** 2026-04-09
+**Last updated:** 2026-04-13
 
 ---
 
@@ -251,6 +251,27 @@ Base: `.home-button` — 48px min-height, pill shape (radius 999px), Instrument 
 - `.home-project-card` — `.home-card` + `padding: 1.5rem`
 - `.home-writing-card` — `.home-card` on dark panel, no shadow by default; hover tints with haze
 - `.home-note-card` — small inset card, 1.1rem radius, paper-alt bg
+
+### Writing Archive Cards (`/writing`)
+
+The archive cards on `/writing` are owned by `src/app/writing/page.tsx`, not `src/components/home/HomePageContent.tsx`.
+Do not use the home writing-preview card as the visual source of truth for the archive page.
+
+The footer metadata row on both `CuratedWritingCard` and `ArchiveWritingCard` is a locked pattern and should stay visually stable:
+
+- keep the footer pinned to the bottom with `mt-auto`
+- keep the outer row as `flex items-center justify-between gap-4 pt-4`
+- keep the divider material as a top border using `var(--home-rule)`
+- keep the left metadata cluster as one line: reading time plus up to two `resume-chip` tags
+- preserve the original reading-time styling: `Instrument Sans`, `0.8rem`, `gap-1`, `Clock` icon at `h-3.5 w-3.5`
+- use real `resume-chip` elements for tags; do not replace them with plain text summaries unless explicitly redesigning the card
+- prevent wrapping with layout constraints (`min-w-0`, `overflow-hidden`, `whitespace-nowrap`) instead of shrinking the typography or moving the tags to a second line
+
+This note exists because the archive footer regressed during the April 2026 SEO/archive refactor:
+
+- the footer chips were temporarily replaced with plain text
+- the bottom row styling drifted from the original spacing and font sizing
+- the fix was to restore the original footer structure and sizing, then add overflow constraints so the entire metadata strip stays on one line
 
 ### Hero art panel
 
