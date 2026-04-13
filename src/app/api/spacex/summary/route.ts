@@ -12,13 +12,20 @@ export async function GET() {
     });
   } catch (error) {
     const err = error as Error & { status?: number };
-    console.error("SpaceX summary API error:", error);
+    const status = err.status === 429 ? 503 : err.status ?? 500;
+    const message =
+      err.status === 429
+        ? "Live SpaceX data is temporarily rate limited. Retry shortly."
+        : err.message || "Unable to load SpaceX summary";
+    if (err.status !== 429 && status >= 500) {
+      console.error("SpaceX summary API error:", error);
+    }
 
     return NextResponse.json(
       {
-        error: err.message || "Unable to load SpaceX summary",
+        error: message,
       },
-      { status: err.status ?? 500 }
+      { status }
     );
   }
 }

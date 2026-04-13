@@ -8,6 +8,7 @@ interface MissionControlHeroProps {
   summary: MissionControlSummary | null;
   isLoading: boolean;
   error: string | null;
+  initialRenderTimestampMs?: number;
   onInspect: () => void;
   onRetry: () => void;
 }
@@ -29,10 +30,18 @@ function formatCountdown(dateUtc: string, now = Date.now()): string | null {
     .padStart(2, "0")}m ${seconds.toString().padStart(2, "0")}s`;
 }
 
-function MissionCountdown({ dateUtc }: { dateUtc: string }) {
-  const [now, setNow] = useState(() => Date.now());
+function MissionCountdown({
+  dateUtc,
+  initialNow,
+}: {
+  dateUtc: string;
+  initialNow: number;
+}) {
+  const [now, setNow] = useState(initialNow);
 
   useEffect(() => {
+    setNow(Date.now());
+
     const intervalId = window.setInterval(() => {
       setNow(Date.now());
     }, 1000);
@@ -62,6 +71,7 @@ export function MissionControlHero({
   summary,
   isLoading,
   error,
+  initialRenderTimestampMs = Date.now(),
   onInspect,
   onRetry,
 }: MissionControlHeroProps) {
@@ -129,9 +139,9 @@ export function MissionControlHero({
     <section
       data-testid="mission-hero"
       aria-label="Next launch hero"
-      className="overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_9%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_45%,color-mix(in_srgb,var(--color-success)_8%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)] p-6 shadow-[var(--shadow-lg)] sm:p-8"
+      className="overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_9%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_45%,color-mix(in_srgb,var(--color-success)_8%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)] p-5 shadow-[var(--shadow-lg)] sm:p-6"
     >
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_240px]">
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.24fr)_220px]">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-3">
             <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_78%,transparent)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
@@ -142,13 +152,16 @@ export function MissionControlHero({
             </span>
           </div>
 
-          <h1 className="mt-5 text-4xl font-bold tracking-[-0.05em] text-[var(--home-ink)] sm:text-5xl">
+          <h1 className="mt-4 text-3xl font-bold tracking-[-0.05em] text-[var(--home-ink)] sm:text-[2.8rem]">
             {heroLaunch.name}
           </h1>
 
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-4 flex flex-wrap gap-3">
             {heroLaunch.hasExactTime ? (
-              <MissionCountdown dateUtc={heroLaunch.dateUtc} />
+              <MissionCountdown
+                dateUtc={heroLaunch.dateUtc}
+                initialNow={initialRenderTimestampMs}
+              />
             ) : (
               <div className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-2 text-sm font-semibold text-[var(--home-ink)]">
                 <Clock3 className="h-4 w-4 text-[var(--home-haze)]" />
@@ -157,8 +170,8 @@ export function MissionControlHero({
             )}
           </div>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:max-w-[740px] xl:grid-cols-4">
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-4">
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:max-w-[700px] xl:grid-cols-4">
+            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-3.5">
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Rocket
               </p>
@@ -166,7 +179,7 @@ export function MissionControlHero({
                 {heroLaunch.rocketName ?? "Unspecified"}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-4">
+            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-3.5">
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Launchpad
               </p>
@@ -174,7 +187,7 @@ export function MissionControlHero({
                 {heroLaunch.launchpadName ?? "Unspecified"}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-4">
+            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-3.5">
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Payloads
               </p>
@@ -182,7 +195,7 @@ export function MissionControlHero({
                 {heroLaunch.payloadCount}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-4">
+            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-3.5">
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Location
               </p>
@@ -227,7 +240,7 @@ export function MissionControlHero({
             name={heroLaunch.rocketName ?? heroLaunch.name}
             image={heroLaunch.vehicleImage}
             fallbackImage={heroLaunch.patchImage}
-            className="h-[240px] min-h-[240px]"
+            className="h-[220px] min-h-[220px]"
             label="Vehicle view"
             dataTestId="mission-hero-visual"
           />

@@ -166,6 +166,57 @@ export default function Resume() {
             </h2>
 
             <div className="space-y-14">
+              {/* Haas@Work */}
+              <div>
+                <div className="mb-5">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-3">
+                    <h3
+                      className="text-3xl sm:text-4xl font-bold tracking-tighter"
+                      style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                    >
+                      HAAS@WORK
+                    </h3>
+                    <div
+                      className="text-base mt-2 sm:mt-0"
+                      style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
+                    >
+                      January 2026–Present
+                    </div>
+                  </div>
+                  <p
+                    className="text-sm italic max-w-3xl"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
+                    Berkeley, CA · UC Berkeley&apos;s innovation consulting agency
+                  </p>
+                </div>
+
+                <div className="space-y-8 ml-0">
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+                      <h4
+                        className="text-xl font-bold"
+                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                      >
+                        Innovation Consultant Team Lead
+                      </h4>
+                      <span
+                        className="text-sm mt-1 sm:mt-0"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        Jan 2026–Present
+                      </span>
+                    </div>
+                    <ul className="space-y-3 text-base leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+                      <li className="flex items-start">
+                        <span className="mr-4 mt-1.5 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
+                        <span>Lead client engagement for a global mobility technology company, managing stakeholder communication, internal workflow execution, and alignment across a cross-functional consulting team</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               {/* Civitech */}
               <div>
                 <div className="mb-5">
@@ -390,10 +441,6 @@ export default function Resume() {
                       <li className="flex items-start">
                         <span className="mr-3 mt-1 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
                         <span>VP of Marketing, Haas Tech Club; VP of Admissions, Consortium; Product Management Club, AI Club, Fintech Club</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 mt-1 flex-shrink-0" style={{ color: "var(--home-ink)" }}>—</span>
-                        <span>Currently leading client project for a global rideshare technology company, driving cross-functional program execution, stakeholder alignment and communication, and operational scaling initiatives across a consulting team</span>
                       </li>
                     </ul>
                   </div>

@@ -2,6 +2,7 @@ import type {
   MissionCapsule,
   MissionControlInsight,
   MissionControlStatus,
+  MissionControlSnapshot,
   MissionControlSummary,
   MissionCore,
   MissionCrewMember,
@@ -12,6 +13,13 @@ import type {
   MissionPayload,
   MissionRocket,
 } from "@/types/spacex";
+import { resolveSpaceXImageUrl, resolveSpaceXImageUrls } from "@/lib/spacexImageManifest";
+import {
+  getSpaceXSnapshotLaunchDetail,
+  getSpaceXSnapshotLaunches,
+  getSpaceXSnapshotSummary,
+  hasSpaceXSnapshotData,
+} from "@/lib/spacexSnapshot";
 
 const LAUNCH_LIBRARY_API_BASE = "https://ll.thespacedevs.com/2.2.0";
 const SPACEX_AGENCY_ID = 121;
@@ -21,8 +29,25 @@ const REQUEST_TIMEOUT_MS = 12000;
 const LAUNCH_ID_PATTERN =
   /^(?:[a-f0-9]{24}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
 const UPCOMING_STALE_GRACE_MS = 30 * 60 * 1000;
+const SUMMARY_CACHE_TTL_MS = 120 * 1000;
+const LAUNCH_CARDS_CACHE_TTL_MS = 120 * 1000;
+const LAUNCH_DETAIL_CACHE_TTL_MS = 300 * 1000;
+const STALE_FALLBACK_TTL_MS = 30 * 60 * 1000;
+const RATE_LIMIT_BASE_BACKOFF_MS = 60 * 1000;
+const RATE_LIMIT_MAX_BACKOFF_MS = 5 * 60 * 1000;
+const SNAPSHOT_DETAIL_LIMIT_PER_STATUS = 10;
 
 type LaunchCollectionMode = "upcoming" | "previous";
+type MissionControlDataSource = "auto" | "live" | "snapshot";
+
+interface MissionControlDataOptions {
+  source?: MissionControlDataSource;
+}
+
+interface CachedValue<T> {
+  value: T;
+  storedAt: number;
+}
 
 interface RawLl2ListResponse<T> {
   count: number;
@@ -281,14 +306,95 @@ interface RawLl2Launch {
   agency_launch_attempt_count?: number | null;
 }
 
+let launchLibraryRateLimitedUntil = 0;
+let launchLibraryConsecutive429s = 0;
+
+let missionControlSummaryCache: CachedValue<MissionControlSummary> | null = null;
+let missionControlSummaryInflight: Promise<MissionControlSummary> | null = null;
+
+const missionLaunchCardsCache = new Map<string, CachedValue<MissionLaunchCard[]>>();
+const missionLaunchCardsInflight = new Map<string, Promise<MissionLaunchCard[]>>();
+
+const missionLaunchDetailCache = new Map<string, CachedValue<MissionLaunchDetail>>();
+const missionLaunchDetailInflight = new Map<string, Promise<MissionLaunchDetail>>();
+
 function createSpaceXError(message: string, status = 500): Error & { status: number } {
   return Object.assign(new Error(message), { status });
+}
+
+function getCachedValue<T>(
+  entry: CachedValue<T> | null | undefined,
+  maxAgeMs: number
+): T | null {
+  if (!entry) {
+    return null;
+  }
+
+  return Date.now() - entry.storedAt <= maxAgeMs ? entry.value : null;
+}
+
+function setCachedValue<T>(value: T): CachedValue<T> {
+  return {
+    value,
+    storedAt: Date.now(),
+  };
+}
+
+function isSpaceXRateLimitError(error: unknown): error is Error & { status: number } {
+  return (
+    error instanceof Error &&
+    "status" in error &&
+    typeof (error as { status?: unknown }).status === "number" &&
+    (error as { status: number }).status === 429
+  );
+}
+
+function parseRetryAfterMs(retryAfterHeader: string | null): number | null {
+  if (!retryAfterHeader) {
+    return null;
+  }
+
+  const numericSeconds = Number.parseInt(retryAfterHeader, 10);
+  if (Number.isFinite(numericSeconds) && numericSeconds > 0) {
+    return numericSeconds * 1000;
+  }
+
+  const retryAt = Date.parse(retryAfterHeader);
+  if (!Number.isFinite(retryAt)) {
+    return null;
+  }
+
+  return Math.max(retryAt - Date.now(), 0);
+}
+
+function applyLaunchLibraryRateLimit(retryAfterHeader: string | null) {
+  launchLibraryConsecutive429s += 1;
+  const exponentialBackoffMs = Math.min(
+    RATE_LIMIT_BASE_BACKOFF_MS * Math.pow(2, launchLibraryConsecutive429s - 1),
+    RATE_LIMIT_MAX_BACKOFF_MS
+  );
+  const retryAfterMs = parseRetryAfterMs(retryAfterHeader);
+  const backoffMs = Math.min(
+    Math.max(retryAfterMs ?? exponentialBackoffMs, RATE_LIMIT_BASE_BACKOFF_MS),
+    RATE_LIMIT_MAX_BACKOFF_MS
+  );
+
+  launchLibraryRateLimitedUntil = Date.now() + backoffMs;
+}
+
+function clearLaunchLibraryRateLimit() {
+  launchLibraryRateLimitedUntil = 0;
+  launchLibraryConsecutive429s = 0;
 }
 
 async function fetchLaunchLibraryJson<T>(
   path: string,
   revalidateSeconds = 120
 ): Promise<T> {
+  if (Date.now() < launchLibraryRateLimitedUntil) {
+    throw createSpaceXError("Launch Library temporarily rate limited", 429);
+  }
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
@@ -303,6 +409,11 @@ async function fetchLaunchLibraryJson<T>(
       },
     });
 
+    if (response.status === 429) {
+      applyLaunchLibraryRateLimit(response.headers.get("retry-after"));
+      throw createSpaceXError("Launch Library temporarily rate limited", 429);
+    }
+
     if (!response.ok) {
       throw createSpaceXError(
         `Launch Library request failed with status ${response.status}`,
@@ -310,6 +421,7 @@ async function fetchLaunchLibraryJson<T>(
       );
     }
 
+    clearLaunchLibraryRateLimit();
     return (await response.json()) as T;
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
@@ -515,9 +627,9 @@ function pickSpacecraftImage(launch: RawLl2Launch): string | null {
 
 function pickVehicleImage(launch: RawLl2Launch): string | null {
   return (
-    launch.rocket?.configuration?.image_url ??
     launch.image ??
-    pickSpacecraftImage(launch)
+    pickSpacecraftImage(launch) ??
+    launch.rocket?.configuration?.image_url
   );
 }
 
@@ -556,7 +668,7 @@ function normalizeLinks(launch: RawLl2Launch): MissionLinkSet {
       .filter((link) => Boolean(link.url)),
   ] as RawLl2ExternalLink[];
   const videoLinks = [...(launch.vidURLs ?? []), ...(launch.mission?.vid_urls ?? [])];
-  const patchImage = pickMissionPatch(launch);
+  const patchImage = resolveSpaceXImageUrl(pickMissionPatch(launch));
   const webcast =
     pickLink(
       videoLinks,
@@ -592,7 +704,7 @@ function normalizeLinks(launch: RawLl2Launch): MissionLinkSet {
     youtubeId: extractYoutubeId(webcast ?? pickLink(videoLinks)),
     patchSmall: patchImage,
     patchLarge: patchImage,
-    flickrOriginal: launch.image ? [launch.image] : [],
+    flickrOriginal: resolveSpaceXImageUrls([launch.image]),
   };
 }
 
@@ -653,7 +765,7 @@ function normalizeLaunchCard(
   const datePrecision = normalizePrecision(launch.net_precision);
   const staleSchedule = upcoming && isPastDate(dateUtc, UPCOMING_STALE_GRACE_MS);
   const tbd = (launch.status?.abbrev ?? "").toUpperCase() === "TBD";
-  const patchImage = pickMissionPatch(launch) ?? launch.image ?? null;
+  const patchImage = resolveSpaceXImageUrl(pickMissionPatch(launch));
 
   return {
     id: launch.id,
@@ -676,7 +788,7 @@ function normalizeLaunchCard(
     launchpadName: launch.pad?.name ?? null,
     launchpadLocation: normalizeLocationName(launch.pad?.location),
     patchImage,
-    vehicleImage: pickVehicleImage(launch),
+    vehicleImage: resolveSpaceXImageUrl(pickVehicleImage(launch)),
     crewCount: launch.spacecraft_stage?.launch_crew?.length ?? 0,
     payloadCount: derivePayloadCount(launch),
     capsuleCount: launch.spacecraft_stage?.spacecraft ? 1 : 0,
@@ -707,7 +819,7 @@ function normalizeCrewMembers(launch: RawLl2Launch): MissionCrewMember[] {
         role: entry.role?.role ?? null,
         agency: astronaut.agency?.name ?? null,
         status: astronaut.status?.name ?? null,
-        image: astronaut.profile_image ?? null,
+        image: resolveSpaceXImageUrl(astronaut.profile_image),
         wikipedia: astronaut.wiki ?? null,
       });
     }
@@ -815,8 +927,8 @@ function normalizeRocket(launch: RawLl2Launch): MissionRocket | null {
     heightMeters: configuration.length ?? null,
     diameterMeters: configuration.diameter ?? null,
     massKg: parseMassKg(configuration.launch_mass),
-    image: configuration.image_url ?? null,
-    flickrImages: toStringArray([
+    image: resolveSpaceXImageUrl(configuration.image_url),
+    flickrImages: resolveSpaceXImageUrls([
       configuration.image_url ?? null,
       launch.image ?? null,
       pickSpacecraftImage(launch),
@@ -839,7 +951,7 @@ function normalizeLaunchpad(launch: RawLl2Launch): MissionLaunchpad | null {
     timezone: pad.location?.timezone_name ?? null,
     status: null,
     details: pad.description ?? pad.location?.description ?? null,
-    image: pad.map_image ?? null,
+    image: resolveSpaceXImageUrl(pad.map_image),
   };
 }
 
@@ -944,20 +1056,252 @@ export function isValidMissionLaunchId(value: string): boolean {
   return LAUNCH_ID_PATTERN.test(value);
 }
 
-export async function getMissionControlSummary(): Promise<MissionControlSummary> {
-  const [upcomingResponse, previousResponse, agency] = await Promise.all([
-    fetchLaunchCollection("upcoming", 6, 120),
-    fetchLaunchCollection("previous", 4, 300),
-    fetchSpaceXAgency(900),
-  ]);
+function shouldReadFromSnapshot(source: MissionControlDataSource = "auto"): boolean {
+  return source !== "live";
+}
 
-  const nextRawLaunch = filterLaunchCollection(upcomingResponse.results, "upcoming")[0] ?? null;
-  const fallbackRawLaunch = filterLaunchCollection(previousResponse.results, "previous")[0] ?? null;
-  const [nextLaunch, fallbackLaunch] = await Promise.all([
-    getLaunchCardForSummary(nextRawLaunch, true),
-    getLaunchCardForSummary(fallbackRawLaunch, false),
-  ]);
+function shouldAllowLiveFallback(source: MissionControlDataSource = "auto"): boolean {
+  return source !== "snapshot";
+}
 
+export async function getMissionControlSummary(
+  options: MissionControlDataOptions = {}
+): Promise<MissionControlSummary> {
+  const source = options.source ?? "auto";
+
+  if (shouldReadFromSnapshot(source)) {
+    const snapshotSummary = getSpaceXSnapshotSummary();
+    if (snapshotSummary) {
+      return snapshotSummary;
+    }
+
+    if (!shouldAllowLiveFallback(source)) {
+      throw createSpaceXError("SpaceX snapshot summary is unavailable", 503);
+    }
+  }
+
+  const cachedSummary = getCachedValue(missionControlSummaryCache, SUMMARY_CACHE_TTL_MS);
+  if (cachedSummary) {
+    return cachedSummary;
+  }
+
+  if (missionControlSummaryInflight) {
+    return missionControlSummaryInflight;
+  }
+
+  const promise = (async () => {
+    const [upcomingResponse, previousResponse, agency] = await Promise.all([
+      fetchLaunchCollection("upcoming", 6, 120),
+      fetchLaunchCollection("previous", 4, 300),
+      fetchSpaceXAgency(900),
+    ]);
+
+    const nextRawLaunch = filterLaunchCollection(upcomingResponse.results, "upcoming")[0] ?? null;
+    const fallbackRawLaunch =
+      filterLaunchCollection(previousResponse.results, "previous")[0] ?? null;
+    const [nextLaunch, fallbackLaunch] = await Promise.all([
+      getLaunchCardForSummary(nextRawLaunch, true),
+      getLaunchCardForSummary(fallbackRawLaunch, false),
+    ]);
+
+    let heroLaunch = nextLaunch;
+    let heroMode: MissionControlSummary["heroMode"] = "next";
+    let heroMessage: string | null = null;
+
+    if (!heroLaunch && fallbackLaunch) {
+      heroLaunch = fallbackLaunch;
+      heroMode = "fallback";
+      heroMessage =
+        "No future SpaceX mission is currently published by the live provider. Showing the latest completed launch instead.";
+    }
+
+    const summary = {
+      heroLaunch,
+      nextLaunch,
+      fallbackLaunch,
+      heroMode,
+      heroMessage,
+      insights: buildInsights(agency),
+      generatedAt: new Date().toISOString(),
+    };
+
+    missionControlSummaryCache = setCachedValue(summary);
+    return summary;
+  })()
+    .catch((error) => {
+      if (isSpaceXRateLimitError(error)) {
+        const staleSummary = getCachedValue(missionControlSummaryCache, STALE_FALLBACK_TTL_MS);
+        if (staleSummary) {
+          return staleSummary;
+        }
+      }
+
+      throw error;
+    })
+    .finally(() => {
+      missionControlSummaryInflight = null;
+    });
+
+  missionControlSummaryInflight = promise;
+  return promise;
+}
+
+export async function getMissionLaunchCards(
+  status: MissionControlStatus,
+  limit = DEFAULT_BOARD_LIMIT,
+  options: MissionControlDataOptions = {}
+): Promise<MissionLaunchCard[]> {
+  ensureValidStatus(status);
+
+  const clampedLimit = clampBoardLimit(limit);
+  const source = options.source ?? "auto";
+
+  if (shouldReadFromSnapshot(source)) {
+    const snapshotLaunches = getSpaceXSnapshotLaunches(status, clampedLimit);
+    if (snapshotLaunches.length > 0 || hasSpaceXSnapshotData()) {
+      return snapshotLaunches;
+    }
+
+    if (!shouldAllowLiveFallback(source)) {
+      throw createSpaceXError(`SpaceX snapshot launches are unavailable for ${status}`, 503);
+    }
+  }
+
+  const cacheKey = `${status}:${clampedLimit}`;
+  const cachedLaunches = getCachedValue(
+    missionLaunchCardsCache.get(cacheKey),
+    LAUNCH_CARDS_CACHE_TTL_MS
+  );
+
+  if (cachedLaunches) {
+    return cachedLaunches;
+  }
+
+  const existing = missionLaunchCardsInflight.get(cacheKey);
+  if (existing) {
+    return existing;
+  }
+
+  const promise = (async () => {
+    const mode: LaunchCollectionMode = status === "upcoming" ? "upcoming" : "previous";
+    const response = await fetchLaunchCollection(
+      mode,
+      clampedLimit + 6,
+      status === "upcoming" ? 120 : 300
+    );
+
+    const launches = filterLaunchCollection(response.results, mode)
+      .slice(0, clampedLimit)
+      .map((launch) => normalizeLaunchCard(launch, status === "upcoming"));
+
+    missionLaunchCardsCache.set(cacheKey, setCachedValue(launches));
+    return launches;
+  })()
+    .catch((error) => {
+      if (isSpaceXRateLimitError(error)) {
+        const staleLaunches = getCachedValue(
+          missionLaunchCardsCache.get(cacheKey),
+          STALE_FALLBACK_TTL_MS
+        );
+        if (staleLaunches) {
+          return staleLaunches;
+        }
+      }
+
+      throw error;
+    })
+    .finally(() => {
+      missionLaunchCardsInflight.delete(cacheKey);
+    });
+
+  missionLaunchCardsInflight.set(cacheKey, promise);
+  return promise;
+}
+
+export async function getMissionLaunchDetail(
+  id: string,
+  options: MissionControlDataOptions = {}
+): Promise<MissionLaunchDetail> {
+  if (!isValidMissionLaunchId(id)) {
+    throw createSpaceXError("Invalid launch id", 400);
+  }
+
+  const source = options.source ?? "auto";
+  if (shouldReadFromSnapshot(source)) {
+    const snapshotDetail = getSpaceXSnapshotLaunchDetail(id);
+    if (snapshotDetail) {
+      return snapshotDetail;
+    }
+
+    if (!shouldAllowLiveFallback(source)) {
+      throw createSpaceXError("SpaceX snapshot launch detail is unavailable", 503);
+    }
+  }
+
+  const cachedDetail = getCachedValue(missionLaunchDetailCache.get(id), LAUNCH_DETAIL_CACHE_TTL_MS);
+  if (cachedDetail) {
+    return cachedDetail;
+  }
+
+  const existing = missionLaunchDetailInflight.get(id);
+  if (existing) {
+    return existing;
+  }
+
+  const promise = (async () => {
+    const launch = await fetchLaunchDetail(id, 300);
+
+    if (launch.launch_service_provider?.id !== SPACEX_AGENCY_ID) {
+      throw createSpaceXError("Launch not found", 404);
+    }
+
+    const detail = normalizeLaunchDetail(launch, !isPastDate(launch.net));
+    missionLaunchDetailCache.set(id, setCachedValue(detail));
+    return detail;
+  })()
+    .catch((error) => {
+      if (isSpaceXRateLimitError(error)) {
+        const staleDetail = getCachedValue(
+          missionLaunchDetailCache.get(id),
+          STALE_FALLBACK_TTL_MS
+        );
+        if (staleDetail) {
+          return staleDetail;
+        }
+      }
+
+      throw error;
+    })
+    .finally(() => {
+      missionLaunchDetailInflight.delete(id);
+    });
+
+  missionLaunchDetailInflight.set(id, promise);
+  return promise;
+}
+
+export async function buildMissionControlSnapshot(): Promise<MissionControlSnapshot> {
+  const upcomingResponse = await fetchLaunchCollection(
+    "upcoming",
+    MAX_BOARD_LIMIT + 6,
+    120
+  );
+  const previousResponse = await fetchLaunchCollection(
+    "previous",
+    MAX_BOARD_LIMIT + 6,
+    300
+  );
+  const agency = await fetchSpaceXAgency(900);
+
+  const upcomingLaunches = filterLaunchCollection(upcomingResponse.results, "upcoming")
+    .slice(0, MAX_BOARD_LIMIT)
+    .map((launch) => normalizeLaunchCard(launch, true));
+  const pastLaunches = filterLaunchCollection(previousResponse.results, "previous")
+    .slice(0, MAX_BOARD_LIMIT)
+    .map((launch) => normalizeLaunchCard(launch, false));
+
+  const nextLaunch = upcomingLaunches[0] ?? null;
+  const fallbackLaunch = pastLaunches[0] ?? null;
   let heroLaunch = nextLaunch;
   let heroMode: MissionControlSummary["heroMode"] = "next";
   let heroMessage: string | null = null;
@@ -969,7 +1313,7 @@ export async function getMissionControlSummary(): Promise<MissionControlSummary>
       "No future SpaceX mission is currently published by the live provider. Showing the latest completed launch instead.";
   }
 
-  return {
+  const summary: MissionControlSummary = {
     heroLaunch,
     nextLaunch,
     fallbackLaunch,
@@ -978,33 +1322,51 @@ export async function getMissionControlSummary(): Promise<MissionControlSummary>
     insights: buildInsights(agency),
     generatedAt: new Date().toISOString(),
   };
-}
 
-export async function getMissionLaunchCards(
-  status: MissionControlStatus,
-  limit = DEFAULT_BOARD_LIMIT
-): Promise<MissionLaunchCard[]> {
-  ensureValidStatus(status);
+  const detailIds = Array.from(
+    new Set(
+      [
+        ...upcomingLaunches
+          .slice(0, SNAPSHOT_DETAIL_LIMIT_PER_STATUS)
+          .map((launch) => launch.id),
+        ...pastLaunches
+          .slice(0, SNAPSHOT_DETAIL_LIMIT_PER_STATUS)
+          .map((launch) => launch.id),
+        summary.heroLaunch?.id ?? null,
+        summary.nextLaunch?.id ?? null,
+        summary.fallbackLaunch?.id ?? null,
+      ].filter((id): id is string => Boolean(id))
+    )
+  );
 
-  const clampedLimit = clampBoardLimit(limit);
-  const mode: LaunchCollectionMode = status === "upcoming" ? "upcoming" : "previous";
-  const response = await fetchLaunchCollection(mode, clampedLimit + 6, status === "upcoming" ? 120 : 300);
+  const detailEntries: Array<readonly [string, MissionLaunchDetail]> = [];
 
-  return filterLaunchCollection(response.results, mode)
-    .slice(0, clampedLimit)
-    .map((launch) => normalizeLaunchCard(launch, status === "upcoming"));
-}
-
-export async function getMissionLaunchDetail(id: string): Promise<MissionLaunchDetail> {
-  if (!isValidMissionLaunchId(id)) {
-    throw createSpaceXError("Invalid launch id", 400);
+  for (const id of detailIds) {
+    try {
+      detailEntries.push([id, await getMissionLaunchDetail(id, { source: "live" })]);
+    } catch (error) {
+      if (isSpaceXRateLimitError(error)) {
+        break;
+      }
+    }
   }
 
-  const launch = await fetchLaunchDetail(id, 300);
+  return {
+    generatedAt: new Date().toISOString(),
+    sourceLabel: "launch-library-2 snapshot",
+    summary,
+    upcomingLaunches,
+    pastLaunches,
+    launchDetails: Object.fromEntries(detailEntries),
+  };
+}
 
-  if (launch.launch_service_provider?.id !== SPACEX_AGENCY_ID) {
-    throw createSpaceXError("Launch not found", 404);
-  }
-
-  return normalizeLaunchDetail(launch, !isPastDate(launch.net));
+export function resetSpaceXDataCacheForTests() {
+  clearLaunchLibraryRateLimit();
+  missionControlSummaryCache = null;
+  missionControlSummaryInflight = null;
+  missionLaunchCardsCache.clear();
+  missionLaunchCardsInflight.clear();
+  missionLaunchDetailCache.clear();
+  missionLaunchDetailInflight.clear();
 }

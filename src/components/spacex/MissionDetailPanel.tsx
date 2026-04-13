@@ -208,15 +208,13 @@ export function MissionDetailPanel({
 
       {!isLoading && !error && launch && activePanel === "vehicle" ? (
         <div className="mt-5 space-y-4">
-          {launch.rocket?.image ?? launch.vehicleImage ? (
-            <MissionVehiclePhoto
-              name={launch.rocket?.name ?? launch.name}
-              image={launch.rocket?.image ?? launch.vehicleImage}
-              className="h-[240px] min-h-[240px]"
-              label="Vehicle photo"
-              dataTestId="mission-vehicle-photo"
-            />
-          ) : null}
+          <MissionVehiclePhoto
+            name={launch.rocket?.name ?? launch.name}
+            image={launch.vehicleImage ?? launch.rocket?.image}
+            className="h-[220px] min-h-[220px]"
+            label="Vehicle photo"
+            dataTestId="mission-vehicle-photo"
+          />
 
           <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-5">
             <div className="flex items-center gap-2">

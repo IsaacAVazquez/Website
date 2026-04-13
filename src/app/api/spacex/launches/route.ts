@@ -34,14 +34,21 @@ export async function GET(request: NextRequest) {
     );
   } catch (error) {
     const err = error as Error & { status?: number };
-    console.error("SpaceX launches API error:", error);
+    const status = err.status === 429 ? 503 : err.status ?? 500;
+    const message =
+      err.status === 429
+        ? "Live SpaceX data is temporarily rate limited. Retry shortly."
+        : err.message || "Unable to load launches";
+    if (err.status !== 429 && status >= 500) {
+      console.error("SpaceX launches API error:", error);
+    }
 
     return NextResponse.json(
       {
         launches: [],
-        error: err.message || "Unable to load launches",
+        error: message,
       },
-      { status: err.status ?? 500 }
+      { status }
     );
   }
 }

@@ -4,7 +4,9 @@ import { createRoot, type Root } from "react-dom/client";
 import { SpaceXMissionControlClient } from "../spacex-mission-control-client";
 import { DEFAULT_MISSION_CONTROL_STATE } from "../spacex-mission-control-state";
 import type {
+  MissionControlInitialData,
   MissionControlSummary,
+  MissionControlSearchState,
   MissionLaunchCard,
   MissionLaunchDetail,
 } from "@/types/spacex";
@@ -95,6 +97,14 @@ const patchFallbackLaunch: MissionLaunchCard = {
   name: "Patch Fallback Mission",
   vehicleImage: null,
   patchImage: "https://images.example.com/fallback-patch.png",
+};
+
+const launchWithoutPatch: MissionLaunchCard = {
+  ...upcomingLaunch,
+  id: "5eb87d47ffd86e000604b390",
+  name: "Vehicle Only Mission",
+  patchImage: null,
+  vehicleImage: "https://images.example.com/falcon-heavy.png",
 };
 
 const pastLaunch: MissionLaunchCard = {
@@ -212,10 +222,29 @@ const detailWithoutImage: MissionLaunchDetail = {
     : null,
 };
 
+const detailWithoutAnyImage: MissionLaunchDetail = {
+  ...detailWithoutImage,
+  patchImage: null,
+};
+
 const updatedDetail: MissionLaunchDetail = {
   ...detail,
   details: "Updated detail narrative from the live refresh.",
 };
+
+function createInitialData(
+  overrides: Partial<MissionControlInitialData> = {}
+): MissionControlInitialData {
+  return {
+    summary,
+    summaryError: null,
+    launches: [upcomingLaunch],
+    launchesError: null,
+    detail: null,
+    detailError: null,
+    ...overrides,
+  };
+}
 
 function flushPromises() {
   return act(async () => {
@@ -223,6 +252,14 @@ function flushPromises() {
     await Promise.resolve();
     await Promise.resolve();
   });
+}
+
+function queryMissionImage(container: ParentNode, testId: string): HTMLImageElement | null {
+  return container.querySelector(`[data-testid="${testId}"] img`);
+}
+
+function queryMissionImageFrame(container: ParentNode, testId: string): HTMLElement | null {
+  return container.querySelector(`[data-testid="${testId}"]`);
 }
 
 describe("SpaceXMissionControlClient", () => {
@@ -280,18 +317,69 @@ describe("SpaceXMissionControlClient", () => {
 
     expect(container.textContent).toContain("USSF-44");
     expect(container.textContent).toContain("Falcon Heavy");
+    expect(container.querySelector("h1")?.textContent).toContain(
+      "A launch board built like an operations room, not a brochure."
+    );
+    expect(container.textContent).toContain("Refresh data");
     expect(container.querySelector('[data-testid="mission-hero"]')).not.toBeNull();
     expect(container.querySelector('[data-testid="mission-board"]')).not.toBeNull();
+    expect(container.querySelector('[data-testid="mission-detail-panel"]')).not.toBeNull();
+    expect(queryMissionImage(container, "mission-hero-visual")?.getAttribute("src")).toContain(
+      "https://images.example.com/falcon-heavy.png"
+    );
+    expect(queryMissionImage(container, "mission-hero-visual")?.getAttribute("referrerpolicy")).toBe(
+      "no-referrer"
+    );
+    expect(queryMissionImageFrame(container, "mission-hero-visual")?.getAttribute("data-image-fit")).toBe(
+      "cover"
+    );
     expect(
-      container
-        .querySelector('[data-testid="mission-hero-visual"]')
-        ?.getAttribute("data-image-src")
-    ).toContain("https://images.example.com/falcon-heavy.png");
-    expect(
-      container
-        .querySelector('[data-testid="mission-board-visual-6243aec2af52800c6e91925d"]')
-        ?.getAttribute("data-image-src")
+      queryMissionImage(container, "mission-board-visual-6243aec2af52800c6e91925d")?.getAttribute(
+        "src"
+      )
     ).toContain("https://images.example.com/ussf44-patch.png");
+    expect(
+      queryMissionImageFrame(container, "mission-board-visual-6243aec2af52800c6e91925d")?.getAttribute(
+        "data-image-fit"
+      )
+    ).toBe("contain");
+  });
+
+  it("renders server-hydrated summary, board, and detail data without mount-time browser fetches", async () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date("2026-04-30T12:00:00.000Z"));
+
+    const deepLinkedState: MissionControlSearchState = {
+      status: "past",
+      launch: pastLaunch.id,
+      panel: "vehicle",
+    };
+
+    currentSearchParams = new URLSearchParams(
+      "status=past&launch=5eb87d46ffd86e000604b388&panel=vehicle"
+    );
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient
+          initialState={deepLinkedState}
+          initialData={createInitialData({
+            launches: [pastLaunch],
+            detail,
+          })}
+          renderedAtMs={Date.now()}
+        />
+      );
+    });
+    await flushPromises();
+
+    expect(mockFetch).not.toHaveBeenCalled();
+    expect(container.textContent).toContain("CCtCap Demo Mission 2");
+    expect(container.textContent).toContain("T-1d 00h 00m 00s");
+    expect(container.querySelector('[data-testid="mission-detail-panel"]')).not.toBeNull();
+    expect(
+      queryMissionImage(container, "mission-vehicle-photo")?.getAttribute("src")
+    ).toContain("https://images.example.com/falcon9-launch.png");
   });
 
   it("falls back to mission patch art in the hero when no vehicle photo is available", async () => {
@@ -327,10 +415,90 @@ describe("SpaceXMissionControlClient", () => {
     await flushPromises();
 
     expect(
-      container
-        .querySelector('[data-testid="mission-hero-visual"]')
-        ?.getAttribute("data-image-src")
+      queryMissionImage(container, "mission-hero-visual")?.getAttribute("src")
     ).toContain("https://images.example.com/fallback-patch.png");
+  });
+
+  it("keeps the board patch tile in placeholder mode when a launch has no patch art", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/api/spacex/summary")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({
+            ...summary,
+            heroLaunch: launchWithoutPatch,
+            nextLaunch: launchWithoutPatch,
+          }),
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=upcoming")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ launches: [launchWithoutPatch] }),
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    expect(
+      queryMissionImage(container, "mission-board-visual-5eb87d47ffd86e000604b390")
+    ).toBeNull();
+    expect(
+      queryMissionImageFrame(container, "mission-board-visual-5eb87d47ffd86e000604b390")?.getAttribute(
+        "data-image-state"
+      )
+    ).toBe("placeholder");
+  });
+
+  it("falls back to mission patch art when the hero image errors", async () => {
+    mockFetch.mockImplementation((input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes("/api/spacex/summary")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => summary,
+        });
+      }
+
+      if (url.includes("/api/spacex/launches?status=upcoming")) {
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({ launches: [upcomingLaunch] }),
+        });
+      }
+
+      return Promise.reject(new Error(`Unhandled fetch: ${url}`));
+    });
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} />
+      );
+    });
+    await flushPromises();
+
+    const heroImage = queryMissionImage(container, "mission-hero-visual");
+
+    await act(async () => {
+      heroImage?.dispatchEvent(new Event("error"));
+    });
+    await flushPromises();
+
+    expect(queryMissionImage(container, "mission-hero-visual")?.getAttribute("src")).toContain(
+      "https://images.example.com/ussf44-patch.png"
+    );
   });
 
   it("refreshes the hero and board when newer launch data arrives on the live interval", async () => {
@@ -375,7 +543,7 @@ describe("SpaceXMissionControlClient", () => {
     );
 
     await act(async () => {
-      jest.advanceTimersByTime(120_000);
+      jest.advanceTimersByTime(300_000);
     });
     await flushPromises();
 
@@ -659,13 +827,11 @@ describe("SpaceXMissionControlClient", () => {
 
     expect(container.querySelector('[data-testid="mission-vehicle-photo"]')).not.toBeNull();
     expect(
-      container
-        .querySelector('[data-testid="mission-vehicle-photo"]')
-        ?.getAttribute("data-image-src")
-    ).toContain("https://images.example.com/falcon9-vehicle.png");
+      queryMissionImage(container, "mission-vehicle-photo")?.getAttribute("src")
+    ).toContain("https://images.example.com/falcon9-launch.png");
   });
 
-  it("keeps the vehicle panel text-only when no vehicle image is available", async () => {
+  it("renders a placeholder state when no vehicle imagery is available", async () => {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
 
@@ -686,7 +852,7 @@ describe("SpaceXMissionControlClient", () => {
       if (url.includes("/api/spacex/launches/5eb87d46ffd86e000604b388")) {
         return Promise.resolve({
           ok: true,
-          json: async () => detailWithoutImage,
+          json: async () => detailWithoutAnyImage,
         });
       }
 
@@ -702,7 +868,11 @@ describe("SpaceXMissionControlClient", () => {
     });
     await flushPromises();
 
-    expect(container.querySelector('[data-testid="mission-vehicle-photo"]')).toBeNull();
+    expect(queryMissionImageFrame(container, "mission-vehicle-photo")).not.toBeNull();
+    expect(queryMissionImageFrame(container, "mission-vehicle-photo")?.getAttribute("data-image-state")).toBe(
+      "placeholder"
+    );
+    expect(queryMissionImage(container, "mission-vehicle-photo")).toBeNull();
     expect(container.textContent).toContain("Reusable two-stage rocket.");
   });
 

@@ -21,15 +21,21 @@ export async function GET(
     });
   } catch (error) {
     const err = error as Error & { status?: number };
-    if ((err.status ?? 500) >= 500) {
+    const status = err.status === 429 ? 503 : err.status ?? 500;
+    const message =
+      err.status === 429
+        ? "Live SpaceX data is temporarily rate limited. Retry shortly."
+        : err.message || "Unable to load launch detail";
+
+    if (err.status !== 429 && status >= 500) {
       console.error("SpaceX launch detail API error:", error);
     }
 
     return NextResponse.json(
       {
-        error: err.message || "Unable to load launch detail",
+        error: message,
       },
-      { status: err.status ?? 500 }
+      { status }
     );
   }
 }

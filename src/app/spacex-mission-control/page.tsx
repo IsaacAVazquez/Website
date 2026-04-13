@@ -1,6 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { SpaceXMissionControlClient } from "./spacex-mission-control-client";
+import { loadMissionControlInitialData } from "./spacex-mission-control-data";
 import { normalizeMissionControlState } from "./spacex-mission-control-state";
 
 // eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
@@ -49,6 +50,8 @@ export default async function SpaceXMissionControlPage({
   searchParams,
 }: SpaceXMissionControlPageProps) {
   const initialState = normalizeMissionControlState(await searchParams);
+  const initialData = await loadMissionControlInitialData(initialState);
+  const renderedAtMs = Date.now();
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "SpaceX Mission Control", url: "/spacex-mission-control" },
@@ -80,7 +83,11 @@ export default async function SpaceXMissionControlPage({
           ],
         }}
       />
-      <SpaceXMissionControlClient initialState={initialState} />
+      <SpaceXMissionControlClient
+        initialState={initialState}
+        initialData={initialData}
+        renderedAtMs={renderedAtMs}
+      />
     </>
   );
 }

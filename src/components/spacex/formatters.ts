@@ -77,15 +77,46 @@ export function formatInteger(value: number | null): string {
   return new Intl.NumberFormat("en-US").format(value ?? 0);
 }
 
+function formatCompactMagnitude(value: number): string {
+  const absoluteValue = Math.abs(value);
+  const units = [
+    { threshold: 1_000_000_000, suffix: "B" },
+    { threshold: 1_000_000, suffix: "M" },
+    { threshold: 1_000, suffix: "K" },
+  ] as const;
+
+  for (const unit of units) {
+    if (absoluteValue < unit.threshold) {
+      continue;
+    }
+
+    const scaledValue = Math.round((value / unit.threshold) * 10) / 10;
+    const scaledLabel = Number.isInteger(scaledValue)
+      ? scaledValue.toString()
+      : scaledValue.toFixed(1);
+
+    return `${scaledLabel}${unit.suffix}`;
+  }
+
+  return new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 1,
+  }).format(value);
+}
+
 export function formatCurrencyCompact(value: number | null): string {
   if (!Number.isFinite(value)) {
     return "Unavailable";
   }
 
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    notation: "compact",
-    maximumFractionDigits: 1,
-  }).format(value ?? 0);
+  const amount = value ?? 0;
+
+  if (Math.abs(amount) < 1_000) {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }).format(amount);
+  }
+
+  return `$${formatCompactMagnitude(amount)}`;
 }

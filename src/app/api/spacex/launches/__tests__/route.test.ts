@@ -82,4 +82,19 @@ describe("GET /api/spacex/launches", () => {
     expect(mockGetMissionLaunchCards).toHaveBeenCalledWith("past", 6);
     expect(response.headers.get("Cache-Control")).toContain("max-age=120");
   });
+
+  it("maps upstream rate limits to a provider-unavailable response", async () => {
+    mockGetMissionLaunchCards.mockRejectedValue(
+      Object.assign(new Error("Launch Library temporarily rate limited"), { status: 429 })
+    );
+
+    const response = await GET(
+      new NextRequest("https://isaacavazquez.com/api/spacex/launches?status=upcoming")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+    expect(body.error).toMatch(/temporarily rate limited/i);
+    expect(body.launches).toEqual([]);
+  });
 });

@@ -35,4 +35,16 @@ describe("GET /api/spacex/summary", () => {
     expect(body.heroMode).toBe("fallback");
     expect(response.headers.get("Cache-Control")).toContain("max-age=120");
   });
+
+  it("maps upstream rate limits to a provider-unavailable response", async () => {
+    mockGetMissionControlSummary.mockRejectedValue(
+      Object.assign(new Error("Launch Library temporarily rate limited"), { status: 429 })
+    );
+
+    const response = await GET();
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+    expect(body.error).toMatch(/temporarily rate limited/i);
+  });
 });

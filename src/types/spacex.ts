@@ -65,6 +65,15 @@ export interface MissionControlSummary {
   generatedAt: string;
 }
 
+export interface MissionControlInitialData {
+  summary: MissionControlSummary | null;
+  summaryError: string | null;
+  launches: MissionLaunchCard[];
+  launchesError: string | null;
+  detail: MissionLaunchDetail | null;
+  detailError: string | null;
+}
+
 export interface MissionCrewMember {
   id: string;
   name: string;
@@ -158,4 +167,13 @@ export interface MissionLaunchDetail extends MissionLaunchCard {
   payloads: MissionPayload[];
   capsules: MissionCapsule[];
   cores: MissionCore[];
+}
+
+export interface MissionControlSnapshot {
+  generatedAt: string | null;
+  sourceLabel: string | null;
+  summary: MissionControlSummary | null;
+  upcomingLaunches: MissionLaunchCard[];
+  pastLaunches: MissionLaunchCard[];
+  launchDetails: Record<string, MissionLaunchDetail>;
 }
