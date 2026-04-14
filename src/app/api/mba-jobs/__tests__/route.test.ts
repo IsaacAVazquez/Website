@@ -113,6 +113,33 @@ describe("GET /api/mba-jobs", () => {
                 departments: [{ name: "Legal" }],
                 content: "<p>Commercial legal support.</p>",
               },
+              {
+                id: 1006,
+                title: "Associate Product Manager, New Graduate",
+                location: { name: "San Francisco, CA" },
+                absolute_url: "https://example.com/jobs/1006",
+                updated_at: "2026-04-14T11:00:00.000Z",
+                departments: [{ name: "Product" }],
+                content: "<p>University graduate program for undergraduates.</p>",
+              },
+              {
+                id: 1007,
+                title: "Software Engineering Intern",
+                location: { name: "Remote" },
+                absolute_url: "https://example.com/jobs/1007",
+                updated_at: "2026-04-14T10:00:00.000Z",
+                departments: [{ name: "Engineering" }],
+                content: "<p>Campus internship for CS students.</p>",
+              },
+              {
+                id: 1008,
+                title: "Product Management Intern",
+                location: { name: "Seattle, WA" },
+                absolute_url: "https://example.com/jobs/1008",
+                updated_at: "2026-04-14T09:00:00.000Z",
+                departments: [{ name: "Product" }],
+                content: "<p>Internship for undergraduate students.</p>",
+              },
             ],
           })
         ),
@@ -152,8 +179,58 @@ describe("GET /api/mba-jobs", () => {
       ])
     );
     expect(body.jobs.map((job: { title: string }) => job.title)).not.toEqual(
-      expect.arrayContaining(["Product Designer", "Legal Counsel"])
+      expect.arrayContaining([
+        "Product Designer",
+        "Legal Counsel",
+        "Associate Product Manager, New Graduate",
+        "Software Engineering Intern",
+        "Product Management Intern",
+      ])
     );
+  });
+
+  it("normalizes encoded HTML snippets into plain text without dropping relevant roles", async () => {
+    installFetchMock({
+      "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
+        JSON.stringify(
+          buildGreenhouseResponse({
+            jobs: [
+              {
+                id: 1010,
+                title: "Growth Marketing Manager",
+                location: { name: "San Francisco, CA" },
+                absolute_url: "https://example.com/jobs/1010",
+                updated_at: "2026-04-14T16:30:00.000Z",
+                departments: [{ name: "Growth" }],
+                content:
+                  "&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; &lt;em&gt;if you are an intern or new grad, please do not apply using this link and visit our &lt;/em&gt;&lt;a href=&quot;https://stripe.com/jobs/search&quot;&gt;&lt;em&gt;jobs page&lt;/em&gt;&lt;/a&gt;&lt;em&gt; for those specific postings.&lt;/em&gt;&lt;/p&gt;",
+              },
+            ],
+          })
+        ),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      ),
+    });
+
+    const response = await GET(
+      new NextRequest("https://isaacavazquez.com/api/mba-jobs?companies=stripe")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.errors).toEqual([]);
+    expect(body.jobs).toEqual([
+      expect.objectContaining({
+        title: "Growth Marketing Manager",
+        roleType: "full-time",
+        roleFamilies: ["growth"],
+        snippet:
+          "Note: if you are an intern or new grad, please do not apply using this link and visit our jobs page for those specific postings.",
+      }),
+    ]);
   });
 
   it("parses Ashby public job board payloads and matches PMM and chief-of-staff variants", async () => {

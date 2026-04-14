@@ -117,20 +117,76 @@ const CATEGORY_COLOR: Record<MBACategory | "all", string> = {
   startup: "var(--home-acid)",
 };
 
-const ROLE_TYPE_STYLES: Record<MBAJobRoleType, { accent: string; background: string }> = {
+const CHIP_FONT_FAMILY = "var(--font-home-sans)";
+const TRACKED_COMPANY_CATEGORIES: MBACategory[] = ["fintech", "startup", "big-tech"];
+
+const ROLE_TYPE_STYLES: Record<
+  MBAJobRoleType,
+  { accent: string; backgroundWeight: number; borderWeight: number }
+> = {
   internship: {
     accent: "var(--home-acid)",
-    background: "color-mix(in srgb, var(--home-acid) 18%, var(--home-paper))",
+    backgroundWeight: 24,
+    borderWeight: 34,
   },
   "full-time": {
     accent: "var(--home-moss)",
-    background: "color-mix(in srgb, var(--home-moss) 18%, var(--home-paper))",
+    backgroundWeight: 20,
+    borderWeight: 30,
   },
   unclear: {
     accent: "var(--home-haze)",
-    background: "color-mix(in srgb, var(--home-haze) 16%, var(--home-paper))",
+    backgroundWeight: 18,
+    borderWeight: 28,
   },
 };
+
+function getReadableAccentColor(accent: string): string {
+  return `color-mix(in srgb, var(--home-ink) 76%, ${accent} 24%)`;
+}
+
+function getChipStyle(
+  accent: string,
+  backgroundWeight = 18,
+  borderWeight = 28
+): CSSProperties {
+  return {
+    background: `color-mix(in srgb, ${accent} ${backgroundWeight}%, var(--home-paper))`,
+    border: `1px solid color-mix(in srgb, ${accent} ${borderWeight}%, var(--home-rule))`,
+    color: getReadableAccentColor(accent),
+    fontFamily: CHIP_FONT_FAMILY,
+    letterSpacing: "0.01em",
+  };
+}
+
+function getRoleFamilyAccent(family: MBAJobRoleFamily): string {
+  if (family === "product" || family === "product-marketing") {
+    return "var(--home-haze)";
+  }
+  if (family === "finance" || family === "analytics") {
+    return "var(--home-moss)";
+  }
+  return "var(--home-acid)";
+}
+
+function getTrackedCompanyButtonStyle(company: MBACompany, active: boolean): CSSProperties {
+  if (active) {
+    return {
+      background: `color-mix(in srgb, ${company.color} 18%, var(--home-paper))`,
+      borderColor: `color-mix(in srgb, ${company.color} 36%, var(--home-rule))`,
+      color: getReadableAccentColor(company.color),
+      boxShadow: "var(--shadow-sm)",
+      fontFamily: CHIP_FONT_FAMILY,
+    };
+  }
+
+  return {
+    background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+    borderColor: "var(--home-rule)",
+    color: "var(--home-ink-muted)",
+    fontFamily: CHIP_FONT_FAMILY,
+  };
+}
 
 function normalizeSearchText(value: string): string {
   return value
@@ -248,11 +304,11 @@ function CompanyAvatar({ company }: { company: MBACompany | undefined }) {
 function NewBadge() {
   return (
     <span
-      className="inline-flex items-center rounded-full px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em]"
+      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em]"
       style={{
         background: "var(--home-acid)",
         color: "var(--home-ink)",
-        fontFamily: "var(--font-home-sans)",
+        fontFamily: CHIP_FONT_FAMILY,
       }}
     >
       New
@@ -264,13 +320,8 @@ function CategoryChip({ category }: { category: MBACategory }) {
   const color = CATEGORY_COLOR[category];
   return (
     <span
-      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em]"
-      style={{
-        background: `color-mix(in srgb, ${color} 14%, var(--home-paper))`,
-        color,
-        fontFamily: "var(--font-home-sans)",
-        border: `1px solid color-mix(in srgb, ${color} 24%, var(--home-rule))`,
-      }}
+      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      style={getChipStyle(color, 18, 28)}
     >
       <span
         className="h-1.5 w-1.5 rounded-full"
@@ -286,13 +337,12 @@ function RoleTypeChip({ roleType }: { roleType: MBAJobRoleType }) {
   const style = ROLE_TYPE_STYLES[roleType];
   return (
     <span
-      className="inline-flex items-center rounded-full px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em]"
-      style={{
-        background: style.background,
-        color: style.accent,
-        border: `1px solid color-mix(in srgb, ${style.accent} 24%, var(--home-rule))`,
-        fontFamily: "var(--font-home-sans)",
-      }}
+      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      style={getChipStyle(
+        style.accent,
+        style.backgroundWeight,
+        style.borderWeight
+      )}
     >
       {ROLE_TYPE_LABELS[roleType]}
     </span>
@@ -300,22 +350,12 @@ function RoleTypeChip({ roleType }: { roleType: MBAJobRoleType }) {
 }
 
 function RoleFamilyChip({ family }: { family: MBAJobRoleFamily }) {
-  const accent =
-    family === "product" || family === "product-marketing"
-      ? "var(--home-haze)"
-      : family === "finance" || family === "analytics"
-        ? "var(--home-moss)"
-        : "var(--home-acid)";
+  const accent = getRoleFamilyAccent(family);
 
   return (
     <span
-      className="inline-flex items-center rounded-full px-2.5 py-1 text-[0.68rem] font-medium"
-      style={{
-        background: `color-mix(in srgb, ${accent} 12%, var(--home-paper))`,
-        border: `1px solid color-mix(in srgb, ${accent} 22%, var(--home-rule))`,
-        color: accent,
-        fontFamily: "var(--font-home-sans)",
-      }}
+      className="inline-flex items-center rounded-full px-3 py-1 text-[0.68rem] font-semibold"
+      style={getChipStyle(accent, 18, 28)}
     >
       {MBA_ROLE_FAMILY_LABELS[family]}
     </span>
@@ -376,13 +416,13 @@ function JobCard({
       onMouseEnter={onMarkSeen}
     >
       {/* Header */}
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0 flex items-center gap-3">
           <CompanyAvatar company={company} />
-          <div>
+          <div className="min-w-0">
             <p
               className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+              style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
             >
               {job.companyName}
             </p>
@@ -394,7 +434,10 @@ function JobCard({
             </p>
           </div>
         </div>
-        <div className="flex shrink-0 items-center gap-2">
+        <div
+          data-testid={`job-card-${job.id}-chips`}
+          className="flex max-w-full flex-wrap items-center gap-2 sm:justify-end"
+        >
           {isNew && <NewBadge />}
           <RoleTypeChip roleType={job.roleType} />
           <CategoryChip category={job.category} />
@@ -415,7 +458,7 @@ function JobCard({
 
       {job.snippet && (
         <p
-          className="mt-2 line-clamp-2 text-sm leading-6"
+          className="mt-2 line-clamp-2 break-words text-sm leading-6"
           style={{ color: "var(--home-ink-muted)" }}
         >
           {job.snippet}
@@ -802,19 +845,38 @@ function CompanyFilterStrip({
   style?: CSSProperties;
 }) {
   const nonManual = MBA_COMPANIES.filter((c) => c.atsType !== "manual");
+  const groups = TRACKED_COMPANY_CATEGORIES.map((category) => ({
+    category,
+    label: CATEGORY_LABELS[category],
+    companies: nonManual.filter((c) => c.category === category),
+  })).filter((group) => group.companies.length > 0);
   const allOn = nonManual.every((c) => watchedIds.has(c.id));
   const allOff = nonManual.every((c) => !watchedIds.has(c.id));
 
   return (
-    <div className="rounded-[1.25rem] border p-4" style={{ borderColor: "var(--home-rule)", ...style }}>
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <p
-          className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-        >
-          Tracked companies
-        </p>
-        <div className="flex items-center gap-2">
+    <section
+      className="rounded-[1.25rem] border p-4 sm:p-5"
+      style={{ borderColor: "var(--home-rule)", ...style }}
+      aria-labelledby="tracked-companies-heading"
+    >
+      <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+        <div className="space-y-1">
+          <p
+            id="tracked-companies-heading"
+            className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+            style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
+          >
+            Tracked companies
+          </p>
+          <p
+            className="max-w-2xl text-sm leading-6"
+            style={{ color: "var(--home-ink-muted)" }}
+          >
+            Toggle {nonManual.length} live-feed companies here. Manual-only targets stay in
+            Manual checks below.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={onSelectAll}
@@ -838,41 +900,57 @@ function CompanyFilterStrip({
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap gap-2">
-        {nonManual.map((c) => {
-          const active = watchedIds.has(c.id);
-          return (
-            <button
-              key={c.id}
-              type="button"
-              onClick={() => onToggle(c.id)}
-              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
-              style={
-                active
-                  ? {
-                      background: `color-mix(in srgb, ${c.color} 16%, var(--home-paper))`,
-                      borderColor: `color-mix(in srgb, ${c.color} 42%, var(--home-rule))`,
-                      color: c.color,
-                    }
-                  : {
-                      background: "transparent",
-                      borderColor: "var(--home-rule)",
-                      color: "var(--home-ink-muted)",
-                    }
-              }
-              aria-pressed={active}
-            >
+      <div className="grid gap-3 xl:grid-cols-3">
+        {groups.map((group) => (
+          <div
+            key={group.category}
+            data-testid={`tracked-companies-${group.category}`}
+            className="rounded-[1rem] border p-3"
+            style={{
+              borderColor: "var(--home-rule)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 58%, white)",
+            }}
+          >
+            <div className="flex items-baseline justify-between gap-3">
+              <p
+                className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
+              >
+                {group.label}
+              </p>
               <span
-                className="h-2 w-2 rounded-full"
-                style={{ background: active ? c.color : "var(--home-stone)" }}
-                aria-hidden="true"
-              />
-              {c.name}
-            </button>
-          );
-        })}
+                className="text-[0.68rem]"
+                style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
+              >
+                {group.companies.length} live
+              </span>
+            </div>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-1">
+              {group.companies.map((company) => {
+                const active = watchedIds.has(company.id);
+                return (
+                  <button
+                    key={company.id}
+                    type="button"
+                    onClick={() => onToggle(company.id)}
+                    className="inline-flex min-h-[44px] w-full items-center gap-2.5 rounded-[1rem] border px-4 py-2.5 text-left text-[0.78rem] font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
+                    style={getTrackedCompanyButtonStyle(company, active)}
+                    aria-pressed={active}
+                  >
+                    <span
+                      className="h-2 w-2 rounded-full"
+                      style={{ background: active ? company.color : "var(--home-stone)" }}
+                      aria-hidden="true"
+                    />
+                    <span>{company.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -1309,7 +1387,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       style={{
                         background: "var(--home-ink)",
                         color: "var(--home-paper)",
-                        fontFamily: "var(--font-home-sans)",
+                        fontFamily: CHIP_FONT_FAMILY,
                       }}
                     >
                       Search: {uiState.q.trim()}
@@ -1318,11 +1396,11 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   {uiState.roleType !== "all" && (
                     <span
                       className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                      style={{
-                        background: ROLE_TYPE_STYLES[uiState.roleType].background,
-                        color: ROLE_TYPE_STYLES[uiState.roleType].accent,
-                        fontFamily: "var(--font-home-sans)",
-                      }}
+                      style={getChipStyle(
+                        ROLE_TYPE_STYLES[uiState.roleType].accent,
+                        ROLE_TYPE_STYLES[uiState.roleType].backgroundWeight,
+                        ROLE_TYPE_STYLES[uiState.roleType].borderWeight
+                      )}
                     >
                       {ROLE_TYPE_LABELS[uiState.roleType]}
                     </span>
@@ -1330,11 +1408,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   {uiState.roleFamily !== "all" && (
                     <span
                       className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                      style={{
-                        background: "color-mix(in srgb, var(--home-haze) 16%, var(--home-paper))",
-                        color: "var(--home-haze)",
-                        fontFamily: "var(--font-home-sans)",
-                      }}
+                      style={getChipStyle(getRoleFamilyAccent(uiState.roleFamily), 18, 28)}
                     >
                       {ROLE_FAMILY_LABELS[uiState.roleFamily]}
                     </span>
@@ -1342,11 +1416,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   {uiState.category !== "all" && (
                     <span
                       className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                      style={{
-                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
-                        color: "var(--home-ink)",
-                        fontFamily: "var(--font-home-sans)",
-                      }}
+                      style={getChipStyle(CATEGORY_COLOR[uiState.category], 18, 28)}
                     >
                       {CATEGORY_LABELS[uiState.category]}
                     </span>
@@ -1357,7 +1427,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       style={{
                         background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
                         color: "var(--home-ink)",
-                        fontFamily: "var(--font-home-sans)",
+                        fontFamily: CHIP_FONT_FAMILY,
                       }}
                     >
                       {SORT_LABELS[uiState.sort]}

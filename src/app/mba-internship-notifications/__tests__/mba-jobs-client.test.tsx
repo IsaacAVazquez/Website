@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { MBAJobsClient } from "../mba-jobs-client";
 import { DEFAULT_MBA_JOBS_STATE } from "../mba-jobs-state";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
@@ -127,6 +127,25 @@ describe("MBAJobsClient", () => {
     expect(plaidLinkedIn).toHaveClass("home-button", "home-button-secondary");
     expect(microsoftCareerPage).toHaveClass("home-button", "home-button-primary");
     expect(applyButton).toHaveClass("home-button", "home-button-primary");
+  });
+
+  it("groups tracked companies by category and keeps job-card chips wrappable", () => {
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(
+      screen.getByText(/Manual-only targets stay in Manual checks below\./i)
+    ).toBeVisible();
+
+    const fintechGroup = screen.getByTestId("tracked-companies-fintech");
+    const startupGroup = screen.getByTestId("tracked-companies-startup");
+    const bigTechGroup = screen.getByTestId("tracked-companies-big-tech");
+    const chipRail = screen.getByTestId("job-card-stripe-1-chips");
+
+    expect(within(fintechGroup).getByRole("button", { name: "Stripe" })).toBeVisible();
+    expect(within(startupGroup).getByRole("button", { name: "OpenAI" })).toBeVisible();
+    expect(within(bigTechGroup).getByRole("button", { name: "Atlassian" })).toBeVisible();
+    expect(chipRail).toHaveClass("flex-wrap");
+    expect(chipRail).not.toHaveClass("shrink-0");
   });
 
   it("hydrates search state from the URL and ranks best matches first", () => {

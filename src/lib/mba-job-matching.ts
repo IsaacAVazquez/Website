@@ -27,6 +27,16 @@ const INTERNSHIP_TERMS = [
   "co op",
 ] as const;
 
+const EXPLICIT_INTERNSHIP_CONTEXT_TERMS = [
+  "internship",
+  "summer associate",
+  "summer internship",
+  "graduate intern",
+  "mba intern",
+  "mba internship",
+  "co op",
+] as const;
+
 const MBA_TERMS = [
   "mba",
   "master of business administration",
@@ -46,10 +56,27 @@ const BUSINESS_PROGRAM_TERMS = [
 
 const NEGATIVE_TITLE_TERMS = [
   "software engineer",
+  "software engineering",
   "engineer",
+  "engineering manager",
   "developer",
   "designer",
   "design",
+  "frontend engineer",
+  "front end engineer",
+  "backend engineer",
+  "back end engineer",
+  "full stack engineer",
+  "fullstack engineer",
+  "mobile engineer",
+  "ios engineer",
+  "android engineer",
+  "platform engineer",
+  "infrastructure engineer",
+  "quality engineer",
+  "qa engineer",
+  "test engineer",
+  "devops engineer",
   "recruiter",
   "recruiting",
   "talent",
@@ -68,12 +95,14 @@ const NEGATIVE_TITLE_TERMS = [
   "research scientist",
   "machine learning",
   "data engineer",
+  "data scientist",
   "ux",
   "ui",
 ] as const;
 
 const NEGATIVE_CONTEXT_TERMS = [
   "engineering",
+  "software engineering",
   "design",
   "recruiting",
   "legal",
@@ -88,6 +117,46 @@ const NEGATIVE_CONTEXT_TERMS = [
   "software",
   "hardware",
   "security",
+  "frontend",
+  "front end",
+  "backend",
+  "back end",
+  "full stack",
+  "fullstack",
+  "distributed systems",
+  "computer science",
+  "coding",
+  "android",
+  "ios",
+] as const;
+
+const EARLY_CAREER_TITLE_TERMS = [
+  "undergraduate",
+  "undergrad",
+  "new grad",
+  "new graduate",
+  "recent graduate",
+  "student program",
+  "student programs",
+  "campus program",
+  "campus programs",
+  "campus hire",
+  "university graduate",
+  "university recruiting",
+] as const;
+
+const EARLY_CAREER_CONTEXT_TERMS = [
+  "undergraduate",
+  "undergrad",
+  "undergraduate students",
+  "undergraduate program",
+  "bachelor degree",
+  "bachelor s degree",
+  "bachelors degree",
+  "campus program",
+  "campus recruiting",
+  "student program",
+  "student programs",
 ] as const;
 
 const ROLE_MATCH_TERMS: Record<MBAJobRoleFamily, readonly string[]> = {
@@ -242,16 +311,29 @@ export function matchMBAJobRole(input: MBAJobMatchInput): MBAJobMatch | null {
     (family) => titleFamilies.includes(family) || contextFamilies.includes(family)
   );
 
-  const hasInternshipSignal = countMatches(fullText, fullTokens, INTERNSHIP_TERMS) > 0;
+  const hasInternshipSignal =
+    countMatches(titleText, titleTokens, INTERNSHIP_TERMS) > 0 ||
+    countMatches(contextText, contextTokens, EXPLICIT_INTERNSHIP_CONTEXT_TERMS) > 0;
   const hasMBASignal = countMatches(fullText, fullTokens, MBA_TERMS) > 0;
   const hasBusinessProgramSignal =
     countMatches(fullText, fullTokens, BUSINESS_PROGRAM_TERMS) > 0;
+  const hasExplicitMBASignal = hasMBASignal || hasBusinessProgramSignal;
 
   const titleNegativeCount = countMatches(titleText, titleTokens, NEGATIVE_TITLE_TERMS);
   const contextNegativeCount = countMatches(
     contextText,
     contextTokens,
     NEGATIVE_CONTEXT_TERMS
+  );
+  const titleEarlyCareerCount = countMatches(
+    titleText,
+    titleTokens,
+    EARLY_CAREER_TITLE_TERMS
+  );
+  const contextEarlyCareerCount = countMatches(
+    contextText,
+    contextTokens,
+    EARLY_CAREER_CONTEXT_TERMS
   );
 
   const positiveScore =
@@ -260,12 +342,20 @@ export function matchMBAJobRole(input: MBAJobMatchInput): MBAJobMatch | null {
     (hasInternshipSignal ? 5 : 0) +
     (hasMBASignal ? 3 : 0) +
     (hasBusinessProgramSignal ? 2 : 0);
-  const negativeScore = titleNegativeCount * 5 + contextNegativeCount * 2;
+  const negativeScore =
+    titleNegativeCount * 5 +
+    contextNegativeCount * 2 +
+    titleEarlyCareerCount * 5 +
+    (hasExplicitMBASignal ? 0 : contextEarlyCareerCount * 2);
 
   const hasTargetAnchor =
     roleFamilies.length > 0 || hasMBASignal || hasBusinessProgramSignal;
 
   if (!hasTargetAnchor) return null;
+  if (titleEarlyCareerCount > 0 && !hasExplicitMBASignal) return null;
+  if (contextEarlyCareerCount > 0 && hasInternshipSignal && !hasExplicitMBASignal) {
+    return null;
+  }
   if (titleNegativeCount > 0 && roleFamilies.length === 0 && !hasMBASignal) return null;
   if (negativeScore >= positiveScore + 2) return null;
 

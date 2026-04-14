@@ -8,23 +8,64 @@ import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
 import { matchMBAJobRole } from "@/lib/mba-job-matching";
 
 const TIMEOUT_MS = 8_000;
+const MAX_SNIPPET_LENGTH = 220;
 type PollableMBACompany = MBACompany & { atsType: "greenhouse" | "lever" | "ashby" };
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
-function stripHtml(html: string): string {
-  return html
+const HTML_ENTITY_MAP: Record<string, string> = {
+  amp: "&",
+  apos: "'",
+  gt: ">",
+  lt: "<",
+  nbsp: " ",
+  quot: '"',
+};
+
+function decodeHtmlEntity(entity: string): string {
+  const normalized = entity.toLowerCase();
+  if (normalized.startsWith("#x")) {
+    const value = Number.parseInt(normalized.slice(2), 16);
+    return Number.isNaN(value) ? `&${entity};` : String.fromCodePoint(value);
+  }
+  if (normalized.startsWith("#")) {
+    const value = Number.parseInt(normalized.slice(1), 10);
+    return Number.isNaN(value) ? `&${entity};` : String.fromCodePoint(value);
+  }
+  return HTML_ENTITY_MAP[normalized] ?? `&${entity};`;
+}
+
+function decodeHtmlEntities(value: string): string {
+  let output = value;
+  for (let pass = 0; pass < 2; pass += 1) {
+    const decoded = output.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (_, entity: string) =>
+      decodeHtmlEntity(entity)
+    );
+    if (decoded === output) break;
+    output = decoded;
+  }
+  return output;
+}
+
+function truncatePlainText(value: string, maxLength: number): string {
+  if (value.length <= maxLength) return value;
+
+  const candidate = value.slice(0, maxLength + 1).trim();
+  const boundary = candidate.slice(0, maxLength).lastIndexOf(" ");
+  const cutIndex = boundary >= Math.floor(maxLength * 0.6) ? boundary : maxLength;
+  return `${candidate.slice(0, cutIndex).trimEnd()}…`;
+}
+
+function normalizeJobSnippet(html: string): string | null {
+  const plainText = decodeHtmlEntities(html)
     .replace(/<[^>]*>/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#0?39;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s{2,}/g, " ")
+    .replace(/\s+/g, " ")
     .trim();
+
+  if (!plainText) return null;
+  return truncatePlainText(plainText, MAX_SNIPPET_LENGTH);
 }
 
 function buildMBAJob(
@@ -68,7 +109,7 @@ async function fetchGreenhouse(companyId: string, slug: string): Promise<MBAJob[
     if (!company) return [];
     return data.jobs
       .flatMap((job) => {
-        const snippet = job.content ? stripHtml(job.content).slice(0, 220) || null : null;
+        const snippet = job.content ? normalizeJobSnippet(job.content) : null;
         const match = matchMBAJobRole({
           title: job.title,
           department: job.departments?.[0]?.name,
