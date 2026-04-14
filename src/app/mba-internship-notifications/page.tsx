@@ -6,7 +6,7 @@ import { normalizeMBAJobsState } from "./mba-jobs-state";
 export const metadata = constructMetadata({
   title: "MBA Internship Tracker | Isaac Vazquez",
   description:
-    "Live dashboard monitoring 20+ tech company career pages for MBA internship and summer associate roles. Get browser notifications and email digests when new roles appear.",
+    "Live dashboard monitoring 32 tech company career pages and public job boards for MBA internship and summer associate roles. Get browser notifications and email digests when new roles appear.",
   canonicalUrl: "/mba-internship-notifications",
   dateModified: "2026-04-14",
   aiMetadata: {
@@ -28,9 +28,9 @@ export const metadata = constructMetadata({
     ],
     contentType: "Software Application",
     context:
-      "Portfolio tool by Isaac Vazquez (UC Berkeley Haas MBA candidate) tracking MBA internship postings across Greenhouse and Lever ATS systems at major tech companies.",
+      "Portfolio tool by Isaac Vazquez (UC Berkeley Haas MBA candidate) tracking MBA internship postings across Greenhouse, Lever, and Ashby job boards plus curated manual career portals at major tech companies.",
     summary:
-      "Real-time dashboard polling 20+ tech company career pages for MBA internship roles, with new-since-last-visit detection, browser notifications, and email digests.",
+      "Real-time dashboard polling public job boards across 32 tech companies for MBA internship roles, with new-since-last-visit detection, browser notifications, and email digests.",
     primaryFocus:
       "MBA recruiting market intelligence and career page monitoring automation",
   },
@@ -64,7 +64,7 @@ export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
         data={{
           name: "MBA Internship Notifications",
           description:
-            "Career page monitor for MBA internship and summer associate roles at top tech companies.",
+            "Career page and public job board monitor for MBA internship and summer associate roles across 32 tech companies.",
           url: "https://isaacavazquez.com/mba-internship-notifications",
           applicationCategory: "BusinessApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

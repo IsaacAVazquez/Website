@@ -8,7 +8,11 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
-import type { MBAJob, MBAJobsApiResponse } from "@/types/mba-jobs";
+import type {
+  MBAJob,
+  MBAJobsApiResponse,
+  MBAJobsFetchError,
+} from "@/types/mba-jobs";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
 
 // ---------------------------------------------------------------------------
@@ -16,7 +20,7 @@ import { MBA_COMPANIES } from "@/constants/mba-companies";
 // ---------------------------------------------------------------------------
 
 const SEEN_IDS_KEY = "mba_seen_job_ids_v1";
-const WATCHED_KEY = "mba_watched_companies_v1";
+const WATCHED_KEY = "mba_watched_companies_v2";
 
 const POLL_INTERVAL_MS = 30 * 60 * 1_000; // 30 minutes
 const DEDUPE_WINDOW_MS = 2_000;
@@ -106,7 +110,7 @@ export interface UseMBAJobsResult {
   jobs: MBAJob[];
   isLoading: boolean;
   error: string | null;
-  fetchErrors: { companyId: string; message: string }[];
+  fetchErrors: MBAJobsFetchError[];
   lastFetchedAt: Date | null;
   seenIds: Set<string>;
   watchedCompanyIds: Set<string>;
@@ -164,7 +168,7 @@ export function useMBAJobs(): UseMBAJobsResult {
   const [jobs, setJobs] = useState<MBAJob[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [fetchErrors, setFetchErrors] = useState<{ companyId: string; message: string }[]>([]);
+  const [fetchErrors, setFetchErrors] = useState<MBAJobsFetchError[]>([]);
   const [lastFetchedAt, setLastFetchedAt] = useState<Date | null>(null);
 
   const isMountedRef = useRef(true);

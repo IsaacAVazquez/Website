@@ -56,4 +56,19 @@ describe("ConditionalLayout", () => {
       expectedVariant
     );
   });
+
+  it("treats /mba-internship-notifications as a self-shell route", () => {
+    mockUsePathname.mockReturnValue("/mba-internship-notifications");
+
+    act(() => {
+      root.render(
+        <ConditionalLayout>
+          <div data-testid="route-content">Page content</div>
+        </ConditionalLayout>
+      );
+    });
+
+    expect(container.querySelector("main > .max-w-4xl")).toBeNull();
+    expect(container.querySelector('[data-testid="route-content"]')).toBeTruthy();
+  });
 });

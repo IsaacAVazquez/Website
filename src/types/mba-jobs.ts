@@ -2,7 +2,7 @@
 // MBA Internship Notifications – shared types
 // ---------------------------------------------------------------------------
 
-export type MBAATSType = "greenhouse" | "lever" | "manual";
+export type MBAATSType = "greenhouse" | "lever" | "ashby" | "manual";
 export type MBACategory = "big-tech" | "fintech" | "startup";
 
 export interface MBACompany {
@@ -30,10 +30,16 @@ export interface MBAJob {
   snippet: string | null;
 }
 
+export interface MBAJobsFetchError {
+  companyId: string;
+  companyName: string;
+  message: string;
+}
+
 export interface MBAJobsApiResponse {
   jobs: MBAJob[];
   fetchedAt: string;
-  errors: { companyId: string; message: string }[];
+  errors: MBAJobsFetchError[];
   companiesRequested: string[];
 }
 

@@ -96,9 +96,9 @@ function formatFetchedAt(d: Date | null): string {
 
 const CATEGORY_COLOR: Record<MBACategory | "all", string> = {
   all: "var(--home-ink)",
-  "big-tech": "#4285F4",
-  fintech: "#00C805",
-  startup: "#FF5A5F",
+  "big-tech": "var(--home-haze)",
+  fintech: "color-mix(in srgb, var(--home-moss) 62%, var(--home-ink) 38%)",
+  startup: "color-mix(in srgb, var(--home-acid) 34%, var(--home-ink) 66%)",
 };
 
 // ---------------------------------------------------------------------------
@@ -110,11 +110,11 @@ function CompanyAvatar({ company }: { company: MBACompany | undefined }) {
   const initials = company?.logoInitials ?? "??";
   return (
     <div
-      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xs font-bold text-white"
+      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xs font-bold"
       style={{ background: color }}
       aria-hidden="true"
     >
-      {initials}
+      <span style={{ color: "var(--home-paper)" }}>{initials}</span>
     </div>
   );
 }
@@ -153,6 +153,38 @@ function CategoryChip({ category }: { category: MBACategory }) {
       />
       {CATEGORY_LABELS[category]}
     </span>
+  );
+}
+
+function CardActionLink({
+  href,
+  label,
+  ariaLabel,
+  variant = "secondary",
+  trailingIcon = false,
+  onClick,
+}: {
+  href: string;
+  label: string;
+  ariaLabel: string;
+  variant?: "primary" | "secondary";
+  trailingIcon?: boolean;
+  onClick?: () => void;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`home-button ${
+        variant === "primary" ? "home-button-primary" : "home-button-secondary"
+      } px-4 py-3 text-[0.8rem]`}
+      onClick={onClick}
+      aria-label={ariaLabel}
+    >
+      <span>{label}</span>
+      {trailingIcon ? <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" /> : null}
+    </a>
   );
 }
 
@@ -223,7 +255,7 @@ function JobCard({
 
       {/* Footer */}
       <div
-        className="mt-auto flex items-center justify-between gap-3 pt-4"
+        className="mt-auto flex flex-col gap-3 pt-4"
         style={{ borderTop: "1px solid var(--home-rule)" }}
       >
         <span
@@ -232,28 +264,21 @@ function JobCard({
         >
           {job.location} · {timeAgo(job.postedAt)}
         </span>
-        <div className="flex items-center gap-3">
-          <a
+        <div className="flex flex-wrap items-center gap-3">
+          <CardActionLink
             href={linkedinUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[32px] items-center gap-1 text-[0.7rem] font-semibold"
-            style={{ color: "var(--home-ink-muted)" }}
+            label="LinkedIn search"
+            ariaLabel={`LinkedIn search for ${job.title} at ${job.companyName}`}
             onClick={onMarkSeen}
-            aria-label={`Find ${job.title} on LinkedIn`}
-          >
-            LinkedIn
-          </a>
-          <a
+          />
+          <CardActionLink
             href={job.applyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[32px] items-center gap-1 text-[0.72rem] font-semibold"
-            style={{ color: "var(--home-haze)" }}
+            label="Apply now"
+            ariaLabel={`Apply for ${job.title} at ${job.companyName}`}
+            variant="primary"
+            trailingIcon
             onClick={onMarkSeen}
-          >
-            Apply <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
+          />
         </div>
       </div>
     </article>
@@ -286,30 +311,25 @@ function ManualCompanyCard({ company }: { company: MBACompany }) {
         className="mt-4 text-sm leading-6"
         style={{ color: "var(--home-ink-muted)" }}
       >
-        Uses a proprietary career portal. Visit directly to browse MBA roles.
+        I do not have a stable public job feed for this company yet, so I link out to the career
+        page and a LinkedIn search instead.
       </p>
       <div
-        className="mt-auto flex items-center gap-3 pt-4"
+        className="mt-auto flex flex-wrap items-center gap-3 pt-4"
         style={{ borderTop: "1px solid var(--home-rule)" }}
       >
-        <a
+        <CardActionLink
           href={linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-[32px] items-center gap-1 text-[0.7rem] font-semibold"
-          style={{ color: "var(--home-ink-muted)" }}
-        >
-          LinkedIn search
-        </a>
-        <a
+          label="LinkedIn search"
+          ariaLabel={`LinkedIn search for ${company.name}`}
+        />
+        <CardActionLink
           href={company.careersUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-[32px] items-center gap-1 text-[0.72rem] font-semibold"
-          style={{ color: "var(--home-haze)" }}
-        >
-          Career page <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-        </a>
+          label="Career page"
+          ariaLabel={`Career page for ${company.name}`}
+          variant="primary"
+          trailingIcon
+        />
       </div>
     </article>
   );
@@ -482,7 +502,7 @@ function EmailDigestButton({
         <button
           type="button"
           onClick={onClear}
-          className="ml-1 text-[0.7rem] underline opacity-70 hover:opacity-100"
+          className="ml-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-[0.8rem] opacity-70 transition-opacity duration-200 ease hover:opacity-100"
           aria-label="Dismiss"
         >
           ✕
@@ -616,18 +636,20 @@ function CompanyFilterStrip({
             type="button"
             onClick={onSelectAll}
             disabled={allOn}
-            className="text-[0.7rem] font-semibold underline-offset-2 hover:underline disabled:opacity-40"
-            style={{ color: "var(--home-haze)" }}
+            className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
+            style={{
+              ...getPillStyle(false),
+              color: "var(--home-haze)",
+            }}
           >
             All on
           </button>
-          <span style={{ color: "var(--home-rule)" }}>·</span>
           <button
             type="button"
             onClick={onClearAll}
             disabled={allOff}
-            className="text-[0.7rem] font-semibold underline-offset-2 hover:underline disabled:opacity-40"
-            style={{ color: "var(--home-ink-muted)" }}
+            className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
+            style={getPillStyle(false)}
           >
             All off
           </button>
@@ -641,7 +663,7 @@ function CompanyFilterStrip({
               key={c.id}
               type="button"
               onClick={() => onToggle(c.id)}
-              className="inline-flex min-h-[36px] items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-[background-color,border-color,color] duration-150 ease"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
               style={
                 active
                   ? {
@@ -742,6 +764,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
   }, [routeState.category]);
 
   const totalTracked = MBA_COMPANIES.filter((c) => c.atsType !== "manual").length;
+  const totalCompanies = MBA_COMPANIES.length;
   const refreshLabel = isLoading
     ? "Loading…"
     : lastFetchedAt
@@ -787,15 +810,16 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 fontWeight: 600,
                 lineHeight: 0.92,
                 letterSpacing: "-0.07em",
-                color: "var(--home-ink)",
-              }}
-            >
-              Internship Tracker
-            </h1>
+              color: "var(--home-ink)",
+            }}
+          >
+            Internship Tracker
+          </h1>
             <p className="home-body max-w-[44rem]">
-              Monitors {totalTracked} company career pages via Greenhouse and Lever for MBA
-              internship, APM, and summer associate roles. New postings are flagged each time the
-              page polls — you can also get browser notifications or an email digest.
+              I monitor {totalTracked} public job boards across {totalCompanies} target companies
+              for MBA internships, APM roles, and summer associate openings. When a company does
+              not expose a stable public feed, I keep the career page and LinkedIn search below so
+              you can still check it quickly.
             </p>
 
             {/* Meta chips */}
@@ -803,6 +827,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
               <span className="resume-chip">
                 {isLoading ? "Loading…" : `${jobs.length} live roles`}
               </span>
+              <span className="resume-chip">{totalTracked} live feeds</span>
+              <span className="resume-chip">{totalCompanies} target companies</span>
               <span className="resume-chip">{refreshLabel}</span>
               {!isLoading && newJobCount > 0 && (
                 <span
@@ -875,7 +901,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
               />
               <p className="text-sm" style={{ color: "var(--home-ink)" }}>
                 Some companies could not be reached:{" "}
-                {fetchErrors.map((e) => e.companyId).join(", ")}. Results shown
+                {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown
                 are partial.
               </p>
             </div>
@@ -965,11 +991,11 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   className="home-kicker mb-1"
                   style={{ fontFamily: "var(--font-home-sans)" }}
                 >
-                  Proprietary portals
+                  Manual checks
                 </p>
                 <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                  These companies do not expose a public ATS API. Use their direct career pages or
-                  LinkedIn search links below.
+                  These companies do not expose a stable public feed I can poll here yet. Use the
+                  direct career page or LinkedIn search buttons below.
                 </p>
               </div>
               <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">

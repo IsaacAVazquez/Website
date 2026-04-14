@@ -22,6 +22,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/investments",
     "/la-liga",
     "/march-madness-2026",
+    "/mba-internship-notifications",
     "/news-pulse",
     "/polling-aggregator",
     "/premier-league",
