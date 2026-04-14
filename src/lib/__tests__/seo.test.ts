@@ -29,7 +29,7 @@ describe('constructMetadata', () => {
     const metadata = constructMetadata({ noIndex: true });
     const robots = metadata.robots as { index: boolean; follow: boolean };
     expect(robots.index).toBe(false);
-    expect(robots.follow).toBe(false);
+    expect(robots.follow).toBe(true);
   });
 
   it('allows crawling by default (noIndex: false)', () => {

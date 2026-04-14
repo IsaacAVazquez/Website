@@ -21,6 +21,7 @@ jest.mock("@/constants/caseStudies", () => {
 
 jest.mock("@/lib/blog", () => ({
   getLatestBlogPostPreviews: () => [{ slug: "post-a" }],
+  getHomepageProofOfWorkBlogPostPreviews: () => [{ slug: "post-a" }],
 }));
 
 jest.mock("@/components/home/HomePageContent", () => ({

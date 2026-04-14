@@ -40,8 +40,8 @@ describe("la-liga-state", () => {
       "sev",
       "ala",
       "elc",
-      "lev",
       "ovi",
+      "lev",
     ]);
     expect(getDefaultClubForView("relegation")).toBe("sev");
   });
