@@ -2,6 +2,8 @@
 
 import {
   startTransition,
+  useDeferredValue,
+  useEffect,
   useMemo,
   useState,
   type CSSProperties,
@@ -13,9 +15,11 @@ import {
   BellOff,
   BriefcaseBusiness,
   CircleAlert,
+  Search,
   ExternalLink,
   Mail,
   RefreshCcw,
+  X,
 } from "lucide-react";
 import {
   EditorialPillButton,
@@ -32,12 +36,20 @@ import {
 import { ChevronDown } from "lucide-react";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
+import {
+  MBA_ROLE_FAMILY_LABELS,
+  MBA_ROLE_FAMILY_SEARCH_TERMS,
+} from "@/constants/mba-role-taxonomy";
 import type {
   MBACategory,
   MBACategoryFilter,
   MBACompany,
   MBAJob,
+  MBAJobRoleFamily,
+  MBAJobRoleType,
   MBAJobsSearchState,
+  MBARoleFamilyFilter,
+  MBARoleTypeFilter,
   MBASortOrder,
 } from "@/types/mba-jobs";
 import {
@@ -46,6 +58,10 @@ import {
   CATEGORY_OPTIONS,
   DEFAULT_MBA_JOBS_STATE,
   normalizeMBAJobsState,
+  ROLE_FAMILY_LABELS,
+  ROLE_FAMILY_OPTIONS,
+  ROLE_TYPE_LABELS,
+  ROLE_TYPE_OPTIONS,
   SORT_LABELS,
   SORT_OPTIONS,
 } from "./mba-jobs-state";
@@ -97,9 +113,119 @@ function formatFetchedAt(d: Date | null): string {
 const CATEGORY_COLOR: Record<MBACategory | "all", string> = {
   all: "var(--home-ink)",
   "big-tech": "var(--home-haze)",
-  fintech: "color-mix(in srgb, var(--home-moss) 62%, var(--home-ink) 38%)",
-  startup: "color-mix(in srgb, var(--home-acid) 34%, var(--home-ink) 66%)",
+  fintech: "var(--home-moss)",
+  startup: "var(--home-acid)",
 };
+
+const ROLE_TYPE_STYLES: Record<MBAJobRoleType, { accent: string; background: string }> = {
+  internship: {
+    accent: "var(--home-acid)",
+    background: "color-mix(in srgb, var(--home-acid) 18%, var(--home-paper))",
+  },
+  "full-time": {
+    accent: "var(--home-moss)",
+    background: "color-mix(in srgb, var(--home-moss) 18%, var(--home-paper))",
+  },
+  unclear: {
+    accent: "var(--home-haze)",
+    background: "color-mix(in srgb, var(--home-haze) 16%, var(--home-paper))",
+  },
+};
+
+function normalizeSearchText(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/&/g, " ")
+    .replace(/\+/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function splitSearchTokens(value: string): string[] {
+  const normalized = normalizeSearchText(value);
+  return normalized ? Array.from(new Set(normalized.split(" "))) : [];
+}
+
+function buildJobSearchHaystack(job: MBAJob): string {
+  const familyTerms = job.roleFamilies.flatMap((family) => [
+    MBA_ROLE_FAMILY_LABELS[family],
+    ...MBA_ROLE_FAMILY_SEARCH_TERMS[family],
+  ]);
+
+  return normalizeSearchText(
+    [
+      job.title,
+      job.companyName,
+      job.department,
+      job.location,
+      job.snippet,
+      ROLE_TYPE_LABELS[job.roleType],
+      ...familyTerms,
+    ]
+      .filter(Boolean)
+      .join(" ")
+  );
+}
+
+function getQueryScore(job: MBAJob, query: string): number {
+  const normalizedQuery = normalizeSearchText(query);
+  if (!normalizedQuery) return 0;
+
+  const haystack = buildJobSearchHaystack(job);
+  const tokens = splitSearchTokens(normalizedQuery);
+  let score = haystack.includes(normalizedQuery) ? 10 : 0;
+  let matchedTokens = 0;
+
+  for (const token of tokens) {
+    if (haystack.includes(token)) {
+      matchedTokens += 1;
+      score += token.length <= 2 ? 2 : 3;
+    }
+  }
+
+  if (tokens.length > 1 && matchedTokens === tokens.length) {
+    score += 4;
+  }
+
+  return score;
+}
+
+function buildManualLinkedInQuery(
+  companyName: string,
+  state: MBAJobsSearchState
+): string {
+  const parts: string[] = [];
+
+  if (state.q.trim()) {
+    parts.push(state.q.trim());
+  } else {
+    if (state.roleFamily !== "all") {
+      parts.push(MBA_ROLE_FAMILY_LABELS[state.roleFamily]);
+    } else {
+      parts.push("MBA business roles");
+    }
+
+    if (state.roleType === "internship") {
+      parts.push("internship");
+    } else if (state.roleType === "full-time") {
+      parts.push("full time");
+    }
+  }
+
+  parts.push(companyName);
+  return parts.join(" ");
+}
+
+function hasActiveFilters(state: MBAJobsSearchState): boolean {
+  return (
+    state.q.trim().length > 0 ||
+    state.category !== DEFAULT_MBA_JOBS_STATE.category ||
+    state.roleType !== DEFAULT_MBA_JOBS_STATE.roleType ||
+    state.roleFamily !== DEFAULT_MBA_JOBS_STATE.roleFamily ||
+    state.sort !== DEFAULT_MBA_JOBS_STATE.sort
+  );
+}
 
 // ---------------------------------------------------------------------------
 // Sub-components
@@ -156,6 +282,46 @@ function CategoryChip({ category }: { category: MBACategory }) {
   );
 }
 
+function RoleTypeChip({ roleType }: { roleType: MBAJobRoleType }) {
+  const style = ROLE_TYPE_STYLES[roleType];
+  return (
+    <span
+      className="inline-flex items-center rounded-full px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em]"
+      style={{
+        background: style.background,
+        color: style.accent,
+        border: `1px solid color-mix(in srgb, ${style.accent} 24%, var(--home-rule))`,
+        fontFamily: "var(--font-home-sans)",
+      }}
+    >
+      {ROLE_TYPE_LABELS[roleType]}
+    </span>
+  );
+}
+
+function RoleFamilyChip({ family }: { family: MBAJobRoleFamily }) {
+  const accent =
+    family === "product" || family === "product-marketing"
+      ? "var(--home-haze)"
+      : family === "finance" || family === "analytics"
+        ? "var(--home-moss)"
+        : "var(--home-acid)";
+
+  return (
+    <span
+      className="inline-flex items-center rounded-full px-2.5 py-1 text-[0.68rem] font-medium"
+      style={{
+        background: `color-mix(in srgb, ${accent} 12%, var(--home-paper))`,
+        border: `1px solid color-mix(in srgb, ${accent} 22%, var(--home-rule))`,
+        color: accent,
+        fontFamily: "var(--font-home-sans)",
+      }}
+    >
+      {MBA_ROLE_FAMILY_LABELS[family]}
+    </span>
+  );
+}
+
 function CardActionLink({
   href,
   label,
@@ -192,14 +358,16 @@ function JobCard({
   job,
   isNew,
   onMarkSeen,
+  currentState,
 }: {
   job: MBAJob;
   isNew: boolean;
   onMarkSeen: () => void;
+  currentState: MBAJobsSearchState;
 }) {
   const company = MBA_COMPANY_MAP.get(job.companyId);
   const linkedinUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
-    job.title + " " + job.companyName
+    [currentState.q.trim(), job.title, job.companyName].filter(Boolean).join(" ")
   )}`;
 
   return (
@@ -228,6 +396,7 @@ function JobCard({
         </div>
         <div className="flex shrink-0 items-center gap-2">
           {isNew && <NewBadge />}
+          <RoleTypeChip roleType={job.roleType} />
           <CategoryChip category={job.category} />
         </div>
       </div>
@@ -251,6 +420,14 @@ function JobCard({
         >
           {job.snippet}
         </p>
+      )}
+
+      {job.roleFamilies.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {job.roleFamilies.map((family) => (
+            <RoleFamilyChip key={`${job.id}-${family}`} family={family} />
+          ))}
+        </div>
       )}
 
       {/* Footer */}
@@ -285,9 +462,15 @@ function JobCard({
   );
 }
 
-function ManualCompanyCard({ company }: { company: MBACompany }) {
+function ManualCompanyCard({
+  company,
+  currentState,
+}: {
+  company: MBACompany;
+  currentState: MBAJobsSearchState;
+}) {
   const linkedinUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
-    "MBA intern " + company.name
+    buildManualLinkedInQuery(company.name, currentState)
   )}`;
 
   return (
@@ -311,8 +494,8 @@ function ManualCompanyCard({ company }: { company: MBACompany }) {
         className="mt-4 text-sm leading-6"
         style={{ color: "var(--home-ink-muted)" }}
       >
-        I do not have a stable public job feed for this company yet, so I link out to the career
-        page and a LinkedIn search instead.
+        I do not have a stable public job feed for this company yet, so I keep the career page and
+        a role-aware LinkedIn search here instead.
       </p>
       <div
         className="mt-auto flex flex-wrap items-center gap-3 pt-4"
@@ -706,18 +889,22 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();
   const variants = shouldReduceMotion ? noMotion : fadeIn;
-
-  const hasManagedParams =
-    searchParams.get("sort") !== null || searchParams.get("category") !== null;
+  const searchParamsKey = searchParams.toString();
   const routeState = useMemo(
-    () =>
-      hasManagedParams ? normalizeMBAJobsState(searchParams) : initialState,
-    [hasManagedParams, initialState, searchParams]
+    () => (searchParamsKey ? normalizeMBAJobsState(searchParams) : initialState),
+    [initialState, searchParams, searchParamsKey]
   );
+  const [uiState, setUiState] = useState(routeState);
+  const deferredQuery = useDeferredValue(uiState.q);
+
+  useEffect(() => {
+    setUiState(routeState);
+  }, [routeState]);
 
   function updateRouteState(next: Partial<MBAJobsSearchState>) {
-    const href = buildMBAJobsHref({ ...routeState, ...next });
-    startTransition(() => router.push(href, { scroll: false }));
+    const nextState = { ...uiState, ...next };
+    setUiState(nextState);
+    startTransition(() => router.push(buildMBAJobsHref(nextState), { scroll: false }));
   }
 
   const {
@@ -743,28 +930,76 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
   } = useMBAJobs();
 
   const [emailDialogOpen, setEmailDialogOpen] = useState(false);
+  const activeFilters = hasActiveFilters(uiState);
+  const effectiveState = useMemo(
+    () => ({ ...uiState, q: deferredQuery }),
+    [deferredQuery, uiState]
+  );
 
   // ── Derived: filtered + sorted job list ──────────────────────────────
   const displayJobs = useMemo(() => {
-    let filtered = jobs.filter((j) => watchedCompanyIds.has(j.companyId));
-    if (routeState.category !== DEFAULT_MBA_JOBS_STATE.category) {
-      filtered = filtered.filter((j) => j.category === routeState.category);
-    }
-    return [...filtered].sort((a, b) => {
-      const diff = new Date(b.postedAt).getTime() - new Date(a.postedAt).getTime();
-      return routeState.sort === "newest" ? diff : -diff;
+    const query = effectiveState.q.trim();
+    const filtered = jobs.flatMap((job) => {
+      if (!watchedCompanyIds.has(job.companyId)) return [];
+      if (effectiveState.category !== "all" && job.category !== effectiveState.category) {
+        return [];
+      }
+      if (effectiveState.roleType !== "all" && job.roleType !== effectiveState.roleType) {
+        return [];
+      }
+      if (
+        effectiveState.roleFamily !== "all" &&
+        !job.roleFamilies.includes(effectiveState.roleFamily)
+      ) {
+        return [];
+      }
+
+      const queryScore = getQueryScore(job, query);
+      if (query && queryScore === 0) return [];
+
+      const roleFamilyBoost =
+        effectiveState.roleFamily !== "all" &&
+        job.roleFamilies.includes(effectiveState.roleFamily)
+          ? 8
+          : 0;
+
+      return [
+        {
+          job,
+          queryScore,
+          relevanceScore: queryScore + roleFamilyBoost,
+        },
+      ];
     });
-  }, [jobs, watchedCompanyIds, routeState]);
+
+    filtered.sort((left, right) => {
+      const leftTime = new Date(left.job.postedAt).getTime();
+      const rightTime = new Date(right.job.postedAt).getTime();
+      if (effectiveState.sort === "oldest") {
+        return leftTime - rightTime;
+      }
+      if (effectiveState.sort === "newest") {
+        return rightTime - leftTime;
+      }
+      const scoreDiff = right.relevanceScore - left.relevanceScore;
+      if (scoreDiff !== 0) return scoreDiff;
+      return rightTime - leftTime;
+    });
+
+    return filtered.map((entry) => entry.job);
+  }, [effectiveState, jobs, watchedCompanyIds]);
 
   // ── Manual (Big Tech) companies filtered by category ─────────────────
   const manualCompanies = useMemo(() => {
     const all = MBA_COMPANIES.filter((c) => c.atsType === "manual");
-    if (routeState.category === "all") return all;
-    return all.filter((c) => c.category === routeState.category);
-  }, [routeState.category]);
+    if (uiState.category === "all") return all;
+    return all.filter((c) => c.category === uiState.category);
+  }, [uiState.category]);
 
   const totalTracked = MBA_COMPANIES.filter((c) => c.atsType !== "manual").length;
   const totalCompanies = MBA_COMPANIES.length;
+  const internshipCount = jobs.filter((job) => job.roleType === "internship").length;
+  const fullTimeCount = jobs.filter((job) => job.roleType === "full-time").length;
   const refreshLabel = isLoading
     ? "Loading…"
     : lastFetchedAt
@@ -787,7 +1022,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
 
       <section
         className="home-page min-h-screen"
-        aria-label="MBA Internship Tracker"
+        aria-label="MBA role tracker"
       >
         <div className="home-shell home-section space-y-5">
           {/* ── Header ──────────────────────────────────────────────────── */}
@@ -810,16 +1045,17 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 fontWeight: 600,
                 lineHeight: 0.92,
                 letterSpacing: "-0.07em",
-              color: "var(--home-ink)",
-            }}
-          >
-            Internship Tracker
-          </h1>
+                color: "var(--home-ink)",
+              }}
+            >
+              MBA Role Tracker
+            </h1>
             <p className="home-body max-w-[44rem]">
               I monitor {totalTracked} public job boards across {totalCompanies} target companies
-              for MBA internships, APM roles, and summer associate openings. When a company does
-              not expose a stable public feed, I keep the career page and LinkedIn search below so
-              you can still check it quickly.
+              for internships and full-time product, PMM, strategy, operations, growth, finance,
+              analytics, and adjacent business roles. When a company does not expose a stable
+              public feed, I keep the career page and LinkedIn search below so you can still move
+              quickly.
             </p>
 
             {/* Meta chips */}
@@ -827,6 +1063,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
               <span className="resume-chip">
                 {isLoading ? "Loading…" : `${jobs.length} live roles`}
               </span>
+              {!isLoading && <span className="resume-chip">{internshipCount} internships</span>}
+              {!isLoading && <span className="resume-chip">{fullTimeCount} full-time</span>}
               <span className="resume-chip">{totalTracked} live feeds</span>
               <span className="resume-chip">{totalCompanies} target companies</span>
               <span className="resume-chip">{refreshLabel}</span>
@@ -907,35 +1145,227 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
             </div>
           )}
 
-          {/* ── Category + Sort controls ──────────────────────────────────── */}
+          {/* ── Search + role controls ───────────────────────────────────── */}
           <motion.div
-            className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+            className="home-card p-5 sm:p-6"
             variants={variants}
             initial="hidden"
             animate="visible"
           >
-            <div
-              className="flex flex-wrap gap-2"
-              role="tablist"
-              aria-label="Filter by company category"
-            >
-              {CATEGORY_OPTIONS.map((cat) => (
-                <EditorialPillButton
-                  key={cat}
-                  active={routeState.category === cat}
-                  onClick={() => updateRouteState({ category: cat as MBACategoryFilter })}
-                  role="tab"
-                  ariaSelected={routeState.category === cat}
-                >
-                  {CATEGORY_LABELS[cat as MBACategoryFilter]}
-                </EditorialPillButton>
-              ))}
-            </div>
+            <div className="space-y-5">
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+                <div className="relative flex-1">
+                  <Search
+                    className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
+                    style={{ color: "var(--home-ink-muted)" }}
+                    aria-hidden="true"
+                  />
+                  <input
+                    type="text"
+                    value={uiState.q}
+                    onChange={(event) => updateRouteState({ q: event.target.value })}
+                    placeholder="Search PM, PMM, strategy, ops, growth, finance..."
+                    aria-label="Search roles"
+                    className="w-full min-h-[44px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease"
+                    style={{
+                      background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                      borderColor: "var(--home-rule)",
+                      color: "var(--home-ink)",
+                      fontFamily: "var(--font-home-sans)",
+                      paddingTop: "0.8rem",
+                      paddingBottom: "0.8rem",
+                    }}
+                  />
+                  {uiState.q && (
+                    <button
+                      type="button"
+                      onClick={() => updateRouteState({ q: "" })}
+                      className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full"
+                      aria-label="Clear search"
+                      style={{ color: "var(--home-ink-muted)" }}
+                    >
+                      <X className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                  )}
+                </div>
 
-            <SortDropdown
-              value={routeState.sort}
-              onValueChange={(sort) => updateRouteState({ sort })}
-            />
+                <div className="flex flex-wrap gap-2">
+                  <SortDropdown
+                    value={uiState.sort}
+                    onValueChange={(sort) => updateRouteState({ sort })}
+                  />
+                  {activeFilters && (
+                    <button
+                      type="button"
+                      onClick={() => updateRouteState(DEFAULT_MBA_JOBS_STATE)}
+                      className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color] duration-200 ease"
+                      style={getPillStyle(false)}
+                    >
+                      Clear filters
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="space-y-2">
+                  <p
+                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                    style={{
+                      color: "var(--home-ink-muted)",
+                      fontFamily: "var(--font-home-sans)",
+                    }}
+                  >
+                    Role type
+                  </p>
+                  <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter by role type">
+                    {ROLE_TYPE_OPTIONS.map((roleType) => (
+                      <EditorialPillButton
+                        key={roleType}
+                        active={uiState.roleType === roleType}
+                        onClick={() =>
+                          updateRouteState({ roleType: roleType as MBARoleTypeFilter })
+                        }
+                        role="tab"
+                        ariaSelected={uiState.roleType === roleType}
+                        size="sm"
+                      >
+                        {ROLE_TYPE_LABELS[roleType as MBARoleTypeFilter]}
+                      </EditorialPillButton>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <p
+                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                    style={{
+                      color: "var(--home-ink-muted)",
+                      fontFamily: "var(--font-home-sans)",
+                    }}
+                  >
+                    Role family
+                  </p>
+                  <div
+                    className="flex flex-wrap gap-2"
+                    role="tablist"
+                    aria-label="Filter by role family"
+                  >
+                    {ROLE_FAMILY_OPTIONS.map((family) => (
+                      <EditorialPillButton
+                        key={family}
+                        active={uiState.roleFamily === family}
+                        onClick={() =>
+                          updateRouteState({ roleFamily: family as MBARoleFamilyFilter })
+                        }
+                        role="tab"
+                        ariaSelected={uiState.roleFamily === family}
+                        size="sm"
+                      >
+                        {ROLE_FAMILY_LABELS[family as MBARoleFamilyFilter]}
+                      </EditorialPillButton>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <p
+                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                    style={{
+                      color: "var(--home-ink-muted)",
+                      fontFamily: "var(--font-home-sans)",
+                    }}
+                  >
+                    Company category
+                  </p>
+                  <div
+                    className="flex flex-wrap gap-2"
+                    role="tablist"
+                    aria-label="Filter by company category"
+                  >
+                    {CATEGORY_OPTIONS.map((category) => (
+                      <EditorialPillButton
+                        key={category}
+                        active={uiState.category === category}
+                        onClick={() =>
+                          updateRouteState({ category: category as MBACategoryFilter })
+                        }
+                        role="tab"
+                        ariaSelected={uiState.category === category}
+                        size="sm"
+                      >
+                        {CATEGORY_LABELS[category as MBACategoryFilter]}
+                      </EditorialPillButton>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {activeFilters && (
+                <div className="flex flex-wrap items-center gap-2">
+                  {uiState.q.trim() && (
+                    <span
+                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                      style={{
+                        background: "var(--home-ink)",
+                        color: "var(--home-paper)",
+                        fontFamily: "var(--font-home-sans)",
+                      }}
+                    >
+                      Search: {uiState.q.trim()}
+                    </span>
+                  )}
+                  {uiState.roleType !== "all" && (
+                    <span
+                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                      style={{
+                        background: ROLE_TYPE_STYLES[uiState.roleType].background,
+                        color: ROLE_TYPE_STYLES[uiState.roleType].accent,
+                        fontFamily: "var(--font-home-sans)",
+                      }}
+                    >
+                      {ROLE_TYPE_LABELS[uiState.roleType]}
+                    </span>
+                  )}
+                  {uiState.roleFamily !== "all" && (
+                    <span
+                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                      style={{
+                        background: "color-mix(in srgb, var(--home-haze) 16%, var(--home-paper))",
+                        color: "var(--home-haze)",
+                        fontFamily: "var(--font-home-sans)",
+                      }}
+                    >
+                      {ROLE_FAMILY_LABELS[uiState.roleFamily]}
+                    </span>
+                  )}
+                  {uiState.category !== "all" && (
+                    <span
+                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                      style={{
+                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                        color: "var(--home-ink)",
+                        fontFamily: "var(--font-home-sans)",
+                      }}
+                    >
+                      {CATEGORY_LABELS[uiState.category]}
+                    </span>
+                  )}
+                  {uiState.sort !== DEFAULT_MBA_JOBS_STATE.sort && (
+                    <span
+                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                      style={{
+                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                        color: "var(--home-ink)",
+                        fontFamily: "var(--font-home-sans)",
+                      }}
+                    >
+                      {SORT_LABELS[uiState.sort]}
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
           </motion.div>
 
           {/* ── Company filter strip ──────────────────────────────────────── */}
@@ -960,7 +1390,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
           ) : displayJobs.length === 0 ? (
             <StatusPanel
               title="No roles found right now."
-              message="Either no companies are being tracked or no MBA-relevant postings matched the current filters. Try selecting more companies or changing the category filter."
+              message="No tracked postings matched the current search or role filters. Try broadening the role family, switching role type, or clearing the search."
               icon={
                 <BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />
               }
@@ -978,6 +1408,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   job={job}
                   isNew={!seenIds.has(job.id)}
                   onMarkSeen={() => markJobSeen(job.id)}
+                  currentState={uiState}
                 />
               ))}
             </motion.div>
@@ -994,13 +1425,14 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   Manual checks
                 </p>
                 <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                  These companies do not expose a stable public feed I can poll here yet. Use the
-                  direct career page or LinkedIn search buttons below.
+                  These companies do not expose a stable public feed I can poll here yet. The
+                  LinkedIn buttons keep your current role intent so you can still check them
+                  quickly.
                 </p>
               </div>
               <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                 {manualCompanies.map((c) => (
-                  <ManualCompanyCard key={c.id} company={c} />
+                  <ManualCompanyCard key={c.id} company={c} currentState={uiState} />
                 ))}
               </div>
             </div>

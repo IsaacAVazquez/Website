@@ -4,7 +4,8 @@ import type {
   MBAJob,
   MBAJobsApiResponse,
 } from "@/types/mba-jobs";
-import { MBA_COMPANIES, MBA_COMPANY_MAP, MBA_KEYWORDS } from "@/constants/mba-companies";
+import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
+import { matchMBAJobRole } from "@/lib/mba-job-matching";
 
 const TIMEOUT_MS = 8_000;
 type PollableMBACompany = MBACompany & { atsType: "greenhouse" | "lever" | "ashby" };
@@ -12,11 +13,6 @@ type PollableMBACompany = MBACompany & { atsType: "greenhouse" | "lever" | "ashb
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-function matchesMBAKeyword(text: string): boolean {
-  const lower = text.toLowerCase();
-  return MBA_KEYWORDS.some((kw) => lower.includes(kw));
-}
 
 function stripHtml(html: string): string {
   return html
@@ -71,22 +67,27 @@ async function fetchGreenhouse(companyId: string, slug: string): Promise<MBAJob[
     const company = MBA_COMPANY_MAP.get(companyId);
     if (!company) return [];
     return data.jobs
-      .filter(
-        (j) =>
-          matchesMBAKeyword(j.title) ||
-          matchesMBAKeyword(stripHtml(j.content ?? ""))
-      )
-      .map((j) =>
-        buildMBAJob(company, {
-          id: `${companyId}-${j.id}`,
-          title: j.title,
-          location: j.location?.name ?? "Remote",
-          department: j.departments?.[0]?.name ?? "General",
-          applyUrl: j.absolute_url,
-          postedAt: j.updated_at,
-          snippet: j.content ? stripHtml(j.content).slice(0, 220) || null : null,
-        })
-      );
+      .flatMap((job) => {
+        const snippet = job.content ? stripHtml(job.content).slice(0, 220) || null : null;
+        const match = matchMBAJobRole({
+          title: job.title,
+          department: job.departments?.[0]?.name,
+          location: job.location?.name,
+          snippet,
+        });
+        if (!match) return [];
+        return buildMBAJob(company, {
+          id: `${companyId}-${job.id}`,
+          title: job.title,
+          location: job.location?.name ?? "Remote",
+          department: job.departments?.[0]?.name ?? "General",
+          applyUrl: job.absolute_url,
+          postedAt: job.updated_at,
+          snippet,
+          roleType: match.roleType,
+          roleFamilies: match.roleFamilies,
+        });
+      });
   } finally {
     clearTimeout(timer);
   }
@@ -122,24 +123,27 @@ async function fetchLever(companyId: string, slug: string): Promise<MBAJob[]> {
     const company = MBA_COMPANY_MAP.get(companyId);
     if (!company) return [];
     return data
-      .filter(
-        (j) =>
-          matchesMBAKeyword(j.text) ||
-          matchesMBAKeyword(j.categories?.commitment ?? "") ||
-          matchesMBAKeyword(j.categories?.team ?? "") ||
-          matchesMBAKeyword(j.categories?.level ?? "")
-      )
-      .map((j) =>
-        buildMBAJob(company, {
-          id: `${companyId}-${j.id}`,
-          title: j.text,
-          location: j.categories?.location ?? "Remote",
-          department: j.categories?.team ?? "General",
-          applyUrl: j.hostedUrl,
-          postedAt: new Date(j.createdAt).toISOString(),
+      .flatMap((job) => {
+        const match = matchMBAJobRole({
+          title: job.text,
+          department: job.categories?.team,
+          location: job.categories?.location,
+          snippet: job.categories?.level ?? null,
+          employmentType: job.categories?.commitment ?? null,
+        });
+        if (!match) return [];
+        return buildMBAJob(company, {
+          id: `${companyId}-${job.id}`,
+          title: job.text,
+          location: job.categories?.location ?? "Remote",
+          department: job.categories?.team ?? "General",
+          applyUrl: job.hostedUrl,
+          postedAt: new Date(job.createdAt).toISOString(),
           snippet: null,
-        })
-      );
+          roleType: match.roleType,
+          roleFamilies: match.roleFamilies,
+        });
+      });
   } finally {
     clearTimeout(timer);
   }
@@ -237,22 +241,15 @@ async function fetchAshby(companyId: string, slug: string): Promise<MBAJob[]> {
 
     return postings
       .filter((job) => job.isListed !== false)
-      .filter((job) => {
-        const searchableText = [
-          job.title,
-          job.departmentName,
-          job.teamName,
-          job.locationName,
-          job.workplaceType,
-          job.employmentType,
-        ]
-          .filter(Boolean)
-          .join(" ");
-
-        return matchesMBAKeyword(searchableText);
-      })
-      .map((job) =>
-        buildMBAJob(company, {
+      .flatMap((job) => {
+        const match = matchMBAJobRole({
+          title: job.title,
+          department: [job.teamName, job.departmentName].filter(Boolean).join(" "),
+          location: job.locationName ?? job.workplaceType,
+          employmentType: job.employmentType,
+        });
+        if (!match) return [];
+        return buildMBAJob(company, {
           id: `${companyId}-${job.id}`,
           title: job.title.trim(),
           location: job.locationName ?? job.workplaceType ?? "Remote",
@@ -260,8 +257,10 @@ async function fetchAshby(companyId: string, slug: string): Promise<MBAJob[]> {
           applyUrl: `https://jobs.ashbyhq.com/${slug}/${job.id}`,
           postedAt: job.updatedAt ?? job.publishedDate ?? new Date().toISOString(),
           snippet: null,
-        })
-      );
+          roleType: match.roleType,
+          roleFamilies: match.roleFamilies,
+        });
+      });
   } finally {
     clearTimeout(timer);
   }

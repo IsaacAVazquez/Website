@@ -9,26 +9,7 @@ const mockFetch = jest.fn<ReturnType<typeof fetch>, Parameters<typeof fetch>>();
 
 function buildGreenhouseResponse(overrides: Partial<Record<string, unknown>> = {}) {
   return {
-    jobs: [
-      {
-        id: 1001,
-        title: "MBA Product Intern",
-        location: { name: "San Francisco, CA" },
-        absolute_url: "https://example.com/jobs/1001",
-        updated_at: "2026-04-14T16:00:00.000Z",
-        departments: [{ name: "Product" }],
-        content: "<p>Summer associate role for MBA students.</p>",
-      },
-      {
-        id: 1002,
-        title: "Senior Software Engineer",
-        location: { name: "New York, NY" },
-        absolute_url: "https://example.com/jobs/1002",
-        updated_at: "2026-04-14T12:00:00.000Z",
-        departments: [{ name: "Engineering" }],
-        content: "<p>Backend role.</p>",
-      },
-    ],
+    jobs: [],
     ...overrides,
   };
 }
@@ -41,9 +22,7 @@ function buildAshbyPage(slug: string, jobs: object[]) {
 fetch("https://cdn.ashbyprd.com/frontend_non_user/example/.vite/manifest.json");</script></body></html>`;
 }
 
-function installFetchMock(
-  responses: Record<string, Response | Error>,
-) {
+function installFetchMock(responses: Record<string, Response | Error>) {
   mockFetch.mockImplementation(async (input) => {
     const url =
       typeof input === "string"
@@ -83,10 +62,60 @@ describe("GET /api/mba-jobs", () => {
     });
   });
 
-  it("returns MBA-filtered Greenhouse jobs from the current boards API", async () => {
+  it("classifies internships, full-time roles, unclear MBA programs, and filters non-target roles", async () => {
     installFetchMock({
       "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
-        JSON.stringify(buildGreenhouseResponse()),
+        JSON.stringify(
+          buildGreenhouseResponse({
+            jobs: [
+              {
+                id: 1001,
+                title: "PM Intern",
+                location: { name: "San Francisco, CA" },
+                absolute_url: "https://example.com/jobs/1001",
+                updated_at: "2026-04-14T16:00:00.000Z",
+                departments: [{ name: "Product" }],
+                content: "<p>MBA summer internship for product leaders.</p>",
+              },
+              {
+                id: 1002,
+                title: "Strategic Finance Associate",
+                location: { name: "New York, NY" },
+                absolute_url: "https://example.com/jobs/1002",
+                updated_at: "2026-04-14T15:00:00.000Z",
+                departments: [{ name: "Strategy & Finance" }],
+                content: "<p>Corporate finance and FP&A role.</p>",
+              },
+              {
+                id: 1003,
+                title: "MBA Leadership Program",
+                location: { name: "Seattle, WA" },
+                absolute_url: "https://example.com/jobs/1003",
+                updated_at: "2026-04-14T14:00:00.000Z",
+                departments: [{ name: "Business" }],
+                content: "<p>General management rotational program for MBA candidates.</p>",
+              },
+              {
+                id: 1004,
+                title: "Product Designer",
+                location: { name: "Remote" },
+                absolute_url: "https://example.com/jobs/1004",
+                updated_at: "2026-04-14T13:00:00.000Z",
+                departments: [{ name: "Design" }],
+                content: "<p>Design systems role.</p>",
+              },
+              {
+                id: 1005,
+                title: "Legal Counsel",
+                location: { name: "Remote" },
+                absolute_url: "https://example.com/jobs/1005",
+                updated_at: "2026-04-14T12:00:00.000Z",
+                departments: [{ name: "Legal" }],
+                content: "<p>Commercial legal support.</p>",
+              },
+            ],
+          })
+        ),
         {
           status: 200,
           headers: { "Content-Type": "application/json" },
@@ -101,32 +130,56 @@ describe("GET /api/mba-jobs", () => {
 
     expect(response.status).toBe(200);
     expect(body.errors).toEqual([]);
-    expect(body.jobs).toHaveLength(1);
-    expect(body.jobs[0]).toEqual(
-      expect.objectContaining({
-        companyId: "stripe",
-        companyName: "Stripe",
-        title: "MBA Product Intern",
-        department: "Product",
-        applyUrl: "https://example.com/jobs/1001",
-        atsType: "greenhouse",
-      })
+    expect(body.jobs).toHaveLength(3);
+    expect(body.jobs).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          companyId: "stripe",
+          title: "PM Intern",
+          roleType: "internship",
+          roleFamilies: ["product"],
+        }),
+        expect.objectContaining({
+          title: "Strategic Finance Associate",
+          roleType: "full-time",
+          roleFamilies: ["strategy", "finance"],
+        }),
+        expect.objectContaining({
+          title: "MBA Leadership Program",
+          roleType: "unclear",
+          roleFamilies: [],
+        }),
+      ])
+    );
+    expect(body.jobs.map((job: { title: string }) => job.title)).not.toEqual(
+      expect.arrayContaining(["Product Designer", "Legal Counsel"])
     );
   });
 
-  it("parses Ashby public job board payloads", async () => {
+  it("parses Ashby public job board payloads and matches PMM and chief-of-staff variants", async () => {
     installFetchMock({
       "https://jobs.ashbyhq.com/notion": new Response(
         buildAshbyPage("notion", [
           {
             id: "ashby-1",
-            title: "MBA Strategy Intern",
+            title: "PMM Manager",
             updatedAt: "2026-04-12T11:30:00.000Z",
-            departmentName: "Business",
-            teamName: "Corporate Strategy",
+            departmentName: "Marketing",
+            teamName: "Product Marketing",
             locationName: "San Francisco, California",
             workplaceType: "Hybrid",
-            employmentType: "Internship",
+            employmentType: "Full-Time",
+            isListed: true,
+          },
+          {
+            id: "ashby-2",
+            title: "Chief of Staff to the COO",
+            updatedAt: "2026-04-12T10:00:00.000Z",
+            departmentName: "Operations",
+            teamName: "Office of the CEO",
+            locationName: "New York, New York",
+            workplaceType: "Hybrid",
+            employmentType: "Full-Time",
             isListed: true,
           },
         ]),
@@ -144,34 +197,42 @@ describe("GET /api/mba-jobs", () => {
 
     expect(response.status).toBe(200);
     expect(body.errors).toEqual([]);
-    expect(body.jobs).toEqual([
-      expect.objectContaining({
-        companyId: "notion",
-        companyName: "Notion",
-        title: "MBA Strategy Intern",
-        department: "Corporate Strategy",
-        applyUrl: "https://jobs.ashbyhq.com/notion/ashby-1",
-        atsType: "ashby",
-      }),
-    ]);
+    expect(body.jobs).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          title: "PMM Manager",
+          roleType: "full-time",
+          roleFamilies: ["product-marketing"],
+          atsType: "ashby",
+        }),
+        expect.objectContaining({
+          title: "Chief of Staff to the COO",
+          roleType: "full-time",
+          roleFamilies: ["operations", "chief-of-staff"],
+          atsType: "ashby",
+        }),
+      ])
+    );
   });
 
   it("uses the configured provider adapters and skips manual companies", async () => {
     installFetchMock({
       "https://boards-api.greenhouse.io/v1/boards/reddit/jobs?content=true": new Response(
-        JSON.stringify(buildGreenhouseResponse({
-          jobs: [
-            {
-              id: 3001,
-              title: "MBA Product Strategy Intern",
-              location: { name: "Remote" },
-              absolute_url: "https://example.com/reddit/3001",
-              updated_at: "2026-04-14T17:00:00.000Z",
-              departments: [{ name: "Product Strategy" }],
-              content: "<p>MBA internship</p>",
-            },
-          ],
-        })),
+        JSON.stringify(
+          buildGreenhouseResponse({
+            jobs: [
+              {
+                id: 3001,
+                title: "BizOps Intern",
+                location: { name: "Remote" },
+                absolute_url: "https://example.com/reddit/3001",
+                updated_at: "2026-04-14T17:00:00.000Z",
+                departments: [{ name: "Business Operations" }],
+                content: "<p>MBA internship</p>",
+              },
+            ],
+          })
+        ),
         {
           status: 200,
           headers: { "Content-Type": "application/json" },
@@ -181,12 +242,12 @@ describe("GET /api/mba-jobs", () => {
         buildAshbyPage("openai", [
           {
             id: "openai-1",
-            title: "MBA Operations Intern",
+            title: "Corporate Development Associate",
             updatedAt: "2026-04-14T15:30:00.000Z",
-            departmentName: "Operations",
-            teamName: "Business Operations",
+            departmentName: "Business",
+            teamName: "Corporate Development",
             locationName: "San Francisco",
-            employmentType: "Internship",
+            employmentType: "Full-Time",
             isListed: true,
           },
         ]),
@@ -214,8 +275,16 @@ describe("GET /api/mba-jobs", () => {
     );
     expect(body.jobs).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ companyId: "reddit", atsType: "greenhouse" }),
-        expect.objectContaining({ companyId: "openai", atsType: "ashby" }),
+        expect.objectContaining({
+          companyId: "reddit",
+          atsType: "greenhouse",
+          roleFamilies: ["operations"],
+        }),
+        expect.objectContaining({
+          companyId: "openai",
+          atsType: "ashby",
+          roleFamilies: ["business-development"],
+        }),
       ])
     );
   });
@@ -223,7 +292,21 @@ describe("GET /api/mba-jobs", () => {
   it("returns partial success with company names when one upstream fails", async () => {
     installFetchMock({
       "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
-        JSON.stringify(buildGreenhouseResponse()),
+        JSON.stringify(
+          buildGreenhouseResponse({
+            jobs: [
+              {
+                id: 1001,
+                title: "MBA Product Intern",
+                location: { name: "San Francisco, CA" },
+                absolute_url: "https://example.com/jobs/1001",
+                updated_at: "2026-04-14T16:00:00.000Z",
+                departments: [{ name: "Product" }],
+                content: "<p>Summer associate role for MBA students.</p>",
+              },
+            ],
+          })
+        ),
         {
           status: 200,
           headers: { "Content-Type": "application/json" },

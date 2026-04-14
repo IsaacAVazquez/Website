@@ -340,16 +340,3 @@ export const MBA_COMPANIES: MBACompany[] = [
 export const MBA_COMPANY_MAP = new Map<string, MBACompany>(
   MBA_COMPANIES.map((c) => [c.id, c])
 );
-
-export const MBA_KEYWORDS = [
-  "mba",
-  "intern",
-  "internship",
-  "summer associate",
-  "associate product manager",
-  "apm",
-  "product management intern",
-  "strategy intern",
-  "operations intern",
-  "business development intern",
-] as const;
