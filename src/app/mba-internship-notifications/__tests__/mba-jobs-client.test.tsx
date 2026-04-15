@@ -211,7 +211,9 @@ describe("MBAJobsClient", () => {
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
 
     expect(screen.getByLabelText("Search roles")).toHaveValue("product finance");
-    expect(screen.getAllByRole("heading", { level: 2 }).map((node) => node.textContent)).toEqual([
+    const liveJobsGrid = screen.getByTestId("live-jobs-grid");
+
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 }).map((node) => node.textContent)).toEqual([
       "Product Finance Manager",
       "Strategic Finance Associate",
       "Product Marketing Manager",

@@ -9,6 +9,7 @@ describe("caseStudies helpers", () => {
       "interchange-iq",
       "news-pulse-dashboard",
       "budget-planner",
+      "mba-role-tracker",
       "spacex-mission-control",
       "premier-league-pulse",
       "fantasy-football-analytics",
@@ -23,7 +24,7 @@ describe("caseStudies helpers", () => {
     expect(featured.map((project) => project.slug)).toEqual([
       "investment-analytics-platform",
       "news-pulse-dashboard",
-      "spacex-mission-control",
+      "mba-role-tracker",
     ]);
   });
 });

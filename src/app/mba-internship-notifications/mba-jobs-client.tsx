@@ -24,6 +24,7 @@ import {
 import {
   EditorialPillButton,
   StatusPanel,
+  UtilityStrip,
   getPillStyle,
 } from "@/components/editorial";
 import {
@@ -292,6 +293,34 @@ function hasActiveFilters(state: MBAJobsSearchState): boolean {
 // Sub-components
 // ---------------------------------------------------------------------------
 
+function SectionLead({
+  kicker,
+  title,
+  description,
+  id,
+}: {
+  kicker: string;
+  title: string;
+  description: string;
+  id?: string;
+}) {
+  return (
+    <div className="home-section-intro gap-3">
+      <div className="space-y-2">
+        <p className="home-kicker mb-0">{kicker}</p>
+        <h2
+          id={id}
+          className="home-project-title mb-0 max-w-[18ch]"
+          style={{ color: "var(--home-ink)" }}
+        >
+          {title}
+        </h2>
+      </div>
+      <p className="home-note-copy mb-0 max-w-[40rem]">{description}</p>
+    </div>
+  );
+}
+
 function CompanyAvatar({ company }: { company: MBACompany | undefined }) {
   const color = company?.color ?? "var(--home-haze)";
   const initials = company?.logoInitials ?? "??";
@@ -389,7 +418,7 @@ function CardActionLink({
       rel="noopener noreferrer"
       className={`home-button ${
         variant === "primary" ? "home-button-primary" : "home-button-secondary"
-      } px-4 py-3 text-[0.8rem]`}
+      } px-4 py-3 text-sm`}
       onClick={onClick}
       aria-label={ariaLabel}
     >
@@ -418,93 +447,76 @@ function JobCard({
 
   return (
     <article
-      className="home-card flex flex-col p-5 sm:p-6"
+      className="home-card flex h-full flex-col p-6 sm:p-7"
       onMouseEnter={onMarkSeen}
     >
-      {/* Header */}
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div className="min-w-0 flex items-center gap-3">
-          <CompanyAvatar company={company} />
-          <div className="min-w-0">
-            <p
-              className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-              style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
-            >
-              {job.companyName}
-            </p>
-            <p
-              className="text-[0.7rem]"
-              style={{ color: "var(--home-ink-muted)" }}
-            >
-              {job.department}
-            </p>
+      <div className="flex h-full flex-col gap-5">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="min-w-0 flex items-center gap-3">
+            <CompanyAvatar company={company} />
+            <div className="min-w-0">
+              <p className="home-meta mb-0">{job.companyName}</p>
+              <p className="mb-0 mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                {job.department}
+              </p>
+            </div>
+          </div>
+          <div
+            data-testid={`job-card-${job.id}-chips`}
+            className="flex max-w-full flex-wrap items-center gap-2 sm:justify-end"
+          >
+            {isNew && <NewBadge />}
+            <RoleTypeChip roleType={job.roleType} />
+            <CategoryChip category={job.category} />
           </div>
         </div>
+
+        <div className="space-y-3">
+          <h3
+            className="mb-0 text-[1.15rem] font-semibold leading-[1.08] tracking-[-0.04em] sm:text-[1.3rem]"
+            style={{
+              fontFamily: "var(--font-home-sans)",
+              color: "var(--home-ink)",
+            }}
+          >
+            {job.title}
+          </h3>
+
+          {job.snippet && (
+            <p className="home-note-copy mb-0 line-clamp-3 break-words">{job.snippet}</p>
+          )}
+        </div>
+
+        {job.roleFamilies.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {job.roleFamilies.map((family) => (
+              <RoleFamilyChip key={`${job.id}-${family}`} family={family} />
+            ))}
+          </div>
+        )}
+
         <div
-          data-testid={`job-card-${job.id}-chips`}
-          className="flex max-w-full flex-wrap items-center gap-2 sm:justify-end"
+          className="mt-auto border-t border-[var(--home-rule)] pt-5"
         >
-          {isNew && <NewBadge />}
-          <RoleTypeChip roleType={job.roleType} />
-          <CategoryChip category={job.category} />
-        </div>
-      </div>
-
-      {/* Body */}
-      <h2
-        className="mt-4 text-base font-semibold leading-snug"
-        style={{
-          fontFamily: "var(--font-home-sans)",
-          letterSpacing: "-0.025em",
-          color: "var(--home-ink)",
-        }}
-      >
-        {job.title}
-      </h2>
-
-      {job.snippet && (
-        <p
-          className="mt-2 line-clamp-2 break-words text-sm leading-6"
-          style={{ color: "var(--home-ink-muted)" }}
-        >
-          {job.snippet}
-        </p>
-      )}
-
-      {job.roleFamilies.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-2">
-          {job.roleFamilies.map((family) => (
-            <RoleFamilyChip key={`${job.id}-${family}`} family={family} />
-          ))}
-        </div>
-      )}
-
-      {/* Footer */}
-      <div
-        className="mt-auto flex flex-col gap-3 pt-4"
-        style={{ borderTop: "1px solid var(--home-rule)" }}
-      >
-        <span
-          className="text-[0.7rem]"
-          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-        >
-          {relativePostedAt ? `${job.location} · ${relativePostedAt}` : job.location}
-        </span>
-        <div className="flex flex-wrap items-center gap-3">
-          <CardActionLink
-            href={linkedinUrl}
-            label="LinkedIn search"
-            ariaLabel={`LinkedIn search for ${job.title} at ${job.companyName}`}
-            onClick={onMarkSeen}
-          />
-          <CardActionLink
-            href={job.applyUrl}
-            label="Apply now"
-            ariaLabel={`Apply for ${job.title} at ${job.companyName}`}
-            variant="primary"
-            trailingIcon
-            onClick={onMarkSeen}
-          />
+          <p className="home-meta mb-0">
+            {relativePostedAt ? `${job.location} · ${relativePostedAt}` : job.location}
+          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <CardActionLink
+              href={linkedinUrl}
+              label="LinkedIn search"
+              ariaLabel={`LinkedIn search for ${job.title} at ${job.companyName}`}
+              onClick={onMarkSeen}
+            />
+            <CardActionLink
+              href={job.applyUrl}
+              label="Apply now"
+              ariaLabel={`Apply for ${job.title} at ${job.companyName}`}
+              variant="primary"
+              trailingIcon
+              onClick={onMarkSeen}
+            />
+          </div>
         </div>
       </div>
     </article>
@@ -524,44 +536,45 @@ function ManualCompanyCard({
 
   return (
     <article
-      className="home-card flex flex-col p-5 sm:p-6"
-      style={{ opacity: 0.88 }}
+      className="home-card flex h-full flex-col p-6 sm:p-7"
     >
-      <div className="flex items-center gap-3">
-        <CompanyAvatar company={company} />
-        <div>
-          <p
-            className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-          >
-            {company.name}
-          </p>
+      <div className="flex h-full flex-col gap-5">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <CompanyAvatar company={company} />
+            <div className="min-w-0">
+              <p className="home-meta mb-0">{company.name}</p>
+              <p className="mb-0 mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                Manual fallback
+              </p>
+            </div>
+          </div>
           <CategoryChip category={company.category} />
         </div>
-      </div>
-      <p
-        className="mt-4 text-sm leading-6"
-        style={{ color: "var(--home-ink-muted)" }}
-      >
-        I do not have a stable public job feed for this company yet, so I keep the career page and
-        a role-aware LinkedIn search here instead.
-      </p>
-      <div
-        className="mt-auto flex flex-wrap items-center gap-3 pt-4"
-        style={{ borderTop: "1px solid var(--home-rule)" }}
-      >
-        <CardActionLink
-          href={linkedinUrl}
-          label="LinkedIn search"
-          ariaLabel={`LinkedIn search for ${company.name}`}
-        />
-        <CardActionLink
-          href={company.jobsUrl ?? company.careersUrl}
-          label="Career page"
-          ariaLabel={`Career page for ${company.name}`}
-          variant="primary"
-          trailingIcon
-        />
+
+        <p className="home-note-copy mb-0">
+          I do not have a stable public feed for this company yet, so I keep the career page and
+          a role-aware LinkedIn search here instead.
+        </p>
+
+        <div
+          className="mt-auto border-t border-[var(--home-rule)] pt-5"
+        >
+          <div className="flex flex-wrap items-center gap-3">
+            <CardActionLink
+              href={linkedinUrl}
+              label="LinkedIn search"
+              ariaLabel={`LinkedIn search for ${company.name}`}
+            />
+            <CardActionLink
+              href={company.jobsUrl ?? company.careersUrl}
+              label="Career page"
+              ariaLabel={`Career page for ${company.name}`}
+              variant="primary"
+              trailingIcon
+            />
+          </div>
+        </div>
       </div>
     </article>
   );
@@ -569,11 +582,11 @@ function ManualCompanyCard({
 
 function JobGridSkeleton() {
   return (
-    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       {[0, 1, 2, 4, 5, 6].map((i) => (
         <div
           key={i}
-          className="home-card flex flex-col gap-4 p-5 sm:p-6"
+          className="home-card flex flex-col gap-4 p-6 sm:p-7"
           aria-hidden="true"
         >
           <div className="flex items-center gap-3">
@@ -669,7 +682,7 @@ function NotificationBell({
   if (permission === "granted") {
     return (
       <div
-        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
+        className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
         style={{
           color: "var(--home-haze)",
           borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
@@ -684,7 +697,7 @@ function NotificationBell({
   if (permission === "denied") {
     return (
       <div
-        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm"
+        className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-2 text-sm"
         style={{ color: "var(--home-ink-muted)", borderColor: "var(--home-rule)" }}
       >
         <BellOff className="h-4 w-4" aria-hidden="true" />
@@ -696,8 +709,7 @@ function NotificationBell({
     <button
       type="button"
       onClick={onRequest}
-      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color] duration-200 ease"
-      style={getPillStyle(false)}
+      className="home-button home-button-secondary text-sm"
     >
       <Bell className="h-4 w-4" aria-hidden="true" />
       Enable notifications
@@ -747,8 +759,7 @@ function EmailDigestButton({
       type="button"
       onClick={onSend}
       disabled={disabled || sending}
-      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color] duration-200 ease disabled:opacity-50"
-      style={getPillStyle(false)}
+      className="home-button home-button-secondary text-sm disabled:opacity-50"
     >
       <Mail className="h-4 w-4" aria-hidden="true" />
       {sending ? "Sending…" : "Email digest"}
@@ -782,7 +793,7 @@ function EmailDigestDialog({
       aria-label="Send email digest"
     >
       <div
-        className="home-card w-full max-w-sm p-6"
+        className="home-card w-full max-w-sm p-6 sm:p-7"
         style={{ background: "var(--home-paper)" }}
       >
         <h2
@@ -813,8 +824,7 @@ function EmailDigestDialog({
             type="button"
             onClick={() => onSubmit(email)}
             disabled={sending || !email.includes("@")}
-            className="flex-1 rounded-xl py-3 text-sm font-semibold disabled:opacity-50"
-            style={{ background: "var(--home-ink)", color: "var(--home-paper)" }}
+            className="home-button home-button-primary flex-1 disabled:opacity-50"
           >
             {sending ? "Sending…" : "Send"}
           </button>
@@ -822,8 +832,7 @@ function EmailDigestDialog({
             type="button"
             onClick={onClose}
             disabled={sending}
-            className="rounded-xl border px-5 py-3 text-sm"
-            style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
+            className="home-button home-button-secondary"
           >
             Cancel
           </button>
@@ -851,6 +860,7 @@ function CompanyFilterStrip({
   style?: CSSProperties;
 }) {
   const nonManual = MBA_COMPANIES.filter((c) => c.atsType !== "manual");
+  const watchedLiveCount = nonManual.filter((company) => watchedIds.has(company.id)).length;
   const groups = TRACKED_COMPANY_CATEGORIES.map((category) => ({
     category,
     label: CATEGORY_LABELS[category],
@@ -865,27 +875,12 @@ function CompanyFilterStrip({
   const allOff = nonManual.every((c) => !watchedIds.has(c.id));
 
   return (
-    <section
-      className="rounded-[1.25rem] border p-4 sm:p-5"
-      style={{ borderColor: "var(--home-rule)", ...style }}
-      aria-labelledby="tracked-companies-heading"
-    >
-      <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-        <div className="space-y-1">
-          <p
-            id="tracked-companies-heading"
-            className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-            style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
-          >
-            Tracked companies
-          </p>
-          <p
-            className="max-w-2xl text-sm leading-6"
-            style={{ color: "var(--home-ink-muted)" }}
-          >
-            Toggle {nonManual.length} live feeds here. Manual-only targets stay separate in
-            Manual checks below.
-          </p>
+    <div className="section-panel" style={style}>
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-wrap gap-2">
+          <span className="resume-chip">{nonManual.length} live feeds</span>
+          <span className="resume-chip">{watchedLiveCount} watched now</span>
+          <span className="resume-chip">{groups.length} company groups</span>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <button
@@ -911,7 +906,7 @@ function CompanyFilterStrip({
           </button>
         </div>
       </div>
-      <div className="grid gap-3 xl:grid-cols-3">
+      <div className="mt-6 grid gap-4 xl:grid-cols-3">
         {groups.map((group) => {
           const watchedCount = group.companies.filter((company) => watchedIds.has(company.id)).length;
           const isExpanded = expandedGroups[group.category];
@@ -920,7 +915,7 @@ function CompanyFilterStrip({
             <div
               key={group.category}
               data-testid={`tracked-companies-${group.category}`}
-              className="rounded-[1rem] border p-2.5 sm:p-3"
+              className="rounded-[1.2rem] border p-3 sm:p-4"
               style={{
                 borderColor: "var(--home-rule)",
                 background: "color-mix(in srgb, var(--home-paper-alt) 58%, white)",
@@ -940,14 +935,9 @@ function CompanyFilterStrip({
                 }
               >
                 <div className="min-w-0">
+                  <p className="home-meta mb-0">{group.label}</p>
                   <p
-                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-                    style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
-                  >
-                    {group.label}
-                  </p>
-                  <p
-                    className="mt-1 text-[0.74rem]"
+                    className="mt-1 text-[0.8rem]"
                     style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
                   >
                     {watchedCount} / {group.companies.length} watched
@@ -973,7 +963,7 @@ function CompanyFilterStrip({
                         key={company.id}
                         type="button"
                         onClick={() => onToggle(company.id)}
-                        className="inline-flex min-h-[44px] w-full items-center gap-2 rounded-[0.95rem] border px-3 py-2.5 text-left text-[0.76rem] font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
+                        className="inline-flex min-h-[44px] w-full items-center gap-2 rounded-[0.95rem] border px-3 py-3 text-left text-[0.8rem] font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
                         style={getTrackedCompanyButtonStyle(company, active)}
                         aria-pressed={active}
                       >
@@ -992,7 +982,7 @@ function CompanyFilterStrip({
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -1140,73 +1130,89 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
         sending={emailSending}
       />
 
-      <section
-        className="home-page min-h-screen"
-        aria-label="MBA role tracker"
-      >
-        <div className="home-shell home-section space-y-5">
-          {/* ── Header ──────────────────────────────────────────────────── */}
+      <section className="home-page min-h-screen" aria-label="MBA role tracker">
+        <div className="home-shell home-section space-y-8 sm:space-y-10">
           <motion.div
-            className="space-y-3 pt-2"
+            className="section-panel overflow-hidden"
             variants={variants}
             initial="hidden"
             animate="visible"
           >
-            <p
-              className="home-kicker"
-              style={{ color: "var(--home-acid)", fontFamily: "var(--font-home-sans)" }}
-            >
-              MBA Recruiting
-            </p>
-            <h1
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.4rem, 6vw, 4.4rem)",
-                fontWeight: 600,
-                lineHeight: 0.92,
-                letterSpacing: "-0.07em",
-                color: "var(--home-ink)",
-              }}
-            >
-              MBA Role Tracker
-            </h1>
-            <p className="home-body max-w-[44rem]">
-              I monitor {totalTracked} public job boards across {totalCompanies} target companies
-              for internships and full-time product, PMM, strategy, operations, growth, finance,
-              analytics, and adjacent business roles. When a company does not expose a stable
-              public feed, I keep the career page and LinkedIn search below so you can still move
-              quickly.
-            </p>
-
-            {/* Meta chips */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="resume-chip">
-                {isLoading ? "Loading…" : `${jobs.length} live roles`}
-              </span>
-              {!isLoading && <span className="resume-chip">{internshipCount} internships</span>}
-              {!isLoading && <span className="resume-chip">{fullTimeCount} full-time</span>}
-              <span className="resume-chip">{totalTracked} live feeds</span>
-              <span className="resume-chip">{totalCompanies} target companies</span>
-              <span className="resume-chip">{refreshLabel}</span>
-              {!isLoading && newJobCount > 0 && (
-                <span
-                  className="resume-chip"
-                  style={{ background: "var(--home-acid)", color: "var(--home-ink)" }}
+            <div className="grid gap-8 xl:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)]">
+              <div className="space-y-4">
+                <p
+                  className="home-kicker mb-0"
+                  style={{ color: "var(--home-acid)", fontFamily: "var(--font-home-sans)" }}
                 >
-                  {newJobCount} new since last visit
-                </span>
-              )}
-              <span className="resume-chip">Polls every 30 min</span>
+                  MBA Recruiting
+                </p>
+                <h1 className="home-section-title mb-0 max-w-[9ch]">MBA Role Tracker</h1>
+                <p className="home-body mb-0 max-w-[44rem]">
+                  I monitor {totalTracked} public job boards across {totalCompanies} target
+                  companies for internships and full-time product, PMM, strategy, operations,
+                  growth, finance, analytics, and adjacent business roles. When a company does not
+                  expose a stable public feed, I keep the career page and LinkedIn search below so
+                  you can still move quickly.
+                </p>
+              </div>
+              <div className="grid gap-3 self-start sm:grid-cols-2 xl:grid-cols-1">
+                <div
+                  className="rounded-[1.35rem] border p-4"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 62%, white)",
+                  }}
+                >
+                  <p className="home-meta mb-0">Coverage</p>
+                  <p className="home-note-copy mb-0 mt-3">
+                    {totalTracked} live public feeds plus manual fallbacks across {totalCompanies}{" "}
+                    companies.
+                  </p>
+                </div>
+                <div
+                  className="rounded-[1.35rem] border p-4"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 62%, white)",
+                  }}
+                >
+                  <p className="home-meta mb-0">Workflow</p>
+                  <p className="home-note-copy mb-0 mt-3">
+                    Search the board, narrow by role and company type, then use alerts and digests
+                    when you want a faster recruiting scan.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Action row */}
-            <div className="flex flex-wrap items-center gap-2 pt-1">
+            <div className="mt-6 border-t border-[var(--home-rule)] pt-6">
+              <div className="flex flex-wrap gap-2">
+                <span className="resume-chip">
+                  {isLoading ? "Loading…" : `${jobs.length} live roles`}
+                </span>
+                {!isLoading && <span className="resume-chip">{internshipCount} internships</span>}
+                {!isLoading && <span className="resume-chip">{fullTimeCount} full-time</span>}
+                <span className="resume-chip">{totalTracked} live feeds</span>
+                <span className="resume-chip">{totalCompanies} target companies</span>
+                <span className="resume-chip">{refreshLabel}</span>
+                {!isLoading && newJobCount > 0 && (
+                  <span
+                    className="resume-chip"
+                    style={{ background: "var(--home-acid)", color: "var(--home-ink)" }}
+                  >
+                    {newJobCount} new since last visit
+                  </span>
+                )}
+                <span className="resume-chip">Polls every 30 min</span>
+              </div>
+            </div>
+
+            <div className="mt-5 flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={refresh}
                 disabled={isLoading}
-                className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color] duration-200 ease disabled:opacity-50"
-                style={getPillStyle(false)}
+                className="home-button home-button-secondary text-sm disabled:opacity-50"
               >
                 <RefreshCcw
                   className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
@@ -1232,8 +1238,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 <button
                   type="button"
                   onClick={markAllSeen}
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm transition-[background-color,border-color] duration-200 ease"
-                  style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
+                  className="home-button home-button-secondary text-sm"
                 >
                   Mark all seen
                 </button>
@@ -1241,7 +1246,6 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
             </div>
           </motion.div>
 
-          {/* ── Partial fetch errors ─────────────────────────────────────── */}
           {fetchErrors.length > 0 && !isLoading && (
             <div
               className="flex items-start gap-3 rounded-[1.5rem] px-5 py-4"
@@ -1257,308 +1261,296 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 style={{ color: "var(--color-warning)" }}
                 aria-hidden="true"
               />
-              <p className="text-sm" style={{ color: "var(--home-ink)" }}>
+              <p className="mb-0 text-sm" style={{ color: "var(--home-ink)" }}>
                 Some companies could not be reached:{" "}
-                {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown
-                are partial.
+                {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown are partial.
               </p>
             </div>
           )}
 
-          {/* ── Search + role controls ───────────────────────────────────── */}
-          <motion.div
-            className="home-card p-5 sm:p-6"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-          >
-            <div className="space-y-5">
-              <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
-                <div className="relative flex-1">
-                  <Search
-                    className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                    style={{ color: "var(--home-ink-muted)" }}
-                    aria-hidden="true"
-                  />
-                  <input
-                    type="text"
-                    value={uiState.q}
-                    onChange={(event) => updateRouteState({ q: event.target.value })}
-                    placeholder="Search PM, PMM, strategy, ops, growth, finance..."
-                    aria-label="Search roles"
-                    className="w-full min-h-[44px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease"
-                    style={{
-                      background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
-                      borderColor: "var(--home-rule)",
-                      color: "var(--home-ink)",
-                      fontFamily: "var(--font-home-sans)",
-                      paddingTop: "0.8rem",
-                      paddingBottom: "0.8rem",
-                    }}
-                  />
-                  {uiState.q && (
-                    <button
-                      type="button"
-                      onClick={() => updateRouteState({ q: "" })}
-                      className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full"
-                      aria-label="Clear search"
-                      style={{ color: "var(--home-ink-muted)" }}
-                    >
-                      <X className="h-4 w-4" aria-hidden="true" />
-                    </button>
-                  )}
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <SortDropdown
-                    value={uiState.sort}
-                    onValueChange={(sort) => updateRouteState({ sort })}
-                  />
-                  {activeFilters && (
-                    <button
-                      type="button"
-                      onClick={() => updateRouteState(DEFAULT_MBA_JOBS_STATE)}
-                      className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color] duration-200 ease"
-                      style={getPillStyle(false)}
-                    >
-                      Clear filters
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="space-y-2">
-                  <p
-                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-                    style={{
-                      color: "var(--home-ink-muted)",
-                      fontFamily: "var(--font-home-sans)",
-                    }}
-                  >
-                    Role type
-                  </p>
-                  <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter by role type">
-                    {ROLE_TYPE_OPTIONS.map((roleType) => (
-                      <EditorialPillButton
-                        key={roleType}
-                        active={uiState.roleType === roleType}
-                        onClick={() =>
-                          updateRouteState({ roleType: roleType as MBARoleTypeFilter })
-                        }
-                        role="tab"
-                        ariaSelected={uiState.roleType === roleType}
-                        size="sm"
-                      >
-                        {ROLE_TYPE_LABELS[roleType as MBARoleTypeFilter]}
-                      </EditorialPillButton>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <p
-                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-                    style={{
-                      color: "var(--home-ink-muted)",
-                      fontFamily: "var(--font-home-sans)",
-                    }}
-                  >
-                    Role family
-                  </p>
-                  <div
-                    className="flex flex-wrap gap-2"
-                    role="tablist"
-                    aria-label="Filter by role family"
-                  >
-                    {ROLE_FAMILY_OPTIONS.map((family) => (
-                      <EditorialPillButton
-                        key={family}
-                        active={uiState.roleFamily === family}
-                        onClick={() =>
-                          updateRouteState({ roleFamily: family as MBARoleFamilyFilter })
-                        }
-                        role="tab"
-                        ariaSelected={uiState.roleFamily === family}
-                        size="sm"
-                      >
-                        {ROLE_FAMILY_LABELS[family as MBARoleFamilyFilter]}
-                      </EditorialPillButton>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <p
-                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-                    style={{
-                      color: "var(--home-ink-muted)",
-                      fontFamily: "var(--font-home-sans)",
-                    }}
-                  >
-                    Company category
-                  </p>
-                  <div
-                    className="flex flex-wrap gap-2"
-                    role="tablist"
-                    aria-label="Filter by company category"
-                  >
-                    {CATEGORY_OPTIONS.map((category) => (
-                      <EditorialPillButton
-                        key={category}
-                        active={uiState.category === category}
-                        onClick={() =>
-                          updateRouteState({ category: category as MBACategoryFilter })
-                        }
-                        role="tab"
-                        ariaSelected={uiState.category === category}
-                        size="sm"
-                      >
-                        {CATEGORY_LABELS[category as MBACategoryFilter]}
-                      </EditorialPillButton>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {activeFilters && (
-                <div className="flex flex-wrap items-center gap-2">
-                  {uiState.q.trim() && (
-                    <span
-                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                      style={{
-                        background: "var(--home-ink)",
-                        color: "var(--home-paper)",
-                        fontFamily: CHIP_FONT_FAMILY,
-                      }}
-                    >
-                      Search: {uiState.q.trim()}
-                    </span>
-                  )}
-                  {uiState.roleType !== "all" && (
-                    <span
-                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                      style={getChipStyle(
-                        ROLE_TYPE_STYLES[uiState.roleType].accent,
-                        ROLE_TYPE_STYLES[uiState.roleType].backgroundWeight,
-                        ROLE_TYPE_STYLES[uiState.roleType].borderWeight
-                      )}
-                    >
-                      {ROLE_TYPE_LABELS[uiState.roleType]}
-                    </span>
-                  )}
-                  {uiState.roleFamily !== "all" && (
-                    <span
-                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                      style={getChipStyle(getRoleFamilyAccent(uiState.roleFamily), 18, 28)}
-                    >
-                      {ROLE_FAMILY_LABELS[uiState.roleFamily]}
-                    </span>
-                  )}
-                  {uiState.category !== "all" && (
-                    <span
-                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                      style={getChipStyle(CATEGORY_COLOR[uiState.category], 18, 28)}
-                    >
-                      {CATEGORY_LABELS[uiState.category]}
-                    </span>
-                  )}
-                  {uiState.sort !== DEFAULT_MBA_JOBS_STATE.sort && (
-                    <span
-                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                      style={{
-                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
-                        color: "var(--home-ink)",
-                        fontFamily: CHIP_FONT_FAMILY,
-                      }}
-                    >
-                      {SORT_LABELS[uiState.sort]}
-                    </span>
-                  )}
-                </div>
-              )}
-            </div>
-          </motion.div>
-
-          {/* ── Company filter strip ──────────────────────────────────────── */}
-          <CompanyFilterStrip
-            watchedIds={watchedCompanyIds}
-            onToggle={toggleCompany}
-            onSelectAll={() => setAllCompanies(true)}
-            onClearAll={() => setAllCompanies(false)}
-          />
-
-          {/* ── Live job grid ─────────────────────────────────────────────── */}
-          {isLoading ? (
-            <JobGridSkeleton />
-          ) : error ? (
-            <StatusPanel
-              title="Could not load jobs."
-              message={error}
-              tone="error"
-              icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
-              statusRole="alert"
+          <section className="space-y-4" aria-labelledby="mba-role-tracker-filters-heading">
+            <SectionLead
+              kicker="Filters"
+              title="Search and narrow the board."
+              description="Search roles, sort the feed, and filter by role type, role family, and company category without leaving the page."
+              id="mba-role-tracker-filters-heading"
             />
-          ) : displayJobs.length === 0 ? (
-            <StatusPanel
-              title="No roles found right now."
-              message="No tracked postings matched the current search or role filters. Try broadening the role family, switching role type, or clearing the search."
-              icon={
-                <BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />
-              }
-            />
-          ) : (
             <motion.div
-              className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+              className="section-panel"
               variants={variants}
               initial="hidden"
               animate="visible"
             >
-              {displayJobs.map((job) => (
-                <JobCard
-                  key={job.id}
-                  job={job}
-                  isNew={!seenIds.has(job.id)}
-                  onMarkSeen={() => markJobSeen(job.id)}
-                  currentState={uiState}
-                />
-              ))}
-            </motion.div>
-          )}
+              <div className="space-y-6">
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+                  <div className="relative flex-1">
+                    <Search
+                      className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
+                      style={{ color: "var(--home-ink-muted)" }}
+                      aria-hidden="true"
+                    />
+                    <input
+                      type="text"
+                      value={uiState.q}
+                      onChange={(event) => updateRouteState({ q: event.target.value })}
+                      placeholder="Search PM, PMM, strategy, ops, growth, finance..."
+                      aria-label="Search roles"
+                      className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease"
+                      style={{
+                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                        borderColor: "var(--home-rule)",
+                        color: "var(--home-ink)",
+                        fontFamily: "var(--font-home-sans)",
+                        paddingTop: "0.85rem",
+                        paddingBottom: "0.85rem",
+                      }}
+                    />
+                    {uiState.q && (
+                      <button
+                        type="button"
+                        onClick={() => updateRouteState({ q: "" })}
+                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full"
+                        aria-label="Clear search"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        <X className="h-4 w-4" aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
 
-          {/* ── Big Tech manual links ─────────────────────────────────────── */}
-          {manualCompanies.length > 0 && (
-            <div className="space-y-4">
-              <div>
-                <p
-                  className="home-kicker mb-1"
-                  style={{ fontFamily: "var(--font-home-sans)" }}
-                >
-                  Manual checks
-                </p>
-                <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                  These companies do not expose a stable public feed I can poll here yet. The
-                  LinkedIn buttons keep your current role intent so you can still check them
-                  quickly.
-                </p>
+                  <div className="flex flex-wrap gap-2">
+                    <SortDropdown
+                      value={uiState.sort}
+                      onValueChange={(sort) => updateRouteState({ sort })}
+                    />
+                    {activeFilters && (
+                      <button
+                        type="button"
+                        onClick={() => updateRouteState(DEFAULT_MBA_JOBS_STATE)}
+                        className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color] duration-200 ease"
+                        style={getPillStyle(false)}
+                      >
+                        Clear filters
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                <div className="space-y-4 border-t border-[var(--home-rule)] pt-6">
+                  <div className="space-y-2">
+                    <p className="home-meta mb-0">Role type</p>
+                    <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter by role type">
+                      {ROLE_TYPE_OPTIONS.map((roleType) => (
+                        <EditorialPillButton
+                          key={roleType}
+                          active={uiState.roleType === roleType}
+                          onClick={() =>
+                            updateRouteState({ roleType: roleType as MBARoleTypeFilter })
+                          }
+                          role="tab"
+                          ariaSelected={uiState.roleType === roleType}
+                          size="sm"
+                        >
+                          {ROLE_TYPE_LABELS[roleType as MBARoleTypeFilter]}
+                        </EditorialPillButton>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="home-meta mb-0">Role family</p>
+                    <div
+                      className="flex flex-wrap gap-2"
+                      role="tablist"
+                      aria-label="Filter by role family"
+                    >
+                      {ROLE_FAMILY_OPTIONS.map((family) => (
+                        <EditorialPillButton
+                          key={family}
+                          active={uiState.roleFamily === family}
+                          onClick={() =>
+                            updateRouteState({ roleFamily: family as MBARoleFamilyFilter })
+                          }
+                          role="tab"
+                          ariaSelected={uiState.roleFamily === family}
+                          size="sm"
+                        >
+                          {ROLE_FAMILY_LABELS[family as MBARoleFamilyFilter]}
+                        </EditorialPillButton>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="home-meta mb-0">Company category</p>
+                    <div
+                      className="flex flex-wrap gap-2"
+                      role="tablist"
+                      aria-label="Filter by company category"
+                    >
+                      {CATEGORY_OPTIONS.map((category) => (
+                        <EditorialPillButton
+                          key={category}
+                          active={uiState.category === category}
+                          onClick={() =>
+                            updateRouteState({ category: category as MBACategoryFilter })
+                          }
+                          role="tab"
+                          ariaSelected={uiState.category === category}
+                          size="sm"
+                        >
+                          {CATEGORY_LABELS[category as MBACategoryFilter]}
+                        </EditorialPillButton>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {activeFilters && (
+                  <div className="flex flex-wrap items-center gap-2 border-t border-[var(--home-rule)] pt-6">
+                    {uiState.q.trim() && (
+                      <span
+                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                        style={{
+                          background: "var(--home-ink)",
+                          color: "var(--home-paper)",
+                          fontFamily: CHIP_FONT_FAMILY,
+                        }}
+                      >
+                        Search: {uiState.q.trim()}
+                      </span>
+                    )}
+                    {uiState.roleType !== "all" && (
+                      <span
+                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                        style={getChipStyle(
+                          ROLE_TYPE_STYLES[uiState.roleType].accent,
+                          ROLE_TYPE_STYLES[uiState.roleType].backgroundWeight,
+                          ROLE_TYPE_STYLES[uiState.roleType].borderWeight
+                        )}
+                      >
+                        {ROLE_TYPE_LABELS[uiState.roleType]}
+                      </span>
+                    )}
+                    {uiState.roleFamily !== "all" && (
+                      <span
+                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                        style={getChipStyle(getRoleFamilyAccent(uiState.roleFamily), 18, 28)}
+                      >
+                        {ROLE_FAMILY_LABELS[uiState.roleFamily]}
+                      </span>
+                    )}
+                    {uiState.category !== "all" && (
+                      <span
+                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                        style={getChipStyle(CATEGORY_COLOR[uiState.category], 18, 28)}
+                      >
+                        {CATEGORY_LABELS[uiState.category]}
+                      </span>
+                    )}
+                    {uiState.sort !== DEFAULT_MBA_JOBS_STATE.sort && (
+                      <span
+                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                        style={{
+                          background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                          color: "var(--home-ink)",
+                          fontFamily: CHIP_FONT_FAMILY,
+                        }}
+                      >
+                        {SORT_LABELS[uiState.sort]}
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
-              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            </motion.div>
+          </section>
+
+          <section className="space-y-4" aria-labelledby="mba-role-tracker-companies-heading">
+            <SectionLead
+              kicker="Tracked companies"
+              title="Choose which live feeds stay in view."
+              description="Toggle the companies I can poll directly. Manual-only targets stay separate in Manual checks below."
+              id="mba-role-tracker-companies-heading"
+            />
+            <CompanyFilterStrip
+              watchedIds={watchedCompanyIds}
+              onToggle={toggleCompany}
+              onSelectAll={() => setAllCompanies(true)}
+              onClearAll={() => setAllCompanies(false)}
+            />
+          </section>
+
+          <section className="space-y-4" aria-labelledby="mba-role-tracker-roles-heading">
+            <SectionLead
+              kicker="Live roles"
+              title="Current openings across the tracked boards."
+              description="This is the fastest way to scan internships and full-time business roles without bouncing across dozens of career pages."
+              id="mba-role-tracker-roles-heading"
+            />
+            {isLoading ? (
+              <JobGridSkeleton />
+            ) : error ? (
+              <StatusPanel
+                title="Could not load jobs."
+                message={error}
+                tone="error"
+                icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
+                statusRole="alert"
+              />
+            ) : displayJobs.length === 0 ? (
+              <StatusPanel
+                title="No roles found right now."
+                message="No tracked postings matched the current search or role filters. Try broadening the role family, switching role type, or clearing the search."
+                icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
+              />
+            ) : (
+              <motion.div
+                className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                data-testid="live-jobs-grid"
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+              >
+                {displayJobs.map((job) => (
+                  <JobCard
+                    key={job.id}
+                    job={job}
+                    isNew={!seenIds.has(job.id)}
+                    onMarkSeen={() => markJobSeen(job.id)}
+                    currentState={uiState}
+                  />
+                ))}
+              </motion.div>
+            )}
+          </section>
+
+          {manualCompanies.length > 0 && (
+            <section className="space-y-4" aria-labelledby="mba-role-tracker-manual-heading">
+              <SectionLead
+                kicker="Manual checks"
+                title="Fallback paths for companies without stable public feeds."
+                description="These LinkedIn and career-page shortcuts preserve your current role intent so you can still move quickly when a direct feed is unavailable."
+                id="mba-role-tracker-manual-heading"
+              />
+              <div
+                className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                data-testid="manual-checks-grid"
+              >
                 {manualCompanies.map((c) => (
                   <ManualCompanyCard key={c.id} company={c} currentState={uiState} />
                 ))}
               </div>
-            </div>
+            </section>
           )}
 
-          {/* ── Footer note ───────────────────────────────────────────────── */}
           {!isLoading && !error && (
-            <p
-              className="pb-2 text-center text-xs"
-              style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
-            >
-              {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
-              {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
-            </p>
+            <div className="flex justify-center pb-2">
+              <UtilityStrip>
+                {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
+                {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
+              </UtilityStrip>
+            </div>
           )}
         </div>
       </section>

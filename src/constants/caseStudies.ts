@@ -288,6 +288,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "mba-role-tracker": {
+    slug: "mba-role-tracker",
+    title: "MBA Role Tracker",
+    description:
+      "Recruiting-intelligence dashboard tracking public tech company job boards for MBA internships and full-time business roles across Greenhouse, Ashby, Lever, and manual career-page fallbacks.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Job board parsing", "Notification UX"],
+    metrics: "32 companies · Live role filters · Alerts and digests",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/mba-internship-notifications",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a recruiting-intelligence tracker that monitors public tech-company job boards for MBA internships and full-time business roles in one place.",
+      impact:
+        "Compresses repetitive recruiting checks into a faster decision surface with filters, alerts, and manual fallbacks.",
+    },
+    problem: {
+      context:
+        "MBA recruiting is fragmented across Greenhouse, Ashby, Lever, and manual career pages, which turns simple monitoring into repetitive tab work.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "spacex-mission-control": {
     slug: "spacex-mission-control",
     title: "SpaceX Mission Control",
@@ -358,7 +391,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 const HOMEPAGE_FEATURED_SLUGS = [
   "investment-analytics-platform",
   "news-pulse-dashboard",
-  "spacex-mission-control",
+  "mba-role-tracker",
 ] as const;
 
 const PORTFOLIO_PROJECT_ORDER = [
@@ -366,6 +399,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "interchange-iq",
   "news-pulse-dashboard",
   "budget-planner",
+  "mba-role-tracker",
   "spacex-mission-control",
   "premier-league-pulse",
   "fantasy-football-analytics",
