@@ -1,5 +1,9 @@
 import { StructuredData } from "@/components/StructuredData";
 import { premierLeagueSnapshot } from "@/data/premierLeagueSnapshot";
+import {
+  getPremierLeagueSummary,
+  getPremierLeagueTeamSnapshot,
+} from "@/lib/premierLeagueSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { PremierLeagueClient } from "./premier-league-client";
 import { normalizePremierLeagueState } from "./premier-league-state";
@@ -47,6 +51,14 @@ interface PremierLeaguePageProps {
 
 export default async function PremierLeaguePage({ searchParams }: PremierLeaguePageProps) {
   const initialState = normalizePremierLeagueState(await searchParams);
+  const summary = await getPremierLeagueSummary();
+  const validTeamIds = new Set(summary.teams.map((team) => team.id));
+  const selectedTeamId = validTeamIds.has(initialState.team ?? "")
+    ? initialState.team
+    : summary.standings[0]?.team.id ?? null;
+  const initialTeamSnapshot = selectedTeamId
+    ? await getPremierLeagueTeamSnapshot(selectedTeamId).catch(() => null)
+    : null;
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Premier League Pulse", url: "/premier-league" },
@@ -80,7 +92,8 @@ export default async function PremierLeaguePage({ searchParams }: PremierLeagueP
       />
       <PremierLeagueClient
         initialState={initialState}
-        snapshot={premierLeagueSnapshot}
+        summary={summary}
+        initialTeamSnapshot={initialTeamSnapshot}
       />
     </>
   );

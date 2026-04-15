@@ -359,12 +359,14 @@ export async function getLaLigaSummary(): Promise<{
   const recentFixtures = (recentRes.matches ?? [])
     .map((m) => normalizeFixture(m))
     .filter((f): f is LaLigaFixture => f !== null)
-    .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime());
+    .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
+    .slice(0, RECENT_FIXTURE_LIMIT);
 
   const upcomingFixtures = (upcomingRes.matches ?? [])
     .map((m) => normalizeFixture(m))
     .filter((f): f is LaLigaFixture => f !== null)
-    .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime());
+    .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
+    .slice(0, UPCOMING_FIXTURE_LIMIT);
 
   const teams = (teamsRes.teams ?? [])
     .map((t) => normalizeTeamOption(t))
@@ -398,11 +400,13 @@ export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamS
   const recentFixtures = (recentRes.matches ?? [])
     .map((m) => normalizeFixture(m))
     .filter((f): f is LaLigaFixture => f !== null)
-    .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime());
+    .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
+    .slice(0, TEAM_FIXTURE_LIMIT);
   const upcomingFixtures = (upcomingRes.matches ?? [])
     .map((m) => normalizeFixture(m))
     .filter((f): f is LaLigaFixture => f !== null)
-    .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime());
+    .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
+    .slice(0, TEAM_FIXTURE_LIMIT);
 
   return {
     team,

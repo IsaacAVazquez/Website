@@ -1,5 +1,8 @@
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
-import type { LaLigaTeamSnapshot } from "@/types/la-liga";
+import type { LaLigaSummarySnapshot, LaLigaTeamSnapshot } from "@/types/la-liga";
+
+const SUMMARY_FIXTURE_LIMIT = 8;
+const TEAM_FIXTURE_LIMIT = 5;
 
 interface LaLigaSnapshotError extends Error {
   status: number;
@@ -7,6 +10,43 @@ interface LaLigaSnapshotError extends Error {
 
 function createLaLigaSnapshotError(message: string, status: number): LaLigaSnapshotError {
   return Object.assign(new Error(message), { status });
+}
+
+function limitFixtures<T>(fixtures: T[], limit: number): T[] {
+  return fixtures.slice(0, limit);
+}
+
+function clampLaLigaSummarySnapshot(snapshot: typeof laLigaSnapshot): LaLigaSummarySnapshot {
+  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = snapshot;
+  return {
+    ...summarySnapshot,
+    recentFixtures: limitFixtures(summarySnapshot.recentFixtures, SUMMARY_FIXTURE_LIMIT),
+    upcomingFixtures: limitFixtures(summarySnapshot.upcomingFixtures, SUMMARY_FIXTURE_LIMIT),
+  };
+}
+
+function clampLaLigaTeamSnapshot(snapshot: LaLigaTeamSnapshot): LaLigaTeamSnapshot {
+  return {
+    ...snapshot,
+    recentFixtures: limitFixtures(snapshot.recentFixtures, TEAM_FIXTURE_LIMIT),
+    upcomingFixtures: limitFixtures(snapshot.upcomingFixtures, TEAM_FIXTURE_LIMIT),
+  };
+}
+
+export function createEmptyLaLigaSummarySnapshot(): LaLigaSummarySnapshot {
+  return {
+    season: laLigaSnapshot.season,
+    matchday: 0,
+    updatedAt: laLigaSnapshot.updatedAt,
+    sourceLabel: laLigaSnapshot.sourceLabel,
+    sourceUrls: laLigaSnapshot.sourceUrls,
+    clubs: [],
+    scorers: [],
+    assists: [],
+    recentFixtures: [],
+    upcomingFixtures: [],
+    teams: [],
+  };
 }
 
 export function createEmptyLaLigaTeamSnapshot(): LaLigaTeamSnapshot {
@@ -31,10 +71,14 @@ export function isValidLaLigaTeamId(teamId: string): boolean {
   return teamId in laLigaSnapshot.teamSnapshots;
 }
 
+export async function getLaLigaSummarySnapshot(): Promise<LaLigaSummarySnapshot> {
+  return clampLaLigaSummarySnapshot(laLigaSnapshot);
+}
+
 export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamSnapshot> {
   const snapshot = laLigaSnapshot.teamSnapshots[teamId];
   if (!snapshot) {
     throw createLaLigaSnapshotError("La Liga team snapshot was not found.", 404);
   }
-  return snapshot;
+  return clampLaLigaTeamSnapshot(snapshot);
 }

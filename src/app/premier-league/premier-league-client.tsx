@@ -20,7 +20,8 @@ import {
 } from "@/components/football";
 import type {
   PremierLeagueRouteState,
-  PremierLeagueSnapshot,
+  PremierLeagueSummary,
+  PremierLeagueTeamSnapshot,
   PremierLeagueView,
 } from "@/types/premier-league";
 import {
@@ -33,7 +34,8 @@ import {
 
 interface PremierLeagueClientProps {
   initialState: PremierLeagueRouteState;
-  snapshot: PremierLeagueSnapshot;
+  summary: PremierLeagueSummary;
+  initialTeamSnapshot: PremierLeagueTeamSnapshot | null;
 }
 
 function formatFixed(value: number, decimals = 2): string {
@@ -129,7 +131,25 @@ function formatGeneratedAt(value: string): string {
   return Number.isNaN(date.getTime()) ? "Unavailable" : LAST_UPDATED_FORMATTER.format(date);
 }
 
-export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueClientProps) {
+async function fetchPremierLeagueTeamSnapshot(
+  teamId: string,
+  signal: AbortSignal
+): Promise<PremierLeagueTeamSnapshot> {
+  const response = await fetch(`/api/premier-league/teams/${teamId}`, { signal });
+  const payload = (await response.json()) as PremierLeagueTeamSnapshot & { error?: string };
+
+  if (!response.ok) {
+    throw new Error(payload.error || "Unable to load club snapshot.");
+  }
+
+  return payload;
+}
+
+export function PremierLeagueClient({
+  initialState,
+  summary,
+  initialTeamSnapshot,
+}: PremierLeagueClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentQuery = searchParams.toString();
@@ -137,7 +157,6 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
   const hasManagedParams = searchParams.get("view") !== null || searchParams.get("team") !== null;
   const routeState = hasManagedParams ? normalizePremierLeagueState(searchParams) : initialState;
 
-  const summary = snapshot.summary;
   const validTeamIds = useMemo(() => new Set(summary.teams.map((t) => t.id)), [summary.teams]);
   const canonicalTeamId = validTeamIds.has(routeState.team ?? "") ? routeState.team : null;
   const selectedTeamId = canonicalTeamId ?? summary.standings[0]?.team.id ?? null;
@@ -173,7 +192,59 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
   // Derived state
   const visibleStandings = filterStandingsForView(summary.standings, routeState.view);
   const selectedRow = summary.standings.find((r) => r.team.id === selectedTeamId) ?? summary.standings[0] ?? null;
-  const teamSnapshot = selectedTeamId ? snapshot.teamSnapshots[selectedTeamId] ?? null : null;
+  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, PremierLeagueTeamSnapshot>>(
+    () => (selectedTeamId && initialTeamSnapshot ? { [selectedTeamId]: initialTeamSnapshot } : {})
+  );
+  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
+  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
+  const teamSnapshot = selectedTeamId ? teamSnapshots[selectedTeamId] ?? null : null;
+  const isTeamSnapshotLoading = loadingTeamId === selectedTeamId;
+
+  useEffect(() => {
+    if (!selectedTeamId) {
+      setLoadingTeamId(null);
+      setTeamSnapshotError(null);
+      return;
+    }
+
+    if (teamSnapshots[selectedTeamId]) {
+      setLoadingTeamId(null);
+      setTeamSnapshotError(null);
+      return;
+    }
+
+    const controller = new AbortController();
+    let cancelled = false;
+
+    setLoadingTeamId(selectedTeamId);
+    setTeamSnapshotError(null);
+
+    fetchPremierLeagueTeamSnapshot(selectedTeamId, controller.signal)
+      .then((snapshot) => {
+        if (cancelled) {
+          return;
+        }
+
+        setTeamSnapshots((current) => (
+          current[selectedTeamId] ? current : { ...current, [selectedTeamId]: snapshot }
+        ));
+      })
+      .catch((error: Error) => {
+        if (!cancelled && error.name !== "AbortError") {
+          setTeamSnapshotError(error.message || "Unable to load club snapshot.");
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setLoadingTeamId((current) => (current === selectedTeamId ? null : current));
+        }
+      });
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, [selectedTeamId, teamSnapshots]);
 
   // Derived stats for sidebar
   const attackRankings = useMemo(() => {
@@ -429,6 +500,14 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                     </div>
                   </div>
                 )}
+
+                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
+                  <p className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]">
+                    {isTeamSnapshotLoading
+                      ? "Loading club snapshot…"
+                      : teamSnapshotError}
+                  </p>
+                ) : null}
               </section>
             ) : null}
           </aside>
@@ -478,6 +557,16 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                     </div>
                   </div>
                 </div>
+
+                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
+                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                    <p className="text-sm text-[var(--home-ink-muted)]">
+                      {isTeamSnapshotLoading
+                        ? "Loading recent club fixtures…"
+                        : teamSnapshotError}
+                    </p>
+                  </div>
+                )}
 
                 {teamSnapshot && teamSnapshot.recentFixtures.length > 0 && (
                   <div>

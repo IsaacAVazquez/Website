@@ -2,7 +2,7 @@
 
 Comprehensive repo context for agents and collaborators working in `/Users/isaacvazquez/Website`.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-14
 
 ---
 
@@ -16,6 +16,7 @@ This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines 
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
 5. **Experimental dashboards** — standalone tools like `/premier-league`, `/la-liga`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
 6. **Fintech tools** — standalone calculators under `/fintech-tools/*`
+7. **MBA internship tracker** — live role aggregator at `/mba-internship-notifications`, featured on the home page
 
 The site is not a generic blog template. It is a portfolio-first experience with secondary authority-building content.
 
@@ -47,7 +48,11 @@ npm run update:investments
 npm run update:football
 npm run update:premier-league
 npm run update:la-liga
+npm run update:spacex
+npm run lint
 ```
+
+Note: `prebuild` automatically runs a league-only football snapshot refresh; `postbuild` runs `next-sitemap`.
 
 ---
 
@@ -92,6 +97,7 @@ npm run update:la-liga
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
 - `/polling-aggregator`
+- `/mba-internship-notifications`
 
 ### Utility/admin
 
@@ -217,6 +223,13 @@ git push
 - fantasy pages mix server-rendered routes with client charts and hooks
 - the stack includes SQLite, sample data, scheduled refresh tooling, and tier chart rendering
 
+### MBA internship tracker
+
+- `/mba-internship-notifications` is a live role aggregator featured on the home page
+- client shell: `src/app/mba-internship-notifications/mba-jobs-client.tsx`
+- filter/search state lives in `mba-jobs-state.ts` in the same folder
+- data is served by `/api/mba-jobs`
+
 ---
 
 ## API Surface
@@ -227,8 +240,10 @@ Live routes under `src/app/api/`:
 - `/api/data-manager`
 - `/api/data-metadata`
 - `/api/fantasy-data`
+- `/api/fantasy-pros`
 - `/api/fantasy-pros-free`
 - `/api/fantasy-pros-session`
+- `/api/mba-jobs`
 - `/api/investments/data/[symbol]`
 - `/api/investments/index`
 - `/api/investments/quotes`

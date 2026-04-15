@@ -5,7 +5,15 @@ import type { LaLigaClub, LaLigaRouteState, LaLigaView } from "@/types/la-liga";
 export const LA_LIGA_ROUTE = "/la-liga";
 
 const VALID_VIEWS = new Set<LaLigaView>(["table", "title-race", "europe", "relegation"]);
-const VALID_CLUB_IDS = new Set(laLigaSnapshot.clubs.map((club) => club.id));
+const LA_LIGA_CLUB_ID_BY_ALIAS = new Map<string, string>(
+  laLigaSnapshot.teams.flatMap((team) => {
+    const canonicalClubId = team.tla?.toLowerCase() || team.id;
+    return [
+      [team.id.toLowerCase(), canonicalClubId],
+      [canonicalClubId, canonicalClubId],
+    ] as const;
+  })
+);
 
 type SearchParamInput =
   | URLSearchParams
@@ -18,6 +26,14 @@ export const DEFAULT_LA_LIGA_STATE: LaLigaRouteState = {
   view: "table",
   club: laLigaSnapshot.clubs[0]?.id ?? "barcelona",
 };
+
+export function canonicalizeLaLigaClubId(clubId: string | null): string | null {
+  if (!clubId) {
+    return null;
+  }
+
+  return LA_LIGA_CLUB_ID_BY_ALIAS.get(clubId.trim().toLowerCase()) ?? null;
+}
 
 function readParam(input: SearchParamInput, key: string): string | null {
   if ("get" in input && typeof input.get === "function") {
@@ -52,15 +68,13 @@ export function getDefaultClubForView(view: LaLigaView): string {
 
 export function normalizeLaLigaState(input: SearchParamInput): LaLigaRouteState {
   const view = readParam(input, "view");
-  const club = readParam(input, "club");
+  const club = canonicalizeLaLigaClubId(readParam(input, "club"));
 
   return {
     view: VALID_VIEWS.has((view ?? "") as LaLigaView)
       ? (view as LaLigaView)
       : DEFAULT_LA_LIGA_STATE.view,
-    club: VALID_CLUB_IDS.has(club ?? "")
-      ? (club as string)
-      : DEFAULT_LA_LIGA_STATE.club,
+    club: club ?? DEFAULT_LA_LIGA_STATE.club,
   };
 }
 
@@ -71,6 +85,7 @@ export function buildLaLigaHref(
   const params = new URLSearchParams(
     baseSearchParams ? Array.from(baseSearchParams.entries()) : []
   );
+  const canonicalClubId = canonicalizeLaLigaClubId(state.club) ?? DEFAULT_LA_LIGA_STATE.club;
 
   if (state.view === DEFAULT_LA_LIGA_STATE.view) {
     params.delete("view");
@@ -78,10 +93,10 @@ export function buildLaLigaHref(
     params.set("view", state.view);
   }
 
-  if (state.club === DEFAULT_LA_LIGA_STATE.club && state.view === DEFAULT_LA_LIGA_STATE.view) {
+  if (canonicalClubId === DEFAULT_LA_LIGA_STATE.club && state.view === DEFAULT_LA_LIGA_STATE.view) {
     params.delete("club");
   } else {
-    params.set("club", state.club);
+    params.set("club", canonicalClubId);
   }
 
   const query = params.toString();

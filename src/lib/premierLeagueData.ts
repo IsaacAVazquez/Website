@@ -492,12 +492,14 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
   const recentFixtures = (recentFixturesResponse.matches ?? [])
     .map((match) => normalizeFixture(match))
     .filter((match): match is PremierLeagueFixture => match !== null)
-    .sort(sortFixturesDescending);
+    .sort(sortFixturesDescending)
+    .slice(0, RECENT_FIXTURE_LIMIT);
 
   const upcomingFixtures = (upcomingFixturesResponse.matches ?? [])
     .map((match) => normalizeFixture(match))
     .filter((match): match is PremierLeagueFixture => match !== null)
-    .sort(sortFixturesAscending);
+    .sort(sortFixturesAscending)
+    .slice(0, UPCOMING_FIXTURE_LIMIT);
 
   const teams = (teamsResponse.teams ?? [])
     .map((team) => normalizeTeamOption(team))
@@ -558,11 +560,13 @@ export async function getPremierLeagueTeamSnapshot(
   const recentFixtures = (recentFixturesResponse.matches ?? [])
     .map((match) => normalizeFixture(match))
     .filter((match): match is PremierLeagueFixture => match !== null)
-    .sort(sortFixturesDescending);
+    .sort(sortFixturesDescending)
+    .slice(0, TEAM_FIXTURE_LIMIT);
   const upcomingFixtures = (upcomingFixturesResponse.matches ?? [])
     .map((match) => normalizeFixture(match))
     .filter((match): match is PremierLeagueFixture => match !== null)
-    .sort(sortFixturesAscending);
+    .sort(sortFixturesAscending)
+    .slice(0, TEAM_FIXTURE_LIMIT);
 
   return {
     team,
