@@ -86,9 +86,9 @@ const noMotion = {
 const RELATIVE_FORMATTER = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
 
 function timeAgo(iso: string): string {
-  const d = new Date(iso);
-  if (isNaN(d.getTime())) return "";
-  const diff = d.getTime() - Date.now();
+  const timestamp = getPostedAtTime(iso);
+  if (!timestamp) return "";
+  const diff = timestamp - Date.now();
   const absDiff = Math.abs(diff);
   if (absDiff < 60_000) return "just now";
   if (absDiff < 3_600_000)
@@ -108,6 +108,11 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
 function formatFetchedAt(d: Date | null): string {
   if (!d) return "—";
   return DATE_FORMATTER.format(d);
+}
+
+function getPostedAtTime(value: string): number {
+  const timestamp = new Date(value).getTime();
+  return Number.isFinite(timestamp) ? timestamp : 0;
 }
 
 const CATEGORY_COLOR: Record<MBACategory | "all", string> = {
@@ -172,10 +177,10 @@ function getRoleFamilyAccent(family: MBAJobRoleFamily): string {
 function getTrackedCompanyButtonStyle(company: MBACompany, active: boolean): CSSProperties {
   if (active) {
     return {
-      background: `color-mix(in srgb, ${company.color} 18%, var(--home-paper))`,
-      borderColor: `color-mix(in srgb, ${company.color} 36%, var(--home-rule))`,
-      color: getReadableAccentColor(company.color),
-      boxShadow: "var(--shadow-sm)",
+      background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+      borderColor: `color-mix(in srgb, ${company.color} 28%, var(--home-rule))`,
+      color: "var(--home-ink)",
+      boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--home-paper) 88%, white)",
       fontFamily: CHIP_FONT_FAMILY,
     };
   }
@@ -409,6 +414,7 @@ function JobCard({
   const linkedinUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
     [currentState.q.trim(), job.title, job.companyName].filter(Boolean).join(" ")
   )}`;
+  const relativePostedAt = timeAgo(job.postedAt);
 
   return (
     <article
@@ -482,7 +488,7 @@ function JobCard({
           className="text-[0.7rem]"
           style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
         >
-          {job.location} · {timeAgo(job.postedAt)}
+          {relativePostedAt ? `${job.location} · ${relativePostedAt}` : job.location}
         </span>
         <div className="flex flex-wrap items-center gap-3">
           <CardActionLink
@@ -550,7 +556,7 @@ function ManualCompanyCard({
           ariaLabel={`LinkedIn search for ${company.name}`}
         />
         <CardActionLink
-          href={company.careersUrl}
+          href={company.jobsUrl ?? company.careersUrl}
           label="Career page"
           ariaLabel={`Career page for ${company.name}`}
           variant="primary"
@@ -850,6 +856,11 @@ function CompanyFilterStrip({
     label: CATEGORY_LABELS[category],
     companies: nonManual.filter((c) => c.category === category),
   })).filter((group) => group.companies.length > 0);
+  const [expandedGroups, setExpandedGroups] = useState<Record<MBACategory, boolean>>({
+    fintech: true,
+    startup: true,
+    "big-tech": true,
+  });
   const allOn = nonManual.every((c) => watchedIds.has(c.id));
   const allOff = nonManual.every((c) => !watchedIds.has(c.id));
 
@@ -872,7 +883,7 @@ function CompanyFilterStrip({
             className="max-w-2xl text-sm leading-6"
             style={{ color: "var(--home-ink-muted)" }}
           >
-            Toggle {nonManual.length} live-feed companies here. Manual-only targets stay in
+            Toggle {nonManual.length} live feeds here. Manual-only targets stay separate in
             Manual checks below.
           </p>
         </div>
@@ -901,54 +912,85 @@ function CompanyFilterStrip({
         </div>
       </div>
       <div className="grid gap-3 xl:grid-cols-3">
-        {groups.map((group) => (
-          <div
-            key={group.category}
-            data-testid={`tracked-companies-${group.category}`}
-            className="rounded-[1rem] border p-3"
-            style={{
-              borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper-alt) 58%, white)",
-            }}
-          >
-            <div className="flex items-baseline justify-between gap-3">
-              <p
-                className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-                style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
+        {groups.map((group) => {
+          const watchedCount = group.companies.filter((company) => watchedIds.has(company.id)).length;
+          const isExpanded = expandedGroups[group.category];
+
+          return (
+            <div
+              key={group.category}
+              data-testid={`tracked-companies-${group.category}`}
+              className="rounded-[1rem] border p-2.5 sm:p-3"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 58%, white)",
+              }}
+            >
+              <button
+                type="button"
+                className="flex min-h-[44px] w-full items-center justify-between gap-3 rounded-[0.9rem] px-2 py-1.5 text-left transition-[background-color] duration-150 ease"
+                style={{ color: "var(--home-ink)" }}
+                aria-expanded={isExpanded}
+                aria-controls={`tracked-companies-panel-${group.category}`}
+                onClick={() =>
+                  setExpandedGroups((current) => ({
+                    ...current,
+                    [group.category]: !current[group.category],
+                  }))
+                }
               >
-                {group.label}
-              </p>
-              <span
-                className="text-[0.68rem]"
-                style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
-              >
-                {group.companies.length} live
-              </span>
-            </div>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-1">
-              {group.companies.map((company) => {
-                const active = watchedIds.has(company.id);
-                return (
-                  <button
-                    key={company.id}
-                    type="button"
-                    onClick={() => onToggle(company.id)}
-                    className="inline-flex min-h-[44px] w-full items-center gap-2.5 rounded-[1rem] border px-4 py-2.5 text-left text-[0.78rem] font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
-                    style={getTrackedCompanyButtonStyle(company, active)}
-                    aria-pressed={active}
+                <div className="min-w-0">
+                  <p
+                    className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                    style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
                   >
-                    <span
-                      className="h-2 w-2 rounded-full"
-                      style={{ background: active ? company.color : "var(--home-stone)" }}
-                      aria-hidden="true"
-                    />
-                    <span>{company.name}</span>
-                  </button>
-                );
-              })}
+                    {group.label}
+                  </p>
+                  <p
+                    className="mt-1 text-[0.74rem]"
+                    style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
+                  >
+                    {watchedCount} / {group.companies.length} watched
+                  </p>
+                </div>
+                <ChevronDown
+                  className={`h-4 w-4 shrink-0 transition-transform duration-150 ease ${
+                    isExpanded ? "rotate-180" : ""
+                  }`}
+                  style={{ color: "var(--home-ink-muted)" }}
+                  aria-hidden="true"
+                />
+              </button>
+              {isExpanded && (
+                <div
+                  id={`tracked-companies-panel-${group.category}`}
+                  className="mt-2 grid gap-2 sm:grid-cols-2 xl:grid-cols-2"
+                >
+                  {group.companies.map((company) => {
+                    const active = watchedIds.has(company.id);
+                    return (
+                      <button
+                        key={company.id}
+                        type="button"
+                        onClick={() => onToggle(company.id)}
+                        className="inline-flex min-h-[44px] w-full items-center gap-2 rounded-[0.95rem] border px-3 py-2.5 text-left text-[0.76rem] font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
+                        style={getTrackedCompanyButtonStyle(company, active)}
+                        aria-pressed={active}
+                      >
+                        <span
+                          className="h-2.5 w-2.5 shrink-0 rounded-full"
+                          style={{ background: active ? company.color : "var(--home-stone)" }}
+                          aria-hidden="true"
+                        />
+                        <span className="min-w-0 truncate">{company.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
@@ -1051,8 +1093,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
     });
 
     filtered.sort((left, right) => {
-      const leftTime = new Date(left.job.postedAt).getTime();
-      const rightTime = new Date(right.job.postedAt).getTime();
+      const leftTime = getPostedAtTime(left.job.postedAt);
+      const rightTime = getPostedAtTime(right.job.postedAt);
       if (effectiveState.sort === "oldest") {
         return leftTime - rightTime;
       }

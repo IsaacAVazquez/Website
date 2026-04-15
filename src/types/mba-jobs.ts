@@ -2,7 +2,12 @@
 // MBA Internship Notifications – shared types
 // ---------------------------------------------------------------------------
 
-export type MBAATSType = "greenhouse" | "lever" | "ashby" | "manual";
+export type MBAATSType =
+  | "greenhouse"
+  | "lever"
+  | "ashby"
+  | "direct-html"
+  | "manual";
 export type MBACategory = "big-tech" | "fintech" | "startup";
 export type MBAJobRoleType = "internship" | "full-time" | "unclear";
 export type MBAJobRoleFamily =
@@ -20,9 +25,10 @@ export interface MBACompany {
   id: string;
   name: string;
   atsType: MBAATSType;
-  atsSlug: string;
+  sourceKey: string;
   category: MBACategory;
   careersUrl: string;
+  jobsUrl?: string;
   color: string;
   logoInitials: string;
 }

@@ -1,15 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
+import { load } from "cheerio";
 import type {
+  MBAATSType,
   MBACompany,
   MBAJob,
   MBAJobsApiResponse,
 } from "@/types/mba-jobs";
-import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
+import { MBA_COMPANIES } from "@/constants/mba-companies";
 import { matchMBAJobRole } from "@/lib/mba-job-matching";
 
 const TIMEOUT_MS = 8_000;
 const MAX_SNIPPET_LENGTH = 220;
-type PollableMBACompany = MBACompany & { atsType: "greenhouse" | "lever" | "ashby" };
+type PollableMBACompany = MBACompany & { atsType: Exclude<MBAATSType, "manual"> };
+type GreenhouseMBACompany = MBACompany & { atsType: "greenhouse" };
+type LeverMBACompany = MBACompany & { atsType: "lever" };
+type AshbyMBACompany = MBACompany & { atsType: "ashby" };
+type DirectHtmlMBACompany = MBACompany & { atsType: "direct-html" };
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -68,6 +74,51 @@ function normalizeJobSnippet(html: string): string | null {
   return truncatePlainText(plainText, MAX_SNIPPET_LENGTH);
 }
 
+function getPostedAtTime(value: string): number {
+  const timestamp = new Date(value).getTime();
+  return Number.isFinite(timestamp) ? timestamp : 0;
+}
+
+async function fetchJson<T>(url: string): Promise<T> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+  try {
+    const res = await fetch(url, {
+      signal: controller.signal,
+      next: { revalidate: 1800 },
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
+    return (await res.json()) as T;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function fetchText(url: string): Promise<string> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+  try {
+    const res = await fetch(url, {
+      signal: controller.signal,
+      next: { revalidate: 1800 },
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
+    return await res.text();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 function buildMBAJob(
   company: MBACompany,
   job: Omit<MBAJob, "companyId" | "companyName" | "category" | "atsType">
@@ -95,43 +146,32 @@ interface GHJob {
   content?: string;
 }
 
-async function fetchGreenhouse(companyId: string, slug: string): Promise<MBAJob[]> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  try {
-    const res = await fetch(
-      `https://boards-api.greenhouse.io/v1/boards/${slug}/jobs?content=true`,
-      { signal: controller.signal, next: { revalidate: 1800 } }
-    );
-    if (!res.ok) throw new Error(`Greenhouse HTTP ${res.status}`);
-    const data = (await res.json()) as { jobs: GHJob[] };
-    const company = MBA_COMPANY_MAP.get(companyId);
-    if (!company) return [];
-    return data.jobs
-      .flatMap((job) => {
-        const snippet = job.content ? normalizeJobSnippet(job.content) : null;
-        const match = matchMBAJobRole({
-          title: job.title,
-          department: job.departments?.[0]?.name,
-          location: job.location?.name,
-          snippet,
-        });
-        if (!match) return [];
-        return buildMBAJob(company, {
-          id: `${companyId}-${job.id}`,
-          title: job.title,
-          location: job.location?.name ?? "Remote",
-          department: job.departments?.[0]?.name ?? "General",
-          applyUrl: job.absolute_url,
-          postedAt: job.updated_at,
-          snippet,
-          roleType: match.roleType,
-          roleFamilies: match.roleFamilies,
-        });
-      });
-  } finally {
-    clearTimeout(timer);
-  }
+async function fetchGreenhouse(company: GreenhouseMBACompany): Promise<MBAJob[]> {
+  const data = await fetchJson<{ jobs: GHJob[] }>(
+    `https://boards-api.greenhouse.io/v1/boards/${company.sourceKey}/jobs?content=true`
+  );
+
+  return data.jobs.flatMap((job) => {
+    const snippet = job.content ? normalizeJobSnippet(job.content) : null;
+    const match = matchMBAJobRole({
+      title: job.title,
+      department: job.departments?.[0]?.name,
+      location: job.location?.name,
+      snippet,
+    });
+    if (!match) return [];
+    return buildMBAJob(company, {
+      id: `${company.id}-${job.id}`,
+      title: job.title,
+      location: job.location?.name ?? "Remote",
+      department: job.departments?.[0]?.name ?? "General",
+      applyUrl: job.absolute_url,
+      postedAt: job.updated_at,
+      snippet,
+      roleType: match.roleType,
+      roleFamilies: match.roleFamilies,
+    });
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -151,43 +191,32 @@ interface LeverPosting {
   createdAt: number;
 }
 
-async function fetchLever(companyId: string, slug: string): Promise<MBAJob[]> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  try {
-    const res = await fetch(
-      `https://api.lever.co/v0/postings/${slug}?mode=json`,
-      { signal: controller.signal, next: { revalidate: 1800 } }
-    );
-    if (!res.ok) throw new Error(`Lever HTTP ${res.status}`);
-    const data = (await res.json()) as LeverPosting[];
-    const company = MBA_COMPANY_MAP.get(companyId);
-    if (!company) return [];
-    return data
-      .flatMap((job) => {
-        const match = matchMBAJobRole({
-          title: job.text,
-          department: job.categories?.team,
-          location: job.categories?.location,
-          snippet: job.categories?.level ?? null,
-          employmentType: job.categories?.commitment ?? null,
-        });
-        if (!match) return [];
-        return buildMBAJob(company, {
-          id: `${companyId}-${job.id}`,
-          title: job.text,
-          location: job.categories?.location ?? "Remote",
-          department: job.categories?.team ?? "General",
-          applyUrl: job.hostedUrl,
-          postedAt: new Date(job.createdAt).toISOString(),
-          snippet: null,
-          roleType: match.roleType,
-          roleFamilies: match.roleFamilies,
-        });
-      });
-  } finally {
-    clearTimeout(timer);
-  }
+async function fetchLever(company: LeverMBACompany): Promise<MBAJob[]> {
+  const data = await fetchJson<LeverPosting[]>(
+    `https://api.lever.co/v0/postings/${company.sourceKey}?mode=json`
+  );
+
+  return data.flatMap((job) => {
+    const match = matchMBAJobRole({
+      title: job.text,
+      department: job.categories?.team,
+      location: job.categories?.location,
+      snippet: job.categories?.level ?? null,
+      employmentType: job.categories?.commitment ?? null,
+    });
+    if (!match) return [];
+    return buildMBAJob(company, {
+      id: `${company.id}-${job.id}`,
+      title: job.text,
+      location: job.categories?.location ?? "Remote",
+      department: job.categories?.team ?? "General",
+      applyUrl: job.hostedUrl,
+      postedAt: new Date(job.createdAt).toISOString(),
+      snippet: null,
+      roleType: match.roleType,
+      roleFamilies: match.roleFamilies,
+    });
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -259,58 +288,196 @@ function extractJsonObject(source: string, marker: string): string | null {
   return null;
 }
 
-async function fetchAshby(companyId: string, slug: string): Promise<MBAJob[]> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  try {
-    const res = await fetch(`https://jobs.ashbyhq.com/${slug}`, {
-      signal: controller.signal,
-      next: { revalidate: 1800 },
-    });
-    if (!res.ok) throw new Error(`Ashby HTTP ${res.status}`);
-
-    const html = await res.text();
-    const rawAppData = extractJsonObject(html, "window.__appData = ");
-    if (!rawAppData) {
-      throw new Error("Ashby payload missing app data");
-    }
-
-    const data = JSON.parse(rawAppData) as AshbyAppData;
-    const postings = data.jobBoard?.jobPostings ?? [];
-    const company = MBA_COMPANY_MAP.get(companyId);
-    if (!company) return [];
-
-    return postings
-      .filter((job) => job.isListed !== false)
-      .flatMap((job) => {
-        const match = matchMBAJobRole({
-          title: job.title,
-          department: [job.teamName, job.departmentName].filter(Boolean).join(" "),
-          location: job.locationName ?? job.workplaceType,
-          employmentType: job.employmentType,
-        });
-        if (!match) return [];
-        return buildMBAJob(company, {
-          id: `${companyId}-${job.id}`,
-          title: job.title.trim(),
-          location: job.locationName ?? job.workplaceType ?? "Remote",
-          department: job.teamName ?? job.departmentName ?? "General",
-          applyUrl: `https://jobs.ashbyhq.com/${slug}/${job.id}`,
-          postedAt: job.updatedAt ?? job.publishedDate ?? new Date().toISOString(),
-          snippet: null,
-          roleType: match.roleType,
-          roleFamilies: match.roleFamilies,
-        });
-      });
-  } finally {
-    clearTimeout(timer);
+async function fetchAshby(company: AshbyMBACompany): Promise<MBAJob[]> {
+  const html = await fetchText(`https://jobs.ashbyhq.com/${company.sourceKey}`);
+  const rawAppData = extractJsonObject(html, "window.__appData = ");
+  if (!rawAppData) {
+    throw new Error("Ashby payload missing app data");
   }
+
+  const data = JSON.parse(rawAppData) as AshbyAppData;
+  const postings = data.jobBoard?.jobPostings ?? [];
+
+  return postings
+    .filter((job) => job.isListed !== false)
+    .flatMap((job) => {
+      const match = matchMBAJobRole({
+        title: job.title,
+        department: [job.teamName, job.departmentName].filter(Boolean).join(" "),
+        location: job.locationName ?? job.workplaceType,
+        employmentType: job.employmentType,
+      });
+      if (!match) return [];
+      return buildMBAJob(company, {
+        id: `${company.id}-${job.id}`,
+        title: job.title.trim(),
+        location: job.locationName ?? job.workplaceType ?? "Remote",
+        department: job.teamName ?? job.departmentName ?? "General",
+        applyUrl: `https://jobs.ashbyhq.com/${company.sourceKey}/${job.id}`,
+        postedAt: job.updatedAt ?? job.publishedDate ?? new Date().toISOString(),
+        snippet: null,
+        roleType: match.roleType,
+        roleFamilies: match.roleFamilies,
+      });
+    });
+}
+
+// ---------------------------------------------------------------------------
+// Direct HTML
+// ---------------------------------------------------------------------------
+
+interface DirectHtmlJobSeed {
+  id: string;
+  title: string;
+  location: string;
+  department: string;
+  applyUrl: string;
+  detailUrl?: string;
+  postedAt?: string;
+  snippet?: string | null;
+}
+
+interface DirectHtmlJobDetail {
+  location?: string;
+  department?: string;
+  applyUrl?: string;
+  postedAt?: string;
+  snippet?: string | null;
+}
+
+interface DirectHtmlParser {
+  jobsUrl: string;
+  parseList: (html: string) => DirectHtmlJobSeed[];
+  parseDetail?: (html: string, seed: DirectHtmlJobSeed) => DirectHtmlJobDetail;
+}
+
+function parseNextData<T>(html: string): T {
+  const $ = load(html);
+  const raw = $('script#__NEXT_DATA__[type="application/json"]').html();
+
+  if (!raw) {
+    throw new Error("Next.js page payload missing __NEXT_DATA__");
+  }
+
+  return JSON.parse(raw) as T;
+}
+
+interface MiroOpenPositionsPageData {
+  props: {
+    pageProps: {
+      jobs?: Array<{
+        id: number;
+        title: string;
+        location?: string | null;
+        departmentName?: string | null;
+      }>;
+    };
+  };
+}
+
+interface MiroVacancyPageData {
+  props: {
+    pageProps: {
+      title: string;
+      department?: string | null;
+      location?: string | null;
+      content?: string | null;
+    };
+  };
+}
+
+const DIRECT_HTML_PARSERS: Record<string, DirectHtmlParser> = {
+  miro: {
+    jobsUrl: "https://us.miro.com/careers/open-positions/",
+    parseList(html) {
+      const data = parseNextData<MiroOpenPositionsPageData>(html);
+      const jobs = data.props.pageProps.jobs ?? [];
+
+      return jobs.map((job) => {
+        const applyUrl = `https://us.miro.com/careers/vacancy/${job.id}/`;
+        return {
+          id: `${job.id}`,
+          title: job.title.trim(),
+          location: job.location?.trim() || "Remote",
+          department: job.departmentName?.trim() || "General",
+          applyUrl,
+          detailUrl: applyUrl,
+          postedAt: "",
+        };
+      });
+    },
+    parseDetail(html, seed) {
+      const data = parseNextData<MiroVacancyPageData>(html);
+      const pageProps = data.props.pageProps;
+
+      return {
+        location: pageProps.location?.trim() || seed.location,
+        department: pageProps.department?.trim() || seed.department,
+        snippet: pageProps.content ? normalizeJobSnippet(pageProps.content) : null,
+        postedAt: "",
+      };
+    },
+  },
+};
+
+async function fetchDirectHtml(company: DirectHtmlMBACompany): Promise<MBAJob[]> {
+  const parser = DIRECT_HTML_PARSERS[company.sourceKey];
+  if (!parser) {
+    throw new Error(`Direct HTML parser missing for ${company.sourceKey}`);
+  }
+
+  const html = await fetchText(company.jobsUrl ?? parser.jobsUrl);
+  const seeds = parser.parseList(html);
+
+  const results = await Promise.all(
+    seeds.map(async (seed) => {
+      let detail: DirectHtmlJobDetail = {};
+      if (parser.parseDetail && seed.detailUrl) {
+        try {
+          const detailHtml = await fetchText(seed.detailUrl);
+          detail = parser.parseDetail(detailHtml, seed);
+        } catch {
+          detail = {};
+        }
+      }
+
+      const title = seed.title.trim();
+      const location = detail.location?.trim() || seed.location;
+      const department = detail.department?.trim() || seed.department;
+      const snippet = detail.snippet ?? seed.snippet ?? null;
+      const match = matchMBAJobRole({
+        title,
+        department,
+        location,
+        snippet,
+      });
+
+      if (!match) {
+        return null;
+      }
+
+      return buildMBAJob(company, {
+        id: `${company.id}-${seed.id}`,
+        title,
+        location,
+        department,
+        applyUrl: detail.applyUrl ?? seed.applyUrl,
+        postedAt: detail.postedAt ?? seed.postedAt ?? "",
+        snippet,
+        roleType: match.roleType,
+        roleFamilies: match.roleFamilies,
+      });
+    })
+  );
+
+  return results.filter((job): job is MBAJob => job !== null);
 }
 
 const PROVIDER_FETCHERS = {
   greenhouse: fetchGreenhouse,
   lever: fetchLever,
   ashby: fetchAshby,
+  "direct-html": fetchDirectHtml,
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -334,7 +501,12 @@ export async function GET(request: NextRequest) {
   const errors: MBAJobsApiResponse["errors"] = [];
 
   const results = await Promise.allSettled(
-    targets.map((company) => PROVIDER_FETCHERS[company.atsType](company.id, company.atsSlug))
+    targets.map((company) => {
+      const fetcher = PROVIDER_FETCHERS[company.atsType] as (
+        company: PollableMBACompany
+      ) => Promise<MBAJob[]>;
+      return fetcher(company);
+    })
   );
 
   const jobs: MBAJob[] = [];
@@ -351,7 +523,7 @@ export async function GET(request: NextRequest) {
   });
 
   jobs.sort(
-    (a, b) => new Date(b.postedAt).getTime() - new Date(a.postedAt).getTime()
+    (a, b) => getPostedAtTime(b.postedAt) - getPostedAtTime(a.postedAt)
   );
 
   const body: MBAJobsApiResponse = {

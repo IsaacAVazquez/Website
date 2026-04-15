@@ -22,6 +22,50 @@ function buildAshbyPage(slug: string, jobs: object[]) {
 fetch("https://cdn.ashbyprd.com/frontend_non_user/example/.vite/manifest.json");</script></body></html>`;
 }
 
+function buildNextDataPage(pageProps: object) {
+  return `<!doctype html><html><body><script id="__NEXT_DATA__" type="application/json">${JSON.stringify(
+    {
+      props: { pageProps },
+    }
+  )}</script></body></html>`;
+}
+
+function buildMiroOpenPositionsPage(jobs: object[]) {
+  return buildNextDataPage({
+    data: {},
+    jobSearch: { locations: [], departments: [] },
+    jobs,
+    departmentsWithJobs: [],
+    seo: {},
+  });
+}
+
+function buildMiroVacancyPage(overrides: Partial<Record<string, unknown>> = {}) {
+  return buildNextDataPage({
+    slug: "8436222002",
+    title: "Manager, Finance Systems",
+    department: "Finance",
+    location: "Austin, New York, Remote US",
+    content:
+      "<p>Lead the evolution of our financial planning infrastructure and partner across Finance, Biz Tech, and Accounting.</p>",
+    links: [],
+    jobSearch: { locations: [], departments: [] },
+    questions: [],
+    demographic_questions: null,
+    gtm: {
+      id: 8436222002,
+      title: "Manager, Finance Systems",
+      location: "Austin, New York, Remote US",
+      category: "Finance",
+    },
+    prepare: {},
+    related: {},
+    seo: {},
+    jobNotFound: false,
+    ...overrides,
+  });
+}
+
 function installFetchMock(responses: Record<string, Response | Error>) {
   mockFetch.mockImplementation(async (input) => {
     const url =
@@ -279,7 +323,7 @@ describe("GET /api/mba-jobs", () => {
         expect.objectContaining({
           title: "PMM Manager",
           roleType: "full-time",
-          roleFamilies: ["product-marketing"],
+          roleFamilies: expect.arrayContaining(["product-marketing"]),
           atsType: "ashby",
         }),
         expect.objectContaining({
@@ -363,6 +407,126 @@ describe("GET /api/mba-jobs", () => {
           roleFamilies: ["business-development"],
         }),
       ])
+    );
+  });
+
+  it("supports direct-html feeds, newly discovered sources, and skips manual-only companies", async () => {
+    installFetchMock({
+      "https://boards-api.greenhouse.io/v1/boards/chime/jobs?content=true": new Response(
+        JSON.stringify(
+          buildGreenhouseResponse({
+            jobs: [
+              {
+                id: 4101,
+                title: "Decision Science Manager",
+                location: { name: "San Francisco, CA" },
+                absolute_url: "https://example.com/chime/4101",
+                updated_at: "2026-04-14T17:45:00.000Z",
+                departments: [{ name: "Strategy & Analytics" }],
+                content: "<p>Drive strategy, analytics, and planning for a fintech business.</p>",
+              },
+            ],
+          })
+        ),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      ),
+      "https://jobs.ashbyhq.com/ramp": new Response(
+        buildAshbyPage("ramp", [
+          {
+            id: "ramp-1",
+            title: "Strategic Finance Lead",
+            updatedAt: "2026-04-14T14:00:00.000Z",
+            departmentName: "Finance",
+            teamName: "Strategic Finance",
+            locationName: "New York, NY",
+            employmentType: "Full-Time",
+            isListed: true,
+          },
+        ]),
+        {
+          status: 200,
+          headers: { "Content-Type": "text/html; charset=utf-8" },
+        }
+      ),
+      "https://us.miro.com/careers/open-positions/": new Response(
+        buildMiroOpenPositionsPage([
+          {
+            id: 8436222002,
+            title: "Manager, Finance Systems",
+            location: "Austin, US; New York, US; Remote US",
+            departmentName: "Finance",
+          },
+          {
+            id: 8401505002,
+            title: "Backend Software Engineer",
+            location: "London, UK",
+            departmentName: "Engineering",
+          },
+        ]),
+        {
+          status: 200,
+          headers: { "Content-Type": "text/html; charset=utf-8" },
+        }
+      ),
+      "https://us.miro.com/careers/vacancy/8436222002/": new Response(
+        buildMiroVacancyPage(),
+        {
+          status: 200,
+          headers: { "Content-Type": "text/html; charset=utf-8" },
+        }
+      ),
+    });
+
+    const response = await GET(
+      new NextRequest(
+        "https://isaacavazquez.com/api/mba-jobs?companies=chime,ramp,miro,canva"
+      )
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.errors).toEqual([]);
+    expect(mockFetch.mock.calls.map(([input]) => String(input))).toEqual(
+      expect.arrayContaining([
+        "https://boards-api.greenhouse.io/v1/boards/chime/jobs?content=true",
+        "https://jobs.ashbyhq.com/ramp",
+        "https://us.miro.com/careers/open-positions/",
+        "https://us.miro.com/careers/vacancy/8436222002/",
+      ])
+    );
+    expect(mockFetch.mock.calls.map(([input]) => String(input))).not.toEqual(
+      expect.arrayContaining(["https://www.lifeatcanva.com/en/jobs/"])
+    );
+    expect(body.jobs).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          companyId: "chime",
+          atsType: "greenhouse",
+          title: "Decision Science Manager",
+          roleFamilies: expect.arrayContaining(["analytics"]),
+        }),
+        expect.objectContaining({
+          companyId: "ramp",
+          atsType: "ashby",
+          title: "Strategic Finance Lead",
+          roleFamilies: expect.arrayContaining(["finance"]),
+        }),
+        expect.objectContaining({
+          companyId: "miro",
+          atsType: "direct-html",
+          title: "Manager, Finance Systems",
+          roleFamilies: ["finance"],
+          snippet:
+            "Lead the evolution of our financial planning infrastructure and partner across Finance, Biz Tech, and Accounting.",
+          postedAt: "",
+        }),
+      ])
+    );
+    expect(body.jobs.map((job: { title: string }) => job.title)).not.toEqual(
+      expect.arrayContaining(["Backend Software Engineer"])
     );
   });
 

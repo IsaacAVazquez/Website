@@ -43,4 +43,52 @@ describe("matchMBAJobRole", () => {
       roleType: "unclear",
     });
   });
+
+  it("matches adjacent business roles without requiring MBA in the title", () => {
+    const match = matchMBAJobRole({
+      title: "Product Operations Manager",
+      department: "Strategy & Operations",
+      snippet: "Own GTM operations and commercial planning for a product-led business.",
+    });
+
+    expect(match?.roleType).toBe("full-time");
+    expect(match?.roleFamilies).toEqual(expect.arrayContaining(["operations"]));
+  });
+
+  it("matches decision science and lifecycle marketing roles as MBA-adjacent", () => {
+    const decisionScienceMatch = matchMBAJobRole({
+      title: "Senior Manager, Decision Science",
+      department: "Strategy & Analytics",
+      snippet: "Lead market intelligence and business insights for growth planning.",
+    });
+
+    expect(decisionScienceMatch?.roleType).toBe("full-time");
+    expect(decisionScienceMatch?.roleFamilies).toEqual(
+      expect.arrayContaining(["strategy", "analytics"])
+    );
+
+    expect(
+      matchMBAJobRole({
+        title: "Lifecycle Marketing Lead",
+        department: "Growth",
+        snippet: "Own retention, CRM, and acquisition programs.",
+      })
+    ).toEqual({
+      roleFamilies: ["growth"],
+      roleType: "full-time",
+    });
+  });
+
+  it("matches risk and revenue strategy roles while keeping engineering exclusions", () => {
+    const match = matchMBAJobRole({
+      title: "Risk Strategy Manager",
+      department: "Risk",
+      snippet: "Partner with finance and operations leaders on risk management programs.",
+    });
+
+    expect(match?.roleType).toBe("full-time");
+    expect(match?.roleFamilies).toEqual(
+      expect.arrayContaining(["strategy", "finance"])
+    );
+  });
 });

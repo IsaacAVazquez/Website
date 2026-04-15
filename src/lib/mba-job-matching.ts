@@ -1,4 +1,7 @@
-import { MBA_ROLE_FAMILIES } from "@/constants/mba-role-taxonomy";
+import {
+  MBA_ROLE_FAMILIES,
+  MBA_ROLE_FAMILY_SEARCH_TERMS,
+} from "@/constants/mba-role-taxonomy";
 import type { MBAJobRoleFamily, MBAJobRoleType } from "@/types/mba-jobs";
 
 interface MBAJobMatchInput {
@@ -159,86 +162,17 @@ const EARLY_CAREER_CONTEXT_TERMS = [
   "student programs",
 ] as const;
 
-const ROLE_MATCH_TERMS: Record<MBAJobRoleFamily, readonly string[]> = {
-  product: [
-    "product manager",
-    "product management",
-    "associate product manager",
-    "apm",
-    "product owner",
-    "product lead",
-    "pm",
-  ],
-  "product-marketing": [
-    "product marketing",
-    "product marketing manager",
-    "pmm",
-  ],
-  strategy: [
-    "strategy",
-    "strategic planning",
-    "strategic initiatives",
-    "corporate strategy",
-    "business strategy",
-  ],
-  operations: [
-    "operations",
-    "business operations",
-    "business ops",
-    "bizops",
-    "revenue operations",
-    "revenue ops",
-    "sales operations",
-    "sales ops",
-    "program operations",
-    "program ops",
-    "program manager",
-    "program management",
-  ],
-  growth: [
-    "growth",
-    "growth marketing",
-    "lifecycle",
-    "acquisition",
-    "retention",
-    "monetization",
-  ],
-  finance: [
-    "finance",
-    "strategic finance",
-    "corporate finance",
-    "fp&a",
-    "fp a",
-    "fp and a",
-    "financial planning",
-    "treasury",
-  ],
-  "business-development": [
-    "business development",
-    "partnerships",
-    "partner manager",
-    "partnership manager",
-    "corporate development",
-    "corp dev",
-    "commercial strategy",
-    "go to market",
-    "gtm",
-  ],
-  analytics: [
-    "analytics",
-    "business analyst",
-    "strategy and analytics",
-    "operations analytics",
-    "business intelligence",
-    "data analyst",
-  ],
-  "chief-of-staff": [
-    "chief of staff",
-    "office of the ceo",
-    "ceo office",
-    "founder associate",
-  ],
-};
+const ROLE_MATCH_TERMS = MBA_ROLE_FAMILY_SEARCH_TERMS;
+const AMBIGUOUS_SINGLE_WORD_ROLE_TERMS = new Set([
+  "analytics",
+  "finance",
+  "growth",
+  "operations",
+  "partnerships",
+  "product",
+  "risk",
+  "strategy",
+]);
 
 function normalizeMBAJobText(value: string): string {
   return value
@@ -287,6 +221,26 @@ function getMatchedRoleFamilies(
   );
 }
 
+function hasHighConfidenceRoleSignal(
+  normalizedText: string,
+  tokens: Set<string>
+): boolean {
+  return MBA_ROLE_FAMILIES.some((family) =>
+    ROLE_MATCH_TERMS[family].some((term) => {
+      const normalizedTerm = normalizeMBAJobText(term);
+      if (
+        !normalizedTerm ||
+        (!normalizedTerm.includes(" ") &&
+          AMBIGUOUS_SINGLE_WORD_ROLE_TERMS.has(normalizedTerm))
+      ) {
+        return false;
+      }
+
+      return matchesTerm(normalizedText, tokens, term);
+    })
+  );
+}
+
 export function matchMBAJobRole(input: MBAJobMatchInput): MBAJobMatch | null {
   const titleText = normalizeMBAJobText(input.title);
   const contextText = normalizeMBAJobText(
@@ -307,9 +261,20 @@ export function matchMBAJobRole(input: MBAJobMatchInput): MBAJobMatch | null {
 
   const titleFamilies = getMatchedRoleFamilies(titleText, titleTokens);
   const contextFamilies = getMatchedRoleFamilies(fullText, fullTokens);
-  const roleFamilies = MBA_ROLE_FAMILIES.filter(
+  let roleFamilies = MBA_ROLE_FAMILIES.filter(
     (family) => titleFamilies.includes(family) || contextFamilies.includes(family)
   );
+  const hasSpecificProductSignal =
+    ROLE_MATCH_TERMS.product
+      .filter((term) => normalizeMBAJobText(term) !== "product")
+      .some((term) => matchesTerm(fullText, fullTokens, term));
+  if (
+    roleFamilies.includes("product") &&
+    roleFamilies.includes("product-marketing") &&
+    !hasSpecificProductSignal
+  ) {
+    roleFamilies = roleFamilies.filter((family) => family !== "product");
+  }
 
   const hasInternshipSignal =
     countMatches(titleText, titleTokens, INTERNSHIP_TERMS) > 0 ||
@@ -329,6 +294,10 @@ export function matchMBAJobRole(input: MBAJobMatchInput): MBAJobMatch | null {
     titleText,
     titleTokens,
     EARLY_CAREER_TITLE_TERMS
+  );
+  const hasHighConfidenceTitleRoleSignal = hasHighConfidenceRoleSignal(
+    titleText,
+    titleTokens
   );
   const contextEarlyCareerCount = countMatches(
     contextText,
@@ -354,6 +323,13 @@ export function matchMBAJobRole(input: MBAJobMatchInput): MBAJobMatch | null {
   if (!hasTargetAnchor) return null;
   if (titleEarlyCareerCount > 0 && !hasExplicitMBASignal) return null;
   if (contextEarlyCareerCount > 0 && hasInternshipSignal && !hasExplicitMBASignal) {
+    return null;
+  }
+  if (
+    titleNegativeCount > 0 &&
+    !hasExplicitMBASignal &&
+    (contextNegativeCount > 0 || !hasHighConfidenceTitleRoleSignal)
+  ) {
     return null;
   }
   if (titleNegativeCount > 0 && roleFamilies.length === 0 && !hasMBASignal) return null;

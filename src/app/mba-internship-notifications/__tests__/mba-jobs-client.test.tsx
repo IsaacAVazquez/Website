@@ -133,17 +133,40 @@ describe("MBAJobsClient", () => {
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
 
     expect(
-      screen.getByText(/Manual-only targets stay in Manual checks below\./i)
+      screen.getByText(/Manual-only targets stay separate in Manual checks below\./i)
     ).toBeVisible();
 
     const fintechGroup = screen.getByTestId("tracked-companies-fintech");
     const startupGroup = screen.getByTestId("tracked-companies-startup");
     const bigTechGroup = screen.getByTestId("tracked-companies-big-tech");
     const chipRail = screen.getByTestId("job-card-stripe-1-chips");
+    const fintechTracked = MBA_COMPANIES.filter(
+      (company) => company.category === "fintech" && company.atsType !== "manual"
+    ).length;
+    const startupTracked = MBA_COMPANIES.filter(
+      (company) => company.category === "startup" && company.atsType !== "manual"
+    ).length;
+    const bigTechTracked = MBA_COMPANIES.filter(
+      (company) => company.category === "big-tech" && company.atsType !== "manual"
+    ).length;
+    const startupToggle = within(startupGroup).getByRole("button", { name: /Startup/i });
+    const atlassianButton = within(bigTechGroup).getByRole("button", { name: "Atlassian" });
 
     expect(within(fintechGroup).getByRole("button", { name: "Stripe" })).toBeVisible();
     expect(within(startupGroup).getByRole("button", { name: "OpenAI" })).toBeVisible();
     expect(within(bigTechGroup).getByRole("button", { name: "Atlassian" })).toBeVisible();
+    expect(within(fintechGroup).getByText(`${fintechTracked} / ${fintechTracked} watched`)).toBeVisible();
+    expect(within(startupGroup).getByText(`${startupTracked} / ${startupTracked} watched`)).toBeVisible();
+    expect(within(bigTechGroup).getByText(`${bigTechTracked} / ${bigTechTracked} watched`)).toBeVisible();
+    expect(startupToggle).toHaveAttribute("aria-expanded", "true");
+    fireEvent.click(startupToggle);
+    expect(startupToggle).toHaveAttribute("aria-expanded", "false");
+    expect(
+      within(startupGroup).queryByRole("button", { name: "OpenAI" })
+    ).not.toBeInTheDocument();
+    expect(atlassianButton).toHaveStyle(
+      "background: color-mix(in srgb, var(--home-paper-alt) 78%, white)"
+    );
     expect(chipRail).toHaveClass("flex-wrap");
     expect(chipRail).not.toHaveClass("shrink-0");
   });
