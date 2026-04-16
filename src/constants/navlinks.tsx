@@ -6,6 +6,7 @@ import {
   ChartBar,
   FileText,
   Mail,
+  Target,
 } from "@/components/ui/ServerIcons";
 import type { Navlink } from "@/types/navlink";
 
@@ -34,6 +35,11 @@ export const navLinks: Navlink[] = [
     href: "/investments",
     label: "Investments",
     icon: ChartBar,
+  },
+  {
+    href: "/job-search",
+    label: "Job Search",
+    icon: Target,
   },
   {
     href: "/resume",
