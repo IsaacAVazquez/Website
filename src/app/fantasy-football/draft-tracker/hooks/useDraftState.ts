@@ -193,7 +193,7 @@ export const useDraftState = () => {
             picks: [...team.picks, pick],
             positionCounts: newPositionCounts,
             totalValue: team.totalValue + (player.auctionValue || 0),
-            projectedPoints: team.projectedPoints + player.projectedPoints,
+            projectedPoints: team.projectedPoints + (player.projectedPoints || 0),
           };
         }
         return team;
@@ -237,7 +237,7 @@ export const useDraftState = () => {
             picks: teamPicks,
             positionCounts: newPositionCounts,
             totalValue: team.totalValue - (lastPick.player.auctionValue || 0),
-            projectedPoints: team.projectedPoints - lastPick.player.projectedPoints,
+            projectedPoints: team.projectedPoints - (lastPick.player.projectedPoints || 0),
           };
         }
         return team;
@@ -282,7 +282,7 @@ export const useDraftState = () => {
     };
 
     if (format === 'csv') {
-      const csvHeaders = ['Pick', 'Round', 'Team', 'Player', 'Position', 'NFL Team', 'Projected Points'];
+      const csvHeaders = ['Pick', 'Round', 'Team', 'Player', 'Position', 'NFL Team', 'Consensus Rank', 'Tier', 'Expert Range'];
       const csvRows = draftState.picks.map(pick => [
         pick.pickNumber,
         pick.round,
@@ -290,7 +290,11 @@ export const useDraftState = () => {
         pick.player.name,
         pick.player.position,
         pick.player.team,
-        pick.player.projectedPoints,
+        pick.player.rankEcr || pick.player.averageRank,
+        pick.player.tier ? `Tier ${pick.player.tier}` : '',
+        pick.player.minRank !== undefined && pick.player.maxRank !== undefined
+          ? `${pick.player.minRank}-${pick.player.maxRank}`
+          : '',
       ]);
 
       const csvContent = [csvHeaders, ...csvRows]

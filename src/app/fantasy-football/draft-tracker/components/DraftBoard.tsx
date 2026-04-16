@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import { Player, TeamRoster } from "@/types";
 import { useDebounce } from "@/hooks/useDebounce";
 
@@ -65,6 +65,82 @@ function matchesFilter(player: Player, filter: BoardFilter): boolean {
   return player.position === filter;
 }
 
+function getFilterStyle(active: boolean): CSSProperties {
+  if (active) {
+    return {
+      borderColor: "var(--home-ink)",
+      background: "var(--home-ink)",
+      color: "var(--home-paper)",
+    };
+  }
+
+  return {
+    borderColor: "var(--home-rule)",
+    background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+    color: "var(--home-ink)",
+  };
+}
+
+function getPositionTone(position: string): CSSProperties {
+  switch (position) {
+    case "QB":
+      return {
+        background: "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
+      };
+    case "RB":
+      return {
+        background: "color-mix(in srgb, var(--color-success) 14%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--color-success) 24%, var(--home-rule))",
+      };
+    case "WR":
+      return {
+        background: "color-mix(in srgb, var(--home-acid) 26%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-acid) 34%, var(--home-rule))",
+      };
+    case "TE":
+      return {
+        background: "color-mix(in srgb, var(--color-warning) 18%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--color-warning) 26%, var(--home-rule))",
+      };
+    case "K":
+      return {
+        background: "color-mix(in srgb, var(--home-moss) 22%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-moss) 32%, var(--home-rule))",
+      };
+    case "DST":
+      return {
+        background: "color-mix(in srgb, var(--home-stone) 50%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--home-stone) 58%, var(--home-rule))",
+      };
+    default:
+      return {
+        background: "color-mix(in srgb, var(--home-paper-alt) 90%, white)",
+        borderColor: "var(--home-rule)",
+      };
+  }
+}
+
+function formatRankValue(value: number | string | undefined): string {
+  if (typeof value === "number") {
+    if (!Number.isFinite(value)) {
+      return "--";
+    }
+
+    return Number.isInteger(value) ? value.toString() : value.toFixed(1);
+  }
+
+  return value?.trim() ? value : "--";
+}
+
+function formatRange(player: Player): string {
+  if (player.minRank === undefined || player.maxRank === undefined) {
+    return "--";
+  }
+
+  return `${formatRankValue(player.minRank)} to ${formatRankValue(player.maxRank)}`;
+}
+
 export function DraftBoard({
   players,
   draftedPlayerIds,
@@ -104,16 +180,22 @@ export function DraftBoard({
   const rosterNeeds = getRosterNeedOrder(userTeam);
 
   return (
-    <div className="rounded-[28px] border border-white/10 bg-[#08111f]/90 p-5">
-      <div className="flex flex-col gap-3 border-b border-white/10 pb-4">
+    <div className="home-card p-5 sm:p-6">
+      <div className="flex flex-col gap-3 border-b pb-4" style={{ borderColor: "var(--home-rule)" }}>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Best Available</p>
-            <h2 className="mt-2 text-2xl font-semibold text-white">
+            <p className="home-kicker mb-1">Best Available</p>
+            <h2 className="text-2xl font-semibold">
               Pick #{currentPick} on the clock: Team {currentTeamNumber}
             </h2>
           </div>
-          <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-slate-300">
+          <div
+            className="rounded-full border px-3 py-1.5 text-sm font-medium"
+            style={{
+              borderColor: "var(--home-rule)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 52%, white)",
+            }}
+          >
             {isUserPick ? "Your pick is live" : "Log the room's next selection"}
           </div>
         </div>
@@ -122,7 +204,11 @@ export function DraftBoard({
           {rosterNeeds.slice(0, 3).map((need) => (
             <span
               key={`need-${need}`}
-              className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-100"
+              className="inline-flex min-h-[36px] items-center rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em]"
+              style={{
+                borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
+                background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+              }}
             >
               Need {need}
             </span>
@@ -130,15 +216,23 @@ export function DraftBoard({
         </div>
       </div>
 
-      <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1fr)_260px]">
+      <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1fr)_17rem]">
         <div className="grid gap-4">
-          <label className="grid gap-2 text-sm">
-            <span className="font-medium text-slate-200">Search the board</span>
+          <label className="grid gap-2 text-sm" htmlFor="draft-board-search">
+            <span className="home-kicker mb-0">Search the board</span>
             <input
+              id="draft-board-search"
+              name="draftBoardSearch"
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
+              autoComplete="off"
               placeholder="Search player, team, or position"
-              className="min-h-[48px] rounded-2xl border border-white/10 bg-white/5 px-4 text-white outline-none placeholder:text-slate-500 focus:border-sky-300/40"
+              className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                color: "var(--home-ink)",
+              }}
             />
           </label>
 
@@ -150,11 +244,8 @@ export function DraftBoard({
                   key={option.value}
                   type="button"
                   onClick={() => setSelectedPosition(option.value)}
-                  className={`min-h-[42px] rounded-full px-4 py-2 text-sm font-semibold transition ${
-                    active
-                      ? "bg-white text-slate-950"
-                      : "bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white"
-                  }`}
+                  className="min-h-[44px] rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+                  style={getFilterStyle(active)}
                 >
                   {option.label}
                 </button>
@@ -164,79 +255,144 @@ export function DraftBoard({
 
           <div className="grid gap-3">
             {isDraftComplete ? (
-              <div className="rounded-[24px] border border-white/10 bg-white/[0.035] px-5 py-12 text-center">
-                <p className="text-lg font-semibold text-white">Draft complete.</p>
-                <p className="mt-2 text-sm text-slate-400">Reset the room to start a new draft board.</p>
+              <div
+                className="rounded-[1.5rem] border px-5 py-12 text-center"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                }}
+              >
+                <p className="text-lg font-semibold">Draft complete.</p>
+                <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                  Reset the room to start a new draft board.
+                </p>
               </div>
             ) : bestAvailable.length === 0 ? (
-              <div className="rounded-[24px] border border-dashed border-white/10 bg-white/[0.035] px-5 py-12 text-center">
-                <p className="text-lg font-semibold text-white">No players match that filter.</p>
-                <p className="mt-2 text-sm text-slate-400">Clear the search or switch positions.</p>
+              <div
+                className="rounded-[1.5rem] border px-5 py-12 text-center"
+                style={{
+                  borderColor: "var(--home-rule)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                }}
+              >
+                <p className="text-lg font-semibold">No players match that filter.</p>
+                <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                  Clear the search or switch positions.
+                </p>
               </div>
             ) : (
-              bestAvailable.map((player, index) => (
-                <div
-                  key={player.id}
-                  className="grid gap-3 rounded-[24px] border border-white/10 bg-white/[0.035] px-4 py-4 sm:grid-cols-[72px_minmax(0,1.3fr)_110px_120px_auto] sm:items-center"
-                >
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">Rank</p>
-                    <p className="mt-1 text-2xl font-semibold text-white">{index + 1}</p>
-                  </div>
+              bestAvailable.map((player) => {
+                const fitsCurrentNeed = rosterNeeds.includes(player.position);
 
-                  <div className="min-w-0">
-                    <p className="truncate text-base font-semibold text-white">{player.name}</p>
-                    <p className="mt-1 text-sm text-slate-400">
-                      {player.team} • {player.position}
-                      {player.tier ? ` • Tier ${player.tier}` : ""}
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                      Proj. Pts
-                    </p>
-                    <p className="mt-1 text-sm font-semibold text-white">{Math.round(player.projectedPoints ?? 0)}</p>
-                  </div>
-
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">ADP</p>
-                    <p className="mt-1 text-sm font-semibold text-white">
-                      {player.adp ? Math.round(player.adp) : "--"}
-                    </p>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => onDraftPlayer(player)}
-                    disabled={isDraftComplete}
-                    className="min-h-[44px] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+                return (
+                  <div
+                    key={player.id}
+                    className="grid gap-4 rounded-[1.5rem] border px-4 py-4 sm:grid-cols-[72px_minmax(0,1.45fr)_110px_140px_auto] sm:items-center"
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 42%, white)",
+                    }}
                   >
-                    Log pick
-                  </button>
-                </div>
-              ))
+                    <div>
+                      <p className="home-kicker mb-1">Rank</p>
+                      <p className="text-2xl font-semibold">{formatRankValue(player.rankEcr ?? player.averageRank)}</p>
+                    </div>
+
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="truncate text-base font-semibold">{player.name}</p>
+                        <span
+                          className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                          style={getPositionTone(player.position)}
+                        >
+                          {player.position}
+                        </span>
+                        {fitsCurrentNeed && (
+                          <span
+                            className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                            style={{
+                              borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
+                              background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+                            }}
+                          >
+                            Priority
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                        {player.team}
+                        {Number.isFinite(player.rankAverage) ? ` • Avg ${Number(player.rankAverage).toFixed(2)}` : ""}
+                        {player.positionRank ? ` • ${player.position}${player.positionRank}` : ""}
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="home-kicker mb-1">Tier</p>
+                      <p className="text-sm font-semibold">{player.tier ? `Tier ${player.tier}` : "Not listed"}</p>
+                    </div>
+
+                    <div>
+                      <p className="home-kicker mb-1">Expert range</p>
+                      <p className="text-sm font-semibold">{formatRange(player)}</p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => onDraftPlayer(player)}
+                      disabled={isDraftComplete}
+                      className="min-h-[44px] rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+                      style={{
+                        borderColor: "var(--home-ink)",
+                        background: "var(--home-ink)",
+                        color: "var(--home-paper)",
+                      }}
+                    >
+                      Log pick
+                    </button>
+                  </div>
+                );
+              })
             )}
           </div>
         </div>
 
         <div className="grid gap-4">
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.035] p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Available pool</p>
-            <p className="mt-2 text-3xl font-semibold text-white">{availablePlayers.length}</p>
-            <p className="mt-2 text-sm text-slate-400">Players left on the board from the current snapshot.</p>
+          <div
+            className="rounded-[1.5rem] border p-4"
+            style={{
+              borderColor: "var(--home-rule)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+            }}
+          >
+            <p className="home-kicker mb-1">Available pool</p>
+            <p className="text-3xl font-semibold">{availablePlayers.length}</p>
+            <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              Players left on the board from the current snapshot.
+            </p>
           </div>
 
-          <div className="rounded-[24px] border border-white/10 bg-white/[0.035] p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Roster pressure</p>
+          <div
+            className="rounded-[1.5rem] border p-4"
+            style={{
+              borderColor: "var(--home-rule)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+            }}
+          >
+            <p className="home-kicker mb-1">Roster pressure</p>
             <div className="mt-3 grid gap-2">
               {rosterNeeds.length === 0 ? (
-                <p className="text-sm text-slate-400">You have the core starting spots covered.</p>
+                <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                  You have the core starting spots covered.
+                </p>
               ) : (
                 rosterNeeds.map((need) => (
                   <div
                     key={`pressure-${need}`}
-                    className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-3 py-2 text-sm font-semibold text-emerald-100"
+                    className="rounded-[1rem] border px-3 py-2 text-sm font-semibold"
+                    style={{
+                      borderColor: "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))",
+                      background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper))",
+                    }}
                   >
                     Prioritize {need}
                   </div>

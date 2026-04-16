@@ -55,9 +55,8 @@ const legacyPprSnapshot = {
       team: "PHI",
       position: "RB",
       averageRank: 1,
-      projectedPoints: 260,
       standardDeviation: 1.4,
-      expertRanks: [1],
+      lastUpdated: "2026-04-15T15:29:20.000Z",
     },
   ],
 };
@@ -101,6 +100,7 @@ describe("GET /api/fantasy-data", () => {
     expect(body.metadata.scoringFormat).toBe("STANDARD");
     expect(body.metadata.slice.available).toBe(true);
     expect(body.metadata.slice.rangeKind).toBe("position");
+    expect(body.metadata.upstreamUpdatedAt).toMatch(/^20\d{2}-/);
   });
 
   it("returns unavailable metadata instead of overall fallback data for an overall-only legacy ppr slice", async () => {
@@ -139,10 +139,12 @@ describe("GET /api/fantasy-data", () => {
     expect(body.data.positions.FLEX.length).toBeGreaterThan(100);
     expect(body.metadata.position).toBe("all");
     expect(body.metadata.scoringFormat).toBe("STANDARD");
+    expect(body.metadata.upstreamUpdatedAt).toMatch(/^20\d{2}-/);
     expect(body.metadata.slice).toBeNull();
-    expect(body.metadata.slices.overall.sourceKind).toBe("derived_overall");
+    expect(body.metadata.slices.overall.sourceKind).toBe("overall_consensus");
     expect(body.metadata.slices.dst.available).toBe(true);
-    expect(body.data.overall.every((player: Record<string, unknown>) => !("overallValue" in player))).toBe(true);
+    expect(body.data.overall.every((player: Record<string, unknown>) => !("projectedPoints" in player))).toBe(true);
+    expect(body.data.overall.every((player: Record<string, unknown>) => !("expertRanks" in player))).toBe(true);
   });
 
   it("uses the rate limit response when the request is limited", async () => {

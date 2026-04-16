@@ -20,9 +20,8 @@ describe("fantasy snapshot normalization", () => {
               team: "BUF",
               position: "QB",
               averageRank: 2,
-              projectedPoints: 360,
               standardDeviation: 1.2,
-              expertRanks: [2],
+              lastUpdated: "2026-04-15T15:29:20.000Z",
             },
           ],
         },
@@ -33,9 +32,8 @@ describe("fantasy snapshot normalization", () => {
             team: "CIN",
             position: "WR",
             averageRank: 1,
-            projectedPoints: 330,
             standardDeviation: 1.1,
-            expertRanks: [1],
+            lastUpdated: "2026-04-15T15:29:20.000Z",
           },
         ],
       },
@@ -43,6 +41,7 @@ describe("fantasy snapshot normalization", () => {
     );
 
     expect(snapshot.schemaVersion).toBe(FANTASY_SNAPSHOT_SCHEMA_VERSION);
+    expect(snapshot.upstreamUpdatedAt).toBe("2026-04-15T15:29:20.000Z");
     expect(snapshot.sliceMetadata.overall.available).toBe(true);
     expect(snapshot.sliceMetadata.qb.available).toBe(true);
     expect(snapshot.sliceMetadata.qb.sourceKind).toBe("shared_position_consensus");
@@ -65,9 +64,8 @@ describe("fantasy snapshot normalization", () => {
               team: "DEN",
               position: "DST",
               averageRank: 12,
-              projectedPoints: 135,
               standardDeviation: 2,
-              expertRanks: [12],
+              lastUpdated: "2026-04-15T15:29:20.000Z",
             },
           ],
         },
@@ -78,9 +76,8 @@ describe("fantasy snapshot normalization", () => {
             team: "ATL",
             position: "RB",
             averageRank: 1,
-            projectedPoints: 275,
             standardDeviation: 1.1,
-            expertRanks: [1],
+            lastUpdated: "2026-04-15T15:29:20.000Z",
           },
         ],
       },
@@ -108,9 +105,8 @@ describe("fantasy snapshot normalization", () => {
             team: "PHI",
             position: "RB",
             averageRank: 1,
-            projectedPoints: 260,
             standardDeviation: 1.4,
-            expertRanks: [1],
+            lastUpdated: "2026-04-15T15:29:20.000Z",
           },
         ],
       },

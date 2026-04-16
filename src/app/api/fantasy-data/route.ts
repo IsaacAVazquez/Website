@@ -42,15 +42,16 @@ export async function GET(request: NextRequest) {
         metadata: {
           season: snapshot.season,
           week: snapshot.week,
-        generatedAt: snapshot.generatedAt,
-        scoringFormat: snapshot.scoringFormat,
-        source: snapshot.source,
-        position: "all",
-        playerCount: snapshot.overall.length,
-        slice: null,
-        slices: snapshot.sliceMetadata,
-      },
-    };
+          generatedAt: snapshot.generatedAt,
+          upstreamUpdatedAt: snapshot.upstreamUpdatedAt,
+          scoringFormat: snapshot.scoringFormat,
+          source: snapshot.source,
+          position: "all",
+          playerCount: snapshot.overall.length,
+          slice: null,
+          slices: snapshot.sliceMetadata,
+        },
+      };
 
       return NextResponse.json(response, { headers: buildHeaders() });
     }
@@ -63,6 +64,7 @@ export async function GET(request: NextRequest) {
         season: snapshot.season,
         week: snapshot.week,
         generatedAt: snapshot.generatedAt,
+        upstreamUpdatedAt: snapshot.upstreamUpdatedAt,
         scoringFormat: routeScoringToScoringFormat(scoring),
         source: snapshot.source,
         position: position as FantasyRoutePosition,
