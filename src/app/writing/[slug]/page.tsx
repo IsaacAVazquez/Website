@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { AuthorBio } from "@/components/ui/AuthorBio";
 import { constructMetadata, absoluteUrl } from "@/lib/seo";
 import { AIStructuredData } from "@/components/AIStructuredData";
+import { getBlogPostCollectionLabel } from "@/lib/blog-config";
 import {
   getAllBlogPostPreviews,
   getBlogPostBySlug,
@@ -44,8 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
     articleAuthor: "https://isaacavazquez.com/about",
-    articleSection:
-      Array.isArray(post.tags) && post.tags[0] ? post.tags[0] : "Product Management",
+    articleSection: getBlogPostCollectionLabel(post),
     articleTags: post.seo?.keywords || post.tags,
     canonicalUrl: `https://isaacavazquez.com/writing/${slug}`,
     aiMetadata: {
@@ -106,10 +106,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             image: absoluteUrl(post.coverImage),
             inLanguage: "en-US",
             isAccessibleForFree: true,
-            articleSection:
-              Array.isArray(post.tags) && post.tags[0]
-                ? post.tags[0]
-                : "Product Management",
+            articleSection: getBlogPostCollectionLabel(post),
           },
         }}
       />
@@ -142,11 +139,9 @@ export default async function BlogPostPage({ params }: PageProps) {
             </nav>
 
             <header className="mb-10 space-y-5">
-              {post.cluster ? (
-                <span className="home-kicker inline-block">{post.cluster}</span>
-              ) : post.tags && post.tags[0] ? (
-                <span className="home-kicker inline-block">{post.tags[0]}</span>
-              ) : null}
+              <span className="home-kicker inline-block">
+                {getBlogPostCollectionLabel(post)}
+              </span>
 
               <h1
                 className="max-w-5xl"
@@ -268,7 +263,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                       className="group block h-full"
                     >
                       <article className="home-card h-full" style={{ padding: "1.35rem" }}>
-                        <p className="home-kicker mb-2">{relatedPost.category}</p>
+                        <p className="home-kicker mb-2">
+                          {getBlogPostCollectionLabel(relatedPost)}
+                        </p>
                         <h3
                           style={{
                             fontFamily: "var(--font-home-sans)",

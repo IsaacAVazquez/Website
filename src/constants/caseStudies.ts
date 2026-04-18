@@ -222,6 +222,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "decision-lab": {
+    slug: "decision-lab",
+    title: "Decision Lab",
+    description:
+      "Product-bet triage tool for scoring impact, confidence, effort, and reversibility, then forcing a plain ship, test, or hold recommendation.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Decision Support UX", "Tailwind CSS"],
+    metrics: "6 presets · Deep-linkable state · Deterministic scoring model",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/decision-lab",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a product-bet triage tool that keeps impact, confidence, effort, and reversibility separate before forcing a decision.",
+      impact:
+        "Makes roadmap debates more legible by turning fuzzy prioritization arguments into an explicit ship, test, or hold call.",
+    },
+    problem: {
+      context:
+        "Product discussions often collapse multiple tradeoffs into one vague conviction, which makes it easier to argue confidently than to reason clearly.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "march-madness-2026": {
     slug: "march-madness-2026",
     title: "March Madness 2026 Bracket Analysis",
@@ -290,7 +323,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
   "mba-role-tracker": {
     slug: "mba-role-tracker",
-    title: "MBA Role Tracker",
+    title: "Job Search",
     description:
       "Recruiting-intelligence dashboard tracking public tech company job boards for MBA internships and full-time business roles across Greenhouse, Ashby, Lever, and manual career-page fallbacks.",
     role: "Full-Stack Developer & Designer",
@@ -299,7 +332,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     metrics: "32 companies · Live role filters · Alerts and digests",
     github: "https://github.com/IsaacAVazquez",
     link: "/mba-internship-notifications",
-    featured: true,
+    featured: false,
 
     overview: {
       summary:
@@ -391,13 +424,14 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 const HOMEPAGE_FEATURED_SLUGS = [
   "investment-analytics-platform",
   "news-pulse-dashboard",
-  "mba-role-tracker",
+  "interchange-iq",
 ] as const;
 
 const PORTFOLIO_PROJECT_ORDER = [
   "investment-analytics-platform",
   "interchange-iq",
   "news-pulse-dashboard",
+  "decision-lab",
   "budget-planner",
   "mba-role-tracker",
   "spacex-mission-control",

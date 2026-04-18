@@ -1,6 +1,6 @@
 import { createEditorialOgImage } from "@/lib/og";
 import { getBlogPostPreviewBySlug } from "@/lib/blog";
-import { getBlogClusterTheme } from "@/lib/blog-config";
+import { getBlogClusterTheme, getBlogPostCollectionLabel } from "@/lib/blog-config";
 
 export const runtime = "nodejs";
 export const contentType = "image/png";
@@ -18,7 +18,7 @@ export default async function Image({
   const { slug } = await params;
   const post = getBlogPostPreviewBySlug(slug);
 
-  const eyebrow = post?.cluster || post?.category || "Writing";
+  const eyebrow = getBlogPostCollectionLabel(post);
   const title = post?.title || "Writing";
   const description =
     post?.excerpt ||

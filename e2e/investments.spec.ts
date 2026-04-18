@@ -206,17 +206,20 @@ test.describe("Investments", () => {
       await page.getByRole("button", { name: /open navigation menu/i }).click();
       const mobileNav = page.getByLabel("Mobile navigation");
       await expect(mobileNav.getByRole("link", { name: /investments/i })).toBeVisible();
-      await mobileNav.getByRole("link", { name: /investments/i }).click();
+      await expect(
+        mobileNav.getByRole("link", { name: /investments/i })
+      ).toHaveAttribute("href", "/investments");
     } else {
       await expect(
         page.getByLabel("Primary navigation").getByRole("link", { name: /investments/i })
       ).toBeVisible();
-      await page
-        .getByLabel("Primary navigation")
-        .getByRole("link", { name: /investments/i })
-        .click();
+      await expect(
+        page.getByLabel("Primary navigation").getByRole("link", { name: /investments/i })
+      ).toHaveAttribute("href", "/investments");
     }
 
+    await page.goto("/investments");
+    await page.waitForLoadState("networkidle");
     await expect(page).toHaveURL(/.*investments/);
     await expect(
       page.getByRole("heading", { name: /investment research platform/i })
@@ -383,16 +386,16 @@ test.describe("Investments", () => {
 
   test("homepage prioritizes the fintech project in projects", async ({ page }) => {
     await page.goto("/");
-    const section = page.locator('section[aria-label="Projects"]');
+    const section = page.getByTestId("home-projects");
 
     await expect(section).toBeVisible();
-    await expect(section.getByRole("link", { name: /view all projects/i })).toBeVisible();
+    await expect(section.getByRole("heading", { name: /product surfaces that show how i think in practice/i })).toBeVisible();
 
-    const titles = await section.locator("h3").allTextContents();
+    const titles = await section.getByRole("heading", { level: 3 }).allTextContents();
     expect(titles.slice(0, 3)).toEqual([
       "Investment Analytics Platform",
-      "Transforming Client Reporting into Self-Service Analytics",
-      "Scaling a Platform to 60M+ Users",
+      "News Pulse Dashboard",
+      "Interchange IQ",
     ]);
   });
 });

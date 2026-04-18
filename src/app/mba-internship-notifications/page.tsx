@@ -4,11 +4,11 @@ import { MBAJobsClient } from "./mba-jobs-client";
 import { normalizeMBAJobsState } from "./mba-jobs-state";
 
 export const metadata = constructMetadata({
-  title: "MBA Role Tracker | Isaac Vazquez",
+  title: "Job Search | Isaac Vazquez",
   description:
     "Live dashboard monitoring 32 tech company career pages and public job boards for MBA internships plus full-time business roles across product, PMM, strategy, operations, growth, and finance.",
   canonicalUrl: "/mba-internship-notifications",
-  dateModified: "2026-04-14",
+  dateModified: "2026-04-15",
   aiMetadata: {
     profession: "Product Manager",
     specialty:
@@ -40,6 +40,7 @@ export const metadata = constructMetadata({
 interface MBAJobsPageProps {
   searchParams: Promise<{
     q?: string;
+    location?: string;
     sort?: string;
     category?: string;
     roleType?: string;
@@ -51,7 +52,7 @@ export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
   const initialState = normalizeMBAJobsState(await searchParams);
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "MBA Role Tracker", url: "/mba-internship-notifications" },
+    { name: "Job Search", url: "/mba-internship-notifications" },
   ];
 
   return (
@@ -69,7 +70,7 @@ export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
       <StructuredData
         type="SoftwareApplication"
         data={{
-          name: "MBA Role Tracker",
+          name: "Job Search",
           description:
             "Career page and public job board monitor for MBA internships and full-time business roles across 32 tech companies.",
           url: "https://isaacavazquez.com/mba-internship-notifications",

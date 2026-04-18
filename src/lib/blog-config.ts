@@ -1,7 +1,13 @@
 export type BlogCluster =
-  | "AI For Product Managers"
+  | "PM Workflows"
+  | "Agentic AI"
   | "Fintech Product & Pricing"
-  | "Quality / Systems Thinking";
+  | "Systems & Quality";
+
+export type BlogArchiveBucket =
+  | "Sports & Fantasy"
+  | "Signals & Commentary"
+  | "Space & Experiments";
 
 export interface BlogPostCTA {
   eyebrow?: string;
@@ -12,9 +18,10 @@ export interface BlogPostCTA {
 }
 
 export const BLOG_CLUSTER_ORDER: BlogCluster[] = [
-  "AI For Product Managers",
+  "PM Workflows",
+  "Agentic AI",
   "Fintech Product & Pricing",
-  "Quality / Systems Thinking",
+  "Systems & Quality",
 ];
 
 export const BLOG_CLUSTER_DETAILS: Record<
@@ -24,20 +31,51 @@ export const BLOG_CLUSTER_DETAILS: Record<
     accent: "cobalt" | "teal" | "amber";
   }
 > = {
-  "AI For Product Managers": {
+  "PM Workflows": {
     description:
-      "First-person pieces on using AI inside discovery, planning, specs, and agentic product decisions.",
+      "The way I use AI across discovery, specs, research synthesis, roadmapping, and stakeholder work when the job is to make the next decision clearer.",
     accent: "cobalt",
+  },
+  "Agentic AI": {
+    description:
+      "What I think is actually changing with agents, orchestration, model economics, and the product decisions around where autonomy helps and where it breaks.",
+    accent: "amber",
   },
   "Fintech Product & Pricing": {
     description:
-      "Product breakdowns on investment workflows, payments economics, and tools that make financial decisions easier to inspect.",
+      "Product breakdowns on investment workflows, payments economics, and the tools I build when financial decisions need to be easier to inspect.",
     accent: "teal",
   },
-  "Quality / Systems Thinking": {
+  "Systems & Quality": {
     description:
-      "Writing on reliability, testing, and the operational judgment that keeps real systems usable under pressure.",
+      "Writing on reliability, testing, architecture, and the engineering judgment that keeps real systems usable once they leave the whiteboard.",
     accent: "amber",
+  },
+};
+
+export const BLOG_ARCHIVE_BUCKET_ORDER: BlogArchiveBucket[] = [
+  "Sports & Fantasy",
+  "Signals & Commentary",
+  "Space & Experiments",
+];
+
+export const BLOG_ARCHIVE_BUCKET_DETAILS: Record<
+  BlogArchiveBucket,
+  {
+    description: string;
+  }
+> = {
+  "Sports & Fantasy": {
+    description:
+      "Fantasy football models, bracket work, and the sports analytics experiments that still hold up.",
+  },
+  "Signals & Commentary": {
+    description:
+      "Time-bound notes on tech, policy, markets, and the stories that felt worth paying attention to that week.",
+  },
+  "Space & Experiments": {
+    description:
+      "Space writing and side-product experiments that started from curiosity and turned into working surfaces.",
   },
 };
 
@@ -75,6 +113,14 @@ export function getBlogCoverImageUrl(slug: string, coverImage?: string) {
   }
 
   return `/writing/${slug}/opengraph-image`;
+}
+
+export function getBlogPostCollectionLabel(post?: {
+  cluster?: BlogCluster | null;
+  archiveBucket?: BlogArchiveBucket | null;
+  category?: string | null;
+}) {
+  return post?.cluster || post?.archiveBucket || post?.category || "Writing";
 }
 
 export function getBlogClusterTheme(cluster?: BlogCluster | null) {

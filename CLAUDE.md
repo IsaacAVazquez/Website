@@ -2,7 +2,7 @@
 
 Comprehensive repo context for agents and collaborators working in `/Users/isaacvazquez/Website`.
 
-**Last updated:** 2026-04-14
+**Last updated:** 2026-04-15
 
 ---
 
@@ -14,9 +14,9 @@ This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines 
 2. **Writing surface** — long-form MDX posts under `/writing`
 3. **Fantasy football analytics** — rankings, tiers, and draft tooling
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
-5. **Experimental dashboards** — standalone tools like `/premier-league`, `/la-liga`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
+5. **Experimental dashboards** — standalone tools like `/formula-1`, `/premier-league`, `/la-liga`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
 6. **Fintech tools** — standalone calculators under `/fintech-tools/*`
-7. **MBA internship tracker** — live role aggregator at `/mba-internship-notifications`, featured on the home page
+7. **MBA internship tracker** — live role aggregator at `/mba-internship-notifications`, surfaced through the projects section
 
 The site is not a generic blog template. It is a portfolio-first experience with secondary authority-building content.
 
@@ -48,6 +48,7 @@ npm run update:investments
 npm run update:football
 npm run update:premier-league
 npm run update:la-liga
+npm run update:formula-1
 npm run update:spacex
 npm run lint
 ```
@@ -80,6 +81,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 
 ### Experimental dashboards
 
+- `/formula-1`
 - `/premier-league`
 - `/la-liga`
 
@@ -205,6 +207,7 @@ git push
 
 ### Other standalone data tools
 
+- `/formula-1` reads from `src/data/formula1Snapshot.ts` with deep-linkable route state
 - `/news-pulse` reads from `src/lib/news-pulse-utils.ts` through `/api/news-pulse`
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes
 - `/polling-aggregator` reads from `src/data/pollingSnapshot.ts` with deep-linkable route state
@@ -225,7 +228,7 @@ git push
 
 ### MBA internship tracker
 
-- `/mba-internship-notifications` is a live role aggregator featured on the home page
+- `/mba-internship-notifications` is a live role aggregator surfaced through the projects section
 - client shell: `src/app/mba-internship-notifications/mba-jobs-client.tsx`
 - filter/search state lives in `mba-jobs-state.ts` in the same folder
 - data is served by `/api/mba-jobs`

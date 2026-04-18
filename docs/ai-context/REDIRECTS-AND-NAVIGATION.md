@@ -100,4 +100,4 @@ Defined in `next.config.mjs`.
 - `/writing` is the canonical writing route
 - `Projects` is the public-facing nav label even though the route stays `/portfolio`
 - `Writing` is again a promoted global-nav item
-- `/premier-league`, `/la-liga`, `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, and `/fintech-tools/*` are live routes but not promoted in the global header
+- `/formula-1`, `/premier-league`, `/la-liga`, `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, and `/fintech-tools/*` are live routes but not promoted in the global header

@@ -23,6 +23,7 @@ Primary live routes:
 - `/accessibility`
 - `/portfolio` and `/portfolio/[slug]`
 - `/investments`
+- `/formula-1`
 - `/premier-league`
 - `/la-liga`
 - `/writing` and `/writing/[slug]`
@@ -75,6 +76,7 @@ Self-shell routes currently include:
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
 - `/fintech-tools/budget-planner`
+- `/formula-1`
 - `/investments`
 - `/la-liga`
 - `/premier-league`
@@ -130,6 +132,7 @@ npm run dev
 - Prefer Node 20 locally to match GitHub Actions.
 - `npm run update:investments` also requires `.venv/bin/python3`.
 - `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots.
+- `npm run update:formula-1` reads historical OpenF1 endpoints and does not require an API key.
 - If the investments fetch step fails on imports, install the Python dependency with `.venv/bin/pip install defeatbeta-api`.
 
 ### Day-to-day verification
@@ -267,6 +270,7 @@ Inputs and outputs:
 | `npm run update:football` | Rebuild both Premier League and La Liga snapshots |
 | `npm run update:premier-league` | Rebuild the checked-in Premier League snapshot |
 | `npm run update:la-liga` | Rebuild the checked-in La Liga snapshot |
+| `npm run update:formula-1` | Rebuild the checked-in Formula 1 snapshot |
 | `npm run generate:icons` | Regenerate PWA icons |
 
 ---

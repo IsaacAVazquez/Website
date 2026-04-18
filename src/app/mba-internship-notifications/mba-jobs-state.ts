@@ -43,6 +43,7 @@ export const ROLE_FAMILY_LABELS: Record<MBARoleFamilyFilter, string> =
 
 export const DEFAULT_MBA_JOBS_STATE: MBAJobsSearchState = {
   q: "",
+  location: "",
   sort: "relevance",
   category: "all",
   roleType: "all",
@@ -70,12 +71,14 @@ function isValidOption<T extends string>(
 
 export function normalizeMBAJobsState(input: SearchParamInput): MBAJobsSearchState {
   const rawQuery = readParam(input, "q");
+  const rawLocation = readParam(input, "location");
   const rawSort = readParam(input, "sort");
   const rawCategory = readParam(input, "category");
   const rawRoleType = readParam(input, "roleType");
   const rawRoleFamily = readParam(input, "roleFamily");
   return {
     q: rawQuery?.trim() ?? DEFAULT_MBA_JOBS_STATE.q,
+    location: rawLocation?.trim() ?? DEFAULT_MBA_JOBS_STATE.location,
     sort: isValidOption(rawSort, SORT_OPTIONS)
       ? rawSort
       : DEFAULT_MBA_JOBS_STATE.sort,
@@ -94,7 +97,9 @@ export function normalizeMBAJobsState(input: SearchParamInput): MBAJobsSearchSta
 export function buildMBAJobsHref(state: MBAJobsSearchState): string {
   const params = new URLSearchParams();
   const query = state.q.trim();
+  const location = state.location.trim();
   if (query) params.set("q", query);
+  if (location) params.set("location", location);
   if (state.sort !== DEFAULT_MBA_JOBS_STATE.sort) params.set("sort", state.sort);
   if (state.category !== DEFAULT_MBA_JOBS_STATE.category)
     params.set("category", state.category);

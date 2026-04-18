@@ -9,3 +9,10 @@ export const fantasyProsPublicConsensusFixture = `
   </body>
 </html>
 `;
+
+describe("fantasyProsPublicSource fixture", () => {
+  it("exports the embedded FantasyPros HTML fixture", () => {
+    expect(fantasyProsPublicConsensusFixture).toContain("FantasyPros fixture");
+    expect(fantasyProsPublicConsensusFixture).toContain('"player_name":"Bijan Robinson"');
+  });
+});

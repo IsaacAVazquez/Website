@@ -129,7 +129,7 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
         >
           <p className="home-kicker">Investment Research</p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-[var(--home-ink)] sm:text-4xl">
-            Investment Research
+            Investment Research Platform
           </h1>
           <p className="mt-2 max-w-[64ch] text-sm leading-6 text-[var(--home-ink-muted)]">
             I built this to stress-test investment theses in one place. Company snapshots, valuation history, and a portfolio tracker that lives in your browser with no logins or cloud sync.

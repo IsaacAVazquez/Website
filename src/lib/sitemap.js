@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
@@ -10,6 +11,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/resume": "2026-04-13",
   "/portfolio": "2026-04-04",
   "/writing": "2026-04-13",
+  "/golf": "2026-04-16",
   "/investments": readInvestmentsLastmod(),
   "/news-pulse": "2026-04-01",
   "/spacex-mission-control": "2026-04-01",
