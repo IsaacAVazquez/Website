@@ -1,0 +1,16 @@
+---
+title: SpaceX mission control — image caching and hydration fixes
+publishedAt: "2026-03-28"
+category: Fix
+summary: Stabilized image caching for mission imagery and sorted out a hydration mismatch on the SpaceX dashboard.
+tags:
+  - spacex
+  - fix
+---
+
+The [SpaceX mission control dashboard](/spacex-mission-control) had two small but annoying issues:
+
+- **Image caching** was re-fetching mission art more than it needed to.
+- **Hydration mismatch** caused a flicker on the summary panel on first load.
+
+Both fixed. The dashboard should feel noticeably calmer now.
