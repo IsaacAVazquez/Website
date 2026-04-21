@@ -2,7 +2,7 @@
 
 Comprehensive repo context for agents and collaborators working in `/Users/isaacvazquez/Website`.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-14
 
 ---
 
@@ -92,6 +92,7 @@ npm run update:la-liga
 - `/fintech-tools/budget-planner`
 - `/fintech-tools/interchange-iq`
 - `/polling-aggregator`
+- `/mba-internship-notifications`
 
 ### Utility/admin
 
@@ -236,6 +237,8 @@ Live routes under `src/app/api/`:
 - `/api/premier-league/teams/[teamId]`
 - `/api/la-liga/summary`
 - `/api/la-liga/teams/[teamId]`
+- `/api/mba-jobs`
+- `/api/mba-jobs/email`
 - `/api/news-pulse`
 - `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/spacex/summary`
 - `/api/rss`

@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-14
 
 ---
 
@@ -43,6 +43,13 @@ Current API route inventory for the app.
 | `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed Premier League club drilldown payload |
 | `/api/la-liga/summary` | GET | Snapshot-backed league table, fixtures, and club options for the La Liga tool |
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed La Liga club drilldown payload |
+
+### MBA internship notifications
+
+| Route | Methods | Notes |
+|------|---------|-------|
+| `/api/mba-jobs` | GET | Aggregates MBA-relevant postings across Greenhouse, Lever, Ashby, and direct-HTML job boards for 32 tech companies; filters via `src/lib/mba-job-matching.ts`; accepts optional `?companies=` filter |
+| `/api/mba-jobs/email` | POST | Sends a grouped digest of supplied `{ jobs, to }` via Resend; requires `RESEND_API_KEY` |
 
 ### Content and utilities
 
@@ -135,6 +142,8 @@ Use these as the actual source of truth:
 - `src/app/api/spacex/launches/route.ts`
 - `src/app/api/spacex/launches/[id]/route.ts`
 - `src/app/api/stocks/route.ts`
+- `src/app/api/mba-jobs/route.ts`
+- `src/app/api/mba-jobs/email/route.ts`
 - `src/app/api/rss/route.ts`
 - `src/app/api/search/route.ts`
 - `src/app/api/scrape/route.ts`

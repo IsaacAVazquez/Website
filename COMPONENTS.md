@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-14
 
 ---
 
@@ -104,6 +104,7 @@ Shared components for both `/premier-league` and `/la-liga` dashboards. All live
 | Polling Aggregator | `src/app/polling-aggregator/*`, `src/data/pollingSnapshot.ts` | Snapshot-backed polling dashboard and deep-linkable route state |
 | Budget Planner | `src/app/fintech-tools/budget-planner/*`, `src/hooks/useBudgetPlanner.ts` | Client-side budget planning tool |
 | Interchange IQ | `src/app/fintech-tools/interchange-iq/*` | Client-side interchange fee analyzer |
+| MBA Role Tracker | `src/app/mba-internship-notifications/*`, `src/constants/mba-companies.ts`, `src/lib/mba-job-matching.ts`, `src/types/mba-jobs.ts` | Client shell (`MBAJobsClient`) plus deep-link state helper (`mba-jobs-state.ts`) backed by `/api/mba-jobs`; uses `src/app/api/mba-jobs/email` for Resend digests |
 
 ---
 

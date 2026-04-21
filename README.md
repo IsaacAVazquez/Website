@@ -3,7 +3,7 @@
 Portfolio, writing, fantasy football analytics, investment research, and standalone data tools built on Next.js 16.
 
 **Live:** [isaacavazquez.com](https://isaacavazquez.com)
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-14
 
 ---
 
@@ -58,6 +58,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/fintech-tools/budget-planner` | Budget planner |
 | `/fintech-tools/interchange-iq` | Interchange fee analyzer |
 | `/polling-aggregator` | Political polling aggregator |
+| `/mba-internship-notifications` | MBA role tracker across tech company job boards |
 | `/resume` | Resume |
 | `/contact` | Contact page |
 | `/accessibility` | Accessibility statement |
