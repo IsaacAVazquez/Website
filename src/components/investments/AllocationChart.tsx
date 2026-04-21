@@ -61,7 +61,7 @@ export function AllocationChart({ holdings }: Props) {
       .join("path")
       .attr("d", arc)
       .attr("fill", (_, i) => PALETTE[i % PALETTE.length])
-      .attr("stroke", "color-mix(in srgb, var(--home-paper) 92%, white)")
+      .attr("stroke", "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))")
       .attr("stroke-width", 2)
       .style("cursor", "pointer")
       .style("transition", "opacity 0.15s ease");

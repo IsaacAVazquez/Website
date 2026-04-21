@@ -79,7 +79,7 @@ const recommendationCopy: Record<DecisionRecommendation, string> = {
 
 function getPanelStyle(): CSSProperties {
   return {
-    background: "color-mix(in srgb, var(--home-paper-alt) 74%, white)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 74%, var(--home-elev-mix))",
     border: "1px solid var(--home-rule)",
     boxShadow: "var(--shadow-sm)",
   };
@@ -128,7 +128,7 @@ function DecisionMatrix({ state }: { state: DecisionLabState }) {
             width={size}
             height={size}
             rx={18}
-            fill="color-mix(in srgb, var(--home-paper) 82%, white)"
+            fill="color-mix(in srgb, var(--home-paper) 82%, var(--home-elev-mix))"
             stroke="var(--home-rule)"
           />
 
@@ -143,7 +143,7 @@ function DecisionMatrix({ state }: { state: DecisionLabState }) {
                   y1={padding}
                   x2={x}
                   y2={padding + size}
-                  stroke="color-mix(in srgb, var(--home-rule) 75%, white)"
+                  stroke="color-mix(in srgb, var(--home-rule) 75%, var(--home-elev-mix))"
                   strokeDasharray="3 5"
                 />
                 <line
@@ -151,7 +151,7 @@ function DecisionMatrix({ state }: { state: DecisionLabState }) {
                   y1={y}
                   x2={padding + size}
                   y2={y}
-                  stroke="color-mix(in srgb, var(--home-rule) 75%, white)"
+                  stroke="color-mix(in srgb, var(--home-rule) 75%, var(--home-elev-mix))"
                   strokeDasharray="3 5"
                 />
               </g>
@@ -380,7 +380,7 @@ function MetricSlider({
                   : `color-mix(in srgb, ${accent} 22%, var(--home-rule))`,
               background:
                 delta === 0
-                  ? "color-mix(in srgb, var(--home-paper) 92%, white)"
+                  ? "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))"
                   : `color-mix(in srgb, ${accent} 12%, var(--home-paper))`,
             }}
           >
@@ -581,7 +581,7 @@ function DecisionLabWorkbench({
                           ...getPanelStyle(),
                           background: isActive
                             ? "color-mix(in srgb, var(--home-haze) 13%, var(--home-paper))"
-                            : "color-mix(in srgb, var(--home-paper-alt) 68%, white)",
+                            : "color-mix(in srgb, var(--home-paper-alt) 68%, var(--home-elev-mix))",
                           borderColor: isActive
                             ? "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))"
                             : "var(--home-rule)",

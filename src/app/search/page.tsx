@@ -81,7 +81,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
                 style={{
                   fontFamily: "var(--font-home-sans)",
-                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                   color: "var(--home-ink)",
                   border: "1px solid var(--home-rule)",
                   letterSpacing: "0.02em",

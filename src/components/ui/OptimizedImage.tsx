@@ -98,8 +98,8 @@ export function OptimizedImage({
   // Error fallback
   if (hasError) {
     return (
-      <div 
-        className={`flex items-center justify-center bg-[var(--neutral-200)] text-slate-500 ${className}`}
+      <div
+        className={`flex items-center justify-center bg-[var(--neutral-200)] text-[var(--home-ink-muted)] ${className}`}
         style={{ width, height }}
       >
         <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
@@ -113,17 +113,14 @@ export function OptimizedImage({
     <div ref={imgRef} className={`relative overflow-hidden ${className}`}>
       {/* Loading placeholder */}
       {!isLoaded && (
-        <div 
+        <div
           className="absolute inset-0 bg-[var(--neutral-200)] animate-pulse"
-          style={{ 
-            backgroundColor: 'rgba(30, 41, 59, 0.5)',
-            ...(placeholder === 'blur' && {
-              backgroundImage: `url(${blurDataURL || defaultBlurDataURL})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              filter: 'blur(10px)',
-            })
-          }}
+          style={placeholder === 'blur' ? {
+            backgroundImage: `url(${blurDataURL || defaultBlurDataURL})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'blur(10px)',
+          } : undefined}
         />
       )}
 

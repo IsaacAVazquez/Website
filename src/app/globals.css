@@ -147,6 +147,14 @@
   --home-dark-ink: #F4EEE1;
   --home-dark-muted: #CFC5B1;
   --home-dark-rule: rgba(244, 238, 225, 0.12);
+
+  /*
+   * Theme-aware elevation mix. In light mode, mixing surfaces toward white
+   * lifts them off the page. In dark mode, mixing toward black adds depth
+   * so raised panels read as distinct from the base paper. Use this anywhere
+   * you'd otherwise hardcode `white` or `black` inside a color-mix().
+   */
+  --home-elev-mix: white;
 }
 
 .dark {
@@ -194,6 +202,8 @@
   --home-dark-ink: #F6F1E7;
   --home-dark-muted: #CEC4AE;
   --home-dark-rule: rgba(246, 241, 231, 0.12);
+
+  --home-elev-mix: black;
 }
 
 @layer base {
@@ -1045,7 +1055,7 @@
 
   .home-spotlight-tags span {
     display: inline-flex;
-    min-height: 40px;
+    min-height: 44px;
     align-items: center;
     border-radius: 999px;
     border: 1px solid color-mix(in srgb, var(--home-stone) 72%, var(--home-ink) 18%);

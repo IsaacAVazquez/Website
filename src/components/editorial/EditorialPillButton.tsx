@@ -19,7 +19,7 @@ export function getPillStyle(active: boolean): CSSProperties {
   }
 
   return {
-    background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
     color: "var(--home-ink-muted)",
     borderColor: "var(--home-rule)",
   };

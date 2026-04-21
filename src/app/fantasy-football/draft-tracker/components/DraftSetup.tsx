@@ -26,7 +26,7 @@ function getOptionStyle(active: boolean): CSSProperties {
 
   return {
     borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper-alt) 52%, white)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
     color: "var(--home-ink)",
   };
 }
@@ -34,7 +34,7 @@ function getOptionStyle(active: boolean): CSSProperties {
 function getFieldStyle(): CSSProperties {
   return {
     borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
     color: "var(--home-ink)",
   };
 }
@@ -204,7 +204,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
         className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[1.3rem] border px-4 py-4"
         style={{
           borderColor: "var(--home-rule)",
-          background: "color-mix(in srgb, var(--home-paper-alt) 52%, white)",
+          background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
         }}
       >
         <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>

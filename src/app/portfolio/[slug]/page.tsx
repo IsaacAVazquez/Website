@@ -74,7 +74,7 @@ const strongStyle = {
 
 const chipStyle = {
   fontFamily: "var(--font-home-sans)",
-  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
   color: "var(--home-ink)",
   border: "1px solid var(--home-rule)",
   letterSpacing: "0.02em",
@@ -83,7 +83,7 @@ const chipStyle = {
 const outlineButtonStyle = {
   fontFamily: "var(--font-home-sans)",
   color: "var(--home-ink)",
-  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
   border: "1px solid var(--home-rule)",
 } as const;
 
@@ -306,7 +306,7 @@ export default function CaseStudyPage({
 
             <div
               className="home-card p-6 sm:p-8 space-y-3"
-              style={{ background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)" }}
+              style={{ background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))" }}
             >
               <h3 className="text-xl mb-0" style={subsectionTitleStyle}>
                 Stakes
@@ -403,7 +403,7 @@ export default function CaseStudyPage({
                     <div
                       className="rounded-xl p-4 space-y-1"
                       style={{
-                        background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
                         border: "1px solid var(--home-rule)",
                       }}
                     >
@@ -445,7 +445,7 @@ export default function CaseStudyPage({
               <div
                 className="home-card p-6 sm:p-8 space-y-4"
                 style={{
-                  background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
                   borderLeft: "3px solid var(--home-haze)",
                 }}
               >
@@ -481,7 +481,7 @@ export default function CaseStudyPage({
             </h2>
             <div
               className="home-card p-6 sm:p-8 space-y-3"
-              style={{ background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)" }}
+              style={{ background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))" }}
             >
               <h3 className="text-lg mb-0" style={subsectionTitleStyle}>
                 What I&apos;d do differently

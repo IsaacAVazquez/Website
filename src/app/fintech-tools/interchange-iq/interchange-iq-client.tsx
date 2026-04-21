@@ -298,7 +298,7 @@ export function InterchangeIQClient() {
                 className="text-xs rounded-lg p-3 leading-relaxed mb-0"
                 style={{
                   ...bodyStyle,
-                  background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
                   border: "1px solid var(--home-rule)",
                 }}
               >
@@ -408,7 +408,7 @@ export function InterchangeIQClient() {
               className="flex items-start gap-3 p-4 rounded-xl"
               style={{
                 border: "1px solid var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
               }}
             >
               <IconInfoCircle
@@ -516,7 +516,7 @@ export function InterchangeIQClient() {
                   key={r.id}
                   className="text-center p-3 rounded-xl space-y-1"
                   style={{
-                    background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
                     border: "1px solid var(--home-rule)",
                   }}
                 >

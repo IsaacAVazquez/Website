@@ -640,7 +640,7 @@ export function ProjectsContent() {
                     project.impact) && (
                     <button
                       onClick={() => openProjectDetail(project)}
-                      className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, white)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
+                      className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
                       aria-label="View project details"
                     >
                       <IconEye className="h-4 w-4 text-[var(--home-haze)]" />
@@ -651,7 +651,7 @@ export function ProjectsContent() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, white)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
+                      className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
                       aria-label="View source code"
                     >
                       <IconBrandGithub className="h-4 w-4 text-[var(--home-haze)]" />
@@ -661,7 +661,7 @@ export function ProjectsContent() {
                     (project.link.startsWith("/") ? (
                       <Link
                         href={project.link}
-                        className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, white)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
+                        className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
                         aria-label="View live project"
                       >
                         <IconExternalLink className="h-4 w-4 text-[var(--home-haze)]" />
@@ -671,7 +671,7 @@ export function ProjectsContent() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, white)] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
+                        className="p-2 rounded-lg bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] hover:bg-[var(--home-haze)]/10 border border-[var(--home-rule)] hover:border-[var(--home-haze)]/50 transition-all"
                         aria-label="View live project"
                       >
                         <IconExternalLink className="h-4 w-4 text-[var(--home-haze)]" />

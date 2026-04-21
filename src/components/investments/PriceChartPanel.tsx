@@ -318,7 +318,7 @@ export function PriceChartPanel({ symbol }: Props) {
           <svg ref={volumeRef} className="mt-2 w-full" />
           <div
             ref={tooltipRef}
-            className="absolute pointer-events-none hidden z-10 bg-[color-mix(in srgb, var(--home-paper) 92%, white)] border border-[var(--home-rule)] rounded px-2 py-1 text-xs text-[var(--home-ink)] shadow-md whitespace-nowrap"
+            className="absolute pointer-events-none hidden z-10 bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] border border-[var(--home-rule)] rounded px-2 py-1 text-xs text-[var(--home-ink)] shadow-md whitespace-nowrap"
           />
         </div>
       )}

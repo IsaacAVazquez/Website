@@ -90,7 +90,7 @@ export function DraftTrackerClient() {
               className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
               style={{
                 borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
               }}
             >
               {metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot"}
@@ -99,7 +99,7 @@ export function DraftTrackerClient() {
               className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
               style={{
                 borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
               }}
             >
               Source updated {formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}
@@ -108,7 +108,7 @@ export function DraftTrackerClient() {
               className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
               style={{
                 borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
               }}
             >
               Built {formatUpdatedAt(metadata?.generatedAt)}
@@ -117,7 +117,7 @@ export function DraftTrackerClient() {
               className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
               style={{
                 borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
               }}
             >
               {FANTASY_SCORING_LABELS[scoringKey]} scoring
@@ -161,7 +161,7 @@ export function DraftTrackerClient() {
                   className="rounded-[1.5rem] border px-4 py-4"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 52%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
                   }}
                 >
                   <p className="home-kicker mb-1">Snapshot</p>
@@ -236,7 +236,7 @@ export function DraftTrackerClient() {
                   className="rounded-[1.2rem] border px-4 py-3"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                   }}
                 >
                   <p className="home-kicker mb-1">On clock</p>
@@ -246,7 +246,7 @@ export function DraftTrackerClient() {
                   className="rounded-[1.2rem] border px-4 py-3"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                   }}
                 >
                   <p className="home-kicker mb-1">Current pick</p>
@@ -258,7 +258,7 @@ export function DraftTrackerClient() {
                   className="rounded-[1.2rem] border px-4 py-3"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                   }}
                 >
                   <p className="home-kicker mb-1">Round</p>
@@ -283,7 +283,7 @@ export function DraftTrackerClient() {
                       className="rounded-[1.2rem] border px-4 py-3"
                       style={{
                         borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                       }}
                     >
                       <p className="text-sm font-semibold">{pick.player.name}</p>
@@ -315,7 +315,7 @@ export function DraftTrackerClient() {
                       className="rounded-[1.2rem] border px-4 py-3"
                       style={{
                         borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                       }}
                     >
                       <p className="text-sm font-semibold">{pick.player.name}</p>
@@ -337,7 +337,7 @@ export function DraftTrackerClient() {
                   className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
                     color: "var(--home-ink)",
                   }}
                 >
@@ -364,7 +364,7 @@ export function DraftTrackerClient() {
                   className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
                     color: "var(--home-ink)",
                   }}
                 >

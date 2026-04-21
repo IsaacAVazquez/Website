@@ -345,7 +345,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
           >
             <div
               className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-              style={{ background: "color-mix(in srgb, var(--home-paper) 88%, white)" }}
+              style={{ background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))" }}
             >
               <CircleAlert
                 className="h-4 w-4"
@@ -510,7 +510,7 @@ function HeadlinesView({
                 style={{
                   fontFamily: "var(--font-home-sans)",
                   color: "var(--home-ink)",
-                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                 }}
               >
                 {article.category}
@@ -837,7 +837,7 @@ function AnalysisView({
 
                 <div
                   className="flex h-5 w-full overflow-hidden rounded-full"
-                  style={{ background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)" }}
+                  style={{ background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))" }}
                 >
                   <div
                     className="transition-[width] duration-500 ease"
@@ -929,7 +929,7 @@ function AnalysisView({
 
                 <div
                   className="h-4 w-full overflow-hidden rounded-full"
-                  style={{ background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)" }}
+                  style={{ background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))" }}
                 >
                   <div
                     className="h-full rounded-full transition-[width] duration-500 ease"

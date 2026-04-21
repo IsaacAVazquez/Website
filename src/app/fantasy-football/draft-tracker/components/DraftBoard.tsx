@@ -76,7 +76,7 @@ function getFilterStyle(active: boolean): CSSProperties {
 
   return {
     borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
     color: "var(--home-ink)",
   };
 }
@@ -115,7 +115,7 @@ function getPositionTone(position: string): CSSProperties {
       };
     default:
       return {
-        background: "color-mix(in srgb, var(--home-paper-alt) 90%, white)",
+        background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
         borderColor: "var(--home-rule)",
       };
   }
@@ -193,7 +193,7 @@ export function DraftBoard({
             className="rounded-full border px-3 py-1.5 text-sm font-medium"
             style={{
               borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper-alt) 52%, white)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
             }}
           >
             {isUserPick ? "Your pick is live" : "Log the room's next selection"}
@@ -230,7 +230,7 @@ export function DraftBoard({
               className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
               style={{
                 borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
                 color: "var(--home-ink)",
               }}
             />
@@ -259,7 +259,7 @@ export function DraftBoard({
                 className="rounded-[1.5rem] border px-5 py-12 text-center"
                 style={{
                   borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                 }}
               >
                 <p className="text-lg font-semibold">Draft complete.</p>
@@ -272,7 +272,7 @@ export function DraftBoard({
                 className="rounded-[1.5rem] border px-5 py-12 text-center"
                 style={{
                   borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                 }}
               >
                 <p className="text-lg font-semibold">No players match that filter.</p>
@@ -290,7 +290,7 @@ export function DraftBoard({
                     className="grid gap-4 rounded-[1.5rem] border px-4 py-4 sm:grid-cols-[72px_minmax(0,1.45fr)_110px_140px_auto] sm:items-center"
                     style={{
                       borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper-alt) 42%, white)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",
                     }}
                   >
                     <div>
@@ -361,7 +361,7 @@ export function DraftBoard({
             className="rounded-[1.5rem] border p-4"
             style={{
               borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
             }}
           >
             <p className="home-kicker mb-1">Available pool</p>
@@ -375,7 +375,7 @@ export function DraftBoard({
             className="rounded-[1.5rem] border p-4"
             style={{
               borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
             }}
           >
             <p className="home-kicker mb-1">Roster pressure</p>

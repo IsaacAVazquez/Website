@@ -121,7 +121,7 @@ export function StockResearch({
     return (
       <section aria-label="Stock research">
         <div
-          className="mb-4 flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-2 shadow-[var(--shadow-sm)]"
+          className="mb-4 flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-2 shadow-[var(--shadow-sm)]"
           role="tablist"
           aria-label="Research sections"
         >
@@ -162,7 +162,7 @@ export function StockResearch({
         <div className="min-w-0 space-y-4">
           {visibleTabs.length > 0 ? (
             <div
-              className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-2 shadow-[var(--shadow-sm)]"
+              className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-2 shadow-[var(--shadow-sm)]"
               role="tablist"
               aria-label="Research sections"
             >
@@ -195,7 +195,7 @@ export function StockResearch({
               exit="hidden"
             >
               {!symbol ? (
-                <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+                <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
                   <p className="text-sm font-semibold text-[var(--home-ink)]">
                     Start with a ticker symbol
                   </p>
@@ -204,7 +204,7 @@ export function StockResearch({
                   </p>
                 </div>
               ) : showLoadingState ? (
-                <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+                <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
                   <p className="text-sm font-semibold text-[var(--home-ink)]">
                     Loading research data…
                   </p>

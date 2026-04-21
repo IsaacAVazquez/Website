@@ -183,7 +183,7 @@ export default function AccessibilityPage() {
                   <dd
                     className="mb-0 rounded-md px-3 py-1 font-mono text-sm"
                     style={{
-                      background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                       color: "var(--home-ink)",
                       border: "1px solid var(--home-rule)",
                     }}

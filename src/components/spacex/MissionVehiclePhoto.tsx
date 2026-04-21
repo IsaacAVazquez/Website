@@ -25,7 +25,7 @@ export function MissionVehiclePhoto({
       dataTestId={dataTestId}
       alt={`${name} ${label.toLowerCase()}`}
       priority={dataTestId === "mission-hero-visual"}
-      className={`flex items-center justify-center rounded-[28px] border border-[color-mix(in_srgb,var(--home-haze)_18%,var(--home-rule))] bg-[linear-gradient(160deg,color-mix(in_srgb,var(--home-haze)_10%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_72%)] shadow-[var(--shadow-md)] ${className}`}
+      className={`flex items-center justify-center rounded-[28px] border border-[color-mix(in_srgb,var(--home-haze)_18%,var(--home-rule))] bg-[linear-gradient(160deg,color-mix(in_srgb,var(--home-haze)_10%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_72%)] shadow-[var(--shadow-md)] ${className}`}
     >
       <div
         aria-hidden="true"

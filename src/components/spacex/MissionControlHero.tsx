@@ -59,7 +59,7 @@ function MissionCountdown({
   return (
     <div
       data-testid="mission-countdown"
-      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--color-success)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-success)_10%,color-mix(in srgb, var(--home-paper) 92%, white))] px-4 py-2 font-mono text-sm font-semibold tracking-[0.16em] text-[var(--home-ink)]"
+      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--color-success)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-success)_10%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))] px-4 py-2 font-mono text-sm font-semibold tracking-[0.16em] text-[var(--home-ink)]"
     >
       <Radar className="h-4 w-4 text-[var(--color-success)]" />
       {countdown}
@@ -82,7 +82,7 @@ export function MissionControlHero({
       <section
         data-testid="mission-hero"
         aria-label="Next launch hero"
-        className="rounded-[32px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-6 shadow-[var(--shadow-lg)] sm:p-8"
+        className="rounded-[32px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/90 p-6 shadow-[var(--shadow-lg)] sm:p-8"
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_220px]">
           <div className="space-y-3">
@@ -102,7 +102,7 @@ export function MissionControlHero({
       <section
         data-testid="mission-hero"
         aria-label="Next launch hero"
-        className="rounded-[32px] border border-[color-mix(in_srgb,var(--color-warning)_24%,var(--home-rule))] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--color-warning)_8%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_100%)] p-6 shadow-[var(--shadow-lg)] sm:p-8"
+        className="rounded-[32px] border border-[color-mix(in_srgb,var(--color-warning)_24%,var(--home-rule))] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--color-warning)_8%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_100%)] p-6 shadow-[var(--shadow-lg)] sm:p-8"
       >
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
@@ -139,7 +139,7 @@ export function MissionControlHero({
     <section
       data-testid="mission-hero"
       aria-label="Next launch hero"
-      className="overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_9%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_45%,color-mix(in_srgb,var(--color-success)_8%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)] p-5 shadow-[var(--shadow-lg)] sm:p-6"
+      className="overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_9%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_45%,color-mix(in_srgb,var(--color-success)_8%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)] p-5 shadow-[var(--shadow-lg)] sm:p-6"
     >
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.24fr)_220px]">
         <div className="min-w-0">
@@ -147,7 +147,7 @@ export function MissionControlHero({
             <span className="rounded-full border border-[color-mix(in_srgb,var(--home-haze)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_78%,transparent)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--home-haze)]">
               {summary?.heroMode === "fallback" ? "Latest completed mission" : "Next mission"}
             </span>
-            <span className="rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
+            <span className="rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
               Flight #{heroLaunch.flightNumber}
             </span>
           </div>
@@ -163,7 +163,7 @@ export function MissionControlHero({
                 initialNow={initialRenderTimestampMs}
               />
             ) : (
-              <div className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-2 text-sm font-semibold text-[var(--home-ink)]">
+              <div className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-2 text-sm font-semibold text-[var(--home-ink)]">
                 <Clock3 className="h-4 w-4 text-[var(--home-haze)]" />
                 {formatMissionScheduleLabel(heroLaunch)}
               </div>
@@ -171,7 +171,7 @@ export function MissionControlHero({
           </div>
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:max-w-[700px] xl:grid-cols-4">
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-3.5">
+            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/90 p-3.5">
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Rocket
               </p>
@@ -179,7 +179,7 @@ export function MissionControlHero({
                 {heroLaunch.rocketName ?? "Unspecified"}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-3.5">
+            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/90 p-3.5">
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Launchpad
               </p>
@@ -187,7 +187,7 @@ export function MissionControlHero({
                 {heroLaunch.launchpadName ?? "Unspecified"}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-3.5">
+            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/90 p-3.5">
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Payloads
               </p>
@@ -195,7 +195,7 @@ export function MissionControlHero({
                 {heroLaunch.payloadCount}
               </p>
             </div>
-            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-3.5">
+            <div className="rounded-[22px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/90 p-3.5">
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                 Location
               </p>
@@ -226,7 +226,7 @@ export function MissionControlHero({
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="tap-target inline-flex items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-5 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                className="tap-target inline-flex items-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-5 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
               >
                 {link.label}
                 <ArrowUpRight className="h-4 w-4" />
@@ -244,7 +244,7 @@ export function MissionControlHero({
             label="Vehicle view"
             dataTestId="mission-hero-visual"
           />
-          <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-4 shadow-[var(--shadow-sm)]">
+          <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/90 p-4 shadow-[var(--shadow-sm)]">
             <div className="flex items-center gap-2">
               <CalendarDays className="h-4 w-4 text-[var(--home-haze)]" />
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">

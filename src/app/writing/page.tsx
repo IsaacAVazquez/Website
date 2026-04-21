@@ -148,7 +148,7 @@ function ArchiveWritingCard({ post }: { post: WritingCardPost }) {
         className="flex h-full flex-col rounded-[1.5rem] border"
         style={{
           padding: "1.25rem",
-          borderColor: "color-mix(in srgb, var(--home-rule) 78%, white)",
+          borderColor: "color-mix(in srgb, var(--home-rule) 78%, var(--home-elev-mix))",
           background:
             "color-mix(in srgb, var(--home-paper) 82%, var(--home-paper-alt) 18%)",
         }}
@@ -256,7 +256,7 @@ function ArchiveBucketSection({
       data-testid={`writing-archive-${toSectionId(bucket)}`}
       className="rounded-[2rem] border p-6 md:p-7"
       style={{
-        borderColor: "color-mix(in srgb, var(--home-rule) 74%, white)",
+        borderColor: "color-mix(in srgb, var(--home-rule) 74%, var(--home-elev-mix))",
         background:
           "color-mix(in srgb, var(--home-paper) 76%, var(--home-paper-alt) 24%)",
       }}
@@ -370,7 +370,7 @@ export default function WritingPage() {
               style={{
                 borderColor: "var(--home-rule)",
                 background:
-                  "linear-gradient(135deg, color-mix(in srgb, var(--home-paper-alt) 84%, white) 0%, color-mix(in srgb, var(--home-paper) 88%, var(--home-paper-alt) 12%) 100%)",
+                  "linear-gradient(135deg, color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix)) 0%, color-mix(in srgb, var(--home-paper) 88%, var(--home-paper-alt) 12%) 100%)",
               }}
             >
               <div className="space-y-3">
@@ -400,7 +400,7 @@ export default function WritingPage() {
                     key={stat.label}
                     className="rounded-[1.35rem] border px-4 py-4 text-center"
                     style={{
-                      borderColor: "color-mix(in srgb, var(--home-rule) 82%, white)",
+                      borderColor: "color-mix(in srgb, var(--home-rule) 82%, var(--home-elev-mix))",
                       background:
                         "color-mix(in srgb, var(--home-paper) 72%, var(--home-paper-alt) 28%)",
                     }}
@@ -444,9 +444,9 @@ export default function WritingPage() {
                     href={`#${sectionId}`}
                     className="group flex min-h-[56px] items-center justify-between gap-3 rounded-[1.2rem] border px-4 py-3 transition-[border-color,background-color,color]"
                     style={{
-                      borderColor: "color-mix(in srgb, var(--home-rule) 84%, white)",
+                      borderColor: "color-mix(in srgb, var(--home-rule) 84%, var(--home-elev-mix))",
                       background:
-                        "color-mix(in srgb, var(--home-paper-alt) 76%, white)",
+                        "color-mix(in srgb, var(--home-paper-alt) 76%, var(--home-elev-mix))",
                     }}
                   >
                     <div className="space-y-1">

@@ -74,7 +74,7 @@ function StandaloneMetric({
   detail?: string;
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3">
+    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-3">
       <p className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
         {label}
         <MetricTooltip term={label} />

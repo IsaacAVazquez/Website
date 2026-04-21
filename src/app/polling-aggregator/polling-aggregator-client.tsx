@@ -290,7 +290,7 @@ function RaceSidebar({ race }: { race: Race }) {
                       style={{
                         color: partyColor(c.party),
                         borderColor: `color-mix(in srgb, ${partyColor(c.party)} 30%, var(--home-rule))`,
-                        background: `color-mix(in srgb, ${partyColor(c.party)} 8%, color-mix(in srgb, var(--home-paper-alt) 80%, white))`,
+                        background: `color-mix(in srgb, ${partyColor(c.party)} 8%, color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix)))`,
                       }}
                     >
                       {c.name.split(" ").pop()} {c.support}%{c.incumbent ? " ★" : ""}
@@ -688,7 +688,7 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
           className="flex flex-wrap gap-2 rounded-[1.5rem] p-2"
           style={{
             border: "1px solid var(--home-rule)",
-            background: "color-mix(in srgb, var(--home-paper-alt) 90%, white)",
+            background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
             width: "fit-content",
           }}
         >
