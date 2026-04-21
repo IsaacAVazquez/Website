@@ -345,7 +345,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         style={{
           opacity: 0,
           padding: "8px 10px",
-            backgroundColor: "color-mix(in srgb, var(--home-paper) 92%, white)",
+            backgroundColor: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
             border: "1px solid var(--home-rule)",
             zIndex: 10,
           }}

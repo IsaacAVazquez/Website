@@ -55,7 +55,7 @@ export default function About() {
               className="flex flex-wrap justify-center gap-2 rounded-[1.5rem] p-2"
               style={{
                 border: "1px solid var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper-alt) 90%, white)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
               }}
             >
               {tabs.map((tab, index) => (

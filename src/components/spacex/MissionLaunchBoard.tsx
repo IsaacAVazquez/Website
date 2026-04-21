@@ -33,7 +33,7 @@ export function MissionLaunchBoard({
     <section
       data-testid="mission-board"
       aria-label="Mission board"
-      className="rounded-[30px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
+      className="rounded-[30px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
     >
       <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
@@ -82,7 +82,7 @@ export function MissionLaunchBoard({
           <button
             type="button"
             onClick={onRetry}
-            className="tap-target mt-4 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+            className="tap-target mt-4 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
           >
             Retry board
           </button>

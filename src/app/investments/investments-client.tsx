@@ -137,7 +137,7 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
         </motion.div>
 
         <div
-          className="mb-8 inline-flex flex-wrap gap-2 rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/90 p-2 shadow-[var(--shadow-sm)] backdrop-blur"
+          className="mb-8 inline-flex flex-wrap gap-2 rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/90 p-2 shadow-[var(--shadow-sm)] backdrop-blur"
           role="tablist"
           aria-label="Investments tabs"
         >

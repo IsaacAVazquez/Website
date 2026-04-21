@@ -73,7 +73,7 @@ export function PortfolioSummary({ summary, isLoading }: Props) {
               variants={v.itemVariants}
               className="grid gap-3 sm:grid-cols-2"
             >
-              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4">
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Today
                 </p>
@@ -81,7 +81,7 @@ export function PortfolioSummary({ summary, isLoading }: Props) {
                   {formatCurrency(summary.dayChange)} ({formatPercent(summary.dayChangePercent)})
                 </p>
               </div>
-              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4">
+              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Total Cost
                 </p>

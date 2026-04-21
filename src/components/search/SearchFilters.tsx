@@ -33,7 +33,7 @@ function getPillStyle(active: boolean) {
     } as const;
   }
   return {
-    background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
     color: "var(--home-ink)",
     border: "1px solid var(--home-rule)",
   } as const;
@@ -52,7 +52,7 @@ export function SearchFilters({
     <div
       className="space-y-4 rounded-xl p-4"
       style={{
-        background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+        background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
         border: "1px solid var(--home-rule)",
       }}
     >

@@ -41,7 +41,7 @@ export function PortfolioTracker({ onResearch }: Props) {
   return (
     <section aria-label="Portfolio tracker" className="space-y-6">
       {!isEmpty && (
-        <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4 shadow-[var(--shadow-sm)] sm:p-5">
+        <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)] sm:p-5">
           <div className="mb-4 grid gap-3 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
@@ -79,7 +79,7 @@ export function PortfolioTracker({ onResearch }: Props) {
       </div>
 
       {isEmpty ? (
-        <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+        <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
           <p className="mb-2 text-sm font-semibold text-[var(--home-ink)]">
             No positions yet
           </p>

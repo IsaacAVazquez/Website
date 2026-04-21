@@ -179,16 +179,16 @@ function getRoleFamilyAccent(family: MBAJobRoleFamily): string {
 function getTrackedCompanyButtonStyle(company: MBACompany, active: boolean): CSSProperties {
   if (active) {
     return {
-      background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+      background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
       borderColor: `color-mix(in srgb, ${company.color} 28%, var(--home-rule))`,
       color: "var(--home-ink)",
-      boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--home-paper) 88%, white)",
+      boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
       fontFamily: CHIP_FONT_FAMILY,
     };
   }
 
   return {
-    background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
     borderColor: "var(--home-rule)",
     color: "var(--home-ink-muted)",
     fontFamily: CHIP_FONT_FAMILY,
@@ -953,7 +953,7 @@ function CompanyFilterStrip({
         className="flex w-full items-start justify-between gap-4 rounded-[1.2rem] border px-4 py-4 text-left transition-[border-color,background-color] duration-200 ease sm:items-center"
         style={{
           borderColor: "var(--home-rule)",
-          background: "color-mix(in srgb, var(--home-paper-alt) 56%, white)",
+          background: "color-mix(in srgb, var(--home-paper-alt) 56%, var(--home-elev-mix))",
         }}
         aria-expanded={isExpanded}
         aria-controls="tracked-companies-controls"
@@ -985,7 +985,7 @@ function CompanyFilterStrip({
             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border"
             style={{
               borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper) 92%, white)",
+              background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
             }}
             aria-hidden="true"
           >
@@ -1043,7 +1043,7 @@ function CompanyFilterStrip({
                   className="rounded-[1.2rem] border p-3 sm:p-4"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 58%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 58%, var(--home-elev-mix))",
                   }}
                 >
                   <button
@@ -1304,7 +1304,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   className="rounded-[1.35rem] border p-4"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 62%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
                   }}
                 >
                   <p className="home-meta mb-0">Coverage</p>
@@ -1317,7 +1317,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   className="rounded-[1.35rem] border p-4"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 62%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
                   }}
                 >
                   <p className="home-meta mb-0">Workflow</p>
@@ -1441,7 +1441,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       aria-label="Search roles"
                       className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease"
                       style={{
-                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                         borderColor: "var(--home-rule)",
                         color: "var(--home-ink)",
                         fontFamily: "var(--font-home-sans)",
@@ -1476,7 +1476,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       aria-label="Filter by location"
                       className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease"
                       style={{
-                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                         borderColor: "var(--home-rule)",
                         color: "var(--home-ink)",
                         fontFamily: "var(--font-home-sans)",
@@ -1520,7 +1520,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                     className="rounded-[1rem] border px-4 py-4"
                     style={{
                       borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper-alt) 62%, white)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
                     }}
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
@@ -1650,7 +1650,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       <span
                         className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
                         style={{
-                          background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                          background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                           color: "var(--home-ink)",
                           fontFamily: CHIP_FONT_FAMILY,
                         }}
@@ -1690,7 +1690,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       <span
                         className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
                         style={{
-                          background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                          background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                           color: "var(--home-ink)",
                           fontFamily: CHIP_FONT_FAMILY,
                         }}
@@ -1737,7 +1737,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   <span
                     className="resume-chip"
                     style={{
-                      background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
                       color: "var(--home-ink)",
                     }}
                   >

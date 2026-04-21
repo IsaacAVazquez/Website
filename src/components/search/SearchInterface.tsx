@@ -292,7 +292,7 @@ export function SearchInterface({
                 className="w-full min-h-[44px] pl-12 pr-12 py-3 rounded-xl transition-colors"
                 style={{
                   fontFamily: "var(--font-home-sans)",
-                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                   border: "1px solid var(--home-rule)",
                   color: "var(--home-ink)",
                 }}
@@ -321,7 +321,7 @@ export function SearchInterface({
                       border: "1px solid var(--home-ink)",
                     }
                   : {
-                      background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                       color: "var(--home-ink-muted)",
                       border: "1px solid var(--home-rule)",
                     }

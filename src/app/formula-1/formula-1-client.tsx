@@ -131,7 +131,7 @@ function getMeetingToneStyle(status: Formula1MeetingSummary["status"]): CSSPrope
     default:
       return {
         borderColor: "var(--home-rule)",
-        background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+        background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
       };
   }
 }
@@ -205,7 +205,7 @@ function ViewToggle({
             }
           : {
               borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
             }
       }
       aria-pressed={isActive}
@@ -684,7 +684,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
         style={{
           borderColor: "color-mix(in srgb, var(--home-haze) 24%, var(--home-rule))",
           background:
-            "radial-gradient(circle at top right, color-mix(in srgb, var(--home-haze) 18%, transparent) 0%, transparent 38%), linear-gradient(140deg, color-mix(in srgb, var(--home-paper) 94%, white) 0%, color-mix(in srgb, var(--home-paper-alt) 88%, white) 100%)",
+            "radial-gradient(circle at top right, color-mix(in srgb, var(--home-haze) 18%, transparent) 0%, transparent 38%), linear-gradient(140deg, color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix)) 0%, color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix)) 100%)",
           boxShadow: "var(--shadow-sm)",
         }}
       >

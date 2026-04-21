@@ -129,7 +129,7 @@ function getPositionTone(position: string): CSSProperties {
       };
     default:
       return {
-        background: "color-mix(in srgb, var(--home-paper-alt) 90%, white)",
+        background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
         borderColor: "var(--home-rule)",
       };
   }
@@ -156,7 +156,7 @@ function getPillStyle(active: boolean, unavailable = false): CSSProperties {
 
   return {
     borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
     color: "var(--home-ink)",
   };
 }
@@ -417,7 +417,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                         className="min-h-[48px] w-full rounded-[1.2rem] border px-11 pr-4 text-sm transition-[background-color,border-color,box-shadow] duration-200 placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
                         style={{
                           borderColor: "var(--home-rule)",
-                          background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                          background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
                           color: "var(--home-ink)",
                         }}
                       />
@@ -428,7 +428,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     className="rounded-[1.5rem] border px-4 py-4"
                     style={{
                       borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper-alt) 62%, white)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
                     }}
                   >
                     <p className="home-kicker mb-1">Status</p>
@@ -468,7 +468,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       className="h-[104px] animate-pulse rounded-[1.5rem] border"
                       style={{
                         borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                       }}
                     />
                   ))
@@ -493,7 +493,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     className="rounded-[1.5rem] border px-5 py-12 text-center"
                     style={{
                       borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                     }}
                   >
                     <p className="text-lg font-semibold">No matching players</p>
@@ -508,7 +508,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       className="grid gap-4 rounded-[1.5rem] border px-4 py-4 sm:grid-cols-[72px_minmax(0,1.55fr)_110px_140px_140px] sm:items-center"
                       style={{
                         borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 42%, white)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",
                       }}
                     >
                       <div>
@@ -569,7 +569,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   className="rounded-[1.2rem] border px-4 py-3"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                   }}
                 >
                   <p className="home-kicker mb-1">Source updated</p>
@@ -579,7 +579,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   className="rounded-[1.2rem] border px-4 py-3"
                   style={{
                     borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                   }}
                 >
                   <p className="home-kicker mb-1">Snapshot built</p>
@@ -616,7 +616,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       className="flex items-center justify-between rounded-[1.2rem] border px-4 py-3"
                       style={{
                         borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                       }}
                     >
                       <span className="text-sm font-semibold">Tier {tier}</span>

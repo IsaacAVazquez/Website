@@ -14,7 +14,7 @@ export function UtilityStrip({ children }: UtilityStripProps) {
     <div
       className="rounded-full px-4 py-2.5"
       style={{
-        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+        background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
         border: "1px solid var(--home-rule)",
       }}
     >

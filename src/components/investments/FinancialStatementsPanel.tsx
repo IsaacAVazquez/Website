@@ -101,7 +101,7 @@ function StatementTable({
       <table className="w-full text-xs min-w-[480px]" aria-label={`${section.replace("_", " ")} statement`}>
         <thead>
           <tr className="border-b border-[var(--home-rule)]">
-            <th className="text-left py-2 px-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium w-40 sticky left-0 bg-[color-mix(in srgb, var(--home-paper) 92%, white)]">
+            <th className="text-left py-2 px-2 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] font-medium w-40 sticky left-0 bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]">
               Metric
             </th>
             {periodCols.map((col) => (
@@ -120,7 +120,7 @@ function StatementTable({
               key={i}
               className="border-b border-[var(--home-rule)] last:border-0 hover:bg-[var(--home-paper-alt)] transition-colors"
             >
-              <td className="py-2 px-2 text-[var(--home-ink-muted)] font-medium sticky left-0 bg-[color-mix(in srgb, var(--home-paper) 92%, white)] whitespace-nowrap">
+              <td className="py-2 px-2 text-[var(--home-ink-muted)] font-medium sticky left-0 bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] whitespace-nowrap">
                 {String(row[labelCol] ?? "")}
               </td>
               {periodCols.map((col) => {

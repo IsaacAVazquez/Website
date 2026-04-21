@@ -195,7 +195,7 @@ export function BudgetPlannerClient() {
           variants={motionVariants}
           initial="hidden"
           animate="visible"
-          className="mb-8 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,color-mix(in srgb, var(--home-paper) 92%, white)_94%,var(--home-haze)_6%)_0%,color-mix(in srgb, var(--home-paper) 92%, white)_45%,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--color-success)_12%)_100%)] shadow-[var(--shadow-lg)]"
+          className="mb-8 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_94%,var(--home-haze)_6%)_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_45%,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--color-success)_12%)_100%)] shadow-[var(--shadow-lg)]"
         >
           <div className="grid gap-8 border-b border-[var(--home-rule)]/80 px-6 py-6 sm:px-8 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-end">
             <div className="min-w-0">
@@ -216,12 +216,12 @@ export function BudgetPlannerClient() {
                 type="button"
                 aria-label="Previous month"
                 onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, -1))}
-                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
               >
                 <ArrowLeft className="h-4 w-4" />
               </button>
 
-              <label className="flex min-h-[48px] flex-col justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-2">
+              <label className="flex min-h-[48px] flex-col justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-2">
                 <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                   Budget month
                 </span>
@@ -241,7 +241,7 @@ export function BudgetPlannerClient() {
                 type="button"
                 aria-label="Next month"
                 onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, 1))}
-                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
               >
                 <ArrowRight className="h-4 w-4" />
               </button>
@@ -275,7 +275,7 @@ export function BudgetPlannerClient() {
           <motion.div variants={motionVariants} initial="hidden" animate="visible">
             <WarmCard
               padding="none"
-              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, white)_0%,color-mix(in_srgb,var(--home-paper-alt)_72%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)]"
+              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in_srgb,var(--home-paper-alt)_72%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)]"
             >
               <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
@@ -488,7 +488,7 @@ export function BudgetPlannerClient() {
           <motion.div variants={motionVariants} initial="hidden" animate="visible">
             <WarmCard
               padding="none"
-              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, white)_0%,color-mix(in_srgb,var(--home-paper-alt)_58%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)]"
+              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in_srgb,var(--home-paper-alt)_58%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)]"
             >
               <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
@@ -692,7 +692,7 @@ export function BudgetPlannerClient() {
         >
           <WarmCard
             padding="none"
-            className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, white)_0%,color-mix(in_srgb,var(--home-paper-alt)_54%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)]"
+            className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in_srgb,var(--home-paper-alt)_54%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)]"
           >
             <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
               <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">

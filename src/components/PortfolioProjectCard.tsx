@@ -77,7 +77,7 @@ export function PortfolioProjectCard({
             <div
               className="px-4 py-3 rounded-xl"
               style={{
-                background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
                 border: "1px solid var(--home-rule)",
               }}
             >
@@ -92,7 +92,7 @@ export function PortfolioProjectCard({
             <div
               className="px-4 py-3 rounded-xl"
               style={{
-                background: "color-mix(in srgb, var(--home-paper-alt) 80%, white)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
                 border: "1px solid var(--home-rule)",
               }}
             >

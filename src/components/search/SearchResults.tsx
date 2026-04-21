@@ -33,7 +33,7 @@ const strongBodyStyle = {
 
 const tagPillStyle = {
   fontFamily: "var(--font-home-sans)",
-  background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
   color: "var(--home-ink)",
   border: "1px solid var(--home-rule)",
   letterSpacing: "0.02em",

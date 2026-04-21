@@ -35,7 +35,7 @@ export function StatusPanel({
           }
         : {
             borderColor: "var(--home-rule)",
-            background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+            background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
             accent: "var(--home-haze)",
           };
 
@@ -52,7 +52,7 @@ export function StatusPanel({
         <div
           className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full"
           style={{
-            background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+            background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
             color: toneStyle.accent,
           }}
         >

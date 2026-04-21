@@ -212,7 +212,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <section
                 className="home-card mb-10 space-y-4"
                 style={{
-                  background: "color-mix(in srgb, var(--home-paper-alt) 86%, white)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 86%, var(--home-elev-mix))",
                   padding: "1.8rem",
                 }}
               >

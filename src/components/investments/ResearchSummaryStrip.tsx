@@ -89,7 +89,7 @@ function MetricTile({
         : "text-[var(--home-ink)]";
 
   return (
-    <div className="flex min-h-[112px] flex-col justify-between rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/70 px-4 py-3">
+    <div className="flex min-h-[112px] flex-col justify-between rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/70 px-4 py-3">
       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
         {label}
       </p>
@@ -152,14 +152,14 @@ export function ResearchSummaryStrip({ symbol }: Props) {
   return (
     <WarmCard
       padding="none"
-      className="relative overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_18%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_8%,color-mix(in srgb, var(--home-paper) 92%, white))_0%,color-mix(in srgb, var(--home-paper) 92%, white)_42%,color-mix(in_srgb,var(--color-success)_8%,color-mix(in srgb, var(--home-paper) 92%, white))_100%)] shadow-[var(--shadow-sm)]"
+      className="relative overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_18%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_8%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_42%,color-mix(in_srgb,var(--color-success)_8%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)] shadow-[var(--shadow-sm)]"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--home-haze)_18%,transparent),transparent_34%)]" />
       <div className="relative p-5 sm:p-6 lg:p-7">
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(300px,360px)] xl:items-start">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+              <span className="rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                 {symbol}
               </span>
               {info?.sector ? (
@@ -184,7 +184,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] px-4 py-3.5 shadow-[var(--shadow-sm)]">
+              <div className="rounded-3xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-3.5 shadow-[var(--shadow-sm)]">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
@@ -243,7 +243,7 @@ export function ResearchSummaryStrip({ symbol }: Props) {
             ) : null}
           </div>
 
-          <div className="h-full rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)] p-4 shadow-[var(--shadow-sm)] lg:p-5">
+          <div className="h-full rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-4 shadow-[var(--shadow-sm)] lg:p-5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
               Current Read
             </p>

@@ -172,7 +172,7 @@ function StatBlock({
     <div
       className="rounded-[24px] px-5 py-4"
       style={{
-        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+        background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
         border: "1px solid var(--home-rule)",
       }}
     >
@@ -203,7 +203,7 @@ function ScorePill({ value }: { value: number }) {
     <span
       className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold"
       style={{
-        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+        background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
         border: "1px solid var(--home-rule)",
         color: "var(--home-ink)",
         fontFamily: "var(--font-home-sans)",
@@ -229,7 +229,7 @@ function LeaderboardTable({
         <thead>
           <tr
             style={{
-              background: "color-mix(in srgb, var(--home-paper-alt) 70%, white)",
+              background: "color-mix(in srgb, var(--home-paper-alt) 70%, var(--home-elev-mix))",
               color: "var(--home-ink-muted)",
             }}
           >
@@ -636,7 +636,7 @@ export function GolfClient({
           style={{
             borderColor: "color-mix(in srgb, var(--color-warning) 28%, var(--home-rule))",
             background:
-              "linear-gradient(180deg, color-mix(in srgb, var(--color-warning) 10%, white), color-mix(in srgb, var(--home-paper-alt) 82%, white))",
+              "linear-gradient(180deg, color-mix(in srgb, var(--color-warning) 10%, var(--home-elev-mix)), color-mix(in srgb, var(--home-paper-alt) 82%, var(--home-elev-mix)))",
           }}
         >
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.8fr)]">
@@ -674,7 +674,7 @@ export function GolfClient({
               className="rounded-[28px] border px-5 py-5"
               style={{
                 borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper-alt) 86%, white)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 86%, var(--home-elev-mix))",
               }}
             >
               <p className="home-kicker mb-2">This week</p>
@@ -797,7 +797,7 @@ export function GolfClient({
               className="rounded-[26px] border px-5 py-5"
               style={{
                 borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper-alt) 82%, white)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 82%, var(--home-elev-mix))",
               }}
             >
               <p className="home-kicker mb-2">Snapshot note</p>
@@ -816,7 +816,7 @@ export function GolfClient({
               className="rounded-[30px] border px-5 py-5 sm:px-6"
               style={{
                 borderColor: "color-mix(in srgb, var(--color-warning) 22%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
               }}
             >
               <p className="home-kicker mb-2">Selected player</p>
@@ -910,7 +910,7 @@ export function GolfClient({
                           className="rounded-[22px] border px-4 py-4"
                           style={{
                             borderColor: "var(--home-rule)",
-                            background: "color-mix(in srgb, var(--home-paper-alt) 88%, white)",
+                            background: "color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix))",
                           }}
                         >
                           <p className="home-kicker mb-2">Player profile</p>
@@ -937,7 +937,7 @@ export function GolfClient({
                         className="rounded-[22px] border px-4 py-4"
                         style={{
                           borderColor: "var(--home-rule)",
-                          background: "color-mix(in srgb, var(--home-paper-alt) 88%, white)",
+                          background: "color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix))",
                         }}
                       >
                         <p className="home-kicker mb-3">Round by round</p>
@@ -974,7 +974,7 @@ export function GolfClient({
                         className="rounded-[22px] border px-4 py-4"
                         style={{
                           borderColor: "var(--home-rule)",
-                          background: "color-mix(in srgb, var(--home-paper-alt) 88%, white)",
+                          background: "color-mix(in srgb, var(--home-paper-alt) 88%, var(--home-elev-mix))",
                         }}
                       >
                         <p className="home-kicker mb-3">Scoring split</p>

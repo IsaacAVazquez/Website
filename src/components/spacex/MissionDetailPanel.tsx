@@ -64,7 +64,7 @@ export function MissionDetailPanel({
     <aside
       data-testid="mission-detail-panel"
       aria-label="Mission detail panel"
-      className="rounded-[30px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, white)]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
+      className="rounded-[30px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/92 p-4 shadow-[var(--shadow-md)] sm:p-5"
     >
       <div className="flex flex-col gap-4 border-b border-[var(--home-rule)] pb-5">
         <div>
