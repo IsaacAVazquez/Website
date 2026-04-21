@@ -339,7 +339,7 @@ Treat older plans, redesign specs, and reference templates as historical unless 
 
 The repo still contains older materials for context:
 
-- `docs/plans/*`
+- `docs/archive/*` (includes `docs/archive/plans/*` for completed implementation plans)
 - `content-redesign/*`
 - many root-level SEO and UX summary docs
 - non-live content references under `content/`
