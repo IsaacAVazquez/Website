@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-14
 
 ---
 
@@ -29,6 +29,7 @@ Fast route reference for the current app.
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Async server page -> `PollingAggregatorClient` |
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Server page -> budget planner client |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Server page -> `InterchangeIQClient` |
+| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Async server page -> `MBAJobsClient` |
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Server page -> fantasy client UI |
 | `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirect page to the canonical fantasy board |
 | `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirect page to the canonical RB board |
@@ -55,6 +56,7 @@ There is no live `/admin/analytics` route in the current app tree.
   - `/la-liga`
   - `/premier-league`
   - `/march-madness-2026`
+  - `/mba-internship-notifications`
   - `/news-pulse`
   - `/polling-aggregator`
   - `/portfolio`
@@ -128,6 +130,7 @@ Footer behavior:
 - `/spacex-mission-control` is a live route backed by `/api/spacex/*`
 - `/polling-aggregator` is a live route backed by `src/data/pollingSnapshot.ts`
 - `/fintech-tools/budget-planner` and `/fintech-tools/interchange-iq` are live fintech tool routes
+- `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls Greenhouse, Lever, Ashby, and direct-HTML job boards across 32 tech companies for MBA internships and full-time business roles
 
 ### `/search`
 

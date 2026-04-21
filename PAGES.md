@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-14
 
 ---
 
@@ -42,6 +42,7 @@ Current route inventory and page ownership for the live app.
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Budget planner tool |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Interchange fee analyzer |
+| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Live MBA role tracker polling 32 tech companies for internships and full-time business roles |
 
 ### Fantasy football
 
@@ -96,6 +97,7 @@ These routes manage more of their own spacing and width:
 - `/la-liga`
 - `/premier-league`
 - `/march-madness-2026`
+- `/mba-internship-notifications`
 - `/news-pulse`
 - `/polling-aggregator`
 - `/portfolio`
@@ -119,7 +121,7 @@ These routes manage more of their own spacing and width:
 - `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
 - `/formula-1` is a live off-nav Formula 1 dashboard with a self-managed shell
 - `/premier-league` and `/la-liga` are live off-nav sports data dashboards with self-managed shells
-- `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
+- `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
 - `/search` exists, but its data quality is limited by the current hardcoded search API
 - there is no live `/admin/analytics` page in the current app tree
 

@@ -254,6 +254,8 @@ Live routes under `src/app/api/`:
 - `/api/premier-league/teams/[teamId]`
 - `/api/la-liga/summary`
 - `/api/la-liga/teams/[teamId]`
+- `/api/mba-jobs`
+- `/api/mba-jobs/email`
 - `/api/news-pulse`
 - `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/spacex/summary`
 - `/api/rss`

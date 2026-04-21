@@ -114,9 +114,9 @@ This will:
 
 The update script is located at `scripts/updateFantasyRBTiers.ts`.
 
-**TODO: Configure your real fantasy data API**
+By default (`USE_NFLVERSE = true`), the script fetches from the local `/api/fantasy-data` endpoint backed by the NFLverse integration — no external API key required. The `API_ENDPOINT` constant remains as a placeholder (`https://example.com/...`) for the optional third-party path described in Option 2 below; set `USE_NFLVERSE = false` and replace that URL only if you intend to wire in a different source.
 
-Open the script and modify these constants:
+Relevant constants in the script:
 
 ```typescript
 // Line 30-35 in updateFantasyRBTiers.ts

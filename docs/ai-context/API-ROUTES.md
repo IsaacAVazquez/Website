@@ -2,7 +2,7 @@
 
 Current API route map.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-14
 
 ---
 
@@ -21,6 +21,8 @@ Current API route map.
 | `/api/investments/quotes` | GET | Quote proxy for the investments UI |
 | `/api/la-liga/summary` | GET | Snapshot-backed league table, fixtures, and club options for `/la-liga` |
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/la-liga` |
+| `/api/mba-jobs` | GET | Live MBA-role aggregator across Greenhouse/Lever/Ashby/direct-HTML boards for `/mba-internship-notifications` |
+| `/api/mba-jobs/email` | POST | Sends grouped digest of supplied jobs via Resend |
 | `/api/news-pulse` | GET | News Pulse article summaries |
 | `/api/premier-league/summary` | GET | Snapshot-backed league table, fixtures, and club options for `/premier-league` |
 | `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/premier-league` |
@@ -42,6 +44,7 @@ Current API route map.
 - `/api/search` is not a full dynamic site index
 - `/api/rss` is still a small writing feed route
 - `/api/premier-league/*` and `/api/la-liga/*` read committed snapshots, not `football-data.org` directly at runtime
+- `/api/mba-jobs` fetches live from public job boards at request time with a 30-minute `s-maxage` and 8s per-target timeout; `/api/mba-jobs/email` requires `RESEND_API_KEY`
 - auth is still NextAuth credentials-based
 
 ---
