@@ -9,6 +9,8 @@ This directory contains a complete, modern Markdown file system for Isaac Vazque
 
 **Design Philosophy:** Modern • Sharp • Polished • Personal • Product-Focused • Founder-Leaning
 
+Coverage note: this historical content tree now also includes snapshot markdowns for the current live project surfaces under `projects/` and the current homepage sections under `sections/`. Those files are useful for coverage and reference, but the live implementation still lives in code.
+
 ---
 
 ## Directory Structure
@@ -24,18 +26,36 @@ content/
 │
 ├── projects/
 │   ├── project-template.md             # Template for individual projects
-│   └── textout-platform.md             # Example project case study
+│   ├── textout-platform.md             # Historical example case study
+│   ├── investment-analytics-platform.md
+│   ├── fantasy-football-analytics.md
+│   ├── interchange-iq.md
+│   ├── budget-planner.md
+│   ├── news-pulse-dashboard.md
+│   ├── march-madness-2026.md
+│   ├── la-liga-pulse.md
+│   ├── mba-role-tracker.md
+│   ├── spacex-mission-control.md
+│   ├── premier-league-pulse.md
+│   └── polling-aggregator.md
 │
 ├── blog-new/
 │   ├── index.md                        # Blog landing page
 │   └── post-template.md                # Template for blog posts
 │
-└── components/
-    ├── hero.md                         # Hero section component guide
-    ├── project-card.md                 # Project card component guide
-    ├── footer.md                       # Footer component guide
-    ├── navbar.md                       # Navigation bar component guide
-    └── section-header.md               # Section header component guide
+├── components/
+│   ├── hero.md                         # Historical hero section guide
+│   ├── project-card.md                 # Historical project card guide
+│   ├── footer.md                       # Historical footer guide
+│   ├── navbar.md                       # Historical navigation guide
+│   └── section-header.md               # Historical section-header guide
+│
+└── sections/
+    ├── home-hero.md                    # Current homepage hero snapshot
+    ├── home-projects.md                # Current homepage selected-work snapshot
+    ├── home-spotlight.md               # Current homepage manifesto snapshot
+    ├── home-writing.md                 # Current homepage writing snapshot
+    └── home-contact.md                 # Current homepage contact snapshot
 ```
 
 ---
@@ -146,6 +166,23 @@ Complete example case study demonstrating:
 
 **Use:** Reference for structure, tone, and level of detail
 
+#### `projects/*.md` live route snapshots
+The directory now also includes markdown snapshots for the current live project surfaces:
+
+- `investment-analytics-platform.md`
+- `fantasy-football-analytics.md`
+- `interchange-iq.md`
+- `budget-planner.md`
+- `news-pulse-dashboard.md`
+- `march-madness-2026.md`
+- `la-liga-pulse.md`
+- `mba-role-tracker.md`
+- `spacex-mission-control.md`
+- `premier-league-pulse.md`
+- `polling-aggregator.md`
+
+These files mirror the current live routes and point back to the route files and data sources that actually own the implementation.
+
 ---
 
 ### Blog Structure
@@ -238,6 +275,23 @@ Section header component:
 - Accessibility and SEO considerations
 
 **Use:** Structure page content with clear sections
+
+---
+
+### Section Snapshots
+
+#### `sections/*.md`
+Current homepage section coverage for the live implementation in `src/components/home/HomePageContent.tsx`.
+
+Included section snapshots:
+
+- `home-hero.md`
+- `home-projects.md`
+- `home-spotlight.md`
+- `home-writing.md`
+- `home-contact.md`
+
+These files document the live homepage sections that replaced the older split-component homepage path.
 
 ---
 

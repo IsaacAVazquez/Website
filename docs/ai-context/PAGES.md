@@ -20,6 +20,7 @@ Fast route reference for the current app.
 | `/writing` | `src/app/writing/page.tsx` | Async server page |
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Async server page |
 | `/investments` | `src/app/investments/page.tsx` | Server page -> `InvestmentsClient` |
+| `/formula-1` | `src/app/formula-1/page.tsx` | Server page -> `Formula1Client` |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Server page -> `PremierLeagueClient` |
 | `/la-liga` | `src/app/la-liga/page.tsx` | Server page -> `LaLigaClient` |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Async server page -> `MarchMadnessClient` |
@@ -50,6 +51,7 @@ There is no live `/admin/analytics` route in the current app tree.
   - `/fantasy-football`
   - `/fantasy-football/draft-tracker`
   - `/fintech-tools/budget-planner`
+  - `/formula-1`
   - `/investments`
   - `/la-liga`
   - `/premier-league`
@@ -111,6 +113,11 @@ Footer behavior:
 
 - server entry provides metadata plus breadcrumb and sports-application structured data
 - client route supports deep-linked `overview`, `fixtures`, and `team` views through query params
+
+### `/formula-1`
+
+- server entry provides metadata plus breadcrumb and software-application structured data
+- client route supports deep-linked `overview`, `drivers`, `constructors`, and `calendar` views through query params
 
 ### `/la-liga`
 

@@ -7,9 +7,13 @@ import { DraftBoard } from "./components/DraftBoard";
 import { DraftSetup } from "./components/DraftSetup";
 import { useDraftState } from "./hooks/useDraftState";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
-import { FANTASY_SCORING_LABELS, getFantasyWeekLabel, scoringFormatToRouteScoring } from "@/lib/fantasy";
+import {
+  FANTASY_SCORING_LABELS,
+  getFantasyWeekLabel,
+  scoringFormatToRouteScoring,
+} from "@/lib/fantasy";
 
-function formatUpdatedAt(timestamp: string | undefined): string {
+function formatUpdatedAt(timestamp: string | null | undefined): string {
   if (!timestamp) {
     return "Unavailable";
   }
@@ -54,76 +58,127 @@ export function DraftTrackerClient() {
   const completionPercentage = Math.round((draftState.picks.length / totalPicks) * 100);
 
   return (
-    <section className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(77,182,255,0.12),transparent_28%),linear-gradient(180deg,#09111f_0%,#0c1424_55%,#08111c_100%)] text-white">
-      <div className="mx-auto w-full max-w-[1520px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8 xl:px-10">
-        <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur">
-          <div className="grid gap-8 border-b border-white/10 px-6 py-7 sm:px-8 sm:py-8 xl:grid-cols-[minmax(0,1.4fr)_320px] xl:items-end">
-            <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-sky-300/85">
-                Draft Assistant
-              </p>
-              <h1 className="mt-3 max-w-[15ch] text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                Manual draft tracking that actually stays usable.
-              </h1>
-              <p className="mt-4 max-w-[68ch] text-sm leading-7 text-slate-300 sm:text-[0.98rem]">
-                Log every pick, keep the board on the same published snapshot as the public rankings,
-                and keep your roster context visible without pretending to simulate the entire room.
-              </p>
-              <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-slate-300">
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
-                  {metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot"}
-                </span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
-                  Updated {formatUpdatedAt(metadata?.generatedAt)}
-                </span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
-                  {FANTASY_SCORING_LABELS[scoringKey]} scoring
-                </span>
-              </div>
-              {error && (
-                <p className="mt-4 rounded-2xl border border-rose-400/20 bg-rose-400/10 px-4 py-3 text-sm text-rose-200">
-                  {error}
-                </p>
-              )}
-              {rankingsUnavailable && (
-                <p className="mt-4 rounded-2xl border border-amber-300/20 bg-amber-300/10 px-4 py-3 text-sm text-amber-100">
-                  {overallSliceMetadata?.reason ??
-                    "The current snapshot does not include an overall board for this scoring format."}
-                </p>
-              )}
-            </div>
-
-            <div className="grid gap-3 rounded-[28px] border border-white/10 bg-[#0d1728]/80 p-4">
-              <Link
-                href="/fantasy-football"
-                className="flex min-h-[52px] items-center justify-between rounded-2xl border border-sky-400/20 bg-sky-400/10 px-4 py-3 text-sm font-semibold text-white transition hover:border-sky-300/40 hover:bg-sky-300/10"
-              >
-                <span>Back to rankings board</span>
-                <span aria-hidden="true">↗</span>
-              </Link>
-              <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
-                <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Progress</p>
-                  <p className="mt-2 text-sm font-semibold text-white">{draftState.picks.length} picks logged</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">On clock</p>
-                  <p className="mt-2 text-sm font-semibold text-white">{currentTeamName}</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Storage</p>
-                  <p className="mt-2 text-sm font-semibold text-white">Local persistence enabled</p>
-                </div>
-              </div>
-            </div>
+    <section className="home-page min-h-screen">
+      <div className="home-shell home-section space-y-5 sm:space-y-6">
+        <div className="space-y-4 pt-2">
+          <div className="space-y-3">
+            <p className="home-kicker mb-0">Draft Assistant</p>
+            <h1
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                fontSize: "clamp(2.55rem, 6vw, 4.75rem)",
+                fontWeight: 600,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.95,
+                maxWidth: "15ch",
+              }}
+            >
+              Manual draft tracking that actually stays usable.
+            </h1>
+            <p
+              className="max-w-[68ch] text-sm leading-7 sm:text-[1rem]"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              Log every pick, keep the board on the same published snapshot as the public rankings,
+              and keep roster pressure visible without pretending unsupported projection or ADP data
+              exists.
+            </p>
           </div>
 
-          <div className="px-6 py-6 sm:px-8">
+          <div className="flex flex-wrap gap-2 text-sm">
+            <span
+              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+              }}
+            >
+              {metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot"}
+            </span>
+            <span
+              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+              }}
+            >
+              Source updated {formatUpdatedAt(overallSliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt)}
+            </span>
+            <span
+              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+              }}
+            >
+              Built {formatUpdatedAt(metadata?.generatedAt)}
+            </span>
+            <span
+              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+              }}
+            >
+              {FANTASY_SCORING_LABELS[scoringKey]} scoring
+            </span>
+          </div>
+        </div>
+
+        {error && (
+          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--color-error)" }}>
+            <p className="font-semibold" style={{ color: "var(--color-error)" }}>
+              {error}
+            </p>
+          </article>
+        )}
+
+        {rankingsUnavailable && (
+          <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--color-warning)" }}>
+            <p className="font-semibold">
+              {overallSliceMetadata?.reason ??
+                "The current snapshot does not include an overall board for this scoring format."}
+            </p>
+          </article>
+        )}
+
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.18fr)_minmax(18rem,22rem)]">
+          <div className="grid gap-5">
+            <article className="home-card p-5 sm:p-6">
+              <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_18rem]">
+                <div>
+                  <p className="home-kicker mb-1">Room status</p>
+                  <h2 className="text-2xl font-semibold">
+                    {isDraftComplete ? "Draft complete" : currentTeamName}
+                  </h2>
+                  <p className="mt-2 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+                    The assistant reads the same snapshot as the public rankings board. Best available,
+                    search, and roster pressure all stay on one consistent data source.
+                  </p>
+                </div>
+
+                <div
+                  className="rounded-[1.5rem] border px-4 py-4"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 52%, white)",
+                  }}
+                >
+                  <p className="home-kicker mb-1">Snapshot</p>
+                  <p className="text-base font-semibold">Overall consensus board</p>
+                  <p className="mt-2 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+                    Local persistence is enabled. Room state survives reloads until you reset the draft.
+                  </p>
+                </div>
+              </div>
+            </article>
+
             {rankingsUnavailable ? (
-              <div className="rounded-[28px] border border-amber-300/20 bg-amber-300/10 px-6 py-10 text-center">
-                <p className="text-xl font-semibold text-white">Draft assistant unavailable for this scoring format</p>
-                <p className="mt-3 text-sm leading-7 text-amber-100/85">
-                  The draft assistant needs a published overall board. Switch scoring or wait for the next snapshot update.
+              <div className="home-card p-6 sm:p-8 text-center">
+                <p className="text-xl font-semibold">Draft assistant unavailable for this scoring format</p>
+                <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+                  The draft assistant needs a published overall board. Switch scoring or wait for the
+                  next snapshot update.
                 </p>
               </div>
             ) : showSetup ? (
@@ -133,146 +188,200 @@ export function DraftTrackerClient() {
                 onStartDraft={startDraft}
               />
             ) : (
-              <div className="grid gap-6 xl:grid-cols-[minmax(0,1.35fr)_340px]">
-                <DraftBoard
-                  players={snapshot?.overall ?? []}
-                  draftedPlayerIds={draftedPlayerIds}
-                  onDraftPlayer={draftPlayer}
-                  currentPick={draftState.currentPick}
-                  currentTeamNumber={currentTeamNumber}
-                  isUserPick={isUserPick}
-                  isDraftComplete={isDraftComplete}
-                  userTeam={userTeam}
-                />
-
-                <aside className="grid gap-5">
-                  <div className="rounded-[28px] border border-white/10 bg-[#08111f]/90 p-5">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                          Draft Status
-                        </p>
-                        <h2 className="mt-2 text-2xl font-semibold text-white">
-                          {isDraftComplete ? "Draft complete" : currentTeamName}
-                        </h2>
-                      </div>
-                      {isUserPick && !isDraftComplete && (
-                        <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-100">
-                          Your turn
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="mt-4">
-                      <div className="flex items-center justify-between text-sm text-slate-400">
-                        <span>Completion</span>
-                        <span>{completionPercentage}%</span>
-                      </div>
-                      <div className="mt-2 h-2 rounded-full bg-white/10">
-                        <div
-                          className="h-2 rounded-full bg-gradient-to-r from-sky-300 to-emerald-300"
-                          style={{ width: `${completionPercentage}%` }}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-                      <div className="rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Pick</p>
-                        <p className="mt-2 text-sm font-semibold text-white">
-                          {draftState.currentPick} / {totalPicks}
-                        </p>
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Round</p>
-                        <p className="mt-2 text-sm font-semibold text-white">
-                          {draftState.currentRound} / {draftState.settings.rounds}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="rounded-[28px] border border-white/10 bg-[#08111f]/90 p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Your roster</p>
-                    <div className="mt-4 grid gap-3">
-                      {(userTeam?.picks ?? []).length === 0 ? (
-                        <p className="text-sm text-slate-400">Your picks will appear here as the draft moves.</p>
-                      ) : (
-                        userTeam?.picks.map((pick) => (
-                          <div
-                            key={pick.pickNumber}
-                            className="rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3"
-                          >
-                            <p className="text-sm font-semibold text-white">{pick.player.name}</p>
-                            <p className="mt-1 text-xs text-slate-400">
-                              Pick {pick.pickNumber} • {pick.player.position} • {pick.player.team}
-                            </p>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="rounded-[28px] border border-white/10 bg-[#08111f]/90 p-5">
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Recent picks</p>
-                      <span className="text-xs text-slate-500">Newest first</span>
-                    </div>
-                    <div className="mt-4 grid gap-3">
-                      {recentPicks.length === 0 ? (
-                        <p className="text-sm text-slate-400">No picks logged yet.</p>
-                      ) : (
-                        recentPicks.map((pick) => (
-                          <div
-                            key={`recent-${pick.pickNumber}`}
-                            className="rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3"
-                          >
-                            <p className="text-sm font-semibold text-white">{pick.player.name}</p>
-                            <p className="mt-1 text-xs text-slate-400">
-                              Team {pick.teamNumber} • Pick {pick.pickNumber} • {pick.player.position}
-                            </p>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="rounded-[28px] border border-white/10 bg-[#08111f]/90 p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Actions</p>
-                    <div className="mt-4 grid gap-3">
-                      <button
-                        type="button"
-                        onClick={() => exportDraftResults("csv")}
-                        className="flex min-h-[48px] items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-                      >
-                        <Download className="h-4 w-4" />
-                        Export CSV
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          resetDraft();
-                        }}
-                        className="flex min-h-[48px] items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
-                      >
-                        <RotateCcw className="h-4 w-4" />
-                        Reset draft
-                      </button>
-                    </div>
-                    <p className="mt-3 text-xs leading-6 text-slate-500">
-                      Change league settings by starting a new draft. Active drafts keep one fixed room configuration.
-                    </p>
-                  </div>
-                </aside>
-              </div>
+              <DraftBoard
+                players={snapshot?.overall ?? []}
+                draftedPlayerIds={draftedPlayerIds}
+                onDraftPlayer={draftPlayer}
+                currentPick={draftState.currentPick}
+                currentTeamNumber={currentTeamNumber}
+                isUserPick={isUserPick}
+                isDraftComplete={isDraftComplete}
+                userTeam={userTeam}
+              />
             )}
           </div>
+
+          <aside className="grid gap-5 lg:sticky lg:top-24 lg:self-start">
+            <article className="home-card p-5 sm:p-6">
+              <p className="home-kicker mb-1">Progress</p>
+              <h3 className="text-2xl font-semibold">
+                {draftState.picks.length} of {totalPicks} picks logged
+              </h3>
+
+              <div className="mt-4">
+                <div
+                  className="flex items-center justify-between text-sm"
+                  style={{ color: "var(--home-ink-muted)" }}
+                >
+                  <span>Completion</span>
+                  <span>{completionPercentage}%</span>
+                </div>
+                <div
+                  className="mt-2 h-2 overflow-hidden rounded-full"
+                  style={{ background: "color-mix(in srgb, var(--home-stone) 60%, transparent)" }}
+                >
+                  <div
+                    className="h-2 rounded-full"
+                    style={{
+                      width: `${completionPercentage}%`,
+                      background:
+                        "linear-gradient(90deg, var(--home-haze) 0%, var(--home-acid) 100%)",
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="mt-5 grid gap-3">
+                <div
+                  className="rounded-[1.2rem] border px-4 py-3"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                  }}
+                >
+                  <p className="home-kicker mb-1">On clock</p>
+                  <p className="text-sm font-semibold">{currentTeamName}</p>
+                </div>
+                <div
+                  className="rounded-[1.2rem] border px-4 py-3"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                  }}
+                >
+                  <p className="home-kicker mb-1">Current pick</p>
+                  <p className="text-sm font-semibold">
+                    {draftState.currentPick} / {totalPicks}
+                  </p>
+                </div>
+                <div
+                  className="rounded-[1.2rem] border px-4 py-3"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                  }}
+                >
+                  <p className="home-kicker mb-1">Round</p>
+                  <p className="text-sm font-semibold">
+                    {draftState.currentRound} / {draftState.settings.rounds}
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article className="home-card p-5 sm:p-6">
+              <p className="home-kicker mb-1">Your roster</p>
+              <div className="mt-4 grid gap-3">
+                {(userTeam?.picks ?? []).length === 0 ? (
+                  <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                    Your picks will appear here as the draft moves.
+                  </p>
+                ) : (
+                  userTeam?.picks.map((pick) => (
+                    <div
+                      key={pick.pickNumber}
+                      className="rounded-[1.2rem] border px-4 py-3"
+                      style={{
+                        borderColor: "var(--home-rule)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                      }}
+                    >
+                      <p className="text-sm font-semibold">{pick.player.name}</p>
+                      <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                        Pick {pick.pickNumber} • {pick.player.position} • {pick.player.team}
+                      </p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </article>
+
+            <article className="home-card p-5 sm:p-6">
+              <div className="flex items-center justify-between gap-2">
+                <p className="home-kicker mb-0">Recent picks</p>
+                <span className="text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                  Newest first
+                </span>
+              </div>
+              <div className="mt-4 grid gap-3">
+                {recentPicks.length === 0 ? (
+                  <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                    No picks logged yet.
+                  </p>
+                ) : (
+                  recentPicks.map((pick) => (
+                    <div
+                      key={`recent-${pick.pickNumber}`}
+                      className="rounded-[1.2rem] border px-4 py-3"
+                      style={{
+                        borderColor: "var(--home-rule)",
+                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, white)",
+                      }}
+                    >
+                      <p className="text-sm font-semibold">{pick.player.name}</p>
+                      <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                        Team {pick.teamNumber} • Pick {pick.pickNumber} • {pick.player.position}
+                      </p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </article>
+
+            <article className="home-card p-5 sm:p-6">
+              <p className="home-kicker mb-1">Actions</p>
+              <div className="mt-4 grid gap-3">
+                <button
+                  type="button"
+                  onClick={() => exportDraftResults("csv")}
+                  className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                    color: "var(--home-ink)",
+                  }}
+                >
+                  <Download className="h-4 w-4" />
+                  Export CSV
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    resetDraft();
+                  }}
+                  className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+                  style={{
+                    borderColor: "var(--home-ink)",
+                    background: "var(--home-ink)",
+                    color: "var(--home-paper)",
+                  }}
+                >
+                  <RotateCcw className="h-4 w-4" />
+                  Reset draft
+                </button>
+                <Link
+                  href="/fantasy-football"
+                  className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+                    color: "var(--home-ink)",
+                  }}
+                >
+                  Back to rankings board
+                </Link>
+              </div>
+              <p className="mt-3 text-xs leading-6" style={{ color: "var(--home-ink-muted)" }}>
+                Change league settings by starting a new draft. Active drafts keep one fixed room configuration.
+              </p>
+            </article>
+          </aside>
         </div>
 
         {isLoading && !snapshot && (
-          <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-300">
+          <article className="home-card px-4 py-3 text-sm" style={{ color: "var(--home-ink-muted)" }}>
             Loading the published draft snapshot...
-          </div>
+          </article>
         )}
       </div>
     </section>

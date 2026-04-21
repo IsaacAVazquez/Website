@@ -27,7 +27,8 @@ describe("PremierLeagueClient", () => {
     render(
       <PremierLeagueClient
         initialState={DEFAULT_PREMIER_LEAGUE_STATE}
-        snapshot={premierLeagueSnapshot}
+        summary={premierLeagueSnapshot.summary}
+        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots["57"] ?? null}
       />
     );
 
@@ -41,7 +42,8 @@ describe("PremierLeagueClient", () => {
     render(
       <PremierLeagueClient
         initialState={DEFAULT_PREMIER_LEAGUE_STATE}
-        snapshot={premierLeagueSnapshot}
+        summary={premierLeagueSnapshot.summary}
+        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots["57"] ?? null}
       />
     );
 
@@ -57,7 +59,8 @@ describe("PremierLeagueClient", () => {
     render(
       <PremierLeagueClient
         initialState={DEFAULT_PREMIER_LEAGUE_STATE}
-        snapshot={premierLeagueSnapshot}
+        summary={premierLeagueSnapshot.summary}
+        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots["57"] ?? null}
       />
     );
 

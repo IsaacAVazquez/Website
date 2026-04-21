@@ -8,7 +8,7 @@ import {
   type CSSProperties,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { BarChart3, ExternalLink, Shield, Trophy, TrendingUp } from "lucide-react";
+import { BarChart3, CircleAlert, ExternalLink, Shield, Trophy, TrendingUp } from "lucide-react";
 import {
   StatCard,
   MetricCard,
@@ -20,7 +20,8 @@ import {
 } from "@/components/football";
 import type {
   PremierLeagueRouteState,
-  PremierLeagueSnapshot,
+  PremierLeagueSummary,
+  PremierLeagueTeamSnapshot,
   PremierLeagueView,
 } from "@/types/premier-league";
 import {
@@ -33,7 +34,8 @@ import {
 
 interface PremierLeagueClientProps {
   initialState: PremierLeagueRouteState;
-  snapshot: PremierLeagueSnapshot;
+  summary: PremierLeagueSummary;
+  initialTeamSnapshot: PremierLeagueTeamSnapshot | null;
 }
 
 function formatFixed(value: number, decimals = 2): string {
@@ -80,9 +82,9 @@ function getZonePillStyle(zone: ReturnType<typeof getPLZone>): CSSProperties {
       };
     case "relegation":
       return {
-        color: "var(--color-error, var(--color-danger))",
-        borderColor: "color-mix(in srgb, var(--color-danger) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-danger) 10%, var(--home-paper-alt))",
+        color: "var(--color-error)",
+        borderColor: "color-mix(in srgb, var(--color-error) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--color-error) 10%, var(--home-paper-alt))",
       };
     default:
       return { color: "var(--home-ink-muted)", borderColor: "var(--home-rule)", background: "var(--home-paper-alt)" };
@@ -94,7 +96,7 @@ function getZoneDotColor(zone: ReturnType<typeof getPLZone>): string {
     case "champions": return "var(--home-haze)";
     case "europa": return "var(--color-warning)";
     case "conference": return "var(--color-success)";
-    case "relegation": return "var(--color-danger)";
+    case "relegation": return "var(--color-error)";
     default: return "var(--home-rule)";
   }
 }
@@ -129,7 +131,25 @@ function formatGeneratedAt(value: string): string {
   return Number.isNaN(date.getTime()) ? "Unavailable" : LAST_UPDATED_FORMATTER.format(date);
 }
 
-export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueClientProps) {
+async function fetchPremierLeagueTeamSnapshot(
+  teamId: string,
+  signal: AbortSignal
+): Promise<PremierLeagueTeamSnapshot> {
+  const response = await fetch(`/api/premier-league/teams/${teamId}`, { signal });
+  const payload = (await response.json()) as PremierLeagueTeamSnapshot & { error?: string };
+
+  if (!response.ok) {
+    throw new Error(payload.error || "Unable to load club snapshot.");
+  }
+
+  return payload;
+}
+
+export function PremierLeagueClient({
+  initialState,
+  summary,
+  initialTeamSnapshot,
+}: PremierLeagueClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentQuery = searchParams.toString();
@@ -137,7 +157,6 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
   const hasManagedParams = searchParams.get("view") !== null || searchParams.get("team") !== null;
   const routeState = hasManagedParams ? normalizePremierLeagueState(searchParams) : initialState;
 
-  const summary = snapshot.summary;
   const validTeamIds = useMemo(() => new Set(summary.teams.map((t) => t.id)), [summary.teams]);
   const canonicalTeamId = validTeamIds.has(routeState.team ?? "") ? routeState.team : null;
   const selectedTeamId = canonicalTeamId ?? summary.standings[0]?.team.id ?? null;
@@ -173,7 +192,59 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
   // Derived state
   const visibleStandings = filterStandingsForView(summary.standings, routeState.view);
   const selectedRow = summary.standings.find((r) => r.team.id === selectedTeamId) ?? summary.standings[0] ?? null;
-  const teamSnapshot = selectedTeamId ? snapshot.teamSnapshots[selectedTeamId] ?? null : null;
+  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, PremierLeagueTeamSnapshot>>(
+    () => (selectedTeamId && initialTeamSnapshot ? { [selectedTeamId]: initialTeamSnapshot } : {})
+  );
+  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
+  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
+  const teamSnapshot = selectedTeamId ? teamSnapshots[selectedTeamId] ?? null : null;
+  const isTeamSnapshotLoading = loadingTeamId === selectedTeamId;
+
+  useEffect(() => {
+    if (!selectedTeamId) {
+      setLoadingTeamId(null);
+      setTeamSnapshotError(null);
+      return;
+    }
+
+    if (teamSnapshots[selectedTeamId]) {
+      setLoadingTeamId(null);
+      setTeamSnapshotError(null);
+      return;
+    }
+
+    const controller = new AbortController();
+    let cancelled = false;
+
+    setLoadingTeamId(selectedTeamId);
+    setTeamSnapshotError(null);
+
+    fetchPremierLeagueTeamSnapshot(selectedTeamId, controller.signal)
+      .then((snapshot) => {
+        if (cancelled) {
+          return;
+        }
+
+        setTeamSnapshots((current) => (
+          current[selectedTeamId] ? current : { ...current, [selectedTeamId]: snapshot }
+        ));
+      })
+      .catch((error: Error) => {
+        if (!cancelled && error.name !== "AbortError") {
+          setTeamSnapshotError(error.message || "Unable to load club snapshot.");
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setLoadingTeamId((current) => (current === selectedTeamId ? null : current));
+        }
+      });
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, [selectedTeamId, teamSnapshots]);
 
   // Derived stats for sidebar
   const attackRankings = useMemo(() => {
@@ -209,8 +280,38 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
     appearances: s.appearances,
     perMatch: s.appearances ? s.goals / s.appearances : 0,
   }));
+  const scorersByClub = useMemo(() => groupLeadersByClub(scorerEntries), [scorerEntries]);
 
   const selectedZone = selectedRow ? getPLZone(selectedRow.position) : "midtable";
+  const selectedClubStoryline = selectedRow
+    ? getClubStoryline(selectedRow, {
+      leader,
+      runnerUp,
+      fifthPlace,
+      seventhPlace: summary.standings[6] ?? null,
+      sixthPlace: summary.standings[5] ?? null,
+      safetyLine,
+      dropLine,
+    })
+    : null;
+  const selectedClubPressurePoints = selectedRow
+    ? getClubPressurePoints(selectedRow, {
+      attackRankings,
+      defenseRankings,
+      leader,
+      runnerUp,
+      fifthPlace,
+      seventhPlace: summary.standings[6] ?? null,
+      sixthPlace: summary.standings[5] ?? null,
+      safetyLine,
+      dropLine,
+    })
+    : [];
+  const selectedClubTopScorer = selectedRow
+    ? scorersByClub.get(selectedRow.team.id)?.[0]
+    : undefined;
+  const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
+  const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const lastUpdated = formatGeneratedAt(summary.generatedAt);
   const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
 
@@ -429,6 +530,20 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                     </div>
                   </div>
                 )}
+
+                {selectedClubStoryline ? (
+                  <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">
+                    {selectedClubStoryline}
+                  </p>
+                ) : null}
+
+                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
+                  <p className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]">
+                    {isTeamSnapshotLoading
+                      ? "Loading club snapshot…"
+                      : teamSnapshotError}
+                  </p>
+                ) : null}
               </section>
             ) : null}
           </aside>
@@ -477,25 +592,67 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
                       <MetricCard label="GA / match" value={formatFixed(selectedRow.goalsAgainst / selectedRow.playedGames)} />
                     </div>
                   </div>
+
+                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                    <p className="text-sm font-semibold text-[var(--home-ink)]">Pressure points</p>
+                    <ul className="mt-3 space-y-2 pl-5 text-sm leading-relaxed text-[var(--home-ink-muted)]">
+                      {selectedClubPressurePoints.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <ClubLeaderCard
+                    title="Top scorer"
+                    leader={selectedClubTopScorer}
+                    statLabel="Goals"
+                    emptyLabel="No current top-10 scorer in this snapshot."
+                  />
+
+                  {selectedClubStoryline ? (
+                    <p className="text-sm leading-relaxed text-[var(--home-ink-muted)]">
+                      {selectedClubStoryline}
+                    </p>
+                  ) : null}
                 </div>
 
-                {teamSnapshot && teamSnapshot.recentFixtures.length > 0 && (
+                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
+                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                    <p className="text-sm text-[var(--home-ink-muted)]">
+                      {isTeamSnapshotLoading
+                        ? "Loading recent club fixtures…"
+                        : teamSnapshotError}
+                    </p>
+                  </div>
+                )}
+
+                {recentFixtures.length > 0 && (
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Recent results</p>
                     <div className="mt-3 space-y-2">
-                      {teamSnapshot.recentFixtures.slice(0, 3).map((fixture) => (
-                        <FixtureCard key={fixture.id} fixture={fixture} contextTeamId={selectedTeamId} compact />
+                      {recentFixtures.map((fixture) => (
+                        <FixtureCard
+                          key={fixture.id}
+                          fixture={fixture}
+                          contextTeamId={teamSnapshot?.team?.id ?? selectedTeamId ?? undefined}
+                          compact
+                        />
                       ))}
                     </div>
                   </div>
                 )}
 
-                {teamSnapshot && teamSnapshot.upcomingFixtures.length > 0 && (
+                {upcomingFixtures.length > 0 && (
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Upcoming fixtures</p>
                     <div className="mt-3 space-y-2">
-                      {teamSnapshot.upcomingFixtures.slice(0, 3).map((fixture) => (
-                        <FixtureCard key={fixture.id} fixture={fixture} contextTeamId={selectedTeamId} compact />
+                      {upcomingFixtures.map((fixture) => (
+                        <FixtureCard
+                          key={fixture.id}
+                          fixture={fixture}
+                          contextTeamId={teamSnapshot?.team?.id ?? selectedTeamId ?? undefined}
+                          compact
+                        />
                       ))}
                     </div>
                   </div>
@@ -559,7 +716,176 @@ export function PremierLeagueClient({ initialState, snapshot }: PremierLeagueCli
             )}
           </div>
         </div>
+
+        <section className="rounded-3xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
+          <div className="flex items-start gap-3">
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-warning)]" />
+            <p className="mb-0 max-w-none leading-relaxed">
+              This page is a checked-in football-data.org snapshot rather than a live feed. Standings, club form, and fixture cards refresh from the local dataset shipped with the app.
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );
+}
+
+function ClubLeaderCard({
+  title,
+  leader,
+  statLabel,
+  emptyLabel,
+}: {
+  title: string;
+  leader?: LeaderEntry;
+  statLabel: string;
+  emptyLabel: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+        {title}
+      </p>
+      {leader ? (
+        <>
+          <p className="mt-2 text-lg font-bold text-[var(--home-ink)]">{leader.name}</p>
+          <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
+            {leader.total} {statLabel.toLowerCase()} in {leader.appearances} matches
+          </p>
+          <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+            {formatFixed(leader.perMatch)} per match
+          </p>
+        </>
+      ) : (
+        <p className="mt-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">{emptyLabel}</p>
+      )}
+    </div>
+  );
+}
+
+function groupLeadersByClub(leaders: LeaderEntry[]) {
+  return leaders.reduce((map, leaderEntry) => {
+    const existing = map.get(leaderEntry.clubId) ?? [];
+    existing.push(leaderEntry);
+    map.set(leaderEntry.clubId, existing);
+    return map;
+  }, new Map<string, LeaderEntry[]>());
+}
+
+function getClubStoryline(
+  club: PremierLeagueStandingRow,
+  context: {
+    leader: PremierLeagueStandingRow | null;
+    runnerUp: PremierLeagueStandingRow | null;
+    fifthPlace: PremierLeagueStandingRow | null;
+    seventhPlace: PremierLeagueStandingRow | null;
+    sixthPlace: PremierLeagueStandingRow | null;
+    safetyLine: PremierLeagueStandingRow | null;
+    dropLine: PremierLeagueStandingRow | null;
+  }
+) {
+  const { leader, runnerUp, fifthPlace, seventhPlace, sixthPlace, safetyLine, dropLine } = context;
+
+  if (club.position === 1 && runnerUp) {
+    return `${club.team.shortName} lead the table, carry one of the league's sharpest attacks, and sit ${club.points - runnerUp.points} points clear of ${runnerUp.team.shortName}.`;
+  }
+
+  if (club.position <= 4 && leader && fifthPlace) {
+    return `${club.team.shortName} are ${leader.points - club.points} points off the pace and ${club.points - fifthPlace.points} clear of the top-four cutoff below them.`;
+  }
+
+  if (club.position <= 6 && seventhPlace && leader) {
+    return `${club.team.shortName} currently occupy a European place and have a ${club.points - seventhPlace.points}-point buffer over the first club outside qualification.`;
+  }
+
+  if (club.position <= 17 && sixthPlace && dropLine) {
+    return `${club.team.shortName} are ${sixthPlace.points - club.points} points short of Europe and ${club.points - dropLine.points} points above the current relegation line.`;
+  }
+
+  if (safetyLine) {
+    return `${club.team.shortName} are chasing safety from inside the bottom three and need ${safetyLine.points - club.points} more points just to draw level with the safe line.`;
+  }
+
+  return `${club.team.shortName} are still in a volatile part of the table and every remaining result materially shifts the pressure around them.`;
+}
+
+function getClubPressurePoints(
+  club: PremierLeagueStandingRow,
+  context: {
+    attackRankings: Map<string, number>;
+    defenseRankings: Map<string, number>;
+    leader: PremierLeagueStandingRow | null;
+    runnerUp: PremierLeagueStandingRow | null;
+    fifthPlace: PremierLeagueStandingRow | null;
+    seventhPlace: PremierLeagueStandingRow | null;
+    sixthPlace: PremierLeagueStandingRow | null;
+    safetyLine: PremierLeagueStandingRow | null;
+    dropLine: PremierLeagueStandingRow | null;
+  }
+) {
+  const {
+    attackRankings,
+    defenseRankings,
+    leader,
+    runnerUp,
+    fifthPlace,
+    seventhPlace,
+    sixthPlace,
+    safetyLine,
+    dropLine,
+  } = context;
+  const attackRank = attackRankings.get(club.team.id) ?? club.position;
+  const defenseRank = defenseRankings.get(club.team.id) ?? club.position;
+
+  if (club.position === 1 && runnerUp) {
+    return [
+      `${club.points - runnerUp.points} points separate ${club.team.shortName} from ${runnerUp.team.shortName}.`,
+      `${club.goalsFor} goals scored keeps them among the league's best attacks.`,
+      `${38 - club.playedGames} matches remain in this snapshot.`,
+      `Attack rank #${attackRank}; defense rank #${defenseRank}.`,
+    ];
+  }
+
+  if (club.position <= 4 && leader && fifthPlace) {
+    return [
+      `${leader.points - club.points} points back from the league lead.`,
+      `${club.points - fifthPlace.points} points clear of the top-four cutoff.`,
+      `Goal difference: ${club.goalDifference > 0 ? `+${club.goalDifference}` : club.goalDifference}.`,
+      `Attack rank #${attackRank}; defense rank #${defenseRank}.`,
+    ];
+  }
+
+  if (club.position <= 6 && seventhPlace && leader) {
+    return [
+      `${club.points - seventhPlace.points} points above the first club outside Europe.`,
+      `${leader.points - club.points} points back from first place.`,
+      `Goals for/against: ${club.goalsFor} scored, ${club.goalsAgainst} conceded.`,
+      `Attack rank #${attackRank}; defense rank #${defenseRank}.`,
+    ];
+  }
+
+  if (club.position <= 17 && sixthPlace && dropLine) {
+    return [
+      `${sixthPlace.points - club.points} points separate ${club.team.shortName} from Europe.`,
+      `${club.points - dropLine.points} points above the drop line.`,
+      `Goal difference: ${club.goalDifference > 0 ? `+${club.goalDifference}` : club.goalDifference}.`,
+      `Attack rank #${attackRank}; defense rank #${defenseRank}.`,
+    ];
+  }
+
+  if (safetyLine) {
+    return [
+      `${safetyLine.points - club.points} points to reach the current safety line.`,
+      `${club.goalsAgainst} goals conceded puts pressure on the run-in.`,
+      `Only ${38 - club.playedGames} matches remain in this snapshot.`,
+      `Attack rank #${attackRank}; defense rank #${defenseRank}.`,
+    ];
+  }
+
+  return [
+    `Goal difference: ${club.goalDifference > 0 ? `+${club.goalDifference}` : club.goalDifference}.`,
+    `${club.goalsFor} scored, ${club.goalsAgainst} conceded.`,
+    `${38 - club.playedGames} matches remain.`,
+    `Attack rank #${attackRank}; defense rank #${defenseRank}.`,
+  ];
 }

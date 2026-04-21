@@ -12,6 +12,8 @@ import type { PortfolioSnapshot } from "@/components/investments/PortfolioPerfor
 const STORAGE_KEY = "portfolio_holdings";
 const SNAPSHOTS_KEY = "portfolio_snapshots";
 const MAX_SNAPSHOTS = 365;
+const PARTIAL_FALLBACK_WARNING =
+  "Some live prices are temporarily unavailable. Portfolio totals are using your saved cost basis where needed.";
 
 // ─── localStorage helpers ────────────────────────────────────────────────────
 
@@ -40,15 +42,24 @@ function loadSnapshots(): PortfolioSnapshot[] {
   }
 }
 
+export function upsertSnapshots(
+  existing: PortfolioSnapshot[],
+  snapshot: PortfolioSnapshot
+): PortfolioSnapshot[] {
+  const existingIndex = existing.findIndex((entry) => entry.date === snapshot.date);
+  const updated =
+    existingIndex >= 0
+      ? existing.map((entry, index) => (index === existingIndex ? snapshot : entry))
+      : [...existing, snapshot];
+
+  return updated.length > MAX_SNAPSHOTS ? updated.slice(-MAX_SNAPSHOTS) : updated;
+}
+
 function saveSnapshot(snapshot: PortfolioSnapshot): void {
   if (typeof window === "undefined") return;
   const existing = loadSnapshots();
-  // One snapshot per day (idempotent)
-  if (existing.some((s) => s.date === snapshot.date)) return;
-  const updated = [...existing, snapshot];
-  // Keep max entries, drop oldest
-  const trimmed = updated.length > MAX_SNAPSHOTS ? updated.slice(-MAX_SNAPSHOTS) : updated;
-  localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(trimmed));
+  const updated = upsertSnapshots(existing, snapshot);
+  localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(updated));
 }
 
 // ─── Quote fetching with retry ───────────────────────────────────────────────
@@ -98,6 +109,13 @@ async function fetchQuotesWithStatus(
 
 function hasUsableQuote(quote?: StockQuote): quote is StockQuote {
   return !!quote && !quote.error && Number.isFinite(quote.price) && quote.price > 0;
+}
+
+export function canPersistPortfolioSnapshot(
+  holdings: PortfolioHolding[],
+  quotes: Map<string, StockQuote>
+): boolean {
+  return holdings.length > 0 && holdings.every((holding) => hasUsableQuote(quotes.get(holding.symbol)));
 }
 
 export function buildEnhanced(
@@ -194,22 +212,30 @@ export function useInvestments(): UseInvestmentsReturn {
       const symbols = currentHoldings.map((h) => h.symbol);
       const { quotes: q, warning } = await fetchQuotesWithStatus(symbols);
       if (isMounted.current) {
-        setQuotes(q);
-        setLastUpdated(new Date());
-        setError(warning);
+        const canPersistSnapshot = canPersistPortfolioSnapshot(currentHoldings, q);
+        const hasFallbackPrices = currentHoldings.some(
+          (holding) => !hasUsableQuote(q.get(holding.symbol))
+        );
 
-        // Record daily snapshot
-        const enhanced = buildEnhanced(currentHoldings, q, false);
-        const summary = buildSummary(enhanced);
-        const totalCost = enhanced.reduce((s, h) => s + h.totalCost, 0);
-        const today = new Date().toISOString().split("T")[0];
-        const snap: PortfolioSnapshot = {
-          date: today,
-          totalValue: summary.totalValue,
-          totalCost,
-          holdingCount: currentHoldings.length,
-        };
-        saveSnapshot(snap);
+        setQuotes(q);
+        if (canPersistSnapshot) {
+          setLastUpdated(new Date());
+        }
+        setError(warning ?? (hasFallbackPrices ? PARTIAL_FALLBACK_WARNING : null));
+
+        if (canPersistSnapshot) {
+          const enhanced = buildEnhanced(currentHoldings, q, false);
+          const summary = buildSummary(enhanced);
+          const totalCost = enhanced.reduce((s, h) => s + h.totalCost, 0);
+          const today = new Date().toISOString().split("T")[0];
+          const snap: PortfolioSnapshot = {
+            date: today,
+            totalValue: summary.totalValue,
+            totalCost,
+            holdingCount: currentHoldings.length,
+          };
+          saveSnapshot(snap);
+        }
         setSnapshots(loadSnapshots());
       }
     } catch (err) {

@@ -1,4 +1,10 @@
-import { buildEnhanced, buildSummary } from "@/hooks/useInvestments";
+import {
+  buildEnhanced,
+  buildSummary,
+  canPersistPortfolioSnapshot,
+  upsertSnapshots,
+} from "@/hooks/useInvestments";
+import type { PortfolioSnapshot } from "@/components/investments/PortfolioPerformanceChart";
 import type { PortfolioHolding, StockQuote } from "@/types/investment";
 
 describe("useInvestments derived calculations", () => {
@@ -88,5 +94,72 @@ describe("useInvestments derived calculations", () => {
     expect(rawSummary.totalValue).toBe(1100);
     expect(rawSummary.dayChange).toBe(100);
     expect(dayChangePercent).toBe(10);
+  });
+
+  it("does not persist a portfolio snapshot when any holding falls back to cost basis", () => {
+    const holdings: PortfolioHolding[] = [
+      { symbol: "AAPL", shares: 10, averageCost: 150 },
+      { symbol: "MSFT", shares: 5, averageCost: 300 },
+    ];
+
+    const quotes = new Map<string, StockQuote>([
+      [
+        "AAPL",
+        {
+          symbol: "AAPL",
+          price: 175,
+          change: 2,
+          changePercent: 1.16,
+          dayHigh: 176,
+          dayLow: 172,
+          open: 173,
+          previousClose: 173,
+          volume: 1000,
+          marketCap: 0,
+          name: "Apple Inc.",
+        },
+      ],
+      [
+        "MSFT",
+        {
+          symbol: "MSFT",
+          price: 0,
+          change: 0,
+          changePercent: 0,
+          dayHigh: 0,
+          dayLow: 0,
+          open: 0,
+          previousClose: 0,
+          volume: 0,
+          marketCap: 0,
+          name: "MSFT",
+          error: "Failed to fetch",
+        },
+      ],
+    ]);
+
+    expect(canPersistPortfolioSnapshot(holdings, quotes)).toBe(false);
+  });
+
+  it("replaces the current day snapshot instead of leaving it stale", () => {
+    const existing: PortfolioSnapshot[] = [
+      { date: "2026-04-16", totalValue: 1000, totalCost: 900, holdingCount: 2 },
+      { date: "2026-04-17", totalValue: 1100, totalCost: 900, holdingCount: 2 },
+    ];
+
+    const updated = upsertSnapshots(existing, {
+      date: "2026-04-17",
+      totalValue: 1250,
+      totalCost: 950,
+      holdingCount: 3,
+    });
+
+    expect(updated).toHaveLength(2);
+    expect(updated[1]).toEqual({
+      date: "2026-04-17",
+      totalValue: 1250,
+      totalCost: 950,
+      holdingCount: 3,
+    });
   });
 });

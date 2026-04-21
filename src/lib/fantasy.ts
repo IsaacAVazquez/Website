@@ -12,9 +12,9 @@ export const FANTASY_ROUTE_POSITIONS = [
 ] as const;
 
 export const FANTASY_ROUTE_SCORING = ["ppr", "half_ppr", "standard"] as const;
-export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 4;
+export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 5;
 export const DEFAULT_FANTASY_SNAPSHOT_SOURCE =
-  "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall and flex boards are derived from the current position boards.";
+  "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall boards come from the public overall consensus page for each scoring format, while flex is derived locally from the published overall board.";
 
 export type FantasyRoutePosition = (typeof FANTASY_ROUTE_POSITIONS)[number];
 export type FantasyRouteScoring = (typeof FANTASY_ROUTE_SCORING)[number];
@@ -33,6 +33,7 @@ export interface FantasySnapshotSliceMetadata {
   sourceKind: FantasySnapshotSliceSourceKind;
   rangeKind: FantasySnapshotRangeKind;
   playerCount: number;
+  updatedAt?: string | null;
   reason?: string;
 }
 
@@ -43,6 +44,7 @@ export interface FantasySnapshot {
   season: number;
   week: number;
   generatedAt: string;
+  upstreamUpdatedAt: string | null;
   scoringFormat: ScoringFormat;
   source: string;
   positions: Record<FantasySnapshotPosition, Player[]>;
@@ -54,6 +56,7 @@ export interface FantasySnapshotMetadata {
   season: number;
   week: number;
   generatedAt: string;
+  upstreamUpdatedAt: string | null;
   scoringFormat: ScoringFormat;
   source: string;
   position: FantasyRoutePosition | "all";
@@ -99,8 +102,14 @@ type FantasySliceSupport = {
   rangeKind: FantasySnapshotRangeKind;
 };
 
+type RawFantasySnapshotSliceMetadata = Partial<FantasySnapshotSliceMetadata> & {
+  updatedAt?: unknown;
+};
+
 type RawFantasySnapshot = Partial<FantasySnapshot> & {
   positions?: Partial<Record<FantasySnapshotPosition, unknown>>;
+  sliceMetadata?: Partial<Record<FantasyRoutePosition, RawFantasySnapshotSliceMetadata>>;
+  upstreamUpdatedAt?: unknown;
 };
 
 export function normalizeFantasyRoutePosition(rawPosition: string | null | undefined): FantasyRoutePosition {
@@ -122,7 +131,6 @@ export function normalizeFantasyRouteScoring(rawScoring: string | null | undefin
     case "standard":
       return "standard";
     case "ppr":
-      return "ppr";
     default:
       return "ppr";
   }
@@ -192,13 +200,84 @@ function snapshotPositionToRoutePosition(position: FantasySnapshotPosition): Fan
   }
 }
 
-function toPlayerArray(raw: unknown): Player[] {
-  return Array.isArray(raw) ? raw.map((player) => stripFantasyPlayerInternalFields(player as Player)) : [];
+function isFiniteNumber(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
+function parseNumericValue(value: number | string | undefined): number | undefined {
+  if (typeof value === "number") {
+    return Number.isFinite(value) ? value : undefined;
+  }
+
+  const parsed = Number.parseFloat(value ?? "");
+  return Number.isFinite(parsed) ? parsed : undefined;
+}
+
+function normalizeOptionalTimestamp(value: unknown): string | null {
+  if (typeof value !== "string" || !value) {
+    return null;
+  }
+
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
+export function publishFantasyPlayer(player: Player): Player {
+  const publishedPlayer: Partial<Player> = {
+    id: player.id,
+    name: player.name,
+    team: player.team,
+    position: player.position,
+    averageRank: player.averageRank,
+    standardDeviation: player.standardDeviation,
+  };
+
+  if (isFiniteNumber(player.rankEcr)) {
+    publishedPlayer.rankEcr = player.rankEcr;
+  }
+
+  if (isFiniteNumber(player.rankAverage)) {
+    publishedPlayer.rankAverage = player.rankAverage;
+  }
+
+  if (isFiniteNumber(player.tier)) {
+    publishedPlayer.tier = player.tier;
+  }
+
+  if (isFiniteNumber(player.positionRank)) {
+    publishedPlayer.positionRank = player.positionRank;
+  }
+
+  if (player.minRank !== undefined) {
+    publishedPlayer.minRank = player.minRank;
+  }
+
+  if (player.maxRank !== undefined) {
+    publishedPlayer.maxRank = player.maxRank;
+  }
+
+  if (isFiniteNumber(player.byeWeek)) {
+    publishedPlayer.byeWeek = player.byeWeek;
+  }
+
+  if (isFiniteNumber(player.ownership)) {
+    publishedPlayer.ownership = player.ownership;
+  }
+
+  const updatedAt = normalizeOptionalTimestamp(player.lastUpdated);
+  if (updatedAt) {
+    publishedPlayer.lastUpdated = updatedAt;
+  }
+
+  return publishedPlayer as Player;
 }
 
 export function stripFantasyPlayerInternalFields(player: Player): Player {
-  const { overallValue: _overallValue, ...publishedPlayer } = player;
-  return publishedPlayer;
+  return publishFantasyPlayer(player);
+}
+
+function toPlayerArray(raw: unknown): Player[] {
+  return Array.isArray(raw) ? raw.map((player) => publishFantasyPlayer(player as Player)) : [];
 }
 
 function getFantasySliceSupport(
@@ -209,14 +288,14 @@ function getFantasySliceSupport(
     case "overall":
       return {
         supported: true,
-        sourceKind: "derived_overall",
+        sourceKind: "overall_consensus",
         rangeKind: "overall",
       };
     case "flex":
       return {
         supported: true,
         sourceKind: "derived_flex",
-        rangeKind: "position",
+        rangeKind: "overall",
       };
     case "qb":
     case "k":
@@ -245,7 +324,7 @@ export function getFantasySnapshotUnavailableReason(
   const positionLabel = FANTASY_POSITION_LABELS[position];
 
   if (position === "flex") {
-    return `Published ${scoringLabel} flex rankings are unavailable because RB, WR, and TE position data is incomplete in the current snapshot.`;
+    return `Published ${scoringLabel} flex rankings are unavailable because the current snapshot does not include an overall consensus board.`;
   }
 
   return `Published ${scoringLabel} ${positionLabel} rankings are unavailable in the current snapshot.`;
@@ -254,7 +333,8 @@ export function getFantasySnapshotUnavailableReason(
 function buildFantasySliceMetadata(
   scoring: FantasyRouteScoring,
   position: FantasyRoutePosition,
-  playerCount: number
+  playerCount: number,
+  updatedAt?: string | null
 ): FantasySnapshotSliceMetadata {
   const support = getFantasySliceSupport(scoring, position);
 
@@ -264,6 +344,7 @@ function buildFantasySliceMetadata(
       sourceKind: "unavailable",
       rangeKind: "none",
       playerCount: 0,
+      updatedAt: updatedAt ?? null,
       reason: getFantasySnapshotUnavailableReason(scoring, position),
     };
   }
@@ -273,11 +354,73 @@ function buildFantasySliceMetadata(
     sourceKind: support.sourceKind,
     rangeKind: support.rangeKind,
     playerCount,
+    updatedAt: updatedAt ?? null,
   };
 }
 
 function buildLegacyFlexPlayers(overallPlayers: Player[]): Player[] {
-  return overallPlayers.filter((player) => ["RB", "WR", "TE"].includes(player.position));
+  return overallPlayers
+    .filter((player) => ["RB", "WR", "TE"].includes(player.position))
+    .map((player, index) =>
+      publishFantasyPlayer({
+        ...player,
+        averageRank: index + 1,
+      })
+    );
+}
+
+function getSliceUpdatedAt(players: Player[]): string | null {
+  for (const player of players) {
+    const updatedAt = normalizeOptionalTimestamp(player.lastUpdated);
+    if (updatedAt) {
+      return updatedAt;
+    }
+  }
+
+  return null;
+}
+
+function normalizeRawSliceMetadata(
+  rawSlice: RawFantasySnapshotSliceMetadata | undefined,
+  fallback: FantasySnapshotSliceMetadata,
+  actualPlayerCount: number,
+  actualUpdatedAt: string | null
+): FantasySnapshotSliceMetadata {
+  if (!rawSlice || typeof rawSlice !== "object") {
+    return {
+      ...fallback,
+      updatedAt: actualUpdatedAt ?? fallback.updatedAt ?? null,
+    };
+  }
+
+  const available =
+    typeof rawSlice.available === "boolean"
+      ? rawSlice.available && actualPlayerCount > 0
+      : fallback.available;
+  const sourceKind =
+    rawSlice.sourceKind &&
+    ["overall_consensus", "derived_overall", "position_consensus", "shared_position_consensus", "derived_flex", "unavailable"].includes(
+      rawSlice.sourceKind
+    )
+      ? rawSlice.sourceKind
+      : fallback.sourceKind;
+  const rangeKind =
+    rawSlice.rangeKind && ["overall", "position", "none"].includes(rawSlice.rangeKind)
+      ? rawSlice.rangeKind
+      : fallback.rangeKind;
+  const updatedAt = normalizeOptionalTimestamp(rawSlice.updatedAt) ?? actualUpdatedAt ?? fallback.updatedAt ?? null;
+
+  return {
+    available,
+    sourceKind: available ? sourceKind : "unavailable",
+    rangeKind: available ? rangeKind : "none",
+    playerCount: actualPlayerCount,
+    updatedAt,
+    reason:
+      available || typeof rawSlice.reason !== "string" || !rawSlice.reason
+        ? fallback.reason
+        : rawSlice.reason,
+  };
 }
 
 export function normalizeFantasySnapshot(
@@ -291,6 +434,10 @@ export function normalizeFantasySnapshot(
   const rawPositions =
     input.positions && typeof input.positions === "object"
       ? (input.positions as Partial<Record<FantasySnapshotPosition, unknown>>)
+      : {};
+  const rawSliceMetadata =
+    input.sliceMetadata && typeof input.sliceMetadata === "object"
+      ? (input.sliceMetadata as Partial<Record<FantasyRoutePosition, RawFantasySnapshotSliceMetadata>>)
       : {};
 
   const overallPlayers = toPlayerArray(input.overall);
@@ -308,15 +455,66 @@ export function normalizeFantasySnapshot(
     positions.FLEX = buildLegacyFlexPlayers(overallPlayers);
   }
 
+  const fallbackSliceMetadata: FantasySnapshotSliceMap = {
+    overall: buildFantasySliceMetadata(scoring, "overall", overallPlayers.length, getSliceUpdatedAt(overallPlayers)),
+    qb: buildFantasySliceMetadata(scoring, "qb", positions.QB.length, getSliceUpdatedAt(positions.QB)),
+    rb: buildFantasySliceMetadata(scoring, "rb", positions.RB.length, getSliceUpdatedAt(positions.RB)),
+    wr: buildFantasySliceMetadata(scoring, "wr", positions.WR.length, getSliceUpdatedAt(positions.WR)),
+    te: buildFantasySliceMetadata(scoring, "te", positions.TE.length, getSliceUpdatedAt(positions.TE)),
+    flex: buildFantasySliceMetadata(scoring, "flex", positions.FLEX.length, getSliceUpdatedAt(positions.FLEX)),
+    k: buildFantasySliceMetadata(scoring, "k", positions.K.length, getSliceUpdatedAt(positions.K)),
+    dst: buildFantasySliceMetadata(scoring, "dst", positions.DST.length, getSliceUpdatedAt(positions.DST)),
+  };
+
   const sliceMetadata: FantasySnapshotSliceMap = {
-    overall: buildFantasySliceMetadata(scoring, "overall", overallPlayers.length),
-    qb: buildFantasySliceMetadata(scoring, "qb", positions.QB.length),
-    rb: buildFantasySliceMetadata(scoring, "rb", positions.RB.length),
-    wr: buildFantasySliceMetadata(scoring, "wr", positions.WR.length),
-    te: buildFantasySliceMetadata(scoring, "te", positions.TE.length),
-    flex: buildFantasySliceMetadata(scoring, "flex", positions.FLEX.length),
-    k: buildFantasySliceMetadata(scoring, "k", positions.K.length),
-    dst: buildFantasySliceMetadata(scoring, "dst", positions.DST.length),
+    overall: normalizeRawSliceMetadata(
+      rawSliceMetadata.overall,
+      fallbackSliceMetadata.overall,
+      overallPlayers.length,
+      getSliceUpdatedAt(overallPlayers)
+    ),
+    qb: normalizeRawSliceMetadata(
+      rawSliceMetadata.qb,
+      fallbackSliceMetadata.qb,
+      positions.QB.length,
+      getSliceUpdatedAt(positions.QB)
+    ),
+    rb: normalizeRawSliceMetadata(
+      rawSliceMetadata.rb,
+      fallbackSliceMetadata.rb,
+      positions.RB.length,
+      getSliceUpdatedAt(positions.RB)
+    ),
+    wr: normalizeRawSliceMetadata(
+      rawSliceMetadata.wr,
+      fallbackSliceMetadata.wr,
+      positions.WR.length,
+      getSliceUpdatedAt(positions.WR)
+    ),
+    te: normalizeRawSliceMetadata(
+      rawSliceMetadata.te,
+      fallbackSliceMetadata.te,
+      positions.TE.length,
+      getSliceUpdatedAt(positions.TE)
+    ),
+    flex: normalizeRawSliceMetadata(
+      rawSliceMetadata.flex,
+      fallbackSliceMetadata.flex,
+      positions.FLEX.length,
+      getSliceUpdatedAt(positions.FLEX)
+    ),
+    k: normalizeRawSliceMetadata(
+      rawSliceMetadata.k,
+      fallbackSliceMetadata.k,
+      positions.K.length,
+      getSliceUpdatedAt(positions.K)
+    ),
+    dst: normalizeRawSliceMetadata(
+      rawSliceMetadata.dst,
+      fallbackSliceMetadata.dst,
+      positions.DST.length,
+      getSliceUpdatedAt(positions.DST)
+    ),
   };
 
   for (const snapshotPosition of FANTASY_SNAPSHOT_POSITIONS) {
@@ -326,6 +524,11 @@ export function normalizeFantasySnapshot(
     }
   }
 
+  const upstreamUpdatedAt =
+    normalizeOptionalTimestamp(input.upstreamUpdatedAt) ??
+    sliceMetadata.overall.updatedAt ??
+    getSliceUpdatedAt(overallPlayers);
+
   return {
     schemaVersion: FANTASY_SNAPSHOT_SCHEMA_VERSION,
     season: typeof input.season === "number" ? input.season : 0,
@@ -334,6 +537,7 @@ export function normalizeFantasySnapshot(
       typeof input.generatedAt === "string" && input.generatedAt
         ? input.generatedAt
         : new Date().toISOString(),
+    upstreamUpdatedAt,
     scoringFormat: routeScoringToScoringFormat(scoring),
     source:
       typeof input.source === "string" && input.source
@@ -378,8 +582,20 @@ export function getFantasySliceMetadata(
             ? snapshot.positions[snapshotPosition].length
             : 0;
         })();
+  const updatedAt =
+    position === "overall"
+      ? getSliceUpdatedAt(snapshot.overall)
+      : (() => {
+          const snapshotPosition = routePositionToSnapshotPosition(position);
+          return snapshotPosition !== "OVERALL"
+            ? getSliceUpdatedAt(snapshot.positions?.[snapshotPosition] ?? [])
+            : getSliceUpdatedAt(snapshot.overall);
+        })();
 
-  return snapshot.sliceMetadata?.[position] ?? buildFantasySliceMetadata(scoring, position, playerCount);
+  return (
+    snapshot.sliceMetadata?.[position] ??
+    buildFantasySliceMetadata(scoring, position, playerCount, updatedAt)
+  );
 }
 
 export function getFantasyWeekLabel(week: number): string {

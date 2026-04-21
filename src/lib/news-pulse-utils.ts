@@ -1,8 +1,8 @@
-// ---------------------------------------------------------------------------
-// News Pulse – client-side text analysis utilities
-// Sentiment (lexicon-based), topic extraction, and readability scoring.
-// No external dependencies.
-// ---------------------------------------------------------------------------
+import {
+  NEWS_SOURCE_IDS,
+  SOURCE_META,
+  type NewsFeedId,
+} from "@/lib/news-pulse-sources";
 
 export interface NewsArticle {
   title: string;
@@ -10,18 +10,36 @@ export interface NewsArticle {
   description: string;
   pubDate: string;
   category: string;
-  source: string;
+  source: NewsFeedId;
   sourceName: string;
   sourceColor: string;
 }
 
-// ── Sentiment ───────────────────────────────────────────────────────────────
-
 export interface SentimentResult {
-  score: number; // -1 … 1
+  score: number;
   label: "positive" | "negative" | "neutral";
   positiveCount: number;
   negativeCount: number;
+}
+
+export interface TopicCluster {
+  topic: string;
+  count: number;
+  sources: Partial<Record<NewsFeedId, number>>;
+}
+
+export interface ReadabilityResult {
+  score: number;
+  label: string;
+}
+
+export interface StoryCluster {
+  id: string;
+  label: string;
+  totalCount: number;
+  representative: NewsArticle;
+  sources: Partial<Record<NewsFeedId, number>>;
+  articles: NewsArticle[];
 }
 
 const POSITIVE_WORDS = new Set([
@@ -47,29 +65,6 @@ const NEGATIVE_WORDS = new Set([
   "terror", "toxic", "tragic", "violate", "violence", "warn", "weapon",
 ]);
 
-export function analyzeSentiment(text: string): SentimentResult {
-  const words = text.toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/);
-  let pos = 0;
-  let neg = 0;
-  for (const w of words) {
-    if (POSITIVE_WORDS.has(w)) pos++;
-    if (NEGATIVE_WORDS.has(w)) neg++;
-  }
-  const total = words.length || 1;
-  const score = (pos - neg) / total;
-  const label =
-    score > 0.04 ? "positive" : score < -0.04 ? "negative" : "neutral";
-  return { score, label, positiveCount: pos, negativeCount: neg };
-}
-
-// ── Topic extraction ────────────────────────────────────────────────────────
-
-export interface TopicCluster {
-  topic: string;
-  count: number;
-  sources: Record<string, number>;
-}
-
 const STOP_WORDS = new Set([
   "a", "about", "above", "after", "again", "against", "all", "also", "am",
   "an", "and", "any", "are", "as", "at", "be", "because", "been", "before",
@@ -93,83 +88,242 @@ const STOP_WORDS = new Set([
   "yourself", "yourselves",
 ]);
 
-function tokenize(text: string): string[] {
+const CLUSTER_FILLER_WORDS = new Set([
+  "analysis", "breaking", "briefing", "exclusive", "explainer", "headline",
+  "headlines", "inside", "latest", "live", "morning", "newsletter", "opinion",
+  "photo", "photos", "podcast", "report", "reports", "story", "stories",
+  "tonight", "today", "update", "updates", "video", "watch",
+]);
+
+const OUTLET_FILLER_WORDS = new Set([
+  "atlantic", "bbc", "guardian", "npr", "nyt", "post", "washington",
+]);
+
+const CLUSTER_MIN_SHARED_TOKENS = 2;
+const CLUSTER_MIN_SIMILARITY = 0.2;
+const STORY_CLUSTER_STOP_WORDS = new Set([
+  ...Array.from(CLUSTER_FILLER_WORDS),
+  ...Array.from(OUTLET_FILLER_WORDS),
+]);
+
+function normalizeToken(rawToken: string): string {
+  let token = rawToken.toLowerCase().replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, "");
+  if (!token) return "";
+
+  if (token.endsWith("'s")) token = token.slice(0, -2);
+  if (token.length > 5 && token.endsWith("ies")) {
+    token = `${token.slice(0, -3)}y`;
+  } else if (
+    token.length > 4 &&
+    token.endsWith("s") &&
+    !token.endsWith("is") &&
+    !token.endsWith("ss") &&
+    !token.endsWith("us")
+  ) {
+    token = token.slice(0, -1);
+  }
+
+  if (token.length > 5 && token.endsWith("ing")) {
+    token = token.slice(0, -3);
+  }
+
+  return token;
+}
+
+function tokenize(text: string, extraStopWords?: Set<string>): string[] {
   return text
     .toLowerCase()
-    .replace(/[^a-z\s]/g, "")
-    .split(/\s+/)
-    .filter((w) => w.length >= 4 && !STOP_WORDS.has(w));
+    .split(/[^a-z0-9]+/g)
+    .map(normalizeToken)
+    .filter((token) => {
+      if (token.length < 4) return false;
+      if (STOP_WORDS.has(token)) return false;
+      if (extraStopWords?.has(token)) return false;
+      return true;
+    });
+}
+
+function capitalizeWord(word: string): string {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+function countSyllables(word: string): number {
+  const normalized = word.toLowerCase().replace(/[^a-z]/g, "");
+  if (normalized.length <= 3) return 1;
+
+  const vowelGroups = normalized.match(/[aeiouy]+/g);
+  let count = vowelGroups ? vowelGroups.length : 1;
+  if (normalized.endsWith("e")) count = Math.max(1, count - 1);
+  return count;
+}
+
+function buildSourceCounts(articles: NewsArticle[]) {
+  return articles.reduce<Partial<Record<NewsFeedId, number>>>((counts, article) => {
+    counts[article.source] = (counts[article.source] ?? 0) + 1;
+    return counts;
+  }, {});
+}
+
+function sharedTokenCount(left: Set<string>, right: Set<string>): number {
+  let overlap = 0;
+  left.forEach((token) => {
+    if (right.has(token)) overlap++;
+  });
+  return overlap;
+}
+
+function jaccardSimilarity(left: Set<string>, right: Set<string>): number {
+  const overlap = sharedTokenCount(left, right);
+  const union = left.size + right.size - overlap;
+  return union === 0 ? 0 : overlap / union;
+}
+
+export function analyzeSentiment(text: string): SentimentResult {
+  const words = text.toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/);
+  let positiveCount = 0;
+  let negativeCount = 0;
+
+  for (const word of words) {
+    if (POSITIVE_WORDS.has(word)) positiveCount++;
+    if (NEGATIVE_WORDS.has(word)) negativeCount++;
+  }
+
+  const total = words.length || 1;
+  const score = (positiveCount - negativeCount) / total;
+  const label =
+    score > 0.04 ? "positive" : score < -0.04 ? "negative" : "neutral";
+
+  return { score, label, positiveCount, negativeCount };
 }
 
 export function extractTopics(
   articles: NewsArticle[],
   maxTopics = 12,
 ): TopicCluster[] {
-  const freq = new Map<string, { count: number; sources: Record<string, number> }>();
+  const frequency = new Map<string, { count: number; sources: Partial<Record<NewsFeedId, number>> }>();
 
-  for (const a of articles) {
-    const text = `${a.title} ${a.description}`;
+  for (const article of articles) {
     const seen = new Set<string>();
-    for (const word of tokenize(text)) {
-      if (seen.has(word)) continue;
-      seen.add(word);
-      const entry = freq.get(word) ?? { count: 0, sources: {} };
+    for (const token of tokenize(`${article.title} ${article.description}`)) {
+      if (seen.has(token)) continue;
+      seen.add(token);
+
+      const entry = frequency.get(token) ?? { count: 0, sources: {} };
       entry.count++;
-      entry.sources[a.source] = (entry.sources[a.source] ?? 0) + 1;
-      freq.set(word, entry);
+      entry.sources[article.source] = (entry.sources[article.source] ?? 0) + 1;
+      frequency.set(token, entry);
     }
   }
 
-  return [...freq.entries()]
-    .filter(([, v]) => v.count >= 3 && Object.keys(v.sources).length >= 2)
-    .sort((a, b) => b[1].count - a[1].count)
+  return Array.from(frequency.entries())
+    .filter(([, value]) => value.count >= 3 && Object.keys(value.sources).length >= 2)
+    .sort((left, right) => right[1].count - left[1].count)
     .slice(0, maxTopics)
-    .map(([topic, v]) => ({ topic, count: v.count, sources: v.sources }));
-}
-
-// ── Readability ─────────────────────────────────────────────────────────────
-
-export interface ReadabilityResult {
-  score: number;
-  label: string;
-}
-
-function countSyllables(word: string): number {
-  const w = word.toLowerCase().replace(/[^a-z]/g, "");
-  if (w.length <= 3) return 1;
-  const vowelGroups = w.match(/[aeiouy]+/g);
-  let count = vowelGroups ? vowelGroups.length : 1;
-  if (w.endsWith("e")) count = Math.max(1, count - 1);
-  return count;
+    .map(([topic, value]) => ({ topic, count: value.count, sources: value.sources }));
 }
 
 export function calculateReadingLevel(text: string): ReadabilityResult {
-  const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0);
-  const words = text.split(/\s+/).filter((w) => w.length > 0);
+  const sentences = text.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0);
+  const words = text.split(/\s+/).filter((word) => word.length > 0);
   const sentenceCount = Math.max(sentences.length, 1);
   const wordCount = Math.max(words.length, 1);
-  const syllables = words.reduce((sum, w) => sum + countSyllables(w), 0);
+  const syllables = words.reduce((sum, word) => sum + countSyllables(word), 0);
 
-  // Flesch Reading Ease
   const score =
     206.835 - 1.015 * (wordCount / sentenceCount) - 84.6 * (syllables / wordCount);
-  const clamped = Math.max(0, Math.min(100, score));
+  const clampedScore = Math.max(0, Math.min(100, score));
 
-  let label: string;
-  if (clamped >= 70) label = "Easy";
-  else if (clamped >= 50) label = "Moderate";
-  else label = "Advanced";
+  let label = "Advanced";
+  if (clampedScore >= 70) label = "Easy";
+  else if (clampedScore >= 50) label = "Moderate";
 
-  return { score: Math.round(clamped), label };
+  return { score: Math.round(clampedScore), label };
 }
 
-// ── Source metadata ─────────────────────────────────────────────────────────
+export function getOrderedSourcesForArticles(articles: NewsArticle[]): NewsFeedId[] {
+  const presentSources = new Set(articles.map((article) => article.source));
+  return NEWS_SOURCE_IDS.filter((source) => presentSources.has(source));
+}
 
-export const SOURCE_META: Record<string, { name: string; color: string }> = {
-  atlantic: { name: "The Atlantic", color: "#B22234" },
-  nyt: { name: "NYT", color: "#1A1A1A" },
-  guardian: { name: "The Guardian", color: "#052962" },
-  bbc: { name: "BBC", color: "#BB1919" },
-  npr: { name: "NPR", color: "#4A90D9" },
-  wapo: { name: "Washington Post", color: "#2E2E2E" },
-};
+export function clusterArticlesByStory(
+  articles: NewsArticle[],
+  maxClusters = 12,
+): StoryCluster[] {
+  const fingerprints = articles.map((article) => ({
+    article,
+    tokens: new Set(tokenize(`${article.title} ${article.description}`, STORY_CLUSTER_STOP_WORDS)),
+  }));
+
+  const rawClusters: Array<{
+    members: typeof fingerprints;
+    tokenCounts: Map<string, number>;
+  }> = [];
+
+  for (const fingerprint of fingerprints) {
+    let bestClusterIndex = -1;
+    let bestSimilarity = 0;
+
+    for (let index = 0; index < rawClusters.length; index++) {
+      const cluster = rawClusters[index];
+      let clusterSimilarity = 0;
+      let clusterOverlap = 0;
+
+      for (const member of cluster.members) {
+        const overlap = sharedTokenCount(fingerprint.tokens, member.tokens);
+        const similarity = jaccardSimilarity(fingerprint.tokens, member.tokens);
+
+        if (similarity > clusterSimilarity) {
+          clusterSimilarity = similarity;
+          clusterOverlap = overlap;
+        }
+      }
+
+      if (
+        clusterOverlap >= CLUSTER_MIN_SHARED_TOKENS &&
+        clusterSimilarity >= CLUSTER_MIN_SIMILARITY &&
+        clusterSimilarity > bestSimilarity
+      ) {
+        bestSimilarity = clusterSimilarity;
+        bestClusterIndex = index;
+      }
+    }
+
+    if (bestClusterIndex === -1) {
+      rawClusters.push({
+        members: [fingerprint],
+        tokenCounts: new Map(Array.from(fingerprint.tokens).map((token) => [token, 1])),
+      });
+      continue;
+    }
+
+    const targetCluster = rawClusters[bestClusterIndex];
+    targetCluster.members.push(fingerprint);
+    fingerprint.tokens.forEach((token) => {
+      targetCluster.tokenCounts.set(token, (targetCluster.tokenCounts.get(token) ?? 0) + 1);
+    });
+  }
+
+  return rawClusters
+    .map((cluster) => {
+      const clusteredArticles = cluster.members.map((member) => member.article);
+      const representative = clusteredArticles[0];
+      const labelTokens = Array.from(cluster.tokenCounts.entries())
+        .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))
+        .slice(0, 3)
+        .map(([token]) => capitalizeWord(token));
+
+      return {
+        id: representative.link,
+        label: labelTokens.join(" ") || representative.title,
+        totalCount: clusteredArticles.length,
+        representative,
+        sources: buildSourceCounts(clusteredArticles),
+        articles: clusteredArticles,
+      };
+    })
+    .filter((cluster) => Object.keys(cluster.sources).length >= 2)
+    .sort((left, right) => right.totalCount - left.totalCount)
+    .slice(0, maxClusters);
+}
+
+export { SOURCE_META };

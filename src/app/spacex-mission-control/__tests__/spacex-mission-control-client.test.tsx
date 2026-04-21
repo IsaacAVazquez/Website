@@ -347,7 +347,7 @@ describe("SpaceXMissionControlClient", () => {
 
   it("renders server-hydrated summary, board, and detail data without mount-time browser fetches", async () => {
     jest.useFakeTimers();
-    jest.setSystemTime(new Date("2026-04-30T12:00:00.000Z"));
+    jest.setSystemTime(Date.parse("2026-04-30T12:00:00.000Z"));
 
     const deepLinkedState: MissionControlSearchState = {
       status: "past",

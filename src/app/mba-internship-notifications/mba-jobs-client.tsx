@@ -15,10 +15,11 @@ import {
   BellOff,
   BriefcaseBusiness,
   CircleAlert,
-  Search,
   ExternalLink,
   Mail,
+  MapPin,
   RefreshCcw,
+  Search,
   X,
 } from "lucide-react";
 import {
@@ -118,7 +119,7 @@ function getPostedAtTime(value: string): number {
 
 const CATEGORY_COLOR: Record<MBACategory | "all", string> = {
   all: "var(--home-ink)",
-  "big-tech": "var(--home-haze)",
+  "big-tech": "color-mix(in srgb, var(--home-ink) 68%, var(--home-stone) 32%)",
   fintech: "var(--home-moss)",
   startup: "var(--home-acid)",
 };
@@ -253,6 +254,64 @@ function getQueryScore(job: MBAJob, query: string): number {
   return score;
 }
 
+interface LocationOption {
+  label: string;
+  normalizedValue: string;
+  count: number;
+}
+
+const LOCATION_PRESETS = [
+  { label: "Remote", terms: ["remote"] },
+  { label: "San Francisco", terms: ["san francisco", "bay area"] },
+  { label: "New York", terms: ["new york", "nyc"] },
+  { label: "Seattle", terms: ["seattle"] },
+  { label: "London", terms: ["london"] },
+  { label: "Austin", terms: ["austin"] },
+  { label: "Boston", terms: ["boston"] },
+] as const;
+
+function getLocationLabels(location: string): string[] {
+  const normalizedLocation = normalizeSearchText(location);
+  if (!normalizedLocation) return [];
+
+  const labels = new Set<string>();
+
+  for (const preset of LOCATION_PRESETS) {
+    if (preset.terms.some((term) => normalizedLocation.includes(term))) {
+      labels.add(preset.label);
+    }
+  }
+
+  if (labels.size > 0) {
+    return Array.from(labels);
+  }
+
+  const fallbackSegment = location.split(/[;|/]/)[0]?.trim();
+  const fallbackLabel = fallbackSegment?.split(",")[0]?.trim();
+  return fallbackLabel ? [fallbackLabel] : [];
+}
+
+function buildLocationOptions(jobs: MBAJob[]): LocationOption[] {
+  const counts = new Map<string, LocationOption>();
+
+  for (const job of jobs) {
+    const labels = new Set(getLocationLabels(job.location));
+    for (const label of labels) {
+      const normalizedValue = normalizeSearchText(label);
+      const current = counts.get(normalizedValue);
+      if (current) {
+        current.count += 1;
+      } else {
+        counts.set(normalizedValue, { label, normalizedValue, count: 1 });
+      }
+    }
+  }
+
+  return Array.from(counts.values())
+    .sort((left, right) => right.count - left.count || left.label.localeCompare(right.label))
+    .slice(0, 6);
+}
+
 function buildManualLinkedInQuery(
   companyName: string,
   state: MBAJobsSearchState
@@ -276,12 +335,16 @@ function buildManualLinkedInQuery(
   }
 
   parts.push(companyName);
+  if (state.location.trim()) {
+    parts.push(state.location.trim());
+  }
   return parts.join(" ");
 }
 
 function hasActiveFilters(state: MBAJobsSearchState): boolean {
   return (
     state.q.trim().length > 0 ||
+    state.location.trim().length > 0 ||
     state.category !== DEFAULT_MBA_JOBS_STATE.category ||
     state.roleType !== DEFAULT_MBA_JOBS_STATE.roleType ||
     state.roleFamily !== DEFAULT_MBA_JOBS_STATE.roleFamily ||
@@ -861,11 +924,13 @@ function CompanyFilterStrip({
 }) {
   const nonManual = MBA_COMPANIES.filter((c) => c.atsType !== "manual");
   const watchedLiveCount = nonManual.filter((company) => watchedIds.has(company.id)).length;
+  const totalLiveCount = nonManual.length;
   const groups = TRACKED_COMPANY_CATEGORIES.map((category) => ({
     category,
     label: CATEGORY_LABELS[category],
     companies: nonManual.filter((c) => c.category === category),
   })).filter((group) => group.companies.length > 0);
+  const [isExpanded, setIsExpanded] = useState(() => watchedLiveCount !== totalLiveCount);
   const [expandedGroups, setExpandedGroups] = useState<Record<MBACategory, boolean>>({
     fintech: true,
     startup: true,
@@ -874,114 +939,176 @@ function CompanyFilterStrip({
   const allOn = nonManual.every((c) => watchedIds.has(c.id));
   const allOff = nonManual.every((c) => !watchedIds.has(c.id));
 
+  useEffect(() => {
+    if (watchedLiveCount !== totalLiveCount) {
+      setIsExpanded(true);
+    }
+  }, [totalLiveCount, watchedLiveCount]);
+
   return (
     <div className="section-panel" style={style}>
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-wrap gap-2">
-          <span className="resume-chip">{nonManual.length} live feeds</span>
-          <span className="resume-chip">{watchedLiveCount} watched now</span>
-          <span className="resume-chip">{groups.length} company groups</span>
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={onSelectAll}
-            disabled={allOn}
-            className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
-            style={{
-              ...getPillStyle(false),
-              color: "var(--home-haze)",
-            }}
-          >
-            All on
-          </button>
-          <button
-            type="button"
-            onClick={onClearAll}
-            disabled={allOff}
-            className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
-            style={getPillStyle(false)}
-          >
-            All off
-          </button>
-        </div>
-      </div>
-      <div className="mt-6 grid gap-4 xl:grid-cols-3">
-        {groups.map((group) => {
-          const watchedCount = group.companies.filter((company) => watchedIds.has(company.id)).length;
-          const isExpanded = expandedGroups[group.category];
-
-          return (
-            <div
-              key={group.category}
-              data-testid={`tracked-companies-${group.category}`}
-              className="rounded-[1.2rem] border p-3 sm:p-4"
-              style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper-alt) 58%, white)",
-              }}
+      <button
+        type="button"
+        onClick={() => setIsExpanded((current) => !current)}
+        className="flex w-full items-start justify-between gap-4 rounded-[1.2rem] border px-4 py-4 text-left transition-[border-color,background-color] duration-200 ease sm:items-center"
+        style={{
+          borderColor: "var(--home-rule)",
+          background: "color-mix(in srgb, var(--home-paper-alt) 56%, white)",
+        }}
+        aria-expanded={isExpanded}
+        aria-controls="tracked-companies-controls"
+      >
+        <div className="space-y-3">
+          <div>
+            <p className="home-meta mb-0">Tracked company feeds</p>
+            <p
+              className="mt-2 text-sm"
+              style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
             >
+              {watchedLiveCount} of {totalLiveCount} live boards are in your scan right now.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <span className="resume-chip">{totalLiveCount} live feeds</span>
+            <span className="resume-chip">{watchedLiveCount} watched now</span>
+            <span className="resume-chip">{groups.length} company groups</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <span
+            className="hidden text-[0.72rem] font-semibold uppercase tracking-[0.12em] sm:inline"
+            style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
+          >
+            {isExpanded ? "Hide list" : "Show list"}
+          </span>
+          <span
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border"
+            style={{
+              borderColor: "var(--home-rule)",
+              background: "color-mix(in srgb, var(--home-paper) 92%, white)",
+            }}
+            aria-hidden="true"
+          >
+            <ChevronDown
+              className={`h-4 w-4 transition-transform duration-150 ease ${
+                isExpanded ? "rotate-180" : ""
+              }`}
+              style={{ color: "var(--home-ink-muted)" }}
+            />
+          </span>
+        </div>
+      </button>
+
+      {isExpanded && (
+        <div id="tracked-companies-controls" className="mt-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-wrap gap-2">
+              <span className="resume-chip">{totalLiveCount} live feeds</span>
+              <span className="resume-chip">{watchedLiveCount} watched now</span>
+              <span className="resume-chip">{groups.length} company groups</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
-                className="flex min-h-[44px] w-full items-center justify-between gap-3 rounded-[0.9rem] px-2 py-1.5 text-left transition-[background-color] duration-150 ease"
-                style={{ color: "var(--home-ink)" }}
-                aria-expanded={isExpanded}
-                aria-controls={`tracked-companies-panel-${group.category}`}
-                onClick={() =>
-                  setExpandedGroups((current) => ({
-                    ...current,
-                    [group.category]: !current[group.category],
-                  }))
-                }
+                onClick={onSelectAll}
+                disabled={allOn}
+                className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
+                style={{
+                  ...getPillStyle(false),
+                  color: "var(--home-haze)",
+                }}
               >
-                <div className="min-w-0">
-                  <p className="home-meta mb-0">{group.label}</p>
-                  <p
-                    className="mt-1 text-[0.8rem]"
-                    style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
-                  >
-                    {watchedCount} / {group.companies.length} watched
-                  </p>
-                </div>
-                <ChevronDown
-                  className={`h-4 w-4 shrink-0 transition-transform duration-150 ease ${
-                    isExpanded ? "rotate-180" : ""
-                  }`}
-                  style={{ color: "var(--home-ink-muted)" }}
-                  aria-hidden="true"
-                />
+                All on
               </button>
-              {isExpanded && (
-                <div
-                  id={`tracked-companies-panel-${group.category}`}
-                  className="mt-2 grid gap-2 sm:grid-cols-2 xl:grid-cols-2"
-                >
-                  {group.companies.map((company) => {
-                    const active = watchedIds.has(company.id);
-                    return (
-                      <button
-                        key={company.id}
-                        type="button"
-                        onClick={() => onToggle(company.id)}
-                        className="inline-flex min-h-[44px] w-full items-center gap-2 rounded-[0.95rem] border px-3 py-3 text-left text-[0.8rem] font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
-                        style={getTrackedCompanyButtonStyle(company, active)}
-                        aria-pressed={active}
-                      >
-                        <span
-                          className="h-2.5 w-2.5 shrink-0 rounded-full"
-                          style={{ background: active ? company.color : "var(--home-stone)" }}
-                          aria-hidden="true"
-                        />
-                        <span className="min-w-0 truncate">{company.name}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
+              <button
+                type="button"
+                onClick={onClearAll}
+                disabled={allOff}
+                className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
+                style={getPillStyle(false)}
+              >
+                All off
+              </button>
             </div>
-          );
-        })}
-      </div>
+          </div>
+          <div className="mt-6 grid gap-4 xl:grid-cols-3">
+            {groups.map((group) => {
+              const watchedCount = group.companies.filter((company) => watchedIds.has(company.id)).length;
+              const isGroupExpanded = expandedGroups[group.category];
+
+              return (
+                <div
+                  key={group.category}
+                  data-testid={`tracked-companies-${group.category}`}
+                  className="rounded-[1.2rem] border p-3 sm:p-4"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper-alt) 58%, white)",
+                  }}
+                >
+                  <button
+                    type="button"
+                    className="flex min-h-[44px] w-full items-center justify-between gap-3 rounded-[0.9rem] px-2 py-1.5 text-left transition-[background-color] duration-150 ease"
+                    style={{ color: "var(--home-ink)" }}
+                    aria-expanded={isGroupExpanded}
+                    aria-controls={`tracked-companies-panel-${group.category}`}
+                    onClick={() =>
+                      setExpandedGroups((current) => ({
+                        ...current,
+                        [group.category]: !current[group.category],
+                      }))
+                    }
+                  >
+                    <div className="min-w-0">
+                      <p className="home-meta mb-0">{group.label}</p>
+                      <p
+                        className="mt-1 text-[0.8rem]"
+                        style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
+                      >
+                        {watchedCount} / {group.companies.length} watched
+                      </p>
+                    </div>
+                    <ChevronDown
+                      className={`h-4 w-4 shrink-0 transition-transform duration-150 ease ${
+                        isGroupExpanded ? "rotate-180" : ""
+                      }`}
+                      style={{ color: "var(--home-ink-muted)" }}
+                      aria-hidden="true"
+                    />
+                  </button>
+                  {isGroupExpanded && (
+                    <div
+                      id={`tracked-companies-panel-${group.category}`}
+                      className="mt-2 grid gap-2 sm:grid-cols-2 xl:grid-cols-2"
+                    >
+                      {group.companies.map((company) => {
+                        const active = watchedIds.has(company.id);
+                        return (
+                          <button
+                            key={company.id}
+                            type="button"
+                            onClick={() => onToggle(company.id)}
+                            className="inline-flex min-h-[44px] w-full items-center gap-2 rounded-[0.95rem] border px-3 py-3 text-left text-[0.8rem] font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
+                            style={getTrackedCompanyButtonStyle(company, active)}
+                            aria-pressed={active}
+                          >
+                            <span
+                              className="h-2.5 w-2.5 shrink-0 rounded-full"
+                              style={{ background: active ? company.color : "var(--home-stone)" }}
+                              aria-hidden="true"
+                            />
+                            <span className="min-w-0 truncate">{company.name}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -1006,6 +1133,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
   );
   const [uiState, setUiState] = useState(routeState);
   const deferredQuery = useDeferredValue(uiState.q);
+  const deferredLocation = useDeferredValue(uiState.location);
 
   useEffect(() => {
     setUiState(routeState);
@@ -1042,14 +1170,13 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
   const [emailDialogOpen, setEmailDialogOpen] = useState(false);
   const activeFilters = hasActiveFilters(uiState);
   const effectiveState = useMemo(
-    () => ({ ...uiState, q: deferredQuery }),
-    [deferredQuery, uiState]
+    () => ({ ...uiState, q: deferredQuery, location: deferredLocation }),
+    [deferredLocation, deferredQuery, uiState]
   );
 
-  // ── Derived: filtered + sorted job list ──────────────────────────────
-  const displayJobs = useMemo(() => {
+  const locationScopedEntries = useMemo(() => {
     const query = effectiveState.q.trim();
-    const filtered = jobs.flatMap((job) => {
+    return jobs.flatMap((job) => {
       if (!watchedCompanyIds.has(job.companyId)) return [];
       if (effectiveState.category !== "all" && job.category !== effectiveState.category) {
         return [];
@@ -1081,6 +1208,21 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
         },
       ];
     });
+  }, [effectiveState.category, effectiveState.q, effectiveState.roleFamily, effectiveState.roleType, jobs, watchedCompanyIds]);
+
+  const locationOptions = useMemo(
+    () => buildLocationOptions(locationScopedEntries.map((entry) => entry.job)),
+    [locationScopedEntries]
+  );
+
+  // ── Derived: filtered + sorted job list ──────────────────────────────
+  const displayJobs = useMemo(() => {
+    const normalizedLocation = normalizeSearchText(effectiveState.location);
+    const filtered = locationScopedEntries.filter(
+      (entry) =>
+        !normalizedLocation ||
+        normalizeSearchText(entry.job.location).includes(normalizedLocation)
+    );
 
     filtered.sort((left, right) => {
       const leftTime = getPostedAtTime(left.job.postedAt);
@@ -1097,7 +1239,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
     });
 
     return filtered.map((entry) => entry.job);
-  }, [effectiveState, jobs, watchedCompanyIds]);
+  }, [effectiveState.location, effectiveState.sort, locationScopedEntries]);
 
   // ── Manual (Big Tech) companies filtered by category ─────────────────
   const manualCompanies = useMemo(() => {
@@ -1110,6 +1252,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
   const totalCompanies = MBA_COMPANIES.length;
   const internshipCount = jobs.filter((job) => job.roleType === "internship").length;
   const fullTimeCount = jobs.filter((job) => job.roleType === "full-time").length;
+  const normalizedLocationFilter = normalizeSearchText(uiState.location);
+  const matchingRoleCount = locationScopedEntries.length;
   const refreshLabel = isLoading
     ? "Loading…"
     : lastFetchedAt
@@ -1146,7 +1290,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 >
                   MBA Recruiting
                 </p>
-                <h1 className="home-section-title mb-0 max-w-[9ch]">MBA Role Tracker</h1>
+                <h1 className="home-section-title mb-0 max-w-[9ch]">Job Search</h1>
                 <p className="home-body mb-0 max-w-[44rem]">
                   I monitor {totalTracked} public job boards across {totalCompanies} target
                   companies for internships and full-time product, PMM, strategy, operations,
@@ -1272,7 +1416,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
             <SectionLead
               kicker="Filters"
               title="Search and narrow the board."
-              description="Search roles, sort the feed, and filter by role type, role family, and company category without leaving the page."
+              description="Search roles, narrow by location, sort the feed, and filter by role type, role family, and company category without leaving the page."
               id="mba-role-tracker-filters-heading"
             />
             <motion.div
@@ -1282,8 +1426,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
               animate="visible"
             >
               <div className="space-y-6">
-                <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
-                  <div className="relative flex-1">
+                <div className="grid gap-3 xl:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)_auto] xl:items-center">
+                  <div className="relative">
                     <Search
                       className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
                       style={{ color: "var(--home-ink-muted)" }}
@@ -1318,6 +1462,41 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                     )}
                   </div>
 
+                  <div className="relative">
+                    <MapPin
+                      className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
+                      style={{ color: "var(--home-ink-muted)" }}
+                      aria-hidden="true"
+                    />
+                    <input
+                      type="text"
+                      value={uiState.location}
+                      onChange={(event) => updateRouteState({ location: event.target.value })}
+                      placeholder="Remote, New York, San Francisco..."
+                      aria-label="Filter by location"
+                      className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease"
+                      style={{
+                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                        borderColor: "var(--home-rule)",
+                        color: "var(--home-ink)",
+                        fontFamily: "var(--font-home-sans)",
+                        paddingTop: "0.85rem",
+                        paddingBottom: "0.85rem",
+                      }}
+                    />
+                    {uiState.location && (
+                      <button
+                        type="button"
+                        onClick={() => updateRouteState({ location: "" })}
+                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full"
+                        aria-label="Clear location filter"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        <X className="h-4 w-4" aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
+
                   <div className="flex flex-wrap gap-2">
                     <SortDropdown
                       value={uiState.sort}
@@ -1335,6 +1514,53 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                     )}
                   </div>
                 </div>
+
+                {locationOptions.length > 0 && (
+                  <div
+                    className="rounded-[1rem] border px-4 py-4"
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      background: "color-mix(in srgb, var(--home-paper-alt) 62%, white)",
+                    }}
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="home-meta mb-0">Popular locations</p>
+                      <p
+                        className="mb-0 text-[0.78rem]"
+                        style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
+                      >
+                        {matchingRoleCount} roles before location filtering
+                      </p>
+                    </div>
+                    <div
+                      className="mt-3 flex flex-wrap gap-2"
+                      role="tablist"
+                      aria-label="Suggested locations"
+                    >
+                      <EditorialPillButton
+                        active={uiState.location.trim().length === 0}
+                        onClick={() => updateRouteState({ location: "" })}
+                        role="tab"
+                        ariaSelected={uiState.location.trim().length === 0}
+                        size="sm"
+                      >
+                        All locations
+                      </EditorialPillButton>
+                      {locationOptions.map((option) => (
+                        <EditorialPillButton
+                          key={option.normalizedValue}
+                          active={normalizedLocationFilter === option.normalizedValue}
+                          onClick={() => updateRouteState({ location: option.label })}
+                          role="tab"
+                          ariaSelected={normalizedLocationFilter === option.normalizedValue}
+                          size="sm"
+                        >
+                          {option.label} · {option.count}
+                        </EditorialPillButton>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 <div className="space-y-4 border-t border-[var(--home-rule)] pt-6">
                   <div className="space-y-2">
@@ -1420,6 +1646,18 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                         Search: {uiState.q.trim()}
                       </span>
                     )}
+                    {uiState.location.trim() && (
+                      <span
+                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                        style={{
+                          background: "color-mix(in srgb, var(--home-paper-alt) 84%, white)",
+                          color: "var(--home-ink)",
+                          fontFamily: CHIP_FONT_FAMILY,
+                        }}
+                      >
+                        Location: {uiState.location.trim()}
+                      </span>
+                    )}
                     {uiState.roleType !== "all" && (
                       <span
                         className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
@@ -1488,6 +1726,26 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
               description="This is the fastest way to scan internships and full-time business roles without bouncing across dozens of career pages."
               id="mba-role-tracker-roles-heading"
             />
+            {!isLoading && (
+              <div className="flex flex-wrap gap-2">
+                <span className="resume-chip">{displayJobs.length} matching roles</span>
+                <span className="resume-chip">{watchedCompanyIds.size} watched feeds active</span>
+                {uiState.location.trim() && (
+                  <span className="resume-chip">{matchingRoleCount} before location filter</span>
+                )}
+                {uiState.location.trim() && (
+                  <span
+                    className="resume-chip"
+                    style={{
+                      background: "color-mix(in srgb, var(--home-paper-alt) 78%, white)",
+                      color: "var(--home-ink)",
+                    }}
+                  >
+                    Location: {uiState.location.trim()}
+                  </span>
+                )}
+              </div>
+            )}
             {isLoading ? (
               <JobGridSkeleton />
             ) : error ? (
@@ -1501,7 +1759,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
             ) : displayJobs.length === 0 ? (
               <StatusPanel
                 title="No roles found right now."
-                message="No tracked postings matched the current search or role filters. Try broadening the role family, switching role type, or clearing the search."
+                message="No tracked postings matched the current search, location, or role filters. Try broadening the role family, switching role type, or clearing the filters."
                 icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
               />
             ) : (

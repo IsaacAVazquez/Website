@@ -69,6 +69,7 @@ export type MBARoleFamilyFilter = MBAJobRoleFamily | "all";
 
 export interface MBAJobsSearchState {
   q: string;
+  location: string;
   sort: MBASortOrder;
   category: MBACategoryFilter;
   roleType: MBARoleTypeFilter;

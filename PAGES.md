@@ -34,6 +34,7 @@ Current route inventory and page ownership for the live app.
 |------|------|-------|
 | `/investments` | `src/app/investments/page.tsx` | Public investment research platform |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Metadata-driven bracket analysis with client UI |
+| `/formula-1` | `src/app/formula-1/page.tsx` | Snapshot-backed Formula 1 season dashboard |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Snapshot-backed Premier League dashboard |
 | `/la-liga` | `src/app/la-liga/page.tsx` | Snapshot-backed La Liga dashboard |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
@@ -91,6 +92,7 @@ These routes manage more of their own spacing and width:
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
 - `/fintech-tools/budget-planner`
+- `/formula-1`
 - `/investments`
 - `/la-liga`
 - `/premier-league`
@@ -117,6 +119,7 @@ These routes manage more of their own spacing and width:
 - `/portfolio` no longer relies on `ProjectsContent.tsx`; that component is legacy/unwired for the main route
 - `Writing` is a live route and a top-level nav item
 - `/march-madness-2026` is a first-class route and should be documented anywhere route inventories or SEO coverage are described
+- `/formula-1` is a live off-nav Formula 1 dashboard with a self-managed shell
 - `/premier-league` and `/la-liga` are live off-nav sports data dashboards with self-managed shells
 - `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
 - `/search` exists, but its data quality is limited by the current hardcoded search API

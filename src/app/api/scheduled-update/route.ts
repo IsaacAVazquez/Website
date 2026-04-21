@@ -1,233 +1,31 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { fantasyProsSession } from '@/lib/fantasyProsSession';
-import { dataManager } from '@/lib/dataManager';
-import { Position } from '@/types';
-import { apiRateLimiter, getClientIdentifier, rateLimitResponse } from '@/lib/rateLimit';
-import { generateAllScoringFormats, preparePositionDataFromAPI } from '@/lib/overallDataGenerator';
-import { DataFileWriter } from '@/lib/dataFileWriter';
+import { NextRequest, NextResponse } from "next/server";
 
-// Verify the request is from a legitimate cron job
-function verifyCronSecret(request: NextRequest): boolean {
-  const authHeader = request.headers.get('authorization');
-  const cronSecret = process.env.CRON_SECRET;
-  
-  if (!cronSecret) {
-    console.warn('CRON_SECRET not set in environment');
-    return false;
-  }
-  
-  return authHeader === `Bearer ${cronSecret}`;
-}
+const DEPRECATION_MESSAGE =
+  "The public fantasy product no longer updates through /api/scheduled-update. Published fantasy snapshots are generated offline with `npm run update:fantasy` and committed by GitHub Actions.";
 
-export async function POST(request: NextRequest) {
-  // Apply rate limiting
-  const clientId = getClientIdentifier(request);
-  const rateLimitResult = apiRateLimiter.check(clientId);
-  
-  if (!rateLimitResult.success) {
-    return rateLimitResponse(rateLimitResult);
-  }
-
-  // Verify cron secret
-  if (!verifyCronSecret(request)) {
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    );
-  }
-
-  const startTime = Date.now();
-  const results: Record<string, any> = {
-    timestamp: new Date().toISOString(),
-    success: true,
-    positions: {},
-    errors: []
-  };
-
-  try {
-    // Get current week
-    const currentWeek = fantasyProsSession.getCurrentWeek();
-    
-    // Positions to update
-    const positions: Position[] = ['QB', 'RB', 'WR', 'TE', 'K', 'DST', 'FLEX', 'OVERALL'];
-    
-    // Store position data for overall ranking generation
-    const positionData: Record<Position, any[]> = {} as any;
-    
-    // Update each position
-    for (const position of positions) {
-      try {
-        console.log(`Updating ${position} rankings...`);
-        
-        // Fetch rankings for each scoring format
-        const scoringFormats = ['ppr', 'half-ppr', 'standard'];
-        const positionResults: Record<string, any> = {};
-        
-        for (const format of scoringFormats) {
-          try {
-            const rankings = await fantasyProsSession.getRankings(position, currentWeek, format);
-            
-            if (rankings.length > 0) {
-              // Store in data manager
-              dataManager.setPlayersByPosition(position, rankings);
-              
-              // Store position data for overall rankings (use half-ppr as base)
-              if (format === 'half-ppr' && position !== 'FLEX' && position !== 'OVERALL') {
-                positionData[position as Position] = rankings;
-              }
-              
-              // Store in persistent storage
-              await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/data-manager`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  position: position,
-                  players: rankings,
-                  action: 'set',
-                  source: 'fantasypros-session',
-                  scoringFormat: format,
-                  week: currentWeek
-                })
-              });
-              
-              positionResults[format] = {
-                count: rankings.length,
-                updated: true
-              };
-            }
-          } catch (formatError) {
-            console.error(`Error updating ${position} ${format}:`, formatError);
-            positionResults[format] = {
-              error: formatError instanceof Error ? formatError.message : 'Unknown error',
-              updated: false
-            };
-          }
-        }
-        
-        results.positions[position] = positionResults;
-      } catch (positionError) {
-        console.error(`Error updating ${position}:`, positionError);
-        results.errors.push({
-          position,
-          error: positionError instanceof Error ? positionError.message : 'Unknown error'
-        });
-      }
-    }
-    
-    // Generate overall rankings for all scoring formats
-    try {
-      console.log('Generating overall rankings for all scoring formats...');
-      
-      // Prepare position data
-      const processedPositionData = preparePositionDataFromAPI(positionData);
-      
-      if (Object.keys(processedPositionData).length > 0) {
-        // Generate all three scoring format files
-        const overallResults = generateAllScoringFormats(processedPositionData);
-        
-        // Write the files
-        const overallFiles: Record<'PPR' | 'HALF' | 'STD', string> = {
-          PPR: overallResults.PPR.content,
-          HALF: overallResults.HALF.content,
-          STD: overallResults.STD.content
-        };
-        
-        await DataFileWriter.writeAllOverallData(overallFiles);
-        
-        // Add overall results to response
-        results.overallRankings = {
-          generated: true,
-          formats: {
-            PPR: {
-              playerCount: overallResults.PPR.playerCount,
-              validation: overallResults.PPR.validation,
-              fileName: overallResults.PPR.fileName
-            },
-            HALF: {
-              playerCount: overallResults.HALF.playerCount,
-              validation: overallResults.HALF.validation,
-              fileName: overallResults.HALF.fileName
-            },
-            STD: {
-              playerCount: overallResults.STD.playerCount,
-              validation: overallResults.STD.validation,
-              fileName: overallResults.STD.fileName
-            }
-          }
-        };
-        
-        console.log('Successfully generated and wrote overall rankings for all formats');
-      } else {
-        results.errors.push({
-          position: 'OVERALL',
-          error: 'No position data available for overall ranking generation'
-        });
-      }
-    } catch (overallError) {
-      console.error('Error generating overall rankings:', overallError);
-      results.errors.push({
-        position: 'OVERALL',
-        error: overallError instanceof Error ? overallError.message : 'Unknown error generating overall rankings'
-      });
-    }
-    
-    // Calculate execution time
-    const executionTime = Date.now() - startTime;
-    results.executionTimeMs = executionTime;
-    
-    // Log results
-    console.log('Scheduled update completed:', {
-      timestamp: results.timestamp,
-      executionTime: `${executionTime}ms`,
-      success: results.errors.length === 0
-    });
-    
-    return NextResponse.json(results);
-  } catch (error) {
-    console.error('Scheduled update failed:', error);
-    return NextResponse.json({
-      timestamp: new Date().toISOString(),
+export async function POST(_request: NextRequest) {
+  return NextResponse.json(
+    {
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-      executionTimeMs: Date.now() - startTime
-    }, { status: 500 });
-  }
+      status: "deprecated",
+      message: DEPRECATION_MESSAGE,
+      sourceOfTruth: "GitHub Actions fantasy snapshot workflow",
+      artifacts: [
+        "src/data/fantasyPositionData.generated.ts",
+        "src/data/fantasySnapshotRevision.generated.ts",
+        "public/data/fantasy/ppr.json",
+        "public/data/fantasy/half_ppr.json",
+        "public/data/fantasy/standard.json",
+      ],
+    },
+    { status: 410 }
+  );
 }
 
-// GET endpoint for testing/monitoring
-export async function GET(request: NextRequest) {
-  // Verify cron secret for GET as well
-  if (!verifyCronSecret(request)) {
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    );
-  }
-
+export async function GET(_request: NextRequest) {
   return NextResponse.json({
-    status: 'ready',
-    currentWeek: fantasyProsSession.getCurrentWeek(),
-    nextUpdateTime: getNextUpdateTime(),
-    environment: {
-      hasCredentials: !!(process.env.FANTASYPROS_USERNAME && process.env.FANTASYPROS_PASSWORD),
-      hasCronSecret: !!process.env.CRON_SECRET
-    }
+    status: "deprecated",
+    message: DEPRECATION_MESSAGE,
+    sourceOfTruth: "GitHub Actions fantasy snapshot workflow",
   });
-}
-
-// Helper function to calculate next update time (midnight PST)
-function getNextUpdateTime(): string {
-  const now = new Date();
-  const pst = new Date(now.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}));
-  
-  // Set to midnight PST
-  const nextUpdate = new Date(pst);
-  nextUpdate.setHours(0, 0, 0, 0);
-  
-  // If it's already past midnight, set to tomorrow
-  if (pst >= nextUpdate) {
-    nextUpdate.setDate(nextUpdate.getDate() + 1);
-  }
-  
-  return nextUpdate.toISOString();
 }

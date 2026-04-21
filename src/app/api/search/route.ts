@@ -103,6 +103,16 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       type: 'project' as const,
       category: 'Sports Data Tools',
       tags: ['La Liga', 'Soccer', 'Sports Data', 'Dashboard', 'Next.js']
+    },
+    {
+      id: 'project-pga-tour-pulse',
+      title: 'PGA Tour Pulse',
+      excerpt: 'Snapshot-backed golf tournament dashboard for leaderboard scanning, round-by-round movement, and golfer drilldowns.',
+      content: 'PGA Tour golf dashboard leaderboard golfer drilldown cut line round movement sports data Next.js TypeScript',
+      url: '/golf',
+      type: 'project' as const,
+      category: 'Sports Data Tools',
+      tags: ['Golf', 'PGA Tour', 'Sports Data', 'Dashboard', 'Next.js']
     }
   ];
 

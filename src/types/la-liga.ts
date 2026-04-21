@@ -100,6 +100,8 @@ export interface LaLigaSnapshot {
   teamSnapshots: Record<string, LaLigaTeamSnapshot>;
 }
 
+export type LaLigaSummarySnapshot = Omit<LaLigaSnapshot, "teamSnapshots">;
+
 export interface LaLigaRouteState {
   view: LaLigaView;
   club: string;

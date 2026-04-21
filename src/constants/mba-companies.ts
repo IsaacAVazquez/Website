@@ -7,7 +7,7 @@ import type { MBACompany } from "@/types/mba-jobs";
 const MBA_CATEGORY_COLORS = {
   fintech: "color-mix(in srgb, var(--home-moss) 62%, var(--home-ink) 38%)",
   startup: "color-mix(in srgb, var(--home-acid) 34%, var(--home-ink) 66%)",
-  "big-tech": "var(--home-haze)",
+  "big-tech": "color-mix(in srgb, var(--home-ink) 68%, var(--home-stone) 32%)",
 } as const;
 
 export const MBA_COMPANIES: MBACompany[] = [

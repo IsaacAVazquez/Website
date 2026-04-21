@@ -8,6 +8,7 @@ describe("caseStudies helpers", () => {
       "investment-analytics-platform",
       "interchange-iq",
       "news-pulse-dashboard",
+      "decision-lab",
       "budget-planner",
       "mba-role-tracker",
       "spacex-mission-control",
@@ -24,7 +25,7 @@ describe("caseStudies helpers", () => {
     expect(featured.map((project) => project.slug)).toEqual([
       "investment-analytics-platform",
       "news-pulse-dashboard",
-      "mba-role-tracker",
+      "interchange-iq",
     ]);
   });
 });

@@ -6,9 +6,9 @@ import { normalizeFantasyState } from "./fantasy-state";
 export const metadata = constructMetadata({
   title: "Fantasy Football Rankings | Isaac Vazquez",
   description:
-    "Snapshot-backed fantasy football rankings with overall and position boards, scoring toggles, search, and a linked draft assistant.",
+    "Snapshot-backed fantasy football rankings sourced from FantasyPros public consensus pages, with freshness metadata, scoring toggles, and a linked draft assistant.",
   canonicalUrl: "/fantasy-football",
-  dateModified: "2026-03-18",
+  dateModified: "2026-04-15",
 });
 
 interface FantasyFootballPageProps {
@@ -38,7 +38,7 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
         data={{
           name: "Fantasy Football Rankings",
           description:
-            "Published fantasy football rankings and draft assistant with snapshot-backed overall and position boards.",
+            "Published fantasy football rankings and draft assistant with sourced overall and position boards.",
           applicationCategory: "SportsApplication",
           operatingSystem: "Web browser",
           featureList: [
@@ -58,7 +58,7 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
               name: "How often are the fantasy rankings updated?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "The public rankings use published snapshots, so the update time shown on the page is the source of truth for freshness.",
+                text: "The public rankings show both when FantasyPros last updated the consensus board and when this repo rebuilt the published snapshot.",
               },
             },
             {

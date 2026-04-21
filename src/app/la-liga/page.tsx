@@ -1,5 +1,9 @@
 import { StructuredData } from "@/components/StructuredData";
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
+import {
+  getLaLigaSummarySnapshot,
+  getLaLigaTeamSnapshot,
+} from "@/lib/laLigaSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { LaLigaClient } from "./la-liga-client";
 import { normalizeLaLigaState } from "./la-liga-state";
@@ -46,6 +50,8 @@ interface LaLigaPageProps {
 
 export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
   const initialState = normalizeLaLigaState(await searchParams);
+  const summary = await getLaLigaSummarySnapshot();
+  const initialTeamSnapshot = await getLaLigaTeamSnapshot(initialState.club).catch(() => null);
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "La Liga Pulse", url: "/la-liga" },
@@ -78,7 +84,11 @@ export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
           dateModified: laLigaSnapshot.updatedAt,
         }}
       />
-      <LaLigaClient initialState={initialState} />
+      <LaLigaClient
+        initialState={initialState}
+        summary={summary}
+        initialTeamSnapshot={initialTeamSnapshot}
+      />
     </>
   );
 }

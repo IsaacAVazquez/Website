@@ -154,6 +154,7 @@ export function useFantasySnapshot({
       season: snapshot.season,
       week: snapshot.week,
       generatedAt: snapshot.generatedAt,
+      upstreamUpdatedAt: snapshot.upstreamUpdatedAt,
       scoringFormat: snapshot.scoringFormat,
       source: snapshot.source,
       position: all ? "all" : position,

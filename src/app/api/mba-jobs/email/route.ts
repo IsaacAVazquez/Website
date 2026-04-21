@@ -50,7 +50,7 @@ function buildEmailHtml(jobs: MBAJob[], to: string): string {
 
   return `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MBA Roles Digest</title></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Job Search Digest</title></head>
 <body style="margin:0;padding:0;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
     <tr>
@@ -58,7 +58,7 @@ function buildEmailHtml(jobs: MBAJob[], to: string): string {
         <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
           <tr>
             <td style="background:#12110F;padding:24px 32px;">
-              <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#D7E74F;">MBA Role Tracker</p>
+              <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#D7E74F;">Job Search</p>
               <h1 style="margin:6px 0 0;font-size:24px;font-weight:700;color:#F4EEE1;">Your latest digest</h1>
             </td>
           </tr>

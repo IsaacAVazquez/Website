@@ -24,12 +24,13 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { SOURCE_META } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
 import {
   analyzeSentiment,
   calculateReadingLevel,
-  extractTopics,
-  SOURCE_META,
+  clusterArticlesByStory,
+  getOrderedSourcesForArticles,
 } from "@/lib/news-pulse-utils";
 import {
   buildNewsPulseHref,
@@ -40,7 +41,6 @@ import {
   VIEW_OPTIONS,
   type NewsPulseSearchState,
   type NewsSource,
-  type NewsPulseView,
 } from "./news-pulse-state";
 
 interface NewsPulseClientProps {
@@ -51,6 +51,7 @@ interface FeedResponse {
   articles: NewsArticle[];
   fetchedAt: string;
   errors: string[];
+  message?: string;
 }
 
 const fadeIn = {
@@ -71,21 +72,26 @@ const LAST_FETCHED_FORMATTER = new Intl.DateTimeFormat("en-US", {
 });
 
 function timeAgo(dateStr: string): string {
-  const d = new Date(dateStr);
-  if (Number.isNaN(d.getTime())) return "";
-  const diff = Date.now() - d.getTime();
-  const mins = Math.floor(diff / 60_000);
-  if (mins < 1) return "just now";
-  if (mins < 60) return `${mins}m ago`;
-  const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return `${hrs}h ago`;
-  const days = Math.floor(hrs / 24);
+  const date = new Date(dateStr);
+  if (Number.isNaN(date.getTime())) return "";
+
+  const diff = Date.now() - date.getTime();
+  const minutes = Math.floor(diff / 60_000);
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes}m ago`;
+
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h ago`;
+
+  const days = Math.floor(hours / 24);
   return `${days}d ago`;
 }
 
 function formatFetchedAt(value: string): string {
   const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "Waiting on a refresh" : LAST_FETCHED_FORMATTER.format(date);
+  return Number.isNaN(date.getTime())
+    ? "Waiting on a refresh"
+    : LAST_FETCHED_FORMATTER.format(date);
 }
 
 function getSourceBadgeStyle(sourceColor: string): CSSProperties {
@@ -100,6 +106,18 @@ function getReadabilityTone(score: number): CSSProperties {
   if (score >= 70) return { color: "var(--color-success)" };
   if (score >= 50) return { color: "var(--color-warning)" };
   return { color: "var(--color-error)" };
+}
+
+function buildFeedErrorMessage(status: number, payload: FeedResponse | null): string {
+  const parts = [
+    payload?.message,
+    Array.isArray(payload?.errors) && payload.errors.length > 0
+      ? payload.errors.join("; ")
+      : null,
+  ].filter((part): part is string => Boolean(part));
+
+  if (parts.length > 0) return parts.join(" ");
+  return `Request failed with status ${status}.`;
 }
 
 function SourceDropdown({
@@ -162,7 +180,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
     searchParams.get("view") !== null || searchParams.get("source") !== null;
   const routeState = useMemo(
     () => (hasManagedParams ? normalizeNewsPulseState(searchParams) : initialState),
-    [hasManagedParams, initialState, searchParams]
+    [hasManagedParams, initialState, searchParams],
   );
 
   function updateRouteState(next: Partial<NewsPulseSearchState>) {
@@ -178,25 +196,43 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
 
   useEffect(() => {
     const controller = new AbortController();
-    setLoading(true);
-    setError(null);
-    setFeedErrors([]);
 
-    fetch("/api/news-pulse", { signal: controller.signal })
-      .then((response) => response.json())
-      .then((data: FeedResponse) => {
-        setArticles(Array.isArray(data.articles) ? data.articles : []);
-        setFetchedAt(data.fetchedAt ?? "");
-        setFeedErrors(data.errors ?? []);
-        setLoading(false);
-      })
-      .catch((fetchError: Error) => {
-        if (fetchError.name !== "AbortError") {
-          setError(fetchError.message);
+    async function loadFeeds() {
+      setLoading(true);
+      setError(null);
+      setFeedErrors([]);
+
+      try {
+        const response = await fetch("/api/news-pulse", { signal: controller.signal });
+        const payload = (await response.json().catch(() => null)) as FeedResponse | null;
+
+        if (controller.signal.aborted) return;
+
+        if (!response.ok) {
+          setArticles([]);
+          setFetchedAt(payload?.fetchedAt ?? "");
+          setFeedErrors(Array.isArray(payload?.errors) ? payload.errors : []);
+          setError(buildFeedErrorMessage(response.status, payload));
+          return;
+        }
+
+        setArticles(Array.isArray(payload?.articles) ? payload.articles : []);
+        setFetchedAt(payload?.fetchedAt ?? "");
+        setFeedErrors(Array.isArray(payload?.errors) ? payload.errors : []);
+      } catch (fetchError) {
+        if (controller.signal.aborted) return;
+        const message =
+          fetchError instanceof Error ? fetchError.message : "I could not load the feeds.";
+        setArticles([]);
+        setError(message);
+      } finally {
+        if (!controller.signal.aborted) {
           setLoading(false);
         }
-      });
+      }
+    }
 
+    void loadFeeds();
     return () => controller.abort();
   }, []);
 
@@ -205,13 +241,13 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
       routeState.source === "all"
         ? articles
         : articles.filter((article) => article.source === routeState.source),
-    [articles, routeState.source]
+    [articles, routeState.source],
   );
 
   const trackedSourceCount = SOURCE_OPTIONS.length - 1;
   const articleSourceCount = useMemo(
     () => new Set(articles.map((article) => article.source)).size,
-    [articles]
+    [articles],
   );
   const updatedLabel = loading
     ? "Refreshing now"
@@ -245,26 +281,23 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
             >
               News Pulse
             </h1>
-            <div>
-              <p className="home-body max-w-[42rem]">
-                I built News Pulse to get a fast read on what major outlets are choosing to
-                emphasize right now. It pulls six RSS feeds into one editorial desk, then layers
-                on lightweight topic, tone, and readability signals so I can compare framing before
-                I read deeply.
-              </p>
-            </div>
+
+            <p className="home-body max-w-[42rem]">
+              I built News Pulse to get a fast read on what major outlets are choosing to
+              emphasize right now. It pulls six RSS feeds into one editorial desk, then layers on
+              lightweight topic, tone, readability, and story-cluster signals so I can compare
+              framing before I read deeply.
+            </p>
 
             <div className="flex flex-wrap gap-2 pt-1">
               <span className="resume-chip">{trackedSourceCount} outlets tracked</span>
               <span className="resume-chip">{updatedLabel}</span>
-              <span className="resume-chip">Headline-level topic, tone, readability</span>
+              <span className="resume-chip">Headline-level topics, tone, readability, clusters</span>
               {!loading && !error ? (
                 <span className="resume-chip">{articles.length} headlines in this pull</span>
               ) : null}
             </div>
           </div>
-
-       
         </motion.div>
 
         <motion.div
@@ -278,11 +311,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
               className="flex flex-wrap gap-2 rounded-[1.1rem] p-1.5"
               role="tablist"
               aria-label="News Pulse tabs"
-              style={{
-                width: "fit-content",
-      //          border: "1px solid var(--home-rule)",
-      //          background: "color-mix(in srgb, var(--home-paper-alt) 90%, white)",
-              }}
+              style={{ width: "fit-content" }}
             >
               {VIEW_OPTIONS.map((view) => (
                 <EditorialPillButton
@@ -306,7 +335,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
           </div>
         </motion.div>
 
-        {feedErrors.length > 0 && !loading ? (
+        {feedErrors.length > 0 && !loading && !error ? (
           <div
             className="home-card flex items-start gap-3 rounded-[1.5rem] px-5 py-4"
             style={{
@@ -418,9 +447,9 @@ function HeadlinesView({
       initial="hidden"
       animate="visible"
     >
-      {articles.slice(0, 60).map((article, index) => (
+      {articles.slice(0, 60).map((article) => (
         <a
-          key={`${article.source}-${index}`}
+          key={`${article.source}-${article.link}`}
           href={article.link}
           target="_blank"
           rel="noopener noreferrer"
@@ -516,46 +545,57 @@ function CoverageView({
   articles: NewsArticle[];
   variants: typeof fadeIn;
 }) {
-  const topics = useMemo(() => extractTopics(articles), [articles]);
-  const sourceIds = useMemo(
-    () => Array.from(new Set(articles.map((article) => article.source))).sort(),
-    [articles]
-  );
+  const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
+  const storyClusters = useMemo(() => clusterArticlesByStory(articles), [articles]);
 
-  if (topics.length === 0) {
+  if (storyClusters.length === 0) {
     return (
       <StatusPanel
-        title="The overlap is thin right now."
-        message="I need repeated language across at least two outlets before the coverage map becomes useful."
+        title="The cross-outlet overlap is thin right now."
+        message="I need at least two outlets on the same storyline before this view becomes useful."
       />
     );
   }
 
   return (
     <motion.div className="space-y-6" variants={variants} initial="hidden" animate="visible">
-      <div className="home-card overflow-hidden p-5 sm:p-6">
-        <div className="overflow-x-auto">
-          <table className="min-w-[720px] w-full text-left text-sm">
+      <div className="home-card p-5 sm:p-6">
+        <h2
+          className="text-xl font-semibold"
+          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+        >
+          Story clusters across outlets
+        </h2>
+        <InlineSectionLead kicker="Coverage map">
+          This view groups similar headlines into storylines so I can compare overlap, not just
+          repeated vocabulary.
+        </InlineSectionLead>
+
+        <div className="mt-6 overflow-x-auto">
+          <table
+            className="min-w-[920px] w-full text-left text-sm"
+            aria-label="Story clusters by outlet"
+          >
             <thead>
               <tr style={{ borderBottom: "1px solid var(--home-rule)" }}>
                 <th
                   className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em]"
                   style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
                 >
-                  Topic
+                  Story cluster
                 </th>
                 {sourceIds.map((source) => (
                   <th key={source} className="px-3 py-3 text-center">
                     <span
                       className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
-                      style={getSourceBadgeStyle(SOURCE_META[source]?.color ?? "var(--home-haze)")}
+                      style={getSourceBadgeStyle(SOURCE_META[source].color)}
                     >
                       <span
                         className="h-2.5 w-2.5 rounded-full"
-                        style={{ background: SOURCE_META[source]?.color ?? "var(--home-haze)" }}
+                        style={{ background: SOURCE_META[source].color }}
                         aria-hidden="true"
                       />
-                      {SOURCE_META[source]?.name ?? source}
+                      {SOURCE_META[source].name}
                     </span>
                   </th>
                 ))}
@@ -565,32 +605,38 @@ function CoverageView({
                 >
                   Total
                 </th>
+                <th
+                  className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em]"
+                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+                >
+                  Representative headline
+                </th>
               </tr>
             </thead>
             <tbody>
-              {topics.map((topic) => (
-                <tr key={topic.topic} style={{ borderBottom: "1px solid var(--home-rule)" }}>
+              {storyClusters.map((cluster) => (
+                <tr key={cluster.id} style={{ borderBottom: "1px solid var(--home-rule)" }}>
                   <td
-                    className="px-4 py-4 capitalize"
+                    className="px-4 py-4"
                     style={{
                       fontFamily: "var(--font-home-sans)",
                       fontWeight: 600,
                       color: "var(--home-ink)",
                     }}
                   >
-                    {topic.topic}
+                    {cluster.label}
                   </td>
                   {sourceIds.map((source) => {
-                    const count = topic.sources[source] ?? 0;
+                    const count = cluster.sources[source] ?? 0;
                     return (
                       <td key={source} className="px-3 py-4 text-center">
                         {count > 0 ? (
                           <span
-                            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold"
+                            className="inline-flex h-8 min-w-8 items-center justify-center rounded-full px-2 text-xs font-semibold"
                             style={{
                               fontFamily: "var(--font-home-sans)",
                               color: "white",
-                              background: SOURCE_META[source]?.color ?? "var(--home-haze)",
+                              background: SOURCE_META[source].color,
                               opacity: Math.min(0.42 + count * 0.14, 1),
                             }}
                           >
@@ -617,7 +663,39 @@ function CoverageView({
                       color: "var(--home-ink)",
                     }}
                   >
-                    {topic.count}
+                    {cluster.totalCount}
+                  </td>
+                  <td className="px-4 py-4">
+                    <a
+                      href={cluster.representative.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-start gap-2 no-underline"
+                    >
+                      <span
+                        className="text-sm font-semibold transition-colors duration-200 ease group-hover:text-[var(--home-haze)]"
+                        style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+                      >
+                        {cluster.representative.title}
+                      </span>
+                      <ExternalLink
+                        className="mt-0.5 h-3.5 w-3.5 shrink-0"
+                        style={{ color: "var(--home-haze)" }}
+                        aria-hidden="true"
+                      />
+                    </a>
+                    <p
+                      className="mb-0 mt-1 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
+                      style={{
+                        fontFamily: "var(--font-home-sans)",
+                        color: "var(--home-ink-muted)",
+                      }}
+                    >
+                      {cluster.representative.sourceName}
+                      {cluster.representative.pubDate
+                        ? ` · ${timeAgo(cluster.representative.pubDate)}`
+                        : ""}
+                    </p>
                   </td>
                 </tr>
               ))}
@@ -636,10 +714,7 @@ function AnalysisView({
   articles: NewsArticle[];
   variants: typeof fadeIn;
 }) {
-  const sourceIds = useMemo(
-    () => Array.from(new Set(articles.map((article) => article.source))).sort(),
-    [articles]
-  );
+  const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
 
   const sentimentBySource = useMemo(() => {
     const sentimentMap: Record<
@@ -657,6 +732,7 @@ function AnalysisView({
           total: 0,
         };
       }
+
       sentimentMap[article.source][sentiment.label]++;
       sentimentMap[article.source].total++;
     }
@@ -700,7 +776,7 @@ function AnalysisView({
       const sourceData = headlineLengthBySource[source];
       return sourceData ? sourceData.totalLength / sourceData.count : 0;
     }),
-    1
+    1,
   );
 
   if (sourceIds.length === 0) {
@@ -746,7 +822,7 @@ function AnalysisView({
                     className="text-sm font-semibold"
                     style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
                   >
-                    {SOURCE_META[source]?.name ?? source}
+                    {SOURCE_META[source].name}
                   </span>
                   <span
                     className="text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
@@ -841,7 +917,7 @@ function AnalysisView({
                     className="text-sm font-semibold"
                     style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
                   >
-                    {SOURCE_META[source]?.name ?? source}
+                    {SOURCE_META[source].name}
                   </span>
                   <span
                     className="text-sm font-semibold"
@@ -859,7 +935,7 @@ function AnalysisView({
                     className="h-full rounded-full transition-[width] duration-500 ease"
                     style={{
                       width: `${widthPercent}%`,
-                      background: SOURCE_META[source]?.color ?? "var(--home-haze)",
+                      background: SOURCE_META[source].color,
                     }}
                   />
                 </div>
@@ -902,7 +978,7 @@ function AnalysisView({
                     style={{
                       fontFamily: "var(--font-home-sans)",
                       color: "white",
-                      background: SOURCE_META[source]?.color ?? "var(--home-haze)",
+                      background: SOURCE_META[source].color,
                     }}
                   >
                     {averageScore}
@@ -913,7 +989,7 @@ function AnalysisView({
                       className="mb-1 text-sm font-semibold"
                       style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
                     >
-                      {SOURCE_META[source]?.name ?? source}
+                      {SOURCE_META[source].name}
                     </p>
                     <p
                       className="mb-0 text-[0.72rem] font-semibold uppercase tracking-[0.12em]"
@@ -934,3 +1010,4 @@ function AnalysisView({
     </motion.div>
   );
 }
+

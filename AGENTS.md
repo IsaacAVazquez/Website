@@ -23,6 +23,7 @@ Primary live routes:
 - `/accessibility`
 - `/portfolio` and `/portfolio/[slug]`
 - `/investments`
+- `/formula-1`
 - `/premier-league`
 - `/la-liga`
 - `/writing` and `/writing/[slug]`
@@ -75,6 +76,7 @@ Self-shell routes currently include:
 - `/fantasy-football`
 - `/fantasy-football/draft-tracker`
 - `/fintech-tools/budget-planner`
+- `/formula-1`
 - `/investments`
 - `/la-liga`
 - `/premier-league`
@@ -130,6 +132,7 @@ npm run dev
 - Prefer Node 20 locally to match GitHub Actions.
 - `npm run update:investments` also requires `.venv/bin/python3`.
 - `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots.
+- `npm run update:formula-1` reads historical OpenF1 endpoints and does not require an API key.
 - If the investments fetch step fails on imports, install the Python dependency with `.venv/bin/pip install defeatbeta-api`.
 
 ### Day-to-day verification
@@ -165,7 +168,7 @@ Legacy RB tiers artifacts still exist:
 - `public/fantasy/rb_current.json`
 - `src/components/RBTiersChart.tsx`
 
-Important caveat: `.github/workflows/update-fantasy-rb.yml` still assumes the legacy `public/fantasy/rb_current.json` path, while the current npm alias writes the snapshot pipeline outputs above.
+Operational note: `.github/workflows/update-fantasy-rb.yml` now commits the real fantasy snapshot artifacts above. The Netlify scheduled fantasy updater is retained only as a deprecated no-op and is not part of the public update path.
 
 ### Investments data workflow
 
@@ -267,6 +270,7 @@ Inputs and outputs:
 | `npm run update:football` | Rebuild both Premier League and La Liga snapshots |
 | `npm run update:premier-league` | Rebuild the checked-in Premier League snapshot |
 | `npm run update:la-liga` | Rebuild the checked-in La Liga snapshot |
+| `npm run update:formula-1` | Rebuild the checked-in Formula 1 snapshot |
 | `npm run generate:icons` | Regenerate PWA icons |
 
 ---
@@ -289,11 +293,11 @@ Current behavior:
 - `update-investments.yml` runs on manual dispatch and on weekdays at `22:15 UTC`, then commits refreshed files under `public/data/investments` when the curated dataset changes
 - `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC`, then commits `src/data/premierLeagueSnapshot.ts` when it changes
 - `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC`, then commits `src/data/laLigaSnapshot.ts` when it changes
-- `update-fantasy-rb.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`
-- `scheduled-fantasy-update.ts` runs on Wednesdays at `08:00 UTC` and POSTs to `/api/scheduled-update` with `Authorization: Bearer $CRON_SECRET`
+- `update-fantasy-rb.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`, then commits the generated fantasy snapshot artifacts when they change
+- `scheduled-fantasy-update.ts` is deprecated and intentionally no longer updates public fantasy data
 - `purge-cache.ts` is protected by `x-cron-secret` or `?secret=` and calls Netlify Durable Cache purge
 
-If seasonal automation changes, verify both the GitHub Actions workflows and the Netlify scheduled function. They are separate checked-in schedules today.
+For public fantasy updates, GitHub Actions is the source of truth. The Netlify scheduled function remains checked in only as a deprecated placeholder.
 
 Useful scheduled-update checks:
 

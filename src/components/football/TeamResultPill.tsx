@@ -6,7 +6,7 @@ export function TeamResultPill({ result }: { result: "W" | "D" | "L" }) {
       ? "border-[color-mix(in_srgb,var(--color-success)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-success)_12%,var(--home-paper-alt))] text-[var(--color-success)]"
       : result === "D"
         ? "border-[color-mix(in_srgb,var(--home-haze)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-paper-alt))] text-[var(--home-haze)]"
-        : "border-[color-mix(in_srgb,var(--color-danger)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-danger)_10%,var(--home-paper-alt))] text-[var(--color-danger)]";
+        : "border-[color-mix(in_srgb,var(--color-error)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-error)_10%,var(--home-paper-alt))] text-[var(--color-error)]";
 
   return (
     <span

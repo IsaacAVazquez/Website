@@ -2,9 +2,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import {
+  BLOG_ARCHIVE_BUCKET_ORDER,
   BLOG_CLUSTER_ORDER,
   HOMEPAGE_PROOF_OF_WORK_SLUGS,
   getBlogCoverImageUrl,
+  type BlogArchiveBucket,
   type BlogCluster,
   type BlogPostCTA,
 } from "./blog-config";
@@ -24,6 +26,7 @@ export interface BlogPost {
   author: string;
   coverImage: string;
   cluster?: BlogCluster;
+  archiveBucket?: BlogArchiveBucket;
   cta?: BlogPostCTA;
   seo?: {
     title?: string;
@@ -46,6 +49,7 @@ export interface BlogPostPreview {
   author: string;
   coverImage: string;
   cluster?: BlogCluster;
+  archiveBucket?: BlogArchiveBucket;
   cta?: BlogPostCTA;
 }
 
@@ -60,6 +64,7 @@ export interface BlogPostMetadata {
   author?: string;
   coverImage?: string;
   cluster?: BlogCluster;
+  archiveBucket?: BlogArchiveBucket;
   cta?: BlogPostCTA;
   seo?: {
     title?: string;
@@ -84,6 +89,19 @@ function calculateReadingTime(content: string): string {
   const wordsPerMinute = 200;
   const minutes = Math.ceil(calculateWordCount(content) / wordsPerMinute);
   return `${minutes} min read`;
+}
+
+function compareBlogEntriesByPublishedDateDesc<
+  T extends { publishedAt: string; slug: string }
+>(a: T, b: T): number {
+  const dateDifference =
+    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+
+  if (dateDifference !== 0) {
+    return dateDifference;
+  }
+
+  return a.slug.localeCompare(b.slug);
 }
 
 function resolveBlogPostPath(slug: string): string | null {
@@ -155,6 +173,7 @@ function buildBlogPostPreview(
     author: metadata.author || "Isaac Vazquez",
     coverImage: getBlogCoverImageUrl(slug, metadata.coverImage),
     cluster: metadata.cluster,
+    archiveBucket: metadata.archiveBucket,
     cta: metadata.cta,
   };
 }
@@ -215,6 +234,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       author: metadata.author || "Isaac Vazquez",
       coverImage: getBlogCoverImageUrl(slug, metadata.coverImage),
       cluster: metadata.cluster,
+      archiveBucket: metadata.archiveBucket,
       cta: metadata.cta,
       seo: metadata.seo,
     };
@@ -235,9 +255,7 @@ export function getAllBlogPostPreviews(): BlogPostPreview[] {
     }
   }
 
-  return previews.sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  return previews.sort(compareBlogEntriesByPublishedDateDesc);
 }
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
@@ -251,9 +269,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
     }
   }
 
-  return posts.sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  return posts.sort(compareBlogEntriesByPublishedDateDesc);
 }
 
 export function getLatestBlogPostPreviews(limit = 3): BlogPostPreview[] {
@@ -281,6 +297,20 @@ export function getCuratedBlogPostPreviewsByCluster(): Record<
 
 export function getArchiveBlogPostPreviews(): BlogPostPreview[] {
   return getAllBlogPostPreviews().filter((post) => !post.cluster);
+}
+
+export function getArchiveBlogPostPreviewsByBucket(): Record<
+  BlogArchiveBucket,
+  BlogPostPreview[]
+> {
+  const archivePosts = getArchiveBlogPostPreviews();
+
+  return BLOG_ARCHIVE_BUCKET_ORDER.reduce((acc, bucket) => {
+    acc[bucket] = archivePosts
+      .filter((post) => post.archiveBucket === bucket)
+      .sort(compareBlogEntriesByPublishedDateDesc);
+    return acc;
+  }, {} as Record<BlogArchiveBucket, BlogPostPreview[]>);
 }
 
 export async function getBlogPostsByCategory(category: string): Promise<BlogPost[]> {
@@ -323,6 +353,14 @@ export async function getRelatedBlogPosts(
       score += 12;
     }
 
+    if (
+      post.archiveBucket &&
+      currentPost.archiveBucket &&
+      post.archiveBucket === currentPost.archiveBucket
+    ) {
+      score += 8;
+    }
+
     const sharedTags = post.tags.filter((tag) => currentPost.tags.includes(tag));
     score += sharedTags.length * 5;
 
@@ -336,7 +374,7 @@ export async function getRelatedBlogPosts(
         return b.score - a.score;
       }
 
-      return new Date(b.post.publishedAt).getTime() - new Date(a.post.publishedAt).getTime();
+      return compareBlogEntriesByPublishedDateDesc(a.post, b.post);
     })
     .map((item) => item.post);
 
@@ -346,7 +384,7 @@ export async function getRelatedBlogPosts(
 
   const fallbackPosts = otherPosts
     .filter((post) => !stronglyRelated.some((relatedPost) => relatedPost.slug === post.slug))
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+    .sort(compareBlogEntriesByPublishedDateDesc);
 
   return [...stronglyRelated, ...fallbackPosts].slice(0, limit);
 }

@@ -6,6 +6,7 @@ import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { MetricTooltip } from "./MetricTooltip";
 import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
+import { formatHistoryAsOf, getHistoricalPriceFreshness } from "@/lib/investmentsHistory";
 import type {
   BetaData,
   CompanyInfo,
@@ -100,6 +101,7 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
   const trailingLow = trailingYear.length ? Math.min(...trailingYear.map((p) => p.low)) : undefined;
   const historicalPriceAsOf = priceFreshness?.sections.price ?? latestPrice?.date ?? null;
   const snapshotBuiltAt = priceFreshness?.snapshotBuiltAt ?? datasetLastUpdated;
+  const historyFreshness = getHistoricalPriceFreshness(historicalPriceAsOf, snapshotBuiltAt);
   const livePrice = quote && !quote.error ? quote.price : undefined;
   const displayedPrice = livePrice ?? latestPrice?.close;
   const displayedDayChangePercent = quote && !quote.error ? quote.changePercent : undefined;
@@ -193,8 +195,20 @@ export function ResearchSidebar({ symbol, onSymbolChange, isInPortfolio = false 
                 mode={livePrice !== undefined ? priceFreshnessMode : "price"}
               />
             </div>
+            <p className="mt-1 text-[11px] text-[var(--home-ink-muted)]">
+              {livePrice !== undefined
+                ? `Historical chart through ${formatHistoryAsOf(historicalPriceAsOf)}.`
+                : historicalPriceAsOf
+                  ? `Showing the latest saved close from ${formatHistoryAsOf(historicalPriceAsOf)}.`
+                  : "Live pricing is temporarily unavailable."}
+            </p>
             {quoteError && livePrice === undefined ? (
               <p className="mt-1 text-[11px] font-medium text-[var(--color-warning)]">{quoteError}</p>
+            ) : null}
+            {historyFreshness.isStale ? (
+              <p className="mt-1 text-[11px] font-medium text-[var(--color-warning)]">
+                Historical series trails the dataset by {historyFreshness.lagDays} days.
+              </p>
             ) : null}
           </div>
 

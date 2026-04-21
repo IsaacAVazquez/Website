@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { DraftSettings, ScoringFormat } from "@/types";
 
 interface DraftSetupProps {
@@ -14,6 +14,30 @@ const SCORING_OPTIONS: { value: ScoringFormat; label: string; description: strin
   { value: "HALF_PPR", label: "Half PPR", description: "Balanced default for most home leagues." },
   { value: "STANDARD", label: "Standard", description: "Use when receptions do not score." },
 ];
+
+function getOptionStyle(active: boolean): CSSProperties {
+  if (active) {
+    return {
+      borderColor: "var(--home-ink)",
+      background: "var(--home-ink)",
+      color: "var(--home-paper)",
+    };
+  }
+
+  return {
+    borderColor: "var(--home-rule)",
+    background: "color-mix(in srgb, var(--home-paper-alt) 52%, white)",
+    color: "var(--home-ink)",
+  };
+}
+
+function getFieldStyle(): CSSProperties {
+  return {
+    borderColor: "var(--home-rule)",
+    background: "color-mix(in srgb, var(--home-paper) 88%, white)",
+    color: "var(--home-ink)",
+  };
+}
 
 export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetupProps) {
   const [formState, setFormState] = useState<DraftSettings>(settings);
@@ -39,65 +63,79 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
   }
 
   return (
-    <div className="rounded-[28px] border border-white/10 bg-[#08111f]/90 p-5 sm:p-6">
-      <div className="border-b border-white/10 pb-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Draft Setup</p>
-        <h2 className="mt-2 text-2xl font-semibold text-white">Configure the room before picks start.</h2>
-        <p className="mt-2 text-sm leading-7 text-slate-300">
-          Save your league settings once, then use the published snapshot board to log every pick as the room moves.
+    <div className="home-card p-5 sm:p-6">
+      <div className="border-b pb-4" style={{ borderColor: "var(--home-rule)" }}>
+        <p className="home-kicker mb-1">Draft Setup</p>
+        <h2 className="text-2xl font-semibold">Configure the room before picks start.</h2>
+        <p className="mt-2 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+          Save the league settings once, then use the published snapshot board to log every pick as
+          the room moves.
         </p>
       </div>
 
       <div className="mt-5 grid gap-4 md:grid-cols-2">
-        <label className="grid gap-2 text-sm">
-          <span className="font-medium text-slate-200">League name</span>
+        <label className="grid gap-2 text-sm" htmlFor="draft-league-name">
+          <span className="home-kicker mb-0">League name</span>
           <input
+            id="draft-league-name"
+            name="leagueName"
             value={formState.leagueName ?? ""}
             onChange={(event) => updateField("leagueName", event.target.value)}
-            className="min-h-[48px] rounded-2xl border border-white/10 bg-white/5 px-4 text-white outline-none placeholder:text-slate-500 focus:border-sky-300/40"
+            autoComplete="organization"
+            className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            style={getFieldStyle()}
             placeholder="Home league"
           />
         </label>
 
-        <label className="grid gap-2 text-sm">
-          <span className="font-medium text-slate-200">Teams</span>
+        <label className="grid gap-2 text-sm" htmlFor="draft-total-teams">
+          <span className="home-kicker mb-0">Teams</span>
           <select
+            id="draft-total-teams"
+            name="totalTeams"
             value={formState.totalTeams}
             onChange={(event) => updateField("totalTeams", Number(event.target.value))}
-            className="min-h-[48px] rounded-2xl border border-white/10 bg-white/5 px-4 text-white outline-none focus:border-sky-300/40"
+            className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            style={getFieldStyle()}
           >
             {[8, 10, 12, 14, 16].map((teamCount) => (
-              <option key={teamCount} value={teamCount} className="bg-slate-950">
+              <option key={teamCount} value={teamCount}>
                 {teamCount} teams
               </option>
             ))}
           </select>
         </label>
 
-        <label className="grid gap-2 text-sm">
-          <span className="font-medium text-slate-200">Your draft slot</span>
+        <label className="grid gap-2 text-sm" htmlFor="draft-user-team">
+          <span className="home-kicker mb-0">Your draft slot</span>
           <select
+            id="draft-user-team"
+            name="userTeam"
             value={formState.userTeam}
             onChange={(event) => updateField("userTeam", Number(event.target.value))}
-            className="min-h-[48px] rounded-2xl border border-white/10 bg-white/5 px-4 text-white outline-none focus:border-sky-300/40"
+            className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            style={getFieldStyle()}
           >
             {Array.from({ length: formState.totalTeams }, (_, index) => index + 1).map((slot) => (
-              <option key={slot} value={slot} className="bg-slate-950">
+              <option key={slot} value={slot}>
                 Pick {slot}
               </option>
             ))}
           </select>
         </label>
 
-        <label className="grid gap-2 text-sm">
-          <span className="font-medium text-slate-200">Rounds</span>
+        <label className="grid gap-2 text-sm" htmlFor="draft-rounds">
+          <span className="home-kicker mb-0">Rounds</span>
           <select
+            id="draft-rounds"
+            name="rounds"
             value={formState.rounds}
             onChange={(event) => updateField("rounds", Number(event.target.value))}
-            className="min-h-[48px] rounded-2xl border border-white/10 bg-white/5 px-4 text-white outline-none focus:border-sky-300/40"
+            className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
+            style={getFieldStyle()}
           >
             {[13, 14, 15, 16, 17, 18].map((roundCount) => (
-              <option key={roundCount} value={roundCount} className="bg-slate-950">
+              <option key={roundCount} value={roundCount}>
                 {roundCount} rounds
               </option>
             ))}
@@ -106,8 +144,8 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
       </div>
 
       <div className="mt-5 grid gap-4 md:grid-cols-2">
-        <div className="grid gap-2 text-sm">
-          <span className="font-medium text-slate-200">Draft order</span>
+        <fieldset className="grid gap-2 text-sm">
+          <legend className="home-kicker mb-0">Draft order</legend>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
               { value: "snake" as const, label: "Snake", description: "Reverse order each round." },
@@ -119,22 +157,24 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                   key={option.value}
                   type="button"
                   onClick={() => updateField("draftType", option.value)}
-                  className={`rounded-2xl border px-4 py-3 text-left transition ${
-                    active
-                      ? "border-sky-300/40 bg-sky-300/10 text-white"
-                      : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white"
-                  }`}
+                  className="rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
+                  style={getOptionStyle(active)}
                 >
                   <span className="block text-sm font-semibold">{option.label}</span>
-                  <span className="mt-1 block text-xs text-slate-400">{option.description}</span>
+                  <span
+                    className="mt-1 block text-xs"
+                    style={{ color: active ? "color-mix(in srgb, var(--home-paper) 78%, transparent)" : "var(--home-ink-muted)" }}
+                  >
+                    {option.description}
+                  </span>
                 </button>
               );
             })}
           </div>
-        </div>
+        </fieldset>
 
-        <div className="grid gap-2 text-sm">
-          <span className="font-medium text-slate-200">Scoring</span>
+        <fieldset className="grid gap-2 text-sm">
+          <legend className="home-kicker mb-0">Scoring</legend>
           <div className="grid gap-2">
             {SCORING_OPTIONS.map((option) => {
               const active = formState.scoringFormat === option.value;
@@ -143,29 +183,43 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
                   key={option.value}
                   type="button"
                   onClick={() => updateField("scoringFormat", option.value)}
-                  className={`rounded-2xl border px-4 py-3 text-left transition ${
-                    active
-                      ? "border-emerald-300/40 bg-emerald-300/10 text-white"
-                      : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white"
-                  }`}
+                  className="rounded-[1.2rem] border px-4 py-3 text-left transition-[background-color,border-color,color,box-shadow] duration-200"
+                  style={getOptionStyle(active)}
                 >
                   <span className="block text-sm font-semibold">{option.label}</span>
-                  <span className="mt-1 block text-xs text-slate-400">{option.description}</span>
+                  <span
+                    className="mt-1 block text-xs"
+                    style={{ color: active ? "color-mix(in srgb, var(--home-paper) 78%, transparent)" : "var(--home-ink-muted)" }}
+                  >
+                    {option.description}
+                  </span>
                 </button>
               );
             })}
           </div>
-        </div>
+        </fieldset>
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-4">
-        <p className="text-sm text-slate-300">
-          The board will track {formState.totalTeams} teams, {formState.rounds} rounds, and highlight your turns from slot {formState.userTeam}.
+      <div
+        className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[1.3rem] border px-4 py-4"
+        style={{
+          borderColor: "var(--home-rule)",
+          background: "color-mix(in srgb, var(--home-paper-alt) 52%, white)",
+        }}
+      >
+        <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
+          The board will track {formState.totalTeams} teams, {formState.rounds} rounds, and
+          highlight your turns from slot {formState.userTeam}.
         </p>
         <button
           type="button"
           onClick={handleStartDraft}
-          className="min-h-[48px] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+          className="min-h-[48px] rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+          style={{
+            borderColor: "var(--home-ink)",
+            background: "var(--home-ink)",
+            color: "var(--home-paper)",
+          }}
         >
           Start draft assistant
         </button>

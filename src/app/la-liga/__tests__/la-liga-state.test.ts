@@ -1,5 +1,6 @@
 import {
   buildLaLigaHref,
+  canonicalizeLaLigaClubId,
   DEFAULT_LA_LIGA_STATE,
   filterClubsForView,
   getDefaultClubForView,
@@ -28,6 +29,19 @@ describe("la-liga-state", () => {
     });
   });
 
+  it("canonicalizes football-data team ids back to the shareable club ids", () => {
+    expect(canonicalizeLaLigaClubId("81")).toBe("fcb");
+    expect(
+      normalizeLaLigaState({
+        view: "table",
+        club: "81",
+      })
+    ).toEqual({
+      view: "table",
+      club: "fcb",
+    });
+  });
+
   it("returns the expected club slices for focused views", () => {
     expect(filterClubsForView("title-race").map((club) => club.id)).toEqual([
       "fcb",
@@ -40,8 +54,8 @@ describe("la-liga-state", () => {
       "sev",
       "ala",
       "elc",
-      "ovi",
       "lev",
+      "ovi",
     ]);
     expect(getDefaultClubForView("relegation")).toBe("sev");
   });
@@ -51,7 +65,7 @@ describe("la-liga-state", () => {
       buildLaLigaHref(
         {
           view: "europe",
-          club: "bet",
+          club: "90",
         },
         new URLSearchParams("ref=portfolio")
       )

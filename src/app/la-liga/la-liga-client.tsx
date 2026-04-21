@@ -1,6 +1,12 @@
 "use client";
 
-import { startTransition, useEffect, useState, type CSSProperties } from "react";
+import {
+  startTransition,
+  useEffect,
+  useMemo,
+  useState,
+  type CSSProperties,
+} from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { BarChart3, CircleAlert, ExternalLink, Shield, TrendingUp, Trophy } from "lucide-react";
 import {
@@ -11,10 +17,17 @@ import {
   FixtureCard,
   LeaderList,
 } from "@/components/football";
-import { laLigaSnapshot } from "@/data/laLigaSnapshot";
-import type { LaLigaClub, LaLigaLeader, LaLigaRouteState, LaLigaView } from "@/types/la-liga";
+import type {
+  LaLigaClub,
+  LaLigaLeader,
+  LaLigaRouteState,
+  LaLigaSummarySnapshot,
+  LaLigaTeamSnapshot,
+  LaLigaView,
+} from "@/types/la-liga";
 import {
   buildLaLigaHref,
+  canonicalizeLaLigaClubId,
   DEFAULT_LA_LIGA_STATE,
   filterClubsForView,
   getDefaultClubForView,
@@ -24,45 +37,23 @@ import {
 
 interface LaLigaClientProps {
   initialState: LaLigaRouteState;
+  summary: LaLigaSummarySnapshot;
+  initialTeamSnapshot: LaLigaTeamSnapshot | null;
 }
 
-const clubs = laLigaSnapshot.clubs;
-const clubById = new Map(clubs.map((club) => [club.id, club]));
-const attackRankings = clubs
-  .toSorted((left, right) => right.goalsFor - left.goalsFor || left.position - right.position)
-  .map((club, index) => [club.id, index + 1] as const);
-const defenseRankings = clubs
-  .toSorted(
-    (left, right) => left.goalsAgainst - right.goalsAgainst || left.position - right.position
-  )
-  .map((club, index) => [club.id, index + 1] as const);
-const attackRankByClub = new Map(attackRankings);
-const defenseRankByClub = new Map(defenseRankings);
-const scorersByClub = groupLeadersByClub(laLigaSnapshot.scorers);
-const clubLookup = new Map(clubs.map((club) => [club.id, club.shortName]));
-const crestByClubId = new Map(
-  laLigaSnapshot.teams.map((t) => [t.tla?.toLowerCase() ?? "", t.crest] as const)
-);
-const snapshotDateLabel = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-}).format(new Date(laLigaSnapshot.updatedAt));
+async function fetchLaLigaTeamSnapshot(
+  clubId: string,
+  signal: AbortSignal
+): Promise<LaLigaTeamSnapshot> {
+  const response = await fetch(`/api/la-liga/teams/${clubId}`, { signal });
+  const payload = (await response.json()) as LaLigaTeamSnapshot & { error?: string };
 
-const leader = clubs[0];
-const runnerUp = clubs[1];
-const fourthPlace = clubs[3];
-const fifthPlace = clubs[4];
-const sixthPlace = clubs[5];
-const seventhPlace = clubs[6];
-const safetyLine = clubs[16];
-const dropLine = clubs[17];
-const bestAttack = clubs.toSorted(
-  (left, right) => right.goalsFor - left.goalsFor || left.position - right.position
-)[0];
-const bestDefense = clubs.toSorted(
-  (left, right) => left.goalsAgainst - right.goalsAgainst || left.position - right.position
-)[0];
+  if (!response.ok) {
+    throw new Error(payload.error || "Unable to load club snapshot.");
+  }
+
+  return payload;
+}
 
 const viewOptions: Array<{
   id: LaLigaView;
@@ -91,11 +82,53 @@ const viewOptions: Array<{
   },
 ];
 
-export function LaLigaClient({ initialState }: LaLigaClientProps) {
+export function LaLigaClient({
+  initialState,
+  summary,
+  initialTeamSnapshot,
+}: LaLigaClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentQuery = searchParams.toString();
   const currentHref = `${LA_LIGA_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
+  const clubs = summary.clubs;
+  const clubById = useMemo(() => new Map(clubs.map((club) => [club.id, club])), [clubs]);
+  const clubLookup = useMemo(
+    () => new Map(clubs.map((club) => [club.id, club.shortName])),
+    [clubs]
+  );
+  const attackRankByClub = useMemo(() => (
+    new Map(
+      clubs
+        .toSorted((left, right) => right.goalsFor - left.goalsFor || left.position - right.position)
+        .map((club, index) => [club.id, index + 1] as const)
+    )
+  ), [clubs]);
+  const defenseRankByClub = useMemo(() => (
+    new Map(
+      clubs
+        .toSorted(
+          (left, right) => left.goalsAgainst - right.goalsAgainst || left.position - right.position
+        )
+        .map((club, index) => [club.id, index + 1] as const)
+    )
+  ), [clubs]);
+  const scorersByClub = useMemo(() => groupLeadersByClub(summary.scorers), [summary.scorers]);
+  const crestByClubId = useMemo(() => (
+    new Map(
+      summary.teams.map((team) => [
+        canonicalizeLaLigaClubId(team.id) ?? team.id,
+        team.crest,
+      ] as const)
+    )
+  ), [summary.teams]);
+  const snapshotDateLabel = useMemo(() => (
+    new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }).format(new Date(summary.updatedAt))
+  ), [summary.updatedAt]);
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("club") !== null;
   const routeState = hasManagedParams ? normalizeLaLigaState(searchParams) : initialState;
@@ -104,6 +137,13 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
     ? routeState.club
     : getDefaultClubForView(routeState.view);
   const selectedClub = clubById.get(selectedClubId) ?? clubs[0];
+  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, LaLigaTeamSnapshot>>(
+    () => (selectedClubId && initialTeamSnapshot ? { [selectedClubId]: initialTeamSnapshot } : {})
+  );
+  const [loadingClubId, setLoadingClubId] = useState<string | null>(null);
+  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
+  const teamSnapshot = teamSnapshots[selectedClub.id] ?? null;
+  const isTeamSnapshotLoading = loadingClubId === selectedClub.id;
   const desiredHref = buildLaLigaHref(
     {
       view: routeState.view,
@@ -143,16 +183,84 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
   }
 
   function handleClubChange(clubId: string) {
-    navigate({ view: routeState.view, club: clubId });
+    navigate({
+      view: routeState.view,
+      club: canonicalizeLaLigaClubId(clubId) ?? DEFAULT_LA_LIGA_STATE.club,
+    });
   }
 
-  const clubStoryline = getClubStoryline(selectedClub);
-  const clubPressurePoints = getClubPressurePoints(selectedClub);
+  useEffect(() => {
+    if (teamSnapshots[selectedClub.id]) {
+      setLoadingClubId(null);
+      setTeamSnapshotError(null);
+      return;
+    }
+
+    const controller = new AbortController();
+    let cancelled = false;
+
+    setLoadingClubId(selectedClub.id);
+    setTeamSnapshotError(null);
+
+    fetchLaLigaTeamSnapshot(selectedClub.id, controller.signal)
+      .then((snapshot) => {
+        if (cancelled) {
+          return;
+        }
+
+        setTeamSnapshots((current) => (
+          current[selectedClub.id] ? current : { ...current, [selectedClub.id]: snapshot }
+        ));
+      })
+      .catch((error: Error) => {
+        if (!cancelled && error.name !== "AbortError") {
+          setTeamSnapshotError(error.message || "Unable to load club snapshot.");
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setLoadingClubId((current) => (current === selectedClub.id ? null : current));
+        }
+      });
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, [selectedClub.id, teamSnapshots]);
+
+  const leader = clubs[0];
+  const runnerUp = clubs[1];
+  const fourthPlace = clubs[3];
+  const fifthPlace = clubs[4];
+  const sixthPlace = clubs[5];
+  const seventhPlace = clubs[6];
+  const safetyLine = clubs[16];
+  const dropLine = clubs[17];
+  const clubStoryline = getClubStoryline(selectedClub, {
+    leader,
+    runnerUp,
+    fifthPlace,
+    seventhPlace,
+    sixthPlace,
+    safetyLine,
+    dropLine,
+  });
+  const clubPressurePoints = getClubPressurePoints(selectedClub, {
+    attackRankByClub,
+    defenseRankByClub,
+    leader,
+    runnerUp,
+    fifthPlace,
+    seventhPlace,
+    sixthPlace,
+    safetyLine,
+    dropLine,
+  });
   const clubScorers = scorersByClub.get(selectedClub.id) ?? [];
   const selectedZone = getClubZone(selectedClub.position);
-  const teamSnapshot = laLigaSnapshot.teamSnapshots[selectedClub.id];
   const formSequence = teamSnapshot?.form?.sequence ?? [];
-  const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(-3);
+  const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
 
@@ -172,8 +280,8 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
           </div>
           <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
             {[
-              `Season ${laLigaSnapshot.season}`,
-              `Matchday ${laLigaSnapshot.matchday}`,
+              `Season ${summary.season}`,
+              `Matchday ${summary.matchday}`,
               `Snapshot ${snapshotDateLabel}`,
             ].map((label) => (
               <span key={label} className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium">
@@ -243,7 +351,7 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
             </div>
 
             <div className="mt-6 overflow-x-auto">
-              <table className="min-w-full border-separate border-spacing-y-2">
+              <table className="min-w-full border-separate border-spacing-y-2" aria-label="La Liga standings">
                 <thead>
                   <tr className="text-left text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                     <th className="px-3 py-2 font-semibold">Pos</th>
@@ -383,6 +491,14 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
               <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">
                 {clubStoryline}
               </p>
+
+              {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
+                <p className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]">
+                  {isTeamSnapshotLoading
+                    ? "Loading club snapshot…"
+                    : teamSnapshotError}
+                </p>
+              ) : null}
             </section>
           </aside>
         </div>
@@ -452,6 +568,16 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
                   </p>
                 </div>
 
+                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
+                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                    <p className="text-sm text-[var(--home-ink-muted)]">
+                      {isTeamSnapshotLoading
+                        ? "Loading recent club fixtures…"
+                        : teamSnapshotError}
+                    </p>
+                  </div>
+                )}
+
                 {recentFixtures.length > 0 && (
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Recent results</p>
@@ -488,23 +614,23 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
 
             {activeDetailTab === "fixtures" && (
               <div className="grid gap-6 md:grid-cols-2">
-                {laLigaSnapshot.recentFixtures.length > 0 && (
+                {summary.recentFixtures.length > 0 && (
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Recent slate</p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
                     <div className="mt-4 space-y-3">
-                      {laLigaSnapshot.recentFixtures.slice(0, 8).map((f) => (
+                      {summary.recentFixtures.map((f) => (
                         <FixtureCard key={f.id} fixture={f} onOpenTeam={handleClubChange} />
                       ))}
                     </div>
                   </div>
                 )}
-                {laLigaSnapshot.upcomingFixtures.length > 0 && (
+                {summary.upcomingFixtures.length > 0 && (
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">Next up</p>
                     <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming fixtures</h3>
                     <div className="mt-4 space-y-3">
-                      {laLigaSnapshot.upcomingFixtures.slice(0, 8).map((f) => (
+                      {summary.upcomingFixtures.map((f) => (
                         <FixtureCard key={f.id} fixture={f} onOpenTeam={handleClubChange} />
                       ))}
                     </div>
@@ -522,7 +648,7 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
                       <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
                     </div>
                     <a
-                      href={laLigaSnapshot.sourceUrls.scorers}
+                      href={summary.sourceUrls.scorers}
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-haze)]"
@@ -531,11 +657,11 @@ export function LaLigaClient({ initialState }: LaLigaClientProps) {
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
-                  <LeaderList leaders={laLigaSnapshot.scorers.slice(0, 5)} statLabel="goals" clubLookup={clubLookup} />
+                  <LeaderList leaders={summary.scorers.slice(0, 5)} statLabel="goals" clubLookup={clubLookup} />
                 </div>
-                {laLigaSnapshot.scorers.length > 5 && (
+                {summary.scorers.length > 5 && (
                   <div>
-                    <LeaderList leaders={laLigaSnapshot.scorers.slice(5, 10)} statLabel="goals" clubLookup={clubLookup} />
+                    <LeaderList leaders={summary.scorers.slice(5, 10)} statLabel="goals" clubLookup={clubLookup} />
                   </div>
                 )}
               </div>
@@ -640,7 +766,7 @@ function getZoneLabel(zone: ReturnType<typeof getClubZone>) {
     case "conference":
       return "Conference League";
     case "relegation":
-      return "Drop zone";
+      return "Relegation";
     case "midtable":
     default:
       return "Midtable";
@@ -698,18 +824,34 @@ function getViewButtonStyle(isActive: boolean): CSSProperties {
   };
 }
 
-function getTableRowStyle(isSelected: boolean): CSSProperties | undefined {
-  if (!isSelected) {
-    return undefined;
+function getTableRowStyle(isSelected: boolean): CSSProperties {
+  if (isSelected) {
+    return {
+      borderColor: "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))",
+      background: "color-mix(in srgb, var(--home-haze) 9%, var(--home-paper-alt))",
+    };
   }
 
   return {
-    background: "color-mix(in srgb, var(--home-haze) 7%, color-mix(in srgb, var(--home-paper) 92%, white))",
-    boxShadow: "var(--shadow-sm)",
+    borderColor: "var(--home-rule)",
+    background: "var(--home-paper-alt)",
   };
 }
 
-function getClubStoryline(club: LaLigaClub) {
+function getClubStoryline(
+  club: LaLigaClub,
+  context: {
+    leader: LaLigaClub;
+    runnerUp: LaLigaClub;
+    fifthPlace: LaLigaClub;
+    seventhPlace: LaLigaClub;
+    sixthPlace: LaLigaClub;
+    safetyLine: LaLigaClub;
+    dropLine: LaLigaClub;
+  }
+) {
+  const { leader, runnerUp, fifthPlace, seventhPlace, sixthPlace, safetyLine, dropLine } = context;
+
   if (club.position === 1) {
     return `${club.shortName} own the league lead, carry the division's best attack, and sit ${club.points - runnerUp.points} points clear of ${runnerUp.shortName}.`;
   }
@@ -729,7 +871,31 @@ function getClubStoryline(club: LaLigaClub) {
   return `${club.shortName} are chasing safety from inside the bottom three and need ${safetyLine.points - club.points} more points just to draw level with the safe line.`;
 }
 
-function getClubPressurePoints(club: LaLigaClub) {
+function getClubPressurePoints(
+  club: LaLigaClub,
+  context: {
+    attackRankByClub: Map<string, number>;
+    defenseRankByClub: Map<string, number>;
+    leader: LaLigaClub;
+    runnerUp: LaLigaClub;
+    fifthPlace: LaLigaClub;
+    seventhPlace: LaLigaClub;
+    sixthPlace: LaLigaClub;
+    safetyLine: LaLigaClub;
+    dropLine: LaLigaClub;
+  }
+) {
+  const {
+    attackRankByClub,
+    defenseRankByClub,
+    leader,
+    runnerUp,
+    fifthPlace,
+    seventhPlace,
+    sixthPlace,
+    safetyLine,
+    dropLine,
+  } = context;
   const attackRank = attackRankByClub.get(club.id) ?? club.position;
   const defenseRank = defenseRankByClub.get(club.id) ?? club.position;
 
@@ -778,5 +944,5 @@ function getClubPressurePoints(club: LaLigaClub) {
 }
 
 function formatFixed(value: number) {
-  return value.toFixed(2);
+  return Number.isFinite(value) ? value.toFixed(2) : "—";
 }

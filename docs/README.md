@@ -2,9 +2,9 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-15
 
-Tracked Markdown audit scope: `git ls-files '*.md'` returned 215 files on 2026-04-10.
+Tracked Markdown audit scope: `git ls-files '*.md'` returned 216 tracked files before the 2026-04-15 content coverage sync. That sync adds 16 new markdown files under `content/projects/` and `content/sections/`.
 
 ---
 
@@ -95,6 +95,8 @@ These remain in the repo for context, but they should not be treated as live sou
 - `../.open-next/assets/project-screenshots/README.md`
 
 Historical files should have an explicit banner where practical. If one conflicts with code or a current doc, trust the current doc and then the code.
+
+The historical `../content/` tree now includes additional project and homepage-section snapshots to close documentation gaps. Those snapshots are still mirrors, not primary sources of truth.
 
 ---
 

@@ -29,7 +29,7 @@ describe("Writing article metadata", () => {
       wordCount: 800,
       author: "Isaac Vazquez",
       coverImage: "/writing/test-post/opengraph-image",
-      cluster: "AI For Product Managers",
+      cluster: "PM Workflows",
       cta: undefined,
       seo: {
         title: "Test Post SEO",

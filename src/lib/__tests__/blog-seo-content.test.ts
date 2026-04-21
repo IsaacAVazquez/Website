@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import {
+  BLOG_CLUSTER_ORDER,
   LEAD_GEN_BLOG_SLUGS,
   LEAD_GEN_INTERNAL_LINK_RULES,
 } from "../blog-config";
@@ -19,6 +20,7 @@ describe("lead-gen blog content rules", () => {
 
       expect(data.coverImage).toBe(`/writing/${slug}/opengraph-image`);
       expect(typeof data.cluster).toBe("string");
+      expect(BLOG_CLUSTER_ORDER).toContain(data.cluster);
       expect(data.cta).toEqual(
         expect.objectContaining({
           title: expect.any(String),

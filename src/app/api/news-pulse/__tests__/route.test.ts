@@ -2,15 +2,15 @@
  * @jest-environment node
  */
 import { GET } from "../route";
+import {
+  NEWS_FEEDS,
+  SOURCE_META,
+  type NewsFeedId,
+} from "@/lib/news-pulse-sources";
 
-const FEED_URLS = {
-  atlantic: "https://www.theatlantic.com/feed/all/",
-  nyt: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
-  guardian: "https://www.theguardian.com/world/rss",
-  bbc: "https://feeds.bbci.co.uk/news/rss.xml",
-  npr: "https://feeds.npr.org/1001/rss.xml",
-  wapo: "https://feeds.washingtonpost.com/rss/world",
-} as const;
+const FEED_URLS = Object.fromEntries(
+  NEWS_FEEDS.map((feed) => [feed.id, feed.url]),
+) as Record<NewsFeedId, string>;
 
 const originalFetch = global.fetch;
 const mockFetch = jest.fn<ReturnType<typeof fetch>, Parameters<typeof fetch>>();
@@ -64,7 +64,7 @@ function makeAtomFeed({
       <title>The Atlantic</title>
       <entry>
         <title type="html">${title}</title>
-        <link rel="alternate" href="${link}"></link>
+        <link rel="alternate" href="${link}" />
         ${summary ? `<summary type="html">${summary}</summary>` : ""}
         ${content ? `<content type="html">${content}</content>` : ""}
         ${category ? `<category term="${category}" />` : ""}
@@ -167,7 +167,7 @@ describe("GET /api/news-pulse", () => {
     });
   });
 
-  it("still parses RSS feeds from existing outlets", async () => {
+  it("still parses feeds into the shared article shape and metadata", async () => {
     installFetchMock(buildFeedMap());
 
     const response = await GET();
@@ -188,10 +188,23 @@ describe("GET /api/news-pulse", () => {
         }),
       ]),
     );
+
+    for (const article of body.articles as Array<{ source: NewsFeedId; sourceName: string; sourceColor: string }>) {
+      expect(article.sourceName).toBe(SOURCE_META[article.source].name);
+      expect(article.sourceColor).toBe(SOURCE_META[article.source].color);
+    }
   });
 
-  it("parses The Atlantic Atom feed into the shared article shape", async () => {
-    installFetchMock(buildFeedMap());
+  it("parses The Atlantic Atom feed with markup stripped and entities decoded", async () => {
+    installFetchMock(buildFeedMap({
+      [FEED_URLS.atlantic]: makeAtomFeed({
+        title: "AT&amp;T <em>merger</em> update",
+        link: "https://www.theatlantic.com/business/archive/2026/04/sample-story/",
+        summary: "Markets <strong>watch</strong> Tom &amp; Jerry",
+        updated: "2026-04-03T14:20:09-04:00",
+        category: "Business",
+      }),
+    }));
 
     const response = await GET();
     const body = await response.json();
@@ -204,11 +217,9 @@ describe("GET /api/news-pulse", () => {
       expect.objectContaining({
         source: "atlantic",
         sourceName: "The Atlantic",
-        title: "Atlantic Headline",
-        link: "https://www.theatlantic.com/technology/2026/04/sample-story/",
-        description: "Atlantic summary",
-        category: "Technology",
-        pubDate: "2026-04-03T14:15:00-04:00",
+        title: "AT&T merger update",
+        description: "Markets watch Tom & Jerry",
+        category: "Business",
       }),
     );
   });
@@ -224,8 +235,32 @@ describe("GET /api/news-pulse", () => {
 
     expect(response.status).toBe(200);
     expect(body.articles).toHaveLength(5);
-    expect(body.articles.find((article: { source: string }) => article.source === "atlantic")).toBeUndefined();
+    expect(
+      body.articles.find((article: { source: string }) => article.source === "atlantic"),
+    ).toBeUndefined();
     expect(body.errors).toContain("The Atlantic: returned no usable entries");
+  });
+
+  it("drops malformed links and records the feed as degraded", async () => {
+    installFetchMock(buildFeedMap({
+      [FEED_URLS.npr]: makeRssFeed({
+        title: "NPR Headline",
+        link: "/not-absolute",
+        description: "NPR summary",
+        pubDate: "Fri, 03 Apr 2026 15:30:00 GMT",
+        category: "Politics",
+      }),
+    }));
+
+    const response = await GET();
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.articles).toHaveLength(5);
+    expect(
+      body.articles.find((article: { source: string }) => article.source === "npr"),
+    ).toBeUndefined();
+    expect(body.errors).toContain("NPR: returned no usable entries");
   });
 
   it("returns partial success when feed failures and degraded feeds are mixed", async () => {
@@ -251,4 +286,19 @@ describe("GET /api/news-pulse", () => {
       "BBC: network down",
     ]);
   });
+
+  it("returns a 503 with a structured message when every feed fails", async () => {
+    installFetchMock(
+      Object.fromEntries(NEWS_FEEDS.map((feed) => [feed.url, new Error("network down")])),
+    );
+
+    const response = await GET();
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+    expect(body.articles).toEqual([]);
+    expect(body.message).toMatch(/No usable headlines came through/i);
+    expect(body.errors).toHaveLength(NEWS_FEEDS.length);
+  });
 });
+

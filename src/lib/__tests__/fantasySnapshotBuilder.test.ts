@@ -1,39 +1,20 @@
 /**
  * @jest-environment node
  */
-import { FANTASY_SNAPSHOT_SCHEMA_VERSION, FantasySnapshot } from "@/lib/fantasy";
+import { FANTASY_SNAPSHOT_SCHEMA_VERSION } from "@/lib/fantasy";
 import { buildFantasySnapshot } from "@/lib/fantasySnapshotBuilder";
 
-function countOverallPositionMismatches(snapshot: FantasySnapshot): number {
-  const overallById = new Map(snapshot.overall.map((player) => [player.id, player]));
-  let mismatches = 0;
-
-  for (const position of ["QB", "RB", "WR", "TE", "K", "DST"] as const) {
-    for (const player of snapshot.positions[position]) {
-      const overallPlayer = overallById.get(player.id);
-
-      if (
-        !overallPlayer ||
-        overallPlayer.projectedPoints !== player.projectedPoints ||
-        overallPlayer.positionRank !== player.positionRank
-      ) {
-        mismatches += 1;
-      }
-    }
-  }
-
-  return mismatches;
-}
-
 describe("fantasySnapshotBuilder", () => {
-  it("publishes complete position availability for every scoring format", () => {
+  it("publishes sourced overall and position availability for every scoring format", () => {
     for (const scoring of ["ppr", "half_ppr", "standard"] as const) {
       const snapshot = buildFantasySnapshot(scoring);
 
       expect(snapshot.schemaVersion).toBe(FANTASY_SNAPSHOT_SCHEMA_VERSION);
+      expect(snapshot.upstreamUpdatedAt).toMatch(/^20\d{2}-/);
       expect(snapshot.sliceMetadata.overall.available).toBe(true);
-      expect(snapshot.sliceMetadata.overall.sourceKind).toBe("derived_overall");
+      expect(snapshot.sliceMetadata.overall.sourceKind).toBe("overall_consensus");
       expect(snapshot.sliceMetadata.overall.rangeKind).toBe("overall");
+      expect(snapshot.sliceMetadata.overall.updatedAt).toBe(snapshot.upstreamUpdatedAt);
       expect(snapshot.sliceMetadata.qb.available).toBe(true);
       expect(snapshot.sliceMetadata.rb.available).toBe(true);
       expect(snapshot.sliceMetadata.wr.available).toBe(true);
@@ -63,40 +44,44 @@ describe("fantasySnapshotBuilder", () => {
     expect(pprSnapshot.positions.DST).toEqual(standardSnapshot.positions.DST);
   });
 
-  it("keeps position ranges and projected points position-specific", () => {
+  it("keeps sourced position ranges and freshness metadata", () => {
     const snapshot = buildFantasySnapshot("standard");
     const topQuarterback = snapshot.positions.QB[0];
 
     expect(snapshot.sliceMetadata.qb.available).toBe(true);
     expect(snapshot.sliceMetadata.qb.rangeKind).toBe("position");
+    expect(snapshot.sliceMetadata.qb.updatedAt).toMatch(/^20\d{2}-/);
     expect(topQuarterback.name).toBe("Josh Allen");
     expect(topQuarterback.positionRank).toBe(1);
     expect(Number(topQuarterback.minRank)).toBeGreaterThan(0);
     expect(Number(topQuarterback.maxRank)).toBeGreaterThanOrEqual(Number(topQuarterback.minRank));
-    expect(topQuarterback.projectedPoints).toBeGreaterThan(300);
   });
 
-  it("keeps player projections and position ranks aligned between overall and position boards", () => {
-    for (const scoring of ["ppr", "half_ppr", "standard"] as const) {
-      const snapshot = buildFantasySnapshot(scoring);
-
-      expect(countOverallPositionMismatches(snapshot)).toBe(0);
-      expect(snapshot.overall.every((player) => !("overallValue" in player))).toBe(true);
-    }
-  });
-
-  it("preserves multi-tier data and derives flex tiers from eligible position boards", () => {
+  it("does not publish synthetic projections, expert rank arrays, or empty adp placeholders", () => {
     const snapshot = buildFantasySnapshot("ppr");
-    const overallTiers = new Set(snapshot.overall.map((player) => player.tier));
-    const flexTiers = new Set(snapshot.positions.FLEX.map((player) => player.tier));
+    const firstOverallPlayer = snapshot.overall[0];
+    const firstPositionPlayer = snapshot.positions.RB[0];
 
-    expect(overallTiers.size).toBeGreaterThan(3);
-    expect(flexTiers.size).toBeGreaterThan(2);
-    expect(snapshot.sliceMetadata.flex.rangeKind).toBe("position");
-    expect(snapshot.positions.FLEX.every((player) => ["RB", "WR", "TE"].includes(player.position))).toBe(true);
+    expect(firstOverallPlayer).toBeDefined();
+    expect("projectedPoints" in firstOverallPlayer).toBe(false);
+    expect("expertRanks" in firstOverallPlayer).toBe(false);
+    expect("adp" in firstOverallPlayer).toBe(false);
+    expect("projectedPoints" in firstPositionPlayer).toBe(false);
+    expect("expertRanks" in firstPositionPlayer).toBe(false);
+    expect("adp" in firstPositionPlayer).toBe(false);
   });
 
-  it("falls back to default overall tier breaks when smooth overall values do not create natural gaps", () => {
+  it("derives flex from the sourced overall board and preserves eligible positions", () => {
+    const snapshot = buildFantasySnapshot("ppr");
+
+    expect(snapshot.sliceMetadata.flex.sourceKind).toBe("derived_flex");
+    expect(snapshot.sliceMetadata.flex.rangeKind).toBe("overall");
+    expect(snapshot.sliceMetadata.flex.updatedAt).toBe(snapshot.sliceMetadata.overall.updatedAt);
+    expect(snapshot.positions.FLEX.every((player) => ["RB", "WR", "TE"].includes(player.position))).toBe(true);
+    expect(snapshot.positions.FLEX[0].averageRank).toBe(1);
+  });
+
+  it("uses the mocked sourced overall board when isolated with synthetic public data", () => {
     const createPlayers = (position: "QB" | "RB" | "WR" | "TE" | "K" | "DST", teamPrefix: string) =>
       Array.from({ length: 20 }, (_, index) => ({
         id: `${position}-${index + 1}`,
@@ -104,11 +89,16 @@ describe("fantasySnapshotBuilder", () => {
         team: `${teamPrefix}${index % 10}`,
         position,
         averageRank: index + 1,
-        projectedPoints: 250 - index,
+        rankEcr: index + 1,
+        rankAverage: index + 1.25,
         standardDeviation: 1,
         minRank: index + 1,
-        maxRank: index + 1,
-        expertRanks: [index + 1],
+        maxRank: index + 2,
+        positionRank: index + 1,
+        tier: Math.floor(index / 5) + 1,
+        lastUpdated: "2026-04-15T15:29:20.000Z",
+        projectedPoints: 0,
+        expertRanks: [],
       }));
 
     const syntheticPositionData = {
@@ -119,25 +109,30 @@ describe("fantasySnapshotBuilder", () => {
       K: createPlayers("K", "K"),
       DST: createPlayers("DST", "D"),
     };
+    const syntheticOverall = [
+      ...syntheticPositionData.RB,
+      ...syntheticPositionData.WR,
+      ...syntheticPositionData.QB,
+      ...syntheticPositionData.TE,
+      ...syntheticPositionData.K,
+      ...syntheticPositionData.DST,
+    ].map((player, index) => ({
+      ...player,
+      averageRank: index + 1,
+      rankEcr: index + 1,
+      rankAverage: index + 1.25,
+    }));
 
     jest.resetModules();
     jest.doMock("@/lib/fantasyPositionData", () => ({
+      getFantasyOverallData: () => syntheticOverall,
       getFantasyPositionData: (position: keyof typeof syntheticPositionData) =>
         syntheticPositionData[position] ?? [],
-    }));
-    jest.doMock("@/lib/overallValueCalculator", () => ({
-      calculateOverallRankings: (players: typeof syntheticPositionData.QB) =>
-        [...players]
-          .sort((left, right) => Number(left.averageRank) - Number(right.averageRank))
-          .map((player, index) => ({
-            player,
-            overallValue: 500 - index * 2,
-            overallRank: index + 1,
-            positionValue: 1,
-            formatAdjustment: 1,
-            scarcityBonus: 1,
-            originalRank: Number(player.averageRank),
-          })),
+      getFantasyPositionDataMetadata: () => ({
+        generatedAt: "2026-04-15T16:00:00.000Z",
+        source: "mock",
+        upstreamUpdatedAt: "2026-04-15T15:29:20.000Z",
+      }),
     }));
 
     try {
@@ -146,15 +141,14 @@ describe("fantasySnapshotBuilder", () => {
           buildFantasySnapshot: buildSyntheticFantasySnapshot,
         } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
         const snapshot = buildSyntheticFantasySnapshot("ppr");
-        const overallTiers = new Set(snapshot.overall.map((player) => player.tier));
 
-        expect(snapshot.sliceMetadata.overall.sourceKind).toBe("derived_overall");
-        expect(overallTiers.size).toBeGreaterThan(3);
-        expect(snapshot.overall.every((player) => !("overallValue" in player))).toBe(true);
+        expect(snapshot.sliceMetadata.overall.sourceKind).toBe("overall_consensus");
+        expect(snapshot.overall[0].id).toBe("RB-1");
+        expect(snapshot.positions.FLEX[0].averageRank).toBe(1);
+        expect(snapshot.sliceMetadata.flex.updatedAt).toBe("2026-04-15T15:29:20.000Z");
       });
     } finally {
       jest.dontMock("@/lib/fantasyPositionData");
-      jest.dontMock("@/lib/overallValueCalculator");
       jest.resetModules();
     }
   });

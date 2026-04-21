@@ -135,6 +135,15 @@ describe("MBAJobsClient", () => {
     expect(
       screen.getByText(/Manual-only targets stay separate in Manual checks below\./i)
     ).toBeVisible();
+    const trackedCompaniesToggle = screen.getByRole("button", {
+      name: /Tracked company feeds/i,
+    });
+    expect(trackedCompaniesToggle).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByRole("button", { name: "Stripe" })).not.toBeInTheDocument();
+
+    fireEvent.click(trackedCompaniesToggle);
+
+    expect(trackedCompaniesToggle).toHaveAttribute("aria-expanded", "true");
 
     const fintechGroup = screen.getByTestId("tracked-companies-fintech");
     const startupGroup = screen.getByTestId("tracked-companies-startup");
@@ -151,6 +160,7 @@ describe("MBAJobsClient", () => {
     ).length;
     const startupToggle = within(startupGroup).getByRole("button", { name: /Startup/i });
     const atlassianButton = within(bigTechGroup).getByRole("button", { name: "Atlassian" });
+    const atlassianDot = atlassianButton.querySelector("span");
 
     expect(within(fintechGroup).getByRole("button", { name: "Stripe" })).toBeVisible();
     expect(within(startupGroup).getByRole("button", { name: "OpenAI" })).toBeVisible();
@@ -166,6 +176,10 @@ describe("MBAJobsClient", () => {
     ).not.toBeInTheDocument();
     expect(atlassianButton).toHaveStyle(
       "background: color-mix(in srgb, var(--home-paper-alt) 78%, white)"
+    );
+    expect(atlassianDot).not.toBeNull();
+    expect(atlassianDot).toHaveStyle(
+      "background: color-mix(in srgb, var(--home-ink) 68%, var(--home-stone) 32%)"
     );
     expect(chipRail).toHaveClass("flex-wrap");
     expect(chipRail).not.toHaveClass("shrink-0");
@@ -225,6 +239,49 @@ describe("MBAJobsClient", () => {
 
     expect(mockPush).toHaveBeenLastCalledWith(
       "/mba-internship-notifications?q=pmm",
+      { scroll: false }
+    );
+  });
+
+  it("hydrates location from the URL and filters jobs independently from keyword search", () => {
+    currentSearchParams = new URLSearchParams("q=finance&location=remote");
+
+    mockUseMBAJobs.mockReturnValue(buildHookValue({
+      jobs: [
+        buildJob({
+          id: "remote-finance",
+          title: "Remote Finance Manager",
+          location: "Remote US",
+          roleType: "full-time",
+          roleFamilies: ["finance"],
+          snippet: "Remote finance role.",
+        }),
+        buildJob({
+          id: "new-york-finance",
+          title: "New York Finance Manager",
+          location: "New York, NY",
+          roleType: "full-time",
+          roleFamilies: ["finance"],
+          snippet: "NY finance role.",
+        }),
+      ],
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByLabelText("Search roles")).toHaveValue("finance");
+    expect(screen.getByLabelText("Filter by location")).toHaveValue("remote");
+    expect(screen.getByRole("tab", { name: "Remote · 1" })).toBeVisible();
+    expect(screen.getByRole("tab", { name: "New York · 1" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Remote Finance Manager" })).toBeVisible();
+    expect(
+      screen.queryByRole("heading", { name: "New York Finance Manager" })
+    ).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("tab", { name: "New York · 1" }));
+
+    expect(mockPush).toHaveBeenLastCalledWith(
+      "/mba-internship-notifications?q=finance&location=New+York",
       { scroll: false }
     );
   });
