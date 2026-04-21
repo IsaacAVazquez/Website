@@ -99,6 +99,18 @@ export const Footer = ({ variant = "full" }: FooterProps) => {
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm footer-home-text">
               <span>{new Date().getFullYear()}</span>
               <Link
+                href="/now"
+                className="transition-colors hover:text-[var(--home-ink)]"
+              >
+                Now
+              </Link>
+              <Link
+                href="/changelog"
+                className="transition-colors hover:text-[var(--home-ink)]"
+              >
+                Changelog
+              </Link>
+              <Link
                 href="/accessibility"
                 className="transition-colors hover:text-[var(--home-ink)]"
               >
