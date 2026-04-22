@@ -128,7 +128,7 @@ export function AllocationChart({ holdings }: Props) {
           <div
             ref={tooltipRef}
             style={{ display: "none", position: "absolute", pointerEvents: "none" }}
-            className="px-2 py-1.5 rounded text-xs bg-[var(--neutral-900)] text-white shadow-lg whitespace-nowrap leading-relaxed"
+            className="px-2 py-1.5 rounded text-xs bg-[var(--home-ink)] text-[var(--home-paper)] shadow-lg whitespace-nowrap leading-relaxed"
           />
         </div>
 

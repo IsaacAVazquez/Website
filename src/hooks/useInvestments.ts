@@ -11,11 +11,22 @@ import type { PortfolioSnapshot } from "@/components/investments/PortfolioPerfor
 
 const STORAGE_KEY = "portfolio_holdings";
 const SNAPSHOTS_KEY = "portfolio_snapshots";
+const QUOTES_CACHE_KEY = "portfolio_quotes_cache";
 const MAX_SNAPSHOTS = 365;
+const QUOTE_CACHE_TTL_MS = 5 * 60 * 1000;
 const PARTIAL_FALLBACK_WARNING =
   "Some live prices are temporarily unavailable. Portfolio totals are using your saved cost basis where needed.";
 
 // ─── localStorage helpers ────────────────────────────────────────────────────
+
+function safeWrite(key: string, value: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Quota exceeded or storage disabled — fail silently; callers degrade gracefully.
+  }
+}
 
 function loadHoldings(): PortfolioHolding[] {
   if (typeof window === "undefined") return [];
@@ -28,8 +39,7 @@ function loadHoldings(): PortfolioHolding[] {
 }
 
 function saveHoldings(holdings: PortfolioHolding[]): void {
-  if (typeof window === "undefined") return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(holdings));
+  safeWrite(STORAGE_KEY, JSON.stringify(holdings));
 }
 
 function loadSnapshots(): PortfolioSnapshot[] {
@@ -59,7 +69,53 @@ function saveSnapshot(snapshot: PortfolioSnapshot): void {
   if (typeof window === "undefined") return;
   const existing = loadSnapshots();
   const updated = upsertSnapshots(existing, snapshot);
-  localStorage.setItem(SNAPSHOTS_KEY, JSON.stringify(updated));
+  safeWrite(SNAPSHOTS_KEY, JSON.stringify(updated));
+}
+
+interface CachedQuotes {
+  timestamp: number;
+  quotes: StockQuote[];
+}
+
+function loadCachedQuotes(): {
+  quotes: Map<string, StockQuote>;
+  fetchedAt: Date;
+} | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(QUOTES_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as CachedQuotes;
+    if (
+      !parsed ||
+      typeof parsed.timestamp !== "number" ||
+      !Array.isArray(parsed.quotes)
+    ) {
+      return null;
+    }
+    if (Date.now() - parsed.timestamp > QUOTE_CACHE_TTL_MS) {
+      return null;
+    }
+    const map = new Map<string, StockQuote>();
+    for (const q of parsed.quotes) {
+      if (q && typeof q.symbol === "string") map.set(q.symbol, q);
+    }
+    return { quotes: map, fetchedAt: new Date(parsed.timestamp) };
+  } catch {
+    return null;
+  }
+}
+
+function saveCachedQuotes(quotes: Map<string, StockQuote>): void {
+  const payload: CachedQuotes = {
+    timestamp: Date.now(),
+    quotes: Array.from(quotes.values()),
+  };
+  safeWrite(QUOTES_CACHE_KEY, JSON.stringify(payload));
+}
+
+function symbolKey(holdings: PortfolioHolding[]): string {
+  return Array.from(new Set(holdings.map((h) => h.symbol))).sort().join(",");
 }
 
 // ─── Quote fetching with retry ───────────────────────────────────────────────
@@ -195,12 +251,24 @@ export function useInvestments(): UseInvestmentsReturn {
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [snapshots, setSnapshots] = useState<PortfolioSnapshot[]>([]);
   const isMounted = useRef(true);
+  const fetchedSymbolKeyRef = useRef<string>("");
 
-  // Hydrate from localStorage on mount
+  // Hydrate from localStorage on mount — including cached quotes for instant paint
   useEffect(() => {
     isMounted.current = true;
-    setHoldings(loadHoldings());
+    const initial = loadHoldings();
+    setHoldings(initial);
     setSnapshots(loadSnapshots());
+    const cached = loadCachedQuotes();
+    if (cached && cached.quotes.size > 0) {
+      setQuotes(cached.quotes);
+      setLastUpdated(cached.fetchedAt);
+      // Mark this symbol set as already fetched so the symbol-diff effect
+      // below won't immediately refetch if the cache covers current holdings.
+      if (initial.every((h) => cached.quotes.has(h.symbol))) {
+        fetchedSymbolKeyRef.current = symbolKey(initial);
+      }
+    }
     return () => { isMounted.current = false; };
   }, []);
 
@@ -218,6 +286,7 @@ export function useInvestments(): UseInvestmentsReturn {
         );
 
         setQuotes(q);
+        saveCachedQuotes(q);
         if (canPersistSnapshot) {
           setLastUpdated(new Date());
         }
@@ -247,8 +316,13 @@ export function useInvestments(): UseInvestmentsReturn {
     }
   }, []);
 
-  // Fetch quotes whenever holdings change
+  // Fetch quotes only when the *set of symbols* changes — edits to shares/cost
+  // on existing holdings don't require a refetch, since derived values recompute
+  // from the existing quotes map.
   useEffect(() => {
+    const key = symbolKey(holdings);
+    if (key === fetchedSymbolKeyRef.current) return;
+    fetchedSymbolKeyRef.current = key;
     fetchAllQuotes(holdings);
   }, [holdings, fetchAllQuotes]);
 
