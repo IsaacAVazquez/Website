@@ -3,6 +3,7 @@
 import { useMemo, useState, type CSSProperties } from "react";
 import { Player, TeamRoster } from "@/types";
 import { useDebounce } from "@/hooks/useDebounce";
+import { formatRange, formatRankValue, getPositionTone } from "@/lib/fantasyUtils";
 
 interface DraftBoardProps {
   players: Player[];
@@ -79,66 +80,6 @@ function getFilterStyle(active: boolean): CSSProperties {
     background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
     color: "var(--home-ink)",
   };
-}
-
-function getPositionTone(position: string): CSSProperties {
-  switch (position) {
-    case "QB":
-      return {
-        background: "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
-      };
-    case "RB":
-      return {
-        background: "color-mix(in srgb, var(--color-success) 14%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--color-success) 24%, var(--home-rule))",
-      };
-    case "WR":
-      return {
-        background: "color-mix(in srgb, var(--home-acid) 26%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-acid) 34%, var(--home-rule))",
-      };
-    case "TE":
-      return {
-        background: "color-mix(in srgb, var(--color-warning) 18%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--color-warning) 26%, var(--home-rule))",
-      };
-    case "K":
-      return {
-        background: "color-mix(in srgb, var(--home-moss) 22%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-moss) 32%, var(--home-rule))",
-      };
-    case "DST":
-      return {
-        background: "color-mix(in srgb, var(--home-stone) 50%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-stone) 58%, var(--home-rule))",
-      };
-    default:
-      return {
-        background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
-        borderColor: "var(--home-rule)",
-      };
-  }
-}
-
-function formatRankValue(value: number | string | undefined): string {
-  if (typeof value === "number") {
-    if (!Number.isFinite(value)) {
-      return "--";
-    }
-
-    return Number.isInteger(value) ? value.toString() : value.toFixed(1);
-  }
-
-  return value?.trim() ? value : "--";
-}
-
-function formatRange(player: Player): string {
-  if (player.minRank === undefined || player.maxRank === undefined) {
-    return "--";
-  }
-
-  return `${formatRankValue(player.minRank)} to ${formatRankValue(player.maxRank)}`;
 }
 
 export function DraftBoard({

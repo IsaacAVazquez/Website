@@ -19,18 +19,54 @@ describe("fantasy-state", () => {
     ).toEqual({
       position: "rb",
       scoring: "half_ppr",
+      view: "list",
     });
   });
 
-  it("builds canonical fantasy urls", () => {
+  it("reads the tier view flag", () => {
+    expect(
+      normalizeFantasyState({
+        position: "qb",
+        scoring: "ppr",
+        view: "tiers",
+      })
+    ).toEqual({
+      position: "qb",
+      scoring: "ppr",
+      view: "tiers",
+    });
+  });
+
+  it("ignores unknown view values", () => {
+    expect(
+      normalizeFantasyState({
+        position: "qb",
+        scoring: "ppr",
+        view: "invalid",
+      }).view
+    ).toBe("list");
+  });
+
+  it("builds canonical fantasy urls without view by default", () => {
     expect(
       buildFantasyHref(
         {
           position: "qb",
           scoring: "standard",
+          view: "list",
         },
         new URLSearchParams("ref=test")
       )
     ).toBe("/fantasy-football?ref=test&position=qb&scoring=standard");
+  });
+
+  it("includes view=tiers when enabled", () => {
+    expect(
+      buildFantasyHref({
+        position: "rb",
+        scoring: "ppr",
+        view: "tiers",
+      })
+    ).toBe("/fantasy-football?position=rb&scoring=ppr&view=tiers");
   });
 });

@@ -6,7 +6,7 @@ import path from "path";
 
 describe("fantasy workflow", () => {
   it("targets the published fantasy snapshot artifacts instead of legacy rb tiers output", () => {
-    const workflowPath = path.join(process.cwd(), ".github", "workflows", "update-fantasy-rb.yml");
+    const workflowPath = path.join(process.cwd(), ".github", "workflows", "update-fantasy.yml");
     const workflow = readFileSync(workflowPath, "utf8");
 
     expect(workflow).toContain("npm run update:fantasy");

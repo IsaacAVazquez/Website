@@ -136,10 +136,10 @@ describe('groupPlayersByExistingTiers', () => {
     );
   });
 
-  it('handles players with string averageRank', () => {
+  it('averages numeric averageRank correctly within a tier', () => {
     const players = [
-      { ...makePlayer('a', 0, 1), averageRank: '1.5' as any },
-      { ...makePlayer('b', 0, 1), averageRank: '3.0' as any },
+      { ...makePlayer('a', 0, 1), averageRank: 1.5 },
+      { ...makePlayer('b', 0, 1), averageRank: 3.0 },
     ];
     const tiers = groupPlayersByExistingTiers(players);
     expect(tiers[0].avgRank).toBeCloseTo(2.25);

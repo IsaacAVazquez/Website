@@ -11,10 +11,18 @@ import {
   FANTASY_SCORING_LABELS,
   FantasyRoutePosition,
   FantasyRouteScoring,
-  FantasySnapshotSliceMetadata,
   getFantasyPlayerSearchText,
   getFantasyWeekLabel,
 } from "@/lib/fantasy";
+import {
+  formatOwnership,
+  formatRange,
+  formatRankValue,
+  formatUpdatedAt,
+  getPositionTone,
+  getSourceKindLabel,
+} from "@/lib/fantasyUtils";
+import { TierBreakdown } from "@/components/fantasy";
 import { Player } from "@/types";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
 
@@ -37,102 +45,6 @@ const noMotion = {
 
 interface FantasyFootballClientProps {
   initialState: FantasySearchState;
-}
-
-function formatUpdatedAt(timestamp: string | null | undefined): string {
-  if (!timestamp) {
-    return "Unavailable";
-  }
-
-  return new Intl.DateTimeFormat("en-US", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(timestamp));
-}
-
-function formatRankValue(value: number | string | undefined): string {
-  if (typeof value === "number") {
-    if (!Number.isFinite(value)) {
-      return "--";
-    }
-
-    return Number.isInteger(value) ? value.toString() : value.toFixed(1);
-  }
-
-  return value?.trim() ? value : "--";
-}
-
-function formatRange(player: Player): string {
-  if (player.minRank === undefined || player.maxRank === undefined) {
-    return "--";
-  }
-
-  return `${formatRankValue(player.minRank)} to ${formatRankValue(player.maxRank)}`;
-}
-
-function formatOwnership(ownership: number | undefined): string {
-  if (!Number.isFinite(ownership)) {
-    return "Not listed";
-  }
-
-  return `${ownership?.toFixed(1)}% rostered`;
-}
-
-function getSourceKindLabel(sourceKind: FantasySnapshotSliceMetadata["sourceKind"] | undefined): string {
-  switch (sourceKind) {
-    case "overall_consensus":
-      return "Overall consensus";
-    case "position_consensus":
-      return "Position consensus";
-    case "shared_position_consensus":
-      return "Shared consensus";
-    case "derived_flex":
-      return "Derived flex board";
-    case "derived_overall":
-      return "Derived overall board";
-    default:
-      return "Unavailable";
-  }
-}
-
-function getPositionTone(position: string): CSSProperties {
-  switch (position) {
-    case "QB":
-      return {
-        background: "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
-      };
-    case "RB":
-      return {
-        background: "color-mix(in srgb, var(--color-success) 14%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--color-success) 24%, var(--home-rule))",
-      };
-    case "WR":
-      return {
-        background: "color-mix(in srgb, var(--home-acid) 26%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-acid) 34%, var(--home-rule))",
-      };
-    case "TE":
-      return {
-        background: "color-mix(in srgb, var(--color-warning) 18%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--color-warning) 26%, var(--home-rule))",
-      };
-    case "K":
-      return {
-        background: "color-mix(in srgb, var(--home-moss) 22%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-moss) 32%, var(--home-rule))",
-      };
-    case "DST":
-      return {
-        background: "color-mix(in srgb, var(--home-stone) 50%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-stone) 58%, var(--home-rule))",
-      };
-    default:
-      return {
-        background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
-        borderColor: "var(--home-rule)",
-      };
-  }
 }
 
 function getPillStyle(active: boolean, unavailable = false): CSSProperties {
@@ -203,9 +115,14 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
   );
 
   useEffect(() => {
+    const urlViewMatches =
+      (searchParams.get("view") === "tiers" && routeState.view === "tiers") ||
+      (searchParams.get("view") !== "tiers" && routeState.view === "list");
+
     if (
       searchParams.get("position") === routeState.position &&
-      searchParams.get("scoring") === routeState.scoring
+      searchParams.get("scoring") === routeState.scoring &&
+      urlViewMatches
     ) {
       return;
     }
@@ -357,14 +274,10 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                             type="button"
                             role="tab"
                             aria-selected={active}
-                            aria-disabled={unavailable}
-                            onClick={() => {
-                              if (!unavailable) {
-                                updateRouteState({ position });
-                              }
-                            }}
+                            disabled={unavailable}
+                            onClick={() => updateRouteState({ position })}
                             title={unavailable ? positionSliceMetadata?.reason : undefined}
-                            className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+                            className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 disabled:cursor-not-allowed disabled:opacity-70"
                             style={getPillStyle(active, unavailable)}
                           >
                             <span>{FANTASY_POSITION_LABELS[position]}</span>
@@ -445,33 +358,74 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               </div>
             </article>
 
-            <article className="home-card p-5 sm:p-6">
-              <div className="flex flex-col gap-2 border-b pb-4 sm:flex-row sm:items-end sm:justify-between" style={{ borderColor: "var(--home-rule)" }}>
+            <article className="home-card p-5 sm:p-6" aria-labelledby="rankings-board-heading">
+              <div className="flex flex-col gap-3 border-b pb-4 sm:flex-row sm:items-end sm:justify-between" style={{ borderColor: "var(--home-rule)" }}>
                 <div>
                   <p className="home-kicker mb-1">Rankings Board</p>
-                  <h2 className="text-2xl font-semibold">{FANTASY_POSITION_LABELS[routeState.position]} rankings</h2>
+                  <h2 id="rankings-board-heading" className="text-2xl font-semibold">
+                    {FANTASY_POSITION_LABELS[routeState.position]} rankings
+                  </h2>
                 </div>
-                <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                  {isLoading
-                    ? "Loading players..."
-                    : currentSliceUnavailable
-                      ? "Unavailable"
-                      : `${filteredPlayers.length} players`}
-                </p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <div
+                    className="flex rounded-full border p-1 text-sm font-semibold"
+                    style={{
+                      borderColor: "var(--home-rule)",
+                      background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+                    }}
+                    role="radiogroup"
+                    aria-label="Rankings view"
+                  >
+                    {(["list", "tiers"] as const).map((option) => {
+                      const active = routeState.view === option;
+                      return (
+                        <button
+                          key={option}
+                          type="button"
+                          role="radio"
+                          aria-checked={active}
+                          onClick={() => updateRouteState({ view: option })}
+                          disabled={currentSliceUnavailable}
+                          className="inline-flex min-h-[40px] items-center rounded-full px-3.5 py-1.5 text-sm transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+                          style={
+                            active
+                              ? { background: "var(--home-ink)", color: "var(--home-paper)" }
+                              : { color: "var(--home-ink-muted)" }
+                          }
+                        >
+                          {option === "list" ? "List" : "Tiers"}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <p
+                    aria-live="polite"
+                    className="text-sm"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
+                    {isLoading
+                      ? "Loading players..."
+                      : currentSliceUnavailable
+                        ? "Unavailable"
+                        : `${filteredPlayers.length} players shown`}
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-4 grid gap-3">
+              <div className="mt-4">
                 {isLoading ? (
-                  Array.from({ length: 10 }).map((_, index) => (
-                    <div
-                      key={`loading-${index}`}
-                      className="h-[104px] animate-pulse rounded-[1.5rem] border"
-                      style={{
-                        borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
-                      }}
-                    />
-                  ))
+                  <div className="grid gap-3">
+                    {Array.from({ length: 10 }).map((_, index) => (
+                      <div
+                        key={`loading-${index}`}
+                        className="h-[104px] animate-pulse rounded-[1.5rem] border"
+                        style={{
+                          borderColor: "var(--home-rule)",
+                          background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+                        }}
+                      />
+                    ))}
+                  </div>
                 ) : currentSliceUnavailable ? (
                   <div
                     className="rounded-[1.5rem] border px-5 py-12 text-center"
@@ -501,55 +455,64 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       Clear the search or switch the board to see more names.
                     </p>
                   </div>
+                ) : routeState.view === "tiers" ? (
+                  <TierBreakdown
+                    players={filteredPlayers}
+                    position={routeState.position}
+                    getPublishedRank={(player) => getPublishedBoardRank(player, routeState.position)}
+                  />
                 ) : (
-                  filteredPlayers.map((player) => (
-                    <div
-                      key={player.id}
-                      className="grid gap-4 rounded-[1.5rem] border px-4 py-4 sm:grid-cols-[72px_minmax(0,1.55fr)_110px_140px_140px] sm:items-center"
-                      style={{
-                        borderColor: "var(--home-rule)",
-                        background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",
-                      }}
-                    >
-                      <div>
-                        <p className="home-kicker mb-1">Rank</p>
-                        <p className="text-2xl font-semibold">{getPublishedBoardRank(player, routeState.position)}</p>
-                      </div>
-
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <p className="truncate text-base font-semibold">{player.name}</p>
-                          <span
-                            className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
-                            style={getPositionTone(player.position)}
-                          >
-                            {player.position}
-                          </span>
+                  <ul role="list" className="grid gap-3">
+                    {filteredPlayers.map((player) => (
+                      <li
+                        key={player.id}
+                        className="grid gap-4 rounded-[1.5rem] border px-4 py-4 sm:grid-cols-[72px_minmax(0,1.55fr)_110px_140px_140px] sm:items-center"
+                        style={{
+                          borderColor: "var(--home-rule)",
+                          background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",
+                        }}
+                        aria-label={`${player.name}, ${player.position}, rank ${getPublishedBoardRank(player, routeState.position)}`}
+                      >
+                        <div>
+                          <p className="home-kicker mb-1">Rank</p>
+                          <p className="text-2xl font-semibold">{getPublishedBoardRank(player, routeState.position)}</p>
                         </div>
-                        <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                          {getPlayerDescriptor(player, routeState.position)}
-                        </p>
-                      </div>
 
-                      <div>
-                        <p className="home-kicker mb-1">Tier</p>
-                        <p className="text-sm font-semibold">{player.tier ? `Tier ${player.tier}` : "Not listed"}</p>
-                      </div>
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="truncate text-base font-semibold">{player.name}</p>
+                            <span
+                              className="inline-flex min-h-[32px] items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]"
+                              style={getPositionTone(player.position)}
+                            >
+                              {player.position}
+                            </span>
+                          </div>
+                          <p className="mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                            {getPlayerDescriptor(player, routeState.position)}
+                          </p>
+                        </div>
 
-                      <div>
-                        <p className="home-kicker mb-1">Expert range</p>
-                        <p className="text-sm font-semibold">{formatRange(player)}</p>
-                      </div>
+                        <div>
+                          <p className="home-kicker mb-1">Tier</p>
+                          <p className="text-sm font-semibold">{player.tier ? `Tier ${player.tier}` : "Not listed"}</p>
+                        </div>
 
-                      <div>
-                        <p className="home-kicker mb-1">Availability</p>
-                        <p className="text-sm font-semibold">{formatOwnership(player.ownership)}</p>
-                        <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
-                          {player.byeWeek ? `Bye ${player.byeWeek}` : "Bye not listed"}
-                        </p>
-                      </div>
-                    </div>
-                  ))
+                        <div>
+                          <p className="home-kicker mb-1">Expert range</p>
+                          <p className="text-sm font-semibold">{formatRange(player)}</p>
+                        </div>
+
+                        <div>
+                          <p className="home-kicker mb-1">Availability</p>
+                          <p className="text-sm font-semibold">{formatOwnership(player.ownership)}</p>
+                          <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                            {player.byeWeek ? `Bye ${player.byeWeek}` : "Bye not listed"}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
             </article>

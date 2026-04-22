@@ -17,8 +17,8 @@ function generateCacheKey(players: Player[], numberOfTiers: number, scoringForma
   if (players.length === 0) return `empty:${numberOfTiers}:${scoringFormat || 'default'}`;
   
   const sortedPlayers = [...players].sort((a, b) => {
-    const aRank = typeof a.averageRank === 'string' ? parseFloat(a.averageRank) : a.averageRank;
-    const bRank = typeof b.averageRank === 'string' ? parseFloat(b.averageRank) : b.averageRank;
+    const aRank = a.averageRank;
+    const bRank = b.averageRank;
     return aRank - bRank;
   });
   
@@ -104,8 +104,8 @@ export function calculateUnifiedTiers(
 
   // Sort players by average rank first
   const sortedPlayers = [...players].sort((a, b) => {
-    const aRank = typeof a.averageRank === 'string' ? parseFloat(a.averageRank) : a.averageRank;
-    const bRank = typeof b.averageRank === 'string' ? parseFloat(b.averageRank) : b.averageRank;
+    const aRank = a.averageRank;
+    const bRank = b.averageRank;
     return aRank - bRank;
   });
 
@@ -177,8 +177,8 @@ function groupPlayersByExistingTiers(players: Player[]): UnifiedTier[] {
     
     // Sort players within tier by average rank
     tierPlayers.sort((a, b) => {
-      const rankA = typeof a.averageRank === 'string' ? parseFloat(a.averageRank) : a.averageRank;
-      const rankB = typeof b.averageRank === 'string' ? parseFloat(b.averageRank) : b.averageRank;
+      const rankA = a.averageRank;
+      const rankB = b.averageRank;
       return rankA - rankB;
     });
     
@@ -188,7 +188,7 @@ function groupPlayersByExistingTiers(players: Player[]): UnifiedTier[] {
     
     // Calculate average FantasyPros rank for reference
     const fantasyProsRanks = tierPlayers.map(p => {
-      const rank = typeof p.averageRank === 'string' ? parseFloat(p.averageRank) : p.averageRank;
+      const rank = p.averageRank;
       return rank;
     });
     const avgRank = fantasyProsRanks.reduce((sum, rank) => sum + rank, 0) / fantasyProsRanks.length;
@@ -243,7 +243,7 @@ function calculateTiersByValueDrops(
       const tierValues = playerValues.slice(tierStartIdx, index + 1);
       const avgValue = tierValues.reduce((sum, tv) => sum + tv.value, 0) / tierValues.length;
       const ranks = tierValues.map(tv => {
-        const rank = typeof tv.player.averageRank === 'string' ? parseFloat(tv.player.averageRank) : tv.player.averageRank;
+        const rank = tv.player.averageRank;
         return rank;
       });
 
@@ -282,17 +282,14 @@ function calculateTiersByRankGaps(
   let tierStartIdx = 0;
   
   for (let i = 1; i < players.length; i++) {
-    const currentRank = typeof players[i].averageRank === 'string' ? parseFloat(players[i].averageRank) : players[i].averageRank;
-    const prevRank = typeof players[i - 1].averageRank === 'string' ? parseFloat(players[i - 1].averageRank) : players[i - 1].averageRank;
+    const currentRank = players[i].averageRank;
+    const prevRank = players[i - 1].averageRank;
     const rankGap = currentRank - prevRank;
-    
+
     // If gap is large enough or we've hit max tiers, start a new tier
     if (rankGap > gapThreshold && tierNumber < maxTiers) {
       // Finalize current tier with positional ranks
-      const fantasyProsRanks = currentTier.map(p => {
-        const rank = typeof p.averageRank === 'string' ? parseFloat(p.averageRank) : p.averageRank;
-        return rank;
-      });
+      const fantasyProsRanks = currentTier.map((p) => p.averageRank);
       
       tierGroups.push({
         tier: tierNumber,
@@ -316,7 +313,7 @@ function calculateTiersByRankGaps(
   // Add the last tier
   if (currentTier.length > 0) {
     const fantasyProsRanks = currentTier.map(p => {
-      const rank = typeof p.averageRank === 'string' ? parseFloat(p.averageRank) : p.averageRank;
+      const rank = p.averageRank;
       return rank;
     });
     
@@ -343,7 +340,7 @@ function getPlayerValue(
   rank: number
 ): number {
   // Base value from inverse of rank and averageRank
-  const avgRank = typeof player.averageRank === 'string' ? parseFloat(player.averageRank) : (player.averageRank || rank);
+  const avgRank = player.averageRank ?? rank;
   let value = 100 / Math.sqrt(avgRank);
 
   // Adjust by position scarcity

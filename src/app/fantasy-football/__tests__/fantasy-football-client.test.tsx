@@ -138,13 +138,14 @@ describe("FantasyFootballClient", () => {
         initialState={{
           position: "rb",
           scoring: "ppr",
+          view: "list",
         }}
       />
     );
 
     expect(container.firstChild).toHaveClass("home-page");
     expect(screen.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
-    expect(screen.getByRole("tab", { name: /RB/i })).toHaveAttribute("aria-disabled", "false");
+    expect(screen.getByRole("tab", { name: /RB/i })).not.toBeDisabled();
     expect(screen.getByText("Christian McCaffrey")).toBeVisible();
     expect(screen.getAllByText(/Source updated/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/^Proj\. Pts$/)).not.toBeInTheDocument();
@@ -252,6 +253,7 @@ describe("FantasyFootballClient", () => {
         initialState={{
           position: "qb",
           scoring: "standard",
+          view: "list",
         }}
       />
     );
@@ -332,6 +334,7 @@ describe("FantasyFootballClient", () => {
         initialState={{
           position: "rb",
           scoring: "standard",
+          view: "list",
         }}
       />
     );

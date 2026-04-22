@@ -177,13 +177,13 @@ export function groupPlayersByExistingTiers(players: Player[]): TierGroup[] {
     
     // Sort players within tier by average rank
     tierPlayers.sort((a, b) => {
-      const rankA = typeof a.averageRank === 'string' ? parseFloat(a.averageRank) : a.averageRank;
-      const rankB = typeof b.averageRank === 'string' ? parseFloat(b.averageRank) : b.averageRank;
+      const rankA = a.averageRank;
+      const rankB = b.averageRank;
       return rankA - rankB;
     });
     
     const ranks = tierPlayers.map(p => {
-      const rank = typeof p.averageRank === 'string' ? parseFloat(p.averageRank) : p.averageRank;
+      const rank = p.averageRank;
       return rank;
     });
     

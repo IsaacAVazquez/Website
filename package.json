@@ -27,7 +27,6 @@
     "update:spacex-data": "tsx scripts/buildSpaceXSnapshot.ts",
     "update:spacex-images": "tsx scripts/buildSpaceXImageSnapshots.ts",
     "update:fantasy": "tsx scripts/buildFantasyPositionData.ts && tsx scripts/buildFantasySnapshots.ts",
-    "update:fantasy-rb": "tsx scripts/buildFantasyPositionData.ts && tsx scripts/buildFantasySnapshots.ts",
     "update:investments": ".venv/bin/python3 scripts/fetch_investments_data.py && tsx scripts/buildInvestmentsSnapshots.ts",
     "generate:icons": "node scripts/generate-pwa-icons.mjs"
   },
@@ -36,7 +35,6 @@
     "@radix-ui/react-slot": "^1.2.4",
     "@tabler/icons-react": "^3.41.1",
     "@tailwindcss/typography": "^0.5.19",
-    "better-sqlite3": "^12.8.0",
     "cheerio": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -69,7 +67,6 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@types/better-sqlite3": "^7.6.13",
     "@types/d3": "^7.4.3",
     "@types/jest": "^30.0.0",
     "@types/node": "25.5.2",

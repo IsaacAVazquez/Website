@@ -8,13 +8,14 @@ export const metadata = constructMetadata({
   description:
     "Snapshot-backed fantasy football rankings sourced from FantasyPros public consensus pages, with freshness metadata, scoring toggles, and a linked draft assistant.",
   canonicalUrl: "/fantasy-football",
-  dateModified: "2026-04-15",
+  dateModified: "2026-04-21",
 });
 
 interface FantasyFootballPageProps {
   searchParams: Promise<{
     position?: string;
     scoring?: string;
+    view?: string;
   }>;
 }
 

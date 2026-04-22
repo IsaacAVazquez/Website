@@ -6,9 +6,12 @@ import {
   normalizeFantasyRouteScoring,
 } from "@/lib/fantasy";
 
+export type FantasyView = "list" | "tiers";
+
 export interface FantasySearchState {
   position: FantasyRoutePosition;
   scoring: FantasyRouteScoring;
+  view: FantasyView;
 }
 
 type SearchParamInput =
@@ -19,6 +22,7 @@ type SearchParamInput =
 export const DEFAULT_FANTASY_STATE: FantasySearchState = {
   position: "overall",
   scoring: "ppr",
+  view: "list",
 };
 
 function readParam(input: SearchParamInput, key: keyof FantasySearchState): string | null {
@@ -26,7 +30,7 @@ function readParam(input: SearchParamInput, key: keyof FantasySearchState): stri
     return input.get(key);
   }
 
-  const rawValue = input[key];
+  const rawValue = (input as Record<string, string | string[] | undefined | null>)[key];
   if (Array.isArray(rawValue)) {
     return rawValue[0] ?? null;
   }
@@ -34,10 +38,15 @@ function readParam(input: SearchParamInput, key: keyof FantasySearchState): stri
   return rawValue ?? null;
 }
 
+function normalizeFantasyView(value: string | null): FantasyView {
+  return value === "tiers" ? "tiers" : "list";
+}
+
 export function normalizeFantasyState(input: SearchParamInput): FantasySearchState {
   return {
     position: normalizeFantasyRoutePosition(readParam(input, "position")),
     scoring: normalizeFantasyRouteScoring(readParam(input, "scoring")),
+    view: normalizeFantasyView(readParam(input, "view")),
   };
 }
 
@@ -48,5 +57,10 @@ export function buildFantasyHref(
   const params = new URLSearchParams(baseSearchParams ? Array.from(baseSearchParams.entries()) : []);
   params.set("position", state.position);
   params.set("scoring", state.scoring);
+  if (state.view === "tiers") {
+    params.set("view", "tiers");
+  } else {
+    params.delete("view");
+  }
   return `/fantasy-football?${params.toString()}`;
 }
