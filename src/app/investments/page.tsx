@@ -1,5 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { getInvestmentsIndex } from "@/lib/investmentsData";
+import type { InvestmentsIndex } from "@/types/investment";
 import { InvestmentsClient } from "./investments-client";
 import { normalizeInvestmentsState } from "./investments-state";
 
@@ -45,8 +47,19 @@ interface InvestmentsPageProps {
   }>;
 }
 
+async function loadIndexSafely(): Promise<InvestmentsIndex | null> {
+  try {
+    return await getInvestmentsIndex();
+  } catch {
+    return null;
+  }
+}
+
 export default async function InvestmentsPage({ searchParams }: InvestmentsPageProps) {
-  const initialState = normalizeInvestmentsState(await searchParams);
+  const [initialState, index] = await Promise.all([
+    Promise.resolve(normalizeInvestmentsState(await searchParams)),
+    loadIndexSafely(),
+  ]);
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Investments", url: "/investments" },
@@ -79,7 +92,12 @@ export default async function InvestmentsPage({ searchParams }: InvestmentsPageP
           ],
         }}
       />
-      <InvestmentsClient initialState={initialState} />
+      <InvestmentsClient
+        initialState={initialState}
+        datasetLastUpdated={index?.lastUpdated ?? null}
+        datasetSymbolCount={index?.symbols?.length ?? 0}
+        datasetFailedCount={index?.failed?.length ?? 0}
+      />
     </>
   );
 }

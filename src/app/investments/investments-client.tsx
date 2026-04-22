@@ -10,6 +10,7 @@ import {
   fadeInVariants,
   getReducedMotionVariants,
 } from "@/components/investments/animations";
+import { InvestmentsFreshnessBanner } from "@/components/investments/InvestmentsFreshnessBanner";
 import {
   buildInvestmentsHref,
   type InvestmentsSearchState,
@@ -39,9 +40,17 @@ const TABS: { key: InvestmentsView; label: string }[] = [
 
 interface InvestmentsClientProps {
   initialState: InvestmentsSearchState;
+  datasetLastUpdated?: string | null;
+  datasetSymbolCount?: number;
+  datasetFailedCount?: number;
 }
 
-export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
+export function InvestmentsClient({
+  initialState,
+  datasetLastUpdated = null,
+  datasetSymbolCount = 0,
+  datasetFailedCount = 0,
+}: InvestmentsClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { holdings } = useInvestments();
@@ -135,6 +144,12 @@ export function InvestmentsClient({ initialState }: InvestmentsClientProps) {
             I built this to stress-test investment theses in one place. Company snapshots, valuation history, and a portfolio tracker that lives in your browser with no logins or cloud sync.
           </p>
         </motion.div>
+
+        <InvestmentsFreshnessBanner
+          lastUpdated={datasetLastUpdated}
+          symbolCount={datasetSymbolCount}
+          failedCount={datasetFailedCount}
+        />
 
         <div
           className="mb-8 inline-flex flex-wrap gap-2 rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))]/90 p-2 shadow-[var(--shadow-sm)] backdrop-blur"
