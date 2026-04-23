@@ -12,17 +12,13 @@ import {
   getFantasyWeekLabel,
   scoringFormatToRouteScoring,
 } from "@/lib/fantasy";
+import { formatUpdatedAt } from "@/lib/fantasyUtils";
+import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
 
-function formatUpdatedAt(timestamp: string | null | undefined): string {
-  if (!timestamp) {
-    return "Unavailable";
-  }
-
-  return new Intl.DateTimeFormat("en-US", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(timestamp));
-}
+const DRAFT_TRACKER_BREADCRUMBS = [
+  { label: "Fantasy Football", href: "/fantasy-football" },
+  { label: "Draft Assistant", href: "/fantasy-football/draft-tracker", isActive: true },
+];
 
 export function DraftTrackerClient() {
   const {
@@ -60,7 +56,8 @@ export function DraftTrackerClient() {
   return (
     <section className="home-page min-h-screen">
       <div className="home-shell home-section space-y-5 sm:space-y-6">
-        <div className="space-y-4 pt-2">
+        <Breadcrumbs customItems={DRAFT_TRACKER_BREADCRUMBS} className="pt-2" />
+        <div className="space-y-4">
           <div className="space-y-3">
             <p className="home-kicker mb-0">Draft Assistant</p>
             <h1

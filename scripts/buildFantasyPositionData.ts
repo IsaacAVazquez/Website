@@ -30,6 +30,35 @@ function pause(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+async function withRetry<T>(
+  label: string,
+  fn: () => Promise<T>,
+  attempts = 3,
+  backoffMs = 1000
+): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      return await fn();
+    } catch (error) {
+      lastError = error;
+      if (attempt < attempts) {
+        const wait = backoffMs * attempt;
+        console.warn(
+          `[retry] ${label} attempt ${attempt}/${attempts} failed (${
+            error instanceof Error ? error.message : String(error)
+          }). Retrying in ${wait}ms.`
+        );
+        await pause(wait);
+      }
+    }
+  }
+
+  throw lastError instanceof Error
+    ? lastError
+    : new Error(`[retry] ${label} failed after ${attempts} attempts`);
+}
+
 function renderGeneratedModule(
   data: Record<ScoringFormat, FantasyPositionDataset>,
   generatedAt: string
@@ -66,7 +95,9 @@ async function main() {
       continue;
     }
 
-    const board = await fetchFantasyProsPublicConsensusBoard("STANDARD", position);
+    const board = await withRetry(`STANDARD ${position}`, () =>
+      fetchFantasyProsPublicConsensusBoard("STANDARD", position)
+    );
     sharedData[position] = board.players;
     await pause(250);
   }
@@ -75,7 +106,9 @@ async function main() {
   const dataset = {} as Record<ScoringFormat, FantasyPositionDataset>;
 
   for (const scoringFormat of scoringFormats) {
-    const overallBoard = await fetchFantasyProsPublicConsensusBoard(scoringFormat, "OVERALL");
+    const overallBoard = await withRetry(`${scoringFormat} OVERALL`, () =>
+      fetchFantasyProsPublicConsensusBoard(scoringFormat, "OVERALL")
+    );
     await pause(250);
 
     const positions = {} as Record<FantasyPositionDataPosition, Player[]>;
@@ -86,7 +119,9 @@ async function main() {
         continue;
       }
 
-      const board = await fetchFantasyProsPublicConsensusBoard(scoringFormat, position);
+      const board = await withRetry(`${scoringFormat} ${position}`, () =>
+        fetchFantasyProsPublicConsensusBoard(scoringFormat, position)
+      );
       positions[position] = board.players;
       await pause(250);
     }
