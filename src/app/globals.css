@@ -21,7 +21,11 @@
     }
   }
 
-  *:focus {
+  /*
+   * Suppress focus outlines only when the browser indicates pointer/touch
+   * input (no :focus-visible match). Keyboard users always see a ring.
+   */
+  *:focus:not(:focus-visible) {
     outline: none;
   }
 

@@ -17,6 +17,7 @@ import {
   getReducedMotionVariants,
 } from "./animations";
 import { useStockData } from "@/hooks/useStockData";
+import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type {
   CompanyInfo,
@@ -116,6 +117,18 @@ export function StockResearch({
     }
   }, [activeTab, onTabChange, symbol, visibleTabs]);
 
+  const handleCompareTabKeyDown = useTablistKeyboard(
+    TABS,
+    (t) => t.key,
+    (t) => onTabChange(t.key),
+  );
+
+  const handleVisibleTabKeyDown = useTablistKeyboard(
+    visibleTabs,
+    (t) => t.key,
+    (t) => onTabChange(t.key),
+  );
+
   // Compare tab is full-width with no sidebar
   if (resolvedActiveTab === "compare") {
     return (
@@ -125,11 +138,13 @@ export function StockResearch({
           role="tablist"
           aria-label="Research sections"
         >
-          {TABS.map(({ key, label }) => (
+          {TABS.map(({ key, label }, index) => (
             <button
               key={key}
               role="tab"
               aria-selected={resolvedActiveTab === key}
+              tabIndex={resolvedActiveTab === key ? 0 : -1}
+              onKeyDown={(e) => handleCompareTabKeyDown(e, index)}
               onClick={() => onTabChange(key)}
               className={`min-h-[44px] whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
                 resolvedActiveTab === key
@@ -166,11 +181,13 @@ export function StockResearch({
               role="tablist"
               aria-label="Research sections"
             >
-              {visibleTabs.map(({ key, label }) => (
+              {visibleTabs.map(({ key, label }, index) => (
                 <button
                   key={key}
                   role="tab"
                   aria-selected={resolvedActiveTab === key}
+                  tabIndex={resolvedActiveTab === key ? 0 : -1}
+                  onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
                   onClick={() => onTabChange(key)}
                   className={`min-h-[44px] whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
                     resolvedActiveTab === key

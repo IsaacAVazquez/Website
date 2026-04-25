@@ -236,14 +236,50 @@ function TabBar<T extends string>({
   onChange: (tab: T) => void;
   label: string;
 }) {
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    const last = items.length - 1;
+    let nextIndex: number | null = null;
+
+    switch (event.key) {
+      case "ArrowRight":
+        nextIndex = index === last ? 0 : index + 1;
+        break;
+      case "ArrowLeft":
+        nextIndex = index === 0 ? last : index - 1;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = last;
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    const list = event.currentTarget.closest('[role="tablist"]');
+    if (!list || nextIndex === null) return;
+    const next = list.querySelectorAll<HTMLButtonElement>('[role="tab"]')[nextIndex];
+    if (next) {
+      next.focus();
+      onChange(items[nextIndex].value);
+    }
+  };
+
   return (
     <div className="flex flex-wrap gap-2" role="tablist" aria-label={label}>
-      {items.map((item) => (
+      {items.map((item, index) => (
         <button
           key={item.value}
           type="button"
           role="tab"
           aria-selected={active === item.value}
+          tabIndex={active === item.value ? 0 : -1}
+          onKeyDown={(e) => handleKeyDown(e, index)}
           onClick={() => onChange(item.value)}
           className={`min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-semibold transition ${
             active === item.value
