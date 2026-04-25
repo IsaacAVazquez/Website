@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import {
   IconCreditCard,
   IconInfoCircle,
@@ -133,6 +133,7 @@ const sectionHeadingStyle = {
 };
 
 // ─── Slider ───────────────────────────────────────────────────────────────────
+let sliderUid = 0;
 function Slider({
   label,
   value,
@@ -153,10 +154,17 @@ function Slider({
   hint?: string;
 }) {
   const pct = ((value - min) / (max - min)) * 100;
+  // Stable id per Slider instance for label/hint association
+  const idRef = useRef<string | null>(null);
+  if (idRef.current === null) {
+    idRef.current = `iq-slider-${++sliderUid}`;
+  }
+  const inputId = idRef.current;
+  const hintId = hint ? `${inputId}-hint` : undefined;
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-baseline gap-2">
-        <label className="text-sm" style={labelStyle}>
+        <label htmlFor={inputId} className="text-sm" style={labelStyle}>
           {label}
         </label>
         <span
@@ -167,19 +175,25 @@ function Slider({
         </span>
       </div>
       <input
+        id={inputId}
         type="range"
         min={min}
         max={max}
         step={step}
         value={value}
+        aria-valuenow={value}
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuetext={format(value)}
+        aria-describedby={hintId}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
+        className="w-full h-1.5 rounded-full appearance-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
         style={{
           background: `linear-gradient(to right, var(--home-haze) ${pct}%, var(--home-rule) ${pct}%)`,
         }}
       />
       {hint && (
-        <p className="text-xs" style={mutedStyle}>
+        <p id={hintId} className="text-xs" style={mutedStyle}>
           {hint}
         </p>
       )}
@@ -284,9 +298,12 @@ export function InterchangeIQClient() {
                 Card Mix
               </span>
               <button
+                type="button"
                 onClick={() => setShowInfo(!showInfo)}
                 aria-label="Learn about card mix"
-                className="transition-colors"
+                aria-expanded={showInfo}
+                aria-controls="card-mix-info"
+                className="rounded-md p-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                 style={{ color: "var(--home-ink-muted)" }}
               >
                 <IconInfoCircle className="h-4 w-4" />
@@ -295,6 +312,8 @@ export function InterchangeIQClient() {
 
             {showInfo && (
               <p
+                id="card-mix-info"
+                role="region"
                 className="text-xs rounded-lg p-3 leading-relaxed mb-0"
                 style={{
                   ...bodyStyle,

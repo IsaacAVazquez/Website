@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import Link from "next/link";
-import { Download, RotateCcw } from "lucide-react";
+import { Download, RotateCcw, Undo2 } from "lucide-react";
 import { DraftBoard } from "./components/DraftBoard";
 import { DraftSetup } from "./components/DraftSetup";
 import { useDraftState } from "./hooks/useDraftState";
@@ -26,6 +26,7 @@ export function DraftTrackerClient() {
     updateSettings,
     startDraft,
     draftPlayer,
+    undoLastPick,
     resetDraft,
     exportDraftResults,
     isUserPick,
@@ -328,6 +329,25 @@ export function DraftTrackerClient() {
             <article className="home-card p-5 sm:p-6">
               <p className="home-kicker mb-1">Actions</p>
               <div className="mt-4 grid gap-3">
+                <button
+                  type="button"
+                  onClick={undoLastPick}
+                  disabled={draftState.picks.length === 0}
+                  aria-label={
+                    draftState.picks.length === 0
+                      ? "Undo last pick (no picks yet)"
+                      : "Undo last pick"
+                  }
+                  className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-50"
+                  style={{
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+                    color: "var(--home-ink)",
+                  }}
+                >
+                  <Undo2 className="h-4 w-4" />
+                  Undo last pick
+                </button>
                 <button
                   type="button"
                   onClick={() => exportDraftResults("csv")}

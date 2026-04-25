@@ -5,6 +5,7 @@ import {
   useDeferredValue,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type CSSProperties,
 } from "react";
@@ -846,26 +847,85 @@ function EmailDigestDialog({
   sending: boolean;
 }) {
   const [email, setEmail] = useState("");
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  const triggerRef = useRef<Element | null>(null);
+
+  // Trap focus within the dialog while open and restore it on close.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    triggerRef.current = document.activeElement;
+    const dialog: HTMLDivElement | null = dialogRef.current;
+    if (!dialog) return;
+    const dialogEl: HTMLDivElement = dialog;
+
+    const focusable = dialogEl.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
+    focusable[0]?.focus();
+
+    function handleKey(event: KeyboardEvent) {
+      if (event.key === "Escape" && !sending) {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const items = dialogEl.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      if (triggerRef.current instanceof HTMLElement) {
+        triggerRef.current.focus();
+      }
+    };
+  }, [isOpen, onClose, sending]);
+
   if (!isOpen) return null;
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       style={{ background: "rgba(0,0,0,0.45)" }}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Send email digest"
+      role="presentation"
+      onClick={(event) => {
+        if (event.target === event.currentTarget && !sending) onClose();
+      }}
     >
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="email-digest-title"
+        aria-describedby="email-digest-description"
         className="home-card w-full max-w-sm p-6 sm:p-7"
         style={{ background: "var(--home-paper)" }}
       >
         <h2
+          id="email-digest-title"
           className="mb-3 text-lg font-semibold"
           style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
         >
           Send email digest
         </h2>
-        <p className="mb-4 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+        <p
+          id="email-digest-description"
+          className="mb-4 text-sm"
+          style={{ color: "var(--home-ink-muted)" }}
+        >
           Enter your email to receive the current job list as a digest.
         </p>
         <input
@@ -881,6 +941,7 @@ function EmailDigestDialog({
           }}
           disabled={sending}
           autoComplete="email"
+          aria-label="Your email address"
         />
         <div className="flex gap-3">
           <button
@@ -1134,6 +1195,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
   const [uiState, setUiState] = useState(routeState);
   const deferredQuery = useDeferredValue(uiState.q);
   const deferredLocation = useDeferredValue(uiState.location);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const locationInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     setUiState(routeState);
@@ -1434,6 +1497,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       aria-hidden="true"
                     />
                     <input
+                      ref={searchInputRef}
                       type="text"
                       value={uiState.q}
                       onChange={(event) => updateRouteState({ q: event.target.value })}
@@ -1452,8 +1516,11 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                     {uiState.q && (
                       <button
                         type="button"
-                        onClick={() => updateRouteState({ q: "" })}
-                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full"
+                        onClick={() => {
+                          updateRouteState({ q: "" });
+                          searchInputRef.current?.focus();
+                        }}
+                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                         aria-label="Clear search"
                         style={{ color: "var(--home-ink-muted)" }}
                       >
@@ -1469,6 +1536,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       aria-hidden="true"
                     />
                     <input
+                      ref={locationInputRef}
                       type="text"
                       value={uiState.location}
                       onChange={(event) => updateRouteState({ location: event.target.value })}
@@ -1487,8 +1555,11 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                     {uiState.location && (
                       <button
                         type="button"
-                        onClick={() => updateRouteState({ location: "" })}
-                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full"
+                        onClick={() => {
+                          updateRouteState({ location: "" });
+                          locationInputRef.current?.focus();
+                        }}
+                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                         aria-label="Clear location filter"
                         style={{ color: "var(--home-ink-muted)" }}
                       >
@@ -1727,7 +1798,12 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
               id="mba-role-tracker-roles-heading"
             />
             {!isLoading && (
-              <div className="flex flex-wrap gap-2">
+              <div
+                className="flex flex-wrap gap-2"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              >
                 <span className="resume-chip">{displayJobs.length} matching roles</span>
                 <span className="resume-chip">{watchedCompanyIds.size} watched feeds active</span>
                 {uiState.location.trim() && (

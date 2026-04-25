@@ -47,11 +47,17 @@ const editorialCardClasses: Record<EditorialCard["color"], string> = {
 function SurfaceCard({
   children,
   className = "",
+  id,
 }: {
   children: ReactNode;
   className?: string;
+  id?: string;
 }) {
-  return <div className={`${SURFACE_CLASS} ${className}`}>{children}</div>;
+  return (
+    <div id={id} className={`${SURFACE_CLASS} ${className}`}>
+      {children}
+    </div>
+  );
 }
 
 function Tag({ children, color = "gray" }: { children: ReactNode; color?: string }) {

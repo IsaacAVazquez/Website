@@ -302,7 +302,7 @@ export function BudgetPlannerClient() {
                       step="50"
                       value={String(activeMonth.income)}
                       onChange={(event) => updateIncome(Number(event.target.value))}
-                      className="mt-2 w-full border-0 bg-transparent p-0 text-lg font-semibold text-[var(--home-ink)]"
+                      className="mt-2 w-full rounded-md border-0 bg-transparent p-0 text-lg font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                     />
                   </label>
 
@@ -317,7 +317,7 @@ export function BudgetPlannerClient() {
                       step="25"
                       value={String(activeMonth.savingsTarget)}
                       onChange={(event) => updateSavingsTarget(Number(event.target.value))}
-                      className="mt-2 w-full border-0 bg-transparent p-0 text-lg font-semibold text-[var(--home-ink)]"
+                      className="mt-2 w-full rounded-md border-0 bg-transparent p-0 text-lg font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                     />
                   </label>
                 </div>
@@ -358,6 +358,12 @@ export function BudgetPlannerClient() {
                               </span>
                               <input
                                 aria-label={`Category name for ${displayName}`}
+                                aria-invalid={category.name.trim() === "" ? true : undefined}
+                                aria-describedby={
+                                  category.name.trim() === ""
+                                    ? `category-${category.id}-error`
+                                    : undefined
+                                }
                                 type="text"
                                 value={category.name}
                                 onChange={(event) =>
@@ -368,8 +374,16 @@ export function BudgetPlannerClient() {
                                     renameCategory(category.id, "Untitled");
                                   }
                                 }}
-                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
+                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 aria-[invalid=true]:border-[var(--color-error)]"
                               />
+                              {category.name.trim() === "" ? (
+                                <span
+                                  id={`category-${category.id}-error`}
+                                  className="mt-1 block text-xs text-[var(--color-error)]"
+                                >
+                                  Name a category — empty fields fall back to "Untitled".
+                                </span>
+                              ) : null}
                             </label>
 
                             <label>
@@ -385,16 +399,21 @@ export function BudgetPlannerClient() {
                                 onChange={(event) =>
                                   updateCategoryBudget(category.id, Number(event.target.value))
                                 }
-                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
+                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                               />
                             </label>
 
                             <button
                               type="button"
                               aria-label={`Delete ${displayName}`}
+                              aria-describedby={
+                                hasLinkedExpenses
+                                  ? `category-${category.id}-delete-help`
+                                  : undefined
+                              }
                               disabled={hasLinkedExpenses}
                               onClick={() => removeCategory(category.id)}
-                              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] disabled:cursor-not-allowed disabled:opacity-55"
+                              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-dashed disabled:opacity-40"
                             >
                               <Trash2 className="h-4 w-4" />
                               Delete
@@ -450,7 +469,10 @@ export function BudgetPlannerClient() {
                               />
                             </div>
                             {hasLinkedExpenses && (
-                              <p className="mt-3 text-xs leading-6 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
+                              <p
+                                id={`category-${category.id}-delete-help`}
+                                className="mt-3 text-xs leading-6 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]"
+                              >
                                 Remove linked expenses before deleting this category.
                               </p>
                             )}
@@ -589,13 +611,13 @@ export function BudgetPlannerClient() {
                     </label>
                   </div>
 
-                  <div className="mt-4 flex flex-wrap gap-3">
+                  <div className="sticky bottom-2 mt-4 flex flex-wrap gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,transparent)] p-2 shadow-[var(--shadow-sm)] backdrop-blur sm:static sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-none">
                     <button
                       type="submit"
                       disabled={
                         !resolvedExpenseCategoryId || !expenseDraft.amount || !expenseDraft.date
                       }
-                      className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)] disabled:cursor-not-allowed disabled:opacity-60"
+                      className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:flex-initial"
                     >
                       <Plus className="h-4 w-4" />
                       {editingExpenseId ? "Save expense" : "Add expense"}

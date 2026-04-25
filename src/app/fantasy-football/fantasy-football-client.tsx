@@ -466,7 +466,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     {filteredPlayers.map((player) => (
                       <li
                         key={player.id}
-                        className="grid gap-4 rounded-[1.5rem] border px-4 py-4 sm:grid-cols-[72px_minmax(0,1.55fr)_110px_140px_140px] sm:items-center"
+                        className="grid gap-4 rounded-[1.5rem] border px-4 py-4 md:grid-cols-[64px_minmax(0,1.6fr)_minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] md:items-center"
                         style={{
                           borderColor: "var(--home-rule)",
                           background: "color-mix(in srgb, var(--home-paper-alt) 42%, var(--home-elev-mix))",

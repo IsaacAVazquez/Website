@@ -41,6 +41,7 @@ function getFieldStyle(): CSSProperties {
 
 export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetupProps) {
   const [formState, setFormState] = useState<DraftSettings>(settings);
+  const [isStarting, setIsStarting] = useState(false);
 
   useEffect(() => {
     setFormState(settings);
@@ -58,8 +59,16 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
   }
 
   function handleStartDraft() {
-    onSaveSettings(formState);
-    onStartDraft();
+    if (isStarting) return;
+    setIsStarting(true);
+    try {
+      onSaveSettings(formState);
+      onStartDraft();
+    } finally {
+      // Re-enable after a short tick — startDraft is synchronous, but the
+      // brief disable prevents double-click submission.
+      setTimeout(() => setIsStarting(false), 400);
+    }
   }
 
   return (
@@ -214,14 +223,16 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
         <button
           type="button"
           onClick={handleStartDraft}
-          className="min-h-[48px] rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+          disabled={isStarting}
+          aria-busy={isStarting}
+          className="min-h-[48px] rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-70"
           style={{
             borderColor: "var(--home-ink)",
             background: "var(--home-ink)",
             color: "var(--home-paper)",
           }}
         >
-          Start draft assistant
+          {isStarting ? "Starting…" : "Start draft assistant"}
         </button>
       </div>
     </div>
