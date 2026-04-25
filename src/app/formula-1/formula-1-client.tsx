@@ -28,6 +28,7 @@ import {
   normalizeFormula1State,
   resolveFormula1State,
 } from "./formula-1-state";
+import { MetricCard } from "@/components/football/MetricCard";
 
 interface Formula1ClientProps {
   initialState: Formula1RouteState;
@@ -151,33 +152,6 @@ function getPositionChangeCopy(currentPosition: number, previousPosition: number
 
   const delta = previousPosition - currentPosition;
   return delta > 0 ? `Up ${delta}` : `Down ${Math.abs(delta)}`;
-}
-
-function MetricCard({
-  label,
-  value,
-  detail,
-  icon,
-}: {
-  label: string;
-  value: string;
-  detail: string;
-  icon: React.ReactNode;
-}) {
-  return (
-    <article className="home-card p-5 sm:p-6">
-      <div className="flex items-center justify-between gap-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
-          {label}
-        </p>
-        <span className="text-[var(--home-ink-muted)]">{icon}</span>
-      </div>
-      <p className="mt-3 text-2xl font-semibold tracking-[-0.05em] text-[var(--home-ink)]">
-        {value}
-      </p>
-      <p className="mt-2 mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">{detail}</p>
-    </article>
-  );
 }
 
 function ViewToggle({

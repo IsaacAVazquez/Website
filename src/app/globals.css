@@ -271,6 +271,38 @@
 }
 
 @layer utilities {
+  /*
+   * Scroll affordance: subtle inset shadow on the right edge tells users a
+   * horizontally-scrolling region has more content. Pair with overflow-x-auto.
+   */
+  .scroll-shadow-x {
+    background:
+      linear-gradient(to right, var(--home-paper-alt) 30%, transparent),
+      linear-gradient(to right, transparent, var(--home-paper-alt) 70%) 100% 0,
+      radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--home-ink) 14%, transparent), transparent),
+      radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--home-ink) 14%, transparent), transparent) 100% 0;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size:
+      40px 100%,
+      40px 100%,
+      14px 100%,
+      14px 100%;
+    background-attachment: local, local, scroll, scroll;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--home-rule);
+    border-radius: 999px;
+  }
+
   /* Article prose: tie body text to CSS variables and polish reading experience */
   .prose-writing {
     color: var(--text-primary);

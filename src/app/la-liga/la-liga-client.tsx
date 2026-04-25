@@ -350,7 +350,12 @@ export function LaLigaClient({
               })}
             </div>
 
-            <div className="mt-6 overflow-x-auto">
+            <div
+              className="scroll-shadow-x mt-6 overflow-x-auto"
+              role="region"
+              aria-label="La Liga standings (scrollable)"
+              tabIndex={0}
+            >
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="La Liga standings">
                 <thead>
                   <tr className="text-left text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
@@ -424,7 +429,7 @@ export function LaLigaClient({
           </section>
 
           {/* Compact club sidebar */}
-          <aside className="md:sticky md:top-24 md:self-start">
+          <aside className="md:sticky md:top-28 md:self-start">
             <section
               className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 shadow-[var(--shadow-sm)]"
               aria-live="polite"

@@ -508,7 +508,7 @@ export function SpaceXMissionControlClient({
                 setLaunchesFetchKey((value) => value + 1);
               }}
             />
-            <div className="xl:sticky xl:top-24 xl:self-start">
+            <div className="xl:sticky xl:top-28 xl:self-start">
               <MissionDetailPanel
                 launch={routeState.launch ? detail : null}
                 activePanel={routeState.panel}

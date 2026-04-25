@@ -403,7 +403,12 @@ export function PremierLeagueClient({
               })}
             </div>
 
-            <div className="mt-6 overflow-x-auto">
+            <div
+              className="scroll-shadow-x mt-6 overflow-x-auto"
+              role="region"
+              aria-label="Premier League standings (scrollable)"
+              tabIndex={0}
+            >
               <table className="min-w-full border-separate border-spacing-y-2" aria-label="Premier League standings">
                 <thead>
                   <tr className="text-left text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
@@ -443,7 +448,7 @@ export function PremierLeagueClient({
                             onClick={() => handleTeamChange(row.team.id)}
                             aria-pressed={isSelected}
                             aria-label={`Show ${row.team.name} details`}
-                            className="flex min-h-[44px] w-full items-center gap-2 rounded-xl text-left"
+                            className="flex min-h-[44px] w-full items-center gap-2 rounded-xl px-1 text-left transition-colors hover:bg-[var(--home-paper-alt)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--home-haze)]"
                           >
                             <CrestAvatar crest={row.team.crest} name={row.team.shortName} size="sm" />
                             <span className="font-semibold text-[var(--home-ink)]">{row.team.shortName}</span>
@@ -476,7 +481,7 @@ export function PremierLeagueClient({
           </section>
 
           {/* Compact club sidebar */}
-          <aside className="md:sticky md:top-24 md:self-start">
+          <aside className="md:sticky md:top-28 md:self-start">
             {selectedRow ? (
               <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 shadow-[var(--shadow-sm)]" aria-live="polite" data-testid="pl-selected-club">
                 <div className="flex items-start gap-3">

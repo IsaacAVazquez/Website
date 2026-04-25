@@ -319,7 +319,12 @@ function RankingsSection() {
         Blended average across BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank,
         and WAB, excluding the minimum and maximum system values.
       </p>
-      <div className="overflow-x-auto">
+      <div
+        className="scroll-shadow-x overflow-x-auto rounded-[20px] border border-white/10"
+        role="region"
+        aria-label="Team rankings table (scrollable)"
+        tabIndex={0}
+      >
         <table className="min-w-[920px] w-full border-collapse text-sm">
           <thead>
             <tr className="border-b border-white/10">
@@ -977,7 +982,7 @@ export function MarchMadnessClient({
             </div>
           </SurfaceCard>
 
-          <SurfaceCard id="why-this-model-is-different" className="space-y-6 p-5 sm:p-6 scroll-mt-24">
+          <SurfaceCard id="why-this-model-is-different" className="space-y-6 p-5 sm:p-6 scroll-mt-28">
             <SectionIntro
               eyebrow="Methodology"
               title="Why This Model Is Different"
@@ -1079,7 +1084,7 @@ export function MarchMadnessClient({
             </div>
           </SurfaceCard>
 
-          <div id="analysis-workspace" className="space-y-4 scroll-mt-24">
+          <div id="analysis-workspace" className="space-y-4 scroll-mt-28">
             <TabBar
               items={MAIN_TAB_ITEMS}
               active={view}
