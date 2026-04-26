@@ -263,13 +263,31 @@ interface LocationOption {
 
 const LOCATION_PRESETS = [
   { label: "Remote", terms: ["remote"] },
-  { label: "San Francisco", terms: ["san francisco", "bay area"] },
+  { label: "San Francisco", terms: ["san francisco", "bay area", "sf"] },
   { label: "New York", terms: ["new york", "nyc"] },
   { label: "Seattle", terms: ["seattle"] },
   { label: "London", terms: ["london"] },
   { label: "Austin", terms: ["austin"] },
   { label: "Boston", terms: ["boston"] },
+  { label: "Los Angeles", terms: ["los angeles", "la"] },
+  { label: "Chicago", terms: ["chicago"] },
 ] as const;
+
+/**
+ * Expands user-typed location queries against the preset table so short
+ * abbreviations ("LA", "NYC", "SF") still match full-name job postings.
+ */
+function expandLocationQuery(rawQuery: string): string[] {
+  const normalized = normalizeSearchText(rawQuery);
+  if (!normalized) return [];
+  const queries = new Set<string>([normalized]);
+  for (const preset of LOCATION_PRESETS) {
+    if (preset.terms.some((term) => term === normalized)) {
+      preset.terms.forEach((term) => queries.add(term));
+    }
+  }
+  return Array.from(queries);
+}
 
 function getLocationLabels(location: string): string[] {
   const normalizedLocation = normalizeSearchText(location);
@@ -933,7 +951,7 @@ function EmailDigestDialog({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="mb-4 w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
+          className="mb-2 w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
           style={{
             background: "var(--home-paper-alt)",
             borderColor: "var(--home-rule)",
@@ -942,7 +960,24 @@ function EmailDigestDialog({
           disabled={sending}
           autoComplete="email"
           aria-label="Your email address"
+          aria-describedby="email-digest-input-hint"
+          aria-invalid={email.length > 0 && !email.includes("@") ? true : undefined}
         />
+        <p
+          id="email-digest-input-hint"
+          className="mb-4 text-xs"
+          style={{
+            color:
+              email.length > 0 && !email.includes("@")
+                ? "var(--color-error)"
+                : "var(--home-ink-muted)",
+          }}
+          role={email.length > 0 && !email.includes("@") ? "alert" : undefined}
+        >
+          {email.length > 0 && !email.includes("@")
+            ? "Enter a valid email (must include @)."
+            : "I'll send the current job list as a one-off digest."}
+        </p>
         <div className="flex gap-3">
           <button
             type="button"
@@ -1280,11 +1315,11 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
 
   // ── Derived: filtered + sorted job list ──────────────────────────────
   const displayJobs = useMemo(() => {
-    const normalizedLocation = normalizeSearchText(effectiveState.location);
+    const locationQueries = expandLocationQuery(effectiveState.location);
     const filtered = locationScopedEntries.filter(
       (entry) =>
-        !normalizedLocation ||
-        normalizeSearchText(entry.job.location).includes(normalizedLocation)
+        locationQueries.length === 0 ||
+        locationQueries.some((q) => normalizeSearchText(entry.job.location).includes(q))
     );
 
     filtered.sort((left, right) => {
@@ -1385,8 +1420,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 >
                   <p className="home-meta mb-0">Workflow</p>
                   <p className="home-note-copy mb-0 mt-3">
-                    Search the board, narrow by role and company type, then use alerts and digests
-                    when you want a faster recruiting scan.
+                    I search the board, narrow by role and company type, then turn on alerts or
+                    digests when I want a faster recruiting scan.
                   </p>
                 </div>
               </div>
@@ -1469,8 +1504,8 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                 aria-hidden="true"
               />
               <p className="mb-0 text-sm" style={{ color: "var(--home-ink)" }}>
-                Some companies could not be reached:{" "}
-                {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown are partial.
+                I could not reach a few feeds:{" "}
+                {fetchErrors.map((e) => e.companyName).join(", ")}. The list below is partial.
               </p>
             </div>
           )}

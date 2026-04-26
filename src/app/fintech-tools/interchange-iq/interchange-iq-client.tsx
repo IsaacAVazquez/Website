@@ -240,6 +240,10 @@ export function InterchangeIQClient() {
 
   return (
     <div className="space-y-8">
+      <p className="text-xs" style={mutedStyle}>
+        Processor rates and interchange tables shown reflect publicly listed values as of 2024.
+        Rebuild for newer schedules before quoting customers.
+      </p>
       {/* Summary stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
@@ -557,16 +561,18 @@ export function InterchangeIQClient() {
           </article>
 
           {/* Breakeven insight */}
-          {breakevenTicket !== null && breakevenTicket > 0 && (
-            <article
-              className="home-card p-6 sm:p-7 space-y-2"
-              style={{
-                border: "1px solid color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
-              }}
-            >
-              <h2 className="text-sm mb-0" style={labelStyle}>
-                Breakeven: Stripe Flat vs. Stripe IC+
-              </h2>
+          <article
+            className="home-card p-6 sm:p-7 space-y-2"
+            role="status"
+            aria-live="polite"
+            style={{
+              border: "1px solid color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
+            }}
+          >
+            <h2 className="text-sm mb-0" style={labelStyle}>
+              Breakeven: Stripe Flat vs. Stripe IC+
+            </h2>
+            {breakevenTicket !== null && breakevenTicket > 0 ? (
               <p className="mb-0 text-sm leading-6" style={bodyStyle}>
                 With your card mix, Stripe IC+ becomes cheaper than Stripe flat-rate when avg ticket exceeds{" "}
                 <strong className="tabular-nums" style={accentStyle}>
@@ -579,11 +585,16 @@ export function InterchangeIQClient() {
                   <span> Your current avg ticket (${avgTicket}) is <strong style={labelStyle}>below</strong> that, so flat-rate wins per transaction.</span>
                 )}
               </p>
-              <p className="mb-0 text-xs" style={mutedStyle}>
-                Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume.
+            ) : (
+              <p className="mb-0 text-sm leading-6" style={bodyStyle}>
+                For this card mix, Stripe IC+'s rate markup matches or exceeds Stripe Flat's rate, so
+                there is no breakeven ticket size — flat-rate stays the cheaper option here.
               </p>
-            </article>
-          )}
+            )}
+            <p className="mb-0 text-xs" style={mutedStyle}>
+              Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume.
+            </p>
+          </article>
         </div>
       </div>
 

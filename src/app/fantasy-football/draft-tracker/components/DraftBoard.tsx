@@ -216,10 +216,31 @@ export function DraftBoard({
                   background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
                 }}
               >
-                <p className="text-lg font-semibold">No players match that filter.</p>
-                <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                  Clear the search or switch positions.
-                </p>
+                {(() => {
+                  const drafted = availablePlayers.length === 0;
+                  const hasSearch = debouncedSearch.trim().length > 0;
+                  const positionFilter = selectedPosition !== "ALL";
+                  return (
+                    <>
+                      <p className="text-lg font-semibold">
+                        {drafted
+                          ? `Every ${positionFilter ? selectedPosition : "player"} on the board has been drafted.`
+                          : hasSearch
+                            ? `No matches for "${debouncedSearch.trim()}".`
+                            : positionFilter
+                              ? `No remaining ${selectedPosition}s in the snapshot.`
+                              : "No players match that filter."}
+                      </p>
+                      <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                        {drafted
+                          ? "Open another position to keep finding value."
+                          : hasSearch
+                            ? "Try a shorter query or clear the search."
+                            : "Switch positions or reset the filter."}
+                      </p>
+                    </>
+                  );
+                })()}
               </div>
             ) : (
               bestAvailable.map((player) => {

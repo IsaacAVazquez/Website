@@ -289,15 +289,22 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                   </div>
 
                   <div>
-                    <p className="home-kicker mb-2">Scoring</p>
-                    <div className="flex flex-wrap gap-2">
+                    <p className="home-kicker mb-2" id="fantasy-scoring-label">
+                      Scoring
+                    </p>
+                    <div
+                      className="flex flex-wrap gap-2"
+                      role="radiogroup"
+                      aria-labelledby="fantasy-scoring-label"
+                    >
                       {SCORING_OPTIONS.map((option) => {
                         const active = routeState.scoring === option.key;
                         return (
                           <button
                             key={option.key}
                             type="button"
-                            aria-pressed={active}
+                            role="radio"
+                            aria-checked={active}
                             onClick={() => updateRouteState({ scoring: option.key })}
                             className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
                             style={getPillStyle(active)}
@@ -418,7 +425,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                     {Array.from({ length: 10 }).map((_, index) => (
                       <div
                         key={`loading-${index}`}
-                        className="h-[104px] animate-pulse rounded-[1.5rem] border"
+                        className="h-[112px] animate-pulse rounded-[1.5rem] border"
                         style={{
                           borderColor: "var(--home-rule)",
                           background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",

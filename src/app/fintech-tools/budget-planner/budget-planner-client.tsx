@@ -31,11 +31,14 @@ interface ExpenseDraft {
 }
 
 function formatCurrency(value: number) {
+  // Always show two decimals for non-whole values; whole values still render
+  // without trailing zeros so headlines stay clean.
+  const isWhole = Number.isFinite(value) && Math.abs(value % 1) < 0.005;
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
+    minimumFractionDigits: isWhole ? 0 : 2,
+    maximumFractionDigits: isWhole ? 0 : 2,
   });
 }
 
@@ -456,7 +459,14 @@ export function BudgetPlannerClient() {
                               <span>Spend vs budget</span>
                               <span>{Math.round(category.utilization * 100)}%</span>
                             </div>
-                            <div className="h-2 overflow-hidden rounded-full bg-[var(--home-paper)]">
+                            <div
+                              className="h-2 overflow-hidden rounded-full bg-[var(--home-paper)]"
+                              role="progressbar"
+                              aria-valuenow={Math.min(100, Math.round(category.utilization * 100))}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
+                              aria-label={`${displayName} spend vs budget`}
+                            >
                               <div
                                 className={`h-full rounded-full ${
                                   category.overBudget
@@ -644,8 +654,7 @@ export function BudgetPlannerClient() {
 
                   {summary.expenseEntries.length === 0 ? (
                     <div className="mt-4 rounded-[22px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-6 text-sm leading-7 text-[var(--home-ink-muted)]">
-                      Your ledger is empty. Add the first expense to start tracking where this
-                      month is going.
+                      Nothing logged yet. Add the first expense and the ledger fills in.
                     </div>
                   ) : (
                     <div className="mt-4 space-y-3">
