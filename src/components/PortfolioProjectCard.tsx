@@ -10,13 +10,11 @@ import { cn } from "@/lib/utils";
 interface PortfolioProjectCardProps {
   study: CaseStudyData;
   className?: string;
-  showFeaturedBadge?: boolean;
 }
 
 export function PortfolioProjectCard({
   study,
   className,
-  showFeaturedBadge = false,
 }: PortfolioProjectCardProps) {
   const href = study.link ?? `/portfolio/${study.slug}`;
   const summary = getProjectCardSummary(study);
@@ -30,9 +28,7 @@ export function PortfolioProjectCard({
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="home-kicker">Project</span>
-            {showFeaturedBadge && study.featured ? (
-              <span className="home-pill">Featured</span>
-            ) : null}
+            {study.featured ? <span className="home-pill">Featured</span> : null}
           </div>
           <span
             style={{

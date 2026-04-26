@@ -39,7 +39,7 @@ export function ContactContent() {
 
         {/* Cards */}
         <motion.div
-          className="mx-auto w-full max-w-5xl grid gap-6 lg:grid-cols-[1.2fr_0.8fr]"
+          className="mx-auto w-full max-w-5xl grid gap-6 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr]"
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: 0.1 }}
@@ -88,9 +88,11 @@ export function ContactContent() {
             <div
               className="flex items-center gap-2 text-sm"
               style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+              role="status"
+              aria-label="Currently available — based in Berkeley, reachable by email or LinkedIn"
             >
               <div
-                className="h-2 w-2 animate-pulse rounded-full flex-shrink-0"
+                className="h-2 w-2 rounded-full flex-shrink-0 motion-safe:animate-pulse"
                 style={{ background: "var(--home-moss)" }}
                 aria-hidden="true"
               />

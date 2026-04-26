@@ -102,7 +102,7 @@ export default function AccessibilityPage() {
     <section className="home-page home-section min-h-screen" aria-label="Accessibility statement">
       <div className="home-shell home-shell-tight space-y-10">
         <header className="space-y-4">
-          <p className="home-kicker mb-0">Accessibility · Updated November 2025</p>
+          <p className="home-kicker mb-0">Accessibility · Updated April 2026</p>
           <h1
             className="mb-0"
             style={{
@@ -180,15 +180,17 @@ export default function AccessibilityPage() {
                   <dt className="mb-0 text-sm" style={bodyStyle}>
                     {shortcut.action}
                   </dt>
-                  <dd
-                    className="mb-0 rounded-md px-3 py-1 font-mono text-sm"
-                    style={{
-                      background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-                      color: "var(--home-ink)",
-                      border: "1px solid var(--home-rule)",
-                    }}
-                  >
-                    {shortcut.keys}
+                  <dd className="mb-0">
+                    <kbd
+                      className="rounded-md px-3 py-1 font-mono text-sm"
+                      style={{
+                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
+                        color: "var(--home-ink)",
+                        border: "1px solid var(--home-rule)",
+                      }}
+                    >
+                      {shortcut.keys}
+                    </kbd>
                   </dd>
                 </div>
               ))}
@@ -300,6 +302,7 @@ export default function AccessibilityPage() {
             href="https://www.w3.org/WAI/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="W3C Web Accessibility Initiative (opens in a new tab)"
             className="underline underline-offset-2"
             style={{ color: "var(--home-haze)" }}
           >

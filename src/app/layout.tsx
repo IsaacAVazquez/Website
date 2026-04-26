@@ -23,10 +23,13 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+// Display-only fonts use display: "optional" so the browser falls back to
+// the system stack if the webfont isn't immediately available, avoiding the
+// late layout shift that swap can cause on these decorative families.
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument-sans",
-  display: "swap",
+  display: "optional",
 });
 
 const instrumentSerif = Instrument_Serif({
@@ -34,7 +37,7 @@ const instrumentSerif = Instrument_Serif({
   weight: "400",
   style: ["normal", "italic"],
   variable: "--font-instrument-serif",
-  display: "swap",
+  display: "optional",
 });
 
 export const metadata = constructMetadata();
