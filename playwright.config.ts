@@ -2,7 +2,37 @@ import { defineConfig, devices } from '@playwright/test'
 
 /**
  * See https://playwright.dev/docs/test-configuration.
+ *
+ * CI defaults to chromium-only against `next start` so PR feedback is fast.
+ * Set `E2E_FULL_MATRIX=1` (or run `npm run test:e2e:full`) to run firefox /
+ * webkit / mobile projects too — used for main-branch / nightly coverage.
  */
+const FULL_MATRIX = process.env.E2E_FULL_MATRIX === '1'
+const IS_CI = !!process.env.CI
+
+const allProjects = [
+  {
+    name: 'chromium',
+    use: { ...devices['Desktop Chrome'] },
+  },
+  {
+    name: 'firefox',
+    use: { ...devices['Desktop Firefox'] },
+  },
+  {
+    name: 'webkit',
+    use: { ...devices['Desktop Safari'] },
+  },
+  {
+    name: 'Mobile Chrome',
+    use: { ...devices['Pixel 5'] },
+  },
+  {
+    name: 'Mobile Safari',
+    use: { ...devices['iPhone 12'] },
+  },
+]
+
 export default defineConfig({
   testDir: './e2e',
 
@@ -10,75 +40,44 @@ export default defineConfig({
   fullyParallel: true,
 
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
+  forbidOnly: IS_CI,
 
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  /* Single retry on CI is enough to weed out true flakes without tripling
+     runtime when something is genuinely broken. */
+  retries: IS_CI ? 1 : 0,
 
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : 2,
+  /* On CI, run against `next start` (no on-demand compile), so workers can
+     run in parallel safely. Locally we keep 2 to match developer flow. */
+  workers: IS_CI ? 4 : 2,
 
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  /* Reporter: list output in CI logs (useful for triage), html locally. */
+  reporter: IS_CI
+    ? [['list'], ['html', { open: 'never' }]]
+    : [['html', { open: 'never' }]],
 
-  /* Global test timeout – Next.js dev server compiles pages on demand so give
-     each test enough headroom for a cold-start compilation. */
-  timeout: 60_000,
+  /* Test timeout — production server doesn't need the dev cold-start budget. */
+  timeout: IS_CI ? 30_000 : 60_000,
 
-  /* Increase the default expect/assertion timeout for the same reason. */
   expect: {
-    timeout: 15_000,
+    timeout: IS_CI ? 10_000 : 15_000,
   },
 
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'http://localhost:3000',
-
-    /* Allow enough time for client-side navigation + on-demand page compilation. */
-    navigationTimeout: 30_000,
-    actionTimeout: 15_000,
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    navigationTimeout: IS_CI ? 15_000 : 30_000,
+    actionTimeout: IS_CI ? 10_000 : 15_000,
     trace: 'on-first-retry',
-
-    /* Screenshot on failure */
     screenshot: 'only-on-failure',
   },
 
-  /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+  projects: FULL_MATRIX ? allProjects : [allProjects[0]],
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
-    /* Test against mobile viewports. */
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    },
-  ],
-
-  /* Run your local dev server before starting the tests */
+  /* Run the production server before tests on CI (compiled, fast). Locally
+     fall back to `npm run dev` so iteration stays cheap. */
   webServer: {
-    command: 'npm run dev',
+    command: IS_CI ? 'npm run start' : 'npm run dev',
     url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: !IS_CI,
     timeout: 120 * 1000,
   },
 })
