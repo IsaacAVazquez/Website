@@ -19,6 +19,7 @@ import {
   type LeaderEntry,
 } from "@/components/football";
 import type {
+  PremierLeagueDetailTab,
   PremierLeagueRouteState,
   PremierLeagueSummary,
   PremierLeagueTeamSnapshot,
@@ -154,7 +155,10 @@ export function PremierLeagueClient({
   const searchParams = useSearchParams();
   const currentQuery = searchParams.toString();
   const currentHref = `/premier-league${currentQuery ? `?${currentQuery}` : ""}`;
-  const hasManagedParams = searchParams.get("view") !== null || searchParams.get("team") !== null;
+  const hasManagedParams =
+    searchParams.get("view") !== null ||
+    searchParams.get("team") !== null ||
+    searchParams.get("detail") !== null;
   const routeState = hasManagedParams ? normalizePremierLeagueState(searchParams) : initialState;
 
   const validTeamIds = useMemo(() => new Set(summary.teams.map((t) => t.id)), [summary.teams]);
@@ -162,7 +166,7 @@ export function PremierLeagueClient({
   const selectedTeamId = canonicalTeamId ?? summary.standings[0]?.team.id ?? null;
 
   const desiredHref = buildPremierLeagueHref(
-    { view: routeState.view, team: canonicalTeamId },
+    { view: routeState.view, team: canonicalTeamId, detail: routeState.detail },
     searchParams
   );
 
@@ -182,12 +186,17 @@ export function PremierLeagueClient({
     const nextTeam = visibleRows.some((r) => r.team.id === selectedTeamId)
       ? selectedTeamId
       : visibleRows[0]?.team.id ?? null;
-    navigate({ view, team: nextTeam });
+    navigate({ view, team: nextTeam, detail: routeState.detail });
   }
 
   function handleTeamChange(teamId: string) {
-    navigate({ view: routeState.view, team: teamId });
+    navigate({ view: routeState.view, team: teamId, detail: routeState.detail });
   }
+
+  function setActiveDetailTab(detail: PremierLeagueDetailTab) {
+    navigate({ view: routeState.view, team: selectedTeamId, detail });
+  }
+  const activeDetailTab = routeState.detail;
 
   // Derived state
   const visibleStandings = filterStandingsForView(summary.standings, routeState.view);
@@ -313,7 +322,6 @@ export function PremierLeagueClient({
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const lastUpdated = formatGeneratedAt(summary.generatedAt);
-  const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
 
   return (
     <div className="home-page min-h-screen">
@@ -566,9 +574,12 @@ export function PremierLeagueClient({
               return (
                 <button
                   key={tab}
+                  id={`pl-detail-tab-${tab}`}
                   role="tab"
                   type="button"
                   aria-selected={activeDetailTab === tab}
+                  aria-controls="pl-detail-panel"
+                  tabIndex={activeDetailTab === tab ? 0 : -1}
                   onClick={() => setActiveDetailTab(tab)}
                   className={`min-h-[44px] whitespace-nowrap rounded-2xl px-5 py-2.5 text-sm font-semibold transition-colors ${
                     activeDetailTab === tab
@@ -582,7 +593,12 @@ export function PremierLeagueClient({
             })}
           </div>
 
-          <div role="tabpanel" className="mt-6">
+          <div
+            id="pl-detail-panel"
+            role="tabpanel"
+            aria-labelledby={`pl-detail-tab-${activeDetailTab}`}
+            className="mt-6"
+          >
             {activeDetailTab === "club" && selectedRow && (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">

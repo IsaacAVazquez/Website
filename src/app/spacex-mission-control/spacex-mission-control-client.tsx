@@ -30,12 +30,13 @@ interface SpaceXMissionControlClientProps {
 
 const LIVE_REFRESH_INTERVAL_MS = 300_000;
 const LIVE_REFRESH_DEDUPE_MS = 1_500;
+const LIVE_REFRESH_MAX_INTERVAL_MS = 30 * 60 * 1000;
 
 function buildApiError(message: string, status: number): Error & { status: number } {
   return Object.assign(new Error(message), { status });
 }
 
-async function fetchJson<T>(url: string): Promise<T> {
+async function fetchJson<T>(url: string, validate?: (data: unknown) => data is T): Promise<T> {
   const response = await fetch(url);
   const body = (await response.json()) as T & { error?: string };
 
@@ -43,7 +44,28 @@ async function fetchJson<T>(url: string): Promise<T> {
     throw buildApiError(body.error ?? "Request failed", response.status);
   }
 
+  if (validate && !validate(body)) {
+    throw buildApiError("Response payload missing expected fields", 502);
+  }
+
   return body;
+}
+
+function isMissionControlSummary(data: unknown): data is MissionControlSummary {
+  if (!data || typeof data !== "object") return false;
+  const candidate = data as Record<string, unknown>;
+  return "stats" in candidate && "nextLaunch" in candidate;
+}
+
+function isLaunchesPayload(data: unknown): data is { launches: MissionLaunchCard[] } {
+  if (!data || typeof data !== "object") return false;
+  return Array.isArray((data as { launches?: unknown }).launches);
+}
+
+function isMissionLaunchDetail(data: unknown): data is MissionLaunchDetail {
+  if (!data || typeof data !== "object") return false;
+  const candidate = data as Record<string, unknown>;
+  return typeof candidate.id === "string" && typeof candidate.name === "string";
 }
 
 export function SpaceXMissionControlClient({
@@ -140,7 +162,7 @@ export function SpaceXMissionControlClient({
     const requestId = summaryRequestId.current + 1;
     summaryRequestId.current = requestId;
 
-    fetchJson<MissionControlSummary>("/api/spacex/summary")
+    fetchJson<MissionControlSummary>("/api/spacex/summary", isMissionControlSummary)
       .then((payload) => {
         if (!isMounted.current || summaryRequestId.current !== requestId) {
           return;
@@ -175,7 +197,8 @@ export function SpaceXMissionControlClient({
     launchesRequestId.current = requestId;
 
     fetchJson<{ launches: MissionLaunchCard[] }>(
-      `/api/spacex/launches?status=${routeState.status}&limit=10`
+      `/api/spacex/launches?status=${routeState.status}&limit=10`,
+      isLaunchesPayload,
     )
       .then((payload) => {
         if (!isMounted.current || launchesRequestId.current !== requestId) {
@@ -214,7 +237,10 @@ export function SpaceXMissionControlClient({
     const requestId = detailRequestId.current + 1;
     detailRequestId.current = requestId;
 
-    fetchJson<MissionLaunchDetail>(`/api/spacex/launches/${routeState.launch}`)
+    fetchJson<MissionLaunchDetail>(
+      `/api/spacex/launches/${routeState.launch}`,
+      isMissionLaunchDetail,
+    )
       .then((payload) => {
         if (!isMounted.current || detailRequestId.current !== requestId) {
           return;
@@ -295,6 +321,17 @@ export function SpaceXMissionControlClient({
     []
   );
 
+  // Track consecutive fetch failures so the live-refresh interval can back
+  // off when the API is unhealthy.
+  const consecutiveFailuresRef = useRef(0);
+  useEffect(() => {
+    if (summaryError || launchesError) {
+      consecutiveFailuresRef.current += 1;
+    } else if (summary && (launches.length > 0 || launchesLoading)) {
+      consecutiveFailuresRef.current = 0;
+    }
+  }, [summaryError, launchesError, summary, launches.length, launchesLoading]);
+
   useEffect(() => {
     const refreshOnResume = () => {
       if (document.visibilityState !== "visible") {
@@ -304,19 +341,33 @@ export function SpaceXMissionControlClient({
       refreshLiveData({ dedupe: true });
     };
 
-    const intervalId = window.setInterval(() => {
-      if (document.visibilityState !== "visible") {
-        return;
+    let timerId: number | null = null;
+
+    function nextDelay(): number {
+      const failures = consecutiveFailuresRef.current;
+      if (failures === 0) return LIVE_REFRESH_INTERVAL_MS;
+      const backoff = LIVE_REFRESH_INTERVAL_MS * Math.pow(2, failures);
+      return Math.min(backoff, LIVE_REFRESH_MAX_INTERVAL_MS);
+    }
+
+    function schedule() {
+      if (timerId !== null) window.clearTimeout(timerId);
+      timerId = window.setTimeout(tick, nextDelay());
+    }
+
+    function tick() {
+      if (document.visibilityState === "visible") {
+        refreshLiveData({ dedupe: true });
       }
+      schedule();
+    }
 
-      refreshLiveData({ dedupe: true });
-    }, LIVE_REFRESH_INTERVAL_MS);
-
+    schedule();
     document.addEventListener("visibilitychange", refreshOnResume);
     window.addEventListener("focus", refreshOnResume);
 
     return () => {
-      window.clearInterval(intervalId);
+      if (timerId !== null) window.clearTimeout(timerId);
       document.removeEventListener("visibilitychange", refreshOnResume);
       window.removeEventListener("focus", refreshOnResume);
     };

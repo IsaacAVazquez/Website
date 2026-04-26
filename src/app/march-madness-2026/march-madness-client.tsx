@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { startTransition, useState, type ReactNode } from "react";
+import { startTransition, useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import {
   BEST_UPSET_SHARE,
@@ -643,6 +643,25 @@ function RegionBracket({ data }: { data: RegionData }) {
 function PicksSection() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
+  // Hydrate the open pick from `?pick=...` so a shared link lands with the
+  // referenced pick already expanded. We use replaceState below to keep the
+  // URL in sync without spamming history.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const initial = new URL(window.location.href).searchParams.get("pick");
+    if (initial) setExpanded(initial);
+  }, []);
+
+  function togglePick(id: string, isOpen: boolean) {
+    const next = isOpen ? null : id;
+    setExpanded(next);
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    if (next) url.searchParams.set("pick", next);
+    else url.searchParams.delete("pick");
+    window.history.replaceState(null, "", url.toString());
+  }
+
   const groupMeta: Record<
     PickEntry["group"],
     {
@@ -722,7 +741,7 @@ function PicksSection() {
                 <button
                   key={id}
                   type="button"
-                  onClick={() => setExpanded(isOpen ? null : id)}
+                  onClick={() => togglePick(id, isOpen)}
                   className={`w-full rounded-[24px] border px-4 py-4 text-left transition ${
                     isOpen
                       ? `${meta.openSurface} ${meta.openBorder}`

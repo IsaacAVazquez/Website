@@ -145,7 +145,7 @@ describe("FantasyFootballClient", () => {
 
     expect(container.firstChild).toHaveClass("home-page");
     expect(screen.getByRole("heading", { name: /RB rankings/i })).toBeVisible();
-    expect(screen.getByRole("tab", { name: /RB/i })).not.toBeDisabled();
+    expect(screen.getByRole("radio", { name: /RB/i })).not.toBeDisabled();
     expect(screen.getByText("Christian McCaffrey")).toBeVisible();
     expect(screen.getAllByText(/Source updated/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/^Proj\. Pts$/)).not.toBeInTheDocument();
