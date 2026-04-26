@@ -16,6 +16,13 @@ import { publishedDateFormatter } from "@/lib/utils";
 interface HomePageContentProps {
   featuredProjects: CaseStudyData[];
   proofOfWorkPosts: BlogPostPreview[];
+  heroIndex: {
+    projectCount: number;
+    essayCount: number;
+    liveToolCount: number;
+  };
+  latestPost: BlogPostPreview | null;
+  featuredEssay: BlogPostPreview | null;
 }
 
 function HomeProjectCard({
@@ -87,6 +94,9 @@ function HomeWritingCard({ post }: { post: BlogPostPreview }) {
 export function HomePageContent({
   featuredProjects,
   proofOfWorkPosts,
+  heroIndex,
+  latestPost,
+  featuredEssay,
 }: HomePageContentProps) {
   return (
     <div className="home-page">
@@ -96,40 +106,78 @@ export function HomePageContent({
         data-testid="hero"
       >
         <div className="home-shell">
-          <div className="home-wordmark home-reveal mx-auto text-center">ISAAC VAZQUEZ</div>
+          <h2
+            className="home-wordmark home-reveal"
+            aria-label="Isaac Vazquez"
+          >
+            ISAAC VAZQUEZ
+          </h2>
 
-          <div className="home-intro-block home-reveal home-reveal-delay-1">
-            <p className="home-kicker">Product work, writing, and live tools</p>
-            <p className="home-body home-intro-copy">
-              Most of my work lives where product judgment, AI workflows, and
-              clear decision support have to hold together at the same time.
-            </p>
+          <div className="home-hero-meta-strip home-reveal home-reveal-delay-1">
+            <div className="home-hero-meta-cell">
+              <span className="home-hero-meta-lbl">Role</span>
+              <span className="home-hero-meta-val">
+                Product manager <em>&amp;</em> builder
+              </span>
+            </div>
+            <div className="home-hero-meta-cell">
+              <span className="home-hero-meta-lbl">Focus</span>
+              <span className="home-hero-meta-val">
+                AI workflows · Fintech · Analytics
+              </span>
+            </div>
+            <div className="home-hero-meta-cell">
+              <span className="home-hero-meta-lbl">Based</span>
+              <span className="home-hero-meta-val">
+                Berkeley, CA <em>·</em>&nbsp;Haas MBA &apos;27
+              </span>
+            </div>
+            <div className="home-hero-meta-cell">
+              <span className="home-hero-meta-lbl">Index</span>
+              <span className="home-hero-meta-val">
+                {heroIndex.projectCount} projects · {heroIndex.essayCount} essays ·{" "}
+                {heroIndex.liveToolCount} live tools
+              </span>
+            </div>
           </div>
 
           <div className="home-hero-grid">
-            <div className="home-reveal home-reveal-delay-2 lg:ml-auto">
-              <h1 id="home-hero-heading" className="home-hero-title max-w-3xl">
-                I build products that make hard problems easier to act on.
-              </h1>
-              <p className="home-body home-hero-body max-w-3xl">
-                Product case studies, PM-focused AI writing, and interactive
-                fintech and analytics tools built to make complex choices
-                easier to inspect.
-              </p>
+            <div className="home-hero-copy home-reveal home-reveal-delay-2">
+              <div className="home-hero-copy-stack">
+                <p className="home-kicker mb-0">Product work, writing, and live tools</p>
+                <h1 id="home-hero-heading" className="home-hero-title">
+                  I build products that make hard problems <em>easier</em> to act on.
+                </h1>
+                <p className="home-body home-hero-body">
+                  Most of my work lives where product judgment, AI workflows,
+                  and clear decision support have to hold together at the same
+                  time. Case studies, PM-focused writing, and interactive
+                  fintech and analytics tools built to make complex choices
+                  easier to inspect.
+                </p>
+              </div>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="home-hero-actions">
                 <Link href="/portfolio" className="home-button home-button-secondary">
                   <Briefcase className="h-4 w-4" />
                   View projects
                 </Link>
-                <Link href="/about" className="home-button home-button-secondary">
+                <Link href="/writing" className="home-button home-button-secondary">
                   <Article className="h-4 w-4" />
-                  About
+                  Read writing
                 </Link>
+                <span
+                  className="home-hero-now-pill"
+                  role="status"
+                  aria-label="Available for new work"
+                >
+                  <span className="home-hero-now-dot" aria-hidden="true" />
+                  Available for new work
+                </span>
               </div>
             </div>
 
-            <div className="home-reveal home-reveal-delay-3 flex justify-center lg:justify-end">
+            <div className="home-hero-aside home-reveal home-reveal-delay-3">
               <div className="home-headshot-frame">
                 {/*
                  * unoptimized: the source is already a hand-tuned 90KB webp
@@ -146,6 +194,44 @@ export function HomePageContent({
                   priority
                   unoptimized
                 />
+                <div className="home-headshot-caption" aria-hidden="true">
+                  <span>Berkeley, CA</span>
+                  <span className="home-headshot-caption-dot" />
+                  <span>Open to roles</span>
+                </div>
+              </div>
+
+              <div className="home-hero-aside-chips">
+                {latestPost ? (
+                  <Link
+                    href={`/writing/${latestPost.slug}`}
+                    className="home-hero-aside-chip group"
+                  >
+                    <span className="home-hero-aside-chip-lbl">Latest</span>
+                    <span className="home-hero-aside-chip-val">{latestPost.title}</span>
+                  </Link>
+                ) : (
+                  <div className="home-hero-aside-chip">
+                    <span className="home-hero-aside-chip-lbl">Latest</span>
+                    <span className="home-hero-aside-chip-val">New writing in progress</span>
+                  </div>
+                )}
+                {featuredEssay && featuredEssay.slug !== latestPost?.slug ? (
+                  <Link
+                    href={`/writing/${featuredEssay.slug}`}
+                    className="home-hero-aside-chip group"
+                  >
+                    <span className="home-hero-aside-chip-lbl">Writing</span>
+                    <span className="home-hero-aside-chip-val">{featuredEssay.title}</span>
+                  </Link>
+                ) : (
+                  <Link href="/writing" className="home-hero-aside-chip group">
+                    <span className="home-hero-aside-chip-lbl">Writing</span>
+                    <span className="home-hero-aside-chip-val">
+                      Essays on PM, AI workflows, and fintech tools
+                    </span>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -204,8 +290,8 @@ export function HomePageContent({
             </div>
 
             <div className="home-reveal home-reveal-delay-1 h-full">
-              <div className="home-spotlight-board h-full" aria-hidden="true">
-                <div className="home-spotlight-note w-fit">Point of view</div>
+              <div className="home-spotlight-board" aria-hidden="true">
+                <div className="home-spotlight-note">Point of view</div>
                 <div className="home-spotlight-poster">
                   <span>Tradeoffs</span>
                   <span>legible.</span>
