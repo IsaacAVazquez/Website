@@ -13,13 +13,14 @@ This document tracked every design, styling, UI/UX, and accessibility issue foun
 | Bucket | Total | Shipped | No-op / superseded | Outstanding |
 |---|---|---|---|---|
 | **P0** | 30 | 30 | 0 | 0 |
-| **P1** | 39 | 28 | 7 | 4 |
+| **P1** | 39 | 31 | 7 | 1 |
 | **P2** | ~60 | 0 | 0 | ~60 |
 
 **Shipped via:**
 - **PR #88** — P0 pass (shell, writing, dashboard cross-cuts, fantasy/fintech/MBA P0s)
 - **PR #89** — P1 pass (shell, writing, portfolio, investments, MM, dashboards, fantasy/fintech/MBA P1s)
 - **PR #90** — Deferred items (DB-5 aria-controls, PA-4 polls dedup, SX-2/3 backoff + validation, NP-4 pagination, MM-5/PL-3 URL state, AW-4 button cleanup, AW-6 contrast bump)
+- **PR #91** — P1 cleanup (PL-4 empty/error states, PA-3 polling aria-live, NP-3 dropdown verification + polish, AW-5 legacy token policy banner)
 
 ---
 
@@ -35,15 +36,9 @@ This document tracked every design, styling, UI/UX, and accessibility issue foun
 
 ## 1. Outstanding P1 Items
 
-These are real bugs that should be fixed in the next release cycle.
-
 | # | Issue | Surface | File | Notes |
 |---|-------|---------|------|-------|
-| AW-5 | Legacy semantic tokens (`--surface-*`, `--text-*`, `--color-primary`) still aliased to `--home-*` in `globals.css`. New code should prefer `--home-*` directly. | Shell | `src/app/globals.css` | The aliases are intentional cascade safety net. Treat as a soft policy: lint or comment-banner discourages new usage. Full migration is its own PR. |
 | CT-1 | No contact form exists — only email and LinkedIn CTAs. Either implement with labels/validation/error/success states or document the links-only choice. | Contact | `src/components/ContactContent.tsx` | Product decision required before implementation. |
-| PL-4 | Empty/error states inconsistent — some use `StatusPanel`, others raw prose. | Premier League | `premier-league-client.tsx:534–548` | Audit usages; unify on `StatusPanel`. |
-| PA-3 | `aria-live="polite"` on RaceSidebar but state changes don't actually trigger announcements; dynamic updates are silent to screen readers. | Polling | `polling-aggregator-client.tsx:234` | Verify the live region wraps the changing content (not just the container) and that the announced text actually changes between selections. |
-| NP-3 | `SourceDropdown` Escape handling and focus trap rely on Radix defaults — needs explicit verification that Esc closes consistently and focus returns to the trigger. | News Pulse | `news-pulse-client.tsx:261–307` | If Radix handles it cleanly, close as no-op with a brief test note. |
 
 ---
 
