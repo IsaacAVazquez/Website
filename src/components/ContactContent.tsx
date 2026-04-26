@@ -8,6 +8,15 @@ import {
   IconMapPin,
 } from "@tabler/icons-react";
 
+/**
+ * /contact intentionally ships as a links-only page (mailto + LinkedIn) — no
+ * form. A real form would mostly catch spam on a personal portfolio with an
+ * active LinkedIn presence, and the existing two CTAs already match how
+ * inbound actually arrives. Closes CT-1 from DESIGN_UX_AUDIT_PLAN.md.
+ *
+ * If a form is ever needed, the Resend pipeline used by the MBA internship
+ * digest (`/api/mba-jobs/email`) is the right place to model it after.
+ */
 export function ContactContent() {
   const shouldReduceMotion = useReducedMotion();
 
