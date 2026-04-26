@@ -120,6 +120,12 @@ function buildFeedErrorMessage(status: number, payload: FeedResponse | null): st
   return `Request failed with status ${status}.`;
 }
 
+/**
+ * Radix DropdownMenu handles Esc-to-close, click-outside dismiss, focus trap
+ * while open, and focus return to the trigger on close — verified against the
+ * @radix-ui/react-dropdown-menu source. Trigger ARIA attrs (aria-haspopup,
+ * aria-expanded, aria-controls) are forwarded automatically via `asChild`.
+ */
 function SourceDropdown({
   value,
   onValueChange,
@@ -132,7 +138,7 @@ function SourceDropdown({
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease"
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
           style={getPillStyle(false)}
           aria-label={`Source selector: ${SOURCE_LABELS[value]}`}
         >
@@ -143,7 +149,10 @@ function SourceDropdown({
             Source
           </span>
           <span>{SOURCE_LABELS[value]}</span>
-          <ChevronDown className="h-4 w-4" aria-hidden="true" />
+          <ChevronDown
+            className="h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-180"
+            aria-hidden="true"
+          />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
