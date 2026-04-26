@@ -1003,6 +1003,9 @@
     overflow: hidden;
     border-radius: 1.8rem;
     box-shadow: var(--shadow-xl);
+    /* Paper-toned fallback so an empty frame doesn't read as a hollow box
+       if the image ever fails to load (HP-1). */
+    background: color-mix(in srgb, var(--home-paper-alt) 92%, var(--home-elev-mix));
   }
 
   .home-pill {
