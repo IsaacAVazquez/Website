@@ -11,25 +11,41 @@ import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
 import { StaticHeader } from "@/components/StaticHeader";
 
+// Inter is body text everywhere, but Chrome was warning that the
+// preloaded weight subset wasn't used "within a few seconds" of the
+// load event — the wordmark uses Instrument Sans above the fold and
+// Inter sits below. preload: false skips the link-preload header; the
+// system font stack covers first paint and Inter swaps in as expected
+// once the woff2 lands. Weights are pinned to what we actually use so
+// Next doesn't ship extra weight subsets.
 const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
+  preload: false,
 });
 
+// JetBrains Mono only appears in code blocks / kicker meta. Skip the
+// link-preload so Chromium stops warning that it loaded but went unused
+// on pages with no code or meta — it still loads on demand.
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   display: "swap",
+  preload: false,
 });
 
 // Display-only fonts use display: "optional" so the browser falls back to
 // the system stack if the webfont isn't immediately available, avoiding the
 // late layout shift that swap can cause on these decorative families.
+// preload: false matches optional — preloading + skipping-on-late-load
+// triggered the "preloaded but not used" warnings on every page.
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument-sans",
   display: "optional",
+  preload: false,
 });
 
 const instrumentSerif = Instrument_Serif({
@@ -38,6 +54,7 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
   variable: "--font-instrument-serif",
   display: "optional",
+  preload: false,
 });
 
 export const metadata = constructMetadata();
