@@ -183,10 +183,13 @@ export function LaLigaClient({
   }
 
   function handleClubChange(clubId: string) {
-    navigate({
-      view: routeState.view,
-      club: canonicalizeLaLigaClubId(clubId) ?? DEFAULT_LA_LIGA_STATE.club,
-    });
+    const canonicalId = canonicalizeLaLigaClubId(clubId);
+    if (!canonicalId || !clubById.has(canonicalId)) {
+      // Invalid club id — keep the current selection rather than silently
+      // jumping to the default.
+      return;
+    }
+    navigate({ view: routeState.view, club: canonicalId });
   }
 
   useEffect(() => {

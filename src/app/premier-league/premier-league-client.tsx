@@ -403,8 +403,12 @@ export function PremierLeagueClient({
               })}
             </div>
 
+            <p className="mt-6 text-xs text-[var(--home-ink-muted)] md:hidden">
+              Some columns (PPG, Record, GF, GA) hide on narrow screens — rotate or widen the
+              viewport to see them.
+            </p>
             <div
-              className="scroll-shadow-x mt-6 overflow-x-auto"
+              className="scroll-shadow-x mt-3 overflow-x-auto md:mt-6"
               role="region"
               aria-label="Premier League standings (scrollable)"
               tabIndex={0}

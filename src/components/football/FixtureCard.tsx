@@ -19,6 +19,7 @@ const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZoneName: "short",
 });
 
 function formatFixtureDateTime(utcDate: string): string {

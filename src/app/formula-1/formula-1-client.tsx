@@ -493,7 +493,12 @@ function MeetingStrip({
   onSelect: (meetingKey: string) => void;
 }) {
   return (
-    <div className="flex gap-3 overflow-x-auto pb-1">
+    <div
+      className="scroll-shadow-x flex gap-3 overflow-x-auto pb-1"
+      role="region"
+      aria-label="Meetings (scrollable)"
+      tabIndex={0}
+    >
       {meetings.map((meeting) => {
         const isSelected = meeting.key === selectedMeetingKey;
         return (

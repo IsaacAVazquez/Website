@@ -204,16 +204,15 @@ function RaceRow({
 
   return (
     <tr
-      className="cursor-pointer border border-[var(--home-rule)] transition-colors"
+      className="border border-[var(--home-rule)] transition-colors"
       style={getRowStyle(isSelected)}
-      onClick={onClick}
       aria-selected={isSelected}
     >
       <td className="rounded-l-2xl px-3 py-3 align-middle">
         <button
           type="button"
-          className="flex min-h-[44px] w-full items-center gap-2 text-left"
-          onClick={(e) => { e.stopPropagation(); onClick(); }}
+          className="flex min-h-[44px] w-full items-center gap-2 rounded-md text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+          onClick={onClick}
           aria-label={`Show ${race.state} ${race.office} race`}
         >
           <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-xs font-bold border border-[var(--home-rule)] text-[var(--home-ink-muted)]">
