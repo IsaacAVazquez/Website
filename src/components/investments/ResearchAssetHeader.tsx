@@ -304,11 +304,6 @@ export function ResearchAssetHeader({
               <span className="research-badge-pill tag">{info.industry}</span>
             ) : null}
           </div>
-          <div className="research-key-metrics" role="list" aria-label="Key metrics">
-            {keyMetrics.map((metric) => (
-              <KeyMetricCell key={metric.label} metric={metric} />
-            ))}
-          </div>
         </div>
 
         <div className="research-asset-price">
@@ -333,6 +328,12 @@ export function ResearchAssetHeader({
             </span>
           </div>
         </div>
+      </div>
+
+      <div className="research-key-metrics" role="list" aria-label="Key metrics">
+        {keyMetrics.map((metric) => (
+          <KeyMetricCell key={metric.label} metric={metric} />
+        ))}
       </div>
 
       <div className="research-asset-actions">

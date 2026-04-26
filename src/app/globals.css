@@ -1722,6 +1722,24 @@ img {
 /* ==========================================================================
  * Investments dashboard — three-column shell adapted from the design handoff
  * ========================================================================== */
+.invest-page-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.invest-research-band {
+  border-radius: 28px;
+  border: 1px solid var(--home-rule);
+  background:
+    radial-gradient(circle at 6% -4%, color-mix(in srgb, var(--home-haze) 12%, transparent), transparent 32%),
+    color-mix(in srgb, var(--home-paper) 96%, var(--home-elev-mix));
+  box-shadow: var(--shadow-sm);
+  padding: 26px 30px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
 .invest-shell {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr) 290px;
@@ -2165,6 +2183,18 @@ img {
   min-width: 220px;
 }
 
+/* Stats grid cells — reserve consistent label/sub heights across the row */
+.invest-stats-cell-label {
+  min-height: calc(2 * 1.4em);
+  display: block;
+  line-height: 1.4;
+}
+.invest-stats-cell-sub {
+  min-height: 1.4em;
+  display: block;
+  line-height: 1.4;
+}
+
 /* Compact dataset freshness chip — replaces the wide banner */
 .invest-dataset-chip {
   display: flex;
@@ -2211,8 +2241,6 @@ img {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  padding-top: 8px;
-  border-top: 1px dashed var(--home-rule);
 }
 .invest-section-kicker {
   margin: 0;
@@ -2317,7 +2345,9 @@ img {
 .research-asset-bio--muted { font-style: italic; }
 
 .research-key-metrics {
-  margin-top: 12px;
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;

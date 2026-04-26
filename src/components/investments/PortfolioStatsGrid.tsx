@@ -110,7 +110,7 @@ function StatCell({ label, hint, value, sub, tone = "default", subTone = "defaul
   return (
     <div className="flex min-w-0 flex-col gap-1">
       <span
-        className="w-fit cursor-help text-[12.5px] font-medium text-[var(--home-ink-muted)] [text-decoration-color:color-mix(in_srgb,var(--home-ink)_28%,transparent)] [text-decoration-line:underline] [text-decoration-style:dotted] [text-underline-offset:3px]"
+        className="invest-stats-cell-label w-fit cursor-help text-[12.5px] font-medium text-[var(--home-ink-muted)] [text-decoration-color:color-mix(in_srgb,var(--home-ink)_28%,transparent)] [text-decoration-line:underline] [text-decoration-style:dotted] [text-underline-offset:3px]"
         title={hint}
       >
         {label}
@@ -120,9 +120,11 @@ function StatCell({ label, hint, value, sub, tone = "default", subTone = "defaul
       >
         {value}
       </span>
-      {sub ? (
-        <span className={`text-[11.5px] tabular-nums ${subColor}`}>{sub}</span>
-      ) : null}
+      <span
+        className={`invest-stats-cell-sub text-[11.5px] tabular-nums ${subColor}`}
+      >
+        {sub ?? " "}
+      </span>
     </div>
   );
 }

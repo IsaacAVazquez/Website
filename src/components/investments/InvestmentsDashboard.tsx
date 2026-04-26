@@ -134,6 +134,7 @@ export function InvestmentsDashboard({
   }
 
   return (
+    <div className="invest-page-stack">
     <div className="invest-shell" data-testid="invest-shell">
       <aside className="invest-sidebar" aria-label="Investments navigation">
         <div className="invest-brand">
@@ -251,27 +252,6 @@ export function InvestmentsDashboard({
               </p>
             </div>
           )}
-
-          {/* Research deep-dive section — picks up the symbol set by clicking
-              "Research" on a holding row, or by typing in the picker below. */}
-          <div ref={researchSectionRef} className="space-y-4">
-            <div className="invest-section-header">
-              <div>
-                <p className="invest-section-kicker">Deep dive</p>
-                <h2 className="invest-section-title">Research</h2>
-              </div>
-              <div className="invest-section-search">
-                <StockSearch value={researchSymbol} onChange={handleSymbolPick} />
-              </div>
-            </div>
-
-            <ResearchSection
-              symbol={researchSymbol}
-              activeTab={researchTab}
-              onTabChange={onResearchTabChange}
-              portfolioSymbols={portfolioSymbols}
-            />
-          </div>
         </div>
       </main>
 
@@ -339,6 +319,33 @@ export function InvestmentsDashboard({
           Holdings live only in your browser — no logins, no cloud sync.
         </p>
       </aside>
+    </div>
+
+    {/* Research deep-dive — full width below the shell so it doesn't leave
+        the rail empty next to a long single-asset view. Symbol comes from
+        clicking "Research" on a holding row or the picker below. */}
+    <section
+      ref={researchSectionRef}
+      className="invest-research-band"
+      aria-label="Research deep dive"
+    >
+      <div className="invest-section-header">
+        <div>
+          <p className="invest-section-kicker">Deep dive</p>
+          <h2 className="invest-section-title">Research</h2>
+        </div>
+        <div className="invest-section-search">
+          <StockSearch value={researchSymbol} onChange={handleSymbolPick} />
+        </div>
+      </div>
+
+      <ResearchSection
+        symbol={researchSymbol}
+        activeTab={researchTab}
+        onTabChange={onResearchTabChange}
+        portfolioSymbols={portfolioSymbols}
+      />
+    </section>
     </div>
   );
 }
