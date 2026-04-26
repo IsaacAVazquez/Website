@@ -10,7 +10,16 @@ import {
 } from "@tabler/icons-react";
 import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
-import type { CompanyInfo } from "@/types/investment";
+import type {
+  BetaData,
+  CompanyInfo,
+  DcfData,
+  Fundamentals,
+  MarginsData,
+  PriceData,
+  Profitability,
+  StockPrice,
+} from "@/types/investment";
 
 interface Props {
   symbol: string;
@@ -84,6 +93,73 @@ function logoChars(symbol: string): string {
   return symbol.replace(".", "").slice(0, 2).toUpperCase();
 }
 
+function formatCompactCurrency(n: number | undefined): string {
+  if (n === undefined || n === null || !Number.isFinite(n)) return "—";
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    notation: "compact",
+    maximumFractionDigits: 1,
+  }).format(n);
+}
+
+function formatRatio(n: number | undefined, decimals = 1): string {
+  if (n === undefined || n === null || !Number.isFinite(n)) return "—";
+  return n.toFixed(decimals);
+}
+
+function formatPercent1(n: number | undefined, signed = false): string {
+  if (n === undefined || n === null || !Number.isFinite(n)) return "—";
+  const sign = signed && n > 0 ? "+" : signed && n < 0 ? "−" : "";
+  return `${sign}${Math.abs(n).toFixed(1)}%`;
+}
+
+function formatRange(low: number | undefined, high: number | undefined): string {
+  if (low === undefined || high === undefined) return "—";
+  const fmt = (v: number) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }).format(v);
+  return `${fmt(low)}–${fmt(high)}`;
+}
+
+interface KeyMetric {
+  label: string;
+  hint: string;
+  value: string;
+  tone?: "default" | "pos" | "neg";
+}
+
+interface KeyMetricCellProps {
+  metric: KeyMetric;
+}
+
+function KeyMetricCell({ metric }: KeyMetricCellProps) {
+  const valueColor =
+    metric.tone === "pos"
+      ? "text-[var(--color-success)]"
+      : metric.tone === "neg"
+        ? "text-[var(--color-error)]"
+        : "text-[var(--home-ink)]";
+  return (
+    <div className="research-key-metric">
+      <span
+        className="research-key-metric-label"
+        title={metric.hint}
+      >
+        {metric.label}
+      </span>
+      <span
+        className={`research-key-metric-value ${valueColor}`}
+      >
+        {metric.value}
+      </span>
+    </div>
+  );
+}
+
 export function ResearchAssetHeader({
   symbol,
   isInPortfolio = false,
@@ -91,12 +167,93 @@ export function ResearchAssetHeader({
   onAddToPortfolio,
 }: Props) {
   const { data: info } = useStockData<CompanyInfo>(symbol || null, "info");
+  const { data: fundamentals } = useStockData<Fundamentals>(symbol || null, "fundamentals");
+  const { data: dcf } = useStockData<DcfData>(symbol || null, "dcf");
+  const { data: profitability } = useStockData<Profitability>(symbol || null, "profitability");
+  const { data: marginsRaw } = useStockData<MarginsData>(symbol || null, "margins");
+  const { data: beta } = useStockData<BetaData>(symbol || null, "beta");
+  const { data: priceRaw } = useStockData<PriceData>(symbol || null, "price");
   const {
     quote,
     isLoading: quoteLoading,
     error: quoteError,
     lastUpdated,
   } = useLiveQuote(symbol || null);
+
+  const margins = Array.isArray(marginsRaw) ? marginsRaw[marginsRaw.length - 1] : undefined;
+  const trailingYear = React.useMemo(() => {
+    if (!Array.isArray(priceRaw)) return [];
+    return (priceRaw as StockPrice[]).slice(-252);
+  }, [priceRaw]);
+  const trailingHigh = trailingYear.length
+    ? Math.max(...trailingYear.map((p) => p.high ?? p.close ?? 0))
+    : undefined;
+  const trailingLow = trailingYear.length
+    ? Math.min(...trailingYear.map((p) => p.low ?? p.close ?? 0))
+    : undefined;
+  const dcfUpside = dcf?.upside;
+
+  const keyMetrics: KeyMetric[] = [
+    {
+      label: "Market cap",
+      hint: "Total equity value at the latest close.",
+      value: formatCompactCurrency(fundamentals?.marketCap),
+    },
+    {
+      label: "P/E TTM",
+      hint: "Price to trailing-12-month earnings.",
+      value: formatRatio(fundamentals?.ttmPe, 1),
+    },
+    {
+      label: "EPS TTM",
+      hint: "Trailing-12-month earnings per share.",
+      value:
+        fundamentals?.ttmEps !== undefined
+          ? new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 }).format(fundamentals.ttmEps)
+          : "—",
+    },
+    {
+      label: "Net margin",
+      hint: "Trailing-12-month net income divided by revenue.",
+      value: formatPercent1(margins?.netMargin),
+    },
+    {
+      label: "ROIC",
+      hint: "Return on invested capital — how efficiently the business converts capital to profit.",
+      value: formatPercent1(profitability?.roic),
+      tone:
+        profitability?.roic === undefined
+          ? "default"
+          : profitability.roic >= 12
+            ? "pos"
+            : profitability.roic <= 5
+              ? "neg"
+              : "default",
+    },
+    {
+      label: "Beta 5Y",
+      hint: "Five-year price beta vs. the market.",
+      value: formatRatio(beta?.beta5y, 2),
+    },
+    {
+      label: "DCF upside",
+      hint: "Implied upside vs. the discounted-cash-flow fair value.",
+      value: formatPercent1(dcfUpside, true),
+      tone:
+        dcfUpside === undefined
+          ? "default"
+          : dcfUpside >= 15
+            ? "pos"
+            : dcfUpside <= -5
+              ? "neg"
+              : "default",
+    },
+    {
+      label: "52-week range",
+      hint: "Trailing 52-week intraday low / high from the price snapshot.",
+      value: formatRange(trailingLow, trailingHigh),
+    },
+  ];
 
   const upper = symbol.toUpperCase();
   const tone = tonForSymbol(upper);
@@ -147,15 +304,11 @@ export function ResearchAssetHeader({
               <span className="research-badge-pill tag">{info.industry}</span>
             ) : null}
           </div>
-          {info?.longBusinessSummary ? (
-            <p className="research-asset-bio">{info.longBusinessSummary}</p>
-          ) : (
-            <p className="research-asset-bio research-asset-bio--muted">
-              {quoteError && !info
-                ? "Live price is temporarily unavailable. Curated fundamentals below."
-                : "Loading company description…"}
-            </p>
-          )}
+          <div className="research-key-metrics" role="list" aria-label="Key metrics">
+            {keyMetrics.map((metric) => (
+              <KeyMetricCell key={metric.label} metric={metric} />
+            ))}
+          </div>
         </div>
 
         <div className="research-asset-price">
