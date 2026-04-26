@@ -450,6 +450,27 @@
     color: var(--text-secondary);
   }
 
+  /*
+   * Dark mode polish: the variables above already flip via the .dark class,
+   * but a few prose elements need explicit dark-mode overrides for adequate
+   * contrast in code blocks, blockquotes, and tables.
+   */
+  .dark .prose-writing pre {
+    background-color: color-mix(in srgb, var(--home-paper-alt) 70%, black);
+    border-color: var(--home-rule);
+  }
+  .dark .prose-writing :not(pre) > code {
+    background-color: color-mix(in srgb, var(--home-paper-alt) 80%, black);
+    border-color: var(--home-rule);
+  }
+  .dark .prose-writing blockquote {
+    background-color: color-mix(in srgb, var(--home-haze) 8%, var(--home-paper));
+  }
+  .dark .prose-writing th,
+  .dark .prose-writing td {
+    border-color: var(--home-rule);
+  }
+
   .max-inline-size-prose {
     max-inline-size: 65ch;
   }
@@ -1229,6 +1250,16 @@
   .header-home-link[aria-current="page"] {
     border-color: color-mix(in srgb, var(--home-ink) 14%, var(--home-stone));
     background: color-mix(in srgb, var(--home-paper) 78%, transparent);
+    color: var(--home-ink);
+  }
+
+  /*
+   * In dark mode the paper color is near-black, so a paper-tinted active pill
+   * disappears. Lift it with the ink color and a stronger border instead.
+   */
+  .dark .header-home-link[aria-current="page"] {
+    border-color: color-mix(in srgb, var(--home-ink) 32%, var(--home-stone));
+    background: color-mix(in srgb, var(--home-ink) 10%, var(--home-paper));
     color: var(--home-ink);
   }
 

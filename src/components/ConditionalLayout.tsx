@@ -15,12 +15,14 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const isHomePage = pathname === "/";
   const selfShellRoutes = new Set([
     "/about",
+    "/accessibility",
     "/changelog",
     "/contact",
     "/decision-lab",
     "/fantasy-football",
     "/fantasy-football/draft-tracker",
     "/fintech-tools/budget-planner",
+    "/fintech-tools/interchange-iq",
     "/formula-1",
     "/golf",
     "/investments",
@@ -49,9 +51,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
       <div className="min-h-screen">
         <main
           id="main-content"
-          role="main"
           aria-label={isHomePage ? "Isaac Vazquez Portfolio Homepage" : "Portfolio Content"}
-          tabIndex={-1}
         >
           {isHomePage ? (
             children

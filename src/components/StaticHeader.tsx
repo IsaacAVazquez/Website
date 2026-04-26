@@ -64,7 +64,7 @@ export function StaticHeader() {
         <div className="flex min-h-[72px] items-center justify-between gap-4 py-3">
           <Link
             href="/"
-            className="header-home-brand min-h-[44px] rounded-xl px-1 py-1 transition-colors hover:text-[var(--home-haze)]"
+            className="header-home-brand inline-flex min-h-[44px] min-w-[44px] items-center rounded-xl px-1 py-1 transition-colors hover:text-[var(--home-haze)]"
             onClick={closeMobileMenu}
           >
             Isaac Vazquez
