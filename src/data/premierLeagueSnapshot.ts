@@ -22,6 +22,25 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
     "standings": [
       {
         "position": 1,
+        "playedGames": 34,
+        "won": 22,
+        "draw": 7,
+        "lost": 5,
+        "points": 73,
+        "goalsFor": 64,
+        "goalsAgainst": 26,
+        "goalDifference": 38,
+        "team": {
+          "id": "57",
+          "name": "Arsenal FC",
+          "shortName": "Arsenal",
+          "tla": "ARS",
+          "crest": "https://crests.football-data.org/57.png",
+          "venue": null
+        }
+      },
+      {
+        "position": 2,
         "playedGames": 33,
         "won": 21,
         "draw": 7,
@@ -36,25 +55,6 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
           "shortName": "Man City",
           "tla": "MCI",
           "crest": "https://crests.football-data.org/65.png",
-          "venue": null
-        }
-      },
-      {
-        "position": 2,
-        "playedGames": 33,
-        "won": 21,
-        "draw": 7,
-        "lost": 5,
-        "points": 70,
-        "goalsFor": 63,
-        "goalsAgainst": 26,
-        "goalDifference": 37,
-        "team": {
-          "id": "57",
-          "name": "Arsenal FC",
-          "shortName": "Arsenal",
-          "tla": "ARS",
-          "crest": "https://crests.football-data.org/57.png",
           "venue": null
         }
       },
@@ -79,39 +79,39 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       },
       {
         "position": 4,
-        "playedGames": 33,
+        "playedGames": 34,
         "won": 17,
         "draw": 7,
-        "lost": 9,
-        "points": 58,
-        "goalsFor": 47,
-        "goalsAgainst": 41,
-        "goalDifference": 6,
-        "team": {
-          "id": "58",
-          "name": "Aston Villa FC",
-          "shortName": "Aston Villa",
-          "tla": "AVL",
-          "crest": "https://crests.football-data.org/58.png",
-          "venue": null
-        }
-      },
-      {
-        "position": 5,
-        "playedGames": 33,
-        "won": 16,
-        "draw": 7,
         "lost": 10,
-        "points": 55,
-        "goalsFor": 54,
-        "goalsAgainst": 43,
-        "goalDifference": 11,
+        "points": 58,
+        "goalsFor": 57,
+        "goalsAgainst": 44,
+        "goalDifference": 13,
         "team": {
           "id": "64",
           "name": "Liverpool FC",
           "shortName": "Liverpool",
           "tla": "LIV",
           "crest": "https://crests.football-data.org/64.png",
+          "venue": null
+        }
+      },
+      {
+        "position": 5,
+        "playedGames": 34,
+        "won": 17,
+        "draw": 7,
+        "lost": 10,
+        "points": 58,
+        "goalsFor": 47,
+        "goalsAgainst": 42,
+        "goalDifference": 5,
+        "team": {
+          "id": "58",
+          "name": "Aston Villa FC",
+          "shortName": "Aston Villa",
+          "tla": "AVL",
+          "crest": "https://crests.football-data.org/58.png",
           "venue": null
         }
       },
@@ -193,14 +193,33 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       },
       {
         "position": 10,
-        "playedGames": 33,
+        "playedGames": 34,
+        "won": 14,
+        "draw": 6,
+        "lost": 14,
+        "points": 48,
+        "goalsFor": 44,
+        "goalsAgainst": 46,
+        "goalDifference": -2,
+        "team": {
+          "id": "63",
+          "name": "Fulham FC",
+          "shortName": "Fulham",
+          "tla": "FUL",
+          "crest": "https://crests.football-data.org/63.png",
+          "venue": null
+        }
+      },
+      {
+        "position": 11,
+        "playedGames": 34,
         "won": 13,
         "draw": 8,
-        "lost": 12,
+        "lost": 13,
         "points": 47,
-        "goalsFor": 40,
-        "goalsAgainst": 39,
-        "goalDifference": 1,
+        "goalsFor": 41,
+        "goalsAgainst": 41,
+        "goalDifference": 0,
         "team": {
           "id": "62",
           "name": "Everton FC",
@@ -211,7 +230,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 11,
+        "position": 12,
         "playedGames": 34,
         "won": 12,
         "draw": 10,
@@ -230,34 +249,15 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         }
       },
       {
-        "position": 12,
-        "playedGames": 33,
-        "won": 13,
-        "draw": 6,
-        "lost": 14,
-        "points": 45,
-        "goalsFor": 43,
-        "goalsAgainst": 46,
-        "goalDifference": -3,
-        "team": {
-          "id": "63",
-          "name": "Fulham FC",
-          "shortName": "Fulham",
-          "tla": "FUL",
-          "crest": "https://crests.football-data.org/63.png",
-          "venue": null
-        }
-      },
-      {
         "position": 13,
-        "playedGames": 32,
+        "playedGames": 33,
         "won": 11,
         "draw": 10,
-        "lost": 11,
+        "lost": 12,
         "points": 43,
-        "goalsFor": 35,
-        "goalsAgainst": 36,
-        "goalDifference": -1,
+        "goalsFor": 36,
+        "goalsAgainst": 39,
+        "goalDifference": -3,
         "team": {
           "id": "354",
           "name": "Crystal Palace FC",
@@ -269,14 +269,14 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       },
       {
         "position": 14,
-        "playedGames": 33,
+        "playedGames": 34,
         "won": 12,
         "draw": 6,
-        "lost": 15,
+        "lost": 16,
         "points": 42,
         "goalsFor": 46,
-        "goalsAgainst": 49,
-        "goalDifference": -3,
+        "goalsAgainst": 50,
+        "goalDifference": -4,
         "team": {
           "id": "67",
           "name": "Newcastle United FC",
@@ -326,14 +326,14 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       },
       {
         "position": 17,
-        "playedGames": 33,
-        "won": 8,
+        "playedGames": 34,
+        "won": 9,
         "draw": 9,
         "lost": 16,
-        "points": 33,
-        "goalsFor": 40,
-        "goalsAgainst": 57,
-        "goalDifference": -17,
+        "points": 36,
+        "goalsFor": 42,
+        "goalsAgainst": 58,
+        "goalDifference": -16,
         "team": {
           "id": "563",
           "name": "West Ham United FC",
@@ -345,14 +345,14 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       },
       {
         "position": 18,
-        "playedGames": 33,
-        "won": 7,
+        "playedGames": 34,
+        "won": 8,
         "draw": 10,
         "lost": 16,
-        "points": 31,
-        "goalsFor": 42,
+        "points": 34,
+        "goalsFor": 43,
         "goalsAgainst": 53,
-        "goalDifference": -11,
+        "goalDifference": -10,
         "team": {
           "id": "73",
           "name": "Tottenham Hotspur FC",
@@ -383,14 +383,14 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       },
       {
         "position": 20,
-        "playedGames": 33,
+        "playedGames": 34,
         "won": 3,
         "draw": 8,
-        "lost": 22,
+        "lost": 23,
         "points": 17,
         "goalsFor": 24,
-        "goalsAgainst": 61,
-        "goalDifference": -37,
+        "goalsAgainst": 62,
+        "goalDifference": -38,
         "team": {
           "id": "76",
           "name": "Wolverhampton Wanderers FC",
@@ -402,6 +402,136 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       }
     ],
     "recentFixtures": [
+      {
+        "id": "538118",
+        "utcDate": "2026-04-25T16:30:00Z",
+        "status": "FINISHED",
+        "matchday": 34,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "57",
+          "name": "Arsenal FC",
+          "shortName": "Arsenal",
+          "tla": "ARS",
+          "crest": "https://crests.football-data.org/57.png"
+        },
+        "awayTeam": {
+          "id": "67",
+          "name": "Newcastle United FC",
+          "shortName": "Newcastle",
+          "tla": "NEW",
+          "crest": "https://crests.football-data.org/67.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 1,
+          "away": 0
+        }
+      },
+      {
+        "id": "538121",
+        "utcDate": "2026-04-25T14:00:00Z",
+        "status": "FINISHED",
+        "matchday": 34,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "64",
+          "name": "Liverpool FC",
+          "shortName": "Liverpool",
+          "tla": "LIV",
+          "crest": "https://crests.football-data.org/64.png"
+        },
+        "awayTeam": {
+          "id": "354",
+          "name": "Crystal Palace FC",
+          "shortName": "Crystal Palace",
+          "tla": "CRY",
+          "crest": "https://crests.football-data.org/354.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 3,
+          "away": 1
+        }
+      },
+      {
+        "id": "538123",
+        "utcDate": "2026-04-25T14:00:00Z",
+        "status": "FINISHED",
+        "matchday": 34,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "563",
+          "name": "West Ham United FC",
+          "shortName": "West Ham",
+          "tla": "WHU",
+          "crest": "https://crests.football-data.org/563.png"
+        },
+        "awayTeam": {
+          "id": "62",
+          "name": "Everton FC",
+          "shortName": "Everton",
+          "tla": "EVE",
+          "crest": "https://crests.football-data.org/62.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 2,
+          "away": 1
+        }
+      },
+      {
+        "id": "538124",
+        "utcDate": "2026-04-25T14:00:00Z",
+        "status": "FINISHED",
+        "matchday": 34,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "76",
+          "name": "Wolverhampton Wanderers FC",
+          "shortName": "Wolverhampton",
+          "tla": "WOL",
+          "crest": "https://crests.football-data.org/76.png"
+        },
+        "awayTeam": {
+          "id": "73",
+          "name": "Tottenham Hotspur FC",
+          "shortName": "Tottenham",
+          "tla": "TOT",
+          "crest": "https://crests.football-data.org/73.png"
+        },
+        "score": {
+          "winner": "AWAY_TEAM",
+          "home": 0,
+          "away": 1
+        }
+      },
+      {
+        "id": "538120",
+        "utcDate": "2026-04-25T11:30:00Z",
+        "status": "FINISHED",
+        "matchday": 34,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "63",
+          "name": "Fulham FC",
+          "shortName": "Fulham",
+          "tla": "FUL",
+          "crest": "https://crests.football-data.org/63.png"
+        },
+        "awayTeam": {
+          "id": "58",
+          "name": "Aston Villa FC",
+          "shortName": "Aston Villa",
+          "tla": "AVL",
+          "crest": "https://crests.football-data.org/58.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 1,
+          "away": 0
+        }
+      },
       {
         "id": "538116",
         "utcDate": "2026-04-24T19:00:00Z",
@@ -479,269 +609,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
           "home": 0,
           "away": 1
         }
-      },
-      {
-        "id": "538117",
-        "utcDate": "2026-04-21T19:00:00Z",
-        "status": "FINISHED",
-        "matchday": 34,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "397",
-          "name": "Brighton & Hove Albion FC",
-          "shortName": "Brighton Hove",
-          "tla": "BHA",
-          "crest": "https://crests.football-data.org/397.png"
-        },
-        "awayTeam": {
-          "id": "61",
-          "name": "Chelsea FC",
-          "shortName": "Chelsea",
-          "tla": "CHE",
-          "crest": "https://crests.football-data.org/61.png"
-        },
-        "score": {
-          "winner": "HOME_TEAM",
-          "home": 3,
-          "away": 0
-        }
-      },
-      {
-        "id": "538106",
-        "utcDate": "2026-04-20T19:00:00Z",
-        "status": "FINISHED",
-        "matchday": 33,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "354",
-          "name": "Crystal Palace FC",
-          "shortName": "Crystal Palace",
-          "tla": "CRY",
-          "crest": "https://crests.football-data.org/354.png"
-        },
-        "awayTeam": {
-          "id": "563",
-          "name": "West Ham United FC",
-          "shortName": "West Ham",
-          "tla": "WHU",
-          "crest": "https://crests.football-data.org/563.png"
-        },
-        "score": {
-          "winner": "DRAW",
-          "home": 0,
-          "away": 0
-        }
-      },
-      {
-        "id": "538111",
-        "utcDate": "2026-04-19T15:30:00Z",
-        "status": "FINISHED",
-        "matchday": 33,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "65",
-          "name": "Manchester City FC",
-          "shortName": "Man City",
-          "tla": "MCI",
-          "crest": "https://crests.football-data.org/65.png"
-        },
-        "awayTeam": {
-          "id": "57",
-          "name": "Arsenal FC",
-          "shortName": "Arsenal",
-          "tla": "ARS",
-          "crest": "https://crests.football-data.org/57.png"
-        },
-        "score": {
-          "winner": "HOME_TEAM",
-          "home": 2,
-          "away": 1
-        }
-      },
-      {
-        "id": "538113",
-        "utcDate": "2026-04-19T13:00:00Z",
-        "status": "FINISHED",
-        "matchday": 33,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "351",
-          "name": "Nottingham Forest FC",
-          "shortName": "Nottingham",
-          "tla": "NOT",
-          "crest": "https://crests.football-data.org/351.png"
-        },
-        "awayTeam": {
-          "id": "328",
-          "name": "Burnley FC",
-          "shortName": "Burnley",
-          "tla": "BUR",
-          "crest": "https://crests.football-data.org/328.png"
-        },
-        "score": {
-          "winner": "HOME_TEAM",
-          "home": 4,
-          "away": 1
-        }
-      },
-      {
-        "id": "538105",
-        "utcDate": "2026-04-19T13:00:00Z",
-        "status": "FINISHED",
-        "matchday": 33,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "58",
-          "name": "Aston Villa FC",
-          "shortName": "Aston Villa",
-          "tla": "AVL",
-          "crest": "https://crests.football-data.org/58.png"
-        },
-        "awayTeam": {
-          "id": "71",
-          "name": "Sunderland AFC",
-          "shortName": "Sunderland",
-          "tla": "SUN",
-          "crest": "https://crests.football-data.org/71.png"
-        },
-        "score": {
-          "winner": "HOME_TEAM",
-          "home": 4,
-          "away": 3
-        }
       }
     ],
     "upcomingFixtures": [
-      {
-        "id": "538120",
-        "utcDate": "2026-04-25T11:30:00Z",
-        "status": "TIMED",
-        "matchday": 34,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "63",
-          "name": "Fulham FC",
-          "shortName": "Fulham",
-          "tla": "FUL",
-          "crest": "https://crests.football-data.org/63.png"
-        },
-        "awayTeam": {
-          "id": "58",
-          "name": "Aston Villa FC",
-          "shortName": "Aston Villa",
-          "tla": "AVL",
-          "crest": "https://crests.football-data.org/58.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
-        "id": "538121",
-        "utcDate": "2026-04-25T14:00:00Z",
-        "status": "TIMED",
-        "matchday": 34,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "64",
-          "name": "Liverpool FC",
-          "shortName": "Liverpool",
-          "tla": "LIV",
-          "crest": "https://crests.football-data.org/64.png"
-        },
-        "awayTeam": {
-          "id": "354",
-          "name": "Crystal Palace FC",
-          "shortName": "Crystal Palace",
-          "tla": "CRY",
-          "crest": "https://crests.football-data.org/354.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
-        "id": "538123",
-        "utcDate": "2026-04-25T14:00:00Z",
-        "status": "TIMED",
-        "matchday": 34,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "563",
-          "name": "West Ham United FC",
-          "shortName": "West Ham",
-          "tla": "WHU",
-          "crest": "https://crests.football-data.org/563.png"
-        },
-        "awayTeam": {
-          "id": "62",
-          "name": "Everton FC",
-          "shortName": "Everton",
-          "tla": "EVE",
-          "crest": "https://crests.football-data.org/62.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
-        "id": "538124",
-        "utcDate": "2026-04-25T14:00:00Z",
-        "status": "TIMED",
-        "matchday": 34,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "76",
-          "name": "Wolverhampton Wanderers FC",
-          "shortName": "Wolverhampton",
-          "tla": "WOL",
-          "crest": "https://crests.football-data.org/76.png"
-        },
-        "awayTeam": {
-          "id": "73",
-          "name": "Tottenham Hotspur FC",
-          "shortName": "Tottenham",
-          "tla": "TOT",
-          "crest": "https://crests.football-data.org/73.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
-        "id": "538118",
-        "utcDate": "2026-04-25T16:30:00Z",
-        "status": "TIMED",
-        "matchday": 34,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "57",
-          "name": "Arsenal FC",
-          "shortName": "Arsenal",
-          "tla": "ARS",
-          "crest": "https://crests.football-data.org/57.png"
-        },
-        "awayTeam": {
-          "id": "67",
-          "name": "Newcastle United FC",
-          "shortName": "Newcastle",
-          "tla": "NEW",
-          "crest": "https://crests.football-data.org/67.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
       {
         "id": "538122",
         "utcDate": "2026-04-27T19:00:00Z",
@@ -813,6 +683,136 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
           "shortName": "West Ham",
           "tla": "WHU",
           "crest": "https://crests.football-data.org/563.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "538133",
+        "utcDate": "2026-05-02T14:00:00Z",
+        "status": "TIMED",
+        "matchday": 35,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "67",
+          "name": "Newcastle United FC",
+          "shortName": "Newcastle",
+          "tla": "NEW",
+          "crest": "https://crests.football-data.org/67.png"
+        },
+        "awayTeam": {
+          "id": "397",
+          "name": "Brighton & Hove Albion FC",
+          "shortName": "Brighton Hove",
+          "tla": "BHA",
+          "crest": "https://crests.football-data.org/397.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "538134",
+        "utcDate": "2026-05-02T14:00:00Z",
+        "status": "TIMED",
+        "matchday": 35,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "76",
+          "name": "Wolverhampton Wanderers FC",
+          "shortName": "Wolverhampton",
+          "tla": "WOL",
+          "crest": "https://crests.football-data.org/76.png"
+        },
+        "awayTeam": {
+          "id": "71",
+          "name": "Sunderland AFC",
+          "shortName": "Sunderland",
+          "tla": "SUN",
+          "crest": "https://crests.football-data.org/71.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "538127",
+        "utcDate": "2026-05-02T16:30:00Z",
+        "status": "TIMED",
+        "matchday": 35,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "57",
+          "name": "Arsenal FC",
+          "shortName": "Arsenal",
+          "tla": "ARS",
+          "crest": "https://crests.football-data.org/57.png"
+        },
+        "awayTeam": {
+          "id": "63",
+          "name": "Fulham FC",
+          "shortName": "Fulham",
+          "tla": "FUL",
+          "crest": "https://crests.football-data.org/63.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "538125",
+        "utcDate": "2026-05-03T13:00:00Z",
+        "status": "TIMED",
+        "matchday": 35,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "1044",
+          "name": "AFC Bournemouth",
+          "shortName": "Bournemouth",
+          "tla": "BOU",
+          "crest": "https://crests.football-data.org/bournemouth.png"
+        },
+        "awayTeam": {
+          "id": "354",
+          "name": "Crystal Palace FC",
+          "shortName": "Crystal Palace",
+          "tla": "CRY",
+          "crest": "https://crests.football-data.org/354.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "538132",
+        "utcDate": "2026-05-03T14:30:00Z",
+        "status": "TIMED",
+        "matchday": 35,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "66",
+          "name": "Manchester United FC",
+          "shortName": "Man United",
+          "tla": "MUN",
+          "crest": "https://crests.football-data.org/66.png"
+        },
+        "awayTeam": {
+          "id": "64",
+          "name": "Liverpool FC",
+          "shortName": "Liverpool",
+          "tla": "LIV",
+          "crest": "https://crests.football-data.org/64.png"
         },
         "score": {
           "winner": null,
@@ -1045,7 +1045,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "teamName": "Arsenal",
         "goals": 12,
         "assists": 0,
-        "appearances": 31
+        "appearances": 32
       },
       {
         "rank": 8,
@@ -1075,7 +1075,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "appearances": 34
       }
     ],
-    "generatedAt": "2026-04-25T07:47:43.396Z"
+    "generatedAt": "2026-04-26T07:56:09.092Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1092,6 +1092,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "75 Drayton Park London N5 1BU"
       },
       "recentFixtures": [
+        {
+          "id": "538118",
+          "utcDate": "2026-04-25T16:30:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "57",
+            "name": "Arsenal FC",
+            "shortName": "Arsenal",
+            "tla": "ARS",
+            "crest": "https://crests.football-data.org/57.png"
+          },
+          "awayTeam": {
+            "id": "67",
+            "name": "Newcastle United FC",
+            "shortName": "Newcastle",
+            "tla": "NEW",
+            "crest": "https://crests.football-data.org/67.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 1,
+            "away": 0
+          }
+        },
         {
           "id": "538111",
           "utcDate": "2026-04-19T15:30:00Z",
@@ -1195,61 +1221,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": 0,
             "away": 1
           }
-        },
-        {
-          "id": "538057",
-          "utcDate": "2026-03-01T16:30:00Z",
-          "status": "FINISHED",
-          "matchday": 28,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "57",
-            "name": "Arsenal FC",
-            "shortName": "Arsenal",
-            "tla": "ARS",
-            "crest": "https://crests.football-data.org/57.png"
-          },
-          "awayTeam": {
-            "id": "61",
-            "name": "Chelsea FC",
-            "shortName": "Chelsea",
-            "tla": "CHE",
-            "crest": "https://crests.football-data.org/61.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 2,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "538118",
-          "utcDate": "2026-04-25T16:30:00Z",
-          "status": "TIMED",
-          "matchday": 34,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "57",
-            "name": "Arsenal FC",
-            "shortName": "Arsenal",
-            "tla": "ARS",
-            "crest": "https://crests.football-data.org/57.png"
-          },
-          "awayTeam": {
-            "id": "67",
-            "name": "Newcastle United FC",
-            "shortName": "Newcastle",
-            "tla": "NEW",
-            "crest": "https://crests.football-data.org/67.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "538127",
           "utcDate": "2026-05-02T16:30:00Z",
@@ -1357,9 +1331,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       ],
       "form": {
         "sequence": [
-          "L",
-          "L",
           "W",
+          "L",
+          "L",
           "W",
           "W"
         ],
@@ -1367,10 +1341,10 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "draws": 0,
         "losses": 2,
         "points": 9,
-        "goalsFor": 7,
-        "goalsAgainst": 5
+        "goalsFor": 6,
+        "goalsAgainst": 4
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "58": {
       "team": {
@@ -1386,6 +1360,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Villa Park Birmingham B6 6HE"
       },
       "recentFixtures": [
+        {
+          "id": "538120",
+          "utcDate": "2026-04-25T11:30:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "63",
+            "name": "Fulham FC",
+            "shortName": "Fulham",
+            "tla": "FUL",
+            "crest": "https://crests.football-data.org/63.png"
+          },
+          "awayTeam": {
+            "id": "58",
+            "name": "Aston Villa FC",
+            "shortName": "Aston Villa",
+            "tla": "AVL",
+            "crest": "https://crests.football-data.org/58.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 1,
+            "away": 0
+          }
+        },
         {
           "id": "538105",
           "utcDate": "2026-04-19T13:00:00Z",
@@ -1489,61 +1489,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": 3,
             "away": 1
           }
-        },
-        {
-          "id": "538066",
-          "utcDate": "2026-03-04T19:30:00Z",
-          "status": "FINISHED",
-          "matchday": 29,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "58",
-            "name": "Aston Villa FC",
-            "shortName": "Aston Villa",
-            "tla": "AVL",
-            "crest": "https://crests.football-data.org/58.png"
-          },
-          "awayTeam": {
-            "id": "61",
-            "name": "Chelsea FC",
-            "shortName": "Chelsea",
-            "tla": "CHE",
-            "crest": "https://crests.football-data.org/61.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 4
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "538120",
-          "utcDate": "2026-04-25T11:30:00Z",
-          "status": "TIMED",
-          "matchday": 34,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "63",
-            "name": "Fulham FC",
-            "shortName": "Fulham",
-            "tla": "FUL",
-            "crest": "https://crests.football-data.org/63.png"
-          },
-          "awayTeam": {
-            "id": "58",
-            "name": "Aston Villa FC",
-            "shortName": "Aston Villa",
-            "tla": "AVL",
-            "crest": "https://crests.football-data.org/58.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "538126",
           "utcDate": "2026-05-03T18:00:00Z",
@@ -1651,20 +1599,20 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       ],
       "form": {
         "sequence": [
+          "L",
           "W",
           "D",
           "W",
-          "L",
           "L"
         ],
         "wins": 2,
         "draws": 1,
         "losses": 2,
         "points": 7,
-        "goalsFor": 9,
-        "goalsAgainst": 11
+        "goalsFor": 8,
+        "goalsAgainst": 8
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "61": {
       "team": {
@@ -1932,7 +1880,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 0,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "62": {
       "team": {
@@ -1948,6 +1896,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Goodison Park Liverpool L4 4EL"
       },
       "recentFixtures": [
+        {
+          "id": "538123",
+          "utcDate": "2026-04-25T14:00:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "563",
+            "name": "West Ham United FC",
+            "shortName": "West Ham",
+            "tla": "WHU",
+            "crest": "https://crests.football-data.org/563.png"
+          },
+          "awayTeam": {
+            "id": "62",
+            "name": "Everton FC",
+            "shortName": "Everton",
+            "tla": "EVE",
+            "crest": "https://crests.football-data.org/62.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        },
         {
           "id": "538109",
           "utcDate": "2026-04-19T13:00:00Z",
@@ -2051,61 +2025,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": 2,
             "away": 0
           }
-        },
-        {
-          "id": "538068",
-          "utcDate": "2026-03-03T19:30:00Z",
-          "status": "FINISHED",
-          "matchday": 29,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "62",
-            "name": "Everton FC",
-            "shortName": "Everton",
-            "tla": "EVE",
-            "crest": "https://crests.football-data.org/62.png"
-          },
-          "awayTeam": {
-            "id": "328",
-            "name": "Burnley FC",
-            "shortName": "Burnley",
-            "tla": "BUR",
-            "crest": "https://crests.football-data.org/328.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 2,
-            "away": 0
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "538123",
-          "utcDate": "2026-04-25T14:00:00Z",
-          "status": "TIMED",
-          "matchday": 34,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "563",
-            "name": "West Ham United FC",
-            "shortName": "West Ham",
-            "tla": "WHU",
-            "crest": "https://crests.football-data.org/563.png"
-          },
-          "awayTeam": {
-            "id": "62",
-            "name": "Everton FC",
-            "shortName": "Everton",
-            "tla": "EVE",
-            "crest": "https://crests.football-data.org/62.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "538130",
           "utcDate": "2026-05-04T19:00:00Z",
@@ -2214,19 +2136,19 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       "form": {
         "sequence": [
           "L",
+          "L",
           "D",
           "W",
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 2,
+        "wins": 1,
         "draws": 1,
-        "losses": 2,
-        "points": 7,
-        "goalsFor": 8,
-        "goalsAgainst": 6
+        "losses": 3,
+        "points": 4,
+        "goalsFor": 7,
+        "goalsAgainst": 8
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "63": {
       "team": {
@@ -2242,6 +2164,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Craven Cottage, Stevenage Road London SW6 6HH"
       },
       "recentFixtures": [
+        {
+          "id": "538120",
+          "utcDate": "2026-04-25T11:30:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "63",
+            "name": "Fulham FC",
+            "shortName": "Fulham",
+            "tla": "FUL",
+            "crest": "https://crests.football-data.org/63.png"
+          },
+          "awayTeam": {
+            "id": "58",
+            "name": "Aston Villa FC",
+            "shortName": "Aston Villa",
+            "tla": "AVL",
+            "crest": "https://crests.football-data.org/58.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 1,
+            "away": 0
+          }
+        },
         {
           "id": "538107",
           "utcDate": "2026-04-18T11:30:00Z",
@@ -2345,61 +2293,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": 0,
             "away": 0
           }
-        },
-        {
-          "id": "538069",
-          "utcDate": "2026-03-04T19:30:00Z",
-          "status": "FINISHED",
-          "matchday": 29,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "63",
-            "name": "Fulham FC",
-            "shortName": "Fulham",
-            "tla": "FUL",
-            "crest": "https://crests.football-data.org/63.png"
-          },
-          "awayTeam": {
-            "id": "563",
-            "name": "West Ham United FC",
-            "shortName": "West Ham",
-            "tla": "WHU",
-            "crest": "https://crests.football-data.org/563.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "538120",
-          "utcDate": "2026-04-25T11:30:00Z",
-          "status": "TIMED",
-          "matchday": 34,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "63",
-            "name": "Fulham FC",
-            "shortName": "Fulham",
-            "tla": "FUL",
-            "crest": "https://crests.football-data.org/63.png"
-          },
-          "awayTeam": {
-            "id": "58",
-            "name": "Aston Villa FC",
-            "shortName": "Aston Villa",
-            "tla": "AVL",
-            "crest": "https://crests.football-data.org/58.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "538127",
           "utcDate": "2026-05-02T16:30:00Z",
@@ -2507,20 +2403,20 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       ],
       "form": {
         "sequence": [
+          "W",
           "D",
           "L",
           "W",
-          "D",
-          "L"
+          "D"
         ],
-        "wins": 1,
+        "wins": 2,
         "draws": 2,
-        "losses": 2,
-        "points": 5,
-        "goalsFor": 3,
-        "goalsAgainst": 4
+        "losses": 1,
+        "points": 8,
+        "goalsFor": 4,
+        "goalsAgainst": 3
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "64": {
       "team": {
@@ -2536,6 +2432,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Anfield Road Liverpool L4 0TH"
       },
       "recentFixtures": [
+        {
+          "id": "538121",
+          "utcDate": "2026-04-25T14:00:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "64",
+            "name": "Liverpool FC",
+            "shortName": "Liverpool",
+            "tla": "LIV",
+            "crest": "https://crests.football-data.org/64.png"
+          },
+          "awayTeam": {
+            "id": "354",
+            "name": "Crystal Palace FC",
+            "shortName": "Crystal Palace",
+            "tla": "CRY",
+            "crest": "https://crests.football-data.org/354.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 1
+          }
+        },
         {
           "id": "538109",
           "utcDate": "2026-04-19T13:00:00Z",
@@ -2639,61 +2561,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": 1,
             "away": 1
           }
-        },
-        {
-          "id": "538074",
-          "utcDate": "2026-03-03T20:15:00Z",
-          "status": "FINISHED",
-          "matchday": 29,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "76",
-            "name": "Wolverhampton Wanderers FC",
-            "shortName": "Wolverhampton",
-            "tla": "WOL",
-            "crest": "https://crests.football-data.org/76.png"
-          },
-          "awayTeam": {
-            "id": "64",
-            "name": "Liverpool FC",
-            "shortName": "Liverpool",
-            "tla": "LIV",
-            "crest": "https://crests.football-data.org/64.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 2,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "538121",
-          "utcDate": "2026-04-25T14:00:00Z",
-          "status": "TIMED",
-          "matchday": 34,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "64",
-            "name": "Liverpool FC",
-            "shortName": "Liverpool",
-            "tla": "LIV",
-            "crest": "https://crests.football-data.org/64.png"
-          },
-          "awayTeam": {
-            "id": "354",
-            "name": "Crystal Palace FC",
-            "shortName": "Crystal Palace",
-            "tla": "CRY",
-            "crest": "https://crests.football-data.org/354.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "538132",
           "utcDate": "2026-05-03T14:30:00Z",
@@ -2803,18 +2673,18 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "sequence": [
           "W",
           "W",
+          "W",
           "L",
-          "D",
-          "L"
+          "D"
         ],
-        "wins": 2,
+        "wins": 3,
         "draws": 1,
-        "losses": 2,
-        "points": 7,
-        "goalsFor": 7,
-        "goalsAgainst": 6
+        "losses": 1,
+        "points": 10,
+        "goalsFor": 9,
+        "goalsAgainst": 5
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "65": {
       "team": {
@@ -3082,7 +2952,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 9,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "66": {
       "team": {
@@ -3376,7 +3246,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 8,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "67": {
       "team": {
@@ -3392,6 +3262,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Sports Direct Arena Newcastle upon Tyne NE1 4ST"
       },
       "recentFixtures": [
+        {
+          "id": "538118",
+          "utcDate": "2026-04-25T16:30:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "57",
+            "name": "Arsenal FC",
+            "shortName": "Arsenal",
+            "tla": "ARS",
+            "crest": "https://crests.football-data.org/57.png"
+          },
+          "awayTeam": {
+            "id": "67",
+            "name": "Newcastle United FC",
+            "shortName": "Newcastle",
+            "tla": "NEW",
+            "crest": "https://crests.football-data.org/67.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 1,
+            "away": 0
+          }
+        },
         {
           "id": "538112",
           "utcDate": "2026-04-18T14:00:00Z",
@@ -3495,61 +3391,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": 0,
             "away": 1
           }
-        },
-        {
-          "id": "538072",
-          "utcDate": "2026-03-04T20:15:00Z",
-          "status": "FINISHED",
-          "matchday": 29,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "67",
-            "name": "Newcastle United FC",
-            "shortName": "Newcastle",
-            "tla": "NEW",
-            "crest": "https://crests.football-data.org/67.png"
-          },
-          "awayTeam": {
-            "id": "66",
-            "name": "Manchester United FC",
-            "shortName": "Man United",
-            "tla": "MUN",
-            "crest": "https://crests.football-data.org/66.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 2,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "538118",
-          "utcDate": "2026-04-25T16:30:00Z",
-          "status": "TIMED",
-          "matchday": 34,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "57",
-            "name": "Arsenal FC",
-            "shortName": "Arsenal",
-            "tla": "ARS",
-            "crest": "https://crests.football-data.org/57.png"
-          },
-          "awayTeam": {
-            "id": "67",
-            "name": "Newcastle United FC",
-            "shortName": "Newcastle",
-            "tla": "NEW",
-            "crest": "https://crests.football-data.org/67.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "538133",
           "utcDate": "2026-05-02T14:00:00Z",
@@ -3660,17 +3504,285 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
           "L",
           "L",
           "L",
-          "W",
+          "L",
           "W"
+        ],
+        "wins": 1,
+        "draws": 0,
+        "losses": 4,
+        "points": 3,
+        "goalsFor": 4,
+        "goalsAgainst": 7
+      },
+      "generatedAt": "2026-04-26T07:56:09.092Z"
+    },
+    "71": {
+      "team": {
+        "id": "71",
+        "name": "Sunderland AFC",
+        "shortName": "Sunderland",
+        "tla": "SUN",
+        "crest": "https://crests.football-data.org/71.png",
+        "venue": "Stadium of Light",
+        "founded": 1879,
+        "clubColors": "Red / White",
+        "website": "http://www.safc.com",
+        "address": "The Sunderland Stadium of Light Sunderland SR5 1SU"
+      },
+      "recentFixtures": [
+        {
+          "id": "538116",
+          "utcDate": "2026-04-24T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "awayTeam": {
+            "id": "351",
+            "name": "Nottingham Forest FC",
+            "shortName": "Nottingham",
+            "tla": "NOT",
+            "crest": "https://crests.football-data.org/351.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 5
+          }
+        },
+        {
+          "id": "538105",
+          "utcDate": "2026-04-19T13:00:00Z",
+          "status": "FINISHED",
+          "matchday": 33,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "58",
+            "name": "Aston Villa FC",
+            "shortName": "Aston Villa",
+            "tla": "AVL",
+            "crest": "https://crests.football-data.org/58.png"
+          },
+          "awayTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 3
+          }
+        },
+        {
+          "id": "538095",
+          "utcDate": "2026-04-12T13:00:00Z",
+          "status": "FINISHED",
+          "matchday": 32,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "awayTeam": {
+            "id": "73",
+            "name": "Tottenham Hotspur FC",
+            "shortName": "Tottenham",
+            "tla": "TOT",
+            "crest": "https://crests.football-data.org/73.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 1,
+            "away": 0
+          }
+        },
+        {
+          "id": "538092",
+          "utcDate": "2026-03-22T12:00:00Z",
+          "status": "FINISHED",
+          "matchday": 31,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "67",
+            "name": "Newcastle United FC",
+            "shortName": "Newcastle",
+            "tla": "NEW",
+            "crest": "https://crests.football-data.org/67.png"
+          },
+          "awayTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 2
+          }
+        },
+        {
+          "id": "538075",
+          "utcDate": "2026-03-14T15:00:00Z",
+          "status": "FINISHED",
+          "matchday": 30,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "awayTeam": {
+            "id": "397",
+            "name": "Brighton & Hove Albion FC",
+            "shortName": "Brighton Hove",
+            "tla": "BHA",
+            "crest": "https://crests.football-data.org/397.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 1
+          }
+        }
+      ],
+      "upcomingFixtures": [
+        {
+          "id": "538134",
+          "utcDate": "2026-05-02T14:00:00Z",
+          "status": "TIMED",
+          "matchday": 35,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "awayTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "538135",
+          "utcDate": "2026-05-09T14:00:00Z",
+          "status": "TIMED",
+          "matchday": 36,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "awayTeam": {
+            "id": "66",
+            "name": "Manchester United FC",
+            "shortName": "Man United",
+            "tla": "MUN",
+            "crest": "https://crests.football-data.org/66.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "538150",
+          "utcDate": "2026-05-17T14:00:00Z",
+          "status": "TIMED",
+          "matchday": 37,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "62",
+            "name": "Everton FC",
+            "shortName": "Everton",
+            "tla": "EVE",
+            "crest": "https://crests.football-data.org/62.png"
+          },
+          "awayTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "538155",
+          "utcDate": "2026-05-24T15:00:00Z",
+          "status": "TIMED",
+          "matchday": 38,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "awayTeam": {
+            "id": "61",
+            "name": "Chelsea FC",
+            "shortName": "Chelsea",
+            "tla": "CHE",
+            "crest": "https://crests.football-data.org/61.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "L",
+          "W",
+          "W",
+          "L"
         ],
         "wins": 2,
         "draws": 0,
         "losses": 3,
         "points": 6,
         "goalsFor": 6,
-        "goalsAgainst": 7
+        "goalsAgainst": 11
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "73": {
       "team": {
@@ -3686,6 +3798,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Bill Nicholson Way, 748 High Road London N17 0AP"
       },
       "recentFixtures": [
+        {
+          "id": "538124",
+          "utcDate": "2026-04-25T14:00:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "awayTeam": {
+            "id": "73",
+            "name": "Tottenham Hotspur FC",
+            "shortName": "Tottenham",
+            "tla": "TOT",
+            "crest": "https://crests.football-data.org/73.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 1
+          }
+        },
         {
           "id": "538114",
           "utcDate": "2026-04-18T16:30:00Z",
@@ -3789,61 +3927,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": 1,
             "away": 1
           }
-        },
-        {
-          "id": "538073",
-          "utcDate": "2026-03-05T20:00:00Z",
-          "status": "FINISHED",
-          "matchday": 29,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "73",
-            "name": "Tottenham Hotspur FC",
-            "shortName": "Tottenham",
-            "tla": "TOT",
-            "crest": "https://crests.football-data.org/73.png"
-          },
-          "awayTeam": {
-            "id": "354",
-            "name": "Crystal Palace FC",
-            "shortName": "Crystal Palace",
-            "tla": "CRY",
-            "crest": "https://crests.football-data.org/354.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 3
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "538124",
-          "utcDate": "2026-04-25T14:00:00Z",
-          "status": "TIMED",
-          "matchday": 34,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "76",
-            "name": "Wolverhampton Wanderers FC",
-            "shortName": "Wolverhampton",
-            "tla": "WOL",
-            "crest": "https://crests.football-data.org/76.png"
-          },
-          "awayTeam": {
-            "id": "73",
-            "name": "Tottenham Hotspur FC",
-            "shortName": "Tottenham",
-            "tla": "TOT",
-            "crest": "https://crests.football-data.org/73.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "538126",
           "utcDate": "2026-05-03T18:00:00Z",
@@ -3951,20 +4037,288 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       ],
       "form": {
         "sequence": [
+          "W",
           "D",
           "L",
           "L",
-          "D",
-          "L"
+          "D"
         ],
-        "wins": 0,
+        "wins": 1,
         "draws": 2,
-        "losses": 3,
-        "points": 2,
+        "losses": 2,
+        "points": 5,
         "goalsFor": 4,
-        "goalsAgainst": 10
+        "goalsAgainst": 7
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
+    },
+    "76": {
+      "team": {
+        "id": "76",
+        "name": "Wolverhampton Wanderers FC",
+        "shortName": "Wolverhampton",
+        "tla": "WOL",
+        "crest": "https://crests.football-data.org/76.png",
+        "venue": "Molineux Stadium",
+        "founded": 1877,
+        "clubColors": "Black / Gold",
+        "website": "http://www.wolves.co.uk",
+        "address": "Waterloo Road Wolverhampton WV1 4QR"
+      },
+      "recentFixtures": [
+        {
+          "id": "538124",
+          "utcDate": "2026-04-25T14:00:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "awayTeam": {
+            "id": "73",
+            "name": "Tottenham Hotspur FC",
+            "shortName": "Tottenham",
+            "tla": "TOT",
+            "crest": "https://crests.football-data.org/73.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 1
+          }
+        },
+        {
+          "id": "538110",
+          "utcDate": "2026-04-18T14:00:00Z",
+          "status": "FINISHED",
+          "matchday": 33,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "341",
+            "name": "Leeds United FC",
+            "shortName": "Leeds United",
+            "tla": "LEE",
+            "crest": "https://crests.football-data.org/341.png"
+          },
+          "awayTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 0
+          }
+        },
+        {
+          "id": "538104",
+          "utcDate": "2026-04-10T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 32,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "563",
+            "name": "West Ham United FC",
+            "shortName": "West Ham",
+            "tla": "WHU",
+            "crest": "https://crests.football-data.org/563.png"
+          },
+          "awayTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 0
+          }
+        },
+        {
+          "id": "538078",
+          "utcDate": "2026-03-16T20:00:00Z",
+          "status": "FINISHED",
+          "matchday": 30,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "402",
+            "name": "Brentford FC",
+            "shortName": "Brentford",
+            "tla": "BRE",
+            "crest": "https://crests.football-data.org/402.png"
+          },
+          "awayTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "score": {
+            "winner": "DRAW",
+            "home": 2,
+            "away": 2
+          }
+        },
+        {
+          "id": "538074",
+          "utcDate": "2026-03-03T20:15:00Z",
+          "status": "FINISHED",
+          "matchday": 29,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "awayTeam": {
+            "id": "64",
+            "name": "Liverpool FC",
+            "shortName": "Liverpool",
+            "tla": "LIV",
+            "crest": "https://crests.football-data.org/64.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        }
+      ],
+      "upcomingFixtures": [
+        {
+          "id": "538134",
+          "utcDate": "2026-05-02T14:00:00Z",
+          "status": "TIMED",
+          "matchday": 35,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "awayTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "538136",
+          "utcDate": "2026-05-09T14:00:00Z",
+          "status": "TIMED",
+          "matchday": 36,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "397",
+            "name": "Brighton & Hove Albion FC",
+            "shortName": "Brighton Hove",
+            "tla": "BHA",
+            "crest": "https://crests.football-data.org/397.png"
+          },
+          "awayTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "538154",
+          "utcDate": "2026-05-17T14:00:00Z",
+          "status": "TIMED",
+          "matchday": 37,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "awayTeam": {
+            "id": "63",
+            "name": "Fulham FC",
+            "shortName": "Fulham",
+            "tla": "FUL",
+            "crest": "https://crests.football-data.org/63.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "538158",
+          "utcDate": "2026-05-24T15:00:00Z",
+          "status": "TIMED",
+          "matchday": 38,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "328",
+            "name": "Burnley FC",
+            "shortName": "Burnley",
+            "tla": "BUR",
+            "crest": "https://crests.football-data.org/328.png"
+          },
+          "awayTeam": {
+            "id": "76",
+            "name": "Wolverhampton Wanderers FC",
+            "shortName": "Wolverhampton",
+            "tla": "WOL",
+            "crest": "https://crests.football-data.org/76.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "L",
+          "L",
+          "D",
+          "W"
+        ],
+        "wins": 1,
+        "draws": 1,
+        "losses": 3,
+        "points": 4,
+        "goalsFor": 4,
+        "goalsAgainst": 11
+      },
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "328": {
       "team": {
@@ -4232,7 +4586,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 2,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "341": {
       "team": {
@@ -4500,7 +4854,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 7,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "351": {
       "team": {
@@ -4768,7 +5122,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 13,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "354": {
       "team": {
@@ -4784,6 +5138,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Whitehorse Lane London SE25 6PU"
       },
       "recentFixtures": [
+        {
+          "id": "538121",
+          "utcDate": "2026-04-25T14:00:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "64",
+            "name": "Liverpool FC",
+            "shortName": "Liverpool",
+            "tla": "LIV",
+            "crest": "https://crests.football-data.org/64.png"
+          },
+          "awayTeam": {
+            "id": "354",
+            "name": "Crystal Palace FC",
+            "shortName": "Crystal Palace",
+            "tla": "CRY",
+            "crest": "https://crests.football-data.org/354.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 1
+          }
+        },
         {
           "id": "538106",
           "utcDate": "2026-04-20T19:00:00Z",
@@ -4887,61 +5267,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": 1,
             "away": 3
           }
-        },
-        {
-          "id": "538062",
-          "utcDate": "2026-03-01T14:00:00Z",
-          "status": "FINISHED",
-          "matchday": 28,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "66",
-            "name": "Manchester United FC",
-            "shortName": "Man United",
-            "tla": "MUN",
-            "crest": "https://crests.football-data.org/66.png"
-          },
-          "awayTeam": {
-            "id": "354",
-            "name": "Crystal Palace FC",
-            "shortName": "Crystal Palace",
-            "tla": "CRY",
-            "crest": "https://crests.football-data.org/354.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 2,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "538121",
-          "utcDate": "2026-04-25T14:00:00Z",
-          "status": "TIMED",
-          "matchday": 34,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "64",
-            "name": "Liverpool FC",
-            "shortName": "Liverpool",
-            "tla": "LIV",
-            "crest": "https://crests.football-data.org/64.png"
-          },
-          "awayTeam": {
-            "id": "354",
-            "name": "Crystal Palace FC",
-            "shortName": "Crystal Palace",
-            "tla": "CRY",
-            "crest": "https://crests.football-data.org/354.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "538125",
           "utcDate": "2026-05-03T13:00:00Z",
@@ -5049,20 +5377,20 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       ],
       "form": {
         "sequence": [
+          "L",
           "D",
           "W",
           "D",
-          "W",
-          "L"
+          "W"
         ],
         "wins": 2,
         "draws": 2,
         "losses": 1,
         "points": 8,
         "goalsFor": 6,
-        "goalsAgainst": 4
+        "goalsAgainst": 5
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "397": {
       "team": {
@@ -5330,7 +5658,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 10,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "402": {
       "team": {
@@ -5624,7 +5952,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 4,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "563": {
       "team": {
@@ -5640,6 +5968,32 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "address": "Queen Elizabeth Olympic Park, London London E20 2ST"
       },
       "recentFixtures": [
+        {
+          "id": "538123",
+          "utcDate": "2026-04-25T14:00:00Z",
+          "status": "FINISHED",
+          "matchday": 34,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "563",
+            "name": "West Ham United FC",
+            "shortName": "West Ham",
+            "tla": "WHU",
+            "crest": "https://crests.football-data.org/563.png"
+          },
+          "awayTeam": {
+            "id": "62",
+            "name": "Everton FC",
+            "shortName": "Everton",
+            "tla": "EVE",
+            "crest": "https://crests.football-data.org/62.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        },
         {
           "id": "538106",
           "utcDate": "2026-04-20T19:00:00Z",
@@ -5743,61 +6097,9 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
             "home": 1,
             "away": 1
           }
-        },
-        {
-          "id": "538069",
-          "utcDate": "2026-03-04T19:30:00Z",
-          "status": "FINISHED",
-          "matchday": 29,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "63",
-            "name": "Fulham FC",
-            "shortName": "Fulham",
-            "tla": "FUL",
-            "crest": "https://crests.football-data.org/63.png"
-          },
-          "awayTeam": {
-            "id": "563",
-            "name": "West Ham United FC",
-            "shortName": "West Ham",
-            "tla": "WHU",
-            "crest": "https://crests.football-data.org/563.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "538123",
-          "utcDate": "2026-04-25T14:00:00Z",
-          "status": "TIMED",
-          "matchday": 34,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "563",
-            "name": "West Ham United FC",
-            "shortName": "West Ham",
-            "tla": "WHU",
-            "crest": "https://crests.football-data.org/563.png"
-          },
-          "awayTeam": {
-            "id": "62",
-            "name": "Everton FC",
-            "shortName": "Everton",
-            "tla": "EVE",
-            "crest": "https://crests.football-data.org/62.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "538128",
           "utcDate": "2026-05-02T14:00:00Z",
@@ -5905,20 +6207,20 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
       ],
       "form": {
         "sequence": [
+          "W",
           "D",
           "W",
           "L",
-          "D",
-          "W"
+          "D"
         ],
         "wins": 2,
         "draws": 2,
         "losses": 1,
         "points": 8,
-        "goalsFor": 6,
-        "goalsAgainst": 3
+        "goalsFor": 7,
+        "goalsAgainst": 4
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     },
     "1044": {
       "team": {
@@ -6186,7 +6488,7 @@ export const premierLeagueSnapshot: PremierLeagueSnapshot = {
         "goalsFor": 8,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-04-25T07:47:43.396Z"
+      "generatedAt": "2026-04-26T07:56:09.092Z"
     }
   }
 };
