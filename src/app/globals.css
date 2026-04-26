@@ -365,17 +365,19 @@
     color: var(--text-primary);
   }
 
-  /* Links */
+  /* Links — visible underline by default for low-vision users (WR-6); on
+     hover the underline thickens via decoration-thickness. */
   .prose-writing a {
     color: var(--color-primary);
-    text-decoration: none;
-    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--color-primary) 60%, transparent);
     text-underline-offset: 3px;
-    text-decoration-line: underline;
-    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease, text-decoration-thickness 0.15s ease;
   }
   .prose-writing a:hover {
     text-decoration-color: var(--color-primary);
+    text-decoration-thickness: 2px;
   }
 
   /* Inline code */
@@ -392,7 +394,7 @@
     content: none;
   }
 
-  /* Code blocks */
+  /* Code blocks — thin scrollbar (WR-5) signals horizontal overflow. */
   .prose-writing pre {
     background-color: var(--surface-secondary);
     color: var(--text-primary);
@@ -403,6 +405,14 @@
     overflow-x: auto;
     font-size: 0.875em;
     line-height: 1.7;
+    scrollbar-width: thin;
+  }
+  .prose-writing pre::-webkit-scrollbar {
+    height: 8px;
+  }
+  .prose-writing pre::-webkit-scrollbar-thumb {
+    background-color: var(--home-rule);
+    border-radius: 999px;
   }
   .prose-writing pre code {
     background: none;
@@ -437,10 +447,13 @@
     margin-bottom: 0.35em;
   }
 
-  /* Images */
+  /* Images — height auto + max-width keep aspect ratio when remark-html
+     emits raw <img> without explicit dimensions (WR-7). */
   .prose-writing img {
     border-radius: 0.5rem;
     border: 1px solid var(--border-primary);
+    height: auto;
+    max-width: 100%;
   }
 
   /* Horizontal rules */
@@ -453,9 +466,21 @@
     margin-right: auto;
   }
 
-  /* Tables */
+  /* Tables — wrapped in a horizontally scrollable block on narrow screens
+     (WR-8). The display:block hack lets the table overflow without breaking
+     the prose container's max-width. */
   .prose-writing table {
+    display: block;
+    overflow-x: auto;
     font-size: 0.875em;
+    scrollbar-width: thin;
+  }
+  .prose-writing table::-webkit-scrollbar {
+    height: 8px;
+  }
+  .prose-writing table::-webkit-scrollbar-thumb {
+    background-color: var(--home-rule);
+    border-radius: 999px;
   }
   .prose-writing th {
     color: var(--text-primary);

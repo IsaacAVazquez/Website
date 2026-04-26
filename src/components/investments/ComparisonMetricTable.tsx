@@ -65,7 +65,8 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
                     {winner === "a" ? (
                       <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--color-success)]">
                         {formatValue(row.valueA)}
-                        <IconTrendingUp size={13} />
+                        <IconTrendingUp size={13} aria-hidden="true" />
+                        <span className="sr-only">(better)</span>
                       </span>
                     ) : (
                       <span className="text-[var(--home-ink-muted)]">{formatValue(row.valueA)}</span>
@@ -75,7 +76,8 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
                     {winner === "b" ? (
                       <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--color-success)]">
                         {formatValue(row.valueB)}
-                        <IconTrendingUp size={13} />
+                        <IconTrendingUp size={13} aria-hidden="true" />
+                        <span className="sr-only">(better)</span>
                       </span>
                     ) : (
                       <span className="text-[var(--home-ink-muted)]">{formatValue(row.valueB)}</span>

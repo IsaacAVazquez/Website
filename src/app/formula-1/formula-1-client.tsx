@@ -86,12 +86,18 @@ function formatPoints(value: number): string {
   return Number.isFinite(value) ? value.toFixed(0) : "0";
 }
 
+// Use Intl.NumberFormat with explicit signDisplay so the locale handles its
+// own decimal/grouping separators rather than hardcoding "+" + .toFixed(0).
+const DELTA_FORMATTER = new Intl.NumberFormat(undefined, {
+  signDisplay: "exceptZero",
+  maximumFractionDigits: 0,
+});
+
 function formatDelta(value: number): string {
   if (!Number.isFinite(value) || value === 0) {
     return "No gain";
   }
-
-  return value > 0 ? `+${value.toFixed(0)}` : value.toFixed(0);
+  return DELTA_FORMATTER.format(value);
 }
 
 function formatGmtOffset(value: string | null): string | null {

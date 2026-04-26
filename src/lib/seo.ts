@@ -33,11 +33,24 @@ export interface AIOptimizedMetadata {
   image?: string;
 }
 
+/**
+ * Resolve the canonical site origin. Production reads from
+ * NEXT_PUBLIC_SITE_URL when set (Netlify/Vercel-friendly); falls back to
+ * the production host so static metadata still resolves during local dev.
+ */
+function resolveSiteUrl(): string {
+  const envUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  if (envUrl && /^https?:\/\//.test(envUrl)) {
+    return envUrl.endsWith("/") ? envUrl.slice(0, -1) : envUrl;
+  }
+  return "https://isaacavazquez.com";
+}
+
 export const siteConfig = {
   name: profile.name,
   title: "Product Manager | UC Berkeley Haas MBA | Portfolio & Case Studies",
   description: profile.description,
-  url: "https://isaacavazquez.com",
+  url: resolveSiteUrl(),
   ogImage: "/opengraph-image", // 1200x630 OG image optimized for social media & AI previews
   ogImageAlt: "Isaac Vazquez - Product Manager & UC Berkeley Haas MBA Candidate",
   links: {
