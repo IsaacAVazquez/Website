@@ -113,8 +113,8 @@ export default function CaseStudyPage({
       <article className="home-shell home-shell-tight space-y-12">
         <Link
           href="/portfolio"
-          className="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
-          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+          className="inline-flex items-center gap-2 rounded-md text-sm font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+          style={{ fontFamily: "var(--font-home-sans)" }}
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Portfolio
@@ -442,7 +442,7 @@ export default function CaseStudyPage({
             </div>
 
             {caseStudy.result.testimonial && (
-              <div
+              <figure
                 className="home-card p-6 sm:p-8 space-y-4"
                 style={{
                   background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
@@ -452,10 +452,11 @@ export default function CaseStudyPage({
                 <blockquote className="mb-0 text-lg italic leading-7" style={bodyStyle}>
                   &ldquo;{caseStudy.result.testimonial.quote}&rdquo;
                 </blockquote>
-                <p className="mb-0 text-sm" style={strongStyle}>
-                  — {caseStudy.result.testimonial.author}, {caseStudy.result.testimonial.role}
-                </p>
-              </div>
+                <figcaption className="mb-0 text-sm" style={strongStyle}>
+                  — <cite className="not-italic">{caseStudy.result.testimonial.author}</cite>,{" "}
+                  {caseStudy.result.testimonial.role}
+                </figcaption>
+              </figure>
             )}
 
             {caseStudy.result.lessonsLearned && caseStudy.result.lessonsLearned.length > 0 && (
@@ -500,7 +501,8 @@ export default function CaseStudyPage({
           >
             <p className="home-kicker mb-3">Next case study</p>
             <Link href={`/portfolio/${nextCaseStudy.slug}`} className="block group">
-              <div className="home-card home-project-card p-6 sm:p-8 transition-transform duration-200 group-hover:-translate-y-0.5">
+              {/* Lift only on hover-capable pointers — touch devices don't get the sticky transform. */}
+              <div className="home-card home-project-card p-6 sm:p-8 transition-transform duration-200 [@media(hover:hover)]:group-hover:-translate-y-0.5">
                 <div className="flex justify-between items-start gap-6">
                   <div className="space-y-2">
                     <h3 className="text-xl mb-0" style={subsectionTitleStyle}>

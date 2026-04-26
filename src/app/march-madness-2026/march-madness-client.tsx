@@ -315,7 +315,23 @@ function StatCell({
       ? "text-emerald-300"
       : "text-slate-300";
 
-  return <td className={`px-2 py-3 text-right text-xs font-medium tabular-nums ${textClass}`}>{val}</td>;
+  // Surface what each color encodes so colorblind users get a tooltip + the
+  // screen-reader text instead of a bare number.
+  const title = highlight
+    ? "Top-3 average: this team rates among the strongest overall"
+    : isRank && val <= 5
+      ? "Top-5 by this system"
+      : undefined;
+
+  return (
+    <td
+      className={`px-2 py-3 text-right text-xs font-medium tabular-nums ${textClass}`}
+      title={title}
+      aria-label={title ? `${val} (${title})` : undefined}
+    >
+      {val}
+    </td>
+  );
 }
 
 function RankingsSection() {

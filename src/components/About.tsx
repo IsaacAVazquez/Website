@@ -101,8 +101,9 @@ export default function About() {
             </div>
           </div>
 
-          {/* Tab panels */}
-          <AnimatePresence mode="wait">
+          {/* Tab panels — popLayout keeps the exiting panel in flow while the
+              new one animates in, avoiding the brief gap "wait" introduces. */}
+          <AnimatePresence mode="popLayout">
             {activeTab === "overview" && (
               <motion.div
                 key="overview"

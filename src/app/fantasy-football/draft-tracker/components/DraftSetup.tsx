@@ -89,8 +89,9 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
             id="draft-league-name"
             name="leagueName"
             value={formState.leagueName ?? ""}
-            onChange={(event) => updateField("leagueName", event.target.value)}
+            onChange={(event) => updateField("leagueName", event.target.value.slice(0, 60))}
             autoComplete="organization"
+            maxLength={60}
             className="min-h-[48px] rounded-[1.2rem] border px-4 text-sm transition-[background-color,border-color,box-shadow] duration-200"
             style={getFieldStyle()}
             placeholder="Home league"

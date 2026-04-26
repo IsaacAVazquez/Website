@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { AuthorBio } from "@/components/ui/AuthorBio";
-import { constructMetadata, absoluteUrl } from "@/lib/seo";
+import { constructMetadata, absoluteUrl, siteConfig } from "@/lib/seo";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { getBlogPostCollectionLabel } from "@/lib/blog-config";
 import {
@@ -12,6 +12,7 @@ import {
   getRelatedBlogPosts,
 } from "@/lib/blog";
 import { ArrowRight } from "@/components/ui/ServerIcons";
+import { publishedDateFormatter } from "@/lib/utils";
 
 interface PageProps {
   params: Promise<{
@@ -44,10 +45,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ogType: "article",
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
-    articleAuthor: "https://isaacavazquez.com/about",
+    articleAuthor: `${siteConfig.url}/about`,
     articleSection: getBlogPostCollectionLabel(post),
     articleTags: post.seo?.keywords || post.tags,
-    canonicalUrl: `https://isaacavazquez.com/writing/${slug}`,
+    canonicalUrl: `${siteConfig.url}/writing/${slug}`,
     aiMetadata: {
       expertise: post.seo?.keywords || post.tags || [],
       contentType: "Article",
@@ -66,6 +67,16 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const relatedPosts = await getRelatedBlogPosts(slug, 3);
+  // Prev/next sequential nav based on the publish-date-ordered list returned
+  // by getAllBlogPostPreviews (newest first). "previous" = older post,
+  // "next" = newer post in the same chronology.
+  const allPosts = getAllBlogPostPreviews();
+  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
+  const newerPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  const olderPost =
+    currentIndex >= 0 && currentIndex < allPosts.length - 1
+      ? allPosts[currentIndex + 1]
+      : null;
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Writing", url: "/writing" },
@@ -92,11 +103,11 @@ export default async function BlogPostPage({ params }: PageProps) {
             author: {
               name: "Isaac Vazquez",
               jobTitle: "Product Manager & UC Berkeley Haas MBA Candidate",
-              url: "https://isaacavazquez.com",
+              url: siteConfig.url,
             },
             datePublished: post.publishedAt,
             dateModified: post.updatedAt || post.publishedAt,
-            url: `https://isaacavazquez.com/writing/${slug}`,
+            url: `${siteConfig.url}/writing/${slug}`,
             keywords: Array.isArray(articleKeywords)
               ? articleKeywords
               : articleKeywords
@@ -169,11 +180,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 }}
               >
                 <time dateTime={post.publishedAt}>
-                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {publishedDateFormatter.format(new Date(post.publishedAt))}
                 </time>
                 <span aria-hidden="true">·</span>
                 <span>{post.readingTime}</span>
@@ -303,6 +310,42 @@ export default async function BlogPostPage({ params }: PageProps) {
             >
               <AuthorBio variant="full" />
             </div>
+
+            {(olderPost || newerPost) && (
+              <nav
+                className="mb-10 grid gap-4 border-t border-[var(--home-rule)] pt-8 md:grid-cols-2"
+                aria-label="Article pagination"
+              >
+                {olderPost ? (
+                  <Link
+                    href={`/writing/${olderPost.slug}`}
+                    className="home-card group block h-full p-5 transition-colors hover:border-[var(--home-haze)]"
+                    rel="prev"
+                  >
+                    <p className="home-kicker mb-2">Previous</p>
+                    <p className="mb-0 text-base font-semibold leading-snug text-[var(--home-ink)]">
+                      {olderPost.title}
+                    </p>
+                  </Link>
+                ) : (
+                  <span aria-hidden="true" />
+                )}
+                {newerPost ? (
+                  <Link
+                    href={`/writing/${newerPost.slug}`}
+                    className="home-card group block h-full p-5 text-right transition-colors hover:border-[var(--home-haze)]"
+                    rel="next"
+                  >
+                    <p className="home-kicker mb-2">Next</p>
+                    <p className="mb-0 text-base font-semibold leading-snug text-[var(--home-ink)]">
+                      {newerPost.title}
+                    </p>
+                  </Link>
+                ) : (
+                  <span aria-hidden="true" />
+                )}
+              </nav>
+            )}
 
             <div className="pb-8">
               <Link href="/writing" className="home-inline-link">

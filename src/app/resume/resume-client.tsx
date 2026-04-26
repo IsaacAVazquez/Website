@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { IconDownload, IconMail, IconBrandLinkedin } from "@tabler/icons-react";
 
@@ -77,14 +78,21 @@ const mbaRevealDate = new Date(2025, 0, 1);
 
 export default function Resume() {
   const showMBA = new Date() >= mbaRevealDate;
+  const [downloading, setDownloading] = useState(false);
 
   const handleDownloadPDF = () => {
+    if (downloading) return;
+    setDownloading(true);
     const link = document.createElement('a');
     link.href = '/Isaac_Vazquez_Resume.pdf';
     link.download = 'Isaac_Vazquez_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    // Re-enable after a short tick — the browser handles the download
+    // asynchronously; keeping the button disabled briefly prevents the
+    // double-click-queues-multiple-downloads pattern.
+    setTimeout(() => setDownloading(false), 1200);
   };
 
   return (
@@ -105,10 +113,12 @@ export default function Resume() {
             <div className="mb-5">
               <button
                 onClick={handleDownloadPDF}
-                className="resume-outline-button"
+                disabled={downloading}
+                aria-busy={downloading}
+                className="resume-outline-button disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <IconDownload className="w-4 h-4" />
-                Download PDF
+                {downloading ? "Downloading…" : "Download PDF"}
               </button>
             </div>
 

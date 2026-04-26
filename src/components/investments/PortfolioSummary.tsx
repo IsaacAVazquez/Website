@@ -47,8 +47,8 @@ export function PortfolioSummary({ summary, isLoading }: Props) {
       <WarmCard padding="sm" className="rounded-[28px] shadow-[var(--shadow-sm)]">
         {isLoading ? (
           <div className="space-y-3">
-            <div className="h-10 w-48 rounded bg-[var(--neutral-200)] animate-pulse" />
-            <div className="h-6 w-32 rounded bg-[var(--neutral-200)] animate-pulse" />
+            <div className="h-10 w-48 rounded bg-[var(--home-paper-alt)] animate-pulse" />
+            <div className="h-6 w-32 rounded bg-[var(--home-paper-alt)] animate-pulse" />
           </div>
         ) : (
           <div className="grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.9fr)]">
