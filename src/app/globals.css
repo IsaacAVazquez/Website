@@ -75,13 +75,27 @@
   --font-semibold: 600;
   --font-bold: 700;
 
-  /*
-   * Legacy semantic tokens below are aliased to the editorial --home-* palette
-   * so that any component still referencing them (--color-primary, --surface-*,
-   * --text-*, --border-primary) automatically picks up the editorial look in
-   * both light and dark mode. New code should prefer --home-* variables
-   * directly; these aliases exist as a cascade safety net during migration.
-   */
+  /* ──────────────────────────────────────────────────────────────────────
+   * LEGACY TOKEN POLICY (AW-5)
+   * ──────────────────────────────────────────────────────────────────────
+   * The aliases below (--color-primary, --color-secondary, --color-accent,
+   * --color-success/warning/error, --neutral-*, --surface-*, --text-*,
+   * --border-*) point at the editorial --home-* palette. They exist *only*
+   * as a cascade safety net for any pre-editorial component that still
+   * references the old names — new code MUST use the --home-* variables
+   * directly.
+   *
+   * Style guide for new + modified files:
+   *   - Surfaces      → var(--home-paper) / var(--home-paper-alt)
+   *   - Text          → var(--home-ink) / var(--home-ink-muted)
+   *   - Borders       → var(--home-rule)
+   *   - Accent        → var(--home-haze)
+   *   - Elevation mix → var(--home-elev-mix) (flips white↔black per theme)
+   *
+   * Don't introduce new --color-primary / --surface-* / --text-tertiary
+   * usages. When you touch a file that still uses them, migrate inline as
+   * part of the change.
+   * ────────────────────────────────────────────────────────────────────── */
   --color-primary: var(--home-haze);
   --color-secondary: var(--home-haze);
   --color-accent: var(--home-haze);

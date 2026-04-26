@@ -255,8 +255,16 @@ function RaceSidebar({ race }: { race: Race }) {
     (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime()
   );
 
+  // Concise SR-only summary that re-announces whenever the selected race
+  // changes. Wrapping the whole section in aria-live didn't reliably trigger
+  // announcements on full DOM swaps; a focused text node does.
+  const announcement = `${race.state} ${race.office} race selected. Dem. ${race.demAvg.toFixed(1)} percent, Rep. ${race.repAvg.toFixed(1)} percent, margin ${race.marginLabel}, rating ${race.rating}.`;
+
   return (
-    <section className="home-card space-y-5" style={{ padding: "1.25rem 1.5rem" }} aria-live="polite">
+    <section className="home-card space-y-5" style={{ padding: "1.25rem 1.5rem" }}>
+      <span className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+        {announcement}
+      </span>
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">

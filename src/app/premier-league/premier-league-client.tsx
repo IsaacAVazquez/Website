@@ -551,7 +551,11 @@ export function PremierLeagueClient({
                 ) : null}
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-                  <p className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]">
+                  <p
+                    className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]"
+                    role={teamSnapshotError ? "alert" : "status"}
+                    aria-live="polite"
+                  >
                     {isTeamSnapshotLoading
                       ? "Loading club snapshot…"
                       : teamSnapshotError}
@@ -638,7 +642,11 @@ export function PremierLeagueClient({
                 </div>
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
-                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
+                  <div
+                    className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
+                    role={teamSnapshotError ? "alert" : "status"}
+                    aria-live="polite"
+                  >
                     <p className="text-sm text-[var(--home-ink-muted)]">
                       {isTeamSnapshotLoading
                         ? "Loading recent club fixtures…"
