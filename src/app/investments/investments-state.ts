@@ -23,8 +23,8 @@ type SearchParamInput =
   | Record<string, string | string[] | undefined | null>;
 
 export const DEFAULT_INVESTMENTS_STATE: InvestmentsSearchState = {
-  view: "research",
-  symbol: "AAPL",
+  view: "portfolio",
+  symbol: "",
   section: "overview",
 };
 
@@ -56,6 +56,7 @@ function readParam(input: SearchParamInput, key: keyof InvestmentsSearchState): 
 
 function normalizeSymbol(rawSymbol: string | null): string {
   const upper = rawSymbol?.trim().toUpperCase() ?? "";
+  if (!upper) return DEFAULT_INVESTMENTS_STATE.symbol;
   return VALID_SYMBOL_PATTERN.test(upper) ? upper : DEFAULT_INVESTMENTS_STATE.symbol;
 }
 
@@ -80,8 +81,13 @@ export function buildInvestmentsHref(
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
   const params = new URLSearchParams(baseSearchParams ? Array.from(baseSearchParams.entries()) : []);
-  params.set("view", state.view);
-  params.set("symbol", state.symbol);
+  // The unified dashboard no longer uses ?view=, so strip any legacy values.
+  params.delete("view");
+  if (state.symbol) {
+    params.set("symbol", state.symbol);
+  } else {
+    params.delete("symbol");
+  }
   params.set("section", state.section);
   return `/investments?${params.toString()}`;
 }

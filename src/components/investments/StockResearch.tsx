@@ -2,7 +2,15 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { ResearchSidebar } from "./ResearchSidebar";
+import {
+  IconChartArcs3,
+  IconChartLine,
+  IconCircleHalf,
+  IconHome,
+  IconList,
+  IconReportMoney,
+} from "@tabler/icons-react";
+import { ResearchAssetHeader } from "./ResearchAssetHeader";
 import { ResearchOverview } from "./ResearchOverview";
 import { FinancialStatementsPanel } from "./FinancialStatementsPanel";
 import { ValuationRatiosPanel } from "./ValuationRatiosPanel";
@@ -12,6 +20,7 @@ import { IndustryPanel } from "./IndustryPanel";
 import { DCFPanel } from "./DCFPanel";
 import { ComparisonTab } from "./ComparisonTab";
 import { PriceChartPanel } from "./PriceChartPanel";
+import { StockSearch } from "./StockSearch";
 import {
   fadeInVariants,
   getReducedMotionVariants,
@@ -44,6 +53,14 @@ const TABS: { key: ResearchTab; label: string }[] = [
   { key: "chart",        label: "Chart" },
   { key: "compare",      label: "Compare" },
 ];
+
+const NAV_ITEMS = [
+  { id: "overview", label: "Overview", icon: IconHome },
+  { id: "holdings", label: "My holdings", icon: IconList, href: "?view=portfolio#holdings-list" },
+  { id: "performance", label: "Performance", icon: IconChartLine, href: "?view=portfolio#performance-chart" },
+  { id: "allocation", label: "Allocation", icon: IconChartArcs3, href: "?view=portfolio#allocation" },
+  { id: "stats", label: "Portfolio stats", icon: IconCircleHalf, href: "?view=portfolio#portfolio-stats" },
+] as const;
 
 function getCuratedOnlyMessage(symbol: string) {
   return `${symbol.toUpperCase()} is not in the current research set. Search by ticker or company name to pick an available symbol.`;
@@ -117,149 +134,159 @@ export function StockResearch({
     }
   }, [activeTab, onTabChange, symbol, visibleTabs]);
 
-  const handleCompareTabKeyDown = useTablistKeyboard(
-    TABS,
-    (t) => t.key,
-    (t) => onTabChange(t.key),
-  );
-
   const handleVisibleTabKeyDown = useTablistKeyboard(
     visibleTabs,
     (t) => t.key,
     (t) => onTabChange(t.key),
   );
+  const handleAllTabsKeyDown = useTablistKeyboard(
+    TABS,
+    (t) => t.key,
+    (t) => onTabChange(t.key),
+  );
 
-  // Compare tab is full-width with no sidebar
+  // Compare tab is full-width with no asset header
   if (resolvedActiveTab === "compare") {
     return (
-      <section aria-label="Stock research">
-        <div
-          className="mb-4 flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-2 shadow-[var(--shadow-sm)]"
-          role="tablist"
-          aria-label="Research sections"
-        >
-          {TABS.map(({ key, label }, index) => (
-            <button
-              key={key}
-              id={`research-tab-${key}`}
-              role="tab"
-              aria-selected={resolvedActiveTab === key}
-              aria-controls={`research-panel-${key}`}
-              tabIndex={resolvedActiveTab === key ? 0 : -1}
-              onKeyDown={(e) => handleCompareTabKeyDown(e, index)}
-              onClick={() => onTabChange(key)}
-              className={`min-h-[44px] whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
-                resolvedActiveTab === key
-                  ? "bg-[var(--home-haze)] text-white"
-                  : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        <div
-          id={`research-panel-${resolvedActiveTab}`}
-          role="tabpanel"
-          aria-labelledby={`research-tab-${resolvedActiveTab}`}
-        >
-          <ComparisonTab />
-        </div>
-      </section>
+      <div className="invest-shell" data-testid="invest-research-shell">
+        <ResearchSidebar activeNavId="overview" />
+        <main className="invest-main">
+          <ResearchTopbar
+            symbol={symbol}
+            onSymbolChange={onSymbolChange}
+            crumbTrail="Compare"
+          />
+          <div
+            className="mb-4 flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-2 shadow-[var(--shadow-sm)]"
+            role="tablist"
+            aria-label="Research sections"
+          >
+            {TABS.map(({ key, label }, index) => (
+              <button
+                key={key}
+                id={`research-tab-${key}`}
+                role="tab"
+                aria-selected={resolvedActiveTab === key}
+                aria-controls={`research-panel-${key}`}
+                tabIndex={resolvedActiveTab === key ? 0 : -1}
+                onKeyDown={(e) => handleAllTabsKeyDown(e, index)}
+                onClick={() => onTabChange(key)}
+                className={`min-h-[44px] whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
+                  resolvedActiveTab === key
+                    ? "bg-[var(--home-haze)] text-white"
+                    : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <div
+            id={`research-panel-${resolvedActiveTab}`}
+            role="tabpanel"
+            aria-labelledby={`research-tab-${resolvedActiveTab}`}
+          >
+            <ComparisonTab />
+          </div>
+        </main>
+      </div>
     );
   }
 
   return (
-    <section aria-label="Stock research">
-      <div className="grid gap-6 md:grid-cols-[280px_minmax(0,1fr)] lg:grid-cols-[300px_minmax(0,1fr)] items-start">
-        {/* Sidebar */}
-        <div className="md:sticky md:top-4">
-          <ResearchSidebar
-            symbol={symbol}
-            onSymbolChange={onSymbolChange}
-            isInPortfolio={isInPortfolio}
-          />
-        </div>
+    <div className="invest-shell" data-testid="invest-research-shell">
+      <ResearchSidebar activeNavId="overview" />
 
-        {/* Main content */}
-        <div className="min-w-0 space-y-4">
-          {visibleTabs.length > 0 ? (
-            <div
-              className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] p-2 shadow-[var(--shadow-sm)]"
-              role="tablist"
-              aria-label="Research sections"
-            >
-              {visibleTabs.map(({ key, label }, index) => (
-                <button
-                  key={key}
-                  id={`research-tab-${key}`}
-                  role="tab"
-                  aria-selected={resolvedActiveTab === key}
-                  aria-controls={`research-panel-${key}`}
-                  tabIndex={resolvedActiveTab === key ? 0 : -1}
-                  onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
-                  onClick={() => onTabChange(key)}
-                  className={`min-h-[44px] whitespace-nowrap rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
-                    resolvedActiveTab === key
-                      ? "bg-[var(--home-haze)] text-white"
-                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
+      <main className="invest-main">
+        <ResearchTopbar
+          symbol={symbol}
+          onSymbolChange={onSymbolChange}
+          crumbTrail={symbol ? symbol.toUpperCase() : "Pick a ticker"}
+        />
+
+        <div className="space-y-5">
+          {!symbol ? (
+            <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--home-ink)]">
+                Start with a ticker symbol
+              </p>
+              <p className="mt-2 text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                Search a ticker or company name in the bar above to start researching.
+              </p>
             </div>
-          ) : null}
+          ) : showLoadingState ? (
+            <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--home-ink)]">
+                Loading research data…
+              </p>
+              <p className="mt-2 text-sm text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
+                Pulling the latest curated snapshot for {symbol.toUpperCase()}.
+              </p>
+            </div>
+          ) : showCuratedOnlyState ? (
+            <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--home-paper-alt))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--home-ink)]">
+                This symbol is not in the current research set.
+              </p>
+              <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
+                {getCuratedOnlyMessage(symbol)}
+              </p>
+            </div>
+          ) : showResearchErrorState ? (
+            <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-error)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-error)_8%,var(--home-paper-alt))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
+              <p className="text-sm font-semibold text-[var(--home-ink)]">
+                Research data is temporarily unavailable.
+              </p>
+              <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
+                {getResearchErrorMessage(symbolError)}
+              </p>
+            </div>
+          ) : (
+            <>
+              <ResearchAssetHeader
+                symbol={symbol}
+                isInPortfolio={isInPortfolio}
+              />
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={resolvedActiveTab}
-              id={`research-panel-${resolvedActiveTab}`}
-              role="tabpanel"
-              aria-labelledby={`research-tab-${resolvedActiveTab}`}
-              variants={v.fadeInVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-            >
-              {!symbol ? (
-                <div className="rounded-[28px] border border-dashed border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
-                  <p className="text-sm font-semibold text-[var(--home-ink)]">
-                    Start with a ticker symbol
-                  </p>
-                  <p className="mt-2 text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                    Enter a stock symbol in the sidebar to start researching.
-                  </p>
+              {visibleTabs.length > 0 ? (
+                <div
+                  className="flex gap-2 overflow-x-auto rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-2 shadow-[var(--shadow-sm)]"
+                  role="tablist"
+                  aria-label="Research sections"
+                >
+                  {visibleTabs.map(({ key, label }, index) => (
+                    <button
+                      key={key}
+                      id={`research-tab-${key}`}
+                      role="tab"
+                      aria-selected={resolvedActiveTab === key}
+                      aria-controls={`research-panel-${key}`}
+                      tabIndex={resolvedActiveTab === key ? 0 : -1}
+                      onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
+                      onClick={() => onTabChange(key)}
+                      className={`min-h-[40px] whitespace-nowrap rounded-2xl px-4 py-2 text-sm font-semibold transition ${
+                        resolvedActiveTab === key
+                          ? "bg-[var(--home-ink)] text-[var(--home-paper)]"
+                          : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  ))}
                 </div>
-              ) : showLoadingState ? (
-                <div className="rounded-[28px] border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-6 py-16 text-center shadow-[var(--shadow-sm)]">
-                  <p className="text-sm font-semibold text-[var(--home-ink)]">
-                    Loading research data…
-                  </p>
-                  <p className="mt-2 text-sm text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                    Pulling the latest curated snapshot for {symbol.toUpperCase()}.
-                  </p>
-                </div>
-              ) : showCuratedOnlyState ? (
-                <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-warning)_10%,var(--home-paper-alt))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
-                  <p className="text-sm font-semibold text-[var(--home-ink)]">
-                    This symbol is not in the current research set.
-                  </p>
-                  <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
-                    {getCuratedOnlyMessage(symbol)}
-                  </p>
-                </div>
-              ) : showResearchErrorState ? (
-                <div className="rounded-[28px] border border-[color-mix(in_srgb,var(--color-error)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-error)_8%,var(--home-paper-alt))] px-5 py-6 text-center shadow-[var(--shadow-sm)]">
-                  <p className="text-sm font-semibold text-[var(--home-ink)]">
-                    Research data is temporarily unavailable.
-                  </p>
-                  <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
-                    {getResearchErrorMessage(symbolError)}
-                  </p>
-                </div>
-              ) : (
-                <>
+              ) : null}
+
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={resolvedActiveTab}
+                  id={`research-panel-${resolvedActiveTab}`}
+                  role="tabpanel"
+                  aria-labelledby={`research-tab-${resolvedActiveTab}`}
+                  variants={v.fadeInVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                >
                   {resolvedActiveTab === "overview" && (
                     <ResearchOverview symbol={symbol} showNews={capabilities.news !== false} />
                   )}
@@ -279,12 +306,82 @@ export function StockResearch({
                   {resolvedActiveTab === "industry" && <IndustryPanel symbol={symbol} />}
                   {resolvedActiveTab === "dcf" && <DCFPanel symbol={symbol} />}
                   {resolvedActiveTab === "chart" && <PriceChartPanel symbol={symbol} />}
-                </>
-              )}
-            </motion.div>
-          </AnimatePresence>
+                </motion.div>
+              </AnimatePresence>
+            </>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+}
+
+function ResearchSidebar({ activeNavId }: { activeNavId: string }) {
+  return (
+    <aside className="invest-sidebar" aria-label="Investments navigation">
+      <div className="invest-brand">
+        <div className="invest-brand-iv" aria-hidden="true">IV</div>
+        <div className="invest-brand-name">
+          Isaac Vazquez
+          <small>Investments</small>
         </div>
       </div>
-    </section>
+
+      <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
+        <a href="?view=portfolio#hero" className="invest-nav-link">
+          <IconHome size={18} aria-hidden="true" />
+          Portfolio home
+        </a>
+        <span
+          className="invest-nav-link is-active"
+          aria-current="true"
+        >
+          <IconReportMoney size={18} aria-hidden="true" />
+          Research
+        </span>
+        {NAV_ITEMS.filter((it) => it.id !== "overview").map((item) => {
+          const Icon = item.icon;
+          return (
+            <a key={item.id} href={item.href ?? "#"} className="invest-nav-link">
+              <Icon size={18} aria-hidden="true" />
+              {item.label}
+            </a>
+          );
+        })}
+      </nav>
+
+      <div className="invest-sidebar-footer">
+        <span>{activeNavId === "overview" ? "Curated snapshots" : "—"}</span>
+      </div>
+    </aside>
+  );
+}
+
+function ResearchTopbar({
+  symbol,
+  onSymbolChange,
+  crumbTrail,
+}: {
+  symbol: string;
+  onSymbolChange: (s: string) => void;
+  crumbTrail: string;
+}) {
+  return (
+    <div className="invest-topbar">
+      <div>
+        <p className="invest-crumbs">
+          Investments / Research / <strong>{crumbTrail}</strong>
+        </p>
+        <h1>Research</h1>
+      </div>
+
+      <div className="research-topbar-search">
+        <StockSearch value={symbol} onChange={onSymbolChange} />
+      </div>
+
+      <div className="flex items-center gap-2">
+        <span className="invest-avatar" aria-hidden="true">IV</span>
+      </div>
+    </div>
   );
 }
