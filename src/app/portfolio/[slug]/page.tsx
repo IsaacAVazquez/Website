@@ -14,9 +14,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const caseStudy = caseStudiesData[params.slug];
+  const { slug } = await params;
+  const caseStudy = caseStudiesData[slug];
 
   if (!caseStudy) {
     return {
@@ -31,7 +32,7 @@ export async function generateMetadata({
     articleAuthor: "https://isaacavazquez.com/about",
     articleSection: "Product Management",
     articleTags: ["Product Management", caseStudy.role, ...caseStudy.tools.slice(0, 3)],
-    canonicalUrl: `/portfolio/${params.slug}`,
+    canonicalUrl: `/portfolio/${slug}`,
     aiMetadata: {
       profession: "Product Manager",
       expertise: caseStudy.tools,
@@ -87,12 +88,13 @@ const outlineButtonStyle = {
   border: "1px solid var(--home-rule)",
 } as const;
 
-export default function CaseStudyPage({
+export default async function CaseStudyPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const caseStudy = caseStudiesData[params.slug];
+  const { slug } = await params;
+  const caseStudy = caseStudiesData[slug];
 
   if (!caseStudy) {
     notFound();
@@ -103,7 +105,7 @@ export default function CaseStudyPage({
   }
 
   const allSlugs = getPortfolioProjects().map((study) => study.slug);
-  const currentIndex = allSlugs.indexOf(params.slug);
+  const currentIndex = allSlugs.indexOf(slug);
   const nextSlug =
     currentIndex < allSlugs.length - 1 ? allSlugs[currentIndex + 1] : null;
   const nextCaseStudy = nextSlug ? caseStudiesData[nextSlug] : null;
