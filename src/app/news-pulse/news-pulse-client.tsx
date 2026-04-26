@@ -436,6 +436,8 @@ function ErrorState({ message }: { message: string }) {
   );
 }
 
+const HEADLINES_PAGE_SIZE = 24;
+
 function HeadlinesView({
   articles,
   variants,
@@ -443,6 +445,12 @@ function HeadlinesView({
   articles: NewsArticle[];
   variants: typeof fadeIn;
 }) {
+  const [visibleCount, setVisibleCount] = useState(HEADLINES_PAGE_SIZE);
+  // Reset when the underlying article set changes (source filter, refresh).
+  useEffect(() => {
+    setVisibleCount(HEADLINES_PAGE_SIZE);
+  }, [articles]);
+
   if (articles.length === 0) {
     return (
       <StatusPanel
@@ -452,14 +460,18 @@ function HeadlinesView({
     );
   }
 
+  const visibleArticles = articles.slice(0, visibleCount);
+  const hasMore = visibleCount < articles.length;
+
   return (
+    <>
     <motion.div
       className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
       variants={variants}
       initial="hidden"
       animate="visible"
     >
-      {articles.slice(0, 60).map((article) => (
+      {visibleArticles.map((article) => (
         <a
           key={`${article.source}-${article.link}`}
           href={article.link}
@@ -547,6 +559,21 @@ function HeadlinesView({
         </a>
       ))}
     </motion.div>
+    {hasMore ? (
+      <div className="mt-8 flex flex-col items-center gap-2">
+        <p className="text-xs text-[var(--home-ink-muted)]">
+          Showing {visibleCount} of {articles.length} headlines.
+        </p>
+        <button
+          type="button"
+          onClick={() => setVisibleCount((current) => current + HEADLINES_PAGE_SIZE)}
+          className="home-button home-button-secondary"
+        >
+          Show more
+        </button>
+      </div>
+    ) : null}
+    </>
   );
 }
 

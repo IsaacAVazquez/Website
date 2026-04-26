@@ -23,7 +23,18 @@ describe("premier-league-state", () => {
     ).toEqual({
       view: "title-race",
       team: "57",
+      detail: "club",
     });
+  });
+
+  it("preserves valid detail tab values", () => {
+    expect(
+      normalizePremierLeagueState({
+        view: "table",
+        team: "57",
+        detail: "fixtures",
+      }).detail
+    ).toBe("fixtures");
   });
 
   it("builds clean hrefs while preserving unrelated query params", () => {

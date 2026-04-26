@@ -108,7 +108,8 @@
 
   --text-primary: var(--home-ink);
   --text-secondary: var(--home-ink-muted);
-  --text-tertiary: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
+  /* Bumped from 45% to 58% so small text clears WCAG AA on the editorial paper. */
+  --text-tertiary: color-mix(in srgb, var(--home-ink) 58%, var(--home-paper));
   --text-inverse: var(--home-paper);
 
   --border-primary: var(--home-rule);

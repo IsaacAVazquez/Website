@@ -1,11 +1,18 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
-import type { PremierLeagueRouteState, PremierLeagueStandingRow, PremierLeagueView } from "@/types/premier-league";
+import type {
+  PremierLeagueDetailTab,
+  PremierLeagueRouteState,
+  PremierLeagueStandingRow,
+  PremierLeagueView,
+} from "@/types/premier-league";
 
 export const PREMIER_LEAGUE_ROUTE = "/premier-league";
 
 export const PREMIER_LEAGUE_VIEW_OPTIONS = ["table", "title-race", "europe", "relegation"] as const;
+export const PREMIER_LEAGUE_DETAIL_OPTIONS = ["club", "fixtures", "scorers"] as const;
 
 const VALID_VIEWS = new Set<PremierLeagueView>(PREMIER_LEAGUE_VIEW_OPTIONS);
+const VALID_DETAILS = new Set<PremierLeagueDetailTab>(PREMIER_LEAGUE_DETAIL_OPTIONS);
 
 type SearchParamInput =
   | URLSearchParams
@@ -17,6 +24,7 @@ type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 export const DEFAULT_PREMIER_LEAGUE_STATE: PremierLeagueRouteState = {
   view: "table",
   team: null,
+  detail: "club",
 };
 
 export const PREMIER_LEAGUE_VIEW_LABELS: Record<PremierLeagueView, string> = {
@@ -74,12 +82,16 @@ export function normalizePremierLeagueState(
 ): PremierLeagueRouteState {
   const view = readParam(input, "view");
   const team = readParam(input, "team");
+  const detail = readParam(input, "detail");
 
   return {
     view: VALID_VIEWS.has((view ?? "") as PremierLeagueView)
       ? (view as PremierLeagueView)
       : DEFAULT_PREMIER_LEAGUE_STATE.view,
     team: normalizeTeamParam(team),
+    detail: VALID_DETAILS.has((detail ?? "") as PremierLeagueDetailTab)
+      ? (detail as PremierLeagueDetailTab)
+      : DEFAULT_PREMIER_LEAGUE_STATE.detail,
   };
 }
 
@@ -101,6 +113,12 @@ export function buildPremierLeagueHref(
     params.set("team", state.team);
   } else {
     params.delete("team");
+  }
+
+  if (state.detail && state.detail !== DEFAULT_PREMIER_LEAGUE_STATE.detail) {
+    params.set("detail", state.detail);
+  } else {
+    params.delete("detail");
   }
 
   const query = params.toString();
