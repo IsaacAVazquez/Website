@@ -13,7 +13,7 @@ This document tracked every design, styling, UI/UX, and accessibility issue foun
 | Bucket | Total | Shipped | No-op / superseded | Outstanding |
 |---|---|---|---|---|
 | **P0** | 30 | 30 | 0 | 0 |
-| **P1** | 39 | 31 | 7 | 1 |
+| **P1** | 39 | 32 | 7 | 0 |
 | **P2** | ~60 | 39 | 11 | ~10 |
 
 **Shipped via:**
@@ -22,6 +22,7 @@ This document tracked every design, styling, UI/UX, and accessibility issue foun
 - **PR #90** — Deferred items (DB-5 aria-controls, PA-4 polls dedup, SX-2/3 backoff + validation, NP-4 pagination, MM-5/PL-3 URL state, AW-4 button cleanup, AW-6 contrast bump)
 - **PR #91** — P1 cleanup (PL-4 empty/error states, PA-3 polling aria-live, NP-3 dropdown verification + polish, AW-5 legacy token policy banner)
 - **PR #92** — P2 polish (shell + pages + writing + investments + MM + dashboards + fantasy + fintech + MBA — see commit log for the per-section breakdown)
+- **PR #93** — CT-1: documented links-only as the intentional `/contact` treatment
 
 ---
 
@@ -37,9 +38,7 @@ This document tracked every design, styling, UI/UX, and accessibility issue foun
 
 ## 1. Outstanding P1 Items
 
-| # | Issue | Surface | File | Notes |
-|---|-------|---------|------|-------|
-| CT-1 | No contact form exists — only email and LinkedIn CTAs. Either implement with labels/validation/error/success states or document the links-only choice. | Contact | `src/components/ContactContent.tsx` | Product decision required before implementation. |
+None — CT-1 closed via PR #93 (links-only is the intentional treatment; rationale documented in the `ContactContent` component header).
 
 ---
 
@@ -94,7 +93,6 @@ These were tagged in the original audit but either don't apply to current code o
 
 ## 4. Suggested Next Steps
 
-1. **Make a CT-1 call** — decide between a contact form and the current links-only treatment. If form, scope a small PR with labels/validation/server action; if links, drop a one-line comment in `ContactContent.tsx` documenting the choice and close out the audit.
-2. **Run an axe / Lighthouse pass** on every surface to verify the contrast and WCAG margins ended up where we wanted (especially IQ-7 "Cheapest" badge, MB-11 notification badge, AW-6 `--text-tertiary`).
-3. **WR-13 syntax highlighting + WR-14 footnotes** — bundled remark-plugin PR. Pick one lib (shiki for highlighting, remark-gfm covers most footnote needs).
-4. **Optional refactor PR** for PL-5/LL-4/FF-16 — config-driven shared zone helper + URL state for the draft board filter.
+1. **Run an axe / Lighthouse pass** on every surface to verify the contrast and WCAG margins ended up where we wanted (especially IQ-7 "Cheapest" badge, MB-11 notification badge, AW-6 `--text-tertiary`).
+2. **WR-13 syntax highlighting + WR-14 footnotes** — bundled remark-plugin PR. Pick one lib (shiki for highlighting, remark-gfm covers most footnote needs).
+3. **Optional refactor PR** for PL-5/LL-4/FF-16 — config-driven shared zone helper + URL state for the draft board filter.
