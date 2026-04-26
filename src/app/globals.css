@@ -1264,17 +1264,28 @@
   }
 
   .home-spotlight-board {
+    /*
+     * Per the design system handoff: the board owns its own stretch +
+     * spacing rules so consumers don't need a Tailwind `h-full` utility
+     * to fill the grid row. justify-content + gap distribute the note,
+     * poster, and tags from top to bottom; min-height keeps it readable
+     * if the manifesto column happens to be short on a given viewport.
+     */
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+    height: 100%;
+    min-height: 22rem;
     overflow: hidden;
     border: 1px solid color-mix(in srgb, var(--home-ink) 16%, transparent);
     border-radius: 1.8rem;
     background:
       radial-gradient(circle at 80% 18%, color-mix(in srgb, var(--home-haze) 32%, transparent), transparent 30%),
       linear-gradient(180deg, color-mix(in srgb, var(--home-paper) 65%, white) 0%, color-mix(in srgb, var(--home-paper-alt) 94%, white) 100%);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-xl);
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    box-shadow: var(--shadow-md);
   }
 
   .home-spotlight-note {
@@ -1291,9 +1302,10 @@
   }
 
   .home-spotlight-poster {
+    /* Sits in the flex flow — the board's justify-content distributes the
+       note (top), poster (center), and tags (bottom). No more margin: auto. */
     display: grid;
     gap: 0.15rem;
-    margin-top: auto;
     font-family: var(--font-home-sans);
     font-size: clamp(1.6rem, 3.5vw, 3rem);
     font-weight: 600;
@@ -1311,8 +1323,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.65rem;
-    margin-top: auto;
-    padding-top: 1.5rem;
   }
 
   .home-spotlight-tags span {

@@ -290,8 +290,8 @@ export function HomePageContent({
             </div>
 
             <div className="home-reveal home-reveal-delay-1 h-full">
-              <div className="home-spotlight-board h-full" aria-hidden="true">
-                <div className="home-spotlight-note w-fit">Point of view</div>
+              <div className="home-spotlight-board" aria-hidden="true">
+                <div className="home-spotlight-note">Point of view</div>
                 <div className="home-spotlight-poster">
                   <span>Tradeoffs</span>
                   <span>legible.</span>
