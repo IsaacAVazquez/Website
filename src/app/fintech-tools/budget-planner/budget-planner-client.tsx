@@ -51,6 +51,18 @@ function getBalanceTone(value: number) {
   return "text-[var(--home-ink)]";
 }
 
+const EXPENSE_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+});
+
+function formatExpenseDate(iso: string): string {
+  // ISO YYYY-MM-DD constructed in local time so a user's "today" lines up
+  // with the calendar — appending T00:00 avoids the UTC-offset off-by-one.
+  const date = new Date(`${iso}T00:00`);
+  return Number.isNaN(date.getTime()) ? iso : EXPENSE_DATE_FORMATTER.format(date);
+}
+
 function createEmptyExpenseDraft(monthKey: string, categoryId = ""): ExpenseDraft {
   return {
     categoryId,
@@ -663,8 +675,11 @@ export function BudgetPlannerClient() {
                                 <span className="rounded-full bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
                                   {expense.categoryName}
                                 </span>
-                                <span className="rounded-full bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                                  {expense.date}
+                                <span
+                                  className="rounded-full bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]"
+                                  title={expense.date}
+                                >
+                                  {formatExpenseDate(expense.date)}
                                 </span>
                               </div>
                             </div>
@@ -814,8 +829,11 @@ export function BudgetPlannerClient() {
                             <p className="text-sm font-semibold text-[var(--home-ink)]">
                               {expense.note || expense.categoryName}
                             </p>
-                            <p className="mt-1 text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                              {expense.categoryName} • {expense.date}
+                            <p
+                              className="mt-1 text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]"
+                              title={expense.date}
+                            >
+                              {expense.categoryName} • {formatExpenseDate(expense.date)}
                             </p>
                           </div>
                           <p className="text-sm font-semibold text-[var(--home-ink)]">

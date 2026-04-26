@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Download, RotateCcw, Undo2 } from "lucide-react";
 import { DraftBoard } from "./components/DraftBoard";
@@ -53,6 +53,13 @@ export function DraftTrackerClient() {
   const recentPicks = useMemo(() => draftState.picks.slice(-12).reverse(), [draftState.picks]);
   const totalPicks = draftState.settings.totalTeams * draftState.settings.rounds;
   const completionPercentage = Math.round((draftState.picks.length / totalPicks) * 100);
+
+  const [exportToast, setExportToast] = useState<string | null>(null);
+  function handleExport(format: "csv") {
+    exportDraftResults(format);
+    setExportToast(`Exported ${draftState.picks.length} picks as ${format.toUpperCase()}.`);
+    window.setTimeout(() => setExportToast(null), 3500);
+  }
 
   return (
     <section className="home-page min-h-screen">
@@ -350,7 +357,7 @@ export function DraftTrackerClient() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => exportDraftResults("csv")}
+                  onClick={() => handleExport("csv")}
                   className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
                   style={{
                     borderColor: "var(--home-rule)",
@@ -400,6 +407,25 @@ export function DraftTrackerClient() {
             Loading the published draft snapshot...
           </article>
         )}
+
+        <div
+          aria-live="polite"
+          role="status"
+          className="pointer-events-none fixed bottom-6 left-1/2 z-[55] -translate-x-1/2"
+        >
+          {exportToast ? (
+            <div
+              className="rounded-full border px-4 py-2 text-sm font-semibold shadow-[var(--shadow-md)]"
+              style={{
+                borderColor: "var(--home-rule)",
+                background: "var(--home-ink)",
+                color: "var(--home-paper)",
+              }}
+            >
+              {exportToast}
+            </div>
+          ) : null}
+        </div>
       </div>
     </section>
   );

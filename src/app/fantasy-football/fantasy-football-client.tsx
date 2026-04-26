@@ -481,7 +481,9 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                       >
                         <div>
                           <p className="home-kicker mb-1">Rank</p>
-                          <p className="text-2xl font-semibold">{getPublishedBoardRank(player, routeState.position)}</p>
+                          <p className="text-2xl font-semibold tabular-nums">
+                            {getPublishedBoardRank(player, routeState.position)}
+                          </p>
                         </div>
 
                         <div className="min-w-0">
@@ -506,7 +508,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
                         <div>
                           <p className="home-kicker mb-1">Expert range</p>
-                          <p className="text-sm font-semibold">{formatRange(player)}</p>
+                          <p className="text-sm font-semibold tabular-nums">{formatRange(player)}</p>
                         </div>
 
                         <div>

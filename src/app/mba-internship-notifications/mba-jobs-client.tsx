@@ -563,7 +563,19 @@ function JobCard({
           className="mt-auto border-t border-[var(--home-rule)] pt-5"
         >
           <p className="home-meta mb-0">
-            {relativePostedAt ? `${job.location} · ${relativePostedAt}` : job.location}
+            {relativePostedAt ? (
+              <>
+                {job.location} ·{" "}
+                <time
+                  dateTime={job.postedAt}
+                  title={`Posted ${DATE_FORMATTER.format(new Date(job.postedAt))}`}
+                >
+                  {relativePostedAt}
+                </time>
+              </>
+            ) : (
+              job.location
+            )}
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <CardActionLink
@@ -646,7 +658,12 @@ function ManualCompanyCard({
 
 function JobGridSkeleton() {
   return (
-    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div
+      className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading jobs"
+    >
       {[0, 1, 2, 4, 5, 6].map((i) => (
         <div
           key={i}
@@ -748,9 +765,9 @@ function NotificationBell({
       <div
         className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
         style={{
-          color: "var(--home-haze)",
-          borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
-          background: "color-mix(in srgb, var(--home-haze) 8%, var(--home-paper))",
+          color: "color-mix(in srgb, var(--home-haze) 78%, var(--home-ink))",
+          borderColor: "color-mix(in srgb, var(--home-haze) 40%, var(--home-rule))",
+          background: "color-mix(in srgb, var(--home-haze) 18%, var(--home-paper))",
         }}
       >
         <Bell className="h-4 w-4" aria-hidden="true" />

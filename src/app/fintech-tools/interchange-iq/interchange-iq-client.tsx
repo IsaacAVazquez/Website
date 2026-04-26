@@ -477,9 +477,11 @@ export function InterchangeIQClient() {
                             className="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap flex-shrink-0"
                             style={{
                               fontFamily: "var(--font-home-sans)",
-                              background: "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))",
-                              color: "var(--home-haze)",
-                              border: "1px solid color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
+                              // Saturate the badge so the chip's text passes WCAG AA on the
+                              // editorial paper instead of leaning on a 14% tint.
+                              background: "var(--home-haze)",
+                              color: "var(--home-paper)",
+                              border: "1px solid var(--home-haze)",
                             }}
                           >
                             Cheapest
@@ -504,6 +506,7 @@ export function InterchangeIQClient() {
                     <div
                       className="h-1.5 rounded-full overflow-hidden"
                       style={{ background: "var(--home-rule)" }}
+                      title={`${r.name}: ${fmtFull(r.monthlyFee)}/mo at ${(r.effectiveRate * 100).toFixed(2)}% effective rate`}
                     >
                       <div
                         className="h-full rounded-full transition-all duration-500 ease-out"
