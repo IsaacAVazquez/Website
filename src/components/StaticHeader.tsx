@@ -38,7 +38,17 @@ export function StaticHeader() {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header
+    <>
+      {isMobileMenuOpen ? (
+        <button
+          type="button"
+          aria-hidden="true"
+          className="fixed inset-0 z-40 lg:hidden bg-[var(--home-overlay)]"
+          onClick={closeMobileMenu}
+          tabIndex={-1}
+        />
+      ) : null}
+      <header
       className={cn(
         "sticky top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-300 header-home",
         isScrolled && "border-b shadow-sm"
@@ -136,15 +146,7 @@ export function StaticHeader() {
         </div>
       </div>
 
-      {isMobileMenuOpen ? (
-        <button
-          type="button"
-          aria-hidden="true"
-          className="fixed inset-0 z-[-1] lg:hidden bg-[var(--home-overlay)]"
-          onClick={closeMobileMenu}
-          tabIndex={-1}
-        />
-      ) : null}
     </header>
+    </>
   );
 }

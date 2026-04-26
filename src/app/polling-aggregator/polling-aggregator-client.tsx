@@ -71,13 +71,18 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
   const allVals = trend.flatMap((d) => [d.approve, d.disapprove]);
   const minVal = Math.floor(Math.min(...allVals) - 2);
   const maxVal = Math.ceil(Math.max(...allVals) + 2);
+  const first = trend[0];
+  const last = trend[trend.length - 1];
+  const chartSummary = first && last
+    ? `Presidential approval trend from ${formatShortDate(first.date)} to ${formatShortDate(last.date)}. Approve: ${first.approve.toFixed(1)}% to ${last.approve.toFixed(1)}%. Disapprove: ${first.disapprove.toFixed(1)}% to ${last.disapprove.toFixed(1)}%.`
+    : "Presidential approval trend chart";
 
   return (
     <div className="overflow-x-auto">
       <svg
         viewBox={`0 0 ${W} ${H + 32}`}
         className="w-full min-w-[300px]"
-        aria-label="Presidential approval trend chart"
+        aria-label={chartSummary}
         role="img"
       >
         {/* Y-axis gridlines */}
@@ -140,6 +145,26 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
           Disapprove
         </span>
       </div>
+
+      <table className="sr-only">
+        <caption>Approval trend data points</caption>
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Approve</th>
+            <th scope="col">Disapprove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {trend.map((d) => (
+            <tr key={d.date}>
+              <th scope="row">{formatShortDate(d.date)}</th>
+              <td>{d.approve.toFixed(1)}%</td>
+              <td>{d.disapprove.toFixed(1)}%</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -486,7 +511,7 @@ function RacesPanel({
         </div>
       </section>
 
-      <aside className="lg:sticky lg:top-24 lg:self-start">
+      <aside className="lg:sticky lg:top-28 lg:self-start">
         {selectedRace && <RaceSidebar race={selectedRace} />}
       </aside>
     </div>

@@ -33,12 +33,21 @@ export function AllocationChart({ holdings }: Props) {
 
     d3.select(svgRef.current).selectAll("*").remove();
 
+    const totalForLabel = data.reduce((s, h) => s + h.currentValue, 0);
+    const summaryParts = data
+      .slice(0, 5)
+      .map((h) => `${h.symbol} ${(h.allocationPercent ?? 0).toFixed(1)}%`);
+    const summary = `Portfolio allocation across ${data.length} positions totaling ${new Intl.NumberFormat(
+      "en-US",
+      { style: "currency", currency: "USD", maximumFractionDigits: 0 },
+    ).format(totalForLabel)}. Top: ${summaryParts.join(", ")}.`;
+
     const svg = d3
       .select(svgRef.current)
       .attr("width", size)
       .attr("height", size)
       .attr("role", "img")
-      .attr("aria-label", "Portfolio allocation donut chart");
+      .attr("aria-label", summary);
 
     const g = svg.append("g").attr("transform", `translate(${radius},${radius})`);
 
@@ -132,7 +141,10 @@ export function AllocationChart({ holdings }: Props) {
           />
         </div>
 
-        <ol className="space-y-1.5 text-sm w-full">
+        <ol
+          className="space-y-1.5 text-sm w-full"
+          aria-label="Holdings legend with allocation percentages"
+        >
           {data.map((h, i) => (
             <li key={h.symbol} className="flex items-center gap-2 rounded-[18px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2.5">
               <span
@@ -141,7 +153,14 @@ export function AllocationChart({ holdings }: Props) {
                 aria-hidden="true"
               />
               <span className="font-medium text-[var(--home-ink)] w-14 shrink-0">{h.symbol}</span>
-              <div className="flex-1 h-1 rounded-full bg-[var(--neutral-200)] overflow-hidden">
+              <div
+                className="flex-1 h-1 rounded-full bg-[var(--neutral-200)] overflow-hidden"
+                role="progressbar"
+                aria-valuenow={Math.round(h.allocationPercent ?? 0)}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label={`${h.symbol} allocation`}
+              >
                 <div
                   className="h-full rounded-full"
                   style={{

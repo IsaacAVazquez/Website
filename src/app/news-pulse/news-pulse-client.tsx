@@ -196,6 +196,12 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
 
   useEffect(() => {
     const controller = new AbortController();
+    let timedOut = false;
+    let unmounted = false;
+    const timeoutId = setTimeout(() => {
+      timedOut = true;
+      controller.abort();
+    }, 15000);
 
     async function loadFeeds() {
       setLoading(true);
@@ -206,7 +212,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
         const response = await fetch("/api/news-pulse", { signal: controller.signal });
         const payload = (await response.json().catch(() => null)) as FeedResponse | null;
 
-        if (controller.signal.aborted) return;
+        if (unmounted) return;
 
         if (!response.ok) {
           setArticles([]);
@@ -220,20 +226,26 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
         setFetchedAt(payload?.fetchedAt ?? "");
         setFeedErrors(Array.isArray(payload?.errors) ? payload.errors : []);
       } catch (fetchError) {
-        if (controller.signal.aborted) return;
-        const message =
-          fetchError instanceof Error ? fetchError.message : "I could not load the feeds.";
+        if (unmounted) return;
+        const message = timedOut
+          ? "The news feed took too long to respond. Refresh to try again."
+          : fetchError instanceof Error
+            ? fetchError.message
+            : "I could not load the feeds.";
         setArticles([]);
         setError(message);
       } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
+        clearTimeout(timeoutId);
+        if (!unmounted) setLoading(false);
       }
     }
 
     void loadFeeds();
-    return () => controller.abort();
+    return () => {
+      unmounted = true;
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
   }, []);
 
   const filteredArticles = useMemo(
@@ -571,7 +583,12 @@ function CoverageView({
           repeated vocabulary.
         </InlineSectionLead>
 
-        <div className="mt-6 overflow-x-auto">
+        <div
+          className="scroll-shadow-x mt-6 overflow-x-auto rounded-[20px]"
+          role="region"
+          aria-label="Story clusters by outlet (scrollable)"
+          tabIndex={0}
+        >
           <table
             className="min-w-[920px] w-full text-left text-sm"
             aria-label="Story clusters by outlet"

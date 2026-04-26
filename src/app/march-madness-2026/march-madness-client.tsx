@@ -47,11 +47,17 @@ const editorialCardClasses: Record<EditorialCard["color"], string> = {
 function SurfaceCard({
   children,
   className = "",
+  id,
 }: {
   children: ReactNode;
   className?: string;
+  id?: string;
 }) {
-  return <div className={`${SURFACE_CLASS} ${className}`}>{children}</div>;
+  return (
+    <div id={id} className={`${SURFACE_CLASS} ${className}`}>
+      {children}
+    </div>
+  );
 }
 
 function Tag({ children, color = "gray" }: { children: ReactNode; color?: string }) {
@@ -236,14 +242,50 @@ function TabBar<T extends string>({
   onChange: (tab: T) => void;
   label: string;
 }) {
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    const last = items.length - 1;
+    let nextIndex: number | null = null;
+
+    switch (event.key) {
+      case "ArrowRight":
+        nextIndex = index === last ? 0 : index + 1;
+        break;
+      case "ArrowLeft":
+        nextIndex = index === 0 ? last : index - 1;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = last;
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    const list = event.currentTarget.closest('[role="tablist"]');
+    if (!list || nextIndex === null) return;
+    const next = list.querySelectorAll<HTMLButtonElement>('[role="tab"]')[nextIndex];
+    if (next) {
+      next.focus();
+      onChange(items[nextIndex].value);
+    }
+  };
+
   return (
     <div className="flex flex-wrap gap-2" role="tablist" aria-label={label}>
-      {items.map((item) => (
+      {items.map((item, index) => (
         <button
           key={item.value}
           type="button"
           role="tab"
           aria-selected={active === item.value}
+          tabIndex={active === item.value ? 0 : -1}
+          onKeyDown={(e) => handleKeyDown(e, index)}
           onClick={() => onChange(item.value)}
           className={`min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-semibold transition ${
             active === item.value
@@ -283,7 +325,12 @@ function RankingsSection() {
         Blended average across BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank,
         and WAB, excluding the minimum and maximum system values.
       </p>
-      <div className="overflow-x-auto">
+      <div
+        className="scroll-shadow-x overflow-x-auto rounded-[20px] border border-white/10"
+        role="region"
+        aria-label="Team rankings table (scrollable)"
+        tabIndex={0}
+      >
         <table className="min-w-[920px] w-full border-collapse text-sm">
           <thead>
             <tr className="border-b border-white/10">
@@ -941,7 +988,7 @@ export function MarchMadnessClient({
             </div>
           </SurfaceCard>
 
-          <SurfaceCard id="why-this-model-is-different" className="space-y-6 p-5 sm:p-6 scroll-mt-24">
+          <SurfaceCard id="why-this-model-is-different" className="space-y-6 p-5 sm:p-6 scroll-mt-28">
             <SectionIntro
               eyebrow="Methodology"
               title="Why This Model Is Different"
@@ -1043,7 +1090,7 @@ export function MarchMadnessClient({
             </div>
           </SurfaceCard>
 
-          <div id="analysis-workspace" className="space-y-4 scroll-mt-24">
+          <div id="analysis-workspace" className="space-y-4 scroll-mt-28">
             <TabBar
               items={MAIN_TAB_ITEMS}
               active={view}
