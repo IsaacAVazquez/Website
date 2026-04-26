@@ -89,7 +89,24 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add public/data/investments
           git commit -m "chore: refresh investments snapshots [automated]"
-          git push
+          # Retry on push rejection — main can move during the multi-minute
+          # snapshot refresh. Rebase the single snapshot commit onto the
+          # latest origin/main and try again. Bail on a real conflict.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt rejected. Rebasing onto latest origin/main…"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo "Rebase conflict — failing the run."
+              exit 1
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Push failed after 5 attempts."
+          exit 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
