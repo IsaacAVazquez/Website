@@ -131,12 +131,20 @@ export function HomePageContent({
 
             <div className="home-reveal home-reveal-delay-3 flex justify-center lg:justify-end">
               <div className="home-headshot-frame">
+                {/*
+                 * unoptimized: the source is already a hand-tuned 90KB webp
+                 * and the Netlify image optimizer pipeline behind Cloudflare
+                 * has been returning 502s for this asset, breaking the hero
+                 * on prod. Serving the static file directly bypasses the
+                 * broken transform without changing visual output.
+                 */}
                 <Image
                   src="/images/headshot-home.webp"
                   alt="Isaac Vazquez"
                   fill
                   className="object-cover object-top"
                   priority
+                  unoptimized
                 />
               </div>
             </div>
