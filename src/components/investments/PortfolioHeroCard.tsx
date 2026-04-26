@@ -342,8 +342,8 @@ export function PortfolioHeroCard({
               {formatRefreshLabel(lastUpdated)}
             </button>
           ) : null}
-          <a href="#performance-chart" className="invest-ghost">
-            Performance detail
+          <a href="#research-section" className="invest-ghost">
+            Open research
           </a>
         </div>
       </div>

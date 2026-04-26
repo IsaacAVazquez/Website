@@ -1753,7 +1753,7 @@ img {
   position: sticky;
   top: 88px;
   align-self: start;
-  height: calc(100vh - 100px);
+  max-height: calc(100vh - 100px);
   padding: 22px 14px;
   border-right: 1px solid var(--home-rule);
   background: color-mix(in srgb, var(--home-paper) 96%, var(--home-elev-mix));
@@ -2165,6 +2165,76 @@ img {
   min-width: 220px;
 }
 
+/* Compact dataset freshness chip — replaces the wide banner */
+.invest-dataset-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 14px;
+  border: 1px solid var(--home-rule);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+  font-size: 11.5px;
+  color: var(--home-ink-muted);
+  box-shadow: var(--shadow-sm);
+}
+.invest-dataset-chip strong {
+  color: var(--home-ink);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.invest-dataset-chip-dot {
+  width: 7px; height: 7px;
+  border-radius: 999px;
+  background: var(--color-success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-success) 18%, transparent);
+}
+.invest-dataset-chip-divider { opacity: 0.5; }
+.invest-dataset-chip-spacer { flex: 1; min-width: 8px; }
+.invest-dataset-chip-meta {
+  font: 10.5px var(--font-mono);
+  color: var(--home-ink-muted);
+  letter-spacing: 0.04em;
+}
+.invest-dataset-chip-warn {
+  color: var(--color-warning, #B45309);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* In-page section header (Research / etc) */
+.invest-section-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px dashed var(--home-rule);
+}
+.invest-section-kicker {
+  margin: 0;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--home-ink-muted);
+}
+.invest-section-title {
+  margin: 4px 0 0;
+  font-size: clamp(1.4rem, 1.4vw + 0.8rem, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--home-ink);
+  line-height: 1.1;
+}
+.invest-section-search {
+  flex: 0 1 320px;
+  min-width: 220px;
+}
+
 /* Research view — asset header card */
 .research-asset-card {
   position: relative;
@@ -2332,20 +2402,56 @@ img {
 
 /* Right rail */
 .invest-rail {
-  position: sticky; top: 88px;
-  align-self: start;
-  max-height: calc(100vh - 100px);
-  overflow-y: auto;
   padding: 22px 22px 40px;
   border-left: 1px solid var(--home-rule);
   background: color-mix(in srgb, var(--home-paper) 96%, var(--home-elev-mix));
   display: flex; flex-direction: column; gap: 16px;
+  align-self: stretch;
 }
 .invest-rail-section-label {
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--home-ink-muted);
   margin: 0 0 8px;
 }
+
+.invest-rail-mover-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.invest-rail-mover {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--home-rule);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease, border-color 160ms ease;
+  font: inherit;
+  text-align: left;
+  color: var(--home-ink);
+}
+.invest-rail-mover:hover {
+  background: color-mix(in srgb, var(--home-acid) 18%, transparent);
+  transform: translateY(-1px);
+}
+.invest-rail-mover-sym {
+  font-weight: 700; font-size: 13px; letter-spacing: -0.02em;
+}
+.invest-rail-mover-name {
+  font-size: 11.5px; color: var(--home-ink-muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 12ch;
+}
+.invest-rail-mover-delta {
+  font-size: 11.5px; font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.invest-rail-mover-delta.pos { color: var(--color-success); }
+.invest-rail-mover-delta.neg { color: var(--color-error); }
 
 @media (prefers-reduced-motion: reduce) {
   .home-reveal,
