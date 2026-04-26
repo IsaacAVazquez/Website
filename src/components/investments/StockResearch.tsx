@@ -141,8 +141,10 @@ export function StockResearch({
           {TABS.map(({ key, label }, index) => (
             <button
               key={key}
+              id={`research-tab-${key}`}
               role="tab"
               aria-selected={resolvedActiveTab === key}
+              aria-controls={`research-panel-${key}`}
               tabIndex={resolvedActiveTab === key ? 0 : -1}
               onKeyDown={(e) => handleCompareTabKeyDown(e, index)}
               onClick={() => onTabChange(key)}
@@ -156,7 +158,13 @@ export function StockResearch({
             </button>
           ))}
         </div>
-        <ComparisonTab />
+        <div
+          id={`research-panel-${resolvedActiveTab}`}
+          role="tabpanel"
+          aria-labelledby={`research-tab-${resolvedActiveTab}`}
+        >
+          <ComparisonTab />
+        </div>
       </section>
     );
   }
@@ -184,8 +192,10 @@ export function StockResearch({
               {visibleTabs.map(({ key, label }, index) => (
                 <button
                   key={key}
+                  id={`research-tab-${key}`}
                   role="tab"
                   aria-selected={resolvedActiveTab === key}
+                  aria-controls={`research-panel-${key}`}
                   tabIndex={resolvedActiveTab === key ? 0 : -1}
                   onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
                   onClick={() => onTabChange(key)}
@@ -204,8 +214,9 @@ export function StockResearch({
           <AnimatePresence mode="wait">
             <motion.div
               key={resolvedActiveTab}
+              id={`research-panel-${resolvedActiveTab}`}
               role="tabpanel"
-              aria-label={`${resolvedActiveTab} panel`}
+              aria-labelledby={`research-tab-${resolvedActiveTab}`}
               variants={v.fadeInVariants}
               initial="hidden"
               animate="visible"

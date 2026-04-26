@@ -333,26 +333,63 @@ function RaceSidebar({ race }: { race: Race }) {
 
 // ─── Approval polls table ──────────────────────────────────────────────────────
 
-function ApprovalPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
-  const sorted = [...snapshot.approvalPolls].sort(
-    (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime()
+/**
+ * Shared poll table used for both presidential approval and generic ballot
+ * polls. The shape of each kind is the same — pollster, date, sample, two
+ * pct columns, and a delta — so we drive the differences via column config.
+ */
+interface PollRowConfig<T> {
+  ariaLabel: string;
+  showSponsor?: boolean;
+  leftHeading: string; // "Approve" | "Dem."
+  rightHeading: string; // "Disapprove" | "Rep."
+  deltaHeading: string; // "Net" | "Margin"
+  leftValue: (poll: T) => number;
+  rightValue: (poll: T) => number;
+  formatDelta: (delta: number) => string;
+  deltaColor: (delta: number) => string;
+}
+
+interface PollLike {
+  id: string;
+  pollster: string;
+  sponsor?: string;
+  endDate: string;
+  sampleSize: number;
+  sampleType: string;
+}
+
+function PollsTable<T extends PollLike>({
+  polls,
+  config,
+}: {
+  polls: T[];
+  config: PollRowConfig<T>;
+}) {
+  const sorted = [...polls].sort(
+    (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime(),
   );
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full border-separate border-spacing-y-2" aria-label="Presidential approval polls">
+      <table
+        className="min-w-full border-separate border-spacing-y-2"
+        aria-label={config.ariaLabel}
+      >
         <thead>
           <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
             <th className="px-3 py-2 font-semibold">Pollster</th>
             <th className="px-3 py-2 font-semibold">Date</th>
             <th className="hidden px-3 py-2 font-semibold sm:table-cell">Sample</th>
-            <th className="px-3 py-2 font-semibold">Approve</th>
-            <th className="px-3 py-2 font-semibold">Disapprove</th>
-            <th className="px-3 py-2 font-semibold">Net</th>
+            <th className="px-3 py-2 font-semibold">{config.leftHeading}</th>
+            <th className="px-3 py-2 font-semibold">{config.rightHeading}</th>
+            <th className="px-3 py-2 font-semibold">{config.deltaHeading}</th>
           </tr>
         </thead>
         <tbody>
           {sorted.map((poll) => {
-            const net = poll.approve - poll.disapprove;
+            const left = config.leftValue(poll);
+            const right = config.rightValue(poll);
+            const delta = left - right;
             return (
               <tr
                 key={poll.id}
@@ -360,7 +397,9 @@ function ApprovalPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
               >
                 <td className="rounded-l-2xl px-3 py-3 align-middle">
                   <p className="text-sm font-semibold text-[var(--home-ink)]">{poll.pollster}</p>
-                  {poll.sponsor && <p className="text-xs text-[var(--home-ink-muted)]">{poll.sponsor}</p>}
+                  {config.showSponsor && poll.sponsor ? (
+                    <p className="text-xs text-[var(--home-ink-muted)]">{poll.sponsor}</p>
+                  ) : null}
                 </td>
                 <td className="px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)]">
                   {formatDate(poll.endDate)}
@@ -369,16 +408,16 @@ function ApprovalPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
                   {poll.sampleSize.toLocaleString()} {poll.sampleType}
                 </td>
                 <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: DEM_COLOR }}>
-                  {poll.approve}%
+                  {left}%
                 </td>
                 <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: REP_COLOR }}>
-                  {poll.disapprove}%
+                  {right}%
                 </td>
                 <td
                   className="rounded-r-2xl px-3 py-3 align-middle text-sm font-bold"
-                  style={{ color: net >= 0 ? DEM_COLOR : REP_COLOR }}
+                  style={{ color: config.deltaColor(delta) }}
                 >
-                  {formatNet(net)}
+                  {config.formatDelta(delta)}
                 </td>
               </tr>
             );
@@ -389,60 +428,40 @@ function ApprovalPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
   );
 }
 
-// ─── Generic ballot polls table ────────────────────────────────────────────────
+function ApprovalPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
+  return (
+    <PollsTable
+      polls={snapshot.approvalPolls}
+      config={{
+        ariaLabel: "Presidential approval polls",
+        showSponsor: true,
+        leftHeading: "Approve",
+        rightHeading: "Disapprove",
+        deltaHeading: "Net",
+        leftValue: (p) => p.approve,
+        rightValue: (p) => p.disapprove,
+        formatDelta: formatNet,
+        deltaColor: (d) => (d >= 0 ? DEM_COLOR : REP_COLOR),
+      }}
+    />
+  );
+}
 
 function GenericBallotPollsTable({ snapshot }: { snapshot: PollingSnapshot }) {
-  const sorted = [...snapshot.genericBallotPolls].sort(
-    (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime()
-  );
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full border-separate border-spacing-y-2" aria-label="Generic ballot polls">
-        <thead>
-          <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-            <th className="px-3 py-2 font-semibold">Pollster</th>
-            <th className="px-3 py-2 font-semibold">Date</th>
-            <th className="hidden px-3 py-2 font-semibold sm:table-cell">Sample</th>
-            <th className="px-3 py-2 font-semibold">Dem.</th>
-            <th className="px-3 py-2 font-semibold">Rep.</th>
-            <th className="px-3 py-2 font-semibold">Margin</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sorted.map((poll) => {
-            const margin = poll.dem - poll.rep;
-            return (
-              <tr
-                key={poll.id}
-                className="border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)]"
-              >
-                <td className="rounded-l-2xl px-3 py-3 align-middle">
-                  <p className="text-sm font-semibold text-[var(--home-ink)]">{poll.pollster}</p>
-                </td>
-                <td className="px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)]">
-                  {formatDate(poll.endDate)}
-                </td>
-                <td className="hidden px-3 py-3 align-middle text-xs text-[var(--home-ink-muted)] sm:table-cell">
-                  {poll.sampleSize.toLocaleString()} {poll.sampleType}
-                </td>
-                <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: DEM_COLOR }}>
-                  {poll.dem}%
-                </td>
-                <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: REP_COLOR }}>
-                  {poll.rep}%
-                </td>
-                <td
-                  className="rounded-r-2xl px-3 py-3 align-middle text-sm font-bold"
-                  style={{ color: margin === 0 ? "#D97706" : margin > 0 ? DEM_COLOR : REP_COLOR }}
-                >
-                  {formatMargin(margin)}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+    <PollsTable
+      polls={snapshot.genericBallotPolls}
+      config={{
+        ariaLabel: "Generic ballot polls",
+        leftHeading: "Dem.",
+        rightHeading: "Rep.",
+        deltaHeading: "Margin",
+        leftValue: (p) => p.dem,
+        rightValue: (p) => p.rep,
+        formatDelta: formatMargin,
+        deltaColor: (d) => (d === 0 ? "#D97706" : d > 0 ? DEM_COLOR : REP_COLOR),
+      }}
+    />
   );
 }
 

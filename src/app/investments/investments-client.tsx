@@ -159,8 +159,11 @@ export function InvestmentsClient({
           {TABS.map(({ key, label }) => (
             <button
               key={key}
+              id={`investments-tab-${key}`}
               role="tab"
               aria-selected={routeState.view === key}
+              aria-controls={`investments-panel-${key}`}
+              tabIndex={routeState.view === key ? 0 : -1}
               onClick={() => updateRouteState({ view: key })}
               className={`min-h-[46px] rounded-2xl px-5 py-3 text-sm font-semibold transition ${
                 routeState.view === key
@@ -176,8 +179,9 @@ export function InvestmentsClient({
         <AnimatePresence mode="wait">
           <motion.div
             key={routeState.view}
+            id={`investments-panel-${routeState.view}`}
             role="tabpanel"
-            aria-label={`${routeState.view} panel`}
+            aria-labelledby={`investments-tab-${routeState.view}`}
             className="w-full"
             variants={variants.fadeInVariants}
             initial="hidden"

@@ -261,8 +261,14 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
               <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_18rem]">
                 <div className="space-y-4">
                   <div>
-                    <p className="home-kicker mb-2">Board</p>
-                    <div className="flex flex-wrap gap-2" role="tablist" aria-label="Fantasy positions">
+                    <p className="home-kicker mb-2" id="fantasy-position-label">
+                      Board
+                    </p>
+                    <div
+                      className="flex flex-wrap gap-2"
+                      role="radiogroup"
+                      aria-labelledby="fantasy-position-label"
+                    >
                       {POSITION_OPTIONS.map((position) => {
                         const active = routeState.position === position;
                         const positionSliceMetadata = sliceMetadataMap?.[position];
@@ -272,8 +278,8 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
                           <button
                             key={position}
                             type="button"
-                            role="tab"
-                            aria-selected={active}
+                            role="radio"
+                            aria-checked={active}
                             disabled={unavailable}
                             onClick={() => updateRouteState({ position })}
                             title={unavailable ? positionSliceMetadata?.reason : undefined}
