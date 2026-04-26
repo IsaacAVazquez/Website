@@ -1768,10 +1768,7 @@ img {
 }
 
 .invest-sidebar {
-  position: sticky;
-  top: 88px;
-  align-self: start;
-  max-height: calc(100vh - 100px);
+  align-self: stretch;
   padding: 22px 14px;
   border-right: 1px solid var(--home-rule);
   background: color-mix(in srgb, var(--home-paper) 96%, var(--home-elev-mix));

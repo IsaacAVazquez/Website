@@ -131,8 +131,8 @@ export function AllocationChart({ holdings }: Props) {
           Position weights based on current market value.
         </p>
       </div>
-      <div className="flex flex-col gap-5 xl:flex-row xl:items-start">
-        <div className="relative shrink-0 self-center rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-4">
+      <div className="flex flex-col gap-4 xl:flex-row xl:items-start">
+        <div className="relative shrink-0 self-center">
           <svg ref={svgRef} />
           <div
             ref={tooltipRef}
