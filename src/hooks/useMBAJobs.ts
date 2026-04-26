@@ -156,13 +156,19 @@ export function useMBAJobs(): UseMBAJobsResult {
   }, [watchedCompanyIds]);
 
   // ── Notification permission ────────────────────────────────────────────
+  // Always start "unsupported" on both server and first client render so
+  // hydration matches; resolve the real permission in an effect after mount.
+  // Reading window.Notification synchronously in the initializer caused
+  // the bell to render conditionally in different positions across server
+  // and client, triggering a hydration mismatch around NotificationBell.
   const [notificationPermission, setNotificationPermission] = useState<
     NotificationPermission | "unsupported"
-  >(() => {
-    if (typeof window === "undefined" || !("Notification" in window))
-      return "unsupported";
-    return Notification.permission;
-  });
+  >("unsupported");
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !("Notification" in window)) return;
+    setNotificationPermission(Notification.permission);
+  }, []);
 
   // ── Fetch state ────────────────────────────────────────────────────────
   const [jobs, setJobs] = useState<MBAJob[]>([]);
