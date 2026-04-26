@@ -119,20 +119,14 @@ export default function Resume() {
       
               <a
                 href="mailto:IsaacVazquez@berkeley.edu"
-                className="flex items-center gap-2 transition-colors"
-                style={{ color: "var(--home-ink-muted)" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "var(--home-ink)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--home-ink-muted)")}
+                className="flex items-center gap-2 text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
               >
                 <IconMail className="w-4 h-4" />
                 IsaacVazquez@berkeley.edu
               </a>
               <a
                 href="https://linkedin.com/in/isaac-vazquez"
-                className="flex items-center gap-2 transition-colors"
-                style={{ color: "var(--home-ink-muted)" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "var(--home-ink)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--home-ink-muted)")}
+                className="flex items-center gap-2 text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >

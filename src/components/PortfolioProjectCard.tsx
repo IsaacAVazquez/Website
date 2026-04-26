@@ -107,7 +107,7 @@ export function PortfolioProjectCard({
           </div>
 
           {/* Metric / tool chips */}
-          <div className="flex min-h-[2rem] flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             {highlightedMetrics.length > 0
               ? highlightedMetrics.map((metric) => (
                   <span key={metric.label} className="resume-chip">
@@ -121,11 +121,11 @@ export function PortfolioProjectCard({
                 ))}
           </div>
 
-          {/* Problem space */}
-          <div className="pt-4" style={{ borderTop: "1px solid var(--home-rule)" }}>
+          {/* Problem space — pushes the footer to the bottom of the card */}
+          <div className="mt-auto pt-4" style={{ borderTop: "1px solid var(--home-rule)" }}>
             <p className="home-kicker mb-3">Problem space</p>
             <p
-              className="mb-0 min-h-[3.5rem] text-sm leading-relaxed line-clamp-2"
+              className="mb-0 text-sm leading-relaxed line-clamp-2"
               style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
             >
               {problem}

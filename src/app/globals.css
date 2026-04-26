@@ -984,6 +984,7 @@
     overflow: hidden;
     border-radius: 1.8rem;
     box-shadow: var(--shadow-xl);
+    background: color-mix(in srgb, var(--home-paper-alt) 92%, var(--home-elev-mix));
   }
 
   .home-pill {

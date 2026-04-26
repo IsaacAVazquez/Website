@@ -73,13 +73,19 @@ export function Sparkline({
 
   if (data.length < 2) return null;
 
+  const first = data[0];
+  const last = data[data.length - 1];
+  const pctChange = first ? ((last - first) / first) * 100 : 0;
+  const direction = pctChange === 0 ? "flat" : pctChange > 0 ? "up" : "down";
+  const ariaLabel = `Price trend ${direction} ${Math.abs(pctChange).toFixed(2)}% over the last ${data.length} points`;
+
   return (
     <svg
       ref={svgRef}
       width={width}
       height={height}
       role="img"
-      aria-label="Price trend"
+      aria-label={ariaLabel}
       className={className}
     />
   );

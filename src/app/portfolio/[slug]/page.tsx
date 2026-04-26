@@ -173,7 +173,7 @@ export default function CaseStudyPage({
                   href={caseStudy.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                   style={outlineButtonStyle}
                 >
                   <BrandGithub className="h-4 w-4" />
@@ -184,7 +184,7 @@ export default function CaseStudyPage({
                 caseStudy.link.startsWith("/") ? (
                   <Link
                     href={caseStudy.link}
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                     style={outlineButtonStyle}
                   >
                     <ExternalLink className="h-4 w-4" />
@@ -195,7 +195,7 @@ export default function CaseStudyPage({
                     href={caseStudy.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                     style={outlineButtonStyle}
                   >
                     <ExternalLink className="h-4 w-4" />
@@ -222,7 +222,7 @@ export default function CaseStudyPage({
           </div>
 
           {caseStudy.detailedMetrics && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {caseStudy.detailedMetrics.map((metric, index) => (
                 <div
                   key={index}

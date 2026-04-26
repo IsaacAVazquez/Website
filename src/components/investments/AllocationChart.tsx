@@ -72,29 +72,52 @@ export function AllocationChart({ holdings }: Props) {
       .attr("fill", (_, i) => PALETTE[i % PALETTE.length])
       .attr("stroke", "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))")
       .attr("stroke-width", 2)
+      .attr("tabindex", 0)
+      .attr("role", "img")
+      .attr("aria-label", (d) =>
+        `${d.data.symbol}: ${(d.data.allocationPercent ?? 0).toFixed(1)}% — ${new Intl.NumberFormat(
+          "en-US",
+          { style: "currency", currency: "USD", maximumFractionDigits: 0 },
+        ).format(d.data.currentValue)}`,
+      )
       .style("cursor", "pointer")
       .style("transition", "opacity 0.15s ease");
 
-    // Hover interactions
+    function showTooltip(d: d3.PieArcDatum<EnhancedHolding>, clientX: number, clientY: number) {
+      if (!tooltipRef.current) return;
+      const tooltip = tooltipRef.current;
+      tooltip.style.display = "block";
+      tooltip.innerHTML = `<strong>${d.data.symbol}</strong><br/>${(d.data.allocationPercent ?? 0).toFixed(1)}%<br/>${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(d.data.currentValue)}`;
+      const parent = svgRef.current?.parentElement;
+      if (!parent) return;
+      const rect = parent.getBoundingClientRect();
+      tooltip.style.left = `${clientX - rect.left + 12}px`;
+      tooltip.style.top = `${clientY - rect.top - 32}px`;
+    }
+    function hideTooltip() {
+      if (tooltipRef.current) tooltipRef.current.style.display = "none";
+    }
+
     arcs
       .on("mouseenter", function (event, d) {
         d3.select(this).attr("d", hoverArc(d) ?? "");
-        if (!tooltipRef.current) return;
-        const tooltip = tooltipRef.current;
-        tooltip.style.display = "block";
-        tooltip.innerHTML = `<strong>${d.data.symbol}</strong><br/>${(d.data.allocationPercent ?? 0).toFixed(1)}%<br/>${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(d.data.currentValue)}`;
+        showTooltip(d, event.clientX, event.clientY);
       })
-      .on("mousemove", function (event) {
-        if (!tooltipRef.current) return;
-        const parent = svgRef.current?.parentElement;
-        if (!parent) return;
-        const rect = parent.getBoundingClientRect();
-        tooltipRef.current.style.left = `${event.clientX - rect.left + 12}px`;
-        tooltipRef.current.style.top = `${event.clientY - rect.top - 32}px`;
+      .on("mousemove", function (event, d) {
+        showTooltip(d, event.clientX, event.clientY);
       })
       .on("mouseleave", function (event, d) {
         d3.select(this).attr("d", arc(d) ?? "");
-        if (tooltipRef.current) tooltipRef.current.style.display = "none";
+        hideTooltip();
+      })
+      .on("focus", function (event, d) {
+        d3.select(this).attr("d", hoverArc(d) ?? "");
+        const bbox = (this as SVGPathElement).getBoundingClientRect();
+        showTooltip(d, bbox.left + bbox.width / 2, bbox.top + bbox.height / 2);
+      })
+      .on("blur", function (event, d) {
+        d3.select(this).attr("d", arc(d) ?? "");
+        hideTooltip();
       });
 
     // Center label: total value

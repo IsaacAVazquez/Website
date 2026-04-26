@@ -76,7 +76,7 @@ export default function About() {
                       setActiveTab(tabs[prevIndex].id);
                     }
                   }}
-                  className="flex min-h-[44px] items-center gap-2 rounded-xl px-6 py-2.5 font-semibold transition-[background-color,color,box-shadow] duration-200"
+                  className="flex min-h-[44px] items-center gap-2 rounded-xl px-6 py-2.5 font-semibold transition-[background-color,color,box-shadow] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                   style={
                     activeTab === tab.id
                       ? {

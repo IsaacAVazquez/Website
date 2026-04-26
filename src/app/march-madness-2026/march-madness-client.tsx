@@ -422,10 +422,10 @@ function SCurveSection() {
         <div key={label} className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
           <p
             className={`mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] ${
-              positive ? "text-emerald-300" : "text-rose-300"
+              positive ? "text-emerald-200" : "text-rose-200"
             }`}
           >
-            {label}
+            {positive ? "▲ " : "▼ "}{label}
           </p>
           <div className="space-y-3">
             {data.map((item) => (
@@ -440,11 +440,12 @@ function SCurveSection() {
                 <span
                   className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
                     positive
-                      ? "border-emerald-400/20 bg-emerald-500/15 text-emerald-200"
-                      : "border-rose-400/20 bg-rose-500/15 text-rose-200"
+                      ? "border-emerald-400/30 bg-emerald-500/20 text-emerald-100"
+                      : "border-rose-400/30 bg-rose-500/20 text-rose-100"
                   }`}
+                  aria-label={`${positive ? "Underseeded" : "Overseeded"}: ${item.diff}`}
                 >
-                  {item.diff}
+                  {positive ? "▲ " : "▼ "}{item.diff}
                 </span>
               </div>
             ))}
@@ -517,7 +518,12 @@ function TZSection() {
                 {impact.direction}
                 {impact.final ? " · final slot" : ""}
               </span>
-              <span className="text-sm font-semibold tabular-nums text-rose-200">{impact.pct}%</span>
+              <span
+                className="text-sm font-semibold tabular-nums text-rose-200"
+                aria-label={`Penalty ${impact.pct} percent`}
+              >
+                Penalty: {impact.pct}%
+              </span>
             </div>
           ))}
         </div>
