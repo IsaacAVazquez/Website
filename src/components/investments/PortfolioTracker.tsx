@@ -64,12 +64,16 @@ export function PortfolioTracker({ onResearch }: Props) {
               {error}
             </div>
           ) : null}
-          <PortfolioSummary summary={summary} isLoading={isLoading} />
+          <PortfolioSummary
+            summary={summary}
+            holdings={enhancedHoldings}
+            isLoading={isLoading}
+          />
         </div>
       )}
 
       {!isEmpty && snapshots.length >= 2 && (
-        <div>
+        <div id="performance-chart" className="scroll-mt-28">
           <PortfolioPerformanceChart snapshots={snapshots} />
         </div>
       )}
@@ -89,7 +93,7 @@ export function PortfolioTracker({ onResearch }: Props) {
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1.6fr)_minmax(320px,0.8fr)]">
-          <div>
+          <div id="holdings-list" className="scroll-mt-28">
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
               Holdings ({enhancedHoldings.length})
             </h2>
@@ -113,7 +117,7 @@ export function PortfolioTracker({ onResearch }: Props) {
             </motion.ul>
           </div>
 
-          <div>
+          <div id="allocation-chart" className="scroll-mt-28">
             <AllocationChart holdings={enhancedHoldings} />
           </div>
         </div>
