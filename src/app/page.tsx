@@ -1,8 +1,14 @@
 import { StructuredData } from "@/components/StructuredData";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { HomePageContent } from "@/components/home/HomePageContent";
-import { getHomepageFeaturedCaseStudies } from "@/constants/caseStudies";
-import { getHomepageProofOfWorkBlogPostPreviews } from "@/lib/blog";
+import {
+  getHomepageFeaturedCaseStudies,
+  getPortfolioProjects,
+} from "@/constants/caseStudies";
+import {
+  getAllBlogPostPreviews,
+  getHomepageProofOfWorkBlogPostPreviews,
+} from "@/lib/blog";
 import { profile, profileSameAs } from "@/lib/profile";
 
 export { metadata } from "./metadata";
@@ -11,11 +17,27 @@ export default function Home() {
   const featuredProjects = getHomepageFeaturedCaseStudies();
   const proofOfWorkPosts = getHomepageProofOfWorkBlogPostPreviews();
 
+  // Hero meta strip + quick-fact chips read live counts and the latest
+  // writing entry so the editorial hero stays accurate as content ships.
+  const allPosts = getAllBlogPostPreviews();
+  const allProjects = getPortfolioProjects();
+  const liveTools = allProjects.filter((p) => Boolean(p.link)).length;
+  const heroIndex = {
+    projectCount: allProjects.length,
+    essayCount: allPosts.length,
+    liveToolCount: liveTools,
+  };
+  const latestPost = allPosts[0] ?? null;
+  const featuredEssay = allPosts.find((p) => !p.cluster) ?? latestPost;
+
   return (
     <div className="w-full scroll-smooth bg-[var(--home-paper)]">
       <HomePageContent
         featuredProjects={featuredProjects}
         proofOfWorkPosts={proofOfWorkPosts}
+        heroIndex={heroIndex}
+        latestPost={latestPost}
+        featuredEssay={featuredEssay}
       />
 
       <StructuredData type="ProfilePage" />

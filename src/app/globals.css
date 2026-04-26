@@ -735,14 +735,67 @@
   }
 
   .home-wordmark {
-    margin-bottom: 1rem;
+    /*
+     * Edge-to-edge fluid wordmark. Sized off the shell so it never
+     * overflows even on tight viewports — caps at 14rem on the largest
+     * screens. Tight tracking and 0.82 line-height match the design
+     * system's manifesto-scale treatment.
+     */
+    display: block;
+    margin: 0 0 0.75rem;
     font-family: var(--font-home-sans);
-    font-size: clamp(3rem, 9vw, 6.75rem);
+    font-size: clamp(3.2rem, 14.2vw, 14rem);
     font-weight: 700;
-    line-height: 0.9;
-    letter-spacing: -0.08em;
+    line-height: 0.82;
+    letter-spacing: -0.085em;
     text-transform: uppercase;
     color: var(--home-ink);
+    text-indent: -0.04em;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .home-hero-meta-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 2rem);
+    border-top: 1px solid color-mix(in srgb, var(--home-ink) 18%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--home-ink) 18%, transparent);
+    padding: 14px 0;
+    margin: 14px 0 clamp(1.75rem, 3vw, 2.5rem);
+    font-family: var(--font-home-sans);
+  }
+  .home-hero-meta-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .home-hero-meta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--home-ink-muted);
+  }
+  .home-hero-meta-val {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--home-ink);
+    line-height: 1.25;
+  }
+  .home-hero-meta-val em {
+    font-family: var(--font-home-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--home-ink) 78%, var(--home-ink-muted));
+  }
+  @media (max-width: 880px) {
+    .home-hero-meta-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
   }
 
   .home-intro-block {
@@ -790,25 +843,154 @@
 
   .home-hero-grid {
     display: grid;
-    gap: 2rem;
-    align-items: center;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: stretch;
+  }
+
+  .home-hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  .home-hero-copy-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .home-hero-title {
-    max-width: 12ch;
-    margin-bottom: 1rem;
+    max-width: 18ch;
+    margin: 0;
     font-family: var(--font-home-sans);
-    font-size: clamp(2.85rem, 7vw, 5.8rem);
+    font-size: clamp(2.6rem, 5.4vw, 4.6rem);
     font-weight: 600;
-    line-height: 0.92;
-    letter-spacing: -0.08em;
+    line-height: 0.94;
+    letter-spacing: -0.075em;
     color: var(--home-ink);
     text-wrap: balance;
   }
+  .home-hero-title em {
+    font-family: var(--font-home-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--home-ink) 72%, var(--home-ink-muted));
+  }
 
   .home-hero-body {
-    max-width: 33rem;
-    margin-bottom: 1.75rem;
+    max-width: 38rem;
+    margin: 0;
+  }
+
+  .home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .home-hero-now-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--home-acid) 32%, var(--home-paper));
+    border: 1px solid color-mix(in srgb, var(--home-ink) 16%, transparent);
+    font-family: var(--font-home-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--home-ink);
+    white-space: nowrap;
+  }
+  .home-hero-now-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #2BA84A;
+    box-shadow: 0 0 0 4px rgba(43, 168, 74, 0.16);
+  }
+
+  .home-hero-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .home-hero-aside-chips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .home-hero-aside-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 14px;
+    border-radius: 0.9rem;
+    border: 1px solid color-mix(in srgb, var(--home-ink) 14%, transparent);
+    background: color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix));
+    text-decoration: none;
+    color: var(--home-ink);
+    transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    min-width: 0;
+  }
+  .home-hero-aside-chip:hover,
+  .home-hero-aside-chip:focus-visible {
+    border-color: color-mix(in srgb, var(--home-haze) 45%, var(--home-rule));
+    background: color-mix(in srgb, var(--home-acid) 14%, var(--home-paper));
+  }
+  .home-hero-aside-chip-lbl {
+    font-family: var(--font-home-sans);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--home-ink-muted);
+  }
+  .home-hero-aside-chip-val {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: var(--font-home-sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--home-ink);
+    line-height: 1.25;
+  }
+
+  .home-headshot-caption {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--home-paper) 90%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--home-ink) 14%, transparent);
+    font-family: var(--font-home-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--home-ink);
+  }
+  .home-headshot-caption-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--home-ink);
+    flex: 0 0 auto;
   }
 
   .home-button {
@@ -998,10 +1180,11 @@
 
   .home-headshot-frame {
     position: relative;
-    width: min(100%, 26rem);
-    aspect-ratio: 3/4;
+    width: 100%;
+    max-width: 28rem;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
-    border-radius: 1.8rem;
+    border-radius: 1.6rem;
     box-shadow: var(--shadow-xl);
     /* Paper-toned fallback so an empty frame doesn't read as a hollow box
        if the image ever fails to load (HP-1). */
@@ -1392,8 +1575,8 @@
     }
 
     .home-hero-grid {
-      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-      gap: 3.5rem;
+      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+      gap: clamp(2rem, 4vw, 3.5rem);
     }
 
     .home-section-intro {
