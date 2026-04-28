@@ -46,6 +46,7 @@ npm run update:investments
 npm run update:football
 npm run update:premier-league
 npm run update:la-liga
+npm run update:nba
 npm run update:formula-1
 npm run update:spacex
 npm run lint
@@ -82,6 +83,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/formula-1`
 - `/premier-league`
 - `/la-liga`
+- `/nba`
 
 ### Fantasy football
 
@@ -198,10 +200,30 @@ git push
 - This keeps standings/scorers/fixtures current without any manual steps
 - Team snapshot data (sidebar fixtures, form strip) only updates on a manual `npm run update:football`
 
-**Shared components:** `src/components/football/` — used by both dashboards:
+**Shared components:** `src/components/football/` — used by the soccer and NBA dashboards:
 - `FixtureCard`, `FixtureGroupSection` — generic fixture rendering
 - `LeaderList` — scorers/assists leaderboard
 - `StatCard`, `MetricCard`, `InfoChip`, `CrestAvatar`, `TeamResultPill`, `EmptyPanel`, `SurfaceCard`
+
+### NBA Dashboard
+
+The `/nba` route follows the same snapshot-driven pattern as the soccer dashboards.
+
+**Data source:** ESPN's public NBA endpoints (no API token required):
+- standings → `https://site.api.espn.com/apis/v2/sports/basketball/nba/standings`
+- scoreboard → `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard`
+- leaders → `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/leaders`
+- per-team schedule → `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/{abbr}/schedule`
+
+**Snapshot file:** `src/data/nbaSnapshot.ts` (committed; ships empty in the seed and is filled by the update script).
+
+**Update script:** `npm run update:nba` (full refresh, ~1 min). Pass `-- --league-only` to skip per-team schedule snapshots.
+
+**Route state:** deep-linkable `view` (east, west, playoff, play-in) and `team` query params.
+
+**API routes:**
+- `/api/nba/summary` — conference standings, leaders, scoreboard slate
+- `/api/nba/teams/[teamId]` — team schedule + form, keyed by lowercased ESPN abbreviation
 
 ### Other standalone data tools
 
@@ -252,6 +274,8 @@ Live routes under `src/app/api/`:
 - `/api/premier-league/teams/[teamId]`
 - `/api/la-liga/summary`
 - `/api/la-liga/teams/[teamId]`
+- `/api/nba/summary`
+- `/api/nba/teams/[teamId]`
 - `/api/mba-jobs`
 - `/api/mba-jobs/email`
 - `/api/news-pulse`
