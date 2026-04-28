@@ -14,7 +14,10 @@ Requirements:
 """
 
 import json
+import os
+import signal
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -400,31 +403,82 @@ def fetch_symbol(symbol: str, out_dir: Path) -> dict[str, str]:
     return build_index_entry(symbol, info_payload)
 
 
+# ---------------------------------------------------------------------------
+# Watchdogs
+# ---------------------------------------------------------------------------
+# Per-symbol timeout: defeatbeta-api occasionally hangs on a single ticker
+# (the lazy-warmup of its DuckDB/parquet cache has been observed at 15+ min
+# for the very first call on a fresh runner). Without a per-symbol cap, one
+# bad ticker can eat the entire CI budget. SIGALRM-based; Linux/macOS only,
+# which matches our runtime targets.
+#
+# Global budget: a soft cap that stops dispatching new symbols once we're
+# close to the CI hard timeout. Anything not reached gets recorded as failed
+# with a clear reason, so downstream verification can catch a partial run.
+PER_SYMBOL_TIMEOUT_SECONDS = int(os.environ.get("PER_SYMBOL_TIMEOUT_SECONDS", "600"))
+_global_budget_env = os.environ.get("GLOBAL_BUDGET_SECONDS", "").strip()
+GLOBAL_BUDGET_SECONDS: int | None = int(_global_budget_env) if _global_budget_env else None
+
+
+class SymbolTimeout(Exception):
+    """Raised when an individual symbol exceeds PER_SYMBOL_TIMEOUT_SECONDS."""
+
+
+def _alarm_handler(signum, frame):  # noqa: ARG001 — signal handler signature
+    raise SymbolTimeout(f"per-symbol timeout after {PER_SYMBOL_TIMEOUT_SECONDS}s")
+
+
 def main() -> None:
     symbols = read_symbols()
     print(f"Processing {len(symbols)} symbols: {', '.join(symbols)}")
-    print(f"Output directory: {OUTPUT_DIR}\n")
+    print(f"Output directory: {OUTPUT_DIR}")
+    print(f"Per-symbol timeout: {PER_SYMBOL_TIMEOUT_SECONDS}s")
+    if GLOBAL_BUDGET_SECONDS:
+        print(f"Global budget:      {GLOBAL_BUDGET_SECONDS}s")
+    print()
 
     successful: list[str] = []
-    failed: list[str] = []
+    failed: list[dict[str, str]] = []
     entries: list[dict[str, str]] = []
 
+    signal.signal(signal.SIGALRM, _alarm_handler)
+    start = time.monotonic()
+
     for symbol in symbols:
+        elapsed = time.monotonic() - start
+        if GLOBAL_BUDGET_SECONDS and elapsed >= GLOBAL_BUDGET_SECONDS:
+            reason = f"global time budget exhausted at {elapsed:.0f}s"
+            print(f"[{symbol}] SKIPPED: {reason}")
+            failed.append({"symbol": symbol, "reason": reason})
+            continue
+
         print(f"[{symbol}] Starting...")
         out_dir = OUTPUT_DIR / symbol
+        signal.alarm(PER_SYMBOL_TIMEOUT_SECONDS)
         try:
             index_entry = fetch_symbol(symbol, out_dir)
             successful.append(symbol)
             entries.append(index_entry)
             print(f"[{symbol}] Done.\n")
+        except SymbolTimeout as exc:
+            failed.append({"symbol": symbol, "reason": str(exc)})
+            print(f"[{symbol}] TIMEOUT: {exc}\n")
+            write_json(out_dir / "error.json", {"symbol": symbol, "error": str(exc)})
         except Exception as exc:
-            failed.append(symbol)
+            failed.append({"symbol": symbol, "reason": str(exc)})
             print(f"[{symbol}] FAILED: {exc}\n")
             write_json(out_dir / "error.json", {"symbol": symbol, "error": str(exc)})
+        finally:
+            signal.alarm(0)
+
+    # The downstream TypeScript builder and CI verify step only read
+    # `index.failed` as `string[]`. Keep that contract while still surfacing
+    # the richer reasons in the run log for humans triaging.
+    failed_symbols = [item["symbol"] for item in failed]
 
     index_data = {
         "symbols": successful,
-        "failed": failed,
+        "failed": failed_symbols,
         "lastUpdated": datetime.now(timezone.utc).isoformat(),
         "entries": entries,
     }
@@ -435,7 +489,9 @@ def main() -> None:
     if successful:
         print(f"  Success: {', '.join(successful)}")
     if failed:
-        print(f"  Failed:  {', '.join(failed)}")
+        print("  Failed:")
+        for item in failed:
+            print(f"    {item['symbol']}: {item['reason']}")
 
 
 if __name__ == "__main__":

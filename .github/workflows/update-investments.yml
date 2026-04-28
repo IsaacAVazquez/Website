@@ -58,6 +58,32 @@ jobs:
           .venv/bin/pip install --upgrade pip
           .venv/bin/pip install defeatbeta-api
 
+      # defeatbeta-api stores its DuckDB/parquet cache at /tmp/defeatbeta. The
+      # very first ticker fetch on a fresh runner downloads the upstream
+      # dataset, which has been observed at ~15+ min for a single symbol —
+      # blowing past the 25 min job timeout before any other symbol runs.
+      # Persisting that directory between runs reduces the warm-call cost to
+      # seconds. Key on the ISO week so the cache rolls over weekly even if
+      # defeatbeta-api's internal "Update time" hasn't advanced; restore-keys
+      # fall back to the most recent cache so we never start cold.
+      #
+      # Restore + save are split so the save step can run with `if: always()`.
+      # The combined `actions/cache@v4` only saves on job success, which would
+      # leave the first run (and any subsequent timed-out run) with no cache
+      # to restore from on the next attempt — a permanent timeout loop.
+      - name: Compute defeatbeta cache key
+        id: dfb-key
+        run: echo "week=$(date -u +'%G-%V')" >> "$GITHUB_OUTPUT"
+
+      - name: Restore defeatbeta data cache
+        id: dfb-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: /tmp/defeatbeta
+          key: defeatbeta-data-${{ runner.os }}-${{ steps.dfb-key.outputs.week }}
+          restore-keys: |
+            defeatbeta-data-${{ runner.os }}-
+
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
@@ -65,13 +91,35 @@ jobs:
         run: npm run update:investments
         env:
           NODE_ENV: production
+          # Per-symbol watchdog: catch a single hung defeatbeta-api call
+          # before it eats the whole job. 10 minutes is generous for a
+          # single ticker, even on a partly-cold cache.
+          PER_SYMBOL_TIMEOUT_SECONDS: "600"
+          # Global soft cap: stop dispatching new symbols ~3 min before the
+          # 25 min hard timeout so the build/verify steps still get to run
+          # and the partial cache gets saved cleanly.
+          GLOBAL_BUDGET_SECONDS: "1320"
 
-      - name: Verify index lastUpdated advanced
+      # Save the (possibly partially warmed) cache even on timeout/cancellation
+      # so the next run can resume from whatever the previous run got through.
+      # Only re-save when the primary key didn't already hit, otherwise we'd
+      # churn the cache on every run.
+      - name: Save defeatbeta data cache
+        if: always() && steps.dfb-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: /tmp/defeatbeta
+          key: defeatbeta-data-${{ runner.os }}-${{ steps.dfb-key.outputs.week }}
+
+      - name: Verify investments snapshot freshness and quality
         id: verify_freshness
         run: |
           node -e "
           const fs = require('fs');
-          const index = JSON.parse(fs.readFileSync('public/data/investments/index.json', 'utf8'));
+          const path = require('path');
+
+          const DATA_DIR = 'public/data/investments';
+          const index = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'index.json'), 'utf8'));
           const lastUpdated = new Date(index.lastUpdated);
           const ageHours = (Date.now() - lastUpdated.getTime()) / (1000 * 60 * 60);
           const successCount = Array.isArray(index.symbols) ? index.symbols.length : 0;
@@ -79,6 +127,7 @@ jobs:
           console.log('Index lastUpdated:', index.lastUpdated);
           console.log('Age (hours):', ageHours.toFixed(2));
           console.log('Symbols succeeded:', successCount, 'failed:', failedCount);
+
           if (ageHours > 2) {
             console.error('::error::index.lastUpdated is older than 2 hours after a refresh run. The Python fetch likely failed silently.');
             process.exit(1);
@@ -87,7 +136,39 @@ jobs:
             console.error('::error::index.symbols is empty. The Python fetch produced no successful symbols.');
             process.exit(1);
           }
-          fs.writeFileSync(process.env.GITHUB_OUTPUT, 'success_count=' + successCount + '\nfailed_count=' + failedCount + '\n', { flag: 'a' });
+
+          // Quality check: when defeatbeta-api silently returns empty data
+          // for every ticker (the documented failure mode after a hang or
+          // upstream outage), every symbol still ends up in index.symbols
+          // but the resulting snapshots are mostly empty. Catch that by
+          // counting symbols whose final snapshot has real price history.
+          const QUALITY_THRESHOLD = 0.8;
+          let withPrice = 0;
+          const missingPrice = [];
+          for (const symbol of index.symbols) {
+            const snapshotPath = path.join(DATA_DIR, symbol, 'snapshot.json');
+            try {
+              const snapshot = JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
+              if (snapshot && snapshot.capabilities && snapshot.capabilities.price === true) {
+                withPrice += 1;
+              } else {
+                missingPrice.push(symbol);
+              }
+            } catch (err) {
+              missingPrice.push(symbol);
+            }
+          }
+          const ratio = withPrice / successCount;
+          console.log('Symbols with valid price history:', withPrice, '/', successCount, '(' + (ratio * 100).toFixed(1) + '%)');
+          if (missingPrice.length > 0) {
+            console.log('Symbols missing price (first 20):', missingPrice.slice(0, 20).join(', '));
+          }
+          if (ratio < QUALITY_THRESHOLD) {
+            console.error('::error::Only ' + (ratio * 100).toFixed(1) + '% of symbols have valid price history (threshold: ' + (QUALITY_THRESHOLD * 100) + '%). Likely a silent upstream failure — refusing to commit a degraded snapshot.');
+            process.exit(1);
+          }
+
+          fs.writeFileSync(process.env.GITHUB_OUTPUT, 'success_count=' + successCount + '\nfailed_count=' + failedCount + '\nwith_price=' + withPrice + '\n', { flag: 'a' });
           "
 
       - name: Check for investments data changes
@@ -210,15 +291,35 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Weekdays at 22:15 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Mon + Thu at 22:15 UTC" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -n "${{ steps.verify_freshness.outputs.success_count }}" ]; then
             echo "**Symbols succeeded:** ${{ steps.verify_freshness.outputs.success_count }}" >> "$GITHUB_STEP_SUMMARY"
             echo "**Symbols failed:** ${{ steps.verify_freshness.outputs.failed_count }}" >> "$GITHUB_STEP_SUMMARY"
+            if [ -n "${{ steps.verify_freshness.outputs.with_price }}" ]; then
+              echo "**With valid price history:** ${{ steps.verify_freshness.outputs.with_price }}" >> "$GITHUB_STEP_SUMMARY"
+            fi
             echo "" >> "$GITHUB_STEP_SUMMARY"
           fi
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "✅ Investments snapshots changed and were committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "ℹ️ Investments snapshots were already up to date." >> "$GITHUB_STEP_SUMMARY"
-          fi
+          # Branch on job status FIRST. The previous version fell into the
+          # "already up to date" else whenever check_changes hadn't run (e.g.
+          # on cancellation or earlier-step failure), which made timed-out
+          # runs look like clean no-op runs.
+          case "${{ job.status }}" in
+            success)
+              if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+                echo "✅ Investments snapshots changed and were committed." >> "$GITHUB_STEP_SUMMARY"
+              else
+                echo "ℹ️ Investments snapshots were already up to date." >> "$GITHUB_STEP_SUMMARY"
+              fi
+              ;;
+            cancelled)
+              echo "⚠️ Run was cancelled before completion (commonly the 25-minute job timeout). Snapshots were **not** verified or committed." >> "$GITHUB_STEP_SUMMARY"
+              ;;
+            failure)
+              echo "❌ Run failed before commit. Check the failed step for details." >> "$GITHUB_STEP_SUMMARY"
+              ;;
+            *)
+              echo "ℹ️ Run ended with status \`${{ job.status }}\`." >> "$GITHUB_STEP_SUMMARY"
+              ;;
+          esac
