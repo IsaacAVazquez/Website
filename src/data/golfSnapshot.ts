@@ -58,7 +58,7 @@ const playerSeeds: GolfPlayerSeed[] = [
     nextTeeTime: "1:40 PM ET",
     birdies: 11,
     bogeys: 3,
-    eagles: 0,
+    eagles: 1,
   },
   {
     id: "collin-morikawa",
@@ -90,7 +90,8 @@ const playerSeeds: GolfPlayerSeed[] = [
     nextTeeTime: "1:20 PM ET",
     birdies: 11,
     bogeys: 5,
-    eagles: 0,
+    eagles: 1,
+    doubleBogeys: 1,
   },
   {
     id: "viktor-hovland",
@@ -218,7 +219,8 @@ const playerSeeds: GolfPlayerSeed[] = [
     nextTeeTime: "12:30 PM ET",
     birdies: 8,
     bogeys: 6,
-    eagles: 0,
+    eagles: 1,
+    doubleBogeys: 1,
   },
   {
     id: "russell-henley",
@@ -235,6 +237,7 @@ const playerSeeds: GolfPlayerSeed[] = [
     birdies: 7,
     bogeys: 5,
     eagles: 0,
+    doubleBogeys: 1,
   },
   {
     id: "justin-thomas",
@@ -251,6 +254,7 @@ const playerSeeds: GolfPlayerSeed[] = [
     birdies: 9,
     bogeys: 8,
     eagles: 0,
+    doubleBogeys: 2,
   },
   {
     id: "keegan-bradley",
@@ -283,6 +287,7 @@ const playerSeeds: GolfPlayerSeed[] = [
     birdies: 7,
     bogeys: 7,
     eagles: 0,
+    doubleBogeys: 1,
   },
   {
     id: "min-woo-lee",
@@ -331,6 +336,7 @@ const playerSeeds: GolfPlayerSeed[] = [
     birdies: 6,
     bogeys: 7,
     eagles: 0,
+    doubleBogeys: 1,
   },
   {
     id: "akshay-bhatia",
@@ -392,6 +398,7 @@ function buildPlayerOption(seed: GolfPlayerSeed): GolfPlayerOption {
 
 function buildPlayerSnapshot(seed: GolfPlayerSeed): GolfPlayerSnapshot {
   const doubleBogeys = seed.doubleBogeys ?? 0;
+  const holesPlayed = seed.roundScores.length * 18;
 
   return {
     player: {
@@ -416,7 +423,7 @@ function buildPlayerSnapshot(seed: GolfPlayerSeed): GolfPlayerSnapshot {
     scoring: {
       birdies: seed.birdies,
       bogeys: seed.bogeys,
-      pars: 36 - seed.birdies - seed.bogeys - seed.eagles - doubleBogeys,
+      pars: holesPlayed - seed.birdies - seed.bogeys - seed.eagles - doubleBogeys,
       eagles: seed.eagles,
       doubleBogeys,
     },
