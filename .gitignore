@@ -75,3 +75,8 @@ scripts/player-matching-results.json
 
 # Python virtual environment
 .venv/
+
+# Python bytecode (scripts/fetch_investments_data.py and friends)
+__pycache__/
+*.py[cod]
+*$py.class
