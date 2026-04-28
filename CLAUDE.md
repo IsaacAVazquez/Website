@@ -98,6 +98,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/fintech-tools/interchange-iq`
 - `/polling-aggregator`
 - `/mba-internship-notifications`
+- `/museum-log`
 
 ### Utility/admin
 
