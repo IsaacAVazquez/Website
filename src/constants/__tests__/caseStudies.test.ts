@@ -10,6 +10,7 @@ describe("caseStudies helpers", () => {
       "news-pulse-dashboard",
       "frontier-model-tracker",
       "decision-lab",
+      "food-map",
       "budget-planner",
       "mba-role-tracker",
       "spacex-mission-control",

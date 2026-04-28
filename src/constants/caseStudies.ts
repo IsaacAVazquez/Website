@@ -255,6 +255,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "food-map": {
+    slug: "food-map",
+    title: "Food Map",
+    description:
+      "Curated Austin restaurant map for sending friends to the right neighborhood, cuisine, and meal with a single deep-linkable shortlist.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "SVG", "Editorial UX"],
+    metrics: "12 curated stops · 4 neighborhoods · Deep-linkable filters",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/food-map",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a curated Austin food map that turns my actual go-to restaurant shortlist into a single deep-linkable product surface.",
+      impact:
+        "Replaces the same restaurant text-thread I keep retyping with one shareable link that already filters by neighborhood, cuisine, and meal.",
+    },
+    problem: {
+      context:
+        "Most food guides are either too long to be useful or too generic to be honest. A friend asking where to eat usually wants a short, opinionated answer, not a list of forty options.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "march-madness-2026": {
     slug: "march-madness-2026",
     title: "March Madness 2026 Bracket Analysis",
@@ -465,6 +498,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "news-pulse-dashboard",
   "frontier-model-tracker",
   "decision-lab",
+  "food-map",
   "budget-planner",
   "mba-role-tracker",
   "spacex-mission-control",
