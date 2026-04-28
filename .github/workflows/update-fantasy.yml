@@ -5,10 +5,17 @@ on:
     - cron: "0 17 * * 3"
   workflow_dispatch:
 
+# Don't stack a manual dispatch on top of a scheduled run.
+concurrency:
+  group: update-fantasy
+  cancel-in-progress: false
+
 jobs:
   update-fantasy-snapshots:
     name: Update Fantasy Football Snapshots
     runs-on: ubuntu-latest
+    # FantasyPros scrape with retries can run long; cap at 30 min.
+    timeout-minutes: 30
     permissions:
       contents: write
 
@@ -16,7 +23,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -25,7 +32,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --fund=false
 
       - name: Build fantasy snapshots
         run: npm run update:fantasy

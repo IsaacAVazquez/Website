@@ -5,10 +5,17 @@ on:
     - cron: "15 6 * * *"
   workflow_dispatch:
 
+# Don't stack a manual dispatch on top of a scheduled run.
+concurrency:
+  group: refresh-premier-league
+  cancel-in-progress: false
+
 jobs:
   refresh-premier-league:
     name: Refresh Premier League Snapshot
     runs-on: ubuntu-latest
+    # Cap a hung football-data.org call so we don't burn 6 hours of runner.
+    timeout-minutes: 20
 
     permissions:
       contents: write
@@ -17,7 +24,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -26,7 +33,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --fund=false
 
       - name: Refresh Premier League snapshot
         run: npm run update:premier-league
