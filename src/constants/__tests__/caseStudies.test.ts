@@ -9,6 +9,7 @@ describe("caseStudies helpers", () => {
       "interchange-iq",
       "news-pulse-dashboard",
       "decision-lab",
+      "food-map",
       "budget-planner",
       "mba-role-tracker",
       "spacex-mission-control",
