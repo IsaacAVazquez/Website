@@ -8,6 +8,7 @@ describe("caseStudies helpers", () => {
       "investment-analytics-platform",
       "interchange-iq",
       "news-pulse-dashboard",
+      "frontier-model-tracker",
       "decision-lab",
       "budget-planner",
       "mba-role-tracker",
