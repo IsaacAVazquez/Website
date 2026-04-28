@@ -484,6 +484,71 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+
+  "ai-dev-tool-ecosystem": {
+    slug: "ai-dev-tool-ecosystem",
+    title: "AI Dev Tool Ecosystem",
+    description:
+      "Filterable directory of AI coding and agent tools with pricing tiers, model support, GitHub stars, release cadence, and source links.",
+    role: "Product Designer & Developer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Developer Tools", "Market Research"],
+    metrics: "16 tools · pricing tiers · model support · release cadence",
+    link: "/ai-dev-tools",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a market map for AI coding tools that makes it easier to compare Cursor, Claude Code, Copilot, Devin, Cline, and the open-source agent layer without maintaining a spreadsheet.",
+      impact:
+        "Turns a fast-moving tool market into a shareable decision surface with filters, deep links, and sourced detail panels.",
+    },
+    problem: {
+      context:
+        "AI coding tools change pricing, model access, and release pace constantly. The useful comparison is not just features, but cost model, model control, open-source traction, and update velocity.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "github-trending-pulse": {
+    slug: "github-trending-pulse",
+    title: "GitHub Trending Pulse",
+    description:
+      "Daily-refreshed snapshot of active public GitHub repositories by language and topic, with weekly star movement carried forward from the public GitHub API.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "GitHub API", "Snapshot pipeline"],
+    metrics: "14 segments · Daily refresh · Weekly star deltas",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/github-trending-pulse",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a developer-trend dashboard that turns GitHub search data into a daily snapshot across languages, topics, and repository-level star movement.",
+      impact:
+        "Makes open source momentum easier to scan without treating GitHub Trending as a static leaderboard.",
+    },
+    problem: {
+      context:
+        "GitHub discovery is noisy when popular projects, freshly active repos, and topic-specific momentum all sit in different search paths.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
@@ -496,7 +561,9 @@ const PORTFOLIO_PROJECT_ORDER = [
   "investment-analytics-platform",
   "interchange-iq",
   "news-pulse-dashboard",
+  "ai-dev-tool-ecosystem",
   "frontier-model-tracker",
+  "github-trending-pulse",
   "decision-lab",
   "food-map",
   "budget-planner",

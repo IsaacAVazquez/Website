@@ -15,6 +15,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const isHomePage = pathname === "/";
   const selfShellRoutes = new Set([
     "/about",
+    "/ai-dev-tools",
     "/changelog",
     "/contact",
     "/decision-lab",
@@ -24,6 +25,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/food-map",
     "/formula-1",
     "/golf",
+    "/github-trending-pulse",
     "/investments",
     "/la-liga",
     "/march-madness-2026",
