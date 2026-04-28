@@ -21,6 +21,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/fantasy-football",
     "/fantasy-football/draft-tracker",
     "/fintech-tools/budget-planner",
+    "/food-map",
     "/formula-1",
     "/golf",
     "/investments",
