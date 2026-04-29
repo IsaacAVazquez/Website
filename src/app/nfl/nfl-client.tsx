@@ -596,7 +596,7 @@ export function NflClient({
                   onClick={() => setActiveDetailTab(tab.id)}
                   className={`min-h-[44px] whitespace-nowrap rounded-2xl px-5 py-2.5 text-sm font-semibold transition-colors ${
                     isActive
-                      ? "bg-[var(--home-haze)] text-white shadow-sm"
+                      ? "bg-[var(--home-haze)] text-[var(--home-paper)] shadow-sm"
                       : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                   }`}
                 >
@@ -859,7 +859,7 @@ export function NflClient({
         {/* Disclaimer */}
         <section className="rounded-3xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
           <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-warning)]" />
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-haze)]" />
             <p className="mb-0 max-w-none leading-relaxed">
               This page is a curated NFLverse snapshot rather than a live feed. Standings come from the public NFLverse standings dataset, schedule and scores from the NFLverse games table, and stat leaders from the regular-season player stats release linked above.
             </p>
@@ -1031,9 +1031,9 @@ function getZoneDotColor(zone: NflZone): string {
     case "top-seed":
       return "var(--home-haze)";
     case "division":
-      return "var(--color-success)";
+      return "var(--home-moss)";
     case "wildcard":
-      return "var(--color-warning)";
+      return "var(--home-acid)";
     case "eliminated":
     default:
       return "var(--home-rule)";
@@ -1050,15 +1050,15 @@ function getZonePillStyle(zone: NflZone): CSSProperties {
       };
     case "division":
       return {
-        color: "var(--color-success)",
-        borderColor: "color-mix(in srgb, var(--color-success) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-ink) 75%, var(--home-moss))",
+        borderColor: "color-mix(in srgb, var(--home-moss) 55%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-moss) 22%, var(--home-paper-alt))",
       };
     case "wildcard":
       return {
-        color: "var(--color-warning)",
-        borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-warning) 10%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-ink) 70%, var(--home-acid))",
+        borderColor: "color-mix(in srgb, var(--home-acid) 50%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-acid) 22%, var(--home-paper-alt))",
       };
     case "eliminated":
     default:

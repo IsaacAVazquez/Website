@@ -23,7 +23,7 @@ function Field({
       <input
         id={id}
         name={id}
-        className="w-full px-3 py-2 text-sm rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] placeholder:text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)] focus:border-transparent transition"
+        className="min-h-[44px] w-full px-3 py-2 text-sm rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] placeholder:text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))] focus:outline-none focus:ring-2 focus:ring-[var(--home-haze)] focus:border-transparent transition"
         {...props}
       />
     </label>

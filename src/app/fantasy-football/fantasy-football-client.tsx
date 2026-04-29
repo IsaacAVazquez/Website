@@ -565,7 +565,7 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
 
             <article className="home-card p-5 sm:p-6">
               <div className="flex items-center gap-3">
-                <Users className="h-5 w-5" style={{ color: "var(--color-success)" }} />
+                <Users className="h-5 w-5" style={{ color: "var(--home-moss)" }} />
                 <div>
                   <p className="home-kicker mb-0">Tier Snapshot</p>
                   <p className="text-sm font-semibold">Where the breaks sit right now</p>

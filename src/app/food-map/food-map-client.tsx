@@ -72,7 +72,7 @@ function NeighborhoodChips({
             type="button"
             onClick={() => onToggle(neighborhood.id)}
             aria-pressed={isActive}
-            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease"
+            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
             style={{
               borderColor: isActive
                 ? `color-mix(in srgb, ${neighborhood.accent} 45%, var(--home-rule))`
@@ -114,7 +114,7 @@ function CuisineChips({
             type="button"
             onClick={() => onToggle(cuisine.id)}
             aria-pressed={isActive}
-            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease"
+            className="resume-chip min-h-touch transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
             style={{
               borderColor: isActive
                 ? "color-mix(in srgb, var(--home-haze) 38%, var(--home-rule))"
@@ -156,7 +156,7 @@ function MealSegmented({
             role="radio"
             aria-checked={isActive}
             onClick={() => onChange(meal.id)}
-            className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease"
+            className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
             style={{
               background: isActive
                 ? "color-mix(in srgb, var(--home-haze) 18%, var(--home-paper))"
@@ -343,7 +343,7 @@ function PlaceCard({
       type="button"
       onClick={() => onSelect(place.id)}
       aria-pressed={isSelected}
-      className="home-card min-h-touch w-full rounded-[1.25rem] p-4 text-left transition-[transform,border-color,background-color,box-shadow] duration-200 ease"
+      className="home-card min-h-touch w-full rounded-[1.25rem] p-4 text-left transition-[transform,border-color,background-color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
       style={{
         ...getPanelStyle(),
         background: isSelected
@@ -426,7 +426,7 @@ function PlaceDetail({
         <button
           type="button"
           onClick={onClear}
-          className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease"
+          className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
           style={{
             ...getPanelStyle(),
             color: "var(--home-ink)",
@@ -575,7 +575,7 @@ function FoodMapWorkbench({
                 type="button"
                 onClick={handleResetFilters}
                 disabled={!hasFilters}
-                className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55"
+                className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                 style={{
                   ...getPanelStyle(),
                   color: "var(--home-ink)",

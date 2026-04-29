@@ -161,7 +161,7 @@ export function FrontierModelsClient({
               ? `${snapshot.priceTiers.find((tier) => tier.id === "budget")?.count} budget`
               : "—"
           }
-          detail="Sub-$1/M input tier — open weights and discount providers"
+          detail="Sub-$1/M input tier, including open weights and discount providers"
         />
       </section>
 

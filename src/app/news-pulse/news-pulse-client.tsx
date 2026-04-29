@@ -103,9 +103,9 @@ function getSourceBadgeStyle(sourceColor: string): CSSProperties {
 }
 
 function getReadabilityTone(score: number): CSSProperties {
-  if (score >= 70) return { color: "var(--color-success)" };
-  if (score >= 50) return { color: "var(--color-warning)" };
-  return { color: "var(--color-error)" };
+  if (score >= 70) return { color: "var(--home-moss)" };
+  if (score >= 50) return { color: "var(--home-haze)" };
+  return { color: "var(--home-ink-muted)" };
 }
 
 function buildFeedErrorMessage(status: number, payload: FeedResponse | null): string {
@@ -358,10 +358,12 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
 
         {feedErrors.length > 0 && !loading && !error ? (
           <div
+            role="status"
+            aria-live="polite"
             className="home-card flex items-start gap-3 rounded-[1.5rem] px-5 py-4"
             style={{
-              borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--color-warning) 10%, var(--home-paper))",
+              borderColor: "color-mix(in srgb, var(--home-acid) 30%, var(--home-rule))",
+              background: "color-mix(in srgb, var(--home-acid) 10%, var(--home-paper))",
             }}
           >
             <div
@@ -370,7 +372,7 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
             >
               <CircleAlert
                 className="h-4 w-4"
-                style={{ color: "var(--color-warning)" }}
+                style={{ color: "var(--home-acid)" }}
                 aria-hidden="true"
               />
             </div>
@@ -894,7 +896,7 @@ function AnalysisView({
                 >
                   <div
                     className="transition-[width] duration-500 ease"
-                    style={{ width: `${positivePercent}%`, background: "var(--color-success)" }}
+                    style={{ width: `${positivePercent}%`, background: "var(--home-moss)" }}
                     title={`Positive ${positivePercent}%`}
                   />
                   <div
@@ -904,7 +906,7 @@ function AnalysisView({
                   />
                   <div
                     className="transition-[width] duration-500 ease"
-                    style={{ width: `${negativePercent}%`, background: "var(--color-error)" }}
+                    style={{ width: `${negativePercent}%`, background: "var(--home-haze)" }}
                     title={`Negative ${negativePercent}%`}
                   />
                 </div>
@@ -916,7 +918,7 @@ function AnalysisView({
                   <span className="inline-flex items-center gap-1.5">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--color-success)" }}
+                      style={{ background: "var(--home-moss)" }}
                       aria-hidden="true"
                     />
                     {positivePercent}% positive
@@ -932,7 +934,7 @@ function AnalysisView({
                   <span className="inline-flex items-center gap-1.5">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--color-error)" }}
+                      style={{ background: "var(--home-haze)" }}
                       aria-hidden="true"
                     />
                     {negativePercent}% negative

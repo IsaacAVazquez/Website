@@ -29,7 +29,7 @@ const PROVIDER_COLORS: Record<FrontierProvider, string> = {
   openai: "#10a37f",
   google: "#4285f4",
   meta: "#1877f2",
-  xai: "#0f172a",
+  xai: "#475569",
   deepseek: "#7c3aed",
   mistral: "#fa5400",
 };

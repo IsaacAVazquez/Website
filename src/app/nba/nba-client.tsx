@@ -568,7 +568,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                   onClick={() => setActiveDetailTab(tab)}
                   className={`min-h-[44px] whitespace-nowrap rounded-2xl px-5 py-2.5 text-sm font-semibold transition-colors ${
                     activeDetailTab === tab
-                      ? "bg-[var(--home-haze)] text-white shadow-sm"
+                      ? "bg-[var(--home-haze)] text-[var(--home-paper)] shadow-sm"
                       : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                   }`}
                 >
@@ -766,7 +766,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
         {/* Disclaimer */}
         <section className="rounded-3xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
           <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-warning)]" />
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-haze)]" />
             <p className="mb-0 max-w-none leading-relaxed">
               This page is a curated snapshot rather than a live feed. Standings,
               scoreboard, and stat leaders are pulled from ESPN&apos;s public NBA
@@ -845,10 +845,10 @@ function getZoneDotColor(zone: NbaZone): string {
     case "playoff":
       return "var(--home-haze)";
     case "play-in":
-      return "var(--color-warning)";
+      return "var(--home-acid)";
     case "lottery":
     default:
-      return "var(--color-error)";
+      return "color-mix(in srgb, var(--home-ink) 65%, var(--home-stone))";
   }
 }
 
@@ -862,16 +862,16 @@ function getZonePillStyle(zone: NbaZone): CSSProperties {
       };
     case "play-in":
       return {
-        color: "var(--color-warning)",
-        borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-warning) 10%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-ink) 70%, var(--home-acid))",
+        borderColor: "color-mix(in srgb, var(--home-acid) 50%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-acid) 22%, var(--home-paper-alt))",
       };
     case "lottery":
     default:
       return {
-        color: "var(--color-error)",
-        borderColor: "color-mix(in srgb, var(--color-error) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-error) 10%, var(--home-paper-alt))",
+        color: "var(--home-ink)",
+        borderColor: "color-mix(in srgb, var(--home-ink) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-stone) 65%, var(--home-paper-alt))",
       };
   }
 }

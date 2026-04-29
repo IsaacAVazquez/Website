@@ -114,9 +114,12 @@ export function MissionDetailPanel({
       ) : null}
 
       {!isLoading && error ? (
-        <div className="mt-5 rounded-[24px] border border-[color-mix(in_srgb,var(--color-error)_18%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-error)_7%,var(--home-paper))] p-4">
+        <div
+          role="alert"
+          className="mt-5 rounded-[24px] border border-[color-mix(in_srgb,var(--home-acid)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_9%,var(--home-paper))] p-4"
+        >
           <div className="flex items-start gap-3">
-            <AlertTriangle className="mt-0.5 h-5 w-5 text-[var(--color-error)]" />
+            <AlertTriangle aria-hidden="true" className="mt-0.5 h-5 w-5 text-[color-mix(in_srgb,var(--home-acid)_55%,var(--home-ink))]" />
             <div>
               <p className="text-sm font-semibold text-[var(--home-ink)]">
                 Mission detail unavailable
@@ -182,7 +185,7 @@ export function MissionDetailPanel({
           </div>
 
           {launch.failures.length > 0 ? (
-            <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--color-warning)_18%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-warning)_7%,var(--home-paper))] p-5">
+            <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--home-acid)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_9%,var(--home-paper))] p-5">
               <h3 className="text-lg font-semibold text-[var(--home-ink)]">
                 Failure log
               </h3>

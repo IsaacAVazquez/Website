@@ -453,11 +453,11 @@ export function SpaceXMissionControlClient({
   return (
     <section
       aria-label="SpaceX Mission Control"
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_12%,transparent),transparent_32%),radial-gradient(circle_at_bottom_right,color-mix(in_srgb,var(--color-success)_8%,transparent),transparent_28%),linear-gradient(180deg,var(--home-paper)_0%,color-mix(in_srgb,var(--home-paper-alt)_70%,var(--home-paper))_100%)]"
+      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_12%,transparent),transparent_32%),radial-gradient(circle_at_bottom_right,color-mix(in_srgb,var(--home-moss)_10%,transparent),transparent_28%),linear-gradient(180deg,var(--home-paper)_0%,color-mix(in_srgb,var(--home-paper-alt)_70%,var(--home-paper))_100%)]"
     >
       <div className="mx-auto w-full max-w-[1700px] px-4 pb-10 pt-6 sm:px-6 sm:pb-12 sm:pt-8 lg:px-8 xl:px-10 2xl:px-12">
         <motion.div
-          className="mb-5 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_7%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_50%,color-mix(in_srgb,var(--color-success)_7%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)] p-5 shadow-[var(--shadow-md)] sm:p-6"
+          className="mb-5 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_7%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_50%,color-mix(in_srgb,var(--home-moss)_8%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)] p-5 shadow-[var(--shadow-md)] sm:p-6"
           {...motionProps}
         >
           <div className="min-w-0">
@@ -499,8 +499,14 @@ export function SpaceXMissionControlClient({
             </div>
 
             {hasPartialDataIssue ? (
-              <div className="mt-4 flex items-start gap-3 rounded-[24px] border border-[color-mix(in_srgb,var(--color-warning)_20%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-warning)_8%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]">
-                <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-warning)]" />
+              <div
+                role="status"
+                className="mt-4 flex items-start gap-3 rounded-[24px] border border-[color-mix(in_srgb,var(--home-acid)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_10%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]"
+              >
+                <AlertTriangle
+                  aria-hidden="true"
+                  className="mt-0.5 h-5 w-5 shrink-0 text-[color-mix(in_srgb,var(--home-acid)_55%,var(--home-ink))]"
+                />
                 <p>
                   One or more requests degraded, but the workspace is still usable.
                   Countdown timers are intentionally suppressed when the provider&apos;s

@@ -816,10 +816,15 @@ function EmailDigestButton({
       <div
         className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
         style={{
-          color: result.ok ? "var(--color-success)" : "var(--color-error)",
+          color: result.ok
+            ? "color-mix(in srgb, var(--home-moss) 60%, var(--home-ink))"
+            : "color-mix(in srgb, var(--home-acid) 55%, var(--home-ink))",
           borderColor: result.ok
-            ? "color-mix(in srgb, var(--color-success) 28%, var(--home-rule))"
-            : "color-mix(in srgb, var(--color-error) 28%, var(--home-rule))",
+            ? "color-mix(in srgb, var(--home-moss) 36%, var(--home-rule))"
+            : "color-mix(in srgb, var(--home-acid) 32%, var(--home-rule))",
+          background: result.ok
+            ? "color-mix(in srgb, var(--home-moss) 10%, var(--home-paper))"
+            : "color-mix(in srgb, var(--home-acid) 10%, var(--home-paper))",
         }}
         role="status"
       >
@@ -950,7 +955,7 @@ function EmailDigestDialog({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="mb-4 w-full rounded-xl border px-4 py-3 text-sm outline-none focus:ring-2"
+          className="mb-4 w-full rounded-xl border px-4 py-3 text-sm outline-none focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]"
           style={{
             background: "var(--home-paper-alt)",
             borderColor: "var(--home-rule)",
@@ -1474,15 +1479,15 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
             <div
               className="flex items-start gap-3 rounded-[1.5rem] px-5 py-4"
               style={{
-                borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--color-warning) 8%, var(--home-paper))",
+                borderColor: "color-mix(in srgb, var(--home-acid) 32%, var(--home-rule))",
+                background: "color-mix(in srgb, var(--home-acid) 10%, var(--home-paper))",
                 border: "1px solid",
               }}
               role="status"
             >
               <CircleAlert
                 className="mt-0.5 h-4 w-4 shrink-0"
-                style={{ color: "var(--color-warning)" }}
+                style={{ color: "color-mix(in srgb, var(--home-acid) 55%, var(--home-ink))" }}
                 aria-hidden="true"
               />
               <p className="mb-0 text-sm" style={{ color: "var(--home-ink)" }}>
@@ -1520,7 +1525,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       onChange={(event) => updateRouteState({ q: event.target.value })}
                       placeholder="Search PM, PMM, strategy, ops, growth, finance..."
                       aria-label="Search roles"
-                      className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease"
+                      className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]"
                       style={{
                         background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                         borderColor: "var(--home-rule)",
@@ -1559,7 +1564,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                       onChange={(event) => updateRouteState({ location: event.target.value })}
                       placeholder="Remote, New York, San Francisco..."
                       aria-label="Filter by location"
-                      className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease"
+                      className="w-full min-h-[48px] rounded-[1rem] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-haze)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-haze)_35%,transparent)]"
                       style={{
                         background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
                         borderColor: "var(--home-rule)",

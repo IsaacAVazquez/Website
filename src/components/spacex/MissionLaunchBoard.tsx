@@ -74,7 +74,7 @@ export function MissionLaunchBoard({
       </div>
 
       {error && launches.length === 0 && !isLoading ? (
-        <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--color-error)_18%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-error)_7%,var(--home-paper))] p-4">
+        <div role="alert" className="rounded-[24px] border border-[color-mix(in_srgb,var(--home-acid)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_9%,var(--home-paper))] p-4">
           <p className="text-sm font-semibold text-[var(--home-ink)]">
             Mission board unavailable
           </p>

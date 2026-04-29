@@ -125,7 +125,7 @@ function StatCard({
   icon: ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-4 py-4">
+    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-4">
       <div className="flex items-center justify-between gap-3">
         <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
           {eyebrow}
@@ -249,7 +249,8 @@ function QuickActions({
           else onLogQuickVisit();
         }}
         aria-pressed={isVisited}
-        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors ${padClass}`}
+        aria-label={isVisited ? `Mark ${museum.name} as not visited` : `Log a visit to ${museum.name}`}
+        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 ${padClass}`}
         style={pillStyle(isVisited, "var(--home-acid)")}
       >
         {isVisited ? <Check size={dim} /> : <Plus size={dim} />}
@@ -262,7 +263,8 @@ function QuickActions({
           onToggleWatchlist();
         }}
         aria-pressed={isWatchlisted}
-        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors ${padClass}`}
+        aria-label={isWatchlisted ? `Remove ${museum.name} from watchlist` : `Save ${museum.name} to watchlist`}
+        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 ${padClass}`}
         style={pillStyle(isWatchlisted, "var(--home-haze)")}
       >
         {isWatchlisted ? <BookmarkCheck size={dim} /> : <Bookmark size={dim} />}
@@ -275,10 +277,14 @@ function QuickActions({
           onToggleLiked();
         }}
         aria-pressed={isLiked}
-        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors ${padClass}`}
-        style={pillStyle(isLiked, "#E11D48")}
+        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 ${padClass}`}
+        style={pillStyle(isLiked, "var(--home-acid)")}
       >
-        <Heart size={dim} fill={isLiked ? "#E11D48" : "none"} stroke={isLiked ? "#E11D48" : "currentColor"} />
+        <Heart
+          size={dim}
+          fill={isLiked ? "var(--home-acid)" : "none"}
+          stroke={isLiked ? "var(--home-ink)" : "currentColor"}
+        />
         {isLiked ? "Liked" : "Like"}
       </button>
     </div>
@@ -608,7 +614,7 @@ function ReviewCard({
   onOpenMuseum: () => void;
 }) {
   return (
-    <li className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] p-5">
+    <li className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-5">
       <div className="flex flex-wrap items-baseline gap-2">
         <button
           type="button"
@@ -625,7 +631,7 @@ function ReviewCard({
       <div className="mt-2 flex flex-wrap items-center gap-2">
         <StarRow rating={review.rating} size={16} />
         <span className="text-sm font-semibold text-[var(--home-ink)]">{review.rating.toFixed(1)}</span>
-        {review.liked && <Heart size={14} fill="#E11D48" stroke="#E11D48" aria-label="Liked" />}
+        {review.liked && <Heart size={14} fill="var(--home-acid)" stroke="var(--home-ink)" aria-label="Liked" />}
         {review.exhibitTitle && (
           <span className="inline-flex items-center gap-1 text-xs text-[var(--home-ink-muted)]">
             <Ticket size={12} /> {review.exhibitTitle}
@@ -980,7 +986,7 @@ function MuseumDetailView({
                     Visited {formatDate(review.dateVisited)}
                   </span>
                   {review.liked && (
-                    <Heart size={14} fill="#E11D48" stroke="#E11D48" aria-label="Liked" />
+                    <Heart size={14} fill="var(--home-acid)" stroke="var(--home-ink)" aria-label="Liked" />
                   )}
                 </div>
                 <h2 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
@@ -1038,7 +1044,7 @@ function MuseumDetailView({
                 {museum.exhibits.map((ex) => (
                   <li
                     key={ex.id}
-                    className="rounded-xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] p-3"
+                    className="rounded-xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-3"
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <p className="text-base font-semibold text-[var(--home-ink)]">{ex.title}</p>

@@ -94,7 +94,7 @@ function formatPercent(score: number): string {
 }
 
 function getMatchTone(score: number): string {
-  if (score >= 0.99) return "var(--color-success)";
+  if (score >= 0.99) return "var(--home-acid)";
   if (score >= 0.6) return "var(--home-haze)";
   return "var(--home-ink-muted)";
 }
@@ -279,7 +279,7 @@ function PantryPanel({
           <button
             type="button"
             onClick={onClear}
-            className="inline-flex items-center gap-1 rounded-full border border-[var(--home-rule)] bg-transparent px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
+            className="inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-transparent px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
           >
             <Trash2 className="h-3 w-3" aria-hidden="true" />
             Clear
@@ -310,7 +310,7 @@ function PantryPanel({
                     <button
                       type="button"
                       onClick={() => onAdd(suggestion)}
-                      className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-[var(--home-ink)] transition-colors hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_70%,white)]"
+                      className="flex w-full min-h-touch items-center gap-2 px-4 py-2 text-left text-sm text-[var(--home-ink)] transition-colors hover:bg-[var(--home-paper-alt)] focus-visible:outline-none focus-visible:bg-[var(--home-paper-alt)]"
                     >
                       <Plus className="h-3 w-3 text-[var(--home-haze)]" aria-hidden="true" />
                       {suggestion}
@@ -343,11 +343,11 @@ function PantryPanel({
                 type="button"
                 onClick={() => onRemove(item)}
                 aria-label={`Remove ${item}`}
-                className="group inline-flex items-center gap-1.5 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-1.5 text-xs font-medium text-[var(--home-ink)] transition-colors hover:border-[var(--color-error)] hover:text-[var(--color-error)]"
+                className="group inline-flex min-h-touch items-center gap-1.5 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-1.5 text-xs font-medium text-[var(--home-ink)] transition-colors hover:border-[var(--home-ink)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
               >
                 <span>{item}</span>
                 <X
-                  className="h-3 w-3 text-[var(--home-ink-muted)] transition-colors group-hover:text-[var(--color-error)]"
+                  className="h-3 w-3 text-[var(--home-ink-muted)] transition-colors group-hover:text-[var(--home-ink)]"
                   aria-hidden="true"
                 />
               </button>
@@ -366,7 +366,7 @@ function PantryPanel({
               key={pick}
               type="button"
               onClick={() => onAdd(pick)}
-              className="rounded-full border border-dashed border-[var(--home-rule)] bg-transparent px-2.5 py-1 text-[11px] font-medium text-[var(--home-ink-muted)] transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-ink)]"
+              className="inline-flex min-h-touch items-center rounded-full border border-dashed border-[var(--home-rule)] bg-transparent px-3 py-1 text-[11px] font-medium text-[var(--home-ink-muted)] transition-colors hover:border-[var(--home-haze)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
             >
               + {pick}
             </button>
@@ -605,8 +605,12 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
                   return (
                     <li
                       key={ingredient.name}
-                      className="flex items-start gap-2 text-[var(--home-ink)]"
-                      style={isMissing ? { color: "var(--color-error)" } : undefined}
+                      className="flex items-start gap-2"
+                      style={{
+                        color: isMissing
+                          ? "var(--home-ink-muted)"
+                          : "var(--home-ink)",
+                      }}
                     >
                       <span aria-hidden="true" className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-current" />
                       <span>
@@ -617,7 +621,14 @@ function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
                           </span>
                         )}
                         {isMissing && hasPantry && (
-                          <span className="ml-2 text-[11px] uppercase tracking-[0.14em]">
+                          <span
+                            className="ml-2 rounded-full px-1.5 py-0.5 text-[10px] uppercase tracking-[0.16em]"
+                            style={{
+                              border:
+                                "1px solid color-mix(in srgb, var(--home-haze) 40%, var(--home-rule))",
+                              color: "var(--home-haze)",
+                            }}
+                          >
                             missing
                           </span>
                         )}

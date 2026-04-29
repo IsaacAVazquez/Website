@@ -692,7 +692,7 @@ export function BudgetPlannerClient() {
                                 type="button"
                                 aria-label={`Edit ${expense.note || expense.categoryName} expense`}
                                 onClick={() => handleEditExpense(expense.id)}
-                                className="inline-flex min-h-[42px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                                className="inline-flex min-h-[44px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
                               >
                                 Edit
                               </button>
@@ -705,7 +705,7 @@ export function BudgetPlannerClient() {
                                     resetExpenseDraft();
                                   }
                                 }}
-                                className="inline-flex min-h-[42px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)]"
+                                className="inline-flex min-h-[44px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)]"
                               >
                                 Delete
                               </button>

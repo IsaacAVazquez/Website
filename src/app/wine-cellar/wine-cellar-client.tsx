@@ -532,7 +532,7 @@ export function WineCellarClient() {
                   <button
                     type="submit"
                     disabled={!formDraft.name.trim()}
-                    className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:flex-initial"
+                    className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:flex-initial"
                   >
                     <Plus className="h-4 w-4" />
                     {editingId ? "Save tasting" : "Add tasting"}
@@ -792,7 +792,7 @@ export function WineCellarClient() {
                                 type="button"
                                 aria-label={`Edit ${entry.name}`}
                                 onClick={() => handleEdit(entry.id)}
-                                className="inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                                className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                               >
                                 <Pencil className="h-3.5 w-3.5" />
                                 Edit
@@ -801,7 +801,7 @@ export function WineCellarClient() {
                                 type="button"
                                 aria-label={`Delete ${entry.name}`}
                                 onClick={() => handleDelete(entry.id)}
-                                className="inline-flex min-h-[42px] items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--color-error)] hover:text-[var(--color-error)]"
+                                className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-ink)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                               >
                                 <Trash2 className="h-3.5 w-3.5" />
                                 Delete

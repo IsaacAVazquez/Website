@@ -59,9 +59,12 @@ function MissionCountdown({
   return (
     <div
       data-testid="mission-countdown"
-      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--color-success)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-success)_10%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))] px-4 py-2 font-mono text-sm font-semibold tracking-[0.16em] text-[var(--home-ink)]"
+      role="timer"
+      aria-live="polite"
+      aria-label={`Time to launch: ${countdown}`}
+      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--home-moss)_38%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-moss)_14%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))] px-4 py-2 font-mono text-sm font-semibold tracking-[0.16em] text-[var(--home-ink)]"
     >
-      <Radar className="h-4 w-4 text-[var(--color-success)]" />
+      <Radar aria-hidden="true" className="h-4 w-4 text-[color-mix(in_srgb,var(--home-moss)_60%,var(--home-ink))]" />
       {countdown}
     </div>
   );
@@ -102,7 +105,7 @@ export function MissionControlHero({
       <section
         data-testid="mission-hero"
         aria-label="Next launch hero"
-        className="rounded-[32px] border border-[color-mix(in_srgb,var(--color-warning)_24%,var(--home-rule))] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--color-warning)_8%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_100%)] p-6 shadow-[var(--shadow-lg)] sm:p-8"
+        className="rounded-[32px] border border-[color-mix(in_srgb,var(--home-acid)_30%,var(--home-rule))] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--home-acid)_10%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_100%)] p-6 shadow-[var(--shadow-lg)] sm:p-8"
       >
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
@@ -139,7 +142,7 @@ export function MissionControlHero({
     <section
       data-testid="mission-hero"
       aria-label="Next launch hero"
-      className="overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_9%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_45%,color-mix(in_srgb,var(--color-success)_8%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)] p-5 shadow-[var(--shadow-lg)] sm:p-6"
+      className="overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_16%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--home-haze)_9%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_45%,color-mix(in_srgb,var(--home-moss)_10%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)] p-5 shadow-[var(--shadow-lg)] sm:p-6"
     >
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.24fr)_220px]">
         <div className="min-w-0">
@@ -206,7 +209,7 @@ export function MissionControlHero({
           </div>
 
           {summary?.heroMessage && (
-            <div className="mt-5 rounded-[22px] border border-[color-mix(in_srgb,var(--color-warning)_20%,var(--home-rule))] bg-[color-mix(in_srgb,var(--color-warning)_8%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]">
+            <div className="mt-5 rounded-[22px] border border-[color-mix(in_srgb,var(--home-acid)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-acid)_10%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]">
               {summary.heroMessage}
             </div>
           )}

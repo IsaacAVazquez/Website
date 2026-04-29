@@ -176,9 +176,13 @@ function GenericBallotBar({ dem, rep }: { dem: number; rep: number }) {
   const demPct = total > 0 ? (dem / total) * 100 : 50;
   return (
     <div className="space-y-2">
-      <div className="flex h-6 w-full overflow-hidden rounded-full">
-        <div style={{ width: `${demPct}%`, background: DEM_COLOR }} className="transition-[width] duration-500" />
-        <div style={{ width: `${100 - demPct}%`, background: REP_COLOR }} className="transition-[width] duration-500" />
+      <div
+        className="flex h-6 w-full overflow-hidden rounded-full"
+        role="img"
+        aria-label={`Generic ballot: Democrats ${dem.toFixed(1)} percent, Republicans ${rep.toFixed(1)} percent`}
+      >
+        <div style={{ width: `${demPct}%`, background: DEM_COLOR }} className="motion-safe:transition-[width] motion-safe:duration-500" />
+        <div style={{ width: `${100 - demPct}%`, background: REP_COLOR }} className="motion-safe:transition-[width] motion-safe:duration-500" />
       </div>
       <div className="flex justify-between text-xs font-semibold">
         <span style={{ color: DEM_COLOR }}>Dem. {dem.toFixed(1)}%</span>

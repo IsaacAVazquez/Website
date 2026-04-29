@@ -345,10 +345,10 @@ function DriverStandingsTable({
               className="rounded-2xl"
               style={getTeamAccentStyle(standing.teamColor)}
             >
-              <td className="rounded-l-2xl border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 font-semibold text-[var(--home-ink)]">
+              <td className="rounded-l-2xl border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 font-semibold text-[var(--home-ink)]">
                 {standing.position}
               </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3">
+              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3">
                 <div className="flex min-w-0 items-center gap-3">
                   <DriverHeadshot
                     url={standing.headshotUrl}
@@ -365,19 +365,19 @@ function DriverStandingsTable({
                   </div>
                 </div>
               </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm text-[var(--home-ink-muted)]">
+              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm text-[var(--home-ink-muted)]">
                 {standing.teamName}
               </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm font-semibold text-[var(--home-ink)]">
+              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm font-semibold text-[var(--home-ink)]">
                 {formatDelta(standing.pointsDelta)}
               </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm">
+              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm">
                 <PositionChangeIndicator
                   currentPosition={standing.position}
                   previousPosition={standing.previousPosition}
                 />
               </td>
-              <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-right font-semibold text-[var(--home-ink)]">
+              <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-right font-semibold text-[var(--home-ink)]">
                 {formatPoints(standing.points)}
               </td>
             </tr>
@@ -420,22 +420,22 @@ function ConstructorStandingsTable({
         <tbody>
           {rows.map((standing) => (
             <tr key={`${standing.teamName}-${standing.position}`} style={getTeamAccentStyle(standing.teamColor)}>
-              <td className="rounded-l-2xl border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 font-semibold text-[var(--home-ink)]">
+              <td className="rounded-l-2xl border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 font-semibold text-[var(--home-ink)]">
                 {standing.position}
               </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 font-semibold text-[var(--home-ink)]">
+              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 font-semibold text-[var(--home-ink)]">
                 {standing.teamName}
               </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm font-semibold text-[var(--home-ink)]">
+              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm font-semibold text-[var(--home-ink)]">
                 {formatDelta(standing.pointsDelta)}
               </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm">
+              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-sm">
                 <PositionChangeIndicator
                   currentPosition={standing.position}
                   previousPosition={standing.previousPosition}
                 />
               </td>
-              <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-right font-semibold text-[var(--home-ink)]">
+              <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3 py-3 text-right font-semibold text-[var(--home-ink)]">
                 {formatPoints(standing.points)}
               </td>
             </tr>
@@ -449,7 +449,7 @@ function ConstructorStandingsTable({
 function ResultRow({ entry }: { entry: Formula1RaceResultEntry }) {
   return (
     <li
-      className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-4 py-3"
+      className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
       style={getTeamAccentStyle(entry.teamColor)}
     >
       <div className="flex items-start justify-between gap-4">
@@ -501,7 +501,7 @@ function MeetingSchedule({ meeting }: { meeting: Formula1MeetingSummary }) {
       {meeting.sessions.map((session) => (
         <li
           key={session.key}
-          className="flex min-h-[44px] items-center justify-between gap-4 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-4 py-3"
+          className="flex min-h-[44px] items-center justify-between gap-4 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
         >
           <div>
             <p className="mb-0 font-semibold text-[var(--home-ink)]">{session.name}</p>
@@ -595,7 +595,7 @@ function MeetingDetailPanel({
               ))}
             </ol>
           ) : (
-            <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] p-4">
+            <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-4">
               <p className="mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
                 OpenF1 has not published the official classification for this race yet. I still keep
                 the weekend here so the calendar stays intact.
@@ -642,7 +642,7 @@ function PodiumHighlight({ meeting }: { meeting: Formula1MeetingSummary }) {
         {slots.map((entry, index) => (
           <li
             key={`${meeting.key}-podium-${entry.driverNumber}`}
-            className="rounded-2xl border bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] p-4"
+            className="rounded-2xl border bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-4"
             style={{
               borderColor: entry.teamColor ?? "var(--home-rule)",
               borderTopWidth: "3px",
@@ -943,7 +943,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
                 </p>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,white)] p-4">
+                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,var(--home-elev-mix))] p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       Race start
                     </p>
@@ -953,7 +953,7 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
                         : formatDateLabel(highlightMeeting.startAt)}
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,white)] p-4">
+                  <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,var(--home-elev-mix))] p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       Weekend type
                     </p>

@@ -71,21 +71,21 @@ function getZonePillStyle(zone: ReturnType<typeof getPLZone>): CSSProperties {
       };
     case "europa":
       return {
-        color: "var(--color-warning)",
-        borderColor: "color-mix(in srgb, var(--color-warning) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-warning) 10%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-ink) 70%, var(--home-acid))",
+        borderColor: "color-mix(in srgb, var(--home-acid) 50%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-acid) 22%, var(--home-paper-alt))",
       };
     case "conference":
       return {
-        color: "var(--color-success)",
-        borderColor: "color-mix(in srgb, var(--color-success) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-success) 10%, var(--home-paper-alt))",
+        color: "color-mix(in srgb, var(--home-ink) 75%, var(--home-moss))",
+        borderColor: "color-mix(in srgb, var(--home-moss) 55%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-moss) 22%, var(--home-paper-alt))",
       };
     case "relegation":
       return {
-        color: "var(--color-error)",
-        borderColor: "color-mix(in srgb, var(--color-error) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--color-error) 10%, var(--home-paper-alt))",
+        color: "var(--home-ink)",
+        borderColor: "color-mix(in srgb, var(--home-ink) 30%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--home-stone) 65%, var(--home-paper-alt))",
       };
     default:
       return { color: "var(--home-ink-muted)", borderColor: "var(--home-rule)", background: "var(--home-paper-alt)" };
@@ -95,9 +95,9 @@ function getZonePillStyle(zone: ReturnType<typeof getPLZone>): CSSProperties {
 function getZoneDotColor(zone: ReturnType<typeof getPLZone>): string {
   switch (zone) {
     case "champions": return "var(--home-haze)";
-    case "europa": return "var(--color-warning)";
-    case "conference": return "var(--color-success)";
-    case "relegation": return "var(--color-error)";
+    case "europa": return "var(--home-acid)";
+    case "conference": return "var(--home-moss)";
+    case "relegation": return "color-mix(in srgb, var(--home-ink) 65%, var(--home-stone))";
     default: return "var(--home-rule)";
   }
 }
@@ -587,7 +587,7 @@ export function PremierLeagueClient({
                   onClick={() => setActiveDetailTab(tab)}
                   className={`min-h-[44px] whitespace-nowrap rounded-2xl px-5 py-2.5 text-sm font-semibold transition-colors ${
                     activeDetailTab === tab
-                      ? "bg-[var(--home-haze)] text-white shadow-sm"
+                      ? "bg-[var(--home-haze)] text-[var(--home-paper)] shadow-sm"
                       : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
                   }`}
                 >
@@ -748,7 +748,7 @@ export function PremierLeagueClient({
 
         <section className="rounded-3xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
           <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-warning)]" />
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-haze)]" />
             <p className="mb-0 max-w-none leading-relaxed">
               This page is a checked-in football-data.org snapshot rather than a live feed. Standings, club form, and fixture cards refresh from the local dataset shipped with the app.
             </p>
