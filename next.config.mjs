@@ -36,6 +36,48 @@ const nextConfig = {
         permanent: true,
       },
 
+      // Legacy professional case studies moved to /writing
+      {
+        source: '/portfolio/textout-platform',
+        destination: '/writing/textout-platform',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/runningmate-platform',
+        destination: '/writing/runningmate-platform-launch',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/civic-engagement-platform-scale',
+        destination: '/writing/scaling-civic-engagement-platform',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/campaign-analytics-dashboard',
+        destination: '/writing/campaign-self-service-analytics',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/qa-automation-framework',
+        destination: '/writing/qa-automation-daily-deploys',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/performance-intelligence',
+        destination: '/writing/proactive-performance-intelligence',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/pricing-strategy-initiative',
+        destination: '/writing/pricing-strategy-initiative',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/digital-acquisition-strategy',
+        destination: '/writing/digital-acquisition-strategy',
+        permanent: true,
+      },
+
       // Fantasy football aliases for easier sharing
       {
         source: '/ff',

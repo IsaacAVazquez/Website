@@ -25,14 +25,6 @@ const expectedPortfolioSlugs = [
   "mlb-pulse",
   "nba-pulse",
   "march-madness-2026",
-  "textout-platform",
-  "runningmate-platform",
-  "civic-engagement-platform-scale",
-  "campaign-analytics-dashboard",
-  "qa-automation-framework",
-  "performance-intelligence",
-  "pricing-strategy-initiative",
-  "digital-acquisition-strategy",
 ] as const;
 
 describe("caseStudies helpers", () => {

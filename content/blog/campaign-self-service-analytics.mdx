@@ -1,0 +1,43 @@
+---
+title: "Turning Manual Client Reporting into Self-Service Campaign Analytics"
+excerpt: "I led an analytics shift that replaced manual spreadsheet reporting with automated dashboards built around the decisions campaign managers actually needed to make weekly."
+publishedAt: "2026-04-29"
+category: "Analytics"
+tags: ["Analytics", "Product Strategy", "Self-Service", "Reporting", "SQL", "Tableau"]
+featured: false
+cluster: "PM Workflows"
+author: "Isaac Vazquez"
+coverImage: "/writing/campaign-self-service-analytics/opengraph-image"
+seo:
+  title: "Replacing Manual Client Reporting with Self-Service Campaign Analytics"
+  description: "How I built self-service campaign analytics that replaced manual Excel reporting, accelerated decisions by 40%, and saved roughly 60 hours of reporting work each month."
+  keywords: ["self-service analytics", "campaign reporting", "client analytics product", "Tableau dashboard product", "reporting workflow automation"]
+---
+
+# Turning Manual Client Reporting into Self-Service Campaign Analytics
+
+A lot of analytics work fails because it solves the wrong problem. Teams build a dashboard, ship it, and then discover that nobody actually uses it because the report it was supposed to replace is still being assembled by hand the next morning. The dashboard was technically impressive. The reporting workflow stayed exactly the same.
+
+I led an analytics shift that started somewhere different. Campaign managers were spending dozens of hours every month assembling reports from disconnected systems, the reports were often stale by the time stakeholders saw them, and non-technical users needed clearer views of campaign performance than any of the existing tooling provided. The reporting work was limiting how much of their week the team could spend on actual campaign strategy.
+
+## Treating Reporting As A Workflow, Not A Data Problem
+
+The frame I started with was that reporting is a workflow, not a deliverable. The right unit of work was the recurring decision the report was supposed to inform, not the report itself. That changed the order of the work. Before modeling any data, I interviewed campaign managers to find out which questions they actually asked of the reports week after week.
+
+A surprisingly small number of questions accounted for the majority of the time spent on reporting. Once those were named, the data model could be built around them. SQL and ETL workflows handled the recurring transformations, and the dashboard views prioritized the metrics campaign managers used in their weekly decisions instead of trying to surface every metric anyone might possibly want.
+
+The first version stayed deliberately narrow. I kept it focused on the highest-frequency reporting questions, balanced refresh frequency against API limits and operational cost, and designed for self-service use rather than internal analyst handholding. A self-service product that requires an analyst to interpret it has not actually replaced anything.
+
+## What Changed
+
+Monthly reporting work dropped by roughly 60 hours. Campaign decisions sped up by 40% because the data was current when it was needed. Conversion improved by 25% through better-informed segmentation, which is the result you get when faster reporting actually changes what the team does next. The team supported more clients without adding reporting headcount, which was the underlying reason the work had been worth doing.
+
+The behavioral change was the more interesting outcome. The campaign managers stopped treating reports as a deliverable and started treating them as part of the loop. They could check a number, change a campaign, and see the result, all without paging an analyst or waiting for a refresh.
+
+## What I Would Bring Forward
+
+The best dashboard is the one that replaces a real recurring decision workflow. Anything else is a dashboard nobody opens twice. Self-service analytics only works when the data model matches how users already think about the work, not how the analytics team thinks about the data.
+
+The other lesson was about scope. The temptation in analytics work is to ship a broad reporting portal so nothing is missing. The version that actually compounds is the narrow one that replaces something specific people were doing every Monday morning. Once that loop tightens, expanding feels natural. Without it, the broader portal becomes another tool the team has to maintain alongside the spreadsheets it failed to replace.
+
+If you want the longer view on how I think about product workflows like this, [Owning a Peer-to-Peer Texting Platform When Campaign Calendars Don't Move](/writing/textout-platform) is the closest companion piece, and [Building a Repeatable Acquisition Loop Around Segmentation and Experiments](/writing/digital-acquisition-strategy) takes the same instincts further into growth work.

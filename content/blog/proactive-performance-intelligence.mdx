@@ -1,0 +1,45 @@
+---
+title: "Preventing Outages by Tying Performance Monitoring to User Workflows"
+excerpt: "I built a performance intelligence workflow that connected monitoring, load testing, and incident review into a single loop. The shift was framing performance work around user impact instead of raw infrastructure metrics."
+publishedAt: "2026-04-29"
+category: "Reliability"
+tags: ["Reliability", "Performance", "Monitoring", "SRE", "Incident Review", "Observability"]
+featured: false
+cluster: "Systems & Quality"
+author: "Isaac Vazquez"
+coverImage: "/writing/proactive-performance-intelligence/opengraph-image"
+seo:
+  title: "Proactive Performance Intelligence: Monitoring Tied to User Workflows"
+  description: "How I built a performance monitoring and incident review workflow that cut load times 60%, raised uptime to 99.95%, and detected 85% of issues before user impact."
+  keywords: ["performance monitoring strategy", "proactive observability", "incident review", "user-impact alerting", "SRE practice", "load testing workflow"]
+---
+
+# Preventing Outages by Tying Performance Monitoring to User Workflows
+
+The problem with most performance dashboards is that they are tuned for the wrong audience. They are built for the people who set them up, not the people who have to act on them. So infrastructure metrics scroll past, alerts fire on noise, and the only signal anyone actually trusts is a customer ticket. By that point, the team is in incident response mode, and incident response is a worse place to do reliability work than planning is.
+
+That was the starting state when I took on this work. The team was reacting to performance issues after user impact, and the existing monitoring did not connect technical signals to product risk clearly enough. Alerts were either too noisy or too late to guide action. Performance regressions were difficult to connect to specific releases. And stakeholders lacked a clear view of which reliability issues mattered most, which made it hard to prioritize work outside of an outage.
+
+Every preventable outage or slow workflow was weakening user trust and pulling the team away from planned product work. Reliability had become an interrupt loop instead of a planning input.
+
+## The Reframe
+
+The shift was to treat performance as something measured in user workflows, not in infrastructure metrics in isolation. A CPU spike does not matter on its own. A CPU spike that correlates with a slow voter outreach workflow during peak traffic absolutely matters. The same is true in reverse. A long tail latency in an unused endpoint can sit on a dashboard for months without doing harm.
+
+I connected monitoring, load testing, and incident review into a single workflow. Performance thresholds got defined around user-facing workflows so the alerting was telling the team something about the customer experience, not about the back end. Dashboards separated actionable signals from background noise, which sounds simple and is operationally hard. Load testing and incident review loops caught recurring bottlenecks before they became outages.
+
+The principles ended up being clear. Set alert thresholds around user impact instead of raw infrastructure noise. Track regressions by product workflow so fixes can be prioritized against the parts of the product that matter most. Use incident reviews to update monitoring coverage instead of just documenting failures. The last one was the most important. An incident that does not improve the monitoring system is a missed opportunity, even if the immediate fix lands.
+
+## What Changed
+
+Page load times dropped by 60%. Uptime improved to 99.95%. Proactive issue detection reached 85%, meaning the majority of issues were caught before users felt them. Performance reporting became part of regular product review instead of an artifact of incident response.
+
+The cultural change was the harder thing to measure. Performance tradeoffs started showing up in planning conversations. Engineers could point at a workflow and say "this is going to start hurting at scale" with evidence behind the claim. Stakeholders could see which reliability investments would pay off in customer experience. The team stopped arguing about whether to do the work and started arguing about which slice of the work was worth doing first.
+
+## What I Would Bring Forward
+
+Monitoring is only useful when it changes what the team does next. A dashboard nobody acts on is a screensaver. Performance work lands better when it is framed around user workflows, not isolated infrastructure metrics, because that framing is the one that makes tradeoffs legible to non-engineers.
+
+The other thing I would change next time is pairing the dashboards with runbooks earlier. Each alert needed a clearer owner and a clearer first-response path, and that part of the system would have made the early days of the rollout less ambiguous than it ended up being.
+
+If you want the broader thesis, [Building Reliable Software Systems](/writing/building-reliable-software-systems) is the long-form companion, and [Scaling a Civic Engagement Platform from 5M to 60M+ Users](/writing/scaling-civic-engagement-platform) is the same set of instincts applied to scale instead of to monitoring directly.
