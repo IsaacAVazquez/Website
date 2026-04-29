@@ -18,6 +18,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/polling-aggregator": readPollingLastmod(),
   "/premier-league": readPremierLeagueLastmod(),
   "/la-liga": readLaLigaLastmod(),
+  "/nfl": readNflLastmod(),
   "/march-madness-2026": "2026-03-17",
   "/fantasy-football": readFantasyLastmod(),
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
@@ -81,6 +82,12 @@ function readPremierLeagueLastmod() {
 function readLaLigaLastmod() {
   return toIsoString(
     readFirstMatch("src/data/laLigaSnapshot.ts", /"updatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readNflLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/nflSnapshot.ts", /"updatedAt":\s*"([^"]+)"/)
   );
 }
 
