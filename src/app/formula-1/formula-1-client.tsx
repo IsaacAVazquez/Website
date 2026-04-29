@@ -3,10 +3,14 @@
 import { startTransition, useEffect, useMemo, type CSSProperties } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
+  ArrowDown,
+  ArrowUp,
   CalendarDays,
   Flag,
   Gauge,
   MapPinned,
+  Medal,
+  Minus,
   TimerReset,
   Trophy,
   Users,
@@ -151,13 +155,97 @@ function getTeamAccentStyle(teamColor: string | null): CSSProperties {
   };
 }
 
-function getPositionChangeCopy(currentPosition: number, previousPosition: number | null): string {
+function PositionChangeIndicator({
+  currentPosition,
+  previousPosition,
+}: {
+  currentPosition: number;
+  previousPosition: number | null;
+}) {
   if (previousPosition === null || previousPosition === currentPosition) {
-    return "Flat";
+    return (
+      <span className="inline-flex items-center gap-1 text-sm text-[var(--home-ink-muted)]">
+        <Minus size={14} aria-hidden="true" />
+        <span>Flat</span>
+      </span>
+    );
   }
 
   const delta = previousPosition - currentPosition;
-  return delta > 0 ? `Up ${delta}` : `Down ${Math.abs(delta)}`;
+  const isUp = delta > 0;
+  const absoluteDelta = Math.abs(delta);
+  const accent = isUp ? "#22A06B" : "#D54E4E";
+  const Icon = isUp ? ArrowUp : ArrowDown;
+  const label = `${isUp ? "Up" : "Down"} ${absoluteDelta}`;
+
+  return (
+    <span
+      className="inline-flex items-center gap-1 text-sm font-semibold"
+      style={{ color: accent }}
+      aria-label={label}
+    >
+      <Icon size={14} aria-hidden="true" />
+      <span>{absoluteDelta}</span>
+    </span>
+  );
+}
+
+function CountryFlag({
+  flagUrl,
+  countryName,
+}: {
+  flagUrl: string | null;
+  countryName: string;
+}) {
+  if (!flagUrl) {
+    return null;
+  }
+
+  return (
+    <img
+      src={flagUrl}
+      alt={`${countryName} flag`}
+      loading="lazy"
+      className="h-4 w-7 flex-shrink-0 rounded-[3px] border border-[var(--home-rule)] object-cover"
+    />
+  );
+}
+
+function DriverHeadshot({
+  url,
+  name,
+  teamColor,
+}: {
+  url: string | null;
+  name: string;
+  teamColor: string | null;
+}) {
+  if (!url) {
+    return (
+      <div
+        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
+        style={{ borderColor: teamColor ?? "var(--home-rule)" }}
+        aria-hidden="true"
+      >
+        {name
+          .split(/\s+/)
+          .slice(0, 2)
+          .map((part) => part.charAt(0))
+          .join("")
+          .toUpperCase()}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={url}
+      alt=""
+      loading="lazy"
+      className="h-9 w-9 flex-shrink-0 rounded-full border bg-[var(--home-paper-alt)] object-cover object-top"
+      style={{ borderColor: teamColor ?? "var(--home-rule)" }}
+    />
+  );
 }
 
 function ViewToggle({
@@ -261,13 +349,20 @@ function DriverStandingsTable({
                 {standing.position}
               </td>
               <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3">
-                <div className="min-w-0">
-                  <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">
-                    {standing.driverName}
-                  </p>
-                  <p className="mb-0 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    {standing.acronym ?? standing.driverNumber}
-                  </p>
+                <div className="flex min-w-0 items-center gap-3">
+                  <DriverHeadshot
+                    url={standing.headshotUrl}
+                    name={standing.driverName}
+                    teamColor={standing.teamColor}
+                  />
+                  <div className="min-w-0">
+                    <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">
+                      {standing.driverName}
+                    </p>
+                    <p className="mb-0 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                      {standing.acronym ?? standing.driverNumber}
+                    </p>
+                  </div>
                 </div>
               </td>
               <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm text-[var(--home-ink-muted)]">
@@ -276,8 +371,11 @@ function DriverStandingsTable({
               <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm font-semibold text-[var(--home-ink)]">
                 {formatDelta(standing.pointsDelta)}
               </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm text-[var(--home-ink-muted)]">
-                {getPositionChangeCopy(standing.position, standing.previousPosition)}
+              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm">
+                <PositionChangeIndicator
+                  currentPosition={standing.position}
+                  previousPosition={standing.previousPosition}
+                />
               </td>
               <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-right font-semibold text-[var(--home-ink)]">
                 {formatPoints(standing.points)}
@@ -331,8 +429,11 @@ function ConstructorStandingsTable({
               <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm font-semibold text-[var(--home-ink)]">
                 {formatDelta(standing.pointsDelta)}
               </td>
-              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm text-[var(--home-ink-muted)]">
-                {getPositionChangeCopy(standing.position, standing.previousPosition)}
+              <td className="border-y border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-sm">
+                <PositionChangeIndicator
+                  currentPosition={standing.position}
+                  previousPosition={standing.previousPosition}
+                />
               </td>
               <td className="rounded-r-2xl border-y border-r border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-3 py-3 text-right font-semibold text-[var(--home-ink)]">
                 {formatPoints(standing.points)}
@@ -426,23 +527,41 @@ function MeetingDetailPanel({
   return (
     <section className="home-card p-5 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <p className="home-kicker mb-1">{getMeetingStatusCopy(meeting)}</p>
-          <h2
-            className="text-[1.4rem] font-semibold tracking-[-0.05em] text-[var(--home-ink)]"
-            style={{ fontFamily: "var(--font-home-sans)" }}
-          >
-            {meeting.name}
-          </h2>
-          <p className="mt-2 mb-0 max-w-[48ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-            {meeting.circuitShortName} in {meeting.location}. I keep the schedule and the
-            classification in one place so the weekend reads cleanly.
-          </p>
+        <div className="flex min-w-0 items-start gap-4">
+          {meeting.circuitImage ? (
+            <img
+              src={meeting.circuitImage}
+              alt={`${meeting.circuitShortName} circuit map`}
+              loading="lazy"
+              className="hidden h-20 w-24 flex-shrink-0 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] object-contain p-2 sm:block"
+            />
+          ) : null}
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <p className="home-kicker mb-0">{getMeetingStatusCopy(meeting)}</p>
+              <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
+            </div>
+            <h2
+              className="mt-1 text-[1.4rem] font-semibold tracking-[-0.05em] text-[var(--home-ink)]"
+              style={{ fontFamily: "var(--font-home-sans)" }}
+            >
+              {meeting.name}
+            </h2>
+            <p className="mt-2 mb-0 max-w-[48ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+              {meeting.circuitShortName} in {meeting.location}. I keep the schedule and the
+              classification in one place so the weekend reads cleanly.
+            </p>
+          </div>
         </div>
         <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
           <span className="rounded-full border border-[var(--home-rule)] px-3 py-1.5">
             {formatDateLabel(meeting.startAt)}
           </span>
+          {meeting.circuitType ? (
+            <span className="rounded-full border border-[var(--home-rule)] px-3 py-1.5">
+              {meeting.circuitType}
+            </span>
+          ) : null}
           {meeting.hasSprint ? (
             <span className="rounded-full border border-[var(--home-rule)] px-3 py-1.5">
               Sprint weekend
@@ -489,6 +608,84 @@ function MeetingDetailPanel({
   );
 }
 
+const PODIUM_LABELS = ["P1", "P2", "P3"] as const;
+const PODIUM_ACCENTS = ["#D6B65A", "#A4A4AC", "#B07845"] as const;
+
+function PodiumHighlight({ meeting }: { meeting: Formula1MeetingSummary }) {
+  if (!meeting.resultPublished || meeting.podium.length === 0) {
+    return null;
+  }
+
+  const slots = meeting.podium.slice(0, 3);
+
+  return (
+    <section className="home-card p-5 sm:p-6">
+      <div className="mb-5 flex items-start justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <Medal size={16} className="text-[var(--home-ink-muted)]" />
+          <div>
+            <p className="home-kicker mb-1">Podium</p>
+            <h2
+              className="text-[1.35rem] font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
+              style={{ fontFamily: "var(--font-home-sans)" }}
+            >
+              {meeting.name}
+            </h2>
+          </div>
+        </div>
+        <p className="mb-0 max-w-[28ch] text-right text-sm leading-6 text-[var(--home-ink-muted)]">
+          Top three from the last published classification.
+        </p>
+      </div>
+
+      <ol className="grid gap-3 pl-0 sm:grid-cols-3">
+        {slots.map((entry, index) => (
+          <li
+            key={`${meeting.key}-podium-${entry.driverNumber}`}
+            className="rounded-2xl border bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] p-4"
+            style={{
+              borderColor: entry.teamColor ?? "var(--home-rule)",
+              borderTopWidth: "3px",
+            }}
+          >
+            <div className="flex items-center justify-between gap-3">
+              <span
+                className="text-xs font-semibold uppercase tracking-[0.16em]"
+                style={{ color: PODIUM_ACCENTS[index] }}
+              >
+                {PODIUM_LABELS[index]}
+              </span>
+              <span className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                {formatPoints(entry.points)} pts
+              </span>
+            </div>
+            <div className="mt-3 flex items-center gap-3">
+              <DriverHeadshot
+                url={entry.headshotUrl}
+                name={entry.driverName}
+                teamColor={entry.teamColor}
+              />
+              <div className="min-w-0">
+                <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">
+                  {entry.driverName}
+                </p>
+                <p className="mb-0 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  {entry.teamName ?? "Unknown team"}
+                </p>
+              </div>
+            </div>
+            {entry.gapToLeaderLabel ? (
+              <p className="mt-3 mb-0 text-xs font-medium text-[var(--home-ink-muted)]">
+                {entry.gapToLeaderLabel}
+              </p>
+            ) : null}
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 function MeetingStrip({
   meetings,
   selectedMeetingKey,
@@ -518,9 +715,12 @@ function MeetingStrip({
             }
             aria-pressed={isSelected}
           >
-            <p className="mb-0 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-              {meeting.status}
-            </p>
+            <div className="flex items-center justify-between gap-2">
+              <p className="mb-0 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+                {meeting.status}
+              </p>
+              <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
+            </div>
             <p className="mt-2 mb-0 font-semibold text-[var(--home-ink)]">{meeting.name}</p>
             <p className="mt-1 mb-0 text-sm text-[var(--home-ink-muted)]">
               {formatDateLabel(meeting.startAt)} · {meeting.circuitShortName}
@@ -563,11 +763,14 @@ function CalendarTimeline({
               aria-pressed={isSelected}
             >
               <div className="flex items-start justify-between gap-4">
-                <div>
+                <div className="min-w-0">
                   <p className="mb-0 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
                     Round {meetings.findIndex((candidate) => candidate.key === meeting.key) + 1}
                   </p>
-                  <p className="mt-2 mb-0 font-semibold text-[var(--home-ink)]">{meeting.name}</p>
+                  <div className="mt-2 flex items-center gap-2">
+                    <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
+                    <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">{meeting.name}</p>
+                  </div>
                   <p className="mt-1 mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
                     {meeting.location}, {meeting.countryName}
                   </p>
@@ -806,6 +1009,10 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
 
       {resolvedState.view === "overview" ? (
         <>
+          {snapshot.lastCompletedMeeting ? (
+            <PodiumHighlight meeting={snapshot.lastCompletedMeeting} />
+          ) : null}
+
           <section className="grid gap-6 xl:grid-cols-2">
             <article className="home-card p-5 sm:p-6">
               <StandingsHeader

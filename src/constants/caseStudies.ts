@@ -255,6 +255,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "food-map": {
+    slug: "food-map",
+    title: "Food Map",
+    description:
+      "Curated Austin restaurant map for sending friends to the right neighborhood, cuisine, and meal with a single deep-linkable shortlist.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "SVG", "Editorial UX"],
+    metrics: "12 curated stops · 4 neighborhoods · Deep-linkable filters",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/food-map",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a curated Austin food map that turns my actual go-to restaurant shortlist into a single deep-linkable product surface.",
+      impact:
+        "Replaces the same restaurant text-thread I keep retyping with one shareable link that already filters by neighborhood, cuisine, and meal.",
+    },
+    problem: {
+      context:
+        "Most food guides are either too long to be useful or too generic to be honest. A friend asking where to eat usually wants a short, opinionated answer, not a list of forty options.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "march-madness-2026": {
     slug: "march-madness-2026",
     title: "March Madness 2026 Bracket Analysis",
@@ -419,6 +452,38 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+
+  "frontier-model-tracker": {
+    slug: "frontier-model-tracker",
+    title: "Frontier Model Tracker",
+    description:
+      "Curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes — built to make AI tier-collapse readable in seconds.",
+    role: "Product Designer & Developer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "D3.js", "Tailwind CSS"],
+    metrics: "9 models · 7 providers · curated weekly",
+    link: "/frontier-models",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a side-by-side reference for frontier LLMs that surfaces the spec details product teams actually argue about: context window, blended price, modality coverage, and reasoning support.",
+      impact:
+        "Turns a moving market into a quick decision surface, paired with the model-economics writing on the same site.",
+    },
+    problem: {
+      context:
+        "Provider docs read like marketing pages. Comparing five frontier models takes a tab graveyard and a spreadsheet.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
@@ -431,7 +496,9 @@ const PORTFOLIO_PROJECT_ORDER = [
   "investment-analytics-platform",
   "interchange-iq",
   "news-pulse-dashboard",
+  "frontier-model-tracker",
   "decision-lab",
+  "food-map",
   "budget-planner",
   "mba-role-tracker",
   "spacex-mission-control",

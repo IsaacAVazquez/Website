@@ -9,10 +9,13 @@ import {
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
+  ArrowDown,
+  ArrowUp,
   CircleAlert,
   Flag,
   Gauge,
   MapPin,
+  Minus,
   TimerReset,
   Trophy,
   UserRound,
@@ -61,6 +64,38 @@ function formatScoreToPar(value: number | null | undefined): string {
   }
 
   return value > 0 ? `+${value}` : `${value}`;
+}
+
+function getScoreToParColor(value: number | null | undefined): string {
+  if (value === null || value === undefined || value === 0) {
+    return "var(--home-ink)";
+  }
+
+  return value < 0 ? "var(--color-success)" : "var(--color-error)";
+}
+
+function MovementGlyph({ movement }: { movement: number }) {
+  if (movement > 0) {
+    return <ArrowUp className="h-3 w-3" aria-hidden="true" />;
+  }
+
+  if (movement < 0) {
+    return <ArrowDown className="h-3 w-3" aria-hidden="true" />;
+  }
+
+  return <Minus className="h-3 w-3" aria-hidden="true" />;
+}
+
+function MovementPill({ movement }: { movement: number }) {
+  return (
+    <span
+      className="inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-semibold"
+      style={getMovementStyle(movement)}
+    >
+      <MovementGlyph movement={movement} />
+      {getMovementLabel(movement)}
+    </span>
+  );
 }
 
 function formatGeneratedAt(value: string | null | undefined): string {
@@ -163,10 +198,12 @@ function StatBlock({
   label,
   value,
   detail,
+  valueColor,
 }: {
   label: string;
   value: string;
   detail: string;
+  valueColor?: string;
 }) {
   return (
     <div
@@ -181,7 +218,7 @@ function StatBlock({
         className="mb-1 text-2xl"
         style={{
           fontFamily: "var(--font-home-sans)",
-          color: "var(--home-ink)",
+          color: valueColor ?? "var(--home-ink)",
           fontWeight: 700,
           letterSpacing: "-0.04em",
         }}
@@ -198,14 +235,20 @@ function StatBlock({
   );
 }
 
-function ScorePill({ value }: { value: number }) {
+function ScorePill({
+  value,
+  relativeToPar,
+}: {
+  value: number;
+  relativeToPar?: number;
+}) {
   return (
     <span
       className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold"
       style={{
         background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
         border: "1px solid var(--home-rule)",
-        color: "var(--home-ink)",
+        color: getScoreToParColor(relativeToPar ?? null),
         fontFamily: "var(--font-home-sans)",
       }}
     >
@@ -226,6 +269,16 @@ function LeaderboardTable({
   return (
     <div className="hidden overflow-hidden rounded-[28px] border md:block" style={{ borderColor: "var(--home-rule)" }}>
       <table className="w-full border-separate border-spacing-0">
+        <caption className="sr-only">PGA Tour Pulse leaderboard with position, total, today&apos;s score, round scores, and movement.</caption>
+        <colgroup>
+          <col style={{ width: "72px" }} />
+          <col />
+          <col style={{ width: "90px" }} />
+          <col style={{ width: "90px" }} />
+          <col style={{ width: "70px" }} />
+          <col style={{ width: "70px" }} />
+          <col style={{ width: "120px" }} />
+        </colgroup>
         <thead>
           <tr
             style={{
@@ -236,6 +289,7 @@ function LeaderboardTable({
             {["Pos", "Player", "Total", "Today", "R1", "R2", "Move"].map((label) => (
               <th
                 key={label}
+                scope="col"
                 className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.14em]"
                 style={{ fontFamily: "var(--font-home-sans)" }}
               >
@@ -247,56 +301,70 @@ function LeaderboardTable({
         <tbody>
           {rows.map((row) => {
             const isSelected = row.playerId === selectedPlayerId;
+            const rowStyle = getRowStyle(isSelected);
+            const cellStyle: CSSProperties = {
+              background: rowStyle.background,
+              borderTop: `1px solid ${rowStyle.borderColor}`,
+              fontFamily: "var(--font-home-sans)",
+            };
+            const firstCellStyle: CSSProperties = {
+              ...cellStyle,
+              boxShadow: isSelected
+                ? "inset 4px 0 0 0 var(--color-warning)"
+                : undefined,
+            };
 
             return (
-              <tr key={row.playerId}>
-                <td colSpan={7} className="p-0">
-                  <div
-                    className="grid grid-cols-[72px_minmax(0,1.7fr)_90px_90px_70px_70px_110px] border-t px-4 py-3"
-                    style={getRowStyle(isSelected)}
+              <tr key={row.playerId} aria-current={isSelected ? "true" : undefined}>
+                <th
+                  scope="row"
+                  className="px-4 py-3 text-left align-middle text-sm font-semibold"
+                  style={{ ...firstCellStyle, color: "var(--home-ink)" }}
+                >
+                  {row.position}
+                </th>
+                <td className="px-4 py-2" style={cellStyle}>
+                  <button
+                    type="button"
+                    onClick={() => onSelectPlayer(row.playerId)}
+                    className="flex min-h-[44px] w-full items-center text-left"
                   >
-                    <div
-                      className="flex items-center text-sm font-semibold"
-                      style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                    >
-                      {row.position}
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => onSelectPlayer(row.playerId)}
-                      className="flex min-h-[44px] items-center text-left"
-                      style={{ fontFamily: "var(--font-home-sans)" }}
-                    >
-                      <span className="min-w-0">
-                        <span className="block text-base font-semibold" style={{ color: "var(--home-ink)" }}>
-                          {row.playerName}
-                        </span>
-                        <span className="block text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                          {row.country}
-                        </span>
+                    <span className="min-w-0">
+                      <span className="block text-base font-semibold" style={{ color: "var(--home-ink)" }}>
+                        {row.playerName}
                       </span>
-                    </button>
-                    <div className="flex items-center text-sm font-semibold" style={{ color: "var(--home-ink)" }}>
-                      {formatScoreToPar(row.totalToPar)}
-                    </div>
-                    <div className="flex items-center text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                      {formatScoreToPar(row.today)}
-                    </div>
-                    <div className="flex items-center text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                      {row.roundScores[0]}
-                    </div>
-                    <div className="flex items-center text-sm" style={{ color: "var(--home-ink-muted)" }}>
-                      {row.roundScores[1]}
-                    </div>
-                    <div className="flex items-center">
-                      <span
-                        className="inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold"
-                        style={getMovementStyle(row.movement)}
-                      >
-                        {getMovementLabel(row.movement)}
+                      <span className="block text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                        {row.country}
                       </span>
-                    </div>
-                  </div>
+                    </span>
+                  </button>
+                </td>
+                <td
+                  className="px-4 py-3 align-middle text-sm font-semibold"
+                  style={{ ...cellStyle, color: getScoreToParColor(row.totalToPar) }}
+                >
+                  {formatScoreToPar(row.totalToPar)}
+                </td>
+                <td
+                  className="px-4 py-3 align-middle text-sm"
+                  style={{ ...cellStyle, color: getScoreToParColor(row.today) }}
+                >
+                  {formatScoreToPar(row.today)}
+                </td>
+                <td
+                  className="px-4 py-3 align-middle text-sm"
+                  style={{ ...cellStyle, color: "var(--home-ink-muted)" }}
+                >
+                  {row.roundScores[0]}
+                </td>
+                <td
+                  className="px-4 py-3 align-middle text-sm"
+                  style={{ ...cellStyle, color: "var(--home-ink-muted)" }}
+                >
+                  {row.roundScores[1]}
+                </td>
+                <td className="px-4 py-3 align-middle" style={cellStyle}>
+                  <MovementPill movement={row.movement} />
                 </td>
               </tr>
             );
@@ -326,8 +394,12 @@ function MobileLeaderboardCards({
             key={row.playerId}
             type="button"
             onClick={() => onSelectPlayer(row.playerId)}
+            aria-current={isSelected ? "true" : undefined}
             className="w-full rounded-[24px] border px-4 py-4 text-left"
-            style={getRowStyle(isSelected)}
+            style={{
+              ...getRowStyle(isSelected),
+              boxShadow: isSelected ? "inset 4px 0 0 0 var(--color-warning)" : undefined,
+            }}
           >
             <div className="flex items-start justify-between gap-4">
               <div className="space-y-1">
@@ -354,7 +426,7 @@ function MobileLeaderboardCards({
                 <p
                   className="mb-1 text-xl"
                   style={{
-                    color: "var(--home-ink)",
+                    color: getScoreToParColor(row.totalToPar),
                     fontFamily: "var(--font-home-sans)",
                     fontWeight: 700,
                     letterSpacing: "-0.04em",
@@ -362,17 +434,17 @@ function MobileLeaderboardCards({
                 >
                   {formatScoreToPar(row.totalToPar)}
                 </p>
-                <span
-                  className="inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold"
-                  style={getMovementStyle(row.movement)}
-                >
-                  {getMovementLabel(row.movement)}
-                </span>
+                <MovementPill movement={row.movement} />
               </div>
             </div>
 
             <div className="mt-4 grid grid-cols-4 gap-2">
-              <StatBlock label="Today" value={formatScoreToPar(row.today)} detail={row.status} />
+              <StatBlock
+                label="Today"
+                value={formatScoreToPar(row.today)}
+                detail={row.status}
+                valueColor={getScoreToParColor(row.today)}
+              />
               <StatBlock label="R1" value={`${row.roundScores[0]}`} detail="Opening round" />
               <StatBlock label="R2" value={`${row.roundScores[1]}`} detail="Second round" />
               <StatBlock label="Thru" value={row.thru} detail="Tournament status" />
@@ -388,10 +460,12 @@ function PlayerCards({
   rows,
   selectedPlayerId,
   onSelectPlayer,
+  coursePar,
 }: {
   rows: GolfLeaderboardEntry[];
   selectedPlayerId: string | null;
   onSelectPlayer: (playerId: string) => void;
+  coursePar: number;
 }) {
   return (
     <div className="grid gap-4 sm:grid-cols-2">
@@ -403,8 +477,12 @@ function PlayerCards({
             key={row.playerId}
             type="button"
             onClick={() => onSelectPlayer(row.playerId)}
+            aria-current={isSelected ? "true" : undefined}
             className="rounded-[26px] border px-5 py-5 text-left"
-            style={getRowStyle(isSelected)}
+            style={{
+              ...getRowStyle(isSelected),
+              boxShadow: isSelected ? "inset 4px 0 0 0 var(--color-warning)" : undefined,
+            }}
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -431,7 +509,7 @@ function PlayerCards({
                 <p
                   className="mb-1 text-2xl"
                   style={{
-                    color: "var(--home-ink)",
+                    color: getScoreToParColor(row.totalToPar),
                     fontFamily: "var(--font-home-sans)",
                     fontWeight: 700,
                     letterSpacing: "-0.05em",
@@ -443,14 +521,21 @@ function PlayerCards({
                   className="mb-0 text-sm"
                   style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
                 >
-                  Today {formatScoreToPar(row.today)}
+                  Today{" "}
+                  <span style={{ color: getScoreToParColor(row.today), fontWeight: 600 }}>
+                    {formatScoreToPar(row.today)}
+                  </span>
                 </p>
               </div>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
               {row.roundScores.map((score, index) => (
-                <ScorePill key={`${row.playerId}-${index}`.toString()} value={score} />
+                <ScorePill
+                  key={`${row.playerId}-${index}`.toString()}
+                  value={score}
+                  relativeToPar={score - coursePar}
+                />
               ))}
             </div>
 
@@ -461,12 +546,7 @@ function PlayerCards({
               >
                 {row.status}
               </p>
-              <span
-                className="inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold"
-                style={getMovementStyle(row.movement)}
-              >
-                {getMovementLabel(row.movement)}
-              </span>
+              <MovementPill movement={row.movement} />
             </div>
           </button>
         );
@@ -724,7 +804,16 @@ export function GolfClient({
                 ? "No cut"
                 : formatScoreToPar(summary.heroStats.cutLine)
             }
-            detail="Projected line into the weekend."
+            detail={
+              summary.heroStats.cutLine === null
+                ? "No cut for this event."
+                : "Cut set after Round 2."
+            }
+            valueColor={
+              summary.heroStats.cutLine === null
+                ? undefined
+                : getScoreToParColor(summary.heroStats.cutLine)
+            }
           />
           <StatBlock
             label="Under par"
@@ -746,7 +835,10 @@ export function GolfClient({
                   key={view}
                   type="button"
                   role="tab"
+                  id={`golf-tab-${view}`}
+                  aria-controls={`golf-tabpanel-${view}`}
                   aria-selected={routeState.view === view}
+                  tabIndex={routeState.view === view ? 0 : -1}
                   onClick={() => handleViewChange(view)}
                   className="min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors"
                   style={getViewButtonStyle(routeState.view === view)}
@@ -756,7 +848,12 @@ export function GolfClient({
               ))}
             </div>
 
-            <div className="space-y-4">
+            <div
+              className="space-y-4"
+              role="tabpanel"
+              id={`golf-tabpanel-${routeState.view}`}
+              aria-labelledby={`golf-tab-${routeState.view}`}
+            >
               <div className="space-y-2">
                 <p className="home-kicker mb-0">
                   {routeState.view === "leaderboard" ? "Leaderboard" : "Player cards"}
@@ -789,6 +886,7 @@ export function GolfClient({
                   rows={summary.leaderboard}
                   selectedPlayerId={selectedPlayerId}
                   onSelectPlayer={handlePlayerChange}
+                  coursePar={tournament.coursePar}
                 />
               )}
             </div>
@@ -847,7 +945,7 @@ export function GolfClient({
                       <p
                         className="mb-1 text-3xl"
                         style={{
-                          color: "var(--home-ink)",
+                          color: getScoreToParColor(selectedRow.totalToPar),
                           fontFamily: "var(--font-home-sans)",
                           fontWeight: 700,
                           letterSpacing: "-0.05em",
@@ -855,18 +953,18 @@ export function GolfClient({
                       >
                         {formatScoreToPar(selectedRow.totalToPar)}
                       </p>
-                      <span
-                        className="inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold"
-                        style={getMovementStyle(selectedRow.movement)}
-                      >
-                        {getMovementLabel(selectedRow.movement)}
-                      </span>
+                      <MovementPill movement={selectedRow.movement} />
                     </div>
                   </div>
 
                   <div className="mt-5 grid grid-cols-2 gap-3">
                     <StatBlock label="Position" value={selectedRow.position} detail={selectedRow.status} />
-                    <StatBlock label="Today" value={formatScoreToPar(selectedRow.today)} detail={`Thru ${selectedRow.thru}`} />
+                    <StatBlock
+                      label="Today"
+                      value={formatScoreToPar(selectedRow.today)}
+                      detail={`Thru ${selectedRow.thru}`}
+                      valueColor={getScoreToParColor(selectedRow.today)}
+                    />
                   </div>
 
                   {isPlayerSnapshotLoading ? (
@@ -962,7 +1060,10 @@ export function GolfClient({
                                   className="mb-0 text-sm"
                                   style={{ color: "var(--home-ink-muted)", fontFamily: "var(--font-home-sans)" }}
                                 >
-                                  {round.score} ({formatScoreToPar(round.relativeToPar)})
+                                  {round.score}{" "}
+                                  <span style={{ color: getScoreToParColor(round.relativeToPar), fontWeight: 600 }}>
+                                    ({formatScoreToPar(round.relativeToPar)})
+                                  </span>
                                 </p>
                               </div>
                             </div>

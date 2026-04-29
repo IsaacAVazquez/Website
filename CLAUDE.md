@@ -14,7 +14,7 @@ This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines 
 2. **Writing surface** — long-form MDX posts under `/writing`
 3. **Fantasy football analytics** — rankings, tiers, and draft tooling
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
-5. **Experimental dashboards** — standalone tools like `/formula-1`, `/premier-league`, `/la-liga`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
+5. **Experimental dashboards** — standalone tools like `/formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
 6. **Fintech tools** — standalone calculators under `/fintech-tools/*`
 7. **MBA internship tracker** — live role aggregator at `/mba-internship-notifications`, surfaced through the projects section
 
@@ -46,6 +46,8 @@ npm run update:investments
 npm run update:football
 npm run update:premier-league
 npm run update:la-liga
+npm run update:mlb
+npm run update:nba
 npm run update:nfl
 npm run update:formula-1
 npm run update:spacex
@@ -83,6 +85,8 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/formula-1`
 - `/premier-league`
 - `/la-liga`
+- `/mlb`
+- `/nba`
 - `/nfl`
 
 ### Fantasy football
@@ -100,6 +104,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/fintech-tools/interchange-iq`
 - `/polling-aggregator`
 - `/mba-internship-notifications`
+- `/museum-log`
 
 ### Utility/admin
 
@@ -224,13 +229,34 @@ git push
 - This keeps standings/scorers/fixtures current without any manual steps
 - Team snapshot data (sidebar fixtures, form strip) only updates on a manual `npm run update:football`
 
-**Shared components:** `src/components/football/` — used by both dashboards:
+**Shared components:** `src/components/football/` — used by the soccer and NBA dashboards:
 - `FixtureCard`, `FixtureGroupSection` — generic fixture rendering
 - `LeaderList` — scorers/assists leaderboard
 - `StatCard`, `MetricCard`, `InfoChip`, `CrestAvatar`, `TeamResultPill`, `EmptyPanel`, `SurfaceCard`
 
+### NBA Dashboard
+
+The `/nba` route follows the same snapshot-driven pattern as the soccer dashboards.
+
+**Data source:** ESPN's public NBA endpoints (no API token required):
+- standings → `https://site.api.espn.com/apis/v2/sports/basketball/nba/standings`
+- scoreboard → `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard`
+- leaders → `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/leaders`
+- per-team schedule → `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/{abbr}/schedule`
+
+**Snapshot file:** `src/data/nbaSnapshot.ts` (committed; ships empty in the seed and is filled by the update script).
+
+**Update script:** `npm run update:nba` (full refresh, ~1 min). Pass `-- --league-only` to skip per-team schedule snapshots.
+
+**Route state:** deep-linkable `view` (east, west, playoff, play-in) and `team` query params.
+
+**API routes:**
+- `/api/nba/summary` — conference standings, leaders, scoreboard slate
+- `/api/nba/teams/[teamId]` — team schedule + form, keyed by lowercased ESPN abbreviation
+
 ### Other standalone data tools
 
+- `/mlb` reads from `src/data/mlbSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:mlb` against the public MLB Stats API (`https://statsapi.mlb.com/api/v1`); no auth token required. Shares the football components in `src/components/football/`.
 - `/formula-1` reads from `src/data/formula1Snapshot.ts` with deep-linkable route state
 - `/news-pulse` reads from `src/lib/news-pulse-utils.ts` through `/api/news-pulse`
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes
@@ -278,6 +304,10 @@ Live routes under `src/app/api/`:
 - `/api/premier-league/teams/[teamId]`
 - `/api/la-liga/summary`
 - `/api/la-liga/teams/[teamId]`
+- `/api/mlb/summary`
+- `/api/mlb/teams/[teamId]`
+- `/api/nba/summary`
+- `/api/nba/teams/[teamId]`
 - `/api/nfl/summary`
 - `/api/nfl/teams/[teamId]`
 - `/api/mba-jobs`

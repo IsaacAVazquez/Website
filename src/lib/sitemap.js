@@ -32,6 +32,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/fantasy-football/tiers/flex": readFantasyLastmod(),
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
+  "/food-map": "2026-04-28",
   "/portfolio/investment-analytics-platform": "2026-04-04",
   "/portfolio/interchange-iq": "2026-04-04",
   "/portfolio/news-pulse-dashboard": "2026-04-04",
@@ -41,6 +42,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/portfolio/fantasy-football-analytics": "2026-04-04",
   "/portfolio/la-liga-pulse": "2026-04-04",
   "/portfolio/march-madness-2026": "2026-04-04",
+  "/portfolio/food-map": "2026-04-28",
 };
 
 function readFile(filePath) {
