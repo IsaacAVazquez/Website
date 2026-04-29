@@ -14,7 +14,7 @@ This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines 
 2. **Writing surface** — long-form MDX posts under `/writing`
 3. **Fantasy football analytics** — rankings, tiers, and draft tooling
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
-5. **Experimental dashboards** — standalone tools like `/formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/polling-aggregator`, `/news-pulse`, `/github-trending-pulse`, and `/spacex-mission-control`
+5. **Experimental dashboards** — standalone tools like `/formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/polling-aggregator`, `/news-pulse`, `/github-trending-pulse`, and `/spacex-mission-control`
 6. **Fintech tools** — standalone calculators under `/fintech-tools/*`
 7. **MBA internship tracker** — live role aggregator at `/mba-internship-notifications`, surfaced through the projects section
 
@@ -48,6 +48,7 @@ npm run update:premier-league
 npm run update:la-liga
 npm run update:mlb
 npm run update:nba
+npm run update:nfl
 npm run update:formula-1
 npm run update:github-trending
 npm run update:spacex
@@ -88,6 +89,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/la-liga`
 - `/mlb`
 - `/nba`
+- `/nfl`
 
 ### Fantasy football
 
@@ -172,6 +174,30 @@ This is intentional to avoid stacked closing CTAs.
   - `/api/investments/index`
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
+
+### NFL Dashboard
+
+`/nfl` is a snapshot-driven NFL dashboard following the same pattern as the Premier League and La Liga. Data comes from public NFLverse CSVs (no API key required) and is committed to the repo as TypeScript.
+
+**Snapshot file:** `src/data/nflSnapshot.ts`
+
+**Data sources:**
+- Standings: `https://github.com/nflverse/nfldata/raw/master/data/standings.csv`
+- Games / scores: `https://github.com/nflverse/nfldata/raw/master/data/games.csv`
+- Team metadata + logos: `https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.csv`
+- Player stat leaders: `https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_<season>.csv`
+
+**Update script:**
+
+| Command | Time | When to use |
+|---|---|---|
+| `npm run update:nfl` | ~30 s | Refresh standings, schedule, and stat leaders. Run weekly during the season. |
+
+NFL is intentionally **not** wired into the Netlify `prebuild` step — the snapshot is small and refreshes manually via `npm run update:nfl` followed by a commit.
+
+**Shared football components:** Reuses `src/components/football/*` (FixtureCard accepts an optional `periodLabel` prop, set to `"Week"` for NFL).
+
+**State / route:** `?view=` (`league`, `afc`, `nfc`, `playoffs`) and `?team=<lowercase abbr>` (e.g., `kc`, `buf`).
 
 ### Football Dashboards (Premier League + La Liga)
 
@@ -286,6 +312,8 @@ Live routes under `src/app/api/`:
 - `/api/mlb/teams/[teamId]`
 - `/api/nba/summary`
 - `/api/nba/teams/[teamId]`
+- `/api/nfl/summary`
+- `/api/nfl/teams/[teamId]`
 - `/api/mba-jobs`
 - `/api/mba-jobs/email`
 - `/api/news-pulse`

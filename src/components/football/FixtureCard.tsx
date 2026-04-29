@@ -47,12 +47,16 @@ export function FixtureCard({
   onOpenTeam,
   compact = false,
   style,
+  periodLabel = "Matchday",
+  fallbackLabel = "League fixture",
 }: {
   fixture: GenericFixture;
   contextTeamId?: string | null;
   onOpenTeam?: (teamId: string) => void;
   compact?: boolean;
   style?: CSSProperties;
+  periodLabel?: string;
+  fallbackLabel?: string;
 }) {
   const contextualResult = contextTeamId ? getResultForTeam(fixture, contextTeamId) : null;
 
@@ -68,7 +72,7 @@ export function FixtureCard({
         {!compact && (
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-              {fixture.matchday ? `Matchday ${fixture.matchday}` : "League fixture"}
+              {fixture.matchday ? `${periodLabel} ${fixture.matchday}` : fallbackLabel}
             </p>
             <p className="mt-1 flex items-center gap-2 text-sm text-[var(--home-ink-muted)]">
               <Clock3 className="h-4 w-4 text-[var(--home-haze)]" />
