@@ -23,6 +23,7 @@
     "test:all": "npm run test:coverage && npm run test:e2e",
     "update:premier-league": "tsx scripts/buildPremierLeagueSnapshot.ts",
     "update:la-liga": "tsx scripts/updateLaLigaSnapshot.ts",
+    "update:mlb": "tsx scripts/updateMlbSnapshot.ts",
     "update:formula-1": "tsx scripts/buildFormula1Snapshot.ts",
     "update:spacex": "tsx scripts/buildSpaceXSnapshot.ts",
     "update:spacex-data": "tsx scripts/buildSpaceXSnapshot.ts",

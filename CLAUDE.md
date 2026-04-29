@@ -14,7 +14,7 @@ This codebase is a multi-surface Next.js 16 site for Isaac Vazquez. It combines 
 2. **Writing surface** — long-form MDX posts under `/writing`
 3. **Fantasy football analytics** — rankings, tiers, and draft tooling
 4. **Investments + seasonal experiments** — `/investments` and `/march-madness-2026`
-5. **Experimental dashboards** — standalone tools like `/formula-1`, `/premier-league`, `/la-liga`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
+5. **Experimental dashboards** — standalone tools like `/formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/polling-aggregator`, `/news-pulse`, and `/spacex-mission-control`
 6. **Fintech tools** — standalone calculators under `/fintech-tools/*`
 7. **MBA internship tracker** — live role aggregator at `/mba-internship-notifications`, surfaced through the projects section
 
@@ -46,6 +46,7 @@ npm run update:investments
 npm run update:football
 npm run update:premier-league
 npm run update:la-liga
+npm run update:mlb
 npm run update:formula-1
 npm run update:spacex
 npm run lint
@@ -82,6 +83,7 @@ Note: `prebuild` automatically runs a league-only football snapshot refresh; `po
 - `/formula-1`
 - `/premier-league`
 - `/la-liga`
+- `/mlb`
 
 ### Fantasy football
 
@@ -205,6 +207,7 @@ git push
 
 ### Other standalone data tools
 
+- `/mlb` reads from `src/data/mlbSnapshot.ts` with deep-linkable route state. Snapshot is built by `npm run update:mlb` against the public MLB Stats API (`https://statsapi.mlb.com/api/v1`); no auth token required. Shares the football components in `src/components/football/`.
 - `/formula-1` reads from `src/data/formula1Snapshot.ts` with deep-linkable route state
 - `/news-pulse` reads from `src/lib/news-pulse-utils.ts` through `/api/news-pulse`
 - `/spacex-mission-control` reads from SpaceX data helpers and `/api/spacex/*` routes
@@ -252,6 +255,8 @@ Live routes under `src/app/api/`:
 - `/api/premier-league/teams/[teamId]`
 - `/api/la-liga/summary`
 - `/api/la-liga/teams/[teamId]`
+- `/api/mlb/summary`
+- `/api/mlb/teams/[teamId]`
 - `/api/mba-jobs`
 - `/api/mba-jobs/email`
 - `/api/news-pulse`
