@@ -44,7 +44,7 @@ Current API route map.
 - `/api/search` is not a full dynamic site index
 - `/api/rss` is still a small writing feed route
 - `/api/premier-league/*` and `/api/la-liga/*` read committed snapshots, not `football-data.org` directly at runtime
-- `/api/mba-jobs` fetches live from public job boards at request time with a 30-minute `s-maxage` and 8s per-target timeout; `/api/mba-jobs/email` requires `RESEND_API_KEY`
+- `/api/mba-jobs` fetches live from public job boards at request time with a 30-minute `s-maxage` and 8s per-target timeout; `/api/mba-jobs/email` requires `RESEND_API_KEY` and `MBA_DIGEST_ALLOWED_RECIPIENTS`
 - auth is still NextAuth credentials-based
 
 ---

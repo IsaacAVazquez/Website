@@ -130,6 +130,7 @@ ADMIN_PASSWORD=...
 FOOTBALL_DATA_API_TOKEN=...   # football-data.org, free tier
 FINNHUB_API_KEY=...           # quote endpoint for /investments
 RESEND_API_KEY=...            # MBA internship email digest
+MBA_DIGEST_ALLOWED_RECIPIENTS=... # comma-separated digest recipient emails/domains
 CRON_SECRET=...               # protects the Netlify purge-cache function
 ```
 

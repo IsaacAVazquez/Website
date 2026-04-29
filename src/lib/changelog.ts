@@ -48,7 +48,7 @@ async function renderMarkdown(content: string): Promise<string> {
 
   const processed = await remark()
     .use(remarkGfm)
-    .use(remarkHtml)
+    .use(remarkHtml, { sanitize: true })
     .process(content);
 
   return processed.toString();

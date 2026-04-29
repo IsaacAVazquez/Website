@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 const require = createRequire(import.meta.url);
 
 const nextConfig = {
+  poweredByHeader: false,
   // URL redirects for better SEO and user experience
   async redirects() {
     return [

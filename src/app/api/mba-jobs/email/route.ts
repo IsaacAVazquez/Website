@@ -1,15 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import type { MBAJob } from "@/types/mba-jobs";
+import { emailDigestRateLimiter, getClientIdentifier, rateLimitResponse } from "@/lib/rateLimit";
 
 // ---------------------------------------------------------------------------
 // POST /api/mba-jobs/email — send an email digest of MBA job listings via Resend
 // ---------------------------------------------------------------------------
 
 interface EmailRequestBody {
-  jobs: MBAJob[];
-  to: string;
+  jobs?: unknown;
+  to?: unknown;
 }
+
+interface EmailDigestJob {
+  companyName: string;
+  title: string;
+  location: string;
+  department: string;
+  applyUrl: string;
+  postedAt: string;
+}
+
+const MAX_BODY_BYTES = 64_000;
+const MAX_DIGEST_JOBS = 25;
+const MAX_EMAIL_LENGTH = 254;
+const MAX_TEXT_LENGTH = 160;
+
+const RESPONSE_HEADERS = {
+  "Cache-Control": "no-store",
+};
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -17,8 +35,121 @@ function formatDate(iso: string): string {
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-function buildEmailHtml(jobs: MBAJob[], to: string): string {
-  const grouped = new Map<string, MBAJob[]>();
+function json(body: Record<string, unknown>, init?: ResponseInit) {
+  return NextResponse.json(body, {
+    ...init,
+    headers: {
+      ...RESPONSE_HEADERS,
+      ...init?.headers,
+    },
+  });
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function normalizeText(value: unknown, fallback?: string): string | null {
+  if (typeof value !== "string") return fallback ?? null;
+
+  const trimmed = value.replace(/\s+/g, " ").trim();
+  if (!trimmed) return fallback ?? null;
+
+  return trimmed.slice(0, MAX_TEXT_LENGTH);
+}
+
+function normalizeEmail(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+
+  const email = value.trim().toLowerCase();
+  if (email.length === 0 || email.length > MAX_EMAIL_LENGTH) return null;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
+
+  return email;
+}
+
+function parseAllowedRecipients(): string[] {
+  return (process.env.MBA_DIGEST_ALLOWED_RECIPIENTS ?? "")
+    .split(",")
+    .map((value) => value.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+function isAllowedRecipient(email: string): boolean {
+  const allowedRecipients = parseAllowedRecipients();
+  if (allowedRecipients.length === 0) return false;
+
+  return allowedRecipients.some((allowed) => {
+    if (allowed === "*") return true;
+    if (allowed.startsWith("@")) return email.endsWith(allowed);
+    return email === allowed;
+  });
+}
+
+function normalizeApplyUrl(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:") return null;
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
+function normalizePostedAt(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+
+  const timestamp = new Date(value).getTime();
+  if (!Number.isFinite(timestamp)) return null;
+
+  return new Date(timestamp).toISOString();
+}
+
+function normalizeJob(value: unknown): EmailDigestJob | null {
+  if (!value || typeof value !== "object") return null;
+
+  const candidate = value as Record<string, unknown>;
+  const companyName = normalizeText(candidate.companyName);
+  const title = normalizeText(candidate.title);
+  const location = normalizeText(candidate.location, "Remote");
+  const department = normalizeText(candidate.department, "General");
+  const applyUrl = normalizeApplyUrl(candidate.applyUrl);
+  const postedAt = normalizePostedAt(candidate.postedAt);
+
+  if (!companyName || !title || !location || !department || !applyUrl || !postedAt) {
+    return null;
+  }
+
+  return {
+    companyName,
+    title,
+    location,
+    department,
+    applyUrl,
+    postedAt,
+  };
+}
+
+function normalizeJobs(value: unknown): EmailDigestJob[] | null {
+  if (!Array.isArray(value) || value.length === 0 || value.length > MAX_DIGEST_JOBS) {
+    return null;
+  }
+
+  const jobs = value.map(normalizeJob);
+  if (jobs.some((job) => job === null)) return null;
+
+  return jobs as EmailDigestJob[];
+}
+
+function buildEmailHtml(jobs: EmailDigestJob[], to: string): string {
+  const grouped = new Map<string, EmailDigestJob[]>();
   for (const job of jobs) {
     const existing = grouped.get(job.companyName) ?? [];
     existing.push(job);
@@ -32,8 +163,8 @@ function buildEmailHtml(jobs: MBAJob[], to: string): string {
           (j) => `
         <tr>
           <td style="padding:10px 16px;border-bottom:1px solid #e5e7eb;">
-            <a href="${j.applyUrl}" style="font-weight:600;color:#5672F8;text-decoration:none;">${j.title}</a>
-            <div style="font-size:12px;color:#6b7280;margin-top:2px;">${j.department} · ${j.location} · ${formatDate(j.postedAt)}</div>
+            <a href="${escapeHtml(j.applyUrl)}" style="font-weight:600;color:#5672F8;text-decoration:none;">${escapeHtml(j.title)}</a>
+            <div style="font-size:12px;color:#6b7280;margin-top:2px;">${escapeHtml(j.department)} · ${escapeHtml(j.location)} · ${escapeHtml(formatDate(j.postedAt))}</div>
           </td>
         </tr>`
         )
@@ -41,7 +172,7 @@ function buildEmailHtml(jobs: MBAJob[], to: string): string {
       return `
       <tr>
         <td style="padding:14px 16px 4px;background:#f9fafb;font-weight:700;font-size:14px;color:#111827;border-bottom:1px solid #e5e7eb;">
-          ${company}
+          ${escapeHtml(company)}
         </td>
       </tr>
       ${jobRows}`;
@@ -78,7 +209,7 @@ function buildEmailHtml(jobs: MBAJob[], to: string): string {
           </tr>
           <tr>
             <td style="padding:16px 32px 28px;border-top:1px solid #f3f4f6;">
-              <p style="margin:0;font-size:12px;color:#9ca3af;">Sent to ${to} · <a href="https://isaacavazquez.com/mba-internship-notifications" style="color:#5672F8;">Open tracker</a></p>
+              <p style="margin:0;font-size:12px;color:#9ca3af;">Sent to ${escapeHtml(to)} · <a href="https://isaacavazquez.com/mba-internship-notifications" style="color:#5672F8;">Open tracker</a></p>
             </td>
           </tr>
         </table>
@@ -90,10 +221,21 @@ function buildEmailHtml(jobs: MBAJob[], to: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  const contentLength = Number.parseInt(request.headers.get("content-length") ?? "0", 10);
+  if (Number.isFinite(contentLength) && contentLength > MAX_BODY_BYTES) {
+    return json({ error: "Email digest request is too large." }, { status: 413 });
+  }
+
+  const clientId = getClientIdentifier(request);
+  const rateLimitResult = emailDigestRateLimiter.check(clientId);
+  if (!rateLimitResult.success) {
+    return rateLimitResponse(rateLimitResult);
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    return NextResponse.json(
-      { error: "RESEND_API_KEY is not configured." },
+    return json(
+      { error: "Email delivery is not configured." },
       { status: 503 }
     );
   }
@@ -102,16 +244,25 @@ export async function POST(request: NextRequest) {
   try {
     body = (await request.json()) as EmailRequestBody;
   } catch {
-    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
+    return json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const { jobs, to } = body;
+  const to = normalizeEmail(body.to);
 
-  if (!to || typeof to !== "string" || !to.includes("@")) {
-    return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
+  if (!to) {
+    return json({ error: "Invalid email address." }, { status: 400 });
   }
-  if (!Array.isArray(jobs) || jobs.length === 0) {
-    return NextResponse.json({ error: "No jobs provided." }, { status: 400 });
+
+  if (!isAllowedRecipient(to)) {
+    return json({ error: "Email digests are limited to approved recipients." }, { status: 403 });
+  }
+
+  const jobs = normalizeJobs(body.jobs);
+  if (!jobs) {
+    return json(
+      { error: `Provide 1-${MAX_DIGEST_JOBS} valid jobs for the digest.` },
+      { status: 400 }
+    );
   }
 
   const resend = new Resend(apiKey);
@@ -129,17 +280,13 @@ export async function POST(request: NextRequest) {
     });
 
     if (result.error) {
-      return NextResponse.json(
-        { error: result.error.message },
-        { status: 500 }
-      );
+      console.error("MBA jobs email provider error:", result.error.message);
+      return json({ error: "Email provider failed to send digest." }, { status: 502 });
     }
 
-    return NextResponse.json({ ok: true, id: result.data?.id });
+    return json({ ok: true, id: result.data?.id });
   } catch (err) {
-    return NextResponse.json(
-      { error: (err as Error)?.message ?? "Failed to send email." },
-      { status: 500 }
-    );
+    console.error("MBA jobs email send failed:", (err as Error)?.message ?? err);
+    return json({ error: "Failed to send email digest." }, { status: 500 });
   }
 }

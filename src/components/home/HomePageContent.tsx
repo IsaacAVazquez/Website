@@ -276,9 +276,8 @@ export function HomePageContent({
               <h2 id="home-spotlight-heading" className="home-manifesto">
                 <span>A clearer</span>
                 <span>way to make</span>
-                <span>
-                  ambitious <em>product</em>
-                </span>
+                <span>ambitious</span>
+                <span><em>product</em></span>
                 <span>work feel usable.</span>
               </h2>
               <p className="home-body home-section-copy">

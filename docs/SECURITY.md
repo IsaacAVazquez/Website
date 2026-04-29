@@ -33,6 +33,7 @@ Active secrets used by the running app and update scripts:
 | `FOOTBALL_DATA_API_TOKEN` | football-data.org token used by football snapshot scripts. |
 | `FINNHUB_API_KEY` | Quote endpoint behind `/api/investments/quotes`. |
 | `RESEND_API_KEY` | Transactional email for the MBA internship digest (`/api/mba-jobs/email`). |
+| `MBA_DIGEST_ALLOWED_RECIPIENTS` | Comma-separated email/domain allowlist for `/api/mba-jobs/email`, for example `name@example.com,@example.edu`; use `*` only if the public relay risk is intentional. |
 | `CRON_SECRET` | Bearer token required by the Netlify `purge-cache` function. |
 | `GOOGLE_SITE_VERIFICATION` | Optional; surfaced in metadata for Search Console verification. |
 | `SITE_URL` / `NEXT_PUBLIC_SITE_URL` | Canonical site URL for SEO and absolute links. |
@@ -65,7 +66,7 @@ Hardening expectations:
 ### Operationally protected
 
 - `/api/auth/[...nextauth]` — NextAuth handler for `/admin` sign-in
-- `netlify/functions/purge-cache` — requires `Authorization: Bearer <CRON_SECRET>`
+- `netlify/functions/purge-cache` — requires `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret: <CRON_SECRET>`; query-string secrets are intentionally rejected
 
 ### Public, read-only endpoints
 
@@ -92,7 +93,7 @@ These power the live UI. They are cached, rate-limited where appropriate, and mu
 
 ### Public, side-effect endpoints
 
-- `/api/mba-jobs/email` — sends a Resend-backed digest. Validate request shape, never log full email payloads, and rely on Resend's deliverability controls instead of building a bespoke send pipeline.
+- `/api/mba-jobs/email` — sends a Resend-backed digest. It validates and escapes request content, caps digest size, rate-limits by client, and only sends to `MBA_DIGEST_ALLOWED_RECIPIENTS`.
 
 `/api/search` is still a limited, mostly hardcoded index — do not treat it as comprehensive site search.
 

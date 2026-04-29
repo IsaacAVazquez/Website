@@ -549,6 +549,270 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+
+  "formula-1-pulse": {
+    slug: "formula-1-pulse",
+    title: "Formula 1 Pulse",
+    description:
+      "Editorial Formula 1 dashboard with the next Grand Prix, driver and constructor standings, and race-by-race context from a checked-in OpenF1 snapshot.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "OpenF1 API", "Snapshot pipeline"],
+    metrics: "Driver & constructor tables · Race-by-race context · Snapshot-driven",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/formula-1",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a Formula 1 dashboard that compresses the next Grand Prix, championship tables, and race-by-race context into a single snapshot-driven surface.",
+      impact:
+        "Turns OpenF1 history into a fast season-state view without forcing fans across separate F1 sites and spreadsheets.",
+    },
+    problem: {
+      context:
+        "F1 standings, driver form, and race calendars are typically fragmented across separate sites with no unified deep-linkable view.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "pga-tour-pulse": {
+    slug: "pga-tour-pulse",
+    title: "PGA Tour Pulse",
+    description:
+      "Snapshot-backed PGA Tour tournament dashboard for leaderboard scanning, player drilldowns, round-by-round movement, and weekend cut-line context.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Sports Data", "Snapshot pipeline"],
+    metrics: "Tournament leaderboard · Round-by-round movement · Player drilldowns",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/golf",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a PGA Tour tournament dashboard that turns a checked-in tournament snapshot into a clean, deep-linkable product surface.",
+      impact:
+        "Makes weekend leaderboard scanning, round-by-round movement, and cut-line context legible without juggling separate live sites.",
+    },
+    problem: {
+      context:
+        "Most tour leaderboards make it hard to compare round-by-round movement, cut-line pressure, and player form on a single screen.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "mlb-pulse": {
+    slug: "mlb-pulse",
+    title: "MLB Pulse",
+    description:
+      "Interactive Major League Baseball dashboard with division standings, AL and NL splits, wild card race, recent results, and league-wide hitting and pitching leaders.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "MLB Stats API", "Snapshot pipeline"],
+    metrics: "Division standings · Wild card race · Hitting & pitching leaders",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/mlb",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built an MLB dashboard that combines division standings, league splits, wild card pressure, and league-wide stat leaders into one snapshot-driven surface.",
+      impact:
+        "Compresses scattered baseball data into a faster decision surface for tracking races, recent form, and league leaders.",
+    },
+    problem: {
+      context:
+        "League standings, wild card context, and stat leaders are usually split across separate tabs with no unified view of what actually matters that week.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "nba-pulse": {
+    slug: "nba-pulse",
+    title: "NBA Pulse",
+    description:
+      "Interactive NBA dashboard with conference standings, playoff seeding, play-in race context, and snapshot leaderboards for points, rebounds, and assists.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "ESPN API", "Snapshot pipeline"],
+    metrics: "Conference standings · Play-in race · League stat leaders",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/nba",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built an NBA dashboard that packages conference standings, playoff seeding, play-in pressure, and league-wide stat leaders into one snapshot-driven view.",
+      impact:
+        "Turns scattered basketball context into a fast comparison surface for late-season races and league leaders.",
+    },
+    problem: {
+      context:
+        "Conference standings, playoff seeding, the play-in picture, and stat leaders rarely live on a single shareable surface.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "polling-aggregator": {
+    slug: "polling-aggregator",
+    title: "Polling Aggregator",
+    description:
+      "Political polling aggregator tracking presidential approval, the generic congressional ballot, and key 2026 Senate and governor race polls in a deep-linkable dashboard.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Polling data", "Snapshot pipeline"],
+    metrics: "Presidential approval · Generic ballot · 2026 Senate & governor races",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/polling-aggregator",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a polling aggregator that combines presidential approval, the generic ballot, and competitive 2026 Senate and governor races into one snapshot-driven dashboard.",
+      impact:
+        "Turns scattered polling memos and single-state pages into a single deep-linkable view of where the cycle actually sits.",
+    },
+    problem: {
+      context:
+        "Polling context is fragmented across separate aggregators, single-state pages, and partisan blogs with no shared deep-linkable surface.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "museum-log": {
+    slug: "museum-log",
+    title: "Museum Log",
+    description:
+      "A Letterboxd-style museum tracker for browsing a curated catalog, reading curator reviews, saving museums to a watchlist, and logging visits with personal ratings.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Local-first state", "Editorial UX"],
+    metrics: "Curated catalog · Watchlist & visit log · Local-first state",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/museum-log",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a Letterboxd-style tracker for museums where users browse a curated catalog, save spots to a watchlist, and log visits with personal ratings.",
+      impact:
+        "Gives museum-goers one product surface for discovery, planning, and review instead of scattered notes and bookmarks.",
+    },
+    problem: {
+      context:
+        "There is no equivalent of Letterboxd for museums, so visit notes, watchlists, and exhibit memories live across spreadsheets, photo albums, and group chats.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "wine-cellar": {
+    slug: "wine-cellar",
+    title: "Wine Cellar",
+    description:
+      "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured — saved locally in your browser.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Local persistence", "Editorial UX"],
+    metrics: "Tasting log · Bottle ratings · Browser-persisted cellar",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/wine-cellar",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a personal wine reviewing app for logging tastings, rating bottles, and tracking the wines I've poured.",
+      impact:
+        "Keeps a wine journal lightweight enough to actually maintain without the friction of an account-backed tasting service.",
+    },
+    problem: {
+      context:
+        "Most wine apps lean heavy on social or commerce features when the core need is a private journaling surface for tasting notes.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
+  "recipe-finder": {
+    slug: "recipe-finder",
+    title: "Recipe Finder",
+    description:
+      "Pantry-aware recipe aggregator that ranks recipes by how many of your on-hand ingredients they cover, so weeknight cooking decisions take seconds.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Search UX", "Local persistence"],
+    metrics: "Pantry-aware ranking · Curated recipe corpus · Client-side scoring",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/recipe-finder",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built an ingredient-driven recipe aggregator that ranks recipes by how many of your on-hand ingredients they cover.",
+      impact:
+        "Turns 'what can I cook with what's already in the kitchen?' into a fast answer instead of a long scroll.",
+    },
+    problem: {
+      context:
+        "Most recipe sites optimize for browsing inspiration, not for actually cooking with what is already in your pantry.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 const HOMEPAGE_FEATURED_SLUGS = [
@@ -566,12 +830,20 @@ const PORTFOLIO_PROJECT_ORDER = [
   "github-trending-pulse",
   "decision-lab",
   "food-map",
+  "museum-log",
+  "wine-cellar",
+  "recipe-finder",
   "budget-planner",
   "mba-role-tracker",
+  "polling-aggregator",
   "spacex-mission-control",
   "premier-league-pulse",
-  "fantasy-football-analytics",
   "la-liga-pulse",
+  "fantasy-football-analytics",
+  "formula-1-pulse",
+  "pga-tour-pulse",
+  "mlb-pulse",
+  "nba-pulse",
   "march-madness-2026",
 ] as const;
 

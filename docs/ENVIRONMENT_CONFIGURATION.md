@@ -44,6 +44,15 @@ Public fantasy pages can still function without every FantasyPros credential bec
 
 ---
 
+## Email Digest
+
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `RESEND_API_KEY` | yes for `/api/mba-jobs/email` | Resend API key used to deliver the MBA jobs digest |
+| `MBA_DIGEST_ALLOWED_RECIPIENTS` | yes for `/api/mba-jobs/email` | Comma-separated recipient allowlist; entries can be exact emails or domains such as `@example.edu` |
+
+---
+
 ## Sports Data
 
 | Variable | Required | Purpose |
@@ -79,9 +88,10 @@ NEXTAUTH_SECRET=replace-me
 ADMIN_USERNAME=replace-me
 ADMIN_PASSWORD=replace-me
 CRON_SECRET=replace-me
+MBA_DIGEST_ALLOWED_RECIPIENTS=you@example.com,@example.edu
 ```
 
-Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`, and add FantasyPros credentials or `FANTASYPROS_API_KEY` only if you are testing FantasyPros-backed refreshes.
+Add `RESEND_API_KEY` only if you are testing email delivery. Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`, and add FantasyPros credentials or `FANTASYPROS_API_KEY` only if you are testing FantasyPros-backed refreshes.
 
 ---
 

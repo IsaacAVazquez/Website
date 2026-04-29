@@ -1282,7 +1282,7 @@
     border: 1px solid color-mix(in srgb, var(--home-ink) 16%, transparent);
     border-radius: 1.8rem;
     background:
-      radial-gradient(circle at 80% 18%, color-mix(in srgb, var(--home-haze) 32%, transparent), transparent 30%),
+      radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--home-haze) 14%, transparent), transparent 60%),
       linear-gradient(180deg, color-mix(in srgb, var(--home-paper) 65%, white) 0%, color-mix(in srgb, var(--home-paper-alt) 94%, white) 100%);
     padding: clamp(1.25rem, 2.5vw, 2rem);
     box-shadow: var(--shadow-md);
@@ -1348,12 +1348,14 @@
     display: grid;
     gap: 0.2rem;
     margin-bottom: 0;
+    min-width: 0;
     font-family: var(--font-home-sans);
     font-size: clamp(3rem, 7vw, 6.4rem);
     font-weight: 400;
     line-height: 0.94;
     letter-spacing: -0.08em;
-    color: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));  
+    color: color-mix(in srgb, var(--home-ink) 45%, var(--home-paper));
+    overflow-wrap: anywhere;
   }
 
   .home-manifesto em {

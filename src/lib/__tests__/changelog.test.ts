@@ -1,0 +1,43 @@
+jest.mock("fs");
+jest.mock("gray-matter");
+jest.mock("remark", () => ({
+  remark: jest.fn(() => ({
+    use: jest.fn().mockReturnThis(),
+    process: jest.fn().mockResolvedValue({ toString: () => "<p>Processed update</p>" }),
+  })),
+}));
+jest.mock("remark-gfm", () => jest.fn());
+jest.mock("remark-html", () => jest.fn());
+
+import fs from "fs";
+import matter from "gray-matter";
+import remarkHtml from "remark-html";
+import { getAllChangelogEntries } from "../changelog";
+
+const mockFs = fs as jest.Mocked<typeof fs>;
+const mockMatter = matter as unknown as jest.Mock;
+const mockRemarkHtml = remarkHtml as jest.Mock;
+
+describe("getAllChangelogEntries", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockFs.existsSync = jest.fn().mockReturnValue(true);
+    mockFs.mkdirSync = jest.fn();
+    mockFs.readdirSync = jest.fn().mockReturnValue(["security-update.md"]);
+    mockFs.readFileSync = jest.fn().mockReturnValue("raw changelog");
+    mockMatter.mockReturnValue({
+      data: {
+        title: "Security update",
+        publishedAt: "2026-04-29",
+        summary: "Hardened public endpoints.",
+      },
+      content: "Body",
+    });
+  });
+
+  it("renders markdown with sanitization enabled", async () => {
+    await getAllChangelogEntries();
+
+    expect(mockRemarkHtml).toHaveBeenCalledWith({ sanitize: true });
+  });
+});

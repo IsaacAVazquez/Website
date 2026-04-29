@@ -301,7 +301,7 @@ Current behavior:
 - `update-fantasy-rb.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`, then commits the generated fantasy snapshot artifacts when they change
 - `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.ts` when tracked repositories change
 - `scheduled-fantasy-update.ts` is deprecated and intentionally no longer updates public fantasy data
-- `purge-cache.ts` is protected by `x-cron-secret` or `?secret=` and calls Netlify Durable Cache purge
+- `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
 
 For public fantasy updates, GitHub Actions is the source of truth. The Netlify scheduled function remains checked in only as a deprecated placeholder.
 

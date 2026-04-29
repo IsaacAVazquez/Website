@@ -148,7 +148,7 @@ async function renderBlogPostHtml(content: string): Promise<string> {
 
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(remarkHtml)
+    .use(remarkHtml, { sanitize: true })
     .process(content);
 
   return processedContent.toString();

@@ -88,6 +88,11 @@ export const fantasyRateLimiter = new RateLimiter({
   uniqueTokenPerInterval: 10 // 10 requests per minute for fantasy data
 });
 
+export const emailDigestRateLimiter = new RateLimiter({
+  interval: 60 * 60 * 1000, // 1 hour
+  uniqueTokenPerInterval: 3 // 3 email sends per client per hour
+});
+
 // Helper function to get client identifier
 export function getClientIdentifier(request: NextRequest): string {
   // Try to get IP from various headers
