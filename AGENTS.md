@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-04-28
 
 ---
 
@@ -24,6 +24,7 @@ Primary live routes:
 - `/portfolio` and `/portfolio/[slug]`
 - `/investments`
 - `/formula-1`
+- `/github-trending-pulse`
 - `/premier-league`
 - `/la-liga`
 - `/writing` and `/writing/[slug]`
@@ -77,6 +78,7 @@ Self-shell routes currently include:
 - `/fantasy-football/draft-tracker`
 - `/fintech-tools/budget-planner`
 - `/formula-1`
+- `/github-trending-pulse`
 - `/investments`
 - `/la-liga`
 - `/premier-league`
@@ -133,6 +135,7 @@ npm run dev
 - `npm run update:investments` also requires `.venv/bin/python3`.
 - `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots.
 - `npm run update:formula-1` reads historical OpenF1 endpoints and does not require an API key.
+- `npm run update:github-trending` reads the public GitHub Search API. GitHub Actions passes `GITHUB_TOKEN` for higher rate limits.
 - If the investments fetch step fails on imports, install the Python dependency with `.venv/bin/pip install defeatbeta-api`.
 
 ### Day-to-day verification
@@ -271,6 +274,7 @@ Inputs and outputs:
 | `npm run update:premier-league` | Rebuild the checked-in Premier League snapshot |
 | `npm run update:la-liga` | Rebuild the checked-in La Liga snapshot |
 | `npm run update:formula-1` | Rebuild the checked-in Formula 1 snapshot |
+| `npm run update:github-trending` | Rebuild the checked-in GitHub Trending Pulse snapshot |
 | `npm run generate:icons` | Regenerate PWA icons |
 
 ---
@@ -284,6 +288,7 @@ Checked-in operational workflows:
 - `.github/workflows/update-premier-league.yml`
 - `.github/workflows/update-la-liga.yml`
 - `.github/workflows/update-fantasy-rb.yml`
+- `.github/workflows/update-github-trending.yml`
 - `netlify/functions/scheduled-fantasy-update.ts`
 - `netlify/functions/purge-cache.ts`
 
@@ -294,6 +299,7 @@ Current behavior:
 - `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC`, then commits `src/data/premierLeagueSnapshot.ts` when it changes
 - `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC`, then commits `src/data/laLigaSnapshot.ts` when it changes
 - `update-fantasy-rb.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`, then commits the generated fantasy snapshot artifacts when they change
+- `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.ts` when tracked repositories change
 - `scheduled-fantasy-update.ts` is deprecated and intentionally no longer updates public fantasy data
 - `purge-cache.ts` is protected by `x-cron-secret` or `?secret=` and calls Netlify Durable Cache purge
 

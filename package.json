@@ -28,6 +28,7 @@
     "update:nfl": "tsx scripts/updateNflSnapshot.ts",
     "update:formula-1": "tsx scripts/buildFormula1Snapshot.ts",
     "update:frontier-models": "tsx scripts/buildFrontierModelsSnapshot.ts",
+    "update:github-trending": "tsx scripts/buildGitHubTrendingSnapshot.ts",
     "update:spacex": "tsx scripts/buildSpaceXSnapshot.ts",
     "update:spacex-data": "tsx scripts/buildSpaceXSnapshot.ts",
     "update:spacex-images": "tsx scripts/buildSpaceXImageSnapshots.ts",
