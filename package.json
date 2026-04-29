@@ -25,6 +25,7 @@
     "update:la-liga": "tsx scripts/updateLaLigaSnapshot.ts",
     "update:mlb": "tsx scripts/updateMlbSnapshot.ts",
     "update:nba": "tsx scripts/updateNbaSnapshot.ts",
+    "update:nfl": "tsx scripts/updateNflSnapshot.ts",
     "update:formula-1": "tsx scripts/buildFormula1Snapshot.ts",
     "update:frontier-models": "tsx scripts/buildFrontierModelsSnapshot.ts",
     "update:github-trending": "tsx scripts/buildGitHubTrendingSnapshot.ts",
