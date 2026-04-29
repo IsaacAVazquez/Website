@@ -6,7 +6,7 @@ import { normalizeMissionControlState } from "./spacex-mission-control-state";
 
 // eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
-  title: "SpaceX Mission Control | Isaac Vazquez",
+  title: "SpaceX Mission Control",
   description:
     "Mission-control-style SpaceX launch board with next-launch visibility, past and upcoming mission browsing, and relationship-aware mission detail panels.",
   canonicalUrl: "/spacex-mission-control",

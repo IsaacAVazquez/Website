@@ -1,10 +1,13 @@
 # Design & UX Audit — Status & Remaining Work
 
+**Status:** Closed — see "Round 6" log below for the final round of fixes.
 **Originally audited:** 2026-04-25
-**Last updated:** 2026-04-26
+**Last updated:** 2026-04-29
 **Scope:** Full application — all routes, shared components, global shell
 
-This document tracked every design, styling, UI/UX, and accessibility issue found across the site. After five remediation PRs the audit is essentially complete; this revision keeps the original IDs and shipped log so future audits can cross-reference.
+This document tracked every design, styling, UI/UX, and accessibility issue found across the site. After six remediation rounds the audit is closed; the only items still open are documented deferrals that need a new dependency or a meaningful refactor before they're worth doing.
+
+The original IDs and shipped log are kept here so future audits can cross-reference.
 
 ---
 
@@ -23,6 +26,25 @@ This document tracked every design, styling, UI/UX, and accessibility issue foun
 - **PR #91** — P1 cleanup (PL-4 empty/error states, PA-3 polling aria-live, NP-3 dropdown verification + polish, AW-5 legacy token policy banner)
 - **PR #92** — P2 polish (shell + pages + writing + investments + MM + dashboards + fantasy + fintech + MBA — see commit log for the per-section breakdown)
 - **PR #93** — CT-1: documented links-only as the intentional `/contact` treatment
+- **Round 6 (2026-04-29)** — post-audit cleanup on home/resume + the new dashboards added since the audit (mlb, nba, nfl, golf, museum-log, wine-cellar, recipe-finder, polling-aggregator). See "Round 6" log below.
+
+---
+
+## Round 6 — 2026-04-29
+
+Items found during a frontend-design pass on pages added after the original audit, plus two regressions on home and resume.
+
+| # | Issue | Fix | File |
+|---|-------|-----|------|
+| R6-1 | Home spotlight section: italic `*product*` overflowed the green column at lg+ viewports, cutting into the white "Point of view" board | Restructured the manifesto into 5 stacked spans so `*product*` lands alone on its own line; added `min-width: 0` and `overflow-wrap: anywhere` defensively | `src/components/home/HomePageContent.tsx`, `src/app/globals.css` (`.home-manifesto`) |
+| R6-2 | Home spotlight board had a blue-violet radial-gradient orb (`color-mix(... haze 32%, transparent)`) that read as an unintended artifact | Softened to a corner-feathered ellipse at 14% mix with 60% fade | `src/app/globals.css` (`.home-spotlight-board`) |
+| R6-3 | Resume `home-wordmark` overflowed the `resume-panel` cream card on mobile (clipped final letter) and at very wide desktop (>1500px) | Scoped a smaller font-size clamp for the wordmark inside the panel: `clamp(2.2rem, 12vw, 11rem)` | `src/app/globals.css` (`.resume-panel .home-wordmark`) |
+| R6-4 | Resume Skills section had 7 categories in a 2-column grid — empty bottom-right cell and short categories stretched to taller siblings' row heights | Switched to CSS columns (`column-count: 2; break-inside: avoid`) so categories flow naturally | `src/app/resume/resume-client.tsx`, `src/app/globals.css` (`.resume-skills-flow`) |
+| R6-5 | Footer CTA buttons (`View projects`, `Get in touch`) wrapped to two lines on the resume page when the flex container squeezed them | Added `white-space: nowrap` to the base `.home-button` style | `src/app/globals.css` (`.home-button`) |
+| R6-6 | 18 newer pages baked `| Isaac Vazquez` into their literal title; root layout's `title.template = "%s | Isaac Vazquez"` doubled it (e.g. `MLB Pulse | Isaac Vazquez | Isaac Vazquez`) | Stripped the redundant suffix from each page so the template does the work | `src/app/{fantasy-football,decision-lab,food-map,investments,nba,mlb,la-liga,golf,nfl,polling-aggregator,mba-internship-notifications,premier-league,recipe-finder,news-pulse,spacex-mission-control,wine-cellar,fintech-tools/budget-planner,fantasy-football/draft-tracker}/page.tsx` |
+| R6-7 | MLB Pulse showed `Snapshot Dec 31, 1969` (Unix epoch) when the seed snapshot hadn't been refreshed | Hide the snapshot date pill when `updatedAt` is the epoch fallback | `src/app/mlb/mlb-client.tsx` |
+| R6-8 | MLB and NBA both leaked dev-only strings ("Run `npm run update:mlb`", `npm run update:nba`) to public users | Replaced with user-facing copy describing the snapshot refresh cadence; removed the `<code>` references | `src/app/mlb/mlb-client.tsx`, `src/app/nba/nba-client.tsx` |
+| R6-9 | Portfolio page was missing 8 live tools that exist as routes (mlb, nba, formula-1, golf, polling-aggregator, museum-log, wine-cellar, recipe-finder) | Added entries to `caseStudiesData` and slotted them into `PORTFOLIO_PROJECT_ORDER` | `src/constants/caseStudies.ts` |
 
 ---
 

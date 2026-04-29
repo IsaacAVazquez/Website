@@ -302,7 +302,12 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             </p>
           </div>
           <div className="flex flex-wrap gap-1.5 text-[11px] text-[var(--home-ink-muted)]">
-            {[`Season ${summary.season}`, `Snapshot ${snapshotDateLabel}`].map((label) => (
+            {[
+              `Season ${summary.season}`,
+              ...(summary.updatedAt && summary.updatedAt > "1970-01-02"
+                ? [`Snapshot ${snapshotDateLabel}`]
+                : []),
+            ].map((label) => (
               <span
                 key={label}
                 className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium"
@@ -376,9 +381,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
             {!hasStandings && (
               <p className="mt-6 rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 text-sm text-[var(--home-ink-muted)]">
-                Standings are seeded with the 30 active clubs but no win/loss data is available
-                yet. Run <code className="rounded bg-[var(--home-paper)] px-1 py-0.5">npm run update:mlb</code>
-                {" "}to populate the snapshot.
+                The 30 clubs are listed below — win/loss data will appear once
+                the next snapshot is published.
               </p>
             )}
 

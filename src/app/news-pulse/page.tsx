@@ -4,7 +4,7 @@ import { NewsPulseClient } from "./news-pulse-client";
 import { normalizeNewsPulseState } from "./news-pulse-state";
 
 export const metadata = constructMetadata({
-  title: "News Pulse Dashboard | Isaac Vazquez",
+  title: "News Pulse Dashboard",
   description:
     "Live news media analytics dashboard aggregating RSS feeds from 6 major outlets. Visualizes coverage patterns, extracts trending topics, and performs lightweight sentiment analysis.",
   canonicalUrl: "/news-pulse",

@@ -4,7 +4,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { DraftTrackerClient } from "./draft-tracker-client";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Fantasy Football Draft Assistant | Isaac Vazquez",
+  title: "Fantasy Football Draft Assistant",
   description:
     "Manual fantasy football draft assistant with snake-order tracking, local persistence, roster-pressure cues, and the same published snapshot board used on the public rankings page.",
   canonicalUrl: "/fantasy-football/draft-tracker",

@@ -4,7 +4,7 @@ import { FantasyFootballClient } from "./fantasy-football-client";
 import { normalizeFantasyState } from "./fantasy-state";
 
 export const metadata = constructMetadata({
-  title: "Fantasy Football Rankings | Isaac Vazquez",
+  title: "Fantasy Football Rankings",
   description:
     "Snapshot-backed fantasy football rankings sourced from FantasyPros public consensus pages, with freshness metadata, scoring toggles, and a linked draft assistant.",
   canonicalUrl: "/fantasy-football",

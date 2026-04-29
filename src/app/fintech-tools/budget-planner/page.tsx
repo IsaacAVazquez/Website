@@ -4,7 +4,7 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { BudgetPlannerClient } from "./budget-planner-client";
 
 export const metadata = constructMetadata({
-  title: "Budget Planner | Isaac Vazquez",
+  title: "Budget Planner",
   description:
     "Monthly budgeting tool for planning income, category budgets, savings targets, and manual expense tracking in a browser-persisted ledger.",
   canonicalUrl: "/fintech-tools/budget-planner",

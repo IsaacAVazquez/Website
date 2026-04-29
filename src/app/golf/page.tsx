@@ -7,7 +7,7 @@ import { normalizeGolfState } from "./golf-state";
 
 // eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
-  title: "PGA Tour Pulse | Isaac Vazquez",
+  title: "PGA Tour Pulse",
   description:
     "Snapshot-backed PGA Tour tournament dashboard for leaderboard scanning, player drilldowns, round-by-round movement, and weekend cut-line context.",
   canonicalUrl: "/golf",

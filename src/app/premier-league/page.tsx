@@ -10,7 +10,7 @@ import { normalizePremierLeagueState } from "./premier-league-state";
 
 // eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
-  title: "Premier League Pulse | Isaac Vazquez",
+  title: "Premier League Pulse",
   description:
     "Premier League dashboard with standings, recent and upcoming fixtures, and club-level drilldowns backed by a checked-in snapshot.",
   canonicalUrl: "/premier-league",

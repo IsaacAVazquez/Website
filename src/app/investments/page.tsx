@@ -6,7 +6,7 @@ import { InvestmentsClient } from "./investments-client";
 import { normalizeInvestmentsState } from "./investments-state";
 
 export const metadata = constructMetadata({
-  title: "Investment Research Platform | Isaac Vazquez",
+  title: "Investment Research Platform",
   description:
     "Investment research workspace with curated company snapshots, valuation metrics, financial statements, price history, and browser-saved portfolio tracking.",
   canonicalUrl: "/investments",

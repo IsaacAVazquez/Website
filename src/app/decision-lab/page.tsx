@@ -4,7 +4,7 @@ import { DecisionLabClient } from "./decision-lab-client";
 import { normalizeDecisionLabState } from "./decision-lab-state";
 
 export const metadata = constructMetadata({
-  title: "Decision Lab | Isaac Vazquez",
+  title: "Decision Lab",
   description:
     "Product-bet triage tool for scoring impact, confidence, effort, and reversibility before calling ship, test, or hold.",
   canonicalUrl: "/decision-lab",

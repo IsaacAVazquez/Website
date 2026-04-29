@@ -7,7 +7,7 @@ import { normalizeMlbState } from "./mlb-state";
 
 // eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
-  title: "MLB Pulse | Isaac Vazquez",
+  title: "MLB Pulse",
   description:
     "Interactive Major League Baseball dashboard with division standings, AL and NL splits, wild card race, recent results, and league-wide hitting and pitching leaders.",
   canonicalUrl: "/mlb",

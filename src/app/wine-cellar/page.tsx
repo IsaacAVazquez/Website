@@ -4,7 +4,7 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { WineCellarClient } from "./wine-cellar-client";
 
 export const metadata = constructMetadata({
-  title: "Wine Cellar | Isaac Vazquez",
+  title: "Wine Cellar",
   description:
     "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured — saved locally in your browser.",
   canonicalUrl: "/wine-cellar",

@@ -10,7 +10,7 @@ import { normalizeNbaState } from "./nba-state";
 
 // eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
-  title: "NBA Pulse | Isaac Vazquez",
+  title: "NBA Pulse",
   description:
     "Interactive NBA dashboard with conference standings, playoff seeding, play-in race context, and snapshot leaderboards for points, rebounds, and assists.",
   canonicalUrl: "/nba",

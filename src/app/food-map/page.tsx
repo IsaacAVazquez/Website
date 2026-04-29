@@ -4,7 +4,7 @@ import { FoodMapClient } from "./food-map-client";
 import { normalizeFoodMapState } from "./food-map-state";
 
 export const metadata = constructMetadata({
-  title: "Food Map | Isaac Vazquez",
+  title: "Food Map",
   description:
     "A curated, deep-linkable map of the Austin restaurants I send people to first, filterable by neighborhood, cuisine, and meal.",
   canonicalUrl: "/food-map",

@@ -6,7 +6,7 @@ import { normalizePollingState } from "./polling-aggregator-state";
 
 // eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
-  title: "Polling Aggregator | Isaac Vazquez",
+  title: "Polling Aggregator",
   description:
     "Political polling aggregator tracking presidential approval, the generic congressional ballot, and key 2026 Senate and governor race polls.",
   canonicalUrl: "/polling-aggregator",

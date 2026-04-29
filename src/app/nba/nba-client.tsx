@@ -213,9 +213,13 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
     return (
       <div className="home-page min-h-screen">
         <div className="home-shell home-section space-y-5 sm:space-y-6">
-          <p className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)]">
-            NBA snapshot data is empty. Run <code>npm run update:nba</code> to fetch the latest standings.
-          </p>
+          <div className="rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm text-[var(--home-ink-muted)]">
+            <p className="home-kicker mb-2 text-[var(--home-ink)]">NBA Pulse</p>
+            <p className="mb-0">
+              Conference standings, playoff seeding, and stat leaders will
+              appear here once the next snapshot is published.
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -764,7 +768,9 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
           <div className="flex items-start gap-3">
             <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-warning)]" />
             <p className="mb-0 max-w-none leading-relaxed">
-              This page is a curated snapshot rather than a live feed. Standings, scoreboard, and stat leaders are pulled from ESPN&apos;s public NBA endpoints by <code>npm run update:nba</code> and committed back into the repo.
+              This page is a curated snapshot rather than a live feed. Standings,
+              scoreboard, and stat leaders are pulled from ESPN&apos;s public NBA
+              endpoints and committed back into the repo on each refresh.
             </p>
           </div>
         </section>

@@ -4,7 +4,7 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { RecipeFinderClient } from "./recipe-finder-client";
 
 export const metadata = constructMetadata({
-  title: "Recipe Finder | Isaac Vazquez",
+  title: "Recipe Finder",
   description:
     "Recipe aggregator and ingredient-based search. Add the ingredients you have on hand and surface recipes you can actually cook tonight, ranked by what you're missing.",
   canonicalUrl: "/recipe-finder",

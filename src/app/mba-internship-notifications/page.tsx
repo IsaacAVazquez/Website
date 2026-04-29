@@ -4,7 +4,7 @@ import { MBAJobsClient } from "./mba-jobs-client";
 import { normalizeMBAJobsState } from "./mba-jobs-state";
 
 export const metadata = constructMetadata({
-  title: "Job Search | Isaac Vazquez",
+  title: "Job Search",
   description:
     "Live dashboard monitoring 32 tech company career pages and public job boards for MBA internships plus full-time business roles across product, PMM, strategy, operations, growth, and finance.",
   canonicalUrl: "/mba-internship-notifications",

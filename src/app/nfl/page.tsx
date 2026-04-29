@@ -7,7 +7,7 @@ import { normalizeNflState } from "./nfl-state";
 
 // eslint-disable-next-line react-refresh/only-export-components -- Next.js route modules export metadata alongside the page component.
 export const metadata = constructMetadata({
-  title: "NFL Pulse | Isaac Vazquez",
+  title: "NFL Pulse",
   description:
     "Interactive NFL dashboard with conference seedings, division leaders, playoff cutoffs, point differential context, and snapshot stat leaders for passing, rushing, receiving, and sacks.",
   canonicalUrl: "/nfl",
