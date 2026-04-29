@@ -482,9 +482,9 @@ export default function Resume() {
               Skills &amp; Expertise
             </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ml-0">
+            <div className="resume-skills-flow">
               {skillCategories.map((category) => (
-                <div key={category.category}>
+                <div key={category.category} className="resume-skills-flow-item">
                   <p className="home-kicker mb-4">{category.category}</p>
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill) => (

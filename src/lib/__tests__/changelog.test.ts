@@ -11,11 +11,13 @@ jest.mock("remark-html", () => jest.fn());
 
 import fs from "fs";
 import matter from "gray-matter";
+import { remark } from "remark";
 import remarkHtml from "remark-html";
 import { getAllChangelogEntries } from "../changelog";
 
 const mockFs = fs as jest.Mocked<typeof fs>;
 const mockMatter = matter as unknown as jest.Mock;
+const mockRemark = remark as jest.Mock;
 const mockRemarkHtml = remarkHtml as jest.Mock;
 
 describe("getAllChangelogEntries", () => {
@@ -37,7 +39,8 @@ describe("getAllChangelogEntries", () => {
 
   it("renders markdown with sanitization enabled", async () => {
     await getAllChangelogEntries();
+    const processor = mockRemark.mock.results.at(-1)?.value;
 
-    expect(mockRemarkHtml).toHaveBeenCalledWith({ sanitize: true });
+    expect(processor.use).toHaveBeenCalledWith(mockRemarkHtml, { sanitize: true });
   });
 });

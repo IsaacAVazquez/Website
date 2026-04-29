@@ -12,6 +12,7 @@ jest.mock('remark-html', () => jest.fn());
 
 import fs from 'fs';
 import matter from 'gray-matter';
+import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 import {
   getBlogPostSlugs,
@@ -30,6 +31,7 @@ import {
 
 const mockFs = fs as jest.Mocked<typeof fs>;
 const mockMatter = matter as unknown as jest.Mock;
+const mockRemark = remark as jest.Mock;
 const mockRemarkHtml = remarkHtml as jest.Mock;
 
 function makeFrontmatter(overrides: Partial<BlogPost> = {}) {
@@ -166,11 +168,12 @@ describe('getBlogPostBySlug', () => {
   });
 
   it('renders markdown with sanitization enabled', async () => {
-    mockRemarkHtml.mockClear();
+    mockRemark.mockClear();
 
     await getBlogPostBySlug('test-post');
+    const processor = mockRemark.mock.results.at(-1)?.value;
 
-    expect(mockRemarkHtml).toHaveBeenCalledWith({ sanitize: true });
+    expect(processor.use).toHaveBeenCalledWith(mockRemarkHtml, { sanitize: true });
   });
 });
 

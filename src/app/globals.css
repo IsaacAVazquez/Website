@@ -632,6 +632,17 @@
     box-shadow: var(--shadow-md);
   }
 
+  /*
+   * The home-wordmark is sized off the viewport (14.2vw) for the home
+   * shell's full inner width. Inside the resume-panel it sits within
+   * an additional ~80px of horizontal padding, so the same clamp
+   * overflows the card on both narrow and wide viewports. Scope it
+   * down here so the type stays edge-to-edge inside the panel.
+   */
+  .resume-panel .home-wordmark {
+    font-size: clamp(2.2rem, 12vw, 11rem);
+  }
+
   .dark .resume-panel {
     background: color-mix(in srgb, var(--home-paper-alt) 92%, black);
   }
@@ -688,6 +699,31 @@
     transition-property: background-color, border-color, color;
     transition-duration: 200ms;
     transition-timing-function: ease;
+  }
+
+  /*
+   * Skills layout uses CSS columns so 7 unevenly-sized category cards
+   * flow naturally instead of leaving an empty grid cell or stretching
+   * shorter cards to a taller row's height.
+   */
+  .resume-skills-flow {
+    column-count: 1;
+    column-gap: 2rem;
+  }
+
+  @media (min-width: 64rem) {
+    .resume-skills-flow {
+      column-count: 2;
+    }
+  }
+
+  .resume-skills-flow-item {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+
+  .resume-skills-flow-item:last-child {
+    margin-bottom: 0;
   }
 
   .resume-chip:hover {
@@ -1005,6 +1041,7 @@
     font-size: 0.95rem;
     font-weight: 600;
     line-height: 1;
+    white-space: nowrap;
     text-decoration: none;
     transition-property: background-color, border-color, color, box-shadow, transform;
     transition-duration: 180ms;

@@ -1,15 +1,16 @@
 /**
  * @jest-environment node
  */
-const mockPurgeCache = jest.fn();
-
 jest.mock("@netlify/functions", () => ({
-  purgeCache: mockPurgeCache,
+  purgeCache: jest.fn(),
 }));
 
+import { purgeCache } from "@netlify/functions";
+import type { HandlerContext, HandlerEvent } from "@netlify/functions";
 import { handler } from "../purge-cache";
 
 const originalEnv = { ...process.env };
+const mockPurgeCache = purgeCache as jest.Mock;
 
 function makeEvent(
   headers: Record<string, string> = {},
@@ -18,11 +19,11 @@ function makeEvent(
   return {
     headers,
     queryStringParameters,
-  } as any;
+  } as unknown as HandlerEvent;
 }
 
 async function callHandler(event: ReturnType<typeof makeEvent>) {
-  return await handler(event, {} as any, jest.fn()) as any;
+  return await handler(event, {} as HandlerContext, jest.fn());
 }
 
 describe("purge-cache function auth", () => {
