@@ -1,10 +1,10 @@
 {
   "symbol": "VZ",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.06,
-      "ttmPe": 12.17,
-      "marketCap": 208353599480,
-      "psRatio": 1.51,
-      "pbRatio": 1.99
+      "ttmPe": 11.42,
+      "marketCap": 195616193196,
+      "psRatio": 1.42,
+      "pbRatio": 1.87
     },
     "profitability": {
       "roe": 2.2399999999999998,
@@ -3856,137 +3856,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.93,
-      "costOfEquity": 6.68,
+      "wacc": 3.52,
+      "costOfEquity": 6.069999999999999,
       "costOfDebt": 0.97,
       "taxRate": 20,
-      "beta": 0.277,
-      "marketCap": 208353599480
+      "beta": 0.2053,
+      "marketCap": 195616193196
     },
     "beta": {
-      "beta5y": 0.277
+      "beta5y": 0.2053
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 45.37,
-        "high": 45.54,
-        "low": 44.6,
-        "close": 44.74,
-        "volume": 21924100
-      },
-      {
-        "date": "2025-04-03",
-        "open": 45.49,
-        "high": 46.19,
-        "low": 45.2,
-        "close": 45.62,
-        "volume": 30474800
-      },
-      {
-        "date": "2025-04-04",
-        "open": 44.76,
-        "high": 45.8,
-        "low": 42.8,
-        "close": 43.03,
-        "volume": 42663400
-      },
-      {
-        "date": "2025-04-07",
-        "open": 41.53,
-        "high": 43.33,
-        "low": 41.25,
-        "close": 42.58,
-        "volume": 38812000
-      },
-      {
-        "date": "2025-04-08",
-        "open": 43,
-        "high": 43.22,
-        "low": 41.68,
-        "close": 42.17,
-        "volume": 29790200
-      },
-      {
-        "date": "2025-04-09",
-        "open": 41.68,
-        "high": 43.52,
-        "low": 40.88,
-        "close": 42.89,
-        "volume": 49426000
-      },
-      {
-        "date": "2025-04-10",
-        "open": 42.49,
-        "high": 43.24,
-        "low": 41.85,
-        "close": 42.92,
-        "volume": 36501700
-      },
-      {
-        "date": "2025-04-11",
-        "open": 43.85,
-        "high": 43.9,
-        "low": 43.1,
-        "close": 43.73,
-        "volume": 30144300
-      },
-      {
-        "date": "2025-04-14",
-        "open": 43.9,
-        "high": 44.65,
-        "low": 43.61,
-        "close": 44.3,
-        "volume": 24323000
-      },
-      {
-        "date": "2025-04-15",
-        "open": 44.5,
-        "high": 44.69,
-        "low": 44.22,
-        "close": 44.48,
-        "volume": 21795300
-      },
-      {
-        "date": "2025-04-16",
-        "open": 44.74,
-        "high": 44.89,
-        "low": 43.52,
-        "close": 43.61,
-        "volume": 17271600
-      },
-      {
-        "date": "2025-04-17",
-        "open": 43.76,
-        "high": 44.48,
-        "low": 43.58,
-        "close": 44.04,
-        "volume": 16480400
-      },
-      {
-        "date": "2025-04-21",
-        "open": 44.2,
-        "high": 44.29,
-        "low": 42.68,
-        "close": 42.93,
-        "volume": 23802500
-      },
-      {
-        "date": "2025-04-22",
-        "open": 41.99,
-        "high": 43.67,
-        "low": 41.54,
-        "close": 43.19,
-        "volume": 37633800
-      },
-      {
-        "date": "2025-04-23",
-        "open": 42.55,
-        "high": 42.99,
-        "low": 42.11,
-        "close": 42.7,
-        "volume": 29402100
-      },
       {
         "date": "2025-04-24",
         "open": 42.71,
@@ -5882,6 +5762,126 @@
         "low": 49.28,
         "close": 49.4,
         "volume": 22737800
+      },
+      {
+        "date": "2026-04-06",
+        "open": 49.4,
+        "high": 49.73,
+        "low": 49.03,
+        "close": 49.15,
+        "volume": 17542700
+      },
+      {
+        "date": "2026-04-07",
+        "open": 49.1,
+        "high": 49.23,
+        "low": 48.53,
+        "close": 48.62,
+        "volume": 21945900
+      },
+      {
+        "date": "2026-04-08",
+        "open": 47.88,
+        "high": 48.16,
+        "low": 47.12,
+        "close": 48.04,
+        "volume": 34143200
+      },
+      {
+        "date": "2026-04-09",
+        "open": 47.81,
+        "high": 48.17,
+        "low": 47.26,
+        "close": 47.78,
+        "volume": 29376900
+      },
+      {
+        "date": "2026-04-10",
+        "open": 47.09,
+        "high": 47.1,
+        "low": 45.95,
+        "close": 46.04,
+        "volume": 25248600
+      },
+      {
+        "date": "2026-04-13",
+        "open": 46.09,
+        "high": 46.09,
+        "low": 45.04,
+        "close": 45.42,
+        "volume": 32920900
+      },
+      {
+        "date": "2026-04-14",
+        "open": 44.77,
+        "high": 45.48,
+        "low": 44.27,
+        "close": 45.48,
+        "volume": 31187400
+      },
+      {
+        "date": "2026-04-15",
+        "open": 45.33,
+        "high": 45.39,
+        "low": 44.93,
+        "close": 45.03,
+        "volume": 26230300
+      },
+      {
+        "date": "2026-04-16",
+        "open": 45.23,
+        "high": 46.86,
+        "low": 45.04,
+        "close": 46.78,
+        "volume": 26004100
+      },
+      {
+        "date": "2026-04-17",
+        "open": 46.11,
+        "high": 46.89,
+        "low": 46.08,
+        "close": 46.55,
+        "volume": 20004700
+      },
+      {
+        "date": "2026-04-20",
+        "open": 46.59,
+        "high": 46.97,
+        "low": 46.26,
+        "close": 46.44,
+        "volume": 16608100
+      },
+      {
+        "date": "2026-04-21",
+        "open": 46.52,
+        "high": 47.02,
+        "low": 46.13,
+        "close": 46.27,
+        "volume": 28978400
+      },
+      {
+        "date": "2026-04-22",
+        "open": 45.88,
+        "high": 46.15,
+        "low": 45.17,
+        "close": 45.98,
+        "volume": 22129500
+      },
+      {
+        "date": "2026-04-23",
+        "open": 46.48,
+        "high": 47.52,
+        "low": 46.3,
+        "close": 47.22,
+        "volume": 22750200
+      },
+      {
+        "date": "2026-04-24",
+        "open": 47.06,
+        "high": 47.34,
+        "low": 46.38,
+        "close": 46.38,
+        "volume": 26588900
       }
     ],
     "news": [
@@ -5934,6 +5934,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
+        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "9c25d44b-7c94-3b1f-b560-33b3efaa33a6",
         "title": "The Zacks Analyst Blog Highlights Verizon Communications, Bristol-Myers Squibb, Canadian  Pacific and Nova LifeStyle",
         "publisher": "Zacks",
@@ -5947,14 +5955,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-communications-212400011.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
-        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
         "type": "STORY"
       },
       {
@@ -5972,69 +5972,107 @@
         "title": "Executive VP & CFO",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 2750005
+        "totalPay": 3006860
       },
       {
         "name": "Mr. Daniel H. Schulman",
         "title": "Director & CEO",
         "age": 67,
         "yearBorn": 1958,
-        "totalPay": 155000
+        "totalPay": 2890221
+      },
+      {
+        "name": "Mr. Hans E. Vestberg",
+        "title": "Special Advisor & Director",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 6173453
+      },
+      {
+        "name": "Mr. Kyle Malady",
+        "title": "Executive VP & CEO of Verizon Business Group",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 3007531
+      },
+      {
+        "name": "Mr. Santiago Tenorio",
+        "title": "CTO & Senior VP of Strategy and Technology Enablement"
+      },
+      {
+        "name": "Ms. Colleen Ostrowski",
+        "title": "Senior Vice President of Investor Relations",
+        "age": 51,
+        "yearBorn": 1974
+      },
+      {
+        "name": "Ms. Leslie Berland",
+        "title": "Executive VP & Chief Marketing Officer"
+      },
+      {
+        "name": "Ms. Mary-Lee Stillwell",
+        "title": "Senior VP of Accounting & External Reporting and Controller",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
+        "name": "Ms. Stacy Sharpe",
+        "title": "Executive VP & Chief Communications Officer"
       },
       {
         "name": "Ms. Vandana Venkatesh",
         "title": "Executive Vice President & Chief Legal Officer",
-        "age": 52,
-        "yearBorn": 1973,
-        "totalPay": 1931093
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 2426257
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.17,
-        "industryAvg": 35.04
+        "value": 11.42,
+        "industryAvg": 32.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.51,
-        "industryAvg": 1.35
+        "value": 1.42,
+        "industryAvg": 1.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.99,
-        "industryAvg": 1.4
+        "value": 1.87,
+        "industryAvg": 1.34
       },
       {
         "metric": "ROE",
         "value": 2.2399999999999998,
-        "industryAvg": -0.05
+        "industryAvg": -0.1
       },
       {
         "metric": "ROA",
         "value": 0.59,
-        "industryAvg": -0.01
+        "industryAvg": -0.03
       },
       {
         "metric": "Gross Margin",
         "value": 54.71,
-        "industryAvg": 53.99
+        "industryAvg": 54.09
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.679999999999996,
-        "industryAvg": 25.61
+        "industryAvg": 25.36
       },
       {
         "metric": "Net Margin",
         "value": 6.4399999999999995,
-        "industryAvg": 0
+        "industryAvg": -0.13999999999999999
       }
     ],
     "dcf": {
       "fairValue": 206.58,
-      "currentPrice": 49.4,
-      "upside": 318.17,
+      "currentPrice": 46.38,
+      "upside": 345.4,
       "wacc": 4,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,

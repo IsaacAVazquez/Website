@@ -1,10 +1,10 @@
 {
   "symbol": "KLAC",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 34.42,
-      "ttmPe": 44.07,
-      "marketCap": 198822229944,
-      "psRatio": 15.6,
-      "pbRatio": 36.38
+      "ttmPe": 56.22,
+      "marketCap": 253633221000,
+      "psRatio": 19.9,
+      "pbRatio": 46.4
     },
     "profitability": {
       "roe": 21.93,
@@ -5652,137 +5652,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.42,
-      "costOfEquity": 16.89,
+      "wacc": 17.43,
+      "costOfEquity": 17.83,
       "costOfDebt": 1.1400000000000001,
       "taxRate": 14.000000000000002,
-      "beta": 1.47,
-      "marketCap": 198822229944
+      "beta": 1.5792,
+      "marketCap": 253633221000
     },
     "beta": {
-      "beta5y": 1.47
+      "beta5y": 1.5792
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 667.29,
-        "high": 695.62,
-        "low": 667.29,
-        "close": 686.19,
-        "volume": 791100
-      },
-      {
-        "date": "2025-04-03",
-        "open": 652.21,
-        "high": 656.92,
-        "low": 620.27,
-        "close": 620.82,
-        "volume": 1525300
-      },
-      {
-        "date": "2025-04-04",
-        "open": 592.54,
-        "high": 600,
-        "low": 559.76,
-        "close": 576.53,
-        "volume": 2072800
-      },
-      {
-        "date": "2025-04-07",
-        "open": 566.65,
-        "high": 632.77,
-        "low": 551.33,
-        "close": 604.62,
-        "volume": 2996100
-      },
-      {
-        "date": "2025-04-08",
-        "open": 626,
-        "high": 644.26,
-        "low": 586.81,
-        "close": 599.51,
-        "volume": 2719800
-      },
-      {
-        "date": "2025-04-09",
-        "open": 604.87,
-        "high": 721.84,
-        "low": 597.35,
-        "close": 703.31,
-        "volume": 3447900
-      },
-      {
-        "date": "2025-04-10",
-        "open": 664.9,
-        "high": 680.69,
-        "low": 628.49,
-        "close": 656.76,
-        "volume": 2676100
-      },
-      {
-        "date": "2025-04-11",
-        "open": 646.82,
-        "high": 676.73,
-        "low": 635.08,
-        "close": 670.22,
-        "volume": 1361800
-      },
-      {
-        "date": "2025-04-14",
-        "open": 681.5,
-        "high": 684.3,
-        "low": 659.45,
-        "close": 669.97,
-        "volume": 987000
-      },
-      {
-        "date": "2025-04-15",
-        "open": 669.42,
-        "high": 682.11,
-        "low": 665,
-        "close": 676.21,
-        "volume": 790400
-      },
-      {
-        "date": "2025-04-16",
-        "open": 638.25,
-        "high": 659.05,
-        "low": 619.31,
-        "close": 642.19,
-        "volume": 2020800
-      },
-      {
-        "date": "2025-04-17",
-        "open": 649.03,
-        "high": 649.19,
-        "low": 631.62,
-        "close": 634.43,
-        "volume": 1224100
-      },
-      {
-        "date": "2025-04-21",
-        "open": 623.43,
-        "high": 627.21,
-        "low": 607.7,
-        "close": 620.8,
-        "volume": 1346100
-      },
-      {
-        "date": "2025-04-22",
-        "open": 626.69,
-        "high": 639.85,
-        "low": 625.85,
-        "close": 636.36,
-        "volume": 1372400
-      },
-      {
-        "date": "2025-04-23",
-        "open": 664.24,
-        "high": 672.7,
-        "low": 652.88,
-        "close": 657.11,
-        "volume": 945100
-      },
       {
         "date": "2025-04-24",
         "open": 674.11,
@@ -7678,23 +7558,143 @@
         "low": 1451,
         "close": 1516.84,
         "volume": 661500
+      },
+      {
+        "date": "2026-04-06",
+        "open": 1522.78,
+        "high": 1542,
+        "low": 1517.41,
+        "close": 1540.06,
+        "volume": 411800
+      },
+      {
+        "date": "2026-04-07",
+        "open": 1523.62,
+        "high": 1548.91,
+        "low": 1507.28,
+        "close": 1548.85,
+        "volume": 527300
+      },
+      {
+        "date": "2026-04-08",
+        "open": 1666.19,
+        "high": 1686.26,
+        "low": 1635.33,
+        "close": 1672.34,
+        "volume": 1020100
+      },
+      {
+        "date": "2026-04-09",
+        "open": 1669.89,
+        "high": 1734.7,
+        "low": 1669.16,
+        "close": 1727.26,
+        "volume": 939500
+      },
+      {
+        "date": "2026-04-10",
+        "open": 1747.62,
+        "high": 1759.96,
+        "low": 1732.18,
+        "close": 1737.28,
+        "volume": 686400
+      },
+      {
+        "date": "2026-04-13",
+        "open": 1734.64,
+        "high": 1771.82,
+        "low": 1720.27,
+        "close": 1768.78,
+        "volume": 830100
+      },
+      {
+        "date": "2026-04-14",
+        "open": 1788.75,
+        "high": 1798,
+        "low": 1765.4,
+        "close": 1795.91,
+        "volume": 871300
+      },
+      {
+        "date": "2026-04-15",
+        "open": 1766,
+        "high": 1770.32,
+        "low": 1680.51,
+        "close": 1748.11,
+        "volume": 1163900
+      },
+      {
+        "date": "2026-04-16",
+        "open": 1718.58,
+        "high": 1742.05,
+        "low": 1696.46,
+        "close": 1734.85,
+        "volume": 832300
+      },
+      {
+        "date": "2026-04-17",
+        "open": 1771.26,
+        "high": 1791.75,
+        "low": 1744.07,
+        "close": 1791.44,
+        "volume": 725400
+      },
+      {
+        "date": "2026-04-20",
+        "open": 1791.63,
+        "high": 1806.75,
+        "low": 1770,
+        "close": 1805.32,
+        "volume": 623100
+      },
+      {
+        "date": "2026-04-21",
+        "open": 1814,
+        "high": 1823.27,
+        "low": 1772.43,
+        "close": 1785.37,
+        "volume": 676100
+      },
+      {
+        "date": "2026-04-22",
+        "open": 1812.99,
+        "high": 1814.34,
+        "low": 1776.64,
+        "close": 1812.06,
+        "volume": 684000
+      },
+      {
+        "date": "2026-04-23",
+        "open": 1824.38,
+        "high": 1844.59,
+        "low": 1788.53,
+        "close": 1815.43,
+        "volume": 928500
+      },
+      {
+        "date": "2026-04-24",
+        "open": 1852.78,
+        "high": 1939.36,
+        "low": 1844.72,
+        "close": 1935,
+        "volume": 1143100
       }
     ],
     "news": [
-      {
-        "uuid": "83f8d9f8-57f2-335d-9151-f1ea2ac9e406",
-        "title": "Is KLA Corp. (KLAC) the Best GARP Stock to Buy Now?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/kla-corp-klac-best-garp-142339226.html",
-        "type": "STORY"
-      },
       {
         "uuid": "aa125839-97db-3f4e-9c8d-45fe4d3f50e1",
         "title": "What Makes KLA Corporation (KLAC) a Good Long-Term Bet?",
         "publisher": "Insider Monkey",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/makes-kla-corporation-klac-good-134811807.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "83f8d9f8-57f2-335d-9151-f1ea2ac9e406",
+        "title": "Is KLA Corp. (KLAC) the Best GARP Stock to Buy Now?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/kla-corp-klac-best-garp-142339226.html",
         "type": "STORY"
       },
       {
@@ -7754,11 +7754,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5eeeacf1-26d3-3d4d-a281-9c0a18bbbb13",
-        "title": "KLA Corporation (NASDAQ:KLAC) Posts Better-Than-Expected Sales In Q1, Provides Encouraging Quarterly Revenue Guidance",
-        "publisher": "StockStory",
+        "uuid": "7b284d14-6b62-3ee7-a618-c21dd56b00bc",
+        "title": "KLA Corp (KLAC) Q3 2025 Earnings Call Highlights: Surpassing Revenue Expectations and Strategic ...",
+        "publisher": "GuruFocus.com",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/kla-corporation-nasdaq-klac-posts-202749386.html",
+        "link": "https://finance.yahoo.com/news/kla-corp-klac-q3-2025-071854024.html",
         "type": "STORY"
       }
     ],
@@ -7828,50 +7828,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 44.07,
-        "industryAvg": 50.77
+        "value": 56.22,
+        "industryAvg": 59.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.6,
-        "industryAvg": 13.17
+        "value": 19.9,
+        "industryAvg": 15.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 36.38,
-        "industryAvg": 15.63
+        "value": 46.4,
+        "industryAvg": 4.61
       },
       {
         "metric": "ROE",
         "value": 21.93,
-        "industryAvg": 10.08
+        "industryAvg": 9.87
       },
       {
         "metric": "ROA",
         "value": 6.94,
-        "industryAvg": 4.859999999999999
+        "industryAvg": 4.8
       },
       {
         "metric": "Gross Margin",
         "value": 61.45,
-        "industryAvg": 48.85
+        "industryAvg": 49.03
       },
       {
         "metric": "EBITDA Margin",
         "value": 45.47,
-        "industryAvg": 35.5
+        "industryAvg": 33.39
       },
       {
         "metric": "Net Margin",
         "value": 34.75,
-        "industryAvg": 25.41
+        "industryAvg": 26.36
       }
     ],
     "dcf": {
-      "fairValue": 486.99,
-      "currentPrice": 1516.84,
-      "upside": -67.89,
-      "wacc": 16.42,
+      "fairValue": 450.96,
+      "currentPrice": 1935,
+      "upside": -76.69,
+      "wacc": 17.43,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 41.72,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "WM",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.7,
-      "ttmPe": 35.14,
-      "marketCap": 94953314036,
-      "psRatio": 3.77,
-      "pbRatio": 9.5
+      "ttmPe": 34.26,
+      "marketCap": 92577666174,
+      "psRatio": 3.67,
+      "pbRatio": 9.27
     },
     "profitability": {
       "roe": 7.61,
@@ -5131,137 +5131,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.26,
-      "costOfEquity": 8.83,
+      "wacc": 6.950000000000001,
+      "costOfEquity": 8.48,
       "costOfDebt": 0.97,
       "taxRate": 21,
-      "beta": 0.5285,
-      "marketCap": 94953314036
+      "beta": 0.4867,
+      "marketCap": 92577666174
     },
     "beta": {
-      "beta5y": 0.5285
+      "beta5y": 0.4867
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 232.93,
-        "high": 234.88,
-        "low": 230.48,
-        "close": 234.56,
-        "volume": 1411300
-      },
-      {
-        "date": "2025-04-03",
-        "open": 233.96,
-        "high": 239.32,
-        "low": 233.1,
-        "close": 236.83,
-        "volume": 2216100
-      },
-      {
-        "date": "2025-04-04",
-        "open": 235.08,
-        "high": 236.47,
-        "low": 225.06,
-        "close": 225.2,
-        "volume": 4183200
-      },
-      {
-        "date": "2025-04-07",
-        "open": 219.14,
-        "high": 226.75,
-        "low": 215.01,
-        "close": 220.56,
-        "volume": 2931100
-      },
-      {
-        "date": "2025-04-08",
-        "open": 225.79,
-        "high": 225.79,
-        "low": 213.66,
-        "close": 216.47,
-        "volume": 2324700
-      },
-      {
-        "date": "2025-04-09",
-        "open": 214,
-        "high": 226.31,
-        "low": 213.5,
-        "close": 224.42,
-        "volume": 3277800
-      },
-      {
-        "date": "2025-04-10",
-        "open": 222.61,
-        "high": 228.32,
-        "low": 220.73,
-        "close": 226.45,
-        "volume": 2377300
-      },
-      {
-        "date": "2025-04-11",
-        "open": 224.19,
-        "high": 230.4,
-        "low": 223.65,
-        "close": 229.38,
-        "volume": 1920900
-      },
-      {
-        "date": "2025-04-14",
-        "open": 231.27,
-        "high": 233.15,
-        "low": 229.96,
-        "close": 232.3,
-        "volume": 1316800
-      },
-      {
-        "date": "2025-04-15",
-        "open": 233.38,
-        "high": 233.89,
-        "low": 231.1,
-        "close": 231.48,
-        "volume": 1323800
-      },
-      {
-        "date": "2025-04-16",
-        "open": 232.62,
-        "high": 233.13,
-        "low": 228.46,
-        "close": 229.57,
-        "volume": 1795200
-      },
-      {
-        "date": "2025-04-17",
-        "open": 229.86,
-        "high": 232.56,
-        "low": 229.29,
-        "close": 230.91,
-        "volume": 1372300
-      },
-      {
-        "date": "2025-04-21",
-        "open": 230.78,
-        "high": 231.23,
-        "low": 224.29,
-        "close": 227.57,
-        "volume": 1447500
-      },
-      {
-        "date": "2025-04-22",
-        "open": 228.25,
-        "high": 231.9,
-        "low": 227.59,
-        "close": 229.96,
-        "volume": 1868900
-      },
-      {
-        "date": "2025-04-23",
-        "open": 230.45,
-        "high": 231,
-        "low": 226.5,
-        "close": 228.63,
-        "volume": 1797200
-      },
       {
         "date": "2025-04-24",
         "open": 229.65,
@@ -7157,6 +7037,126 @@
         "low": 231.76,
         "close": 235.42,
         "volume": 1335200
+      },
+      {
+        "date": "2026-04-06",
+        "open": 234.38,
+        "high": 235.23,
+        "low": 232.88,
+        "close": 233.8,
+        "volume": 1066900
+      },
+      {
+        "date": "2026-04-07",
+        "open": 234.23,
+        "high": 235.73,
+        "low": 232.5,
+        "close": 233.31,
+        "volume": 1380700
+      },
+      {
+        "date": "2026-04-08",
+        "open": 230.5,
+        "high": 231.62,
+        "low": 225,
+        "close": 231.43,
+        "volume": 2494400
+      },
+      {
+        "date": "2026-04-09",
+        "open": 231.78,
+        "high": 234.4,
+        "low": 230.87,
+        "close": 233.1,
+        "volume": 1605700
+      },
+      {
+        "date": "2026-04-10",
+        "open": 231.88,
+        "high": 233.31,
+        "low": 228.11,
+        "close": 229.45,
+        "volume": 1375600
+      },
+      {
+        "date": "2026-04-13",
+        "open": 230.23,
+        "high": 231.02,
+        "low": 228.18,
+        "close": 231,
+        "volume": 2313600
+      },
+      {
+        "date": "2026-04-14",
+        "open": 230.72,
+        "high": 231.74,
+        "low": 225.5,
+        "close": 227.09,
+        "volume": 2446100
+      },
+      {
+        "date": "2026-04-15",
+        "open": 226.5,
+        "high": 227.57,
+        "low": 223.91,
+        "close": 224.93,
+        "volume": 2269000
+      },
+      {
+        "date": "2026-04-16",
+        "open": 226.5,
+        "high": 228.18,
+        "low": 223.32,
+        "close": 224.08,
+        "volume": 2129900
+      },
+      {
+        "date": "2026-04-17",
+        "open": 223.76,
+        "high": 224.2,
+        "low": 221.51,
+        "close": 223.95,
+        "volume": 2389800
+      },
+      {
+        "date": "2026-04-20",
+        "open": 223.56,
+        "high": 225.61,
+        "low": 223.16,
+        "close": 224.18,
+        "volume": 1581900
+      },
+      {
+        "date": "2026-04-21",
+        "open": 224,
+        "high": 224.43,
+        "low": 222.51,
+        "close": 223.42,
+        "volume": 1938400
+      },
+      {
+        "date": "2026-04-22",
+        "open": 223.65,
+        "high": 225.63,
+        "low": 222.86,
+        "close": 223.93,
+        "volume": 1760900
+      },
+      {
+        "date": "2026-04-23",
+        "open": 225.9,
+        "high": 233.47,
+        "low": 225.41,
+        "close": 232.8,
+        "volume": 2506300
+      },
+      {
+        "date": "2026-04-24",
+        "open": 232.82,
+        "high": 234.5,
+        "low": 228.8,
+        "close": 229.53,
+        "volume": 1491400
       }
     ],
     "news": [
@@ -7201,14 +7201,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2ff0690d-bca8-31dc-b369-1aa6c786077c",
-        "title": "WM Announces Cash Dividend",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/wm-announces-cash-dividend-213300031.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2c7a8e80-fcac-3d00-accf-d41a7dc503a8",
         "title": "WM Q1 Earnings Call: Margin Pressure Despite Revenue Growth and Sustainability Investments",
         "publisher": "StockStory",
@@ -7222,6 +7214,14 @@
         "publisher": "Motley Fool",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/m/ed234077-1961-3f76-9ef4-41a280a24eea/why-waste-management-stock-is.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2ff0690d-bca8-31dc-b369-1aa6c786077c",
+        "title": "WM Announces Cash Dividend",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/wm-announces-cash-dividend-213300031.html",
         "type": "STORY"
       },
       {
@@ -7254,6 +7254,13 @@
         "title": "VP and Chief Compliance & Ethics Officer"
       },
       {
+        "name": "Mr. David L. Reed",
+        "title": "CFO & Executive VP",
+        "age": 47,
+        "yearBorn": 1978,
+        "totalPay": 973849
+      },
+      {
         "name": "Mr. Edward A. Egl",
         "title": "Director of Investor Relations"
       },
@@ -7284,69 +7291,67 @@
         "yearBorn": 1973
       },
       {
-        "name": "Ms. Courtney A. Tippy",
-        "title": "VP & Corporate Secretary",
-        "age": 49,
-        "yearBorn": 1976
+        "name": "Mr. Rafael E. Carrasco",
+        "title": "Senior Vice President of Enterprise Strategy",
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 1455586
       },
       {
-        "name": "Ms. Leslie K. Nagy",
-        "title": "VP & Treasurer",
-        "age": 51,
-        "yearBorn": 1974
-      },
-      {
-        "name": "Ms. Susan Robinson",
-        "title": "Senior Director of Sustainability"
+        "name": "Ms. Tara J. Hemmer",
+        "title": "Senior VP & Chief Sustainability Officer",
+        "age": 52,
+        "yearBorn": 1973,
+        "totalPay": 1507213
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.14,
-        "industryAvg": 28.83
+        "value": 34.26,
+        "industryAvg": 27.75
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.77,
-        "industryAvg": 3.67
+        "value": 3.67,
+        "industryAvg": 3.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.5,
-        "industryAvg": 5.84
+        "value": 9.27,
+        "industryAvg": 5.66
       },
       {
         "metric": "ROE",
         "value": 7.61,
-        "industryAvg": 3.2300000000000004
+        "industryAvg": 3.19
       },
       {
         "metric": "ROA",
         "value": 1.6199999999999999,
-        "industryAvg": 1
+        "industryAvg": 0.98
       },
       {
         "metric": "Gross Margin",
         "value": 41.5,
-        "industryAvg": 36.44
+        "industryAvg": 36.51
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.54,
-        "industryAvg": 26.66
+        "industryAvg": 26.369999999999997
       },
       {
         "metric": "Net Margin",
         "value": 11.75,
-        "industryAvg": 7.66
+        "industryAvg": 7.5600000000000005
       }
     ],
     "dcf": {
-      "fairValue": 233.34,
-      "currentPrice": 235.42,
-      "upside": -0.88,
-      "wacc": 7.26,
+      "fairValue": 251.9,
+      "currentPrice": 229.53,
+      "upside": 9.74,
+      "wacc": 6.95,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 23.65,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Medical Devices",
       "sector": "Healthcare",
-      "longBusinessSummary": "GE HealthCare Technologies Inc. engages in the development, manufacture, and marketing of products, services, and complementary digital solutions used in the diagnosis, treatment, and monitoring of patients in the United States, Canada, and internationally. The company operates through four segments: Imaging, Advanced Visualization Solutions (AVS), Patient Care Solutions (PCS), and Pharmaceutical Diagnostics (PDx). The Imaging segment offers molecular imaging, computed tomography (CT) scanning, magnetic resonance (MR) imaging, X-ray systems, and women's health products. The AVS segment provides ultrasound, image guided therapies, and interventional solutions for screening, diagnosis, treatment, and monitoring of certain diseases in clinical areas, such as women's health, cardiovascular, and comprehensive care ultrasound as well as surgical visualization and guidance products. The PCS segment provides medical devices, consumables, services, and digital solutions. Its portfolio includes patient monitoring, diagnostic cardiology, consumables and services, digital solutions, maternal infant care, and anesthesia products. The PDx segment supplies diagnostic agents, including CT, angiography and X-ray, MR, single-photon emission computed tomography, and positron emission tomography to the radiology and nuclear medicine industries. The segment also provides contrast media pharmaceuticals that are administered to a patient prior to certain diagnostic scans to increase the visibility of tissues or structures during imaging exams; and molecular imaging agents or radiopharmaceuticals, which are molecular tracers labeled with radioisotopes. GE HealthCare Technologies Inc. was formerly known as GE Healthcare Holding LLC and changed its name to GE HealthCare Technologies Inc. in December 2022. The company was incorporated in 2022 and is headquartered in Chicago, Illinois.",
+      "longBusinessSummary": "GE HealthCare Technologies Inc. engages in the development, manufacture, and marketing of products, services, and complementary digital solutions used in the diagnosis, treatment, and monitoring of patients in the United States, Canada, and internationally. The company operates through four segments: Imaging, Advanced Visualization Solutions (AVS), Patient Care Solutions (PCS), and Pharmaceutical Diagnostics (PDx). The Imaging segment offers molecular imaging, computed tomography (CT) scanning, magnetic resonance (MR) imaging, X-ray systems, and women's health products. The AVS segment provides ultrasound, image guided therapies, and interventional solutions for screening, diagnosis, treatment, and monitoring of certain diseases in clinical areas, such as women's health, cardiovascular, and comprehensive care ultrasound as well as surgical visualization and guidance products. The PCS segment provides medical devices, consumables, services, and digital solutions. Its portfolio includes patient monitoring, diagnostic cardiology, consumables and services, digital solutions, maternal infant care, and anesthesia products. The PDx segment supplies diagnostic agents, including CT, angiography and X-ray, MR, single-photon emission computed tomography, and positron emission tomography to the radiology and nuclear medicine industries. The segment also provides contrast media pharmaceuticals that are administered to a patient prior to certain diagnostic scans to increase the visibility of tissues or structures during imaging exams; and molecular imaging agents or radiopharmaceuticals, which are molecular tracers labeled with radioisotopes. The company has a strategic collaboration with DeepHealth for the development of AI-powered breast cancer screening solutions. GE HealthCare Technologies Inc. was formerly known as GE Healthcare Holding LLC and changed its name to GE HealthCare Technologies Inc. in December 2022. The company was incorporated in 2022 and is headquartered in Chicago, Illinois.",
       "fullTimeEmployees": 54000,
       "website": "https://www.gehealthcare.com",
       "shortName": "GE HealthCare Technologies Inc.",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.55,
-      "ttmPe": 15.46,
-      "marketCap": 32061998430,
-      "psRatio": 1.55,
-      "pbRatio": 3.09
+      "ttmPe": 15.13,
+      "marketCap": 31369258734,
+      "psRatio": 1.52,
+      "pbRatio": 3.02
     },
     "profitability": {
       "roe": 5.779999999999999,
@@ -5788,137 +5788,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.72,
-      "costOfEquity": 15.310000000000002,
+      "wacc": 10.2,
+      "costOfEquity": 13.36,
       "costOfDebt": 1,
       "taxRate": 27,
-      "beta": 1.2852,
-      "marketCap": 32061998430
+      "beta": 1.0578,
+      "marketCap": 31369258734
     },
     "beta": {
-      "beta5y": 1.2852
+      "beta5y": 1.0578
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 78.78,
-        "high": 79.88,
-        "low": 78.7,
-        "close": 79.36,
-        "volume": 2806100
-      },
-      {
-        "date": "2025-04-03",
-        "open": 76.54,
-        "high": 76.59,
-        "low": 70.45,
-        "close": 72,
-        "volume": 9331400
-      },
-      {
-        "date": "2025-04-04",
-        "open": 63.36,
-        "high": 63.8,
-        "low": 58.04,
-        "close": 60.51,
-        "volume": 16890600
-      },
-      {
-        "date": "2025-04-07",
-        "open": 60.53,
-        "high": 63.74,
-        "low": 58.85,
-        "close": 60.99,
-        "volume": 9299600
-      },
-      {
-        "date": "2025-04-08",
-        "open": 63.19,
-        "high": 64.43,
-        "low": 58.05,
-        "close": 58.75,
-        "volume": 7418900
-      },
-      {
-        "date": "2025-04-09",
-        "open": 57.7,
-        "high": 65.53,
-        "low": 57.65,
-        "close": 64.98,
-        "volume": 8488500
-      },
-      {
-        "date": "2025-04-10",
-        "open": 63.69,
-        "high": 64.2,
-        "low": 59.7,
-        "close": 62.28,
-        "volume": 7636300
-      },
-      {
-        "date": "2025-04-11",
-        "open": 62.34,
-        "high": 63.6,
-        "low": 60.86,
-        "close": 62.81,
-        "volume": 7221500
-      },
-      {
-        "date": "2025-04-14",
-        "open": 63.92,
-        "high": 64.79,
-        "low": 63.24,
-        "close": 64.39,
-        "volume": 4896000
-      },
-      {
-        "date": "2025-04-15",
-        "open": 64.5,
-        "high": 64.8,
-        "low": 62.66,
-        "close": 63.1,
-        "volume": 5405800
-      },
-      {
-        "date": "2025-04-16",
-        "open": 63.1,
-        "high": 63.69,
-        "low": 60.7,
-        "close": 61.48,
-        "volume": 6206900
-      },
-      {
-        "date": "2025-04-17",
-        "open": 61.99,
-        "high": 62.84,
-        "low": 61.7,
-        "close": 62.37,
-        "volume": 4474000
-      },
-      {
-        "date": "2025-04-21",
-        "open": 61.73,
-        "high": 61.81,
-        "low": 59.95,
-        "close": 60.48,
-        "volume": 5755100
-      },
-      {
-        "date": "2025-04-22",
-        "open": 61.59,
-        "high": 62.34,
-        "low": 60.75,
-        "close": 61.65,
-        "volume": 4508800
-      },
-      {
-        "date": "2025-04-23",
-        "open": 64.5,
-        "high": 67.08,
-        "low": 64.28,
-        "close": 64.89,
-        "volume": 6292800
-      },
       {
         "date": "2025-04-24",
         "open": 65.04,
@@ -7814,9 +7694,137 @@
         "low": 69.8,
         "close": 70.35,
         "volume": 2750700
+      },
+      {
+        "date": "2026-04-06",
+        "open": 70.35,
+        "high": 70.87,
+        "low": 69.85,
+        "close": 70.4,
+        "volume": 2327000
+      },
+      {
+        "date": "2026-04-07",
+        "open": 70.4,
+        "high": 70.81,
+        "low": 68.95,
+        "close": 69.73,
+        "volume": 3213300
+      },
+      {
+        "date": "2026-04-08",
+        "open": 72.82,
+        "high": 74.13,
+        "low": 72,
+        "close": 73.75,
+        "volume": 4579700
+      },
+      {
+        "date": "2026-04-09",
+        "open": 72.74,
+        "high": 73.21,
+        "low": 71.28,
+        "close": 72.91,
+        "volume": 3580400
+      },
+      {
+        "date": "2026-04-10",
+        "open": 73.42,
+        "high": 73.69,
+        "low": 72.59,
+        "close": 73.18,
+        "volume": 2691600
+      },
+      {
+        "date": "2026-04-13",
+        "open": 72.62,
+        "high": 73.96,
+        "low": 72.05,
+        "close": 73.83,
+        "volume": 2326400
+      },
+      {
+        "date": "2026-04-14",
+        "open": 74.08,
+        "high": 75.09,
+        "low": 73.89,
+        "close": 74.67,
+        "volume": 2179300
+      },
+      {
+        "date": "2026-04-15",
+        "open": 74.63,
+        "high": 75.08,
+        "low": 73.44,
+        "close": 73.51,
+        "volume": 3159100
+      },
+      {
+        "date": "2026-04-16",
+        "open": 73.5,
+        "high": 74.3,
+        "low": 72.85,
+        "close": 73.2,
+        "volume": 2685900
+      },
+      {
+        "date": "2026-04-17",
+        "open": 75.04,
+        "high": 75.95,
+        "low": 74.36,
+        "close": 74.66,
+        "volume": 3461400
+      },
+      {
+        "date": "2026-04-20",
+        "open": 74.03,
+        "high": 75.18,
+        "low": 73.86,
+        "close": 74.15,
+        "volume": 2245900
+      },
+      {
+        "date": "2026-04-21",
+        "open": 74.43,
+        "high": 74.64,
+        "low": 72.08,
+        "close": 72.26,
+        "volume": 2720700
+      },
+      {
+        "date": "2026-04-22",
+        "open": 72.86,
+        "high": 72.86,
+        "low": 70.91,
+        "close": 71.38,
+        "volume": 3558100
+      },
+      {
+        "date": "2026-04-23",
+        "open": 70.99,
+        "high": 71.44,
+        "low": 69.28,
+        "close": 69.89,
+        "volume": 3291600
+      },
+      {
+        "date": "2026-04-24",
+        "open": 69.47,
+        "high": 69.59,
+        "low": 68.52,
+        "close": 68.83,
+        "volume": 3587200
       }
     ],
     "news": [
+      {
+        "uuid": "1d6650b7-877d-3eb1-9d7a-65084f0cea49",
+        "title": "GE Healthcare Hit by Tariffs, But Stock Still Rises",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/m/1d6650b7-877d-3eb1-9d7a-65084f0cea49/ge-healthcare-hit-by-tariffs%2C.html",
+        "type": "STORY"
+      },
       {
         "uuid": "3a8a0cd7-61db-3a85-96ee-ff05c2acb719",
         "title": "GE HealthCare reports first quarter 2025 financial results",
@@ -7826,12 +7834,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "1d6650b7-877d-3eb1-9d7a-65084f0cea49",
-        "title": "GE Healthcare Hit by Tariffs, But Stock Still Rises",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/m/1d6650b7-877d-3eb1-9d7a-65084f0cea49/ge-healthcare-hit-by-tariffs%2C.html",
-        "type": "STORY"
+        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
+        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "d868eb89-e2b7-3144-a275-167379eaed5b",
@@ -7850,12 +7858,12 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
-        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
-        "type": "VIDEO"
+        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
+        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
+        "type": "STORY"
       },
       {
         "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
@@ -7863,14 +7871,6 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
-        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
         "type": "STORY"
       },
       {
@@ -7914,7 +7914,7 @@
       },
       {
         "name": "Mr. Frank R. Jimenez Esq.",
-        "title": "VP, General Counsel & Corporate Secretary",
+        "title": "General Counsel & Corporate Secretary",
         "age": 60,
         "yearBorn": 1965,
         "totalPay": 1907725
@@ -7964,23 +7964,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.46,
-        "industryAvg": 45.42
+        "value": 15.13,
+        "industryAvg": 44.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.55,
-        "industryAvg": 3.27
+        "value": 1.52,
+        "industryAvg": 3.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.09,
-        "industryAvg": 3.01
+        "value": 3.02,
+        "industryAvg": 1.1
       },
       {
         "metric": "ROE",
         "value": 5.779999999999999,
-        "industryAvg": 2.74
+        "industryAvg": 2.73
       },
       {
         "metric": "ROA",
@@ -7990,12 +7990,12 @@
       {
         "metric": "Gross Margin",
         "value": 39.68,
-        "industryAvg": 56.269999999999996
+        "industryAvg": 56.34
       },
       {
         "metric": "EBITDA Margin",
         "value": 18.81,
-        "industryAvg": 21.57
+        "industryAvg": 21.6
       },
       {
         "metric": "Net Margin",
@@ -8004,10 +8004,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 36.13,
-      "currentPrice": 70.35,
-      "upside": -48.64,
-      "wacc": 11.72,
+      "fairValue": 43.53,
+      "currentPrice": 68.83,
+      "upside": -36.76,
+      "wacc": 10.2,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -17.83,
         "Terminal growth": 3

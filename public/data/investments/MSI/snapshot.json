@@ -1,10 +1,10 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.76,
-      "ttmPe": 34.4,
-      "marketCap": 72717630744,
-      "psRatio": 6.22,
-      "pbRatio": 30.17
+      "ttmPe": 34.35,
+      "marketCap": 72601669514,
+      "psRatio": 6.21,
+      "pbRatio": 30.13
     },
     "profitability": {
       "roe": 27.400000000000002,
@@ -6196,137 +6196,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.51,
-      "costOfEquity": 12.93,
+      "wacc": 10.979999999999999,
+      "costOfEquity": 12.34,
       "costOfDebt": 1.2,
       "taxRate": 24,
-      "beta": 1.007,
-      "marketCap": 72717630744
+      "beta": 0.9377,
+      "marketCap": 72601669514
     },
     "beta": {
-      "beta5y": 1.007
+      "beta5y": 0.9377
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 431.66,
-        "high": 439.58,
-        "low": 430.44,
-        "close": 436.99,
-        "volume": 822700
-      },
-      {
-        "date": "2025-04-03",
-        "open": 427.94,
-        "high": 441.21,
-        "low": 427.94,
-        "close": 435.5,
-        "volume": 1497700
-      },
-      {
-        "date": "2025-04-04",
-        "open": 428.71,
-        "high": 439.88,
-        "low": 401.71,
-        "close": 402.13,
-        "volume": 1726300
-      },
-      {
-        "date": "2025-04-07",
-        "open": 402.15,
-        "high": 416.7,
-        "low": 388.9,
-        "close": 403.12,
-        "volume": 1958400
-      },
-      {
-        "date": "2025-04-08",
-        "open": 407,
-        "high": 418.19,
-        "low": 390.14,
-        "close": 394.72,
-        "volume": 1311600
-      },
-      {
-        "date": "2025-04-09",
-        "open": 393.13,
-        "high": 419.94,
-        "low": 391.09,
-        "close": 417.19,
-        "volume": 1563500
-      },
-      {
-        "date": "2025-04-10",
-        "open": 414.63,
-        "high": 420.09,
-        "low": 404.73,
-        "close": 414.87,
-        "volume": 1061400
-      },
-      {
-        "date": "2025-04-11",
-        "open": 415.92,
-        "high": 424.64,
-        "low": 410.7,
-        "close": 422.37,
-        "volume": 789900
-      },
-      {
-        "date": "2025-04-14",
-        "open": 425,
-        "high": 429.11,
-        "low": 423.35,
-        "close": 426.45,
-        "volume": 999600
-      },
-      {
-        "date": "2025-04-15",
-        "open": 428.95,
-        "high": 431.74,
-        "low": 427.59,
-        "close": 430.64,
-        "volume": 691400
-      },
-      {
-        "date": "2025-04-16",
-        "open": 425.73,
-        "high": 430.7,
-        "low": 418.9,
-        "close": 420.45,
-        "volume": 619700
-      },
-      {
-        "date": "2025-04-17",
-        "open": 425.91,
-        "high": 426.36,
-        "low": 419.41,
-        "close": 420.95,
-        "volume": 651900
-      },
-      {
-        "date": "2025-04-21",
-        "open": 417.56,
-        "high": 418.33,
-        "low": 408.27,
-        "close": 412.35,
-        "volume": 567300
-      },
-      {
-        "date": "2025-04-22",
-        "open": 416.29,
-        "high": 421.37,
-        "low": 414.22,
-        "close": 419.79,
-        "volume": 842000
-      },
-      {
-        "date": "2025-04-23",
-        "open": 423.61,
-        "high": 429.64,
-        "low": 422.18,
-        "close": 424.16,
-        "volume": 601400
-      },
       {
         "date": "2025-04-24",
         "open": 422.98,
@@ -8222,6 +8102,126 @@
         "low": 430.36,
         "close": 438.96,
         "volume": 845200
+      },
+      {
+        "date": "2026-04-06",
+        "open": 438.99,
+        "high": 442.89,
+        "low": 437.99,
+        "close": 441.39,
+        "volume": 629800
+      },
+      {
+        "date": "2026-04-07",
+        "open": 440.98,
+        "high": 445.57,
+        "low": 439.11,
+        "close": 442.45,
+        "volume": 528700
+      },
+      {
+        "date": "2026-04-08",
+        "open": 446.23,
+        "high": 448.54,
+        "low": 443.36,
+        "close": 447.73,
+        "volume": 868000
+      },
+      {
+        "date": "2026-04-09",
+        "open": 445.81,
+        "high": 446.45,
+        "low": 438.25,
+        "close": 442.5,
+        "volume": 758700
+      },
+      {
+        "date": "2026-04-10",
+        "open": 441.28,
+        "high": 442.23,
+        "low": 432.94,
+        "close": 433.69,
+        "volume": 843800
+      },
+      {
+        "date": "2026-04-13",
+        "open": 434.25,
+        "high": 439.91,
+        "low": 433.01,
+        "close": 439.91,
+        "volume": 739500
+      },
+      {
+        "date": "2026-04-14",
+        "open": 438.09,
+        "high": 442.91,
+        "low": 435.65,
+        "close": 440.08,
+        "volume": 749900
+      },
+      {
+        "date": "2026-04-15",
+        "open": 438.78,
+        "high": 442.45,
+        "low": 436.79,
+        "close": 440.21,
+        "volume": 714200
+      },
+      {
+        "date": "2026-04-16",
+        "open": 441,
+        "high": 444.74,
+        "low": 439.13,
+        "close": 444.46,
+        "volume": 693600
+      },
+      {
+        "date": "2026-04-17",
+        "open": 443.69,
+        "high": 445.86,
+        "low": 440.53,
+        "close": 441.96,
+        "volume": 1423800
+      },
+      {
+        "date": "2026-04-20",
+        "open": 444.44,
+        "high": 450,
+        "low": 444.44,
+        "close": 446.92,
+        "volume": 841200
+      },
+      {
+        "date": "2026-04-21",
+        "open": 449.86,
+        "high": 449.86,
+        "low": 442.47,
+        "close": 445.48,
+        "volume": 825000
+      },
+      {
+        "date": "2026-04-22",
+        "open": 444.47,
+        "high": 448.56,
+        "low": 439.02,
+        "close": 441.66,
+        "volume": 764200
+      },
+      {
+        "date": "2026-04-23",
+        "open": 442.97,
+        "high": 444.83,
+        "low": 440.04,
+        "close": 443.17,
+        "volume": 704400
+      },
+      {
+        "date": "2026-04-24",
+        "open": 441.32,
+        "high": 444.59,
+        "low": 436.98,
+        "close": 438.26,
+        "volume": 674900
       }
     ],
     "news": [
@@ -8234,19 +8234,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
-        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f603d4c0-9c31-31dd-a858-dbb715dcdfd7",
         "title": "Market Chatter: Motorola Solutions Reportedly in Advanced Talks to Acquire Silvus for $4.5 Billion",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/market-chatter-motorola-solutions-reportedly-131403183.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
+        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
+        "publisher": "ACCESS Newswire",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
         "type": "STORY"
       },
       {
@@ -8258,11 +8258,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
-        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
-        "publisher": "ACCESS Newswire",
+        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
+        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
+        "publisher": "Bloomberg",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
         "type": "STORY"
       },
       {
@@ -8282,11 +8282,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e5cfdc65-d24d-3cc6-81aa-bae9f462c029",
-        "title": "Motorola Agrees to Acquire Radio Maker Silvus for $4.4 Billion",
-        "publisher": "Bloomberg",
+        "uuid": "6bb9845e-f29b-3d36-ab46-22c4f8fce1b7",
+        "title": "Motorola to acquire wireless-radio maker Silvus for $4.4bn",
+        "publisher": "Verdict",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-agrees-acquire-radio-maker-210344797.html",
+        "link": "https://finance.yahoo.com/m/6bb9845e-f29b-3d36-ab46-22c4f8fce1b7/motorola-to-acquire.html",
         "type": "STORY"
       },
       {
@@ -8298,12 +8298,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "57e00744-68a6-3ae5-8f51-a97f9174cab7",
-        "title": "Okta sinks & Box jumps on earnings, Motorola Solutions deal",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "9a003668-8e19-382f-b2db-8eccdea595a0",
+        "title": "Motorola Solutions bolsters communications segment with $4.4 billion deal for Silvus",
+        "publisher": "Reuters",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/video/okta-sinks-box-jumps-earnings-212626670.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/news/motorola-solutions-buy-silvus-technologies-202403265.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -8312,41 +8312,41 @@
         "title": "Executive VP & CTO",
         "age": 46,
         "yearBorn": 1979,
-        "totalPay": 2485062
+        "totalPay": 2469300
       },
       {
         "name": "Dr. Rajan S. Naik Ph.D.",
         "title": "Senior Vice President of Strategy & Ventures",
         "age": 53,
         "yearBorn": 1972,
-        "totalPay": 1569423
+        "totalPay": 1559814
       },
       {
         "name": "Mr. Gregory Q. Brown",
         "title": "Chairman & CEO",
         "age": 65,
         "yearBorn": 1960,
-        "totalPay": 6378794
+        "totalPay": 6357305
       },
       {
         "name": "Mr. James A. Niewiara",
         "title": "Senior VP & General Counsel",
-        "age": 55,
-        "yearBorn": 1970
+        "age": 56,
+        "yearBorn": 1969
       },
       {
         "name": "Mr. Jason J. Winkler",
         "title": "Executive VP & CFO",
-        "age": 50,
-        "yearBorn": 1975,
-        "totalPay": 2560189
+        "age": 51,
+        "yearBorn": 1974,
+        "totalPay": 2539408
       },
       {
         "name": "Mr. John P. Molloy",
         "title": "Executive VP & COO",
         "age": 53,
         "yearBorn": 1972,
-        "totalPay": 2861670
+        "totalPay": 2843615
       },
       {
         "name": "Mr. Michael D. Annes",
@@ -8361,8 +8361,8 @@
       {
         "name": "Ms. Katherine A. Maher",
         "title": "Corporate VP & Chief Accounting Officer",
-        "age": 41,
-        "yearBorn": 1984
+        "age": 42,
+        "yearBorn": 1983
       },
       {
         "name": "Ms. Kathryn Moore",
@@ -8374,50 +8374,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.4,
-        "industryAvg": 34.58
+        "value": 34.35,
+        "industryAvg": 39.6
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.22,
-        "industryAvg": 3.48
+        "value": 6.21,
+        "industryAvg": 3.95
       },
       {
         "metric": "P/B Ratio",
-        "value": 30.17,
-        "industryAvg": 5.01
+        "value": 30.13,
+        "industryAvg": 5.69
       },
       {
         "metric": "ROE",
         "value": 27.400000000000002,
-        "industryAvg": 5.48
+        "industryAvg": 3.8
       },
       {
         "metric": "ROA",
         "value": 3.4000000000000004,
-        "industryAvg": 2.0500000000000003
+        "industryAvg": 1.43
       },
       {
         "metric": "Gross Margin",
         "value": 52.31,
-        "industryAvg": 49.120000000000005
+        "industryAvg": 49.47
       },
       {
         "metric": "EBITDA Margin",
         "value": 33.14,
-        "industryAvg": 20.79
+        "industryAvg": 17.04
       },
       {
         "metric": "Net Margin",
         "value": 19.2,
-        "industryAvg": 13.77
+        "industryAvg": 11.05
       }
     ],
     "dcf": {
-      "fairValue": 170.05,
-      "currentPrice": 438.96,
-      "upside": -61.26,
-      "wacc": 11.51,
+      "fairValue": 181.42,
+      "currentPrice": 438.26,
+      "upside": -58.6,
+      "wacc": 10.98,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 8.43,
         "Terminal growth": 3

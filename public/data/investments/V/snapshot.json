@@ -1,10 +1,10 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.55,
-      "ttmPe": 28.51,
-      "marketCap": 578505568640,
-      "psRatio": 13.98,
-      "pbRatio": 14.92
+      "ttmPe": 29.33,
+      "marketCap": 595083753486,
+      "psRatio": 14.38,
+      "pbRatio": 15.35
     },
     "profitability": {
       "roe": 15.129999999999999,
@@ -5033,137 +5033,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.54,
-      "costOfEquity": 10.9,
+      "wacc": 10.25,
+      "costOfEquity": 10.59,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 13,
-      "beta": 0.7699,
-      "marketCap": 578505568640
+      "beta": 0.7335,
+      "marketCap": 595083753486
     },
     "beta": {
-      "beta5y": 0.7699
+      "beta5y": 0.7335
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 343.44,
-        "high": 348.2,
-        "low": 343.05,
-        "close": 346.33,
-        "volume": 5682500
-      },
-      {
-        "date": "2025-04-03",
-        "open": 333.9,
-        "high": 344.74,
-        "low": 331,
-        "close": 339.39,
-        "volume": 8792900
-      },
-      {
-        "date": "2025-04-04",
-        "open": 330,
-        "high": 334.65,
-        "low": 312.12,
-        "close": 313.13,
-        "volume": 13201700
-      },
-      {
-        "date": "2025-04-07",
-        "open": 302.07,
-        "high": 322.18,
-        "low": 299,
-        "close": 312.32,
-        "volume": 12163400
-      },
-      {
-        "date": "2025-04-08",
-        "open": 322.24,
-        "high": 326.28,
-        "low": 303.93,
-        "close": 308.27,
-        "volume": 9569300
-      },
-      {
-        "date": "2025-04-09",
-        "open": 305.64,
-        "high": 334.03,
-        "low": 305.64,
-        "close": 332.43,
-        "volume": 11361800
-      },
-      {
-        "date": "2025-04-10",
-        "open": 328.02,
-        "high": 330.16,
-        "low": 313.27,
-        "close": 324.61,
-        "volume": 8709800
-      },
-      {
-        "date": "2025-04-11",
-        "open": 324.43,
-        "high": 336.98,
-        "low": 322.54,
-        "close": 333.4,
-        "volume": 6804500
-      },
-      {
-        "date": "2025-04-14",
-        "open": 336.41,
-        "high": 339.61,
-        "low": 333.14,
-        "close": 335.18,
-        "volume": 5011800
-      },
-      {
-        "date": "2025-04-15",
-        "open": 336.72,
-        "high": 339.39,
-        "low": 335,
-        "close": 335.81,
-        "volume": 4386200
-      },
-      {
-        "date": "2025-04-16",
-        "open": 335,
-        "high": 337.22,
-        "low": 328.86,
-        "close": 331.33,
-        "volume": 5850600
-      },
-      {
-        "date": "2025-04-17",
-        "open": 331.07,
-        "high": 334.32,
-        "low": 328.44,
-        "close": 329.61,
-        "volume": 5655900
-      },
-      {
-        "date": "2025-04-21",
-        "open": 329,
-        "high": 329.15,
-        "low": 316.65,
-        "close": 320.1,
-        "volume": 6362300
-      },
-      {
-        "date": "2025-04-22",
-        "open": 323.86,
-        "high": 332.56,
-        "low": 322.39,
-        "close": 331.4,
-        "volume": 5435500
-      },
-      {
-        "date": "2025-04-23",
-        "open": 337.24,
-        "high": 341.25,
-        "low": 333.2,
-        "close": 334.37,
-        "volume": 8906000
-      },
       {
         "date": "2025-04-24",
         "open": 333.28,
@@ -7059,6 +6939,126 @@
         "low": 295.85,
         "close": 300.8,
         "volume": 4376000
+      },
+      {
+        "date": "2026-04-06",
+        "open": 300.74,
+        "high": 304.42,
+        "low": 299.46,
+        "close": 303.33,
+        "volume": 5501000
+      },
+      {
+        "date": "2026-04-07",
+        "open": 302.44,
+        "high": 304.98,
+        "low": 301.12,
+        "close": 302.55,
+        "volume": 4413900
+      },
+      {
+        "date": "2026-04-08",
+        "open": 307.73,
+        "high": 311.08,
+        "low": 307.7,
+        "close": 308.96,
+        "volume": 6879300
+      },
+      {
+        "date": "2026-04-09",
+        "open": 308,
+        "high": 309.58,
+        "low": 303.59,
+        "close": 308.29,
+        "volume": 4811500
+      },
+      {
+        "date": "2026-04-10",
+        "open": 308.71,
+        "high": 309,
+        "low": 303.51,
+        "close": 304.36,
+        "volume": 5190000
+      },
+      {
+        "date": "2026-04-13",
+        "open": 303.93,
+        "high": 309.75,
+        "low": 302.34,
+        "close": 309.39,
+        "volume": 6787200
+      },
+      {
+        "date": "2026-04-14",
+        "open": 308.47,
+        "high": 312.12,
+        "low": 307.49,
+        "close": 311.37,
+        "volume": 5571000
+      },
+      {
+        "date": "2026-04-15",
+        "open": 313,
+        "high": 316.73,
+        "low": 311.52,
+        "close": 315.91,
+        "volume": 4831400
+      },
+      {
+        "date": "2026-04-16",
+        "open": 316.35,
+        "high": 318,
+        "low": 314.57,
+        "close": 315.1,
+        "volume": 5695800
+      },
+      {
+        "date": "2026-04-17",
+        "open": 316.6,
+        "high": 319.44,
+        "low": 315.18,
+        "close": 317.02,
+        "volume": 8082300
+      },
+      {
+        "date": "2026-04-20",
+        "open": 316.4,
+        "high": 317.55,
+        "low": 312.35,
+        "close": 313.94,
+        "volume": 5506800
+      },
+      {
+        "date": "2026-04-21",
+        "open": 314.01,
+        "high": 316.89,
+        "low": 308.82,
+        "close": 309.94,
+        "volume": 6806900
+      },
+      {
+        "date": "2026-04-22",
+        "open": 311.01,
+        "high": 311.36,
+        "low": 308.06,
+        "close": 311.29,
+        "volume": 5666600
+      },
+      {
+        "date": "2026-04-23",
+        "open": 310.5,
+        "high": 312.2,
+        "low": 305.01,
+        "close": 308.88,
+        "volume": 7275000
+      },
+      {
+        "date": "2026-04-24",
+        "open": 307.1,
+        "high": 309.98,
+        "low": 304.5,
+        "close": 309.42,
+        "volume": 5614300
       }
     ],
     "news": [
@@ -7079,19 +7079,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
-        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
         "title": "Top Research Reports for Visa, ServiceNow & Progressive",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
         "type": "STORY"
       },
       {
@@ -7103,19 +7103,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
-        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "554d65d5-b261-3c95-8aa0-7089a114436d",
         "title": "Can Global Payments Navigate Lower Americas Revenues in Q1 Earnings?",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/global-payments-navigate-lower-americas-120900847.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
+        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
         "type": "STORY"
       },
       {
@@ -7211,50 +7211,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.51,
-        "industryAvg": 22.68
+        "value": 29.33,
+        "industryAvg": 23.54
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.98,
-        "industryAvg": 2.43
+        "value": 14.38,
+        "industryAvg": 2.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.92,
-        "industryAvg": 1.59
+        "value": 15.35,
+        "industryAvg": 1.66
       },
       {
         "metric": "ROE",
         "value": 15.129999999999999,
-        "industryAvg": 3.32
+        "industryAvg": 3.4000000000000004
       },
       {
         "metric": "ROA",
         "value": 5.91,
-        "industryAvg": 0.5499999999999999
+        "industryAvg": 0.5599999999999999
       },
       {
         "metric": "Gross Margin",
         "value": 81.67999999999999,
-        "industryAvg": 14.97
+        "industryAvg": 14.99
       },
       {
         "metric": "EBITDA Margin",
         "value": 66.47,
-        "industryAvg": 9.719999999999999
+        "industryAvg": 9.74
       },
       {
         "metric": "Net Margin",
         "value": 53.23,
-        "industryAvg": 18.45
+        "industryAvg": 18.9
       }
     ],
     "dcf": {
-      "fairValue": 186.12,
-      "currentPrice": 300.8,
-      "upside": -38.12,
-      "wacc": 10.54,
+      "fairValue": 193.69,
+      "currentPrice": 309.42,
+      "upside": -37.4,
+      "wacc": 10.25,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 17.65,
         "Terminal growth": 3

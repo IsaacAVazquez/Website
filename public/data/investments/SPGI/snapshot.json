@@ -1,10 +1,10 @@
 {
   "symbol": "SPGI",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 14.66,
-      "ttmPe": 29.41,
-      "marketCap": 128830608000,
-      "psRatio": 8.4,
-      "pbRatio": 4.14
+      "ttmPe": 29.79,
+      "marketCap": 130512852000,
+      "psRatio": 8.51,
+      "pbRatio": 4.19
     },
     "profitability": {
       "roe": 3.53,
@@ -5349,137 +5349,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13,
-      "costOfEquity": 14.34,
+      "wacc": 12.559999999999999,
+      "costOfEquity": 13.84,
       "costOfDebt": 0.4,
       "taxRate": 25,
-      "beta": 1.1716,
-      "marketCap": 128830608000
+      "beta": 1.1131,
+      "marketCap": 130512852000
     },
     "beta": {
-      "beta5y": 1.1716
+      "beta5y": 1.1131
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 505.76,
-        "high": 514.91,
-        "low": 505.26,
-        "close": 513.98,
-        "volume": 864000
-      },
-      {
-        "date": "2025-04-03",
-        "open": 498.13,
-        "high": 507.97,
-        "low": 488.57,
-        "close": 489.38,
-        "volume": 1516900
-      },
-      {
-        "date": "2025-04-04",
-        "open": 477.28,
-        "high": 479,
-        "low": 450.72,
-        "close": 451.5,
-        "volume": 1961400
-      },
-      {
-        "date": "2025-04-07",
-        "open": 442.84,
-        "high": 460.82,
-        "low": 427.14,
-        "close": 438.31,
-        "volume": 3184700
-      },
-      {
-        "date": "2025-04-08",
-        "open": 462.9,
-        "high": 470.39,
-        "low": 434.74,
-        "close": 441.5,
-        "volume": 2265700
-      },
-      {
-        "date": "2025-04-09",
-        "open": 435,
-        "high": 475.94,
-        "low": 428,
-        "close": 473.99,
-        "volume": 2733400
-      },
-      {
-        "date": "2025-04-10",
-        "open": 471.06,
-        "high": 471.06,
-        "low": 447.48,
-        "close": 457.76,
-        "volume": 1685200
-      },
-      {
-        "date": "2025-04-11",
-        "open": 456.03,
-        "high": 466.9,
-        "low": 450.78,
-        "close": 465.14,
-        "volume": 1045200
-      },
-      {
-        "date": "2025-04-14",
-        "open": 472.18,
-        "high": 475,
-        "low": 468.46,
-        "close": 471.59,
-        "volume": 825300
-      },
-      {
-        "date": "2025-04-15",
-        "open": 472.54,
-        "high": 475.81,
-        "low": 470.03,
-        "close": 470.71,
-        "volume": 1086100
-      },
-      {
-        "date": "2025-04-16",
-        "open": 469.2,
-        "high": 471.95,
-        "low": 460,
-        "close": 463.98,
-        "volume": 831000
-      },
-      {
-        "date": "2025-04-17",
-        "open": 466.16,
-        "high": 467.54,
-        "low": 461.03,
-        "close": 462.88,
-        "volume": 913100
-      },
-      {
-        "date": "2025-04-21",
-        "open": 460,
-        "high": 460.22,
-        "low": 444.06,
-        "close": 448.99,
-        "volume": 1639900
-      },
-      {
-        "date": "2025-04-22",
-        "open": 450.74,
-        "high": 466.98,
-        "low": 450.28,
-        "close": 466.42,
-        "volume": 1240200
-      },
-      {
-        "date": "2025-04-23",
-        "open": 475.5,
-        "high": 484.27,
-        "low": 467.3,
-        "close": 470.23,
-        "volume": 1232100
-      },
       {
         "date": "2025-04-24",
         "open": 472.74,
@@ -7375,6 +7255,126 @@
         "low": 420.1,
         "close": 431.16,
         "volume": 1405200
+      },
+      {
+        "date": "2026-04-06",
+        "open": 429.68,
+        "high": 435.68,
+        "low": 429.19,
+        "close": 434.11,
+        "volume": 993400
+      },
+      {
+        "date": "2026-04-07",
+        "open": 433,
+        "high": 436.97,
+        "low": 427.36,
+        "close": 430.06,
+        "volume": 1543100
+      },
+      {
+        "date": "2026-04-08",
+        "open": 437.61,
+        "high": 442,
+        "low": 435.6,
+        "close": 436.96,
+        "volume": 1260300
+      },
+      {
+        "date": "2026-04-09",
+        "open": 433.16,
+        "high": 435.29,
+        "low": 416.43,
+        "close": 424.32,
+        "volume": 2094300
+      },
+      {
+        "date": "2026-04-10",
+        "open": 421.93,
+        "high": 423.97,
+        "low": 408.74,
+        "close": 415.42,
+        "volume": 2015700
+      },
+      {
+        "date": "2026-04-13",
+        "open": 416.8,
+        "high": 430.2,
+        "low": 416.01,
+        "close": 430.08,
+        "volume": 1778000
+      },
+      {
+        "date": "2026-04-14",
+        "open": 431.09,
+        "high": 435.29,
+        "low": 424.44,
+        "close": 425.24,
+        "volume": 2455300
+      },
+      {
+        "date": "2026-04-15",
+        "open": 427,
+        "high": 435,
+        "low": 427,
+        "close": 430.58,
+        "volume": 2380600
+      },
+      {
+        "date": "2026-04-16",
+        "open": 437.48,
+        "high": 440.45,
+        "low": 435.31,
+        "close": 436.79,
+        "volume": 1542000
+      },
+      {
+        "date": "2026-04-17",
+        "open": 442.88,
+        "high": 445.25,
+        "low": 437.5,
+        "close": 442.57,
+        "volume": 1679500
+      },
+      {
+        "date": "2026-04-20",
+        "open": 442.4,
+        "high": 443.68,
+        "low": 439.01,
+        "close": 442.74,
+        "volume": 1479200
+      },
+      {
+        "date": "2026-04-21",
+        "open": 444.03,
+        "high": 453.61,
+        "low": 443.13,
+        "close": 444.67,
+        "volume": 1535600
+      },
+      {
+        "date": "2026-04-22",
+        "open": 450.2,
+        "high": 456.7,
+        "low": 446.55,
+        "close": 449.06,
+        "volume": 1287600
+      },
+      {
+        "date": "2026-04-23",
+        "open": 444.99,
+        "high": 447.28,
+        "low": 433,
+        "close": 439.03,
+        "volume": 1291400
+      },
+      {
+        "date": "2026-04-24",
+        "open": 440,
+        "high": 441.65,
+        "low": 434.17,
+        "close": 436.79,
+        "volume": 1781900
       }
     ],
     "news": [
@@ -7461,16 +7461,28 @@
     ],
     "officers": [
       {
-        "name": "Mr. Akinwale Akinwande",
-        "title": "Senior VP & Chief Auditor"
+        "name": "Mr. Christopher Craig",
+        "title": "Senior VP, Controller & Chief Accounting Officer",
+        "age": 52,
+        "yearBorn": 1973,
+        "totalPay": 1458735
       },
       {
-        "name": "Mr. Francesco Federico",
-        "title": "Chief Marketing Officer"
+        "name": "Mr. David Ernsberger",
+        "title": "President of S&P Global Energy",
+        "age": 50,
+        "yearBorn": 1975
       },
       {
-        "name": "Mr. Mark Grant",
-        "title": "Senior VP of Investor Relations & Treasurer"
+        "name": "Mr. Eric Walter Aboaf",
+        "title": "CFO & Executive VP",
+        "totalPay": 4905668
+      },
+      {
+        "name": "Mr. Girish Ganesan",
+        "title": "Executive VP & Chief People Officer",
+        "age": 44,
+        "yearBorn": 1981
       },
       {
         "name": "Mr. Saugata Saha",
@@ -7480,12 +7492,24 @@
         "totalPay": 2436206
       },
       {
-        "name": "Ms. Alice Cherry",
-        "title": "SVP & Head of Enterprise Marketing"
+        "name": "Mr. Steven Kemps CPA",
+        "title": "Executive VP & Chief Legal Officer",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 1941260
       },
       {
-        "name": "Ms. Annette O'Hanlon",
-        "title": "Senior VP, Global Head of Culture & Engagement and Chair of the S&P Global Foundation"
+        "name": "Mr. William Eager",
+        "title": "President of S&P Global Mobility",
+        "age": 54,
+        "yearBorn": 1971,
+        "totalPay": 1765245
+      },
+      {
+        "name": "Ms. Christina Twomey",
+        "title": "Senior VP & Chief Communications Officer",
+        "age": 44,
+        "yearBorn": 1981
       },
       {
         "name": "Ms. Martina L. Cheung",
@@ -7495,57 +7519,60 @@
         "totalPay": 3850628
       },
       {
-        "name": "Ms. Mary McCann",
-        "title": "Chief Risk Officer"
+        "name": "Ms. Sally Moore",
+        "title": "Executive VP & Chief Client Officer",
+        "age": 49,
+        "yearBorn": 1976,
+        "totalPay": 2093472
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.41,
-        "industryAvg": 32.3
+        "value": 29.79,
+        "industryAvg": 32.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.4,
-        "industryAvg": 9.04
+        "value": 8.51,
+        "industryAvg": 9.21
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.14,
-        "industryAvg": 4.28
+        "value": 4.19,
+        "industryAvg": 4.41
       },
       {
         "metric": "ROE",
         "value": 3.53,
-        "industryAvg": 3.4799999999999995
+        "industryAvg": 3.62
       },
       {
         "metric": "ROA",
         "value": 1.8800000000000001,
-        "industryAvg": 0.91
+        "industryAvg": 0.9400000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 70.12,
-        "industryAvg": 64.78
+        "industryAvg": 64.99000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 50.61,
-        "industryAvg": 42.41
+        "industryAvg": 42.870000000000005
       },
       {
         "metric": "Net Margin",
         "value": 28.96,
-        "industryAvg": 24.09
+        "industryAvg": 24.6
       }
     ],
     "dcf": {
-      "fairValue": 242.42,
-      "currentPrice": 431.16,
-      "upside": -43.78,
-      "wacc": 13,
+      "fairValue": 253.97,
+      "currentPrice": 436.79,
+      "upside": -41.85,
+      "wacc": 12.56,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 31.58,
         "Terminal growth": 3

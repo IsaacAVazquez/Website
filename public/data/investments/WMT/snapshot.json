@@ -1,10 +1,10 @@
 {
   "symbol": "WMT",
-  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.73,
-      "ttmPe": 46.08,
-      "marketCap": 1002848510475,
-      "psRatio": 1.41,
-      "pbRatio": 10.07
+      "ttmPe": 47.59,
+      "marketCap": 1035774532800,
+      "psRatio": 1.45,
+      "pbRatio": 10.4
     },
     "profitability": {
       "roe": 4.33,
@@ -1202,8 +1202,8 @@
           "Breakdown": "Basic Average Shares",
           "2026-01-31": "7983000000.0",
           "2025-01-31": "8041000000.0",
-          "2024-01-31": "8077000000.0",
-          "2023-01-31": "8171000000.0",
+          "2024-01-31": "8076000000.0",
+          "2023-01-31": "8172000000.0",
           "2022-01-31": "8376000000.0",
           "2021-01-31": "8493000000.0",
           "2020-01-31": "2850000000.0"
@@ -1212,7 +1212,7 @@
           "Breakdown": "Diluted Average Shares",
           "2026-01-31": "8022000000.0",
           "2025-01-31": "8081000000.0",
-          "2024-01-31": "8108000000.0",
+          "2024-01-31": "8109000000.0",
           "2023-01-31": "8202000000.0",
           "2022-01-31": "8415000000.0",
           "2021-01-31": "8541000000.0",
@@ -5087,137 +5087,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.379999999999999,
-      "costOfEquity": 9.959999999999999,
+      "wacc": 9.21,
+      "costOfEquity": 9.76,
       "costOfDebt": 1.06,
       "taxRate": 26,
-      "beta": 0.6601,
-      "marketCap": 1002848510475
+      "beta": 0.6372,
+      "marketCap": 1035774532800
     },
     "beta": {
-      "beta5y": 0.6601
+      "beta5y": 0.6372
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 88.2,
-        "high": 90.15,
-        "low": 88.12,
-        "close": 89.76,
-        "volume": 19384100
-      },
-      {
-        "date": "2025-04-03",
-        "open": 86.28,
-        "high": 89.88,
-        "low": 86.28,
-        "close": 87.26,
-        "volume": 33012900
-      },
-      {
-        "date": "2025-04-04",
-        "open": 85.64,
-        "high": 87.39,
-        "low": 82.65,
-        "close": 83.19,
-        "volume": 36209000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 80.24,
-        "high": 86.26,
-        "low": 79.81,
-        "close": 83.83,
-        "volume": 36884900
-      },
-      {
-        "date": "2025-04-08",
-        "open": 85.85,
-        "high": 86.97,
-        "low": 81.03,
-        "close": 81.79,
-        "volume": 34351700
-      },
-      {
-        "date": "2025-04-09",
-        "open": 83.33,
-        "high": 90.8,
-        "low": 83.02,
-        "close": 89.6,
-        "volume": 46632800
-      },
-      {
-        "date": "2025-04-10",
-        "open": 88.73,
-        "high": 91.87,
-        "low": 88.16,
-        "close": 90.61,
-        "volume": 34735300
-      },
-      {
-        "date": "2025-04-11",
-        "open": 90.68,
-        "high": 93.35,
-        "low": 90.01,
-        "close": 92.8,
-        "volume": 25508100
-      },
-      {
-        "date": "2025-04-14",
-        "open": 93.27,
-        "high": 95.44,
-        "low": 92.9,
-        "close": 94.73,
-        "volume": 27742900
-      },
-      {
-        "date": "2025-04-15",
-        "open": 94.82,
-        "high": 96.03,
-        "low": 93.87,
-        "close": 93.97,
-        "volume": 21871200
-      },
-      {
-        "date": "2025-04-16",
-        "open": 94,
-        "high": 94.3,
-        "low": 90.61,
-        "close": 91.19,
-        "volume": 22229100
-      },
-      {
-        "date": "2025-04-17",
-        "open": 91.83,
-        "high": 93.87,
-        "low": 91.62,
-        "close": 93.22,
-        "volume": 21351200
-      },
-      {
-        "date": "2025-04-21",
-        "open": 93.02,
-        "high": 94.08,
-        "low": 91.34,
-        "close": 92.41,
-        "volume": 18361200
-      },
-      {
-        "date": "2025-04-22",
-        "open": 92.88,
-        "high": 95.29,
-        "low": 92.88,
-        "close": 94.85,
-        "volume": 15407800
-      },
-      {
-        "date": "2025-04-23",
-        "open": 95.02,
-        "high": 96.6,
-        "low": 94.16,
-        "close": 94.96,
-        "volume": 18046900
-      },
       {
         "date": "2025-04-24",
         "open": 94.71,
@@ -7113,6 +6993,126 @@
         "low": 124.15,
         "close": 125.79,
         "volume": 11898400
+      },
+      {
+        "date": "2026-04-06",
+        "open": 125.81,
+        "high": 126.98,
+        "low": 125.37,
+        "close": 126.79,
+        "volume": 10850400
+      },
+      {
+        "date": "2026-04-07",
+        "open": 126.19,
+        "high": 126.36,
+        "low": 121.79,
+        "close": 122.49,
+        "volume": 16076000
+      },
+      {
+        "date": "2026-04-08",
+        "open": 122.28,
+        "high": 127.3,
+        "low": 121.33,
+        "close": 127.26,
+        "volume": 20194300
+      },
+      {
+        "date": "2026-04-09",
+        "open": 127.09,
+        "high": 129.69,
+        "low": 126.82,
+        "close": 129.13,
+        "volume": 13853100
+      },
+      {
+        "date": "2026-04-10",
+        "open": 128.72,
+        "high": 128.93,
+        "low": 126.22,
+        "close": 126.77,
+        "volume": 13894000
+      },
+      {
+        "date": "2026-04-13",
+        "open": 126.29,
+        "high": 126.3,
+        "low": 123.95,
+        "close": 124.57,
+        "volume": 14510600
+      },
+      {
+        "date": "2026-04-14",
+        "open": 123.15,
+        "high": 125.2,
+        "low": 122.55,
+        "close": 125.05,
+        "volume": 15320800
+      },
+      {
+        "date": "2026-04-15",
+        "open": 124.63,
+        "high": 125.07,
+        "low": 123.18,
+        "close": 124.76,
+        "volume": 17001400
+      },
+      {
+        "date": "2026-04-16",
+        "open": 124.33,
+        "high": 125.94,
+        "low": 123.97,
+        "close": 124.82,
+        "volume": 18324500
+      },
+      {
+        "date": "2026-04-17",
+        "open": 124.57,
+        "high": 127.57,
+        "low": 123.37,
+        "close": 127.5,
+        "volume": 24763700
+      },
+      {
+        "date": "2026-04-20",
+        "open": 127.87,
+        "high": 129.47,
+        "low": 127.32,
+        "close": 127.92,
+        "volume": 18933600
+      },
+      {
+        "date": "2026-04-21",
+        "open": 127.83,
+        "high": 129.77,
+        "low": 127.48,
+        "close": 129.6,
+        "volume": 17312400
+      },
+      {
+        "date": "2026-04-22",
+        "open": 130,
+        "high": 130.45,
+        "low": 128.84,
+        "close": 129.98,
+        "volume": 17624500
+      },
+      {
+        "date": "2026-04-23",
+        "open": 130.57,
+        "high": 132.46,
+        "low": 130.49,
+        "close": 132.03,
+        "volume": 16376000
+      },
+      {
+        "date": "2026-04-24",
+        "open": 131.94,
+        "high": 132.12,
+        "low": 129.28,
+        "close": 129.92,
+        "volume": 16013000
       }
     ],
     "news": [
@@ -7149,19 +7149,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "cc9c84eb-0edf-300d-a59e-9b3e157e3bd3",
-        "title": "The Zacks Analyst Blog Highlights Walmart, Coca-Cola, HSBC and Friedman Industries",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-walmart-105900588.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1bbc894c-6864-3966-9b1b-1fbfb23a4223",
         "title": "Top Stock Reports for Walmart, Coca-Cola & HSBC",
         "publisher": "Zacks",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/top-stock-reports-walmart-coca-203100481.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cc9c84eb-0edf-300d-a59e-9b3e157e3bd3",
+        "title": "The Zacks Analyst Blog Highlights Walmart, Coca-Cola, HSBC and Friedman Industries",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-walmart-105900588.html",
         "type": "STORY"
       },
       {
@@ -7199,49 +7199,28 @@
     ],
     "officers": [
       {
-        "name": "Mr. C. Douglas McMillon",
-        "title": "Executive Officer & Director",
-        "age": 59,
-        "yearBorn": 1966,
-        "totalPay": 6249434
-      },
-      {
-        "name": "Mr. Christopher Nicholas",
-        "title": "President & CEO of Walmart International",
-        "age": 47,
-        "yearBorn": 1978,
-        "totalPay": 3255161
-      },
-      {
         "name": "Mr. Daniel J. Bartlett",
         "title": "Executive Vice President of Corporate Affairs",
         "age": 53,
         "yearBorn": 1972
       },
       {
-        "name": "Mr. Dwayne Milum",
-        "title": "Senior VP, Controller & Principal Accounting Officer"
+        "name": "Mr. Jerry R. Geisler III",
+        "title": "Executive VP & Chief Information Security Officer"
       },
       {
         "name": "Mr. John David Rainey Jr.",
         "title": "Executive VP & CFO",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 3534727
+        "totalPay": 3389258
       },
       {
         "name": "Mr. John R. Furner",
         "title": "President, CEO & Director",
         "age": 50,
         "yearBorn": 1975,
-        "totalPay": 4327422
-      },
-      {
-        "name": "Mr. Suresh Kumar Ph.D.",
-        "title": "Executive VP, Global CTO & Chief Development Officer",
-        "age": 60,
-        "yearBorn": 1965,
-        "totalPay": 3709340
+        "totalPay": 4563578
       },
       {
         "name": "Ms. Allyson Park",
@@ -7254,6 +7233,20 @@
         "yearBorn": 1967
       },
       {
+        "name": "Ms. Erin Nealy Cox J.D.",
+        "title": "Executive VP of Global Governance, Chief Legal Officer & Corporate Secretary",
+        "age": 55,
+        "yearBorn": 1970
+      },
+      {
+        "name": "Ms. Kathleen McLaughlin",
+        "title": "Executive VP & Chief Sustainability Officer"
+      },
+      {
+        "name": "Ms. Kerry Kotouc",
+        "title": "Senior VP & Chief Counsel of U.S. Retail Operations for Walmart U.S."
+      },
+      {
         "name": "Ms. Stephanie Wissink",
         "title": "Senior Vice President of Investor Relations"
       }
@@ -7261,23 +7254,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 46.08,
-        "industryAvg": 42.08
+        "value": 47.59,
+        "industryAvg": 43.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.41,
-        "industryAvg": 1.38
+        "value": 1.45,
+        "industryAvg": 1.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.07,
-        "industryAvg": 9.61
+        "value": 10.4,
+        "industryAvg": 9.81
       },
       {
         "metric": "ROE",
         "value": 4.33,
-        "industryAvg": 5.47
+        "industryAvg": 5.489999999999999
       },
       {
         "metric": "ROA",
@@ -7292,19 +7285,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 5.47,
-        "industryAvg": 6.02
+        "industryAvg": 6.03
       },
       {
         "metric": "Net Margin",
         "value": 2.22,
-        "industryAvg": 2.82
+        "industryAvg": 2.83
       }
     ],
     "dcf": {
-      "fairValue": 29,
-      "currentPrice": 125.79,
-      "upside": -76.94,
-      "wacc": 9.38,
+      "fairValue": 29.78,
+      "currentPrice": 129.92,
+      "upside": -77.08,
+      "wacc": 9.21,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -18.46,
         "Terminal growth": 3

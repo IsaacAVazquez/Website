@@ -1,10 +1,10 @@
 {
   "symbol": "TJX",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.87,
-      "ttmPe": 33.12,
-      "marketCap": 178517497803,
-      "psRatio": 2.96,
-      "pbRatio": 17.52
+      "ttmPe": 32.24,
+      "marketCap": 173802484221,
+      "psRatio": 2.88,
+      "pbRatio": 17.06
     },
     "profitability": {
       "roe": 18.14,
@@ -549,7 +549,7 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "1150250000.0",
-          "2026-01-31": "1110467095.0",
+          "2026-01-31": "1107087991.0",
           "2025-10-31": "1110418570.0",
           "2025-07-31": "1112799116.0",
           "2025-04-30": "1115814224.0",
@@ -2598,7 +2598,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-01-31": "1110467095.0",
+          "2026-01-31": "1107087991.0",
           "2025-10-31": "1110418570.0",
           "2025-07-31": "1112799116.0",
           "2025-04-30": "1115814224.0",
@@ -2617,7 +2617,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-01-31": "1110467095.0",
+          "2026-01-31": "1107087991.0",
           "2025-10-31": "1110418570.0",
           "2025-07-31": "1112799116.0",
           "2025-04-30": "1115814224.0",
@@ -3327,7 +3327,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-01-31": "1110467095.0",
+          "2026-01-31": "1107087991.0",
           "2025-01-31": "1119333622.0",
           "2024-01-31": "1133586545.0",
           "2023-01-31": "1155437908.0",
@@ -3337,7 +3337,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-01-31": "1110467095.0",
+          "2026-01-31": "1107087991.0",
           "2025-01-31": "1119333622.0",
           "2024-01-31": "1133586545.0",
           "2023-01-31": "1155437908.0",
@@ -5164,137 +5164,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.67,
-      "costOfEquity": 10.39,
+      "wacc": 9.11,
+      "costOfEquity": 9.81,
       "costOfDebt": 0.13999999999999999,
       "taxRate": 26,
-      "beta": 0.7105,
-      "marketCap": 178517497803
+      "beta": 0.642,
+      "marketCap": 173802484221
     },
     "beta": {
-      "beta5y": 0.7105
+      "beta5y": 0.642
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 122,
-        "high": 125.46,
-        "low": 121.81,
-        "close": 124.93,
-        "volume": 5002000
-      },
-      {
-        "date": "2025-04-03",
-        "open": 123.79,
-        "high": 128,
-        "low": 123.13,
-        "close": 125.43,
-        "volume": 11388100
-      },
-      {
-        "date": "2025-04-04",
-        "open": 125.37,
-        "high": 128.33,
-        "low": 121.8,
-        "close": 122.16,
-        "volume": 12964000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 120.04,
-        "high": 123.99,
-        "low": 116.37,
-        "close": 119.13,
-        "volume": 12898300
-      },
-      {
-        "date": "2025-04-08",
-        "open": 122.36,
-        "high": 124.87,
-        "low": 118.59,
-        "close": 120.03,
-        "volume": 10926000
-      },
-      {
-        "date": "2025-04-09",
-        "open": 119.75,
-        "high": 128.99,
-        "low": 119.75,
-        "close": 126.05,
-        "volume": 12134400
-      },
-      {
-        "date": "2025-04-10",
-        "open": 125.97,
-        "high": 128.43,
-        "low": 123.81,
-        "close": 127.47,
-        "volume": 7583200
-      },
-      {
-        "date": "2025-04-11",
-        "open": 126.53,
-        "high": 129.02,
-        "low": 125.9,
-        "close": 128.15,
-        "volume": 6935500
-      },
-      {
-        "date": "2025-04-14",
-        "open": 129.26,
-        "high": 131.2,
-        "low": 128.63,
-        "close": 130.6,
-        "volume": 7093500
-      },
-      {
-        "date": "2025-04-15",
-        "open": 130.51,
-        "high": 131.3,
-        "low": 128.29,
-        "close": 128.5,
-        "volume": 5020900
-      },
-      {
-        "date": "2025-04-16",
-        "open": 128.73,
-        "high": 129.27,
-        "low": 125.53,
-        "close": 126.31,
-        "volume": 5569600
-      },
-      {
-        "date": "2025-04-17",
-        "open": 126.77,
-        "high": 127.98,
-        "low": 126.18,
-        "close": 127.62,
-        "volume": 5554300
-      },
-      {
-        "date": "2025-04-21",
-        "open": 127.23,
-        "high": 127.53,
-        "low": 122.25,
-        "close": 123.98,
-        "volume": 4946600
-      },
-      {
-        "date": "2025-04-22",
-        "open": 124.6,
-        "high": 126.76,
-        "low": 124,
-        "close": 125.71,
-        "volume": 4989300
-      },
-      {
-        "date": "2025-04-23",
-        "open": 127.19,
-        "high": 128.11,
-        "low": 124.81,
-        "close": 125.5,
-        "volume": 5612900
-      },
       {
         "date": "2025-04-24",
         "open": 124.69,
@@ -7190,23 +7070,143 @@
         "low": 160.16,
         "close": 161.29,
         "volume": 3856700
+      },
+      {
+        "date": "2026-04-06",
+        "open": 160.82,
+        "high": 162.15,
+        "low": 159.9,
+        "close": 161.82,
+        "volume": 3698100
+      },
+      {
+        "date": "2026-04-07",
+        "open": 161.28,
+        "high": 161.46,
+        "low": 157.43,
+        "close": 157.58,
+        "volume": 4308600
+      },
+      {
+        "date": "2026-04-08",
+        "open": 158.43,
+        "high": 161.89,
+        "low": 158.05,
+        "close": 161.64,
+        "volume": 4938000
+      },
+      {
+        "date": "2026-04-09",
+        "open": 160.83,
+        "high": 165.82,
+        "low": 160.54,
+        "close": 165,
+        "volume": 5593300
+      },
+      {
+        "date": "2026-04-10",
+        "open": 164.43,
+        "high": 164.95,
+        "low": 160.42,
+        "close": 161.6,
+        "volume": 3559400
+      },
+      {
+        "date": "2026-04-13",
+        "open": 160.97,
+        "high": 161.25,
+        "low": 157.33,
+        "close": 159.33,
+        "volume": 5208400
+      },
+      {
+        "date": "2026-04-14",
+        "open": 158.49,
+        "high": 160.37,
+        "low": 157.9,
+        "close": 160.28,
+        "volume": 4537600
+      },
+      {
+        "date": "2026-04-15",
+        "open": 159.7,
+        "high": 161.27,
+        "low": 158.95,
+        "close": 160.23,
+        "volume": 3366700
+      },
+      {
+        "date": "2026-04-16",
+        "open": 160.4,
+        "high": 161.16,
+        "low": 156.42,
+        "close": 157.48,
+        "volume": 3956100
+      },
+      {
+        "date": "2026-04-17",
+        "open": 158.58,
+        "high": 161.4,
+        "low": 158.51,
+        "close": 160.68,
+        "volume": 5190300
+      },
+      {
+        "date": "2026-04-20",
+        "open": 161.03,
+        "high": 161.5,
+        "low": 159.37,
+        "close": 159.69,
+        "volume": 4062200
+      },
+      {
+        "date": "2026-04-21",
+        "open": 160.07,
+        "high": 160.69,
+        "low": 158.48,
+        "close": 159.25,
+        "volume": 3236600
+      },
+      {
+        "date": "2026-04-22",
+        "open": 159.4,
+        "high": 160.23,
+        "low": 158.2,
+        "close": 158.47,
+        "volume": 2582000
+      },
+      {
+        "date": "2026-04-23",
+        "open": 158.74,
+        "high": 160.53,
+        "low": 157.5,
+        "close": 158.35,
+        "volume": 3179100
+      },
+      {
+        "date": "2026-04-24",
+        "open": 157.69,
+        "high": 158.56,
+        "low": 155.72,
+        "close": 157.03,
+        "volume": 3981400
       }
     ],
     "news": [
-      {
-        "uuid": "165f6e57-3343-3dd2-a85b-a91349831079",
-        "title": "5 Stocks That Recently Hiked Their Dividend Amid Market Mayhem",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-04",
-        "link": "https://finance.yahoo.com/news/5-stocks-recently-hiked-dividend-120800238.html",
-        "type": "STORY"
-      },
       {
         "uuid": "bc384cdc-c2a8-3c40-8561-b2d2746f3a9e",
         "title": "Block upgraded, Nvidia downgraded: Wall Street’s top analyst calls",
         "publisher": "TipRanks",
         "reportDate": "2025-04-04",
         "link": "https://finance.yahoo.com/news/block-upgraded-nvidia-downgraded-wall-134047763.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "165f6e57-3343-3dd2-a85b-a91349831079",
+        "title": "5 Stocks That Recently Hiked Their Dividend Amid Market Mayhem",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/5-stocks-recently-hiked-dividend-120800238.html",
         "type": "STORY"
       },
       {
@@ -7258,27 +7258,23 @@
         "type": "STORY"
       },
       {
+        "uuid": "e678c910-efc6-3e2e-b7d7-30f7395f728e",
+        "title": "TJX Earnings and Sales Surpass Estimates in Q1, Comp Sales Rise",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/tjx-earnings-sales-surpass-estimates-145700362.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "13938a79-8fd7-324f-becb-ec38238bc7db",
         "title": "Earnings Data Deluge",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/earnings-data-deluge-145600062.html",
         "type": "STORY"
-      },
-      {
-        "uuid": "9a965619-0d00-38cd-8688-ecf9a8d18f7f",
-        "title": "Q1 Retailers Report Earnings: TGT Misses, LOW & TJX Beat",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/q1-retailers-report-earnings-tgt-142600297.html",
-        "type": "STORY"
       }
     ],
     "officers": [
-      {
-        "name": "Erica M. Farrell",
-        "title": "Senior VP of Finance & Treasurer"
-      },
       {
         "name": "Mr. Bernard Cammarata",
         "title": "Founder & Executive Advisor",
@@ -7332,23 +7328,29 @@
       {
         "name": "Ms. Debra McConnell",
         "title": "Senior Vice President of Global Communications"
+      },
+      {
+        "name": "Peter Benjamin",
+        "title": "Senior EVP & Group President",
+        "age": 61,
+        "yearBorn": 1964
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.12,
-        "industryAvg": 26.03
+        "value": 32.24,
+        "industryAvg": 26.43
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.96,
-        "industryAvg": 2.35
+        "value": 2.88,
+        "industryAvg": 2.38
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.52,
-        "industryAvg": 8.19
+        "value": 17.06,
+        "industryAvg": 8.29
       },
       {
         "metric": "ROE",
@@ -7358,29 +7360,29 @@
       {
         "metric": "ROA",
         "value": 5,
-        "industryAvg": 4
+        "industryAvg": 4.01
       },
       {
         "metric": "Gross Margin",
         "value": 30.86,
-        "industryAvg": 42.08
+        "industryAvg": 41.68
       },
       {
         "metric": "EBITDA Margin",
         "value": 15.42,
-        "industryAvg": 17.79
+        "industryAvg": 17.72
       },
       {
         "metric": "Net Margin",
         "value": 9.99,
-        "industryAvg": 10.459999999999999
+        "industryAvg": 10.31
       }
     ],
     "dcf": {
-      "fairValue": 116.3,
-      "currentPrice": 161.29,
-      "upside": -27.9,
-      "wacc": 9.67,
+      "fairValue": 127.21,
+      "currentPrice": 157.03,
+      "upside": -18.99,
+      "wacc": 9.11,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 28.46,
         "Terminal growth": 3

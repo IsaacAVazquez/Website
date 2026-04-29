@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11253"
   },
   "season": 2026,
-  "generatedAt": "2026-04-16T06:33:29.114Z",
-  "defaultMeetingKey": "1283",
+  "generatedAt": "2026-04-29T18:55:58.623Z",
+  "defaultMeetingKey": "1284",
   "standingsMeetingKey": "1281",
   "meetings": [
     {
@@ -1478,7 +1478,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "03:00:00",
       "startAt": "2026-04-17T13:30:00+00:00",
       "endAt": "2026-04-19T19:00:00+00:00",
-      "status": "upcoming",
+      "status": "completed",
       "hasSprint": false,
       "raceSessionKey": "11269",
       "raceStartsAt": "2026-04-19T17:00:00+00:00",
@@ -1536,7 +1536,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "circuitType": "Temporary - Street",
       "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Miami%20carbon.png",
       "gmtOffset": "-04:00:00",
-      "startAt": "2026-05-01T16:30:00+00:00",
+      "startAt": "2026-05-01T16:00:00+00:00",
       "endAt": "2026-05-03T22:00:00+00:00",
       "status": "upcoming",
       "hasSprint": true,
@@ -1547,7 +1547,7 @@ export const formula1Snapshot: Formula1Snapshot = {
           "key": "11270",
           "name": "Practice 1",
           "type": "Practice",
-          "startAt": "2026-05-01T16:30:00+00:00",
+          "startAt": "2026-05-01T16:00:00+00:00",
           "endAt": "2026-05-01T17:30:00+00:00"
         },
         {
@@ -3078,11 +3078,71 @@ export const formula1Snapshot: Formula1Snapshot = {
   "seasonMetrics": {
     "season": 2026,
     "totalRaces": 24,
-    "completedRaces": 4,
-    "upcomingRaces": 20,
+    "completedRaces": 5,
+    "upcomingRaces": 19,
     "sprintWeekends": 6
   },
   "nextMeeting": {
+    "key": "1284",
+    "name": "Miami Grand Prix",
+    "officialName": "FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2026",
+    "location": "Miami Gardens",
+    "countryName": "United States",
+    "countryCode": "USA",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/united-states-flag.png",
+    "circuitKey": "151",
+    "circuitShortName": "Miami",
+    "circuitType": "Temporary - Street",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Miami%20carbon.png",
+    "gmtOffset": "-04:00:00",
+    "startAt": "2026-05-01T16:00:00+00:00",
+    "endAt": "2026-05-03T22:00:00+00:00",
+    "status": "upcoming",
+    "hasSprint": true,
+    "raceSessionKey": "11280",
+    "raceStartsAt": "2026-05-03T20:00:00+00:00",
+    "sessions": [
+      {
+        "key": "11270",
+        "name": "Practice 1",
+        "type": "Practice",
+        "startAt": "2026-05-01T16:00:00+00:00",
+        "endAt": "2026-05-01T17:30:00+00:00"
+      },
+      {
+        "key": "11271",
+        "name": "Sprint Qualifying",
+        "type": "Qualifying",
+        "startAt": "2026-05-01T20:30:00+00:00",
+        "endAt": "2026-05-01T21:14:00+00:00"
+      },
+      {
+        "key": "11275",
+        "name": "Sprint",
+        "type": "Race",
+        "startAt": "2026-05-02T16:00:00+00:00",
+        "endAt": "2026-05-02T17:00:00+00:00"
+      },
+      {
+        "key": "11276",
+        "name": "Qualifying",
+        "type": "Qualifying",
+        "startAt": "2026-05-02T20:00:00+00:00",
+        "endAt": "2026-05-02T21:00:00+00:00"
+      },
+      {
+        "key": "11280",
+        "name": "Race",
+        "type": "Race",
+        "startAt": "2026-05-03T20:00:00+00:00",
+        "endAt": "2026-05-03T22:00:00+00:00"
+      }
+    ],
+    "classification": [],
+    "podium": [],
+    "resultPublished": false
+  },
+  "lastCompletedMeeting": {
     "key": "1283",
     "name": "Saudi Arabian Grand Prix",
     "officialName": "FORMULA 1 STC SAUDI ARABIAN GRAND PRIX 2026",
@@ -3097,7 +3157,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "gmtOffset": "03:00:00",
     "startAt": "2026-04-17T13:30:00+00:00",
     "endAt": "2026-04-19T19:00:00+00:00",
-    "status": "upcoming",
+    "status": "completed",
     "hasSprint": false,
     "raceSessionKey": "11269",
     "raceStartsAt": "2026-04-19T17:00:00+00:00",
@@ -3136,66 +3196,6 @@ export const formula1Snapshot: Formula1Snapshot = {
         "type": "Race",
         "startAt": "2026-04-19T17:00:00+00:00",
         "endAt": "2026-04-19T19:00:00+00:00"
-      }
-    ],
-    "classification": [],
-    "podium": [],
-    "resultPublished": false
-  },
-  "lastCompletedMeeting": {
-    "key": "1282",
-    "name": "Bahrain Grand Prix",
-    "officialName": "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX 2026",
-    "location": "Sakhir",
-    "countryName": "Bahrain",
-    "countryCode": "BRN",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/bahrain-flag.png",
-    "circuitKey": "63",
-    "circuitShortName": "Sakhir",
-    "circuitType": "Permanent",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain%20carbon.png",
-    "gmtOffset": "03:00:00",
-    "startAt": "2026-04-10T11:30:00+00:00",
-    "endAt": "2026-04-12T17:00:00+00:00",
-    "status": "completed",
-    "hasSprint": false,
-    "raceSessionKey": "11261",
-    "raceStartsAt": "2026-04-12T15:00:00+00:00",
-    "sessions": [
-      {
-        "key": "11254",
-        "name": "Practice 1",
-        "type": "Practice",
-        "startAt": "2026-04-10T11:30:00+00:00",
-        "endAt": "2026-04-10T12:30:00+00:00"
-      },
-      {
-        "key": "11255",
-        "name": "Practice 2",
-        "type": "Practice",
-        "startAt": "2026-04-10T15:00:00+00:00",
-        "endAt": "2026-04-10T16:00:00+00:00"
-      },
-      {
-        "key": "11256",
-        "name": "Practice 3",
-        "type": "Practice",
-        "startAt": "2026-04-11T12:30:00+00:00",
-        "endAt": "2026-04-11T13:30:00+00:00"
-      },
-      {
-        "key": "11257",
-        "name": "Qualifying",
-        "type": "Qualifying",
-        "startAt": "2026-04-11T16:00:00+00:00",
-        "endAt": "2026-04-11T17:00:00+00:00"
-      },
-      {
-        "key": "11261",
-        "name": "Race",
-        "type": "Race",
-        "startAt": "2026-04-12T15:00:00+00:00",
-        "endAt": "2026-04-12T17:00:00+00:00"
       }
     ],
     "classification": [],

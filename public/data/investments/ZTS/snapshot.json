@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.02,
-      "ttmPe": 19.59,
-      "marketCap": 49785740938,
-      "psRatio": 5.26,
-      "pbRatio": 14.95
+      "ttmPe": 19.41,
+      "marketCap": 49334064299,
+      "psRatio": 5.21,
+      "pbRatio": 14.81
     },
     "profitability": {
       "roe": 13.819999999999999,
@@ -5595,137 +5595,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.5,
-      "costOfEquity": 12.36,
+      "wacc": 10.02,
+      "costOfEquity": 11.799999999999999,
       "costOfDebt": 0.62,
       "taxRate": 21,
-      "beta": 0.941,
-      "marketCap": 49785740938
+      "beta": 0.8754,
+      "marketCap": 49334064299
     },
     "beta": {
-      "beta5y": 0.941
+      "beta5y": 0.8754
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 161.52,
-        "high": 163.65,
-        "low": 160.8,
-        "close": 163.5,
-        "volume": 2027200
-      },
-      {
-        "date": "2025-04-03",
-        "open": 163.61,
-        "high": 166.34,
-        "low": 159.26,
-        "close": 159.61,
-        "volume": 3275500
-      },
-      {
-        "date": "2025-04-04",
-        "open": 156,
-        "high": 157.69,
-        "low": 151.18,
-        "close": 151.73,
-        "volume": 3612000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 147.42,
-        "high": 153.39,
-        "low": 143.85,
-        "close": 149.1,
-        "volume": 4263200
-      },
-      {
-        "date": "2025-04-08",
-        "open": 152.45,
-        "high": 153.32,
-        "low": 142.39,
-        "close": 144.41,
-        "volume": 3267300
-      },
-      {
-        "date": "2025-04-09",
-        "open": 141.16,
-        "high": 154.29,
-        "low": 139.7,
-        "close": 153.55,
-        "volume": 5051900
-      },
-      {
-        "date": "2025-04-10",
-        "open": 152.64,
-        "high": 152.64,
-        "low": 142.04,
-        "close": 147,
-        "volume": 3527300
-      },
-      {
-        "date": "2025-04-11",
-        "open": 146.64,
-        "high": 149.74,
-        "low": 144.81,
-        "close": 149.44,
-        "volume": 2850500
-      },
-      {
-        "date": "2025-04-14",
-        "open": 151.46,
-        "high": 152.33,
-        "low": 147.94,
-        "close": 150.83,
-        "volume": 3249900
-      },
-      {
-        "date": "2025-04-15",
-        "open": 151.43,
-        "high": 151.46,
-        "low": 148.26,
-        "close": 149.22,
-        "volume": 2785200
-      },
-      {
-        "date": "2025-04-16",
-        "open": 149.03,
-        "high": 150.12,
-        "low": 145.8,
-        "close": 146.76,
-        "volume": 2390100
-      },
-      {
-        "date": "2025-04-17",
-        "open": 147.23,
-        "high": 150.03,
-        "low": 146.76,
-        "close": 148.67,
-        "volume": 4239800
-      },
-      {
-        "date": "2025-04-21",
-        "open": 148.67,
-        "high": 148.67,
-        "low": 145.3,
-        "close": 146.85,
-        "volume": 2654900
-      },
-      {
-        "date": "2025-04-22",
-        "open": 148.02,
-        "high": 150.74,
-        "low": 147.81,
-        "close": 149.99,
-        "volume": 2832800
-      },
-      {
-        "date": "2025-04-23",
-        "open": 151.94,
-        "high": 153.77,
-        "low": 150.61,
-        "close": 150.91,
-        "volume": 2093100
-      },
       {
         "date": "2025-04-24",
         "open": 150.87,
@@ -7621,6 +7501,126 @@
         "low": 115.37,
         "close": 117.94,
         "volume": 2185400
+      },
+      {
+        "date": "2026-04-06",
+        "open": 117.11,
+        "high": 118.4,
+        "low": 116.8,
+        "close": 118.26,
+        "volume": 1723300
+      },
+      {
+        "date": "2026-04-07",
+        "open": 118.09,
+        "high": 118.48,
+        "low": 116.3,
+        "close": 116.8,
+        "volume": 3254400
+      },
+      {
+        "date": "2026-04-08",
+        "open": 118.78,
+        "high": 119.79,
+        "low": 118.32,
+        "close": 119.75,
+        "volume": 2635500
+      },
+      {
+        "date": "2026-04-09",
+        "open": 119.04,
+        "high": 120.25,
+        "low": 117.22,
+        "close": 119.99,
+        "volume": 2439100
+      },
+      {
+        "date": "2026-04-10",
+        "open": 120.38,
+        "high": 120.75,
+        "low": 117.22,
+        "close": 117.86,
+        "volume": 2384000
+      },
+      {
+        "date": "2026-04-13",
+        "open": 117.17,
+        "high": 120.11,
+        "low": 116.85,
+        "close": 120.08,
+        "volume": 3533500
+      },
+      {
+        "date": "2026-04-14",
+        "open": 119.61,
+        "high": 121.54,
+        "low": 118.6,
+        "close": 121.11,
+        "volume": 2778700
+      },
+      {
+        "date": "2026-04-15",
+        "open": 121.74,
+        "high": 122.47,
+        "low": 120.2,
+        "close": 120.76,
+        "volume": 2209900
+      },
+      {
+        "date": "2026-04-16",
+        "open": 120.89,
+        "high": 122.01,
+        "low": 119.03,
+        "close": 119.04,
+        "volume": 2989300
+      },
+      {
+        "date": "2026-04-17",
+        "open": 120.08,
+        "high": 122.97,
+        "low": 119.57,
+        "close": 122.38,
+        "volume": 6170600
+      },
+      {
+        "date": "2026-04-20",
+        "open": 121.55,
+        "high": 123.32,
+        "low": 120.55,
+        "close": 122.72,
+        "volume": 3798500
+      },
+      {
+        "date": "2026-04-21",
+        "open": 122,
+        "high": 123.21,
+        "low": 117.75,
+        "close": 118.18,
+        "volume": 3728200
+      },
+      {
+        "date": "2026-04-22",
+        "open": 118.95,
+        "high": 119.91,
+        "low": 116.6,
+        "close": 117.52,
+        "volume": 3514600
+      },
+      {
+        "date": "2026-04-23",
+        "open": 117.19,
+        "high": 117.6,
+        "low": 114.95,
+        "close": 116.06,
+        "volume": 4532800
+      },
+      {
+        "date": "2026-04-24",
+        "open": 116.01,
+        "high": 117.05,
+        "low": 115.41,
+        "close": 116.87,
+        "volume": 4185100
       }
     ],
     "news": [
@@ -7657,14 +7657,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
-        "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/zoetis-zts-upgraded-buy-heres-160008317.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "36214d65-734d-335e-9dbc-1287c5285ee5",
         "title": "Jim Cramer on Zoetis (ZTS): “It Does Seem to Be Dead Money”",
         "publisher": "Insider Monkey",
@@ -7673,11 +7665,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
-        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
-        "publisher": "Motley Fool",
+        "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
+        "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/zoetis-zts-upgraded-buy-heres-160008317.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "87bc08fc-4245-34c6-8dbb-7c847ba5d004",
+        "title": "Zoetis (NYSE:ZTS) Declares US$0.50 Dividend Per Share For Q3 2025",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
+        "link": "https://finance.yahoo.com/news/zoetis-nyse-zts-declares-us-174943464.html",
         "type": "STORY"
       },
       {
@@ -7689,11 +7689,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "87bc08fc-4245-34c6-8dbb-7c847ba5d004",
-        "title": "Zoetis (NYSE:ZTS) Declares US$0.50 Dividend Per Share For Q3 2025",
-        "publisher": "Simply Wall St.",
+        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
+        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/zoetis-nyse-zts-declares-us-174943464.html",
+        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
         "type": "STORY"
       },
       {
@@ -7711,14 +7711,14 @@
         "title": "Scientific Advisor",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 1523134
+        "totalPay": 1445441
       },
       {
         "name": "Mr. Jamie Brannan",
         "title": "Executive VP & Chief Commercial Officer",
         "age": 51,
         "yearBorn": 1974,
-        "totalPay": 1809996
+        "totalPay": 1742448
       },
       {
         "name": "Mr. Keith Sarbaugh",
@@ -7741,7 +7741,7 @@
         "title": "Executive VP & CFO",
         "age": 53,
         "yearBorn": 1972,
-        "totalPay": 1902146
+        "totalPay": 1796941
       },
       {
         "name": "Ms. Jeannette Ferran Astorga",
@@ -7760,63 +7760,63 @@
         "title": "CEO & Director",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 4456913
+        "totalPay": 5421697
       },
       {
         "name": "Ms. Roxanne Lagano",
         "title": "Executive VP, General Counsel & Corporate Secretary",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 1365476
+        "totalPay": 1435587
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.59,
-        "industryAvg": 217.55
+        "value": 19.41,
+        "industryAvg": 175.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.26,
-        "industryAvg": 3.27
+        "value": 5.21,
+        "industryAvg": 3.57
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.95,
-        "industryAvg": 2.45
+        "value": 14.81,
+        "industryAvg": 2.15
       },
       {
         "metric": "ROE",
         "value": 13.819999999999999,
-        "industryAvg": 0.8
+        "industryAvg": 1.59
       },
       {
         "metric": "ROA",
         "value": 3.94,
-        "industryAvg": 0.31
+        "industryAvg": 0.72
       },
       {
         "metric": "Gross Margin",
         "value": 70.17,
-        "industryAvg": 59.18
+        "industryAvg": 62.71
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.34,
-        "industryAvg": 20.79
+        "industryAvg": 22.33
       },
       {
         "metric": "Net Margin",
         "value": 25.259999999999998,
-        "industryAvg": 3.29
+        "industryAvg": 6.67
       }
     ],
     "dcf": {
-      "fairValue": 87.57,
-      "currentPrice": 117.94,
-      "upside": -25.75,
-      "wacc": 10.5,
+      "fairValue": 93.58,
+      "currentPrice": 116.87,
+      "upside": -19.93,
+      "wacc": 10.02,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 6.2,
         "Terminal growth": 3

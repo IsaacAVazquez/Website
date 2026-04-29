@@ -1,10 +1,10 @@
 {
   "symbol": "JPM",
-  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -34,17 +34,17 @@
       "industry": "Banks-Diversified",
       "sector": "Financial Services",
       "longBusinessSummary": "JPMorgan Chase & Co. operates as a bank and financial holding company in the United States, rest of North America, Europe, the Middle East, Africa, the Asia Pacific, Latin America, and the Caribbean. It operates in three segments: Consumer & Community Banking, Commercial & Investment Bank, and Asset & Wealth Management. The company offers deposit, investment and lending products, and cash management; mortgage origination and servicing activities; residential mortgages and home equity loans; and credit cards, payment solutions, travel services, merchant offers, lifestyle benefits, auto loans, and leases to consumers and small businesses through bank branches, ATMs, and digital and telephone banking. It also provides investment banking, market-making, financing, custody, and securities products and services; corporate strategy and structure advisory, equity and debt market capital-raising, and loan origination and syndication services; cash and derivative instruments, risk management solutions, prime brokerage, clearing, and research; and fund services, liquidity and trading services, and data solutions products for large corporations, financial institutions, merchants, start-ups, small and midsized companies, local governments, municipalities, nonprofits, and commercial real estate clients. In addition, the company offers multi-asset investment management solutions in equities, fixed income, alternatives, and money market funds to institutional clients and retail investors; retirement products and services, estate planning, lending, deposits, and investment management products to high-net-worth clients; and financial transaction processing. JPMorgan Chase & Co. was founded in 1799 and is headquartered in New York, New York.",
-      "fullTimeEmployees": 318512,
+      "fullTimeEmployees": 320079,
       "website": "https://www.jpmorganchase.com",
       "shortName": "JPMorgan Chase & Co.",
       "longName": "JPMorgan Chase & Co."
     },
     "fundamentals": {
-      "ttmEps": 20.01,
-      "ttmPe": 14.72,
-      "marketCap": 794545745040,
-      "psRatio": 4.36,
-      "pbRatio": 2.19
+      "ttmEps": 20.88,
+      "ttmPe": 14.76,
+      "marketCap": 826036260000,
+      "psRatio": 4.53,
+      "pbRatio": 2.28
     },
     "profitability": {
       "roe": 3.51,
@@ -73,7 +73,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": -3.74
+        "yoyGrowth": 17.16
       }
     ],
     "income_statement": {
@@ -81,6 +81,7 @@
         {
           "Breakdown": "Total Revenue",
           "TTM": "175068000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "45796000000.0",
           "2025-09-30": "46430000000.0",
           "2025-06-30": "44882000000.0",
@@ -100,6 +101,7 @@
         {
           "Breakdown": "Net Interest Income",
           "TTM": "93237000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "24995000000.0",
           "2025-09-30": "23966000000.0",
           "2025-06-30": "23209000000.0",
@@ -119,6 +121,7 @@
         {
           "Breakdown": "Interest Income",
           "TTM": "193076000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "48808000000.0",
           "2025-09-30": "49439000000.0",
           "2025-06-30": "48241000000.0",
@@ -138,6 +141,7 @@
         {
           "Breakdown": "Interest Income from Loans And Lease",
           "TTM": "92050000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "24349000000.0",
           "2025-09-30": "24025000000.0",
           "2025-06-30": "23049000000.0",
@@ -157,6 +161,7 @@
         {
           "Breakdown": "Interest Income from Loans",
           "TTM": "92050000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "24349000000.0",
           "2025-09-30": "24025000000.0",
           "2025-06-30": "23049000000.0",
@@ -176,6 +181,7 @@
         {
           "Breakdown": "Interest Income from Securities",
           "TTM": "48335000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "14145000000.0",
           "2025-09-30": "13713000000.0",
           "2025-06-30": "13250000000.0",
@@ -195,6 +201,7 @@
         {
           "Breakdown": "Interest Income from Deposits",
           "TTM": "17386000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "2619000000.0",
           "2025-09-30": "2946000000.0",
           "2025-06-30": "3395000000.0",
@@ -214,6 +221,7 @@
         {
           "Breakdown": "Interest Income from Federal Funds Sold And Securities Purchase Under Agreements To Resell",
           "TTM": "27440000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "5727000000.0",
           "2025-09-30": "6694000000.0",
           "2025-06-30": "6789000000.0",
@@ -233,6 +241,7 @@
         {
           "Breakdown": "Other Interest Income",
           "TTM": "7865000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1968000000.0",
           "2025-09-30": "2061000000.0",
           "2025-06-30": "1758000000.0",
@@ -252,6 +261,7 @@
         {
           "Breakdown": "Interest Expense",
           "TTM": "99839000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "23813000000.0",
           "2025-09-30": "25473000000.0",
           "2025-06-30": "25032000000.0",
@@ -271,6 +281,7 @@
         {
           "Breakdown": "Interest Expense for Deposit",
           "TTM": "47382000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "11001000000.0",
           "2025-09-30": "11633000000.0",
           "2025-06-30": "11401000000.0",
@@ -290,6 +301,7 @@
         {
           "Breakdown": "Interest Expense for Short Term Debt",
           "TTM": "2206000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "566000000.0",
           "2025-09-30": "590000000.0",
           "2025-06-30": "607000000.0",
@@ -309,6 +321,7 @@
         {
           "Breakdown": "Interest Expense for Long Term Debt And Capital Securities",
           "TTM": "27765000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "6740000000.0",
           "2025-09-30": "6874000000.0",
           "2025-06-30": "6762000000.0",
@@ -328,6 +341,7 @@
         {
           "Breakdown": "Interest Expense for Federal Funds Sold And Securities Purchase Under Agreements To Resell",
           "TTM": "21226000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "5214000000.0",
           "2025-09-30": "6043000000.0",
           "2025-06-30": "5965000000.0",
@@ -347,6 +361,7 @@
         {
           "Breakdown": "Other Interest Expense",
           "TTM": "1260000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "292000000.0",
           "2025-09-30": "333000000.0",
           "2025-06-30": "297000000.0",
@@ -366,6 +381,7 @@
         {
           "Breakdown": "Non Interest Income",
           "TTM": "81831000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "20801000000.0",
           "2025-09-30": "22464000000.0",
           "2025-06-30": "21673000000.0",
@@ -385,6 +401,7 @@
         {
           "Breakdown": "Fees And Commissions",
           "TTM": "42069000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "11550000000.0",
           "2025-09-30": "11196000000.0",
           "2025-06-30": "10955000000.0",
@@ -404,6 +421,7 @@
         {
           "Breakdown": "Fees & Commission Income",
           "TTM": "42069000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "11550000000.0",
           "2025-09-30": "11196000000.0",
           "2025-06-30": "10955000000.0",
@@ -423,6 +441,7 @@
         {
           "Breakdown": "Service Charge on Depositor Accounts",
           "TTM": "12311000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "3448000000.0",
           "2025-09-30": "3445000000.0",
           "2025-06-30": "3286000000.0",
@@ -442,6 +461,7 @@
         {
           "Breakdown": "Trust Fees by Commissions",
           "TTM": "18859000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "5701000000.0",
           "2025-09-30": "5120000000.0",
           "2025-06-30": "4806000000.0",
@@ -461,6 +481,7 @@
         {
           "Breakdown": "Securities Activities",
           "TTM": "3416000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "961000000.0",
           "2025-09-30": "917000000.0",
           "2025-06-30": "948000000.0",
@@ -480,6 +501,7 @@
         {
           "Breakdown": "Credit Card",
           "TTM": "5507000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1020000000.0",
           "2025-09-30": "1140000000.0",
           "2025-06-30": "1344000000.0",
@@ -499,6 +521,7 @@
         {
           "Breakdown": "Other Customer Services",
           "TTM": "1976000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "420000000.0",
           "2025-09-30": "574000000.0",
           "2025-06-30": "571000000.0",
@@ -518,6 +541,7 @@
         {
           "Breakdown": "Investment Banking Profit",
           "TTM": "9329000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "2326000000.0",
           "2025-09-30": "2612000000.0",
           "2025-06-30": "2499000000.0",
@@ -537,6 +561,7 @@
         {
           "Breakdown": "Trading Gain Loss",
           "TTM": "20713000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "3854000000.0",
           "2025-09-30": "5923000000.0",
           "2025-06-30": "5553000000.0",
@@ -556,6 +581,7 @@
         {
           "Breakdown": "Foreign Exchange Trading Gains",
           "TTM": "5233000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1486000000.0",
           "2025-09-30": "1186000000.0",
           "2025-06-30": "1596000000.0",
@@ -575,6 +601,7 @@
         {
           "Breakdown": "Gain Losson Saleof Assets",
           "TTM": "-147000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "-73000000.0",
           "2025-09-30": "108000000.0",
           "2025-06-30": "-44000000.0",
@@ -594,6 +621,7 @@
         {
           "Breakdown": "Gain on Sale of Security",
           "TTM": "-147000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "-73000000.0",
           "2025-09-30": "108000000.0",
           "2025-06-30": "-44000000.0",
@@ -613,6 +641,7 @@
         {
           "Breakdown": "Other Non Interest Income",
           "TTM": "4634000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1658000000.0",
           "2025-09-30": "1439000000.0",
           "2025-06-30": "1114000000.0",
@@ -632,6 +661,7 @@
         {
           "Breakdown": "Credit Losses Provision",
           "TTM": "-11948000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "-4653000000.0",
           "2025-09-30": "-3406000000.0",
           "2025-06-30": "-2859000000.0",
@@ -651,8 +681,9 @@
         {
           "Breakdown": "Non Interest Expense",
           "TTM": "90467000000.0",
-          "2025-12-31": "24385000000.0",
-          "2025-09-30": "24281000000.0",
+          "2026-03-31": "*",
+          "2025-12-31": "24686000000.0",
+          "2025-09-30": "24219000000.0",
           "2025-06-30": "23661000000.0",
           "2025-03-31": "23153000000.0",
           "2024-12-31": "21639000000.0",
@@ -670,6 +701,7 @@
         {
           "Breakdown": "Occupancy And Equipment",
           "TTM": "15378000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "4383000000.0",
           "2025-09-30": "4259000000.0",
           "2025-06-30": "3968000000.0",
@@ -689,6 +721,7 @@
         {
           "Breakdown": "Net Occupancy Expense",
           "TTM": "5133000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1475000000.0",
           "2025-09-30": "1420000000.0",
           "2025-06-30": "1264000000.0",
@@ -708,6 +741,7 @@
         {
           "Breakdown": "Equipment",
           "TTM": "10245000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "2908000000.0",
           "2025-09-30": "2839000000.0",
           "2025-06-30": "2704000000.0",
@@ -727,6 +761,7 @@
         {
           "Breakdown": "Professional Expense And Contract Services Expense",
           "TTM": "11632000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "3338000000.0",
           "2025-09-30": "3173000000.0",
           "2025-06-30": "3006000000.0",
@@ -746,6 +781,7 @@
         {
           "Breakdown": "Selling General and Administrative",
           "TTM": "58265000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "14586000000.0",
           "2025-09-30": "15046000000.0",
           "2025-06-30": "14989000000.0",
@@ -765,6 +801,7 @@
         {
           "Breakdown": "General & Administrative Expense",
           "TTM": "53089000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "13118000000.0",
           "2025-09-30": "13566000000.0",
           "2025-06-30": "13710000000.0",
@@ -784,6 +821,7 @@
         {
           "Breakdown": "Salaries and Wages",
           "TTM": "53089000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "13118000000.0",
           "2025-09-30": "13566000000.0",
           "2025-06-30": "13710000000.0",
@@ -803,6 +841,7 @@
         {
           "Breakdown": "Insurance & Claims",
           "TTM": "*",
+          "2026-03-31": "*",
           "2025-12-31": "*",
           "2025-09-30": "*",
           "2025-06-30": "*",
@@ -822,6 +861,7 @@
         {
           "Breakdown": "Selling & Marketing Expense",
           "TTM": "5176000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1468000000.0",
           "2025-09-30": "1480000000.0",
           "2025-06-30": "1279000000.0",
@@ -841,8 +881,9 @@
         {
           "Breakdown": "Other Non Interest Expense",
           "TTM": "5192000000.0",
-          "2025-12-31": "2078000000.0",
-          "2025-09-30": "1803000000.0",
+          "2026-03-31": "*",
+          "2025-12-31": "2379000000.0",
+          "2025-09-30": "1741000000.0",
           "2025-06-30": "1698000000.0",
           "2025-03-31": "703000000.0",
           "2024-12-31": "1003000000.0",
@@ -860,8 +901,9 @@
         {
           "Breakdown": "Special Income Charges",
           "TTM": "-1608000000.0",
-          "2025-12-31": "402000000.0",
-          "2025-09-30": "0.0",
+          "2026-03-31": "*",
+          "2025-12-31": "703000000.0",
+          "2025-09-30": "-62000000.0",
           "2025-06-30": "-78000000.0",
           "2025-03-31": "-444000000.0",
           "2024-12-31": "-1123000000.0",
@@ -879,6 +921,7 @@
         {
           "Breakdown": "Restructuring & Mergers Acquisition",
           "TTM": "-628000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "0.0",
           "2025-09-30": "0.0",
           "2025-06-30": "*",
@@ -898,8 +941,9 @@
         {
           "Breakdown": "Other Special Charges",
           "TTM": "831000000.0",
-          "2025-12-31": "*",
-          "2025-09-30": "*",
+          "2026-03-31": "*",
+          "2025-12-31": "-703000000.0",
+          "2025-09-30": "62000000.0",
           "2025-06-30": "78000000.0",
           "2025-03-31": "444000000.0",
           "2024-12-31": "961000000.0",
@@ -917,6 +961,7 @@
         {
           "Breakdown": "Pretax Income",
           "TTM": "71045000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "17160000000.0",
           "2025-09-30": "18743000000.0",
           "2025-06-30": "18284000000.0",
@@ -936,6 +981,7 @@
         {
           "Breakdown": "Tax Provision",
           "TTM": "14512000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "4135000000.0",
           "2025-09-30": "4350000000.0",
           "2025-06-30": "3297000000.0",
@@ -955,6 +1001,7 @@
         {
           "Breakdown": "Net Income Common Stockholders",
           "TTM": "55155000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "12690000000.0",
           "2025-09-30": "14043000000.0",
           "2025-06-30": "14630000000.0",
@@ -974,6 +1021,7 @@
         {
           "Breakdown": "Net Income(Attributable to Parent Company Shareholders)",
           "TTM": "56533000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "13025000000.0",
           "2025-09-30": "14393000000.0",
           "2025-06-30": "14987000000.0",
@@ -993,6 +1041,7 @@
         {
           "Breakdown": "Net Income Including Non-Controlling Interests",
           "TTM": "56533000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "13025000000.0",
           "2025-09-30": "14393000000.0",
           "2025-06-30": "14987000000.0",
@@ -1012,6 +1061,7 @@
         {
           "Breakdown": "Net Income Continuous Operations",
           "TTM": "56533000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "13025000000.0",
           "2025-09-30": "14393000000.0",
           "2025-06-30": "14987000000.0",
@@ -1031,6 +1081,7 @@
         {
           "Breakdown": "Preferred Stock Dividends",
           "TTM": "1082000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "280000000.0",
           "2025-09-30": "282000000.0",
           "2025-06-30": "282000000.0",
@@ -1050,6 +1101,7 @@
         {
           "Breakdown": "Otherunder Preferred Stock Dividend",
           "TTM": "296000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "55000000.0",
           "2025-09-30": "68000000.0",
           "2025-06-30": "75000000.0",
@@ -1069,6 +1121,7 @@
         {
           "Breakdown": "Diluted NI Available to Com Stockholders",
           "TTM": "55155000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "12690000000.0",
           "2025-09-30": "14043000000.0",
           "2025-06-30": "14630000000.0",
@@ -1088,6 +1141,7 @@
         {
           "Breakdown": "Basic EPS",
           "TTM": "16.77",
+          "2026-03-31": "5.95",
           "2025-12-31": "4.64",
           "2025-09-30": "5.08",
           "2025-06-30": "5.25",
@@ -1107,6 +1161,7 @@
         {
           "Breakdown": "Diluted EPS",
           "TTM": "16.76",
+          "2026-03-31": "5.94",
           "2025-12-31": "4.63",
           "2025-09-30": "5.07",
           "2025-06-30": "5.24",
@@ -1126,6 +1181,7 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "2950650000.0",
+          "2026-03-31": "2716200000.0",
           "2025-12-31": "2735300000.0",
           "2025-09-30": "2762400000.0",
           "2025-06-30": "2788700000.0",
@@ -1145,6 +1201,7 @@
         {
           "Breakdown": "Diluted Average Shares",
           "TTM": "2955075000.0",
+          "2026-03-31": "2720200000.0",
           "2025-12-31": "2740500000.0",
           "2025-09-30": "2767600000.0",
           "2025-06-30": "2793700000.0",
@@ -1164,6 +1221,7 @@
         {
           "Breakdown": "Interest Income after Provision for Loan Loss",
           "TTM": "81289000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "20342000000.0",
           "2025-09-30": "20560000000.0",
           "2025-06-30": "20350000000.0",
@@ -1183,6 +1241,7 @@
         {
           "Breakdown": "Net Income from Continuing & Discontinued Operation",
           "TTM": "56533000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "13025000000.0",
           "2025-09-30": "14393000000.0",
           "2025-06-30": "14987000000.0",
@@ -1202,8 +1261,9 @@
         {
           "Breakdown": "Normalized Income",
           "TTM": "57812542036.74",
-          "2025-12-31": "12719868881.12",
-          "2025-09-30": "14393000000.0",
+          "2026-03-31": "*",
+          "2025-12-31": "12491400058.28",
+          "2025-09-30": "14440610627.97",
           "2025-06-30": "15050934915.77",
           "2025-03-31": "14995980000.0",
           "2024-12-31": "14910186474.82",
@@ -1221,6 +1281,7 @@
         {
           "Breakdown": "Total Money Market Investments",
           "TTM": "44826000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "8346000000.0",
           "2025-09-30": "9640000000.0",
           "2025-06-30": "10184000000.0",
@@ -1240,6 +1301,7 @@
         {
           "Breakdown": "Reconciled Depreciation",
           "TTM": "8172000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "2312000000.0",
           "2025-09-30": "2269000000.0",
           "2025-06-30": "2210000000.0",
@@ -1259,6 +1321,7 @@
         {
           "Breakdown": "Net Income from Continuing Operation Net Minority Interest",
           "TTM": "56533000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "13025000000.0",
           "2025-09-30": "14393000000.0",
           "2025-06-30": "14987000000.0",
@@ -1278,8 +1341,9 @@
         {
           "Breakdown": "Total Unusual Items Excluding Goodwill",
           "TTM": "-1608000000.0",
-          "2025-12-31": "402000000.0",
-          "2025-09-30": "0.0",
+          "2026-03-31": "*",
+          "2025-12-31": "703000000.0",
+          "2025-09-30": "-62000000.0",
           "2025-06-30": "-78000000.0",
           "2025-03-31": "-444000000.0",
           "2024-12-31": "-1123000000.0",
@@ -1297,8 +1361,9 @@
         {
           "Breakdown": "Total Unusual Items",
           "TTM": "-1608000000.0",
-          "2025-12-31": "402000000.0",
-          "2025-09-30": "0.0",
+          "2026-03-31": "*",
+          "2025-12-31": "703000000.0",
+          "2025-09-30": "-62000000.0",
           "2025-06-30": "-78000000.0",
           "2025-03-31": "-444000000.0",
           "2024-12-31": "-1123000000.0",
@@ -1316,6 +1381,7 @@
         {
           "Breakdown": "Tax Rate for Calcs",
           "TTM": "0.2",
+          "2026-03-31": "*",
           "2025-12-31": "0.24",
           "2025-09-30": "0.23",
           "2025-06-30": "0.18",
@@ -1335,8 +1401,9 @@
         {
           "Breakdown": "Tax Effect of Unusual Items",
           "TTM": "-328457963.26",
-          "2025-12-31": "96868881.12",
-          "2025-09-30": "0.0",
+          "2026-03-31": "*",
+          "2025-12-31": "169400058.28",
+          "2025-09-30": "-14389372.03",
           "2025-06-30": "-14065084.23",
           "2025-03-31": "-91020000.0",
           "2024-12-31": "-217813525.18",
@@ -1354,6 +1421,7 @@
         {
           "Breakdown": "Operating Revenue",
           "TTM": "175068000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "45796000000.0",
           "2025-09-30": "46430000000.0",
           "2025-06-30": "44882000000.0",
@@ -5817,137 +5885,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.610000000000001,
-      "costOfEquity": 13.38,
+      "wacc": 9.47,
+      "costOfEquity": 13.01,
       "costOfDebt": 4.760000000000001,
       "taxRate": 24,
-      "beta": 1.0593,
-      "marketCap": 794545745040
+      "beta": 1.0164,
+      "marketCap": 826036260000
     },
     "beta": {
-      "beta5y": 1.0593
+      "beta5y": 1.0164
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 241.6,
-        "high": 247.25,
-        "low": 241.46,
-        "close": 245.82,
-        "volume": 7758800
-      },
-      {
-        "date": "2025-04-03",
-        "open": 234.27,
-        "high": 235.14,
-        "low": 227.3,
-        "close": 228.69,
-        "volume": 17188500
-      },
-      {
-        "date": "2025-04-04",
-        "open": 215.31,
-        "high": 217.7,
-        "low": 208.93,
-        "close": 210.28,
-        "volume": 27170700
-      },
-      {
-        "date": "2025-04-07",
-        "open": 205.77,
-        "high": 222.05,
-        "low": 202.16,
-        "close": 214.44,
-        "volume": 22914400
-      },
-      {
-        "date": "2025-04-08",
-        "open": 223.52,
-        "high": 227.84,
-        "low": 213.25,
-        "close": 216.87,
-        "volume": 19485700
-      },
-      {
-        "date": "2025-04-09",
-        "open": 212.5,
-        "high": 237.48,
-        "low": 211,
-        "close": 234.34,
-        "volume": 24022400
-      },
-      {
-        "date": "2025-04-10",
-        "open": 230,
-        "high": 230.35,
-        "low": 220.1,
-        "close": 227.11,
-        "volume": 18896400
-      },
-      {
-        "date": "2025-04-11",
-        "open": 226.31,
-        "high": 238.58,
-        "low": 225,
-        "close": 236.2,
-        "volume": 20284500
-      },
-      {
-        "date": "2025-04-14",
-        "open": 237.1,
-        "high": 239.78,
-        "low": 233.63,
-        "close": 234.72,
-        "volume": 13017800
-      },
-      {
-        "date": "2025-04-15",
-        "open": 236.1,
-        "high": 238.65,
-        "low": 232.82,
-        "close": 233.13,
-        "volume": 10912900
-      },
-      {
-        "date": "2025-04-16",
-        "open": 232,
-        "high": 233.58,
-        "low": 227.93,
-        "close": 229.61,
-        "volume": 9322300
-      },
-      {
-        "date": "2025-04-17",
-        "open": 230.8,
-        "high": 234.34,
-        "low": 230.55,
-        "close": 231.96,
-        "volume": 9553800
-      },
-      {
-        "date": "2025-04-21",
-        "open": 230.63,
-        "high": 231.81,
-        "low": 226.34,
-        "close": 228.99,
-        "volume": 8716200
-      },
-      {
-        "date": "2025-04-22",
-        "open": 231.98,
-        "high": 235.99,
-        "low": 231.37,
-        "close": 235.59,
-        "volume": 10701400
-      },
-      {
-        "date": "2025-04-23",
-        "open": 240.22,
-        "high": 246.79,
-        "low": 240,
-        "close": 240.88,
-        "volume": 14126800
-      },
       {
         "date": "2025-04-24",
         "open": 239.74,
@@ -7843,6 +7791,126 @@
         "low": 288.72,
         "close": 294.6,
         "volume": 6669300
+      },
+      {
+        "date": "2026-04-06",
+        "open": 294.06,
+        "high": 296.83,
+        "low": 293.2,
+        "close": 295.45,
+        "volume": 7142600
+      },
+      {
+        "date": "2026-04-07",
+        "open": 293.14,
+        "high": 298.18,
+        "low": 292.7,
+        "close": 297.4,
+        "volume": 7849100
+      },
+      {
+        "date": "2026-04-08",
+        "open": 307.97,
+        "high": 311.26,
+        "low": 305.33,
+        "close": 307.97,
+        "volume": 10590200
+      },
+      {
+        "date": "2026-04-09",
+        "open": 306.95,
+        "high": 311.26,
+        "low": 306.11,
+        "close": 310.33,
+        "volume": 6586600
+      },
+      {
+        "date": "2026-04-10",
+        "open": 310,
+        "high": 310.35,
+        "low": 306.72,
+        "close": 309.87,
+        "volume": 6069700
+      },
+      {
+        "date": "2026-04-13",
+        "open": 307.47,
+        "high": 313.74,
+        "low": 305.46,
+        "close": 313.68,
+        "volume": 8318200
+      },
+      {
+        "date": "2026-04-14",
+        "open": 309.82,
+        "high": 314.32,
+        "low": 308.87,
+        "close": 311.12,
+        "volume": 11455500
+      },
+      {
+        "date": "2026-04-15",
+        "open": 313.95,
+        "high": 314.24,
+        "low": 304.26,
+        "close": 305.93,
+        "volume": 9885800
+      },
+      {
+        "date": "2026-04-16",
+        "open": 305.35,
+        "high": 309.95,
+        "low": 305.2,
+        "close": 309.95,
+        "volume": 8208600
+      },
+      {
+        "date": "2026-04-17",
+        "open": 312.47,
+        "high": 314.9,
+        "low": 310.09,
+        "close": 310.29,
+        "volume": 11082400
+      },
+      {
+        "date": "2026-04-20",
+        "open": 310.85,
+        "high": 317.13,
+        "low": 310.37,
+        "close": 316.99,
+        "volume": 10772000
+      },
+      {
+        "date": "2026-04-21",
+        "open": 317.49,
+        "high": 320.24,
+        "low": 312.75,
+        "close": 313,
+        "volume": 7084300
+      },
+      {
+        "date": "2026-04-22",
+        "open": 314.85,
+        "high": 315.15,
+        "low": 311.94,
+        "close": 313.02,
+        "volume": 5545900
+      },
+      {
+        "date": "2026-04-23",
+        "open": 313.52,
+        "high": 314.99,
+        "low": 308.89,
+        "close": 311.69,
+        "volume": 6969700
+      },
+      {
+        "date": "2026-04-24",
+        "open": 311.15,
+        "high": 311.15,
+        "low": 307.89,
+        "close": 308.28,
+        "volume": 5211500
       }
     ],
     "news": [
@@ -7937,39 +8005,42 @@
         "title": "Vice Chairman",
         "age": 62,
         "yearBorn": 1963,
-        "totalPay": 6572089
+        "totalPay": 6616871
+      },
+      {
+        "name": "Mr. Douglas B. Petno",
+        "title": "Co-Chief Executive Officer of the Commercial & Investment Bank",
+        "age": 59,
+        "yearBorn": 1966,
+        "totalPay": 11631825
       },
       {
         "name": "Mr. James Dimon",
         "title": "Chairman & CEO",
         "age": 69,
         "yearBorn": 1956,
-        "totalPay": 8132636
+        "totalPay": 8087852
       },
       {
         "name": "Mr. Jeremy Barnum",
         "title": "Executive VP & CFO",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 7535000
-      },
-      {
-        "name": "Mr. Kevin Brunner",
-        "title": "Global Chairperson of Investment Banking and M&A"
+        "totalPay": 8400000
       },
       {
         "name": "Mr. Todd Anthony Combs M.B.A.",
         "title": "Head Strategic Investment Group of Security & Resiliency Initiative",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 170000
+        "totalPay": 147717
       },
       {
         "name": "Mr. Troy Larry Rohrbaugh",
         "title": "Co- CEO of Commercial & Investment Bank",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 10205373
+        "totalPay": 11608676
       },
       {
         "name": "Ms. Elena A. Korablina",
@@ -7989,24 +8060,24 @@
         "title": "Chief Executive Officer of Asset & Wealth Management and Executive VP",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 12037181
+        "totalPay": 13000000
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.72,
-        "industryAvg": 13.1
+        "value": 14.76,
+        "industryAvg": 13.68
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.36,
-        "industryAvg": 0.99
+        "value": 4.53,
+        "industryAvg": 1.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.19,
-        "industryAvg": 0.42
+        "value": 2.28,
+        "industryAvg": 0.44
       },
       {
         "metric": "ROE",
@@ -8021,19 +8092,19 @@
       {
         "metric": "Net Margin",
         "value": 27.71,
-        "industryAvg": 24.72
+        "industryAvg": 24.709999999999997
       }
     ],
     "dcf": {
-      "fairValue": 275.02,
-      "currentPrice": 294.6,
-      "upside": -6.65,
-      "wacc": 9.61,
+      "fairValue": 426.69,
+      "currentPrice": 308.28,
+      "upside": 38.41,
+      "wacc": 9.47,
       "growthEstimates": {
-        "Near-term growth (Yrs 1-3)": -3.74,
+        "Near-term growth (Yrs 1-3)": 17.16,
         "Terminal growth": 3
       },
-      "recommendation": "Hold"
+      "recommendation": "Buy"
     }
   }
 }

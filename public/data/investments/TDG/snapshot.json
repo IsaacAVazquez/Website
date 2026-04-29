@@ -1,10 +1,10 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 31.11,
-      "ttmPe": 37.51,
-      "marketCap": 65904691200,
-      "psRatio": 7.24,
-      "pbRatio": -7.11
+      "ttmPe": 36.91,
+      "marketCap": 64841858048,
+      "psRatio": 7.12,
+      "pbRatio": -6.99
     },
     "profitability": {
       "roe": -4.07,
@@ -5691,137 +5691,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.95,
-      "costOfEquity": 12.47,
+      "wacc": 8.459999999999999,
+      "costOfEquity": 11.81,
       "costOfDebt": 1.58,
       "taxRate": 22,
-      "beta": 0.9529,
-      "marketCap": 65904691200
+      "beta": 0.8758,
+      "marketCap": 64841858048
     },
     "beta": {
-      "beta5y": 0.9529
+      "beta5y": 0.8758
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 1378.62,
-        "high": 1415.4,
-        "low": 1371.55,
-        "close": 1399.57,
-        "volume": 251500
-      },
-      {
-        "date": "2025-04-03",
-        "open": 1360,
-        "high": 1415.45,
-        "low": 1340.5,
-        "close": 1363.42,
-        "volume": 352300
-      },
-      {
-        "date": "2025-04-04",
-        "open": 1330.01,
-        "high": 1344.82,
-        "low": 1237.85,
-        "close": 1237.85,
-        "volume": 581900
-      },
-      {
-        "date": "2025-04-07",
-        "open": 1207.42,
-        "high": 1296.8,
-        "low": 1183.6,
-        "close": 1249.55,
-        "volume": 614500
-      },
-      {
-        "date": "2025-04-08",
-        "open": 1295.99,
-        "high": 1307.77,
-        "low": 1214.02,
-        "close": 1231.75,
-        "volume": 365700
-      },
-      {
-        "date": "2025-04-09",
-        "open": 1219.76,
-        "high": 1325.77,
-        "low": 1209.75,
-        "close": 1317.07,
-        "volume": 509300
-      },
-      {
-        "date": "2025-04-10",
-        "open": 1301.05,
-        "high": 1329.29,
-        "low": 1257.16,
-        "close": 1298.2,
-        "volume": 360200
-      },
-      {
-        "date": "2025-04-11",
-        "open": 1294.68,
-        "high": 1320.88,
-        "low": 1278.12,
-        "close": 1313.09,
-        "volume": 268300
-      },
-      {
-        "date": "2025-04-14",
-        "open": 1325.8,
-        "high": 1348.83,
-        "low": 1317.25,
-        "close": 1337.13,
-        "volume": 337700
-      },
-      {
-        "date": "2025-04-15",
-        "open": 1326.83,
-        "high": 1369.4,
-        "low": 1323.49,
-        "close": 1360.92,
-        "volume": 575500
-      },
-      {
-        "date": "2025-04-16",
-        "open": 1353.67,
-        "high": 1368.3,
-        "low": 1334.09,
-        "close": 1336.3,
-        "volume": 324300
-      },
-      {
-        "date": "2025-04-17",
-        "open": 1342.9,
-        "high": 1361.41,
-        "low": 1333.8,
-        "close": 1337.66,
-        "volume": 224400
-      },
-      {
-        "date": "2025-04-21",
-        "open": 1331.41,
-        "high": 1340.06,
-        "low": 1290.54,
-        "close": 1306.55,
-        "volume": 234400
-      },
-      {
-        "date": "2025-04-22",
-        "open": 1314.04,
-        "high": 1316.29,
-        "low": 1277.71,
-        "close": 1307.9,
-        "volume": 457100
-      },
-      {
-        "date": "2025-04-23",
-        "open": 1336.25,
-        "high": 1368.8,
-        "low": 1331.39,
-        "close": 1352,
-        "volume": 324800
-      },
       {
         "date": "2025-04-24",
         "open": 1354.39,
@@ -7717,6 +7597,126 @@
         "low": 1145.02,
         "close": 1167,
         "volume": 319800
+      },
+      {
+        "date": "2026-04-06",
+        "open": 1168,
+        "high": 1190.03,
+        "low": 1158.5,
+        "close": 1189.64,
+        "volume": 216200
+      },
+      {
+        "date": "2026-04-07",
+        "open": 1182.9,
+        "high": 1182.9,
+        "low": 1165.08,
+        "close": 1169.57,
+        "volume": 301800
+      },
+      {
+        "date": "2026-04-08",
+        "open": 1191.2,
+        "high": 1225.26,
+        "low": 1191.2,
+        "close": 1219.88,
+        "volume": 305400
+      },
+      {
+        "date": "2026-04-09",
+        "open": 1211.87,
+        "high": 1234.13,
+        "low": 1207.26,
+        "close": 1225.52,
+        "volume": 198100
+      },
+      {
+        "date": "2026-04-10",
+        "open": 1221,
+        "high": 1221,
+        "low": 1199.39,
+        "close": 1207.18,
+        "volume": 205700
+      },
+      {
+        "date": "2026-04-13",
+        "open": 1207.2,
+        "high": 1235.5,
+        "low": 1201.03,
+        "close": 1233.11,
+        "volume": 328900
+      },
+      {
+        "date": "2026-04-14",
+        "open": 1279.24,
+        "high": 1303.06,
+        "low": 1268.87,
+        "close": 1296.58,
+        "volume": 471300
+      },
+      {
+        "date": "2026-04-15",
+        "open": 1297.08,
+        "high": 1301.38,
+        "low": 1273.76,
+        "close": 1274.69,
+        "volume": 324100
+      },
+      {
+        "date": "2026-04-16",
+        "open": 1275.68,
+        "high": 1278.5,
+        "low": 1218.3,
+        "close": 1228.23,
+        "volume": 386300
+      },
+      {
+        "date": "2026-04-17",
+        "open": 1239,
+        "high": 1290.11,
+        "low": 1235,
+        "close": 1265.88,
+        "volume": 384800
+      },
+      {
+        "date": "2026-04-20",
+        "open": 1265.27,
+        "high": 1274.76,
+        "low": 1260,
+        "close": 1274.62,
+        "volume": 246000
+      },
+      {
+        "date": "2026-04-21",
+        "open": 1267.28,
+        "high": 1274.5,
+        "low": 1193.73,
+        "close": 1205.67,
+        "volume": 625900
+      },
+      {
+        "date": "2026-04-22",
+        "open": 1207.96,
+        "high": 1214.49,
+        "low": 1180.23,
+        "close": 1187.75,
+        "volume": 425200
+      },
+      {
+        "date": "2026-04-23",
+        "open": 1188.32,
+        "high": 1197.9,
+        "low": 1155.03,
+        "close": 1165.76,
+        "volume": 647000
+      },
+      {
+        "date": "2026-04-24",
+        "open": 1156.87,
+        "high": 1161.11,
+        "low": 1136.26,
+        "close": 1148.18,
+        "volume": 633800
       }
     ],
     "news": [
@@ -7753,19 +7753,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
-        "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
         "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
+        "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
         "type": "STORY"
       },
       {
@@ -7777,19 +7777,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "28cf1455-f3f5-3322-b721-77dafa9041c3",
-        "title": "TransDigm Agrees to Buy Servotronics for $110M, Expands Portfolio",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/transdigm-agrees-buy-servotronics-110m-154100080.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ed77a5e7-8829-3f7a-b272-30e43dbd5d3d",
         "title": "Alembic Global Advisory Adjusts TransDigm Group Price Target to $1,537 From $1,463",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/alembic-global-advisory-adjusts-transdigm-113010660.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "28cf1455-f3f5-3322-b721-77dafa9041c3",
+        "title": "TransDigm Agrees to Buy Servotronics for $110M, Expands Portfolio",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/transdigm-agrees-buy-servotronics-110m-154100080.html",
         "type": "STORY"
       },
       {
@@ -7862,50 +7862,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.51,
-        "industryAvg": 51.64
+        "value": 36.91,
+        "industryAvg": 46.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.24,
-        "industryAvg": 3.38
+        "value": 7.12,
+        "industryAvg": 3.05
       },
       {
         "metric": "P/B Ratio",
-        "value": -7.11,
-        "industryAvg": 6.82
+        "value": -6.99,
+        "industryAvg": 6.16
       },
       {
         "metric": "ROE",
         "value": -4.07,
-        "industryAvg": 7.9799999999999995
+        "industryAvg": 4.3
       },
       {
         "metric": "ROA",
         "value": 1.6500000000000001,
-        "industryAvg": 1.94
+        "industryAvg": 1.08
       },
       {
         "metric": "Gross Margin",
         "value": 59.17,
-        "industryAvg": 18.08
+        "industryAvg": 19.15
       },
       {
         "metric": "EBITDA Margin",
         "value": 50.2,
-        "industryAvg": 18.25
+        "industryAvg": 13.889999999999999
       },
       {
         "metric": "Net Margin",
         "value": 16.89,
-        "industryAvg": 11.14
+        "industryAvg": 6.74
       }
     ],
     "dcf": {
-      "fairValue": 395.86,
-      "currentPrice": 1167,
-      "upside": -66.08,
-      "wacc": 8.95,
+      "fairValue": 430.79,
+      "currentPrice": 1148.18,
+      "upside": -62.48,
+      "wacc": 8.46,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -12.99,
         "Terminal growth": 3

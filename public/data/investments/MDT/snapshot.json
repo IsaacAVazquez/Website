@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.58,
-      "ttmPe": 24.2,
-      "marketCap": 111222957550,
-      "psRatio": 3.13,
-      "pbRatio": 2.27
+      "ttmPe": 23.27,
+      "marketCap": 106973298200,
+      "psRatio": 3.01,
+      "pbRatio": 2.18
     },
     "profitability": {
       "roe": 2.34,
@@ -5360,137 +5360,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.51,
-      "costOfEquity": 10.530000000000001,
+      "wacc": 7.969999999999999,
+      "costOfEquity": 9.93,
       "costOfDebt": 0.64,
       "taxRate": 18,
-      "beta": 0.7269,
-      "marketCap": 111222957550
+      "beta": 0.6563,
+      "marketCap": 106973298200
     },
     "beta": {
-      "beta5y": 0.7269
+      "beta5y": 0.6563
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 88.43,
-        "high": 88.99,
-        "low": 87.46,
-        "close": 88.86,
-        "volume": 5577200
-      },
-      {
-        "date": "2025-04-03",
-        "open": 88.6,
-        "high": 89.54,
-        "low": 87.69,
-        "close": 87.89,
-        "volume": 7663100
-      },
-      {
-        "date": "2025-04-04",
-        "open": 87.99,
-        "high": 88.1,
-        "low": 82.68,
-        "close": 82.88,
-        "volume": 12034000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 81.22,
-        "high": 85.37,
-        "low": 80.58,
-        "close": 83.15,
-        "volume": 12129100
-      },
-      {
-        "date": "2025-04-08",
-        "open": 84.5,
-        "high": 85.31,
-        "low": 80.61,
-        "close": 81.88,
-        "volume": 10183900
-      },
-      {
-        "date": "2025-04-09",
-        "open": 80.5,
-        "high": 85.5,
-        "low": 79.55,
-        "close": 85.28,
-        "volume": 11981100
-      },
-      {
-        "date": "2025-04-10",
-        "open": 84.83,
-        "high": 85.3,
-        "low": 80.99,
-        "close": 82.54,
-        "volume": 8838400
-      },
-      {
-        "date": "2025-04-11",
-        "open": 83.16,
-        "high": 83.44,
-        "low": 81.18,
-        "close": 82.9,
-        "volume": 8014000
-      },
-      {
-        "date": "2025-04-14",
-        "open": 83.97,
-        "high": 84.26,
-        "low": 83.12,
-        "close": 84.22,
-        "volume": 5596000
-      },
-      {
-        "date": "2025-04-15",
-        "open": 84.63,
-        "high": 84.73,
-        "low": 82.22,
-        "close": 82.37,
-        "volume": 5829400
-      },
-      {
-        "date": "2025-04-16",
-        "open": 83.2,
-        "high": 84.49,
-        "low": 82.2,
-        "close": 82.7,
-        "volume": 7111600
-      },
-      {
-        "date": "2025-04-17",
-        "open": 82.51,
-        "high": 83.32,
-        "low": 82.12,
-        "close": 82.6,
-        "volume": 5937600
-      },
-      {
-        "date": "2025-04-21",
-        "open": 82.6,
-        "high": 82.89,
-        "low": 81.16,
-        "close": 81.8,
-        "volume": 5220000
-      },
-      {
-        "date": "2025-04-22",
-        "open": 82.81,
-        "high": 83.62,
-        "low": 82.5,
-        "close": 83.37,
-        "volume": 5284900
-      },
-      {
-        "date": "2025-04-23",
-        "open": 84.16,
-        "high": 85.35,
-        "low": 83.36,
-        "close": 83.75,
-        "volume": 6468200
-      },
       {
         "date": "2025-04-24",
         "open": 84.03,
@@ -7386,23 +7266,143 @@
         "low": 85.21,
         "close": 86.63,
         "volume": 4687400
+      },
+      {
+        "date": "2026-04-06",
+        "open": 86.43,
+        "high": 87.3,
+        "low": 86.07,
+        "close": 86.28,
+        "volume": 4532300
+      },
+      {
+        "date": "2026-04-07",
+        "open": 85.99,
+        "high": 86.97,
+        "low": 85.31,
+        "close": 86.42,
+        "volume": 6995400
+      },
+      {
+        "date": "2026-04-08",
+        "open": 87.87,
+        "high": 88.84,
+        "low": 86.91,
+        "close": 88.65,
+        "volume": 12720600
+      },
+      {
+        "date": "2026-04-09",
+        "open": 87.91,
+        "high": 88.55,
+        "low": 87.3,
+        "close": 87.91,
+        "volume": 7896600
+      },
+      {
+        "date": "2026-04-10",
+        "open": 88.35,
+        "high": 88.35,
+        "low": 87.07,
+        "close": 87.21,
+        "volume": 8279800
+      },
+      {
+        "date": "2026-04-13",
+        "open": 87,
+        "high": 88.16,
+        "low": 86.41,
+        "close": 88,
+        "volume": 8276900
+      },
+      {
+        "date": "2026-04-14",
+        "open": 88,
+        "high": 88.67,
+        "low": 87.43,
+        "close": 88.12,
+        "volume": 5640200
+      },
+      {
+        "date": "2026-04-15",
+        "open": 87.86,
+        "high": 87.91,
+        "low": 86.45,
+        "close": 87.1,
+        "volume": 8543000
+      },
+      {
+        "date": "2026-04-16",
+        "open": 86.82,
+        "high": 87.58,
+        "low": 85.51,
+        "close": 85.65,
+        "volume": 8816900
+      },
+      {
+        "date": "2026-04-17",
+        "open": 85.72,
+        "high": 87.05,
+        "low": 85.55,
+        "close": 86.19,
+        "volume": 10460700
+      },
+      {
+        "date": "2026-04-20",
+        "open": 85.99,
+        "high": 87.05,
+        "low": 84.99,
+        "close": 85,
+        "volume": 8500600
+      },
+      {
+        "date": "2026-04-21",
+        "open": 85.25,
+        "high": 85.35,
+        "low": 81.96,
+        "close": 82,
+        "volume": 10786400
+      },
+      {
+        "date": "2026-04-22",
+        "open": 82.9,
+        "high": 84.27,
+        "low": 82.66,
+        "close": 83.22,
+        "volume": 10668800
+      },
+      {
+        "date": "2026-04-23",
+        "open": 83.85,
+        "high": 84.25,
+        "low": 82.87,
+        "close": 83.79,
+        "volume": 7864600
+      },
+      {
+        "date": "2026-04-24",
+        "open": 83.51,
+        "high": 83.77,
+        "low": 82.78,
+        "close": 83.32,
+        "volume": 6570000
       }
     ],
     "news": [
-      {
-        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
-        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
         "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
+        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
         "type": "STORY"
       },
       {
@@ -7454,19 +7454,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
-        "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
         "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
+        "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
         "type": "STORY"
       }
     ],
@@ -7530,23 +7530,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.2,
-        "industryAvg": 45.42
+        "value": 23.27,
+        "industryAvg": 44.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.13,
-        "industryAvg": 3.27
+        "value": 3.01,
+        "industryAvg": 3.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.27,
-        "industryAvg": 3.01
+        "value": 2.18,
+        "industryAvg": 1.1
       },
       {
         "metric": "ROE",
         "value": 2.34,
-        "industryAvg": 2.74
+        "industryAvg": 2.73
       },
       {
         "metric": "ROA",
@@ -7556,12 +7556,12 @@
       {
         "metric": "Gross Margin",
         "value": 63.83,
-        "industryAvg": 56.269999999999996
+        "industryAvg": 56.34
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.88,
-        "industryAvg": 21.57
+        "industryAvg": 21.6
       },
       {
         "metric": "Net Margin",
@@ -7570,10 +7570,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 50.24,
-      "currentPrice": 86.63,
-      "upside": -42,
-      "wacc": 8.51,
+      "fairValue": 55.62,
+      "currentPrice": 83.32,
+      "upside": -33.24,
+      "wacc": 7.97,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -11.88,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "ABBV",
-  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.36,
-      "ttmPe": 88.49,
-      "marketCap": 369264413960,
-      "psRatio": 6.04,
-      "pbRatio": -112.92
+      "ttmPe": 84.2,
+      "marketCap": 351352861990,
+      "psRatio": 5.74,
+      "pbRatio": -107.45
     },
     "profitability": {
       "roe": -61.1,
@@ -5245,137 +5245,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.32,
-      "costOfEquity": 7.340000000000001,
+      "wacc": 5.59,
+      "costOfEquity": 6.529999999999999,
       "costOfDebt": 1.06,
       "taxRate": 32,
-      "beta": 0.3538,
-      "marketCap": 369264413960
+      "beta": 0.2596,
+      "marketCap": 351352861990
     },
     "beta": {
-      "beta5y": 0.3538
+      "beta5y": 0.2596
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 207.22,
-        "high": 207.22,
-        "low": 200.34,
-        "close": 205.19,
-        "volume": 9262800
-      },
-      {
-        "date": "2025-04-03",
-        "open": 210.3,
-        "high": 210.69,
-        "low": 201.24,
-        "close": 201.64,
-        "volume": 7593100
-      },
-      {
-        "date": "2025-04-04",
-        "open": 200,
-        "high": 200,
-        "low": 186.17,
-        "close": 186.96,
-        "volume": 13505200
-      },
-      {
-        "date": "2025-04-07",
-        "open": 181.03,
-        "high": 188.2,
-        "low": 176.28,
-        "close": 186.55,
-        "volume": 12581100
-      },
-      {
-        "date": "2025-04-08",
-        "open": 187.6,
-        "high": 188.39,
-        "low": 172.32,
-        "close": 175.67,
-        "volume": 12517100
-      },
-      {
-        "date": "2025-04-09",
-        "open": 168.3,
-        "high": 180.6,
-        "low": 164.39,
-        "close": 179.84,
-        "volume": 18977800
-      },
-      {
-        "date": "2025-04-10",
-        "open": 177.75,
-        "high": 178,
-        "low": 164.97,
-        "close": 174.2,
-        "volume": 13970000
-      },
-      {
-        "date": "2025-04-11",
-        "open": 173.81,
-        "high": 176.97,
-        "low": 169.33,
-        "close": 175.05,
-        "volume": 9047700
-      },
-      {
-        "date": "2025-04-14",
-        "open": 177.44,
-        "high": 180.19,
-        "low": 176.2,
-        "close": 179.1,
-        "volume": 7164400
-      },
-      {
-        "date": "2025-04-15",
-        "open": 177.7,
-        "high": 180.5,
-        "low": 176.31,
-        "close": 176.8,
-        "volume": 8078500
-      },
-      {
-        "date": "2025-04-16",
-        "open": 176.53,
-        "high": 176.85,
-        "low": 169.75,
-        "close": 171.68,
-        "volume": 9459300
-      },
-      {
-        "date": "2025-04-17",
-        "open": 172.57,
-        "high": 175.2,
-        "low": 171.91,
-        "close": 172.99,
-        "volume": 8998100
-      },
-      {
-        "date": "2025-04-21",
-        "open": 173.47,
-        "high": 174.17,
-        "low": 168.54,
-        "close": 170.16,
-        "volume": 7364600
-      },
-      {
-        "date": "2025-04-22",
-        "open": 171.08,
-        "high": 174.66,
-        "low": 170.91,
-        "close": 173.78,
-        "volume": 6191900
-      },
-      {
-        "date": "2025-04-23",
-        "open": 175,
-        "high": 178.15,
-        "low": 174.4,
-        "close": 177.05,
-        "volume": 7119700
-      },
       {
         "date": "2025-04-24",
         "open": 177.61,
@@ -7271,6 +7151,126 @@
         "low": 207.71,
         "close": 208.84,
         "volume": 5151100
+      },
+      {
+        "date": "2026-04-06",
+        "open": 207.04,
+        "high": 209,
+        "low": 205.3,
+        "close": 206.69,
+        "volume": 4929100
+      },
+      {
+        "date": "2026-04-07",
+        "open": 206.23,
+        "high": 206.49,
+        "low": 201.66,
+        "close": 206.37,
+        "volume": 8801600
+      },
+      {
+        "date": "2026-04-08",
+        "open": 206.26,
+        "high": 212.22,
+        "low": 204.56,
+        "close": 211.59,
+        "volume": 5477500
+      },
+      {
+        "date": "2026-04-09",
+        "open": 209.48,
+        "high": 213.51,
+        "low": 208.74,
+        "close": 212.4,
+        "volume": 4477800
+      },
+      {
+        "date": "2026-04-10",
+        "open": 213.55,
+        "high": 214.1,
+        "low": 207.75,
+        "close": 207.94,
+        "volume": 4633200
+      },
+      {
+        "date": "2026-04-13",
+        "open": 206.43,
+        "high": 208.08,
+        "low": 203.01,
+        "close": 206.47,
+        "volume": 7532500
+      },
+      {
+        "date": "2026-04-14",
+        "open": 204.8,
+        "high": 210.42,
+        "low": 204.06,
+        "close": 210.26,
+        "volume": 6199400
+      },
+      {
+        "date": "2026-04-15",
+        "open": 208.99,
+        "high": 209.82,
+        "low": 205.55,
+        "close": 208.42,
+        "volume": 5952100
+      },
+      {
+        "date": "2026-04-16",
+        "open": 207.78,
+        "high": 209.66,
+        "low": 206.52,
+        "close": 208.99,
+        "volume": 5075400
+      },
+      {
+        "date": "2026-04-17",
+        "open": 209.66,
+        "high": 212.35,
+        "low": 207.82,
+        "close": 208.38,
+        "volume": 8986600
+      },
+      {
+        "date": "2026-04-20",
+        "open": 207.94,
+        "high": 208.33,
+        "low": 202.84,
+        "close": 203.71,
+        "volume": 5774300
+      },
+      {
+        "date": "2026-04-21",
+        "open": 204.01,
+        "high": 206.2,
+        "low": 200.92,
+        "close": 205.12,
+        "volume": 7772100
+      },
+      {
+        "date": "2026-04-22",
+        "open": 205.17,
+        "high": 205.99,
+        "low": 199.81,
+        "close": 200.5,
+        "volume": 7646200
+      },
+      {
+        "date": "2026-04-23",
+        "open": 201.05,
+        "high": 202.76,
+        "low": 200.41,
+        "close": 200.95,
+        "volume": 7461100
+      },
+      {
+        "date": "2026-04-24",
+        "open": 198.93,
+        "high": 200.25,
+        "low": 197.14,
+        "close": 198.71,
+        "volume": 7605100
       }
     ],
     "news": [
@@ -7315,19 +7315,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
-        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
         "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
+        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
         "type": "STORY"
       },
       {
@@ -7364,18 +7364,6 @@
         "totalPay": 4072891
       },
       {
-        "name": "Dr. Darin J. Messina Ph.D.",
-        "title": "Senior Vice President of Aesthetics R&D"
-      },
-      {
-        "name": "Dr. Jonathon Sedgwick Ph.D.",
-        "title": "Senior VP & Global Head of Discovery Research"
-      },
-      {
-        "name": "Dr. Primal Kaur M.D.",
-        "title": "Senior Vice President of Global Development of Immunology, Neuroscience, Eye Care & Specialty"
-      },
-      {
         "name": "Dr. Roopal B. Thakkar M.D.",
         "title": "Executive VP of Research & Development and Chief Scientific Officer",
         "age": 53,
@@ -7383,14 +7371,10 @@
         "totalPay": 3555921
       },
       {
-        "name": "Mr. David Ryan Purdue",
-        "title": "Senior VP & Corporate Controller",
-        "age": 47,
-        "yearBorn": 1978
-      },
-      {
-        "name": "Mr. Jason Smith",
-        "title": "Senior VP & President of Neuroscience"
+        "name": "Mr. Demetris D. Crum",
+        "title": "Executive VP & Chief Human Resources Officer",
+        "age": 44,
+        "yearBorn": 1981
       },
       {
         "name": "Mr. Jeffrey Ryan Stewart",
@@ -7400,6 +7384,19 @@
         "totalPay": 5003102
       },
       {
+        "name": "Mr. Perry C. Siatis",
+        "title": "Executive VP, General Counsel & Secretary",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
+        "name": "Mr. Robert A. Michael CPA",
+        "title": "CEO & Chairman of the Board",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 7416293
+      },
+      {
         "name": "Mr. Scott T. Reents",
         "title": "Executive VP & CFO",
         "age": 57,
@@ -7407,35 +7404,43 @@
         "totalPay": 3946913
       },
       {
-        "name": "Ms. Nisha Patel Burns",
-        "title": "Senior VP of AbbVie & President of Specialty and U.S. Therapeutics Operations"
+        "name": "Mr. Wulff-Erik von Borcke",
+        "title": "Senior VP & President of Oncology"
+      },
+      {
+        "name": "Ms. Elizabeth Shea",
+        "title": "Senior Vice President of Investor Relations"
+      },
+      {
+        "name": "Ms. Linda Ray",
+        "title": "Senior VP & Chief Information Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 88.49,
-        "industryAvg": 20.63
+        "value": 84.2,
+        "industryAvg": 20.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.04,
-        "industryAvg": 4.44
+        "value": 5.74,
+        "industryAvg": 4.26
       },
       {
         "metric": "P/B Ratio",
-        "value": -112.92,
-        "industryAvg": 5.57
+        "value": -107.45,
+        "industryAvg": 5.36
       },
       {
         "metric": "ROE",
         "value": -61.1,
-        "industryAvg": 4.77
+        "industryAvg": 5.55
       },
       {
         "metric": "ROA",
         "value": 1.35,
-        "industryAvg": 1.71
+        "industryAvg": 1.9800000000000002
       },
       {
         "metric": "Gross Margin",
@@ -7445,24 +7450,24 @@
       {
         "metric": "EBITDA Margin",
         "value": 32.31,
-        "industryAvg": 27.72
+        "industryAvg": 31.119999999999997
       },
       {
         "metric": "Net Margin",
         "value": 10.870000000000001,
-        "industryAvg": 13.639999999999999
+        "industryAvg": 15.939999999999998
       }
     ],
     "dcf": {
-      "fairValue": 160.75,
-      "currentPrice": 208.84,
-      "upside": -23.03,
-      "wacc": 6.32,
+      "fairValue": 207.02,
+      "currentPrice": 198.71,
+      "upside": 4.18,
+      "wacc": 5.59,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3
       },
-      "recommendation": "Sell"
+      "recommendation": "Hold"
     }
   }
 }

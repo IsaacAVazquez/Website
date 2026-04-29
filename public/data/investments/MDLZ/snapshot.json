@@ -1,10 +1,10 @@
 {
   "symbol": "MDLZ",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.89,
-      "ttmPe": 30.44,
-      "marketCap": 73757401578,
-      "psRatio": 1.91,
-      "pbRatio": 2.85
+      "ttmPe": 30.48,
+      "marketCap": 73847130777,
+      "psRatio": 1.92,
+      "pbRatio": 2.86
     },
     "profitability": {
       "roe": 2.56,
@@ -5631,137 +5631,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.970000000000001,
-      "costOfEquity": 7.59,
+      "wacc": 5.81,
+      "costOfEquity": 7.37,
       "costOfDebt": 0.7100000000000001,
       "taxRate": 28.000000000000004,
-      "beta": 0.3833,
-      "marketCap": 73757401578
+      "beta": 0.358,
+      "marketCap": 73847130777
     },
     "beta": {
-      "beta5y": 0.3833
+      "beta5y": 0.358
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 67.65,
-        "high": 67.71,
-        "low": 65.67,
-        "close": 66.13,
-        "volume": 11356900
-      },
-      {
-        "date": "2025-04-03",
-        "open": 67.69,
-        "high": 69,
-        "low": 67.21,
-        "close": 67.9,
-        "volume": 13777300
-      },
-      {
-        "date": "2025-04-04",
-        "open": 68.41,
-        "high": 69.12,
-        "low": 65.96,
-        "close": 66.31,
-        "volume": 13787000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 65.18,
-        "high": 66.69,
-        "low": 64.63,
-        "close": 65.23,
-        "volume": 15963400
-      },
-      {
-        "date": "2025-04-08",
-        "open": 65.32,
-        "high": 66.42,
-        "low": 63.69,
-        "close": 64.06,
-        "volume": 12421600
-      },
-      {
-        "date": "2025-04-09",
-        "open": 63.49,
-        "high": 66.65,
-        "low": 63.14,
-        "close": 66.19,
-        "volume": 13380300
-      },
-      {
-        "date": "2025-04-10",
-        "open": 66.45,
-        "high": 66.96,
-        "low": 64.71,
-        "close": 65.98,
-        "volume": 10703600
-      },
-      {
-        "date": "2025-04-11",
-        "open": 66.59,
-        "high": 67.69,
-        "low": 66.04,
-        "close": 67.05,
-        "volume": 8840600
-      },
-      {
-        "date": "2025-04-14",
-        "open": 66.7,
-        "high": 68.6,
-        "low": 66.52,
-        "close": 68.3,
-        "volume": 6728400
-      },
-      {
-        "date": "2025-04-15",
-        "open": 68.5,
-        "high": 68.61,
-        "low": 66.88,
-        "close": 67.03,
-        "volume": 5782500
-      },
-      {
-        "date": "2025-04-16",
-        "open": 67.25,
-        "high": 67.76,
-        "low": 66.13,
-        "close": 66.48,
-        "volume": 6266300
-      },
-      {
-        "date": "2025-04-17",
-        "open": 66.48,
-        "high": 67.85,
-        "low": 66.37,
-        "close": 67.32,
-        "volume": 10777600
-      },
-      {
-        "date": "2025-04-21",
-        "open": 67.3,
-        "high": 67.86,
-        "low": 66.91,
-        "close": 67.76,
-        "volume": 7637100
-      },
-      {
-        "date": "2025-04-22",
-        "open": 67.98,
-        "high": 69.09,
-        "low": 67.8,
-        "close": 68.29,
-        "volume": 6720500
-      },
-      {
-        "date": "2025-04-23",
-        "open": 67.73,
-        "high": 68.54,
-        "low": 66.88,
-        "close": 67.38,
-        "volume": 6369500
-      },
       {
         "date": "2025-04-24",
         "open": 66.94,
@@ -7657,6 +7537,126 @@
         "low": 56.73,
         "close": 57.54,
         "volume": 5631700
+      },
+      {
+        "date": "2026-04-06",
+        "open": 57.54,
+        "high": 58.64,
+        "low": 57.35,
+        "close": 58.38,
+        "volume": 5896500
+      },
+      {
+        "date": "2026-04-07",
+        "open": 58.29,
+        "high": 58.6,
+        "low": 57.45,
+        "close": 57.51,
+        "volume": 9049900
+      },
+      {
+        "date": "2026-04-08",
+        "open": 57.47,
+        "high": 58.84,
+        "low": 57.22,
+        "close": 58.83,
+        "volume": 8101700
+      },
+      {
+        "date": "2026-04-09",
+        "open": 58.18,
+        "high": 59.23,
+        "low": 58.08,
+        "close": 59.09,
+        "volume": 7349400
+      },
+      {
+        "date": "2026-04-10",
+        "open": 59.09,
+        "high": 59.32,
+        "low": 58.6,
+        "close": 59,
+        "volume": 6807400
+      },
+      {
+        "date": "2026-04-13",
+        "open": 58.72,
+        "high": 58.83,
+        "low": 57.42,
+        "close": 57.68,
+        "volume": 9286300
+      },
+      {
+        "date": "2026-04-14",
+        "open": 57.62,
+        "high": 58.4,
+        "low": 56.98,
+        "close": 57.84,
+        "volume": 6585400
+      },
+      {
+        "date": "2026-04-15",
+        "open": 57.68,
+        "high": 57.68,
+        "low": 56.34,
+        "close": 56.58,
+        "volume": 8049800
+      },
+      {
+        "date": "2026-04-16",
+        "open": 56.4,
+        "high": 57.17,
+        "low": 56.07,
+        "close": 57.07,
+        "volume": 6754700
+      },
+      {
+        "date": "2026-04-17",
+        "open": 57.34,
+        "high": 57.49,
+        "low": 56.85,
+        "close": 57.25,
+        "volume": 8240800
+      },
+      {
+        "date": "2026-04-20",
+        "open": 57.28,
+        "high": 57.62,
+        "low": 56.82,
+        "close": 57.31,
+        "volume": 5552100
+      },
+      {
+        "date": "2026-04-21",
+        "open": 57.09,
+        "high": 57.18,
+        "low": 56,
+        "close": 56.13,
+        "volume": 7301900
+      },
+      {
+        "date": "2026-04-22",
+        "open": 56.18,
+        "high": 56.54,
+        "low": 55.79,
+        "close": 56.06,
+        "volume": 5639800
+      },
+      {
+        "date": "2026-04-23",
+        "open": 56.32,
+        "high": 57.99,
+        "low": 56.18,
+        "close": 57.71,
+        "volume": 7642700
+      },
+      {
+        "date": "2026-04-24",
+        "open": 57.3,
+        "high": 58.07,
+        "low": 57.07,
+        "close": 57.61,
+        "volume": 10095600
       }
     ],
     "news": [
@@ -7753,33 +7753,34 @@
         "title": "Chairman & CEO",
         "age": 65,
         "yearBorn": 1960,
-        "totalPay": 4991546
+        "totalPay": 5584200
       },
       {
         "name": "Mr. Filippo Catalano",
         "title": "Chief Information & Digital Officer",
-        "age": 51,
-        "yearBorn": 1974
+        "age": 52,
+        "yearBorn": 1973
       },
       {
         "name": "Mr. Gustavo Carlos Valle",
         "title": "Executive VP & President of North America",
         "age": 61,
         "yearBorn": 1964,
-        "totalPay": 1280246
+        "totalPay": 1327694
       },
       {
         "name": "Mr. Luca Zaramella",
         "title": "Executive VP, CFO & COO",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 2664936
+        "totalPay": 2931206
       },
       {
         "name": "Mr. Martin Renaud",
         "title": "Executive VP and Chief Marketing & Sales Officer",
-        "age": 56,
-        "yearBorn": 1969
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 1687256
       },
       {
         "name": "Mr. Mohit Bhalla",
@@ -7792,67 +7793,67 @@
         "title": "Vice President of Investor Relations"
       },
       {
+        "name": "Mr. Volker Kuhn",
+        "title": "Executive VP & President of Europe",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 2423369
+      },
+      {
         "name": "Ms. Laura Stein J.D.",
         "title": "Executive VP of Corporate & Legal Affairs, General Counsel & Company Secretary",
         "age": 64,
         "yearBorn": 1961,
         "totalPay": 2009258
-      },
-      {
-        "name": "Ms. Stephanie Lilak",
-        "title": "Executive VP & Chief People Officer",
-        "age": 57,
-        "yearBorn": 1968,
-        "totalPay": 2817277
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.44,
-        "industryAvg": 45.8
+        "value": 30.48,
+        "industryAvg": 43.82
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.91,
-        "industryAvg": 3.09
+        "value": 1.92,
+        "industryAvg": 2.95
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.85,
-        "industryAvg": 3.84
+        "value": 2.86,
+        "industryAvg": 3.67
       },
       {
         "metric": "ROE",
         "value": 2.56,
-        "industryAvg": 3.2
+        "industryAvg": 3.15
       },
       {
         "metric": "ROA",
         "value": 0.9299999999999999,
-        "industryAvg": 1.1900000000000002
+        "industryAvg": 1.17
       },
       {
         "metric": "Gross Margin",
         "value": 28.16,
-        "industryAvg": 30.18
+        "industryAvg": 30.209999999999997
       },
       {
         "metric": "EBITDA Margin",
         "value": 13.58,
-        "industryAvg": 15.21
+        "industryAvg": 15.27
       },
       {
         "metric": "Net Margin",
         "value": 6.34,
-        "industryAvg": 7.42
+        "industryAvg": 7.290000000000001
       }
     ],
     "dcf": {
-      "fairValue": 32.85,
-      "currentPrice": 57.54,
-      "upside": -42.91,
-      "wacc": 5.97,
+      "fairValue": 34.68,
+      "currentPrice": 57.61,
+      "upside": -39.8,
+      "wacc": 5.81,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

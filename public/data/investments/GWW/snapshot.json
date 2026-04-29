@@ -1,10 +1,10 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 35.55,
-      "ttmPe": 31.43,
-      "marketCap": 52936958850,
-      "psRatio": 2.95,
-      "pbRatio": 14.17
+      "ttmPe": 32.29,
+      "marketCap": 54383730270,
+      "psRatio": 3.03,
+      "pbRatio": 14.56
     },
     "profitability": {
       "roe": 12.36,
@@ -4830,137 +4830,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.86,
-      "costOfEquity": 13.530000000000001,
+      "wacc": 12.520000000000001,
+      "costOfEquity": 13.15,
       "costOfDebt": 0.7000000000000001,
       "taxRate": 23,
-      "beta": 1.077,
-      "marketCap": 52936958850
+      "beta": 1.0324,
+      "marketCap": 54383730270
     },
     "beta": {
-      "beta5y": 1.077
+      "beta5y": 1.0324
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 984.86,
-        "high": 1006.7,
-        "low": 982.64,
-        "close": 1004.92,
-        "volume": 255200
-      },
-      {
-        "date": "2025-04-03",
-        "open": 955.89,
-        "high": 977.6,
-        "low": 955.01,
-        "close": 973.41,
-        "volume": 388400
-      },
-      {
-        "date": "2025-04-04",
-        "open": 959.7,
-        "high": 975.1,
-        "low": 939.46,
-        "close": 942.43,
-        "volume": 451500
-      },
-      {
-        "date": "2025-04-07",
-        "open": 924.57,
-        "high": 953.52,
-        "low": 893.99,
-        "close": 923.85,
-        "volume": 443500
-      },
-      {
-        "date": "2025-04-08",
-        "open": 945,
-        "high": 956.8,
-        "low": 909.09,
-        "close": 919.93,
-        "volume": 295300
-      },
-      {
-        "date": "2025-04-09",
-        "open": 910.75,
-        "high": 980.01,
-        "low": 902.44,
-        "close": 965.37,
-        "volume": 503000
-      },
-      {
-        "date": "2025-04-10",
-        "open": 964.89,
-        "high": 967.73,
-        "low": 930.05,
-        "close": 960.69,
-        "volume": 312000
-      },
-      {
-        "date": "2025-04-11",
-        "open": 959.03,
-        "high": 999.09,
-        "low": 956.87,
-        "close": 994,
-        "volume": 395300
-      },
-      {
-        "date": "2025-04-14",
-        "open": 994,
-        "high": 1005.52,
-        "low": 980.13,
-        "close": 1000.2,
-        "volume": 237200
-      },
-      {
-        "date": "2025-04-15",
-        "open": 998.74,
-        "high": 1004.03,
-        "low": 992.79,
-        "close": 999.73,
-        "volume": 161600
-      },
-      {
-        "date": "2025-04-16",
-        "open": 991.39,
-        "high": 1009.08,
-        "low": 978.66,
-        "close": 985.33,
-        "volume": 306400
-      },
-      {
-        "date": "2025-04-17",
-        "open": 989.89,
-        "high": 1013.49,
-        "low": 987.48,
-        "close": 1002.69,
-        "volume": 412200
-      },
-      {
-        "date": "2025-04-21",
-        "open": 998.03,
-        "high": 998.03,
-        "low": 968.11,
-        "close": 978.78,
-        "volume": 284900
-      },
-      {
-        "date": "2025-04-22",
-        "open": 985,
-        "high": 999.62,
-        "low": 985,
-        "close": 998.85,
-        "volume": 221900
-      },
-      {
-        "date": "2025-04-23",
-        "open": 1010.5,
-        "high": 1017.96,
-        "low": 989.36,
-        "close": 992.32,
-        "volume": 184100
-      },
       {
         "date": "2025-04-24",
         "open": 996.46,
@@ -6856,6 +6736,126 @@
         "low": 1070.42,
         "close": 1117.45,
         "volume": 203900
+      },
+      {
+        "date": "2026-04-06",
+        "open": 1109.73,
+        "high": 1120.59,
+        "low": 1073.21,
+        "close": 1117.24,
+        "volume": 176700
+      },
+      {
+        "date": "2026-04-07",
+        "open": 1117.2,
+        "high": 1117.49,
+        "low": 1099.63,
+        "close": 1108.15,
+        "volume": 254000
+      },
+      {
+        "date": "2026-04-08",
+        "open": 1133.82,
+        "high": 1149.12,
+        "low": 1129.26,
+        "close": 1146.72,
+        "volume": 250700
+      },
+      {
+        "date": "2026-04-09",
+        "open": 1144.97,
+        "high": 1183.01,
+        "low": 1144.23,
+        "close": 1172.21,
+        "volume": 326100
+      },
+      {
+        "date": "2026-04-10",
+        "open": 1173.86,
+        "high": 1179.71,
+        "low": 1165.53,
+        "close": 1172.07,
+        "volume": 137600
+      },
+      {
+        "date": "2026-04-13",
+        "open": 1168,
+        "high": 1171.41,
+        "low": 1134.87,
+        "close": 1161.66,
+        "volume": 324200
+      },
+      {
+        "date": "2026-04-14",
+        "open": 1158.39,
+        "high": 1167.02,
+        "low": 1149.5,
+        "close": 1155.42,
+        "volume": 188100
+      },
+      {
+        "date": "2026-04-15",
+        "open": 1149.81,
+        "high": 1154.17,
+        "low": 1128.16,
+        "close": 1143.35,
+        "volume": 194800
+      },
+      {
+        "date": "2026-04-16",
+        "open": 1140.73,
+        "high": 1159.06,
+        "low": 1132.67,
+        "close": 1133.52,
+        "volume": 300600
+      },
+      {
+        "date": "2026-04-17",
+        "open": 1138.52,
+        "high": 1168.06,
+        "low": 1131.51,
+        "close": 1162.94,
+        "volume": 271700
+      },
+      {
+        "date": "2026-04-20",
+        "open": 1158.65,
+        "high": 1164.68,
+        "low": 1153.43,
+        "close": 1163.1,
+        "volume": 173100
+      },
+      {
+        "date": "2026-04-21",
+        "open": 1162.81,
+        "high": 1176.48,
+        "low": 1160.09,
+        "close": 1171.03,
+        "volume": 180900
+      },
+      {
+        "date": "2026-04-22",
+        "open": 1177.57,
+        "high": 1182.71,
+        "low": 1154.16,
+        "close": 1154.18,
+        "volume": 209900
+      },
+      {
+        "date": "2026-04-23",
+        "open": 1161.74,
+        "high": 1177.91,
+        "low": 1149.39,
+        "close": 1164.91,
+        "volume": 311700
+      },
+      {
+        "date": "2026-04-24",
+        "open": 1159.19,
+        "high": 1160.62,
+        "low": 1141.05,
+        "close": 1147.99,
+        "volume": 283300
       }
     ],
     "news": [
@@ -6900,19 +6900,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e70770cb-4bce-39f8-bf9d-63bbef571d8e",
-        "title": "Is W.W. Grainger, Inc. (NYSE:GWW) Worth US$1.0k Based On Its Intrinsic Value?",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-nyse-110018632.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "efa58763-404b-39af-9eb4-0e734065d4a0",
         "title": "Q1 Earnings Outperformers: VSE Corporation (NASDAQ:VSEC) And The Rest Of The Maintenance and Repair Distributors Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-vse-corporation-033134363.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e70770cb-4bce-39f8-bf9d-63bbef571d8e",
+        "title": "Is W.W. Grainger, Inc. (NYSE:GWW) Worth US$1.0k Based On Its Intrinsic Value?",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-nyse-110018632.html",
         "type": "STORY"
       },
       {
@@ -6924,19 +6924,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8c50dfea-f9d2-302f-b7a7-3a4fd659354a",
-        "title": "W.W. Grainger, Inc. (GWW): Among Benjamin Graham Stocks for Defensive Investors",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-gww-083523334.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "df7e4f5c-67ef-3c4d-ad6d-6cd45c2fd6f1",
         "title": "SIEGY vs. GWW: Which Stock Is the Better Value Option?",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/siegy-vs-gww-stock-better-154012764.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8c50dfea-f9d2-302f-b7a7-3a4fd659354a",
+        "title": "W.W. Grainger, Inc. (GWW): Among Benjamin Graham Stocks for Defensive Investors",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-gww-083523334.html",
         "type": "STORY"
       }
     ],
@@ -7009,50 +7009,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.43,
-        "industryAvg": 39.77
+        "value": 32.29,
+        "industryAvg": 42.52
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.95,
-        "industryAvg": 1.79
+        "value": 3.03,
+        "industryAvg": 1.92
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.17,
-        "industryAvg": 4.63
+        "value": 14.56,
+        "industryAvg": 4.97
       },
       {
         "metric": "ROE",
         "value": 12.36,
-        "industryAvg": 3.4099999999999997
+        "industryAvg": 3.4799999999999995
       },
       {
         "metric": "ROA",
         "value": 5.06,
-        "industryAvg": 1.51
+        "industryAvg": 1.54
       },
       {
         "metric": "Gross Margin",
         "value": 39.46,
-        "industryAvg": 28.849999999999998
+        "industryAvg": 28.939999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 15.909999999999998,
-        "industryAvg": 9.969999999999999
+        "industryAvg": 10.05
       },
       {
         "metric": "Net Margin",
         "value": 10.190000000000001,
-        "industryAvg": 4.78
+        "industryAvg": 4.8500000000000005
       }
     ],
     "dcf": {
-      "fairValue": 333.97,
-      "currentPrice": 1117.45,
-      "upside": -70.11,
-      "wacc": 12.86,
+      "fairValue": 345.8,
+      "currentPrice": 1147.99,
+      "upside": -69.88,
+      "wacc": 12.52,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -2.87,
         "Terminal growth": 3

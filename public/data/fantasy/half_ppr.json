@@ -2,8 +2,8 @@
   "schemaVersion": 5,
   "season": 2026,
   "week": 0,
-  "generatedAt": "2026-04-29T18:19:03.189Z",
-  "upstreamUpdatedAt": "2026-04-29T17:44:23.000Z",
+  "generatedAt": "2026-04-29T18:56:17.168Z",
+  "upstreamUpdatedAt": "2026-04-29T18:17:58.000Z",
   "scoringFormat": "HALF_PPR",
   "source": "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall boards come from the public overall consensus page for each scoring format, while flex is derived locally from the published overall board.",
   "positions": {
@@ -2538,7 +2538,7 @@
         "minRank": 1,
         "maxRank": 2,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23180",
@@ -2554,7 +2554,7 @@
         "minRank": 1,
         "maxRank": 3,
         "ownership": 99.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23070",
@@ -2570,7 +2570,7 @@
         "minRank": 2,
         "maxRank": 3,
         "ownership": 99.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19202",
@@ -2586,7 +2586,7 @@
         "minRank": 4,
         "maxRank": 6,
         "ownership": 98.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19799",
@@ -2602,7 +2602,7 @@
         "minRank": 4,
         "maxRank": 6,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19236",
@@ -2618,7 +2618,7 @@
         "minRank": 4,
         "maxRank": 7,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23163",
@@ -2634,7 +2634,7 @@
         "minRank": 6,
         "maxRank": 9,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23113",
@@ -2650,7 +2650,7 @@
         "minRank": 6,
         "maxRank": 13,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20130",
@@ -2666,7 +2666,7 @@
         "minRank": 7,
         "maxRank": 12,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25409",
@@ -2682,7 +2682,7 @@
         "minRank": 7,
         "maxRank": 17,
         "ownership": 74.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22963",
@@ -2698,7 +2698,7 @@
         "minRank": 9,
         "maxRank": 13,
         "ownership": 97.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20111",
@@ -2714,7 +2714,7 @@
         "minRank": 9,
         "maxRank": 15,
         "ownership": 96.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18218",
@@ -2730,7 +2730,7 @@
         "minRank": 10,
         "maxRank": 17,
         "ownership": 98,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25417",
@@ -2746,7 +2746,7 @@
         "minRank": 13,
         "maxRank": 19,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19211",
@@ -2762,7 +2762,7 @@
         "minRank": 12,
         "maxRank": 18,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19222",
@@ -2778,7 +2778,7 @@
         "minRank": 12,
         "maxRank": 23,
         "ownership": 96.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23072",
@@ -2794,7 +2794,7 @@
         "minRank": 16,
         "maxRank": 20,
         "ownership": 86.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-12123",
@@ -2804,13 +2804,13 @@
         "averageRank": 18,
         "standardDeviation": 3.34,
         "rankEcr": 18,
-        "rankAverage": 18.53,
+        "rankAverage": 18.6,
         "tier": 4,
         "positionRank": 18,
         "minRank": 15,
         "maxRank": 27,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22916",
@@ -2826,7 +2826,7 @@
         "minRank": 16,
         "maxRank": 24,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27016",
@@ -2842,7 +2842,7 @@
         "minRank": 17,
         "maxRank": 25,
         "ownership": 68.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26122",
@@ -2850,15 +2850,15 @@
         "team": "LAC",
         "position": "WR",
         "averageRank": 21,
-        "standardDeviation": 2.59,
+        "standardDeviation": 2.65,
         "rankEcr": 21,
-        "rankAverage": 20.93,
+        "rankAverage": 20.87,
         "tier": 4,
         "positionRank": 21,
         "minRank": 16,
         "maxRank": 24,
         "ownership": 95.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19790",
@@ -2874,7 +2874,7 @@
         "minRank": 16,
         "maxRank": 26,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18466",
@@ -2890,7 +2890,7 @@
         "minRank": 18,
         "maxRank": 25,
         "ownership": 92.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23062",
@@ -2906,7 +2906,7 @@
         "minRank": 16,
         "maxRank": 27,
         "ownership": 93.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-12119",
@@ -2922,7 +2922,7 @@
         "minRank": 17,
         "maxRank": 32,
         "ownership": 91.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23677",
@@ -2938,7 +2938,7 @@
         "minRank": 20,
         "maxRank": 29,
         "ownership": 94,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23886",
@@ -2954,7 +2954,7 @@
         "minRank": 24,
         "maxRank": 30,
         "ownership": 82.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17265",
@@ -2970,7 +2970,7 @@
         "minRank": 23,
         "maxRank": 31,
         "ownership": 90.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25411",
@@ -2986,7 +2986,7 @@
         "minRank": 19,
         "maxRank": 36,
         "ownership": 87.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26009",
@@ -3002,7 +3002,7 @@
         "minRank": 27,
         "maxRank": 51,
         "ownership": 83.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23064",
@@ -3018,7 +3018,7 @@
         "minRank": 30,
         "maxRank": 38,
         "ownership": 91.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26035",
@@ -3034,7 +3034,7 @@
         "minRank": 29,
         "maxRank": 48,
         "ownership": 75.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17253",
@@ -3050,7 +3050,7 @@
         "minRank": 28,
         "maxRank": 40,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23791",
@@ -3066,7 +3066,7 @@
         "minRank": 31,
         "maxRank": 42,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18219",
@@ -3082,7 +3082,7 @@
         "minRank": 31,
         "maxRank": 38,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25333",
@@ -3098,7 +3098,7 @@
         "minRank": 28,
         "maxRank": 44,
         "ownership": 87.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16406",
@@ -3114,7 +3114,7 @@
         "minRank": 32,
         "maxRank": 43,
         "ownership": 80.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23000",
@@ -3130,7 +3130,7 @@
         "minRank": 32,
         "maxRank": 43,
         "ownership": 90.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25420",
@@ -3146,7 +3146,7 @@
         "minRank": 30,
         "maxRank": 52,
         "ownership": 71.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23106",
@@ -3162,7 +3162,7 @@
         "minRank": 33,
         "maxRank": 50,
         "ownership": 69.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18598",
@@ -3178,7 +3178,7 @@
         "minRank": 32,
         "maxRank": 44,
         "ownership": 85.4,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26214",
@@ -3194,7 +3194,7 @@
         "minRank": 37,
         "maxRank": 50,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23107",
@@ -3210,7 +3210,7 @@
         "minRank": 39,
         "maxRank": 47,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19278",
@@ -3226,7 +3226,7 @@
         "minRank": 42,
         "maxRank": 47,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23020",
@@ -3242,7 +3242,7 @@
         "minRank": 37,
         "maxRank": 51,
         "ownership": 67,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22985",
@@ -3258,7 +3258,7 @@
         "minRank": 38,
         "maxRank": 53,
         "ownership": 84.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24706",
@@ -3274,7 +3274,7 @@
         "minRank": 39,
         "maxRank": 52,
         "ownership": 68.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23123",
@@ -3290,7 +3290,7 @@
         "minRank": 43,
         "maxRank": 55,
         "ownership": 76.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23748",
@@ -3306,7 +3306,7 @@
         "minRank": 43,
         "maxRank": 57,
         "ownership": 82.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23794",
@@ -3322,7 +3322,7 @@
         "minRank": 45,
         "maxRank": 56,
         "ownership": 78.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27077",
@@ -3338,7 +3338,7 @@
         "minRank": 45,
         "maxRank": 56,
         "ownership": 45.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26403",
@@ -3354,7 +3354,7 @@
         "minRank": 48,
         "maxRank": 58,
         "ownership": 52.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23019",
@@ -3370,7 +3370,7 @@
         "minRank": 45,
         "maxRank": 58,
         "ownership": 83.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26024",
@@ -3386,7 +3386,7 @@
         "minRank": 40,
         "maxRank": 65,
         "ownership": 65.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27331",
@@ -3402,7 +3402,7 @@
         "minRank": 46,
         "maxRank": 81,
         "ownership": 58.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18244",
@@ -3418,7 +3418,7 @@
         "minRank": 52,
         "maxRank": 79,
         "ownership": 65.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19590",
@@ -3434,7 +3434,7 @@
         "minRank": 49,
         "maxRank": 78,
         "ownership": 66.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24687",
@@ -3450,7 +3450,7 @@
         "minRank": 56,
         "maxRank": 68,
         "ownership": 57.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13981",
@@ -3466,7 +3466,7 @@
         "minRank": 45,
         "maxRank": 77,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19252",
@@ -3482,7 +3482,7 @@
         "minRank": 57,
         "maxRank": 82,
         "ownership": 38.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26034",
@@ -3498,7 +3498,7 @@
         "minRank": 54,
         "maxRank": 84,
         "ownership": 79.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28127",
@@ -3514,7 +3514,7 @@
         "minRank": 53,
         "maxRank": 87,
         "ownership": 31,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23179",
@@ -3530,7 +3530,7 @@
         "minRank": 49,
         "maxRank": 78,
         "ownership": 37.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27339",
@@ -3546,7 +3546,7 @@
         "minRank": 55,
         "maxRank": 82,
         "ownership": 44.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19201",
@@ -3562,7 +3562,7 @@
         "minRank": 56,
         "maxRank": 79,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24357",
@@ -3578,7 +3578,7 @@
         "minRank": 57,
         "maxRank": 85,
         "ownership": 31.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22989",
@@ -3594,7 +3594,7 @@
         "minRank": 64,
         "maxRank": 78,
         "ownership": 38.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25418",
@@ -3610,7 +3610,7 @@
         "minRank": 60,
         "maxRank": 86,
         "ownership": 31.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15802",
@@ -3626,7 +3626,7 @@
         "minRank": 52,
         "maxRank": 126,
         "ownership": 51.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23092",
@@ -3642,7 +3642,7 @@
         "minRank": 63,
         "maxRank": 92,
         "ownership": 42.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25337",
@@ -3658,7 +3658,7 @@
         "minRank": 64,
         "maxRank": 101,
         "ownership": 46.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26215",
@@ -3674,7 +3674,7 @@
         "minRank": 61,
         "maxRank": 102,
         "ownership": 27.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27446",
@@ -3690,7 +3690,7 @@
         "minRank": 70,
         "maxRank": 81,
         "ownership": 28.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17258",
@@ -3706,7 +3706,7 @@
         "minRank": 65,
         "maxRank": 92,
         "ownership": 54.4,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27211",
@@ -3722,7 +3722,7 @@
         "minRank": 68,
         "maxRank": 93,
         "ownership": 27,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26038",
@@ -3738,7 +3738,7 @@
         "minRank": 65,
         "maxRank": 99,
         "ownership": 34.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26398",
@@ -3754,7 +3754,7 @@
         "minRank": 70,
         "maxRank": 94,
         "ownership": 23.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25361",
@@ -3770,7 +3770,7 @@
         "minRank": 69,
         "maxRank": 91,
         "ownership": 39.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27122",
@@ -3786,7 +3786,7 @@
         "minRank": 63,
         "maxRank": 96,
         "ownership": 22.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24177",
@@ -3802,7 +3802,7 @@
         "minRank": 63,
         "maxRank": 111,
         "ownership": 25.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19810",
@@ -3818,7 +3818,7 @@
         "minRank": 66,
         "maxRank": 100,
         "ownership": 42.4,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24354",
@@ -3834,7 +3834,7 @@
         "minRank": 73,
         "maxRank": 91,
         "ownership": 18.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26039",
@@ -3850,7 +3850,7 @@
         "minRank": 69,
         "maxRank": 103,
         "ownership": 31.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25419",
@@ -3866,7 +3866,7 @@
         "minRank": 74,
         "maxRank": 103,
         "ownership": 35.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27337",
@@ -3882,7 +3882,7 @@
         "minRank": 81,
         "maxRank": 110,
         "ownership": 31.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26314",
@@ -3898,7 +3898,7 @@
         "minRank": 66,
         "maxRank": 110,
         "ownership": 26.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27315",
@@ -3914,7 +3914,7 @@
         "minRank": 64,
         "maxRank": 102,
         "ownership": 32.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27463",
@@ -3930,7 +3930,7 @@
         "minRank": 86,
         "maxRank": 105,
         "ownership": 32.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27994",
@@ -3946,7 +3946,7 @@
         "minRank": 83,
         "maxRank": 100,
         "ownership": 23.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28126",
@@ -3962,7 +3962,7 @@
         "minRank": 75,
         "maxRank": 106,
         "ownership": 21.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28138",
@@ -3978,7 +3978,7 @@
         "minRank": 73,
         "maxRank": 106,
         "ownership": 6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27059",
@@ -3994,7 +3994,7 @@
         "minRank": 71,
         "maxRank": 123,
         "ownership": 29.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27487",
@@ -4010,7 +4010,7 @@
         "minRank": 71,
         "maxRank": 99,
         "ownership": 20.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28047",
@@ -4026,7 +4026,7 @@
         "minRank": 83,
         "maxRank": 104,
         "ownership": 30.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26022",
@@ -4042,7 +4042,7 @@
         "minRank": 82,
         "maxRank": 118,
         "ownership": 25.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26019",
@@ -4058,7 +4058,7 @@
         "minRank": 81,
         "maxRank": 103,
         "ownership": 29.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19794",
@@ -4074,7 +4074,7 @@
         "minRank": 75,
         "maxRank": 111,
         "ownership": 21.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27224",
@@ -4090,7 +4090,7 @@
         "minRank": 76,
         "maxRank": 103,
         "ownership": 17.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28130",
@@ -4106,7 +4106,7 @@
         "minRank": 95,
         "maxRank": 106,
         "ownership": 19.4,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17268",
@@ -4122,7 +4122,7 @@
         "minRank": 67,
         "maxRank": 105,
         "ownership": 26.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16489",
@@ -4138,7 +4138,7 @@
         "minRank": 85,
         "maxRank": 110,
         "ownership": 11.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23080",
@@ -4154,7 +4154,7 @@
         "minRank": 80,
         "maxRank": 112,
         "ownership": 22.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16433",
@@ -4170,7 +4170,7 @@
         "minRank": 86,
         "maxRank": 109,
         "ownership": 36.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11616",
@@ -4186,7 +4186,7 @@
         "minRank": 80,
         "maxRank": 108,
         "ownership": 38.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18706",
@@ -4202,7 +4202,7 @@
         "minRank": 90,
         "maxRank": 109,
         "ownership": 23.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26409",
@@ -4218,7 +4218,7 @@
         "minRank": 93,
         "maxRank": 109,
         "ownership": 25.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26136",
@@ -4234,7 +4234,7 @@
         "minRank": 86,
         "maxRank": 123,
         "ownership": 11.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18226",
@@ -4250,7 +4250,7 @@
         "minRank": 97,
         "maxRank": 117,
         "ownership": 20.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24371",
@@ -4266,7 +4266,7 @@
         "minRank": 96,
         "maxRank": 124,
         "ownership": 15.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22913",
@@ -4282,7 +4282,7 @@
         "minRank": 95,
         "maxRank": 126,
         "ownership": 7.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27147",
@@ -4298,7 +4298,7 @@
         "minRank": 103,
         "maxRank": 121,
         "ownership": 14.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23101",
@@ -4314,7 +4314,7 @@
         "minRank": 79,
         "maxRank": 109,
         "ownership": 7.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28133",
@@ -4330,7 +4330,7 @@
         "minRank": 77,
         "maxRank": 116,
         "ownership": 9.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25335",
@@ -4346,7 +4346,7 @@
         "minRank": 95,
         "maxRank": 120,
         "ownership": 11.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27449",
@@ -4362,7 +4362,7 @@
         "minRank": 98,
         "maxRank": 118,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28135",
@@ -4378,7 +4378,7 @@
         "minRank": 87,
         "maxRank": 116,
         "ownership": 2.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25287",
@@ -4394,7 +4394,7 @@
         "minRank": 100,
         "maxRank": 136,
         "ownership": 7.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27076",
@@ -4410,7 +4410,7 @@
         "minRank": 105,
         "maxRank": 115,
         "ownership": 5.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26328",
@@ -4426,7 +4426,7 @@
         "minRank": 106,
         "maxRank": 121,
         "ownership": 5.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25304",
@@ -4442,7 +4442,7 @@
         "minRank": 95,
         "maxRank": 119,
         "ownership": 14.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27144",
@@ -4458,7 +4458,7 @@
         "minRank": 99,
         "maxRank": 119,
         "ownership": 2.8,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23739",
@@ -4474,7 +4474,7 @@
         "minRank": 104,
         "maxRank": 125,
         "ownership": 9.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18864",
@@ -4490,7 +4490,7 @@
         "minRank": 97,
         "maxRank": 126,
         "ownership": 7.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22905",
@@ -4506,7 +4506,7 @@
         "minRank": 70,
         "maxRank": 122,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20126",
@@ -4522,7 +4522,7 @@
         "minRank": 106,
         "maxRank": 124,
         "ownership": 3.3,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27454",
@@ -4538,7 +4538,7 @@
         "minRank": 107,
         "maxRank": 130,
         "ownership": 7.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23770",
@@ -4554,7 +4554,7 @@
         "minRank": 96,
         "maxRank": 126,
         "ownership": 10.9,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22845",
@@ -4570,7 +4570,7 @@
         "minRank": 105,
         "maxRank": 127,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27288",
@@ -4586,7 +4586,7 @@
         "minRank": 99,
         "maxRank": 108,
         "ownership": 6.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28129",
@@ -4602,7 +4602,7 @@
         "minRank": 99,
         "maxRank": 125,
         "ownership": 3.2,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28424",
@@ -4618,7 +4618,7 @@
         "minRank": 85,
         "maxRank": 132,
         "ownership": 0.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22895",
@@ -4634,7 +4634,7 @@
         "minRank": 104,
         "maxRank": 113,
         "ownership": 5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25332",
@@ -4650,7 +4650,7 @@
         "minRank": 108,
         "maxRank": 117,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28067",
@@ -4666,7 +4666,7 @@
         "minRank": 107,
         "maxRank": 128,
         "ownership": 1.4,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18520",
@@ -4682,7 +4682,7 @@
         "minRank": 113,
         "maxRank": 120,
         "ownership": 9.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26011",
@@ -4698,7 +4698,7 @@
         "minRank": 117,
         "maxRank": 124,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17066",
@@ -4714,7 +4714,7 @@
         "minRank": 122,
         "maxRank": 129,
         "ownership": 4.5,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28125",
@@ -4730,7 +4730,7 @@
         "minRank": 111,
         "maxRank": 135,
         "ownership": 5.1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28132",
@@ -4746,7 +4746,7 @@
         "minRank": 130,
         "maxRank": 131,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26012",
@@ -4762,7 +4762,7 @@
         "minRank": 132,
         "maxRank": 133,
         "ownership": 1,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27093",
@@ -4778,7 +4778,7 @@
         "minRank": 133,
         "maxRank": 134,
         "ownership": 0.6,
-        "lastUpdated": "2026-04-29T17:22:50.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       }
     ],
     "TE": [
@@ -5710,7 +5710,7 @@
         "minRank": 1,
         "maxRank": 3,
         "ownership": 98.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19788",
@@ -5726,7 +5726,7 @@
         "minRank": 1,
         "maxRank": 4,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22968",
@@ -5742,7 +5742,7 @@
         "minRank": 1,
         "maxRank": 3,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23180",
@@ -5758,7 +5758,7 @@
         "minRank": 3,
         "maxRank": 6,
         "ownership": 99.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23070",
@@ -5774,7 +5774,7 @@
         "minRank": 4,
         "maxRank": 6,
         "ownership": 99.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16393",
@@ -5790,7 +5790,7 @@
         "minRank": 5,
         "maxRank": 11,
         "ownership": 99,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19202",
@@ -5806,7 +5806,7 @@
         "minRank": 7,
         "maxRank": 10,
         "ownership": 98.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19799",
@@ -5822,7 +5822,7 @@
         "minRank": 7,
         "maxRank": 10,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19217",
@@ -5838,7 +5838,7 @@
         "minRank": 6,
         "maxRank": 12,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22958",
@@ -5854,7 +5854,7 @@
         "minRank": 8,
         "maxRank": 14,
         "ownership": 98.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19236",
@@ -5870,7 +5870,7 @@
         "minRank": 7,
         "maxRank": 19,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23136",
@@ -5886,7 +5886,7 @@
         "minRank": 10,
         "maxRank": 18,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25989",
@@ -5902,7 +5902,7 @@
         "minRank": 11,
         "maxRank": 22,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23163",
@@ -5918,7 +5918,7 @@
         "minRank": 11,
         "maxRank": 22,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25324",
@@ -5934,7 +5934,7 @@
         "minRank": 11,
         "maxRank": 23,
         "ownership": 97.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23113",
@@ -5950,7 +5950,7 @@
         "minRank": 9,
         "maxRank": 29,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17240",
@@ -5966,7 +5966,7 @@
         "minRank": 12,
         "maxRank": 24,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22936",
@@ -5982,7 +5982,7 @@
         "minRank": 16,
         "maxRank": 28,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20130",
@@ -5998,7 +5998,7 @@
         "minRank": 13,
         "maxRank": 27,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25395",
@@ -6014,7 +6014,7 @@
         "minRank": 14,
         "maxRank": 44,
         "ownership": 96.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22955",
@@ -6030,7 +6030,7 @@
         "minRank": 15,
         "maxRank": 23,
         "ownership": 92.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23021",
@@ -6046,7 +6046,7 @@
         "minRank": 12,
         "maxRank": 33,
         "ownership": 97.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25409",
@@ -6062,7 +6062,7 @@
         "minRank": 14,
         "maxRank": 38,
         "ownership": 74.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22963",
@@ -6078,7 +6078,7 @@
         "minRank": 19,
         "maxRank": 28,
         "ownership": 97.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20111",
@@ -6094,7 +6094,7 @@
         "minRank": 21,
         "maxRank": 34,
         "ownership": 96.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25403",
@@ -6110,7 +6110,7 @@
         "minRank": 19,
         "maxRank": 37,
         "ownership": 89.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18218",
@@ -6126,7 +6126,7 @@
         "minRank": 23,
         "maxRank": 39,
         "ownership": 98,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15514",
@@ -6142,7 +6142,7 @@
         "minRank": 23,
         "maxRank": 37,
         "ownership": 98,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18269",
@@ -6158,7 +6158,7 @@
         "minRank": 21,
         "maxRank": 43,
         "ownership": 98.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25417",
@@ -6174,7 +6174,7 @@
         "minRank": 28,
         "maxRank": 43,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19211",
@@ -6190,7 +6190,7 @@
         "minRank": 29,
         "maxRank": 39,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19222",
@@ -6206,7 +6206,7 @@
         "minRank": 26,
         "maxRank": 47,
         "ownership": 96.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26006",
@@ -6222,7 +6222,7 @@
         "minRank": 33,
         "maxRank": 56,
         "ownership": 80.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23059",
@@ -6238,7 +6238,7 @@
         "minRank": 23,
         "maxRank": 49,
         "ownership": 97.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22739",
@@ -6246,15 +6246,15 @@
         "team": "DAL",
         "position": "RB",
         "averageRank": 35,
-        "standardDeviation": 7.63,
+        "standardDeviation": 7.61,
         "rankEcr": 37,
-        "rankAverage": 39.33,
+        "rankAverage": 39.27,
         "tier": 5,
         "positionRank": 16,
         "minRank": 25,
         "maxRank": 49,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19231",
@@ -6270,7 +6270,7 @@
         "minRank": 30,
         "maxRank": 48,
         "ownership": 95,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23072",
@@ -6286,7 +6286,7 @@
         "minRank": 35,
         "maxRank": 44,
         "ownership": 86.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-12123",
@@ -6294,15 +6294,15 @@
         "team": "LAR",
         "position": "WR",
         "averageRank": 38,
-        "standardDeviation": 6.3,
+        "standardDeviation": 6.31,
         "rankEcr": 41,
-        "rankAverage": 40.6,
+        "rankAverage": 40.73,
         "tier": 5,
         "positionRank": 18,
         "minRank": 32,
         "maxRank": 58,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22982",
@@ -6318,7 +6318,7 @@
         "minRank": 32,
         "maxRank": 51,
         "ownership": 96,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22916",
@@ -6334,7 +6334,7 @@
         "minRank": 37,
         "maxRank": 49,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27016",
@@ -6350,7 +6350,7 @@
         "minRank": 39,
         "maxRank": 50,
         "ownership": 68.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26122",
@@ -6358,15 +6358,15 @@
         "team": "LAC",
         "position": "WR",
         "averageRank": 42,
-        "standardDeviation": 4.83,
+        "standardDeviation": 4.88,
         "rankEcr": 45,
-        "rankAverage": 44.4,
+        "rankAverage": 44.33,
         "tier": 6,
         "positionRank": 21,
         "minRank": 34,
         "maxRank": 51,
         "ownership": 95.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19790",
@@ -6382,7 +6382,7 @@
         "minRank": 35,
         "maxRank": 55,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18466",
@@ -6398,7 +6398,7 @@
         "minRank": 40,
         "maxRank": 54,
         "ownership": 92.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25981",
@@ -6406,15 +6406,15 @@
         "team": "TB",
         "position": "RB",
         "averageRank": 45,
-        "standardDeviation": 4.42,
+        "standardDeviation": 4.39,
         "rankEcr": 49,
-        "rankAverage": 46.93,
+        "rankAverage": 46.87,
         "tier": 6,
         "positionRank": 19,
         "minRank": 38,
         "maxRank": 52,
         "ownership": 96.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27166",
@@ -6424,13 +6424,13 @@
         "averageRank": 46,
         "standardDeviation": 6.79,
         "rankEcr": 50,
-        "rankAverage": 49.47,
+        "rankAverage": 49.4,
         "tier": 6,
         "positionRank": 20,
         "minRank": 34,
         "maxRank": 60,
         "ownership": 71.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23062",
@@ -6446,7 +6446,7 @@
         "minRank": 35,
         "maxRank": 62,
         "ownership": 93.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-12119",
@@ -6462,7 +6462,7 @@
         "minRank": 38,
         "maxRank": 70,
         "ownership": 91.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23677",
@@ -6478,7 +6478,7 @@
         "minRank": 43,
         "maxRank": 63,
         "ownership": 94,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23065",
@@ -6494,7 +6494,7 @@
         "minRank": 48,
         "maxRank": 71,
         "ownership": 93.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19210",
@@ -6510,7 +6510,7 @@
         "minRank": 47,
         "maxRank": 65,
         "ownership": 92.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23886",
@@ -6526,7 +6526,7 @@
         "minRank": 49,
         "maxRank": 68,
         "ownership": 82.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25391",
@@ -6542,7 +6542,7 @@
         "minRank": 31,
         "maxRank": 67,
         "ownership": 86.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25298",
@@ -6558,7 +6558,7 @@
         "minRank": 45,
         "maxRank": 68,
         "ownership": 68.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17265",
@@ -6566,15 +6566,15 @@
         "team": "BUF",
         "position": "WR",
         "averageRank": 55,
-        "standardDeviation": 7.37,
+        "standardDeviation": 7.14,
         "rankEcr": 61,
-        "rankAverage": 61,
+        "rankAverage": 61.13,
         "tier": 7,
         "positionRank": 28,
         "minRank": 47,
         "maxRank": 70,
         "ownership": 90.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18239",
@@ -6590,7 +6590,7 @@
         "minRank": 46,
         "maxRank": 72,
         "ownership": 90.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27297",
@@ -6606,7 +6606,7 @@
         "minRank": 47,
         "maxRank": 84,
         "ownership": 69.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26434",
@@ -6622,7 +6622,7 @@
         "minRank": 54,
         "maxRank": 67,
         "ownership": 96.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25411",
@@ -6638,7 +6638,7 @@
         "minRank": 45,
         "maxRank": 82,
         "ownership": 87.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19792",
@@ -6654,7 +6654,7 @@
         "minRank": 51,
         "maxRank": 113,
         "ownership": 84.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26009",
@@ -6670,7 +6670,7 @@
         "minRank": 59,
         "maxRank": 88,
         "ownership": 83.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24209",
@@ -6686,7 +6686,7 @@
         "minRank": 67,
         "maxRank": 81,
         "ownership": 89.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27329",
@@ -6702,7 +6702,7 @@
         "minRank": 60,
         "maxRank": 140,
         "ownership": 78.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23064",
@@ -6718,7 +6718,7 @@
         "minRank": 68,
         "maxRank": 89,
         "ownership": 91.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26035",
@@ -6734,7 +6734,7 @@
         "minRank": 61,
         "maxRank": 119,
         "ownership": 75.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17253",
@@ -6750,7 +6750,7 @@
         "minRank": 61,
         "maxRank": 93,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23791",
@@ -6766,7 +6766,7 @@
         "minRank": 68,
         "maxRank": 99,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27050",
@@ -6782,7 +6782,7 @@
         "minRank": 68,
         "maxRank": 94,
         "ownership": 86.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18219",
@@ -6798,7 +6798,7 @@
         "minRank": 70,
         "maxRank": 89,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27142",
@@ -6814,7 +6814,7 @@
         "minRank": 64,
         "maxRank": 98,
         "ownership": 89.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25333",
@@ -6830,7 +6830,7 @@
         "minRank": 62,
         "maxRank": 105,
         "ownership": 87.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22726",
@@ -6846,7 +6846,7 @@
         "minRank": 71,
         "maxRank": 98,
         "ownership": 85.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22978",
@@ -6862,7 +6862,7 @@
         "minRank": 73,
         "maxRank": 91,
         "ownership": 79.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18705",
@@ -6878,7 +6878,7 @@
         "minRank": 74,
         "maxRank": 98,
         "ownership": 88.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16406",
@@ -6894,7 +6894,7 @@
         "minRank": 74,
         "maxRank": 106,
         "ownership": 80.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19647",
@@ -6910,7 +6910,7 @@
         "minRank": 67,
         "maxRank": 109,
         "ownership": 87.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20164",
@@ -6926,7 +6926,7 @@
         "minRank": 76,
         "maxRank": 98,
         "ownership": 93.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27131",
@@ -6942,7 +6942,7 @@
         "minRank": 71,
         "maxRank": 99,
         "ownership": 77.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23000",
@@ -6958,7 +6958,7 @@
         "minRank": 73,
         "maxRank": 101,
         "ownership": 90.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25420",
@@ -6974,7 +6974,7 @@
         "minRank": 67,
         "maxRank": 107,
         "ownership": 71.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23106",
@@ -6990,7 +6990,7 @@
         "minRank": 72,
         "maxRank": 121,
         "ownership": 69.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18598",
@@ -7006,7 +7006,7 @@
         "minRank": 74,
         "maxRank": 108,
         "ownership": 85.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23013",
@@ -7022,7 +7022,7 @@
         "minRank": 85,
         "maxRank": 113,
         "ownership": 68.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19245",
@@ -7038,7 +7038,7 @@
         "minRank": 72,
         "maxRank": 134,
         "ownership": 69.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26214",
@@ -7054,7 +7054,7 @@
         "minRank": 87,
         "maxRank": 125,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27316",
@@ -7070,7 +7070,7 @@
         "minRank": 85,
         "maxRank": 127,
         "ownership": 58.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25997",
@@ -7086,7 +7086,7 @@
         "minRank": 94,
         "maxRank": 116,
         "ownership": 54.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23107",
@@ -7102,7 +7102,7 @@
         "minRank": 90,
         "maxRank": 115,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25247",
@@ -7118,7 +7118,7 @@
         "minRank": 94,
         "maxRank": 126,
         "ownership": 59.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19278",
@@ -7134,7 +7134,7 @@
         "minRank": 99,
         "maxRank": 113,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23020",
@@ -7150,7 +7150,7 @@
         "minRank": 77,
         "maxRank": 127,
         "ownership": 67,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16673",
@@ -7166,7 +7166,7 @@
         "minRank": 98,
         "maxRank": 124,
         "ownership": 85.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22985",
@@ -7182,7 +7182,7 @@
         "minRank": 83,
         "maxRank": 128,
         "ownership": 84.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24706",
@@ -7198,7 +7198,7 @@
         "minRank": 90,
         "maxRank": 132,
         "ownership": 68.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16499",
@@ -7214,7 +7214,7 @@
         "minRank": 85,
         "maxRank": 156,
         "ownership": 92.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23310",
@@ -7230,7 +7230,7 @@
         "minRank": 102,
         "maxRank": 131,
         "ownership": 80.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11594",
@@ -7246,7 +7246,7 @@
         "minRank": 94,
         "maxRank": 157,
         "ownership": 90.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23123",
@@ -7262,7 +7262,7 @@
         "minRank": 106,
         "maxRank": 139,
         "ownership": 76.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22718",
@@ -7278,7 +7278,7 @@
         "minRank": 104,
         "maxRank": 137,
         "ownership": 88.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23781",
@@ -7294,7 +7294,7 @@
         "minRank": 99,
         "maxRank": 157,
         "ownership": 56.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17270",
@@ -7310,7 +7310,7 @@
         "minRank": 102,
         "maxRank": 143,
         "ownership": 89.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23891",
@@ -7326,7 +7326,7 @@
         "minRank": 82,
         "maxRank": 147,
         "ownership": 70.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24172",
@@ -7342,7 +7342,7 @@
         "minRank": 99,
         "maxRank": 152,
         "ownership": 53.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22969",
@@ -7358,7 +7358,7 @@
         "minRank": 112,
         "maxRank": 143,
         "ownership": 58.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22986",
@@ -7374,7 +7374,7 @@
         "minRank": 102,
         "maxRank": 181,
         "ownership": 44.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23794",
@@ -7390,7 +7390,7 @@
         "minRank": 108,
         "maxRank": 141,
         "ownership": 78.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22980",
@@ -7406,7 +7406,7 @@
         "minRank": 117,
         "maxRank": 139,
         "ownership": 61,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23152",
@@ -7422,7 +7422,7 @@
         "minRank": 78,
         "maxRank": 161,
         "ownership": 80.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23748",
@@ -7438,7 +7438,7 @@
         "minRank": 101,
         "maxRank": 145,
         "ownership": 82.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27077",
@@ -7454,7 +7454,7 @@
         "minRank": 109,
         "maxRank": 141,
         "ownership": 45.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26403",
@@ -7470,7 +7470,7 @@
         "minRank": 113,
         "maxRank": 149,
         "ownership": 52.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23019",
@@ -7486,7 +7486,7 @@
         "minRank": 109,
         "maxRank": 148,
         "ownership": 83.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26024",
@@ -7502,7 +7502,7 @@
         "minRank": 92,
         "maxRank": 173,
         "ownership": 65.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26148",
@@ -7518,7 +7518,7 @@
         "minRank": 97,
         "maxRank": 235,
         "ownership": 54.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27520",
@@ -7534,7 +7534,7 @@
         "minRank": 103,
         "maxRank": 183,
         "ownership": 77.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25323",
@@ -7550,7 +7550,7 @@
         "minRank": 125,
         "maxRank": 154,
         "ownership": 54.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25345",
@@ -7566,7 +7566,7 @@
         "minRank": 97,
         "maxRank": 207,
         "ownership": 55.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17269",
@@ -7582,7 +7582,7 @@
         "minRank": 109,
         "maxRank": 186,
         "ownership": 84,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25360",
@@ -7598,7 +7598,7 @@
         "minRank": 129,
         "maxRank": 163,
         "ownership": 27,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24333",
@@ -7614,7 +7614,7 @@
         "minRank": 134,
         "maxRank": 161,
         "ownership": 65.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27331",
@@ -7630,7 +7630,7 @@
         "minRank": 108,
         "maxRank": 223,
         "ownership": 58.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27320",
@@ -7646,7 +7646,7 @@
         "minRank": 126,
         "maxRank": 229,
         "ownership": 42.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27102",
@@ -7662,7 +7662,7 @@
         "minRank": 129,
         "maxRank": 167,
         "ownership": 38.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15561",
@@ -7678,7 +7678,7 @@
         "minRank": 137,
         "maxRank": 180,
         "ownership": 68.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13981",
@@ -7694,7 +7694,7 @@
         "minRank": 109,
         "maxRank": 209,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19562",
@@ -7710,7 +7710,7 @@
         "minRank": 110,
         "maxRank": 219,
         "ownership": 61.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20094",
@@ -7726,7 +7726,7 @@
         "minRank": 144,
         "maxRank": 169,
         "ownership": 39.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24687",
@@ -7742,7 +7742,7 @@
         "minRank": 141,
         "maxRank": 181,
         "ownership": 57.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16421",
@@ -7758,7 +7758,7 @@
         "minRank": 121,
         "maxRank": 215,
         "ownership": 79,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25885",
@@ -7774,7 +7774,7 @@
         "minRank": 121,
         "maxRank": 197,
         "ownership": 39,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24346",
@@ -7790,7 +7790,7 @@
         "minRank": 131,
         "maxRank": 241,
         "ownership": 32.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19590",
@@ -7806,7 +7806,7 @@
         "minRank": 121,
         "maxRank": 217,
         "ownership": 66.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26034",
@@ -7822,7 +7822,7 @@
         "minRank": 135,
         "maxRank": 215,
         "ownership": 79.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18244",
@@ -7838,7 +7838,7 @@
         "minRank": 132,
         "maxRank": 220,
         "ownership": 65.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27339",
@@ -7854,7 +7854,7 @@
         "minRank": 138,
         "maxRank": 206,
         "ownership": 44.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16447",
@@ -7870,7 +7870,7 @@
         "minRank": 116,
         "maxRank": 227,
         "ownership": 55.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28127",
@@ -7886,7 +7886,7 @@
         "minRank": 125,
         "maxRank": 242,
         "ownership": 31,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23179",
@@ -7902,7 +7902,7 @@
         "minRank": 120,
         "maxRank": 215,
         "ownership": 37.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22908",
@@ -7918,7 +7918,7 @@
         "minRank": 147,
         "maxRank": 213,
         "ownership": 33,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24343",
@@ -7934,7 +7934,7 @@
         "minRank": 130,
         "maxRank": 227,
         "ownership": 39.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28108",
@@ -7950,7 +7950,7 @@
         "minRank": 146,
         "maxRank": 276,
         "ownership": 17.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19252",
@@ -7966,7 +7966,7 @@
         "minRank": 143,
         "maxRank": 223,
         "ownership": 38.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19201",
@@ -7982,7 +7982,7 @@
         "minRank": 141,
         "maxRank": 230,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28107",
@@ -7998,7 +7998,7 @@
         "minRank": 147,
         "maxRank": 307,
         "ownership": 41.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23982",
@@ -8014,7 +8014,7 @@
         "minRank": 139,
         "maxRank": 245,
         "ownership": 34.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24362",
@@ -8030,7 +8030,7 @@
         "minRank": 131,
         "maxRank": 232,
         "ownership": 35,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26055",
@@ -8046,7 +8046,7 @@
         "minRank": 131,
         "maxRank": 267,
         "ownership": 63,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24357",
@@ -8062,7 +8062,7 @@
         "minRank": 148,
         "maxRank": 238,
         "ownership": 31.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25418",
@@ -8078,7 +8078,7 @@
         "minRank": 160,
         "maxRank": 236,
         "ownership": 31.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17349",
@@ -8094,7 +8094,7 @@
         "minRank": 157,
         "maxRank": 228,
         "ownership": 48.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22989",
@@ -8110,7 +8110,7 @@
         "minRank": 169,
         "maxRank": 203,
         "ownership": 38.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26335",
@@ -8126,7 +8126,7 @@
         "minRank": 156,
         "maxRank": 230,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15802",
@@ -8142,7 +8142,7 @@
         "minRank": 125,
         "maxRank": 222,
         "ownership": 51.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26355",
@@ -8158,7 +8158,7 @@
         "minRank": 156,
         "maxRank": 236,
         "ownership": 45.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18290",
@@ -8174,7 +8174,7 @@
         "minRank": 163,
         "maxRank": 238,
         "ownership": 74.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26191",
@@ -8190,7 +8190,7 @@
         "minRank": 163,
         "maxRank": 215,
         "ownership": 22.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28084",
@@ -8206,7 +8206,7 @@
         "minRank": 163,
         "maxRank": 262,
         "ownership": 27.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25337",
@@ -8222,7 +8222,7 @@
         "minRank": 169,
         "maxRank": 204,
         "ownership": 46.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26038",
@@ -8238,7 +8238,7 @@
         "minRank": 169,
         "maxRank": 257,
         "ownership": 34.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26215",
@@ -8254,7 +8254,7 @@
         "minRank": 164,
         "maxRank": 210,
         "ownership": 27.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27446",
@@ -8270,7 +8270,7 @@
         "minRank": 180,
         "maxRank": 220,
         "ownership": 28.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23092",
@@ -8286,7 +8286,7 @@
         "minRank": 166,
         "maxRank": 233,
         "ownership": 42.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23679",
@@ -8302,7 +8302,7 @@
         "minRank": 176,
         "maxRank": 218,
         "ownership": 30.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23091",
@@ -8318,7 +8318,7 @@
         "minRank": 202,
         "maxRank": 253,
         "ownership": 27.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27211",
@@ -8334,7 +8334,7 @@
         "minRank": 179,
         "maxRank": 234,
         "ownership": 27,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25987",
@@ -8350,7 +8350,7 @@
         "minRank": 147,
         "maxRank": 235,
         "ownership": 24,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17258",
@@ -8366,7 +8366,7 @@
         "minRank": 172,
         "maxRank": 262,
         "ownership": 54.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27122",
@@ -8382,7 +8382,7 @@
         "minRank": 167,
         "maxRank": 246,
         "ownership": 22.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23144",
@@ -8398,7 +8398,7 @@
         "minRank": 200,
         "maxRank": 253,
         "ownership": 42.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26398",
@@ -8414,7 +8414,7 @@
         "minRank": 194,
         "maxRank": 226,
         "ownership": 23.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28126",
@@ -8430,7 +8430,7 @@
         "minRank": 175,
         "maxRank": 295,
         "ownership": 21.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16399",
@@ -8446,7 +8446,7 @@
         "minRank": 206,
         "maxRank": 260,
         "ownership": 39.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27109",
@@ -8462,7 +8462,7 @@
         "minRank": 180,
         "maxRank": 266,
         "ownership": 40.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27315",
@@ -8478,7 +8478,7 @@
         "minRank": 168,
         "maxRank": 288,
         "ownership": 32.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25361",
@@ -8494,7 +8494,7 @@
         "minRank": 179,
         "maxRank": 237,
         "ownership": 39.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26039",
@@ -8510,7 +8510,7 @@
         "minRank": 183,
         "maxRank": 289,
         "ownership": 31.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24354",
@@ -8526,7 +8526,7 @@
         "minRank": 200,
         "maxRank": 251,
         "ownership": 18.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25419",
@@ -8542,7 +8542,7 @@
         "minRank": 183,
         "maxRank": 272,
         "ownership": 35.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19810",
@@ -8558,7 +8558,7 @@
         "minRank": 170,
         "maxRank": 264,
         "ownership": 42.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24367",
@@ -8574,7 +8574,7 @@
         "minRank": 221,
         "maxRank": 304,
         "ownership": 10.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25984",
@@ -8590,7 +8590,7 @@
         "minRank": 178,
         "maxRank": 258,
         "ownership": 15.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28138",
@@ -8606,7 +8606,7 @@
         "minRank": 182,
         "maxRank": 271,
         "ownership": 6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27463",
@@ -8622,7 +8622,7 @@
         "minRank": 213,
         "maxRank": 270,
         "ownership": 32.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24177",
@@ -8638,7 +8638,7 @@
         "minRank": 167,
         "maxRank": 301,
         "ownership": 25.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23181",
@@ -8654,7 +8654,7 @@
         "minRank": 191,
         "maxRank": 273,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27165",
@@ -8670,7 +8670,7 @@
         "minRank": 156,
         "maxRank": 299,
         "ownership": 26.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23682",
@@ -8686,7 +8686,7 @@
         "minRank": 199,
         "maxRank": 296,
         "ownership": 31.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28047",
@@ -8702,7 +8702,7 @@
         "minRank": 207,
         "maxRank": 275,
         "ownership": 30.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20163",
@@ -8718,7 +8718,7 @@
         "minRank": 205,
         "maxRank": 279,
         "ownership": 31.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27994",
@@ -8734,7 +8734,7 @@
         "minRank": 229,
         "maxRank": 284,
         "ownership": 23.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26314",
@@ -8750,7 +8750,7 @@
         "minRank": 163,
         "maxRank": 300,
         "ownership": 26.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26005",
@@ -8766,7 +8766,7 @@
         "minRank": 206,
         "maxRank": 275,
         "ownership": 33.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19372",
@@ -8782,7 +8782,7 @@
         "minRank": 175,
         "maxRank": 305,
         "ownership": 35.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27059",
@@ -8798,7 +8798,7 @@
         "minRank": 194,
         "maxRank": 345,
         "ownership": 29.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24360",
@@ -8814,7 +8814,7 @@
         "minRank": 180,
         "maxRank": 270,
         "ownership": 10.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25388",
@@ -8830,7 +8830,7 @@
         "minRank": 145,
         "maxRank": 310,
         "ownership": 39.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19302",
@@ -8846,7 +8846,7 @@
         "minRank": 159,
         "maxRank": 262,
         "ownership": 24.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26022",
@@ -8862,7 +8862,7 @@
         "minRank": 220,
         "maxRank": 266,
         "ownership": 25.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27487",
@@ -8878,7 +8878,7 @@
         "minRank": 196,
         "maxRank": 273,
         "ownership": 20.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24778",
@@ -8894,7 +8894,7 @@
         "minRank": 218,
         "maxRank": 280,
         "ownership": 29.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28130",
@@ -8910,7 +8910,7 @@
         "minRank": 250,
         "maxRank": 295,
         "ownership": 19.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27224",
@@ -8926,7 +8926,7 @@
         "minRank": 189,
         "maxRank": 288,
         "ownership": 17.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19794",
@@ -8942,7 +8942,7 @@
         "minRank": 204,
         "maxRank": 295,
         "ownership": 21.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23104",
@@ -8958,7 +8958,7 @@
         "minRank": 201,
         "maxRank": 299,
         "ownership": 39.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17268",
@@ -8974,7 +8974,7 @@
         "minRank": 173,
         "maxRank": 285,
         "ownership": 26.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16420",
@@ -8990,7 +8990,7 @@
         "minRank": 224,
         "maxRank": 293,
         "ownership": 27.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16411",
@@ -9006,7 +9006,7 @@
         "minRank": 227,
         "maxRank": 298,
         "ownership": 35.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27310",
@@ -9022,7 +9022,7 @@
         "minRank": 185,
         "maxRank": 312,
         "ownership": 23.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26019",
@@ -9038,7 +9038,7 @@
         "minRank": 222,
         "maxRank": 276,
         "ownership": 29.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27259",
@@ -9054,7 +9054,7 @@
         "minRank": 232,
         "maxRank": 289,
         "ownership": 16.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25977",
@@ -9070,7 +9070,7 @@
         "minRank": 220,
         "maxRank": 282,
         "ownership": 8.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23080",
@@ -9086,7 +9086,7 @@
         "minRank": 222,
         "maxRank": 290,
         "ownership": 22.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16433",
@@ -9102,7 +9102,7 @@
         "minRank": 240,
         "maxRank": 298,
         "ownership": 36.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16489",
@@ -9118,7 +9118,7 @@
         "minRank": 232,
         "maxRank": 298,
         "ownership": 11.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24344",
@@ -9134,7 +9134,7 @@
         "minRank": 215,
         "maxRank": 300,
         "ownership": 19.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18406",
@@ -9150,7 +9150,7 @@
         "minRank": 245,
         "maxRank": 317,
         "ownership": 9.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23153",
@@ -9166,7 +9166,7 @@
         "minRank": 190,
         "maxRank": 267,
         "ownership": 23.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18256",
@@ -9182,7 +9182,7 @@
         "minRank": 232,
         "maxRank": 297,
         "ownership": 13.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25654",
@@ -9198,7 +9198,7 @@
         "minRank": 242,
         "maxRank": 308,
         "ownership": 9.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26392",
@@ -9214,7 +9214,7 @@
         "minRank": 236,
         "maxRank": 310,
         "ownership": 5.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11616",
@@ -9230,7 +9230,7 @@
         "minRank": 219,
         "maxRank": 291,
         "ownership": 38.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18280",
@@ -9246,7 +9246,7 @@
         "minRank": 207,
         "maxRank": 300,
         "ownership": 11.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22921",
@@ -9262,7 +9262,7 @@
         "minRank": 242,
         "maxRank": 302,
         "ownership": 10.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27097",
@@ -9278,7 +9278,7 @@
         "minRank": 247,
         "maxRank": 287,
         "ownership": 8.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26409",
@@ -9294,7 +9294,7 @@
         "minRank": 257,
         "maxRank": 302,
         "ownership": 25.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23079",
@@ -9310,7 +9310,7 @@
         "minRank": 288,
         "maxRank": 316,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25823",
@@ -9326,7 +9326,7 @@
         "minRank": 262,
         "maxRank": 299,
         "ownership": 6.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25876",
@@ -9342,7 +9342,7 @@
         "minRank": 231,
         "maxRank": 312,
         "ownership": 2.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22915",
@@ -9358,7 +9358,7 @@
         "minRank": 256,
         "maxRank": 302,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18706",
@@ -9374,7 +9374,7 @@
         "minRank": 256,
         "maxRank": 294,
         "ownership": 23.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26136",
@@ -9390,7 +9390,7 @@
         "minRank": 239,
         "maxRank": 311,
         "ownership": 11.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18226",
@@ -9406,7 +9406,7 @@
         "minRank": 262,
         "maxRank": 306,
         "ownership": 20.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23101",
@@ -9422,7 +9422,7 @@
         "minRank": 175,
         "maxRank": 300,
         "ownership": 7.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23118",
@@ -9438,7 +9438,7 @@
         "minRank": 270,
         "maxRank": 308,
         "ownership": 4.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27285",
@@ -9454,7 +9454,7 @@
         "minRank": 271,
         "maxRank": 325,
         "ownership": 21.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27337",
@@ -9470,7 +9470,7 @@
         "minRank": 196,
         "maxRank": 229,
         "ownership": 31.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24205",
@@ -9486,7 +9486,7 @@
         "minRank": 264,
         "maxRank": 313,
         "ownership": 4.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16423",
@@ -9502,7 +9502,7 @@
         "minRank": 258,
         "maxRank": 329,
         "ownership": 6.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17272",
@@ -9518,7 +9518,7 @@
         "minRank": 238,
         "maxRank": 304,
         "ownership": 23.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24371",
@@ -9534,7 +9534,7 @@
         "minRank": 269,
         "maxRank": 305,
         "ownership": 15.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22913",
@@ -9550,7 +9550,7 @@
         "minRank": 268,
         "maxRank": 327,
         "ownership": 7.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16425",
@@ -9566,7 +9566,7 @@
         "minRank": 284,
         "maxRank": 323,
         "ownership": 24.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28401",
@@ -9582,7 +9582,7 @@
         "minRank": 223,
         "maxRank": 274,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23054",
@@ -9598,7 +9598,7 @@
         "minRank": 269,
         "maxRank": 324,
         "ownership": 10.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28133",
@@ -9614,7 +9614,7 @@
         "minRank": 192,
         "maxRank": 314,
         "ownership": 9.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27147",
@@ -9630,7 +9630,7 @@
         "minRank": 265,
         "maxRank": 303,
         "ownership": 14.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25335",
@@ -9646,7 +9646,7 @@
         "minRank": 257,
         "maxRank": 314,
         "ownership": 11.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25393",
@@ -9662,7 +9662,7 @@
         "minRank": 282,
         "maxRank": 336,
         "ownership": 7.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27144",
@@ -9678,7 +9678,7 @@
         "minRank": 251,
         "maxRank": 313,
         "ownership": 2.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24335",
@@ -9694,7 +9694,7 @@
         "minRank": 281,
         "maxRank": 328,
         "ownership": 7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26212",
@@ -9710,7 +9710,7 @@
         "minRank": 300,
         "maxRank": 313,
         "ownership": 3.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24901",
@@ -9726,7 +9726,7 @@
         "minRank": 250,
         "maxRank": 357,
         "ownership": 7.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23739",
@@ -9742,7 +9742,7 @@
         "minRank": 264,
         "maxRank": 318,
         "ownership": 9.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27449",
@@ -9758,7 +9758,7 @@
         "minRank": 261,
         "maxRank": 330,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27076",
@@ -9774,7 +9774,7 @@
         "minRank": 286,
         "maxRank": 301,
         "ownership": 5.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15623",
@@ -9790,7 +9790,7 @@
         "minRank": 220,
         "maxRank": 324,
         "ownership": 8.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25287",
@@ -9806,7 +9806,7 @@
         "minRank": 285,
         "maxRank": 374,
         "ownership": 7.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22905",
@@ -9822,7 +9822,7 @@
         "minRank": 193,
         "maxRank": 343,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26328",
@@ -9838,7 +9838,7 @@
         "minRank": 271,
         "maxRank": 340,
         "ownership": 5.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28135",
@@ -9854,7 +9854,7 @@
         "minRank": 237,
         "maxRank": 322,
         "ownership": 2.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17246",
@@ -9870,7 +9870,7 @@
         "minRank": 303,
         "maxRank": 327,
         "ownership": 14,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28424",
@@ -9886,7 +9886,7 @@
         "minRank": 219,
         "maxRank": 370,
         "ownership": 0.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28079",
@@ -9902,7 +9902,7 @@
         "minRank": 273,
         "maxRank": 294,
         "ownership": 7.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16483",
@@ -9918,7 +9918,7 @@
         "minRank": 306,
         "maxRank": 325,
         "ownership": 6.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22930",
@@ -9934,7 +9934,7 @@
         "minRank": 304,
         "maxRank": 314,
         "ownership": 4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27288",
@@ -9950,7 +9950,7 @@
         "minRank": 276,
         "maxRank": 297,
         "ownership": 6.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22967",
@@ -9966,7 +9966,7 @@
         "minRank": 268,
         "maxRank": 330,
         "ownership": 18,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22728",
@@ -9982,7 +9982,7 @@
         "minRank": 294,
         "maxRank": 305,
         "ownership": 16.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-14104",
@@ -9998,7 +9998,7 @@
         "minRank": 289,
         "maxRank": 322,
         "ownership": 26,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27993",
@@ -10014,7 +10014,7 @@
         "minRank": 293,
         "maxRank": 341,
         "ownership": 30.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22845",
@@ -10030,7 +10030,7 @@
         "minRank": 293,
         "maxRank": 360,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18864",
@@ -10046,7 +10046,7 @@
         "minRank": 295,
         "maxRank": 350,
         "ownership": 7.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27454",
@@ -10062,7 +10062,7 @@
         "minRank": 296,
         "maxRank": 367,
         "ownership": 7.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25304",
@@ -10078,7 +10078,7 @@
         "minRank": 299,
         "maxRank": 333,
         "ownership": 14.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24351",
@@ -10094,7 +10094,7 @@
         "minRank": 313,
         "maxRank": 353,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19539",
@@ -10110,7 +10110,7 @@
         "minRank": 318,
         "maxRank": 344,
         "ownership": 16.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       }
     ],
     "K": [
@@ -11173,7 +11173,7 @@
       "minRank": 1,
       "maxRank": 3,
       "ownership": 98.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19788",
@@ -11189,7 +11189,7 @@
       "minRank": 1,
       "maxRank": 4,
       "ownership": 98.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22968",
@@ -11205,7 +11205,7 @@
       "minRank": 1,
       "maxRank": 3,
       "ownership": 98.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23180",
@@ -11221,7 +11221,7 @@
       "minRank": 3,
       "maxRank": 6,
       "ownership": 99.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23070",
@@ -11237,7 +11237,7 @@
       "minRank": 4,
       "maxRank": 6,
       "ownership": 99.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16393",
@@ -11253,7 +11253,7 @@
       "minRank": 5,
       "maxRank": 11,
       "ownership": 99,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19202",
@@ -11269,7 +11269,7 @@
       "minRank": 7,
       "maxRank": 10,
       "ownership": 98.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19799",
@@ -11285,7 +11285,7 @@
       "minRank": 7,
       "maxRank": 10,
       "ownership": 98.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19217",
@@ -11301,7 +11301,7 @@
       "minRank": 6,
       "maxRank": 12,
       "ownership": 98.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22958",
@@ -11317,7 +11317,7 @@
       "minRank": 8,
       "maxRank": 14,
       "ownership": 98.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19236",
@@ -11333,7 +11333,7 @@
       "minRank": 7,
       "maxRank": 19,
       "ownership": 98.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23136",
@@ -11349,7 +11349,7 @@
       "minRank": 10,
       "maxRank": 18,
       "ownership": 98.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25989",
@@ -11365,7 +11365,7 @@
       "minRank": 11,
       "maxRank": 22,
       "ownership": 98.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23163",
@@ -11381,7 +11381,7 @@
       "minRank": 11,
       "maxRank": 22,
       "ownership": 98.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25324",
@@ -11397,7 +11397,7 @@
       "minRank": 11,
       "maxRank": 23,
       "ownership": 97.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23113",
@@ -11413,7 +11413,7 @@
       "minRank": 9,
       "maxRank": 29,
       "ownership": 92.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17240",
@@ -11429,7 +11429,7 @@
       "minRank": 12,
       "maxRank": 24,
       "ownership": 98.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22936",
@@ -11445,7 +11445,7 @@
       "minRank": 16,
       "maxRank": 28,
       "ownership": 98.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-20130",
@@ -11461,7 +11461,7 @@
       "minRank": 13,
       "maxRank": 27,
       "ownership": 98.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25395",
@@ -11477,7 +11477,7 @@
       "minRank": 14,
       "maxRank": 44,
       "ownership": 96.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22955",
@@ -11493,7 +11493,7 @@
       "minRank": 15,
       "maxRank": 23,
       "ownership": 92.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23021",
@@ -11509,7 +11509,7 @@
       "minRank": 12,
       "maxRank": 33,
       "ownership": 97.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25409",
@@ -11525,7 +11525,7 @@
       "minRank": 14,
       "maxRank": 38,
       "ownership": 74.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22963",
@@ -11541,7 +11541,7 @@
       "minRank": 19,
       "maxRank": 28,
       "ownership": 97.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17298",
@@ -11557,7 +11557,7 @@
       "minRank": 24,
       "maxRank": 34,
       "ownership": 98.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-20111",
@@ -11573,7 +11573,7 @@
       "minRank": 21,
       "maxRank": 34,
       "ownership": 96.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25403",
@@ -11589,7 +11589,7 @@
       "minRank": 19,
       "maxRank": 37,
       "ownership": 89.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18218",
@@ -11605,7 +11605,7 @@
       "minRank": 23,
       "maxRank": 39,
       "ownership": 98,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-15514",
@@ -11621,7 +11621,7 @@
       "minRank": 23,
       "maxRank": 37,
       "ownership": 98,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17233",
@@ -11637,7 +11637,7 @@
       "minRank": 27,
       "maxRank": 49,
       "ownership": 96.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18269",
@@ -11653,7 +11653,7 @@
       "minRank": 21,
       "maxRank": 43,
       "ownership": 98.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25417",
@@ -11669,7 +11669,7 @@
       "minRank": 28,
       "maxRank": 43,
       "ownership": 96.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19211",
@@ -11685,7 +11685,7 @@
       "minRank": 29,
       "maxRank": 39,
       "ownership": 96.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19222",
@@ -11701,7 +11701,7 @@
       "minRank": 26,
       "maxRank": 47,
       "ownership": 96.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26006",
@@ -11717,7 +11717,7 @@
       "minRank": 33,
       "maxRank": 56,
       "ownership": 80.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23059",
@@ -11733,7 +11733,7 @@
       "minRank": 23,
       "maxRank": 49,
       "ownership": 97.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22739",
@@ -11741,15 +11741,15 @@
       "team": "DAL",
       "position": "RB",
       "averageRank": 37,
-      "standardDeviation": 7.63,
+      "standardDeviation": 7.61,
       "rankEcr": 37,
-      "rankAverage": 39.33,
+      "rankAverage": 39.27,
       "tier": 5,
       "positionRank": 16,
       "minRank": 25,
       "maxRank": 49,
       "ownership": 95.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19231",
@@ -11765,7 +11765,7 @@
       "minRank": 30,
       "maxRank": 48,
       "ownership": 95,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23072",
@@ -11781,7 +11781,7 @@
       "minRank": 35,
       "maxRank": 44,
       "ownership": 86.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23046",
@@ -11797,7 +11797,7 @@
       "minRank": 27,
       "maxRank": 57,
       "ownership": 98.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-12123",
@@ -11805,15 +11805,15 @@
       "team": "LAR",
       "position": "WR",
       "averageRank": 41,
-      "standardDeviation": 6.3,
+      "standardDeviation": 6.31,
       "rankEcr": 41,
-      "rankAverage": 40.6,
+      "rankAverage": 40.73,
       "tier": 5,
       "positionRank": 18,
       "minRank": 32,
       "maxRank": 58,
       "ownership": 95.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22982",
@@ -11829,7 +11829,7 @@
       "minRank": 32,
       "maxRank": 51,
       "ownership": 96,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22916",
@@ -11845,7 +11845,7 @@
       "minRank": 37,
       "maxRank": 49,
       "ownership": 96.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27016",
@@ -11861,7 +11861,7 @@
       "minRank": 39,
       "maxRank": 50,
       "ownership": 68.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26122",
@@ -11869,15 +11869,15 @@
       "team": "LAC",
       "position": "WR",
       "averageRank": 45,
-      "standardDeviation": 4.83,
+      "standardDeviation": 4.88,
       "rankEcr": 45,
-      "rankAverage": 44.4,
+      "rankAverage": 44.33,
       "tier": 6,
       "positionRank": 21,
       "minRank": 34,
       "maxRank": 51,
       "ownership": 95.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19196",
@@ -11893,7 +11893,7 @@
       "minRank": 28,
       "maxRank": 62,
       "ownership": 95.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19790",
@@ -11909,7 +11909,7 @@
       "minRank": 35,
       "maxRank": 55,
       "ownership": 95.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18466",
@@ -11925,7 +11925,7 @@
       "minRank": 40,
       "maxRank": 54,
       "ownership": 92.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25981",
@@ -11933,15 +11933,15 @@
       "team": "TB",
       "position": "RB",
       "averageRank": 49,
-      "standardDeviation": 4.42,
+      "standardDeviation": 4.39,
       "rankEcr": 49,
-      "rankAverage": 46.93,
+      "rankAverage": 46.87,
       "tier": 6,
       "positionRank": 19,
       "minRank": 38,
       "maxRank": 52,
       "ownership": 96.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27166",
@@ -11951,13 +11951,13 @@
       "averageRank": 50,
       "standardDeviation": 6.79,
       "rankEcr": 50,
-      "rankAverage": 49.47,
+      "rankAverage": 49.4,
       "tier": 6,
       "positionRank": 20,
       "minRank": 34,
       "maxRank": 60,
       "ownership": 71.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23062",
@@ -11973,7 +11973,7 @@
       "minRank": 35,
       "maxRank": 62,
       "ownership": 93.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22902",
@@ -11989,7 +11989,7 @@
       "minRank": 36,
       "maxRank": 69,
       "ownership": 82.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-12119",
@@ -12005,7 +12005,7 @@
       "minRank": 38,
       "maxRank": 70,
       "ownership": 91.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23677",
@@ -12021,7 +12021,7 @@
       "minRank": 43,
       "maxRank": 63,
       "ownership": 94,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23065",
@@ -12037,7 +12037,7 @@
       "minRank": 48,
       "maxRank": 71,
       "ownership": 93.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19210",
@@ -12053,7 +12053,7 @@
       "minRank": 47,
       "maxRank": 65,
       "ownership": 92.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23886",
@@ -12069,7 +12069,7 @@
       "minRank": 49,
       "maxRank": 68,
       "ownership": 82.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25391",
@@ -12085,7 +12085,7 @@
       "minRank": 31,
       "maxRank": 67,
       "ownership": 86.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25298",
@@ -12101,7 +12101,7 @@
       "minRank": 45,
       "maxRank": 68,
       "ownership": 68.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19275",
@@ -12117,7 +12117,7 @@
       "minRank": 36,
       "maxRank": 73,
       "ownership": 97.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17265",
@@ -12125,15 +12125,15 @@
       "team": "BUF",
       "position": "WR",
       "averageRank": 61,
-      "standardDeviation": 7.37,
+      "standardDeviation": 7.14,
       "rankEcr": 61,
-      "rankAverage": 61,
+      "rankAverage": 61.13,
       "tier": 7,
       "positionRank": 28,
       "minRank": 47,
       "maxRank": 70,
       "ownership": 90.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18239",
@@ -12149,7 +12149,7 @@
       "minRank": 46,
       "maxRank": 72,
       "ownership": 90.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27297",
@@ -12165,7 +12165,7 @@
       "minRank": 47,
       "maxRank": 84,
       "ownership": 69.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26434",
@@ -12181,7 +12181,7 @@
       "minRank": 54,
       "maxRank": 67,
       "ownership": 96.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25411",
@@ -12197,7 +12197,7 @@
       "minRank": 45,
       "maxRank": 82,
       "ownership": 87.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19792",
@@ -12213,7 +12213,7 @@
       "minRank": 51,
       "maxRank": 113,
       "ownership": 84.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26009",
@@ -12229,7 +12229,7 @@
       "minRank": 59,
       "maxRank": 88,
       "ownership": 83.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18635",
@@ -12245,7 +12245,7 @@
       "minRank": 58,
       "maxRank": 100,
       "ownership": 87.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23160",
@@ -12261,7 +12261,7 @@
       "minRank": 61,
       "maxRank": 100,
       "ownership": 84.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24209",
@@ -12277,7 +12277,7 @@
       "minRank": 67,
       "maxRank": 81,
       "ownership": 89.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27329",
@@ -12293,7 +12293,7 @@
       "minRank": 60,
       "maxRank": 140,
       "ownership": 78.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23084",
@@ -12309,7 +12309,7 @@
       "minRank": 53,
       "maxRank": 90,
       "ownership": 87.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23064",
@@ -12325,7 +12325,7 @@
       "minRank": 68,
       "maxRank": 89,
       "ownership": 91.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26035",
@@ -12341,7 +12341,7 @@
       "minRank": 61,
       "maxRank": 119,
       "ownership": 75.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17253",
@@ -12357,7 +12357,7 @@
       "minRank": 61,
       "maxRank": 93,
       "ownership": 92.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23791",
@@ -12373,7 +12373,7 @@
       "minRank": 68,
       "maxRank": 99,
       "ownership": 78.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27050",
@@ -12389,7 +12389,7 @@
       "minRank": 68,
       "maxRank": 94,
       "ownership": 86.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18219",
@@ -12405,7 +12405,7 @@
       "minRank": 70,
       "maxRank": 89,
       "ownership": 89.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27142",
@@ -12421,7 +12421,7 @@
       "minRank": 64,
       "maxRank": 98,
       "ownership": 89.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25333",
@@ -12437,7 +12437,7 @@
       "minRank": 62,
       "maxRank": 105,
       "ownership": 87.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22726",
@@ -12453,7 +12453,7 @@
       "minRank": 71,
       "maxRank": 98,
       "ownership": 85.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22978",
@@ -12469,7 +12469,7 @@
       "minRank": 73,
       "maxRank": 91,
       "ownership": 79.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19780",
@@ -12485,7 +12485,7 @@
       "minRank": 62,
       "maxRank": 97,
       "ownership": 86.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18705",
@@ -12501,7 +12501,7 @@
       "minRank": 74,
       "maxRank": 98,
       "ownership": 88.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16406",
@@ -12517,7 +12517,7 @@
       "minRank": 74,
       "maxRank": 106,
       "ownership": 80.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19647",
@@ -12533,7 +12533,7 @@
       "minRank": 67,
       "maxRank": 109,
       "ownership": 87.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-15600",
@@ -12549,7 +12549,7 @@
       "minRank": 72,
       "maxRank": 97,
       "ownership": 92.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-20164",
@@ -12565,7 +12565,7 @@
       "minRank": 76,
       "maxRank": 98,
       "ownership": 93.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27131",
@@ -12581,7 +12581,7 @@
       "minRank": 71,
       "maxRank": 99,
       "ownership": 77.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23000",
@@ -12597,7 +12597,7 @@
       "minRank": 73,
       "maxRank": 101,
       "ownership": 90.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25420",
@@ -12613,7 +12613,7 @@
       "minRank": 67,
       "maxRank": 107,
       "ownership": 71.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23106",
@@ -12629,7 +12629,7 @@
       "minRank": 72,
       "maxRank": 121,
       "ownership": 69.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18598",
@@ -12645,7 +12645,7 @@
       "minRank": 74,
       "maxRank": 108,
       "ownership": 85.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19797",
@@ -12661,7 +12661,7 @@
       "minRank": 78,
       "maxRank": 105,
       "ownership": 90.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23013",
@@ -12677,7 +12677,7 @@
       "minRank": 85,
       "maxRank": 113,
       "ownership": 68.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19245",
@@ -12693,7 +12693,7 @@
       "minRank": 72,
       "maxRank": 134,
       "ownership": 69.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26214",
@@ -12709,7 +12709,7 @@
       "minRank": 87,
       "maxRank": 125,
       "ownership": 78.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27316",
@@ -12725,7 +12725,7 @@
       "minRank": 85,
       "maxRank": 127,
       "ownership": 58.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-9451",
@@ -12741,7 +12741,7 @@
       "minRank": 73,
       "maxRank": 124,
       "ownership": 92.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22910",
@@ -12757,7 +12757,7 @@
       "minRank": 92,
       "maxRank": 112,
       "ownership": 90.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25997",
@@ -12773,7 +12773,7 @@
       "minRank": 94,
       "maxRank": 116,
       "ownership": 54.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16413",
@@ -12789,7 +12789,7 @@
       "minRank": 90,
       "maxRank": 124,
       "ownership": 80.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23107",
@@ -12805,7 +12805,7 @@
       "minRank": 90,
       "maxRank": 115,
       "ownership": 82.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25247",
@@ -12821,7 +12821,7 @@
       "minRank": 94,
       "maxRank": 126,
       "ownership": 59.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19278",
@@ -12837,7 +12837,7 @@
       "minRank": 99,
       "maxRank": 113,
       "ownership": 89.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23020",
@@ -12853,7 +12853,7 @@
       "minRank": 77,
       "maxRank": 127,
       "ownership": 67,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18600",
@@ -12869,7 +12869,7 @@
       "minRank": 89,
       "maxRank": 133,
       "ownership": 59.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16673",
@@ -12885,7 +12885,7 @@
       "minRank": 98,
       "maxRank": 124,
       "ownership": 85.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22985",
@@ -12901,7 +12901,7 @@
       "minRank": 83,
       "maxRank": 128,
       "ownership": 84.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24706",
@@ -12917,7 +12917,7 @@
       "minRank": 90,
       "maxRank": 132,
       "ownership": 68.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16499",
@@ -12933,7 +12933,7 @@
       "minRank": 85,
       "maxRank": 156,
       "ownership": 92.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23310",
@@ -12949,7 +12949,7 @@
       "minRank": 102,
       "maxRank": 131,
       "ownership": 80.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-11594",
@@ -12965,7 +12965,7 @@
       "minRank": 94,
       "maxRank": 157,
       "ownership": 90.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23123",
@@ -12981,7 +12981,7 @@
       "minRank": 106,
       "maxRank": 139,
       "ownership": 76.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22718",
@@ -12997,7 +12997,7 @@
       "minRank": 104,
       "maxRank": 137,
       "ownership": 88.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23781",
@@ -13013,7 +13013,7 @@
       "minRank": 99,
       "maxRank": 157,
       "ownership": 56.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17270",
@@ -13029,7 +13029,7 @@
       "minRank": 102,
       "maxRank": 143,
       "ownership": 89.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-15501",
@@ -13045,7 +13045,7 @@
       "minRank": 111,
       "maxRank": 133,
       "ownership": 74.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23891",
@@ -13061,7 +13061,7 @@
       "minRank": 82,
       "maxRank": 147,
       "ownership": 70.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24172",
@@ -13077,7 +13077,7 @@
       "minRank": 99,
       "maxRank": 152,
       "ownership": 53.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19246",
@@ -13093,7 +13093,7 @@
       "minRank": 103,
       "maxRank": 135,
       "ownership": 62.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22969",
@@ -13109,7 +13109,7 @@
       "minRank": 112,
       "maxRank": 143,
       "ownership": 58.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17237",
@@ -13125,7 +13125,7 @@
       "minRank": 107,
       "maxRank": 151,
       "ownership": 74.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22986",
@@ -13141,7 +13141,7 @@
       "minRank": 102,
       "maxRank": 181,
       "ownership": 44.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23096",
@@ -13157,7 +13157,7 @@
       "minRank": 107,
       "maxRank": 146,
       "ownership": 54.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23794",
@@ -13173,7 +13173,7 @@
       "minRank": 108,
       "maxRank": 141,
       "ownership": 78.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22980",
@@ -13189,7 +13189,7 @@
       "minRank": 117,
       "maxRank": 139,
       "ownership": 61,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23152",
@@ -13205,7 +13205,7 @@
       "minRank": 78,
       "maxRank": 161,
       "ownership": 80.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23748",
@@ -13221,7 +13221,7 @@
       "minRank": 101,
       "maxRank": 145,
       "ownership": 82.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27077",
@@ -13237,7 +13237,7 @@
       "minRank": 109,
       "maxRank": 141,
       "ownership": 45.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23499",
@@ -13253,7 +13253,7 @@
       "minRank": 105,
       "maxRank": 213,
       "ownership": 33.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26403",
@@ -13269,7 +13269,7 @@
       "minRank": 113,
       "maxRank": 149,
       "ownership": 52.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23019",
@@ -13285,7 +13285,7 @@
       "minRank": 109,
       "maxRank": 148,
       "ownership": 83.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26024",
@@ -13301,7 +13301,7 @@
       "minRank": 92,
       "maxRank": 173,
       "ownership": 65.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26148",
@@ -13317,7 +13317,7 @@
       "minRank": 97,
       "maxRank": 235,
       "ownership": 54.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27520",
@@ -13333,7 +13333,7 @@
       "minRank": 103,
       "maxRank": 183,
       "ownership": 77.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25323",
@@ -13349,7 +13349,7 @@
       "minRank": 125,
       "maxRank": 154,
       "ownership": 54.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25345",
@@ -13365,7 +13365,7 @@
       "minRank": 97,
       "maxRank": 207,
       "ownership": 55.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17269",
@@ -13381,7 +13381,7 @@
       "minRank": 109,
       "maxRank": 186,
       "ownership": 84,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25360",
@@ -13397,7 +13397,7 @@
       "minRank": 129,
       "maxRank": 163,
       "ownership": 27,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24333",
@@ -13413,7 +13413,7 @@
       "minRank": 134,
       "maxRank": 161,
       "ownership": 65.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23071",
@@ -13429,7 +13429,7 @@
       "minRank": 133,
       "maxRank": 201,
       "ownership": 50.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27331",
@@ -13445,7 +13445,7 @@
       "minRank": 108,
       "maxRank": 223,
       "ownership": 58.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27320",
@@ -13461,7 +13461,7 @@
       "minRank": 126,
       "maxRank": 229,
       "ownership": 42.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27102",
@@ -13477,7 +13477,7 @@
       "minRank": 129,
       "maxRank": 167,
       "ownership": 38.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-15561",
@@ -13493,7 +13493,7 @@
       "minRank": 137,
       "maxRank": 180,
       "ownership": 68.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-13981",
@@ -13509,7 +13509,7 @@
       "minRank": 109,
       "maxRank": 209,
       "ownership": 70.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19562",
@@ -13525,7 +13525,7 @@
       "minRank": 110,
       "maxRank": 219,
       "ownership": 61.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22900",
@@ -13541,7 +13541,7 @@
       "minRank": 138,
       "maxRank": 179,
       "ownership": 36.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-20094",
@@ -13557,7 +13557,7 @@
       "minRank": 144,
       "maxRank": 169,
       "ownership": 39.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24687",
@@ -13573,7 +13573,7 @@
       "minRank": 141,
       "maxRank": 181,
       "ownership": 57.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16421",
@@ -13589,7 +13589,7 @@
       "minRank": 121,
       "maxRank": 215,
       "ownership": 79,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17236",
@@ -13605,7 +13605,7 @@
       "minRank": 128,
       "maxRank": 178,
       "ownership": 53.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25885",
@@ -13621,7 +13621,7 @@
       "minRank": 121,
       "maxRank": 197,
       "ownership": 39,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24346",
@@ -13637,7 +13637,7 @@
       "minRank": 131,
       "maxRank": 241,
       "ownership": 32.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19590",
@@ -13653,7 +13653,7 @@
       "minRank": 121,
       "maxRank": 217,
       "ownership": 66.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26034",
@@ -13669,7 +13669,7 @@
       "minRank": 135,
       "maxRank": 215,
       "ownership": 79.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18244",
@@ -13685,7 +13685,7 @@
       "minRank": 132,
       "maxRank": 220,
       "ownership": 65.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27339",
@@ -13701,7 +13701,7 @@
       "minRank": 138,
       "maxRank": 206,
       "ownership": 44.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16447",
@@ -13717,7 +13717,7 @@
       "minRank": 116,
       "maxRank": 227,
       "ownership": 55.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28127",
@@ -13733,7 +13733,7 @@
       "minRank": 125,
       "maxRank": 242,
       "ownership": 31,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23179",
@@ -13749,7 +13749,7 @@
       "minRank": 120,
       "maxRank": 215,
       "ownership": 37.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22908",
@@ -13765,7 +13765,7 @@
       "minRank": 147,
       "maxRank": 213,
       "ownership": 33,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24343",
@@ -13781,7 +13781,7 @@
       "minRank": 130,
       "maxRank": 227,
       "ownership": 39.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28108",
@@ -13797,7 +13797,7 @@
       "minRank": 146,
       "maxRank": 276,
       "ownership": 17.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8120",
@@ -13813,7 +13813,7 @@
       "minRank": 149,
       "maxRank": 160,
       "ownership": 90.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19252",
@@ -13829,7 +13829,7 @@
       "minRank": 143,
       "maxRank": 223,
       "ownership": 38.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19201",
@@ -13845,7 +13845,7 @@
       "minRank": 141,
       "maxRank": 230,
       "ownership": 70.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28107",
@@ -13861,7 +13861,7 @@
       "minRank": 147,
       "maxRank": 307,
       "ownership": 41.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23982",
@@ -13877,7 +13877,7 @@
       "minRank": 139,
       "maxRank": 245,
       "ownership": 34.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24362",
@@ -13893,7 +13893,7 @@
       "minRank": 131,
       "maxRank": 232,
       "ownership": 35,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26055",
@@ -13909,7 +13909,7 @@
       "minRank": 131,
       "maxRank": 267,
       "ownership": 63,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24357",
@@ -13925,7 +13925,7 @@
       "minRank": 148,
       "maxRank": 238,
       "ownership": 31.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8090",
@@ -13941,7 +13941,7 @@
       "minRank": 159,
       "maxRank": 182,
       "ownership": 91.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25418",
@@ -13957,7 +13957,7 @@
       "minRank": 160,
       "maxRank": 236,
       "ownership": 31.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8260",
@@ -13973,7 +13973,7 @@
       "minRank": 160,
       "maxRank": 170,
       "ownership": 88.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24755",
@@ -13989,7 +13989,7 @@
       "minRank": 146,
       "maxRank": 224,
       "ownership": 33.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17349",
@@ -14005,7 +14005,7 @@
       "minRank": 157,
       "maxRank": 228,
       "ownership": 48.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18232",
@@ -14021,7 +14021,7 @@
       "minRank": 144,
       "maxRank": 315,
       "ownership": 56.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22989",
@@ -14037,7 +14037,7 @@
       "minRank": 169,
       "maxRank": 203,
       "ownership": 38.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8280",
@@ -14053,7 +14053,7 @@
       "minRank": 166,
       "maxRank": 185,
       "ownership": 62.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8230",
@@ -14069,7 +14069,7 @@
       "minRank": 167,
       "maxRank": 189,
       "ownership": 73.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-15642",
@@ -14085,7 +14085,7 @@
       "minRank": 128,
       "maxRank": 275,
       "ownership": 52.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26335",
@@ -14101,7 +14101,7 @@
       "minRank": 156,
       "maxRank": 230,
       "ownership": 37.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-15802",
@@ -14117,7 +14117,7 @@
       "minRank": 125,
       "maxRank": 222,
       "ownership": 51.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26355",
@@ -14133,7 +14133,7 @@
       "minRank": 156,
       "maxRank": 236,
       "ownership": 45.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18290",
@@ -14149,7 +14149,7 @@
       "minRank": 163,
       "maxRank": 238,
       "ownership": 74.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8180",
@@ -14165,7 +14165,7 @@
       "minRank": 174,
       "maxRank": 191,
       "ownership": 78.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26068",
@@ -14181,7 +14181,7 @@
       "minRank": 178,
       "maxRank": 190,
       "ownership": 93,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8170",
@@ -14197,7 +14197,7 @@
       "minRank": 173,
       "maxRank": 248,
       "ownership": 48.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8140",
@@ -14213,7 +14213,7 @@
       "minRank": 179,
       "maxRank": 211,
       "ownership": 57.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26191",
@@ -14229,7 +14229,7 @@
       "minRank": 163,
       "maxRank": 215,
       "ownership": 22.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8240",
@@ -14245,7 +14245,7 @@
       "minRank": 181,
       "maxRank": 205,
       "ownership": 74.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-15756",
@@ -14261,7 +14261,7 @@
       "minRank": 185,
       "maxRank": 195,
       "ownership": 75.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28084",
@@ -14277,7 +14277,7 @@
       "minRank": 163,
       "maxRank": 262,
       "ownership": 27.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26475",
@@ -14293,7 +14293,7 @@
       "minRank": 183,
       "maxRank": 206,
       "ownership": 70.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8070",
@@ -14309,7 +14309,7 @@
       "minRank": 184,
       "maxRank": 207,
       "ownership": 45.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25337",
@@ -14325,7 +14325,7 @@
       "minRank": 169,
       "maxRank": 204,
       "ownership": 46.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23901",
@@ -14341,7 +14341,7 @@
       "minRank": 188,
       "maxRank": 212,
       "ownership": 89.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26038",
@@ -14357,7 +14357,7 @@
       "minRank": 169,
       "maxRank": 257,
       "ownership": 34.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26215",
@@ -14373,7 +14373,7 @@
       "minRank": 164,
       "maxRank": 210,
       "ownership": 27.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27446",
@@ -14389,7 +14389,7 @@
       "minRank": 180,
       "maxRank": 220,
       "ownership": 28.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23092",
@@ -14405,7 +14405,7 @@
       "minRank": 166,
       "maxRank": 233,
       "ownership": 42.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8250",
@@ -14421,7 +14421,7 @@
       "minRank": 185,
       "maxRank": 194,
       "ownership": 40.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23679",
@@ -14437,7 +14437,7 @@
       "minRank": 176,
       "maxRank": 218,
       "ownership": 30.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8110",
@@ -14453,7 +14453,7 @@
       "minRank": 183,
       "maxRank": 197,
       "ownership": 43.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-14003",
@@ -14469,7 +14469,7 @@
       "minRank": 192,
       "maxRank": 216,
       "ownership": 82.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23091",
@@ -14485,7 +14485,7 @@
       "minRank": 202,
       "maxRank": 253,
       "ownership": 27.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27211",
@@ -14501,7 +14501,7 @@
       "minRank": 179,
       "maxRank": 234,
       "ownership": 27,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25987",
@@ -14517,7 +14517,7 @@
       "minRank": 147,
       "maxRank": 235,
       "ownership": 24,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17575",
@@ -14533,7 +14533,7 @@
       "minRank": 203,
       "maxRank": 233,
       "ownership": 45.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8150",
@@ -14549,7 +14549,7 @@
       "minRank": 204,
       "maxRank": 234,
       "ownership": 39.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17258",
@@ -14565,7 +14565,7 @@
       "minRank": 172,
       "maxRank": 262,
       "ownership": 54.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8020",
@@ -14581,7 +14581,7 @@
       "minRank": 187,
       "maxRank": 278,
       "ownership": 48.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23297",
@@ -14597,7 +14597,7 @@
       "minRank": 190,
       "maxRank": 251,
       "ownership": 34.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27122",
@@ -14613,7 +14613,7 @@
       "minRank": 167,
       "maxRank": 246,
       "ownership": 22.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23144",
@@ -14629,7 +14629,7 @@
       "minRank": 200,
       "maxRank": 253,
       "ownership": 42.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26398",
@@ -14645,7 +14645,7 @@
       "minRank": 194,
       "maxRank": 226,
       "ownership": 23.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28126",
@@ -14661,7 +14661,7 @@
       "minRank": 175,
       "maxRank": 295,
       "ownership": 21.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27534",
@@ -14677,7 +14677,7 @@
       "minRank": 202,
       "maxRank": 212,
       "ownership": 39.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16399",
@@ -14693,7 +14693,7 @@
       "minRank": 206,
       "maxRank": 260,
       "ownership": 39.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27109",
@@ -14709,7 +14709,7 @@
       "minRank": 180,
       "maxRank": 266,
       "ownership": 40.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27315",
@@ -14725,7 +14725,7 @@
       "minRank": 168,
       "maxRank": 288,
       "ownership": 32.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-13731",
@@ -14741,7 +14741,7 @@
       "minRank": 210,
       "maxRank": 249,
       "ownership": 24.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25361",
@@ -14757,7 +14757,7 @@
       "minRank": 179,
       "maxRank": 237,
       "ownership": 39.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26039",
@@ -14773,7 +14773,7 @@
       "minRank": 183,
       "maxRank": 289,
       "ownership": 31.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24354",
@@ -14789,7 +14789,7 @@
       "minRank": 200,
       "maxRank": 251,
       "ownership": 18.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25419",
@@ -14805,7 +14805,7 @@
       "minRank": 183,
       "maxRank": 272,
       "ownership": 35.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27291",
@@ -14821,7 +14821,7 @@
       "minRank": 208,
       "maxRank": 332,
       "ownership": 14.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16712",
@@ -14837,7 +14837,7 @@
       "minRank": 207,
       "maxRank": 280,
       "ownership": 54.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19810",
@@ -14853,7 +14853,7 @@
       "minRank": 170,
       "maxRank": 264,
       "ownership": 42.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24367",
@@ -14869,7 +14869,7 @@
       "minRank": 221,
       "maxRank": 304,
       "ownership": 10.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25984",
@@ -14885,7 +14885,7 @@
       "minRank": 178,
       "maxRank": 258,
       "ownership": 15.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8100",
@@ -14901,7 +14901,7 @@
       "minRank": 195,
       "maxRank": 355,
       "ownership": 60.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28138",
@@ -14917,7 +14917,7 @@
       "minRank": 182,
       "maxRank": 271,
       "ownership": 6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28013",
@@ -14933,7 +14933,7 @@
       "minRank": 203,
       "maxRank": 334,
       "ownership": 57.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27463",
@@ -14949,7 +14949,7 @@
       "minRank": 213,
       "maxRank": 270,
       "ownership": 32.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19058",
@@ -14965,7 +14965,7 @@
       "minRank": 215,
       "maxRank": 235,
       "ownership": 54.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24177",
@@ -14981,7 +14981,7 @@
       "minRank": 167,
       "maxRank": 301,
       "ownership": 25.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26075",
@@ -14997,7 +14997,7 @@
       "minRank": 213,
       "maxRank": 251,
       "ownership": 61.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8030",
@@ -15013,7 +15013,7 @@
       "minRank": 206,
       "maxRank": 280,
       "ownership": 54.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23181",
@@ -15029,7 +15029,7 @@
       "minRank": 191,
       "maxRank": 273,
       "ownership": 37.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27165",
@@ -15045,7 +15045,7 @@
       "minRank": 156,
       "maxRank": 299,
       "ownership": 26.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23682",
@@ -15061,7 +15061,7 @@
       "minRank": 199,
       "maxRank": 296,
       "ownership": 31.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28047",
@@ -15077,7 +15077,7 @@
       "minRank": 207,
       "maxRank": 275,
       "ownership": 30.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-13029",
@@ -15093,7 +15093,7 @@
       "minRank": 221,
       "maxRank": 253,
       "ownership": 46.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-20163",
@@ -15109,7 +15109,7 @@
       "minRank": 205,
       "maxRank": 279,
       "ownership": 31.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27994",
@@ -15125,7 +15125,7 @@
       "minRank": 229,
       "maxRank": 284,
       "ownership": 23.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26314",
@@ -15141,7 +15141,7 @@
       "minRank": 163,
       "maxRank": 300,
       "ownership": 26.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26005",
@@ -15157,7 +15157,7 @@
       "minRank": 206,
       "maxRank": 275,
       "ownership": 33.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19372",
@@ -15173,7 +15173,7 @@
       "minRank": 175,
       "maxRank": 305,
       "ownership": 35.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26638",
@@ -15189,7 +15189,7 @@
       "minRank": 216,
       "maxRank": 281,
       "ownership": 43.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27059",
@@ -15205,7 +15205,7 @@
       "minRank": 194,
       "maxRank": 345,
       "ownership": 29.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24360",
@@ -15221,7 +15221,7 @@
       "minRank": 180,
       "maxRank": 270,
       "ownership": 10.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25388",
@@ -15237,7 +15237,7 @@
       "minRank": 145,
       "maxRank": 310,
       "ownership": 39.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19302",
@@ -15253,7 +15253,7 @@
       "minRank": 159,
       "maxRank": 262,
       "ownership": 24.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26341",
@@ -15269,7 +15269,7 @@
       "minRank": 198,
       "maxRank": 298,
       "ownership": 27.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26022",
@@ -15285,7 +15285,7 @@
       "minRank": 220,
       "maxRank": 266,
       "ownership": 25.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8010",
@@ -15301,7 +15301,7 @@
       "minRank": 217,
       "maxRank": 278,
       "ownership": 24.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27487",
@@ -15317,7 +15317,7 @@
       "minRank": 196,
       "maxRank": 273,
       "ownership": 20.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-11687",
@@ -15333,7 +15333,7 @@
       "minRank": 214,
       "maxRank": 316,
       "ownership": 31.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16026",
@@ -15349,7 +15349,7 @@
       "minRank": 227,
       "maxRank": 328,
       "ownership": 23.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8270",
@@ -15365,7 +15365,7 @@
       "minRank": 218,
       "maxRank": 279,
       "ownership": 35.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24778",
@@ -15381,7 +15381,7 @@
       "minRank": 218,
       "maxRank": 280,
       "ownership": 29.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22973",
@@ -15397,7 +15397,7 @@
       "minRank": 229,
       "maxRank": 306,
       "ownership": 30.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28130",
@@ -15413,7 +15413,7 @@
       "minRank": 250,
       "maxRank": 295,
       "ownership": 19.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27224",
@@ -15429,7 +15429,7 @@
       "minRank": 189,
       "maxRank": 288,
       "ownership": 17.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19794",
@@ -15445,7 +15445,7 @@
       "minRank": 204,
       "maxRank": 295,
       "ownership": 21.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23104",
@@ -15461,7 +15461,7 @@
       "minRank": 201,
       "maxRank": 299,
       "ownership": 39.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17268",
@@ -15477,7 +15477,7 @@
       "minRank": 173,
       "maxRank": 285,
       "ownership": 26.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8130",
@@ -15493,7 +15493,7 @@
       "minRank": 234,
       "maxRank": 317,
       "ownership": 28.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-9001",
@@ -15509,7 +15509,7 @@
       "minRank": 217,
       "maxRank": 284,
       "ownership": 36.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16420",
@@ -15525,7 +15525,7 @@
       "minRank": 224,
       "maxRank": 293,
       "ownership": 27.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16411",
@@ -15541,7 +15541,7 @@
       "minRank": 227,
       "maxRank": 298,
       "ownership": 35.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27310",
@@ -15557,7 +15557,7 @@
       "minRank": 185,
       "maxRank": 312,
       "ownership": 23.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26019",
@@ -15573,7 +15573,7 @@
       "minRank": 222,
       "maxRank": 276,
       "ownership": 29.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27259",
@@ -15589,7 +15589,7 @@
       "minRank": 232,
       "maxRank": 289,
       "ownership": 16.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25977",
@@ -15605,7 +15605,7 @@
       "minRank": 220,
       "maxRank": 282,
       "ownership": 8.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23080",
@@ -15621,7 +15621,7 @@
       "minRank": 222,
       "maxRank": 290,
       "ownership": 22.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16433",
@@ -15637,7 +15637,7 @@
       "minRank": 240,
       "maxRank": 298,
       "ownership": 36.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25968",
@@ -15653,7 +15653,7 @@
       "minRank": 241,
       "maxRank": 321,
       "ownership": 32.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26444",
@@ -15669,7 +15669,7 @@
       "minRank": 226,
       "maxRank": 316,
       "ownership": 2.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16489",
@@ -15685,7 +15685,7 @@
       "minRank": 232,
       "maxRank": 298,
       "ownership": 11.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24344",
@@ -15701,7 +15701,7 @@
       "minRank": 215,
       "maxRank": 300,
       "ownership": 19.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18406",
@@ -15717,7 +15717,7 @@
       "minRank": 245,
       "maxRank": 317,
       "ownership": 9.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23153",
@@ -15733,7 +15733,7 @@
       "minRank": 190,
       "maxRank": 267,
       "ownership": 23.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18256",
@@ -15749,7 +15749,7 @@
       "minRank": 232,
       "maxRank": 297,
       "ownership": 13.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25654",
@@ -15765,7 +15765,7 @@
       "minRank": 242,
       "maxRank": 308,
       "ownership": 9.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26392",
@@ -15781,7 +15781,7 @@
       "minRank": 236,
       "maxRank": 310,
       "ownership": 5.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-11616",
@@ -15797,7 +15797,7 @@
       "minRank": 219,
       "maxRank": 291,
       "ownership": 38.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18280",
@@ -15813,7 +15813,7 @@
       "minRank": 207,
       "maxRank": 300,
       "ownership": 11.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22921",
@@ -15829,7 +15829,7 @@
       "minRank": 242,
       "maxRank": 302,
       "ownership": 10.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27097",
@@ -15845,7 +15845,7 @@
       "minRank": 247,
       "maxRank": 287,
       "ownership": 8.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26409",
@@ -15861,7 +15861,7 @@
       "minRank": 257,
       "maxRank": 302,
       "ownership": 25.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-11177",
@@ -15877,7 +15877,7 @@
       "minRank": 241,
       "maxRank": 329,
       "ownership": 28.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19198",
@@ -15893,7 +15893,7 @@
       "minRank": 239,
       "maxRank": 358,
       "ownership": 32.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23079",
@@ -15909,7 +15909,7 @@
       "minRank": 288,
       "maxRank": 316,
       "ownership": 1.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25823",
@@ -15925,7 +15925,7 @@
       "minRank": 262,
       "maxRank": 299,
       "ownership": 6.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25876",
@@ -15941,7 +15941,7 @@
       "minRank": 231,
       "maxRank": 312,
       "ownership": 2.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16398",
@@ -15957,7 +15957,7 @@
       "minRank": 252,
       "maxRank": 320,
       "ownership": 29.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22915",
@@ -15973,7 +15973,7 @@
       "minRank": 256,
       "maxRank": 302,
       "ownership": 37.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18706",
@@ -15989,7 +15989,7 @@
       "minRank": 256,
       "maxRank": 294,
       "ownership": 23.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26136",
@@ -16005,7 +16005,7 @@
       "minRank": 239,
       "maxRank": 311,
       "ownership": 11.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18226",
@@ -16021,7 +16021,7 @@
       "minRank": 262,
       "maxRank": 306,
       "ownership": 20.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23101",
@@ -16037,7 +16037,7 @@
       "minRank": 175,
       "maxRank": 300,
       "ownership": 7.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23118",
@@ -16053,7 +16053,7 @@
       "minRank": 270,
       "maxRank": 308,
       "ownership": 4.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27285",
@@ -16069,7 +16069,7 @@
       "minRank": 271,
       "maxRank": 325,
       "ownership": 21.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27337",
@@ -16085,7 +16085,7 @@
       "minRank": 196,
       "maxRank": 229,
       "ownership": 31.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24205",
@@ -16101,7 +16101,7 @@
       "minRank": 264,
       "maxRank": 313,
       "ownership": 4.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16423",
@@ -16117,7 +16117,7 @@
       "minRank": 258,
       "maxRank": 329,
       "ownership": 6.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17272",
@@ -16133,7 +16133,7 @@
       "minRank": 238,
       "maxRank": 304,
       "ownership": 23.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16548",
@@ -16149,7 +16149,7 @@
       "minRank": 199,
       "maxRank": 315,
       "ownership": 3.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8190",
@@ -16165,7 +16165,7 @@
       "minRank": 240,
       "maxRank": 318,
       "ownership": 46.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24371",
@@ -16181,7 +16181,7 @@
       "minRank": 269,
       "maxRank": 305,
       "ownership": 15.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8040",
@@ -16197,7 +16197,7 @@
       "minRank": 254,
       "maxRank": 318,
       "ownership": 14.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22913",
@@ -16213,7 +16213,7 @@
       "minRank": 268,
       "maxRank": 327,
       "ownership": 7.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8080",
@@ -16229,7 +16229,7 @@
       "minRank": 171,
       "maxRank": 236,
       "ownership": 26.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8050",
@@ -16245,7 +16245,7 @@
       "minRank": 166,
       "maxRank": 244,
       "ownership": 25.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16425",
@@ -16261,7 +16261,7 @@
       "minRank": 284,
       "maxRank": 323,
       "ownership": 24.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23018",
@@ -16277,7 +16277,7 @@
       "minRank": 244,
       "maxRank": 338,
       "ownership": 36,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28401",
@@ -16293,7 +16293,7 @@
       "minRank": 223,
       "maxRank": 274,
       "ownership": 4.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-8160",
@@ -16309,7 +16309,7 @@
       "minRank": 219,
       "maxRank": 316,
       "ownership": 16.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23054",
@@ -16325,7 +16325,7 @@
       "minRank": 269,
       "maxRank": 324,
       "ownership": 10.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28133",
@@ -16341,7 +16341,7 @@
       "minRank": 192,
       "maxRank": 314,
       "ownership": 9.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27147",
@@ -16357,7 +16357,7 @@
       "minRank": 265,
       "maxRank": 303,
       "ownership": 14.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25335",
@@ -16373,7 +16373,7 @@
       "minRank": 257,
       "maxRank": 314,
       "ownership": 11.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25393",
@@ -16389,7 +16389,7 @@
       "minRank": 282,
       "maxRank": 336,
       "ownership": 7.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27144",
@@ -16405,7 +16405,7 @@
       "minRank": 251,
       "maxRank": 313,
       "ownership": 2.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24335",
@@ -16421,7 +16421,7 @@
       "minRank": 281,
       "maxRank": 328,
       "ownership": 7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16540",
@@ -16437,7 +16437,7 @@
       "minRank": 239,
       "maxRank": 240,
       "ownership": 21.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26212",
@@ -16453,7 +16453,7 @@
       "minRank": 300,
       "maxRank": 313,
       "ownership": 3.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24901",
@@ -16469,7 +16469,7 @@
       "minRank": 250,
       "maxRank": 357,
       "ownership": 7.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-23739",
@@ -16485,7 +16485,7 @@
       "minRank": 264,
       "maxRank": 318,
       "ownership": 9.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27449",
@@ -16501,7 +16501,7 @@
       "minRank": 261,
       "maxRank": 330,
       "ownership": 3.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27076",
@@ -16517,7 +16517,7 @@
       "minRank": 286,
       "maxRank": 301,
       "ownership": 5.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-15623",
@@ -16533,7 +16533,7 @@
       "minRank": 220,
       "maxRank": 324,
       "ownership": 8.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25287",
@@ -16549,7 +16549,7 @@
       "minRank": 285,
       "maxRank": 374,
       "ownership": 7.8,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22905",
@@ -16565,7 +16565,7 @@
       "minRank": 193,
       "maxRank": 343,
       "ownership": 4.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-26328",
@@ -16581,7 +16581,7 @@
       "minRank": 271,
       "maxRank": 340,
       "ownership": 5.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28135",
@@ -16597,7 +16597,7 @@
       "minRank": 237,
       "maxRank": 322,
       "ownership": 2.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-20156",
@@ -16613,7 +16613,7 @@
       "minRank": 273,
       "maxRank": 363,
       "ownership": 24.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-17246",
@@ -16629,7 +16629,7 @@
       "minRank": 303,
       "maxRank": 327,
       "ownership": 14,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28424",
@@ -16645,7 +16645,7 @@
       "minRank": 219,
       "maxRank": 370,
       "ownership": 0.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-28079",
@@ -16661,7 +16661,7 @@
       "minRank": 273,
       "maxRank": 294,
       "ownership": 7.2,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-16483",
@@ -16677,7 +16677,7 @@
       "minRank": 306,
       "maxRank": 325,
       "ownership": 6.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22930",
@@ -16693,7 +16693,7 @@
       "minRank": 304,
       "maxRank": 314,
       "ownership": 4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27288",
@@ -16709,7 +16709,7 @@
       "minRank": 276,
       "maxRank": 297,
       "ownership": 6.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19781",
@@ -16725,7 +16725,7 @@
       "minRank": 240,
       "maxRank": 375,
       "ownership": 31,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22967",
@@ -16741,7 +16741,7 @@
       "minRank": 268,
       "maxRank": 330,
       "ownership": 18,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25368",
@@ -16757,7 +16757,7 @@
       "minRank": 274,
       "maxRank": 347,
       "ownership": 37.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22728",
@@ -16773,7 +16773,7 @@
       "minRank": 294,
       "maxRank": 305,
       "ownership": 16.9,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-14104",
@@ -16789,7 +16789,7 @@
       "minRank": 289,
       "maxRank": 322,
       "ownership": 26,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27993",
@@ -16805,7 +16805,7 @@
       "minRank": 293,
       "maxRank": 341,
       "ownership": 30.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-22845",
@@ -16821,7 +16821,7 @@
       "minRank": 293,
       "maxRank": 360,
       "ownership": 3.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-18864",
@@ -16837,7 +16837,7 @@
       "minRank": 295,
       "maxRank": 350,
       "ownership": 7.1,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-27454",
@@ -16853,7 +16853,7 @@
       "minRank": 296,
       "maxRank": 367,
       "ownership": 7.5,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-25304",
@@ -16869,7 +16869,7 @@
       "minRank": 299,
       "maxRank": 333,
       "ownership": 14.3,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-24351",
@@ -16885,7 +16885,7 @@
       "minRank": 313,
       "maxRank": 353,
       "ownership": 1.6,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-19539",
@@ -16901,7 +16901,7 @@
       "minRank": 318,
       "maxRank": 344,
       "ownership": 16.7,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     },
     {
       "id": "fp-13891",
@@ -16917,7 +16917,7 @@
       "minRank": 334,
       "maxRank": 376,
       "ownership": 11.4,
-      "lastUpdated": "2026-04-29T17:44:23.000Z"
+      "lastUpdated": "2026-04-29T18:17:58.000Z"
     }
   ],
   "sliceMetadata": {
@@ -16926,7 +16926,7 @@
       "sourceKind": "overall_consensus",
       "rangeKind": "overall",
       "playerCount": 360,
-      "updatedAt": "2026-04-29T17:44:23.000Z"
+      "updatedAt": "2026-04-29T18:17:58.000Z"
     },
     "qb": {
       "available": true,
@@ -16947,7 +16947,7 @@
       "sourceKind": "position_consensus",
       "rangeKind": "position",
       "playerCount": 141,
-      "updatedAt": "2026-04-29T17:22:50.000Z"
+      "updatedAt": "2026-04-29T18:17:58.000Z"
     },
     "te": {
       "available": true,
@@ -16961,7 +16961,7 @@
       "sourceKind": "derived_flex",
       "rangeKind": "overall",
       "playerCount": 276,
-      "updatedAt": "2026-04-29T17:44:23.000Z"
+      "updatedAt": "2026-04-29T18:17:58.000Z"
     },
     "k": {
       "available": true,

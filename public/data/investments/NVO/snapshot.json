@@ -1,10 +1,10 @@
 {
   "symbol": "NVO",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.47,
-      "ttmPe": 10.66,
-      "marketCap": 164133777456,
-      "psRatio": 3.38,
-      "pbRatio": 5.38
+      "ttmPe": 11.86,
+      "marketCap": 182603450074,
+      "psRatio": 3.76,
+      "pbRatio": 5.98
     },
     "profitability": {
       "roe": 14.78,
@@ -5724,137 +5724,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.01,
-      "costOfEquity": 10.47,
+      "wacc": 9.42,
+      "costOfEquity": 10.780000000000001,
       "costOfDebt": -3.36,
       "taxRate": 21,
-      "beta": 0.7199,
-      "marketCap": 164133777456
+      "beta": 0.7556,
+      "marketCap": 182603450074
     },
     "beta": {
-      "beta5y": 0.7199
+      "beta5y": 0.7556
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 67.51,
-        "high": 68.72,
-        "low": 67.32,
-        "close": 68.24,
-        "volume": 7337200
-      },
-      {
-        "date": "2025-04-03",
-        "open": 68.43,
-        "high": 68.54,
-        "low": 67,
-        "close": 67.1,
-        "volume": 8822500
-      },
-      {
-        "date": "2025-04-04",
-        "open": 65.23,
-        "high": 65.47,
-        "low": 62.37,
-        "close": 62.55,
-        "volume": 10869500
-      },
-      {
-        "date": "2025-04-07",
-        "open": 61.44,
-        "high": 65.28,
-        "low": 60.61,
-        "close": 63.64,
-        "volume": 14551900
-      },
-      {
-        "date": "2025-04-08",
-        "open": 64.92,
-        "high": 65.05,
-        "low": 60.83,
-        "close": 61.6,
-        "volume": 8100500
-      },
-      {
-        "date": "2025-04-09",
-        "open": 60.49,
-        "high": 65.3,
-        "low": 59.52,
-        "close": 65.09,
-        "volume": 13243300
-      },
-      {
-        "date": "2025-04-10",
-        "open": 63.12,
-        "high": 63.24,
-        "low": 59.32,
-        "close": 61.21,
-        "volume": 9984000
-      },
-      {
-        "date": "2025-04-11",
-        "open": 63.73,
-        "high": 65,
-        "low": 63.23,
-        "close": 64.73,
-        "volume": 11392100
-      },
-      {
-        "date": "2025-04-14",
-        "open": 66.48,
-        "high": 66.75,
-        "low": 65.33,
-        "close": 66.06,
-        "volume": 8067300
-      },
-      {
-        "date": "2025-04-15",
-        "open": 65.64,
-        "high": 65.95,
-        "low": 63.86,
-        "close": 64.49,
-        "volume": 5945600
-      },
-      {
-        "date": "2025-04-16",
-        "open": 64.33,
-        "high": 64.41,
-        "low": 62.4,
-        "close": 62.88,
-        "volume": 6302600
-      },
-      {
-        "date": "2025-04-17",
-        "open": 57.91,
-        "high": 59.06,
-        "low": 57.28,
-        "close": 58.08,
-        "volume": 32196800
-      },
-      {
-        "date": "2025-04-21",
-        "open": 58.25,
-        "high": 59.3,
-        "low": 57,
-        "close": 58.33,
-        "volume": 13419300
-      },
-      {
-        "date": "2025-04-22",
-        "open": 59.01,
-        "high": 60.18,
-        "low": 58.92,
-        "close": 59.91,
-        "volume": 11697900
-      },
-      {
-        "date": "2025-04-23",
-        "open": 61.77,
-        "high": 62.43,
-        "low": 60.89,
-        "close": 61.3,
-        "volume": 9128700
-      },
       {
         "date": "2025-04-24",
         "open": 62.48,
@@ -7750,6 +7630,126 @@
         "low": 35.63,
         "close": 36.98,
         "volume": 14695800
+      },
+      {
+        "date": "2026-04-06",
+        "open": 37,
+        "high": 37.42,
+        "low": 36.52,
+        "close": 36.67,
+        "volume": 11535500
+      },
+      {
+        "date": "2026-04-07",
+        "open": 36.4,
+        "high": 37.04,
+        "low": 35.97,
+        "close": 36.91,
+        "volume": 13916300
+      },
+      {
+        "date": "2026-04-08",
+        "open": 38.03,
+        "high": 38.19,
+        "low": 37.33,
+        "close": 37.61,
+        "volume": 13882500
+      },
+      {
+        "date": "2026-04-09",
+        "open": 37.18,
+        "high": 37.65,
+        "low": 36.82,
+        "close": 37.44,
+        "volume": 11231700
+      },
+      {
+        "date": "2026-04-10",
+        "open": 38.3,
+        "high": 38.42,
+        "low": 37.42,
+        "close": 37.52,
+        "volume": 11400500
+      },
+      {
+        "date": "2026-04-13",
+        "open": 37.14,
+        "high": 38.01,
+        "low": 36.95,
+        "close": 37.98,
+        "volume": 12692200
+      },
+      {
+        "date": "2026-04-14",
+        "open": 39.13,
+        "high": 39.41,
+        "low": 38.73,
+        "close": 39.32,
+        "volume": 19729300
+      },
+      {
+        "date": "2026-04-15",
+        "open": 39.79,
+        "high": 40.86,
+        "low": 39.67,
+        "close": 40.81,
+        "volume": 19479400
+      },
+      {
+        "date": "2026-04-16",
+        "open": 41.26,
+        "high": 41.41,
+        "low": 40.23,
+        "close": 40.93,
+        "volume": 16083800
+      },
+      {
+        "date": "2026-04-17",
+        "open": 40.98,
+        "high": 41.29,
+        "low": 40.43,
+        "close": 40.52,
+        "volume": 13204000
+      },
+      {
+        "date": "2026-04-20",
+        "open": 40.51,
+        "high": 40.85,
+        "low": 40.26,
+        "close": 40.46,
+        "volume": 10467100
+      },
+      {
+        "date": "2026-04-21",
+        "open": 40.14,
+        "high": 40.2,
+        "low": 38.7,
+        "close": 39.42,
+        "volume": 25186400
+      },
+      {
+        "date": "2026-04-22",
+        "open": 39.15,
+        "high": 39.33,
+        "low": 38.85,
+        "close": 39.15,
+        "volume": 17620600
+      },
+      {
+        "date": "2026-04-23",
+        "open": 39.13,
+        "high": 39.2,
+        "low": 38.02,
+        "close": 38.52,
+        "volume": 12266500
+      },
+      {
+        "date": "2026-04-24",
+        "open": 40.06,
+        "high": 41.23,
+        "low": 39.89,
+        "close": 41.17,
+        "volume": 24877300
       }
     ],
     "news": [
@@ -7778,14 +7778,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "1ff404cb-1787-3b95-9a69-2a731fe8b761",
-        "title": "Novo gains Lexicon obesity drug; CRISPR COO to step down",
-        "publisher": "BioPharma Dive",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/m/1ff404cb-1787-3b95-9a69-2a731fe8b761/novo-gains-lexicon-obesity.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4d2bbcd6-b191-3dbc-8487-70b5b09eb0a4",
         "title": "Lexicon Pharmaceuticals Enters License Agreement With Novo Nordisk for Obesity Drug; Shares Jump",
         "publisher": "MT Newswires",
@@ -7794,11 +7786,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "37f312c0-b1a2-341e-8db3-6e35681e8002",
-        "title": "Novo Nordisk Inks Its Second Big Obesity Deal In A Week — And It's Not For A GLP-1",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-03-29",
-        "link": "https://finance.yahoo.com/m/37f312c0-b1a2-341e-8db3-6e35681e8002/novo-nordisk-inks-its-second.html",
+        "uuid": "1ff404cb-1787-3b95-9a69-2a731fe8b761",
+        "title": "Novo gains Lexicon obesity drug; CRISPR COO to step down",
+        "publisher": "BioPharma Dive",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/m/1ff404cb-1787-3b95-9a69-2a731fe8b761/novo-gains-lexicon-obesity.html",
         "type": "STORY"
       },
       {
@@ -7807,6 +7799,14 @@
         "publisher": "Pharmaceutical Technology",
         "reportDate": "2025-03-29",
         "link": "https://finance.yahoo.com/m/5f09b787-e949-3a08-babf-84e7425b5e17/novo-nordisk-strikes-%241bn.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "37f312c0-b1a2-341e-8db3-6e35681e8002",
+        "title": "Novo Nordisk Inks Its Second Big Obesity Deal In A Week — And It's Not For A GLP-1",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-03-29",
+        "link": "https://finance.yahoo.com/m/37f312c0-b1a2-341e-8db3-6e35681e8002/novo-nordisk-inks-its-second.html",
         "type": "STORY"
       },
       {
@@ -7840,7 +7840,7 @@
         "title": "EVP of R&D, Chief Scientific Officer and Member of the Management Board",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 1892171
+        "totalPay": 1907092
       },
       {
         "name": "Mr. Emil Kongshoej Larsen",
@@ -7865,7 +7865,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 2667651
+        "totalPay": 2688687
       },
       {
         "name": "Mr. Maziar Mike Doustdar B.A.",
@@ -7901,28 +7901,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.66,
-        "industryAvg": 20.63
+        "value": 11.86,
+        "industryAvg": 20.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.38,
-        "industryAvg": 4.44
+        "value": 3.76,
+        "industryAvg": 4.26
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.38,
-        "industryAvg": 5.57
+        "value": 5.98,
+        "industryAvg": 5.36
       },
       {
         "metric": "ROE",
         "value": 14.78,
-        "industryAvg": 4.77
+        "industryAvg": 5.55
       },
       {
         "metric": "ROA",
         "value": 5.1,
-        "industryAvg": 1.71
+        "industryAvg": 1.9800000000000002
       },
       {
         "metric": "Gross Margin",
@@ -7932,19 +7932,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 47.13,
-        "industryAvg": 27.72
+        "industryAvg": 31.119999999999997
       },
       {
         "metric": "Net Margin",
         "value": 33.98,
-        "industryAvg": 13.639999999999999
+        "industryAvg": 15.939999999999998
       }
     ],
     "dcf": {
-      "fairValue": 59.8,
-      "currentPrice": 36.98,
-      "upside": 61.7,
-      "wacc": 9.01,
+      "fairValue": 55.98,
+      "currentPrice": 41.17,
+      "upside": 35.97,
+      "wacc": 9.42,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 3.3,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "SLB",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.36,
-      "ttmPe": 20.95,
-      "marketCap": 74216030352,
-      "psRatio": 2.08,
-      "pbRatio": 2.84
+      "ttmPe": 23.79,
+      "marketCap": 84288634795,
+      "psRatio": 2.36,
+      "pbRatio": 3.23
     },
     "profitability": {
       "roe": 3.18,
@@ -5634,137 +5634,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.139999999999999,
-      "costOfEquity": 10.43,
+      "wacc": 9.35,
+      "costOfEquity": 10.51,
       "costOfDebt": 1.08,
       "taxRate": 15,
-      "beta": 0.7153,
-      "marketCap": 74216030352
+      "beta": 0.7238,
+      "marketCap": 84288634795
     },
     "beta": {
-      "beta5y": 0.7153
+      "beta5y": 0.7238
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 41.62,
-        "high": 42.43,
-        "low": 41.2,
-        "close": 42.19,
-        "volume": 16509300
-      },
-      {
-        "date": "2025-04-03",
-        "open": 39.91,
-        "high": 40.3,
-        "low": 39.04,
-        "close": 39.21,
-        "volume": 40728800
-      },
-      {
-        "date": "2025-04-04",
-        "open": 37.41,
-        "high": 37.77,
-        "low": 34.04,
-        "close": 34.78,
-        "volume": 49175000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 33.04,
-        "high": 35.12,
-        "low": 31.86,
-        "close": 33.14,
-        "volume": 36020400
-      },
-      {
-        "date": "2025-04-08",
-        "open": 34.43,
-        "high": 34.64,
-        "low": 31.52,
-        "close": 31.95,
-        "volume": 31416000
-      },
-      {
-        "date": "2025-04-09",
-        "open": 31.29,
-        "high": 36.48,
-        "low": 31.11,
-        "close": 35.98,
-        "volume": 45400900
-      },
-      {
-        "date": "2025-04-10",
-        "open": 34.78,
-        "high": 34.85,
-        "low": 31.88,
-        "close": 32.54,
-        "volume": 37839000
-      },
-      {
-        "date": "2025-04-11",
-        "open": 32.53,
-        "high": 34.01,
-        "low": 32.1,
-        "close": 33.96,
-        "volume": 20884400
-      },
-      {
-        "date": "2025-04-14",
-        "open": 34.7,
-        "high": 34.7,
-        "low": 33.45,
-        "close": 33.92,
-        "volume": 15477100
-      },
-      {
-        "date": "2025-04-15",
-        "open": 33.84,
-        "high": 34.37,
-        "low": 33.61,
-        "close": 33.76,
-        "volume": 11618900
-      },
-      {
-        "date": "2025-04-16",
-        "open": 34,
-        "high": 34.71,
-        "low": 33.79,
-        "close": 34.15,
-        "volume": 13107900
-      },
-      {
-        "date": "2025-04-17",
-        "open": 34.55,
-        "high": 35.46,
-        "low": 34.13,
-        "close": 35.11,
-        "volume": 15915700
-      },
-      {
-        "date": "2025-04-21",
-        "open": 34.72,
-        "high": 34.72,
-        "low": 34,
-        "close": 34.62,
-        "volume": 10698700
-      },
-      {
-        "date": "2025-04-22",
-        "open": 34.83,
-        "high": 34.97,
-        "low": 33.83,
-        "close": 34.61,
-        "volume": 18894100
-      },
-      {
-        "date": "2025-04-23",
-        "open": 35.13,
-        "high": 35.59,
-        "low": 33.8,
-        "close": 34.03,
-        "volume": 17255900
-      },
       {
         "date": "2025-04-24",
         "open": 34.32,
@@ -7660,6 +7540,126 @@
         "low": 48.84,
         "close": 49.44,
         "volume": 14883800
+      },
+      {
+        "date": "2026-04-06",
+        "open": 49.4,
+        "high": 50.06,
+        "low": 49.18,
+        "close": 49.78,
+        "volume": 7643800
+      },
+      {
+        "date": "2026-04-07",
+        "open": 49.87,
+        "high": 50.44,
+        "low": 49.2,
+        "close": 50.35,
+        "volume": 9928200
+      },
+      {
+        "date": "2026-04-08",
+        "open": 50.43,
+        "high": 52.31,
+        "low": 49.76,
+        "close": 51.88,
+        "volume": 20970100
+      },
+      {
+        "date": "2026-04-09",
+        "open": 51.7,
+        "high": 52.89,
+        "low": 51.17,
+        "close": 52.54,
+        "volume": 16033100
+      },
+      {
+        "date": "2026-04-10",
+        "open": 52.56,
+        "high": 53.75,
+        "low": 51.68,
+        "close": 51.92,
+        "volume": 13219900
+      },
+      {
+        "date": "2026-04-13",
+        "open": 52.2,
+        "high": 52.75,
+        "low": 51.52,
+        "close": 51.92,
+        "volume": 11847000
+      },
+      {
+        "date": "2026-04-14",
+        "open": 51.3,
+        "high": 52,
+        "low": 50.91,
+        "close": 51.49,
+        "volume": 11104100
+      },
+      {
+        "date": "2026-04-15",
+        "open": 51.74,
+        "high": 52.84,
+        "low": 51.65,
+        "close": 52.42,
+        "volume": 12535000
+      },
+      {
+        "date": "2026-04-16",
+        "open": 52.26,
+        "high": 52.94,
+        "low": 51.57,
+        "close": 51.73,
+        "volume": 12080400
+      },
+      {
+        "date": "2026-04-17",
+        "open": 50.8,
+        "high": 53.42,
+        "low": 50.52,
+        "close": 52.66,
+        "volume": 20594600
+      },
+      {
+        "date": "2026-04-20",
+        "open": 52.39,
+        "high": 53.16,
+        "low": 51.26,
+        "close": 52.2,
+        "volume": 15347100
+      },
+      {
+        "date": "2026-04-21",
+        "open": 52.7,
+        "high": 53.73,
+        "low": 52.64,
+        "close": 52.77,
+        "volume": 13591200
+      },
+      {
+        "date": "2026-04-22",
+        "open": 53.5,
+        "high": 54.85,
+        "low": 53.19,
+        "close": 54.35,
+        "volume": 14433100
+      },
+      {
+        "date": "2026-04-23",
+        "open": 54.56,
+        "high": 55.53,
+        "low": 54.44,
+        "close": 54.74,
+        "volume": 20598000
+      },
+      {
+        "date": "2026-04-24",
+        "open": 54.33,
+        "high": 56.9,
+        "low": 54.02,
+        "close": 56.15,
+        "volume": 23290400
       }
     ],
     "news": [
@@ -7720,19 +7720,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
-        "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-most-undervalued-151006323.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
         "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
         "publisher": "Business Wire",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
+        "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-most-undervalued-151006323.html",
         "type": "STORY"
       },
       {
@@ -7810,50 +7810,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.95,
-        "industryAvg": 23.11
+        "value": 23.79,
+        "industryAvg": 25.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.08,
-        "industryAvg": 1.92
+        "value": 2.36,
+        "industryAvg": 2.1
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.84,
-        "industryAvg": 2.64
+        "value": 3.23,
+        "industryAvg": 2.91
       },
       {
         "metric": "ROE",
         "value": 3.18,
-        "industryAvg": 3.53
+        "industryAvg": 3.37
       },
       {
         "metric": "ROA",
         "value": 1.5,
-        "industryAvg": 1.69
+        "industryAvg": 1.6099999999999999
       },
       {
         "metric": "Gross Margin",
         "value": 17.740000000000002,
-        "industryAvg": 22.17
+        "industryAvg": 22.09
       },
       {
         "metric": "EBITDA Margin",
         "value": 13,
-        "industryAvg": 16.53
+        "industryAvg": 15.879999999999999
       },
       {
         "metric": "Net Margin",
         "value": 8.459999999999999,
-        "industryAvg": 9.91
+        "industryAvg": 9.45
       }
     ],
     "dcf": {
-      "fairValue": 20.93,
-      "currentPrice": 49.44,
-      "upside": -57.67,
-      "wacc": 9.14,
+      "fairValue": 20.26,
+      "currentPrice": 56.15,
+      "upside": -63.91,
+      "wacc": 9.35,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -28.57,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.81,
-      "ttmPe": 23.97,
-      "marketCap": 172767140000,
-      "psRatio": 4.16,
-      "pbRatio": 2.92
+      "ttmPe": 22.81,
+      "marketCap": 164441680000,
+      "psRatio": 3.96,
+      "pbRatio": 2.78
     },
     "profitability": {
       "roe": 3.26,
@@ -669,7 +669,7 @@
         {
           "Breakdown": "Basic EPS",
           "TTM": "2.66",
-          "2026-01-31": "*",
+          "2026-01-31": "2.08",
           "2025-10-31": "2.2",
           "2025-07-31": "1.97",
           "2025-04-30": "1.61",
@@ -689,7 +689,7 @@
         {
           "Breakdown": "Diluted EPS",
           "TTM": "2.63",
-          "2026-01-31": "*",
+          "2026-01-31": "2.07",
           "2025-10-31": "2.19",
           "2025-07-31": "1.96",
           "2025-04-30": "1.59",
@@ -709,7 +709,7 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "977750000.0",
-          "2026-01-31": "*",
+          "2026-01-31": "935000000.0",
           "2025-10-31": "948000000.0",
           "2025-07-31": "956000000.0",
           "2025-04-30": "960000000.0",
@@ -729,7 +729,7 @@
         {
           "Breakdown": "Diluted Average Shares",
           "TTM": "985000000.0",
-          "2026-01-31": "*",
+          "2026-01-31": "940000000.0",
           "2025-10-31": "952000000.0",
           "2025-07-31": "962000000.0",
           "2025-04-30": "970000000.0",
@@ -5133,129 +5133,9 @@
       ]
     },
     "beta": {
-      "beta5y": 1.2566
+      "beta5y": 1.1424
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 265.96,
-        "high": 273.63,
-        "low": 265.75,
-        "close": 271.54,
-        "volume": 5396900
-      },
-      {
-        "date": "2025-04-03",
-        "open": 260.14,
-        "high": 262.57,
-        "low": 254.45,
-        "close": 255.23,
-        "volume": 8872600
-      },
-      {
-        "date": "2025-04-04",
-        "open": 247.7,
-        "high": 250.29,
-        "low": 239.53,
-        "close": 240.76,
-        "volume": 9705000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 230,
-        "high": 252.95,
-        "low": 230,
-        "close": 244.21,
-        "volume": 11965200
-      },
-      {
-        "date": "2025-04-08",
-        "open": 253.95,
-        "high": 257.39,
-        "low": 240.27,
-        "close": 243.99,
-        "volume": 9340300
-      },
-      {
-        "date": "2025-04-09",
-        "open": 240.9,
-        "high": 268.17,
-        "low": 240.9,
-        "close": 265.17,
-        "volume": 12491100
-      },
-      {
-        "date": "2025-04-10",
-        "open": 260,
-        "high": 261.24,
-        "low": 248.13,
-        "close": 255.12,
-        "volume": 9692300
-      },
-      {
-        "date": "2025-04-11",
-        "open": 254.27,
-        "high": 256.41,
-        "low": 247.68,
-        "close": 255,
-        "volume": 6089000
-      },
-      {
-        "date": "2025-04-14",
-        "open": 260,
-        "high": 260,
-        "low": 253.14,
-        "close": 254.55,
-        "volume": 6038100
-      },
-      {
-        "date": "2025-04-15",
-        "open": 254.37,
-        "high": 256.72,
-        "low": 253.8,
-        "close": 254.93,
-        "volume": 5227700
-      },
-      {
-        "date": "2025-04-16",
-        "open": 251.93,
-        "high": 256.61,
-        "low": 246.69,
-        "close": 249.84,
-        "volume": 7190900
-      },
-      {
-        "date": "2025-04-17",
-        "open": 249.77,
-        "high": 251.56,
-        "low": 246.8,
-        "close": 247.26,
-        "volume": 5564400
-      },
-      {
-        "date": "2025-04-21",
-        "open": 240.43,
-        "high": 242.48,
-        "low": 232.77,
-        "close": 236.26,
-        "volume": 9240000
-      },
-      {
-        "date": "2025-04-22",
-        "open": 238.23,
-        "high": 244.22,
-        "low": 235.6,
-        "close": 243.39,
-        "volume": 7145300
-      },
-      {
-        "date": "2025-04-23",
-        "open": 252.61,
-        "high": 257.79,
-        "low": 249.5,
-        "close": 250.48,
-        "volume": 5818900
-      },
       {
         "date": "2025-04-24",
         "open": 258.2,
@@ -7151,6 +7031,126 @@
         "low": 181.58,
         "close": 187.18,
         "volume": 11635500
+      },
+      {
+        "date": "2026-04-06",
+        "open": 187.5,
+        "high": 188.14,
+        "low": 183.6,
+        "close": 185.03,
+        "volume": 14391000
+      },
+      {
+        "date": "2026-04-07",
+        "open": 184.95,
+        "high": 186.58,
+        "low": 182.02,
+        "close": 182.96,
+        "volume": 12344600
+      },
+      {
+        "date": "2026-04-08",
+        "open": 186.5,
+        "high": 186.77,
+        "low": 175.78,
+        "close": 176.37,
+        "volume": 13472100
+      },
+      {
+        "date": "2026-04-09",
+        "open": 173.17,
+        "high": 174.29,
+        "low": 167.12,
+        "close": 170.85,
+        "volume": 20855400
+      },
+      {
+        "date": "2026-04-10",
+        "open": 171.26,
+        "high": 171.26,
+        "low": 163.52,
+        "close": 164.96,
+        "volume": 18109300
+      },
+      {
+        "date": "2026-04-13",
+        "open": 167.05,
+        "high": 173.4,
+        "low": 165.77,
+        "close": 172.82,
+        "volume": 12390800
+      },
+      {
+        "date": "2026-04-14",
+        "open": 175.21,
+        "high": 177.5,
+        "low": 170.5,
+        "close": 171.31,
+        "volume": 13123600
+      },
+      {
+        "date": "2026-04-15",
+        "open": 174.22,
+        "high": 179.62,
+        "low": 172.88,
+        "close": 177.6,
+        "volume": 14340300
+      },
+      {
+        "date": "2026-04-16",
+        "open": 184,
+        "high": 184.55,
+        "low": 178.57,
+        "close": 181.22,
+        "volume": 11866700
+      },
+      {
+        "date": "2026-04-17",
+        "open": 185.43,
+        "high": 187.98,
+        "low": 181.03,
+        "close": 182.14,
+        "volume": 17225700
+      },
+      {
+        "date": "2026-04-20",
+        "open": 182.5,
+        "high": 189,
+        "low": 182.12,
+        "close": 186.27,
+        "volume": 14382300
+      },
+      {
+        "date": "2026-04-21",
+        "open": 186.6,
+        "high": 193.56,
+        "low": 184.1,
+        "close": 187.11,
+        "volume": 12073700
+      },
+      {
+        "date": "2026-04-22",
+        "open": 188.2,
+        "high": 191.15,
+        "low": 187.03,
+        "close": 189.8,
+        "volume": 14565900
+      },
+      {
+        "date": "2026-04-23",
+        "open": 177.56,
+        "high": 178.87,
+        "low": 170.65,
+        "close": 173.3,
+        "volume": 22719900
+      },
+      {
+        "date": "2026-04-24",
+        "open": 175.62,
+        "high": 178.45,
+        "low": 174.4,
+        "close": 178.16,
+        "volume": 10807300
       }
     ],
     "news": [
@@ -7237,30 +7237,36 @@
     ],
     "officers": [
       {
+        "name": "Mr. Andy White",
+        "title": "Senior Vice President of Technology"
+      },
+      {
         "name": "Mr. David Schmaier",
         "title": "President and Chief Strategy Officer",
         "age": 61,
-        "yearBorn": 1964
+        "yearBorn": 1964,
+        "totalPay": 2297750
       },
       {
         "name": "Mr. Marc R. Benioff",
         "title": "Co-Founder, Chairman & CEO",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 9646000
+        "totalPay": 11370795
       },
       {
         "name": "Mr. Miguel Milano",
         "title": "President & Chief Revenue Officer",
         "age": 56,
-        "yearBorn": 1969
+        "yearBorn": 1969,
+        "totalPay": 4340416
       },
       {
         "name": "Mr. Parker Harris",
         "title": "Co-Founder, CTO of Slack & Director",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2250000
+        "totalPay": 2291250
       },
       {
         "name": "Mr. Patrick Stokes",
@@ -7278,7 +7284,7 @@
         "title": "President, Chief Engineering & Customer Success Officer",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 2512428
+        "totalPay": 3139934
       },
       {
         "name": "Mr. Stephen D. Fisher",
@@ -7291,55 +7297,48 @@
         "title": "Executive VP & Chief Accounting Officer",
         "age": 51,
         "yearBorn": 1974
-      },
-      {
-        "name": "Ms. Robin L. Washington CPA",
-        "title": "President, Chief Operating & Financial Officer and Director",
-        "age": 62,
-        "yearBorn": 1963,
-        "totalPay": 200000
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.97,
-        "industryAvg": 39.2
+        "value": 22.81,
+        "industryAvg": 39.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.16,
-        "industryAvg": 4.35
+        "value": 3.96,
+        "industryAvg": 4.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.92,
+        "value": 2.78,
         "industryAvg": 2.74
       },
       {
         "metric": "ROE",
         "value": 3.26,
-        "industryAvg": -6.510000000000001
+        "industryAvg": -6.550000000000001
       },
       {
         "metric": "ROA",
         "value": 1.87,
-        "industryAvg": -3.6900000000000004
+        "industryAvg": -3.6999999999999997
       },
       {
         "metric": "Gross Margin",
         "value": 77.61,
-        "industryAvg": 63.05
+        "industryAvg": 63.1
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.24,
-        "industryAvg": -41.91
+        "industryAvg": -40.849999999999994
       },
       {
         "metric": "Net Margin",
         "value": 17.349999999999998,
-        "industryAvg": -31.919999999999998
+        "industryAvg": -32.11
       }
     ]
   }

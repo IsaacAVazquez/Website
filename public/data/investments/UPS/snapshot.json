@@ -1,10 +1,10 @@
 {
   "symbol": "UPS",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.56,
-      "ttmPe": 14.97,
-      "marketCap": 83364804906,
-      "psRatio": 0.94,
-      "pbRatio": 5.14
+      "ttmPe": 16.31,
+      "marketCap": 90870863934,
+      "psRatio": 1.02,
+      "pbRatio": 5.6
     },
     "profitability": {
       "roe": 11.18,
@@ -5093,137 +5093,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.94,
-      "costOfEquity": 13.11,
+      "wacc": 10.16,
+      "costOfEquity": 13.139999999999999,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 24,
-      "beta": 1.028,
-      "marketCap": 83364804906
+      "beta": 1.0318,
+      "marketCap": 90870863934
     },
     "beta": {
-      "beta5y": 1.028
+      "beta5y": 1.0318
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 108.85,
-        "high": 110.5,
-        "low": 108.59,
-        "close": 110.2,
-        "volume": 4540000
-      },
-      {
-        "date": "2025-04-03",
-        "open": 106.74,
-        "high": 107.39,
-        "low": 99.97,
-        "close": 100.12,
-        "volume": 10057700
-      },
-      {
-        "date": "2025-04-04",
-        "open": 98.33,
-        "high": 100.59,
-        "low": 96.57,
-        "close": 97.71,
-        "volume": 9567700
-      },
-      {
-        "date": "2025-04-07",
-        "open": 95,
-        "high": 99.2,
-        "low": 93.23,
-        "close": 95.56,
-        "volume": 8729800
-      },
-      {
-        "date": "2025-04-08",
-        "open": 97.8,
-        "high": 97.8,
-        "low": 90.71,
-        "close": 91.92,
-        "volume": 8233800
-      },
-      {
-        "date": "2025-04-09",
-        "open": 91.18,
-        "high": 100.19,
-        "low": 90.55,
-        "close": 99.66,
-        "volume": 8849800
-      },
-      {
-        "date": "2025-04-10",
-        "open": 98.12,
-        "high": 98.13,
-        "low": 93.98,
-        "close": 96.56,
-        "volume": 7553700
-      },
-      {
-        "date": "2025-04-11",
-        "open": 95.75,
-        "high": 99.7,
-        "low": 93.61,
-        "close": 97.08,
-        "volume": 5544100
-      },
-      {
-        "date": "2025-04-14",
-        "open": 98.47,
-        "high": 100.94,
-        "low": 97.99,
-        "close": 98.67,
-        "volume": 4926900
-      },
-      {
-        "date": "2025-04-15",
-        "open": 98.49,
-        "high": 98.57,
-        "low": 96.22,
-        "close": 96.5,
-        "volume": 5767000
-      },
-      {
-        "date": "2025-04-16",
-        "open": 96.45,
-        "high": 96.65,
-        "low": 93.52,
-        "close": 94.2,
-        "volume": 4632800
-      },
-      {
-        "date": "2025-04-17",
-        "open": 94.94,
-        "high": 97.32,
-        "low": 94.66,
-        "close": 96.43,
-        "volume": 4739200
-      },
-      {
-        "date": "2025-04-21",
-        "open": 95.57,
-        "high": 96.34,
-        "low": 94.62,
-        "close": 96.25,
-        "volume": 3930800
-      },
-      {
-        "date": "2025-04-22",
-        "open": 96.27,
-        "high": 97.8,
-        "low": 96.06,
-        "close": 96.84,
-        "volume": 4305300
-      },
-      {
-        "date": "2025-04-23",
-        "open": 98.58,
-        "high": 99.82,
-        "low": 96.97,
-        "close": 97.21,
-        "volume": 5817200
-      },
       {
         "date": "2025-04-24",
         "open": 97,
@@ -7119,6 +6999,126 @@
         "low": 95.52,
         "close": 98.18,
         "volume": 4060300
+      },
+      {
+        "date": "2026-04-06",
+        "open": 98.05,
+        "high": 98.05,
+        "low": 96.39,
+        "close": 97.16,
+        "volume": 4690800
+      },
+      {
+        "date": "2026-04-07",
+        "open": 96.79,
+        "high": 97.89,
+        "low": 95.63,
+        "close": 97.57,
+        "volume": 4480900
+      },
+      {
+        "date": "2026-04-08",
+        "open": 100.2,
+        "high": 101.54,
+        "low": 99.26,
+        "close": 100.45,
+        "volume": 5926700
+      },
+      {
+        "date": "2026-04-09",
+        "open": 99.99,
+        "high": 101.86,
+        "low": 99.72,
+        "close": 101.64,
+        "volume": 4361800
+      },
+      {
+        "date": "2026-04-10",
+        "open": 102.16,
+        "high": 102.4,
+        "low": 101.26,
+        "close": 101.7,
+        "volume": 4491000
+      },
+      {
+        "date": "2026-04-13",
+        "open": 100.88,
+        "high": 102.11,
+        "low": 99.93,
+        "close": 102.02,
+        "volume": 3799900
+      },
+      {
+        "date": "2026-04-14",
+        "open": 102.05,
+        "high": 103.47,
+        "low": 101.21,
+        "close": 103.22,
+        "volume": 4703600
+      },
+      {
+        "date": "2026-04-15",
+        "open": 102.95,
+        "high": 103.7,
+        "low": 102.03,
+        "close": 103.57,
+        "volume": 5193500
+      },
+      {
+        "date": "2026-04-16",
+        "open": 103.36,
+        "high": 105.74,
+        "low": 103.36,
+        "close": 105.06,
+        "volume": 5295700
+      },
+      {
+        "date": "2026-04-17",
+        "open": 106.18,
+        "high": 107.59,
+        "low": 105.56,
+        "close": 106.44,
+        "volume": 5506200
+      },
+      {
+        "date": "2026-04-20",
+        "open": 105.73,
+        "high": 107.5,
+        "low": 105.53,
+        "close": 107.11,
+        "volume": 3639300
+      },
+      {
+        "date": "2026-04-21",
+        "open": 107.53,
+        "high": 108.15,
+        "low": 105.58,
+        "close": 106.31,
+        "volume": 4082200
+      },
+      {
+        "date": "2026-04-22",
+        "open": 107,
+        "high": 107,
+        "low": 105.27,
+        "close": 105.3,
+        "volume": 3634500
+      },
+      {
+        "date": "2026-04-23",
+        "open": 106.44,
+        "high": 108.3,
+        "low": 106.04,
+        "close": 107.72,
+        "volume": 4422800
+      },
+      {
+        "date": "2026-04-24",
+        "open": 107.38,
+        "high": 107.74,
+        "low": 106.46,
+        "close": 107.02,
+        "volume": 4164400
       }
     ],
     "news": [
@@ -7155,19 +7155,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b2d203bb-6147-3876-b73d-1fbab2cd4d11",
-        "title": "3 Beaten-Down Dividend Stocks With Yields Over 5% to Buy in May for Passive Income",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/b2d203bb-6147-3876-b73d-1fbab2cd4d11/3-beaten-down-dividend-stocks.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "17c8d947-2259-3485-b41a-e6455664458e",
         "title": "Air Freight and Logistics Stocks Q1 Teardown: FedEx (NYSE:FDX) Vs The Rest",
         "publisher": "StockStory",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/air-freight-logistics-stocks-q1-033330345.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b2d203bb-6147-3876-b73d-1fbab2cd4d11",
+        "title": "3 Beaten-Down Dividend Stocks With Yields Over 5% to Buy in May for Passive Income",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/b2d203bb-6147-3876-b73d-1fbab2cd4d11/3-beaten-down-dividend-stocks.html",
         "type": "STORY"
       },
       {
@@ -7265,15 +7265,15 @@
       }
     ],
     "dcf": {
-      "fairValue": 99.07,
-      "currentPrice": 98.18,
-      "upside": 0.91,
-      "wacc": 9.94,
+      "fairValue": 96.03,
+      "currentPrice": 107.02,
+      "upside": -10.27,
+      "wacc": 10.16,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 3.96,
         "Terminal growth": 3
       },
-      "recommendation": "Hold"
+      "recommendation": "Sell"
     }
   }
 }

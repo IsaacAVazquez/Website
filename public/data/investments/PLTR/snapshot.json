@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Software-Infrastructure",
       "sector": "Technology",
-      "longBusinessSummary": "Palantir Technologies Inc. builds and deploys software platforms for the intelligence community to assist in counterterrorism investigations and operations in the United States, the United Kingdom, and internationally. It provides Palantir Gotham integrates with other platforms for defense offerings which enables users to see, understand, and act in the modern battlespace; operations centers to the tactical edge; integrating data from domains and sensors in near real-time; and situational awareness and accelerating operational decision-making, as well as facilitates the hand-off between analysts and operational users, helping operators plan and execute real-world responses to threats that have been identified within the platform. The company also offers Palantir Foundry, a platform that helps organizations operate by creating a central operating system for their data; and allows individual users to integrate and analyze the data they need in one place. In addition, it provides Palantir Apollo, a software that delivers software and updates across the business, as well as enables customers to deploy their software virtually in any environment; and Palantir Artificial Intelligence Platform that provides unified access to open-source, self-hosted, and commercial large language models (LLMs) that can transform structured and unstructured data into LLM-understandable objects and can turn organizations' actions and processes into tools for humans and LLM-driven agents. Palantir Technologies Inc. has strategic partnership with Polymarket and TWG AI to develop a next-generation sports integrity platform. The company also has a strategic partnership with Ondas Inc. to develop and deploy AI-enabled operational capabilities to scale stratospheric, aerial, and land-based ISR missions. The company was incorporated in 2003 and is headquartered in Aventura, Florida.",
+      "longBusinessSummary": "Palantir Technologies Inc. builds and deploys software platforms for the intelligence community to assist in counterterrorism investigations and operations in the United States, the United Kingdom, and internationally. It provides Palantir Gotham integrates with other platforms for defense offerings which enables users to see, understand, and act in the modern battlespace; operations centers to the tactical edge; integrating data from domains and sensors in near real-time; and situational awareness and accelerating operational decision-making, as well as facilitates the hand-off between analysts and operational users, helping operators plan and execute real-world responses to threats that have been identified within the platform. The company also offers Palantir Foundry, a platform that helps organizations operate by creating a central operating system for their data; and allows individual users to integrate and analyze the data they need in one place. In addition, it provides Palantir Apollo, a software that delivers software and updates across the business, as well as enables customers to deploy their software virtually in any environment; and Palantir Artificial Intelligence Platform that provides unified access to open-source, self-hosted, and commercial large language models (LLMs) that can transform structured and unstructured data into LLM-understandable objects and can turn organizations' actions and processes into tools for humans and LLM-driven agents. The company also has a strategic partnership with Ondas Inc. to develop and deploy AI-enabled operational capabilities to scale stratospheric, aerial, and land-based ISR missions. The company was incorporated in 2003 and is headquartered in Aventura, Florida.",
       "fullTimeEmployees": 4429,
       "website": "https://www.palantir.com",
       "shortName": "Palantir Technologies Inc.",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.63,
-      "ttmPe": 235.65,
-      "marketCap": 355068174422,
-      "psRatio": 79.34,
-      "pbRatio": 48.06
+      "ttmPe": 227.13,
+      "marketCap": 342224875913,
+      "psRatio": 76.47,
+      "pbRatio": 46.33
     },
     "profitability": {
       "roe": 8.709999999999999,
@@ -4806,137 +4806,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.89,
-      "costOfEquity": 18.9,
+      "wacc": 17.51,
+      "costOfEquity": 17.52,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.7046,
-      "marketCap": 355068174422
+      "beta": 1.5434,
+      "marketCap": 342224875913
     },
     "beta": {
-      "beta5y": 1.7046
+      "beta5y": 1.5434
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 82.4,
-        "high": 88.4,
-        "low": 82.3,
-        "close": 87.45,
-        "volume": 96563100
-      },
-      {
-        "date": "2025-04-03",
-        "open": 81.25,
-        "high": 85.68,
-        "low": 81.01,
-        "close": 83.6,
-        "volume": 93878200
-      },
-      {
-        "date": "2025-04-04",
-        "open": 80.07,
-        "high": 80.98,
-        "low": 71.93,
-        "close": 74.01,
-        "volume": 147323200
-      },
-      {
-        "date": "2025-04-07",
-        "open": 66.65,
-        "high": 81.8,
-        "low": 66.12,
-        "close": 77.84,
-        "volume": 169083700
-      },
-      {
-        "date": "2025-04-08",
-        "open": 83.29,
-        "high": 86.11,
-        "low": 75.22,
-        "close": 77.32,
-        "volume": 135345600
-      },
-      {
-        "date": "2025-04-09",
-        "open": 78.19,
-        "high": 93.33,
-        "low": 77.27,
-        "close": 92.01,
-        "volume": 187244300
-      },
-      {
-        "date": "2025-04-10",
-        "open": 88.4,
-        "high": 90.78,
-        "low": 84.14,
-        "close": 88.59,
-        "volume": 124448200
-      },
-      {
-        "date": "2025-04-11",
-        "open": 87.98,
-        "high": 89.55,
-        "low": 85.47,
-        "close": 88.55,
-        "volume": 95130700
-      },
-      {
-        "date": "2025-04-14",
-        "open": 95.8,
-        "high": 97.33,
-        "low": 91.46,
-        "close": 92.62,
-        "volume": 122836900
-      },
-      {
-        "date": "2025-04-15",
-        "open": 93.53,
-        "high": 98.99,
-        "low": 93.05,
-        "close": 98.4,
-        "volume": 118457700
-      },
-      {
-        "date": "2025-04-16",
-        "open": 96.28,
-        "high": 97.3,
-        "low": 89.62,
-        "close": 92.71,
-        "volume": 121997600
-      },
-      {
-        "date": "2025-04-17",
-        "open": 94.71,
-        "high": 95.11,
-        "low": 92.27,
-        "close": 93.78,
-        "volume": 83991800
-      },
-      {
-        "date": "2025-04-21",
-        "open": 92.84,
-        "high": 96.47,
-        "low": 89.31,
-        "close": 90.8,
-        "volume": 83831100
-      },
-      {
-        "date": "2025-04-22",
-        "open": 93.01,
-        "high": 96.34,
-        "low": 91.35,
-        "close": 93.99,
-        "volume": 91185400
-      },
-      {
-        "date": "2025-04-23",
-        "open": 98.86,
-        "high": 103.76,
-        "low": 97.83,
-        "close": 100.82,
-        "volume": 112909500
-      },
       {
         "date": "2025-04-24",
         "open": 101.53,
@@ -6832,6 +6712,126 @@
         "low": 137.99,
         "close": 148.46,
         "volume": 30437000
+      },
+      {
+        "date": "2026-04-06",
+        "open": 148.36,
+        "high": 150.61,
+        "low": 146.63,
+        "close": 147.93,
+        "volume": 25142200
+      },
+      {
+        "date": "2026-04-07",
+        "open": 146.88,
+        "high": 150.27,
+        "low": 144.45,
+        "close": 150.07,
+        "volume": 28671100
+      },
+      {
+        "date": "2026-04-08",
+        "open": 154.76,
+        "high": 156.28,
+        "low": 139.17,
+        "close": 140.76,
+        "volume": 64827700
+      },
+      {
+        "date": "2026-04-09",
+        "open": 139.4,
+        "high": 139.54,
+        "low": 128.47,
+        "close": 130.49,
+        "volume": 92361400
+      },
+      {
+        "date": "2026-04-10",
+        "open": 128.48,
+        "high": 129.2,
+        "low": 122.68,
+        "close": 128.06,
+        "volume": 116656800
+      },
+      {
+        "date": "2026-04-13",
+        "open": 130.23,
+        "high": 134.42,
+        "low": 129.15,
+        "close": 132.37,
+        "volume": 65772800
+      },
+      {
+        "date": "2026-04-14",
+        "open": 134.43,
+        "high": 138.07,
+        "low": 134,
+        "close": 135.7,
+        "volume": 52786800
+      },
+      {
+        "date": "2026-04-15",
+        "open": 136.79,
+        "high": 142.58,
+        "low": 134.93,
+        "close": 142.15,
+        "volume": 48389400
+      },
+      {
+        "date": "2026-04-16",
+        "open": 144.29,
+        "high": 145.55,
+        "low": 139.53,
+        "close": 142.76,
+        "volume": 43746000
+      },
+      {
+        "date": "2026-04-17",
+        "open": 145.32,
+        "high": 148.28,
+        "low": 143.3,
+        "close": 146.39,
+        "volume": 50657600
+      },
+      {
+        "date": "2026-04-20",
+        "open": 145,
+        "high": 147.2,
+        "low": 143.83,
+        "close": 145.89,
+        "volume": 33482700
+      },
+      {
+        "date": "2026-04-21",
+        "open": 146.81,
+        "high": 149.87,
+        "low": 144,
+        "close": 145.97,
+        "volume": 44830000
+      },
+      {
+        "date": "2026-04-22",
+        "open": 148.36,
+        "high": 152.68,
+        "low": 147.41,
+        "close": 152.62,
+        "volume": 43701500
+      },
+      {
+        "date": "2026-04-23",
+        "open": 149.7,
+        "high": 150.29,
+        "low": 139.92,
+        "close": 141.57,
+        "volume": 58654400
+      },
+      {
+        "date": "2026-04-24",
+        "open": 142.96,
+        "high": 143.33,
+        "low": 138.93,
+        "close": 143.09,
+        "volume": 38583200
       }
     ],
     "news": [
@@ -6931,8 +6931,8 @@
       {
         "name": "Mr. David A. Glazer J.D.",
         "title": "CFO & Treasurer",
-        "age": 41,
-        "yearBorn": 1984,
+        "age": 40,
+        "yearBorn": 1985,
         "totalPay": 476394
       },
       {
@@ -6984,28 +6984,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 235.65,
-        "industryAvg": 30.19
+        "value": 227.13,
+        "industryAvg": 33.56
       },
       {
         "metric": "P/S Ratio",
-        "value": 79.34,
-        "industryAvg": 5.32
+        "value": 76.47,
+        "industryAvg": 5.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 48.06,
-        "industryAvg": 7.12
+        "value": 46.33,
+        "industryAvg": 7.95
       },
       {
         "metric": "ROE",
         "value": 8.709999999999999,
-        "industryAvg": 7.449999999999999
+        "industryAvg": 7.4399999999999995
       },
       {
         "metric": "ROA",
         "value": 7.1499999999999995,
-        "industryAvg": 3.1199999999999997
+        "industryAvg": 3.11
       },
       {
         "metric": "Gross Margin",
@@ -7015,19 +7015,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 41.4,
-        "industryAvg": 34.64
+        "industryAvg": 34.660000000000004
       },
       {
         "metric": "Net Margin",
         "value": 43.269999999999996,
-        "industryAvg": 19.98
+        "industryAvg": 19.96
       }
     ],
     "dcf": {
-      "fairValue": 8.37,
-      "currentPrice": 148.46,
-      "upside": -94.36,
-      "wacc": 18.89,
+      "fairValue": 9.23,
+      "currentPrice": 143.09,
+      "upside": -93.55,
+      "wacc": 17.51,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

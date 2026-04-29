@@ -1811,7 +1811,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 117,
         "pointsAgainst": 93
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "ne": {
       "team": {
@@ -1970,7 +1970,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 172,
         "pointsAgainst": 94
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "jax": {
       "team": {
@@ -2129,7 +2129,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 182,
         "pointsAgainst": 83
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "pit": {
       "team": {
@@ -2288,7 +2288,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 116,
         "pointsAgainst": 98
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "hou": {
       "team": {
@@ -2447,7 +2447,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 141,
         "pointsAgainst": 97
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "buf": {
       "team": {
@@ -2606,7 +2606,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 144,
         "pointsAgainst": 106
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "lac": {
       "team": {
@@ -2765,7 +2765,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 91,
         "pointsAgainst": 88
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "ind": {
       "team": {
@@ -2924,7 +2924,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 109,
         "pointsAgainst": 163
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "bal": {
       "team": {
@@ -3083,7 +3083,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 135,
         "pointsAgainst": 105
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "mia": {
       "team": {
@@ -3242,7 +3242,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 100,
         "pointsAgainst": 138
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "kc": {
       "team": {
@@ -3401,7 +3401,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 57,
         "pointsAgainst": 96
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "cin": {
       "team": {
@@ -3560,7 +3560,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 134,
         "pointsAgainst": 118
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "cle": {
       "team": {
@@ -3719,7 +3719,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 85,
         "pointsAgainst": 109
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "lv": {
       "team": {
@@ -3878,7 +3878,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 62,
         "pointsAgainst": 124
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "ten": {
       "team": {
@@ -4037,7 +4037,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 114,
         "pointsAgainst": 150
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "nyj": {
       "team": {
@@ -4196,7 +4196,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 54,
         "pointsAgainst": 188
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "sea": {
       "team": {
@@ -4355,7 +4355,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 133,
         "pointsAgainst": 75
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "chi": {
       "team": {
@@ -4514,7 +4514,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 128,
         "pointsAgainst": 108
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "phi": {
       "team": {
@@ -4673,7 +4673,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 109,
         "pointsAgainst": 76
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "car": {
       "team": {
@@ -4832,7 +4832,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 95,
         "pointsAgainst": 111
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "la": {
       "team": {
@@ -4991,7 +4991,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 184,
         "pointsAgainst": 136
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "sf": {
       "team": {
@@ -5150,7 +5150,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 156,
         "pointsAgainst": 110
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "gb": {
       "team": {
@@ -5309,7 +5309,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 97,
         "pointsAgainst": 134
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "det": {
       "team": {
@@ -5468,7 +5468,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 131,
         "pointsAgainst": 139
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "min": {
       "team": {
@@ -5627,7 +5627,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 120,
         "pointsAgainst": 52
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "tb": {
       "team": {
@@ -5786,7 +5786,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 101,
         "pointsAgainst": 110
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "atl": {
       "team": {
@@ -5945,7 +5945,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 110,
         "pointsAgainst": 125
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "dal": {
       "team": {
@@ -6104,7 +6104,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 120,
         "pointsAgainst": 169
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "no": {
       "team": {
@@ -6263,7 +6263,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 124,
         "pointsAgainst": 88
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "was": {
       "team": {
@@ -6422,7 +6422,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 94,
         "pointsAgainst": 128
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "nyg": {
       "team": {
@@ -6581,7 +6581,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 117,
         "pointsAgainst": 105
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     },
     "ari": {
       "team": {
@@ -6740,7 +6740,7 @@ export const nflSnapshot: NFLSnapshot = {
         "pointsFor": 90,
         "pointsAgainst": 185
       },
-      "generatedAt": "2026-04-29T05:15:12.014Z"
+      "generatedAt": "2026-04-29T18:55:53.038Z"
     }
   }
 };

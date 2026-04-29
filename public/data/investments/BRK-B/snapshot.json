@@ -1,10 +1,10 @@
 {
   "symbol": "BRK-B",
-  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -4170,129 +4170,9 @@
       ]
     },
     "beta": {
-      "beta5y": 0.6995
+      "beta5y": 0.6321
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 532.13,
-        "high": 539,
-        "low": 530.82,
-        "close": 537.72,
-        "volume": 4079000
-      },
-      {
-        "date": "2025-04-03",
-        "open": 527.62,
-        "high": 538.8,
-        "low": 525.14,
-        "close": 530.16,
-        "volume": 6410900
-      },
-      {
-        "date": "2025-04-04",
-        "open": 519,
-        "high": 521,
-        "low": 492.98,
-        "close": 493.54,
-        "volume": 12605000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 467.42,
-        "high": 505.85,
-        "low": 462.1,
-        "close": 490.38,
-        "volume": 12749700
-      },
-      {
-        "date": "2025-04-08",
-        "open": 509.03,
-        "high": 516,
-        "low": 484.19,
-        "close": 492.64,
-        "volume": 9470100
-      },
-      {
-        "date": "2025-04-09",
-        "open": 490,
-        "high": 523.93,
-        "low": 485.56,
-        "close": 521.41,
-        "volume": 10153700
-      },
-      {
-        "date": "2025-04-10",
-        "open": 518.3,
-        "high": 521.41,
-        "low": 498.61,
-        "close": 515.81,
-        "volume": 7475900
-      },
-      {
-        "date": "2025-04-11",
-        "open": 515,
-        "high": 526.58,
-        "low": 510.77,
-        "close": 524.11,
-        "volume": 6231000
-      },
-      {
-        "date": "2025-04-14",
-        "open": 531,
-        "high": 536.52,
-        "low": 526.98,
-        "close": 529.52,
-        "volume": 5512100
-      },
-      {
-        "date": "2025-04-15",
-        "open": 532.62,
-        "high": 535.92,
-        "low": 527.36,
-        "close": 528.17,
-        "volume": 4329200
-      },
-      {
-        "date": "2025-04-16",
-        "open": 529.3,
-        "high": 530.13,
-        "low": 512.89,
-        "close": 516.45,
-        "volume": 5889300
-      },
-      {
-        "date": "2025-04-17",
-        "open": 518.9,
-        "high": 523.88,
-        "low": 514.57,
-        "close": 518.21,
-        "volume": 5311400
-      },
-      {
-        "date": "2025-04-21",
-        "open": 517.53,
-        "high": 518.67,
-        "low": 498.08,
-        "close": 506.92,
-        "volume": 4908400
-      },
-      {
-        "date": "2025-04-22",
-        "open": 514.23,
-        "high": 522.22,
-        "low": 511.65,
-        "close": 520.79,
-        "volume": 4768500
-      },
-      {
-        "date": "2025-04-23",
-        "open": 527.5,
-        "high": 532.27,
-        "low": 523.89,
-        "close": 526.81,
-        "volume": 4294500
-      },
       {
         "date": "2025-04-24",
         "open": 526.81,
@@ -6188,6 +6068,126 @@
         "low": 475.68,
         "close": 477.35,
         "volume": 2972800
+      },
+      {
+        "date": "2026-04-06",
+        "open": 475.66,
+        "high": 479.5,
+        "low": 475.35,
+        "close": 476.38,
+        "volume": 3663500
+      },
+      {
+        "date": "2026-04-07",
+        "open": 475.71,
+        "high": 479.75,
+        "low": 474.32,
+        "close": 478.08,
+        "volume": 3206500
+      },
+      {
+        "date": "2026-04-08",
+        "open": 483.75,
+        "high": 483.75,
+        "low": 477.68,
+        "close": 479.75,
+        "volume": 4655100
+      },
+      {
+        "date": "2026-04-09",
+        "open": 478.21,
+        "high": 487.95,
+        "low": 477.29,
+        "close": 485.2,
+        "volume": 3518500
+      },
+      {
+        "date": "2026-04-10",
+        "open": 484.02,
+        "high": 484.86,
+        "low": 478.92,
+        "close": 479.9,
+        "volume": 3758900
+      },
+      {
+        "date": "2026-04-13",
+        "open": 478.9,
+        "high": 481.11,
+        "low": 477.4,
+        "close": 480.19,
+        "volume": 3612400
+      },
+      {
+        "date": "2026-04-14",
+        "open": 479.81,
+        "high": 480.49,
+        "low": 476,
+        "close": 477.54,
+        "volume": 4864000
+      },
+      {
+        "date": "2026-04-15",
+        "open": 478,
+        "high": 478.77,
+        "low": 473.74,
+        "close": 474.09,
+        "volume": 6993900
+      },
+      {
+        "date": "2026-04-16",
+        "open": 474.02,
+        "high": 476.26,
+        "low": 464.01,
+        "close": 475.12,
+        "volume": 4534000
+      },
+      {
+        "date": "2026-04-17",
+        "open": 475.49,
+        "high": 479.69,
+        "low": 474.15,
+        "close": 474.58,
+        "volume": 6492900
+      },
+      {
+        "date": "2026-04-20",
+        "open": 474.38,
+        "high": 476.04,
+        "low": 471.37,
+        "close": 472.08,
+        "volume": 5147000
+      },
+      {
+        "date": "2026-04-21",
+        "open": 472.54,
+        "high": 474.19,
+        "low": 468.06,
+        "close": 468.5,
+        "volume": 5919000
+      },
+      {
+        "date": "2026-04-22",
+        "open": 468.86,
+        "high": 470.99,
+        "low": 464.62,
+        "close": 465.4,
+        "volume": 5720500
+      },
+      {
+        "date": "2026-04-23",
+        "open": 466.72,
+        "high": 473,
+        "low": 466.72,
+        "close": 470.55,
+        "volume": 4749100
+      },
+      {
+        "date": "2026-04-24",
+        "open": 468.8,
+        "high": 470.28,
+        "low": 466.58,
+        "close": 469.32,
+        "volume": 3847900
       }
     ],
     "news": [
@@ -6224,11 +6224,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
-        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
-        "publisher": "Zacks",
+        "uuid": "03a69758-d01e-4cb7-bb25-47b066e8c7ef",
+        "title": "Bill Ackman on his move to recreate Warren Buffett's Berkshire Hathaway",
+        "publisher": "Yahoo Finance",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
+        "link": "https://finance.yahoo.com/news/bill-ackman-on-his-move-to-recreate-warren-buffetts-berkshire-hathaway-185906487.html",
         "type": "STORY"
       },
       {
@@ -6240,11 +6240,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "03a69758-d01e-4cb7-bb25-47b066e8c7ef",
-        "title": "Bill Ackman on his move to recreate Warren Buffett's Berkshire Hathaway",
-        "publisher": "Yahoo Finance",
+        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
+        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
+        "publisher": "Zacks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/bill-ackman-on-his-move-to-recreate-warren-buffetts-berkshire-hathaway-185906487.html",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
         "type": "STORY"
       },
       {
@@ -6326,15 +6326,15 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "industryAvg": 17.55
+        "industryAvg": 16.72
       },
       {
         "metric": "P/S Ratio",
-        "industryAvg": 1.1
+        "industryAvg": 1.05
       },
       {
         "metric": "P/B Ratio",
-        "industryAvg": 0.15
+        "industryAvg": 0.14
       },
       {
         "metric": "ROE",
@@ -6355,7 +6355,7 @@
       {
         "metric": "Net Margin",
         "value": 17.23,
-        "industryAvg": 16.73
+        "industryAvg": 16.74
       }
     ]
   }

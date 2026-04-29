@@ -1,10 +1,10 @@
 {
   "symbol": "UNH",
-  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
       "longName": "UnitedHealth Group Incorporated"
     },
     "fundamentals": {
-      "ttmEps": 13.19,
-      "ttmPe": 21.02,
-      "marketCap": 251662192308,
-      "psRatio": 0.56,
-      "pbRatio": 2.67
+      "ttmEps": 13.24,
+      "ttmPe": 26.81,
+      "marketCap": 322152294936,
+      "psRatio": 0.72,
+      "pbRatio": 3.42
     },
     "profitability": {
       "roe": 0.01,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": -99.83
+        "yoyGrowth": 0.73
       }
     ],
     "income_statement": {
@@ -4721,137 +4721,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.01,
-      "costOfEquity": 7.580000000000001,
+      "wacc": 7.670000000000001,
+      "costOfEquity": 9.3,
       "costOfDebt": 1.24,
       "taxRate": 21,
-      "beta": 0.3821,
-      "marketCap": 251662192308
+      "beta": 0.5829,
+      "marketCap": 322152294936
     },
     "beta": {
-      "beta5y": 0.3821
+      "beta5y": 0.5829
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 522.95,
-        "high": 525,
-        "low": 516.8,
-        "close": 523.2,
-        "volume": 2378900
-      },
-      {
-        "date": "2025-04-03",
-        "open": 529.99,
-        "high": 548.5,
-        "low": 529.29,
-        "close": 540.44,
-        "volume": 6457900
-      },
-      {
-        "date": "2025-04-04",
-        "open": 540.64,
-        "high": 551.74,
-        "low": 524.84,
-        "close": 525.05,
-        "volume": 9919000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 513.4,
-        "high": 529.2,
-        "low": 503.59,
-        "close": 524.7,
-        "volume": 7356700
-      },
-      {
-        "date": "2025-04-08",
-        "open": 582.17,
-        "high": 585.01,
-        "low": 547.46,
-        "close": 553.08,
-        "volume": 11762300
-      },
-      {
-        "date": "2025-04-09",
-        "open": 560.14,
-        "high": 589.4,
-        "low": 554.46,
-        "close": 578.5,
-        "volume": 12691900
-      },
-      {
-        "date": "2025-04-10",
-        "open": 580.24,
-        "high": 601.88,
-        "low": 580,
-        "close": 594.4,
-        "volume": 8646000
-      },
-      {
-        "date": "2025-04-11",
-        "open": 588.92,
-        "high": 606.36,
-        "low": 586.53,
-        "close": 599.47,
-        "volume": 6121500
-      },
-      {
-        "date": "2025-04-14",
-        "open": 595,
-        "high": 595.63,
-        "low": 579.29,
-        "close": 587.06,
-        "volume": 4839300
-      },
-      {
-        "date": "2025-04-15",
-        "open": 592.24,
-        "high": 592.86,
-        "low": 582.01,
-        "close": 583.59,
-        "volume": 3871300
-      },
-      {
-        "date": "2025-04-16",
-        "open": 585.32,
-        "high": 594.81,
-        "low": 582.96,
-        "close": 585.04,
-        "volume": 4192100
-      },
-      {
-        "date": "2025-04-17",
-        "open": 481.95,
-        "high": 489.79,
-        "low": 447.1,
-        "close": 454.11,
-        "volume": 29060100
-      },
-      {
-        "date": "2025-04-21",
-        "open": 449.76,
-        "high": 453.5,
-        "low": 424.81,
-        "close": 425.33,
-        "volume": 13029900
-      },
-      {
-        "date": "2025-04-22",
-        "open": 424.64,
-        "high": 431.5,
-        "low": 417.12,
-        "close": 427.18,
-        "volume": 10156900
-      },
-      {
-        "date": "2025-04-23",
-        "open": 427.07,
-        "high": 438.85,
-        "low": 423.75,
-        "close": 427.96,
-        "volume": 8345700
-      },
       {
         "date": "2025-04-24",
         "open": 427.57,
@@ -6747,6 +6627,126 @@
         "low": 271.53,
         "close": 277.26,
         "volume": 6407000
+      },
+      {
+        "date": "2026-04-06",
+        "open": 277.88,
+        "high": 283.3,
+        "low": 277.25,
+        "close": 281.36,
+        "volume": 7097000
+      },
+      {
+        "date": "2026-04-07",
+        "open": 308.85,
+        "high": 312.43,
+        "low": 300.75,
+        "close": 307.73,
+        "volume": 22099800
+      },
+      {
+        "date": "2026-04-08",
+        "open": 312,
+        "high": 312.97,
+        "low": 304.83,
+        "close": 305.98,
+        "volume": 9645000
+      },
+      {
+        "date": "2026-04-09",
+        "open": 305.82,
+        "high": 307.89,
+        "low": 304.14,
+        "close": 306.91,
+        "volume": 5742000
+      },
+      {
+        "date": "2026-04-10",
+        "open": 307.95,
+        "high": 310.37,
+        "low": 304.2,
+        "close": 304.33,
+        "volume": 5212900
+      },
+      {
+        "date": "2026-04-13",
+        "open": 303.25,
+        "high": 313.32,
+        "low": 302.92,
+        "close": 313,
+        "volume": 7972200
+      },
+      {
+        "date": "2026-04-14",
+        "open": 312.51,
+        "high": 319.62,
+        "low": 312.51,
+        "close": 314.19,
+        "volume": 5864500
+      },
+      {
+        "date": "2026-04-15",
+        "open": 316,
+        "high": 317.76,
+        "low": 311.15,
+        "close": 314.05,
+        "volume": 5041200
+      },
+      {
+        "date": "2026-04-16",
+        "open": 315,
+        "high": 318.61,
+        "low": 313.11,
+        "close": 316.4,
+        "volume": 5205600
+      },
+      {
+        "date": "2026-04-17",
+        "open": 320.05,
+        "high": 325.27,
+        "low": 317.14,
+        "close": 324.63,
+        "volume": 9414700
+      },
+      {
+        "date": "2026-04-20",
+        "open": 324.19,
+        "high": 325.4,
+        "low": 320.12,
+        "close": 323.48,
+        "volume": 9050600
+      },
+      {
+        "date": "2026-04-21",
+        "open": 353.01,
+        "high": 357.68,
+        "low": 345.23,
+        "close": 346.01,
+        "volume": 26097300
+      },
+      {
+        "date": "2026-04-22",
+        "open": 350.88,
+        "high": 358.56,
+        "low": 349.1,
+        "close": 353.52,
+        "volume": 11807300
+      },
+      {
+        "date": "2026-04-23",
+        "open": 354.68,
+        "high": 356.85,
+        "low": 350.5,
+        "close": 354.56,
+        "volume": 7255800
+      },
+      {
+        "date": "2026-04-24",
+        "open": 356.49,
+        "high": 358.28,
+        "low": 351.39,
+        "close": 354.92,
+        "volume": 8551200
       }
     ],
     "news": [
@@ -6823,125 +6823,72 @@
         "type": "STORY"
       },
       {
-        "uuid": "6bd9f8f6-e32b-372a-95b2-aa59eacd547a",
-        "title": "Sector Update: Health Care Stocks Decline Tuesday Afternoon",
-        "publisher": "MT Newswires",
+        "uuid": "c017eb02-e851-3ee3-98c7-3315aaa7c8de",
+        "title": "Health Insurance Providers Stocks Q1 Highlights: Molina Healthcare (NYSE:MOH)",
+        "publisher": "StockStory",
         "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-decline-180552670.html",
+        "link": "https://finance.yahoo.com/news/health-insurance-providers-stocks-q1-033235659.html",
         "type": "STORY"
       }
     ],
     "officers": [
       {
-        "name": "Dr. Richard J. Migliori M.D.",
-        "title": "Executive Vice President & Senior Advisor",
-        "age": 68,
-        "yearBorn": 1957
-      },
-      {
-        "name": "Mr. Christopher R. Zaetta",
-        "title": "Executive VP, Chief Legal Officer & Corporate Secretary",
-        "age": 53,
-        "yearBorn": 1972,
-        "totalPay": 1872229
-      },
-      {
-        "name": "Mr. Dennis Stankiewicz",
-        "title": "Chief Accounting Officer & Corporate Controller",
-        "age": 47,
-        "yearBorn": 1978
-      },
-      {
-        "name": "Mr. Sandeep Dadlani",
-        "title": "Executive VP and Chief Digital & Technology Officer",
-        "age": 50,
-        "yearBorn": 1975
-      },
-      {
         "name": "Mr. Stephen J. Hemsley",
         "title": "CEO & Non-Independent Non-Executive Chairman",
         "age": 72,
         "yearBorn": 1953,
-        "totalPay": 285077
-      },
-      {
-        "name": "Mr. Terry Clark",
-        "title": "Executive VP & Chief Marketing Officer"
-      },
-      {
-        "name": "Mr. Wayne Scott DeVeydt",
-        "title": "Chief Financial Officer",
-        "age": 55,
-        "yearBorn": 1970
-      },
-      {
-        "name": "Mr. Zachary William Sopcak",
-        "title": "Senior Vice President of Capital Markets Communications & Investor Relations"
-      },
-      {
-        "name": "Ms. Erin L. McSweeney",
-        "title": "Executive VP & Chief People Officer",
-        "age": 60,
-        "yearBorn": 1965,
-        "totalPay": 1767835
-      },
-      {
-        "name": "Ms. Heather Rachelle Cianfrocco",
-        "title": "EVP of Governance, Compliance & Information Security",
-        "age": 51,
-        "yearBorn": 1974,
-        "totalPay": 3448035
+        "totalPay": 1282348
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.02,
-        "industryAvg": 26.99
+        "value": 26.81,
+        "industryAvg": 33.09
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.56,
-        "industryAvg": 0.31
+        "value": 0.72,
+        "industryAvg": 0.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.67,
-        "industryAvg": 1.8
+        "value": 3.42,
+        "industryAvg": 2.13
       },
       {
         "metric": "ROE",
         "value": 0.01,
-        "industryAvg": 0.76
+        "industryAvg": 1.22
       },
       {
         "metric": "ROA",
         "value": 0,
-        "industryAvg": 0.22999999999999998
+        "industryAvg": 0.37
       },
       {
         "metric": "Gross Margin",
         "value": 16.34,
-        "industryAvg": 8.08
+        "industryAvg": 8.16
       },
       {
         "metric": "EBITDA Margin",
         "value": 1.21,
-        "industryAvg": 0.79
+        "industryAvg": 0.84
       },
       {
         "metric": "Net Margin",
         "value": 0.01,
-        "industryAvg": 0.52
+        "industryAvg": 0.83
       }
     ],
     "dcf": {
-      "fairValue": 226.28,
-      "currentPrice": 277.26,
-      "upside": -18.39,
-      "wacc": 6.01,
+      "fairValue": 279.87,
+      "currentPrice": 354.92,
+      "upside": -21.14,
+      "wacc": 7.67,
       "growthEstimates": {
-        "Near-term growth (Yrs 1-3)": -30,
+        "Near-term growth (Yrs 1-3)": 0.73,
         "Terminal growth": 3
       },
       "recommendation": "Sell"

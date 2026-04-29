@@ -1,10 +1,10 @@
 {
   "symbol": "GD",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 15.46,
-      "ttmPe": 22.58,
-      "marketCap": 94390375282,
-      "psRatio": 1.8,
-      "pbRatio": 3.68
+      "ttmPe": 20.26,
+      "marketCap": 84831644339,
+      "psRatio": 1.61,
+      "pbRatio": 3.31
     },
     "profitability": {
       "roe": 4.569999999999999,
@@ -4819,129 +4819,9 @@
       ]
     },
     "beta": {
-      "beta5y": 0.377
+      "beta5y": 0.2823
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 271.73,
-        "high": 278.27,
-        "low": 271.25,
-        "close": 276.04,
-        "volume": 1350000
-      },
-      {
-        "date": "2025-04-03",
-        "open": 273.93,
-        "high": 279.09,
-        "low": 268.99,
-        "close": 269.62,
-        "volume": 1416700
-      },
-      {
-        "date": "2025-04-04",
-        "open": 264.96,
-        "high": 265.73,
-        "low": 249.75,
-        "close": 250.01,
-        "volume": 3232200
-      },
-      {
-        "date": "2025-04-07",
-        "open": 244.66,
-        "high": 253.25,
-        "low": 239.2,
-        "close": 247.68,
-        "volume": 2328400
-      },
-      {
-        "date": "2025-04-08",
-        "open": 257.02,
-        "high": 260.99,
-        "low": 251.66,
-        "close": 254.4,
-        "volume": 2277200
-      },
-      {
-        "date": "2025-04-09",
-        "open": 249.92,
-        "high": 272.75,
-        "low": 249.92,
-        "close": 271.52,
-        "volume": 2676600
-      },
-      {
-        "date": "2025-04-10",
-        "open": 269,
-        "high": 274.61,
-        "low": 263.03,
-        "close": 271.82,
-        "volume": 2094300
-      },
-      {
-        "date": "2025-04-11",
-        "open": 270.32,
-        "high": 277.77,
-        "low": 267.23,
-        "close": 276.65,
-        "volume": 1568500
-      },
-      {
-        "date": "2025-04-14",
-        "open": 276.83,
-        "high": 280.39,
-        "low": 273.89,
-        "close": 278.78,
-        "volume": 1244600
-      },
-      {
-        "date": "2025-04-15",
-        "open": 277.91,
-        "high": 280.93,
-        "low": 276.32,
-        "close": 277.14,
-        "volume": 1544800
-      },
-      {
-        "date": "2025-04-16",
-        "open": 277.56,
-        "high": 280.79,
-        "low": 275.21,
-        "close": 276.63,
-        "volume": 1964500
-      },
-      {
-        "date": "2025-04-17",
-        "open": 275.54,
-        "high": 278.41,
-        "low": 273.35,
-        "close": 276.08,
-        "volume": 1722000
-      },
-      {
-        "date": "2025-04-21",
-        "open": 275.01,
-        "high": 276.26,
-        "low": 270.6,
-        "close": 273.18,
-        "volume": 1423100
-      },
-      {
-        "date": "2025-04-22",
-        "open": 271.68,
-        "high": 275.67,
-        "low": 266.89,
-        "close": 274.8,
-        "volume": 3048600
-      },
-      {
-        "date": "2025-04-23",
-        "open": 271.63,
-        "high": 272.88,
-        "low": 263.6,
-        "close": 265.73,
-        "volume": 2245700
-      },
       {
         "date": "2025-04-24",
         "open": 264.93,
@@ -6837,6 +6717,126 @@
         "low": 347.05,
         "close": 349.09,
         "volume": 1102800
+      },
+      {
+        "date": "2026-04-06",
+        "open": 348.41,
+        "high": 351.84,
+        "low": 346.19,
+        "close": 351.39,
+        "volume": 768900
+      },
+      {
+        "date": "2026-04-07",
+        "open": 349.47,
+        "high": 350.97,
+        "low": 345.93,
+        "close": 348.43,
+        "volume": 675000
+      },
+      {
+        "date": "2026-04-08",
+        "open": 346.86,
+        "high": 350.34,
+        "low": 343,
+        "close": 350.02,
+        "volume": 1462200
+      },
+      {
+        "date": "2026-04-09",
+        "open": 348.17,
+        "high": 350.43,
+        "low": 343.52,
+        "close": 343.9,
+        "volume": 1399900
+      },
+      {
+        "date": "2026-04-10",
+        "open": 342.31,
+        "high": 342.98,
+        "low": 332.76,
+        "close": 335.15,
+        "volume": 1695100
+      },
+      {
+        "date": "2026-04-13",
+        "open": 336.59,
+        "high": 341.38,
+        "low": 336.25,
+        "close": 340.76,
+        "volume": 1622600
+      },
+      {
+        "date": "2026-04-14",
+        "open": 340.65,
+        "high": 340.65,
+        "low": 337.65,
+        "close": 339.88,
+        "volume": 1154100
+      },
+      {
+        "date": "2026-04-15",
+        "open": 340.54,
+        "high": 341.89,
+        "low": 337.09,
+        "close": 338.88,
+        "volume": 1305200
+      },
+      {
+        "date": "2026-04-16",
+        "open": 340,
+        "high": 341.3,
+        "low": 331.92,
+        "close": 334.92,
+        "volume": 1540100
+      },
+      {
+        "date": "2026-04-17",
+        "open": 334.81,
+        "high": 338.59,
+        "low": 334.02,
+        "close": 336.29,
+        "volume": 1309700
+      },
+      {
+        "date": "2026-04-20",
+        "open": 335.45,
+        "high": 337.08,
+        "low": 331.31,
+        "close": 332.14,
+        "volume": 1026700
+      },
+      {
+        "date": "2026-04-21",
+        "open": 330.47,
+        "high": 331.05,
+        "low": 323.97,
+        "close": 325.52,
+        "volume": 1636200
+      },
+      {
+        "date": "2026-04-22",
+        "open": 327.45,
+        "high": 328.78,
+        "low": 317.65,
+        "close": 320.74,
+        "volume": 1578000
+      },
+      {
+        "date": "2026-04-23",
+        "open": 321.35,
+        "high": 322.95,
+        "low": 315.54,
+        "close": 318.71,
+        "volume": 1632800
+      },
+      {
+        "date": "2026-04-24",
+        "open": 316.64,
+        "high": 317.09,
+        "low": 310.61,
+        "close": 313.21,
+        "volume": 1300900
       }
     ],
     "news": [
@@ -6865,19 +6865,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f3e2f4a8-aa5d-3425-823a-26f4af03befd",
-        "title": "General Dynamics Corporation (GD): An Undervalued Dividend Aristocrat to Buy Now",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/general-dynamics-corporation-gd-undervalued-121923392.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "da7a4e0b-6089-37e9-9dff-9f0f3f65089e",
         "title": "Q1 Earnings Outperformers: General Dynamics (NYSE:GD) And The Rest Of The Defense Contractors Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-general-dynamics-033410705.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f3e2f4a8-aa5d-3425-823a-26f4af03befd",
+        "title": "General Dynamics Corporation (GD): An Undervalued Dividend Aristocrat to Buy Now",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/general-dynamics-corporation-gd-undervalued-121923392.html",
         "type": "STORY"
       },
       {
@@ -6913,11 +6913,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6842be06-cb66-36b9-9b89-805d5cda23bc",
-        "title": "Northrop Grumman Rewards Shareholders With 12% Dividend Hike",
-        "publisher": "Zacks",
+        "uuid": "1d128de7-3263-3e78-b95b-a2df852a3d02",
+        "title": "Trump to make Golden Dome announcement Tuesday, Reuters reports",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/northrop-grumman-rewards-shareholders-12-152200138.html",
+        "link": "https://finance.yahoo.com/m/1d128de7-3263-3e78-b95b-a2df852a3d02/trump-to-make-golden-dome.html",
         "type": "STORY"
       }
     ],
@@ -6928,6 +6928,13 @@
         "age": 55,
         "yearBorn": 1970,
         "totalPay": 3544278
+      },
+      {
+        "name": "Mr. Gregory S. Gallopoulos",
+        "title": "Senior VP, General Counsel & Secretary",
+        "age": 65,
+        "yearBorn": 1960,
+        "totalPay": 1758747
       },
       {
         "name": "Mr. Jason W. Aiken CPA",
@@ -6944,6 +6951,16 @@
         "totalPay": 2925810
       },
       {
+        "name": "Mr. Shane A. Berg",
+        "title": "Senior Vice President of Human Resources & Administration",
+        "age": 53,
+        "yearBorn": 1972
+      },
+      {
+        "name": "Ms. Elizabeth L. Schmid",
+        "title": "Senior Vice President for Government Relations & Communications"
+      },
+      {
         "name": "Ms. Kimberly A. Kuryea",
         "title": "Senior VP & CFO",
         "age": 58,
@@ -6951,53 +6968,63 @@
         "totalPay": 3135011
       },
       {
+        "name": "Ms. Marguerite Amy Gilliland",
+        "title": "Executive Vice President",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
         "name": "Ms. Phebe N. Novakovic",
         "title": "Chairperson & CEO",
         "age": 67,
         "yearBorn": 1958,
         "totalPay": 8164003
+      },
+      {
+        "name": "Nicole M. Shelton",
+        "title": "Vice President of Investor Relations"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.58,
-        "industryAvg": 51.64
+        "value": 20.26,
+        "industryAvg": 46.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.8,
-        "industryAvg": 3.38
+        "value": 1.61,
+        "industryAvg": 3.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.68,
-        "industryAvg": 6.82
+        "value": 3.31,
+        "industryAvg": 6.16
       },
       {
         "metric": "ROE",
         "value": 4.569999999999999,
-        "industryAvg": 7.9799999999999995
+        "industryAvg": 4.3
       },
       {
         "metric": "ROA",
         "value": 1.9900000000000002,
-        "industryAvg": 1.94
+        "industryAvg": 1.08
       },
       {
         "metric": "Gross Margin",
         "value": 14.89,
-        "industryAvg": 18.08
+        "industryAvg": 19.15
       },
       {
         "metric": "EBITDA Margin",
         "value": 12.889999999999999,
-        "industryAvg": 18.25
+        "industryAvg": 13.889999999999999
       },
       {
         "metric": "Net Margin",
         "value": 7.95,
-        "industryAvg": 11.14
+        "industryAvg": 6.74
       }
     ]
   }

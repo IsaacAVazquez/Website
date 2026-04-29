@@ -1,10 +1,10 @@
 {
   "symbol": "MO",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.12,
-      "ttmPe": 15.96,
-      "marketCap": 109944019056,
-      "psRatio": 5.46,
-      "pbRatio": -31.39
+      "ttmPe": 16.23,
+      "marketCap": 111816544928,
+      "psRatio": 5.55,
+      "pbRatio": -31.93
     },
     "profitability": {
       "roe": -36.24,
@@ -5629,137 +5629,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.140000000000001,
-      "costOfEquity": 8.57,
+      "wacc": 6.97,
+      "costOfEquity": 8.33,
       "costOfDebt": 1.41,
       "taxRate": 26,
-      "beta": 0.4975,
-      "marketCap": 109944019056
+      "beta": 0.4698,
+      "marketCap": 111816544928
     },
     "beta": {
-      "beta5y": 0.4975
+      "beta5y": 0.4698
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 58.78,
-        "high": 58.92,
-        "low": 55.71,
-        "close": 57.12,
-        "volume": 20161000
-      },
-      {
-        "date": "2025-04-03",
-        "open": 58,
-        "high": 59.24,
-        "low": 57.77,
-        "close": 57.89,
-        "volume": 14319800
-      },
-      {
-        "date": "2025-04-04",
-        "open": 57.65,
-        "high": 58.83,
-        "low": 55.81,
-        "close": 56.07,
-        "volume": 16333000
-      },
-      {
-        "date": "2025-04-07",
-        "open": 53,
-        "high": 56.17,
-        "low": 52.82,
-        "close": 55.66,
-        "volume": 16833100
-      },
-      {
-        "date": "2025-04-08",
-        "open": 56.44,
-        "high": 56.97,
-        "low": 55.08,
-        "close": 55.56,
-        "volume": 12315600
-      },
-      {
-        "date": "2025-04-09",
-        "open": 55.01,
-        "high": 57.15,
-        "low": 54.94,
-        "close": 56.36,
-        "volume": 15940600
-      },
-      {
-        "date": "2025-04-10",
-        "open": 56.53,
-        "high": 56.77,
-        "low": 55.51,
-        "close": 56.38,
-        "volume": 13148000
-      },
-      {
-        "date": "2025-04-11",
-        "open": 56.56,
-        "high": 56.94,
-        "low": 55.93,
-        "close": 56.65,
-        "volume": 9760300
-      },
-      {
-        "date": "2025-04-14",
-        "open": 56.79,
-        "high": 57.51,
-        "low": 56.43,
-        "close": 57.13,
-        "volume": 9782600
-      },
-      {
-        "date": "2025-04-15",
-        "open": 57.65,
-        "high": 57.9,
-        "low": 57.17,
-        "close": 57.52,
-        "volume": 6384000
-      },
-      {
-        "date": "2025-04-16",
-        "open": 57.99,
-        "high": 58.19,
-        "low": 57.06,
-        "close": 57.27,
-        "volume": 8526100
-      },
-      {
-        "date": "2025-04-17",
-        "open": 57.48,
-        "high": 58.52,
-        "low": 57.44,
-        "close": 58.16,
-        "volume": 8765200
-      },
-      {
-        "date": "2025-04-21",
-        "open": 58.3,
-        "high": 58.45,
-        "low": 57.02,
-        "close": 57.63,
-        "volume": 6727900
-      },
-      {
-        "date": "2025-04-22",
-        "open": 57.8,
-        "high": 59,
-        "low": 57.78,
-        "close": 58.82,
-        "volume": 9475200
-      },
-      {
-        "date": "2025-04-23",
-        "open": 58.53,
-        "high": 58.93,
-        "low": 57.95,
-        "close": 58.56,
-        "volume": 8942500
-      },
       {
         "date": "2025-04-24",
         "open": 58.49,
@@ -7655,6 +7535,126 @@
         "low": 65.52,
         "close": 65.76,
         "volume": 9795700
+      },
+      {
+        "date": "2026-04-06",
+        "open": 65.71,
+        "high": 66.55,
+        "low": 65.32,
+        "close": 66.55,
+        "volume": 5268200
+      },
+      {
+        "date": "2026-04-07",
+        "open": 66.72,
+        "high": 67.61,
+        "low": 66.17,
+        "close": 66.25,
+        "volume": 10982100
+      },
+      {
+        "date": "2026-04-08",
+        "open": 65.48,
+        "high": 66.86,
+        "low": 64.36,
+        "close": 66.8,
+        "volume": 10805900
+      },
+      {
+        "date": "2026-04-09",
+        "open": 66.06,
+        "high": 67.74,
+        "low": 65.8,
+        "close": 67.46,
+        "volume": 6937500
+      },
+      {
+        "date": "2026-04-10",
+        "open": 67.47,
+        "high": 67.93,
+        "low": 66.9,
+        "close": 67.38,
+        "volume": 7115600
+      },
+      {
+        "date": "2026-04-13",
+        "open": 67.49,
+        "high": 67.57,
+        "low": 66.39,
+        "close": 66.81,
+        "volume": 6795700
+      },
+      {
+        "date": "2026-04-14",
+        "open": 66.2,
+        "high": 66.34,
+        "low": 64.9,
+        "close": 65.62,
+        "volume": 8943300
+      },
+      {
+        "date": "2026-04-15",
+        "open": 65.25,
+        "high": 65.35,
+        "low": 64.29,
+        "close": 64.42,
+        "volume": 7076600
+      },
+      {
+        "date": "2026-04-16",
+        "open": 64.35,
+        "high": 65.25,
+        "low": 64.26,
+        "close": 64.94,
+        "volume": 5810000
+      },
+      {
+        "date": "2026-04-17",
+        "open": 64.16,
+        "high": 64.69,
+        "low": 64.08,
+        "close": 64.17,
+        "volume": 9420400
+      },
+      {
+        "date": "2026-04-20",
+        "open": 64.66,
+        "high": 65.17,
+        "low": 64.21,
+        "close": 64.61,
+        "volume": 5967300
+      },
+      {
+        "date": "2026-04-21",
+        "open": 64.6,
+        "high": 64.95,
+        "low": 64.12,
+        "close": 64.65,
+        "volume": 5723400
+      },
+      {
+        "date": "2026-04-22",
+        "open": 64.84,
+        "high": 65.66,
+        "low": 64.65,
+        "close": 65.18,
+        "volume": 7849000
+      },
+      {
+        "date": "2026-04-23",
+        "open": 65.5,
+        "high": 67.43,
+        "low": 65.38,
+        "close": 67.15,
+        "volume": 7525800
+      },
+      {
+        "date": "2026-04-24",
+        "open": 67,
+        "high": 67.37,
+        "low": 66.29,
+        "close": 66.88,
+        "volume": 9521600
       }
     ],
     "news": [
@@ -7691,19 +7691,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bf267d57-4c87-39da-b572-2a5b56eb8e55",
-        "title": "Why Altria (MO) is a Top Growth Stock for the Long-Term",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/why-altria-mo-top-growth-134508811.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "26ea5d2b-0f7b-3ec4-be91-7e85c1402902",
         "title": "Investors Heavily Search Altria Group, Inc. (MO): Here is What You Need to Know",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/investors-heavily-search-altria-group-130013726.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bf267d57-4c87-39da-b572-2a5b56eb8e55",
+        "title": "Why Altria (MO) is a Top Growth Stock for the Long-Term",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/why-altria-mo-top-growth-134508811.html",
         "type": "STORY"
       },
       {
@@ -7745,14 +7745,14 @@
         "title": "Senior VP, Chief Human Resources Officer & Chief Compliance Officer",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 1042492
+        "totalPay": 2539550
       },
       {
         "name": "Mr. Jody L. Begley",
         "title": "Executive VP & COO",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 2932140
+        "totalPay": 3383920
       },
       {
         "name": "Mr. Mac Livingston",
@@ -7761,8 +7761,8 @@
       {
         "name": "Mr. Robert A. McCarter III, J.D.",
         "title": "Executive VP & General Counsel",
-        "age": 51,
-        "yearBorn": 1974,
+        "age": 52,
+        "yearBorn": 1973,
         "totalPay": 2070638
       },
       {
@@ -7770,21 +7770,21 @@
         "title": "Executive VP, CFO & Director",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 3066305
+        "totalPay": 3609274
       },
       {
         "name": "Mr. William F. Gifford Jr.",
         "title": "CEO & Director",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 8692416
+        "totalPay": 10275278
       },
       {
         "name": "Ms. Heather A. Newman",
         "title": "Senior VP and Chief Strategy & Growth Officer",
         "age": 47,
         "yearBorn": 1978,
-        "totalPay": 2136019
+        "totalPay": 2344042
       },
       {
         "name": "Ms. Jennifer Hunter",
@@ -7802,50 +7802,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.96,
-        "industryAvg": 33.38
+        "value": 16.23,
+        "industryAvg": 34.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.46,
-        "industryAvg": 9.13
+        "value": 5.55,
+        "industryAvg": 9.25
       },
       {
         "metric": "P/B Ratio",
-        "value": -31.39,
-        "industryAvg": 5.09
+        "value": -31.93,
+        "industryAvg": 5.19
       },
       {
         "metric": "ROE",
         "value": -36.24,
-        "industryAvg": -35.709999999999994
+        "industryAvg": -42.16
       },
       {
         "metric": "ROA",
         "value": 3.18,
-        "industryAvg": 2.93
+        "industryAvg": 3.1199999999999997
       },
       {
         "metric": "Gross Margin",
         "value": 71.49,
-        "industryAvg": 62.57
+        "industryAvg": 63.9
       },
       {
         "metric": "EBITDA Margin",
         "value": 37.980000000000004,
-        "industryAvg": 38
+        "industryAvg": 37.54
       },
       {
         "metric": "Net Margin",
         "value": 21.93,
-        "industryAvg": 18.92
+        "industryAvg": 20.580000000000002
       }
     ],
     "dcf": {
-      "fairValue": 51.79,
-      "currentPrice": 65.76,
-      "upside": -21.24,
-      "wacc": 7.14,
+      "fairValue": 53.95,
+      "currentPrice": 66.88,
+      "upside": -19.34,
+      "wacc": 6.97,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

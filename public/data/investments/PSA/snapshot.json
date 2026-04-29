@@ -1,10 +1,10 @@
 {
   "symbol": "PSA",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.01,
-      "ttmPe": 31.12,
-      "marketCap": 49203219240,
-      "psRatio": 10.2,
-      "pbRatio": 5.32
+      "ttmPe": 34.22,
+      "marketCap": 54106868056,
+      "psRatio": 11.22,
+      "pbRatio": 5.85
     },
     "profitability": {
       "roe": 4.92,
@@ -4620,137 +4620,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.39,
-      "costOfEquity": 12.43,
+      "wacc": 10.81,
+      "costOfEquity": 12.740000000000002,
       "costOfDebt": 0.79,
       "taxRate": 21,
-      "beta": 0.9481,
-      "marketCap": 49203219240
+      "beta": 0.9851,
+      "marketCap": 54106868056
     },
     "beta": {
-      "beta5y": 0.9481
+      "beta5y": 0.9851
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 299.62,
-        "high": 299.72,
-        "low": 292.98,
-        "close": 296.93,
-        "volume": 596800
-      },
-      {
-        "date": "2025-04-03",
-        "open": 295.64,
-        "high": 302.48,
-        "low": 292.55,
-        "close": 294.74,
-        "volume": 1151300
-      },
-      {
-        "date": "2025-04-04",
-        "open": 294.35,
-        "high": 299.53,
-        "low": 283.96,
-        "close": 284.53,
-        "volume": 1407100
-      },
-      {
-        "date": "2025-04-07",
-        "open": 283.12,
-        "high": 285.74,
-        "low": 270.55,
-        "close": 275.69,
-        "volume": 1409400
-      },
-      {
-        "date": "2025-04-08",
-        "open": 279.98,
-        "high": 282.8,
-        "low": 264.01,
-        "close": 266.31,
-        "volume": 1338700
-      },
-      {
-        "date": "2025-04-09",
-        "open": 263.93,
-        "high": 283.8,
-        "low": 256.6,
-        "close": 282.29,
-        "volume": 1789400
-      },
-      {
-        "date": "2025-04-10",
-        "open": 281.5,
-        "high": 284.92,
-        "low": 270.48,
-        "close": 278.07,
-        "volume": 1227700
-      },
-      {
-        "date": "2025-04-11",
-        "open": 277.68,
-        "high": 281,
-        "low": 271.8,
-        "close": 280.34,
-        "volume": 1035600
-      },
-      {
-        "date": "2025-04-14",
-        "open": 282.16,
-        "high": 289.61,
-        "low": 281.33,
-        "close": 288.73,
-        "volume": 1044300
-      },
-      {
-        "date": "2025-04-15",
-        "open": 289,
-        "high": 292.21,
-        "low": 287.1,
-        "close": 288.91,
-        "volume": 691500
-      },
-      {
-        "date": "2025-04-16",
-        "open": 289.02,
-        "high": 292.53,
-        "low": 287.59,
-        "close": 289.03,
-        "volume": 698000
-      },
-      {
-        "date": "2025-04-17",
-        "open": 291.29,
-        "high": 298.5,
-        "low": 291.29,
-        "close": 296.01,
-        "volume": 741400
-      },
-      {
-        "date": "2025-04-21",
-        "open": 293.61,
-        "high": 294.06,
-        "low": 284.09,
-        "close": 287.56,
-        "volume": 664200
-      },
-      {
-        "date": "2025-04-22",
-        "open": 293.48,
-        "high": 298.02,
-        "low": 291.61,
-        "close": 296.67,
-        "volume": 843200
-      },
-      {
-        "date": "2025-04-23",
-        "open": 297.38,
-        "high": 300.5,
-        "low": 292.99,
-        "close": 295.23,
-        "volume": 709600
-      },
       {
         "date": "2025-04-24",
         "open": 296.68,
@@ -6646,6 +6526,126 @@
         "low": 274,
         "close": 280.35,
         "volume": 854900
+      },
+      {
+        "date": "2026-04-06",
+        "open": 279.66,
+        "high": 282.09,
+        "low": 278.99,
+        "close": 280.89,
+        "volume": 638700
+      },
+      {
+        "date": "2026-04-07",
+        "open": 279.87,
+        "high": 282.23,
+        "low": 278.59,
+        "close": 279.24,
+        "volume": 958600
+      },
+      {
+        "date": "2026-04-08",
+        "open": 283.6,
+        "high": 290.22,
+        "low": 283.25,
+        "close": 290,
+        "volume": 1134900
+      },
+      {
+        "date": "2026-04-09",
+        "open": 288.13,
+        "high": 294.59,
+        "low": 287.37,
+        "close": 293.27,
+        "volume": 976300
+      },
+      {
+        "date": "2026-04-10",
+        "open": 292.95,
+        "high": 296.8,
+        "low": 291.93,
+        "close": 295,
+        "volume": 1097900
+      },
+      {
+        "date": "2026-04-13",
+        "open": 293.41,
+        "high": 296.77,
+        "low": 290.79,
+        "close": 296.23,
+        "volume": 1116300
+      },
+      {
+        "date": "2026-04-14",
+        "open": 295.71,
+        "high": 304.95,
+        "low": 295.71,
+        "close": 304,
+        "volume": 1553300
+      },
+      {
+        "date": "2026-04-15",
+        "open": 302.47,
+        "high": 302.89,
+        "low": 295.24,
+        "close": 299.83,
+        "volume": 1439700
+      },
+      {
+        "date": "2026-04-16",
+        "open": 300.73,
+        "high": 303.34,
+        "low": 299.45,
+        "close": 301.74,
+        "volume": 836900
+      },
+      {
+        "date": "2026-04-17",
+        "open": 302.36,
+        "high": 310.68,
+        "low": 302.36,
+        "close": 309.22,
+        "volume": 988500
+      },
+      {
+        "date": "2026-04-20",
+        "open": 309.68,
+        "high": 312.24,
+        "low": 306.72,
+        "close": 312.17,
+        "volume": 705300
+      },
+      {
+        "date": "2026-04-21",
+        "open": 311.79,
+        "high": 313.51,
+        "low": 307.36,
+        "close": 308.33,
+        "volume": 866400
+      },
+      {
+        "date": "2026-04-22",
+        "open": 310.53,
+        "high": 310.85,
+        "low": 301.94,
+        "close": 304.81,
+        "volume": 1119500
+      },
+      {
+        "date": "2026-04-23",
+        "open": 306,
+        "high": 311.14,
+        "low": 306,
+        "close": 310.82,
+        "volume": 729200
+      },
+      {
+        "date": "2026-04-24",
+        "open": 310.62,
+        "high": 311.65,
+        "low": 307.25,
+        "close": 308.29,
+        "volume": 1011700
       }
     ],
     "news": [
@@ -6655,14 +6655,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-07",
         "link": "https://finance.yahoo.com/news/psa-eyes-australian-market-offers-145600036.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
-        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
         "type": "STORY"
       },
       {
@@ -6687,6 +6679,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/public-storage-psa-q1-ffo-212006960.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
+        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
         "type": "STORY"
       },
       {
@@ -6738,59 +6738,74 @@
         "yearBorn": 1972
       },
       {
-        "name": "Mr. Ayash Basu",
-        "title": "Chief Revenue & Marketing Officer"
-      },
-      {
         "name": "Mr. Brandon Tyler Reagan",
         "title": "Director of Investor Relations"
+      },
+      {
+        "name": "Mr. Christopher C. Sambar",
+        "title": "President & COO",
+        "age": 50,
+        "yearBorn": 1975,
+        "totalPay": 1805333
+      },
+      {
+        "name": "Mr. H. Thomas Boyle III",
+        "title": "CEO & Trustee",
+        "age": 41,
+        "yearBorn": 1984,
+        "totalPay": 2035590
+      },
+      {
+        "name": "Mr. Joseph D. Fisher CFA",
+        "title": "President & CFO",
+        "age": 45,
+        "yearBorn": 1980
+      },
+      {
+        "name": "Mr. Joseph D. Russell Jr.",
+        "title": "Consultant",
+        "age": 65,
+        "yearBorn": 1960,
+        "totalPay": 3019823
       },
       {
         "name": "Mr. Michael Braine",
         "title": "Chief Technology Officer"
       },
       {
-        "name": "Mr. Philip Kim",
-        "title": "Chief Data & Analytics Officer"
+        "name": "Mr. Nathaniel A. Vitan",
+        "title": "Senior VP, Chief Legal Officer & Corporate Secretary",
+        "age": 51,
+        "yearBorn": 1974,
+        "totalPay": 864000
       },
       {
-        "name": "Mr. Steven H. Lentin",
-        "title": "Executive Vice President of Operations"
-      },
-      {
-        "name": "Ms. Gwendolyn Montgomery",
-        "title": "Chief Human Resources Officer",
-        "age": 52,
-        "yearBorn": 1973
-      },
-      {
-        "name": "Nathan A. Tan",
-        "title": "Senior Vice President of Human Resources"
+        "name": "Ms. Natalia N. Johnson",
+        "title": "President and Chief Digital & Transformation Officer",
+        "age": 47,
+        "yearBorn": 1978,
+        "totalPay": 1496794
       },
       {
         "name": "Nicholas J. Kangas",
         "title": "Executive VP of Finance & Accounting"
-      },
-      {
-        "name": "Phillip D. Williams Jr.",
-        "title": "Senior Vice President of Construction"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.12,
-        "industryAvg": 35.65
+        "value": 34.22,
+        "industryAvg": 37.51
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.2,
-        "industryAvg": 2.42
+        "value": 11.22,
+        "industryAvg": 2.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.32,
-        "industryAvg": 0.83
+        "value": 5.85,
+        "industryAvg": 0.88
       },
       {
         "metric": "ROE",
@@ -6810,19 +6825,19 @@
       {
         "metric": "EBITDA Margin",
         "value": 71.73,
-        "industryAvg": 72.59
+        "industryAvg": 72.67
       },
       {
         "metric": "Net Margin",
         "value": 37.59,
-        "industryAvg": 36.1
+        "industryAvg": 36.19
       }
     ],
     "dcf": {
-      "fairValue": 82.04,
-      "currentPrice": 280.35,
-      "upside": -70.74,
-      "wacc": 10.39,
+      "fairValue": 77.75,
+      "currentPrice": 308.29,
+      "upside": -74.78,
+      "wacc": 10.81,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -19,
         "Terminal growth": 3

@@ -1,10 +1,10 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Biotechnology",
       "sector": "Healthcare",
-      "longBusinessSummary": "Regeneron Pharmaceuticals, Inc. discovers, invents, develops, manufactures, and commercializes medicines to treat various diseases worldwide. The company develops product candidates to treat eye, allergic and inflammatory, cardiovascular, metabolic, neurological, infectious, and rare diseases; and cancer, hematologic conditions. It also offers EYLEA injections for wet age-related macular degeneration and diabetic macular edema; myopic choroidal neovascularization; diabetic retinopathy; neovascular glaucoma; retinopathy of prematurity; Dupixent injection to treat atopic dermatitis and asthma; Libtayo injection for metastatic or locally advanced cutaneous squamous cell carcinoma; Praluent injection to treat heterozygous familial hypercholesterolemia (HoFH); and Kevzara solution for rheumatoid arthritis. It has license and collaboration agreement with Bayer for the development and commercialization of EYLEA 8 mg and EYLEA; Alnylam Pharmaceuticals, Inc. to discover, develop, and commercialize RNAi therapeutics for diseases by addressing therapeutic disease targets expressed in the eye and central nervous system; Intellia Therapeutics, Inc. to advance CRISPR/Cas9 gene-editing technology for in vivo therapeutic development for therapies focused on neurological and muscular diseases; Hansoh Pharmaceuticals Group Company Limited to acquire development and commercial rights for HS-20094, a dual GLP-1/GIP receptor; and Tessera Therapeutics, Inc. develops and commercializes TSRA-196, an investigational gene editing therapy for Alpha-1 antitrypsin deficiency. The company was incorporated in 1988 and is based in Tarrytown, New York.",
+      "longBusinessSummary": "Regeneron Pharmaceuticals, Inc. discovers, invents, develops, manufactures, and commercializes medicines to treat various diseases worldwide. The company develops product candidates to treat eye, allergic and inflammatory, cardiovascular, metabolic, neurological, infectious, and rare diseases; and cancer, hematologic conditions. It also offers EYLEA injections for wet age-related macular degeneration and diabetic macular edema; myopic choroidal neovascularization; diabetic retinopathy; neovascular glaucoma; retinopathy of prematurity; Dupixent injection to treat atopic dermatitis and asthma; Libtayo injection for metastatic or locally advanced cutaneous squamous cell carcinoma; Praluent injection to treat heterozygous familial hypercholesterolemia (HoFH); and Kevzara solution for rheumatoid arthritis. It has license and collaboration agreement with Bayer for the development and commercialization of EYLEA 8 mg and EYLEA; Alnylam Pharmaceuticals, Inc. to discover, develop, and commercialize RNAi therapeutics for diseases by addressing therapeutic disease targets expressed in the eye and central nervous system; Intellia Therapeutics, Inc. to advance CRISPR/Cas9 gene-editing technology for in vivo therapeutic development for therapies focused on neurological and muscular diseases; Hansoh Pharmaceuticals Group Company Limited to acquire development and commercial rights for HS-20094, a dual GLP-1/GIP receptor; and Tessera Therapeutics, Inc. develops and commercializes TSRA-196, an investigational gene editing therapy for Alpha-1 antitrypsin deficiency. Additionally, the company has a strategic collaboration with Telix Pharmaceuticals Limited to develop and commercialize radiopharmaceutical therapies. The company was incorporated in 1988 and is based in Tarrytown, New York.",
       "fullTimeEmployees": 15410,
       "website": "https://www.regeneron.com",
       "shortName": "Regeneron Pharmaceuticals, Inc.",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 41.56,
-      "ttmPe": 18.33,
-      "marketCap": 80542629630,
-      "psRatio": 5.62,
-      "pbRatio": 2.58
+      "ttmPe": 18.08,
+      "marketCap": 79455830086,
+      "psRatio": 5.54,
+      "pbRatio": 2.54
     },
     "profitability": {
       "roe": 2.7199999999999998,
@@ -5343,137 +5343,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.46,
-      "costOfEquity": 7.7,
+      "wacc": 7.02,
+      "costOfEquity": 7.249999999999999,
       "costOfDebt": 0.44999999999999996,
       "taxRate": 19,
-      "beta": 0.3963,
-      "marketCap": 80542629630
+      "beta": 0.3432,
+      "marketCap": 79455830086
     },
     "beta": {
-      "beta5y": 0.3963
+      "beta5y": 0.3432
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 613.53,
-        "high": 628,
-        "low": 610.1,
-        "close": 625.6,
-        "volume": 902600
-      },
-      {
-        "date": "2025-04-03",
-        "open": 626.25,
-        "high": 628,
-        "low": 607.88,
-        "close": 610.64,
-        "volume": 1047500
-      },
-      {
-        "date": "2025-04-04",
-        "open": 610.65,
-        "high": 612.99,
-        "low": 572,
-        "close": 573.45,
-        "volume": 1547700
-      },
-      {
-        "date": "2025-04-07",
-        "open": 569.2,
-        "high": 591.54,
-        "low": 557.83,
-        "close": 572.78,
-        "volume": 1687400
-      },
-      {
-        "date": "2025-04-08",
-        "open": 579.46,
-        "high": 586.03,
-        "low": 546.36,
-        "close": 556.81,
-        "volume": 1159700
-      },
-      {
-        "date": "2025-04-09",
-        "open": 538,
-        "high": 580.73,
-        "low": 525.99,
-        "close": 576.72,
-        "volume": 1871500
-      },
-      {
-        "date": "2025-04-10",
-        "open": 568.93,
-        "high": 571.99,
-        "low": 529.73,
-        "close": 546.39,
-        "volume": 1357800
-      },
-      {
-        "date": "2025-04-11",
-        "open": 548.63,
-        "high": 555.53,
-        "low": 533.26,
-        "close": 554.18,
-        "volume": 1170900
-      },
-      {
-        "date": "2025-04-14",
-        "open": 560.44,
-        "high": 574.72,
-        "low": 555.39,
-        "close": 571.06,
-        "volume": 946300
-      },
-      {
-        "date": "2025-04-15",
-        "open": 568.55,
-        "high": 575.2,
-        "low": 553,
-        "close": 557.91,
-        "volume": 838500
-      },
-      {
-        "date": "2025-04-16",
-        "open": 557,
-        "high": 561.83,
-        "low": 544.5,
-        "close": 549.28,
-        "volume": 875700
-      },
-      {
-        "date": "2025-04-17",
-        "open": 548.07,
-        "high": 564.21,
-        "low": 545,
-        "close": 563.16,
-        "volume": 827700
-      },
-      {
-        "date": "2025-04-21",
-        "open": 556.04,
-        "high": 570.35,
-        "low": 552.97,
-        "close": 561.49,
-        "volume": 745600
-      },
-      {
-        "date": "2025-04-22",
-        "open": 565.5,
-        "high": 587.1,
-        "low": 565.14,
-        "close": 585.49,
-        "volume": 1036800
-      },
-      {
-        "date": "2025-04-23",
-        "open": 595.87,
-        "high": 603.77,
-        "low": 584.45,
-        "close": 587.85,
-        "volume": 791900
-      },
       {
         "date": "2025-04-24",
         "open": 590.93,
@@ -7369,23 +7249,143 @@
         "low": 745,
         "close": 761.85,
         "volume": 1000600
+      },
+      {
+        "date": "2026-04-06",
+        "open": 766.83,
+        "high": 768.8,
+        "low": 758.49,
+        "close": 763.04,
+        "volume": 460400
+      },
+      {
+        "date": "2026-04-07",
+        "open": 758.4,
+        "high": 761.91,
+        "low": 747.76,
+        "close": 760.27,
+        "volume": 620900
+      },
+      {
+        "date": "2026-04-08",
+        "open": 765.26,
+        "high": 775.63,
+        "low": 755.99,
+        "close": 775.53,
+        "volume": 580400
+      },
+      {
+        "date": "2026-04-09",
+        "open": 764.15,
+        "high": 772.45,
+        "low": 761.5,
+        "close": 767.85,
+        "volume": 596700
+      },
+      {
+        "date": "2026-04-10",
+        "open": 771.48,
+        "high": 771.48,
+        "low": 739.09,
+        "close": 748.87,
+        "volume": 751300
+      },
+      {
+        "date": "2026-04-13",
+        "open": 747.74,
+        "high": 756.9,
+        "low": 737.34,
+        "close": 746.46,
+        "volume": 747000
+      },
+      {
+        "date": "2026-04-14",
+        "open": 744.97,
+        "high": 757.68,
+        "low": 743.71,
+        "close": 755.51,
+        "volume": 637800
+      },
+      {
+        "date": "2026-04-15",
+        "open": 758.67,
+        "high": 760.58,
+        "low": 739.12,
+        "close": 753.93,
+        "volume": 571100
+      },
+      {
+        "date": "2026-04-16",
+        "open": 749.56,
+        "high": 756,
+        "low": 742.69,
+        "close": 746,
+        "volume": 505000
+      },
+      {
+        "date": "2026-04-17",
+        "open": 754.74,
+        "high": 758.61,
+        "low": 746.91,
+        "close": 750.57,
+        "volume": 513000
+      },
+      {
+        "date": "2026-04-20",
+        "open": 750,
+        "high": 755.59,
+        "low": 744,
+        "close": 749.41,
+        "volume": 493800
+      },
+      {
+        "date": "2026-04-21",
+        "open": 746.2,
+        "high": 751.54,
+        "low": 734.12,
+        "close": 747.36,
+        "volume": 707400
+      },
+      {
+        "date": "2026-04-22",
+        "open": 751.48,
+        "high": 755.78,
+        "low": 740.47,
+        "close": 746.58,
+        "volume": 901900
+      },
+      {
+        "date": "2026-04-23",
+        "open": 750.99,
+        "high": 767.21,
+        "low": 747.26,
+        "close": 766.02,
+        "volume": 928700
+      },
+      {
+        "date": "2026-04-24",
+        "open": 760,
+        "high": 761.96,
+        "low": 736.71,
+        "close": 751.57,
+        "volume": 809500
       }
     ],
     "news": [
-      {
-        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
-        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-15",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
-        "type": "STORY"
-      },
       {
         "uuid": "aeaafdcd-7d73-3a09-a3c2-004f2810e27a",
         "title": "Sector Update: Health Care Stocks Rise in Afternoon Trading",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-15",
         "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-175408390.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
+        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-15",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
         "type": "STORY"
       },
       {
@@ -7421,19 +7421,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f33622c-258b-3263-82b6-5b6151f9d673",
-        "title": "Jim Cramer on Regeneron Pharmaceuticals, Inc. (REGN): ‘Arguably The Most Innovative Biopharma Company I’ve Seen In The Last Two Decades’",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/jim-cramer-regeneron-pharmaceuticals-inc-194014134.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a15e3647-b6c1-34e2-86ad-b1f5d1a28efb",
         "title": "Alnylam Q1 Earnings Beat Estimates, Product Revenues Rise Y/Y",
         "publisher": "Zacks",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/alnylam-q1-earnings-beat-estimates-145100032.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f33622c-258b-3263-82b6-5b6151f9d673",
+        "title": "Jim Cramer on Regeneron Pharmaceuticals, Inc. (REGN): ‘Arguably The Most Innovative Biopharma Company I’ve Seen In The Last Two Decades’",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/jim-cramer-regeneron-pharmaceuticals-inc-194014134.html",
         "type": "STORY"
       },
       {
@@ -7516,28 +7516,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.33,
-        "industryAvg": -37.38
+        "value": 18.08,
+        "industryAvg": -37.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.62,
-        "industryAvg": 5.6
+        "value": 5.54,
+        "industryAvg": 5.77
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.58,
-        "industryAvg": 4.32
+        "value": 2.54,
+        "industryAvg": 4.38
       },
       {
         "metric": "ROE",
         "value": 2.7199999999999998,
-        "industryAvg": -0.88
+        "industryAvg": -1.06
       },
       {
         "metric": "ROA",
         "value": 2.09,
-        "industryAvg": -0.54
+        "industryAvg": -0.65
       },
       {
         "metric": "Gross Margin",
@@ -7547,24 +7547,24 @@
       {
         "metric": "EBITDA Margin",
         "value": 30.919999999999998,
-        "industryAvg": 2.76
+        "industryAvg": 2.6100000000000003
       },
       {
         "metric": "Net Margin",
         "value": 21.740000000000002,
-        "industryAvg": 1.46
+        "industryAvg": 1.1900000000000002
       }
     ],
     "dcf": {
-      "fairValue": 865.27,
-      "currentPrice": 761.85,
-      "upside": 13.58,
-      "wacc": 7.46,
+      "fairValue": 959.58,
+      "currentPrice": 751.57,
+      "upside": 27.68,
+      "wacc": 7.02,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -2.48,
         "Terminal growth": 3
       },
-      "recommendation": "Hold"
+      "recommendation": "Buy"
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "symbol": "CAT",
-  "lastUpdated": "2026-04-10T02:54:33.473379+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T02:54:33.473379+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 18.83,
-      "ttmPe": 38.09,
-      "marketCap": 333713357306,
-      "psRatio": 4.94,
-      "pbRatio": 15.65
+      "ttmPe": 44.12,
+      "marketCap": 386556035967,
+      "psRatio": 5.72,
+      "pbRatio": 18.13
     },
     "profitability": {
       "roe": 11.44,
@@ -5173,137 +5173,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.479999999999999,
-      "costOfEquity": 17.46,
+      "wacc": 15.790000000000001,
+      "costOfEquity": 17.53,
       "costOfDebt": 0.29,
       "taxRate": 24,
-      "beta": 1.5367,
-      "marketCap": 333713357306
+      "beta": 1.5449,
+      "marketCap": 386556035967
     },
     "beta": {
-      "beta5y": 1.5367
+      "beta5y": 1.5449
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 326.13,
-        "high": 336.35,
-        "low": 326.1,
-        "close": 334.66,
-        "volume": 1747600
-      },
-      {
-        "date": "2025-04-03",
-        "open": 319.67,
-        "high": 324.7,
-        "low": 305,
-        "close": 305.76,
-        "volume": 4638700
-      },
-      {
-        "date": "2025-04-04",
-        "open": 285,
-        "high": 294.29,
-        "low": 281.5,
-        "close": 288.08,
-        "volume": 7216800
-      },
-      {
-        "date": "2025-04-07",
-        "open": 276,
-        "high": 294.35,
-        "low": 267.3,
-        "close": 280.06,
-        "volume": 7824700
-      },
-      {
-        "date": "2025-04-08",
-        "open": 289.89,
-        "high": 291.78,
-        "low": 268.27,
-        "close": 273.94,
-        "volume": 4989000
-      },
-      {
-        "date": "2025-04-09",
-        "open": 270.76,
-        "high": 301.86,
-        "low": 269.13,
-        "close": 301.01,
-        "volume": 6457300
-      },
-      {
-        "date": "2025-04-10",
-        "open": 296.68,
-        "high": 298.27,
-        "low": 279.8,
-        "close": 289.16,
-        "volume": 4116800
-      },
-      {
-        "date": "2025-04-11",
-        "open": 288.95,
-        "high": 295.41,
-        "low": 284.14,
-        "close": 293.45,
-        "volume": 3197900
-      },
-      {
-        "date": "2025-04-14",
-        "open": 298.67,
-        "high": 302.48,
-        "low": 295.71,
-        "close": 298.12,
-        "volume": 2758400
-      },
-      {
-        "date": "2025-04-15",
-        "open": 296.83,
-        "high": 301.73,
-        "low": 292.39,
-        "close": 293.43,
-        "volume": 3611300
-      },
-      {
-        "date": "2025-04-16",
-        "open": 292.71,
-        "high": 295.73,
-        "low": 287.61,
-        "close": 290.14,
-        "volume": 3017200
-      },
-      {
-        "date": "2025-04-17",
-        "open": 292.17,
-        "high": 297.7,
-        "low": 291.9,
-        "close": 294.25,
-        "volume": 2716400
-      },
-      {
-        "date": "2025-04-21",
-        "open": 289.33,
-        "high": 291,
-        "low": 282.46,
-        "close": 284.74,
-        "volume": 2978300
-      },
-      {
-        "date": "2025-04-22",
-        "open": 287.5,
-        "high": 293.23,
-        "low": 287,
-        "close": 291.17,
-        "volume": 2231200
-      },
-      {
-        "date": "2025-04-23",
-        "open": 301.34,
-        "high": 305.36,
-        "low": 295.18,
-        "close": 295.77,
-        "volume": 2458300
-      },
       {
         "date": "2025-04-24",
         "open": 297.43,
@@ -7199,6 +7079,126 @@
         "low": 705.45,
         "close": 717.22,
         "volume": 1764300
+      },
+      {
+        "date": "2026-04-06",
+        "open": 716.74,
+        "high": 722.57,
+        "low": 704.27,
+        "close": 721.24,
+        "volume": 1246500
+      },
+      {
+        "date": "2026-04-07",
+        "open": 719.59,
+        "high": 725.73,
+        "low": 708.93,
+        "close": 724.44,
+        "volume": 1549100
+      },
+      {
+        "date": "2026-04-08",
+        "open": 764.62,
+        "high": 774.4,
+        "low": 753.1,
+        "close": 771.58,
+        "volume": 3014000
+      },
+      {
+        "date": "2026-04-09",
+        "open": 773,
+        "high": 795.52,
+        "low": 772.99,
+        "close": 787.07,
+        "volume": 2801900
+      },
+      {
+        "date": "2026-04-10",
+        "open": 790.67,
+        "high": 797.85,
+        "low": 786.24,
+        "close": 790.66,
+        "volume": 1872000
+      },
+      {
+        "date": "2026-04-13",
+        "open": 788.42,
+        "high": 798.54,
+        "low": 785.33,
+        "close": 791.73,
+        "volume": 1820100
+      },
+      {
+        "date": "2026-04-14",
+        "open": 796,
+        "high": 798,
+        "low": 782.04,
+        "close": 794.25,
+        "volume": 1866300
+      },
+      {
+        "date": "2026-04-15",
+        "open": 787.1,
+        "high": 789.97,
+        "low": 756.65,
+        "close": 770.17,
+        "volume": 2764700
+      },
+      {
+        "date": "2026-04-16",
+        "open": 768,
+        "high": 772.81,
+        "low": 754.45,
+        "close": 772.66,
+        "volume": 2005100
+      },
+      {
+        "date": "2026-04-17",
+        "open": 780.51,
+        "high": 801.77,
+        "low": 776,
+        "close": 794.65,
+        "volume": 2818800
+      },
+      {
+        "date": "2026-04-20",
+        "open": 790.9,
+        "high": 799.63,
+        "low": 786.83,
+        "close": 798.4,
+        "volume": 1454100
+      },
+      {
+        "date": "2026-04-21",
+        "open": 804.88,
+        "high": 820.2,
+        "low": 797.79,
+        "close": 800.45,
+        "volume": 2293500
+      },
+      {
+        "date": "2026-04-22",
+        "open": 812.5,
+        "high": 817.85,
+        "low": 805.48,
+        "close": 808.87,
+        "volume": 1628400
+      },
+      {
+        "date": "2026-04-23",
+        "open": 817.11,
+        "high": 845.27,
+        "low": 815.46,
+        "close": 835.24,
+        "volume": 2601800
+      },
+      {
+        "date": "2026-04-24",
+        "open": 839.26,
+        "high": 839.5,
+        "low": 826.65,
+        "close": 830.79,
+        "volume": 2213500
       }
     ],
     "news": [
@@ -7275,11 +7275,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "31b6ac16-e96e-3659-b668-020b7272712b",
-        "title": "CAT Vs KMTUY: Which Heavy Equipment Stock is the Better Buy Now?",
-        "publisher": "Zacks",
+        "uuid": "c52b702e-e7f6-3501-b1fb-2f47570a6b3c",
+        "title": "Caterpillar Earnings Prospects Improve Following Trade War De-escalation, UBS Says in Upgrade",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/cat-vs-kmtuy-heavy-equipment-180000856.html",
+        "link": "https://finance.yahoo.com/news/caterpillar-earnings-prospects-improve-following-200218943.html",
         "type": "STORY"
       }
     ],
@@ -7287,6 +7287,10 @@
       {
         "name": "Alex Kapper",
         "title": "Vice President of Investor Relations"
+      },
+      {
+        "name": "Erick W. Lee",
+        "title": "Chief Compliance Officer"
       },
       {
         "name": "Mr. Andrew R. J. Bonfield",
@@ -7303,13 +7307,6 @@
         "totalPay": 2474566
       },
       {
-        "name": "Mr. D. James Umpleby III",
-        "title": "Executive Chairman of the Board",
-        "age": 67,
-        "yearBorn": 1958,
-        "totalPay": 7056284
-      },
-      {
         "name": "Mr. Derek R. Owens",
         "title": "Chief Legal Officer & General Counsel",
         "age": 50,
@@ -7317,7 +7314,7 @@
       },
       {
         "name": "Mr. Joseph E. Creed CPA",
-        "title": "CEO & Director",
+        "title": "Chairman & CEO",
         "age": 49,
         "yearBorn": 1976,
         "totalPay": 3407160
@@ -7341,29 +7338,31 @@
       },
       {
         "name": "Ms. Jamie L. Engstrom",
-        "title": "Senior VP & Chief Information Officer"
+        "title": "Senior VP & Chief Information Officer",
+        "age": 47,
+        "yearBorn": 1978
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.09,
-        "industryAvg": 32.81
+        "value": 44.12,
+        "industryAvg": 35.79
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.94,
-        "industryAvg": 2.93
+        "value": 5.72,
+        "industryAvg": 3.2
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.65,
-        "industryAvg": 6.41
+        "value": 18.13,
+        "industryAvg": 6.98
       },
       {
         "metric": "ROE",
         "value": 11.44,
-        "industryAvg": 3.8899999999999997
+        "industryAvg": 3.8699999999999997
       },
       {
         "metric": "ROA",
@@ -7373,24 +7372,24 @@
       {
         "metric": "Gross Margin",
         "value": 28.62,
-        "industryAvg": 25.64
+        "industryAvg": 25.569999999999997
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.6,
-        "industryAvg": 15.260000000000002
+        "industryAvg": 15.22
       },
       {
         "metric": "Net Margin",
         "value": 12.55,
-        "industryAvg": 6.859999999999999
+        "industryAvg": 6.78
       }
     ],
     "dcf": {
-      "fairValue": 119.66,
-      "currentPrice": 717.22,
-      "upside": -83.32,
-      "wacc": 15.48,
+      "fairValue": 116.83,
+      "currentPrice": 830.79,
+      "upside": -85.94,
+      "wacc": 15.79,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -11.42,
         "Terminal growth": 3

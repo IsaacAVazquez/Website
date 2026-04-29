@@ -1,10 +1,10 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.75,
-      "ttmPe": 46.07,
-      "marketCap": 159178221172,
-      "psRatio": 17.68,
-      "pbRatio": 12.87
+      "ttmPe": 64.33,
+      "marketCap": 222294119889,
+      "psRatio": 24.68,
+      "pbRatio": 17.97
     },
     "profitability": {
       "roe": 7.870000000000001,
@@ -4985,129 +4985,9 @@
       ]
     },
     "beta": {
-      "beta5y": 1.4775
+      "beta5y": 1.6722
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 75.72,
-        "high": 81.21,
-        "low": 75.5,
-        "close": 80.16,
-        "volume": 7163700
-      },
-      {
-        "date": "2025-04-03",
-        "open": 73.22,
-        "high": 75.55,
-        "low": 71.14,
-        "close": 71.27,
-        "volume": 19579700
-      },
-      {
-        "date": "2025-04-04",
-        "open": 67.52,
-        "high": 68.8,
-        "low": 62.42,
-        "close": 64.37,
-        "volume": 21792400
-      },
-      {
-        "date": "2025-04-07",
-        "open": 59.8,
-        "high": 70.69,
-        "low": 59.43,
-        "close": 68.17,
-        "volume": 20012600
-      },
-      {
-        "date": "2025-04-08",
-        "open": 72.64,
-        "high": 74.46,
-        "low": 67.79,
-        "close": 69.5,
-        "volume": 21129700
-      },
-      {
-        "date": "2025-04-09",
-        "open": 68.91,
-        "high": 77.65,
-        "low": 68.59,
-        "close": 76,
-        "volume": 22451400
-      },
-      {
-        "date": "2025-04-10",
-        "open": 74,
-        "high": 74.5,
-        "low": 69.89,
-        "close": 72.65,
-        "volume": 12227000
-      },
-      {
-        "date": "2025-04-11",
-        "open": 72.99,
-        "high": 73.8,
-        "low": 70.62,
-        "close": 72.67,
-        "volume": 11227300
-      },
-      {
-        "date": "2025-04-14",
-        "open": 76.5,
-        "high": 76.78,
-        "low": 73.18,
-        "close": 73.59,
-        "volume": 10648400
-      },
-      {
-        "date": "2025-04-15",
-        "open": 73.17,
-        "high": 74.01,
-        "low": 72.41,
-        "close": 73.2,
-        "volume": 9119500
-      },
-      {
-        "date": "2025-04-16",
-        "open": 69.13,
-        "high": 73.13,
-        "low": 69.13,
-        "close": 71.87,
-        "volume": 8003100
-      },
-      {
-        "date": "2025-04-17",
-        "open": 72.51,
-        "high": 72.51,
-        "low": 70.41,
-        "close": 71.2,
-        "volume": 8567100
-      },
-      {
-        "date": "2025-04-21",
-        "open": 68.68,
-        "high": 69.3,
-        "low": 66.59,
-        "close": 67.67,
-        "volume": 9472800
-      },
-      {
-        "date": "2025-04-22",
-        "open": 67.67,
-        "high": 69.26,
-        "low": 67.16,
-        "close": 68.67,
-        "volume": 8795200
-      },
-      {
-        "date": "2025-04-23",
-        "open": 73.21,
-        "high": 73.64,
-        "low": 70.36,
-        "close": 70.76,
-        "volume": 11589100
-      },
       {
         "date": "2025-04-24",
         "open": 71.56,
@@ -7003,6 +6883,126 @@
         "low": 119.79,
         "close": 126.68,
         "volume": 5125100
+      },
+      {
+        "date": "2026-04-06",
+        "open": 127.32,
+        "high": 128.16,
+        "low": 125.17,
+        "close": 126.25,
+        "volume": 3033100
+      },
+      {
+        "date": "2026-04-07",
+        "open": 127.85,
+        "high": 133.7,
+        "low": 127.55,
+        "close": 133.64,
+        "volume": 5758000
+      },
+      {
+        "date": "2026-04-08",
+        "open": 143,
+        "high": 146.16,
+        "low": 141.12,
+        "close": 145.07,
+        "volume": 12136800
+      },
+      {
+        "date": "2026-04-09",
+        "open": 145.11,
+        "high": 146.19,
+        "low": 141.11,
+        "close": 146.05,
+        "volume": 7266100
+      },
+      {
+        "date": "2026-04-10",
+        "open": 147.54,
+        "high": 149.34,
+        "low": 145.4,
+        "close": 147.35,
+        "volume": 7054100
+      },
+      {
+        "date": "2026-04-13",
+        "open": 146.73,
+        "high": 152.14,
+        "low": 144.8,
+        "close": 152.02,
+        "volume": 7217900
+      },
+      {
+        "date": "2026-04-14",
+        "open": 153.99,
+        "high": 155.41,
+        "low": 150.99,
+        "close": 154.37,
+        "volume": 7114000
+      },
+      {
+        "date": "2026-04-15",
+        "open": 154.82,
+        "high": 155.23,
+        "low": 150.52,
+        "close": 154.33,
+        "volume": 5835300
+      },
+      {
+        "date": "2026-04-16",
+        "open": 155.92,
+        "high": 161.01,
+        "low": 153.36,
+        "close": 161.01,
+        "volume": 7205600
+      },
+      {
+        "date": "2026-04-17",
+        "open": 162.24,
+        "high": 165.28,
+        "low": 160.47,
+        "close": 164.23,
+        "volume": 8216400
+      },
+      {
+        "date": "2026-04-20",
+        "open": 165,
+        "high": 167.9,
+        "low": 164.49,
+        "close": 166.85,
+        "volume": 6113300
+      },
+      {
+        "date": "2026-04-21",
+        "open": 170,
+        "high": 173.85,
+        "low": 167.22,
+        "close": 172.86,
+        "volume": 8918900
+      },
+      {
+        "date": "2026-04-22",
+        "open": 174.4,
+        "high": 178.48,
+        "low": 171.14,
+        "close": 177.73,
+        "volume": 8699400
+      },
+      {
+        "date": "2026-04-23",
+        "open": 177.5,
+        "high": 177.75,
+        "low": 169.38,
+        "close": 172.55,
+        "volume": 7428000
+      },
+      {
+        "date": "2026-04-24",
+        "open": 174.53,
+        "high": 179.8,
+        "low": 173.52,
+        "close": 176.91,
+        "volume": 7506000
       }
     ],
     "news": [
@@ -7039,19 +7039,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "fc02e84f-6989-34d6-a08b-93c18e28509b",
-        "title": "Buy 5 Big AI Laggards of Q1 That Found Wings and Soared Past Month",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/buy-5-big-ai-laggards-130000558.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
         "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
         "publisher": "Zacks",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fc02e84f-6989-34d6-a08b-93c18e28509b",
+        "title": "Buy 5 Big AI Laggards of Q1 That Found Wings and Soared Past Month",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/buy-5-big-ai-laggards-130000558.html",
         "type": "STORY"
       },
       {
@@ -7099,18 +7099,15 @@
         "title": "Chief Sales Officer"
       },
       {
-        "name": "Mr. John F. McCool",
-        "title": "Chief Platform Officer, Senior VP & Special Advisor to the CEO",
-        "age": 65,
-        "yearBorn": 1960,
-        "totalPay": 544828
+        "name": "Mr. Hugh Holbrook",
+        "title": "Chief Development Officer"
       },
       {
         "name": "Mr. Kenneth Duda Ph.D.",
         "title": "Co-Founder, President, CTO & Director",
         "age": 53,
         "yearBorn": 1972,
-        "totalPay": 814780
+        "totalPay": 610360
       },
       {
         "name": "Mr. Mark Foss",
@@ -7122,16 +7119,17 @@
       },
       {
         "name": "Mr. Todd Nightingale",
-        "title": "Chief Operating Officer",
+        "title": "President & COO",
         "age": 45,
-        "yearBorn": 1980
+        "yearBorn": 1980,
+        "totalPay": 446295
       },
       {
         "name": "Ms. Chantelle Breithaupt",
         "title": "Senior VP & CFO",
-        "age": 52,
-        "yearBorn": 1973,
-        "totalPay": 602318
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 585445
       },
       {
         "name": "Ms. Isabelle Bertin-Bailly",
@@ -7142,49 +7140,49 @@
         "title": "CEO & Chairperson",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2092901
+        "totalPay": 609360
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 46.07,
-        "industryAvg": 43.35
+        "value": 64.33,
+        "industryAvg": 57.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.68,
-        "industryAvg": 2.86
+        "value": 24.68,
+        "industryAvg": 3.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.87,
-        "industryAvg": 7.65
+        "value": 17.97,
+        "industryAvg": 10.05
       },
       {
         "metric": "ROE",
         "value": 7.870000000000001,
-        "industryAvg": 18.3
+        "industryAvg": 17.78
       },
       {
         "metric": "ROA",
         "value": 5.1,
-        "industryAvg": 3.51
+        "industryAvg": 3.45
       },
       {
         "metric": "Gross Margin",
         "value": 62.86000000000001,
-        "industryAvg": 27.500000000000004
+        "industryAvg": 27.83
       },
       {
         "metric": "EBITDA Margin",
         "value": 42.44,
-        "industryAvg": 14.49
+        "industryAvg": 14.39
       },
       {
         "metric": "Net Margin",
         "value": 38.42,
-        "industryAvg": 10.34
+        "industryAvg": 10.27
       }
     ]
   }

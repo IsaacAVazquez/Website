@@ -1,10 +1,10 @@
 {
   "symbol": "SO",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.91,
-      "ttmPe": 24.92,
-      "marketCap": 109084682185,
-      "psRatio": 3.69,
-      "pbRatio": 3.03
+      "ttmPe": 23.91,
+      "marketCap": 105391660309,
+      "psRatio": 3.57,
+      "pbRatio": 2.93
     },
     "profitability": {
       "roe": 1.17,
@@ -5924,137 +5924,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.9399999999999995,
-      "costOfEquity": 7.64,
+      "wacc": 4.62,
+      "costOfEquity": 7.19,
       "costOfDebt": 1.21,
       "taxRate": 21,
-      "beta": 0.3889,
-      "marketCap": 109084682185
+      "beta": 0.336,
+      "marketCap": 105391660309
     },
     "beta": {
-      "beta5y": 0.3889
+      "beta5y": 0.336
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 92,
-        "high": 92.05,
-        "low": 90.71,
-        "close": 91.3,
-        "volume": 4704500
-      },
-      {
-        "date": "2025-04-03",
-        "open": 92.73,
-        "high": 93.3,
-        "low": 92,
-        "close": 92.56,
-        "volume": 6392600
-      },
-      {
-        "date": "2025-04-04",
-        "open": 93.21,
-        "high": 93.65,
-        "low": 88.49,
-        "close": 88.94,
-        "volume": 8268800
-      },
-      {
-        "date": "2025-04-07",
-        "open": 87.75,
-        "high": 89.43,
-        "low": 86.36,
-        "close": 87.22,
-        "volume": 8150900
-      },
-      {
-        "date": "2025-04-08",
-        "open": 88.69,
-        "high": 88.69,
-        "low": 86.16,
-        "close": 86.86,
-        "volume": 6248000
-      },
-      {
-        "date": "2025-04-09",
-        "open": 86.31,
-        "high": 89.4,
-        "low": 85,
-        "close": 87.8,
-        "volume": 7694500
-      },
-      {
-        "date": "2025-04-10",
-        "open": 87.98,
-        "high": 89.7,
-        "low": 87,
-        "close": 88.89,
-        "volume": 7047400
-      },
-      {
-        "date": "2025-04-11",
-        "open": 88.46,
-        "high": 90.18,
-        "low": 87.68,
-        "close": 89.86,
-        "volume": 4022000
-      },
-      {
-        "date": "2025-04-14",
-        "open": 89.77,
-        "high": 91.69,
-        "low": 89.16,
-        "close": 91.16,
-        "volume": 3330900
-      },
-      {
-        "date": "2025-04-15",
-        "open": 91.56,
-        "high": 91.7,
-        "low": 90.93,
-        "close": 91.02,
-        "volume": 2381200
-      },
-      {
-        "date": "2025-04-16",
-        "open": 91.9,
-        "high": 91.9,
-        "low": 90.26,
-        "close": 90.47,
-        "volume": 2731300
-      },
-      {
-        "date": "2025-04-17",
-        "open": 90.89,
-        "high": 93.04,
-        "low": 90.81,
-        "close": 91.81,
-        "volume": 3462000
-      },
-      {
-        "date": "2025-04-21",
-        "open": 91.62,
-        "high": 91.71,
-        "low": 89.58,
-        "close": 90.23,
-        "volume": 3015000
-      },
-      {
-        "date": "2025-04-22",
-        "open": 90.44,
-        "high": 92.22,
-        "low": 90.25,
-        "close": 91.86,
-        "volume": 3849500
-      },
-      {
-        "date": "2025-04-23",
-        "open": 91.48,
-        "high": 91.58,
-        "low": 90.17,
-        "close": 91.13,
-        "volume": 5214600
-      },
       {
         "date": "2025-04-24",
         "open": 91.04,
@@ -7950,6 +7830,126 @@
         "low": 97,
         "close": 97.45,
         "volume": 4566600
+      },
+      {
+        "date": "2026-04-06",
+        "open": 97.13,
+        "high": 97.94,
+        "low": 96.83,
+        "close": 96.94,
+        "volume": 3469300
+      },
+      {
+        "date": "2026-04-07",
+        "open": 96.93,
+        "high": 97.96,
+        "low": 96.64,
+        "close": 96.82,
+        "volume": 3796500
+      },
+      {
+        "date": "2026-04-08",
+        "open": 96.13,
+        "high": 97.19,
+        "low": 95.2,
+        "close": 97.17,
+        "volume": 5793500
+      },
+      {
+        "date": "2026-04-09",
+        "open": 96.78,
+        "high": 98.49,
+        "low": 96.76,
+        "close": 97.59,
+        "volume": 4250100
+      },
+      {
+        "date": "2026-04-10",
+        "open": 97.33,
+        "high": 98.2,
+        "low": 96.84,
+        "close": 97.15,
+        "volume": 3475100
+      },
+      {
+        "date": "2026-04-13",
+        "open": 97.25,
+        "high": 97.38,
+        "low": 95.53,
+        "close": 95.93,
+        "volume": 4731900
+      },
+      {
+        "date": "2026-04-14",
+        "open": 95.98,
+        "high": 96.11,
+        "low": 94.72,
+        "close": 95.96,
+        "volume": 5339400
+      },
+      {
+        "date": "2026-04-15",
+        "open": 95.43,
+        "high": 95.59,
+        "low": 94.56,
+        "close": 94.64,
+        "volume": 3588800
+      },
+      {
+        "date": "2026-04-16",
+        "open": 94.49,
+        "high": 95.27,
+        "low": 93.9,
+        "close": 94.9,
+        "volume": 3108500
+      },
+      {
+        "date": "2026-04-17",
+        "open": 94.46,
+        "high": 94.72,
+        "low": 93.31,
+        "close": 94.51,
+        "volume": 4894100
+      },
+      {
+        "date": "2026-04-20",
+        "open": 94.14,
+        "high": 94.9,
+        "low": 93.36,
+        "close": 93.51,
+        "volume": 3020300
+      },
+      {
+        "date": "2026-04-21",
+        "open": 93.51,
+        "high": 93.73,
+        "low": 91.91,
+        "close": 91.92,
+        "volume": 3693800
+      },
+      {
+        "date": "2026-04-22",
+        "open": 92.58,
+        "high": 93.11,
+        "low": 91.6,
+        "close": 91.87,
+        "volume": 3774600
+      },
+      {
+        "date": "2026-04-23",
+        "open": 92.29,
+        "high": 93.96,
+        "low": 92.29,
+        "close": 93.91,
+        "volume": 3528400
+      },
+      {
+        "date": "2026-04-24",
+        "open": 93.74,
+        "high": 94.1,
+        "low": 93.04,
+        "close": 93.49,
+        "volume": 3086500
       }
     ],
     "news": [
@@ -7994,6 +7994,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "a2044451-b16d-3017-a34e-6f9d7ce3bf21",
+        "title": "Southern Company announces offering of $1.25 billion in aggregate principal amount of Convertible Senior Notes due June 15, 2028",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/southern-company-announces-offering-1-103000778.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "8216137b-01d4-33b2-beb1-54973601d4be",
         "title": "Southern Company, PowerSecure collaborate with PGA TOUR to power state-of-the-art PGA TOUR Studios",
         "publisher": "PR Newswire",
@@ -8010,11 +8018,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a2044451-b16d-3017-a34e-6f9d7ce3bf21",
-        "title": "Southern Company announces offering of $1.25 billion in aggregate principal amount of Convertible Senior Notes due June 15, 2028",
+        "uuid": "8a6dc570-3db0-32d2-9ca4-2ef662fd0020",
+        "title": "Southern Company announces upsize and pricing of $1.45 billion in aggregate principal amount of Series 2025A 3.25% Convertible Senior Notes due June 15, 2028",
         "publisher": "PR Newswire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/southern-company-announces-offering-1-103000778.html",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/southern-company-announces-upsize-pricing-003300450.html",
         "type": "STORY"
       },
       {
@@ -8024,14 +8032,6 @@
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/southern-company-prices-1-45-085601322.html",
         "type": "STORY"
-      },
-      {
-        "uuid": "8a6dc570-3db0-32d2-9ca4-2ef662fd0020",
-        "title": "Southern Company announces upsize and pricing of $1.45 billion in aggregate principal amount of Series 2025A 3.25% Convertible Senior Notes due June 15, 2028",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/southern-company-announces-upsize-pricing-003300450.html",
-        "type": "STORY"
       }
     ],
     "officers": [
@@ -8040,31 +8040,32 @@
         "title": "CEO, President & Chairman",
         "age": 67,
         "yearBorn": 1958,
-        "totalPay": 5016444
+        "totalPay": 5431992
       },
       {
         "name": "Mr. Daniel S. Tucker",
         "title": "Senior Advisor",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 2134631
+        "totalPay": 2442857
       },
       {
         "name": "Mr. David P. Poroch",
         "title": "Executive VP & CFO",
         "age": 55,
-        "yearBorn": 1970
+        "yearBorn": 1970,
+        "totalPay": 1599434
       },
       {
         "name": "Mr. Greg MacLeod",
         "title": "Director of Investor Relations"
       },
       {
-        "name": "Mr. James Y. Kerr II",
-        "title": "CEO, President & Chairman of Southern Company Gas",
-        "age": 61,
-        "yearBorn": 1964,
-        "totalPay": 2129162
+        "name": "Mr. J. Jeffrey Peoples",
+        "title": "Chairman, President & CEO of Alabama Power Company",
+        "age": 65,
+        "yearBorn": 1960,
+        "totalPay": 2460797
       },
       {
         "name": "Mr. Matthew M. Kim",
@@ -8075,7 +8076,7 @@
         "title": "Executive VP & COO",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 2063592
+        "totalPay": 2327228
       },
       {
         "name": "Mr. Sterling A. Spainhour Jr., J.D.",
@@ -8088,7 +8089,7 @@
         "title": "Chairman, President & CEO of Georgia Power",
         "age": 59,
         "yearBorn": 1966,
-        "totalPay": 2691967
+        "totalPay": 2873203
       },
       {
         "name": "Ms. Sloane N. Drake",
@@ -8100,50 +8101,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.92,
-        "industryAvg": 21.6
+        "value": 23.91,
+        "industryAvg": 20.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.69,
-        "industryAvg": 2.05
+        "value": 3.57,
+        "industryAvg": 2.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.03,
-        "industryAvg": 1.19
+        "value": 2.93,
+        "industryAvg": 1.17
       },
       {
         "metric": "ROE",
         "value": 1.17,
-        "industryAvg": 2.4299999999999997
+        "industryAvg": 2.68
       },
       {
         "metric": "ROA",
         "value": 0.27,
-        "industryAvg": 0.64
+        "industryAvg": 0.7000000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 39.97,
-        "industryAvg": 45.129999999999995
+        "industryAvg": 45.47
       },
       {
         "metric": "EBITDA Margin",
         "value": 38.62,
-        "industryAvg": 41.980000000000004
+        "industryAvg": 42.35
       },
       {
         "metric": "Net Margin",
         "value": 5.96,
-        "industryAvg": 13.18
+        "industryAvg": 14.57
       }
     ],
     "dcf": {
-      "fairValue": 121.55,
-      "currentPrice": 97.45,
-      "upside": 24.73,
-      "wacc": 4.94,
+      "fairValue": 145.31,
+      "currentPrice": 93.49,
+      "upside": 55.43,
+      "wacc": 4.62,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -22.92,
         "Terminal growth": 3

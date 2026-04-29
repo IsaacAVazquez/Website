@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 15.41,
-      "ttmPe": 27.42,
-      "marketCap": 116836844000,
-      "psRatio": 5.81,
-      "pbRatio": 6.13
+      "ttmPe": 25.69,
+      "marketCap": 109499972500,
+      "psRatio": 5.44,
+      "pbRatio": 5.75
     },
     "profitability": {
       "roe": 3.61,
@@ -5957,137 +5957,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.639999999999999,
-      "costOfEquity": 14.399999999999999,
+      "wacc": 12.46,
+      "costOfEquity": 13.200000000000001,
       "costOfDebt": 0.84,
       "taxRate": 20,
-      "beta": 1.1783,
-      "marketCap": 116836844000
+      "beta": 1.039,
+      "marketCap": 109499972500
     },
     "beta": {
-      "beta5y": 1.1783
+      "beta5y": 1.039
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 605.06,
-        "high": 625,
-        "low": 604.96,
-        "close": 620.91,
-        "volume": 1604500
-      },
-      {
-        "date": "2025-04-03",
-        "open": 604,
-        "high": 616.42,
-        "low": 598.2,
-        "close": 598.53,
-        "volume": 2833900
-      },
-      {
-        "date": "2025-04-04",
-        "open": 588.1,
-        "high": 594.21,
-        "low": 560.94,
-        "close": 561.53,
-        "volume": 3335200
-      },
-      {
-        "date": "2025-04-07",
-        "open": 548.01,
-        "high": 575.89,
-        "low": 532.65,
-        "close": 556.24,
-        "volume": 2834700
-      },
-      {
-        "date": "2025-04-08",
-        "open": 564.63,
-        "high": 568.61,
-        "low": 537.55,
-        "close": 544.07,
-        "volume": 2764000
-      },
-      {
-        "date": "2025-04-09",
-        "open": 541.54,
-        "high": 598.55,
-        "low": 539.12,
-        "close": 596.48,
-        "volume": 2883800
-      },
-      {
-        "date": "2025-04-10",
-        "open": 583.08,
-        "high": 585.97,
-        "low": 558.66,
-        "close": 577.47,
-        "volume": 2289100
-      },
-      {
-        "date": "2025-04-11",
-        "open": 573.29,
-        "high": 588.46,
-        "low": 569.47,
-        "close": 587.04,
-        "volume": 1479900
-      },
-      {
-        "date": "2025-04-14",
-        "open": 600,
-        "high": 600,
-        "low": 585.82,
-        "close": 593.55,
-        "volume": 1227400
-      },
-      {
-        "date": "2025-04-15",
-        "open": 598.97,
-        "high": 600.56,
-        "low": 591.35,
-        "close": 594.08,
-        "volume": 1177800
-      },
-      {
-        "date": "2025-04-16",
-        "open": 587.65,
-        "high": 598.07,
-        "low": 581.08,
-        "close": 588.08,
-        "volume": 1985500
-      },
-      {
-        "date": "2025-04-17",
-        "open": 592,
-        "high": 593.91,
-        "low": 584.83,
-        "close": 585.38,
-        "volume": 1639800
-      },
-      {
-        "date": "2025-04-21",
-        "open": 578.43,
-        "high": 581.37,
-        "low": 559.1,
-        "close": 568.84,
-        "volume": 1502600
-      },
-      {
-        "date": "2025-04-22",
-        "open": 574.18,
-        "high": 584.84,
-        "low": 571.47,
-        "close": 583.56,
-        "volume": 1467500
-      },
-      {
-        "date": "2025-04-23",
-        "open": 597,
-        "high": 608.73,
-        "low": 593.81,
-        "close": 596.05,
-        "volume": 1744800
-      },
       {
         "date": "2025-04-24",
         "open": 598.83,
@@ -7983,6 +7863,126 @@
         "low": 420.49,
         "close": 422.48,
         "volume": 2554800
+      },
+      {
+        "date": "2026-04-06",
+        "open": 419.92,
+        "high": 422.62,
+        "low": 411.2,
+        "close": 417.36,
+        "volume": 2182700
+      },
+      {
+        "date": "2026-04-07",
+        "open": 413.62,
+        "high": 418.96,
+        "low": 407.51,
+        "close": 410.24,
+        "volume": 2154100
+      },
+      {
+        "date": "2026-04-08",
+        "open": 416.8,
+        "high": 417.2,
+        "low": 386.21,
+        "close": 389.51,
+        "volume": 4716200
+      },
+      {
+        "date": "2026-04-09",
+        "open": 380.2,
+        "high": 382.03,
+        "low": 354.55,
+        "close": 361.69,
+        "volume": 7471800
+      },
+      {
+        "date": "2026-04-10",
+        "open": 359.79,
+        "high": 360.4,
+        "low": 342.11,
+        "close": 350.94,
+        "volume": 7791200
+      },
+      {
+        "date": "2026-04-13",
+        "open": 354.5,
+        "high": 370.45,
+        "low": 352.01,
+        "close": 369.44,
+        "volume": 3483700
+      },
+      {
+        "date": "2026-04-14",
+        "open": 373.63,
+        "high": 378.47,
+        "low": 364.33,
+        "close": 366.8,
+        "volume": 2483200
+      },
+      {
+        "date": "2026-04-15",
+        "open": 375,
+        "high": 392.05,
+        "low": 372.76,
+        "close": 389.72,
+        "volume": 3352800
+      },
+      {
+        "date": "2026-04-16",
+        "open": 400.5,
+        "high": 405,
+        "low": 385.7,
+        "close": 387.11,
+        "volume": 2675500
+      },
+      {
+        "date": "2026-04-17",
+        "open": 396.25,
+        "high": 399.2,
+        "low": 389.21,
+        "close": 393.25,
+        "volume": 3186300
+      },
+      {
+        "date": "2026-04-20",
+        "open": 393.9,
+        "high": 404.87,
+        "low": 391.91,
+        "close": 404.83,
+        "volume": 2814300
+      },
+      {
+        "date": "2026-04-21",
+        "open": 407.82,
+        "high": 419,
+        "low": 400.67,
+        "close": 404.85,
+        "volume": 3137700
+      },
+      {
+        "date": "2026-04-22",
+        "open": 405.51,
+        "high": 413.78,
+        "low": 402.72,
+        "close": 408.68,
+        "volume": 3354300
+      },
+      {
+        "date": "2026-04-23",
+        "open": 385,
+        "high": 385.82,
+        "low": 373.96,
+        "close": 383.3,
+        "volume": 3900200
+      },
+      {
+        "date": "2026-04-24",
+        "open": 381.87,
+        "high": 396.73,
+        "low": 381,
+        "close": 395.95,
+        "volume": 2334900
       }
     ],
     "news": [
@@ -8019,6 +8019,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
+        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
+        "type": "VIDEO"
+      },
+      {
         "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
         "title": "Morning Movers: Apple slips following President Trump tariff threat",
         "publisher": "TipRanks",
@@ -8035,14 +8043,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
-        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
         "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
         "publisher": "The Wall Street Journal",
@@ -8051,19 +8051,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
-        "title": "US High Growth Tech Stocks to Watch in May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-27",
-        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
         "title": "Company News for May 27, 2025",
         "publisher": "Zacks",
         "reportDate": "2025-05-27",
         "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
+        "title": "US High Growth Tech Stocks to Watch in May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
         "type": "STORY"
       }
     ],
@@ -8136,50 +8136,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.42,
-        "industryAvg": 39.2
+        "value": 25.69,
+        "industryAvg": 39.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.81,
-        "industryAvg": 4.35
+        "value": 5.44,
+        "industryAvg": 4.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.13,
+        "value": 5.75,
         "industryAvg": 2.74
       },
       {
         "metric": "ROE",
         "value": 3.61,
-        "industryAvg": -6.510000000000001
+        "industryAvg": -6.550000000000001
       },
       {
         "metric": "ROA",
         "value": 2.0500000000000003,
-        "industryAvg": -3.6900000000000004
+        "industryAvg": -3.6999999999999997
       },
       {
         "metric": "Gross Margin",
         "value": 77.57,
-        "industryAvg": 63.05
+        "industryAvg": 63.1
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.42,
-        "industryAvg": -41.91
+        "industryAvg": -40.849999999999994
       },
       {
         "metric": "Net Margin",
         "value": 14.899999999999999,
-        "industryAvg": -31.919999999999998
+        "industryAvg": -32.11
       }
     ],
     "dcf": {
-      "fairValue": 311.22,
-      "currentPrice": 422.48,
-      "upside": -26.33,
-      "wacc": 13.64,
+      "fairValue": 352.27,
+      "currentPrice": 395.95,
+      "upside": -11.03,
+      "wacc": 12.46,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 49.4,
         "Terminal growth": 3

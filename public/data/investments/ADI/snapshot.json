@@ -1,10 +1,10 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.47,
-      "ttmPe": 58.2,
-      "marketCap": 155414925028,
-      "psRatio": 13.22,
-      "pbRatio": 4.6
+      "ttmPe": 73.05,
+      "marketCap": 195071752194,
+      "psRatio": 16.59,
+      "pbRatio": 5.77
     },
     "profitability": {
       "roe": 2.46,
@@ -5726,137 +5726,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.85,
-      "costOfEquity": 13.52,
+      "wacc": 13.83,
+      "costOfEquity": 14.41,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 12,
-      "beta": 1.0761,
-      "marketCap": 155414925028
+      "beta": 1.1795,
+      "marketCap": 195071752194
     },
     "beta": {
-      "beta5y": 1.0761
+      "beta5y": 1.1795
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 195.76,
-        "high": 202.3,
-        "low": 195.76,
-        "close": 199.59,
-        "volume": 2437500
-      },
-      {
-        "date": "2025-04-03",
-        "open": 191.82,
-        "high": 193.2,
-        "low": 180.4,
-        "close": 180.88,
-        "volume": 6970800
-      },
-      {
-        "date": "2025-04-04",
-        "open": 174.61,
-        "high": 176.41,
-        "low": 164.14,
-        "close": 164.6,
-        "volume": 9633900
-      },
-      {
-        "date": "2025-04-07",
-        "open": 163.2,
-        "high": 183.31,
-        "low": 158.65,
-        "close": 171.34,
-        "volume": 10236500
-      },
-      {
-        "date": "2025-04-08",
-        "open": 175.38,
-        "high": 179.24,
-        "low": 161.83,
-        "close": 166.09,
-        "volume": 7640300
-      },
-      {
-        "date": "2025-04-09",
-        "open": 166.05,
-        "high": 198.46,
-        "low": 164.58,
-        "close": 196.63,
-        "volume": 10941600
-      },
-      {
-        "date": "2025-04-10",
-        "open": 189.63,
-        "high": 189.63,
-        "low": 170.93,
-        "close": 178.36,
-        "volume": 8547900
-      },
-      {
-        "date": "2025-04-11",
-        "open": 172.13,
-        "high": 180.98,
-        "low": 167.2,
-        "close": 179.16,
-        "volume": 6528800
-      },
-      {
-        "date": "2025-04-14",
-        "open": 183.26,
-        "high": 185,
-        "low": 175.58,
-        "close": 178.6,
-        "volume": 3912100
-      },
-      {
-        "date": "2025-04-15",
-        "open": 178.6,
-        "high": 182.47,
-        "low": 178.07,
-        "close": 179.54,
-        "volume": 3035900
-      },
-      {
-        "date": "2025-04-16",
-        "open": 173.67,
-        "high": 177.36,
-        "low": 170.39,
-        "close": 175.93,
-        "volume": 4392800
-      },
-      {
-        "date": "2025-04-17",
-        "open": 177.89,
-        "high": 178.34,
-        "low": 173.58,
-        "close": 176.27,
-        "volume": 3341200
-      },
-      {
-        "date": "2025-04-21",
-        "open": 172.65,
-        "high": 175.47,
-        "low": 171,
-        "close": 174.99,
-        "volume": 3650100
-      },
-      {
-        "date": "2025-04-22",
-        "open": 176.78,
-        "high": 179.19,
-        "low": 175.21,
-        "close": 178.5,
-        "volume": 3735000
-      },
-      {
-        "date": "2025-04-23",
-        "open": 185.99,
-        "high": 187.84,
-        "low": 182.48,
-        "close": 183.11,
-        "volume": 4323300
-      },
       {
         "date": "2025-04-24",
         "open": 192.73,
@@ -7752,6 +7632,126 @@
         "low": 309.79,
         "close": 318.34,
         "volume": 2386700
+      },
+      {
+        "date": "2026-04-06",
+        "open": 320,
+        "high": 327.46,
+        "low": 318.75,
+        "close": 327.36,
+        "volume": 2353700
+      },
+      {
+        "date": "2026-04-07",
+        "open": 323.79,
+        "high": 327.51,
+        "low": 321,
+        "close": 327.41,
+        "volume": 2344400
+      },
+      {
+        "date": "2026-04-08",
+        "open": 345.81,
+        "high": 349,
+        "low": 341.98,
+        "close": 346.21,
+        "volume": 4522200
+      },
+      {
+        "date": "2026-04-09",
+        "open": 346,
+        "high": 352.78,
+        "low": 345.49,
+        "close": 351.36,
+        "volume": 2927400
+      },
+      {
+        "date": "2026-04-10",
+        "open": 353,
+        "high": 354.29,
+        "low": 349.01,
+        "close": 350.14,
+        "volume": 2505100
+      },
+      {
+        "date": "2026-04-13",
+        "open": 348.69,
+        "high": 350.08,
+        "low": 344,
+        "close": 350.01,
+        "volume": 2485100
+      },
+      {
+        "date": "2026-04-14",
+        "open": 352.43,
+        "high": 352.67,
+        "low": 347.05,
+        "close": 348.6,
+        "volume": 2320400
+      },
+      {
+        "date": "2026-04-15",
+        "open": 347,
+        "high": 349.05,
+        "low": 341.32,
+        "close": 347.94,
+        "volume": 2440900
+      },
+      {
+        "date": "2026-04-16",
+        "open": 346.97,
+        "high": 355.85,
+        "low": 346.44,
+        "close": 353.8,
+        "volume": 2198800
+      },
+      {
+        "date": "2026-04-17",
+        "open": 359.67,
+        "high": 372.45,
+        "low": 357.82,
+        "close": 371.45,
+        "volume": 5248200
+      },
+      {
+        "date": "2026-04-20",
+        "open": 373.02,
+        "high": 385.46,
+        "low": 369.7,
+        "close": 381.05,
+        "volume": 4003700
+      },
+      {
+        "date": "2026-04-21",
+        "open": 383,
+        "high": 383.6,
+        "low": 373.34,
+        "close": 375.27,
+        "volume": 3296900
+      },
+      {
+        "date": "2026-04-22",
+        "open": 380.81,
+        "high": 383.6,
+        "low": 378.25,
+        "close": 381.42,
+        "volume": 2517700
+      },
+      {
+        "date": "2026-04-23",
+        "open": 397.9,
+        "high": 408.37,
+        "low": 395.8,
+        "close": 403.88,
+        "volume": 4449600
+      },
+      {
+        "date": "2026-04-24",
+        "open": 404.07,
+        "high": 406.3,
+        "low": 398.26,
+        "close": 399.57,
+        "volume": 4512300
       }
     ],
     "news": [
@@ -7804,14 +7804,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "65e9ae31-50a3-3afc-be78-09c46be08d27",
-        "title": "Analog Devices to Participate in Bernstein Strategic Decisions Conference",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/analog-devices-participate-bernstein-strategic-200000274.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e475f2ac-cd94-38a1-812b-ee573876a8ee",
         "title": "JPMorgan Reaffirms $300 Price Target for Analog Devices After Strong Q2",
         "publisher": "Insider Monkey",
@@ -7820,11 +7812,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
-        "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
+        "uuid": "65e9ae31-50a3-3afc-be78-09c46be08d27",
+        "title": "Analog Devices to Participate in Bernstein Strategic Decisions Conference",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/analog-devices-participate-bernstein-strategic-200000274.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5ead9e7d-2158-3a29-857d-bd0cb801f5f4",
+        "title": "Morgan Stanley Maintains a Buy Rating on Analog Devices (ADI), Cuts PT",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-maintains-buy-rating-094831412.html",
         "type": "STORY"
       },
       {
@@ -7905,50 +7905,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 58.2,
-        "industryAvg": 33.86
+        "value": 73.05,
+        "industryAvg": 43.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.22,
-        "industryAvg": 11.42
+        "value": 16.59,
+        "industryAvg": 14.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.6,
-        "industryAvg": 9.33
+        "value": 5.77,
+        "industryAvg": 11.83
       },
       {
         "metric": "ROE",
         "value": 2.46,
-        "industryAvg": 9.93
+        "industryAvg": 9.53
       },
       {
         "metric": "ROA",
         "value": 1.73,
-        "industryAvg": 6.21
+        "industryAvg": 5.96
       },
       {
         "metric": "Gross Margin",
         "value": 64.71000000000001,
-        "industryAvg": 61.29
+        "industryAvg": 61.51
       },
       {
         "metric": "EBITDA Margin",
         "value": 48.18,
-        "industryAvg": 57.91
+        "industryAvg": 56.35
       },
       {
         "metric": "Net Margin",
         "value": 26.290000000000003,
-        "industryAvg": 39.65
+        "industryAvg": 38.09
       }
     ],
     "dcf": {
-      "fairValue": 120.87,
-      "currentPrice": 318.34,
-      "upside": -62.03,
-      "wacc": 12.85,
+      "fairValue": 109.36,
+      "currentPrice": 399.57,
+      "upside": -72.63,
+      "wacc": 13.83,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

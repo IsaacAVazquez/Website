@@ -5,7 +5,7 @@
 
 import { Player, ScoringFormat } from "@/types";
 
-export const fantasyPositionDataGeneratedAt = "2026-04-29T18:18:55.909Z";
+export const fantasyPositionDataGeneratedAt = "2026-04-29T18:56:10.700Z";
 export const fantasyPositionDataSource = "FantasyPros public consensus cheatsheets. Overall boards come from the public overall consensus pages. QB, K, and DST boards are scoring-agnostic and reused across scoring formats. Flex is derived locally from the published overall board.";
 
 export const fantasyPositionData: Record<
@@ -32,7 +32,7 @@ export const fantasyPositionData: Record<
         "minRank": 1,
         "maxRank": 1,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23133",
@@ -48,7 +48,7 @@ export const fantasyPositionData: Record<
         "minRank": 2,
         "maxRank": 5,
         "ownership": 98.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23180",
@@ -64,7 +64,7 @@ export const fantasyPositionData: Record<
         "minRank": 3,
         "maxRank": 6,
         "ownership": 99.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23070",
@@ -80,7 +80,7 @@ export const fantasyPositionData: Record<
         "minRank": 3,
         "maxRank": 4,
         "ownership": 99.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22968",
@@ -96,7 +96,7 @@ export const fantasyPositionData: Record<
         "minRank": 2,
         "maxRank": 5,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19799",
@@ -112,7 +112,7 @@ export const fantasyPositionData: Record<
         "minRank": 6,
         "maxRank": 9,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19202",
@@ -128,7 +128,7 @@ export const fantasyPositionData: Record<
         "minRank": 6,
         "maxRank": 9,
         "ownership": 98.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16393",
@@ -144,7 +144,7 @@ export const fantasyPositionData: Record<
         "minRank": 7,
         "maxRank": 10,
         "ownership": 99,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19236",
@@ -160,7 +160,7 @@ export const fantasyPositionData: Record<
         "minRank": 4,
         "maxRank": 11,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19217",
@@ -176,7 +176,7 @@ export const fantasyPositionData: Record<
         "minRank": 7,
         "maxRank": 17,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23163",
@@ -192,7 +192,7 @@ export const fantasyPositionData: Record<
         "minRank": 9,
         "maxRank": 15,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23113",
@@ -208,7 +208,7 @@ export const fantasyPositionData: Record<
         "minRank": 9,
         "maxRank": 20,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-20130",
@@ -224,7 +224,7 @@ export const fantasyPositionData: Record<
         "minRank": 12,
         "maxRank": 19,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22958",
@@ -240,7 +240,7 @@ export const fantasyPositionData: Record<
         "minRank": 10,
         "maxRank": 21,
         "ownership": 98.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25409",
@@ -256,7 +256,7 @@ export const fantasyPositionData: Record<
         "minRank": 11,
         "maxRank": 35,
         "ownership": 74.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22936",
@@ -272,7 +272,7 @@ export const fantasyPositionData: Record<
         "minRank": 16,
         "maxRank": 22,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22963",
@@ -288,7 +288,7 @@ export const fantasyPositionData: Record<
         "minRank": 15,
         "maxRank": 20,
         "ownership": 97.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23136",
@@ -304,7 +304,7 @@ export const fantasyPositionData: Record<
         "minRank": 10,
         "maxRank": 31,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-20111",
@@ -320,7 +320,7 @@ export const fantasyPositionData: Record<
         "minRank": 14,
         "maxRank": 28,
         "ownership": 96.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25989",
@@ -336,7 +336,7 @@ export const fantasyPositionData: Record<
         "minRank": 13,
         "maxRank": 24,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18218",
@@ -352,7 +352,7 @@ export const fantasyPositionData: Record<
         "minRank": 15,
         "maxRank": 35,
         "ownership": 98,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22955",
@@ -368,7 +368,7 @@ export const fantasyPositionData: Record<
         "minRank": 16,
         "maxRank": 22,
         "ownership": 92.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25324",
@@ -384,7 +384,7 @@ export const fantasyPositionData: Record<
         "minRank": 13,
         "maxRank": 24,
         "ownership": 97.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17298",
@@ -400,7 +400,7 @@ export const fantasyPositionData: Record<
         "minRank": 25,
         "maxRank": 27,
         "ownership": 98.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19222",
@@ -416,7 +416,7 @@ export const fantasyPositionData: Record<
         "minRank": 18,
         "maxRank": 42,
         "ownership": 96.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25395",
@@ -432,7 +432,7 @@ export const fantasyPositionData: Record<
         "minRank": 17,
         "maxRank": 41,
         "ownership": 96.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17240",
@@ -448,7 +448,7 @@ export const fantasyPositionData: Record<
         "minRank": 21,
         "maxRank": 33,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25417",
@@ -464,7 +464,7 @@ export const fantasyPositionData: Record<
         "minRank": 26,
         "maxRank": 36,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17233",
@@ -480,7 +480,7 @@ export const fantasyPositionData: Record<
         "minRank": 27,
         "maxRank": 30,
         "ownership": 96.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23021",
@@ -496,7 +496,7 @@ export const fantasyPositionData: Record<
         "minRank": 21,
         "maxRank": 34,
         "ownership": 97.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19211",
@@ -512,7 +512,7 @@ export const fantasyPositionData: Record<
         "minRank": 19,
         "maxRank": 40,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23072",
@@ -528,7 +528,7 @@ export const fantasyPositionData: Record<
         "minRank": 28,
         "maxRank": 40,
         "ownership": 86.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23046",
@@ -544,7 +544,7 @@ export const fantasyPositionData: Record<
         "minRank": 27,
         "maxRank": 54,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18269",
@@ -560,7 +560,7 @@ export const fantasyPositionData: Record<
         "minRank": 34,
         "maxRank": 46,
         "ownership": 98.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22916",
@@ -576,7 +576,7 @@ export const fantasyPositionData: Record<
         "minRank": 29,
         "maxRank": 44,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27016",
@@ -592,7 +592,7 @@ export const fantasyPositionData: Record<
         "minRank": 29,
         "maxRank": 45,
         "ownership": 68.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26122",
@@ -608,7 +608,7 @@ export const fantasyPositionData: Record<
         "minRank": 35,
         "maxRank": 45,
         "ownership": 95.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19196",
@@ -624,7 +624,7 @@ export const fantasyPositionData: Record<
         "minRank": 27,
         "maxRank": 59,
         "ownership": 95.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26006",
@@ -640,31 +640,15 @@ export const fantasyPositionData: Record<
         "minRank": 32,
         "maxRank": 57,
         "ownership": 80.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
-      },
-      {
-        "id": "fp-12123",
-        "name": "Davante Adams",
-        "team": "LAR",
-        "position": "WR",
-        "averageRank": 40,
-        "rankEcr": 40,
-        "rankAverage": 42.15,
-        "standardDeviation": 6.46,
-        "tier": 5,
-        "positionRank": 21,
-        "minRank": 29,
-        "maxRank": 55,
-        "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-15514",
         "name": "Derrick Henry",
         "team": "BAL",
         "position": "RB",
-        "averageRank": 41,
-        "rankEcr": 41,
+        "averageRank": 40,
+        "rankEcr": 40,
         "rankAverage": 42.15,
         "standardDeviation": 3.35,
         "tier": 5,
@@ -672,7 +656,23 @@ export const fantasyPositionData: Record<
         "minRank": 34,
         "maxRank": 47,
         "ownership": 98,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
+      },
+      {
+        "id": "fp-12123",
+        "name": "Davante Adams",
+        "team": "LAR",
+        "position": "WR",
+        "averageRank": 41,
+        "rankEcr": 41,
+        "rankAverage": 42.31,
+        "standardDeviation": 6.47,
+        "tier": 5,
+        "positionRank": 21,
+        "minRank": 29,
+        "maxRank": 55,
+        "ownership": 95.4,
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19790",
@@ -681,14 +681,14 @@ export const fantasyPositionData: Record<
         "position": "WR",
         "averageRank": 42,
         "rankEcr": 42,
-        "rankAverage": 42.69,
-        "standardDeviation": 5.34,
+        "rankAverage": 42.54,
+        "standardDeviation": 5.33,
         "tier": 5,
         "positionRank": 22,
         "minRank": 29,
         "maxRank": 51,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19231",
@@ -704,7 +704,7 @@ export const fantasyPositionData: Record<
         "minRank": 39,
         "maxRank": 50,
         "ownership": 95,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18466",
@@ -720,7 +720,7 @@ export const fantasyPositionData: Record<
         "minRank": 42,
         "maxRank": 49,
         "ownership": 92.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25403",
@@ -736,7 +736,7 @@ export const fantasyPositionData: Record<
         "minRank": 41,
         "maxRank": 53,
         "ownership": 89.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22739",
@@ -752,7 +752,7 @@ export const fantasyPositionData: Record<
         "minRank": 34,
         "maxRank": 50,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23059",
@@ -768,7 +768,7 @@ export const fantasyPositionData: Record<
         "minRank": 39,
         "maxRank": 56,
         "ownership": 97.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22982",
@@ -784,7 +784,7 @@ export const fantasyPositionData: Record<
         "minRank": 39,
         "maxRank": 56,
         "ownership": 96,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23062",
@@ -800,7 +800,7 @@ export const fantasyPositionData: Record<
         "minRank": 29,
         "maxRank": 51,
         "ownership": 93.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22902",
@@ -816,7 +816,7 @@ export const fantasyPositionData: Record<
         "minRank": 37,
         "maxRank": 70,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-12119",
@@ -832,7 +832,7 @@ export const fantasyPositionData: Record<
         "minRank": 36,
         "maxRank": 52,
         "ownership": 91.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26434",
@@ -848,7 +848,7 @@ export const fantasyPositionData: Record<
         "minRank": 32,
         "maxRank": 57,
         "ownership": 96.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23677",
@@ -864,7 +864,7 @@ export const fantasyPositionData: Record<
         "minRank": 45,
         "maxRank": 60,
         "ownership": 94,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25981",
@@ -880,7 +880,7 @@ export const fantasyPositionData: Record<
         "minRank": 41,
         "maxRank": 56,
         "ownership": 96.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27166",
@@ -896,7 +896,7 @@ export const fantasyPositionData: Record<
         "minRank": 47,
         "maxRank": 61,
         "ownership": 71.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17265",
@@ -912,7 +912,7 @@ export const fantasyPositionData: Record<
         "minRank": 48,
         "maxRank": 64,
         "ownership": 90.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23886",
@@ -928,7 +928,7 @@ export const fantasyPositionData: Record<
         "minRank": 49,
         "maxRank": 71,
         "ownership": 82.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19275",
@@ -944,7 +944,7 @@ export const fantasyPositionData: Record<
         "minRank": 37,
         "maxRank": 63,
         "ownership": 97.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25411",
@@ -960,7 +960,7 @@ export const fantasyPositionData: Record<
         "minRank": 40,
         "maxRank": 83,
         "ownership": 87.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23065",
@@ -976,7 +976,7 @@ export const fantasyPositionData: Record<
         "minRank": 56,
         "maxRank": 77,
         "ownership": 93.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19210",
@@ -992,7 +992,7 @@ export const fantasyPositionData: Record<
         "minRank": 61,
         "maxRank": 72,
         "ownership": 92.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25391",
@@ -1008,7 +1008,7 @@ export const fantasyPositionData: Record<
         "minRank": 47,
         "maxRank": 77,
         "ownership": 86.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25298",
@@ -1024,7 +1024,7 @@ export const fantasyPositionData: Record<
         "minRank": 66,
         "maxRank": 73,
         "ownership": 68.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17253",
@@ -1040,7 +1040,7 @@ export const fantasyPositionData: Record<
         "minRank": 55,
         "maxRank": 82,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18239",
@@ -1056,7 +1056,7 @@ export const fantasyPositionData: Record<
         "minRank": 58,
         "maxRank": 80,
         "ownership": 90.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23064",
@@ -1072,7 +1072,7 @@ export const fantasyPositionData: Record<
         "minRank": 55,
         "maxRank": 82,
         "ownership": 91.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23160",
@@ -1088,7 +1088,7 @@ export const fantasyPositionData: Record<
         "minRank": 63,
         "maxRank": 101,
         "ownership": 84.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16406",
@@ -1104,7 +1104,7 @@ export const fantasyPositionData: Record<
         "minRank": 60,
         "maxRank": 91,
         "ownership": 80.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18635",
@@ -1120,7 +1120,7 @@ export const fantasyPositionData: Record<
         "minRank": 59,
         "maxRank": 101,
         "ownership": 87.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18219",
@@ -1136,7 +1136,7 @@ export const fantasyPositionData: Record<
         "minRank": 62,
         "maxRank": 81,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25333",
@@ -1152,7 +1152,7 @@ export const fantasyPositionData: Record<
         "minRank": 52,
         "maxRank": 91,
         "ownership": 87.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18598",
@@ -1168,7 +1168,7 @@ export const fantasyPositionData: Record<
         "minRank": 55,
         "maxRank": 88,
         "ownership": 85.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19792",
@@ -1184,7 +1184,7 @@ export const fantasyPositionData: Record<
         "minRank": 53,
         "maxRank": 117,
         "ownership": 84.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27297",
@@ -1200,7 +1200,7 @@ export const fantasyPositionData: Record<
         "minRank": 65,
         "maxRank": 89,
         "ownership": 69.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23084",
@@ -1216,7 +1216,7 @@ export const fantasyPositionData: Record<
         "minRank": 54,
         "maxRank": 92,
         "ownership": 87.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27142",
@@ -1232,7 +1232,7 @@ export const fantasyPositionData: Record<
         "minRank": 61,
         "maxRank": 89,
         "ownership": 89.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27050",
@@ -1248,7 +1248,7 @@ export const fantasyPositionData: Record<
         "minRank": 66,
         "maxRank": 95,
         "ownership": 86.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24209",
@@ -1264,7 +1264,7 @@ export const fantasyPositionData: Record<
         "minRank": 72,
         "maxRank": 84,
         "ownership": 89.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23000",
@@ -1280,7 +1280,7 @@ export const fantasyPositionData: Record<
         "minRank": 64,
         "maxRank": 90,
         "ownership": 90.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19780",
@@ -1296,7 +1296,7 @@ export const fantasyPositionData: Record<
         "minRank": 59,
         "maxRank": 98,
         "ownership": 86.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22978",
@@ -1312,7 +1312,7 @@ export const fantasyPositionData: Record<
         "minRank": 73,
         "maxRank": 87,
         "ownership": 79.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19647",
@@ -1328,7 +1328,7 @@ export const fantasyPositionData: Record<
         "minRank": 72,
         "maxRank": 93,
         "ownership": 87.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22726",
@@ -1344,7 +1344,7 @@ export const fantasyPositionData: Record<
         "minRank": 77,
         "maxRank": 102,
         "ownership": 85.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26214",
@@ -1360,7 +1360,7 @@ export const fantasyPositionData: Record<
         "minRank": 68,
         "maxRank": 110,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23791",
@@ -1376,7 +1376,7 @@ export const fantasyPositionData: Record<
         "minRank": 69,
         "maxRank": 110,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18705",
@@ -1392,7 +1392,7 @@ export const fantasyPositionData: Record<
         "minRank": 80,
         "maxRank": 93,
         "ownership": 88.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-20164",
@@ -1408,7 +1408,7 @@ export const fantasyPositionData: Record<
         "minRank": 73,
         "maxRank": 97,
         "ownership": 93.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-15600",
@@ -1424,7 +1424,7 @@ export const fantasyPositionData: Record<
         "minRank": 74,
         "maxRank": 98,
         "ownership": 92.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27329",
@@ -1440,7 +1440,7 @@ export const fantasyPositionData: Record<
         "minRank": 77,
         "maxRank": 152,
         "ownership": 78.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19278",
@@ -1456,7 +1456,7 @@ export const fantasyPositionData: Record<
         "minRank": 83,
         "maxRank": 109,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23106",
@@ -1472,7 +1472,7 @@ export const fantasyPositionData: Record<
         "minRank": 69,
         "maxRank": 123,
         "ownership": 69.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22985",
@@ -1488,7 +1488,7 @@ export const fantasyPositionData: Record<
         "minRank": 82,
         "maxRank": 109,
         "ownership": 84.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24706",
@@ -1504,7 +1504,7 @@ export const fantasyPositionData: Record<
         "minRank": 64,
         "maxRank": 115,
         "ownership": 68.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27131",
@@ -1520,7 +1520,7 @@ export const fantasyPositionData: Record<
         "minRank": 78,
         "maxRank": 103,
         "ownership": 77.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19797",
@@ -1536,7 +1536,7 @@ export const fantasyPositionData: Record<
         "minRank": 79,
         "maxRank": 104,
         "ownership": 90.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23107",
@@ -1552,7 +1552,7 @@ export const fantasyPositionData: Record<
         "minRank": 83,
         "maxRank": 110,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23020",
@@ -1568,7 +1568,7 @@ export const fantasyPositionData: Record<
         "minRank": 76,
         "maxRank": 123,
         "ownership": 67,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26009",
@@ -1584,7 +1584,7 @@ export const fantasyPositionData: Record<
         "minRank": 90,
         "maxRank": 109,
         "ownership": 83.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-9451",
@@ -1600,7 +1600,7 @@ export const fantasyPositionData: Record<
         "minRank": 74,
         "maxRank": 114,
         "ownership": 92.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23310",
@@ -1616,7 +1616,7 @@ export const fantasyPositionData: Record<
         "minRank": 89,
         "maxRank": 127,
         "ownership": 80.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16673",
@@ -1632,7 +1632,7 @@ export const fantasyPositionData: Record<
         "minRank": 89,
         "maxRank": 118,
         "ownership": 85.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16413",
@@ -1648,7 +1648,7 @@ export const fantasyPositionData: Record<
         "minRank": 98,
         "maxRank": 108,
         "ownership": 80.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22910",
@@ -1664,7 +1664,7 @@ export const fantasyPositionData: Record<
         "minRank": 98,
         "maxRank": 113,
         "ownership": 90.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25997",
@@ -1680,7 +1680,7 @@ export const fantasyPositionData: Record<
         "minRank": 95,
         "maxRank": 138,
         "ownership": 54.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26035",
@@ -1696,7 +1696,7 @@ export const fantasyPositionData: Record<
         "minRank": 91,
         "maxRank": 116,
         "ownership": 75.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25247",
@@ -1712,7 +1712,7 @@ export const fantasyPositionData: Record<
         "minRank": 95,
         "maxRank": 131,
         "ownership": 59.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18600",
@@ -1728,7 +1728,7 @@ export const fantasyPositionData: Record<
         "minRank": 92,
         "maxRank": 129,
         "ownership": 59.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23748",
@@ -1744,7 +1744,7 @@ export const fantasyPositionData: Record<
         "minRank": 90,
         "maxRank": 128,
         "ownership": 82.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19245",
@@ -1760,7 +1760,7 @@ export const fantasyPositionData: Record<
         "minRank": 84,
         "maxRank": 145,
         "ownership": 69.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22718",
@@ -1776,7 +1776,7 @@ export const fantasyPositionData: Record<
         "minRank": 95,
         "maxRank": 131,
         "ownership": 88.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25420",
@@ -1792,7 +1792,7 @@ export const fantasyPositionData: Record<
         "minRank": 109,
         "maxRank": 116,
         "ownership": 71.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23013",
@@ -1808,7 +1808,7 @@ export const fantasyPositionData: Record<
         "minRank": 102,
         "maxRank": 127,
         "ownership": 68.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23781",
@@ -1824,7 +1824,7 @@ export const fantasyPositionData: Record<
         "minRank": 97,
         "maxRank": 144,
         "ownership": 56.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23123",
@@ -1840,7 +1840,7 @@ export const fantasyPositionData: Record<
         "minRank": 107,
         "maxRank": 126,
         "ownership": 76.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-15501",
@@ -1856,7 +1856,7 @@ export const fantasyPositionData: Record<
         "minRank": 113,
         "maxRank": 125,
         "ownership": 74.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-11594",
@@ -1872,7 +1872,7 @@ export const fantasyPositionData: Record<
         "minRank": 95,
         "maxRank": 155,
         "ownership": 90.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16499",
@@ -1888,7 +1888,7 @@ export const fantasyPositionData: Record<
         "minRank": 87,
         "maxRank": 155,
         "ownership": 92.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23499",
@@ -1904,7 +1904,7 @@ export const fantasyPositionData: Record<
         "minRank": 108,
         "maxRank": 169,
         "ownership": 33.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19246",
@@ -1920,7 +1920,7 @@ export const fantasyPositionData: Record<
         "minRank": 104,
         "maxRank": 129,
         "ownership": 62.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17237",
@@ -1936,7 +1936,7 @@ export const fantasyPositionData: Record<
         "minRank": 108,
         "maxRank": 129,
         "ownership": 74.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23891",
@@ -1952,7 +1952,7 @@ export const fantasyPositionData: Record<
         "minRank": 86,
         "maxRank": 145,
         "ownership": 70.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23096",
@@ -1968,7 +1968,7 @@ export const fantasyPositionData: Record<
         "minRank": 108,
         "maxRank": 139,
         "ownership": 54.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27316",
@@ -1984,7 +1984,7 @@ export const fantasyPositionData: Record<
         "minRank": 103,
         "maxRank": 141,
         "ownership": 58.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23019",
@@ -2000,7 +2000,7 @@ export const fantasyPositionData: Record<
         "minRank": 96,
         "maxRank": 137,
         "ownership": 83.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23794",
@@ -2016,7 +2016,7 @@ export const fantasyPositionData: Record<
         "minRank": 96,
         "maxRank": 137,
         "ownership": 78.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26024",
@@ -2032,7 +2032,7 @@ export const fantasyPositionData: Record<
         "minRank": 82,
         "maxRank": 165,
         "ownership": 65.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27077",
@@ -2048,7 +2048,7 @@ export const fantasyPositionData: Record<
         "minRank": 115,
         "maxRank": 137,
         "ownership": 45.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17270",
@@ -2064,7 +2064,7 @@ export const fantasyPositionData: Record<
         "minRank": 111,
         "maxRank": 155,
         "ownership": 89.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26403",
@@ -2080,7 +2080,7 @@ export const fantasyPositionData: Record<
         "minRank": 109,
         "maxRank": 149,
         "ownership": 52.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24172",
@@ -2096,7 +2096,7 @@ export const fantasyPositionData: Record<
         "minRank": 118,
         "maxRank": 154,
         "ownership": 53.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25323",
@@ -2112,7 +2112,7 @@ export const fantasyPositionData: Record<
         "minRank": 103,
         "maxRank": 145,
         "ownership": 54.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22980",
@@ -2128,7 +2128,7 @@ export const fantasyPositionData: Record<
         "minRank": 120,
         "maxRank": 143,
         "ownership": 61,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23152",
@@ -2144,7 +2144,7 @@ export const fantasyPositionData: Record<
         "minRank": 84,
         "maxRank": 169,
         "ownership": 80.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22969",
@@ -2160,7 +2160,7 @@ export const fantasyPositionData: Record<
         "minRank": 120,
         "maxRank": 148,
         "ownership": 58.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25345",
@@ -2176,7 +2176,7 @@ export const fantasyPositionData: Record<
         "minRank": 95,
         "maxRank": 173,
         "ownership": 55.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23071",
@@ -2192,7 +2192,7 @@ export const fantasyPositionData: Record<
         "minRank": 129,
         "maxRank": 147,
         "ownership": 50.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18244",
@@ -2208,7 +2208,7 @@ export const fantasyPositionData: Record<
         "minRank": 121,
         "maxRank": 202,
         "ownership": 65.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17236",
@@ -2224,7 +2224,7 @@ export const fantasyPositionData: Record<
         "minRank": 125,
         "maxRank": 159,
         "ownership": 53.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24687",
@@ -2240,7 +2240,7 @@ export const fantasyPositionData: Record<
         "minRank": 133,
         "maxRank": 154,
         "ownership": 57.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19562",
@@ -2256,7 +2256,7 @@ export const fantasyPositionData: Record<
         "minRank": 111,
         "maxRank": 173,
         "ownership": 61.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27102",
@@ -2272,7 +2272,7 @@ export const fantasyPositionData: Record<
         "minRank": 120,
         "maxRank": 160,
         "ownership": 38.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27520",
@@ -2288,7 +2288,7 @@ export const fantasyPositionData: Record<
         "minRank": 118,
         "maxRank": 189,
         "ownership": 77.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-13981",
@@ -2304,7 +2304,7 @@ export const fantasyPositionData: Record<
         "minRank": 94,
         "maxRank": 195,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16421",
@@ -2320,7 +2320,7 @@ export const fantasyPositionData: Record<
         "minRank": 117,
         "maxRank": 164,
         "ownership": 79,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26034",
@@ -2336,7 +2336,7 @@ export const fantasyPositionData: Record<
         "minRank": 121,
         "maxRank": 205,
         "ownership": 79.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19590",
@@ -2352,7 +2352,7 @@ export const fantasyPositionData: Record<
         "minRank": 110,
         "maxRank": 210,
         "ownership": 66.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22900",
@@ -2368,7 +2368,7 @@ export const fantasyPositionData: Record<
         "minRank": 134,
         "maxRank": 159,
         "ownership": 36.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22986",
@@ -2384,7 +2384,7 @@ export const fantasyPositionData: Record<
         "minRank": 127,
         "maxRank": 234,
         "ownership": 44.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17269",
@@ -2400,7 +2400,7 @@ export const fantasyPositionData: Record<
         "minRank": 111,
         "maxRank": 173,
         "ownership": 84,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24333",
@@ -2416,7 +2416,7 @@ export const fantasyPositionData: Record<
         "minRank": 132,
         "maxRank": 169,
         "ownership": 65.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19201",
@@ -2432,7 +2432,7 @@ export const fantasyPositionData: Record<
         "minRank": 133,
         "maxRank": 178,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16447",
@@ -2448,7 +2448,7 @@ export const fantasyPositionData: Record<
         "minRank": 118,
         "maxRank": 222,
         "ownership": 55.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8120",
@@ -2464,7 +2464,7 @@ export const fantasyPositionData: Record<
         "minRank": 151,
         "maxRank": 161,
         "ownership": 90.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25360",
@@ -2480,7 +2480,7 @@ export const fantasyPositionData: Record<
         "minRank": 141,
         "maxRank": 169,
         "ownership": 27,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18232",
@@ -2496,7 +2496,7 @@ export const fantasyPositionData: Record<
         "minRank": 134,
         "maxRank": 179,
         "ownership": 56.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24755",
@@ -2512,7 +2512,7 @@ export const fantasyPositionData: Record<
         "minRank": 139,
         "maxRank": 179,
         "ownership": 33.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-15561",
@@ -2528,7 +2528,7 @@ export const fantasyPositionData: Record<
         "minRank": 144,
         "maxRank": 181,
         "ownership": 68.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26148",
@@ -2544,7 +2544,7 @@ export const fantasyPositionData: Record<
         "minRank": 130,
         "maxRank": 248,
         "ownership": 54.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27320",
@@ -2560,7 +2560,7 @@ export const fantasyPositionData: Record<
         "minRank": 145,
         "maxRank": 243,
         "ownership": 42.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23179",
@@ -2576,7 +2576,7 @@ export const fantasyPositionData: Record<
         "minRank": 121,
         "maxRank": 199,
         "ownership": 37.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24357",
@@ -2592,7 +2592,7 @@ export const fantasyPositionData: Record<
         "minRank": 137,
         "maxRank": 202,
         "ownership": 31.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24346",
@@ -2608,7 +2608,7 @@ export const fantasyPositionData: Record<
         "minRank": 135,
         "maxRank": 182,
         "ownership": 32.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8090",
@@ -2624,7 +2624,7 @@ export const fantasyPositionData: Record<
         "minRank": 161,
         "maxRank": 183,
         "ownership": 91.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-20094",
@@ -2640,7 +2640,7 @@ export const fantasyPositionData: Record<
         "minRank": 148,
         "maxRank": 177,
         "ownership": 39.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-15642",
@@ -2656,7 +2656,7 @@ export const fantasyPositionData: Record<
         "minRank": 125,
         "maxRank": 242,
         "ownership": 52.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8260",
@@ -2672,7 +2672,7 @@ export const fantasyPositionData: Record<
         "minRank": 161,
         "maxRank": 171,
         "ownership": 88.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25885",
@@ -2688,7 +2688,7 @@ export const fantasyPositionData: Record<
         "minRank": 130,
         "maxRank": 201,
         "ownership": 39,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8280",
@@ -2704,7 +2704,7 @@ export const fantasyPositionData: Record<
         "minRank": 167,
         "maxRank": 186,
         "ownership": 62.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8230",
@@ -2720,7 +2720,7 @@ export const fantasyPositionData: Record<
         "minRank": 171,
         "maxRank": 190,
         "ownership": 73.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17349",
@@ -2736,7 +2736,7 @@ export const fantasyPositionData: Record<
         "minRank": 138,
         "maxRank": 209,
         "ownership": 48.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22989",
@@ -2752,7 +2752,7 @@ export const fantasyPositionData: Record<
         "minRank": 166,
         "maxRank": 208,
         "ownership": 38.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23982",
@@ -2768,7 +2768,7 @@ export const fantasyPositionData: Record<
         "minRank": 131,
         "maxRank": 236,
         "ownership": 34.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27331",
@@ -2784,7 +2784,7 @@ export const fantasyPositionData: Record<
         "minRank": 149,
         "maxRank": 245,
         "ownership": 58.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-15802",
@@ -2800,7 +2800,7 @@ export const fantasyPositionData: Record<
         "minRank": 116,
         "maxRank": 336,
         "ownership": 51.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8180",
@@ -2816,7 +2816,7 @@ export const fantasyPositionData: Record<
         "minRank": 173,
         "maxRank": 188,
         "ownership": 78.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22908",
@@ -2832,7 +2832,7 @@ export const fantasyPositionData: Record<
         "minRank": 157,
         "maxRank": 228,
         "ownership": 33,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23092",
@@ -2848,7 +2848,7 @@ export const fantasyPositionData: Record<
         "minRank": 163,
         "maxRank": 247,
         "ownership": 42.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26068",
@@ -2864,7 +2864,7 @@ export const fantasyPositionData: Record<
         "minRank": 187,
         "maxRank": 187,
         "ownership": 93,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8170",
@@ -2880,7 +2880,7 @@ export const fantasyPositionData: Record<
         "minRank": 172,
         "maxRank": 249,
         "ownership": 48.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8140",
@@ -2896,7 +2896,7 @@ export const fantasyPositionData: Record<
         "minRank": 185,
         "maxRank": 212,
         "ownership": 57.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18290",
@@ -2912,7 +2912,7 @@ export const fantasyPositionData: Record<
         "minRank": 156,
         "maxRank": 209,
         "ownership": 74.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8240",
@@ -2928,7 +2928,7 @@ export const fantasyPositionData: Record<
         "minRank": 185,
         "maxRank": 206,
         "ownership": 74.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19252",
@@ -2944,7 +2944,7 @@ export const fantasyPositionData: Record<
         "minRank": 170,
         "maxRank": 241,
         "ownership": 38.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26215",
@@ -2960,7 +2960,7 @@ export const fantasyPositionData: Record<
         "minRank": 149,
         "maxRank": 272,
         "ownership": 27.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-15756",
@@ -2976,7 +2976,7 @@ export const fantasyPositionData: Record<
         "minRank": 192,
         "maxRank": 193,
         "ownership": 75.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26355",
@@ -2992,7 +2992,7 @@ export const fantasyPositionData: Record<
         "minRank": 160,
         "maxRank": 243,
         "ownership": 45.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26191",
@@ -3008,7 +3008,7 @@ export const fantasyPositionData: Record<
         "minRank": 175,
         "maxRank": 231,
         "ownership": 22.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24343",
@@ -3024,7 +3024,7 @@ export const fantasyPositionData: Record<
         "minRank": 146,
         "maxRank": 243,
         "ownership": 39.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26475",
@@ -3040,7 +3040,7 @@ export const fantasyPositionData: Record<
         "minRank": 192,
         "maxRank": 204,
         "ownership": 70.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28108",
@@ -3056,7 +3056,7 @@ export const fantasyPositionData: Record<
         "minRank": 164,
         "maxRank": 294,
         "ownership": 17.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27339",
@@ -3072,7 +3072,7 @@ export const fantasyPositionData: Record<
         "minRank": 165,
         "maxRank": 239,
         "ownership": 44.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8070",
@@ -3088,7 +3088,7 @@ export const fantasyPositionData: Record<
         "minRank": 188,
         "maxRank": 212,
         "ownership": 45.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23901",
@@ -3104,7 +3104,7 @@ export const fantasyPositionData: Record<
         "minRank": 193,
         "maxRank": 211,
         "ownership": 89.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17258",
@@ -3120,7 +3120,7 @@ export const fantasyPositionData: Record<
         "minRank": 166,
         "maxRank": 245,
         "ownership": 54.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25337",
@@ -3136,7 +3136,7 @@ export const fantasyPositionData: Record<
         "minRank": 165,
         "maxRank": 287,
         "ownership": 46.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-14003",
@@ -3152,7 +3152,7 @@ export const fantasyPositionData: Record<
         "minRank": 193,
         "maxRank": 215,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8250",
@@ -3168,7 +3168,7 @@ export const fantasyPositionData: Record<
         "minRank": 188,
         "maxRank": 191,
         "ownership": 40.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27211",
@@ -3184,7 +3184,7 @@ export const fantasyPositionData: Record<
         "minRank": 170,
         "maxRank": 205,
         "ownership": 27,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26335",
@@ -3200,7 +3200,7 @@ export const fantasyPositionData: Record<
         "minRank": 158,
         "maxRank": 229,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8110",
@@ -3216,7 +3216,7 @@ export const fantasyPositionData: Record<
         "minRank": 188,
         "maxRank": 194,
         "ownership": 43.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28127",
@@ -3232,7 +3232,7 @@ export const fantasyPositionData: Record<
         "minRank": 178,
         "maxRank": 258,
         "ownership": 31,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17575",
@@ -3248,7 +3248,7 @@ export const fantasyPositionData: Record<
         "minRank": 204,
         "maxRank": 217,
         "ownership": 45.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28107",
@@ -3264,7 +3264,7 @@ export const fantasyPositionData: Record<
         "minRank": 157,
         "maxRank": 326,
         "ownership": 41.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8150",
@@ -3280,7 +3280,7 @@ export const fantasyPositionData: Record<
         "minRank": 194,
         "maxRank": 235,
         "ownership": 39.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26398",
@@ -3296,7 +3296,7 @@ export const fantasyPositionData: Record<
         "minRank": 178,
         "maxRank": 262,
         "ownership": 23.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27122",
@@ -3312,7 +3312,7 @@ export const fantasyPositionData: Record<
         "minRank": 154,
         "maxRank": 227,
         "ownership": 22.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23297",
@@ -3328,7 +3328,7 @@ export const fantasyPositionData: Record<
         "minRank": 200,
         "maxRank": 252,
         "ownership": 34.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8020",
@@ -3344,7 +3344,7 @@ export const fantasyPositionData: Record<
         "minRank": 183,
         "maxRank": 279,
         "ownership": 48.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24362",
@@ -3360,7 +3360,7 @@ export const fantasyPositionData: Record<
         "minRank": 156,
         "maxRank": 257,
         "ownership": 35,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-13731",
@@ -3376,7 +3376,7 @@ export const fantasyPositionData: Record<
         "minRank": 211,
         "maxRank": 250,
         "ownership": 24.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27534",
@@ -3392,7 +3392,7 @@ export const fantasyPositionData: Record<
         "minRank": 204,
         "maxRank": 211,
         "ownership": 39.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27315",
@@ -3408,7 +3408,7 @@ export const fantasyPositionData: Record<
         "minRank": 165,
         "maxRank": 273,
         "ownership": 32.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23679",
@@ -3424,7 +3424,7 @@ export const fantasyPositionData: Record<
         "minRank": 189,
         "maxRank": 233,
         "ownership": 30.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24354",
@@ -3440,7 +3440,7 @@ export const fantasyPositionData: Record<
         "minRank": 174,
         "maxRank": 239,
         "ownership": 18.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27291",
@@ -3456,7 +3456,7 @@ export const fantasyPositionData: Record<
         "minRank": 207,
         "maxRank": 333,
         "ownership": 14.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19810",
@@ -3472,7 +3472,7 @@ export const fantasyPositionData: Record<
         "minRank": 176,
         "maxRank": 241,
         "ownership": 42.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27446",
@@ -3488,7 +3488,7 @@ export const fantasyPositionData: Record<
         "minRank": 202,
         "maxRank": 227,
         "ownership": 28.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26055",
@@ -3504,7 +3504,7 @@ export const fantasyPositionData: Record<
         "minRank": 203,
         "maxRank": 281,
         "ownership": 63,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25987",
@@ -3520,7 +3520,7 @@ export const fantasyPositionData: Record<
         "minRank": 152,
         "maxRank": 238,
         "ownership": 24,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25418",
@@ -3536,7 +3536,7 @@ export const fantasyPositionData: Record<
         "minRank": 195,
         "maxRank": 265,
         "ownership": 31.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19058",
@@ -3552,7 +3552,7 @@ export const fantasyPositionData: Record<
         "minRank": 215,
         "maxRank": 221,
         "ownership": 54.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27109",
@@ -3568,7 +3568,7 @@ export const fantasyPositionData: Record<
         "minRank": 202,
         "maxRank": 259,
         "ownership": 40.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26075",
@@ -3584,7 +3584,7 @@ export const fantasyPositionData: Record<
         "minRank": 197,
         "maxRank": 252,
         "ownership": 61.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23682",
@@ -3600,7 +3600,7 @@ export const fantasyPositionData: Record<
         "minRank": 177,
         "maxRank": 310,
         "ownership": 31.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16712",
@@ -3616,7 +3616,7 @@ export const fantasyPositionData: Record<
         "minRank": 198,
         "maxRank": 282,
         "ownership": 54.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27059",
@@ -3632,7 +3632,7 @@ export const fantasyPositionData: Record<
         "minRank": 170,
         "maxRank": 334,
         "ownership": 29.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28013",
@@ -3648,7 +3648,7 @@ export const fantasyPositionData: Record<
         "minRank": 211,
         "maxRank": 324,
         "ownership": 57.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26005",
@@ -3664,7 +3664,7 @@ export const fantasyPositionData: Record<
         "minRank": 196,
         "maxRank": 259,
         "ownership": 33.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8100",
@@ -3680,7 +3680,7 @@ export const fantasyPositionData: Record<
         "minRank": 206,
         "maxRank": 356,
         "ownership": 60.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16399",
@@ -3696,7 +3696,7 @@ export const fantasyPositionData: Record<
         "minRank": 203,
         "maxRank": 261,
         "ownership": 39.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8030",
@@ -3712,7 +3712,7 @@ export const fantasyPositionData: Record<
         "minRank": 212,
         "maxRank": 279,
         "ownership": 54.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23091",
@@ -3728,7 +3728,7 @@ export const fantasyPositionData: Record<
         "minRank": 221,
         "maxRank": 256,
         "ownership": 27.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26638",
@@ -3744,7 +3744,7 @@ export const fantasyPositionData: Record<
         "minRank": 212,
         "maxRank": 282,
         "ownership": 43.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24177",
@@ -3760,7 +3760,7 @@ export const fantasyPositionData: Record<
         "minRank": 165,
         "maxRank": 310,
         "ownership": 25.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-13029",
@@ -3776,7 +3776,7 @@ export const fantasyPositionData: Record<
         "minRank": 210,
         "maxRank": 253,
         "ownership": 46.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23181",
@@ -3792,7 +3792,7 @@ export const fantasyPositionData: Record<
         "minRank": 196,
         "maxRank": 261,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25984",
@@ -3808,7 +3808,7 @@ export const fantasyPositionData: Record<
         "minRank": 231,
         "maxRank": 266,
         "ownership": 15.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27165",
@@ -3824,7 +3824,7 @@ export const fantasyPositionData: Record<
         "minRank": 162,
         "maxRank": 310,
         "ownership": 26.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26038",
@@ -3840,7 +3840,7 @@ export const fantasyPositionData: Record<
         "minRank": 199,
         "maxRank": 281,
         "ownership": 34.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28084",
@@ -3856,7 +3856,7 @@ export const fantasyPositionData: Record<
         "minRank": 211,
         "maxRank": 296,
         "ownership": 27.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26314",
@@ -3872,7 +3872,7 @@ export const fantasyPositionData: Record<
         "minRank": 174,
         "maxRank": 302,
         "ownership": 26.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25388",
@@ -3888,7 +3888,7 @@ export const fantasyPositionData: Record<
         "minRank": 146,
         "maxRank": 309,
         "ownership": 39.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24360",
@@ -3904,7 +3904,7 @@ export const fantasyPositionData: Record<
         "minRank": 189,
         "maxRank": 314,
         "ownership": 10.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22973",
@@ -3920,7 +3920,7 @@ export const fantasyPositionData: Record<
         "minRank": 214,
         "maxRank": 285,
         "ownership": 30.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25361",
@@ -3936,7 +3936,7 @@ export const fantasyPositionData: Record<
         "minRank": 223,
         "maxRank": 269,
         "ownership": 39.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26039",
@@ -3952,7 +3952,7 @@ export const fantasyPositionData: Record<
         "minRank": 202,
         "maxRank": 297,
         "ownership": 31.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-11687",
@@ -3968,7 +3968,7 @@ export const fantasyPositionData: Record<
         "minRank": 195,
         "maxRank": 301,
         "ownership": 31.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16411",
@@ -3984,7 +3984,7 @@ export const fantasyPositionData: Record<
         "minRank": 209,
         "maxRank": 280,
         "ownership": 35.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19372",
@@ -4000,7 +4000,7 @@ export const fantasyPositionData: Record<
         "minRank": 229,
         "maxRank": 300,
         "ownership": 35.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26341",
@@ -4016,7 +4016,7 @@ export const fantasyPositionData: Record<
         "minRank": 196,
         "maxRank": 318,
         "ownership": 27.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-20163",
@@ -4032,7 +4032,7 @@ export const fantasyPositionData: Record<
         "minRank": 239,
         "maxRank": 268,
         "ownership": 31.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8010",
@@ -4048,7 +4048,7 @@ export const fantasyPositionData: Record<
         "minRank": 194,
         "maxRank": 323,
         "ownership": 24.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19794",
@@ -4064,7 +4064,7 @@ export const fantasyPositionData: Record<
         "minRank": 202,
         "maxRank": 291,
         "ownership": 21.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27463",
@@ -4080,7 +4080,7 @@ export const fantasyPositionData: Record<
         "minRank": 245,
         "maxRank": 291,
         "ownership": 32.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8270",
@@ -4096,7 +4096,7 @@ export const fantasyPositionData: Record<
         "minRank": 212,
         "maxRank": 280,
         "ownership": 35.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17268",
@@ -4112,7 +4112,7 @@ export const fantasyPositionData: Record<
         "minRank": 168,
         "maxRank": 277,
         "ownership": 26.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27224",
@@ -4128,7 +4128,7 @@ export const fantasyPositionData: Record<
         "minRank": 218,
         "maxRank": 273,
         "ownership": 17.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16026",
@@ -4144,7 +4144,7 @@ export const fantasyPositionData: Record<
         "minRank": 204,
         "maxRank": 322,
         "ownership": 23.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26022",
@@ -4160,7 +4160,7 @@ export const fantasyPositionData: Record<
         "minRank": 223,
         "maxRank": 327,
         "ownership": 25.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19302",
@@ -4176,7 +4176,7 @@ export const fantasyPositionData: Record<
         "minRank": 158,
         "maxRank": 278,
         "ownership": 24.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26019",
@@ -4192,7 +4192,7 @@ export const fantasyPositionData: Record<
         "minRank": 218,
         "maxRank": 287,
         "ownership": 29.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27487",
@@ -4208,7 +4208,7 @@ export const fantasyPositionData: Record<
         "minRank": 225,
         "maxRank": 283,
         "ownership": 20.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-9001",
@@ -4224,7 +4224,7 @@ export const fantasyPositionData: Record<
         "minRank": 230,
         "maxRank": 285,
         "ownership": 36.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23104",
@@ -4240,7 +4240,7 @@ export const fantasyPositionData: Record<
         "minRank": 196,
         "maxRank": 295,
         "ownership": 39.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25419",
@@ -4256,7 +4256,7 @@ export const fantasyPositionData: Record<
         "minRank": 230,
         "maxRank": 296,
         "ownership": 35.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27994",
@@ -4272,7 +4272,7 @@ export const fantasyPositionData: Record<
         "minRank": 244,
         "maxRank": 297,
         "ownership": 23.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23144",
@@ -4288,7 +4288,7 @@ export const fantasyPositionData: Record<
         "minRank": 235,
         "maxRank": 306,
         "ownership": 42.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28138",
@@ -4304,7 +4304,7 @@ export const fantasyPositionData: Record<
         "minRank": 239,
         "maxRank": 293,
         "ownership": 6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24367",
@@ -4320,7 +4320,7 @@ export const fantasyPositionData: Record<
         "minRank": 232,
         "maxRank": 315,
         "ownership": 10.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28047",
@@ -4336,7 +4336,7 @@ export const fantasyPositionData: Record<
         "minRank": 247,
         "maxRank": 298,
         "ownership": 30.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23080",
@@ -4352,7 +4352,7 @@ export const fantasyPositionData: Record<
         "minRank": 205,
         "maxRank": 285,
         "ownership": 22.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16489",
@@ -4368,7 +4368,7 @@ export const fantasyPositionData: Record<
         "minRank": 221,
         "maxRank": 293,
         "ownership": 11.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28126",
@@ -4384,7 +4384,7 @@ export const fantasyPositionData: Record<
         "minRank": 247,
         "maxRank": 302,
         "ownership": 21.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16433",
@@ -4400,7 +4400,7 @@ export const fantasyPositionData: Record<
         "minRank": 223,
         "maxRank": 287,
         "ownership": 36.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8130",
@@ -4416,7 +4416,7 @@ export const fantasyPositionData: Record<
         "minRank": 235,
         "maxRank": 317,
         "ownership": 28.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-11616",
@@ -4432,7 +4432,7 @@ export const fantasyPositionData: Record<
         "minRank": 202,
         "maxRank": 291,
         "ownership": 38.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25968",
@@ -4448,7 +4448,7 @@ export const fantasyPositionData: Record<
         "minRank": 240,
         "maxRank": 321,
         "ownership": 32.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24778",
@@ -4464,7 +4464,7 @@ export const fantasyPositionData: Record<
         "minRank": 228,
         "maxRank": 290,
         "ownership": 29.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27259",
@@ -4480,7 +4480,7 @@ export const fantasyPositionData: Record<
         "minRank": 228,
         "maxRank": 292,
         "ownership": 16.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25977",
@@ -4496,7 +4496,7 @@ export const fantasyPositionData: Record<
         "minRank": 201,
         "maxRank": 308,
         "ownership": 8.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26444",
@@ -4512,7 +4512,7 @@ export const fantasyPositionData: Record<
         "minRank": 227,
         "maxRank": 316,
         "ownership": 2.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16398",
@@ -4528,7 +4528,7 @@ export const fantasyPositionData: Record<
         "minRank": 242,
         "maxRank": 318,
         "ownership": 29.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27310",
@@ -4544,7 +4544,7 @@ export const fantasyPositionData: Record<
         "minRank": 228,
         "maxRank": 346,
         "ownership": 23.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28130",
@@ -4560,7 +4560,7 @@ export const fantasyPositionData: Record<
         "minRank": 273,
         "maxRank": 302,
         "ownership": 19.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18706",
@@ -4576,7 +4576,7 @@ export const fantasyPositionData: Record<
         "minRank": 232,
         "maxRank": 296,
         "ownership": 23.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26136",
@@ -4592,7 +4592,7 @@ export const fantasyPositionData: Record<
         "minRank": 225,
         "maxRank": 303,
         "ownership": 11.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19198",
@@ -4608,7 +4608,7 @@ export const fantasyPositionData: Record<
         "minRank": 250,
         "maxRank": 348,
         "ownership": 32.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24344",
@@ -4624,7 +4624,7 @@ export const fantasyPositionData: Record<
         "minRank": 237,
         "maxRank": 328,
         "ownership": 19.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26409",
@@ -4640,7 +4640,7 @@ export const fantasyPositionData: Record<
         "minRank": 247,
         "maxRank": 298,
         "ownership": 25.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18280",
@@ -4656,7 +4656,7 @@ export const fantasyPositionData: Record<
         "minRank": 210,
         "maxRank": 310,
         "ownership": 11.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22921",
@@ -4672,7 +4672,7 @@ export const fantasyPositionData: Record<
         "minRank": 233,
         "maxRank": 288,
         "ownership": 10.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25823",
@@ -4688,7 +4688,7 @@ export const fantasyPositionData: Record<
         "minRank": 260,
         "maxRank": 292,
         "ownership": 6.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18406",
@@ -4704,7 +4704,7 @@ export const fantasyPositionData: Record<
         "minRank": 243,
         "maxRank": 322,
         "ownership": 9.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18256",
@@ -4720,7 +4720,7 @@ export const fantasyPositionData: Record<
         "minRank": 231,
         "maxRank": 297,
         "ownership": 13.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16420",
@@ -4736,7 +4736,7 @@ export const fantasyPositionData: Record<
         "minRank": 237,
         "maxRank": 315,
         "ownership": 27.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17272",
@@ -4752,7 +4752,7 @@ export const fantasyPositionData: Record<
         "minRank": 246,
         "maxRank": 299,
         "ownership": 23.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-11177",
@@ -4768,7 +4768,7 @@ export const fantasyPositionData: Record<
         "minRank": 238,
         "maxRank": 324,
         "ownership": 28.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27285",
@@ -4784,7 +4784,7 @@ export const fantasyPositionData: Record<
         "minRank": 251,
         "maxRank": 317,
         "ownership": 21.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25654",
@@ -4800,7 +4800,7 @@ export const fantasyPositionData: Record<
         "minRank": 260,
         "maxRank": 311,
         "ownership": 9.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16423",
@@ -4816,7 +4816,7 @@ export const fantasyPositionData: Record<
         "minRank": 228,
         "maxRank": 332,
         "ownership": 6.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18226",
@@ -4832,7 +4832,7 @@ export const fantasyPositionData: Record<
         "minRank": 269,
         "maxRank": 312,
         "ownership": 20.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27097",
@@ -4848,7 +4848,7 @@ export const fantasyPositionData: Record<
         "minRank": 275,
         "maxRank": 309,
         "ownership": 8.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22915",
@@ -4864,7 +4864,7 @@ export const fantasyPositionData: Record<
         "minRank": 275,
         "maxRank": 312,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26392",
@@ -4880,7 +4880,7 @@ export const fantasyPositionData: Record<
         "minRank": 257,
         "maxRank": 326,
         "ownership": 5.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23079",
@@ -4896,7 +4896,7 @@ export const fantasyPositionData: Record<
         "minRank": 311,
         "maxRank": 326,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23153",
@@ -4912,7 +4912,7 @@ export const fantasyPositionData: Record<
         "minRank": 236,
         "maxRank": 268,
         "ownership": 23.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8190",
@@ -4928,7 +4928,7 @@ export const fantasyPositionData: Record<
         "minRank": 249,
         "maxRank": 324,
         "ownership": 46.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27076",
@@ -4944,7 +4944,7 @@ export const fantasyPositionData: Record<
         "minRank": 245,
         "maxRank": 292,
         "ownership": 5.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25876",
@@ -4960,7 +4960,7 @@ export const fantasyPositionData: Record<
         "minRank": 260,
         "maxRank": 322,
         "ownership": 2.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23118",
@@ -4976,7 +4976,7 @@ export const fantasyPositionData: Record<
         "minRank": 266,
         "maxRank": 317,
         "ownership": 4.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23101",
@@ -4992,7 +4992,7 @@ export const fantasyPositionData: Record<
         "minRank": 165,
         "maxRank": 295,
         "ownership": 7.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8040",
@@ -5008,7 +5008,7 @@ export const fantasyPositionData: Record<
         "minRank": 234,
         "maxRank": 318,
         "ownership": 14.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8050",
@@ -5024,7 +5024,7 @@ export const fantasyPositionData: Record<
         "minRank": 167,
         "maxRank": 244,
         "ownership": 25.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8080",
@@ -5040,7 +5040,7 @@ export const fantasyPositionData: Record<
         "minRank": 172,
         "maxRank": 235,
         "ownership": 26.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27147",
@@ -5056,7 +5056,7 @@ export const fantasyPositionData: Record<
         "minRank": 273,
         "maxRank": 329,
         "ownership": 14.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22913",
@@ -5072,7 +5072,7 @@ export const fantasyPositionData: Record<
         "minRank": 269,
         "maxRank": 323,
         "ownership": 7.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25368",
@@ -5088,7 +5088,7 @@ export const fantasyPositionData: Record<
         "minRank": 274,
         "maxRank": 356,
         "ownership": 37.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24371",
@@ -5104,7 +5104,7 @@ export const fantasyPositionData: Record<
         "minRank": 267,
         "maxRank": 336,
         "ownership": 15.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26212",
@@ -5120,7 +5120,7 @@ export const fantasyPositionData: Record<
         "minRank": 294,
         "maxRank": 325,
         "ownership": 3.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24205",
@@ -5136,7 +5136,7 @@ export const fantasyPositionData: Record<
         "minRank": 283,
         "maxRank": 327,
         "ownership": 4.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23054",
@@ -5152,7 +5152,7 @@ export const fantasyPositionData: Record<
         "minRank": 271,
         "maxRank": 324,
         "ownership": 10.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27449",
@@ -5168,7 +5168,7 @@ export const fantasyPositionData: Record<
         "minRank": 241,
         "maxRank": 315,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25393",
@@ -5184,7 +5184,7 @@ export const fantasyPositionData: Record<
         "minRank": 284,
         "maxRank": 337,
         "ownership": 7.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16540",
@@ -5200,7 +5200,7 @@ export const fantasyPositionData: Record<
         "minRank": 216,
         "maxRank": 241,
         "ownership": 21.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25335",
@@ -5216,7 +5216,7 @@ export const fantasyPositionData: Record<
         "minRank": 232,
         "maxRank": 307,
         "ownership": 11.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8200",
@@ -5232,7 +5232,7 @@ export const fantasyPositionData: Record<
         "minRank": 185,
         "maxRank": 186,
         "ownership": 29.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28401",
@@ -5248,7 +5248,7 @@ export const fantasyPositionData: Record<
         "minRank": 243,
         "maxRank": 291,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23018",
@@ -5264,7 +5264,7 @@ export const fantasyPositionData: Record<
         "minRank": 270,
         "maxRank": 347,
         "ownership": 36,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8160",
@@ -5280,7 +5280,7 @@ export const fantasyPositionData: Record<
         "minRank": 188,
         "maxRank": 345,
         "ownership": 16.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16548",
@@ -5296,7 +5296,7 @@ export const fantasyPositionData: Record<
         "minRank": 212,
         "maxRank": 329,
         "ownership": 3.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24335",
@@ -5312,7 +5312,7 @@ export const fantasyPositionData: Record<
         "minRank": 301,
         "maxRank": 338,
         "ownership": 7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-8310",
@@ -5328,7 +5328,7 @@ export const fantasyPositionData: Record<
         "minRank": 191,
         "maxRank": 206,
         "ownership": 22.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25287",
@@ -5344,7 +5344,7 @@ export const fantasyPositionData: Record<
         "minRank": 277,
         "maxRank": 368,
         "ownership": 7.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16425",
@@ -5360,7 +5360,7 @@ export const fantasyPositionData: Record<
         "minRank": 303,
         "maxRank": 325,
         "ownership": 24.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22967",
@@ -5376,7 +5376,7 @@ export const fantasyPositionData: Record<
         "minRank": 274,
         "maxRank": 320,
         "ownership": 18,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23739",
@@ -5392,7 +5392,7 @@ export const fantasyPositionData: Record<
         "minRank": 264,
         "maxRank": 338,
         "ownership": 9.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24901",
@@ -5408,7 +5408,7 @@ export const fantasyPositionData: Record<
         "minRank": 283,
         "maxRank": 354,
         "ownership": 7.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25354",
@@ -5424,7 +5424,7 @@ export const fantasyPositionData: Record<
         "minRank": 211,
         "maxRank": 213,
         "ownership": 4.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27337",
@@ -5440,7 +5440,7 @@ export const fantasyPositionData: Record<
         "minRank": 232,
         "maxRank": 315,
         "ownership": 31.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-16483",
@@ -5456,7 +5456,7 @@ export const fantasyPositionData: Record<
         "minRank": 299,
         "maxRank": 323,
         "ownership": 6.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27144",
@@ -5472,7 +5472,7 @@ export const fantasyPositionData: Record<
         "minRank": 265,
         "maxRank": 302,
         "ownership": 2.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19028",
@@ -5488,7 +5488,7 @@ export const fantasyPositionData: Record<
         "minRank": 216,
         "maxRank": 237,
         "ownership": 3.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22905",
@@ -5504,7 +5504,7 @@ export const fantasyPositionData: Record<
         "minRank": 195,
         "maxRank": 331,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25533",
@@ -5520,7 +5520,7 @@ export const fantasyPositionData: Record<
         "minRank": 214,
         "maxRank": 253,
         "ownership": 3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26328",
@@ -5536,7 +5536,7 @@ export const fantasyPositionData: Record<
         "minRank": 273,
         "maxRank": 340,
         "ownership": 5.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19781",
@@ -5552,7 +5552,7 @@ export const fantasyPositionData: Record<
         "minRank": 214,
         "maxRank": 366,
         "ownership": 31,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-20156",
@@ -5568,7 +5568,7 @@ export const fantasyPositionData: Record<
         "minRank": 276,
         "maxRank": 359,
         "ownership": 24.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18864",
@@ -5584,7 +5584,7 @@ export const fantasyPositionData: Record<
         "minRank": 264,
         "maxRank": 344,
         "ownership": 7.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22930",
@@ -5600,7 +5600,7 @@ export const fantasyPositionData: Record<
         "minRank": 292,
         "maxRank": 311,
         "ownership": 4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25304",
@@ -5616,7 +5616,7 @@ export const fantasyPositionData: Record<
         "minRank": 265,
         "maxRank": 327,
         "ownership": 14.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-15623",
@@ -5632,7 +5632,7 @@ export const fantasyPositionData: Record<
         "minRank": 286,
         "maxRank": 346,
         "ownership": 8.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27261",
@@ -5648,7 +5648,7 @@ export const fantasyPositionData: Record<
         "minRank": 248,
         "maxRank": 282,
         "ownership": 2.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25167",
@@ -5664,7 +5664,7 @@ export const fantasyPositionData: Record<
         "minRank": 281,
         "maxRank": 313,
         "ownership": 0,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17246",
@@ -5680,7 +5680,7 @@ export const fantasyPositionData: Record<
         "minRank": 317,
         "maxRank": 330,
         "ownership": 14,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23004",
@@ -5696,7 +5696,7 @@ export const fantasyPositionData: Record<
         "minRank": 293,
         "maxRank": 352,
         "ownership": 17.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19539",
@@ -5712,7 +5712,7 @@ export const fantasyPositionData: Record<
         "minRank": 280,
         "maxRank": 348,
         "ownership": 16.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28135",
@@ -5728,7 +5728,7 @@ export const fantasyPositionData: Record<
         "minRank": 258,
         "maxRank": 341,
         "ownership": 2.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27798",
@@ -5744,7 +5744,7 @@ export const fantasyPositionData: Record<
         "minRank": 276,
         "maxRank": 281,
         "ownership": 5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22728",
@@ -5760,7 +5760,7 @@ export const fantasyPositionData: Record<
         "minRank": 298,
         "maxRank": 311,
         "ownership": 16.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27288",
@@ -5776,7 +5776,7 @@ export const fantasyPositionData: Record<
         "minRank": 272,
         "maxRank": 289,
         "ownership": 6.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22833",
@@ -5792,7 +5792,7 @@ export const fantasyPositionData: Record<
         "minRank": 268,
         "maxRank": 295,
         "ownership": 0.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28133",
@@ -5808,7 +5808,7 @@ export const fantasyPositionData: Record<
         "minRank": 291,
         "maxRank": 323,
         "ownership": 9.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27454",
@@ -5824,7 +5824,7 @@ export const fantasyPositionData: Record<
         "minRank": 296,
         "maxRank": 362,
         "ownership": 7.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24334",
@@ -5840,7 +5840,7 @@ export const fantasyPositionData: Record<
         "minRank": 268,
         "maxRank": 309,
         "ownership": 12.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22845",
@@ -5856,7 +5856,7 @@ export const fantasyPositionData: Record<
         "minRank": 290,
         "maxRank": 346,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22895",
@@ -5872,7 +5872,7 @@ export const fantasyPositionData: Record<
         "minRank": 287,
         "maxRank": 303,
         "ownership": 5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-20126",
@@ -5888,7 +5888,7 @@ export const fantasyPositionData: Record<
         "minRank": 298,
         "maxRank": 338,
         "ownership": 3.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28297",
@@ -5904,7 +5904,7 @@ export const fantasyPositionData: Record<
         "minRank": 304,
         "maxRank": 343,
         "ownership": 3.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25332",
@@ -5920,7 +5920,7 @@ export const fantasyPositionData: Record<
         "minRank": 294,
         "maxRank": 317,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-14104",
@@ -5936,7 +5936,7 @@ export const fantasyPositionData: Record<
         "minRank": 290,
         "maxRank": 352,
         "ownership": 26,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28424",
@@ -5952,7 +5952,7 @@ export const fantasyPositionData: Record<
         "minRank": 258,
         "maxRank": 371,
         "ownership": 0.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24347",
@@ -5968,7 +5968,7 @@ export const fantasyPositionData: Record<
         "minRank": 301,
         "maxRank": 378,
         "ownership": 21.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23770",
@@ -5984,7 +5984,7 @@ export const fantasyPositionData: Record<
         "minRank": 293,
         "maxRank": 339,
         "ownership": 10.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28079",
@@ -6000,7 +6000,7 @@ export const fantasyPositionData: Record<
         "minRank": 308,
         "maxRank": 349,
         "ownership": 7.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26964",
@@ -6016,7 +6016,7 @@ export const fantasyPositionData: Record<
         "minRank": 309,
         "maxRank": 332,
         "ownership": 0.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26310",
@@ -6032,7 +6032,7 @@ export const fantasyPositionData: Record<
         "minRank": 289,
         "maxRank": 353,
         "ownership": 12.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28129",
@@ -6048,7 +6048,7 @@ export const fantasyPositionData: Record<
         "minRank": 293,
         "maxRank": 351,
         "ownership": 3.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-26329",
@@ -6064,7 +6064,7 @@ export const fantasyPositionData: Record<
         "minRank": 312,
         "maxRank": 333,
         "ownership": 2.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-24351",
@@ -6080,7 +6080,7 @@ export const fantasyPositionData: Record<
         "minRank": 314,
         "maxRank": 358,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-27993",
@@ -6096,7 +6096,7 @@ export const fantasyPositionData: Record<
         "minRank": 321,
         "maxRank": 355,
         "ownership": 30.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-19624",
@@ -6112,7 +6112,7 @@ export const fantasyPositionData: Record<
         "minRank": 313,
         "maxRank": 342,
         "ownership": 0.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25967",
@@ -6128,7 +6128,7 @@ export const fantasyPositionData: Record<
         "minRank": 308,
         "maxRank": 349,
         "ownership": 9.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22947",
@@ -6144,7 +6144,7 @@ export const fantasyPositionData: Record<
         "minRank": 315,
         "maxRank": 344,
         "ownership": 1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28067",
@@ -6160,7 +6160,7 @@ export const fantasyPositionData: Record<
         "minRank": 303,
         "maxRank": 367,
         "ownership": 1.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17527",
@@ -6176,7 +6176,7 @@ export const fantasyPositionData: Record<
         "minRank": 320,
         "maxRank": 345,
         "ownership": 6.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-13891",
@@ -6192,7 +6192,7 @@ export const fantasyPositionData: Record<
         "minRank": 334,
         "maxRank": 376,
         "ownership": 11.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-22953",
@@ -6208,7 +6208,7 @@ export const fantasyPositionData: Record<
         "minRank": 321,
         "maxRank": 351,
         "ownership": 18.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25976",
@@ -6224,7 +6224,7 @@ export const fantasyPositionData: Record<
         "minRank": 317,
         "maxRank": 360,
         "ownership": 0.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-17066",
@@ -6240,7 +6240,7 @@ export const fantasyPositionData: Record<
         "minRank": 326,
         "maxRank": 350,
         "ownership": 4.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28125",
@@ -6256,7 +6256,7 @@ export const fantasyPositionData: Record<
         "minRank": 319,
         "maxRank": 375,
         "ownership": 5.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-28154",
@@ -6272,7 +6272,7 @@ export const fantasyPositionData: Record<
         "minRank": 325,
         "maxRank": 372,
         "ownership": 1.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-23056",
@@ -6288,7 +6288,7 @@ export const fantasyPositionData: Record<
         "minRank": 337,
         "maxRank": 349,
         "ownership": 24.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25430",
@@ -6304,7 +6304,7 @@ export const fantasyPositionData: Record<
         "minRank": 331,
         "maxRank": 369,
         "ownership": 10.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-18631",
@@ -6320,7 +6320,7 @@ export const fantasyPositionData: Record<
         "minRank": 341,
         "maxRank": 357,
         "ownership": 16.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       },
       {
         "id": "fp-25282",
@@ -6336,7 +6336,7 @@ export const fantasyPositionData: Record<
         "minRank": 342,
         "maxRank": 361,
         "ownership": 7.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:59.000Z"
       }
     ],
     "positions": {
@@ -9168,7 +9168,7 @@ export const fantasyPositionData: Record<
           "position": "WR",
           "averageRank": 21,
           "rankEcr": 21,
-          "rankAverage": 21.31,
+          "rankAverage": 21.38,
           "standardDeviation": 3.2,
           "tier": 4,
           "positionRank": 21,
@@ -9184,7 +9184,7 @@ export const fantasyPositionData: Record<
           "position": "WR",
           "averageRank": 22,
           "rankEcr": 22,
-          "rankAverage": 21.62,
+          "rankAverage": 21.54,
           "standardDeviation": 2.56,
           "tier": 4,
           "positionRank": 22,
@@ -12913,7 +12913,7 @@ export const fantasyPositionData: Record<
         }
       ]
     },
-    "upstreamUpdatedAt": "2026-04-29T17:44:24.000Z"
+    "upstreamUpdatedAt": "2026-04-29T18:17:59.000Z"
   },
   "HALF_PPR": {
     "overall": [
@@ -12931,7 +12931,7 @@ export const fantasyPositionData: Record<
         "minRank": 1,
         "maxRank": 3,
         "ownership": 98.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19788",
@@ -12947,7 +12947,7 @@ export const fantasyPositionData: Record<
         "minRank": 1,
         "maxRank": 4,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22968",
@@ -12963,7 +12963,7 @@ export const fantasyPositionData: Record<
         "minRank": 1,
         "maxRank": 3,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23180",
@@ -12979,7 +12979,7 @@ export const fantasyPositionData: Record<
         "minRank": 3,
         "maxRank": 6,
         "ownership": 99.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23070",
@@ -12995,7 +12995,7 @@ export const fantasyPositionData: Record<
         "minRank": 4,
         "maxRank": 6,
         "ownership": 99.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16393",
@@ -13011,7 +13011,7 @@ export const fantasyPositionData: Record<
         "minRank": 5,
         "maxRank": 11,
         "ownership": 99,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19202",
@@ -13027,7 +13027,7 @@ export const fantasyPositionData: Record<
         "minRank": 7,
         "maxRank": 10,
         "ownership": 98.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19799",
@@ -13043,7 +13043,7 @@ export const fantasyPositionData: Record<
         "minRank": 7,
         "maxRank": 10,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19217",
@@ -13059,7 +13059,7 @@ export const fantasyPositionData: Record<
         "minRank": 6,
         "maxRank": 12,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22958",
@@ -13075,7 +13075,7 @@ export const fantasyPositionData: Record<
         "minRank": 8,
         "maxRank": 14,
         "ownership": 98.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19236",
@@ -13091,7 +13091,7 @@ export const fantasyPositionData: Record<
         "minRank": 7,
         "maxRank": 19,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23136",
@@ -13107,7 +13107,7 @@ export const fantasyPositionData: Record<
         "minRank": 10,
         "maxRank": 18,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25989",
@@ -13123,7 +13123,7 @@ export const fantasyPositionData: Record<
         "minRank": 11,
         "maxRank": 22,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23163",
@@ -13139,7 +13139,7 @@ export const fantasyPositionData: Record<
         "minRank": 11,
         "maxRank": 22,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25324",
@@ -13155,7 +13155,7 @@ export const fantasyPositionData: Record<
         "minRank": 11,
         "maxRank": 23,
         "ownership": 97.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23113",
@@ -13171,7 +13171,7 @@ export const fantasyPositionData: Record<
         "minRank": 9,
         "maxRank": 29,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17240",
@@ -13187,7 +13187,7 @@ export const fantasyPositionData: Record<
         "minRank": 12,
         "maxRank": 24,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22936",
@@ -13203,7 +13203,7 @@ export const fantasyPositionData: Record<
         "minRank": 16,
         "maxRank": 28,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20130",
@@ -13219,7 +13219,7 @@ export const fantasyPositionData: Record<
         "minRank": 13,
         "maxRank": 27,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25395",
@@ -13235,7 +13235,7 @@ export const fantasyPositionData: Record<
         "minRank": 14,
         "maxRank": 44,
         "ownership": 96.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22955",
@@ -13251,7 +13251,7 @@ export const fantasyPositionData: Record<
         "minRank": 15,
         "maxRank": 23,
         "ownership": 92.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23021",
@@ -13267,7 +13267,7 @@ export const fantasyPositionData: Record<
         "minRank": 12,
         "maxRank": 33,
         "ownership": 97.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25409",
@@ -13283,7 +13283,7 @@ export const fantasyPositionData: Record<
         "minRank": 14,
         "maxRank": 38,
         "ownership": 74.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22963",
@@ -13299,7 +13299,7 @@ export const fantasyPositionData: Record<
         "minRank": 19,
         "maxRank": 28,
         "ownership": 97.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17298",
@@ -13315,7 +13315,7 @@ export const fantasyPositionData: Record<
         "minRank": 24,
         "maxRank": 34,
         "ownership": 98.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20111",
@@ -13331,7 +13331,7 @@ export const fantasyPositionData: Record<
         "minRank": 21,
         "maxRank": 34,
         "ownership": 96.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25403",
@@ -13347,7 +13347,7 @@ export const fantasyPositionData: Record<
         "minRank": 19,
         "maxRank": 37,
         "ownership": 89.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18218",
@@ -13363,7 +13363,7 @@ export const fantasyPositionData: Record<
         "minRank": 23,
         "maxRank": 39,
         "ownership": 98,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15514",
@@ -13379,7 +13379,7 @@ export const fantasyPositionData: Record<
         "minRank": 23,
         "maxRank": 37,
         "ownership": 98,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17233",
@@ -13395,7 +13395,7 @@ export const fantasyPositionData: Record<
         "minRank": 27,
         "maxRank": 49,
         "ownership": 96.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18269",
@@ -13411,7 +13411,7 @@ export const fantasyPositionData: Record<
         "minRank": 21,
         "maxRank": 43,
         "ownership": 98.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25417",
@@ -13427,7 +13427,7 @@ export const fantasyPositionData: Record<
         "minRank": 28,
         "maxRank": 43,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19211",
@@ -13443,7 +13443,7 @@ export const fantasyPositionData: Record<
         "minRank": 29,
         "maxRank": 39,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19222",
@@ -13459,7 +13459,7 @@ export const fantasyPositionData: Record<
         "minRank": 26,
         "maxRank": 47,
         "ownership": 96.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26006",
@@ -13475,7 +13475,7 @@ export const fantasyPositionData: Record<
         "minRank": 33,
         "maxRank": 56,
         "ownership": 80.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23059",
@@ -13491,7 +13491,7 @@ export const fantasyPositionData: Record<
         "minRank": 23,
         "maxRank": 49,
         "ownership": 97.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22739",
@@ -13500,14 +13500,14 @@ export const fantasyPositionData: Record<
         "position": "RB",
         "averageRank": 37,
         "rankEcr": 37,
-        "rankAverage": 39.33,
-        "standardDeviation": 7.63,
+        "rankAverage": 39.27,
+        "standardDeviation": 7.61,
         "tier": 5,
         "positionRank": 16,
         "minRank": 25,
         "maxRank": 49,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19231",
@@ -13523,7 +13523,7 @@ export const fantasyPositionData: Record<
         "minRank": 30,
         "maxRank": 48,
         "ownership": 95,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23072",
@@ -13539,7 +13539,7 @@ export const fantasyPositionData: Record<
         "minRank": 35,
         "maxRank": 44,
         "ownership": 86.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23046",
@@ -13555,7 +13555,7 @@ export const fantasyPositionData: Record<
         "minRank": 27,
         "maxRank": 57,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-12123",
@@ -13564,14 +13564,14 @@ export const fantasyPositionData: Record<
         "position": "WR",
         "averageRank": 41,
         "rankEcr": 41,
-        "rankAverage": 40.6,
-        "standardDeviation": 6.3,
+        "rankAverage": 40.73,
+        "standardDeviation": 6.31,
         "tier": 5,
         "positionRank": 18,
         "minRank": 32,
         "maxRank": 58,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22982",
@@ -13587,7 +13587,7 @@ export const fantasyPositionData: Record<
         "minRank": 32,
         "maxRank": 51,
         "ownership": 96,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22916",
@@ -13603,7 +13603,7 @@ export const fantasyPositionData: Record<
         "minRank": 37,
         "maxRank": 49,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27016",
@@ -13619,7 +13619,7 @@ export const fantasyPositionData: Record<
         "minRank": 39,
         "maxRank": 50,
         "ownership": 68.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26122",
@@ -13628,14 +13628,14 @@ export const fantasyPositionData: Record<
         "position": "WR",
         "averageRank": 45,
         "rankEcr": 45,
-        "rankAverage": 44.4,
-        "standardDeviation": 4.83,
+        "rankAverage": 44.33,
+        "standardDeviation": 4.88,
         "tier": 6,
         "positionRank": 21,
         "minRank": 34,
         "maxRank": 51,
         "ownership": 95.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19196",
@@ -13651,7 +13651,7 @@ export const fantasyPositionData: Record<
         "minRank": 28,
         "maxRank": 62,
         "ownership": 95.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19790",
@@ -13667,7 +13667,7 @@ export const fantasyPositionData: Record<
         "minRank": 35,
         "maxRank": 55,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18466",
@@ -13683,7 +13683,7 @@ export const fantasyPositionData: Record<
         "minRank": 40,
         "maxRank": 54,
         "ownership": 92.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25981",
@@ -13692,14 +13692,14 @@ export const fantasyPositionData: Record<
         "position": "RB",
         "averageRank": 49,
         "rankEcr": 49,
-        "rankAverage": 46.93,
-        "standardDeviation": 4.42,
+        "rankAverage": 46.87,
+        "standardDeviation": 4.39,
         "tier": 6,
         "positionRank": 19,
         "minRank": 38,
         "maxRank": 52,
         "ownership": 96.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27166",
@@ -13708,14 +13708,14 @@ export const fantasyPositionData: Record<
         "position": "RB",
         "averageRank": 50,
         "rankEcr": 50,
-        "rankAverage": 49.47,
+        "rankAverage": 49.4,
         "standardDeviation": 6.79,
         "tier": 6,
         "positionRank": 20,
         "minRank": 34,
         "maxRank": 60,
         "ownership": 71.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23062",
@@ -13731,7 +13731,7 @@ export const fantasyPositionData: Record<
         "minRank": 35,
         "maxRank": 62,
         "ownership": 93.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22902",
@@ -13747,7 +13747,7 @@ export const fantasyPositionData: Record<
         "minRank": 36,
         "maxRank": 69,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-12119",
@@ -13763,7 +13763,7 @@ export const fantasyPositionData: Record<
         "minRank": 38,
         "maxRank": 70,
         "ownership": 91.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23677",
@@ -13779,7 +13779,7 @@ export const fantasyPositionData: Record<
         "minRank": 43,
         "maxRank": 63,
         "ownership": 94,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23065",
@@ -13795,7 +13795,7 @@ export const fantasyPositionData: Record<
         "minRank": 48,
         "maxRank": 71,
         "ownership": 93.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19210",
@@ -13811,7 +13811,7 @@ export const fantasyPositionData: Record<
         "minRank": 47,
         "maxRank": 65,
         "ownership": 92.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23886",
@@ -13827,7 +13827,7 @@ export const fantasyPositionData: Record<
         "minRank": 49,
         "maxRank": 68,
         "ownership": 82.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25391",
@@ -13843,7 +13843,7 @@ export const fantasyPositionData: Record<
         "minRank": 31,
         "maxRank": 67,
         "ownership": 86.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25298",
@@ -13859,7 +13859,7 @@ export const fantasyPositionData: Record<
         "minRank": 45,
         "maxRank": 68,
         "ownership": 68.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19275",
@@ -13875,7 +13875,7 @@ export const fantasyPositionData: Record<
         "minRank": 36,
         "maxRank": 73,
         "ownership": 97.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17265",
@@ -13884,14 +13884,14 @@ export const fantasyPositionData: Record<
         "position": "WR",
         "averageRank": 61,
         "rankEcr": 61,
-        "rankAverage": 61,
-        "standardDeviation": 7.37,
+        "rankAverage": 61.13,
+        "standardDeviation": 7.14,
         "tier": 7,
         "positionRank": 28,
         "minRank": 47,
         "maxRank": 70,
         "ownership": 90.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18239",
@@ -13907,7 +13907,7 @@ export const fantasyPositionData: Record<
         "minRank": 46,
         "maxRank": 72,
         "ownership": 90.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27297",
@@ -13923,7 +13923,7 @@ export const fantasyPositionData: Record<
         "minRank": 47,
         "maxRank": 84,
         "ownership": 69.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26434",
@@ -13939,7 +13939,7 @@ export const fantasyPositionData: Record<
         "minRank": 54,
         "maxRank": 67,
         "ownership": 96.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25411",
@@ -13955,7 +13955,7 @@ export const fantasyPositionData: Record<
         "minRank": 45,
         "maxRank": 82,
         "ownership": 87.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19792",
@@ -13971,7 +13971,7 @@ export const fantasyPositionData: Record<
         "minRank": 51,
         "maxRank": 113,
         "ownership": 84.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26009",
@@ -13987,7 +13987,7 @@ export const fantasyPositionData: Record<
         "minRank": 59,
         "maxRank": 88,
         "ownership": 83.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18635",
@@ -14003,7 +14003,7 @@ export const fantasyPositionData: Record<
         "minRank": 58,
         "maxRank": 100,
         "ownership": 87.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23160",
@@ -14019,7 +14019,7 @@ export const fantasyPositionData: Record<
         "minRank": 61,
         "maxRank": 100,
         "ownership": 84.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24209",
@@ -14035,7 +14035,7 @@ export const fantasyPositionData: Record<
         "minRank": 67,
         "maxRank": 81,
         "ownership": 89.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27329",
@@ -14051,7 +14051,7 @@ export const fantasyPositionData: Record<
         "minRank": 60,
         "maxRank": 140,
         "ownership": 78.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23084",
@@ -14067,7 +14067,7 @@ export const fantasyPositionData: Record<
         "minRank": 53,
         "maxRank": 90,
         "ownership": 87.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23064",
@@ -14083,7 +14083,7 @@ export const fantasyPositionData: Record<
         "minRank": 68,
         "maxRank": 89,
         "ownership": 91.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26035",
@@ -14099,7 +14099,7 @@ export const fantasyPositionData: Record<
         "minRank": 61,
         "maxRank": 119,
         "ownership": 75.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17253",
@@ -14115,7 +14115,7 @@ export const fantasyPositionData: Record<
         "minRank": 61,
         "maxRank": 93,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23791",
@@ -14131,7 +14131,7 @@ export const fantasyPositionData: Record<
         "minRank": 68,
         "maxRank": 99,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27050",
@@ -14147,7 +14147,7 @@ export const fantasyPositionData: Record<
         "minRank": 68,
         "maxRank": 94,
         "ownership": 86.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18219",
@@ -14163,7 +14163,7 @@ export const fantasyPositionData: Record<
         "minRank": 70,
         "maxRank": 89,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27142",
@@ -14179,7 +14179,7 @@ export const fantasyPositionData: Record<
         "minRank": 64,
         "maxRank": 98,
         "ownership": 89.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25333",
@@ -14195,7 +14195,7 @@ export const fantasyPositionData: Record<
         "minRank": 62,
         "maxRank": 105,
         "ownership": 87.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22726",
@@ -14211,7 +14211,7 @@ export const fantasyPositionData: Record<
         "minRank": 71,
         "maxRank": 98,
         "ownership": 85.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22978",
@@ -14227,7 +14227,7 @@ export const fantasyPositionData: Record<
         "minRank": 73,
         "maxRank": 91,
         "ownership": 79.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19780",
@@ -14243,7 +14243,7 @@ export const fantasyPositionData: Record<
         "minRank": 62,
         "maxRank": 97,
         "ownership": 86.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18705",
@@ -14259,7 +14259,7 @@ export const fantasyPositionData: Record<
         "minRank": 74,
         "maxRank": 98,
         "ownership": 88.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16406",
@@ -14275,7 +14275,7 @@ export const fantasyPositionData: Record<
         "minRank": 74,
         "maxRank": 106,
         "ownership": 80.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19647",
@@ -14291,7 +14291,7 @@ export const fantasyPositionData: Record<
         "minRank": 67,
         "maxRank": 109,
         "ownership": 87.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15600",
@@ -14307,7 +14307,7 @@ export const fantasyPositionData: Record<
         "minRank": 72,
         "maxRank": 97,
         "ownership": 92.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20164",
@@ -14323,7 +14323,7 @@ export const fantasyPositionData: Record<
         "minRank": 76,
         "maxRank": 98,
         "ownership": 93.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27131",
@@ -14339,7 +14339,7 @@ export const fantasyPositionData: Record<
         "minRank": 71,
         "maxRank": 99,
         "ownership": 77.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23000",
@@ -14355,7 +14355,7 @@ export const fantasyPositionData: Record<
         "minRank": 73,
         "maxRank": 101,
         "ownership": 90.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25420",
@@ -14371,7 +14371,7 @@ export const fantasyPositionData: Record<
         "minRank": 67,
         "maxRank": 107,
         "ownership": 71.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23106",
@@ -14387,7 +14387,7 @@ export const fantasyPositionData: Record<
         "minRank": 72,
         "maxRank": 121,
         "ownership": 69.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18598",
@@ -14403,7 +14403,7 @@ export const fantasyPositionData: Record<
         "minRank": 74,
         "maxRank": 108,
         "ownership": 85.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19797",
@@ -14419,7 +14419,7 @@ export const fantasyPositionData: Record<
         "minRank": 78,
         "maxRank": 105,
         "ownership": 90.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23013",
@@ -14435,7 +14435,7 @@ export const fantasyPositionData: Record<
         "minRank": 85,
         "maxRank": 113,
         "ownership": 68.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19245",
@@ -14451,7 +14451,7 @@ export const fantasyPositionData: Record<
         "minRank": 72,
         "maxRank": 134,
         "ownership": 69.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26214",
@@ -14467,7 +14467,7 @@ export const fantasyPositionData: Record<
         "minRank": 87,
         "maxRank": 125,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27316",
@@ -14483,7 +14483,7 @@ export const fantasyPositionData: Record<
         "minRank": 85,
         "maxRank": 127,
         "ownership": 58.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-9451",
@@ -14499,7 +14499,7 @@ export const fantasyPositionData: Record<
         "minRank": 73,
         "maxRank": 124,
         "ownership": 92.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22910",
@@ -14515,7 +14515,7 @@ export const fantasyPositionData: Record<
         "minRank": 92,
         "maxRank": 112,
         "ownership": 90.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25997",
@@ -14531,7 +14531,7 @@ export const fantasyPositionData: Record<
         "minRank": 94,
         "maxRank": 116,
         "ownership": 54.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16413",
@@ -14547,7 +14547,7 @@ export const fantasyPositionData: Record<
         "minRank": 90,
         "maxRank": 124,
         "ownership": 80.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23107",
@@ -14563,7 +14563,7 @@ export const fantasyPositionData: Record<
         "minRank": 90,
         "maxRank": 115,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25247",
@@ -14579,7 +14579,7 @@ export const fantasyPositionData: Record<
         "minRank": 94,
         "maxRank": 126,
         "ownership": 59.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19278",
@@ -14595,7 +14595,7 @@ export const fantasyPositionData: Record<
         "minRank": 99,
         "maxRank": 113,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23020",
@@ -14611,7 +14611,7 @@ export const fantasyPositionData: Record<
         "minRank": 77,
         "maxRank": 127,
         "ownership": 67,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18600",
@@ -14627,7 +14627,7 @@ export const fantasyPositionData: Record<
         "minRank": 89,
         "maxRank": 133,
         "ownership": 59.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16673",
@@ -14643,7 +14643,7 @@ export const fantasyPositionData: Record<
         "minRank": 98,
         "maxRank": 124,
         "ownership": 85.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22985",
@@ -14659,7 +14659,7 @@ export const fantasyPositionData: Record<
         "minRank": 83,
         "maxRank": 128,
         "ownership": 84.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24706",
@@ -14675,7 +14675,7 @@ export const fantasyPositionData: Record<
         "minRank": 90,
         "maxRank": 132,
         "ownership": 68.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16499",
@@ -14691,7 +14691,7 @@ export const fantasyPositionData: Record<
         "minRank": 85,
         "maxRank": 156,
         "ownership": 92.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23310",
@@ -14707,7 +14707,7 @@ export const fantasyPositionData: Record<
         "minRank": 102,
         "maxRank": 131,
         "ownership": 80.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11594",
@@ -14723,7 +14723,7 @@ export const fantasyPositionData: Record<
         "minRank": 94,
         "maxRank": 157,
         "ownership": 90.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23123",
@@ -14739,7 +14739,7 @@ export const fantasyPositionData: Record<
         "minRank": 106,
         "maxRank": 139,
         "ownership": 76.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22718",
@@ -14755,7 +14755,7 @@ export const fantasyPositionData: Record<
         "minRank": 104,
         "maxRank": 137,
         "ownership": 88.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23781",
@@ -14771,7 +14771,7 @@ export const fantasyPositionData: Record<
         "minRank": 99,
         "maxRank": 157,
         "ownership": 56.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17270",
@@ -14787,7 +14787,7 @@ export const fantasyPositionData: Record<
         "minRank": 102,
         "maxRank": 143,
         "ownership": 89.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15501",
@@ -14803,7 +14803,7 @@ export const fantasyPositionData: Record<
         "minRank": 111,
         "maxRank": 133,
         "ownership": 74.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23891",
@@ -14819,7 +14819,7 @@ export const fantasyPositionData: Record<
         "minRank": 82,
         "maxRank": 147,
         "ownership": 70.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24172",
@@ -14835,7 +14835,7 @@ export const fantasyPositionData: Record<
         "minRank": 99,
         "maxRank": 152,
         "ownership": 53.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19246",
@@ -14851,7 +14851,7 @@ export const fantasyPositionData: Record<
         "minRank": 103,
         "maxRank": 135,
         "ownership": 62.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22969",
@@ -14867,7 +14867,7 @@ export const fantasyPositionData: Record<
         "minRank": 112,
         "maxRank": 143,
         "ownership": 58.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17237",
@@ -14883,7 +14883,7 @@ export const fantasyPositionData: Record<
         "minRank": 107,
         "maxRank": 151,
         "ownership": 74.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22986",
@@ -14899,7 +14899,7 @@ export const fantasyPositionData: Record<
         "minRank": 102,
         "maxRank": 181,
         "ownership": 44.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23096",
@@ -14915,7 +14915,7 @@ export const fantasyPositionData: Record<
         "minRank": 107,
         "maxRank": 146,
         "ownership": 54.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23794",
@@ -14931,7 +14931,7 @@ export const fantasyPositionData: Record<
         "minRank": 108,
         "maxRank": 141,
         "ownership": 78.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22980",
@@ -14947,7 +14947,7 @@ export const fantasyPositionData: Record<
         "minRank": 117,
         "maxRank": 139,
         "ownership": 61,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23152",
@@ -14963,7 +14963,7 @@ export const fantasyPositionData: Record<
         "minRank": 78,
         "maxRank": 161,
         "ownership": 80.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23748",
@@ -14979,7 +14979,7 @@ export const fantasyPositionData: Record<
         "minRank": 101,
         "maxRank": 145,
         "ownership": 82.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27077",
@@ -14995,7 +14995,7 @@ export const fantasyPositionData: Record<
         "minRank": 109,
         "maxRank": 141,
         "ownership": 45.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23499",
@@ -15011,7 +15011,7 @@ export const fantasyPositionData: Record<
         "minRank": 105,
         "maxRank": 213,
         "ownership": 33.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26403",
@@ -15027,7 +15027,7 @@ export const fantasyPositionData: Record<
         "minRank": 113,
         "maxRank": 149,
         "ownership": 52.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23019",
@@ -15043,7 +15043,7 @@ export const fantasyPositionData: Record<
         "minRank": 109,
         "maxRank": 148,
         "ownership": 83.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26024",
@@ -15059,7 +15059,7 @@ export const fantasyPositionData: Record<
         "minRank": 92,
         "maxRank": 173,
         "ownership": 65.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26148",
@@ -15075,7 +15075,7 @@ export const fantasyPositionData: Record<
         "minRank": 97,
         "maxRank": 235,
         "ownership": 54.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27520",
@@ -15091,7 +15091,7 @@ export const fantasyPositionData: Record<
         "minRank": 103,
         "maxRank": 183,
         "ownership": 77.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25323",
@@ -15107,7 +15107,7 @@ export const fantasyPositionData: Record<
         "minRank": 125,
         "maxRank": 154,
         "ownership": 54.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25345",
@@ -15123,7 +15123,7 @@ export const fantasyPositionData: Record<
         "minRank": 97,
         "maxRank": 207,
         "ownership": 55.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17269",
@@ -15139,7 +15139,7 @@ export const fantasyPositionData: Record<
         "minRank": 109,
         "maxRank": 186,
         "ownership": 84,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25360",
@@ -15155,7 +15155,7 @@ export const fantasyPositionData: Record<
         "minRank": 129,
         "maxRank": 163,
         "ownership": 27,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24333",
@@ -15171,7 +15171,7 @@ export const fantasyPositionData: Record<
         "minRank": 134,
         "maxRank": 161,
         "ownership": 65.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23071",
@@ -15187,7 +15187,7 @@ export const fantasyPositionData: Record<
         "minRank": 133,
         "maxRank": 201,
         "ownership": 50.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27331",
@@ -15203,7 +15203,7 @@ export const fantasyPositionData: Record<
         "minRank": 108,
         "maxRank": 223,
         "ownership": 58.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27320",
@@ -15219,7 +15219,7 @@ export const fantasyPositionData: Record<
         "minRank": 126,
         "maxRank": 229,
         "ownership": 42.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27102",
@@ -15235,7 +15235,7 @@ export const fantasyPositionData: Record<
         "minRank": 129,
         "maxRank": 167,
         "ownership": 38.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15561",
@@ -15251,7 +15251,7 @@ export const fantasyPositionData: Record<
         "minRank": 137,
         "maxRank": 180,
         "ownership": 68.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13981",
@@ -15267,7 +15267,7 @@ export const fantasyPositionData: Record<
         "minRank": 109,
         "maxRank": 209,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19562",
@@ -15283,7 +15283,7 @@ export const fantasyPositionData: Record<
         "minRank": 110,
         "maxRank": 219,
         "ownership": 61.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22900",
@@ -15299,7 +15299,7 @@ export const fantasyPositionData: Record<
         "minRank": 138,
         "maxRank": 179,
         "ownership": 36.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20094",
@@ -15315,7 +15315,7 @@ export const fantasyPositionData: Record<
         "minRank": 144,
         "maxRank": 169,
         "ownership": 39.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24687",
@@ -15331,7 +15331,7 @@ export const fantasyPositionData: Record<
         "minRank": 141,
         "maxRank": 181,
         "ownership": 57.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16421",
@@ -15347,7 +15347,7 @@ export const fantasyPositionData: Record<
         "minRank": 121,
         "maxRank": 215,
         "ownership": 79,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17236",
@@ -15363,7 +15363,7 @@ export const fantasyPositionData: Record<
         "minRank": 128,
         "maxRank": 178,
         "ownership": 53.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25885",
@@ -15379,7 +15379,7 @@ export const fantasyPositionData: Record<
         "minRank": 121,
         "maxRank": 197,
         "ownership": 39,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24346",
@@ -15395,7 +15395,7 @@ export const fantasyPositionData: Record<
         "minRank": 131,
         "maxRank": 241,
         "ownership": 32.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19590",
@@ -15411,7 +15411,7 @@ export const fantasyPositionData: Record<
         "minRank": 121,
         "maxRank": 217,
         "ownership": 66.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26034",
@@ -15427,7 +15427,7 @@ export const fantasyPositionData: Record<
         "minRank": 135,
         "maxRank": 215,
         "ownership": 79.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18244",
@@ -15443,7 +15443,7 @@ export const fantasyPositionData: Record<
         "minRank": 132,
         "maxRank": 220,
         "ownership": 65.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27339",
@@ -15459,7 +15459,7 @@ export const fantasyPositionData: Record<
         "minRank": 138,
         "maxRank": 206,
         "ownership": 44.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16447",
@@ -15475,7 +15475,7 @@ export const fantasyPositionData: Record<
         "minRank": 116,
         "maxRank": 227,
         "ownership": 55.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28127",
@@ -15491,7 +15491,7 @@ export const fantasyPositionData: Record<
         "minRank": 125,
         "maxRank": 242,
         "ownership": 31,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23179",
@@ -15507,7 +15507,7 @@ export const fantasyPositionData: Record<
         "minRank": 120,
         "maxRank": 215,
         "ownership": 37.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22908",
@@ -15523,7 +15523,7 @@ export const fantasyPositionData: Record<
         "minRank": 147,
         "maxRank": 213,
         "ownership": 33,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24343",
@@ -15539,7 +15539,7 @@ export const fantasyPositionData: Record<
         "minRank": 130,
         "maxRank": 227,
         "ownership": 39.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28108",
@@ -15555,7 +15555,7 @@ export const fantasyPositionData: Record<
         "minRank": 146,
         "maxRank": 276,
         "ownership": 17.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8120",
@@ -15571,7 +15571,7 @@ export const fantasyPositionData: Record<
         "minRank": 149,
         "maxRank": 160,
         "ownership": 90.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19252",
@@ -15587,7 +15587,7 @@ export const fantasyPositionData: Record<
         "minRank": 143,
         "maxRank": 223,
         "ownership": 38.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19201",
@@ -15603,7 +15603,7 @@ export const fantasyPositionData: Record<
         "minRank": 141,
         "maxRank": 230,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28107",
@@ -15619,7 +15619,7 @@ export const fantasyPositionData: Record<
         "minRank": 147,
         "maxRank": 307,
         "ownership": 41.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23982",
@@ -15635,7 +15635,7 @@ export const fantasyPositionData: Record<
         "minRank": 139,
         "maxRank": 245,
         "ownership": 34.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24362",
@@ -15651,7 +15651,7 @@ export const fantasyPositionData: Record<
         "minRank": 131,
         "maxRank": 232,
         "ownership": 35,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26055",
@@ -15667,7 +15667,7 @@ export const fantasyPositionData: Record<
         "minRank": 131,
         "maxRank": 267,
         "ownership": 63,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24357",
@@ -15683,7 +15683,7 @@ export const fantasyPositionData: Record<
         "minRank": 148,
         "maxRank": 238,
         "ownership": 31.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8090",
@@ -15699,7 +15699,7 @@ export const fantasyPositionData: Record<
         "minRank": 159,
         "maxRank": 182,
         "ownership": 91.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25418",
@@ -15715,7 +15715,7 @@ export const fantasyPositionData: Record<
         "minRank": 160,
         "maxRank": 236,
         "ownership": 31.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8260",
@@ -15731,7 +15731,7 @@ export const fantasyPositionData: Record<
         "minRank": 160,
         "maxRank": 170,
         "ownership": 88.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24755",
@@ -15747,7 +15747,7 @@ export const fantasyPositionData: Record<
         "minRank": 146,
         "maxRank": 224,
         "ownership": 33.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17349",
@@ -15763,7 +15763,7 @@ export const fantasyPositionData: Record<
         "minRank": 157,
         "maxRank": 228,
         "ownership": 48.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18232",
@@ -15779,7 +15779,7 @@ export const fantasyPositionData: Record<
         "minRank": 144,
         "maxRank": 315,
         "ownership": 56.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22989",
@@ -15795,7 +15795,7 @@ export const fantasyPositionData: Record<
         "minRank": 169,
         "maxRank": 203,
         "ownership": 38.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8280",
@@ -15811,7 +15811,7 @@ export const fantasyPositionData: Record<
         "minRank": 166,
         "maxRank": 185,
         "ownership": 62.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8230",
@@ -15827,7 +15827,7 @@ export const fantasyPositionData: Record<
         "minRank": 167,
         "maxRank": 189,
         "ownership": 73.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15642",
@@ -15843,7 +15843,7 @@ export const fantasyPositionData: Record<
         "minRank": 128,
         "maxRank": 275,
         "ownership": 52.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26335",
@@ -15859,7 +15859,7 @@ export const fantasyPositionData: Record<
         "minRank": 156,
         "maxRank": 230,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15802",
@@ -15875,7 +15875,7 @@ export const fantasyPositionData: Record<
         "minRank": 125,
         "maxRank": 222,
         "ownership": 51.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26355",
@@ -15891,7 +15891,7 @@ export const fantasyPositionData: Record<
         "minRank": 156,
         "maxRank": 236,
         "ownership": 45.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18290",
@@ -15907,7 +15907,7 @@ export const fantasyPositionData: Record<
         "minRank": 163,
         "maxRank": 238,
         "ownership": 74.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8180",
@@ -15923,7 +15923,7 @@ export const fantasyPositionData: Record<
         "minRank": 174,
         "maxRank": 191,
         "ownership": 78.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26068",
@@ -15939,7 +15939,7 @@ export const fantasyPositionData: Record<
         "minRank": 178,
         "maxRank": 190,
         "ownership": 93,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8170",
@@ -15955,7 +15955,7 @@ export const fantasyPositionData: Record<
         "minRank": 173,
         "maxRank": 248,
         "ownership": 48.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8140",
@@ -15971,7 +15971,7 @@ export const fantasyPositionData: Record<
         "minRank": 179,
         "maxRank": 211,
         "ownership": 57.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26191",
@@ -15987,7 +15987,7 @@ export const fantasyPositionData: Record<
         "minRank": 163,
         "maxRank": 215,
         "ownership": 22.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8240",
@@ -16003,7 +16003,7 @@ export const fantasyPositionData: Record<
         "minRank": 181,
         "maxRank": 205,
         "ownership": 74.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15756",
@@ -16019,7 +16019,7 @@ export const fantasyPositionData: Record<
         "minRank": 185,
         "maxRank": 195,
         "ownership": 75.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28084",
@@ -16035,7 +16035,7 @@ export const fantasyPositionData: Record<
         "minRank": 163,
         "maxRank": 262,
         "ownership": 27.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26475",
@@ -16051,7 +16051,7 @@ export const fantasyPositionData: Record<
         "minRank": 183,
         "maxRank": 206,
         "ownership": 70.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8070",
@@ -16067,7 +16067,7 @@ export const fantasyPositionData: Record<
         "minRank": 184,
         "maxRank": 207,
         "ownership": 45.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25337",
@@ -16083,7 +16083,7 @@ export const fantasyPositionData: Record<
         "minRank": 169,
         "maxRank": 204,
         "ownership": 46.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23901",
@@ -16099,7 +16099,7 @@ export const fantasyPositionData: Record<
         "minRank": 188,
         "maxRank": 212,
         "ownership": 89.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26038",
@@ -16115,7 +16115,7 @@ export const fantasyPositionData: Record<
         "minRank": 169,
         "maxRank": 257,
         "ownership": 34.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26215",
@@ -16131,7 +16131,7 @@ export const fantasyPositionData: Record<
         "minRank": 164,
         "maxRank": 210,
         "ownership": 27.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27446",
@@ -16147,7 +16147,7 @@ export const fantasyPositionData: Record<
         "minRank": 180,
         "maxRank": 220,
         "ownership": 28.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23092",
@@ -16163,7 +16163,7 @@ export const fantasyPositionData: Record<
         "minRank": 166,
         "maxRank": 233,
         "ownership": 42.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8250",
@@ -16179,7 +16179,7 @@ export const fantasyPositionData: Record<
         "minRank": 185,
         "maxRank": 194,
         "ownership": 40.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23679",
@@ -16195,7 +16195,7 @@ export const fantasyPositionData: Record<
         "minRank": 176,
         "maxRank": 218,
         "ownership": 30.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8110",
@@ -16211,7 +16211,7 @@ export const fantasyPositionData: Record<
         "minRank": 183,
         "maxRank": 197,
         "ownership": 43.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-14003",
@@ -16227,7 +16227,7 @@ export const fantasyPositionData: Record<
         "minRank": 192,
         "maxRank": 216,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23091",
@@ -16243,7 +16243,7 @@ export const fantasyPositionData: Record<
         "minRank": 202,
         "maxRank": 253,
         "ownership": 27.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27211",
@@ -16259,7 +16259,7 @@ export const fantasyPositionData: Record<
         "minRank": 179,
         "maxRank": 234,
         "ownership": 27,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25987",
@@ -16275,7 +16275,7 @@ export const fantasyPositionData: Record<
         "minRank": 147,
         "maxRank": 235,
         "ownership": 24,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17575",
@@ -16291,7 +16291,7 @@ export const fantasyPositionData: Record<
         "minRank": 203,
         "maxRank": 233,
         "ownership": 45.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8150",
@@ -16307,7 +16307,7 @@ export const fantasyPositionData: Record<
         "minRank": 204,
         "maxRank": 234,
         "ownership": 39.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17258",
@@ -16323,7 +16323,7 @@ export const fantasyPositionData: Record<
         "minRank": 172,
         "maxRank": 262,
         "ownership": 54.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8020",
@@ -16339,7 +16339,7 @@ export const fantasyPositionData: Record<
         "minRank": 187,
         "maxRank": 278,
         "ownership": 48.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23297",
@@ -16355,7 +16355,7 @@ export const fantasyPositionData: Record<
         "minRank": 190,
         "maxRank": 251,
         "ownership": 34.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27122",
@@ -16371,7 +16371,7 @@ export const fantasyPositionData: Record<
         "minRank": 167,
         "maxRank": 246,
         "ownership": 22.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23144",
@@ -16387,7 +16387,7 @@ export const fantasyPositionData: Record<
         "minRank": 200,
         "maxRank": 253,
         "ownership": 42.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26398",
@@ -16403,7 +16403,7 @@ export const fantasyPositionData: Record<
         "minRank": 194,
         "maxRank": 226,
         "ownership": 23.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28126",
@@ -16419,7 +16419,7 @@ export const fantasyPositionData: Record<
         "minRank": 175,
         "maxRank": 295,
         "ownership": 21.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27534",
@@ -16435,7 +16435,7 @@ export const fantasyPositionData: Record<
         "minRank": 202,
         "maxRank": 212,
         "ownership": 39.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16399",
@@ -16451,7 +16451,7 @@ export const fantasyPositionData: Record<
         "minRank": 206,
         "maxRank": 260,
         "ownership": 39.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27109",
@@ -16467,7 +16467,7 @@ export const fantasyPositionData: Record<
         "minRank": 180,
         "maxRank": 266,
         "ownership": 40.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27315",
@@ -16483,7 +16483,7 @@ export const fantasyPositionData: Record<
         "minRank": 168,
         "maxRank": 288,
         "ownership": 32.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13731",
@@ -16499,7 +16499,7 @@ export const fantasyPositionData: Record<
         "minRank": 210,
         "maxRank": 249,
         "ownership": 24.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25361",
@@ -16515,7 +16515,7 @@ export const fantasyPositionData: Record<
         "minRank": 179,
         "maxRank": 237,
         "ownership": 39.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26039",
@@ -16531,7 +16531,7 @@ export const fantasyPositionData: Record<
         "minRank": 183,
         "maxRank": 289,
         "ownership": 31.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24354",
@@ -16547,7 +16547,7 @@ export const fantasyPositionData: Record<
         "minRank": 200,
         "maxRank": 251,
         "ownership": 18.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25419",
@@ -16563,7 +16563,7 @@ export const fantasyPositionData: Record<
         "minRank": 183,
         "maxRank": 272,
         "ownership": 35.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27291",
@@ -16579,7 +16579,7 @@ export const fantasyPositionData: Record<
         "minRank": 208,
         "maxRank": 332,
         "ownership": 14.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16712",
@@ -16595,7 +16595,7 @@ export const fantasyPositionData: Record<
         "minRank": 207,
         "maxRank": 280,
         "ownership": 54.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19810",
@@ -16611,7 +16611,7 @@ export const fantasyPositionData: Record<
         "minRank": 170,
         "maxRank": 264,
         "ownership": 42.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24367",
@@ -16627,7 +16627,7 @@ export const fantasyPositionData: Record<
         "minRank": 221,
         "maxRank": 304,
         "ownership": 10.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25984",
@@ -16643,7 +16643,7 @@ export const fantasyPositionData: Record<
         "minRank": 178,
         "maxRank": 258,
         "ownership": 15.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8100",
@@ -16659,7 +16659,7 @@ export const fantasyPositionData: Record<
         "minRank": 195,
         "maxRank": 355,
         "ownership": 60.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28138",
@@ -16675,7 +16675,7 @@ export const fantasyPositionData: Record<
         "minRank": 182,
         "maxRank": 271,
         "ownership": 6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28013",
@@ -16691,7 +16691,7 @@ export const fantasyPositionData: Record<
         "minRank": 203,
         "maxRank": 334,
         "ownership": 57.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27463",
@@ -16707,7 +16707,7 @@ export const fantasyPositionData: Record<
         "minRank": 213,
         "maxRank": 270,
         "ownership": 32.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19058",
@@ -16723,7 +16723,7 @@ export const fantasyPositionData: Record<
         "minRank": 215,
         "maxRank": 235,
         "ownership": 54.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24177",
@@ -16739,7 +16739,7 @@ export const fantasyPositionData: Record<
         "minRank": 167,
         "maxRank": 301,
         "ownership": 25.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26075",
@@ -16755,7 +16755,7 @@ export const fantasyPositionData: Record<
         "minRank": 213,
         "maxRank": 251,
         "ownership": 61.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8030",
@@ -16771,7 +16771,7 @@ export const fantasyPositionData: Record<
         "minRank": 206,
         "maxRank": 280,
         "ownership": 54.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23181",
@@ -16787,7 +16787,7 @@ export const fantasyPositionData: Record<
         "minRank": 191,
         "maxRank": 273,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27165",
@@ -16803,7 +16803,7 @@ export const fantasyPositionData: Record<
         "minRank": 156,
         "maxRank": 299,
         "ownership": 26.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23682",
@@ -16819,7 +16819,7 @@ export const fantasyPositionData: Record<
         "minRank": 199,
         "maxRank": 296,
         "ownership": 31.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28047",
@@ -16835,7 +16835,7 @@ export const fantasyPositionData: Record<
         "minRank": 207,
         "maxRank": 275,
         "ownership": 30.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13029",
@@ -16851,7 +16851,7 @@ export const fantasyPositionData: Record<
         "minRank": 221,
         "maxRank": 253,
         "ownership": 46.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20163",
@@ -16867,7 +16867,7 @@ export const fantasyPositionData: Record<
         "minRank": 205,
         "maxRank": 279,
         "ownership": 31.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27994",
@@ -16883,7 +16883,7 @@ export const fantasyPositionData: Record<
         "minRank": 229,
         "maxRank": 284,
         "ownership": 23.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26314",
@@ -16899,7 +16899,7 @@ export const fantasyPositionData: Record<
         "minRank": 163,
         "maxRank": 300,
         "ownership": 26.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26005",
@@ -16915,7 +16915,7 @@ export const fantasyPositionData: Record<
         "minRank": 206,
         "maxRank": 275,
         "ownership": 33.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19372",
@@ -16931,7 +16931,7 @@ export const fantasyPositionData: Record<
         "minRank": 175,
         "maxRank": 305,
         "ownership": 35.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26638",
@@ -16947,7 +16947,7 @@ export const fantasyPositionData: Record<
         "minRank": 216,
         "maxRank": 281,
         "ownership": 43.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27059",
@@ -16963,7 +16963,7 @@ export const fantasyPositionData: Record<
         "minRank": 194,
         "maxRank": 345,
         "ownership": 29.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24360",
@@ -16979,7 +16979,7 @@ export const fantasyPositionData: Record<
         "minRank": 180,
         "maxRank": 270,
         "ownership": 10.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25388",
@@ -16995,7 +16995,7 @@ export const fantasyPositionData: Record<
         "minRank": 145,
         "maxRank": 310,
         "ownership": 39.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19302",
@@ -17011,7 +17011,7 @@ export const fantasyPositionData: Record<
         "minRank": 159,
         "maxRank": 262,
         "ownership": 24.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26341",
@@ -17027,7 +17027,7 @@ export const fantasyPositionData: Record<
         "minRank": 198,
         "maxRank": 298,
         "ownership": 27.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26022",
@@ -17043,7 +17043,7 @@ export const fantasyPositionData: Record<
         "minRank": 220,
         "maxRank": 266,
         "ownership": 25.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8010",
@@ -17059,7 +17059,7 @@ export const fantasyPositionData: Record<
         "minRank": 217,
         "maxRank": 278,
         "ownership": 24.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27487",
@@ -17075,7 +17075,7 @@ export const fantasyPositionData: Record<
         "minRank": 196,
         "maxRank": 273,
         "ownership": 20.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11687",
@@ -17091,7 +17091,7 @@ export const fantasyPositionData: Record<
         "minRank": 214,
         "maxRank": 316,
         "ownership": 31.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16026",
@@ -17107,7 +17107,7 @@ export const fantasyPositionData: Record<
         "minRank": 227,
         "maxRank": 328,
         "ownership": 23.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8270",
@@ -17123,7 +17123,7 @@ export const fantasyPositionData: Record<
         "minRank": 218,
         "maxRank": 279,
         "ownership": 35.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24778",
@@ -17139,7 +17139,7 @@ export const fantasyPositionData: Record<
         "minRank": 218,
         "maxRank": 280,
         "ownership": 29.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22973",
@@ -17155,7 +17155,7 @@ export const fantasyPositionData: Record<
         "minRank": 229,
         "maxRank": 306,
         "ownership": 30.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28130",
@@ -17171,7 +17171,7 @@ export const fantasyPositionData: Record<
         "minRank": 250,
         "maxRank": 295,
         "ownership": 19.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27224",
@@ -17187,7 +17187,7 @@ export const fantasyPositionData: Record<
         "minRank": 189,
         "maxRank": 288,
         "ownership": 17.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19794",
@@ -17203,7 +17203,7 @@ export const fantasyPositionData: Record<
         "minRank": 204,
         "maxRank": 295,
         "ownership": 21.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23104",
@@ -17219,7 +17219,7 @@ export const fantasyPositionData: Record<
         "minRank": 201,
         "maxRank": 299,
         "ownership": 39.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17268",
@@ -17235,7 +17235,7 @@ export const fantasyPositionData: Record<
         "minRank": 173,
         "maxRank": 285,
         "ownership": 26.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8130",
@@ -17251,7 +17251,7 @@ export const fantasyPositionData: Record<
         "minRank": 234,
         "maxRank": 317,
         "ownership": 28.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-9001",
@@ -17267,7 +17267,7 @@ export const fantasyPositionData: Record<
         "minRank": 217,
         "maxRank": 284,
         "ownership": 36.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16420",
@@ -17283,7 +17283,7 @@ export const fantasyPositionData: Record<
         "minRank": 224,
         "maxRank": 293,
         "ownership": 27.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16411",
@@ -17299,7 +17299,7 @@ export const fantasyPositionData: Record<
         "minRank": 227,
         "maxRank": 298,
         "ownership": 35.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27310",
@@ -17315,7 +17315,7 @@ export const fantasyPositionData: Record<
         "minRank": 185,
         "maxRank": 312,
         "ownership": 23.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26019",
@@ -17331,7 +17331,7 @@ export const fantasyPositionData: Record<
         "minRank": 222,
         "maxRank": 276,
         "ownership": 29.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27259",
@@ -17347,7 +17347,7 @@ export const fantasyPositionData: Record<
         "minRank": 232,
         "maxRank": 289,
         "ownership": 16.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25977",
@@ -17363,7 +17363,7 @@ export const fantasyPositionData: Record<
         "minRank": 220,
         "maxRank": 282,
         "ownership": 8.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23080",
@@ -17379,7 +17379,7 @@ export const fantasyPositionData: Record<
         "minRank": 222,
         "maxRank": 290,
         "ownership": 22.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16433",
@@ -17395,7 +17395,7 @@ export const fantasyPositionData: Record<
         "minRank": 240,
         "maxRank": 298,
         "ownership": 36.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25968",
@@ -17411,7 +17411,7 @@ export const fantasyPositionData: Record<
         "minRank": 241,
         "maxRank": 321,
         "ownership": 32.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26444",
@@ -17427,7 +17427,7 @@ export const fantasyPositionData: Record<
         "minRank": 226,
         "maxRank": 316,
         "ownership": 2.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16489",
@@ -17443,7 +17443,7 @@ export const fantasyPositionData: Record<
         "minRank": 232,
         "maxRank": 298,
         "ownership": 11.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24344",
@@ -17459,7 +17459,7 @@ export const fantasyPositionData: Record<
         "minRank": 215,
         "maxRank": 300,
         "ownership": 19.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18406",
@@ -17475,7 +17475,7 @@ export const fantasyPositionData: Record<
         "minRank": 245,
         "maxRank": 317,
         "ownership": 9.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23153",
@@ -17491,7 +17491,7 @@ export const fantasyPositionData: Record<
         "minRank": 190,
         "maxRank": 267,
         "ownership": 23.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18256",
@@ -17507,7 +17507,7 @@ export const fantasyPositionData: Record<
         "minRank": 232,
         "maxRank": 297,
         "ownership": 13.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25654",
@@ -17523,7 +17523,7 @@ export const fantasyPositionData: Record<
         "minRank": 242,
         "maxRank": 308,
         "ownership": 9.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26392",
@@ -17539,7 +17539,7 @@ export const fantasyPositionData: Record<
         "minRank": 236,
         "maxRank": 310,
         "ownership": 5.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11616",
@@ -17555,7 +17555,7 @@ export const fantasyPositionData: Record<
         "minRank": 219,
         "maxRank": 291,
         "ownership": 38.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18280",
@@ -17571,7 +17571,7 @@ export const fantasyPositionData: Record<
         "minRank": 207,
         "maxRank": 300,
         "ownership": 11.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22921",
@@ -17587,7 +17587,7 @@ export const fantasyPositionData: Record<
         "minRank": 242,
         "maxRank": 302,
         "ownership": 10.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27097",
@@ -17603,7 +17603,7 @@ export const fantasyPositionData: Record<
         "minRank": 247,
         "maxRank": 287,
         "ownership": 8.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26409",
@@ -17619,7 +17619,7 @@ export const fantasyPositionData: Record<
         "minRank": 257,
         "maxRank": 302,
         "ownership": 25.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11177",
@@ -17635,7 +17635,7 @@ export const fantasyPositionData: Record<
         "minRank": 241,
         "maxRank": 329,
         "ownership": 28.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19198",
@@ -17651,7 +17651,7 @@ export const fantasyPositionData: Record<
         "minRank": 239,
         "maxRank": 358,
         "ownership": 32.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23079",
@@ -17667,7 +17667,7 @@ export const fantasyPositionData: Record<
         "minRank": 288,
         "maxRank": 316,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25823",
@@ -17683,7 +17683,7 @@ export const fantasyPositionData: Record<
         "minRank": 262,
         "maxRank": 299,
         "ownership": 6.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25876",
@@ -17699,7 +17699,7 @@ export const fantasyPositionData: Record<
         "minRank": 231,
         "maxRank": 312,
         "ownership": 2.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16398",
@@ -17715,7 +17715,7 @@ export const fantasyPositionData: Record<
         "minRank": 252,
         "maxRank": 320,
         "ownership": 29.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22915",
@@ -17731,7 +17731,7 @@ export const fantasyPositionData: Record<
         "minRank": 256,
         "maxRank": 302,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18706",
@@ -17747,7 +17747,7 @@ export const fantasyPositionData: Record<
         "minRank": 256,
         "maxRank": 294,
         "ownership": 23.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26136",
@@ -17763,7 +17763,7 @@ export const fantasyPositionData: Record<
         "minRank": 239,
         "maxRank": 311,
         "ownership": 11.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18226",
@@ -17779,7 +17779,7 @@ export const fantasyPositionData: Record<
         "minRank": 262,
         "maxRank": 306,
         "ownership": 20.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23101",
@@ -17795,7 +17795,7 @@ export const fantasyPositionData: Record<
         "minRank": 175,
         "maxRank": 300,
         "ownership": 7.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23118",
@@ -17811,7 +17811,7 @@ export const fantasyPositionData: Record<
         "minRank": 270,
         "maxRank": 308,
         "ownership": 4.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27285",
@@ -17827,7 +17827,7 @@ export const fantasyPositionData: Record<
         "minRank": 271,
         "maxRank": 325,
         "ownership": 21.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27337",
@@ -17843,7 +17843,7 @@ export const fantasyPositionData: Record<
         "minRank": 196,
         "maxRank": 229,
         "ownership": 31.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24205",
@@ -17859,7 +17859,7 @@ export const fantasyPositionData: Record<
         "minRank": 264,
         "maxRank": 313,
         "ownership": 4.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16423",
@@ -17875,7 +17875,7 @@ export const fantasyPositionData: Record<
         "minRank": 258,
         "maxRank": 329,
         "ownership": 6.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17272",
@@ -17891,7 +17891,7 @@ export const fantasyPositionData: Record<
         "minRank": 238,
         "maxRank": 304,
         "ownership": 23.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16548",
@@ -17907,7 +17907,7 @@ export const fantasyPositionData: Record<
         "minRank": 199,
         "maxRank": 315,
         "ownership": 3.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8190",
@@ -17923,7 +17923,7 @@ export const fantasyPositionData: Record<
         "minRank": 240,
         "maxRank": 318,
         "ownership": 46.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24371",
@@ -17939,7 +17939,7 @@ export const fantasyPositionData: Record<
         "minRank": 269,
         "maxRank": 305,
         "ownership": 15.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8040",
@@ -17955,7 +17955,7 @@ export const fantasyPositionData: Record<
         "minRank": 254,
         "maxRank": 318,
         "ownership": 14.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22913",
@@ -17971,7 +17971,7 @@ export const fantasyPositionData: Record<
         "minRank": 268,
         "maxRank": 327,
         "ownership": 7.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8080",
@@ -17987,7 +17987,7 @@ export const fantasyPositionData: Record<
         "minRank": 171,
         "maxRank": 236,
         "ownership": 26.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8050",
@@ -18003,7 +18003,7 @@ export const fantasyPositionData: Record<
         "minRank": 166,
         "maxRank": 244,
         "ownership": 25.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16425",
@@ -18019,7 +18019,7 @@ export const fantasyPositionData: Record<
         "minRank": 284,
         "maxRank": 323,
         "ownership": 24.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23018",
@@ -18035,7 +18035,7 @@ export const fantasyPositionData: Record<
         "minRank": 244,
         "maxRank": 338,
         "ownership": 36,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28401",
@@ -18051,7 +18051,7 @@ export const fantasyPositionData: Record<
         "minRank": 223,
         "maxRank": 274,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8160",
@@ -18067,7 +18067,7 @@ export const fantasyPositionData: Record<
         "minRank": 219,
         "maxRank": 316,
         "ownership": 16.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23054",
@@ -18083,7 +18083,7 @@ export const fantasyPositionData: Record<
         "minRank": 269,
         "maxRank": 324,
         "ownership": 10.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28133",
@@ -18099,7 +18099,7 @@ export const fantasyPositionData: Record<
         "minRank": 192,
         "maxRank": 314,
         "ownership": 9.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27147",
@@ -18115,7 +18115,7 @@ export const fantasyPositionData: Record<
         "minRank": 265,
         "maxRank": 303,
         "ownership": 14.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25335",
@@ -18131,7 +18131,7 @@ export const fantasyPositionData: Record<
         "minRank": 257,
         "maxRank": 314,
         "ownership": 11.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25393",
@@ -18147,7 +18147,7 @@ export const fantasyPositionData: Record<
         "minRank": 282,
         "maxRank": 336,
         "ownership": 7.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27144",
@@ -18163,7 +18163,7 @@ export const fantasyPositionData: Record<
         "minRank": 251,
         "maxRank": 313,
         "ownership": 2.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24335",
@@ -18179,7 +18179,7 @@ export const fantasyPositionData: Record<
         "minRank": 281,
         "maxRank": 328,
         "ownership": 7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16540",
@@ -18195,7 +18195,7 @@ export const fantasyPositionData: Record<
         "minRank": 239,
         "maxRank": 240,
         "ownership": 21.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26212",
@@ -18211,7 +18211,7 @@ export const fantasyPositionData: Record<
         "minRank": 300,
         "maxRank": 313,
         "ownership": 3.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24901",
@@ -18227,7 +18227,7 @@ export const fantasyPositionData: Record<
         "minRank": 250,
         "maxRank": 357,
         "ownership": 7.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23739",
@@ -18243,7 +18243,7 @@ export const fantasyPositionData: Record<
         "minRank": 264,
         "maxRank": 318,
         "ownership": 9.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27449",
@@ -18259,7 +18259,7 @@ export const fantasyPositionData: Record<
         "minRank": 261,
         "maxRank": 330,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27076",
@@ -18275,7 +18275,7 @@ export const fantasyPositionData: Record<
         "minRank": 286,
         "maxRank": 301,
         "ownership": 5.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15623",
@@ -18291,7 +18291,7 @@ export const fantasyPositionData: Record<
         "minRank": 220,
         "maxRank": 324,
         "ownership": 8.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25287",
@@ -18307,7 +18307,7 @@ export const fantasyPositionData: Record<
         "minRank": 285,
         "maxRank": 374,
         "ownership": 7.8,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22905",
@@ -18323,7 +18323,7 @@ export const fantasyPositionData: Record<
         "minRank": 193,
         "maxRank": 343,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26328",
@@ -18339,7 +18339,7 @@ export const fantasyPositionData: Record<
         "minRank": 271,
         "maxRank": 340,
         "ownership": 5.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28135",
@@ -18355,7 +18355,7 @@ export const fantasyPositionData: Record<
         "minRank": 237,
         "maxRank": 322,
         "ownership": 2.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20156",
@@ -18371,7 +18371,7 @@ export const fantasyPositionData: Record<
         "minRank": 273,
         "maxRank": 363,
         "ownership": 24.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17246",
@@ -18387,7 +18387,7 @@ export const fantasyPositionData: Record<
         "minRank": 303,
         "maxRank": 327,
         "ownership": 14,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28424",
@@ -18403,7 +18403,7 @@ export const fantasyPositionData: Record<
         "minRank": 219,
         "maxRank": 370,
         "ownership": 0.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28079",
@@ -18419,7 +18419,7 @@ export const fantasyPositionData: Record<
         "minRank": 273,
         "maxRank": 294,
         "ownership": 7.2,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16483",
@@ -18435,7 +18435,7 @@ export const fantasyPositionData: Record<
         "minRank": 306,
         "maxRank": 325,
         "ownership": 6.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22930",
@@ -18451,7 +18451,7 @@ export const fantasyPositionData: Record<
         "minRank": 304,
         "maxRank": 314,
         "ownership": 4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27288",
@@ -18467,7 +18467,7 @@ export const fantasyPositionData: Record<
         "minRank": 276,
         "maxRank": 297,
         "ownership": 6.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19781",
@@ -18483,7 +18483,7 @@ export const fantasyPositionData: Record<
         "minRank": 240,
         "maxRank": 375,
         "ownership": 31,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22967",
@@ -18499,7 +18499,7 @@ export const fantasyPositionData: Record<
         "minRank": 268,
         "maxRank": 330,
         "ownership": 18,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25368",
@@ -18515,7 +18515,7 @@ export const fantasyPositionData: Record<
         "minRank": 274,
         "maxRank": 347,
         "ownership": 37.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22728",
@@ -18531,7 +18531,7 @@ export const fantasyPositionData: Record<
         "minRank": 294,
         "maxRank": 305,
         "ownership": 16.9,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-14104",
@@ -18547,7 +18547,7 @@ export const fantasyPositionData: Record<
         "minRank": 289,
         "maxRank": 322,
         "ownership": 26,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27993",
@@ -18563,7 +18563,7 @@ export const fantasyPositionData: Record<
         "minRank": 293,
         "maxRank": 341,
         "ownership": 30.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22845",
@@ -18579,7 +18579,7 @@ export const fantasyPositionData: Record<
         "minRank": 293,
         "maxRank": 360,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18864",
@@ -18595,7 +18595,7 @@ export const fantasyPositionData: Record<
         "minRank": 295,
         "maxRank": 350,
         "ownership": 7.1,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27454",
@@ -18611,7 +18611,7 @@ export const fantasyPositionData: Record<
         "minRank": 296,
         "maxRank": 367,
         "ownership": 7.5,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25304",
@@ -18627,7 +18627,7 @@ export const fantasyPositionData: Record<
         "minRank": 299,
         "maxRank": 333,
         "ownership": 14.3,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24351",
@@ -18643,7 +18643,7 @@ export const fantasyPositionData: Record<
         "minRank": 313,
         "maxRank": 353,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19539",
@@ -18659,7 +18659,7 @@ export const fantasyPositionData: Record<
         "minRank": 318,
         "maxRank": 344,
         "ownership": 16.7,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13891",
@@ -18675,7 +18675,7 @@ export const fantasyPositionData: Record<
         "minRank": 334,
         "maxRank": 376,
         "ownership": 11.4,
-        "lastUpdated": "2026-04-29T17:44:23.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       }
     ],
     "positions": {
@@ -21210,7 +21210,7 @@ export const fantasyPositionData: Record<
           "minRank": 1,
           "maxRank": 2,
           "ownership": 98.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23180",
@@ -21226,7 +21226,7 @@ export const fantasyPositionData: Record<
           "minRank": 1,
           "maxRank": 3,
           "ownership": 99.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23070",
@@ -21242,7 +21242,7 @@ export const fantasyPositionData: Record<
           "minRank": 2,
           "maxRank": 3,
           "ownership": 99.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19202",
@@ -21258,7 +21258,7 @@ export const fantasyPositionData: Record<
           "minRank": 4,
           "maxRank": 6,
           "ownership": 98.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19799",
@@ -21274,7 +21274,7 @@ export const fantasyPositionData: Record<
           "minRank": 4,
           "maxRank": 6,
           "ownership": 98.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19236",
@@ -21290,7 +21290,7 @@ export const fantasyPositionData: Record<
           "minRank": 4,
           "maxRank": 7,
           "ownership": 98.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23163",
@@ -21306,7 +21306,7 @@ export const fantasyPositionData: Record<
           "minRank": 6,
           "maxRank": 9,
           "ownership": 98.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23113",
@@ -21322,7 +21322,7 @@ export const fantasyPositionData: Record<
           "minRank": 6,
           "maxRank": 13,
           "ownership": 92.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-20130",
@@ -21338,7 +21338,7 @@ export const fantasyPositionData: Record<
           "minRank": 7,
           "maxRank": 12,
           "ownership": 98.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25409",
@@ -21354,7 +21354,7 @@ export const fantasyPositionData: Record<
           "minRank": 7,
           "maxRank": 17,
           "ownership": 74.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-22963",
@@ -21370,7 +21370,7 @@ export const fantasyPositionData: Record<
           "minRank": 9,
           "maxRank": 13,
           "ownership": 97.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-20111",
@@ -21386,7 +21386,7 @@ export const fantasyPositionData: Record<
           "minRank": 9,
           "maxRank": 15,
           "ownership": 96.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-18218",
@@ -21402,7 +21402,7 @@ export const fantasyPositionData: Record<
           "minRank": 10,
           "maxRank": 17,
           "ownership": 98,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25417",
@@ -21418,7 +21418,7 @@ export const fantasyPositionData: Record<
           "minRank": 13,
           "maxRank": 19,
           "ownership": 96.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19211",
@@ -21434,7 +21434,7 @@ export const fantasyPositionData: Record<
           "minRank": 12,
           "maxRank": 18,
           "ownership": 96.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19222",
@@ -21450,7 +21450,7 @@ export const fantasyPositionData: Record<
           "minRank": 12,
           "maxRank": 23,
           "ownership": 96.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23072",
@@ -21466,7 +21466,7 @@ export const fantasyPositionData: Record<
           "minRank": 16,
           "maxRank": 20,
           "ownership": 86.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-12123",
@@ -21475,14 +21475,14 @@ export const fantasyPositionData: Record<
           "position": "WR",
           "averageRank": 18,
           "rankEcr": 18,
-          "rankAverage": 18.53,
+          "rankAverage": 18.6,
           "standardDeviation": 3.34,
           "tier": 4,
           "positionRank": 18,
           "minRank": 15,
           "maxRank": 27,
           "ownership": 95.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-22916",
@@ -21498,7 +21498,7 @@ export const fantasyPositionData: Record<
           "minRank": 16,
           "maxRank": 24,
           "ownership": 96.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27016",
@@ -21514,7 +21514,7 @@ export const fantasyPositionData: Record<
           "minRank": 17,
           "maxRank": 25,
           "ownership": 68.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26122",
@@ -21523,14 +21523,14 @@ export const fantasyPositionData: Record<
           "position": "WR",
           "averageRank": 21,
           "rankEcr": 21,
-          "rankAverage": 20.93,
-          "standardDeviation": 2.59,
+          "rankAverage": 20.87,
+          "standardDeviation": 2.65,
           "tier": 4,
           "positionRank": 21,
           "minRank": 16,
           "maxRank": 24,
           "ownership": 95.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19790",
@@ -21546,7 +21546,7 @@ export const fantasyPositionData: Record<
           "minRank": 16,
           "maxRank": 26,
           "ownership": 95.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-18466",
@@ -21562,7 +21562,7 @@ export const fantasyPositionData: Record<
           "minRank": 18,
           "maxRank": 25,
           "ownership": 92.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23062",
@@ -21578,7 +21578,7 @@ export const fantasyPositionData: Record<
           "minRank": 16,
           "maxRank": 27,
           "ownership": 93.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-12119",
@@ -21594,7 +21594,7 @@ export const fantasyPositionData: Record<
           "minRank": 17,
           "maxRank": 32,
           "ownership": 91.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23677",
@@ -21610,7 +21610,7 @@ export const fantasyPositionData: Record<
           "minRank": 20,
           "maxRank": 29,
           "ownership": 94,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23886",
@@ -21626,7 +21626,7 @@ export const fantasyPositionData: Record<
           "minRank": 24,
           "maxRank": 30,
           "ownership": 82.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-17265",
@@ -21642,7 +21642,7 @@ export const fantasyPositionData: Record<
           "minRank": 23,
           "maxRank": 31,
           "ownership": 90.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25411",
@@ -21658,7 +21658,7 @@ export const fantasyPositionData: Record<
           "minRank": 19,
           "maxRank": 36,
           "ownership": 87.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26009",
@@ -21674,7 +21674,7 @@ export const fantasyPositionData: Record<
           "minRank": 27,
           "maxRank": 51,
           "ownership": 83.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23064",
@@ -21690,7 +21690,7 @@ export const fantasyPositionData: Record<
           "minRank": 30,
           "maxRank": 38,
           "ownership": 91.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26035",
@@ -21706,7 +21706,7 @@ export const fantasyPositionData: Record<
           "minRank": 29,
           "maxRank": 48,
           "ownership": 75.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-17253",
@@ -21722,7 +21722,7 @@ export const fantasyPositionData: Record<
           "minRank": 28,
           "maxRank": 40,
           "ownership": 92.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23791",
@@ -21738,7 +21738,7 @@ export const fantasyPositionData: Record<
           "minRank": 31,
           "maxRank": 42,
           "ownership": 78.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-18219",
@@ -21754,7 +21754,7 @@ export const fantasyPositionData: Record<
           "minRank": 31,
           "maxRank": 38,
           "ownership": 89.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25333",
@@ -21770,7 +21770,7 @@ export const fantasyPositionData: Record<
           "minRank": 28,
           "maxRank": 44,
           "ownership": 87.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-16406",
@@ -21786,7 +21786,7 @@ export const fantasyPositionData: Record<
           "minRank": 32,
           "maxRank": 43,
           "ownership": 80.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23000",
@@ -21802,7 +21802,7 @@ export const fantasyPositionData: Record<
           "minRank": 32,
           "maxRank": 43,
           "ownership": 90.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25420",
@@ -21818,7 +21818,7 @@ export const fantasyPositionData: Record<
           "minRank": 30,
           "maxRank": 52,
           "ownership": 71.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23106",
@@ -21834,7 +21834,7 @@ export const fantasyPositionData: Record<
           "minRank": 33,
           "maxRank": 50,
           "ownership": 69.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-18598",
@@ -21850,7 +21850,7 @@ export const fantasyPositionData: Record<
           "minRank": 32,
           "maxRank": 44,
           "ownership": 85.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26214",
@@ -21866,7 +21866,7 @@ export const fantasyPositionData: Record<
           "minRank": 37,
           "maxRank": 50,
           "ownership": 78.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23107",
@@ -21882,7 +21882,7 @@ export const fantasyPositionData: Record<
           "minRank": 39,
           "maxRank": 47,
           "ownership": 82.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19278",
@@ -21898,7 +21898,7 @@ export const fantasyPositionData: Record<
           "minRank": 42,
           "maxRank": 47,
           "ownership": 89.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23020",
@@ -21914,7 +21914,7 @@ export const fantasyPositionData: Record<
           "minRank": 37,
           "maxRank": 51,
           "ownership": 67,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-22985",
@@ -21930,7 +21930,7 @@ export const fantasyPositionData: Record<
           "minRank": 38,
           "maxRank": 53,
           "ownership": 84.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-24706",
@@ -21946,7 +21946,7 @@ export const fantasyPositionData: Record<
           "minRank": 39,
           "maxRank": 52,
           "ownership": 68.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23123",
@@ -21962,7 +21962,7 @@ export const fantasyPositionData: Record<
           "minRank": 43,
           "maxRank": 55,
           "ownership": 76.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23748",
@@ -21978,7 +21978,7 @@ export const fantasyPositionData: Record<
           "minRank": 43,
           "maxRank": 57,
           "ownership": 82.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23794",
@@ -21994,7 +21994,7 @@ export const fantasyPositionData: Record<
           "minRank": 45,
           "maxRank": 56,
           "ownership": 78.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27077",
@@ -22010,7 +22010,7 @@ export const fantasyPositionData: Record<
           "minRank": 45,
           "maxRank": 56,
           "ownership": 45.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26403",
@@ -22026,7 +22026,7 @@ export const fantasyPositionData: Record<
           "minRank": 48,
           "maxRank": 58,
           "ownership": 52.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23019",
@@ -22042,7 +22042,7 @@ export const fantasyPositionData: Record<
           "minRank": 45,
           "maxRank": 58,
           "ownership": 83.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26024",
@@ -22058,7 +22058,7 @@ export const fantasyPositionData: Record<
           "minRank": 40,
           "maxRank": 65,
           "ownership": 65.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27331",
@@ -22074,7 +22074,7 @@ export const fantasyPositionData: Record<
           "minRank": 46,
           "maxRank": 81,
           "ownership": 58.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-18244",
@@ -22090,7 +22090,7 @@ export const fantasyPositionData: Record<
           "minRank": 52,
           "maxRank": 79,
           "ownership": 65.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19590",
@@ -22106,7 +22106,7 @@ export const fantasyPositionData: Record<
           "minRank": 49,
           "maxRank": 78,
           "ownership": 66.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-24687",
@@ -22122,7 +22122,7 @@ export const fantasyPositionData: Record<
           "minRank": 56,
           "maxRank": 68,
           "ownership": 57.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-13981",
@@ -22138,7 +22138,7 @@ export const fantasyPositionData: Record<
           "minRank": 45,
           "maxRank": 77,
           "ownership": 70.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19252",
@@ -22154,7 +22154,7 @@ export const fantasyPositionData: Record<
           "minRank": 57,
           "maxRank": 82,
           "ownership": 38.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26034",
@@ -22170,7 +22170,7 @@ export const fantasyPositionData: Record<
           "minRank": 54,
           "maxRank": 84,
           "ownership": 79.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28127",
@@ -22186,7 +22186,7 @@ export const fantasyPositionData: Record<
           "minRank": 53,
           "maxRank": 87,
           "ownership": 31,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23179",
@@ -22202,7 +22202,7 @@ export const fantasyPositionData: Record<
           "minRank": 49,
           "maxRank": 78,
           "ownership": 37.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27339",
@@ -22218,7 +22218,7 @@ export const fantasyPositionData: Record<
           "minRank": 55,
           "maxRank": 82,
           "ownership": 44.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19201",
@@ -22234,7 +22234,7 @@ export const fantasyPositionData: Record<
           "minRank": 56,
           "maxRank": 79,
           "ownership": 70.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-24357",
@@ -22250,7 +22250,7 @@ export const fantasyPositionData: Record<
           "minRank": 57,
           "maxRank": 85,
           "ownership": 31.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-22989",
@@ -22266,7 +22266,7 @@ export const fantasyPositionData: Record<
           "minRank": 64,
           "maxRank": 78,
           "ownership": 38.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25418",
@@ -22282,7 +22282,7 @@ export const fantasyPositionData: Record<
           "minRank": 60,
           "maxRank": 86,
           "ownership": 31.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-15802",
@@ -22298,7 +22298,7 @@ export const fantasyPositionData: Record<
           "minRank": 52,
           "maxRank": 126,
           "ownership": 51.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23092",
@@ -22314,7 +22314,7 @@ export const fantasyPositionData: Record<
           "minRank": 63,
           "maxRank": 92,
           "ownership": 42.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25337",
@@ -22330,7 +22330,7 @@ export const fantasyPositionData: Record<
           "minRank": 64,
           "maxRank": 101,
           "ownership": 46.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26215",
@@ -22346,7 +22346,7 @@ export const fantasyPositionData: Record<
           "minRank": 61,
           "maxRank": 102,
           "ownership": 27.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27446",
@@ -22362,7 +22362,7 @@ export const fantasyPositionData: Record<
           "minRank": 70,
           "maxRank": 81,
           "ownership": 28.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-17258",
@@ -22378,7 +22378,7 @@ export const fantasyPositionData: Record<
           "minRank": 65,
           "maxRank": 92,
           "ownership": 54.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27211",
@@ -22394,7 +22394,7 @@ export const fantasyPositionData: Record<
           "minRank": 68,
           "maxRank": 93,
           "ownership": 27,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26038",
@@ -22410,7 +22410,7 @@ export const fantasyPositionData: Record<
           "minRank": 65,
           "maxRank": 99,
           "ownership": 34.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26398",
@@ -22426,7 +22426,7 @@ export const fantasyPositionData: Record<
           "minRank": 70,
           "maxRank": 94,
           "ownership": 23.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25361",
@@ -22442,7 +22442,7 @@ export const fantasyPositionData: Record<
           "minRank": 69,
           "maxRank": 91,
           "ownership": 39.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27122",
@@ -22458,7 +22458,7 @@ export const fantasyPositionData: Record<
           "minRank": 63,
           "maxRank": 96,
           "ownership": 22.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-24177",
@@ -22474,7 +22474,7 @@ export const fantasyPositionData: Record<
           "minRank": 63,
           "maxRank": 111,
           "ownership": 25.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19810",
@@ -22490,7 +22490,7 @@ export const fantasyPositionData: Record<
           "minRank": 66,
           "maxRank": 100,
           "ownership": 42.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-24354",
@@ -22506,7 +22506,7 @@ export const fantasyPositionData: Record<
           "minRank": 73,
           "maxRank": 91,
           "ownership": 18.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26039",
@@ -22522,7 +22522,7 @@ export const fantasyPositionData: Record<
           "minRank": 69,
           "maxRank": 103,
           "ownership": 31.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25419",
@@ -22538,7 +22538,7 @@ export const fantasyPositionData: Record<
           "minRank": 74,
           "maxRank": 103,
           "ownership": 35.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27337",
@@ -22554,7 +22554,7 @@ export const fantasyPositionData: Record<
           "minRank": 81,
           "maxRank": 110,
           "ownership": 31.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26314",
@@ -22570,7 +22570,7 @@ export const fantasyPositionData: Record<
           "minRank": 66,
           "maxRank": 110,
           "ownership": 26.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27315",
@@ -22586,7 +22586,7 @@ export const fantasyPositionData: Record<
           "minRank": 64,
           "maxRank": 102,
           "ownership": 32.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27463",
@@ -22602,7 +22602,7 @@ export const fantasyPositionData: Record<
           "minRank": 86,
           "maxRank": 105,
           "ownership": 32.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27994",
@@ -22618,7 +22618,7 @@ export const fantasyPositionData: Record<
           "minRank": 83,
           "maxRank": 100,
           "ownership": 23.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28126",
@@ -22634,7 +22634,7 @@ export const fantasyPositionData: Record<
           "minRank": 75,
           "maxRank": 106,
           "ownership": 21.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28138",
@@ -22650,7 +22650,7 @@ export const fantasyPositionData: Record<
           "minRank": 73,
           "maxRank": 106,
           "ownership": 6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27059",
@@ -22666,7 +22666,7 @@ export const fantasyPositionData: Record<
           "minRank": 71,
           "maxRank": 123,
           "ownership": 29.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27487",
@@ -22682,7 +22682,7 @@ export const fantasyPositionData: Record<
           "minRank": 71,
           "maxRank": 99,
           "ownership": 20.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28047",
@@ -22698,7 +22698,7 @@ export const fantasyPositionData: Record<
           "minRank": 83,
           "maxRank": 104,
           "ownership": 30.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26022",
@@ -22714,7 +22714,7 @@ export const fantasyPositionData: Record<
           "minRank": 82,
           "maxRank": 118,
           "ownership": 25.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26019",
@@ -22730,7 +22730,7 @@ export const fantasyPositionData: Record<
           "minRank": 81,
           "maxRank": 103,
           "ownership": 29.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-19794",
@@ -22746,7 +22746,7 @@ export const fantasyPositionData: Record<
           "minRank": 75,
           "maxRank": 111,
           "ownership": 21.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27224",
@@ -22762,7 +22762,7 @@ export const fantasyPositionData: Record<
           "minRank": 76,
           "maxRank": 103,
           "ownership": 17.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28130",
@@ -22778,7 +22778,7 @@ export const fantasyPositionData: Record<
           "minRank": 95,
           "maxRank": 106,
           "ownership": 19.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-17268",
@@ -22794,7 +22794,7 @@ export const fantasyPositionData: Record<
           "minRank": 67,
           "maxRank": 105,
           "ownership": 26.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-16489",
@@ -22810,7 +22810,7 @@ export const fantasyPositionData: Record<
           "minRank": 85,
           "maxRank": 110,
           "ownership": 11.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23080",
@@ -22826,7 +22826,7 @@ export const fantasyPositionData: Record<
           "minRank": 80,
           "maxRank": 112,
           "ownership": 22.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-16433",
@@ -22842,7 +22842,7 @@ export const fantasyPositionData: Record<
           "minRank": 86,
           "maxRank": 109,
           "ownership": 36.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-11616",
@@ -22858,7 +22858,7 @@ export const fantasyPositionData: Record<
           "minRank": 80,
           "maxRank": 108,
           "ownership": 38.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-18706",
@@ -22874,7 +22874,7 @@ export const fantasyPositionData: Record<
           "minRank": 90,
           "maxRank": 109,
           "ownership": 23.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26409",
@@ -22890,7 +22890,7 @@ export const fantasyPositionData: Record<
           "minRank": 93,
           "maxRank": 109,
           "ownership": 25.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26136",
@@ -22906,7 +22906,7 @@ export const fantasyPositionData: Record<
           "minRank": 86,
           "maxRank": 123,
           "ownership": 11.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-18226",
@@ -22922,7 +22922,7 @@ export const fantasyPositionData: Record<
           "minRank": 97,
           "maxRank": 117,
           "ownership": 20.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-24371",
@@ -22938,7 +22938,7 @@ export const fantasyPositionData: Record<
           "minRank": 96,
           "maxRank": 124,
           "ownership": 15.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-22913",
@@ -22954,7 +22954,7 @@ export const fantasyPositionData: Record<
           "minRank": 95,
           "maxRank": 126,
           "ownership": 7.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27147",
@@ -22970,7 +22970,7 @@ export const fantasyPositionData: Record<
           "minRank": 103,
           "maxRank": 121,
           "ownership": 14.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23101",
@@ -22986,7 +22986,7 @@ export const fantasyPositionData: Record<
           "minRank": 79,
           "maxRank": 109,
           "ownership": 7.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28133",
@@ -23002,7 +23002,7 @@ export const fantasyPositionData: Record<
           "minRank": 77,
           "maxRank": 116,
           "ownership": 9.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25335",
@@ -23018,7 +23018,7 @@ export const fantasyPositionData: Record<
           "minRank": 95,
           "maxRank": 120,
           "ownership": 11.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27449",
@@ -23034,7 +23034,7 @@ export const fantasyPositionData: Record<
           "minRank": 98,
           "maxRank": 118,
           "ownership": 3.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28135",
@@ -23050,7 +23050,7 @@ export const fantasyPositionData: Record<
           "minRank": 87,
           "maxRank": 116,
           "ownership": 2.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25287",
@@ -23066,7 +23066,7 @@ export const fantasyPositionData: Record<
           "minRank": 100,
           "maxRank": 136,
           "ownership": 7.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27076",
@@ -23082,7 +23082,7 @@ export const fantasyPositionData: Record<
           "minRank": 105,
           "maxRank": 115,
           "ownership": 5.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26328",
@@ -23098,7 +23098,7 @@ export const fantasyPositionData: Record<
           "minRank": 106,
           "maxRank": 121,
           "ownership": 5.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25304",
@@ -23114,7 +23114,7 @@ export const fantasyPositionData: Record<
           "minRank": 95,
           "maxRank": 119,
           "ownership": 14.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27144",
@@ -23130,7 +23130,7 @@ export const fantasyPositionData: Record<
           "minRank": 99,
           "maxRank": 119,
           "ownership": 2.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23739",
@@ -23146,7 +23146,7 @@ export const fantasyPositionData: Record<
           "minRank": 104,
           "maxRank": 125,
           "ownership": 9.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-18864",
@@ -23162,7 +23162,7 @@ export const fantasyPositionData: Record<
           "minRank": 97,
           "maxRank": 126,
           "ownership": 7.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-22905",
@@ -23178,7 +23178,7 @@ export const fantasyPositionData: Record<
           "minRank": 70,
           "maxRank": 122,
           "ownership": 4.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-20126",
@@ -23194,7 +23194,7 @@ export const fantasyPositionData: Record<
           "minRank": 106,
           "maxRank": 124,
           "ownership": 3.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27454",
@@ -23210,7 +23210,7 @@ export const fantasyPositionData: Record<
           "minRank": 107,
           "maxRank": 130,
           "ownership": 7.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-23770",
@@ -23226,7 +23226,7 @@ export const fantasyPositionData: Record<
           "minRank": 96,
           "maxRank": 126,
           "ownership": 10.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-22845",
@@ -23242,7 +23242,7 @@ export const fantasyPositionData: Record<
           "minRank": 105,
           "maxRank": 127,
           "ownership": 3.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27288",
@@ -23258,7 +23258,7 @@ export const fantasyPositionData: Record<
           "minRank": 99,
           "maxRank": 108,
           "ownership": 6.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28129",
@@ -23274,7 +23274,7 @@ export const fantasyPositionData: Record<
           "minRank": 99,
           "maxRank": 125,
           "ownership": 3.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28424",
@@ -23290,7 +23290,7 @@ export const fantasyPositionData: Record<
           "minRank": 85,
           "maxRank": 132,
           "ownership": 0.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-22895",
@@ -23306,7 +23306,7 @@ export const fantasyPositionData: Record<
           "minRank": 104,
           "maxRank": 113,
           "ownership": 5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-25332",
@@ -23322,7 +23322,7 @@ export const fantasyPositionData: Record<
           "minRank": 108,
           "maxRank": 117,
           "ownership": 4.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28067",
@@ -23338,7 +23338,7 @@ export const fantasyPositionData: Record<
           "minRank": 107,
           "maxRank": 128,
           "ownership": 1.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-18520",
@@ -23354,7 +23354,7 @@ export const fantasyPositionData: Record<
           "minRank": 113,
           "maxRank": 120,
           "ownership": 9.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26011",
@@ -23370,7 +23370,7 @@ export const fantasyPositionData: Record<
           "minRank": 117,
           "maxRank": 124,
           "ownership": 1.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-17066",
@@ -23386,7 +23386,7 @@ export const fantasyPositionData: Record<
           "minRank": 122,
           "maxRank": 129,
           "ownership": 4.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28125",
@@ -23402,7 +23402,7 @@ export const fantasyPositionData: Record<
           "minRank": 111,
           "maxRank": 135,
           "ownership": 5.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-28132",
@@ -23418,7 +23418,7 @@ export const fantasyPositionData: Record<
           "minRank": 130,
           "maxRank": 131,
           "ownership": 1.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-26012",
@@ -23434,7 +23434,7 @@ export const fantasyPositionData: Record<
           "minRank": 132,
           "maxRank": 133,
           "ownership": 1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         },
         {
           "id": "fp-27093",
@@ -23450,7 +23450,7 @@ export const fantasyPositionData: Record<
           "minRank": 133,
           "maxRank": 134,
           "ownership": 0.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:58.000Z"
         }
       ],
       "TE": [
@@ -25412,7 +25412,7 @@ export const fantasyPositionData: Record<
         }
       ]
     },
-    "upstreamUpdatedAt": "2026-04-29T17:44:23.000Z"
+    "upstreamUpdatedAt": "2026-04-29T18:17:58.000Z"
   },
   "STANDARD": {
     "overall": [
@@ -25430,7 +25430,7 @@ export const fantasyPositionData: Record<
         "minRank": 1,
         "maxRank": 3,
         "ownership": 98.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22968",
@@ -25446,7 +25446,7 @@ export const fantasyPositionData: Record<
         "minRank": 1,
         "maxRank": 5,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23180",
@@ -25462,7 +25462,7 @@ export const fantasyPositionData: Record<
         "minRank": 2,
         "maxRank": 6,
         "ownership": 99.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19788",
@@ -25478,7 +25478,7 @@ export const fantasyPositionData: Record<
         "minRank": 4,
         "maxRank": 4,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23070",
@@ -25494,7 +25494,7 @@ export const fantasyPositionData: Record<
         "minRank": 2,
         "maxRank": 6,
         "ownership": 99.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19217",
@@ -25510,7 +25510,7 @@ export const fantasyPositionData: Record<
         "minRank": 3,
         "maxRank": 12,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19799",
@@ -25526,7 +25526,7 @@ export const fantasyPositionData: Record<
         "minRank": 7,
         "maxRank": 9,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19202",
@@ -25542,7 +25542,7 @@ export const fantasyPositionData: Record<
         "minRank": 7,
         "maxRank": 10,
         "ownership": 98.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16393",
@@ -25558,7 +25558,7 @@ export const fantasyPositionData: Record<
         "minRank": 8,
         "maxRank": 12,
         "ownership": 99,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22958",
@@ -25574,7 +25574,7 @@ export const fantasyPositionData: Record<
         "minRank": 5,
         "maxRank": 13,
         "ownership": 98.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19236",
@@ -25590,7 +25590,7 @@ export const fantasyPositionData: Record<
         "minRank": 10,
         "maxRank": 21,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23163",
@@ -25606,7 +25606,7 @@ export const fantasyPositionData: Record<
         "minRank": 10,
         "maxRank": 19,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20130",
@@ -25622,7 +25622,7 @@ export const fantasyPositionData: Record<
         "minRank": 11,
         "maxRank": 21,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23136",
@@ -25638,7 +25638,7 @@ export const fantasyPositionData: Record<
         "minRank": 12,
         "maxRank": 30,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25409",
@@ -25654,7 +25654,7 @@ export const fantasyPositionData: Record<
         "minRank": 10,
         "maxRank": 39,
         "ownership": 74.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23113",
@@ -25670,7 +25670,7 @@ export const fantasyPositionData: Record<
         "minRank": 10,
         "maxRank": 31,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25989",
@@ -25686,7 +25686,7 @@ export const fantasyPositionData: Record<
         "minRank": 13,
         "maxRank": 30,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25403",
@@ -25702,7 +25702,7 @@ export const fantasyPositionData: Record<
         "minRank": 17,
         "maxRank": 28,
         "ownership": 89.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22963",
@@ -25718,7 +25718,7 @@ export const fantasyPositionData: Record<
         "minRank": 18,
         "maxRank": 24,
         "ownership": 97.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17240",
@@ -25734,7 +25734,7 @@ export const fantasyPositionData: Record<
         "minRank": 13,
         "maxRank": 28,
         "ownership": 98.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22936",
@@ -25750,7 +25750,7 @@ export const fantasyPositionData: Record<
         "minRank": 16,
         "maxRank": 56,
         "ownership": 98.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15514",
@@ -25766,7 +25766,7 @@ export const fantasyPositionData: Record<
         "minRank": 17,
         "maxRank": 28,
         "ownership": 98,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25298",
@@ -25782,7 +25782,7 @@ export const fantasyPositionData: Record<
         "minRank": 22,
         "maxRank": 34,
         "ownership": 68.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17298",
@@ -25798,7 +25798,7 @@ export const fantasyPositionData: Record<
         "minRank": 25,
         "maxRank": 27,
         "ownership": 98.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25324",
@@ -25814,7 +25814,7 @@ export const fantasyPositionData: Record<
         "minRank": 13,
         "maxRank": 37,
         "ownership": 97.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23021",
@@ -25830,7 +25830,7 @@ export const fantasyPositionData: Record<
         "minRank": 15,
         "maxRank": 33,
         "ownership": 97.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18218",
@@ -25846,7 +25846,7 @@ export const fantasyPositionData: Record<
         "minRank": 19,
         "maxRank": 41,
         "ownership": 98,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22955",
@@ -25862,7 +25862,7 @@ export const fantasyPositionData: Record<
         "minRank": 16,
         "maxRank": 34,
         "ownership": 92.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20111",
@@ -25878,7 +25878,7 @@ export const fantasyPositionData: Record<
         "minRank": 21,
         "maxRank": 39,
         "ownership": 96.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17233",
@@ -25894,7 +25894,7 @@ export const fantasyPositionData: Record<
         "minRank": 27,
         "maxRank": 29,
         "ownership": 96.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19211",
@@ -25910,7 +25910,7 @@ export const fantasyPositionData: Record<
         "minRank": 19,
         "maxRank": 38,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25395",
@@ -25926,7 +25926,7 @@ export const fantasyPositionData: Record<
         "minRank": 15,
         "maxRank": 47,
         "ownership": 96.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23046",
@@ -25942,7 +25942,7 @@ export const fantasyPositionData: Record<
         "minRank": 27,
         "maxRank": 53,
         "ownership": 98.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25417",
@@ -25958,7 +25958,7 @@ export const fantasyPositionData: Record<
         "minRank": 26,
         "maxRank": 41,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18269",
@@ -25974,7 +25974,7 @@ export const fantasyPositionData: Record<
         "minRank": 30,
         "maxRank": 45,
         "ownership": 98.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-12123",
@@ -25983,14 +25983,14 @@ export const fantasyPositionData: Record<
         "position": "WR",
         "averageRank": 36,
         "rankEcr": 36,
-        "rankAverage": 37.85,
-        "standardDeviation": 7.19,
+        "rankAverage": 38,
+        "standardDeviation": 7.23,
         "tier": 5,
         "positionRank": 16,
         "minRank": 26,
         "maxRank": 54,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19196",
@@ -26006,7 +26006,7 @@ export const fantasyPositionData: Record<
         "minRank": 27,
         "maxRank": 58,
         "ownership": 95.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23059",
@@ -26022,7 +26022,7 @@ export const fantasyPositionData: Record<
         "minRank": 28,
         "maxRank": 49,
         "ownership": 97.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26009",
@@ -26038,7 +26038,7 @@ export const fantasyPositionData: Record<
         "minRank": 31,
         "maxRank": 88,
         "ownership": 83.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19231",
@@ -26054,7 +26054,7 @@ export const fantasyPositionData: Record<
         "minRank": 37,
         "maxRank": 45,
         "ownership": 95,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19222",
@@ -26070,7 +26070,7 @@ export const fantasyPositionData: Record<
         "minRank": 26,
         "maxRank": 61,
         "ownership": 96.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22739",
@@ -26086,7 +26086,7 @@ export const fantasyPositionData: Record<
         "minRank": 33,
         "maxRank": 47,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23072",
@@ -26102,7 +26102,7 @@ export const fantasyPositionData: Record<
         "minRank": 38,
         "maxRank": 51,
         "ownership": 86.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22982",
@@ -26118,7 +26118,7 @@ export const fantasyPositionData: Record<
         "minRank": 42,
         "maxRank": 52,
         "ownership": 96,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26035",
@@ -26134,7 +26134,7 @@ export const fantasyPositionData: Record<
         "minRank": 35,
         "maxRank": 81,
         "ownership": 75.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22902",
@@ -26150,7 +26150,7 @@ export const fantasyPositionData: Record<
         "minRank": 36,
         "maxRank": 68,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19790",
@@ -26159,14 +26159,14 @@ export const fantasyPositionData: Record<
         "position": "WR",
         "averageRank": 47,
         "rankEcr": 47,
-        "rankAverage": 46.77,
-        "standardDeviation": 6.03,
+        "rankAverage": 46.92,
+        "standardDeviation": 6.08,
         "tier": 6,
         "positionRank": 21,
         "minRank": 32,
         "maxRank": 59,
         "ownership": 95.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22916",
@@ -26175,14 +26175,14 @@ export const fantasyPositionData: Record<
         "position": "WR",
         "averageRank": 48,
         "rankEcr": 48,
-        "rankAverage": 47.62,
-        "standardDeviation": 4.72,
+        "rankAverage": 47.69,
+        "standardDeviation": 4.76,
         "tier": 6,
         "positionRank": 22,
         "minRank": 38,
         "maxRank": 54,
         "ownership": 96.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18466",
@@ -26198,7 +26198,7 @@ export const fantasyPositionData: Record<
         "minRank": 43,
         "maxRank": 54,
         "ownership": 92.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26006",
@@ -26214,7 +26214,7 @@ export const fantasyPositionData: Record<
         "minRank": 34,
         "maxRank": 56,
         "ownership": 80.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25981",
@@ -26230,7 +26230,7 @@ export const fantasyPositionData: Record<
         "minRank": 47,
         "maxRank": 57,
         "ownership": 96.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23677",
@@ -26246,7 +26246,7 @@ export const fantasyPositionData: Record<
         "minRank": 39,
         "maxRank": 69,
         "ownership": 94,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25420",
@@ -26255,22 +26255,38 @@ export const fantasyPositionData: Record<
         "position": "WR",
         "averageRank": 53,
         "rankEcr": 53,
-        "rankAverage": 54.25,
-        "standardDeviation": 13.76,
+        "rankAverage": 54.08,
+        "standardDeviation": 13.93,
         "tier": 6,
         "positionRank": 25,
-        "minRank": 41,
+        "minRank": 39,
         "maxRank": 89,
         "ownership": 71.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
+      },
+      {
+        "id": "fp-26122",
+        "name": "Ladd McConkey",
+        "team": "LAC",
+        "position": "WR",
+        "averageRank": 54,
+        "rankEcr": 54,
+        "rankAverage": 54.46,
+        "standardDeviation": 6.77,
+        "tier": 6,
+        "positionRank": 26,
+        "minRank": 46,
+        "maxRank": 65,
+        "ownership": 95.7,
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27166",
         "name": "Cam Skattebo",
         "team": "NYG",
         "position": "RB",
-        "averageRank": 54,
-        "rankEcr": 54,
+        "averageRank": 55,
+        "rankEcr": 55,
         "rankAverage": 54.62,
         "standardDeviation": 4.94,
         "tier": 6,
@@ -26278,23 +26294,7 @@ export const fantasyPositionData: Record<
         "minRank": 47,
         "maxRank": 64,
         "ownership": 71.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
-      },
-      {
-        "id": "fp-26122",
-        "name": "Ladd McConkey",
-        "team": "LAC",
-        "position": "WR",
-        "averageRank": 55,
-        "rankEcr": 55,
-        "rankAverage": 54.69,
-        "standardDeviation": 6.59,
-        "tier": 6,
-        "positionRank": 26,
-        "minRank": 46,
-        "maxRank": 65,
-        "ownership": 95.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27016",
@@ -26310,7 +26310,7 @@ export const fantasyPositionData: Record<
         "minRank": 44,
         "maxRank": 70,
         "ownership": 68.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23886",
@@ -26326,7 +26326,7 @@ export const fantasyPositionData: Record<
         "minRank": 44,
         "maxRank": 65,
         "ownership": 82.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19275",
@@ -26342,7 +26342,7 @@ export const fantasyPositionData: Record<
         "minRank": 36,
         "maxRank": 62,
         "ownership": 97.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23065",
@@ -26358,7 +26358,7 @@ export const fantasyPositionData: Record<
         "minRank": 49,
         "maxRank": 71,
         "ownership": 93.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23062",
@@ -26374,7 +26374,7 @@ export const fantasyPositionData: Record<
         "minRank": 32,
         "maxRank": 69,
         "ownership": 93.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25391",
@@ -26390,7 +26390,7 @@ export const fantasyPositionData: Record<
         "minRank": 45,
         "maxRank": 71,
         "ownership": 86.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19210",
@@ -26406,7 +26406,7 @@ export const fantasyPositionData: Record<
         "minRank": 57,
         "maxRank": 66,
         "ownership": 92.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18239",
@@ -26422,7 +26422,7 @@ export const fantasyPositionData: Record<
         "minRank": 52,
         "maxRank": 72,
         "ownership": 90.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27297",
@@ -26438,7 +26438,7 @@ export const fantasyPositionData: Record<
         "minRank": 55,
         "maxRank": 78,
         "ownership": 69.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27329",
@@ -26454,7 +26454,7 @@ export const fantasyPositionData: Record<
         "minRank": 49,
         "maxRank": 121,
         "ownership": 78.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17265",
@@ -26470,7 +26470,7 @@ export const fantasyPositionData: Record<
         "minRank": 46,
         "maxRank": 75,
         "ownership": 90.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26434",
@@ -26486,7 +26486,7 @@ export const fantasyPositionData: Record<
         "minRank": 56,
         "maxRank": 67,
         "ownership": 96.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-12119",
@@ -26502,7 +26502,7 @@ export const fantasyPositionData: Record<
         "minRank": 48,
         "maxRank": 75,
         "ownership": 91.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25411",
@@ -26518,7 +26518,7 @@ export const fantasyPositionData: Record<
         "minRank": 39,
         "maxRank": 88,
         "ownership": 87.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23160",
@@ -26534,7 +26534,7 @@ export const fantasyPositionData: Record<
         "minRank": 62,
         "maxRank": 100,
         "ownership": 84.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18635",
@@ -26550,7 +26550,7 @@ export const fantasyPositionData: Record<
         "minRank": 58,
         "maxRank": 100,
         "ownership": 87.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23084",
@@ -26566,7 +26566,7 @@ export const fantasyPositionData: Record<
         "minRank": 53,
         "maxRank": 90,
         "ownership": 87.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24209",
@@ -26582,7 +26582,7 @@ export const fantasyPositionData: Record<
         "minRank": 66,
         "maxRank": 78,
         "ownership": 89.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23791",
@@ -26598,7 +26598,7 @@ export const fantasyPositionData: Record<
         "minRank": 70,
         "maxRank": 91,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19792",
@@ -26614,7 +26614,7 @@ export const fantasyPositionData: Record<
         "minRank": 57,
         "maxRank": 117,
         "ownership": 84.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23064",
@@ -26630,7 +26630,7 @@ export const fantasyPositionData: Record<
         "minRank": 74,
         "maxRank": 89,
         "ownership": 91.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27050",
@@ -26646,7 +26646,7 @@ export const fantasyPositionData: Record<
         "minRank": 67,
         "maxRank": 105,
         "ownership": 86.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18219",
@@ -26662,7 +26662,7 @@ export const fantasyPositionData: Record<
         "minRank": 70,
         "maxRank": 88,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19780",
@@ -26678,7 +26678,7 @@ export const fantasyPositionData: Record<
         "minRank": 58,
         "maxRank": 97,
         "ownership": 86.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22726",
@@ -26694,7 +26694,7 @@ export const fantasyPositionData: Record<
         "minRank": 72,
         "maxRank": 99,
         "ownership": 85.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17253",
@@ -26710,7 +26710,7 @@ export const fantasyPositionData: Record<
         "minRank": 61,
         "maxRank": 91,
         "ownership": 92.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22978",
@@ -26726,7 +26726,7 @@ export const fantasyPositionData: Record<
         "minRank": 76,
         "maxRank": 86,
         "ownership": 79.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27142",
@@ -26742,7 +26742,7 @@ export const fantasyPositionData: Record<
         "minRank": 66,
         "maxRank": 108,
         "ownership": 89.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27131",
@@ -26758,7 +26758,7 @@ export const fantasyPositionData: Record<
         "minRank": 66,
         "maxRank": 99,
         "ownership": 77.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23013",
@@ -26774,7 +26774,7 @@ export const fantasyPositionData: Record<
         "minRank": 77,
         "maxRank": 99,
         "ownership": 68.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19647",
@@ -26790,7 +26790,7 @@ export const fantasyPositionData: Record<
         "minRank": 66,
         "maxRank": 99,
         "ownership": 87.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15600",
@@ -26806,7 +26806,7 @@ export const fantasyPositionData: Record<
         "minRank": 73,
         "maxRank": 97,
         "ownership": 92.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18705",
@@ -26822,7 +26822,7 @@ export const fantasyPositionData: Record<
         "minRank": 77,
         "maxRank": 99,
         "ownership": 88.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20164",
@@ -26838,7 +26838,7 @@ export const fantasyPositionData: Record<
         "minRank": 76,
         "maxRank": 96,
         "ownership": 93.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25333",
@@ -26854,7 +26854,7 @@ export const fantasyPositionData: Record<
         "minRank": 74,
         "maxRank": 115,
         "ownership": 87.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23000",
@@ -26870,7 +26870,7 @@ export const fantasyPositionData: Record<
         "minRank": 80,
         "maxRank": 106,
         "ownership": 90.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19245",
@@ -26886,7 +26886,7 @@ export const fantasyPositionData: Record<
         "minRank": 66,
         "maxRank": 119,
         "ownership": 69.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27316",
@@ -26902,7 +26902,7 @@ export const fantasyPositionData: Record<
         "minRank": 77,
         "maxRank": 108,
         "ownership": 58.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19797",
@@ -26918,7 +26918,7 @@ export const fantasyPositionData: Record<
         "minRank": 79,
         "maxRank": 103,
         "ownership": 90.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25247",
@@ -26934,7 +26934,7 @@ export const fantasyPositionData: Record<
         "minRank": 86,
         "maxRank": 111,
         "ownership": 59.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23107",
@@ -26950,7 +26950,7 @@ export const fantasyPositionData: Record<
         "minRank": 83,
         "maxRank": 106,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23106",
@@ -26966,7 +26966,7 @@ export const fantasyPositionData: Record<
         "minRank": 88,
         "maxRank": 116,
         "ownership": 69.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16406",
@@ -26982,7 +26982,7 @@ export const fantasyPositionData: Record<
         "minRank": 93,
         "maxRank": 116,
         "ownership": 80.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-9451",
@@ -26998,7 +26998,7 @@ export const fantasyPositionData: Record<
         "minRank": 73,
         "maxRank": 118,
         "ownership": 92.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16413",
@@ -27014,7 +27014,7 @@ export const fantasyPositionData: Record<
         "minRank": 97,
         "maxRank": 107,
         "ownership": 80.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22910",
@@ -27030,7 +27030,7 @@ export const fantasyPositionData: Record<
         "minRank": 97,
         "maxRank": 112,
         "ownership": 90.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25997",
@@ -27046,7 +27046,7 @@ export const fantasyPositionData: Record<
         "minRank": 96,
         "maxRank": 137,
         "ownership": 54.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23123",
@@ -27062,7 +27062,7 @@ export const fantasyPositionData: Record<
         "minRank": 93,
         "maxRank": 129,
         "ownership": 76.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18600",
@@ -27078,7 +27078,7 @@ export const fantasyPositionData: Record<
         "minRank": 90,
         "maxRank": 133,
         "ownership": 59.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18598",
@@ -27094,7 +27094,7 @@ export const fantasyPositionData: Record<
         "minRank": 89,
         "maxRank": 129,
         "ownership": 85.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17270",
@@ -27110,7 +27110,7 @@ export const fantasyPositionData: Record<
         "minRank": 96,
         "maxRank": 130,
         "ownership": 89.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16499",
@@ -27126,7 +27126,7 @@ export const fantasyPositionData: Record<
         "minRank": 84,
         "maxRank": 137,
         "ownership": 92.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24172",
@@ -27142,7 +27142,7 @@ export const fantasyPositionData: Record<
         "minRank": 95,
         "maxRank": 141,
         "ownership": 53.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26214",
@@ -27158,7 +27158,7 @@ export const fantasyPositionData: Record<
         "minRank": 98,
         "maxRank": 139,
         "ownership": 78.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16673",
@@ -27174,7 +27174,7 @@ export const fantasyPositionData: Record<
         "minRank": 102,
         "maxRank": 127,
         "ownership": 85.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22969",
@@ -27190,7 +27190,7 @@ export const fantasyPositionData: Record<
         "minRank": 102,
         "maxRank": 121,
         "ownership": 58.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22986",
@@ -27206,7 +27206,7 @@ export const fantasyPositionData: Record<
         "minRank": 95,
         "maxRank": 163,
         "ownership": 44.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27331",
@@ -27222,7 +27222,7 @@ export const fantasyPositionData: Record<
         "minRank": 80,
         "maxRank": 201,
         "ownership": 58.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23152",
@@ -27238,7 +27238,7 @@ export const fantasyPositionData: Record<
         "minRank": 72,
         "maxRank": 161,
         "ownership": 80.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19278",
@@ -27254,7 +27254,7 @@ export const fantasyPositionData: Record<
         "minRank": 109,
         "maxRank": 129,
         "ownership": 89.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15501",
@@ -27270,7 +27270,7 @@ export const fantasyPositionData: Record<
         "minRank": 112,
         "maxRank": 128,
         "ownership": 74.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19252",
@@ -27286,7 +27286,7 @@ export const fantasyPositionData: Record<
         "minRank": 101,
         "maxRank": 173,
         "ownership": 38.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23499",
@@ -27302,7 +27302,7 @@ export const fantasyPositionData: Record<
         "minRank": 107,
         "maxRank": 196,
         "ownership": 33.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27339",
@@ -27318,7 +27318,7 @@ export const fantasyPositionData: Record<
         "minRank": 91,
         "maxRank": 149,
         "ownership": 44.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19246",
@@ -27334,7 +27334,7 @@ export const fantasyPositionData: Record<
         "minRank": 103,
         "maxRank": 133,
         "ownership": 62.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17237",
@@ -27350,7 +27350,7 @@ export const fantasyPositionData: Record<
         "minRank": 107,
         "maxRank": 133,
         "ownership": 74.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11594",
@@ -27366,7 +27366,7 @@ export const fantasyPositionData: Record<
         "minRank": 96,
         "maxRank": 172,
         "ownership": 90.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23020",
@@ -27382,7 +27382,7 @@ export const fantasyPositionData: Record<
         "minRank": 106,
         "maxRank": 142,
         "ownership": 67,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23096",
@@ -27398,7 +27398,7 @@ export const fantasyPositionData: Record<
         "minRank": 107,
         "maxRank": 146,
         "ownership": 54.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26055",
@@ -27414,7 +27414,7 @@ export const fantasyPositionData: Record<
         "minRank": 96,
         "maxRank": 225,
         "ownership": 63,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26148",
@@ -27430,7 +27430,7 @@ export const fantasyPositionData: Record<
         "minRank": 92,
         "maxRank": 196,
         "ownership": 54.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27077",
@@ -27446,7 +27446,7 @@ export const fantasyPositionData: Record<
         "minRank": 109,
         "maxRank": 149,
         "ownership": 45.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22980",
@@ -27462,7 +27462,7 @@ export const fantasyPositionData: Record<
         "minRank": 121,
         "maxRank": 143,
         "ownership": 61,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23794",
@@ -27478,7 +27478,7 @@ export const fantasyPositionData: Record<
         "minRank": 114,
         "maxRank": 147,
         "ownership": 78.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24706",
@@ -27494,7 +27494,7 @@ export const fantasyPositionData: Record<
         "minRank": 109,
         "maxRank": 142,
         "ownership": 68.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23310",
@@ -27510,7 +27510,7 @@ export const fantasyPositionData: Record<
         "minRank": 119,
         "maxRank": 143,
         "ownership": 80.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22985",
@@ -27526,7 +27526,7 @@ export const fantasyPositionData: Record<
         "minRank": 120,
         "maxRank": 147,
         "ownership": 84.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27520",
@@ -27542,7 +27542,7 @@ export const fantasyPositionData: Record<
         "minRank": 102,
         "maxRank": 181,
         "ownership": 77.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28127",
@@ -27558,7 +27558,7 @@ export const fantasyPositionData: Record<
         "minRank": 114,
         "maxRank": 198,
         "ownership": 31,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27320",
@@ -27574,7 +27574,7 @@ export const fantasyPositionData: Record<
         "minRank": 119,
         "maxRank": 196,
         "ownership": 42.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23891",
@@ -27590,7 +27590,7 @@ export const fantasyPositionData: Record<
         "minRank": 117,
         "maxRank": 151,
         "ownership": 70.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22718",
@@ -27606,7 +27606,7 @@ export const fantasyPositionData: Record<
         "minRank": 105,
         "maxRank": 157,
         "ownership": 88.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23781",
@@ -27622,7 +27622,7 @@ export const fantasyPositionData: Record<
         "minRank": 110,
         "maxRank": 172,
         "ownership": 56.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17269",
@@ -27638,7 +27638,7 @@ export const fantasyPositionData: Record<
         "minRank": 105,
         "maxRank": 157,
         "ownership": 84,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23071",
@@ -27654,7 +27654,7 @@ export const fantasyPositionData: Record<
         "minRank": 133,
         "maxRank": 152,
         "ownership": 50.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26403",
@@ -27670,7 +27670,7 @@ export const fantasyPositionData: Record<
         "minRank": 125,
         "maxRank": 162,
         "ownership": 52.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15561",
@@ -27686,7 +27686,7 @@ export const fantasyPositionData: Record<
         "minRank": 123,
         "maxRank": 180,
         "ownership": 68.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23019",
@@ -27702,7 +27702,7 @@ export const fantasyPositionData: Record<
         "minRank": 120,
         "maxRank": 165,
         "ownership": 83.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25360",
@@ -27718,7 +27718,7 @@ export const fantasyPositionData: Record<
         "minRank": 131,
         "maxRank": 167,
         "ownership": 27,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23748",
@@ -27734,7 +27734,7 @@ export const fantasyPositionData: Record<
         "minRank": 122,
         "maxRank": 169,
         "ownership": 82.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17236",
@@ -27750,7 +27750,7 @@ export const fantasyPositionData: Record<
         "minRank": 128,
         "maxRank": 178,
         "ownership": 53.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24333",
@@ -27766,7 +27766,7 @@ export const fantasyPositionData: Record<
         "minRank": 141,
         "maxRank": 176,
         "ownership": 65.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8120",
@@ -27782,7 +27782,7 @@ export const fantasyPositionData: Record<
         "minRank": 150,
         "maxRank": 160,
         "ownership": 90.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25345",
@@ -27798,7 +27798,7 @@ export const fantasyPositionData: Record<
         "minRank": 110,
         "maxRank": 195,
         "ownership": 55.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24346",
@@ -27814,7 +27814,7 @@ export const fantasyPositionData: Record<
         "minRank": 117,
         "maxRank": 176,
         "ownership": 32.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22900",
@@ -27830,7 +27830,7 @@ export const fantasyPositionData: Record<
         "minRank": 136,
         "maxRank": 178,
         "ownership": 36.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16447",
@@ -27846,7 +27846,7 @@ export const fantasyPositionData: Record<
         "minRank": 113,
         "maxRank": 232,
         "ownership": 55.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19590",
@@ -27862,7 +27862,7 @@ export const fantasyPositionData: Record<
         "minRank": 120,
         "maxRank": 215,
         "ownership": 66.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24343",
@@ -27878,7 +27878,7 @@ export const fantasyPositionData: Record<
         "minRank": 119,
         "maxRank": 207,
         "ownership": 39.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22908",
@@ -27894,7 +27894,7 @@ export const fantasyPositionData: Record<
         "minRank": 143,
         "maxRank": 174,
         "ownership": 33,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20094",
@@ -27910,7 +27910,7 @@ export const fantasyPositionData: Record<
         "minRank": 145,
         "maxRank": 174,
         "ownership": 39.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26024",
@@ -27926,7 +27926,7 @@ export const fantasyPositionData: Record<
         "minRank": 114,
         "maxRank": 198,
         "ownership": 65.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25323",
@@ -27942,7 +27942,7 @@ export const fantasyPositionData: Record<
         "minRank": 148,
         "maxRank": 176,
         "ownership": 54.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25418",
@@ -27958,7 +27958,7 @@ export const fantasyPositionData: Record<
         "minRank": 114,
         "maxRank": 240,
         "ownership": 31.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28108",
@@ -27974,7 +27974,7 @@ export const fantasyPositionData: Record<
         "minRank": 145,
         "maxRank": 262,
         "ownership": 17.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8090",
@@ -27990,7 +27990,7 @@ export const fantasyPositionData: Record<
         "minRank": 160,
         "maxRank": 182,
         "ownership": 91.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25885",
@@ -28006,7 +28006,7 @@ export const fantasyPositionData: Record<
         "minRank": 126,
         "maxRank": 196,
         "ownership": 39,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18244",
@@ -28022,7 +28022,7 @@ export const fantasyPositionData: Record<
         "minRank": 139,
         "maxRank": 220,
         "ownership": 65.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8260",
@@ -28038,7 +28038,7 @@ export const fantasyPositionData: Record<
         "minRank": 160,
         "maxRank": 170,
         "ownership": 88.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19562",
@@ -28054,7 +28054,7 @@ export const fantasyPositionData: Record<
         "minRank": 110,
         "maxRank": 202,
         "ownership": 61.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28107",
@@ -28070,7 +28070,7 @@ export const fantasyPositionData: Record<
         "minRank": 127,
         "maxRank": 296,
         "ownership": 41.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24687",
@@ -28086,7 +28086,7 @@ export const fantasyPositionData: Record<
         "minRank": 153,
         "maxRank": 183,
         "ownership": 57.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18232",
@@ -28102,7 +28102,7 @@ export const fantasyPositionData: Record<
         "minRank": 136,
         "maxRank": 213,
         "ownership": 56.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8280",
@@ -28118,7 +28118,7 @@ export const fantasyPositionData: Record<
         "minRank": 166,
         "maxRank": 185,
         "ownership": 62.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8230",
@@ -28134,7 +28134,7 @@ export const fantasyPositionData: Record<
         "minRank": 170,
         "maxRank": 189,
         "ownership": 73.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24362",
@@ -28150,7 +28150,7 @@ export const fantasyPositionData: Record<
         "minRank": 126,
         "maxRank": 221,
         "ownership": 35,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16421",
@@ -28166,7 +28166,7 @@ export const fantasyPositionData: Record<
         "minRank": 127,
         "maxRank": 227,
         "ownership": 79,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22989",
@@ -28182,7 +28182,7 @@ export const fantasyPositionData: Record<
         "minRank": 162,
         "maxRank": 203,
         "ownership": 38.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13981",
@@ -28198,7 +28198,7 @@ export const fantasyPositionData: Record<
         "minRank": 116,
         "maxRank": 217,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24755",
@@ -28214,7 +28214,7 @@ export const fantasyPositionData: Record<
         "minRank": 146,
         "maxRank": 213,
         "ownership": 33.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27102",
@@ -28230,7 +28230,7 @@ export const fantasyPositionData: Record<
         "minRank": 148,
         "maxRank": 221,
         "ownership": 38.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8180",
@@ -28246,7 +28246,7 @@ export const fantasyPositionData: Record<
         "minRank": 174,
         "maxRank": 187,
         "ownership": 78.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15642",
@@ -28262,7 +28262,7 @@ export const fantasyPositionData: Record<
         "minRank": 128,
         "maxRank": 254,
         "ownership": 52.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24357",
@@ -28278,7 +28278,7 @@ export const fantasyPositionData: Record<
         "minRank": 147,
         "maxRank": 229,
         "ownership": 31.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26068",
@@ -28294,7 +28294,7 @@ export const fantasyPositionData: Record<
         "minRank": 186,
         "maxRank": 186,
         "ownership": 93,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8170",
@@ -28310,7 +28310,7 @@ export const fantasyPositionData: Record<
         "minRank": 173,
         "maxRank": 248,
         "ownership": 48.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25361",
@@ -28326,7 +28326,7 @@ export const fantasyPositionData: Record<
         "minRank": 153,
         "maxRank": 217,
         "ownership": 39.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8140",
@@ -28342,7 +28342,7 @@ export const fantasyPositionData: Record<
         "minRank": 184,
         "maxRank": 211,
         "ownership": 57.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23679",
@@ -28358,7 +28358,7 @@ export const fantasyPositionData: Record<
         "minRank": 176,
         "maxRank": 207,
         "ownership": 30.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8240",
@@ -28374,7 +28374,7 @@ export const fantasyPositionData: Record<
         "minRank": 184,
         "maxRank": 205,
         "ownership": 74.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19201",
@@ -28390,7 +28390,7 @@ export const fantasyPositionData: Record<
         "minRank": 153,
         "maxRank": 237,
         "ownership": 70.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23144",
@@ -28406,7 +28406,7 @@ export const fantasyPositionData: Record<
         "minRank": 180,
         "maxRank": 225,
         "ownership": 42.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15756",
@@ -28422,7 +28422,7 @@ export const fantasyPositionData: Record<
         "minRank": 191,
         "maxRank": 192,
         "ownership": 75.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26034",
@@ -28438,7 +28438,7 @@ export const fantasyPositionData: Record<
         "minRank": 165,
         "maxRank": 246,
         "ownership": 79.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26191",
@@ -28454,7 +28454,7 @@ export const fantasyPositionData: Record<
         "minRank": 161,
         "maxRank": 221,
         "ownership": 22.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26355",
@@ -28470,7 +28470,7 @@ export const fantasyPositionData: Record<
         "minRank": 155,
         "maxRank": 236,
         "ownership": 45.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26475",
@@ -28486,7 +28486,7 @@ export const fantasyPositionData: Record<
         "minRank": 191,
         "maxRank": 206,
         "ownership": 70.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27446",
@@ -28502,7 +28502,7 @@ export const fantasyPositionData: Record<
         "minRank": 175,
         "maxRank": 209,
         "ownership": 28.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8070",
@@ -28518,7 +28518,7 @@ export const fantasyPositionData: Record<
         "minRank": 187,
         "maxRank": 211,
         "ownership": 45.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23901",
@@ -28534,7 +28534,7 @@ export const fantasyPositionData: Record<
         "minRank": 192,
         "maxRank": 212,
         "ownership": 89.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23091",
@@ -28550,7 +28550,7 @@ export const fantasyPositionData: Record<
         "minRank": 180,
         "maxRank": 225,
         "ownership": 27.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23179",
@@ -28566,7 +28566,7 @@ export const fantasyPositionData: Record<
         "minRank": 149,
         "maxRank": 231,
         "ownership": 37.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26335",
@@ -28582,7 +28582,7 @@ export const fantasyPositionData: Record<
         "minRank": 157,
         "maxRank": 228,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8250",
@@ -28598,7 +28598,7 @@ export const fantasyPositionData: Record<
         "minRank": 187,
         "maxRank": 190,
         "ownership": 40.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-14003",
@@ -28614,7 +28614,7 @@ export const fantasyPositionData: Record<
         "minRank": 192,
         "maxRank": 216,
         "ownership": 82.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8110",
@@ -28630,7 +28630,7 @@ export const fantasyPositionData: Record<
         "minRank": 187,
         "maxRank": 193,
         "ownership": 43.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26039",
@@ -28646,7 +28646,7 @@ export const fantasyPositionData: Record<
         "minRank": 147,
         "maxRank": 269,
         "ownership": 31.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23982",
@@ -28662,7 +28662,7 @@ export const fantasyPositionData: Record<
         "minRank": 157,
         "maxRank": 256,
         "ownership": 34.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25987",
@@ -28678,7 +28678,7 @@ export const fantasyPositionData: Record<
         "minRank": 140,
         "maxRank": 230,
         "ownership": 24,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26038",
@@ -28694,7 +28694,7 @@ export const fantasyPositionData: Record<
         "minRank": 135,
         "maxRank": 301,
         "ownership": 34.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23092",
@@ -28710,7 +28710,7 @@ export const fantasyPositionData: Record<
         "minRank": 168,
         "maxRank": 264,
         "ownership": 42.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17349",
@@ -28726,7 +28726,7 @@ export const fantasyPositionData: Record<
         "minRank": 172,
         "maxRank": 230,
         "ownership": 48.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15802",
@@ -28742,7 +28742,7 @@ export const fantasyPositionData: Record<
         "minRank": 135,
         "maxRank": 338,
         "ownership": 51.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28084",
@@ -28758,7 +28758,7 @@ export const fantasyPositionData: Record<
         "minRank": 161,
         "maxRank": 280,
         "ownership": 27.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8150",
@@ -28774,7 +28774,7 @@ export const fantasyPositionData: Record<
         "minRank": 193,
         "maxRank": 234,
         "ownership": 39.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17575",
@@ -28790,7 +28790,7 @@ export const fantasyPositionData: Record<
         "minRank": 206,
         "maxRank": 233,
         "ownership": 45.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23297",
@@ -28806,7 +28806,7 @@ export const fantasyPositionData: Record<
         "minRank": 199,
         "maxRank": 251,
         "ownership": 34.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8020",
@@ -28822,7 +28822,7 @@ export const fantasyPositionData: Record<
         "minRank": 182,
         "maxRank": 278,
         "ownership": 48.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27463",
@@ -28838,7 +28838,7 @@ export const fantasyPositionData: Record<
         "minRank": 198,
         "maxRank": 268,
         "ownership": 32.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27534",
@@ -28854,7 +28854,7 @@ export const fantasyPositionData: Record<
         "minRank": 206,
         "maxRank": 212,
         "ownership": 39.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25337",
@@ -28870,7 +28870,7 @@ export const fantasyPositionData: Record<
         "minRank": 183,
         "maxRank": 292,
         "ownership": 46.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27291",
@@ -28886,7 +28886,7 @@ export const fantasyPositionData: Record<
         "minRank": 210,
         "maxRank": 332,
         "ownership": 14.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13731",
@@ -28902,7 +28902,7 @@ export const fantasyPositionData: Record<
         "minRank": 212,
         "maxRank": 249,
         "ownership": 24.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18290",
@@ -28918,7 +28918,7 @@ export const fantasyPositionData: Record<
         "minRank": 180,
         "maxRank": 253,
         "ownership": 74.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17258",
@@ -28934,7 +28934,7 @@ export const fantasyPositionData: Record<
         "minRank": 183,
         "maxRank": 269,
         "ownership": 54.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25419",
@@ -28950,7 +28950,7 @@ export const fantasyPositionData: Record<
         "minRank": 168,
         "maxRank": 266,
         "ownership": 35.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25984",
@@ -28966,7 +28966,7 @@ export const fantasyPositionData: Record<
         "minRank": 221,
         "maxRank": 242,
         "ownership": 15.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16712",
@@ -28982,7 +28982,7 @@ export const fantasyPositionData: Record<
         "minRank": 197,
         "maxRank": 281,
         "ownership": 54.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27165",
@@ -28998,7 +28998,7 @@ export const fantasyPositionData: Record<
         "minRank": 155,
         "maxRank": 292,
         "ownership": 26.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26398",
@@ -29014,7 +29014,7 @@ export const fantasyPositionData: Record<
         "minRank": 200,
         "maxRank": 268,
         "ownership": 23.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26075",
@@ -29030,7 +29030,7 @@ export const fantasyPositionData: Record<
         "minRank": 202,
         "maxRank": 251,
         "ownership": 61.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19058",
@@ -29046,7 +29046,7 @@ export const fantasyPositionData: Record<
         "minRank": 216,
         "maxRank": 233,
         "ownership": 54.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8100",
@@ -29062,7 +29062,7 @@ export const fantasyPositionData: Record<
         "minRank": 205,
         "maxRank": 355,
         "ownership": 60.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27994",
@@ -29078,7 +29078,7 @@ export const fantasyPositionData: Record<
         "minRank": 177,
         "maxRank": 271,
         "ownership": 23.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24360",
@@ -29094,7 +29094,7 @@ export const fantasyPositionData: Record<
         "minRank": 174,
         "maxRank": 296,
         "ownership": 10.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28047",
@@ -29110,7 +29110,7 @@ export const fantasyPositionData: Record<
         "minRank": 201,
         "maxRank": 268,
         "ownership": 30.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8030",
@@ -29126,7 +29126,7 @@ export const fantasyPositionData: Record<
         "minRank": 211,
         "maxRank": 278,
         "ownership": 54.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16399",
@@ -29142,7 +29142,7 @@ export const fantasyPositionData: Record<
         "minRank": 223,
         "maxRank": 260,
         "ownership": 39.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26215",
@@ -29158,7 +29158,7 @@ export const fantasyPositionData: Record<
         "minRank": 198,
         "maxRank": 302,
         "ownership": 27.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28126",
@@ -29174,7 +29174,7 @@ export const fantasyPositionData: Record<
         "minRank": 200,
         "maxRank": 271,
         "ownership": 21.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27122",
@@ -29190,7 +29190,7 @@ export const fantasyPositionData: Record<
         "minRank": 179,
         "maxRank": 261,
         "ownership": 22.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27211",
@@ -29206,7 +29206,7 @@ export const fantasyPositionData: Record<
         "minRank": 215,
         "maxRank": 246,
         "ownership": 27,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24177",
@@ -29222,7 +29222,7 @@ export const fantasyPositionData: Record<
         "minRank": 169,
         "maxRank": 301,
         "ownership": 25.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13029",
@@ -29238,7 +29238,7 @@ export const fantasyPositionData: Record<
         "minRank": 212,
         "maxRank": 252,
         "ownership": 46.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28138",
@@ -29254,7 +29254,7 @@ export const fantasyPositionData: Record<
         "minRank": 173,
         "maxRank": 289,
         "ownership": 6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26638",
@@ -29270,7 +29270,7 @@ export const fantasyPositionData: Record<
         "minRank": 212,
         "maxRank": 281,
         "ownership": 43.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27315",
@@ -29286,7 +29286,7 @@ export const fantasyPositionData: Record<
         "minRank": 169,
         "maxRank": 287,
         "ownership": 32.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23682",
@@ -29302,7 +29302,7 @@ export const fantasyPositionData: Record<
         "minRank": 213,
         "maxRank": 313,
         "ownership": 31.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24367",
@@ -29318,7 +29318,7 @@ export const fantasyPositionData: Record<
         "minRank": 218,
         "maxRank": 297,
         "ownership": 10.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19372",
@@ -29334,7 +29334,7 @@ export const fantasyPositionData: Record<
         "minRank": 223,
         "maxRank": 299,
         "ownership": 35.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24354",
@@ -29350,7 +29350,7 @@ export const fantasyPositionData: Record<
         "minRank": 220,
         "maxRank": 263,
         "ownership": 18.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27059",
@@ -29366,7 +29366,7 @@ export const fantasyPositionData: Record<
         "minRank": 198,
         "maxRank": 350,
         "ownership": 29.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28013",
@@ -29382,7 +29382,7 @@ export const fantasyPositionData: Record<
         "minRank": 222,
         "maxRank": 334,
         "ownership": 57.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27109",
@@ -29398,7 +29398,7 @@ export const fantasyPositionData: Record<
         "minRank": 225,
         "maxRank": 285,
         "ownership": 40.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20163",
@@ -29414,7 +29414,7 @@ export const fantasyPositionData: Record<
         "minRank": 231,
         "maxRank": 267,
         "ownership": 31.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27487",
@@ -29430,7 +29430,7 @@ export const fantasyPositionData: Record<
         "minRank": 198,
         "maxRank": 272,
         "ownership": 20.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26022",
@@ -29446,7 +29446,7 @@ export const fantasyPositionData: Record<
         "minRank": 204,
         "maxRank": 315,
         "ownership": 25.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26341",
@@ -29462,7 +29462,7 @@ export const fantasyPositionData: Record<
         "minRank": 197,
         "maxRank": 318,
         "ownership": 27.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8010",
@@ -29478,7 +29478,7 @@ export const fantasyPositionData: Record<
         "minRank": 193,
         "maxRank": 322,
         "ownership": 24.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19810",
@@ -29494,7 +29494,7 @@ export const fantasyPositionData: Record<
         "minRank": 209,
         "maxRank": 271,
         "ownership": 42.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23104",
@@ -29510,7 +29510,7 @@ export const fantasyPositionData: Record<
         "minRank": 202,
         "maxRank": 290,
         "ownership": 39.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8270",
@@ -29526,7 +29526,7 @@ export const fantasyPositionData: Record<
         "minRank": 211,
         "maxRank": 279,
         "ownership": 35.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22973",
@@ -29542,7 +29542,7 @@ export const fantasyPositionData: Record<
         "minRank": 231,
         "maxRank": 306,
         "ownership": 30.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16026",
@@ -29558,7 +29558,7 @@ export const fantasyPositionData: Record<
         "minRank": 206,
         "maxRank": 322,
         "ownership": 23.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25388",
@@ -29574,7 +29574,7 @@ export const fantasyPositionData: Record<
         "minRank": 159,
         "maxRank": 320,
         "ownership": 39.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11687",
@@ -29590,7 +29590,7 @@ export const fantasyPositionData: Record<
         "minRank": 214,
         "maxRank": 310,
         "ownership": 31.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28130",
@@ -29606,7 +29606,7 @@ export const fantasyPositionData: Record<
         "minRank": 246,
         "maxRank": 282,
         "ownership": 19.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19302",
@@ -29622,7 +29622,7 @@ export const fantasyPositionData: Record<
         "minRank": 168,
         "maxRank": 277,
         "ownership": 24.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27310",
@@ -29638,7 +29638,7 @@ export const fantasyPositionData: Record<
         "minRank": 167,
         "maxRank": 327,
         "ownership": 23.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26314",
@@ -29654,7 +29654,7 @@ export const fantasyPositionData: Record<
         "minRank": 217,
         "maxRank": 309,
         "ownership": 26.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26005",
@@ -29670,7 +29670,7 @@ export const fantasyPositionData: Record<
         "minRank": 234,
         "maxRank": 308,
         "ownership": 33.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24778",
@@ -29686,7 +29686,7 @@ export const fantasyPositionData: Record<
         "minRank": 228,
         "maxRank": 280,
         "ownership": 29.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19794",
@@ -29702,7 +29702,7 @@ export const fantasyPositionData: Record<
         "minRank": 215,
         "maxRank": 301,
         "ownership": 21.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8130",
@@ -29718,7 +29718,7 @@ export const fantasyPositionData: Record<
         "minRank": 234,
         "maxRank": 317,
         "ownership": 28.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16411",
@@ -29734,7 +29734,7 @@ export const fantasyPositionData: Record<
         "minRank": 230,
         "maxRank": 318,
         "ownership": 35.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-9001",
@@ -29750,7 +29750,7 @@ export const fantasyPositionData: Record<
         "minRank": 235,
         "maxRank": 307,
         "ownership": 36.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23181",
@@ -29766,7 +29766,7 @@ export const fantasyPositionData: Record<
         "minRank": 241,
         "maxRank": 294,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26019",
@@ -29782,7 +29782,7 @@ export const fantasyPositionData: Record<
         "minRank": 231,
         "maxRank": 289,
         "ownership": 29.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24344",
@@ -29798,7 +29798,7 @@ export const fantasyPositionData: Record<
         "minRank": 218,
         "maxRank": 318,
         "ownership": 19.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26444",
@@ -29814,7 +29814,7 @@ export const fantasyPositionData: Record<
         "minRank": 226,
         "maxRank": 316,
         "ownership": 2.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25968",
@@ -29830,7 +29830,7 @@ export const fantasyPositionData: Record<
         "minRank": 241,
         "maxRank": 321,
         "ownership": 32.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27097",
@@ -29846,7 +29846,7 @@ export const fantasyPositionData: Record<
         "minRank": 242,
         "maxRank": 283,
         "ownership": 8.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25977",
@@ -29862,7 +29862,7 @@ export const fantasyPositionData: Record<
         "minRank": 230,
         "maxRank": 315,
         "ownership": 8.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18280",
@@ -29878,7 +29878,7 @@ export const fantasyPositionData: Record<
         "minRank": 207,
         "maxRank": 300,
         "ownership": 11.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23080",
@@ -29894,7 +29894,7 @@ export const fantasyPositionData: Record<
         "minRank": 238,
         "maxRank": 297,
         "ownership": 22.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16433",
@@ -29910,7 +29910,7 @@ export const fantasyPositionData: Record<
         "minRank": 244,
         "maxRank": 302,
         "ownership": 36.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27224",
@@ -29926,7 +29926,7 @@ export const fantasyPositionData: Record<
         "minRank": 261,
         "maxRank": 298,
         "ownership": 17.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16420",
@@ -29942,7 +29942,7 @@ export const fantasyPositionData: Record<
         "minRank": 230,
         "maxRank": 282,
         "ownership": 27.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17268",
@@ -29958,7 +29958,7 @@ export const fantasyPositionData: Record<
         "minRank": 238,
         "maxRank": 314,
         "ownership": 26.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11616",
@@ -29974,7 +29974,7 @@ export const fantasyPositionData: Record<
         "minRank": 246,
         "maxRank": 303,
         "ownership": 38.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26392",
@@ -29990,7 +29990,7 @@ export const fantasyPositionData: Record<
         "minRank": 218,
         "maxRank": 296,
         "ownership": 5.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18406",
@@ -30006,7 +30006,7 @@ export const fantasyPositionData: Record<
         "minRank": 240,
         "maxRank": 317,
         "ownership": 9.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16489",
@@ -30022,7 +30022,7 @@ export const fantasyPositionData: Record<
         "minRank": 255,
         "maxRank": 304,
         "ownership": 11.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27259",
@@ -30038,7 +30038,7 @@ export const fantasyPositionData: Record<
         "minRank": 257,
         "maxRank": 306,
         "ownership": 16.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16398",
@@ -30054,7 +30054,7 @@ export const fantasyPositionData: Record<
         "minRank": 252,
         "maxRank": 320,
         "ownership": 29.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17272",
@@ -30070,7 +30070,7 @@ export const fantasyPositionData: Record<
         "minRank": 255,
         "maxRank": 318,
         "ownership": 23.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25654",
@@ -30086,7 +30086,7 @@ export const fantasyPositionData: Record<
         "minRank": 250,
         "maxRank": 309,
         "ownership": 9.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22915",
@@ -30102,7 +30102,7 @@ export const fantasyPositionData: Record<
         "minRank": 262,
         "maxRank": 293,
         "ownership": 37.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26409",
@@ -30118,7 +30118,7 @@ export const fantasyPositionData: Record<
         "minRank": 257,
         "maxRank": 306,
         "ownership": 25.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23118",
@@ -30134,7 +30134,7 @@ export const fantasyPositionData: Record<
         "minRank": 236,
         "maxRank": 304,
         "ownership": 4.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19198",
@@ -30150,7 +30150,7 @@ export const fantasyPositionData: Record<
         "minRank": 250,
         "maxRank": 358,
         "ownership": 32.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26136",
@@ -30166,7 +30166,7 @@ export const fantasyPositionData: Record<
         "minRank": 244,
         "maxRank": 322,
         "ownership": 11.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-11177",
@@ -30182,7 +30182,7 @@ export const fantasyPositionData: Record<
         "minRank": 241,
         "maxRank": 329,
         "ownership": 28.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18256",
@@ -30198,7 +30198,7 @@ export const fantasyPositionData: Record<
         "minRank": 250,
         "maxRank": 310,
         "ownership": 13.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16423",
@@ -30214,7 +30214,7 @@ export const fantasyPositionData: Record<
         "minRank": 230,
         "maxRank": 331,
         "ownership": 6.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23079",
@@ -30230,7 +30230,7 @@ export const fantasyPositionData: Record<
         "minRank": 301,
         "maxRank": 329,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18706",
@@ -30246,7 +30246,7 @@ export const fantasyPositionData: Record<
         "minRank": 263,
         "maxRank": 311,
         "ownership": 23.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25876",
@@ -30262,7 +30262,7 @@ export const fantasyPositionData: Record<
         "minRank": 242,
         "maxRank": 311,
         "ownership": 2.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24205",
@@ -30278,7 +30278,7 @@ export const fantasyPositionData: Record<
         "minRank": 257,
         "maxRank": 310,
         "ownership": 4.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25823",
@@ -30294,7 +30294,7 @@ export const fantasyPositionData: Record<
         "minRank": 274,
         "maxRank": 314,
         "ownership": 6.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18226",
@@ -30310,7 +30310,7 @@ export const fantasyPositionData: Record<
         "minRank": 271,
         "maxRank": 324,
         "ownership": 20.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8190",
@@ -30326,7 +30326,7 @@ export const fantasyPositionData: Record<
         "minRank": 248,
         "maxRank": 324,
         "ownership": 46.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22913",
@@ -30342,7 +30342,7 @@ export const fantasyPositionData: Record<
         "minRank": 261,
         "maxRank": 315,
         "ownership": 7.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8040",
@@ -30358,7 +30358,7 @@ export const fantasyPositionData: Record<
         "minRank": 233,
         "maxRank": 319,
         "ownership": 14.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23153",
@@ -30374,7 +30374,7 @@ export const fantasyPositionData: Record<
         "minRank": 245,
         "maxRank": 267,
         "ownership": 23.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8050",
@@ -30390,7 +30390,7 @@ export const fantasyPositionData: Record<
         "minRank": 166,
         "maxRank": 244,
         "ownership": 25.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8080",
@@ -30406,7 +30406,7 @@ export const fantasyPositionData: Record<
         "minRank": 171,
         "maxRank": 234,
         "ownership": 26.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27285",
@@ -30422,7 +30422,7 @@ export const fantasyPositionData: Record<
         "minRank": 283,
         "maxRank": 336,
         "ownership": 21.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26212",
@@ -30438,7 +30438,7 @@ export const fantasyPositionData: Record<
         "minRank": 284,
         "maxRank": 315,
         "ownership": 3.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27147",
@@ -30454,7 +30454,7 @@ export const fantasyPositionData: Record<
         "minRank": 272,
         "maxRank": 330,
         "ownership": 14.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28401",
@@ -30470,7 +30470,7 @@ export const fantasyPositionData: Record<
         "minRank": 196,
         "maxRank": 259,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24335",
@@ -30486,7 +30486,7 @@ export const fantasyPositionData: Record<
         "minRank": 265,
         "maxRank": 320,
         "ownership": 7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16425",
@@ -30502,7 +30502,7 @@ export const fantasyPositionData: Record<
         "minRank": 286,
         "maxRank": 316,
         "ownership": 24.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23101",
@@ -30518,7 +30518,7 @@ export const fantasyPositionData: Record<
         "minRank": 194,
         "maxRank": 300,
         "ownership": 7.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24371",
@@ -30534,7 +30534,7 @@ export const fantasyPositionData: Record<
         "minRank": 272,
         "maxRank": 333,
         "ownership": 15.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23054",
@@ -30550,7 +30550,7 @@ export const fantasyPositionData: Record<
         "minRank": 274,
         "maxRank": 324,
         "ownership": 10.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27337",
@@ -30566,7 +30566,7 @@ export const fantasyPositionData: Record<
         "minRank": 194,
         "maxRank": 287,
         "ownership": 31.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25368",
@@ -30582,7 +30582,7 @@ export const fantasyPositionData: Record<
         "minRank": 274,
         "maxRank": 356,
         "ownership": 37.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25393",
@@ -30598,7 +30598,7 @@ export const fantasyPositionData: Record<
         "minRank": 283,
         "maxRank": 342,
         "ownership": 7.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22921",
@@ -30614,7 +30614,7 @@ export const fantasyPositionData: Record<
         "minRank": 308,
         "maxRank": 326,
         "ownership": 10.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25167",
@@ -30630,7 +30630,7 @@ export const fantasyPositionData: Record<
         "minRank": 208,
         "maxRank": 256,
         "ownership": 0,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16540",
@@ -30646,7 +30646,7 @@ export const fantasyPositionData: Record<
         "minRank": 231,
         "maxRank": 240,
         "ownership": 21.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28135",
@@ -30662,7 +30662,7 @@ export const fantasyPositionData: Record<
         "minRank": 200,
         "maxRank": 298,
         "ownership": 2.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8200",
@@ -30678,7 +30678,7 @@ export const fantasyPositionData: Record<
         "minRank": 184,
         "maxRank": 185,
         "ownership": 29.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8160",
@@ -30694,7 +30694,7 @@ export const fantasyPositionData: Record<
         "minRank": 187,
         "maxRank": 344,
         "ownership": 16.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16548",
@@ -30710,7 +30710,7 @@ export const fantasyPositionData: Record<
         "minRank": 213,
         "maxRank": 328,
         "ownership": 3.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-8310",
@@ -30726,7 +30726,7 @@ export const fantasyPositionData: Record<
         "minRank": 190,
         "maxRank": 205,
         "ownership": 22.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25335",
@@ -30742,7 +30742,7 @@ export const fantasyPositionData: Record<
         "minRank": 246,
         "maxRank": 318,
         "ownership": 11.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23018",
@@ -30758,7 +30758,7 @@ export const fantasyPositionData: Record<
         "minRank": 270,
         "maxRank": 350,
         "ownership": 36,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27449",
@@ -30774,7 +30774,7 @@ export const fantasyPositionData: Record<
         "minRank": 263,
         "maxRank": 345,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24901",
@@ -30790,7 +30790,7 @@ export const fantasyPositionData: Record<
         "minRank": 265,
         "maxRank": 357,
         "ownership": 7.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26328",
@@ -30806,7 +30806,7 @@ export const fantasyPositionData: Record<
         "minRank": 266,
         "maxRank": 330,
         "ownership": 5.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25287",
@@ -30822,7 +30822,7 @@ export const fantasyPositionData: Record<
         "minRank": 272,
         "maxRank": 374,
         "ownership": 7.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25354",
@@ -30838,7 +30838,7 @@ export const fantasyPositionData: Record<
         "minRank": 211,
         "maxRank": 214,
         "ownership": 4.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28079",
@@ -30854,7 +30854,7 @@ export const fantasyPositionData: Record<
         "minRank": 228,
         "maxRank": 328,
         "ownership": 7.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27993",
@@ -30870,7 +30870,7 @@ export const fantasyPositionData: Record<
         "minRank": 235,
         "maxRank": 294,
         "ownership": 30.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23739",
@@ -30886,7 +30886,7 @@ export const fantasyPositionData: Record<
         "minRank": 264,
         "maxRank": 336,
         "ownership": 9.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22967",
@@ -30902,7 +30902,7 @@ export const fantasyPositionData: Record<
         "minRank": 268,
         "maxRank": 335,
         "ownership": 18,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19028",
@@ -30918,7 +30918,7 @@ export const fantasyPositionData: Record<
         "minRank": 224,
         "maxRank": 236,
         "ownership": 3.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-15623",
@@ -30934,7 +30934,7 @@ export const fantasyPositionData: Record<
         "minRank": 260,
         "maxRank": 345,
         "ownership": 8.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25533",
@@ -30950,7 +30950,7 @@ export const fantasyPositionData: Record<
         "minRank": 215,
         "maxRank": 252,
         "ownership": 3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-16483",
@@ -30966,7 +30966,7 @@ export const fantasyPositionData: Record<
         "minRank": 306,
         "maxRank": 332,
         "ownership": 6.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28133",
@@ -30982,7 +30982,7 @@ export const fantasyPositionData: Record<
         "minRank": 263,
         "maxRank": 298,
         "ownership": 9.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25304",
@@ -30998,7 +30998,7 @@ export const fantasyPositionData: Record<
         "minRank": 266,
         "maxRank": 339,
         "ownership": 14.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17246",
@@ -31014,7 +31014,7 @@ export const fantasyPositionData: Record<
         "minRank": 311,
         "maxRank": 325,
         "ownership": 14,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20156",
@@ -31030,7 +31030,7 @@ export const fantasyPositionData: Record<
         "minRank": 284,
         "maxRank": 363,
         "ownership": 24.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27144",
@@ -31046,7 +31046,7 @@ export const fantasyPositionData: Record<
         "minRank": 276,
         "maxRank": 320,
         "ownership": 2.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27076",
@@ -31062,7 +31062,7 @@ export const fantasyPositionData: Record<
         "minRank": 302,
         "maxRank": 342,
         "ownership": 5.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19781",
@@ -31078,7 +31078,7 @@ export const fantasyPositionData: Record<
         "minRank": 241,
         "maxRank": 375,
         "ownership": 31,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27261",
@@ -31094,7 +31094,7 @@ export const fantasyPositionData: Record<
         "minRank": 247,
         "maxRank": 281,
         "ownership": 2.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22905",
@@ -31110,7 +31110,7 @@ export const fantasyPositionData: Record<
         "minRank": 200,
         "maxRank": 349,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27798",
@@ -31126,7 +31126,7 @@ export const fantasyPositionData: Record<
         "minRank": 275,
         "maxRank": 277,
         "ownership": 5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-14104",
@@ -31142,7 +31142,7 @@ export const fantasyPositionData: Record<
         "minRank": 267,
         "maxRank": 347,
         "ownership": 26,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28297",
@@ -31158,7 +31158,7 @@ export const fantasyPositionData: Record<
         "minRank": 274,
         "maxRank": 325,
         "ownership": 3.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28424",
@@ -31174,7 +31174,7 @@ export const fantasyPositionData: Record<
         "minRank": 204,
         "maxRank": 364,
         "ownership": 0.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22833",
@@ -31190,7 +31190,7 @@ export const fantasyPositionData: Record<
         "minRank": 267,
         "maxRank": 299,
         "ownership": 0.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-20126",
@@ -31206,7 +31206,7 @@ export const fantasyPositionData: Record<
         "minRank": 289,
         "maxRank": 334,
         "ownership": 3.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27454",
@@ -31222,7 +31222,7 @@ export const fantasyPositionData: Record<
         "minRank": 289,
         "maxRank": 372,
         "ownership": 7.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23004",
@@ -31238,7 +31238,7 @@ export const fantasyPositionData: Record<
         "minRank": 284,
         "maxRank": 351,
         "ownership": 17.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-27288",
@@ -31254,7 +31254,7 @@ export const fantasyPositionData: Record<
         "minRank": 287,
         "maxRank": 302,
         "ownership": 6.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28129",
@@ -31270,7 +31270,7 @@ export const fantasyPositionData: Record<
         "minRank": 263,
         "maxRank": 333,
         "ownership": 3.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22930",
@@ -31286,7 +31286,7 @@ export const fantasyPositionData: Record<
         "minRank": 314,
         "maxRank": 343,
         "ownership": 4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28154",
@@ -31302,7 +31302,7 @@ export const fantasyPositionData: Record<
         "minRank": 256,
         "maxRank": 344,
         "ownership": 1.8,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25430",
@@ -31318,7 +31318,7 @@ export const fantasyPositionData: Record<
         "minRank": 267,
         "maxRank": 341,
         "ownership": 10.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22845",
@@ -31334,7 +31334,7 @@ export const fantasyPositionData: Record<
         "minRank": 293,
         "maxRank": 370,
         "ownership": 3.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19539",
@@ -31350,7 +31350,7 @@ export const fantasyPositionData: Record<
         "minRank": 287,
         "maxRank": 361,
         "ownership": 16.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25332",
@@ -31366,7 +31366,7 @@ export const fantasyPositionData: Record<
         "minRank": 291,
         "maxRank": 323,
         "ownership": 4.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28067",
@@ -31382,7 +31382,7 @@ export const fantasyPositionData: Record<
         "minRank": 272,
         "maxRank": 346,
         "ownership": 1.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26310",
@@ -31398,7 +31398,7 @@ export const fantasyPositionData: Record<
         "minRank": 271,
         "maxRank": 351,
         "ownership": 12.2,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22895",
@@ -31414,7 +31414,7 @@ export const fantasyPositionData: Record<
         "minRank": 298,
         "maxRank": 326,
         "ownership": 5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22728",
@@ -31430,7 +31430,7 @@ export const fantasyPositionData: Record<
         "minRank": 304,
         "maxRank": 321,
         "ownership": 16.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26964",
@@ -31446,7 +31446,7 @@ export const fantasyPositionData: Record<
         "minRank": 307,
         "maxRank": 322,
         "ownership": 0.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22947",
@@ -31462,7 +31462,7 @@ export const fantasyPositionData: Record<
         "minRank": 306,
         "maxRank": 324,
         "ownership": 1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-19624",
@@ -31478,7 +31478,7 @@ export const fantasyPositionData: Record<
         "minRank": 308,
         "maxRank": 325,
         "ownership": 0.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18864",
@@ -31494,7 +31494,7 @@ export const fantasyPositionData: Record<
         "minRank": 299,
         "maxRank": 371,
         "ownership": 7.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24347",
@@ -31510,7 +31510,7 @@ export const fantasyPositionData: Record<
         "minRank": 309,
         "maxRank": 348,
         "ownership": 21.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24351",
@@ -31526,7 +31526,7 @@ export const fantasyPositionData: Record<
         "minRank": 310,
         "maxRank": 353,
         "ownership": 1.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25976",
@@ -31542,7 +31542,7 @@ export const fantasyPositionData: Record<
         "minRank": 310,
         "maxRank": 328,
         "ownership": 0.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23770",
@@ -31558,7 +31558,7 @@ export const fantasyPositionData: Record<
         "minRank": 301,
         "maxRank": 339,
         "ownership": 10.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-26329",
@@ -31574,7 +31574,7 @@ export const fantasyPositionData: Record<
         "minRank": 313,
         "maxRank": 336,
         "ownership": 2.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-28125",
@@ -31590,7 +31590,7 @@ export const fantasyPositionData: Record<
         "minRank": 295,
         "maxRank": 368,
         "ownership": 5.1,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25967",
@@ -31606,7 +31606,7 @@ export const fantasyPositionData: Record<
         "minRank": 311,
         "maxRank": 349,
         "ownership": 9.6,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-13891",
@@ -31622,7 +31622,7 @@ export const fantasyPositionData: Record<
         "minRank": 334,
         "maxRank": 376,
         "ownership": 11.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-22953",
@@ -31638,7 +31638,7 @@ export const fantasyPositionData: Record<
         "minRank": 323,
         "maxRank": 354,
         "ownership": 18.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-24334",
@@ -31654,7 +31654,7 @@ export const fantasyPositionData: Record<
         "minRank": 334,
         "maxRank": 348,
         "ownership": 12.7,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17066",
@@ -31670,7 +31670,7 @@ export const fantasyPositionData: Record<
         "minRank": 335,
         "maxRank": 373,
         "ownership": 4.5,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-18631",
@@ -31686,7 +31686,7 @@ export const fantasyPositionData: Record<
         "minRank": 341,
         "maxRank": 354,
         "ownership": 16.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-17527",
@@ -31702,7 +31702,7 @@ export const fantasyPositionData: Record<
         "minRank": 343,
         "maxRank": 356,
         "ownership": 6.4,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-23056",
@@ -31718,7 +31718,7 @@ export const fantasyPositionData: Record<
         "minRank": 348,
         "maxRank": 359,
         "ownership": 24.3,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       },
       {
         "id": "fp-25282",
@@ -31734,7 +31734,7 @@ export const fantasyPositionData: Record<
         "minRank": 349,
         "maxRank": 369,
         "ownership": 7.9,
-        "lastUpdated": "2026-04-29T17:44:24.000Z"
+        "lastUpdated": "2026-04-29T18:17:58.000Z"
       }
     ],
     "positions": {
@@ -34253,7 +34253,7 @@ export const fantasyPositionData: Record<
           "minRank": 1,
           "maxRank": 3,
           "ownership": 99.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19788",
@@ -34269,7 +34269,7 @@ export const fantasyPositionData: Record<
           "minRank": 2,
           "maxRank": 2,
           "ownership": 98.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23070",
@@ -34285,7 +34285,7 @@ export const fantasyPositionData: Record<
           "minRank": 1,
           "maxRank": 3,
           "ownership": 99.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19799",
@@ -34301,7 +34301,7 @@ export const fantasyPositionData: Record<
           "minRank": 4,
           "maxRank": 5,
           "ownership": 98.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19202",
@@ -34317,7 +34317,7 @@ export const fantasyPositionData: Record<
           "minRank": 4,
           "maxRank": 6,
           "ownership": 98.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19236",
@@ -34333,7 +34333,7 @@ export const fantasyPositionData: Record<
           "minRank": 6,
           "maxRank": 11,
           "ownership": 98.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23163",
@@ -34349,7 +34349,7 @@ export const fantasyPositionData: Record<
           "minRank": 6,
           "maxRank": 10,
           "ownership": 98.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-20130",
@@ -34365,7 +34365,7 @@ export const fantasyPositionData: Record<
           "minRank": 7,
           "maxRank": 11,
           "ownership": 98.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25409",
@@ -34381,7 +34381,7 @@ export const fantasyPositionData: Record<
           "minRank": 6,
           "maxRank": 18,
           "ownership": 74.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23113",
@@ -34397,7 +34397,7 @@ export const fantasyPositionData: Record<
           "minRank": 6,
           "maxRank": 14,
           "ownership": 92.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-22963",
@@ -34413,7 +34413,7 @@ export const fantasyPositionData: Record<
           "minRank": 9,
           "maxRank": 12,
           "ownership": 97.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-18218",
@@ -34429,7 +34429,7 @@ export const fantasyPositionData: Record<
           "minRank": 10,
           "maxRank": 19,
           "ownership": 98,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-20111",
@@ -34445,7 +34445,7 @@ export const fantasyPositionData: Record<
           "minRank": 11,
           "maxRank": 18,
           "ownership": 96.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19211",
@@ -34461,7 +34461,7 @@ export const fantasyPositionData: Record<
           "minRank": 10,
           "maxRank": 17,
           "ownership": 96.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25417",
@@ -34477,7 +34477,7 @@ export const fantasyPositionData: Record<
           "minRank": 13,
           "maxRank": 19,
           "ownership": 96.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-12123",
@@ -34486,14 +34486,14 @@ export const fantasyPositionData: Record<
           "position": "WR",
           "averageRank": 16,
           "rankEcr": 16,
-          "rankAverage": 17.77,
-          "standardDeviation": 3.33,
+          "rankAverage": 17.85,
+          "standardDeviation": 3.35,
           "tier": 4,
           "positionRank": 16,
           "minRank": 13,
           "maxRank": 26,
           "ownership": 95.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26009",
@@ -34509,7 +34509,7 @@ export const fantasyPositionData: Record<
           "minRank": 14,
           "maxRank": 37,
           "ownership": 83.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19222",
@@ -34525,7 +34525,7 @@ export const fantasyPositionData: Record<
           "minRank": 13,
           "maxRank": 28,
           "ownership": 96.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23072",
@@ -34541,7 +34541,7 @@ export const fantasyPositionData: Record<
           "minRank": 17,
           "maxRank": 25,
           "ownership": 86.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26035",
@@ -34557,7 +34557,7 @@ export const fantasyPositionData: Record<
           "minRank": 16,
           "maxRank": 35,
           "ownership": 75.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19790",
@@ -34566,14 +34566,14 @@ export const fantasyPositionData: Record<
           "position": "WR",
           "averageRank": 21,
           "rankEcr": 21,
-          "rankAverage": 22.15,
-          "standardDeviation": 2.88,
+          "rankAverage": 22.23,
+          "standardDeviation": 2.91,
           "tier": 4,
           "positionRank": 21,
           "minRank": 15,
           "maxRank": 27,
           "ownership": 95.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-22916",
@@ -34582,14 +34582,14 @@ export const fantasyPositionData: Record<
           "position": "WR",
           "averageRank": 22,
           "rankEcr": 22,
-          "rankAverage": 22.69,
-          "standardDeviation": 2.64,
+          "rankAverage": 22.77,
+          "standardDeviation": 2.69,
           "tier": 4,
           "positionRank": 22,
           "minRank": 17,
           "maxRank": 26,
           "ownership": 96.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-18466",
@@ -34605,7 +34605,7 @@ export const fantasyPositionData: Record<
           "minRank": 20,
           "maxRank": 26,
           "ownership": 92.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23677",
@@ -34621,7 +34621,7 @@ export const fantasyPositionData: Record<
           "minRank": 18,
           "maxRank": 30,
           "ownership": 94,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25420",
@@ -34630,46 +34630,46 @@ export const fantasyPositionData: Record<
           "position": "WR",
           "averageRank": 25,
           "rankEcr": 25,
-          "rankAverage": 25,
-          "standardDeviation": 5.35,
+          "rankAverage": 24.92,
+          "standardDeviation": 5.45,
           "tier": 4,
           "positionRank": 25,
-          "minRank": 19,
+          "minRank": 18,
           "maxRank": 38,
           "ownership": 71.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
-        },
-        {
-          "id": "fp-27016",
-          "name": "Luther Burden III",
-          "team": "CHI",
-          "position": "WR",
-          "averageRank": 26,
-          "rankEcr": 26,
-          "rankAverage": 25.77,
-          "standardDeviation": 3.42,
-          "tier": 4,
-          "positionRank": 26,
-          "minRank": 21,
-          "maxRank": 31,
-          "ownership": 68.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26122",
           "name": "Ladd McConkey",
           "team": "LAC",
           "position": "WR",
-          "averageRank": 27,
-          "rankEcr": 27,
-          "rankAverage": 25.85,
-          "standardDeviation": 2.28,
+          "averageRank": 26,
+          "rankEcr": 26,
+          "rankAverage": 25.69,
+          "standardDeviation": 2.4,
           "tier": 4,
-          "positionRank": 27,
+          "positionRank": 26,
           "minRank": 22,
           "maxRank": 29,
           "ownership": 95.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
+        },
+        {
+          "id": "fp-27016",
+          "name": "Luther Burden III",
+          "team": "CHI",
+          "position": "WR",
+          "averageRank": 27,
+          "rankEcr": 27,
+          "rankAverage": 25.77,
+          "standardDeviation": 3.42,
+          "tier": 4,
+          "positionRank": 27,
+          "minRank": 21,
+          "maxRank": 31,
+          "ownership": 68.7,
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23886",
@@ -34685,7 +34685,7 @@ export const fantasyPositionData: Record<
           "minRank": 21,
           "maxRank": 29,
           "ownership": 82.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23062",
@@ -34701,7 +34701,7 @@ export const fantasyPositionData: Record<
           "minRank": 15,
           "maxRank": 30,
           "ownership": 93.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-17265",
@@ -34717,7 +34717,7 @@ export const fantasyPositionData: Record<
           "minRank": 22,
           "maxRank": 33,
           "ownership": 90.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25411",
@@ -34733,7 +34733,7 @@ export const fantasyPositionData: Record<
           "minRank": 18,
           "maxRank": 37,
           "ownership": 87.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-12119",
@@ -34749,7 +34749,7 @@ export const fantasyPositionData: Record<
           "minRank": 23,
           "maxRank": 33,
           "ownership": 91.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23791",
@@ -34765,7 +34765,7 @@ export const fantasyPositionData: Record<
           "minRank": 31,
           "maxRank": 39,
           "ownership": 78.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23064",
@@ -34781,7 +34781,7 @@ export const fantasyPositionData: Record<
           "minRank": 32,
           "maxRank": 38,
           "ownership": 91.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-18219",
@@ -34797,7 +34797,7 @@ export const fantasyPositionData: Record<
           "minRank": 31,
           "maxRank": 37,
           "ownership": 89.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-17253",
@@ -34813,7 +34813,7 @@ export const fantasyPositionData: Record<
           "minRank": 28,
           "maxRank": 39,
           "ownership": 92.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25333",
@@ -34829,7 +34829,7 @@ export const fantasyPositionData: Record<
           "minRank": 32,
           "maxRank": 46,
           "ownership": 87.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23000",
@@ -34845,7 +34845,7 @@ export const fantasyPositionData: Record<
           "minRank": 34,
           "maxRank": 43,
           "ownership": 90.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23106",
@@ -34861,7 +34861,7 @@ export const fantasyPositionData: Record<
           "minRank": 37,
           "maxRank": 47,
           "ownership": 69.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23107",
@@ -34877,7 +34877,7 @@ export const fantasyPositionData: Record<
           "minRank": 36,
           "maxRank": 43,
           "ownership": 82.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-16406",
@@ -34893,7 +34893,7 @@ export const fantasyPositionData: Record<
           "minRank": 40,
           "maxRank": 47,
           "ownership": 80.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23123",
@@ -34909,7 +34909,7 @@ export const fantasyPositionData: Record<
           "minRank": 40,
           "maxRank": 51,
           "ownership": 76.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-18598",
@@ -34925,7 +34925,7 @@ export const fantasyPositionData: Record<
           "minRank": 38,
           "maxRank": 51,
           "ownership": 85.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26214",
@@ -34941,7 +34941,7 @@ export const fantasyPositionData: Record<
           "minRank": 41,
           "maxRank": 55,
           "ownership": 78.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27331",
@@ -34957,7 +34957,7 @@ export const fantasyPositionData: Record<
           "minRank": 34,
           "maxRank": 73,
           "ownership": 58.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19278",
@@ -34973,7 +34973,7 @@ export const fantasyPositionData: Record<
           "minRank": 44,
           "maxRank": 51,
           "ownership": 89.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19252",
@@ -34989,7 +34989,7 @@ export const fantasyPositionData: Record<
           "minRank": 42,
           "maxRank": 65,
           "ownership": 38.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27339",
@@ -35005,7 +35005,7 @@ export const fantasyPositionData: Record<
           "minRank": 39,
           "maxRank": 58,
           "ownership": 44.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23020",
@@ -35021,7 +35021,7 @@ export const fantasyPositionData: Record<
           "minRank": 43,
           "maxRank": 56,
           "ownership": 67,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27077",
@@ -35037,7 +35037,7 @@ export const fantasyPositionData: Record<
           "minRank": 44,
           "maxRank": 58,
           "ownership": 45.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23794",
@@ -35053,7 +35053,7 @@ export const fantasyPositionData: Record<
           "minRank": 45,
           "maxRank": 57,
           "ownership": 78.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-24706",
@@ -35069,7 +35069,7 @@ export const fantasyPositionData: Record<
           "minRank": 44,
           "maxRank": 56,
           "ownership": 68.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28127",
@@ -35085,7 +35085,7 @@ export const fantasyPositionData: Record<
           "minRank": 45,
           "maxRank": 71,
           "ownership": 31,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-22985",
@@ -35101,7 +35101,7 @@ export const fantasyPositionData: Record<
           "minRank": 48,
           "maxRank": 57,
           "ownership": 84.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26403",
@@ -35117,7 +35117,7 @@ export const fantasyPositionData: Record<
           "minRank": 50,
           "maxRank": 60,
           "ownership": 52.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23019",
@@ -35133,7 +35133,7 @@ export const fantasyPositionData: Record<
           "minRank": 48,
           "maxRank": 62,
           "ownership": 83.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23748",
@@ -35149,7 +35149,7 @@ export const fantasyPositionData: Record<
           "minRank": 49,
           "maxRank": 64,
           "ownership": 82.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19590",
@@ -35165,7 +35165,7 @@ export const fantasyPositionData: Record<
           "minRank": 48,
           "maxRank": 77,
           "ownership": 66.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26024",
@@ -35181,7 +35181,7 @@ export const fantasyPositionData: Record<
           "minRank": 45,
           "maxRank": 71,
           "ownership": 65.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25418",
@@ -35197,7 +35197,7 @@ export const fantasyPositionData: Record<
           "minRank": 45,
           "maxRank": 87,
           "ownership": 31.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-18244",
@@ -35213,7 +35213,7 @@ export const fantasyPositionData: Record<
           "minRank": 55,
           "maxRank": 79,
           "ownership": 65.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-24687",
@@ -35229,7 +35229,7 @@ export const fantasyPositionData: Record<
           "minRank": 59,
           "maxRank": 69,
           "ownership": 57.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-22989",
@@ -35245,7 +35245,7 @@ export const fantasyPositionData: Record<
           "minRank": 60,
           "maxRank": 74,
           "ownership": 38.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-13981",
@@ -35261,7 +35261,7 @@ export const fantasyPositionData: Record<
           "minRank": 47,
           "maxRank": 78,
           "ownership": 70.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-24357",
@@ -35277,7 +35277,7 @@ export const fantasyPositionData: Record<
           "minRank": 57,
           "maxRank": 83,
           "ownership": 31.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25361",
@@ -35293,7 +35293,7 @@ export const fantasyPositionData: Record<
           "minRank": 59,
           "maxRank": 78,
           "ownership": 39.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19201",
@@ -35309,7 +35309,7 @@ export const fantasyPositionData: Record<
           "minRank": 59,
           "maxRank": 85,
           "ownership": 70.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26034",
@@ -35325,7 +35325,7 @@ export const fantasyPositionData: Record<
           "minRank": 62,
           "maxRank": 89,
           "ownership": 79.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27446",
@@ -35341,7 +35341,7 @@ export const fantasyPositionData: Record<
           "minRank": 66,
           "maxRank": 76,
           "ownership": 28.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23179",
@@ -35357,7 +35357,7 @@ export const fantasyPositionData: Record<
           "minRank": 58,
           "maxRank": 84,
           "ownership": 37.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26039",
@@ -35373,7 +35373,7 @@ export const fantasyPositionData: Record<
           "minRank": 57,
           "maxRank": 96,
           "ownership": 31.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26038",
@@ -35389,7 +35389,7 @@ export const fantasyPositionData: Record<
           "minRank": 53,
           "maxRank": 110,
           "ownership": 34.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23092",
@@ -35405,7 +35405,7 @@ export const fantasyPositionData: Record<
           "minRank": 63,
           "maxRank": 93,
           "ownership": 42.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-15802",
@@ -35421,7 +35421,7 @@ export const fantasyPositionData: Record<
           "minRank": 53,
           "maxRank": 123,
           "ownership": 51.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27463",
@@ -35437,7 +35437,7 @@ export const fantasyPositionData: Record<
           "minRank": 71,
           "maxRank": 96,
           "ownership": 32.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25337",
@@ -35453,7 +35453,7 @@ export const fantasyPositionData: Record<
           "minRank": 69,
           "maxRank": 104,
           "ownership": 46.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-17258",
@@ -35469,7 +35469,7 @@ export const fantasyPositionData: Record<
           "minRank": 69,
           "maxRank": 96,
           "ownership": 54.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25419",
@@ -35485,7 +35485,7 @@ export const fantasyPositionData: Record<
           "minRank": 63,
           "maxRank": 94,
           "ownership": 35.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26398",
@@ -35501,7 +35501,7 @@ export const fantasyPositionData: Record<
           "minRank": 72,
           "maxRank": 95,
           "ownership": 23.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27994",
@@ -35517,7 +35517,7 @@ export const fantasyPositionData: Record<
           "minRank": 67,
           "maxRank": 97,
           "ownership": 23.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28047",
@@ -35533,7 +35533,7 @@ export const fantasyPositionData: Record<
           "minRank": 73,
           "maxRank": 95,
           "ownership": 30.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28126",
@@ -35549,7 +35549,7 @@ export const fantasyPositionData: Record<
           "minRank": 72,
           "maxRank": 97,
           "ownership": 21.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26215",
@@ -35565,7 +35565,7 @@ export const fantasyPositionData: Record<
           "minRank": 71,
           "maxRank": 109,
           "ownership": 27.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27122",
@@ -35581,7 +35581,7 @@ export const fantasyPositionData: Record<
           "minRank": 68,
           "maxRank": 91,
           "ownership": 22.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27211",
@@ -35597,7 +35597,7 @@ export const fantasyPositionData: Record<
           "minRank": 77,
           "maxRank": 89,
           "ownership": 27,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-24177",
@@ -35613,7 +35613,7 @@ export const fantasyPositionData: Record<
           "minRank": 64,
           "maxRank": 108,
           "ownership": 25.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27315",
@@ -35629,7 +35629,7 @@ export const fantasyPositionData: Record<
           "minRank": 64,
           "maxRank": 101,
           "ownership": 32.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28138",
@@ -35645,7 +35645,7 @@ export const fantasyPositionData: Record<
           "minRank": 65,
           "maxRank": 106,
           "ownership": 6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-24354",
@@ -35661,7 +35661,7 @@ export const fantasyPositionData: Record<
           "minRank": 79,
           "maxRank": 92,
           "ownership": 18.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27059",
@@ -35677,7 +35677,7 @@ export const fantasyPositionData: Record<
           "minRank": 71,
           "maxRank": 126,
           "ownership": 29.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27487",
@@ -35693,7 +35693,7 @@ export const fantasyPositionData: Record<
           "minRank": 71,
           "maxRank": 98,
           "ownership": 20.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26022",
@@ -35709,7 +35709,7 @@ export const fantasyPositionData: Record<
           "minRank": 75,
           "maxRank": 114,
           "ownership": 25.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19810",
@@ -35725,7 +35725,7 @@ export const fantasyPositionData: Record<
           "minRank": 76,
           "maxRank": 97,
           "ownership": 42.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28130",
@@ -35741,7 +35741,7 @@ export const fantasyPositionData: Record<
           "minRank": 89,
           "maxRank": 102,
           "ownership": 19.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26314",
@@ -35757,7 +35757,7 @@ export const fantasyPositionData: Record<
           "minRank": 78,
           "maxRank": 112,
           "ownership": 26.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-19794",
@@ -35773,7 +35773,7 @@ export const fantasyPositionData: Record<
           "minRank": 77,
           "maxRank": 108,
           "ownership": 21.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26019",
@@ -35789,7 +35789,7 @@ export const fantasyPositionData: Record<
           "minRank": 84,
           "maxRank": 103,
           "ownership": 29.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23080",
@@ -35805,7 +35805,7 @@ export const fantasyPositionData: Record<
           "minRank": 86,
           "maxRank": 106,
           "ownership": 22.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-16433",
@@ -35821,7 +35821,7 @@ export const fantasyPositionData: Record<
           "minRank": 88,
           "maxRank": 109,
           "ownership": 36.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27224",
@@ -35837,7 +35837,7 @@ export const fantasyPositionData: Record<
           "minRank": 91,
           "maxRank": 107,
           "ownership": 17.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-17268",
@@ -35853,7 +35853,7 @@ export const fantasyPositionData: Record<
           "minRank": 86,
           "maxRank": 113,
           "ownership": 26.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-11616",
@@ -35869,7 +35869,7 @@ export const fantasyPositionData: Record<
           "minRank": 89,
           "maxRank": 110,
           "ownership": 38.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-16489",
@@ -35885,7 +35885,7 @@ export const fantasyPositionData: Record<
           "minRank": 90,
           "maxRank": 110,
           "ownership": 11.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26409",
@@ -35901,7 +35901,7 @@ export const fantasyPositionData: Record<
           "minRank": 93,
           "maxRank": 111,
           "ownership": 25.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26136",
@@ -35917,7 +35917,7 @@ export const fantasyPositionData: Record<
           "minRank": 88,
           "maxRank": 116,
           "ownership": 11.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-18706",
@@ -35933,7 +35933,7 @@ export const fantasyPositionData: Record<
           "minRank": 92,
           "maxRank": 112,
           "ownership": 23.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-18226",
@@ -35949,7 +35949,7 @@ export const fantasyPositionData: Record<
           "minRank": 97,
           "maxRank": 118,
           "ownership": 20.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-22913",
@@ -35965,7 +35965,7 @@ export const fantasyPositionData: Record<
           "minRank": 91,
           "maxRank": 114,
           "ownership": 7.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27147",
@@ -35981,7 +35981,7 @@ export const fantasyPositionData: Record<
           "minRank": 99,
           "maxRank": 120,
           "ownership": 14.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23101",
@@ -35997,7 +35997,7 @@ export const fantasyPositionData: Record<
           "minRank": 70,
           "maxRank": 108,
           "ownership": 7.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27337",
@@ -36013,7 +36013,7 @@ export const fantasyPositionData: Record<
           "minRank": 70,
           "maxRank": 101,
           "ownership": 31.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-24371",
@@ -36029,7 +36029,7 @@ export const fantasyPositionData: Record<
           "minRank": 98,
           "maxRank": 122,
           "ownership": 15.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28135",
@@ -36045,7 +36045,7 @@ export const fantasyPositionData: Record<
           "minRank": 72,
           "maxRank": 109,
           "ownership": 2.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27449",
@@ -36061,7 +36061,7 @@ export const fantasyPositionData: Record<
           "minRank": 92,
           "maxRank": 123,
           "ownership": 3.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25335",
@@ -36077,7 +36077,7 @@ export const fantasyPositionData: Record<
           "minRank": 89,
           "maxRank": 115,
           "ownership": 11.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-26328",
@@ -36093,7 +36093,7 @@ export const fantasyPositionData: Record<
           "minRank": 94,
           "maxRank": 118,
           "ownership": 5.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25287",
@@ -36109,7 +36109,7 @@ export const fantasyPositionData: Record<
           "minRank": 98,
           "maxRank": 136,
           "ownership": 7.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23739",
@@ -36125,7 +36125,7 @@ export const fantasyPositionData: Record<
           "minRank": 93,
           "maxRank": 124,
           "ownership": 9.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28133",
@@ -36141,7 +36141,7 @@ export const fantasyPositionData: Record<
           "minRank": 92,
           "maxRank": 107,
           "ownership": 9.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25304",
@@ -36157,7 +36157,7 @@ export const fantasyPositionData: Record<
           "minRank": 94,
           "maxRank": 120,
           "ownership": 14.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27144",
@@ -36173,7 +36173,7 @@ export const fantasyPositionData: Record<
           "minRank": 99,
           "maxRank": 116,
           "ownership": 2.8,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-22905",
@@ -36189,7 +36189,7 @@ export const fantasyPositionData: Record<
           "minRank": 72,
           "maxRank": 125,
           "ownership": 4.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28424",
@@ -36205,7 +36205,7 @@ export const fantasyPositionData: Record<
           "minRank": 75,
           "maxRank": 128,
           "ownership": 0.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27076",
@@ -36221,7 +36221,7 @@ export const fantasyPositionData: Record<
           "minRank": 110,
           "maxRank": 126,
           "ownership": 5.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-20126",
@@ -36237,7 +36237,7 @@ export const fantasyPositionData: Record<
           "minRank": 103,
           "maxRank": 120,
           "ownership": 3.3,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27454",
@@ -36253,7 +36253,7 @@ export const fantasyPositionData: Record<
           "minRank": 103,
           "maxRank": 134,
           "ownership": 7.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-27288",
@@ -36269,7 +36269,7 @@ export const fantasyPositionData: Record<
           "minRank": 101,
           "maxRank": 109,
           "ownership": 6.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28129",
@@ -36285,7 +36285,7 @@ export const fantasyPositionData: Record<
           "minRank": 92,
           "maxRank": 119,
           "ownership": 3.2,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-25332",
@@ -36301,7 +36301,7 @@ export const fantasyPositionData: Record<
           "minRank": 104,
           "maxRank": 117,
           "ownership": 4.6,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-22845",
@@ -36317,7 +36317,7 @@ export const fantasyPositionData: Record<
           "minRank": 105,
           "maxRank": 132,
           "ownership": 3.7,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28067",
@@ -36333,7 +36333,7 @@ export const fantasyPositionData: Record<
           "minRank": 98,
           "maxRank": 124,
           "ownership": 1.4,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-22895",
@@ -36349,7 +36349,7 @@ export const fantasyPositionData: Record<
           "minRank": 108,
           "maxRank": 118,
           "ownership": 5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-18864",
@@ -36365,7 +36365,7 @@ export const fantasyPositionData: Record<
           "minRank": 109,
           "maxRank": 133,
           "ownership": 7.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-28125",
@@ -36381,7 +36381,7 @@ export const fantasyPositionData: Record<
           "minRank": 105,
           "maxRank": 131,
           "ownership": 5.1,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-23770",
@@ -36397,7 +36397,7 @@ export const fantasyPositionData: Record<
           "minRank": 108,
           "maxRank": 125,
           "ownership": 10.9,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         },
         {
           "id": "fp-17066",
@@ -36413,7 +36413,7 @@ export const fantasyPositionData: Record<
           "minRank": 123,
           "maxRank": 135,
           "ownership": 4.5,
-          "lastUpdated": "2026-04-29T17:22:50.000Z"
+          "lastUpdated": "2026-04-29T18:17:59.000Z"
         }
       ],
       "TE": [
@@ -38311,6 +38311,6 @@ export const fantasyPositionData: Record<
         }
       ]
     },
-    "upstreamUpdatedAt": "2026-04-29T17:44:24.000Z"
+    "upstreamUpdatedAt": "2026-04-29T18:17:58.000Z"
   }
 };

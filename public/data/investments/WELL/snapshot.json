@@ -1,10 +1,10 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-04-10T07:59:18.898372+00:00",
+  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-10T07:59:18.898372+00:00",
+    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
     "sections": {
-      "price": "2026-04-02"
+      "price": "2026-04-24"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "REIT-Healthcare Facilities",
       "sector": "Real Estate",
-      "longBusinessSummary": "Welltower Inc. is a S&P 500 company, is positioned at the center of the silver economy, focusing on rental housing for aging seniors across the United States, United Kingdom and Canada. Our portfolio of 2,000+ seniors and wellness housing communities are positioned at the intersection of housing and hospitality, creating vibrant communities for mature renters and older adults. We believe our real estate portfolio is unmatched, located in highly attractive micro markets with stunning built environments. Yet, we are an unusual real estate organization as we view ourselves as an operating company in a real estate wrapper, driven by highly aligned partnerships and an unconventional culture. Through our disciplined approach to capital allocation powered by our Data Science platform and superior operating results driven by the Welltower Business System - our end-to-end operating platform - we aspire to deliver long-term compounding of per share growth for our existing investors, our North Star.",
+      "longBusinessSummary": "Welltower Inc. is a S&P 500 company, is positioned at the center of the silver economy, focusing on rental housing for aging seniors across the United States, United Kingdom and Canada. Our portfolio of 2,000+ seniors and wellness housing communities are positioned at the intersection of housing and hospitality, creating vibrant communities for mature renters and older adults. We believe our real estate portfolio is unmatched, located in highly attractive micro markets with stunning built environments. Yet, we are an unusual real estate organization as we view ourselves as an operating company in a real estate wrapper, driven by highly aligned partnerships and an unconventional culture. Through our disciplined approach to capital allocation powered by our Data Science platform and superior operating results driven by the Welltower Business System - our end-to-end operating platform - we aspire to deliver long-term compounding of per share growth for our existing investors, our North Star. Welltower Inc. was incorporated in 1970 in Delaware, USA.",
       "fullTimeEmployees": 712,
       "website": "https://www.welltower.com",
       "shortName": "Welltower Inc.",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": -0.71,
-      "ttmPe": -284.97,
-      "marketCap": 141176263325,
-      "psRatio": 13.23,
-      "pbRatio": 3.35
+      "ttmPe": -294.01,
+      "marketCap": 145655834375,
+      "psRatio": 13.65,
+      "pbRatio": 3.46
     },
     "profitability": {
       "roe": 0.24,
@@ -5136,137 +5136,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.969999999999999,
-      "costOfEquity": 11.34,
+      "wacc": 9.82,
+      "costOfEquity": 11.12,
       "costOfDebt": 0.95,
       "taxRate": 0,
-      "beta": 0.8211,
-      "marketCap": 141176263325
+      "beta": 0.795,
+      "marketCap": 145655834375
     },
     "beta": {
-      "beta5y": 0.8211
+      "beta5y": 0.795
     },
     "price": [
-      {
-        "date": "2025-04-02",
-        "open": 154,
-        "high": 154.99,
-        "low": 152.18,
-        "close": 153.08,
-        "volume": 2464300
-      },
-      {
-        "date": "2025-04-03",
-        "open": 153.26,
-        "high": 157.4,
-        "low": 151.88,
-        "close": 152.43,
-        "volume": 4044200
-      },
-      {
-        "date": "2025-04-04",
-        "open": 152.3,
-        "high": 152.91,
-        "low": 142.98,
-        "close": 143.29,
-        "volume": 4825300
-      },
-      {
-        "date": "2025-04-07",
-        "open": 140.1,
-        "high": 145.13,
-        "low": 136.64,
-        "close": 138.81,
-        "volume": 5387700
-      },
-      {
-        "date": "2025-04-08",
-        "open": 142.98,
-        "high": 143.31,
-        "low": 135.27,
-        "close": 136.49,
-        "volume": 4786900
-      },
-      {
-        "date": "2025-04-09",
-        "open": 134.73,
-        "high": 142.12,
-        "low": 130.29,
-        "close": 141.49,
-        "volume": 4707300
-      },
-      {
-        "date": "2025-04-10",
-        "open": 140.99,
-        "high": 143.88,
-        "low": 138.05,
-        "close": 141.81,
-        "volume": 3412300
-      },
-      {
-        "date": "2025-04-11",
-        "open": 141.4,
-        "high": 143.12,
-        "low": 139.09,
-        "close": 142.67,
-        "volume": 2651400
-      },
-      {
-        "date": "2025-04-14",
-        "open": 143.9,
-        "high": 146.52,
-        "low": 142.74,
-        "close": 145.59,
-        "volume": 2576800
-      },
-      {
-        "date": "2025-04-15",
-        "open": 146.39,
-        "high": 147.91,
-        "low": 144.8,
-        "close": 146.59,
-        "volume": 1930500
-      },
-      {
-        "date": "2025-04-16",
-        "open": 146.52,
-        "high": 147.87,
-        "low": 144.95,
-        "close": 145.63,
-        "volume": 2471000
-      },
-      {
-        "date": "2025-04-17",
-        "open": 146.43,
-        "high": 148.38,
-        "low": 146.26,
-        "close": 147.27,
-        "volume": 1951700
-      },
-      {
-        "date": "2025-04-21",
-        "open": 146.76,
-        "high": 147.27,
-        "low": 141.55,
-        "close": 143.65,
-        "volume": 2241800
-      },
-      {
-        "date": "2025-04-22",
-        "open": 144.95,
-        "high": 148,
-        "low": 144.55,
-        "close": 147.25,
-        "volume": 3386000
-      },
-      {
-        "date": "2025-04-23",
-        "open": 147.38,
-        "high": 148.9,
-        "low": 146.35,
-        "close": 147.65,
-        "volume": 1976400
-      },
       {
         "date": "2025-04-24",
         "open": 147.03,
@@ -7162,6 +7042,126 @@
         "low": 198.84,
         "close": 202.33,
         "volume": 2225900
+      },
+      {
+        "date": "2026-04-06",
+        "open": 201.61,
+        "high": 203.09,
+        "low": 200.74,
+        "close": 200.91,
+        "volume": 1528800
+      },
+      {
+        "date": "2026-04-07",
+        "open": 200.82,
+        "high": 202.38,
+        "low": 199.3,
+        "close": 201.58,
+        "volume": 1931800
+      },
+      {
+        "date": "2026-04-08",
+        "open": 202.54,
+        "high": 205.36,
+        "low": 201.97,
+        "close": 204.7,
+        "volume": 3545300
+      },
+      {
+        "date": "2026-04-09",
+        "open": 204.47,
+        "high": 210.82,
+        "low": 203.67,
+        "close": 206.34,
+        "volume": 2771900
+      },
+      {
+        "date": "2026-04-10",
+        "open": 206.13,
+        "high": 207.83,
+        "low": 205.9,
+        "close": 207.59,
+        "volume": 2418400
+      },
+      {
+        "date": "2026-04-13",
+        "open": 207.65,
+        "high": 208.88,
+        "low": 205.3,
+        "close": 206.97,
+        "volume": 2546900
+      },
+      {
+        "date": "2026-04-14",
+        "open": 206.04,
+        "high": 211.04,
+        "low": 204.79,
+        "close": 210.99,
+        "volume": 1926700
+      },
+      {
+        "date": "2026-04-15",
+        "open": 210.32,
+        "high": 211.47,
+        "low": 208.45,
+        "close": 211.33,
+        "volume": 2276400
+      },
+      {
+        "date": "2026-04-16",
+        "open": 211.47,
+        "high": 214.84,
+        "low": 211.26,
+        "close": 214.51,
+        "volume": 1906300
+      },
+      {
+        "date": "2026-04-17",
+        "open": 213.97,
+        "high": 214.99,
+        "low": 210.01,
+        "close": 210.52,
+        "volume": 3276100
+      },
+      {
+        "date": "2026-04-20",
+        "open": 210.59,
+        "high": 211.03,
+        "low": 208.13,
+        "close": 209.45,
+        "volume": 2124000
+      },
+      {
+        "date": "2026-04-21",
+        "open": 209.24,
+        "high": 209.39,
+        "low": 201.37,
+        "close": 206.39,
+        "volume": 3664800
+      },
+      {
+        "date": "2026-04-22",
+        "open": 206.39,
+        "high": 207,
+        "low": 198.88,
+        "close": 199.7,
+        "volume": 3522500
+      },
+      {
+        "date": "2026-04-23",
+        "open": 200.85,
+        "high": 208.55,
+        "low": 200.03,
+        "close": 208.24,
+        "volume": 2332900
+      },
+      {
+        "date": "2026-04-24",
+        "open": 208.13,
+        "high": 211.59,
+        "low": 207.73,
+        "close": 208.75,
+        "volume": 2272100
       }
     ],
     "news": [
@@ -7214,19 +7214,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "928aaddf-8d20-3bc3-90bc-fb29be9ea4b4",
-        "title": "Here's What Key Metrics Tell Us About Welltower (WELL) Q1 Earnings",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/heres-key-metrics-tell-us-220008553.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "38661467-0228-3efb-9cde-3e5a584d6535",
         "title": "Welltower (WELL) Q1 FFO and Revenues Surpass Estimates",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/welltower-well-q1-ffo-revenues-211506976.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "928aaddf-8d20-3bc3-90bc-fb29be9ea4b4",
+        "title": "Here's What Key Metrics Tell Us About Welltower (WELL) Q1 Earnings",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/heres-key-metrics-tell-us-220008553.html",
         "type": "STORY"
       },
       {
@@ -7260,7 +7260,7 @@
         "title": "VC & COO",
         "age": 61,
         "yearBorn": 1964,
-        "totalPay": 2525647
+        "totalPay": 2976500
       },
       {
         "name": "Mr. Joshua T. Fieweger",
@@ -7273,28 +7273,28 @@
         "title": "Chief Legal Officer, General Counsel & Corporate Secretary",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 2236786
+        "totalPay": 2551500
       },
       {
         "name": "Mr. Nikhil Chaudhri",
         "title": "Co-President & Chief Investment Officer",
         "age": 37,
         "yearBorn": 1988,
-        "totalPay": 2530647
+        "totalPay": 3551850
       },
       {
         "name": "Mr. Shankh S. Mitra",
         "title": "CEO & Director",
         "age": 44,
         "yearBorn": 1981,
-        "totalPay": 6668335
+        "totalPay": 7911537
       },
       {
         "name": "Mr. Timothy G. McHugh C.F.A.",
         "title": "Co-President & CFO",
-        "age": 39,
-        "yearBorn": 1986,
-        "totalPay": 2819459
+        "age": 40,
+        "yearBorn": 1985,
+        "totalPay": 3201500
       },
       {
         "name": "Mr. Tucker Joseph",
@@ -7308,50 +7308,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": -284.97,
-        "industryAvg": 212.59
+        "value": -294.01,
+        "industryAvg": 232.57
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.23,
-        "industryAvg": 7.91
+        "value": 13.65,
+        "industryAvg": 8.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.35,
-        "industryAvg": 2.43
+        "value": 3.46,
+        "industryAvg": 2.48
       },
       {
         "metric": "ROE",
         "value": 0.24,
-        "industryAvg": 0.6
+        "industryAvg": 0.5700000000000001
       },
       {
         "metric": "ROA",
         "value": 0.15,
-        "industryAvg": 0.3
+        "industryAvg": 0.27999999999999997
       },
       {
         "metric": "Gross Margin",
         "value": 38.3,
-        "industryAvg": 48.86
+        "industryAvg": 48.74
       },
       {
         "metric": "EBITDA Margin",
         "value": -14.66,
-        "industryAvg": 30.349999999999998
+        "industryAvg": 30.18
       },
       {
         "metric": "Net Margin",
         "value": 3.08,
-        "industryAvg": 6.99
+        "industryAvg": 6.619999999999999
       }
     ],
     "dcf": {
-      "fairValue": -5.4,
-      "currentPrice": 202.33,
-      "upside": -102.67,
-      "wacc": 9.97,
+      "fairValue": -5.51,
+      "currentPrice": 208.75,
+      "upside": -102.64,
+      "wacc": 9.82,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3
