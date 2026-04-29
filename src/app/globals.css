@@ -633,14 +633,12 @@
   }
 
   /*
-   * The home-wordmark is sized off the viewport (14.2vw) for the home
-   * shell's full inner width. Inside the resume-panel it sits within
-   * an additional ~80px of horizontal padding, so the same clamp
-   * overflows the card on both narrow and wide viewports. Scope it
-   * down here so the type stays edge-to-edge inside the panel.
+   * Inside the resume-panel the wordmark sits within an additional ~80px
+   * of horizontal padding, so the panel cap is slightly tighter than the
+   * home-shell cap to keep the type edge-to-edge inside the card.
    */
   .resume-panel .home-wordmark {
-    font-size: clamp(2.2rem, 12vw, 11rem);
+    font-size: clamp(2.2rem, 8.5vw, 7.5rem);
   }
 
   .dark .resume-panel {
@@ -772,15 +770,15 @@
 
   .home-wordmark {
     /*
-     * Edge-to-edge fluid wordmark. Sized off the shell so it never
-     * overflows even on tight viewports — caps at 14rem on the largest
-     * screens. Tight tracking and 0.82 line-height match the design
-     * system's manifesto-scale treatment.
+     * Edge-to-edge fluid wordmark. Sized to stay dominant while keeping
+     * the actual H1 readable — wordmark ~1.85× the H1 cap (4.6rem) instead
+     * of 3×. Tight tracking and 0.82 line-height match the design system's
+     * manifesto-scale treatment.
      */
     display: block;
     margin: 0 0 0.75rem;
     font-family: var(--font-home-sans);
-    font-size: clamp(3.2rem, 14.2vw, 14rem);
+    font-size: clamp(2.6rem, 10vw, 8.5rem);
     font-weight: 700;
     line-height: 0.82;
     letter-spacing: -0.085em;

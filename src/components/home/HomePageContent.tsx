@@ -129,7 +129,7 @@ export function HomePageContent({
             <div className="home-hero-meta-cell">
               <span className="home-hero-meta-lbl">Based</span>
               <span className="home-hero-meta-val">
-                Berkeley, CA <em>·</em>&nbsp;Haas MBA &apos;27
+                Berkeley, CA · Haas MBA &apos;27
               </span>
             </div>
             <div className="home-hero-meta-cell">
