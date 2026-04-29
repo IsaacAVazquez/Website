@@ -32,6 +32,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     "/polling-aggregator",
     "/premier-league",
     "/portfolio",
+    "/recipe-finder",
     "/resume",
     "/spacex-mission-control",
     "/writing",
