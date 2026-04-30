@@ -1,8 +1,8 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -19,7 +19,7 @@
     "balance_sheet": true,
     "cash_flow": true,
     "wacc": true,
-    "industry": false,
+    "industry": true,
     "beta": true,
     "news": true,
     "dcf": true,
@@ -44,7 +44,8 @@
       "ttmPe": 36.82,
       "marketCap": 2833911768391,
       "psRatio": 3.95,
-      "pbRatio": 6.89
+      "pbRatio": 6.89,
+      "pegRatio": 7.61
     },
     "profitability": {
       "roe": 5.43,
@@ -6767,14 +6768,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
-        "title": "Game On: Discord reportedly in talks for IPO in 2025",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
         "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
         "publisher": "Yahoo Finance Video",
@@ -6788,6 +6781,14 @@
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-03-13",
         "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
+        "title": "Game On: Discord reportedly in talks for IPO in 2025",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
         "type": "STORY"
       },
       {
@@ -6900,6 +6901,48 @@
         "age": 60,
         "yearBorn": 1965,
         "totalPay": 163200
+      }
+    ],
+    "industry": [
+      {
+        "metric": "P/E (TTM)",
+        "value": 36.82,
+        "industryAvg": 30.46
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 3.95,
+        "industryAvg": 2.5
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 6.89,
+        "industryAvg": 4.57
+      },
+      {
+        "metric": "ROE",
+        "value": 5.43,
+        "industryAvg": 15.509999999999998
+      },
+      {
+        "metric": "ROA",
+        "value": 2.74,
+        "industryAvg": 7.33
+      },
+      {
+        "metric": "Gross Margin",
+        "value": 48.47,
+        "industryAvg": 39.68
+      },
+      {
+        "metric": "EBITDA Margin",
+        "value": 21.91,
+        "industryAvg": 14.299999999999999
+      },
+      {
+        "metric": "Net Margin",
+        "value": 9.93,
+        "industryAvg": 7.62
       }
     ],
     "dcf": {

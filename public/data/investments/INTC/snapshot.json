@@ -1,8 +1,8 @@
 {
   "symbol": "INTC",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -41,10 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": -0.63,
-      "ttmPe": -131.02,
+      "ttmPe": 3730,
       "marketCap": 414846040000,
       "psRatio": 7.72,
-      "pbRatio": 3.72
+      "pbRatio": 3.72,
+      "pegRatio": 30.28
     },
     "profitability": {
       "roe": -3.3000000000000003,
@@ -7991,43 +7992,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": -131.02,
-        "industryAvg": 43.08
+        "value": 3730,
+        "industryAvg": 40.22
       },
       {
         "metric": "P/S Ratio",
         "value": 7.72,
-        "industryAvg": 14.35
+        "industryAvg": 14.28
       },
       {
         "metric": "P/B Ratio",
         "value": 3.72,
-        "industryAvg": 11.83
+        "industryAvg": 11.89
       },
       {
         "metric": "ROE",
         "value": -3.3000000000000003,
-        "industryAvg": 9.53
+        "industryAvg": 29.98
       },
       {
         "metric": "ROA",
         "value": -1.79,
-        "industryAvg": 5.96
+        "industryAvg": 18.41
       },
       {
         "metric": "Gross Margin",
         "value": 39.379999999999995,
-        "industryAvg": 61.51
+        "industryAvg": 57.14
       },
       {
         "metric": "EBITDA Margin",
         "value": -4.02,
-        "industryAvg": 56.35
+        "industryAvg": 52.59
       },
       {
         "metric": "Net Margin",
         "value": -27.46,
-        "industryAvg": 38.09
+        "industryAvg": 33.29
       }
     ],
     "dcf": {

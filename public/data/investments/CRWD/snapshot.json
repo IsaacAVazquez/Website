@@ -1,8 +1,8 @@
 {
   "symbol": "CRWD",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -41,10 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": -0.74,
-      "ttmPe": -605.58,
+      "ttmPe": 778.18,
       "marketCap": 113652086633,
       "psRatio": 23.62,
-      "pbRatio": 25.66
+      "pbRatio": 25.66,
+      "pegRatio": 1.21
     },
     "profitability": {
       "roe": 1.41,
@@ -7716,43 +7717,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": -605.58,
-        "industryAvg": 33.56
+        "value": 778.18,
+        "industryAvg": 29.11
       },
       {
         "metric": "P/S Ratio",
         "value": 23.62,
-        "industryAvg": 5.94
+        "industryAvg": 5.98
       },
       {
         "metric": "P/B Ratio",
         "value": 25.66,
-        "industryAvg": 7.95
+        "industryAvg": 7.84
       },
       {
         "metric": "ROE",
         "value": 1.41,
-        "industryAvg": 7.4399999999999995
+        "industryAvg": 26.729999999999997
       },
       {
         "metric": "ROA",
         "value": 0.5599999999999999,
-        "industryAvg": 3.11
+        "industryAvg": 11.26
       },
       {
         "metric": "Gross Margin",
         "value": 76.12,
-        "industryAvg": 46.01
+        "industryAvg": 46.04
       },
       {
         "metric": "EBITDA Margin",
         "value": 10.95,
-        "industryAvg": 34.660000000000004
+        "industryAvg": 31.14
       },
       {
         "metric": "Net Margin",
         "value": 4.55,
-        "industryAvg": 19.96
+        "industryAvg": 17.79
       }
     ],
     "dcf": {

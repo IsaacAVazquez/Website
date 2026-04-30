@@ -1,8 +1,8 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 82.41,
       "marketCap": 2001628328232,
       "psRatio": 29.31,
-      "pbRatio": 25.06
+      "pbRatio": 25.06,
+      "pegRatio": 2.61
     },
     "profitability": {
       "roe": 9.120000000000001,
@@ -7837,19 +7838,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
-        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
         "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
+        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
         "type": "STORY"
       },
       {
@@ -7935,42 +7936,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 82.41,
-        "industryAvg": 43.08
+        "industryAvg": 40.22
       },
       {
         "metric": "P/S Ratio",
         "value": 29.31,
-        "industryAvg": 14.35
+        "industryAvg": 14.28
       },
       {
         "metric": "P/B Ratio",
         "value": 25.06,
-        "industryAvg": 11.83
+        "industryAvg": 11.89
       },
       {
         "metric": "ROE",
         "value": 9.120000000000001,
-        "industryAvg": 9.53
+        "industryAvg": 29.98
       },
       {
         "metric": "ROA",
         "value": 4.31,
-        "industryAvg": 5.96
+        "industryAvg": 18.41
       },
       {
         "metric": "Gross Margin",
         "value": 68.13,
-        "industryAvg": 61.51
+        "industryAvg": 57.14
       },
       {
         "metric": "EBITDA Margin",
         "value": 57.730000000000004,
-        "industryAvg": 56.35
+        "industryAvg": 52.59
       },
       {
         "metric": "Net Margin",
         "value": 38.06,
-        "industryAvg": 38.09
+        "industryAvg": 33.29
       }
     ],
     "dcf": {

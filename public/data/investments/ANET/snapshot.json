@@ -1,8 +1,8 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -18,7 +18,7 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
     "beta": true,
     "news": true,
@@ -44,7 +44,8 @@
       "ttmPe": 64.33,
       "marketCap": 222294119889,
       "psRatio": 24.68,
-      "pbRatio": 17.97
+      "pbRatio": 17.97,
+      "pegRatio": 3.07
     },
     "profitability": {
       "roe": 7.870000000000001,
@@ -4984,6 +4985,7 @@
         }
       ]
     },
+    "wacc": {},
     "beta": {
       "beta5y": 1.6722
     },
@@ -7147,42 +7149,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 64.33,
-        "industryAvg": 57.29
+        "industryAvg": 36.92
       },
       {
         "metric": "P/S Ratio",
         "value": 24.68,
-        "industryAvg": 3.76
+        "industryAvg": 3.58
       },
       {
         "metric": "P/B Ratio",
         "value": 17.97,
-        "industryAvg": 10.05
+        "industryAvg": 8.09
       },
       {
         "metric": "ROE",
         "value": 7.870000000000001,
-        "industryAvg": 17.78
+        "industryAvg": 39.269999999999996
       },
       {
         "metric": "ROA",
         "value": 5.1,
-        "industryAvg": 3.45
+        "industryAvg": 7.19
       },
       {
         "metric": "Gross Margin",
         "value": 62.86000000000001,
-        "industryAvg": 27.83
+        "industryAvg": 24.63
       },
       {
         "metric": "EBITDA Margin",
         "value": 42.44,
-        "industryAvg": 14.39
+        "industryAvg": 10.97
       },
       {
         "metric": "Net Margin",
         "value": 38.42,
-        "industryAvg": 10.27
+        "industryAvg": 6.569999999999999
       }
     ]
   }

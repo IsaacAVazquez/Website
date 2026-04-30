@@ -1,8 +1,8 @@
 {
   "symbol": "BRK-B",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -18,7 +18,7 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
     "beta": true,
     "news": true,
@@ -40,9 +40,7 @@
       "longName": "Berkshire Hathaway Inc."
     },
     "fundamentals": {},
-    "profitability": {
-      "roic": 1.71
-    },
+    "profitability": {},
     "margins": [
       {
         "netMargin": 17.23,
@@ -4169,6 +4167,13 @@
         }
       ]
     },
+    "wacc": {
+      "costOfEquity": 9.719999999999999,
+      "costOfDebt": 1.01,
+      "taxRate": 21,
+      "beta": 0.6321,
+      "marketCap": null
+    },
     "beta": {
       "beta5y": 0.6321
     },
@@ -6326,36 +6331,36 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "industryAvg": 16.72
+        "industryAvg": 11.94
       },
       {
         "metric": "P/S Ratio",
-        "industryAvg": 1.05
+        "industryAvg": 1.52
       },
       {
         "metric": "P/B Ratio",
-        "industryAvg": 0.14
+        "industryAvg": 1.39
       },
       {
         "metric": "ROE",
-        "industryAvg": 3.7199999999999998
+        "industryAvg": 10.48
       },
       {
         "metric": "ROA",
-        "industryAvg": 0.52
+        "industryAvg": 4.09
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 0.04
+        "industryAvg": 41.99
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 0.02
+        "industryAvg": 10.17
       },
       {
         "metric": "Net Margin",
         "value": 17.23,
-        "industryAvg": 16.74
+        "industryAvg": 15.28
       }
     ]
   }

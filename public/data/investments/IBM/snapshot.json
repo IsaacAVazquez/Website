@@ -1,8 +1,8 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 20.51,
       "marketCap": 218034591894,
       "psRatio": 3.16,
-      "pbRatio": 6.61
+      "pbRatio": 6.61,
+      "pegRatio": 1.44
     },
     "profitability": {
       "roe": 3.71,
@@ -8526,42 +8527,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 20.51,
-        "industryAvg": 19.1
+        "industryAvg": 16.56
       },
       {
         "metric": "P/S Ratio",
         "value": 3.16,
-        "industryAvg": 1.48
+        "industryAvg": 1.53
       },
       {
         "metric": "P/B Ratio",
         "value": 6.61,
-        "industryAvg": 1.26
+        "industryAvg": 3.5
       },
       {
         "metric": "ROE",
         "value": 3.71,
-        "industryAvg": 3.95
+        "industryAvg": 16.580000000000002
       },
       {
         "metric": "ROA",
         "value": 0.79,
-        "industryAvg": 1.37
+        "industryAvg": 5.800000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 56.230000000000004,
-        "industryAvg": 30.9
+        "industryAvg": 32.17
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.689999999999998,
-        "industryAvg": 15.509999999999998
+        "industryAvg": 16.33
       },
       {
         "metric": "Net Margin",
         "value": 7.64,
-        "industryAvg": 7.31
+        "industryAvg": 7.7299999999999995
       }
     ],
     "dcf": {

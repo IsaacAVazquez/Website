@@ -1,8 +1,8 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 345.23,
       "marketCap": 1413278903570,
       "psRatio": 14.44,
-      "pbRatio": 16.8
+      "pbRatio": 16.8,
+      "pegRatio": 41.44
     },
     "profitability": {
       "roe": 0.5700000000000001,
@@ -7866,19 +7867,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
-        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
         "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
         "publisher": "Zacks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
         "type": "STORY"
       },
       {
@@ -7947,42 +7948,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 345.23,
-        "industryAvg": 82.52
+        "industryAvg": 27.1
       },
       {
         "metric": "P/S Ratio",
         "value": 14.44,
-        "industryAvg": 1.69
+        "industryAvg": 1.24
       },
       {
         "metric": "P/B Ratio",
         "value": 16.8,
-        "industryAvg": 1.84
+        "industryAvg": 1.92
       },
       {
         "metric": "ROE",
         "value": 0.5700000000000001,
-        "industryAvg": -0.03
+        "industryAvg": 4.83
       },
       {
         "metric": "ROA",
         "value": 0.33999999999999997,
-        "industryAvg": -0.01
+        "industryAvg": 1.63
       },
       {
         "metric": "Gross Margin",
         "value": 21.08,
-        "industryAvg": 12.379999999999999
+        "industryAvg": 15.340000000000002
       },
       {
         "metric": "EBITDA Margin",
         "value": 10.85,
-        "industryAvg": 8.61
+        "industryAvg": 9.91
       },
       {
         "metric": "Net Margin",
         "value": 2.13,
-        "industryAvg": 1.0999999999999999
+        "industryAvg": 2.73
       }
     ],
     "dcf": {

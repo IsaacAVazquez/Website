@@ -1,8 +1,8 @@
 {
   "symbol": "JPM",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 14.76,
       "marketCap": 826036260000,
       "psRatio": 4.53,
-      "pbRatio": 2.28
+      "pbRatio": 2.28,
+      "pegRatio": 0.86
     },
     "profitability": {
       "roe": 3.51,
@@ -8067,32 +8068,32 @@
       {
         "metric": "P/E (TTM)",
         "value": 14.76,
-        "industryAvg": 13.68
+        "industryAvg": 13.41
       },
       {
         "metric": "P/S Ratio",
         "value": 4.53,
-        "industryAvg": 1.04
+        "industryAvg": 3.51
       },
       {
         "metric": "P/B Ratio",
         "value": 2.28,
-        "industryAvg": 0.44
+        "industryAvg": 1.53
       },
       {
         "metric": "ROE",
         "value": 3.51,
-        "industryAvg": 2.74
+        "industryAvg": 11.51
       },
       {
         "metric": "ROA",
         "value": 0.27999999999999997,
-        "industryAvg": 0.21
+        "industryAvg": 0.89
       },
       {
         "metric": "Net Margin",
         "value": 27.71,
-        "industryAvg": 24.709999999999997
+        "industryAvg": 26.68
       }
     ],
     "dcf": {

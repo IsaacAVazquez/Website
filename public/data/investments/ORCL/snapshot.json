@@ -1,8 +1,8 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 31.11,
       "marketCap": 498361250880,
       "psRatio": 7.78,
-      "pbRatio": 12.95
+      "pbRatio": 12.95,
+      "pegRatio": 1.27
     },
     "profitability": {
       "roe": 10.81,
@@ -7651,42 +7652,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 31.11,
-        "industryAvg": 33.56
+        "industryAvg": 29.11
       },
       {
         "metric": "P/S Ratio",
         "value": 7.78,
-        "industryAvg": 5.94
+        "industryAvg": 5.98
       },
       {
         "metric": "P/B Ratio",
         "value": 12.95,
-        "industryAvg": 7.95
+        "industryAvg": 7.84
       },
       {
         "metric": "ROE",
         "value": 10.81,
-        "industryAvg": 7.4399999999999995
+        "industryAvg": 26.729999999999997
       },
       {
         "metric": "ROA",
         "value": 1.6400000000000001,
-        "industryAvg": 3.11
+        "industryAvg": 11.26
       },
       {
         "metric": "Gross Margin",
         "value": 64.56,
-        "industryAvg": 46.01
+        "industryAvg": 46.04
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.48,
-        "industryAvg": 34.660000000000004
+        "industryAvg": 31.14
       },
       {
         "metric": "Net Margin",
         "value": 21.52,
-        "industryAvg": 19.96
+        "industryAvg": 17.79
       }
     ],
     "dcf": {

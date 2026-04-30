@@ -1,8 +1,8 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 34.31,
       "marketCap": 3979469808400,
       "psRatio": 9.14,
-      "pbRatio": 45.12
+      "pbRatio": 45.12,
+      "pegRatio": 1.87
     },
     "profitability": {
       "roe": 52,
@@ -6934,42 +6935,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 34.31,
-        "industryAvg": 36.89
+        "industryAvg": 33.78
       },
       {
         "metric": "P/S Ratio",
         "value": 9.14,
-        "industryAvg": 6.94
+        "industryAvg": 6.92
       },
       {
         "metric": "P/B Ratio",
         "value": 45.12,
-        "industryAvg": 20.84
+        "industryAvg": 20.83
       },
       {
         "metric": "ROE",
         "value": 52,
-        "industryAvg": 15.379999999999999
+        "industryAvg": 61.29
       },
       {
         "metric": "ROA",
         "value": 11.4,
-        "industryAvg": 4
+        "industryAvg": 16.29
       },
       {
         "metric": "Gross Margin",
         "value": 48.16,
-        "industryAvg": 42.480000000000004
+        "industryAvg": 42.11
       },
       {
         "metric": "EBITDA Margin",
         "value": 37.61,
-        "industryAvg": 32.97
+        "industryAvg": 31.34
       },
       {
         "metric": "Net Margin",
         "value": 29.28,
-        "industryAvg": 14.67
+        "industryAvg": 18.81
       }
     ],
     "dcf": {

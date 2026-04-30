@@ -1,8 +1,8 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 29.33,
       "marketCap": 595083753486,
       "psRatio": 14.38,
-      "pbRatio": 15.35
+      "pbRatio": 15.35,
+      "pegRatio": 1.66
     },
     "profitability": {
       "roe": 15.129999999999999,
@@ -7079,19 +7080,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
-        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
         "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
+        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
         "type": "STORY"
       },
       {
@@ -7212,42 +7213,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 29.33,
-        "industryAvg": 23.54
+        "industryAvg": 23.27
       },
       {
         "metric": "P/S Ratio",
         "value": 14.38,
-        "industryAvg": 2.54
+        "industryAvg": 4.92
       },
       {
         "metric": "P/B Ratio",
         "value": 15.35,
-        "industryAvg": 1.66
+        "industryAvg": 4.87
       },
       {
         "metric": "ROE",
         "value": 15.129999999999999,
-        "industryAvg": 3.4000000000000004
+        "industryAvg": 10.92
       },
       {
         "metric": "ROA",
         "value": 5.91,
-        "industryAvg": 0.5599999999999999
+        "industryAvg": 1.66
       },
       {
         "metric": "Gross Margin",
         "value": 81.67999999999999,
-        "industryAvg": 14.99
+        "industryAvg": 66.86999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 66.47,
-        "industryAvg": 9.74
+        "industryAvg": 43.63
       },
       {
         "metric": "Net Margin",
         "value": 53.23,
-        "industryAvg": 18.9
+        "industryAvg": 13.930000000000001
       }
     ],
     "dcf": {

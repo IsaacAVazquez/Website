@@ -1,8 +1,8 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 28.74,
       "marketCap": 1707525849165,
       "psRatio": 8.5,
-      "pbRatio": 7.86
+      "pbRatio": 7.86,
+      "pegRatio": 2.68
     },
     "profitability": {
       "roe": 11.07,
@@ -7261,19 +7262,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
         "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {
@@ -7396,42 +7397,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 28.74,
-        "industryAvg": 31.44
+        "industryAvg": 30.65
       },
       {
         "metric": "P/S Ratio",
         "value": 8.5,
-        "industryAvg": 9.16
+        "industryAvg": 9.14
       },
       {
         "metric": "P/B Ratio",
         "value": 7.86,
-        "industryAvg": 8.46
+        "industryAvg": 8.45
       },
       {
         "metric": "ROE",
         "value": 11.07,
-        "industryAvg": 7.75
+        "industryAvg": 29.160000000000004
       },
       {
         "metric": "ROA",
         "value": 6.800000000000001,
-        "industryAvg": 5.21
+        "industryAvg": 19.62
       },
       {
         "metric": "Gross Margin",
         "value": 81.78999999999999,
-        "industryAvg": 63
+        "industryAvg": 62.57
       },
       {
         "metric": "EBITDA Margin",
         "value": 52.129999999999995,
-        "industryAvg": 38.75
+        "industryAvg": 42.07
       },
       {
         "metric": "Net Margin",
         "value": 38.01,
-        "industryAvg": 28.470000000000002
+        "industryAvg": 29.18
       }
     ],
     "dcf": {

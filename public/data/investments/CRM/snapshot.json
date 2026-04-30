@@ -1,8 +1,8 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -18,7 +18,7 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
     "beta": true,
     "news": true,
@@ -44,7 +44,8 @@
       "ttmPe": 22.81,
       "marketCap": 164441680000,
       "psRatio": 3.96,
-      "pbRatio": 2.78
+      "pbRatio": 2.78,
+      "pegRatio": 1.25
     },
     "profitability": {
       "roe": 3.26,
@@ -5132,6 +5133,7 @@
         }
       ]
     },
+    "wacc": {},
     "beta": {
       "beta5y": 1.1424
     },
@@ -7303,7 +7305,7 @@
       {
         "metric": "P/E (TTM)",
         "value": 22.81,
-        "industryAvg": 39.3
+        "industryAvg": 24.88
       },
       {
         "metric": "P/S Ratio",
@@ -7313,32 +7315,32 @@
       {
         "metric": "P/B Ratio",
         "value": 2.78,
-        "industryAvg": 2.74
+        "industryAvg": 4.33
       },
       {
         "metric": "ROE",
         "value": 3.26,
-        "industryAvg": -6.550000000000001
+        "industryAvg": 6.08
       },
       {
         "metric": "ROA",
         "value": 1.87,
-        "industryAvg": -3.6999999999999997
+        "industryAvg": 3.3000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 77.61,
-        "industryAvg": 63.1
+        "industryAvg": 63.27
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.24,
-        "industryAvg": -40.849999999999994
+        "industryAvg": 14.899999999999999
       },
       {
         "metric": "Net Margin",
         "value": 17.349999999999998,
-        "industryAvg": -32.11
+        "industryAvg": 7.779999999999999
       }
     ]
   }

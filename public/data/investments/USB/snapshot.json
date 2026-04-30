@@ -1,8 +1,8 @@
 {
   "symbol": "USB",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -19,7 +19,7 @@
     "balance_sheet": true,
     "cash_flow": true,
     "wacc": true,
-    "industry": false,
+    "industry": true,
     "beta": true,
     "news": true,
     "dcf": true,
@@ -44,7 +44,8 @@
       "ttmPe": 11.65,
       "marketCap": 86426900000,
       "psRatio": 3.03,
-      "pbRatio": 1.33
+      "pbRatio": 1.33,
+      "pegRatio": 0.8
     },
     "profitability": {
       "roe": 3.06,
@@ -7519,6 +7520,38 @@
         "age": 56,
         "yearBorn": 1969,
         "totalPay": 2745357
+      }
+    ],
+    "industry": [
+      {
+        "metric": "P/E (TTM)",
+        "value": 11.65,
+        "industryAvg": 12.95
+      },
+      {
+        "metric": "P/S Ratio",
+        "value": 3.03,
+        "industryAvg": 3.28
+      },
+      {
+        "metric": "P/B Ratio",
+        "value": 1.33,
+        "industryAvg": 1.31
+      },
+      {
+        "metric": "ROE",
+        "value": 3.06,
+        "industryAvg": 9.94
+      },
+      {
+        "metric": "ROA",
+        "value": 0.27999999999999997,
+        "industryAvg": 0.86
+      },
+      {
+        "metric": "Net Margin",
+        "value": 26.779999999999998,
+        "industryAvg": 25.169999999999998
       }
     ],
     "dcf": {

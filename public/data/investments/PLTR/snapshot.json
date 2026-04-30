@@ -1,8 +1,8 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 227.13,
       "marketCap": 342224875913,
       "psRatio": 76.47,
-      "pbRatio": 46.33
+      "pbRatio": 46.33,
+      "pegRatio": 0.32
     },
     "profitability": {
       "roe": 8.709999999999999,
@@ -6900,20 +6901,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
-        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
         "title": "Nebius Group Stock Earns 84 RS Rating",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
+        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -6985,42 +6986,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 227.13,
-        "industryAvg": 33.56
+        "industryAvg": 29.11
       },
       {
         "metric": "P/S Ratio",
         "value": 76.47,
-        "industryAvg": 5.94
+        "industryAvg": 5.98
       },
       {
         "metric": "P/B Ratio",
         "value": 46.33,
-        "industryAvg": 7.95
+        "industryAvg": 7.84
       },
       {
         "metric": "ROE",
         "value": 8.709999999999999,
-        "industryAvg": 7.4399999999999995
+        "industryAvg": 26.729999999999997
       },
       {
         "metric": "ROA",
         "value": 7.1499999999999995,
-        "industryAvg": 3.11
+        "industryAvg": 11.26
       },
       {
         "metric": "Gross Margin",
         "value": 84.65,
-        "industryAvg": 46.01
+        "industryAvg": 46.04
       },
       {
         "metric": "EBITDA Margin",
         "value": 41.4,
-        "industryAvg": 34.660000000000004
+        "industryAvg": 31.14
       },
       {
         "metric": "Net Margin",
         "value": 43.269999999999996,
-        "industryAvg": 19.96
+        "industryAvg": 17.79
       }
     ],
     "dcf": {

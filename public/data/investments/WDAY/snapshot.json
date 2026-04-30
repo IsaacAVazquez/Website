@@ -1,8 +1,8 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-04-29T19:21:59.962390+00:00",
+  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-29T19:21:59.962390+00:00",
+    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
     "sections": {
       "price": "2026-04-24"
     }
@@ -44,7 +44,8 @@
       "ttmPe": 46.42,
       "marketCap": 30784188240,
       "psRatio": 3.22,
-      "pbRatio": 3.94
+      "pbRatio": 3.94,
+      "pegRatio": 0.81
     },
     "profitability": {
       "roe": 1.7399999999999998,
@@ -7606,7 +7607,7 @@
       {
         "metric": "P/E (TTM)",
         "value": 46.42,
-        "industryAvg": 39.3
+        "industryAvg": 24.88
       },
       {
         "metric": "P/S Ratio",
@@ -7616,32 +7617,32 @@
       {
         "metric": "P/B Ratio",
         "value": 3.94,
-        "industryAvg": 2.74
+        "industryAvg": 4.33
       },
       {
         "metric": "ROE",
         "value": 1.7399999999999998,
-        "industryAvg": -6.550000000000001
+        "industryAvg": 6.08
       },
       {
         "metric": "ROA",
         "value": 0.8099999999999999,
-        "industryAvg": -3.6999999999999997
+        "industryAvg": 3.3000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 75.87,
-        "industryAvg": 63.1
+        "industryAvg": 63.27
       },
       {
         "metric": "EBITDA Margin",
         "value": 15.36,
-        "industryAvg": -40.849999999999994
+        "industryAvg": 14.899999999999999
       },
       {
         "metric": "Net Margin",
         "value": 5.7299999999999995,
-        "industryAvg": -32.11
+        "industryAvg": 7.779999999999999
       }
     ],
     "dcf": {
