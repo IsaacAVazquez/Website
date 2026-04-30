@@ -1655,7 +1655,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                   </p>
                   {recentlyVisited.length === 0 ? (
                     <p className="text-[12px] text-[var(--home-ink-muted)]">
-                      No visits logged yet — log one from any museum card.
+                      No visits logged yet. Log one from any museum card.
                     </p>
                   ) : (
                     <ul className="flex flex-col gap-2">
@@ -1724,7 +1724,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
 
             <p className="tool-rail-foot">
               <HelpCircle size={14} aria-hidden="true" />
-              Visits, watchlist, and likes live only in your browser — no logins, no cloud sync.
+              Visits, watchlist, and likes live only in your browser. No logins, no cloud sync.
             </p>
           </aside>
         </div>

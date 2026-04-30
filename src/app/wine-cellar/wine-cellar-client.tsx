@@ -865,7 +865,7 @@ export function WineCellarClient() {
 
               <p className="tool-rail-foot">
                 <Bookmark size={14} aria-hidden="true" />
-                Saved in your browser — no account, no server.
+                Saved in your browser. No account, no server.
               </p>
             </aside>
           </div>

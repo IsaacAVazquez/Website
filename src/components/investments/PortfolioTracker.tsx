@@ -217,14 +217,14 @@ export function PortfolioTracker({ onResearch }: Props) {
           <p className="invest-rail-section-label">Research</p>
           <p className="text-[12.5px] leading-relaxed text-[var(--home-ink-muted)]">
             Click <strong className="text-[var(--home-ink)]">Research</strong> on any
-            holding to open the deep-dive view — fundamentals, valuation history, news,
-            and price chart with cost-basis overlay.
+            holding to open the deep-dive view with fundamentals, valuation history, news,
+            and a price chart with cost-basis overlay.
           </p>
         </section>
 
         <p className="mt-auto flex items-center gap-2 text-[11.5px] text-[var(--home-ink-muted)]">
           <IconHelp size={14} aria-hidden="true" />
-          Holdings live only in your browser — no logins, no cloud sync.
+          Holdings live only in your browser. No logins, no cloud sync.
         </p>
       </aside>
     </div>

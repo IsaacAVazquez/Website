@@ -281,7 +281,7 @@ export function WritingArchiveClient({
           <div className="wp-empty">
             <p className="wp-empty-title">No articles match that filter yet.</p>
             <p className="wp-empty-body">
-              Try a different category or check back later — the archive grows weekly.
+              Try a different category or check back later. The archive grows weekly.
             </p>
           </div>
         ) : (

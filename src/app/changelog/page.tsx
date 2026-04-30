@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return constructMetadata({
     title: "Changelog",
     description:
-      "A running log of what's shipped on this site — new features, fixes, writing, and experiments.",
+      "A running log of what's shipped on this site. New features, fixes, writing, and experiments.",
     canonicalUrl: "https://isaacavazquez.com/changelog",
     dateModified: latest || undefined,
   });
@@ -71,7 +71,7 @@ export default async function ChangelogPage() {
               What shipped, in order.
             </h1>
             <p className="home-body max-w-[52rem]">
-              A running log of changes to this site — features, fixes, writing,
+              A running log of changes to this site. Features, fixes, writing,
               and the occasional cleanup. Built in public on purpose. For the
               current focus, see the{" "}
               <Link

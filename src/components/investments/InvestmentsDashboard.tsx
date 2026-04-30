@@ -316,7 +316,7 @@ export function InvestmentsDashboard({
 
         <p className="mt-auto flex items-center gap-2 text-[11.5px] text-[var(--home-ink-muted)]">
           <IconHelp size={14} aria-hidden="true" />
-          Holdings live only in your browser — no logins, no cloud sync.
+          Holdings live only in your browser. No logins, no cloud sync.
         </p>
       </aside>
     </div>

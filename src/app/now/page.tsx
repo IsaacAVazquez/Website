@@ -28,7 +28,7 @@ const focus = [
     kicker: "Writing",
     title: "Agentic AI and PM workflows",
     detail:
-      "Working through a series on agentic product decisions — when agents help, when they get in the way, and what it means for PM craft.",
+      "Working through a series on agentic product decisions. When agents help, when they get in the way, and what it means for PM craft.",
   },
 ];
 
@@ -69,19 +69,19 @@ const building = [
   {
     label: "March Madness 2026",
     href: "/march-madness-2026",
-    detail: "Seasonal bracket tooling — wrapping for the year.",
+    detail: "Seasonal bracket tooling, wrapping for the year.",
   },
 ];
 
 const notBuilding = [
-  "New side projects outside this site — the surface is wide enough already.",
+  "New side projects outside this site. The surface is already wide enough.",
   "A paid product. This is a portfolio, not a business.",
   "Social media content. I write here and that's it.",
 ];
 
 export const metadata: Metadata = constructMetadata({
   title: "Now",
-  description: `What Isaac Vazquez is focused on right now — current work, reading, side projects, and location. Updated ${NOW_UPDATED_LABEL}.`,
+  description: `What Isaac Vazquez is focused on right now. Current work, reading, side projects, and location. Updated ${NOW_UPDATED_LABEL}.`,
   canonicalUrl: "https://isaacavazquez.com/now",
   dateModified: NOW_UPDATED,
 });
@@ -144,7 +144,7 @@ export default function NowPage() {
               What I&apos;m working on right now.
             </h1>
             <p className="home-body max-w-[52rem]">
-              A living snapshot — not a résumé, not a backlog. If you&apos;re
+              A living snapshot. Not a résumé, not a backlog. If you&apos;re
               curious what I&apos;d talk about if we grabbed coffee today, this
               is it. Inspired by Derek Sivers&apos;{" "}
               <a
@@ -311,7 +311,7 @@ export default function NowPage() {
             }}
           >
             Last updated {NOW_UPDATED_LABEL}. If anything on this page looks
-            stale, it probably is — ping me.
+            stale, it probably is. Ping me.
           </footer>
         </div>
       </section>

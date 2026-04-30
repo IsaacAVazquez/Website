@@ -449,9 +449,9 @@ export function InterchangeIQClient() {
                       </>
                     ) : null}
                     {savings > 100
-                      ? `Interchange+ wins at this volume — ${bestIC.name} saves ${fmtFull(savings)}/mo over the cheapest flat-rate option.`
+                      ? `Interchange+ wins at this volume. ${bestIC.name} saves ${fmtFull(savings)}/mo over the cheapest flat-rate option.`
                       : savings < -50
-                      ? "Flat-rate is cheaper here — per-transaction fixed fees compound at lower ticket sizes."
+                      ? "Flat-rate is cheaper here. Per-transaction fixed fees compound at lower ticket sizes."
                       : "Flat-rate and interchange+ are roughly equivalent at this profile."}
                   </p>
                 </div>
@@ -680,7 +680,7 @@ export function InterchangeIQClient() {
                     lineHeight: 1.55,
                   }}
                 >
-                  At your current card mix, Stripe IC+ never beats Stripe flat — the markup plus
+                  At your current card mix, Stripe IC+ never beats Stripe flat. The markup plus
                   blended interchange exceeds the flat rate at every ticket size.
                 </p>
               )}
@@ -896,7 +896,7 @@ export function InterchangeIQClient() {
         >
           Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue
           program averages. Processor fees from public pricing pages. For educational purposes
-          only — actual rates vary by industry, card type, and negotiated terms.
+          only. Actual rates vary by industry, card type, and negotiated terms.
         </p>
       </section>
     </div>
