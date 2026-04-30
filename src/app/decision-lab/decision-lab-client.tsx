@@ -4,6 +4,15 @@ import { startTransition, useEffect, useState, type CSSProperties } from "react"
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
+  IconAdjustmentsHorizontal,
+  IconBolt,
+  IconChartScatter,
+  IconLink,
+  IconRefresh,
+  IconScale,
+  IconTarget,
+} from "@tabler/icons-react";
+import {
   DECISION_PRESETS,
   evaluateDecision,
   getDecisionPreset,
@@ -65,265 +74,178 @@ const metricDefinitions: readonly MetricDefinition[] = [
   },
 ] as const;
 
-const recommendationAccent: Record<DecisionRecommendation, string> = {
-  ship: "var(--home-haze)",
-  test: "var(--home-acid)",
-  hold: "var(--home-ink)",
-};
-
 const recommendationCopy: Record<DecisionRecommendation, string> = {
-  ship: "Ship",
-  test: "Test",
-  hold: "Hold",
+  ship: "SHIP",
+  test: "TEST",
+  hold: "HOLD",
 };
 
-function getPanelStyle(): CSSProperties {
-  return {
-    background: "color-mix(in srgb, var(--home-paper-alt) 74%, var(--home-elev-mix))",
-    border: "1px solid var(--home-rule)",
-    boxShadow: "var(--shadow-sm)",
-  };
-}
+const recommendationTone: Record<
+  DecisionRecommendation,
+  { fill: string; tint: string; ring: string }
+> = {
+  ship: {
+    fill: "var(--home-haze)",
+    tint: "color-mix(in srgb, var(--home-haze) 16%, var(--home-paper))",
+    ring: "color-mix(in srgb, var(--home-haze) 38%, var(--home-rule))",
+  },
+  test: {
+    fill: "var(--home-acid)",
+    tint: "color-mix(in srgb, var(--home-acid) 22%, var(--home-paper))",
+    ring: "color-mix(in srgb, var(--home-acid) 42%, var(--home-rule))",
+  },
+  hold: {
+    fill: "var(--home-stone)",
+    tint: "color-mix(in srgb, var(--home-stone) 28%, var(--home-paper))",
+    ring: "color-mix(in srgb, var(--home-stone) 55%, var(--home-rule))",
+  },
+};
 
-function getMatrixCoordinates(confidence: number, impact: number) {
-  const padding = 26;
-  const size = 240;
+function getMatrixCoordinates(confidence: number, impact: number, padding: number, size: number) {
   const x = padding + (confidence / 100) * size;
   const y = padding + ((100 - impact) / 100) * size;
   return { x, y };
 }
 
 function DecisionMatrix({ state }: { state: DecisionLabState }) {
-  const activePreset = getDecisionPreset(state.preset);
-  const width = 292;
-  const height = 292;
-  const padding = 26;
-  const size = 240;
+  const padding = 22;
+  const size = 220;
+  const width = size + padding * 2;
+  const height = size + padding * 2 + 14;
 
   return (
-    <div className="home-card overflow-hidden p-5 sm:p-6" style={getPanelStyle()}>
-      <div className="flex items-center justify-between gap-4">
-        <div>
-          <p className="home-kicker mb-1">Matrix</p>
-          <h2
-            className="text-[1.2rem] font-semibold tracking-[-0.04em]"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
-            Confidence vs. impact
-          </h2>
-        </div>
-        <span className="resume-chip">Active point updates with the sliders</span>
-      </div>
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      role="img"
+      aria-label="Confidence and impact matrix for Decision Lab presets"
+      className="w-full max-w-full"
+      style={{ display: "block" }}
+    >
+      <rect
+        x={padding}
+        y={padding}
+        width={size}
+        height={size}
+        rx={16}
+        fill="color-mix(in srgb, var(--home-paper) 82%, var(--home-elev-mix))"
+        stroke="var(--home-rule)"
+      />
 
-      <div className="mt-5">
-        <svg
-          viewBox={`0 0 ${width} ${height}`}
-          role="img"
-          aria-label="Confidence and impact matrix for Decision Lab presets"
-          className="w-full"
-        >
-          <rect
-            x={padding}
-            y={padding}
-            width={size}
-            height={size}
-            rx={18}
-            fill="color-mix(in srgb, var(--home-paper) 82%, var(--home-elev-mix))"
-            stroke="var(--home-rule)"
-          />
+      {[0, 25, 50, 75, 100].map((tick) => {
+        const x = padding + (tick / 100) * size;
+        const y = padding + ((100 - tick) / 100) * size;
+        return (
+          <g key={tick}>
+            <line
+              x1={x}
+              y1={padding}
+              x2={x}
+              y2={padding + size}
+              stroke="color-mix(in srgb, var(--home-rule) 75%, var(--home-elev-mix))"
+              strokeDasharray="3 5"
+            />
+            <line
+              x1={padding}
+              y1={y}
+              x2={padding + size}
+              y2={y}
+              stroke="color-mix(in srgb, var(--home-rule) 75%, var(--home-elev-mix))"
+              strokeDasharray="3 5"
+            />
+          </g>
+        );
+      })}
 
-          {[0, 25, 50, 75, 100].map((tick) => {
-            const x = padding + (tick / 100) * size;
-            const y = padding + ((100 - tick) / 100) * size;
+      <line
+        x1={padding + 0.6 * size}
+        y1={padding}
+        x2={padding + 0.6 * size}
+        y2={padding + size}
+        stroke="color-mix(in srgb, var(--home-haze) 45%, var(--home-rule))"
+        strokeWidth="1.5"
+      />
+      <line
+        x1={padding}
+        y1={padding + 0.4 * size}
+        x2={padding + size}
+        y2={padding + 0.4 * size}
+        stroke="color-mix(in srgb, var(--home-haze) 45%, var(--home-rule))"
+        strokeWidth="1.5"
+      />
 
-            return (
-              <g key={tick}>
-                <line
-                  x1={x}
-                  y1={padding}
-                  x2={x}
-                  y2={padding + size}
-                  stroke="color-mix(in srgb, var(--home-rule) 75%, var(--home-elev-mix))"
-                  strokeDasharray="3 5"
-                />
-                <line
-                  x1={padding}
-                  y1={y}
-                  x2={padding + size}
-                  y2={y}
-                  stroke="color-mix(in srgb, var(--home-rule) 75%, var(--home-elev-mix))"
-                  strokeDasharray="3 5"
-                />
-              </g>
-            );
-          })}
+      {DECISION_PRESETS.map((preset) => {
+        const isActive = preset.id === state.preset;
+        const point = isActive
+          ? getMatrixCoordinates(state.confidence, state.impact, padding, size)
+          : getMatrixCoordinates(preset.confidence, preset.impact, padding, size);
 
-          <line
-            x1={padding + 0.6 * size}
-            y1={padding}
-            x2={padding + 0.6 * size}
-            y2={padding + size}
-            stroke="color-mix(in srgb, var(--home-haze) 45%, var(--home-rule))"
-            strokeWidth="1.5"
-          />
-          <line
-            x1={padding}
-            y1={padding + 0.4 * size}
-            x2={padding + size}
-            y2={padding + 0.4 * size}
-            stroke="color-mix(in srgb, var(--home-haze) 45%, var(--home-rule))"
-            strokeWidth="1.5"
-          />
+        return (
+          <g key={preset.id}>
+            <circle
+              cx={point.x}
+              cy={point.y}
+              r={isActive ? 6.5 : 4.5}
+              fill={
+                isActive
+                  ? "var(--home-haze)"
+                  : "color-mix(in srgb, var(--home-ink) 55%, var(--home-paper))"
+              }
+              stroke={isActive ? "var(--home-paper)" : "transparent"}
+              strokeWidth={isActive ? 2.5 : 0}
+            />
+            {isActive ? (
+              <text
+                x={point.x}
+                y={point.y - 12}
+                textAnchor="middle"
+                style={{
+                  fill: "var(--home-ink)",
+                  fontFamily: "var(--font-home-sans)",
+                  fontSize: "10px",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                }}
+              >
+                ACTIVE
+              </text>
+            ) : null}
+          </g>
+        );
+      })}
 
-          {DECISION_PRESETS.map((preset) => {
-            const isActive = preset.id === state.preset;
-            const point = isActive
-              ? getMatrixCoordinates(state.confidence, state.impact)
-              : getMatrixCoordinates(preset.confidence, preset.impact);
-
-            return (
-              <g key={preset.id}>
-                <circle
-                  cx={point.x}
-                  cy={point.y}
-                  r={isActive ? 7 : 5}
-                  fill={
-                    isActive
-                      ? "var(--home-haze)"
-                      : "color-mix(in srgb, var(--home-ink) 55%, var(--home-paper))"
-                  }
-                  stroke={isActive ? "var(--home-paper)" : "transparent"}
-                  strokeWidth={isActive ? 3 : 0}
-                />
-                {isActive ? (
-                  <text
-                    x={point.x}
-                    y={point.y - 14}
-                    textAnchor="middle"
-                    style={{
-                      fill: "var(--home-ink)",
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "11px",
-                      fontWeight: 700,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    ACTIVE
-                  </text>
-                ) : null}
-              </g>
-            );
-          })}
-
-          <text
-            x={padding + size / 2}
-            y={height - 10}
-            textAnchor="middle"
-            style={{
-              fill: "var(--home-ink-muted)",
-              fontFamily: "var(--font-home-sans)",
-              fontSize: "12px",
-              fontWeight: 600,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-            }}
-          >
-            Confidence
-          </text>
-          <text
-            x={16}
-            y={padding + size / 2}
-            textAnchor="middle"
-            transform={`rotate(-90 16 ${padding + size / 2})`}
-            style={{
-              fill: "var(--home-ink-muted)",
-              fontFamily: "var(--font-home-sans)",
-              fontSize: "12px",
-              fontWeight: 600,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-            }}
-          >
-            Impact
-          </text>
-        </svg>
-      </div>
-
-      <p className="mt-4 mb-0 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-        {activePreset.name} stays selected as the active scenario even when I push the sliders away
-        from its default shape.
-      </p>
-    </div>
-  );
-}
-
-function RecommendationCard({ state }: { state: DecisionLabState }) {
-  const evaluation = evaluateDecision(state);
-  const activePreset = getDecisionPreset(state.preset);
-
-  return (
-    <div className="home-card h-full p-5 sm:p-6" style={getPanelStyle()}>
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <p className="home-kicker mb-1">Recommendation</p>
-          <h2
-            className="text-[1.35rem] font-semibold tracking-[-0.05em]"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
-            {recommendationCopy[evaluation.recommendation]}
-          </h2>
-        </div>
-        <div
-          className="rounded-full px-4 py-2"
-          style={{
-            background: `color-mix(in srgb, ${recommendationAccent[evaluation.recommendation]} 18%, var(--home-paper))`,
-            border: `1px solid color-mix(in srgb, ${recommendationAccent[evaluation.recommendation]} 35%, var(--home-rule))`,
-            color: "var(--home-ink)",
-          }}
-        >
-          <span className="home-kicker">Score {evaluation.weightedScore}</span>
-        </div>
-      </div>
-
-      <p
-        className="mt-5 text-[1rem] leading-relaxed"
-        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+      <text
+        x={padding + size / 2}
+        y={height - 2}
+        textAnchor="middle"
+        style={{
+          fill: "var(--home-ink-muted)",
+          fontFamily: "var(--font-home-sans)",
+          fontSize: "10.5px",
+          fontWeight: 700,
+          letterSpacing: "0.14em",
+          textTransform: "uppercase",
+        }}
       >
-        {evaluation.rationale}
-      </p>
-
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-[1.2rem] px-4 py-4" style={getPanelStyle()}>
-          <p className="home-kicker mb-1">Active preset</p>
-          <p
-            className="mb-1 text-base font-semibold tracking-[-0.03em]"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
-            {activePreset.name}
-          </p>
-          <p className="mb-0 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-            {activePreset.outcomeHint}
-          </p>
-        </div>
-        <div className="rounded-[1.2rem] px-4 py-4" style={getPanelStyle()}>
-          <p className="home-kicker mb-1">Current call</p>
-          <p
-            className="mb-1 text-base font-semibold tracking-[-0.03em]"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
-            {evaluation.recommendation === "ship"
-              ? "Strong enough to commit"
-              : evaluation.recommendation === "test"
-                ? "Good enough to learn on"
-                : "Better to leave parked"}
-          </p>
-          <p className="mb-0 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-            The label moves as soon as the score, impact floor, or confidence floor changes.
-          </p>
-        </div>
-      </div>
-    </div>
+        Confidence
+      </text>
+      <text
+        x={10}
+        y={padding + size / 2}
+        textAnchor="middle"
+        transform={`rotate(-90 10 ${padding + size / 2})`}
+        style={{
+          fill: "var(--home-ink-muted)",
+          fontFamily: "var(--font-home-sans)",
+          fontSize: "10.5px",
+          fontWeight: 700,
+          letterSpacing: "0.14em",
+          textTransform: "uppercase",
+        }}
+      >
+        Impact
+      </text>
+    </svg>
   );
 }
 
@@ -347,48 +269,32 @@ function MetricSlider({
   const deltaLabel = delta === 0 ? "Preset" : `${delta > 0 ? "+" : ""}${delta} vs preset`;
 
   return (
-    <div className="rounded-[1.2rem] px-4 py-4" style={getPanelStyle()}>
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <label
-            htmlFor={inputId}
-            className="block text-base font-semibold tracking-[-0.03em]"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
-            {label}
-          </label>
-          <p className="mb-0 mt-1 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-            {helper}
-          </p>
-        </div>
-        <div className="flex flex-wrap justify-end gap-2">
+    <div className="grid gap-2">
+      <div className="flex items-baseline justify-between gap-3">
+        <label
+          htmlFor={inputId}
+          className="text-[13px] font-semibold tracking-[-0.01em]"
+          style={{ color: "var(--home-ink)" }}
+        >
+          {label}
+        </label>
+        <div className="flex items-center gap-2 text-[11.5px]" style={{ color: "var(--home-ink-muted)" }}>
           <span
-            className="resume-chip"
+            className="rounded-full border px-2 py-0.5 font-semibold tabular-nums"
             style={{
               borderColor: `color-mix(in srgb, ${accent} 35%, var(--home-rule))`,
               background: `color-mix(in srgb, ${accent} 18%, var(--home-paper))`,
+              color: "var(--home-ink)",
             }}
           >
             {value}
           </span>
-          <span
-            className="resume-chip"
-            style={{
-              borderColor:
-                delta === 0
-                  ? "var(--home-rule)"
-                  : `color-mix(in srgb, ${accent} 22%, var(--home-rule))`,
-              background:
-                delta === 0
-                  ? "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))"
-                  : `color-mix(in srgb, ${accent} 12%, var(--home-paper))`,
-            }}
-          >
-            {deltaLabel}
-          </span>
+          <span className="tabular-nums">{deltaLabel}</span>
         </div>
       </div>
-
+      <p className="m-0 text-[12px] leading-snug" style={{ color: "var(--home-ink-muted)" }}>
+        {helper}
+      </p>
       <input
         id={inputId}
         type="range"
@@ -397,7 +303,7 @@ function MetricSlider({
         step="1"
         value={value}
         onChange={(event) => onChange(Number.parseInt(event.target.value, 10))}
-        className="mt-4 block min-h-touch w-full accent-[var(--home-haze)]"
+        className="block min-h-touch w-full"
         aria-label={label}
         style={{ accentColor: accent }}
       />
@@ -420,11 +326,13 @@ function DecisionLabWorkbench({
   const activePreset = getDecisionPreset(draftState.preset);
   const evaluation = evaluateDecision(draftState);
   const currentHref = buildDecisionLabHref(draftState);
+  const tone = recommendationTone[evaluation.recommendation];
   const hasPresetOverride =
     draftState.impact !== activePreset.impact ||
     draftState.confidence !== activePreset.confidence ||
     draftState.effort !== activePreset.effort ||
     draftState.reversibility !== activePreset.reversibility;
+  const crumbLabel = hasPresetOverride ? "Custom" : activePreset.name;
 
   function commitState(nextState: DecisionLabState) {
     setDraftState(nextState);
@@ -436,7 +344,6 @@ function DecisionLabWorkbench({
 
   function handlePresetChange(presetId: DecisionLabState["preset"]) {
     const preset = getDecisionPreset(presetId);
-
     commitState({
       preset: presetId,
       impact: preset.impact,
@@ -447,10 +354,7 @@ function DecisionLabWorkbench({
   }
 
   function handleMetricChange(key: keyof DecisionMetrics, value: number) {
-    commitState({
-      ...draftState,
-      [key]: value,
-    });
+    commitState({ ...draftState, [key]: value });
   }
 
   function handleResetToPreset() {
@@ -468,7 +372,6 @@ function DecisionLabWorkbench({
       if (!navigator.clipboard) {
         throw new Error("clipboard unavailable");
       }
-
       await navigator.clipboard.writeText(
         new URL(currentHref, window.location.origin).toString()
       );
@@ -478,214 +381,377 @@ function DecisionLabWorkbench({
     }
   }
 
+  // "Why this verdict" — surface the per-axis contributions to the weighted score.
+  // Mirrors the formula in decision-lab-data.ts: impact*0.35 + confidence*0.25 + (100-effort)*0.25 + reversibility*0.15
+  const contributions: ReadonlyArray<{
+    axis: keyof DecisionMetrics;
+    label: string;
+    weight: number;
+    raw: number;
+    contribution: number;
+    accent: string;
+  }> = [
+    {
+      axis: "impact",
+      label: "Impact",
+      weight: 0.35,
+      raw: draftState.impact,
+      contribution: draftState.impact * 0.35,
+      accent: "var(--home-haze)",
+    },
+    {
+      axis: "confidence",
+      label: "Confidence",
+      weight: 0.25,
+      raw: draftState.confidence,
+      contribution: draftState.confidence * 0.25,
+      accent: "var(--home-moss)",
+    },
+    {
+      axis: "effort",
+      label: "Effort (inverted)",
+      weight: 0.25,
+      raw: 100 - draftState.effort,
+      contribution: (100 - draftState.effort) * 0.25,
+      accent: "var(--home-ink)",
+    },
+    {
+      axis: "reversibility",
+      label: "Reversibility",
+      weight: 0.15,
+      raw: draftState.reversibility,
+      contribution: draftState.reversibility * 0.15,
+      accent: "var(--home-acid)",
+    },
+  ];
+
+  const heroStyle: CSSProperties = {
+    background: `linear-gradient(140deg, ${tone.tint} 0%, color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)) 70%)`,
+    borderColor: tone.ring,
+  };
+
   return (
     <section className="home-page min-h-screen" aria-label="Decision Lab" data-testid="decision-lab-shell">
-      <div className="home-shell home-section space-y-6 sm:space-y-8">
+      <div className="tool-page-stack px-4 py-8 sm:px-6 lg:px-8">
         <motion.div variants={variants} initial="hidden" animate="visible">
-          <div className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
-            <div className="space-y-4">
-              <p className="home-kicker">Decision Lab</p>
-              <h1
-                className="max-w-4xl text-balance"
-                style={{
-                  color: "var(--home-ink)",
-                  fontFamily: "var(--font-home-sans)",
-                  fontSize: "clamp(2.6rem, 6vw, 5rem)",
-                  fontWeight: 600,
-                  lineHeight: 0.94,
-                  letterSpacing: "-0.08em",
-                }}
-              >
-                I built this to pressure-test product bets before a confident story outruns the actual tradeoff.
-              </h1>
-              <p className="home-body max-w-[42rem]">
-                I do not think most roadmap arguments fail because people cannot tell a good story. I
-                think they fail because impact, confidence, effort, and reversibility get blended into
-                one vague feeling. Decision Lab keeps those axes separate, then forces a plain call.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="resume-chip">Six curated product scenarios</span>
-                <span className="resume-chip">Deep-linkable slider state</span>
-                <span className="resume-chip">Deterministic scoring model</span>
-                {hasPresetOverride ? <span className="resume-chip">Preset unlocked</span> : null}
+          <div className="tool-shell" data-testid="decision-lab-shell-grid">
+            {/* Sidebar */}
+            <aside className="tool-sidebar" aria-label="Decision Lab navigation">
+              <div className="tool-brand">
+                <div className="tool-brand-mark" aria-hidden="true">
+                  <IconScale size={18} />
+                </div>
+                <div className="tool-brand-name">
+                  Decision Lab
+                  <small>Bet triage</small>
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-3">
+              <nav className="flex flex-col gap-1.5" aria-label="Scenario presets">
+                {DECISION_PRESETS.map((preset) => {
+                  const isActive = preset.id === draftState.preset;
+                  return (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      className="tool-nav-link"
+                      aria-current={isActive ? "true" : undefined}
+                      onClick={() => handlePresetChange(preset.id)}
+                    >
+                      <IconTarget size={16} aria-hidden="true" />
+                      <span className="truncate">{preset.name}</span>
+                      {isActive ? <span className="tool-nav-pill">On</span> : null}
+                    </button>
+                  );
+                })}
+              </nav>
+
+              <div className="tool-sidebar-footer">
+                <IconLink size={14} aria-hidden="true" />
+                <span>Saved in URL</span>
+              </div>
+            </aside>
+
+            {/* Main */}
+            <div className="tool-main" id="hero">
+              <div className="tool-topbar">
+                <div>
+                  <p className="tool-crumbs">
+                    Decision Lab / <strong>{crumbLabel}</strong>
+                  </p>
+                  <h1>Decision Lab</h1>
+                </div>
+
                 <button
                   type="button"
                   onClick={handleResetToPreset}
                   disabled={!hasPresetOverride}
-                  className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55"
+                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-2 text-[12.5px] font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-55"
                   style={{
-                    ...getPanelStyle(),
+                    borderColor: "var(--home-rule)",
+                    background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
                     color: "var(--home-ink)",
-                    fontFamily: "var(--font-home-sans)",
                   }}
                 >
-                  Reset to preset
+                  <IconRefresh size={14} aria-hidden="true" />
+                  Reset to defaults
                 </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    void handleCopyLink();
-                  }}
-                  className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease"
+              </div>
+
+              {/* Live verdict chip */}
+              <div className="tool-meta-chip" role="status" aria-live="polite">
+                <span
+                  className="tool-meta-chip-dot"
+                  aria-hidden="true"
                   style={{
-                    ...getPanelStyle(),
-                    background: "color-mix(in srgb, var(--home-haze) 12%, var(--home-paper))",
-                    borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
-                    color: "var(--home-ink)",
-                    fontFamily: "var(--font-home-sans)",
+                    background: tone.fill,
+                    boxShadow: `0 0 0 3px color-mix(in srgb, ${tone.fill} 22%, transparent)`,
                   }}
-                >
-                  Copy link
-                </button>
-                {copyStatus === "copied" ? <span className="resume-chip">Link copied</span> : null}
-                {copyStatus === "error" ? <span className="resume-chip">Copy failed</span> : null}
+                />
+                <span>
+                  Impact <strong>{draftState.impact}</strong>
+                </span>
+                <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
+                <span>
+                  Confidence <strong>{draftState.confidence}</strong>
+                </span>
+                <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
+                <span>
+                  Effort <strong>{draftState.effort}</strong>
+                </span>
+                <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
+                <span>
+                  Reversibility <strong>{draftState.reversibility}</strong>
+                </span>
+                <span className="tool-meta-chip-spacer" />
+                <span className="tool-meta-chip-meta tabular-nums">
+                  Score {evaluation.weightedScore} · {recommendationCopy[evaluation.recommendation]}
+                </span>
+              </div>
+
+              <div className="mt-5 flex flex-col gap-5">
+                {/* Hero verdict card */}
+                <div className="tool-card tool-card-hero" style={heroStyle}>
+                  <div className="flex flex-wrap items-start justify-between gap-4">
+                    <div className="min-w-0">
+                      <p className="tool-section-kicker">Recommendation</p>
+                      <p
+                        className="m-0 mt-2 text-[2.4rem] font-semibold leading-none tracking-[-0.05em] tabular-nums"
+                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                      >
+                        {recommendationCopy[evaluation.recommendation]}
+                      </p>
+                    </div>
+                    <div
+                      className="rounded-full px-4 py-2 text-[11.5px] font-semibold tabular-nums"
+                      style={{
+                        background: tone.tint,
+                        border: `1px solid ${tone.ring}`,
+                        color: "var(--home-ink)",
+                        letterSpacing: "0.08em",
+                      }}
+                    >
+                      SCORE {evaluation.weightedScore}
+                    </div>
+                  </div>
+
+                  <p
+                    className="mt-5 max-w-3xl text-balance"
+                    style={{
+                      color: "var(--home-ink)",
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "clamp(1.4rem, 1.4vw + 0.95rem, 1.85rem)",
+                      fontWeight: 600,
+                      lineHeight: 1.15,
+                      letterSpacing: "-0.04em",
+                      margin: 0,
+                    }}
+                  >
+                    I built this to pressure-test product bets before a confident story outruns the actual tradeoff.
+                  </p>
+
+                  <p
+                    className="mt-3 max-w-2xl text-[13.5px] leading-relaxed"
+                    style={{ color: "var(--home-ink)" }}
+                  >
+                    {evaluation.rationale}
+                  </p>
+                  <p
+                    className="mt-2 max-w-2xl text-[13px] leading-relaxed"
+                    style={{ color: "var(--home-ink-muted)" }}
+                  >
+                    Decision Lab keeps those axes separate, then forces a plain call.
+                  </p>
+                </div>
+
+                {/* Sliders */}
+                <div className="tool-card">
+                  <div className="tool-section-header mb-4">
+                    <div>
+                      <p className="tool-section-kicker">
+                        <IconAdjustmentsHorizontal size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
+                        Inputs
+                      </p>
+                      <h2 className="tool-section-title">Score the tradeoff</h2>
+                    </div>
+                    <span className="text-[11.5px]" style={{ color: "var(--home-ink-muted)" }}>
+                      Active: {activePreset.name}
+                    </span>
+                  </div>
+                  <div className="grid gap-4">
+                    {metricDefinitions.map((metric) => (
+                      <MetricSlider
+                        key={metric.key}
+                        label={metric.label}
+                        helper={metric.helper}
+                        value={draftState[metric.key]}
+                        baseValue={activePreset[metric.key]}
+                        accent={metric.accent}
+                        onChange={(value) => handleMetricChange(metric.key, value)}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Matrix */}
+                <div className="tool-card">
+                  <div className="tool-section-header mb-3">
+                    <div>
+                      <p className="tool-section-kicker">
+                        <IconChartScatter size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
+                        Matrix
+                      </p>
+                      <h2 className="tool-section-title">Confidence vs. impact</h2>
+                    </div>
+                    <span className="text-[11.5px]" style={{ color: "var(--home-ink-muted)" }}>
+                      Active point updates with the sliders
+                    </span>
+                  </div>
+                  <DecisionMatrix state={draftState} />
+                </div>
               </div>
             </div>
 
-            <RecommendationCard state={draftState} />
-          </div>
-        </motion.div>
-
-        <motion.div variants={variants} initial="hidden" animate="visible">
-          <div className="grid gap-5 xl:grid-cols-[0.92fr_1.08fr]">
-            <div className="space-y-5">
-              <div className="home-card p-5 sm:p-6" style={getPanelStyle()}>
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="home-kicker mb-1">Preset rail</p>
-                    <h2
-                      className="text-[1.2rem] font-semibold tracking-[-0.04em]"
-                      style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+            {/* Rail */}
+            <aside className="tool-rail" aria-label="Verdict rail">
+              <section>
+                <p className="tool-rail-label">
+                  <IconBolt size={12} aria-hidden="true" />
+                  Why this verdict
+                </p>
+                <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
+                  {contributions.map((c) => (
+                    <li
+                      key={c.axis}
+                      className="grid items-center gap-3 rounded-[14px] border px-3 py-2 text-[12px]"
+                      style={{
+                        gridTemplateColumns: "auto 1fr auto",
+                        borderColor: "var(--home-rule)",
+                        background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                        color: "var(--home-ink)",
+                      }}
                     >
-                      Scenario presets
-                    </h2>
-                  </div>
-                  <span className="resume-chip">Selected: {activePreset.name}</span>
-                </div>
+                      <span
+                        aria-hidden="true"
+                        className="inline-block h-2 w-2 rounded-full"
+                        style={{ background: c.accent }}
+                      />
+                      <span className="min-w-0 truncate font-medium" style={{ color: "var(--home-ink)" }}>
+                        {c.label}
+                      </span>
+                      <span
+                        className="tabular-nums text-[11.5px]"
+                        style={{ color: "var(--home-ink-muted)" }}
+                      >
+                        {c.raw} × {c.weight.toFixed(2)} ={" "}
+                        <strong style={{ color: "var(--home-ink)" }}>{c.contribution.toFixed(1)}</strong>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p
+                  className="mt-3 mb-0 text-[11.5px] leading-snug"
+                  style={{ color: "var(--home-ink-muted)" }}
+                >
+                  Ship needs score ≥ 68 with impact ≥ 65 and confidence ≥ 60. Test fires when
+                  impact ≥ 60 or score ≥ 50. Otherwise it holds.
+                </p>
+              </section>
 
-                <div className="mt-5 grid gap-3">
+              <section>
+                <p className="tool-rail-label">
+                  <IconTarget size={12} aria-hidden="true" />
+                  Presets
+                </p>
+                <div className="grid gap-1.5">
                   {DECISION_PRESETS.map((preset) => {
                     const isActive = preset.id === draftState.preset;
-
                     return (
                       <button
                         key={preset.id}
                         type="button"
                         onClick={() => handlePresetChange(preset.id)}
                         aria-pressed={isActive}
-                        className="min-h-touch rounded-[1.25rem] px-4 py-4 text-left transition-[transform,border-color,background-color,box-shadow] duration-200 ease"
+                        className="min-h-touch rounded-[12px] border px-3 py-2 text-left text-[12.5px] font-semibold transition-colors"
                         style={{
-                          ...getPanelStyle(),
-                          background: isActive
-                            ? "color-mix(in srgb, var(--home-haze) 13%, var(--home-paper))"
-                            : "color-mix(in srgb, var(--home-paper-alt) 68%, var(--home-elev-mix))",
                           borderColor: isActive
                             ? "color-mix(in srgb, var(--home-haze) 35%, var(--home-rule))"
                             : "var(--home-rule)",
-                          boxShadow: isActive ? "var(--shadow-md)" : "var(--shadow-sm)",
+                          background: isActive
+                            ? "color-mix(in srgb, var(--home-haze) 14%, var(--home-paper))"
+                            : "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                          color: "var(--home-ink)",
                         }}
                       >
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <span className="home-kicker">Preset</span>
-                            <p
-                              className="mb-1 mt-2 text-base font-semibold tracking-[-0.03em]"
-                              style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                            >
-                              {preset.name}
-                            </p>
-                          </div>
-                          {isActive ? <span className="resume-chip">Active</span> : null}
-                        </div>
-                        <p className="mb-0 mt-3 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                          {preset.summary}
-                        </p>
+                        <span className="block truncate">{preset.name}</span>
+                        <span
+                          className="block truncate text-[11px] font-normal"
+                          style={{ color: "var(--home-ink-muted)" }}
+                        >
+                          {preset.outcomeHint}
+                        </span>
                       </button>
                     );
                   })}
                 </div>
-              </div>
+              </section>
 
-              <DecisionMatrix state={draftState} />
-            </div>
-
-            <div className="space-y-5">
-              <div className="home-card p-5 sm:p-6" style={getPanelStyle()}>
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="home-kicker mb-1">Workbench</p>
-                    <h2
-                      className="text-[1.2rem] font-semibold tracking-[-0.04em]"
-                      style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                    >
-                      Score the tradeoff directly
-                    </h2>
-                  </div>
-                  <span className="resume-chip">{recommendationCopy[evaluation.recommendation]} right now</span>
-                </div>
-
-                <div className="mt-5 grid gap-4">
-                  {metricDefinitions.map((metric) => (
-                    <MetricSlider
-                      key={metric.key}
-                      label={metric.label}
-                      helper={metric.helper}
-                      value={draftState[metric.key]}
-                      baseValue={activePreset[metric.key]}
-                      accent={metric.accent}
-                      onChange={(value) => handleMetricChange(metric.key, value)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-3">
-                <div className="home-card p-5" style={getPanelStyle()}>
-                  <p className="home-kicker mb-2">Ship</p>
-                  <h2
-                    className="text-[1.05rem] font-semibold tracking-[-0.03em]"
-                    style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+              <div className="tool-rail-foot">
+                <div className="grid w-full gap-2">
+                  <p
+                    className="m-0 flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-[0.14em]"
+                    style={{ color: "var(--home-ink-muted)" }}
                   >
-                    I ship when upside and proof both clear the bar.
-                  </h2>
-                  <p className="mb-0 mt-3 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                    The model only says ship when score is at least 68 and both impact and confidence
-                    are already sturdy.
+                    <IconLink size={11} aria-hidden="true" />
+                    URL state
                   </p>
-                </div>
-
-                <div className="home-card p-5" style={getPanelStyle()}>
-                  <p className="home-kicker mb-2">Test</p>
-                  <h2
-                    className="text-[1.05rem] font-semibold tracking-[-0.03em]"
-                    style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      void handleCopyLink();
+                    }}
+                    className="min-h-touch rounded-full border px-3 py-1.5 text-[12px] font-semibold transition-colors"
+                    style={{
+                      borderColor: "color-mix(in srgb, var(--home-haze) 28%, var(--home-rule))",
+                      background: "color-mix(in srgb, var(--home-haze) 12%, var(--home-paper))",
+                      color: "var(--home-ink)",
+                    }}
                   >
-                    I test when the bet is interesting, but not clean enough to trust.
-                  </h2>
-                  <p className="mb-0 mt-3 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                    This is where I still see a reason to learn, either because impact is high or the
-                    blended score stays respectable.
-                  </p>
-                </div>
-
-                <div className="home-card p-5" style={getPanelStyle()}>
-                  <p className="home-kicker mb-2">Hold</p>
-                  <h2
-                    className="text-[1.05rem] font-semibold tracking-[-0.03em]"
-                    style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+                    Copy link
+                  </button>
+                  <p
+                    className="m-0 text-[11px] leading-snug"
+                    style={{ color: "var(--home-ink-muted)" }}
                   >
-                    I hold when the case still feels weaker than the cost of attention.
-                  </h2>
-                  <p className="mb-0 mt-3 text-sm leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
-                    A hold is not a moral judgment. It just means the tradeoff still looks worse than
-                    the story people want to tell about it.
+                    {copyStatus === "copied"
+                      ? "Link copied"
+                      : copyStatus === "error"
+                        ? "Copy failed"
+                        : "Copy to share — every slider change is encoded."}
                   </p>
                 </div>
               </div>
-            </div>
+            </aside>
           </div>
         </motion.div>
       </div>

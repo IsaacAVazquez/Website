@@ -37,8 +37,11 @@ describe("DecisionLabPage", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /i built this to pressure-test product bets/i,
+        name: /^Decision Lab$/i,
       })
+    ).toBeVisible();
+    expect(
+      screen.getByText(/i built this to pressure-test product bets/i)
     ).toBeVisible();
     expect(
       screen.getByText(/Decision Lab keeps those axes separate, then forces a plain call\./i)

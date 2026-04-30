@@ -69,7 +69,7 @@ describe("BudgetPlannerClient", () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByText("May 2026")).toBeVisible();
+      expect(screen.getAllByText("May 2026").length).toBeGreaterThan(0);
     });
 
     const months = JSON.parse(localStorage.getItem(BUDGET_PLANNER_STORAGE_KEY) || "{}");

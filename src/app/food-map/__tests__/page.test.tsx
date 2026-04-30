@@ -37,11 +37,11 @@ describe("FoodMapPage", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /the austin spots i send people to before they ask\./i,
+        name: /^food map$/i,
       })
     ).toBeVisible();
     expect(
-      screen.getByText(/I built this because I keep typing the same restaurant list/i)
+      screen.getByText(/Tap a pin or a card to see why it earns the spot\./i)
     ).toBeVisible();
   });
 });

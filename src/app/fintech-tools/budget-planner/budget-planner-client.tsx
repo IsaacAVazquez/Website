@@ -5,15 +5,18 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
+  Bookmark,
   CalendarRange,
+  ChartPie,
   Landmark,
+  ListChecks,
   PiggyBank,
   Plus,
   ReceiptText,
+  Sparkles,
   Trash2,
   Wallet,
 } from "lucide-react";
-import { WarmCard } from "@/components/ui/WarmCard";
 import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
 import {
   formatBudgetMonthLabel,
@@ -78,6 +81,13 @@ function parseAmountInput(value: string) {
   return Math.max(0, Math.round(parsed * 100) / 100);
 }
 
+const NAV_ITEMS = [
+  { id: "income", label: "Income", icon: Landmark, href: "#section-income" },
+  { id: "categories", label: "Categories", icon: ChartPie, href: "#section-categories" },
+  { id: "expenses", label: "Expenses", icon: ReceiptText, href: "#section-expenses" },
+  { id: "summary", label: "Summary", icon: ListChecks, href: "#section-summary" },
+] as const;
+
 export function BudgetPlannerClient() {
   const {
     activeMonth,
@@ -110,34 +120,26 @@ export function BudgetPlannerClient() {
     ? expenseDraft.categoryId
     : activeMonth.categories[0]?.id ?? "";
 
-  const topMetrics = useMemo(
-    () => [
-      {
-        label: "Income",
-        value: formatCurrency(activeMonth.income),
-        tone: "text-[var(--home-ink)]",
-        icon: Landmark,
-      },
-      {
-        label: "Available to budget",
-        value: formatSignedCurrency(summary.availableToBudget),
-        tone: getBalanceTone(summary.availableToBudget),
-        icon: Wallet,
-      },
-      {
-        label: "Remaining to budget",
-        value: formatSignedCurrency(summary.remainingToBudget),
-        tone: getBalanceTone(summary.remainingToBudget),
-        icon: PiggyBank,
-      },
-      {
-        label: "Remaining to spend",
-        value: formatSignedCurrency(summary.remainingToSpend),
-        tone: getBalanceTone(summary.remainingToSpend),
-        icon: ReceiptText,
-      },
-    ],
-    [activeMonth.income, summary.availableToBudget, summary.remainingToBudget, summary.remainingToSpend]
+  const monthLabel = formatBudgetMonthLabel(activeMonthKey);
+
+  // Hero summary numbers. "Spent" is the canonical "money out" number for the
+  // hero card; remaining mirrors what the user has left to spend this month.
+  const totalIncome = activeMonth.income;
+  const totalExpenses = summary.spentTotal;
+  const remaining = summary.remainingToSpend;
+  const percentSpent = useMemo(() => {
+    if (totalIncome <= 0) return 0;
+    return Math.min(999, Math.round((totalExpenses / totalIncome) * 100));
+  }, [totalIncome, totalExpenses]);
+  const progressWidth = `${Math.min(100, Math.max(0, percentSpent))}%`;
+
+  const topCategories = useMemo(
+    () =>
+      [...summary.categorySummaries]
+        .filter((category) => category.spent > 0)
+        .sort((a, b) => b.spent - a.spent)
+        .slice(0, 5),
+    [summary.categorySummaries]
   );
 
   function handleMonthChange(nextMonthKey: string) {
@@ -196,117 +198,187 @@ export function BudgetPlannerClient() {
     });
   }
 
+  // Field styling reused across rail + main forms. Tightened to fit the 290px
+  // rail without horizontal scroll.
+  const fieldLabel =
+    "block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]";
+  const fieldInput =
+    "mt-1.5 w-full min-h-touch rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-[13px] text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2";
+  const numericInput = `${fieldInput} [font-variant-numeric:tabular-nums]`;
+
   return (
-    <section
-      className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_11%,transparent),transparent_30%),linear-gradient(180deg,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--home-paper))_0%,var(--home-paper)_100%)]"
-      aria-label="Budget planner workspace"
-      data-testid="budget-planner-shell"
-    >
-      <div className="mx-auto w-full max-w-[1680px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8 xl:px-10 2xl:px-12">
-        <motion.div
-          variants={motionVariants}
-          initial="hidden"
-          animate="visible"
-          className="mb-8 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in_srgb,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_94%,var(--home-haze)_6%)_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_45%,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--color-success)_12%)_100%)] shadow-[var(--shadow-lg)]"
-        >
-          <div className="grid gap-8 border-b border-[var(--home-rule)]/80 px-6 py-6 sm:px-8 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-end">
-            <div className="min-w-0">
-              <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--home-haze)]">
-                Fintech Tools
-              </p>
-              <h1 className="text-3xl font-bold tracking-tight text-[var(--home-ink)] sm:text-4xl">
+    <div className="mx-auto w-full max-w-[1280px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
+      <motion.div
+        variants={motionVariants}
+        initial="hidden"
+        animate="visible"
+        className="tool-page-stack"
+        data-testid="budget-planner-shell"
+      >
+        <div className="tool-shell">
+          <aside className="tool-sidebar" aria-label="Budget planner navigation">
+            <div className="tool-brand">
+              <div className="tool-brand-mark" aria-hidden="true">
+                <Wallet className="h-4 w-4" />
+              </div>
+              <div className="tool-brand-name">
                 Budget Planner
-              </h1>
-              <p className="mt-3 max-w-[64ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[0.98rem]">
-                Monthly budgeting in a single editorial-style ledger. Income, savings targets,
-                category budgets, and manual expenses all in one place, saved in your browser.
-              </p>
+                <small>Monthly</small>
+              </div>
             </div>
 
-            <div className="grid gap-3 rounded-[26px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_88%,transparent)] p-3 shadow-[var(--shadow-sm)] backdrop-blur sm:grid-cols-[auto_minmax(180px,1fr)_auto]">
-              <button
-                type="button"
-                aria-label="Previous month"
-                onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, -1))}
-                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
-              >
-                <ArrowLeft className="h-4 w-4" />
-              </button>
+            <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
+              {NAV_ITEMS.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a key={item.id} href={item.href} className="tool-nav-link">
+                    <Icon size={18} aria-hidden="true" />
+                    <span>{item.label}</span>
+                  </a>
+                );
+              })}
+            </nav>
 
-              <label className="flex min-h-[48px] flex-col justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-2">
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Budget month
-                </span>
-                <div className="mt-1 flex items-center gap-2">
-                  <CalendarRange className="h-4 w-4 text-[var(--home-haze)]" />
+            <div className="tool-sidebar-footer">
+              <Bookmark size={14} aria-hidden="true" />
+              <span>Saved in your browser</span>
+            </div>
+          </aside>
+
+          <main className="tool-main">
+            <div className="tool-topbar">
+              <div className="min-w-0">
+                <p className="tool-crumbs">
+                  Budget Planner / <strong>{monthLabel}</strong>
+                </p>
+                <h1>Budget Planner</h1>
+              </div>
+
+              <div className="flex items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-1 shadow-[var(--shadow-sm)]">
+                <button
+                  type="button"
+                  aria-label="Previous month"
+                  onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, -1))}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition hover:bg-[color-mix(in_srgb,var(--home-acid)_18%,transparent)] hover:text-[var(--home-ink)]"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </button>
+                <label className="flex items-center gap-1.5 px-2 text-[12px] font-semibold text-[var(--home-ink)]">
+                  <CalendarRange className="h-3.5 w-3.5 text-[var(--home-haze)]" aria-hidden="true" />
                   <input
                     aria-label="Budget month"
                     type="month"
                     value={activeMonthKey}
                     onChange={(event) => handleMonthChange(event.target.value)}
-                    className="w-full border-0 bg-transparent p-0 text-sm font-semibold text-[var(--home-ink)] focus-visible:rounded-md"
+                    className="border-0 bg-transparent p-0 text-[12px] font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    style={{ width: "115px" }}
                   />
-                </div>
-              </label>
-
-              <button
-                type="button"
-                aria-label="Next month"
-                onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, 1))}
-                className="tap-target inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 text-[var(--home-ink)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
-              >
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-
-          <div className="px-6 py-5 sm:px-8">
-            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-              {formatBudgetMonthLabel(activeMonthKey)}
-            </p>
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {topMetrics.map(({ label, value, tone, icon: Icon }) => (
-                <div
-                  key={label}
-                  className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_82%,transparent)] px-4 py-4 shadow-[var(--shadow-sm)]"
+                </label>
+                <button
+                  type="button"
+                  aria-label="Next month"
+                  onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, 1))}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition hover:bg-[color-mix(in_srgb,var(--home-acid)_18%,transparent)] hover:text-[var(--home-ink)]"
                 >
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      {label}
-                    </p>
-                    <Icon className="h-4 w-4 text-[var(--home-haze)]" />
-                  </div>
-                  <p className={`mt-3 text-2xl font-semibold tracking-tight ${tone}`}>{value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="grid gap-6 xl:grid-cols-[1.04fr_0.96fr]">
-          <motion.div variants={motionVariants} initial="hidden" animate="visible">
-            <WarmCard
-              padding="none"
-              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in_srgb,var(--home-paper-alt)_72%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)]"
-            >
-              <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
-                  Planning
-                </p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                  Planning
-                </h2>
-                <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
-                  Set income, savings, and category targets before the spending ledger fills in.
-                </p>
+                  <ArrowRight className="h-4 w-4" />
+                </button>
               </div>
+            </div>
 
-              <div className="grid gap-6 px-6 py-6 sm:px-8">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <label className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Monthly income
-                    </span>
+            <div className="tool-meta-chip" role="status" aria-live="polite">
+              <span className="tool-meta-chip-dot" aria-hidden="true" />
+              <span>
+                Income <strong>{formatCurrency(totalIncome)}</strong>
+              </span>
+              <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
+              <span>
+                Spent <strong>{formatCurrency(totalExpenses)}</strong>
+              </span>
+              <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
+              <span>
+                Remaining <strong className={getBalanceTone(remaining)}>{formatSignedCurrency(remaining)}</strong>
+              </span>
+              <span className="tool-meta-chip-spacer" />
+              <span className="tool-meta-chip-meta">{percentSpent}% of budget</span>
+            </div>
+
+            <div className="mt-5 flex flex-col gap-5">
+              {/* Hero summary card */}
+              <section
+                id="section-summary"
+                className="tool-card tool-card-hero scroll-mt-28"
+                aria-label="Budget summary"
+              >
+                <div className="flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <p className="tool-section-kicker">{monthLabel}</p>
+                    <p className="mt-1 text-[12px] text-[var(--home-ink-muted)]">
+                      Income vs. spend, at a glance.
+                    </p>
+                  </div>
+                  <p
+                    className={`text-[12px] font-semibold uppercase tracking-[0.14em] ${
+                      summary.remainingToBudget < 0
+                        ? "text-[var(--color-error)]"
+                        : "text-[var(--home-ink-muted)]"
+                    }`}
+                  >
+                    {formatSignedCurrency(summary.remainingToBudget)} left to budget
+                  </p>
+                </div>
+
+                <div className="mt-5 grid gap-4 sm:grid-cols-3">
+                  <div>
+                    <p className="tool-stat-label">Income</p>
+                    <p className="tool-stat-val">{formatCurrency(totalIncome)}</p>
+                  </div>
+                  <div>
+                    <p className="tool-stat-label">Spent</p>
+                    <p className="tool-stat-val">{formatCurrency(totalExpenses)}</p>
+                  </div>
+                  <div>
+                    <p className="tool-stat-label">Remaining</p>
+                    <p className={`tool-stat-val ${getBalanceTone(remaining)}`}>
+                      {formatSignedCurrency(remaining)}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <div className="mb-2 flex items-center justify-between text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <span>Spend progress</span>
+                    <span className="[font-variant-numeric:tabular-nums]">{percentSpent}%</span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))]">
+                    <div
+                      className={`h-full rounded-full ${
+                        percentSpent >= 100
+                          ? "bg-[var(--color-error)]"
+                          : percentSpent >= 85
+                            ? "bg-[var(--color-warning)]"
+                            : "bg-[var(--home-haze)]"
+                      }`}
+                      style={{ width: progressWidth }}
+                    />
+                  </div>
+                </div>
+              </section>
+
+              {/* Income + Savings target */}
+              <section
+                id="section-income"
+                className="tool-card scroll-mt-28"
+                aria-label="Income and savings target"
+              >
+                <div className="flex flex-wrap items-end justify-between gap-3">
+                  <div>
+                    <p className="tool-section-kicker">Planning</p>
+                    <h2 className="tool-section-title">Income</h2>
+                  </div>
+                </div>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <label className="block">
+                    <span className={fieldLabel}>Monthly income</span>
                     <input
                       aria-label="Monthly income"
                       type="number"
@@ -314,14 +386,11 @@ export function BudgetPlannerClient() {
                       step="50"
                       value={String(activeMonth.income)}
                       onChange={(event) => updateIncome(Number(event.target.value))}
-                      className="mt-2 w-full rounded-md border-0 bg-transparent p-0 text-lg font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className={numericInput}
                     />
                   </label>
-
-                  <label className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Savings target
-                    </span>
+                  <label className="block">
+                    <span className={fieldLabel}>Savings target</span>
                     <input
                       aria-label="Savings target"
                       type="number"
@@ -329,469 +398,112 @@ export function BudgetPlannerClient() {
                       step="25"
                       value={String(activeMonth.savingsTarget)}
                       onChange={(event) => updateSavingsTarget(Number(event.target.value))}
-                      className="mt-2 w-full rounded-md border-0 bg-transparent p-0 text-lg font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      className={numericInput}
                     />
                   </label>
                 </div>
+              </section>
 
-                <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-4">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <h3 className="text-lg font-semibold text-[var(--home-ink)]">
-                        Category budgets
-                      </h3>
-                      <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
-                        Rename, rebudget, or remove categories as your month evolves.
-                      </p>
-                    </div>
-                    <div className="rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink-muted)]">
-                      Budgeted total:{" "}
-                      <span className="font-semibold text-[var(--home-ink)]">
-                        {formatCurrency(summary.budgetedTotal)}
-                      </span>
-                    </div>
+              {/* Categories */}
+              <section
+                id="section-categories"
+                className="tool-card scroll-mt-28"
+                aria-label="Category budgets"
+              >
+                <div className="flex flex-wrap items-end justify-between gap-3">
+                  <div>
+                    <p className="tool-section-kicker">Allocation</p>
+                    <h2 className="tool-section-title">Categories</h2>
                   </div>
+                  <p className="text-[12px] text-[var(--home-ink-muted)]">
+                    Budgeted{" "}
+                    <span className="font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
+                      {formatCurrency(summary.budgetedTotal)}
+                    </span>
+                  </p>
+                </div>
 
-                  <div className="mt-5 space-y-4">
-                    {summary.categorySummaries.map((category) => {
-                      const displayName = category.name || "Untitled";
-                      const progressWidth = `${Math.min(100, Math.max(0, category.utilization * 100))}%`;
-                      const hasLinkedExpenses = category.expenseCount > 0;
-
-                      return (
-                        <div
-                          key={category.id}
-                          className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_60%,var(--home-paper))] p-4"
-                        >
-                          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_180px_auto] lg:items-end">
-                            <label className="min-w-0">
-                              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                                Category name
-                              </span>
-                              <input
-                                aria-label={`Category name for ${displayName}`}
-                                aria-invalid={category.name.trim() === "" ? true : undefined}
-                                aria-describedby={
-                                  category.name.trim() === ""
-                                    ? `category-${category.id}-error`
-                                    : undefined
+                <div className="mt-4 flex flex-col gap-2 divide-y divide-[var(--home-rule)]">
+                  {summary.categorySummaries.map((category) => {
+                    const displayName = category.name || "Untitled";
+                    const utilWidth = `${Math.min(100, Math.max(0, category.utilization * 100))}%`;
+                    const hasLinkedExpenses = category.expenseCount > 0;
+                    const empty = category.name.trim() === "";
+                    return (
+                      <div key={category.id} className="grid gap-2 py-3 first:pt-0">
+                        <div className="grid items-center gap-2 sm:grid-cols-[minmax(0,1fr)_120px_auto]">
+                          <label className="min-w-0 block">
+                            <span className="sr-only">Category name for {displayName}</span>
+                            <input
+                              aria-label={`Category name for ${displayName}`}
+                              aria-invalid={empty ? true : undefined}
+                              aria-describedby={empty ? `category-${category.id}-error` : undefined}
+                              type="text"
+                              value={category.name}
+                              onChange={(event) => renameCategory(category.id, event.target.value)}
+                              onBlur={(event) => {
+                                if (!event.target.value.trim()) {
+                                  renameCategory(category.id, "Untitled");
                                 }
-                                type="text"
-                                value={category.name}
-                                onChange={(event) =>
-                                  renameCategory(category.id, event.target.value)
-                                }
-                                onBlur={(event) => {
-                                  if (!event.target.value.trim()) {
-                                    renameCategory(category.id, "Untitled");
-                                  }
-                                }}
-                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 aria-[invalid=true]:border-[var(--color-error)]"
-                              />
-                              {category.name.trim() === "" ? (
-                                <span
-                                  id={`category-${category.id}-error`}
-                                  className="mt-1 block text-xs text-[var(--color-error)]"
-                                >
-                                  Name a category — empty fields fall back to "Untitled".
-                                </span>
-                              ) : null}
-                            </label>
-
-                            <label>
-                              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                                Budgeted amount
-                              </span>
-                              <input
-                                aria-label={`Budget amount for ${displayName}`}
-                                type="number"
-                                min="0"
-                                step="25"
-                                value={String(category.budgetedAmount)}
-                                onChange={(event) =>
-                                  updateCategoryBudget(category.id, Number(event.target.value))
-                                }
-                                className="mt-2 min-h-[44px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                              />
-                            </label>
-
-                            <button
-                              type="button"
-                              aria-label={`Delete ${displayName}`}
-                              aria-describedby={
-                                hasLinkedExpenses
-                                  ? `category-${category.id}-delete-help`
-                                  : undefined
+                              }}
+                              className="w-full min-h-touch rounded-lg border border-transparent bg-transparent px-2 py-1 text-[13.5px] font-medium text-[var(--home-ink)] hover:border-[var(--home-rule)] focus-visible:border-[var(--home-rule)] focus-visible:bg-[var(--home-paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 aria-[invalid=true]:border-[var(--color-error)]"
+                            />
+                          </label>
+                          <label className="block">
+                            <span className="sr-only">Budget amount for {displayName}</span>
+                            <input
+                              aria-label={`Budget amount for ${displayName}`}
+                              type="number"
+                              min="0"
+                              step="25"
+                              value={String(category.budgetedAmount)}
+                              onChange={(event) =>
+                                updateCategoryBudget(category.id, Number(event.target.value))
                               }
-                              disabled={hasLinkedExpenses}
-                              onClick={() => removeCategory(category.id)}
-                              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-dashed disabled:opacity-40"
-                            >
-                              <Trash2 className="h-4 w-4" />
-                              Delete
-                            </button>
-                          </div>
-
-                          <div className="mt-4 grid gap-3 md:grid-cols-3">
-                            <div className="rounded-2xl bg-[var(--home-paper)] px-3 py-3">
-                              <p className="text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                                Spent
-                              </p>
-                              <p className="mt-2 text-base font-semibold text-[var(--home-ink)]">
-                                {formatCurrency(category.spent)}
-                              </p>
-                            </div>
-                            <div className="rounded-2xl bg-[var(--home-paper)] px-3 py-3">
-                              <p className="text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                                Remaining
-                              </p>
-                              <p
-                                className={`mt-2 text-base font-semibold ${getBalanceTone(
-                                  category.remaining
-                                )}`}
-                              >
-                                {formatSignedCurrency(category.remaining)}
-                              </p>
-                            </div>
-                            <div className="rounded-2xl bg-[var(--home-paper)] px-3 py-3">
-                              <p className="text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                                Linked expenses
-                              </p>
-                              <p className="mt-2 text-base font-semibold text-[var(--home-ink)]">
-                                {category.expenseCount}
-                              </p>
-                            </div>
-                          </div>
-
-                          <div className="mt-4">
-                            <div className="mb-2 flex items-center justify-between gap-3 text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                              <span>Spend vs budget</span>
-                              <span>{Math.round(category.utilization * 100)}%</span>
-                            </div>
-                            <div className="h-2 overflow-hidden rounded-full bg-[var(--home-paper)]">
-                              <div
-                                className={`h-full rounded-full ${
-                                  category.overBudget
-                                    ? "bg-[var(--color-error)]"
-                                    : category.utilization >= 0.85
-                                      ? "bg-[var(--color-warning)]"
-                                      : "bg-[var(--home-haze)]"
-                                }`}
-                                style={{ width: progressWidth }}
-                              />
-                            </div>
-                            {hasLinkedExpenses && (
-                              <p
-                                id={`category-${category.id}-delete-help`}
-                                className="mt-3 text-xs leading-6 text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]"
-                              >
-                                Remove linked expenses before deleting this category.
-                              </p>
-                            )}
-                          </div>
+                              className="w-full min-h-touch rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-[13.5px] font-medium text-[var(--home-ink)] [font-variant-numeric:tabular-nums] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                            />
+                          </label>
+                          <button
+                            type="button"
+                            aria-label={`Delete ${displayName}`}
+                            aria-describedby={
+                              hasLinkedExpenses ? `category-${category.id}-delete-help` : undefined
+                            }
+                            disabled={hasLinkedExpenses}
+                            onClick={() => removeCategory(category.id)}
+                            className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-dashed disabled:opacity-40"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                            Delete
+                          </button>
                         </div>
-                      );
-                    })}
-                  </div>
 
-                  <form onSubmit={handleAddCategory} className="mt-5 flex flex-col gap-3 sm:flex-row">
-                    <label className="flex-1">
-                      <span className="sr-only">New category name</span>
-                      <input
-                        aria-label="New category name"
-                        type="text"
-                        value={newCategoryName}
-                        onChange={(event) => setNewCategoryName(event.target.value)}
-                        placeholder="Add a custom category"
-                        className="min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3 text-sm text-[var(--home-ink)]"
-                      />
-                    </label>
-                    <button
-                      type="submit"
-                      className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)]"
-                    >
-                      <Plus className="h-4 w-4" />
-                      Add category
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </WarmCard>
-          </motion.div>
+                        {empty ? (
+                          <span
+                            id={`category-${category.id}-error`}
+                            className="text-[11px] text-[var(--color-error)]"
+                          >
+                            Name a category — empty fields fall back to "Untitled".
+                          </span>
+                        ) : null}
 
-          <motion.div variants={motionVariants} initial="hidden" animate="visible">
-            <WarmCard
-              padding="none"
-              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in_srgb,var(--home-paper-alt)_58%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)]"
-            >
-              <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
-                  Expense Ledger
-                </p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                  Expense Ledger
-                </h2>
-                <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
-                  Track manual expenses and edit them in place when the month changes shape.
-                </p>
-              </div>
-
-              <div className="grid gap-6 px-6 py-6 sm:px-8">
-                <form
-                  onSubmit={handleExpenseSubmit}
-                  className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4"
-                >
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <label>
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                        Expense category
-                      </span>
-                      <select
-                        aria-label="Expense category"
-                        value={resolvedExpenseCategoryId}
-                        onChange={(event) =>
-                          setExpenseDraft((current) => ({
-                            ...current,
-                            categoryId: event.target.value,
-                          }))
-                        }
-                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink)]"
-                      >
-                        {activeMonth.categories.map((category) => (
-                          <option key={category.id} value={category.id}>
-                            {category.name || "Untitled"}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-
-                    <label>
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                        Expense amount
-                      </span>
-                      <input
-                        aria-label="Expense amount"
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        value={expenseDraft.amount}
-                        onChange={(event) =>
-                          setExpenseDraft((current) => ({
-                            ...current,
-                            amount: event.target.value,
-                          }))
-                        }
-                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink)]"
-                      />
-                    </label>
-
-                    <label>
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                        Expense date
-                      </span>
-                      <input
-                        aria-label="Expense date"
-                        type="date"
-                        value={expenseDraft.date}
-                        onChange={(event) =>
-                          setExpenseDraft((current) => ({
-                            ...current,
-                            date: event.target.value,
-                          }))
-                        }
-                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink)]"
-                      />
-                    </label>
-
-                    <label>
-                      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                        Expense note
-                      </span>
-                      <input
-                        aria-label="Expense note"
-                        type="text"
-                        value={expenseDraft.note}
-                        onChange={(event) =>
-                          setExpenseDraft((current) => ({
-                            ...current,
-                            note: event.target.value,
-                          }))
-                        }
-                        placeholder="Coffee, rent, groceries"
-                        className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm text-[var(--home-ink)]"
-                      />
-                    </label>
-                  </div>
-
-                  <div className="sticky bottom-2 mt-4 flex flex-wrap gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,transparent)] p-2 shadow-[var(--shadow-sm)] backdrop-blur sm:static sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-none">
-                    <button
-                      type="submit"
-                      disabled={
-                        !resolvedExpenseCategoryId || !expenseDraft.amount || !expenseDraft.date
-                      }
-                      className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:flex-initial"
-                    >
-                      <Plus className="h-4 w-4" />
-                      {editingExpenseId ? "Save expense" : "Add expense"}
-                    </button>
-                    {editingExpenseId && (
-                      <button
-                        type="button"
-                        onClick={resetExpenseDraft}
-                        className="inline-flex min-h-[46px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-5 py-3 text-sm font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
-                      >
-                        Cancel edit
-                      </button>
-                    )}
-                  </div>
-                </form>
-
-                <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-                  <div className="flex items-center justify-between gap-3">
-                    <h3 className="text-lg font-semibold text-[var(--home-ink)]">Entries</h3>
-                    <p className="text-sm text-[var(--home-ink-muted)]">
-                      {summary.expenseEntries.length} total
-                    </p>
-                  </div>
-
-                  {summary.expenseEntries.length === 0 ? (
-                    <div className="mt-4 rounded-[22px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-6 text-sm leading-7 text-[var(--home-ink-muted)]">
-                      Your ledger is empty. Add the first expense to start tracking where this
-                      month is going.
-                    </div>
-                  ) : (
-                    <div className="mt-4 space-y-3">
-                      {summary.expenseEntries.map((expense) => (
-                        <div
-                          key={expense.id}
-                          className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-4"
-                        >
-                          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                            <div className="min-w-0">
-                              <p className="text-base font-semibold text-[var(--home-ink)]">
-                                {expense.note || expense.categoryName}
-                              </p>
-                              <div className="mt-2 flex flex-wrap gap-2">
-                                <span className="rounded-full bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                                  {expense.categoryName}
-                                </span>
-                                <span
-                                  className="rounded-full bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]"
-                                  title={expense.date}
-                                >
-                                  {formatExpenseDate(expense.date)}
-                                </span>
-                              </div>
-                            </div>
-
-                            <div className="flex flex-wrap items-center gap-3">
-                              <p className="text-lg font-semibold text-[var(--home-ink)]">
-                                {formatCurrency(expense.amount)}
-                              </p>
-                              <button
-                                type="button"
-                                aria-label={`Edit ${expense.note || expense.categoryName} expense`}
-                                onClick={() => handleEditExpense(expense.id)}
-                                className="inline-flex min-h-[44px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
-                              >
-                                Edit
-                              </button>
-                              <button
-                                type="button"
-                                aria-label={`Delete ${expense.note || expense.categoryName} expense`}
-                                onClick={() => {
-                                  removeExpense(expense.id);
-                                  if (editingExpenseId === expense.id) {
-                                    resetExpenseDraft();
-                                  }
-                                }}
-                                className="inline-flex min-h-[44px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)]"
-                              >
-                                Delete
-                              </button>
-                            </div>
-                          </div>
+                        <div className="flex items-center gap-3 text-[11.5px] text-[var(--home-ink-muted)]">
+                          <span className="[font-variant-numeric:tabular-nums]">
+                            {formatCurrency(category.spent)} / {formatCurrency(category.budgetedAmount)}
+                          </span>
+                          <span aria-hidden="true">·</span>
+                          <span
+                            className={`${getBalanceTone(category.remaining)} [font-variant-numeric:tabular-nums]`}
+                          >
+                            {formatSignedCurrency(category.remaining)} left
+                          </span>
+                          <span aria-hidden="true">·</span>
+                          <span className="[font-variant-numeric:tabular-nums]">
+                            {category.expenseCount} {category.expenseCount === 1 ? "entry" : "entries"}
+                          </span>
                         </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </WarmCard>
-          </motion.div>
-        </div>
 
-        <motion.div
-          variants={motionVariants}
-          initial="hidden"
-          animate="visible"
-          className="mt-6"
-        >
-          <WarmCard
-            padding="none"
-            className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in_srgb,var(--home-paper-alt)_54%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)]"
-          >
-            <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
-              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
-                Insights
-              </p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                Category Insights
-              </h2>
-              <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
-                See how assigned budget, actual spend, and recent movement line up before the
-                month closes.
-              </p>
-            </div>
-
-            <div className="grid gap-6 px-6 py-6 sm:px-8 xl:grid-cols-[1.15fr_0.85fr]">
-              <div className="space-y-4">
-                <div className="grid gap-3 md:grid-cols-3">
-                  <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-4">
-                    <p className="text-xs uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Remaining to budget
-                    </p>
-                    <p className={`mt-3 text-xl font-semibold ${getBalanceTone(summary.remainingToBudget)}`}>
-                      {formatSignedCurrency(summary.remainingToBudget)}
-                    </p>
-                  </div>
-                  <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-4">
-                    <p className="text-xs uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Spent so far
-                    </p>
-                    <p className="mt-3 text-xl font-semibold text-[var(--home-ink)]">
-                      {formatCurrency(summary.spentTotal)}
-                    </p>
-                  </div>
-                  <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-4">
-                    <p className="text-xs uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Remaining to spend
-                    </p>
-                    <p className={`mt-3 text-xl font-semibold ${getBalanceTone(summary.remainingToSpend)}`}>
-                      {formatSignedCurrency(summary.remainingToSpend)}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-                  <h3 className="text-lg font-semibold text-[var(--home-ink)]">Category Insights</h3>
-                  <div className="mt-4 space-y-4">
-                    {summary.categorySummaries.map((category) => (
-                      <div key={category.id}>
-                        <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
-                          <div>
-                            <p className="text-sm font-semibold text-[var(--home-ink)]">
-                              {category.name || "Untitled"}
-                            </p>
-                            <p className="text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                              {formatCurrency(category.spent)} spent of {formatCurrency(category.budgetedAmount)}
-                            </p>
-                          </div>
-                          <p className={`text-sm font-semibold ${getBalanceTone(category.remaining)}`}>
-                            {formatSignedCurrency(category.remaining)}
-                          </p>
-                        </div>
-                        <div className="h-2 overflow-hidden rounded-full bg-[var(--home-paper-alt)]">
+                        <div className="h-1.5 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))]">
                           <div
                             className={`h-full rounded-full ${
                               category.overBudget
@@ -800,55 +512,276 @@ export function BudgetPlannerClient() {
                                   ? "bg-[var(--color-warning)]"
                                   : "bg-[var(--home-haze)]"
                             }`}
-                            style={{
-                              width: `${Math.min(100, Math.max(0, category.utilization * 100))}%`,
-                            }}
+                            style={{ width: utilWidth }}
                           />
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
 
-              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-                <h3 className="text-lg font-semibold text-[var(--home-ink)]">Recent Activity</h3>
-                {summary.recentExpenses.length === 0 ? (
-                  <div className="mt-4 rounded-[22px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-6 text-sm leading-7 text-[var(--home-ink-muted)]">
-                    Recent activity will appear here as you add expenses.
+                        {hasLinkedExpenses ? (
+                          <p
+                            id={`category-${category.id}-delete-help`}
+                            className="text-[11px] text-[var(--home-ink-muted)]"
+                          >
+                            Remove linked expenses before deleting this category.
+                          </p>
+                        ) : null}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <form onSubmit={handleAddCategory} className="mt-4 flex flex-col gap-2 sm:flex-row">
+                  <label className="flex-1">
+                    <span className="sr-only">New category name</span>
+                    <input
+                      aria-label="New category name"
+                      type="text"
+                      value={newCategoryName}
+                      onChange={(event) => setNewCategoryName(event.target.value)}
+                      placeholder="Add a custom category"
+                      className="w-full min-h-touch rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-[13.5px] text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    />
+                  </label>
+                  <button
+                    type="submit"
+                    className="inline-flex min-h-touch items-center justify-center gap-2 rounded-lg bg-[var(--home-ink)] px-4 text-[13px] font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-haze))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                  >
+                    <Plus className="h-3.5 w-3.5" />
+                    Add category
+                  </button>
+                </form>
+              </section>
+
+              {/* Expenses ledger */}
+              <section
+                id="section-expenses"
+                className="tool-card scroll-mt-28"
+                aria-label="Expenses ledger"
+              >
+                <div className="flex flex-wrap items-end justify-between gap-3">
+                  <div>
+                    <p className="tool-section-kicker">Ledger</p>
+                    <h2 className="tool-section-title">Expenses ledger</h2>
+                  </div>
+                  <p className="text-[12px] text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
+                    {summary.expenseEntries.length}{" "}
+                    {summary.expenseEntries.length === 1 ? "entry" : "entries"}
+                  </p>
+                </div>
+
+                {summary.expenseEntries.length === 0 ? (
+                  <div className="tool-empty mt-4">
+                    <p className="text-[13.5px] font-semibold text-[var(--home-ink)]">
+                      Ledger is empty
+                    </p>
+                    <p>Add the first expense using the form on the right.</p>
                   </div>
                 ) : (
-                  <div className="mt-4 space-y-3">
-                    {summary.recentExpenses.map((expense) => (
-                      <div
-                        key={expense.id}
-                        className="rounded-[22px] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-4"
-                      >
-                        <div className="flex items-start justify-between gap-4">
+                  <ul className="mt-4 divide-y divide-[var(--home-rule)]">
+                    {summary.expenseEntries.map((expense) => (
+                      <li key={expense.id} className="grid gap-2 py-3 first:pt-0">
+                        <div className="grid items-center gap-3 sm:grid-cols-[minmax(0,1fr)_auto_auto]">
                           <div className="min-w-0">
-                            <p className="text-sm font-semibold text-[var(--home-ink)]">
+                            <p className="truncate text-[13.5px] font-semibold text-[var(--home-ink)]">
                               {expense.note || expense.categoryName}
                             </p>
-                            <p
-                              className="mt-1 text-xs uppercase tracking-[0.14em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]"
-                              title={expense.date}
-                            >
-                              {expense.categoryName} • {formatExpenseDate(expense.date)}
+                            <p className="mt-0.5 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                              <span>{expense.categoryName}</span>
+                              <span aria-hidden="true"> · </span>
+                              <span title={expense.date}>{formatExpenseDate(expense.date)}</span>
                             </p>
                           </div>
-                          <p className="text-sm font-semibold text-[var(--home-ink)]">
+                          <p className="text-[13.5px] font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
                             {formatCurrency(expense.amount)}
                           </p>
+                          <div className="flex items-center gap-1.5">
+                            <button
+                              type="button"
+                              aria-label={`Edit ${expense.note || expense.categoryName} expense`}
+                              onClick={() => handleEditExpense(expense.id)}
+                              className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              type="button"
+                              aria-label={`Delete ${expense.note || expense.categoryName} expense`}
+                              onClick={() => {
+                                removeExpense(expense.id);
+                                if (editingExpenseId === expense.id) {
+                                  resetExpenseDraft();
+                                }
+                              }}
+                              className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--color-error)] hover:text-[var(--color-error)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                            >
+                              Delete
+                            </button>
+                          </div>
                         </div>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 )}
-              </div>
+              </section>
             </div>
-          </WarmCard>
-        </motion.div>
-      </div>
-    </section>
+          </main>
+
+          <aside className="tool-rail" aria-label="Budget tools">
+            <section aria-labelledby="rail-add-expense">
+              <p className="tool-rail-label" id="rail-add-expense">
+                <Plus size={12} aria-hidden="true" />
+                {editingExpenseId ? "Edit expense" : "Add expense"}
+              </p>
+              <form
+                onSubmit={handleExpenseSubmit}
+                className="flex flex-col gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,var(--home-elev-mix))] p-3 shadow-[var(--shadow-sm)]"
+              >
+                <label className="block">
+                  <span className={fieldLabel}>Category</span>
+                  <select
+                    aria-label="Expense category"
+                    value={resolvedExpenseCategoryId}
+                    onChange={(event) =>
+                      setExpenseDraft((current) => ({
+                        ...current,
+                        categoryId: event.target.value,
+                      }))
+                    }
+                    className={fieldInput}
+                  >
+                    {activeMonth.categories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name || "Untitled"}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <label className="block">
+                    <span className={fieldLabel}>Amount</span>
+                    <input
+                      aria-label="Expense amount"
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      value={expenseDraft.amount}
+                      onChange={(event) =>
+                        setExpenseDraft((current) => ({
+                          ...current,
+                          amount: event.target.value,
+                        }))
+                      }
+                      className={numericInput}
+                    />
+                  </label>
+                  <label className="block">
+                    <span className={fieldLabel}>Date</span>
+                    <input
+                      aria-label="Expense date"
+                      type="date"
+                      value={expenseDraft.date}
+                      onChange={(event) =>
+                        setExpenseDraft((current) => ({
+                          ...current,
+                          date: event.target.value,
+                        }))
+                      }
+                      className={fieldInput}
+                    />
+                  </label>
+                </div>
+
+                <label className="block">
+                  <span className={fieldLabel}>Note</span>
+                  <input
+                    aria-label="Expense note"
+                    type="text"
+                    value={expenseDraft.note}
+                    onChange={(event) =>
+                      setExpenseDraft((current) => ({
+                        ...current,
+                        note: event.target.value,
+                      }))
+                    }
+                    placeholder="Coffee, rent, groceries"
+                    className={fieldInput}
+                  />
+                </label>
+
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="submit"
+                    disabled={
+                      !resolvedExpenseCategoryId || !expenseDraft.amount || !expenseDraft.date
+                    }
+                    className="inline-flex min-h-touch flex-1 items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-3 text-[13px] font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-haze))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    <Plus className="h-3.5 w-3.5" />
+                    {editingExpenseId ? "Save expense" : "Add expense"}
+                  </button>
+                  {editingExpenseId ? (
+                    <button
+                      type="button"
+                      onClick={resetExpenseDraft}
+                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-[12.5px] font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    >
+                      Cancel
+                    </button>
+                  ) : null}
+                </div>
+              </form>
+            </section>
+
+            <section aria-labelledby="rail-top-categories">
+              <p className="tool-rail-label" id="rail-top-categories">
+                <Sparkles size={12} aria-hidden="true" />
+                Top categories
+              </p>
+              {topCategories.length === 0 ? (
+                <p className="text-[12px] leading-6 text-[var(--home-ink-muted)]">
+                  No spend yet. Add an expense and the categories with the most movement will
+                  surface here.
+                </p>
+              ) : (
+                <ul className="flex flex-col gap-3">
+                  {topCategories.map((category) => {
+                    const utilWidth = `${Math.min(100, Math.max(0, category.utilization * 100))}%`;
+                    return (
+                      <li key={category.id} className="flex flex-col gap-1.5">
+                        <div className="flex items-baseline justify-between gap-2 text-[12px]">
+                          <span className="truncate font-medium text-[var(--home-ink)]">
+                            {category.name || "Untitled"}
+                          </span>
+                          <span className="text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
+                            {formatCurrency(category.spent)}
+                          </span>
+                        </div>
+                        <div className="h-1 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))]">
+                          <div
+                            className={`h-full rounded-full ${
+                              category.overBudget
+                                ? "bg-[var(--color-error)]"
+                                : category.utilization >= 0.85
+                                  ? "bg-[var(--color-warning)]"
+                                  : "bg-[var(--home-haze)]"
+                            }`}
+                            style={{ width: utilWidth }}
+                          />
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </section>
+
+            <p className="tool-rail-foot">
+              <PiggyBank size={14} aria-hidden="true" />
+              Saved in your browser — no account, no server.
+            </p>
+          </aside>
+        </div>
+      </motion.div>
+    </div>
   );
 }

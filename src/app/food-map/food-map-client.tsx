@@ -1,8 +1,15 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, type CSSProperties } from "react";
+import {
+  startTransition,
+  useEffect,
+  useMemo,
+  useState,
+  type CSSProperties,
+} from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
+import { IconBookmark, IconSearch } from "@tabler/icons-react";
 import {
   FOOD_MAP_CUISINES,
   FOOD_MAP_MEALS,
@@ -52,6 +59,34 @@ function getPanelStyle(): CSSProperties {
     boxShadow: "var(--shadow-sm)",
   };
 }
+
+interface Shortlist {
+  id: string;
+  label: string;
+  blurb: string;
+  placeIds: ReadonlyArray<string>;
+}
+
+const SHORTLISTS: ReadonlyArray<Shortlist> = [
+  {
+    id: "weeknight",
+    label: "Quick weeknight",
+    blurb: "Casual, fast, no reservation drama.",
+    placeIds: ["veracruz-all-natural", "home-slice-pizza", "loro"],
+  },
+  {
+    id: "date-night",
+    label: "Date night",
+    blurb: "Dinner rooms that earn the booking.",
+    placeIds: ["suerte", "uchi", "perlas"],
+  },
+  {
+    id: "tourist",
+    label: "Tourist-tested",
+    blurb: "The asks I get from out-of-town friends.",
+    placeIds: ["franklin-barbecue", "junes-all-day", "home-slice-pizza"],
+  },
+];
 
 function NeighborhoodChips({
   state,
@@ -193,136 +228,131 @@ function FoodMapSvg({
   );
 
   return (
-    <div
-      className="home-card overflow-hidden p-4 sm:p-5"
-      style={getPanelStyle()}
+    <svg
+      viewBox="0 0 100 100"
+      role="img"
+      aria-label="Stylized Austin food map showing curated restaurant pins by neighborhood"
+      className="block h-auto w-full"
     >
-      <svg
-        viewBox="0 0 100 100"
-        role="img"
-        aria-label="Stylized Austin food map showing curated restaurant pins by neighborhood"
-        className="block h-auto w-full"
-      >
-        <rect
-          x={0}
-          y={0}
-          width={100}
-          height={100}
-          fill="color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))"
-        />
+      <rect
+        x={0}
+        y={0}
+        width={100}
+        height={100}
+        fill="color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))"
+      />
 
-        {FOOD_MAP_NEIGHBORHOODS.map((neighborhood) => {
-          const isActive = state.neighborhoods.includes(neighborhood.id);
-          const fillStrength = isActive ? 24 : 12;
-          const strokeStrength = isActive ? 55 : 25;
+      {FOOD_MAP_NEIGHBORHOODS.map((neighborhood) => {
+        const isActive = state.neighborhoods.includes(neighborhood.id);
+        const fillStrength = isActive ? 24 : 12;
+        const strokeStrength = isActive ? 55 : 25;
 
-          return (
-            <g
-              key={neighborhood.id}
-              className="cursor-pointer"
-              onClick={() => onToggleNeighborhood(neighborhood.id)}
+        return (
+          <g
+            key={neighborhood.id}
+            className="cursor-pointer"
+            onClick={() => onToggleNeighborhood(neighborhood.id)}
+          >
+            <rect
+              x={neighborhood.shape.x}
+              y={neighborhood.shape.y}
+              width={neighborhood.shape.width}
+              height={neighborhood.shape.height}
+              rx={2.4}
+              fill={`color-mix(in srgb, ${neighborhood.accent} ${fillStrength}%, var(--home-paper))`}
+              stroke={`color-mix(in srgb, ${neighborhood.accent} ${strokeStrength}%, var(--home-rule))`}
+              strokeWidth={0.5}
+            />
+            <text
+              x={neighborhood.labelX}
+              y={neighborhood.labelY}
+              textAnchor="middle"
+              style={{
+                fill: "var(--home-ink-muted)",
+                fontFamily: "var(--font-home-sans)",
+                fontSize: "2.4px",
+                fontWeight: 700,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+              }}
             >
-              <rect
-                x={neighborhood.shape.x}
-                y={neighborhood.shape.y}
-                width={neighborhood.shape.width}
-                height={neighborhood.shape.height}
-                rx={2.4}
-                fill={`color-mix(in srgb, ${neighborhood.accent} ${fillStrength}%, var(--home-paper))`}
-                stroke={`color-mix(in srgb, ${neighborhood.accent} ${strokeStrength}%, var(--home-rule))`}
-                strokeWidth={0.5}
-              />
+              {neighborhood.name}
+            </text>
+          </g>
+        );
+      })}
+
+      <path
+        d="M 6 51 Q 22 47 38 51 Q 54 55 70 51 Q 86 47 96 53 L 96 56 Q 86 50 70 54 Q 54 58 38 54 Q 22 50 6 54 Z"
+        fill="color-mix(in srgb, var(--home-haze) 32%, var(--home-paper))"
+        stroke="color-mix(in srgb, var(--home-haze) 45%, var(--home-rule))"
+        strokeWidth={0.4}
+      />
+      <text
+        x={50}
+        y={54}
+        textAnchor="middle"
+        style={{
+          fill: "var(--home-ink-muted)",
+          fontFamily: "var(--font-home-sans)",
+          fontSize: "1.9px",
+          fontWeight: 600,
+          letterSpacing: "0.18em",
+          textTransform: "uppercase",
+        }}
+      >
+        Lady Bird Lake
+      </text>
+
+      {FOOD_MAP_PLACES.map((place) => {
+        const isVisible = visibleIds.has(place.id);
+        const isSelected = state.pick === place.id;
+        const radius = isSelected ? 2.4 : 1.6;
+        const fill = isSelected
+          ? "var(--home-haze)"
+          : isVisible
+            ? "var(--home-ink)"
+            : "color-mix(in srgb, var(--home-ink) 28%, var(--home-paper))";
+        const stroke = isSelected ? "var(--home-paper)" : "transparent";
+        const strokeWidth = isSelected ? 0.7 : 0;
+
+        return (
+          <g
+            key={place.id}
+            className="cursor-pointer"
+            onClick={() => isVisible && onSelectPlace(place.id)}
+            aria-label={`Select ${place.name}`}
+            role="button"
+            opacity={isVisible ? 1 : 0.45}
+          >
+            <circle
+              cx={place.x}
+              cy={place.y}
+              r={radius}
+              fill={fill}
+              stroke={stroke}
+              strokeWidth={strokeWidth}
+            />
+            {isSelected ? (
               <text
-                x={neighborhood.labelX}
-                y={neighborhood.labelY}
+                x={place.x}
+                y={place.y - 3.4}
                 textAnchor="middle"
                 style={{
-                  fill: "var(--home-ink-muted)",
+                  fill: "var(--home-ink)",
                   fontFamily: "var(--font-home-sans)",
-                  fontSize: "2.4px",
+                  fontSize: "2px",
                   fontWeight: 700,
-                  letterSpacing: "0.16em",
-                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
                 }}
               >
-                {neighborhood.name}
+                {place.name}
               </text>
-            </g>
-          );
-        })}
-
-        <path
-          d="M 6 51 Q 22 47 38 51 Q 54 55 70 51 Q 86 47 96 53 L 96 56 Q 86 50 70 54 Q 54 58 38 54 Q 22 50 6 54 Z"
-          fill="color-mix(in srgb, var(--home-haze) 32%, var(--home-paper))"
-          stroke="color-mix(in srgb, var(--home-haze) 45%, var(--home-rule))"
-          strokeWidth={0.4}
-        />
-        <text
-          x={50}
-          y={54}
-          textAnchor="middle"
-          style={{
-            fill: "var(--home-ink-muted)",
-            fontFamily: "var(--font-home-sans)",
-            fontSize: "1.9px",
-            fontWeight: 600,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-          }}
-        >
-          Lady Bird Lake
-        </text>
-
-        {FOOD_MAP_PLACES.map((place) => {
-          const isVisible = visibleIds.has(place.id);
-          const isSelected = state.pick === place.id;
-          const radius = isSelected ? 2.4 : 1.6;
-          const fill = isSelected
-            ? "var(--home-haze)"
-            : isVisible
-              ? "var(--home-ink)"
-              : "color-mix(in srgb, var(--home-ink) 28%, var(--home-paper))";
-          const stroke = isSelected ? "var(--home-paper)" : "transparent";
-          const strokeWidth = isSelected ? 0.7 : 0;
-
-          return (
-            <g
-              key={place.id}
-              className="cursor-pointer"
-              onClick={() => isVisible && onSelectPlace(place.id)}
-              aria-label={`Select ${place.name}`}
-              role="button"
-              opacity={isVisible ? 1 : 0.45}
-            >
-              <circle
-                cx={place.x}
-                cy={place.y}
-                r={radius}
-                fill={fill}
-                stroke={stroke}
-                strokeWidth={strokeWidth}
-              />
-              {isSelected ? (
-                <text
-                  x={place.x}
-                  y={place.y - 3.4}
-                  textAnchor="middle"
-                  style={{
-                    fill: "var(--home-ink)",
-                    fontFamily: "var(--font-home-sans)",
-                    fontSize: "2px",
-                    fontWeight: 700,
-                    letterSpacing: "0.06em",
-                  }}
-                >
-                  {place.name}
-                </text>
-              ) : null}
-            </g>
-          );
-        })}
-      </svg>
-    </div>
+            ) : null}
+          </g>
+        );
+      })}
+    </svg>
   );
 }
 
@@ -399,71 +429,145 @@ function PlaceDetail({
   );
 
   return (
-    <div
-      className="home-card h-full p-5 sm:p-6"
-      style={{
-        ...getPanelStyle(),
-        background: `color-mix(in srgb, ${neighborhood.accent} 12%, var(--home-paper))`,
-        borderColor: `color-mix(in srgb, ${neighborhood.accent} 30%, var(--home-rule))`,
-      }}
-    >
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <p className="home-kicker mb-1">{cuisine.label}</p>
-          <h2
-            className="text-[1.45rem] font-semibold tracking-[-0.04em]"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
-            {place.name}
-          </h2>
-          <p
-            className="mb-0 mt-1 text-sm leading-relaxed"
-            style={{ color: "var(--home-ink-muted)" }}
-          >
-            {neighborhood.name} · {place.price}
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={onClear}
-          className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-          style={{
-            ...getPanelStyle(),
-            color: "var(--home-ink)",
-            fontFamily: "var(--font-home-sans)",
-          }}
-        >
-          Clear pick
-        </button>
-      </div>
-
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-[1.2rem] px-4 py-4" style={getPanelStyle()}>
-          <p className="home-kicker mb-1">Order</p>
-          <p
-            className="mb-0 text-base font-semibold tracking-[-0.03em]"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
-            {place.signature}
-          </p>
-        </div>
-        <div className="rounded-[1.2rem] px-4 py-4" style={getPanelStyle()}>
-          <p className="home-kicker mb-1">Best for</p>
-          <p
-            className="mb-0 text-base font-semibold tracking-[-0.03em]"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
-            {mealLabels.join(" · ")}
-          </p>
-        </div>
-      </div>
-
-      <p
-        className="mt-5 text-[1rem] leading-relaxed"
-        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+    <div className="flex flex-col gap-4">
+      <button
+        type="button"
+        onClick={onClear}
+        className="self-start min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+        style={{
+          ...getPanelStyle(),
+          color: "var(--home-ink)",
+          fontFamily: "var(--font-home-sans)",
+        }}
       >
-        {place.why}
-      </p>
+        Clear pick
+      </button>
+
+      <div
+        className="rounded-[1.5rem] p-5"
+        style={{
+          ...getPanelStyle(),
+          background: `color-mix(in srgb, ${neighborhood.accent} 12%, var(--home-paper))`,
+          borderColor: `color-mix(in srgb, ${neighborhood.accent} 30%, var(--home-rule))`,
+        }}
+      >
+        <p className="home-kicker mb-1">{cuisine.label}</p>
+        <h2
+          className="text-[1.35rem] font-semibold tracking-[-0.04em]"
+          style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+        >
+          {place.name}
+        </h2>
+        <p
+          className="mb-0 mt-1 text-sm leading-relaxed"
+          style={{ color: "var(--home-ink-muted)" }}
+        >
+          {neighborhood.name} · {place.price}
+        </p>
+
+        <div className="mt-4 grid gap-3">
+          <div className="rounded-[1.1rem] px-4 py-3" style={getPanelStyle()}>
+            <p className="home-kicker mb-1">Order</p>
+            <p
+              className="mb-0 text-[0.95rem] font-semibold tracking-[-0.02em]"
+              style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+            >
+              {place.signature}
+            </p>
+          </div>
+          <div className="rounded-[1.1rem] px-4 py-3" style={getPanelStyle()}>
+            <p className="home-kicker mb-1">Best for</p>
+            <p
+              className="mb-0 text-[0.95rem] font-semibold tracking-[-0.02em]"
+              style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+            >
+              {mealLabels.join(" · ")}
+            </p>
+          </div>
+        </div>
+
+        <p
+          className="mt-4 text-[0.95rem] leading-relaxed"
+          style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+        >
+          {place.why}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ShortlistsRail({
+  onSelect,
+}: {
+  onSelect: (id: string) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-3">
+      {SHORTLISTS.map((list) => {
+        const places = list.placeIds
+          .map((id) => getFoodMapPlace(id))
+          .filter((p): p is FoodMapPlace => Boolean(p));
+        if (places.length === 0) return null;
+
+        return (
+          <div
+            key={list.id}
+            className="rounded-[1.25rem] p-4"
+            style={getPanelStyle()}
+          >
+            <p
+              className="mb-1 text-[10.5px] font-bold uppercase tracking-[0.14em]"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              {list.label}
+            </p>
+            <p
+              className="mb-3 text-[0.85rem] leading-relaxed"
+              style={{ color: "var(--home-ink-muted)" }}
+            >
+              {list.blurb}
+            </p>
+            <ul className="flex flex-col gap-1">
+              {places.map((place) => {
+                const neighborhood = getFoodMapNeighborhood(place.neighborhood);
+                return (
+                  <li key={`${list.id}-${place.id}`}>
+                    <button
+                      type="button"
+                      onClick={() => onSelect(place.id)}
+                      className="min-h-touch flex w-full items-center justify-between gap-2 rounded-[0.85rem] px-3 py-2 text-left transition-[background-color,border-color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 hover:bg-[color-mix(in_srgb,var(--home-haze)_10%,transparent)]"
+                      style={{
+                        border: "1px solid var(--home-rule)",
+                        background:
+                          "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                      }}
+                      aria-label={`Pick ${place.name}`}
+                    >
+                      <span
+                        className="text-[0.88rem] font-semibold tracking-[-0.02em]"
+                        style={{
+                          color: "var(--home-ink)",
+                          fontFamily: "var(--font-home-sans)",
+                        }}
+                      >
+                        {place.name}
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="inline-block h-2 w-2 rounded-full"
+                        style={{
+                          background: `color-mix(in srgb, ${neighborhood.accent} 65%, var(--home-rule))`,
+                        }}
+                      />
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -477,7 +581,9 @@ function FoodMapWorkbench({
   variants: typeof fadeIn;
   onCommit: (next: FoodMapState) => void;
 }) {
-  const visiblePlaces = useMemo(
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredPlaces = useMemo(
     () =>
       filterFoodMapPlaces(FOOD_MAP_PLACES, {
         neighborhoods: routeState.neighborhoods,
@@ -487,12 +593,35 @@ function FoodMapWorkbench({
     [routeState.neighborhoods, routeState.cuisines, routeState.meal]
   );
 
+  const visiblePlaces = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return filteredPlaces;
+    return filteredPlaces.filter((p) => {
+      const cuisine = getFoodMapCuisine(p.cuisine);
+      return (
+        p.name.toLowerCase().includes(q) ||
+        cuisine.label.toLowerCase().includes(q)
+      );
+    });
+  }, [filteredPlaces, searchQuery]);
+
   const selectedPlace = routeState.pick ? getFoodMapPlace(routeState.pick) : undefined;
 
   const hasFilters =
     routeState.neighborhoods.length > 0 ||
     routeState.cuisines.length > 0 ||
-    routeState.meal !== DEFAULT_FOOD_MAP_STATE.meal;
+    routeState.meal !== DEFAULT_FOOD_MAP_STATE.meal ||
+    searchQuery.trim().length > 0;
+
+  const currentNeighborhoodName = useMemo(() => {
+    if (routeState.neighborhoods.length === 1) {
+      return getFoodMapNeighborhood(routeState.neighborhoods[0]).name;
+    }
+    if (routeState.neighborhoods.length > 1) {
+      return `${routeState.neighborhoods.length} neighborhoods`;
+    }
+    return "All";
+  }, [routeState.neighborhoods]);
 
   function handleToggleNeighborhood(id: FoodMapNeighborhoodId) {
     onCommit(toggleNeighborhood(routeState, id));
@@ -515,6 +644,7 @@ function FoodMapWorkbench({
   }
 
   function handleResetFilters() {
+    setSearchQuery("");
     onCommit(resetFoodMapFilters(routeState));
   }
 
@@ -524,178 +654,198 @@ function FoodMapWorkbench({
       aria-label="Food Map"
       data-testid="food-map-shell"
     >
-      <div className="home-shell home-section space-y-6 sm:space-y-8">
+      <div className="tool-page-stack">
         <motion.div variants={variants} initial="hidden" animate="visible">
-          <div className="space-y-4">
-            <p className="home-kicker">Food Map</p>
-            <h1
-              className="max-w-4xl text-balance"
-              style={{
-                color: "var(--home-ink)",
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.6rem, 6vw, 5rem)",
-                fontWeight: 600,
-                lineHeight: 0.94,
-                letterSpacing: "-0.08em",
-              }}
-            >
-              The Austin spots I send people to before they ask.
-            </h1>
-            <p className="home-body max-w-[42rem]">
-              I built this because I keep typing the same restaurant list into
-              text threads. The map keeps my actual go-tos in one place, sorted
-              by neighborhood, cuisine, and what time of day I would actually be
-              there. It is opinionated on purpose. I would rather give a short,
-              honest list than a long one I do not stand behind.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="resume-chip">{FOOD_MAP_PLACES.length} curated stops</span>
-              <span className="resume-chip">4 neighborhoods</span>
-              <span className="resume-chip">Deep-linkable filters</span>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div variants={variants} initial="hidden" animate="visible">
-          <div
-            className="home-card p-5 sm:p-6"
-            style={getPanelStyle()}
-          >
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div>
-                <p className="home-kicker mb-1">Filters</p>
-                <h2
-                  className="text-[1.2rem] font-semibold tracking-[-0.04em]"
-                  style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                >
-                  Narrow the map by neighborhood, cuisine, or meal
-                </h2>
+          <div className="tool-shell" data-testid="food-map-tool-shell">
+            <aside className="tool-sidebar" aria-label="Food map navigation">
+              <div className="tool-brand">
+                <div className="tool-brand-mark" aria-hidden="true">
+                  IV
+                </div>
+                <div className="tool-brand-name">
+                  Food Map
+                  <small>Austin shortlist</small>
+                </div>
               </div>
-              <button
-                type="button"
-                onClick={handleResetFilters}
-                disabled={!hasFilters}
-                className="min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                style={{
-                  ...getPanelStyle(),
-                  color: "var(--home-ink)",
-                  fontFamily: "var(--font-home-sans)",
-                }}
+
+              <nav
+                className="flex flex-col gap-1.5"
+                aria-label="Neighborhood navigation"
               >
-                Reset filters
-              </button>
-            </div>
+                {FOOD_MAP_NEIGHBORHOODS.map((neighborhood) => {
+                  const counts = countPlacesByNeighborhood(FOOD_MAP_PLACES);
+                  const isActive = routeState.neighborhoods.includes(
+                    neighborhood.id
+                  );
+                  return (
+                    <button
+                      key={neighborhood.id}
+                      type="button"
+                      onClick={() => handleToggleNeighborhood(neighborhood.id)}
+                      aria-pressed={isActive}
+                      className={`tool-nav-link${isActive ? " is-active" : ""}`}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="inline-block h-2.5 w-2.5 flex-none rounded-full"
+                        style={{
+                          background: `color-mix(in srgb, ${neighborhood.accent} 70%, var(--home-rule))`,
+                        }}
+                      />
+                      <span className="truncate">{neighborhood.name}</span>
+                      <span className="tool-nav-pill">
+                        {counts[neighborhood.id] ?? 0}
+                      </span>
+                    </button>
+                  );
+                })}
+              </nav>
 
-            <div className="mt-5 space-y-4">
-              <div>
-                <p className="home-kicker mb-2">Neighborhood</p>
-                <NeighborhoodChips
-                  state={routeState}
-                  onToggle={handleToggleNeighborhood}
-                />
+              <div className="tool-sidebar-footer">
+                <IconBookmark size={14} aria-hidden="true" />
+                <span>Curated by Isaac</span>
               </div>
-              <div>
-                <p className="home-kicker mb-2">Cuisine</p>
-                <CuisineChips state={routeState} onToggle={handleToggleCuisine} />
-              </div>
-              <div>
-                <p className="home-kicker mb-2">Meal</p>
-                <MealSegmented state={routeState} onChange={handleSetMeal} />
-              </div>
-            </div>
-          </div>
-        </motion.div>
+            </aside>
 
-        <motion.div variants={variants} initial="hidden" animate="visible">
-          <div className="grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
-            <FoodMapSvg
-              state={routeState}
-              visiblePlaces={visiblePlaces}
-              onSelectPlace={handleSelectPlace}
-              onToggleNeighborhood={handleToggleNeighborhood}
-            />
-
-            {selectedPlace ? (
-              <PlaceDetail place={selectedPlace} onClear={handleClearPick} />
-            ) : (
-              <div
-                className="home-card flex h-full flex-col justify-between p-5 sm:p-6"
-                style={getPanelStyle()}
-              >
+            <div className="tool-main" id="food-map-main">
+              <div className="tool-topbar">
                 <div>
-                  <p className="home-kicker mb-2">Pick</p>
-                  <h2
-                    className="text-[1.2rem] font-semibold tracking-[-0.04em]"
-                    style={{
-                      color: "var(--home-ink)",
-                      fontFamily: "var(--font-home-sans)",
-                    }}
-                  >
-                    Tap a pin or a card to see why it earns the spot.
-                  </h2>
+                  <p className="tool-crumbs">
+                    Food Map / <strong>{currentNeighborhoodName}</strong>
+                  </p>
+                  <h1>Food Map</h1>
+                </div>
+
+                <label className="tool-search" aria-label="Filter by name or cuisine">
+                  <IconSearch size={14} aria-hidden="true" />
+                  <input
+                    type="search"
+                    placeholder="Filter by name or cuisine…"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                </label>
+              </div>
+
+              <div
+                className="tool-meta-chip"
+                role="status"
+                aria-live="polite"
+              >
+                <span className="tool-meta-chip-dot" aria-hidden="true" />
+                <span>
+                  <strong>{FOOD_MAP_PLACES.length}</strong> curated stops
+                </span>
+                <span className="tool-meta-chip-divider" aria-hidden="true">
+                  ·
+                </span>
+                <span>
+                  <strong>{FOOD_MAP_NEIGHBORHOODS.length}</strong> neighborhoods
+                </span>
+                <span className="tool-meta-chip-spacer" />
+                <span className="tool-meta-chip-meta">
+                  Showing {visiblePlaces.length} of {FOOD_MAP_PLACES.length} spots.
+                </span>
+              </div>
+
+              <div className="mt-5 flex flex-col gap-4">
+                <div className="tool-card tool-card-hero overflow-hidden p-4 sm:p-5">
+                  <FoodMapSvg
+                    state={routeState}
+                    visiblePlaces={filteredPlaces}
+                    onSelectPlace={handleSelectPlace}
+                    onToggleNeighborhood={handleToggleNeighborhood}
+                  />
+                </div>
+
+                <div
+                  className="tool-card flex flex-col"
+                  style={{ gap: 12 }}
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <p className="home-kicker mb-0">Filters</p>
+                    <button
+                      type="button"
+                      onClick={handleResetFilters}
+                      disabled={!hasFilters}
+                      className="min-h-touch rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      style={{
+                        ...getPanelStyle(),
+                        color: "var(--home-ink)",
+                        fontFamily: "var(--font-home-sans)",
+                      }}
+                    >
+                      Reset filters
+                    </button>
+                  </div>
+                  <NeighborhoodChips
+                    state={routeState}
+                    onToggle={handleToggleNeighborhood}
+                  />
+                  <CuisineChips
+                    state={routeState}
+                    onToggle={handleToggleCuisine}
+                  />
+                  <MealSegmented state={routeState} onChange={handleSetMeal} />
+                </div>
+
+                {visiblePlaces.length === 0 ? (
+                  <div className="tool-empty">
+                    <p className="text-sm font-semibold" style={{ color: "var(--home-ink)" }}>
+                      Nothing matches that combination yet.
+                    </p>
+                    <p>
+                      The list intentionally stays short, so a few filters can
+                      rule it out entirely.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={handleResetFilters}
+                      className="mt-4 min-h-touch rounded-full px-4 py-2 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                      style={{
+                        ...getPanelStyle(),
+                        color: "var(--home-ink)",
+                        fontFamily: "var(--font-home-sans)",
+                      }}
+                    >
+                      Reset filters
+                    </button>
+                  </div>
+                ) : (
+                  <div className="grid gap-3 md:grid-cols-2">
+                    {visiblePlaces.map((place) => (
+                      <PlaceCard
+                        key={place.id}
+                        place={place}
+                        isSelected={routeState.pick === place.id}
+                        onSelect={handleSelectPlace}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <aside className="tool-rail" aria-label="Food map side panel">
+              {selectedPlace ? (
+                <PlaceDetail place={selectedPlace} onClear={handleClearPick} />
+              ) : (
+                <>
+                  <p className="tool-rail-label">Shortlists</p>
                   <p
-                    className="mt-3 text-sm leading-relaxed"
+                    className="-mt-1 text-[0.85rem] leading-relaxed"
                     style={{ color: "var(--home-ink-muted)" }}
                   >
-                    Each entry has the order I land on, the meal I would
-                    actually go for, and a short note on what makes the room
-                    work. Filters and picks both encode in the URL, so the
-                    shortlist I send a friend is just a link.
+                    Tap a pin or a card to see why it earns the spot.
                   </p>
-                </div>
-                <p
-                  className="mb-0 mt-5 text-sm"
-                  style={{ color: "var(--home-ink-muted)" }}
-                >
-                  Showing {visiblePlaces.length} of {FOOD_MAP_PLACES.length} spots.
-                </p>
-              </div>
-            )}
-          </div>
-        </motion.div>
+                  <ShortlistsRail onSelect={handleSelectPlace} />
+                </>
+              )}
 
-        <motion.div variants={variants} initial="hidden" animate="visible">
-          <div
-            className="home-card p-5 sm:p-6"
-            style={getPanelStyle()}
-          >
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div>
-                <p className="home-kicker mb-1">Shortlist</p>
-                <h2
-                  className="text-[1.2rem] font-semibold tracking-[-0.04em]"
-                  style={{
-                    color: "var(--home-ink)",
-                    fontFamily: "var(--font-home-sans)",
-                  }}
-                >
-                  {visiblePlaces.length === 0
-                    ? "Nothing matches that combination yet."
-                    : `${visiblePlaces.length} ${visiblePlaces.length === 1 ? "spot" : "spots"} on this filter`}
-                </h2>
-              </div>
-            </div>
-
-            {visiblePlaces.length === 0 ? (
-              <p
-                className="mt-4 mb-0 text-sm leading-relaxed"
-                style={{ color: "var(--home-ink-muted)" }}
-              >
-                The list intentionally stays short, so a few filters can rule it
-                out entirely. Reset to see the full map.
+              <p className="tool-rail-foot">
+                These are the spots I actually send people to.
               </p>
-            ) : (
-              <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                {visiblePlaces.map((place) => (
-                  <PlaceCard
-                    key={place.id}
-                    place={place}
-                    isSelected={routeState.pick === place.id}
-                    onSelect={handleSelectPlace}
-                  />
-                ))}
-              </div>
-            )}
+            </aside>
           </div>
         </motion.div>
       </div>

@@ -1,8 +1,9 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
+  Bookmark,
   Filter,
   Pencil,
   Plus,
@@ -12,7 +13,6 @@ import {
   Wine,
   X,
 } from "lucide-react";
-import { WarmCard } from "@/components/ui/WarmCard";
 import {
   fadeInVariants,
   getReducedMotionVariants,
@@ -159,6 +159,11 @@ const SORT_OPTIONS: Array<{ value: WineSortKey; label: string }> = [
   { value: "price", label: "Price" },
 ];
 
+const FORM_INPUT_CLASS =
+  "mt-2 min-h-touch w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2";
+const FORM_LABEL_CLASS =
+  "text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]";
+
 export function WineCellarClient() {
   const {
     entries,
@@ -222,6 +227,20 @@ export function WineCellarClient() {
     filters.sort !== DEFAULT_WINE_FILTERS.sort ||
     filters.sortDirection !== DEFAULT_WINE_FILTERS.sortDirection;
 
+  const lastLoggedDate = useMemo(() => {
+    if (!hasEntries) return null;
+    return summary.recent[0]?.tastedOn ?? null;
+  }, [hasEntries, summary.recent]);
+
+  const recentFiveStars = useMemo(
+    () =>
+      [...entries]
+        .filter((entry) => entry.rating >= 4.5)
+        .sort((a, b) => b.tastedOn.localeCompare(a.tastedOn))
+        .slice(0, 5),
+    [entries]
+  );
+
   return (
     <section
       className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_11%,transparent),transparent_30%),linear-gradient(180deg,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--home-paper))_0%,var(--home-paper)_100%)]"
@@ -233,118 +252,398 @@ export function WineCellarClient() {
           variants={motionVariants}
           initial="hidden"
           animate="visible"
-          className="mb-8 overflow-hidden rounded-[32px] border border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(135deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_45%,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--home-haze)_12%)_100%)] shadow-[var(--shadow-lg)]"
+          className="tool-page-stack"
         >
-          <div className="border-b border-[var(--home-rule)]/80 px-6 py-6 sm:px-8">
-            <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--home-haze)]">
-              Personal Project
-            </p>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div className="min-w-0">
-                <h1 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-[var(--home-ink)] sm:text-4xl">
-                  <Wine className="h-8 w-8 text-[var(--home-haze)]" aria-hidden="true" />
+          <div className="tool-shell" data-testid="wine-cellar-tool-shell">
+            <aside className="tool-sidebar" aria-label="Wine cellar navigation">
+              <div className="tool-brand">
+                <div className="tool-brand-mark" aria-hidden="true">
+                  <Wine className="h-4 w-4" />
+                </div>
+                <div className="tool-brand-name">
                   Wine Cellar
-                </h1>
-                <p className="mt-3 max-w-[64ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-[0.98rem]">
-                  Log the wines you taste, score them, and keep notes you'll
-                  actually revisit. Everything saves to your browser — no
-                  account, no server.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="px-6 py-5 sm:px-8">
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_82%,transparent)] px-4 py-4 shadow-[var(--shadow-sm)]">
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Bottles logged
-                </p>
-                <p className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                  {summary.totalWines}
-                </p>
-              </div>
-              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_82%,transparent)] px-4 py-4 shadow-[var(--shadow-sm)]">
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Average rating
-                </p>
-                <div className="mt-3 flex items-center gap-3">
-                  <p className="text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                    {summary.totalWines > 0 ? summary.averageRating.toFixed(1) : "—"}
-                  </p>
-                  {summary.totalWines > 0 ? (
-                    <StarRating value={summary.averageRating} />
-                  ) : null}
+                  <small>Personal log</small>
                 </div>
               </div>
-              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_82%,transparent)] px-4 py-4 shadow-[var(--shadow-sm)]">
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Cellar spend
-                </p>
-                <p className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                  {summary.totalSpend > 0 ? formatCurrency(summary.totalSpend) : "—"}
-                </p>
-              </div>
-              <div className="rounded-[24px] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_82%,transparent)] px-4 py-4 shadow-[var(--shadow-sm)]">
-                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                  Top region
-                </p>
-                <p className="mt-3 truncate text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                  {summary.topRegion ?? "—"}
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
 
-        <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-          <motion.div variants={motionVariants} initial="hidden" animate="visible">
-            <WarmCard
-              padding="none"
-              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_14%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in_srgb,var(--home-paper-alt)_72%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)]"
-            >
-              <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
-                  {editingId ? "Edit bottle" : "Log a bottle"}
-                </p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                  {editingId ? "Edit tasting" : "New tasting"}
-                </h2>
-                <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
-                  Capture the bottle, the rating, and a few notes. Only the name
-                  is required — fill in the rest as you remember it.
-                </p>
-              </div>
+              <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
+                <a href="#cellar" className="tool-nav-link">
+                  <Wine aria-hidden="true" />
+                  Cellar
+                  {hasEntries ? (
+                    <span className="tool-nav-pill">{entries.length}</span>
+                  ) : null}
+                </a>
+                <a href="#stats" className="tool-nav-link">
+                  <Star aria-hidden="true" />
+                  Stats
+                </a>
+                <a href="#filters" className="tool-nav-link">
+                  <Filter aria-hidden="true" />
+                  Search & filter
+                </a>
+              </nav>
 
-              <form
-                onSubmit={handleSubmit}
-                className="grid gap-4 px-6 py-6 sm:px-8"
-              >
-                <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                    Wine name
-                  </span>
+              <div className="tool-sidebar-footer">
+                <Bookmark size={16} aria-hidden="true" />
+                <span>Saved in your browser</span>
+              </div>
+            </aside>
+
+            <main className="tool-main" id="cellar">
+              <div className="tool-topbar">
+                <div>
+                  <p className="tool-crumbs">
+                    Wine Cellar / <strong>Cellar</strong>
+                  </p>
+                  <h1>Wine Cellar</h1>
+                </div>
+
+                <label className="tool-search" aria-label="Search wines">
+                  <Search size={14} aria-hidden="true" />
                   <input
-                    aria-label="Wine name"
-                    required
-                    type="text"
-                    value={formDraft.name}
+                    type="search"
+                    placeholder="Search by name, region, or notes…"
+                    value={filters.search}
                     onChange={(event) =>
-                      setFormDraft((current) => ({
+                      updateFilters((current) => ({
                         ...current,
-                        name: event.target.value,
+                        search: event.target.value,
                       }))
                     }
-                    placeholder="2018 Brunello di Montalcino"
-                    className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
                   />
                 </label>
+              </div>
 
-                <div className="grid gap-4 md:grid-cols-2">
+              <div className="tool-meta-chip" role="status" aria-live="polite">
+                <span className="tool-meta-chip-dot" aria-hidden="true" />
+                <span>
+                  <strong>
+                    {hasEntries ? entries.length : "—"}
+                  </strong>{" "}
+                  {hasEntries && entries.length === 1 ? "bottle" : "bottles"}
+                </span>
+                <span className="tool-meta-chip-divider" aria-hidden="true">
+                  ·
+                </span>
+                <span>
+                  avg rating{" "}
+                  <strong>
+                    {hasEntries ? summary.averageRating.toFixed(1) : "—"}
+                  </strong>
+                </span>
+                <span className="tool-meta-chip-divider" aria-hidden="true">
+                  ·
+                </span>
+                <span>
+                  last logged{" "}
+                  <strong>
+                    {lastLoggedDate ? formatTastedDate(lastLoggedDate) : "—"}
+                  </strong>
+                </span>
+                <span className="tool-meta-chip-spacer" />
+                <span className="tool-meta-chip-meta">Local browser only</span>
+              </div>
+
+              <div className="mt-5 flex flex-col gap-5">
+                {/* Stats grid — single card, 4 cells */}
+                <section
+                  id="stats"
+                  className="tool-card scroll-mt-28"
+                  aria-label="Cellar stats"
+                >
+                  <div className="tool-stats-grid">
+                    <div className="tool-stat-cell">
+                      <p className="tool-stat-label">Bottles logged</p>
+                      <p className="tool-stat-val">
+                        {hasEntries ? summary.totalWines : "—"}
+                      </p>
+                    </div>
+                    <div className="tool-stat-cell">
+                      <p className="tool-stat-label">Average rating</p>
+                      <p className="tool-stat-val">
+                        {hasEntries ? summary.averageRating.toFixed(1) : "—"}
+                      </p>
+                      {hasEntries ? (
+                        <p className="tool-stat-delta">
+                          <StarRating value={summary.averageRating} />
+                        </p>
+                      ) : null}
+                    </div>
+                    <div className="tool-stat-cell">
+                      <p className="tool-stat-label">Cellar spend</p>
+                      <p className="tool-stat-val">
+                        {summary.totalSpend > 0
+                          ? formatCurrency(summary.totalSpend)
+                          : "—"}
+                      </p>
+                    </div>
+                    <div className="tool-stat-cell">
+                      <p className="tool-stat-label">Top region</p>
+                      <p className="tool-stat-val truncate">
+                        {summary.topRegion ?? "—"}
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Filter / sort strip */}
+                <section
+                  id="filters"
+                  className="tool-card scroll-mt-28"
+                  aria-label="Filter tasting log"
+                >
+                  <div className="grid gap-3 sm:grid-cols-[1fr_1fr_1.4fr]">
+                    <label className="block">
+                      <span className={FORM_LABEL_CLASS}>Type</span>
+                      <select
+                        aria-label="Filter by wine type"
+                        value={filters.type}
+                        onChange={(event) =>
+                          updateFilters((current) => ({
+                            ...current,
+                            type: event.target.value as typeof current.type,
+                          }))
+                        }
+                        className={FORM_INPUT_CLASS}
+                      >
+                        <option value="all">All types</option>
+                        {WINE_TYPES.map((type) => (
+                          <option key={type} value={type}>
+                            {WINE_TYPE_LABELS[type]}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="block">
+                      <span className={FORM_LABEL_CLASS}>Min rating</span>
+                      <select
+                        aria-label="Minimum rating"
+                        value={String(filters.minRating)}
+                        onChange={(event) =>
+                          updateFilters((current) => ({
+                            ...current,
+                            minRating: Number(event.target.value),
+                          }))
+                        }
+                        className={FORM_INPUT_CLASS}
+                      >
+                        <option value="0">Any</option>
+                        <option value="3">3+ stars</option>
+                        <option value="3.5">3.5+ stars</option>
+                        <option value="4">4+ stars</option>
+                        <option value="4.5">4.5+ stars</option>
+                        <option value="5">5 stars only</option>
+                      </select>
+                    </label>
+                    <label className="block">
+                      <span className={FORM_LABEL_CLASS}>Sort by</span>
+                      <div className="mt-2 flex items-center gap-2">
+                        <select
+                          aria-label="Sort by"
+                          value={filters.sort}
+                          onChange={(event) =>
+                            updateFilters((current) => ({
+                              ...current,
+                              sort: event.target.value as WineSortKey,
+                            }))
+                          }
+                          className="min-h-touch flex-1 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
+                        >
+                          {SORT_OPTIONS.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                        <button
+                          type="button"
+                          aria-label={`Sort ${filters.sortDirection === "asc" ? "ascending" : "descending"}`}
+                          onClick={() =>
+                            updateFilters((current) => ({
+                              ...current,
+                              sortDirection:
+                                current.sortDirection === "asc" ? "desc" : "asc",
+                            }))
+                          }
+                          className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm font-semibold text-[var(--home-ink)] hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                        >
+                          {filters.sortDirection === "asc" ? "↑" : "↓"}
+                        </button>
+                      </div>
+                    </label>
+                  </div>
+                  {filtersAreActive ? (
+                    <button
+                      type="button"
+                      onClick={resetFilters}
+                      className="mt-3 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                    >
+                      <Filter className="h-3 w-3" />
+                      Reset filters
+                    </button>
+                  ) : null}
+                </section>
+
+                {/* Tasting log */}
+                <section
+                  className="tool-card scroll-mt-28"
+                  aria-label="Tasting log"
+                >
+                  <div className="mb-4 flex items-end justify-between gap-3">
+                    <div>
+                      <p className="tool-section-kicker">Cellar</p>
+                      <h2 className="tool-section-title">Tasting log</h2>
+                    </div>
+                    {hasEntries ? (
+                      <p className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold text-[var(--home-ink-muted)]">
+                        {visibleEntries.length} of {entries.length}
+                      </p>
+                    ) : null}
+                  </div>
+
+                  {!hasEntries ? (
+                    <div className="tool-empty">
+                      <Wine
+                        className="mx-auto h-7 w-7 text-[var(--home-haze)]"
+                        aria-hidden="true"
+                      />
+                      <p className="mt-3 text-sm font-semibold text-[var(--home-ink)]">
+                        Your cellar is empty
+                      </p>
+                      <p>Add your first bottle from the rail →</p>
+                    </div>
+                  ) : !hasVisibleEntries ? (
+                    <div className="tool-empty">
+                      <p className="text-sm font-semibold text-[var(--home-ink)]">
+                        No bottles match these filters
+                      </p>
+                      <p>Try widening your search or reset filters.</p>
+                    </div>
+                  ) : (
+                    <ul className="space-y-3">
+                      {visibleEntries.map((entry) => (
+                        <li
+                          key={entry.id}
+                          className={`rounded-[18px] border bg-[var(--home-paper)] px-4 py-4 transition ${
+                            editingId === entry.id
+                              ? "border-[var(--home-haze)] shadow-[var(--shadow-sm)]"
+                              : "border-[var(--home-rule)]"
+                          }`}
+                        >
+                          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                            <div className="min-w-0 flex-1">
+                              <div className="flex flex-wrap items-baseline gap-2">
+                                <p className="text-base font-semibold text-[var(--home-ink)]">
+                                  {entry.name}
+                                </p>
+                                {entry.vintage ? (
+                                  <span className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+                                    {entry.vintage}
+                                  </span>
+                                ) : null}
+                              </div>
+                              {entry.producer ? (
+                                <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
+                                  {entry.producer}
+                                </p>
+                              ) : null}
+                              <div className="mt-3 flex flex-wrap items-center gap-2">
+                                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                  {WINE_TYPE_LABELS[entry.type]}
+                                </span>
+                                {entry.region ? (
+                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                    {entry.region}
+                                  </span>
+                                ) : null}
+                                {entry.varietal ? (
+                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                    {entry.varietal}
+                                  </span>
+                                ) : null}
+                                <span
+                                  className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]"
+                                  title={entry.tastedOn}
+                                >
+                                  {formatTastedDate(entry.tastedOn)}
+                                </span>
+                                {entry.price !== null ? (
+                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                                    {formatCurrency(entry.price)}
+                                  </span>
+                                ) : null}
+                              </div>
+                              {entry.notes ? (
+                                <p className="mt-3 whitespace-pre-line text-sm leading-6 text-[var(--home-ink)]">
+                                  {entry.notes}
+                                </p>
+                              ) : null}
+                            </div>
+
+                            <div className="flex flex-col items-end gap-3 sm:min-w-[120px]">
+                              <div className="flex flex-col items-end gap-1">
+                                <p className="text-lg font-semibold text-[var(--home-ink)]">
+                                  {entry.rating.toFixed(1)}
+                                </p>
+                                <StarRating value={entry.rating} />
+                              </div>
+                              <div className="flex gap-2">
+                                <button
+                                  type="button"
+                                  aria-label={`Edit ${entry.name}`}
+                                  onClick={() => handleEdit(entry.id)}
+                                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                                >
+                                  <Pencil className="h-3.5 w-3.5" />
+                                  Edit
+                                </button>
+                                <button
+                                  type="button"
+                                  aria-label={`Delete ${entry.name}`}
+                                  onClick={() => handleDelete(entry.id)}
+                                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-ink)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                  Delete
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              </div>
+            </main>
+
+            <aside className="tool-rail" aria-label="Wine cellar side panel">
+              <section id="add-tasting">
+                <p className="tool-rail-label">
+                  <Wine size={12} aria-hidden="true" />
+                  {editingId ? "Edit bottle" : "Log a bottle"}
+                </p>
+                <form onSubmit={handleSubmit} className="grid gap-3">
                   <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Producer
-                    </span>
+                    <span className={FORM_LABEL_CLASS}>Wine name</span>
+                    <input
+                      aria-label="Wine name"
+                      required
+                      type="text"
+                      value={formDraft.name}
+                      onChange={(event) =>
+                        setFormDraft((current) => ({
+                          ...current,
+                          name: event.target.value,
+                        }))
+                      }
+                      placeholder="2018 Brunello di Montalcino"
+                      className={FORM_INPUT_CLASS}
+                    />
+                  </label>
+                  <label className="block">
+                    <span className={FORM_LABEL_CLASS}>Producer</span>
                     <input
                       aria-label="Producer"
                       type="text"
@@ -356,37 +655,52 @@ export function WineCellarClient() {
                         }))
                       }
                       placeholder="Biondi-Santi"
-                      className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
+                      className={FORM_INPUT_CLASS}
                     />
                   </label>
+                  <div className="grid gap-3 grid-cols-2">
+                    <label className="block">
+                      <span className={FORM_LABEL_CLASS}>Vintage</span>
+                      <input
+                        aria-label="Vintage"
+                        type="number"
+                        min="1800"
+                        max="2100"
+                        step="1"
+                        value={formDraft.vintage}
+                        onChange={(event) =>
+                          setFormDraft((current) => ({
+                            ...current,
+                            vintage: event.target.value,
+                          }))
+                        }
+                        placeholder="2018"
+                        className={FORM_INPUT_CLASS}
+                      />
+                    </label>
+                    <label className="block">
+                      <span className={FORM_LABEL_CLASS}>Type</span>
+                      <select
+                        aria-label="Wine type"
+                        value={formDraft.type}
+                        onChange={(event) =>
+                          setFormDraft((current) => ({
+                            ...current,
+                            type: event.target.value as WineType,
+                          }))
+                        }
+                        className={FORM_INPUT_CLASS}
+                      >
+                        {WINE_TYPES.map((type) => (
+                          <option key={type} value={type}>
+                            {WINE_TYPE_LABELS[type]}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
                   <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Vintage
-                    </span>
-                    <input
-                      aria-label="Vintage"
-                      type="number"
-                      min="1800"
-                      max="2100"
-                      step="1"
-                      value={formDraft.vintage}
-                      onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          vintage: event.target.value,
-                        }))
-                      }
-                      placeholder="2018"
-                      className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
-                    />
-                  </label>
-                </div>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Region
-                    </span>
+                    <span className={FORM_LABEL_CLASS}>Region</span>
                     <input
                       aria-label="Region"
                       type="text"
@@ -398,13 +712,11 @@ export function WineCellarClient() {
                         }))
                       }
                       placeholder="Tuscany"
-                      className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
+                      className={FORM_INPUT_CLASS}
                     />
                   </label>
                   <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Varietal / grape
-                    </span>
+                    <span className={FORM_LABEL_CLASS}>Varietal / grape</span>
                     <input
                       aria-label="Varietal"
                       type="text"
@@ -416,435 +728,164 @@ export function WineCellarClient() {
                         }))
                       }
                       placeholder="Sangiovese"
-                      className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
+                      className={FORM_INPUT_CLASS}
                     />
                   </label>
-                </div>
-
-                <div className="grid gap-4 md:grid-cols-3">
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Type
-                    </span>
-                    <select
-                      aria-label="Wine type"
-                      value={formDraft.type}
-                      onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          type: event.target.value as WineType,
-                        }))
-                      }
-                      className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
-                    >
-                      {WINE_TYPES.map((type) => (
-                        <option key={type} value={type}>
-                          {WINE_TYPE_LABELS[type]}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Price (USD)
-                    </span>
-                    <input
-                      aria-label="Price"
-                      type="number"
-                      min="0"
-                      step="0.01"
-                      value={formDraft.price}
-                      onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          price: event.target.value,
-                        }))
-                      }
-                      placeholder="48"
-                      className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Tasted on
-                    </span>
-                    <input
-                      aria-label="Tasted on"
-                      type="date"
-                      value={formDraft.tastedOn}
-                      onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          tastedOn: event.target.value,
-                        }))
-                      }
-                      className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
-                    />
-                  </label>
-                </div>
-
-                <label className="block">
-                  <span className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                    <span>Rating</span>
-                    <span className="flex items-center gap-2 text-[var(--home-ink)]">
-                      {Number(formDraft.rating || 0).toFixed(1)}
-                      <StarRating value={Number(formDraft.rating || 0)} />
-                    </span>
-                  </span>
-                  <input
-                    aria-label="Rating"
-                    type="range"
-                    min="0.5"
-                    max="5"
-                    step="0.5"
-                    value={formDraft.rating}
-                    onChange={(event) =>
-                      setFormDraft((current) => ({
-                        ...current,
-                        rating: event.target.value,
-                      }))
-                    }
-                    className="mt-3 w-full accent-[var(--home-haze)]"
-                  />
-                </label>
-
-                <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                    Tasting notes
-                  </span>
-                  <textarea
-                    aria-label="Tasting notes"
-                    rows={4}
-                    maxLength={1000}
-                    value={formDraft.notes}
-                    onChange={(event) =>
-                      setFormDraft((current) => ({
-                        ...current,
-                        notes: event.target.value,
-                      }))
-                    }
-                    placeholder="Cherry, leather, dried herbs. Long finish, would buy again."
-                    className="mt-2 w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-3 text-sm leading-6 text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                  />
-                </label>
-
-                <div className="flex flex-wrap items-center gap-3 pt-2">
-                  <button
-                    type="submit"
-                    disabled={!formDraft.name.trim()}
-                    className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-5 py-3 text-sm font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 sm:flex-initial"
-                  >
-                    <Plus className="h-4 w-4" />
-                    {editingId ? "Save tasting" : "Add tasting"}
-                  </button>
-                  {editingId ? (
-                    <button
-                      type="button"
-                      onClick={resetForm}
-                      className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-5 py-3 text-sm font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
-                    >
-                      <X className="h-4 w-4" />
-                      Cancel edit
-                    </button>
-                  ) : null}
-                </div>
-              </form>
-            </WarmCard>
-          </motion.div>
-
-          <motion.div variants={motionVariants} initial="hidden" animate="visible">
-            <WarmCard
-              padding="none"
-              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in_srgb,var(--home-paper-alt)_58%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)]"
-            >
-              <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
-                      Cellar
-                    </p>
-                    <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                      Tasting log
-                    </h2>
-                    <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
-                      Search, filter, and revisit everything you've poured.
-                    </p>
-                  </div>
-                  <p className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold text-[var(--home-ink-muted)]">
-                    {visibleEntries.length} of {entries.length}
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid gap-4 px-6 py-5 sm:px-8">
-                <label className="block">
-                  <span className="sr-only">Search wines</span>
-                  <span className="relative flex items-center">
-                    <Search
-                      className="pointer-events-none absolute left-3 h-4 w-4 text-[var(--home-haze)]"
-                      aria-hidden="true"
-                    />
-                    <input
-                      aria-label="Search wines"
-                      type="search"
-                      value={filters.search}
-                      onChange={(event) =>
-                        updateFilters((current) => ({
-                          ...current,
-                          search: event.target.value,
-                        }))
-                      }
-                      placeholder="Search by name, region, or notes"
-                      className="min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] py-2 pl-10 pr-3 text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                    />
-                  </span>
-                </label>
-
-                <div className="grid gap-3 md:grid-cols-3">
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Type
-                    </span>
-                    <select
-                      aria-label="Filter by wine type"
-                      value={filters.type}
-                      onChange={(event) =>
-                        updateFilters((current) => ({
-                          ...current,
-                          type: event.target.value as typeof current.type,
-                        }))
-                      }
-                      className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
-                    >
-                      <option value="all">All types</option>
-                      {WINE_TYPES.map((type) => (
-                        <option key={type} value={type}>
-                          {WINE_TYPE_LABELS[type]}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Min rating
-                    </span>
-                    <select
-                      aria-label="Minimum rating"
-                      value={String(filters.minRating)}
-                      onChange={(event) =>
-                        updateFilters((current) => ({
-                          ...current,
-                          minRating: Number(event.target.value),
-                        }))
-                      }
-                      className="mt-2 min-h-[46px] w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
-                    >
-                      <option value="0">Any</option>
-                      <option value="3">3+ stars</option>
-                      <option value="3.5">3.5+ stars</option>
-                      <option value="4">4+ stars</option>
-                      <option value="4.5">4.5+ stars</option>
-                      <option value="5">5 stars only</option>
-                    </select>
-                  </label>
-                  <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))]">
-                      Sort by
-                    </span>
-                    <div className="mt-2 flex items-center gap-2">
-                      <select
-                        aria-label="Sort by"
-                        value={filters.sort}
+                  <div className="grid gap-3 grid-cols-2">
+                    <label className="block">
+                      <span className={FORM_LABEL_CLASS}>Price (USD)</span>
+                      <input
+                        aria-label="Price"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={formDraft.price}
                         onChange={(event) =>
-                          updateFilters((current) => ({
+                          setFormDraft((current) => ({
                             ...current,
-                            sort: event.target.value as WineSortKey,
+                            price: event.target.value,
                           }))
                         }
-                        className="min-h-[46px] flex-1 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
-                      >
-                        {SORT_OPTIONS.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
+                        placeholder="48"
+                        className={FORM_INPUT_CLASS}
+                      />
+                    </label>
+                    <label className="block">
+                      <span className={FORM_LABEL_CLASS}>Tasted on</span>
+                      <input
+                        aria-label="Tasted on"
+                        type="date"
+                        value={formDraft.tastedOn}
+                        onChange={(event) =>
+                          setFormDraft((current) => ({
+                            ...current,
+                            tastedOn: event.target.value,
+                          }))
+                        }
+                        className={FORM_INPUT_CLASS}
+                      />
+                    </label>
+                  </div>
+                  <label className="block">
+                    <span className="flex items-center justify-between text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                      <span>Rating</span>
+                      <span className="flex items-center gap-2 text-[var(--home-ink)]">
+                        {Number(formDraft.rating || 0).toFixed(1)}
+                        <StarRating value={Number(formDraft.rating || 0)} />
+                      </span>
+                    </span>
+                    <input
+                      aria-label="Rating"
+                      type="range"
+                      min="0.5"
+                      max="5"
+                      step="0.5"
+                      value={formDraft.rating}
+                      onChange={(event) =>
+                        setFormDraft((current) => ({
+                          ...current,
+                          rating: event.target.value,
+                        }))
+                      }
+                      className="mt-3 w-full accent-[var(--home-haze)]"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className={FORM_LABEL_CLASS}>Tasting notes</span>
+                    <textarea
+                      aria-label="Tasting notes"
+                      rows={3}
+                      maxLength={1000}
+                      value={formDraft.notes}
+                      onChange={(event) =>
+                        setFormDraft((current) => ({
+                          ...current,
+                          notes: event.target.value,
+                        }))
+                      }
+                      placeholder="Cherry, leather, dried herbs."
+                      className="mt-2 w-full rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-3 text-sm leading-6 text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                    />
+                  </label>
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    <button
+                      type="submit"
+                      disabled={!formDraft.name.trim()}
+                      className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 rounded-2xl bg-[var(--home-haze)] px-4 py-2.5 text-sm font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      <Plus className="h-4 w-4" />
+                      {editingId ? "Save tasting" : "Add tasting"}
+                    </button>
+                    {editingId ? (
                       <button
                         type="button"
-                        aria-label={`Sort ${filters.sortDirection === "asc" ? "ascending" : "descending"}`}
-                        onClick={() =>
-                          updateFilters((current) => ({
-                            ...current,
-                            sortDirection:
-                              current.sortDirection === "asc" ? "desc" : "asc",
-                          }))
-                        }
-                        className="inline-flex min-h-[46px] min-w-[46px] items-center justify-center rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm font-semibold text-[var(--home-ink)] hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
+                        onClick={resetForm}
+                        className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
                       >
-                        {filters.sortDirection === "asc" ? "↑" : "↓"}
+                        <X className="h-3.5 w-3.5" />
+                        Cancel
                       </button>
-                    </div>
-                  </label>
-                </div>
-
-                {filtersAreActive ? (
-                  <button
-                    type="button"
-                    onClick={resetFilters}
-                    className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-haze)] hover:text-[var(--home-haze)]"
-                  >
-                    <Filter className="h-3 w-3" />
-                    Reset filters
-                  </button>
-                ) : null}
-              </div>
-
-              <div className="border-t border-[var(--home-rule)] px-6 py-6 sm:px-8">
-                {!hasEntries ? (
-                  <div className="rounded-[22px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-8 text-center">
-                    <Wine
-                      className="mx-auto h-8 w-8 text-[var(--home-haze)]"
-                      aria-hidden="true"
-                    />
-                    <p className="mt-3 text-base font-semibold text-[var(--home-ink)]">
-                      Your cellar is empty
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-[var(--home-ink-muted)]">
-                      Add the first bottle from the form to start your log.
-                    </p>
+                    ) : null}
                   </div>
-                ) : !hasVisibleEntries ? (
-                  <div className="rounded-[22px] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-8 text-center">
-                    <p className="text-sm leading-6 text-[var(--home-ink-muted)]">
-                      No bottles match these filters. Try widening your search.
-                    </p>
-                  </div>
-                ) : (
-                  <ul className="space-y-3">
-                    {visibleEntries.map((entry) => (
-                      <li
-                        key={entry.id}
-                        className={`rounded-[22px] border bg-[var(--home-paper)] px-4 py-4 transition ${
-                          editingId === entry.id
-                            ? "border-[var(--home-haze)] shadow-[var(--shadow-sm)]"
-                            : "border-[var(--home-rule)]"
-                        }`}
-                      >
-                        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                          <div className="min-w-0 flex-1">
-                            <div className="flex flex-wrap items-baseline gap-2">
-                              <p className="text-base font-semibold text-[var(--home-ink)]">
-                                {entry.name}
-                              </p>
-                              {entry.vintage ? (
-                                <span className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                                  {entry.vintage}
-                                </span>
-                              ) : null}
-                            </div>
-                            {entry.producer ? (
-                              <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
-                                {entry.producer}
-                              </p>
-                            ) : null}
-                            <div className="mt-3 flex flex-wrap items-center gap-2">
-                              <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                                {WINE_TYPE_LABELS[entry.type]}
-                              </span>
-                              {entry.region ? (
-                                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                                  {entry.region}
-                                </span>
-                              ) : null}
-                              {entry.varietal ? (
-                                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                                  {entry.varietal}
-                                </span>
-                              ) : null}
-                              <span
-                                className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]"
-                                title={entry.tastedOn}
-                              >
-                                {formatTastedDate(entry.tastedOn)}
-                              </span>
-                              {entry.price !== null ? (
-                                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                                  {formatCurrency(entry.price)}
-                                </span>
-                              ) : null}
-                            </div>
-                            {entry.notes ? (
-                              <p className="mt-3 whitespace-pre-line text-sm leading-6 text-[var(--home-ink)]">
-                                {entry.notes}
-                              </p>
-                            ) : null}
-                          </div>
+                </form>
+              </section>
 
-                          <div className="flex flex-col items-end gap-3 sm:min-w-[140px]">
-                            <div className="flex flex-col items-end gap-1">
-                              <p className="text-lg font-semibold text-[var(--home-ink)]">
-                                {entry.rating.toFixed(1)}
-                              </p>
-                              <StarRating value={entry.rating} />
-                            </div>
-                            <div className="flex gap-2">
-                              <button
-                                type="button"
-                                aria-label={`Edit ${entry.name}`}
-                                onClick={() => handleEdit(entry.id)}
-                                className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-haze)] hover:text-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                              >
-                                <Pencil className="h-3.5 w-3.5" />
-                                Edit
-                              </button>
-                              <button
-                                type="button"
-                                aria-label={`Delete ${entry.name}`}
-                                onClick={() => handleDelete(entry.id)}
-                                className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-2xl border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-ink)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                              >
-                                <Trash2 className="h-3.5 w-3.5" />
-                                Delete
-                              </button>
-                            </div>
-                          </div>
-                        </div>
+              {recentFiveStars.length > 0 ? (
+                <section aria-label="Recent five-star bottles">
+                  <p className="tool-rail-label">
+                    <Star size={12} aria-hidden="true" />
+                    Recent five-stars
+                  </p>
+                  <ul className="flex flex-col gap-2">
+                    {recentFiveStars.map((entry) => (
+                      <li key={entry.id}>
+                        <button
+                          type="button"
+                          onClick={() => handleEdit(entry.id)}
+                          className="grid w-full grid-cols-[1fr_auto] items-center gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-left transition hover:border-[var(--home-haze)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                          aria-label={`Edit ${entry.name}`}
+                        >
+                          <span className="min-w-0">
+                            <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
+                              {entry.name}
+                            </span>
+                            <span className="block truncate text-[11px] uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                              {formatTastedDate(entry.tastedOn)}
+                            </span>
+                          </span>
+                          <span className="font-mono text-[12px] font-semibold tabular-nums text-[var(--home-ink)]">
+                            {entry.rating.toFixed(1)}
+                          </span>
+                        </button>
                       </li>
                     ))}
                   </ul>
-                )}
-              </div>
-            </WarmCard>
-          </motion.div>
-        </div>
+                </section>
+              ) : null}
 
-        {hasEntries ? (
-          <motion.div
-            variants={motionVariants}
-            initial="hidden"
-            animate="visible"
-            className="mt-6"
-          >
-            <WarmCard
-              padding="none"
-              className="overflow-hidden rounded-[30px] border-[color-mix(in_srgb,var(--home-haze)_10%,var(--home-rule))] bg-[linear-gradient(180deg,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))_0%,color-mix(in_srgb,var(--home-paper-alt)_54%,color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix)))_100%)]"
+              <p className="tool-rail-foot">
+                <Bookmark size={14} aria-hidden="true" />
+                Saved in your browser — no account, no server.
+              </p>
+            </aside>
+          </div>
+
+          {hasEntries ? (
+            <section
+              className="tool-band"
+              aria-label="Cellar insights"
+              id="insights"
             >
-              <div className="border-b border-[var(--home-rule)] px-6 py-5 sm:px-8">
-                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--home-haze)]">
-                  Cellar insights
-                </p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                  What you've been drinking
-                </h2>
-                <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
-                  A quick read on your patterns — by type, by score, and by
-                  what's most recent.
-                </p>
+              <div className="tool-section-header">
+                <div>
+                  <p className="tool-section-kicker">Cellar insights</p>
+                  <h2 className="tool-section-title">What you've been drinking</h2>
+                </div>
               </div>
 
-              <div className="grid gap-6 px-6 py-6 sm:px-8 xl:grid-cols-3">
-                <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-                  <h3 className="text-lg font-semibold text-[var(--home-ink)]">
+              <div className="grid gap-5 xl:grid-cols-3">
+                <div className="tool-card">
+                  <h3 className="text-base font-semibold text-[var(--home-ink)]">
                     By type
                   </h3>
                   <div className="mt-4 space-y-3">
@@ -859,7 +900,7 @@ export function WineCellarClient() {
                             <p className="text-sm font-semibold text-[var(--home-ink)]">
                               {WINE_TYPE_LABELS[bucket.type]}
                             </p>
-                            <p className="text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                            <p className="text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                               {bucket.count} · avg {bucket.averageRating.toFixed(1)}
                             </p>
                           </div>
@@ -875,8 +916,8 @@ export function WineCellarClient() {
                   </div>
                 </div>
 
-                <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-                  <h3 className="text-lg font-semibold text-[var(--home-ink)]">
+                <div className="tool-card">
+                  <h3 className="text-base font-semibold text-[var(--home-ink)]">
                     Top rated
                   </h3>
                   {summary.topRated.length === 0 ? (
@@ -895,7 +936,7 @@ export function WineCellarClient() {
                               <p className="truncate text-sm font-semibold text-[var(--home-ink)]">
                                 {entry.name}
                               </p>
-                              <p className="mt-1 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                              <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                                 {entry.producer || WINE_TYPE_LABELS[entry.type]}
                               </p>
                             </div>
@@ -912,8 +953,8 @@ export function WineCellarClient() {
                   )}
                 </div>
 
-                <div className="rounded-[24px] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4">
-                  <h3 className="text-lg font-semibold text-[var(--home-ink)]">
+                <div className="tool-card">
+                  <h3 className="text-base font-semibold text-[var(--home-ink)]">
                     Recent pours
                   </h3>
                   {summary.recent.length === 0 ? (
@@ -933,7 +974,7 @@ export function WineCellarClient() {
                                 {entry.name}
                               </p>
                               <p
-                                className="mt-1 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
+                                className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
                                 title={entry.tastedOn}
                               >
                                 {formatTastedDate(entry.tastedOn)} ·{" "}
@@ -949,7 +990,7 @@ export function WineCellarClient() {
                     </ul>
                   )}
                   {summary.topVarietal ? (
-                    <p className="mt-4 rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <p className="mt-4 rounded-2xl border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3 text-[11px] uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                       Most-poured varietal:{" "}
                       <span className="font-semibold text-[var(--home-ink)]">
                         {summary.topVarietal}
@@ -958,9 +999,9 @@ export function WineCellarClient() {
                   ) : null}
                 </div>
               </div>
-            </WarmCard>
-          </motion.div>
-        ) : null}
+            </section>
+          ) : null}
+        </motion.div>
       </div>
     </section>
   );

@@ -41,7 +41,8 @@ describe("DecisionLabClient", () => {
   it("renders the default support-copilot scenario when no params are present", () => {
     render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
 
-    expect(screen.getByRole("heading", { level: 1, name: /i built this to pressure-test product bets/i })).toBeVisible();
+    expect(screen.getByRole("heading", { level: 1, name: /^Decision Lab$/i })).toBeVisible();
+    expect(screen.getByText(/i built this to pressure-test product bets/i)).toBeVisible();
     expect(screen.getByText(/I would test this before I commit fully\./i)).toBeVisible();
     expect((screen.getByLabelText("Impact") as HTMLInputElement).value).toBe("82");
   });
@@ -62,7 +63,10 @@ describe("DecisionLabClient", () => {
     expect((screen.getByLabelText("Impact") as HTMLInputElement).value).toBe("44");
     expect(screen.getByText(/I would hold this for now\./i)).toBeVisible();
 
-    fireEvent.click(screen.getByRole("button", { name: /onboarding refresh/i }));
+    // Both the sidebar nav and the rail expose preset buttons with the
+    // same accessible name. Use the first match (sidebar) — either fires
+    // the same handler.
+    fireEvent.click(screen.getAllByRole("button", { name: /onboarding refresh/i })[0]);
 
     expect(mockReplace).toHaveBeenCalledWith("/decision-lab?preset=onboarding-refresh", {
       scroll: false,
@@ -96,7 +100,7 @@ describe("DecisionLabClient", () => {
     );
     expect(await screen.findByText("Link copied")).toBeVisible();
 
-    fireEvent.click(screen.getByRole("button", { name: "Reset to preset" }));
+    fireEvent.click(screen.getByRole("button", { name: /reset to defaults/i }));
 
     expect(mockReplace).toHaveBeenLastCalledWith("/decision-lab?preset=onboarding-refresh", {
       scroll: false,

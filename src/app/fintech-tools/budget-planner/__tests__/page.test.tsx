@@ -20,9 +20,8 @@ describe("BudgetPlannerPage", () => {
     render(<BudgetPlannerPage />);
 
     expect(screen.getByRole("heading", { name: "Budget Planner" })).toBeVisible();
-    expect(screen.getByRole("heading", { name: "Planning" })).toBeVisible();
-    expect(screen.getByRole("heading", { name: "Expense Ledger" })).toBeVisible();
-    expect(screen.getAllByRole("heading", { name: "Category Insights" })[0]).toBeVisible();
-    expect(screen.getByRole("heading", { name: "Recent Activity" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Income" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Categories" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Expenses ledger" })).toBeVisible();
   });
 });

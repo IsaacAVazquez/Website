@@ -9,11 +9,17 @@ import {
   Calendar,
   Check,
   Clock,
+  Compass,
   Filter,
   Heart,
+  HelpCircle,
+  Layers,
   ListPlus,
   MapPin,
+  NotebookPen,
   Plus,
+  Save,
+  Search,
   Star,
   Ticket,
   Trash2,
@@ -36,7 +42,6 @@ import { useMuseumLog } from "@/hooks/useMuseumLog";
 import {
   buildMuseumHref,
   MUSEUM_VIEW_LABELS,
-  MUSEUM_VIEW_OPTIONS,
   normalizeMuseumState,
 } from "./museum-log-state";
 import {
@@ -110,31 +115,6 @@ function RatingPill({ rating, label }: { rating: number; label?: string }) {
       <span>{rating.toFixed(1)}</span>
       {label && <span className="opacity-70">· {label}</span>}
     </span>
-  );
-}
-
-function StatCard({
-  eyebrow,
-  metric,
-  detail,
-  icon,
-}: {
-  eyebrow: string;
-  metric: string;
-  detail: string;
-  icon: ReactNode;
-}) {
-  return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-4">
-      <div className="flex items-center justify-between gap-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
-          {eyebrow}
-        </p>
-        <span className="text-[var(--home-ink-muted)]">{icon}</span>
-      </div>
-      <p className="mt-3 text-lg font-semibold text-[var(--home-ink)]">{metric}</p>
-      <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">{detail}</p>
-    </div>
   );
 }
 
@@ -371,6 +351,7 @@ function MuseumCard({
 interface DiscoverViewProps {
   snapshot: MuseumSnapshot;
   state: MuseumRouteState;
+  query: string;
   onChangeFilter: (next: Partial<MuseumRouteState>) => void;
   onOpenMuseum: (slug: string) => void;
   visitDateByMuseumId: Record<string, string | undefined>;
@@ -386,6 +367,7 @@ interface DiscoverViewProps {
 function DiscoverView({
   snapshot,
   state,
+  query,
   onChangeFilter,
   onOpenMuseum,
   visitDateByMuseumId,
@@ -401,16 +383,26 @@ function DiscoverView({
     () => filterMuseums(snapshot.museums, state.type, state.region),
     [snapshot.museums, state.type, state.region],
   );
+  const searched = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return filtered;
+    return filtered.filter(
+      (m) =>
+        m.name.toLowerCase().includes(q) ||
+        m.city.toLowerCase().includes(q) ||
+        m.country.toLowerCase().includes(q),
+    );
+  }, [filtered, query]);
   const sorted = useMemo(
-    () => sortMuseums(filtered, state.sort, visitDateByMuseumId),
-    [filtered, state.sort, visitDateByMuseumId],
+    () => sortMuseums(searched, state.sort, visitDateByMuseumId),
+    [searched, state.sort, visitDateByMuseumId],
   );
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-wrap items-center gap-3">
-        <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-          <Filter size={14} /> Filters
+    <div className="space-y-5">
+      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 shadow-[var(--shadow-sm)]">
+        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+          <Filter size={12} /> Filters
         </span>
 
         <FilterSelect
@@ -426,7 +418,7 @@ function DiscoverView({
           onChange={(value) => onChangeFilter({ region: value as MuseumRegionFilter })}
         />
 
-        <span className="ml-auto inline-flex items-center gap-2 text-xs text-[var(--home-ink-muted)]">
+        <span className="ml-auto inline-flex items-center gap-2 text-[11px] text-[var(--home-ink-muted)]">
           Sort
           <div className="flex gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] p-1">
             {SORT_OPTIONS.map((sortKey) => {
@@ -437,7 +429,7 @@ function DiscoverView({
                   type="button"
                   onClick={() => onChangeFilter({ sort: sortKey as MuseumSort })}
                   aria-pressed={active}
-                  className="rounded-full px-3 py-1 text-xs font-semibold transition-colors"
+                  className="rounded-full px-3 py-1 text-[11px] font-semibold transition-colors"
                   style={{
                     background: active ? "var(--home-ink)" : "transparent",
                     color: active ? "var(--home-paper)" : "var(--home-ink-muted)",
@@ -451,18 +443,20 @@ function DiscoverView({
         </span>
       </div>
 
-      <p className="text-sm text-[var(--home-ink-muted)]">
+      <p className="text-[12.5px] text-[var(--home-ink-muted)]">
         {sorted.length} {sorted.length === 1 ? "museum" : "museums"} in the catalog
         {state.type !== "all" && ` · ${TYPE_LABEL[state.type]}`}
         {state.region !== "all" && ` · ${REGION_LABEL[state.region]}`}
+        {query.trim() && ` · matching "${query.trim()}"`}
       </p>
 
       {sorted.length === 0 ? (
-        <div className="home-card p-8 text-center text-sm text-[var(--home-ink-muted)]">
-          No museums match the current filters.
+        <div className="tool-empty">
+          <p className="text-sm font-semibold text-[var(--home-ink)]">No museums match the current filters.</p>
+          <p>Adjust type, region, or your search to see more.</p>
         </div>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {sorted.map((museum) => {
             const visit = visitByMuseumId[museum.id];
             return (
@@ -1249,35 +1243,41 @@ function YourLogStrip({
   averageUserRating: number | null;
 }) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-      <StatCard
-        eyebrow="Your visits"
-        metric={String(visitedCount)}
-        detail={visitedCount === 0 ? "Log your first museum to start tracking." : "Saved locally to this browser."}
-        icon={<Check size={16} />}
-      />
-      <StatCard
-        eyebrow="Watchlist"
-        metric={String(watchlistCount)}
-        detail={watchlistCount === 0 ? "Save museums to plan future trips." : "Museums you want to visit next."}
-        icon={<Bookmark size={16} />}
-      />
-      <StatCard
-        eyebrow="Liked"
-        metric={String(likedCount)}
-        detail={likedCount === 0 ? "Like the ones worth coming back to." : "Your personal favorites."}
-        icon={<Heart size={16} />}
-      />
-      <StatCard
-        eyebrow="Your average"
-        metric={averageUserRating !== null ? `${averageUserRating.toFixed(1)} ★` : "—"}
-        detail={
-          averageUserRating !== null
-            ? "Across every museum you've logged."
-            : "Rate visits to see your average."
-        }
-        icon={<Star size={16} />}
-      />
+    <div className="tool-card">
+      <div className="tool-stats-grid">
+        <div className="tool-stat-cell">
+          <p className="tool-stat-label">Visited</p>
+          <p className="tool-stat-val">{visitedCount}</p>
+          <p className="tool-stat-delta">
+            {visitedCount === 0 ? "Log your first to start tracking." : "Saved locally."}
+          </p>
+        </div>
+        <div className="tool-stat-cell">
+          <p className="tool-stat-label">Watchlist</p>
+          <p className="tool-stat-val">{watchlistCount}</p>
+          <p className="tool-stat-delta">
+            {watchlistCount === 0 ? "Save museums for later." : "Saved for next time."}
+          </p>
+        </div>
+        <div className="tool-stat-cell">
+          <p className="tool-stat-label">Liked</p>
+          <p className="tool-stat-val">{likedCount}</p>
+          <p className="tool-stat-delta">
+            {likedCount === 0 ? "Heart your favorites." : "Personal favorites."}
+          </p>
+        </div>
+        <div className="tool-stat-cell">
+          <p className="tool-stat-label">Average rating</p>
+          <p className="tool-stat-val">
+            {averageUserRating !== null ? `${averageUserRating.toFixed(1)} ★` : "—"}
+          </p>
+          <p className="tool-stat-delta">
+            {averageUserRating !== null
+              ? "Across every visit you've logged."
+              : "Rate visits to see your average."}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -1396,166 +1396,372 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
     });
   }
 
+  // ─── Filter (search) state — UI-only, not deep-linked ────────────────────
+  const [query, setQuery] = useState("");
+
   // ─── Resolve detail entity ────────────────────────────────────────────────
   const selectedMuseum = routeState.museum ? museumBySlug[routeState.museum] : null;
 
+  // ─── Rail data: recently visited + top liked ─────────────────────────────
+  const recentlyVisited = useMemo(() => {
+    const userVisits = [...userState.visited]
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .slice(0, 5)
+      .map((v) => ({ museum: museumById[v.museumId], date: v.date }))
+      .filter((row): row is { museum: Museum; date: string } => Boolean(row.museum));
+    if (userVisits.length > 0) return userVisits;
+    // Fallback to curator visit log so the rail isn't empty pre-hydration.
+    return [...snapshot.visitLog]
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .slice(0, 5)
+      .map((v) => ({ museum: museumById[v.museumId], date: v.date }))
+      .filter((row): row is { museum: Museum; date: string } => Boolean(row.museum));
+  }, [userState.visited, snapshot.visitLog, museumById]);
+
+  const topLiked = useMemo(() => {
+    const liked = userState.liked
+      .map((id) => museumById[id])
+      .filter((m): m is Museum => Boolean(m))
+      .slice(0, 5);
+    if (liked.length > 0) return liked;
+    // Fallback: highest-rated reviews flagged as liked.
+    return snapshot.reviews
+      .filter((r) => r.liked)
+      .sort((a, b) => b.rating - a.rating)
+      .slice(0, 5)
+      .map((r) => museumById[r.museumId])
+      .filter((m): m is Museum => Boolean(m));
+  }, [userState.liked, snapshot.reviews, museumById]);
+
+  // For detail view: contextual rail (other museums in same region).
+  const contextualMuseums = useMemo(() => {
+    if (!selectedMuseum) return [];
+    return snapshot.museums
+      .filter((m) => m.id !== selectedMuseum.id && m.region === selectedMuseum.region)
+      .sort((a, b) => b.curatorRating - a.curatorRating)
+      .slice(0, 5);
+  }, [selectedMuseum, snapshot.museums]);
+
+  // Active sidebar view — detail view treats Discover as active.
+  const activeView: MuseumView =
+    routeState.view === "museum" ? "discover" : routeState.view;
+
+  const visitedCount = hydrated ? userState.visited.length : 0;
+
+  const navItems: Array<{
+    id: MuseumView;
+    label: string;
+    icon: React.ComponentType<{ size?: number; "aria-hidden"?: boolean }>;
+    pill?: string;
+  }> = [
+    { id: "discover", label: "Discover", icon: Compass },
+    {
+      id: "journal",
+      label: "Journal",
+      icon: NotebookPen,
+      pill: visitedCount > 0 ? String(visitedCount) : undefined,
+    },
+    { id: "lists", label: "Lists", icon: Layers },
+  ];
+
+  const currentViewLabel =
+    routeState.view === "museum" && selectedMuseum
+      ? selectedMuseum.name
+      : MUSEUM_VIEW_LABELS[activeView];
+
   return (
     <section className="home-page min-h-screen">
-      <div className="home-shell home-section space-y-8">
-        {/* Page heading */}
-        <div className="space-y-3 pt-4">
-          <p className="home-kicker">A Letterboxd for museums</p>
-          <h1
-            style={{
-              fontFamily: "var(--font-home-sans)",
-              fontSize: "clamp(2.6rem, 6vw, 5rem)",
-              fontWeight: 600,
-              lineHeight: 0.94,
-              letterSpacing: "-0.07em",
-              color: "var(--home-ink)",
-            }}
-          >
-            Museum Log
-          </h1>
-          <p className="home-body max-w-none">
-            Browse a curated catalog, read curator reviews, save museums to your watchlist, and log
-            your own visits. Personal state stays in your browser — no account required.
-          </p>
-          <div className="flex flex-wrap gap-2 pt-2">
-            {[
-              `Updated ${lastUpdated}`,
-              `${snapshot.museums.length} museums`,
-              `${snapshot.reviews.length} reviews`,
-              `${snapshot.lists.length} lists`,
-              snapshot.sourceLabel,
-            ].map((label) => (
-              <span key={label} className="resume-chip">
-                {label}
+      <div className="tool-page-stack mx-auto w-full max-w-[1280px] px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-8">
+        <div className="tool-shell" data-testid="museum-log-shell">
+          <aside className="tool-sidebar" aria-label="Museum Log navigation">
+            <div className="tool-brand">
+              <div className="tool-brand-mark" aria-hidden="true">ML</div>
+              <div className="tool-brand-name">
+                Museum Log
+                <small>Personal tracker</small>
+              </div>
+            </div>
+
+            <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = item.id === activeView;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleViewChange(item.id)}
+                    aria-current={isActive ? "true" : undefined}
+                    className="tool-nav-link"
+                  >
+                    <Icon size={18} aria-hidden />
+                    {item.label}
+                    {item.pill ? <span className="tool-nav-pill">{item.pill}</span> : null}
+                  </button>
+                );
+              })}
+            </nav>
+
+            <div className="tool-sidebar-footer">
+              <Save size={14} aria-hidden="true" />
+              <span>Saved in your browser</span>
+            </div>
+          </aside>
+
+          <main className="tool-main">
+            <div className="tool-topbar">
+              <div>
+                <p className="tool-crumbs">
+                  Museum Log / <strong>{currentViewLabel}</strong>
+                </p>
+                <h1>Museum Log</h1>
+              </div>
+
+              <label className="tool-search" aria-label="Filter museums">
+                <Search size={14} aria-hidden="true" />
+                <input
+                  type="search"
+                  placeholder="Filter museums…"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </label>
+            </div>
+
+            <div className="tool-meta-chip" role="status" aria-live="polite">
+              <span className="tool-meta-chip-dot" aria-hidden="true" />
+              <span>
+                <strong>Curated catalog</strong> · {snapshot.museums.length}{" "}
+                {snapshot.museums.length === 1 ? "museum" : "museums"}
               </span>
-            ))}
-          </div>
+              <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
+              <span>
+                {snapshot.reviews.length}{" "}
+                {snapshot.reviews.length === 1 ? "review" : "reviews"}
+              </span>
+              <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
+              <span>
+                {snapshot.visitLog.length} visits logged
+              </span>
+              <span className="tool-meta-chip-spacer" />
+              <span className="tool-meta-chip-meta">Updated {lastUpdated}</span>
+            </div>
+
+            <div className="mt-5 space-y-5">
+              {hydrated ? (
+                <YourLogStrip
+                  visitedCount={userState.visited.length}
+                  watchlistCount={userState.watchlist.length}
+                  likedCount={userState.liked.length}
+                  averageUserRating={averageUserRating}
+                />
+              ) : (
+                <YourLogStrip
+                  visitedCount={0}
+                  watchlistCount={0}
+                  likedCount={0}
+                  averageUserRating={null}
+                />
+              )}
+
+              {activeView === "discover" && (
+                <DiscoverView
+                  snapshot={snapshot}
+                  state={routeState}
+                  query={query}
+                  onChangeFilter={handleChangeFilter}
+                  onOpenMuseum={handleOpenMuseum}
+                  visitDateByMuseumId={visitDateByMuseumId}
+                  visitByMuseumId={visitByMuseumId}
+                  isWatchlisted={isWatchlisted}
+                  isLiked={isLiked}
+                  toggleWatchlist={toggleWatchlist}
+                  toggleLiked={toggleLiked}
+                  logQuickVisit={logQuickVisit}
+                  removeVisit={removeVisit}
+                />
+              )}
+
+              {activeView === "journal" && (
+                <JournalView
+                  snapshot={snapshot}
+                  museumBySlug={museumBySlug}
+                  museumById={museumById}
+                  onOpenMuseum={handleOpenMuseum}
+                />
+              )}
+
+              {activeView === "lists" && (
+                <ListsView
+                  snapshot={snapshot}
+                  museumById={museumById}
+                  selectedListSlug={routeState.list}
+                  onSelectList={handleSelectList}
+                  onOpenMuseum={handleOpenMuseum}
+                  visitByMuseumId={visitByMuseumId}
+                  isWatchlisted={isWatchlisted}
+                  isLiked={isLiked}
+                  toggleWatchlist={toggleWatchlist}
+                  toggleLiked={toggleLiked}
+                  logQuickVisit={logQuickVisit}
+                  removeVisit={removeVisit}
+                />
+              )}
+            </div>
+          </main>
+
+          <aside className="tool-rail" aria-label="Museum Log side panel">
+            {selectedMuseum ? (
+              <section>
+                <p className="tool-rail-label">
+                  Other museums in {REGION_LABEL[selectedMuseum.region]}
+                </p>
+                {contextualMuseums.length === 0 ? (
+                  <p className="text-[12px] text-[var(--home-ink-muted)]">
+                    No other museums catalogued in this region yet.
+                  </p>
+                ) : (
+                  <ul className="flex flex-col gap-2">
+                    {contextualMuseums.map((m) => (
+                      <li key={m.id}>
+                        <button
+                          type="button"
+                          onClick={() => handleOpenMuseum(m.slug)}
+                          className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-xl border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
+                        >
+                          <span className="min-w-0">
+                            <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
+                              {m.name}
+                            </span>
+                            <span className="block truncate text-[11.5px] text-[var(--home-ink-muted)]">
+                              {m.city} · {TYPE_LABEL[m.type]}
+                            </span>
+                          </span>
+                          <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-[var(--home-ink)] tabular-nums">
+                            <Star size={10} fill="currentColor" strokeWidth={0} />
+                            {m.curatorRating.toFixed(1)}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            ) : (
+              <>
+                <section>
+                  <p className="tool-rail-label">
+                    <Clock size={12} aria-hidden /> Recently visited
+                  </p>
+                  {recentlyVisited.length === 0 ? (
+                    <p className="text-[12px] text-[var(--home-ink-muted)]">
+                      No visits logged yet — log one from any museum card.
+                    </p>
+                  ) : (
+                    <ul className="flex flex-col gap-2">
+                      {recentlyVisited.map((row) => (
+                        <li key={`${row.museum.id}-${row.date}`}>
+                          <button
+                            type="button"
+                            onClick={() => handleOpenMuseum(row.museum.slug)}
+                            className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-xl border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
+                          >
+                            <span className="min-w-0">
+                              <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
+                                {row.museum.name}
+                              </span>
+                              <span className="block truncate text-[11.5px] text-[var(--home-ink-muted)]">
+                                {row.museum.city}
+                              </span>
+                            </span>
+                            <span className="text-[11px] text-[var(--home-ink-muted)] tabular-nums">
+                              {formatShortDate(row.date)}
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+
+                <section>
+                  <p className="tool-rail-label">
+                    <Heart size={12} aria-hidden /> Top liked
+                  </p>
+                  {topLiked.length === 0 ? (
+                    <p className="text-[12px] text-[var(--home-ink-muted)]">
+                      Heart a museum to surface it here.
+                    </p>
+                  ) : (
+                    <ul className="flex flex-col gap-2">
+                      {topLiked.map((m) => (
+                        <li key={m.id}>
+                          <button
+                            type="button"
+                            onClick={() => handleOpenMuseum(m.slug)}
+                            className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-xl border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
+                          >
+                            <span className="min-w-0">
+                              <span className="block truncate text-[13px] font-semibold text-[var(--home-ink)]">
+                                {m.name}
+                              </span>
+                              <span className="block truncate text-[11.5px] text-[var(--home-ink-muted)]">
+                                {TYPE_LABEL[m.type]} · {m.city}
+                              </span>
+                            </span>
+                            <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-[var(--home-ink)] tabular-nums">
+                              <Star size={10} fill="currentColor" strokeWidth={0} />
+                              {m.curatorRating.toFixed(1)}
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              </>
+            )}
+
+            <p className="tool-rail-foot">
+              <HelpCircle size={14} aria-hidden="true" />
+              Visits, watchlist, and likes live only in your browser — no logins, no cloud sync.
+            </p>
+          </aside>
         </div>
 
-        {/* View tabs */}
-        <div
-          className="flex flex-wrap gap-2 rounded-[1.5rem] p-2"
-          style={{
-            border: "1px solid var(--home-rule)",
-            background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
-            width: "fit-content",
-          }}
-          role="tablist"
-          aria-label="Museum Log views"
-        >
-          {MUSEUM_VIEW_OPTIONS.filter((v) => v !== "museum").map((key) => (
-            <button
-              key={key}
-              type="button"
-              role="tab"
-              onClick={() => handleViewChange(key)}
-              aria-pressed={
-                key === routeState.view ||
-                (key === "discover" && routeState.view === "museum")
-              }
-              className="inline-flex min-h-[44px] items-center rounded-xl px-5 py-2 text-sm font-semibold transition-colors"
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "0.88rem",
-                letterSpacing: "0.02em",
-                ...(key === routeState.view ||
-                (key === "discover" && routeState.view === "museum")
-                  ? { background: "var(--home-ink)", color: "var(--home-paper)" }
-                  : { color: "var(--home-ink-muted)" }),
-              }}
-            >
-              {MUSEUM_VIEW_LABELS[key]}
-            </button>
-          ))}
-        </div>
-
-        {/* Your log strip — render placeholder until hydrated to avoid SSR mismatch */}
-        {hydrated ? (
-          <YourLogStrip
-            visitedCount={userState.visited.length}
-            watchlistCount={userState.watchlist.length}
-            likedCount={userState.liked.length}
-            averageUserRating={averageUserRating}
-          />
-        ) : (
-          <YourLogStrip visitedCount={0} watchlistCount={0} likedCount={0} averageUserRating={null} />
-        )}
-
-        {/* View panels */}
-        {routeState.view === "discover" && (
-          <DiscoverView
-            snapshot={snapshot}
-            state={routeState}
-            onChangeFilter={handleChangeFilter}
-            onOpenMuseum={handleOpenMuseum}
-            visitDateByMuseumId={visitDateByMuseumId}
-            visitByMuseumId={visitByMuseumId}
-            isWatchlisted={isWatchlisted}
-            isLiked={isLiked}
-            toggleWatchlist={toggleWatchlist}
-            toggleLiked={toggleLiked}
-            logQuickVisit={logQuickVisit}
-            removeVisit={removeVisit}
-          />
-        )}
-
-        {routeState.view === "journal" && (
-          <JournalView
-            snapshot={snapshot}
-            museumBySlug={museumBySlug}
-            museumById={museumById}
-            onOpenMuseum={handleOpenMuseum}
-          />
-        )}
-
-        {routeState.view === "lists" && (
-          <ListsView
-            snapshot={snapshot}
-            museumById={museumById}
-            selectedListSlug={routeState.list}
-            onSelectList={handleSelectList}
-            onOpenMuseum={handleOpenMuseum}
-            visitByMuseumId={visitByMuseumId}
-            isWatchlisted={isWatchlisted}
-            isLiked={isLiked}
-            toggleWatchlist={toggleWatchlist}
-            toggleLiked={toggleLiked}
-            logQuickVisit={logQuickVisit}
-            removeVisit={removeVisit}
-          />
-        )}
-
+        {/* Detail view sits below the shell as a full-width band so the
+            grid above stays in context. Mirrors the /investments research band. */}
         {routeState.view === "museum" && selectedMuseum && (
-          <MuseumDetailView
-            museum={selectedMuseum}
-            snapshot={snapshot}
-            visit={findVisit(selectedMuseum.id)}
-            isWatchlisted={isWatchlisted(selectedMuseum.id)}
-            isLiked={isLiked(selectedMuseum.id)}
-            onBack={handleBackFromMuseum}
-            onToggleWatchlist={() => toggleWatchlist(selectedMuseum.id)}
-            onToggleLiked={() => toggleLiked(selectedMuseum.id)}
-            onLogVisit={logVisit}
-            onClearVisit={() => removeVisit(selectedMuseum.id)}
-            onOpenList={handleOpenList}
-          />
+          <section className="tool-band" aria-label={`${selectedMuseum.name} detail`}>
+            <MuseumDetailView
+              museum={selectedMuseum}
+              snapshot={snapshot}
+              visit={findVisit(selectedMuseum.id)}
+              isWatchlisted={isWatchlisted(selectedMuseum.id)}
+              isLiked={isLiked(selectedMuseum.id)}
+              onBack={handleBackFromMuseum}
+              onToggleWatchlist={() => toggleWatchlist(selectedMuseum.id)}
+              onToggleLiked={() => toggleLiked(selectedMuseum.id)}
+              onLogVisit={logVisit}
+              onClearVisit={() => removeVisit(selectedMuseum.id)}
+              onOpenList={handleOpenList}
+            />
+          </section>
         )}
 
         {routeState.view === "museum" && !selectedMuseum && (
-          <div className="home-card p-8 text-center text-sm text-[var(--home-ink-muted)]">
-            Museum not found.
-            <button
-              type="button"
-              onClick={handleBackFromMuseum}
-              className="ml-2 underline decoration-dotted"
-            >
-              Back to catalog
-            </button>
-          </div>
+          <section className="tool-band" aria-label="Museum not found">
+            <p className="text-sm text-[var(--home-ink-muted)]">
+              Museum not found.
+              <button
+                type="button"
+                onClick={handleBackFromMuseum}
+                className="ml-2 underline decoration-dotted"
+              >
+                Back to catalog
+              </button>
+            </p>
+          </section>
         )}
       </div>
     </section>

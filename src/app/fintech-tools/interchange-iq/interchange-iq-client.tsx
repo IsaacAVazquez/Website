@@ -5,9 +5,12 @@ import {
   IconCreditCard,
   IconInfoCircle,
   IconTrendingDown,
-  IconBuildingBank,
   IconAlertTriangle,
-  IconArrowRight,
+  IconLayoutGrid,
+  IconScale,
+  IconCalculator,
+  IconRefresh,
+  IconCirclePercentage,
 } from "@tabler/icons-react";
 
 // ─── Interchange rate data (US, representative 2024 published values) ─────────
@@ -47,7 +50,12 @@ const PROCESSORS: Processor[] = [
   { id: "checkout",    name: "Checkout.com", model: "Interchange+", markupPct: 0.0025, markupFixed: 0.10, note: "Enterprise tier; volume minimums apply" },
 ];
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// ─── Defaults + types ────────────────────────────────────────────────────────
+const DEFAULT_VOLUME = 50_000;
+const DEFAULT_TICKET = 85;
+const DEFAULT_CREDIT_PCT = 65;
+const DEFAULT_AMEX_OF_CREDIT = 18;
+
 interface CardMix {
   creditFraction: number;
   debitFraction:  number;
@@ -60,6 +68,8 @@ interface ProcessorResult {
   model: "Flat Rate" | "Interchange+";
   monthlyFee: number;
   effectiveRate: number;
+  txCount: number;
+  perTxAvg: number;
   note: string;
 }
 
@@ -88,49 +98,19 @@ function calcResults(volume: number, avgTicket: number, mix: CardMix): Processor
       model: p.model,
       monthlyFee: fee,
       effectiveRate: volume > 0 ? fee / volume : 0,
+      txCount,
+      perTxAvg: txCount > 0 ? fee / txCount : 0,
       note: p.note,
     };
   }).sort((a, b) => a.monthlyFee - b.monthlyFee);
 }
 
 // ─── Formatting ───────────────────────────────────────────────────────────────
-const fmtK = (n: number) =>
-  n >= 10_000 ? `$${(n / 1000).toFixed(1)}k` : `$${n.toFixed(0)}`;
-
 const fmtFull = (n: number) =>
   `$${n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-// ─── Style tokens ─────────────────────────────────────────────────────────────
-const labelStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-} as const;
-
-const bodyStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink-muted)",
-} as const;
-
-const mutedStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))",
-} as const;
-
-const accentStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-haze)",
-  fontWeight: 600,
-} as const;
-
-const sectionHeadingStyle = {
-  fontFamily: "var(--font-home-sans)",
-  color: "var(--home-ink)",
-  fontWeight: 600,
-  fontSize: "0.72rem",
-  textTransform: "uppercase" as const,
-  letterSpacing: "0.12em",
-};
+const fmtVolume = (n: number) =>
+  n >= 1000 ? `$${(n / 1000).toFixed(n >= 10_000 ? 0 : 1)}k` : `$${n}`;
 
 // ─── Slider ───────────────────────────────────────────────────────────────────
 let sliderUid = 0;
@@ -154,7 +134,6 @@ function Slider({
   hint?: string;
 }) {
   const pct = ((value - min) / (max - min)) * 100;
-  // Stable id per Slider instance for label/hint association
   const idRef = useRef<string | null>(null);
   if (idRef.current === null) {
     idRef.current = `iq-slider-${++sliderUid}`;
@@ -162,14 +141,28 @@ function Slider({
   const inputId = idRef.current;
   const hintId = hint ? `${inputId}-hint` : undefined;
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       <div className="flex justify-between items-baseline gap-2">
-        <label htmlFor={inputId} className="text-sm" style={labelStyle}>
+        <label
+          htmlFor={inputId}
+          style={{
+            fontFamily: "var(--font-home-sans)",
+            fontSize: "13px",
+            fontWeight: 600,
+            color: "var(--home-ink)",
+            letterSpacing: "-0.01em",
+          }}
+        >
           {label}
         </label>
         <span
-          className="text-sm tabular-nums flex-shrink-0"
-          style={accentStyle}
+          className="tabular-nums flex-shrink-0"
+          style={{
+            fontFamily: "var(--font-home-sans)",
+            fontSize: "13px",
+            fontWeight: 600,
+            color: "var(--home-haze)",
+          }}
         >
           {format(value)}
         </span>
@@ -193,7 +186,16 @@ function Slider({
         }}
       />
       {hint && (
-        <p id={hintId} className="text-xs" style={mutedStyle}>
+        <p
+          id={hintId}
+          className="mb-0"
+          style={{
+            fontFamily: "var(--font-home-sans)",
+            fontSize: "11.5px",
+            color: "var(--home-ink-muted)",
+            lineHeight: 1.4,
+          }}
+        >
           {hint}
         </p>
       )}
@@ -202,12 +204,21 @@ function Slider({
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
+const VIEW_LABELS = {
+  "all-processors": "All processors",
+  "flat-rate": "Flat-rate",
+  "interchange-plus": "Interchange-plus",
+  "breakeven": "Breakeven",
+} as const;
+type ViewKey = keyof typeof VIEW_LABELS;
+
 export function InterchangeIQClient() {
-  const [monthlyVolume, setMonthlyVolume] = useState(50_000);
-  const [avgTicket,     setAvgTicket]     = useState(85);
-  const [creditPct,     setCreditPct]     = useState(65); // % of txns that are Visa/MC credit
-  const [amexOfCredit,  setAmexOfCredit]  = useState(18); // % of credit that are Amex
+  const [monthlyVolume, setMonthlyVolume] = useState(DEFAULT_VOLUME);
+  const [avgTicket,     setAvgTicket]     = useState(DEFAULT_TICKET);
+  const [creditPct,     setCreditPct]     = useState(DEFAULT_CREDIT_PCT);
+  const [amexOfCredit,  setAmexOfCredit]  = useState(DEFAULT_AMEX_OF_CREDIT);
   const [showInfo,      setShowInfo]      = useState(false);
+  const [activeView,    setActiveView]    = useState<ViewKey>("all-processors");
 
   const cardMix = useMemo<CardMix>(() => {
     const creditFrac = creditPct / 100;
@@ -220,11 +231,12 @@ export function InterchangeIQClient() {
   }, [creditPct, amexOfCredit]);
 
   const results  = useMemo(() => calcResults(monthlyVolume, avgTicket, cardMix), [monthlyVolume, avgTicket, cardMix]);
-  const maxFee   = results[results.length - 1]?.monthlyFee ?? 1;
   const cheapest = results[0];
+  const worst    = results[results.length - 1];
   const bestFlat = results.find((r) => r.model === "Flat Rate")!;
   const bestIC   = results.find((r) => r.model === "Interchange+")!;
   const savings  = bestFlat.monthlyFee - bestIC.monthlyFee;
+  const savingsVsWorst = worst.monthlyFee - cheapest.monthlyFee;
 
   // Breakeven: avg ticket above which Stripe IC+ beats Stripe flat for this card mix
   const interchangeEffRate =
@@ -238,370 +250,597 @@ export function InterchangeIQClient() {
   const fixedDiff  = stripeFlat.fixedFee - stripeIC.markupFixed;
   const breakevenTicket = rateDiff > 0 ? fixedDiff / rateDiff : null;
 
+  const cardMixLabel =
+    cardMix.creditFraction > cardMix.debitFraction && cardMix.creditFraction > cardMix.amexFraction
+      ? "credit-heavy"
+      : cardMix.debitFraction > cardMix.creditFraction
+      ? "debit-heavy"
+      : "amex-heavy";
+
+  const navItems: { id: ViewKey; label: string; href: string }[] = [
+    { id: "all-processors",   label: "All processors",   href: "#all-processors" },
+    { id: "flat-rate",        label: "Flat-rate",        href: "#all-processors" },
+    { id: "interchange-plus", label: "Interchange-plus", href: "#all-processors" },
+    { id: "breakeven",        label: "Breakeven",        href: "#breakeven" },
+  ];
+
+  function handleReset() {
+    setMonthlyVolume(DEFAULT_VOLUME);
+    setAvgTicket(DEFAULT_TICKET);
+    setCreditPct(DEFAULT_CREDIT_PCT);
+    setAmexOfCredit(DEFAULT_AMEX_OF_CREDIT);
+  }
+
+  const cardMixRows = [
+    { label: "Visa/MC Credit", pct: cardMix.creditFraction * 100, rate: "~1.65% + $0.10" },
+    { label: "Debit (Reg E)",  pct: cardMix.debitFraction  * 100, rate: "~0.05% + $0.22" },
+    { label: "Amex",           pct: cardMix.amexFraction   * 100, rate: "~2.30%" },
+  ];
+
   return (
-    <div className="space-y-8">
-      {/* Summary stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {[
-          { label: "Monthly Volume",     value: fmtFull(monthlyVolume) },
-          { label: "Avg Transaction",    value: fmtFull(avgTicket) },
-          { label: "Lowest Cost Option", value: cheapest?.name ?? "—" },
-          { label: "Lowest Monthly Fee", value: fmtFull(cheapest?.monthlyFee ?? 0) },
-        ].map((s) => (
-          <div key={s.label} className="home-card p-4 text-center space-y-1">
-            <p className="mb-0 text-xs" style={mutedStyle}>
-              {s.label}
-            </p>
-            <p className="mb-0 text-base tabular-nums" style={accentStyle}>
-              {s.value}
-            </p>
+    <div className="tool-page-stack">
+      <div className="tool-shell" data-testid="interchange-iq-shell">
+        {/* ── Sidebar ── */}
+        <aside className="tool-sidebar" aria-label="Interchange IQ navigation">
+          <div className="tool-brand">
+            <div className="tool-brand-mark" aria-hidden="true">
+              <IconCreditCard size={18} />
+            </div>
+            <div className="tool-brand-name">
+              Interchange IQ
+              <small>Fee analyzer</small>
+            </div>
           </div>
-        ))}
-      </div>
 
-      <div className="grid lg:grid-cols-[320px_1fr] gap-8">
-        {/* ── Inputs ── */}
-        <article className="home-card p-6 sm:p-7 space-y-7 self-start">
-          <h2 className="flex items-center gap-2 mb-0" style={sectionHeadingStyle}>
-            <IconCreditCard className="h-4 w-4" style={{ color: "var(--home-haze)" }} />
-            Business Profile
-          </h2>
+          <nav className="flex flex-col gap-1.5" aria-label="In-page sections">
+            {navItems.map((item) => {
+              const isActive = item.id === activeView;
+              const Icon =
+                item.id === "all-processors"   ? IconLayoutGrid :
+                item.id === "flat-rate"        ? IconCirclePercentage :
+                item.id === "interchange-plus" ? IconCalculator :
+                                                 IconScale;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className={`tool-nav-link${isActive ? " is-active" : ""}`}
+                  aria-current={isActive ? "true" : undefined}
+                  onClick={() => setActiveView(item.id)}
+                >
+                  <Icon size={18} aria-hidden="true" />
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
 
-          <Slider
-            label="Monthly Processing Volume"
-            value={monthlyVolume}
-            min={1_000}
-            max={500_000}
-            step={1_000}
-            onChange={setMonthlyVolume}
-            format={(v) => `$${v.toLocaleString()}`}
-            hint="Total card revenue processed per month"
-          />
+          <div className="tool-sidebar-footer">
+            <IconInfoCircle size={14} aria-hidden="true" />
+            <span>Modeled on 2024 rates</span>
+          </div>
+        </aside>
 
-          <Slider
-            label="Average Transaction Size"
-            value={avgTicket}
-            min={5}
-            max={500}
-            step={5}
-            onChange={setAvgTicket}
-            format={(v) => `$${v}`}
-            hint="Per-transaction fixed fees matter more at lower ticket sizes"
-          />
-
-          <div
-            className="pt-5 space-y-5"
-            style={{ borderTop: "1px solid var(--home-rule)" }}
-          >
-            <div className="flex items-center gap-2">
-              <span className="text-sm" style={labelStyle}>
-                Card Mix
-              </span>
-              <button
-                type="button"
-                onClick={() => setShowInfo(!showInfo)}
-                aria-label="Learn about card mix"
-                aria-expanded={showInfo}
-                aria-controls="card-mix-info"
-                className="rounded-md p-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
-                style={{ color: "var(--home-ink-muted)" }}
-              >
-                <IconInfoCircle className="h-4 w-4" />
-              </button>
+        {/* ── Main ── */}
+        <main className="tool-main" id="hero">
+          <div className="tool-topbar">
+            <div>
+              <p className="tool-crumbs">
+                Interchange IQ / <strong>{VIEW_LABELS[activeView]}</strong>
+              </p>
+              <h1>Interchange IQ</h1>
             </div>
 
-            {showInfo && (
-              <p
-                id="card-mix-info"
-                role="region"
-                className="text-xs rounded-lg p-3 leading-relaxed mb-0"
-                style={{
-                  ...bodyStyle,
-                  background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-                  border: "1px solid var(--home-rule)",
-                }}
-              >
-                Different card types carry different interchange rates. Debit cards (regulated Reg E)
-                have much lower interchange than consumer credit. Amex runs its own network and
-                typically costs more. Your mix determines your effective interchange rate.
-              </p>
-            )}
+            <button
+              type="button"
+              onClick={handleReset}
+              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[12.5px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+              style={{
+                fontFamily: "var(--font-home-sans)",
+                color: "var(--home-ink)",
+                borderColor: "var(--home-rule)",
+                background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
+                minHeight: 32,
+              }}
+              aria-label="Reset all inputs to defaults"
+            >
+              <IconRefresh size={14} aria-hidden="true" />
+              Reset
+            </button>
+          </div>
 
-            <Slider
-              label="% Credit Cards (Visa / Mastercard)"
-              value={creditPct}
-              min={0}
-              max={100}
-              step={5}
-              onChange={setCreditPct}
-              format={(v) => `${v}%`}
-              hint={`Debit: ${100 - creditPct}% of all transactions`}
-            />
+          {/* Live input summary chip */}
+          <div className="tool-meta-chip" role="status" aria-live="polite">
+            <span className="tool-meta-chip-dot" aria-hidden="true" />
+            <span>
+              <strong>{fmtVolume(monthlyVolume)}</strong> monthly volume
+            </span>
+            <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
+            <span>
+              <strong>{fmtVolume(avgTicket)}</strong> avg ticket
+            </span>
+            <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
+            <span>
+              <strong>{cardMixLabel}</strong> card mix
+            </span>
+            <span className="tool-meta-chip-spacer" />
+            <span className="tool-meta-chip-meta">
+              {Math.round(monthlyVolume / avgTicket).toLocaleString()} tx/mo
+            </span>
+          </div>
 
-            <Slider
-              label="% of Credit Cards that are Amex"
-              value={amexOfCredit}
-              min={0}
-              max={50}
-              step={1}
-              onChange={setAmexOfCredit}
-              format={(v) => `${v}%`}
-              hint={`Amex = ${((creditPct / 100) * (amexOfCredit / 100) * 100).toFixed(1)}% of total`}
-            />
-
-            {/* Card mix breakdown */}
-            <div className="space-y-2 pt-1">
-              {[
-                { label: "Visa/MC Credit", pct: cardMix.creditFraction * 100, rate: "~1.65% + $0.10" },
-                { label: "Debit (Reg E)",  pct: cardMix.debitFraction  * 100, rate: "~0.05% + $0.22" },
-                { label: "Amex",           pct: cardMix.amexFraction   * 100, rate: "~2.30%" },
-              ].map((row) => (
-                <div key={row.label} className="flex items-center gap-2 text-xs">
-                  <div
-                    className="h-1.5 rounded-full flex-shrink-0 min-w-[4px]"
-                    style={{
-                      width: `${Math.max(row.pct, 1)}%`,
-                      maxWidth: "50%",
-                      opacity: 0.4 + row.pct / 150,
-                      background: "var(--home-haze)",
-                    }}
+          <div className="mt-5 space-y-5">
+            {/* Hero card — headline result */}
+            <article className="tool-card tool-card-hero" id="result-hero">
+              <div className="flex items-start gap-3">
+                {savings > 100 ? (
+                  <IconTrendingDown
+                    className="h-5 w-5 flex-shrink-0 mt-1"
+                    style={{ color: "var(--color-success)" }}
+                    aria-hidden="true"
                   />
-                  <span style={bodyStyle}>
-                    {row.label}:{" "}
-                    <span className="font-semibold tabular-nums" style={{ color: "var(--home-ink)" }}>
-                      {row.pct.toFixed(1)}%
+                ) : savings < -50 ? (
+                  <IconAlertTriangle
+                    className="h-5 w-5 flex-shrink-0 mt-1"
+                    style={{ color: "var(--color-warning)" }}
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <IconInfoCircle
+                    className="h-5 w-5 flex-shrink-0 mt-1"
+                    style={{ color: "var(--home-haze)" }}
+                    aria-hidden="true"
+                  />
+                )}
+                <div className="min-w-0 flex-1 space-y-2">
+                  <p
+                    className="mb-0"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "10.5px",
+                      fontWeight: 700,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: "var(--home-ink-muted)",
+                    }}
+                  >
+                    Best processor for your profile
+                  </p>
+                  <p
+                    className="mb-0 tabular-nums"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "clamp(1.5rem, 1.5vw + 1rem, 1.95rem)",
+                      fontWeight: 600,
+                      letterSpacing: "-0.04em",
+                      lineHeight: 1.05,
+                      color: "var(--home-ink)",
+                    }}
+                  >
+                    {cheapest.name}{" "}
+                    <span style={{ color: "var(--home-haze)" }}>
+                      {fmtFull(cheapest.monthlyFee)}
                     </span>
-                    <span className="ml-1" style={mutedStyle}>
-                      ({row.rate})
+                    <span
+                      style={{
+                        fontWeight: 400,
+                        color: "var(--home-ink-muted)",
+                        fontSize: "0.7em",
+                      }}
+                    >
+                      {" "}/mo
                     </span>
-                  </span>
+                  </p>
+                  <p
+                    className="mb-0"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "13.5px",
+                      lineHeight: 1.55,
+                      color: "var(--home-ink-muted)",
+                    }}
+                  >
+                    {savingsVsWorst > 0 ? (
+                      <>
+                        <span className="tabular-nums" style={{ color: "var(--home-ink)", fontWeight: 600 }}>
+                          {fmtFull(savingsVsWorst)}/mo
+                        </span>{" "}
+                        less than {worst.name} ({fmtFull(savingsVsWorst * 12)}/yr).{" "}
+                      </>
+                    ) : null}
+                    {savings > 100
+                      ? `Interchange+ wins at this volume — ${bestIC.name} saves ${fmtFull(savings)}/mo over the cheapest flat-rate option.`
+                      : savings < -50
+                      ? "Flat-rate is cheaper here — per-transaction fixed fees compound at lower ticket sizes."
+                      : "Flat-rate and interchange+ are roughly equivalent at this profile."}
+                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </article>
+              </div>
+            </article>
 
-        {/* ── Results ── */}
-        <div className="space-y-5">
-          {/* Insight banner */}
-          {savings > 100 ? (
-            <div
-              className="flex items-start gap-3 p-4 rounded-xl"
-              style={{
-                border: "1px solid color-mix(in srgb, var(--color-success) 35%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--color-success) 8%, var(--home-paper))",
-              }}
-            >
-              <IconTrendingDown
-                className="h-5 w-5 flex-shrink-0 mt-0.5"
-                style={{ color: "var(--color-success)" }}
-              />
-              <p className="mb-0 text-sm leading-6" style={{ ...bodyStyle, color: "var(--home-ink)" }}>
-                At your volume, <strong style={labelStyle}>{bestIC.name}</strong> saves{" "}
-                <strong style={{ ...labelStyle, color: "var(--color-success)" }}>
-                  {fmtFull(savings)}/month
-                </strong>{" "}
-                ({fmtFull(savings * 12)}/year) vs. the best flat-rate option.
-                Interchange+ becomes more attractive as volume scales.
-              </p>
-            </div>
-          ) : savings < -50 ? (
-            <div
-              className="flex items-start gap-3 p-4 rounded-xl"
-              style={{
-                border: "1px solid color-mix(in srgb, var(--color-warning) 35%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--color-warning) 8%, var(--home-paper))",
-              }}
-            >
-              <IconAlertTriangle
-                className="h-5 w-5 flex-shrink-0 mt-0.5"
-                style={{ color: "var(--color-warning)" }}
-              />
-              <p className="mb-0 text-sm leading-6" style={{ ...bodyStyle, color: "var(--home-ink)" }}>
-                At your volume and ticket size, flat-rate is cheaper. Per-transaction fixed fees on
-                interchange+ compound quickly at lower average ticket sizes.
-              </p>
-            </div>
-          ) : (
-            <div
-              className="flex items-start gap-3 p-4 rounded-xl"
-              style={{
-                border: "1px solid var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-              }}
-            >
-              <IconInfoCircle
-                className="h-5 w-5 flex-shrink-0 mt-0.5"
-                style={{ color: "var(--home-haze)" }}
-              />
-              <p className="mb-0 text-sm leading-6" style={bodyStyle}>
-                Flat-rate and interchange+ are roughly equivalent at your current profile.
-                The right choice depends on your growth trajectory and negotiating leverage.
-              </p>
-            </div>
-          )}
+            {/* Processor comparison — table-style rows */}
+            <article className="tool-card" id="all-processors">
+              <header className="tool-section-header" style={{ marginBottom: 16 }}>
+                <div>
+                  <p className="tool-section-kicker">Processors</p>
+                  <h2 className="tool-section-title" style={{ fontSize: "1.1rem" }}>
+                    Monthly fee breakdown
+                  </h2>
+                </div>
+                <p
+                  className="mb-0"
+                  style={{
+                    fontFamily: "var(--font-home-sans)",
+                    fontSize: "11.5px",
+                    color: "var(--home-ink-muted)",
+                  }}
+                >
+                  {results.length} options · sorted cheapest first
+                </p>
+              </header>
 
-          {/* Comparison bars */}
-          <article className="home-card p-6 sm:p-7">
-            <h2 className="flex items-center gap-2 mb-5" style={sectionHeadingStyle}>
-              <IconBuildingBank className="h-4 w-4" style={{ color: "var(--home-haze)" }} />
-              Monthly Fee Comparison
-            </h2>
-
-            <div className="space-y-5">
-              {results.map((r, i) => {
-                const barPct = (r.monthlyFee / maxFee) * 100;
-                const isBest = i === 0;
-                return (
-                  <div key={r.id} className="space-y-1.5">
-                    <div className="flex items-center justify-between gap-3 flex-wrap">
+              <ul className="m-0 list-none p-0">
+                {results.map((r, i) => {
+                  const isBest = i === 0;
+                  return (
+                    <li
+                      key={r.id}
+                      className="grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-1 py-3"
+                      style={{
+                        borderTop: i === 0 ? "none" : "1px solid var(--home-rule)",
+                      }}
+                    >
                       <div className="flex items-center gap-2 min-w-0 flex-wrap">
                         <span
-                          className="text-sm truncate"
-                          style={isBest ? accentStyle : labelStyle}
+                          className="truncate"
+                          style={{
+                            fontFamily: "var(--font-home-sans)",
+                            fontSize: "13.5px",
+                            fontWeight: 600,
+                            color: isBest ? "var(--home-haze)" : "var(--home-ink)",
+                          }}
                         >
                           {r.name}
                         </span>
                         <span
-                          className="text-xs px-1.5 py-0.5 rounded-full whitespace-nowrap flex-shrink-0"
+                          className="whitespace-nowrap"
                           style={{
                             fontFamily: "var(--font-home-sans)",
+                            fontSize: "10.5px",
+                            fontWeight: 600,
+                            letterSpacing: "0.06em",
+                            textTransform: "uppercase",
                             color: "var(--home-ink-muted)",
                             border: "1px solid var(--home-rule)",
+                            borderRadius: 999,
+                            padding: "1px 8px",
                           }}
                         >
                           {r.model}
                         </span>
                         {isBest && (
                           <span
-                            className="text-xs px-2 py-0.5 rounded-full font-semibold whitespace-nowrap flex-shrink-0"
+                            className="whitespace-nowrap"
                             style={{
                               fontFamily: "var(--font-home-sans)",
-                              // Saturate the badge so the chip's text passes WCAG AA on the
-                              // editorial paper instead of leaning on a 14% tint.
+                              fontSize: "10.5px",
+                              fontWeight: 700,
+                              letterSpacing: "0.06em",
+                              textTransform: "uppercase",
                               background: "var(--home-haze)",
                               color: "var(--home-paper)",
-                              border: "1px solid var(--home-haze)",
+                              borderRadius: 999,
+                              padding: "1px 8px",
                             }}
                           >
                             Cheapest
                           </span>
                         )}
                       </div>
-                      <div className="text-right flex-shrink-0">
+                      <div
+                        className="text-right tabular-nums"
+                        style={{
+                          fontFamily: "var(--font-home-sans)",
+                          fontSize: "13.5px",
+                          fontWeight: 600,
+                          color: isBest ? "var(--home-haze)" : "var(--home-ink)",
+                        }}
+                      >
+                        {fmtFull(r.monthlyFee)}
                         <span
-                          className="text-sm tabular-nums"
-                          style={isBest ? accentStyle : labelStyle}
+                          className="ml-1"
+                          style={{
+                            fontWeight: 400,
+                            color: "var(--home-ink-muted)",
+                          }}
                         >
-                          {fmtFull(r.monthlyFee)}
-                          <span className="font-normal" style={mutedStyle}>
-                            /mo
-                          </span>
-                        </span>
-                        <span className="text-xs ml-2 tabular-nums" style={mutedStyle}>
-                          ({(r.effectiveRate * 100).toFixed(2)}% eff.)
+                          /mo
                         </span>
                       </div>
-                    </div>
-                    <div
-                      className="h-1.5 rounded-full overflow-hidden"
-                      style={{ background: "var(--home-rule)" }}
-                      title={`${r.name}: ${fmtFull(r.monthlyFee)}/mo at ${(r.effectiveRate * 100).toFixed(2)}% effective rate`}
-                    >
                       <div
-                        className="h-full rounded-full transition-all duration-500 ease-out"
+                        className="col-span-2 grid grid-cols-3 gap-3 tabular-nums"
                         style={{
-                          width: `${barPct}%`,
-                          opacity: isBest ? 1 : 0.35 + 0.5 * (1 - i / results.length),
-                          backgroundColor: "var(--home-haze)",
+                          fontFamily: "var(--font-home-sans)",
+                          fontSize: "11.5px",
+                          color: "var(--home-ink-muted)",
                         }}
-                      />
-                    </div>
-                    <p className="mb-0 text-xs" style={mutedStyle}>
-                      {r.note}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </article>
+                      >
+                        <span>
+                          {Math.round(r.txCount).toLocaleString()} tx/mo
+                        </span>
+                        <span>
+                          {fmtFull(r.perTxAvg)}/tx avg
+                        </span>
+                        <span>
+                          {(r.effectiveRate * 100).toFixed(2)}% eff.
+                        </span>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </article>
 
-          {/* Annual projection */}
-          <article className="home-card p-6 sm:p-7">
-            <h2 className="flex items-center gap-2 mb-4" style={sectionHeadingStyle}>
-              <IconArrowRight className="h-4 w-4" style={{ color: "var(--home-haze)" }} />
-              Annual Projection: Top 3
-            </h2>
-            <div className="grid grid-cols-3 gap-3">
-              {results.slice(0, 3).map((r, i) => (
-                <div
-                  key={r.id}
-                  className="text-center p-3 rounded-xl space-y-1"
+            {/* Breakeven analysis */}
+            <article className="tool-card" id="breakeven">
+              <header className="tool-section-header" style={{ marginBottom: 14 }}>
+                <div>
+                  <p className="tool-section-kicker">Breakeven</p>
+                  <h2 className="tool-section-title" style={{ fontSize: "1.1rem" }}>
+                    Stripe Flat vs. Stripe IC+
+                  </h2>
+                </div>
+              </header>
+
+              {breakevenTicket !== null && breakevenTicket > 0 ? (
+                <>
+                  <p
+                    className="mb-3"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "13.5px",
+                      lineHeight: 1.55,
+                      color: "var(--home-ink-muted)",
+                    }}
+                  >
+                    With your card mix, Stripe IC+ becomes cheaper than Stripe flat-rate when avg
+                    ticket exceeds{" "}
+                    <strong
+                      className="tabular-nums"
+                      style={{ color: "var(--home-haze)", fontWeight: 700 }}
+                    >
+                      ${breakevenTicket.toFixed(2)}
+                    </strong>
+                    . Your current avg ticket is{" "}
+                    <strong style={{ color: "var(--home-ink)" }}>${avgTicket}</strong> —{" "}
+                    {avgTicket >= breakevenTicket ? (
+                      <span style={{ color: "var(--color-success)" }}>
+                        IC+ wins on unit economics.
+                      </span>
+                    ) : (
+                      <span style={{ color: "var(--home-ink)" }}>
+                        flat-rate wins per transaction.
+                      </span>
+                    )}
+                  </p>
+
+                  {/* Breakeven visual */}
+                  <div
+                    className="relative h-2 rounded-full overflow-hidden"
+                    style={{ background: "var(--home-rule)" }}
+                  >
+                    <div
+                      className="absolute top-0 bottom-0 left-0"
+                      style={{
+                        width: `${Math.min(100, (breakevenTicket / 500) * 100)}%`,
+                        background:
+                          "linear-gradient(90deg, color-mix(in srgb, var(--home-haze) 40%, transparent), var(--home-haze))",
+                      }}
+                    />
+                    <div
+                      className="absolute top-[-4px] bottom-[-4px] w-0.5"
+                      style={{
+                        left: `${Math.min(100, (avgTicket / 500) * 100)}%`,
+                        background: "var(--home-ink)",
+                      }}
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div
+                    className="flex justify-between mt-1 tabular-nums"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "11px",
+                      color: "var(--home-ink-muted)",
+                    }}
+                  >
+                    <span>$5</span>
+                    <span>Breakeven ${breakevenTicket.toFixed(0)}</span>
+                    <span>$500</span>
+                  </div>
+                  <p
+                    className="mb-0 mt-3"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "11.5px",
+                      color: "var(--home-ink-muted)",
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume.
+                  </p>
+                </>
+              ) : (
+                <p
+                  className="mb-0"
                   style={{
-                    background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-                    border: "1px solid var(--home-rule)",
+                    fontFamily: "var(--font-home-sans)",
+                    fontSize: "13.5px",
+                    color: "var(--home-ink-muted)",
+                    lineHeight: 1.55,
                   }}
                 >
-                  <p className="mb-0 text-xs" style={mutedStyle}>
-                    {r.name}
-                  </p>
-                  <p
-                    className="mb-0 text-xl tabular-nums"
-                    style={i === 0 ? { ...accentStyle, fontWeight: 700 } : { ...labelStyle, fontWeight: 700 }}
+                  At your current card mix, Stripe IC+ never beats Stripe flat — the markup plus
+                  blended interchange exceeds the flat rate at every ticket size.
+                </p>
+              )}
+            </article>
+          </div>
+        </main>
+
+        {/* ── Rail ── */}
+        <aside className="tool-rail" aria-label="Inputs side panel">
+          <section>
+            <p className="tool-rail-label">
+              <IconCreditCard size={12} aria-hidden="true" />
+              Inputs
+            </p>
+            <div className="space-y-4">
+              <Slider
+                label="Monthly volume"
+                value={monthlyVolume}
+                min={1_000}
+                max={500_000}
+                step={1_000}
+                onChange={setMonthlyVolume}
+                format={(v) => `$${v.toLocaleString()}`}
+                hint="Total card revenue per month"
+              />
+
+              <Slider
+                label="Avg ticket"
+                value={avgTicket}
+                min={5}
+                max={500}
+                step={5}
+                onChange={setAvgTicket}
+                format={(v) => `$${v}`}
+                hint="Per-transaction fixed fees matter more at lower tickets"
+              />
+
+              <Slider
+                label="% Credit (Visa/MC)"
+                value={creditPct}
+                min={0}
+                max={100}
+                step={5}
+                onChange={setCreditPct}
+                format={(v) => `${v}%`}
+                hint={`Debit: ${100 - creditPct}% of all transactions`}
+              />
+
+              <Slider
+                label="% of credit that's Amex"
+                value={amexOfCredit}
+                min={0}
+                max={50}
+                step={1}
+                onChange={setAmexOfCredit}
+                format={(v) => `${v}%`}
+                hint={`Amex = ${((creditPct / 100) * (amexOfCredit / 100) * 100).toFixed(1)}% of total`}
+              />
+            </div>
+          </section>
+
+          <section>
+            <p className="tool-rail-label">
+              <IconLayoutGrid size={12} aria-hidden="true" />
+              Card mix preview
+              <button
+                type="button"
+                onClick={() => setShowInfo(!showInfo)}
+                aria-label="Learn about card mix"
+                aria-expanded={showInfo}
+                aria-controls="card-mix-info"
+                className="ml-auto rounded-md p-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-haze)] focus-visible:ring-offset-2"
+                style={{ color: "var(--home-ink-muted)" }}
+              >
+                <IconInfoCircle className="h-3.5 w-3.5" />
+              </button>
+            </p>
+
+            {showInfo && (
+              <p
+                id="card-mix-info"
+                role="region"
+                className="mb-3 rounded-lg p-3 leading-relaxed"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  fontSize: "11.5px",
+                  color: "var(--home-ink-muted)",
+                  background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
+                  border: "1px solid var(--home-rule)",
+                }}
+              >
+                Different card types carry different interchange rates. Debit (Reg E) is much
+                lower than consumer credit. Amex runs its own network and typically costs more.
+              </p>
+            )}
+
+            <div className="space-y-2">
+              {cardMixRows.map((row) => (
+                <div key={row.label}>
+                  <div
+                    className="flex items-baseline justify-between gap-2"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "12px",
+                    }}
                   >
-                    {fmtK(r.monthlyFee * 12)}
-                  </p>
-                  <p className="mb-0 text-xs" style={mutedStyle}>
-                    per year
+                    <span style={{ color: "var(--home-ink)", fontWeight: 600 }}>
+                      {row.label}
+                    </span>
+                    <span
+                      className="tabular-nums"
+                      style={{ color: "var(--home-ink)", fontWeight: 600 }}
+                    >
+                      {row.pct.toFixed(1)}%
+                    </span>
+                  </div>
+                  <div
+                    className="h-1 rounded-full mt-1 overflow-hidden"
+                    style={{ background: "var(--home-rule)" }}
+                  >
+                    <div
+                      className="h-full rounded-full"
+                      style={{
+                        width: `${Math.max(row.pct, 0.5)}%`,
+                        background: "var(--home-haze)",
+                        opacity: 0.5 + row.pct / 200,
+                      }}
+                    />
+                  </div>
+                  <p
+                    className="mb-0 mt-0.5"
+                    style={{
+                      fontFamily: "var(--font-home-sans)",
+                      fontSize: "10.5px",
+                      color: "var(--home-ink-muted)",
+                    }}
+                  >
+                    {row.rate}
                   </p>
                 </div>
               ))}
             </div>
-          </article>
+          </section>
 
-          {/* Breakeven insight */}
-          {breakevenTicket !== null && breakevenTicket > 0 && (
-            <article
-              className="home-card p-6 sm:p-7 space-y-2"
-              style={{
-                border: "1px solid color-mix(in srgb, var(--home-haze) 30%, var(--home-rule))",
-              }}
-            >
-              <h2 className="text-sm mb-0" style={labelStyle}>
-                Breakeven: Stripe Flat vs. Stripe IC+
-              </h2>
-              <p className="mb-0 text-sm leading-6" style={bodyStyle}>
-                With your card mix, Stripe IC+ becomes cheaper than Stripe flat-rate when avg ticket exceeds{" "}
-                <strong className="tabular-nums" style={accentStyle}>
-                  ${breakevenTicket.toFixed(2)}
-                </strong>
-                .
-                {avgTicket >= breakevenTicket ? (
-                  <span> Your current avg ticket (${avgTicket}) is <strong style={labelStyle}>above</strong> that, so IC+ wins on unit economics.</span>
-                ) : (
-                  <span> Your current avg ticket (${avgTicket}) is <strong style={labelStyle}>below</strong> that, so flat-rate wins per transaction.</span>
-                )}
-              </p>
-              <p className="mb-0 text-xs" style={mutedStyle}>
-                Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume.
-              </p>
-            </article>
-          )}
-        </div>
+          <p className="tool-rail-foot">
+            <IconInfoCircle size={14} aria-hidden="true" />
+            Based on published 2024 interchange rates
+          </p>
+        </aside>
       </div>
 
-      {/* Education */}
-      <div
-        className="pt-8 space-y-6"
-        style={{ borderTop: "1px solid var(--home-rule)" }}
-      >
-        <h2
-          className="mb-0 text-lg"
-          style={{ ...labelStyle, fontSize: "1.125rem" }}
-        >
-          How Payment Processing Fees Work
-        </h2>
-        <div className="grid md:grid-cols-3 gap-5">
+      {/* Education band — full width below the shell */}
+      <section className="tool-band" aria-label="How payment processing fees work">
+        <div className="tool-section-header">
+          <div>
+            <p className="tool-section-kicker">Reference</p>
+            <h2 className="tool-section-title">How payment processing fees work</h2>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-3 gap-4">
           {[
             {
               title: "What is interchange?",
@@ -613,24 +852,53 @@ export function InterchangeIQClient() {
             },
             {
               title: "Caveats & real-world nuance",
-              body: "These are representative averages. Real interchange has 300+ rate categories by card type, industry code, and auth method. IC+ is typically available to merchants processing $250k+/yr. Card-present transactions have lower interchange than online. Always get actual quotes. This tool is directional, not definitive.",
+              body: "These are representative averages. Real interchange has 300+ rate categories by card type, industry code, and auth method. IC+ is typically available to merchants processing $250k+/yr. Card-present transactions have lower interchange than online. Always get actual quotes.",
             },
           ].map((card) => (
-            <article key={card.title} className="home-card p-6 sm:p-7 space-y-2">
-              <h3 className="mb-0 text-sm" style={labelStyle}>
+            <article
+              key={card.title}
+              className="tool-card"
+              style={{ background: "color-mix(in srgb, var(--home-paper) 96%, var(--home-elev-mix))" }}
+            >
+              <h3
+                className="mb-2"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: "var(--home-ink)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
                 {card.title}
               </h3>
-              <p className="mb-0 text-sm leading-6" style={bodyStyle}>
+              <p
+                className="mb-0"
+                style={{
+                  fontFamily: "var(--font-home-sans)",
+                  fontSize: "12.5px",
+                  lineHeight: 1.55,
+                  color: "var(--home-ink-muted)",
+                }}
+              >
                 {card.body}
               </p>
             </article>
           ))}
         </div>
-        <p className="mb-0 text-xs text-center" style={mutedStyle}>
-          Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue program averages.
-          Processor fees from public pricing pages. For educational purposes only. Actual rates vary by industry, card type, and negotiated terms.
+        <p
+          className="mb-0 text-center"
+          style={{
+            fontFamily: "var(--font-home-sans)",
+            fontSize: "11px",
+            color: "var(--home-ink-muted)",
+          }}
+        >
+          Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue
+          program averages. Processor fees from public pricing pages. For educational purposes
+          only — actual rates vary by industry, card type, and negotiated terms.
         </p>
-      </div>
+      </section>
     </div>
   );
 }
