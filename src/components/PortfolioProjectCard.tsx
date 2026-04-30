@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "@/components/ui/ServerIcons";
 import {
   CaseStudyData,
+  getProjectCardOutcome,
   getProjectCardProblem,
   getProjectCardSummary,
 } from "@/constants/caseStudies";
@@ -19,7 +20,9 @@ export function PortfolioProjectCard({
   const href = study.link ?? `/portfolio/${study.slug}`;
   const summary = getProjectCardSummary(study);
   const problem = getProjectCardProblem(study);
+  const outcome = getProjectCardOutcome(study);
   const highlightedMetrics = study.detailedMetrics?.slice(0, 2) ?? [];
+  const ctaLabel = study.link ? "View project" : "View case study";
 
   return (
     <Link href={href} className="group block h-full">
@@ -92,12 +95,12 @@ export function PortfolioProjectCard({
                 border: "1px solid var(--home-rule)",
               }}
             >
-              <p className="home-kicker mb-1">Outcome</p>
+              <p className="home-kicker mb-1">User outcome</p>
               <p
-                className="mb-0 min-h-[2.75rem] text-sm leading-relaxed line-clamp-2"
+                className="mb-0 min-h-[3.5rem] text-sm leading-relaxed line-clamp-3"
                 style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
               >
-                {study.metrics}
+                {outcome}
               </p>
             </div>
           </div>
@@ -151,7 +154,7 @@ export function PortfolioProjectCard({
             className="flex items-center gap-2 text-sm font-semibold"
             style={{ color: "var(--home-haze)", fontFamily: "var(--font-home-sans)" }}
           >
-            View project
+            {ctaLabel}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </div>
         </div>

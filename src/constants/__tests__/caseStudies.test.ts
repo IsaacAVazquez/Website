@@ -1,9 +1,14 @@
-import { getHomepageFeaturedCaseStudies, getPortfolioProjects } from "../caseStudies";
+import {
+  getHomepageFeaturedCaseStudies,
+  getPortfolioProjects,
+  getProjectCardOutcome,
+} from "../caseStudies";
 
 const expectedPortfolioSlugs = [
   "investment-analytics-platform",
   "interchange-iq",
   "news-pulse-dashboard",
+  "pulse-dashboards",
   "ai-dev-tool-ecosystem",
   "frontier-model-tracker",
   "github-trending-pulse",
@@ -80,5 +85,16 @@ describe("caseStudies helpers", () => {
       "news-pulse-dashboard",
       "interchange-iq",
     ]);
+  });
+
+  it("uses user-facing impact for portfolio card outcomes", () => {
+    const pulseDashboards = getPortfolioProjects().find(
+      (project) => project.slug === "pulse-dashboards"
+    );
+
+    expect(pulseDashboards).toBeDefined();
+    expect(getProjectCardOutcome(pulseDashboards!)).toBe(
+      "Users get a faster read on what changed, what matters now, and where to click next without stitching the context together themselves."
+    );
   });
 });
