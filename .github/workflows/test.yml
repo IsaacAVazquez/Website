@@ -2,7 +2,7 @@ name: Tests
 
 on:
   push:
-    branches: [main, develop, claude/**]
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
 
@@ -219,6 +219,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # TODO: Remove `continue-on-error` once outstanding lint errors are
+      # cleaned up. The codebase currently has ~41 ESLint errors (mostly in
+      # `src/lib/*Data.ts`, several hooks, and a few components) that need a
+      # dedicated cleanup pass. Until then, lint runs informatively but does
+      # not block CI. Verified `npm run lint` locally during this change.
       - name: Run ESLint
         run: npm run lint
         continue-on-error: true

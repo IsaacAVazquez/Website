@@ -84,5 +84,7 @@ describe("GET /api/golf/summary", () => {
     expect(body.error).toMatch(/snapshot/i);
     expect(body.leaderboard).toEqual([]);
     expect(body.players).toEqual([]);
+    // Errors must NOT be cached by the CDN.
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
   });
 });

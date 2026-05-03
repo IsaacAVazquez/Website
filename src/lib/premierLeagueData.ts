@@ -328,59 +328,82 @@ function buildTeamFormSummary(
   }, createDefaultFormSummary());
 }
 
-async function fetchFootballDataJson<T>(
+async function fetchFootballDataJsonOnce<T>(
   path: string,
   revalidateSeconds: number
 ): Promise<T> {
   const token = getFootballDataToken();
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  // AbortSignal.timeout fires its own per-attempt timeout cleanly without us
+  // having to manage a setTimeout / clearTimeout pair around every call.
+  const response = await fetch(`${FOOTBALL_DATA_BASE_URL}${path}`, {
+    headers: {
+      "X-Auth-Token": token,
+    },
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    next: {
+      revalidate: revalidateSeconds,
+    },
+  });
 
-  try {
-    const response = await fetch(`${FOOTBALL_DATA_BASE_URL}${path}`, {
-      headers: {
-        "X-Auth-Token": token,
-      },
-      signal: controller.signal,
-      next: {
-        revalidate: revalidateSeconds,
-      },
-    });
-
-    if (!response.ok) {
-      if (response.status === 401 || response.status === 403) {
-        throw createPremierLeagueDataError(
-          "Premier League data provider rejected the configured API token.",
-          503
-        );
-      }
-
-      if (response.status === 404) {
-        throw createPremierLeagueDataError(
-          "Requested Premier League resource was not found.",
-          404
-        );
-      }
-
+  if (!response.ok) {
+    if (response.status === 401 || response.status === 403) {
       throw createPremierLeagueDataError(
-        "Unable to load Premier League data from the upstream provider.",
-        response.status >= 500 ? 503 : 502
+        "Premier League data provider rejected the configured API token.",
+        503
       );
     }
 
-    return (await response.json()) as T;
-  } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
+    if (response.status === 404) {
       throw createPremierLeagueDataError(
-        "Premier League data provider timed out.",
-        504
+        "Requested Premier League resource was not found.",
+        404
       );
     }
 
-    throw error;
-  } finally {
-    clearTimeout(timeout);
+    throw createPremierLeagueDataError(
+      "Unable to load Premier League data from the upstream provider.",
+      response.status >= 500 ? 503 : 502
+    );
   }
+
+  return (await response.json()) as T;
+}
+
+/**
+ * Wraps the per-attempt fetch in a 3-attempt retry. Backs off on 5xx and on
+ * network/timeout errors, but NOT on 4xx (client-side errors won't recover).
+ * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
+ */
+async function fetchFootballDataJson<T>(
+  path: string,
+  revalidateSeconds: number
+): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      return await fetchFootballDataJsonOnce<T>(path, revalidateSeconds);
+    } catch (error) {
+      lastError = error;
+      // Treat AbortError / TimeoutError as a network failure for retry purposes.
+      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
+        if (attempt < 2) {
+          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+          continue;
+        }
+        throw createPremierLeagueDataError(
+          "Premier League data provider timed out.",
+          504
+        );
+      }
+      const status = (error as FootballDataError).status;
+      // Don't retry 4xx (auth, not found, malformed) — they won't get better.
+      if (typeof status === "number" && status >= 400 && status < 500) throw error;
+      if (attempt < 2) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+      }
+    }
+  }
+  throw lastError;
 }
 
 function buildCompetitionMeta(
@@ -602,17 +625,18 @@ export async function buildPremierLeagueSnapshot(options?: { skipTeamSnapshots?:
     teamSnapshots = readExistingPLTeamSnapshots(PL_SNAPSHOT_PATH);
     console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
   } else {
-    const entries: Array<[string, PremierLeagueTeamSnapshot]> = [];
+    // Start from the prior snapshots so a per-team failure preserves that
+    // team's previous data instead of dropping it from the snapshot.
+    teamSnapshots = { ...readExistingPLTeamSnapshots(PL_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
       await new Promise<void>((resolve) => setTimeout(resolve, TEAM_FETCH_DELAY_MS));
       try {
         const teamSnapshot = await getPremierLeagueTeamSnapshot(team.id);
-        entries.push([team.id, { ...teamSnapshot, generatedAt }]);
+        teamSnapshots[team.id] = { ...teamSnapshot, generatedAt };
       } catch (err) {
-        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message}`);
+        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
       }
     }
-    teamSnapshots = Object.fromEntries(entries);
   }
 
   return {

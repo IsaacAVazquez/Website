@@ -25,6 +25,43 @@ const MAX_DIGEST_JOBS = 25;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_TEXT_LENGTH = 160;
 
+// Hard ceilings — independent of the env allowlist. Even if
+// MBA_DIGEST_ALLOWED_RECIPIENTS=* is misconfigured, these cap the blast
+// radius. Per-request limit prevents abuse via the API; per-day limit
+// prevents an attacker from spamming many small requests.
+const MAX_RECIPIENTS_PER_REQUEST = 5;
+const MAX_RECIPIENTS_PER_DAY = 50;
+
+interface DailyRecipientCounter {
+  date: string; // UTC YYYY-MM-DD
+  count: number;
+}
+
+let dailyRecipientCounter: DailyRecipientCounter = {
+  date: new Date().toISOString().slice(0, 10),
+  count: 0,
+};
+
+function getCurrentUtcDate(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function resetCounterIfNewDay(): void {
+  const today = getCurrentUtcDate();
+  if (dailyRecipientCounter.date !== today) {
+    dailyRecipientCounter = { date: today, count: 0 };
+  }
+}
+
+function tryReserveDailyRecipientSlots(count: number): boolean {
+  resetCounterIfNewDay();
+  if (dailyRecipientCounter.count + count > MAX_RECIPIENTS_PER_DAY) {
+    return false;
+  }
+  dailyRecipientCounter.count += count;
+  return true;
+}
+
 const RESPONSE_HEADERS = {
   "Cache-Control": "no-store",
 };
@@ -247,15 +284,55 @@ export async function POST(request: NextRequest) {
     return json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const to = normalizeEmail(body.to);
+  // Normalize `to` to a unique recipient list. Today the body sends a single
+  // string, but we accept either string or string[] so the per-request ceiling
+  // also constrains any future expansion of the API.
+  const toCandidates: unknown[] = Array.isArray(body.to) ? body.to : [body.to];
+  const recipientSet = new Set<string>();
+  for (const candidate of toCandidates) {
+    const normalized = normalizeEmail(candidate);
+    if (normalized) {
+      recipientSet.add(normalized);
+    }
+  }
+  const recipients = Array.from(recipientSet);
 
-  if (!to) {
+  if (recipients.length === 0) {
     return json({ error: "Invalid email address." }, { status: 400 });
   }
 
-  if (!isAllowedRecipient(to)) {
-    return json({ error: "Email digests are limited to approved recipients." }, { status: 403 });
+  // Hardcoded per-request ceiling. Independent of env allowlist.
+  if (recipients.length > MAX_RECIPIENTS_PER_REQUEST) {
+    return json(
+      {
+        error: `A single digest may target at most ${MAX_RECIPIENTS_PER_REQUEST} recipients.`,
+      },
+      { status: 400 }
+    );
   }
+
+  for (const recipient of recipients) {
+    if (!isAllowedRecipient(recipient)) {
+      return json(
+        { error: "Email digests are limited to approved recipients." },
+        { status: 403 }
+      );
+    }
+  }
+
+  // Hardcoded per-day ceiling across all IPs. Independent of env allowlist.
+  if (!tryReserveDailyRecipientSlots(recipients.length)) {
+    return json(
+      {
+        error: `Daily email digest cap reached (${MAX_RECIPIENTS_PER_DAY} recipients/day). Try again tomorrow.`,
+      },
+      { status: 429 }
+    );
+  }
+
+  // Backward-compat: existing call sites send a single recipient and expect
+  // the response to mention that recipient, so keep `to` for downstream use.
+  const to = recipients[0];
 
   const jobs = normalizeJobs(body.jobs);
   if (!jobs) {
@@ -274,7 +351,7 @@ export async function POST(request: NextRequest) {
   try {
     const result = await resend.emails.send({
       from: "MBA Tracker <no-reply@isaacavazquez.com>",
-      to,
+      to: recipients,
       subject,
       html: buildEmailHtml(jobs, to),
     });
@@ -290,3 +367,16 @@ export async function POST(request: NextRequest) {
     return json({ error: "Failed to send email digest." }, { status: 500 });
   }
 }
+
+// Test-only side channel. Next.js route-type checking forbids non-handler
+// exports, so the daily-counter reset is hung off a Symbol on `globalThis`.
+// Tests call `(globalThis as any)[Symbol.for(...)]()` between cases to clear
+// the module-level daily recipient counter. Do not call from production.
+(globalThis as Record<symbol, unknown>)[
+  Symbol.for("__mbaEmailDailyCounterResetForTesting")
+] = (): void => {
+  dailyRecipientCounter = {
+    date: new Date().toISOString().slice(0, 10),
+    count: 0,
+  };
+};

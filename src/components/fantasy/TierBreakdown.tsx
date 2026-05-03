@@ -108,12 +108,30 @@ export function TierBreakdown({ players, position, getPublishedRank }: TierBreak
                   {description}
                 </p>
               </div>
-              {!isUntiered && (
-                <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
-                  Ranks {formatRankValue(group.players[0] ? Number(getPublishedRank(group.players[0])) : undefined)}–
-                  {formatRankValue(group.players[group.players.length - 1] ? Number(getPublishedRank(group.players[group.players.length - 1])) : undefined)}
-                </p>
-              )}
+              {!isUntiered && (() => {
+                // Skip players whose published rank is "--" or otherwise
+                // non-numeric — Number("--") is NaN, which formats back to "--"
+                // and produced misleading "Ranks --–--" labels for partially
+                // ranked tiers.
+                const rankedPlayers = group.players
+                  .map((player) => ({ player, rank: Number.parseFloat(getPublishedRank(player)) }))
+                  .filter((entry) => Number.isFinite(entry.rank));
+
+                if (rankedPlayers.length === 0) {
+                  return (
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
+                      Ranks unavailable
+                    </p>
+                  );
+                }
+
+                return (
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
+                    Ranks {formatRankValue(rankedPlayers[0].rank)}–
+                    {formatRankValue(rankedPlayers[rankedPlayers.length - 1].rank)}
+                  </p>
+                );
+              })()}
             </header>
 
             <ul role="list" className="mt-4 flex flex-wrap gap-2">

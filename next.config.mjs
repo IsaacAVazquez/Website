@@ -211,8 +211,53 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    // dangerouslyAllowSVG is required because some content (e.g. team crests,
+    // logos in snapshot data) is delivered as inline SVG. The image-scoped CSP
+    // below (script-src 'none'; sandbox) prevents script execution from those
+    // SVGs, mitigating the main risk. Removing this flag would break sports
+    // and finance dashboards that depend on remote SVG assets.
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+  // Site-wide security headers. Applied to all routes.
+  // TODO: Add a global Content-Security-Policy header in a future, separately
+  // staged change. CSP requires careful inventory of inline scripts, third-party
+  // tag managers, and analytics endpoints; rolling it out without staging would
+  // break those surfaces. Tracked separately.
+  async headers() {
+    const securityHeaders = [
+      {
+        key: "Strict-Transport-Security",
+        value: "max-age=63072000; includeSubDomains; preload",
+      },
+      {
+        key: "X-Content-Type-Options",
+        value: "nosniff",
+      },
+      {
+        key: "X-Frame-Options",
+        value: "DENY",
+      },
+      {
+        key: "Referrer-Policy",
+        value: "strict-origin-when-cross-origin",
+      },
+      {
+        key: "Permissions-Policy",
+        value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+      },
+      {
+        key: "X-DNS-Prefetch-Control",
+        value: "on",
+      },
+    ];
+
+    return [
+      {
+        source: "/:path*",
+        headers: securityHeaders,
+      },
+    ];
   },
   // Performance optimizations
   compiler: {

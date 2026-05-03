@@ -15,6 +15,15 @@ jest.mock("resend", () => ({
 
 import { POST } from "../route";
 
+// The route exposes its daily-counter reset on globalThis under a well-known
+// Symbol because Next.js route-type checking forbids extra route exports.
+function resetMbaEmailDailyCounter(): void {
+  const reset = (globalThis as Record<symbol, unknown>)[
+    Symbol.for("__mbaEmailDailyCounterResetForTesting")
+  ];
+  if (typeof reset === "function") (reset as () => void)();
+}
+
 const originalEnv = { ...process.env };
 
 const validJob = {
@@ -53,6 +62,9 @@ function makeRequest(
 describe("POST /api/mba-jobs/email", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    // Module-level daily counter persists across tests; reset so the
+    // per-day ceiling does not leak between cases.
+    resetMbaEmailDailyCounter();
     process.env.RESEND_API_KEY = "test-resend-key";
     process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "allowed@example.com,@haas.berkeley.edu";
     mockSend.mockResolvedValue({ data: { id: "email-1" }, error: null });
@@ -82,7 +94,9 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(response.status).toBe(200);
     expect(body.ok).toBe(true);
-    expect(emailPayload.to).toBe("allowed@example.com");
+    // The route now sends `to` as an array (deduped, lowercased) so the
+    // per-request ceiling can also constrain future multi-recipient calls.
+    expect(emailPayload.to).toEqual(["allowed@example.com"]);
     expect(emailPayload.html).toContain("&lt;img");
     expect(emailPayload.html).toContain("Product &amp; Strategy");
     expect(emailPayload.html).not.toContain("<img src=x");
@@ -155,5 +169,88 @@ describe("POST /api/mba-jobs/email", () => {
     expect(limited.status).toBe(429);
     expect(body.error).toBe("Too many requests");
     expect(mockSend).toHaveBeenCalledTimes(3);
+  });
+
+  it("rejects requests with more than 5 recipients in the to array", async () => {
+    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "*";
+
+    const response = await POST(
+      makeRequest({
+        to: [
+          "one@example.com",
+          "two@example.com",
+          "three@example.com",
+          "four@example.com",
+          "five@example.com",
+          "six@example.com",
+        ],
+        jobs: [validJob],
+      })
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(400);
+    expect(body.error).toMatch(/at most 5 recipients/i);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("dedupes recipients before applying the per-request ceiling", async () => {
+    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "*";
+
+    const response = await POST(
+      makeRequest({
+        // Six entries but only five unique addresses after lowercasing.
+        to: [
+          "one@example.com",
+          "ONE@example.com",
+          "two@example.com",
+          "three@example.com",
+          "four@example.com",
+          "five@example.com",
+        ],
+        jobs: [validJob],
+      })
+    );
+
+    expect(response.status).toBe(200);
+    expect(mockSend).toHaveBeenCalledTimes(1);
+    const emailPayload = mockSend.mock.calls[0][0];
+    expect(emailPayload.to).toHaveLength(5);
+  });
+
+  it("returns 429 when the per-day recipient ceiling would be exceeded", async () => {
+    process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "*";
+
+    // Exhaust the day: 10 requests of 5 recipients each = 50 (the cap).
+    // Each request comes from a unique client so the per-IP rate limit
+    // does not trip first.
+    for (let i = 0; i < 10; i += 1) {
+      const response = await POST(
+        makeRequest(
+          {
+            to: [
+              `a${i}@example.com`,
+              `b${i}@example.com`,
+              `c${i}@example.com`,
+              `d${i}@example.com`,
+              `e${i}@example.com`,
+            ],
+            jobs: [validJob],
+          },
+          `daily-cap-${i}`
+        )
+      );
+      expect(response.status).toBe(200);
+    }
+
+    // The next request — even with a single recipient — should hit the cap.
+    const overflow = await POST(
+      makeRequest({ to: "overflow@example.com", jobs: [validJob] }, "daily-cap-overflow")
+    );
+    const body = await overflow.json();
+
+    expect(overflow.status).toBe(429);
+    expect(body.error).toMatch(/Daily email digest cap/i);
+    expect(mockSend).toHaveBeenCalledTimes(10);
   });
 });

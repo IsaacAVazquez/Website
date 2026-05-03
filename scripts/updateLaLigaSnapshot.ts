@@ -7,10 +7,21 @@
  */
 
 import { config } from "dotenv";
-import { writeFileSync } from "node:fs";
+import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 config({ path: resolve(__dirname, "../.env.local") });
 import { buildLaLigaSnapshot } from "../src/lib/laLigaData";
+
+/**
+ * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
+ * destination file is never observed in a half-written state if the process is
+ * killed mid-write.
+ */
+function writeFileAtomic(path: string, content: string): void {
+  const tmp = `${path}.tmp`;
+  writeFileSync(tmp, content, "utf8");
+  renameSync(tmp, path);
+}
 
 async function main() {
   console.log("Fetching La Liga snapshot from football-data.org…");
@@ -22,7 +33,7 @@ export const laLigaSnapshot: LaLigaSnapshot = ${JSON.stringify(snapshot, null, 2
 `;
 
   const outPath = resolve(__dirname, "../src/data/laLigaSnapshot.ts");
-  writeFileSync(outPath, output, "utf8");
+  writeFileAtomic(outPath, output);
   console.log(`Done. Wrote ${snapshot.clubs.length} clubs, ${snapshot.scorers.length} scorers, ${snapshot.recentFixtures.length} recent fixtures, ${Object.keys(snapshot.teamSnapshots).length} team snapshots.`);
 }
 

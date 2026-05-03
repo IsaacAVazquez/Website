@@ -4,6 +4,15 @@
 import { NextRequest } from "next/server";
 import { GET } from "../route";
 
+// The route exposes its cache reset on globalThis under a well-known Symbol
+// because Next.js route-type checking forbids extra route exports.
+function resetMbaJobsCache(): void {
+  const reset = (globalThis as Record<symbol, unknown>)[
+    Symbol.for("__mbaJobsCacheResetForTesting")
+  ];
+  if (typeof reset === "function") (reset as () => void)();
+}
+
 const originalFetch = global.fetch;
 const mockFetch = jest.fn<ReturnType<typeof fetch>, Parameters<typeof fetch>>();
 
@@ -91,6 +100,10 @@ function installFetchMock(responses: Record<string, Response | Error>) {
 describe("GET /api/mba-jobs", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    // The route uses a module-level single-flight cache keyed by company id
+    // set. Without resetting, the second test would re-use the first test's
+    // cached result for the same key (`stripe`) and bypass the mocked fetch.
+    resetMbaJobsCache();
     Object.defineProperty(global, "fetch", {
       configurable: true,
       value: mockFetch,

@@ -13,6 +13,16 @@ const STATIC_ROUTE_LASTMOD = {
   "/portfolio": "2026-04-04",
   "/writing": "2026-04-13",
   "/golf": "2026-04-16",
+  "/decision-lab": "2026-04-04",
+  "/formula-1": "2026-04-04",
+  "/frontier-models": "2026-04-04",
+  "/mba-internship-notifications": "2026-04-04",
+  "/mlb": "2026-04-04",
+  "/museum-log": "2026-04-04",
+  "/nba": "2026-04-04",
+  "/now": "2026-04-13",
+  "/recipe-finder": "2026-04-04",
+  "/wine-cellar": "2026-04-04",
   "/github-trending-pulse": readGitHubTrendingLastmod(),
   "/investments": readInvestmentsLastmod(),
   "/news-pulse": "2026-04-01",
@@ -25,29 +35,15 @@ const STATIC_ROUTE_LASTMOD = {
   "/fantasy-football": readFantasyLastmod(),
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
   "/fantasy-football/rb-tiers": readFantasyLastmod(),
-  "/fantasy-football/tiers/qb": readFantasyLastmod(),
-  "/fantasy-football/tiers/rb": readFantasyLastmod(),
-  "/fantasy-football/tiers/wr": readFantasyLastmod(),
-  "/fantasy-football/tiers/te": readFantasyLastmod(),
-  "/fantasy-football/tiers/k": readFantasyLastmod(),
-  "/fantasy-football/tiers/dst": readFantasyLastmod(),
-  "/fantasy-football/tiers/flex": readFantasyLastmod(),
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
   "/food-map": "2026-04-28",
-  "/portfolio/investment-analytics-platform": "2026-04-04",
-  "/portfolio/interchange-iq": "2026-04-04",
-  "/portfolio/news-pulse-dashboard": "2026-04-04",
-  "/portfolio/budget-planner": "2026-04-04",
-  "/portfolio/spacex-mission-control": "2026-04-04",
-  "/portfolio/premier-league-pulse": "2026-04-04",
-  "/portfolio/fantasy-football-analytics": "2026-04-04",
-  "/portfolio/la-liga-pulse": "2026-04-04",
-  "/portfolio/march-madness-2026": "2026-04-04",
-  "/portfolio/food-map": "2026-04-28",
-  "/portfolio/ai-dev-tool-ecosystem": "2026-04-28",
-  "/portfolio/github-trending-pulse": readGitHubTrendingLastmod(),
 };
+
+// Fantasy tier positions live behind /fantasy-football/tiers/[position].
+// The valid set is the FANTASY_ROUTE_POSITIONS list in src/lib/fantasy.ts;
+// "overall" is included for completeness alongside the per-position routes.
+const FANTASY_TIER_POSITIONS = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
 
 function readFile(filePath) {
   return fs.readFileSync(path.join(process.cwd(), filePath), "utf8");
@@ -115,6 +111,78 @@ function getStaticRouteEntries() {
   }));
 }
 
+function getFantasyTierEntries() {
+  const lastmod = readFantasyLastmod();
+  return FANTASY_TIER_POSITIONS.map((position) => ({
+    loc: `/fantasy-football/tiers/${position}`,
+    lastmod,
+  }));
+}
+
+/**
+ * Read portfolio case-study slugs directly from `src/constants/caseStudies.ts`.
+ * The `[slug]/page.tsx` route uses `Object.keys(caseStudiesData)` for
+ * `generateStaticParams`, so every key in that record gets a real page.
+ *
+ * We avoid the cost of compiling TypeScript from a JS sitemap helper by
+ * regex-extracting top-level string keys inside the `caseStudiesData = { ... }`
+ * object literal. Adding a new entry there automatically propagates to the
+ * sitemap on the next build.
+ */
+function getPortfolioSlugEntries() {
+  const source = readFile("src/constants/caseStudies.ts");
+  const objectStart = source.indexOf("export const caseStudiesData");
+  if (objectStart === -1) {
+    return [];
+  }
+
+  // Walk the file from the export keyword and capture the brace-balanced object
+  // literal so we don't accidentally pick up unrelated string keys later in the
+  // file (e.g. inside helper functions).
+  const braceStart = source.indexOf("{", objectStart);
+  if (braceStart === -1) {
+    return [];
+  }
+
+  let depth = 0;
+  let braceEnd = -1;
+  for (let i = braceStart; i < source.length; i += 1) {
+    const ch = source[i];
+    if (ch === "{") depth += 1;
+    else if (ch === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        braceEnd = i;
+        break;
+      }
+    }
+  }
+
+  if (braceEnd === -1) {
+    return [];
+  }
+
+  const objectBody = source.slice(braceStart, braceEnd + 1);
+
+  // Top-level entries look like `  "slug-name": {` at the start of a line.
+  // Nested object keys are indented further or appear after `{` so a strict
+  // 2-space prefix keeps us at depth 1.
+  const slugRegex = /^\s{2}"([a-z0-9][a-z0-9-]*)":\s*\{/gm;
+  const slugs = new Set();
+  let match;
+  while ((match = slugRegex.exec(objectBody)) !== null) {
+    slugs.add(match[1]);
+  }
+
+  // Use the portfolio index lastmod as a sensible default; portfolio pages
+  // share that bucket today.
+  const lastmod = toIsoString("2026-04-04");
+  return Array.from(slugs).map((slug) => ({
+    loc: `/portfolio/${slug}`,
+    lastmod,
+  }));
+}
+
 function getBlogRouteEntries() {
   const contentDirectory = path.join(process.cwd(), "content/blog");
 
@@ -137,7 +205,12 @@ function getBlogRouteEntries() {
 }
 
 function getPublicSitemapEntries() {
-  const allEntries = [...getStaticRouteEntries(), ...getBlogRouteEntries()];
+  const allEntries = [
+    ...getStaticRouteEntries(),
+    ...getFantasyTierEntries(),
+    ...getPortfolioSlugEntries(),
+    ...getBlogRouteEntries(),
+  ];
   const dedupedEntries = new Map();
 
   for (const entry of allEntries) {

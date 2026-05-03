@@ -7,9 +7,20 @@
  *        npx tsx scripts/updateMlbSnapshot.ts --league-only
  */
 
-import { writeFileSync } from "node:fs";
+import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { buildMlbSnapshot } from "../src/lib/mlbData";
+
+/**
+ * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
+ * destination file is never observed in a half-written state if the process is
+ * killed mid-write.
+ */
+function writeFileAtomic(path: string, content: string): void {
+  const tmp = `${path}.tmp`;
+  writeFileSync(tmp, content, "utf8");
+  renameSync(tmp, path);
+}
 
 async function main() {
   const skipTeamSnapshots = process.argv.includes("--league-only");
@@ -24,7 +35,7 @@ export const mlbSnapshot: MlbSnapshot = ${JSON.stringify(snapshot, null, 2)};
 `;
 
   const outPath = resolve(__dirname, "../src/data/mlbSnapshot.ts");
-  writeFileSync(outPath, output, "utf8");
+  writeFileAtomic(outPath, output);
   console.log(
     `Done. Wrote ${snapshot.teams.length} teams, ${snapshot.standings.length} standings rows, ${snapshot.recentGames.length} recent games, ${snapshot.upcomingGames.length} upcoming games, ${Object.keys(snapshot.teamSnapshots).length} team snapshots.`
   );

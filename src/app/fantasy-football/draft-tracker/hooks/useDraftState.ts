@@ -3,7 +3,30 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { DraftState, DraftSettings, DraftPick, Player, TeamRoster, ScoringFormat } from '@/types';
 
-export const FANTASY_DRAFT_STORAGE_KEY = 'fantasy-draft-tracker';
+export const DRAFT_STORAGE_VERSION = 2;
+const LEGACY_FANTASY_DRAFT_STORAGE_KEY = 'fantasy-draft-tracker';
+
+/**
+ * NFL season for the current draft window. The league year rolls over with
+ * the new league year in March, so anything before March belongs to the prior
+ * season. Used to scope persisted draft state per-season so a stale 2025
+ * draft doesn't bleed into a fresh 2026 setup.
+ */
+export function getCurrentDraftSeason(now: Date = new Date()): number {
+  const year = now.getUTCFullYear();
+  const month = now.getUTCMonth();
+  return month < 2 ? year - 1 : year;
+}
+
+export function getFantasyDraftStorageKey(season: number = getCurrentDraftSeason()): string {
+  return `fantasy-draft-tracker-v${DRAFT_STORAGE_VERSION}-${season}`;
+}
+
+// Exposed for tests and callers that want the active key without recomputing
+// the season. Old unversioned key is intentionally NOT migrated — the schema
+// has shifted across versions and a one-time forced reset is cleaner than
+// guessing how to coerce a legacy payload. We just delete it.
+export const FANTASY_DRAFT_STORAGE_KEY = getFantasyDraftStorageKey();
 
 interface PersistedDraftState extends Omit<DraftState, 'settings' | 'picks' | 'startTime' | 'endTime'> {
   settings?: DraftSettings & {
@@ -95,6 +118,18 @@ export const useDraftState = () => {
   // Load from localStorage on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      // One-time cleanup: if the old unversioned key is still hanging around,
+      // drop it. We do not attempt to migrate the payload — the schema has
+      // shifted across versions and forcing a fresh start is safer than
+      // silently restoring a partially-compatible draft.
+      try {
+        if (localStorage.getItem(LEGACY_FANTASY_DRAFT_STORAGE_KEY) !== null) {
+          localStorage.removeItem(LEGACY_FANTASY_DRAFT_STORAGE_KEY);
+        }
+      } catch {
+        // Ignore — localStorage may be disabled or full; we'll just skip.
+      }
+
       const saved = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
       if (saved) {
         try {
@@ -120,6 +155,13 @@ export const useDraftState = () => {
           setDraftState(parsedState);
         } catch (error) {
           console.error('Error loading draft state from localStorage:', error);
+          // Persisted blob is corrupt — drop it so we start clean on next save
+          // instead of looping through this catch on every mount.
+          try {
+            localStorage.removeItem(FANTASY_DRAFT_STORAGE_KEY);
+          } catch {
+            // Same as above — best-effort.
+          }
         }
       }
       setIsLoaded(true);

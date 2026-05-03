@@ -41,6 +41,51 @@ jobs:
           FOOTBALL_DATA_API_TOKEN: ${{ secrets.FOOTBALL_DATA_API_TOKEN }}
           NODE_ENV: production
 
+      # Quality gate: require ≥18 clubs in standings before we'll commit.
+      # La Liga is a 20-team league; <18 means the upstream returned a
+      # truncated/empty payload. Refusing to commit prevents pushing a
+      # degraded snapshot that the site would then display.
+      - name: Verify La Liga snapshot quality
+        id: verify_quality
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const SNAPSHOT_PATH = path.join('src', 'data', 'laLigaSnapshot.ts');
+          const raw = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
+          // The snapshot is an exported object literal — extract the JSON-ish
+          // payload between the first '{' and the trailing '};'.
+          const start = raw.indexOf('{');
+          const end = raw.lastIndexOf('};');
+          if (start === -1 || end === -1 || end <= start) {
+            console.error('::error::Could not locate snapshot object in laLigaSnapshot.ts');
+            process.exit(1);
+          }
+          let snapshot;
+          try {
+            snapshot = JSON.parse(raw.slice(start, end + 1));
+          } catch (err) {
+            console.error('::error::Failed to parse laLigaSnapshot.ts payload:', err.message);
+            process.exit(1);
+          }
+
+          const clubsCount = Array.isArray(snapshot.clubs) ? snapshot.clubs.length : 0;
+          const teamSnapshotCount = snapshot.teamSnapshots ? Object.keys(snapshot.teamSnapshots).length : 0;
+          console.log('Clubs in standings:', clubsCount);
+          console.log('Team snapshots:', teamSnapshotCount);
+
+          // La Liga has 20 clubs. Allow a small slack of 2 (e.g. mid-season
+          // promotion/relegation paperwork) but anything below 18 is broken.
+          const MIN_CLUBS = 18;
+          if (clubsCount < MIN_CLUBS) {
+            console.error('::error::Standings has only ' + clubsCount + ' clubs (expected ≥' + MIN_CLUBS + '). Refusing to commit a degraded snapshot.');
+            process.exit(1);
+          }
+
+          fs.writeFileSync(process.env.GITHUB_OUTPUT, 'clubs_count=' + clubsCount + '\nteam_snapshots=' + teamSnapshotCount + '\n', { flag: 'a' });
+          "
+
       - name: Check for snapshot changes
         id: check_changes
         run: |
@@ -58,7 +103,10 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add src/data/laLigaSnapshot.ts
-          git commit -m "chore: refresh la liga snapshot [automated]"
+          # `[skip ci]` prevents the auto-commit from triggering CI on its own
+          # change — the snapshot refresh runs on its own schedule, so a CI
+          # rebuild on every commit would just burn minutes.
+          git commit -m "chore: refresh la liga snapshot [automated] [skip ci]"
           # Retry on push rejection — main can move during the multi-minute
           # snapshot refresh. Rebase the single snapshot commit onto the
           # latest origin/main and try again. Bail on a real conflict.
@@ -89,6 +137,11 @@ jobs:
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
           echo "**Schedule:** Daily at 06:30 UTC" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${{ steps.verify_quality.outputs.clubs_count }}" ]; then
+            echo "**Clubs in standings:** ${{ steps.verify_quality.outputs.clubs_count }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Team snapshots:** ${{ steps.verify_quality.outputs.team_snapshots }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          fi
           if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
             echo "✅ La Liga snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
           else

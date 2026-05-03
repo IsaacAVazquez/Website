@@ -18,17 +18,21 @@ jest.mock("@/lib/premierLeagueSnapshot", () => ({
     generatedAt: "2026-04-03T00:00:00.000Z",
   })),
   getPremierLeagueTeamSnapshot: jest.fn(),
+  isPremierLeagueTeamIdShape: jest.fn(),
   isValidPremierLeagueTeamId: jest.fn(),
 }));
 
 import { GET } from "../route";
 import {
   getPremierLeagueTeamSnapshot,
+  isPremierLeagueTeamIdShape,
   isValidPremierLeagueTeamId,
 } from "@/lib/premierLeagueSnapshot";
 
 const mockGetPremierLeagueTeamSnapshot =
   getPremierLeagueTeamSnapshot as jest.MockedFunction<typeof getPremierLeagueTeamSnapshot>;
+const mockIsPremierLeagueTeamIdShape =
+  isPremierLeagueTeamIdShape as jest.MockedFunction<typeof isPremierLeagueTeamIdShape>;
 const mockIsValidPremierLeagueTeamId =
   isValidPremierLeagueTeamId as jest.MockedFunction<typeof isValidPremierLeagueTeamId>;
 
@@ -42,8 +46,9 @@ describe("GET /api/premier-league/teams/[teamId]", () => {
     jest.restoreAllMocks();
   });
 
-  it("rejects invalid team ids before hitting the data loader", async () => {
-    mockIsValidPremierLeagueTeamId.mockReturnValue(false);
+  it("rejects malformed team ids with a 400 before hitting the data loader", async () => {
+    // "abc" is not a numeric PL id, so the shape check rejects it first.
+    mockIsPremierLeagueTeamIdShape.mockReturnValue(false);
 
     const response = await GET(new Request("http://localhost:3000"), {
       params: Promise.resolve({ teamId: "abc" }),
@@ -52,10 +57,27 @@ describe("GET /api/premier-league/teams/[teamId]", () => {
 
     expect(response.status).toBe(400);
     expect(body.error).toMatch(/invalid team id/i);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(mockGetPremierLeagueTeamSnapshot).not.toHaveBeenCalled();
+  });
+
+  it("returns 404 with no-store when the id has the right shape but isn't in the snapshot", async () => {
+    mockIsPremierLeagueTeamIdShape.mockReturnValue(true);
+    mockIsValidPremierLeagueTeamId.mockReturnValue(false);
+
+    const response = await GET(new Request("http://localhost:3000"), {
+      params: Promise.resolve({ teamId: "9999" }),
+    });
+    const body = await response.json();
+
+    expect(response.status).toBe(404);
+    expect(body.error).toMatch(/snapshot/i);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
     expect(mockGetPremierLeagueTeamSnapshot).not.toHaveBeenCalled();
   });
 
   it("returns the club snapshot with cache headers", async () => {
+    mockIsPremierLeagueTeamIdShape.mockReturnValue(true);
     mockIsValidPremierLeagueTeamId.mockReturnValue(true);
     mockGetPremierLeagueTeamSnapshot.mockResolvedValue({
       team: {
@@ -98,6 +120,7 @@ describe("GET /api/premier-league/teams/[teamId]", () => {
   });
 
   it("returns a stable empty payload when the snapshot team lookup fails", async () => {
+    mockIsPremierLeagueTeamIdShape.mockReturnValue(true);
     mockIsValidPremierLeagueTeamId.mockReturnValue(true);
     mockGetPremierLeagueTeamSnapshot.mockRejectedValue(
       Object.assign(new Error("Premier League team snapshot was not found."), {
@@ -114,5 +137,7 @@ describe("GET /api/premier-league/teams/[teamId]", () => {
     expect(body.error).toMatch(/snapshot/i);
     expect(body.team).toBeNull();
     expect(body.recentFixtures).toEqual([]);
+    // Errors must NOT be cached by the CDN.
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
   });
 });

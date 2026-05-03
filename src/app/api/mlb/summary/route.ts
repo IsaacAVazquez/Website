@@ -4,14 +4,19 @@ import {
   getMlbSummarySnapshot,
 } from "@/lib/mlbSnapshot";
 
-const CACHE_HEADERS = {
+const SUCCESS_CACHE_HEADERS = {
   "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
+};
+// Errors (4xx/5xx) must NOT be cached by the CDN — otherwise a transient
+// upstream failure poisons the cache for the full success TTL.
+const ERROR_CACHE_HEADERS = {
+  "Cache-Control": "no-store",
 };
 
 export async function GET() {
   try {
     const summary = await getMlbSummarySnapshot();
-    return NextResponse.json(summary, { headers: CACHE_HEADERS });
+    return NextResponse.json(summary, { headers: SUCCESS_CACHE_HEADERS });
   } catch (error) {
     const err = error as Error & { status?: number };
 
@@ -26,7 +31,7 @@ export async function GET() {
       },
       {
         status: err.status ?? 500,
-        headers: CACHE_HEADERS,
+        headers: ERROR_CACHE_HEADERS,
       }
     );
   }

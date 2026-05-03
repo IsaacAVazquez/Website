@@ -303,33 +303,51 @@ function buildTeamFormSummary(teamIdValue: string, fixtures: NbaFixture[]): NbaF
   );
 }
 
-async function fetchEspnJson<T>(url: string, revalidateSeconds: number): Promise<T> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: { Accept: "application/json" },
-      next: { revalidate: revalidateSeconds },
-    });
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw createNbaDataError("Requested NBA resource was not found.", 404);
-      }
-      throw createNbaDataError(
-        "Unable to load NBA data from the upstream provider.",
-        response.status >= 500 ? 503 : 502
-      );
+async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Promise<T> {
+  const response = await fetch(url, {
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    headers: { Accept: "application/json" },
+    next: { revalidate: revalidateSeconds },
+  });
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw createNbaDataError("Requested NBA resource was not found.", 404);
     }
-    return (await response.json()) as T;
-  } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      throw createNbaDataError("NBA data provider timed out.", 504);
-    }
-    throw error;
-  } finally {
-    clearTimeout(timeout);
+    throw createNbaDataError(
+      "Unable to load NBA data from the upstream provider.",
+      response.status >= 500 ? 503 : 502
+    );
   }
+  return (await response.json()) as T;
+}
+
+/**
+ * Wraps the per-attempt fetch in a 3-attempt retry. Backs off on 5xx and on
+ * network/timeout errors, but NOT on 4xx (client-side errors won't recover).
+ * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
+ */
+async function fetchEspnJson<T>(url: string, revalidateSeconds: number): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      return await fetchEspnJsonOnce<T>(url, revalidateSeconds);
+    } catch (error) {
+      lastError = error;
+      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
+        if (attempt < 2) {
+          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+          continue;
+        }
+        throw createNbaDataError("NBA data provider timed out.", 504);
+      }
+      const status = (error as NbaDataError).status;
+      if (typeof status === "number" && status >= 400 && status < 500) throw error;
+      if (attempt < 2) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+      }
+    }
+  }
+  throw lastError;
 }
 
 function inferConference(group: EspnStandingsGroup): NbaConference {
@@ -708,18 +726,19 @@ export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }
     for (const team of [...summary.teamsByConference.east, ...summary.teamsByConference.west]) {
       conferenceById.set(team.id, team.conference);
     }
-    const entries: Array<[string, NbaTeamSnapshot]> = [];
+    // Start from the prior snapshots so a per-team failure preserves that
+    // team's previous data instead of dropping it from the snapshot.
+    teamSnapshots = { ...readExistingTeamSnapshots(NBA_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
       await delay(TEAM_FETCH_DELAY_MS);
       const conference = conferenceById.get(team.id) ?? "east";
       try {
         const snap = await getNbaTeamSnapshot(team.id, conference);
-        entries.push([team.id, { ...snap, generatedAt }]);
+        teamSnapshots[team.id] = { ...snap, generatedAt };
       } catch (err) {
-        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message}`);
+        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
       }
     }
-    teamSnapshots = Object.fromEntries(entries);
   }
 
   return {

@@ -248,37 +248,55 @@ function buildTeamFormSummary(teamId: string, fixtures: LaLigaFixture[]): LaLiga
   );
 }
 
-async function fetchFootballDataJson<T>(path: string, revalidateSeconds: number): Promise<T> {
+async function fetchFootballDataJsonOnce<T>(path: string, revalidateSeconds: number): Promise<T> {
   const token = getFootballDataToken();
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-  try {
-    const response = await fetch(`${FOOTBALL_DATA_BASE_URL}${path}`, {
-      headers: { "X-Auth-Token": token },
-      signal: controller.signal,
-      next: { revalidate: revalidateSeconds },
-    });
-    if (!response.ok) {
-      if (response.status === 401 || response.status === 403) {
-        throw createLaLigaDataError("La Liga data provider rejected the configured API token.", 503);
-      }
-      if (response.status === 404) {
-        throw createLaLigaDataError("Requested La Liga resource was not found.", 404);
-      }
-      throw createLaLigaDataError(
-        "Unable to load La Liga data from the upstream provider.",
-        response.status >= 500 ? 503 : 502
-      );
+  const response = await fetch(`${FOOTBALL_DATA_BASE_URL}${path}`, {
+    headers: { "X-Auth-Token": token },
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    next: { revalidate: revalidateSeconds },
+  });
+  if (!response.ok) {
+    if (response.status === 401 || response.status === 403) {
+      throw createLaLigaDataError("La Liga data provider rejected the configured API token.", 503);
     }
-    return (await response.json()) as T;
-  } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      throw createLaLigaDataError("La Liga data provider timed out.", 504);
+    if (response.status === 404) {
+      throw createLaLigaDataError("Requested La Liga resource was not found.", 404);
     }
-    throw error;
-  } finally {
-    clearTimeout(timeout);
+    throw createLaLigaDataError(
+      "Unable to load La Liga data from the upstream provider.",
+      response.status >= 500 ? 503 : 502
+    );
   }
+  return (await response.json()) as T;
+}
+
+/**
+ * Wraps the per-attempt fetch in a 3-attempt retry. Backs off on 5xx and on
+ * network/timeout errors, but NOT on 4xx (client-side errors won't recover).
+ * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
+ */
+async function fetchFootballDataJson<T>(path: string, revalidateSeconds: number): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      return await fetchFootballDataJsonOnce<T>(path, revalidateSeconds);
+    } catch (error) {
+      lastError = error;
+      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
+        if (attempt < 2) {
+          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+          continue;
+        }
+        throw createLaLigaDataError("La Liga data provider timed out.", 504);
+      }
+      const status = (error as FootballDataError).status;
+      if (typeof status === "number" && status >= 400 && status < 500) throw error;
+      if (attempt < 2) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+      }
+    }
+  }
+  throw lastError;
 }
 
 function buildQueryString(params: Record<string, string | number>): string {
@@ -448,18 +466,19 @@ export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolea
     teamSnapshots = readExistingTeamSnapshots(LA_LIGA_SNAPSHOT_PATH);
     console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
   } else {
-    const entries: Array<[string, LaLigaTeamSnapshot]> = [];
+    // Start from the prior snapshots so a per-team failure preserves that
+    // team's previous data instead of dropping it from the snapshot.
+    teamSnapshots = { ...readExistingTeamSnapshots(LA_LIGA_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
       await delay(TEAM_FETCH_DELAY_MS);
       const snapKey = team.tla?.toLowerCase() || team.id;
       try {
         const snap = await getLaLigaTeamSnapshot(team.id);
-        entries.push([snapKey, { ...snap, generatedAt }]);
+        teamSnapshots[snapKey] = { ...snap, generatedAt };
       } catch (err) {
-        console.warn(`  Skipping team ${snapKey} (${team.shortName}): ${(err as Error).message}`);
+        console.warn(`  Skipping team ${snapKey} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
       }
     }
-    teamSnapshots = Object.fromEntries(entries);
   }
 
   return {

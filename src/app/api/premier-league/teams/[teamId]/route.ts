@@ -2,11 +2,18 @@ import { NextResponse } from "next/server";
 import {
   createEmptyPremierLeagueTeamSnapshot,
   getPremierLeagueTeamSnapshot,
+  isPremierLeagueTeamIdShape,
   isValidPremierLeagueTeamId,
 } from "@/lib/premierLeagueSnapshot";
 
-const CACHE_HEADERS = {
+const SUCCESS_CACHE_HEADERS = {
   "Cache-Control": "public, max-age=300, stale-while-revalidate=900",
+};
+// Errors (4xx/5xx) must NOT be cached by the CDN — otherwise a transient
+// upstream failure or malformed input poisons the cache for the full success
+// TTL. Distinguishes 400 (bad input) from 404 (valid input, unknown id).
+const ERROR_CACHE_HEADERS = {
+  "Cache-Control": "no-store",
 };
 
 export async function GET(
@@ -15,7 +22,9 @@ export async function GET(
 ) {
   const { teamId } = await params;
 
-  if (!isValidPremierLeagueTeamId(teamId)) {
+  // Defense-in-depth: regex shape check first, return 400 for malformed ids
+  // so we never look them up against the snapshot dictionary.
+  if (!isPremierLeagueTeamIdShape(teamId)) {
     return NextResponse.json(
       {
         ...createEmptyPremierLeagueTeamSnapshot(),
@@ -23,7 +32,21 @@ export async function GET(
       },
       {
         status: 400,
-        headers: CACHE_HEADERS,
+        headers: ERROR_CACHE_HEADERS,
+      }
+    );
+  }
+
+  // Valid shape but not in our snapshot — that's a 404, not a 400.
+  if (!isValidPremierLeagueTeamId(teamId)) {
+    return NextResponse.json(
+      {
+        ...createEmptyPremierLeagueTeamSnapshot(),
+        error: "Premier League team snapshot was not found.",
+      },
+      {
+        status: 404,
+        headers: ERROR_CACHE_HEADERS,
       }
     );
   }
@@ -32,7 +55,7 @@ export async function GET(
     const snapshot = await getPremierLeagueTeamSnapshot(teamId);
 
     return NextResponse.json(snapshot, {
-      headers: CACHE_HEADERS,
+      headers: SUCCESS_CACHE_HEADERS,
     });
   } catch (error) {
     const err = error as Error & { status?: number };
@@ -48,7 +71,7 @@ export async function GET(
       },
       {
         status: err.status ?? 500,
-        headers: CACHE_HEADERS,
+        headers: ERROR_CACHE_HEADERS,
       }
     );
   }

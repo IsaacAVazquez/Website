@@ -106,25 +106,20 @@ describe("GET /api/investments/data/[symbol]", () => {
     expect(mockGetInvestmentContext).not.toHaveBeenCalled();
   });
 
-  it("returns a curated-universe 404 for valid non-curated symbols", async () => {
-    mockGetInvestmentContext.mockRejectedValue(
-      Object.assign(new Error("SHOP is not in the curated research universe."), {
-        status: 404,
-        source: "prefetched",
-        capabilities: {},
-        lastUpdated: null,
-      })
-    );
-
-    const response = await makeRequest("SHOP");
+  it("returns 404 for valid non-curated symbols and does not leak internal state", async () => {
+    // ZZZZZ is well-formed but not in the curated allowlist (loaded from
+    // public/data/investments/index.json). The route now rejects it before
+    // doing any filesystem access, so the mocked downstream is never hit.
+    const response = await makeRequest("ZZZZZ");
     const body = await response.json();
 
     expect(response.status).toBe(404);
-    expect(body.source).toBe("prefetched");
-    expect(body.error).toMatch(/curated research universe/i);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body).toEqual({ error: "Symbol not found" });
+    expect(mockGetInvestmentContext).not.toHaveBeenCalled();
   });
 
-  it("returns a dataset-specific 503 when curated research data is unavailable", async () => {
+  it("returns a generic 503 without leaking internal source/capabilities when the dataset is unavailable", async () => {
     mockGetInvestmentContext.mockRejectedValue(
       Object.assign(new Error("Curated investments dataset is temporarily unavailable."), {
         status: 503,
@@ -138,14 +133,18 @@ describe("GET /api/investments/data/[symbol]", () => {
     const body = await response.json();
 
     expect(response.status).toBe(503);
-    expect(body.source).toBe("prefetched");
-    expect(body.error).toMatch(/curated investments dataset/i);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body).toEqual({ error: "Internal server error" });
+    expect(body.source).toBeUndefined();
+    expect(body.capabilities).toBeUndefined();
     expect(mockGetInvestmentContext).toHaveBeenCalledWith("AAPL", {
       assetOrigin: "http://localhost:3000",
     });
   });
 
-  it("preserves freshness metadata when a requested section is unavailable", async () => {
+  it("returns a trimmed 404 without leaking freshness metadata when a section is unavailable", async () => {
+    // Hardening: the route no longer echoes internal freshness, source,
+    // capabilities, or the upstream error message on failure responses.
     mockGetInvestmentContext.mockResolvedValue({
       source: "prefetched",
       capabilities: { info: true, compare: true },
@@ -173,9 +172,7 @@ describe("GET /api/investments/data/[symbol]", () => {
         lastUpdated: "2026-03-16T08:00:00.000Z",
         freshness: {
           snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
-          sections: {
-            price: "2026-03-15",
-          },
+          sections: { price: "2026-03-15" },
         },
       })
     );
@@ -184,12 +181,9 @@ describe("GET /api/investments/data/[symbol]", () => {
     const body = await response.json();
 
     expect(response.status).toBe(404);
-    expect(body.error).toMatch(/section "news" not available/i);
-    expect(body.freshness).toEqual({
-      snapshotBuiltAt: "2026-03-16T08:00:00.000Z",
-      sections: {
-        price: "2026-03-15",
-      },
-    });
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body).toEqual({ error: "Symbol not found" });
+    expect(body.freshness).toBeUndefined();
+    expect(body.source).toBeUndefined();
   });
 });

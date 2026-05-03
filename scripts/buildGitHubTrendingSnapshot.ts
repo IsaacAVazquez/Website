@@ -158,9 +158,19 @@ async function readPreviousSnapshot(
       /export const githubTrendingSnapshot: GitHubTrendingSnapshot = (\{[\s\S]*\});\s*$/
     );
     if (!match) {
+      logger.warn(
+        "Previous GitHub trending snapshot did not match expected export pattern. Continuing without diff base."
+      );
       return null;
     }
-    return JSON.parse(match[1]) as GitHubTrendingSnapshot;
+    try {
+      return JSON.parse(match[1]) as GitHubTrendingSnapshot;
+    } catch (parseError) {
+      logger.warn(
+        `Failed to JSON.parse the previous GitHub trending snapshot body: ${String(parseError)}`
+      );
+      return null;
+    }
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== "ENOENT") {
       logger.warn(`Could not read previous GitHub trending snapshot: ${String(error)}`);
@@ -182,6 +192,7 @@ async function fetchSegment(
       "User-Agent": "isaac-vazquez-github-trending-pulse",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
+    signal: AbortSignal.timeout(15_000),
   });
 
   const payload = (await response.json()) as GitHubSearchResponse;
@@ -240,7 +251,11 @@ export const githubTrendingSnapshot: GitHubTrendingSnapshot = ${JSON.stringify(s
 `;
 
   await fs.mkdir(path.dirname(snapshotPath), { recursive: true });
-  await fs.writeFile(snapshotPath, fileContents, "utf8");
+  // Atomic write: write to a temp file first, then rename. This prevents
+  // build/readers from seeing a partial snapshot if the process is interrupted.
+  const tmpPath = `${snapshotPath}.tmp-${process.pid}-${Date.now()}`;
+  await fs.writeFile(tmpPath, fileContents, "utf8");
+  await fs.rename(tmpPath, snapshotPath);
 
   logger.log(
     `GitHub trending snapshot written: ${snapshot.totals.repositories} repos, ${snapshot.totals.languages} languages, ${snapshot.totals.topics} topics.`

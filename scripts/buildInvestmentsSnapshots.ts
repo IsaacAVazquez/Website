@@ -65,13 +65,16 @@ async function readJson<T>(filePath: string): Promise<T | undefined> {
   }
 }
 
-async function removeLegacyFiles(symbolDir: string): Promise<void> {
-  const entries = await fs.readdir(symbolDir);
-  await Promise.all(
-    entries
-      .filter((fileName) => fileName.endsWith(".json") && fileName !== "snapshot.json")
-      .map((fileName) => fs.unlink(path.join(symbolDir, fileName)))
-  );
+/**
+ * Atomically write `content` to `filePath`. Writes to a temp file in the
+ * same directory and then renames over the destination. This avoids
+ * leaving truncated/half-written files if the process is interrupted
+ * mid-write, which the prior direct write was vulnerable to.
+ */
+async function writeJsonAtomic(filePath: string, content: string): Promise<void> {
+  const tmpPath = `${filePath}.tmp`;
+  await fs.writeFile(tmpPath, content, "utf8");
+  await fs.rename(tmpPath, filePath);
 }
 
 async function buildSymbolSnapshot(
@@ -101,12 +104,15 @@ async function buildSymbolSnapshot(
   }
 
   const snapshot = buildInvestmentSnapshot(symbol, lastUpdated, rawSections);
-  await fs.writeFile(
+  await writeJsonAtomic(
     path.join(symbolDir, "snapshot.json"),
-    `${JSON.stringify(snapshot, null, 2)}\n`,
-    "utf8"
+    `${JSON.stringify(snapshot, null, 2)}\n`
   );
-  await removeLegacyFiles(symbolDir);
+  // NOTE: previously we deleted every per-section raw file here ("legacy
+  // cleanup"). That meant any future bug in buildInvestmentSnapshot forced
+  // a full ~25-min Python re-fetch to recover. We now keep the raw files
+  // on disk so a snapshot rebuild is a fast local-only operation. Disk
+  // usage for the curated universe is small (~a few MB).
 }
 
 async function main() {

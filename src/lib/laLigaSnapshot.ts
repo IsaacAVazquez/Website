@@ -67,8 +67,18 @@ export function createEmptyLaLigaTeamSnapshot(): LaLigaTeamSnapshot {
   };
 }
 
+// La Liga snapshot keys are mostly TLAs (lowercase 3-letter codes) with a
+// numeric fallback; either form passes the shape check below. The regex
+// gates malformed input before we look it up in the snapshot dictionary so
+// route handlers can return 400 (bad input) vs 404 (unknown id).
+const LA_LIGA_TEAM_ID_PATTERN = /^([1-9]\d{0,4}|[a-z0-9]{2,4})$/i;
+
+export function isLaLigaTeamIdShape(teamId: string): boolean {
+  return LA_LIGA_TEAM_ID_PATTERN.test(teamId);
+}
+
 export function isValidLaLigaTeamId(teamId: string): boolean {
-  return teamId in laLigaSnapshot.teamSnapshots;
+  return LA_LIGA_TEAM_ID_PATTERN.test(teamId) && teamId in laLigaSnapshot.teamSnapshots;
 }
 
 export async function getLaLigaSummarySnapshot(): Promise<LaLigaSummarySnapshot> {

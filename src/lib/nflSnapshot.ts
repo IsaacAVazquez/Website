@@ -65,8 +65,17 @@ export function createEmptyNflTeamSnapshot(): NFLTeamSnapshot {
   };
 }
 
+// NFL snapshot keys are lowercase 2-4 letter abbreviations (e.g. "kc",
+// "buf"). The regex check runs before membership so a malformed id can be
+// rejected as a 400 by route handlers without touching the snapshot dict.
+const NFL_TEAM_ID_PATTERN = /^[a-z]{2,4}$/i;
+
+export function isNflTeamIdShape(teamId: string): boolean {
+  return NFL_TEAM_ID_PATTERN.test(teamId);
+}
+
 export function isValidNflTeamId(teamId: string): boolean {
-  return teamId in nflSnapshot.teamSnapshots;
+  return NFL_TEAM_ID_PATTERN.test(teamId) && teamId in nflSnapshot.teamSnapshots;
 }
 
 export async function getNflSummarySnapshot(): Promise<NFLSummarySnapshot> {

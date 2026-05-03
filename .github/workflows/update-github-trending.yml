@@ -39,6 +39,49 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_ENV: production
 
+      - name: Verify snapshot quality
+        id: verify_quality
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const SNAPSHOT_PATH = 'src/data/githubTrendingSnapshot.ts';
+          const MIN_REPOS = 50; // 14 segments x ~10 repos = ~140; 50 is a safe floor.
+
+          if (!fs.existsSync(SNAPSHOT_PATH)) {
+            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
+          const match = source.match(
+            /export const githubTrendingSnapshot: GitHubTrendingSnapshot = (\{[\s\S]*\});\s*\$/
+          );
+          if (!match) {
+            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          let snapshot;
+          try {
+            snapshot = JSON.parse(match[1]);
+          } catch (err) {
+            console.error('::error::JSON.parse failed on snapshot body: ' + String(err));
+            process.exit(1);
+          }
+
+          const repoCount = Number(snapshot && snapshot.totals && snapshot.totals.repositories);
+          console.log('Snapshot repository count:', repoCount);
+
+          if (!Number.isFinite(repoCount) || repoCount < MIN_REPOS) {
+            console.error('::error::Refusing to commit a degraded snapshot. Got ' + repoCount + ' repos; expected at least ' + MIN_REPOS + '.');
+            process.exit(1);
+          }
+
+          fs.writeFileSync(process.env.GITHUB_OUTPUT, 'repo_count=' + repoCount + '\n', { flag: 'a' });
+          "
+
       - name: Check for snapshot changes
         id: check_changes
         run: |
@@ -56,7 +99,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add src/data/githubTrendingSnapshot.ts
-          git commit -m "chore: refresh github trending snapshot [automated]"
+          git commit -m "chore: refresh github trending snapshot [automated] [skip ci]"
           for attempt in 1 2 3 4 5; do
             if git push origin HEAD:main; then
               exit 0

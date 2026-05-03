@@ -276,6 +276,26 @@ export function parseFantasyProsPublicConsensusPage(
   };
 }
 
+/**
+ * Error thrown when the FantasyPros public consensus fetch returns a non-2xx
+ * response. Exposes the HTTP status and the original response headers so the
+ * retry logic in `scripts/buildFantasyPositionData.ts` can decide whether the
+ * request is retryable and honor a `Retry-After` hint.
+ */
+export class FantasyProsPublicFetchError extends Error {
+  readonly status: number;
+  readonly headers: Headers;
+  readonly url: string;
+
+  constructor(message: string, status: number, headers: Headers, url: string) {
+    super(message);
+    this.name = "FantasyProsPublicFetchError";
+    this.status = status;
+    this.headers = headers;
+    this.url = url;
+  }
+}
+
 export async function fetchFantasyProsPublicConsensusBoard(
   scoringFormat: ScoringFormat,
   position: FantasyPublicPosition
@@ -291,8 +311,11 @@ export async function fetchFantasyProsPublicConsensusBoard(
   });
 
   if (!response.ok) {
-    throw new Error(
-      `Failed to fetch FantasyPros public ${position} consensus board from ${sourceUrl}: ${response.status}`
+    throw new FantasyProsPublicFetchError(
+      `Failed to fetch FantasyPros public ${position} consensus board from ${sourceUrl}: ${response.status}`,
+      response.status,
+      response.headers,
+      sourceUrl
     );
   }
 

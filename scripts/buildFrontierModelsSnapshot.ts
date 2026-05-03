@@ -46,7 +46,11 @@ export const frontierModelsSnapshot: FrontierModelsSnapshot = ${JSON.stringify(s
 `;
 
   await fs.mkdir(path.dirname(snapshotPath), { recursive: true });
-  await fs.writeFile(snapshotPath, fileContents, "utf8");
+  // Atomic write: write to a temp file first, then rename. This prevents
+  // build/readers from seeing a partial snapshot if the process is interrupted.
+  const tmpPath = `${snapshotPath}.tmp-${process.pid}-${Date.now()}`;
+  await fs.writeFile(tmpPath, fileContents, "utf8");
+  await fs.rename(tmpPath, snapshotPath);
 
   logger.log(
     `Frontier models snapshot written: ${snapshot.models.length} models across ${snapshot.providers.length} providers.`

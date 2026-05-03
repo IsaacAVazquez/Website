@@ -357,7 +357,12 @@ async function readExistingManifest(
 
 async function writeJsonFile(filePath: string, data: unknown): Promise<void> {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
-  await fs.writeFile(filePath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  // Atomic write: write to a temp file first, then rename. This prevents
+  // readers from seeing a partial/truncated JSON file if the process is
+  // interrupted mid-write.
+  const tmpPath = `${filePath}.tmp-${process.pid}-${Date.now()}`;
+  await fs.writeFile(tmpPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  await fs.rename(tmpPath, filePath);
 }
 
 function hashRemoteUrl(value: string): string {

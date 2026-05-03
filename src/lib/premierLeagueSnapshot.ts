@@ -70,8 +70,17 @@ export function createEmptyPremierLeagueTeamSnapshot(): PremierLeagueTeamSnapsho
   };
 }
 
+// Regex shape check (PL ids are positive integers, max 5 digits) runs before
+// membership so a malformed id can be rejected as a 400 by route handlers
+// without touching the snapshot dictionary.
+const PL_TEAM_ID_PATTERN = /^[1-9]\d{0,4}$/;
+
+export function isPremierLeagueTeamIdShape(teamId: string): boolean {
+  return PL_TEAM_ID_PATTERN.test(teamId);
+}
+
 export function isValidPremierLeagueTeamId(teamId: string): boolean {
-  return teamId in premierLeagueSnapshot.teamSnapshots;
+  return PL_TEAM_ID_PATTERN.test(teamId) && teamId in premierLeagueSnapshot.teamSnapshots;
 }
 
 export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {

@@ -481,23 +481,47 @@ const PROVIDER_FETCHERS = {
 } as const;
 
 // ---------------------------------------------------------------------------
-// Handler
+// Single-flight in-memory cache
 // ---------------------------------------------------------------------------
+//
+// This route fans out to ~10 external ATS sources, plus 50+ HTML scrape
+// requests for direct sources like Miro. Without coalescing, simultaneous
+// requests would multiply the upstream load by N. Single-flight caches the
+// in-flight promise per cache key so concurrent callers share the result.
+//
+// Single Netlify instance — no Redis needed.
 
-export async function GET(request: NextRequest) {
-  const param = request.nextUrl.searchParams.get("companies");
-  const requestedIds = param
-    ? param
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean)
-    : MBA_COMPANIES.filter((c) => c.atsType !== "manual").map((c) => c.id);
+const SUCCESS_TTL_MS = 30 * 60 * 1000; // 30 minutes
+const ERROR_TTL_MS = 2 * 60 * 1000; // 2 minutes
+const ERROR_CACHE_CONTROL_HEADER = "no-store";
+const SUCCESS_CACHE_CONTROL_HEADER =
+  "public, s-maxage=1800, stale-while-revalidate=3600";
 
-  const targets = MBA_COMPANIES.filter(
-    (c): c is PollableMBACompany =>
-      c.atsType !== "manual" && requestedIds.includes(c.id)
-  );
+interface JobsFetchResult {
+  body: MBAJobsApiResponse;
+  isError: boolean;
+}
 
+interface JobsCacheEntry {
+  promise: Promise<JobsFetchResult>;
+  completedAt: number | null;
+  value: JobsFetchResult | null;
+}
+
+const jobsCache = new Map<string, JobsCacheEntry>();
+
+function isJobsFresh(entry: JobsCacheEntry, now: number): boolean {
+  if (entry.completedAt === null || entry.value === null) {
+    return true; // in-flight
+  }
+  const ttl = entry.value.isError ? ERROR_TTL_MS : SUCCESS_TTL_MS;
+  return now - entry.completedAt < ttl;
+}
+
+async function fetchAllJobs(
+  requestedIds: string[],
+  targets: PollableMBACompany[]
+): Promise<JobsFetchResult> {
   const errors: MBAJobsApiResponse["errors"] = [];
 
   const results = await Promise.allSettled(
@@ -526,16 +550,109 @@ export async function GET(request: NextRequest) {
     (a, b) => getPostedAtTime(b.postedAt) - getPostedAtTime(a.postedAt)
   );
 
-  const body: MBAJobsApiResponse = {
-    jobs,
-    fetchedAt: new Date().toISOString(),
-    errors,
-    companiesRequested: requestedIds,
+  // If every target failed, treat as an error so the cache TTL is short.
+  const isError = jobs.length === 0 && errors.length > 0;
+
+  return {
+    body: {
+      jobs,
+      fetchedAt: new Date().toISOString(),
+      errors,
+      companiesRequested: requestedIds,
+    },
+    isError,
+  };
+}
+
+function getOrFetchJobs(
+  cacheKey: string,
+  requestedIds: string[],
+  targets: PollableMBACompany[]
+): Promise<JobsFetchResult> {
+  const now = Date.now();
+  const existing = jobsCache.get(cacheKey);
+
+  if (existing && isJobsFresh(existing, now)) {
+    return existing.promise;
+  }
+
+  const entry: JobsCacheEntry = {
+    promise: Promise.resolve<JobsFetchResult>({
+      body: { jobs: [], fetchedAt: "", errors: [], companiesRequested: [] },
+      isError: true,
+    }),
+    completedAt: null,
+    value: null,
   };
 
-  return NextResponse.json(body, {
+  entry.promise = (async () => {
+    try {
+      const result = await fetchAllJobs(requestedIds, targets);
+      entry.value = result;
+      entry.completedAt = Date.now();
+      return result;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "unknown error";
+      const result: JobsFetchResult = {
+        body: {
+          jobs: [],
+          fetchedAt: new Date().toISOString(),
+          errors: [{ companyId: "", companyName: "", message }],
+          companiesRequested: requestedIds,
+        },
+        isError: true,
+      };
+      entry.value = result;
+      entry.completedAt = Date.now();
+      return result;
+    }
+  })();
+
+  jobsCache.set(cacheKey, entry);
+  return entry.promise;
+}
+
+// ---------------------------------------------------------------------------
+// Handler
+// ---------------------------------------------------------------------------
+
+export async function GET(request: NextRequest) {
+  const param = request.nextUrl.searchParams.get("companies");
+  const requestedIds = param
+    ? param
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : MBA_COMPANIES.filter((c) => c.atsType !== "manual").map((c) => c.id);
+
+  const targets = MBA_COMPANIES.filter(
+    (c): c is PollableMBACompany =>
+      c.atsType !== "manual" && requestedIds.includes(c.id)
+  );
+
+  // Stable cache key: sorted, lowercased company ids.
+  const cacheKey = [...requestedIds]
+    .map((id) => id.toLowerCase())
+    .sort()
+    .join(",");
+
+  const result = await getOrFetchJobs(cacheKey, requestedIds, targets);
+
+  return NextResponse.json(result.body, {
     headers: {
-      "Cache-Control": "public, s-maxage=1800, stale-while-revalidate=3600",
+      "Cache-Control": result.isError
+        ? ERROR_CACHE_CONTROL_HEADER
+        : SUCCESS_CACHE_CONTROL_HEADER,
     },
   });
 }
+
+// Test-only side channel. Next.js route-type checking forbids non-handler
+// exports, so the cache reset is hung off a Symbol on `globalThis` instead.
+// Tests call `(globalThis as any)[Symbol.for(...)]()` between cases to clear
+// the module-level single-flight cache. Do not call this from production.
+(globalThis as Record<symbol, unknown>)[
+  Symbol.for("__mbaJobsCacheResetForTesting")
+] = (): void => {
+  jobsCache.clear();
+};

@@ -39,6 +39,46 @@ jobs:
         env:
           NODE_ENV: production
 
+      # Quality gate: a partial scrape (e.g. FantasyPros throttling some
+      # positions) can produce a snapshot with mostly empty boards and slip
+      # past `git diff` because the file does change. Refuse to commit if any
+      # of the three scoring formats has fewer than the minimum player count.
+      - name: Verify fantasy snapshot quality
+        id: verify_quality
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+
+          const MIN_PLAYERS = 100;
+          const DATA_DIR = path.join('public', 'data', 'fantasy');
+          const formats = ['ppr', 'half_ppr', 'standard'];
+          const failures = [];
+
+          for (const format of formats) {
+            const filePath = path.join(DATA_DIR, format + '.json');
+            try {
+              const snapshot = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+              const overallCount = Array.isArray(snapshot.overall) ? snapshot.overall.length : 0;
+              console.log(format + ': overall=' + overallCount);
+              if (overallCount < MIN_PLAYERS) {
+                failures.push(format + ' overall has ' + overallCount + ' players (need >= ' + MIN_PLAYERS + ')');
+              }
+            } catch (err) {
+              failures.push(format + ' failed to parse: ' + err.message);
+            }
+          }
+
+          if (failures.length > 0) {
+            console.error('::error::Fantasy snapshot quality gate failed:');
+            for (const failure of failures) {
+              console.error('::error::  - ' + failure);
+            }
+            process.exit(1);
+          }
+          console.log('All scoring formats have at least ' + MIN_PLAYERS + ' players. Quality gate passed.');
+          "
+
       - name: Check for snapshot changes
         id: check_changes
         run: |
@@ -66,7 +106,7 @@ jobs:
             public/data/fantasy/ppr.json \
             public/data/fantasy/half_ppr.json \
             public/data/fantasy/standard.json
-          git commit -m "chore: update fantasy football snapshots [automated]"
+          git commit -m "chore: update fantasy football snapshots [automated] [skip ci]"
           # Retry on push rejection — main can move during the multi-minute
           # snapshot refresh. Rebase the single snapshot commit onto the
           # latest origin/main and try again. Bail on a real conflict.

@@ -9,10 +9,21 @@
  */
 
 import { config } from "dotenv";
-import { writeFileSync } from "node:fs";
+import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 config({ path: resolve(__dirname, "../.env.local") });
 import { buildNbaSnapshot } from "../src/lib/nbaData";
+
+/**
+ * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
+ * destination file is never observed in a half-written state if the process is
+ * killed mid-write.
+ */
+function writeFileAtomic(path: string, content: string): void {
+  const tmp = `${path}.tmp`;
+  writeFileSync(tmp, content, "utf8");
+  renameSync(tmp, path);
+}
 
 async function main() {
   const leagueOnly = process.argv.includes("--league-only");
@@ -30,7 +41,7 @@ export const nbaSnapshot: NbaSnapshot = ${JSON.stringify(snapshot, null, 2)};
 `;
 
   const outPath = resolve(__dirname, "../src/data/nbaSnapshot.ts");
-  writeFileSync(outPath, output, "utf8");
+  writeFileAtomic(outPath, output);
   const east = snapshot.teamsByConference.east.length;
   const west = snapshot.teamsByConference.west.length;
   console.log(
