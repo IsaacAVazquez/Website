@@ -212,6 +212,7 @@ export function PremierLeagueClient({
 
   useEffect(() => {
     if (!selectedTeamId) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when no team is selected
       setLoadingTeamId(null);
       setTeamSnapshotError(null);
       return;

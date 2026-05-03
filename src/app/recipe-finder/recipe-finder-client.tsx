@@ -102,17 +102,13 @@ function totalMinutes(recipe: RecipeMatch["recipe"]): number {
 }
 
 export function RecipeFinderClient() {
-  const [pantry, setPantry] = useState<string[]>([]);
+  const [pantry, setPantry] = useState<string[]>(() => loadPantry());
   const [pantryDraft, setPantryDraft] = useState("");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<RecipeCategory | "all">("all");
   const [diet, setDiet] = useState<DietTag | "all">("all");
   const [view, setView] = useState<ViewId>("all");
   const [openRecipeId, setOpenRecipeId] = useState<string | null>(null);
-
-  useEffect(() => {
-    setPantry(loadPantry());
-  }, []);
 
   useEffect(() => {
     savePantry(pantry);

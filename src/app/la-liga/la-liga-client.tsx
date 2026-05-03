@@ -191,6 +191,7 @@ export function LaLigaClient({
 
   useEffect(() => {
     if (teamSnapshots[selectedClub.id]) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected club
       setLoadingClubId(null);
       setTeamSnapshotError(null);
       return;

@@ -71,8 +71,9 @@ function isMissionLaunchDetail(data: unknown): data is MissionLaunchDetail {
 export function SpaceXMissionControlClient({
   initialState,
   initialData,
-  renderedAtMs = Date.now(),
+  renderedAtMs: renderedAtMsProp,
 }: SpaceXMissionControlClientProps) {
+  const [renderedAtMs] = useState(() => renderedAtMsProp ?? Date.now());
   const router = useRouter();
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();

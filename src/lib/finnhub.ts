@@ -36,7 +36,7 @@ export function isValidSymbol(symbol: string): boolean {
   if (typeof symbol !== "string" || symbol.length === 0 || symbol.length > 10) {
     return false;
   }
-  return /^[A-Z][A-Z0-9]*([.\-][A-Z0-9]+)*$/.test(symbol);
+  return /^[A-Z][A-Z0-9]*([.-][A-Z0-9]+)*$/.test(symbol);
 }
 
 // ---------------------------------------------------------------------------

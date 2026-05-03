@@ -104,7 +104,7 @@ async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<Fantas
       } catch (apiError) {
         console.warn("Fantasy snapshot static fetch failed:", staticError);
         console.warn("Fantasy snapshot API fallback failed:", apiError);
-        throw new Error("Fantasy rankings are unavailable right now.");
+        throw new Error("Fantasy rankings are unavailable right now.", { cause: apiError });
       }
     })
     .then((rawSnapshot) => cacheNormalizedFantasySnapshot(scoring, rawSnapshot))

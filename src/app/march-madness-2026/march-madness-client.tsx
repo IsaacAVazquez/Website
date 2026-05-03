@@ -247,7 +247,7 @@ function TabBar<T extends string>({
     index: number,
   ) => {
     const last = items.length - 1;
-    let nextIndex: number | null = null;
+    let nextIndex!: number;
 
     switch (event.key) {
       case "ArrowRight":
@@ -268,7 +268,7 @@ function TabBar<T extends string>({
 
     event.preventDefault();
     const list = event.currentTarget.closest('[role="tablist"]');
-    if (!list || nextIndex === null) return;
+    if (!list) return;
     const next = list.querySelectorAll<HTMLButtonElement>('[role="tab"]')[nextIndex];
     if (next) {
       next.focus();
@@ -657,16 +657,13 @@ function RegionBracket({ data }: { data: RegionData }) {
 }
 
 function PicksSection() {
-  const [expanded, setExpanded] = useState<string | null>(null);
-
   // Hydrate the open pick from `?pick=...` so a shared link lands with the
   // referenced pick already expanded. We use replaceState below to keep the
   // URL in sync without spamming history.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const initial = new URL(window.location.href).searchParams.get("pick");
-    if (initial) setExpanded(initial);
-  }, []);
+  const [expanded, setExpanded] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    return new URL(window.location.href).searchParams.get("pick");
+  });
 
   function togglePick(id: string, isOpen: boolean) {
     const next = isOpen ? null : id;

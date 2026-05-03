@@ -716,7 +716,7 @@ function readExistingTeamSnapshots(filePath: string): Record<string, NbaTeamSnap
 export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<NbaSnapshot> {
   const summary = await getNbaSummary();
   const generatedAt = new Date().toISOString();
-  let teamSnapshots: Record<string, NbaTeamSnapshot> = {};
+  let teamSnapshots: Record<string, NbaTeamSnapshot>;
 
   if (options?.skipTeamSnapshots) {
     teamSnapshots = readExistingTeamSnapshots(NBA_SNAPSHOT_PATH);

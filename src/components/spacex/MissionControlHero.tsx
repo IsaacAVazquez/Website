@@ -40,6 +40,7 @@ function MissionCountdown({
   const [now, setNow] = useState(initialNow);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Subscribe to a 1s clock tick so the countdown UI re-renders; setState lives inside an interval callback and a one-time initial sync after mount
     setNow(Date.now());
 
     const intervalId = window.setInterval(() => {
@@ -74,10 +75,11 @@ export function MissionControlHero({
   summary,
   isLoading,
   error,
-  initialRenderTimestampMs = Date.now(),
+  initialRenderTimestampMs,
   onInspect,
   onRetry,
 }: MissionControlHeroProps) {
+  const [renderTimestampMs] = useState(() => initialRenderTimestampMs ?? Date.now());
   const heroLaunch = summary?.heroLaunch ?? null;
 
   if (isLoading && !heroLaunch) {
@@ -163,7 +165,7 @@ export function MissionControlHero({
             {heroLaunch.hasExactTime ? (
               <MissionCountdown
                 dateUtc={heroLaunch.dateUtc}
-                initialNow={initialRenderTimestampMs}
+                initialNow={renderTimestampMs}
               />
             ) : (
               <div className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))] px-4 py-2 text-sm font-semibold text-[var(--home-ink)]">

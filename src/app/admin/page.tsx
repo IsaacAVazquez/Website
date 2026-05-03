@@ -35,6 +35,7 @@ export default function AdminPage() {
           return `Authentication error: ${error}`;
       }
     })();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-shot mount-time read of URL search params; safe to surface auth error after first paint
     setLoginForm(prev => ({ ...prev, error: errorMessage }));
     window.history.replaceState({}, document.title, window.location.pathname);
   }, []);

@@ -51,6 +51,7 @@ export default async function SpaceXMissionControlPage({
 }: SpaceXMissionControlPageProps) {
   const initialState = normalizeMissionControlState(await searchParams);
   const initialData = await loadMissionControlInitialData(initialState);
+  // eslint-disable-next-line react-hooks/purity -- Server component (async); Date.now() is evaluated once per request, not during a client render
   const renderedAtMs = Date.now();
   const breadcrumbs = [
     { name: "Home", url: "/" },

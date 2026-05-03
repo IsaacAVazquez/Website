@@ -37,7 +37,17 @@ const token = process.env.FOOTBALL_DATA_API_TOKEN;
 const leagueOnly = process.argv.includes("--league-only");
 
 if (!token) {
-  console.log("⚽ FOOTBALL_DATA_API_TOKEN not set — skipping football snapshot update.");
+  // Use ::warning:: so this surfaces in GitHub Actions / Netlify build logs
+  // as a *warning*, not a buried info-level log line. Also write to stderr so
+  // it's visible even when stdout is captured/silenced.
+  const message =
+    "FOOTBALL_DATA_API_TOKEN not set — skipping football snapshot update. " +
+    "Football snapshots will not refresh on this build. " +
+    "Set the secret in GitHub Actions (or Netlify env vars) to re-enable.";
+  console.warn(`::warning::${message}`);
+  console.error(`⚠️  ${message}`);
+  // Still exit 0 — this is a soft skip so deploys without the secret still
+  // succeed (e.g. PR previews on forks). The visible warning is the signal.
   process.exit(0);
 }
 

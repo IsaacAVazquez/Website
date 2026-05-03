@@ -459,6 +459,7 @@ function HeadlinesView({
   const [visibleCount, setVisibleCount] = useState(HEADLINES_PAGE_SIZE);
   // Reset when the underlying article set changes (source filter, refresh).
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset pagination cursor when the underlying article set changes
     setVisibleCount(HEADLINES_PAGE_SIZE);
   }, [articles]);
 

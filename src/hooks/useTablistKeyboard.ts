@@ -16,7 +16,7 @@ export function useTablistKeyboard<T>(
   return useCallback(
     (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
       const last = items.length - 1;
-      let nextIndex: number | null = null;
+      let nextIndex!: number;
 
       switch (event.key) {
         case "ArrowRight":
@@ -43,7 +43,7 @@ export function useTablistKeyboard<T>(
       event.preventDefault();
       const target = event.currentTarget;
       const list = target.closest('[role="tablist"]');
-      if (!list || nextIndex === null) return;
+      if (!list) return;
       const next = list.querySelectorAll<HTMLButtonElement>('[role="tab"]')[nextIndex];
       if (next) {
         next.focus();

@@ -44,6 +44,7 @@ export function DraftSetup({ settings, onSaveSettings, onStartDraft }: DraftSetu
   const [isStarting, setIsStarting] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Sync local form state when external draft settings change (controlled-to-local mirror)
     setFormState(settings);
   }, [settings]);
 

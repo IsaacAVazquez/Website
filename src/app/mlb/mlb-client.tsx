@@ -190,6 +190,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   useEffect(() => {
     if (!selectedRow) return;
     if (teamSnapshots[selectedRow.id]) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
       setLoadingTeamId(null);
       setTeamSnapshotError(null);
       return;

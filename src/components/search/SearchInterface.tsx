@@ -110,6 +110,7 @@ export function SearchInterface({
       category: initialCategory,
     });
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Sync local search state when URL-derived seeded state changes; identity check prevents redundant updates
     setSearchState((prev) => {
       if (
         prev.query === nextSeededState.query &&
@@ -197,6 +198,7 @@ export function SearchInterface({
       searchState.type !== initialType ||
       searchState.category !== initialCategory
     ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Run a debounced search and URL sync when filters change; performSearch internally updates loading/results state
       performSearch(effectiveQuery, searchState.type, searchState.category);
       updateURL(effectiveQuery, searchState.type, searchState.category);
     }
@@ -221,6 +223,7 @@ export function SearchInterface({
     }
 
     if (initialQuery) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Initial search when URL provides a query; performSearch updates results/loading state
       performSearch(initialQuery, initialType, initialCategory);
       return;
     }

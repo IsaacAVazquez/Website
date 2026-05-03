@@ -460,7 +460,7 @@ function readExistingTeamSnapshots(filePath: string): Record<string, LaLigaTeamS
 export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<LaLigaSnapshot> {
   const summary = await getLaLigaSummary();
   const generatedAt = new Date().toISOString();
-  let teamSnapshots: Record<string, LaLigaTeamSnapshot> = {};
+  let teamSnapshots: Record<string, LaLigaTeamSnapshot>;
 
   if (options?.skipTeamSnapshots) {
     teamSnapshots = readExistingTeamSnapshots(LA_LIGA_SNAPSHOT_PATH);

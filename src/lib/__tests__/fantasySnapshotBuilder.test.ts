@@ -139,6 +139,7 @@ describe("fantasySnapshotBuilder", () => {
       jest.isolateModules(() => {
         const {
           buildFantasySnapshot: buildSyntheticFantasySnapshot,
+          // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
         } = require("../fantasySnapshotBuilder") as typeof import("../fantasySnapshotBuilder");
         const snapshot = buildSyntheticFantasySnapshot("ppr");
 

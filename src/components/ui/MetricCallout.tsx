@@ -50,6 +50,7 @@ export function MetricCallout({
 
   useEffect(() => {
     if (!animateValue || !hasNumericValue || !isInView || shouldReduceMotion) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Skip animation and snap to final value when conditions disqualify the animation
       setDisplayValue(value);
       return;
     }

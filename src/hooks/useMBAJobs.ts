@@ -167,6 +167,7 @@ export function useMBAJobs(): UseMBAJobsResult {
 
   useEffect(() => {
     if (typeof window === "undefined" || !("Notification" in window)) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Resolve real Notification permission after mount to avoid SSR hydration mismatch (see comment above)
     setNotificationPermission(Notification.permission);
   }, []);
 
@@ -262,6 +263,7 @@ export function useMBAJobs(): UseMBAJobsResult {
 
   // ── Initial fetch ──────────────────────────────────────────────────────
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-shot mount-time fetch; fetchJobs internally manages loading/error state
     fetchJobs({ showLoading: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

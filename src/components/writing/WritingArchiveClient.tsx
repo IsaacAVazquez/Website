@@ -76,6 +76,7 @@ export function WritingArchiveClient({
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset pagination cursor when filter or sort changes
     setPage(1);
   }, [activeFilter, sort]);
 

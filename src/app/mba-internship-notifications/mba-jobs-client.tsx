@@ -1024,6 +1024,7 @@ function CompanyFilterStrip({
 
   useEffect(() => {
     if (watchedLiveCount !== totalLiveCount) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Auto-expand the tracked-companies panel when the user has filtered out boards; reactive to derived counts
       setIsExpanded(true);
     }
   }, [totalLiveCount, watchedLiveCount]);
@@ -1221,6 +1222,7 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
   const locationInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Mirror canonical route state into local UI state when the URL changes externally (e.g. back/forward nav)
     setUiState(routeState);
   }, [routeState]);
 

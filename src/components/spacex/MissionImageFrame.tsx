@@ -72,6 +72,7 @@ export function MissionImageFrame({
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset image carousel index/load state when the candidate image set changes
     setActiveIndex(0);
     setIsLoaded(false);
   }, [candidates]);

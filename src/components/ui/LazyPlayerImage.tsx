@@ -80,6 +80,7 @@ export const LazyPlayerImage = memo<LazyPlayerImageProps>(({
   // Start loading when visible or priority
   useEffect(() => {
     if (isVisible || priority) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Trigger image load when intersection observer reports visibility (subscription pattern)
       setShowImage(true);
     }
   }, [isVisible, priority]);

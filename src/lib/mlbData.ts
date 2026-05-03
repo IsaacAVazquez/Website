@@ -655,7 +655,7 @@ export async function buildMlbSnapshot(options?: { skipTeamSnapshots?: boolean }
   const summary = await getMlbSummary();
   const teamLookup = new Map(summary.teams.map((team) => [team.id, team]));
   const generatedAt = new Date().toISOString();
-  let teamSnapshots: Record<string, MlbTeamSnapshot> = {};
+  let teamSnapshots: Record<string, MlbTeamSnapshot>;
 
   if (options?.skipTeamSnapshots) {
     teamSnapshots = readExistingTeamSnapshots(MLB_SNAPSHOT_PATH);

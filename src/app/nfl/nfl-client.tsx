@@ -220,6 +220,7 @@ export function NflClient({
 
   useEffect(() => {
     if (teamSnapshots[selectedTeam.id]) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
       setLoadingTeamId(null);
       setTeamSnapshotError(null);
       return;

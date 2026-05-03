@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useId, useState, useMemo } from "react";
 import {
   IconCreditCard,
   IconInfoCircle,
@@ -113,7 +113,6 @@ const fmtVolume = (n: number) =>
   n >= 1000 ? `$${(n / 1000).toFixed(n >= 10_000 ? 0 : 1)}k` : `$${n}`;
 
 // ─── Slider ───────────────────────────────────────────────────────────────────
-let sliderUid = 0;
 function Slider({
   label,
   value,
@@ -134,11 +133,7 @@ function Slider({
   hint?: string;
 }) {
   const pct = ((value - min) / (max - min)) * 100;
-  const idRef = useRef<string | null>(null);
-  if (idRef.current === null) {
-    idRef.current = `iq-slider-${++sliderUid}`;
-  }
-  const inputId = idRef.current;
+  const inputId = useId();
   const hintId = hint ? `${inputId}-hint` : undefined;
   return (
     <div className="space-y-1.5">
