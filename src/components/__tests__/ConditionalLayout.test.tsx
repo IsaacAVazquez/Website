@@ -18,7 +18,7 @@ jest.mock("@/components/Footer", () => ({
 
 const mockUsePathname = usePathname as jest.MockedFunction<typeof usePathname>;
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
 describe("ConditionalLayout", () => {
   let container: HTMLDivElement;

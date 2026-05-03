@@ -11,14 +11,16 @@ jest.mock("remark-html", () => jest.fn());
 
 import fs from "fs";
 import matter from "gray-matter";
+// @ts-expect-error - ESM import works via Jest's transform
 import { remark } from "remark";
+// @ts-expect-error - ESM import works via Jest's transform
 import remarkHtml from "remark-html";
 import { getAllChangelogEntries } from "../changelog";
 
 const mockFs = fs as jest.Mocked<typeof fs>;
 const mockMatter = matter as unknown as jest.Mock;
-const mockRemark = remark as jest.Mock;
-const mockRemarkHtml = remarkHtml as jest.Mock;
+const mockRemark = remark as unknown as jest.Mock;
+const mockRemarkHtml = remarkHtml as unknown as jest.Mock;
 
 describe("getAllChangelogEntries", () => {
   beforeEach(() => {

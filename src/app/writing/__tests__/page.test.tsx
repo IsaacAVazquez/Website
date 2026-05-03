@@ -151,11 +151,14 @@ jest.mock("@/lib/blog", () => {
   };
 });
 
-let WritingPage: typeof import("../page").default;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let WritingPage: any;
 
 describe("WritingPage", () => {
   beforeAll(async () => {
-    WritingPage = (await import("../page")).default;
+    // @ts-expect-error - Jest doesn't honor .js extensions; runtime resolves the .tsx file directly
+    const mod = await import("../page");
+    WritingPage = mod.default;
   });
 
   it("renders the four lead pillars in order and keeps the grouped archive below them", () => {

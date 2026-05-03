@@ -138,7 +138,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                   <h3 className="text-lg font-semibold text-[var(--home-haze)] mb-3">Technology Stack</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <Badge key={tech} variant="secondary">
+                      <Badge key={tech} variant="default">
                         {tech}
                       </Badge>
                     ))}

@@ -18,7 +18,7 @@ export default async function Image({
   const { slug } = await params;
   const post = getBlogPostPreviewBySlug(slug);
 
-  const eyebrow = getBlogPostCollectionLabel(post);
+  const eyebrow = getBlogPostCollectionLabel(post ?? undefined);
   const title = post?.title || "Writing";
   const description =
     post?.excerpt ||

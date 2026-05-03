@@ -27,17 +27,31 @@ content/
 ├── projects/
 │   ├── project-template.md             # Template for individual projects
 │   ├── textout-platform.md             # Historical example case study
-│   ├── investment-analytics-platform.md
-│   ├── fantasy-football-analytics.md
-│   ├── interchange-iq.md
+│   ├── ai-dev-tool-ecosystem.md
 │   ├── budget-planner.md
-│   ├── news-pulse-dashboard.md
-│   ├── march-madness-2026.md
+│   ├── decision-lab.md
+│   ├── fantasy-football-analytics.md
+│   ├── food-map.md
+│   ├── formula-1-pulse.md
+│   ├── frontier-model-tracker.md
+│   ├── github-trending-pulse.md
+│   ├── investment-analytics-platform.md
+│   ├── interchange-iq.md
 │   ├── la-liga-pulse.md
+│   ├── march-madness-2026.md
 │   ├── mba-role-tracker.md
-│   ├── spacex-mission-control.md
+│   ├── mlb-pulse.md
+│   ├── museum-log.md
+│   ├── nba-pulse.md
+│   ├── news-pulse-dashboard.md
+│   ├── nfl-pulse.md
+│   ├── pga-tour-pulse.md
+│   ├── polling-aggregator.md
 │   ├── premier-league-pulse.md
-│   └── polling-aggregator.md
+│   ├── pulse-dashboards.md
+│   ├── recipe-finder.md
+│   ├── spacex-mission-control.md
+│   └── wine-cellar.md
 │
 ├── blog-new/
 │   ├── index.md                        # Blog landing page
@@ -170,16 +184,30 @@ Complete example case study demonstrating:
 The directory now also includes markdown snapshots for the current live project surfaces:
 
 - `investment-analytics-platform.md`
-- `fantasy-football-analytics.md`
 - `interchange-iq.md`
-- `budget-planner.md`
 - `news-pulse-dashboard.md`
-- `march-madness-2026.md`
-- `la-liga-pulse.md`
+- `pulse-dashboards.md`
+- `ai-dev-tool-ecosystem.md`
+- `frontier-model-tracker.md`
+- `github-trending-pulse.md`
+- `decision-lab.md`
+- `food-map.md`
+- `museum-log.md`
+- `wine-cellar.md`
+- `recipe-finder.md`
+- `budget-planner.md`
 - `mba-role-tracker.md`
+- `polling-aggregator.md`
 - `spacex-mission-control.md`
 - `premier-league-pulse.md`
-- `polling-aggregator.md`
+- `la-liga-pulse.md`
+- `fantasy-football-analytics.md`
+- `nfl-pulse.md`
+- `formula-1-pulse.md`
+- `pga-tour-pulse.md`
+- `mlb-pulse.md`
+- `nba-pulse.md`
+- `march-madness-2026.md`
 
 These files mirror the current live routes and point back to the route files and data sources that actually own the implementation.
 

@@ -21,6 +21,7 @@ import {
 import type {
   PremierLeagueDetailTab,
   PremierLeagueRouteState,
+  PremierLeagueStandingRow,
   PremierLeagueSummary,
   PremierLeagueTeamSnapshot,
   PremierLeagueView,

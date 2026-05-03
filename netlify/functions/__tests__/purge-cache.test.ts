@@ -6,7 +6,7 @@ jest.mock("@netlify/functions", () => ({
 }));
 
 import { purgeCache } from "@netlify/functions";
-import type { HandlerContext, HandlerEvent } from "@netlify/functions";
+import type { HandlerContext, HandlerEvent, HandlerResponse } from "@netlify/functions";
 import { handler } from "../purge-cache";
 
 const originalEnv = { ...process.env };
@@ -22,8 +22,12 @@ function makeEvent(
   } as unknown as HandlerEvent;
 }
 
-async function callHandler(event: ReturnType<typeof makeEvent>) {
-  return await handler(event, {} as HandlerContext, jest.fn());
+async function callHandler(event: ReturnType<typeof makeEvent>): Promise<HandlerResponse> {
+  const response = await handler(event, {} as HandlerContext, jest.fn());
+  if (!response) {
+    throw new Error("handler returned void; expected HandlerResponse");
+  }
+  return response;
 }
 
 describe("purge-cache function auth", () => {
@@ -71,7 +75,7 @@ describe("purge-cache function auth", () => {
     const response = await callHandler(
       makeEvent({ authorization: "Bearer test-cron-secret" })
     );
-    const body = JSON.parse(response.body);
+    const body = JSON.parse(response.body ?? "{}");
 
     expect(response.statusCode).toBe(500);
     expect(body.error).toBe("Durable Cache purge failed");

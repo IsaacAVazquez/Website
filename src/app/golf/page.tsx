@@ -87,7 +87,7 @@ export default async function GolfPage({ searchParams }: GolfPageProps) {
             "Tournament context for course, dates, field size, and cut line",
             "Local snapshot rendering without a live third-party runtime dependency",
           ],
-          dateModified: golfSnapshot.summary.tournament?.generatedAt ?? undefined,
+          dateModified: golfSnapshot.summary.tournament?.generatedAt ?? "",
         }}
       />
       <GolfClient

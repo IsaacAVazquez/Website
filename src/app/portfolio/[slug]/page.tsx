@@ -517,10 +517,11 @@ export default async function CaseStudyPage({
                       {nextCaseStudy.metrics}
                     </p>
                   </div>
-                  <ArrowRight
-                    className="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1"
-                    style={{ color: "var(--home-ink-muted)" }}
-                  />
+                  <span style={{ color: "var(--home-ink-muted)" }}>
+                    <ArrowRight
+                      className="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1"
+                    />
+                  </span>
                 </div>
               </div>
             </Link>

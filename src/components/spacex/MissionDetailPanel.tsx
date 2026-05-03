@@ -213,7 +213,7 @@ export function MissionDetailPanel({
         <div className="mt-5 space-y-4">
           <MissionVehiclePhoto
             name={launch.rocket?.name ?? launch.name}
-            image={launch.vehicleImage ?? launch.rocket?.image}
+            image={launch.vehicleImage ?? launch.rocket?.image ?? null}
             className="h-[220px] min-h-[220px]"
             label="Vehicle photo"
             dataTestId="mission-vehicle-photo"

@@ -42,6 +42,7 @@ describe("GET /api/premier-league/summary", () => {
         winner: null,
       },
       standings: [],
+      scorers: [],
       recentFixtures: [],
       upcomingFixtures: [],
       teams: [],

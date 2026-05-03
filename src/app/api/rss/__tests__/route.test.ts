@@ -30,7 +30,9 @@ describe("GET /api/rss", () => {
         tags: ["rss"],
         featured: false,
         readingTime: "1 min read",
+        wordCount: 0,
         author: "Isaac Vazquez",
+        coverImage: "",
         seo: {
           description: "Alpha & Beta description",
         },
@@ -60,7 +62,9 @@ describe("GET /api/rss", () => {
         tags: [],
         featured: false,
         readingTime: "1 min read",
+        wordCount: 0,
         author: "Isaac Vazquez",
+        coverImage: "",
       },
     ]);
 
@@ -90,7 +94,7 @@ describe("GET /api/rss", () => {
         excerpt: "",
         publishedAt: "2026-04-02",
       },
-    ]);
+    ] as unknown as Awaited<ReturnType<typeof getAllBlogPosts>>);
 
     const response = await GET();
     const body = await response.text();
@@ -121,7 +125,7 @@ describe("GET /api/rss", () => {
         publishedAt: "2026-03-17T00:00:00.000Z",
         updatedAt: "2026-04-03T12:34:56.000Z",
       },
-    ]);
+    ] as unknown as Awaited<ReturnType<typeof getAllBlogPosts>>);
 
     const response = await GET();
     const body = await response.text();

@@ -460,7 +460,7 @@ export function generateArticleSchema(data: ArticleSchemaData) {
         : generateEnhancedPersonSchema(author)
     );
     if (authors.length === 1) {
-      schema.author = schema.author[0];
+      schema.author = (schema.author as unknown[])[0];
     }
   }
 

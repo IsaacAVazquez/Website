@@ -2,9 +2,11 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-04-15
+**Last updated:** 2026-05-03
 
 Tracked Markdown audit scope: `git ls-files '*.md'` returned 216 tracked files before the 2026-04-15 content coverage sync. That sync adds 16 new markdown files under `content/projects/` and `content/sections/`.
+
+The 2026-05-03 project coverage pass adds markdown snapshots for the remaining live portfolio projects listed in `src/constants/caseStudies.ts`.
 
 ---
 

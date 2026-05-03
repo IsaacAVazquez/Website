@@ -20,7 +20,7 @@ import { __testUtils as liveQuoteTestUtils } from "@/hooks/useLiveQuote";
 import { __testUtils as stockDataTestUtils } from "@/hooks/useStockData";
 import { clearClientInvestmentDataCachesForTests } from "@/lib/investmentsClientData";
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 const mockFetch = jest.fn();
 global.fetch = mockFetch as unknown as typeof fetch;
 

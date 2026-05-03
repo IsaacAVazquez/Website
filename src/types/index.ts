@@ -4,10 +4,10 @@ export interface Player {
   team: string;
   position: Position;
   averageRank: number;
-  projectedPoints: number;
+  projectedPoints?: number;
   standardDeviation: number;
   tier?: number;
-  expertRanks: number[];
+  expertRanks?: number[];
   // Additional FantasyPros fields
   positionRank?: number;
   minRank?: number;
@@ -55,7 +55,6 @@ export interface Player {
     
     // DST specific
     sacks?: number;
-    interceptions?: number;
     fumblesRecovered?: number;
     safeties?: number;
     touchdowns?: number;

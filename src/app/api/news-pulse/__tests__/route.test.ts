@@ -133,7 +133,7 @@ function buildFeedMap(overrides: Partial<Record<string, string | Error>> = {}) {
   };
 }
 
-function installFetchMock(feedMap: Record<string, string | Error>) {
+function installFetchMock(feedMap: Record<string, string | Error | undefined>) {
   mockFetch.mockImplementation(async (input) => {
     const url =
       typeof input === "string"

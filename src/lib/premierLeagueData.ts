@@ -444,6 +444,7 @@ export function createEmptyPremierLeagueSummary(): PremierLeagueSummary {
   return {
     competition: null,
     standings: [],
+    scorers: [],
     recentFixtures: [],
     upcomingFixtures: [],
     teams: [],

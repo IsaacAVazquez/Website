@@ -152,7 +152,7 @@ export const useDraftState = () => {
             }));
           }
           // eslint-disable-next-line react-hooks/set-state-in-effect
-          setDraftState(parsedState);
+          setDraftState(parsedState as DraftState);
         } catch (error) {
           console.error('Error loading draft state from localStorage:', error);
           // Persisted blob is corrupt — drop it so we start clean on next save

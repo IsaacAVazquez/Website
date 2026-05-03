@@ -50,7 +50,7 @@ jest.mock("@/components/investments/StockResearch", () => ({
   }) => <div data-testid="research-props">{`${symbol}:${activeTab}`}</div>,
 }));
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
 function flushPromises() {
   return act(async () => {

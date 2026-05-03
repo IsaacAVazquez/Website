@@ -96,6 +96,7 @@ async function main() {
 
 const isMainModule =
   process.argv[1] !== undefined &&
+  // @ts-expect-error - import.meta works at runtime via tsx (not via tsc-emitted CJS)
   path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 
 if (isMainModule) {
