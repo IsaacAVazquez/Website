@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-04-28
+**Last updated:** 2026-05-03
 
 ---
 
@@ -134,25 +134,27 @@ npm run dev
 - Prefer Node 20 locally to match GitHub Actions.
 - `npm run update:investments` also requires `.venv/bin/python3`.
 - `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots.
+- `npm run update:mlb`, `npm run update:nba`, and `npm run update:nfl` use public sports data sources and do not require auth tokens.
 - `npm run update:formula-1` reads historical OpenF1 endpoints and does not require an API key.
 - `npm run update:github-trending` reads the public GitHub Search API. GitHub Actions passes `GITHUB_TOKEN` for higher rate limits.
+- `npm run update:spacex` and `npm run update:spacex-images` read public Launch Library / SpaceDevs endpoints and do not require an API key.
+- `npm run update:frontier-models` rebuilds `src/data/frontierModelsSnapshot.ts` from `scripts/data/frontierModels.source.ts`.
 - If the investments fetch step fails on imports, install the Python dependency with `.venv/bin/pip install defeatbeta-api`.
 
 ### Day-to-day verification
 
 - Use `npm run lint` for ESLint.
 - Use `npm test` or targeted Jest runs while iterating.
-- Use `npm run test:e2e` for end-to-end coverage.
+- Use `npm run test:e2e` for default Playwright end-to-end coverage; use `npm run test:e2e:full` for the full browser matrix.
 - Use `npm run build` before shipping route, config, or deployment-affecting changes.
 
 ### Fantasy data workflow
 
-Primary npm entry points:
+Primary npm entry point:
 
 - `npm run update:fantasy`
-- `npm run update:fantasy-rb`
 
-Both commands currently run the same two-step pipeline:
+The command currently runs this two-step pipeline:
 
 1. `tsx scripts/buildFantasyPositionData.ts`
 2. `tsx scripts/buildFantasySnapshots.ts`
@@ -171,7 +173,7 @@ Legacy RB tiers artifacts still exist:
 - `public/fantasy/rb_current.json`
 - `src/components/RBTiersChart.tsx`
 
-Operational note: `.github/workflows/update-fantasy-rb.yml` now commits the real fantasy snapshot artifacts above. The Netlify scheduled fantasy updater is retained only as a deprecated no-op and is not part of the public update path.
+Operational note: `.github/workflows/update-fantasy.yml` commits the real fantasy snapshot artifacts above. There is no live Netlify scheduled fantasy updater; GitHub Actions is the public update path.
 
 ### Investments data workflow
 
@@ -237,6 +239,22 @@ Inputs and outputs:
 
 `prebuild` runs `tsx scripts/updateFootballSnapshots.ts --league-only` as the faster standings/fixtures/scorers refresh path during `npm run build`.
 
+### US sports dashboard data workflow
+
+The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime. They currently refresh manually and do not have dedicated scheduled workflows.
+
+- `npm run update:mlb` writes `src/data/mlbSnapshot.ts` from the public MLB Stats API; pass `-- --league-only` to skip per-team snapshots.
+- `npm run update:nba` writes `src/data/nbaSnapshot.ts` from ESPN public NBA endpoints; pass `-- --league-only` to skip per-team snapshots.
+- `npm run update:nfl` writes `src/data/nflSnapshot.ts` from NFLverse open data; pass `-- --league-only` to skip per-team snapshots and player leaders.
+
+### Other data refresh workflows
+
+- `npm run update:formula-1` writes `src/data/formula1Snapshot.ts` from OpenF1 data and keeps the existing snapshot if refresh fails.
+- `npm run update:github-trending` writes `src/data/githubTrendingSnapshot.ts` from the GitHub Search API; use `GITHUB_TOKEN` or `GH_TOKEN` locally for higher rate limits.
+- `npm run update:frontier-models` writes `src/data/frontierModelsSnapshot.ts` from the curated source file in `scripts/data/`.
+- `npm run update:spacex` and its alias `npm run update:spacex-data` write `src/data/spacexSnapshot.generated.json`.
+- `npm run update:spacex-images` writes `src/data/spacexImageManifest.generated.json`, `public/data/spacex/image-reference-index.json`, and cached image files under `public/data/spacex/images/`.
+
 ### Build and asset workflow
 
 - `npm run build` runs `prebuild`, `next build --webpack`, and npm `postbuild`
@@ -255,6 +273,7 @@ Inputs and outputs:
 | `npm run dev` | Start the Next.js dev server |
 | `npm run build` | Production build plus the football `prebuild` fast path and `postbuild` sitemap/NFT patch steps |
 | `npm run prebuild` | Run the football `--league-only` fast path used automatically before build |
+| `npm run postbuild` | Run sitemap generation and the NFT sharp patch used automatically after build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint against `src` |
 | `npm test` | Run Jest |
@@ -262,19 +281,26 @@ Inputs and outputs:
 | `npm run test:coverage` | Run Jest with coverage |
 | `npm run test:ci` | CI-friendly Jest run with coverage and reduced workers |
 | `npm run test:e2e` | Run Playwright end-to-end tests |
+| `npm run test:e2e:full` | Run the full Playwright browser matrix |
 | `npm run test:e2e:ui` | Open Playwright UI mode |
 | `npm run test:e2e:debug` | Run Playwright in debug mode |
 | `npm run test:all` | Run coverage plus E2E tests |
 | `npm run analyze` | Analyzer-enabled build that still runs npm `postbuild` |
 | `npm run build:analyze` | Analyzer-enabled `next build` without npm `postbuild` |
 | `npm run update:fantasy` | Generate fantasy position data and snapshot JSON |
-| `npm run update:fantasy-rb` | Alias of `npm run update:fantasy` |
 | `npm run update:investments` | Fetch investment data and build compact snapshots |
 | `npm run update:football` | Rebuild both Premier League and La Liga snapshots |
 | `npm run update:premier-league` | Rebuild the checked-in Premier League snapshot |
 | `npm run update:la-liga` | Rebuild the checked-in La Liga snapshot |
+| `npm run update:mlb` | Rebuild the checked-in MLB snapshot |
+| `npm run update:nba` | Rebuild the checked-in NBA snapshot |
+| `npm run update:nfl` | Rebuild the checked-in NFL snapshot |
 | `npm run update:formula-1` | Rebuild the checked-in Formula 1 snapshot |
+| `npm run update:frontier-models` | Rebuild the checked-in Frontier Models snapshot |
 | `npm run update:github-trending` | Rebuild the checked-in GitHub Trending Pulse snapshot |
+| `npm run update:spacex` | Rebuild the checked-in SpaceX Mission Control data snapshot |
+| `npm run update:spacex-data` | Alias of `npm run update:spacex` |
+| `npm run update:spacex-images` | Rebuild cached SpaceX image snapshots and manifests |
 | `npm run generate:icons` | Regenerate PWA icons |
 
 ---
@@ -287,35 +313,23 @@ Checked-in operational workflows:
 - `.github/workflows/update-investments.yml`
 - `.github/workflows/update-premier-league.yml`
 - `.github/workflows/update-la-liga.yml`
-- `.github/workflows/update-fantasy-rb.yml`
+- `.github/workflows/update-fantasy.yml`
 - `.github/workflows/update-github-trending.yml`
-- `netlify/functions/scheduled-fantasy-update.ts`
 - `netlify/functions/purge-cache.ts`
 
 Current behavior:
 
-- `test.yml` runs unit tests, Playwright E2E, lint, and build on pushes to `main`, `develop`, and `claude/**`, plus pull requests targeting `main` or `develop`
-- `update-investments.yml` runs on manual dispatch and on weekdays at `22:15 UTC`, then commits refreshed files under `public/data/investments` when the curated dataset changes
+- `test.yml` runs unit tests, build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`
+- `update-investments.yml` runs on manual dispatch and on Mondays and Thursdays at `22:15 UTC`, then commits refreshed files under `public/data/investments` when the curated dataset changes
 - `update-premier-league.yml` runs on manual dispatch and daily at `06:15 UTC`, then commits `src/data/premierLeagueSnapshot.ts` when it changes
 - `update-la-liga.yml` runs on manual dispatch and daily at `06:30 UTC`, then commits `src/data/laLigaSnapshot.ts` when it changes
-- `update-fantasy-rb.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`, then commits the generated fantasy snapshot artifacts when they change
+- `update-fantasy.yml` runs on manual dispatch and on Wednesdays at `17:00 UTC`, then commits the generated fantasy snapshot artifacts when they change
 - `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.ts` when tracked repositories change
-- `scheduled-fantasy-update.ts` is deprecated and intentionally no longer updates public fantasy data
+- A daily cron-job.org ping to the Netlify build hook triggers production deploys; `prebuild` refreshes Premier League and La Liga league-level snapshots with `tsx scripts/updateFootballSnapshots.ts --league-only`
 - `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
+- TODO: `vercel.json` still declares a cron for `/api/scheduled-update`, but no matching route exists. Treat that config as historical until confirmed.
 
-For public fantasy updates, GitHub Actions is the source of truth. The Netlify scheduled function remains checked in only as a deprecated placeholder.
-
-Useful scheduled-update checks:
-
-```bash
-curl -H "Authorization: Bearer $CRON_SECRET" \
-  http://localhost:3000/api/scheduled-update
-
-curl -X POST \
-  -H "Authorization: Bearer $CRON_SECRET" \
-  -H "Content-Type: application/json" \
-  http://localhost:3000/api/scheduled-update
-```
+For public fantasy updates, GitHub Actions is the source of truth.
 
 ---
 

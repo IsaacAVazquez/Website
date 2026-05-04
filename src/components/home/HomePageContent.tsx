@@ -6,12 +6,15 @@ import {
   BrandGithub,
   BrandLinkedin,
   Briefcase,
+  ChartBar,
+  FileText,
   Mail,
 } from "@/components/ui/ServerIcons";
 import type { CaseStudyData } from "@/constants/caseStudies";
 import { getProjectCardProblem } from "@/constants/caseStudies";
 import type { BlogPostPreview } from "@/lib/blog";
 import { publishedDateFormatter } from "@/lib/utils";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 interface HomePageContentProps {
   featuredProjects: CaseStudyData[];
@@ -98,6 +101,74 @@ export function HomePageContent({
   latestPost,
   featuredEssay,
 }: HomePageContentProps) {
+  const recentProject = featuredProjects[0];
+  const practiceCells: HomeStatsCell[] = [
+    {
+      label: "Projects shipped",
+      tooltip: "Case studies, live tools, and shipped product surfaces",
+      value: heroIndex.projectCount,
+      sub: "Across portfolio + tools",
+    },
+    {
+      label: "Essays written",
+      tooltip: "Long-form essays in the writing archive",
+      value: heroIndex.essayCount,
+      sub: "Plus shorter notes",
+    },
+    {
+      label: "Live tools",
+      tooltip: "Interactive tools currently in production",
+      value: heroIndex.liveToolCount,
+      sub: "Fintech · analytics · fantasy",
+    },
+    latestPost
+      ? {
+          label: "Most recent writing",
+          tooltip: "Last published essay or note",
+          value: latestPost.title,
+          sub: publishedDateFormatter.format(new Date(latestPost.publishedAt)),
+        }
+      : {
+          label: "Most recent writing",
+          tooltip: "Last published essay or note",
+          value: "Coming soon",
+        },
+    recentProject
+      ? {
+          label: "Most recent project",
+          tooltip: "Most recently shipped case study",
+          value: recentProject.title,
+          sub: recentProject.timeline,
+        }
+      : {
+          label: "Most recent project",
+          tooltip: "Most recently shipped case study",
+          value: "In progress",
+        },
+    {
+      label: "MBA",
+      tooltip: "Berkeley Haas full-time MBA program",
+      value: (
+        <>
+          Berkeley Haas <em>&apos;25</em>
+        </>
+      ),
+      sub: "Product · fintech focus",
+    },
+    {
+      label: "Based",
+      tooltip: "Primary location",
+      value: "Austin, TX",
+      sub: "Remote-friendly",
+    },
+    {
+      label: "Focus",
+      tooltip: "Where I spend my product time",
+      value: "Product · AI · fintech",
+      sub: "PM, agentic workflows, decision tools",
+    },
+  ];
+
   return (
     <div className="home-page">
       <section
@@ -235,6 +306,24 @@ export function HomePageContent({
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="home-section" data-testid="home-practice-stats">
+        <div className="home-shell">
+          <HomeStatsPanel
+            id="practice-stats"
+            title="Practice at a glance"
+            meta="Updated weekly"
+            cells={practiceCells}
+            pills={[
+              { label: "Selected projects", href: "/portfolio", icon: Briefcase },
+              { label: "Writing archive", href: "/writing", icon: Article },
+              { label: "Investments tracker", href: "/investments", icon: ChartBar },
+              { label: "Email", href: "/contact", icon: Mail },
+              { label: "Résumé", href: "/resume", icon: FileText },
+            ]}
+          />
         </div>
       </section>
 

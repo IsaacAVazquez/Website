@@ -4,6 +4,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { IconArrowRight, IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { publishedDateFormatter } from "@/lib/utils";
+import { Article, FileText, Mail } from "@/components/ui/ServerIcons";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 export interface WritingArchivePost {
   slug: string;
@@ -149,6 +151,79 @@ export function WritingArchiveClient({
     return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
   }, [earliestDate]);
 
+  // "Archive at a glance" dashboard panel — sits between the page head and the
+  // featured row. Mirrors the homepage "Practice at a glance" pattern from the
+  // investments dashboard idiom.
+  const totalPieces = posts.length;
+  const longestRead = useMemo(() => {
+    return posts.reduce(
+      (acc, p) => Math.max(acc, readingMinutes(p.readingTime) || 0),
+      0,
+    );
+  }, [posts]);
+  const latestPost = posts[0];
+  const latestCategory = latestPost
+    ? latestPost.cluster ?? latestPost.archiveBucket ?? latestPost.category
+    : undefined;
+  const latestPostDate = latestPost
+    ? publishedDateFormatter.format(new Date(latestPost.publishedAt))
+    : undefined;
+  const totalCategories = clusters.length;
+
+  const archiveCells: HomeStatsCell[] = [
+    {
+      label: "Essays",
+      tooltip: "Long-form pieces (over 5 min reading time)",
+      value: totalEssays,
+      sub: "Long-form, deep focus",
+    },
+    {
+      label: "Notes",
+      tooltip: "Shorter pieces under 5 minutes",
+      value: totalNotes,
+      sub: "Quick takes and field notes",
+    },
+    {
+      label: "Total pieces",
+      tooltip: "Everything published in the archive",
+      value: totalPieces,
+      sub: `Since ${sinceLabel}`,
+    },
+    {
+      label: "Topics",
+      tooltip: "Curated clusters across the archive",
+      value: totalCategories,
+      sub: `${clusters
+        .slice(0, 3)
+        .map((c) => c.label)
+        .join(" · ")}${totalCategories > 3 ? " · …" : ""}`,
+    },
+    {
+      label: "Most recent",
+      tooltip: "Last published essay or note",
+      value: latestPost ? latestPost.title : "Coming soon",
+      sub: latestPostDate,
+    },
+    {
+      label: "Latest topic",
+      tooltip: "Cluster of the most recent piece",
+      value: latestCategory ?? "—",
+      sub: latestPost ? `${postKind(latestPost)} · ${latestPost.readingTime}` : undefined,
+    },
+    {
+      label: "Longest read",
+      tooltip: "The longest essay currently in the archive",
+      value: longestRead ? `${longestRead} min` : "—",
+      sub: "Deep dive territory",
+    },
+    {
+      label: "Practice age",
+      tooltip: "How long this writing practice has been running",
+      value: sinceLabel,
+      sub: "Continuously published",
+    },
+  ];
+
   return (
     <div className="wp-page">
       <section className="wp-pagehead">
@@ -173,6 +248,20 @@ export function WritingArchiveClient({
           </div>
         </div>
       </section>
+
+      <div className="wp-archive-stats-wrap">
+        <HomeStatsPanel
+          id="archive-stats"
+          title="Archive at a glance"
+          meta={latestPostDate ? `Last shipped ${latestPostDate}` : "Updated weekly"}
+          cells={archiveCells}
+          pills={[
+            { label: "All articles", href: "#article-grid", icon: Article },
+            { label: "Newsletter", href: "/contact", icon: Mail },
+            { label: "RSS feed", href: "/api/rss", icon: FileText, external: true },
+          ]}
+        />
+      </div>
 
       {featBig ? (
         <section className="wp-featured">
@@ -242,7 +331,7 @@ export function WritingArchiveClient({
         </section>
       ) : null}
 
-      <section className="wp-archive-section">
+      <section className="wp-archive-section" id="article-grid">
         <div className="wp-archive-head">
           <h2 className="wp-archive-title">All articles</h2>
           <span className="wp-archive-count">
