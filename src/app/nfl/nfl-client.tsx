@@ -24,6 +24,14 @@ import {
   TeamResultPill,
   FixtureCard,
 } from "@/components/football";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  Calendar,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 import type {
   NFLLeader,
   NFLLeaderboards,
@@ -286,6 +294,72 @@ export function NflClient({
   const nfcCutoff = nfcContext.lastIn;
   const nfcFirstOut = nfcContext.firstOut;
 
+  // Stats panel cells
+  const passingLeader = summary.leaders.passing[0] ?? null;
+  const rushingLeader = summary.leaders.rushing[0] ?? null;
+  const receivingLeader = summary.leaders.receiving[0] ?? null;
+  const totalRegSeasonWeeks = 18;
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "AFC #1 seed",
+      tooltip: "Top seed in the American Football Conference and current record.",
+      value: afcTopSeed ? `${afcTopSeed.shortName} · ${formatRecord(afcTopSeed)}` : "—",
+      sub: afcTopSeed ? `${formatDifferential(afcTopSeed.pointDifferential)} pt diff` : undefined,
+    },
+    {
+      label: "NFC #1 seed",
+      tooltip: "Top seed in the National Football Conference and current record.",
+      value: nfcTopSeed ? `${nfcTopSeed.shortName} · ${formatRecord(nfcTopSeed)}` : "—",
+      sub: nfcTopSeed ? `${formatDifferential(nfcTopSeed.pointDifferential)} pt diff` : undefined,
+    },
+    {
+      label: "AFC playoff cutoff",
+      tooltip: "Last AFC team currently inside the playoff field and their record.",
+      value: afcCutoff ? `${afcCutoff.shortName} · ${formatRecord(afcCutoff)}` : "—",
+      sub: afcFirstOut
+        ? `${Math.max(0, afcCutoff.wins - afcFirstOut.wins)} wins clear of ${afcFirstOut.shortName}`
+        : undefined,
+    },
+    {
+      label: "NFC playoff cutoff",
+      tooltip: "Last NFC team currently inside the playoff field and their record.",
+      value: nfcCutoff ? `${nfcCutoff.shortName} · ${formatRecord(nfcCutoff)}` : "—",
+      sub: nfcFirstOut
+        ? `${Math.max(0, nfcCutoff.wins - nfcFirstOut.wins)} wins clear of ${nfcFirstOut.shortName}`
+        : undefined,
+    },
+    {
+      label: "Passing leader",
+      tooltip: "Player leading the league in passing yards this season.",
+      value: passingLeader
+        ? `${passingLeader.name} · ${passingLeader.total.toLocaleString()} yds`
+        : "—",
+      sub: passingLeader ? passingLeader.teamCode : undefined,
+    },
+    {
+      label: "Rushing leader",
+      tooltip: "Player leading the league in rushing yards this season.",
+      value: rushingLeader
+        ? `${rushingLeader.name} · ${rushingLeader.total.toLocaleString()} yds`
+        : "—",
+      sub: rushingLeader ? rushingLeader.teamCode : undefined,
+    },
+    {
+      label: "Receiving leader",
+      tooltip: "Player leading the league in receiving yards this season.",
+      value: receivingLeader
+        ? `${receivingLeader.name} · ${receivingLeader.total.toLocaleString()} yds`
+        : "—",
+      sub: receivingLeader ? receivingLeader.teamCode : undefined,
+    },
+    {
+      label: "Through week",
+      tooltip: "Most recently completed week within the regular season.",
+      value: summary.week ? `Week ${summary.week} of ${totalRegSeasonWeeks}` : "Final regular season",
+    },
+  ];
+
   return (
     <div className="home-page min-h-screen">
       <div className="home-shell home-section space-y-5 sm:space-y-6">
@@ -315,6 +389,22 @@ export function NflClient({
             ))}
           </div>
         </div>
+
+        {/* Dense stats panel */}
+        <HomeStatsPanel
+          id="nfl-stats-panel"
+          title="NFL at a glance"
+          meta={`Live · refreshed ${snapshotDateLabel}`}
+          cells={statsPanelCells}
+          pills={[
+            { label: "AFC", href: "?view=afc", icon: ChartBar },
+            { label: "NFC", href: "?view=nfc", icon: ChartBar },
+            { label: "Playoff bracket", href: "?view=playoffs", icon: Briefcase },
+            { label: "Stat leaders", href: "#nfl-standings", icon: User },
+            { label: "Schedule", href: "#nfl-standings", icon: Calendar },
+            { label: "Article", href: "/writing", icon: Article },
+          ]}
+        />
 
         {/* Key gaps */}
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -357,7 +447,7 @@ export function NflClient({
         </div>
 
         {/* Main standings + sidebar */}
-        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div id="nfl-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>

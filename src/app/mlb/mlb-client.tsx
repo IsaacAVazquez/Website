@@ -18,6 +18,13 @@ import {
   LeaderList,
   type LeaderEntry,
 } from "@/components/football";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 import type {
   MlbHittingLeaders,
   MlbLeader,
@@ -289,6 +296,79 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
   const hasStandings = standings.length > 0 && standings.some((row) => row.wins + row.losses > 0);
 
+  // Stats panel cells
+  const worstRecord = useMemo(() => {
+    if (standings.length === 0) return null;
+    return [...standings].sort((a, b) => a.pct - b.pct || a.wins - b.wins)[0] ?? null;
+  }, [standings]);
+
+  // Tightest division: smallest games-back among 2nd-place teams
+  const tightestDivision = useMemo(() => {
+    const seconds = standings.filter((row) => row.divisionRank === 2 && row.gamesBack > 0);
+    if (seconds.length === 0) return null;
+    return [...seconds].sort((a, b) => a.gamesBack - b.gamesBack)[0] ?? null;
+  }, [standings]);
+
+  const avgGamesPlayed = useMemo(() => {
+    if (standings.length === 0) return 0;
+    return Math.round(
+      standings.reduce((acc, row) => acc + row.wins + row.losses, 0) / standings.length
+    );
+  }, [standings]);
+
+  const totalRegularSeasonGames = 162;
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "Best record",
+      tooltip: "Club with the highest winning percentage across both leagues.",
+      value: leagueLeader ? `${leagueLeader.shortName} · ${formatRecord(leagueLeader)}` : "—",
+      sub: leagueLeader ? `${formatFixed(leagueLeader.pct, 3)} W%` : undefined,
+    },
+    {
+      label: "AL leader",
+      tooltip: "Top American League club by winning percentage.",
+      value: alLeader ? `${alLeader.shortName} · ${formatRecord(alLeader)}` : "—",
+      sub: alLeader ? `${formatFixed(alLeader.pct, 3)} W%` : undefined,
+    },
+    {
+      label: "NL leader",
+      tooltip: "Top National League club by winning percentage.",
+      value: nlLeader ? `${nlLeader.shortName} · ${formatRecord(nlLeader)}` : "—",
+      sub: nlLeader ? `${formatFixed(nlLeader.pct, 3)} W%` : undefined,
+    },
+    {
+      label: "Hottest streak",
+      tooltip: "Club currently riding the longest active winning streak.",
+      value: hottest ? `${hottest.shortName} · ${hottest.streak}` : "—",
+      sub: hottest ? `Last 10: ${hottest.last10}` : "No active win streaks",
+    },
+    {
+      label: "Worst record",
+      tooltip: "Club with the lowest winning percentage across both leagues.",
+      value: worstRecord ? `${worstRecord.shortName} · ${formatRecord(worstRecord)}` : "—",
+      sub: worstRecord ? `${formatFixed(worstRecord.pct, 3)} W%` : undefined,
+    },
+    {
+      label: "Tightest division",
+      tooltip: "Division where the second-place club is closest to first.",
+      value: tightestDivision
+        ? `${tightestDivision.division.replace("AL ", "AL ").replace("NL ", "NL ")} · ${tightestDivision.gamesBack.toFixed(1)} GB`
+        : "—",
+      sub: tightestDivision ? `${tightestDivision.shortName} chasing` : undefined,
+    },
+    {
+      label: "Through games",
+      tooltip: "Average games played across all 30 clubs in this snapshot.",
+      value: `${avgGamesPlayed} / ${totalRegularSeasonGames}`,
+    },
+    {
+      label: "Snapshot",
+      tooltip: "Date the most recent snapshot was generated.",
+      value: snapshotDateLabel,
+    },
+  ];
+
   return (
     <div className="home-page min-h-screen">
       <div className="home-shell home-section space-y-5 sm:space-y-6">
@@ -318,6 +398,22 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             ))}
           </div>
         </div>
+
+        {/* Dense stats panel */}
+        <HomeStatsPanel
+          id="mlb-stats-panel"
+          title="MLB at a glance"
+          meta={`Live · refreshed ${snapshotDateLabel}`}
+          cells={statsPanelCells}
+          pills={[
+            { label: "Standings", href: "#mlb-standings", icon: ChartBar },
+            { label: "Wild card", href: "?view=wildcard", icon: Briefcase },
+            { label: "American League", href: "?view=al", icon: ChartBar },
+            { label: "National League", href: "?view=nl", icon: ChartBar },
+            { label: "Hot streaks", href: "#mlb-standings", icon: User },
+            { label: "Article", href: "/writing", icon: Article },
+          ]}
+        />
 
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
           <StatCard
@@ -350,7 +446,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
           />
         </div>
 
-        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div id="mlb-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>

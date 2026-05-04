@@ -62,7 +62,6 @@ export const frontierModelsSnapshot: FrontierModelsSnapshot = ${JSON.stringify(s
 const isMainModule =
   typeof process !== "undefined" &&
   process.argv[1] &&
-  // @ts-expect-error - import.meta works at runtime via tsx (not via tsc-emitted CJS)
   fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
 
 if (isMainModule) {

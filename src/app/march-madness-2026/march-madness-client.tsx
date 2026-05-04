@@ -385,10 +385,10 @@ function RankingsSection() {
                 key={ranking.team}
                 className={`border-b border-white/5 ${index % 2 === 0 ? "bg-white/[0.02]" : ""}`}
               >
-                <td className="px-2 py-3 text-xs text-slate-500">{ranking.rank}</td>
+                <td className="px-2 py-3 text-xs tabular-nums text-slate-500">{ranking.rank}</td>
                 <td className="px-2 py-3 text-sm font-semibold text-white">{ranking.team}</td>
                 <td className="px-2 py-3 text-xs text-slate-400">{ranking.conf}</td>
-                <td className="px-2 py-3 text-xs text-slate-400">{ranking.record}</td>
+                <td className="px-2 py-3 text-xs tabular-nums text-slate-400">{ranking.record}</td>
                 <StatCell val={ranking.avg} highlight={ranking.avg <= 3} />
                 {[
                   ranking.bpi,
@@ -415,7 +415,7 @@ function RankingsSection() {
                     {ranking.trap}
                   </span>
                 </td>
-                <td className="px-2 py-3 text-right text-xs text-slate-400">{ranking.seed}</td>
+                <td className="px-2 py-3 text-right text-xs tabular-nums text-slate-400">{ranking.seed}</td>
                 <td className="px-2 py-3 text-right text-xs font-semibold tabular-nums text-amber-300">
                   {ranking.odds}
                 </td>
@@ -999,7 +999,7 @@ export function MarchMadnessClient({
                     key={label}
                     className="rounded-[20px] border border-white/10 bg-white/[0.05] px-4 py-3"
                   >
-                    <p className="font-mono text-xl font-semibold text-amber-300">{value}</p>
+                    <p className="font-mono text-xl font-semibold tabular-nums text-amber-300">{value}</p>
                     <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-slate-500">{label}</p>
                   </div>
                 ))}
@@ -1010,7 +1010,7 @@ export function MarchMadnessClient({
           <SurfaceCard id="top-upset-picks" className="space-y-6 p-5 sm:p-6">
             <SectionIntro
               eyebrow="Searchable hooks"
-              title="Top Upset Picks For The 2026 March Madness Bracket"
+              title="Top upset picks for the 2026 March Madness bracket"
               description="These are the calls most likely to earn clicks and debate: one pure time-zone flip, one seed-line correction, and one late-bracket structural upset built on travel math."
             />
             <div className="grid gap-4 lg:grid-cols-3">
@@ -1023,7 +1023,7 @@ export function MarchMadnessClient({
           <SurfaceCard id="why-this-model-is-different" className="space-y-6 p-5 sm:p-6 scroll-mt-28">
             <SectionIntro
               eyebrow="Methodology"
-              title="Why This Model Is Different"
+              title="Why this model is different"
               description="Most brackets stop at seed lines and generic power ratings. This one blends consensus analytics with committee errors, roster context, and travel penalties that change game-day output."
             />
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">

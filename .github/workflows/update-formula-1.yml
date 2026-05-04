@@ -1,0 +1,260 @@
+name: Refresh Formula 1 Snapshot
+
+on:
+  # Daily after the existing football refresh windows. Formula 1 data changes
+  # in bursts on race weekends, but a daily pass is enough to pick up
+  # completed sessions without spending runner minutes all week.
+  schedule:
+    - cron: "10 8 * * *"
+  workflow_dispatch:
+
+# Don't stack a manual dispatch on top of a scheduled run.
+concurrency:
+  group: refresh-formula-1
+  cancel-in-progress: false
+
+jobs:
+  refresh-formula-1:
+    name: Refresh Formula 1 Snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+
+      - name: Refresh Formula 1 snapshot
+        run: npm run update:formula-1
+        env:
+          NODE_ENV: production
+
+      - name: Verify Formula 1 snapshot quality
+        id: verify_quality
+        run: |
+          node -e "
+          const fs = require('fs');
+
+          const SNAPSHOT_PATH = 'src/data/formula1Snapshot.ts';
+          const MIN_RACES = 10;
+          const MIN_DRIVERS_AFTER_RACE = 10;
+          const MIN_CONSTRUCTORS_AFTER_RACE = 5;
+
+          if (!fs.existsSync(SNAPSHOT_PATH)) {
+            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
+          const match = source.match(
+            /export const formula1Snapshot: Formula1Snapshot = (\{[\s\S]*\});\s*$/
+          );
+          if (!match) {
+            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          let snapshot;
+          try {
+            snapshot = JSON.parse(match[1]);
+          } catch (err) {
+            console.error('::error::JSON.parse failed on Formula 1 snapshot body: ' + String(err));
+            process.exit(1);
+          }
+
+          const meetings = Array.isArray(snapshot.meetings) ? snapshot.meetings.length : 0;
+          const drivers = Array.isArray(snapshot.driverStandings) ? snapshot.driverStandings.length : 0;
+          const constructors = Array.isArray(snapshot.constructorStandings) ? snapshot.constructorStandings.length : 0;
+          const metrics = snapshot.seasonMetrics ?? {};
+          const totalRaces = Number(metrics.totalRaces);
+          const completedRaces = Number(metrics.completedRaces);
+          const upcomingRaces = Number(metrics.upcomingRaces);
+
+          console.log('Season:', snapshot.season);
+          console.log('Meetings:', meetings);
+          console.log('Season metrics:', JSON.stringify(metrics));
+          console.log('Driver standings:', drivers);
+          console.log('Constructor standings:', constructors);
+
+          if (meetings < MIN_RACES || !Number.isFinite(totalRaces) || totalRaces < MIN_RACES) {
+            console.error('::error::Refusing to commit a degraded Formula 1 snapshot. Expected at least ' + MIN_RACES + ' races.');
+            process.exit(1);
+          }
+
+          if (!snapshot.defaultMeetingKey) {
+            console.error('::error::Formula 1 snapshot has no default meeting key.');
+            process.exit(1);
+          }
+
+          if (Number.isFinite(completedRaces) && completedRaces > 0) {
+            if (drivers < MIN_DRIVERS_AFTER_RACE) {
+              console.error('::error::Formula 1 driver standings look incomplete: ' + drivers + ' drivers.');
+              process.exit(1);
+            }
+
+            if (constructors < MIN_CONSTRUCTORS_AFTER_RACE) {
+              console.error('::error::Formula 1 constructor standings look incomplete: ' + constructors + ' constructors.');
+              process.exit(1);
+            }
+          }
+
+          fs.writeFileSync(
+            process.env.GITHUB_OUTPUT,
+            'meetings=' + meetings + '\n' +
+              'drivers=' + drivers + '\n' +
+              'constructors=' + constructors + '\n' +
+              'completed_races=' + (Number.isFinite(completedRaces) ? completedRaces : 0) + '\n' +
+              'upcoming_races=' + (Number.isFinite(upcomingRaces) ? upcomingRaces : 0) + '\n',
+            { flag: 'a' }
+          );
+          "
+
+      - name: Check for snapshot changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain -- src/data/formula1Snapshot.ts)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected in src/data/formula1Snapshot.ts"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected in src/data/formula1Snapshot.ts"
+          fi
+
+      - name: Commit and push refreshed snapshot
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/formula1Snapshot.ts
+          git commit -m "chore: refresh formula 1 snapshot [automated] [skip ci]"
+          # Retry on push rejection. Main can move during the refresh, so
+          # rebase the single snapshot commit onto the latest origin/main and
+          # try again. Bail on a real conflict.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt rejected. Rebasing onto latest origin/main..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo "Rebase conflict. Failing the run."
+              exit 1
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Push failed after 5 attempts."
+          exit 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create job summary
+        if: always()
+        run: |
+          echo "## Formula 1 Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Daily at 08:10 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${{ steps.verify_quality.outputs.meetings }}" ]; then
+            echo "**Meetings:** ${{ steps.verify_quality.outputs.meetings }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Completed races:** ${{ steps.verify_quality.outputs.completed_races }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Upcoming races:** ${{ steps.verify_quality.outputs.upcoming_races }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Driver standings:** ${{ steps.verify_quality.outputs.drivers }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Constructor standings:** ${{ steps.verify_quality.outputs.constructors }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+            echo "Formula 1 snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Formula 1 snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Notify on failure via GitHub issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+            const title = `Formula 1 refresh failed ${today}`;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `The **Refresh Formula 1 Snapshot** workflow failed on ${today}.`,
+              ``,
+              `**Run:** ${runUrl}`,
+              `**Commit:** ${context.sha}`,
+              `**Trigger:** ${context.eventName}`,
+              ``,
+              `Check the run logs to diagnose. Common causes:`,
+              `- OpenF1 API outage or timeout`,
+              `- Quality gate caught a degraded snapshot`,
+              `- Git push rejected after 5 retries`,
+              ``,
+              `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
+            ].join('\n');
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'formula-1-refresh-failure',
+              per_page: 5,
+            });
+            if (existing.data.length > 0) {
+              const issue = existing.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Failed again on ${today}. Run: ${runUrl}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['formula-1-refresh-failure', 'automation'],
+              });
+            }
+
+      - name: Close resolved failure issues
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'formula-1-refresh-failure',
+              per_page: 10,
+            });
+            for (const issue of existing.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Refresh succeeded at ${new Date().toISOString()}. Auto-closing.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+            }

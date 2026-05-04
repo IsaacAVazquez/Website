@@ -2,8 +2,9 @@
 
 import { startTransition, useEffect, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { MetricCard } from "@/components/football/MetricCard";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { ChartBar, FileText } from "@/components/ui/ServerIcons";
 import {
   filterFrontierModels,
   formatTokenCount,
@@ -121,7 +122,68 @@ export function FrontierModelsClient({
     [snapshot.models]
   );
 
+  const visionCount = useMemo(
+    () => snapshot.models.filter((m) => m.modalities.includes("vision")).length,
+    [snapshot.models]
+  );
+  const audioCount = useMemo(
+    () => snapshot.models.filter((m) => m.modalities.includes("audio")).length,
+    [snapshot.models]
+  );
+  const openWeightCount = useMemo(
+    () =>
+      snapshot.models.filter(
+        (m) => m.provider === "meta" || m.provider === "deepseek" || m.provider === "mistral"
+      ).length,
+    [snapshot.models]
+  );
+  const budgetTier = snapshot.priceTiers.find((t) => t.id === "budget")?.count ?? 0;
+  const premiumTier = snapshot.priceTiers.find((t) => t.id === "premium")?.count ?? 0;
+
   const updatedAt = formatGeneratedAt(snapshot.generatedAt);
+
+  const frontierCells: HomeStatsCell[] = [
+    {
+      label: "Models tracked",
+      value: <span className="tabular-nums">{snapshot.models.length}</span>,
+      sub: "Across listed providers",
+    },
+    {
+      label: "Providers covered",
+      value: <span className="tabular-nums">{snapshot.providers.length}</span>,
+      sub: "Anthropic, OpenAI, Google, etc.",
+    },
+    {
+      label: "Median context window",
+      value: <span className="tabular-nums">{formatTokenCount(median)}</span>,
+      sub: "Tokens, half the field at or above",
+    },
+    {
+      label: "Budget tier",
+      value: <span className="tabular-nums">{budgetTier}</span>,
+      sub: "Sub-$1/M input pricing",
+    },
+    {
+      label: "Premium tier",
+      value: <span className="tabular-nums">{premiumTier}</span>,
+      sub: "Top of the price ladder",
+    },
+    {
+      label: "Vision-capable",
+      value: <span className="tabular-nums">{visionCount}</span>,
+      sub: "Models that accept images",
+    },
+    {
+      label: "Audio-capable",
+      value: <span className="tabular-nums">{audioCount}</span>,
+      sub: "Models that handle audio",
+    },
+    {
+      label: "Open-weight models",
+      value: <span className="tabular-nums">{openWeightCount}</span>,
+      sub: "Meta, DeepSeek, Mistral",
+    },
+  ];
 
   function handleSelectModel(id: string | null) {
     navigate({ ...resolvedState, selectedModelId: id });
@@ -143,27 +205,16 @@ export function FrontierModelsClient({
         </p>
       </header>
 
-      <section className="grid gap-3 sm:grid-cols-3">
-        <MetricCard
-          label="Models tracked"
-          value={snapshot.models.length.toString()}
-          detail={`${snapshot.providers.length} providers`}
-        />
-        <MetricCard
-          label="Median context"
-          value={formatTokenCount(median)}
-          detail="Tokens, half the field is at or above this"
-        />
-        <MetricCard
-          label="Price floors"
-          value={
-            snapshot.priceTiers.find((tier) => tier.id === "budget")?.count
-              ? `${snapshot.priceTiers.find((tier) => tier.id === "budget")?.count} budget`
-              : "—"
-          }
-          detail="Sub-$1/M input tier, including open weights and discount providers"
-        />
-      </section>
+      <HomeStatsPanel
+        id="frontier-models-stats"
+        title="Frontier models at a glance"
+        meta={`Updated ${updatedAt}`}
+        cells={frontierCells}
+        pills={[
+          { label: "Table", href: "/frontier-models", icon: FileText },
+          { label: "Chart", href: "/frontier-models?view=chart", icon: ChartBar },
+        ]}
+      />
 
       <section className="space-y-3">
         <FilterGroup

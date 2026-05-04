@@ -156,7 +156,6 @@ let WritingPage: any;
 
 describe("WritingPage", () => {
   beforeAll(async () => {
-    // @ts-expect-error - Jest doesn't honor .js extensions; runtime resolves the .tsx file directly
     const mod = await import("../page");
     WritingPage = mod.default;
   });

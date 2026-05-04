@@ -25,6 +25,7 @@ import {
 import { TierBreakdown } from "@/components/fantasy";
 import { Player } from "@/types";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 const POSITION_OPTIONS: FantasyRoutePosition[] = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
 const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string }[] = [
@@ -182,6 +183,62 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
       .slice(0, 4);
   }, [players]);
 
+  const maxTier = useMemo(() => {
+    let max = 0;
+    for (const player of players) {
+      if (player.tier && player.tier > max) {
+        max = player.tier;
+      }
+    }
+    return max;
+  }, [players]);
+
+  const trimmedQuery = searchQuery.trim();
+  const snapshotWeekLabel = metadata
+    ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}`
+    : "Loading";
+
+  const fantasyStatsCells: HomeStatsCell[] = [
+    {
+      label: "Players visible",
+      value: currentSliceUnavailable ? "—" : filteredPlayers.length.toLocaleString(),
+      sub: currentSliceUnavailable ? "Board unavailable" : "After filters",
+    },
+    {
+      label: "Active position",
+      value: FANTASY_POSITION_LABELS[routeState.position],
+      sub: "Switch via pills",
+    },
+    {
+      label: "Scoring format",
+      value: selectedScoringLabel,
+    },
+    {
+      label: "Tier count",
+      value: maxTier > 0 ? maxTier : "—",
+      sub: maxTier > 0 ? "Highest tier in view" : "Not published",
+    },
+    {
+      label: "Search hits",
+      value: trimmedQuery ? filteredPlayers.length.toLocaleString() : "—",
+      sub: trimmedQuery ? `Query "${trimmedQuery}"` : "Type to filter",
+    },
+    {
+      label: "Snapshot week",
+      value: snapshotWeekLabel,
+    },
+    {
+      label: "Source updated",
+      value: formatUpdatedAt(currentSourceUpdatedAt),
+      sub: currentSourceKindLabel,
+    },
+    {
+      label: "Built",
+      value: formatUpdatedAt(metadata?.generatedAt),
+      sub: "Snapshot generated",
+    },
+  ];
+
   return (
     <section
       className="home-page min-h-screen"
@@ -219,33 +276,24 @@ export function FantasyFootballClient({ initialState }: FantasyFootballClientPro
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2 text-sm">
-            <span
-              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
-              style={getPillStyle(false)}
-            >
-              {metadata ? `${metadata.season} ${getFantasyWeekLabel(metadata.week)}` : "Loading snapshot"}
-            </span>
-            <span
-              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
-              style={getPillStyle(false)}
-            >
-              Source updated {formatUpdatedAt(currentSourceUpdatedAt)}
-            </span>
-            <span
-              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
-              style={getPillStyle(false)}
-            >
-              Built {formatUpdatedAt(metadata?.generatedAt)}
-            </span>
-            <span
-              className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-medium"
-              style={getPillStyle(false)}
-            >
-              {selectedScoringLabel} scoring
-            </span>
-          </div>
         </motion.div>
+
+        <HomeStatsPanel
+          id="fantasy-football-stats"
+          title="Board at a glance"
+          meta={`Updated ${formatUpdatedAt(currentSourceUpdatedAt)}`}
+          cells={fantasyStatsCells}
+          pills={[
+            { label: "Standard", href: "/fantasy-football?scoring=standard" },
+            { label: "PPR", href: "/fantasy-football?scoring=ppr" },
+            { label: "Half PPR", href: "/fantasy-football?scoring=half_ppr" },
+            { label: "QB", href: "/fantasy-football?position=qb" },
+            { label: "RB", href: "/fantasy-football?position=rb" },
+            { label: "WR", href: "/fantasy-football?position=wr" },
+            { label: "TE", href: "/fantasy-football?position=te" },
+            { label: "Draft assistant", href: "/fantasy-football/draft-tracker" },
+          ]}
+        />
 
         {error && (
           <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--color-error)" }}>

@@ -17,6 +17,14 @@ import {
   FixtureCard,
   LeaderList,
 } from "@/components/football";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  Calendar,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 import type {
   LaLigaClub,
   LaLigaLeader,
@@ -265,6 +273,67 @@ export function LaLigaClient({
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const [activeDetailTab, setActiveDetailTab] = useState<"club" | "fixtures" | "scorers">("club");
 
+  // Stats panel cells
+  const topScorerEntry = summary.scorers[0] ?? null;
+  const topScorerClub = topScorerEntry ? clubLookup.get(topScorerEntry.clubId) ?? topScorerEntry.clubCode : null;
+  const goalsForLeader = useMemo(
+    () => [...clubs].sort((a, b) => b.goalsFor - a.goalsFor || a.position - b.position)[0] ?? null,
+    [clubs]
+  );
+  const bestDefense = useMemo(
+    () => [...clubs].sort((a, b) => a.goalsAgainst - b.goalsAgainst || a.position - b.position)[0] ?? null,
+    [clubs]
+  );
+  const totalMatchdays = 38;
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "Title leader",
+      tooltip: "Club currently top of the table and their points total.",
+      value: leader ? `${leader.shortName} · ${leader.points} pts` : "—",
+      sub: leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.shortName}` : undefined,
+    },
+    {
+      label: "Top-four gap",
+      tooltip: "Points buffer the fourth-placed club holds over the fifth-placed club.",
+      value: fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—",
+      sub: "Champions League line",
+    },
+    {
+      label: "Europe line gap",
+      tooltip: "Points cushion the sixth-placed club holds over the seventh-placed club.",
+      value: sixthPlace && seventhPlace ? `+${sixthPlace.points - seventhPlace.points} pts` : "—",
+      sub: "Europa / Conference",
+    },
+    {
+      label: "Relegation gap",
+      tooltip: "Points the seventeenth-placed club holds over the eighteenth-placed club.",
+      value: safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—",
+      sub: "Safety margin",
+    },
+    {
+      label: "Top scorer",
+      tooltip: "Leading goalscorer in La Liga this season.",
+      value: topScorerEntry ? `${topScorerEntry.name} · ${topScorerEntry.total}` : "—",
+      sub: topScorerClub ?? undefined,
+    },
+    {
+      label: "Most goals scored",
+      tooltip: "Club with the highest goals-for total this season.",
+      value: goalsForLeader ? `${goalsForLeader.shortName} · ${goalsForLeader.goalsFor}` : "—",
+    },
+    {
+      label: "Best defense",
+      tooltip: "Club with the fewest goals conceded this season.",
+      value: bestDefense ? `${bestDefense.shortName} · ${bestDefense.goalsAgainst}` : "—",
+    },
+    {
+      label: "Matchday",
+      tooltip: "Current matchday position within the 38-game season.",
+      value: summary.matchday ? `${summary.matchday} of ${totalMatchdays}` : `— of ${totalMatchdays}`,
+    },
+  ];
+
   return (
     <div className="home-page min-h-screen">
       <div className="home-shell home-section space-y-5 sm:space-y-6">
@@ -291,6 +360,22 @@ export function LaLigaClient({
             ))}
           </div>
         </div>
+
+        {/* Dense stats panel */}
+        <HomeStatsPanel
+          id="laliga-stats-panel"
+          title="La Liga at a glance"
+          meta={`Live · refreshed ${snapshotDateLabel}`}
+          cells={statsPanelCells}
+          pills={[
+            { label: "Standings", href: "#laliga-standings", icon: ChartBar },
+            { label: "Top scorers", href: "?view=table", icon: User },
+            { label: "Recent fixtures", href: "?view=table", icon: Calendar },
+            { label: "Upcoming fixtures", href: "?view=table", icon: Calendar },
+            { label: "Club detail", href: "?view=table", icon: Briefcase },
+            { label: "Article", href: "/writing", icon: Article },
+          ]}
+        />
 
         {/* Key gaps */}
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -325,7 +410,7 @@ export function LaLigaClient({
         </div>
 
         {/* Main standings + sidebar */}
-        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div id="laliga-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>

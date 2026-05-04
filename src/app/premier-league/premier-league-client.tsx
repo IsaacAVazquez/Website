@@ -18,6 +18,14 @@ import {
   LeaderList,
   type LeaderEntry,
 } from "@/components/football";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  Calendar,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 import type {
   PremierLeagueDetailTab,
   PremierLeagueRouteState,
@@ -325,6 +333,69 @@ export function PremierLeagueClient({
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const lastUpdated = formatGeneratedAt(summary.generatedAt);
 
+  // Stats panel cells
+  const topScorerEntry = summary.scorers[0] ?? null;
+  const goalsForLeader = useMemo(
+    () => [...summary.standings].sort((a, b) => b.goalsFor - a.goalsFor || a.position - b.position)[0] ?? null,
+    [summary.standings]
+  );
+  const bestDefense = useMemo(
+    () => [...summary.standings].sort((a, b) => a.goalsAgainst - b.goalsAgainst || a.position - b.position)[0] ?? null,
+    [summary.standings]
+  );
+  const totalMatchdays = 38;
+  const currentMatchday = summary.competition?.currentMatchday ?? null;
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "Title leader",
+      tooltip: "Club currently top of the table and their points total.",
+      value: leader ? `${leader.team.shortName} · ${leader.points} pts` : "—",
+      sub: leader && runnerUp ? `${leader.points - runnerUp.points} clear of ${runnerUp.team.shortName}` : undefined,
+    },
+    {
+      label: "Top-four gap",
+      tooltip: "Points buffer the fourth-placed club holds over the fifth-placed club.",
+      value: fourthPlace && fifthPlace ? `+${fourthPlace.points - fifthPlace.points} pts` : "—",
+      sub: "Champions League line",
+    },
+    {
+      label: "Europe line gap",
+      tooltip: "Points cushion the sixth-placed club holds over the seventh-placed club.",
+      value: summary.standings[5] && summary.standings[6]
+        ? `+${summary.standings[5].points - summary.standings[6].points} pts`
+        : "—",
+      sub: "Europa / Conference",
+    },
+    {
+      label: "Relegation gap",
+      tooltip: "Points the seventeenth-placed club holds over the eighteenth-placed club.",
+      value: safetyLine && dropLine ? `+${safetyLine.points - dropLine.points} pt` : "—",
+      sub: "Safety margin",
+    },
+    {
+      label: "Top scorer",
+      tooltip: "Leading goalscorer in the league this season.",
+      value: topScorerEntry ? `${topScorerEntry.name} · ${topScorerEntry.goals}` : "—",
+      sub: topScorerEntry ? topScorerEntry.teamName : undefined,
+    },
+    {
+      label: "Most goals scored",
+      tooltip: "Club with the highest goals-for total this season.",
+      value: goalsForLeader ? `${goalsForLeader.team.shortName} · ${goalsForLeader.goalsFor}` : "—",
+    },
+    {
+      label: "Best defense",
+      tooltip: "Club with the fewest goals conceded this season.",
+      value: bestDefense ? `${bestDefense.team.shortName} · ${bestDefense.goalsAgainst}` : "—",
+    },
+    {
+      label: "Matchday",
+      tooltip: "Current matchday position within the 38-game season.",
+      value: currentMatchday ? `${currentMatchday} of ${totalMatchdays}` : `— of ${totalMatchdays}`,
+    },
+  ];
+
   return (
     <div className="home-page min-h-screen">
       <div className="home-shell home-section space-y-5 sm:space-y-6">
@@ -351,6 +422,22 @@ export function PremierLeagueClient({
             ))}
           </div>
         </div>
+
+        {/* Dense stats panel */}
+        <HomeStatsPanel
+          id="pl-stats-panel"
+          title="Premier League at a glance"
+          meta={`Live · refreshed ${lastUpdated}`}
+          cells={statsPanelCells}
+          pills={[
+            { label: "Standings", href: "#pl-standings", icon: ChartBar },
+            { label: "Top scorers", href: "?detail=scorers", icon: User },
+            { label: "Recent fixtures", href: "?detail=fixtures", icon: Calendar },
+            { label: "Upcoming fixtures", href: "?detail=fixtures", icon: Calendar },
+            { label: "Club detail", href: "?detail=club", icon: Briefcase },
+            { label: "Article", href: "/writing", icon: Article },
+          ]}
+        />
 
         {/* Key gaps */}
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -385,7 +472,7 @@ export function PremierLeagueClient({
         </div>
 
         {/* Main standings + sidebar */}
-        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div id="pl-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           {/* Standings */}
           <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">

@@ -4,14 +4,13 @@ import { useId, useState, useMemo } from "react";
 import {
   IconCreditCard,
   IconInfoCircle,
-  IconTrendingDown,
-  IconAlertTriangle,
   IconLayoutGrid,
   IconScale,
   IconCalculator,
   IconRefresh,
   IconCirclePercentage,
 } from "@tabler/icons-react";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 // ─── Interchange rate data (US, representative 2024 published values) ─────────
 // Source: Visa/Mastercard published interchange tables; Amex OptBlue program
@@ -272,6 +271,49 @@ export function InterchangeIQClient() {
     { label: "Amex",           pct: cardMix.amexFraction   * 100, rate: "~2.30%" },
   ];
 
+  const monthlyTxCount = avgTicket > 0 ? monthlyVolume / avgTicket : 0;
+  const annualSavings = savingsVsWorst * 12;
+
+  const interchangeStatsCells: HomeStatsCell[] = [
+    {
+      label: "Best processor",
+      value: cheapest.name,
+      sub: cheapest.model,
+    },
+    {
+      label: "Best fee",
+      value: fmtFull(cheapest.monthlyFee),
+      sub: "per month",
+    },
+    {
+      label: "Effective rate",
+      value: `${(cheapest.effectiveRate * 100).toFixed(2)}%`,
+    },
+    {
+      label: "Savings vs worst",
+      value: fmtFull(savingsVsWorst),
+      sub: `vs ${worst.name}`,
+    },
+    {
+      label: "Savings vs flat",
+      value: savings > 0 ? fmtFull(savings) : "—",
+      sub: savings > 0 ? `vs ${bestFlat.name}` : "Flat-rate wins",
+    },
+    {
+      label: "Annual savings",
+      value: fmtFull(annualSavings),
+      tone: annualSavings > 0 ? "good" : "default",
+    },
+    {
+      label: "Monthly tx",
+      value: Math.round(monthlyTxCount).toLocaleString(),
+    },
+    {
+      label: "Avg per-tx fee",
+      value: fmtFull(cheapest.perTxAvg),
+    },
+  ];
+
   return (
     <div className="tool-page-stack">
       <div className="tool-shell" data-testid="interchange-iq-shell">
@@ -365,93 +407,19 @@ export function InterchangeIQClient() {
           </div>
 
           <div className="mt-5 space-y-5">
-            {/* Hero card — headline result */}
-            <article className="tool-card tool-card-hero" id="result-hero">
-              <div className="flex items-start gap-3">
-                {savings > 100 ? (
-                  <IconTrendingDown
-                    className="h-5 w-5 flex-shrink-0 mt-1"
-                    style={{ color: "var(--color-success)" }}
-                    aria-hidden="true"
-                  />
-                ) : savings < -50 ? (
-                  <IconAlertTriangle
-                    className="h-5 w-5 flex-shrink-0 mt-1"
-                    style={{ color: "var(--color-warning)" }}
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <IconInfoCircle
-                    className="h-5 w-5 flex-shrink-0 mt-1"
-                    style={{ color: "var(--home-haze)" }}
-                    aria-hidden="true"
-                  />
-                )}
-                <div className="min-w-0 flex-1 space-y-2">
-                  <p
-                    className="mb-0"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "10.5px",
-                      fontWeight: 700,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: "var(--home-ink-muted)",
-                    }}
-                  >
-                    Best processor for your profile
-                  </p>
-                  <p
-                    className="mb-0 tabular-nums"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "clamp(1.5rem, 1.5vw + 1rem, 1.95rem)",
-                      fontWeight: 600,
-                      letterSpacing: "-0.04em",
-                      lineHeight: 1.05,
-                      color: "var(--home-ink)",
-                    }}
-                  >
-                    {cheapest.name}{" "}
-                    <span style={{ color: "var(--home-haze)" }}>
-                      {fmtFull(cheapest.monthlyFee)}
-                    </span>
-                    <span
-                      style={{
-                        fontWeight: 400,
-                        color: "var(--home-ink-muted)",
-                        fontSize: "0.7em",
-                      }}
-                    >
-                      {" "}/mo
-                    </span>
-                  </p>
-                  <p
-                    className="mb-0"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "13.5px",
-                      lineHeight: 1.55,
-                      color: "var(--home-ink-muted)",
-                    }}
-                  >
-                    {savingsVsWorst > 0 ? (
-                      <>
-                        <span className="tabular-nums" style={{ color: "var(--home-ink)", fontWeight: 600 }}>
-                          {fmtFull(savingsVsWorst)}/mo
-                        </span>{" "}
-                        less than {worst.name} ({fmtFull(savingsVsWorst * 12)}/yr).{" "}
-                      </>
-                    ) : null}
-                    {savings > 100
-                      ? `Interchange+ wins at this volume — ${bestIC.name} saves ${fmtFull(savings)}/mo over the cheapest flat-rate option.`
-                      : savings < -50
-                      ? "Flat-rate is cheaper here — per-transaction fixed fees compound at lower ticket sizes."
-                      : "Flat-rate and interchange+ are roughly equivalent at this profile."}
-                  </p>
-                </div>
-              </div>
-            </article>
+            <HomeStatsPanel
+              id="result-hero"
+              title="Verdict at a glance"
+              meta={`${cheapest.name} wins`}
+              hideLiveDot
+              cells={interchangeStatsCells}
+              pills={[
+                { label: "Sliders", href: "#hero" },
+                { label: "Card mix", href: "#hero" },
+                { label: "Breakeven", href: "#breakeven" },
+                { label: "Reference", href: "#all-processors" },
+              ]}
+            />
 
             {/* Processor comparison — table-style rows */}
             <article className="tool-card" id="all-processors">

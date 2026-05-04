@@ -1,8 +1,10 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, type CSSProperties, type ReactNode } from "react";
+import { startTransition, useEffect, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { BarChart3, TrendingUp, TrendingDown, Minus, Users, MapPin, Award } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { ChartBar, Briefcase, FileText, Search } from "@/components/ui/ServerIcons";
 import type { PollingRouteState, PollingSnapshot, PollingView, Race, RacePoll } from "@/types/polling";
 import {
   buildPollingHref,
@@ -31,22 +33,7 @@ interface Props {
   snapshot: PollingSnapshot;
 }
 
-// ─── Local stat/metric cards (home-token equivalents) ──────────────────────────
-
-function PollingStatCard({ eyebrow, metric, detail, icon }: {
-  eyebrow: string; metric: string; detail: string; icon: ReactNode;
-}) {
-  return (
-    <div className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,white)] px-4 py-4">
-      <div className="flex items-center justify-between gap-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">{eyebrow}</p>
-        <span className="text-[var(--home-ink-muted)]">{icon}</span>
-      </div>
-      <p className="mt-3 text-lg font-semibold text-[var(--home-ink)]">{metric}</p>
-      <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">{detail}</p>
-    </div>
-  );
-}
+// ─── Local metric card (home-token equivalent) ─────────────────────────────────
 
 function PollingMetricCard({ label, value }: { label: string; value: string }) {
   return (
@@ -560,38 +547,64 @@ function OverviewPanel({ snapshot }: { snapshot: PollingSnapshot }) {
     (new Date("2026-11-03").getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
   );
 
-  const NetIcon = approvalNet > 0 ? TrendingUp : approvalNet < 0 ? TrendingDown : Minus;
-  const netColor: CSSProperties = { color: approvalNet > 0 ? DEM_COLOR : approvalNet < 0 ? REP_COLOR : "#D97706" };
+  const overviewCells: HomeStatsCell[] = [
+    {
+      label: "Approval net",
+      value: <span className="tabular-nums">{formatNet(approvalNet)}</span>,
+      sub: `${snapshot.approvalAvg.approve.toFixed(1)}% approve, ${snapshot.approvalAvg.disapprove.toFixed(1)}% disapprove`,
+      tone: approvalNet > 0 ? "good" : "default",
+    },
+    {
+      label: "Generic ballot margin",
+      value: <span className="tabular-nums">{formatMargin(ballotMargin)}</span>,
+      sub: `D ${snapshot.genericBallotAvg.dem.toFixed(1)}% vs R ${snapshot.genericBallotAvg.rep.toFixed(1)}%`,
+    },
+    {
+      label: "Senate toss-ups",
+      value: <span className="tabular-nums">{senateCounts.tossup}</span>,
+      sub: "Rated true toss-up by ratings",
+    },
+    {
+      label: "Senate D-leading",
+      value: <span className="tabular-nums">{senateCounts.demLeading}</span>,
+      sub: "Currently favoring Democrats",
+    },
+    {
+      label: "Senate R-leading",
+      value: <span className="tabular-nums">{senateCounts.repLeading}</span>,
+      sub: "Currently favoring Republicans",
+    },
+    {
+      label: "Governor toss-ups",
+      value: <span className="tabular-nums">{govCounts.tossup}</span>,
+      sub: "Competitive 2026 governor seats",
+    },
+    {
+      label: "Days to election",
+      value: <span className="tabular-nums">{daysToElection > 0 ? daysToElection : "Election day"}</span>,
+      sub: "Nov 3, 2026 midterms",
+    },
+    {
+      label: "Polls in average",
+      value: <span className="tabular-nums">{snapshot.approvalPolls.length}</span>,
+      sub: "Approval polls feeding the trend",
+    },
+  ];
 
   return (
     <div className="space-y-8">
-      {/* Summary stat cards */}
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <PollingStatCard
-          eyebrow="Approval net"
-          metric={formatNet(approvalNet)}
-          detail={`${snapshot.approvalAvg.approve.toFixed(1)}% approve · ${snapshot.approvalAvg.disapprove.toFixed(1)}% disapprove`}
-          icon={<NetIcon className="h-4 w-4" style={netColor} />}
-        />
-        <PollingStatCard
-          eyebrow="Generic ballot"
-          metric={formatMargin(ballotMargin)}
-          detail={`Dem. ${snapshot.genericBallotAvg.dem.toFixed(1)}% vs Rep. ${snapshot.genericBallotAvg.rep.toFixed(1)}%`}
-          icon={<BarChart3 className="h-4 w-4" />}
-        />
-        <PollingStatCard
-          eyebrow="Senate toss-ups"
-          metric={String(senateCounts.tossup)}
-          detail={`D+${senateCounts.demLeading} leading · R+${senateCounts.repLeading} leading`}
-          icon={<Users className="h-4 w-4" />}
-        />
-        <PollingStatCard
-          eyebrow="Days to election"
-          metric={daysToElection > 0 ? String(daysToElection) : "Election day"}
-          detail="Nov 3, 2026 midterms"
-          icon={<Award className="h-4 w-4" />}
-        />
-      </div>
+      <HomeStatsPanel
+        id="polling-overview-stats"
+        title="Midterms at a glance"
+        meta="Approval, ballot, and races"
+        cells={overviewCells}
+        pills={[
+          { label: "Approval", href: "/polling-aggregator?view=approval", icon: ChartBar },
+          { label: "Generic ballot", href: "/polling-aggregator?view=approval", icon: FileText },
+          { label: "Senate", href: "/polling-aggregator?view=senate", icon: Briefcase },
+          { label: "Governors", href: "/polling-aggregator?view=governors", icon: Search },
+        ]}
+      />
 
       {/* Approval trend mini */}
       <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">

@@ -1,0 +1,267 @@
+name: Refresh MLB Snapshot
+
+on:
+  # Daily during the main MLB window. Manual dispatch covers late March,
+  # November postseason edge cases, and off-season ad hoc refreshes.
+  schedule:
+    - cron: "5 10 * 4-10 *"
+  workflow_dispatch:
+
+# Don't stack a manual dispatch on top of a scheduled run.
+concurrency:
+  group: refresh-mlb
+  cancel-in-progress: false
+
+jobs:
+  refresh-mlb:
+    name: Refresh MLB Snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+
+      - name: Refresh MLB snapshot
+        run: npm run update:mlb
+        env:
+          NODE_ENV: production
+
+      - name: Verify MLB snapshot quality
+        id: verify_quality
+        run: |
+          node -e "
+          const fs = require('fs');
+
+          const SNAPSHOT_PATH = 'src/data/mlbSnapshot.ts';
+          const MIN_TEAMS = 28;
+          const MIN_STANDINGS = 28;
+          const MIN_TEAM_SNAPSHOTS = 20;
+          const MIN_LEADERS = 5;
+
+          if (!fs.existsSync(SNAPSHOT_PATH)) {
+            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
+          const match = source.match(
+            /export const mlbSnapshot: MlbSnapshot = (\{[\s\S]*\});\s*$/
+          );
+          if (!match) {
+            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
+            process.exit(1);
+          }
+
+          let snapshot;
+          try {
+            snapshot = JSON.parse(match[1]);
+          } catch (err) {
+            console.error('::error::JSON.parse failed on MLB snapshot body: ' + String(err));
+            process.exit(1);
+          }
+
+          const teams = Array.isArray(snapshot.teams) ? snapshot.teams.length : 0;
+          const standings = Array.isArray(snapshot.standings) ? snapshot.standings.length : 0;
+          const recent = Array.isArray(snapshot.recentGames) ? snapshot.recentGames.length : 0;
+          const upcoming = Array.isArray(snapshot.upcomingGames) ? snapshot.upcomingGames.length : 0;
+          const teamSnapshots = snapshot.teamSnapshots ? Object.keys(snapshot.teamSnapshots).length : 0;
+          const homeRuns = Array.isArray(snapshot.hittingLeaders?.homeRuns)
+            ? snapshot.hittingLeaders.homeRuns.length
+            : 0;
+          const era = Array.isArray(snapshot.pitchingLeaders?.earnedRunAverage)
+            ? snapshot.pitchingLeaders.earnedRunAverage.length
+            : 0;
+
+          console.log('Season:', snapshot.season);
+          console.log('Teams:', teams);
+          console.log('Standings rows:', standings);
+          console.log('Recent games:', recent);
+          console.log('Upcoming games:', upcoming);
+          console.log('Team snapshots:', teamSnapshots);
+          console.log('Home run leaders:', homeRuns);
+          console.log('ERA leaders:', era);
+
+          if (teams < MIN_TEAMS || standings < MIN_STANDINGS) {
+            console.error('::error::Refusing to commit a degraded MLB snapshot. Expected near-complete teams and standings.');
+            process.exit(1);
+          }
+
+          if (teamSnapshots < MIN_TEAM_SNAPSHOTS) {
+            console.error('::error::MLB team snapshots look incomplete: ' + teamSnapshots + '.');
+            process.exit(1);
+          }
+
+          if (recent + upcoming < 1) {
+            console.error('::error::MLB snapshot has no recent or upcoming games.');
+            process.exit(1);
+          }
+
+          if (homeRuns < MIN_LEADERS || era < MIN_LEADERS) {
+            console.error('::error::MLB leaderboards look incomplete. HR=' + homeRuns + ', ERA=' + era + '.');
+            process.exit(1);
+          }
+
+          fs.writeFileSync(
+            process.env.GITHUB_OUTPUT,
+            'teams=' + teams + '\n' +
+              'standings=' + standings + '\n' +
+              'recent=' + recent + '\n' +
+              'upcoming=' + upcoming + '\n' +
+              'team_snapshots=' + teamSnapshots + '\n' +
+              'home_runs=' + homeRuns + '\n' +
+              'era=' + era + '\n',
+            { flag: 'a' }
+          );
+          "
+
+      - name: Check for snapshot changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain -- src/data/mlbSnapshot.ts)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected in src/data/mlbSnapshot.ts"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected in src/data/mlbSnapshot.ts"
+          fi
+
+      - name: Commit and push refreshed snapshot
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/mlbSnapshot.ts
+          git commit -m "chore: refresh mlb snapshot [automated] [skip ci]"
+          # Retry on push rejection. Main can move during the refresh, so
+          # rebase the single snapshot commit onto the latest origin/main and
+          # try again. Bail on a real conflict.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt rejected. Rebasing onto latest origin/main..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort
+              echo "Rebase conflict. Failing the run."
+              exit 1
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "Push failed after 5 attempts."
+          exit 1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create job summary
+        if: always()
+        run: |
+          echo "## MLB Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Daily at 10:05 UTC, April through October" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${{ steps.verify_quality.outputs.teams }}" ]; then
+            echo "**Teams:** ${{ steps.verify_quality.outputs.teams }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Standings rows:** ${{ steps.verify_quality.outputs.standings }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Recent games:** ${{ steps.verify_quality.outputs.recent }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Upcoming games:** ${{ steps.verify_quality.outputs.upcoming }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Team snapshots:** ${{ steps.verify_quality.outputs.team_snapshots }}" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+            echo "MLB snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "MLB snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Notify on failure via GitHub issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+            const title = `MLB refresh failed ${today}`;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `The **Refresh MLB Snapshot** workflow failed on ${today}.`,
+              ``,
+              `**Run:** ${runUrl}`,
+              `**Commit:** ${context.sha}`,
+              `**Trigger:** ${context.eventName}`,
+              ``,
+              `Check the run logs to diagnose. Common causes:`,
+              `- MLB Stats API outage or timeout`,
+              `- Quality gate caught a degraded snapshot`,
+              `- Git push rejected after 5 retries`,
+              ``,
+              `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
+            ].join('\n');
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'mlb-refresh-failure',
+              per_page: 5,
+            });
+            if (existing.data.length > 0) {
+              const issue = existing.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Failed again on ${today}. Run: ${runUrl}`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['mlb-refresh-failure', 'automation'],
+              });
+            }
+
+      - name: Close resolved failure issues
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'mlb-refresh-failure',
+              per_page: 10,
+            });
+            for (const issue of existing.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Refresh succeeded at ${new Date().toISOString()}. Auto-closing.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+            }

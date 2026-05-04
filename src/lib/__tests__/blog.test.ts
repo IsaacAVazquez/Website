@@ -12,9 +12,7 @@ jest.mock('remark-html', () => jest.fn());
 
 import fs from 'fs';
 import matter from 'gray-matter';
-// @ts-expect-error - ESM import works via Jest's transform
 import { remark } from 'remark';
-// @ts-expect-error - ESM import works via Jest's transform
 import remarkHtml from 'remark-html';
 import {
   getBlogPostSlugs,

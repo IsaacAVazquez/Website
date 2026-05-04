@@ -9,6 +9,7 @@ import {
 } from "react";
 import { ChefHat, Plus, Search, Sparkles, Trash2, X } from "lucide-react";
 import { EditorialPillButton } from "@/components/editorial";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import { RECIPES } from "@/data/recipesSnapshot";
 import {
   formatTotalTime,
@@ -161,6 +162,62 @@ export function RecipeFinderClient() {
   const hasPantry = pantry.length > 0;
   const totalRecipes = RECIPES.length;
 
+  const quickWinsCount = useMemo(
+    () => baseMatches.filter((m) => totalMinutes(m.recipe) <= 15).length,
+    [baseMatches],
+  );
+
+  const dietLabel = useMemo(() => {
+    if (view === "vegetarian") return "Vegetarian";
+    return DIET_OPTIONS.find((option) => option.value === diet)?.label ?? "Any diet";
+  }, [diet, view]);
+
+  const mealLabel = useMemo(
+    () => CATEGORY_OPTIONS.find((option) => option.value === category)?.label ?? "Any time",
+    [category],
+  );
+
+  const recipeStatsCells: HomeStatsCell[] = [
+    {
+      label: "Recipes available",
+      value: visibleMatches.length.toLocaleString(),
+      sub: `of ${totalRecipes} in corpus`,
+    },
+    {
+      label: "Pantry items",
+      value: hasPantry ? pantry.length.toLocaleString() : "—",
+      sub: hasPantry ? "Saved locally" : "Add to start",
+    },
+    {
+      label: "Cookable now",
+      value: hasPantry ? cookableNow.toLocaleString() : "—",
+      sub: hasPantry ? "100% pantry match" : undefined,
+      tone: hasPantry && cookableNow > 0 ? "good" : "default",
+    },
+    {
+      label: "Almost cookable",
+      value: hasPantry ? almostCookable.toLocaleString() : "—",
+      sub: hasPantry ? "60% or better" : undefined,
+    },
+    {
+      label: "Total in corpus",
+      value: totalRecipes.toLocaleString(),
+    },
+    {
+      label: "Active diet",
+      value: dietLabel,
+    },
+    {
+      label: "Active meal",
+      value: mealLabel,
+    },
+    {
+      label: "Quick wins",
+      value: quickWinsCount.toLocaleString(),
+      sub: "15 minutes or less",
+    },
+  ];
+
   function addIngredient(rawValue: string) {
     const value = rawValue.trim().toLowerCase();
     if (!value) return;
@@ -274,34 +331,19 @@ export function RecipeFinderClient() {
             </div>
 
             <div className="mt-5 space-y-5">
-              <div className="tool-card">
-                <div className="tool-stats-grid">
-                  <div className="tool-stat-cell">
-                    <p className="tool-stat-label">Recipes available</p>
-                    <p className="tool-stat-val">{visibleMatches.length}</p>
-                    <p className="tool-stat-delta">
-                      of {totalRecipes} in corpus
-                    </p>
-                  </div>
-                  <div className="tool-stat-cell">
-                    <p className="tool-stat-label">Pantry items</p>
-                    <p className="tool-stat-val">{hasPantry ? pantry.length : "—"}</p>
-                    <p className="tool-stat-delta">
-                      {hasPantry ? "saved locally" : "add to start"}
-                    </p>
-                  </div>
-                  <div className="tool-stat-cell">
-                    <p className="tool-stat-label">Cookable now</p>
-                    <p className="tool-stat-val">{hasPantry ? cookableNow : "—"}</p>
-                    <p className="tool-stat-delta">100% match</p>
-                  </div>
-                  <div className="tool-stat-cell">
-                    <p className="tool-stat-label">Almost cookable</p>
-                    <p className="tool-stat-val">{hasPantry ? almostCookable : "—"}</p>
-                    <p className="tool-stat-delta">≥60% match</p>
-                  </div>
-                </div>
-              </div>
+              <HomeStatsPanel
+                id="recipe-finder-stats"
+                title="Recipes at a glance"
+                meta={hasPantry ? `${cookableNow} cookable now` : "Add pantry items to rank"}
+                hideLiveDot
+                cells={recipeStatsCells}
+                pills={[
+                  { label: "Quick wins", href: "/recipe-finder?view=quick" },
+                  { label: "Vegetarian", href: "/recipe-finder?view=vegetarian" },
+                  { label: "Pantry", href: "/recipe-finder?view=pantry" },
+                  { label: "All recipes", href: "/recipe-finder?view=all" },
+                ]}
+              />
 
               <div
                 className="flex flex-wrap gap-2"

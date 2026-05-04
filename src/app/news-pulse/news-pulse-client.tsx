@@ -17,6 +17,8 @@ import {
   getPillStyle,
   insetPanelStyle,
 } from "@/components/editorial";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { ChartBar, Article, FileText } from "@/components/ui/ServerIcons";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -276,6 +278,75 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
       ? "Feed unavailable"
       : `Updated ${formatFetchedAt(fetchedAt)}`;
 
+  const topClusterSize = useMemo(() => {
+    if (articles.length === 0) return 0;
+    const clusters = clusterArticlesByStory(articles);
+    let largest = 0;
+    for (const cluster of clusters) {
+      if (cluster.articles.length > largest) {
+        largest = cluster.articles.length;
+      }
+    }
+    return largest;
+  }, [articles]);
+
+  const newestHeadlineAge = useMemo(() => {
+    if (articles.length === 0) return "—";
+    let newest = 0;
+    for (const article of articles) {
+      const t = new Date(article.pubDate).getTime();
+      if (Number.isFinite(t) && t > newest) newest = t;
+    }
+    if (newest === 0) return "—";
+    return timeAgo(new Date(newest).toISOString());
+  }, [articles]);
+
+  const lastFetchedRelative = fetchedAt ? timeAgo(fetchedAt) : "—";
+
+  const newsCells: HomeStatsCell[] = [
+    {
+      label: "Headlines in pull",
+      value: <span className="tabular-nums">{loading ? "—" : articles.length}</span>,
+      sub: "From the most recent fetch",
+    },
+    {
+      label: "Outlets reporting",
+      value: <span className="tabular-nums">{loading ? "—" : articleSourceCount}</span>,
+      sub: "Sources with at least one headline",
+    },
+    {
+      label: "Outlets tracked",
+      value: <span className="tabular-nums">{trackedSourceCount}</span>,
+      sub: "Configured RSS feeds",
+    },
+    {
+      label: "Top cluster size",
+      value: <span className="tabular-nums">{loading ? "—" : topClusterSize}</span>,
+      sub: "Largest shared story",
+    },
+    {
+      label: "Newest headline",
+      value: loading ? "—" : newestHeadlineAge,
+      sub: "Time since most recent",
+    },
+    {
+      label: "Feed errors",
+      value: <span className="tabular-nums">{loading ? "—" : feedErrors.length}</span>,
+      sub: feedErrors.length === 0 ? "All feeds responded" : "Some feeds skipped",
+      tone: feedErrors.length === 0 && !loading ? "good" : "default",
+    },
+    {
+      label: "Average reading time",
+      value: "—",
+      sub: "n/a in current snapshot",
+    },
+    {
+      label: "Last fetched",
+      value: loading ? "Refreshing" : lastFetchedRelative,
+      sub: error ? "Feed unavailable" : "From server fetch",
+    },
+  ];
+
   return (
     <section
       className="home-page min-h-screen"
@@ -320,6 +391,18 @@ export function NewsPulseClient({ initialState }: NewsPulseClientProps) {
             </div>
           </div>
         </motion.div>
+
+        <HomeStatsPanel
+          id="news-pulse-stats"
+          title="News pulse at a glance"
+          meta={updatedLabel}
+          cells={newsCells}
+          pills={[
+            { label: "Headlines", href: "/news-pulse", icon: Article },
+            { label: "Coverage", href: "/news-pulse?view=coverage", icon: ChartBar },
+            { label: "Analysis", href: "/news-pulse?view=analysis", icon: FileText },
+          ]}
+        />
 
         <motion.div
           className="pt-1"

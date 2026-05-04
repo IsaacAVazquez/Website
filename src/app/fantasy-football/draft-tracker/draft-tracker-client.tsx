@@ -14,6 +14,7 @@ import {
 } from "@/lib/fantasy";
 import { formatUpdatedAt } from "@/lib/fantasyUtils";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 const DRAFT_TRACKER_BREADCRUMBS = [
   { label: "Fantasy Football", href: "/fantasy-football" },
@@ -53,6 +54,52 @@ export function DraftTrackerClient() {
   const recentPicks = useMemo(() => draftState.picks.slice(-12).reverse(), [draftState.picks]);
   const totalPicks = draftState.settings.totalTeams * draftState.settings.rounds;
   const completionPercentage = Math.round((draftState.picks.length / totalPicks) * 100);
+
+  const userTeamName = userTeam?.teamName ?? `Team ${draftState.settings.userTeam}`;
+  const bestAvailableCount = (snapshot?.overall ?? []).filter(
+    (player) => !draftState.picks.some((pick) => pick.player.id === player.id)
+  ).length;
+
+  const draftStatsCells: HomeStatsCell[] = [
+    {
+      label: "Current pick",
+      value: draftState.currentPick.toLocaleString(),
+      sub: `of ${totalPicks}`,
+    },
+    {
+      label: "Round",
+      value: `${draftState.currentRound}`,
+      sub: `of ${draftState.settings.rounds}`,
+    },
+    {
+      label: "On the clock",
+      value: currentTeamName,
+      sub: isUserPick ? "Your pick" : undefined,
+    },
+    {
+      label: "Picks made",
+      value: draftState.picks.length.toLocaleString(),
+    },
+    {
+      label: "Total picks",
+      value: `${draftState.settings.totalTeams} × ${draftState.settings.rounds}`,
+      sub: totalPicks.toLocaleString(),
+    },
+    {
+      label: "Completion",
+      value: `${completionPercentage}%`,
+      tone: completionPercentage > 0 ? "good" : "default",
+    },
+    {
+      label: "Your team",
+      value: userTeamName,
+    },
+    {
+      label: "Best available",
+      value: bestAvailableCount > 0 ? bestAvailableCount.toLocaleString() : "—",
+      sub: "Players left on board",
+    },
+  ];
 
   const [exportToast, setExportToast] = useState<string | null>(null);
   function handleExport(format: "csv") {
@@ -129,6 +176,17 @@ export function DraftTrackerClient() {
             </span>
           </div>
         </div>
+
+        <HomeStatsPanel
+          id="draft-tracker-stats"
+          title="Draft at a glance"
+          meta={isDraftComplete ? "Draft complete" : `Pick ${draftState.currentPick} of ${totalPicks}`}
+          cells={draftStatsCells}
+          pills={[
+            { label: "Resume rankings", href: "/fantasy-football" },
+            { label: "Draft assistant", href: "/fantasy-football/draft-tracker" },
+          ]}
+        />
 
         {error && (
           <article className="home-card p-5 sm:p-6" style={{ borderColor: "var(--color-error)" }}>

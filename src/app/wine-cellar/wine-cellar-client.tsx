@@ -27,6 +27,7 @@ import {
 } from "@/lib/wineCellar";
 import { useWineCellar } from "@/hooks/useWineCellar";
 import type { WineEntry, WineType } from "@/types/wine";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 interface WineFormDraft {
   name: string;
@@ -241,6 +242,45 @@ export function WineCellarClient() {
     [entries]
   );
 
+  const favoriteType = summary.typeBreakdown[0]?.type ?? null;
+
+  const wineStatsCells: HomeStatsCell[] = [
+    {
+      label: "Bottles logged",
+      value: hasEntries ? summary.totalWines.toLocaleString() : "—",
+    },
+    {
+      label: "Average rating",
+      value: hasEntries ? summary.averageRating.toFixed(1) : "—",
+      sub: hasEntries ? "Across the cellar" : "Add a bottle to start",
+    },
+    {
+      label: "Cellar spend",
+      value: summary.totalSpend > 0 ? formatCurrency(summary.totalSpend) : "—",
+    },
+    {
+      label: "Top region",
+      value: summary.topRegion ?? "—",
+    },
+    {
+      label: "Top varietal",
+      value: summary.topVarietal ?? "—",
+    },
+    {
+      label: "Recent five-stars",
+      value: recentFiveStars.length.toLocaleString(),
+      tone: recentFiveStars.length > 0 ? "good" : "default",
+    },
+    {
+      label: "Favorite type",
+      value: favoriteType ? WINE_TYPE_LABELS[favoriteType] : "—",
+    },
+    {
+      label: "Last logged",
+      value: lastLoggedDate ? formatTastedDate(lastLoggedDate) : "—",
+    },
+  ];
+
   return (
     <section
       className="min-h-screen bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,var(--home-haze)_11%,transparent),transparent_30%),linear-gradient(180deg,color-mix(in_srgb,var(--home-paper-alt)_88%,var(--home-paper))_0%,var(--home-paper)_100%)]"
@@ -346,46 +386,21 @@ export function WineCellarClient() {
               </div>
 
               <div className="mt-5 flex flex-col gap-5">
-                {/* Stats grid — single card, 4 cells */}
-                <section
-                  id="stats"
-                  className="tool-card scroll-mt-28"
-                  aria-label="Cellar stats"
-                >
-                  <div className="tool-stats-grid">
-                    <div className="tool-stat-cell">
-                      <p className="tool-stat-label">Bottles logged</p>
-                      <p className="tool-stat-val">
-                        {hasEntries ? summary.totalWines : "—"}
-                      </p>
-                    </div>
-                    <div className="tool-stat-cell">
-                      <p className="tool-stat-label">Average rating</p>
-                      <p className="tool-stat-val">
-                        {hasEntries ? summary.averageRating.toFixed(1) : "—"}
-                      </p>
-                      {hasEntries ? (
-                        <p className="tool-stat-delta">
-                          <StarRating value={summary.averageRating} />
-                        </p>
-                      ) : null}
-                    </div>
-                    <div className="tool-stat-cell">
-                      <p className="tool-stat-label">Cellar spend</p>
-                      <p className="tool-stat-val">
-                        {summary.totalSpend > 0
-                          ? formatCurrency(summary.totalSpend)
-                          : "—"}
-                      </p>
-                    </div>
-                    <div className="tool-stat-cell">
-                      <p className="tool-stat-label">Top region</p>
-                      <p className="tool-stat-val truncate">
-                        {summary.topRegion ?? "—"}
-                      </p>
-                    </div>
-                  </div>
-                </section>
+                <div id="stats" className="scroll-mt-28">
+                  <HomeStatsPanel
+                    id="wine-cellar-stats"
+                    title="Cellar at a glance"
+                    meta={lastLoggedDate ? `Last logged ${formatTastedDate(lastLoggedDate)}` : "No bottles yet"}
+                    hideLiveDot
+                    cells={wineStatsCells}
+                    pills={[
+                      { label: "All bottles", href: "#cellar" },
+                      { label: "By region", href: "#filters" },
+                      { label: "By varietal", href: "#filters" },
+                      { label: "Reset filters", href: "#filters" },
+                    ]}
+                  />
+                </div>
 
                 {/* Filter / sort strip */}
                 <section

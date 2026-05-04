@@ -9,7 +9,7 @@ interface DeferredThemeToggleProps {
 }
 
 const LazyThemeToggle = dynamic<DeferredThemeToggleProps>(
-  () => import("@/components/ui/ThemeToggle.js").then((module) => module.ThemeToggle),
+  () => import("@/components/ui/ThemeToggle").then((module) => module.ThemeToggle),
   { ssr: false }
 );
 

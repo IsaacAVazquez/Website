@@ -23,6 +23,14 @@ import {
   FixtureCard,
   LeaderList,
 } from "@/components/football";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  Calendar,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 import type {
   NbaLeader,
   NbaRouteState,
@@ -250,8 +258,69 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
   const eastEleventh = eastTeams[10];
   const westTop = westTeams[0];
   const westSixth = westTeams[5];
+  const westSeventh = westTeams[6];
   const westTenth = westTeams[9];
   const westEleventh = westTeams[10];
+
+  // Stats panel cells
+  const topScorerEntry = summary.scorers[0] ?? null;
+  const biggestDifferentialTeam =
+    [...allTeams].sort((a, b) => b.pointDifferential - a.pointDifferential)[0] ?? null;
+  const avgGamesPlayed = allTeams.length === 0
+    ? 0
+    : Math.round(allTeams.reduce((acc, team) => acc + team.gamesPlayed, 0) / allTeams.length);
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "East leader",
+      tooltip: "Top team in the Eastern Conference and current win-loss record.",
+      value: eastTop ? `${eastTop.shortName} · ${eastTop.wins}-${eastTop.losses}` : "—",
+    },
+    {
+      label: "West leader",
+      tooltip: "Top team in the Western Conference and current win-loss record.",
+      value: westTop ? `${westTop.shortName} · ${westTop.wins}-${westTop.losses}` : "—",
+    },
+    {
+      label: "Top scorer",
+      tooltip: "Player leading the league in points per game this season.",
+      value: topScorerEntry
+        ? `${topScorerEntry.name} · ${topScorerEntry.perGame.toFixed(1)}`
+        : "—",
+      sub: topScorerEntry ? topScorerEntry.teamAbbreviation : undefined,
+    },
+    {
+      label: "Biggest point differential",
+      tooltip: "Team with the largest net points differential across the league.",
+      value: biggestDifferentialTeam
+        ? `${biggestDifferentialTeam.shortName} · ${
+            biggestDifferentialTeam.pointDifferential > 0 ? "+" : ""
+          }${biggestDifferentialTeam.pointDifferential.toFixed(1)}`
+        : "—",
+    },
+    {
+      label: "East playoff line",
+      tooltip: "Wins separating the sixth seed in the East from the seventh.",
+      value: eastSixth && eastSeventh ? `+${eastSixth.wins - eastSeventh.wins} games` : "—",
+      sub: eastSixth && eastSeventh ? `${eastSixth.shortName} over ${eastSeventh.shortName}` : undefined,
+    },
+    {
+      label: "West playoff line",
+      tooltip: "Wins separating the sixth seed in the West from the seventh.",
+      value: westSixth && westSeventh ? `+${westSixth.wins - westSeventh.wins} games` : "—",
+      sub: westSixth && westSeventh ? `${westSixth.shortName} over ${westSeventh.shortName}` : undefined,
+    },
+    {
+      label: "Games played",
+      tooltip: "Average games played across all 30 teams in this snapshot.",
+      value: `${avgGamesPlayed} / ${REGULAR_SEASON_GAMES}`,
+    },
+    {
+      label: "Snapshot",
+      tooltip: "Date the most recent snapshot was generated.",
+      value: snapshotDateLabel,
+    },
+  ];
 
   return (
     <div className="home-page min-h-screen">
@@ -282,6 +351,22 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
             ))}
           </div>
         </div>
+
+        {/* Dense stats panel */}
+        <HomeStatsPanel
+          id="nba-stats-panel"
+          title="NBA at a glance"
+          meta={`Live · refreshed ${snapshotDateLabel}`}
+          cells={statsPanelCells}
+          pills={[
+            { label: "East standings", href: "?view=east", icon: ChartBar },
+            { label: "West standings", href: "?view=west", icon: ChartBar },
+            { label: "Playoff picture", href: "?view=playoff", icon: Briefcase },
+            { label: "Recent games", href: "#nba-standings", icon: Calendar },
+            { label: "Team detail", href: "#nba-standings", icon: User },
+            { label: "Article", href: "/writing", icon: Article },
+          ]}
+        />
 
         {/* Key conference gaps */}
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -340,7 +425,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
         </div>
 
         {/* Standings + sidebar */}
-        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div id="nba-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
           <section className="rounded-2xl border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,white)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
               <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>

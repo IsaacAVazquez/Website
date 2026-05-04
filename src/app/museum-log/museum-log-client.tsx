@@ -62,6 +62,7 @@ import {
   TYPE_FILTER_OPTIONS,
   TYPE_LABEL,
 } from "./museum-log-helpers";
+import { HomeStatsPanel } from "@/components/home/HomeStatsPanel";
 
 interface Props {
   initialState: MuseumRouteState;
@@ -1229,59 +1230,6 @@ function RateAndLogForm({
   );
 }
 
-// ─── Your log strip (personal stats from localStorage) ───────────────────────
-
-function YourLogStrip({
-  visitedCount,
-  watchlistCount,
-  likedCount,
-  averageUserRating,
-}: {
-  visitedCount: number;
-  watchlistCount: number;
-  likedCount: number;
-  averageUserRating: number | null;
-}) {
-  return (
-    <div className="tool-card">
-      <div className="tool-stats-grid">
-        <div className="tool-stat-cell">
-          <p className="tool-stat-label">Visited</p>
-          <p className="tool-stat-val">{visitedCount}</p>
-          <p className="tool-stat-delta">
-            {visitedCount === 0 ? "Log your first to start tracking." : "Saved locally."}
-          </p>
-        </div>
-        <div className="tool-stat-cell">
-          <p className="tool-stat-label">Watchlist</p>
-          <p className="tool-stat-val">{watchlistCount}</p>
-          <p className="tool-stat-delta">
-            {watchlistCount === 0 ? "Save museums for later." : "Saved for next time."}
-          </p>
-        </div>
-        <div className="tool-stat-cell">
-          <p className="tool-stat-label">Liked</p>
-          <p className="tool-stat-val">{likedCount}</p>
-          <p className="tool-stat-delta">
-            {likedCount === 0 ? "Heart your favorites." : "Personal favorites."}
-          </p>
-        </div>
-        <div className="tool-stat-cell">
-          <p className="tool-stat-label">Average rating</p>
-          <p className="tool-stat-val">
-            {averageUserRating !== null ? `${averageUserRating.toFixed(1)} ★` : "—"}
-          </p>
-          <p className="tool-stat-delta">
-            {averageUserRating !== null
-              ? "Across every visit you've logged."
-              : "Rate visits to see your average."}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // ─── Main client component ───────────────────────────────────────────────────
 
 export function MuseumLogClient({ initialState, snapshot }: Props) {
@@ -1386,6 +1334,10 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   const averageUserRating = useMemo(() => {
     if (userState.visited.length === 0) return null;
     return averageRating(userState.visited.map((v) => v.rating));
+  }, [userState.visited]);
+  const lastVisitedDate = useMemo(() => {
+    if (userState.visited.length === 0) return null;
+    return [...userState.visited].sort((a, b) => b.date.localeCompare(a.date))[0]?.date ?? null;
   }, [userState.visited]);
 
   function logQuickVisit(museum: Museum) {
@@ -1548,21 +1500,63 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             </div>
 
             <div className="mt-5 space-y-5">
-              {hydrated ? (
-                <YourLogStrip
-                  visitedCount={userState.visited.length}
-                  watchlistCount={userState.watchlist.length}
-                  likedCount={userState.liked.length}
-                  averageUserRating={averageUserRating}
-                />
-              ) : (
-                <YourLogStrip
-                  visitedCount={0}
-                  watchlistCount={0}
-                  likedCount={0}
-                  averageUserRating={null}
-                />
-              )}
+              <HomeStatsPanel
+                id="museum-log-stats"
+                title="Your log at a glance"
+                meta={`Updated ${lastUpdated}`}
+                hideLiveDot
+                cells={[
+                  {
+                    label: "Visited",
+                    value: hydrated ? userState.visited.length.toLocaleString() : "—",
+                    sub: hydrated && userState.visited.length === 0 ? "Log your first" : undefined,
+                  },
+                  {
+                    label: "Watchlist",
+                    value: hydrated ? userState.watchlist.length.toLocaleString() : "—",
+                  },
+                  {
+                    label: "Liked",
+                    value: hydrated ? userState.liked.length.toLocaleString() : "—",
+                  },
+                  {
+                    label: "Average rating",
+                    value:
+                      hydrated && averageUserRating !== null
+                        ? `${averageUserRating.toFixed(1)} ★`
+                        : "—",
+                    sub:
+                      hydrated && averageUserRating !== null
+                        ? "Across logged visits"
+                        : "Rate visits to see",
+                  },
+                  {
+                    label: "Catalog size",
+                    value: snapshot.museums.length.toLocaleString(),
+                    sub: "Museums in dataset",
+                  },
+                  {
+                    label: "Reviews",
+                    value: snapshot.reviews.length.toLocaleString(),
+                    sub: "Curator reviews",
+                  },
+                  {
+                    label: "Visits logged",
+                    value: snapshot.visitLog.length.toLocaleString(),
+                    sub: "Includes repeats",
+                  },
+                  {
+                    label: "Last visited",
+                    value:
+                      hydrated && lastVisitedDate ? formatShortDate(lastVisitedDate) : "—",
+                  },
+                ]}
+                pills={[
+                  { label: "Discover", href: "/museum-log?view=discover" },
+                  { label: "Journal", href: "/museum-log?view=journal" },
+                  { label: "Lists", href: "/museum-log?view=lists" },
+                ]}
+              />
 
               {activeView === "discover" && (
                 <DiscoverView

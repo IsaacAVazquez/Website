@@ -33,6 +33,14 @@ import {
   resolveFormula1State,
 } from "./formula-1-state";
 import { MetricCard } from "@/components/football/MetricCard";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import {
+  Article,
+  Briefcase,
+  Calendar,
+  ChartBar,
+  User,
+} from "@/components/ui/ServerIcons";
 
 interface Formula1ClientProps {
   initialState: Formula1RouteState;
@@ -854,11 +862,76 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
 
   const highlightMeeting = snapshot.nextMeeting ?? snapshot.lastCompletedMeeting ?? selectedMeeting;
   const driverLeader = snapshot.driverStandings[0] ?? null;
+  const driverRunnerUp = snapshot.driverStandings[1] ?? null;
   const constructorLeader = snapshot.constructorStandings[0] ?? null;
+  const constructorRunnerUp = snapshot.constructorStandings[1] ?? null;
   const raceStripMeetings = useMemo(
     () => getRaceStripMeetings(snapshot, selectedMeeting),
     [selectedMeeting, snapshot]
   );
+
+  // Stats panel cells
+  const lastCompletedMeeting = snapshot.lastCompletedMeeting;
+  const lastWinner = lastCompletedMeeting?.podium?.[0] ?? null;
+  const driverGap = driverLeader && driverRunnerUp ? driverLeader.points - driverRunnerUp.points : null;
+  const constructorGap = constructorLeader && constructorRunnerUp
+    ? constructorLeader.points - constructorRunnerUp.points
+    : null;
+
+  const statsPanelCells: HomeStatsCell[] = [
+    {
+      label: "Rounds",
+      tooltip: "Completed grands prix relative to the full season schedule.",
+      value: `${snapshot.seasonMetrics.completedRaces} / ${snapshot.seasonMetrics.totalRaces}`,
+    },
+    {
+      label: "Driver leader",
+      tooltip: "Driver currently leading the championship and total points.",
+      value: driverLeader ? `${driverLeader.driverName} · ${formatPoints(driverLeader.points)}` : "Pending",
+      sub: driverLeader ? driverLeader.teamName : undefined,
+    },
+    {
+      label: "Constructor leader",
+      tooltip: "Team currently leading the constructor standings and total points.",
+      value: constructorLeader
+        ? `${constructorLeader.teamName} · ${formatPoints(constructorLeader.points)}`
+        : "Pending",
+    },
+    {
+      label: "Driver gap",
+      tooltip: "Points the championship leader holds over the second-placed driver.",
+      value: driverGap !== null ? `+${formatPoints(driverGap)} pts` : "—",
+      sub: "to next driver",
+    },
+    {
+      label: "Constructor gap",
+      tooltip: "Points the leading team holds over the second-placed team.",
+      value: constructorGap !== null ? `+${formatPoints(constructorGap)} pts` : "—",
+      sub: "to next team",
+    },
+    {
+      label: "Sprint weekends",
+      tooltip: "Number of sprint-format weekends scheduled this season.",
+      value: String(snapshot.seasonMetrics.sprintWeekends),
+    },
+    {
+      label: "Last GP winner",
+      tooltip: "Driver who won the most recently completed grand prix.",
+      value: lastWinner?.driverName
+        ? `${lastWinner.driverName}${lastCompletedMeeting?.name ? ` · ${lastCompletedMeeting.name}` : ""}`
+        : lastCompletedMeeting?.name ?? "Pending",
+    },
+    {
+      label: "Next race",
+      tooltip: "Scheduled start time for the next grand prix in the calendar.",
+      value: highlightMeeting?.raceStartsAt
+        ? formatDateTimeLabel(highlightMeeting.raceStartsAt)
+        : highlightMeeting?.startAt
+          ? formatDateLabel(highlightMeeting.startAt)
+          : "TBD",
+      sub: highlightMeeting?.name,
+    },
+  ];
 
   return (
     <div className="home-shell home-section space-y-6 sm:space-y-8">
@@ -971,6 +1044,20 @@ export function Formula1Client({ initialState, snapshot }: Formula1ClientProps) 
           </aside>
         </div>
       </section>
+
+      <HomeStatsPanel
+        id="f1-stats-panel"
+        title="Formula 1 at a glance"
+        meta={`Live · refreshed ${formatUpdatedAt(snapshot.generatedAt)}`}
+        cells={statsPanelCells}
+        pills={[
+          { label: "Drivers", href: "?view=drivers", icon: User },
+          { label: "Constructors", href: "?view=constructors", icon: Briefcase },
+          { label: "Schedule", href: "?view=calendar", icon: Calendar },
+          { label: "Last race", href: "?view=overview", icon: ChartBar },
+          { label: "Article", href: "/writing", icon: Article },
+        ]}
+      />
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard

@@ -2,10 +2,10 @@
 
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
-import type { SearchInterfaceProps } from "./SearchInterface.js";
+import type { SearchInterfaceProps } from "./SearchInterface";
 
 const SearchInterfaceNoSSR = dynamic<SearchInterfaceProps>(
-  () => import("./SearchInterface.js").then((mod) => mod.SearchInterface),
+  () => import("./SearchInterface").then((mod) => mod.SearchInterface),
   { ssr: false }
 );
 

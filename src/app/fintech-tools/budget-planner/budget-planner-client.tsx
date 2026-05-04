@@ -25,6 +25,7 @@ import {
   isBudgetMonthKey,
 } from "@/lib/budgetPlanner";
 import { useBudgetPlanner } from "@/hooks/useBudgetPlanner";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 interface ExpenseDraft {
   categoryId: string;
@@ -141,6 +142,45 @@ export function BudgetPlannerClient() {
         .slice(0, 5),
     [summary.categorySummaries]
   );
+
+  const largestCategory = topCategories[0] ?? null;
+
+  const budgetStatsCells: HomeStatsCell[] = [
+    {
+      label: "Income",
+      value: formatCurrency(totalIncome),
+    },
+    {
+      label: "Spent",
+      value: formatCurrency(totalExpenses),
+    },
+    {
+      label: "Remaining",
+      value: formatSignedCurrency(remaining),
+      tone: remaining > 0 ? "good" : "default",
+    },
+    {
+      label: "Savings target",
+      value: formatCurrency(activeMonth.savingsTarget),
+    },
+    {
+      label: "Percent spent",
+      value: `${percentSpent}%`,
+    },
+    {
+      label: "Categories",
+      value: activeMonth.categories.length.toLocaleString(),
+    },
+    {
+      label: "Largest category",
+      value: largestCategory ? largestCategory.name || "Untitled" : "—",
+      sub: largestCategory ? formatCurrency(largestCategory.spent) : "No spend yet",
+    },
+    {
+      label: "Active month",
+      value: monthLabel,
+    },
+  ];
 
   function handleMonthChange(nextMonthKey: string) {
     if (!isBudgetMonthKey(nextMonthKey)) return;
@@ -303,48 +343,21 @@ export function BudgetPlannerClient() {
             </div>
 
             <div className="mt-5 flex flex-col gap-5">
-              {/* Hero summary card */}
-              <section
-                id="section-summary"
-                className="tool-card tool-card-hero scroll-mt-28"
-                aria-label="Budget summary"
-              >
-                <div className="flex flex-wrap items-end justify-between gap-4">
-                  <div>
-                    <p className="tool-section-kicker">{monthLabel}</p>
-                    <p className="mt-1 text-[12px] text-[var(--home-ink-muted)]">
-                      Income vs. spend, at a glance.
-                    </p>
-                  </div>
-                  <p
-                    className={`text-[12px] font-semibold uppercase tracking-[0.14em] ${
-                      summary.remainingToBudget < 0
-                        ? "text-[var(--color-error)]"
-                        : "text-[var(--home-ink-muted)]"
-                    }`}
-                  >
-                    {formatSignedCurrency(summary.remainingToBudget)} left to budget
-                  </p>
-                </div>
-
-                <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                  <div>
-                    <p className="tool-stat-label">Income</p>
-                    <p className="tool-stat-val">{formatCurrency(totalIncome)}</p>
-                  </div>
-                  <div>
-                    <p className="tool-stat-label">Spent</p>
-                    <p className="tool-stat-val">{formatCurrency(totalExpenses)}</p>
-                  </div>
-                  <div>
-                    <p className="tool-stat-label">Remaining</p>
-                    <p className={`tool-stat-val ${getBalanceTone(remaining)}`}>
-                      {formatSignedCurrency(remaining)}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-5">
+              <div id="section-summary" className="scroll-mt-28">
+                <HomeStatsPanel
+                  id="budget-planner-stats"
+                  title="Budget at a glance"
+                  meta={`${formatSignedCurrency(summary.remainingToBudget)} left to budget`}
+                  hideLiveDot
+                  cells={budgetStatsCells}
+                  pills={[
+                    { label: "Income", href: "#section-income" },
+                    { label: "Categories", href: "#section-categories" },
+                    { label: "Expenses", href: "#section-expenses" },
+                    { label: "Summary", href: "#section-summary" },
+                  ]}
+                />
+                <div className="mt-3">
                   <div className="mb-2 flex items-center justify-between text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
                     <span>Spend progress</span>
                     <span className="[font-variant-numeric:tabular-nums]">{percentSpent}%</span>
@@ -362,7 +375,7 @@ export function BudgetPlannerClient() {
                     />
                   </div>
                 </div>
-              </section>
+              </div>
 
               {/* Income + Savings target */}
               <section

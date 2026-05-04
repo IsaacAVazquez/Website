@@ -29,6 +29,8 @@ import {
   UtilityStrip,
   getPillStyle,
 } from "@/components/editorial";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { Briefcase, ChartBar, Article, FileText, Mail as MailIcon } from "@/components/ui/ServerIcons";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -1347,6 +1349,56 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
       ? `Updated ${formatFetchedAt(lastFetchedAt)}`
       : "Not yet fetched";
 
+  const lastRefreshRelative = isLoading
+    ? "Refreshing"
+    : lastFetchedAt
+      ? timeAgo(lastFetchedAt.toISOString())
+      : "—";
+
+  const statsCells: HomeStatsCell[] = [
+    {
+      label: "Live roles",
+      value: <span className="tabular-nums">{isLoading ? "—" : jobs.length}</span>,
+      sub: "Across tracked feeds",
+    },
+    {
+      label: "Internships",
+      value: <span className="tabular-nums">{isLoading ? "—" : internshipCount}</span>,
+      sub: "Summer and intern roles",
+    },
+    {
+      label: "Full-time",
+      value: <span className="tabular-nums">{isLoading ? "—" : fullTimeCount}</span>,
+      sub: "Post-MBA roles",
+    },
+    {
+      label: "New since last visit",
+      value: <span className="tabular-nums">{isLoading ? "—" : newJobCount}</span>,
+      sub: newJobCount > 0 ? "Mark all seen to clear" : "Caught up",
+      tone: newJobCount > 0 ? "good" : "default",
+    },
+    {
+      label: "Companies tracked",
+      value: <span className="tabular-nums">{totalCompanies}</span>,
+      sub: "Public boards plus manual fallbacks",
+    },
+    {
+      label: "Live feeds",
+      value: <span className="tabular-nums">{totalTracked}</span>,
+      sub: "Auto-polled boards",
+    },
+    {
+      label: "Manual fallbacks",
+      value: <span className="tabular-nums">{manualCompanies.length}</span>,
+      sub: "Career page or LinkedIn search",
+    },
+    {
+      label: "Last refresh",
+      value: lastRefreshRelative,
+      sub: "Polls every 30 min",
+    },
+  ];
+
   async function handleEmailSend(email: string) {
     setEmailDialogOpen(false);
     await sendEmailDigest(email, displayJobs.length > 0 ? displayJobs : jobs);
@@ -1363,6 +1415,40 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
 
       <section className="home-page min-h-screen" aria-label="MBA role tracker">
         <div className="home-shell home-section space-y-8 sm:space-y-10">
+          <HomeStatsPanel
+            id="mba-jobs-stats"
+            title="MBA tracker at a glance"
+            meta={refreshLabel}
+            cells={statsCells}
+            pills={[
+              {
+                label: "Internships",
+                href: buildMBAJobsHref({ ...uiState, roleType: "internship" }),
+                icon: Briefcase,
+              },
+              {
+                label: "Product",
+                href: buildMBAJobsHref({ ...uiState, roleFamily: "product" }),
+                icon: ChartBar,
+              },
+              {
+                label: "Finance",
+                href: buildMBAJobsHref({ ...uiState, roleFamily: "finance" }),
+                icon: FileText,
+              },
+              {
+                label: "Strategy",
+                href: buildMBAJobsHref({ ...uiState, roleFamily: "strategy" }),
+                icon: Article,
+              },
+              {
+                label: "Newsletter",
+                href: "/contact",
+                icon: MailIcon,
+              },
+            ]}
+          />
+
           <motion.div
             className="section-panel overflow-hidden"
             variants={variants}
@@ -1375,9 +1461,9 @@ export function MBAJobsClient({ initialState }: MBAJobsClientProps) {
                   className="home-kicker mb-0"
                   style={{ color: "var(--home-acid)", fontFamily: "var(--font-home-sans)" }}
                 >
-                  MBA Recruiting
+                  MBA recruiting
                 </p>
-                <h1 className="home-section-title mb-0 max-w-[9ch]">Job Search</h1>
+                <h1 className="home-section-title mb-0 max-w-[9ch]">Job search</h1>
                 <p className="home-body mb-0 max-w-[44rem]">
                   I monitor {totalTracked} public job boards across {totalCompanies} target
                   companies for internships and full-time product, PMM, strategy, operations,

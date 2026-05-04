@@ -37,6 +37,7 @@ import {
   toggleNeighborhood,
   type FoodMapState,
 } from "./food-map-state";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 
 interface FoodMapClientProps {
   initialState: FoodMapState;
@@ -648,6 +649,55 @@ function FoodMapWorkbench({
     onCommit(resetFoodMapFilters(routeState));
   }
 
+  const activeFilterCount =
+    routeState.neighborhoods.length +
+    routeState.cuisines.length +
+    (routeState.meal !== DEFAULT_FOOD_MAP_STATE.meal ? 1 : 0) +
+    (searchQuery.trim().length > 0 ? 1 : 0);
+
+  const cuisineCount = new Set(FOOD_MAP_PLACES.map((p) => p.cuisine)).size;
+  const cheapEatsCount = FOOD_MAP_PLACES.filter((p) => p.price === "$").length;
+  const highEndCount = FOOD_MAP_PLACES.filter((p) => p.price === "$$$").length;
+
+  const foodMapStatsCells: HomeStatsCell[] = [
+    {
+      label: "Curated stops",
+      value: FOOD_MAP_PLACES.length.toLocaleString(),
+    },
+    {
+      label: "Neighborhoods",
+      value: FOOD_MAP_NEIGHBORHOODS.length.toLocaleString(),
+    },
+    {
+      label: "Cuisines",
+      value: cuisineCount.toLocaleString(),
+    },
+    {
+      label: "Currently visible",
+      value: visiblePlaces.length.toLocaleString(),
+      sub: `of ${FOOD_MAP_PLACES.length}`,
+    },
+    {
+      label: "Active filters",
+      value: activeFilterCount,
+      sub: hasFilters ? "Tap reset to clear" : "None applied",
+    },
+    {
+      label: "Shortlists",
+      value: SHORTLISTS.length.toLocaleString(),
+    },
+    {
+      label: "Cheap eats",
+      value: cheapEatsCount.toLocaleString(),
+      sub: "$",
+    },
+    {
+      label: "High-end",
+      value: highEndCount.toLocaleString(),
+      sub: "$$$",
+    },
+  ];
+
   return (
     <section
       className="home-page min-h-screen"
@@ -749,6 +799,20 @@ function FoodMapWorkbench({
               </div>
 
               <div className="mt-5 flex flex-col gap-4">
+                <HomeStatsPanel
+                  id="food-map-stats"
+                  title="Food Map at a glance"
+                  meta={`${visiblePlaces.length} of ${FOOD_MAP_PLACES.length} visible`}
+                  hideLiveDot
+                  cells={foodMapStatsCells}
+                  pills={[
+                    { label: "All stops", href: "/food-map" },
+                    { label: "Cheap eats", href: "/food-map?cuisine=tex-mex" },
+                    { label: "Date night", href: "/food-map?pick=suerte" },
+                    { label: "Tourist-tested", href: "/food-map?pick=franklin-barbecue" },
+                  ]}
+                />
+
                 <div className="tool-card tool-card-hero overflow-hidden p-4 sm:p-5">
                   <FoodMapSvg
                     state={routeState}

@@ -15,6 +15,8 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { MetricCard } from "@/components/football/MetricCard";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
+import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { ChartBar, Briefcase, FileText, BrandGithub } from "@/components/ui/ServerIcons";
 import {
   formatGitHubCompactNumber,
   sortGitHubTrendingRepositories,
@@ -273,6 +275,66 @@ export function GitHubTrendingClient({
           </dl>
         </section>
       </header>
+
+      <HomeStatsPanel
+        id="github-trending-stats"
+        title="GitHub trending at a glance"
+        meta={`Updated ${relativeAge(snapshot.generatedAt)}`}
+        cells={[
+          {
+            label: "Repos tracked",
+            value: <span className="tabular-nums">{snapshot.totals.repositories}</span>,
+            sub: "Active public repositories",
+          },
+          {
+            label: "7d star delta",
+            value: <span className="tabular-nums">+{formatGitHubCompactNumber(snapshot.totals.weeklyStars)}</span>,
+            sub: `${snapshot.windowDays}d snapshot delta`,
+            tone: "good",
+          },
+          {
+            label: "Languages tracked",
+            value: <span className="tabular-nums">{snapshot.totals.languages}</span>,
+            sub: "Segments by primary language",
+          },
+          {
+            label: "Topics tracked",
+            value: <span className="tabular-nums">{snapshot.totals.topics}</span>,
+            sub: "Curated topic facets",
+          },
+          {
+            label: "Visible repos",
+            value: <span className="tabular-nums">{filteredRepos.length}</span>,
+            sub: `${GITHUB_TRENDING_KIND_LABELS[resolvedState.kind]} filter`,
+          },
+          {
+            label: "Visible 7d stars",
+            value: <span className="tabular-nums">+{formatGitHubCompactNumber(totalWeeklyStars)}</span>,
+            sub: "Star movement in current table",
+          },
+          {
+            label: "Snapshot source",
+            value: snapshot.sourceLabel,
+            sub: `${measuredShare}% measured deltas`,
+          },
+          {
+            label: "Updated",
+            value: relativeAge(snapshot.generatedAt),
+            sub: formatDateTime(snapshot.generatedAt),
+          },
+        ]}
+        pills={[
+          { label: "Languages", href: "/github-trending-pulse", icon: ChartBar },
+          { label: "Topics", href: "/github-trending-pulse?view=topic", icon: FileText },
+          { label: "Most starred", href: "/github-trending-pulse?sort=stars", icon: Briefcase },
+          {
+            label: "GitHub trending source",
+            href: "https://github.com/trending",
+            icon: BrandGithub,
+            external: true,
+          },
+        ]}
+      />
 
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard
