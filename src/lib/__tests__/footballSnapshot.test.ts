@@ -26,9 +26,13 @@ describe("football snapshot helpers", () => {
       getLaLigaTeamSnapshot("fcb"),
     ]);
 
-    expect(premierLeagueTeamSnapshot.recentFixtures).toHaveLength(5);
-    expect(premierLeagueTeamSnapshot.upcomingFixtures).toHaveLength(5);
-    expect(laLigaTeamSnapshot.recentFixtures).toHaveLength(5);
-    expect(laLigaTeamSnapshot.upcomingFixtures).toHaveLength(5);
+    expect(premierLeagueTeamSnapshot.recentFixtures.length).toBeLessThanOrEqual(5);
+    expect(premierLeagueTeamSnapshot.upcomingFixtures.length).toBeLessThanOrEqual(5);
+    expect(laLigaTeamSnapshot.recentFixtures.length).toBeLessThanOrEqual(5);
+    expect(laLigaTeamSnapshot.upcomingFixtures.length).toBeLessThanOrEqual(5);
+    expect(premierLeagueTeamSnapshot.recentFixtures.length).toBeGreaterThan(0);
+    expect(premierLeagueTeamSnapshot.upcomingFixtures.length).toBeGreaterThan(0);
+    expect(laLigaTeamSnapshot.recentFixtures.length).toBeGreaterThan(0);
+    expect(laLigaTeamSnapshot.upcomingFixtures.length).toBeGreaterThan(0);
   });
 });

@@ -3197,11 +3197,16 @@ img {
 }
 @media (max-width: 1280px) {
   .tool-shell { grid-template-columns: 200px minmax(0, 1fr); }
-  .tool-rail { display: none !important; }
+  .tool-rail {
+    grid-column: 2;
+    border-left: 0;
+    border-top: 1px solid var(--home-rule);
+  }
 }
 @media (max-width: 900px) {
   .tool-shell { grid-template-columns: 1fr; border-radius: 20px; }
   .tool-sidebar { display: none !important; }
+  .tool-rail { grid-column: 1; }
 }
 
 .tool-band {

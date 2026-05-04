@@ -51,7 +51,8 @@ test.describe("March Madness", () => {
 
     await page.goto("/march-madness-2026?view=analytics&analytics=s-curve");
     await page.waitForLoadState("networkidle");
-    await expect(page.getByText(/underseeded — got a raw deal/i)).toBeVisible();
+    await expect(page.getByRole("heading", { name: /S-curve seed errors/i })).toBeVisible();
+    await expect(page.getByText(/Vanderbilt \+5/i).first()).toBeVisible();
 
     await page.goto("/march-madness-2026?view=bracket&region=west");
     await page.waitForLoadState("networkidle");
@@ -62,13 +63,11 @@ test.describe("March Madness", () => {
     await expect(page.getByText(/analytics upsets/i)).toBeVisible();
   });
 
-test("publishes a companion article in the writing index", async ({ page }) => {
-    await page.goto("/writing");
+  test("links to the companion article from the bracket tool", async ({ page }) => {
+    await page.goto("/march-madness-2026");
     await page.waitForLoadState("networkidle");
 
-    await expect(page.getByText(/2026 march madness bracket analysis/i).first()).toBeVisible();
-
-    const articleCard = page.locator('a[href="/writing/2026-march-madness-bracket-analysis"]').first();
+    const articleCard = page.getByRole("link", { name: /read the companion article/i });
 
     await expect(articleCard).toBeVisible();
     await expect(articleCard).toHaveAttribute("href", "/writing/2026-march-madness-bracket-analysis");

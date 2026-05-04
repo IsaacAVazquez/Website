@@ -157,9 +157,9 @@ export function MissionControlHero({
             </span>
           </div>
 
-          <h1 className="mt-4 text-3xl font-bold tracking-[-0.05em] text-[var(--home-ink)] sm:text-[2.8rem]">
+          <h2 className="mt-4 text-3xl font-bold tracking-[-0.05em] text-[var(--home-ink)] sm:text-[2.8rem]">
             {heroLaunch.name}
-          </h1>
+          </h2>
 
           <div className="mt-4 flex flex-wrap gap-3">
             {heroLaunch.hasExactTime ? (

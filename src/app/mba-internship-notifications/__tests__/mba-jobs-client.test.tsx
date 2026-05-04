@@ -175,7 +175,7 @@ describe("MBAJobsClient", () => {
       within(startupGroup).queryByRole("button", { name: "OpenAI" })
     ).not.toBeInTheDocument();
     expect(atlassianButton).toHaveStyle(
-      "background: color-mix(in srgb, var(--home-paper-alt) 78%, white)"
+      "background: color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))"
     );
     expect(atlassianDot).not.toBeNull();
     expect(atlassianDot).toHaveStyle(

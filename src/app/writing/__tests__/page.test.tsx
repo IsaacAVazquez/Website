@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 
 jest.mock("@/components/StructuredData", () => ({
   StructuredData: () => null,
@@ -160,55 +160,41 @@ describe("WritingPage", () => {
     WritingPage = mod.default;
   });
 
-  it("renders the four lead pillars in order and keeps the grouped archive below them", () => {
+  it("renders the archive controls with curated filters before archive buckets", () => {
     render(<WritingPage />);
 
-    const pmHeading = screen.getByRole("heading", { level: 2, name: "PM Workflows" });
-    const agenticHeading = screen.getByRole("heading", {
-      level: 2,
-      name: "Agentic AI",
-    });
-    const fintechHeading = screen.getByRole("heading", {
-      level: 2,
-      name: "Fintech Product & Pricing",
-    });
-    const systemsHeading = screen.getByRole("heading", {
-      level: 2,
-      name: "Systems & Quality",
-    });
-    const archiveHeading = screen.getByRole("heading", {
-      level: 2,
-      name: "Broader archive",
-    });
+    const filterTabs = within(
+      screen.getByRole("tablist", { name: "Filter articles" })
+    ).getAllByRole("tab");
 
-    expect(pmHeading.compareDocumentPosition(agenticHeading) & Node.DOCUMENT_POSITION_FOLLOWING).toBe(
-      Node.DOCUMENT_POSITION_FOLLOWING
-    );
-    expect(
-      agenticHeading.compareDocumentPosition(fintechHeading) &
-        Node.DOCUMENT_POSITION_FOLLOWING
-    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
-    expect(
-      fintechHeading.compareDocumentPosition(systemsHeading) &
-        Node.DOCUMENT_POSITION_FOLLOWING
-    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
-    expect(
-      systemsHeading.compareDocumentPosition(archiveHeading) &
-        Node.DOCUMENT_POSITION_FOLLOWING
-    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(filterTabs.map((tab) => tab.textContent?.replace(/\s+/g, " ").trim())).toEqual([
+      "All7",
+      "PM Workflows1",
+      "Agentic AI1",
+      "Fintech Product & Pricing1",
+      "Systems & Quality1",
+      "Notes (short)5",
+      "Essays (long)2",
+      "Sports & Fantasy1",
+      "Signals & Commentary1",
+      "Space & Experiments1",
+    ]);
   });
 
-  it("does not leak archive-only posts into the lead pillar sections", () => {
+  it("keeps curated and archive-only posts separated by the active filter", () => {
     render(<WritingPage />);
 
-    const pmSection = screen.getByTestId("writing-cluster-pm-workflows");
-    const agenticSection = screen.getByTestId("writing-cluster-agentic-ai");
-    const archiveSection = screen.getByTestId("writing-archive-signals-commentary");
+    const articleGrid = screen.getByRole("heading", { name: "All articles" }).closest("section");
+    expect(articleGrid).not.toBeNull();
 
-    expect(within(pmSection).getByText("Lead Workflow Essay")).toBeVisible();
-    expect(within(agenticSection).getByText("Lead Agentic Essay")).toBeVisible();
-    expect(within(pmSection).queryByText("Weekly Tech Note")).not.toBeInTheDocument();
-    expect(within(agenticSection).queryByText("Weekly Tech Note")).not.toBeInTheDocument();
-    expect(within(archiveSection).getByText("Weekly Tech Note")).toBeVisible();
+    fireEvent.click(screen.getByRole("tab", { name: /PM Workflows/i }));
+
+    expect(within(articleGrid as HTMLElement).getByText("Lead Workflow Essay")).toBeVisible();
+    expect(within(articleGrid as HTMLElement).queryByText("Weekly Tech Note")).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("tab", { name: /Signals & Commentary/i }));
+
+    expect(within(articleGrid as HTMLElement).getByText("Weekly Tech Note")).toBeVisible();
+    expect(within(articleGrid as HTMLElement).queryByText("Lead Workflow Essay")).not.toBeInTheDocument();
   });
 });

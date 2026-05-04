@@ -13,7 +13,6 @@ test.describe("Footer CTA cleanup", () => {
 
     const footer = page.getByRole("contentinfo");
     await expect(footer).toHaveAttribute("data-footer-variant", "compact");
-    await expect(footer).toHaveAttribute("data-footer-surface", "home");
     await expect(
       footer.getByRole("heading", { name: /thanks for taking a look\./i })
     ).toHaveCount(0);

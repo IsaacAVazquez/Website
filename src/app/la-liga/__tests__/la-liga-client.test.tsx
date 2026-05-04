@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
 import { LaLigaClient } from "../la-liga-client";
-import { DEFAULT_LA_LIGA_STATE } from "../la-liga-state";
+import { DEFAULT_LA_LIGA_STATE, getDefaultClubForView } from "../la-liga-state";
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();
@@ -25,6 +25,7 @@ describe("LaLigaClient", () => {
 
   it("hydrates from the URL state and keeps focused views shareable", async () => {
     const user = userEvent.setup();
+    const defaultRelegationClub = getDefaultClubForView("relegation");
     currentSearchParams = new URLSearchParams("view=europe&club=bet");
 
     render(
@@ -51,12 +52,19 @@ describe("LaLigaClient", () => {
 
     await user.click(screen.getByRole("button", { name: /relegation fight/i }));
 
-    expect(mockPush).toHaveBeenCalledWith("/la-liga?view=relegation&club=sev", {
-      scroll: false,
-    });
+    expect(mockPush).toHaveBeenCalledWith(
+      `/la-liga?view=relegation&club=${defaultRelegationClub}`,
+      {
+        scroll: false,
+      }
+    );
   });
 
   it("canonicalizes hidden club selections for a focused view", async () => {
+    const defaultRelegationClub = getDefaultClubForView("relegation");
+    const defaultRelegationTeam =
+      laLigaSnapshot.teamSnapshots[defaultRelegationClub]?.team.name;
+    expect(defaultRelegationTeam).toBeDefined();
     currentSearchParams = new URLSearchParams("view=relegation&club=barcelona");
 
     render(
@@ -75,16 +83,21 @@ describe("LaLigaClient", () => {
           upcomingFixtures: laLigaSnapshot.upcomingFixtures.slice(0, 8),
           teams: laLigaSnapshot.teams,
         }}
-        initialTeamSnapshot={laLigaSnapshot.teamSnapshots.sev ?? null}
+        initialTeamSnapshot={laLigaSnapshot.teamSnapshots[defaultRelegationClub] ?? null}
       />
     );
 
     await waitFor(() =>
-      expect(mockReplace).toHaveBeenCalledWith("/la-liga?view=relegation&club=sev", {
-        scroll: false,
-      })
+      expect(mockReplace).toHaveBeenCalledWith(
+        `/la-liga?view=relegation&club=${defaultRelegationClub}`,
+        {
+          scroll: false,
+        }
+      )
     );
 
-    expect(screen.getByRole("heading", { name: "Sevilla FC" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: defaultRelegationTeam as string })
+    ).toBeInTheDocument();
   });
 });

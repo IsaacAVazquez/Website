@@ -20,6 +20,7 @@ jest.mock("@/constants/caseStudies", () => {
 });
 
 jest.mock("@/lib/blog", () => ({
+  getAllBlogPostPreviews: () => [{ slug: "post-a" }],
   getLatestBlogPostPreviews: () => [{ slug: "post-a" }],
   getHomepageProofOfWorkBlogPostPreviews: () => [{ slug: "post-a" }],
 }));
@@ -63,7 +64,7 @@ describe("Portfolio shell page semantics", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /product work across fintech, analytics, and civic technology/i,
+        name: /all projects across product, analytics, and tooling/i,
       })
     ).toBeVisible();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);

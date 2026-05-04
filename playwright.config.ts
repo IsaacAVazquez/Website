@@ -1,3 +1,5 @@
+import os from 'node:os'
+import path from 'node:path'
 import { defineConfig, devices } from '@playwright/test'
 
 /**
@@ -9,6 +11,11 @@ import { defineConfig, devices } from '@playwright/test'
  */
 const FULL_MATRIX = process.env.E2E_FULL_MATRIX === '1'
 const IS_CI = !!process.env.CI
+const E2E_PORT = process.env.E2E_PORT ?? process.env.PORT ?? '3000'
+const BASE_URL = process.env.E2E_BASE_URL ?? `http://localhost:${E2E_PORT}`
+const OUTPUT_DIR =
+  process.env.PLAYWRIGHT_OUTPUT_DIR ??
+  path.join(os.tmpdir(), 'website-playwright-test-results')
 
 const allProjects = [
   {
@@ -35,6 +42,7 @@ const allProjects = [
 
 export default defineConfig({
   testDir: './e2e',
+  outputDir: OUTPUT_DIR,
 
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -63,7 +71,7 @@ export default defineConfig({
   },
 
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: BASE_URL,
     navigationTimeout: IS_CI ? 15_000 : 30_000,
     actionTimeout: IS_CI ? 10_000 : 15_000,
     trace: 'on-first-retry',
@@ -75,8 +83,8 @@ export default defineConfig({
   /* Run the production server before tests on CI (compiled, fast). Locally
      fall back to `npm run dev` so iteration stays cheap. */
   webServer: {
-    command: IS_CI ? 'npm run start' : 'npm run dev',
-    url: 'http://localhost:3000',
+    command: IS_CI ? `PORT=${E2E_PORT} npm run start` : `PORT=${E2E_PORT} npm run dev`,
+    url: BASE_URL,
     reuseExistingServer: !IS_CI,
     timeout: 120 * 1000,
   },

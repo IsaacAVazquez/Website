@@ -55,20 +55,20 @@ test.describe('Homepage', () => {
     ])
   })
 
-  test('should use the simplified homepage hero and projects CTA', async ({ page }) => {
+  test('should use the homepage hero and primary CTAs', async ({ page }) => {
     await page.goto('/')
     const hero = page.getByTestId('hero')
 
     await expect(
       hero.getByRole('heading', {
-        name: /i build product work that makes complexity easier to read/i,
+        name: /i build products that make hard problems easier to act on/i,
       })
     ).toBeVisible()
     await expect(hero.getByRole('link', { name: /view projects/i })).toBeVisible()
-    await expect(hero.getByRole('link', { name: /about/i })).toBeVisible()
+    await expect(hero.getByRole('link', { name: /read writing/i })).toBeVisible()
     await expect(page.getByTestId('home-projects')).toBeVisible()
     await expect(page.getByTestId('home-writing')).toBeVisible()
-    await expect(page.getByRole('button', { name: /toggle theme/i }).first()).toBeVisible()
+    await expect(page.getByRole('button', { name: /theme:/i }).first()).toBeVisible()
   })
 
   test('should be responsive on mobile', async ({ page }) => {
@@ -97,7 +97,7 @@ test.describe('Homepage', () => {
 
     const heroHeading = page.getByRole('heading', {
       level: 1,
-      name: /i build product work that makes complexity easier to read/i,
+      name: /i build products that make hard problems easier to act on/i,
     })
     const primaryCta = page.getByRole('link', { name: /view projects/i })
 
@@ -116,12 +116,12 @@ test.describe('Homepage', () => {
 
     await expect(
       page.getByRole('heading', {
-        name: /a few strong entry points into how i structure product work/i,
+        name: /product surfaces that show how i think in practice/i,
       })
     ).toBeVisible()
     await expect(
       page.getByRole('heading', {
-        name: /i use the writing to unpack the reasoning behind the work/i,
+        name: /writing that shows how i think about pm, ai workflows, and fintech tools/i,
       })
     ).toBeVisible()
     await expect(
@@ -131,7 +131,7 @@ test.describe('Homepage', () => {
     ).toBeVisible()
 
     await expect(page.getByTestId('home-projects').getByRole('link')).toHaveCount(3)
-    await expect(page.getByTestId('home-writing').getByRole('link')).toHaveCount(4)
+    await expect(page.getByTestId('home-writing').getByRole('link')).toHaveCount(3)
   })
 
   test('supports dark theme on the homepage', async ({ page }) => {

@@ -109,7 +109,7 @@ export function BudgetPlannerClient() {
   const [newCategoryName, setNewCategoryName] = useState("");
   const [editingExpenseId, setEditingExpenseId] = useState<string | null>(null);
   const [expenseDraft, setExpenseDraft] = useState<ExpenseDraft>(() =>
-    createEmptyExpenseDraft(activeMonthKey)
+    createEmptyExpenseDraft(activeMonthKey, activeMonth.categories[0]?.id ?? "")
   );
   const shouldReduceMotion = useReducedMotion();
   const motionVariants = shouldReduceMotion
@@ -207,7 +207,7 @@ export function BudgetPlannerClient() {
 
   function handleExpenseSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!expenseDraft.categoryId) return;
+    if (!resolvedExpenseCategoryId) return;
 
     const payload = {
       categoryId: resolvedExpenseCategoryId,

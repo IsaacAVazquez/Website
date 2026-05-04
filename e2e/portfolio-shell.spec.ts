@@ -4,7 +4,7 @@ const routeExpectations = [
   {
     path: "/",
     title: /Product Manager \| UC Berkeley Haas MBA \| Portfolio & Case Studies \| Isaac Vazquez/,
-    h1: /product manager focused on reliability, analytics, and execution/i,
+    h1: /i build products that make hard problems easier to act on/i,
   },
   {
     path: "/portfolio",
@@ -19,7 +19,7 @@ const routeExpectations = [
   {
     path: "/writing",
     title: /Writing \| Isaac Vazquez/,
-    h1: /notes on product strategy, operating systems, and analytics-heavy work/i,
+    h1: /writing on product, ai, and judgment/i,
   },
   {
     path: "/resume",
@@ -32,6 +32,7 @@ const orderedPortfolioTitles = [
   "Investment Analytics Platform",
   "Interchange IQ",
   "News Pulse Dashboard",
+  "Pulse Dashboards",
   "AI Dev Tool Ecosystem",
   "Frontier Model Tracker",
   "GitHub Trending Pulse",
@@ -53,14 +54,6 @@ const orderedPortfolioTitles = [
   "MLB Pulse",
   "NBA Pulse",
   "March Madness 2026 Bracket Analysis",
-  "TextOut Platform",
-  "RunningMate Platform Launch",
-  "Scaling a Platform to 60M+ Users",
-  "Transforming Client Reporting into Self-Service Analytics",
-  "Unlocking Daily Deploys Through Process Automation",
-  "Preventing Outages Through Proactive Performance Intelligence",
-  "Pricing Strategy Initiative",
-  "Digital Acquisition Strategy",
 ];
 
 test.describe("Portfolio shell", () => {

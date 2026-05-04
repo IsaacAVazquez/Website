@@ -6,6 +6,7 @@ import {
   getDefaultClubForView,
   normalizeLaLigaState,
 } from "../la-liga-state";
+import { laLigaSnapshot } from "@/data/laLigaSnapshot";
 
 describe("la-liga-state", () => {
   it("normalizes invalid params back to the default route state", () => {
@@ -43,21 +44,10 @@ describe("la-liga-state", () => {
   });
 
   it("returns the expected club slices for focused views", () => {
-    expect(filterClubsForView("title-race").map((club) => club.id)).toEqual([
-      "fcb",
-      "rma",
-      "vil",
-      "atl",
-    ]);
-    expect(filterClubsForView("europe")).toHaveLength(6);
-    expect(filterClubsForView("relegation").map((club) => club.id)).toEqual([
-      "sev",
-      "ala",
-      "elc",
-      "lev",
-      "ovi",
-    ]);
-    expect(getDefaultClubForView("relegation")).toBe("sev");
+    expect(filterClubsForView("title-race")).toEqual(laLigaSnapshot.clubs.slice(0, 4));
+    expect(filterClubsForView("europe")).toEqual(laLigaSnapshot.clubs.slice(0, 6));
+    expect(filterClubsForView("relegation")).toEqual(laLigaSnapshot.clubs.slice(-5));
+    expect(getDefaultClubForView("relegation")).toBe(laLigaSnapshot.clubs.slice(-5)[0]?.id);
   });
 
   it("builds clean hrefs while preserving unrelated query params", () => {

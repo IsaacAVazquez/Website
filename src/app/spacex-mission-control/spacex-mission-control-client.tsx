@@ -55,7 +55,11 @@ async function fetchJson<T>(url: string, validate?: (data: unknown) => data is T
 function isMissionControlSummary(data: unknown): data is MissionControlSummary {
   if (!data || typeof data !== "object") return false;
   const candidate = data as Record<string, unknown>;
-  return "stats" in candidate && "nextLaunch" in candidate;
+  return (
+    "heroLaunch" in candidate &&
+    "nextLaunch" in candidate &&
+    Array.isArray(candidate.insights)
+  );
 }
 
 function isLaunchesPayload(data: unknown): data is { launches: MissionLaunchCard[] } {
