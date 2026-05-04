@@ -1,10 +1,10 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -33,7 +33,7 @@
       "country": "United States",
       "industry": "Software-Application",
       "sector": "Technology",
-      "longBusinessSummary": "Adobe Inc. operates as a technology company worldwide. The Digital Media segment offers products and services that enable individuals, teams, and enterprises to create, publish, and promote content. This segment serves photographers, video editors, graphic and experience designers, game developers, content creators, students, marketers, business owners, knowledge workers, and consumers. The Digital Experience segment provides an integrated platform; and products, services, and solutions that enable brands and businesses to create, manage, execute, measure, monetize, and optimize customer experiences from analytics to commerce. This segment serves marketers, advertisers, agencies, publishers, merchandisers, merchants, web analysts, data scientists, developers, and executives across the C-suite. The Publishing and Advertising segment offers e-learning, technical document publishing, web conferencing, document and forms platform, web application development, printing, and Adobe Advertising solutions. It also provides consulting, training, customer management, technical support, and learning services. The company offers its solutions to enterprise customers, and businesses and consumers; and licenses its products to end-user customers through app stores and website at adobe.com. It markets and distributes its products through distributors, retailers, software developers, mobile app stores, systems integrators, independent software vendors, value-added resellers, and original equipment and hardware manufacturers. The company has a strategic alliance with HUMAIN for the development of generative AI models and AI-powered applications. The company was formerly known as Adobe Systems Incorporated and changed its name to Adobe Inc. in October 2018. Adobe Inc. was founded in 1982 and is headquartered in San Jose, California.",
+      "longBusinessSummary": "Adobe Inc. operates as a technology company worldwide. The Digital Media segment offers products and services that enable individuals, teams, and enterprises to create, publish, and promote content. This segment serves photographers, video editors, graphic and experience designers, game developers, content creators, students, marketers, business owners, knowledge workers, and consumers. The Digital Experience segment provides an integrated platform; and products, services, and solutions that enable brands and businesses to create, manage, execute, measure, monetize, and optimize customer experiences from analytics to commerce. This segment serves marketers, advertisers, agencies, publishers, merchandisers, merchants, web analysts, data scientists, developers, and executives across the C-suite. The Publishing and Advertising segment offers e-learning, technical document publishing, web conferencing, document and forms platform, web application development, printing, and Adobe Advertising solutions. It also provides consulting, training, customer management, technical support, and learning services. The company offers its solutions to enterprise customers, and businesses and consumers; and licenses its products to end-user customers through app stores and website at adobe.com. It markets and distributes its products through distributors, retailers, software developers, mobile app stores, systems integrators, independent software vendors, value-added resellers, and original equipment and hardware manufacturers. The company also provides an online visibility management and content marketing software-as-a-service platform. The company has a strategic alliance with HUMAIN for the development of generative AI models and AI-powered applications. The company was formerly known as Adobe Systems Incorporated and changed its name to Adobe Inc. in October 2018. Adobe Inc. was founded in 1982 and is headquartered in San Jose, California.",
       "fullTimeEmployees": 31360,
       "website": "https://www.adobe.com",
       "shortName": "Adobe Inc.",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.17,
-      "ttmPe": 14.29,
-      "marketCap": 99206848000,
-      "psRatio": 4.06,
-      "pbRatio": 8.68,
-      "pegRatio": 1.26
+      "ttmPe": 14.6,
+      "marketCap": 101336982000,
+      "psRatio": 4.14,
+      "pbRatio": 8.86,
+      "pegRatio": 1.28
     },
     "profitability": {
       "roe": 16.39,
@@ -5685,57 +5685,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.42,
-      "costOfEquity": 16.41,
+      "wacc": 15.290000000000001,
+      "costOfEquity": 16.25,
       "costOfDebt": 0.95,
       "taxRate": 22,
-      "beta": 1.413,
-      "marketCap": 99206848000
+      "beta": 1.3989,
+      "marketCap": 101336982000
     },
     "beta": {
-      "beta5y": 1.413
+      "beta5y": 1.3989
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 353.59,
-        "high": 361.12,
-        "low": 353.25,
-        "close": 360.91,
-        "volume": 3085100
-      },
-      {
-        "date": "2025-04-25",
-        "open": 361.7,
-        "high": 369.31,
-        "low": 359.99,
-        "close": 367.72,
-        "volume": 3499300
-      },
-      {
-        "date": "2025-04-28",
-        "open": 368.05,
-        "high": 370.99,
-        "low": 364.58,
-        "close": 368.62,
-        "volume": 3163400
-      },
-      {
-        "date": "2025-04-29",
-        "open": 367.21,
-        "high": 373.88,
-        "low": 366.88,
-        "close": 370.98,
-        "volume": 2198300
-      },
-      {
-        "date": "2025-04-30",
-        "open": 366.87,
-        "high": 376,
-        "low": 363.56,
-        "close": 374.98,
-        "volume": 3305500
-      },
       {
         "date": "2025-05-01",
         "open": 378.3,
@@ -7710,7 +7670,47 @@
         "high": 245.66,
         "low": 238.42,
         "close": 245.44,
-        "volume": 6487500
+        "volume": 6492900
+      },
+      {
+        "date": "2026-04-27",
+        "open": 240.77,
+        "high": 245.88,
+        "low": 239.11,
+        "close": 239.31,
+        "volume": 5067700
+      },
+      {
+        "date": "2026-04-28",
+        "open": 242.13,
+        "high": 245.26,
+        "low": 241.16,
+        "close": 243.2,
+        "volume": 4641700
+      },
+      {
+        "date": "2026-04-29",
+        "open": 240.97,
+        "high": 243.62,
+        "low": 238.67,
+        "close": 243.57,
+        "volume": 2664500
+      },
+      {
+        "date": "2026-04-30",
+        "open": 240.1,
+        "high": 246.68,
+        "low": 236.28,
+        "close": 246.1,
+        "volume": 5129100
+      },
+      {
+        "date": "2026-05-01",
+        "open": 252,
+        "high": 253.56,
+        "low": 244.1,
+        "close": 250.71,
+        "volume": 5064600
       }
     ],
     "news": [
@@ -7763,11 +7763,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
-        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
-        "publisher": "Motley Fool",
+        "uuid": "b77d1727-4d59-3130-983d-a06105fa7081",
+        "title": "Should You Invest in Adobe (ADBE) Based on Bullish Wall Street Views?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
+        "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html",
         "type": "STORY"
       },
       {
@@ -7779,19 +7779,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b77d1727-4d59-3130-983d-a06105fa7081",
-        "title": "Should You Invest in Adobe (ADBE) Based on Bullish Wall Street Views?",
-        "publisher": "Zacks",
+        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
+        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html",
+        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
         "type": "STORY"
       },
       {
-        "uuid": "99b5f820-1ff1-32d4-a77d-7c54708c0fc8",
-        "title": "Why The 39% Return On Capital At Adobe (NASDAQ:ADBE) Should Have Your Attention",
-        "publisher": "Simply Wall St.",
+        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
+        "title": "5 Brilliant Stocks to Buy in June",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/news/why-39-return-capital-adobe-130012134.html",
+        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
         "type": "STORY"
       }
     ],
@@ -7822,6 +7822,10 @@
         "title": "Vice President of Investor Relations"
       },
       {
+        "name": "Mr. Shanmugh Natarajan",
+        "title": "MD of India & VP of Products"
+      },
+      {
         "name": "Mr. Shantanu Narayen",
         "title": "Chairman & CEO",
         "age": 61,
@@ -7850,61 +7854,55 @@
         "title": "Senior VP, Chief Accounting Officer & Corporate Controller",
         "age": 50,
         "yearBorn": 1975
-      },
-      {
-        "name": "Ms. Lara H. Balazs",
-        "title": "Chief Marketing Officer & Executive Vice President of Global Marketing",
-        "age": 54,
-        "yearBorn": 1971
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.29,
-        "industryAvg": 24.88
+        "value": 14.6,
+        "industryAvg": 25.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.06,
-        "industryAvg": 4.39
+        "value": 4.14,
+        "industryAvg": 4.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.68,
-        "industryAvg": 4.33
+        "value": 8.86,
+        "industryAvg": 4.38
       },
       {
         "metric": "ROE",
         "value": 16.39,
-        "industryAvg": 6.08
+        "industryAvg": 6.15
       },
       {
         "metric": "ROA",
         "value": 6.38,
-        "industryAvg": 3.3000000000000003
+        "industryAvg": 3.35
       },
       {
         "metric": "Gross Margin",
         "value": 89.62,
-        "industryAvg": 63.27
+        "industryAvg": 63.23
       },
       {
         "metric": "EBITDA Margin",
         "value": 41.56,
-        "industryAvg": 14.899999999999999
+        "industryAvg": 15.1
       },
       {
         "metric": "Net Margin",
         "value": 29.520000000000003,
-        "industryAvg": 7.779999999999999
+        "industryAvg": 7.84
       }
     ],
     "dcf": {
-      "fairValue": 164.29,
-      "currentPrice": 245.44,
-      "upside": -33.06,
-      "wacc": 15.42,
+      "fairValue": 166.05,
+      "currentPrice": 250.71,
+      "upside": -33.77,
+      "wacc": 15.29,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 11.38,
         "Terminal growth": 3

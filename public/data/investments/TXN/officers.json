@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "TXN",
+    "name": "Dr. Ahmad R. S.  Bahai Ph.D.",
+    "title": "Senior VP & CTO",
+    "age": 62,
+    "born": 1963,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "TXN",
+    "name": "Mr. Amichai  Ron",
+    "title": "Senior Vice President of Embedded Processing & DLP\u00ae Products",
+    "age": 47,
+    "born": 1978,
+    "pay": 2328645,
+    "exercised": 0,
+    "unexercised": 3036744
+  },
+  {
+    "symbol": "TXN",
+    "name": "Mr. Hagop H. Kozanian",
+    "title": "Senior Vice President of Analog Signal Chain",
+    "age": 42,
+    "born": 1983,
+    "pay": 2397946,
+    "exercised": 0,
+    "unexercised": 2345311
+  },
+  {
+    "symbol": "TXN",
+    "name": "Mr. Haviv  Ilan",
+    "title": "President, CEO & Chairman",
+    "age": 56,
+    "born": 1969,
+    "pay": 4669421,
+    "exercised": 0,
+    "unexercised": 17467992
+  },
+  {
+    "symbol": "TXN",
+    "name": "Mr. Mike  Beckman",
+    "title": "VP & Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "TXN",
+    "name": "Mr. Rafael R. Lizardi",
+    "title": "Senior VP & CFO",
+    "age": 52,
+    "born": 1973,
+    "pay": 2312941,
+    "exercised": 0,
+    "unexercised": 3042759
+  },
+  {
+    "symbol": "TXN",
+    "name": "Ms. Christine A. Witzsche",
+    "title": "Senior Vice President of Communications & Investor Relations",
+    "age": 40,
+    "born": 1985,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "TXN",
+    "name": "Ms. Julie C. Knecht",
+    "title": "VP & Chief Accounting Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "TXN",
+    "name": "Ms. Katharine  Kane",
+    "title": "Senior VP, General Counsel, Legal, Chief Compliance Officer & Secretary",
+    "age": 40,
+    "born": 1985,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "TXN",
+    "name": "Ms. Krunali  Patel",
+    "title": "Senior VP & Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

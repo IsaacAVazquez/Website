@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30",
+      "gross_profit": 39581000000.0,
+      "total_revenue": 69685000000.0,
+      "gross_margin": 0.568
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30",
+      "gross_profit": 37934000000.0,
+      "total_revenue": 69092000000.0,
+      "gross_margin": 0.549
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "gross_profit": 40706000000.0,
+      "total_revenue": 76048000000.0,
+      "gross_margin": 0.5353
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30",
+      "gross_profit": 42688000000.0,
+      "total_revenue": 74604000000.0,
+      "gross_margin": 0.5722
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30",
+      "gross_profit": 43464000000.0,
+      "total_revenue": 76693000000.0,
+      "gross_margin": 0.5667
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "gross_profit": 48735000000.0,
+      "total_revenue": 86310000000.0,
+      "gross_margin": 0.5647
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31",
+      "gross_profit": 46827000000.0,
+      "total_revenue": 80539000000.0,
+      "gross_margin": 0.5814
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30",
+      "gross_profit": 49235000000.0,
+      "total_revenue": 84742000000.0,
+      "gross_margin": 0.581
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30",
+      "gross_profit": 51794000000.0,
+      "total_revenue": 88268000000.0,
+      "gross_margin": 0.5868
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "gross_profit": 55856000000.0,
+      "total_revenue": 96469000000.0,
+      "gross_margin": 0.579
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31",
+      "gross_profit": 53873000000.0,
+      "total_revenue": 90234000000.0,
+      "gross_margin": 0.597
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30",
+      "gross_profit": 57389000000.0,
+      "total_revenue": 96428000000.0,
+      "gross_margin": 0.5951
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30",
+      "gross_profit": 60977000000.0,
+      "total_revenue": 102346000000.0,
+      "gross_margin": 0.5958
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "gross_profit": 68062000000.0,
+      "total_revenue": 113829000000.0,
+      "gross_margin": 0.5979
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31",
+      "gross_profit": 68625000000.0,
+      "total_revenue": 109896000000.0,
+      "gross_margin": 0.6245
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31",
+      "gross_profit": 97795000000.0,
+      "total_revenue": 182527000000.0,
+      "gross_margin": 0.5358
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31",
+      "gross_profit": 146698000000.0,
+      "total_revenue": 257637000000.0,
+      "gross_margin": 0.5694
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "gross_profit": 156633000000.0,
+      "total_revenue": 282836000000.0,
+      "gross_margin": 0.5538
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "gross_profit": 174062000000.0,
+      "total_revenue": 307394000000.0,
+      "gross_margin": 0.5663
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "gross_profit": 203712000000.0,
+      "total_revenue": 350018000000.0,
+      "gross_margin": 0.582
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "gross_profit": 240301000000.0,
+      "total_revenue": 402836000000.0,
+      "gross_margin": 0.5965
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30",
+      "operating_income": 19453000000.0,
+      "total_revenue": 69685000000.0,
+      "operating_margin": 0.2792
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30",
+      "operating_income": 17135000000.0,
+      "total_revenue": 69092000000.0,
+      "operating_margin": 0.248
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "operating_income": 18160000000.0,
+      "total_revenue": 76048000000.0,
+      "operating_margin": 0.2388
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30",
+      "operating_income": 21838000000.0,
+      "total_revenue": 74604000000.0,
+      "operating_margin": 0.2927
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30",
+      "operating_income": 21343000000.0,
+      "total_revenue": 76693000000.0,
+      "operating_margin": 0.2783
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "operating_income": 23697000000.0,
+      "total_revenue": 86310000000.0,
+      "operating_margin": 0.2746
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31",
+      "operating_income": 25472000000.0,
+      "total_revenue": 80539000000.0,
+      "operating_margin": 0.3163
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30",
+      "operating_income": 27425000000.0,
+      "total_revenue": 84742000000.0,
+      "operating_margin": 0.3236
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30",
+      "operating_income": 28521000000.0,
+      "total_revenue": 88268000000.0,
+      "operating_margin": 0.3231
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "operating_income": 30972000000.0,
+      "total_revenue": 96469000000.0,
+      "operating_margin": 0.3211
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31",
+      "operating_income": 30606000000.0,
+      "total_revenue": 90234000000.0,
+      "operating_margin": 0.3392
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30",
+      "operating_income": 31271000000.0,
+      "total_revenue": 96428000000.0,
+      "operating_margin": 0.3243
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30",
+      "operating_income": 31228000000.0,
+      "total_revenue": 102346000000.0,
+      "operating_margin": 0.3051
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "operating_income": 35934000000.0,
+      "total_revenue": 113829000000.0,
+      "operating_margin": 0.3157
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31",
+      "operating_income": 39696000000.0,
+      "total_revenue": 109896000000.0,
+      "operating_margin": 0.3612
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31",
+      "operating_income": 41224000000.0,
+      "total_revenue": 182527000000.0,
+      "operating_margin": 0.2259
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31",
+      "operating_income": 78714000000.0,
+      "total_revenue": 257637000000.0,
+      "operating_margin": 0.3055
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "operating_income": 74842000000.0,
+      "total_revenue": 282836000000.0,
+      "operating_margin": 0.2646
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "operating_income": 84293000000.0,
+      "total_revenue": 307394000000.0,
+      "operating_margin": 0.2742
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "operating_income": 112390000000.0,
+      "total_revenue": 350018000000.0,
+      "operating_margin": 0.3211
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "operating_income": 129039000000.0,
+      "total_revenue": 402836000000.0,
+      "operating_margin": 0.3203
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 16002000000.0,
+      "total_revenue": 69685000000.0,
+      "net_margin": 0.2296
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 13910000000.0,
+      "total_revenue": 69092000000.0,
+      "net_margin": 0.2013
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 13624000000.0,
+      "total_revenue": 76048000000.0,
+      "net_margin": 0.1792
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 18368000000.0,
+      "total_revenue": 74604000000.0,
+      "net_margin": 0.2462
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 19689000000.0,
+      "total_revenue": 76693000000.0,
+      "net_margin": 0.2567
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 20687000000.0,
+      "total_revenue": 86310000000.0,
+      "net_margin": 0.2397
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 23662000000.0,
+      "total_revenue": 80539000000.0,
+      "net_margin": 0.2938
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 23619000000.0,
+      "total_revenue": 84742000000.0,
+      "net_margin": 0.2787
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 26301000000.0,
+      "total_revenue": 88268000000.0,
+      "net_margin": 0.298
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 26536000000.0,
+      "total_revenue": 96469000000.0,
+      "net_margin": 0.2751
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 34540000000.0,
+      "total_revenue": 90234000000.0,
+      "net_margin": 0.3828
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 28196000000.0,
+      "total_revenue": 96428000000.0,
+      "net_margin": 0.2924
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 34979000000.0,
+      "total_revenue": 102346000000.0,
+      "net_margin": 0.3418
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 34455000000.0,
+      "total_revenue": 113829000000.0,
+      "net_margin": 0.3027
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 62578000000.0,
+      "total_revenue": 109896000000.0,
+      "net_margin": 0.5694
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 40269000000.0,
+      "total_revenue": 182527000000.0,
+      "net_margin": 0.2206
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 76033000000.0,
+      "total_revenue": 257637000000.0,
+      "net_margin": 0.2951
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 59972000000.0,
+      "total_revenue": 282836000000.0,
+      "net_margin": 0.212
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 73795000000.0,
+      "total_revenue": 307394000000.0,
+      "net_margin": 0.2401
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 100118000000.0,
+      "total_revenue": 350018000000.0,
+      "net_margin": 0.286
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 132170000000.0,
+      "total_revenue": 402836000000.0,
+      "net_margin": 0.3281
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 69685000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30",
+      "ebitda": 20380000000.0,
+      "total_revenue": 69092000000.0,
+      "ebitda_margin": 0.295
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "ebitda": 21438000000.0,
+      "total_revenue": 76048000000.0,
+      "ebitda_margin": 0.2819
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30",
+      "ebitda": 24770000000.0,
+      "total_revenue": 74604000000.0,
+      "ebitda_margin": 0.332
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30",
+      "ebitda": 24484000000.0,
+      "total_revenue": 76693000000.0,
+      "ebitda_margin": 0.3192
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "ebitda": 26044000000.0,
+      "total_revenue": 86310000000.0,
+      "ebitda_margin": 0.3017
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31",
+      "ebitda": 31822000000.0,
+      "total_revenue": 80539000000.0,
+      "ebitda_margin": 0.3951
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30",
+      "ebitda": 31326000000.0,
+      "total_revenue": 84742000000.0,
+      "ebitda_margin": 0.3697
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30",
+      "ebitda": 35745000000.0,
+      "total_revenue": 88268000000.0,
+      "ebitda_margin": 0.405
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "ebitda": 36501000000.0,
+      "total_revenue": 96469000000.0,
+      "ebitda_margin": 0.3784
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31",
+      "ebitda": 46310000000.0,
+      "total_revenue": 90234000000.0,
+      "ebitda_margin": 0.5132
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30",
+      "ebitda": 39192000000.0,
+      "total_revenue": 96428000000.0,
+      "ebitda_margin": 0.4064
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30",
+      "ebitda": 49741000000.0,
+      "total_revenue": 102346000000.0,
+      "ebitda_margin": 0.486
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "ebitda": 45455000000.0,
+      "total_revenue": 113829000000.0,
+      "ebitda_margin": 0.3993
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31",
+      "ebitda": 84427000000.0,
+      "total_revenue": 109896000000.0,
+      "ebitda_margin": 0.7682
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31",
+      "ebitda": 61914000000.0,
+      "total_revenue": 182527000000.0,
+      "ebitda_margin": 0.3392
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31",
+      "ebitda": 103521000000.0,
+      "total_revenue": 257637000000.0,
+      "ebitda_margin": 0.4018
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "ebitda": 85160000000.0,
+      "total_revenue": 282836000000.0,
+      "ebitda_margin": 0.3011
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "ebitda": 97971000000.0,
+      "total_revenue": 307394000000.0,
+      "ebitda_margin": 0.3187
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "ebitda": 135394000000.0,
+      "total_revenue": 350018000000.0,
+      "ebitda_margin": 0.3868
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "ebitda": 180698000000.0,
+      "total_revenue": 402836000000.0,
+      "ebitda_margin": 0.4486
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 12594000000.0,
+      "total_revenue": 69685000000.0,
+      "fcf_margin": 0.1807
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 69092000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 76048000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 21778000000.0,
+      "total_revenue": 74604000000.0,
+      "fcf_margin": 0.2919
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 22601000000.0,
+      "total_revenue": 76693000000.0,
+      "fcf_margin": 0.2947
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 7896000000.0,
+      "total_revenue": 86310000000.0,
+      "fcf_margin": 0.0915
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 16836000000.0,
+      "total_revenue": 80539000000.0,
+      "fcf_margin": 0.209
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 13454000000.0,
+      "total_revenue": 84742000000.0,
+      "fcf_margin": 0.1588
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 17637000000.0,
+      "total_revenue": 88268000000.0,
+      "fcf_margin": 0.1998
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 24837000000.0,
+      "total_revenue": 96469000000.0,
+      "fcf_margin": 0.2575
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 18953000000.0,
+      "total_revenue": 90234000000.0,
+      "fcf_margin": 0.21
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 5301000000.0,
+      "total_revenue": 96428000000.0,
+      "fcf_margin": 0.055
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 24461000000.0,
+      "total_revenue": 102346000000.0,
+      "fcf_margin": 0.239
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 24551000000.0,
+      "total_revenue": 113829000000.0,
+      "fcf_margin": 0.2157
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 10116000000.0,
+      "total_revenue": 109896000000.0,
+      "fcf_margin": 0.0921
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 42843000000.0,
+      "total_revenue": 182527000000.0,
+      "fcf_margin": 0.2347
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 67012000000.0,
+      "total_revenue": 257637000000.0,
+      "fcf_margin": 0.2601
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 60010000000.0,
+      "total_revenue": 282836000000.0,
+      "fcf_margin": 0.2122
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 69495000000.0,
+      "total_revenue": 307394000000.0,
+      "fcf_margin": 0.2261
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 72764000000.0,
+      "total_revenue": 350018000000.0,
+      "fcf_margin": 0.2079
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 73266000000.0,
+      "total_revenue": 402836000000.0,
+      "fcf_margin": 0.1819
+    }
+  ]
+}

@@ -1,0 +1,1410 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "CRM",
+      "report_date": "2022-04-30T00:00:00.000",
+      "revenue": 7411000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-07-31T00:00:00.000",
+      "revenue": 7720000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "revenue": 8384000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-04-30T00:00:00.000",
+      "revenue": 8247000000.0,
+      "prev_year_revenue": 7411000000.0,
+      "yoy_growth": 0.1128
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-07-31T00:00:00.000",
+      "revenue": 8603000000.0,
+      "prev_year_revenue": 7720000000.0,
+      "yoy_growth": 0.1144
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31T00:00:00.000",
+      "revenue": 8720000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 9287000000.0,
+      "prev_year_revenue": 8384000000.0,
+      "yoy_growth": 0.1077
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30T00:00:00.000",
+      "revenue": 9133000000.0,
+      "prev_year_revenue": 8247000000.0,
+      "yoy_growth": 0.1074
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31T00:00:00.000",
+      "revenue": 9325000000.0,
+      "prev_year_revenue": 8603000000.0,
+      "yoy_growth": 0.0839
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31T00:00:00.000",
+      "revenue": 9444000000.0,
+      "prev_year_revenue": 8720000000.0,
+      "yoy_growth": 0.083
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 9993000000.0,
+      "prev_year_revenue": 9287000000.0,
+      "yoy_growth": 0.076
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30T00:00:00.000",
+      "revenue": 9829000000.0,
+      "prev_year_revenue": 9133000000.0,
+      "yoy_growth": 0.0762
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31T00:00:00.000",
+      "revenue": 10236000000.0,
+      "prev_year_revenue": 9325000000.0,
+      "yoy_growth": 0.0977
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31T00:00:00.000",
+      "revenue": 10259000000.0,
+      "prev_year_revenue": 9444000000.0,
+      "yoy_growth": 0.0863
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 11201000000.0,
+      "prev_year_revenue": 9993000000.0,
+      "yoy_growth": 0.1209
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "CRM",
+      "report_date": "2021-01-31T00:00:00.000",
+      "revenue": 21252000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-01-31T00:00:00.000",
+      "revenue": 26492000000.0,
+      "prev_year_revenue": 21252000000.0,
+      "yoy_growth": 0.2466
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "revenue": 31352000000.0,
+      "prev_year_revenue": 26492000000.0,
+      "yoy_growth": 0.1835
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 34857000000.0,
+      "prev_year_revenue": 31352000000.0,
+      "yoy_growth": 0.1118
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 37895000000.0,
+      "prev_year_revenue": 34857000000.0,
+      "yoy_growth": 0.0872
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 41525000000.0,
+      "prev_year_revenue": 37895000000.0,
+      "yoy_growth": 0.0958
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "CRM",
+      "report_date": "2022-04-30T00:00:00.000",
+      "operating_income": 20000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-07-31T00:00:00.000",
+      "operating_income": 193000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "operating_income": 1185000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-04-30T00:00:00.000",
+      "operating_income": 1123000000.0,
+      "prev_year_operating_income": 20000000.0,
+      "yoy_growth": 55.15
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-07-31T00:00:00.000",
+      "operating_income": 1525000000.0,
+      "prev_year_operating_income": 193000000.0,
+      "yoy_growth": 6.9016
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31T00:00:00.000",
+      "operating_income": 1556000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 1795000000.0,
+      "prev_year_operating_income": 1185000000.0,
+      "yoy_growth": 0.5148
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30T00:00:00.000",
+      "operating_income": 1717000000.0,
+      "prev_year_operating_income": 1123000000.0,
+      "yoy_growth": 0.5289
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31T00:00:00.000",
+      "operating_income": 1882000000.0,
+      "prev_year_operating_income": 1525000000.0,
+      "yoy_growth": 0.2341
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31T00:00:00.000",
+      "operating_income": 1949000000.0,
+      "prev_year_operating_income": 1556000000.0,
+      "yoy_growth": 0.2526
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 2118000000.0,
+      "prev_year_operating_income": 1795000000.0,
+      "yoy_growth": 0.1799
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30T00:00:00.000",
+      "operating_income": 1978000000.0,
+      "prev_year_operating_income": 1717000000.0,
+      "yoy_growth": 0.152
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31T00:00:00.000",
+      "operating_income": 2336000000.0,
+      "prev_year_operating_income": 1882000000.0,
+      "yoy_growth": 0.2412
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31T00:00:00.000",
+      "operating_income": 2448000000.0,
+      "prev_year_operating_income": 1949000000.0,
+      "yoy_growth": 0.256
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 2155000000.0,
+      "prev_year_operating_income": 2118000000.0,
+      "yoy_growth": 0.0175
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "CRM",
+      "report_date": "2021-01-31T00:00:00.000",
+      "operating_income": 455000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-01-31T00:00:00.000",
+      "operating_income": 548000000.0,
+      "prev_year_operating_income": 455000000.0,
+      "yoy_growth": 0.2044
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "operating_income": 1858000000.0,
+      "prev_year_operating_income": 548000000.0,
+      "yoy_growth": 2.3905
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 5999000000.0,
+      "prev_year_operating_income": 1858000000.0,
+      "yoy_growth": 2.2287
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 7666000000.0,
+      "prev_year_operating_income": 5999000000.0,
+      "yoy_growth": 0.2779
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 8917000000.0,
+      "prev_year_operating_income": 7666000000.0,
+      "yoy_growth": 0.1632
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "CRM",
+      "report_date": "2022-07-31T00:00:00.000",
+      "ebitda": 1100000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "ebitda": 2217000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-04-30T00:00:00.000",
+      "ebitda": 2377000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-07-31T00:00:00.000",
+      "ebitda": 2415000000.0,
+      "prev_year_ebitda": 1100000000.0,
+      "yoy_growth": 1.1955
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31T00:00:00.000",
+      "ebitda": 2418000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 2748000000.0,
+      "prev_year_ebitda": 2217000000.0,
+      "yoy_growth": 0.2395
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30T00:00:00.000",
+      "ebitda": 2596000000.0,
+      "prev_year_ebitda": 2377000000.0,
+      "yoy_growth": 0.0921
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31T00:00:00.000",
+      "ebitda": 2789000000.0,
+      "prev_year_ebitda": 2415000000.0,
+      "yoy_growth": 0.1549
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31T00:00:00.000",
+      "ebitda": 2763000000.0,
+      "prev_year_ebitda": 2418000000.0,
+      "yoy_growth": 0.1427
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 2995000000.0,
+      "prev_year_ebitda": 2748000000.0,
+      "yoy_growth": 0.0899
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30T00:00:00.000",
+      "ebitda": 2821000000.0,
+      "prev_year_ebitda": 2596000000.0,
+      "yoy_growth": 0.0867
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31T00:00:00.000",
+      "ebitda": 3153000000.0,
+      "prev_year_ebitda": 2789000000.0,
+      "yoy_growth": 0.1305
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31T00:00:00.000",
+      "ebitda": 3299000000.0,
+      "prev_year_ebitda": 2763000000.0,
+      "yoy_growth": 0.194
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 3275000000.0,
+      "prev_year_ebitda": 2995000000.0,
+      "yoy_growth": 0.0935
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "CRM",
+      "report_date": "2021-01-31T00:00:00.000",
+      "ebitda": 3301000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-01-31T00:00:00.000",
+      "ebitda": 3846000000.0,
+      "prev_year_ebitda": 3301000000.0,
+      "yoy_growth": 0.1651
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "ebitda": 5644000000.0,
+      "prev_year_ebitda": 3846000000.0,
+      "yoy_growth": 0.4675
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 9958000000.0,
+      "prev_year_ebitda": 5644000000.0,
+      "yoy_growth": 0.7644
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 11143000000.0,
+      "prev_year_ebitda": 9958000000.0,
+      "yoy_growth": 0.119
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 12548000000.0,
+      "prev_year_ebitda": 11143000000.0,
+      "yoy_growth": 0.1261
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "CRM",
+      "report_date": "2022-04-30T00:00:00.000",
+      "net_income_common_stockholders": 28000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-07-31T00:00:00.000",
+      "net_income_common_stockholders": 68000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "net_income_common_stockholders": -98000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-04-30T00:00:00.000",
+      "net_income_common_stockholders": 199000000.0,
+      "prev_year_net_income_common_stockholders": 28000000.0,
+      "yoy_growth": 6.1071
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-07-31T00:00:00.000",
+      "net_income_common_stockholders": 1267000000.0,
+      "prev_year_net_income_common_stockholders": 68000000.0,
+      "yoy_growth": 17.6324
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31T00:00:00.000",
+      "net_income_common_stockholders": 1224000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1446000000.0,
+      "prev_year_net_income_common_stockholders": -98000000.0,
+      "yoy_growth": 15.7551
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30T00:00:00.000",
+      "net_income_common_stockholders": 1533000000.0,
+      "prev_year_net_income_common_stockholders": 199000000.0,
+      "yoy_growth": 6.7035
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31T00:00:00.000",
+      "net_income_common_stockholders": 1429000000.0,
+      "prev_year_net_income_common_stockholders": 1267000000.0,
+      "yoy_growth": 0.1279
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31T00:00:00.000",
+      "net_income_common_stockholders": 1527000000.0,
+      "prev_year_net_income_common_stockholders": 1224000000.0,
+      "yoy_growth": 0.2475
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1708000000.0,
+      "prev_year_net_income_common_stockholders": 1446000000.0,
+      "yoy_growth": 0.1812
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30T00:00:00.000",
+      "net_income_common_stockholders": 1541000000.0,
+      "prev_year_net_income_common_stockholders": 1533000000.0,
+      "yoy_growth": 0.0052
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31T00:00:00.000",
+      "net_income_common_stockholders": 1887000000.0,
+      "prev_year_net_income_common_stockholders": 1429000000.0,
+      "yoy_growth": 0.3205
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31T00:00:00.000",
+      "net_income_common_stockholders": 2086000000.0,
+      "prev_year_net_income_common_stockholders": 1527000000.0,
+      "yoy_growth": 0.3661
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1943000000.0,
+      "prev_year_net_income_common_stockholders": 1708000000.0,
+      "yoy_growth": 0.1376
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "CRM",
+      "report_date": "2021-01-31T00:00:00.000",
+      "net_income_common_stockholders": 4072000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1444000000.0,
+      "prev_year_net_income_common_stockholders": 4072000000.0,
+      "yoy_growth": -0.6454
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "net_income_common_stockholders": 208000000.0,
+      "prev_year_net_income_common_stockholders": 1444000000.0,
+      "yoy_growth": -0.856
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 4136000000.0,
+      "prev_year_net_income_common_stockholders": 208000000.0,
+      "yoy_growth": 18.8846
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 6197000000.0,
+      "prev_year_net_income_common_stockholders": 4136000000.0,
+      "yoy_growth": 0.4983
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 7457000000.0,
+      "prev_year_net_income_common_stockholders": 6197000000.0,
+      "yoy_growth": 0.2033
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "CRM",
+      "report_date": "2022-04-30T00:00:00.000",
+      "free_cash_flow": 3497000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-07-31T00:00:00.000",
+      "free_cash_flow": 131000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-07-31T00:00:00.000",
+      "free_cash_flow": 628000000.0,
+      "prev_year_free_cash_flow": 131000000.0,
+      "yoy_growth": 3.7939
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31T00:00:00.000",
+      "free_cash_flow": 1366000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 3256000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30T00:00:00.000",
+      "free_cash_flow": 6084000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31T00:00:00.000",
+      "free_cash_flow": 755000000.0,
+      "prev_year_free_cash_flow": 628000000.0,
+      "yoy_growth": 0.2022
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31T00:00:00.000",
+      "free_cash_flow": 1779000000.0,
+      "prev_year_free_cash_flow": 1366000000.0,
+      "yoy_growth": 0.3023
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 3816000000.0,
+      "prev_year_free_cash_flow": 3256000000.0,
+      "yoy_growth": 0.172
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30T00:00:00.000",
+      "free_cash_flow": 6297000000.0,
+      "prev_year_free_cash_flow": 6084000000.0,
+      "yoy_growth": 0.035
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31T00:00:00.000",
+      "free_cash_flow": 605000000.0,
+      "prev_year_free_cash_flow": 755000000.0,
+      "yoy_growth": -0.1987
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31T00:00:00.000",
+      "free_cash_flow": 2177000000.0,
+      "prev_year_free_cash_flow": 1779000000.0,
+      "yoy_growth": 0.2237
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 5323000000.0,
+      "prev_year_free_cash_flow": 3816000000.0,
+      "yoy_growth": 0.3949
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "CRM",
+      "report_date": "2021-01-31T00:00:00.000",
+      "free_cash_flow": 4091000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-01-31T00:00:00.000",
+      "free_cash_flow": 5283000000.0,
+      "prev_year_free_cash_flow": 4091000000.0,
+      "yoy_growth": 0.2914
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "free_cash_flow": 6313000000.0,
+      "prev_year_free_cash_flow": 5283000000.0,
+      "yoy_growth": 0.195
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 9498000000.0,
+      "prev_year_free_cash_flow": 6313000000.0,
+      "yoy_growth": 0.5045
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 12434000000.0,
+      "prev_year_free_cash_flow": 9498000000.0,
+      "yoy_growth": 0.3091
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 14402000000.0,
+      "prev_year_free_cash_flow": 12434000000.0,
+      "yoy_growth": 0.1583
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "CRM",
+      "report_date": "2002-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2002-07-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2002-10-31T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2003-01-31T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2003-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2003-07-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2003-10-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": -0.01,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2004-01-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": -0.01,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2004-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2004-07-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2004-10-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2005-01-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2005-04-30T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2005-07-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2005-10-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2006-01-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2006-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.01,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2006-07-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.01,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2006-10-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.03,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2007-01-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.01,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2007-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2007-07-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2007-10-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2008-01-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2008-04-30T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2008-07-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2008-10-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2009-01-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2009-04-30T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2009-07-31T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2009-10-31T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2010-01-31T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2010-04-30T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.04,
+      "yoy_growth": -0.25
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2010-07-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.04,
+      "yoy_growth": -0.25
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2010-10-31T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.04,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2011-01-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.04,
+      "yoy_growth": -0.5
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2011-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.03,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2011-07-31T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": 0.03,
+      "yoy_growth": -1.3333
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2011-10-31T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": 0.04,
+      "yoy_growth": -1.25
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2012-01-31T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": 0.02,
+      "yoy_growth": -1.5
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2012-04-30T00:00:00.000",
+      "eps": -0.04,
+      "prev_year_eps": 0.0,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2012-07-31T00:00:00.000",
+      "eps": -0.02,
+      "prev_year_eps": -0.01,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2012-10-31T00:00:00.000",
+      "eps": -0.39,
+      "prev_year_eps": -0.01,
+      "yoy_growth": -38.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2013-01-31T00:00:00.000",
+      "eps": -0.04,
+      "prev_year_eps": -0.01,
+      "yoy_growth": -3.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2013-04-30T00:00:00.000",
+      "eps": -0.12,
+      "prev_year_eps": -0.04,
+      "yoy_growth": -2.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2013-07-31T00:00:00.000",
+      "eps": 0.12,
+      "prev_year_eps": -0.02,
+      "yoy_growth": 7.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2013-10-31T00:00:00.000",
+      "eps": -0.21,
+      "prev_year_eps": -0.39,
+      "yoy_growth": 0.4615
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2014-01-31T00:00:00.000",
+      "eps": -0.19,
+      "prev_year_eps": -0.04,
+      "yoy_growth": -3.75
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2014-04-30T00:00:00.000",
+      "eps": -0.16,
+      "prev_year_eps": -0.12,
+      "yoy_growth": -0.3333
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2014-07-31T00:00:00.000",
+      "eps": -0.1,
+      "prev_year_eps": 0.12,
+      "yoy_growth": -1.8333
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2014-10-31T00:00:00.000",
+      "eps": -0.06,
+      "prev_year_eps": -0.21,
+      "yoy_growth": 0.7143
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2015-01-31T00:00:00.000",
+      "eps": -0.1,
+      "prev_year_eps": -0.19,
+      "yoy_growth": 0.4737
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2015-04-30T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": -0.16,
+      "yoy_growth": 1.0625
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2015-07-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": -0.1,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2015-10-31T00:00:00.000",
+      "eps": -0.04,
+      "prev_year_eps": -0.06,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2016-01-31T00:00:00.000",
+      "eps": -0.04,
+      "prev_year_eps": -0.1,
+      "yoy_growth": 0.6
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2016-04-30T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 5.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2016-07-31T00:00:00.000",
+      "eps": 0.33,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2016-10-31T00:00:00.000",
+      "eps": -0.05,
+      "prev_year_eps": -0.04,
+      "yoy_growth": -0.25
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2017-01-31T00:00:00.000",
+      "eps": -0.07,
+      "prev_year_eps": -0.04,
+      "yoy_growth": -0.75
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2017-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.06,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2017-07-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.33,
+      "yoy_growth": -0.8182
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2017-10-31T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": -0.05,
+      "yoy_growth": 4.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2018-01-31T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": -0.07,
+      "yoy_growth": 5.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2018-04-30T00:00:00.000",
+      "eps": 0.46,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2018-07-31T00:00:00.000",
+      "eps": 0.39,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 5.5
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2018-10-31T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": 0.15,
+      "yoy_growth": -0.1333
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2019-01-31T00:00:00.000",
+      "eps": 0.46,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 0.6429
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2019-04-30T00:00:00.000",
+      "eps": 0.49,
+      "prev_year_eps": 0.46,
+      "yoy_growth": 0.0652
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2019-07-31T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.39,
+      "yoy_growth": -0.7179
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2019-10-31T00:00:00.000",
+      "eps": -0.12,
+      "prev_year_eps": 0.13,
+      "yoy_growth": -1.9231
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2020-01-31T00:00:00.000",
+      "eps": -0.28,
+      "prev_year_eps": 0.46,
+      "yoy_growth": -1.6087
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2020-04-30T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.49,
+      "yoy_growth": -0.7755
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2020-07-31T00:00:00.000",
+      "eps": 2.85,
+      "prev_year_eps": 0.11,
+      "yoy_growth": 24.9091
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2020-10-31T00:00:00.000",
+      "eps": 1.15,
+      "prev_year_eps": -0.12,
+      "yoy_growth": 10.5833
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2021-01-31T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": -0.28,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2021-04-30T00:00:00.000",
+      "eps": 0.5,
+      "prev_year_eps": 0.11,
+      "yoy_growth": 3.5455
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2021-07-31T00:00:00.000",
+      "eps": 0.56,
+      "prev_year_eps": 2.85,
+      "yoy_growth": -0.8035
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2021-10-31T00:00:00.000",
+      "eps": 0.47,
+      "prev_year_eps": 1.15,
+      "yoy_growth": -0.5913
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-01-31T00:00:00.000",
+      "eps": -0.03,
+      "prev_year_eps": 0.28,
+      "yoy_growth": -1.1071
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-04-30T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.5,
+      "yoy_growth": -0.94
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-07-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.56,
+      "yoy_growth": -0.875
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2022-10-31T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": 0.47,
+      "yoy_growth": -0.5532
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-01-31T00:00:00.000",
+      "eps": -0.1,
+      "prev_year_eps": -0.03,
+      "yoy_growth": -2.3333
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-04-30T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 5.6667
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-07-31T00:00:00.000",
+      "eps": 1.29,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 17.4286
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31T00:00:00.000",
+      "eps": 1.25,
+      "prev_year_eps": 0.21,
+      "yoy_growth": 4.9524
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "eps": 1.47,
+      "prev_year_eps": -0.1,
+      "yoy_growth": 15.7
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30T00:00:00.000",
+      "eps": 1.56,
+      "prev_year_eps": 0.2,
+      "yoy_growth": 6.8
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31T00:00:00.000",
+      "eps": 1.47,
+      "prev_year_eps": 1.29,
+      "yoy_growth": 0.1395
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31T00:00:00.000",
+      "eps": 1.58,
+      "prev_year_eps": 1.25,
+      "yoy_growth": 0.264
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "eps": 1.75,
+      "prev_year_eps": 1.47,
+      "yoy_growth": 0.1905
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30T00:00:00.000",
+      "eps": 1.59,
+      "prev_year_eps": 1.56,
+      "yoy_growth": 0.0192
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31T00:00:00.000",
+      "eps": 1.96,
+      "prev_year_eps": 1.47,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31T00:00:00.000",
+      "eps": 2.19,
+      "prev_year_eps": 1.58,
+      "yoy_growth": 0.3861
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "eps": 2.07,
+      "prev_year_eps": 1.75,
+      "yoy_growth": 0.1829
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.58,
-      "ttmPe": 46.42,
-      "marketCap": 30784188240,
-      "psRatio": 3.22,
-      "pbRatio": 3.94,
-      "pegRatio": 0.81
+      "ttmPe": 49.21,
+      "marketCap": 32634941040,
+      "psRatio": 3.42,
+      "pbRatio": 4.18,
+      "pegRatio": 0.86
     },
     "profitability": {
       "roe": 1.7399999999999998,
@@ -5429,57 +5429,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.63,
-      "costOfEquity": 13.020000000000001,
+      "wacc": 11.67,
+      "costOfEquity": 12.98,
       "costOfDebt": 0.73,
       "taxRate": 40,
-      "beta": 1.0176,
-      "marketCap": 30784188240
+      "beta": 1.0132,
+      "marketCap": 32634941040
     },
     "beta": {
-      "beta5y": 1.0176
+      "beta5y": 1.0132
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 227.84,
-        "high": 237.53,
-        "low": 227.55,
-        "close": 236.87,
-        "volume": 1685400
-      },
-      {
-        "date": "2025-04-25",
-        "open": 236.86,
-        "high": 239.81,
-        "low": 235.79,
-        "close": 239.53,
-        "volume": 1103300
-      },
-      {
-        "date": "2025-04-28",
-        "open": 239.36,
-        "high": 241.31,
-        "low": 237,
-        "close": 239.82,
-        "volume": 898500
-      },
-      {
-        "date": "2025-04-29",
-        "open": 239.82,
-        "high": 244.24,
-        "low": 238.25,
-        "close": 243.39,
-        "volume": 1134900
-      },
-      {
-        "date": "2025-04-30",
-        "open": 241.84,
-        "high": 245.52,
-        "low": 238.73,
-        "close": 245,
-        "volume": 1434100
-      },
       {
         "date": "2025-05-01",
         "open": 247.05,
@@ -7454,7 +7414,47 @@
         "high": 119.77,
         "low": 114.36,
         "close": 119.76,
-        "volume": 5527600
+        "volume": 5528900
+      },
+      {
+        "date": "2026-04-27",
+        "open": 117.66,
+        "high": 120.69,
+        "low": 117.03,
+        "close": 117.83,
+        "volume": 4307000
+      },
+      {
+        "date": "2026-04-28",
+        "open": 120.31,
+        "high": 123.37,
+        "low": 119.74,
+        "close": 121.18,
+        "volume": 3716100
+      },
+      {
+        "date": "2026-04-29",
+        "open": 120,
+        "high": 122.5,
+        "low": 117.97,
+        "close": 122.43,
+        "volume": 3254200
+      },
+      {
+        "date": "2026-04-30",
+        "open": 120.31,
+        "high": 122.57,
+        "low": 117.68,
+        "close": 122.4,
+        "volume": 5604300
+      },
+      {
+        "date": "2026-05-01",
+        "open": 129.09,
+        "high": 131,
+        "low": 121.24,
+        "close": 126.96,
+        "volume": 6018300
       }
     ],
     "news": [
@@ -7554,21 +7554,10 @@
         "yearBorn": 1941
       },
       {
-        "name": "Mr. Justin Allen Furby",
-        "title": "Vice President of Investor Relations"
-      },
-      {
         "name": "Mr. Mark S. Garfield",
         "title": "Chief Accounting Officer",
         "age": 54,
         "yearBorn": 1971
-      },
-      {
-        "name": "Mr. Richard Harry Sauer J.D.",
-        "title": "Chief Legal Officer, Head of Corporate Affairs & Corporate Secretary",
-        "age": 61,
-        "yearBorn": 1964,
-        "totalPay": 764302
       },
       {
         "name": "Mr. Robert Enslin",
@@ -7583,73 +7572,55 @@
         "age": 54,
         "yearBorn": 1971,
         "totalPay": 2079456
-      },
-      {
-        "name": "Ms. Ashley D. Goldsmith",
-        "title": "Executive VP & Chief People Officer",
-        "age": 54,
-        "yearBorn": 1971
-      },
-      {
-        "name": "Ms. Emma Chalwin",
-        "title": "Chief Marketing Officer",
-        "age": 50,
-        "yearBorn": 1975
-      },
-      {
-        "name": "Ms. Rani Johnson",
-        "title": "Chief Information Officer",
-        "age": 49,
-        "yearBorn": 1976
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 46.42,
-        "industryAvg": 24.88
+        "value": 49.21,
+        "industryAvg": 25.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.22,
-        "industryAvg": 4.39
+        "value": 3.42,
+        "industryAvg": 4.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.94,
-        "industryAvg": 4.33
+        "value": 4.18,
+        "industryAvg": 4.38
       },
       {
         "metric": "ROE",
         "value": 1.7399999999999998,
-        "industryAvg": 6.08
+        "industryAvg": 6.15
       },
       {
         "metric": "ROA",
         "value": 0.8099999999999999,
-        "industryAvg": 3.3000000000000003
+        "industryAvg": 3.35
       },
       {
         "metric": "Gross Margin",
         "value": 75.87,
-        "industryAvg": 63.27
+        "industryAvg": 63.23
       },
       {
         "metric": "EBITDA Margin",
         "value": 15.36,
-        "industryAvg": 14.899999999999999
+        "industryAvg": 15.1
       },
       {
         "metric": "Net Margin",
         "value": 5.7299999999999995,
-        "industryAvg": 7.779999999999999
+        "industryAvg": 7.84
       }
     ],
     "dcf": {
-      "fairValue": 65.51,
-      "currentPrice": 119.76,
-      "upside": -45.3,
-      "wacc": 11.63,
+      "fairValue": 65.19,
+      "currentPrice": 126.96,
+      "upside": -48.65,
+      "wacc": 11.67,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

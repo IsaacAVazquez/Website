@@ -1,0 +1,52 @@
+[
+  {
+    "symbol": "PLTR",
+    "name": "Aki  Jain",
+    "title": "President of Palantir USG",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Kevin  Kawasaki",
+    "title": "Head of Business Development",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Mr. David B. MacNaughton",
+    "title": "President of Palantir Canada",
+    "age": 75,
+    "born": 1950,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Mr. Joseph Todd Lonsdale",
+    "title": "Co-Founder",
+    "age": 42,
+    "born": 1983,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Ms. Ana Drmanovic Soro",
+    "title": "Office of the CFO",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

@@ -1,0 +1,138 @@
+{
+  "by_segment": [
+    {
+      "symbol": "QCOM",
+      "report_date": "2020-06-28",
+      "Equipment and Services": 3794000000.0,
+      "Licensing": 1099000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2020-09-27",
+      "Equipment and Services": 4920000000.0,
+      "Licensing": 3425000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2020-12-27",
+      "Equipment and Services": 6442000000.0,
+      "Licensing": 1793000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2021-03-28",
+      "Equipment and Services": 6239000000.0,
+      "Licensing": 1696000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2021-06-27",
+      "Equipment and Services": 6428000000.0,
+      "Licensing": 1632000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2021-09-26",
+      "Equipment and Services": 7632000000.0,
+      "Licensing": 1704000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2021-12-26",
+      "Equipment and Services": 8682000000.0,
+      "Licensing": 2023000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2022-03-27",
+      "Equipment and Services": 9417000000.0,
+      "Licensing": 1747000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2022-06-26",
+      "Equipment and Services": 9266000000.0,
+      "Licensing": 1670000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2022-09-25",
+      "Equipment and Services": 9807000000.0,
+      "Licensing": 1589000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2022-12-25",
+      "Equipment and Services": 7784000000.0,
+      "Licensing": 1679000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-03-31",
+      "Equipment and Services": 7846000000.0,
+      "Licensing": 1429000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-06-30",
+      "Equipment and Services": 7108000000.0,
+      "Licensing": 1343000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-09-30",
+      "Equipment and Services": 7290000000.0,
+      "Licensing": 1341000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-12-31",
+      "Equipment and Services": 8316000000.0,
+      "Licensing": 1619000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-03-31",
+      "Equipment and Services": 7950000000.0,
+      "Licensing": 1439000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-06-30",
+      "Equipment and Services": 7993000000.0,
+      "Licensing": 1400000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-09-30",
+      "Equipment and Services": 8532000000.0,
+      "Licensing": 1712000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-12-31",
+      "Equipment and Services": 9942000000.0,
+      "Licensing": 1727000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-03-31",
+      "Equipment and Services": 9359000000.0,
+      "Licensing": 1620000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-06-30",
+      "Equipment and Services": 8893000000.0,
+      "Licensing": 1472000000.0
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-09-30",
+      "Equipment and Services": 9674000000.0,
+      "Licensing": 1596000000.0
+    }
+  ],
+  "by_geography": [],
+  "by_product": []
+}

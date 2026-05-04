@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.33,
-      "ttmPe": 298.18,
-      "marketCap": 38771617200,
-      "psRatio": 6.47,
-      "pbRatio": 5.05,
+      "ttmPe": 312.21,
+      "marketCap": 40524511719,
+      "psRatio": 6.76,
+      "pbRatio": 5.28,
       "pegRatio": 14.42
     },
     "profitability": {
@@ -5524,57 +5524,17 @@
       ]
     },
     "wacc": {
-      "wacc": 19.02,
-      "costOfEquity": 20.46,
+      "wacc": 19.35,
+      "costOfEquity": 20.75,
       "costOfDebt": 0.58,
       "taxRate": 16,
-      "beta": 1.8865,
-      "marketCap": 38771617200
+      "beta": 1.9288,
+      "marketCap": 40524511719
     },
     "beta": {
-      "beta5y": 1.8865
+      "beta5y": 1.9288
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 38.56,
-        "high": 40.05,
-        "low": 38.14,
-        "close": 39.96,
-        "volume": 13190000
-      },
-      {
-        "date": "2025-04-25",
-        "open": 39.38,
-        "high": 40.23,
-        "low": 38.76,
-        "close": 39.63,
-        "volume": 7558400
-      },
-      {
-        "date": "2025-04-28",
-        "open": 39.43,
-        "high": 40.33,
-        "low": 38.69,
-        "close": 40.04,
-        "volume": 6089100
-      },
-      {
-        "date": "2025-04-29",
-        "open": 38.91,
-        "high": 39.46,
-        "low": 38.3,
-        "close": 38.86,
-        "volume": 7914300
-      },
-      {
-        "date": "2025-04-30",
-        "open": 37.94,
-        "high": 39.83,
-        "low": 37.47,
-        "close": 39.7,
-        "volume": 7283600
-      },
       {
         "date": "2025-05-01",
         "open": 40.23,
@@ -7549,7 +7509,47 @@
         "high": 100.3,
         "low": 95.95,
         "close": 98.4,
-        "volume": 13366900
+        "volume": 13371100
+      },
+      {
+        "date": "2026-04-27",
+        "open": 98.13,
+        "high": 99.62,
+        "low": 96.39,
+        "close": 98.04,
+        "volume": 9898500
+      },
+      {
+        "date": "2026-04-28",
+        "open": 95.01,
+        "high": 96.78,
+        "low": 92.44,
+        "close": 93.3,
+        "volume": 11512600
+      },
+      {
+        "date": "2026-04-29",
+        "open": 99.56,
+        "high": 101.26,
+        "low": 97.34,
+        "close": 98.86,
+        "volume": 13018200
+      },
+      {
+        "date": "2026-04-30",
+        "open": 100.22,
+        "high": 101.69,
+        "low": 98.54,
+        "close": 100.81,
+        "volume": 9532700
+      },
+      {
+        "date": "2026-05-01",
+        "open": 100.89,
+        "high": 103.32,
+        "low": 99.7,
+        "close": 103.03,
+        "volume": 9585600
       }
     ],
     "news": [
@@ -7578,19 +7578,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
-        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
         "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
+        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
         "type": "STORY"
       },
       {
@@ -7693,50 +7693,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 298.18,
-        "industryAvg": 40.22
+        "value": 312.21,
+        "industryAvg": 38.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.47,
-        "industryAvg": 14.28
+        "value": 6.76,
+        "industryAvg": 14.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.05,
-        "industryAvg": 11.89
+        "value": 5.28,
+        "industryAvg": 11.78
       },
       {
         "metric": "ROE",
         "value": 2.33,
-        "industryAvg": 29.98
+        "industryAvg": 30.509999999999998
       },
       {
         "metric": "ROA",
         "value": 1.4200000000000002,
-        "industryAvg": 18.41
+        "industryAvg": 18.740000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 36.01,
-        "industryAvg": 57.14
+        "industryAvg": 57.15
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.360000000000003,
-        "industryAvg": 52.59
+        "industryAvg": 52.629999999999995
       },
       {
         "metric": "Net Margin",
         "value": 11.88,
-        "industryAvg": 33.29
+        "industryAvg": 33.900000000000006
       }
     ],
     "dcf": {
-      "fairValue": 1.15,
-      "currentPrice": 98.4,
-      "upside": -98.83,
-      "wacc": 19.02,
+      "fairValue": 1.13,
+      "currentPrice": 103.03,
+      "upside": -98.91,
+      "wacc": 19.35,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1490000000.0,
+      "beginning_stockholders_equity": 20670000000.0,
+      "ending_stockholders_equity": 21581000000.0,
+      "avg_equity": 21125500000.0,
+      "roe": 0.0705
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2767000000.0,
+      "beginning_stockholders_equity": 21581000000.0,
+      "ending_stockholders_equity": 23058000000.0,
+      "avg_equity": 22319500000.0,
+      "roe": 0.124
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2326000000.0,
+      "beginning_stockholders_equity": 23058000000.0,
+      "ending_stockholders_equity": 24469000000.0,
+      "avg_equity": 23763500000.0,
+      "roe": 0.0979
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2129000000.0,
+      "beginning_stockholders_equity": 24469000000.0,
+      "ending_stockholders_equity": 24670000000.0,
+      "avg_equity": 24569500000.0,
+      "roe": 0.0867
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2920000000.0,
+      "beginning_stockholders_equity": 24670000000.0,
+      "ending_stockholders_equity": 26274000000.0,
+      "avg_equity": 25472000000.0,
+      "roe": 0.1146
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3180000000.0,
+      "beginning_stockholders_equity": 26274000000.0,
+      "ending_stockholders_equity": 26880000000.0,
+      "avg_equity": 26577000000.0,
+      "roe": 0.1197
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2812000000.0,
+      "beginning_stockholders_equity": 26880000000.0,
+      "ending_stockholders_equity": 27728000000.0,
+      "avg_equity": 27304000000.0,
+      "roe": 0.103
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2666000000.0,
+      "beginning_stockholders_equity": 27728000000.0,
+      "ending_stockholders_equity": 27209000000.0,
+      "avg_equity": 27468500000.0,
+      "roe": 0.0971
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": -3117000000.0,
+      "beginning_stockholders_equity": 27209000000.0,
+      "ending_stockholders_equity": 21206000000.0,
+      "avg_equity": 24207500000.0,
+      "roe": -0.1288
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 3004000000.0,
+      "beginning_stockholders_equity": 21206000000.0,
+      "ending_stockholders_equity": 23073000000.0,
+      "avg_equity": 22139500000.0,
+      "roe": 0.1357
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 7370000000.0,
+      "beginning_stockholders_equity": 23073000000.0,
+      "ending_stockholders_equity": 27278000000.0,
+      "avg_equity": 25175500000.0,
+      "roe": 0.2927
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1490000000.0,
+      "beginning_total_assets": 49002000000.0,
+      "ending_total_assets": 51040000000.0,
+      "avg_assets": 50021000000.0,
+      "roa": 0.0298
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2767000000.0,
+      "beginning_total_assets": 51040000000.0,
+      "ending_total_assets": 52135000000.0,
+      "avg_assets": 51587500000.0,
+      "roa": 0.0536
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2326000000.0,
+      "beginning_total_assets": 52135000000.0,
+      "ending_total_assets": 53167000000.0,
+      "avg_assets": 52651000000.0,
+      "roa": 0.0442
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2129000000.0,
+      "beginning_total_assets": 53167000000.0,
+      "ending_total_assets": 52741000000.0,
+      "avg_assets": 52954000000.0,
+      "roa": 0.0402
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2920000000.0,
+      "beginning_total_assets": 52741000000.0,
+      "ending_total_assets": 55154000000.0,
+      "avg_assets": 53947500000.0,
+      "roa": 0.0541
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3180000000.0,
+      "beginning_total_assets": 55154000000.0,
+      "ending_total_assets": 55575000000.0,
+      "avg_assets": 55364500000.0,
+      "roa": 0.0574
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2812000000.0,
+      "beginning_total_assets": 55575000000.0,
+      "ending_total_assets": 55372000000.0,
+      "avg_assets": 55473500000.0,
+      "roa": 0.0507
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2666000000.0,
+      "beginning_total_assets": 55372000000.0,
+      "ending_total_assets": 54862000000.0,
+      "avg_assets": 55117000000.0,
+      "roa": 0.0484
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": -3117000000.0,
+      "beginning_total_assets": 54862000000.0,
+      "ending_total_assets": 50143000000.0,
+      "avg_assets": 52502500000.0,
+      "roa": -0.0594
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 3004000000.0,
+      "beginning_total_assets": 50143000000.0,
+      "ending_total_assets": 53034000000.0,
+      "avg_assets": 51588500000.0,
+      "roa": 0.0582
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 7370000000.0,
+      "beginning_total_assets": 53034000000.0,
+      "ending_total_assets": 57136000000.0,
+      "avg_assets": 55085000000.0,
+      "roa": 0.1338
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-09-30",
+      "ebit": 1593000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1258470000.0,
+      "beginning_invested_capital": 36114000000.0,
+      "ending_invested_capital": 36979000000.0,
+      "avg_invested_capital": 36546500000.0,
+      "roic": 0.0344
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-12-31",
+      "ebit": 3140000000.0,
+      "tax_rate_for_calcs": 0.05,
+      "nopat": 2983000000.0,
+      "beginning_invested_capital": 36979000000.0,
+      "ending_invested_capital": 38538000000.0,
+      "avg_invested_capital": 37758500000.0,
+      "roic": 0.079
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-03-31",
+      "ebit": 2670000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 2429700000.0,
+      "beginning_invested_capital": 38538000000.0,
+      "ending_invested_capital": 39926000000.0,
+      "avg_invested_capital": 39232000000.0,
+      "roic": 0.0619
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-06-30",
+      "ebit": 2447000000.0,
+      "tax_rate_for_calcs": 0.08,
+      "nopat": 2251240000.0,
+      "beginning_invested_capital": 39926000000.0,
+      "ending_invested_capital": 39224000000.0,
+      "avg_invested_capital": 39575000000.0,
+      "roic": 0.0569
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-09-30",
+      "ebit": 2776000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2193040000.0,
+      "beginning_invested_capital": 39224000000.0,
+      "ending_invested_capital": 40908000000.0,
+      "avg_invested_capital": 40066000000.0,
+      "roic": 0.0547
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-12-31",
+      "ebit": 3798000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 3304260000.0,
+      "beginning_invested_capital": 40908000000.0,
+      "ending_invested_capital": 41457000000.0,
+      "avg_invested_capital": 41182500000.0,
+      "roic": 0.0802
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-03-31",
+      "ebit": 3268000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 2973880000.0,
+      "beginning_invested_capital": 41457000000.0,
+      "ending_invested_capital": 42351000000.0,
+      "avg_invested_capital": 41904000000.0,
+      "roic": 0.071
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-06-30",
+      "ebit": 3120000000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": 2808000000.0,
+      "beginning_invested_capital": 42351000000.0,
+      "ending_invested_capital": 41997000000.0,
+      "avg_invested_capital": 42174000000.0,
+      "roic": 0.0666
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-09-30",
+      "ebit": 3142000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2482180000.0,
+      "beginning_invested_capital": 41997000000.0,
+      "ending_invested_capital": 36017000000.0,
+      "avg_invested_capital": 39007000000.0,
+      "roic": 0.0636
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-12-31",
+      "ebit": 3716000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 3158600000.0,
+      "beginning_invested_capital": 36017000000.0,
+      "ending_invested_capital": 37890000000.0,
+      "avg_invested_capital": 36953500000.0,
+      "roic": 0.0855
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2026-03-31",
+      "ebit": 2403000000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 1441800000.0,
+      "beginning_invested_capital": 37890000000.0,
+      "ending_invested_capital": 42548000000.0,
+      "avg_invested_capital": 40219000000.0,
+      "roic": 0.0358
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0705,
+      "roa": 0.0298,
+      "equity_multiplier": 2.37
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.124,
+      "roa": 0.0536,
+      "equity_multiplier": 2.31
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0979,
+      "roa": 0.0442,
+      "equity_multiplier": 2.21
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0867,
+      "roa": 0.0402,
+      "equity_multiplier": 2.16
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.1146,
+      "roa": 0.0541,
+      "equity_multiplier": 2.12
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.1197,
+      "roa": 0.0574,
+      "equity_multiplier": 2.09
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.103,
+      "roa": 0.0507,
+      "equity_multiplier": 2.03
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0971,
+      "roa": 0.0484,
+      "equity_multiplier": 2.01
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": -0.1288,
+      "roa": -0.0594,
+      "equity_multiplier": 2.17
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.1357,
+      "roa": 0.0582,
+      "equity_multiplier": 2.33
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.2927,
+      "roa": 0.1338,
+      "equity_multiplier": 2.19
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0298,
+      "net_margin": 0.1726,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0536,
+      "net_margin": 0.2785,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0442,
+      "net_margin": 0.2477,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0402,
+      "net_margin": 0.2267,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0541,
+      "net_margin": 0.285,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0574,
+      "net_margin": 0.2725,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0507,
+      "net_margin": 0.2561,
+      "asset_turnover": 0.2
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0484,
+      "net_margin": 0.2572,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": -0.0594,
+      "net_margin": -0.2766,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0582,
+      "net_margin": 0.2452,
+      "asset_turnover": 0.24
+    },
+    {
+      "symbol": "QCOM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.1338,
+      "net_margin": 0.6953,
+      "asset_turnover": 0.19
+    }
+  ]
+}

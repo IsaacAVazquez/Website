@@ -1,0 +1,182 @@
+{
+  "by_segment": [],
+  "by_geography": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2020-06-27",
+      "Americas": 277120000.0,
+      "Asia": 198508000.0,
+      "EMEA": 116540000.0,
+      "Japan": 46250000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2020-09-26",
+      "Americas": 280013000.0,
+      "Asia": 237348000.0,
+      "EMEA": 107913000.0,
+      "Japan": 41333000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2020-12-31",
+      "Americas": 315457000.0,
+      "Asia": 264753000.0,
+      "EMEA": 129631000.0,
+      "Japan": 50068000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2021-04-03",
+      "Americas": 336000000.0,
+      "Asia": 223289000.0,
+      "EMEA": 130233000.0,
+      "Japan": 46506000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2021-07-03",
+      "Americas": 323328000.0,
+      "Asia": 233980000.0,
+      "EMEA": 124502000.0,
+      "Japan": 46475000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2021-10-02",
+      "Americas": 342950000.0,
+      "Asia": 234597000.0,
+      "EMEA": 129606000.0,
+      "Japan": 43742000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2021-12-31",
+      "Americas": 332843000.0,
+      "Asia": 253066000.0,
+      "EMEA": 139049000.0,
+      "Japan": 48078000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-04-02",
+      "Americas": 425340000.0,
+      "Asia": 298640000.0,
+      "EMEA": 130634000.0,
+      "Japan": 47152000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-07-02",
+      "Americas": 381017000.0,
+      "Asia": 265136000.0,
+      "EMEA": 158043000.0,
+      "Japan": 53325000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-10-01",
+      "Americas": 407387000.0,
+      "Asia": 304575000.0,
+      "EMEA": 142983000.0,
+      "Japan": 47609000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "Americas": 417260000.0,
+      "Asia": 282691000.0,
+      "EMEA": 150690000.0,
+      "Japan": 49236000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-03-31",
+      "Americas": 450464000.0,
+      "Asia": 361518000.0,
+      "EMEA": 154270000.0,
+      "Japan": 55438000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-06-30",
+      "Americas": 401561000.0,
+      "Asia": 351010000.0,
+      "EMEA": 166804000.0,
+      "Japan": 57204000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30",
+      "Americas": 437347000.0,
+      "Asia": 369853000.0,
+      "EMEA": 158194000.0,
+      "Japan": 57700000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "Americas": 470416000.0,
+      "Asia": 363566000.0,
+      "EMEA": 175810000.0,
+      "Japan": 58831000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31",
+      "Americas": 462870000.0,
+      "Asia": 325760000.0,
+      "EMEA": 169056000.0,
+      "Japan": 51417000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30",
+      "Americas": 518829000.0,
+      "Asia": 325737000.0,
+      "EMEA": 152521000.0,
+      "Japan": 63594000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30",
+      "Americas": 605402000.0,
+      "Asia": 367836000.0,
+      "EMEA": 174606000.0,
+      "Japan": 67655000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "Americas": 665699000.0,
+      "Asia": 409667000.0,
+      "EMEA": 203117000.0,
+      "Japan": 77534000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31",
+      "Americas": 598579000.0,
+      "Asia": 379893000.0,
+      "EMEA": 195743000.0,
+      "Japan": 68151000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30",
+      "Americas": 624000000.0,
+      "Asia": 357000000.0,
+      "EMEA": 204000000.0,
+      "Japan": 89000000.0
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30",
+      "Americas": 575121000.0,
+      "Asia": 487736000.0,
+      "EMEA": 189551000.0,
+      "Japan": 86430000.0
+    }
+  ],
+  "by_product": []
+}

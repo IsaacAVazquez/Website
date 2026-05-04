@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "GS",
+    "name": "Mr. David M. Solomon",
+    "title": "Chairman & CEO",
+    "age": 63,
+    "born": 1962,
+    "pay": 13603719,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GS",
+    "name": "Mr. Denis P. Coleman III",
+    "title": "Chief Financial Officer",
+    "age": 50,
+    "born": 1975,
+    "pay": 11829259,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GS",
+    "name": "Mr. Francois-Xavier  De Mallmann",
+    "title": "Chair of Goldman Sachs EMEA & Chair of Investment Banking.",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GS",
+    "name": "Mr. J. D. Gardner",
+    "title": "Director",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GS",
+    "name": "Mr. John E. Waldron",
+    "title": "President, COO & Director",
+    "age": 55,
+    "born": 1970,
+    "pay": 16957886,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GS",
+    "name": "Mr. John F. W. Rogers",
+    "title": "Executive VP, Lead Director & Secretary to the Board of Directors",
+    "age": 68,
+    "born": 1957,
+    "pay": 8431660,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GS",
+    "name": "Mr. Marco  Argenti",
+    "title": "Partner & Chief Information Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GS",
+    "name": "Mr. Michael J. Richman J.D.",
+    "title": "Chief Compliance Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GS",
+    "name": "Ms. Jacqueline Dupree Arthur",
+    "title": "Global Head of Human Capital Management & Corporate and Workplace Solutions",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "GS",
+    "name": "Ms. Sheara J. Fredman",
+    "title": "Controller & Chief Accounting Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

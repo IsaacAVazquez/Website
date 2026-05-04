@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "BAC",
+      "report_date": "2022-06-30",
+      "gross_profit": null,
+      "total_revenue": 22688000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 24532000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": 26258000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-06-30",
+      "gross_profit": null,
+      "total_revenue": 25197000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-09-30",
+      "gross_profit": null,
+      "total_revenue": 25167000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 21959000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-03-31",
+      "gross_profit": null,
+      "total_revenue": 25818000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-06-30",
+      "gross_profit": null,
+      "total_revenue": 25377000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-09-30",
+      "gross_profit": null,
+      "total_revenue": 25345000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 25347000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-03-31",
+      "gross_profit": null,
+      "total_revenue": 27366000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-06-30",
+      "gross_profit": null,
+      "total_revenue": 26463000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-09-30",
+      "gross_profit": null,
+      "total_revenue": 28088000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 31180000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "BAC",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": 91244000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2020-12-31",
+      "gross_profit": null,
+      "total_revenue": 85528000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2021-12-31",
+      "gross_profit": null,
+      "total_revenue": 89113000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 94950000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 102769000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 105856000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 113097000000.0,
+      "gross_margin": null
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "BAC",
+      "report_date": "2022-06-30",
+      "operating_income": null,
+      "total_revenue": 22688000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 24532000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": 26258000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-06-30",
+      "operating_income": null,
+      "total_revenue": 25197000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-09-30",
+      "operating_income": null,
+      "total_revenue": 25167000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 21959000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-03-31",
+      "operating_income": null,
+      "total_revenue": 25818000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-06-30",
+      "operating_income": null,
+      "total_revenue": 25377000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-09-30",
+      "operating_income": null,
+      "total_revenue": 25345000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 25347000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-03-31",
+      "operating_income": null,
+      "total_revenue": 27366000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-06-30",
+      "operating_income": null,
+      "total_revenue": 26463000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-09-30",
+      "operating_income": null,
+      "total_revenue": 28088000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 31180000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "BAC",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": 91244000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2020-12-31",
+      "operating_income": null,
+      "total_revenue": 85528000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2021-12-31",
+      "operating_income": null,
+      "total_revenue": 89113000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 94950000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 102769000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 105856000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 113097000000.0,
+      "operating_margin": null
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "BAC",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 5932000000.0,
+      "total_revenue": 22688000000.0,
+      "net_margin": 0.2615
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 6904000000.0,
+      "total_revenue": 24532000000.0,
+      "net_margin": 0.2814
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 7656000000.0,
+      "total_revenue": 26258000000.0,
+      "net_margin": 0.2916
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 7102000000.0,
+      "total_revenue": 25197000000.0,
+      "net_margin": 0.2819
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 7270000000.0,
+      "total_revenue": 25167000000.0,
+      "net_margin": 0.2889
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2838000000.0,
+      "total_revenue": 21959000000.0,
+      "net_margin": 0.1292
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 6142000000.0,
+      "total_revenue": 25818000000.0,
+      "net_margin": 0.2379
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 6582000000.0,
+      "total_revenue": 25377000000.0,
+      "net_margin": 0.2594
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 6380000000.0,
+      "total_revenue": 25345000000.0,
+      "net_margin": 0.2517
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 6399000000.0,
+      "total_revenue": 25347000000.0,
+      "net_margin": 0.2525
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 6990000000.0,
+      "total_revenue": 27366000000.0,
+      "net_margin": 0.2554
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6825000000.0,
+      "total_revenue": 26463000000.0,
+      "net_margin": 0.2579
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 8040000000.0,
+      "total_revenue": 28088000000.0,
+      "net_margin": 0.2862
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 7200000000.0,
+      "total_revenue": 31180000000.0,
+      "net_margin": 0.2309
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "BAC",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 25998000000.0,
+      "total_revenue": 91244000000.0,
+      "net_margin": 0.2849
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 16473000000.0,
+      "total_revenue": 85528000000.0,
+      "net_margin": 0.1926
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 30557000000.0,
+      "total_revenue": 89113000000.0,
+      "net_margin": 0.3429
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 26015000000.0,
+      "total_revenue": 94950000000.0,
+      "net_margin": 0.274
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 24656000000.0,
+      "total_revenue": 102769000000.0,
+      "net_margin": 0.2399
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 25344000000.0,
+      "total_revenue": 105856000000.0,
+      "net_margin": 0.2394
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 29055000000.0,
+      "total_revenue": 113097000000.0,
+      "net_margin": 0.2569
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "BAC",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 22688000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 24532000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": 26258000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-06-30",
+      "ebitda": null,
+      "total_revenue": 25197000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-09-30",
+      "ebitda": null,
+      "total_revenue": 25167000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 21959000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-03-31",
+      "ebitda": null,
+      "total_revenue": 25818000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-06-30",
+      "ebitda": null,
+      "total_revenue": 25377000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-09-30",
+      "ebitda": null,
+      "total_revenue": 25345000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 25347000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-03-31",
+      "ebitda": null,
+      "total_revenue": 27366000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-06-30",
+      "ebitda": null,
+      "total_revenue": 26463000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-09-30",
+      "ebitda": null,
+      "total_revenue": 28088000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 31180000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "BAC",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": 91244000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2020-12-31",
+      "ebitda": null,
+      "total_revenue": 85528000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2021-12-31",
+      "ebitda": null,
+      "total_revenue": 89113000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 94950000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 102769000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 105856000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 113097000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "BAC",
+      "report_date": "2022-06-30",
+      "free_cash_flow": -5049000000.0,
+      "total_revenue": 22688000000.0,
+      "fcf_margin": -0.2225
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 24532000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 26258000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 11786000000.0,
+      "total_revenue": 25197000000.0,
+      "fcf_margin": 0.4678
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 11772000000.0,
+      "total_revenue": 25167000000.0,
+      "fcf_margin": 0.4678
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 32724000000.0,
+      "total_revenue": 21959000000.0,
+      "fcf_margin": 1.4902
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-03-31",
+      "free_cash_flow": -15539000000.0,
+      "total_revenue": 25818000000.0,
+      "fcf_margin": -0.6019
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 18096000000.0,
+      "total_revenue": 25377000000.0,
+      "fcf_margin": 0.7131
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-09-30",
+      "free_cash_flow": -37276000000.0,
+      "total_revenue": 25345000000.0,
+      "fcf_margin": -1.4707
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 25914000000.0,
+      "total_revenue": 25347000000.0,
+      "fcf_margin": 1.0224
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-03-31",
+      "free_cash_flow": -2184000000.0,
+      "total_revenue": 27366000000.0,
+      "fcf_margin": -0.0798
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-06-30",
+      "free_cash_flow": -9132000000.0,
+      "total_revenue": 26463000000.0,
+      "fcf_margin": -0.3451
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 46874000000.0,
+      "total_revenue": 28088000000.0,
+      "fcf_margin": 1.6688
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "free_cash_flow": -22945000000.0,
+      "total_revenue": 31180000000.0,
+      "fcf_margin": -0.7359
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2026-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "BAC",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 91244000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 37993000000.0,
+      "total_revenue": 85528000000.0,
+      "fcf_margin": 0.4442
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2021-12-31",
+      "free_cash_flow": -7193000000.0,
+      "total_revenue": 89113000000.0,
+      "fcf_margin": -0.0807
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2022-12-31",
+      "free_cash_flow": -6327000000.0,
+      "total_revenue": 94950000000.0,
+      "fcf_margin": -0.0666
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 44982000000.0,
+      "total_revenue": 102769000000.0,
+      "fcf_margin": 0.4377
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -8805000000.0,
+      "total_revenue": 105856000000.0,
+      "fcf_margin": -0.0832
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 12613000000.0,
+      "total_revenue": 113097000000.0,
+      "fcf_margin": 0.1115
+    }
+  ]
+}

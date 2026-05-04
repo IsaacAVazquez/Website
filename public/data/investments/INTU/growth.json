@@ -1,0 +1,1522 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30T00:00:00.000",
+      "revenue": 5632000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "revenue": 2414000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "revenue": 2712000000.0,
+      "prev_year_revenue": 2414000000.0,
+      "yoy_growth": 0.1234
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31T00:00:00.000",
+      "revenue": 2978000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 3386000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30T00:00:00.000",
+      "revenue": 6737000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "revenue": 3184000000.0,
+      "prev_year_revenue": 2712000000.0,
+      "yoy_growth": 0.174
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31T00:00:00.000",
+      "revenue": 3283000000.0,
+      "prev_year_revenue": 2978000000.0,
+      "yoy_growth": 0.1024
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 3963000000.0,
+      "prev_year_revenue": 3386000000.0,
+      "yoy_growth": 0.1704
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30T00:00:00.000",
+      "revenue": 7754000000.0,
+      "prev_year_revenue": 6737000000.0,
+      "yoy_growth": 0.151
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "revenue": 3831000000.0,
+      "prev_year_revenue": 3184000000.0,
+      "yoy_growth": 0.2032
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31T00:00:00.000",
+      "revenue": 3885000000.0,
+      "prev_year_revenue": 3283000000.0,
+      "yoy_growth": 0.1834
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 4651000000.0,
+      "prev_year_revenue": 3963000000.0,
+      "yoy_growth": 0.1736
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31T00:00:00.000",
+      "revenue": 9633000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "revenue": 12726000000.0,
+      "prev_year_revenue": 9633000000.0,
+      "yoy_growth": 0.3211
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "revenue": 14368000000.0,
+      "prev_year_revenue": 12726000000.0,
+      "yoy_growth": 0.129
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "revenue": 16285000000.0,
+      "prev_year_revenue": 14368000000.0,
+      "yoy_growth": 0.1334
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "revenue": 18831000000.0,
+      "prev_year_revenue": 16285000000.0,
+      "yoy_growth": 0.1563
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30T00:00:00.000",
+      "operating_income": 2395000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "operating_income": -75000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "operating_income": 27000000.0,
+      "prev_year_operating_income": -75000000.0,
+      "yoy_growth": 1.36
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31T00:00:00.000",
+      "operating_income": 293000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 369000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30T00:00:00.000",
+      "operating_income": 3105000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "operating_income": 96000000.0,
+      "prev_year_operating_income": 27000000.0,
+      "yoy_growth": 2.5556
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31T00:00:00.000",
+      "operating_income": 280000000.0,
+      "prev_year_operating_income": 293000000.0,
+      "yoy_growth": -0.0444
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 597000000.0,
+      "prev_year_operating_income": 369000000.0,
+      "yoy_growth": 0.6179
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30T00:00:00.000",
+      "operating_income": 3721000000.0,
+      "prev_year_operating_income": 3105000000.0,
+      "yoy_growth": 0.1984
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "operating_income": 340000000.0,
+      "prev_year_operating_income": 96000000.0,
+      "yoy_growth": 2.5417
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31T00:00:00.000",
+      "operating_income": 534000000.0,
+      "prev_year_operating_income": 280000000.0,
+      "yoy_growth": 0.9071
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 855000000.0,
+      "prev_year_operating_income": 597000000.0,
+      "yoy_growth": 0.4322
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31T00:00:00.000",
+      "operating_income": 2528000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "operating_income": 2559000000.0,
+      "prev_year_operating_income": 2528000000.0,
+      "yoy_growth": 0.0123
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "operating_income": 3141000000.0,
+      "prev_year_operating_income": 2559000000.0,
+      "yoy_growth": 0.2274
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "operating_income": 3853000000.0,
+      "prev_year_operating_income": 3141000000.0,
+      "yoy_growth": 0.2267
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "operating_income": 4938000000.0,
+      "prev_year_operating_income": 3853000000.0,
+      "yoy_growth": 0.2816
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "ebitda": 54000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "ebitda": 271000000.0,
+      "prev_year_ebitda": 54000000.0,
+      "yoy_growth": 4.0185
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31T00:00:00.000",
+      "ebitda": 520000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 603000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30T00:00:00.000",
+      "ebitda": 3330000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "ebitda": 128000000.0,
+      "prev_year_ebitda": 271000000.0,
+      "yoy_growth": -0.5277
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31T00:00:00.000",
+      "ebitda": 474000000.0,
+      "prev_year_ebitda": 520000000.0,
+      "yoy_growth": -0.0885
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 830000000.0,
+      "prev_year_ebitda": 603000000.0,
+      "yoy_growth": 0.3765
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30T00:00:00.000",
+      "ebitda": 3953000000.0,
+      "prev_year_ebitda": 3330000000.0,
+      "yoy_growth": 0.1871
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "ebitda": 633000000.0,
+      "prev_year_ebitda": 128000000.0,
+      "yoy_growth": 3.9453
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31T00:00:00.000",
+      "ebitda": 828000000.0,
+      "prev_year_ebitda": 474000000.0,
+      "yoy_growth": 0.7468
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 1136000000.0,
+      "prev_year_ebitda": 830000000.0,
+      "yoy_growth": 0.3687
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31T00:00:00.000",
+      "ebitda": 2948000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "ebitda": 3369000000.0,
+      "prev_year_ebitda": 2948000000.0,
+      "yoy_growth": 0.1428
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "ebitda": 4043000000.0,
+      "prev_year_ebitda": 3369000000.0,
+      "yoy_growth": 0.2001
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "ebitda": 4581000000.0,
+      "prev_year_ebitda": 4043000000.0,
+      "yoy_growth": 0.1331
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "ebitda": 5890000000.0,
+      "prev_year_ebitda": 4581000000.0,
+      "yoy_growth": 0.2857
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30T00:00:00.000",
+      "net_income_common_stockholders": 1794000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "net_income_common_stockholders": -56000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "net_income_common_stockholders": 89000000.0,
+      "prev_year_net_income_common_stockholders": -56000000.0,
+      "yoy_growth": 2.5893
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31T00:00:00.000",
+      "net_income_common_stockholders": 241000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 353000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30T00:00:00.000",
+      "net_income_common_stockholders": 2389000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "net_income_common_stockholders": -20000000.0,
+      "prev_year_net_income_common_stockholders": 89000000.0,
+      "yoy_growth": -1.2247
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31T00:00:00.000",
+      "net_income_common_stockholders": 197000000.0,
+      "prev_year_net_income_common_stockholders": 241000000.0,
+      "yoy_growth": -0.1826
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 471000000.0,
+      "prev_year_net_income_common_stockholders": 353000000.0,
+      "yoy_growth": 0.3343
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30T00:00:00.000",
+      "net_income_common_stockholders": 2820000000.0,
+      "prev_year_net_income_common_stockholders": 2389000000.0,
+      "yoy_growth": 0.1804
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "net_income_common_stockholders": 381000000.0,
+      "prev_year_net_income_common_stockholders": -20000000.0,
+      "yoy_growth": 20.05
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31T00:00:00.000",
+      "net_income_common_stockholders": 446000000.0,
+      "prev_year_net_income_common_stockholders": 197000000.0,
+      "yoy_growth": 1.264
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 693000000.0,
+      "prev_year_net_income_common_stockholders": 471000000.0,
+      "yoy_growth": 0.4713
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31T00:00:00.000",
+      "net_income_common_stockholders": 2062000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "net_income_common_stockholders": 2066000000.0,
+      "prev_year_net_income_common_stockholders": 2062000000.0,
+      "yoy_growth": 0.0019
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "net_income_common_stockholders": 2384000000.0,
+      "prev_year_net_income_common_stockholders": 2066000000.0,
+      "yoy_growth": 0.1539
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "net_income_common_stockholders": 2963000000.0,
+      "prev_year_net_income_common_stockholders": 2384000000.0,
+      "yoy_growth": 0.2429
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "net_income_common_stockholders": 3869000000.0,
+      "prev_year_net_income_common_stockholders": 2963000000.0,
+      "yoy_growth": 0.3058
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30T00:00:00.000",
+      "free_cash_flow": 3259000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "free_cash_flow": 278000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-10-31T00:00:00.000",
+      "free_cash_flow": 251000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-01-31T00:00:00.000",
+      "free_cash_flow": 229000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "free_cash_flow": 802000000.0,
+      "prev_year_free_cash_flow": 278000000.0,
+      "yoy_growth": 1.8849
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31T00:00:00.000",
+      "free_cash_flow": -181000000.0,
+      "prev_year_free_cash_flow": 251000000.0,
+      "yoy_growth": -1.7211
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 550000000.0,
+      "prev_year_free_cash_flow": 229000000.0,
+      "yoy_growth": 1.4017
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30T00:00:00.000",
+      "free_cash_flow": 3890000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "free_cash_flow": 375000000.0,
+      "prev_year_free_cash_flow": 802000000.0,
+      "yoy_growth": -0.5324
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31T00:00:00.000",
+      "free_cash_flow": 329000000.0,
+      "prev_year_free_cash_flow": -181000000.0,
+      "yoy_growth": 2.8177
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 1038000000.0,
+      "prev_year_free_cash_flow": 550000000.0,
+      "yoy_growth": 0.8873
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30T00:00:00.000",
+      "free_cash_flow": 4360000000.0,
+      "prev_year_free_cash_flow": 3890000000.0,
+      "yoy_growth": 0.1208
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "free_cash_flow": 356000000.0,
+      "prev_year_free_cash_flow": 375000000.0,
+      "yoy_growth": -0.0507
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31T00:00:00.000",
+      "free_cash_flow": 599000000.0,
+      "prev_year_free_cash_flow": 329000000.0,
+      "yoy_growth": 0.8207
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 1524000000.0,
+      "prev_year_free_cash_flow": 1038000000.0,
+      "yoy_growth": 0.4682
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31T00:00:00.000",
+      "free_cash_flow": 3125000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "free_cash_flow": 3660000000.0,
+      "prev_year_free_cash_flow": 3125000000.0,
+      "yoy_growth": 0.1712
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "free_cash_flow": 4786000000.0,
+      "prev_year_free_cash_flow": 3660000000.0,
+      "yoy_growth": 0.3077
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "free_cash_flow": 4634000000.0,
+      "prev_year_free_cash_flow": 4786000000.0,
+      "yoy_growth": -0.0318
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "free_cash_flow": 6083000000.0,
+      "prev_year_free_cash_flow": 4634000000.0,
+      "yoy_growth": 0.3127
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "INTU",
+      "report_date": "1995-04-30T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1995-10-31T00:00:00.000",
+      "eps": -0.08,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1996-01-31T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1996-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": -0.01,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1996-07-31T00:00:00.000",
+      "eps": -0.08,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1996-10-31T00:00:00.000",
+      "eps": -0.1,
+      "prev_year_eps": -0.08,
+      "yoy_growth": -0.25
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1997-01-31T00:00:00.000",
+      "eps": 0.16,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1997-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1997-07-31T00:00:00.000",
+      "eps": -0.07,
+      "prev_year_eps": -0.08,
+      "yoy_growth": 0.125
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1997-10-31T00:00:00.000",
+      "eps": -0.05,
+      "prev_year_eps": -0.1,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1998-01-31T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": 0.16,
+      "yoy_growth": -0.125
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1998-04-30T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1998-07-31T00:00:00.000",
+      "eps": -0.13,
+      "prev_year_eps": -0.07,
+      "yoy_growth": -0.8571
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1998-10-31T00:00:00.000",
+      "eps": -0.05,
+      "prev_year_eps": -0.05,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1999-01-31T00:00:00.000",
+      "eps": 0.24,
+      "prev_year_eps": 0.14,
+      "yoy_growth": 0.7143
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1999-04-30T00:00:00.000",
+      "eps": 0.19,
+      "prev_year_eps": -0.01,
+      "yoy_growth": 20.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1999-07-31T00:00:00.000",
+      "eps": 0.69,
+      "prev_year_eps": -0.13,
+      "yoy_growth": 6.3077
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "1999-10-31T00:00:00.000",
+      "eps": -0.17,
+      "prev_year_eps": -0.05,
+      "yoy_growth": -2.4
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2000-01-31T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": 0.24,
+      "yoy_growth": -0.4167
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2000-04-30T00:00:00.000",
+      "eps": 0.7,
+      "prev_year_eps": 0.19,
+      "yoy_growth": 2.6842
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2000-07-31T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.69,
+      "yoy_growth": -0.942
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2000-10-31T00:00:00.000",
+      "eps": -0.12,
+      "prev_year_eps": -0.17,
+      "yoy_growth": 0.2941
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2001-01-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.14,
+      "yoy_growth": -0.5714
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2001-04-30T00:00:00.000",
+      "eps": -0.04,
+      "prev_year_eps": 0.7,
+      "yoy_growth": -1.0571
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2001-07-31T00:00:00.000",
+      "eps": -0.15,
+      "prev_year_eps": 0.04,
+      "yoy_growth": -4.75
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2001-10-31T00:00:00.000",
+      "eps": -0.22,
+      "prev_year_eps": -0.12,
+      "yoy_growth": -0.8333
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2002-01-31T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 3.6667
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2002-04-30T00:00:00.000",
+      "eps": 0.34,
+      "prev_year_eps": -0.04,
+      "yoy_growth": 9.5
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2002-07-31T00:00:00.000",
+      "eps": -0.16,
+      "prev_year_eps": -0.15,
+      "yoy_growth": -0.0667
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2002-10-31T00:00:00.000",
+      "eps": -0.15,
+      "prev_year_eps": -0.22,
+      "yoy_growth": 0.3182
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2003-01-31T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 0.0714
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2003-04-30T00:00:00.000",
+      "eps": 0.53,
+      "prev_year_eps": 0.34,
+      "yoy_growth": 0.5588
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2003-07-31T00:00:00.000",
+      "eps": -0.06,
+      "prev_year_eps": -0.16,
+      "yoy_growth": 0.625
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2003-10-31T00:00:00.000",
+      "eps": -0.14,
+      "prev_year_eps": -0.15,
+      "yoy_growth": 0.0667
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2004-01-31T00:00:00.000",
+      "eps": 0.37,
+      "prev_year_eps": 0.3,
+      "yoy_growth": 0.2333
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2004-04-30T00:00:00.000",
+      "eps": 0.67,
+      "prev_year_eps": 0.53,
+      "yoy_growth": 0.2642
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2004-07-31T00:00:00.000",
+      "eps": -0.11,
+      "prev_year_eps": -0.06,
+      "yoy_growth": -0.8333
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2004-10-31T00:00:00.000",
+      "eps": -0.12,
+      "prev_year_eps": -0.14,
+      "yoy_growth": 0.1429
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2005-01-31T00:00:00.000",
+      "eps": 0.39,
+      "prev_year_eps": 0.37,
+      "yoy_growth": 0.0541
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2005-04-30T00:00:00.000",
+      "eps": 0.81,
+      "prev_year_eps": 0.67,
+      "yoy_growth": 0.209
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2005-07-31T00:00:00.000",
+      "eps": -0.06,
+      "prev_year_eps": -0.11,
+      "yoy_growth": 0.4545
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2005-10-31T00:00:00.000",
+      "eps": -0.15,
+      "prev_year_eps": -0.12,
+      "yoy_growth": -0.25
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2006-01-31T00:00:00.000",
+      "eps": 0.43,
+      "prev_year_eps": 0.39,
+      "yoy_growth": 0.1026
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2006-04-30T00:00:00.000",
+      "eps": 0.84,
+      "prev_year_eps": 0.81,
+      "yoy_growth": 0.037
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2006-07-31T00:00:00.000",
+      "eps": -0.06,
+      "prev_year_eps": -0.06,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2006-10-31T00:00:00.000",
+      "eps": -0.17,
+      "prev_year_eps": -0.15,
+      "yoy_growth": -0.1333
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2007-01-31T00:00:00.000",
+      "eps": 0.4,
+      "prev_year_eps": 0.43,
+      "yoy_growth": -0.0698
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2007-04-30T00:00:00.000",
+      "eps": 1.05,
+      "prev_year_eps": 0.84,
+      "yoy_growth": 0.25
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2007-07-31T00:00:00.000",
+      "eps": -0.04,
+      "prev_year_eps": -0.06,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2007-10-31T00:00:00.000",
+      "eps": -0.14,
+      "prev_year_eps": -0.17,
+      "yoy_growth": 0.1765
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2008-01-31T00:00:00.000",
+      "eps": 0.34,
+      "prev_year_eps": 0.4,
+      "yoy_growth": -0.15
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2008-04-30T00:00:00.000",
+      "eps": 1.33,
+      "prev_year_eps": 1.05,
+      "yoy_growth": 0.2667
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2008-07-31T00:00:00.000",
+      "eps": -0.19,
+      "prev_year_eps": -0.04,
+      "yoy_growth": -3.75
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2008-10-31T00:00:00.000",
+      "eps": -0.16,
+      "prev_year_eps": -0.14,
+      "yoy_growth": -0.1429
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2009-01-31T00:00:00.000",
+      "eps": 0.26,
+      "prev_year_eps": 0.34,
+      "yoy_growth": -0.2353
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2009-04-30T00:00:00.000",
+      "eps": 1.47,
+      "prev_year_eps": 1.33,
+      "yoy_growth": 0.1053
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2009-07-31T00:00:00.000",
+      "eps": -0.22,
+      "prev_year_eps": -0.19,
+      "yoy_growth": -0.1579
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2009-10-31T00:00:00.000",
+      "eps": -0.21,
+      "prev_year_eps": -0.16,
+      "yoy_growth": -0.3125
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2010-01-31T00:00:00.000",
+      "eps": 0.24,
+      "prev_year_eps": 0.26,
+      "yoy_growth": -0.0769
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2010-04-30T00:00:00.000",
+      "eps": 1.78,
+      "prev_year_eps": 1.47,
+      "yoy_growth": 0.2109
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2010-07-31T00:00:00.000",
+      "eps": -0.15,
+      "prev_year_eps": -0.22,
+      "yoy_growth": 0.3182
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2010-10-31T00:00:00.000",
+      "eps": -0.22,
+      "prev_year_eps": -0.21,
+      "yoy_growth": -0.0476
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2011-01-31T00:00:00.000",
+      "eps": 0.23,
+      "prev_year_eps": 0.24,
+      "yoy_growth": -0.0417
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2011-04-30T00:00:00.000",
+      "eps": 2.2,
+      "prev_year_eps": 1.78,
+      "yoy_growth": 0.236
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2011-07-31T00:00:00.000",
+      "eps": -0.19,
+      "prev_year_eps": -0.15,
+      "yoy_growth": -0.2667
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2011-10-31T00:00:00.000",
+      "eps": -0.21,
+      "prev_year_eps": -0.22,
+      "yoy_growth": 0.0455
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2012-01-31T00:00:00.000",
+      "eps": 0.39,
+      "prev_year_eps": 0.23,
+      "yoy_growth": 0.6957
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2012-04-30T00:00:00.000",
+      "eps": 2.42,
+      "prev_year_eps": 2.2,
+      "yoy_growth": 0.1
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2012-07-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": -0.19,
+      "yoy_growth": 1.0526
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2012-10-31T00:00:00.000",
+      "eps": -0.06,
+      "prev_year_eps": -0.21,
+      "yoy_growth": 0.7143
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2013-01-31T00:00:00.000",
+      "eps": 0.23,
+      "prev_year_eps": 0.39,
+      "yoy_growth": -0.4103
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2013-04-30T00:00:00.000",
+      "eps": 2.7,
+      "prev_year_eps": 2.42,
+      "yoy_growth": 0.1157
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2013-07-31T00:00:00.000",
+      "eps": -0.05,
+      "prev_year_eps": 0.01,
+      "yoy_growth": -6.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2013-10-31T00:00:00.000",
+      "eps": -0.2,
+      "prev_year_eps": -0.06,
+      "yoy_growth": -2.3333
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2014-01-31T00:00:00.000",
+      "eps": -0.13,
+      "prev_year_eps": 0.23,
+      "yoy_growth": -1.5652
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2014-04-30T00:00:00.000",
+      "eps": 3.39,
+      "prev_year_eps": 2.7,
+      "yoy_growth": 0.2556
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2014-07-31T00:00:00.000",
+      "eps": -0.1,
+      "prev_year_eps": -0.05,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2014-10-31T00:00:00.000",
+      "eps": -0.29,
+      "prev_year_eps": -0.2,
+      "yoy_growth": -0.45
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2015-01-31T00:00:00.000",
+      "eps": -0.23,
+      "prev_year_eps": -0.13,
+      "yoy_growth": -0.7692
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2015-04-30T00:00:00.000",
+      "eps": 1.78,
+      "prev_year_eps": 3.39,
+      "yoy_growth": -0.4749
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2015-07-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": -0.1,
+      "yoy_growth": 1.5
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2015-10-31T00:00:00.000",
+      "eps": -0.11,
+      "prev_year_eps": -0.29,
+      "yoy_growth": 0.6207
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2016-01-31T00:00:00.000",
+      "eps": 0.09,
+      "prev_year_eps": -0.23,
+      "yoy_growth": 1.3913
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2016-04-30T00:00:00.000",
+      "eps": 3.27,
+      "prev_year_eps": 1.78,
+      "yoy_growth": 0.8371
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2016-07-31T00:00:00.000",
+      "eps": -0.16,
+      "prev_year_eps": 0.05,
+      "yoy_growth": -4.2
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2016-10-31T00:00:00.000",
+      "eps": -0.12,
+      "prev_year_eps": -0.11,
+      "yoy_growth": -0.0909
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2017-01-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.09,
+      "yoy_growth": -0.4444
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2017-04-30T00:00:00.000",
+      "eps": 3.71,
+      "prev_year_eps": 3.27,
+      "yoy_growth": 0.1346
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2017-07-31T00:00:00.000",
+      "eps": 0.09,
+      "prev_year_eps": -0.16,
+      "yoy_growth": 1.5625
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2017-10-31T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": -0.12,
+      "yoy_growth": 0.9167
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2018-01-31T00:00:00.000",
+      "eps": 0.7,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 13.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2018-04-30T00:00:00.000",
+      "eps": 4.53,
+      "prev_year_eps": 3.71,
+      "yoy_growth": 0.221
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2018-07-31T00:00:00.000",
+      "eps": -0.15,
+      "prev_year_eps": 0.09,
+      "yoy_growth": -2.6667
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2018-10-31T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": -0.01,
+      "yoy_growth": 14.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2019-01-31T00:00:00.000",
+      "eps": 0.72,
+      "prev_year_eps": 0.7,
+      "yoy_growth": 0.0286
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2019-04-30T00:00:00.000",
+      "eps": 5.22,
+      "prev_year_eps": 4.53,
+      "yoy_growth": 0.1523
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2019-07-31T00:00:00.000",
+      "eps": -0.17,
+      "prev_year_eps": -0.15,
+      "yoy_growth": -0.1333
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2019-10-31T00:00:00.000",
+      "eps": 0.22,
+      "prev_year_eps": 0.13,
+      "yoy_growth": 0.6923
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-01-31T00:00:00.000",
+      "eps": 0.91,
+      "prev_year_eps": 0.72,
+      "yoy_growth": 0.2639
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-04-30T00:00:00.000",
+      "eps": 4.11,
+      "prev_year_eps": 5.22,
+      "yoy_growth": -0.2126
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-07-31T00:00:00.000",
+      "eps": 1.69,
+      "prev_year_eps": -0.17,
+      "yoy_growth": 10.9412
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-10-31T00:00:00.000",
+      "eps": 0.75,
+      "prev_year_eps": 0.22,
+      "yoy_growth": 2.4091
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-01-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.91,
+      "yoy_growth": -0.9231
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-04-30T00:00:00.000",
+      "eps": 5.3,
+      "prev_year_eps": 4.11,
+      "yoy_growth": 0.2895
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31T00:00:00.000",
+      "eps": 1.37,
+      "prev_year_eps": 1.69,
+      "yoy_growth": -0.1893
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-10-31T00:00:00.000",
+      "eps": 0.82,
+      "prev_year_eps": 0.75,
+      "yoy_growth": 0.0933
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-01-31T00:00:00.000",
+      "eps": 0.35,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 4.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30T00:00:00.000",
+      "eps": 6.27,
+      "prev_year_eps": 5.3,
+      "yoy_growth": 0.183
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31T00:00:00.000",
+      "eps": -0.2,
+      "prev_year_eps": 1.37,
+      "yoy_growth": -1.146
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-10-31T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": 0.82,
+      "yoy_growth": -0.8293
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-01-31T00:00:00.000",
+      "eps": 0.6,
+      "prev_year_eps": 0.35,
+      "yoy_growth": 0.7143
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-04-30T00:00:00.000",
+      "eps": 7.37,
+      "prev_year_eps": 6.27,
+      "yoy_growth": 0.1754
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31T00:00:00.000",
+      "eps": 0.31,
+      "prev_year_eps": -0.2,
+      "yoy_growth": 2.55
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31T00:00:00.000",
+      "eps": 0.85,
+      "prev_year_eps": 0.14,
+      "yoy_growth": 5.0714
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31T00:00:00.000",
+      "eps": 1.24,
+      "prev_year_eps": 0.6,
+      "yoy_growth": 1.0667
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30T00:00:00.000",
+      "eps": 8.41,
+      "prev_year_eps": 7.37,
+      "yoy_growth": 0.1411
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31T00:00:00.000",
+      "eps": -0.07,
+      "prev_year_eps": 0.31,
+      "yoy_growth": -1.2258
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31T00:00:00.000",
+      "eps": 0.7,
+      "prev_year_eps": 0.85,
+      "yoy_growth": -0.1765
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31T00:00:00.000",
+      "eps": 1.66,
+      "prev_year_eps": 1.24,
+      "yoy_growth": 0.3387
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30T00:00:00.000",
+      "eps": 10.0,
+      "prev_year_eps": 8.41,
+      "yoy_growth": 0.1891
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31T00:00:00.000",
+      "eps": 1.35,
+      "prev_year_eps": -0.07,
+      "yoy_growth": 20.2857
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31T00:00:00.000",
+      "eps": 1.59,
+      "prev_year_eps": 0.7,
+      "yoy_growth": 1.2714
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31T00:00:00.000",
+      "eps": 2.48,
+      "prev_year_eps": 1.66,
+      "yoy_growth": 0.494
+    }
+  ]
+}

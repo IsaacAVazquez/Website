@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 297000000.0,
+      "beginning_stockholders_equity": 101017000000.0,
+      "ending_stockholders_equity": 101813000000.0,
+      "avg_equity": 101415000000.0,
+      "roe": 0.0029
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2669000000.0,
+      "beginning_stockholders_equity": 101813000000.0,
+      "ending_stockholders_equity": 105590000000.0,
+      "avg_equity": 103701500000.0,
+      "roe": 0.0257
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -381000000.0,
+      "beginning_stockholders_equity": 105590000000.0,
+      "ending_stockholders_equity": 105973000000.0,
+      "avg_equity": 105781500000.0,
+      "roe": -0.0036
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": -1610000000.0,
+      "beginning_stockholders_equity": 105973000000.0,
+      "ending_stockholders_equity": 115229000000.0,
+      "avg_equity": 110601000000.0,
+      "roe": -0.0146
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": -16639000000.0,
+      "beginning_stockholders_equity": 115229000000.0,
+      "ending_stockholders_equity": 99532000000.0,
+      "avg_equity": 107380500000.0,
+      "roe": -0.155
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": -126000000.0,
+      "beginning_stockholders_equity": 99532000000.0,
+      "ending_stockholders_equity": 99270000000.0,
+      "avg_equity": 99401000000.0,
+      "roe": -0.0013
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": -821000000.0,
+      "beginning_stockholders_equity": 99270000000.0,
+      "ending_stockholders_equity": 99756000000.0,
+      "avg_equity": 99513000000.0,
+      "roe": -0.0083
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": -2918000000.0,
+      "beginning_stockholders_equity": 99756000000.0,
+      "ending_stockholders_equity": 97883000000.0,
+      "avg_equity": 98819500000.0,
+      "roe": -0.0295
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 4063000000.0,
+      "beginning_stockholders_equity": 97883000000.0,
+      "ending_stockholders_equity": 106376000000.0,
+      "avg_equity": 102129500000.0,
+      "roe": 0.0398
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": -591000000.0,
+      "beginning_stockholders_equity": 106376000000.0,
+      "ending_stockholders_equity": 114281000000.0,
+      "avg_equity": 110328500000.0,
+      "roe": -0.0054
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": -3728000000.0,
+      "beginning_stockholders_equity": 114281000000.0,
+      "ending_stockholders_equity": 111394000000.0,
+      "avg_equity": 112837500000.0,
+      "roe": -0.033
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 297000000.0,
+      "beginning_total_assets": 185629000000.0,
+      "ending_total_assets": 188837000000.0,
+      "avg_assets": 187233000000.0,
+      "roa": 0.0016
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2669000000.0,
+      "beginning_total_assets": 188837000000.0,
+      "ending_total_assets": 191572000000.0,
+      "avg_assets": 190204500000.0,
+      "roa": 0.014
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -381000000.0,
+      "beginning_total_assets": 191572000000.0,
+      "ending_total_assets": 192733000000.0,
+      "avg_assets": 192152500000.0,
+      "roa": -0.002
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": -1610000000.0,
+      "beginning_total_assets": 192733000000.0,
+      "ending_total_assets": 206205000000.0,
+      "avg_assets": 199469000000.0,
+      "roa": -0.0081
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": -16639000000.0,
+      "beginning_total_assets": 206205000000.0,
+      "ending_total_assets": 193542000000.0,
+      "avg_assets": 199873500000.0,
+      "roa": -0.0832
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": -126000000.0,
+      "beginning_total_assets": 193542000000.0,
+      "ending_total_assets": 196485000000.0,
+      "avg_assets": 195013500000.0,
+      "roa": -0.0006
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": -821000000.0,
+      "beginning_total_assets": 196485000000.0,
+      "ending_total_assets": 192242000000.0,
+      "avg_assets": 194363500000.0,
+      "roa": -0.0042
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": -2918000000.0,
+      "beginning_total_assets": 192242000000.0,
+      "ending_total_assets": 192520000000.0,
+      "avg_assets": 192381000000.0,
+      "roa": -0.0152
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 4063000000.0,
+      "beginning_total_assets": 192520000000.0,
+      "ending_total_assets": 204514000000.0,
+      "avg_assets": 198517000000.0,
+      "roa": 0.0205
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": -591000000.0,
+      "beginning_total_assets": 204514000000.0,
+      "ending_total_assets": 211429000000.0,
+      "avg_assets": 207971500000.0,
+      "roa": -0.0028
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": -3728000000.0,
+      "beginning_total_assets": 211429000000.0,
+      "ending_total_assets": 205332000000.0,
+      "avg_assets": 208380500000.0,
+      "roa": -0.0179
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30",
+      "ebit": 152000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 120080000.0,
+      "beginning_invested_capital": 150063000000.0,
+      "ending_invested_capital": 150692000000.0,
+      "avg_invested_capital": 150377500000.0,
+      "roic": 0.0008
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "ebit": 3055000000.0,
+      "tax_rate_for_calcs": 0.05,
+      "nopat": 2902250000.0,
+      "beginning_invested_capital": 150692000000.0,
+      "ending_invested_capital": 154856000000.0,
+      "avg_invested_capital": 152774000000.0,
+      "roic": 0.019
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31",
+      "ebit": -461000000.0,
+      "tax_rate_for_calcs": 0.39,
+      "nopat": -281210000.0,
+      "beginning_invested_capital": 154856000000.0,
+      "ending_invested_capital": 158423000000.0,
+      "avg_invested_capital": 156639500000.0,
+      "roic": -0.0018
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30",
+      "ebit": -1710000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": -1402200000.0,
+      "beginning_invested_capital": 158423000000.0,
+      "ending_invested_capital": 168258000000.0,
+      "avg_invested_capital": 163340500000.0,
+      "roic": -0.0086
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30",
+      "ebit": -8838000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -6982020000.0,
+      "beginning_invested_capital": 168258000000.0,
+      "ending_invested_capital": 149768000000.0,
+      "avg_invested_capital": 159013000000.0,
+      "roic": -0.0439
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "ebit": 833000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 658070000.0,
+      "beginning_invested_capital": 149768000000.0,
+      "ending_invested_capital": 149281000000.0,
+      "avg_invested_capital": 149524500000.0,
+      "roic": 0.0044
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31",
+      "ebit": -287000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -226730000.0,
+      "beginning_invested_capital": 149281000000.0,
+      "ending_invested_capital": 149907000000.0,
+      "avg_invested_capital": 149594000000.0,
+      "roic": -0.0015
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30",
+      "ebit": -2542000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -2008180000.0,
+      "beginning_invested_capital": 149907000000.0,
+      "ending_invested_capital": 148640000000.0,
+      "avg_invested_capital": 149273500000.0,
+      "roic": -0.0135
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30",
+      "ebit": 4856000000.0,
+      "tax_rate_for_calcs": 0.07,
+      "nopat": 4516080000.0,
+      "beginning_invested_capital": 148640000000.0,
+      "ending_invested_capital": 152929000000.0,
+      "avg_invested_capital": 150784500000.0,
+      "roic": 0.03
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "ebit": 621000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 490590000.0,
+      "beginning_invested_capital": 152929000000.0,
+      "ending_invested_capital": 160866000000.0,
+      "avg_invested_capital": 156897500000.0,
+      "roic": 0.0031
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31",
+      "ebit": -3682000000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": -2209200000.0,
+      "beginning_invested_capital": 160866000000.0,
+      "ending_invested_capital": 156425000000.0,
+      "avg_invested_capital": 158645500000.0,
+      "roic": -0.0139
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0029,
+      "roa": 0.0016,
+      "equity_multiplier": 1.81
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0257,
+      "roa": 0.014,
+      "equity_multiplier": 1.84
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": -0.0036,
+      "roa": -0.002,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": -0.0146,
+      "roa": -0.0081,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": -0.155,
+      "roa": -0.0832,
+      "equity_multiplier": 1.86
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": -0.0013,
+      "roa": -0.0006,
+      "equity_multiplier": 2.17
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": -0.0083,
+      "roa": -0.0042,
+      "equity_multiplier": 1.98
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": -0.0295,
+      "roa": -0.0152,
+      "equity_multiplier": 1.94
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0398,
+      "roa": 0.0205,
+      "equity_multiplier": 1.94
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": -0.0054,
+      "roa": -0.0028,
+      "equity_multiplier": 1.93
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": -0.033,
+      "roa": -0.0179,
+      "equity_multiplier": 1.84
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0016,
+      "net_margin": 0.021,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.014,
+      "net_margin": 0.1732,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": -0.002,
+      "net_margin": -0.0299,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": -0.0081,
+      "net_margin": -0.1255,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": -0.0832,
+      "net_margin": -1.2526,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": -0.0006,
+      "net_margin": -0.0088,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": -0.0042,
+      "net_margin": -0.0648,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": -0.0152,
+      "net_margin": -0.2269,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0205,
+      "net_margin": 0.2976,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": -0.0028,
+      "net_margin": -0.0432,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": -0.0179,
+      "net_margin": -0.2746,
+      "asset_turnover": 0.07
+    }
+  ]
+}

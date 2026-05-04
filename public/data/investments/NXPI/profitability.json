@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 787000000.0,
+      "beginning_stockholders_equity": 8172000000.0,
+      "ending_stockholders_equity": 8488000000.0,
+      "avg_equity": 8330000000.0,
+      "roe": 0.0945
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 697000000.0,
+      "beginning_stockholders_equity": 8488000000.0,
+      "ending_stockholders_equity": 8644000000.0,
+      "avg_equity": 8566000000.0,
+      "roe": 0.0814
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 639000000.0,
+      "beginning_stockholders_equity": 8644000000.0,
+      "ending_stockholders_equity": 8829000000.0,
+      "avg_equity": 8736500000.0,
+      "roe": 0.0731
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 658000000.0,
+      "beginning_stockholders_equity": 8829000000.0,
+      "ending_stockholders_equity": 9018000000.0,
+      "avg_equity": 8923500000.0,
+      "roe": 0.0737
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 718000000.0,
+      "beginning_stockholders_equity": 9018000000.0,
+      "ending_stockholders_equity": 9406000000.0,
+      "avg_equity": 9212000000.0,
+      "roe": 0.0779
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 495000000.0,
+      "beginning_stockholders_equity": 9406000000.0,
+      "ending_stockholders_equity": 9183000000.0,
+      "avg_equity": 9294500000.0,
+      "roe": 0.0533
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 490000000.0,
+      "beginning_stockholders_equity": 9183000000.0,
+      "ending_stockholders_equity": 9322000000.0,
+      "avg_equity": 9252500000.0,
+      "roe": 0.053
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 445000000.0,
+      "beginning_stockholders_equity": 9322000000.0,
+      "ending_stockholders_equity": 9569000000.0,
+      "avg_equity": 9445500000.0,
+      "roe": 0.0471
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 631000000.0,
+      "beginning_stockholders_equity": 9569000000.0,
+      "ending_stockholders_equity": 10045000000.0,
+      "avg_equity": 9807000000.0,
+      "roe": 0.0643
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 455000000.0,
+      "beginning_stockholders_equity": 10045000000.0,
+      "ending_stockholders_equity": 10056000000.0,
+      "avg_equity": 10050500000.0,
+      "roe": 0.0453
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1122000000.0,
+      "beginning_stockholders_equity": 10056000000.0,
+      "ending_stockholders_equity": 10927000000.0,
+      "avg_equity": 10491500000.0,
+      "roe": 0.1069
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 787000000.0,
+      "beginning_total_assets": 23795000000.0,
+      "ending_total_assets": 23996000000.0,
+      "avg_assets": 23895500000.0,
+      "roa": 0.0329
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 697000000.0,
+      "beginning_total_assets": 23996000000.0,
+      "ending_total_assets": 24353000000.0,
+      "avg_assets": 24174500000.0,
+      "roa": 0.0288
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 639000000.0,
+      "beginning_total_assets": 24353000000.0,
+      "ending_total_assets": 23320000000.0,
+      "avg_assets": 23836500000.0,
+      "roa": 0.0268
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 658000000.0,
+      "beginning_total_assets": 23320000000.0,
+      "ending_total_assets": 23196000000.0,
+      "avg_assets": 23258000000.0,
+      "roa": 0.0283
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 718000000.0,
+      "beginning_total_assets": 23196000000.0,
+      "ending_total_assets": 23669000000.0,
+      "avg_assets": 23432500000.0,
+      "roa": 0.0306
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 495000000.0,
+      "beginning_total_assets": 23669000000.0,
+      "ending_total_assets": 24385000000.0,
+      "avg_assets": 24027000000.0,
+      "roa": 0.0206
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 490000000.0,
+      "beginning_total_assets": 24385000000.0,
+      "ending_total_assets": 25180000000.0,
+      "avg_assets": 24782500000.0,
+      "roa": 0.0198
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 445000000.0,
+      "beginning_total_assets": 25180000000.0,
+      "ending_total_assets": 25250000000.0,
+      "avg_assets": 25215000000.0,
+      "roa": 0.0176
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 631000000.0,
+      "beginning_total_assets": 25250000000.0,
+      "ending_total_assets": 26354000000.0,
+      "avg_assets": 25802000000.0,
+      "roa": 0.0245
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 455000000.0,
+      "beginning_total_assets": 26354000000.0,
+      "ending_total_assets": 26560000000.0,
+      "avg_assets": 26457000000.0,
+      "roa": 0.0172
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1122000000.0,
+      "beginning_total_assets": 26560000000.0,
+      "ending_total_assets": 27113000000.0,
+      "avg_assets": 26836500000.0,
+      "roa": 0.0418
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30",
+      "ebit": 1026000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 892620000.0,
+      "beginning_invested_capital": 19342000000.0,
+      "ending_invested_capital": 19660000000.0,
+      "avg_invested_capital": 19501000000.0,
+      "roic": 0.0458
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31",
+      "ebit": 938000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 797300000.0,
+      "beginning_invested_capital": 19660000000.0,
+      "ending_invested_capital": 19819000000.0,
+      "avg_invested_capital": 19739500000.0,
+      "roic": 0.0404
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31",
+      "ebit": 891000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 730620000.0,
+      "beginning_invested_capital": 19819000000.0,
+      "ending_invested_capital": 19007000000.0,
+      "avg_invested_capital": 19413000000.0,
+      "roic": 0.0376
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30",
+      "ebit": 918000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 743580000.0,
+      "beginning_invested_capital": 19007000000.0,
+      "ending_invested_capital": 19198000000.0,
+      "avg_invested_capital": 19102500000.0,
+      "roic": 0.0389
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30",
+      "ebit": 1004000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 813240000.0,
+      "beginning_invested_capital": 19198000000.0,
+      "ending_invested_capital": 19588000000.0,
+      "avg_invested_capital": 19393000000.0,
+      "roic": 0.0419
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31",
+      "ebit": 684000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 595080000.0,
+      "beginning_invested_capital": 19588000000.0,
+      "ending_invested_capital": 20037000000.0,
+      "avg_invested_capital": 19812500000.0,
+      "roic": 0.03
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31",
+      "ebit": 737000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 582230000.0,
+      "beginning_invested_capital": 20037000000.0,
+      "ending_invested_capital": 21047000000.0,
+      "avg_invested_capital": 20542000000.0,
+      "roic": 0.0283
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30",
+      "ebit": 716000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 579960000.0,
+      "beginning_invested_capital": 21047000000.0,
+      "ending_invested_capital": 20297000000.0,
+      "avg_invested_capital": 20672000000.0,
+      "roic": 0.0281
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30",
+      "ebit": 913000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 739530000.0,
+      "beginning_invested_capital": 20297000000.0,
+      "ending_invested_capital": 22280000000.0,
+      "avg_invested_capital": 21288500000.0,
+      "roic": 0.0347
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31",
+      "ebit": 763000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 602770000.0,
+      "beginning_invested_capital": 22280000000.0,
+      "ending_invested_capital": 22278000000.0,
+      "avg_invested_capital": 22279000000.0,
+      "roic": 0.0271
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31",
+      "ebit": 1523000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1233630000.0,
+      "beginning_invested_capital": 22278000000.0,
+      "ending_invested_capital": 22651000000.0,
+      "avg_invested_capital": 22464500000.0,
+      "roic": 0.0549
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0945,
+      "roa": 0.0329,
+      "equity_multiplier": 2.87
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0814,
+      "roa": 0.0288,
+      "equity_multiplier": 2.83
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0731,
+      "roa": 0.0268,
+      "equity_multiplier": 2.73
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0737,
+      "roa": 0.0283,
+      "equity_multiplier": 2.6
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0779,
+      "roa": 0.0306,
+      "equity_multiplier": 2.55
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0533,
+      "roa": 0.0206,
+      "equity_multiplier": 2.59
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.053,
+      "roa": 0.0198,
+      "equity_multiplier": 2.68
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0471,
+      "roa": 0.0176,
+      "equity_multiplier": 2.68
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0643,
+      "roa": 0.0245,
+      "equity_multiplier": 2.62
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0453,
+      "roa": 0.0172,
+      "equity_multiplier": 2.63
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.1069,
+      "roa": 0.0418,
+      "equity_multiplier": 2.56
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0329,
+      "net_margin": 0.2292,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0288,
+      "net_margin": 0.2037,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0268,
+      "net_margin": 0.2044,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0283,
+      "net_margin": 0.2104,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0306,
+      "net_margin": 0.2209,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0206,
+      "net_margin": 0.1591,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0198,
+      "net_margin": 0.1728,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0176,
+      "net_margin": 0.1521,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0245,
+      "net_margin": 0.1989,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0172,
+      "net_margin": 0.1364,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "NXPI",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0418,
+      "net_margin": 0.3527,
+      "asset_turnover": 0.12
+    }
+  ]
+}

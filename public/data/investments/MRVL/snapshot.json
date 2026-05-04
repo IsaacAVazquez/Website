@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.09,
-      "ttmPe": 53.17,
-      "marketCap": 143682226842,
-      "psRatio": 17.53,
-      "pbRatio": 10.04,
+      "ttmPe": 53.38,
+      "marketCap": 144241880090,
+      "psRatio": 17.6,
+      "pbRatio": 10.08,
       "pegRatio": 0.53
     },
     "profitability": {
@@ -5506,57 +5506,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.42,
-      "costOfEquity": 23.150000000000002,
+      "wacc": 22.509999999999998,
+      "costOfEquity": 23.24,
       "costOfDebt": 1.06,
       "taxRate": 40,
-      "beta": 2.2007,
-      "marketCap": 143682226842
+      "beta": 2.2225,
+      "marketCap": 144241880090
     },
     "beta": {
-      "beta5y": 2.2007
+      "beta5y": 2.2225
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 54.8,
-        "high": 57.97,
-        "low": 54.46,
-        "close": 57.33,
-        "volume": 21404800
-      },
-      {
-        "date": "2025-04-25",
-        "open": 56.98,
-        "high": 59.26,
-        "low": 56.76,
-        "close": 58.92,
-        "volume": 11929600
-      },
-      {
-        "date": "2025-04-28",
-        "open": 58.29,
-        "high": 58.87,
-        "low": 56.7,
-        "close": 58.7,
-        "volume": 13840000
-      },
-      {
-        "date": "2025-04-29",
-        "open": 58.21,
-        "high": 59.75,
-        "low": 58.01,
-        "close": 58.68,
-        "volume": 14831900
-      },
-      {
-        "date": "2025-04-30",
-        "open": 56.28,
-        "high": 58.44,
-        "low": 55.86,
-        "close": 58.37,
-        "volume": 14316600
-      },
       {
         "date": "2025-05-01",
         "open": 60.15,
@@ -7531,7 +7491,47 @@
         "high": 170.84,
         "low": 158.51,
         "close": 164.31,
-        "volume": 37528300
+        "volume": 37599100
+      },
+      {
+        "date": "2026-04-27",
+        "open": 162.13,
+        "high": 163.45,
+        "low": 151.09,
+        "close": 158.21,
+        "volume": 30281800
+      },
+      {
+        "date": "2026-04-28",
+        "open": 147.91,
+        "high": 156,
+        "low": 146.85,
+        "close": 153.23,
+        "volume": 27128700
+      },
+      {
+        "date": "2026-04-29",
+        "open": 153.77,
+        "high": 157.21,
+        "low": 151.3,
+        "close": 156.57,
+        "volume": 20649000
+      },
+      {
+        "date": "2026-04-30",
+        "open": 160.34,
+        "high": 165.61,
+        "low": 156.36,
+        "close": 165.15,
+        "volume": 20327000
+      },
+      {
+        "date": "2026-05-01",
+        "open": 162.35,
+        "high": 166.39,
+        "low": 159.26,
+        "close": 164.95,
+        "volume": 13043600
       }
     ],
     "news": [
@@ -7592,14 +7592,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
-        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
         "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
         "publisher": "MT Newswires",
@@ -7608,11 +7600,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
-        "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
+        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
+        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
         "publisher": "StockStory",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
+        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
+        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
+        "publisher": "The Fly",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
         "type": "STORY"
       }
     ],
@@ -7677,50 +7677,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 53.17,
-        "industryAvg": 40.22
+        "value": 53.38,
+        "industryAvg": 38.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.53,
-        "industryAvg": 14.28
+        "value": 17.6,
+        "industryAvg": 14.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.04,
-        "industryAvg": 11.89
+        "value": 10.08,
+        "industryAvg": 11.78
       },
       {
         "metric": "ROE",
         "value": 2.79,
-        "industryAvg": 29.98
+        "industryAvg": 30.509999999999998
       },
       {
         "metric": "ROA",
         "value": 1.81,
-        "industryAvg": 18.41
+        "industryAvg": 18.740000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 51.739999999999995,
-        "industryAvg": 57.14
+        "industryAvg": 57.15
       },
       {
         "metric": "EBITDA Margin",
         "value": 33.78,
-        "industryAvg": 52.59
+        "industryAvg": 52.629999999999995
       },
       {
         "metric": "Net Margin",
         "value": 17.849999999999998,
-        "industryAvg": 33.29
+        "industryAvg": 33.900000000000006
       }
     ],
     "dcf": {
-      "fairValue": 33.04,
-      "currentPrice": 164.31,
-      "upside": -79.89,
-      "wacc": 22.42,
+      "fairValue": 32.87,
+      "currentPrice": 164.95,
+      "upside": -80.07,
+      "wacc": 22.51,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

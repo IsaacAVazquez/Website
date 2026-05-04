@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.68,
-      "ttmPe": 53.67,
-      "marketCap": 94317820000,
-      "psRatio": 6.76,
-      "pbRatio": 8.04,
+      "ttmPe": 54.26,
+      "marketCap": 95353360000,
+      "psRatio": 6.83,
+      "pbRatio": 8.13,
       "pegRatio": 11.33
     },
     "profitability": {
@@ -5113,57 +5113,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.17,
-      "costOfEquity": 11.450000000000001,
+      "wacc": 10.9,
+      "costOfEquity": 11.17,
       "costOfDebt": 0.25,
       "taxRate": 30,
-      "beta": 0.834,
-      "marketCap": 94317820000
+      "beta": 0.7993,
+      "marketCap": 95353360000
     },
     "beta": {
-      "beta5y": 0.834
+      "beta5y": 0.7993
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 180.06,
-        "high": 188.8,
-        "low": 179.67,
-        "close": 187.71,
-        "volume": 30415500
-      },
-      {
-        "date": "2025-04-25",
-        "open": 188.8,
-        "high": 192,
-        "low": 185.83,
-        "close": 189.05,
-        "volume": 14439000
-      },
-      {
-        "date": "2025-04-28",
-        "open": 191.97,
-        "high": 192.21,
-        "low": 185.43,
-        "close": 187.48,
-        "volume": 10262000
-      },
-      {
-        "date": "2025-04-29",
-        "open": 188,
-        "high": 189.45,
-        "low": 186.11,
-        "close": 188.57,
-        "volume": 6226500
-      },
-      {
-        "date": "2025-04-30",
-        "open": 186.11,
-        "high": 191.53,
-        "low": 184.08,
-        "close": 191,
-        "volume": 9739500
-      },
       {
         "date": "2025-05-01",
         "open": 194.77,
@@ -7138,7 +7098,47 @@
         "high": 90.39,
         "low": 84.93,
         "close": 90.17,
-        "volume": 38938500
+        "volume": 39011800
+      },
+      {
+        "date": "2026-04-27",
+        "open": 89.06,
+        "high": 94.03,
+        "low": 87.81,
+        "close": 90.45,
+        "volume": 32789100
+      },
+      {
+        "date": "2026-04-28",
+        "open": 91.1,
+        "high": 93,
+        "low": 90.13,
+        "close": 90.49,
+        "volume": 20990400
+      },
+      {
+        "date": "2026-04-29",
+        "open": 89.06,
+        "high": 89.3,
+        "low": 87.1,
+        "close": 88.89,
+        "volume": 18646600
+      },
+      {
+        "date": "2026-04-30",
+        "open": 87.95,
+        "high": 88.71,
+        "low": 85.88,
+        "close": 88.31,
+        "volume": 22152200
+      },
+      {
+        "date": "2026-05-01",
+        "open": 90.93,
+        "high": 92.6,
+        "low": 87.87,
+        "close": 91.16,
+        "volume": 22863500
       }
     ],
     "news": [
@@ -7191,14 +7191,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
-        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
         "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
         "publisher": "TipRanks",
@@ -7207,11 +7199,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
-        "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
+        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
+        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
         "type": "STORY"
       },
       {
@@ -7220,6 +7212,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
+        "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
         "type": "STORY"
       }
     ],
@@ -7286,50 +7286,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 53.67,
-        "industryAvg": 24.88
+        "value": 54.26,
+        "industryAvg": 25.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.76,
-        "industryAvg": 4.39
+        "value": 6.83,
+        "industryAvg": 4.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.04,
-        "industryAvg": 4.33
+        "value": 8.13,
+        "industryAvg": 4.38
       },
       {
         "metric": "ROE",
         "value": 3.8,
-        "industryAvg": 6.08
+        "industryAvg": 6.15
       },
       {
         "metric": "ROA",
         "value": 1.8599999999999999,
-        "industryAvg": 3.3000000000000003
+        "industryAvg": 3.35
       },
       {
         "metric": "Gross Margin",
         "value": 75.07000000000001,
-        "industryAvg": 63.27
+        "industryAvg": 63.23
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.85,
-        "industryAvg": 14.899999999999999
+        "industryAvg": 15.1
       },
       {
         "metric": "Net Margin",
         "value": 12.44,
-        "industryAvg": 7.779999999999999
+        "industryAvg": 7.84
       }
     ],
     "dcf": {
-      "fairValue": 10.98,
-      "currentPrice": 90.17,
-      "upside": -87.82,
-      "wacc": 11.17,
+      "fairValue": 11.34,
+      "currentPrice": 91.16,
+      "upside": -87.56,
+      "wacc": 10.9,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

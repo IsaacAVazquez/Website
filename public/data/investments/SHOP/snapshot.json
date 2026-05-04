@@ -1,10 +1,10 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.94,
-      "ttmPe": 133.86,
-      "marketCap": 163703219376,
-      "psRatio": 14.17,
-      "pbRatio": 12.15,
+      "ttmPe": 135.82,
+      "marketCap": 166097035824,
+      "psRatio": 14.37,
+      "pbRatio": 12.33,
       "pegRatio": 0.19
     },
     "profitability": {
@@ -5398,57 +5398,17 @@
       ]
     },
     "wacc": {
-      "wacc": 26.979999999999997,
-      "costOfEquity": 27.18,
+      "wacc": 26.369999999999997,
+      "costOfEquity": 26.56,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.6723,
-      "marketCap": 163703219376
+      "beta": 2.6138,
+      "marketCap": 166097035824
     },
     "beta": {
-      "beta5y": 2.6723
+      "beta5y": 2.6138
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 90.64,
-        "high": 95.26,
-        "low": 89.41,
-        "close": 95.12,
-        "volume": 7847300
-      },
-      {
-        "date": "2025-04-25",
-        "open": 95.79,
-        "high": 98.64,
-        "low": 95.36,
-        "close": 97.12,
-        "volume": 7824800
-      },
-      {
-        "date": "2025-04-28",
-        "open": 96.85,
-        "high": 99.07,
-        "low": 96.5,
-        "close": 98.57,
-        "volume": 5892900
-      },
-      {
-        "date": "2025-04-29",
-        "open": 98.83,
-        "high": 99.82,
-        "low": 97.84,
-        "close": 98.92,
-        "volume": 6797200
-      },
-      {
-        "date": "2025-04-30",
-        "open": 96.14,
-        "high": 96.14,
-        "low": 92.4,
-        "close": 95,
-        "volume": 13233200
-      },
       {
         "date": "2025-05-01",
         "open": 98.21,
@@ -7423,7 +7383,47 @@
         "high": 126.46,
         "low": 121.66,
         "close": 125.83,
-        "volume": 8403900
+        "volume": 8409000
+      },
+      {
+        "date": "2026-04-27",
+        "open": 124.4,
+        "high": 126.23,
+        "low": 123.09,
+        "close": 124.23,
+        "volume": 4027800
+      },
+      {
+        "date": "2026-04-28",
+        "open": 123.69,
+        "high": 127.31,
+        "low": 121.98,
+        "close": 122.05,
+        "volume": 4926900
+      },
+      {
+        "date": "2026-04-29",
+        "open": 121.14,
+        "high": 122.03,
+        "low": 119.42,
+        "close": 121.26,
+        "volume": 5145800
+      },
+      {
+        "date": "2026-04-30",
+        "open": 120.79,
+        "high": 122.58,
+        "low": 118.35,
+        "close": 121.13,
+        "volume": 6792700
+      },
+      {
+        "date": "2026-05-01",
+        "open": 123.62,
+        "high": 127.92,
+        "low": 123.39,
+        "close": 127.67,
+        "volume": 7925600
       }
     ],
     "news": [
@@ -7444,19 +7444,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
-        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
         "title": "Shopify Inc to Join the Nasdaq-100 Index® Beginning May 19, 2025",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-05-10",
         "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
+        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
         "type": "STORY"
       },
       {
@@ -7510,14 +7510,6 @@
     ],
     "officers": [
       {
-        "name": "Darryl Arvai",
-        "title": "VP & Corporate Controller"
-      },
-      {
-        "name": "Michael L. Johnson",
-        "title": "Corporate Secretary"
-      },
-      {
         "name": "Mr. Harley Finkelstein",
         "title": "President",
         "age": 42,
@@ -7539,76 +7531,57 @@
         "totalPay": 1
       },
       {
-        "name": "Ms. Agatha Krajewski",
-        "title": "Director of Product, Online"
-      },
-      {
-        "name": "Ms. Bharati Balakrishnan",
-        "title": "Country Head & Director- India"
-      },
-      {
         "name": "Ms. Carrie Gillard",
         "title": "Director of Investor Relations"
-      },
-      {
-        "name": "Ms. Jessica Rose Hertz",
-        "title": "Chief Operating Officer",
-        "age": 42,
-        "yearBorn": 1983,
-        "totalPay": 1000000
-      },
-      {
-        "name": "Ms. Vanessa Lee",
-        "title": "Product Director"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 133.86,
-        "industryAvg": 24.88
+        "value": 135.82,
+        "industryAvg": 25.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.17,
-        "industryAvg": 4.39
+        "value": 14.37,
+        "industryAvg": 4.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.15,
-        "industryAvg": 4.33
+        "value": 12.33,
+        "industryAvg": 4.38
       },
       {
         "metric": "ROE",
         "value": 5.72,
-        "industryAvg": 6.08
+        "industryAvg": 6.15
       },
       {
         "metric": "ROA",
         "value": 4.92,
-        "industryAvg": 3.3000000000000003
+        "industryAvg": 3.35
       },
       {
         "metric": "Gross Margin",
         "value": 46.11,
-        "industryAvg": 63.27
+        "industryAvg": 63.23
       },
       {
         "metric": "EBITDA Margin",
         "value": 20.48,
-        "industryAvg": 14.899999999999999
+        "industryAvg": 15.1
       },
       {
         "metric": "Net Margin",
         "value": 20.23,
-        "industryAvg": 7.779999999999999
+        "industryAvg": 7.84
       }
     ],
     "dcf": {
-      "fairValue": 2.26,
-      "currentPrice": 125.83,
-      "upside": -98.21,
-      "wacc": 26.98,
+      "fairValue": 2.31,
+      "currentPrice": 127.67,
+      "upside": -98.19,
+      "wacc": 26.37,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": -30,
         "Terminal growth": 3

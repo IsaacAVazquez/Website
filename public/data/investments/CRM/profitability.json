@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 1224000000.0,
+      "beginning_stockholders_equity": 58082000000.0,
+      "ending_stockholders_equity": 58090000000.0,
+      "avg_equity": 58086000000.0,
+      "roe": 0.0211
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1446000000.0,
+      "beginning_stockholders_equity": 58090000000.0,
+      "ending_stockholders_equity": 59646000000.0,
+      "avg_equity": 58868000000.0,
+      "roe": 0.0246
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 1533000000.0,
+      "beginning_stockholders_equity": 59646000000.0,
+      "ending_stockholders_equity": 59683000000.0,
+      "avg_equity": 59664500000.0,
+      "roe": 0.0257
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 1429000000.0,
+      "beginning_stockholders_equity": 59683000000.0,
+      "ending_stockholders_equity": 57633000000.0,
+      "avg_equity": 58658000000.0,
+      "roe": 0.0244
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 1527000000.0,
+      "beginning_stockholders_equity": 57633000000.0,
+      "ending_stockholders_equity": 58525000000.0,
+      "avg_equity": 58079000000.0,
+      "roe": 0.0263
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 1708000000.0,
+      "beginning_stockholders_equity": 58525000000.0,
+      "ending_stockholders_equity": 61173000000.0,
+      "avg_equity": 59849000000.0,
+      "roe": 0.0285
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 1541000000.0,
+      "beginning_stockholders_equity": 61173000000.0,
+      "ending_stockholders_equity": 60666000000.0,
+      "avg_equity": 60919500000.0,
+      "roe": 0.0253
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 1887000000.0,
+      "beginning_stockholders_equity": 60666000000.0,
+      "ending_stockholders_equity": 61328000000.0,
+      "avg_equity": 60997000000.0,
+      "roe": 0.0309
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 2086000000.0,
+      "beginning_stockholders_equity": 61328000000.0,
+      "ending_stockholders_equity": 60021000000.0,
+      "avg_equity": 60674500000.0,
+      "roe": 0.0344
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 1943000000.0,
+      "beginning_stockholders_equity": 60021000000.0,
+      "ending_stockholders_equity": 59142000000.0,
+      "avg_equity": 59581500000.0,
+      "roe": 0.0326
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 1224000000.0,
+      "beginning_total_assets": 92447000000.0,
+      "ending_total_assets": 91022000000.0,
+      "avg_assets": 91734500000.0,
+      "roa": 0.0133
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1446000000.0,
+      "beginning_total_assets": 91022000000.0,
+      "ending_total_assets": 99823000000.0,
+      "avg_assets": 95422500000.0,
+      "roa": 0.0152
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 1533000000.0,
+      "beginning_total_assets": 99823000000.0,
+      "ending_total_assets": 96180000000.0,
+      "avg_assets": 98001500000.0,
+      "roa": 0.0156
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 1429000000.0,
+      "beginning_total_assets": 96180000000.0,
+      "ending_total_assets": 92180000000.0,
+      "avg_assets": 94180000000.0,
+      "roa": 0.0152
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 1527000000.0,
+      "beginning_total_assets": 92180000000.0,
+      "ending_total_assets": 91395000000.0,
+      "avg_assets": 91787500000.0,
+      "roa": 0.0166
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 1708000000.0,
+      "beginning_total_assets": 91395000000.0,
+      "ending_total_assets": 102928000000.0,
+      "avg_assets": 97161500000.0,
+      "roa": 0.0176
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 1541000000.0,
+      "beginning_total_assets": 102928000000.0,
+      "ending_total_assets": 98610000000.0,
+      "avg_assets": 100769000000.0,
+      "roa": 0.0153
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 1887000000.0,
+      "beginning_total_assets": 98610000000.0,
+      "ending_total_assets": 97573000000.0,
+      "avg_assets": 98091500000.0,
+      "roa": 0.0192
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 2086000000.0,
+      "beginning_total_assets": 97573000000.0,
+      "ending_total_assets": 95144000000.0,
+      "avg_assets": 96358500000.0,
+      "roa": 0.0216
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 1943000000.0,
+      "beginning_total_assets": 95144000000.0,
+      "ending_total_assets": 112305000000.0,
+      "avg_assets": 103724500000.0,
+      "roa": 0.0187
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31",
+      "ebit": 1556000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1275920000.0,
+      "beginning_invested_capital": 67505000000.0,
+      "ending_invested_capital": 67515000000.0,
+      "avg_invested_capital": 67510000000.0,
+      "roic": 0.0189
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31",
+      "ebit": 1795000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1579600000.0,
+      "beginning_invested_capital": 67515000000.0,
+      "ending_invested_capital": 69072000000.0,
+      "avg_invested_capital": 68293500000.0,
+      "roic": 0.0231
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30",
+      "ebit": 1717000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 1407940000.0,
+      "beginning_invested_capital": 69072000000.0,
+      "ending_invested_capital": 69112000000.0,
+      "avg_invested_capital": 69092000000.0,
+      "roic": 0.0204
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31",
+      "ebit": 1882000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1467960000.0,
+      "beginning_invested_capital": 69112000000.0,
+      "ending_invested_capital": 66063000000.0,
+      "avg_invested_capital": 67587500000.0,
+      "roic": 0.0217
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31",
+      "ebit": 1949000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 1695630000.0,
+      "beginning_invested_capital": 66063000000.0,
+      "ending_invested_capital": 66957000000.0,
+      "avg_invested_capital": 66510000000.0,
+      "roic": 0.0255
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31",
+      "ebit": 2118000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1821480000.0,
+      "beginning_invested_capital": 66957000000.0,
+      "ending_invested_capital": 69606000000.0,
+      "avg_invested_capital": 68281500000.0,
+      "roic": 0.0267
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30",
+      "ebit": 1978000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1542840000.0,
+      "beginning_invested_capital": 69606000000.0,
+      "ending_invested_capital": 69101000000.0,
+      "avg_invested_capital": 69353500000.0,
+      "roic": 0.0222
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31",
+      "ebit": 2336000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1822080000.0,
+      "beginning_invested_capital": 69101000000.0,
+      "ending_invested_capital": 69764000000.0,
+      "avg_invested_capital": 69432500000.0,
+      "roic": 0.0262
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31",
+      "ebit": 2448000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 2031840000.0,
+      "beginning_invested_capital": 69764000000.0,
+      "ending_invested_capital": 68459000000.0,
+      "avg_invested_capital": 69111500000.0,
+      "roic": 0.0294
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31",
+      "ebit": 2155000000.0,
+      "tax_rate_for_calcs": 0.26,
+      "nopat": 1594700000.0,
+      "beginning_invested_capital": 68459000000.0,
+      "ending_invested_capital": 73581000000.0,
+      "avg_invested_capital": 71020000000.0,
+      "roic": 0.0225
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.0211,
+      "roa": 0.0133,
+      "equity_multiplier": 1.59
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.0246,
+      "roa": 0.0152,
+      "equity_multiplier": 1.62
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.0257,
+      "roa": 0.0156,
+      "equity_multiplier": 1.65
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": 0.0244,
+      "roa": 0.0152,
+      "equity_multiplier": 1.61
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.0263,
+      "roa": 0.0166,
+      "equity_multiplier": 1.58
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.0285,
+      "roa": 0.0176,
+      "equity_multiplier": 1.62
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.0253,
+      "roa": 0.0153,
+      "equity_multiplier": 1.65
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.0309,
+      "roa": 0.0192,
+      "equity_multiplier": 1.61
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.0344,
+      "roa": 0.0216,
+      "equity_multiplier": 1.59
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0326,
+      "roa": 0.0187,
+      "equity_multiplier": 1.74
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "CRM",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0133,
+      "net_margin": 0.1404,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0152,
+      "net_margin": 0.1557,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.0156,
+      "net_margin": 0.1679,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": 0.0152,
+      "net_margin": 0.1532,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.0166,
+      "net_margin": 0.1617,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.0176,
+      "net_margin": 0.1709,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0153,
+      "net_margin": 0.1568,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0192,
+      "net_margin": 0.1843,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0216,
+      "net_margin": 0.2033,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "CRM",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0187,
+      "net_margin": 0.1735,
+      "asset_turnover": 0.11
+    }
+  ]
+}

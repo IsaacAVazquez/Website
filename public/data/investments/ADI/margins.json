@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ADI",
+      "report_date": "2022-04-30",
+      "gross_profit": 1944520000.0,
+      "total_revenue": 2972064000.0,
+      "gross_margin": 0.6543
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-07-31",
+      "gross_profit": 2043142000.0,
+      "total_revenue": 3109880000.0,
+      "gross_margin": 0.657
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "gross_profit": 2142815000.0,
+      "total_revenue": 3247716000.0,
+      "gross_margin": 0.6598
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-01-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-04-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-07-31",
+      "gross_profit": 1961615000.0,
+      "total_revenue": 3076495000.0,
+      "gross_margin": 0.6376
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "gross_profit": 1646716000.0,
+      "total_revenue": 2716484000.0,
+      "gross_margin": 0.6062
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31",
+      "gross_profit": 1473941000.0,
+      "total_revenue": 2512704000.0,
+      "gross_margin": 0.5866
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30",
+      "gross_profit": 1180035000.0,
+      "total_revenue": 2159039000.0,
+      "gross_margin": 0.5466
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31",
+      "gross_profit": 1311239000.0,
+      "total_revenue": 2312209000.0,
+      "gross_margin": 0.5671
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "gross_profit": 1416128000.0,
+      "total_revenue": 2443205000.0,
+      "gross_margin": 0.5796
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31",
+      "gross_profit": 1430303000.0,
+      "total_revenue": 2423174000.0,
+      "gross_margin": 0.5903
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30",
+      "gross_profit": 1611610000.0,
+      "total_revenue": 2640068000.0,
+      "gross_margin": 0.6104
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31",
+      "gross_profit": 1789748000.0,
+      "total_revenue": 2880348000.0,
+      "gross_margin": 0.6214
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "gross_profit": 1941817000.0,
+      "total_revenue": 3076117000.0,
+      "gross_margin": 0.6313
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31",
+      "gross_profit": 2044976000.0,
+      "total_revenue": 3160263000.0,
+      "gross_margin": 0.6471
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ADI",
+      "report_date": "2019-10-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2020-10-31",
+      "gross_profit": 3690478000.0,
+      "total_revenue": 5603056000.0,
+      "gross_margin": 0.6587
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2021-10-31",
+      "gross_profit": 4525012000.0,
+      "total_revenue": 7318286000.0,
+      "gross_margin": 0.6183
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "gross_profit": 7532474000.0,
+      "total_revenue": 12013953000.0,
+      "gross_margin": 0.627
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "gross_profit": 7877218000.0,
+      "total_revenue": 12305539000.0,
+      "gross_margin": 0.6401
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "gross_profit": 5381343000.0,
+      "total_revenue": 9427157000.0,
+      "gross_margin": 0.5708
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "gross_profit": 6773478000.0,
+      "total_revenue": 11019707000.0,
+      "gross_margin": 0.6147
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ADI",
+      "report_date": "2022-04-30",
+      "operating_income": 964835000.0,
+      "total_revenue": 2972064000.0,
+      "operating_margin": 0.3246
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-07-31",
+      "operating_income": 1031507000.0,
+      "total_revenue": 3109880000.0,
+      "operating_margin": 0.3317
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "operating_income": 1132382000.0,
+      "total_revenue": 3247716000.0,
+      "operating_margin": 0.3487
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-01-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-04-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-07-31",
+      "operating_income": 953032000.0,
+      "total_revenue": 3076495000.0,
+      "operating_margin": 0.3098
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "operating_income": 748450000.0,
+      "total_revenue": 2716484000.0,
+      "operating_margin": 0.2755
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31",
+      "operating_income": 602104000.0,
+      "total_revenue": 2512704000.0,
+      "operating_margin": 0.2396
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30",
+      "operating_income": 392100000.0,
+      "total_revenue": 2159039000.0,
+      "operating_margin": 0.1816
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31",
+      "operating_income": 503601000.0,
+      "total_revenue": 2312209000.0,
+      "operating_margin": 0.2178
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "operating_income": 572251000.0,
+      "total_revenue": 2443205000.0,
+      "operating_margin": 0.2342
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31",
+      "operating_income": 555200000.0,
+      "total_revenue": 2423174000.0,
+      "operating_margin": 0.2291
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30",
+      "operating_income": 679689000.0,
+      "total_revenue": 2640068000.0,
+      "operating_margin": 0.2575
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31",
+      "operating_income": 822376000.0,
+      "total_revenue": 2880348000.0,
+      "operating_margin": 0.2855
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "operating_income": 945211000.0,
+      "total_revenue": 3076117000.0,
+      "operating_margin": 0.3073
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31",
+      "operating_income": 1045008000.0,
+      "total_revenue": 3160263000.0,
+      "operating_margin": 0.3307
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ADI",
+      "report_date": "2019-10-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2020-10-31",
+      "operating_income": 1550581000.0,
+      "total_revenue": 5603056000.0,
+      "operating_margin": 0.2767
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2021-10-31",
+      "operating_income": 1776657000.0,
+      "total_revenue": 7318286000.0,
+      "operating_margin": 0.2428
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "operating_income": 3553209000.0,
+      "total_revenue": 12013953000.0,
+      "operating_margin": 0.2958
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "operating_income": 3983822000.0,
+      "total_revenue": 12305539000.0,
+      "operating_margin": 0.3237
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "operating_income": 2070056000.0,
+      "total_revenue": 9427157000.0,
+      "operating_margin": 0.2196
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "operating_income": 3002476000.0,
+      "total_revenue": 11019707000.0,
+      "operating_margin": 0.2725
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ADI",
+      "report_date": "2022-04-30",
+      "net_income_common_stockholders": 783273000.0,
+      "total_revenue": 2972064000.0,
+      "net_margin": 0.2635
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": 748985000.0,
+      "total_revenue": 3109880000.0,
+      "net_margin": 0.2408
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": 936226000.0,
+      "total_revenue": 3247716000.0,
+      "net_margin": 0.2883
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-04-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 877019000.0,
+      "total_revenue": 3076495000.0,
+      "net_margin": 0.2851
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 498430000.0,
+      "total_revenue": 2716484000.0,
+      "net_margin": 0.1835
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 462727000.0,
+      "total_revenue": 2512704000.0,
+      "net_margin": 0.1842
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 302242000.0,
+      "total_revenue": 2159039000.0,
+      "net_margin": 0.14
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 392232000.0,
+      "total_revenue": 2312209000.0,
+      "net_margin": 0.1696
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 478072000.0,
+      "total_revenue": 2443205000.0,
+      "net_margin": 0.1957
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 391316000.0,
+      "total_revenue": 2423174000.0,
+      "net_margin": 0.1615
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 569770000.0,
+      "total_revenue": 2640068000.0,
+      "net_margin": 0.2158
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 518518000.0,
+      "total_revenue": 2880348000.0,
+      "net_margin": 0.18
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 787738000.0,
+      "total_revenue": 3076117000.0,
+      "net_margin": 0.2561
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 830826000.0,
+      "total_revenue": 3160263000.0,
+      "net_margin": 0.2629
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ADI",
+      "report_date": "2019-10-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2020-10-31",
+      "net_income_common_stockholders": 1220761000.0,
+      "total_revenue": 5603056000.0,
+      "net_margin": 0.2179
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2021-10-31",
+      "net_income_common_stockholders": 1390422000.0,
+      "total_revenue": 7318286000.0,
+      "net_margin": 0.19
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": 2748561000.0,
+      "total_revenue": 12013953000.0,
+      "net_margin": 0.2288
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 3314579000.0,
+      "total_revenue": 12305539000.0,
+      "net_margin": 0.2694
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 1635273000.0,
+      "total_revenue": 9427157000.0,
+      "net_margin": 0.1735
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 2267342000.0,
+      "total_revenue": 11019707000.0,
+      "net_margin": 0.2058
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ADI",
+      "report_date": "2022-04-30",
+      "ebitda": null,
+      "total_revenue": 2972064000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-07-31",
+      "ebitda": 1478095000.0,
+      "total_revenue": 3109880000.0,
+      "ebitda_margin": 0.4753
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "ebitda": 1668333000.0,
+      "total_revenue": 3247716000.0,
+      "ebitda_margin": 0.5137
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-01-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-04-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-07-31",
+      "ebitda": 1531859000.0,
+      "total_revenue": 3076495000.0,
+      "ebitda_margin": 0.4979
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "ebitda": 1179493000.0,
+      "total_revenue": 2716484000.0,
+      "ebitda_margin": 0.4342
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31",
+      "ebitda": 1115810000.0,
+      "total_revenue": 2512704000.0,
+      "ebitda_margin": 0.4441
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30",
+      "ebitda": 930003000.0,
+      "total_revenue": 2159039000.0,
+      "ebitda_margin": 0.4307
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31",
+      "ebitda": 1038477000.0,
+      "total_revenue": 2312209000.0,
+      "ebitda_margin": 0.4491
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "ebitda": 1119593000.0,
+      "total_revenue": 2443205000.0,
+      "ebitda_margin": 0.4582
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31",
+      "ebitda": 1026443000.0,
+      "total_revenue": 2423174000.0,
+      "ebitda_margin": 0.4236
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30",
+      "ebitda": 1201238000.0,
+      "total_revenue": 2640068000.0,
+      "ebitda_margin": 0.455
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31",
+      "ebitda": 1330293000.0,
+      "total_revenue": 2880348000.0,
+      "ebitda_margin": 0.4619
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "ebitda": 1470699000.0,
+      "total_revenue": 3076117000.0,
+      "ebitda_margin": 0.4781
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31",
+      "ebitda": 1522717000.0,
+      "total_revenue": 3160263000.0,
+      "ebitda_margin": 0.4818
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ADI",
+      "report_date": "2019-10-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2020-10-31",
+      "ebitda": 2315845000.0,
+      "total_revenue": 5603056000.0,
+      "ebitda_margin": 0.4133
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2021-10-31",
+      "ebitda": 2588173000.0,
+      "total_revenue": 7318286000.0,
+      "ebitda_margin": 0.3537
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "ebitda": 5596656000.0,
+      "total_revenue": 12013953000.0,
+      "ebitda_margin": 0.4658
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "ebitda": 6165747000.0,
+      "total_revenue": 12305539000.0,
+      "ebitda_margin": 0.5011
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "ebitda": 4203883000.0,
+      "total_revenue": 9427157000.0,
+      "ebitda_margin": 0.4459
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "ebitda": 5028673000.0,
+      "total_revenue": 11019707000.0,
+      "ebitda_margin": 0.4563
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ADI",
+      "report_date": "2022-04-30",
+      "free_cash_flow": 1103028000.0,
+      "total_revenue": 2972064000.0,
+      "fcf_margin": 0.3711
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-07-31",
+      "free_cash_flow": 1082962000.0,
+      "total_revenue": 3109880000.0,
+      "fcf_margin": 0.3482
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "free_cash_flow": null,
+      "total_revenue": 3247716000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-01-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-04-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 817880000.0,
+      "total_revenue": 3076495000.0,
+      "fcf_margin": 0.2658
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 710901000.0,
+      "total_revenue": 2716484000.0,
+      "fcf_margin": 0.2617
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 915854000.0,
+      "total_revenue": 2512704000.0,
+      "fcf_margin": 0.3645
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30",
+      "free_cash_flow": 619664000.0,
+      "total_revenue": 2159039000.0,
+      "fcf_margin": 0.287
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 701141000.0,
+      "total_revenue": 2312209000.0,
+      "fcf_margin": 0.3032
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 885407000.0,
+      "total_revenue": 2443205000.0,
+      "fcf_margin": 0.3624
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 977831000.0,
+      "total_revenue": 2423174000.0,
+      "fcf_margin": 0.4035
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30",
+      "free_cash_flow": 729210000.0,
+      "total_revenue": 2640068000.0,
+      "fcf_margin": 0.2762
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 1085952000.0,
+      "total_revenue": 2880348000.0,
+      "fcf_margin": 0.377
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 1485657000.0,
+      "total_revenue": 3076117000.0,
+      "fcf_margin": 0.483
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 1259202000.0,
+      "total_revenue": 3160263000.0,
+      "fcf_margin": 0.3984
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ADI",
+      "report_date": "2019-10-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2020-10-31",
+      "free_cash_flow": 1842795000.0,
+      "total_revenue": 5603056000.0,
+      "fcf_margin": 0.3289
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2021-10-31",
+      "free_cash_flow": 2391393000.0,
+      "total_revenue": 7318286000.0,
+      "fcf_margin": 0.3268
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2022-10-31",
+      "free_cash_flow": 3776094000.0,
+      "total_revenue": 12013953000.0,
+      "fcf_margin": 0.3143
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 3556171000.0,
+      "total_revenue": 12305539000.0,
+      "fcf_margin": 0.289
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 3122066000.0,
+      "total_revenue": 9427157000.0,
+      "fcf_margin": 0.3312
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 4278650000.0,
+      "total_revenue": 11019707000.0,
+      "fcf_margin": 0.3883
+    }
+  ]
+}

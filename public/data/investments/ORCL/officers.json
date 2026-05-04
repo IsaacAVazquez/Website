@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "ORCL",
+    "name": "Mr. Clayton M. Magouyrk",
+    "title": "Chief Executive Officer & Director",
+    "age": 38,
+    "born": 1987,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Mr. Jeffrey O. Henley",
+    "title": "Executive Vice Chairman of the Board",
+    "age": 80,
+    "born": 1945,
+    "pay": 658717,
+    "exercised": 0,
+    "unexercised": 195104000
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Mr. Lawrence J. Ellison",
+    "title": "Co-Founder, Chairman & CTO",
+    "age": 81,
+    "born": 1944,
+    "pay": 5643948,
+    "exercised": 230992432,
+    "unexercised": 858000000
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Mr. Mark  Hura",
+    "title": "President of Global Field Operations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Mr. Michael D. Sicilia",
+    "title": "Chief Executive Officer & Director",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Mr. Stuart A. Levey",
+    "title": "Executive VP & Chief Legal Officer",
+    "age": 61,
+    "born": 1964,
+    "pay": 990091,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Ms. Hilary Barbara Maxson B.Sc., M.B.A.",
+    "title": "Chief Financial Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Ms. Jae  Evans",
+    "title": "Global Chief Information Officer & Executive VP",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Ms. Maria  Smith",
+    "title": "Executive VP & Chief Accounting Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 639362,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Ms. Safra Ada Catz",
+    "title": "Executive Vice Chair",
+    "age": 63,
+    "born": 1962,
+    "pay": 1113417,
+    "exercised": 510901632,
+    "unexercised": 422698624
+  }
+]

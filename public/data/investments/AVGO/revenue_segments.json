@@ -1,0 +1,223 @@
+{
+  "by_segment": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2017-12-31",
+      "Infrastructure Software": 0.0,
+      "Intellectual Property Licensing": 44000000.0,
+      "Semiconductor Solutions": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2018-03-31",
+      "Infrastructure Software": 0.0,
+      "Intellectual Property Licensing": 30000000.0,
+      "Semiconductor Solutions": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2018-06-30",
+      "Infrastructure Software": 0.0,
+      "Intellectual Property Licensing": 3000000.0,
+      "Semiconductor Solutions": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2018-09-30",
+      "Infrastructure Software": 0.0,
+      "Intellectual Property Licensing": 57000000.0,
+      "Semiconductor Solutions": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2018-12-31",
+      "Infrastructure Software": 0.0,
+      "Intellectual Property Licensing": 12000000.0,
+      "Semiconductor Solutions": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-03-31",
+      "Infrastructure Software": 0.0,
+      "Intellectual Property Licensing": 16000000.0,
+      "Semiconductor Solutions": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-06-30",
+      "Infrastructure Software": 0.0,
+      "Intellectual Property Licensing": 22000000.0,
+      "Semiconductor Solutions": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-03-31",
+      "Infrastructure Software": 1715000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 4027000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-06-30",
+      "Infrastructure Software": 1602000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 4219000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-09-30",
+      "Infrastructure Software": 1637000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 4830000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-12-31",
+      "Infrastructure Software": 1747000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 4908000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-03-31",
+      "Infrastructure Software": 1790000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 4820000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-06-30",
+      "Infrastructure Software": 1757000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 5021000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-09-30",
+      "Infrastructure Software": 1773000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 5634000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-12-31",
+      "Infrastructure Software": 1833000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 5873000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-03-31",
+      "Infrastructure Software": 1874000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 6229000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-06-30",
+      "Infrastructure Software": 1840000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 6624000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-09-30",
+      "Infrastructure Software": 1838000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 7092000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-12-31",
+      "Infrastructure Software": 1808000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 7107000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-03-31",
+      "Infrastructure Software": 1925000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 6808000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-06-30",
+      "Infrastructure Software": 1935000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 6941000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-09-30",
+      "Infrastructure Software": 1969000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 7326000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-12-31",
+      "Infrastructure Software": 4571000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 7390000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-03-31",
+      "Infrastructure Software": 5285000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 7202000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-06-30",
+      "Infrastructure Software": 5798000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 7274000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-09-30",
+      "Infrastructure Software": 5824000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 8230000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-12-31",
+      "Infrastructure Software": 6704000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 8212000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-03-31",
+      "Infrastructure Software": 6596000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 8408000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-06-30",
+      "Infrastructure Software": 6786000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 9166000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-09-30",
+      "Infrastructure Software": 6943000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 11072000000.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-12-31",
+      "Infrastructure Software": 6796000000.0,
+      "Intellectual Property Licensing": 0.0,
+      "Semiconductor Solutions": 12515000000.0
+    }
+  ],
+  "by_geography": [],
+  "by_product": []
+}

@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "INTC",
+      "report_date": "2022-06-30",
+      "gross_profit": 5587000000.0,
+      "total_revenue": 15321000000.0,
+      "gross_margin": 0.3647
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-06-30",
+      "gross_profit": 4638000000.0,
+      "total_revenue": 12949000000.0,
+      "gross_margin": 0.3582
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30",
+      "gross_profit": 6018000000.0,
+      "total_revenue": 14158000000.0,
+      "gross_margin": 0.4251
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "gross_profit": 7047000000.0,
+      "total_revenue": 15406000000.0,
+      "gross_margin": 0.4574
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31",
+      "gross_profit": 5217000000.0,
+      "total_revenue": 12724000000.0,
+      "gross_margin": 0.41
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30",
+      "gross_profit": 4547000000.0,
+      "total_revenue": 12833000000.0,
+      "gross_margin": 0.3543
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30",
+      "gross_profit": 1997000000.0,
+      "total_revenue": 13284000000.0,
+      "gross_margin": 0.1503
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "gross_profit": 5584000000.0,
+      "total_revenue": 14260000000.0,
+      "gross_margin": 0.3916
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31",
+      "gross_profit": 4672000000.0,
+      "total_revenue": 12667000000.0,
+      "gross_margin": 0.3688
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30",
+      "gross_profit": 3542000000.0,
+      "total_revenue": 12859000000.0,
+      "gross_margin": 0.2754
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30",
+      "gross_profit": 5218000000.0,
+      "total_revenue": 13653000000.0,
+      "gross_margin": 0.3822
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "gross_profit": 4943000000.0,
+      "total_revenue": 13674000000.0,
+      "gross_margin": 0.3615
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31",
+      "gross_profit": 5347000000.0,
+      "total_revenue": 13577000000.0,
+      "gross_margin": 0.3938
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "INTC",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2020-12-31",
+      "gross_profit": 43612000000.0,
+      "total_revenue": 77867000000.0,
+      "gross_margin": 0.5601
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2021-12-31",
+      "gross_profit": 43815000000.0,
+      "total_revenue": 79024000000.0,
+      "gross_margin": 0.5545
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "gross_profit": 26866000000.0,
+      "total_revenue": 63054000000.0,
+      "gross_margin": 0.4261
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "gross_profit": 21711000000.0,
+      "total_revenue": 54228000000.0,
+      "gross_margin": 0.4004
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "gross_profit": 17345000000.0,
+      "total_revenue": 53101000000.0,
+      "gross_margin": 0.3266
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "gross_profit": 18375000000.0,
+      "total_revenue": 52853000000.0,
+      "gross_margin": 0.3477
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "INTC",
+      "report_date": "2022-06-30",
+      "operating_income": -613000000.0,
+      "total_revenue": 15321000000.0,
+      "operating_margin": -0.04
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-06-30",
+      "operating_income": -816000000.0,
+      "total_revenue": 12949000000.0,
+      "operating_margin": -0.063
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30",
+      "operating_income": 808000000.0,
+      "total_revenue": 14158000000.0,
+      "operating_margin": 0.0571
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "operating_income": 1443000000.0,
+      "total_revenue": 15406000000.0,
+      "operating_margin": 0.0937
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31",
+      "operating_income": -721000000.0,
+      "total_revenue": 12724000000.0,
+      "operating_margin": -0.0567
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30",
+      "operating_income": -1021000000.0,
+      "total_revenue": 12833000000.0,
+      "operating_margin": -0.0796
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30",
+      "operating_income": -3435000000.0,
+      "total_revenue": 13284000000.0,
+      "operating_margin": -0.2586
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "operating_income": 469000000.0,
+      "total_revenue": 14260000000.0,
+      "operating_margin": 0.0329
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31",
+      "operating_income": -145000000.0,
+      "total_revenue": 12667000000.0,
+      "operating_margin": -0.0114
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30",
+      "operating_income": -1286000000.0,
+      "total_revenue": 12859000000.0,
+      "operating_margin": -0.1
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30",
+      "operating_income": 858000000.0,
+      "total_revenue": 13653000000.0,
+      "operating_margin": 0.0628
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "operating_income": 550000000.0,
+      "total_revenue": 13674000000.0,
+      "operating_margin": 0.0402
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31",
+      "operating_income": 934000000.0,
+      "total_revenue": 13577000000.0,
+      "operating_margin": 0.0688
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "INTC",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2020-12-31",
+      "operating_income": 23876000000.0,
+      "total_revenue": 77867000000.0,
+      "operating_margin": 0.3066
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2021-12-31",
+      "operating_income": 22082000000.0,
+      "total_revenue": 79024000000.0,
+      "operating_margin": 0.2794
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "operating_income": 2336000000.0,
+      "total_revenue": 63054000000.0,
+      "operating_margin": 0.037
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "operating_income": 31000000.0,
+      "total_revenue": 54228000000.0,
+      "operating_margin": 0.0006
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "operating_income": -4708000000.0,
+      "total_revenue": 53101000000.0,
+      "operating_margin": -0.0887
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "operating_income": -23000000.0,
+      "total_revenue": 52853000000.0,
+      "operating_margin": -0.0004
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "INTC",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": -454000000.0,
+      "total_revenue": 15321000000.0,
+      "net_margin": -0.0296
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 1481000000.0,
+      "total_revenue": 12949000000.0,
+      "net_margin": 0.1144
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 297000000.0,
+      "total_revenue": 14158000000.0,
+      "net_margin": 0.021
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2669000000.0,
+      "total_revenue": 15406000000.0,
+      "net_margin": 0.1732
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -381000000.0,
+      "total_revenue": 12724000000.0,
+      "net_margin": -0.0299
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": -1610000000.0,
+      "total_revenue": 12833000000.0,
+      "net_margin": -0.1255
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": -16639000000.0,
+      "total_revenue": 13284000000.0,
+      "net_margin": -1.2526
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": -126000000.0,
+      "total_revenue": 14260000000.0,
+      "net_margin": -0.0088
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": -821000000.0,
+      "total_revenue": 12667000000.0,
+      "net_margin": -0.0648
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": -2918000000.0,
+      "total_revenue": 12859000000.0,
+      "net_margin": -0.2269
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 4063000000.0,
+      "total_revenue": 13653000000.0,
+      "net_margin": 0.2976
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": -591000000.0,
+      "total_revenue": 13674000000.0,
+      "net_margin": -0.0432
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": -3728000000.0,
+      "total_revenue": 13577000000.0,
+      "net_margin": -0.2746
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "INTC",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 20899000000.0,
+      "total_revenue": 77867000000.0,
+      "net_margin": 0.2684
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 19868000000.0,
+      "total_revenue": 79024000000.0,
+      "net_margin": 0.2514
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 8014000000.0,
+      "total_revenue": 63054000000.0,
+      "net_margin": 0.1271
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1689000000.0,
+      "total_revenue": 54228000000.0,
+      "net_margin": 0.0311
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": -18756000000.0,
+      "total_revenue": 53101000000.0,
+      "net_margin": -0.3532
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": -267000000.0,
+      "total_revenue": 52853000000.0,
+      "net_margin": -0.0051
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "INTC",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 15321000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-06-30",
+      "ebitda": 1674000000.0,
+      "total_revenue": 12949000000.0,
+      "ebitda_margin": 0.1293
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30",
+      "ebitda": 2599000000.0,
+      "total_revenue": 14158000000.0,
+      "ebitda_margin": 0.1836
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "ebitda": 5568000000.0,
+      "total_revenue": 15406000000.0,
+      "ebitda_margin": 0.3614
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31",
+      "ebitda": 2090000000.0,
+      "total_revenue": 12724000000.0,
+      "ebitda_margin": 0.1643
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30",
+      "ebitda": 859000000.0,
+      "total_revenue": 12833000000.0,
+      "ebitda_margin": 0.0669
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30",
+      "ebitda": -5226000000.0,
+      "total_revenue": 13284000000.0,
+      "ebitda_margin": -0.3934
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "ebitda": 3480000000.0,
+      "total_revenue": 14260000000.0,
+      "ebitda_margin": 0.244
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31",
+      "ebitda": 2387000000.0,
+      "total_revenue": 12667000000.0,
+      "ebitda_margin": 0.1884
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30",
+      "ebitda": 471000000.0,
+      "total_revenue": 12859000000.0,
+      "ebitda_margin": 0.0366
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30",
+      "ebitda": 7848000000.0,
+      "total_revenue": 13653000000.0,
+      "ebitda_margin": 0.5748
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "ebitda": 3648000000.0,
+      "total_revenue": 13674000000.0,
+      "ebitda_margin": 0.2668
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31",
+      "ebitda": -546000000.0,
+      "total_revenue": 13577000000.0,
+      "ebitda_margin": -0.0402
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "INTC",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2020-12-31",
+      "ebitda": 37946000000.0,
+      "total_revenue": 77867000000.0,
+      "ebitda_margin": 0.4873
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2021-12-31",
+      "ebitda": 34092000000.0,
+      "total_revenue": 79024000000.0,
+      "ebitda_margin": 0.4314
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "ebitda": 21299000000.0,
+      "total_revenue": 63054000000.0,
+      "ebitda_margin": 0.3378
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "ebitda": 11242000000.0,
+      "total_revenue": 54228000000.0,
+      "ebitda_margin": 0.2073
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "ebitda": 1203000000.0,
+      "total_revenue": 53101000000.0,
+      "ebitda_margin": 0.0227
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "ebitda": 14354000000.0,
+      "total_revenue": 52853000000.0,
+      "ebitda_margin": 0.2716
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "INTC",
+      "report_date": "2022-06-30",
+      "free_cash_flow": -6446000000.0,
+      "total_revenue": 15321000000.0,
+      "fcf_margin": -0.4207
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-06-30",
+      "free_cash_flow": -3080000000.0,
+      "total_revenue": 12949000000.0,
+      "fcf_margin": -0.2379
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 71000000.0,
+      "total_revenue": 14158000000.0,
+      "fcf_margin": 0.005
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "free_cash_flow": -2072000000.0,
+      "total_revenue": 15406000000.0,
+      "fcf_margin": -0.1345
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-03-31",
+      "free_cash_flow": -7193000000.0,
+      "total_revenue": 12724000000.0,
+      "fcf_margin": -0.5653
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-06-30",
+      "free_cash_flow": -3390000000.0,
+      "total_revenue": 12833000000.0,
+      "fcf_margin": -0.2642
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-09-30",
+      "free_cash_flow": -2404000000.0,
+      "total_revenue": 13284000000.0,
+      "fcf_margin": -0.181
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -2669000000.0,
+      "total_revenue": 14260000000.0,
+      "fcf_margin": -0.1872
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-03-31",
+      "free_cash_flow": -4370000000.0,
+      "total_revenue": 12667000000.0,
+      "fcf_margin": -0.345
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-06-30",
+      "free_cash_flow": -1500000000.0,
+      "total_revenue": 12859000000.0,
+      "fcf_margin": -0.1166
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 121000000.0,
+      "total_revenue": 13653000000.0,
+      "fcf_margin": 0.0089
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 800000000.0,
+      "total_revenue": 13674000000.0,
+      "fcf_margin": 0.0585
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2026-03-31",
+      "free_cash_flow": -2540000000.0,
+      "total_revenue": 13577000000.0,
+      "fcf_margin": -0.1871
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "INTC",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 21411000000.0,
+      "total_revenue": 77867000000.0,
+      "fcf_margin": 0.275
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 9127000000.0,
+      "total_revenue": 79024000000.0,
+      "fcf_margin": 0.1155
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2022-12-31",
+      "free_cash_flow": -9411000000.0,
+      "total_revenue": 63054000000.0,
+      "fcf_margin": -0.1493
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2023-12-31",
+      "free_cash_flow": -14279000000.0,
+      "total_revenue": 54228000000.0,
+      "fcf_margin": -0.2633
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -15656000000.0,
+      "total_revenue": 53101000000.0,
+      "fcf_margin": -0.2948
+    },
+    {
+      "symbol": "INTC",
+      "report_date": "2025-12-31",
+      "free_cash_flow": -4949000000.0,
+      "total_revenue": 52853000000.0,
+      "fcf_margin": -0.0936
+    }
+  ]
+}

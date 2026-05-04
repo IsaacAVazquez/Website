@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 3524000000.0,
+      "beginning_stockholders_equity": 22079000000.0,
+      "ending_stockholders_equity": 23988000000.0,
+      "avg_equity": 23033500000.0,
+      "roe": 0.153
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1325000000.0,
+      "beginning_stockholders_equity": 23988000000.0,
+      "ending_stockholders_equity": 70284000000.0,
+      "avg_equity": 47136000000.0,
+      "roe": 0.0281
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 2121000000.0,
+      "beginning_stockholders_equity": 70284000000.0,
+      "ending_stockholders_equity": 69961000000.0,
+      "avg_equity": 70122500000.0,
+      "roe": 0.0302
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": -1875000000.0,
+      "beginning_stockholders_equity": 69961000000.0,
+      "ending_stockholders_equity": 65651000000.0,
+      "avg_equity": 67806000000.0,
+      "roe": -0.0277
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 4324000000.0,
+      "beginning_stockholders_equity": 65651000000.0,
+      "ending_stockholders_equity": 67678000000.0,
+      "avg_equity": 66664500000.0,
+      "roe": 0.0649
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 5503000000.0,
+      "beginning_stockholders_equity": 67678000000.0,
+      "ending_stockholders_equity": 69789000000.0,
+      "avg_equity": 68733500000.0,
+      "roe": 0.0801
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 4965000000.0,
+      "beginning_stockholders_equity": 69789000000.0,
+      "ending_stockholders_equity": 69586000000.0,
+      "avg_equity": 69687500000.0,
+      "roe": 0.0712
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 4140000000.0,
+      "beginning_stockholders_equity": 69586000000.0,
+      "ending_stockholders_equity": 73277000000.0,
+      "avg_equity": 71431500000.0,
+      "roe": 0.058
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 8518000000.0,
+      "beginning_stockholders_equity": 73277000000.0,
+      "ending_stockholders_equity": 81292000000.0,
+      "avg_equity": 77284500000.0,
+      "roe": 0.1102
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 7349000000.0,
+      "beginning_stockholders_equity": 81292000000.0,
+      "ending_stockholders_equity": 79872000000.0,
+      "avg_equity": 80582000000.0,
+      "roe": 0.0912
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 3524000000.0,
+      "beginning_total_assets": 71595000000.0,
+      "ending_total_assets": 72861000000.0,
+      "avg_assets": 72228000000.0,
+      "roa": 0.0488
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1325000000.0,
+      "beginning_total_assets": 72861000000.0,
+      "ending_total_assets": 177870000000.0,
+      "avg_assets": 125365500000.0,
+      "roa": 0.0106
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 2121000000.0,
+      "beginning_total_assets": 177870000000.0,
+      "ending_total_assets": 175211000000.0,
+      "avg_assets": 176540500000.0,
+      "roa": 0.012
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": -1875000000.0,
+      "beginning_total_assets": 175211000000.0,
+      "ending_total_assets": 167966000000.0,
+      "avg_assets": 171588500000.0,
+      "roa": -0.0109
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 4324000000.0,
+      "beginning_total_assets": 167966000000.0,
+      "ending_total_assets": 165645000000.0,
+      "avg_assets": 166805500000.0,
+      "roa": 0.0259
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 5503000000.0,
+      "beginning_total_assets": 165645000000.0,
+      "ending_total_assets": 165358000000.0,
+      "avg_assets": 165501500000.0,
+      "roa": 0.0333
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 4965000000.0,
+      "beginning_total_assets": 165358000000.0,
+      "ending_total_assets": 164630000000.0,
+      "avg_assets": 164994000000.0,
+      "roa": 0.0301
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 4140000000.0,
+      "beginning_total_assets": 164630000000.0,
+      "ending_total_assets": 165621000000.0,
+      "avg_assets": 165125500000.0,
+      "roa": 0.0251
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 8518000000.0,
+      "beginning_total_assets": 165621000000.0,
+      "ending_total_assets": 171092000000.0,
+      "avg_assets": 168356500000.0,
+      "roa": 0.0506
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 7349000000.0,
+      "beginning_total_assets": 171092000000.0,
+      "ending_total_assets": 169903000000.0,
+      "avg_assets": 170497500000.0,
+      "roa": 0.0431
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "ebit": 4372000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 3891080000.0,
+      "beginning_invested_capital": 61370000000.0,
+      "ending_invested_capital": 63168000000.0,
+      "avg_invested_capital": 62269000000.0,
+      "roic": 0.0625
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31",
+      "ebit": 2268000000.0,
+      "tax_rate_for_calcs": 0.05,
+      "nopat": 2154600000.0,
+      "beginning_invested_capital": 63168000000.0,
+      "ending_invested_capital": 146087000000.0,
+      "avg_invested_capital": 104627500000.0,
+      "roic": 0.0206
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30",
+      "ebit": 3052000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 2411080000.0,
+      "beginning_invested_capital": 146087000000.0,
+      "ending_invested_capital": 143904000000.0,
+      "avg_invested_capital": 144995500000.0,
+      "roic": 0.0166
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31",
+      "ebit": 3870000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 3057300000.0,
+      "beginning_invested_capital": 143904000000.0,
+      "ending_invested_capital": 135549000000.0,
+      "avg_invested_capital": 139726500000.0,
+      "roic": 0.0219
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "ebit": 4679000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 3696410000.0,
+      "beginning_invested_capital": 135549000000.0,
+      "ending_invested_capital": 135205000000.0,
+      "avg_invested_capital": 135377000000.0,
+      "roic": 0.0273
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31",
+      "ebit": 6363000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 5026770000.0,
+      "beginning_invested_capital": 135205000000.0,
+      "ending_invested_capital": 136346000000.0,
+      "avg_invested_capital": 135775500000.0,
+      "roic": 0.037
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30",
+      "ebit": 5854000000.0,
+      "tax_rate_for_calcs": 0.02,
+      "nopat": 5736920000.0,
+      "beginning_invested_capital": 136346000000.0,
+      "ending_invested_capital": 136857000000.0,
+      "avg_invested_capital": 136601500000.0,
+      "roic": 0.042
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31",
+      "ebit": 6092000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 4751760000.0,
+      "beginning_invested_capital": 136857000000.0,
+      "ending_invested_capital": 137496000000.0,
+      "avg_invested_capital": 137176500000.0,
+      "roic": 0.0346
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "ebit": 7630000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 6027700000.0,
+      "beginning_invested_capital": 137496000000.0,
+      "ending_invested_capital": 146428000000.0,
+      "avg_invested_capital": 141962000000.0,
+      "roic": 0.0425
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31",
+      "ebit": 8996000000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": 8096400000.0,
+      "beginning_invested_capital": 146428000000.0,
+      "ending_invested_capital": 145929000000.0,
+      "avg_invested_capital": 146178500000.0,
+      "roic": 0.0554
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.153,
+      "roa": 0.0488,
+      "equity_multiplier": 3.14
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.0281,
+      "roa": 0.0106,
+      "equity_multiplier": 2.65
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.0302,
+      "roa": 0.012,
+      "equity_multiplier": 2.52
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": -0.0277,
+      "roa": -0.0109,
+      "equity_multiplier": 2.54
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.0649,
+      "roa": 0.0259,
+      "equity_multiplier": 2.51
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.0801,
+      "roa": 0.0333,
+      "equity_multiplier": 2.41
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.0712,
+      "roa": 0.0301,
+      "equity_multiplier": 2.37
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.058,
+      "roa": 0.0251,
+      "equity_multiplier": 2.31
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.1102,
+      "roa": 0.0506,
+      "equity_multiplier": 2.18
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0912,
+      "roa": 0.0431,
+      "equity_multiplier": 2.12
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0488,
+      "net_margin": 0.3791,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0106,
+      "net_margin": 0.1108,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.012,
+      "net_margin": 0.1699,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": -0.0109,
+      "net_margin": -0.1434,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.0259,
+      "net_margin": 0.3077,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.0333,
+      "net_margin": 0.3689,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0301,
+      "net_margin": 0.3309,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0251,
+      "net_margin": 0.2595,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0506,
+      "net_margin": 0.4728,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0431,
+      "net_margin": 0.3806,
+      "asset_turnover": 0.11
+    }
+  ]
+}

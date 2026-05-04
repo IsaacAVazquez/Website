@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-04-30",
+      "gross_profit": 2927000000.0,
+      "total_revenue": 6245000000.0,
+      "gross_margin": 0.4687
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-07-31",
+      "gross_profit": 3006000000.0,
+      "total_revenue": 6520000000.0,
+      "gross_margin": 0.461
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-01-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-04-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-07-31",
+      "gross_profit": 2976000000.0,
+      "total_revenue": 6425000000.0,
+      "gross_margin": 0.4632
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "gross_profit": 3169000000.0,
+      "total_revenue": 6723000000.0,
+      "gross_margin": 0.4714
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31",
+      "gross_profit": 3204000000.0,
+      "total_revenue": 6707000000.0,
+      "gross_margin": 0.4777
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30",
+      "gross_profit": 3153000000.0,
+      "total_revenue": 6646000000.0,
+      "gross_margin": 0.4744
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31",
+      "gross_profit": 3205000000.0,
+      "total_revenue": 6778000000.0,
+      "gross_margin": 0.4729
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "gross_profit": 3335000000.0,
+      "total_revenue": 7045000000.0,
+      "gross_margin": 0.4734
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31",
+      "gross_profit": 3496000000.0,
+      "total_revenue": 7166000000.0,
+      "gross_margin": 0.4879
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30",
+      "gross_profit": 3485000000.0,
+      "total_revenue": 7100000000.0,
+      "gross_margin": 0.4908
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31",
+      "gross_profit": 3562000000.0,
+      "total_revenue": 7302000000.0,
+      "gross_margin": 0.4878
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "gross_profit": 3265000000.0,
+      "total_revenue": 6800000000.0,
+      "gross_margin": 0.4801
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31",
+      "gross_profit": 3435000000.0,
+      "total_revenue": 7012000000.0,
+      "gross_margin": 0.4899
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2019-10-31",
+      "gross_profit": 6386000000.0,
+      "total_revenue": 14608000000.0,
+      "gross_margin": 0.4372
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2020-10-31",
+      "gross_profit": 7692000000.0,
+      "total_revenue": 17202000000.0,
+      "gross_margin": 0.4472
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2021-10-31",
+      "gross_profit": 10914000000.0,
+      "total_revenue": 23063000000.0,
+      "gross_margin": 0.4732
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "gross_profit": 11993000000.0,
+      "total_revenue": 25785000000.0,
+      "gross_margin": 0.4651
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "gross_profit": 12384000000.0,
+      "total_revenue": 26517000000.0,
+      "gross_margin": 0.467
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "gross_profit": 12897000000.0,
+      "total_revenue": 27176000000.0,
+      "gross_margin": 0.4746
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "gross_profit": 13808000000.0,
+      "total_revenue": 28368000000.0,
+      "gross_margin": 0.4867
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-04-30",
+      "operating_income": 1894000000.0,
+      "total_revenue": 6245000000.0,
+      "operating_margin": 0.3033
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-07-31",
+      "operating_income": 1924000000.0,
+      "total_revenue": 6520000000.0,
+      "operating_margin": 0.2951
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-01-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-04-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-07-31",
+      "operating_income": 1802000000.0,
+      "total_revenue": 6425000000.0,
+      "operating_margin": 0.2805
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "operating_income": 1971000000.0,
+      "total_revenue": 6723000000.0,
+      "operating_margin": 0.2932
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31",
+      "operating_income": 1967000000.0,
+      "total_revenue": 6707000000.0,
+      "operating_margin": 0.2933
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30",
+      "operating_income": 1912000000.0,
+      "total_revenue": 6646000000.0,
+      "operating_margin": 0.2877
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31",
+      "operating_income": 1942000000.0,
+      "total_revenue": 6778000000.0,
+      "operating_margin": 0.2865
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "operating_income": 2046000000.0,
+      "total_revenue": 7045000000.0,
+      "operating_margin": 0.2904
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31",
+      "operating_income": 2175000000.0,
+      "total_revenue": 7166000000.0,
+      "operating_margin": 0.3035
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30",
+      "operating_income": 2169000000.0,
+      "total_revenue": 7100000000.0,
+      "operating_margin": 0.3055
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31",
+      "operating_income": 2233000000.0,
+      "total_revenue": 7302000000.0,
+      "operating_margin": 0.3058
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "operating_income": 1893000000.0,
+      "total_revenue": 6800000000.0,
+      "operating_margin": 0.2784
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31",
+      "operating_income": 2096000000.0,
+      "total_revenue": 7012000000.0,
+      "operating_margin": 0.2989
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2019-10-31",
+      "operating_income": 3350000000.0,
+      "total_revenue": 14608000000.0,
+      "operating_margin": 0.2293
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2020-10-31",
+      "operating_income": 4365000000.0,
+      "total_revenue": 17202000000.0,
+      "operating_margin": 0.2537
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2021-10-31",
+      "operating_income": 7200000000.0,
+      "total_revenue": 23063000000.0,
+      "operating_margin": 0.3122
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "operating_income": 7784000000.0,
+      "total_revenue": 25785000000.0,
+      "operating_margin": 0.3019
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "operating_income": 7654000000.0,
+      "total_revenue": 26517000000.0,
+      "operating_margin": 0.2886
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "operating_income": 7867000000.0,
+      "total_revenue": 27176000000.0,
+      "operating_margin": 0.2895
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "operating_income": 8470000000.0,
+      "total_revenue": 28368000000.0,
+      "operating_margin": 0.2986
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-04-30",
+      "net_income_common_stockholders": 1536000000.0,
+      "total_revenue": 6245000000.0,
+      "net_margin": 0.246
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": 1606000000.0,
+      "total_revenue": 6520000000.0,
+      "net_margin": 0.2463
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-04-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 1560000000.0,
+      "total_revenue": 6425000000.0,
+      "net_margin": 0.2428
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 2004000000.0,
+      "total_revenue": 6723000000.0,
+      "net_margin": 0.2981
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 2019000000.0,
+      "total_revenue": 6707000000.0,
+      "net_margin": 0.301
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 1722000000.0,
+      "total_revenue": 6646000000.0,
+      "net_margin": 0.2591
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 1705000000.0,
+      "total_revenue": 6778000000.0,
+      "net_margin": 0.2515
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 1731000000.0,
+      "total_revenue": 7045000000.0,
+      "net_margin": 0.2457
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 1185000000.0,
+      "total_revenue": 7166000000.0,
+      "net_margin": 0.1654
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 2137000000.0,
+      "total_revenue": 7100000000.0,
+      "net_margin": 0.301
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 1779000000.0,
+      "total_revenue": 7302000000.0,
+      "net_margin": 0.2436
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 1897000000.0,
+      "total_revenue": 6800000000.0,
+      "net_margin": 0.279
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 2026000000.0,
+      "total_revenue": 7012000000.0,
+      "net_margin": 0.2889
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2019-10-31",
+      "net_income_common_stockholders": 2706000000.0,
+      "total_revenue": 14608000000.0,
+      "net_margin": 0.1852
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2020-10-31",
+      "net_income_common_stockholders": 3619000000.0,
+      "total_revenue": 17202000000.0,
+      "net_margin": 0.2104
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2021-10-31",
+      "net_income_common_stockholders": 5888000000.0,
+      "total_revenue": 23063000000.0,
+      "net_margin": 0.2553
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": 6525000000.0,
+      "total_revenue": 25785000000.0,
+      "net_margin": 0.2531
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 6856000000.0,
+      "total_revenue": 26517000000.0,
+      "net_margin": 0.2586
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 7177000000.0,
+      "total_revenue": 27176000000.0,
+      "net_margin": 0.2641
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 6998000000.0,
+      "total_revenue": 28368000000.0,
+      "net_margin": 0.2467
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-04-30",
+      "ebitda": null,
+      "total_revenue": 6245000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-07-31",
+      "ebitda": 2032000000.0,
+      "total_revenue": 6520000000.0,
+      "ebitda_margin": 0.3117
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-01-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-04-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-07-31",
+      "ebitda": 2002000000.0,
+      "total_revenue": 6425000000.0,
+      "ebitda_margin": 0.3116
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "ebitda": 2360000000.0,
+      "total_revenue": 6723000000.0,
+      "ebitda_margin": 0.351
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31",
+      "ebitda": 2453000000.0,
+      "total_revenue": 6707000000.0,
+      "ebitda_margin": 0.3657
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30",
+      "ebitda": 2149000000.0,
+      "total_revenue": 6646000000.0,
+      "ebitda_margin": 0.3234
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31",
+      "ebitda": 2118000000.0,
+      "total_revenue": 6778000000.0,
+      "ebitda_margin": 0.3125
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "ebitda": 2071000000.0,
+      "total_revenue": 7045000000.0,
+      "ebitda_margin": 0.294
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31",
+      "ebitda": 2288000000.0,
+      "total_revenue": 7166000000.0,
+      "ebitda_margin": 0.3193
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30",
+      "ebitda": 2493000000.0,
+      "total_revenue": 7100000000.0,
+      "ebitda_margin": 0.3511
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31",
+      "ebitda": 2742000000.0,
+      "total_revenue": 7302000000.0,
+      "ebitda_margin": 0.3755
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "ebitda": 2452000000.0,
+      "total_revenue": 6800000000.0,
+      "ebitda_margin": 0.3606
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31",
+      "ebitda": 2524000000.0,
+      "total_revenue": 7012000000.0,
+      "ebitda_margin": 0.36
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2019-10-31",
+      "ebitda": 3869000000.0,
+      "total_revenue": 14608000000.0,
+      "ebitda_margin": 0.2649
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2020-10-31",
+      "ebitda": 4782000000.0,
+      "total_revenue": 17202000000.0,
+      "ebitda_margin": 0.278
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2021-10-31",
+      "ebitda": 7401000000.0,
+      "total_revenue": 23063000000.0,
+      "ebitda_margin": 0.3209
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "ebitda": 8271000000.0,
+      "total_revenue": 25785000000.0,
+      "ebitda_margin": 0.3208
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "ebitda": 8469000000.0,
+      "total_revenue": 26517000000.0,
+      "ebitda_margin": 0.3194
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "ebitda": 8791000000.0,
+      "total_revenue": 27176000000.0,
+      "ebitda_margin": 0.3235
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "ebitda": 9975000000.0,
+      "total_revenue": 28368000000.0,
+      "ebitda_margin": 0.3516
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-04-30",
+      "free_cash_flow": 205000000.0,
+      "total_revenue": 6245000000.0,
+      "fcf_margin": 0.0328
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-07-31",
+      "free_cash_flow": 1259000000.0,
+      "total_revenue": 6520000000.0,
+      "fcf_margin": 0.1931
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-01-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-04-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 2328000000.0,
+      "total_revenue": 6425000000.0,
+      "fcf_margin": 0.3623
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 1246000000.0,
+      "total_revenue": 6723000000.0,
+      "fcf_margin": 0.1853
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 2096000000.0,
+      "total_revenue": 6707000000.0,
+      "fcf_margin": 0.3125
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30",
+      "free_cash_flow": 1135000000.0,
+      "total_revenue": 6646000000.0,
+      "fcf_margin": 0.1708
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 2088000000.0,
+      "total_revenue": 6778000000.0,
+      "fcf_margin": 0.3081
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 2168000000.0,
+      "total_revenue": 7045000000.0,
+      "fcf_margin": 0.3077
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 544000000.0,
+      "total_revenue": 7166000000.0,
+      "fcf_margin": 0.0759
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30",
+      "free_cash_flow": 1061000000.0,
+      "total_revenue": 7100000000.0,
+      "fcf_margin": 0.1494
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 2050000000.0,
+      "total_revenue": 7302000000.0,
+      "fcf_margin": 0.2807
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 2043000000.0,
+      "total_revenue": 6800000000.0,
+      "fcf_margin": 0.3004
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 1040000000.0,
+      "total_revenue": 7012000000.0,
+      "fcf_margin": 0.1483
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2019-10-31",
+      "free_cash_flow": null,
+      "total_revenue": 14608000000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2020-10-31",
+      "free_cash_flow": 3382000000.0,
+      "total_revenue": 17202000000.0,
+      "fcf_margin": 0.1966
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2021-10-31",
+      "free_cash_flow": 4774000000.0,
+      "total_revenue": 23063000000.0,
+      "fcf_margin": 0.207
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2022-10-31",
+      "free_cash_flow": 4612000000.0,
+      "total_revenue": 25785000000.0,
+      "fcf_margin": 0.1789
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 7594000000.0,
+      "total_revenue": 26517000000.0,
+      "fcf_margin": 0.2864
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 7487000000.0,
+      "total_revenue": 27176000000.0,
+      "fcf_margin": 0.2755
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 5698000000.0,
+      "total_revenue": 28368000000.0,
+      "fcf_margin": 0.2009
+    }
+  ]
+}

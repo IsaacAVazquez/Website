@@ -1,10 +1,10 @@
 {
   "symbol": "BRK-B",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -4168,7 +4168,7 @@
       ]
     },
     "wacc": {
-      "costOfEquity": 9.719999999999999,
+      "costOfEquity": 9.75,
       "costOfDebt": 1.01,
       "taxRate": 21,
       "beta": 0.6321,
@@ -4178,46 +4178,6 @@
       "beta5y": 0.6321
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 526.81,
-        "high": 533.13,
-        "low": 523.16,
-        "close": 531.64,
-        "volume": 3173400
-      },
-      {
-        "date": "2025-04-25",
-        "open": 531.75,
-        "high": 532.44,
-        "low": 526.79,
-        "close": 530.96,
-        "volume": 2742800
-      },
-      {
-        "date": "2025-04-28",
-        "open": 533.63,
-        "high": 536.82,
-        "low": 526.58,
-        "close": 530.94,
-        "volume": 4238700
-      },
-      {
-        "date": "2025-04-29",
-        "open": 531,
-        "high": 535.34,
-        "low": 528.29,
-        "close": 534.57,
-        "volume": 3177700
-      },
-      {
-        "date": "2025-04-30",
-        "open": 531.51,
-        "high": 535.72,
-        "low": 524,
-        "close": 533.25,
-        "volume": 5251600
-      },
       {
         "date": "2025-05-01",
         "open": 531,
@@ -6192,24 +6152,64 @@
         "high": 470.28,
         "low": 466.58,
         "close": 469.32,
-        "volume": 3847900
+        "volume": 3857000
+      },
+      {
+        "date": "2026-04-27",
+        "open": 469.8,
+        "high": 475.5,
+        "low": 469.35,
+        "close": 472.81,
+        "volume": 4888000
+      },
+      {
+        "date": "2026-04-28",
+        "open": 476.79,
+        "high": 479.77,
+        "low": 475.67,
+        "close": 478.16,
+        "volume": 4902400
+      },
+      {
+        "date": "2026-04-29",
+        "open": 476.45,
+        "high": 477.97,
+        "low": 474.51,
+        "close": 475.38,
+        "volume": 3175600
+      },
+      {
+        "date": "2026-04-30",
+        "open": 473.46,
+        "high": 477.55,
+        "low": 470.89,
+        "close": 473.6,
+        "volume": 5109300
+      },
+      {
+        "date": "2026-05-01",
+        "open": 475.08,
+        "high": 479.1,
+        "low": 473,
+        "close": 473.01,
+        "volume": 4805500
       }
     ],
     "news": [
-      {
-        "uuid": "e639ac18-fd5d-3ca1-8153-f24518c68b25",
-        "title": "Q1 Earnings Season Scorecard and Analyst Reports for NVIDIA, Alphabet & Berkshire Hathaway",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/q1-earnings-season-scorecard-analyst-174200345.html",
-        "type": "STORY"
-      },
       {
         "uuid": "8643fa56-7879-3ab3-9ce8-e818efe35e7a",
         "title": "The Zacks Analyst Blog Highlights NVIDIA, Alphabet, Berkshire Hathaway, BK Technologies and Aware",
         "publisher": "Zacks",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-131400052.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e639ac18-fd5d-3ca1-8153-f24518c68b25",
+        "title": "Q1 Earnings Season Scorecard and Analyst Reports for NVIDIA, Alphabet & Berkshire Hathaway",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/q1-earnings-season-scorecard-analyst-174200345.html",
         "type": "STORY"
       },
       {
@@ -6331,11 +6331,11 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "industryAvg": 11.94
+        "industryAvg": 11.69
       },
       {
         "metric": "P/S Ratio",
-        "industryAvg": 1.52
+        "industryAvg": 1.5
       },
       {
         "metric": "P/B Ratio",
@@ -6343,24 +6343,24 @@
       },
       {
         "metric": "ROE",
-        "industryAvg": 10.48
+        "industryAvg": 10.5
       },
       {
         "metric": "ROA",
-        "industryAvg": 4.09
+        "industryAvg": 4.1000000000000005
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 41.99
+        "industryAvg": 43.96
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 10.17
+        "industryAvg": 9.1
       },
       {
         "metric": "Net Margin",
         "value": 17.23,
-        "industryAvg": 15.28
+        "industryAvg": 15.310000000000002
       }
     ]
   }

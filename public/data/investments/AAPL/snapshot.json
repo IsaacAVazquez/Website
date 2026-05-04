@@ -1,10 +1,10 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -34,18 +34,18 @@
       "industry": "Consumer Electronics",
       "sector": "Technology",
       "longBusinessSummary": "Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line of smartphones; Mac, a line of personal computers; iPad, a line of multi-purpose tablets; and wearables, home, and accessories comprising AirPods, Apple Vision Pro, Apple TV, Apple Watch, Beats products, and HomePod, as well as Apple branded and third-party accessories. It also provides AppleCare support and cloud services; and operates various platforms, including the App Store that allow customers to discover and download applications and digital content, such as books, music, video, games, and podcasts, as well as advertising services include third-party licensing arrangements and its own advertising platforms. In addition, the company offers various subscription-based services, such as Apple Arcade, a game subscription service; Apple Fitness+, a personalized fitness service; Apple Music, which offers users a curated listening experience with on-demand radio stations; Apple News+, a subscription news and magazine service; Apple TV, which offers exclusive original content and live sports; Apple Card, a co-branded credit card; and Apple Pay, a cashless payment service, as well as licenses its intellectual property. The company serves consumers, and small and mid-sized businesses; and the education, enterprise, and government markets. It distributes third-party applications for its products through the App Store. The company also sells its products through its retail and online stores, and direct sales force; and third-party cellular network carriers and resellers. The company was formerly known as Apple Computer, Inc. and changed its name to Apple Inc. in January 2007. Apple Inc. was founded in 1976 and is headquartered in Cupertino, California.",
-      "fullTimeEmployees": 150000,
+      "fullTimeEmployees": 166000,
       "website": "https://www.apple.com",
       "shortName": "Apple Inc.",
       "longName": "Apple Inc."
     },
     "fundamentals": {
       "ttmEps": 7.9,
-      "ttmPe": 34.31,
-      "marketCap": 3979469808400,
-      "psRatio": 9.14,
-      "pbRatio": 45.12,
-      "pegRatio": 1.87
+      "ttmPe": 35.46,
+      "marketCap": 4109006116320,
+      "psRatio": 9.43,
+      "pbRatio": 46.59,
+      "pegRatio": 1.93
     },
     "profitability": {
       "roe": 52,
@@ -90,6 +90,7 @@
         {
           "Breakdown": "Total Revenue",
           "TTM": "408625000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "143756000000.0",
           "2025-09-30": "102466000000.0",
           "2025-06-30": "94036000000.0",
@@ -109,6 +110,7 @@
         {
           "Breakdown": "Operating Revenue",
           "TTM": "408625000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "143756000000.0",
           "2025-09-30": "102466000000.0",
           "2025-06-30": "94036000000.0",
@@ -128,6 +130,7 @@
         {
           "Breakdown": "Cost of Revenue",
           "TTM": "217886000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "74525000000.0",
           "2025-09-30": "54125000000.0",
           "2025-06-30": "50318000000.0",
@@ -147,6 +150,7 @@
         {
           "Breakdown": "Gross Profit",
           "TTM": "190739000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "69231000000.0",
           "2025-09-30": "48341000000.0",
           "2025-06-30": "43718000000.0",
@@ -166,6 +170,7 @@
         {
           "Breakdown": "Operating Expense",
           "TTM": "60525000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "18379000000.0",
           "2025-09-30": "15914000000.0",
           "2025-06-30": "15516000000.0",
@@ -185,6 +190,7 @@
         {
           "Breakdown": "Selling General and Administrative",
           "TTM": "27076000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "7492000000.0",
           "2025-09-30": "7048000000.0",
           "2025-06-30": "6650000000.0",
@@ -204,6 +210,7 @@
         {
           "Breakdown": "Research & Development",
           "TTM": "33449000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "10887000000.0",
           "2025-09-30": "8866000000.0",
           "2025-06-30": "8866000000.0",
@@ -223,6 +230,7 @@
         {
           "Breakdown": "Operating Income",
           "TTM": "130214000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "50852000000.0",
           "2025-09-30": "32427000000.0",
           "2025-06-30": "28202000000.0",
@@ -242,6 +250,7 @@
         {
           "Breakdown": "Net Non-Operating Interest Income Expense",
           "TTM": "*",
+          "2026-03-31": "*",
           "2025-12-31": "*",
           "2025-09-30": "*",
           "2025-06-30": "*",
@@ -261,6 +270,7 @@
         {
           "Breakdown": "Non-Operating Interest Income",
           "TTM": "*",
+          "2026-03-31": "*",
           "2025-12-31": "*",
           "2025-09-30": "*",
           "2025-06-30": "*",
@@ -280,6 +290,7 @@
         {
           "Breakdown": "Non-Operating Interest Expense",
           "TTM": "*",
+          "2026-03-31": "*",
           "2025-12-31": "*",
           "2025-09-30": "*",
           "2025-06-30": "*",
@@ -299,6 +310,7 @@
         {
           "Breakdown": "Other Income Expense",
           "TTM": "-679000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "150000000.0",
           "2025-09-30": "377000000.0",
           "2025-06-30": "-171000000.0",
@@ -318,6 +330,7 @@
         {
           "Breakdown": "Other Non Operating Income Expenses",
           "TTM": "-679000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "150000000.0",
           "2025-09-30": "377000000.0",
           "2025-06-30": "-171000000.0",
@@ -337,6 +350,7 @@
         {
           "Breakdown": "Pretax Income",
           "TTM": "129535000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "51002000000.0",
           "2025-09-30": "32804000000.0",
           "2025-06-30": "28031000000.0",
@@ -356,6 +370,7 @@
         {
           "Breakdown": "Tax Provision",
           "TTM": "30255000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "8905000000.0",
           "2025-09-30": "5338000000.0",
           "2025-06-30": "4597000000.0",
@@ -375,6 +390,7 @@
         {
           "Breakdown": "Net Income Common Stockholders",
           "TTM": "99280000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "42097000000.0",
           "2025-09-30": "27466000000.0",
           "2025-06-30": "23434000000.0",
@@ -394,6 +410,7 @@
         {
           "Breakdown": "Net Income(Attributable to Parent Company Shareholders)",
           "TTM": "99280000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "42097000000.0",
           "2025-09-30": "27466000000.0",
           "2025-06-30": "23434000000.0",
@@ -413,6 +430,7 @@
         {
           "Breakdown": "Net Income Including Non-Controlling Interests",
           "TTM": "99280000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "42097000000.0",
           "2025-09-30": "27466000000.0",
           "2025-06-30": "23434000000.0",
@@ -432,6 +450,7 @@
         {
           "Breakdown": "Net Income Continuous Operations",
           "TTM": "99280000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "42097000000.0",
           "2025-09-30": "27466000000.0",
           "2025-06-30": "23434000000.0",
@@ -451,6 +470,7 @@
         {
           "Breakdown": "Diluted NI Available to Com Stockholders",
           "TTM": "99280000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "42097000000.0",
           "2025-09-30": "27466000000.0",
           "2025-06-30": "23434000000.0",
@@ -470,6 +490,7 @@
         {
           "Breakdown": "Basic EPS",
           "TTM": "6.16",
+          "2026-03-31": "2.02",
           "2025-12-31": "2.85",
           "2025-09-30": "1.85",
           "2025-06-30": "1.57",
@@ -489,6 +510,7 @@
         {
           "Breakdown": "Diluted EPS",
           "TTM": "6.13",
+          "2026-03-31": "2.01",
           "2025-12-31": "2.84",
           "2025-09-30": "1.85",
           "2025-06-30": "1.57",
@@ -508,6 +530,7 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "15744231000.0",
+          "2026-03-31": "14673278000.0",
           "2025-12-31": "14748158000.0",
           "2025-09-30": "14815307000.0",
           "2025-06-30": "14902886000.0",
@@ -527,6 +550,7 @@
         {
           "Breakdown": "Diluted Average Shares",
           "TTM": "15812547000.0",
+          "2026-03-31": "14725873000.0",
           "2025-12-31": "14810356000.0",
           "2025-09-30": "14863609000.0",
           "2025-06-30": "14948179000.0",
@@ -546,6 +570,7 @@
         {
           "Breakdown": "Total Operating Income as Reported",
           "TTM": "130214000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "50852000000.0",
           "2025-09-30": "32427000000.0",
           "2025-06-30": "28202000000.0",
@@ -565,6 +590,7 @@
         {
           "Breakdown": "Total Expenses",
           "TTM": "278411000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "92904000000.0",
           "2025-09-30": "70039000000.0",
           "2025-06-30": "65834000000.0",
@@ -584,6 +610,7 @@
         {
           "Breakdown": "Net Income from Continuing & Discontinued Operation",
           "TTM": "99280000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "42097000000.0",
           "2025-09-30": "27466000000.0",
           "2025-06-30": "23434000000.0",
@@ -603,6 +630,7 @@
         {
           "Breakdown": "Normalized Income",
           "TTM": "99280000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "42097000000.0",
           "2025-09-30": "27466000000.0",
           "2025-06-30": "23434000000.0",
@@ -622,6 +650,7 @@
         {
           "Breakdown": "Interest Income",
           "TTM": "*",
+          "2026-03-31": "*",
           "2025-12-31": "*",
           "2025-09-30": "*",
           "2025-06-30": "*",
@@ -641,6 +670,7 @@
         {
           "Breakdown": "Interest Expense",
           "TTM": "*",
+          "2026-03-31": "*",
           "2025-12-31": "*",
           "2025-09-30": "*",
           "2025-06-30": "*",
@@ -660,6 +690,7 @@
         {
           "Breakdown": "Net Interest Income",
           "TTM": "*",
+          "2026-03-31": "*",
           "2025-12-31": "*",
           "2025-09-30": "*",
           "2025-06-30": "*",
@@ -679,6 +710,7 @@
         {
           "Breakdown": "EBIT",
           "TTM": "130214000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "50852000000.0",
           "2025-09-30": "32427000000.0",
           "2025-06-30": "28202000000.0",
@@ -698,6 +730,7 @@
         {
           "Breakdown": "EBITDA",
           "TTM": "141696000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "54066000000.0",
           "2025-09-30": "35554000000.0",
           "2025-06-30": "31032000000.0",
@@ -717,6 +750,7 @@
         {
           "Breakdown": "Reconciled Cost of Revenue",
           "TTM": "217886000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "74525000000.0",
           "2025-09-30": "54125000000.0",
           "2025-06-30": "50318000000.0",
@@ -736,6 +770,7 @@
         {
           "Breakdown": "Reconciled Depreciation",
           "TTM": "11482000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "3214000000.0",
           "2025-09-30": "3127000000.0",
           "2025-06-30": "2830000000.0",
@@ -755,6 +790,7 @@
         {
           "Breakdown": "Net Income from Continuing Operation Net Minority Interest",
           "TTM": "99280000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "42097000000.0",
           "2025-09-30": "27466000000.0",
           "2025-06-30": "23434000000.0",
@@ -774,6 +810,7 @@
         {
           "Breakdown": "Normalized EBITDA",
           "TTM": "141696000000.0",
+          "2026-03-31": "*",
           "2025-12-31": "54066000000.0",
           "2025-09-30": "35554000000.0",
           "2025-06-30": "31032000000.0",
@@ -793,6 +830,7 @@
         {
           "Breakdown": "Tax Rate for Calcs",
           "TTM": "0.23",
+          "2026-03-31": "*",
           "2025-12-31": "0.18",
           "2025-09-30": "0.16",
           "2025-06-30": "0.16",
@@ -812,6 +850,7 @@
         {
           "Breakdown": "Tax Effect of Unusual Items",
           "TTM": "0.0",
+          "2026-03-31": "*",
           "2025-12-31": "0.0",
           "2025-09-30": "0.0",
           "2025-06-30": "0.0",
@@ -4760,57 +4799,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.04,
-      "costOfEquity": 13.38,
+      "wacc": 12.959999999999999,
+      "costOfEquity": 13.29,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 15,
-      "beta": 1.0597,
-      "marketCap": 3979469808400
+      "beta": 1.0491,
+      "marketCap": 4109006116320
     },
     "beta": {
-      "beta5y": 1.0597
+      "beta5y": 1.0491
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 204.89,
-        "high": 208.83,
-        "low": 202.94,
-        "close": 208.37,
-        "volume": 47311000
-      },
-      {
-        "date": "2025-04-25",
-        "open": 206.37,
-        "high": 209.75,
-        "low": 206.2,
-        "close": 209.28,
-        "volume": 38222300
-      },
-      {
-        "date": "2025-04-28",
-        "open": 210,
-        "high": 211.5,
-        "low": 207.46,
-        "close": 210.14,
-        "volume": 38743100
-      },
-      {
-        "date": "2025-04-29",
-        "open": 208.69,
-        "high": 212.24,
-        "low": 208.37,
-        "close": 211.21,
-        "volume": 36827600
-      },
-      {
-        "date": "2025-04-30",
-        "open": 209.3,
-        "high": 213.58,
-        "low": 206.67,
-        "close": 212.5,
-        "volume": 52286500
-      },
       {
         "date": "2025-05-01",
         "open": 209.08,
@@ -6785,7 +6784,47 @@
         "high": 273.06,
         "low": 269.65,
         "close": 271.06,
-        "volume": 38124500
+        "volume": 38157100
+      },
+      {
+        "date": "2026-04-27",
+        "open": 266.09,
+        "high": 268.36,
+        "low": 265.07,
+        "close": 267.61,
+        "volume": 41466800
+      },
+      {
+        "date": "2026-04-28",
+        "open": 272.34,
+        "high": 273.23,
+        "low": 268.66,
+        "close": 270.71,
+        "volume": 40018900
+      },
+      {
+        "date": "2026-04-29",
+        "open": 267.55,
+        "high": 271.04,
+        "low": 267.04,
+        "close": 270.17,
+        "volume": 30047900
+      },
+      {
+        "date": "2026-04-30",
+        "open": 270.5,
+        "high": 276,
+        "low": 268.14,
+        "close": 271.35,
+        "volume": 91848200
+      },
+      {
+        "date": "2026-05-01",
+        "open": 278.86,
+        "high": 287.22,
+        "low": 278.37,
+        "close": 280.14,
+        "volume": 79844600
       }
     ],
     "news": [
@@ -6934,28 +6973,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.31,
-        "industryAvg": 33.78
+        "value": 35.46,
+        "industryAvg": 34.88
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.14,
-        "industryAvg": 6.92
+        "value": 9.43,
+        "industryAvg": 7.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 45.12,
-        "industryAvg": 20.83
+        "value": 46.59,
+        "industryAvg": 21.38
       },
       {
         "metric": "ROE",
         "value": 52,
-        "industryAvg": 61.29
+        "industryAvg": 61.309999999999995
       },
       {
         "metric": "ROA",
         "value": 11.4,
-        "industryAvg": 16.29
+        "industryAvg": 16.3
       },
       {
         "metric": "Gross Margin",
@@ -6965,7 +7004,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 37.61,
-        "industryAvg": 31.34
+        "industryAvg": 31.35
       },
       {
         "metric": "Net Margin",
@@ -6974,10 +7013,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 105.32,
-      "currentPrice": 271.06,
-      "upside": -61.15,
-      "wacc": 13.04,
+      "fairValue": 106.18,
+      "currentPrice": 280.14,
+      "upside": -62.1,
+      "wacc": 12.96,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 18.33,
         "Terminal growth": 3

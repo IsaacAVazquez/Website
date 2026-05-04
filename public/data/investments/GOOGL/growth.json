@@ -1,0 +1,1417 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 69685000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 69092000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 76048000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 74604000000.0,
+      "prev_year_revenue": 69685000000.0,
+      "yoy_growth": 0.0706
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 76693000000.0,
+      "prev_year_revenue": 69092000000.0,
+      "yoy_growth": 0.11
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 86310000000.0,
+      "prev_year_revenue": 76048000000.0,
+      "yoy_growth": 0.1349
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 80539000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 84742000000.0,
+      "prev_year_revenue": 74604000000.0,
+      "yoy_growth": 0.1359
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 88268000000.0,
+      "prev_year_revenue": 76693000000.0,
+      "yoy_growth": 0.1509
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 96469000000.0,
+      "prev_year_revenue": 86310000000.0,
+      "yoy_growth": 0.1177
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 90234000000.0,
+      "prev_year_revenue": 80539000000.0,
+      "yoy_growth": 0.1204
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 96428000000.0,
+      "prev_year_revenue": 84742000000.0,
+      "yoy_growth": 0.1379
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 102346000000.0,
+      "prev_year_revenue": 88268000000.0,
+      "yoy_growth": 0.1595
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 113829000000.0,
+      "prev_year_revenue": 96469000000.0,
+      "yoy_growth": 0.18
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 109896000000.0,
+      "prev_year_revenue": 90234000000.0,
+      "yoy_growth": 0.2179
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 182527000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 257637000000.0,
+      "prev_year_revenue": 182527000000.0,
+      "yoy_growth": 0.4115
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 282836000000.0,
+      "prev_year_revenue": 257637000000.0,
+      "yoy_growth": 0.0978
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 307394000000.0,
+      "prev_year_revenue": 282836000000.0,
+      "yoy_growth": 0.0868
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 350018000000.0,
+      "prev_year_revenue": 307394000000.0,
+      "yoy_growth": 0.1387
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 402836000000.0,
+      "prev_year_revenue": 350018000000.0,
+      "yoy_growth": 0.1509
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 19453000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 17135000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 18160000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 21838000000.0,
+      "prev_year_operating_income": 19453000000.0,
+      "yoy_growth": 0.1226
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 21343000000.0,
+      "prev_year_operating_income": 17135000000.0,
+      "yoy_growth": 0.2456
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 23697000000.0,
+      "prev_year_operating_income": 18160000000.0,
+      "yoy_growth": 0.3049
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 25472000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 27425000000.0,
+      "prev_year_operating_income": 21838000000.0,
+      "yoy_growth": 0.2558
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 28521000000.0,
+      "prev_year_operating_income": 21343000000.0,
+      "yoy_growth": 0.3363
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 30972000000.0,
+      "prev_year_operating_income": 23697000000.0,
+      "yoy_growth": 0.307
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 30606000000.0,
+      "prev_year_operating_income": 25472000000.0,
+      "yoy_growth": 0.2016
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 31271000000.0,
+      "prev_year_operating_income": 27425000000.0,
+      "yoy_growth": 0.1402
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 31228000000.0,
+      "prev_year_operating_income": 28521000000.0,
+      "yoy_growth": 0.0949
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 35934000000.0,
+      "prev_year_operating_income": 30972000000.0,
+      "yoy_growth": 0.1602
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 39696000000.0,
+      "prev_year_operating_income": 30606000000.0,
+      "yoy_growth": 0.297
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 41224000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 78714000000.0,
+      "prev_year_operating_income": 41224000000.0,
+      "yoy_growth": 0.9094
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 74842000000.0,
+      "prev_year_operating_income": 78714000000.0,
+      "yoy_growth": -0.0492
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 84293000000.0,
+      "prev_year_operating_income": 74842000000.0,
+      "yoy_growth": 0.1263
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 112390000000.0,
+      "prev_year_operating_income": 84293000000.0,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 129039000000.0,
+      "prev_year_operating_income": 112390000000.0,
+      "yoy_growth": 0.1481
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 20380000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 21438000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 24770000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 24484000000.0,
+      "prev_year_ebitda": 20380000000.0,
+      "yoy_growth": 0.2014
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 26044000000.0,
+      "prev_year_ebitda": 21438000000.0,
+      "yoy_growth": 0.2149
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 31822000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 31326000000.0,
+      "prev_year_ebitda": 24770000000.0,
+      "yoy_growth": 0.2647
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 35745000000.0,
+      "prev_year_ebitda": 24484000000.0,
+      "yoy_growth": 0.4599
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 36501000000.0,
+      "prev_year_ebitda": 26044000000.0,
+      "yoy_growth": 0.4015
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 46310000000.0,
+      "prev_year_ebitda": 31822000000.0,
+      "yoy_growth": 0.4553
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 39192000000.0,
+      "prev_year_ebitda": 31326000000.0,
+      "yoy_growth": 0.2511
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 49741000000.0,
+      "prev_year_ebitda": 35745000000.0,
+      "yoy_growth": 0.3916
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 45455000000.0,
+      "prev_year_ebitda": 36501000000.0,
+      "yoy_growth": 0.2453
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 84427000000.0,
+      "prev_year_ebitda": 46310000000.0,
+      "yoy_growth": 0.8231
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 61914000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 103521000000.0,
+      "prev_year_ebitda": 61914000000.0,
+      "yoy_growth": 0.672
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 85160000000.0,
+      "prev_year_ebitda": 103521000000.0,
+      "yoy_growth": -0.1774
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 97971000000.0,
+      "prev_year_ebitda": 85160000000.0,
+      "yoy_growth": 0.1504
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 135394000000.0,
+      "prev_year_ebitda": 97971000000.0,
+      "yoy_growth": 0.382
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 180698000000.0,
+      "prev_year_ebitda": 135394000000.0,
+      "yoy_growth": 0.3346
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 16002000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 13910000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 13624000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 18368000000.0,
+      "prev_year_net_income_common_stockholders": 16002000000.0,
+      "yoy_growth": 0.1479
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 19689000000.0,
+      "prev_year_net_income_common_stockholders": 13910000000.0,
+      "yoy_growth": 0.4155
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 20687000000.0,
+      "prev_year_net_income_common_stockholders": 13624000000.0,
+      "yoy_growth": 0.5184
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 23662000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 23619000000.0,
+      "prev_year_net_income_common_stockholders": 18368000000.0,
+      "yoy_growth": 0.2859
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 26301000000.0,
+      "prev_year_net_income_common_stockholders": 19689000000.0,
+      "yoy_growth": 0.3358
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 26536000000.0,
+      "prev_year_net_income_common_stockholders": 20687000000.0,
+      "yoy_growth": 0.2827
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 34540000000.0,
+      "prev_year_net_income_common_stockholders": 23662000000.0,
+      "yoy_growth": 0.4597
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 28196000000.0,
+      "prev_year_net_income_common_stockholders": 23619000000.0,
+      "yoy_growth": 0.1938
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 34979000000.0,
+      "prev_year_net_income_common_stockholders": 26301000000.0,
+      "yoy_growth": 0.3299
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 34455000000.0,
+      "prev_year_net_income_common_stockholders": 26536000000.0,
+      "yoy_growth": 0.2984
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 62578000000.0,
+      "prev_year_net_income_common_stockholders": 34540000000.0,
+      "yoy_growth": 0.8118
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 40269000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 76033000000.0,
+      "prev_year_net_income_common_stockholders": 40269000000.0,
+      "yoy_growth": 0.8881
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 59972000000.0,
+      "prev_year_net_income_common_stockholders": 76033000000.0,
+      "yoy_growth": -0.2112
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 73795000000.0,
+      "prev_year_net_income_common_stockholders": 59972000000.0,
+      "yoy_growth": 0.2305
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 100118000000.0,
+      "prev_year_net_income_common_stockholders": 73795000000.0,
+      "yoy_growth": 0.3567
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 132170000000.0,
+      "prev_year_net_income_common_stockholders": 100118000000.0,
+      "yoy_growth": 0.3201
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 12594000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 21778000000.0,
+      "prev_year_free_cash_flow": 12594000000.0,
+      "yoy_growth": 0.7292
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 22601000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 7896000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 16836000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 13454000000.0,
+      "prev_year_free_cash_flow": 21778000000.0,
+      "yoy_growth": -0.3822
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 17637000000.0,
+      "prev_year_free_cash_flow": 22601000000.0,
+      "yoy_growth": -0.2196
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 24837000000.0,
+      "prev_year_free_cash_flow": 7896000000.0,
+      "yoy_growth": 2.1455
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 18953000000.0,
+      "prev_year_free_cash_flow": 16836000000.0,
+      "yoy_growth": 0.1257
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 5301000000.0,
+      "prev_year_free_cash_flow": 13454000000.0,
+      "yoy_growth": -0.606
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 24461000000.0,
+      "prev_year_free_cash_flow": 17637000000.0,
+      "yoy_growth": 0.3869
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 24551000000.0,
+      "prev_year_free_cash_flow": 24837000000.0,
+      "yoy_growth": -0.0115
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 10116000000.0,
+      "prev_year_free_cash_flow": 18953000000.0,
+      "yoy_growth": -0.4663
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 42843000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 67012000000.0,
+      "prev_year_free_cash_flow": 42843000000.0,
+      "yoy_growth": 0.5641
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 60010000000.0,
+      "prev_year_free_cash_flow": 67012000000.0,
+      "yoy_growth": -0.1045
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 69495000000.0,
+      "prev_year_free_cash_flow": 60010000000.0,
+      "yoy_growth": 0.1581
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 72764000000.0,
+      "prev_year_free_cash_flow": 69495000000.0,
+      "yoy_growth": 0.047
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 73266000000.0,
+      "prev_year_free_cash_flow": 72764000000.0,
+      "yoy_growth": 0.0069
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 0.6667
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 1.6667
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.6
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.1667
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.09,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 0.125
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.1,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 0.25
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.1,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 0.4286
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.1,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 0.25
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.09,
+      "yoy_growth": -0.6667
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.1,
+      "yoy_growth": 0.1
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 0.12,
+      "prev_year_eps": 0.1,
+      "yoy_growth": 0.2
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": 0.1,
+      "yoy_growth": 0.3
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 4.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": 0.11,
+      "yoy_growth": 0.3636
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": 0.12,
+      "yoy_growth": 0.1667
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 0.17,
+      "prev_year_eps": 0.13,
+      "yoy_growth": 0.3077
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": 0.15,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": 0.15,
+      "yoy_growth": -0.0667
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 0.19,
+      "prev_year_eps": 0.14,
+      "yoy_growth": 0.3571
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": 0.17,
+      "yoy_growth": 0.2353
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": 0.2,
+      "yoy_growth": 0.05
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 0.22,
+      "prev_year_eps": 0.14,
+      "yoy_growth": 0.5714
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": 0.19,
+      "yoy_growth": 0.1053
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 0.16,
+      "prev_year_eps": 0.21,
+      "yoy_growth": -0.2381
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.22,
+      "prev_year_eps": 0.21,
+      "yoy_growth": 0.0476
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.22,
+      "yoy_growth": 0.1364
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.18,
+      "prev_year_eps": 0.21,
+      "yoy_growth": -0.1429
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.22,
+      "prev_year_eps": 0.16,
+      "yoy_growth": 0.375
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.22,
+      "yoy_growth": 0.1364
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.24,
+      "prev_year_eps": 0.18,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": 0.22,
+      "yoy_growth": -0.0909
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.29,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 0.16
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.26,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 0.04
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.24,
+      "yoy_growth": 0.0417
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.29,
+      "prev_year_eps": 0.2,
+      "yoy_growth": 0.45
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.35,
+      "prev_year_eps": 0.29,
+      "yoy_growth": 0.2069
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.26,
+      "yoy_growth": 0.1538
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.35,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 0.4
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.36,
+      "prev_year_eps": 0.29,
+      "yoy_growth": 0.2414
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.38,
+      "prev_year_eps": 0.35,
+      "yoy_growth": 0.0857
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.39,
+      "prev_year_eps": 0.3,
+      "yoy_growth": 0.3
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 0.35,
+      "yoy_growth": -0.2857
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.48,
+      "prev_year_eps": 0.36,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": -0.22,
+      "prev_year_eps": 0.38,
+      "yoy_growth": -1.5789
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.67,
+      "prev_year_eps": 0.39,
+      "yoy_growth": 0.7179
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 0.23,
+      "prev_year_eps": 0.25,
+      "yoy_growth": -0.08
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.65,
+      "prev_year_eps": 0.48,
+      "yoy_growth": 0.3542
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.64,
+      "prev_year_eps": -0.22,
+      "yoy_growth": 3.9091
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.47,
+      "prev_year_eps": 0.67,
+      "yoy_growth": -0.2985
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.71,
+      "prev_year_eps": 0.23,
+      "yoy_growth": 2.087
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.51,
+      "prev_year_eps": 0.65,
+      "yoy_growth": -0.2154
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.77,
+      "prev_year_eps": 0.64,
+      "yoy_growth": 0.2031
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.49,
+      "prev_year_eps": 0.47,
+      "yoy_growth": 0.0426
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.51,
+      "prev_year_eps": 0.71,
+      "yoy_growth": -0.2817
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.82,
+      "prev_year_eps": 0.51,
+      "yoy_growth": 0.6078
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 1.11,
+      "prev_year_eps": 0.77,
+      "yoy_growth": 0.4416
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 1.31,
+      "prev_year_eps": 0.49,
+      "yoy_growth": 1.6735
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 1.36,
+      "prev_year_eps": 0.51,
+      "yoy_growth": 1.6667
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.4,
+      "prev_year_eps": 0.82,
+      "yoy_growth": 0.7073
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 1.53,
+      "prev_year_eps": 1.11,
+      "yoy_growth": 0.3784
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 1.23,
+      "prev_year_eps": 1.31,
+      "yoy_growth": -0.0611
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 1.21,
+      "prev_year_eps": 1.36,
+      "yoy_growth": -0.1103
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 1.06,
+      "prev_year_eps": 1.4,
+      "yoy_growth": -0.2429
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 1.05,
+      "prev_year_eps": 1.53,
+      "yoy_growth": -0.3137
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 1.17,
+      "prev_year_eps": 1.23,
+      "yoy_growth": -0.0488
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 1.44,
+      "prev_year_eps": 1.21,
+      "yoy_growth": 0.1901
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.55,
+      "prev_year_eps": 1.06,
+      "yoy_growth": 0.4623
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 1.64,
+      "prev_year_eps": 1.05,
+      "yoy_growth": 0.5619
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 1.89,
+      "prev_year_eps": 1.17,
+      "yoy_growth": 0.6154
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 1.89,
+      "prev_year_eps": 1.44,
+      "yoy_growth": 0.3125
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 2.12,
+      "prev_year_eps": 1.55,
+      "yoy_growth": 0.3677
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 2.15,
+      "prev_year_eps": 1.64,
+      "yoy_growth": 0.311
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 2.81,
+      "prev_year_eps": 1.89,
+      "yoy_growth": 0.4868
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 2.31,
+      "prev_year_eps": 1.89,
+      "yoy_growth": 0.2222
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 2.87,
+      "prev_year_eps": 2.12,
+      "yoy_growth": 0.3538
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 2.82,
+      "prev_year_eps": 2.15,
+      "yoy_growth": 0.3116
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 4.79,
+      "prev_year_eps": 2.81,
+      "yoy_growth": 0.7046
+    }
+  ]
+}

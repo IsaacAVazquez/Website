@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.57,
-      "ttmPe": 31.11,
-      "marketCap": 498361250880,
-      "psRatio": 7.78,
-      "pbRatio": 12.95,
-      "pegRatio": 1.27
+      "ttmPe": 30.85,
+      "marketCap": 494190984180,
+      "psRatio": 7.71,
+      "pbRatio": 12.84,
+      "pegRatio": 1.26
     },
     "profitability": {
       "roe": 10.81,
@@ -5475,57 +5475,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.819999999999999,
-      "costOfEquity": 17.87,
+      "wacc": 13.29,
+      "costOfEquity": 17.21,
       "costOfDebt": 0.77,
       "taxRate": 16,
-      "beta": 1.5839,
-      "marketCap": 498361250880
+      "beta": 1.5116,
+      "marketCap": 494190984180
     },
     "beta": {
-      "beta5y": 1.5839
+      "beta5y": 1.5116
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 132.51,
-        "high": 137.86,
-        "low": 132,
-        "close": 137.51,
-        "volume": 7305900
-      },
-      {
-        "date": "2025-04-25",
-        "open": 137.49,
-        "high": 139,
-        "low": 136.76,
-        "close": 138.49,
-        "volume": 5476400
-      },
-      {
-        "date": "2025-04-28",
-        "open": 139.65,
-        "high": 140.67,
-        "low": 138.08,
-        "close": 140.14,
-        "volume": 6985100
-      },
-      {
-        "date": "2025-04-29",
-        "open": 139.81,
-        "high": 141.16,
-        "low": 139.55,
-        "close": 140.79,
-        "volume": 4851500
-      },
-      {
-        "date": "2025-04-30",
-        "open": 138.48,
-        "high": 141.3,
-        "low": 135.57,
-        "close": 140.72,
-        "volume": 9443500
-      },
       {
         "date": "2025-05-01",
         "open": 146.56,
@@ -7500,7 +7460,47 @@
         "high": 180.71,
         "low": 168.8,
         "close": 173.28,
-        "volume": 33159800
+        "volume": 33215000
+      },
+      {
+        "date": "2026-04-27",
+        "open": 172.58,
+        "high": 173.55,
+        "low": 167.9,
+        "close": 172.96,
+        "volume": 21616600
+      },
+      {
+        "date": "2026-04-28",
+        "open": 162.16,
+        "high": 168.7,
+        "low": 162.05,
+        "close": 165.96,
+        "volume": 33716500
+      },
+      {
+        "date": "2026-04-29",
+        "open": 164.04,
+        "high": 164.76,
+        "low": 160.65,
+        "close": 163.83,
+        "volume": 20587500
+      },
+      {
+        "date": "2026-04-30",
+        "open": 162.02,
+        "high": 165.18,
+        "low": 160.33,
+        "close": 161.39,
+        "volume": 21016400
+      },
+      {
+        "date": "2026-05-01",
+        "open": 166.42,
+        "high": 174.3,
+        "low": 166.15,
+        "close": 171.83,
+        "volume": 26281900
       }
     ],
     "news": [
@@ -7569,19 +7569,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
-        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
         "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
         "type": "STORY"
       }
     ],
@@ -7651,50 +7651,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.11,
-        "industryAvg": 29.11
+        "value": 30.85,
+        "industryAvg": 27.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.78,
-        "industryAvg": 5.98
+        "value": 7.71,
+        "industryAvg": 5.84
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.95,
-        "industryAvg": 7.84
+        "value": 12.84,
+        "industryAvg": 7.51
       },
       {
         "metric": "ROE",
         "value": 10.81,
-        "industryAvg": 26.729999999999997
+        "industryAvg": 28.050000000000004
       },
       {
         "metric": "ROA",
         "value": 1.6400000000000001,
-        "industryAvg": 11.26
+        "industryAvg": 10.89
       },
       {
         "metric": "Gross Margin",
         "value": 64.56,
-        "industryAvg": 46.04
+        "industryAvg": 47.67
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.48,
-        "industryAvg": 31.14
+        "industryAvg": 32.85
       },
       {
         "metric": "Net Margin",
         "value": 21.52,
-        "industryAvg": 17.79
+        "industryAvg": 18.69
       }
     ],
     "dcf": {
-      "fairValue": 76,
-      "currentPrice": 173.28,
-      "upside": -56.14,
-      "wacc": 13.82,
+      "fairValue": 80.03,
+      "currentPrice": 171.83,
+      "upside": -53.43,
+      "wacc": 13.29,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 24.51,
         "Terminal growth": 3

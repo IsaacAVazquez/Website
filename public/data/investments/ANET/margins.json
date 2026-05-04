@@ -1,0 +1,792 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30",
+      "gross_profit": 643265000.0,
+      "total_revenue": 1051891000.0,
+      "gross_margin": 0.6115
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30",
+      "gross_profit": 709980000.0,
+      "total_revenue": 1176801000.0,
+      "gross_margin": 0.6033
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30",
+      "gross_profit": 884129000.0,
+      "total_revenue": 1458924000.0,
+      "gross_margin": 0.606
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30",
+      "gross_profit": 942419000.0,
+      "total_revenue": 1509456000.0,
+      "gross_margin": 0.6243
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "gross_profit": 999226000.0,
+      "total_revenue": 1540437000.0,
+      "gross_margin": 0.6487
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31",
+      "gross_profit": 1001400000.0,
+      "total_revenue": 1571400000.0,
+      "gross_margin": 0.6373
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30",
+      "gross_profit": 1097200000.0,
+      "total_revenue": 1690400000.0,
+      "gross_margin": 0.6491
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30",
+      "gross_profit": 1161700000.0,
+      "total_revenue": 1810900000.0,
+      "gross_margin": 0.6415
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "gross_profit": 1230994000.0,
+      "total_revenue": 1930436000.0,
+      "gross_margin": 0.6377
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31",
+      "gross_profit": 1276100000.0,
+      "total_revenue": 2004800000.0,
+      "gross_margin": 0.6365
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30",
+      "gross_profit": 1438600000.0,
+      "total_revenue": 2204800000.0,
+      "gross_margin": 0.6525
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30",
+      "gross_profit": 1490200000.0,
+      "total_revenue": 2308300000.0,
+      "gross_margin": 0.6456
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "gross_profit": 1563800000.0,
+      "total_revenue": 2487800000.0,
+      "gross_margin": 0.6286
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ANET",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31",
+      "gross_profit": 1481886000.0,
+      "total_revenue": 2317512000.0,
+      "gross_margin": 0.6394
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31",
+      "gross_profit": 1880779000.0,
+      "total_revenue": 2948037000.0,
+      "gross_margin": 0.638
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "gross_profit": 2675696000.0,
+      "total_revenue": 4381310000.0,
+      "gross_margin": 0.6107
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "gross_profit": 3630300000.0,
+      "total_revenue": 5860200000.0,
+      "gross_margin": 0.6195
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "gross_profit": 4491300000.0,
+      "total_revenue": 7003100000.0,
+      "gross_margin": 0.6413
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "gross_profit": 5768700000.0,
+      "total_revenue": 9005700000.0,
+      "gross_margin": 0.6406
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30",
+      "operating_income": 362853000.0,
+      "total_revenue": 1051891000.0,
+      "operating_margin": 0.345
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30",
+      "operating_income": 417347000.0,
+      "total_revenue": 1176801000.0,
+      "operating_margin": 0.3546
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30",
+      "operating_income": 530062000.0,
+      "total_revenue": 1458924000.0,
+      "operating_margin": 0.3633
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30",
+      "operating_income": 602695000.0,
+      "total_revenue": 1509456000.0,
+      "operating_margin": 0.3993
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "operating_income": 639914000.0,
+      "total_revenue": 1540437000.0,
+      "operating_margin": 0.4154
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31",
+      "operating_income": 660200000.0,
+      "total_revenue": 1571400000.0,
+      "operating_margin": 0.4201
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30",
+      "operating_income": 699600000.0,
+      "total_revenue": 1690400000.0,
+      "operating_margin": 0.4139
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30",
+      "operating_income": 785300000.0,
+      "total_revenue": 1810900000.0,
+      "operating_margin": 0.4337
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "operating_income": 799652000.0,
+      "total_revenue": 1930436000.0,
+      "operating_margin": 0.4142
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31",
+      "operating_income": 858800000.0,
+      "total_revenue": 2004800000.0,
+      "operating_margin": 0.4284
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30",
+      "operating_income": 986200000.0,
+      "total_revenue": 2204800000.0,
+      "operating_margin": 0.4473
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30",
+      "operating_income": 978200000.0,
+      "total_revenue": 2308300000.0,
+      "operating_margin": 0.4238
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "operating_income": 1032900000.0,
+      "total_revenue": 2487800000.0,
+      "operating_margin": 0.4152
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ANET",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31",
+      "operating_income": 699684000.0,
+      "total_revenue": 2317512000.0,
+      "operating_margin": 0.3019
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31",
+      "operating_income": 924739000.0,
+      "total_revenue": 2948037000.0,
+      "operating_margin": 0.3137
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "operating_income": 1527106000.0,
+      "total_revenue": 4381310000.0,
+      "operating_margin": 0.3486
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "operating_income": 2257300000.0,
+      "total_revenue": 5860200000.0,
+      "operating_margin": 0.3852
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "operating_income": 2944600000.0,
+      "total_revenue": 7003100000.0,
+      "operating_margin": 0.4205
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "operating_income": 3856100000.0,
+      "total_revenue": 9005700000.0,
+      "operating_margin": 0.4282
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 299099000.0,
+      "total_revenue": 1051891000.0,
+      "net_margin": 0.2843
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 353999000.0,
+      "total_revenue": 1176801000.0,
+      "net_margin": 0.3008
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 491885000.0,
+      "total_revenue": 1458924000.0,
+      "net_margin": 0.3372
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 545327000.0,
+      "total_revenue": 1509456000.0,
+      "net_margin": 0.3613
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 613636000.0,
+      "total_revenue": 1540437000.0,
+      "net_margin": 0.3984
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 637700000.0,
+      "total_revenue": 1571400000.0,
+      "net_margin": 0.4058
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 665400000.0,
+      "total_revenue": 1690400000.0,
+      "net_margin": 0.3936
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 748000000.0,
+      "total_revenue": 1810900000.0,
+      "net_margin": 0.4131
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 800996000.0,
+      "total_revenue": 1930436000.0,
+      "net_margin": 0.4149
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 813800000.0,
+      "total_revenue": 2004800000.0,
+      "net_margin": 0.4059
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 888800000.0,
+      "total_revenue": 2204800000.0,
+      "net_margin": 0.4031
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 853000000.0,
+      "total_revenue": 2308300000.0,
+      "net_margin": 0.3695
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 955800000.0,
+      "total_revenue": 2487800000.0,
+      "net_margin": 0.3842
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ANET",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 634557000.0,
+      "total_revenue": 2317512000.0,
+      "net_margin": 0.2738
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 840854000.0,
+      "total_revenue": 2948037000.0,
+      "net_margin": 0.2852
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1352446000.0,
+      "total_revenue": 4381310000.0,
+      "net_margin": 0.3087
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2087300000.0,
+      "total_revenue": 5860200000.0,
+      "net_margin": 0.3562
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2852100000.0,
+      "total_revenue": 7003100000.0,
+      "net_margin": 0.4073
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 3511400000.0,
+      "total_revenue": 9005700000.0,
+      "net_margin": 0.3899
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1051891000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30",
+      "ebitda": 434504000.0,
+      "total_revenue": 1176801000.0,
+      "ebitda_margin": 0.3692
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30",
+      "ebitda": 548384000.0,
+      "total_revenue": 1458924000.0,
+      "ebitda_margin": 0.3759
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30",
+      "ebitda": 619701000.0,
+      "total_revenue": 1509456000.0,
+      "ebitda_margin": 0.4105
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "ebitda": 654311000.0,
+      "total_revenue": 1540437000.0,
+      "ebitda_margin": 0.4248
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31",
+      "ebitda": 675800000.0,
+      "total_revenue": 1571400000.0,
+      "ebitda_margin": 0.4301
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30",
+      "ebitda": 715100000.0,
+      "total_revenue": 1690400000.0,
+      "ebitda_margin": 0.423
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30",
+      "ebitda": 800900000.0,
+      "total_revenue": 1810900000.0,
+      "ebitda_margin": 0.4423
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "ebitda": 815040000.0,
+      "total_revenue": 1930436000.0,
+      "ebitda_margin": 0.4222
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31",
+      "ebitda": 872600000.0,
+      "total_revenue": 2004800000.0,
+      "ebitda_margin": 0.4353
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30",
+      "ebitda": 999000000.0,
+      "total_revenue": 2204800000.0,
+      "ebitda_margin": 0.4531
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30",
+      "ebitda": 1001400000.0,
+      "total_revenue": 2308300000.0,
+      "ebitda_margin": 0.4338
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "ebitda": 1055700000.0,
+      "total_revenue": 2487800000.0,
+      "ebitda_margin": 0.4244
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ANET",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31",
+      "ebitda": 734842000.0,
+      "total_revenue": 2317512000.0,
+      "ebitda_margin": 0.3171
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31",
+      "ebitda": 975073000.0,
+      "total_revenue": 2948037000.0,
+      "ebitda_margin": 0.3308
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "ebitda": 1589806000.0,
+      "total_revenue": 4381310000.0,
+      "ebitda_margin": 0.3629
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "ebitda": 2327900000.0,
+      "total_revenue": 5860200000.0,
+      "ebitda_margin": 0.3972
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "ebitda": 3006600000.0,
+      "total_revenue": 7003100000.0,
+      "ebitda_margin": 0.4293
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "ebitda": 3928700000.0,
+      "total_revenue": 9005700000.0,
+      "ebitda_margin": 0.4362
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 92229000.0,
+      "total_revenue": 1051891000.0,
+      "fcf_margin": 0.0877
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 1176801000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 422509000.0,
+      "total_revenue": 1458924000.0,
+      "fcf_margin": 0.2896
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 687765000.0,
+      "total_revenue": 1509456000.0,
+      "fcf_margin": 0.4556
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 520454000.0,
+      "total_revenue": 1540437000.0,
+      "fcf_margin": 0.3379
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 504400000.0,
+      "total_revenue": 1571400000.0,
+      "fcf_margin": 0.321
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 985800000.0,
+      "total_revenue": 1690400000.0,
+      "fcf_margin": 0.5832
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1167500000.0,
+      "total_revenue": 1810900000.0,
+      "fcf_margin": 0.6447
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1018511000.0,
+      "total_revenue": 1930436000.0,
+      "fcf_margin": 0.5276
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 613300000.0,
+      "total_revenue": 2004800000.0,
+      "fcf_margin": 0.3059
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1176100000.0,
+      "total_revenue": 2204800000.0,
+      "fcf_margin": 0.5334
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1238100000.0,
+      "total_revenue": 2308300000.0,
+      "fcf_margin": 0.5364
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1224900000.0,
+      "total_revenue": 2487800000.0,
+      "fcf_margin": 0.4924
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ANET",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 719730000.0,
+      "total_revenue": 2317512000.0,
+      "fcf_margin": 0.3106
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 951120000.0,
+      "total_revenue": 2948037000.0,
+      "fcf_margin": 0.3226
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 448169000.0,
+      "total_revenue": 4381310000.0,
+      "fcf_margin": 0.1023
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1999600000.0,
+      "total_revenue": 5860200000.0,
+      "fcf_margin": 0.3412
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 3676200000.0,
+      "total_revenue": 7003100000.0,
+      "fcf_margin": 0.5249
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4252400000.0,
+      "total_revenue": 9005700000.0,
+      "fcf_margin": 0.4722
+    }
+  ]
+}

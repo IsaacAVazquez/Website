@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "PANW",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 194200000.0,
+      "beginning_stockholders_equity": 1748400000.0,
+      "ending_stockholders_equity": 2170500000.0,
+      "avg_equity": 1959450000.0,
+      "roe": 0.0991
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1746900000.0,
+      "beginning_stockholders_equity": 2170500000.0,
+      "ending_stockholders_equity": 4357200000.0,
+      "avg_equity": 3263850000.0,
+      "roe": 0.5352
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 278800000.0,
+      "beginning_stockholders_equity": 4357200000.0,
+      "ending_stockholders_equity": 4467800000.0,
+      "avg_equity": 4412500000.0,
+      "roe": 0.0632
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 357700000.0,
+      "beginning_stockholders_equity": 4467800000.0,
+      "ending_stockholders_equity": 5169700000.0,
+      "avg_equity": 4818750000.0,
+      "roe": 0.0742
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 351000000.0,
+      "beginning_stockholders_equity": 5169700000.0,
+      "ending_stockholders_equity": 5911800000.0,
+      "avg_equity": 5540750000.0,
+      "roe": 0.0633
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 267000000.0,
+      "beginning_stockholders_equity": 5911800000.0,
+      "ending_stockholders_equity": 6375300000.0,
+      "avg_equity": 6143550000.0,
+      "roe": 0.0435
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 262100000.0,
+      "beginning_stockholders_equity": 6375300000.0,
+      "ending_stockholders_equity": 7230500000.0,
+      "avg_equity": 6802900000.0,
+      "roe": 0.0385
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 253800000.0,
+      "beginning_stockholders_equity": 7230500000.0,
+      "ending_stockholders_equity": 7824400000.0,
+      "avg_equity": 7527450000.0,
+      "roe": 0.0337
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 334000000.0,
+      "beginning_stockholders_equity": 7824400000.0,
+      "ending_stockholders_equity": 8665000000.0,
+      "avg_equity": 8244700000.0,
+      "roe": 0.0405
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 432000000.0,
+      "beginning_stockholders_equity": 8665000000.0,
+      "ending_stockholders_equity": 9393000000.0,
+      "avg_equity": 9029000000.0,
+      "roe": 0.0478
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "PANW",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 194200000.0,
+      "beginning_total_assets": 14501100000.0,
+      "ending_total_assets": 14808500000.0,
+      "avg_assets": 14654800000.0,
+      "roa": 0.0133
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1746900000.0,
+      "beginning_total_assets": 14808500000.0,
+      "ending_total_assets": 18292000000.0,
+      "avg_assets": 16550250000.0,
+      "roa": 0.1056
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 278800000.0,
+      "beginning_total_assets": 18292000000.0,
+      "ending_total_assets": 17930800000.0,
+      "avg_assets": 18111400000.0,
+      "roa": 0.0154
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 357700000.0,
+      "beginning_total_assets": 17930800000.0,
+      "ending_total_assets": 19990900000.0,
+      "avg_assets": 18960850000.0,
+      "roa": 0.0189
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 351000000.0,
+      "beginning_total_assets": 19990900000.0,
+      "ending_total_assets": 20374600000.0,
+      "avg_assets": 20182750000.0,
+      "roa": 0.0174
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 267000000.0,
+      "beginning_total_assets": 20374600000.0,
+      "ending_total_assets": 20951700000.0,
+      "avg_assets": 20663150000.0,
+      "roa": 0.0129
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 262100000.0,
+      "beginning_total_assets": 20951700000.0,
+      "ending_total_assets": 22002800000.0,
+      "avg_assets": 21477250000.0,
+      "roa": 0.0122
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 253800000.0,
+      "beginning_total_assets": 22002800000.0,
+      "ending_total_assets": 23576200000.0,
+      "avg_assets": 22789500000.0,
+      "roa": 0.0111
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 334000000.0,
+      "beginning_total_assets": 23576200000.0,
+      "ending_total_assets": 23536000000.0,
+      "avg_assets": 23556100000.0,
+      "roa": 0.0142
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 432000000.0,
+      "beginning_total_assets": 23536000000.0,
+      "ending_total_assets": 24979000000.0,
+      "avg_assets": 24257500000.0,
+      "roa": 0.0178
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "PANW",
+      "report_date": "2023-10-31",
+      "ebit": 284500000.0,
+      "tax_rate_for_calcs": 0.31,
+      "nopat": 196305000.0,
+      "beginning_invested_capital": 3739900000.0,
+      "ending_invested_capital": 4117200000.0,
+      "avg_invested_capital": 3928550000.0,
+      "roic": 0.05
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-01-31",
+      "ebit": 137200000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 108388000.0,
+      "beginning_invested_capital": 4117200000.0,
+      "ending_invested_capital": 6179000000.0,
+      "avg_invested_capital": 5148100000.0,
+      "roic": 0.0211
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-04-30",
+      "ebit": 252700000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 199633000.0,
+      "beginning_invested_capital": 6179000000.0,
+      "ending_invested_capital": 5630300000.0,
+      "avg_invested_capital": 5904650000.0,
+      "roic": 0.0338
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-07-31",
+      "ebit": 315800000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 249482000.0,
+      "beginning_invested_capital": 5630300000.0,
+      "ending_invested_capital": 6133600000.0,
+      "avg_invested_capital": 5881950000.0,
+      "roic": 0.0424
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-10-31",
+      "ebit": 369000000.0,
+      "tax_rate_for_calcs": 0.05,
+      "nopat": 350550000.0,
+      "beginning_invested_capital": 6133600000.0,
+      "ending_invested_capital": 6557600000.0,
+      "avg_invested_capital": 6345600000.0,
+      "roic": 0.0552
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-01-31",
+      "ebit": 326000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 267320000.0,
+      "beginning_invested_capital": 6557600000.0,
+      "ending_invested_capital": 6909100000.0,
+      "avg_invested_capital": 6733350000.0,
+      "roic": 0.0397
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-04-30",
+      "ebit": 311000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 261240000.0,
+      "beginning_invested_capital": 6909100000.0,
+      "ending_invested_capital": 7613700000.0,
+      "avg_invested_capital": 7261400000.0,
+      "roic": 0.036
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-07-31",
+      "ebit": 591900000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 467601000.0,
+      "beginning_invested_capital": 7613700000.0,
+      "ending_invested_capital": 7824400000.0,
+      "avg_invested_capital": 7719050000.0,
+      "roic": 0.0606
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-10-31",
+      "ebit": 412000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 333720000.0,
+      "beginning_invested_capital": 7824400000.0,
+      "ending_invested_capital": 8665000000.0,
+      "avg_invested_capital": 8244700000.0,
+      "roic": 0.0405
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-01-31",
+      "ebit": 549000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 433710000.0,
+      "beginning_invested_capital": 8665000000.0,
+      "ending_invested_capital": 9393000000.0,
+      "avg_invested_capital": 9029000000.0,
+      "roic": 0.048
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "PANW",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.0991,
+      "roa": 0.0133,
+      "equity_multiplier": 7.45
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.5352,
+      "roa": 0.1056,
+      "equity_multiplier": 5.07
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.0632,
+      "roa": 0.0154,
+      "equity_multiplier": 4.1
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": 0.0742,
+      "roa": 0.0189,
+      "equity_multiplier": 3.93
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.0633,
+      "roa": 0.0174,
+      "equity_multiplier": 3.64
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.0435,
+      "roa": 0.0129,
+      "equity_multiplier": 3.37
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.0385,
+      "roa": 0.0122,
+      "equity_multiplier": 3.16
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.0337,
+      "roa": 0.0111,
+      "equity_multiplier": 3.04
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.0405,
+      "roa": 0.0142,
+      "equity_multiplier": 2.85
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0478,
+      "roa": 0.0178,
+      "equity_multiplier": 2.69
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "PANW",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0133,
+      "net_margin": 0.1034,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.1056,
+      "net_margin": 0.8845,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.0154,
+      "net_margin": 0.1405,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": 0.0189,
+      "net_margin": 0.1634,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.0174,
+      "net_margin": 0.1641,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.0129,
+      "net_margin": 0.1183,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0122,
+      "net_margin": 0.1145,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0111,
+      "net_margin": 0.1001,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0142,
+      "net_margin": 0.135,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "PANW",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0178,
+      "net_margin": 0.1665,
+      "asset_turnover": 0.11
+    }
+  ]
+}

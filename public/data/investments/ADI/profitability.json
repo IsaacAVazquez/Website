@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 498430000.0,
+      "beginning_stockholders_equity": 35903746000.0,
+      "ending_stockholders_equity": 35565122000.0,
+      "avg_equity": 35734434000.0,
+      "roe": 0.0139
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 462727000.0,
+      "beginning_stockholders_equity": 35565122000.0,
+      "ending_stockholders_equity": 35548073000.0,
+      "avg_equity": 35556597500.0,
+      "roe": 0.013
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 302242000.0,
+      "beginning_stockholders_equity": 35548073000.0,
+      "ending_stockholders_equity": 35248789000.0,
+      "avg_equity": 35398431000.0,
+      "roe": 0.0085
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 392232000.0,
+      "beginning_stockholders_equity": 35248789000.0,
+      "ending_stockholders_equity": 35190109000.0,
+      "avg_equity": 35219449000.0,
+      "roe": 0.0111
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 478072000.0,
+      "beginning_stockholders_equity": 35190109000.0,
+      "ending_stockholders_equity": 35176317000.0,
+      "avg_equity": 35183213000.0,
+      "roe": 0.0136
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 391316000.0,
+      "beginning_stockholders_equity": 35176317000.0,
+      "ending_stockholders_equity": 35070535000.0,
+      "avg_equity": 35123426000.0,
+      "roe": 0.0111
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 569770000.0,
+      "beginning_stockholders_equity": 35070535000.0,
+      "ending_stockholders_equity": 35010620000.0,
+      "avg_equity": 35040577500.0,
+      "roe": 0.0163
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 518518000.0,
+      "beginning_stockholders_equity": 35010620000.0,
+      "ending_stockholders_equity": 34085842000.0,
+      "avg_equity": 34548231000.0,
+      "roe": 0.015
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 787738000.0,
+      "beginning_stockholders_equity": 34085842000.0,
+      "ending_stockholders_equity": 33815755000.0,
+      "avg_equity": 33950798500.0,
+      "roe": 0.0232
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 830826000.0,
+      "beginning_stockholders_equity": 33815755000.0,
+      "ending_stockholders_equity": 33787259000.0,
+      "avg_equity": 33801507000.0,
+      "roe": 0.0246
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 498430000.0,
+      "beginning_total_assets": 49346739000.0,
+      "ending_total_assets": 48794478000.0,
+      "avg_assets": 49070608500.0,
+      "roa": 0.0102
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 462727000.0,
+      "beginning_total_assets": 48794478000.0,
+      "ending_total_assets": 48388464000.0,
+      "avg_assets": 48591471000.0,
+      "roa": 0.0095
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 302242000.0,
+      "beginning_total_assets": 48388464000.0,
+      "ending_total_assets": 48861866000.0,
+      "avg_assets": 48625165000.0,
+      "roa": 0.0062
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 392232000.0,
+      "beginning_total_assets": 48861866000.0,
+      "ending_total_assets": 48618374000.0,
+      "avg_assets": 48740120000.0,
+      "roa": 0.008
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 478072000.0,
+      "beginning_total_assets": 48618374000.0,
+      "ending_total_assets": 48228277000.0,
+      "avg_assets": 48423325500.0,
+      "roa": 0.0099
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 391316000.0,
+      "beginning_total_assets": 48228277000.0,
+      "ending_total_assets": 47967546000.0,
+      "avg_assets": 48097911500.0,
+      "roa": 0.0081
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 569770000.0,
+      "beginning_total_assets": 47967546000.0,
+      "ending_total_assets": 47344487000.0,
+      "avg_assets": 47656016500.0,
+      "roa": 0.012
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 518518000.0,
+      "beginning_total_assets": 47344487000.0,
+      "ending_total_assets": 48192601000.0,
+      "avg_assets": 47768544000.0,
+      "roa": 0.0109
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 787738000.0,
+      "beginning_total_assets": 48192601000.0,
+      "ending_total_assets": 47992712000.0,
+      "avg_assets": 48092656500.0,
+      "roa": 0.0164
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 830826000.0,
+      "beginning_total_assets": 47992712000.0,
+      "ending_total_assets": 47991190000.0,
+      "avg_assets": 47991951000.0,
+      "roa": 0.0173
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31",
+      "ebit": 643376000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 559737120.0,
+      "beginning_invested_capital": 42886106000.0,
+      "ending_invested_capital": 42513855000.0,
+      "avg_invested_capital": 42699980500.0,
+      "roic": 0.0131
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31",
+      "ebit": 590559000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": 531503100.0,
+      "beginning_invested_capital": 42513855000.0,
+      "ending_invested_capital": 42538512000.0,
+      "avg_invested_capital": 42526183500.0,
+      "roic": 0.0125
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30",
+      "ebit": 401706000.0,
+      "tax_rate_for_calcs": 0.07,
+      "nopat": 373586580.0,
+      "beginning_invested_capital": 42538512000.0,
+      "ending_invested_capital": 43307481000.0,
+      "avg_invested_capital": 42922996500.0,
+      "roic": 0.0087
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31",
+      "ebit": 508170000.0,
+      "tax_rate_for_calcs": 0.07,
+      "nopat": 472598100.0,
+      "beginning_invested_capital": 43307481000.0,
+      "ending_invested_capital": 43292526000.0,
+      "avg_invested_capital": 43300003500.0,
+      "roic": 0.0109
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31",
+      "ebit": 599132000.0,
+      "tax_rate_for_calcs": 0.07,
+      "nopat": 557192760.0,
+      "beginning_invested_capital": 43292526000.0,
+      "ending_invested_capital": 42758004000.0,
+      "avg_invested_capital": 43025265000.0,
+      "roic": 0.013
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31",
+      "ebit": 510840000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": 459756000.0,
+      "beginning_invested_capital": 42758004000.0,
+      "ending_invested_capital": 42637349000.0,
+      "avg_invested_capital": 42697676500.0,
+      "roic": 0.0108
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30",
+      "ebit": 700631000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 637574210.0,
+      "beginning_invested_capital": 42637349000.0,
+      "ending_invested_capital": 42207757000.0,
+      "avg_invested_capital": 42422553000.0,
+      "roic": 0.015
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31",
+      "ebit": 843001000.0,
+      "tax_rate_for_calcs": 0.32,
+      "nopat": 573240680.0,
+      "beginning_invested_capital": 42207757000.0,
+      "ending_invested_capital": 42774445000.0,
+      "avg_invested_capital": 42491101000.0,
+      "roic": 0.0135
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31",
+      "ebit": 975356000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 868066840.0,
+      "beginning_invested_capital": 42774445000.0,
+      "ending_invested_capital": 42407460000.0,
+      "avg_invested_capital": 42590952500.0,
+      "roic": 0.0204
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31",
+      "ebit": 1032216000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 908350080.0,
+      "beginning_invested_capital": 42407460000.0,
+      "ending_invested_capital": 42469480000.0,
+      "avg_invested_capital": 42438470000.0,
+      "roic": 0.0214
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.0139,
+      "roa": 0.0102,
+      "equity_multiplier": 1.36
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.013,
+      "roa": 0.0095,
+      "equity_multiplier": 1.37
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.0085,
+      "roa": 0.0062,
+      "equity_multiplier": 1.37
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": 0.0111,
+      "roa": 0.008,
+      "equity_multiplier": 1.39
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.0136,
+      "roa": 0.0099,
+      "equity_multiplier": 1.37
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.0111,
+      "roa": 0.0081,
+      "equity_multiplier": 1.37
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.0163,
+      "roa": 0.012,
+      "equity_multiplier": 1.36
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.015,
+      "roa": 0.0109,
+      "equity_multiplier": 1.38
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.0232,
+      "roa": 0.0164,
+      "equity_multiplier": 1.41
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0246,
+      "roa": 0.0173,
+      "equity_multiplier": 1.42
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "ADI",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0102,
+      "net_margin": 0.1835,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0095,
+      "net_margin": 0.1842,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.0062,
+      "net_margin": 0.14,
+      "asset_turnover": 0.04
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": 0.008,
+      "net_margin": 0.1696,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.0099,
+      "net_margin": 0.1957,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.0081,
+      "net_margin": 0.1615,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.012,
+      "net_margin": 0.2158,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0109,
+      "net_margin": 0.18,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0164,
+      "net_margin": 0.2561,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "ADI",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0173,
+      "net_margin": 0.2629,
+      "asset_turnover": 0.07
+    }
+  ]
+}

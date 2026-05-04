@@ -1,10 +1,10 @@
 {
   "symbol": "CDNS",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -33,19 +33,19 @@
       "country": "United States",
       "industry": "Software-Application",
       "sector": "Technology",
-      "longBusinessSummary": "Cadence Design Systems, Inc. develops computational, AI-driven software, hardware, and silicon intellectual property products and solutions. The company offers functional verification services, such as Jasper, a formal verification platform; Xcelium, a parallel logic simulation platform; Verisium, a generative AI solution; Palladium, an enterprise emulation platform; and Protium, a prototyping platform for chip verification, as well as digital IC design and sign off products, including Innovus platform; and custom IC design and simulation product include Virtuoso, a platform to design and verify analog. It also provides Xcelium logic simulator and other front-end verification and virtual prototyping technologies; controllers and physical interfaces; PCI express, universal accelerator and compute express links, and multiple memory interfaces; and Tensilica, a digital signal processor. In addition, the company's design IP portfolio includes serializer/deserializer, peripheral component interconnect, USB, and other standard protocols; and Secure-IC, a solution for embedded security IP. Additionally, it provides System Design and Analysis (SD&A) platform, a solution that enables end-to-end system-level design and verification across chips, packages, PCBs, and electronic systems; Allegro X and OrCAD X platforms for PCB and advanced packaging; Sigrity X for signal and power integrity; AWR for RF design; Fidelity for computational fluid dynamics; Celsius for thermal and airflow analysis; Clarity 3D solver for electromagnetic and power electronics analysis and simulation; Integrity 3D-IC solution for 3D-IC and multi-chiplet designs; the Optimality Intelligent System Explorer, Reality digital twin, and Millennium enterprise multiphysics platforms; Allegro system design platform; and molecular modeling and simulation solutions and services. The company has a strategic collaboration with NVIDIA for the development of engineering solutions tailored for agentic AI chip and system design. The company was incorporated in 1987 and is headquartered in San Jose, California.",
-      "fullTimeEmployees": 13800,
+      "longBusinessSummary": "Cadence Design Systems, Inc. develops computational, AI-driven software, hardware, and silicon intellectual property products and solutions. The company offers functional verification services, such as Jasper, a formal verification platform; Xcelium, a parallel logic simulation platform; Verisium, a generative AI solution; Palladium, an enterprise emulation platform; and Protium, a prototyping platform for chip verification, as well as digital IC design and sign off products, including In novus platform; and custom IC design and simulation product include Virtuoso, a platform to design and verify analog. It also provides Xcelium logic simulator and other front-end verification and virtual prototyping technologies; controllers and physical interfaces; PCI Express, universal accelerator and compute express links, and multiple memory interfaces; and Ten Silica, a digital signal processor. In addition, the company's design IP portfolio includes serializer/deserializer, peripheral component interconnect, USB, and other standard protocols; and Secure-IC, a solution for embedded security IP. Additionally, it provides System Design and Analysis (SD&A) platform, a solution that enables end-to-end system-level design and verification across chips, packages, PCBs, and electronic systems; Allegro X and Orca X platforms for PCB and advanced packaging; Sigrity X for signal and power integrity; AIR for RF design; Fidelity for computational fluid dynamics; Celsius for thermal and airflow analysis; Clarity 3D solver for electromagnetic and power electronics analysis and simulation; Integrity 3D-IC solution for 3D-IC and multi-chiplet designs; the Optimality Intelligent System Explorer, Reality digital twin, and Millennium enterprise multiphasic platforms; Allegro system design platform; and molecular modeling and simulation solutions and services. The company has a strategic collaboration with NVIDIA. The company was incorporated in 1987 and is headquartered in San Jose, California.",
+      "fullTimeEmployees": 15110,
       "website": "https://www.cadence.com",
       "shortName": "Cadence Design Systems, Inc.",
       "longName": "Cadence Design Systems, Inc."
     },
     "fundamentals": {
-      "ttmEps": 4.06,
-      "ttmPe": 81.99,
-      "marketCap": 91836195195,
-      "psRatio": 17.34,
-      "pbRatio": 16.78,
-      "pegRatio": 5.65
+      "ttmEps": 4.28,
+      "ttmPe": 79.66,
+      "marketCap": 94130840574,
+      "psRatio": 17.77,
+      "pbRatio": 17.2,
+      "pegRatio": 3.46
     },
     "profitability": {
       "roe": 7.2700000000000005,
@@ -82,7 +82,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 14.52
+        "yoyGrowth": 23
       }
     ],
     "income_statement": {
@@ -90,6 +90,7 @@
         {
           "Breakdown": "Total Revenue",
           "TTM": "5089287000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1440114000.0",
           "2025-09-30": "1338838000.0",
           "2025-06-30": "1275441000.0",
@@ -109,6 +110,7 @@
         {
           "Breakdown": "Operating Revenue",
           "TTM": "5089287000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1440114000.0",
           "2025-09-30": "1338838000.0",
           "2025-06-30": "1275441000.0",
@@ -128,6 +130,7 @@
         {
           "Breakdown": "Cost of Revenue",
           "TTM": "734335000.0",
+          "2026-03-31": "*",
           "2025-12-31": "188726000.0",
           "2025-09-30": "182193000.0",
           "2025-06-30": "184167000.0",
@@ -147,6 +150,7 @@
         {
           "Breakdown": "Gross Profit",
           "TTM": "4354952000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1251388000.0",
           "2025-09-30": "1156645000.0",
           "2025-06-30": "1091274000.0",
@@ -166,6 +170,7 @@
         {
           "Breakdown": "Operating Expense",
           "TTM": "2792703000.0",
+          "2026-03-31": "*",
           "2025-12-31": "786163000.0",
           "2025-09-30": "703859000.0",
           "2025-06-30": "720885000.0",
@@ -185,6 +190,7 @@
         {
           "Breakdown": "Selling General and Administrative",
           "TTM": "1075722000.0",
+          "2026-03-31": "*",
           "2025-12-31": "310003000.0",
           "2025-09-30": "270595000.0",
           "2025-06-30": "269624000.0",
@@ -204,6 +210,7 @@
         {
           "Breakdown": "General & Administrative Expense",
           "TTM": "282258000.0",
+          "2026-03-31": "*",
           "2025-12-31": "103225000.0",
           "2025-09-30": "78035000.0",
           "2025-06-30": "69029000.0",
@@ -223,6 +230,7 @@
         {
           "Breakdown": "Other G and A",
           "TTM": "282258000.0",
+          "2026-03-31": "*",
           "2025-12-31": "103225000.0",
           "2025-09-30": "78035000.0",
           "2025-06-30": "69029000.0",
@@ -242,6 +250,7 @@
         {
           "Breakdown": "Selling & Marketing Expense",
           "TTM": "793464000.0",
+          "2026-03-31": "*",
           "2025-12-31": "206778000.0",
           "2025-09-30": "192560000.0",
           "2025-06-30": "200595000.0",
@@ -261,6 +270,7 @@
         {
           "Breakdown": "Research & Development",
           "TTM": "1680554000.0",
+          "2026-03-31": "*",
           "2025-12-31": "464582000.0",
           "2025-09-30": "423031000.0",
           "2025-06-30": "442057000.0",
@@ -280,6 +290,7 @@
         {
           "Breakdown": "Depreciation Amortization Depletion",
           "TTM": "36427000.0",
+          "2026-03-31": "*",
           "2025-12-31": "11578000.0",
           "2025-09-30": "10233000.0",
           "2025-06-30": "9204000.0",
@@ -299,6 +310,7 @@
         {
           "Breakdown": "Depreciation & Amortization",
           "TTM": "36427000.0",
+          "2026-03-31": "*",
           "2025-12-31": "11578000.0",
           "2025-09-30": "10233000.0",
           "2025-06-30": "9204000.0",
@@ -318,6 +330,7 @@
         {
           "Breakdown": "Amortization",
           "TTM": "36427000.0",
+          "2026-03-31": "*",
           "2025-12-31": "11578000.0",
           "2025-09-30": "10233000.0",
           "2025-06-30": "9204000.0",
@@ -337,6 +350,7 @@
         {
           "Breakdown": "Amortization of Intangibles",
           "TTM": "36427000.0",
+          "2026-03-31": "*",
           "2025-12-31": "11578000.0",
           "2025-09-30": "10233000.0",
           "2025-06-30": "9204000.0",
@@ -356,6 +370,7 @@
         {
           "Breakdown": "Operating Income",
           "TTM": "1562249000.0",
+          "2026-03-31": "*",
           "2025-12-31": "465225000.0",
           "2025-09-30": "452786000.0",
           "2025-06-30": "370389000.0",
@@ -375,6 +390,7 @@
         {
           "Breakdown": "Net Non-Operating Interest Income Expense",
           "TTM": "-16181000.0",
+          "2026-03-31": "*",
           "2025-12-31": "-4683000.0",
           "2025-09-30": "-4408000.0",
           "2025-06-30": "-2970000.0",
@@ -394,6 +410,7 @@
         {
           "Breakdown": "Non-Operating Interest Income",
           "TTM": "96287000.0",
+          "2026-03-31": "*",
           "2025-12-31": "24757000.0",
           "2025-09-30": "24627000.0",
           "2025-06-30": "25978000.0",
@@ -413,6 +430,7 @@
         {
           "Breakdown": "Non-Operating Interest Expense",
           "TTM": "112468000.0",
+          "2026-03-31": "*",
           "2025-12-31": "29440000.0",
           "2025-09-30": "29035000.0",
           "2025-06-30": "28948000.0",
@@ -432,6 +450,7 @@
         {
           "Breakdown": "Other Income Expense",
           "TTM": "-139703000.0",
+          "2026-03-31": "*",
           "2025-12-31": "32447000.0",
           "2025-09-30": "-55593000.0",
           "2025-06-30": "-86812000.0",
@@ -451,6 +470,7 @@
         {
           "Breakdown": "Gain on Sale of Security",
           "TTM": "1924000.0",
+          "2026-03-31": "*",
           "2025-12-31": "35297000.0",
           "2025-09-30": "-27765000.0",
           "2025-06-30": "42051000.0",
@@ -470,6 +490,7 @@
         {
           "Breakdown": "Special Income Charges",
           "TTM": "-140501000.0",
+          "2026-03-31": "*",
           "2025-12-31": "-1862000.0",
           "2025-09-30": "-27394000.0",
           "2025-06-30": "-128592000.0",
@@ -489,6 +510,7 @@
         {
           "Breakdown": "Restructuring & Mergers Acquisition",
           "TTM": "152001000.0",
+          "2026-03-31": "*",
           "2025-12-31": "1862000.0",
           "2025-09-30": "27394000.0",
           "2025-06-30": "128592000.0",
@@ -508,6 +530,7 @@
         {
           "Breakdown": "Other Special Charges",
           "TTM": "128545000.0",
+          "2026-03-31": "*",
           "2025-12-31": "0.0",
           "2025-09-30": "*",
           "2025-06-30": "*",
@@ -527,6 +550,7 @@
         {
           "Breakdown": "Gain on Sale of PPE",
           "TTM": "11500000.0",
+          "2026-03-31": "*",
           "2025-12-31": "0.0",
           "2025-09-30": "0.0",
           "2025-06-30": "0.0",
@@ -546,6 +570,7 @@
         {
           "Breakdown": "Other Non Operating Income Expenses",
           "TTM": "-1126000.0",
+          "2026-03-31": "*",
           "2025-12-31": "-988000.0",
           "2025-09-30": "-434000.0",
           "2025-06-30": "-271000.0",
@@ -565,6 +590,7 @@
         {
           "Breakdown": "Pretax Income",
           "TTM": "1406365000.0",
+          "2026-03-31": "*",
           "2025-12-31": "492961000.0",
           "2025-09-30": "392783000.0",
           "2025-06-30": "280607000.0",
@@ -584,6 +610,7 @@
         {
           "Breakdown": "Tax Provision",
           "TTM": "394414000.0",
+          "2026-03-31": "*",
           "2025-12-31": "104825000.0",
           "2025-09-30": "105661000.0",
           "2025-06-30": "120556000.0",
@@ -603,6 +630,7 @@
         {
           "Breakdown": "Net Income Common Stockholders",
           "TTM": "1011951000.0",
+          "2026-03-31": "*",
           "2025-12-31": "388136000.0",
           "2025-09-30": "287122000.0",
           "2025-06-30": "160051000.0",
@@ -622,6 +650,7 @@
         {
           "Breakdown": "Net Income(Attributable to Parent Company Shareholders)",
           "TTM": "1011951000.0",
+          "2026-03-31": "*",
           "2025-12-31": "388136000.0",
           "2025-09-30": "287122000.0",
           "2025-06-30": "160051000.0",
@@ -641,6 +670,7 @@
         {
           "Breakdown": "Net Income Including Non-Controlling Interests",
           "TTM": "1011951000.0",
+          "2026-03-31": "*",
           "2025-12-31": "388136000.0",
           "2025-09-30": "287122000.0",
           "2025-06-30": "160051000.0",
@@ -660,6 +690,7 @@
         {
           "Breakdown": "Net Income Continuous Operations",
           "TTM": "1011951000.0",
+          "2026-03-31": "*",
           "2025-12-31": "388136000.0",
           "2025-09-30": "287122000.0",
           "2025-06-30": "160051000.0",
@@ -679,6 +710,7 @@
         {
           "Breakdown": "Diluted NI Available to Com Stockholders",
           "TTM": "1011951000.0",
+          "2026-03-31": "*",
           "2025-12-31": "388136000.0",
           "2025-09-30": "287122000.0",
           "2025-06-30": "160051000.0",
@@ -698,6 +730,7 @@
         {
           "Breakdown": "Basic EPS",
           "TTM": "3.55",
+          "2026-03-31": "1.23",
           "2025-12-31": "1.43",
           "2025-09-30": "1.06",
           "2025-06-30": "0.59",
@@ -717,6 +750,7 @@
         {
           "Breakdown": "Diluted EPS",
           "TTM": "3.51",
+          "2026-03-31": "1.23",
           "2025-12-31": "1.42",
           "2025-09-30": "1.05",
           "2025-06-30": "0.59",
@@ -736,6 +770,7 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "269537500.0",
+          "2026-03-31": "272061000.0",
           "2025-12-31": "270924000.0",
           "2025-09-30": "271152000.0",
           "2025-06-30": "271294000.0",
@@ -755,6 +790,7 @@
         {
           "Breakdown": "Diluted Average Shares",
           "TTM": "272893000.0",
+          "2026-03-31": "273725000.0",
           "2025-12-31": "272932000.0",
           "2025-09-30": "273798000.0",
           "2025-06-30": "272899000.0",
@@ -774,6 +810,7 @@
         {
           "Breakdown": "Total Operating Income as Reported",
           "TTM": "1410248000.0",
+          "2026-03-31": "*",
           "2025-12-31": "463335000.0",
           "2025-09-30": "425390000.0",
           "2025-06-30": "241797000.0",
@@ -793,6 +830,7 @@
         {
           "Breakdown": "Total Expenses",
           "TTM": "3527038000.0",
+          "2026-03-31": "*",
           "2025-12-31": "974889000.0",
           "2025-09-30": "886052000.0",
           "2025-06-30": "905052000.0",
@@ -812,6 +850,7 @@
         {
           "Breakdown": "Net Income from Continuing & Discontinued Operation",
           "TTM": "1011951000.0",
+          "2026-03-31": "*",
           "2025-12-31": "388136000.0",
           "2025-09-30": "287122000.0",
           "2025-06-30": "160051000.0",
@@ -831,6 +870,7 @@
         {
           "Breakdown": "Normalized Income",
           "TTM": "1111664185.22",
+          "2026-03-31": "*",
           "2025-12-31": "361810738.65",
           "2025-09-30": "327443229.0",
           "2025-06-30": "228418390.0",
@@ -850,6 +890,7 @@
         {
           "Breakdown": "Interest Income",
           "TTM": "96287000.0",
+          "2026-03-31": "*",
           "2025-12-31": "24757000.0",
           "2025-09-30": "24627000.0",
           "2025-06-30": "25978000.0",
@@ -869,6 +910,7 @@
         {
           "Breakdown": "Interest Expense",
           "TTM": "112468000.0",
+          "2026-03-31": "*",
           "2025-12-31": "29440000.0",
           "2025-09-30": "29035000.0",
           "2025-06-30": "28948000.0",
@@ -888,6 +930,7 @@
         {
           "Breakdown": "Net Interest Income",
           "TTM": "-16181000.0",
+          "2026-03-31": "*",
           "2025-12-31": "-4683000.0",
           "2025-09-30": "-4408000.0",
           "2025-06-30": "-2970000.0",
@@ -907,6 +950,7 @@
         {
           "Breakdown": "EBIT",
           "TTM": "1518833000.0",
+          "2026-03-31": "*",
           "2025-12-31": "522401000.0",
           "2025-09-30": "421818000.0",
           "2025-06-30": "309555000.0",
@@ -926,6 +970,7 @@
         {
           "Breakdown": "EBITDA",
           "TTM": "1737277000.0",
+          "2026-03-31": "*",
           "2025-12-31": "591274000.0",
           "2025-09-30": "477568000.0",
           "2025-06-30": "367306000.0",
@@ -945,6 +990,7 @@
         {
           "Breakdown": "Reconciled Cost of Revenue",
           "TTM": "552318000.0",
+          "2026-03-31": "*",
           "2025-12-31": "131431000.0",
           "2025-09-30": "136676000.0",
           "2025-06-30": "135620000.0",
@@ -964,6 +1010,7 @@
         {
           "Breakdown": "Reconciled Depreciation",
           "TTM": "218444000.0",
+          "2026-03-31": "*",
           "2025-12-31": "68873000.0",
           "2025-09-30": "55750000.0",
           "2025-06-30": "57751000.0",
@@ -983,6 +1030,7 @@
         {
           "Breakdown": "Net Income from Continuing Operation Net Minority Interest",
           "TTM": "1011951000.0",
+          "2026-03-31": "*",
           "2025-12-31": "388136000.0",
           "2025-09-30": "287122000.0",
           "2025-06-30": "160051000.0",
@@ -1002,6 +1050,7 @@
         {
           "Breakdown": "Total Unusual Items Excluding Goodwill",
           "TTM": "-138577000.0",
+          "2026-03-31": "*",
           "2025-12-31": "33435000.0",
           "2025-09-30": "-55159000.0",
           "2025-06-30": "-86541000.0",
@@ -1021,6 +1070,7 @@
         {
           "Breakdown": "Total Unusual Items",
           "TTM": "-138577000.0",
+          "2026-03-31": "*",
           "2025-12-31": "33435000.0",
           "2025-09-30": "-55159000.0",
           "2025-06-30": "-86541000.0",
@@ -1040,6 +1090,7 @@
         {
           "Breakdown": "Normalized EBITDA",
           "TTM": "1875854000.0",
+          "2026-03-31": "*",
           "2025-12-31": "557839000.0",
           "2025-09-30": "532727000.0",
           "2025-06-30": "453847000.0",
@@ -1059,6 +1110,7 @@
         {
           "Breakdown": "Tax Rate for Calcs",
           "TTM": "0.28",
+          "2026-03-31": "*",
           "2025-12-31": "0.21",
           "2025-09-30": "0.27",
           "2025-06-30": "0.21",
@@ -1078,6 +1130,7 @@
         {
           "Breakdown": "Tax Effect of Unusual Items",
           "TTM": "-38863814.78",
+          "2026-03-31": "*",
           "2025-12-31": "7109738.65",
           "2025-09-30": "-14837771.0",
           "2025-06-30": "-18173610.0",
@@ -4428,7 +4481,7 @@
         },
         {
           "Breakdown": "Sale of Intangibles",
-          "TTM": "11500000.0",
+          "TTM": "0.0",
           "2025-12-31": "0.0",
           "2025-09-30": "0.0",
           "2025-06-30": "0.0",
@@ -5543,57 +5596,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.61,
-      "costOfEquity": 13.969999999999999,
+      "wacc": 13.489999999999998,
+      "costOfEquity": 13.84,
       "costOfDebt": 1.13,
       "taxRate": 21,
-      "beta": 1.1283,
-      "marketCap": 91836195195
+      "beta": 1.1147,
+      "marketCap": 94130840574
     },
     "beta": {
-      "beta5y": 1.1283
+      "beta5y": 1.1147
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 270.31,
-        "high": 283,
-        "low": 270,
-        "close": 281.78,
-        "volume": 2177700
-      },
-      {
-        "date": "2025-04-25",
-        "open": 279.99,
-        "high": 290.5,
-        "low": 279.45,
-        "close": 289.63,
-        "volume": 2414000
-      },
-      {
-        "date": "2025-04-28",
-        "open": 288.02,
-        "high": 289.41,
-        "low": 281.7,
-        "close": 285.74,
-        "volume": 3416100
-      },
-      {
-        "date": "2025-04-29",
-        "open": 289.64,
-        "high": 303.6,
-        "low": 289.64,
-        "close": 302.22,
-        "volume": 3815600
-      },
-      {
-        "date": "2025-04-30",
-        "open": 294.51,
-        "high": 299.98,
-        "low": 293.85,
-        "close": 297.74,
-        "volume": 2780600
-      },
       {
         "date": "2025-05-01",
         "open": 301.74,
@@ -7568,7 +7581,47 @@
         "high": 334.81,
         "low": 319.37,
         "close": 332.89,
-        "volume": 3312700
+        "volume": 3316100
+      },
+      {
+        "date": "2026-04-27",
+        "open": 330.82,
+        "high": 338.19,
+        "low": 330,
+        "close": 336.54,
+        "volume": 4034400
+      },
+      {
+        "date": "2026-04-28",
+        "open": 329.7,
+        "high": 338.55,
+        "low": 317.07,
+        "close": 325.31,
+        "volume": 4885200
+      },
+      {
+        "date": "2026-04-29",
+        "open": 323.71,
+        "high": 331.36,
+        "low": 315.51,
+        "close": 329.95,
+        "volume": 2949700
+      },
+      {
+        "date": "2026-04-30",
+        "open": 328.75,
+        "high": 330.08,
+        "low": 319.78,
+        "close": 329.59,
+        "volume": 2077800
+      },
+      {
+        "date": "2026-05-01",
+        "open": 336.5,
+        "high": 342.37,
+        "low": 334,
+        "close": 340.94,
+        "volume": 1825700
       }
     ],
     "news": [
@@ -7645,11 +7698,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
-        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
-        "publisher": "MT Newswires",
+        "uuid": "226a0e48-9158-3ec9-a1da-aa680a336dfd",
+        "title": "Why Cadence Design Systems, Inc. (CDNS) Went Down On Wednesday",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
+        "link": "https://finance.yahoo.com/news/why-cadence-design-systems-inc-094614595.html",
         "type": "STORY"
       }
     ],
@@ -7715,52 +7768,52 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 81.99,
-        "industryAvg": 24.88
+        "value": 79.66,
+        "industryAvg": 25.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.34,
-        "industryAvg": 4.39
+        "value": 17.77,
+        "industryAvg": 4.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.78,
-        "industryAvg": 4.33
+        "value": 17.2,
+        "industryAvg": 4.38
       },
       {
         "metric": "ROE",
         "value": 7.2700000000000005,
-        "industryAvg": 6.08
+        "industryAvg": 6.15
       },
       {
         "metric": "ROA",
         "value": 3.93,
-        "industryAvg": 3.3000000000000003
+        "industryAvg": 3.35
       },
       {
         "metric": "Gross Margin",
         "value": 86.9,
-        "industryAvg": 63.27
+        "industryAvg": 63.23
       },
       {
         "metric": "EBITDA Margin",
         "value": 41.06,
-        "industryAvg": 14.899999999999999
+        "industryAvg": 15.1
       },
       {
         "metric": "Net Margin",
         "value": 26.950000000000003,
-        "industryAvg": 7.779999999999999
+        "industryAvg": 7.84
       }
     ],
     "dcf": {
-      "fairValue": 48.04,
-      "currentPrice": 332.89,
-      "upside": -85.57,
-      "wacc": 13.61,
+      "fairValue": 58.85,
+      "currentPrice": 340.94,
+      "upside": -82.74,
+      "wacc": 13.49,
       "growthEstimates": {
-        "Near-term growth (Yrs 1-3)": 14.52,
+        "Near-term growth (Yrs 1-3)": 23,
         "Terminal growth": 3
       },
       "recommendation": "Sell"

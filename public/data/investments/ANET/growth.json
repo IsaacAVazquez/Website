@@ -1,0 +1,1039 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 1051891000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 1176801000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 1458924000.0,
+      "prev_year_revenue": 1051891000.0,
+      "yoy_growth": 0.387
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 1509456000.0,
+      "prev_year_revenue": 1176801000.0,
+      "yoy_growth": 0.2827
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 1540437000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 1571400000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 1690400000.0,
+      "prev_year_revenue": 1458924000.0,
+      "yoy_growth": 0.1587
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 1810900000.0,
+      "prev_year_revenue": 1509456000.0,
+      "yoy_growth": 0.1997
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 1930436000.0,
+      "prev_year_revenue": 1540437000.0,
+      "yoy_growth": 0.2532
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 2004800000.0,
+      "prev_year_revenue": 1571400000.0,
+      "yoy_growth": 0.2758
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 2204800000.0,
+      "prev_year_revenue": 1690400000.0,
+      "yoy_growth": 0.3043
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 2308300000.0,
+      "prev_year_revenue": 1810900000.0,
+      "yoy_growth": 0.2747
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 2487800000.0,
+      "prev_year_revenue": 1930436000.0,
+      "yoy_growth": 0.2887
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 2317512000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 2948037000.0,
+      "prev_year_revenue": 2317512000.0,
+      "yoy_growth": 0.2721
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 4381310000.0,
+      "prev_year_revenue": 2948037000.0,
+      "yoy_growth": 0.4862
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 5860200000.0,
+      "prev_year_revenue": 4381310000.0,
+      "yoy_growth": 0.3375
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 7003100000.0,
+      "prev_year_revenue": 5860200000.0,
+      "yoy_growth": 0.195
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 9005700000.0,
+      "prev_year_revenue": 7003100000.0,
+      "yoy_growth": 0.286
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 362853000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 417347000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 530062000.0,
+      "prev_year_operating_income": 362853000.0,
+      "yoy_growth": 0.4608
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 602695000.0,
+      "prev_year_operating_income": 417347000.0,
+      "yoy_growth": 0.4441
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 639914000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 660200000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 699600000.0,
+      "prev_year_operating_income": 530062000.0,
+      "yoy_growth": 0.3198
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 785300000.0,
+      "prev_year_operating_income": 602695000.0,
+      "yoy_growth": 0.303
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 799652000.0,
+      "prev_year_operating_income": 639914000.0,
+      "yoy_growth": 0.2496
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 858800000.0,
+      "prev_year_operating_income": 660200000.0,
+      "yoy_growth": 0.3008
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 986200000.0,
+      "prev_year_operating_income": 699600000.0,
+      "yoy_growth": 0.4097
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 978200000.0,
+      "prev_year_operating_income": 785300000.0,
+      "yoy_growth": 0.2456
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 1032900000.0,
+      "prev_year_operating_income": 799652000.0,
+      "yoy_growth": 0.2917
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 699684000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 924739000.0,
+      "prev_year_operating_income": 699684000.0,
+      "yoy_growth": 0.3217
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 1527106000.0,
+      "prev_year_operating_income": 924739000.0,
+      "yoy_growth": 0.6514
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 2257300000.0,
+      "prev_year_operating_income": 1527106000.0,
+      "yoy_growth": 0.4782
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 2944600000.0,
+      "prev_year_operating_income": 2257300000.0,
+      "yoy_growth": 0.3045
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 3856100000.0,
+      "prev_year_operating_income": 2944600000.0,
+      "yoy_growth": 0.3095
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": 434504000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 548384000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 619701000.0,
+      "prev_year_ebitda": 434504000.0,
+      "yoy_growth": 0.4262
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 654311000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 675800000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 715100000.0,
+      "prev_year_ebitda": 548384000.0,
+      "yoy_growth": 0.304
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 800900000.0,
+      "prev_year_ebitda": 619701000.0,
+      "yoy_growth": 0.2924
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 815040000.0,
+      "prev_year_ebitda": 654311000.0,
+      "yoy_growth": 0.2456
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 872600000.0,
+      "prev_year_ebitda": 675800000.0,
+      "yoy_growth": 0.2912
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 999000000.0,
+      "prev_year_ebitda": 715100000.0,
+      "yoy_growth": 0.397
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 1001400000.0,
+      "prev_year_ebitda": 800900000.0,
+      "yoy_growth": 0.2503
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 1055700000.0,
+      "prev_year_ebitda": 815040000.0,
+      "yoy_growth": 0.2953
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 734842000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 975073000.0,
+      "prev_year_ebitda": 734842000.0,
+      "yoy_growth": 0.3269
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 1589806000.0,
+      "prev_year_ebitda": 975073000.0,
+      "yoy_growth": 0.6304
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 2327900000.0,
+      "prev_year_ebitda": 1589806000.0,
+      "yoy_growth": 0.4643
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 3006600000.0,
+      "prev_year_ebitda": 2327900000.0,
+      "yoy_growth": 0.2916
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 3928700000.0,
+      "prev_year_ebitda": 3006600000.0,
+      "yoy_growth": 0.3067
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 299099000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": 353999000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 491885000.0,
+      "prev_year_net_income_common_stockholders": 299099000.0,
+      "yoy_growth": 0.6446
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 545327000.0,
+      "prev_year_net_income_common_stockholders": 353999000.0,
+      "yoy_growth": 0.5405
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 613636000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 637700000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 665400000.0,
+      "prev_year_net_income_common_stockholders": 491885000.0,
+      "yoy_growth": 0.3528
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 748000000.0,
+      "prev_year_net_income_common_stockholders": 545327000.0,
+      "yoy_growth": 0.3717
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 800996000.0,
+      "prev_year_net_income_common_stockholders": 613636000.0,
+      "yoy_growth": 0.3053
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 813800000.0,
+      "prev_year_net_income_common_stockholders": 637700000.0,
+      "yoy_growth": 0.2761
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 888800000.0,
+      "prev_year_net_income_common_stockholders": 665400000.0,
+      "yoy_growth": 0.3357
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 853000000.0,
+      "prev_year_net_income_common_stockholders": 748000000.0,
+      "yoy_growth": 0.1404
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 955800000.0,
+      "prev_year_net_income_common_stockholders": 800996000.0,
+      "yoy_growth": 0.1933
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 634557000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 840854000.0,
+      "prev_year_net_income_common_stockholders": 634557000.0,
+      "yoy_growth": 0.3251
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1352446000.0,
+      "prev_year_net_income_common_stockholders": 840854000.0,
+      "yoy_growth": 0.6084
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2087300000.0,
+      "prev_year_net_income_common_stockholders": 1352446000.0,
+      "yoy_growth": 0.5434
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2852100000.0,
+      "prev_year_net_income_common_stockholders": 2087300000.0,
+      "yoy_growth": 0.3664
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3511400000.0,
+      "prev_year_net_income_common_stockholders": 2852100000.0,
+      "yoy_growth": 0.2312
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 92229000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 422509000.0,
+      "prev_year_free_cash_flow": 92229000.0,
+      "yoy_growth": 3.5811
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 687765000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 520454000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 504400000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 985800000.0,
+      "prev_year_free_cash_flow": 422509000.0,
+      "yoy_growth": 1.3332
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 1167500000.0,
+      "prev_year_free_cash_flow": 687765000.0,
+      "yoy_growth": 0.6975
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 1018511000.0,
+      "prev_year_free_cash_flow": 520454000.0,
+      "yoy_growth": 0.957
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 613300000.0,
+      "prev_year_free_cash_flow": 504400000.0,
+      "yoy_growth": 0.2159
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 1176100000.0,
+      "prev_year_free_cash_flow": 985800000.0,
+      "yoy_growth": 0.193
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 1238100000.0,
+      "prev_year_free_cash_flow": 1167500000.0,
+      "yoy_growth": 0.0605
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 1224900000.0,
+      "prev_year_free_cash_flow": 1018511000.0,
+      "yoy_growth": 0.2026
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 719730000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 951120000.0,
+      "prev_year_free_cash_flow": 719730000.0,
+      "yoy_growth": 0.3215
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 448169000.0,
+      "prev_year_free_cash_flow": 951120000.0,
+      "yoy_growth": -0.5288
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 1999600000.0,
+      "prev_year_free_cash_flow": 448169000.0,
+      "yoy_growth": 3.4617
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 3676200000.0,
+      "prev_year_free_cash_flow": 1999600000.0,
+      "yoy_growth": 0.8385
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 4252400000.0,
+      "prev_year_free_cash_flow": 3676200000.0,
+      "yoy_growth": 0.1567
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "ANET",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.01,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.03,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.04,
+      "yoy_growth": 0.25
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 1.3333
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.03,
+      "yoy_growth": 1.6667
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.04,
+      "yoy_growth": 1.75
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.6
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 0.5714
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": -0.13,
+      "prev_year_eps": 0.08,
+      "yoy_growth": -2.625
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": 0.11,
+      "yoy_growth": 0.1818
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 0.625
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": 0.11,
+      "yoy_growth": 0.3636
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": -0.13,
+      "yoy_growth": 2.1538
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 0.16,
+      "prev_year_eps": 0.13,
+      "yoy_growth": 0.2308
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": 0.13,
+      "yoy_growth": 0.5385
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.15,
+      "yoy_growth": -0.2667
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 0.15,
+      "yoy_growth": -0.2667
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": 0.16,
+      "yoy_growth": -0.1875
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": 0.2,
+      "yoy_growth": -0.3
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": 0.11,
+      "yoy_growth": 0.2727
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": 0.11,
+      "yoy_growth": 0.3636
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 0.18,
+      "prev_year_eps": 0.13,
+      "yoy_growth": 0.3846
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 0.19,
+      "prev_year_eps": 0.14,
+      "yoy_growth": 0.3571
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": 0.14,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 0.24,
+      "prev_year_eps": 0.15,
+      "yoy_growth": 0.6
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": 0.18,
+      "yoy_growth": 0.5556
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 0.34,
+      "prev_year_eps": 0.19,
+      "yoy_growth": 0.7895
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 0.35,
+      "prev_year_eps": 0.21,
+      "yoy_growth": 0.6667
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 0.39,
+      "prev_year_eps": 0.24,
+      "yoy_growth": 0.625
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 0.43,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 0.5357
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 0.48,
+      "prev_year_eps": 0.34,
+      "yoy_growth": 0.4118
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 0.5,
+      "prev_year_eps": 0.35,
+      "yoy_growth": 0.4286
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 0.52,
+      "prev_year_eps": 0.39,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 0.58,
+      "prev_year_eps": 0.43,
+      "yoy_growth": 0.3488
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 0.62,
+      "prev_year_eps": 0.48,
+      "yoy_growth": 0.2917
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 0.64,
+      "prev_year_eps": 0.5,
+      "yoy_growth": 0.28
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 0.7,
+      "prev_year_eps": 0.52,
+      "yoy_growth": 0.3462
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 0.67,
+      "prev_year_eps": 0.58,
+      "yoy_growth": 0.1552
+    },
+    {
+      "symbol": "ANET",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 0.75,
+      "prev_year_eps": 0.62,
+      "yoy_growth": 0.2097
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.13,
-      "ttmPe": 82.41,
-      "marketCap": 2001628328232,
-      "psRatio": 29.31,
-      "pbRatio": 25.06,
-      "pegRatio": 2.61
+      "ttmPe": 82.12,
+      "marketCap": 1994621019296,
+      "psRatio": 29.21,
+      "pbRatio": 24.97,
+      "pegRatio": 2.6
     },
     "profitability": {
       "roe": 9.120000000000001,
@@ -5768,57 +5768,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.98,
-      "costOfEquity": 16.470000000000002,
+      "wacc": 15.879999999999999,
+      "costOfEquity": 16.37,
       "costOfDebt": 1.21,
       "taxRate": 10,
-      "beta": 1.4207,
-      "marketCap": 2001628328232
+      "beta": 1.4125,
+      "marketCap": 1994621019296
     },
     "beta": {
-      "beta5y": 1.4207
+      "beta5y": 1.4125
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 179.69,
-        "high": 188.57,
-        "low": 178.3,
-        "close": 188.15,
-        "volume": 27576900
-      },
-      {
-        "date": "2025-04-25",
-        "open": 186.92,
-        "high": 193.37,
-        "low": 186.89,
-        "close": 192.31,
-        "volume": 21242300
-      },
-      {
-        "date": "2025-04-28",
-        "open": 190.53,
-        "high": 193.1,
-        "low": 187.68,
-        "close": 192.47,
-        "volume": 16385800
-      },
-      {
-        "date": "2025-04-29",
-        "open": 191.72,
-        "high": 193.25,
-        "low": 190.1,
-        "close": 191.17,
-        "volume": 14630000
-      },
-      {
-        "date": "2025-04-30",
-        "open": 185.9,
-        "high": 193.2,
-        "low": 184.02,
-        "close": 192.47,
-        "volume": 22768900
-      },
       {
         "date": "2025-05-01",
         "open": 198.14,
@@ -7793,7 +7753,47 @@
         "high": 425,
         "low": 408.86,
         "close": 422.76,
-        "volume": 22459400
+        "volume": 22491100
+      },
+      {
+        "date": "2026-04-27",
+        "open": 420.48,
+        "high": 422.75,
+        "low": 414.63,
+        "close": 418.2,
+        "volume": 17451600
+      },
+      {
+        "date": "2026-04-28",
+        "open": 400.31,
+        "high": 405.81,
+        "low": 394.65,
+        "close": 399.83,
+        "volume": 25519200
+      },
+      {
+        "date": "2026-04-29",
+        "open": 403.5,
+        "high": 405.64,
+        "low": 396.78,
+        "close": 405.45,
+        "volume": 15962500
+      },
+      {
+        "date": "2026-04-30",
+        "open": 415.52,
+        "high": 418.38,
+        "low": 404.23,
+        "close": 417.43,
+        "volume": 21821600
+      },
+      {
+        "date": "2026-05-01",
+        "open": 415.09,
+        "high": 423.17,
+        "low": 413.28,
+        "close": 421.28,
+        "volume": 11870200
       }
     ],
     "news": [
@@ -7838,19 +7838,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
         "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
         "type": "STORY"
       },
       {
@@ -7935,50 +7935,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 82.41,
-        "industryAvg": 40.22
+        "value": 82.12,
+        "industryAvg": 38.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 29.31,
-        "industryAvg": 14.28
+        "value": 29.21,
+        "industryAvg": 14.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.06,
-        "industryAvg": 11.89
+        "value": 24.97,
+        "industryAvg": 11.78
       },
       {
         "metric": "ROE",
         "value": 9.120000000000001,
-        "industryAvg": 29.98
+        "industryAvg": 30.509999999999998
       },
       {
         "metric": "ROA",
         "value": 4.31,
-        "industryAvg": 18.41
+        "industryAvg": 18.740000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 68.13,
-        "industryAvg": 57.14
+        "industryAvg": 57.15
       },
       {
         "metric": "EBITDA Margin",
         "value": 57.730000000000004,
-        "industryAvg": 52.59
+        "industryAvg": 52.629999999999995
       },
       {
         "metric": "Net Margin",
         "value": 38.06,
-        "industryAvg": 33.29
+        "industryAvg": 33.900000000000006
       }
     ],
     "dcf": {
-      "fairValue": 64.68,
-      "currentPrice": 422.76,
-      "upside": -84.7,
-      "wacc": 15.98,
+      "fairValue": 65.21,
+      "currentPrice": 421.28,
+      "upside": -84.52,
+      "wacc": 15.88,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 31.58,
         "Terminal growth": 3

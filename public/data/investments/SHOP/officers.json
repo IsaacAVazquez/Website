@@ -1,0 +1,42 @@
+[
+  {
+    "symbol": "SHOP",
+    "name": "Mr. Harley  Finkelstein",
+    "title": "President",
+    "age": 42,
+    "born": 1983,
+    "pay": 929563,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Mr. Jeff J. Hoffmeister CPA",
+    "title": "Chief Financial Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": 1000000,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Mr. Tobias  Lutke",
+    "title": "Founder, Chairman, CEO and Head of R&D",
+    "age": 44,
+    "born": 1981,
+    "pay": 1,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Ms. Carrie  Gillard",
+    "title": "Director of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

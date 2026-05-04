@@ -1,0 +1,222 @@
+{
+  "by_segment": [
+    {
+      "symbol": "WFC",
+      "report_date": "2020-06-30",
+      "Commercial Banking": 2351000000.0,
+      "Consumer Banking and Lending": 7608000000.0,
+      "Corporate": 1378000000.0,
+      "Corporate and Investment Banking": 4059000000.0,
+      "Wealth and Investment Management": 3206000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2020-09-30",
+      "Commercial Banking": 2360000000.0,
+      "Consumer Banking and Lending": 9146000000.0,
+      "Corporate": 1169000000.0,
+      "Corporate and Investment Banking": 3287000000.0,
+      "Wealth and Investment Management": 3633000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2020-12-31",
+      "Commercial Banking": 2388000000.0,
+      "Consumer Banking and Lending": 8613000000.0,
+      "Corporate": 975000000.0,
+      "Corporate and Investment Banking": 3106000000.0,
+      "Wealth and Investment Management": 3789000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2021-03-31",
+      "Commercial Banking": 2081000000.0,
+      "Consumer Banking and Lending": 8654000000.0,
+      "Corporate": 1027000000.0,
+      "Corporate and Investment Banking": 3604000000.0,
+      "Wealth and Investment Management": 3544000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2021-06-30",
+      "Commercial Banking": 2108000000.0,
+      "Consumer Banking and Lending": 8686000000.0,
+      "Corporate": 3023000000.0,
+      "Corporate and Investment Banking": 3338000000.0,
+      "Wealth and Investment Management": 3536000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2021-09-30",
+      "Commercial Banking": 2076000000.0,
+      "Consumer Banking and Lending": 8804000000.0,
+      "Corporate": 1325000000.0,
+      "Corporate and Investment Banking": 3385000000.0,
+      "Wealth and Investment Management": 3618000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2021-12-31",
+      "Commercial Banking": 2284000000.0,
+      "Consumer Banking and Lending": 8733000000.0,
+      "Corporate": 3120000000.0,
+      "Corporate and Investment Banking": 3512000000.0,
+      "Wealth and Investment Management": 3648000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-03-31",
+      "Commercial Banking": 2327000000.0,
+      "Consumer Banking and Lending": 8563000000.0,
+      "Corporate": -12000000.0,
+      "Corporate and Investment Banking": 3470000000.0,
+      "Wealth and Investment Management": 3757000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-06-30",
+      "Commercial Banking": 2492000000.0,
+      "Consumer Banking and Lending": 8507000000.0,
+      "Corporate": -721000000.0,
+      "Corporate and Investment Banking": 3573000000.0,
+      "Wealth and Investment Management": 3705000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-09-30",
+      "Commercial Banking": 2952000000.0,
+      "Consumer Banking and Lending": 9277000000.0,
+      "Corporate": 36000000.0,
+      "Corporate and Investment Banking": 4060000000.0,
+      "Wealth and Investment Management": 3665000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2022-12-31",
+      "Commercial Banking": 3149000000.0,
+      "Consumer Banking and Lending": 9463000000.0,
+      "Corporate": 85000000.0,
+      "Corporate and Investment Banking": 4139000000.0,
+      "Wealth and Investment Management": 3695000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-03-31",
+      "Commercial Banking": 3307000000.0,
+      "Consumer Banking and Lending": 9364000000.0,
+      "Corporate": 21000000.0,
+      "Corporate and Investment Banking": 4902000000.0,
+      "Wealth and Investment Management": 3681000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-06-30",
+      "Commercial Banking": 3369000000.0,
+      "Consumer Banking and Lending": 9455000000.0,
+      "Corporate": 30000000.0,
+      "Corporate and Investment Banking": 4631000000.0,
+      "Wealth and Investment Management": 3648000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-09-30",
+      "Commercial Banking": 3405000000.0,
+      "Consumer Banking and Lending": 9581000000.0,
+      "Corporate": -248000000.0,
+      "Corporate and Investment Banking": 4923000000.0,
+      "Wealth and Investment Management": 3702000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2023-12-31",
+      "Commercial Banking": 3368000000.0,
+      "Consumer Banking and Lending": 9519000000.0,
+      "Corporate": -260000000.0,
+      "Corporate and Investment Banking": 4735000000.0,
+      "Wealth and Investment Management": 3660000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-03-31",
+      "Commercial Banking": 3152000000.0,
+      "Consumer Banking and Lending": 9091000000.0,
+      "Corporate": 323000000.0,
+      "Corporate and Investment Banking": 4982000000.0,
+      "Wealth and Investment Management": 3742000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-06-30",
+      "Commercial Banking": 3122000000.0,
+      "Consumer Banking and Lending": 9006000000.0,
+      "Corporate": 248000000.0,
+      "Corporate and Investment Banking": 4838000000.0,
+      "Wealth and Investment Management": 3858000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-09-30",
+      "Commercial Banking": 3333000000.0,
+      "Consumer Banking and Lending": 9124000000.0,
+      "Corporate": -337000000.0,
+      "Corporate and Investment Banking": 4911000000.0,
+      "Wealth and Investment Management": 3878000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2024-12-31",
+      "Commercial Banking": 3171000000.0,
+      "Consumer Banking and Lending": 8980000000.0,
+      "Corporate": 104000000.0,
+      "Corporate and Investment Banking": 4613000000.0,
+      "Wealth and Investment Management": 3958000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-03-31",
+      "Commercial Banking": 2925000000.0,
+      "Consumer Banking and Lending": 8913000000.0,
+      "Corporate": -177000000.0,
+      "Corporate and Investment Banking": 5064000000.0,
+      "Wealth and Investment Management": 3874000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-06-30",
+      "Commercial Banking": 2933000000.0,
+      "Consumer Banking and Lending": 9228000000.0,
+      "Corporate": 559000000.0,
+      "Corporate and Investment Banking": 4673000000.0,
+      "Wealth and Investment Management": 3898000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-09-30",
+      "Commercial Banking": 3041000000.0,
+      "Consumer Banking and Lending": 9650000000.0,
+      "Corporate": 176000000.0,
+      "Corporate and Investment Banking": 4879000000.0,
+      "Wealth and Investment Management": 4196000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2025-12-31",
+      "Commercial Banking": 3079000000.0,
+      "Consumer Banking and Lending": 9571000000.0,
+      "Corporate": 189000000.0,
+      "Corporate and Investment Banking": 4616000000.0,
+      "Wealth and Investment Management": 4360000000.0
+    },
+    {
+      "symbol": "WFC",
+      "report_date": "2026-03-31",
+      "Commercial Banking": 3120000000.0,
+      "Consumer Banking and Lending": 9998000000.0,
+      "Corporate": -232000000.0,
+      "Corporate and Investment Banking": 5278000000.0,
+      "Wealth and Investment Management": 3875000000.0
+    }
+  ],
+  "by_geography": [],
+  "by_product": []
+}

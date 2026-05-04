@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.3,
-      "ttmPe": 50.52,
-      "marketCap": 334877902380,
-      "psRatio": 15.45,
-      "pbRatio": 31.64,
-      "pegRatio": 1.24
+      "ttmPe": 48.44,
+      "marketCap": 321046587120,
+      "psRatio": 14.81,
+      "pbRatio": 30.33,
+      "pegRatio": 1.19
     },
     "profitability": {
       "roe": 17.61,
@@ -5259,57 +5259,17 @@
       ]
     },
     "wacc": {
-      "wacc": 19.86,
-      "costOfEquity": 20.07,
+      "wacc": 19.439999999999998,
+      "costOfEquity": 19.66,
       "costOfDebt": 1.05,
       "taxRate": 9,
-      "beta": 1.8411,
-      "marketCap": 334877902380
+      "beta": 1.8007,
+      "marketCap": 321046587120
     },
     "beta": {
-      "beta5y": 1.8411
+      "beta5y": 1.8007
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 69.67,
-        "high": 71.21,
-        "low": 67.55,
-        "close": 70.9,
-        "volume": 18159400
-      },
-      {
-        "date": "2025-04-25",
-        "open": 70.33,
-        "high": 72.29,
-        "low": 70.29,
-        "close": 71.42,
-        "volume": 9751500
-      },
-      {
-        "date": "2025-04-28",
-        "open": 70.95,
-        "high": 71.94,
-        "low": 70.04,
-        "close": 71.57,
-        "volume": 10255000
-      },
-      {
-        "date": "2025-04-29",
-        "open": 70.89,
-        "high": 71.66,
-        "low": 70.22,
-        "close": 70.9,
-        "volume": 8583800
-      },
-      {
-        "date": "2025-04-30",
-        "open": 68.89,
-        "high": 71.84,
-        "low": 68.53,
-        "close": 71.67,
-        "volume": 11233900
-      },
       {
         "date": "2025-05-01",
         "open": 72.18,
@@ -7284,7 +7244,47 @@
         "high": 275.84,
         "low": 266.88,
         "close": 267.78,
-        "volume": 12293800
+        "volume": 12313200
+      },
+      {
+        "date": "2026-04-27",
+        "open": 267.76,
+        "high": 268.83,
+        "low": 256.31,
+        "close": 259.47,
+        "volume": 8095400
+      },
+      {
+        "date": "2026-04-28",
+        "open": 251.98,
+        "high": 253.7,
+        "low": 243.04,
+        "close": 251.23,
+        "volume": 11499500
+      },
+      {
+        "date": "2026-04-29",
+        "open": 253.17,
+        "high": 253.96,
+        "low": 241.6,
+        "close": 248.75,
+        "volume": 9585300
+      },
+      {
+        "date": "2026-04-30",
+        "open": 252.39,
+        "high": 258.58,
+        "low": 248.66,
+        "close": 257.86,
+        "volume": 10381100
+      },
+      {
+        "date": "2026-05-01",
+        "open": 255.14,
+        "high": 260.44,
+        "low": 250.12,
+        "close": 256.72,
+        "volume": 8089100
       }
     ],
     "news": [
@@ -7305,19 +7305,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
-        "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-broadcom-121700216.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "af00fe49-89e9-3a2b-8426-c4bc577bd74a",
         "title": "3 Stocks to Buy From the Prospering Semiconductor Industry",
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/3-stocks-buy-prospering-semiconductor-164400530.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
+        "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-broadcom-121700216.html",
         "type": "STORY"
       },
       {
@@ -7353,19 +7353,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
-        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1c35cfa7-d448-3e5c-83b8-22d64a5b1af1",
         "title": "Lam Research Corporation (LRCX): A Bull Case Theory",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-205147649.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
+        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
         "type": "STORY"
       }
     ],
@@ -7411,17 +7411,15 @@
         "totalPay": 1219197
       },
       {
+        "name": "Ms. Audrey Charles",
+        "title": "Senior VP of Corporate Strategy and Advanced Packaging & President of lam Capital"
+      },
+      {
         "name": "Ms. Ava A. Harter J.D.",
         "title": "Senior VP, Chief Legal Officer & Secretary",
         "age": 55,
         "yearBorn": 1970,
         "totalPay": 1685283
-      },
-      {
-        "name": "Ms. Christina C. Correia",
-        "title": "Chief Accounting Officer & Group VP",
-        "age": 54,
-        "yearBorn": 1971
       },
       {
         "name": "Ms. Mary Teresa Hassett",
@@ -7433,23 +7431,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 50.52,
-        "industryAvg": 49.5
+        "value": 48.44,
+        "industryAvg": 47
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.45,
-        "industryAvg": 13.37
+        "value": 14.81,
+        "industryAvg": 12.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 31.64,
-        "industryAvg": 18.67
+        "value": 30.33,
+        "industryAvg": 17.93
       },
       {
         "metric": "ROE",
         "value": 17.61,
-        "industryAvg": 38.24
+        "industryAvg": 38.23
       },
       {
         "metric": "ROA",
@@ -7459,12 +7457,12 @@
       {
         "metric": "Gross Margin",
         "value": 49.830000000000005,
-        "industryAvg": 48.96
+        "industryAvg": 48.92
       },
       {
         "metric": "EBITDA Margin",
         "value": 37.1,
-        "industryAvg": 34.9
+        "industryAvg": 34.89
       },
       {
         "metric": "Net Margin",
@@ -7473,10 +7471,10 @@
       }
     ],
     "dcf": {
-      "fairValue": 58.06,
-      "currentPrice": 267.78,
-      "upside": -78.32,
-      "wacc": 19.86,
+      "fairValue": 59.64,
+      "currentPrice": 256.72,
+      "upside": -76.77,
+      "wacc": 19.44,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 40.78,
         "Terminal growth": 3

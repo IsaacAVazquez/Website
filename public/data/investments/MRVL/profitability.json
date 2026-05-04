@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": -164300000.0,
+      "beginning_stockholders_equity": 15389500000.0,
+      "ending_stockholders_equity": 15233400000.0,
+      "avg_equity": 15311450000.0,
+      "roe": -0.0107
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": -392700000.0,
+      "beginning_stockholders_equity": 15233400000.0,
+      "ending_stockholders_equity": 14831400000.0,
+      "avg_equity": 15032400000.0,
+      "roe": -0.0261
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": -215600000.0,
+      "beginning_stockholders_equity": 14831400000.0,
+      "ending_stockholders_equity": 14478700000.0,
+      "avg_equity": 14655050000.0,
+      "roe": -0.0147
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": -193300000.0,
+      "beginning_stockholders_equity": 14478700000.0,
+      "ending_stockholders_equity": 14204900000.0,
+      "avg_equity": 14341800000.0,
+      "roe": -0.0135
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": -676300000.0,
+      "beginning_stockholders_equity": 14204900000.0,
+      "ending_stockholders_equity": 13372900000.0,
+      "avg_equity": 13788900000.0,
+      "roe": -0.049
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 200200000.0,
+      "beginning_stockholders_equity": 13372900000.0,
+      "ending_stockholders_equity": 13427000000.0,
+      "avg_equity": 13399950000.0,
+      "roe": 0.0149
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 177900000.0,
+      "beginning_stockholders_equity": 13427000000.0,
+      "ending_stockholders_equity": 13312700000.0,
+      "avg_equity": 13369850000.0,
+      "roe": 0.0133
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 194800000.0,
+      "beginning_stockholders_equity": 13312700000.0,
+      "ending_stockholders_equity": 13421700000.0,
+      "avg_equity": 13367200000.0,
+      "roe": 0.0146
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 1901300000.0,
+      "beginning_stockholders_equity": 13421700000.0,
+      "ending_stockholders_equity": 14056600000.0,
+      "avg_equity": 13739150000.0,
+      "roe": 0.1384
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 396100000.0,
+      "beginning_stockholders_equity": 14056600000.0,
+      "ending_stockholders_equity": 14308400000.0,
+      "avg_equity": 14182500000.0,
+      "roe": 0.0279
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": -164300000.0,
+      "beginning_total_assets": 21750100000.0,
+      "ending_total_assets": 21714400000.0,
+      "avg_assets": 21732250000.0,
+      "roa": -0.0076
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": -392700000.0,
+      "beginning_total_assets": 21714400000.0,
+      "ending_total_assets": 21228500000.0,
+      "avg_assets": 21471450000.0,
+      "roa": -0.0183
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": -215600000.0,
+      "beginning_total_assets": 21228500000.0,
+      "ending_total_assets": 20491000000.0,
+      "avg_assets": 20859750000.0,
+      "roa": -0.0103
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": -193300000.0,
+      "beginning_total_assets": 20491000000.0,
+      "ending_total_assets": 20293400000.0,
+      "avg_assets": 20392200000.0,
+      "roa": -0.0095
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": -676300000.0,
+      "beginning_total_assets": 20293400000.0,
+      "ending_total_assets": 19715600000.0,
+      "avg_assets": 20004500000.0,
+      "roa": -0.0338
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 200200000.0,
+      "beginning_total_assets": 19715600000.0,
+      "ending_total_assets": 20204500000.0,
+      "avg_assets": 19960050000.0,
+      "roa": 0.01
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 177900000.0,
+      "beginning_total_assets": 20204500000.0,
+      "ending_total_assets": 20023700000.0,
+      "avg_assets": 20114100000.0,
+      "roa": 0.0088
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 194800000.0,
+      "beginning_total_assets": 20023700000.0,
+      "ending_total_assets": 20586300000.0,
+      "avg_assets": 20305000000.0,
+      "roa": 0.0096
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 1901300000.0,
+      "beginning_total_assets": 20586300000.0,
+      "ending_total_assets": 21579000000.0,
+      "avg_assets": 21082650000.0,
+      "roa": 0.0902
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 396100000.0,
+      "beginning_total_assets": 21579000000.0,
+      "ending_total_assets": 22285300000.0,
+      "avg_assets": 21932150000.0,
+      "roa": 0.0181
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31",
+      "ebit": -134900000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": -118712000.0,
+      "beginning_invested_capital": 19542600000.0,
+      "ending_invested_capital": 19419300000.0,
+      "avg_invested_capital": 19480950000.0,
+      "roic": -0.0061
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31",
+      "ebit": -34700000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -27413000.0,
+      "beginning_invested_capital": 19419300000.0,
+      "ending_invested_capital": 18997300000.0,
+      "avg_invested_capital": 19208300000.0,
+      "roic": -0.0014
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30",
+      "ebit": -149000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -117710000.0,
+      "beginning_invested_capital": 18997300000.0,
+      "ending_invested_capital": 18624600000.0,
+      "avg_invested_capital": 18810950000.0,
+      "roic": -0.0063
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31",
+      "ebit": -97800000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": -77262000.0,
+      "beginning_invested_capital": 18624600000.0,
+      "ending_invested_capital": 18330700000.0,
+      "avg_invested_capital": 18477650000.0,
+      "roic": -0.0042
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31",
+      "ebit": -702800000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": -632520000.0,
+      "beginning_invested_capital": 18330700000.0,
+      "ending_invested_capital": 17467800000.0,
+      "avg_invested_capital": 17899250000.0,
+      "roic": -0.0353
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31",
+      "ebit": 244800000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 193392000.0,
+      "beginning_invested_capital": 17467800000.0,
+      "ending_invested_capital": 17490800000.0,
+      "avg_invested_capital": 17479300000.0,
+      "roic": 0.0111
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30",
+      "ebit": 270600000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 221892000.0,
+      "beginning_invested_capital": 17490800000.0,
+      "ending_invested_capital": 17545300000.0,
+      "avg_invested_capital": 17518050000.0,
+      "roic": 0.0127
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31",
+      "ebit": 290100000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 240783000.0,
+      "beginning_invested_capital": 17545300000.0,
+      "ending_invested_capital": 17888900000.0,
+      "avg_invested_capital": 17717100000.0,
+      "roic": 0.0136
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31",
+      "ebit": 2266600000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1949276000.0,
+      "beginning_invested_capital": 17888900000.0,
+      "ending_invested_capital": 18525500000.0,
+      "avg_invested_capital": 18207200000.0,
+      "roic": 0.1071
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31",
+      "ebit": 432400000.0,
+      "tax_rate_for_calcs": 0.4,
+      "nopat": 259440000.0,
+      "beginning_invested_capital": 18525500000.0,
+      "ending_invested_capital": 18779000000.0,
+      "avg_invested_capital": 18652250000.0,
+      "roic": 0.0139
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": -0.0107,
+      "roa": -0.0076,
+      "equity_multiplier": 1.41
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": -0.0261,
+      "roa": -0.0183,
+      "equity_multiplier": 1.43
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": -0.0147,
+      "roa": -0.0103,
+      "equity_multiplier": 1.43
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": -0.0135,
+      "roa": -0.0095,
+      "equity_multiplier": 1.42
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": -0.049,
+      "roa": -0.0338,
+      "equity_multiplier": 1.45
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.0149,
+      "roa": 0.01,
+      "equity_multiplier": 1.49
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.0133,
+      "roa": 0.0088,
+      "equity_multiplier": 1.51
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.0146,
+      "roa": 0.0096,
+      "equity_multiplier": 1.52
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.1384,
+      "roa": 0.0902,
+      "equity_multiplier": 1.53
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0279,
+      "roa": 0.0181,
+      "equity_multiplier": 1.54
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "MRVL",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": -0.0076,
+      "net_margin": -0.1158,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": -0.0183,
+      "net_margin": -0.2753,
+      "asset_turnover": 0.07
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": -0.0103,
+      "net_margin": -0.1857,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": -0.0095,
+      "net_margin": -0.1519,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": -0.0338,
+      "net_margin": -0.4461,
+      "asset_turnover": 0.08
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.01,
+      "net_margin": 0.1102,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0088,
+      "net_margin": 0.0939,
+      "asset_turnover": 0.09
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0096,
+      "net_margin": 0.0971,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0902,
+      "net_margin": 0.9165,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "MRVL",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0181,
+      "net_margin": 0.1785,
+      "asset_turnover": 0.1
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 211000000000.0,
+      "beginning_stockholders_equity": 3188750455000.0,
+      "ending_stockholders_equity": 3348349657000.0,
+      "avg_equity": 3268550056000.0,
+      "roe": 0.0646
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 238712000000.0,
+      "beginning_stockholders_equity": 3348349657000.0,
+      "ending_stockholders_equity": 3429522400000.0,
+      "avg_equity": 3388936028500.0,
+      "roe": 0.0704
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 225484877000.0,
+      "beginning_stockholders_equity": 3429522400000.0,
+      "ending_stockholders_equity": 3635731930000.0,
+      "avg_equity": 3532627165000.0,
+      "roe": 0.0638
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 247845528000.0,
+      "beginning_stockholders_equity": 3635731930000.0,
+      "ending_stockholders_equity": 3791402874000.0,
+      "avg_equity": 3713567402000.0,
+      "roe": 0.0667
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 325257571000.0,
+      "beginning_stockholders_equity": 3791402874000.0,
+      "ending_stockholders_equity": 3990019153000.0,
+      "avg_equity": 3890711013500.0,
+      "roe": 0.0836
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 359792224000.0,
+      "beginning_stockholders_equity": 3990019153000.0,
+      "ending_stockholders_equity": 4244266500000.0,
+      "avg_equity": 4117142826500.0,
+      "roe": 0.0874
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 361564128000.0,
+      "beginning_stockholders_equity": 4244266500000.0,
+      "ending_stockholders_equity": 4564162580000.0,
+      "avg_equity": 4404214540000.0,
+      "roe": 0.0821
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 398273102000.0,
+      "beginning_stockholders_equity": 4564162580000.0,
+      "ending_stockholders_equity": 4581073975000.0,
+      "avg_equity": 4572618277500.0,
+      "roe": 0.0871
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 452301407000.0,
+      "beginning_stockholders_equity": 4581073975000.0,
+      "ending_stockholders_equity": 4998306972000.0,
+      "avg_equity": 4789690473500.0,
+      "roe": 0.0944
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 485465363000.0,
+      "beginning_stockholders_equity": 4998306972000.0,
+      "ending_stockholders_equity": 5355038700000.0,
+      "avg_equity": 5176672836000.0,
+      "roe": 0.0938
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 211000000000.0,
+      "beginning_total_assets": 5149465045000.0,
+      "ending_total_assets": 5484556381000.0,
+      "avg_assets": 5317010713000.0,
+      "roa": 0.0397
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 238712000000.0,
+      "beginning_total_assets": 5484556381000.0,
+      "ending_total_assets": 5532196600000.0,
+      "avg_assets": 5508376490500.0,
+      "roa": 0.0433
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 225484877000.0,
+      "beginning_total_assets": 5532196600000.0,
+      "ending_total_assets": 5787891082000.0,
+      "avg_assets": 5660043841000.0,
+      "roa": 0.0398
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 247845528000.0,
+      "beginning_total_assets": 5787891082000.0,
+      "ending_total_assets": 5982364014000.0,
+      "avg_assets": 5885127548000.0,
+      "roa": 0.0421
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 325257571000.0,
+      "beginning_total_assets": 5982364014000.0,
+      "ending_total_assets": 6165658176000.0,
+      "avg_assets": 6074011095000.0,
+      "roa": 0.0535
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 359792224000.0,
+      "beginning_total_assets": 6165658176000.0,
+      "ending_total_assets": 6691764700000.0,
+      "avg_assets": 6428711438000.0,
+      "roa": 0.056
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 361564128000.0,
+      "beginning_total_assets": 6691764700000.0,
+      "ending_total_assets": 7133287420000.0,
+      "avg_assets": 6912526060000.0,
+      "roa": 0.0523
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 398273102000.0,
+      "beginning_total_assets": 7133287420000.0,
+      "ending_total_assets": 7006349549000.0,
+      "avg_assets": 7069818484500.0,
+      "roa": 0.0563
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 452301407000.0,
+      "beginning_total_assets": 7006349549000.0,
+      "ending_total_assets": 7354107076000.0,
+      "avg_assets": 7180228312500.0,
+      "roa": 0.063
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 485465363000.0,
+      "beginning_total_assets": 7354107076000.0,
+      "ending_total_assets": 7932842500000.0,
+      "avg_assets": 7643474788000.0,
+      "roa": 0.0635
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30",
+      "ebit": 228065000000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 182452000000.0,
+      "beginning_invested_capital": 4104197448000.0,
+      "ending_invested_capital": 4293262262000.0,
+      "avg_invested_capital": 4198729855000.0,
+      "roic": 0.0435
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "ebit": 260205000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 223776300000.0,
+      "beginning_invested_capital": 4293262262000.0,
+      "ending_invested_capital": 4357098500000.0,
+      "avg_invested_capital": 4325180381000.0,
+      "roic": 0.0517
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31",
+      "ebit": 269241459000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 226162825560.0,
+      "beginning_invested_capital": 4357098500000.0,
+      "ending_invested_capital": 4613792355000.0,
+      "avg_invested_capital": 4485445427500.0,
+      "roic": 0.0504
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30",
+      "ebit": 308948715000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 250248459150.0,
+      "beginning_invested_capital": 4613792355000.0,
+      "ending_invested_capital": 4788821963000.0,
+      "avg_invested_capital": 4701307159000.0,
+      "roic": 0.0532
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30",
+      "ebit": 386822642000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 328799245700.0,
+      "beginning_invested_capital": 4788821963000.0,
+      "ending_invested_capital": 3990019153000.0,
+      "avg_invested_capital": 4389420558000.0,
+      "roic": 0.0749
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "ebit": 451322584000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 361058067200.0,
+      "beginning_invested_capital": 3990019153000.0,
+      "ending_invested_capital": 5262553300000.0,
+      "avg_invested_capital": 4626286226500.0,
+      "roic": 0.078
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31",
+      "ebit": 433572686000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 364201056240.0,
+      "beginning_invested_capital": 5262553300000.0,
+      "ending_invested_capital": 5612918127000.0,
+      "avg_invested_capital": 5437735713500.0,
+      "roic": 0.067
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30",
+      "ebit": 496726299000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 402348302190.0,
+      "beginning_invested_capital": 5612918127000.0,
+      "ending_invested_capital": 4616630000000.0,
+      "avg_invested_capital": 5114774063500.0,
+      "roic": 0.0787
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30",
+      "ebit": 528327591000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 454361728260.0,
+      "beginning_invested_capital": 4616630000000.0,
+      "ending_invested_capital": 5916535228000.0,
+      "avg_invested_capital": 5266582614000.0,
+      "roic": 0.0863
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "ebit": 595398524000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 488226789680.0,
+      "beginning_invested_capital": 5916535228000.0,
+      "ending_invested_capital": 6388026400000.0,
+      "avg_invested_capital": 6152280814000.0,
+      "roic": 0.0794
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0646,
+      "roa": 0.0397,
+      "equity_multiplier": 1.63
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0704,
+      "roa": 0.0433,
+      "equity_multiplier": 1.63
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0638,
+      "roa": 0.0398,
+      "equity_multiplier": 1.6
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0667,
+      "roa": 0.0421,
+      "equity_multiplier": 1.58
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0836,
+      "roa": 0.0535,
+      "equity_multiplier": 1.56
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0874,
+      "roa": 0.056,
+      "equity_multiplier": 1.56
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0821,
+      "roa": 0.0523,
+      "equity_multiplier": 1.57
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0871,
+      "roa": 0.0563,
+      "equity_multiplier": 1.55
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0944,
+      "roa": 0.063,
+      "equity_multiplier": 1.5
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0938,
+      "roa": 0.0635,
+      "equity_multiplier": 1.48
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0397,
+      "net_margin": 0.3859,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0433,
+      "net_margin": 0.3816,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0398,
+      "net_margin": 0.3805,
+      "asset_turnover": 0.1
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0421,
+      "net_margin": 0.368,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0535,
+      "net_margin": 0.4281,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.056,
+      "net_margin": 0.4143,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0523,
+      "net_margin": 0.4308,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0563,
+      "net_margin": 0.4265,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.063,
+      "net_margin": 0.4569,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0635,
+      "net_margin": 0.4641,
+      "asset_turnover": 0.14
+    }
+  ]
+}

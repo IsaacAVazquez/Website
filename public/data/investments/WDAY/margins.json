@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30",
+      "gross_profit": 1031836000.0,
+      "total_revenue": 1434657000.0,
+      "gross_margin": 0.7192
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31",
+      "gross_profit": 1112713000.0,
+      "total_revenue": 1535798000.0,
+      "gross_margin": 0.7245
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-10-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "gross_profit": 1192781000.0,
+      "total_revenue": 1646260000.0,
+      "gross_margin": 0.7245
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-04-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31",
+      "gross_profit": 1339000000.0,
+      "total_revenue": 1787000000.0,
+      "gross_margin": 0.7493
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31",
+      "gross_profit": 1421000000.0,
+      "total_revenue": 1866000000.0,
+      "gross_margin": 0.7615
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "gross_profit": 1462031000.0,
+      "total_revenue": 1922247000.0,
+      "gross_margin": 0.7606
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30",
+      "gross_profit": 1501000000.0,
+      "total_revenue": 1990000000.0,
+      "gross_margin": 0.7543
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31",
+      "gross_profit": 1574000000.0,
+      "total_revenue": 2085000000.0,
+      "gross_margin": 0.7549
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31",
+      "gross_profit": 1630000000.0,
+      "total_revenue": 2160000000.0,
+      "gross_margin": 0.7546
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "gross_profit": 1672000000.0,
+      "total_revenue": 2211000000.0,
+      "gross_margin": 0.7562
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30",
+      "gross_profit": 1703000000.0,
+      "total_revenue": 2240000000.0,
+      "gross_margin": 0.7603
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31",
+      "gross_profit": 1766000000.0,
+      "total_revenue": 2348000000.0,
+      "gross_margin": 0.7521
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31",
+      "gross_profit": 1841000000.0,
+      "total_revenue": 2432000000.0,
+      "gross_margin": 0.757
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "gross_profit": 1921000000.0,
+      "total_revenue": 2532000000.0,
+      "gross_margin": 0.7587
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31",
+      "gross_profit": 2561948000.0,
+      "total_revenue": 3627206000.0,
+      "gross_margin": 0.7063
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31",
+      "gross_profit": 3119864000.0,
+      "total_revenue": 4317996000.0,
+      "gross_margin": 0.7225
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31",
+      "gross_profit": 3711000000.0,
+      "total_revenue": 5139000000.0,
+      "gross_margin": 0.7221
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "gross_profit": 4506000000.0,
+      "total_revenue": 6216000000.0,
+      "gross_margin": 0.7249
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "gross_profit": 5488000000.0,
+      "total_revenue": 7259000000.0,
+      "gross_margin": 0.756
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "gross_profit": 6377000000.0,
+      "total_revenue": 8446000000.0,
+      "gross_margin": 0.755
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "gross_profit": 7231000000.0,
+      "total_revenue": 9552000000.0,
+      "gross_margin": 0.757
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30",
+      "operating_income": -72843000.0,
+      "total_revenue": 1434657000.0,
+      "operating_margin": -0.0508
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31",
+      "operating_income": -34078000.0,
+      "total_revenue": 1535798000.0,
+      "operating_margin": -0.0222
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-10-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "operating_income": -88958000.0,
+      "total_revenue": 1646260000.0,
+      "operating_margin": -0.054
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-04-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31",
+      "operating_income": 36000000.0,
+      "total_revenue": 1787000000.0,
+      "operating_margin": 0.0201
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31",
+      "operating_income": 88000000.0,
+      "total_revenue": 1866000000.0,
+      "operating_margin": 0.0472
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "operating_income": 78688000.0,
+      "total_revenue": 1922247000.0,
+      "operating_margin": 0.0409
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30",
+      "operating_income": 72000000.0,
+      "total_revenue": 1990000000.0,
+      "operating_margin": 0.0362
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31",
+      "operating_income": 112000000.0,
+      "total_revenue": 2085000000.0,
+      "operating_margin": 0.0537
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31",
+      "operating_income": 165000000.0,
+      "total_revenue": 2160000000.0,
+      "operating_margin": 0.0764
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "operating_income": 159000000.0,
+      "total_revenue": 2211000000.0,
+      "operating_margin": 0.0719
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30",
+      "operating_income": 205000000.0,
+      "total_revenue": 2240000000.0,
+      "operating_margin": 0.0915
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31",
+      "operating_income": 249000000.0,
+      "total_revenue": 2348000000.0,
+      "operating_margin": 0.106
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31",
+      "operating_income": 264000000.0,
+      "total_revenue": 2432000000.0,
+      "operating_margin": 0.1086
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "operating_income": 305000000.0,
+      "total_revenue": 2532000000.0,
+      "operating_margin": 0.1205
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31",
+      "operating_income": -502230000.0,
+      "total_revenue": 3627206000.0,
+      "operating_margin": -0.1385
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31",
+      "operating_income": -248599000.0,
+      "total_revenue": 4317996000.0,
+      "operating_margin": -0.0576
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31",
+      "operating_income": -116000000.0,
+      "total_revenue": 5139000000.0,
+      "operating_margin": -0.0226
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "operating_income": -182000000.0,
+      "total_revenue": 6216000000.0,
+      "operating_margin": -0.0293
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "operating_income": 183000000.0,
+      "total_revenue": 7259000000.0,
+      "operating_margin": 0.0252
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "operating_income": 499000000.0,
+      "total_revenue": 8446000000.0,
+      "operating_margin": 0.0591
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "operating_income": 1024000000.0,
+      "total_revenue": 9552000000.0,
+      "operating_margin": 0.1072
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30",
+      "net_income_common_stockholders": -102173000.0,
+      "total_revenue": 1434657000.0,
+      "net_margin": -0.0712
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": -64158000.0,
+      "total_revenue": 1535798000.0,
+      "net_margin": -0.0418
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": -125697000.0,
+      "total_revenue": 1646260000.0,
+      "net_margin": -0.0764
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-04-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 79000000.0,
+      "total_revenue": 1787000000.0,
+      "net_margin": 0.0442
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 114000000.0,
+      "total_revenue": 1866000000.0,
+      "net_margin": 0.0611
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1188495000.0,
+      "total_revenue": 1922247000.0,
+      "net_margin": 0.6183
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 107000000.0,
+      "total_revenue": 1990000000.0,
+      "net_margin": 0.0538
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 132000000.0,
+      "total_revenue": 2085000000.0,
+      "net_margin": 0.0633
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 193000000.0,
+      "total_revenue": 2160000000.0,
+      "net_margin": 0.0894
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 94000000.0,
+      "total_revenue": 2211000000.0,
+      "net_margin": 0.0425
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 68000000.0,
+      "total_revenue": 2240000000.0,
+      "net_margin": 0.0304
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 228000000.0,
+      "total_revenue": 2348000000.0,
+      "net_margin": 0.0971
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 252000000.0,
+      "total_revenue": 2432000000.0,
+      "net_margin": 0.1036
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 145000000.0,
+      "total_revenue": 2532000000.0,
+      "net_margin": 0.0573
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31",
+      "net_income_common_stockholders": -480674000.0,
+      "total_revenue": 3627206000.0,
+      "net_margin": -0.1325
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31",
+      "net_income_common_stockholders": -282431000.0,
+      "total_revenue": 4317996000.0,
+      "net_margin": -0.0654
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31",
+      "net_income_common_stockholders": 29000000.0,
+      "total_revenue": 5139000000.0,
+      "net_margin": 0.0056
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": -367000000.0,
+      "total_revenue": 6216000000.0,
+      "net_margin": -0.059
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1381000000.0,
+      "total_revenue": 7259000000.0,
+      "net_margin": 0.1902
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 526000000.0,
+      "total_revenue": 8446000000.0,
+      "net_margin": 0.0623
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 693000000.0,
+      "total_revenue": 9552000000.0,
+      "net_margin": 0.0726
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30",
+      "ebitda": null,
+      "total_revenue": 1434657000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31",
+      "ebitda": 55988000.0,
+      "total_revenue": 1535798000.0,
+      "ebitda_margin": 0.0365
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-10-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "ebitda": 40592000.0,
+      "total_revenue": 1646260000.0,
+      "ebitda_margin": 0.0247
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-04-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31",
+      "ebitda": 182000000.0,
+      "total_revenue": 1787000000.0,
+      "ebitda_margin": 0.1018
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31",
+      "ebitda": 227000000.0,
+      "total_revenue": 1866000000.0,
+      "ebitda_margin": 0.1217
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "ebitda": 237949000.0,
+      "total_revenue": 1922247000.0,
+      "ebitda_margin": 0.1238
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30",
+      "ebitda": 227000000.0,
+      "total_revenue": 1990000000.0,
+      "ebitda_margin": 0.1141
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31",
+      "ebitda": 275000000.0,
+      "total_revenue": 2085000000.0,
+      "ebitda_margin": 0.1319
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31",
+      "ebitda": 337000000.0,
+      "total_revenue": 2160000000.0,
+      "ebitda_margin": 0.156
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "ebitda": 239000000.0,
+      "total_revenue": 2211000000.0,
+      "ebitda_margin": 0.1081
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30",
+      "ebitda": 216000000.0,
+      "total_revenue": 2240000000.0,
+      "ebitda_margin": 0.0964
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31",
+      "ebitda": 414000000.0,
+      "total_revenue": 2348000000.0,
+      "ebitda_margin": 0.1763
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31",
+      "ebitda": 452000000.0,
+      "total_revenue": 2432000000.0,
+      "ebitda_margin": 0.1859
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "ebitda": 389000000.0,
+      "total_revenue": 2532000000.0,
+      "ebitda_margin": 0.1536
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31",
+      "ebitda": -147484000.0,
+      "total_revenue": 3627206000.0,
+      "ebitda_margin": -0.0407
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31",
+      "ebitda": 87329000.0,
+      "total_revenue": 4317996000.0,
+      "ebitda_margin": 0.0202
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31",
+      "ebitda": 377000000.0,
+      "total_revenue": 5139000000.0,
+      "ebitda_margin": 0.0734
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "ebitda": 206000000.0,
+      "total_revenue": 6216000000.0,
+      "ebitda_margin": 0.0331
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "ebitda": 752000000.0,
+      "total_revenue": 7259000000.0,
+      "ebitda_margin": 0.1036
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "ebitda": 1078000000.0,
+      "total_revenue": 8446000000.0,
+      "ebitda_margin": 0.1276
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "ebitda": 1470000000.0,
+      "total_revenue": 9552000000.0,
+      "ebitda_margin": 0.1539
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-04-30",
+      "free_cash_flow": 380967000.0,
+      "total_revenue": 1434657000.0,
+      "fcf_margin": 0.2655
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-07-31",
+      "free_cash_flow": -54240000.0,
+      "total_revenue": 1535798000.0,
+      "fcf_margin": -0.0353
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-10-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "free_cash_flow": null,
+      "total_revenue": 1646260000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-04-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 360000000.0,
+      "total_revenue": 1787000000.0,
+      "fcf_margin": 0.2015
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 390000000.0,
+      "total_revenue": 1866000000.0,
+      "fcf_margin": 0.209
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 948898000.0,
+      "total_revenue": 1922247000.0,
+      "fcf_margin": 0.4936
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-04-30",
+      "free_cash_flow": 291000000.0,
+      "total_revenue": 1990000000.0,
+      "fcf_margin": 0.1462
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 516000000.0,
+      "total_revenue": 2085000000.0,
+      "fcf_margin": 0.2475
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 357000000.0,
+      "total_revenue": 2160000000.0,
+      "fcf_margin": 0.1653
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 1026000000.0,
+      "total_revenue": 2211000000.0,
+      "fcf_margin": 0.464
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-04-30",
+      "free_cash_flow": 421000000.0,
+      "total_revenue": 2240000000.0,
+      "fcf_margin": 0.1879
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 588000000.0,
+      "total_revenue": 2348000000.0,
+      "fcf_margin": 0.2504
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 550000000.0,
+      "total_revenue": 2432000000.0,
+      "fcf_margin": 0.2262
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 1218000000.0,
+      "total_revenue": 2532000000.0,
+      "fcf_margin": 0.481
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "WDAY",
+      "report_date": "2020-01-31",
+      "free_cash_flow": null,
+      "total_revenue": 3627206000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2021-01-31",
+      "free_cash_flow": 1012111000.0,
+      "total_revenue": 4317996000.0,
+      "fcf_margin": 0.2344
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2022-01-31",
+      "free_cash_flow": 1379000000.0,
+      "total_revenue": 5139000000.0,
+      "fcf_margin": 0.2683
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2023-01-31",
+      "free_cash_flow": 1292000000.0,
+      "total_revenue": 6216000000.0,
+      "fcf_margin": 0.2079
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 1907000000.0,
+      "total_revenue": 7259000000.0,
+      "fcf_margin": 0.2627
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 2189000000.0,
+      "total_revenue": 8446000000.0,
+      "fcf_margin": 0.2592
+    },
+    {
+      "symbol": "WDAY",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 2777000000.0,
+      "total_revenue": 9552000000.0,
+      "fcf_margin": 0.2907
+    }
+  ]
+}

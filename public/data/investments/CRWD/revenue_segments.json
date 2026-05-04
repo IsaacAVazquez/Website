@@ -1,0 +1,367 @@
+{
+  "by_segment": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-03-31",
+      "Professional Services": 15856000.0,
+      "Subscription": 162222000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-06-30",
+      "Professional Services": 14715000.0,
+      "Subscription": 184256000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-09-30",
+      "Professional Services": 18930000.0,
+      "Subscription": 215530000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-12-31",
+      "Professional Services": 20267000.0,
+      "Subscription": 244662000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-03-31",
+      "Professional Services": 21615000.0,
+      "Subscription": 281228000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-06-30",
+      "Professional Services": 21854000.0,
+      "Subscription": 315836000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-09-30",
+      "Professional Services": 23021000.0,
+      "Subscription": 357030000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-12-31",
+      "Professional Services": 25567000.0,
+      "Subscription": 405443000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-03-31",
+      "Professional Services": 28012000.0,
+      "Subscription": 459822000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-06-30",
+      "Professional Services": 28954000.0,
+      "Subscription": 506199000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-09-30",
+      "Professional Services": 33506000.0,
+      "Subscription": 547376000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-12-31",
+      "Professional Services": 39104000.0,
+      "Subscription": 598263000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-03-31",
+      "Professional Services": 41405000.0,
+      "Subscription": 651175000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-06-30",
+      "Professional Services": 41654000.0,
+      "Subscription": 689972000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-09-30",
+      "Professional Services": 52551000.0,
+      "Subscription": 733463000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-12-31",
+      "Professional Services": 49388000.0,
+      "Subscription": 795947000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-03-31",
+      "Professional Services": 48864000.0,
+      "Subscription": 872172000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-06-30",
+      "Professional Services": 45615000.0,
+      "Subscription": 918300000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-09-30",
+      "Professional Services": 47443000.0,
+      "Subscription": 962735000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-12-31",
+      "Professional Services": 50222000.0,
+      "Subscription": 1008316000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-03-31",
+      "Professional Services": 52666000.0,
+      "Subscription": 1050768000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-06-30",
+      "Professional Services": 66007000.0,
+      "Subscription": 1102945000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-09-30",
+      "Professional Services": 65539000.0,
+      "Subscription": 1168705000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-12-31",
+      "Professional Services": 63110000.0,
+      "Subscription": 1242265000.0
+    }
+  ],
+  "by_geography": [
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-03-31",
+      "Asia Pacific": 14901000.0,
+      "Europe, Middle East, and Africa": 25042000.0,
+      "Other": 8654000.0,
+      "US": 129481000.0,
+      "United States": 0.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-06-30",
+      "Asia Pacific": 1773300.0,
+      "Europe, Middle East, and Africa": 28552000.0,
+      "Other": 10953000.0,
+      "US": 141733000.0,
+      "United States": 141733000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-09-30",
+      "Asia Pacific": 20551000.0,
+      "Europe, Middle East, and Africa": 33192000.0,
+      "Other": 10976000.0,
+      "US": 167741000.0,
+      "United States": 167741000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2020-12-31",
+      "Asia Pacific": 42959700.0,
+      "Europe, Middle East, and Africa": 37114000.0,
+      "Other": 12368000.0,
+      "US": 188447000.0,
+      "United States": 188447000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-03-31",
+      "Asia Pacific": 29000000.0,
+      "Europe, Middle East, and Africa": 41649000.0,
+      "Other": 12392000.0,
+      "US": 219802000.0,
+      "United States": 219802000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-06-30",
+      "Asia Pacific": 32998000.0,
+      "Europe, Middle East, and Africa": 46550000.0,
+      "Other": 13474000.0,
+      "US": 244668000.0,
+      "United States": 244668000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-09-30",
+      "Asia Pacific": 37265000.0,
+      "Europe, Middle East, and Africa": 50271000.0,
+      "Other": 15367000.0,
+      "US": 276698000.0,
+      "United States": 276698000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2021-12-31",
+      "Asia Pacific": 43423000.0,
+      "Europe, Middle East, and Africa": 61728000.0,
+      "Other": 21003000.0,
+      "US": 305306000.0,
+      "United States": 305306000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-03-31",
+      "Asia Pacific": 38079000.0,
+      "Europe, Middle East, and Africa": 70625000.0,
+      "Other": 23537000.0,
+      "US": 345593000.0,
+      "United States": 345593000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-06-30",
+      "Asia Pacific": 54623000.0,
+      "Europe, Middle East, and Africa": 77096000.0,
+      "Other": 29176000.0,
+      "US": 374258000.0,
+      "United States": 374258000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-09-30",
+      "Asia Pacific": 60011000.0,
+      "Europe, Middle East, and Africa": 85665000.0,
+      "Other": 31904000.0,
+      "US": 403302000.0,
+      "United States": 403302000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2022-12-31",
+      "Asia Pacific": 75411000.0,
+      "Europe, Middle East, and Africa": 94543000.0,
+      "Other": 36999000.0,
+      "US": 440414000.0,
+      "United States": 440414000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-03-31",
+      "Asia Pacific": 72219000.0,
+      "Europe, Middle East, and Africa": 104552000.0,
+      "Other": 40984000.0,
+      "US": 474825000.0,
+      "United States": 474825000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-06-30",
+      "Asia Pacific": 75198000.0,
+      "Europe, Middle East, and Africa": 111909000.0,
+      "Other": 43655000.0,
+      "US": 500864000.0,
+      "United States": 500864000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-09-30",
+      "Asia Pacific": 81459000.0,
+      "Europe, Middle East, and Africa": 119158000.0,
+      "Other": 47517000.0,
+      "US": 537880000.0,
+      "United States": 537880000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2023-12-31",
+      "Asia Pacific": 86648000.0,
+      "Europe, Middle East, and Africa": 132309000.0,
+      "Other": 51893000.0,
+      "US": 574485000.0,
+      "United States": 574485000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-03-31",
+      "Asia Pacific": 93462000.0,
+      "Europe, Middle East, and Africa": 141612000.0,
+      "Other": 55936000.0,
+      "US": 630026000.0,
+      "United States": 630026000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-06-30",
+      "Asia Pacific": 98274000.0,
+      "Europe, Middle East, and Africa": 148851000.0,
+      "Other": 61746000.0,
+      "US": 655001000.0,
+      "United States": 655001000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-09-30",
+      "Asia Pacific": 102837000.0,
+      "Europe, Middle East, and Africa": 160574000.0,
+      "Other": 63291000.0,
+      "US": 683476000.0,
+      "United States": 683476000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2024-12-31",
+      "Asia Pacific": 107880000.0,
+      "Europe, Middle East, and Africa": 168446000.0,
+      "Other": 67773000.0,
+      "US": 714439000.0,
+      "United States": 714439000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-03-31",
+      "Asia Pacific": 112827000.0,
+      "Europe, Middle East, and Africa": 176442000.0,
+      "Other": 72313000.0,
+      "US": 0.0,
+      "United States": 741852000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-06-30",
+      "Asia Pacific": 117538000.0,
+      "Europe, Middle East, and Africa": 188423000.0,
+      "Other": 78316000.0,
+      "US": 0.0,
+      "United States": 784675000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-09-30",
+      "Asia Pacific": 127591000.0,
+      "Europe, Middle East, and Africa": 198420000.0,
+      "Other": 81580000.0,
+      "US": 0.0,
+      "United States": 826653000.0
+    },
+    {
+      "symbol": "CRWD",
+      "report_date": "2025-12-31",
+      "Asia Pacific": 137745000.0,
+      "Europe, Middle East, and Africa": 219381000.0,
+      "Other": 84775000.0,
+      "US": 0.0,
+      "United States": 863474000.0
+    }
+  ],
+  "by_product": []
+}

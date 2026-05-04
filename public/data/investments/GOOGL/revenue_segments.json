@@ -1,0 +1,623 @@
+{
+  "by_segment": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2015-09-30",
+      "Advertising": 16781000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2015-12-31",
+      "Advertising": 19078000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2016-03-31",
+      "Advertising": 18020000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2016-06-30",
+      "Advertising": 19143000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2016-09-30",
+      "Advertising": 19821000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2016-12-31",
+      "Advertising": 22399000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2017-03-31",
+      "Advertising": 21411000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2017-06-30",
+      "Advertising": 22672000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2017-09-30",
+      "Advertising": 24065000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2017-12-31",
+      "Advertising": 27227000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2018-03-31",
+      "Advertising": 26642000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2018-06-30",
+      "Advertising": 28087000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2018-09-30",
+      "Advertising": 28954000000.0,
+      "Google Cloud": 0.0,
+      "Google Network": 0.0,
+      "Google Search & Other": 0.0,
+      "Google Subscriptions, Platforms & Devices": 0.0,
+      "Hedging Gains": 0.0,
+      "Other Bets": 0.0,
+      "YouTube Ads": 0.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-06-30",
+      "Advertising": 0.0,
+      "Google Cloud": 3007000000.0,
+      "Google Network": 4736000000.0,
+      "Google Search & Other": 21319000000.0,
+      "Google Subscriptions, Platforms & Devices": 5124000000.0,
+      "Hedging Gains": 151000000.0,
+      "Other Bets": 148000000.0,
+      "YouTube Ads": 3812000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-09-30",
+      "Advertising": 0.0,
+      "Google Cloud": 3444000000.0,
+      "Google Network": 5720000000.0,
+      "Google Search & Other": 26338000000.0,
+      "Google Subscriptions, Platforms & Devices": 5478000000.0,
+      "Hedging Gains": -22000000.0,
+      "Other Bets": 178000000.0,
+      "YouTube Ads": 5037000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31",
+      "Advertising": 0.0,
+      "Google Cloud": 3831000000.0,
+      "Google Network": 7411000000.0,
+      "Google Search & Other": 31903000000.0,
+      "Google Subscriptions, Platforms & Devices": 6674000000.0,
+      "Hedging Gains": -2000000.0,
+      "Other Bets": 196000000.0,
+      "YouTube Ads": 6885000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-03-31",
+      "Advertising": 0.0,
+      "Google Cloud": 4047000000.0,
+      "Google Network": 6800000000.0,
+      "Google Search & Other": 31879000000.0,
+      "Google Subscriptions, Platforms & Devices": 6494000000.0,
+      "Hedging Gains": -109000000.0,
+      "Other Bets": 198000000.0,
+      "YouTube Ads": 6005000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-06-30",
+      "Advertising": 0.0,
+      "Google Cloud": 4628000000.0,
+      "Google Network": 7597000000.0,
+      "Google Search & Other": 35845000000.0,
+      "Google Subscriptions, Platforms & Devices": 6623000000.0,
+      "Hedging Gains": -7000000.0,
+      "Other Bets": 192000000.0,
+      "YouTube Ads": 7002000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-09-30",
+      "Advertising": 0.0,
+      "Google Cloud": 4990000000.0,
+      "Google Network": 7999000000.0,
+      "Google Search & Other": 37926000000.0,
+      "Google Subscriptions, Platforms & Devices": 6754000000.0,
+      "Hedging Gains": 62000000.0,
+      "Other Bets": 182000000.0,
+      "YouTube Ads": 7205000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31",
+      "Advertising": 0.0,
+      "Google Cloud": 5541000000.0,
+      "Google Network": 9305000000.0,
+      "Google Search & Other": 43301000000.0,
+      "Google Subscriptions, Platforms & Devices": 8161000000.0,
+      "Hedging Gains": 203000000.0,
+      "Other Bets": 181000000.0,
+      "YouTube Ads": 8633000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-03-31",
+      "Advertising": 0.0,
+      "Google Cloud": 5821000000.0,
+      "Google Network": 8174000000.0,
+      "Google Search & Other": 39618000000.0,
+      "Google Subscriptions, Platforms & Devices": 6811000000.0,
+      "Hedging Gains": 278000000.0,
+      "Other Bets": 440000000.0,
+      "YouTube Ads": 6869000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30",
+      "Advertising": 0.0,
+      "Google Cloud": 6276000000.0,
+      "Google Network": 8259000000.0,
+      "Google Search & Other": 40689000000.0,
+      "Google Subscriptions, Platforms & Devices": 6553000000.0,
+      "Hedging Gains": 375000000.0,
+      "Other Bets": 193000000.0,
+      "YouTube Ads": 7340000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30",
+      "Advertising": 0.0,
+      "Google Cloud": 6868000000.0,
+      "Google Network": 7872000000.0,
+      "Google Search & Other": 39539000000.0,
+      "Google Subscriptions, Platforms & Devices": 6895000000.0,
+      "Hedging Gains": 638000000.0,
+      "Other Bets": 209000000.0,
+      "YouTube Ads": 7071000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "Advertising": 0.0,
+      "Google Cloud": 7315000000.0,
+      "Google Network": 8475000000.0,
+      "Google Search & Other": 42604000000.0,
+      "Google Subscriptions, Platforms & Devices": 8796000000.0,
+      "Hedging Gains": 669000000.0,
+      "Other Bets": 226000000.0,
+      "YouTube Ads": 7963000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-03-31",
+      "Advertising": 0.0,
+      "Google Cloud": 7454000000.0,
+      "Google Network": 7496000000.0,
+      "Google Search & Other": 40359000000.0,
+      "Google Subscriptions, Platforms & Devices": 7413000000.0,
+      "Hedging Gains": 84000000.0,
+      "Other Bets": 288000000.0,
+      "YouTube Ads": 6693000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30",
+      "Advertising": 0.0,
+      "Google Cloud": 8031000000.0,
+      "Google Network": 7850000000.0,
+      "Google Search & Other": 42628000000.0,
+      "Google Subscriptions, Platforms & Devices": 8142000000.0,
+      "Hedging Gains": 3000000.0,
+      "Other Bets": 285000000.0,
+      "YouTube Ads": 7665000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30",
+      "Advertising": 0.0,
+      "Google Cloud": 8411000000.0,
+      "Google Network": 7669000000.0,
+      "Google Search & Other": 44026000000.0,
+      "Google Subscriptions, Platforms & Devices": 8339000000.0,
+      "Hedging Gains": -1000000.0,
+      "Other Bets": 297000000.0,
+      "YouTube Ads": 7952000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "Advertising": 0.0,
+      "Google Cloud": 9192000000.0,
+      "Google Network": 8297000000.0,
+      "Google Search & Other": 48020000000.0,
+      "Google Subscriptions, Platforms & Devices": 10794000000.0,
+      "Hedging Gains": 150000000.0,
+      "Other Bets": 657000000.0,
+      "YouTube Ads": 9200000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31",
+      "Advertising": 0.0,
+      "Google Cloud": 9574000000.0,
+      "Google Network": 7413000000.0,
+      "Google Search & Other": 46156000000.0,
+      "Google Subscriptions, Platforms & Devices": 8739000000.0,
+      "Hedging Gains": 72000000.0,
+      "Other Bets": 495000000.0,
+      "YouTube Ads": 8090000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30",
+      "Advertising": 0.0,
+      "Google Cloud": 10347000000.0,
+      "Google Network": 7444000000.0,
+      "Google Search & Other": 48509000000.0,
+      "Google Subscriptions, Platforms & Devices": 9312000000.0,
+      "Hedging Gains": 3000000.0,
+      "Other Bets": 365000000.0,
+      "YouTube Ads": 8663000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30",
+      "Advertising": 0.0,
+      "Google Cloud": 11353000000.0,
+      "Google Network": 7548000000.0,
+      "Google Search & Other": 49385000000.0,
+      "Google Subscriptions, Platforms & Devices": 10656000000.0,
+      "Hedging Gains": 17000000.0,
+      "Other Bets": 388000000.0,
+      "YouTube Ads": 8921000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "Advertising": 0.0,
+      "Google Cloud": 11955000000.0,
+      "Google Network": 7954000000.0,
+      "Google Search & Other": 54034000000.0,
+      "Google Subscriptions, Platforms & Devices": 11633000000.0,
+      "Hedging Gains": 20000000.0,
+      "Other Bets": 400000000.0,
+      "YouTube Ads": 10473000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31",
+      "Advertising": 0.0,
+      "Google Cloud": 12260000000.0,
+      "Google Network": 7256000000.0,
+      "Google Search & Other": 50702000000.0,
+      "Google Subscriptions, Platforms & Devices": 10379000000.0,
+      "Hedging Gains": 260000000.0,
+      "Other Bets": 450000000.0,
+      "YouTube Ads": 8927000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30",
+      "Advertising": 0.0,
+      "Google Cloud": 13624000000.0,
+      "Google Network": 7354000000.0,
+      "Google Search & Other": 54190000000.0,
+      "Google Subscriptions, Platforms & Devices": 11203000000.0,
+      "Hedging Gains": -112000000.0,
+      "Other Bets": 373000000.0,
+      "YouTube Ads": 9796000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30",
+      "Advertising": 0.0,
+      "Google Cloud": 15157000000.0,
+      "Google Network": 7354000000.0,
+      "Google Search & Other": 56567000000.0,
+      "Google Subscriptions, Platforms & Devices": 12870000000.0,
+      "Hedging Gains": -207000000.0,
+      "Other Bets": 344000000.0,
+      "YouTube Ads": 10261000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "Advertising": 0.0,
+      "Google Cloud": 17664000000.0,
+      "Google Network": 7828000000.0,
+      "Google Search & Other": 63073000000.0,
+      "Google Subscriptions, Platforms & Devices": 13578000000.0,
+      "Hedging Gains": -68000000.0,
+      "Other Bets": 370000000.0,
+      "YouTube Ads": 11383000000.0
+    }
+  ],
+  "by_geography": [
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-06-30",
+      "Asia Pacific": 6945000000.0,
+      "Europe, Middle East, and Africa": 11363000000.0,
+      "Other Americas": 1839000000.0,
+      "United States": 17999000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-09-30",
+      "Asia Pacific": 8458000000.0,
+      "Europe, Middle East, and Africa": 13924000000.0,
+      "Other Americas": 2371000000.0,
+      "United States": 21442000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2020-12-31",
+      "Asia Pacific": 9909000000.0,
+      "Europe, Middle East, and Africa": 17238000000.0,
+      "Other Americas": 3050000000.0,
+      "United States": 26703000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-03-31",
+      "Asia Pacific": 10455000000.0,
+      "Europe, Middle East, and Africa": 17031000000.0,
+      "Other Americas": 2905000000.0,
+      "United States": 25032000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-06-30",
+      "Asia Pacific": 11231000000.0,
+      "Europe, Middle East, and Africa": 19084000000.0,
+      "Other Americas": 3364000000.0,
+      "United States": 28208000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-09-30",
+      "Asia Pacific": 11705000000.0,
+      "Europe, Middle East, and Africa": 19839000000.0,
+      "Other Americas": 3688000000.0,
+      "United States": 29824000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2021-12-31",
+      "Asia Pacific": 12732000000.0,
+      "Europe, Middle East, and Africa": 23153000000.0,
+      "Other Americas": 4447000000.0,
+      "United States": 34790000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-03-31",
+      "Asia Pacific": 11841000000.0,
+      "Europe, Middle East, and Africa": 20317000000.0,
+      "Other Americas": 3842000000.0,
+      "United States": 31733000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-06-30",
+      "Asia Pacific": 11710000000.0,
+      "Europe, Middle East, and Africa": 20533000000.0,
+      "Other Americas": 4340000000.0,
+      "United States": 32727000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-09-30",
+      "Asia Pacific": 11494000000.0,
+      "Europe, Middle East, and Africa": 19450000000.0,
+      "Other Americas": 4138000000.0,
+      "United States": 33372000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2022-12-31",
+      "Asia Pacific": 11979000000.0,
+      "Europe, Middle East, and Africa": 21762000000.0,
+      "Other Americas": 4656000000.0,
+      "United States": 36982000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-03-31",
+      "Asia Pacific": 11681000000.0,
+      "Europe, Middle East, and Africa": 21078000000.0,
+      "Other Americas": 4080000000.0,
+      "United States": 32864000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-06-30",
+      "Asia Pacific": 12728000000.0,
+      "Europe, Middle East, and Africa": 22289000000.0,
+      "Other Americas": 4511000000.0,
+      "United States": 35073000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-09-30",
+      "Asia Pacific": 13126000000.0,
+      "Europe, Middle East, and Africa": 22661000000.0,
+      "Other Americas": 4553000000.0,
+      "United States": 36354000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2023-12-31",
+      "Asia Pacific": 13979000000.0,
+      "Europe, Middle East, and Africa": 25010000000.0,
+      "Other Americas": 5347000000.0,
+      "United States": 41995000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-03-31",
+      "Asia Pacific": 13289000000.0,
+      "Europe, Middle East, and Africa": 23788000000.0,
+      "Other Americas": 4653000000.0,
+      "United States": 38737000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-06-30",
+      "Asia Pacific": 13823000000.0,
+      "Europe, Middle East, and Africa": 24683000000.0,
+      "Other Americas": 4938000000.0,
+      "United States": 41196000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-09-30",
+      "Asia Pacific": 14547000000.0,
+      "Europe, Middle East, and Africa": 25472000000.0,
+      "Other Americas": 5093000000.0,
+      "United States": 43139000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2024-12-31",
+      "Asia Pacific": 15156000000.0,
+      "Europe, Middle East, and Africa": 28184000000.0,
+      "Other Americas": 5734000000.0,
+      "United States": 47375000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-03-31",
+      "Asia Pacific": 14854000000.0,
+      "Europe, Middle East, and Africa": 25923000000.0,
+      "Other Americas": 5233000000.0,
+      "United States": 43964000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-06-30",
+      "Asia Pacific": 16480000000.0,
+      "Europe, Middle East, and Africa": 28262000000.0,
+      "Other Americas": 5735000000.0,
+      "United States": 46063000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-09-30",
+      "Asia Pacific": 17819000000.0,
+      "Europe, Middle East, and Africa": 29911000000.0,
+      "Other Americas": 6065000000.0,
+      "United States": 48758000000.0
+    },
+    {
+      "symbol": "GOOGL",
+      "report_date": "2025-12-31",
+      "Asia Pacific": 18527000000.0,
+      "Europe, Middle East, and Africa": 33056000000.0,
+      "Other Americas": 6869000000.0,
+      "United States": 55444000000.0
+    }
+  ],
+  "by_product": []
+}

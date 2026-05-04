@@ -1,0 +1,118 @@
+{
+  "by_segment": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2021-12-31",
+      "Design Automation": 803900000.0,
+      "Design IP": 358800000.0,
+      "Software Integrity": 107600000.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-03-31",
+      "Design Automation": 817800000.0,
+      "Design IP": 348500000.0,
+      "Software Integrity": 112900000.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-06-30",
+      "Design Automation": 816500000.0,
+      "Design IP": 313000000.0,
+      "Software Integrity": 118300000.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-09-30",
+      "Design Automation": 862100000.0,
+      "Design IP": 295200000.0,
+      "Software Integrity": 127100000.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-12-31",
+      "Design Automation": 889800000.0,
+      "Design IP": 343700000.0,
+      "Software Integrity": 127800000.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-03-31",
+      "Design Automation": 927600000.0,
+      "Design IP": 335200000.0,
+      "Software Integrity": 132100000.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-06-30",
+      "Design Automation": 1004200000.0,
+      "Design IP": 350200000.0,
+      "Software Integrity": 132900000.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-09-30",
+      "Design Automation": 953700000.0,
+      "Design IP": 513700000.0,
+      "Software Integrity": 131700000.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-12-31",
+      "Design Automation": 985300000.0,
+      "Design IP": 525700000.0,
+      "Software Integrity": 138200000.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-03-31",
+      "Design Automation": 1054900000.0,
+      "Design IP": 399800000.0,
+      "Software Integrity": 0.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-06-30",
+      "Design Automation": 1062600000.0,
+      "Design IP": 463100000.0,
+      "Software Integrity": 0.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-09-30",
+      "Design Automation": 1118200000.0,
+      "Design IP": 517800000.0,
+      "Software Integrity": 0.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-12-31",
+      "Design Automation": 1020216000.0,
+      "Design IP": 435099000.0,
+      "Software Integrity": 0.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-03-31",
+      "Design Automation": 1122235000.0,
+      "Design IP": 482031000.0,
+      "Software Integrity": 0.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-06-30",
+      "Design Automation": 1312100000.0,
+      "Design IP": 427600000.0,
+      "Software Integrity": 0.0
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-09-30",
+      "Design Automation": 1847700000.0,
+      "Design IP": 407200000.0,
+      "Software Integrity": 0.0
+    }
+  ],
+  "by_geography": [],
+  "by_product": []
+}

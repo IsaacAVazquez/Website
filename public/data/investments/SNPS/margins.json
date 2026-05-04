@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-04-30",
+      "gross_profit": 1026418000.0,
+      "total_revenue": 1279229000.0,
+      "gross_margin": 0.8024
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-07-31",
+      "gross_profit": 976585000.0,
+      "total_revenue": 1247766000.0,
+      "gross_margin": 0.7827
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "gross_profit": 1001571000.0,
+      "total_revenue": 1284292000.0,
+      "gross_margin": 0.7799
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-01-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-04-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-07-31",
+      "gross_profit": 1093958000.0,
+      "total_revenue": 1354390000.0,
+      "gross_margin": 0.8077
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "gross_profit": 1266785000.0,
+      "total_revenue": 1599128000.0,
+      "gross_margin": 0.7922
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-01-31",
+      "gross_profit": 1231796000.0,
+      "total_revenue": 1510989000.0,
+      "gross_margin": 0.8152
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-04-30",
+      "gross_profit": 1154315000.0,
+      "total_revenue": 1454712000.0,
+      "gross_margin": 0.7935
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-07-31",
+      "gross_profit": 1235073000.0,
+      "total_revenue": 1525749000.0,
+      "gross_margin": 0.8095
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "gross_profit": 1260963000.0,
+      "total_revenue": 1635986000.0,
+      "gross_margin": 0.7708
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-01-31",
+      "gross_profit": 1185340000.0,
+      "total_revenue": 1455315000.0,
+      "gross_margin": 0.8145
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-04-30",
+      "gross_profit": 1285919000.0,
+      "total_revenue": 1604266000.0,
+      "gross_margin": 0.8016
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-07-31",
+      "gross_profit": 1359173000.0,
+      "total_revenue": 1739737000.0,
+      "gross_margin": 0.7813
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "gross_profit": 1600197000.0,
+      "total_revenue": 2254860000.0,
+      "gross_margin": 0.7097
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-01-31",
+      "gross_profit": 1771416000.0,
+      "total_revenue": 2408798000.0,
+      "gross_margin": 0.7354
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2019-10-31",
+      "gross_profit": 2607748000.0,
+      "total_revenue": 3360694000.0,
+      "gross_margin": 0.776
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2020-10-31",
+      "gross_profit": 2890591000.0,
+      "total_revenue": 3685281000.0,
+      "gross_margin": 0.7844
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2021-10-31",
+      "gross_profit": 3342416000.0,
+      "total_revenue": 4204193000.0,
+      "gross_margin": 0.795
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "gross_profit": 3717701000.0,
+      "total_revenue": 4615714000.0,
+      "gross_margin": 0.8054
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "gross_profit": 4287171000.0,
+      "total_revenue": 5318014000.0,
+      "gross_margin": 0.8062
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "gross_profit": 4882147000.0,
+      "total_revenue": 6127436000.0,
+      "gross_margin": 0.7968
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "gross_profit": 5430629000.0,
+      "total_revenue": 7054178000.0,
+      "gross_margin": 0.7698
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-04-30",
+      "operating_income": 364012000.0,
+      "total_revenue": 1279229000.0,
+      "operating_margin": 0.2846
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-07-31",
+      "operating_income": 233928000.0,
+      "total_revenue": 1247766000.0,
+      "operating_margin": 0.1875
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "operating_income": 217373000.0,
+      "total_revenue": 1284292000.0,
+      "operating_margin": 0.1693
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-01-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-04-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-07-31",
+      "operating_income": 321955000.0,
+      "total_revenue": 1354390000.0,
+      "operating_margin": 0.2377
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "operating_income": 429139000.0,
+      "total_revenue": 1599128000.0,
+      "operating_margin": 0.2684
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-01-31",
+      "operating_income": 352626000.0,
+      "total_revenue": 1510989000.0,
+      "operating_margin": 0.2334
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-04-30",
+      "operating_income": 332072000.0,
+      "total_revenue": 1454712000.0,
+      "operating_margin": 0.2283
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-07-31",
+      "operating_income": 360211000.0,
+      "total_revenue": 1525749000.0,
+      "operating_margin": 0.2361
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "operating_income": 310802000.0,
+      "total_revenue": 1635986000.0,
+      "operating_margin": 0.19
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-01-31",
+      "operating_income": 251839000.0,
+      "total_revenue": 1455315000.0,
+      "operating_margin": 0.173
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-04-30",
+      "operating_income": 376426000.0,
+      "total_revenue": 1604266000.0,
+      "operating_margin": 0.2346
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-07-31",
+      "operating_income": 165269000.0,
+      "total_revenue": 1739737000.0,
+      "operating_margin": 0.095
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "operating_income": 121393000.0,
+      "total_revenue": 2254860000.0,
+      "operating_margin": 0.0538
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-01-31",
+      "operating_income": 321328000.0,
+      "total_revenue": 2408798000.0,
+      "operating_margin": 0.1334
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2019-10-31",
+      "operating_income": 567417000.0,
+      "total_revenue": 3360694000.0,
+      "operating_margin": 0.1688
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2020-10-31",
+      "operating_income": 656200000.0,
+      "total_revenue": 3685281000.0,
+      "operating_margin": 0.1781
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2021-10-31",
+      "operating_income": 768195000.0,
+      "total_revenue": 4204193000.0,
+      "operating_margin": 0.1827
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "operating_income": 1159935000.0,
+      "total_revenue": 4615714000.0,
+      "operating_margin": 0.2513
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "operating_income": 1326330000.0,
+      "total_revenue": 5318014000.0,
+      "operating_margin": 0.2494
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "operating_income": 1355711000.0,
+      "total_revenue": 6127436000.0,
+      "operating_margin": 0.2213
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "operating_income": 914927000.0,
+      "total_revenue": 7054178000.0,
+      "operating_margin": 0.1297
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-04-30",
+      "net_income_common_stockholders": 294781000.0,
+      "total_revenue": 1279229000.0,
+      "net_margin": 0.2304
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": 222626000.0,
+      "total_revenue": 1247766000.0,
+      "net_margin": 0.1784
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": 153500000.0,
+      "total_revenue": 1284292000.0,
+      "net_margin": 0.1195
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-04-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 336252000.0,
+      "total_revenue": 1354390000.0,
+      "net_margin": 0.2483
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 349190000.0,
+      "total_revenue": 1599128000.0,
+      "net_margin": 0.2184
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 449112000.0,
+      "total_revenue": 1510989000.0,
+      "net_margin": 0.2972
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 292107000.0,
+      "total_revenue": 1454712000.0,
+      "net_margin": 0.2008
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 408055000.0,
+      "total_revenue": 1525749000.0,
+      "net_margin": 0.2674
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 1114106000.0,
+      "total_revenue": 1635986000.0,
+      "net_margin": 0.681
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 295683000.0,
+      "total_revenue": 1455315000.0,
+      "net_margin": 0.2032
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 345332000.0,
+      "total_revenue": 1604266000.0,
+      "net_margin": 0.2153
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 242509000.0,
+      "total_revenue": 1739737000.0,
+      "net_margin": 0.1394
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 448696000.0,
+      "total_revenue": 2254860000.0,
+      "net_margin": 0.199
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 64958000.0,
+      "total_revenue": 2408798000.0,
+      "net_margin": 0.027
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2019-10-31",
+      "net_income_common_stockholders": 532367000.0,
+      "total_revenue": 3360694000.0,
+      "net_margin": 0.1584
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2020-10-31",
+      "net_income_common_stockholders": 664347000.0,
+      "total_revenue": 3685281000.0,
+      "net_margin": 0.1803
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2021-10-31",
+      "net_income_common_stockholders": 757516000.0,
+      "total_revenue": 4204193000.0,
+      "net_margin": 0.1802
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": 984594000.0,
+      "total_revenue": 4615714000.0,
+      "net_margin": 0.2133
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 1229888000.0,
+      "total_revenue": 5318014000.0,
+      "net_margin": 0.2313
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 2263380000.0,
+      "total_revenue": 6127436000.0,
+      "net_margin": 0.3694
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 1332220000.0,
+      "total_revenue": 7054178000.0,
+      "net_margin": 0.1889
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-04-30",
+      "ebitda": null,
+      "total_revenue": 1279229000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-07-31",
+      "ebitda": 291674000.0,
+      "total_revenue": 1247766000.0,
+      "ebitda_margin": 0.2338
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "ebitda": 271185000.0,
+      "total_revenue": 1284292000.0,
+      "ebitda_margin": 0.2112
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-01-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-04-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-07-31",
+      "ebitda": 389013000.0,
+      "total_revenue": 1354390000.0,
+      "ebitda_margin": 0.2872
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "ebitda": 477038000.0,
+      "total_revenue": 1599128000.0,
+      "ebitda_margin": 0.2983
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-01-31",
+      "ebitda": 521666000.0,
+      "total_revenue": 1510989000.0,
+      "ebitda_margin": 0.3452
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-04-30",
+      "ebitda": 409595000.0,
+      "total_revenue": 1454712000.0,
+      "ebitda_margin": 0.2816
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-07-31",
+      "ebitda": 460000000.0,
+      "total_revenue": 1525749000.0,
+      "ebitda_margin": 0.3015
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "ebitda": 453547000.0,
+      "total_revenue": 1635986000.0,
+      "ebitda_margin": 0.2772
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-01-31",
+      "ebitda": 350190000.0,
+      "total_revenue": 1455315000.0,
+      "ebitda_margin": 0.2406
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-04-30",
+      "ebitda": 539431000.0,
+      "total_revenue": 1604266000.0,
+      "ebitda_margin": 0.3362
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-07-31",
+      "ebitda": 450281000.0,
+      "total_revenue": 1739737000.0,
+      "ebitda_margin": 0.2588
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "ebitda": 1160399000.0,
+      "total_revenue": 2254860000.0,
+      "ebitda_margin": 0.5146
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-01-31",
+      "ebitda": 692456000.0,
+      "total_revenue": 2408798000.0,
+      "ebitda_margin": 0.2875
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2019-10-31",
+      "ebitda": 769093000.0,
+      "total_revenue": 3360694000.0,
+      "ebitda_margin": 0.2288
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2020-10-31",
+      "ebitda": 853285000.0,
+      "total_revenue": 3685281000.0,
+      "ebitda_margin": 0.2315
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2021-10-31",
+      "ebitda": 1012555000.0,
+      "total_revenue": 4204193000.0,
+      "ebitda_margin": 0.2408
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "ebitda": 1333555000.0,
+      "total_revenue": 4615714000.0,
+      "ebitda_margin": 0.2889
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "ebitda": 1555293000.0,
+      "total_revenue": 5318014000.0,
+      "ebitda_margin": 0.2925
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "ebitda": 1845752000.0,
+      "total_revenue": 6127436000.0,
+      "ebitda_margin": 0.3012
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "ebitda": 2500301000.0,
+      "total_revenue": 7054178000.0,
+      "ebitda_margin": 0.3544
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-04-30",
+      "free_cash_flow": 723770000.0,
+      "total_revenue": 1279229000.0,
+      "fcf_margin": 0.5658
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-07-31",
+      "free_cash_flow": 403222000.0,
+      "total_revenue": 1247766000.0,
+      "fcf_margin": 0.3232
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "free_cash_flow": null,
+      "total_revenue": 1284292000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-01-31",
+      "free_cash_flow": 70627000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-04-30",
+      "free_cash_flow": 654449000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 513413000.0,
+      "total_revenue": 1354390000.0,
+      "fcf_margin": 0.3791
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 272963000.0,
+      "total_revenue": 1599128000.0,
+      "fcf_margin": 0.1707
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-01-31",
+      "free_cash_flow": -128181000.0,
+      "total_revenue": 1510989000.0,
+      "fcf_margin": -0.0848
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-04-30",
+      "free_cash_flow": 438218000.0,
+      "total_revenue": 1454712000.0,
+      "fcf_margin": 0.3012
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 415402000.0,
+      "total_revenue": 1525749000.0,
+      "fcf_margin": 0.2723
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 558429000.0,
+      "total_revenue": 1635986000.0,
+      "fcf_margin": 0.3413
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-01-31",
+      "free_cash_flow": -108170000.0,
+      "total_revenue": 1455315000.0,
+      "fcf_margin": -0.0743
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-04-30",
+      "free_cash_flow": 219777000.0,
+      "total_revenue": 1604266000.0,
+      "fcf_margin": 0.137
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 632355000.0,
+      "total_revenue": 1739737000.0,
+      "fcf_margin": 0.3635
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 605192000.0,
+      "total_revenue": 2254860000.0,
+      "fcf_margin": 0.2684
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 821512000.0,
+      "total_revenue": 2408798000.0,
+      "fcf_margin": 0.341
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SNPS",
+      "report_date": "2019-10-31",
+      "free_cash_flow": null,
+      "total_revenue": 3360694000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2020-10-31",
+      "free_cash_flow": 832551000.0,
+      "total_revenue": 3685281000.0,
+      "fcf_margin": 0.2259
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2021-10-31",
+      "free_cash_flow": 1396882000.0,
+      "total_revenue": 4204193000.0,
+      "fcf_margin": 0.3323
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2022-10-31",
+      "free_cash_flow": 1599818000.0,
+      "total_revenue": 4615714000.0,
+      "fcf_margin": 0.3466
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 1511452000.0,
+      "total_revenue": 5318014000.0,
+      "fcf_margin": 0.2842
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 1267529000.0,
+      "total_revenue": 6127436000.0,
+      "fcf_margin": 0.2069
+    },
+    {
+      "symbol": "SNPS",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 1349154000.0,
+      "total_revenue": 7054178000.0,
+      "fcf_margin": 0.1913
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "ADI",
+    "name": "Dr. Katsufumi  Nakamura",
+    "title": "Senior VP & Chief Customer Officer",
+    "age": 58,
+    "born": 1967,
+    "pay": 1885368,
+    "exercised": 390681,
+    "unexercised": 292436
+  },
+  {
+    "symbol": "ADI",
+    "name": "Dr. Raymond S. Stata Ph.D.",
+    "title": "Co-Founder & Board Member",
+    "age": 91,
+    "born": 1934,
+    "pay": 111163,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ADI",
+    "name": "Jeff  Ambrosi",
+    "title": "Head of Investor Relations & Senior Director",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ADI",
+    "name": "Mr. Martin  Cotter",
+    "title": "Senior Vice President of Vertical Business Units & President of ADI EMEA",
+    "age": 60,
+    "born": 1965,
+    "pay": 1611240,
+    "exercised": 0,
+    "unexercised": 12435256
+  },
+  {
+    "symbol": "ADI",
+    "name": "Mr. Michael  Sondel",
+    "title": "Corporate VP & Chief Accounting Officer",
+    "age": 47,
+    "born": 1978,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ADI",
+    "name": "Mr. Richard C. Puccio Jr.",
+    "title": "Executive VP & CFO",
+    "age": 56,
+    "born": 1969,
+    "pay": 2119759,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ADI",
+    "name": "Mr. Vincent T. Roche",
+    "title": "CEO & Chair of the Board of Directors",
+    "age": 65,
+    "born": 1960,
+    "pay": 5453986,
+    "exercised": 10406356,
+    "unexercised": 72123696
+  },
+  {
+    "symbol": "ADI",
+    "name": "Mr. Vivek  Jain",
+    "title": "Executive Vice President of Global Operations & Technology",
+    "age": 65,
+    "born": 1960,
+    "pay": 2097691,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ADI",
+    "name": "Ms. Janene I. Asgeirsson J.D.",
+    "title": "Chief Legal Officer & Corporate Secretary",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "ADI",
+    "name": "Ms. Mariya K. Trickett",
+    "title": "Senior VP & Chief People Officer",
+    "age": 42,
+    "born": 1983,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

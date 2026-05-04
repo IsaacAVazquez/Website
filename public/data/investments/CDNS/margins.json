@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-06-30",
+      "gross_profit": 764856000.0,
+      "total_revenue": 857521000.0,
+      "gross_margin": 0.8919
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-09-30",
+      "gross_profit": 814954000.0,
+      "total_revenue": 902554000.0,
+      "gross_margin": 0.9029
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "gross_profit": 806362000.0,
+      "total_revenue": 899877000.0,
+      "gross_margin": 0.8961
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-03-31",
+      "gross_profit": 897218000.0,
+      "total_revenue": 1021690000.0,
+      "gross_margin": 0.8782
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-06-30",
+      "gross_profit": 879721000.0,
+      "total_revenue": 976579000.0,
+      "gross_margin": 0.9008
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30",
+      "gross_profit": 913513000.0,
+      "total_revenue": 1023094000.0,
+      "gross_margin": 0.8929
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "gross_profit": 964524000.0,
+      "total_revenue": 1068623000.0,
+      "gross_margin": 0.9026
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31",
+      "gross_profit": 883906000.0,
+      "total_revenue": 1009103000.0,
+      "gross_margin": 0.8759
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30",
+      "gross_profit": 921411000.0,
+      "total_revenue": 1060681000.0,
+      "gross_margin": 0.8687
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30",
+      "gross_profit": 1052448000.0,
+      "total_revenue": 1215499000.0,
+      "gross_margin": 0.8659
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "gross_profit": 1135990000.0,
+      "total_revenue": 1355981000.0,
+      "gross_margin": 0.8378
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31",
+      "gross_profit": 1075233000.0,
+      "total_revenue": 1242366000.0,
+      "gross_margin": 0.8655
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30",
+      "gross_profit": 1091274000.0,
+      "total_revenue": 1275441000.0,
+      "gross_margin": 0.8556
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30",
+      "gross_profit": 1156645000.0,
+      "total_revenue": 1338838000.0,
+      "gross_margin": 0.8639
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "gross_profit": 1251388000.0,
+      "total_revenue": 1440114000.0,
+      "gross_margin": 0.869
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2019-12-31",
+      "gross_profit": 2069962000.0,
+      "total_revenue": 2336319000.0,
+      "gross_margin": 0.886
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2020-12-31",
+      "gross_profit": 2377393000.0,
+      "total_revenue": 2682891000.0,
+      "gross_margin": 0.8861
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2021-12-31",
+      "gross_profit": 2681238000.0,
+      "total_revenue": 2988244000.0,
+      "gross_margin": 0.8973
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "gross_profit": 3190095000.0,
+      "total_revenue": 3561718000.0,
+      "gross_margin": 0.8957
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "gross_profit": 3654945000.0,
+      "total_revenue": 4089986000.0,
+      "gross_margin": 0.8936
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "gross_profit": 3993762000.0,
+      "total_revenue": 4641264000.0,
+      "gross_margin": 0.8605
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "gross_profit": 4574510000.0,
+      "total_revenue": 5296759000.0,
+      "gross_margin": 0.8636
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-06-30",
+      "operating_income": 282904000.0,
+      "total_revenue": 857521000.0,
+      "operating_margin": 0.3299
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-09-30",
+      "operating_income": 260766000.0,
+      "total_revenue": 902554000.0,
+      "operating_margin": 0.2889
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "operating_income": 211130000.0,
+      "total_revenue": 899877000.0,
+      "operating_margin": 0.2346
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-03-31",
+      "operating_income": 322463000.0,
+      "total_revenue": 1021690000.0,
+      "operating_margin": 0.3156
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-06-30",
+      "operating_income": 299328000.0,
+      "total_revenue": 976579000.0,
+      "operating_margin": 0.3065
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30",
+      "operating_income": 304488000.0,
+      "total_revenue": 1023094000.0,
+      "operating_margin": 0.2976
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "operating_income": 335990000.0,
+      "total_revenue": 1068623000.0,
+      "operating_margin": 0.3144
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31",
+      "operating_income": 250236000.0,
+      "total_revenue": 1009103000.0,
+      "operating_margin": 0.248
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30",
+      "operating_income": 293843000.0,
+      "total_revenue": 1060681000.0,
+      "operating_margin": 0.277
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30",
+      "operating_income": 374587000.0,
+      "total_revenue": 1215499000.0,
+      "operating_margin": 0.3082
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "operating_income": 455855000.0,
+      "total_revenue": 1355981000.0,
+      "operating_margin": 0.3362
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31",
+      "operating_income": 361411000.0,
+      "total_revenue": 1242366000.0,
+      "operating_margin": 0.2909
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30",
+      "operating_income": 370389000.0,
+      "total_revenue": 1275441000.0,
+      "operating_margin": 0.2904
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30",
+      "operating_income": 452786000.0,
+      "total_revenue": 1338838000.0,
+      "operating_margin": 0.3382
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "operating_income": 465225000.0,
+      "total_revenue": 1440114000.0,
+      "operating_margin": 0.323
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2019-12-31",
+      "operating_income": 500417000.0,
+      "total_revenue": 2336319000.0,
+      "operating_margin": 0.2142
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2020-12-31",
+      "operating_income": 654767000.0,
+      "total_revenue": 2682891000.0,
+      "operating_margin": 0.2441
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2021-12-31",
+      "operating_income": 778041000.0,
+      "total_revenue": 2988244000.0,
+      "operating_margin": 0.2604
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "operating_income": 1073741000.0,
+      "total_revenue": 3561718000.0,
+      "operating_margin": 0.3015
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "operating_income": 1262238000.0,
+      "total_revenue": 4089986000.0,
+      "operating_margin": 0.3086
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "operating_income": 1382850000.0,
+      "total_revenue": 4641264000.0,
+      "operating_margin": 0.2979
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "operating_income": 1649781000.0,
+      "total_revenue": 5296759000.0,
+      "operating_margin": 0.3115
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 186920000.0,
+      "total_revenue": 857521000.0,
+      "net_margin": 0.218
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 186305000.0,
+      "total_revenue": 902554000.0,
+      "net_margin": 0.2064
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 240392000.0,
+      "total_revenue": 899877000.0,
+      "net_margin": 0.2671
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 241804000.0,
+      "total_revenue": 1021690000.0,
+      "net_margin": 0.2367
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 221120000.0,
+      "total_revenue": 976579000.0,
+      "net_margin": 0.2264
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 254321000.0,
+      "total_revenue": 1023094000.0,
+      "net_margin": 0.2486
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 323899000.0,
+      "total_revenue": 1068623000.0,
+      "net_margin": 0.3031
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 247643000.0,
+      "total_revenue": 1009103000.0,
+      "net_margin": 0.2454
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 229520000.0,
+      "total_revenue": 1060681000.0,
+      "net_margin": 0.2164
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 238111000.0,
+      "total_revenue": 1215499000.0,
+      "net_margin": 0.1959
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 340210000.0,
+      "total_revenue": 1355981000.0,
+      "net_margin": 0.2509
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 273579000.0,
+      "total_revenue": 1242366000.0,
+      "net_margin": 0.2202
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 160051000.0,
+      "total_revenue": 1275441000.0,
+      "net_margin": 0.1255
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 287122000.0,
+      "total_revenue": 1338838000.0,
+      "net_margin": 0.2145
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 388136000.0,
+      "total_revenue": 1440114000.0,
+      "net_margin": 0.2695
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 988979000.0,
+      "total_revenue": 2336319000.0,
+      "net_margin": 0.4233
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 590644000.0,
+      "total_revenue": 2682891000.0,
+      "net_margin": 0.2202
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 695955000.0,
+      "total_revenue": 2988244000.0,
+      "net_margin": 0.2329
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 848952000.0,
+      "total_revenue": 3561718000.0,
+      "net_margin": 0.2384
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1041144000.0,
+      "total_revenue": 4089986000.0,
+      "net_margin": 0.2546
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1055484000.0,
+      "total_revenue": 4641264000.0,
+      "net_margin": 0.2274
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1108888000.0,
+      "total_revenue": 5296759000.0,
+      "net_margin": 0.2094
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 857521000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-09-30",
+      "ebitda": 285598000.0,
+      "total_revenue": 902554000.0,
+      "ebitda_margin": 0.3164
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "ebitda": 257742000.0,
+      "total_revenue": 899877000.0,
+      "ebitda_margin": 0.2864
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-03-31",
+      "ebitda": 363755000.0,
+      "total_revenue": 1021690000.0,
+      "ebitda_margin": 0.356
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-06-30",
+      "ebitda": 341182000.0,
+      "total_revenue": 976579000.0,
+      "ebitda_margin": 0.3494
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30",
+      "ebitda": 346222000.0,
+      "total_revenue": 1023094000.0,
+      "ebitda_margin": 0.3384
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "ebitda": 412695000.0,
+      "total_revenue": 1068623000.0,
+      "ebitda_margin": 0.3862
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31",
+      "ebitda": 357374000.0,
+      "total_revenue": 1009103000.0,
+      "ebitda_margin": 0.3542
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30",
+      "ebitda": 375768000.0,
+      "total_revenue": 1060681000.0,
+      "ebitda_margin": 0.3543
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30",
+      "ebitda": 413269000.0,
+      "total_revenue": 1215499000.0,
+      "ebitda_margin": 0.34
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "ebitda": 520422000.0,
+      "total_revenue": 1355981000.0,
+      "ebitda_margin": 0.3838
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31",
+      "ebitda": 436280000.0,
+      "total_revenue": 1242366000.0,
+      "ebitda_margin": 0.3512
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30",
+      "ebitda": 367306000.0,
+      "total_revenue": 1275441000.0,
+      "ebitda_margin": 0.288
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30",
+      "ebitda": 477568000.0,
+      "total_revenue": 1338838000.0,
+      "ebitda_margin": 0.3567
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "ebitda": 591274000.0,
+      "total_revenue": 1440114000.0,
+      "ebitda_margin": 0.4106
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2019-12-31",
+      "ebitda": 621148000.0,
+      "total_revenue": 2336319000.0,
+      "ebitda_margin": 0.2659
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2020-12-31",
+      "ebitda": 803633000.0,
+      "total_revenue": 2682891000.0,
+      "ebitda_margin": 0.2995
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2021-12-31",
+      "ebitda": 916117000.0,
+      "total_revenue": 2988244000.0,
+      "ebitda_margin": 0.3066
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "ebitda": 1203727000.0,
+      "total_revenue": 3561718000.0,
+      "ebitda_margin": 0.338
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "ebitda": 1463854000.0,
+      "total_revenue": 4089986000.0,
+      "ebitda_margin": 0.3579
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "ebitda": 1666833000.0,
+      "total_revenue": 4641264000.0,
+      "ebitda_margin": 0.3591
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "ebitda": 1872428000.0,
+      "total_revenue": 5296759000.0,
+      "ebitda_margin": 0.3535
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 300469000.0,
+      "total_revenue": 857521000.0,
+      "fcf_margin": 0.3504
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 272767000.0,
+      "total_revenue": 902554000.0,
+      "fcf_margin": 0.3022
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 899877000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": 1021690000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 393834000.0,
+      "total_revenue": 976579000.0,
+      "fcf_margin": 0.4033
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 373935000.0,
+      "total_revenue": 1023094000.0,
+      "fcf_margin": 0.3655
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 238222000.0,
+      "total_revenue": 1068623000.0,
+      "fcf_margin": 0.2229
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 203631000.0,
+      "total_revenue": 1009103000.0,
+      "fcf_margin": 0.2018
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 126766000.0,
+      "total_revenue": 1060681000.0,
+      "fcf_margin": 0.1195
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 383455000.0,
+      "total_revenue": 1215499000.0,
+      "fcf_margin": 0.3155
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 404157000.0,
+      "total_revenue": 1355981000.0,
+      "fcf_margin": 0.2981
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 463960000.0,
+      "total_revenue": 1242366000.0,
+      "fcf_margin": 0.3734
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 333518000.0,
+      "total_revenue": 1275441000.0,
+      "fcf_margin": 0.2615
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 276978000.0,
+      "total_revenue": 1338838000.0,
+      "fcf_margin": 0.2069
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 512454000.0,
+      "total_revenue": 1440114000.0,
+      "fcf_margin": 0.3558
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2026-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": 2336319000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 810109000.0,
+      "total_revenue": 2682891000.0,
+      "fcf_margin": 0.302
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1034077000.0,
+      "total_revenue": 2988244000.0,
+      "fcf_margin": 0.346
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1117679000.0,
+      "total_revenue": 3561718000.0,
+      "fcf_margin": 0.3138
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1246673000.0,
+      "total_revenue": 4089986000.0,
+      "fcf_margin": 0.3048
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1118009000.0,
+      "total_revenue": 4641264000.0,
+      "fcf_margin": 0.2409
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1586910000.0,
+      "total_revenue": 5296759000.0,
+      "fcf_margin": 0.2996
+    }
+  ]
+}

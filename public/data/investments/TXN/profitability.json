@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "TXN",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1700000000.0,
+      "beginning_stockholders_equity": 15940000000.0,
+      "ending_stockholders_equity": 16631000000.0,
+      "avg_equity": 16285500000.0,
+      "roe": 0.1044
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1364000000.0,
+      "beginning_stockholders_equity": 16631000000.0,
+      "ending_stockholders_equity": 16897000000.0,
+      "avg_equity": 16764000000.0,
+      "roe": 0.0814
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1105000000.0,
+      "beginning_stockholders_equity": 16897000000.0,
+      "ending_stockholders_equity": 16983000000.0,
+      "avg_equity": 16940000000.0,
+      "roe": 0.0652
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1121000000.0,
+      "beginning_stockholders_equity": 16983000000.0,
+      "ending_stockholders_equity": 17214000000.0,
+      "avg_equity": 17098500000.0,
+      "roe": 0.0656
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1355000000.0,
+      "beginning_stockholders_equity": 17214000000.0,
+      "ending_stockholders_equity": 17268000000.0,
+      "avg_equity": 17241000000.0,
+      "roe": 0.0786
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1199000000.0,
+      "beginning_stockholders_equity": 17268000000.0,
+      "ending_stockholders_equity": 16903000000.0,
+      "avg_equity": 17085500000.0,
+      "roe": 0.0702
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1179000000.0,
+      "beginning_stockholders_equity": 16903000000.0,
+      "ending_stockholders_equity": 16406000000.0,
+      "avg_equity": 16654500000.0,
+      "roe": 0.0708
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1288000000.0,
+      "beginning_stockholders_equity": 16406000000.0,
+      "ending_stockholders_equity": 16403000000.0,
+      "avg_equity": 16404500000.0,
+      "roe": 0.0785
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1356000000.0,
+      "beginning_stockholders_equity": 16403000000.0,
+      "ending_stockholders_equity": 16627000000.0,
+      "avg_equity": 16515000000.0,
+      "roe": 0.0821
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1156000000.0,
+      "beginning_stockholders_equity": 16627000000.0,
+      "ending_stockholders_equity": 16273000000.0,
+      "avg_equity": 16450000000.0,
+      "roe": 0.0703
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1545000000.0,
+      "beginning_stockholders_equity": 16273000000.0,
+      "ending_stockholders_equity": 16778000000.0,
+      "avg_equity": 16525500000.0,
+      "roe": 0.0935
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "TXN",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 1700000000.0,
+      "beginning_total_assets": 30939000000.0,
+      "ending_total_assets": 31638000000.0,
+      "avg_assets": 31288500000.0,
+      "roa": 0.0543
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1364000000.0,
+      "beginning_total_assets": 31638000000.0,
+      "ending_total_assets": 32348000000.0,
+      "avg_assets": 31993000000.0,
+      "roa": 0.0426
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 1105000000.0,
+      "beginning_total_assets": 32348000000.0,
+      "ending_total_assets": 34885000000.0,
+      "avg_assets": 33616500000.0,
+      "roa": 0.0329
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1121000000.0,
+      "beginning_total_assets": 34885000000.0,
+      "ending_total_assets": 35048000000.0,
+      "avg_assets": 34966500000.0,
+      "roa": 0.0321
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 1355000000.0,
+      "beginning_total_assets": 35048000000.0,
+      "ending_total_assets": 35321000000.0,
+      "avg_assets": 35184500000.0,
+      "roa": 0.0385
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1199000000.0,
+      "beginning_total_assets": 35321000000.0,
+      "ending_total_assets": 35509000000.0,
+      "avg_assets": 35415000000.0,
+      "roa": 0.0339
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1179000000.0,
+      "beginning_total_assets": 35509000000.0,
+      "ending_total_assets": 33757000000.0,
+      "avg_assets": 34633000000.0,
+      "roa": 0.034
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1288000000.0,
+      "beginning_total_assets": 33757000000.0,
+      "ending_total_assets": 34933000000.0,
+      "avg_assets": 34345000000.0,
+      "roa": 0.0375
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1356000000.0,
+      "beginning_total_assets": 34933000000.0,
+      "ending_total_assets": 35004000000.0,
+      "avg_assets": 34968500000.0,
+      "roa": 0.0388
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1156000000.0,
+      "beginning_total_assets": 35004000000.0,
+      "ending_total_assets": 34585000000.0,
+      "avg_assets": 34794500000.0,
+      "roa": 0.0332
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1545000000.0,
+      "beginning_total_assets": 34585000000.0,
+      "ending_total_assets": 34393000000.0,
+      "avg_assets": 34489000000.0,
+      "roa": 0.0448
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "TXN",
+      "report_date": "2023-09-30",
+      "ebit": 2020000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 1797800000.0,
+      "beginning_invested_capital": 27159000000.0,
+      "ending_invested_capital": 27853000000.0,
+      "avg_invested_capital": 27506000000.0,
+      "roic": 0.0654
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2023-12-31",
+      "ebit": 1646000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 1464940000.0,
+      "beginning_invested_capital": 27853000000.0,
+      "ending_invested_capital": 28120000000.0,
+      "avg_invested_capital": 27986500000.0,
+      "roic": 0.0523
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-03-31",
+      "ebit": 1409000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 1197650000.0,
+      "beginning_invested_capital": 28120000000.0,
+      "ending_invested_capital": 31172000000.0,
+      "avg_invested_capital": 29646000000.0,
+      "roic": 0.0404
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-06-30",
+      "ebit": 1378000000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": 1240200000.0,
+      "beginning_invested_capital": 31172000000.0,
+      "ending_invested_capital": 31105000000.0,
+      "avg_invested_capital": 31138500000.0,
+      "roic": 0.0398
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-09-30",
+      "ebit": 1685000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1482800000.0,
+      "beginning_invested_capital": 31105000000.0,
+      "ending_invested_capital": 31161000000.0,
+      "avg_invested_capital": 31133000000.0,
+      "roic": 0.0476
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-12-31",
+      "ebit": 1489000000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 1325210000.0,
+      "beginning_invested_capital": 31161000000.0,
+      "ending_invested_capital": 30499000000.0,
+      "avg_invested_capital": 30830000000.0,
+      "roic": 0.043
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-03-31",
+      "ebit": 1404000000.0,
+      "tax_rate_for_calcs": 0.08,
+      "nopat": 1291680000.0,
+      "beginning_invested_capital": 30499000000.0,
+      "ending_invested_capital": 29254000000.0,
+      "avg_invested_capital": 29876500000.0,
+      "roic": 0.0432
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-06-30",
+      "ebit": 1611000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 1417680000.0,
+      "beginning_invested_capital": 29254000000.0,
+      "ending_invested_capital": 30446000000.0,
+      "avg_invested_capital": 29850000000.0,
+      "roic": 0.0475
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-09-30",
+      "ebit": 1725000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1483500000.0,
+      "beginning_invested_capital": 30446000000.0,
+      "ending_invested_capital": 30673000000.0,
+      "avg_invested_capital": 30559500000.0,
+      "roic": 0.0485
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-12-31",
+      "ebit": 1513000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 1286050000.0,
+      "beginning_invested_capital": 30673000000.0,
+      "ending_invested_capital": 30321000000.0,
+      "avg_invested_capital": 30497000000.0,
+      "roic": 0.0422
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2026-03-31",
+      "ebit": 1855000000.0,
+      "tax_rate_for_calcs": 0.1,
+      "nopat": 1669500000.0,
+      "beginning_invested_capital": 30321000000.0,
+      "ending_invested_capital": 30828000000.0,
+      "avg_invested_capital": 30574500000.0,
+      "roic": 0.0546
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "TXN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.1044,
+      "roa": 0.0543,
+      "equity_multiplier": 1.92
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0814,
+      "roa": 0.0426,
+      "equity_multiplier": 1.91
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0652,
+      "roa": 0.0329,
+      "equity_multiplier": 1.98
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0656,
+      "roa": 0.0321,
+      "equity_multiplier": 2.04
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0786,
+      "roa": 0.0385,
+      "equity_multiplier": 2.04
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0702,
+      "roa": 0.0339,
+      "equity_multiplier": 2.07
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0708,
+      "roa": 0.034,
+      "equity_multiplier": 2.08
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0785,
+      "roa": 0.0375,
+      "equity_multiplier": 2.09
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0821,
+      "roa": 0.0388,
+      "equity_multiplier": 2.12
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0703,
+      "roa": 0.0332,
+      "equity_multiplier": 2.12
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0935,
+      "roa": 0.0448,
+      "equity_multiplier": 2.09
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "TXN",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0543,
+      "net_margin": 0.3751,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0426,
+      "net_margin": 0.3346,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0329,
+      "net_margin": 0.3018,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0321,
+      "net_margin": 0.2933,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0385,
+      "net_margin": 0.3264,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0339,
+      "net_margin": 0.2992,
+      "asset_turnover": 0.11
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.034,
+      "net_margin": 0.2898,
+      "asset_turnover": 0.12
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0375,
+      "net_margin": 0.2896,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0388,
+      "net_margin": 0.286,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0332,
+      "net_margin": 0.2614,
+      "asset_turnover": 0.13
+    },
+    {
+      "symbol": "TXN",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0448,
+      "net_margin": 0.3202,
+      "asset_turnover": 0.14
+    }
+  ]
+}

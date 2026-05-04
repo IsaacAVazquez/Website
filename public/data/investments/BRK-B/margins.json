@@ -1,0 +1,722 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-06-30",
+      "gross_profit": null,
+      "total_revenue": 125564000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30",
+      "gross_profit": null,
+      "total_revenue": 63432000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 130190000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31",
+      "gross_profit": null,
+      "total_revenue": 91745000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30",
+      "gross_profit": null,
+      "total_revenue": 117510000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30",
+      "gross_profit": null,
+      "total_revenue": 113509000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 101468000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31",
+      "gross_profit": null,
+      "total_revenue": 83290000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30",
+      "gross_profit": null,
+      "total_revenue": 98879000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 111442000000.0,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2020-12-31",
+      "gross_profit": null,
+      "total_revenue": 286325000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2021-12-31",
+      "gross_profit": null,
+      "total_revenue": 354727000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 234121000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 439337000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 424232000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 410522000000.0,
+      "gross_margin": null
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-06-30",
+      "operating_income": null,
+      "total_revenue": 125564000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30",
+      "operating_income": null,
+      "total_revenue": 63432000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 130190000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31",
+      "operating_income": null,
+      "total_revenue": 91745000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30",
+      "operating_income": null,
+      "total_revenue": 117510000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30",
+      "operating_income": null,
+      "total_revenue": 113509000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 101468000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31",
+      "operating_income": null,
+      "total_revenue": 83290000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30",
+      "operating_income": null,
+      "total_revenue": 98879000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 111442000000.0,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2020-12-31",
+      "operating_income": null,
+      "total_revenue": 286325000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2021-12-31",
+      "operating_income": null,
+      "total_revenue": 354727000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 234121000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 439337000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 424232000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 410522000000.0,
+      "operating_margin": null
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 35912000000.0,
+      "total_revenue": 125564000000.0,
+      "net_margin": 0.286
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": -12767000000.0,
+      "total_revenue": 63432000000.0,
+      "net_margin": -0.2013
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 37574000000.0,
+      "total_revenue": 130190000000.0,
+      "net_margin": 0.2886
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 12702000000.0,
+      "total_revenue": 91745000000.0,
+      "net_margin": 0.1384
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 30348000000.0,
+      "total_revenue": 117510000000.0,
+      "net_margin": 0.2583
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 26251000000.0,
+      "total_revenue": 113509000000.0,
+      "net_margin": 0.2313
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 19694000000.0,
+      "total_revenue": 101468000000.0,
+      "net_margin": 0.1941
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 4603000000.0,
+      "total_revenue": 83290000000.0,
+      "net_margin": 0.0553
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 12370000000.0,
+      "total_revenue": 98879000000.0,
+      "net_margin": 0.1251
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 19199000000.0,
+      "total_revenue": 111442000000.0,
+      "net_margin": 0.1723
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 42521000000.0,
+      "total_revenue": 286325000000.0,
+      "net_margin": 0.1485
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 89937000000.0,
+      "total_revenue": 354727000000.0,
+      "net_margin": 0.2535
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": -22759000000.0,
+      "total_revenue": 234121000000.0,
+      "net_margin": -0.0972
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 96223000000.0,
+      "total_revenue": 439337000000.0,
+      "net_margin": 0.219
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 88995000000.0,
+      "total_revenue": 424232000000.0,
+      "net_margin": 0.2098
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 66968000000.0,
+      "total_revenue": 410522000000.0,
+      "net_margin": 0.1631
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-06-30",
+      "ebitda": null,
+      "total_revenue": 125564000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30",
+      "ebitda": null,
+      "total_revenue": 63432000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 130190000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31",
+      "ebitda": null,
+      "total_revenue": 91745000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30",
+      "ebitda": null,
+      "total_revenue": 117510000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30",
+      "ebitda": null,
+      "total_revenue": 113509000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 101468000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31",
+      "ebitda": null,
+      "total_revenue": 83290000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30",
+      "ebitda": null,
+      "total_revenue": 98879000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 111442000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2020-12-31",
+      "ebitda": null,
+      "total_revenue": 286325000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2021-12-31",
+      "ebitda": null,
+      "total_revenue": 354727000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 234121000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 439337000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 424232000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 410522000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 7749000000.0,
+      "total_revenue": 125564000000.0,
+      "fcf_margin": 0.0617
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 8366000000.0,
+      "total_revenue": 63432000000.0,
+      "fcf_margin": 0.1319
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 8692000000.0,
+      "total_revenue": 130190000000.0,
+      "fcf_margin": 0.0668
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 6173000000.0,
+      "total_revenue": 91745000000.0,
+      "fcf_margin": 0.0673
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 9067000000.0,
+      "total_revenue": 117510000000.0,
+      "fcf_margin": 0.0772
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-09-30",
+      "free_cash_flow": -2898000000.0,
+      "total_revenue": 113509000000.0,
+      "fcf_margin": -0.0255
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "free_cash_flow": -726000000.0,
+      "total_revenue": 101468000000.0,
+      "fcf_margin": -0.0072
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 6622000000.0,
+      "total_revenue": 83290000000.0,
+      "fcf_margin": 0.0795
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 5227000000.0,
+      "total_revenue": 98879000000.0,
+      "fcf_margin": 0.0529
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 4990000000.0,
+      "total_revenue": 111442000000.0,
+      "fcf_margin": 0.0448
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "BRK-B",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 26761000000.0,
+      "total_revenue": 286325000000.0,
+      "fcf_margin": 0.0935
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 26151000000.0,
+      "total_revenue": 354727000000.0,
+      "fcf_margin": 0.0737
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 21886000000.0,
+      "total_revenue": 234121000000.0,
+      "fcf_margin": 0.0935
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 29787000000.0,
+      "total_revenue": 439337000000.0,
+      "fcf_margin": 0.0678
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 11616000000.0,
+      "total_revenue": 424232000000.0,
+      "fcf_margin": 0.0274
+    },
+    {
+      "symbol": "BRK-B",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 25042000000.0,
+      "total_revenue": 410522000000.0,
+      "fcf_margin": 0.061
+    }
+  ]
+}

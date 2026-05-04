@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 2004000000.0,
+      "beginning_stockholders_equity": 15093000000.0,
+      "ending_stockholders_equity": 16349000000.0,
+      "avg_equity": 15721000000.0,
+      "roe": 0.1275
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 2019000000.0,
+      "beginning_stockholders_equity": 16349000000.0,
+      "ending_stockholders_equity": 17429000000.0,
+      "avg_equity": 16889000000.0,
+      "roe": 0.1195
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 1722000000.0,
+      "beginning_stockholders_equity": 17429000000.0,
+      "ending_stockholders_equity": 18199000000.0,
+      "avg_equity": 17814000000.0,
+      "roe": 0.0967
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 1705000000.0,
+      "beginning_stockholders_equity": 18199000000.0,
+      "ending_stockholders_equity": 18840000000.0,
+      "avg_equity": 18519500000.0,
+      "roe": 0.0921
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 1731000000.0,
+      "beginning_stockholders_equity": 18840000000.0,
+      "ending_stockholders_equity": 19001000000.0,
+      "avg_equity": 18920500000.0,
+      "roe": 0.0915
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 1185000000.0,
+      "beginning_stockholders_equity": 19001000000.0,
+      "ending_stockholders_equity": 18625000000.0,
+      "avg_equity": 18813000000.0,
+      "roe": 0.063
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 2137000000.0,
+      "beginning_stockholders_equity": 18625000000.0,
+      "ending_stockholders_equity": 18961000000.0,
+      "avg_equity": 18793000000.0,
+      "roe": 0.1137
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 1779000000.0,
+      "beginning_stockholders_equity": 18961000000.0,
+      "ending_stockholders_equity": 19504000000.0,
+      "avg_equity": 19232500000.0,
+      "roe": 0.0925
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 1897000000.0,
+      "beginning_stockholders_equity": 19504000000.0,
+      "ending_stockholders_equity": 20415000000.0,
+      "avg_equity": 19959500000.0,
+      "roe": 0.095
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 2026000000.0,
+      "beginning_stockholders_equity": 20415000000.0,
+      "ending_stockholders_equity": 21717000000.0,
+      "avg_equity": 21066000000.0,
+      "roe": 0.0962
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 2004000000.0,
+      "beginning_total_assets": 30410000000.0,
+      "ending_total_assets": 30729000000.0,
+      "avg_assets": 30569500000.0,
+      "roa": 0.0656
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 2019000000.0,
+      "beginning_total_assets": 30729000000.0,
+      "ending_total_assets": 31540000000.0,
+      "avg_assets": 31134500000.0,
+      "roa": 0.0648
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 1722000000.0,
+      "beginning_total_assets": 31540000000.0,
+      "ending_total_assets": 31949000000.0,
+      "avg_assets": 31744500000.0,
+      "roa": 0.0542
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 1705000000.0,
+      "beginning_total_assets": 31949000000.0,
+      "ending_total_assets": 33647000000.0,
+      "avg_assets": 32798000000.0,
+      "roa": 0.052
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 1731000000.0,
+      "beginning_total_assets": 33647000000.0,
+      "ending_total_assets": 34409000000.0,
+      "avg_assets": 34028000000.0,
+      "roa": 0.0509
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 1185000000.0,
+      "beginning_total_assets": 34409000000.0,
+      "ending_total_assets": 33338000000.0,
+      "avg_assets": 33873500000.0,
+      "roa": 0.035
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 2137000000.0,
+      "beginning_total_assets": 33338000000.0,
+      "ending_total_assets": 33632000000.0,
+      "avg_assets": 33485000000.0,
+      "roa": 0.0638
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 1779000000.0,
+      "beginning_total_assets": 33632000000.0,
+      "ending_total_assets": 34211000000.0,
+      "avg_assets": 33921500000.0,
+      "roa": 0.0524
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 1897000000.0,
+      "beginning_total_assets": 34211000000.0,
+      "ending_total_assets": 36299000000.0,
+      "avg_assets": 35255000000.0,
+      "roa": 0.0538
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 2026000000.0,
+      "beginning_total_assets": 36299000000.0,
+      "ending_total_assets": 37644000000.0,
+      "avg_assets": 36971500000.0,
+      "roa": 0.0548
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31",
+      "ebit": 2230000000.0,
+      "tax_rate_for_calcs": 0.08,
+      "nopat": 2051600000.0,
+      "beginning_invested_capital": 20752000000.0,
+      "ending_invested_capital": 21910000000.0,
+      "avg_invested_capital": 21331000000.0,
+      "roic": 0.0962
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31",
+      "ebit": 2362000000.0,
+      "tax_rate_for_calcs": 0.12,
+      "nopat": 2078560000.0,
+      "beginning_invested_capital": 21910000000.0,
+      "ending_invested_capital": 22991000000.0,
+      "avg_invested_capital": 22450500000.0,
+      "roic": 0.0926
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30",
+      "ebit": 2053000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 1765580000.0,
+      "beginning_invested_capital": 22991000000.0,
+      "ending_invested_capital": 23761000000.0,
+      "avg_invested_capital": 23376000000.0,
+      "roic": 0.0755
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31",
+      "ebit": 2023000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 1760010000.0,
+      "beginning_invested_capital": 23761000000.0,
+      "ending_invested_capital": 25097000000.0,
+      "avg_invested_capital": 24429000000.0,
+      "roic": 0.072
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31",
+      "ebit": 1961000000.0,
+      "tax_rate_for_calcs": 0.09,
+      "nopat": 1784510000.0,
+      "beginning_invested_capital": 25097000000.0,
+      "ending_invested_capital": 25261000000.0,
+      "avg_invested_capital": 25179000000.0,
+      "roic": 0.0709
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31",
+      "ebit": 2183000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1724570000.0,
+      "beginning_invested_capital": 25261000000.0,
+      "ending_invested_capital": 24885000000.0,
+      "avg_invested_capital": 25073000000.0,
+      "roic": 0.0688
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30",
+      "ebit": 2390000000.0,
+      "tax_rate_for_calcs": 0.08,
+      "nopat": 2198800000.0,
+      "beginning_invested_capital": 24885000000.0,
+      "ending_invested_capital": 25222000000.0,
+      "avg_invested_capital": 25053500000.0,
+      "roic": 0.0878
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31",
+      "ebit": 2629000000.0,
+      "tax_rate_for_calcs": 0.31,
+      "nopat": 1814010000.0,
+      "beginning_invested_capital": 25222000000.0,
+      "ending_invested_capital": 25767000000.0,
+      "avg_invested_capital": 25494500000.0,
+      "roic": 0.0712
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31",
+      "ebit": 2338000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 1963920000.0,
+      "beginning_invested_capital": 25767000000.0,
+      "ending_invested_capital": 26970000000.0,
+      "avg_invested_capital": 26368500000.0,
+      "roic": 0.0745
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31",
+      "ebit": 2397000000.0,
+      "tax_rate_for_calcs": 0.13,
+      "nopat": 2085390000.0,
+      "beginning_invested_capital": 26970000000.0,
+      "ending_invested_capital": 28270000000.0,
+      "avg_invested_capital": 27620000000.0,
+      "roic": 0.0755
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roe": 0.1275,
+      "roa": 0.0656,
+      "equity_multiplier": 1.94
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roe": 0.1195,
+      "roa": 0.0648,
+      "equity_multiplier": 1.84
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roe": 0.0967,
+      "roa": 0.0542,
+      "equity_multiplier": 1.78
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roe": 0.0921,
+      "roa": 0.052,
+      "equity_multiplier": 1.77
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roe": 0.0915,
+      "roa": 0.0509,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roe": 0.063,
+      "roa": 0.035,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roe": 0.1137,
+      "roa": 0.0638,
+      "equity_multiplier": 1.78
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roe": 0.0925,
+      "roa": 0.0524,
+      "equity_multiplier": 1.77
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roe": 0.095,
+      "roa": 0.0538,
+      "equity_multiplier": 1.77
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roe": 0.0962,
+      "roa": 0.0548,
+      "equity_multiplier": 1.76
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "AMAT",
+      "report_date": "2023-10-31T00:00:00.000",
+      "roa": 0.0656,
+      "net_margin": 0.2981,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-01-31T00:00:00.000",
+      "roa": 0.0648,
+      "net_margin": 0.301,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-04-30T00:00:00.000",
+      "roa": 0.0542,
+      "net_margin": 0.2591,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-07-31T00:00:00.000",
+      "roa": 0.052,
+      "net_margin": 0.2515,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2024-10-31T00:00:00.000",
+      "roa": 0.0509,
+      "net_margin": 0.2457,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-01-31T00:00:00.000",
+      "roa": 0.035,
+      "net_margin": 0.1654,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-04-30T00:00:00.000",
+      "roa": 0.0638,
+      "net_margin": 0.301,
+      "asset_turnover": 0.21
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-07-31T00:00:00.000",
+      "roa": 0.0524,
+      "net_margin": 0.2436,
+      "asset_turnover": 0.22
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2025-10-31T00:00:00.000",
+      "roa": 0.0538,
+      "net_margin": 0.279,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "AMAT",
+      "report_date": "2026-01-31T00:00:00.000",
+      "roa": 0.0548,
+      "net_margin": 0.2889,
+      "asset_turnover": 0.19
+    }
+  ]
+}

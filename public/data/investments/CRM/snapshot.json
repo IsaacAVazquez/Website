@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.81,
-      "ttmPe": 22.81,
-      "marketCap": 164441680000,
-      "psRatio": 3.96,
-      "pbRatio": 2.78,
-      "pegRatio": 1.25
+      "ttmPe": 23.54,
+      "marketCap": 169665860000,
+      "psRatio": 4.09,
+      "pbRatio": 2.87,
+      "pegRatio": 1.29
     },
     "profitability": {
       "roe": 3.26,
@@ -5135,49 +5135,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.1424
+      "beta5y": 1.1189
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 258.2,
-        "high": 264.98,
-        "low": 257,
-        "close": 264.7,
-        "volume": 7857600
-      },
-      {
-        "date": "2025-04-25",
-        "open": 264.72,
-        "high": 269.03,
-        "low": 264.2,
-        "close": 267.85,
-        "volume": 5651700
-      },
-      {
-        "date": "2025-04-28",
-        "open": 268.15,
-        "high": 269.5,
-        "low": 263.33,
-        "close": 265.64,
-        "volume": 4977700
-      },
-      {
-        "date": "2025-04-29",
-        "open": 265.4,
-        "high": 268.58,
-        "low": 265.17,
-        "close": 267.76,
-        "volume": 3139800
-      },
-      {
-        "date": "2025-04-30",
-        "open": 264.8,
-        "high": 268.87,
-        "low": 263,
-        "close": 268.71,
-        "volume": 4624100
-      },
       {
         "date": "2025-05-01",
         "open": 273.4,
@@ -7152,7 +7112,47 @@
         "high": 178.45,
         "low": 174.4,
         "close": 178.16,
-        "volume": 10807300
+        "volume": 10817600
+      },
+      {
+        "date": "2026-04-27",
+        "open": 178.26,
+        "high": 184.29,
+        "low": 177.51,
+        "close": 180.18,
+        "volume": 11907000
+      },
+      {
+        "date": "2026-04-28",
+        "open": 182.43,
+        "high": 184.42,
+        "low": 181.32,
+        "close": 181.32,
+        "volume": 8711700
+      },
+      {
+        "date": "2026-04-29",
+        "open": 179.2,
+        "high": 181.78,
+        "low": 177.35,
+        "close": 181.22,
+        "volume": 6882800
+      },
+      {
+        "date": "2026-04-30",
+        "open": 178.3,
+        "high": 178.69,
+        "low": 173,
+        "close": 176.53,
+        "volume": 14408300
+      },
+      {
+        "date": "2026-05-01",
+        "open": 182.19,
+        "high": 186.04,
+        "low": 178.75,
+        "close": 183.82,
+        "volume": 12319400
       }
     ],
     "news": [
@@ -7189,19 +7189,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
-        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
         "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
         "type": "STORY"
       },
       {
@@ -7304,43 +7304,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.81,
-        "industryAvg": 24.88
+        "value": 23.54,
+        "industryAvg": 25.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.96,
-        "industryAvg": 4.39
+        "value": 4.09,
+        "industryAvg": 4.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.78,
-        "industryAvg": 4.33
+        "value": 2.87,
+        "industryAvg": 4.38
       },
       {
         "metric": "ROE",
         "value": 3.26,
-        "industryAvg": 6.08
+        "industryAvg": 6.15
       },
       {
         "metric": "ROA",
         "value": 1.87,
-        "industryAvg": 3.3000000000000003
+        "industryAvg": 3.35
       },
       {
         "metric": "Gross Margin",
         "value": 77.61,
-        "industryAvg": 63.27
+        "industryAvg": 63.23
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.24,
-        "industryAvg": 14.899999999999999
+        "industryAvg": 15.1
       },
       {
         "metric": "Net Margin",
         "value": 17.349999999999998,
-        "industryAvg": 7.779999999999999
+        "industryAvg": 7.84
       }
     ]
   }

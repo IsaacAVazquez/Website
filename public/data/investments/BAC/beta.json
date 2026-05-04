@@ -1,0 +1,9 @@
+[
+  {
+    "symbol": "BAC",
+    "report_date": "2026-05-01",
+    "beta": 1.2222,
+    "period": "5y",
+    "benchmark": "SPY"
+  }
+]

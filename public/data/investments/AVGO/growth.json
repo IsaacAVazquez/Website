@@ -1,0 +1,1256 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30T00:00:00.000",
+      "revenue": 8103000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31T00:00:00.000",
+      "revenue": 8464000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31T00:00:00.000",
+      "revenue": 8876000000.0,
+      "prev_year_revenue": 8464000000.0,
+      "yoy_growth": 0.0487
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "revenue": 9295000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31T00:00:00.000",
+      "revenue": 11961000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30T00:00:00.000",
+      "revenue": 12487000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31T00:00:00.000",
+      "revenue": 13072000000.0,
+      "prev_year_revenue": 8876000000.0,
+      "yoy_growth": 0.4727
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "revenue": 14054000000.0,
+      "prev_year_revenue": 9295000000.0,
+      "yoy_growth": 0.512
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31T00:00:00.000",
+      "revenue": 14916000000.0,
+      "prev_year_revenue": 11961000000.0,
+      "yoy_growth": 0.2471
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30T00:00:00.000",
+      "revenue": 15004000000.0,
+      "prev_year_revenue": 12487000000.0,
+      "yoy_growth": 0.2016
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31T00:00:00.000",
+      "revenue": 15952000000.0,
+      "prev_year_revenue": 13072000000.0,
+      "yoy_growth": 0.2203
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "revenue": 18015000000.0,
+      "prev_year_revenue": 14054000000.0,
+      "yoy_growth": 0.2818
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31T00:00:00.000",
+      "revenue": 19311000000.0,
+      "prev_year_revenue": 14916000000.0,
+      "yoy_growth": 0.2947
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31T00:00:00.000",
+      "revenue": 23888000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31T00:00:00.000",
+      "revenue": 27450000000.0,
+      "prev_year_revenue": 23888000000.0,
+      "yoy_growth": 0.1491
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31T00:00:00.000",
+      "revenue": 33203000000.0,
+      "prev_year_revenue": 27450000000.0,
+      "yoy_growth": 0.2096
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "revenue": 35819000000.0,
+      "prev_year_revenue": 33203000000.0,
+      "yoy_growth": 0.0788
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "revenue": 51574000000.0,
+      "prev_year_revenue": 35819000000.0,
+      "yoy_growth": 0.4399
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "revenue": 63887000000.0,
+      "prev_year_revenue": 51574000000.0,
+      "yoy_growth": 0.2387
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30T00:00:00.000",
+      "operating_income": 3412000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31T00:00:00.000",
+      "operating_income": 3744000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31T00:00:00.000",
+      "operating_income": 4068000000.0,
+      "prev_year_operating_income": 3744000000.0,
+      "yoy_growth": 0.0865
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "operating_income": 4253000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31T00:00:00.000",
+      "operating_income": 2703000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30T00:00:00.000",
+      "operating_income": 3257000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31T00:00:00.000",
+      "operating_income": 4091000000.0,
+      "prev_year_operating_income": 4068000000.0,
+      "yoy_growth": 0.0057
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "operating_income": 4945000000.0,
+      "prev_year_operating_income": 4253000000.0,
+      "yoy_growth": 0.1627
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31T00:00:00.000",
+      "operating_income": 6432000000.0,
+      "prev_year_operating_income": 2703000000.0,
+      "yoy_growth": 1.3796
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30T00:00:00.000",
+      "operating_income": 5915000000.0,
+      "prev_year_operating_income": 3257000000.0,
+      "yoy_growth": 0.8161
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31T00:00:00.000",
+      "operating_income": 6074000000.0,
+      "prev_year_operating_income": 4091000000.0,
+      "yoy_growth": 0.4847
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "operating_income": 7654000000.0,
+      "prev_year_operating_income": 4945000000.0,
+      "yoy_growth": 0.5478
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31T00:00:00.000",
+      "operating_income": 8666000000.0,
+      "prev_year_operating_income": 6432000000.0,
+      "yoy_growth": 0.3473
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31T00:00:00.000",
+      "operating_income": 4212000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31T00:00:00.000",
+      "operating_income": 8667000000.0,
+      "prev_year_operating_income": 4212000000.0,
+      "yoy_growth": 1.0577
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31T00:00:00.000",
+      "operating_income": 14282000000.0,
+      "prev_year_operating_income": 8667000000.0,
+      "yoy_growth": 0.6479
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "operating_income": 16451000000.0,
+      "prev_year_operating_income": 14282000000.0,
+      "yoy_growth": 0.1519
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "operating_income": 14996000000.0,
+      "prev_year_operating_income": 16451000000.0,
+      "yoy_growth": -0.0884
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "operating_income": 26075000000.0,
+      "prev_year_operating_income": 14996000000.0,
+      "yoy_growth": 0.7388
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31T00:00:00.000",
+      "ebitda": 4960000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31T00:00:00.000",
+      "ebitda": 4912000000.0,
+      "prev_year_ebitda": 4960000000.0,
+      "yoy_growth": -0.0097
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "ebitda": 5304000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31T00:00:00.000",
+      "ebitda": 4613000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30T00:00:00.000",
+      "ebitda": 5582000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31T00:00:00.000",
+      "ebitda": 6394000000.0,
+      "prev_year_ebitda": 4912000000.0,
+      "yoy_growth": 0.3017
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "ebitda": 7290000000.0,
+      "prev_year_ebitda": 5304000000.0,
+      "yoy_growth": 0.3744
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31T00:00:00.000",
+      "ebitda": 8537000000.0,
+      "prev_year_ebitda": 4613000000.0,
+      "yoy_growth": 0.8506
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30T00:00:00.000",
+      "ebitda": 8020000000.0,
+      "prev_year_ebitda": 5582000000.0,
+      "yoy_growth": 0.4368
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31T00:00:00.000",
+      "ebitda": 8294000000.0,
+      "prev_year_ebitda": 6394000000.0,
+      "yoy_growth": 0.2972
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "ebitda": 9863000000.0,
+      "prev_year_ebitda": 7290000000.0,
+      "yoy_growth": 0.3529
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31T00:00:00.000",
+      "ebitda": 11149000000.0,
+      "prev_year_ebitda": 8537000000.0,
+      "yoy_growth": 0.306
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31T00:00:00.000",
+      "ebitda": 11125000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31T00:00:00.000",
+      "ebitda": 14691000000.0,
+      "prev_year_ebitda": 11125000000.0,
+      "yoy_growth": 0.3205
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31T00:00:00.000",
+      "ebitda": 19155000000.0,
+      "prev_year_ebitda": 14691000000.0,
+      "yoy_growth": 0.3039
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "ebitda": 20554000000.0,
+      "prev_year_ebitda": 19155000000.0,
+      "yoy_growth": 0.073
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "ebitda": 23879000000.0,
+      "prev_year_ebitda": 20554000000.0,
+      "yoy_growth": 0.1618
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "ebitda": 34714000000.0,
+      "prev_year_ebitda": 23879000000.0,
+      "yoy_growth": 0.4537
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30T00:00:00.000",
+      "net_income_common_stockholders": 2515000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31T00:00:00.000",
+      "net_income_common_stockholders": 2999000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31T00:00:00.000",
+      "net_income_common_stockholders": 3303000000.0,
+      "prev_year_net_income_common_stockholders": 2999000000.0,
+      "yoy_growth": 0.1014
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "net_income_common_stockholders": 3524000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31T00:00:00.000",
+      "net_income_common_stockholders": 1325000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30T00:00:00.000",
+      "net_income_common_stockholders": 2121000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31T00:00:00.000",
+      "net_income_common_stockholders": -1875000000.0,
+      "prev_year_net_income_common_stockholders": 3303000000.0,
+      "yoy_growth": -1.5677
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "net_income_common_stockholders": 4324000000.0,
+      "prev_year_net_income_common_stockholders": 3524000000.0,
+      "yoy_growth": 0.227
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31T00:00:00.000",
+      "net_income_common_stockholders": 5503000000.0,
+      "prev_year_net_income_common_stockholders": 1325000000.0,
+      "yoy_growth": 3.1532
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30T00:00:00.000",
+      "net_income_common_stockholders": 4965000000.0,
+      "prev_year_net_income_common_stockholders": 2121000000.0,
+      "yoy_growth": 1.3409
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31T00:00:00.000",
+      "net_income_common_stockholders": 4140000000.0,
+      "prev_year_net_income_common_stockholders": -1875000000.0,
+      "yoy_growth": 3.208
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "net_income_common_stockholders": 8518000000.0,
+      "prev_year_net_income_common_stockholders": 4324000000.0,
+      "yoy_growth": 0.9699
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31T00:00:00.000",
+      "net_income_common_stockholders": 7349000000.0,
+      "prev_year_net_income_common_stockholders": 5503000000.0,
+      "yoy_growth": 0.3355
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31T00:00:00.000",
+      "net_income_common_stockholders": 2663000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31T00:00:00.000",
+      "net_income_common_stockholders": 6437000000.0,
+      "prev_year_net_income_common_stockholders": 2663000000.0,
+      "yoy_growth": 1.4172
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31T00:00:00.000",
+      "net_income_common_stockholders": 11223000000.0,
+      "prev_year_net_income_common_stockholders": 6437000000.0,
+      "yoy_growth": 0.7435
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "net_income_common_stockholders": 14082000000.0,
+      "prev_year_net_income_common_stockholders": 11223000000.0,
+      "yoy_growth": 0.2547
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "net_income_common_stockholders": 5895000000.0,
+      "prev_year_net_income_common_stockholders": 14082000000.0,
+      "yoy_growth": -0.5814
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "net_income_common_stockholders": 23126000000.0,
+      "prev_year_net_income_common_stockholders": 5895000000.0,
+      "yoy_growth": 2.923
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30T00:00:00.000",
+      "free_cash_flow": 4158000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31T00:00:00.000",
+      "free_cash_flow": 4308000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-04-30T00:00:00.000",
+      "free_cash_flow": 4380000000.0,
+      "prev_year_free_cash_flow": 4158000000.0,
+      "yoy_growth": 0.0534
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31T00:00:00.000",
+      "free_cash_flow": 4597000000.0,
+      "prev_year_free_cash_flow": 4308000000.0,
+      "yoy_growth": 0.0671
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "free_cash_flow": 4723000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31T00:00:00.000",
+      "free_cash_flow": 4693000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30T00:00:00.000",
+      "free_cash_flow": 4448000000.0,
+      "prev_year_free_cash_flow": 4380000000.0,
+      "yoy_growth": 0.0155
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31T00:00:00.000",
+      "free_cash_flow": 4791000000.0,
+      "prev_year_free_cash_flow": 4597000000.0,
+      "yoy_growth": 0.0422
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "free_cash_flow": 5482000000.0,
+      "prev_year_free_cash_flow": 4723000000.0,
+      "yoy_growth": 0.1607
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31T00:00:00.000",
+      "free_cash_flow": 6013000000.0,
+      "prev_year_free_cash_flow": 4693000000.0,
+      "yoy_growth": 0.2813
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30T00:00:00.000",
+      "free_cash_flow": 6411000000.0,
+      "prev_year_free_cash_flow": 4448000000.0,
+      "yoy_growth": 0.4413
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31T00:00:00.000",
+      "free_cash_flow": 7024000000.0,
+      "prev_year_free_cash_flow": 4791000000.0,
+      "yoy_growth": 0.4661
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "free_cash_flow": 7466000000.0,
+      "prev_year_free_cash_flow": 5482000000.0,
+      "yoy_growth": 0.3619
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31T00:00:00.000",
+      "free_cash_flow": 8010000000.0,
+      "prev_year_free_cash_flow": 6013000000.0,
+      "yoy_growth": 0.3321
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31T00:00:00.000",
+      "free_cash_flow": 11598000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31T00:00:00.000",
+      "free_cash_flow": 13321000000.0,
+      "prev_year_free_cash_flow": 11598000000.0,
+      "yoy_growth": 0.1486
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31T00:00:00.000",
+      "free_cash_flow": 16312000000.0,
+      "prev_year_free_cash_flow": 13321000000.0,
+      "yoy_growth": 0.2245
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "free_cash_flow": 17633000000.0,
+      "prev_year_free_cash_flow": 16312000000.0,
+      "yoy_growth": 0.081
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "free_cash_flow": 19414000000.0,
+      "prev_year_free_cash_flow": 17633000000.0,
+      "yoy_growth": 0.101
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "free_cash_flow": 26914000000.0,
+      "prev_year_free_cash_flow": 19414000000.0,
+      "yoy_growth": 0.3863
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2006-01-31T00:00:00.000",
+      "eps": -0.04,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2006-04-30T00:00:00.000",
+      "eps": -0.02,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2006-07-31T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2006-10-31T00:00:00.000",
+      "eps": -0.03,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2007-01-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": -0.04,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2007-04-30T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": -0.02,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2007-07-31T00:00:00.000",
+      "eps": -0.07,
+      "prev_year_eps": -0.01,
+      "yoy_growth": -6.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2007-10-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": -0.03,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2008-01-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2008-04-30T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2008-07-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": -0.07,
+      "yoy_growth": 1.2857
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2008-10-31T00:00:00.000",
+      "eps": 0.01,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2009-01-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.0,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2009-04-30T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": 0.01,
+      "yoy_growth": -2.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2009-07-31T00:00:00.000",
+      "eps": 0.0,
+      "prev_year_eps": 0.02,
+      "yoy_growth": -1.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2009-10-31T00:00:00.000",
+      "eps": -0.01,
+      "prev_year_eps": 0.01,
+      "yoy_growth": -2.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2010-01-31T00:00:00.000",
+      "eps": 0.02,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2010-04-30T00:00:00.000",
+      "eps": 0.04,
+      "prev_year_eps": -0.01,
+      "yoy_growth": 5.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2010-07-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.0,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2010-10-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": -0.01,
+      "yoy_growth": 8.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2011-01-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.02,
+      "yoy_growth": 1.5
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2011-04-30T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.04,
+      "yoy_growth": 0.25
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2011-07-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.2
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2011-10-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.07,
+      "yoy_growth": -0.1429
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2012-01-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2012-04-30T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2012-07-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2012-10-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2013-01-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2013-04-30T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2013-07-31T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2013-10-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 0.1667
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2014-01-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2014-04-30T00:00:00.000",
+      "eps": 0.06,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 0.2
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2014-07-31T00:00:00.000",
+      "eps": -0.07,
+      "prev_year_eps": 0.06,
+      "yoy_growth": -2.1667
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2014-10-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.07,
+      "yoy_growth": -0.2857
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2015-01-31T00:00:00.000",
+      "eps": 0.12,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 1.4
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2015-04-30T00:00:00.000",
+      "eps": 0.12,
+      "prev_year_eps": 0.06,
+      "yoy_growth": 1.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2015-07-31T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": -0.07,
+      "yoy_growth": 2.1429
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2015-10-31T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 2.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2016-01-31T00:00:00.000",
+      "eps": 0.13,
+      "prev_year_eps": 0.12,
+      "yoy_growth": 0.0833
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2016-04-30T00:00:00.000",
+      "eps": -0.3,
+      "prev_year_eps": 0.12,
+      "yoy_growth": -3.5
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2016-07-31T00:00:00.000",
+      "eps": -0.08,
+      "prev_year_eps": 0.08,
+      "yoy_growth": -2.0
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2016-10-31T00:00:00.000",
+      "eps": -0.16,
+      "prev_year_eps": 0.15,
+      "yoy_growth": -2.0667
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2017-01-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": 0.13,
+      "yoy_growth": -0.6154
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2017-04-30T00:00:00.000",
+      "eps": 0.1,
+      "prev_year_eps": -0.3,
+      "yoy_growth": 1.3333
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2017-07-31T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": -0.08,
+      "yoy_growth": 2.375
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2017-10-31T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": -0.16,
+      "yoy_growth": 1.9375
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2018-01-31T00:00:00.000",
+      "eps": 1.46,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 28.2
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2018-04-30T00:00:00.000",
+      "eps": 0.83,
+      "prev_year_eps": 0.1,
+      "yoy_growth": 7.3
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2018-07-31T00:00:00.000",
+      "eps": 0.27,
+      "prev_year_eps": 0.11,
+      "yoy_growth": 1.4545
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2018-10-31T00:00:00.000",
+      "eps": 0.26,
+      "prev_year_eps": 0.15,
+      "yoy_growth": 0.7333
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-01-31T00:00:00.000",
+      "eps": 0.11,
+      "prev_year_eps": 1.46,
+      "yoy_growth": -0.9247
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-04-30T00:00:00.000",
+      "eps": 0.16,
+      "prev_year_eps": 0.83,
+      "yoy_growth": -0.8072
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-07-31T00:00:00.000",
+      "eps": 0.17,
+      "prev_year_eps": 0.27,
+      "yoy_growth": -0.3704
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-10-31T00:00:00.000",
+      "eps": 0.2,
+      "prev_year_eps": 0.26,
+      "yoy_growth": -0.2308
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-01-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": 0.11,
+      "yoy_growth": -0.3636
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-04-30T00:00:00.000",
+      "eps": 0.12,
+      "prev_year_eps": 0.16,
+      "yoy_growth": -0.25
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-07-31T00:00:00.000",
+      "eps": 0.15,
+      "prev_year_eps": 0.17,
+      "yoy_growth": -0.1176
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31T00:00:00.000",
+      "eps": 0.29,
+      "prev_year_eps": 0.2,
+      "yoy_growth": 0.45
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-01-31T00:00:00.000",
+      "eps": 0.3,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 3.2857
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-04-30T00:00:00.000",
+      "eps": 0.33,
+      "prev_year_eps": 0.12,
+      "yoy_growth": 1.75
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-07-31T00:00:00.000",
+      "eps": 0.42,
+      "prev_year_eps": 0.15,
+      "yoy_growth": 1.8
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31T00:00:00.000",
+      "eps": 0.45,
+      "prev_year_eps": 0.29,
+      "yoy_growth": 0.5517
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-01-31T00:00:00.000",
+      "eps": 0.56,
+      "prev_year_eps": 0.3,
+      "yoy_growth": 0.8667
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30T00:00:00.000",
+      "eps": 0.59,
+      "prev_year_eps": 0.33,
+      "yoy_growth": 0.7879
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31T00:00:00.000",
+      "eps": 0.7,
+      "prev_year_eps": 0.42,
+      "yoy_growth": 0.6667
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31T00:00:00.000",
+      "eps": 0.77,
+      "prev_year_eps": 0.45,
+      "yoy_growth": 0.7111
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-01-31T00:00:00.000",
+      "eps": 0.88,
+      "prev_year_eps": 0.56,
+      "yoy_growth": 0.5714
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-04-30T00:00:00.000",
+      "eps": 0.82,
+      "prev_year_eps": 0.59,
+      "yoy_growth": 0.3898
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31T00:00:00.000",
+      "eps": 0.77,
+      "prev_year_eps": 0.7,
+      "yoy_growth": 0.1
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31T00:00:00.000",
+      "eps": 0.83,
+      "prev_year_eps": 0.77,
+      "yoy_growth": 0.0779
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": 0.88,
+      "yoy_growth": -0.6818
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30T00:00:00.000",
+      "eps": 0.44,
+      "prev_year_eps": 0.82,
+      "yoy_growth": -0.4634
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31T00:00:00.000",
+      "eps": -0.4,
+      "prev_year_eps": 0.77,
+      "yoy_growth": -1.5195
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31T00:00:00.000",
+      "eps": 0.9,
+      "prev_year_eps": 0.83,
+      "yoy_growth": 0.0843
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31T00:00:00.000",
+      "eps": 1.14,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 3.0714
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30T00:00:00.000",
+      "eps": 1.03,
+      "prev_year_eps": 0.44,
+      "yoy_growth": 1.3409
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31T00:00:00.000",
+      "eps": 0.85,
+      "prev_year_eps": -0.4,
+      "yoy_growth": 3.125
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31T00:00:00.000",
+      "eps": 1.74,
+      "prev_year_eps": 0.9,
+      "yoy_growth": 0.9333
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31T00:00:00.000",
+      "eps": 1.5,
+      "prev_year_eps": 1.14,
+      "yoy_growth": 0.3158
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "roe": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 254321000.0,
+      "beginning_stockholders_equity": 2908455000.0,
+      "ending_stockholders_equity": 3113894000.0,
+      "avg_equity": 3011174500.0,
+      "roe": 0.0845
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 323899000.0,
+      "beginning_stockholders_equity": 3113894000.0,
+      "ending_stockholders_equity": 3404271000.0,
+      "avg_equity": 3259082500.0,
+      "roe": 0.0994
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 247643000.0,
+      "beginning_stockholders_equity": 3404271000.0,
+      "ending_stockholders_equity": 3567596000.0,
+      "avg_equity": 3485933500.0,
+      "roe": 0.071
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 229520000.0,
+      "beginning_stockholders_equity": 3567596000.0,
+      "ending_stockholders_equity": 4260892000.0,
+      "avg_equity": 3914244000.0,
+      "roe": 0.0586
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 238111000.0,
+      "beginning_stockholders_equity": 4260892000.0,
+      "ending_stockholders_equity": 4563338000.0,
+      "avg_equity": 4412115000.0,
+      "roe": 0.054
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 340210000.0,
+      "beginning_stockholders_equity": 4563338000.0,
+      "ending_stockholders_equity": 4673578000.0,
+      "avg_equity": 4618458000.0,
+      "roe": 0.0737
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 273579000.0,
+      "beginning_stockholders_equity": 4673578000.0,
+      "ending_stockholders_equity": 4776257000.0,
+      "avg_equity": 4724917500.0,
+      "roe": 0.0579
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 160051000.0,
+      "beginning_stockholders_equity": 4776257000.0,
+      "ending_stockholders_equity": 5006538000.0,
+      "avg_equity": 4891397500.0,
+      "roe": 0.0327
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 287122000.0,
+      "beginning_stockholders_equity": 5006538000.0,
+      "ending_stockholders_equity": 5199002000.0,
+      "avg_equity": 5102770000.0,
+      "roe": 0.0563
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 388136000.0,
+      "beginning_stockholders_equity": 5199002000.0,
+      "ending_stockholders_equity": 5474181000.0,
+      "avg_equity": 5336591500.0,
+      "roe": 0.0727
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 254321000.0,
+      "beginning_total_assets": 5155124000.0,
+      "ending_total_assets": 5431375000.0,
+      "avg_assets": 5293249500.0,
+      "roa": 0.048
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 323899000.0,
+      "beginning_total_assets": 5431375000.0,
+      "ending_total_assets": 5669491000.0,
+      "avg_assets": 5550433000.0,
+      "roa": 0.0584
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 247643000.0,
+      "beginning_total_assets": 5669491000.0,
+      "ending_total_assets": 5722130000.0,
+      "avg_assets": 5695810500.0,
+      "roa": 0.0435
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 229520000.0,
+      "beginning_total_assets": 5722130000.0,
+      "ending_total_assets": 7225741000.0,
+      "avg_assets": 6473935500.0,
+      "roa": 0.0355
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 238111000.0,
+      "beginning_total_assets": 7225741000.0,
+      "ending_total_assets": 9167031000.0,
+      "avg_assets": 8196386000.0,
+      "roa": 0.0291
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 340210000.0,
+      "beginning_total_assets": 9167031000.0,
+      "ending_total_assets": 8974482000.0,
+      "avg_assets": 9070756500.0,
+      "roa": 0.0375
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 273579000.0,
+      "beginning_total_assets": 8974482000.0,
+      "ending_total_assets": 9013486000.0,
+      "avg_assets": 8993984000.0,
+      "roa": 0.0304
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 160051000.0,
+      "beginning_total_assets": 9013486000.0,
+      "ending_total_assets": 9508698000.0,
+      "avg_assets": 9261092000.0,
+      "roa": 0.0173
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 287122000.0,
+      "beginning_total_assets": 9508698000.0,
+      "ending_total_assets": 9599271000.0,
+      "avg_assets": 9553984500.0,
+      "roa": 0.0301
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 388136000.0,
+      "beginning_total_assets": 9599271000.0,
+      "ending_total_assets": 10153148000.0,
+      "avg_assets": 9876209500.0,
+      "roa": 0.0393
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30",
+      "ebit": 309012000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 262660200.0,
+      "beginning_invested_capital": 3557006000.0,
+      "ending_invested_capital": 3762695000.0,
+      "avg_invested_capital": 3659850500.0,
+      "roic": 0.0718
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31",
+      "ebit": 371051000.0,
+      "tax_rate_for_calcs": 0.11,
+      "nopat": 330235390.0,
+      "beginning_invested_capital": 3762695000.0,
+      "ending_invested_capital": 4053327000.0,
+      "avg_invested_capital": 3908011000.0,
+      "roic": 0.0845
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31",
+      "ebit": 318735000.0,
+      "tax_rate_for_calcs": 0.2,
+      "nopat": 254988000.0,
+      "beginning_invested_capital": 4053327000.0,
+      "ending_invested_capital": 4216908000.0,
+      "avg_invested_capital": 4135117500.0,
+      "roic": 0.0617
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30",
+      "ebit": 328615000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 239888950.0,
+      "beginning_invested_capital": 4216908000.0,
+      "ending_invested_capital": 5609559000.0,
+      "avg_invested_capital": 4913233500.0,
+      "roic": 0.0488
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30",
+      "ebit": 357909000.0,
+      "tax_rate_for_calcs": 0.29,
+      "nopat": 254115390.0,
+      "beginning_invested_capital": 5609559000.0,
+      "ending_invested_capital": 7388528000.0,
+      "avg_invested_capital": 6499043500.0,
+      "roic": 0.0391
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31",
+      "ebit": 466559000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 363916020.0,
+      "beginning_invested_capital": 7388528000.0,
+      "ending_invested_capital": 7149761000.0,
+      "avg_invested_capital": 7269144500.0,
+      "roic": 0.0501
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31",
+      "ebit": 384810000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 296303700.0,
+      "beginning_invested_capital": 7149761000.0,
+      "ending_invested_capital": 7253416000.0,
+      "avg_invested_capital": 7201588500.0,
+      "roic": 0.0411
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30",
+      "ebit": 309555000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 244548450.0,
+      "beginning_invested_capital": 7253416000.0,
+      "ending_invested_capital": 7484683000.0,
+      "avg_invested_capital": 7369049500.0,
+      "roic": 0.0332
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30",
+      "ebit": 421818000.0,
+      "tax_rate_for_calcs": 0.27,
+      "nopat": 307927140.0,
+      "beginning_invested_capital": 7484683000.0,
+      "ending_invested_capital": 7678144000.0,
+      "avg_invested_capital": 7581413500.0,
+      "roic": 0.0406
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31",
+      "ebit": 522401000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 412696790.0,
+      "beginning_invested_capital": 7678144000.0,
+      "ending_invested_capital": 7954331000.0,
+      "avg_invested_capital": 7816237500.0,
+      "roic": 0.0528
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0845,
+      "roa": 0.048,
+      "equity_multiplier": 1.76
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0994,
+      "roa": 0.0584,
+      "equity_multiplier": 1.7
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.071,
+      "roa": 0.0435,
+      "equity_multiplier": 1.63
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0586,
+      "roa": 0.0355,
+      "equity_multiplier": 1.65
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.054,
+      "roa": 0.0291,
+      "equity_multiplier": 1.86
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0737,
+      "roa": 0.0375,
+      "equity_multiplier": 1.97
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0579,
+      "roa": 0.0304,
+      "equity_multiplier": 1.9
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0327,
+      "roa": 0.0173,
+      "equity_multiplier": 1.89
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0563,
+      "roa": 0.0301,
+      "equity_multiplier": 1.87
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0727,
+      "roa": 0.0393,
+      "equity_multiplier": 1.85
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.048,
+      "net_margin": 0.2486,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0584,
+      "net_margin": 0.3031,
+      "asset_turnover": 0.19
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0435,
+      "net_margin": 0.2454,
+      "asset_turnover": 0.18
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0355,
+      "net_margin": 0.2164,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0291,
+      "net_margin": 0.1959,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0375,
+      "net_margin": 0.2509,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0304,
+      "net_margin": 0.2202,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0173,
+      "net_margin": 0.1255,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0301,
+      "net_margin": 0.2145,
+      "asset_turnover": 0.14
+    },
+    {
+      "symbol": "CDNS",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0393,
+      "net_margin": 0.2695,
+      "asset_turnover": 0.15
+    }
+  ]
+}

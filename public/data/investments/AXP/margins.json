@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "AXP",
+      "report_date": "2022-06-30",
+      "gross_profit": null,
+      "total_revenue": 13395000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": 13556000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-06-30",
+      "gross_profit": null,
+      "total_revenue": 15054000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-09-30",
+      "gross_profit": null,
+      "total_revenue": 15381000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 15792000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-03-31",
+      "gross_profit": null,
+      "total_revenue": 15801000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-06-30",
+      "gross_profit": null,
+      "total_revenue": 16333000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-09-30",
+      "gross_profit": null,
+      "total_revenue": 16636000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 17179000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-03-31",
+      "gross_profit": null,
+      "total_revenue": 16967000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-06-30",
+      "gross_profit": null,
+      "total_revenue": 17856000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-09-30",
+      "gross_profit": null,
+      "total_revenue": 18426000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 18981000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": 18908000000.0,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "AXP",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2020-12-31",
+      "gross_profit": null,
+      "total_revenue": 36239000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2021-12-31",
+      "gross_profit": null,
+      "total_revenue": 43147000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": 52862000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "gross_profit": null,
+      "total_revenue": 60515000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "gross_profit": null,
+      "total_revenue": 65949000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "gross_profit": null,
+      "total_revenue": 72230000000.0,
+      "gross_margin": null
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "AXP",
+      "report_date": "2022-06-30",
+      "operating_income": null,
+      "total_revenue": 13395000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": 13556000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-06-30",
+      "operating_income": null,
+      "total_revenue": 15054000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-09-30",
+      "operating_income": null,
+      "total_revenue": 15381000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 15792000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-03-31",
+      "operating_income": null,
+      "total_revenue": 15801000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-06-30",
+      "operating_income": null,
+      "total_revenue": 16333000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-09-30",
+      "operating_income": null,
+      "total_revenue": 16636000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 17179000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-03-31",
+      "operating_income": null,
+      "total_revenue": 16967000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-06-30",
+      "operating_income": null,
+      "total_revenue": 17856000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-09-30",
+      "operating_income": null,
+      "total_revenue": 18426000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 18981000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": 18908000000.0,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "AXP",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2020-12-31",
+      "operating_income": null,
+      "total_revenue": 36239000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2021-12-31",
+      "operating_income": null,
+      "total_revenue": 43147000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": 52862000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "operating_income": null,
+      "total_revenue": 60515000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "operating_income": null,
+      "total_revenue": 65949000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "operating_income": null,
+      "total_revenue": 72230000000.0,
+      "operating_margin": null
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "AXP",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 1934000000.0,
+      "total_revenue": 13395000000.0,
+      "net_margin": 0.1444
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 1851000000.0,
+      "total_revenue": 13556000000.0,
+      "net_margin": 0.1365
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 2142000000.0,
+      "total_revenue": 15054000000.0,
+      "net_margin": 0.1423
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 2418000000.0,
+      "total_revenue": 15381000000.0,
+      "net_margin": 0.1572
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1904000000.0,
+      "total_revenue": 15792000000.0,
+      "net_margin": 0.1206
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 2405000000.0,
+      "total_revenue": 15801000000.0,
+      "net_margin": 0.1522
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 2977000000.0,
+      "total_revenue": 16333000000.0,
+      "net_margin": 0.1823
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 2474000000.0,
+      "total_revenue": 16636000000.0,
+      "net_margin": 0.1487
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2139000000.0,
+      "total_revenue": 17179000000.0,
+      "net_margin": 0.1245
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 2552000000.0,
+      "total_revenue": 16967000000.0,
+      "net_margin": 0.1504
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 2852000000.0,
+      "total_revenue": 17856000000.0,
+      "net_margin": 0.1597
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 2868000000.0,
+      "total_revenue": 18426000000.0,
+      "net_margin": 0.1556
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2429000000.0,
+      "total_revenue": 18981000000.0,
+      "net_margin": 0.128
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 2938000000.0,
+      "total_revenue": 18908000000.0,
+      "net_margin": 0.1554
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "AXP",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 3036000000.0,
+      "total_revenue": 36239000000.0,
+      "net_margin": 0.0838
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 7917000000.0,
+      "total_revenue": 43147000000.0,
+      "net_margin": 0.1835
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 7400000000.0,
+      "total_revenue": 52862000000.0,
+      "net_margin": 0.14
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 8252000000.0,
+      "total_revenue": 60515000000.0,
+      "net_margin": 0.1364
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 9995000000.0,
+      "total_revenue": 65949000000.0,
+      "net_margin": 0.1516
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 10701000000.0,
+      "total_revenue": 72230000000.0,
+      "net_margin": 0.1482
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "AXP",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 13395000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": 13556000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-06-30",
+      "ebitda": null,
+      "total_revenue": 15054000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-09-30",
+      "ebitda": null,
+      "total_revenue": 15381000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 15792000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-03-31",
+      "ebitda": null,
+      "total_revenue": 15801000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-06-30",
+      "ebitda": null,
+      "total_revenue": 16333000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-09-30",
+      "ebitda": null,
+      "total_revenue": 16636000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 17179000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-03-31",
+      "ebitda": null,
+      "total_revenue": 16967000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-06-30",
+      "ebitda": null,
+      "total_revenue": 17856000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-09-30",
+      "ebitda": null,
+      "total_revenue": 18426000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 18981000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": 18908000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "AXP",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2020-12-31",
+      "ebitda": null,
+      "total_revenue": 36239000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2021-12-31",
+      "ebitda": null,
+      "total_revenue": 43147000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": 52862000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": 60515000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "ebitda": null,
+      "total_revenue": 65949000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "ebitda": null,
+      "total_revenue": 72230000000.0,
+      "ebitda_margin": null
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "AXP",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 3807000000.0,
+      "total_revenue": 13395000000.0,
+      "fcf_margin": 0.2842
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-09-30",
+      "free_cash_flow": 4065000000.0,
+      "total_revenue": 13556000000.0,
+      "fcf_margin": 0.2999
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 3548000000.0,
+      "total_revenue": 15054000000.0,
+      "fcf_margin": 0.2357
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 7843000000.0,
+      "total_revenue": 15381000000.0,
+      "fcf_margin": 0.5099
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 6343000000.0,
+      "total_revenue": 15792000000.0,
+      "fcf_margin": 0.4017
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 5156000000.0,
+      "total_revenue": 15801000000.0,
+      "fcf_margin": 0.3263
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 3967000000.0,
+      "total_revenue": 16333000000.0,
+      "fcf_margin": 0.2429
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-09-30",
+      "free_cash_flow": -2269000000.0,
+      "total_revenue": 16636000000.0,
+      "fcf_margin": -0.1364
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 5283000000.0,
+      "total_revenue": 17179000000.0,
+      "fcf_margin": 0.3075
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 4334000000.0,
+      "total_revenue": 16967000000.0,
+      "fcf_margin": 0.2554
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 3745000000.0,
+      "total_revenue": 17856000000.0,
+      "fcf_margin": 0.2097
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 5578000000.0,
+      "total_revenue": 18426000000.0,
+      "fcf_margin": 0.3027
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2346000000.0,
+      "total_revenue": 18981000000.0,
+      "fcf_margin": 0.1236
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 2655000000.0,
+      "total_revenue": 18908000000.0,
+      "fcf_margin": 0.1404
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "AXP",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 4113000000.0,
+      "total_revenue": 36239000000.0,
+      "fcf_margin": 0.1135
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 13095000000.0,
+      "total_revenue": 43147000000.0,
+      "fcf_margin": 0.3035
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 19224000000.0,
+      "total_revenue": 52862000000.0,
+      "fcf_margin": 0.3637
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 16996000000.0,
+      "total_revenue": 60515000000.0,
+      "fcf_margin": 0.2809
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 12139000000.0,
+      "total_revenue": 65949000000.0,
+      "fcf_margin": 0.1841
+    },
+    {
+      "symbol": "AXP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 16003000000.0,
+      "total_revenue": 72230000000.0,
+      "fcf_margin": 0.2216
+    }
+  ]
+}

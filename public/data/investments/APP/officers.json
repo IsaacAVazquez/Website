@@ -1,0 +1,72 @@
+[
+  {
+    "symbol": "APP",
+    "name": "Mr. Adam Arash Foroughi",
+    "title": "Co-Founder, CEO & Director",
+    "age": 44,
+    "born": 1981,
+    "pay": 410135,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "APP",
+    "name": "Mr. David  Hsiao",
+    "title": "Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "APP",
+    "name": "Mr. Dmitriy  Dorosh",
+    "title": "Vice President Controller & Principal Accounting Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "APP",
+    "name": "Mr. Giovanni  Ge",
+    "title": "Chief Product & Engineering Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "APP",
+    "name": "Mr. Matthew A. Stumpf",
+    "title": "Chief Financial Officer",
+    "age": 41,
+    "born": 1984,
+    "pay": 427324,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "APP",
+    "name": "Mr. Vasily  Shikin",
+    "title": "Chief Technology Officer",
+    "age": 39,
+    "born": 1986,
+    "pay": 837075,
+    "exercised": 0,
+    "unexercised": 374778720
+  },
+  {
+    "symbol": "APP",
+    "name": "Ms. Victoria  Valenzuela",
+    "title": "Chief Administrative, Secretary & Legal Officer",
+    "age": 51,
+    "born": 1974,
+    "pay": 457000,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

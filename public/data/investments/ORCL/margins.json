@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "gross_profit": 9444000000.0,
+      "total_revenue": 11840000000.0,
+      "gross_margin": 0.7976
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-08-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-11-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-02-28",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-08-31",
+      "gross_profit": 8843000000.0,
+      "total_revenue": 12453000000.0,
+      "gross_margin": 0.7101
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-11-30",
+      "gross_profit": 9201000000.0,
+      "total_revenue": 12941000000.0,
+      "gross_margin": 0.711
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-02-29",
+      "gross_profit": 9411000000.0,
+      "total_revenue": 13280000000.0,
+      "gross_margin": 0.7087
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "gross_profit": 10363000000.0,
+      "total_revenue": 14287000000.0,
+      "gross_margin": 0.7253
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-08-31",
+      "gross_profit": 9401000000.0,
+      "total_revenue": 13307000000.0,
+      "gross_margin": 0.7065
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-11-30",
+      "gross_profit": 9974000000.0,
+      "total_revenue": 14059000000.0,
+      "gross_margin": 0.7094
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-02-28",
+      "gross_profit": 9935000000.0,
+      "total_revenue": 14130000000.0,
+      "gross_margin": 0.7031
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "gross_profit": 11162000000.0,
+      "total_revenue": 15903000000.0,
+      "gross_margin": 0.7019
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-08-31",
+      "gross_profit": 10042000000.0,
+      "total_revenue": 14926000000.0,
+      "gross_margin": 0.6728
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-11-30",
+      "gross_profit": 10684000000.0,
+      "total_revenue": 16058000000.0,
+      "gross_margin": 0.6653
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-02-28",
+      "gross_profit": 11098000000.0,
+      "total_revenue": 17190000000.0,
+      "gross_margin": 0.6456
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2019-05-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2020-05-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2021-05-31",
+      "gross_profit": 32624000000.0,
+      "total_revenue": 40479000000.0,
+      "gross_margin": 0.8059
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "gross_profit": 33563000000.0,
+      "total_revenue": 42440000000.0,
+      "gross_margin": 0.7908
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "gross_profit": 36390000000.0,
+      "total_revenue": 49954000000.0,
+      "gross_margin": 0.7285
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "gross_profit": 37818000000.0,
+      "total_revenue": 52961000000.0,
+      "gross_margin": 0.7141
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "gross_profit": 40472000000.0,
+      "total_revenue": 57399000000.0,
+      "gross_margin": 0.7051
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "operating_income": 4609000000.0,
+      "total_revenue": 11840000000.0,
+      "operating_margin": 0.3893
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-08-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-11-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-02-28",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-08-31",
+      "operating_income": 3445000000.0,
+      "total_revenue": 12453000000.0,
+      "operating_margin": 0.2766
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-11-30",
+      "operating_income": 3752000000.0,
+      "total_revenue": 12941000000.0,
+      "operating_margin": 0.2899
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-02-29",
+      "operating_income": 3995000000.0,
+      "total_revenue": 13280000000.0,
+      "operating_margin": 0.3008
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "operating_income": 4879000000.0,
+      "total_revenue": 14287000000.0,
+      "operating_margin": 0.3415
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-08-31",
+      "operating_income": 4077000000.0,
+      "total_revenue": 13307000000.0,
+      "operating_margin": 0.3064
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-11-30",
+      "operating_income": 4335000000.0,
+      "total_revenue": 14059000000.0,
+      "operating_margin": 0.3083
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-02-28",
+      "operating_income": 4449000000.0,
+      "total_revenue": 14130000000.0,
+      "operating_margin": 0.3149
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "operating_income": 5191000000.0,
+      "total_revenue": 15903000000.0,
+      "operating_margin": 0.3264
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-08-31",
+      "operating_income": 4692000000.0,
+      "total_revenue": 14926000000.0,
+      "operating_margin": 0.3144
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-11-30",
+      "operating_income": 5158000000.0,
+      "total_revenue": 16058000000.0,
+      "operating_margin": 0.3212
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-02-28",
+      "operating_income": 5637000000.0,
+      "total_revenue": 17190000000.0,
+      "operating_margin": 0.3279
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2019-05-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2020-05-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2021-05-31",
+      "operating_income": 15782000000.0,
+      "total_revenue": 40479000000.0,
+      "operating_margin": 0.3899
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "operating_income": 15830000000.0,
+      "total_revenue": 42440000000.0,
+      "operating_margin": 0.373
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "operating_income": 13773000000.0,
+      "total_revenue": 49954000000.0,
+      "operating_margin": 0.2757
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "operating_income": 16071000000.0,
+      "total_revenue": 52961000000.0,
+      "operating_margin": 0.3034
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "operating_income": 18052000000.0,
+      "total_revenue": 57399000000.0,
+      "operating_margin": 0.3145
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "net_income_common_stockholders": 3189000000.0,
+      "total_revenue": 11840000000.0,
+      "net_margin": 0.2693
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-08-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-11-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-02-28",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-08-31",
+      "net_income_common_stockholders": 2420000000.0,
+      "total_revenue": 12453000000.0,
+      "net_margin": 0.1943
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-11-30",
+      "net_income_common_stockholders": 2503000000.0,
+      "total_revenue": 12941000000.0,
+      "net_margin": 0.1934
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-02-29",
+      "net_income_common_stockholders": 2401000000.0,
+      "total_revenue": 13280000000.0,
+      "net_margin": 0.1808
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "net_income_common_stockholders": 3144000000.0,
+      "total_revenue": 14287000000.0,
+      "net_margin": 0.2201
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-08-31",
+      "net_income_common_stockholders": 2929000000.0,
+      "total_revenue": 13307000000.0,
+      "net_margin": 0.2201
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-11-30",
+      "net_income_common_stockholders": 3151000000.0,
+      "total_revenue": 14059000000.0,
+      "net_margin": 0.2241
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-02-28",
+      "net_income_common_stockholders": 2936000000.0,
+      "total_revenue": 14130000000.0,
+      "net_margin": 0.2078
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "net_income_common_stockholders": 3427000000.0,
+      "total_revenue": 15903000000.0,
+      "net_margin": 0.2155
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-08-31",
+      "net_income_common_stockholders": 2927000000.0,
+      "total_revenue": 14926000000.0,
+      "net_margin": 0.1961
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-11-30",
+      "net_income_common_stockholders": 6135000000.0,
+      "total_revenue": 16058000000.0,
+      "net_margin": 0.3821
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-02-28",
+      "net_income_common_stockholders": 3699000000.0,
+      "total_revenue": 17190000000.0,
+      "net_margin": 0.2152
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2019-05-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2020-05-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2021-05-31",
+      "net_income_common_stockholders": 13746000000.0,
+      "total_revenue": 40479000000.0,
+      "net_margin": 0.3396
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "net_income_common_stockholders": 6717000000.0,
+      "total_revenue": 42440000000.0,
+      "net_margin": 0.1583
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "net_income_common_stockholders": 8503000000.0,
+      "total_revenue": 49954000000.0,
+      "net_margin": 0.1702
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "net_income_common_stockholders": 10467000000.0,
+      "total_revenue": 52961000000.0,
+      "net_margin": 0.1976
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "net_income_common_stockholders": 12443000000.0,
+      "total_revenue": 57399000000.0,
+      "net_margin": 0.2168
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "ebitda": null,
+      "total_revenue": 11840000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-08-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-11-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-02-28",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-08-31",
+      "ebitda": 4722000000.0,
+      "total_revenue": 12453000000.0,
+      "ebitda_margin": 0.3792
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-11-30",
+      "ebitda": 5161000000.0,
+      "total_revenue": 12941000000.0,
+      "ebitda_margin": 0.3988
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-02-29",
+      "ebitda": 5298000000.0,
+      "total_revenue": 13280000000.0,
+      "ebitda_margin": 0.3989
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "ebitda": 6214000000.0,
+      "total_revenue": 14287000000.0,
+      "ebitda_margin": 0.4349
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-08-31",
+      "ebitda": 5439000000.0,
+      "total_revenue": 13307000000.0,
+      "ebitda_margin": 0.4087
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-11-30",
+      "ebitda": 5755000000.0,
+      "total_revenue": 14059000000.0,
+      "ebitda_margin": 0.4093
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-02-28",
+      "ebitda": 5891000000.0,
+      "total_revenue": 14130000000.0,
+      "ebitda_margin": 0.4169
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "ebitda": 6826000000.0,
+      "total_revenue": 15903000000.0,
+      "ebitda_margin": 0.4292
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-08-31",
+      "ebitda": 6121000000.0,
+      "total_revenue": 14926000000.0,
+      "ebitda_margin": 0.4101
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-11-30",
+      "ebitda": 9509000000.0,
+      "total_revenue": 16058000000.0,
+      "ebitda_margin": 0.5922
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-02-28",
+      "ebitda": 8162000000.0,
+      "total_revenue": 17190000000.0,
+      "ebitda_margin": 0.4748
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2019-05-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2020-05-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2021-05-31",
+      "ebitda": 18411000000.0,
+      "total_revenue": 40479000000.0,
+      "ebitda_margin": 0.4548
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "ebitda": 13526000000.0,
+      "total_revenue": 42440000000.0,
+      "ebitda_margin": 0.3187
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "ebitda": 18739000000.0,
+      "total_revenue": 49954000000.0,
+      "ebitda_margin": 0.3751
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "ebitda": 21394000000.0,
+      "total_revenue": 52961000000.0,
+      "ebitda_margin": 0.404
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "ebitda": 23912000000.0,
+      "total_revenue": 57399000000.0,
+      "ebitda_margin": 0.4166
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "free_cash_flow": 2562000000.0,
+      "total_revenue": 11840000000.0,
+      "fcf_margin": 0.2164
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-08-31",
+      "free_cash_flow": 4675000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-11-30",
+      "free_cash_flow": -1586000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-02-28",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-08-31",
+      "free_cash_flow": 5660000000.0,
+      "total_revenue": 12453000000.0,
+      "fcf_margin": 0.4545
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-11-30",
+      "free_cash_flow": -937000000.0,
+      "total_revenue": 12941000000.0,
+      "fcf_margin": -0.0724
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-02-29",
+      "free_cash_flow": 3801000000.0,
+      "total_revenue": 13280000000.0,
+      "fcf_margin": 0.2862
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "free_cash_flow": 3283000000.0,
+      "total_revenue": 14287000000.0,
+      "fcf_margin": 0.2298
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-08-31",
+      "free_cash_flow": 5124000000.0,
+      "total_revenue": 13307000000.0,
+      "fcf_margin": 0.3851
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-11-30",
+      "free_cash_flow": -2666000000.0,
+      "total_revenue": 14059000000.0,
+      "fcf_margin": -0.1896
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-02-28",
+      "free_cash_flow": 71000000.0,
+      "total_revenue": 14130000000.0,
+      "fcf_margin": 0.005
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "free_cash_flow": -2923000000.0,
+      "total_revenue": 15903000000.0,
+      "fcf_margin": -0.1838
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-08-31",
+      "free_cash_flow": -362000000.0,
+      "total_revenue": 14926000000.0,
+      "fcf_margin": -0.0243
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-11-30",
+      "free_cash_flow": -9967000000.0,
+      "total_revenue": 16058000000.0,
+      "fcf_margin": -0.6207
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2026-02-28",
+      "free_cash_flow": -11484000000.0,
+      "total_revenue": 17190000000.0,
+      "fcf_margin": -0.6681
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ORCL",
+      "report_date": "2019-05-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2020-05-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2021-05-31",
+      "free_cash_flow": 13752000000.0,
+      "total_revenue": 40479000000.0,
+      "fcf_margin": 0.3397
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2022-05-31",
+      "free_cash_flow": 5028000000.0,
+      "total_revenue": 42440000000.0,
+      "fcf_margin": 0.1185
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2023-05-31",
+      "free_cash_flow": 8470000000.0,
+      "total_revenue": 49954000000.0,
+      "fcf_margin": 0.1696
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2024-05-31",
+      "free_cash_flow": 11807000000.0,
+      "total_revenue": 52961000000.0,
+      "fcf_margin": 0.2229
+    },
+    {
+      "symbol": "ORCL",
+      "report_date": "2025-05-31",
+      "free_cash_flow": -394000000.0,
+      "total_revenue": 57399000000.0,
+      "fcf_margin": -0.0069
+    }
+  ]
+}

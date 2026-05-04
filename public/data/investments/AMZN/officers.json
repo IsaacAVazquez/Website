@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "AMZN",
+    "name": "Dr. Werner  Vogels",
+    "title": "Chief Technology Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Drew  Herdener",
+    "title": "Senior Vice President of Communications & Corporate Responsibility",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Mr. Andrew R. Jassy",
+    "title": "President, CEO & Director",
+    "age": 57,
+    "born": 1968,
+    "pay": 2069861,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Mr. Brian T. Olsavsky",
+    "title": "Senior VP & CFO",
+    "age": 61,
+    "born": 1964,
+    "pay": 372000,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Mr. Dave  Fildes",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Mr. David A. Zapolsky J.D.",
+    "title": "Senior VP and Chief Global Affairs & Legal Officer",
+    "age": 61,
+    "born": 1964,
+    "pay": 372000,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Mr. Douglas J. Herrington",
+    "title": "Chief Executive Officer of Worldwide Amazon Stores",
+    "age": 58,
+    "born": 1967,
+    "pay": 425365,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Mr. Jeffrey P. Bezos",
+    "title": "Founder & Executive Chairman",
+    "age": 61,
+    "born": 1964,
+    "pay": 1681840,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Mr. Matthew S. Garman",
+    "title": "Chief Executive Officer of Amazon Web Series",
+    "age": 48,
+    "born": 1977,
+    "pay": 617281,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Ms. Shelley L. Reynolds",
+    "title": "VP, Worldwide Controller & Principal Accounting Officer",
+    "age": 60,
+    "born": 1965,
+    "pay": 163200,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

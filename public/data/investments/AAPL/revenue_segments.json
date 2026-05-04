@@ -1,0 +1,421 @@
+{
+  "by_segment": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-06-30",
+      "Mac": 7079000000.0,
+      "Services": 13156000000.0,
+      "Wearables, Home and Accessories": 6450000000.0,
+      "iPad": 6582000000.0,
+      "iPhone": 26418000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30",
+      "Mac": 9032000000.0,
+      "Services": 14549000000.0,
+      "Wearables, Home and Accessories": 7876000000.0,
+      "iPad": 6797000000.0,
+      "iPhone": 26444000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-12-31",
+      "Mac": 8675000000.0,
+      "Services": 15761000000.0,
+      "Wearables, Home and Accessories": 12971000000.0,
+      "iPad": 8435000000.0,
+      "iPhone": 65597000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-03-31",
+      "Mac": 9102000000.0,
+      "Services": 16901000000.0,
+      "Wearables, Home and Accessories": 7836000000.0,
+      "iPad": 7807000000.0,
+      "iPhone": 47938000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-06-30",
+      "Mac": 8235000000.0,
+      "Services": 17486000000.0,
+      "Wearables, Home and Accessories": 8775000000.0,
+      "iPad": 7368000000.0,
+      "iPhone": 39570000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30",
+      "Mac": 9178000000.0,
+      "Services": 18277000000.0,
+      "Wearables, Home and Accessories": 8785000000.0,
+      "iPad": 8252000000.0,
+      "iPhone": 38868000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-12-31",
+      "Mac": 10852000000.0,
+      "Services": 19516000000.0,
+      "Wearables, Home and Accessories": 14701000000.0,
+      "iPad": 7248000000.0,
+      "iPhone": 71628000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-03-31",
+      "Mac": 10435000000.0,
+      "Services": 19821000000.0,
+      "Wearables, Home and Accessories": 8806000000.0,
+      "iPad": 7646000000.0,
+      "iPhone": 50570000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30",
+      "Mac": 7382000000.0,
+      "Services": 19604000000.0,
+      "Wearables, Home and Accessories": 8084000000.0,
+      "iPad": 7224000000.0,
+      "iPhone": 40665000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "Mac": 11508000000.0,
+      "Services": 19188000000.0,
+      "Wearables, Home and Accessories": 9650000000.0,
+      "iPad": 7174000000.0,
+      "iPhone": 42626000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-12-31",
+      "Mac": 7735000000.0,
+      "Services": 20766000000.0,
+      "Wearables, Home and Accessories": 13482000000.0,
+      "iPad": 9396000000.0,
+      "iPhone": 65775000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-03-31",
+      "Mac": 7168000000.0,
+      "Services": 20907000000.0,
+      "Wearables, Home and Accessories": 8757000000.0,
+      "iPad": 6670000000.0,
+      "iPhone": 51334000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30",
+      "Mac": 6840000000.0,
+      "Services": 21213000000.0,
+      "Wearables, Home and Accessories": 8284000000.0,
+      "iPad": 5791000000.0,
+      "iPhone": 39669000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "Mac": 7614000000.0,
+      "Services": 22314000000.0,
+      "Wearables, Home and Accessories": 9322000000.0,
+      "iPad": 6443000000.0,
+      "iPhone": 43805000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "Mac": 7780000000.0,
+      "Services": 23117000000.0,
+      "Wearables, Home and Accessories": 11953000000.0,
+      "iPad": 7023000000.0,
+      "iPhone": 69702000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "Mac": 7451000000.0,
+      "Services": 23867000000.0,
+      "Wearables, Home and Accessories": 7913000000.0,
+      "iPad": 5559000000.0,
+      "iPhone": 45963000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "Mac": 7009000000.0,
+      "Services": 24213000000.0,
+      "Wearables, Home and Accessories": 8097000000.0,
+      "iPad": 7162000000.0,
+      "iPhone": 39296000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "Mac": 7744000000.0,
+      "Services": 24972000000.0,
+      "Wearables, Home and Accessories": 9042000000.0,
+      "iPad": 6950000000.0,
+      "iPhone": 46222000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "Mac": 8987000000.0,
+      "Services": 26340000000.0,
+      "Wearables, Home and Accessories": 11747000000.0,
+      "iPad": 8088000000.0,
+      "iPhone": 69138000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "Mac": 7949000000.0,
+      "Services": 26645000000.0,
+      "Wearables, Home and Accessories": 7522000000.0,
+      "iPad": 6402000000.0,
+      "iPhone": 46841000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "Mac": 8046000000.0,
+      "Services": 27423000000.0,
+      "Wearables, Home and Accessories": 7404000000.0,
+      "iPad": 6581000000.0,
+      "iPhone": 44582000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "Mac": 8726000000.0,
+      "Services": 28750000000.0,
+      "Wearables, Home and Accessories": 9013000000.0,
+      "iPad": 6952000000.0,
+      "iPhone": 49025000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "Mac": 8386000000.0,
+      "Services": 30013000000.0,
+      "Wearables, Home and Accessories": 11493000000.0,
+      "iPad": 8595000000.0,
+      "iPhone": 85269000000.0
+    }
+  ],
+  "by_geography": [
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-06-30",
+      "Americas": 27018000000.0,
+      "Europe": 14173000000.0,
+      "Greater China": 9329000000.0,
+      "Japan": 4966000000.0,
+      "Rest of Asia Pacific": 4199000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-09-30",
+      "Americas": 30698000000.0,
+      "Europe": 16900000000.0,
+      "Greater China": 7946000000.0,
+      "Japan": 5023000000.0,
+      "Rest of Asia Pacific": 4131000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2020-12-31",
+      "Americas": 46310000000.0,
+      "Europe": 27306000000.0,
+      "Greater China": 21313000000.0,
+      "Japan": 8285000000.0,
+      "Rest of Asia Pacific": 8225000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-03-31",
+      "Americas": 34306000000.0,
+      "Europe": 22264000000.0,
+      "Greater China": 17728000000.0,
+      "Japan": 7742000000.0,
+      "Rest of Asia Pacific": 7544000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-06-30",
+      "Americas": 35870000000.0,
+      "Europe": 18943000000.0,
+      "Greater China": 14762000000.0,
+      "Japan": 6464000000.0,
+      "Rest of Asia Pacific": 5395000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-09-30",
+      "Americas": 36820000000.0,
+      "Europe": 20794000000.0,
+      "Greater China": 14563000000.0,
+      "Japan": 5991000000.0,
+      "Rest of Asia Pacific": 5192000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2021-12-31",
+      "Americas": 51496000000.0,
+      "Europe": 29749000000.0,
+      "Greater China": 25783000000.0,
+      "Japan": 7107000000.0,
+      "Rest of Asia Pacific": 9810000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-03-31",
+      "Americas": 40882000000.0,
+      "Europe": 23287000000.0,
+      "Greater China": 18343000000.0,
+      "Japan": 7724000000.0,
+      "Rest of Asia Pacific": 7042000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-06-30",
+      "Americas": 37472000000.0,
+      "Europe": 19287000000.0,
+      "Greater China": 14604000000.0,
+      "Japan": 5446000000.0,
+      "Rest of Asia Pacific": 6150000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-09-30",
+      "Americas": 39808000000.0,
+      "Europe": 22795000000.0,
+      "Greater China": 15742000000.0,
+      "Japan": 5700000000.0,
+      "Rest of Asia Pacific": 6373000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2022-12-31",
+      "Americas": 49278000000.0,
+      "Europe": 27681000000.0,
+      "Greater China": 23905000000.0,
+      "Japan": 6755000000.0,
+      "Rest of Asia Pacific": 9535000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-03-31",
+      "Americas": 37874000000.0,
+      "Europe": 23945000000.0,
+      "Greater China": 17812000000.0,
+      "Japan": 7176000000.0,
+      "Rest of Asia Pacific": 8119000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-06-30",
+      "Americas": 35383000000.0,
+      "Europe": 20205000000.0,
+      "Greater China": 15758000000.0,
+      "Japan": 4821000000.0,
+      "Rest of Asia Pacific": 5630000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-09-30",
+      "Americas": 40115000000.0,
+      "Europe": 22463000000.0,
+      "Greater China": 15084000000.0,
+      "Japan": 5505000000.0,
+      "Rest of Asia Pacific": 6331000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2023-12-31",
+      "Americas": 50430000000.0,
+      "Europe": 30397000000.0,
+      "Greater China": 20819000000.0,
+      "Japan": 7767000000.0,
+      "Rest of Asia Pacific": 10162000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-03-31",
+      "Americas": 37273000000.0,
+      "Europe": 24123000000.0,
+      "Greater China": 16372000000.0,
+      "Japan": 6262000000.0,
+      "Rest of Asia Pacific": 6723000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-06-30",
+      "Americas": 37678000000.0,
+      "Europe": 21884000000.0,
+      "Greater China": 14728000000.0,
+      "Japan": 5097000000.0,
+      "Rest of Asia Pacific": 6390000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-09-30",
+      "Americas": 41664000000.0,
+      "Europe": 24924000000.0,
+      "Greater China": 15033000000.0,
+      "Japan": 5926000000.0,
+      "Rest of Asia Pacific": 7383000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2024-12-31",
+      "Americas": 52648000000.0,
+      "Europe": 33861000000.0,
+      "Greater China": 18513000000.0,
+      "Japan": 8987000000.0,
+      "Rest of Asia Pacific": 10291000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-03-31",
+      "Americas": 40315000000.0,
+      "Europe": 24454000000.0,
+      "Greater China": 16002000000.0,
+      "Japan": 7298000000.0,
+      "Rest of Asia Pacific": 7290000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-06-30",
+      "Americas": 41198000000.0,
+      "Europe": 24014000000.0,
+      "Greater China": 15369000000.0,
+      "Japan": 5782000000.0,
+      "Rest of Asia Pacific": 7673000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-09-30",
+      "Americas": 44192000000.0,
+      "Europe": 28703000000.0,
+      "Greater China": 14493000000.0,
+      "Japan": 6636000000.0,
+      "Rest of Asia Pacific": 8442000000.0
+    },
+    {
+      "symbol": "AAPL",
+      "report_date": "2025-12-31",
+      "Americas": 58529000000.0,
+      "Europe": 38146000000.0,
+      "Greater China": 25526000000.0,
+      "Japan": 9413000000.0,
+      "Rest of Asia Pacific": 12142000000.0
+    }
+  ],
+  "by_product": []
+}

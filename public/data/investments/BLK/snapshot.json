@@ -1,10 +1,10 @@
 {
   "symbol": "BLK",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 39.42,
-      "ttmPe": 26.51,
-      "marketCap": 162351764050,
-      "psRatio": 6.7,
-      "pbRatio": 2.9,
-      "pegRatio": 0.58
+      "ttmPe": 26.93,
+      "marketCap": 164947913200,
+      "psRatio": 6.81,
+      "pbRatio": 2.95,
+      "pegRatio": 0.59
     },
     "profitability": {
       "roe": 2.02,
@@ -5190,57 +5190,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.27,
-      "costOfEquity": 16.619999999999997,
+      "wacc": 15.32,
+      "costOfEquity": 16.650000000000002,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 23,
-      "beta": 1.4376,
-      "marketCap": 162351764050
+      "beta": 1.4453,
+      "marketCap": 164947913200
     },
     "beta": {
-      "beta5y": 1.4376
+      "beta5y": 1.4453
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 895.5,
-        "high": 916.71,
-        "low": 892.91,
-        "close": 916.26,
-        "volume": 619700
-      },
-      {
-        "date": "2025-04-25",
-        "open": 913.25,
-        "high": 918.27,
-        "low": 899.36,
-        "close": 907.69,
-        "volume": 444400
-      },
-      {
-        "date": "2025-04-28",
-        "open": 906.23,
-        "high": 923.52,
-        "low": 906.23,
-        "close": 913.74,
-        "volume": 685200
-      },
-      {
-        "date": "2025-04-29",
-        "open": 910.89,
-        "high": 921.7,
-        "low": 905.05,
-        "close": 920.52,
-        "volume": 392300
-      },
-      {
-        "date": "2025-04-30",
-        "open": 905.96,
-        "high": 915.88,
-        "low": 893.94,
-        "close": 914.26,
-        "volume": 1028900
-      },
       {
         "date": "2025-05-01",
         "open": 912.96,
@@ -7216,6 +7176,46 @@
         "low": 1042.44,
         "close": 1044.97,
         "volume": 365900
+      },
+      {
+        "date": "2026-04-27",
+        "open": 1040.85,
+        "high": 1058.5,
+        "low": 1040.85,
+        "close": 1056.86,
+        "volume": 532500
+      },
+      {
+        "date": "2026-04-28",
+        "open": 1062.03,
+        "high": 1066.99,
+        "low": 1047.86,
+        "close": 1049.76,
+        "volume": 424500
+      },
+      {
+        "date": "2026-04-29",
+        "open": 1049,
+        "high": 1055.64,
+        "low": 1031.32,
+        "close": 1039.38,
+        "volume": 398100
+      },
+      {
+        "date": "2026-04-30",
+        "open": 1041,
+        "high": 1067.42,
+        "low": 1033.5,
+        "close": 1065.6,
+        "volume": 573100
+      },
+      {
+        "date": "2026-05-01",
+        "open": 1069.88,
+        "high": 1080.73,
+        "low": 1060.59,
+        "close": 1061.68,
+        "volume": 470300
       }
     ],
     "news": [
@@ -7236,19 +7236,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "38f2120e-db4d-3997-87f2-8c51f5e8ddb7",
-        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
-        "publisher": "CoinDesk",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/m/38f2120e-db4d-3997-87f2-8c51f5e8ddb7/a-public-company-boasting.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9d188eb0-9b83-38ac-80c0-8a4c35f543a8",
         "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
         "publisher": "CoinDesk",
         "reportDate": "2025-03-28",
         "link": "https://finance.yahoo.com/m/9d188eb0-9b83-38ac-80c0-8a4c35f543a8/a-public-company-boasting.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38f2120e-db4d-3997-87f2-8c51f5e8ddb7",
+        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
+        "publisher": "CoinDesk",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/m/38f2120e-db4d-3997-87f2-8c51f5e8ddb7/a-public-company-boasting.html",
         "type": "STORY"
       },
       {
@@ -7315,12 +7315,6 @@
         "totalPay": 4038215
       },
       {
-        "name": "Mr. Derek N. Stein",
-        "title": "Senior MD and Global Head of Technology & Operations",
-        "age": 63,
-        "yearBorn": 1962
-      },
-      {
         "name": "Mr. Laurence Douglas Fink",
         "title": "Founder, CEO & Chairman",
         "age": 73,
@@ -7349,6 +7343,11 @@
         "title": "MD, Head of Research, Portfolio Manager & Senior Strategist"
       },
       {
+        "name": "Mr. Rich Kushel",
+        "title": "Senior MD & Head of the Portfolio Management Group",
+        "totalPay": 4188855
+      },
+      {
         "name": "Mr. Robert Lawrence Goldstein",
         "title": "Senior MD & COO",
         "age": 51,
@@ -7366,23 +7365,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.51,
-        "industryAvg": 22.71
+        "value": 26.93,
+        "industryAvg": 24.17
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.7,
-        "industryAvg": 3.13
+        "value": 6.81,
+        "industryAvg": 3.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.9,
-        "industryAvg": 2.37
+        "value": 2.95,
+        "industryAvg": 2.54
       },
       {
         "metric": "ROE",
         "value": 2.02,
-        "industryAvg": 8.1
+        "industryAvg": 8.19
       },
       {
         "metric": "ROA",
@@ -7392,24 +7391,24 @@
       {
         "metric": "Gross Margin",
         "value": 45.629999999999995,
-        "industryAvg": 32.86
+        "industryAvg": 32.9
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.19,
-        "industryAvg": 40.839999999999996
+        "industryAvg": 40.89
       },
       {
         "metric": "Net Margin",
         "value": 16.08,
-        "industryAvg": 7.24
+        "industryAvg": 7.32
       }
     ],
     "dcf": {
-      "fairValue": 650.8,
-      "currentPrice": 1044.97,
-      "upside": -37.72,
-      "wacc": 15.27,
+      "fairValue": 648,
+      "currentPrice": 1061.68,
+      "upside": -38.96,
+      "wacc": 15.32,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 45.85,
         "Terminal growth": 3

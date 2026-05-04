@@ -1,0 +1,1333 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "ASML",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 5430500000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 6902300000.0,
+      "prev_year_revenue": 5430500000.0,
+      "yoy_growth": 0.271
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 6673000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 7237000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 5290000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 6242800000.0,
+      "prev_year_revenue": 6902300000.0,
+      "yoy_growth": -0.0955
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 7467300000.0,
+      "prev_year_revenue": 6673000000.0,
+      "yoy_growth": 0.119
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 9262800000.0,
+      "prev_year_revenue": 7237000000.0,
+      "yoy_growth": 0.2799
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 7741500000.0,
+      "prev_year_revenue": 5290000000.0,
+      "yoy_growth": 0.4634
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 7691700000.0,
+      "prev_year_revenue": 6242800000.0,
+      "yoy_growth": 0.2321
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 7516000000.0,
+      "prev_year_revenue": 7467300000.0,
+      "yoy_growth": 0.0065
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 9718100000.0,
+      "prev_year_revenue": 9262800000.0,
+      "yoy_growth": 0.0492
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 8766900000.0,
+      "prev_year_revenue": 7741500000.0,
+      "yoy_growth": 0.1325
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "ASML",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 13978500000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 18611000000.0,
+      "prev_year_revenue": 13978500000.0,
+      "yoy_growth": 0.3314
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 21173400000.0,
+      "prev_year_revenue": 18611000000.0,
+      "yoy_growth": 0.1377
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 27558500000.0,
+      "prev_year_revenue": 21173400000.0,
+      "yoy_growth": 0.3016
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 28262900000.0,
+      "prev_year_revenue": 27558500000.0,
+      "yoy_growth": 0.0256
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 32667300000.0,
+      "prev_year_revenue": 28262900000.0,
+      "yoy_growth": 0.1558
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "ASML",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 1653400000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 2263000000.0,
+      "prev_year_operating_income": 1653400000.0,
+      "yoy_growth": 0.3687
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 2182400000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 2391900000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 1391400000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 1834600000.0,
+      "prev_year_operating_income": 2263000000.0,
+      "yoy_growth": -0.1893
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 2441200000.0,
+      "prev_year_operating_income": 2182400000.0,
+      "yoy_growth": 0.1186
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 3355400000.0,
+      "prev_year_operating_income": 2391900000.0,
+      "yoy_growth": 0.4028
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 2737900000.0,
+      "prev_year_operating_income": 1391400000.0,
+      "yoy_growth": 0.9677
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 3137900000.0,
+      "prev_year_operating_income": 1834600000.0,
+      "yoy_growth": 0.7104
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 2468400000.0,
+      "prev_year_operating_income": 2441200000.0,
+      "yoy_growth": 0.0111
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 3431100000.0,
+      "prev_year_operating_income": 3355400000.0,
+      "yoy_growth": 0.0226
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 3157800000.0,
+      "prev_year_operating_income": 2737900000.0,
+      "yoy_growth": 0.1534
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "ASML",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 4051500000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 6536400000.0,
+      "prev_year_operating_income": 4051500000.0,
+      "yoy_growth": 0.6133
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 6500700000.0,
+      "prev_year_operating_income": 6536400000.0,
+      "yoy_growth": -0.0055
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 9042300000.0,
+      "prev_year_operating_income": 6500700000.0,
+      "yoy_growth": 0.391
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 9022600000.0,
+      "prev_year_operating_income": 9042300000.0,
+      "yoy_growth": -0.0022
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 11301400000.0,
+      "prev_year_operating_income": 9022600000.0,
+      "yoy_growth": 0.2526
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "ASML",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 2444200000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 2358600000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 2797900000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 1605800000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 2062100000.0,
+      "prev_year_ebitda": 2444200000.0,
+      "yoy_growth": -0.1563
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 2676900000.0,
+      "prev_year_ebitda": 2358600000.0,
+      "yoy_growth": 0.135
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 3778800000.0,
+      "prev_year_ebitda": 2797900000.0,
+      "yoy_growth": 0.3506
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 2979200000.0,
+      "prev_year_ebitda": 1605800000.0,
+      "yoy_growth": 0.8553
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 3649500000.0,
+      "prev_year_ebitda": 2062100000.0,
+      "yoy_growth": 0.7698
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 2743000000.0,
+      "prev_year_ebitda": 2676900000.0,
+      "yoy_growth": 0.0247
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 3686300000.0,
+      "prev_year_ebitda": 3778800000.0,
+      "yoy_growth": -0.0245
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 3157800000.0,
+      "prev_year_ebitda": 2979200000.0,
+      "yoy_growth": 0.0599
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "ASML",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 4550700000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 7231100000.0,
+      "prev_year_ebitda": 4550700000.0,
+      "yoy_growth": 0.589
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 7100500000.0,
+      "prev_year_ebitda": 7231100000.0,
+      "yoy_growth": -0.0181
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 9976000000.0,
+      "prev_year_ebitda": 7100500000.0,
+      "yoy_growth": 0.405
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 10123600000.0,
+      "prev_year_ebitda": 9976000000.0,
+      "yoy_growth": 0.0148
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 12550300000.0,
+      "prev_year_ebitda": 10123600000.0,
+      "yoy_growth": 0.2397
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "ASML",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1410900000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1941700000.0,
+      "prev_year_net_income_common_stockholders": 1410900000.0,
+      "yoy_growth": 0.3762
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1893400000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2048100000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1223800000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1577900000.0,
+      "prev_year_net_income_common_stockholders": 1941700000.0,
+      "yoy_growth": -0.1874
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2076500000.0,
+      "prev_year_net_income_common_stockholders": 1893400000.0,
+      "yoy_growth": 0.0967
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2693400000.0,
+      "prev_year_net_income_common_stockholders": 2048100000.0,
+      "yoy_growth": 0.3151
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 2355000000.0,
+      "prev_year_net_income_common_stockholders": 1223800000.0,
+      "yoy_growth": 0.9243
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 2676200000.0,
+      "prev_year_net_income_common_stockholders": 1577900000.0,
+      "yoy_growth": 0.6961
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 2124500000.0,
+      "prev_year_net_income_common_stockholders": 2076500000.0,
+      "yoy_growth": 0.0231
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2839600000.0,
+      "prev_year_net_income_common_stockholders": 2693400000.0,
+      "yoy_growth": 0.0543
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 2756700000.0,
+      "prev_year_net_income_common_stockholders": 2355000000.0,
+      "yoy_growth": 0.1706
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "ASML",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3553700000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5883200000.0,
+      "prev_year_net_income_common_stockholders": 3553700000.0,
+      "yoy_growth": 0.6555
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5624200000.0,
+      "prev_year_net_income_common_stockholders": 5883200000.0,
+      "yoy_growth": -0.044
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 7839000000.0,
+      "prev_year_net_income_common_stockholders": 5624200000.0,
+      "yoy_growth": 0.3938
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 7571600000.0,
+      "prev_year_net_income_common_stockholders": 7839000000.0,
+      "yoy_growth": -0.0341
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 9609400000.0,
+      "prev_year_net_income_common_stockholders": 7571600000.0,
+      "yoy_growth": 0.2691
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "ASML",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 2315400000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": -159700000.0,
+      "prev_year_free_cash_flow": 2315400000.0,
+      "yoy_growth": -1.069
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 618000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 2594700000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": -675700000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 385400000.0,
+      "prev_year_free_cash_flow": -159700000.0,
+      "yoy_growth": 3.4133
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 534100000.0,
+      "prev_year_free_cash_flow": 618000000.0,
+      "yoy_growth": -0.1358
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 8839300000.0,
+      "prev_year_free_cash_flow": 2594700000.0,
+      "yoy_growth": 2.4067
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": -475100000.0,
+      "prev_year_free_cash_flow": -675700000.0,
+      "yoy_growth": 0.2969
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 357700000.0,
+      "prev_year_free_cash_flow": 385400000.0,
+      "yoy_growth": -0.0719
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 243700000.0,
+      "prev_year_free_cash_flow": 534100000.0,
+      "yoy_growth": -0.5437
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 10939900000.0,
+      "prev_year_free_cash_flow": 8839300000.0,
+      "yoy_growth": 0.2376
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": -2607900000.0,
+      "prev_year_free_cash_flow": -475100000.0,
+      "yoy_growth": -4.4892
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "ASML",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 3626800000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 9905500000.0,
+      "prev_year_free_cash_flow": 3626800000.0,
+      "yoy_growth": 1.7312
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 7167500000.0,
+      "prev_year_free_cash_flow": 9905500000.0,
+      "yoy_growth": -0.2764
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 3247200000.0,
+      "prev_year_free_cash_flow": 7167500000.0,
+      "yoy_growth": -0.547
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 9083100000.0,
+      "prev_year_free_cash_flow": 3247200000.0,
+      "yoy_growth": 1.7972
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 11027300000.0,
+      "prev_year_free_cash_flow": 9083100000.0,
+      "yoy_growth": 0.214
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "ASML",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": -0.27,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": -0.22,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": -0.1,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 0.05,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.07,
+      "prev_year_eps": -0.27,
+      "yoy_growth": 1.2593
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 0.23,
+      "prev_year_eps": -0.22,
+      "yoy_growth": 2.0455
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.14,
+      "prev_year_eps": -0.1,
+      "yoy_growth": 2.4
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 0.4,
+      "prev_year_eps": 0.05,
+      "yoy_growth": 7.0
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.38,
+      "prev_year_eps": 0.07,
+      "yoy_growth": 4.4286
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 0.4,
+      "prev_year_eps": 0.23,
+      "yoy_growth": 0.7391
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.18,
+      "prev_year_eps": 0.14,
+      "yoy_growth": 0.2857
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 0.21,
+      "prev_year_eps": 0.4,
+      "yoy_growth": -0.475
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": 0.38,
+      "yoy_growth": -0.2632
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 0.61,
+      "prev_year_eps": 0.4,
+      "yoy_growth": 0.525
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 0.65,
+      "prev_year_eps": 0.18,
+      "yoy_growth": 2.6111
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 0.79,
+      "prev_year_eps": 0.21,
+      "yoy_growth": 2.7619
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 0.6,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 1.1429
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 0.65,
+      "prev_year_eps": 0.61,
+      "yoy_growth": 0.0656
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 0.7,
+      "prev_year_eps": 0.65,
+      "yoy_growth": 0.0769
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 0.86,
+      "prev_year_eps": 0.79,
+      "yoy_growth": 0.0886
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 0.64,
+      "prev_year_eps": 0.6,
+      "yoy_growth": 0.0667
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 0.89,
+      "prev_year_eps": 0.65,
+      "yoy_growth": 0.3692
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 0.33,
+      "prev_year_eps": 0.7,
+      "yoy_growth": -0.5286
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": -0.34,
+      "prev_year_eps": 0.86,
+      "yoy_growth": -1.3953
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": -0.46,
+      "prev_year_eps": 0.64,
+      "yoy_growth": -1.7188
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": -0.43,
+      "prev_year_eps": 0.89,
+      "yoy_growth": -1.4831
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 0.08,
+      "prev_year_eps": 0.33,
+      "yoy_growth": -0.7576
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 0.22,
+      "prev_year_eps": -0.34,
+      "yoy_growth": 1.6471
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 0.44,
+      "prev_year_eps": -0.46,
+      "yoy_growth": 1.9565
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 0.9,
+      "prev_year_eps": -0.43,
+      "yoy_growth": 3.093
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 1.03,
+      "prev_year_eps": 0.08,
+      "yoy_growth": 11.875
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 1.63,
+      "prev_year_eps": 0.22,
+      "yoy_growth": 6.4091
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 1.59,
+      "prev_year_eps": 0.44,
+      "yoy_growth": 2.6136
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 1.87,
+      "prev_year_eps": 0.9,
+      "yoy_growth": 1.0778
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 1.53,
+      "prev_year_eps": 1.03,
+      "yoy_growth": 0.4854
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 1.19,
+      "prev_year_eps": 1.63,
+      "yoy_growth": -0.2699
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 1.16,
+      "prev_year_eps": 1.59,
+      "yoy_growth": -0.2704
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 1.18,
+      "prev_year_eps": 1.87,
+      "yoy_growth": -0.369
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 1.05,
+      "prev_year_eps": 1.53,
+      "yoy_growth": -0.3137
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 0.85,
+      "prev_year_eps": 1.19,
+      "yoy_growth": -0.2857
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 0.31,
+      "prev_year_eps": 1.16,
+      "yoy_growth": -0.7328
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 1.18,
+      "yoy_growth": -0.3729
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 0.57,
+      "prev_year_eps": 1.05,
+      "yoy_growth": -0.4571
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 1.47,
+      "prev_year_eps": 0.85,
+      "yoy_growth": 0.7294
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 0.77,
+      "prev_year_eps": 0.31,
+      "yoy_growth": 1.4839
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 1.24,
+      "prev_year_eps": 0.74,
+      "yoy_growth": 0.6757
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 0.57,
+      "yoy_growth": 0.2982
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 0.87,
+      "prev_year_eps": 1.47,
+      "yoy_growth": -0.4082
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 1.21,
+      "prev_year_eps": 0.77,
+      "yoy_growth": 0.5714
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 0.94,
+      "prev_year_eps": 1.24,
+      "yoy_growth": -0.2419
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 0.83,
+      "prev_year_eps": 0.74,
+      "yoy_growth": 0.1216
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 0.74,
+      "prev_year_eps": 0.87,
+      "yoy_growth": -0.1494
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 0.51,
+      "prev_year_eps": 1.21,
+      "yoy_growth": -0.5785
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 0.94,
+      "prev_year_eps": 0.94,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 1.04,
+      "prev_year_eps": 0.83,
+      "yoy_growth": 0.253
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 1.32,
+      "prev_year_eps": 0.74,
+      "yoy_growth": 0.7838
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 1.14,
+      "prev_year_eps": 0.51,
+      "yoy_growth": 1.2353
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 1.22,
+      "prev_year_eps": 0.94,
+      "yoy_growth": 0.2979
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 1.51,
+      "prev_year_eps": 1.04,
+      "yoy_growth": 0.4519
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": 1.76,
+      "prev_year_eps": 1.32,
+      "yoy_growth": 0.3333
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 1.66,
+      "prev_year_eps": 1.14,
+      "yoy_growth": 0.4561
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 1.63,
+      "prev_year_eps": 1.22,
+      "yoy_growth": 0.3361
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 1.86,
+      "prev_year_eps": 1.51,
+      "yoy_growth": 0.2318
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 2.12,
+      "prev_year_eps": 1.76,
+      "yoy_growth": 0.2045
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 0.96,
+      "prev_year_eps": 1.66,
+      "yoy_growth": -0.4217
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 1.27,
+      "prev_year_eps": 1.63,
+      "yoy_growth": -0.2209
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 1.65,
+      "prev_year_eps": 1.86,
+      "yoy_growth": -0.1129
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 2.98,
+      "prev_year_eps": 2.12,
+      "yoy_growth": 0.4057
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 1.03,
+      "prev_year_eps": 0.96,
+      "yoy_growth": 0.0729
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 1.97,
+      "prev_year_eps": 1.27,
+      "yoy_growth": 0.5512
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 2.96,
+      "prev_year_eps": 1.65,
+      "yoy_growth": 0.7939
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 3.85,
+      "prev_year_eps": 2.98,
+      "yoy_growth": 0.2919
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 3.86,
+      "prev_year_eps": 1.03,
+      "yoy_growth": 2.7476
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 3.04,
+      "prev_year_eps": 1.97,
+      "yoy_growth": 0.5431
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 5.02,
+      "prev_year_eps": 2.96,
+      "yoy_growth": 0.6959
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 5.01,
+      "prev_year_eps": 3.85,
+      "yoy_growth": 0.3013
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 1.94,
+      "prev_year_eps": 3.86,
+      "yoy_growth": -0.4974
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 3.77,
+      "prev_year_eps": 3.04,
+      "yoy_growth": 0.2401
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": 4.32,
+      "prev_year_eps": 5.02,
+      "yoy_growth": -0.1394
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 4.69,
+      "prev_year_eps": 5.01,
+      "yoy_growth": -0.0639
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 5.32,
+      "prev_year_eps": 1.94,
+      "yoy_growth": 1.7423
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 5.36,
+      "prev_year_eps": 3.77,
+      "yoy_growth": 0.4218
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 5.23,
+      "prev_year_eps": 4.32,
+      "yoy_growth": 0.2106
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 5.59,
+      "prev_year_eps": 4.69,
+      "yoy_growth": 0.1919
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 3.37,
+      "prev_year_eps": 5.32,
+      "yoy_growth": -0.3665
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 4.32,
+      "prev_year_eps": 5.36,
+      "yoy_growth": -0.194
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": 5.8,
+      "prev_year_eps": 5.23,
+      "yoy_growth": 0.109
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 7.3,
+      "prev_year_eps": 5.59,
+      "yoy_growth": 0.3059
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 6.31,
+      "prev_year_eps": 3.37,
+      "yoy_growth": 0.8724
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 6.69,
+      "prev_year_eps": 4.32,
+      "yoy_growth": 0.5486
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 6.41,
+      "prev_year_eps": 5.8,
+      "yoy_growth": 0.1052
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 8.54,
+      "prev_year_eps": 7.3,
+      "yoy_growth": 0.1699
+    },
+    {
+      "symbol": "ASML",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 8.36,
+      "prev_year_eps": 6.31,
+      "yoy_growth": 0.3249
+    }
+  ]
+}

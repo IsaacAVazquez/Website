@@ -1,0 +1,331 @@
+{
+  "roe": [
+    {
+      "symbol": "BAC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 7270000000.0,
+      "beginning_stockholders_equity": 283319000000.0,
+      "ending_stockholders_equity": 287064000000.0,
+      "avg_equity": 285191500000.0,
+      "roe": 0.0255
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2838000000.0,
+      "beginning_stockholders_equity": 287064000000.0,
+      "ending_stockholders_equity": 291646000000.0,
+      "avg_equity": 289355000000.0,
+      "roe": 0.0098
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 6142000000.0,
+      "beginning_stockholders_equity": 291646000000.0,
+      "ending_stockholders_equity": 293552000000.0,
+      "avg_equity": 292599000000.0,
+      "roe": 0.021
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 6582000000.0,
+      "beginning_stockholders_equity": 293552000000.0,
+      "ending_stockholders_equity": 293892000000.0,
+      "avg_equity": 293722000000.0,
+      "roe": 0.0224
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 6380000000.0,
+      "beginning_stockholders_equity": 293892000000.0,
+      "ending_stockholders_equity": 296512000000.0,
+      "avg_equity": 295202000000.0,
+      "roe": 0.0216
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 6399000000.0,
+      "beginning_stockholders_equity": 296512000000.0,
+      "ending_stockholders_equity": 293963000000.0,
+      "avg_equity": 295237500000.0,
+      "roe": 0.0217
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 6990000000.0,
+      "beginning_stockholders_equity": 293963000000.0,
+      "ending_stockholders_equity": 295581000000.0,
+      "avg_equity": 294772000000.0,
+      "roe": 0.0237
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6825000000.0,
+      "beginning_stockholders_equity": 295581000000.0,
+      "ending_stockholders_equity": 299599000000.0,
+      "avg_equity": 297590000000.0,
+      "roe": 0.0229
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 8040000000.0,
+      "beginning_stockholders_equity": 299599000000.0,
+      "ending_stockholders_equity": 304152000000.0,
+      "avg_equity": 301875500000.0,
+      "roe": 0.0266
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 7200000000.0,
+      "beginning_stockholders_equity": 304152000000.0,
+      "ending_stockholders_equity": 303243000000.0,
+      "avg_equity": 303697500000.0,
+      "roe": 0.0237
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "BAC",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 7270000000.0,
+      "beginning_total_assets": 3123198000000.0,
+      "ending_total_assets": 3153090000000.0,
+      "avg_assets": 3138144000000.0,
+      "roa": 0.0023
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2838000000.0,
+      "beginning_total_assets": 3153090000000.0,
+      "ending_total_assets": 3180151000000.0,
+      "avg_assets": 3166620500000.0,
+      "roa": 0.0009
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 6142000000.0,
+      "beginning_total_assets": 3180151000000.0,
+      "ending_total_assets": 3273803000000.0,
+      "avg_assets": 3226977000000.0,
+      "roa": 0.0019
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 6582000000.0,
+      "beginning_total_assets": 3273803000000.0,
+      "ending_total_assets": 3257996000000.0,
+      "avg_assets": 3265899500000.0,
+      "roa": 0.002
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 6380000000.0,
+      "beginning_total_assets": 3257996000000.0,
+      "ending_total_assets": 3324293000000.0,
+      "avg_assets": 3291144500000.0,
+      "roa": 0.0019
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 6399000000.0,
+      "beginning_total_assets": 3324293000000.0,
+      "ending_total_assets": 3261299000000.0,
+      "avg_assets": 3292796000000.0,
+      "roa": 0.0019
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 6990000000.0,
+      "beginning_total_assets": 3261299000000.0,
+      "ending_total_assets": 3349424000000.0,
+      "avg_assets": 3305361500000.0,
+      "roa": 0.0021
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 6825000000.0,
+      "beginning_total_assets": 3349424000000.0,
+      "ending_total_assets": 3441142000000.0,
+      "avg_assets": 3395283000000.0,
+      "roa": 0.002
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 8040000000.0,
+      "beginning_total_assets": 3441142000000.0,
+      "ending_total_assets": 3403716000000.0,
+      "avg_assets": 3422429000000.0,
+      "roa": 0.0023
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 7200000000.0,
+      "beginning_total_assets": 3403716000000.0,
+      "ending_total_assets": 3411738000000.0,
+      "avg_assets": 3407727000000.0,
+      "roa": 0.0021
+    }
+  ],
+  "roic": [],
+  "equityMultiplier": [
+    {
+      "symbol": "BAC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0255,
+      "roa": 0.0023,
+      "equity_multiplier": 11.09
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0098,
+      "roa": 0.0009,
+      "equity_multiplier": 10.89
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.021,
+      "roa": 0.0019,
+      "equity_multiplier": 11.05
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0224,
+      "roa": 0.002,
+      "equity_multiplier": 11.2
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0216,
+      "roa": 0.0019,
+      "equity_multiplier": 11.37
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0217,
+      "roa": 0.0019,
+      "equity_multiplier": 11.42
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0237,
+      "roa": 0.0021,
+      "equity_multiplier": 11.29
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0229,
+      "roa": 0.002,
+      "equity_multiplier": 11.45
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0266,
+      "roa": 0.0023,
+      "equity_multiplier": 11.57
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0237,
+      "roa": 0.0021,
+      "equity_multiplier": 11.29
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "BAC",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0023,
+      "net_margin": 0.2889,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0009,
+      "net_margin": 0.1292,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0019,
+      "net_margin": 0.2379,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.002,
+      "net_margin": 0.2594,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0019,
+      "net_margin": 0.2517,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0019,
+      "net_margin": 0.2525,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0021,
+      "net_margin": 0.2554,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.002,
+      "net_margin": 0.2579,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0023,
+      "net_margin": 0.2862,
+      "asset_turnover": 0.01
+    },
+    {
+      "symbol": "BAC",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0021,
+      "net_margin": 0.2309,
+      "asset_turnover": 0.01
+    }
+  ]
+}

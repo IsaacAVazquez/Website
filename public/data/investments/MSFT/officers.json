@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "MSFT",
+    "name": "Jonathan  Neilson",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Mr. Bradford L. Smith LCA",
+    "title": "President & Vice Chairman",
+    "age": 66,
+    "born": 1959,
+    "pay": 4532750,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Mr. Jonathan M. Palmer",
+    "title": "Corporate Vice President & Chief Legal Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Mr. Judson B. Althoff",
+    "title": "Executive VP & CEO of Commercial Business",
+    "age": 51,
+    "born": 1974,
+    "pay": 4490115,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Mr. Matthew  Kerner",
+    "title": "CTO & Corporate VP of Worldwide Sales and Solutions",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Mr. Satya  Nadella",
+    "title": "Chairman & CEO",
+    "age": 58,
+    "born": 1967,
+    "pay": 12251294,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Mr. Takeshi  Numoto",
+    "title": "Executive VP & Chief Marketing Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": 2871250,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Ms. Alice L. Jolla",
+    "title": "Corporate VP & Chief Accounting Officer",
+    "age": 59,
+    "born": 1966,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Ms. Amy E. Hood",
+    "title": "Executive VP & CFO",
+    "age": 53,
+    "born": 1972,
+    "pay": 4444191,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Ms. Carolina  Dybeck Happe",
+    "title": "Executive VP & COO",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

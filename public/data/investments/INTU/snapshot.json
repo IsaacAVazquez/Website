@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 15.41,
-      "ttmPe": 25.69,
-      "marketCap": 109499972500,
-      "psRatio": 5.44,
-      "pbRatio": 5.75,
+      "ttmPe": 25.89,
+      "marketCap": 110354512000,
+      "psRatio": 5.48,
+      "pbRatio": 5.79,
       "pegRatio": 0.52
     },
     "profitability": {
@@ -5958,57 +5958,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.46,
-      "costOfEquity": 13.200000000000001,
+      "wacc": 12.23,
+      "costOfEquity": 12.950000000000001,
       "costOfDebt": 0.84,
       "taxRate": 20,
-      "beta": 1.039,
-      "marketCap": 109499972500
+      "beta": 1.0095,
+      "marketCap": 110354512000
     },
     "beta": {
-      "beta5y": 1.039
+      "beta5y": 1.0095
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 598.83,
-        "high": 617.1,
-        "low": 596.67,
-        "close": 614.83,
-        "volume": 1601000
-      },
-      {
-        "date": "2025-04-25",
-        "open": 616.06,
-        "high": 625.21,
-        "low": 612.98,
-        "close": 624.12,
-        "volume": 1540600
-      },
-      {
-        "date": "2025-04-28",
-        "open": 623.32,
-        "high": 628.6,
-        "low": 614.57,
-        "close": 618.23,
-        "volume": 1357300
-      },
-      {
-        "date": "2025-04-29",
-        "open": 618.68,
-        "high": 624.19,
-        "low": 616.08,
-        "close": 623.15,
-        "volume": 843300
-      },
-      {
-        "date": "2025-04-30",
-        "open": 614.09,
-        "high": 629.3,
-        "low": 610.22,
-        "close": 627.47,
-        "volume": 1315400
-      },
       {
         "date": "2025-05-01",
         "open": 624.5,
@@ -7983,7 +7943,47 @@
         "high": 396.73,
         "low": 381,
         "close": 395.95,
-        "volume": 2334900
+        "volume": 2336200
+      },
+      {
+        "date": "2026-04-27",
+        "open": 390.05,
+        "high": 398.99,
+        "low": 384.68,
+        "close": 389.92,
+        "volume": 2380800
+      },
+      {
+        "date": "2026-04-28",
+        "open": 398,
+        "high": 404.21,
+        "low": 396.6,
+        "close": 400.38,
+        "volume": 2225100
+      },
+      {
+        "date": "2026-04-29",
+        "open": 396.69,
+        "high": 396.9,
+        "low": 389.01,
+        "close": 395.08,
+        "volume": 1885000
+      },
+      {
+        "date": "2026-04-30",
+        "open": 382,
+        "high": 390.19,
+        "low": 380,
+        "close": 388.5,
+        "volume": 2450900
+      },
+      {
+        "date": "2026-05-01",
+        "open": 402.2,
+        "high": 408.42,
+        "low": 386.78,
+        "close": 399.04,
+        "volume": 2100400
       }
     ],
     "news": [
@@ -8020,27 +8020,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
-        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
         "title": "Morning Movers: Apple slips following President Trump tariff threat",
         "publisher": "TipRanks",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
-        "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/319684ea-ed04-3cd3-abf1-dde606bed5e9/a-nuclear-power-play-and.html",
         "type": "STORY"
       },
       {
@@ -8052,12 +8036,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
-        "title": "Company News for May 27, 2025",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-27",
-        "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
+        "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
+        "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/319684ea-ed04-3cd3-abf1-dde606bed5e9/a-nuclear-power-play-and.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
+        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
@@ -8065,6 +8057,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-27",
         "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
+        "title": "Company News for May 27, 2025",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
         "type": "STORY"
       }
     ],
@@ -8137,55 +8137,55 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.69,
-        "industryAvg": 24.88
+        "value": 25.89,
+        "industryAvg": 25.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.44,
-        "industryAvg": 4.39
+        "value": 5.48,
+        "industryAvg": 4.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.75,
-        "industryAvg": 4.33
+        "value": 5.79,
+        "industryAvg": 4.38
       },
       {
         "metric": "ROE",
         "value": 3.61,
-        "industryAvg": 6.08
+        "industryAvg": 6.15
       },
       {
         "metric": "ROA",
         "value": 2.0500000000000003,
-        "industryAvg": 3.3000000000000003
+        "industryAvg": 3.35
       },
       {
         "metric": "Gross Margin",
         "value": 77.57,
-        "industryAvg": 63.27
+        "industryAvg": 63.23
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.42,
-        "industryAvg": 14.899999999999999
+        "industryAvg": 15.1
       },
       {
         "metric": "Net Margin",
         "value": 14.899999999999999,
-        "industryAvg": 7.779999999999999
+        "industryAvg": 7.84
       }
     ],
     "dcf": {
-      "fairValue": 352.27,
-      "currentPrice": 395.95,
-      "upside": -11.03,
-      "wacc": 12.46,
+      "fairValue": 361.5,
+      "currentPrice": 399.04,
+      "upside": -9.41,
+      "wacc": 12.23,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 49.4,
         "Terminal growth": 3
       },
-      "recommendation": "Sell"
+      "recommendation": "Hold"
     }
   }
 }

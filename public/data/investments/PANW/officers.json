@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "PANW",
+    "name": "Mr. Bruce R. Byrd",
+    "title": "Executive VP, General Counsel & Corporate Secretary",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PANW",
+    "name": "Mr. Dipak  Golechha",
+    "title": "Executive VP & CFO",
+    "age": 51,
+    "born": 1974,
+    "pay": 1321720,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PANW",
+    "name": "Mr. Hamza  Fodderwala",
+    "title": "Senior VP of Investor Relations & Strategic Finance",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PANW",
+    "name": "Mr. Josh D. Paul",
+    "title": "Senior VP & Chief Accounting Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PANW",
+    "name": "Mr. Lee  Klarich",
+    "title": "Executive VP, Chief Product Officer, CTO & Director",
+    "age": 50,
+    "born": 1975,
+    "pay": 1316720,
+    "exercised": 186284272,
+    "unexercised": 78033680
+  },
+  {
+    "symbol": "PANW",
+    "name": "Mr. Nikesh  Arora C.F.A.",
+    "title": "Chairman & CEO",
+    "age": 57,
+    "born": 1968,
+    "pay": 4878498,
+    "exercised": 571435392,
+    "unexercised": 118937248
+  },
+  {
+    "symbol": "PANW",
+    "name": "Mr. Nir  Zuk",
+    "title": "Founder Emeritus & Advisor",
+    "age": 53,
+    "born": 1972,
+    "pay": 854884,
+    "exercised": 481172928,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PANW",
+    "name": "Mr. Yuming  Mao",
+    "title": "Founder & Chief Architect",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PANW",
+    "name": "Ms. Meerah  Rajavel",
+    "title": "Chief Information Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "PANW",
+    "name": "Nicole  Hockin",
+    "title": "Vice President of Global Communications",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

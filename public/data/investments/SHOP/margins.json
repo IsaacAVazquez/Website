@@ -1,0 +1,792 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30",
+      "gross_profit": 655642000.0,
+      "total_revenue": 1295063000.0,
+      "gross_margin": 0.5063
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30",
+      "gross_profit": 835000000.0,
+      "total_revenue": 1694000000.0,
+      "gross_margin": 0.4929
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30",
+      "gross_profit": 901000000.0,
+      "total_revenue": 1714000000.0,
+      "gross_margin": 0.5257
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "gross_profit": 1062000000.0,
+      "total_revenue": 2144000000.0,
+      "gross_margin": 0.4953
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31",
+      "gross_profit": 957000000.0,
+      "total_revenue": 1861000000.0,
+      "gross_margin": 0.5142
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30",
+      "gross_profit": 1045000000.0,
+      "total_revenue": 2045000000.0,
+      "gross_margin": 0.511
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30",
+      "gross_profit": 1118000000.0,
+      "total_revenue": 2162000000.0,
+      "gross_margin": 0.5171
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "gross_profit": 1352000000.0,
+      "total_revenue": 2812000000.0,
+      "gross_margin": 0.4808
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31",
+      "gross_profit": 1169000000.0,
+      "total_revenue": 2360000000.0,
+      "gross_margin": 0.4953
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30",
+      "gross_profit": 1302000000.0,
+      "total_revenue": 2680000000.0,
+      "gross_margin": 0.4858
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30",
+      "gross_profit": 1391000000.0,
+      "total_revenue": 2844000000.0,
+      "gross_margin": 0.4891
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "gross_profit": 1693000000.0,
+      "total_revenue": 3672000000.0,
+      "gross_margin": 0.4611
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31",
+      "gross_profit": 1541520000.0,
+      "total_revenue": 2929491000.0,
+      "gross_margin": 0.5262
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31",
+      "gross_profit": 2481144000.0,
+      "total_revenue": 4611856000.0,
+      "gross_margin": 0.538
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "gross_profit": 2754000000.0,
+      "total_revenue": 5600000000.0,
+      "gross_margin": 0.4918
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "gross_profit": 3515000000.0,
+      "total_revenue": 7060000000.0,
+      "gross_margin": 0.4979
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "gross_profit": 4472000000.0,
+      "total_revenue": 8880000000.0,
+      "gross_margin": 0.5036
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "gross_profit": 5555000000.0,
+      "total_revenue": 11556000000.0,
+      "gross_margin": 0.4807
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30",
+      "operating_income": -190208000.0,
+      "total_revenue": 1295063000.0,
+      "operating_margin": -0.1469
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30",
+      "operating_income": -296000000.0,
+      "total_revenue": 1694000000.0,
+      "operating_margin": -0.1747
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30",
+      "operating_income": 122000000.0,
+      "total_revenue": 1714000000.0,
+      "operating_margin": 0.0712
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "operating_income": 289000000.0,
+      "total_revenue": 2144000000.0,
+      "operating_margin": 0.1348
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31",
+      "operating_income": 86000000.0,
+      "total_revenue": 1861000000.0,
+      "operating_margin": 0.0462
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30",
+      "operating_income": 283000000.0,
+      "total_revenue": 2045000000.0,
+      "operating_margin": 0.1384
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30",
+      "operating_income": 341000000.0,
+      "total_revenue": 2162000000.0,
+      "operating_margin": 0.1577
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "operating_income": 541000000.0,
+      "total_revenue": 2812000000.0,
+      "operating_margin": 0.1924
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31",
+      "operating_income": 278000000.0,
+      "total_revenue": 2360000000.0,
+      "operating_margin": 0.1178
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30",
+      "operating_income": 371000000.0,
+      "total_revenue": 2680000000.0,
+      "operating_margin": 0.1384
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30",
+      "operating_income": 491000000.0,
+      "total_revenue": 2844000000.0,
+      "operating_margin": 0.1726
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "operating_income": 745000000.0,
+      "total_revenue": 3672000000.0,
+      "operating_margin": 0.2029
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31",
+      "operating_income": 90153000.0,
+      "total_revenue": 2929491000.0,
+      "operating_margin": 0.0308
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31",
+      "operating_income": 350360000.0,
+      "total_revenue": 4611856000.0,
+      "operating_margin": 0.076
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "operating_income": -687000000.0,
+      "total_revenue": 5600000000.0,
+      "operating_margin": -0.1227
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "operating_income": 74000000.0,
+      "total_revenue": 7060000000.0,
+      "operating_margin": 0.0105
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "operating_income": 1302000000.0,
+      "total_revenue": 8880000000.0,
+      "operating_margin": 0.1466
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "operating_income": 1885000000.0,
+      "total_revenue": 11556000000.0,
+      "operating_margin": 0.1631
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": -1203907000.0,
+      "total_revenue": 1295063000.0,
+      "net_margin": -0.9296
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": -1311000000.0,
+      "total_revenue": 1694000000.0,
+      "net_margin": -0.7739
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 718000000.0,
+      "total_revenue": 1714000000.0,
+      "net_margin": 0.4189
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 657000000.0,
+      "total_revenue": 2144000000.0,
+      "net_margin": 0.3064
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": -273000000.0,
+      "total_revenue": 1861000000.0,
+      "net_margin": -0.1467
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 171000000.0,
+      "total_revenue": 2045000000.0,
+      "net_margin": 0.0836
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 828000000.0,
+      "total_revenue": 2162000000.0,
+      "net_margin": 0.383
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1293000000.0,
+      "total_revenue": 2812000000.0,
+      "net_margin": 0.4598
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": -682000000.0,
+      "total_revenue": 2360000000.0,
+      "net_margin": -0.289
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 906000000.0,
+      "total_revenue": 2680000000.0,
+      "net_margin": 0.3381
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 264000000.0,
+      "total_revenue": 2844000000.0,
+      "net_margin": 0.0928
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 743000000.0,
+      "total_revenue": 3672000000.0,
+      "net_margin": 0.2023
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 319509000.0,
+      "total_revenue": 2929491000.0,
+      "net_margin": 0.1091
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 2914659000.0,
+      "total_revenue": 4611856000.0,
+      "net_margin": 0.632
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": -3460000000.0,
+      "total_revenue": 5600000000.0,
+      "net_margin": -0.6179
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 132000000.0,
+      "total_revenue": 7060000000.0,
+      "net_margin": 0.0187
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2019000000.0,
+      "total_revenue": 8880000000.0,
+      "net_margin": 0.2274
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1231000000.0,
+      "total_revenue": 11556000000.0,
+      "net_margin": 0.1065
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1295063000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30",
+      "ebitda": -279000000.0,
+      "total_revenue": 1694000000.0,
+      "ebitda_margin": -0.1647
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30",
+      "ebitda": 135000000.0,
+      "total_revenue": 1714000000.0,
+      "ebitda_margin": 0.0788
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "ebitda": 299000000.0,
+      "total_revenue": 2144000000.0,
+      "ebitda_margin": 0.1395
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31",
+      "ebitda": 96000000.0,
+      "total_revenue": 1861000000.0,
+      "ebitda_margin": 0.0516
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30",
+      "ebitda": 293000000.0,
+      "total_revenue": 2045000000.0,
+      "ebitda_margin": 0.1433
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30",
+      "ebitda": 349000000.0,
+      "total_revenue": 2162000000.0,
+      "ebitda_margin": 0.1614
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "ebitda": 549000000.0,
+      "total_revenue": 2812000000.0,
+      "ebitda_margin": 0.1952
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31",
+      "ebitda": 286000000.0,
+      "total_revenue": 2360000000.0,
+      "ebitda_margin": 0.1212
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30",
+      "ebitda": 379000000.0,
+      "total_revenue": 2680000000.0,
+      "ebitda_margin": 0.1414
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30",
+      "ebitda": 499000000.0,
+      "total_revenue": 2844000000.0,
+      "ebitda_margin": 0.1755
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "ebitda": 752000000.0,
+      "total_revenue": 3672000000.0,
+      "ebitda_margin": 0.2048
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31",
+      "ebitda": 318999000.0,
+      "total_revenue": 2929491000.0,
+      "ebitda_margin": 0.1089
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31",
+      "ebitda": 3208050000.0,
+      "total_revenue": 4611856000.0,
+      "ebitda_margin": 0.6956
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "ebitda": -594000000.0,
+      "total_revenue": 5600000000.0,
+      "ebitda_margin": -0.1061
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "ebitda": 144000000.0,
+      "total_revenue": 7060000000.0,
+      "ebitda_margin": 0.0204
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "ebitda": 1338000000.0,
+      "total_revenue": 8880000000.0,
+      "ebitda_margin": 0.1507
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "ebitda": 1916000000.0,
+      "total_revenue": 11556000000.0,
+      "ebitda_margin": 0.1658
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-06-30",
+      "free_cash_flow": -136716000.0,
+      "total_revenue": 1295063000.0,
+      "fcf_margin": -0.1056
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 97000000.0,
+      "total_revenue": 1694000000.0,
+      "fcf_margin": 0.0573
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 276000000.0,
+      "total_revenue": 1714000000.0,
+      "fcf_margin": 0.161
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 446000000.0,
+      "total_revenue": 2144000000.0,
+      "fcf_margin": 0.208
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 232000000.0,
+      "total_revenue": 1861000000.0,
+      "fcf_margin": 0.1247
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 333000000.0,
+      "total_revenue": 2045000000.0,
+      "fcf_margin": 0.1628
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 421000000.0,
+      "total_revenue": 2162000000.0,
+      "fcf_margin": 0.1947
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 611000000.0,
+      "total_revenue": 2812000000.0,
+      "fcf_margin": 0.2173
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 363000000.0,
+      "total_revenue": 2360000000.0,
+      "fcf_margin": 0.1538
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 422000000.0,
+      "total_revenue": 2680000000.0,
+      "fcf_margin": 0.1575
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 507000000.0,
+      "total_revenue": 2844000000.0,
+      "fcf_margin": 0.1783
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 715000000.0,
+      "total_revenue": 3672000000.0,
+      "fcf_margin": 0.1947
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SHOP",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 382963000.0,
+      "total_revenue": 2929491000.0,
+      "fcf_margin": 0.1307
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 484923000.0,
+      "total_revenue": 4611856000.0,
+      "fcf_margin": 0.1051
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2022-12-31",
+      "free_cash_flow": -186000000.0,
+      "total_revenue": 5600000000.0,
+      "fcf_margin": -0.0332
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 905000000.0,
+      "total_revenue": 7060000000.0,
+      "fcf_margin": 0.1282
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1597000000.0,
+      "total_revenue": 8880000000.0,
+      "fcf_margin": 0.1798
+    },
+    {
+      "symbol": "SHOP",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2007000000.0,
+      "total_revenue": 11556000000.0,
+      "fcf_margin": 0.1737
+    }
+  ]
+}

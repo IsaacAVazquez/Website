@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "BAC",
+    "name": "Mr. Alastair M. Borthwick",
+    "title": "Executive VP & CFO",
+    "age": 56,
+    "born": 1969,
+    "pay": 6750273,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BAC",
+    "name": "Mr. Brian Thomas Moynihan",
+    "title": "Chairman & CEO",
+    "age": 66,
+    "born": 1959,
+    "pay": 2071793,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BAC",
+    "name": "Mr. Dean C. Athanasia",
+    "title": "Co-President",
+    "age": 58,
+    "born": 1967,
+    "pay": 8560177,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BAC",
+    "name": "Mr. E. Lee McEntire",
+    "title": "Head of Investor Relations & Local Markets Organization",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BAC",
+    "name": "Mr. Hari  Gopalkrishnan",
+    "title": "Chief Technology & Information Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BAC",
+    "name": "Mr. James P. DeMare",
+    "title": "Co-President",
+    "age": 55,
+    "born": 1970,
+    "pay": 10072530,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BAC",
+    "name": "Mr. Johnbull E. Okpara",
+    "title": "Chief Accounting Officer",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BAC",
+    "name": "Mr. Matthew M. Koder",
+    "title": "President of Global Corporate & Investment Banking",
+    "age": 53,
+    "born": 1972,
+    "pay": 7349082,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BAC",
+    "name": "Mr. Thomas M. Scrivener",
+    "title": "Chief Operations Executive",
+    "age": 53,
+    "born": 1972,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "BAC",
+    "name": "Ms. Lauren A. Mogensen J.D.",
+    "title": "Global General Counsel",
+    "age": 62,
+    "born": 1963,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

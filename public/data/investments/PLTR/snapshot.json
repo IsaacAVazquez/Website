@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,11 +41,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.63,
-      "ttmPe": 227.13,
-      "marketCap": 342224875913,
-      "psRatio": 76.47,
-      "pbRatio": 46.33,
-      "pegRatio": 0.32
+      "ttmPe": 228.68,
+      "marketCap": 344568718099,
+      "psRatio": 76.99,
+      "pbRatio": 46.64,
+      "pegRatio": 0.33
     },
     "profitability": {
       "roe": 8.709999999999999,
@@ -4807,57 +4807,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.51,
-      "costOfEquity": 17.52,
+      "wacc": 17.11,
+      "costOfEquity": 17.119999999999997,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.5434,
-      "marketCap": 342224875913
+      "beta": 1.5006,
+      "marketCap": 344568718099
     },
     "beta": {
-      "beta5y": 1.5434
+      "beta5y": 1.5006
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 101.53,
-        "high": 108,
-        "low": 100.91,
-        "close": 107.78,
-        "volume": 103190700
-      },
-      {
-        "date": "2025-04-25",
-        "open": 108.05,
-        "high": 112.88,
-        "low": 106.55,
-        "close": 112.78,
-        "volume": 103933800
-      },
-      {
-        "date": "2025-04-28",
-        "open": 113.78,
-        "high": 114.86,
-        "low": 108.87,
-        "close": 114.65,
-        "volume": 111082900
-      },
-      {
-        "date": "2025-04-29",
-        "open": 113.98,
-        "high": 117.23,
-        "low": 113.24,
-        "close": 116.08,
-        "volume": 79709000
-      },
-      {
-        "date": "2025-04-30",
-        "open": 111.61,
-        "high": 118.78,
-        "low": 110.54,
-        "close": 118.44,
-        "volume": 109461700
-      },
       {
         "date": "2025-05-01",
         "open": 120.04,
@@ -6832,7 +6792,47 @@
         "high": 143.33,
         "low": 138.93,
         "close": 143.09,
-        "volume": 38583200
+        "volume": 38677200
+      },
+      {
+        "date": "2026-04-27",
+        "open": 141.25,
+        "high": 145.07,
+        "low": 141.01,
+        "close": 143.1,
+        "volume": 31275400
+      },
+      {
+        "date": "2026-04-28",
+        "open": 142.3,
+        "high": 143.85,
+        "low": 140.42,
+        "close": 141.18,
+        "volume": 24757200
+      },
+      {
+        "date": "2026-04-29",
+        "open": 139.76,
+        "high": 139.76,
+        "low": 134.68,
+        "close": 137.97,
+        "volume": 33348100
+      },
+      {
+        "date": "2026-04-30",
+        "open": 138.48,
+        "high": 140.2,
+        "low": 136.65,
+        "close": 139.11,
+        "volume": 32523600
+      },
+      {
+        "date": "2026-05-01",
+        "open": 143.25,
+        "high": 146.44,
+        "low": 141.39,
+        "close": 144.07,
+        "volume": 33085700
       }
     ],
     "news": [
@@ -6901,40 +6901,30 @@
         "type": "STORY"
       },
       {
-        "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
-        "title": "Nebius Group Stock Earns 84 RS Rating",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
         "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
+        "title": "Nebius Group Stock Earns 84 RS Rating",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
+        "type": "STORY"
       }
     ],
     "officers": [
       {
-        "name": "Dr. Alexander C. Karp J.D.",
-        "title": "Co-Founder, CEO & Director",
-        "age": 58,
-        "yearBorn": 1967,
-        "totalPay": 4630170
+        "name": "Aki Jain",
+        "title": "President of Palantir USG"
       },
       {
         "name": "Kevin Kawasaki",
         "title": "Head of Business Development"
-      },
-      {
-        "name": "Mr. David A. Glazer J.D.",
-        "title": "CFO & Treasurer",
-        "age": 40,
-        "yearBorn": 1985,
-        "totalPay": 476394
       },
       {
         "name": "Mr. David B. MacNaughton",
@@ -6943,92 +6933,63 @@
         "yearBorn": 1950
       },
       {
-        "name": "Mr. Jeffrey Buckley B.S., CPA",
-        "title": "Chief Accounting Officer",
-        "age": 41,
-        "yearBorn": 1984
-      },
-      {
         "name": "Mr. Joseph Todd Lonsdale",
         "title": "Co-Founder",
         "age": 42,
         "yearBorn": 1983
       },
       {
-        "name": "Mr. Peter Andreas Thiel J.D.",
-        "title": "Co-Founder & Chairman",
-        "age": 58,
-        "yearBorn": 1967
-      },
-      {
-        "name": "Mr. Ryan D. Taylor J.D.",
-        "title": "Chief Revenue Officer & Chief Legal Officer",
-        "age": 42,
-        "yearBorn": 1983,
-        "totalPay": 465919
-      },
-      {
-        "name": "Mr. Shyam Sankar",
-        "title": "CTO & Executive VP",
-        "age": 42,
-        "yearBorn": 1983,
-        "totalPay": 807048
-      },
-      {
-        "name": "Mr. Stephen Andrew Cohen",
-        "title": "Co-Founder, President, Secretary & Director",
-        "age": 41,
-        "yearBorn": 1984,
-        "totalPay": 602730
+        "name": "Ms. Ana Drmanovic Soro",
+        "title": "Office of the CFO"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 227.13,
-        "industryAvg": 29.11
+        "value": 228.68,
+        "industryAvg": 27.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 76.47,
-        "industryAvg": 5.98
+        "value": 76.99,
+        "industryAvg": 5.84
       },
       {
         "metric": "P/B Ratio",
-        "value": 46.33,
-        "industryAvg": 7.84
+        "value": 46.64,
+        "industryAvg": 7.51
       },
       {
         "metric": "ROE",
         "value": 8.709999999999999,
-        "industryAvg": 26.729999999999997
+        "industryAvg": 28.050000000000004
       },
       {
         "metric": "ROA",
         "value": 7.1499999999999995,
-        "industryAvg": 11.26
+        "industryAvg": 10.89
       },
       {
         "metric": "Gross Margin",
         "value": 84.65,
-        "industryAvg": 46.04
+        "industryAvg": 47.67
       },
       {
         "metric": "EBITDA Margin",
         "value": 41.4,
-        "industryAvg": 31.14
+        "industryAvg": 32.85
       },
       {
         "metric": "Net Margin",
         "value": 43.269999999999996,
-        "industryAvg": 17.79
+        "industryAvg": 18.69
       }
     ],
     "dcf": {
-      "fairValue": 9.23,
-      "currentPrice": 143.09,
-      "upside": -93.55,
-      "wacc": 17.51,
+      "fairValue": 9.51,
+      "currentPrice": 144.07,
+      "upside": -93.4,
+      "wacc": 17.11,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 50,
         "Terminal growth": 3

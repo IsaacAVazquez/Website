@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30",
+      "gross_profit": 315467994000.0,
+      "total_revenue": 534140808000.0,
+      "gross_margin": 0.5906
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30",
+      "gross_profit": 370498717000.0,
+      "total_revenue": 613142743000.0,
+      "gross_margin": 0.6043
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30",
+      "gross_profit": 260200000000.0,
+      "total_revenue": 480841000000.0,
+      "gross_margin": 0.5411
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30",
+      "gross_profit": 296643000000.0,
+      "total_revenue": 546733000000.0,
+      "gross_margin": 0.5426
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "gross_profit": 331768000000.0,
+      "total_revenue": 625529000000.0,
+      "gross_margin": 0.5304
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31",
+      "gross_profit": 314505269000.0,
+      "total_revenue": 592644201000.0,
+      "gross_margin": 0.5307
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30",
+      "gross_profit": 358124478000.0,
+      "total_revenue": 673510177000.0,
+      "gross_margin": 0.5317
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30",
+      "gross_profit": 439345666000.0,
+      "total_revenue": 759692143000.0,
+      "gross_margin": 0.5783
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "gross_profit": 512378187000.0,
+      "total_revenue": 868461179000.0,
+      "gross_margin": 0.59
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31",
+      "gross_profit": 493395076000.0,
+      "total_revenue": 839253664000.0,
+      "gross_margin": 0.5879
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30",
+      "gross_profit": 547369238000.0,
+      "total_revenue": 933791869000.0,
+      "gross_margin": 0.5862
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30",
+      "gross_profit": 588542829000.0,
+      "total_revenue": 989918318000.0,
+      "gross_margin": 0.5945
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "gross_profit": 651986857000.0,
+      "total_revenue": 1046090449000.0,
+      "gross_margin": 0.6233
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "TSM",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31",
+      "gross_profit": 711130100000.0,
+      "total_revenue": 1339254800000.0,
+      "gross_margin": 0.531
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31",
+      "gross_profit": 819537300000.0,
+      "total_revenue": 1587415000000.0,
+      "gross_margin": 0.5163
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "gross_profit": 1348354800000.0,
+      "total_revenue": 2263891300000.0,
+      "gross_margin": 0.5956
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "gross_profit": 1175110600000.0,
+      "total_revenue": 2161735800000.0,
+      "gross_margin": 0.5436
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "gross_profit": 1624353600000.0,
+      "total_revenue": 2894307700000.0,
+      "gross_margin": 0.5612
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "gross_profit": 2281294000000.0,
+      "total_revenue": 3809054300000.0,
+      "gross_margin": 0.5989
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30",
+      "operating_income": 262123749000.0,
+      "total_revenue": 534140808000.0,
+      "operating_margin": 0.4907
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30",
+      "operating_income": 310324214000.0,
+      "total_revenue": 613142743000.0,
+      "operating_margin": 0.5061
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30",
+      "operating_income": 201958000000.0,
+      "total_revenue": 480841000000.0,
+      "operating_margin": 0.42
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30",
+      "operating_income": 228065000000.0,
+      "total_revenue": 546733000000.0,
+      "operating_margin": 0.4171
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "operating_income": 260205000000.0,
+      "total_revenue": 625529000000.0,
+      "operating_margin": 0.416
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31",
+      "operating_income": 249011733000.0,
+      "total_revenue": 592644201000.0,
+      "operating_margin": 0.4202
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30",
+      "operating_income": 286556000000.0,
+      "total_revenue": 673510177000.0,
+      "operating_margin": 0.4255
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30",
+      "operating_income": 360766289000.0,
+      "total_revenue": 759692143000.0,
+      "operating_margin": 0.4749
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "operating_income": 425698231000.0,
+      "total_revenue": 868461179000.0,
+      "operating_margin": 0.4902
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31",
+      "operating_income": 407089168000.0,
+      "total_revenue": 839253664000.0,
+      "operating_margin": 0.4851
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30",
+      "operating_income": 463423000000.0,
+      "total_revenue": 933791869000.0,
+      "operating_margin": 0.4963
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30",
+      "operating_income": 500684818000.0,
+      "total_revenue": 989918318000.0,
+      "operating_margin": 0.5058
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "operating_income": 564906336000.0,
+      "total_revenue": 1046090449000.0,
+      "operating_margin": 0.54
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "TSM",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31",
+      "operating_income": 566784600000.0,
+      "total_revenue": 1339254800000.0,
+      "operating_margin": 0.4232
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31",
+      "operating_income": 649983600000.0,
+      "total_revenue": 1587415000000.0,
+      "operating_margin": 0.4095
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "operating_income": 1121226500000.0,
+      "total_revenue": 2263891300000.0,
+      "operating_margin": 0.4953
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "operating_income": 921429900000.0,
+      "total_revenue": 2161735800000.0,
+      "operating_margin": 0.4262
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "operating_income": 1322003100000.0,
+      "total_revenue": 2894307700000.0,
+      "operating_margin": 0.4568
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "operating_income": 1936095600000.0,
+      "total_revenue": 3809054300000.0,
+      "operating_margin": 0.5083
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 237027317000.0,
+      "total_revenue": 534140808000.0,
+      "net_margin": 0.4438
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": 280865780000.0,
+      "total_revenue": 613142743000.0,
+      "net_margin": 0.4581
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 181799000000.0,
+      "total_revenue": 480841000000.0,
+      "net_margin": 0.3781
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 211000000000.0,
+      "total_revenue": 546733000000.0,
+      "net_margin": 0.3859
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 238712000000.0,
+      "total_revenue": 625529000000.0,
+      "net_margin": 0.3816
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 225484877000.0,
+      "total_revenue": 592644201000.0,
+      "net_margin": 0.3805
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 247845528000.0,
+      "total_revenue": 673510177000.0,
+      "net_margin": 0.368
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 325257571000.0,
+      "total_revenue": 759692143000.0,
+      "net_margin": 0.4281
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 359792224000.0,
+      "total_revenue": 868461179000.0,
+      "net_margin": 0.4143
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 361564128000.0,
+      "total_revenue": 839253664000.0,
+      "net_margin": 0.4308
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 398273102000.0,
+      "total_revenue": 933791869000.0,
+      "net_margin": 0.4265
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 452301407000.0,
+      "total_revenue": 989918318000.0,
+      "net_margin": 0.4569
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 485465363000.0,
+      "total_revenue": 1046090449000.0,
+      "net_margin": 0.4641
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "TSM",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 510744000000.0,
+      "total_revenue": 1339254800000.0,
+      "net_margin": 0.3814
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 592359200000.0,
+      "total_revenue": 1587415000000.0,
+      "net_margin": 0.3732
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 992923400000.0,
+      "total_revenue": 2263891300000.0,
+      "net_margin": 0.4386
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 851740000000.0,
+      "total_revenue": 2161735800000.0,
+      "net_margin": 0.394
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 1158380200000.0,
+      "total_revenue": 2894307700000.0,
+      "net_margin": 0.4002
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1697604000000.0,
+      "total_revenue": 3809054300000.0,
+      "net_margin": 0.4457
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 534140808000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30",
+      "ebitda": 425406551000.0,
+      "total_revenue": 613142743000.0,
+      "ebitda_margin": 0.6938
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30",
+      "ebitda": 325897688000.0,
+      "total_revenue": 480841000000.0,
+      "ebitda_margin": 0.6778
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30",
+      "ebitda": 375345162000.0,
+      "total_revenue": 546733000000.0,
+      "ebitda_margin": 0.6865
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "ebitda": 410853000000.0,
+      "total_revenue": 625529000000.0,
+      "ebitda_margin": 0.6568
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31",
+      "ebitda": 428264621000.0,
+      "total_revenue": 592644201000.0,
+      "ebitda_margin": 0.7226
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30",
+      "ebitda": 474115309000.0,
+      "total_revenue": 673510177000.0,
+      "ebitda_margin": 0.7039
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30",
+      "ebitda": 386822642000.0,
+      "total_revenue": 759692143000.0,
+      "ebitda_margin": 0.5092
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "ebitda": 621700871000.0,
+      "total_revenue": 868461179000.0,
+      "ebitda_margin": 0.7159
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31",
+      "ebitda": 608711765000.0,
+      "total_revenue": 839253664000.0,
+      "ebitda_margin": 0.7253
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30",
+      "ebitda": 684784211000.0,
+      "total_revenue": 933791869000.0,
+      "ebitda_margin": 0.7333
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30",
+      "ebitda": 691114862000.0,
+      "total_revenue": 989918318000.0,
+      "ebitda_margin": 0.6982
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "ebitda": 757510662000.0,
+      "total_revenue": 1046090449000.0,
+      "ebitda_margin": 0.7241
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "TSM",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31",
+      "ebitda": 918552400000.0,
+      "total_revenue": 1339254800000.0,
+      "ebitda_margin": 0.6859
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31",
+      "ebitda": 1090845100000.0,
+      "total_revenue": 1587415000000.0,
+      "ebitda_margin": 0.6872
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "ebitda": 1593076500000.0,
+      "total_revenue": 2263891300000.0,
+      "ebitda_margin": 0.7037
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "ebitda": 1523506800000.0,
+      "total_revenue": 2161735800000.0,
+      "ebitda_margin": 0.7048
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "ebitda": 2079132000000.0,
+      "total_revenue": 2894307700000.0,
+      "ebitda_margin": 0.7184
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "ebitda": 2742121500000.0,
+      "total_revenue": 3809054300000.0,
+      "ebitda_margin": 0.7199
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "TSM",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 117904136000.0,
+      "total_revenue": 534140808000.0,
+      "fcf_margin": 0.2207
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": 613142743000.0,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-03-31",
+      "free_cash_flow": 82439768000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-06-30",
+      "free_cash_flow": -85234311000.0,
+      "total_revenue": 480841000000.0,
+      "fcf_margin": -0.1773
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 66838184000.0,
+      "total_revenue": 546733000000.0,
+      "fcf_margin": 0.1223
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 224669000000.0,
+      "total_revenue": 625529000000.0,
+      "fcf_margin": 0.3592
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 252951313000.0,
+      "total_revenue": 592644201000.0,
+      "fcf_margin": 0.4268
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 168958547000.0,
+      "total_revenue": 673510177000.0,
+      "fcf_margin": 0.2509
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 184088649000.0,
+      "total_revenue": 759692143000.0,
+      "fcf_margin": 0.2423
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 255196991000.0,
+      "total_revenue": 868461179000.0,
+      "fcf_margin": 0.2938
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 292450115000.0,
+      "total_revenue": 839253664000.0,
+      "fcf_margin": 0.3485
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 197501479000.0,
+      "total_revenue": 933791869000.0,
+      "fcf_margin": 0.2115
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 138385742000.0,
+      "total_revenue": 989918318000.0,
+      "fcf_margin": 0.1398
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 364041064000.0,
+      "total_revenue": 1046090449000.0,
+      "fcf_margin": 0.348
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2026-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "TSM",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 305885100000.0,
+      "total_revenue": 1339254800000.0,
+      "fcf_margin": 0.2284
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 262724300000.0,
+      "total_revenue": 1587415000000.0,
+      "fcf_margin": 0.1655
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 520972800000.0,
+      "total_revenue": 2263891300000.0,
+      "fcf_margin": 0.2301
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 286568900000.0,
+      "total_revenue": 2161735800000.0,
+      "fcf_margin": 0.1326
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 861195500000.0,
+      "total_revenue": 2894307700000.0,
+      "fcf_margin": 0.2975
+    },
+    {
+      "symbol": "TSM",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 992378400000.0,
+      "total_revenue": 3809054300000.0,
+      "fcf_margin": 0.2605
+    }
+  ]
+}

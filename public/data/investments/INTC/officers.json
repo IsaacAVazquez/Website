@@ -1,0 +1,32 @@
+[
+  {
+    "symbol": "INTC",
+    "name": "Mr. Lip-Bu  Tan",
+    "title": "CEO & Director",
+    "age": 66,
+    "born": 1959,
+    "pay": 3828200,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTC",
+    "name": "Mr. Nagasubramaniyan  Chandrasekaran",
+    "title": "EVP, Chief Operations Officer and GM of Intel Foundry",
+    "age": 50,
+    "born": 1975,
+    "pay": 3473100,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "INTC",
+    "name": "Ms. April  Miller Boise J.D.",
+    "title": "Executive VP, Chief Legal Officer & Corporate Secretary",
+    "age": 56,
+    "born": 1969,
+    "pay": 2345700,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

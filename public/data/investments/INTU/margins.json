@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30",
+      "gross_profit": 4808000000.0,
+      "total_revenue": 5632000000.0,
+      "gross_margin": 0.8537
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "gross_profit": 1814000000.0,
+      "total_revenue": 2414000000.0,
+      "gross_margin": 0.7514
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-10-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-01-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-04-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "gross_profit": 1999000000.0,
+      "total_revenue": 2712000000.0,
+      "gross_margin": 0.7371
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31",
+      "gross_profit": 2218000000.0,
+      "total_revenue": 2978000000.0,
+      "gross_margin": 0.7448
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31",
+      "gross_profit": 2531000000.0,
+      "total_revenue": 3386000000.0,
+      "gross_margin": 0.7475
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30",
+      "gross_profit": 5670000000.0,
+      "total_revenue": 6737000000.0,
+      "gross_margin": 0.8416
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "gross_profit": 2401000000.0,
+      "total_revenue": 3184000000.0,
+      "gross_margin": 0.7541
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31",
+      "gross_profit": 2460000000.0,
+      "total_revenue": 3283000000.0,
+      "gross_margin": 0.7493
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31",
+      "gross_profit": 3026000000.0,
+      "total_revenue": 3963000000.0,
+      "gross_margin": 0.7636
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30",
+      "gross_profit": 6560000000.0,
+      "total_revenue": 7754000000.0,
+      "gross_margin": 0.846
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "gross_profit": 2937000000.0,
+      "total_revenue": 3831000000.0,
+      "gross_margin": 0.7666
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31",
+      "gross_profit": 3002000000.0,
+      "total_revenue": 3885000000.0,
+      "gross_margin": 0.7727
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31",
+      "gross_profit": 3608000000.0,
+      "total_revenue": 4651000000.0,
+      "gross_margin": 0.7757
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "INTU",
+      "report_date": "2019-07-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-07-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31",
+      "gross_profit": 7950000000.0,
+      "total_revenue": 9633000000.0,
+      "gross_margin": 0.8253
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "gross_profit": 10320000000.0,
+      "total_revenue": 12726000000.0,
+      "gross_margin": 0.8109
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "gross_profit": 11225000000.0,
+      "total_revenue": 14368000000.0,
+      "gross_margin": 0.7813
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "gross_profit": 12820000000.0,
+      "total_revenue": 16285000000.0,
+      "gross_margin": 0.7872
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "gross_profit": 14983000000.0,
+      "total_revenue": 18831000000.0,
+      "gross_margin": 0.7957
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30",
+      "operating_income": 2395000000.0,
+      "total_revenue": 5632000000.0,
+      "operating_margin": 0.4252
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "operating_income": -75000000.0,
+      "total_revenue": 2414000000.0,
+      "operating_margin": -0.0311
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-10-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-01-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-04-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "operating_income": 27000000.0,
+      "total_revenue": 2712000000.0,
+      "operating_margin": 0.01
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31",
+      "operating_income": 293000000.0,
+      "total_revenue": 2978000000.0,
+      "operating_margin": 0.0984
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31",
+      "operating_income": 369000000.0,
+      "total_revenue": 3386000000.0,
+      "operating_margin": 0.109
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30",
+      "operating_income": 3105000000.0,
+      "total_revenue": 6737000000.0,
+      "operating_margin": 0.4609
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "operating_income": 96000000.0,
+      "total_revenue": 3184000000.0,
+      "operating_margin": 0.0302
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31",
+      "operating_income": 280000000.0,
+      "total_revenue": 3283000000.0,
+      "operating_margin": 0.0853
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31",
+      "operating_income": 597000000.0,
+      "total_revenue": 3963000000.0,
+      "operating_margin": 0.1506
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30",
+      "operating_income": 3721000000.0,
+      "total_revenue": 7754000000.0,
+      "operating_margin": 0.4799
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "operating_income": 340000000.0,
+      "total_revenue": 3831000000.0,
+      "operating_margin": 0.0887
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31",
+      "operating_income": 534000000.0,
+      "total_revenue": 3885000000.0,
+      "operating_margin": 0.1375
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31",
+      "operating_income": 855000000.0,
+      "total_revenue": 4651000000.0,
+      "operating_margin": 0.1838
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "INTU",
+      "report_date": "2019-07-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-07-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31",
+      "operating_income": 2528000000.0,
+      "total_revenue": 9633000000.0,
+      "operating_margin": 0.2624
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "operating_income": 2559000000.0,
+      "total_revenue": 12726000000.0,
+      "operating_margin": 0.2011
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "operating_income": 3141000000.0,
+      "total_revenue": 14368000000.0,
+      "operating_margin": 0.2186
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "operating_income": 3853000000.0,
+      "total_revenue": 16285000000.0,
+      "operating_margin": 0.2366
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "operating_income": 4938000000.0,
+      "total_revenue": 18831000000.0,
+      "operating_margin": 0.2622
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30",
+      "net_income_common_stockholders": 1794000000.0,
+      "total_revenue": 5632000000.0,
+      "net_margin": 0.3185
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": -56000000.0,
+      "total_revenue": 2414000000.0,
+      "net_margin": -0.0232
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-04-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 89000000.0,
+      "total_revenue": 2712000000.0,
+      "net_margin": 0.0328
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 241000000.0,
+      "total_revenue": 2978000000.0,
+      "net_margin": 0.0809
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 353000000.0,
+      "total_revenue": 3386000000.0,
+      "net_margin": 0.1043
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 2389000000.0,
+      "total_revenue": 6737000000.0,
+      "net_margin": 0.3546
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": -20000000.0,
+      "total_revenue": 3184000000.0,
+      "net_margin": -0.0063
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 197000000.0,
+      "total_revenue": 3283000000.0,
+      "net_margin": 0.06
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 471000000.0,
+      "total_revenue": 3963000000.0,
+      "net_margin": 0.1188
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 2820000000.0,
+      "total_revenue": 7754000000.0,
+      "net_margin": 0.3637
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 381000000.0,
+      "total_revenue": 3831000000.0,
+      "net_margin": 0.0995
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 446000000.0,
+      "total_revenue": 3885000000.0,
+      "net_margin": 0.1148
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 693000000.0,
+      "total_revenue": 4651000000.0,
+      "net_margin": 0.149
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "INTU",
+      "report_date": "2019-07-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-07-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31",
+      "net_income_common_stockholders": 2062000000.0,
+      "total_revenue": 9633000000.0,
+      "net_margin": 0.2141
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": 2066000000.0,
+      "total_revenue": 12726000000.0,
+      "net_margin": 0.1623
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 2384000000.0,
+      "total_revenue": 14368000000.0,
+      "net_margin": 0.1659
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": 2963000000.0,
+      "total_revenue": 16285000000.0,
+      "net_margin": 0.1819
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 3869000000.0,
+      "total_revenue": 18831000000.0,
+      "net_margin": 0.2055
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30",
+      "ebitda": null,
+      "total_revenue": 5632000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "ebitda": 54000000.0,
+      "total_revenue": 2414000000.0,
+      "ebitda_margin": 0.0224
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-10-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-01-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-04-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "ebitda": 271000000.0,
+      "total_revenue": 2712000000.0,
+      "ebitda_margin": 0.0999
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31",
+      "ebitda": 520000000.0,
+      "total_revenue": 2978000000.0,
+      "ebitda_margin": 0.1746
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31",
+      "ebitda": 603000000.0,
+      "total_revenue": 3386000000.0,
+      "ebitda_margin": 0.1781
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30",
+      "ebitda": 3330000000.0,
+      "total_revenue": 6737000000.0,
+      "ebitda_margin": 0.4943
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "ebitda": 128000000.0,
+      "total_revenue": 3184000000.0,
+      "ebitda_margin": 0.0402
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31",
+      "ebitda": 474000000.0,
+      "total_revenue": 3283000000.0,
+      "ebitda_margin": 0.1444
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31",
+      "ebitda": 830000000.0,
+      "total_revenue": 3963000000.0,
+      "ebitda_margin": 0.2094
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30",
+      "ebitda": 3953000000.0,
+      "total_revenue": 7754000000.0,
+      "ebitda_margin": 0.5098
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "ebitda": 633000000.0,
+      "total_revenue": 3831000000.0,
+      "ebitda_margin": 0.1652
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31",
+      "ebitda": 828000000.0,
+      "total_revenue": 3885000000.0,
+      "ebitda_margin": 0.2131
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31",
+      "ebitda": 1136000000.0,
+      "total_revenue": 4651000000.0,
+      "ebitda_margin": 0.2442
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "INTU",
+      "report_date": "2019-07-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-07-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31",
+      "ebitda": 2948000000.0,
+      "total_revenue": 9633000000.0,
+      "ebitda_margin": 0.306
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "ebitda": 3369000000.0,
+      "total_revenue": 12726000000.0,
+      "ebitda_margin": 0.2647
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "ebitda": 4043000000.0,
+      "total_revenue": 14368000000.0,
+      "ebitda_margin": 0.2814
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "ebitda": 4581000000.0,
+      "total_revenue": 16285000000.0,
+      "ebitda_margin": 0.2813
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "ebitda": 5890000000.0,
+      "total_revenue": 18831000000.0,
+      "ebitda_margin": 0.3128
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "INTU",
+      "report_date": "2022-04-30",
+      "free_cash_flow": 3259000000.0,
+      "total_revenue": 5632000000.0,
+      "fcf_margin": 0.5787
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "free_cash_flow": 278000000.0,
+      "total_revenue": 2414000000.0,
+      "fcf_margin": 0.1152
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-10-31",
+      "free_cash_flow": 251000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-01-31",
+      "free_cash_flow": 229000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-04-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 802000000.0,
+      "total_revenue": 2712000000.0,
+      "fcf_margin": 0.2957
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-10-31",
+      "free_cash_flow": -181000000.0,
+      "total_revenue": 2978000000.0,
+      "fcf_margin": -0.0608
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 550000000.0,
+      "total_revenue": 3386000000.0,
+      "fcf_margin": 0.1624
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-04-30",
+      "free_cash_flow": 3890000000.0,
+      "total_revenue": 6737000000.0,
+      "fcf_margin": 0.5774
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 375000000.0,
+      "total_revenue": 3184000000.0,
+      "fcf_margin": 0.1178
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 329000000.0,
+      "total_revenue": 3283000000.0,
+      "fcf_margin": 0.1002
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 1038000000.0,
+      "total_revenue": 3963000000.0,
+      "fcf_margin": 0.2619
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-04-30",
+      "free_cash_flow": 4360000000.0,
+      "total_revenue": 7754000000.0,
+      "fcf_margin": 0.5623
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 356000000.0,
+      "total_revenue": 3831000000.0,
+      "fcf_margin": 0.0929
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 599000000.0,
+      "total_revenue": 3885000000.0,
+      "fcf_margin": 0.1542
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 1524000000.0,
+      "total_revenue": 4651000000.0,
+      "fcf_margin": 0.3277
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "INTU",
+      "report_date": "2019-07-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-07-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-07-31",
+      "free_cash_flow": 3125000000.0,
+      "total_revenue": 9633000000.0,
+      "fcf_margin": 0.3244
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-07-31",
+      "free_cash_flow": 3660000000.0,
+      "total_revenue": 12726000000.0,
+      "fcf_margin": 0.2876
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 4786000000.0,
+      "total_revenue": 14368000000.0,
+      "fcf_margin": 0.3331
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 4634000000.0,
+      "total_revenue": 16285000000.0,
+      "fcf_margin": 0.2846
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 6083000000.0,
+      "total_revenue": 18831000000.0,
+      "fcf_margin": 0.323
+    }
+  ]
+}

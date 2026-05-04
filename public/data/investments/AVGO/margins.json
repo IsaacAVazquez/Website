@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30",
+      "gross_profit": 5439000000.0,
+      "total_revenue": 8103000000.0,
+      "gross_margin": 0.6712
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31",
+      "gross_profit": 5681000000.0,
+      "total_revenue": 8464000000.0,
+      "gross_margin": 0.6712
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-01-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-04-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31",
+      "gross_profit": 6164000000.0,
+      "total_revenue": 8876000000.0,
+      "gross_margin": 0.6945
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "gross_profit": 6407000000.0,
+      "total_revenue": 9295000000.0,
+      "gross_margin": 0.6893
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31",
+      "gross_profit": 7375000000.0,
+      "total_revenue": 11961000000.0,
+      "gross_margin": 0.6166
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30",
+      "gross_profit": 7776000000.0,
+      "total_revenue": 12487000000.0,
+      "gross_margin": 0.6227
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31",
+      "gross_profit": 8356000000.0,
+      "total_revenue": 13072000000.0,
+      "gross_margin": 0.6392
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "gross_profit": 9002000000.0,
+      "total_revenue": 14054000000.0,
+      "gross_margin": 0.6405
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31",
+      "gross_profit": 10145000000.0,
+      "total_revenue": 14916000000.0,
+      "gross_margin": 0.6801
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30",
+      "gross_profit": 10197000000.0,
+      "total_revenue": 15004000000.0,
+      "gross_margin": 0.6796
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31",
+      "gross_profit": 10703000000.0,
+      "total_revenue": 15952000000.0,
+      "gross_margin": 0.671
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "gross_profit": 12249000000.0,
+      "total_revenue": 18015000000.0,
+      "gross_margin": 0.6799
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31",
+      "gross_profit": 13157000000.0,
+      "total_revenue": 19311000000.0,
+      "gross_margin": 0.6813
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-10-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31",
+      "gross_profit": 13516000000.0,
+      "total_revenue": 23888000000.0,
+      "gross_margin": 0.5658
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31",
+      "gross_profit": 16844000000.0,
+      "total_revenue": 27450000000.0,
+      "gross_margin": 0.6136
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "gross_profit": 22095000000.0,
+      "total_revenue": 33203000000.0,
+      "gross_margin": 0.6655
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "gross_profit": 24690000000.0,
+      "total_revenue": 35819000000.0,
+      "gross_margin": 0.6893
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "gross_profit": 32509000000.0,
+      "total_revenue": 51574000000.0,
+      "gross_margin": 0.6303
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "gross_profit": 43294000000.0,
+      "total_revenue": 63887000000.0,
+      "gross_margin": 0.6777
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30",
+      "operating_income": 3412000000.0,
+      "total_revenue": 8103000000.0,
+      "operating_margin": 0.4211
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31",
+      "operating_income": 3744000000.0,
+      "total_revenue": 8464000000.0,
+      "operating_margin": 0.4423
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-01-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-04-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31",
+      "operating_income": 4068000000.0,
+      "total_revenue": 8876000000.0,
+      "operating_margin": 0.4583
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "operating_income": 4253000000.0,
+      "total_revenue": 9295000000.0,
+      "operating_margin": 0.4576
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31",
+      "operating_income": 2703000000.0,
+      "total_revenue": 11961000000.0,
+      "operating_margin": 0.226
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30",
+      "operating_income": 3257000000.0,
+      "total_revenue": 12487000000.0,
+      "operating_margin": 0.2608
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31",
+      "operating_income": 4091000000.0,
+      "total_revenue": 13072000000.0,
+      "operating_margin": 0.313
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "operating_income": 4945000000.0,
+      "total_revenue": 14054000000.0,
+      "operating_margin": 0.3519
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31",
+      "operating_income": 6432000000.0,
+      "total_revenue": 14916000000.0,
+      "operating_margin": 0.4312
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30",
+      "operating_income": 5915000000.0,
+      "total_revenue": 15004000000.0,
+      "operating_margin": 0.3942
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31",
+      "operating_income": 6074000000.0,
+      "total_revenue": 15952000000.0,
+      "operating_margin": 0.3808
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "operating_income": 7654000000.0,
+      "total_revenue": 18015000000.0,
+      "operating_margin": 0.4249
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31",
+      "operating_income": 8666000000.0,
+      "total_revenue": 19311000000.0,
+      "operating_margin": 0.4488
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-10-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31",
+      "operating_income": 4212000000.0,
+      "total_revenue": 23888000000.0,
+      "operating_margin": 0.1763
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31",
+      "operating_income": 8667000000.0,
+      "total_revenue": 27450000000.0,
+      "operating_margin": 0.3157
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "operating_income": 14282000000.0,
+      "total_revenue": 33203000000.0,
+      "operating_margin": 0.4301
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "operating_income": 16451000000.0,
+      "total_revenue": 35819000000.0,
+      "operating_margin": 0.4593
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "operating_income": 14996000000.0,
+      "total_revenue": 51574000000.0,
+      "operating_margin": 0.2908
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "operating_income": 26075000000.0,
+      "total_revenue": 63887000000.0,
+      "operating_margin": 0.4081
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30",
+      "net_income_common_stockholders": 2515000000.0,
+      "total_revenue": 8103000000.0,
+      "net_margin": 0.3104
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31",
+      "net_income_common_stockholders": 2999000000.0,
+      "total_revenue": 8464000000.0,
+      "net_margin": 0.3543
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-01-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-04-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31",
+      "net_income_common_stockholders": 3303000000.0,
+      "total_revenue": 8876000000.0,
+      "net_margin": 0.3721
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 3524000000.0,
+      "total_revenue": 9295000000.0,
+      "net_margin": 0.3791
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31",
+      "net_income_common_stockholders": 1325000000.0,
+      "total_revenue": 11961000000.0,
+      "net_margin": 0.1108
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30",
+      "net_income_common_stockholders": 2121000000.0,
+      "total_revenue": 12487000000.0,
+      "net_margin": 0.1699
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31",
+      "net_income_common_stockholders": -1875000000.0,
+      "total_revenue": 13072000000.0,
+      "net_margin": -0.1434
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 4324000000.0,
+      "total_revenue": 14054000000.0,
+      "net_margin": 0.3077
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31",
+      "net_income_common_stockholders": 5503000000.0,
+      "total_revenue": 14916000000.0,
+      "net_margin": 0.3689
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30",
+      "net_income_common_stockholders": 4965000000.0,
+      "total_revenue": 15004000000.0,
+      "net_margin": 0.3309
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31",
+      "net_income_common_stockholders": 4140000000.0,
+      "total_revenue": 15952000000.0,
+      "net_margin": 0.2595
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 8518000000.0,
+      "total_revenue": 18015000000.0,
+      "net_margin": 0.4728
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31",
+      "net_income_common_stockholders": 7349000000.0,
+      "total_revenue": 19311000000.0,
+      "net_margin": 0.3806
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-10-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31",
+      "net_income_common_stockholders": 2663000000.0,
+      "total_revenue": 23888000000.0,
+      "net_margin": 0.1115
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31",
+      "net_income_common_stockholders": 6437000000.0,
+      "total_revenue": 27450000000.0,
+      "net_margin": 0.2345
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "net_income_common_stockholders": 11223000000.0,
+      "total_revenue": 33203000000.0,
+      "net_margin": 0.338
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "net_income_common_stockholders": 14082000000.0,
+      "total_revenue": 35819000000.0,
+      "net_margin": 0.3931
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "net_income_common_stockholders": 5895000000.0,
+      "total_revenue": 51574000000.0,
+      "net_margin": 0.1143
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "net_income_common_stockholders": 23126000000.0,
+      "total_revenue": 63887000000.0,
+      "net_margin": 0.362
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30",
+      "ebitda": null,
+      "total_revenue": 8103000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31",
+      "ebitda": 4960000000.0,
+      "total_revenue": 8464000000.0,
+      "ebitda_margin": 0.586
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-01-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-04-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31",
+      "ebitda": 4912000000.0,
+      "total_revenue": 8876000000.0,
+      "ebitda_margin": 0.5534
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "ebitda": 5304000000.0,
+      "total_revenue": 9295000000.0,
+      "ebitda_margin": 0.5706
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31",
+      "ebitda": 4613000000.0,
+      "total_revenue": 11961000000.0,
+      "ebitda_margin": 0.3857
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30",
+      "ebitda": 5582000000.0,
+      "total_revenue": 12487000000.0,
+      "ebitda_margin": 0.447
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31",
+      "ebitda": 6394000000.0,
+      "total_revenue": 13072000000.0,
+      "ebitda_margin": 0.4891
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "ebitda": 7290000000.0,
+      "total_revenue": 14054000000.0,
+      "ebitda_margin": 0.5187
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31",
+      "ebitda": 8537000000.0,
+      "total_revenue": 14916000000.0,
+      "ebitda_margin": 0.5723
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30",
+      "ebitda": 8020000000.0,
+      "total_revenue": 15004000000.0,
+      "ebitda_margin": 0.5345
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31",
+      "ebitda": 8294000000.0,
+      "total_revenue": 15952000000.0,
+      "ebitda_margin": 0.5199
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "ebitda": 9863000000.0,
+      "total_revenue": 18015000000.0,
+      "ebitda_margin": 0.5475
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31",
+      "ebitda": 11149000000.0,
+      "total_revenue": 19311000000.0,
+      "ebitda_margin": 0.5773
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-10-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31",
+      "ebitda": 11125000000.0,
+      "total_revenue": 23888000000.0,
+      "ebitda_margin": 0.4657
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31",
+      "ebitda": 14691000000.0,
+      "total_revenue": 27450000000.0,
+      "ebitda_margin": 0.5352
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "ebitda": 19155000000.0,
+      "total_revenue": 33203000000.0,
+      "ebitda_margin": 0.5769
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "ebitda": 20554000000.0,
+      "total_revenue": 35819000000.0,
+      "ebitda_margin": 0.5738
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "ebitda": 23879000000.0,
+      "total_revenue": 51574000000.0,
+      "ebitda_margin": 0.463
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "ebitda": 34714000000.0,
+      "total_revenue": 63887000000.0,
+      "ebitda_margin": 0.5434
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-04-30",
+      "free_cash_flow": 4158000000.0,
+      "total_revenue": 8103000000.0,
+      "fcf_margin": 0.5131
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-07-31",
+      "free_cash_flow": 4308000000.0,
+      "total_revenue": 8464000000.0,
+      "fcf_margin": 0.509
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-01-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-04-30",
+      "free_cash_flow": 4380000000.0,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-07-31",
+      "free_cash_flow": 4597000000.0,
+      "total_revenue": 8876000000.0,
+      "fcf_margin": 0.5179
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 4723000000.0,
+      "total_revenue": 9295000000.0,
+      "fcf_margin": 0.5081
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-01-31",
+      "free_cash_flow": 4693000000.0,
+      "total_revenue": 11961000000.0,
+      "fcf_margin": 0.3924
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-04-30",
+      "free_cash_flow": 4448000000.0,
+      "total_revenue": 12487000000.0,
+      "fcf_margin": 0.3562
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-07-31",
+      "free_cash_flow": 4791000000.0,
+      "total_revenue": 13072000000.0,
+      "fcf_margin": 0.3665
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 5482000000.0,
+      "total_revenue": 14054000000.0,
+      "fcf_margin": 0.3901
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-01-31",
+      "free_cash_flow": 6013000000.0,
+      "total_revenue": 14916000000.0,
+      "fcf_margin": 0.4031
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-04-30",
+      "free_cash_flow": 6411000000.0,
+      "total_revenue": 15004000000.0,
+      "fcf_margin": 0.4273
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-07-31",
+      "free_cash_flow": 7024000000.0,
+      "total_revenue": 15952000000.0,
+      "fcf_margin": 0.4403
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 7466000000.0,
+      "total_revenue": 18015000000.0,
+      "fcf_margin": 0.4144
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2026-01-31",
+      "free_cash_flow": 8010000000.0,
+      "total_revenue": 19311000000.0,
+      "fcf_margin": 0.4148
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "AVGO",
+      "report_date": "2019-10-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2020-10-31",
+      "free_cash_flow": 11598000000.0,
+      "total_revenue": 23888000000.0,
+      "fcf_margin": 0.4855
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2021-10-31",
+      "free_cash_flow": 13321000000.0,
+      "total_revenue": 27450000000.0,
+      "fcf_margin": 0.4853
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2022-10-31",
+      "free_cash_flow": 16312000000.0,
+      "total_revenue": 33203000000.0,
+      "fcf_margin": 0.4913
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2023-10-31",
+      "free_cash_flow": 17633000000.0,
+      "total_revenue": 35819000000.0,
+      "fcf_margin": 0.4923
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2024-10-31",
+      "free_cash_flow": 19414000000.0,
+      "total_revenue": 51574000000.0,
+      "fcf_margin": 0.3764
+    },
+    {
+      "symbol": "AVGO",
+      "report_date": "2025-10-31",
+      "free_cash_flow": 26914000000.0,
+      "total_revenue": 63887000000.0,
+      "fcf_margin": 0.4213
+    }
+  ]
+}

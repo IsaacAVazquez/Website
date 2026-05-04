@@ -1,0 +1,52 @@
+[
+  {
+    "symbol": "WDAY",
+    "name": "Mr. Aneel  Bhusri",
+    "title": "Co-Founder, CEO & Executive Chairman of the Board",
+    "age": 59,
+    "born": 1966,
+    "pay": 3759040,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Mr. David Albert Duffield",
+    "title": "Co-Founder & CEO Emeritus",
+    "age": 84,
+    "born": 1941,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Mr. Mark S. Garfield",
+    "title": "Chief Accounting Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Mr. Robert  Enslin",
+    "title": "President & Chief Commercial Officer",
+    "age": 62,
+    "born": 1963,
+    "pay": 633236,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "WDAY",
+    "name": "Mr. Zane C. Rowe",
+    "title": "Chief Financial Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": 2079456,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

@@ -1,0 +1,1641 @@
+{
+  "quarterly_revenue": [
+    {
+      "symbol": "IBM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "revenue": 15536000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "revenue": 14107000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 16691000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "revenue": 15475000000.0,
+      "prev_year_revenue": 15536000000.0,
+      "yoy_growth": -0.0039
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "revenue": 14752000000.0,
+      "prev_year_revenue": 14107000000.0,
+      "yoy_growth": 0.0457
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 17380000000.0,
+      "prev_year_revenue": 16691000000.0,
+      "yoy_growth": 0.0413
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "revenue": 14461000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "revenue": 15769000000.0,
+      "prev_year_revenue": 15475000000.0,
+      "yoy_growth": 0.019
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "revenue": 14967000000.0,
+      "prev_year_revenue": 14752000000.0,
+      "yoy_growth": 0.0146
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 17553000000.0,
+      "prev_year_revenue": 17380000000.0,
+      "yoy_growth": 0.01
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "revenue": 14541000000.0,
+      "prev_year_revenue": 14461000000.0,
+      "yoy_growth": 0.0055
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "revenue": 16977000000.0,
+      "prev_year_revenue": 15769000000.0,
+      "yoy_growth": 0.0766
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "revenue": 16331000000.0,
+      "prev_year_revenue": 14967000000.0,
+      "yoy_growth": 0.0911
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 19687000000.0,
+      "prev_year_revenue": 17553000000.0,
+      "yoy_growth": 0.1216
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "revenue": 15917000000.0,
+      "prev_year_revenue": 14541000000.0,
+      "yoy_growth": 0.0946
+    }
+  ],
+  "annual_revenue": [
+    {
+      "symbol": "IBM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "revenue": 55179000000.0,
+      "prev_year_revenue": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "revenue": 57351000000.0,
+      "prev_year_revenue": 55179000000.0,
+      "yoy_growth": 0.0394
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "revenue": 60530000000.0,
+      "prev_year_revenue": 57351000000.0,
+      "yoy_growth": 0.0554
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "revenue": 61860000000.0,
+      "prev_year_revenue": 60530000000.0,
+      "yoy_growth": 0.022
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "revenue": 62753000000.0,
+      "prev_year_revenue": 61860000000.0,
+      "yoy_growth": 0.0144
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "revenue": 67536000000.0,
+      "prev_year_revenue": 62753000000.0,
+      "yoy_growth": 0.0762
+    }
+  ],
+  "quarterly_operating_income": [
+    {
+      "symbol": "IBM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "operating_income": 1938000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "operating_income": 1549000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 3495000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "operating_income": 2161000000.0,
+      "prev_year_operating_income": 1938000000.0,
+      "yoy_growth": 0.1151
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "operating_income": 2070000000.0,
+      "prev_year_operating_income": 1549000000.0,
+      "yoy_growth": 0.3363
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 3995000000.0,
+      "prev_year_operating_income": 3495000000.0,
+      "yoy_growth": 0.1431
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "operating_income": 1563000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "operating_income": 2434000000.0,
+      "prev_year_operating_income": 2161000000.0,
+      "yoy_growth": 0.1263
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "operating_income": 2177000000.0,
+      "prev_year_operating_income": 2070000000.0,
+      "yoy_growth": 0.0517
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 3901000000.0,
+      "prev_year_operating_income": 3995000000.0,
+      "yoy_growth": -0.0235
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "operating_income": 1765000000.0,
+      "prev_year_operating_income": 1563000000.0,
+      "yoy_growth": 0.1292
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "operating_income": 3086000000.0,
+      "prev_year_operating_income": 2434000000.0,
+      "yoy_growth": 0.2679
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "operating_income": 2792000000.0,
+      "prev_year_operating_income": 2177000000.0,
+      "yoy_growth": 0.2825
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 4849000000.0,
+      "prev_year_operating_income": 3901000000.0,
+      "yoy_growth": 0.243
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "operating_income": 2219000000.0,
+      "prev_year_operating_income": 1765000000.0,
+      "yoy_growth": 0.2572
+    }
+  ],
+  "annual_operating_income": [
+    {
+      "symbol": "IBM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "operating_income": 4662000000.0,
+      "prev_year_operating_income": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "operating_income": 6865000000.0,
+      "prev_year_operating_income": 4662000000.0,
+      "yoy_growth": 0.4725
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "operating_income": 8174000000.0,
+      "prev_year_operating_income": 6865000000.0,
+      "yoy_growth": 0.1907
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "operating_income": 9382000000.0,
+      "prev_year_operating_income": 8174000000.0,
+      "yoy_growth": 0.1478
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "operating_income": 10074000000.0,
+      "prev_year_operating_income": 9382000000.0,
+      "yoy_growth": 0.0738
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "operating_income": 12492000000.0,
+      "prev_year_operating_income": 10074000000.0,
+      "yoy_growth": 0.24
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "IBM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "ebitda": -3043000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 4762000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "ebitda": 3500000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "ebitda": 3378000000.0,
+      "prev_year_ebitda": -3043000000.0,
+      "yoy_growth": 2.1101
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 5316000000.0,
+      "prev_year_ebitda": 4762000000.0,
+      "yoy_growth": 0.1163
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "ebitda": 2637000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "ebitda": 3801000000.0,
+      "prev_year_ebitda": 3500000000.0,
+      "yoy_growth": 0.086
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "ebitda": 895000000.0,
+      "prev_year_ebitda": 3378000000.0,
+      "yoy_growth": -0.7351
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 4843000000.0,
+      "prev_year_ebitda": 5316000000.0,
+      "yoy_growth": -0.089
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "ebitda": 2790000000.0,
+      "prev_year_ebitda": 2637000000.0,
+      "yoy_growth": 0.058
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "ebitda": 4372000000.0,
+      "prev_year_ebitda": 3801000000.0,
+      "yoy_growth": 0.1502
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "ebitda": 4205000000.0,
+      "prev_year_ebitda": 895000000.0,
+      "yoy_growth": 3.6983
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 5917000000.0,
+      "prev_year_ebitda": 4843000000.0,
+      "yoy_growth": 0.2218
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "ebitda": 3134000000.0,
+      "prev_year_ebitda": 2790000000.0,
+      "yoy_growth": 0.1233
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "IBM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "ebitda": 10555000000.0,
+      "prev_year_ebitda": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "ebitda": 12409000000.0,
+      "prev_year_ebitda": 10555000000.0,
+      "yoy_growth": 0.1757
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "ebitda": 7174000000.0,
+      "prev_year_ebitda": 12409000000.0,
+      "yoy_growth": -0.4219
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "ebitda": 14693000000.0,
+      "prev_year_ebitda": 7174000000.0,
+      "yoy_growth": 1.0481
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "ebitda": 12176000000.0,
+      "prev_year_ebitda": 14693000000.0,
+      "yoy_growth": -0.1713
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "ebitda": 17284000000.0,
+      "prev_year_ebitda": 12176000000.0,
+      "yoy_growth": 0.4195
+    }
+  ],
+  "quarterly_net_income": [
+    {
+      "symbol": "IBM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1392000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "net_income_common_stockholders": -3196000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2710000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1583000000.0,
+      "prev_year_net_income_common_stockholders": 1392000000.0,
+      "yoy_growth": 0.1372
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1704000000.0,
+      "prev_year_net_income_common_stockholders": -3196000000.0,
+      "yoy_growth": 1.5332
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 3288000000.0,
+      "prev_year_net_income_common_stockholders": 2710000000.0,
+      "yoy_growth": 0.2133
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1605000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "net_income_common_stockholders": 1834000000.0,
+      "prev_year_net_income_common_stockholders": 1583000000.0,
+      "yoy_growth": 0.1586
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "net_income_common_stockholders": -330000000.0,
+      "prev_year_net_income_common_stockholders": 1704000000.0,
+      "yoy_growth": -1.1937
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 2914000000.0,
+      "prev_year_net_income_common_stockholders": 3288000000.0,
+      "yoy_growth": -0.1137
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1055000000.0,
+      "prev_year_net_income_common_stockholders": 1605000000.0,
+      "yoy_growth": -0.3427
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "net_income_common_stockholders": 2194000000.0,
+      "prev_year_net_income_common_stockholders": 1834000000.0,
+      "yoy_growth": 0.1963
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "net_income_common_stockholders": 1744000000.0,
+      "prev_year_net_income_common_stockholders": -330000000.0,
+      "yoy_growth": 6.2848
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5600000000.0,
+      "prev_year_net_income_common_stockholders": 2914000000.0,
+      "yoy_growth": 0.9218
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "net_income_common_stockholders": 1216000000.0,
+      "prev_year_net_income_common_stockholders": 1055000000.0,
+      "yoy_growth": 0.1526
+    }
+  ],
+  "annual_net_income": [
+    {
+      "symbol": "IBM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5590000000.0,
+      "prev_year_net_income_common_stockholders": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "net_income_common_stockholders": 5743000000.0,
+      "prev_year_net_income_common_stockholders": 5590000000.0,
+      "yoy_growth": 0.0274
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "net_income_common_stockholders": 1639000000.0,
+      "prev_year_net_income_common_stockholders": 5743000000.0,
+      "yoy_growth": -0.7146
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "net_income_common_stockholders": 7502000000.0,
+      "prev_year_net_income_common_stockholders": 1639000000.0,
+      "yoy_growth": 3.5772
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "net_income_common_stockholders": 6023000000.0,
+      "prev_year_net_income_common_stockholders": 7502000000.0,
+      "yoy_growth": -0.1971
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "net_income_common_stockholders": 10593000000.0,
+      "prev_year_net_income_common_stockholders": 6023000000.0,
+      "yoy_growth": 0.7588
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "IBM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "free_cash_flow": 827000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "free_cash_flow": 2137000000.0,
+      "prev_year_free_cash_flow": 827000000.0,
+      "yoy_growth": 1.584
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "free_cash_flow": 2663000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 4015000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "free_cash_flow": 3795000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "free_cash_flow": 1622000000.0,
+      "prev_year_free_cash_flow": 2137000000.0,
+      "yoy_growth": -0.241
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "free_cash_flow": 2457000000.0,
+      "prev_year_free_cash_flow": 2663000000.0,
+      "yoy_growth": -0.0774
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 3886000000.0,
+      "prev_year_free_cash_flow": 4015000000.0,
+      "yoy_growth": -0.0321
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "free_cash_flow": 3975000000.0,
+      "prev_year_free_cash_flow": 3795000000.0,
+      "yoy_growth": 0.0474
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "free_cash_flow": 1328000000.0,
+      "prev_year_free_cash_flow": 1622000000.0,
+      "yoy_growth": -0.1813
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "free_cash_flow": 2665000000.0,
+      "prev_year_free_cash_flow": 2457000000.0,
+      "yoy_growth": 0.0847
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 3487000000.0,
+      "prev_year_free_cash_flow": 3886000000.0,
+      "yoy_growth": -0.1027
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "free_cash_flow": 4778000000.0,
+      "prev_year_free_cash_flow": 3975000000.0,
+      "yoy_growth": 0.202
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "IBM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "free_cash_flow": 14967000000.0,
+      "prev_year_free_cash_flow": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "free_cash_flow": 10028000000.0,
+      "prev_year_free_cash_flow": 14967000000.0,
+      "yoy_growth": -0.33
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "free_cash_flow": 8463000000.0,
+      "prev_year_free_cash_flow": 10028000000.0,
+      "yoy_growth": -0.1561
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "free_cash_flow": 12121000000.0,
+      "prev_year_free_cash_flow": 8463000000.0,
+      "yoy_growth": 0.4322
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "free_cash_flow": 11760000000.0,
+      "prev_year_free_cash_flow": 12121000000.0,
+      "yoy_growth": -0.0298
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "free_cash_flow": 11455000000.0,
+      "prev_year_free_cash_flow": 11760000000.0,
+      "yoy_growth": -0.0259
+    }
+  ],
+  "quarterly_eps": [
+    {
+      "symbol": "IBM",
+      "report_date": "1994-03-31T00:00:00.000",
+      "eps": 0.16,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1994-06-30T00:00:00.000",
+      "eps": 0.28,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1994-09-30T00:00:00.000",
+      "eps": 0.29,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1994-12-31T00:00:00.000",
+      "eps": 0.52,
+      "prev_year_eps": null,
+      "yoy_growth": null
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1995-03-31T00:00:00.000",
+      "eps": 0.52,
+      "prev_year_eps": 0.16,
+      "yoy_growth": 2.25
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1995-06-30T00:00:00.000",
+      "eps": 0.73,
+      "prev_year_eps": 0.28,
+      "yoy_growth": 1.6071
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1995-09-30T00:00:00.000",
+      "eps": -0.24,
+      "prev_year_eps": 0.29,
+      "yoy_growth": -1.8276
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1995-12-31T00:00:00.000",
+      "eps": 0.78,
+      "prev_year_eps": 0.52,
+      "yoy_growth": 0.5
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1996-03-31T00:00:00.000",
+      "eps": 0.35,
+      "prev_year_eps": 0.52,
+      "yoy_growth": -0.3269
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1996-06-30T00:00:00.000",
+      "eps": 0.62,
+      "prev_year_eps": 0.73,
+      "yoy_growth": -0.1507
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1996-09-30T00:00:00.000",
+      "eps": 0.6,
+      "prev_year_eps": -0.24,
+      "yoy_growth": 3.5
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1996-12-31T00:00:00.000",
+      "eps": 0.95,
+      "prev_year_eps": 0.78,
+      "yoy_growth": 0.2179
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1997-03-31T00:00:00.000",
+      "eps": 0.58,
+      "prev_year_eps": 0.35,
+      "yoy_growth": 0.6571
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1997-06-30T00:00:00.000",
+      "eps": 0.72,
+      "prev_year_eps": 0.62,
+      "yoy_growth": 0.1613
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1997-09-30T00:00:00.000",
+      "eps": 0.68,
+      "prev_year_eps": 0.6,
+      "yoy_growth": 0.1333
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1997-12-31T00:00:00.000",
+      "eps": 1.06,
+      "prev_year_eps": 0.95,
+      "yoy_growth": 0.1158
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1998-03-31T00:00:00.000",
+      "eps": 0.53,
+      "prev_year_eps": 0.58,
+      "yoy_growth": -0.0862
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1998-06-30T00:00:00.000",
+      "eps": 0.75,
+      "prev_year_eps": 0.72,
+      "yoy_growth": 0.0417
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1998-09-30T00:00:00.000",
+      "eps": 0.78,
+      "prev_year_eps": 0.68,
+      "yoy_growth": 0.1471
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1998-12-31T00:00:00.000",
+      "eps": 1.24,
+      "prev_year_eps": 1.06,
+      "yoy_growth": 0.1698
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1999-03-31T00:00:00.000",
+      "eps": 0.78,
+      "prev_year_eps": 0.53,
+      "yoy_growth": 0.4717
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1999-06-30T00:00:00.000",
+      "eps": 1.28,
+      "prev_year_eps": 0.75,
+      "yoy_growth": 0.7067
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1999-09-30T00:00:00.000",
+      "eps": 0.93,
+      "prev_year_eps": 0.78,
+      "yoy_growth": 0.1923
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "1999-12-31T00:00:00.000",
+      "eps": 1.12,
+      "prev_year_eps": 1.24,
+      "yoy_growth": -0.0968
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2000-03-31T00:00:00.000",
+      "eps": 0.83,
+      "prev_year_eps": 0.78,
+      "yoy_growth": 0.0641
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2000-06-30T00:00:00.000",
+      "eps": 1.06,
+      "prev_year_eps": 1.28,
+      "yoy_growth": -0.1719
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2000-09-30T00:00:00.000",
+      "eps": 1.08,
+      "prev_year_eps": 0.93,
+      "yoy_growth": 0.1613
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2000-12-31T00:00:00.000",
+      "eps": 1.48,
+      "prev_year_eps": 1.12,
+      "yoy_growth": 0.3214
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2001-03-31T00:00:00.000",
+      "eps": 0.98,
+      "prev_year_eps": 0.83,
+      "yoy_growth": 0.1807
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2001-06-30T00:00:00.000",
+      "eps": 1.15,
+      "prev_year_eps": 1.06,
+      "yoy_growth": 0.0849
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2001-09-30T00:00:00.000",
+      "eps": 0.9,
+      "prev_year_eps": 1.08,
+      "yoy_growth": -0.1667
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2001-12-31T00:00:00.000",
+      "eps": 1.33,
+      "prev_year_eps": 1.48,
+      "yoy_growth": -0.1014
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2002-03-31T00:00:00.000",
+      "eps": 0.68,
+      "prev_year_eps": 0.98,
+      "yoy_growth": -0.3061
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2002-06-30T00:00:00.000",
+      "eps": 0.25,
+      "prev_year_eps": 1.15,
+      "yoy_growth": -0.7826
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2002-09-30T00:00:00.000",
+      "eps": 0.83,
+      "prev_year_eps": 0.9,
+      "yoy_growth": -0.0778
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2002-12-31T00:00:00.000",
+      "eps": 1.11,
+      "prev_year_eps": 1.33,
+      "yoy_growth": -0.1654
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2003-03-31T00:00:00.000",
+      "eps": 0.79,
+      "prev_year_eps": 0.68,
+      "yoy_growth": 0.1618
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2003-06-30T00:00:00.000",
+      "eps": 0.97,
+      "prev_year_eps": 0.25,
+      "yoy_growth": 2.88
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2003-09-30T00:00:00.000",
+      "eps": 1.02,
+      "prev_year_eps": 0.83,
+      "yoy_growth": 0.2289
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2003-12-31T00:00:00.000",
+      "eps": 1.56,
+      "prev_year_eps": 1.11,
+      "yoy_growth": 0.4054
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2004-03-31T00:00:00.000",
+      "eps": 0.79,
+      "prev_year_eps": 0.79,
+      "yoy_growth": 0.0
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2004-06-30T00:00:00.000",
+      "eps": 1.01,
+      "prev_year_eps": 0.97,
+      "yoy_growth": 0.0412
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2004-09-30T00:00:00.000",
+      "eps": 0.92,
+      "prev_year_eps": 1.02,
+      "yoy_growth": -0.098
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2004-12-31T00:00:00.000",
+      "eps": 1.67,
+      "prev_year_eps": 1.56,
+      "yoy_growth": 0.0705
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2005-03-31T00:00:00.000",
+      "eps": 0.84,
+      "prev_year_eps": 0.79,
+      "yoy_growth": 0.0633
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2005-06-30T00:00:00.000",
+      "eps": 1.12,
+      "prev_year_eps": 1.01,
+      "yoy_growth": 0.1089
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2005-09-30T00:00:00.000",
+      "eps": 0.94,
+      "prev_year_eps": 0.92,
+      "yoy_growth": 0.0217
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2005-12-31T00:00:00.000",
+      "eps": 2.01,
+      "prev_year_eps": 1.67,
+      "yoy_growth": 0.2036
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2006-03-31T00:00:00.000",
+      "eps": 1.08,
+      "prev_year_eps": 0.84,
+      "yoy_growth": 0.2857
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2006-06-30T00:00:00.000",
+      "eps": 1.3,
+      "prev_year_eps": 1.12,
+      "yoy_growth": 0.1607
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2006-09-30T00:00:00.000",
+      "eps": 1.45,
+      "prev_year_eps": 0.94,
+      "yoy_growth": 0.5426
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2006-12-31T00:00:00.000",
+      "eps": 2.31,
+      "prev_year_eps": 2.01,
+      "yoy_growth": 0.1493
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2007-03-31T00:00:00.000",
+      "eps": 1.21,
+      "prev_year_eps": 1.08,
+      "yoy_growth": 0.1204
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2007-06-30T00:00:00.000",
+      "eps": 1.55,
+      "prev_year_eps": 1.3,
+      "yoy_growth": 0.1923
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2007-09-30T00:00:00.000",
+      "eps": 1.68,
+      "prev_year_eps": 1.45,
+      "yoy_growth": 0.1586
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2007-12-31T00:00:00.000",
+      "eps": 2.8,
+      "prev_year_eps": 2.31,
+      "yoy_growth": 0.2121
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2008-03-31T00:00:00.000",
+      "eps": 1.64,
+      "prev_year_eps": 1.21,
+      "yoy_growth": 0.3554
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2008-06-30T00:00:00.000",
+      "eps": 1.97,
+      "prev_year_eps": 1.55,
+      "yoy_growth": 0.271
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2008-09-30T00:00:00.000",
+      "eps": 2.04,
+      "prev_year_eps": 1.68,
+      "yoy_growth": 0.2143
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2008-12-31T00:00:00.000",
+      "eps": 3.19,
+      "prev_year_eps": 2.8,
+      "yoy_growth": 0.1393
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2009-03-31T00:00:00.000",
+      "eps": 1.7,
+      "prev_year_eps": 1.64,
+      "yoy_growth": 0.0366
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2009-06-30T00:00:00.000",
+      "eps": 2.32,
+      "prev_year_eps": 1.97,
+      "yoy_growth": 0.1777
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2009-09-30T00:00:00.000",
+      "eps": 2.4,
+      "prev_year_eps": 2.04,
+      "yoy_growth": 0.1765
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2009-12-31T00:00:00.000",
+      "eps": 3.59,
+      "prev_year_eps": 3.19,
+      "yoy_growth": 0.1254
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2010-03-31T00:00:00.000",
+      "eps": 1.97,
+      "prev_year_eps": 1.7,
+      "yoy_growth": 0.1588
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2010-06-30T00:00:00.000",
+      "eps": 2.61,
+      "prev_year_eps": 2.32,
+      "yoy_growth": 0.125
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2010-09-30T00:00:00.000",
+      "eps": 2.82,
+      "prev_year_eps": 2.4,
+      "yoy_growth": 0.175
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2010-12-31T00:00:00.000",
+      "eps": 4.18,
+      "prev_year_eps": 3.59,
+      "yoy_growth": 0.1643
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2011-03-31T00:00:00.000",
+      "eps": 2.31,
+      "prev_year_eps": 1.97,
+      "yoy_growth": 0.1726
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2011-06-30T00:00:00.000",
+      "eps": 3.0,
+      "prev_year_eps": 2.61,
+      "yoy_growth": 0.1494
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2011-09-30T00:00:00.000",
+      "eps": 3.19,
+      "prev_year_eps": 2.82,
+      "yoy_growth": 0.1312
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2011-12-31T00:00:00.000",
+      "eps": 4.62,
+      "prev_year_eps": 4.18,
+      "yoy_growth": 0.1053
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2012-03-31T00:00:00.000",
+      "eps": 2.61,
+      "prev_year_eps": 2.31,
+      "yoy_growth": 0.1299
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2012-06-30T00:00:00.000",
+      "eps": 3.34,
+      "prev_year_eps": 3.0,
+      "yoy_growth": 0.1133
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2012-09-30T00:00:00.000",
+      "eps": 3.33,
+      "prev_year_eps": 3.19,
+      "yoy_growth": 0.0439
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2012-12-31T00:00:00.000",
+      "eps": 5.13,
+      "prev_year_eps": 4.62,
+      "yoy_growth": 0.1104
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2013-03-31T00:00:00.000",
+      "eps": 2.7,
+      "prev_year_eps": 2.61,
+      "yoy_growth": 0.0345
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2013-06-30T00:00:00.000",
+      "eps": 2.91,
+      "prev_year_eps": 3.34,
+      "yoy_growth": -0.1287
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2013-09-30T00:00:00.000",
+      "eps": 3.68,
+      "prev_year_eps": 3.33,
+      "yoy_growth": 0.1051
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2013-12-31T00:00:00.000",
+      "eps": 5.73,
+      "prev_year_eps": 5.13,
+      "yoy_growth": 0.117
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2014-03-31T00:00:00.000",
+      "eps": 2.29,
+      "prev_year_eps": 2.7,
+      "yoy_growth": -0.1519
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2014-06-30T00:00:00.000",
+      "eps": 4.11,
+      "prev_year_eps": 2.91,
+      "yoy_growth": 0.4124
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2014-09-30T00:00:00.000",
+      "eps": 4.73,
+      "prev_year_eps": 3.68,
+      "yoy_growth": 0.2853
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2014-12-31T00:00:00.000",
+      "eps": 5.54,
+      "prev_year_eps": 5.73,
+      "yoy_growth": -0.0332
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2015-03-31T00:00:00.000",
+      "eps": 2.36,
+      "prev_year_eps": 2.29,
+      "yoy_growth": 0.0306
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2015-06-30T00:00:00.000",
+      "eps": 3.53,
+      "prev_year_eps": 4.11,
+      "yoy_growth": -0.1411
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2015-09-30T00:00:00.000",
+      "eps": 3.07,
+      "prev_year_eps": 4.73,
+      "yoy_growth": -0.351
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2015-12-31T00:00:00.000",
+      "eps": 4.6,
+      "prev_year_eps": 5.54,
+      "yoy_growth": -0.1697
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2016-03-31T00:00:00.000",
+      "eps": 2.09,
+      "prev_year_eps": 2.36,
+      "yoy_growth": -0.1144
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2016-06-30T00:00:00.000",
+      "eps": 2.61,
+      "prev_year_eps": 3.53,
+      "yoy_growth": -0.2606
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2016-09-30T00:00:00.000",
+      "eps": 2.98,
+      "prev_year_eps": 3.07,
+      "yoy_growth": -0.0293
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2016-12-31T00:00:00.000",
+      "eps": 4.73,
+      "prev_year_eps": 4.6,
+      "yoy_growth": 0.0283
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2017-03-31T00:00:00.000",
+      "eps": 1.85,
+      "prev_year_eps": 2.09,
+      "yoy_growth": -0.1148
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2017-06-30T00:00:00.000",
+      "eps": 2.48,
+      "prev_year_eps": 2.61,
+      "yoy_growth": -0.0498
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2017-09-30T00:00:00.000",
+      "eps": 2.92,
+      "prev_year_eps": 2.98,
+      "yoy_growth": -0.0201
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2017-12-31T00:00:00.000",
+      "eps": -1.14,
+      "prev_year_eps": 4.73,
+      "yoy_growth": -1.241
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2018-03-31T00:00:00.000",
+      "eps": 1.81,
+      "prev_year_eps": 1.85,
+      "yoy_growth": -0.0216
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2018-06-30T00:00:00.000",
+      "eps": 2.61,
+      "prev_year_eps": 2.48,
+      "yoy_growth": 0.0524
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2018-09-30T00:00:00.000",
+      "eps": 2.94,
+      "prev_year_eps": 2.92,
+      "yoy_growth": 0.0068
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2018-12-31T00:00:00.000",
+      "eps": 2.15,
+      "prev_year_eps": -1.14,
+      "yoy_growth": 2.886
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2019-03-31T00:00:00.000",
+      "eps": 1.78,
+      "prev_year_eps": 1.81,
+      "yoy_growth": -0.0166
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2019-06-30T00:00:00.000",
+      "eps": 2.8,
+      "prev_year_eps": 2.61,
+      "yoy_growth": 0.0728
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2019-09-30T00:00:00.000",
+      "eps": 1.87,
+      "prev_year_eps": 2.94,
+      "yoy_growth": -0.3639
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2019-12-31T00:00:00.000",
+      "eps": 4.11,
+      "prev_year_eps": 2.15,
+      "yoy_growth": 0.9116
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2020-03-31T00:00:00.000",
+      "eps": 1.31,
+      "prev_year_eps": 1.78,
+      "yoy_growth": -0.264
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2020-06-30T00:00:00.000",
+      "eps": 1.52,
+      "prev_year_eps": 2.8,
+      "yoy_growth": -0.4571
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2020-09-30T00:00:00.000",
+      "eps": 1.89,
+      "prev_year_eps": 1.87,
+      "yoy_growth": 0.0107
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2020-12-31T00:00:00.000",
+      "eps": 1.51,
+      "prev_year_eps": 4.11,
+      "yoy_growth": -0.6326
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2021-03-31T00:00:00.000",
+      "eps": 1.06,
+      "prev_year_eps": 1.31,
+      "yoy_growth": -0.1908
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2021-06-30T00:00:00.000",
+      "eps": 1.47,
+      "prev_year_eps": 1.52,
+      "yoy_growth": -0.0329
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2021-09-30T00:00:00.000",
+      "eps": 1.25,
+      "prev_year_eps": 1.89,
+      "yoy_growth": -0.3386
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2021-12-31T00:00:00.000",
+      "eps": 2.57,
+      "prev_year_eps": 1.51,
+      "yoy_growth": 0.702
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-03-31T00:00:00.000",
+      "eps": 0.81,
+      "prev_year_eps": 1.06,
+      "yoy_growth": -0.2358
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-06-30T00:00:00.000",
+      "eps": 1.53,
+      "prev_year_eps": 1.47,
+      "yoy_growth": 0.0408
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-09-30T00:00:00.000",
+      "eps": -3.54,
+      "prev_year_eps": 1.25,
+      "yoy_growth": -3.832
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2022-12-31T00:00:00.000",
+      "eps": 2.96,
+      "prev_year_eps": 2.57,
+      "yoy_growth": 0.1518
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-03-31T00:00:00.000",
+      "eps": 1.01,
+      "prev_year_eps": 0.81,
+      "yoy_growth": 0.2469
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-06-30T00:00:00.000",
+      "eps": 1.72,
+      "prev_year_eps": 1.53,
+      "yoy_growth": 0.1242
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-09-30T00:00:00.000",
+      "eps": 1.84,
+      "prev_year_eps": -3.54,
+      "yoy_growth": 1.5198
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2023-12-31T00:00:00.000",
+      "eps": 3.55,
+      "prev_year_eps": 2.96,
+      "yoy_growth": 0.1993
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-03-31T00:00:00.000",
+      "eps": 1.72,
+      "prev_year_eps": 1.01,
+      "yoy_growth": 0.703
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-06-30T00:00:00.000",
+      "eps": 1.96,
+      "prev_year_eps": 1.72,
+      "yoy_growth": 0.1395
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-09-30T00:00:00.000",
+      "eps": -0.36,
+      "prev_year_eps": 1.84,
+      "yoy_growth": -1.1957
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2024-12-31T00:00:00.000",
+      "eps": 3.09,
+      "prev_year_eps": 3.55,
+      "yoy_growth": -0.1296
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-03-31T00:00:00.000",
+      "eps": 1.12,
+      "prev_year_eps": 1.72,
+      "yoy_growth": -0.3488
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-06-30T00:00:00.000",
+      "eps": 2.31,
+      "prev_year_eps": 1.96,
+      "yoy_growth": 0.1786
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-09-30T00:00:00.000",
+      "eps": 1.84,
+      "prev_year_eps": -0.36,
+      "yoy_growth": 6.1111
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2025-12-31T00:00:00.000",
+      "eps": 5.88,
+      "prev_year_eps": 3.09,
+      "yoy_growth": 0.9029
+    },
+    {
+      "symbol": "IBM",
+      "report_date": "2026-03-31T00:00:00.000",
+      "eps": 1.28,
+      "prev_year_eps": 1.12,
+      "yoy_growth": 0.1429
+    }
+  ]
+}

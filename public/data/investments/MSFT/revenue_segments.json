@@ -1,0 +1,254 @@
+{
+  "by_segment": [
+    {
+      "symbol": "MSFT",
+      "report_date": "2015-09-30",
+      "Corporate and Other": -1281000000.0,
+      "Intelligent Cloud": 0.0,
+      "More Personal Computing": 0.0,
+      "Productivity and Business Processes": 0.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2015-12-31",
+      "Corporate and Other": -1710000000.0,
+      "Intelligent Cloud": 0.0,
+      "More Personal Computing": 0.0,
+      "Productivity and Business Processes": 0.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2016-03-31",
+      "Corporate and Other": -1625000000.0,
+      "Intelligent Cloud": 0.0,
+      "More Personal Computing": 0.0,
+      "Productivity and Business Processes": 0.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2016-06-30",
+      "Corporate and Other": -2027000000.0,
+      "Intelligent Cloud": 0.0,
+      "More Personal Computing": 0.0,
+      "Productivity and Business Processes": 0.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2016-09-30",
+      "Corporate and Other": -1881000000.0,
+      "Intelligent Cloud": 0.0,
+      "More Personal Computing": 0.0,
+      "Productivity and Business Processes": 0.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2016-12-31",
+      "Corporate and Other": -1976000000.0,
+      "Intelligent Cloud": 0.0,
+      "More Personal Computing": 0.0,
+      "Productivity and Business Processes": 0.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2017-03-31",
+      "Corporate and Other": -1467000000.0,
+      "Intelligent Cloud": 0.0,
+      "More Personal Computing": 0.0,
+      "Productivity and Business Processes": 0.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2017-06-30",
+      "Corporate and Other": -1383000000.0,
+      "Intelligent Cloud": 0.0,
+      "More Personal Computing": 0.0,
+      "Productivity and Business Processes": 0.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2020-06-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 13371000000.0,
+      "More Personal Computing": 12910000000.0,
+      "Productivity and Business Processes": 11752000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2020-09-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 12986000000.0,
+      "More Personal Computing": 11849000000.0,
+      "Productivity and Business Processes": 12319000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2020-12-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 14601000000.0,
+      "More Personal Computing": 15122000000.0,
+      "Productivity and Business Processes": 13353000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2021-03-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 15118000000.0,
+      "More Personal Computing": 13036000000.0,
+      "Productivity and Business Processes": 13552000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2021-06-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 17373000000.0,
+      "More Personal Computing": 14086000000.0,
+      "Productivity and Business Processes": 14691000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2021-09-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 16964000000.0,
+      "More Personal Computing": 13314000000.0,
+      "Productivity and Business Processes": 15039000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2021-12-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 18327000000.0,
+      "More Personal Computing": 17465000000.0,
+      "Productivity and Business Processes": 15936000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2022-03-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 19051000000.0,
+      "More Personal Computing": 14520000000.0,
+      "Productivity and Business Processes": 15789000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2022-06-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 20909000000.0,
+      "More Personal Computing": 14356000000.0,
+      "Productivity and Business Processes": 16600000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2022-09-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 20325000000.0,
+      "More Personal Computing": 13332000000.0,
+      "Productivity and Business Processes": 16465000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2022-12-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 21508000000.0,
+      "More Personal Computing": 14237000000.0,
+      "Productivity and Business Processes": 17002000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-03-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 22081000000.0,
+      "More Personal Computing": 13260000000.0,
+      "Productivity and Business Processes": 17516000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-06-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 23993000000.0,
+      "More Personal Computing": 13905000000.0,
+      "Productivity and Business Processes": 18293000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-09-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 24259000000.0,
+      "More Personal Computing": 13666000000.0,
+      "Productivity and Business Processes": 18592000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2023-12-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 25880000000.0,
+      "More Personal Computing": 16891000000.0,
+      "Productivity and Business Processes": 19249000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-03-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 26708000000.0,
+      "More Personal Computing": 15580000000.0,
+      "Productivity and Business Processes": 19570000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-06-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 28515000000.0,
+      "More Personal Computing": 15895000000.0,
+      "Productivity and Business Processes": 20317000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-09-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 24092000000.0,
+      "More Personal Computing": 13176000000.0,
+      "Productivity and Business Processes": 28317000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2024-12-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 25544000000.0,
+      "More Personal Computing": 14651000000.0,
+      "Productivity and Business Processes": 29437000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-03-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 26751000000.0,
+      "More Personal Computing": 13371000000.0,
+      "Productivity and Business Processes": 29944000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-06-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 29878000000.0,
+      "More Personal Computing": 13451000000.0,
+      "Productivity and Business Processes": 33112000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-09-30",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 30897000000.0,
+      "More Personal Computing": 13756000000.0,
+      "Productivity and Business Processes": 33020000000.0
+    },
+    {
+      "symbol": "MSFT",
+      "report_date": "2025-12-31",
+      "Corporate and Other": 0.0,
+      "Intelligent Cloud": 32907000000.0,
+      "More Personal Computing": 14250000000.0,
+      "Productivity and Business Processes": 34116000000.0
+    }
+  ],
+  "by_geography": [],
+  "by_product": []
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "IBM",
+    "name": "Dr. Bernard S. Meyerson Ph.D.",
+    "title": "Chief Innovation Officer Emeritus",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "IBM",
+    "name": "Mr. Arvind  Krishna",
+    "title": "CEO, President & Chairman",
+    "age": 62,
+    "born": 1963,
+    "pay": 7351817,
+    "exercised": 0,
+    "unexercised": 33839440
+  },
+  {
+    "symbol": "IBM",
+    "name": "Mr. Gary D. Cohn",
+    "title": "Executive Vice Chairman",
+    "age": 64,
+    "born": 1961,
+    "pay": 3672470,
+    "exercised": 0,
+    "unexercised": 16222157
+  },
+  {
+    "symbol": "IBM",
+    "name": "Mr. James J. Kavanaugh",
+    "title": "CFO and Senior VP of Finance & Operations",
+    "age": 58,
+    "born": 1967,
+    "pay": 4113265,
+    "exercised": 0,
+    "unexercised": 20841604
+  },
+  {
+    "symbol": "IBM",
+    "name": "Mr. Jonathan H. Adashek",
+    "title": "Senior Vice President of Marketing & Communications",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "IBM",
+    "name": "Mr. Robert D. Thomas",
+    "title": "Senior VP of IBM Software & Chief Commercial Officer",
+    "age": 76,
+    "born": 1949,
+    "pay": 3702023,
+    "exercised": 0,
+    "unexercised": 17113948
+  },
+  {
+    "symbol": "IBM",
+    "name": "Ms. Anne E. Robinson",
+    "title": "Senior VP & Chief Legal Officer",
+    "age": 54,
+    "born": 1971,
+    "pay": 3138695,
+    "exercised": 0,
+    "unexercised": 856166
+  },
+  {
+    "symbol": "IBM",
+    "name": "Ms. Joanne  Wright",
+    "title": "Senior Vice President of Transformation & Operations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "IBM",
+    "name": "Ms. Nickle Jaclyn LaMoreaux",
+    "title": "Senior VP & Chief Human Resources Officer",
+    "age": 45,
+    "born": 1980,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "IBM",
+    "name": "Olympia  McNerney",
+    "title": "Global Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

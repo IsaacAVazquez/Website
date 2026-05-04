@@ -1,0 +1,222 @@
+{
+  "by_segment": [
+    {
+      "symbol": "BLK",
+      "report_date": "2020-06-30",
+      "Advisory and Other": 39000000.0,
+      "Distribution Fees": 253000000.0,
+      "Investment Advisory Performance Fees": 112000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 2966000000.0,
+      "Technology Services": 278000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2020-09-30",
+      "Advisory and Other": 42000000.0,
+      "Distribution Fees": 288000000.0,
+      "Investment Advisory Performance Fees": 532000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3225000000.0,
+      "Technology Services": 282000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2020-12-31",
+      "Advisory and Other": 47000000.0,
+      "Distribution Fees": 314000000.0,
+      "Investment Advisory Performance Fees": 419000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3393000000.0,
+      "Technology Services": 305000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2021-03-31",
+      "Advisory and Other": 31000000.0,
+      "Distribution Fees": 340000000.0,
+      "Investment Advisory Performance Fees": 129000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3592000000.0,
+      "Technology Services": 306000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2021-06-30",
+      "Advisory and Other": 38000000.0,
+      "Distribution Fees": 369000000.0,
+      "Investment Advisory Performance Fees": 340000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3757000000.0,
+      "Technology Services": 316000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2021-09-30",
+      "Advisory and Other": 41000000.0,
+      "Distribution Fees": 401000000.0,
+      "Investment Advisory Performance Fees": 345000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3943000000.0,
+      "Technology Services": 320000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2021-12-31",
+      "Advisory and Other": 59000000.0,
+      "Distribution Fees": 411000000.0,
+      "Investment Advisory Performance Fees": 329000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3968000000.0,
+      "Technology Services": 339000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2022-03-31",
+      "Advisory and Other": 46000000.0,
+      "Distribution Fees": 381000000.0,
+      "Investment Advisory Performance Fees": 98000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3833000000.0,
+      "Technology Services": 341000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2022-06-30",
+      "Advisory and Other": 39000000.0,
+      "Distribution Fees": 361000000.0,
+      "Investment Advisory Performance Fees": 106000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3688000000.0,
+      "Technology Services": 332000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2022-09-30",
+      "Advisory and Other": 35000000.0,
+      "Distribution Fees": 325000000.0,
+      "Investment Advisory Performance Fees": 82000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3531000000.0,
+      "Technology Services": 338000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2022-12-31",
+      "Advisory and Other": 43000000.0,
+      "Distribution Fees": 314000000.0,
+      "Investment Advisory Performance Fees": 228000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3399000000.0,
+      "Technology Services": 353000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2023-03-31",
+      "Advisory and Other": 27000000.0,
+      "Distribution Fees": 319000000.0,
+      "Investment Advisory Performance Fees": 55000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3502000000.0,
+      "Technology Services": 340000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2023-06-30",
+      "Advisory and Other": 56000000.0,
+      "Distribution Fees": 319000000.0,
+      "Investment Advisory Performance Fees": 118000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3611000000.0,
+      "Technology Services": 359000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2023-09-30",
+      "Advisory and Other": 43000000.0,
+      "Distribution Fees": 321000000.0,
+      "Investment Advisory Performance Fees": 70000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3681000000.0,
+      "Technology Services": 407000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2023-12-31",
+      "Advisory and Other": 33000000.0,
+      "Distribution Fees": 303000000.0,
+      "Investment Advisory Performance Fees": 311000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3605000000.0,
+      "Technology Services": 379000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2024-03-31",
+      "Advisory and Other": 59000000.0,
+      "Distribution Fees": 310000000.0,
+      "Investment Advisory Performance Fees": 204000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3778000000.0,
+      "Technology Services": 377000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2024-06-30",
+      "Advisory and Other": 53000000.0,
+      "Distribution Fees": 318000000.0,
+      "Investment Advisory Performance Fees": 164000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3875000000.0,
+      "Technology Services": 395000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2024-09-30",
+      "Advisory and Other": 53000000.0,
+      "Distribution Fees": 323000000.0,
+      "Investment Advisory Performance Fees": 388000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 3881000000.0,
+      "Technology Services": 403000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2024-12-31",
+      "Advisory and Other": 59000000.0,
+      "Distribution Fees": 322000000.0,
+      "Investment Advisory Performance Fees": 451000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 4417000000.0,
+      "Technology Services": 428000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2025-03-31",
+      "Advisory and Other": 58000000.0,
+      "Distribution Fees": 321000000.0,
+      "Investment Advisory Performance Fees": 60000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 4401000000.0,
+      "Technology Services": 436000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2025-06-30",
+      "Advisory and Other": 56000000.0,
+      "Distribution Fees": 320000000.0,
+      "Investment Advisory Performance Fees": 94000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 4454000000.0,
+      "Technology Services": 499000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2025-09-30",
+      "Advisory and Other": 77000000.0,
+      "Distribution Fees": 355000000.0,
+      "Investment Advisory Performance Fees": 516000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 4843000000.0,
+      "Technology Services": 515000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2025-12-31",
+      "Advisory and Other": 86000000.0,
+      "Distribution Fees": 359000000.0,
+      "Investment Advisory Performance Fees": 754000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 5278000000.0,
+      "Technology Services": 531000000.0
+    },
+    {
+      "symbol": "BLK",
+      "report_date": "2026-03-31",
+      "Advisory and Other": 69000000.0,
+      "Distribution Fees": 389000000.0,
+      "Investment Advisory Performance Fees": 272000000.0,
+      "Investment Advisory, Administration, and Securities Lending Fees": 5438000000.0,
+      "Technology Services": 530000000.0
+    }
+  ],
+  "by_geography": [],
+  "by_product": []
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "CDNS",
+    "name": "Dr. Anirudh  Devgan Ph.D.",
+    "title": "CEO, President & Director",
+    "age": 55,
+    "born": 1970,
+    "pay": 2271043,
+    "exercised": 28832058,
+    "unexercised": 83347712
+  },
+  {
+    "symbol": "CDNS",
+    "name": "Dr. Chin-Chi  Teng Ph.D.",
+    "title": "Senior VP and GM of the Digital & Signoff Group",
+    "age": 59,
+    "born": 1966,
+    "pay": 1114478,
+    "exercised": 10462365,
+    "unexercised": 1899150
+  },
+  {
+    "symbol": "CDNS",
+    "name": "Dr. Paul  Cunningham Ph.D.",
+    "title": "Senior VP & GM of the System and Verification Group",
+    "age": 47,
+    "born": 1978,
+    "pay": 1136083,
+    "exercised": 525950,
+    "unexercised": 6453821
+  },
+  {
+    "symbol": "CDNS",
+    "name": "Mr. Ariel  Sella",
+    "title": "Co-Founder",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "CDNS",
+    "name": "Mr. John M. Wall",
+    "title": "Senior VP & CFO",
+    "age": 54,
+    "born": 1971,
+    "pay": 1383058,
+    "exercised": 4010486,
+    "unexercised": 180620
+  },
+  {
+    "symbol": "CDNS",
+    "name": "Mr. Marc  Taxay J.D.",
+    "title": "Senior VP, General Counsel & Corporate Secretary",
+    "age": 56,
+    "born": 1969,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "CDNS",
+    "name": "Mr. Paul  Scannell",
+    "title": "Senior Vice President of Customer Success Team",
+    "age": 59,
+    "born": 1966,
+    "pay": 1208527,
+    "exercised": 0,
+    "unexercised": 153548
+  },
+  {
+    "symbol": "CDNS",
+    "name": "Mr. Richard  Gu",
+    "title": "Vice President of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "CDNS",
+    "name": "Mr. Tarak  Ray",
+    "title": "Chief Information Officer & Senior VP",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "CDNS",
+    "name": "Ms. Yoon  Kim",
+    "title": "Corporate VP of Global Human Resources",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

@@ -1,0 +1,190 @@
+{
+  "by_segment": [
+    {
+      "symbol": "INTU",
+      "report_date": "2019-12-31",
+      "Consumer": 499000000.0,
+      "Credit Karma": 0.0,
+      "ProConnect": 224000000.0,
+      "Small Business and Self-Employed": 973000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-03-31",
+      "Consumer": 1827000000.0,
+      "Credit Karma": 0.0,
+      "ProConnect": 193000000.0,
+      "Small Business and Self-Employed": 982000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-06-30",
+      "Consumer": 710000000.0,
+      "Credit Karma": 0.0,
+      "ProConnect": 57000000.0,
+      "Small Business and Self-Employed": 1049000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-09-30",
+      "Consumer": 119000000.0,
+      "Credit Karma": 0.0,
+      "ProConnect": 23000000.0,
+      "Small Business and Self-Employed": 1181000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2020-12-31",
+      "Consumer": 147000000.0,
+      "Credit Karma": 144000000.0,
+      "ProConnect": 207000000.0,
+      "Small Business and Self-Employed": 1078000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-03-31",
+      "Consumer": 2445000000.0,
+      "Credit Karma": 316000000.0,
+      "ProConnect": 235000000.0,
+      "Small Business and Self-Employed": 1177000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-06-30",
+      "Consumer": 852000000.0,
+      "Credit Karma": 405000000.0,
+      "ProConnect": 52000000.0,
+      "Small Business and Self-Employed": 1252000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-09-30",
+      "Consumer": 120000000.0,
+      "Credit Karma": 418000000.0,
+      "ProConnect": 26000000.0,
+      "Small Business and Self-Employed": 1443000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2021-12-31",
+      "Consumer": 411000000.0,
+      "Credit Karma": 444000000.0,
+      "ProConnect": 237000000.0,
+      "Small Business and Self-Employed": 1581000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-03-31",
+      "Consumer": 3239000000.0,
+      "Credit Karma": 468000000.0,
+      "ProConnect": 258000000.0,
+      "Small Business and Self-Employed": 1667000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-06-30",
+      "Consumer": 145000000.0,
+      "Credit Karma": 475000000.0,
+      "ProConnect": 25000000.0,
+      "Small Business and Self-Employed": 1769000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-09-30",
+      "Consumer": 150000000.0,
+      "Credit Karma": 425000000.0,
+      "ProConnect": 34000000.0,
+      "Small Business and Self-Employed": 1988000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2022-12-31",
+      "Consumer": 516000000.0,
+      "Credit Karma": 375000000.0,
+      "ProConnect": 253000000.0,
+      "Small Business and Self-Employed": 1897000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-03-31",
+      "Consumer": 3341000000.0,
+      "Credit Karma": 410000000.0,
+      "ProConnect": 246000000.0,
+      "Small Business and Self-Employed": 2021000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-06-30",
+      "Consumer": 128000000.0,
+      "Credit Karma": 424000000.0,
+      "ProConnect": 28000000.0,
+      "Small Business and Self-Employed": 2132000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-09-30",
+      "Consumer": 187000000.0,
+      "Credit Karma": 405000000.0,
+      "ProConnect": 42000000.0,
+      "Small Business and Self-Employed": 2344000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2023-12-31",
+      "Consumer": 492000000.0,
+      "Credit Karma": 375000000.0,
+      "ProConnect": 274000000.0,
+      "Small Business and Self-Employed": 2245000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-03-31",
+      "Consumer": 3653000000.0,
+      "Credit Karma": 443000000.0,
+      "ProConnect": 254000000.0,
+      "Small Business and Self-Employed": 2387000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-06-30",
+      "Consumer": 113000000.0,
+      "Credit Karma": 485000000.0,
+      "ProConnect": 29000000.0,
+      "Small Business and Self-Employed": 2557000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-09-30",
+      "Consumer": 176000000.0,
+      "Credit Karma": 524000000.0,
+      "ProConnect": 39000000.0,
+      "Small Business and Self-Employed": 2544000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2024-12-31",
+      "Consumer": 509000000.0,
+      "Credit Karma": 511000000.0,
+      "ProConnect": 272000000.0,
+      "Small Business and Self-Employed": 2671000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-03-31",
+      "Consumer": 4048000000.0,
+      "Credit Karma": 579000000.0,
+      "ProConnect": 278000000.0,
+      "Small Business and Self-Employed": 2849000000.0
+    },
+    {
+      "symbol": "INTU",
+      "report_date": "2025-06-30",
+      "Consumer": 137000000.0,
+      "Credit Karma": 649000000.0,
+      "ProConnect": 32000000.0,
+      "Small Business and Self-Employed": 3013000000.0
+    }
+  ],
+  "by_geography": [],
+  "by_product": []
+}

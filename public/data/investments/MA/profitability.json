@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "MA",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 3198000000.0,
+      "beginning_stockholders_equity": 5504000000.0,
+      "ending_stockholders_equity": 6311000000.0,
+      "avg_equity": 5907500000.0,
+      "roe": 0.5413
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2791000000.0,
+      "beginning_stockholders_equity": 6311000000.0,
+      "ending_stockholders_equity": 6929000000.0,
+      "avg_equity": 6620000000.0,
+      "roe": 0.4216
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 3011000000.0,
+      "beginning_stockholders_equity": 6929000000.0,
+      "ending_stockholders_equity": 7243000000.0,
+      "avg_equity": 7086000000.0,
+      "roe": 0.4249
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 3258000000.0,
+      "beginning_stockholders_equity": 7243000000.0,
+      "ending_stockholders_equity": 7421000000.0,
+      "avg_equity": 7332000000.0,
+      "roe": 0.4444
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 3263000000.0,
+      "beginning_stockholders_equity": 7421000000.0,
+      "ending_stockholders_equity": 7440000000.0,
+      "avg_equity": 7430500000.0,
+      "roe": 0.4391
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3342000000.0,
+      "beginning_stockholders_equity": 7440000000.0,
+      "ending_stockholders_equity": 6485000000.0,
+      "avg_equity": 6962500000.0,
+      "roe": 0.48
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 3280000000.0,
+      "beginning_stockholders_equity": 6485000000.0,
+      "ending_stockholders_equity": 6671000000.0,
+      "avg_equity": 6578000000.0,
+      "roe": 0.4986
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3701000000.0,
+      "beginning_stockholders_equity": 6671000000.0,
+      "ending_stockholders_equity": 7853000000.0,
+      "avg_equity": 7262000000.0,
+      "roe": 0.5096
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3927000000.0,
+      "beginning_stockholders_equity": 7853000000.0,
+      "ending_stockholders_equity": 7904000000.0,
+      "avg_equity": 7878500000.0,
+      "roe": 0.4984
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4060000000.0,
+      "beginning_stockholders_equity": 7904000000.0,
+      "ending_stockholders_equity": 7737000000.0,
+      "avg_equity": 7820500000.0,
+      "roe": 0.5191
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 3882000000.0,
+      "beginning_stockholders_equity": 7737000000.0,
+      "ending_stockholders_equity": 6719000000.0,
+      "avg_equity": 7228000000.0,
+      "roe": 0.5371
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "MA",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 3198000000.0,
+      "beginning_total_assets": 39004000000.0,
+      "ending_total_assets": 39674000000.0,
+      "avg_assets": 39339000000.0,
+      "roa": 0.0813
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2791000000.0,
+      "beginning_total_assets": 39674000000.0,
+      "ending_total_assets": 42448000000.0,
+      "avg_assets": 41061000000.0,
+      "roa": 0.068
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 3011000000.0,
+      "beginning_total_assets": 42448000000.0,
+      "ending_total_assets": 42602000000.0,
+      "avg_assets": 42525000000.0,
+      "roa": 0.0708
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 3258000000.0,
+      "beginning_total_assets": 42602000000.0,
+      "ending_total_assets": 42333000000.0,
+      "avg_assets": 42467500000.0,
+      "roa": 0.0767
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 3263000000.0,
+      "beginning_total_assets": 42333000000.0,
+      "ending_total_assets": 47237000000.0,
+      "avg_assets": 44785000000.0,
+      "roa": 0.0729
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3342000000.0,
+      "beginning_total_assets": 47237000000.0,
+      "ending_total_assets": 48081000000.0,
+      "avg_assets": 47659000000.0,
+      "roa": 0.0701
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 3280000000.0,
+      "beginning_total_assets": 48081000000.0,
+      "ending_total_assets": 48470000000.0,
+      "avg_assets": 48275500000.0,
+      "roa": 0.0679
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 3701000000.0,
+      "beginning_total_assets": 48470000000.0,
+      "ending_total_assets": 51431000000.0,
+      "avg_assets": 49950500000.0,
+      "roa": 0.0741
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 3927000000.0,
+      "beginning_total_assets": 51431000000.0,
+      "ending_total_assets": 53289000000.0,
+      "avg_assets": 52360000000.0,
+      "roa": 0.075
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4060000000.0,
+      "beginning_total_assets": 53289000000.0,
+      "ending_total_assets": 54157000000.0,
+      "avg_assets": 53723000000.0,
+      "roa": 0.0756
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 3882000000.0,
+      "beginning_total_assets": 54157000000.0,
+      "ending_total_assets": 52449000000.0,
+      "avg_assets": 53303000000.0,
+      "roa": 0.0728
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "MA",
+      "report_date": "2023-09-30",
+      "ebit": 3912000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 3325200000.0,
+      "beginning_invested_capital": 21124000000.0,
+      "ending_invested_capital": 21877000000.0,
+      "avg_invested_capital": 21500500000.0,
+      "roic": 0.1547
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2023-12-31",
+      "ebit": 3469000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 2913960000.0,
+      "beginning_invested_capital": 21877000000.0,
+      "ending_invested_capital": 22610000000.0,
+      "avg_invested_capital": 22243500000.0,
+      "roic": 0.131
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-03-31",
+      "ebit": 3708000000.0,
+      "tax_rate_for_calcs": 0.15,
+      "nopat": 3151800000.0,
+      "beginning_invested_capital": 22610000000.0,
+      "ending_invested_capital": 22872000000.0,
+      "avg_invested_capital": 22741000000.0,
+      "roic": 0.1386
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-06-30",
+      "ebit": 4092000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 3396360000.0,
+      "beginning_invested_capital": 22872000000.0,
+      "ending_invested_capital": 23026000000.0,
+      "avg_invested_capital": 22949000000.0,
+      "roic": 0.148
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-09-30",
+      "ebit": 4025000000.0,
+      "tax_rate_for_calcs": 0.16,
+      "nopat": 3381000000.0,
+      "beginning_invested_capital": 23026000000.0,
+      "ending_invested_capital": 25798000000.0,
+      "avg_invested_capital": 24412000000.0,
+      "roic": 0.1385
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-12-31",
+      "ebit": 4075000000.0,
+      "tax_rate_for_calcs": 0.14,
+      "nopat": 3504500000.0,
+      "beginning_invested_capital": 25798000000.0,
+      "ending_invested_capital": 24711000000.0,
+      "avg_invested_capital": 25254500000.0,
+      "roic": 0.1388
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-03-31",
+      "ebit": 4213000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 3412530000.0,
+      "beginning_invested_capital": 24711000000.0,
+      "ending_invested_capital": 25473000000.0,
+      "avg_invested_capital": 25092000000.0,
+      "roic": 0.136
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-06-30",
+      "ebit": 4867000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 3844930000.0,
+      "beginning_invested_capital": 25473000000.0,
+      "ending_invested_capital": 26823000000.0,
+      "avg_invested_capital": 26148000000.0,
+      "roic": 0.147
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-09-30",
+      "ebit": 5185000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 4044300000.0,
+      "beginning_invested_capital": 26823000000.0,
+      "ending_invested_capital": 26887000000.0,
+      "avg_invested_capital": 26855000000.0,
+      "roic": 0.1506
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-12-31",
+      "ebit": 5035000000.0,
+      "tax_rate_for_calcs": 0.17,
+      "nopat": 4179050000.0,
+      "beginning_invested_capital": 26887000000.0,
+      "ending_invested_capital": 26737000000.0,
+      "avg_invested_capital": 26812000000.0,
+      "roic": 0.1559
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2026-03-31",
+      "ebit": 4997000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 4047570000.0,
+      "beginning_invested_capital": 26737000000.0,
+      "ending_invested_capital": 25679000000.0,
+      "avg_invested_capital": 26208000000.0,
+      "roic": 0.1544
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "MA",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.5413,
+      "roa": 0.0813,
+      "equity_multiplier": 6.66
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.4216,
+      "roa": 0.068,
+      "equity_multiplier": 6.2
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.4249,
+      "roa": 0.0708,
+      "equity_multiplier": 6.0
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.4444,
+      "roa": 0.0767,
+      "equity_multiplier": 5.79
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.4391,
+      "roa": 0.0729,
+      "equity_multiplier": 6.02
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.48,
+      "roa": 0.0701,
+      "equity_multiplier": 6.85
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.4986,
+      "roa": 0.0679,
+      "equity_multiplier": 7.34
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.5096,
+      "roa": 0.0741,
+      "equity_multiplier": 6.88
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.4984,
+      "roa": 0.075,
+      "equity_multiplier": 6.65
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.5191,
+      "roa": 0.0756,
+      "equity_multiplier": 6.87
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.5371,
+      "roa": 0.0728,
+      "equity_multiplier": 7.38
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "MA",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0813,
+      "net_margin": 0.4895,
+      "asset_turnover": 0.17
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.068,
+      "net_margin": 0.4262,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0708,
+      "net_margin": 0.4743,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0767,
+      "net_margin": 0.468,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.0729,
+      "net_margin": 0.4428,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0701,
+      "net_margin": 0.4463,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0679,
+      "net_margin": 0.4524,
+      "asset_turnover": 0.15
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0741,
+      "net_margin": 0.4551,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.075,
+      "net_margin": 0.4565,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0756,
+      "net_margin": 0.461,
+      "asset_turnover": 0.16
+    },
+    {
+      "symbol": "MA",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0728,
+      "net_margin": 0.4623,
+      "asset_turnover": 0.16
+    }
+  ]
+}
