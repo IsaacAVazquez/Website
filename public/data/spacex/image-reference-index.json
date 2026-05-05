@@ -276,13 +276,7 @@
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_on_slc_image_20241024165956.jpg"
         }
       ],
-      "patch": [
-        {
-          "label": "NROL-146",
-          "localPath": "/data/spacex/images/4b68ceb67c83d734.png",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-146_mission_patch_20241020111152.png"
-        }
-      ],
+      "patch": [],
       "rocket": [
         {
           "label": "Falcon 9 Block 5",
@@ -1001,7 +995,13 @@
         }
       ],
       "patch": [],
-      "rocket": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
       "spacecraft": [],
       "pad": [
         {
