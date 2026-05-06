@@ -164,7 +164,7 @@ export function InvestmentsDashboard({
         </div>
       </aside>
 
-      <main className="invest-main" id="hero">
+      <div className="invest-main" id="hero">
         <div className="invest-topbar">
           <div>
             <p className="invest-crumbs">Investments / <strong>Dashboard</strong></p>
@@ -253,7 +253,7 @@ export function InvestmentsDashboard({
             </div>
           )}
         </div>
-      </main>
+      </div>
 
       <aside className="invest-rail" aria-label="Portfolio side panel">
         <section ref={addHoldingRef} id="add-holding" className="scroll-mt-28">

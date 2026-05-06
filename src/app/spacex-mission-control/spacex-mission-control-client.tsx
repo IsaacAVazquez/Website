@@ -448,13 +448,11 @@ export function SpaceXMissionControlClient({
       ? "Refreshing SpaceX feed"
       : "SpaceX data cached locally";
 
-  const motionProps = shouldReduceMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 18 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.42 },
-      };
+  const motionProps = {
+    initial: { opacity: 0, y: 18 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: shouldReduceMotion ? 0 : 0.42 },
+  };
 
   const insightByLabel = useMemo(() => {
     const map = new Map<string, string>();

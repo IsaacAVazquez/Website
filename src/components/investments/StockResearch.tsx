@@ -150,7 +150,7 @@ export function StockResearch({
     return (
       <div className="invest-shell" data-testid="invest-research-shell">
         <ResearchSidebar activeNavId="overview" />
-        <main className="invest-main">
+        <div className="invest-main">
           <ResearchTopbar
             symbol={symbol}
             onSymbolChange={onSymbolChange}
@@ -188,7 +188,7 @@ export function StockResearch({
           >
             <ComparisonTab />
           </div>
-        </main>
+        </div>
       </div>
     );
   }
@@ -197,7 +197,7 @@ export function StockResearch({
     <div className="invest-shell" data-testid="invest-research-shell">
       <ResearchSidebar activeNavId="overview" />
 
-      <main className="invest-main">
+      <div className="invest-main">
         <ResearchTopbar
           symbol={symbol}
           onSymbolChange={onSymbolChange}
@@ -311,7 +311,7 @@ export function StockResearch({
             </>
           )}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

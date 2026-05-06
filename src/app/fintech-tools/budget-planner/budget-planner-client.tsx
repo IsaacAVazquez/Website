@@ -285,7 +285,7 @@ export function BudgetPlannerClient() {
             </div>
           </aside>
 
-          <main className="tool-main">
+          <div className="tool-main">
             <div className="tool-topbar">
               <div className="min-w-0">
                 <p className="tool-crumbs">
@@ -636,7 +636,7 @@ export function BudgetPlannerClient() {
                 )}
               </section>
             </div>
-          </main>
+          </div>
 
           <aside className="tool-rail" aria-label="Budget tools">
             <section aria-labelledby="rail-add-expense">

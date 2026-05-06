@@ -158,7 +158,7 @@ export function HomePageContent({
     {
       label: "Based",
       tooltip: "Primary location",
-      value: "Austin, TX",
+      value: "Berkeley, CA",
       sub: "Remote-friendly",
     },
     {

@@ -1460,7 +1460,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             </div>
           </aside>
 
-          <main className="tool-main">
+          <div className="tool-main">
             <div className="tool-topbar">
               <div>
                 <p className="tool-crumbs">
@@ -1602,7 +1602,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                 />
               )}
             </div>
-          </main>
+          </div>
 
           <aside className="tool-rail" aria-label="Museum Log side panel">
             {selectedMuseum ? (

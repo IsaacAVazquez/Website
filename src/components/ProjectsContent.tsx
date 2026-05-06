@@ -685,7 +685,7 @@ export function ProjectsContent() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: shouldReduceMotion ? 0 : 0.5 }}
         className="mt-16 text-center"

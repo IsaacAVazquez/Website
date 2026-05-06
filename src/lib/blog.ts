@@ -164,6 +164,10 @@ function readBlogPostSource(slug: string): {
   };
 }
 
+function stripLeadingMarkdownH1(content: string): string {
+  return content.replace(/^\s*#\s+.+(?:\r?\n)+/, "");
+}
+
 async function renderBlogPostHtml(content: string): Promise<string> {
   const [{ remark }, { default: remarkGfm }, { default: remarkHtml }] =
     await Promise.all([
@@ -255,7 +259,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       slug,
       title: metadata.title,
       excerpt: metadata.excerpt,
-      content: await renderBlogPostHtml(content),
+      content: await renderBlogPostHtml(stripLeadingMarkdownH1(content)),
       publishedAt: metadata.publishedAt,
       updatedAt: metadata.updatedAt,
       category: metadata.category,

@@ -63,7 +63,7 @@ describe("LaLigaClient", () => {
   it("canonicalizes hidden club selections for a focused view", async () => {
     const defaultRelegationClub = getDefaultClubForView("relegation");
     const defaultRelegationTeam =
-      laLigaSnapshot.teamSnapshots[defaultRelegationClub]?.team.name;
+      laLigaSnapshot.teamSnapshots[defaultRelegationClub]?.team?.name;
     expect(defaultRelegationTeam).toBeDefined();
     currentSearchParams = new URLSearchParams("view=relegation&club=barcelona");
 

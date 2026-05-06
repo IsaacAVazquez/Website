@@ -298,7 +298,7 @@ export function RecipeFinderClient() {
             </div>
           </aside>
 
-          <main className="tool-main">
+          <div className="tool-main">
             <div className="tool-topbar">
               <div>
                 <p className="tool-crumbs">
@@ -373,7 +373,7 @@ export function RecipeFinderClient() {
                 }
               />
             </div>
-          </main>
+          </div>
 
           <aside className="tool-rail" aria-label="Pantry editor">
             <section aria-labelledby="pantry-heading">

@@ -129,7 +129,7 @@ export function PortfolioTracker({ onResearch }: Props) {
         </div>
       </aside>
 
-      <main className="invest-main" id="hero">
+      <div className="invest-main" id="hero">
         <div className="invest-topbar">
           <div>
             <p className="invest-crumbs">Investments / <strong>Portfolio</strong></p>
@@ -192,7 +192,7 @@ export function PortfolioTracker({ onResearch }: Props) {
             </div>
           )}
         </div>
-      </main>
+      </div>
 
       <aside className="invest-rail" aria-label="Portfolio side panel">
         <section ref={addHoldingRef} id="add-holding" className="scroll-mt-28">

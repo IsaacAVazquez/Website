@@ -359,7 +359,7 @@ export function InterchangeIQClient() {
         </aside>
 
         {/* ── Main ── */}
-        <main className="tool-main" id="hero">
+        <div className="tool-main" id="hero">
           <div className="tool-topbar">
             <div>
               <p className="tool-crumbs">
@@ -649,7 +649,7 @@ export function InterchangeIQClient() {
               )}
             </article>
           </div>
-        </main>
+        </div>
 
         {/* ── Rail ── */}
         <aside className="tool-rail" aria-label="Inputs side panel">

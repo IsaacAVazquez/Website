@@ -26,7 +26,7 @@ export function ContactContent() {
         {/* Heading */}
         <motion.div
           className="text-center space-y-3 pt-4"
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.5 }}
         >
@@ -49,7 +49,7 @@ export function ContactContent() {
         {/* Cards */}
         <motion.div
           className="mx-auto w-full max-w-5xl grid gap-6 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr]"
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: 0.1 }}
         >

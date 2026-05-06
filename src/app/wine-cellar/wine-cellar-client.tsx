@@ -330,7 +330,7 @@ export function WineCellarClient() {
               </div>
             </aside>
 
-            <main className="tool-main" id="cellar">
+            <div className="tool-main" id="cellar">
               <div className="tool-topbar">
                 <div>
                   <p className="tool-crumbs">
@@ -631,7 +631,7 @@ export function WineCellarClient() {
                   )}
                 </section>
               </div>
-            </main>
+            </div>
 
             <aside className="tool-rail" aria-label="Wine cellar side panel">
               <section id="add-tasting">
