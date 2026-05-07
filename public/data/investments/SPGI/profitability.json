@@ -1,0 +1,485 @@
+{
+  "roe": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 742000000.0,
+      "beginning_stockholders_equity": 35468000000.0,
+      "ending_stockholders_equity": 35419000000.0,
+      "avg_equity": 35443500000.0,
+      "roe": 0.0209
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 579000000.0,
+      "beginning_stockholders_equity": 35419000000.0,
+      "ending_stockholders_equity": 34200000000.0,
+      "avg_equity": 34809500000.0,
+      "roe": 0.0166
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 991000000.0,
+      "beginning_stockholders_equity": 34200000000.0,
+      "ending_stockholders_equity": 34327000000.0,
+      "avg_equity": 34263500000.0,
+      "roe": 0.0289
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1011000000.0,
+      "beginning_stockholders_equity": 34327000000.0,
+      "ending_stockholders_equity": 34881000000.0,
+      "avg_equity": 34604000000.0,
+      "roe": 0.0292
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 971000000.0,
+      "beginning_stockholders_equity": 34881000000.0,
+      "ending_stockholders_equity": 33992000000.0,
+      "avg_equity": 34436500000.0,
+      "roe": 0.0282
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 880000000.0,
+      "beginning_stockholders_equity": 33992000000.0,
+      "ending_stockholders_equity": 33159000000.0,
+      "avg_equity": 33575500000.0,
+      "roe": 0.0262
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1090000000.0,
+      "beginning_stockholders_equity": 33159000000.0,
+      "ending_stockholders_equity": 33371000000.0,
+      "avg_equity": 33265000000.0,
+      "roe": 0.0328
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1072000000.0,
+      "beginning_stockholders_equity": 33371000000.0,
+      "ending_stockholders_equity": 33390000000.0,
+      "avg_equity": 33380500000.0,
+      "roe": 0.0321
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1176000000.0,
+      "beginning_stockholders_equity": 33390000000.0,
+      "ending_stockholders_equity": 33133000000.0,
+      "avg_equity": 33261500000.0,
+      "roe": 0.0354
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1134000000.0,
+      "beginning_stockholders_equity": 33133000000.0,
+      "ending_stockholders_equity": 31127000000.0,
+      "avg_equity": 32130000000.0,
+      "roe": 0.0353
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1395000000.0,
+      "beginning_stockholders_equity": 31127000000.0,
+      "ending_stockholders_equity": 31173000000.0,
+      "avg_equity": 31150000000.0,
+      "roe": 0.0448
+    }
+  ],
+  "roa": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 742000000.0,
+      "beginning_total_assets": 60695000000.0,
+      "ending_total_assets": 60561000000.0,
+      "avg_assets": 60628000000.0,
+      "roa": 0.0122
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 579000000.0,
+      "beginning_total_assets": 60561000000.0,
+      "ending_total_assets": 60589000000.0,
+      "avg_assets": 60575000000.0,
+      "roa": 0.0096
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 991000000.0,
+      "beginning_total_assets": 60589000000.0,
+      "ending_total_assets": 60477000000.0,
+      "avg_assets": 60533000000.0,
+      "roa": 0.0164
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1011000000.0,
+      "beginning_total_assets": 60477000000.0,
+      "ending_total_assets": 60956000000.0,
+      "avg_assets": 60716500000.0,
+      "roa": 0.0167
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 971000000.0,
+      "beginning_total_assets": 60956000000.0,
+      "ending_total_assets": 60368000000.0,
+      "avg_assets": 60662000000.0,
+      "roa": 0.016
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 880000000.0,
+      "beginning_total_assets": 60368000000.0,
+      "ending_total_assets": 60221000000.0,
+      "avg_assets": 60294500000.0,
+      "roa": 0.0146
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1090000000.0,
+      "beginning_total_assets": 60221000000.0,
+      "ending_total_assets": 59889000000.0,
+      "avg_assets": 60055000000.0,
+      "roa": 0.0182
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1072000000.0,
+      "beginning_total_assets": 59889000000.0,
+      "ending_total_assets": 60395000000.0,
+      "avg_assets": 60142000000.0,
+      "roa": 0.0178
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1176000000.0,
+      "beginning_total_assets": 60395000000.0,
+      "ending_total_assets": 59749000000.0,
+      "avg_assets": 60072000000.0,
+      "roa": 0.0196
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1134000000.0,
+      "beginning_total_assets": 59749000000.0,
+      "ending_total_assets": 61200000000.0,
+      "avg_assets": 60474500000.0,
+      "roa": 0.0188
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1395000000.0,
+      "beginning_total_assets": 61200000000.0,
+      "ending_total_assets": 60792000000.0,
+      "avg_assets": 60996000000.0,
+      "roa": 0.0229
+    }
+  ],
+  "roic": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30",
+      "ebit": 1079000000.0,
+      "tax_rate_for_calcs": 0.18,
+      "nopat": 884780000.0,
+      "beginning_invested_capital": 46969000000.0,
+      "ending_invested_capital": 46881000000.0,
+      "avg_invested_capital": 46925000000.0,
+      "roic": 0.0189
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "ebit": 870000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 704700000.0,
+      "beginning_invested_capital": 46881000000.0,
+      "ending_invested_capital": 45659000000.0,
+      "avg_invested_capital": 46270000000.0,
+      "roic": 0.0152
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31",
+      "ebit": 1394000000.0,
+      "tax_rate_for_calcs": 0.19,
+      "nopat": 1129140000.0,
+      "beginning_invested_capital": 45659000000.0,
+      "ending_invested_capital": 46032000000.0,
+      "avg_invested_capital": 45845500000.0,
+      "roic": 0.0246
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30",
+      "ebit": 1455000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1149450000.0,
+      "beginning_invested_capital": 46032000000.0,
+      "ending_invested_capital": 46286000000.0,
+      "avg_invested_capital": 46159000000.0,
+      "roic": 0.0249
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30",
+      "ebit": 1432000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1102640000.0,
+      "beginning_invested_capital": 46286000000.0,
+      "ending_invested_capital": 45394000000.0,
+      "avg_invested_capital": 45840000000.0,
+      "roic": 0.0241
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "ebit": 1324000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1019480000.0,
+      "beginning_invested_capital": 45394000000.0,
+      "ending_invested_capital": 44557000000.0,
+      "avg_invested_capital": 44975500000.0,
+      "roic": 0.0227
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31",
+      "ebit": 1574000000.0,
+      "tax_rate_for_calcs": 0.22,
+      "nopat": 1227720000.0,
+      "beginning_invested_capital": 44557000000.0,
+      "ending_invested_capital": 44762000000.0,
+      "avg_invested_capital": 44659500000.0,
+      "roic": 0.0275
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30",
+      "ebit": 1579000000.0,
+      "tax_rate_for_calcs": 0.23,
+      "nopat": 1215830000.0,
+      "beginning_invested_capital": 44762000000.0,
+      "ending_invested_capital": 44778000000.0,
+      "avg_invested_capital": 44770000000.0,
+      "roic": 0.0272
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30",
+      "ebit": 1677000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1324830000.0,
+      "beginning_invested_capital": 44778000000.0,
+      "ending_invested_capital": 44518000000.0,
+      "avg_invested_capital": 44648000000.0,
+      "roic": 0.0297
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "ebit": 1685000000.0,
+      "tax_rate_for_calcs": 0.25,
+      "nopat": 1263750000.0,
+      "beginning_invested_capital": 44518000000.0,
+      "ending_invested_capital": 44215000000.0,
+      "avg_invested_capital": 44366500000.0,
+      "roic": 0.0285
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31",
+      "ebit": 2004000000.0,
+      "tax_rate_for_calcs": 0.21,
+      "nopat": 1583160000.0,
+      "beginning_invested_capital": 44215000000.0,
+      "ending_invested_capital": 44491000000.0,
+      "avg_invested_capital": 44353000000.0,
+      "roic": 0.0357
+    }
+  ],
+  "equityMultiplier": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roe": 0.0209,
+      "roa": 0.0122,
+      "equity_multiplier": 1.71
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roe": 0.0166,
+      "roa": 0.0096,
+      "equity_multiplier": 1.73
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roe": 0.0289,
+      "roa": 0.0164,
+      "equity_multiplier": 1.76
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roe": 0.0292,
+      "roa": 0.0167,
+      "equity_multiplier": 1.75
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roe": 0.0282,
+      "roa": 0.016,
+      "equity_multiplier": 1.76
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roe": 0.0262,
+      "roa": 0.0146,
+      "equity_multiplier": 1.79
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roe": 0.0328,
+      "roa": 0.0182,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roe": 0.0321,
+      "roa": 0.0178,
+      "equity_multiplier": 1.8
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roe": 0.0354,
+      "roa": 0.0196,
+      "equity_multiplier": 1.81
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roe": 0.0353,
+      "roa": 0.0188,
+      "equity_multiplier": 1.88
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roe": 0.0448,
+      "roa": 0.0229,
+      "equity_multiplier": 1.96
+    }
+  ],
+  "assetTurnover": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30T00:00:00.000",
+      "roa": 0.0122,
+      "net_margin": 0.2406,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31T00:00:00.000",
+      "roa": 0.0096,
+      "net_margin": 0.1837,
+      "asset_turnover": 0.05
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31T00:00:00.000",
+      "roa": 0.0164,
+      "net_margin": 0.2839,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30T00:00:00.000",
+      "roa": 0.0167,
+      "net_margin": 0.2849,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30T00:00:00.000",
+      "roa": 0.016,
+      "net_margin": 0.2716,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31T00:00:00.000",
+      "roa": 0.0146,
+      "net_margin": 0.245,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31T00:00:00.000",
+      "roa": 0.0182,
+      "net_margin": 0.2886,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30T00:00:00.000",
+      "roa": 0.0178,
+      "net_margin": 0.2855,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30T00:00:00.000",
+      "roa": 0.0196,
+      "net_margin": 0.3025,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31T00:00:00.000",
+      "roa": 0.0188,
+      "net_margin": 0.2896,
+      "asset_turnover": 0.06
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31T00:00:00.000",
+      "roa": 0.0229,
+      "net_margin": 0.3345,
+      "asset_turnover": 0.07
+    }
+  ]
+}

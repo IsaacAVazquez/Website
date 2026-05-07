@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "SCHW",
+    "name": "Mr. Charles Robert Schwab",
+    "title": "Founder & Co-Chairman",
+    "age": 88,
+    "born": 1937,
+    "pay": 3540089,
+    "exercised": 9371041,
+    "unexercised": 48052808
+  },
+  {
+    "symbol": "SCHW",
+    "name": "Mr. Jeff  Edwards",
+    "title": "MD & Head of Investor Relations",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SCHW",
+    "name": "Mr. Jonathan M. Craig",
+    "title": "MD, Head of Investor Service & Head of Retail Investing",
+    "age": 53,
+    "born": 1972,
+    "pay": 2770290,
+    "exercised": 5499866,
+    "unexercised": 12947899
+  },
+  {
+    "symbol": "SCHW",
+    "name": "Mr. Michael Daniel Verdeschi",
+    "title": "MD & Chief Financial Officer",
+    "age": 56,
+    "born": 1969,
+    "pay": 3767676,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SCHW",
+    "name": "Mr. Peter J. Morgan III",
+    "title": "MD, General Counsel & Corporate Secretary",
+    "age": 60,
+    "born": 1965,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SCHW",
+    "name": "Mr. Richard Andrew Wurster C.F.A., CMT",
+    "title": "CEO, President & Director",
+    "age": 51,
+    "born": 1974,
+    "pay": 6067650,
+    "exercised": 0,
+    "unexercised": 11352519
+  },
+  {
+    "symbol": "SCHW",
+    "name": "Mr. Tim  Heier",
+    "title": "MD & CTO",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SCHW",
+    "name": "Ms. Lisa Kidd Hunt",
+    "title": "MD & Head of International Services",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SCHW",
+    "name": "Ms. Shannon L. Jurecka",
+    "title": "Managing Director & Chief Administrative Officer",
+    "age": 55,
+    "born": 1970,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SCHW",
+    "name": "Ms. Stacy  Hammond",
+    "title": "MD & Chief Marketing Officer",
+    "age": null,
+    "born": null,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

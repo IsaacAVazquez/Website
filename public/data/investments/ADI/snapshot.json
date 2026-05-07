@@ -1,8 +1,8 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
       "price": "2026-05-01"
     }
@@ -7821,19 +7821,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
+        "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "4fbba8b0-da15-3c03-ab7c-5e1942f29f06",
         "title": "UBS Lowers Analog Devices (ADI) Price Target, Keeps Buy Rating",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/news/ubs-lowers-analog-devices-adi-194048708.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "5ead9e7d-2158-3a29-857d-bd0cb801f5f4",
-        "title": "Morgan Stanley Maintains a Buy Rating on Analog Devices (ADI), Cuts PT",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/morgan-stanley-maintains-buy-rating-094831412.html",
         "type": "STORY"
       }
     ],

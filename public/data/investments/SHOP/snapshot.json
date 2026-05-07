@@ -1,8 +1,8 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
       "price": "2026-05-01"
     }
@@ -7460,19 +7460,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
-        "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
         "title": "Exploring High Growth US Tech Stocks for May 2025",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
+        "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html",
         "type": "STORY"
       },
       {

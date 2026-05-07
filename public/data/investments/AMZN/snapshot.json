@@ -1,8 +1,8 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
       "price": "2026-05-01"
     }
@@ -6930,14 +6930,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
-        "title": "Game On: Discord reportedly in talks for IPO in 2025",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
         "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
         "publisher": "Investor's Business Daily",
@@ -6952,6 +6944,14 @@
         "reportDate": "2025-03-13",
         "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
+        "title": "Game On: Discord reportedly in talks for IPO in 2025",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
+        "type": "STORY"
       },
       {
         "uuid": "891b2f8b-8934-31f4-a960-9cf39bc9c7b0",

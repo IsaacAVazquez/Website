@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-06-30",
+      "gross_profit": 1982000000.0,
+      "total_revenue": 2993000000.0,
+      "gross_margin": 0.6622
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-09-30",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-03-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-06-30",
+      "gross_profit": 2075000000.0,
+      "total_revenue": 3101000000.0,
+      "gross_margin": 0.6691
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30",
+      "gross_profit": 2089000000.0,
+      "total_revenue": 3084000000.0,
+      "gross_margin": 0.6774
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "gross_profit": 2120000000.0,
+      "total_revenue": 3152000000.0,
+      "gross_margin": 0.6726
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31",
+      "gross_profit": 2380000000.0,
+      "total_revenue": 3491000000.0,
+      "gross_margin": 0.6818
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30",
+      "gross_profit": 2471000000.0,
+      "total_revenue": 3549000000.0,
+      "gross_margin": 0.6963
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30",
+      "gross_profit": 2510000000.0,
+      "total_revenue": 3575000000.0,
+      "gross_margin": 0.7021
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "gross_profit": 2478000000.0,
+      "total_revenue": 3592000000.0,
+      "gross_margin": 0.6899
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31",
+      "gross_profit": 2624000000.0,
+      "total_revenue": 3777000000.0,
+      "gross_margin": 0.6947
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30",
+      "gross_profit": 2636000000.0,
+      "total_revenue": 3755000000.0,
+      "gross_margin": 0.702
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30",
+      "gross_profit": 2767000000.0,
+      "total_revenue": 3888000000.0,
+      "gross_margin": 0.7117
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "gross_profit": 2746000000.0,
+      "total_revenue": 3916000000.0,
+      "gross_margin": 0.7012
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31",
+      "gross_profit": 2936000000.0,
+      "total_revenue": 4171000000.0,
+      "gross_margin": 0.7039
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2019-12-31",
+      "gross_profit": null,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2020-12-31",
+      "gross_profit": 5348000000.0,
+      "total_revenue": 7442000000.0,
+      "gross_margin": 0.7186
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2021-12-31",
+      "gross_profit": 6117000000.0,
+      "total_revenue": 8297000000.0,
+      "gross_margin": 0.7373
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "gross_profit": 7428000000.0,
+      "total_revenue": 11181000000.0,
+      "gross_margin": 0.6643
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "gross_profit": 8356000000.0,
+      "total_revenue": 12497000000.0,
+      "gross_margin": 0.6686
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "gross_profit": 9847000000.0,
+      "total_revenue": 14208000000.0,
+      "gross_margin": 0.6931
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "gross_profit": 10773000000.0,
+      "total_revenue": 15336000000.0,
+      "gross_margin": 0.7025
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-06-30",
+      "operating_income": 915000000.0,
+      "total_revenue": 2993000000.0,
+      "operating_margin": 0.3057
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-06-30",
+      "operating_income": 1019000000.0,
+      "total_revenue": 3101000000.0,
+      "operating_margin": 0.3286
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30",
+      "operating_income": 1066000000.0,
+      "total_revenue": 3084000000.0,
+      "operating_margin": 0.3457
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "operating_income": 888000000.0,
+      "total_revenue": 3152000000.0,
+      "operating_margin": 0.2817
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31",
+      "operating_income": 1379000000.0,
+      "total_revenue": 3491000000.0,
+      "operating_margin": 0.395
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30",
+      "operating_income": 1439000000.0,
+      "total_revenue": 3549000000.0,
+      "operating_margin": 0.4055
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30",
+      "operating_income": 1402000000.0,
+      "total_revenue": 3575000000.0,
+      "operating_margin": 0.3922
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "operating_income": 1259000000.0,
+      "total_revenue": 3592000000.0,
+      "operating_margin": 0.3505
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31",
+      "operating_income": 1567000000.0,
+      "total_revenue": 3777000000.0,
+      "operating_margin": 0.4149
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30",
+      "operating_income": 1537000000.0,
+      "total_revenue": 3755000000.0,
+      "operating_margin": 0.4093
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30",
+      "operating_income": 1668000000.0,
+      "total_revenue": 3888000000.0,
+      "operating_margin": 0.429
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "operating_income": 1404000000.0,
+      "total_revenue": 3916000000.0,
+      "operating_margin": 0.3585
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31",
+      "operating_income": 1827000000.0,
+      "total_revenue": 4171000000.0,
+      "operating_margin": 0.438
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2020-12-31",
+      "operating_income": 3601000000.0,
+      "total_revenue": 7442000000.0,
+      "operating_margin": 0.4839
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2021-12-31",
+      "operating_income": 4210000000.0,
+      "total_revenue": 8297000000.0,
+      "operating_margin": 0.5074
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "operating_income": 3019000000.0,
+      "total_revenue": 11181000000.0,
+      "operating_margin": 0.27
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "operating_income": 4054000000.0,
+      "total_revenue": 12497000000.0,
+      "operating_margin": 0.3244
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "operating_income": 5478000000.0,
+      "total_revenue": 14208000000.0,
+      "operating_margin": 0.3856
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "operating_income": 6177000000.0,
+      "total_revenue": 15336000000.0,
+      "operating_margin": 0.4028
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 972000000.0,
+      "total_revenue": 2993000000.0,
+      "net_margin": 0.3248
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 511000000.0,
+      "total_revenue": 3101000000.0,
+      "net_margin": 0.1648
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 742000000.0,
+      "total_revenue": 3084000000.0,
+      "net_margin": 0.2406
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 579000000.0,
+      "total_revenue": 3152000000.0,
+      "net_margin": 0.1837
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 991000000.0,
+      "total_revenue": 3491000000.0,
+      "net_margin": 0.2839
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 1011000000.0,
+      "total_revenue": 3549000000.0,
+      "net_margin": 0.2849
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 971000000.0,
+      "total_revenue": 3575000000.0,
+      "net_margin": 0.2716
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 880000000.0,
+      "total_revenue": 3592000000.0,
+      "net_margin": 0.245
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 1090000000.0,
+      "total_revenue": 3777000000.0,
+      "net_margin": 0.2886
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 1072000000.0,
+      "total_revenue": 3755000000.0,
+      "net_margin": 0.2855
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 1176000000.0,
+      "total_revenue": 3888000000.0,
+      "net_margin": 0.3025
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 1134000000.0,
+      "total_revenue": 3916000000.0,
+      "net_margin": 0.2896
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 1395000000.0,
+      "total_revenue": 4171000000.0,
+      "net_margin": 0.3345
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 2339000000.0,
+      "total_revenue": 7442000000.0,
+      "net_margin": 0.3143
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 3024000000.0,
+      "total_revenue": 8297000000.0,
+      "net_margin": 0.3645
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 3248000000.0,
+      "total_revenue": 11181000000.0,
+      "net_margin": 0.2905
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 2626000000.0,
+      "total_revenue": 12497000000.0,
+      "net_margin": 0.2101
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 3852000000.0,
+      "total_revenue": 14208000000.0,
+      "net_margin": 0.2711
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 4471000000.0,
+      "total_revenue": 15336000000.0,
+      "net_margin": 0.2915
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 2993000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-03-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-06-30",
+      "ebitda": 1207000000.0,
+      "total_revenue": 3101000000.0,
+      "ebitda_margin": 0.3892
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30",
+      "ebitda": 1361000000.0,
+      "total_revenue": 3084000000.0,
+      "ebitda_margin": 0.4413
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "ebitda": 1160000000.0,
+      "total_revenue": 3152000000.0,
+      "ebitda_margin": 0.368
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31",
+      "ebitda": 1681000000.0,
+      "total_revenue": 3491000000.0,
+      "ebitda_margin": 0.4815
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30",
+      "ebitda": 1747000000.0,
+      "total_revenue": 3549000000.0,
+      "ebitda_margin": 0.4923
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30",
+      "ebitda": 1726000000.0,
+      "total_revenue": 3575000000.0,
+      "ebitda_margin": 0.4828
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "ebitda": 1624000000.0,
+      "total_revenue": 3592000000.0,
+      "ebitda_margin": 0.4521
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31",
+      "ebitda": 1867000000.0,
+      "total_revenue": 3777000000.0,
+      "ebitda_margin": 0.4943
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30",
+      "ebitda": 1875000000.0,
+      "total_revenue": 3755000000.0,
+      "ebitda_margin": 0.4993
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30",
+      "ebitda": 1971000000.0,
+      "total_revenue": 3888000000.0,
+      "ebitda_margin": 0.5069
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "ebitda": 1982000000.0,
+      "total_revenue": 3916000000.0,
+      "ebitda_margin": 0.5061
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31",
+      "ebitda": 2311000000.0,
+      "total_revenue": 4171000000.0,
+      "ebitda_margin": 0.5541
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2019-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2020-12-31",
+      "ebitda": 3575000000.0,
+      "total_revenue": 7442000000.0,
+      "ebitda_margin": 0.4804
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2021-12-31",
+      "ebitda": 4461000000.0,
+      "total_revenue": 8297000000.0,
+      "ebitda_margin": 0.5377
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "ebitda": 6019000000.0,
+      "total_revenue": 11181000000.0,
+      "ebitda_margin": 0.5383
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "ebitda": 5148000000.0,
+      "total_revenue": 12497000000.0,
+      "ebitda_margin": 0.4119
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "ebitda": 6778000000.0,
+      "total_revenue": 14208000000.0,
+      "ebitda_margin": 0.4771
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "ebitda": 7693000000.0,
+      "total_revenue": 15336000000.0,
+      "ebitda_margin": 0.5016
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 430000000.0,
+      "total_revenue": 2993000000.0,
+      "fcf_margin": 0.1437
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-03-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 738000000.0,
+      "total_revenue": 3101000000.0,
+      "fcf_margin": 0.238
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 977000000.0,
+      "total_revenue": 3084000000.0,
+      "fcf_margin": 0.3168
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1286000000.0,
+      "total_revenue": 3152000000.0,
+      "fcf_margin": 0.408
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 924000000.0,
+      "total_revenue": 3491000000.0,
+      "fcf_margin": 0.2647
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 1524000000.0,
+      "total_revenue": 3549000000.0,
+      "fcf_margin": 0.4294
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 1410000000.0,
+      "total_revenue": 3575000000.0,
+      "fcf_margin": 0.3944
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 1707000000.0,
+      "total_revenue": 3592000000.0,
+      "fcf_margin": 0.4752
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 910000000.0,
+      "total_revenue": 3777000000.0,
+      "fcf_margin": 0.2409
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 1384000000.0,
+      "total_revenue": 3755000000.0,
+      "fcf_margin": 0.3686
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 1460000000.0,
+      "total_revenue": 3888000000.0,
+      "fcf_margin": 0.3755
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 1702000000.0,
+      "total_revenue": 3916000000.0,
+      "fcf_margin": 0.4346
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 1010000000.0,
+      "total_revenue": 4171000000.0,
+      "fcf_margin": 0.2421
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "SPGI",
+      "report_date": "2019-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 3491000000.0,
+      "total_revenue": 7442000000.0,
+      "fcf_margin": 0.4691
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 3563000000.0,
+      "total_revenue": 8297000000.0,
+      "fcf_margin": 0.4294
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 2514000000.0,
+      "total_revenue": 11181000000.0,
+      "fcf_margin": 0.2248
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 3567000000.0,
+      "total_revenue": 12497000000.0,
+      "fcf_margin": 0.2854
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 5565000000.0,
+      "total_revenue": 14208000000.0,
+      "fcf_margin": 0.3917
+    },
+    {
+      "symbol": "SPGI",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 5456000000.0,
+      "total_revenue": 15336000000.0,
+      "fcf_margin": 0.3558
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "symbol": "QCOM",
-  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
       "price": "2026-05-01"
     }
@@ -7645,19 +7645,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
-        "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
-        "publisher": "Just Auto",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "24997f10-d503-364e-97df-c293ed247214",
         "title": "Buy These 3 Stocks That Declared Dividend Hikes Amid Market Volatility",
         "publisher": "Zacks",
         "reportDate": "2025-04-25",
         "link": "https://finance.yahoo.com/news/buy-3-stocks-declared-dividend-124200168.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
+        "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
+        "publisher": "Just Auto",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
         "type": "STORY"
       },
       {

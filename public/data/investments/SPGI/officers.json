@@ -1,0 +1,102 @@
+[
+  {
+    "symbol": "SPGI",
+    "name": "Mr. Christopher  Craig",
+    "title": "Senior VP, Controller & Chief Accounting Officer",
+    "age": 52,
+    "born": 1973,
+    "pay": 1458735,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SPGI",
+    "name": "Mr. David  Ernsberger",
+    "title": "President of S&P Global Energy",
+    "age": 50,
+    "born": 1975,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SPGI",
+    "name": "Mr. Eric Walter Aboaf",
+    "title": "CFO & Executive VP",
+    "age": null,
+    "born": null,
+    "pay": 4905668,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SPGI",
+    "name": "Mr. Girish  Ganesan",
+    "title": "Executive VP & Chief People Officer",
+    "age": 44,
+    "born": 1981,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SPGI",
+    "name": "Mr. Saugata  Saha",
+    "title": "Chief Enterprise Data Officer & President of S&P Global Market Intelligence",
+    "age": 49,
+    "born": 1976,
+    "pay": 2436206,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SPGI",
+    "name": "Mr. Steven  Kemps CPA",
+    "title": "Executive VP & Chief Legal Officer",
+    "age": 60,
+    "born": 1965,
+    "pay": 1941260,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SPGI",
+    "name": "Mr. William  Eager",
+    "title": "President of S&P Global Mobility",
+    "age": 54,
+    "born": 1971,
+    "pay": 1765245,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SPGI",
+    "name": "Ms. Christina  Twomey",
+    "title": "Senior VP & Chief Communications Officer",
+    "age": 44,
+    "born": 1981,
+    "pay": null,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SPGI",
+    "name": "Ms. Martina L. Cheung",
+    "title": "President, CEO & Director",
+    "age": 49,
+    "born": 1976,
+    "pay": 3850628,
+    "exercised": 0,
+    "unexercised": 0
+  },
+  {
+    "symbol": "SPGI",
+    "name": "Ms. Sally  Moore",
+    "title": "Executive VP & Chief Client Officer",
+    "age": 49,
+    "born": 1976,
+    "pay": 2093472,
+    "exercised": 0,
+    "unexercised": 0
+  }
+]

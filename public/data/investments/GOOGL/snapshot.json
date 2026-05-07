@@ -1,8 +1,8 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
       "price": "2026-05-01"
     }
@@ -7688,19 +7688,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
+        "title": "Magnificent 7 May Need to Make Room for Broadcom",
+        "publisher": "The Daily Upside",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
         "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
         "publisher": "Zacks",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "4d96e147-0572-3919-abe2-9e78a89c6f88",
-        "title": "Got $5,000? 3 Tech Stocks to Buy and Hold for the Long Term.",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/4d96e147-0572-3919-abe2-9e78a89c6f88/got-%245%2C000%3F-3-tech-stocks-to.html",
         "type": "STORY"
       }
     ],

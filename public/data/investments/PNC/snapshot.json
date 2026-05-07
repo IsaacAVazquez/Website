@@ -1,10 +1,10 @@
 {
   "symbol": "PNC",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     },
     "fundamentals": {
       "ttmEps": 17.22,
-      "ttmPe": 12.77,
-      "marketCap": 88383720000,
-      "psRatio": 3.83,
+      "ttmPe": 12.82,
+      "marketCap": 88725420000,
+      "psRatio": 3.84,
       "pbRatio": 1.46,
       "pegRatio": 0.73
     },
@@ -5224,57 +5224,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.98,
-      "costOfEquity": 12.18,
+      "wacc": 9.030000000000001,
+      "costOfEquity": 12.25,
       "costOfDebt": 4.64,
       "taxRate": 13,
-      "beta": 0.9199,
-      "marketCap": 88383720000
+      "beta": 0.9263,
+      "marketCap": 88725420000
     },
     "beta": {
-      "beta5y": 0.9199
+      "beta5y": 0.9263
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 157.14,
-        "high": 160.1,
-        "low": 156.15,
-        "close": 159.75,
-        "volume": 1382400
-      },
-      {
-        "date": "2025-04-25",
-        "open": 158.45,
-        "high": 159.61,
-        "low": 157.34,
-        "close": 158.46,
-        "volume": 1125100
-      },
-      {
-        "date": "2025-04-28",
-        "open": 158.88,
-        "high": 160.75,
-        "low": 158.12,
-        "close": 159.65,
-        "volume": 1917500
-      },
-      {
-        "date": "2025-04-29",
-        "open": 158.69,
-        "high": 161.37,
-        "low": 158.37,
-        "close": 160.6,
-        "volume": 1643000
-      },
-      {
-        "date": "2025-04-30",
-        "open": 157.89,
-        "high": 161.08,
-        "low": 156.7,
-        "close": 160.69,
-        "volume": 2113600
-      },
       {
         "date": "2025-05-01",
         "open": 159.93,
@@ -7250,6 +7210,46 @@
         "low": 218.79,
         "close": 219.86,
         "volume": 1741900
+      },
+      {
+        "date": "2026-04-27",
+        "open": 219.57,
+        "high": 222.77,
+        "low": 219.56,
+        "close": 221.33,
+        "volume": 1813600
+      },
+      {
+        "date": "2026-04-28",
+        "open": 223.18,
+        "high": 223.92,
+        "low": 220.22,
+        "close": 220.89,
+        "volume": 1685700
+      },
+      {
+        "date": "2026-04-29",
+        "open": 220.48,
+        "high": 222.33,
+        "low": 217.79,
+        "close": 218.71,
+        "volume": 1626500
+      },
+      {
+        "date": "2026-04-30",
+        "open": 217.55,
+        "high": 224.29,
+        "low": 216.64,
+        "close": 223,
+        "volume": 2318700
+      },
+      {
+        "date": "2026-05-01",
+        "open": 223.23,
+        "high": 223.67,
+        "low": 220.7,
+        "close": 220.71,
+        "volume": 1028900
       }
     ],
     "news": [
@@ -7270,19 +7270,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "458f776f-5b18-3e37-9a8a-2eaf853cf0ed",
         "title": "Company News for Apr 16, 2025",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/company-news-apr-16-2025-131000143.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       },
       {
@@ -7326,11 +7326,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "808e1989-20d7-31bc-a90a-c9e60cbf69d7",
-        "title": "PNC Financial Services' PNC Bank to Buy Aqueduct Capital",
-        "publisher": "MT Newswires",
+        "uuid": "781690ba-88ec-3c1b-9ed7-8fc575c8991b",
+        "title": "PNC Financial's Arm Enters Deal to Acquire Aqueduct Capital Group",
+        "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/pnc-financial-services-apos-pnc-204926054.html",
+        "link": "https://finance.yahoo.com/news/pnc-financials-arm-enters-deal-132900257.html",
         "type": "STORY"
       }
     ],
@@ -7400,13 +7400,13 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.77,
-        "industryAvg": 12.95
+        "value": 12.82,
+        "industryAvg": 12.84
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.83,
-        "industryAvg": 3.28
+        "value": 3.84,
+        "industryAvg": 3.27
       },
       {
         "metric": "P/B Ratio",
@@ -7416,7 +7416,7 @@
       {
         "metric": "ROE",
         "value": 3.2099999999999995,
-        "industryAvg": 9.94
+        "industryAvg": 9.969999999999999
       },
       {
         "metric": "ROA",
@@ -7426,14 +7426,14 @@
       {
         "metric": "Net Margin",
         "value": 31.669999999999998,
-        "industryAvg": 25.169999999999998
+        "industryAvg": 25.27
       }
     ],
     "dcf": {
-      "fairValue": 384.05,
-      "currentPrice": 219.86,
-      "upside": 74.68,
-      "wacc": 8.98,
+      "fairValue": 380.83,
+      "currentPrice": 220.71,
+      "upside": 72.55,
+      "wacc": 9.03,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 17.61,
         "Terminal growth": 3

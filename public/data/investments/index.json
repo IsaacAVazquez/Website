@@ -47,14 +47,14 @@
     "GS",
     "MS",
     "AXP",
-    "BLK"
-  ],
-  "failed": [
+    "BLK",
     "SCHW",
     "CME",
     "SPGI",
     "MCO",
-    "PNC",
+    "PNC"
+  ],
+  "failed": [
     "USB",
     "BX",
     "KKR",
@@ -153,7 +153,7 @@
     "FTNT",
     "ECL"
   ],
-  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "entries": [
     {
       "symbol": "AAPL",
@@ -442,6 +442,36 @@
       "shortName": "BlackRock, Inc.",
       "longName": "BlackRock, Inc.",
       "searchText": "blk blackrock, inc. blackrock, inc."
+    },
+    {
+      "symbol": "SCHW",
+      "shortName": "Charles Schwab Corporation",
+      "longName": "Charles Schwab Corporation",
+      "searchText": "schw charles schwab corporation charles schwab corporation"
+    },
+    {
+      "symbol": "CME",
+      "shortName": "CME Group Inc.",
+      "longName": "CME Group Inc.",
+      "searchText": "cme cme group inc. cme group inc."
+    },
+    {
+      "symbol": "SPGI",
+      "shortName": "S&P Global Inc.",
+      "longName": "S&P Global Inc.",
+      "searchText": "spgi s&p global inc. s&p global inc."
+    },
+    {
+      "symbol": "MCO",
+      "shortName": "Moody's Corporation",
+      "longName": "Moody's Corporation",
+      "searchText": "mco moody's corporation moody's corporation"
+    },
+    {
+      "symbol": "PNC",
+      "shortName": "PNC Financial Services Group",
+      "longName": "PNC Financial Services Group",
+      "searchText": "pnc pnc financial services group pnc financial services group"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
       "price": "2026-05-01"
     }
@@ -7574,19 +7574,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
-        "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-22",
-        "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6847b701-a805-3273-8363-1f5569a55995",
         "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
         "publisher": "Zacks",
         "reportDate": "2025-03-22",
         "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+        "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
         "type": "STORY"
       },
       {
@@ -7606,19 +7606,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
         "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
         "type": "STORY"
       }
     ],

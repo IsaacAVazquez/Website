@@ -1,0 +1,144 @@
+{
+  "by_segment": [],
+  "by_geography": [
+    {
+      "symbol": "MCO",
+      "report_date": "2020-06-30",
+      "International": 598000000.0,
+      "United States": 837000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2020-09-30",
+      "International": 627000000.0,
+      "United States": 729000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2020-12-31",
+      "International": 615000000.0,
+      "United States": 675000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2021-03-31",
+      "International": 715000000.0,
+      "United States": 885000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2021-06-30",
+      "International": 722000000.0,
+      "United States": 831000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2021-09-30",
+      "International": 682000000.0,
+      "United States": 844000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2021-12-31",
+      "International": 716000000.0,
+      "United States": 823000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-03-31",
+      "International": 699000000.0,
+      "United States": 823000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-06-30",
+      "International": 658000000.0,
+      "United States": 723000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-09-30",
+      "International": 607000000.0,
+      "United States": 668000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "International": 631000000.0,
+      "United States": 659000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-03-31",
+      "International": 700000000.0,
+      "United States": 770000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-06-30",
+      "International": 712000000.0,
+      "United States": 782000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-09-30",
+      "International": 704000000.0,
+      "United States": 768000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "International": 710400000.0,
+      "United States": 769600000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-03-31",
+      "International": 817000000.0,
+      "United States": 969000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-06-30",
+      "International": 843000000.0,
+      "United States": 974000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-09-30",
+      "International": 814000000.0,
+      "United States": 999000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "International": 778000000.0,
+      "United States": 894000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-03-31",
+      "International": 859000000.0,
+      "United States": 1065000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-06-30",
+      "International": 906000000.0,
+      "United States": 992000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-09-30",
+      "International": 889000000.0,
+      "United States": 1118000000.0
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "International": 893000000.0,
+      "United States": 996000000.0
+    }
+  ],
+  "by_product": []
+}

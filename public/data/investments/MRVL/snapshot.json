@@ -1,8 +1,8 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
       "price": "2026-05-01"
     }
@@ -7592,14 +7592,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
-        "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
         "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
         "publisher": "StockStory",
@@ -7613,6 +7605,14 @@
         "publisher": "The Fly",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
+        "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
         "type": "STORY"
       }
     ],

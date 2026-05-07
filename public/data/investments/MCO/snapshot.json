@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-04-30T23:34:16.050132+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-04-30T23:34:16.050132+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
-      "price": "2026-04-24"
+      "price": "2026-05-01"
     }
   },
   "source": "prefetched",
@@ -41,10 +41,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.95,
-      "ttmPe": 32.69,
-      "marketCap": 79661172220,
-      "psRatio": 10.12,
-      "pbRatio": 26.61,
+      "ttmPe": 32.67,
+      "marketCap": 79612262828,
+      "psRatio": 10.11,
+      "pbRatio": 26.59,
       "pegRatio": 4.19
     },
     "profitability": {
@@ -6169,57 +6169,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.680000000000001,
-      "costOfEquity": 15.950000000000001,
+      "wacc": 14.649999999999999,
+      "costOfEquity": 15.920000000000002,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 24,
-      "beta": 1.3599,
-      "marketCap": 79661172220
+      "beta": 1.3591,
+      "marketCap": 79612262828
     },
     "beta": {
-      "beta5y": 1.3599
+      "beta5y": 1.3591
     },
     "price": [
-      {
-        "date": "2025-04-24",
-        "open": 433.34,
-        "high": 441.17,
-        "low": 429.45,
-        "close": 439.58,
-        "volume": 974100
-      },
-      {
-        "date": "2025-04-25",
-        "open": 436.8,
-        "high": 439.77,
-        "low": 433.53,
-        "close": 438.62,
-        "volume": 691300
-      },
-      {
-        "date": "2025-04-28",
-        "open": 439.93,
-        "high": 443.22,
-        "low": 434.66,
-        "close": 439.78,
-        "volume": 618400
-      },
-      {
-        "date": "2025-04-29",
-        "open": 439.37,
-        "high": 449.06,
-        "low": 437.74,
-        "close": 447,
-        "volume": 673000
-      },
-      {
-        "date": "2025-04-30",
-        "open": 443.32,
-        "high": 454.44,
-        "low": 438.38,
-        "close": 453.12,
-        "volume": 838000
-      },
       {
         "date": "2025-05-01",
         "open": 450.71,
@@ -8195,6 +8155,46 @@
         "low": 453.1,
         "close": 456.05,
         "volume": 792900
+      },
+      {
+        "date": "2026-04-27",
+        "open": 453.91,
+        "high": 462.8,
+        "low": 453.91,
+        "close": 460.74,
+        "volume": 1157700
+      },
+      {
+        "date": "2026-04-28",
+        "open": 464.94,
+        "high": 470.64,
+        "low": 457.53,
+        "close": 457.99,
+        "volume": 1281500
+      },
+      {
+        "date": "2026-04-29",
+        "open": 456.78,
+        "high": 462.18,
+        "low": 452.74,
+        "close": 460.11,
+        "volume": 1080800
+      },
+      {
+        "date": "2026-04-30",
+        "open": 456.94,
+        "high": 462.82,
+        "low": 453.94,
+        "close": 461.85,
+        "volume": 1070800
+      },
+      {
+        "date": "2026-05-01",
+        "open": 466.39,
+        "high": 469.88,
+        "low": 455.74,
+        "close": 455.77,
+        "volume": 811300
       }
     ],
     "news": [
@@ -8223,11 +8223,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
-        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
+        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
+        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
+        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
         "type": "STORY"
       },
       {
@@ -8239,11 +8239,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
-        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
+        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
+        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
+        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
         "type": "STORY"
       },
       {
@@ -8255,6 +8255,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
+        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "2f0a958f-b5f6-3545-bc25-ee6da6d07ef3",
         "title": "Stock Market Ignoring Trump’s Trade War After Wild April Ride",
         "publisher": "Bloomberg",
@@ -8263,19 +8271,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "39b810d6-2380-3bd5-af6e-82c1cf21f74f",
-        "title": "US Long-Term Borrowing Costs Surge Over Deficit Concerns",
+        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
+        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/us-long-term-borrowing-costs-102812011.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
-        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
+        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
         "type": "STORY"
       }
     ],
@@ -8295,13 +8295,6 @@
         "title": "Senior Vice President of Corporate Communications"
       },
       {
-        "name": "Mr. Michael L. West",
-        "title": "President of Moody's Investors Service Inc.",
-        "age": 56,
-        "yearBorn": 1969,
-        "totalPay": 2299671
-      },
-      {
         "name": "Mr. Richard Steele",
         "title": "Senior VP & General Counsel",
         "age": 55,
@@ -8314,6 +8307,10 @@
         "age": 55,
         "yearBorn": 1970,
         "totalPay": 3368212
+      },
+      {
+        "name": "Ms. Christine Elliott",
+        "title": "MD & Chief Corporate Affairs Officer"
       },
       {
         "name": "Ms. Maral Kazanjian",
@@ -8340,50 +8337,50 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.69,
-        "industryAvg": 28.85
+        "value": 32.67,
+        "industryAvg": 26.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.12,
-        "industryAvg": 8.1
+        "value": 10.11,
+        "industryAvg": 7.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.61,
-        "industryAvg": 4.06
+        "value": 26.59,
+        "industryAvg": 4.05
       },
       {
         "metric": "ROE",
         "value": 18.759999999999998,
-        "industryAvg": 16.619999999999997
+        "industryAvg": 17.83
       },
       {
         "metric": "ROA",
         "value": 4.33,
-        "industryAvg": 4.38
+        "industryAvg": 4.3999999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 74.46000000000001,
-        "industryAvg": 64.25999999999999
+        "industryAvg": 64.79
       },
       {
         "metric": "EBITDA Margin",
         "value": 51.470000000000006,
-        "industryAvg": 47.77
+        "industryAvg": 49.58
       },
       {
         "metric": "Net Margin",
         "value": 31.790000000000003,
-        "industryAvg": 28.060000000000002
+        "industryAvg": 29.59
       }
     ],
     "dcf": {
-      "fairValue": 133.68,
-      "currentPrice": 456.05,
-      "upside": -70.69,
-      "wacc": 14.68,
+      "fairValue": 134.03,
+      "currentPrice": 455.77,
+      "upside": -70.59,
+      "wacc": 14.65,
       "growthEstimates": {
         "Near-term growth (Yrs 1-3)": 7.8,
         "Terminal growth": 3

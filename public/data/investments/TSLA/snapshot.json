@@ -1,8 +1,8 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-05-04T23:33:37.458690+00:00",
+  "lastUpdated": "2026-05-07T23:35:00.937242+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-05-04T23:33:37.458690+00:00",
+    "snapshotBuiltAt": "2026-05-07T23:35:00.937242+00:00",
     "sections": {
       "price": "2026-05-01"
     }
@@ -7867,19 +7867,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
-        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
         "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
         "publisher": "Yahoo Finance",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
+        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
         "type": "STORY"
       },
       {

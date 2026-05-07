@@ -1,0 +1,827 @@
+{
+  "quarterly_gross": [
+    {
+      "symbol": "MCO",
+      "report_date": "2022-06-30",
+      "gross_profit": 988000000.0,
+      "total_revenue": 1381000000.0,
+      "gross_margin": 0.7154
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-09-30",
+      "gross_profit": 882000000.0,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "gross_profit": 880000000.0,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-03-31",
+      "gross_profit": 1042000000.0,
+      "total_revenue": 1470000000.0,
+      "gross_margin": 0.7088
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-06-30",
+      "gross_profit": 1068000000.0,
+      "total_revenue": 1494000000.0,
+      "gross_margin": 0.7149
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-09-30",
+      "gross_profit": null,
+      "total_revenue": 1472000000.0,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "gross_profit": 1059000000.0,
+      "total_revenue": null,
+      "gross_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-03-31",
+      "gross_profit": 1319000000.0,
+      "total_revenue": 1786000000.0,
+      "gross_margin": 0.7385
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-06-30",
+      "gross_profit": 1348000000.0,
+      "total_revenue": 1817000000.0,
+      "gross_margin": 0.7419
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-09-30",
+      "gross_profit": 1301000000.0,
+      "total_revenue": 1813000000.0,
+      "gross_margin": 0.7176
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "gross_profit": 1175000000.0,
+      "total_revenue": 1672000000.0,
+      "gross_margin": 0.7028
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-03-31",
+      "gross_profit": 1433000000.0,
+      "total_revenue": 1924000000.0,
+      "gross_margin": 0.7448
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-06-30",
+      "gross_profit": 1409000000.0,
+      "total_revenue": 1898000000.0,
+      "gross_margin": 0.7424
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-09-30",
+      "gross_profit": 1515000000.0,
+      "total_revenue": 2007000000.0,
+      "gross_margin": 0.7549
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "gross_profit": 1388000000.0,
+      "total_revenue": 1889000000.0,
+      "gross_margin": 0.7348
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2026-03-31",
+      "gross_profit": 1548000000.0,
+      "total_revenue": 2079000000.0,
+      "gross_margin": 0.7446
+    }
+  ],
+  "annual_gross": [
+    {
+      "symbol": "MCO",
+      "report_date": "2019-12-31",
+      "gross_profit": 3442000000.0,
+      "total_revenue": 4829000000.0,
+      "gross_margin": 0.7128
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2020-12-31",
+      "gross_profit": 3896000000.0,
+      "total_revenue": 5371000000.0,
+      "gross_margin": 0.7254
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2021-12-31",
+      "gross_profit": 4581000000.0,
+      "total_revenue": 6218000000.0,
+      "gross_margin": 0.7367
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "gross_profit": 3855000000.0,
+      "total_revenue": 5468000000.0,
+      "gross_margin": 0.705
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "gross_profit": 4229000000.0,
+      "total_revenue": 5916000000.0,
+      "gross_margin": 0.7148
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "gross_profit": 5143000000.0,
+      "total_revenue": 7088000000.0,
+      "gross_margin": 0.7256
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "gross_profit": 5745000000.0,
+      "total_revenue": 7718000000.0,
+      "gross_margin": 0.7444
+    }
+  ],
+  "quarterly_operating": [
+    {
+      "symbol": "MCO",
+      "report_date": "2022-06-30",
+      "operating_income": 539000000.0,
+      "total_revenue": 1381000000.0,
+      "operating_margin": 0.3903
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-09-30",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "operating_income": null,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-03-31",
+      "operating_income": null,
+      "total_revenue": 1470000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-06-30",
+      "operating_income": 569000000.0,
+      "total_revenue": 1494000000.0,
+      "operating_margin": 0.3809
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-09-30",
+      "operating_income": 562000000.0,
+      "total_revenue": 1472000000.0,
+      "operating_margin": 0.3818
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "operating_income": 534000000.0,
+      "total_revenue": null,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-03-31",
+      "operating_income": 806000000.0,
+      "total_revenue": 1786000000.0,
+      "operating_margin": 0.4513
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-06-30",
+      "operating_income": 792000000.0,
+      "total_revenue": 1817000000.0,
+      "operating_margin": 0.4359
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-09-30",
+      "operating_income": 759000000.0,
+      "total_revenue": 1813000000.0,
+      "operating_margin": 0.4186
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "operating_income": 620000000.0,
+      "total_revenue": 1672000000.0,
+      "operating_margin": 0.3708
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-03-31",
+      "operating_income": 881000000.0,
+      "total_revenue": 1924000000.0,
+      "operating_margin": 0.4579
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-06-30",
+      "operating_income": 846000000.0,
+      "total_revenue": 1898000000.0,
+      "operating_margin": 0.4457
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-09-30",
+      "operating_income": 939000000.0,
+      "total_revenue": 2007000000.0,
+      "operating_margin": 0.4679
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "operating_income": 796000000.0,
+      "total_revenue": 1889000000.0,
+      "operating_margin": 0.4214
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2026-03-31",
+      "operating_income": 949000000.0,
+      "total_revenue": 2079000000.0,
+      "operating_margin": 0.4565
+    }
+  ],
+  "annual_operating": [
+    {
+      "symbol": "MCO",
+      "report_date": "2019-12-31",
+      "operating_income": null,
+      "total_revenue": 4829000000.0,
+      "operating_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2020-12-31",
+      "operating_income": 2447000000.0,
+      "total_revenue": 5371000000.0,
+      "operating_margin": 0.4556
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2021-12-31",
+      "operating_income": 2844000000.0,
+      "total_revenue": 6218000000.0,
+      "operating_margin": 0.4574
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "operating_income": 1997000000.0,
+      "total_revenue": 5468000000.0,
+      "operating_margin": 0.3652
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "operating_income": 2224000000.0,
+      "total_revenue": 5916000000.0,
+      "operating_margin": 0.3759
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "operating_income": 2977000000.0,
+      "total_revenue": 7088000000.0,
+      "operating_margin": 0.42
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "operating_income": 3462000000.0,
+      "total_revenue": 7718000000.0,
+      "operating_margin": 0.4486
+    }
+  ],
+  "quarterly_net": [
+    {
+      "symbol": "MCO",
+      "report_date": "2022-06-30",
+      "net_income_common_stockholders": 327000000.0,
+      "total_revenue": 1381000000.0,
+      "net_margin": 0.2368
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-09-30",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-03-31",
+      "net_income_common_stockholders": 501000000.0,
+      "total_revenue": 1470000000.0,
+      "net_margin": 0.3408
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-06-30",
+      "net_income_common_stockholders": 377000000.0,
+      "total_revenue": 1494000000.0,
+      "net_margin": 0.2523
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-09-30",
+      "net_income_common_stockholders": 389000000.0,
+      "total_revenue": 1472000000.0,
+      "net_margin": 0.2643
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": null,
+      "total_revenue": null,
+      "net_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-03-31",
+      "net_income_common_stockholders": 577000000.0,
+      "total_revenue": 1786000000.0,
+      "net_margin": 0.3231
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-06-30",
+      "net_income_common_stockholders": 552000000.0,
+      "total_revenue": 1817000000.0,
+      "net_margin": 0.3038
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-09-30",
+      "net_income_common_stockholders": 534000000.0,
+      "total_revenue": 1813000000.0,
+      "net_margin": 0.2945
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 395000000.0,
+      "total_revenue": 1672000000.0,
+      "net_margin": 0.2362
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-03-31",
+      "net_income_common_stockholders": 625000000.0,
+      "total_revenue": 1924000000.0,
+      "net_margin": 0.3248
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-06-30",
+      "net_income_common_stockholders": 578000000.0,
+      "total_revenue": 1898000000.0,
+      "net_margin": 0.3045
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-09-30",
+      "net_income_common_stockholders": 646000000.0,
+      "total_revenue": 2007000000.0,
+      "net_margin": 0.3219
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 610000000.0,
+      "total_revenue": 1889000000.0,
+      "net_margin": 0.3229
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2026-03-31",
+      "net_income_common_stockholders": 661000000.0,
+      "total_revenue": 2079000000.0,
+      "net_margin": 0.3179
+    }
+  ],
+  "annual_net": [
+    {
+      "symbol": "MCO",
+      "report_date": "2019-12-31",
+      "net_income_common_stockholders": 1422000000.0,
+      "total_revenue": 4829000000.0,
+      "net_margin": 0.2945
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2020-12-31",
+      "net_income_common_stockholders": 1778000000.0,
+      "total_revenue": 5371000000.0,
+      "net_margin": 0.331
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2021-12-31",
+      "net_income_common_stockholders": 2214000000.0,
+      "total_revenue": 6218000000.0,
+      "net_margin": 0.3561
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "net_income_common_stockholders": 1374000000.0,
+      "total_revenue": 5468000000.0,
+      "net_margin": 0.2513
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "net_income_common_stockholders": 1607000000.0,
+      "total_revenue": 5916000000.0,
+      "net_margin": 0.2716
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "net_income_common_stockholders": 2058000000.0,
+      "total_revenue": 7088000000.0,
+      "net_margin": 0.2903
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "net_income_common_stockholders": 2459000000.0,
+      "total_revenue": 7718000000.0,
+      "net_margin": 0.3186
+    }
+  ],
+  "quarterly_ebitda": [
+    {
+      "symbol": "MCO",
+      "report_date": "2022-06-30",
+      "ebitda": null,
+      "total_revenue": 1381000000.0,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-09-30",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-03-31",
+      "ebitda": 670000000.0,
+      "total_revenue": 1470000000.0,
+      "ebitda_margin": 0.4558
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-06-30",
+      "ebitda": 671000000.0,
+      "total_revenue": 1494000000.0,
+      "ebitda_margin": 0.4491
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-09-30",
+      "ebitda": 667000000.0,
+      "total_revenue": 1472000000.0,
+      "ebitda_margin": 0.4531
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "ebitda": null,
+      "total_revenue": null,
+      "ebitda_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-03-31",
+      "ebitda": 936000000.0,
+      "total_revenue": 1786000000.0,
+      "ebitda_margin": 0.5241
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-06-30",
+      "ebitda": 915000000.0,
+      "total_revenue": 1817000000.0,
+      "ebitda_margin": 0.5036
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-09-30",
+      "ebitda": 899000000.0,
+      "total_revenue": 1813000000.0,
+      "ebitda_margin": 0.4959
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "ebitda": 719000000.0,
+      "total_revenue": 1672000000.0,
+      "ebitda_margin": 0.43
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-03-31",
+      "ebitda": 1002000000.0,
+      "total_revenue": 1924000000.0,
+      "ebitda_margin": 0.5208
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-06-30",
+      "ebitda": 966000000.0,
+      "total_revenue": 1898000000.0,
+      "ebitda_margin": 0.509
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-09-30",
+      "ebitda": 1062000000.0,
+      "total_revenue": 2007000000.0,
+      "ebitda_margin": 0.5291
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "ebitda": 861000000.0,
+      "total_revenue": 1889000000.0,
+      "ebitda_margin": 0.4558
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2026-03-31",
+      "ebitda": 1070000000.0,
+      "total_revenue": 2079000000.0,
+      "ebitda_margin": 0.5147
+    }
+  ],
+  "annual_ebitda": [
+    {
+      "symbol": "MCO",
+      "report_date": "2019-12-31",
+      "ebitda": 2235000000.0,
+      "total_revenue": 4829000000.0,
+      "ebitda_margin": 0.4628
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2020-12-31",
+      "ebitda": 2654000000.0,
+      "total_revenue": 5371000000.0,
+      "ebitda_margin": 0.4941
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2021-12-31",
+      "ebitda": 3213000000.0,
+      "total_revenue": 6218000000.0,
+      "ebitda_margin": 0.5167
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "ebitda": 2337000000.0,
+      "total_revenue": 5468000000.0,
+      "ebitda_margin": 0.4274
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "ebitda": 2630000000.0,
+      "total_revenue": 5916000000.0,
+      "ebitda_margin": 0.4446
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "ebitda": 3469000000.0,
+      "total_revenue": 7088000000.0,
+      "ebitda_margin": 0.4894
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "ebitda": 3891000000.0,
+      "total_revenue": 7718000000.0,
+      "ebitda_margin": 0.5041
+    }
+  ],
+  "quarterly_fcf": [
+    {
+      "symbol": "MCO",
+      "report_date": "2022-06-30",
+      "free_cash_flow": 217000000.0,
+      "total_revenue": 1381000000.0,
+      "fcf_margin": 0.1571
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-09-30",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-03-31",
+      "free_cash_flow": 535000000.0,
+      "total_revenue": 1470000000.0,
+      "fcf_margin": 0.3639
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-06-30",
+      "free_cash_flow": 550000000.0,
+      "total_revenue": 1494000000.0,
+      "fcf_margin": 0.3681
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-09-30",
+      "free_cash_flow": 391000000.0,
+      "total_revenue": 1472000000.0,
+      "fcf_margin": 0.2656
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "free_cash_flow": null,
+      "total_revenue": null,
+      "fcf_margin": null
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-03-31",
+      "free_cash_flow": 697000000.0,
+      "total_revenue": 1786000000.0,
+      "fcf_margin": 0.3903
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-06-30",
+      "free_cash_flow": 593000000.0,
+      "total_revenue": 1817000000.0,
+      "fcf_margin": 0.3264
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-09-30",
+      "free_cash_flow": 631000000.0,
+      "total_revenue": 1813000000.0,
+      "fcf_margin": 0.348
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 600000000.0,
+      "total_revenue": 1672000000.0,
+      "fcf_margin": 0.3589
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-03-31",
+      "free_cash_flow": 672000000.0,
+      "total_revenue": 1924000000.0,
+      "fcf_margin": 0.3493
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-06-30",
+      "free_cash_flow": 468000000.0,
+      "total_revenue": 1898000000.0,
+      "fcf_margin": 0.2466
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-09-30",
+      "free_cash_flow": 658000000.0,
+      "total_revenue": 2007000000.0,
+      "fcf_margin": 0.3279
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 777000000.0,
+      "total_revenue": 1889000000.0,
+      "fcf_margin": 0.4113
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2026-03-31",
+      "free_cash_flow": 844000000.0,
+      "total_revenue": 2079000000.0,
+      "fcf_margin": 0.406
+    }
+  ],
+  "annual_fcf": [
+    {
+      "symbol": "MCO",
+      "report_date": "2019-12-31",
+      "free_cash_flow": 1606000000.0,
+      "total_revenue": 4829000000.0,
+      "fcf_margin": 0.3326
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2020-12-31",
+      "free_cash_flow": 2043000000.0,
+      "total_revenue": 5371000000.0,
+      "fcf_margin": 0.3804
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2021-12-31",
+      "free_cash_flow": 1866000000.0,
+      "total_revenue": 6218000000.0,
+      "fcf_margin": 0.3001
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2022-12-31",
+      "free_cash_flow": 1191000000.0,
+      "total_revenue": 5468000000.0,
+      "fcf_margin": 0.2178
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2023-12-31",
+      "free_cash_flow": 1880000000.0,
+      "total_revenue": 5916000000.0,
+      "fcf_margin": 0.3178
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2024-12-31",
+      "free_cash_flow": 2521000000.0,
+      "total_revenue": 7088000000.0,
+      "fcf_margin": 0.3557
+    },
+    {
+      "symbol": "MCO",
+      "report_date": "2025-12-31",
+      "free_cash_flow": 2575000000.0,
+      "total_revenue": 7718000000.0,
+      "fcf_margin": 0.3336
+    }
+  ]
+}
