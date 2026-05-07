@@ -72,6 +72,31 @@
       "crew": []
     }
   },
+  "0a07a23e-606a-4589-bf3e-c3e41bd4de51": {
+    "launchId": "0a07a23e-606a-4589-bf3e-c3e41bd4de51",
+    "launchName": "Falcon 9 Block 5 | SDA Tranche 2 Tracking Layer A",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | SDA Tranche 2 Tracking Layer A",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Unknown Pad",
+          "localPath": "/data/spacex/images/5b975bfd1358b82e.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_72_20200803143403.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "0f6780cf-edae-4d7c-99d6-ce7de784d140": {
     "launchId": "0f6780cf-edae-4d7c-99d6-ce7de784d140",
     "launchName": "Falcon 9 Block 5 | MRV-1",
@@ -160,6 +185,31 @@
           "label": "Space Launch Complex 4E",
           "localPath": "/data/spacex/images/b752567507d74cae.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_16_20200803143532.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
+  "18441371-8b2e-457c-afb5-1ec1b11ab630": {
+    "launchId": "18441371-8b2e-457c-afb5-1ec1b11ab630",
+    "launchName": "Falcon 9 Block 5 | Crew-13",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | Crew-13",
+          "localPath": "/data/spacex/images/b210241b31da2900.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20220301072106.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
         }
       ],
       "crew": []
@@ -370,7 +420,13 @@
         }
       ],
       "patch": [],
-      "rocket": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
       "spacecraft": [],
       "pad": [
         {
@@ -488,7 +544,13 @@
         }
       ],
       "patch": [],
-      "rocket": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
       "spacecraft": [],
       "pad": [
         {
@@ -593,6 +655,31 @@
           "label": "Space Launch Complex 4E",
           "localPath": "/data/spacex/images/b752567507d74cae.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_16_20200803143532.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
+  "521f3a1c-f977-4306-9b7f-495858719adf": {
+    "launchId": "521f3a1c-f977-4306-9b7f-495858719adf",
+    "launchName": "Falcon Heavy | Nancy Grace Roman Space Telescope",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon Heavy | Nancy Grace Roman Space Telescope",
+          "localPath": "/data/spacex/images/c62ac3115cf4d061.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_image_20220129192819.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Launch Complex 39A",
+          "localPath": "/data/spacex/images/14b5a064429f38e9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_87_20200803143537.jpg"
         }
       ],
       "crew": []
@@ -1174,6 +1261,31 @@
       "crew": []
     }
   },
+  "ad358a4d-c541-409b-9366-9c2f2da4aeb9": {
+    "launchId": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
+    "launchName": "Falcon 9 Block 5 | O3b mPower 11-13",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | O3b mPower 11-13",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Unknown Pad",
+          "localPath": "/data/spacex/images/5b975bfd1358b82e.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_72_20200803143403.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "aeccc82e-4a01-46dc-a893-1d6d098973e2": {
     "launchId": "aeccc82e-4a01-46dc-a893-1d6d098973e2",
     "launchName": "Falcon 9 Block 5 | Starlink Group 6-108",
@@ -1249,7 +1361,13 @@
         }
       ],
       "patch": [],
-      "rocket": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
       "spacecraft": [],
       "pad": [
         {
@@ -1343,6 +1461,31 @@
           "label": "Space Launch Complex 4E",
           "localPath": "/data/spacex/images/b752567507d74cae.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_16_20200803143532.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
+  "c3f48f48-0e0a-4bca-917e-de494cfca35b": {
+    "launchId": "c3f48f48-0e0a-4bca-917e-de494cfca35b",
+    "launchName": "Falcon 9 Block 5 | BlueBird Block 2 #3",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | BlueBird Block 2 #3",
+          "localPath": "/data/spacex/images/fcff0e91470c97ae.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/f9_on_slc-40_2_image_20240919072420.jpg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
         }
       ],
       "crew": []
@@ -1510,7 +1653,13 @@
         }
       ],
       "patch": [],
-      "rocket": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
       "spacecraft": [],
       "pad": [
         {
