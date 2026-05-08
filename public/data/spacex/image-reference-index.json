@@ -1375,12 +1375,12 @@
   },
   "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3": {
     "launchId": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
-    "launchName": "Falcon 9 Block 5 | 9 x Globalstar-3",
+    "launchName": "Falcon 9 Block 5 | Globalstar 2-R Mission 1 (x 9)",
     "window": "upcoming",
     "images": {
       "launch": [
         {
-          "label": "Falcon 9 Block 5 | 9 x Globalstar-3",
+          "label": "Falcon 9 Block 5 | Globalstar 2-R Mission 1 (x 9)",
           "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
         }
@@ -1396,9 +1396,9 @@
       "spacecraft": [],
       "pad": [
         {
-          "label": "Unknown Pad",
-          "localPath": "/data/spacex/images/5b975bfd1358b82e.jpg",
-          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_72_20200803143403.jpg"
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
         }
       ],
       "crew": []
