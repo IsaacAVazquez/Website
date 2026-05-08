@@ -1193,6 +1193,31 @@
       "crew": []
     }
   },
+  "9bfa0324-db74-444f-8dc3-1c7d373ca659": {
+    "launchId": "9bfa0324-db74-444f-8dc3-1c7d373ca659",
+    "launchName": "Falcon 9 Block 5 | 5x Astranis MicroGEO",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | 5x Astranis MicroGEO",
+          "localPath": "/data/spacex/images/9018f2346ed5c77f.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_on_slc_image_20241221043403.jpg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Unknown Pad",
+          "localPath": "/data/spacex/images/5b975bfd1358b82e.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_72_20200803143403.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "a6db1e67-5860-47c9-a674-adc0f35b62e0": {
     "launchId": "a6db1e67-5860-47c9-a674-adc0f35b62e0",
     "launchName": "Falcon 9 Block 5 | Transporter 17 (Dedicated SSO Rideshare)",
@@ -1479,7 +1504,13 @@
         }
       ],
       "patch": [],
-      "rocket": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
       "spacecraft": [],
       "pad": [
         {
