@@ -12,7 +12,11 @@
  *   - Copies the CSV to your clipboard
  *   - Downloads beatport-top100-<date>.csv
  *
- * Columns: rank,title,mix,artists,remixers,label,bpm,key,genre,released
+ * Columns: rank,title,mix,artists,remixers,label,bpm,key,genre,released,
+ *          t2tunes_url,hypeddit_url,soundcloud_url,youtube_url
+ *
+ * The last four are search URLs (not direct download links). Click through
+ * and only download tracks the artist or platform offers for free.
  *
  * The script first tries to read the page's embedded Next.js data (most
  * reliable). If Beatport changes their data shape, it falls back to scraping
@@ -31,7 +35,25 @@
     "key",
     "genre",
     "released",
+    "t2tunes_url",
+    "hypeddit_url",
+    "soundcloud_url",
+    "youtube_url",
   ];
+
+  const buildSearchUrls = (artists, title) => {
+    const query = [artists, title].filter(Boolean).join(" ").trim();
+    if (!query) {
+      return { t2tunes_url: "", hypeddit_url: "", soundcloud_url: "", youtube_url: "" };
+    }
+    const enc = encodeURIComponent(query);
+    return {
+      t2tunes_url: `https://t2tunes.site/search/${enc}`,
+      hypeddit_url: `https://hypeddit.com/search?q=${enc}`,
+      soundcloud_url: `https://soundcloud.com/search?q=${enc}`,
+      youtube_url: `https://www.youtube.com/results?search_query=${enc}`,
+    };
+  };
 
   const csvEscape = (v) => {
     if (v == null) return "";
@@ -92,23 +114,28 @@
       unique.push(t);
     }
 
-    return unique.slice(0, 100).map((t, i) => ({
-      rank: i + 1,
-      title: t.name ?? "",
-      mix: t.mix_name ?? t.mixName ?? "",
-      artists: namesOf(t.artists),
-      remixers: namesOf(t.remixers),
-      label: t.label?.name ?? t.release?.label?.name ?? "",
-      bpm: t.bpm ?? "",
-      key:
-        (typeof t.key === "object" ? t.key?.name : t.key) ??
-        t.key_name ??
-        "",
-      genre:
-        t.genre?.name ??
-        (Array.isArray(t.genres) ? t.genres.map((g) => g?.name).filter(Boolean).join(", ") : ""),
-      released: t.new_release_date ?? t.publish_date ?? t.release?.new_release_date ?? "",
-    }));
+    return unique.slice(0, 100).map((t, i) => {
+      const title = t.name ?? "";
+      const artists = namesOf(t.artists);
+      return {
+        rank: i + 1,
+        title,
+        mix: t.mix_name ?? t.mixName ?? "",
+        artists,
+        remixers: namesOf(t.remixers),
+        label: t.label?.name ?? t.release?.label?.name ?? "",
+        bpm: t.bpm ?? "",
+        key:
+          (typeof t.key === "object" ? t.key?.name : t.key) ??
+          t.key_name ??
+          "",
+        genre:
+          t.genre?.name ??
+          (Array.isArray(t.genres) ? t.genres.map((g) => g?.name).filter(Boolean).join(", ") : ""),
+        released: t.new_release_date ?? t.publish_date ?? t.release?.new_release_date ?? "",
+        ...buildSearchUrls(artists, title),
+      };
+    });
   }
 
   function fromDom() {
@@ -130,17 +157,20 @@
       const titleLink = links.find((a) => /\/track\//.test(a.getAttribute("href") || ""));
       const titleRaw = text(titleLink) || text(row, '[class*="title" i]');
       const mixMatch = titleRaw.match(/\(([^)]+)\)\s*$/);
+      const title = titleRaw.replace(/\s*\([^)]+\)\s*$/, "").trim();
+      const artists = artistLinks.map((a) => text(a)).join(", ");
       return {
         rank: i + 1,
-        title: titleRaw.replace(/\s*\([^)]+\)\s*$/, "").trim(),
+        title,
         mix: mixMatch ? mixMatch[1] : "",
-        artists: artistLinks.map((a) => text(a)).join(", "),
+        artists,
         remixers: "",
         label: text(labelLink),
         bpm: text(row, '[class*="bpm" i]'),
         key: text(row, '[class*="key" i]'),
         genre: text(row, '[class*="genre" i]'),
         released: text(row, '[class*="date" i]'),
+        ...buildSearchUrls(artists, title),
       };
     });
   }
