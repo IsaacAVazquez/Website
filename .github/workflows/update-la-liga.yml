@@ -56,13 +56,16 @@ jobs:
           const SNAPSHOT_PATH = path.join('src', 'data', 'laLigaSnapshot.ts');
           const raw = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
           // The snapshot is an exported object literal — extract the JSON-ish
-          // payload between the first '{' and the trailing '};'.
-          const start = raw.indexOf('{');
+          // payload between the assignment '= {' and the trailing '};'.
+          // Anchoring on '= {' avoids matching the '{' inside the
+          // 'import type { … }' line at the top of the file.
+          const assign = raw.indexOf('= {');
           const end = raw.lastIndexOf('};');
-          if (start === -1 || end === -1 || end <= start) {
+          if (assign === -1 || end === -1 || end <= assign) {
             console.error('::error::Could not locate snapshot object in laLigaSnapshot.ts');
             process.exit(1);
           }
+          const start = assign + 2;
           let snapshot;
           try {
             snapshot = JSON.parse(raw.slice(start, end + 1));
